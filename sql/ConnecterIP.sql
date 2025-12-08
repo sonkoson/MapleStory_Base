@@ -1,0 +1,1 @@
+UPDATE royal.accounts SET connecterIP = null, connecterTAGON = null, connecterTAGOFF = null Where connecterIP is not null;
