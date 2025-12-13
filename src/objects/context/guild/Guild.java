@@ -49,8 +49,8 @@ public class Guild implements Serializable {
    private final List<GuildCharacter> requests = new ArrayList<>();
    private final Map<Integer, GuildSkill> guildSkills = new HashMap<>();
    private List<GuildContentsLog> contentsLogs = new ArrayList<>();
-   private final String[] rankTitles = new String[]{"", "", "", "", "", "", "", "", "", ""};
-   private final int[] rankPermission = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+   private final String[] rankTitles = new String[] { "", "", "", "", "", "", "", "", "", "" };
+   private final int[] rankPermission = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
    private String name;
    private String notice;
    private int id;
@@ -131,7 +131,7 @@ public class Guild implements Serializable {
                this.noblessSkillPoint = rs.getInt("noblessSkillPoint");
                Blob custom = rs.getBlob("customEmblem");
                if (custom != null) {
-                  this.customEmblem = custom.getBytes(1L, (int)custom.length());
+                  this.customEmblem = custom.getBytes(1L, (int) custom.length());
                }
 
                rs.close();
@@ -142,13 +142,12 @@ public class Guild implements Serializable {
                }
 
                ps = con.prepareStatement(
-                  "SELECT id, name, level, job, guildrank, guildContribution, alliancerank, createdate, todayContribution, last_loggedin_date, today_loggedin_date FROM characters WHERE guildid = ? ORDER BY guildrank ASC, name ASC",
-                  1007
-               );
+                     "SELECT id, name, level, job, guildrank, guildContribution, alliancerank, createdate, todayContribution, last_loggedin_date, today_loggedin_date FROM characters WHERE guildid = ? ORDER BY guildrank ASC, name ASC",
+                     1007);
                ps.setInt(1, guildid);
                rs = ps.executeQuery();
                if (!rs.first()) {
-                  System.err.println(this.id + "번 길드에 길드원이 아무도 없어 길드가 자동으로 해체됩니다.");
+                  System.err.println("Guild " + this.id + " has no members and will be automatically disbanded.");
                   rs.close();
                   ps.close();
                   this.writeToDB(true);
@@ -193,30 +192,29 @@ public class Guild implements Serializable {
                   }
 
                   this.members
-                     .add(
-                        new GuildCharacter(
-                           cid,
-                           rs.getShort("level"),
-                           rs.getString("name"),
-                           (byte)-1,
-                           rs.getInt("job"),
-                           gRank,
-                           rs.getInt("guildContribution"),
-                           aRank,
-                           guildid,
-                           rs.getTimestamp("createdate").getTime(),
-                           rs.getInt("todayContribution"),
-                           rs.getTimestamp("last_loggedin_date").getTime(),
-                           rs.getTimestamp("today_loggedin_date").getTime(),
-                           false
-                        )
-                     );
+                        .add(
+                              new GuildCharacter(
+                                    cid,
+                                    rs.getShort("level"),
+                                    rs.getString("name"),
+                                    (byte) -1,
+                                    rs.getInt("job"),
+                                    gRank,
+                                    rs.getInt("guildContribution"),
+                                    aRank,
+                                    guildid,
+                                    rs.getTimestamp("createdate").getTime(),
+                                    rs.getInt("todayContribution"),
+                                    rs.getTimestamp("last_loggedin_date").getTime(),
+                                    rs.getTimestamp("today_loggedin_date").getTime(),
+                                    false));
                } while (rs.next());
 
                rs.close();
                ps.close();
                if (!leaderCheck) {
-                  System.err.println("Leader " + this.leader + " isn't in guild " + this.id + ".  Impossible... guild is disbanding.");
+                  System.err.println("Leader " + this.leader + " isn't in guild " + this.id
+                        + ".  Impossible... guild is disbanding.");
                   this.writeToDB(true);
                   this.proper = false;
                   return;
@@ -244,8 +242,8 @@ public class Guild implements Serializable {
 
                while (rs.next()) {
                   Guild.JoinRequester r = new Guild.JoinRequester(
-                     rs.getInt("id"), rs.getInt("job"), rs.getInt("level"), rs.getString("name"), rs.getString("introduce")
-                  );
+                        rs.getInt("id"), rs.getInt("job"), rs.getInt("level"), rs.getString("name"),
+                        rs.getString("introduce"));
                   this.requesters.put(rs.getInt("id"), r);
                }
 
@@ -258,13 +256,15 @@ public class Guild implements Serializable {
                   if (sid < 91000000) {
                      rs.close();
                      ps.close();
-                     System.err.println("Skill " + sid + " is in guild " + this.id + ".  Impossible... guild is disbanding.");
+                     System.err.println(
+                           "Skill " + sid + " is in guild " + this.id + ".  Impossible... guild is disbanding.");
                      this.writeToDB(true);
                      this.proper = false;
                      return;
                   }
 
-                  this.guildSkills.put(sid, new GuildSkill(sid, rs.getInt("level"), rs.getLong("timestamp"), rs.getString("purchaser"), ""));
+                  this.guildSkills.put(sid, new GuildSkill(sid, rs.getInt("level"), rs.getLong("timestamp"),
+                        rs.getString("purchaser"), ""));
                }
 
                ps = con.prepareStatement("SELECT * FROM guildcontents WHERE guildid = ?");
@@ -278,7 +278,8 @@ public class Guild implements Serializable {
                   long lastweektime = rs.getLong("lastweektime");
                   int thisweekpoint = rs.getInt("thisweekpoint");
                   long thisweektime = rs.getLong("thisweektime");
-                  this.contentsLogs.add(new GuildContentsLog(characterid, type, lastweekpoint, lastweektime, thisweekpoint, thisweektime));
+                  this.contentsLogs.add(new GuildContentsLog(characterid, type, lastweekpoint, lastweektime,
+                        thisweekpoint, thisweektime));
                }
 
                rs.close();
@@ -328,15 +329,15 @@ public class Guild implements Serializable {
             disbandGuild.encode(p);
             this.broadcast(p.getPacket());
          } else {
-            StringBuilder buf = new StringBuilder("UPDATE guilds SET GP = ?, logo = ?, logoColor = ?, logoBG = ?, logoBGColor = ?, ");
+            StringBuilder buf = new StringBuilder(
+                  "UPDATE guilds SET GP = ?, logo = ?, logoColor = ?, logoBG = ?, logoBGColor = ?, ");
 
             for (int i = 1; i < 6; i++) {
                buf.append("rank").append(i).append("title = ?, ");
             }
 
             buf.append(
-               "capacity = ?, notice = ?, alliance = ?, leader = ?, connectTimeFlag = ?, activityFlag = ?, ageGroupFlag = ?, allowJoinRequest = ?, rank1permission = ?, rank2permission = ?, rank3permission = ?, rank4permission = ?, rank5permission = ?, honorEXP = ?, customEmblem = ?, noblessSkillPoint = ? WHERE guildid = ?"
-            );
+                  "capacity = ?, notice = ?, alliance = ?, leader = ?, connectTimeFlag = ?, activityFlag = ?, ageGroupFlag = ?, allowJoinRequest = ?, rank1permission = ?, rank2permission = ?, rank3permission = ?, rank4permission = ?, rank5permission = ?, honorEXP = ?, customEmblem = ?, noblessSkillPoint = ? WHERE guildid = ?");
             PreparedStatement ps = con.prepareStatement(buf.toString());
             ps.setInt(1, this.gp);
             ps.setInt(2, this.logo);
@@ -377,12 +378,13 @@ public class Guild implements Serializable {
                ps.setInt(1, this.id);
                ps.execute();
                ps.close();
-               ps = con.prepareStatement("INSERT INTO guildskills(`guildid`, `skillid`, `level`, `timestamp`, `purchaser`) VALUES(?, ?, ?, ?, ?)");
+               ps = con.prepareStatement(
+                     "INSERT INTO guildskills(`guildid`, `skillid`, `level`, `timestamp`, `purchaser`) VALUES(?, ?, ?, ?, ?)");
                ps.setInt(1, this.id);
 
                for (GuildSkill i : this.guildSkills.values()) {
                   ps.setInt(2, i.skillID);
-                  ps.setByte(3, (byte)i.level);
+                  ps.setByte(3, (byte) i.level);
                   ps.setLong(4, i.timestamp);
                   ps.setString(5, i.purchaser);
                   ps.execute();
@@ -398,8 +400,7 @@ public class Guild implements Serializable {
                ps.execute();
                ps.close();
                ps = con.prepareStatement(
-                  "INSERT INTO guildcontents(`guildid`, `characterid`, `type`, `lastweekpoint`, `lastweektime`, `thisweekpoint`, `thisweektime`) VALUES(?, ?, ?, ?, ?, ?, ?)"
-               );
+                     "INSERT INTO guildcontents(`guildid`, `characterid`, `type`, `lastweekpoint`, `lastweektime`, `thisweekpoint`, `thisweektime`) VALUES(?, ?, ?, ?, ?, ?, ?)");
                ps.setInt(1, this.id);
 
                for (GuildContentsLog i : this.contentsLogs) {
@@ -511,13 +512,14 @@ public class Guild implements Serializable {
                if (mgc.isOnline()) {
                   Center.Guild.setGuildAndRank(mgc.getId(), 0, 5, 0, 5);
                } else {
-                  setOfflineGuildStatus(0, (byte)5, 0, (byte)5, mgc.getId());
+                  setOfflineGuildStatus(0, (byte) 5, 0, (byte) 5, mgc.getId());
                }
             } else if (mgc.isOnline() && mgc.getId() != exceptionId) {
                if (bcop != Guild.BCOp.EMBELMCHANGE && bcop != Guild.BCOp.CUSTOMEMBLEMCHANGE) {
                   Center.Broadcast.sendGuildPacket(mgc.getId(), packet, exceptionId, this.id);
                } else {
-                  Center.Guild.changeEmblem(this.id, mgc.getId(), this, bcop == Guild.BCOp.CUSTOMEMBLEMCHANGE, packet, 0);
+                  Center.Guild.changeEmblem(this.id, mgc.getId(), this, bcop == Guild.BCOp.CUSTOMEMBLEMCHANGE, packet,
+                        0);
                }
             }
          }
@@ -552,7 +554,8 @@ public class Guild implements Serializable {
       this.setOnline(cid, chrName, online, channel, forceBroadcast, true);
    }
 
-   public final void setOnline(int cid, String chrName, boolean online, int channel, boolean forceBroadcast, boolean show) {
+   public final void setOnline(int cid, String chrName, boolean online, int channel, boolean forceBroadcast,
+         boolean show) {
       try {
          boolean bBroadcast = true;
          GuildCharacter gc = null;
@@ -568,7 +571,7 @@ public class Guild implements Serializable {
                }
 
                mgc.setOnline(online);
-               mgc.setChannel((byte)channel);
+               mgc.setChannel((byte) channel);
                gc = mgc;
                break;
             }
@@ -577,14 +580,13 @@ public class Guild implements Serializable {
          if (bBroadcast) {
             PacketEncoder packet = new PacketEncoder();
             GuildPacket.MemberLogOnOff onOff = new GuildPacket.MemberLogOnOff(
-               this.getId(),
-               cid,
-               online,
-               PacketHelper.getKoreanTimestamp(System.currentTimeMillis()),
-               gc != null ? gc.getJobId() : 0,
-               gc != null ? gc.getLevel() : 0,
-               show
-            );
+                  this.getId(),
+                  cid,
+                  online,
+                  PacketHelper.getKoreanTimestamp(System.currentTimeMillis()),
+                  gc != null ? gc.getJobId() : 0,
+                  gc != null ? gc.getLevel() : 0,
+                  show);
             onOff.encode(packet);
             if (this.allianceid > 0) {
                Center.Alliance.sendGuild(packet.getPacket(), -1, this.allianceid);
@@ -596,17 +598,21 @@ public class Guild implements Serializable {
          this.bDirty = true;
          this.init = true;
       } catch (Exception var11) {
-         System.out.println("[오류] MapleGuild setOnline함수 실행 중 오류 발생! " + var11.toString());
+         System.out.println("[Error] Error executing MapleGuild setOnline function! " + var11.toString());
          var11.printStackTrace();
       }
    }
 
-   public final void guildChat(MapleCharacter chr, int cid, String msg, Item item, String itemName, int achievementID, long achievementTime) {
-      this.broadcast(CField.multiChat(chr, msg, 2, item, itemName, achievementID, achievementTime, new ReportLogEntry(chr.getName(), msg, chr.getId())), cid);
+   public final void guildChat(MapleCharacter chr, int cid, String msg, Item item, String itemName, int achievementID,
+         long achievementTime) {
+      this.broadcast(CField.multiChat(chr, msg, 2, item, itemName, achievementID, achievementTime,
+            new ReportLogEntry(chr.getName(), msg, chr.getId())), cid);
    }
 
-   public final void allianceChat(MapleCharacter chr, int cid, String msg, Item item, String itemName, int achievementID, long achievementTime) {
-      this.broadcast(CField.multiChat(chr, msg, 3, item, itemName, achievementID, achievementTime, new ReportLogEntry(chr.getName(), msg, chr.getId())), cid);
+   public final void allianceChat(MapleCharacter chr, int cid, String msg, Item item, String itemName,
+         int achievementID, long achievementTime) {
+      this.broadcast(CField.multiChat(chr, msg, 3, item, itemName, achievementID, achievementTime,
+            new ReportLogEntry(chr.getName(), msg, chr.getId())), cid);
    }
 
    public final String getRankTitle(int rank) {
@@ -665,17 +671,16 @@ public class Guild implements Serializable {
                rs.close();
                ps.close();
                ps = con.prepareStatement(
-                  "INSERT INTO guilds (`leader`, `name`, `signature`, `alliance`, `rank1title`, `rank2title`, `rank3title`, `rank4title`, `rank5title`) VALUES (?, ?, ?, 0, ?, ?, ?, ?, ?)",
-                  1
-               );
+                     "INSERT INTO guilds (`leader`, `name`, `signature`, `alliance`, `rank1title`, `rank2title`, `rank3title`, `rank4title`, `rank5title`) VALUES (?, ?, ?, 0, ?, ?, ?, ?, ?)",
+                     1);
                ps.setInt(1, leaderId);
                ps.setString(2, name);
-               ps.setInt(3, (int)(System.currentTimeMillis() / 1000L));
-               ps.setString(4, "마스터");
-               ps.setString(5, "부마스터");
-               ps.setString(6, "길드원");
-               ps.setString(7, "길드원");
-               ps.setString(8, "길드원");
+               ps.setInt(3, (int) (System.currentTimeMillis() / 1000L));
+               ps.setString(4, "Master");
+               ps.setString(5, "Jr. Master");
+               ps.setString(6, "Member");
+               ps.setString(7, "Member");
+               ps.setString(8, "Member");
                ps.executeUpdate();
                rs = ps.getGeneratedKeys();
                int ret = 0;
@@ -735,17 +740,19 @@ public class Guild implements Serializable {
          for (GuildCharacter mgcc : this.members) {
             if (mgcc.getId() == mgc.getId()) {
                PacketEncoder p = new PacketEncoder();
-               GuildPacket.WithdrawGuildResult result = new GuildPacket.WithdrawGuildResult(mgc.getGuildId(), mgc.getId(), mgc.getName());
+               GuildPacket.WithdrawGuildResult result = new GuildPacket.WithdrawGuildResult(mgc.getGuildId(),
+                     mgc.getId(), mgc.getName());
                result.encode(p);
                this.broadcast(p.getPacket());
                this.bDirty = true;
-               this.setHonorEXP(this.getHonorEXP() - (mgcc.getGuildContribution() > 0 ? mgcc.getGuildContribution() : 0));
+               this.setHonorEXP(
+                     this.getHonorEXP() - (mgcc.getGuildContribution() > 0 ? mgcc.getGuildContribution() : 0));
                this.setLevel(this.calculateLevel());
                this.members.remove(mgcc);
                if (mgc.isOnline()) {
                   Center.Guild.setGuildAndRank(mgcc.getId(), 0, 5, 0, 5);
                } else {
-                  setOfflineGuildStatus(0, (byte)5, 0, (byte)5, mgcc.getId());
+                  setOfflineGuildStatus(0, (byte) 5, 0, (byte) 5, mgcc.getId());
                }
 
                p = new PacketEncoder();
@@ -761,7 +768,8 @@ public class Guild implements Serializable {
 
       if (this.allianceid > 0) {
          PacketEncoder p = new PacketEncoder();
-         GuildPacket.WithdrawGuildResult result = new GuildPacket.WithdrawGuildResult(mgc.getGuildId(), mgc.getId(), mgc.getName());
+         GuildPacket.WithdrawGuildResult result = new GuildPacket.WithdrawGuildResult(mgc.getGuildId(), mgc.getId(),
+               mgc.getName());
          result.encode(p);
          Center.Alliance.sendGuild(p.getPacket(), -1, this.allianceid);
       }
@@ -778,13 +786,15 @@ public class Guild implements Serializable {
                kickMember.encode(p);
                this.broadcast(p.getPacket());
                this.bDirty = true;
-               this.setHonorEXP(this.getHonorEXP() - (mgc.getGuildContribution() > 0 ? mgc.getGuildContribution() : 50));
+               this.setHonorEXP(
+                     this.getHonorEXP() - (mgc.getGuildContribution() > 0 ? mgc.getGuildContribution() : 50));
                this.setLevel(this.calculateLevel());
                if (mgc.isOnline()) {
                   Center.Guild.setGuildAndRank(cid, 0, 5, 0, 5);
                } else {
-                  MapleCharacterUtil.sendNote(mgc.getName(), initiator.getName(), "당신은 길드에서 추방되었습니다.", 0);
-                  setOfflineGuildStatus(0, (byte)5, 0, (byte)5, cid);
+                  MapleCharacterUtil.sendNote(mgc.getName(), initiator.getName(),
+                        "You have been expelled from the guild.", 0);
+                  setOfflineGuildStatus(0, (byte) 5, 0, (byte) 5, cid);
                }
 
                this.members.remove(mgc);
@@ -816,11 +826,12 @@ public class Guild implements Serializable {
          for (GuildCharacter mgc : this.members) {
             byte newRank = 3;
             if (this.leader == mgc.getId()) {
-               newRank = (byte)(leader ? 1 : 2);
+               newRank = (byte) (leader ? 1 : 2);
             }
 
             if (mgc.isOnline()) {
-               Center.Guild.setGuildAndRank(mgc.getId(), this.id, mgc.getGuildRank(), mgc.getGuildContribution(), newRank);
+               Center.Guild.setGuildAndRank(mgc.getId(), this.id, mgc.getGuildRank(), mgc.getGuildContribution(),
+                     newRank);
             } else {
                setOfflineGuildStatus(this.id, mgc.getGuildRank(), mgc.getGuildContribution(), newRank, mgc.getId());
             }
@@ -836,12 +847,14 @@ public class Guild implements Serializable {
       if (this.allianceid > 0) {
          for (GuildCharacter mgc : this.members) {
             if (mgc.isOnline()) {
-               Center.Guild.setGuildAndRank(mgc.getId(), this.id, mgc.getGuildRank(), mgc.getGuildContribution(), newRank);
+               Center.Guild.setGuildAndRank(mgc.getId(), this.id, mgc.getGuildRank(), mgc.getGuildContribution(),
+                     newRank);
             } else {
-               setOfflineGuildStatus(this.id, mgc.getGuildRank(), mgc.getGuildContribution(), (byte)newRank, mgc.getId());
+               setOfflineGuildStatus(this.id, mgc.getGuildRank(), mgc.getGuildContribution(), (byte) newRank,
+                     mgc.getId());
             }
 
-            mgc.setAllianceRank((byte)newRank);
+            mgc.setAllianceRank((byte) newRank);
          }
 
          Center.Alliance.sendGuild(this.allianceid);
@@ -857,12 +870,13 @@ public class Guild implements Serializable {
                if (mgc.isOnline()) {
                   Center.Guild.setGuildAndRank(cid, this.id, mgc.getGuildRank(), mgc.getGuildContribution(), newRank);
                } else {
-                  setOfflineGuildStatus(this.id, mgc.getGuildRank(), mgc.getGuildContribution(), (byte)newRank, cid);
+                  setOfflineGuildStatus(this.id, mgc.getGuildRank(), mgc.getGuildContribution(), (byte) newRank, cid);
                }
 
-               mgc.setAllianceRank((byte)newRank);
+               mgc.setAllianceRank((byte) newRank);
                PacketEncoder p = new PacketEncoder();
-               GuildPacket.ChangeAllianceRank rank = new GuildPacket.ChangeAllianceRank(this.allianceid, this.getId(), cid, (byte)newRank);
+               GuildPacket.ChangeAllianceRank rank = new GuildPacket.ChangeAllianceRank(this.allianceid, this.getId(),
+                     cid, (byte) newRank);
                rank.encode(p);
                Center.Alliance.sendGuild(p.getPacket(), -1, this.allianceid);
                return true;
@@ -888,7 +902,8 @@ public class Guild implements Serializable {
          }
 
          PacketEncoder p = new PacketEncoder();
-         GuildPacket.ChangeLeader changeLeader = new GuildPacket.ChangeLeader(this.id, this.leader, cid, (byte)0, (byte)1);
+         GuildPacket.ChangeLeader changeLeader = new GuildPacket.ChangeLeader(this.id, this.leader, cid, (byte) 0,
+               (byte) 1);
          changeLeader.encode(p);
          this.broadcast(p.getPacket());
          this.leader = cid;
@@ -912,12 +927,12 @@ public class Guild implements Serializable {
             if (mgc.isOnline()) {
                Center.Guild.setGuildAndRank(cid, this.id, newRank, mgc.getGuildContribution(), mgc.getAllianceRank());
             } else {
-               setOfflineGuildStatus(this.id, (byte)newRank, mgc.getGuildContribution(), mgc.getAllianceRank(), cid);
+               setOfflineGuildStatus(this.id, (byte) newRank, mgc.getGuildContribution(), mgc.getAllianceRank(), cid);
             }
 
-            mgc.setGuildRank((byte)newRank);
+            mgc.setGuildRank((byte) newRank);
             PacketEncoder packet = new PacketEncoder();
-            GuildPacket.ChangeRank changeRank = new GuildPacket.ChangeRank(this.getId(), cid, (byte)newRank);
+            GuildPacket.ChangeRank changeRank = new GuildPacket.ChangeRank(this.getId(), cid, (byte) newRank);
             changeRank.encode(packet);
             this.broadcast(packet.getPacket());
             return true;
@@ -948,13 +963,15 @@ public class Guild implements Serializable {
       this.broadcast(p.getPacket());
    }
 
-   public final void setJoinSetting(int playerID, boolean allowJoinRequest, int connectTimeFlag, int activityFlag, int ageGroupFlag) {
+   public final void setJoinSetting(int playerID, boolean allowJoinRequest, int connectTimeFlag, int activityFlag,
+         int ageGroupFlag) {
       this.allowJoinRequest = allowJoinRequest;
       this.connectTimeFlag = connectTimeFlag;
       this.activityFlag = activityFlag;
       this.ageGroupFlag = ageGroupFlag;
       PacketEncoder packet = new PacketEncoder();
-      GuildPacket.EditJoinSetting setting = new GuildPacket.EditJoinSetting(this.id, playerID, allowJoinRequest, connectTimeFlag, activityFlag, ageGroupFlag);
+      GuildPacket.EditJoinSetting setting = new GuildPacket.EditJoinSetting(this.id, playerID, allowJoinRequest,
+            connectTimeFlag, activityFlag, ageGroupFlag);
       setting.encode(packet);
       this.broadcast(packet.getPacket());
    }
@@ -965,7 +982,7 @@ public class Guild implements Serializable {
             int old_level = member.getLevel();
             int old_job = member.getJobId();
             member.setJobId(mgc.getJobId());
-            member.setLevel((short)mgc.getLevel());
+            member.setLevel((short) mgc.getLevel());
             if (mgc.getLevel() > old_level) {
                this.gainGP((mgc.getLevel() - old_level) * mgc.getLevel(), false, mgc.getId());
             }
@@ -980,7 +997,8 @@ public class Guild implements Serializable {
 
             this.broadcast(CWvsContext.GuildPacket.guildMemberLevelJobUpdate(mgc));
             if (this.allianceid > 0) {
-               Center.Alliance.sendGuild(CWvsContext.AlliancePacket.updateAlliance(mgc, this.allianceid), this.id, this.allianceid);
+               Center.Alliance.sendGuild(CWvsContext.AlliancePacket.updateAlliance(mgc, this.allianceid), this.id,
+                     this.allianceid);
             }
             break;
          }
@@ -991,7 +1009,8 @@ public class Guild implements Serializable {
       String name = this.rankTitles[index - 1];
       this.rankTitles[index - 1] = "";
       this.rankPermission[index - 1] = 0;
-      this.broadcast(CWvsContext.GuildPacket.removeRankTitleRole(this.id, playerID, index, name, this.rankTitles, this.rankPermission));
+      this.broadcast(CWvsContext.GuildPacket.removeRankTitleRole(this.id, playerID, index, name, this.rankTitles,
+            this.rankPermission));
    }
 
    public final void changeRankTitleRole(boolean add, int playerID, int index, String newName, int newRole) {
@@ -999,12 +1018,11 @@ public class Guild implements Serializable {
       this.rankPermission[index - 1] = newRole;
       PacketEncoder packet = new PacketEncoder();
       GuildPacket.ChangeRankRole role = new GuildPacket.ChangeRankRole(
-         add ? GuildRequestResultType.Result.AddRank : GuildRequestResultType.Result.ChangeRankRole,
-         this.getId(),
-         playerID,
-         this.rankTitles,
-         this.rankPermission
-      );
+            add ? GuildRequestResultType.Result.AddRank : GuildRequestResultType.Result.ChangeRankRole,
+            this.getId(),
+            playerID,
+            this.rankTitles,
+            this.rankPermission);
       role.encode(packet);
       this.broadcast(packet.getPacket());
    }
@@ -1014,7 +1032,8 @@ public class Guild implements Serializable {
       this.broadcast(null, -1, Guild.BCOp.DISBAND);
    }
 
-   public final boolean setGuildEmblem(short bg, byte bgcolor, short logo, byte logocolor, Guild.BCOp bcop, byte[] imageData) {
+   public final boolean setGuildEmblem(short bg, byte bgcolor, short logo, byte logocolor, Guild.BCOp bcop,
+         byte[] imageData) {
       int reqGP = bcop == Guild.BCOp.CUSTOMEMBLEMCHANGE ? 225000 : 150000;
       if (this.gp < reqGP) {
          return false;
@@ -1037,8 +1056,7 @@ public class Guild implements Serializable {
 
          try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-               "UPDATE guilds SET logo = ?, logoColor = ?, logoBG = ?, logoBGColor = ?, customEmblem = ? WHERE guildid = ?"
-            );
+                  "UPDATE guilds SET logo = ?, logoColor = ?, logoBG = ?, logoBGColor = ?, customEmblem = ? WHERE guildid = ?");
             ps.setInt(1, logo);
             ps.setInt(2, this.logoColor);
             ps.setInt(3, this.logoBG);
@@ -1076,7 +1094,7 @@ public class Guild implements Serializable {
       } else {
          this.capacity += 5;
          PacketEncoder p = new PacketEncoder();
-         GuildPacket.ChangeCapacity changeCapacity = new GuildPacket.ChangeCapacity(this.id, (byte)this.capacity);
+         GuildPacket.ChangeCapacity changeCapacity = new GuildPacket.ChangeCapacity(this.id, (byte) this.capacity);
          changeCapacity.encode(p);
          this.broadcast(p.getPacket());
          DBConnection db = new DBConnection();
@@ -1135,13 +1153,15 @@ public class Guild implements Serializable {
          for (GuildSkill s : skill) {
             if (s.level > 0) {
                s.level = 0;
-               this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(this.id, s.skillID, s.level, s.timestamp, this.name, this.name));
+               this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(this.id, s.skillID, s.level, s.timestamp,
+                     this.name, this.name));
             }
          }
 
          for (GuildCharacter mgc : this.getMembers()) {
             if (mgc != null && mgc.isOnline()) {
-               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage().getCharacterById(mgc.getId());
+               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage()
+                     .getCharacterById(mgc.getId());
                if (player != null) {
                   player.getStat().recalcLocalStats(player);
                }
@@ -1178,14 +1198,14 @@ public class Guild implements Serializable {
          this.gainGP(1000, true, cid);
          PacketEncoder p = new PacketEncoder();
          GuildPacket.PurchaseGuildSkill s = new GuildPacket.PurchaseGuildSkill(
-            this.id, skill, 0, (short)ourSkill.level, PacketHelper.getTime(ourSkill.timestamp), name, name
-         );
+               this.id, skill, 0, (short) ourSkill.level, PacketHelper.getTime(ourSkill.timestamp), name, name);
          s.encode(p);
          this.broadcast(p.getPacket());
 
          for (GuildCharacter mgc : this.getMembers()) {
             if (mgc != null && mgc.isOnline()) {
-               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage().getCharacterById(mgc.getId());
+               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage()
+                     .getCharacterById(mgc.getId());
                if (player != null) {
                   player.getStat().recalcLocalStats(player);
                }
@@ -1221,11 +1241,13 @@ public class Guild implements Serializable {
 
          this.changed_skills = true;
          this.gainGP(1000 * incLevel, true, cid);
-         this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(this.id, skill, ourSkill.level, ourSkill.timestamp, name, name));
+         this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(this.id, skill, ourSkill.level, ourSkill.timestamp,
+               name, name));
 
          for (GuildCharacter mgc : this.getMembers()) {
             if (mgc != null && mgc.isOnline()) {
-               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage().getCharacterById(mgc.getId());
+               MapleCharacter player = GameServer.getInstance(mgc.getChannel()).getPlayerStorage()
+                     .getCharacterById(mgc.getId());
                if (player != null) {
                   player.getStat().recalcLocalStats(player);
                }
@@ -1283,18 +1305,16 @@ public class Guild implements Serializable {
             return null;
          } else {
             GuildPacket.sendGuildPacket(
-               mc,
-               new GuildPacket.InviteGuild(
-                  c.getPlayer().getGuildId(),
-                  gs.getName(),
-                  c.getPlayer().getId(),
-                  c.getPlayer().getName(),
-                  c.getPlayer().getLevel(),
-                  c.getPlayer().getJob(),
-                  0,
-                  0
-               )
-            );
+                  mc,
+                  new GuildPacket.InviteGuild(
+                        c.getPlayer().getGuildId(),
+                        gs.getName(),
+                        c.getPlayer().getId(),
+                        c.getPlayer().getName(),
+                        c.getPlayer().getLevel(),
+                        c.getPlayer().getJob(),
+                        0,
+                        0));
             return null;
          }
       }
@@ -1326,7 +1346,8 @@ public class Guild implements Serializable {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         PreparedStatement ps = con.prepareStatement("UPDATE characters SET guildid = ?, guildrank = ?, guildContribution = ?, alliancerank = ? WHERE id = ?");
+         PreparedStatement ps = con.prepareStatement(
+               "UPDATE characters SET guildid = ?, guildrank = ?, guildContribution = ?, alliancerank = ? WHERE id = ?");
          ps.setInt(1, guildid);
          ps.setInt(2, guildrank);
          ps.setInt(3, contribution);
@@ -1369,7 +1390,8 @@ public class Guild implements Serializable {
          p.updateOneInfo(26015, "guild", String.valueOf(this.id));
          p.updateOneInfo(26015, "remove_time", String.valueOf(System.currentTimeMillis()));
          PacketEncoder packet = new PacketEncoder();
-         GuildPacket.InsertJoinRequester joinRequester = new GuildPacket.InsertJoinRequester(this.getId(), p.getId(), r);
+         GuildPacket.InsertJoinRequester joinRequester = new GuildPacket.InsertJoinRequester(this.getId(), p.getId(),
+               r);
          joinRequester.encode(packet);
          this.broadcast(packet.getPacket());
       }
@@ -1399,7 +1421,8 @@ public class Guild implements Serializable {
          DBConnection db = new DBConnection();
 
          try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM `questinfo` where characterid = " + playerId + " and quest = 26015");
+            PreparedStatement ps = con
+                  .prepareStatement("DELETE FROM `questinfo` where characterid = " + playerId + " and quest = 26015");
             ps.executeUpdate();
             ps.close();
          } catch (SQLException var10) {
@@ -1421,37 +1444,37 @@ public class Guild implements Serializable {
    }
 
    public static final int[] getGuildPointTable() {
-      return new int[]{
-         0,
-         15000,
-         60000,
-         135000,
-         240000,
-         375000,
-         540000,
-         735000,
-         960000,
-         1215000,
-         1500000,
-         1815000,
-         2160000,
-         2535000,
-         2940000,
-         3375000,
-         3840000,
-         4335000,
-         4860000,
-         5415000,
-         6000000,
-         6615000,
-         7235424,
-         7935000,
-         8640000,
-         12528000,
-         18165600,
-         26340120,
-         38193170,
-         68747700
+      return new int[] {
+            0,
+            15000,
+            60000,
+            135000,
+            240000,
+            375000,
+            540000,
+            735000,
+            960000,
+            1215000,
+            1500000,
+            1815000,
+            2160000,
+            2535000,
+            2940000,
+            3375000,
+            3840000,
+            4335000,
+            4860000,
+            5415000,
+            6000000,
+            6615000,
+            7235424,
+            7935000,
+            8640000,
+            12528000,
+            18165600,
+            26340120,
+            38193170,
+            68747700
       };
    }
 
@@ -1630,7 +1653,8 @@ public class Guild implements Serializable {
          calendar.set(13, 0);
          long thisWeekStartTime = calendar.getTime().getTime();
          long sundayLastWeekStartTime = thisWeekStartTime - 604800000L;
-         if ((checkSunday || log.getThisweektime() >= thisWeekStartTime) && (!checkSunday || log.getThisweektime() >= sundayLastWeekStartTime)) {
+         if ((checkSunday || log.getThisweektime() >= thisWeekStartTime)
+               && (!checkSunday || log.getThisweektime() >= sundayLastWeekStartTime)) {
             if (log.getThisweekpoint() < point) {
                this.change_guildLog = true;
                log.setThisweekpoint(point);
@@ -1647,7 +1671,8 @@ public class Guild implements Serializable {
          }
       } else {
          this.change_guildLog = true;
-         this.contentsLogs.add(new GuildContentsLog(chr.getId(), type.getType(), 0, 0L, point, System.currentTimeMillis()));
+         this.contentsLogs
+               .add(new GuildContentsLog(chr.getId(), type.getType(), 0, 0L, point, System.currentTimeMillis()));
          this.broadcast(GuildContents.loadGuildLog(this));
       }
    }
@@ -1688,11 +1713,13 @@ public class Guild implements Serializable {
                   }
 
                   for (GuildSkill i : Guild.this.guildSkills.values()) {
-                     if (i.skillID == 91001022 || i.skillID == 91001023 || i.skillID == 91001024 || i.skillID == 91001025) {
+                     if (i.skillID == 91001022 || i.skillID == 91001023 || i.skillID == 91001024
+                           || i.skillID == 91001025) {
                         i.level = 0;
                         i.purchaser = "";
                         Guild.this.changed_skills = true;
-                        Guild.this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(Guild.this.id, i.skillID, 0, i.timestamp, "", ""));
+                        Guild.this.broadcast(CWvsContext.GuildPacket.guildSkillPurchased(Guild.this.id, i.skillID, 0,
+                              i.timestamp, "", ""));
                      }
                   }
 
@@ -1901,8 +1928,7 @@ public class Guild implements Serializable {
 
          try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-               "INSERT INTO `guild_request_member` (`id`, `guild_id`, `job`, `level`, `name`, `introduce`, `request_date`) VALUES (?, ?, ?, ?, ?, ?, NOW())"
-            );
+                  "INSERT INTO `guild_request_member` (`id`, `guild_id`, `job`, `level`, `name`, `introduce`, `request_date`) VALUES (?, ?, ?, ?, ?, ?, NOW())");
             ps.setInt(1, this.cid);
             ps.setInt(2, Guild.this.id);
             ps.setInt(3, this.job);
@@ -1964,7 +1990,7 @@ public class Guild implements Serializable {
 
       public RecruitmentGuildData(Guild guild, int playerID, boolean specialRecruiment) {
          this.guildID = guild.getId();
-         this.guildLevel = (byte)guild.getLevel();
+         this.guildLevel = (byte) guild.getLevel();
          this.guildName = guild.getName();
          this.leaderName = guild.getLeaderName();
          this.memberCount = guild.getMembers().size();

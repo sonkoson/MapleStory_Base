@@ -14,7 +14,7 @@ public class Test {
       DBEventManager.init(5);
       System.setProperty("net.sf.odinms.wzpath", "wz");
       MapleItemInformationProvider.getInstance().runItems();
-      String[] var10000 = new String[]{"inventoryequipment", "auctionequipment", "cabinet_equipment"};
+      String[] var10000 = new String[] { "inventoryequipment", "auctionequipment", "cabinet_equipment" };
 
       try (Connection con = DBConnection.getConnection()) {
          PreparedStatement ps = con.prepareStatement("SELECT * FROM `inventoryequipment`");
@@ -25,15 +25,14 @@ public class Test {
             int itemID = rs.getInt("item_id");
             int tuc = ii.getSlots(itemID);
             Test.FuckingHacker fuckingHacker = new Test.FuckingHacker(
-               rs.getInt("player_id"),
-               rs.getInt("account_id"),
-               rs.getInt("item_id"),
-               tuc,
-               rs.getInt("upgradeslots"),
-               rs.getByte("level"),
-               rs.getInt("ViciousHammer"),
-               rs.getLong("inventoryitemid")
-            );
+                  rs.getInt("player_id"),
+                  rs.getInt("account_id"),
+                  rs.getInt("item_id"),
+                  tuc,
+                  rs.getInt("upgradeslots"),
+                  rs.getByte("level"),
+                  rs.getInt("ViciousHammer"),
+                  rs.getLong("inventoryitemid"));
             PreparedStatement ps2 = con.prepareStatement("SELECT `name`, `accountid` FROM `characters` WHERE `id` = ?");
             ps2.setInt(1, fuckingHacker.playerID);
             ResultSet rs2 = ps2.executeQuery();
@@ -47,22 +46,21 @@ public class Test {
             int totalTuc = fuckingHacker.tuc + fuckingHacker.vicious;
             if (totalTuc < fuckingHacker.level) {
                System.out
-                  .println(
-                     "악용 발견! accountID : "
-                        + accountID
-                        + ", playerID : "
-                        + fuckingHacker.playerID
-                        + ", 이름 : "
-                        + name
-                        + ", 아이템ID : "
-                        + fuckingHacker.itemID
-                        + ", 강화 레벨 : + "
-                        + fuckingHacker.level
-                        + ", 넘어간 수치 : "
-                        + (fuckingHacker.level - totalTuc)
-                        + ", 인벤토리ID : "
-                        + fuckingHacker.inventoryID
-                  );
+                     .println(
+                           "Abuse detected! accountID : "
+                                 + accountID
+                                 + ", playerID : "
+                                 + fuckingHacker.playerID
+                                 + ", name : "
+                                 + name
+                                 + ", itemID : "
+                                 + fuckingHacker.itemID
+                                 + ", Enhance Level : + "
+                                 + fuckingHacker.level
+                                 + ", Exceeded Value : "
+                                 + (fuckingHacker.level - totalTuc)
+                                 + ", inventoryID : "
+                                 + fuckingHacker.inventoryID);
             }
 
             rs2.close();
@@ -86,7 +84,8 @@ public class Test {
       int vicious;
       long inventoryID;
 
-      public FuckingHacker(int playerID, int accountID, int itemID, int tuc, int ruc, int level, int vicious, long inventoryID) {
+      public FuckingHacker(int playerID, int accountID, int itemID, int tuc, int ruc, int level, int vicious,
+            long inventoryID) {
          this.playerID = playerID;
          this.accountID = accountID;
          this.itemID = itemID;

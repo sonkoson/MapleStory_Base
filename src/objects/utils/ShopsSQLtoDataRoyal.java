@@ -56,55 +56,51 @@ public class ShopsSQLtoDataRoyal {
 
             if (shop != null) {
                shop.addItem(
-                  new MapleShopItem(
-                     rs.getInt("shopitemid"),
-                     (short)1,
-                     rs.getShort("quantity"),
-                     rs.getInt("itemid"),
-                     price,
-                     (short)rs.getInt("position"),
-                     reqItemID,
-                     priceQuantity,
-                     (byte)0,
-                     rs.getInt("Tab"),
-                     0,
-                     0,
-                     false,
-                     coinKey,
-                     coinKey > 0 ? rs.getInt("price") : 0,
-                     0,
-                     0,
-                     0,
-                     "",
-                     0
-                  )
-               );
+                     new MapleShopItem(
+                           rs.getInt("shopitemid"),
+                           (short) 1,
+                           rs.getShort("quantity"),
+                           rs.getInt("itemid"),
+                           price,
+                           (short) rs.getInt("position"),
+                           reqItemID,
+                           priceQuantity,
+                           (byte) 0,
+                           rs.getInt("Tab"),
+                           0,
+                           0,
+                           false,
+                           coinKey,
+                           coinKey > 0 ? rs.getInt("price") : 0,
+                           0,
+                           0,
+                           0,
+                           "",
+                           0));
             } else {
                shop = new MapleShop(rs.getInt("shopid"), rs.getInt("shopid"));
                shop.addItem(
-                  new MapleShopItem(
-                     rs.getInt("shopitemid"),
-                     (short)1,
-                     rs.getShort("quantity"),
-                     rs.getInt("itemid"),
-                     price,
-                     (short)rs.getInt("position"),
-                     reqItemID,
-                     priceQuantity,
-                     (byte)0,
-                     rs.getInt("Tab"),
-                     0,
-                     0,
-                     false,
-                     coinKey,
-                     coinKey > 0 ? rs.getInt("price") : 0,
-                     0,
-                     0,
-                     0,
-                     "",
-                     0
-                  )
-               );
+                     new MapleShopItem(
+                           rs.getInt("shopitemid"),
+                           (short) 1,
+                           rs.getShort("quantity"),
+                           rs.getInt("itemid"),
+                           price,
+                           (short) rs.getInt("position"),
+                           reqItemID,
+                           priceQuantity,
+                           (byte) 0,
+                           rs.getInt("Tab"),
+                           0,
+                           0,
+                           false,
+                           coinKey,
+                           coinKey > 0 ? rs.getInt("price") : 0,
+                           0,
+                           0,
+                           0,
+                           "",
+                           0));
                ret.add(shop);
             }
          }
@@ -147,7 +143,7 @@ public class ShopsSQLtoDataRoyal {
             } catch (Exception var14) {
             }
          } catch (NumberFormatException var16) {
-            System.err.println("[몹 셋팅 오류] 몹ID는 숫자로만 입력되어야 합니다.");
+            System.err.println("[Mob Setting Error] Mob ID must be numeric.");
          }
       }
 

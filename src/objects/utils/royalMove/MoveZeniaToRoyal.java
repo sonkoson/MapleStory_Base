@@ -27,13 +27,14 @@ public class MoveZeniaToRoyal {
    public static void loadItems() {
       int count = 0;
       System.out.println("[Loading ] Auction Item Load...");
-      String[] columns = new String[]{"inventoryitems", "inventoryitemsuse", "inventoryitemssetup", "inventoryitemsetc", "inventoryitemscash"};
+      String[] columns = new String[] { "inventoryitems", "inventoryitemsuse", "inventoryitemssetup",
+            "inventoryitemsetc", "inventoryitemscash" };
 
       try (
-         Connection con = ZeniaDBConnection.getConnection();
-         PreparedStatement ps = con.prepareStatement("SELECT * FROM `auctionitems` WHERE `state` < 7 AND characterid = 20839");
-         ResultSet rs = ps.executeQuery();
-      ) {
+            Connection con = ZeniaDBConnection.getConnection();
+            PreparedStatement ps = con
+                  .prepareStatement("SELECT * FROM `auctionitems` WHERE `state` < 7 AND characterid = 20839");
+            ResultSet rs = ps.executeQuery();) {
          while (rs.next()) {
             ZeniaAuctionItem aItem = new ZeniaAuctionItem();
             aItem.setAuctionId(rs.getInt("auctionitemid"));
@@ -72,8 +73,9 @@ public class MoveZeniaToRoyal {
                         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                         Item item_ = null;
                         if (rs1.getInt("itemid") / 1000000 == 1) {
-                           Equip equip = new Equip(rs1.getInt("itemid"), rs1.getShort("position"), rs1.getInt("uniqueid"), rs1.getInt("flag"));
-                           equip.setQuantity((short)1);
+                           Equip equip = new Equip(rs1.getInt("itemid"), rs1.getShort("position"),
+                                 rs1.getInt("uniqueid"), rs1.getInt("flag"));
+                           equip.setQuantity((short) 1);
                            equip.setInventoryId(rs1.getLong("inventoryitemid"));
                            equip.setOwner(rs1.getString("owner"));
                            equip.setExpiration(rs1.getLong("expiredate"));
@@ -112,7 +114,7 @@ public class MoveZeniaToRoyal {
                            equip.setPVPDamage(rs1.getShort("pvpDamage"));
                            equip.setCharmEXP(rs1.getShort("charmEXP"));
                            if (equip.getCharmEXP() < 0) {
-                              equip.setCharmEXP(((Equip)ii.getEquipById(equip.getItemId())).getCharmEXP());
+                              equip.setCharmEXP(((Equip) ii.getEquipById(equip.getItemId())).getCharmEXP());
                            }
 
                            if (equip.getUniqueId() > -1L) {
@@ -151,8 +153,8 @@ public class MoveZeniaToRoyal {
                            item_ = equip.copy();
                         } else {
                            Item item = new Item(
-                              rs1.getInt("itemid"), rs1.getShort("position"), rs1.getShort("quantity"), rs1.getInt("flag"), rs1.getInt("uniqueid")
-                           );
+                                 rs1.getInt("itemid"), rs1.getShort("position"), rs1.getShort("quantity"),
+                                 rs1.getInt("flag"), rs1.getInt("uniqueid"));
                            item.setOwner(rs1.getString("owner"));
                            item.setInventoryId(rs1.getLong("inventoryitemid"));
                            item.setExpiration(rs1.getLong("expiredate"));
@@ -164,7 +166,8 @@ public class MoveZeniaToRoyal {
                         if (item_ != null) {
                            aItem.setItem(item_);
 
-                           try (PreparedStatement ps2 = con.prepareStatement("SELECT * FROM `auctionhistories` WHERE `auctionid` = ?")) {
+                           try (PreparedStatement ps2 = con
+                                 .prepareStatement("SELECT * FROM `auctionhistories` WHERE `auctionid` = ?")) {
                               ps2.setInt(1, aItem.getAuctionId());
 
                               try (ResultSet rs2 = ps2.executeQuery()) {
@@ -212,7 +215,7 @@ public class MoveZeniaToRoyal {
          for (Entry<Integer, ZeniaAuctionItem> item_ : items.entrySet()) {
             ZeniaAuctionItem item = item_.getValue();
             if ((item.getState() == 2 || item.getState() == 7) && item.getBidUserId() == ID.getKey()
-               || item.getState() != 7 && item.getState() >= 3 && item.getAccountId() == ID.getValue()) {
+                  || item.getState() != 7 && item.getState() >= 3 && item.getAccountId() == ID.getValue()) {
                completeItems.add(item);
             }
          }
@@ -229,7 +232,7 @@ public class MoveZeniaToRoyal {
          }
       }
 
-      System.out.println("끝 : " + count + " | " + completeItems.size());
+      System.out.println("End : " + count + " | " + completeItems.size());
    }
 
    public static void main(String[] args) {

@@ -7,8 +7,10 @@ import objects.wz.provider.MapleDataProviderFactory;
 import objects.wz.provider.MapleDataTool;
 
 public class StringProvider {
-   static final MapleData mobName = MapleDataProviderFactory.getDataProvider(MapleDataProviderFactory.fileInWZPath("String.wz")).getData("Mob.img");
-   static final MapleData npcName = MapleDataProviderFactory.getDataProvider(MapleDataProviderFactory.fileInWZPath("String.wz")).getData("Npc.img");
+   static final MapleData mobName = MapleDataProviderFactory
+         .getDataProvider(MapleDataProviderFactory.fileInWZPath("String.wz")).getData("Mob.img");
+   static final MapleData npcName = MapleDataProviderFactory
+         .getDataProvider(MapleDataProviderFactory.fileInWZPath("String.wz")).getData("Npc.img");
    static final Map<Integer, String> npcNamesDics = new HashMap<>();
    static final Map<Integer, String> mobNamesDics = new HashMap<>();
 
@@ -22,7 +24,7 @@ public class StringProvider {
          }
       }
 
-      System.out.println("총 " + i + "개의 한글 단어 몬스터 이름이 캐싱되었습니다.");
+      System.out.println("Total " + i + " Korean word monster names have been cached.");
       i = 0;
 
       for (MapleData datax : npcName) {
@@ -32,7 +34,7 @@ public class StringProvider {
          }
       }
 
-      System.out.println("총 " + i + "개의 한글 단어 엔피씨 이름이 캐싱되었습니다.");
+      System.out.println("Total " + i + " Korean word NPC names have been cached.");
    }
 
    public static String getRandomNpcWord() {

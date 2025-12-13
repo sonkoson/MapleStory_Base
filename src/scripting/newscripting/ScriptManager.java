@@ -57,8 +57,9 @@ public class ScriptManager {
       return var0;
    }
 
-   public static void runScriptThread(MapleClient c, MapleNPC npc, Portal portal, MapleQuest quest, int itemID, Method method, NewScriptEngine engine) {
-      ScriptEngineNPC eInstance = (ScriptEngineNPC)engine;
+   public static void runScriptThread(MapleClient c, MapleNPC npc, Portal portal, MapleQuest quest, int itemID,
+         Method method, NewScriptEngine engine) {
+      ScriptEngineNPC eInstance = (ScriptEngineNPC) engine;
       c.getPlayer().setScriptThread(eInstance);
       eInstance.initEngine(c);
       if (npc != null) {
@@ -95,7 +96,8 @@ public class ScriptManager {
       runScript(c, script, npc, portal, quest, -1);
    }
 
-   public static void runScript(final MapleClient c, String script, final MapleNPC npc, final Portal portal, final MapleQuest quest, final int itemID) {
+   public static void runScript(final MapleClient c, String script, final MapleNPC npc, final Portal portal,
+         final MapleQuest quest, final int itemID) {
       Class<? extends NewScriptEngine> scriptClass = get()._scripts.get(script);
 
       try {
@@ -140,7 +142,7 @@ public class ScriptManager {
             }
          } else {
             engineInstance.initEngine(c);
-            ScriptEngineNPC eInstance = (ScriptEngineNPC)engineInstance;
+            ScriptEngineNPC eInstance = (ScriptEngineNPC) engineInstance;
             if (npc != null) {
                eInstance.initNPC(npc);
             }
@@ -179,23 +181,27 @@ public class ScriptManager {
          loadJavaFiles(Paths.get("data/scripts"), scripts, scriptURL);
          JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
          if (compiler == null) {
-            throw new NullPointerException("JavaComplier wasn't found. check your installed java development kit(equals or above than java api 6). ");
+            throw new NullPointerException(
+                  "JavaComplier wasn't found. check your installed java development kit(equals or above than java api 6). ");
          }
 
          if (!scripts.isEmpty()) {
-            try (StandardJavaFileManager stdFileManager = compiler.getStandardFileManager(null, Locale.getDefault(), null)) {
-               String[] compileOptions = new String[]{"-d", "outscripts/scripts"};
+            try (StandardJavaFileManager stdFileManager = compiler.getStandardFileManager(null, Locale.getDefault(),
+                  null)) {
+               String[] compileOptions = new String[] { "-d", "outscripts/scripts" };
                Iterable<String> compilationOptionss = Arrays.asList(compileOptions);
                DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
-               CompilationTask compilerTask = compiler.getTask(null, stdFileManager, diagnostics, compilationOptionss, null, scripts);
+               CompilationTask compilerTask = compiler.getTask(null, stdFileManager, diagnostics, compilationOptionss,
+                     null, scripts);
                boolean status = compilerTask.call();
                if (!status) {
                   for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics()) {
-                     System.out.println(String.format("Error on line %d in %s", diagnostic.getLineNumber(), diagnostic));
+                     System.out
+                           .println(String.format("Error on line %d in %s", diagnostic.getLineNumber(), diagnostic));
                   }
 
                   safe = false;
-                  throw new RuntimeException("컴파일에 실패했습니다.");
+                  throw new RuntimeException("Compilation failed.");
                }
 
                ClassLoader cloader = new ScriptManager.ScriptClassLoader(Paths.get("outscripts/scripts"));
@@ -204,12 +210,12 @@ public class ScriptManager {
                   Class<?> cl = cloader.loadClass(clas);
                   if (cl != null) {
                      for (Method te : cl.getDeclaredMethods()) {
-                        nHolder._scripts.put(te.getName(), (Class<? extends ScriptEngineNPC>)cl);
+                        nHolder._scripts.put(te.getName(), (Class<? extends ScriptEngineNPC>) cl);
                      }
                   }
                }
             } catch (ClassNotFoundException var28) {
-               throw new RuntimeException("컴파일에 실패했습니다.");
+               throw new RuntimeException("Compilation failed.");
             }
          }
 
@@ -219,7 +225,7 @@ public class ScriptManager {
          lock.unlock();
       }
 
-      System.out.println("[Script] 총 " + holder._scripts.size() + "개의 스크립트가 파싱되었습니다.");
+      System.out.println("[Script] Total " + holder._scripts.size() + " scripts have been parsed.");
       return holder._scripts.size();
    }
 
@@ -227,22 +233,22 @@ public class ScriptManager {
       synchronized (safe) {
          if (safe) {
             if (chr != null) {
-               chr.dropMessage(5, "스크립트 리셋이 이미 진행 중입니다.");
+               chr.dropMessage(5, "Script reset is already in progress.");
             }
 
-            System.out.println("스크립트 리셋이 이미 진행 중입니다.");
+            System.out.println("Script reset is already in progress.");
          } else {
             safe = true;
             if (chr != null) {
-               chr.dropMessage(5, "스크립트 파싱을 시작합니다.");
+               chr.dropMessage(5, "Starting script parsing.");
             }
 
-            System.out.println("스크립트 파싱을 시작합니다.");
+            System.out.println("Starting script parsing.");
             Runnable scriptRunnable = () -> {
                try {
                   parseScripts();
                   if (chr != null) {
-                     chr.dropMessage(5, "[Script] 총 " + holder._scripts.size() + "개의 스크립트가 파싱되었습니다.");
+                     chr.dropMessage(5, "[Script] Total " + holder._scripts.size() + " scripts have been parsed.");
                   }
                } catch (IOException var2x) {
                   new RuntimeException(var2x);
@@ -258,11 +264,11 @@ public class ScriptManager {
    public static boolean resetScriptBool() {
       synchronized (safe) {
          if (safe) {
-            System.out.println("스크립트 리셋이 이미 진행 중입니다.");
+            System.out.println("Script reset is already in progress.");
             return false;
          } else {
             safe = true;
-            System.out.println("스크립트 파싱을 시작합니다.");
+            System.out.println("Starting script parsing.");
             Runnable scriptRunnable = () -> {
                try {
                   parseScripts();
@@ -278,7 +284,8 @@ public class ScriptManager {
       }
    }
 
-   private static void loadJavaFiles(final Path path, final List<JavaFileObject> scripts, final List<String> fileURl) throws IOException {
+   private static void loadJavaFiles(final Path path, final List<JavaFileObject> scripts, final List<String> fileURl)
+         throws IOException {
       Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
          public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
             if (!Files.isHidden(file) && (!attrs.isRegularFile() || file.getFileName().toString().endsWith(".java"))) {
@@ -319,7 +326,7 @@ public class ScriptManager {
       private final Path binPath;
 
       public ScriptClassLoader(Path path) throws MalformedURLException {
-         super(new URL[]{path.toUri().toURL()});
+         super(new URL[] { path.toUri().toURL() });
          this.binPath = path;
       }
 
@@ -333,7 +340,7 @@ public class ScriptManager {
             try {
                Class var6;
                try (SeekableByteChannel sbc = Files.newByteChannel(path)) {
-                  ByteBuffer bb = ByteBuffer.allocate((int)sbc.size());
+                  ByteBuffer bb = ByteBuffer.allocate((int) sbc.size());
                   bb.clear();
                   sbc.read(bb);
                   bb.flip();

@@ -18,11 +18,11 @@ public class ItemEquipmentTool {
       ResultSet rs = null;
 
       try (Connection con = DBConnection.getConnection()) {
-         System.out.println("[알림] inventoryequipment 작업이 시작됩니다.");
+         System.out.println("[Notice] inventoryequipment task started.");
          ps = con.prepareStatement("SELECT * FROM inventoryequipment");
-         System.out.println("[알림] inventoryequipment 데이터 수집을 시작합니다. 시간이 다소 소요될 수 있습니다.");
+         System.out.println("[Notice] Starting inventoryequipment data collection. This may take some time.");
          rs = ps.executeQuery();
-         System.out.println("[알림] inventoryequipment 데이터 수집이 완료되었습니다. 작업이 시작됩니다.");
+         System.out.println("[Notice] inventoryequipment data collection completed. Task started.");
          int count = 0;
 
          while (rs.next()) {
@@ -37,34 +37,33 @@ public class ItemEquipmentTool {
                final int inventoryID = rs.getInt("inventoryitemid");
                DBProcessor db = DBEventManager.getNextProcessor();
                db.addQuery(
-                  DBSelectionKey.INSERT_OR_UPDATE,
-                  "UPDATE inventoryequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
-                  new DBCallback() {
-                     @Override
-                     public void execute(PreparedStatement ps) throws SQLException {
-                        ps.setInt(1, characterID);
-                        ps.setInt(2, accountID);
-                        ps.setInt(3, itemID);
-                        ps.setInt(4, inventoryID);
-                        ps.addBatch();
-                     }
-                  }
-               );
+                     DBSelectionKey.INSERT_OR_UPDATE,
+                     "UPDATE inventoryequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
+                     new DBCallback() {
+                        @Override
+                        public void execute(PreparedStatement ps) throws SQLException {
+                           ps.setInt(1, characterID);
+                           ps.setInt(2, accountID);
+                           ps.setInt(3, itemID);
+                           ps.setInt(4, inventoryID);
+                           ps.addBatch();
+                        }
+                     });
             }
 
             if (++count % 10000 == 0) {
-               System.out.println("[알림] inventoryequipment " + count + "행의 작업이 완료되었습니다.");
+               System.out.println("[Notice] inventoryequipment " + count + " rows completed.");
             }
 
             rs2.close();
             ps2.close();
          }
 
-         System.out.println("[알림] auctionequipment 작업이 시작됩니다.");
+         System.out.println("[Notice] auctionequipment task started.");
          ps = con.prepareStatement("SELECT * FROM auctionequipment");
-         System.out.println("[알림] auctionequipment 데이터 수집을 시작합니다. 시간이 다소 소요될 수 있습니다.");
+         System.out.println("[Notice] Starting auctionequipment data collection. This may take some time.");
          rs = ps.executeQuery();
-         System.out.println("[알림] auctionequipment 데이터 수집이 완료되었습니다. 작업이 시작됩니다.");
+         System.out.println("[Notice] auctionequipment data collection completed. Task started.");
          count = 0;
 
          while (rs.next()) {
@@ -79,34 +78,33 @@ public class ItemEquipmentTool {
                final int inventoryID = rs.getInt("inventoryitemid");
                DBProcessor db = DBEventManager.getNextProcessor();
                db.addQuery(
-                  DBSelectionKey.INSERT_OR_UPDATE,
-                  "UPDATE auctionequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
-                  new DBCallback() {
-                     @Override
-                     public void execute(PreparedStatement ps) throws SQLException {
-                        ps.setInt(1, characterID);
-                        ps.setInt(2, accountID);
-                        ps.setInt(3, itemID);
-                        ps.setInt(4, inventoryID);
-                        ps.addBatch();
-                     }
-                  }
-               );
+                     DBSelectionKey.INSERT_OR_UPDATE,
+                     "UPDATE auctionequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
+                     new DBCallback() {
+                        @Override
+                        public void execute(PreparedStatement ps) throws SQLException {
+                           ps.setInt(1, characterID);
+                           ps.setInt(2, accountID);
+                           ps.setInt(3, itemID);
+                           ps.setInt(4, inventoryID);
+                           ps.addBatch();
+                        }
+                     });
             }
 
             if (++count % 10000 == 0) {
-               System.out.println("[알림] auctionequipment " + count + "행의 작업이 완료되었습니다.");
+               System.out.println("[Notice] auctionequipment " + count + " rows completed.");
             }
 
             rs2.close();
             ps2.close();
          }
 
-         System.out.println("[알림] cabinet_equipment 작업이 시작됩니다.");
+         System.out.println("[Notice] cabinet_equipment task started.");
          ps = con.prepareStatement("SELECT * FROM cabinet_equipment");
-         System.out.println("[알림] cabinet_equipment 데이터 수집을 시작합니다. 시간이 다소 소요될 수 있습니다.");
+         System.out.println("[Notice] Starting cabinet_equipment data collection. This may take some time.");
          rs = ps.executeQuery();
-         System.out.println("[알림] cabinet_equipment 데이터 수집이 완료되었습니다. 작업이 시작됩니다.");
+         System.out.println("[Notice] cabinet_equipment data collection completed. Task started.");
          count = 0;
 
          while (rs.next()) {
@@ -121,34 +119,33 @@ public class ItemEquipmentTool {
                final int inventoryID = rs.getInt("inventoryitemid");
                DBProcessor db = DBEventManager.getNextProcessor();
                db.addQuery(
-                  DBSelectionKey.INSERT_OR_UPDATE,
-                  "UPDATE cabinet_equipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
-                  new DBCallback() {
-                     @Override
-                     public void execute(PreparedStatement ps) throws SQLException {
-                        ps.setInt(1, characterID);
-                        ps.setInt(2, accountID);
-                        ps.setInt(3, itemID);
-                        ps.setInt(4, inventoryID);
-                        ps.addBatch();
-                     }
-                  }
-               );
+                     DBSelectionKey.INSERT_OR_UPDATE,
+                     "UPDATE cabinet_equipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
+                     new DBCallback() {
+                        @Override
+                        public void execute(PreparedStatement ps) throws SQLException {
+                           ps.setInt(1, characterID);
+                           ps.setInt(2, accountID);
+                           ps.setInt(3, itemID);
+                           ps.setInt(4, inventoryID);
+                           ps.addBatch();
+                        }
+                     });
             }
 
             if (++count % 10000 == 0) {
-               System.out.println("[알림] cabinet_equipment " + count + "행의 작업이 완료되었습니다.");
+               System.out.println("[Notice] cabinet_equipment " + count + " rows completed.");
             }
 
             rs2.close();
             ps2.close();
          }
 
-         System.out.println("[알림] csequipment 작업이 시작됩니다.");
+         System.out.println("[Notice] csequipment task started.");
          ps = con.prepareStatement("SELECT * FROM csequipment");
-         System.out.println("[알림] csequipment 데이터 수집을 시작합니다. 시간이 다소 소요될 수 있습니다.");
+         System.out.println("[Notice] Starting csequipment data collection. This may take some time.");
          rs = ps.executeQuery();
-         System.out.println("[알림] csequipment 데이터 수집이 완료되었습니다. 작업이 시작됩니다.");
+         System.out.println("[Notice] csequipment data collection completed. Task started.");
          count = 0;
 
          while (rs.next()) {
@@ -163,30 +160,29 @@ public class ItemEquipmentTool {
                final int inventoryID = rs.getInt("inventoryitemid");
                DBProcessor db = DBEventManager.getNextProcessor();
                db.addQuery(
-                  DBSelectionKey.INSERT_OR_UPDATE,
-                  "UPDATE csequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
-                  new DBCallback() {
-                     @Override
-                     public void execute(PreparedStatement ps) throws SQLException {
-                        ps.setInt(1, characterID);
-                        ps.setInt(2, accountID);
-                        ps.setInt(3, itemID);
-                        ps.setInt(4, inventoryID);
-                        ps.addBatch();
-                     }
-                  }
-               );
+                     DBSelectionKey.INSERT_OR_UPDATE,
+                     "UPDATE csequipment SET `player_id` = ?, `account_id` = ?, `item_id` = ? WHERE `inventoryitemid` = ?",
+                     new DBCallback() {
+                        @Override
+                        public void execute(PreparedStatement ps) throws SQLException {
+                           ps.setInt(1, characterID);
+                           ps.setInt(2, accountID);
+                           ps.setInt(3, itemID);
+                           ps.setInt(4, inventoryID);
+                           ps.addBatch();
+                        }
+                     });
             }
 
             if (++count % 10000 == 0) {
-               System.out.println("[알림] csequipment " + count + "행의 작업이 완료되었습니다.");
+               System.out.println("[Notice] csequipment " + count + " rows completed.");
             }
 
             rs2.close();
             ps2.close();
          }
 
-         System.out.println("[알림] 작업이 완료되었습니다.");
+         System.out.println("[Notice] Task completed.");
       } catch (SQLException var15) {
          try {
             if (ps != null) {

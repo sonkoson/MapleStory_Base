@@ -28,7 +28,7 @@ public class WaitNotifyTest {
       while (true) {
          int selected = selectzz();
          System.out.println(selected);
-         System.out.println("이것은 테스트 인것이여~2");
+         System.out.println("This is a test~2");
       }
    }
 }

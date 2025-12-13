@@ -185,7 +185,7 @@ public class CheatTracker {
          if (this.dropsPerSecond >= (dc ? 32 : 16) && this.chr.get() != null && !this.chr.get().isGM()) {
             if (dc) {
                this.chr.get().getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("Disconnected Packet spamming");
             } else {
                this.chr.get().getClient().setMonitored(true);
             }
@@ -202,7 +202,7 @@ public class CheatTracker {
          this.msgsPerSecond++;
          if (this.msgsPerSecond > 10 && this.chr.get() != null && !this.chr.get().isGM()) {
             this.chr.get().getClient().getSession().close();
-            System.out.println("팅겼다고인마");
+            System.out.println("Disconnected man");
          }
       } else {
          this.msgsPerSecond = 0;

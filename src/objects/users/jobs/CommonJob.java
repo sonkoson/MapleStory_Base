@@ -204,16 +204,16 @@ public class CommonJob implements BasicJob {
             try {
                String key = "ContinousRingTime";
                if (this.player.getTempKeyValue(key) != null) {
-                  Long time = (Long)this.player.getTempKeyValue(key);
+                  Long time = (Long) this.player.getTempKeyValue(key);
                   if (time != null && time <= System.currentTimeMillis()) {
                      MapleInventory inv = this.player.getInventory(MapleInventoryType.EQUIPPED);
-                     int[] ringpos = new int[]{-12, -13, -15, -16};
+                     int[] ringpos = new int[] { -12, -13, -15, -16 };
                      int level = 0;
 
                      for (int pos : ringpos) {
-                        Item item = inv.getItem((short)pos);
+                        Item item = inv.getItem((short) pos);
                         if (item != null && GameConstants.isContinousRing(item.getItemId())) {
-                           Equip contiRing = (Equip)item;
+                           Equip contiRing = (Equip) item;
                            level = contiRing.getTheSeedRingLevel();
                            break;
                         }
@@ -235,9 +235,8 @@ public class CommonJob implements BasicJob {
                var15.printStackTrace();
             }
 
-            if (attack.skillID == 80001829 && this.getPlayer().getMapId() != ServerConstants.TownMap && this.getPlayer().getMap().getFieldSetInstance() == null
-               )
-             {
+            if (attack.skillID == 80001829 && this.getPlayer().getMapId() != ServerConstants.TownMap
+                  && this.getPlayer().getMap().getFieldSetInstance() == null) {
                int lastmap = this.getPlayer().getOneInfoQuestInteger(19771, "lastmap");
                int lastx = this.getPlayer().getOneInfoQuestInteger(19771, "lastx");
                int lastcount = this.getPlayer().getOneInfoQuestInteger(19771, "lastcount");
@@ -246,7 +245,8 @@ public class CommonJob implements BasicJob {
                   this.getPlayer().updateOneInfo(19771, "lastcount", String.valueOf(count));
                   if (count >= 5) {
                      this.getPlayer().warp(ServerConstants.TownMap);
-                     this.getPlayer().dropMessage(5, "제자리에서 비연 스킬을 5회이상 사용하여 마을로 이동됩니다.");
+                     this.getPlayer().dropMessage(5,
+                           "You are being moved to the village for using the Bee Yeon skill more than 5 times in the same spot.");
                      this.getPlayer().updateOneInfo(19771, "lastcount", String.valueOf(0));
                   }
                } else {
@@ -276,13 +276,14 @@ public class CommonJob implements BasicJob {
             }
 
             if (attack.skillID == 80002684) {
-               ErdaSpectrum fieldSet = (ErdaSpectrum)this.player.getMap().getFieldSetInstance();
+               ErdaSpectrum fieldSet = (ErdaSpectrum) this.player.getMap().getFieldSetInstance();
                if (fieldSet != null) {
                   int Erda = Integer.parseInt(fieldSet.getVar("Erda"));
                   if (Erda >= 30) {
                      fieldSet.incErdaGuage(-30);
                      Erda = Integer.parseInt(fieldSet.getVar("Erda"));
-                     this.player.getMap().broadcastMessage(ErdaSpectrum.ErdaSpectrumCrackInfo(Erda, this.player.getMap().getAllMonstersThreadsafe().size()));
+                     this.player.getMap().broadcastMessage(ErdaSpectrum.ErdaSpectrumCrackInfo(Erda,
+                           this.player.getMap().getAllMonstersThreadsafe().size()));
                   }
                }
             }
@@ -327,21 +328,21 @@ public class CommonJob implements BasicJob {
       if (opcode == RecvPacketOpcode.SHOOT_ATTACK && attack.skillID > 0) {
          boolean AOE = attack.skillID == 4111004 || attack.skillID == 3111013 || attack.skillID == 95001000;
          boolean noBullet = GameConstants.isLuminous(this.player.getJob())
-            || GameConstants.isEvan(this.player.getJob())
-            || this.player.getJob() == 301
-            || this.player.getJob() >= 330 && this.player.getJob() <= 332
-            || attack.skillID == 5221022
-            || attack.skillID >= 5220023 && attack.skillID <= 5220025
-            || this.player.getJob() >= 510 && this.player.getJob() <= 512
-            || this.player.getJob() >= 3500 && this.player.getJob() <= 3512
-            || GameConstants.isCannon(this.player.getJob())
-            || GameConstants.isPhantom(this.player.getJob())
-            || GameConstants.isMercedes(this.player.getJob())
-            || GameConstants.isZero(this.player.getJob())
-            || GameConstants.isXenon(this.player.getJob())
-            || GameConstants.isKaiser(this.player.getJob())
-            || GameConstants.isAngelicBuster(this.player.getJob())
-            || GameConstants.isAran(this.player.getJob());
+               || GameConstants.isEvan(this.player.getJob())
+               || this.player.getJob() == 301
+               || this.player.getJob() >= 330 && this.player.getJob() <= 332
+               || attack.skillID == 5221022
+               || attack.skillID >= 5220023 && attack.skillID <= 5220025
+               || this.player.getJob() >= 510 && this.player.getJob() <= 512
+               || this.player.getJob() >= 3500 && this.player.getJob() <= 3512
+               || GameConstants.isCannon(this.player.getJob())
+               || GameConstants.isPhantom(this.player.getJob())
+               || GameConstants.isMercedes(this.player.getJob())
+               || GameConstants.isZero(this.player.getJob())
+               || GameConstants.isXenon(this.player.getJob())
+               || GameConstants.isKaiser(this.player.getJob())
+               || GameConstants.isAngelicBuster(this.player.getJob())
+               || GameConstants.isAran(this.player.getJob());
          int bulletCount = 1;
          if (attack.skillID != 0) {
             switch (attack.skillID) {
@@ -412,7 +413,7 @@ public class CommonJob implements BasicJob {
             }
          }
 
-         int[] skillList = new int[]{3100011, 3200014, 4110016, 5200016, 13100028, 14110031, 33100017};
+         int[] skillList = new int[] { 3100011, 3200014, 4110016, 5200016, 13100028, 14110031, 33100017 };
 
          for (int skill : skillList) {
             if (this.player.getTotalSkillLevel(skill) > 0) {
@@ -440,17 +441,19 @@ public class CommonJob implements BasicJob {
          }
 
          if (!AOE
-            && this.player.getBuffedValue(SecondaryStatFlag.SoulArrow) == null
-            && !noBullet
-            && this.player.getBuffedValue(SecondaryStatFlag.NoBulletConsume) == null) {
+               && this.player.getBuffedValue(SecondaryStatFlag.SoulArrow) == null
+               && !noBullet
+               && this.player.getBuffedValue(SecondaryStatFlag.NoBulletConsume) == null) {
             int bulletConsume = bulletCount;
-            if (this.player.getJob() == 412 && bulletCount > 0 && ipp.getQuantity() < MapleItemInformationProvider.getInstance().getSlotMax(projectile)) {
+            if (this.player.getJob() == 412 && bulletCount > 0
+                  && ipp.getQuantity() < MapleItemInformationProvider.getInstance().getSlotMax(projectile)) {
                Skill expert = SkillFactory.getSkill(4120010);
                if (this.player.getTotalSkillLevel(expert) > 0) {
                   SecondaryStatEffect eff = expert.getEffect(this.player.getTotalSkillLevel(expert));
                   if (eff.makeChanceResult()) {
-                     ipp.setQuantity((short)(ipp.getQuantity() + 1));
-                     this.player.send(CWvsContext.InventoryPacket.updateInventorySlot(MapleInventoryType.USE, ipp, false));
+                     ipp.setQuantity((short) (ipp.getQuantity() + 1));
+                     this.player
+                           .send(CWvsContext.InventoryPacket.updateInventorySlot(MapleInventoryType.USE, ipp, false));
                      bulletConsume = 0;
                      this.player.send(CWvsContext.enableActions(this.player, false));
                   }
@@ -459,8 +462,9 @@ public class CommonJob implements BasicJob {
 
             if (bulletConsume > 0) {
                this.player.setBulletItemID(projectile);
-               if (!MapleInventoryManipulator.removeById(this.player.getClient(), MapleInventoryType.USE, projectile, bulletConsume, false, true)) {
-                  this.player.dropMessage(5, "소모성 아이템이 부족합니다.");
+               if (!MapleInventoryManipulator.removeById(this.player.getClient(), MapleInventoryType.USE, projectile,
+                     bulletConsume, false, true)) {
+                  this.player.dropMessage(5, "You do not have enough consumable items.");
                   return false;
                }
             }
@@ -487,13 +491,14 @@ public class CommonJob implements BasicJob {
                   }
 
                   if (!attack.isUnstableMemorize
-                     && !this.player.checkSpiritFlow(attack.skillID)
-                     && !this.player.checkSpiritFlow(skillID)
-                     && !GameConstants.isKeydownEndCooltimeSkill(attack.skillID)
-                     && GameConstants.canConsumeAttackSkill(attack.skillID)
-                     && !GameConstants.isSuperNovaSkill(attack.skillID)) {
+                        && !this.player.checkSpiritFlow(attack.skillID)
+                        && !this.player.checkSpiritFlow(skillID)
+                        && !GameConstants.isKeydownEndCooltimeSkill(attack.skillID)
+                        && GameConstants.canConsumeAttackSkill(attack.skillID)
+                        && !GameConstants.isSuperNovaSkill(attack.skillID)) {
                      int cooltime = real.getCooldown(this.player);
-                     if (cooltime > 0 && (GameConstants.isAfterApplyCooltimeSkill(skillID, attack.skillID) || attack.dragonShowSkillEffect)) {
+                     if (cooltime > 0 && (GameConstants.isAfterApplyCooltimeSkill(skillID, attack.skillID)
+                           || attack.dragonShowSkillEffect)) {
                         boolean dracoSlasher = false;
                         if (attack.skillID == 400011079 || attack.skillID == 400011080) {
                            Integer value = this.player.getBuffedValue(SecondaryStatFlag.DracoSlasher);
@@ -501,7 +506,8 @@ public class CommonJob implements BasicJob {
                               int v = value - 1;
                               dracoSlasher = true;
                               if (v > 0) {
-                                 this.player.temporaryStatSet(400011058, (int)this.player.getRemainCooltime(400011058), SecondaryStatFlag.DracoSlasher, v);
+                                 this.player.temporaryStatSet(400011058, (int) this.player.getRemainCooltime(400011058),
+                                       SecondaryStatFlag.DracoSlasher, v);
                               } else {
                                  this.player.temporaryStatReset(SecondaryStatFlag.DracoSlasher);
                               }
@@ -509,9 +515,11 @@ public class CommonJob implements BasicJob {
                         }
 
                         if (!dracoSlasher
-                           && this.player.canApplyCooldown(skillID)
-                           && (this.player.getBuffedValue(SecondaryStatFlag.Ellision) == null || attack.skillID != 11121052 && attack.skillID != 11121055)
-                           && (this.player.getBuffedValue(SecondaryStatFlag.StrikerHyperElectric) == null || skillID != 15111022 && skillID != 15120003)) {
+                              && this.player.canApplyCooldown(skillID)
+                              && (this.player.getBuffedValue(SecondaryStatFlag.Ellision) == null
+                                    || attack.skillID != 11121052 && attack.skillID != 11121055)
+                              && (this.player.getBuffedValue(SecondaryStatFlag.StrikerHyperElectric) == null
+                                    || skillID != 15111022 && skillID != 15120003)) {
                            int cooldown = effect.getCooldown(this.getPlayer());
                            if (attack.skillID == 400001036) {
                               cooldown -= attack.targets;
@@ -537,7 +545,8 @@ public class CommonJob implements BasicJob {
                            }
 
                            if (attack.skillID == 155111006 && this.player.getSkillLevel(155120038) > 0) {
-                              cooldown -= (int)(cooldown * (this.player.getSkillLevelData(155120038).getCoolTimeR() / 100.0));
+                              cooldown -= (int) (cooldown
+                                    * (this.player.getSkillLevelData(155120038).getCoolTimeR() / 100.0));
                            }
 
                            if (GameConstants.getCooldown6thAttackSkill(attack.skillID) > 0 && cooldown == 0) {
@@ -562,35 +571,37 @@ public class CommonJob implements BasicJob {
 
    @Override
    public void onAttack(
-      MapleMonster monster,
-      boolean boss,
-      AttackPair attackPair,
-      Skill skill,
-      long totalDamage,
-      AttackInfo attack,
-      SecondaryStatEffect effect,
-      RecvPacketOpcode opcode
-   ) {
+         MapleMonster monster,
+         boolean boss,
+         AttackPair attackPair,
+         Skill skill,
+         long totalDamage,
+         AttackInfo attack,
+         SecondaryStatEffect effect,
+         RecvPacketOpcode opcode) {
       int skillID = attack.skillID;
       if (attack.skillID == 2221011) {
          Map<MobTemporaryStatFlag, MobTemporaryStatEffect> statups = new ArrayMap<>();
          if (monster.checkResistSkill(MobTemporaryStatFlag.FREEZE)) {
-            statups.put(MobTemporaryStatFlag.FREEZE, new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false));
-            monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(), attack.skillID);
-            statups.put(MobTemporaryStatFlag.PDR, new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, effect.getX(), attack.skillID, null, false));
-            statups.put(MobTemporaryStatFlag.MDR, new MobTemporaryStatEffect(MobTemporaryStatFlag.MDR, effect.getY(), attack.skillID, null, false));
+            statups.put(MobTemporaryStatFlag.FREEZE,
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false));
+            monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(),
+                  attack.skillID);
+            statups.put(MobTemporaryStatFlag.PDR,
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, effect.getX(), attack.skillID, null, false));
+            statups.put(MobTemporaryStatFlag.MDR,
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.MDR, effect.getY(), attack.skillID, null, false));
             monster.applyMonsterBuff(statups, attack.skillID, effect.getDuration(), null, Collections.EMPTY_LIST);
          } else {
             this.getPlayer()
-               .send(
-                  MobPacket.monsterResist(
-                     monster,
-                     this.getPlayer(),
-                     (int)((monster.getResistSkill(MobTemporaryStatFlag.FREEZE) - System.currentTimeMillis()) / 1000L),
-                     attack.skillID,
-                     2
-                  )
-               );
+                  .send(
+                        MobPacket.monsterResist(
+                              monster,
+                              this.getPlayer(),
+                              (int) ((monster.getResistSkill(MobTemporaryStatFlag.FREEZE) - System.currentTimeMillis())
+                                    / 1000L),
+                              attack.skillID,
+                              2));
          }
       }
 
@@ -618,8 +629,9 @@ public class CommonJob implements BasicJob {
       }
 
       if (skill != null && skill.getId() == 80002685) {
-         ErdaSpectrum fieldSet = (ErdaSpectrum)monster.getMap().getFieldSetInstance();
-         if (fieldSet != null && (monster.getId() == 8641030 || monster.getId() == 8641031) && !monster.isBuffed(MobTemporaryStatFlag.INVINCIBLE)) {
+         ErdaSpectrum fieldSet = (ErdaSpectrum) monster.getMap().getFieldSetInstance();
+         if (fieldSet != null && (monster.getId() == 8641030 || monster.getId() == 8641031)
+               && !monster.isBuffed(MobTemporaryStatFlag.INVINCIBLE)) {
             switch (monster.getId()) {
                case 8641030:
                   if (monster.getPosition().x > 600) {
@@ -637,19 +649,21 @@ public class CommonJob implements BasicJob {
       }
 
       if (this.getPlayer().getBuffedValue(SecondaryStatFlag.IncarnationAura) != null
-         && this.getPlayer().getSecondaryStat().getFromID(SecondaryStatFlag.IncarnationAura) != this.getPlayer().getId()
-         && this.getPlayer().getCooldownLimit(80003017) <= 0L) {
+            && this.getPlayer().getSecondaryStat().getFromID(SecondaryStatFlag.IncarnationAura) != this.getPlayer()
+                  .getId()
+            && this.getPlayer().getCooldownLimit(80003017) <= 0L) {
          SecondaryStatEffect e_ = this.getPlayer().getBuffedEffect(SecondaryStatFlag.IncarnationAura);
          if (e_ != null) {
             SecondaryStatEffect e = SkillFactory.getSkill(80003017).getEffect(e_.getLevel());
             this.getPlayer()
-               .sendRegisterExtraSkill(attack.forcedPos, (attack.display & 32768) != 0, 80003017, 1, Collections.singletonList(monster.getObjectId()));
+                  .sendRegisterExtraSkill(attack.forcedPos, (attack.display & 32768) != 0, 80003017, 1,
+                        Collections.singletonList(monster.getObjectId()));
             this.getPlayer().addCooldown(80003017, System.currentTimeMillis(), e.getX() * 1000L);
          }
       }
 
       if (monster.getId() == 8880305 && this.getPlayer().getMap() instanceof Field_WillBattle) {
-         Field_WillBattle f = (Field_WillBattle)this.getPlayer().getMap();
+         Field_WillBattle f = (Field_WillBattle) this.getPlayer().getMap();
          boolean soloPlay = f.getCharactersThreadsafe().size() == 1;
          Set<ObstacleAtom> atoms = new HashSet<>();
          if (Randomizer.isSuccess(30)) {
@@ -677,12 +691,14 @@ public class CommonJob implements BasicJob {
          }
 
          if (!atoms.isEmpty()) {
-            this.getPlayer().getMap().broadcastMessage(CField.createObstacle(ObstacleAtomCreateType.NORMAL, null, null, atoms));
+            this.getPlayer().getMap()
+                  .broadcastMessage(CField.createObstacle(ObstacleAtomCreateType.NORMAL, null, null, atoms));
          }
       }
 
       Skill skill_ = SkillFactory.getSkill(attack.skillID);
-      if (skill_ != null && monster.getBuff(MobTemporaryStatFlag.BAHAMUT_LIGHT_ELEM_ADD_DAM) != null && skill_.getElement() == Element.Holy) {
+      if (skill_ != null && monster.getBuff(MobTemporaryStatFlag.BAHAMUT_LIGHT_ELEM_ADD_DAM) != null
+            && skill_.getElement() == Element.Holy) {
          monster.cancelStatus(MobTemporaryStatFlag.BAHAMUT_LIGHT_ELEM_ADD_DAM);
       }
 
@@ -695,40 +711,46 @@ public class CommonJob implements BasicJob {
          case 400001008:
             if (monster.checkResistSkill(MobTemporaryStatFlag.FREEZE)) {
                monster.applyStatus(
-                  this.getPlayer(), new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false, 10000L, false, effect
-               );
-               monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(), attack.skillID);
+                     this.getPlayer(),
+                     new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false,
+                     10000L, false, effect);
+               monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L,
+                     this.getPlayer(), attack.skillID);
             }
             break;
          case 80003365:
             if (monster.checkResistOriginSkill(MobTemporaryStatFlag.FREEZE)) {
                monster.applyStatus(
-                  this.getPlayer(),
-                  new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, this.getPlayer().getId(), 80003365, null, false),
-                  false,
-                  10000L,
-                  false,
-                  effect
-               );
-               monster.addResistOriginSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer());
+                     this.getPlayer(),
+                     new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, this.getPlayer().getId(), 80003365, null,
+                           false),
+                     false,
+                     10000L,
+                     false,
+                     effect);
+               monster.addResistOriginSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L,
+                     this.getPlayer());
             }
             break;
          case 100001283:
             monster.applyStatus(
-               this.getPlayer(), new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false, 3000L, false, effect
-            );
+                  this.getPlayer(),
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false, 3000L,
+                  false, effect);
             break;
          case 164121043:
-            int proportion = (int)((float)totalDamage / this.getPlayer().getStat().getCurrentMaxBaseDamage());
+            int proportion = (int) ((float) totalDamage / this.getPlayer().getStat().getCurrentMaxBaseDamage());
             if (proportion > 100) {
                proportion = 100;
             }
 
             int duration = effect.getDuration() + effect.getDuration() * proportion / 100;
             monster.applyStatus(
-               this.getPlayer(), new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false, duration, false, effect
-            );
-            monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(), attack.skillID);
+                  this.getPlayer(),
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, attack.skillID, null, false), false,
+                  duration, false, effect);
+            monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(),
+                  attack.skillID);
       }
 
       if (totalDamage > 0L) {
@@ -737,7 +759,8 @@ public class CommonJob implements BasicJob {
          } catch (Exception var20) {
             System.out.println("CommonJob Err22");
             var20.printStackTrace();
-            FileoutputUtil.log("Log_Damage_Except.rtf", "Error executing on Damage. (playerName : " + this.player.getName() + ") " + var20);
+            FileoutputUtil.log("Log_Damage_Except.rtf",
+                  "Error executing on Damage. (playerName : " + this.player.getName() + ") " + var20);
          }
 
          if (!monster.isAlive()) {
@@ -774,11 +797,13 @@ public class CommonJob implements BasicJob {
             }
 
             List<MapleMapObject> grenadeList = this.player
-               .getMap()
-               .getMapObjectsInRange(attack.attackPosition, Double.POSITIVE_INFINITY, List.of(MapleMapObjectType.GRENADE));
+                  .getMap()
+                  .getMapObjectsInRange(attack.attackPosition, Double.POSITIVE_INFINITY,
+                        List.of(MapleMapObjectType.GRENADE));
             if (!grenadeList.isEmpty()) {
                for (MapleMapObject g : grenadeList) {
-                  if (g instanceof Grenade && ((Grenade)g).getSkillId() == attack.skillID && ((Grenade)g).getOwnerId() == this.player.getId()) {
+                  if (g instanceof Grenade && ((Grenade) g).getSkillId() == attack.skillID
+                        && ((Grenade) g).getOwnerId() == this.player.getId()) {
                      counterDmg = false;
                      break;
                   }
@@ -798,42 +823,39 @@ public class CommonJob implements BasicJob {
             SecondaryStatEffect eff = this.getPlayer().getBuffedEffect(SecondaryStatFlag.Slow);
             if (eff != null && eff.makeChanceResult() && !monster.isBuffed(MobTemporaryStatFlag.SPEED)) {
                monster.applyStatus(
-                  this.getPlayer(),
-                  new MobTemporaryStatEffect(MobTemporaryStatFlag.SPEED, eff.getX(), eff.getSourceId(), null, false),
-                  false,
-                  eff.getY() * 1000,
-                  true,
-                  eff
-               );
+                     this.getPlayer(),
+                     new MobTemporaryStatEffect(MobTemporaryStatFlag.SPEED, eff.getX(), eff.getSourceId(), null, false),
+                     false,
+                     eff.getY() * 1000,
+                     true,
+                     eff);
             }
          }
 
          this.playerOnAttack(monster.getMobMaxHp(), monster.getMobMaxMp(), totalDamage);
          if (effect != null
-            && effect.getMonsterStati().size() > 0
-            && skill != null
-            && effect.makeChanceResult()
-            && attack.skillID != 4120019
-            && attack.skillID != 4100012) {
+               && effect.getMonsterStati().size() > 0
+               && skill != null
+               && effect.makeChanceResult()
+               && attack.skillID != 4120019
+               && attack.skillID != 4100012) {
             for (Entry<MobTemporaryStatFlag, Integer> z : effect.getMonsterStati().entrySet()) {
                monster.applyStatus(
-                  this.getPlayer(),
-                  new MobTemporaryStatEffect(z.getKey(), z.getValue(), skill.getId(), null, false),
-                  effect.isPoison(),
-                  effect.getDuration(),
-                  true,
-                  effect
-               );
+                     this.getPlayer(),
+                     new MobTemporaryStatEffect(z.getKey(), z.getValue(), skill.getId(), null, false),
+                     effect.isPoison(),
+                     effect.getDuration(),
+                     true,
+                     effect);
             }
          }
 
-         Item weapon_ = this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-11);
+         Item weapon_ = this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
          if (weapon_ != null) {
             MobTemporaryStatFlag stat = GameConstants.getStatFromWeapon(weapon_.getItemId());
             if (stat != null && Randomizer.nextInt(100) < GameConstants.getStatChance()) {
                MobTemporaryStatEffect monsterStatusEffect = new MobTemporaryStatEffect(
-                  stat, GameConstants.getXForStat(stat), GameConstants.getSkillForStat(stat), null, false
-               );
+                     stat, GameConstants.getXForStat(stat), GameConstants.getSkillForStat(stat), null, false);
                monster.applyStatus(this.getPlayer(), monsterStatusEffect, false, 10000L, false, null);
             }
          }
@@ -841,7 +863,8 @@ public class CommonJob implements BasicJob {
          if (this.getPlayer().getBuffedValue(SecondaryStatFlag.Blind) != null) {
             SecondaryStatEffect eff = this.getPlayer().getBuffedEffect(SecondaryStatFlag.Blind);
             if (eff != null && eff.makeChanceResult()) {
-               MobTemporaryStatEffect monsterStatusEffect = new MobTemporaryStatEffect(MobTemporaryStatFlag.ACC, eff.getX(), eff.getSourceId(), null, false);
+               MobTemporaryStatEffect monsterStatusEffect = new MobTemporaryStatEffect(MobTemporaryStatFlag.ACC,
+                     eff.getX(), eff.getSourceId(), null, false);
                monster.applyStatus(this.getPlayer(), monsterStatusEffect, false, eff.getY() * 1000, true, eff);
             }
          }
@@ -850,20 +873,21 @@ public class CommonJob implements BasicJob {
 
    @Override
    public void afterAttack(
-      boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill, long totalExp, RecvPacketOpcode opcode
-   ) {
+         boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill,
+         long totalExp, RecvPacketOpcode opcode) {
       if (this.getPlayer().getAntiMacro() != null) {
          this.getPlayer().getAntiMacro().setLastAttackTime(System.currentTimeMillis());
       }
 
-      if (attack.targets > 0 && this.getPlayer().getBuffedValue(SecondaryStatFlag.RuneOfIgnition) != null && this.getPlayer().getCooldownLimit(80002890) <= 0L) {
+      if (attack.targets > 0 && this.getPlayer().getBuffedValue(SecondaryStatFlag.RuneOfIgnition) != null
+            && this.getPlayer().getCooldownLimit(80002890) <= 0L) {
          this.getPlayer().sendRegisterExtraSkill(attack.forcedPos, (attack.display & 32768) != 0, 80002890);
          this.getPlayer().send(CField.skillCooldown(80002890, 2000));
          this.getPlayer().addCooldown(80002890, System.currentTimeMillis(), 2000L);
       }
 
       if (attack.targets > 0) {
-         int[] arcaneAimList = new int[]{2120010, 2220010, 2320011};
+         int[] arcaneAimList = new int[] { 2120010, 2220010, 2320011 };
 
          for (int skillID : arcaneAimList) {
             SecondaryStatEffect arcaneAim = this.player.getSkillLevelData(skillID);
@@ -878,7 +902,7 @@ public class CommonJob implements BasicJob {
       }
 
       if (attack.targets > 0) {
-         int[] skillList = new int[]{150030241, 80003224};
+         int[] skillList = new int[] { 150030241, 80003224 };
 
          for (int s : skillList) {
             if (this.getPlayer().getTotalSkillLevel(s) > 0) {
@@ -889,7 +913,8 @@ public class CommonJob implements BasicJob {
                      statups.put(SecondaryStatFlag.indieFlyAcc, 1);
                      statups.put(SecondaryStatFlag.indieDotHeal, 1);
                      statups.put(SecondaryStatFlag.indieRocketBooster, 1);
-                     this.getPlayer().temporaryStatSet(s, level.getLevel(), level.getDuration(), statups, false, 0, true, false);
+                     this.getPlayer().temporaryStatSet(s, level.getLevel(), level.getDuration(), statups, false, 0,
+                           true, false);
                      this.getPlayer().send(CField.skillCooldown(s, level.getCooldown(this.getPlayer())));
                      this.getPlayer().addCooldown(s, System.currentTimeMillis(), level.getCooldown(this.getPlayer()));
                   }
@@ -909,7 +934,8 @@ public class CommonJob implements BasicJob {
             MapleMonster monster = MapleLifeFactory.getMonster(damageList.refImgId);
             if (monster != null && monster.getStats().isBoss()) {
                long d = damage.getLeft();
-               eim.getDamageInfo().put(this.getPlayer().getName(), d + eim.getDamageInfo().get(this.getPlayer().getName()));
+               eim.getDamageInfo().put(this.getPlayer().getName(),
+                     d + eim.getDamageInfo().get(this.getPlayer().getName()));
             }
          }));
          List<String> nameList = new ArrayList<>(eim.getDamageInfo().keySet());
@@ -920,9 +946,10 @@ public class CommonJob implements BasicJob {
       if (attack.teleportAttackAction != null && attack.teleportAttackAction.actions != null) {
          attack.teleportAttackAction.actions.forEach(action -> {
             if (action.data instanceof TeleportAttackData_ListInt) {
-               List<Integer> targetList = ((TeleportAttackData_ListInt)action.data).getIntList();
-               if (this.getPlayer().getMap() instanceof Field_MultiSoccer && this.getPlayer().getBuffedValue(SecondaryStatFlag.MultiSoccerAddBall) == null) {
-                  ((Field_MultiSoccer)this.getPlayer().getMap()).stunPlayer(targetList);
+               List<Integer> targetList = ((TeleportAttackData_ListInt) action.data).getIntList();
+               if (this.getPlayer().getMap() instanceof Field_MultiSoccer
+                     && this.getPlayer().getBuffedValue(SecondaryStatFlag.MultiSoccerAddBall) == null) {
+                  ((Field_MultiSoccer) this.getPlayer().getMap()).stunPlayer(targetList);
                }
             }
          });
@@ -941,7 +968,8 @@ public class CommonJob implements BasicJob {
          if (multiKill > 0 && this.getPlayer().getCooldownLimit(skillId) <= 0L) {
             int value = this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.LaLa_LinkSkill, 0);
             if (value < 19) {
-               this.getPlayer().temporaryStatSet(80003070, Integer.MAX_VALUE, SecondaryStatFlag.LaLa_LinkSkill, value + 1);
+               this.getPlayer().temporaryStatSet(80003070, Integer.MAX_VALUE, SecondaryStatFlag.LaLa_LinkSkill,
+                     value + 1);
             } else {
                this.getPlayer().temporaryStatReset(SecondaryStatFlag.LaLa_LinkSkill);
                this.getPlayer().temporaryStatSet(SecondaryStatFlag.indieNBDR, 160010001, 30000, lv, eff.getW(), true);
@@ -952,9 +980,10 @@ public class CommonJob implements BasicJob {
       }
 
       int lvx = 0;
-      if (((lvx = this.getPlayer().getTotalSkillLevel(60030241)) > 0 || (lvx = this.getPlayer().getTotalSkillLevel(80003015)) > 0)
-         && this.getPlayer().getCooldownLimit(60030241) <= 0L
-         && this.getPlayer().getCooldownLimit(80003015) <= 0L) {
+      if (((lvx = this.getPlayer().getTotalSkillLevel(60030241)) > 0
+            || (lvx = this.getPlayer().getTotalSkillLevel(80003015)) > 0)
+            && this.getPlayer().getCooldownLimit(60030241) <= 0L
+            && this.getPlayer().getCooldownLimit(80003015) <= 0L) {
          SecondaryStatEffect e = SkillFactory.getSkill(60030241).getEffect(lvx);
          if (e != null) {
             if (boss) {
@@ -962,19 +991,23 @@ public class CommonJob implements BasicJob {
             }
 
             this.getPlayer().priorPreparationMobCount += multiKill;
-            if (this.getPlayer().priorPreparationBossCount >= e.getY() || this.getPlayer().priorPreparationMobCount >= e.getX()) {
+            if (this.getPlayer().priorPreparationBossCount >= e.getY()
+                  || this.getPlayer().priorPreparationMobCount >= e.getX()) {
                int value = this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.PriorPreparation, 0);
                if (value < e.getW()) {
-                  this.getPlayer().temporaryStatSet(80003018, Integer.MAX_VALUE, SecondaryStatFlag.PriorPreparation, value + 1);
+                  this.getPlayer().temporaryStatSet(80003018, Integer.MAX_VALUE, SecondaryStatFlag.PriorPreparation,
+                        value + 1);
                } else {
                   this.getPlayer().temporaryStatReset(SecondaryStatFlag.PriorPreparation);
                   int damR = e.getY();
                   this.getPlayer().temporaryStatSet(80003018, e.getDuration(), SecondaryStatFlag.indieDamR, damR);
                   if (this.getPlayer().getTotalSkillLevel(80003015) > 0) {
-                     this.getPlayer().giveCoolDowns(80003015, System.currentTimeMillis(), e.getCooldown(this.getPlayer()));
+                     this.getPlayer().giveCoolDowns(80003015, System.currentTimeMillis(),
+                           e.getCooldown(this.getPlayer()));
                      this.getPlayer().send(CField.skillCooldown(80003015, e.getCooldown(this.getPlayer())));
                   } else {
-                     this.getPlayer().giveCoolDowns(60030241, System.currentTimeMillis(), e.getCooldown(this.getPlayer()));
+                     this.getPlayer().giveCoolDowns(60030241, System.currentTimeMillis(),
+                           e.getCooldown(this.getPlayer()));
                      this.getPlayer().send(CField.skillCooldown(60030241, e.getCooldown(this.getPlayer())));
                   }
                }
@@ -988,15 +1021,17 @@ public class CommonJob implements BasicJob {
       if (attack.skillID != 400001038) {
          SecondaryStatEffect e = this.getPlayer().getSkillLevelData(400001037);
          if (e != null
-            && this.getPlayer().getBuffedValue(SecondaryStatFlag.MagicCircuitFullDrive) != null
-            && this.getPlayer().checkInterval(this.getPlayer().getLastMagicCircuitTime(), e.getX() * 1000)) {
+               && this.getPlayer().getBuffedValue(SecondaryStatFlag.MagicCircuitFullDrive) != null
+               && this.getPlayer().checkInterval(this.getPlayer().getLastMagicCircuitTime(), e.getX() * 1000)) {
             this.getPlayer().send(CField.userBonusAttackRequest(400001038, true, Collections.EMPTY_LIST));
             this.getPlayer().setLastMagicCircuitTime(System.currentTimeMillis());
             int damR = 0;
             this.getPlayer().addMP(-e.getW(), true);
-            int mpPer = (int)(this.getPlayer().getStat().getMp() / (this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * 0.01));
-            damR = (int)(e.getY() * 0.01 * mpPer);
-            SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(), this.getPlayer().getSecondaryStat());
+            int mpPer = (int) (this.getPlayer().getStat().getMp()
+                  / (this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * 0.01));
+            damR = (int) (e.getY() * 0.01 * mpPer);
+            SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(),
+                  this.getPlayer().getSecondaryStat());
             statManager.changeStatValue(SecondaryStatFlag.indieDamR, e.getSourceId(), damR);
             statManager.temporaryStatSet();
          }
@@ -1017,10 +1052,12 @@ public class CommonJob implements BasicJob {
 
       for (MapleMonster mob : this.mobKillCount) {
          killedMap.put(mob.getId(), killedMap.getOrDefault(mob.getId(), 0) + 1);
-         boolean delta = Math.abs(this.player.getLevel() - mob.getStats().getLevel()) < 20 || this.player.getLevel() >= 275;
+         boolean delta = Math.abs(this.player.getLevel() - mob.getStats().getLevel()) < 20
+               || this.player.getLevel() >= 275;
          if (delta) {
             killedMap.put(9101025, killedMap.getOrDefault(9101025, 0) + 1);
-            if (this.player.getGuild() != null && !mob.getStats().isBoss() && this.player.getOneInfoQuestInteger(100813, "huntPoint") < 25000) {
+            if (this.player.getGuild() != null && !mob.getStats().isBoss()
+                  && this.player.getOneInfoQuestInteger(100813, "huntPoint") < 25000) {
                this.player.addGuildBossPointByBossID(-1);
             }
 
@@ -1047,7 +1084,8 @@ public class CommonJob implements BasicJob {
                if (m0 < 10000) {
                   m0 = Math.min(10000, m0 + v);
                   this.player.updateOneInfo(QuestExConstants.NeoEventNormalMob.getQuestID(), "m0", String.valueOf(m0));
-                  MapleQuestStatus status = this.player.getQuest(MapleQuest.getInstance(QuestExConstants.NeoEventNormalMob.getQuestID()));
+                  MapleQuestStatus status = this.player
+                        .getQuest(MapleQuest.getInstance(QuestExConstants.NeoEventNormalMob.getQuestID()));
                   if (status != null) {
                      String keySet = "000";
                      if (m0 < 100) {
@@ -1066,7 +1104,8 @@ public class CommonJob implements BasicJob {
                   }
                }
             } else if (this.player.isQuestStarted(QuestExConstants.NeoEventEliteMob.getQuestID())) {
-               MapleQuestStatus statusx = this.player.getQuest(MapleQuest.getInstance(QuestExConstants.NeoEventEliteMob.getQuestID()));
+               MapleQuestStatus statusx = this.player
+                     .getQuest(MapleQuest.getInstance(QuestExConstants.NeoEventEliteMob.getQuestID()));
                if (statusx != null && k == 9101223) {
                   String keySet = "000";
                   int count = 0;
@@ -1080,7 +1119,8 @@ public class CommonJob implements BasicJob {
                      keySet = StringUtil.getLeftPaddedStr(String.valueOf(count), '0', 3);
                      statusx.setCustomData(keySet);
                      this.player.updateQuest(statusx);
-                     this.player.updateOneInfo(QuestExConstants.NeoEventEliteMob.getQuestID(), "m1", String.valueOf(count));
+                     this.player.updateOneInfo(QuestExConstants.NeoEventEliteMob.getQuestID(), "m1",
+                           String.valueOf(count));
                      if (count >= 20) {
                         this.player.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(), "state", "2");
                      }
@@ -1100,8 +1140,9 @@ public class CommonJob implements BasicJob {
          Skill skill_ = SkillFactory.getSkill(attack.skillID);
          if (skill_.getType() != 51 && Randomizer.isSuccess(50)) {
             List<MapleMapObject> objs = this.getPlayer()
-               .getMap()
-               .getMapObjectsInRange(this.getPlayer().getTruePosition(), 500000.0, Arrays.asList(MapleMapObjectType.MONSTER));
+                  .getMap()
+                  .getMapObjectsInRange(this.getPlayer().getTruePosition(), 500000.0,
+                        Arrays.asList(MapleMapObjectType.MONSTER));
             List<Integer> monsters = new ArrayList<>();
             int bulletCount = Randomizer.rand(1, 3);
             int consumeItemID = 2070006;
@@ -1110,10 +1151,10 @@ public class CommonJob implements BasicJob {
                int rand = Randomizer.rand(0, objs.size() - 1);
                if (objs.size() < bulletCount) {
                   if (i < objs.size()) {
-                     monsters.add(((MapleMonster)objs.get(i)).getObjectId());
+                     monsters.add(((MapleMonster) objs.get(i)).getObjectId());
                   }
                } else {
-                  monsters.add(((MapleMonster)objs.get(rand)).getObjectId());
+                  monsters.add(((MapleMonster) objs.get(rand)).getObjectId());
                   objs.remove(rand);
                }
             }
@@ -1122,8 +1163,8 @@ public class CommonJob implements BasicJob {
                ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                info.initMarkOfThief(this.getPlayer().getPosition(), consumeItemID);
                ForceAtom forceAtom = new ForceAtom(
-                  info, 13100027, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.MARK_OF_THIEF, monsters, bulletCount
-               );
+                     info, 13100027, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                     ForceAtom.AtomType.MARK_OF_THIEF, monsters, bulletCount);
                this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             }
          }
@@ -1157,47 +1198,55 @@ public class CommonJob implements BasicJob {
                expR = 0.45F;
          }
 
-         long comboexp = (long)((float)totalExp * expR);
+         long comboexp = (long) ((float) totalExp * expR);
          boolean check = true;
          if (check) {
             this.getPlayer().setMultiKillCount(this.getPlayer().getMultiKillCount() + 1);
             this.getPlayer()
-               .getClient()
-               .getSession()
-               .writeAndFlush(CWvsContext.InfoPacket.multiKill(this.getPlayer().getStylishKillSkin(), multiKill, comboexp));
+                  .getClient()
+                  .getSession()
+                  .writeAndFlush(
+                        CWvsContext.InfoPacket.multiKill(this.getPlayer().getStylishKillSkin(), multiKill, comboexp));
             this.getPlayer().gainExp(comboexp, false, false, false);
          }
       }
 
       if (attack.targets > 0) {
-         Item item = this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-11);
-         if (item != null && attack.skillID > 0 && !GameConstants.isAntiRepeatSkill(attack.skillID) && skill.getType() != 51) {
+         Item item = this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
+         if (item != null && attack.skillID > 0 && !GameConstants.isAntiRepeatSkill(attack.skillID)
+               && skill.getType() != 51) {
             int weaponIdx = item.getItemId() / 10000 % 100;
             List<Integer> targets = new ArrayList<>();
             attack.allDamage.forEach(t -> targets.add(t.objectid));
-            SecondaryStatEffect meteor = SkillFactory.getSkill(2121007).getEffect(this.getPlayer().getTotalSkillLevel(2121007));
+            SecondaryStatEffect meteor = SkillFactory.getSkill(2121007)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(2121007));
             if (meteor != null) {
                this.getPlayer().doActiveFinalAttack(2120013, meteor.getProb(), attack.skillID, weaponIdx, targets);
             }
 
-            SecondaryStatEffect blizzard = SkillFactory.getSkill(2221007).getEffect(this.getPlayer().getTotalSkillLevel(2221007));
+            SecondaryStatEffect blizzard = SkillFactory.getSkill(2221007)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(2221007));
             if (blizzard != null) {
                this.getPlayer().doActiveFinalAttack(2220014, blizzard.getProb(), attack.skillID, weaponIdx, targets);
             }
 
             if (this.getPlayer().getCooldownLimit(32121004) > 0L) {
-               SecondaryStatEffect darkLightning = SkillFactory.getSkill(32121004).getEffect(this.getPlayer().getTotalSkillLevel(32121004));
+               SecondaryStatEffect darkLightning = SkillFactory.getSkill(32121004)
+                     .getEffect(this.getPlayer().getTotalSkillLevel(32121004));
                if (darkLightning != null) {
-                  this.getPlayer().doActiveFinalAttack(32121011, darkLightning.getProb(), attack.skillID, weaponIdx, targets);
+                  this.getPlayer().doActiveFinalAttack(32121011, darkLightning.getProb(), attack.skillID, weaponIdx,
+                        targets);
                }
             }
 
             if (this.getPlayer().getJob() >= 531 && this.getPlayer().getJob() <= 532) {
                Integer value = this.getPlayer().getBuffedValue(SecondaryStatFlag.Roulette);
                if (value != null && value == 1) {
-                  SecondaryStatEffect effect_ = SkillFactory.getSkill(5311004).getEffect(this.getPlayer().getTotalSkillLevel(5311004));
+                  SecondaryStatEffect effect_ = SkillFactory.getSkill(5311004)
+                        .getEffect(this.getPlayer().getTotalSkillLevel(5311004));
                   if (effect_ != null) {
-                     this.getPlayer().doActiveFinalAttack(5311004, effect_.getProb(), attack.skillID, weaponIdx, targets);
+                     this.getPlayer().doActiveFinalAttack(5311004, effect_.getProb(), attack.skillID, weaponIdx,
+                           targets);
                   }
                }
             }
@@ -1211,24 +1260,23 @@ public class CommonJob implements BasicJob {
       }
 
       if (attack.skillID > 0
-         && attack.skillID != 13121054
-         && attack.skillID != 13121055
-         && attack.skillID != 1311020
-         && (
-            !GameConstants.isNoDelaySkill(attack.skillID)
-               || attack.skillID == 400031003
-               || attack.skillID == 400031004
-               || attack.skillID == 400001018
-               || this.getPlayer().getKeyValue2("trifling_whim") == 1 && attack.skillID != 13120003
-         )
-         && skill.getType() != 51) {
+            && attack.skillID != 13121054
+            && attack.skillID != 13121055
+            && attack.skillID != 1311020
+            && (!GameConstants.isNoDelaySkill(attack.skillID)
+                  || attack.skillID == 400031003
+                  || attack.skillID == 400031004
+                  || attack.skillID == 400001018
+                  || this.getPlayer().getKeyValue2("trifling_whim") == 1 && attack.skillID != 13120003)
+            && skill.getType() != 51) {
          if (this.getPlayer().getBuffedValue(SecondaryStatFlag.TriflingWhimOnOff) != null) {
             SecondaryStatEffect effx = this.getPlayer().getBuffedEffect(SecondaryStatFlag.TriflingWhimOnOff);
             if (effx != null) {
                int sid = effx.getSourceId();
                int forceAtomSkillID = 0;
                int propBonus = this.getPlayer().getSkillLevelDataOne(13120044, SecondaryStatEffect::getProb);
-               int maxMultiplier = Math.max(1, this.getPlayer().getSkillLevelDataOne(13120045, SecondaryStatEffect::getX));
+               int maxMultiplier = Math.max(1,
+                     this.getPlayer().getSkillLevelDataOne(13120045, SecondaryStatEffect::getX));
                if (sid == 13101022) {
                   if (Randomizer.isSuccess(effx.getProb() + propBonus)) {
                      forceAtomSkillID = !Randomizer.isSuccess(effx.getSubProp()) ? sid : 13100027;
@@ -1261,11 +1309,14 @@ public class CommonJob implements BasicJob {
                   Field var93 = this.getPlayer().getMap();
                   Point var10001 = this.getPlayer().getPosition();
                   boolean var10006 = (attack.display & 32768) != 0;
-                  List<MapleMonster> mobList = var93.getMobsInRect(var10001, effx.getLt().x, effx.getLt().y, effx.getRb().x, effx.getRb().y, var10006, 100);
-                  Collections.sort(mobList, (o1, o2) -> Long.compare(o2.getStats().getMaxHp(), o1.getStats().getMaxHp()));
+                  List<MapleMonster> mobList = var93.getMobsInRect(var10001, effx.getLt().x, effx.getLt().y,
+                        effx.getRb().x, effx.getRb().y, var10006, 100);
+                  Collections.sort(mobList,
+                        (o1, o2) -> Long.compare(o2.getStats().getMaxHp(), o1.getStats().getMaxHp()));
 
                   for (MapleMonster mobx : mobList) {
-                     if (mobx != null && mobx.isAlive() && mobs.size() < var86 && !mobs.contains(mobx.getObjectId()) && !mobx.getStats().isFriendly()) {
+                     if (mobx != null && mobx.isAlive() && mobs.size() < var86 && !mobs.contains(mobx.getObjectId())
+                           && !mobx.getStats().isFriendly()) {
                         mobs.add(mobx.getObjectId());
                      }
                   }
@@ -1275,8 +1326,8 @@ public class CommonJob implements BasicJob {
                      ForceAtom.AtomType atom = ForceAtom.AtomType.TRI_FLING;
                      info.initTriFling(sid != forceAtomSkillID ? 2 : 1, 0);
                      ForceAtom forceAtom = new ForceAtom(
-                        info, forceAtomSkillID, this.getPlayer().getId(), false, true, this.getPlayer().getId(), atom, mobs, var86 * maxMultiplier
-                     );
+                           info, forceAtomSkillID, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                           atom, mobs, var86 * maxMultiplier);
                      this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
                   }
                }
@@ -1290,10 +1341,10 @@ public class CommonJob implements BasicJob {
                List<Integer> monsters = new ArrayList<>();
 
                for (MapleMonster mobxx : this.getPlayer()
-                  .getMap()
-                  .getMobsInRect(
-                     this.getPlayer().getPosition(), eff2.getLt().x, eff2.getLt().y, eff2.getRb().x, eff2.getRb().y, this.getPlayer().isFacingLeft()
-                  )) {
+                     .getMap()
+                     .getMobsInRect(
+                           this.getPlayer().getPosition(), eff2.getLt().x, eff2.getLt().y, eff2.getRb().x,
+                           eff2.getRb().y, this.getPlayer().isFacingLeft())) {
                   if (mobxx != null && mobxx.isAlive() && monsters.size() < 1) {
                      monsters.add(mobxx.getObjectId());
                   }
@@ -1303,8 +1354,8 @@ public class CommonJob implements BasicJob {
                   ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                   info.initStormBringer();
                   ForceAtom forceAtom = new ForceAtom(
-                     info, 13121017, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.STORM_BRINGER, monsters, 1
-                  );
+                        info, 13121017, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                        ForceAtom.AtomType.STORM_BRINGER, monsters, 1);
                   this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
                }
             }
@@ -1316,18 +1367,19 @@ public class CommonJob implements BasicJob {
          if (sx != null) {
             SecondaryStatEffect consume = sx.getEffect(effect.getLevel());
             if (consume != null
-               && (GameConstants.canConsumeAttackSkill(attack.skillID) || GameConstants.isKeydownSkill(attack.skillID))
-               && !GameConstants.isExceptionKeydownSkill(attack.skillID)
-               && !GameConstants.isAffectedAreaSkill(attack.skillID)
-               && (
-                  !this.getPlayer().hasBuffBySkillID(attack.skillID) && !this.getPlayer().hasBuffBySkillID(attack.skillID) && !attack.dragonAttack
-                     || attack.dragonAttack && attack.dragonShowSkillEffect
-               )) {
-               if (attack.skillID == 400011110 || attack.skillID == 400011111 || attack.skillID == 31101002 || attack.skillID == 36101001) {
+                  && (GameConstants.canConsumeAttackSkill(attack.skillID)
+                        || GameConstants.isKeydownSkill(attack.skillID))
+                  && !GameConstants.isExceptionKeydownSkill(attack.skillID)
+                  && !GameConstants.isAffectedAreaSkill(attack.skillID)
+                  && (!this.getPlayer().hasBuffBySkillID(attack.skillID)
+                        && !this.getPlayer().hasBuffBySkillID(attack.skillID) && !attack.dragonAttack
+                        || attack.dragonAttack && attack.dragonShowSkillEffect)) {
+               if (attack.skillID == 400011110 || attack.skillID == 400011111 || attack.skillID == 31101002
+                     || attack.skillID == 36101001) {
                   return;
                }
 
-               consume.applyTo(this.getPlayer(), attack.forcedPos, (byte)0, false, true);
+               consume.applyTo(this.getPlayer(), attack.forcedPos, (byte) 0, false, true);
             }
          }
       }
@@ -1340,16 +1392,17 @@ public class CommonJob implements BasicJob {
       }
 
       if (this.activeSkillPrepareID != 400011056
-         && this.activeSkillPrepareID != 11121055
-         && this.activeSkillPrepareID != 11121056
-         && (this.activeSkillPrepareID < 3321035 || this.activeSkillPrepareID > 3321038)
-         && this.activeSkillPrepareID != 3321040
-         && this.activeSkillPrepareID != 155111306
-         && this.activeSkillPrepareID != 155121341
-         && this.activeSkillPrepareID != 3111013
-         && !this.getPlayer().checkSpiritFlow(this.activeSkillPrepareID)
-         && !GameConstants.isKeydownEndCooltimeSkill(this.activeSkillPrepareID)
-         && (!this.getPlayer().getMemorize() || !this.getPlayer().checkUnstableMemorize(2221011) || this.activeSkillPrepareID != 2221011)) {
+            && this.activeSkillPrepareID != 11121055
+            && this.activeSkillPrepareID != 11121056
+            && (this.activeSkillPrepareID < 3321035 || this.activeSkillPrepareID > 3321038)
+            && this.activeSkillPrepareID != 3321040
+            && this.activeSkillPrepareID != 155111306
+            && this.activeSkillPrepareID != 155121341
+            && this.activeSkillPrepareID != 3111013
+            && !this.getPlayer().checkSpiritFlow(this.activeSkillPrepareID)
+            && !GameConstants.isKeydownEndCooltimeSkill(this.activeSkillPrepareID)
+            && (!this.getPlayer().getMemorize() || !this.getPlayer().checkUnstableMemorize(2221011)
+                  || this.activeSkillPrepareID != 2221011)) {
          SecondaryStatEffect effect = this.getPlayer().getSkillLevelData(this.activeSkillPrepareID);
          if (effect != null) {
             int cooltimeID = this.activeSkillPrepareID;
@@ -1382,9 +1435,8 @@ public class CommonJob implements BasicJob {
 
       Skill skill = SkillFactory.getSkill(this.activeSkillPrepareID);
       if (this.activeSkillPrepareSLV > 0
-         && (this.activeSkillPrepareID == 400051040 || this.activeSkillPrepareID == 33101005 || this.activeSkillPrepareID == 22171083 || skill.isChargeSkill())
-         )
-       {
+            && (this.activeSkillPrepareID == 400051040 || this.activeSkillPrepareID == 33101005
+                  || this.activeSkillPrepareID == 22171083 || skill.isChargeSkill())) {
          this.player.setKeyDownSkill_Time(System.currentTimeMillis());
          if (this.activeSkillPrepareID == 33101005) {
             this.player.setLinkMid(slea.readInt(), 0);
@@ -1395,9 +1447,10 @@ public class CommonJob implements BasicJob {
          }
 
          if ((this.activeSkillPrepareID == 155111306 || this.activeSkillPrepareID == 155121341)
-            && (Integer)this.player.getJobField("specterStateCount") > 0
-            && this.player.getBuffedValue(SecondaryStatFlag.SpectralForm) == null) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(155101006).getEffect(this.player.getTotalSkillLevel(155101006));
+               && (Integer) this.player.getJobField("specterStateCount") > 0
+               && this.player.getBuffedValue(SecondaryStatFlag.SpectralForm) == null) {
+            SecondaryStatEffect eff = SkillFactory.getSkill(155101006)
+                  .getEffect(this.player.getTotalSkillLevel(155101006));
             if (eff != null) {
                eff.applyTo(this.player);
             }
@@ -1406,7 +1459,8 @@ public class CommonJob implements BasicJob {
          if (this.activeSkillPrepareID == 400051040) {
             this.player.temporaryStatSet(400051040, 3000, SecondaryStatFlag.indiePartialNotDamaged, 1);
             long cool = this.player.getCooldownLimit(5221013);
-            SecondaryStatEffect eff = SkillFactory.getSkill(400051040).getEffect(this.player.getTotalSkillLevel(400051040));
+            SecondaryStatEffect eff = SkillFactory.getSkill(400051040)
+                  .getEffect(this.player.getTotalSkillLevel(400051040));
             if (eff != null && cool < eff.getW() * 1000L) {
                this.player.giveCoolDowns(5221013, System.currentTimeMillis(), eff.getW() * 1000);
                this.player.send(CField.skillCooldown(5221013, eff.getW() * 1000));
@@ -1422,14 +1476,16 @@ public class CommonJob implements BasicJob {
          }
 
          if (this.activeSkillPrepareID == 37121052) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID).getEffect(this.activeSkillPrepareSLV);
+            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID)
+                  .getEffect(this.activeSkillPrepareSLV);
             if (eff != null) {
                this.player.temporaryStatSet(37121052, eff.getSubTime(), SecondaryStatFlag.RWMagnumBlow, 1);
             }
          }
 
          if (this.activeSkillPrepareID == 3321036 || this.activeSkillPrepareID == 3321038) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID).getEffect(this.activeSkillPrepareSLV);
+            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID)
+                  .getEffect(this.activeSkillPrepareSLV);
             if (eff != null) {
                Map<SecondaryStatFlag, Integer> statups = new HashMap<>();
                statups.put(SecondaryStatFlag.indieDamReduceR, Integer.valueOf(eff.getIndieDamReduceR()));
@@ -1438,8 +1494,10 @@ public class CommonJob implements BasicJob {
             }
          }
 
-         if (this.activeSkillPrepareID >= 3321035 && this.activeSkillPrepareID <= 3321038 || this.activeSkillPrepareID == 3321040) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID).getEffect(this.activeSkillPrepareSLV);
+         if (this.activeSkillPrepareID >= 3321035 && this.activeSkillPrepareID <= 3321038
+               || this.activeSkillPrepareID == 3321040) {
+            SecondaryStatEffect eff = SkillFactory.getSkill(this.activeSkillPrepareID)
+                  .getEffect(this.activeSkillPrepareSLV);
             if (eff != null && this.player.getRelicCharge() >= eff.getForceCon()) {
                this.player.startAncientAstraTask(this.activeSkillPrepareID, eff.getForceCon());
             }
@@ -1487,8 +1545,10 @@ public class CommonJob implements BasicJob {
    @Override
    public void activeSkillCancel() {
       Skill skill = SkillFactory.getSkill(this.getActiveSkillID());
-      if (!this.player.checkSpiritFlow(this.getActiveSkillID()) && GameConstants.isKeydownEndCooltimeSkill(this.getActiveSkillID())) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(this.getActiveSkillID()).getEffect(this.player.getTotalSkillLevel(this.getActiveSkillID()));
+      if (!this.player.checkSpiritFlow(this.getActiveSkillID())
+            && GameConstants.isKeydownEndCooltimeSkill(this.getActiveSkillID())) {
+         SecondaryStatEffect eff = SkillFactory.getSkill(this.getActiveSkillID())
+               .getEffect(this.player.getTotalSkillLevel(this.getActiveSkillID()));
          if (eff != null) {
             int cooldown = eff.getCooldown(this.player);
             this.player.giveCoolDowns(this.getActiveSkillID(), System.currentTimeMillis(), cooldown);
@@ -1501,7 +1561,8 @@ public class CommonJob implements BasicJob {
             this.getPlayer().temporaryStatResetBySkillID(2221011);
          }
 
-         if (skill.getEffect(1) != null && (skill.getEffect(1).isMonsterRiding() || skill.getEffect(1).isMonsterRiding_())) {
+         if (skill.getEffect(1) != null
+               && (skill.getEffect(1).isMonsterRiding() || skill.getEffect(1).isMonsterRiding_())) {
             this.player.temporaryStatResetBySkillID(80001242);
          }
 
@@ -1514,7 +1575,8 @@ public class CommonJob implements BasicJob {
 
          if (this.getActiveSkillID() == 63001004) {
             if (this.player.getGrapplingWireX() > 0) {
-               this.player.getMap().broadcastMessage(this.player, CField.skillCancel(this.player, this.getActiveSkillID()), false);
+               this.player.getMap().broadcastMessage(this.player,
+                     CField.skillCancel(this.player, this.getActiveSkillID()), false);
                this.player.setGrapplingWireX(0);
             } else {
                this.player.setGrapplingWireX(1);
@@ -1523,7 +1585,8 @@ public class CommonJob implements BasicJob {
 
          if (skill.isChargeSkill() && this.getActiveSkillID() != 4341052) {
             this.player.setKeyDownSkill_Time(0L);
-            this.player.getMap().broadcastMessage(this.player, CField.skillCancel(this.player, this.getActiveSkillID()), false);
+            this.player.getMap().broadcastMessage(this.player, CField.skillCancel(this.player, this.getActiveSkillID()),
+                  false);
          } else if (this.getActiveSkillID() == 13101022) {
             this.player.temporaryStatReset(SecondaryStatFlag.TriflingWhimOnOff);
          } else {
@@ -1546,7 +1609,8 @@ public class CommonJob implements BasicJob {
             }
 
             if (this.getActiveSkillID() == 2111011) {
-               SecondaryStatEffect real = SkillFactory.getSkill(2111011).getEffect(this.getPlayer().getSkillLevel(2111011));
+               SecondaryStatEffect real = SkillFactory.getSkill(2111011)
+                     .getEffect(this.getPlayer().getSkillLevel(2111011));
                if (real != null) {
                   this.getPlayer().send(CField.skillCooldown(2111011, real.getCooldown(this.getPlayer())));
                   this.getPlayer().addCooldown(2111011, System.currentTimeMillis(), real.getCooldown(this.getPlayer()));
@@ -1554,7 +1618,7 @@ public class CommonJob implements BasicJob {
             }
 
             if (this.getActiveSkillID() == 400001012) {
-               int[] skills = new int[]{3111005, 3211005, 3311009};
+               int[] skills = new int[] { 3111005, 3211005, 3311009 };
 
                for (int skillID : skills) {
                   SecondaryStatEffect e = this.player.getSkillLevelData(skillID);
@@ -1604,21 +1668,24 @@ public class CommonJob implements BasicJob {
       if (GameConstants.isBlessStackSkill(linked5thSkill)) {
          Integer buffValue = this.getPlayer().getBuffedValue(SecondaryStatFlag.EmpressBlessStack);
          if (buffValue != null && buffValue > 0) {
-            this.getPlayer().temporaryStatSet(SecondaryStatFlag.EmpressBlessStack, linked5thSkill, Integer.MAX_VALUE, buffValue - 1);
+            this.getPlayer().temporaryStatSet(SecondaryStatFlag.EmpressBlessStack, linked5thSkill, Integer.MAX_VALUE,
+                  buffValue - 1);
          }
       }
 
       if (this.activeSkillID == 400011000) {
          Integer buffValue = this.getPlayer().getBuffedValue(SecondaryStatFlag.AuraWeaponStack);
          if (buffValue != null && buffValue > 0) {
-            this.getPlayer().temporaryStatSet(SecondaryStatFlag.AuraWeaponStack, linked5thSkill, Integer.MAX_VALUE, buffValue - 1);
+            this.getPlayer().temporaryStatSet(SecondaryStatFlag.AuraWeaponStack, linked5thSkill, Integer.MAX_VALUE,
+                  buffValue - 1);
          }
       }
 
       if (this.activeSkillID == 400001037) {
          Integer buffValue = this.getPlayer().getBuffedValue(SecondaryStatFlag.MagicCircuitFullDriveStack);
          if (buffValue != null && buffValue > 0) {
-            this.getPlayer().temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, linked5thSkill, Integer.MAX_VALUE, buffValue - 1);
+            this.getPlayer().temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, linked5thSkill,
+                  Integer.MAX_VALUE, buffValue - 1);
          }
       }
 
@@ -1646,20 +1713,20 @@ public class CommonJob implements BasicJob {
                      atomInfo.initShieldChasing(this.getPlayer().getForceAtomKey());
                      this.getPlayer().initShieldChasingCount(this.getPlayer().getAndAddForceAtomKey());
                      ForceAtom atom = new ForceAtom(
-                        atomInfo, 31221014, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.MEGIDDO_FLAME, moblist, 2
-                     );
+                           atomInfo, 31221014, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                           ForceAtom.AtomType.MEGIDDO_FLAME, moblist, 2);
                      this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                   } else if (this.activeSkillID == 31241000) {
                      atomInfo.initShieldChasing(this.getPlayer().getForceAtomKey());
                      this.getPlayer().initShieldChasingCount(this.getPlayer().getAndAddForceAtomKey());
                      ForceAtom atom = new ForceAtom(
-                        atomInfo, 31221014, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.DAShieldChasing2_1, moblist, 2
-                     );
+                           atomInfo, 31221014, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                           ForceAtom.AtomType.DAShieldChasing2_1, moblist, 2);
                      this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                   } else if (this.activeSkillID == 36001005) {
                      ForceAtom atom = new ForceAtom(
-                        atomInfo, 36001005, this.getPlayer().getId(), false, true, moblist.get(0), ForceAtom.AtomType.PIN_POINT_ROCKET, moblist, moblist.size()
-                     );
+                           atomInfo, 36001005, this.getPlayer().getId(), false, true, moblist.get(0),
+                           ForceAtom.AtomType.PIN_POINT_ROCKET, moblist, moblist.size());
                      this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                   } else if (this.activeSkillID != 2121052) {
                      if (this.activeSkillID == 35101002 || this.activeSkillID == 35110017) {
@@ -1696,16 +1763,15 @@ public class CommonJob implements BasicJob {
                         }
 
                         ForceAtom atom = new ForceAtom(
-                           atomInfo,
-                           this.activeSkillID,
-                           this.getPlayer().getId(),
-                           false,
-                           true,
-                           this.getPlayer().getId(),
-                           ForceAtom.AtomType.HOMING_MISILE,
-                           moblist,
-                           bulletCount
-                        );
+                              atomInfo,
+                              this.activeSkillID,
+                              this.getPlayer().getId(),
+                              false,
+                              true,
+                              this.getPlayer().getId(),
+                              ForceAtom.AtomType.HOMING_MISILE,
+                              moblist,
+                              bulletCount);
                         this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                      }
                   } else {
@@ -1715,14 +1781,13 @@ public class CommonJob implements BasicJob {
 
                      for (int ix = 0; ix < 3; ix++) {
                         SecondAtom.Atom a = new SecondAtom.Atom(
-                           this.getPlayer().getMap(),
-                           this.getPlayer().getId(),
-                           2121052,
-                           ForceAtom.SN.getAndAdd(1),
-                           SecondAtom.SecondAtomType.MegiddoFlame,
-                           0,
-                           null
-                        );
+                              this.getPlayer().getMap(),
+                              this.getPlayer().getId(),
+                              2121052,
+                              ForceAtom.SN.getAndAdd(1),
+                              SecondAtom.SecondAtomType.MegiddoFlame,
+                              0,
+                              null);
                         SecondAtomData.atom at = data.getAtoms().get(ix);
                         a.setPlayerID(this.getPlayer().getId());
                         a.setTargetObjectID(moblist.get(Math.min(ix, moblist.size() - 1)));
@@ -1733,7 +1798,8 @@ public class CommonJob implements BasicJob {
                         a.setUnk4(1);
                         a.setAttackableCount(1);
                         a.setSkillID(2121052);
-                        a.setPos(new Point(this.player.getTruePosition().x + at.getPos().x, this.player.getTruePosition().y + at.getPos().y));
+                        a.setPos(new Point(this.player.getTruePosition().x + at.getPos().x,
+                              this.player.getTruePosition().y + at.getPos().y));
                         this.getPlayer().addSecondAtom(a);
                         atoms.add(a);
                         this.getPlayer().setBlackJackCount(this.getPlayer().getBlackJackCount() + 1);
@@ -1748,9 +1814,9 @@ public class CommonJob implements BasicJob {
                break;
             } catch (Exception var14) {
                System.out
-                  .println(
-                     "[오류] useSkillRequest 함수 실행중 오류 발생 (캐릭터 이름 : " + this.getPlayer().getName() + ", 스킬 ID : " + this.activeSkillID + ") " + var14.toString()
-                  );
+                     .println(
+                           "[Error] Error executing useSkillRequest (Character Name: " + this.getPlayer().getName()
+                                 + ", Skill ID : " + this.activeSkillID + ") " + var14.toString());
                var14.printStackTrace();
             }
          case 4221052:
@@ -1772,17 +1838,16 @@ public class CommonJob implements BasicJob {
             ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
             info.initCardinalDischarge(this.getActiveSkillID() == 3321003 ? 2 : 1);
             ForceAtom forceAtom = new ForceAtom(
-               info,
-               this.getActiveSkillID(),
-               this.getPlayer().getId(),
-               false,
-               true,
-               this.getPlayer().getId(),
-               ForceAtom.AtomType.CARDINAL_DISCHARGE,
-               targets,
-               targetSize,
-               new Point(-70, 10)
-            );
+                  info,
+                  this.getActiveSkillID(),
+                  this.getPlayer().getId(),
+                  false,
+                  true,
+                  this.getPlayer().getId(),
+                  ForceAtom.AtomType.CARDINAL_DISCHARGE,
+                  targets,
+                  targetSize,
+                  new Point(-70, 10));
             this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             this.getPlayer().handleRelicChargeCon(this.getActiveSkillID(), -1, 0);
             break;
@@ -1810,13 +1875,12 @@ public class CommonJob implements BasicJob {
                if (mob != null) {
                   mob.switchController(this.getPlayer(), mob.isControllerHasAggro());
                   mob.applyStatus(
-                     this.getPlayer(),
-                     new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, this.activeSkillID, null, false),
-                     false,
-                     effect.getDuration(),
-                     true,
-                     effect
-                  );
+                        this.getPlayer(),
+                        new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, this.activeSkillID, null, false),
+                        false,
+                        effect.getDuration(),
+                        true,
+                        effect);
                }
             }
 
@@ -1831,7 +1895,8 @@ public class CommonJob implements BasicJob {
             int mobID = packet.readInt();
             MapleMonster mob = this.getPlayer().getMap().getMonsterByOid(mobID);
             int result = 0;
-            if (mob == null || mob.getStats().isBoss() || !mob.isAlive() || mob.getStats().getLevel() > this.getPlayer().getLevel()) {
+            if (mob == null || mob.getStats().isBoss() || !mob.isAlive()
+                  || mob.getStats().getLevel() > this.getPlayer().getLevel()) {
                result = 2;
             } else if (mob.getHPPercent() > effect.getX()) {
                result = 1;
@@ -1852,14 +1917,16 @@ public class CommonJob implements BasicJob {
                }
 
                this.getPlayer().getMap().broadcastMessage(MobPacket.catchMonster(mobID, true, true));
-               this.getPlayer().getMap().killMonster(mob, this.getPlayer(), true, false, (byte)1);
-               this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.WILD_HUNTER_INFO.getFlag());
+               this.getPlayer().getMap().killMonster(mob, this.getPlayer(), true, false, (byte) 1);
+               this.getPlayer()
+                     .setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.WILD_HUNTER_INFO.getFlag());
                this.getPlayer().send(CWvsContext.updateJaguar(this.getPlayer()));
             }
 
             PacketEncoder e = new PacketEncoder();
             e.write(result);
-            SkillEffect eff = new SkillEffect(this.getPlayer().getId(), this.getPlayer().getLevel(), this.activeSkillID, this.activeSkillLevel, e);
+            SkillEffect eff = new SkillEffect(this.getPlayer().getId(), this.getPlayer().getLevel(), this.activeSkillID,
+                  this.activeSkillLevel, e);
             this.getPlayer().send(eff.encodeForLocal());
             this.getPlayer().getMap().broadcastMessage(this.getPlayer(), eff.encodeForRemote(), false);
             effect.applyTo(this.getPlayer(), true);
@@ -1873,13 +1940,13 @@ public class CommonJob implements BasicJob {
             }
 
             monster.applyStatus(
-               this.getPlayer(),
-               new MobTemporaryStatEffect(MobTemporaryStatFlag.DAZZLE, this.getPlayer().getId(), this.activeSkillID, null, false),
-               false,
-               effect.getDuration(),
-               true,
-               effect
-            );
+                  this.getPlayer(),
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.DAZZLE, this.getPlayer().getId(), this.activeSkillID,
+                        null, false),
+                  false,
+                  effect.getDuration(),
+                  true,
+                  effect);
             effect.applyTo(this.getPlayer(), true);
             break;
          case 80002758:
@@ -1894,7 +1961,8 @@ public class CommonJob implements BasicJob {
             this.getPlayer().temporaryStatReset(SecondaryStatFlag.KaringDisruptDeBuff);
             break;
          case 80003261:
-            this.getPlayer().temporaryStatSet(80003261, effect.getDuration(), SecondaryStatFlag.Karing3PhaseLightOfWill, 1);
+            this.getPlayer().temporaryStatSet(80003261, effect.getDuration(), SecondaryStatFlag.Karing3PhaseLightOfWill,
+                  1);
             break;
          case 160001075:
          case 160011075:
@@ -1914,14 +1982,13 @@ public class CommonJob implements BasicJob {
             SecondaryStatEffect level = this.getPlayer().getSkillLevelData(400001061);
             if (level != null) {
                Summoned s = new Summoned(
-                  this.getPlayer(),
-                  400001061,
-                  this.getActiveSkillLevel(),
-                  position,
-                  SummonMoveAbility.STATIONARY,
-                  direction,
-                  System.currentTimeMillis() + level.getDuration()
-               );
+                     this.getPlayer(),
+                     400001061,
+                     this.getActiveSkillLevel(),
+                     position,
+                     SummonMoveAbility.STATIONARY,
+                     direction,
+                     System.currentTimeMillis() + level.getDuration());
                this.getPlayer().getMap().spawnSummon(s, level.getDuration());
                this.getPlayer().addSummon(s);
                this.getPlayer().temporaryStatSet(SecondaryStatFlag.LotusFlower, 400001062, Integer.MAX_VALUE, 1);
@@ -1933,14 +2000,13 @@ public class CommonJob implements BasicJob {
             position = new Point(packet.readShort(), packet.readShort());
             if (summon == null) {
                summon = new Summoned(
-                  this.getPlayer(),
-                  this.getActiveSkillID(),
-                  this.getActiveSkillLevel(),
-                  position,
-                  SummonMoveAbility.STATIONARY,
-                  (byte)1,
-                  System.currentTimeMillis() + erdaEffect.getDuration()
-               );
+                     this.getPlayer(),
+                     this.getActiveSkillID(),
+                     this.getActiveSkillLevel(),
+                     position,
+                     SummonMoveAbility.STATIONARY,
+                     (byte) 1,
+                     System.currentTimeMillis() + erdaEffect.getDuration());
             } else {
                this.getPlayer().getMap().broadcastMessage(CField.SummonPacket.removeSummon(summon, true));
                this.getPlayer().getMap().removeMapObject(summon);
@@ -1972,7 +2038,8 @@ public class CommonJob implements BasicJob {
                      statups.put(SecondaryStatFlag.indieEvasion, effect.getW());
                      statups.put(SecondaryStatFlag.indieIncreaseHitDamage, effect.getS());
                      statups.put(SecondaryStatFlag.indiePMDR, effect.getQ());
-                     int remain = (int)(this.getPlayer().getSecondaryStat().getTill(SecondaryStatFlag.ReadyToDie) - System.currentTimeMillis()) / 2;
+                     int remain = (int) (this.getPlayer().getSecondaryStat().getTill(SecondaryStatFlag.ReadyToDie)
+                           - System.currentTimeMillis()) / 2;
                      duration = remain;
                      break;
                   default:
@@ -2046,21 +2113,22 @@ public class CommonJob implements BasicJob {
 
                   int mountid = SecondaryStatEffect.parseMountInfo(this.getPlayer(), skill.getId());
                   if (skill.getId() / 10000 != 8000
-                     && skill.getId() != 400031017
-                     && skill.getId() != 500061050
-                     && skill.getId() != 35111003
-                     && mountid != 0
-                     && mountid != GameConstants.getMountItem(skill.getId(), this.getPlayer())
-                     && !this.getPlayer().isIntern()
-                     && this.getPlayer().getBuffedValue(SecondaryStatFlag.RideVehicle) == null
-                     && this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-118) == null
-                     && !GameConstants.isMountItemAvailable(mountid, this.getPlayer().getJob())) {
+                        && skill.getId() != 400031017
+                        && skill.getId() != 500061050
+                        && skill.getId() != 35111003
+                        && mountid != 0
+                        && mountid != GameConstants.getMountItem(skill.getId(), this.getPlayer())
+                        && !this.getPlayer().isIntern()
+                        && this.getPlayer().getBuffedValue(SecondaryStatFlag.RideVehicle) == null
+                        && this.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -118) == null
+                        && !GameConstants.isMountItemAvailable(mountid, this.getPlayer().getJob())) {
                      this.getPlayer().send(CWvsContext.enableActions(this.getPlayer(), this.exclusive));
                      return;
                   }
 
                   Integer targetID = this.getPlayer().getBuffedValue(SecondaryStatFlag.HolyUnity);
-                  if (skill.isPairSkill() && targetID != null && skill.getId() != 400011003 && skill.getId() != 500061000 && skill.getId() != 1221054) {
+                  if (skill.isPairSkill() && targetID != null && skill.getId() != 400011003
+                        && skill.getId() != 500061000 && skill.getId() != 1221054) {
                      MapleCharacter target = this.getPlayer().getMap().getCharacterById(targetID);
                      if (target != null) {
                         effect.applyTo(target, pos);
@@ -2072,7 +2140,7 @@ public class CommonJob implements BasicJob {
                   }
                }
             } else {
-               effect.applyTo(this.getPlayer(), this.getPlayer().getTruePosition(), (byte)0, this.exclusive);
+               effect.applyTo(this.getPlayer(), this.getPlayer().getTruePosition(), (byte) 0, this.exclusive);
             }
       }
    }
@@ -2142,7 +2210,7 @@ public class CommonJob implements BasicJob {
       this.updateMobSkills();
       if (this.player.hasBuffBySkillID(80003224) || this.player.hasBuffBySkillID(150030241)) {
          int skill = 0;
-         int[] skillList = new int[]{150030241, 80003224};
+         int[] skillList = new int[] { 150030241, 80003224 };
 
          for (int s : skillList) {
             if (this.getPlayer().getTotalSkillLevel(s) > 0) {
@@ -2154,15 +2222,16 @@ public class CommonJob implements BasicJob {
          SecondaryStatEffect level = this.getPlayer().getSkillLevelData(skill);
          if (level != null) {
             int x = level.getX();
-            int hp = (int)(this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * x);
-            int mp = (int)(this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * 0.01 * x);
+            int hp = (int) (this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * x);
+            int mp = (int) (this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * 0.01 * x);
             this.getPlayer().addMPHP(hp, mp);
             PacketEncoder packetEncoder = new PacketEncoder();
             packetEncoder.writeInt(0);
             packetEncoder.writeInt(0);
             packetEncoder.writeInt(0);
             packetEncoder.writeInt(0);
-            SkillEffect e = new SkillEffect(this.player.getId(), this.player.getLevel(), skill, this.getPlayer().getTotalSkillLevel(skill), packetEncoder);
+            SkillEffect e = new SkillEffect(this.player.getId(), this.player.getLevel(), skill,
+                  this.getPlayer().getTotalSkillLevel(skill), packetEncoder);
             this.player.send(e.encodeForLocal());
             this.player.getMap().broadcastMessage(this.player, e.encodeForRemote(), false);
          }
@@ -2173,7 +2242,8 @@ public class CommonJob implements BasicJob {
          if (eff != null) {
             if (eff.getSourceId() == 400001043 || eff.getSourceId() == 400001044) {
                if (this.player.checkInterval(this.player.getLastEmpressCygnussBlessTime(), eff.getX() * 1000)) {
-                  IndieTemporaryStatEntry entry = this.player.getIndieTemporaryStat(SecondaryStatFlag.indieDamR, 400001043);
+                  IndieTemporaryStatEntry entry = this.player.getIndieTemporaryStat(SecondaryStatFlag.indieDamR,
+                        400001043);
                   if (eff.getSourceId() == 400001044) {
                      entry = this.player.getIndieTemporaryStat(SecondaryStatFlag.indieDamR, 400001044);
                   }
@@ -2184,7 +2254,8 @@ public class CommonJob implements BasicJob {
                   }
 
                   v = Math.min(eff.getW(), v + eff.getDamage());
-                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                        this.player.getSecondaryStat());
                   if (eff.getSourceId() == 400001043) {
                      statManager.changeStatValue(SecondaryStatFlag.indieDamR, 400001043, v);
                   } else {
@@ -2192,7 +2263,7 @@ public class CommonJob implements BasicJob {
                   }
 
                   statManager.temporaryStatSet();
-                  int hp = (int)(this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * eff.getQ());
+                  int hp = (int) (this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * eff.getQ());
                   this.player.healHP(hp);
                   this.player.setLastEmpressCygnussBlessTime(System.currentTimeMillis());
                }
@@ -2201,13 +2272,14 @@ public class CommonJob implements BasicJob {
                if (ss.EmpressBlessX == 400001051 || ss.EmpressBlessX == 400001055) {
                   if (ss.EmpressBlessX == 400001051) {
                      if (GameConstants.isDemonSlayer(this.player.getJob())) {
-                        int mp = (int)(this.player.getStat().getCurrentMaxMp(this.player) * 0.01 * eff.getY());
+                        int mp = (int) (this.player.getStat().getCurrentMaxMp(this.player) * 0.01 * eff.getY());
                         this.player.addMP(mp, true);
                      } else if (GameConstants.isKinesis(this.player.getJob())) {
-                        int pp = (int)(((Integer)this.player.getJobField("MaxPPoint")).intValue() * 0.01 * eff.getY());
+                        int pp = (int) (((Integer) this.player.getJobField("MaxPPoint")).intValue() * 0.01
+                              * eff.getY());
                         this.player.invokeJobMethod("gainPP", pp);
                      } else {
-                        int hp = (int)(this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * eff.getY());
+                        int hp = (int) (this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * eff.getY());
                         this.player.healHP(hp, true);
                      }
                   } else {
@@ -2215,13 +2287,14 @@ public class CommonJob implements BasicJob {
                   }
 
                   ss.EmpressBlessX = 0;
-                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                        this.player.getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.EmpressBless, 400001050, 1);
                   statManager.temporaryStatSet();
                }
 
                if (this.player.checkInterval(this.player.getLastEmpressCygnussBlessTime(), eff.getX() * 1000)) {
-                  int[] skills = new int[]{400001051, 400001053, 400001054, 400001055};
+                  int[] skills = new int[] { 400001051, 400001053, 400001054, 400001055 };
                   int skill = skills[Randomizer.rand(0, skills.length - 1)];
                   PacketEncoder p = new PacketEncoder();
                   p.write(true);
@@ -2230,7 +2303,8 @@ public class CommonJob implements BasicJob {
                   this.player.getMap().broadcastMessage(this.player, e.encodeForRemote(), false);
                   this.player.setLastEmpressCygnussBlessTime(System.currentTimeMillis());
                   ss.EmpressBlessX = skill;
-                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                        this.player.getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.EmpressBless, 400001050, 1);
                   statManager.temporaryStatSet();
                }
@@ -2239,14 +2313,16 @@ public class CommonJob implements BasicJob {
       }
 
       if (this.getPlayer().hasBuffBySkillID(2311003)
-         && this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HolySymbol, 0) != (DBConfig.isGanglim ? 75 : 150)) {
+            && this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HolySymbol,
+                  0) != (DBConfig.isGanglim ? 75 : 150)) {
          SecondaryStatEffect effect = this.getPlayer().getBuffedEffect(SecondaryStatFlag.HolySymbol);
          if (effect != null && this.getPlayer().getId() != this.holySymbolUserID) {
             MapleCharacter owner = this.getPlayer().getMap().getCharacterById(this.holySymbolUserID);
             if (this.holySymbolActive) {
                boolean bBuffDecrease = false;
                if (owner != null) {
-                  if (owner.getParty() != null && this.getPlayer().getParty() != null && owner.getParty().getId() == this.getPlayer().getParty().getId()) {
+                  if (owner.getParty() != null && this.getPlayer().getParty() != null
+                        && owner.getParty().getId() == this.getPlayer().getParty().getId()) {
                      Rectangle rect = effect.calculateBoundingBox(owner.getTruePosition(), owner.isFacingLeft());
                      if (!rect.contains(this.getPlayer().getTruePosition())) {
                         bBuffDecrease = true;
@@ -2262,10 +2338,12 @@ public class CommonJob implements BasicJob {
                   this.holySymbolDecrease = true;
                   this.holySymbolActive = false;
                   this.holySymbolDropR = 0;
-                  SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(), this.getPlayer().getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(),
+                        this.getPlayer().getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.HolySymbol, 2311003, effect.getX() / 2);
                   statManager.temporaryStatSet();
-                  this.getPlayer().send(CWvsContext.InfoPacket.brownMessage("홀리 심볼을 시전한 캐릭터의 근처를 벗어났습니다."));
+                  this.getPlayer().send(CWvsContext.InfoPacket
+                        .brownMessage("You have left the area of the character who cast Holy Symbol."));
                }
             } else {
                boolean bBuffIncrease = false;
@@ -2280,10 +2358,12 @@ public class CommonJob implements BasicJob {
                   this.holySymbolDecrease = false;
                   this.holySymbolActive = true;
                   this.holySymbolDropR = owner.getSkillLevelDataOne(2320048, SecondaryStatEffect::getV);
-                  SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(), this.getPlayer().getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(),
+                        this.getPlayer().getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.HolySymbol, 2311003, effect.getX());
                   statManager.temporaryStatSet();
-                  this.getPlayer().send(CWvsContext.InfoPacket.brownMessage("홀리 심볼을 시전한 캐릭터의 근처에 들어왔습니다."));
+                  this.getPlayer().send(CWvsContext.InfoPacket
+                        .brownMessage("You have entered the area of the character who cast Holy Symbol."));
                }
             }
          }
@@ -2301,13 +2381,14 @@ public class CommonJob implements BasicJob {
                   if (player.getBuffedValueDefault(SecondaryStatFlag.MichaelSoulLink, 0) != playerList.size()) {
                      this.michaelSoulLink = 1;
                      this.michaelSoulLinkX = playerList.size();
-                     SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(), this.getPlayer().getSecondaryStat());
+                     SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(),
+                           this.getPlayer().getSecondaryStat());
                      statManager.changeStatValue(SecondaryStatFlag.MichaelSoulLink, 51111008, playerList.size());
                      statManager.temporaryStatSet();
                      player.temporaryStatSet(SecondaryStatFlag.indieDamR, 51111008, Integer.MAX_VALUE, value);
                   }
                } else if (!player.hasBuffBySkillID(51111008)) {
-                  int totalPAD = (Integer)this.getPlayer().getJobField("royalGuardState");
+                  int totalPAD = (Integer) this.getPlayer().getJobField("royalGuardState");
                   int pad = totalPAD * eff.getX() / 100;
                   int mad = totalPAD * eff.getX() / 100;
                   int asrR = 0;
@@ -2328,7 +2409,8 @@ public class CommonJob implements BasicJob {
                   player.setJobField("michaelSoulLink", 0);
                   player.setJobField("michaelSoulLinkY", eff.getQ());
                   player.setJobField("michaelSoulLinkX", 0);
-                  SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                        player.getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.MichaelSoulLink, 51111008, playerList.size());
                   statManager.temporaryStatSet();
                   statups.put(SecondaryStatFlag.indiePAD, pad);
@@ -2343,13 +2425,16 @@ public class CommonJob implements BasicJob {
 
       SecondaryStatEffect crossOverChain = this.getPlayer().getBuffedEffect(SecondaryStatFlag.CrossOverChain);
       if (crossOverChain != null) {
-         int remainHP = (int)(this.player.getStat().getCurrentMaxHp() - this.player.getStat().getHp());
-         int crossOverChainX = Math.min(crossOverChain.getZ(), (int)(remainHP * crossOverChain.getY() / 100.0));
-         int value = (int)(this.player.getStat().getHPPercent() / 2.5);
-         if (this.crossOverChainX != crossOverChainX || this.player.getBuffedValueDefault(SecondaryStatFlag.CrossOverChain, 0) != value) {
+         int remainHP = (int) (this.player.getStat().getCurrentMaxHp() - this.player.getStat().getHp());
+         int crossOverChainX = Math.min(crossOverChain.getZ(), (int) (remainHP * crossOverChain.getY() / 100.0));
+         int value = (int) (this.player.getStat().getHPPercent() / 2.5);
+         if (this.crossOverChainX != crossOverChainX
+               || this.player.getBuffedValueDefault(SecondaryStatFlag.CrossOverChain, 0) != value) {
             this.crossOverChainX = crossOverChainX;
-            SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(), this.getPlayer().getSecondaryStat());
-            statManager.changeStatValue(SecondaryStatFlag.CrossOverChain, 1311015, Math.min(crossOverChain.getX(), value));
+            SecondaryStatManager statManager = new SecondaryStatManager(this.getPlayer().getClient(),
+                  this.getPlayer().getSecondaryStat());
+            statManager.changeStatValue(SecondaryStatFlag.CrossOverChain, 1311015,
+                  Math.min(crossOverChain.getX(), value));
             statManager.temporaryStatSet();
          }
       }
@@ -2364,18 +2449,19 @@ public class CommonJob implements BasicJob {
       }
 
       Integer value;
-      if ((value = this.player.getBuffedValue(SecondaryStatFlag.DotHealMPPerSecondR)) != null && this.player.getStat().getHp() > 0L) {
-         int hp = (int)(this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * value.intValue());
+      if ((value = this.player.getBuffedValue(SecondaryStatFlag.DotHealMPPerSecondR)) != null
+            && this.player.getStat().getHp() > 0L) {
+         int hp = (int) (this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * value.intValue());
          this.player.addHP(hp, false);
       }
 
       if ((value = this.player.getBuffedValue(SecondaryStatFlag.DotHealHPPerSecondR)) != null) {
-         int mp = (int)(this.player.getStat().getCurrentMaxMp(this.player) * 0.01 * value.intValue());
+         int mp = (int) (this.player.getStat().getCurrentMaxMp(this.player) * 0.01 * value.intValue());
          this.player.addMP(mp);
       }
 
       if ((value = this.player.getBuffedValue(SecondaryStatFlag.RandAreaAttack)) != null
-         && this.player.checkInterval(this.player.getLastRandomAreaAttackTime(), value * 1000)) {
+            && this.player.checkInterval(this.player.getLastRandomAreaAttackTime(), value * 1000)) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.USER_RAND_AREA_ATTACK_REQUEST.getValue());
          packet.writeInt(80001762);
@@ -2470,20 +2556,21 @@ public class CommonJob implements BasicJob {
          if (effect != null) {
             this.player.setAutoChargeSkillID(400021086);
             this.player.setAutoChargeMaxStack(effect.getY());
-            this.player.setAutoChargeCycle((int)(effect.getT() * 1000.0));
+            this.player.setAutoChargeCycle((int) (effect.getT() * 1000.0));
          }
       }
 
       if (this.player.getAutoChargeSkillID() != 0
-         && (this.player.getLastAutoChargeTime() == 0L || System.currentTimeMillis() - this.player.getLastAutoChargeTime() >= this.player.getAutoChargeCycle())
-         )
-       {
-         if (this.player.getBuffedValue(SecondaryStatFlag.AutoChargeStack) != null && this.player.getAutoChargeStack() < this.player.getAutoChargeMaxStack()) {
+            && (this.player.getLastAutoChargeTime() == 0L || System.currentTimeMillis()
+                  - this.player.getLastAutoChargeTime() >= this.player.getAutoChargeCycle())) {
+         if (this.player.getBuffedValue(SecondaryStatFlag.AutoChargeStack) != null
+               && this.player.getAutoChargeStack() < this.player.getAutoChargeMaxStack()) {
             this.player.setAutoChargeStack(this.player.getAutoChargeStack() + 1);
          }
 
          this.player
-            .temporaryStatSet(this.player.getAutoChargeSkillID(), Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack, this.player.getAutoChargeStack());
+               .temporaryStatSet(this.player.getAutoChargeSkillID(), Integer.MAX_VALUE,
+                     SecondaryStatFlag.AutoChargeStack, this.player.getAutoChargeStack());
          this.player.setLastAutoChargeTime(System.currentTimeMillis());
       }
 
@@ -2494,7 +2581,7 @@ public class CommonJob implements BasicJob {
                this.player.setLastAutoChargeTime(System.currentTimeMillis());
             }
 
-            if (this.player.checkInterval(this.player.getLastAutoChargeTime(), (int)(e.getT() * 1000.0))) {
+            if (this.player.checkInterval(this.player.getLastAutoChargeTime(), (int) (e.getT() * 1000.0))) {
                Integer value = this.player.getBuffedValue(SecondaryStatFlag.WeaponVarietyFinale);
                int v = 0;
                if (value != null) {
@@ -2502,7 +2589,8 @@ public class CommonJob implements BasicJob {
                }
 
                if (v < e.getY()) {
-                  this.player.temporaryStatSet(400041074, Integer.MAX_VALUE, SecondaryStatFlag.WeaponVarietyFinale, ++v);
+                  this.player.temporaryStatSet(400041074, Integer.MAX_VALUE, SecondaryStatFlag.WeaponVarietyFinale,
+                        ++v);
                   this.player.setLastAutoChargeTime(System.currentTimeMillis());
                }
             }
@@ -2511,12 +2599,14 @@ public class CommonJob implements BasicJob {
    }
 
    public void updateMobSkills() {
-      if (this.player.serenLaserDebuffEndTime != 0L && System.currentTimeMillis() >= this.player.serenLaserDebuffEndTime) {
+      if (this.player.serenLaserDebuffEndTime != 0L
+            && System.currentTimeMillis() >= this.player.serenLaserDebuffEndTime) {
          this.player.send(CField.blind(0, 255, 255, 255, 255, 500, 0));
          this.player.serenLaserDebuffEndTime = 0L;
       }
 
-      if (this.player.getNextDebuffIncHPTime() != 0L && System.currentTimeMillis() >= this.player.getNextDebuffIncHPTime()) {
+      if (this.player.getNextDebuffIncHPTime() != 0L
+            && System.currentTimeMillis() >= this.player.getNextDebuffIncHPTime()) {
          if (this.player.getMap() instanceof Field_WillBattle) {
             SecondaryStatEffect eff = SkillFactory.getSkill(80002404).getEffect(50);
             if (eff != null) {
@@ -2535,13 +2625,13 @@ public class CommonJob implements BasicJob {
       }
 
       if (this.player.getMap() instanceof Field_BlackMage) {
-         Field_BlackMage f = (Field_BlackMage)this.player.getMap();
+         Field_BlackMage f = (Field_BlackMage) this.player.getMap();
          Integer value = null;
          if ((value = this.player.getBuffedValue(SecondaryStatFlag.CurseOfDestruction)) != null && f != null) {
             MapleDiseaseValueHolder h = this.player.getDiseases(SecondaryStatFlag.CurseOfDestruction);
             if (h != null && h.level == 1) {
-               int hp = (int)(this.player.getStat().getCurrentMaxHp(this.player) * 0.01) * value;
-               int mp = (int)(this.player.getStat().getCurrentMaxMp(this.player) * 0.01) * value;
+               int hp = (int) (this.player.getStat().getCurrentMaxHp(this.player) * 0.01) * value;
+               int mp = (int) (this.player.getStat().getCurrentMaxMp(this.player) * 0.01) * value;
                this.player.healHP(hp);
                this.player.healMP(mp);
                if (this.player.lastCreateRedFlamesTime + 2000L <= System.currentTimeMillis()) {
@@ -2557,30 +2647,35 @@ public class CommonJob implements BasicJob {
          }
       }
 
-      if (this.player.getNextEndRemoveWebTime() != 0L && System.currentTimeMillis() >= this.player.getNextEndRemoveWebTime()) {
+      if (this.player.getNextEndRemoveWebTime() != 0L
+            && System.currentTimeMillis() >= this.player.getNextEndRemoveWebTime()) {
          this.player.setNextEndRemoveWebTime(0L);
          this.player.setWillCanRemoveWeb(0);
       }
 
-      if (this.player.getBuffedValue(SecondaryStatFlag.WillPoison) != null && this.player.getMap() instanceof Field_WillBattle) {
-         Field_WillBattle f = (Field_WillBattle)this.player.getMap();
+      if (this.player.getBuffedValue(SecondaryStatFlag.WillPoison) != null
+            && this.player.getMap() instanceof Field_WillBattle) {
+         Field_WillBattle f = (Field_WillBattle) this.player.getMap();
          f.sendWillPoisonAttack();
 
-         for (MapleCharacter p : this.player.getMap().getPlayerInRect(this.player.getTruePosition(), -200, -200, 200, 200)) {
+         for (MapleCharacter p : this.player.getMap().getPlayerInRect(this.player.getTruePosition(), -200, -200, 200,
+               200)) {
             if (p.getId() != this.player.getId()) {
-               int hp = (int)(p.getStat().getCurrentMaxHp(p) * 0.01 * 44.0);
+               int hp = (int) (p.getStat().getCurrentMaxHp(p) * 0.01 * 44.0);
                p.healHP(-hp);
             }
          }
 
-         if (this.player.getLastWillAttackTime() != 0L && System.currentTimeMillis() >= this.player.getLastWillAttackTime() + 7000L) {
+         if (this.player.getLastWillAttackTime() != 0L
+               && System.currentTimeMillis() >= this.player.getLastWillAttackTime() + 7000L) {
             this.player.addHP(-500000L);
             this.player.setLastWillAttackTime(0L);
             this.player.temporaryStatReset(SecondaryStatFlag.WillPoison);
             f.sendWillRemovePoison(this.player);
             List<MapleCharacter> players = this.player.getMap().getCharactersThreadsafe();
             Collections.shuffle(players);
-            MapleCharacter target = players.stream().filter(px -> px.getId() != this.player.getId()).filter(MapleCharacter::isAlive).findAny().orElse(null);
+            MapleCharacter target = players.stream().filter(px -> px.getId() != this.player.getId())
+                  .filter(MapleCharacter::isAlive).findAny().orElse(null);
             if (target != null) {
                f.sendWillCreatePoison(target);
                target.setLastWillAttackTime(System.currentTimeMillis());
@@ -2589,8 +2684,9 @@ public class CommonJob implements BasicJob {
          }
       }
 
-      if (this.player.getBuffedValue(SecondaryStatFlag.MobZoneState) != null && !this.player.isInvincible() && this.player.getMap() instanceof Field_Demian) {
-         int hp = (int)(this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * 5.0);
+      if (this.player.getBuffedValue(SecondaryStatFlag.MobZoneState) != null && !this.player.isInvincible()
+            && this.player.getMap() instanceof Field_Demian) {
+         int hp = (int) (this.player.getStat().getCurrentMaxHp(this.player) * 0.01 * 5.0);
          this.player.addHP(-hp);
          HPHeal e = new HPHeal(this.player.getId(), -hp);
          this.player.send(e.encodeForLocal());
@@ -2865,18 +2961,22 @@ public class CommonJob implements BasicJob {
          SecondaryStatEffect effect = this.getPlayer().getSkillLevelData(400011077);
          if (effect != null) {
             Summoned summoned = this.getPlayer().getSummonBySkillID(400011077);
-            if (summoned != null && this.getPlayer().checkInterval(this.getPlayer().getLastOrthros1(), effect.getX() * 1000)) {
+            if (summoned != null
+                  && this.getPlayer().checkInterval(this.getPlayer().getLastOrthros1(), effect.getX() * 1000)) {
                this.getPlayer().setLastOrthros1(System.currentTimeMillis());
-               this.getPlayer().send(CField.summonAssistAttackRequest(this.getPlayer().getId(), summoned.getObjectId(), 0));
+               this.getPlayer()
+                     .send(CField.summonAssistAttackRequest(this.getPlayer().getId(), summoned.getObjectId(), 0));
             }
          }
 
          effect = this.getPlayer().getSkillLevelData(400011078);
          if (effect != null) {
             Summoned summoned = this.getPlayer().getSummonBySkillID(400011078);
-            if (summoned != null && this.getPlayer().checkInterval(this.getPlayer().getLastOrthros2(), effect.getX() * 1000)) {
+            if (summoned != null
+                  && this.getPlayer().checkInterval(this.getPlayer().getLastOrthros2(), effect.getX() * 1000)) {
                this.getPlayer().setLastOrthros2(System.currentTimeMillis());
-               this.getPlayer().send(CField.summonAssistAttackRequest(this.getPlayer().getId(), summoned.getObjectId(), 0));
+               this.getPlayer()
+                     .send(CField.summonAssistAttackRequest(this.getPlayer().getId(), summoned.getObjectId(), 0));
             }
          }
       }
@@ -2907,12 +3007,16 @@ public class CommonJob implements BasicJob {
                   }
 
                   this.empericalKnowledgeX = target.getObjectId();
-                  this.getPlayer().temporaryStatSet(80002762, effect.getDuration(), SecondaryStatFlag.EmpericalKnowledge, value);
-                  if (this.getPlayer().getTotalSkillLevel(80002770) > 0 && this.getPlayer().getCooldownLimit(80002770) == 0L) {
+                  this.getPlayer().temporaryStatSet(80002762, effect.getDuration(),
+                        SecondaryStatFlag.EmpericalKnowledge, value);
+                  if (this.getPlayer().getTotalSkillLevel(80002770) > 0
+                        && this.getPlayer().getCooldownLimit(80002770) == 0L) {
                      SecondaryStatEffect e = this.getPlayer().getSkillLevelData(80002770);
                      this.getPlayer().send(CField.skillCooldown(80002770, e.getCooldown(this.getPlayer())));
-                     this.getPlayer().addCooldown(80002770, System.currentTimeMillis(), e.getCooldown(this.getPlayer()));
-                     this.getPlayer().temporaryStatSet(80002770, e.getDuration(), SecondaryStatFlag.indieDamR, e.getIndieDamR());
+                     this.getPlayer().addCooldown(80002770, System.currentTimeMillis(),
+                           e.getCooldown(this.getPlayer()));
+                     this.getPlayer().temporaryStatSet(80002770, e.getDuration(), SecondaryStatFlag.indieDamR,
+                           e.getIndieDamR());
                   }
                }
             }
@@ -2928,17 +3032,16 @@ public class CommonJob implements BasicJob {
 
          if (this.player.getStat().hpRecoverPercent > 0) {
             this.player
-               .addHP(
-                  (int)Math.min(
-                     this.player.getStat().getMaxHp(), (long)((double)this.player.getStat().getMaxHp() * this.player.getStat().hpRecoverPercent / 100.0)
-                  )
-               );
+                  .addHP(
+                        (int) Math.min(
+                              this.player.getStat().getMaxHp(), (long) ((double) this.player.getStat().getMaxHp()
+                                    * this.player.getStat().hpRecoverPercent / 100.0)));
          }
       }
 
       if (this.player.getStat().mpRecoverProp > 0
-         && !GameConstants.isDemonSlayer(this.player.getJob())
-         && Randomizer.nextInt(100) <= this.player.getStat().mpRecoverProp) {
+            && !GameConstants.isDemonSlayer(this.player.getJob())
+            && Randomizer.nextInt(100) <= this.player.getStat().mpRecoverProp) {
          this.player.healMP(this.player.getStat().mpRecover);
       }
 
@@ -2946,32 +3049,30 @@ public class CommonJob implements BasicJob {
          if (this.player.getSecondaryStatReason(SecondaryStatFlag.AranDrain) == 21101005) {
             SecondaryStatEffect eff = this.player.getBuffedEffect(SecondaryStatFlag.AranDrain);
             if (eff != null) {
-               this.player.addHP((int)Math.min((double)this.player.getStat().getMaxHp(), this.player.getStat().getMaxHp() * 0.01 * eff.getX()));
+               this.player.addHP((int) Math.min((double) this.player.getStat().getMaxHp(),
+                     this.player.getStat().getMaxHp() * 0.01 * eff.getX()));
             }
          } else {
             this.player
-               .addHP(
-                  (int)Math.min(
-                     this.player.getStat().getMaxHp(),
-                     Math.min(
-                        (long)((double)totDamage * this.player.getBuffedEffect(SecondaryStatFlag.AranDrain).getX() / 100.0),
-                        this.player.getStat().getMaxHp() / 2L
-                     )
-                  )
-               );
+                  .addHP(
+                        (int) Math.min(
+                              this.player.getStat().getMaxHp(),
+                              Math.min(
+                                    (long) ((double) totDamage
+                                          * this.player.getBuffedEffect(SecondaryStatFlag.AranDrain).getX() / 100.0),
+                                    this.player.getStat().getMaxHp() / 2L)));
          }
       }
 
       if (this.player.getSecondaryStatReason(SecondaryStatFlag.AranDrain) == 23101003) {
          this.player
-            .addMP(
-               (int)Math.min(
-                  maxmp,
-                  Math.min(
-                     (long)((double)totDamage * this.player.getBuffedEffect(SecondaryStatFlag.AranDrain).getX() / 100.0), this.player.getStat().getMaxMp() / 2L
-                  )
-               )
-            );
+               .addMP(
+                     (int) Math.min(
+                           maxmp,
+                           Math.min(
+                                 (long) ((double) totDamage
+                                       * this.player.getBuffedEffect(SecondaryStatFlag.AranDrain).getX() / 100.0),
+                                 this.player.getStat().getMaxMp() / 2L)));
       }
    }
 
@@ -2987,13 +3088,13 @@ public class CommonJob implements BasicJob {
 
       SecondaryStatEffect eff = this.player.getSkillLevelData(skillID);
       if (eff != null) {
-         int x = (int)(eff.getY() * this.player.getStat().getCurrentMaxHp(this.player) * 0.01);
+         int x = (int) (eff.getY() * this.player.getStat().getCurrentMaxHp(this.player) * 0.01);
          this.player.temporaryStatSet(skillID, eff.getDuration(), SecondaryStatFlag.indieDotHeal, x);
       }
    }
 
    public void onLuckyDice(SecondaryStatEffect effect) {
-      String skillName = "더블 럭키 다이스";
+      String skillName = "Double Lucky Dice";
       List<Integer> datas = new ArrayList<>();
       if (this.nextDiceChange || effect.makeChanceResult() && this.getActiveSkillID() != 400051001) {
          int max = 6;
@@ -3035,7 +3136,7 @@ public class CommonJob implements BasicJob {
       int buffID = this.getActiveSkillID();
       int cooltime = effect.getCooldown(this.player);
       if (datas.size() <= 1) {
-         skillName = "럭키 다이스";
+         skillName = "Lucky Dice";
          if (this.getActiveSkillID() == 5120012) {
             buffID = 5111007;
          } else if (this.getActiveSkillID() == 5220014) {
@@ -3046,12 +3147,14 @@ public class CommonJob implements BasicJob {
             buffID = 35111013;
          }
 
-         if (this.getActiveSkillID() != 400051001 || (value = this.player.getBuffedValue(SecondaryStatFlag.LoadedDice)) == null) {
+         if (this.getActiveSkillID() != 400051001
+               || (value = this.player.getBuffedValue(SecondaryStatFlag.LoadedDice)) == null) {
             datas.add(Randomizer.rand(1, 6));
          }
 
          SecondaryStatEffect chance;
-         if ((chance = this.player.getSkillLevelData(5120043)) != null || (chance = this.player.getSkillLevelData(5220043)) != null) {
+         if ((chance = this.player.getSkillLevelData(5120043)) != null
+               || (chance = this.player.getSkillLevelData(5220043)) != null) {
             if (chance.makeChanceResult()) {
                cooltime = 0;
             }
@@ -3076,11 +3179,11 @@ public class CommonJob implements BasicJob {
       int x = 0;
       if (fail.get()) {
          String str = String.join(", ", dataString);
-         this.player.dropMessage(5, skillName + " 스킬이 " + str + " 이 나와 아무런 효과를 받지 못했습니다.");
+         this.player.dropMessage(5, skillName + " roll result: " + str + ". You did not receive any effect.");
          cooltime = effect.getCooldown(this.player) / 2;
       } else {
          for (int index = 0; index < datas.size(); index++) {
-            x += (int)(Math.pow(10.0, index) * datas.get(index).intValue());
+            x += (int) (Math.pow(10.0, index) * datas.get(index).intValue());
          }
 
          Arrays.fill(this.diceStatData, 0);
@@ -3107,11 +3210,12 @@ public class CommonJob implements BasicJob {
             }
 
             if (data != 1) {
-               this.player.dropMessage(5, skillName + " 스킬이 [" + data + "]번 효과를 발동시켰습니다.");
+               this.player.dropMessage(5, skillName + " triggered effect [" + data + "].");
             }
          }
 
-         this.player.temporaryStatSet(buffID, effect.getDuration(effect.getDuration(), this.player), SecondaryStatFlag.Dice, x);
+         this.player.temporaryStatSet(buffID, effect.getDuration(effect.getDuration(), this.player),
+               SecondaryStatFlag.Dice, x);
       }
 
       this.player.send(CField.skillCooldown(this.getActiveSkillID(), cooltime));
@@ -3151,8 +3255,8 @@ public class CommonJob implements BasicJob {
    }
 
    public int onNobilityInit(SecondaryStatEffect effect, int damage) {
-      int reduce = (int)(damage * effect.getX() / 100.0);
-      int shield = (int)(reduce * effect.getY() / 100.0);
+      int reduce = (int) (damage * effect.getX() / 100.0);
+      int shield = (int) (reduce * effect.getY() / 100.0);
       if (this.nobilityFromID == this.player.getId()) {
          if (reduce < this.player.getStat().getHp()) {
             this.setNobilityShield(this.nobilityShield + shield);
@@ -3160,7 +3264,7 @@ public class CommonJob implements BasicJob {
       } else {
          MapleCharacter owner = this.player.getMap().getCharacterById(this.nobilityFromID);
          if (owner != null) {
-            int shield_ = (Integer)owner.getJobField("nobilityShield");
+            int shield_ = (Integer) owner.getJobField("nobilityShield");
             if (reduce < owner.getStat().getHp()) {
                owner.addHP(-reduce);
                owner.invokeJobMethod("setNobilityShield", shield + shield_);
@@ -3176,24 +3280,26 @@ public class CommonJob implements BasicJob {
 
    public void setNobilityShield(int delta) {
       this.nobilityShield = delta;
-      SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
-      statManager.changeStatValue(SecondaryStatFlag.Nobility, 151111005, this.player.getBuffedValueDefault(SecondaryStatFlag.Nobility, 0));
+      SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+            this.player.getSecondaryStat());
+      statManager.changeStatValue(SecondaryStatFlag.Nobility, 151111005,
+            this.player.getBuffedValueDefault(SecondaryStatFlag.Nobility, 0));
       statManager.temporaryStatSet();
    }
 
    public int onSoulLinkHit(int damage) {
       MapleCharacter owner = this.player.getMap().getCharacterById(this.michaelSoulLinkFrom);
       if (owner != null
-         && owner.getId() != this.player.getId()
-         && owner.getParty() != null
-         && this.player.getParty() != null
-         && owner.getParty().getId() == this.player.getParty().getId()) {
+            && owner.getId() != this.player.getId()
+            && owner.getParty() != null
+            && this.player.getParty() != null
+            && owner.getParty().getId() == this.player.getParty().getId()) {
          SecondaryStatEffect eff = this.player.getBuffedEffect(SecondaryStatFlag.MichaelSoulLink);
          if (eff != null) {
-            int shareD = (int)(damage * eff.getQ() / 100.0);
+            int shareD = (int) (damage * eff.getQ() / 100.0);
             if (shareD < owner.getStat().getCurrentMaxHp() * eff.getV() / 100.0 && shareD < owner.getStat().getHp()) {
                Object b = owner.invokeJobMethod("onCheckRoyalGuard");
-               if (b == null || !(Boolean)b) {
+               if (b == null || !(Boolean) b) {
                   owner.addHP(-shareD);
                   return shareD;
                }
@@ -3207,10 +3313,9 @@ public class CommonJob implements BasicJob {
    public void onRhoAiasHit() {
       MapleCharacter owner = this.player.getMap().getCharacterById(this.rhoAiasFrom);
       if (owner != null
-         && (
-            owner.getId() == this.player.getId()
-               || owner.getParty() != null && this.player.getParty() != null && owner.getParty().getId() == this.player.getParty().getId()
-         )) {
+            && (owner.getId() == this.player.getId()
+                  || owner.getParty() != null && this.player.getParty() != null
+                        && owner.getParty().getId() == this.player.getParty().getId())) {
          int skillId = 400011011;
          if (this.player.getSkillLevel(500061008) > 0) {
             skillId = 500061008;
@@ -3219,8 +3324,10 @@ public class CommonJob implements BasicJob {
          int newX = this.rhoAiasX - 1;
          if (newX > 0) {
             this.rhoAiasX = newX;
-            SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
-            statManager.changeStatValue(SecondaryStatFlag.RhoAias, skillId, this.player.getBuffedValue(SecondaryStatFlag.RhoAias));
+            SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                  this.player.getSecondaryStat());
+            statManager.changeStatValue(SecondaryStatFlag.RhoAias, skillId,
+                  this.player.getBuffedValue(SecondaryStatFlag.RhoAias));
             statManager.temporaryStatSet();
             return;
          }
@@ -3229,8 +3336,10 @@ public class CommonJob implements BasicJob {
          if (newLevel <= 3) {
             this.rhoAiasLevel = newLevel;
             this.rhoAiasX = this.getRhoAiasDefenceCount(newLevel);
-            SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
-            statManager.changeStatValue(SecondaryStatFlag.RhoAias, skillId, this.player.getBuffedValue(SecondaryStatFlag.RhoAias));
+            SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                  this.player.getSecondaryStat());
+            statManager.changeStatValue(SecondaryStatFlag.RhoAias, skillId,
+                  this.player.getBuffedValue(SecondaryStatFlag.RhoAias));
             statManager.temporaryStatSet();
             return;
          }
@@ -3278,9 +3387,10 @@ public class CommonJob implements BasicJob {
       switch (effect.getSourceId()) {
          case 2111011:
             int countxx = this.getPlayer().getBuffedValue(SecondaryStatFlag.AntiMagicShell);
-            int delta = (int)(this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * (effect.getX() * 0.01));
+            int delta = (int) (this.getPlayer().getStat().getCurrentMaxMp(this.getPlayer()) * (effect.getX() * 0.01));
             if (countxx > 0 && this.getPlayer().getStat().getMp() >= delta && effect.makeChanceResult()) {
-               this.getPlayer().temporaryStatSet(2111011, Integer.MAX_VALUE, SecondaryStatFlag.AntiMagicShell, --countxx);
+               this.getPlayer().temporaryStatSet(2111011, Integer.MAX_VALUE, SecondaryStatFlag.AntiMagicShell,
+                     --countxx);
                this.getPlayer().addMP(-delta);
                NormalEffect e = new NormalEffect(this.getPlayer().getId(), EffectHeader.ResistEffect);
                this.getPlayer().send(e.encodeForLocal());
@@ -3292,7 +3402,8 @@ public class CommonJob implements BasicJob {
             this.getPlayer().send(e.encodeForLocal());
             this.getPlayer().getMap().broadcastMessage(this.getPlayer(), e.encodeForRemote(), false);
             this.getPlayer().temporaryStatReset(SecondaryStatFlag.AntiMagicShell);
-            SecondaryStatEffect real = SkillFactory.getSkill(2111011).getEffect(this.getPlayer().getSkillLevel(2111011));
+            SecondaryStatEffect real = SkillFactory.getSkill(2111011)
+                  .getEffect(this.getPlayer().getSkillLevel(2111011));
             if (real != null) {
                this.getPlayer().send(CField.skillCooldown(2111011, real.getCooldown(this.getPlayer())));
                this.getPlayer().addCooldown(2111011, System.currentTimeMillis(), real.getCooldown(this.getPlayer()));
@@ -3302,10 +3413,12 @@ public class CommonJob implements BasicJob {
             if (!this.bAntiMagicShellBarrier) {
                this.bAntiMagicShellBarrier = true;
                this.tAntiMagicShellBarrier = effect.getDuration();
-               SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(), this.player.getSecondaryStat());
+               SecondaryStatManager statManager = new SecondaryStatManager(this.player.getClient(),
+                     this.player.getSecondaryStat());
                statManager.changeTill(SecondaryStatFlag.AntiMagicShell, 2211012, effect.getDuration());
                statManager.temporaryStatSet();
-               this.player.getSecondaryStat().setVarriableLong("AntiMagicShellTill", System.currentTimeMillis() + effect.getDuration());
+               this.player.getSecondaryStat().setVarriableLong("AntiMagicShellTill",
+                     System.currentTimeMillis() + effect.getDuration());
                this.player.addCooldown(2211012, System.currentTimeMillis(), effect.getCooldown(this.player));
                this.player.send(CField.skillCooldown(2211012, effect.getCooldown(this.player)));
                SpecialSkillEffect e2 = new SpecialSkillEffect(this.player.getId(), 2211012, null);
@@ -3321,12 +3434,14 @@ public class CommonJob implements BasicJob {
                   SecondaryStatEffect e2 = this.getPlayer().getBuffedEffect(SecondaryStatFlag.AntiMagicShell);
                   if (e2 != null) {
                      this.getPlayer().send(CField.skillCooldown(2311012, effect.getCooldown(this.getPlayer())));
-                     this.getPlayer().addCooldown(2311012, System.currentTimeMillis(), effect.getCooldown(this.getPlayer()));
+                     this.getPlayer().addCooldown(2311012, System.currentTimeMillis(),
+                           effect.getCooldown(this.getPlayer()));
                   }
 
                   this.getPlayer().temporaryStatResetBySkillID(27111004);
                } else {
-                  this.getPlayer().temporaryStatSet(2311012, effect.getDuration(), SecondaryStatFlag.AntiMagicShell, count);
+                  this.getPlayer().temporaryStatSet(2311012, effect.getDuration(), SecondaryStatFlag.AntiMagicShell,
+                        count);
                }
 
                return false;
@@ -3344,7 +3459,7 @@ public class CommonJob implements BasicJob {
                   if (till <= 0L) {
                      remainDuration = 0;
                   } else {
-                     remainDuration = (int)(till - System.currentTimeMillis());
+                     remainDuration = (int) (till - System.currentTimeMillis());
                   }
 
                   this.getPlayer().temporaryStatSet(12121003, remainDuration, SecondaryStatFlag.AntiMagicShell, count);
@@ -3360,12 +3475,14 @@ public class CommonJob implements BasicJob {
                   SecondaryStatEffect e2 = this.getPlayer().getBuffedEffect(SecondaryStatFlag.AntiMagicShell);
                   if (e2 != null) {
                      this.getPlayer().send(CField.skillCooldown(27111004, effect.getCooldown(this.getPlayer())));
-                     this.getPlayer().addCooldown(27111004, System.currentTimeMillis(), effect.getCooldown(this.getPlayer()));
+                     this.getPlayer().addCooldown(27111004, System.currentTimeMillis(),
+                           effect.getCooldown(this.getPlayer()));
                   }
 
                   this.getPlayer().temporaryStatResetBySkillID(27111004);
                } else {
-                  this.getPlayer().temporaryStatSet(27111004, effect.getDuration(), SecondaryStatFlag.AntiMagicShell, countx);
+                  this.getPlayer().temporaryStatSet(27111004, effect.getDuration(), SecondaryStatFlag.AntiMagicShell,
+                        countx);
                }
 
                return false;
@@ -3402,11 +3519,11 @@ public class CommonJob implements BasicJob {
             packet.writeInt(this.nobilityShield);
             break;
          case CrossOverChain:
-            int remainHP = (int)(this.player.getStat().getCurrentMaxHp() - this.player.getStat().getHp());
+            int remainHP = (int) (this.player.getStat().getCurrentMaxHp() - this.player.getStat().getHp());
             if (effect == null) {
                packet.writeInt(0);
             } else {
-               this.crossOverChainX = Math.min(effect.getZ(), (int)(remainHP * effect.getY() / 100.0));
+               this.crossOverChainX = Math.min(effect.getZ(), (int) (remainHP * effect.getY() / 100.0));
                packet.writeInt(this.crossOverChainX);
             }
             break;
@@ -3425,7 +3542,8 @@ public class CommonJob implements BasicJob {
             break;
          case HolySymbol:
             if (DBConfig.isGanglim && this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HolySymbol, 0) == 75
-               || !DBConfig.isGanglim && this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HolySymbol, 0) == 150) {
+                  || !DBConfig.isGanglim
+                        && this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HolySymbol, 0) == 150) {
                this.holySymbolDropR = DBConfig.isGanglim ? 25 : 30;
                packet.writeInt(this.getPlayer().getId());
                packet.writeInt(DBConfig.isGanglim ? 20 : 1);
@@ -3470,6 +3588,9 @@ public class CommonJob implements BasicJob {
          case CurseOfDestruction:
          case Unk76:
             packet.writeInt(0);
+            break;
+         default:
+            break;
       }
    }
 
@@ -3507,7 +3628,7 @@ public class CommonJob implements BasicJob {
             break;
          case AutoChargeStackOnOff:
             Object field = this.player.getJobField("autoChargeStackOnOffStack");
-            packet.writeInt(field != null ? (Integer)field : 0);
+            packet.writeInt(field != null ? (Integer) field : 0);
       }
    }
 
@@ -3517,13 +3638,14 @@ public class CommonJob implements BasicJob {
          playerList.add(this.getPlayer());
 
          for (MapleCharacter player : this.getPlayer()
-            .getMap()
-            .getPlayerInRect(this.getPlayer().getTruePosition(), eff.getLt().x, eff.getLt().y, eff.getRb().x, eff.getRb().y)) {
+               .getMap()
+               .getPlayerInRect(this.getPlayer().getTruePosition(), eff.getLt().x, eff.getLt().y, eff.getRb().x,
+                     eff.getRb().y)) {
             if (player != null
-               && this.getPlayer().getParty() != null
-               && player.getParty() != null
-               && player.getId() != this.getPlayer().getId()
-               && player.getParty().getId() == this.getPlayer().getParty().getId()) {
+                  && this.getPlayer().getParty() != null
+                  && player.getParty() != null
+                  && player.getId() != this.getPlayer().getId()
+                  && player.getParty().getId() == this.getPlayer().getParty().getId()) {
                playerList.add(player);
             }
          }
@@ -3541,7 +3663,7 @@ public class CommonJob implements BasicJob {
             int noDeathTime = effect.getNoDeathTime();
             if (noDeathTime > 0) {
                this.getPlayer().temporaryStatSet(skillId, noDeathTime, SecondaryStatFlag.indiePartialNotDamaged, 1);
-               this.getPlayer().dropMessageGM(5, "무적 시간 적용 : " + noDeathTime);
+               this.getPlayer().dropMessageGM(5, "Invincibility time applied : " + noDeathTime);
             }
 
             eff = this.getPlayer().getBuffedEffect(SecondaryStatFlag.SixthSkillFrozen, this.activeSkillID);
@@ -3556,7 +3678,8 @@ public class CommonJob implements BasicJob {
             if (this.getPlayer().getParty() != null) {
                for (MapleCharacter partyMember : this.getPlayer().getPartyMembersSameMap()) {
                   if (!partyMember.getName().equals(this.getPlayer().getName())) {
-                     partyMember.send(CField.showOriginSkillPartyEffect(this.getPlayer().getId(), this.getPlayer().getJob(), this.getPlayer().getName()));
+                     partyMember.send(CField.showOriginSkillPartyEffect(this.getPlayer().getId(),
+                           this.getPlayer().getJob(), this.getPlayer().getName()));
                   }
                }
             }

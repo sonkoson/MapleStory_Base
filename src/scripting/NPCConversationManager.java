@@ -975,7 +975,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
          }
       } catch (Exception var6) {
-         System.out.println("gainGachaponItem 함수 실행중 오류발생" + var6.toString());
+         System.out.println("Error occurred while executing gainGachaponItem function" + var6.toString());
          var6.printStackTrace();
          return -1;
       }
@@ -1471,7 +1471,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   this.gainGP(-25000);
                }
             } else if (!trueMax) {
-               this.sendNext("자네의 길드 인원수는 더 이상 늘릴 수 없다네.");
+               this.sendNext("You cannot increase your guild capacity any further.");
             } else {
                this.sendNext(
                      "Please check if your guild capacity is full, if you have the GP needed or if subtracting GP would decrease a guild level. (Limit: 200)");
@@ -1883,7 +1883,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   alliancename, this.c.getPlayer().getId(), otherChar.getId(), this.c.getPlayer().getGuildId(),
                   otherChar.getGuildId());
          } catch (Exception var5) {
-            System.out.println("createAlliance 함수 실행중 오류발생" + var5.toString());
+            System.out.println("Error occurred while executing createAlliance function" + var5.toString());
             var5.printStackTrace();
             return false;
          }
@@ -1904,7 +1904,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             return true;
          }
       } catch (Exception var2) {
-         System.out.println("addCapacityToAlliance 함수 실행중 오류발생" + var2.toString());
+         System.out.println("Error occurred while executing addCapacityToAlliance function" + var2.toString());
          var2.printStackTrace();
       }
 
@@ -1922,7 +1922,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             return true;
          }
       } catch (Exception var2) {
-         System.out.println("disbandAlliance 함수 실행중 오류발생" + var2.toString());
+         System.out.println("Error occurred while executing disbandAlliance function" + var2.toString());
          var2.printStackTrace();
       }
 
@@ -2079,7 +2079,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          ps.executeUpdate();
          ps.close();
       } catch (SQLException var10) {
-         System.out.println("logDonator 함수 실행중 오류발생" + var10.toString());
+         System.out.println("Error occurred while executing logDonator function" + var10.toString());
          var10.printStackTrace();
       }
 
@@ -2339,8 +2339,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          map.broadcastMessage(CField.farmScore((byte) MaxCatchSize, CatchSize));
       }
 
-      map.broadcastMessage(CWvsContext.serverNotice(1, "[술래 목록]\r\n" + CatchingName2));
-      map.broadcastMessage(CWvsContext.serverNotice(6, "[술래 목록] " + CatchingName));
+      map.broadcastMessage(CWvsContext.serverNotice(1, "[Tagger List]\r\n" + CatchingName2));
+      map.broadcastMessage(CWvsContext.serverNotice(6, "[Tagger List] " + CatchingName));
       map.startCatch();
    }
 
@@ -2421,9 +2421,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public void SearchItem(String text, int type) {
       NPCConversationManager cm = this;
       if (text.getBytes().length < 4) {
-         this.sendOk("검색어는 두글자 이상으로 해주세요.");
+         this.sendOk("Please enter at least two characters for the search term.");
          this.dispose();
-      } else if (!text.equals("헤어") && !text.equals("얼굴")) {
+      } else if (!text.equals("Hair") && !text.equals("Face")) {
          String kk = "";
          String chat = "";
          String nchat = "";
@@ -2436,7 +2436,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                String isuse = "";
                if (cm.getPlayer().getCashWishList().contains(item.getLeft())) {
                   color = "#Cgray#";
-                  isuse = " (선택된 항목)";
+                  isuse = " (Selected Item)";
                }
 
                if (type == 1 && ii.isCash(item.getLeft()) && item.getLeft() >= 1000000
@@ -2457,17 +2457,17 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          if (i != 0) {
-            kk = kk + "총 " + i + "개 검색되었습니다. 추가 하실 항목을 선택해주세요.";
-            kk = kk + "\r\n#L0#항목 선택을 마칩니다.  \r\n#L1#항목을 재검색합니다.";
+            kk = kk + "Total " + i + " items found. Please select an item to add.";
+            kk = kk + "\r\n#L0#Finish item selection.  \r\n#L1#Search again.";
             nchat = kk + chat;
             cm.sendSimple(nchat);
          } else {
-            kk = kk + "검색된 아이템이 없습니다.";
+            kk = kk + "No items found.";
             cm.sendOk(kk);
             cm.dispose();
          }
       } else {
-         this.sendOk("데이터량이 너무 많습니다. 다른 검색어를 이용해주세요.");
+         this.sendOk("Too much data. Please use a different search term.");
          this.dispose();
       }
    }
@@ -2528,7 +2528,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void increaseGuildCapacity() {
       if (this.c.getPlayer().getMeso() < 5000000L) {
-         this.c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "500만 메소가 충분하지 않습니다."));
+         this.c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "You do not have enough 5,000,000 Mesos."));
       } else {
          int gid = this.c.getPlayer().getGuildId();
          if (gid > 0) {
@@ -2817,7 +2817,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       equip.setWatk((short) (equip.getWatk() - attack));
       equip.setSPAllStat(equip.getSPAllStat() - allStat);
       equip.setSPAttack(equip.getSPAttack() - attack);
-      equip.setOwner(equip.getSPGrade() + "성");
+      equip.setOwner(equip.getSPGrade() + " Star");
       this.c.getPlayer()
             .send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte) 1, this.c.getPlayer(), (byte) 0));
    }
@@ -2848,7 +2848,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       equip.setMatk((short) (equip.getMatk() + attack));
       equip.setSPAllStat(equip.getSPAllStat() + allStat);
       equip.setSPAttack(equip.getSPAttack() + attack);
-      equip.setOwner(equip.getSPGrade() + "성");
+      equip.setOwner(equip.getSPGrade() + " Star");
       byte invType = 1;
       if (GameConstants.isZeroWeapon(equip.getItemId())) {
          this.c.getPlayer().forceReAddItem(equip, MapleInventoryType.EQUIPPED);
@@ -2870,7 +2870,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          zeroEquip.setMatk((short) (zeroEquip.getMatk() + attack));
          zeroEquip.setSPAllStat(zeroEquip.getSPAllStat() + allStat);
          zeroEquip.setSPAttack(zeroEquip.getSPAttack() + attack);
-         zeroEquip.setOwner(zeroEquip.getSPGrade() + "성");
+         zeroEquip.setOwner(zeroEquip.getSPGrade() + " Star");
          this.c.getPlayer().forceReAddItem(zeroEquip, MapleInventoryType.EQUIPPED);
       }
    }
@@ -2893,7 +2893,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else {
          Equip equip = (Equip) item;
-         String[] gradeString = new String[] { "최하급", "하급", "중급", "상급", "최상급" };
+         String[] gradeString = new String[] { "Lowest", "Low", "Medium", "High", "Highest" };
          int[][] attack = new int[][] { { 2, 4 }, { 3, 7 }, { 5, 11 }, { 8, 16 }, { 14, 21 } };
          int[][] allStat = new int[][] { { 4, 7 }, { 6, 11 }, { 10, 17 }, { 17, 25 }, { 25, 35 } };
          int[][] attack2 = new int[][] { { 4, 7 }, { 6, 11 }, { 10, 18 }, { 17, 25 }, { 24, 32 } };
@@ -2953,11 +2953,11 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   .getPlayer()
                   .dropMessage(
                         5,
-                        "무기 감정 결과 : 등급("
+                        "Weapon Appraisal Result : Grade("
                               + gradeString[var14 - 1]
-                              + ") / 올스탯 : "
+                              + ") / AllStats : "
                               + allStat_
-                              + ", 공마 : "
+                              + ", Attack/Magic : "
                               + attack_
                               + ", equipAllStat : "
                               + equip.getAllStat()
@@ -2997,7 +2997,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public final void showGMSCashList() {
-      String msg = "뽑기에서 나오는 아이템 목록이야!\r\n\r\n";
+      String msg = "Here is the list of items you can get from the draw!\r\n\r\n";
       boolean find = false;
 
       for (Integer itemID : MapleItemInformationProvider.getInstance().getGMSCashItemList()) {
@@ -3011,7 +3011,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.sendNext(msg);
          this.dispose();
       } else {
-         this.sendNext("현재 해외 캐시템 물량이 없네.. 다음에 다시 찾아와줘!");
+         this.sendNext("There are no overseas cash items available right now. Please come back later!");
          this.dispose();
       }
    }
@@ -3045,8 +3045,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          rewardEquip.setCsOption3(10000 + Randomizer.rand(1, 4) * 1000 + stat);
          rewardEquip.setCsOptionExpireDate(System.currentTimeMillis() + 31536000000L);
          Center.Broadcast.broadcastGachaponMessage(
-               this.c.getPlayer().getName() + "님이 " + ii.getName(5680157) + "에서 {" + ii.getName(rewardEquip.getItemId())
-                     + "} 아이템을 획득하였습니다",
+               this.c.getPlayer().getName() + " has obtained {" + ii.getName(rewardEquip.getItemId())
+                     + "} from " + ii.getName(5680157),
                5068300, rewardEquip);
       } else {
          int rand = Randomizer.rand(0, 100);
@@ -3295,7 +3295,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                return;
             }
          } else if (target.getArcLevel() >= 20) {
-            this.c.getPlayer().dropMessage(1, "더 이상 강화할 수 없습니다.");
+            this.c.getPlayer().dropMessage(1, "Cannot upgrade further.");
             this.c.getSession().writeAndFlush(CWvsContext.enableActions(this.c.getPlayer()));
             return;
          }
@@ -3325,7 +3325,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          this.c.getSession().writeAndFlush(CWvsContext.InventoryPacket.updateArcaneSymbol(target));
       } catch (Exception var10) {
-         System.out.println("symbolExp 함수 실행중 오류발생" + var10.toString());
+         System.out.println("Error occurred while executing symbolExp function" + var10.toString());
          var10.printStackTrace();
       }
    }
@@ -3429,7 +3429,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       this.c.getPlayer()
-            .send(CField.addPopupSay(9010060, 15000, "#e[익스트림 주간 퀘스트]#n\r\n\r\n" + msg + "\r\n퀘스트가 등록되었습니다.", ""));
+            .send(CField.addPopupSay(9010060, 15000,
+                  "#e[Extreme Weekly Quest]#n\r\n\r\n" + msg + "\r\nQuest has been registered.", ""));
    }
 
    public final void addPopupSay(String title, String message, int npc, int duration) {
@@ -3659,13 +3660,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       StringBuilder sb = new StringBuilder(
-            "페어리 브로의 황금상자 사용 (당첨 아이템 : "
-                  + (itemID == 0 ? "꽝" : MapleItemInformationProvider.getInstance().getName(itemID))
-                  + ", 닉네임 : "
+            "Fairy Bro's Golden Box Used (Won Item : "
+                  + (itemID == 0 ? "Nothing" : MapleItemInformationProvider.getInstance().getName(itemID))
+                  + ", Nickname : "
                   + this.getPlayer().getName()
                   + ")");
       LoggingManager.putLog(new ConsumeLog(this.c.getPlayer(), 1, sb));
-      String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+      String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
       this.getPlayer().dropMessage(5, "You have lost 4,000 " + cashName + ".");
       if (itemID == 0) {
          this.sendSimple(
@@ -3685,79 +3686,82 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                      item);
             } else {
                Center.Broadcast.broadcastGachaponMessage(
-                     this.getPlayer().getName() + "님이 페어리 브로의 황금상자에서 {" + itemID + "}을(를) 획득하였습니다.", 5060048, item);
+                     this.getPlayer().getName() + " obtained {" + itemID + "} from Fairy Bro's Golden Box.", 5060048,
+                     item);
             }
          }
       }
    }
 
    public void displayWeeklyItems() {
-      String text = "안녕하세요? 저는 #e페어리 브로의 황금상자#n를 담당하는 #b요정 웡키#k라고 합니다. 페어리 브로의 황금상자에서는 #b한정 수량 아이템#k #e#r<에픽 아이템>#k#n과 #e#r<레전드리 아이템>#k#n 그리고 #b노멀 항목 아이템#k이 출현해요. 해당 상품들은 #e매주 토요일 오후 9시, 일요일 오후 3시#n에 보급된답니다.\r\n단, 모든 한정 수량 아이템이 재고가 없을때는 다음 보급까지 이용할 수 없답니다.\r\n\r\n";
+      String text = "Hello? I am #bFairy Wonky#k, in charge of #eFairy Bro's Golden Box#n. In Fairy Bro's Golden Box, #bLimited Quantity Items#k #e#r<Epic Items>#k#n, #e#r<Legendary Items>#k#n, and #bNormal Items#k appear. These items are supplied every #eSaturday at 9 PM and Sunday at 3 PM#n.\r\nHowever, if all limited quantity items are out of stock, you cannot use it until the next supply.\r\n\r\n";
       if (DBConfig.isGanglim) {
-         text = "안녕하세요? 저는 #e페어리 브로의 황금상자#n를 담당하는 #b요정 웡키#k라고 합니다. 페어리 브로의 황금상자에서는 #b한정 수량 아이템#k #e#r<유니크 아이템>#k#n과 #e#r<강림 아이템>#k#n 그리고 #b에픽 아이템#k이 출현해요. 해당 상품들은 #e매주 토요일 오후 2시, 일요일 오후 6시#n에 보급된답니다.\r\n단, 모든 한정 수량 아이템의 재고가 떨어지면 다음 보급까지 이용할 수 없답니다.\r\n\r\n";
+         text = "Hello? I am #bFairy Wonky#k, in charge of #eFairy Bro's Golden Box#n. In Fairy Bro's Golden Box, #bLimited Quantity Items#k #e#r<Unique Items>#k#n, #e#r<Ganglim Items>#k#n, and #bEpic Items#k appear. These items are supplied every #eSaturday at 2 PM and Sunday at 6 PM#n.\r\nHowever, if all limited quantity items are out of stock, you cannot use it until the next supply.\r\n\r\n";
       }
 
       int size = WeeklyItemManager.getBonusItems().size() + WeeklyItemManager.getExtremeItems().size();
       if (size == 0) {
          if (DBConfig.isGanglim) {
-            text = text + "현재 물품 보급 대기중이에요. 토요일은 오후 2시, 일요일은 오후 6시에 보급되니 조금만 기다려주세요!";
+            text = text
+                  + "Currently waiting for item supply. Supply is at Saturday 2 PM and Sunday 6 PM, so please wait a bit!";
          } else {
-            text = text + "현재 물품 보급 대기중이에요. 토요일은 오후 9시, 일요일은 오후 3시에 보급되니 조금만 기다려주세요!";
+            text = text
+                  + "Currently waiting for item supply. Supply is at Saturday 9 PM and Sunday 3 PM, so please wait a bit!";
          }
       } else {
-         text = text + "현재 남은 상품은 아래와 같아요!\r\n\r\n";
+         text = text + "Current remaining products are as follows!\r\n\r\n";
          if (DBConfig.isGanglim) {
-            text = text + "#e<유니크 아이템>#n\r\n";
+            text = text + "#e<Unique Item>#n\r\n";
          } else {
-            text = text + "#e<에픽 아이템>#n\r\n";
+            text = text + "#e<Epic Item>#n\r\n";
          }
 
          for (WeeklyItemEntry entry : WeeklyItemManager.getBonusItems()) {
             text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity()
-                  + "개#k - #e재고";
+                  + "pcs#k - #eStock";
             if (entry.getRemainCount() == 0) {
-               text = text + " 없음";
+               text = text + " None";
             } else {
-               text = text + " " + entry.getRemainCount() + "개 남음";
+               text = text + " " + entry.getRemainCount() + "pcs left";
             }
 
             text = text + "#n\r\n";
          }
 
          if (DBConfig.isGanglim) {
-            text = text + "\r\n#e<강림 아이템>#n\r\n";
+            text = text + "\r\n#e<Ganglim Item>#n\r\n";
          } else {
-            text = text + "\r\n#e<레전드리 아이템>#n\r\n";
+            text = text + "\r\n#e<Legendary Item>#n\r\n";
          }
 
          for (WeeklyItemEntry entry : WeeklyItemManager.getExtremeItems()) {
             text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity()
-                  + "개#k - #e재고";
+                  + "pcs#k - #eStock";
             if (entry.getRemainCount() == 0) {
-               text = text + " 없음";
+               text = text + " None";
             } else {
-               text = text + " " + entry.getRemainCount() + "개 남음";
+               text = text + " " + entry.getRemainCount() + "pcs left";
             }
 
             text = text + "#n\r\n";
          }
 
          if (WeeklyItemManager.canBuyWeeklyItems()) {
-            text = text + "\r\n#L0##b#e페어리 브로의 황금상자#n를 개봉해보고 싶어요! #e#k(4,000 "
-                  + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + ")#n#l\r\n";
+            text = text + "\r\n#L0##bI want to open #eFairy Bro's Golden Box#n! #e#k(4,000 "
+                  + (DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point") + ")#n#l\r\n";
          } else {
-            text = text + "\r\n#b현재 모든 한정 수량 아이템이 매진되었습니다.";
+            text = text + "\r\n#bAll limited quantity items are currently sold out.";
          }
       }
 
-      text = text + "\r\n#L1##b다음에 이용하도록 하겠습니다.#l\r\n";
+      text = text + "\r\n#L1##bI'll use it next time.#l\r\n";
       this.sendSimple(text);
    }
 
    public void showDojangRanking() {
       if (!this.canEnterDojang()) {
          this.sendNext(
-               "#e#b토요일 23시 40분#k#n부터 #e#b일요일 00시 04분#k#n까지 #b랭킹 집계#k를 위해 지금은 랭킹을 볼 수 없어. #b#e00시 05#n#k분 이후에 다시 시도해줘.");
+               "Ranking is unavailable from #e#bSaturday 23:40#k#n to #e#bSunday 00:04#k#n due to #branking calculation#k. Please try again after #b#e00:05#n#k.");
          this.dispose();
       } else {
          this.c.getPlayer().send(CField.getMulungDojangRanking(this.c.getPlayer()));
@@ -3831,73 +3835,74 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             this.c.getPlayer().updateOneInfo(1234590, "dojang_point_get", "1");
-            this.c.getPlayer().dropMessage(5, point + "포인트를 획득하였습니다.");
+            this.c.getPlayer().dropMessage(5, "You have gained " + point + " points.");
             this.c
                   .getPlayer()
                   .updateOneInfo(42003, "point", String
                         .valueOf(Math.min(500000, this.c.getPlayer().getOneInfoQuestInteger(42003, "point") + point)));
-            String text = "너는 지난주 무릉도장";
+            String text = "You achieved top " + percent + "% in last week's Mulung Dojo";
             if (type == 0) {
-               text = text + "(챌린지)";
+               text = text + " (Challenge)";
             }
 
-            text = text + " 상위 " + percent + "%를 달성하여 " + point + "포인트를 지급해줬어.\r\n다음엔 더 좋은 결과 있기를 바란다구.";
+            text = text + " and received " + point + " points.\r\nI hope you get better results next time.";
             this.sendNext(text);
             this.dispose();
          } else {
             Pair<Integer, Integer> pair = DojangRanking.getLastTryDojang(type, this.c.getPlayer().getName());
-            String v0 = "뭐야. 너는 지난주 무릉도장에 도전한 기록이 없는데?\r\n뭔가 착각한 거 아냐?\r\n\r\n";
-            v0 = v0 + "너는 마지막으로...어디 보자...\r\n";
+            String v0 = "What? You have no record of challenging Mulung Dojo last week?\r\nAre you mistaken?\r\n\r\n";
+            v0 = v0 + "You last... let's see...\r\n";
             if (pair == null) {
-               v0 = v0 + "무릉도장에 도전한 기록이 없군.";
+               v0 = v0 + "have no record of challenging Mulung Dojo.";
             } else {
                Calendar cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 1);
-               SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+               SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                String v1 = sdf.format(cal.getTime());
                cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 7);
                String v2 = sdf.format(cal.getTime());
-               v0 = v0 + "#e#r" + v1 + " ~ " + v2 + "#n#k 사이에\r\n무릉도장에 도전했군.";
+               v0 = v0 + "challenged Mulung Dojo between #e#r" + v1 + " ~ " + v2 + "#n#k.";
             }
 
             this.sendNext(v0);
             this.dispose();
          }
       } else {
-         this.sendNext("너는 이미 무릉도장 포인트를 정산 받았잖아?\r\n정산은 한 번만 받을 수 있다고.");
+         this.sendNext("You have already received your Mulung Dojo points.\r\nYou can only receive them once.");
          this.dispose();
       }
    }
 
    public void displayDojangResult() {
-      String v0 = "뭐, 고생 많았어. 계속 도전해보라고.\r\n";
+      String v0 = "Well, good job. Keep challenging.\r\n";
       Calendar cal = Calendar.getInstance();
       cal.setTimeInMillis(System.currentTimeMillis());
-      SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd, hh시 mm분");
-      v0 = v0 + "(현재 시간:" + sdf.format(cal.getTime()) + ")\r\n\r\n";
-      v0 = v0 + "<최근 기록 정보>\r\n#b";
-      String r = "통달";
+      SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd, HH:mm");
+      v0 = v0 + "(Current Time:" + sdf.format(cal.getTime()) + ")\r\n\r\n";
+      v0 = v0 + "<Recent Record Info>\r\n#b";
+      String r = "Master";
       int rv = 2;
       if (this.c.getPlayer().getOneInfoQuestInteger(1234590, "open_challenge") > 0) {
-         r = "챌린지";
+         r = "Challenge";
          rv = 0;
       }
 
       DojangMyRanking ranking = DojangRanking.getThisWeekMyRank(rv, this.c.getPlayer().getName());
       if (ranking != null && ranking.getRank() != 0) {
-         v0 = v0 + "  - 랭킹 구간 : " + r + "\r\n";
-         v0 = v0 + "  - 클리어 층 : " + ranking.getPoint() / 1000 + " 층\r\n";
-         v0 = v0 + "  - 걸린 시간 : " + (1000 - ranking.getPoint() % 1000) + " 초\r\n";
+         v0 = v0 + "  - Ranking Section : " + r + "\r\n";
+         v0 = v0 + "  - Clear Floor : " + ranking.getPoint() / 1000 + " F\r\n";
+         v0 = v0 + "  - Time Taken : " + (1000 - ranking.getPoint() % 1000) + " sec\r\n";
       } else {
-         v0 = v0 + "최근 기록 없음\r\n";
+         v0 = v0 + "No recent record\r\n";
       }
 
-      v0 = v0 + "\r\n#k이전 기록보다 좋은 기록을 달성했다면 #r무릉 순위표#k에 자동으로 등록될 거야.\r\n등록에 시간이 조금 걸릴 수 있으니 알아두라고.";
+      v0 = v0
+            + "\r\n#kIf you achieved a better record than before, it will be automatically registered in the #rMulung Ranking#k.\r\nPlease note that registration may take some time.";
       this.sendOk(v0);
    }
 
@@ -3921,29 +3926,30 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (rank <= 0) {
             DojangMyRanking ranking = DojangRanking.getLastWeekMyRank(0, this.c.getPlayer().getName());
             if (ranking != null && ranking.getRank() != 0) {
-               this.sendNext("아쉽게도 너는 지난주 랭킹 " + ranking.getRank() + "위로 보상을 받을 자격이 없어.\r\n더 분발해서 좋은 결과가 있기를 바란다.");
+               this.sendNext("Unfortunately, you were ranked " + ranking.getRank()
+                     + " last week, so you are not eligible for a reward.\r\nI hope you work harder and get better results.");
                this.dispose();
                return;
             }
 
             Pair<Integer, Integer> pair = DojangRanking.getLastTryDojang(0, this.c.getPlayer().getName());
-            String v0 = "뭐야. 너는 지난주 무릉도장에 도전한 기록이 없는데?\r\n뭔가 착각한 거 아냐?\r\n\r\n";
-            v0 = v0 + "너는 마지막으로...어디 보자...\r\n";
+            String v0 = "What? You have no record of challenging Mulung Dojo last week?\r\nAre you mistaken?\r\n\r\n";
+            v0 = v0 + "You last... let's see...\r\n";
             if (pair == null) {
-               v0 = v0 + "무릉도장에 도전한 기록이 없군.";
+               v0 = v0 + "have no record of challenging Mulung Dojo.";
             } else {
                Calendar cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 1);
-               SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+               SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                String v1 = sdf.format(cal.getTime());
                cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 7);
                String v2 = sdf.format(cal.getTime());
-               v0 = v0 + "#e#r" + v1 + " ~ " + v2 + "#n#k 사이에\r\n무릉도장에 도전했군.";
+               v0 = v0 + "challenged Mulung Dojo between #e#r" + v1 + " ~ " + v2 + "#n#k.";
             }
 
             this.sendNext(v0);
@@ -3953,13 +3959,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          int v = this.c.getPlayer().getOneInfoQuestInteger(1234590, "dojang_reward_get_c");
          if (v > 0) {
-            this.sendNext("너는 이미 랭킹 " + rank + "위 보상을 지급 받았잖아?\r\n랭커 보상은 한 번만 받을 수 있다고.");
+            this.sendNext(
+                  "You already received the rank " + rank + " reward.\r\nYou can only receive the ranker reward once.");
             this.dispose();
             return;
          }
 
          if (!this.canHold(3700525, 1)) {
-            this.sendNext("인벤토리 공간을 확보하고 다시 시도해줘.");
+            this.sendNext("Please make some space in your inventory and try again.");
             this.dispose();
             return;
          }
@@ -3970,7 +3977,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700525;
          } else {
             if (rank < 2 || rank > 5) {
-               this.sendNext("너는 보상을 받을 자격이 없어보이는걸.");
+               this.sendNext("You don't seem to be eligible for a reward.");
                this.dispose();
                return;
             }
@@ -3978,37 +3985,38 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700308;
          }
 
-         this.c.getPlayer().gainItem(itemID, 1, false, 0L, "무릉도장 랭커 보상으로 획득한 아이템");
-         this.sendNext("보상이 지급되었어. 이 아이템은 #b토요일 23시 59분#k까지 사용할 수 있어. 잘 사용하길 바란다구.");
+         this.c.getPlayer().gainItem(itemID, 1, false, 0L, "Item obtained from Mulung Dojo Ranker Reward");
+         this.sendNext("Reward distributed. This item can be used until #bSaturday 23:59#k. Use it well.");
          this.dispose();
       } else {
          int rankx = this.c.getPlayer().getOneInfoQuestInteger(1234590, "dojang_reward");
          if (rankx <= 0) {
             DojangMyRanking rankingx = DojangRanking.getLastWeekMyRank(2, this.c.getPlayer().getName());
             if (rankingx != null && rankingx.getRank() != 0) {
-               this.sendNext("아쉽게도 너는 지난주 랭킹 " + rankingx.getRank() + "위로 보상을 받을 자격이 없어.\r\n더 분발해서 좋은 결과가 있기를 바란다.");
+               this.sendNext("Unfortunately, you were ranked " + rankingx.getRank()
+                     + " last week, so you are not eligible for a reward.\r\nI hope you work harder and get better results.");
                this.dispose();
                return;
             }
 
             Pair<Integer, Integer> pair = DojangRanking.getLastTryDojang(2, this.c.getPlayer().getName());
-            String v0 = "뭐야. 너는 지난주 무릉도장에 도전한 기록이 없는데?\r\n뭔가 착각한 거 아냐?\r\n\r\n";
-            v0 = v0 + "너는 마지막으로...어디 보자...\r\n";
+            String v0 = "What? You have no record of challenging Mulung Dojo last week?\r\nAre you mistaken?\r\n\r\n";
+            v0 = v0 + "You last... let's see...\r\n";
             if (pair == null) {
-               v0 = v0 + "무릉도장에 도전한 기록이 없군.";
+               v0 = v0 + "have no record of challenging Mulung Dojo.";
             } else {
                Calendar cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 1);
-               SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+               SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                String v1 = sdf.format(cal.getTime());
                cal = Calendar.getInstance();
                cal.set(1, pair.left);
                cal.set(3, pair.right);
                cal.set(7, 7);
                String v2 = sdf.format(cal.getTime());
-               v0 = v0 + "#e#r" + v1 + " ~ " + v2 + "#n#k 사이에\r\n무릉도장에 도전했군.";
+               v0 = v0 + "challenged Mulung Dojo between #e#r" + v1 + " ~ " + v2 + "#n#k.";
             }
 
             this.sendNext(v0);
@@ -4018,13 +4026,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          int vx = this.c.getPlayer().getOneInfoQuestInteger(1234590, "dojang_reward_get");
          if (vx > 0) {
-            this.sendNext("너는 이미 랭킹 " + rankx + "위 보상을 지급 받았잖아?\r\n랭커 보상은 한 번만 받을 수 있다고.");
+            this.sendNext("You already received the rank " + rankx
+                  + " reward.\r\nYou can only receive the ranker reward once.");
             this.dispose();
             return;
          }
 
          if (!this.canHold(3700525, 1)) {
-            this.sendNext("인벤토리 공간을 확보하고 다시 시도해줘.");
+            this.sendNext("Please make some space in your inventory and try again.");
             this.dispose();
             return;
          }
@@ -4035,7 +4044,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700526;
          } else {
             if (rankx < 2 || rankx > 5) {
-               this.sendNext("너는 보상을 받을 자격이 없어보이는걸.");
+               this.sendNext("You don't seem to be eligible for a reward.");
                this.dispose();
                return;
             }
@@ -4043,8 +4052,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700307;
          }
 
-         this.c.getPlayer().gainItem(itemID, 1, false, 0L, "무릉도장 랭커 보상으로 획득한 아이템");
-         this.sendNext("보상이 지급되었어. 이 아이템은 #b토요일 23시 59분#k까지 사용할 수 있어. 잘 사용하길 바란다구.");
+         this.c.getPlayer().gainItem(itemID, 1, false, 0L, "Item obtained from Mulung Dojo Ranker Reward");
+         this.sendNext("Reward distributed. This item can be used until #bSaturday 23:59#k. Use it well.");
          this.dispose();
       }
    }
@@ -4112,7 +4121,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (blockedList.size() <= 0) {
          return true;
       } else {
-         String v0 = "#r무기#k와 #b보조무기#k만 착용하고 도전해야 한다.\r\n\r\n#r<착용 해제해야 하는 아이템>#k\r\n";
+         String v0 = "You must only equip #rWeapon#k and #bSecondary Weapon#k to challenge.\r\n\r\n#r<Items to Unequip>#k\r\n";
 
          for (int i : blockedList) {
             v0 = v0 + "#i" + i + "# #z" + i + "#\r\n";
@@ -4148,14 +4157,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (equip == null) {
-         this.sendNext("알 수 없는 오류가 발생했습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
          return -1;
       } else {
          int weaponID = equip.getItemId() + 1;
          Equip genesis = (Equip) ii.getEquipById(weaponID);
          if (genesis == null) {
-            this.sendNext("알 수 없는 오류가 발생했습니다.");
+            this.sendNext("An unknown error has occurred.");
             this.dispose();
             return -1;
          } else {
@@ -4195,13 +4204,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (equip == null) {
-         this.sendNext("알 수 없는 오류가 발생했습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
       } else {
          int weaponID = equip.getItemId();
          Equip genesis = (Equip) ii.getEquipById(weaponID);
          if (genesis == null) {
-            this.sendNext("알 수 없는 오류가 발생했습니다.");
+            this.sendNext("An unknown error has occurred.");
             this.dispose();
          } else {
             int flag = EquipEnchantMan.filterForJobWeapon(weaponID);
@@ -4279,12 +4288,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             if (source.size() <= 0) {
-               this.sendNext("알 수 없는 오류가 발생했습니다.");
+               this.sendNext("An unknown error has occurred.");
                this.dispose();
             } else {
                EquipEnchantScroll scroll = source.get(0);
                if (scroll == null) {
-                  this.sendNext("알 수 없는 오류가 발생했습니다.");
+                  this.sendNext("An unknown error has occurred.");
                   this.dispose();
                } else {
                   Equip zeroEquip = null;
@@ -4341,7 +4350,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   MapleInventoryManipulator.addbyItem(this.c, genesis);
                   Center.Broadcast.broadcastMessage(
                         CWvsContext.serverNotice(6,
-                              this.c.getPlayer().getName() + "님이 봉인된 힘을 해방하고 검은 마법사의 힘이 담긴 제네시스 무기의 주인이 되었습니다."));
+                              this.c.getPlayer().getName()
+                                    + " has liberated the sealed power and became the owner of the Genesis Weapon containing the Black Mage's power."));
                   this.dispose();
                }
             }
@@ -4371,10 +4381,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (weapon.get() == 0) {
-         this.sendNext("제네시스 무기가 없으면 해당 퀘스트를 진행할 수 없습니다.");
+         this.sendNext("You cannot proceed with this quest if you do not have a Genesis Weapon.");
          this.dispose();
       } else {
-         String v0 = "#e<제네시스 무기>#n\r\n제네시스 무기가 강력한 힘으로 가득 찼습니다.\r\n제네시스 무기에 잠재된 힘을 완전히 깨울 수 있을 것 같은데, 해방을 시작해 보시겠습니까?\r\n\r\n#r- 15% 주문서로 모든 강화 완료\r\n- 스타포스 22성\r\n- 유니크 잠재능력 보유\r\n- 에픽 에디셔널 잠재능력 보유\r\n- 주문서/스타포스 강화 불가\r\n- 추가옵션/소울은 완전 해방 시 초기화\r\n#b#L0##i"
+         String v0 = "#e<Genesis Weapon>#n\r\nThe Genesis Weapon is filled with powerful energy.\r\nIt seems possible to fully awaken the latent power of the Genesis Weapon. Would you like to start the liberation?\r\n\r\n#r- All upgrades completed with 15% Scrolls\r\n- Star Force 22-Star\r\n- Unique Potential\r\n- Epic Additional Potential\r\n- Scroll/Star Force Enhancement Unavailable\r\n- Bonus Stats/Soul reset upon full liberation\r\n#b#L0##i"
                + (weapon.get() + 1)
                + "# #z"
                + (weapon.get() + 1)
@@ -4385,20 +4395,20 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void displayPraiseRank() {
       Map<Integer, PraisePoint> ranks = PraisePointRank.getRanks();
-      String v0 = "#e<칭찬 포인트 랭킹>#n\r\n\r\n";
+      String v0 = "#e<Praise Point Ranking>#n\r\n\r\n";
       int count = 0;
       if (ranks.isEmpty()) {
-         v0 = v0 + "랭킹 데이터가 부족합니다.";
+         v0 = v0 + "Not enough ranking data.";
       } else {
          NumberFormat nf = NumberFormat.getInstance();
 
          for (Entry<Integer, PraisePoint> entry : ranks.entrySet()) {
             v0 = v0
-                  + "#e["
+                  + "#e[Rank "
                   + entry.getKey()
-                  + "위]#n #b"
+                  + "]#n #b"
                   + entry.getValue().getName()
-                  + "#k, 누적 포인트 : "
+                  + "#k, Accumulated Point : "
                   + nf.format((long) entry.getValue().getTotalPoint())
                   + "\r\n";
             if (++count >= 30) {
@@ -4470,15 +4480,15 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       Timestamp timestamp = this.c.getCreated();
       long delta = System.currentTimeMillis() - timestamp.getTime();
       if (delta >= 2592000000L) {
-         this.sendNext("계정 생성 후 30일 이전까지만 칭찬에 참여할 수 있습니다.");
+         this.sendNext("You can only participate in praise within 30 days of account creation.");
          this.dispose();
          return false;
       } else if (!this.canDoPraise()) {
-         this.sendNext("현재 랭킹 정산이 진행중입니다. 00시 05분부터 참여할 수 있습니다.");
+         this.sendNext("Ranking calculation is currently in progress. You can participate from 00:05.");
          this.dispose();
          return false;
       } else if (!this.canPraiseFindDB()) {
-         this.sendNext("오늘은 이미 칭찬에 참여해서 오늘은 더 이상 참여할 수 없습니다.");
+         this.sendNext("You have already participated in praise today, so you cannot participate anymore today.");
          this.dispose();
          return false;
       } else if (!PraisePointRank.doPraise(this.c.getPlayer(), toName, this)) {
@@ -4486,7 +4496,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else {
          this.c.getPlayer().updateOneInfo(1235858, "praise", "1");
-         this.sendNext("#b" + toName + "#k님을 칭찬하셨습니다. #e500 칭찬 포인트#n를 획득했습니다.");
+         this.sendNext("You praised #b" + toName + "#k. You have gained #e500 Praise Points#n.");
          this.dispose();
          return true;
       }
@@ -4639,17 +4649,17 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          try {
             p = Integer.parseInt(point);
          } catch (NumberFormatException var86) {
-            this.sendNext("초심자 패키지가 아닌 경우 금액을 구둣점을 제외한 숫자로 적어주시기 바랍니다.");
+            this.sendNext("If it's not a beginner package, please enter the amount as a number without commas.");
             return -1;
          }
 
          if (p < 10000) {
-            this.sendNext("최소 충전 금액은 1만원 이상부터 가능합니다.");
+            this.sendNext("The minimum charge amount is 10,000 or more.");
             return -1;
          }
 
          if (p % 1000 > 0) {
-            this.sendNext("천원 단위로만 충전 가능합니다.");
+            this.sendNext("You can only charge in units of 1,000.");
             return -1;
          }
 
@@ -4667,7 +4677,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                }
             }
          } catch (SQLException var91) {
-            this.sendNext("알 수 없는 오류가 발생하였습니다.");
+            this.sendNext("An unknown error has occurred.");
             this.dispose();
          } finally {
             try {
@@ -4743,11 +4753,11 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             if (find) {
-               this.sendNext("이미 해당 패키지를 구매하여 구매 불가능합니다.");
+               this.sendNext("You have already purchased this package and cannot purchase it again.");
                return -1;
             }
          } catch (SQLException var94) {
-            this.sendNext("알 수 없는 오류가 발생하였습니다.");
+            this.sendNext("An unknown error has occurred.");
             this.dispose();
          } finally {
             try {
@@ -4976,7 +4986,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             ps.setInt(1, sel);
             ps.setString(2, this.getClient().getAccountName());
             ps.executeQuery();
-            this.sendNext((DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "해당 충전 신청이 취소되었습니다.");
+            this.sendNext((DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "The charge request has been cancelled.");
             this.dispose();
             DonationRequest.init();
             return true;
@@ -5015,42 +5025,42 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          ps.setString(2, this.getClient().getAccountName());
          rs = ps.executeQuery();
          String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#")
-               + "다음 신청 내역을 취소하시겠습니까? 입금 후 취소 시 취소건 처리에 대해 문의해주셔야 하고 시간이 소요될 수 있으므로 반드시 입금 전 취소해주시기 바랍니다.\r\n\r\n";
+               + "Do you want to cancel the following request? If you cancel after deposit, refund processing may take time, so please cancel before depositing.\r\n\r\n";
 
          while (rs.next()) {
             int status = rs.getInt("status");
-            msg = msg + "#e캐릭터 이름#n : #b" + rs.getString("player_name") + "#k\r\n";
-            msg = msg + "#e신청 금액#n : #b" + rs.getInt("point") + "#k\r\n";
-            msg = msg + "#e입금자 명#n : #b" + rs.getString("real_name") + "#k\r\n";
-            msg = msg + "#e유형#n : #b";
+            msg = msg + "#eCharacter Name#n : #b" + rs.getString("player_name") + "#k\r\n";
+            msg = msg + "#eRequest Amount#n : #b" + rs.getInt("point") + "#k\r\n";
+            msg = msg + "#eDepositor Name#n : #b" + rs.getString("real_name") + "#k\r\n";
+            msg = msg + "#eType#n : #b";
             int type = rs.getInt("type");
             if (type == 0) {
-               msg = msg + "일반 충전#k\r\n";
+               msg = msg + "Normal Charge#k\r\n";
             } else if (type == 1) {
-               msg = msg + "이벤트 충전#k\r\n";
+               msg = msg + "Event Charge#k\r\n";
             } else if (type == 2) {
-               msg = msg + "초심자 패키지#k\r\n";
+               msg = msg + "Beginner Package#k\r\n";
             } else if (type == 3) {
-               msg = msg + "신년 이벤트 충전#k\r\n";
+               msg = msg + "New Year Event Charge#k\r\n";
             }
 
             Timestamp time = rs.getTimestamp("time");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String fDate = sdf.format(time.getTime());
-            msg = msg + "#e신청 날짜#n : #b" + fDate + "#k\r\n";
-            msg = msg + "#e처리 상태#n : ";
+            msg = msg + "#eRequest Date#n : #b" + fDate + "#k\r\n";
+            msg = msg + "#eStatus#n : ";
             if (status == 0) {
-               msg = msg + "미처리#k\r\n";
+               msg = msg + "Unprocessed#k\r\n";
             } else if (status == 1) {
-               msg = msg + "#b처리 완료#k\r\n";
+               msg = msg + "#bCompleted#k\r\n";
             } else if (status == 2) {
-               msg = msg + "#r입금 누락#k\r\n";
+               msg = msg + "#rDeposit Missing#k\r\n";
             }
          }
 
          this.sendYesNo(msg);
       } catch (SQLException var23) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
       } finally {
          try {
@@ -5080,8 +5090,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          boolean find = false;
 
          String msg;
-         for (msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<신청한 " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트")
-               + " 충전 신청 내역>#n\r\n"; rs.next(); find = true) {
+         for (msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<Requested "
+               + (DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point")
+               + " Charge Request List>#n\r\n"; rs.next(); find = true) {
             id = rs.getInt("id");
             int status = rs.getInt("status");
             if (status == 0) {
@@ -5090,36 +5101,36 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                msg = msg + "\r\n";
             }
 
-            msg = msg + "#e캐릭터 이름#n : #b" + rs.getString("player_name") + "#k\r\n";
-            msg = msg + "#e신청 금액#n : #b" + rs.getInt("point") + "#k\r\n";
-            msg = msg + "#e입금자 명#n : #b" + rs.getString("real_name") + "#k\r\n";
-            msg = msg + "#e유형#n : #b";
+            msg = msg + "#eCharacter Name#n : #b" + rs.getString("player_name") + "#k\r\n";
+            msg = msg + "#eRequest Amount#n : #b" + rs.getInt("point") + "#k\r\n";
+            msg = msg + "#eDepositor Name#n : #b" + rs.getString("real_name") + "#k\r\n";
+            msg = msg + "#eType#n : #b";
             int type = rs.getInt("type");
             if (type == 0) {
-               msg = msg + "일반 충전#k\r\n";
+               msg = msg + "Normal Charge#k\r\n";
             } else if (type == 1) {
-               msg = msg + "이벤트 충전#k\r\n";
+               msg = msg + "Event Charge#k\r\n";
             } else if (type == 2) {
-               msg = msg + "초심자 패키지#k\r\n";
+               msg = msg + "Beginner Package#k\r\n";
             } else if (type == 3) {
-               msg = msg + "신년 이벤트 충전#k\r\n";
+               msg = msg + "New Year Event Charge#k\r\n";
             }
 
             Timestamp time = rs.getTimestamp("time");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String fDate = sdf.format(time.getTime());
-            msg = msg + "#e신청 날짜#n : #b" + fDate + "#k\r\n";
-            msg = msg + "#e처리 상태#n : ";
+            msg = msg + "#eRequest Date#n : #b" + fDate + "#k\r\n";
+            msg = msg + "#eStatus#n : ";
             if (status == 0) {
-               msg = msg + "미처리#k\r\n";
+               msg = msg + "Unprocessed#k\r\n";
             } else if (status == 1) {
-               msg = msg + "#b처리 완료#k\r\n";
+               msg = msg + "#bCompleted#k\r\n";
             } else if (status == 2) {
-               msg = msg + "#r입금 누락#k\r\n";
+               msg = msg + "#rDeposit Missing#k\r\n";
             }
 
             if (status == 0) {
-               msg = msg + "                                                              #r취소하기#k#l\r\n\r\n";
+               msg = msg + "                                                              #rCancel#k#l\r\n\r\n";
             }
          }
 
@@ -5128,10 +5139,11 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             return true;
          }
 
-         this.sendNext("등록하신 " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + " 충전 신청 내역이 없습니다.");
+         this.sendNext(
+               "There is no " + (DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point") + " charge request history.");
          id = 0;
       } catch (SQLException var25) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("An unknown error has occurred.");
          return false;
       } finally {
          try {
@@ -5160,44 +5172,45 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          ps.setString(1, this.getClient().getAccountName());
          rs = ps.executeQuery();
          boolean find = false;
-         String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<" + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트")
-               + " 충전 내역>#n\r\n";
+         String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<"
+               + (DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point")
+               + " Charge History>#n\r\n";
          int totalPoint = 0;
 
          String msg2;
          for (msg2 = ""; rs.next(); find = true) {
             String name = rs.getString("name");
-            msg2 = msg2 + "#e캐릭터 이름#n : #b" + name + "#k\r\n";
-            msg2 = msg2 + "#e충전 금액#n : #b" + rs.getString("price") + "#k\r\n";
+            msg2 = msg2 + "#eCharacter Name#n : #b" + name + "#k\r\n";
+            msg2 = msg2 + "#eCharge Amount#n : #b" + rs.getString("price") + "#k\r\n";
             String p = rs.getString("price").replace(",", "");
             if (name.equals("이벤트참여")) {
-               msg2 = msg2 + "#e충전 유형#n : #b이벤트 참여#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bEvent Participation#k\r\n";
             } else if (name.equals("신년이벤트")) {
-               msg2 = msg2 + "#e충전 유형#n : #b신년 이벤트 참여#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bNew Year Event Participation#k\r\n";
             } else if (name.equals("클스마스이벤트")) {
-               msg2 = msg2 + "#e충전 유형#n : #b크리스마스 이벤트 참여#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bChristmas Event Participation#k\r\n";
             } else if (name.equals("보너스이벤트")) {
-               msg2 = msg2 + "#e충전 유형#n : #b보너스 이벤트 참여#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bBonus Event Participation#k\r\n";
             } else if (name.equals("초보자패키지")) {
-               msg2 = msg2 + "#e충전 유형#n : #b초심자패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bBeginner Package#k\r\n";
             } else if (name.equals("어린이날")) {
-               msg2 = msg2 + "#e충전 유형#n : #b어린이 날 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bChildren's Day Package#k\r\n";
             } else if (name.contains("가정의달")) {
-               msg2 = msg2 + "#e충전 유형#n : #b가정의 달 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bFamily Month Package#k\r\n";
             } else if (name.contains("추석")) {
-               msg2 = msg2 + "#e충전 유형#n : #b추석 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bChuseok Package#k\r\n";
             } else if (name.contains("3주년")) {
-               msg2 = msg2 + "#e충전 유형#n : #b3주년 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #b3rd Anniversary Package#k\r\n";
             } else if (name.contains("크리스마스")) {
-               msg2 = msg2 + "#e충전 유형#n : #b크리스마스 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bChristmas Package#k\r\n";
             } else if (name.contains("2023")) {
-               msg2 = msg2 + "#e충전 유형#n : #b2023 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #b2023 Package#k\r\n";
             } else if (name.contains("5월")) {
-               msg2 = msg2 + "#e충전 유형#n : #b23 가정의 달 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #b23 Family Month Package#k\r\n";
             } else if (name.contains("상시패키지")) {
-               msg2 = msg2 + "#e충전 유형#n : #b상시 패키지#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bAlways Package#k\r\n";
             } else {
-               msg2 = msg2 + "#e충전 유형#n : #b일반 충전#k\r\n";
+               msg2 = msg2 + "#eCharge Type#n : #bNormal Charge#k\r\n";
             }
 
             if (!name.contains("패키지") && !name.contains("어린이날")
@@ -5211,20 +5224,21 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                totalPoint += Integer.parseInt(p);
             }
 
-            msg2 = msg2 + "#e충전 날짜#n : #b" + rs.getString("date") + "#k\r\n\r\n";
+            msg2 = msg2 + "#eCharge Date#n : #b" + rs.getString("date") + "#k\r\n\r\n";
          }
 
          NumberFormat nf = NumberFormat.getInstance();
-         msg = msg + "#e총 누적 금액#n : #b" + nf.format((long) totalPoint) + "#k\r\n\r\n#e<충전 내역>#n\r\n";
+         msg = msg + "#eTotal Accumulated Amount#n : #b" + nf.format((long) totalPoint)
+               + "#k\r\n\r\n#e<Charge History>#n\r\n";
          if (!find) {
-            msg = msg + "충전 내역이 없습니다.";
+            msg = msg + "No charge history.";
          } else {
             msg = msg + msg2;
          }
 
          this.sendNext(msg);
       } catch (SQLException var22) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
       } finally {
          try {
@@ -5386,7 +5400,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          return check;
       } catch (SQLException var19) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
          check = false;
       } finally {
@@ -5446,7 +5460,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          return check;
       } catch (SQLException var19) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("An unknown error has occurred.");
          this.dispose();
          check = false;
       } finally {
@@ -5478,7 +5492,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             long delta = canTime - now;
             if (delta > 0L) {
                int minute = (int) (delta / 1000L / 60L);
-               this.sendNext(minute + "분 후에 입장할 수 있습니다.");
+               this.sendNext("You can enter in " + minute + " minutes.");
                this.dispose();
                return false;
             } else {
@@ -5492,7 +5506,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void setBossEnter(Party party, String bossName, String bossKeyValue, String canTimeKey, int canTimeType) {
       this.getChannelServer().getPartyMembers(party).forEach(p -> {
-         StringBuilder sb = new StringBuilder("보스 " + bossName + " 입장");
+         StringBuilder sb = new StringBuilder("Enter Boss " + bossName);
          LoggingManager.putLog(new BossLog(p, BossLogType.EnterLog.getType(), sb));
          if (!DBConfig.isGanglim) {
             p.CountAdd(bossKeyValue);
@@ -5756,7 +5770,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                int p = (int) (remainPoint * (0.2 * c));
                this.getPlayer().setGetExtremeRealCash(canCount);
                this.getPlayer().gainRealCash(p);
-               String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+               String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
                this.getPlayer().dropMessage(5, "You have obtained " + p + " " + cashName + ".");
                return p;
             }
@@ -5969,7 +5983,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public String showMiniGameWaitList(int gameNum) {
       int fieldId = 0;
-      StringBuilder text = new StringBuilder("\t현재 대기열에 있는 플레이어입니다.\r\n\r\n");
+      StringBuilder text = new StringBuilder("\tPlayers currently in the queue.\r\n\r\n");
       boolean found = false;
       if (gameNum == 7) {
          fieldId = 993189800;
@@ -5986,14 +6000,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       for (Entry<Integer, WaitQueue> waitQueue : queueMap.entrySet()) {
          if (fieldId == waitQueue.getValue().getFieldID()) {
             for (MapleCharacter chr : waitQueue.getValue().getPlayers()) {
-               text.append(" - 플레이어 이름 : ").append(chr.getName()).append("\r\n");
+               text.append(" - Player Name : ").append(chr.getName()).append("\r\n");
                found = true;
             }
          }
       }
 
       if (!found) {
-         text = new StringBuilder("현재 대기열에 있는 인원이 없습니다.");
+         text = new StringBuilder("There are no players currently in the queue.");
       }
 
       return text.toString();

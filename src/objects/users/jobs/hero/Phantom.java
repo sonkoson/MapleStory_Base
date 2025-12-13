@@ -57,26 +57,24 @@ public class Phantom extends Thief {
 
    @Override
    public void onAttack(
-      MapleMonster monster,
-      boolean boss,
-      AttackPair attackPair,
-      Skill skill,
-      long totalDamage,
-      AttackInfo attack,
-      SecondaryStatEffect effect,
-      RecvPacketOpcode opcode
-   ) {
+         MapleMonster monster,
+         boolean boss,
+         AttackPair attackPair,
+         Skill skill,
+         long totalDamage,
+         AttackInfo attack,
+         SecondaryStatEffect effect,
+         RecvPacketOpcode opcode) {
       if (attack.skillID == 24121010) {
          SecondaryStatEffect eff = SkillFactory.getSkill(24121003).getEffect(attack.skillLevel);
          if (eff != null) {
             monster.applyStatus(
-               this.getPlayer(),
-               new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, eff.getZ(), attack.skillID, null, false),
-               false,
-               eff.getDuration(),
-               false,
-               eff
-            );
+                  this.getPlayer(),
+                  new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, eff.getZ(), attack.skillID, null, false),
+                  false,
+                  eff.getDuration(),
+                  false,
+                  eff);
          }
       }
 
@@ -85,13 +83,13 @@ public class Phantom extends Thief {
 
    @Override
    public void afterAttack(
-      boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill, long totalExp, RecvPacketOpcode opcode
-   ) {
+         boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill,
+         long totalExp, RecvPacketOpcode opcode) {
       if (attack.targets > 0
-         && GameConstants.isPhantom(this.getPlayer().getJob())
-         && attack.skillID != 24120002
-         && attack.skillID != 24100003
-         && attack.skillID != 24121011) {
+            && GameConstants.isPhantom(this.getPlayer().getJob())
+            && attack.skillID != 24120002
+            && attack.skillID != 24100003
+            && attack.skillID != 24121011) {
          this.handleCardStack(attack);
       }
 
@@ -105,7 +103,8 @@ public class Phantom extends Thief {
             }
          }
 
-         if (SkillFactory.getSkill(400041040).getSkillList().contains(attack.skillID) || talentop.contains(GameConstants.getLinkedAranSkill(attack.skillID))) {
+         if (SkillFactory.getSkill(400041040).getSkillList().contains(attack.skillID)
+               || talentop.contains(GameConstants.getLinkedAranSkill(attack.skillID))) {
             if (attack.skillID != 24121000 && attack.skillID != 24121005 && attack.skillID != 24141000) {
                this.tryApplyMarkOfPhantom(attack, eff);
             } else {
@@ -120,7 +119,7 @@ public class Phantom extends Thief {
       Integer v = this.getPlayer().getBuffedValue(SecondaryStatFlag.Judgement);
       if (v != null && v == 5) {
          int z = this.judgementX;
-         int hp = (int)(this.getPlayer().getStat().getMaxHp() * 0.01 * z);
+         int hp = (int) (this.getPlayer().getStat().getMaxHp() * 0.01 * z);
          this.getPlayer().addHP(hp, false);
       }
 
@@ -167,15 +166,14 @@ public class Phantom extends Thief {
             if (effect.getSourceId() == 24120002 && this.getPlayer().getCooldownLimit(24121011) == 0L) {
                SecondaryStatEffect reverseCard = SkillFactory.getSkill(24121011).getEffect(slv);
                List<MapleMonster> mobs = this.getPlayer()
-                  .getMap()
-                  .getMobsInRect(
-                     this.getPlayer().getPosition(),
-                     reverseCard.getLt().x,
-                     reverseCard.getLt().y,
-                     reverseCard.getRb().x,
-                     reverseCard.getRb().y,
-                     (attack.display & 32768) != 0
-                  );
+                     .getMap()
+                     .getMobsInRect(
+                           this.getPlayer().getPosition(),
+                           reverseCard.getLt().x,
+                           reverseCard.getLt().y,
+                           reverseCard.getRb().x,
+                           reverseCard.getRb().y,
+                           (attack.display & 32768) != 0);
                Field map = this.getPlayer().getMap();
                List<Integer> target = new ArrayList<>();
 
@@ -203,23 +201,22 @@ public class Phantom extends Thief {
                   this.getPlayer().addCooldown(24121011, System.currentTimeMillis(), 5000L);
                   ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                   ForceAtom forceAtom = new ForceAtom(
-                     info,
-                     24121011,
-                     this.getPlayer().getId(),
-                     false,
-                     true,
-                     this.getPlayer().getId(),
-                     ForceAtom.AtomType.PHANTOM_REVERSE_CARD,
-                     target,
-                     target.size()
-                  );
+                        info,
+                        24121011,
+                        this.getPlayer().getId(),
+                        false,
+                        true,
+                        this.getPlayer().getId(),
+                        ForceAtom.AtomType.PHANTOM_REVERSE_CARD,
+                        target,
+                        target.size());
                   map.broadcastMessage(CField.getCreateForceAtom(forceAtom));
                }
             }
 
             if (effect.makeChanceResult()) {
                if (this.getPlayer().getCardStack() < max) {
-                  this.getPlayer().setCardStack((byte)(this.getPlayer().getCardStack() + 1));
+                  this.getPlayer().setCardStack((byte) (this.getPlayer().getCardStack() + 1));
                }
 
                this.getPlayer().addRunningStack(1);
@@ -227,16 +224,15 @@ public class Phantom extends Thief {
                int carteID = this.getCarteID();
                info.initNoirCarte(effect.getSourceId());
                ForceAtom forceAtom = new ForceAtom(
-                  info,
-                  carteID,
-                  this.getPlayer().getId(),
-                  false,
-                  true,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.NOIR_CARTE,
-                  Collections.singletonList(0),
-                  1
-               );
+                     info,
+                     carteID,
+                     this.getPlayer().getId(),
+                     false,
+                     true,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.NOIR_CARTE,
+                     Collections.singletonList(0),
+                     1);
                this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
                this.getPlayer().send(CField.updateCardStack(this.getPlayer().getCardStack()));
             }
@@ -255,19 +251,20 @@ public class Phantom extends Thief {
                carteID = 24120002;
             }
 
-            this.getPlayer().setCardStack((byte)0);
+            this.getPlayer().setCardStack((byte) 0);
             this.getPlayer().addRunningStack(carteID == 24100003 ? 5 : 10);
             this.getPlayer().send(CField.updateCardStack(this.getPlayer().getCardStack()));
             List<MapleMapObject> objs = this.getPlayer()
-               .getMap()
-               .getMapObjectsInRange(this.getPlayer().getTruePosition(), 640000.0, Arrays.asList(MapleMapObjectType.MONSTER));
+                  .getMap()
+                  .getMapObjectsInRange(this.getPlayer().getTruePosition(), 640000.0,
+                        Arrays.asList(MapleMapObjectType.MONSTER));
             List<Integer> monsters = new ArrayList<>();
             int count = effect.getU();
             if (objs.size() > 0) {
                Collections.shuffle(objs);
 
                for (int i = 0; i < count; i++) {
-                  MapleMonster mob = (MapleMonster)objs.get(i);
+                  MapleMonster mob = (MapleMonster) objs.get(i);
                   if (mob != null && !mob.getStats().isFriendly()) {
                      monsters.add(mob.getObjectId());
                      break;
@@ -278,12 +275,13 @@ public class Phantom extends Thief {
             if (monsters.size() > 0) {
                ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                ForceAtom forceAtom = new ForceAtom(
-                  info, carteID, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.NOIR_CARTE, monsters, effect.getU()
-               );
+                     info, carteID, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                     ForceAtom.AtomType.NOIR_CARTE, monsters, effect.getU());
                this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             }
 
-            DiceRoll roll = new DiceRoll(this.getPlayer().getId(), zz, -1, this.getActiveSkillID(), this.getActiveSkillLevel(), true);
+            DiceRoll roll = new DiceRoll(this.getPlayer().getId(), zz, -1, this.getActiveSkillID(),
+                  this.getActiveSkillLevel(), true);
             this.getPlayer().getMap().broadcastMessage(this.getPlayer(), roll.encodeForRemote(), false);
             this.getPlayer().getClient().getSession().writeAndFlush(roll.encodeForLocal());
             if (this.getActiveSkillID() == 20031209) {
@@ -294,7 +292,8 @@ public class Phantom extends Thief {
                   this.judgementX = effect.getW();
                }
 
-               this.getPlayer().temporaryStatSet(this.getActiveSkillID(), effect.getDuration(), SecondaryStatFlag.Judgement, rand);
+               this.getPlayer().temporaryStatSet(this.getActiveSkillID(), effect.getDuration(),
+                     SecondaryStatFlag.Judgement, rand);
             } else if (this.getActiveSkillID() == 20031210) {
                int rand = Randomizer.rand(1, 4);
                if (rand == 4) {
@@ -302,7 +301,8 @@ public class Phantom extends Thief {
                   Map<SecondaryStatFlag, Integer> statups = new HashMap<>();
                   statups.put(SecondaryStatFlag.Judgement, 5);
                   statups.put(SecondaryStatFlag.VampiricTouch, effect.getZ());
-                  this.getPlayer().temporaryStatSet(this.getActiveSkillID(), this.getActiveSkillLevel(), effect.getDuration(), statups);
+                  this.getPlayer().temporaryStatSet(this.getActiveSkillID(), this.getActiveSkillLevel(),
+                        effect.getDuration(), statups);
                } else {
                   if (rand == 1) {
                      this.judgementX = effect.getV();
@@ -312,7 +312,8 @@ public class Phantom extends Thief {
                      this.judgementX = effect.getX() * 100 + effect.getY();
                   }
 
-                  this.getPlayer().temporaryStatSet(this.getActiveSkillID(), effect.getDuration(), SecondaryStatFlag.Judgement, rand);
+                  this.getPlayer().temporaryStatSet(this.getActiveSkillID(), effect.getDuration(),
+                        SecondaryStatFlag.Judgement, rand);
                }
             }
             break;
@@ -324,7 +325,8 @@ public class Phantom extends Thief {
             for (int ix = 0; ix < mobCount; ix++) {
                MapleMonster mob = this.getPlayer().getMap().getMonsterByOid(packet.readInt());
                if (mob != null) {
-                  if (mob.getBuff(MobTemporaryStatFlag.P_COUNTER) != null || mob.getBuff(MobTemporaryStatFlag.M_COUNTER) != null) {
+                  if (mob.getBuff(MobTemporaryStatFlag.P_COUNTER) != null
+                        || mob.getBuff(MobTemporaryStatFlag.M_COUNTER) != null) {
                      mob.cancelStatus(MobTemporaryStatFlag.P_COUNTER);
                      mob.cancelStatus(MobTemporaryStatFlag.M_COUNTER);
                      statups.put(SecondaryStatFlag.PowerGuard, effect.getY());
@@ -332,8 +334,8 @@ public class Phantom extends Thief {
                   }
 
                   if (mob.getBuff(MobTemporaryStatFlag.P_IMMUNE) != null
-                     || mob.getBuff(MobTemporaryStatFlag.M_IMMUNE) != null
-                     || mob.getBuff(MobTemporaryStatFlag.HARD_SKIN) != null) {
+                        || mob.getBuff(MobTemporaryStatFlag.M_IMMUNE) != null
+                        || mob.getBuff(MobTemporaryStatFlag.HARD_SKIN) != null) {
                      mob.cancelStatus(MobTemporaryStatFlag.P_IMMUNE);
                      mob.cancelStatus(MobTemporaryStatFlag.M_IMMUNE);
                      mob.cancelStatus(MobTemporaryStatFlag.HARD_SKIN);
@@ -356,7 +358,8 @@ public class Phantom extends Thief {
             }
 
             if (statups.size() > 0) {
-               this.getPlayer().temporaryStatSet(this.getActiveSkillID(), this.getActiveSkillLevel(), effect.getDuration(), statups);
+               this.getPlayer().temporaryStatSet(this.getActiveSkillID(), this.getActiveSkillLevel(),
+                     effect.getDuration(), statups);
             }
 
             effect.applyTo(this.getPlayer(), true);
@@ -404,38 +407,35 @@ public class Phantom extends Thief {
                atomInfo3.specialPos1 = special_pos1;
                atomInfo3.specialPos2 = special_pos2;
                ForceAtom atom1 = new ForceAtom(
-                  atomInfo1,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo1,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                ForceAtom atom2 = new ForceAtom(
-                  atomInfo2,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo2,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                ForceAtom atom3 = new ForceAtom(
-                  atomInfo3,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo3,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                this.getPlayer().getMap().addForceAtom(atom1.getKey(), atom1);
                this.getPlayer().getMap().addForceAtom(atom2.getKey(), atom2);
                this.getPlayer().getMap().addForceAtom(atom3.getKey(), atom3);
@@ -465,38 +465,35 @@ public class Phantom extends Thief {
                atomInfo3.specialPos2 = special_pos2;
                atomInfo3.atomFlag = flag;
                ForceAtom atom1 = new ForceAtom(
-                  atomInfo1,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo1,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                ForceAtom atom2 = new ForceAtom(
-                  atomInfo2,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo2,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                ForceAtom atom3 = new ForceAtom(
-                  atomInfo3,
-                  400041023,
-                  this.getPlayer().getId(),
-                  false,
-                  false,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.BLACK_JACK,
-                  Collections.singletonList(objectId),
-                  1
-               );
+                     atomInfo3,
+                     400041023,
+                     this.getPlayer().getId(),
+                     false,
+                     false,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.BLACK_JACK,
+                     Collections.singletonList(objectId),
+                     1);
                this.getPlayer().getMap().addForceAtom(atom1.getKey(), atom1);
                this.getPlayer().getMap().addForceAtom(atom2.getKey(), atom2);
                this.getPlayer().getMap().addForceAtom(atom3.getKey(), atom3);
@@ -514,7 +511,7 @@ public class Phantom extends Thief {
 
             for (TeleportAttackElement e : this.getTeleportAttackAction().actions) {
                if (e.type == 8 || e.type == 9) {
-                  TeleportAttackData_Quad quad = (TeleportAttackData_Quad)e.data;
+                  TeleportAttackData_Quad quad = (TeleportAttackData_Quad) e.data;
                   if (quad != null) {
                      pos = new Point(quad.x, quad.y);
                   }
@@ -549,7 +546,8 @@ public class Phantom extends Thief {
             SecondaryStatEffect eff = this.getPlayer().getSkillLevelData(20031205);
             if (eff != null) {
                this.getPlayer().setPhantomShroudCount(0);
-               this.getPlayer().giveCoolDowns(20031205, System.currentTimeMillis(), (long)eff.getCooldown(this.getPlayer()) * count);
+               this.getPlayer().giveCoolDowns(20031205, System.currentTimeMillis(),
+                     (long) eff.getCooldown(this.getPlayer()) * count);
                this.getPlayer().send(CField.skillCooldown(20031205, eff.getCooldown(this.getPlayer()) * count));
             }
          default:
@@ -558,7 +556,7 @@ public class Phantom extends Thief {
          case 400041009:
             int skillLv = this.getPlayer().getTotalSkillLevel(this.getActiveSkillID());
             this.getPlayer().temporaryStatResetBySkillID(this.getActiveSkillID());
-            int[] skills = new int[]{400041011, 400041012, 400041013, 400041014, 400041015};
+            int[] skills = new int[] { 400041011, 400041012, 400041013, 400041014, 400041015 };
 
             for (int skill_ : skills) {
                this.getPlayer().temporaryStatResetBySkillID(skill_);
@@ -567,7 +565,8 @@ public class Phantom extends Thief {
             SecondaryStatEffect skillEff = SkillFactory.getSkill(this.getActiveSkillID()).getEffect(skillLv);
             if (skillEff != null) {
                this.getPlayer().send(CWvsContext.enableActions(this.getPlayer(), false));
-               this.getPlayer().temporaryStatSet(SecondaryStatFlag.indiePartialNotDamaged, this.getActiveSkillID(), skillLv, 3000);
+               this.getPlayer().temporaryStatSet(SecondaryStatFlag.indiePartialNotDamaged, this.getActiveSkillID(),
+                     skillLv, 3000);
             }
 
             int jokerSkill = skills[Randomizer.nextInt(skills.length)];
@@ -575,7 +574,8 @@ public class Phantom extends Thief {
             if (jokerEff != null) {
                this.getPlayer().send(CWvsContext.enableActions(this.getPlayer(), false));
                this.getPlayer().send(CWvsContext.enableActions(this.getPlayer(), true));
-               this.getPlayer().temporaryStatSet(jokerSkill, skillLv, jokerEff.getDuration(), this.getBuffList(jokerEff));
+               this.getPlayer().temporaryStatSet(jokerSkill, skillLv, jokerEff.getDuration(),
+                     this.getBuffList(jokerEff));
                if (this.getPlayer().getParty() != null) {
                   for (MapleCharacter pChr : this.getPlayer().getPartyMembers()) {
                      if (this.getPlayer().getId() != pChr.getId()) {
@@ -587,7 +587,8 @@ public class Phantom extends Thief {
                this.getPlayer().send(CWvsContext.enableActions(this.getPlayer(), false));
                PacketEncoder p = new PacketEncoder();
                p.writeInt(0);
-               SkillEffect e = new SkillEffect(this.getPlayer().getId(), this.getPlayer().getLevel(), this.getActiveSkillID(), skillLv, p);
+               SkillEffect e = new SkillEffect(this.getPlayer().getId(), this.getPlayer().getLevel(),
+                     this.getActiveSkillID(), skillLv, p);
                this.getPlayer().send(e.encodeForLocal());
                e = new SkillEffect(this.getPlayer().getId(), this.getPlayer().getLevel(), jokerSkill, skillLv, p);
                this.getPlayer().send(e.encodeForLocal());
@@ -606,7 +607,7 @@ public class Phantom extends Thief {
          SecondaryStatEffect eff = this.getPlayer().getSkillLevelData(400041009);
          if (eff != null && this.getPlayer().isAlive()) {
             int u = eff.getU();
-            int hp = (int)(this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * u);
+            int hp = (int) (this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * u);
             this.getPlayer().healHP(hp);
          }
       }
@@ -696,8 +697,9 @@ public class Phantom extends Thief {
          }
 
          List<MapleMonster> mobs = this.getPlayer()
-            .getMap()
-            .getMobsInRect(this.getPlayer().getPosition(), effect.getLt().x, effect.getLt().y, effect.getRb().x, effect.getRb().y, isFaceLeft);
+               .getMap()
+               .getMobsInRect(this.getPlayer().getPosition(), effect.getLt().x, effect.getLt().y, effect.getRb().x,
+                     effect.getRb().y, isFaceLeft);
          if (mobs.size() > 0) {
             for (int i = 0; i < effect.getX(); i++) {
                Collections.shuffle(mobs);
@@ -706,8 +708,8 @@ public class Phantom extends Thief {
                   int playerID = this.getPlayer().getId();
                   ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                   ForceAtom forceAtom = new ForceAtom(
-                     info, 400041010, playerID, false, true, playerID, ForceAtom.AtomType.NOIR_CARTE, Collections.singletonList(mob.getObjectId()), 1
-                  );
+                        info, 400041010, playerID, false, true, playerID, ForceAtom.AtomType.NOIR_CARTE,
+                        Collections.singletonList(mob.getObjectId()), 1);
                   this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
                }
             }
@@ -715,16 +717,15 @@ public class Phantom extends Thief {
             for (int ix = 0; ix < 4; ix++) {
                ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                ForceAtom forceAtom = new ForceAtom(
-                  info,
-                  carteID,
-                  this.getPlayer().getId(),
-                  false,
-                  true,
-                  this.getPlayer().getId(),
-                  ForceAtom.AtomType.NOIR_CARTE,
-                  Collections.singletonList(0),
-                  1
-               );
+                     info,
+                     carteID,
+                     this.getPlayer().getId(),
+                     false,
+                     true,
+                     this.getPlayer().getId(),
+                     ForceAtom.AtomType.NOIR_CARTE,
+                     Collections.singletonList(0),
+                     1);
                this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             }
          }
@@ -794,7 +795,7 @@ public class Phantom extends Thief {
          AtomicInteger slot = new AtomicInteger(0);
          stolenSkills.forEach(stSkill -> {
             if (stSkill.getLeft() == skillId) {
-               this.getPlayer().dropMessage(-6, "이미 해당 스킬을 훔치셨습니다. 삭제 하신 뒤 다시 시도해주세요.");
+               this.getPlayer().dropMessage(-6, "You have already stolen this skill. Please delete it and try again.");
                if (this.getPlayer().isGM()) {
                   this.getPlayer().dropMessage(5, "Skill ID: " + skillId);
                }
@@ -812,12 +813,13 @@ public class Phantom extends Thief {
                stolenSkills.add(dummy);
                this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.STOLEN_SKILLS.getFlag());
                this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.SKILLS.getFlag());
-               this.getPlayer().changeSkillLevel_Skip(skill, skillLevel, (byte)skillLevel);
-               this.getPlayer().getClient().getSession().writeAndFlush(CField.addStolenSkill(jobId, slot.get(), skillId, skillLevel));
+               this.getPlayer().changeSkillLevel_Skip(skill, skillLevel, (byte) skillLevel);
+               this.getPlayer().getClient().getSession()
+                     .writeAndFlush(CField.addStolenSkill(jobId, slot.get(), skillId, skillLevel));
             }
          }
       } else {
-         this.getPlayer().dropMessage(-6, "잠시 뒤에 다시 시도해주세요.");
+         this.getPlayer().dropMessage(-6, "Please try again in a moment.");
       }
    }
 
@@ -881,18 +883,21 @@ public class Phantom extends Thief {
             this.cancelStolenSkill(skillId);
             this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.STOLEN_SKILLS.getFlag());
             this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.SKILLS.getFlag());
-            this.getPlayer().getClient().getSession().writeAndFlush(CField.replaceStolenSkill(this.getStealSkill(jobId), 0));
+            this.getPlayer().getClient().getSession()
+                  .writeAndFlush(CField.replaceStolenSkill(this.getStealSkill(jobId), 0));
             slot.set(-1);
 
             for (Pair<Integer, Integer> stSkillx : stolenSkills) {
                if (GameConstants.getJobNumber(stSkillx.getLeft()) == jobId) {
                   if (stSkillx.getRight() > 0) {
-                     this.getPlayer().getClient().getSession().writeAndFlush(CField.replaceStolenSkill(this.getStealSkill(jobId), stSkillx.getLeft()));
+                     this.getPlayer().getClient().getSession()
+                           .writeAndFlush(CField.replaceStolenSkill(this.getStealSkill(jobId), stSkillx.getLeft()));
                   }
 
                   slot.set(slot.get() + 1);
                   if (this.getPlayer().isGM()) {
-                     this.getPlayer().dropMessage(5, "slot : " + slot.get() + "," + stSkillx.getLeft() + ", " + skillId);
+                     this.getPlayer().dropMessage(5,
+                           "slot : " + slot.get() + "," + stSkillx.getLeft() + ", " + skillId);
                   }
 
                   if (stSkillx.getLeft().equals(skillId)) {
@@ -907,7 +912,7 @@ public class Phantom extends Thief {
             this.getPlayer().getClient().getSession().writeAndFlush(CField.removeStolenSkill(jobId, slot.get()));
          }
       } else {
-         this.getPlayer().dropMessage(-6, "잠시 뒤에 다시 시도해주세요.");
+         this.getPlayer().dropMessage(-6, "Please try again in a moment.");
       }
    }
 
@@ -924,19 +929,21 @@ public class Phantom extends Thief {
                      }
 
                      if (dummyEquipped > 0) {
-                        this.unchooseStolenSkill((Integer)dummy.getRight());
+                        this.unchooseStolenSkill((Integer) dummy.getRight());
                      }
                   });
                   stolenSkills.get(stolenSkills.indexOf(dummy)).right = baseSkill;
-                  this.getPlayer().getClient().getSession().writeAndFlush(CField.replaceStolenSkill(baseSkill, skillId));
+                  this.getPlayer().getClient().getSession()
+                        .writeAndFlush(CField.replaceStolenSkill(baseSkill, skillId));
                }
             }
          });
          this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.STOLEN_SKILLS.getFlag());
-         this.getPlayer().dropMessage(-8, "스킬 매니지먼트를 통해 스킬을 변경하셨습니다. 해당 스킬에 30초의 대기시간이 적용됩니다.");
+         this.getPlayer().dropMessage(-8,
+               "You have changed skills via Skill Management. A 30-second cooldown applies to this skill.");
          this.getPlayer().addCooldown(baseSkill, System.currentTimeMillis(), 30000L);
       } else {
-         this.getPlayer().dropMessage(-6, "잠시 뒤에 다시 시도해주세요.");
+         this.getPlayer().dropMessage(-6, "Please try again in a moment.");
       }
    }
 
@@ -961,7 +968,7 @@ public class Phantom extends Thief {
                this.getPlayer().getClient().getSession().writeAndFlush(CField.replaceStolenSkill(baseSkill, 0));
             }
          } else {
-            this.getPlayer().dropMessage(-6, "잠시 뒤에 다시 시도해주세요.");
+            this.getPlayer().dropMessage(-6, "Please try again in a moment.");
          }
       }
    }

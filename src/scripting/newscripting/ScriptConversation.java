@@ -129,19 +129,17 @@ public class ScriptConversation implements Runnable {
          }
 
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  entry.getnSpeakerTemplateID(),
-                  entry.getCustomSpeakerTemplateID(),
-                  entry.getnSpeakerTypeID(),
-                  entry.getFlag(),
-                  ScriptMessageType.Say,
-                  entry.getDlgColor(),
-                  entry.getMsg(),
-                  addPacket
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           entry.getnSpeakerTemplateID(),
+                           entry.getCustomSpeakerTemplateID(),
+                           entry.getnSpeakerTypeID(),
+                           entry.getFlag(),
+                           ScriptMessageType.Say,
+                           entry.getDlgColor(),
+                           entry.getMsg(),
+                           addPacket));
 
          try {
             synchronized (this.gate) {
@@ -218,16 +216,18 @@ public class ScriptConversation implements Runnable {
    }
 
    public void addSay(String say, int flag) {
-      ScriptSayEntry scriptSayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.Say, flag, say);
+      ScriptSayEntry scriptSayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.Say, flag,
+            say);
       this.sayQueue.add(scriptSayEntry);
    }
 
    public void addSayReplacedTemplate(String say, int templacedID, int flag) {
-      this.addSayReplacedTemplate(say, templacedID, (byte)1, flag);
+      this.addSayReplacedTemplate(say, templacedID, (byte) 1, flag);
    }
 
    public void addSayReplacedTemplate(String say, int templacedID, byte dlgType, int flag) {
-      ScriptSayEntry scriptSayEntry = new ScriptSayEntry((byte)4, templacedID, ScriptMessageType.Say, flag, dlgType, say);
+      ScriptSayEntry scriptSayEntry = new ScriptSayEntry((byte) 4, templacedID, ScriptMessageType.Say, flag, dlgType,
+            say);
       this.sayQueue.add(scriptSayEntry);
    }
 
@@ -253,19 +253,17 @@ public class ScriptConversation implements Runnable {
          }
 
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  entry.getnSpeakerTemplateID(),
-                  entry.getCustomSpeakerTemplateID(),
-                  entry.getnSpeakerTypeID(),
-                  entry.getFlag(),
-                  ScriptMessageType.Say,
-                  entry.getDlgColor(),
-                  entry.getMsg(),
-                  addPacket
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           entry.getnSpeakerTemplateID(),
+                           entry.getCustomSpeakerTemplateID(),
+                           entry.getnSpeakerTypeID(),
+                           entry.getFlag(),
+                           ScriptMessageType.Say,
+                           entry.getDlgColor(),
+                           entry.getMsg(),
+                           addPacket));
       }
    }
 
@@ -283,8 +281,9 @@ public class ScriptConversation implements Runnable {
          return -1;
       } else {
          this.lastmsg = ScriptMessageType.AskYesNo.getType();
-         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskYesNo, flag, str);
-         sayEntry.setDlgColor((byte)1);
+         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskYesNo, flag,
+               str);
+         sayEntry.setDlgColor((byte) 1);
          if (npcid > 0) {
             sayEntry.setCustomSpeakerTemplateID(npcid);
          }
@@ -294,19 +293,17 @@ public class ScriptConversation implements Runnable {
          }
 
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  sayEntry.getnSpeakerTemplateID(),
-                  sayEntry.getCustomSpeakerTemplateID(),
-                  GameObjectType.Npc,
-                  sayEntry.getFlag(),
-                  ScriptMessageType.AskYesNo,
-                  sayEntry.getDlgColor(),
-                  sayEntry.getMsg(),
-                  null
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           sayEntry.getnSpeakerTemplateID(),
+                           sayEntry.getCustomSpeakerTemplateID(),
+                           GameObjectType.Npc,
+                           sayEntry.getFlag(),
+                           ScriptMessageType.AskYesNo,
+                           sayEntry.getDlgColor(),
+                           sayEntry.getMsg(),
+                           null));
 
          try {
             synchronized (this.gate) {
@@ -339,26 +336,24 @@ public class ScriptConversation implements Runnable {
          try {
             this.lastmsg = ScriptMessageType.AskMenu.getType();
             ScriptSayEntry sayEntry = new ScriptSayEntry(
-               (byte)4, templateID != 0 ? templateID : this.engine.getNpc().getId(), ScriptMessageType.AskMenu, flag, (byte)dlgType, str
-            );
+                  (byte) 4, templateID != 0 ? templateID : this.engine.getNpc().getId(), ScriptMessageType.AskMenu,
+                  flag, (byte) dlgType, str);
             if ((sayEntry.getFlag() & ScriptMessageFlag.NpcReplacedByNpc.getFlag()) != 0) {
                sayEntry.setCustomSpeakerTemplateID(sayEntry.getnSpeakerTemplateID());
             }
 
             this.engine
-               .getPlayer()
-               .send(
-                  CField.NPCPacket.getScriptMessage(
-                     sayEntry.getnSpeakerTemplateID(),
-                     sayEntry.getCustomSpeakerTemplateID(),
-                     GameObjectType.Npc,
-                     sayEntry.getFlag(),
-                     ScriptMessageType.AskMenu,
-                     sayEntry.getDlgColor(),
-                     sayEntry.getMsg(),
-                     null
-                  )
-               );
+                  .getPlayer()
+                  .send(
+                        CField.NPCPacket.getScriptMessage(
+                              sayEntry.getnSpeakerTemplateID(),
+                              sayEntry.getCustomSpeakerTemplateID(),
+                              GameObjectType.Npc,
+                              sayEntry.getFlag(),
+                              ScriptMessageType.AskMenu,
+                              sayEntry.getDlgColor(),
+                              sayEntry.getMsg(),
+                              null));
          } catch (Exception var9) {
             var9.printStackTrace();
          }
@@ -388,8 +383,9 @@ public class ScriptConversation implements Runnable {
          return -1;
       } else {
          this.lastmsg = ScriptMessageType.AskAccept.getType();
-         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskAccept, flag, str);
-         sayEntry.setDlgColor((byte)1);
+         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskAccept, flag,
+               str);
+         sayEntry.setDlgColor((byte) 1);
          if (npcid > 0) {
             sayEntry.setCustomSpeakerTemplateID(npcid);
          }
@@ -399,19 +395,17 @@ public class ScriptConversation implements Runnable {
          }
 
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  sayEntry.getnSpeakerTemplateID(),
-                  sayEntry.getCustomSpeakerTemplateID(),
-                  GameObjectType.Npc,
-                  sayEntry.getFlag(),
-                  ScriptMessageType.AskAccept,
-                  sayEntry.getDlgColor(),
-                  sayEntry.getMsg(),
-                  null
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           sayEntry.getnSpeakerTemplateID(),
+                           sayEntry.getCustomSpeakerTemplateID(),
+                           GameObjectType.Npc,
+                           sayEntry.getFlag(),
+                           ScriptMessageType.AskAccept,
+                           sayEntry.getDlgColor(),
+                           sayEntry.getMsg(),
+                           null));
 
          try {
             synchronized (this.gate) {
@@ -430,8 +424,9 @@ public class ScriptConversation implements Runnable {
          return -1;
       } else {
          this.lastmsg = ScriptMessageType.AskNumber.getType();
-         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskNumber, flag, str);
-         sayEntry.setDlgColor((byte)1);
+         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskNumber, flag,
+               str);
+         sayEntry.setDlgColor((byte) 1);
          if ((sayEntry.getFlag() & ScriptMessageFlag.NpcReplacedByNpc.getFlag()) != 0) {
             sayEntry.setCustomSpeakerTemplateID(sayEntry.getnSpeakerTemplateID());
          }
@@ -442,19 +437,17 @@ public class ScriptConversation implements Runnable {
          addPacket.writeLong(max);
          addPacket.writeInt(0);
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  sayEntry.getnSpeakerTemplateID(),
-                  sayEntry.getCustomSpeakerTemplateID(),
-                  GameObjectType.Npc,
-                  sayEntry.getFlag(),
-                  ScriptMessageType.AskNumber,
-                  sayEntry.getDlgColor(),
-                  sayEntry.getMsg(),
-                  addPacket
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           sayEntry.getnSpeakerTemplateID(),
+                           sayEntry.getCustomSpeakerTemplateID(),
+                           GameObjectType.Npc,
+                           sayEntry.getFlag(),
+                           ScriptMessageType.AskNumber,
+                           sayEntry.getDlgColor(),
+                           sayEntry.getMsg(),
+                           addPacket));
 
          try {
             synchronized (this.gate) {
@@ -473,13 +466,15 @@ public class ScriptConversation implements Runnable {
          return "";
       } else {
          this.lastmsg = ScriptMessageType.AskText.getType();
-         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskText, flag, str);
-         sayEntry.setDlgColor((byte)1);
+         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskText, flag,
+               str);
+         sayEntry.setDlgColor((byte) 1);
          if ((sayEntry.getFlag() & ScriptMessageFlag.NpcReplacedByNpc.getFlag()) != 0) {
             sayEntry.setCustomSpeakerTemplateID(sayEntry.getnSpeakerTemplateID());
          }
 
-         this.engine.getPlayer().send(CField.NPCPacket.getNPCTalkText(sayEntry.getnSpeakerTemplateID(), sayEntry.getMsg()));
+         this.engine.getPlayer()
+               .send(CField.NPCPacket.getNPCTalkText(sayEntry.getnSpeakerTemplateID(), sayEntry.getMsg()));
 
          try {
             synchronized (this.gate) {
@@ -499,7 +494,7 @@ public class ScriptConversation implements Runnable {
       } else {
          this.lastmsg = ScriptMessageType.AskSelectMenu.getType();
          ScriptSayEntry sayEntry = new ScriptSayEntry(0, ScriptMessageType.AskSelectMenu, flag, "");
-         sayEntry.setDlgColor((byte)0);
+         sayEntry.setDlgColor((byte) 0);
          PacketEncoder addPacket = new PacketEncoder();
          addPacket.writeInt(0);
          addPacket.writeInt(0);
@@ -512,19 +507,17 @@ public class ScriptConversation implements Runnable {
          }
 
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  sayEntry.getnSpeakerTemplateID(),
-                  sayEntry.getCustomSpeakerTemplateID(),
-                  GameObjectType.User,
-                  sayEntry.getFlag(),
-                  ScriptMessageType.AskSelectMenu,
-                  sayEntry.getDlgColor(),
-                  sayEntry.getMsg(),
-                  addPacket
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           sayEntry.getnSpeakerTemplateID(),
+                           sayEntry.getCustomSpeakerTemplateID(),
+                           GameObjectType.User,
+                           sayEntry.getFlag(),
+                           ScriptMessageType.AskSelectMenu,
+                           sayEntry.getDlgColor(),
+                           sayEntry.getMsg(),
+                           addPacket));
 
          try {
             synchronized (this.gate) {
@@ -543,8 +536,9 @@ public class ScriptConversation implements Runnable {
          return -1;
       } else {
          this.lastmsg = ScriptMessageType.AskAvatar.getType();
-         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskAvatar, 0, str);
-         sayEntry.setDlgColor((byte)1);
+         ScriptSayEntry sayEntry = new ScriptSayEntry(this.engine.getNpc().getId(), ScriptMessageType.AskAvatar, 0,
+               str);
+         sayEntry.setDlgColor((byte) 1);
          PacketEncoder addPacket = new PacketEncoder();
          addPacket.writeInt(0);
          addPacket.writeMapleAsciiString(str);
@@ -557,19 +551,17 @@ public class ScriptConversation implements Runnable {
 
          addPacket.writeInt(0);
          this.engine
-            .getPlayer()
-            .send(
-               CField.NPCPacket.getScriptMessage(
-                  sayEntry.getnSpeakerTemplateID(),
-                  sayEntry.getCustomSpeakerTemplateID(),
-                  GameObjectType.Npc,
-                  sayEntry.getFlag(),
-                  ScriptMessageType.AskAvatar,
-                  sayEntry.getDlgColor(),
-                  sayEntry.getMsg(),
-                  addPacket
-               )
-            );
+               .getPlayer()
+               .send(
+                     CField.NPCPacket.getScriptMessage(
+                           sayEntry.getnSpeakerTemplateID(),
+                           sayEntry.getCustomSpeakerTemplateID(),
+                           GameObjectType.Npc,
+                           sayEntry.getFlag(),
+                           ScriptMessageType.AskAvatar,
+                           sayEntry.getDlgColor(),
+                           sayEntry.getMsg(),
+                           addPacket));
 
          try {
             synchronized (this.gate) {
@@ -618,7 +610,8 @@ public class ScriptConversation implements Runnable {
                if (values[i + 1] > 0) {
                   MapleInventoryType type = GameConstants.getInventoryType(values[i]);
                   slots.putIfAbsent(type, 0);
-                  slots.put(type, slots.get(type) + MapleInventoryManipulator.getNeedNumSlots(this.engine.getClient(), values[i], values[i + 1]));
+                  slots.put(type, slots.get(type)
+                        + MapleInventoryManipulator.getNeedNumSlots(this.engine.getClient(), values[i], values[i + 1]));
                } else if (this.engine.getPlayer().getItemQuantity(values[i], false) < -values[i + 1]) {
                   return -1;
                }
@@ -633,7 +626,7 @@ public class ScriptConversation implements Runnable {
 
          for (int ix = 0; ix < values.length; ix++) {
             if (ix % 2 == 0) {
-               this.gainItem(values[ix], (short)values[ix + 1]);
+               this.gainItem(values[ix], (short) values[ix + 1]);
             }
          }
 
@@ -712,11 +705,13 @@ public class ScriptConversation implements Runnable {
       this.gainItem(id, quantity, randomStats, period, slots, owner, this.engine.getClient());
    }
 
-   public final void gainItem(int id, short quantity, boolean randomStats, long period, int slots, String owner, MapleClient cg) {
+   public final void gainItem(int id, short quantity, boolean randomStats, long period, int slots, String owner,
+         MapleClient cg) {
       this.gainItem(id, quantity, randomStats, period, slots, owner, cg, true);
    }
 
-   public final void gainItem(int id, short quantity, boolean randomStats, long period, int slots, String owner, MapleClient cg, boolean show) {
+   public final void gainItem(int id, short quantity, boolean randomStats, long period, int slots, String owner,
+         MapleClient cg, boolean show) {
       if (quantity >= 0) {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
          MapleInventoryType type = GameConstants.getInventoryType(id);
@@ -724,8 +719,9 @@ public class ScriptConversation implements Runnable {
             return;
          }
 
-         if (type.equals(MapleInventoryType.EQUIP) && !GameConstants.isThrowingStar(id) && !GameConstants.isBullet(id)) {
-            Equip item = (Equip)(randomStats ? ii.randomizeStats((Equip)ii.getEquipById(id)) : ii.getEquipById(id));
+         if (type.equals(MapleInventoryType.EQUIP) && !GameConstants.isThrowingStar(id)
+               && !GameConstants.isBullet(id)) {
+            Equip item = (Equip) (randomStats ? ii.randomizeStats((Equip) ii.getEquipById(id)) : ii.getEquipById(id));
             if (period > 0L) {
                item.setExpiration(System.currentTimeMillis() + period * 24L * 60L * 60L * 1000L);
             }
@@ -735,7 +731,7 @@ public class ScriptConversation implements Runnable {
             }
 
             if (slots > 0) {
-               item.setUpgradeSlots((byte)(item.getUpgradeSlots() + slots));
+               item.setUpgradeSlots((byte) (item.getUpgradeSlots() + slots));
             }
 
             if (owner != null) {
@@ -743,18 +739,17 @@ public class ScriptConversation implements Runnable {
             }
 
             item.setGMLog(
-               FileoutputUtil.CurrentReadable_Time()
-                  + "에 "
-                  + this.engine.getPlayer().getName()
-                  + "이(가) NPC "
-                  + this.engine.getNpc().getId()
-                  + " (퀘스트아이디)[ "
-                  + this.engine.getClient().getLastUsedScriptName()
-                  + "로 부터 획득한 아이템."
-            );
+                  FileoutputUtil.CurrentReadable_Time()
+                        + " at "
+                        + this.engine.getPlayer().getName()
+                        + " from NPC "
+                        + this.engine.getNpc().getId()
+                        + " (QuestID)[ "
+                        + this.engine.getClient().getLastUsedScriptName()
+                        + "] - Item Obtained.");
             String name = ii.getName(id);
             if (id / 10000 == 114 && name != null && name.length() > 0) {
-               String msg = "<" + name + "> 훈장을 획득하셨습니다!";
+               String msg = "You have obtained the <" + name + "> medal!";
                cg.getPlayer().dropMessage(-1, msg);
                cg.getPlayer().dropMessage(5, msg);
             }
@@ -767,33 +762,33 @@ public class ScriptConversation implements Runnable {
             }
          } else {
             MapleInventoryManipulator.addById(
-               cg,
-               id,
-               quantity,
-               owner == null ? "" : owner,
-               null,
-               period,
-               FileoutputUtil.CurrentReadable_Time()
-                  + "에 "
-                  + this.engine.getPlayer().getName()
-                  + "이(가) NPC "
-                  + this.engine.getNpc().getId()
-                  + " (퀘스트아이디)[ "
-                  + this.engine.getClient().getLastUsedScriptName()
-                  + "]로 부터 획득한 아이템."
-            );
+                  cg,
+                  id,
+                  quantity,
+                  owner == null ? "" : owner,
+                  null,
+                  period,
+                  FileoutputUtil.CurrentReadable_Time()
+                        + " at "
+                        + this.engine.getPlayer().getName()
+                        + " from NPC "
+                        + this.engine.getNpc().getId()
+                        + " (QuestID)[ "
+                        + this.engine.getClient().getLastUsedScriptName()
+                        + "] - Item Obtained.");
          }
 
          StringBuilder sb = new StringBuilder();
-         sb.append("아이템 생성 로그 : ");
+         sb.append("Item Creation Log : ");
          sb.append(this.engine.getPlayer().getName());
-         sb.append(" | 아이템 : ");
+         sb.append(" | Item : ");
          sb.append(id);
          sb.append(" ");
-         sb.append((int)quantity);
-         sb.append("개");
+         sb.append((int) quantity);
+         sb.append("pcs");
          sb.append(" | ");
-         sb.append("NPC " + this.engine.getNpc().getId() + " (퀘스트ID)[ " + this.engine.getClient().getLastUsedScriptName() + "]\r\n");
+         sb.append("NPC " + this.engine.getNpc().getId() + " (QuestID)[ "
+               + this.engine.getClient().getLastUsedScriptName() + "]\r\n");
       } else {
          MapleInventoryManipulator.removeById(cg, GameConstants.getInventoryType(id), id, -quantity, true, false);
       }

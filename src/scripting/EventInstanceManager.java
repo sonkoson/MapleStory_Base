@@ -109,8 +109,8 @@ public class EventInstanceManager {
             FileoutputUtil.outputFileError("Log_Script_Except.rtf", var7);
          } catch (Exception var8) {
             FileoutputUtil.log(
-               "Log_Script_Except.rtf", "Event name" + this.em.getName() + ", Instance name : " + this.name + ", method Name : playerEntry:\n" + var8
-            );
+                  "Log_Script_Except.rtf", "Event name" + this.em.getName() + ", Instance name : " + this.name
+                        + ", method Name : playerEntry:\n" + var8);
          }
       }
    }
@@ -122,8 +122,8 @@ public class EventInstanceManager {
          } catch (NullPointerException var4) {
          } catch (Exception var5) {
             FileoutputUtil.log(
-               "Log_Script_Except.rtf", "Event name : " + this.em.getName() + ", Instance name : " + this.name + ", method Name : changedMap:\n" + var5
-            );
+                  "Log_Script_Except.rtf", "Event name : " + this.em.getName() + ", Instance name : " + this.name
+                        + ", method Name : changedMap:\n" + var5);
          }
       }
    }
@@ -132,38 +132,36 @@ public class EventInstanceManager {
       if (!this.disposed && eim != null) {
          this.removeAllEventSchedule();
          this.eventTimer = Timer.EventTimer.getInstance()
-            .schedule(
-               new Runnable() {
-                  @Override
-                  public void run() {
-                     if (!EventInstanceManager.this.disposed && eim != null && EventInstanceManager.this.em != null) {
-                        try {
-                           EventInstanceManager.this.em.getIv().invokeFunction("scheduledTimeout", eim);
-                        } catch (Exception var2) {
-                           FileoutputUtil.log(
-                              "Log_Script_Except.rtf",
-                              "Event name"
-                                 + EventInstanceManager.this.em.getName()
-                                 + ", Instance name : "
-                                 + EventInstanceManager.this.name
-                                 + ", method Name : scheduledTimeout:\n"
-                                 + var2
-                           );
-                           System.out
-                              .println(
-                                 "Event name"
-                                    + EventInstanceManager.this.em.getName()
-                                    + ", Instance name : "
-                                    + EventInstanceManager.this.name
-                                    + ", method Name : scheduledTimeout:\n"
-                                    + var2
-                              );
+               .schedule(
+                     new Runnable() {
+                        @Override
+                        public void run() {
+                           if (!EventInstanceManager.this.disposed && eim != null
+                                 && EventInstanceManager.this.em != null) {
+                              try {
+                                 EventInstanceManager.this.em.getIv().invokeFunction("scheduledTimeout", eim);
+                              } catch (Exception var2) {
+                                 FileoutputUtil.log(
+                                       "Log_Script_Except.rtf",
+                                       "Event name"
+                                             + EventInstanceManager.this.em.getName()
+                                             + ", Instance name : "
+                                             + EventInstanceManager.this.name
+                                             + ", method Name : scheduledTimeout:\n"
+                                             + var2);
+                                 System.out
+                                       .println(
+                                             "Event name"
+                                                   + EventInstanceManager.this.em.getName()
+                                                   + ", Instance name : "
+                                                   + EventInstanceManager.this.name
+                                                   + ", method Name : scheduledTimeout:\n"
+                                                   + var2);
+                              }
+                           }
                         }
-                     }
-                  }
-               },
-               delay
-            );
+                     },
+                     delay);
       }
    }
 
@@ -185,7 +183,7 @@ public class EventInstanceManager {
       if (!this.disposed) {
          if (this.eventTimer != null) {
             this.endTime += times;
-            int remain = (int)(this.endTime - this.timeStarted);
+            int remain = (int) (this.endTime - this.timeStarted);
             if (remain > 600000) {
                remain = 600000;
                this.endTime = System.currentTimeMillis() + 600000L;
@@ -221,11 +219,12 @@ public class EventInstanceManager {
          }
 
          this.eventTimer = null;
-         int timesend = (int)time / 1000;
+         int timesend = (int) time / 1000;
 
          for (MapleCharacter chr : this.getPlayers()) {
             if (this.name.startsWith("PVP")) {
-               chr.getClient().getSession().writeAndFlush(CField.getPVPClock(Integer.parseInt(this.getProperty("type")), timesend));
+               chr.getClient().getSession()
+                     .writeAndFlush(CField.getPVPClock(Integer.parseInt(this.getProperty("type")), timesend));
             } else {
                chr.getClient().getSession().writeAndFlush(CField.getClock(timesend));
             }
@@ -474,11 +473,11 @@ public class EventInstanceManager {
          }
 
          if (mob.getId() == 8950101
-            || mob.getId() == 8950102
-            || mob.getId() == 8860000
-            || mob.getId() == 8880000
-            || mob.getId() == 8880101
-            || mob.getId() == 8950100) {
+               || mob.getId() == 8950102
+               || mob.getId() == 8860000
+               || mob.getId() == 8880000
+               || mob.getId() == 8880101
+               || mob.getId() == 8950100) {
             List<MapleMonster> removes = new LinkedList<>();
 
             for (MapleMonster mo : this.getMobs()) {
@@ -518,7 +517,7 @@ public class EventInstanceManager {
          try {
             Object b = this.em.getIv().invokeFunction("playerRevive", this, chr);
             if (b instanceof Boolean) {
-               return (Boolean)b;
+               return (Boolean) b;
             }
          } catch (Exception var3) {
          }
@@ -531,7 +530,7 @@ public class EventInstanceManager {
       if (!this.disposed) {
          byte ret;
          try {
-            ret = ((Double)this.em.getIv().invokeFunction("playerDisconnected", this, chr)).byteValue();
+            ret = ((Double) this.em.getIv().invokeFunction("playerDisconnected", this, chr)).byteValue();
          } catch (Exception var11) {
             ret = 0;
          }
@@ -553,7 +552,8 @@ public class EventInstanceManager {
                      this.dispose_NoLock();
                      return;
                   }
-               } else if (ret > 0 && this.getPlayerCount() < ret || ret < 0 && (this.isLeader(chr) || this.getPlayerCount() < ret * -1)) {
+               } else if (ret > 0 && this.getPlayerCount() < ret
+                     || ret < 0 && (this.isLeader(chr) || this.getPlayerCount() < ret * -1)) {
                   for (MapleCharacter player : new LinkedList<>(this.chars)) {
                      if (player.getId() != idz) {
                         this.removePlayer(player);
@@ -577,7 +577,7 @@ public class EventInstanceManager {
    public void monsterKilled(MapleCharacter chr, MapleMonster mob) {
       if (!this.disposed) {
          try {
-            int inc = (Integer)this.em.getIv().invokeFunction("monsterValue", this, mob.getId());
+            int inc = (Integer) this.em.getIv().invokeFunction("monsterValue", this, mob.getId());
             if (this.disposed || chr == null) {
                return;
             }
@@ -813,7 +813,8 @@ public class EventInstanceManager {
                   return null;
                }
 
-               if (map.getCharactersSize() == 0 && this.em.getProperty("shuffleReactors") != null && this.em.getProperty("shuffleReactors").equals("true")) {
+               if (map.getCharactersSize() == 0 && this.em.getProperty("shuffleReactors") != null
+                     && this.em.getProperty("shuffleReactors").equals("true")) {
                   map.shuffleReactors();
                }
             } else {
@@ -822,7 +823,8 @@ public class EventInstanceManager {
                   return null;
                }
 
-               if (map.getCharactersSize() == 0 && this.em.getProperty("shuffleReactors") != null && this.em.getProperty("shuffleReactors").equals("true")) {
+               if (map.getCharactersSize() == 0 && this.em.getProperty("shuffleReactors") != null
+                     && this.em.getProperty("shuffleReactors").equals("true")) {
                   map.shuffleReactors();
                }
             }
@@ -839,7 +841,8 @@ public class EventInstanceManager {
          Timer.EventTimer.getInstance().schedule(new Runnable() {
             @Override
             public void run() {
-               if (!EventInstanceManager.this.disposed && EventInstanceManager.this != null && EventInstanceManager.this.em != null) {
+               if (!EventInstanceManager.this.disposed && EventInstanceManager.this != null
+                     && EventInstanceManager.this.em != null) {
                   try {
                      EventInstanceManager.this.em.getIv().invokeFunction(methodName, EventInstanceManager.this);
                   } catch (NullPointerException var2) {
@@ -931,20 +934,22 @@ public class EventInstanceManager {
             MapleCharacter player = squad.getChar(chr);
             if (player != null && player.getMapId() == mapid) {
                if (questID > 0) {
-                  player.getQuestIfNullAdd(MapleQuest.getInstance(questID)).setCustomData(String.valueOf(System.currentTimeMillis()));
+                  player.getQuestIfNullAdd(MapleQuest.getInstance(questID))
+                        .setCustomData(String.valueOf(System.currentTimeMillis()));
                }
 
                this.registerPlayer(player);
                if (player.getParty() != null) {
                   PartySearch ps = Center.Party.getSearch(player.getParty());
                   if (ps != null) {
-                     Center.Party.removeSearch(ps, "The Party Listing has been removed because the Party Quest has started.");
+                     Center.Party.removeSearch(ps,
+                           "The Party Listing has been removed because the Party Quest has started.");
                   }
                }
             }
          }
 
-         squad.setStatus((byte)2);
+         squad.setStatus((byte) 2);
          squad.getBeginMap().broadcastMessage(CField.stopClock());
       }
    }
@@ -982,35 +987,39 @@ public class EventInstanceManager {
       Party party = chr.getParty();
       if (party != null) {
          party.getPartyMemberList()
-            .stream()
-            .filter(p -> p.getChannel() == chr.getClient().getChannel())
-            .filter(p -> p.isOnline())
-            .forEach(
-               p -> {
-                  MapleCharacter player = chr.getClient().getChannelServer().getPlayerStorage().getCharacterById(p.getId());
-                  if (player != null) {
-                     player.setHungryMuto(muto);
-                     player.warp(startMap);
-                     player.getClient().getSession().writeAndFlush(new HungryMuto.TimerSet(600000).encode());
-                     player.getClient()
-                        .getSession()
-                        .writeAndFlush(
-                           new HungryMuto.GameInit(
-                                 FoodType.getFoodType(type), difficulty, 130000, HungryMuto.getBonusTime(130000, muto.getRecipes().length), muto.getRecipes()
-                              )
-                              .encode()
-                        );
-                     player.getClient().getSession().writeAndFlush(CField.fieldSetVariable("rType", "0"));
-                     player.getClient().getSession().writeAndFlush(CField.fieldSetVariable("rCount", "0"));
-                     player.getClient().getSession().writeAndFlush(CField.fieldValue("foodType", String.valueOf(type)));
-                     player.getClient().getSession().writeAndFlush(CField.environmentChange("event/start", 15));
-                     player.getClient().getSession().writeAndFlush(CField.playSound("Dojang/cleard", 100));
-                     player.getClient().getSession().writeAndFlush(CField.MapEff("Map/Effect3.img/hungryMutoMsg/msg1"));
-                     player.getClient().getSession().writeAndFlush(CField.fieldValue("score", String.valueOf(muto.getScore())));
-                     player.getClient().getSession().writeAndFlush(CField.fieldValue("time", String.valueOf(muto.getTime())));
-                  }
-               }
-            );
+               .stream()
+               .filter(p -> p.getChannel() == chr.getClient().getChannel())
+               .filter(p -> p.isOnline())
+               .forEach(
+                     p -> {
+                        MapleCharacter player = chr.getClient().getChannelServer().getPlayerStorage()
+                              .getCharacterById(p.getId());
+                        if (player != null) {
+                           player.setHungryMuto(muto);
+                           player.warp(startMap);
+                           player.getClient().getSession().writeAndFlush(new HungryMuto.TimerSet(600000).encode());
+                           player.getClient()
+                                 .getSession()
+                                 .writeAndFlush(
+                                       new HungryMuto.GameInit(
+                                             FoodType.getFoodType(type), difficulty, 130000,
+                                             HungryMuto.getBonusTime(130000, muto.getRecipes().length),
+                                             muto.getRecipes())
+                                             .encode());
+                           player.getClient().getSession().writeAndFlush(CField.fieldSetVariable("rType", "0"));
+                           player.getClient().getSession().writeAndFlush(CField.fieldSetVariable("rCount", "0"));
+                           player.getClient().getSession()
+                                 .writeAndFlush(CField.fieldValue("foodType", String.valueOf(type)));
+                           player.getClient().getSession().writeAndFlush(CField.environmentChange("event/start", 15));
+                           player.getClient().getSession().writeAndFlush(CField.playSound("Dojang/cleard", 100));
+                           player.getClient().getSession()
+                                 .writeAndFlush(CField.MapEff("Map/Effect3.img/hungryMutoMsg/msg1"));
+                           player.getClient().getSession()
+                                 .writeAndFlush(CField.fieldValue("score", String.valueOf(muto.getScore())));
+                           player.getClient().getSession()
+                                 .writeAndFlush(CField.fieldValue("time", String.valueOf(muto.getTime())));
+                        }
+                     });
       }
 
       muto.startGame(chr, difficulty);
@@ -1043,7 +1052,8 @@ public class EventInstanceManager {
    }
 
    public ScheduledFuture registerEventSchedule(String keyName, long delay, String methodName, Object... args) {
-      return this.addEventSchedule(keyName, Timer.MapTimer.getInstance().register(() -> this.invoke(this, methodName, args), delay));
+      return this.addEventSchedule(keyName,
+            Timer.MapTimer.getInstance().register(() -> this.invoke(this, methodName, args), delay));
    }
 
    private Object invoke(Object invokeOn, String methodName, Object... args) {
@@ -1054,7 +1064,7 @@ public class EventInstanceManager {
          Method func = this.getClass().getMethod(methodName, classes);
          return func.invoke(invokeOn, args);
       } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException var8) {
-         System.out.println("EventInstanceManage.invoke 함수 실행중 오류발생" + var8.toString());
+         System.out.println("Error occurred while executing EventInstanceManage.invoke function" + var8.toString());
          var8.printStackTrace();
          return null;
       }
@@ -1081,7 +1091,8 @@ public class EventInstanceManager {
       }
    }
 
-   public void createObstacleAtom(Field map, ObstacleAtomEnum oae, int key, int damage, int velocity, int angle, int amount, int proc) {
+   public void createObstacleAtom(Field map, ObstacleAtomEnum oae, int key, int damage, int velocity, int angle,
+         int amount, int proc) {
       int xLeft = map.getLeft();
       int yTop = map.getTop();
       ObstacleInRowInfo obstacleInRowInfo = new ObstacleInRowInfo(4, false, 5000, 0, 0, 0);
@@ -1111,7 +1122,8 @@ public class EventInstanceManager {
          }
       }
 
-      map.broadcastMessage(CField.createObstacle(ObstacleAtomCreateType.NORMAL, obstacleInRowInfo, obstacleRadianInfo, obstacleAtomInfosSet));
+      map.broadcastMessage(CField.createObstacle(ObstacleAtomCreateType.NORMAL, obstacleInRowInfo, obstacleRadianInfo,
+            obstacleAtomInfosSet));
    }
 
    public void startMapEffect(MapleCharacter player, String msg, int itemID, int seconds) {
@@ -1158,7 +1170,7 @@ public class EventInstanceManager {
 
    public void broadcastTimerGauge() {
       if (this.getFieldSetTimerGuageEndTime() > 0L) {
-         int sec = (int)(this.getFieldSetTimerGuageEndTime() - System.currentTimeMillis());
+         int sec = (int) (this.getFieldSetTimerGuageEndTime() - System.currentTimeMillis());
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.CLOCK.getValue());
          packet.write(4);

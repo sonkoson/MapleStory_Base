@@ -227,25 +227,25 @@ public class AdminClient extends JFrame {
          }
       });
       this.jScrollPane1.setViewportView(connectList);
-      dongsi.setText("동시접속자 : 0명");
+      dongsi.setText("Concurrent Users : 0");
       dongsi.setToolTipText("");
       this.jScrollPane2.setViewportView(chatList);
-      this.jLabel2.setText("실시간 채팅 로그");
-      this.jButton2.setText("서버 저장");
+      this.jLabel2.setText("Real-time Chat Log");
+      this.jButton2.setText("Save Server");
       this.jButton2.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton2ActionPerformed(evt);
          }
       });
-      this.jButton3.setText("경매장 자동저장 중지");
+      this.jButton3.setText("Stop Auction Auto-Save");
       this.jButton3.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton3ActionPerformed(evt);
          }
       });
-      this.jButton1.setText("모두 마을로 소환");
+      this.jButton1.setText("Summon All to Town");
       this.jButton1.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -253,7 +253,7 @@ public class AdminClient extends JFrame {
          }
       });
       this.realCash.setFont(new Font("굴림", 0, 10));
-      this.realCash.setText("지급할 포인트");
+      this.realCash.setText("Point to Give");
       this.realCash.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -266,7 +266,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.realCashActionPerformed(evt);
          }
       });
-      this.jButton4.setText("후원 포인트 지급");
+      this.jButton4.setText("Give Donation Points");
       this.jButton4.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -274,7 +274,7 @@ public class AdminClient extends JFrame {
          }
       });
       this.hongboPoint.setFont(new Font("굴림", 0, 10));
-      this.hongboPoint.setText("지급할 포인트");
+      this.hongboPoint.setText("Point to Give");
       this.hongboPoint.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -287,7 +287,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.hongboPointActionPerformed(evt);
          }
       });
-      this.jButton5.setText("홍보 포인트 지급");
+      this.jButton5.setText("Give Promotion Points");
       this.jButton5.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -295,7 +295,7 @@ public class AdminClient extends JFrame {
          }
       });
       this.itemCode.setFont(new Font("굴림", 0, 10));
-      this.itemCode.setText("아이템 코드,갯수");
+      this.itemCode.setText("Item Code,Quantity");
       this.itemCode.addMouseListener(new MouseAdapter() {
          @Override
          public void mousePressed(MouseEvent evt) {
@@ -308,7 +308,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.itemCodeActionPerformed(evt);
          }
       });
-      this.jButton6.setText("아이템 지급");
+      this.jButton6.setText("Give Item");
       this.jButton6.setMaximumSize(new Dimension(125, 23));
       this.jButton6.setMinimumSize(new Dimension(125, 23));
       this.jButton6.setPreferredSize(new Dimension(125, 23));
@@ -319,7 +319,7 @@ public class AdminClient extends JFrame {
          }
       });
       this.meso.setFont(new Font("굴림", 0, 10));
-      this.meso.setText("지급할 메소");
+      this.meso.setText("Meso to Give");
       this.meso.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -332,7 +332,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.mesoActionPerformed(evt);
          }
       });
-      this.jButton7.setText("메소 지급");
+      this.jButton7.setText("Give Meso");
       this.jButton7.setMaximumSize(new Dimension(125, 23));
       this.jButton7.setMinimumSize(new Dimension(125, 23));
       this.jButton7.setPreferredSize(new Dimension(125, 23));
@@ -343,7 +343,7 @@ public class AdminClient extends JFrame {
          }
       });
       this.Receiver.setFont(new Font("맑은 고딕", 1, 24));
-      this.Receiver.setText("지급할 캐릭터 이름");
+      this.Receiver.setText("Character Name to Give");
       this.Receiver.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -356,7 +356,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.ReceiverActionPerformed(evt);
          }
       });
-      this.jButton8.setText("GM 권한 부여 / 해제");
+      this.jButton8.setText("Grant/Revoke GM Rights");
       this.jButton8.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -364,8 +364,8 @@ public class AdminClient extends JFrame {
          }
       });
       this.jLabel6.setFont(new Font("맑은 고딕", 1, 24));
-      this.jLabel6.setText("핫타임 지급 -");
-      this.hottimeItemID.setText("아이템 코드,갯수");
+      this.jLabel6.setText("Hot Time Give -");
+      this.hottimeItemID.setText("Item Code,Quantity");
       this.hottimeItemID.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -378,7 +378,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.hottimeItemIDActionPerformed(evt);
          }
       });
-      this.hottimeRecvCount.setText("지급 받을 회원수");
+      this.hottimeRecvCount.setText("Number of Members to Receive");
       this.hottimeRecvCount.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
@@ -391,7 +391,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.hottimeRecvCountActionPerformed(evt);
          }
       });
-      this.jButton9.setText("핫타임 지급!");
+      this.jButton9.setText("Give Hot Time!");
       this.jButton9.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -399,56 +399,56 @@ public class AdminClient extends JFrame {
          }
       });
       this.jLabel7.setFont(new Font("맑은 고딕", 1, 24));
-      this.jLabel7.setText("핫타임 도움말");
-      this.jLabel8.setText("모든 회원에게 지급하고자 할시에는 지급 받을 회원수");
-      this.jLabel9.setText("칸에 ALL 혹은 모두 라고 적어주시기 바랍니다.");
+      this.jLabel7.setText("Hot Time Help");
+      this.jLabel8.setText("To give to all members, in the Number of Members to Receive");
+      this.jLabel9.setText("field, please write ALL or all.");
       this.jLabel10.setFont(new Font("맑은 고딕", 0, 14));
       this.jLabel10.setText("Made by. Jihyeon");
       this.jLabel11.setFont(new Font("맑은 고딕", 1, 36));
       this.jLabel11.setText("Ganglim");
-      this.FreezeChat.setText("채팅창 얼리기");
+      this.FreezeChat.setText("Freeze Chat");
       this.FreezeChat.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.FreezeChatActionPerformed(evt);
          }
       });
-      this.noticeMsg.setText("공지사항 입력");
+      this.noticeMsg.setText("Enter Notice");
       this.noticeMsg.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
             AdminClient.this.noticeMsgMouseReleased(evt);
          }
       });
-      this.jButton10.setText("팝업 공지");
+      this.jButton10.setText("Popup Notice");
       this.jButton10.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton10ActionPerformed(evt);
          }
       });
-      this.jButton11.setText("스크롤 공지");
+      this.jButton11.setText("Scroll Notice");
       this.jButton11.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton11ActionPerformed(evt);
          }
       });
-      this.jButton12.setText("채팅창 공지");
+      this.jButton12.setText("Chat Window Notice");
       this.jButton12.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton12ActionPerformed(evt);
          }
       });
-      this.jButton13.setText("화면 가운데 공지");
+      this.jButton13.setText("Center Screen Notice");
       this.jButton13.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton13ActionPerformed(evt);
          }
       });
-      this.jButton14.setText("모두 송출");
+      this.jButton14.setText("Send All");
       this.jButton14.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -456,35 +456,35 @@ public class AdminClient extends JFrame {
          }
       });
       this.killPoint.setFont(new Font("굴림", 0, 10));
-      this.killPoint.setText("지급할 포인트");
+      this.killPoint.setText("Point to Give");
       this.killPoint.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseReleased(MouseEvent evt) {
             AdminClient.this.killPointMouseReleased(evt);
          }
       });
-      this.jButton15.setText("사냥 포인트 지급");
+      this.jButton15.setText("Give Hunting Points");
       this.jButton15.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton15ActionPerformed(evt);
          }
       });
-      expRate.setText("경험치");
-      mesoRate.setText("메소");
-      dropRate.setText("드랍");
-      this.jLabel1.setText("경험치");
-      this.jLabel3.setText("메소");
-      this.jLabel4.setText("드랍");
-      this.jButton16.setText("배율 변경");
+      expRate.setText("EXP");
+      mesoRate.setText("Meso");
+      dropRate.setText("Drop");
+      this.jLabel1.setText("EXP");
+      this.jLabel3.setText("Meso");
+      this.jLabel4.setText("Drop");
+      this.jButton16.setText("Change Rate");
       this.jButton16.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton16ActionPerformed(evt);
          }
       });
-      runtime.setText("서버 런타임 : ");
-      this.jLabel12.setText("자동 핫타임 경험치 이벤트 -");
+      runtime.setText("Server Runtime : ");
+      this.jLabel12.setText("Auto Hot Time EXP Event -");
       this.hottimeStart.setText("20:30");
       this.hottimeStart.addActionListener(new ActionListener() {
          @Override
@@ -494,14 +494,14 @@ public class AdminClient extends JFrame {
       });
       this.jLabel13.setText("~");
       this.hottimeEnd.setText("21:30");
-      this.jButton17.setText("설정변경");
+      this.jButton17.setText("Change Settings");
       this.jButton17.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton17ActionPerformed(evt);
          }
       });
-      this.jCheckBox1.setText("비활성화");
+      this.jCheckBox1.setText("Disable");
       this.jCheckBox1.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -510,7 +510,7 @@ public class AdminClient extends JFrame {
       });
       this.hottimeRate.setText("2.0");
       this.jLabel14.setText("*");
-      this.jButton19.setText("지급하기");
+      this.jButton19.setText("Give");
       this.jButton19.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -518,79 +518,77 @@ public class AdminClient extends JFrame {
          }
       });
       this.jComboBox1
-         .setModel(
-            new DefaultComboBoxModel<>(
-               new String[]{
-                  "초보자패키지",
-                  "놀장강패키지",
-                  "Tier.1 (10만)",
-                  "Tier.2 (30만)",
-                  "Tier.3 (50만)",
-                  "Tier.4 (75만)",
-                  "Tier.5 (100만)",
-                  "Tier.6 (150만)",
-                  "Tier.7 (200만)",
-                  "250만 보상 (250만)",
-                  "Tier.8 (300만)",
-                  "350만 보상 (350만)",
-                  "Tier.9 (400만)",
-                  "450만 보상 (450만)",
-                  "Tier.X (500만)",
-                  "550만 보상 (550만)",
-                  "Tier.XI (600만)",
-                  "650만 보상 (650만)",
-                  "Tier.XII (700만)",
-                  "750만 보상 (750만)",
-                  "Tier.XIII (800만)",
-                  "850만 보상 (850만)",
-                  "Tier.XIV (900만)",
-                  "950만 보상 (950만)",
-                  "Tier.XV (1000만)",
-                  "1050만 보상 (1050만)",
-                  "1100만 보상 (1100만)",
-                  "1150만 보상 (1150만)",
-                  "LUXURY (1200만)",
-                  "1250만 보상 (1250만)",
-                  "1300만 보상 (1300만)",
-                  "1350만 보상 (1350만)",
-                  "PLATINUM (1400만)",
-                  "1450만 보상 (1450만)",
-                  "1500만 보상 (1500만)",
-                  "1550만 보상 (1550만)",
-                  "ROYAL (1600만)",
-                  "1650만 보상 (1650만)",
-                  "1700만 보상 (1700만)",
-                  "1750만 보상 (1750만)",
-                  "PRESTIGE (1800만)",
-                  "1850만 보상 (1850만)",
-                  "1900만 보상 (1900만)",
-                  "1950만 보상 (1950만)",
-                  "ILLIONAIRE (2000만)"
-               }
-            )
-         );
-      this.jCheckBox2.setText("채팅 로그 비활성화");
+            .setModel(
+                  new DefaultComboBoxModel<>(
+                        new String[] {
+                              "Beginner Package",
+                              "Amazing Reinforcement Package",
+                              "Tier.1 (100k)",
+                              "Tier.2 (300k)",
+                              "Tier.3 (500k)",
+                              "Tier.4 (750k)",
+                              "Tier.5 (1m)",
+                              "Tier.6 (1.5m)",
+                              "Tier.7 (2m)",
+                              "2.5m Reward (2.5m)",
+                              "Tier.8 (3m)",
+                              "3.5m Reward (3.5m)",
+                              "Tier.9 (4m)",
+                              "4.5m Reward (4.5m)",
+                              "Tier.X (5m)",
+                              "5.5m Reward (5.5m)",
+                              "Tier.XI (6m)",
+                              "6.5m Reward (6.5m)",
+                              "Tier.XII (7m)",
+                              "7.5m Reward (7.5m)",
+                              "Tier.XIII (8m)",
+                              "8.5m Reward (8.5m)",
+                              "Tier.XIV (9m)",
+                              "9.5m Reward (9.5m)",
+                              "Tier.XV (10m)",
+                              "10.5m Reward (10.5m)",
+                              "11m Reward (11m)",
+                              "11.5m Reward (11.5m)",
+                              "LUXURY (12m)",
+                              "12.5m Reward (12.5m)",
+                              "13m Reward (13m)",
+                              "13.5m Reward (13.5m)",
+                              "PLATINUM (14m)",
+                              "14.5m Reward (14.5m)",
+                              "15m Reward (15m)",
+                              "15.5m Reward (15.5m)",
+                              "ROYAL (16m)",
+                              "16.5m Reward (16.5m)",
+                              "17m Reward (17m)",
+                              "17.5m Reward (17.5m)",
+                              "PRESTIGE (18m)",
+                              "18.5m Reward (18.5m)",
+                              "19m Reward (19m)",
+                              "19.5m Reward (19.5m)",
+                              "ILLIONAIRE (20m)"
+                        }));
+      this.jCheckBox2.setText("Disable Chat Log");
       this.jCheckBox2.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jCheckBox2ActionPerformed(evt);
          }
       });
-      this.jButton18.setText("시리얼 밴");
+      this.jButton18.setText("Serial Ban");
       this.jButton18.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton18ActionPerformed(evt);
          }
       });
-      this.jButton20.setText("시리얼 밴 해제");
+      this.jButton20.setText("Unban Serial");
       this.jButton20.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             AdminClient.this.jButton20ActionPerformed(evt);
          }
       });
-      this.jButton21.setText("경매장 얼리기");
+      this.jButton21.setText("Freeze Auction");
       this.jButton21.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -600,363 +598,529 @@ public class AdminClient extends JFrame {
       GroupLayout layout = new GroupLayout(this.getContentPane());
       this.getContentPane().setLayout(layout);
       layout.setHorizontalGroup(
-         layout.createParallelGroup(Alignment.LEADING)
-            .addGroup(
-               layout.createSequentialGroup()
-                  .addContainerGap()
+            layout.createParallelGroup(Alignment.LEADING)
                   .addGroup(
-                     layout.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(
-                           layout.createSequentialGroup()
-                              .addGroup(layout.createParallelGroup(Alignment.LEADING).addComponent(this.jLabel10).addComponent(this.jLabel11))
-                              .addGap(76, 76, 76)
+                        layout.createSequentialGroup()
+                              .addContainerGap()
                               .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING).addComponent(this.jLabel9).addComponent(this.jLabel7).addComponent(this.jLabel8)
-                              )
-                              .addGap(18, 18, 18)
-                              .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING)
-                                    .addGroup(
-                                       layout.createSequentialGroup()
+                                    layout.createParallelGroup(Alignment.TRAILING)
                                           .addGroup(
-                                             layout.createParallelGroup(Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup().addComponent(this.jLabel12).addGap(0, 0, 32767))
-                                                .addGroup(
-                                                   layout.createSequentialGroup()
-                                                      .addComponent(this.hottimeStart, -2, 78, -2)
-                                                      .addPreferredGap(ComponentPlacement.RELATED)
-                                                      .addComponent(this.jLabel13)
-                                                      .addPreferredGap(ComponentPlacement.RELATED)
-                                                      .addComponent(this.hottimeEnd, -2, 78, -2)
-                                                      .addGap(11, 11, 11)
-                                                      .addComponent(this.jLabel14, -2, 14, -2)
-                                                      .addPreferredGap(ComponentPlacement.RELATED)
-                                                      .addComponent(this.hottimeRate, -1, 66, 32767)
-                                                      .addGap(15, 15, 15)
-                                                      .addComponent(this.jButton17)
-                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
-                                                      .addComponent(this.jCheckBox1)
-                                                )
-                                          )
-                                          .addGap(11, 11, 11)
-                                    )
-                                    .addComponent(this.FreezeChat, -1, -1, 32767)
-                              )
-                        )
-                        .addGroup(
-                           layout.createSequentialGroup()
-                              .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup().addComponent(this.noticeMsg).addGap(19, 19, 19))
-                                    .addGroup(
-                                       Alignment.TRAILING,
-                                       layout.createSequentialGroup()
+                                                layout.createSequentialGroup()
+                                                      .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                                            .addComponent(this.jLabel10).addComponent(this.jLabel11))
+                                                      .addGap(76, 76, 76)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.LEADING)
+                                                                  .addComponent(this.jLabel9).addComponent(this.jLabel7)
+                                                                  .addComponent(this.jLabel8))
+                                                      .addGap(18, 18, 18)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.LEADING)
+                                                                                          .addGroup(layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(
+                                                                                                      this.jLabel12)
+                                                                                                .addGap(0, 0, 32767))
+                                                                                          .addGroup(
+                                                                                                layout.createSequentialGroup()
+                                                                                                      .addComponent(
+                                                                                                            this.hottimeStart,
+                                                                                                            -2, 78, -2)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.jLabel13)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.hottimeEnd,
+                                                                                                            -2, 78, -2)
+                                                                                                      .addGap(11, 11,
+                                                                                                            11)
+                                                                                                      .addComponent(
+                                                                                                            this.jLabel14,
+                                                                                                            -2, 14, -2)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.RELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.hottimeRate,
+                                                                                                            -1, 66,
+                                                                                                            32767)
+                                                                                                      .addGap(15, 15,
+                                                                                                            15)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton17)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.UNRELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.jCheckBox1)))
+                                                                              .addGap(11, 11, 11))
+                                                                  .addComponent(this.FreezeChat, -1, -1, 32767)))
                                           .addGroup(
-                                             layout.createParallelGroup(Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup().addGap(0, 0, 32767).addComponent(this.jScrollPane1, -2, 253, -2))
-                                                .addGroup(
-                                                   layout.createSequentialGroup()
+                                                layout.createSequentialGroup()
                                                       .addGroup(
-                                                         layout.createParallelGroup(Alignment.LEADING, false)
-                                                            .addComponent(this.jButton16, -1, -1, 32767)
-                                                            .addGroup(
-                                                               layout.createSequentialGroup()
+                                                            layout.createParallelGroup(Alignment.LEADING)
+                                                                  .addGroup(layout.createSequentialGroup()
+                                                                        .addComponent(this.noticeMsg)
+                                                                        .addGap(19, 19, 19))
                                                                   .addGroup(
-                                                                     layout.createParallelGroup(Alignment.LEADING)
-                                                                        .addComponent(expRate, -2, 76, -2)
-                                                                        .addComponent(this.jLabel1)
-                                                                  )
-                                                                  .addGap(13, 13, 13)
+                                                                        Alignment.TRAILING,
+                                                                        layout.createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.LEADING)
+                                                                                          .addGroup(layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addGap(0, 0, 32767)
+                                                                                                .addComponent(
+                                                                                                      this.jScrollPane1,
+                                                                                                      -2, 253, -2))
+                                                                                          .addGroup(
+                                                                                                layout.createSequentialGroup()
+                                                                                                      .addGroup(
+                                                                                                            layout.createParallelGroup(
+                                                                                                                  Alignment.LEADING,
+                                                                                                                  false)
+                                                                                                                  .addComponent(
+                                                                                                                        this.jButton16,
+                                                                                                                        -1,
+                                                                                                                        -1,
+                                                                                                                        32767)
+                                                                                                                  .addGroup(
+                                                                                                                        layout.createSequentialGroup()
+                                                                                                                              .addGroup(
+                                                                                                                                    layout.createParallelGroup(
+                                                                                                                                          Alignment.LEADING)
+                                                                                                                                          .addComponent(
+                                                                                                                                                expRate,
+                                                                                                                                                -2,
+                                                                                                                                                76,
+                                                                                                                                                -2)
+                                                                                                                                          .addComponent(
+                                                                                                                                                this.jLabel1))
+                                                                                                                              .addGap(
+                                                                                                                                    13,
+                                                                                                                                    13,
+                                                                                                                                    13)
+                                                                                                                              .addGroup(
+                                                                                                                                    layout.createParallelGroup(
+                                                                                                                                          Alignment.LEADING)
+                                                                                                                                          .addComponent(
+                                                                                                                                                mesoRate,
+                                                                                                                                                -2,
+                                                                                                                                                76,
+                                                                                                                                                -2)
+                                                                                                                                          .addComponent(
+                                                                                                                                                this.jLabel3))
+                                                                                                                              .addPreferredGap(
+                                                                                                                                    ComponentPlacement.UNRELATED)
+                                                                                                                              .addGroup(
+                                                                                                                                    layout.createParallelGroup(
+                                                                                                                                          Alignment.LEADING)
+                                                                                                                                          .addComponent(
+                                                                                                                                                this.jLabel4)
+                                                                                                                                          .addComponent(
+                                                                                                                                                dropRate,
+                                                                                                                                                -2,
+                                                                                                                                                76,
+                                                                                                                                                -2)))
+                                                                                                                  .addComponent(
+                                                                                                                        this.jComboBox1,
+                                                                                                                        0,
+                                                                                                                        -1,
+                                                                                                                        32767))
+                                                                                                      .addGap(0, 0,
+                                                                                                            32767)))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.UNRELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.LEADING)
+                                                                                          .addComponent(runtime)
+                                                                                          .addGroup(
+                                                                                                layout.createParallelGroup(
+                                                                                                      Alignment.TRAILING,
+                                                                                                      false)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton8,
+                                                                                                            Alignment.LEADING,
+                                                                                                            -1, -1,
+                                                                                                            32767)
+                                                                                                      .addComponent(
+                                                                                                            this.Receiver,
+                                                                                                            Alignment.LEADING)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton19,
+                                                                                                            Alignment.LEADING,
+                                                                                                            -2, 241, -2)
+                                                                                                      .addGroup(
+                                                                                                            layout.createSequentialGroup()
+                                                                                                                  .addGroup(
+                                                                                                                        layout.createParallelGroup(
+                                                                                                                              Alignment.LEADING)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.realCash)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.hongboPoint,
+                                                                                                                                    Alignment.TRAILING)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.itemCode,
+                                                                                                                                    Alignment.TRAILING)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.meso)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.killPoint)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton18,
+                                                                                                                                    -2,
+                                                                                                                                    109,
+                                                                                                                                    -2))
+                                                                                                                  .addPreferredGap(
+                                                                                                                        ComponentPlacement.RELATED)
+                                                                                                                  .addGroup(
+                                                                                                                        layout.createParallelGroup(
+                                                                                                                              Alignment.LEADING,
+                                                                                                                              false)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton20,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton4,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton5,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton6,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton7,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton15,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767)))))
+                                                                              .addGap(18, 18, 18))
+                                                                  .addGroup(layout.createSequentialGroup()
+                                                                        .addComponent(dongsi, -1, -1, 32767)
+                                                                        .addGap(331, 331, 331))
                                                                   .addGroup(
-                                                                     layout.createParallelGroup(Alignment.LEADING)
-                                                                        .addComponent(mesoRate, -2, 76, -2)
-                                                                        .addComponent(this.jLabel3)
-                                                                  )
-                                                                  .addPreferredGap(ComponentPlacement.UNRELATED)
-                                                                  .addGroup(
-                                                                     layout.createParallelGroup(Alignment.LEADING)
-                                                                        .addComponent(this.jLabel4)
-                                                                        .addComponent(dropRate, -2, 76, -2)
-                                                                  )
-                                                            )
-                                                            .addComponent(this.jComboBox1, 0, -1, 32767)
-                                                      )
-                                                      .addGap(0, 0, 32767)
-                                                )
-                                          )
-                                          .addPreferredGap(ComponentPlacement.UNRELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.LEADING)
-                                                .addComponent(runtime)
-                                                .addGroup(
-                                                   layout.createParallelGroup(Alignment.TRAILING, false)
-                                                      .addComponent(this.jButton8, Alignment.LEADING, -1, -1, 32767)
-                                                      .addComponent(this.Receiver, Alignment.LEADING)
-                                                      .addComponent(this.jButton19, Alignment.LEADING, -2, 241, -2)
+                                                                        layout.createSequentialGroup()
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.TRAILING, false)
+                                                                                          .addComponent(this.jButton21,
+                                                                                                Alignment.LEADING, -1,
+                                                                                                -1, 32767)
+                                                                                          .addGroup(
+                                                                                                layout.createSequentialGroup()
+                                                                                                      .addGroup(
+                                                                                                            layout.createParallelGroup(
+                                                                                                                  Alignment.LEADING,
+                                                                                                                  false)
+                                                                                                                  .addComponent(
+                                                                                                                        this.jButton3,
+                                                                                                                        -1,
+                                                                                                                        -1,
+                                                                                                                        32767)
+                                                                                                                  .addComponent(
+                                                                                                                        this.jButton2,
+                                                                                                                        -1,
+                                                                                                                        -1,
+                                                                                                                        32767)
+                                                                                                                  .addComponent(
+                                                                                                                        this.jButton1,
+                                                                                                                        Alignment.TRAILING,
+                                                                                                                        -2,
+                                                                                                                        258,
+                                                                                                                        -2))
+                                                                                                      .addGroup(
+                                                                                                            layout.createParallelGroup(
+                                                                                                                  Alignment.LEADING)
+                                                                                                                  .addGroup(
+                                                                                                                        layout.createSequentialGroup()
+                                                                                                                              .addGap(
+                                                                                                                                    121,
+                                                                                                                                    121,
+                                                                                                                                    121)
+                                                                                                                              .addComponent(
+                                                                                                                                    this.jButton14,
+                                                                                                                                    -1,
+                                                                                                                                    -1,
+                                                                                                                                    32767))
+                                                                                                                  .addGroup(
+                                                                                                                        layout.createSequentialGroup()
+                                                                                                                              .addGap(
+                                                                                                                                    9,
+                                                                                                                                    9,
+                                                                                                                                    9)
+                                                                                                                              .addGroup(
+                                                                                                                                    layout.createParallelGroup(
+                                                                                                                                          Alignment.TRAILING)
+                                                                                                                                          .addComponent(
+                                                                                                                                                this.jButton9,
+                                                                                                                                                -1,
+                                                                                                                                                -1,
+                                                                                                                                                32767)
+                                                                                                                                          .addComponent(
+                                                                                                                                                this.jLabel6,
+                                                                                                                                                Alignment.LEADING)
+                                                                                                                                          .addGroup(
+                                                                                                                                                layout.createSequentialGroup()
+                                                                                                                                                      .addComponent(
+                                                                                                                                                            this.hottimeItemID,
+                                                                                                                                                            -2,
+                                                                                                                                                            107,
+                                                                                                                                                            -2)
+                                                                                                                                                      .addGap(
+                                                                                                                                                            22,
+                                                                                                                                                            22,
+                                                                                                                                                            22)
+                                                                                                                                                      .addComponent(
+                                                                                                                                                            this.hottimeRecvCount,
+                                                                                                                                                            -2,
+                                                                                                                                                            108,
+                                                                                                                                                            -2))))))
+                                                                                          .addGroup(
+                                                                                                Alignment.LEADING,
+                                                                                                layout.createSequentialGroup()
+                                                                                                      .addComponent(
+                                                                                                            this.jButton10,
+                                                                                                            -2, 114, -2)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.UNRELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton11,
+                                                                                                            -2, 121, -2)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.UNRELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton12,
+                                                                                                            -2, 108, -2)
+                                                                                                      .addPreferredGap(
+                                                                                                            ComponentPlacement.UNRELATED)
+                                                                                                      .addComponent(
+                                                                                                            this.jButton13)))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED, -1,
+                                                                                    32767)))
                                                       .addGroup(
-                                                         layout.createSequentialGroup()
-                                                            .addGroup(
-                                                               layout.createParallelGroup(Alignment.LEADING)
-                                                                  .addComponent(this.realCash)
-                                                                  .addComponent(this.hongboPoint, Alignment.TRAILING)
-                                                                  .addComponent(this.itemCode, Alignment.TRAILING)
-                                                                  .addComponent(this.meso)
-                                                                  .addComponent(this.killPoint)
-                                                                  .addComponent(this.jButton18, -2, 109, -2)
-                                                            )
-                                                            .addPreferredGap(ComponentPlacement.RELATED)
-                                                            .addGroup(
-                                                               layout.createParallelGroup(Alignment.LEADING, false)
-                                                                  .addComponent(this.jButton20, -1, -1, 32767)
-                                                                  .addComponent(this.jButton4, -1, -1, 32767)
-                                                                  .addComponent(this.jButton5, -1, -1, 32767)
-                                                                  .addComponent(this.jButton6, -1, -1, 32767)
-                                                                  .addComponent(this.jButton7, -1, -1, 32767)
-                                                                  .addComponent(this.jButton15, -1, -1, 32767)
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                          .addGap(18, 18, 18)
-                                    )
-                                    .addGroup(layout.createSequentialGroup().addComponent(dongsi, -1, -1, 32767).addGap(331, 331, 331))
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.TRAILING, false)
-                                                .addComponent(this.jButton21, Alignment.LEADING, -1, -1, 32767)
-                                                .addGroup(
-                                                   layout.createSequentialGroup()
-                                                      .addGroup(
-                                                         layout.createParallelGroup(Alignment.LEADING, false)
-                                                            .addComponent(this.jButton3, -1, -1, 32767)
-                                                            .addComponent(this.jButton2, -1, -1, 32767)
-                                                            .addComponent(this.jButton1, Alignment.TRAILING, -2, 258, -2)
-                                                      )
-                                                      .addGroup(
-                                                         layout.createParallelGroup(Alignment.LEADING)
-                                                            .addGroup(
-                                                               layout.createSequentialGroup().addGap(121, 121, 121).addComponent(this.jButton14, -1, -1, 32767)
-                                                            )
-                                                            .addGroup(
-                                                               layout.createSequentialGroup()
-                                                                  .addGap(9, 9, 9)
+                                                            layout.createParallelGroup(Alignment.LEADING)
+                                                                  .addGroup(layout.createSequentialGroup()
+                                                                        .addComponent(this.jLabel5)
+                                                                        .addGap(0, 461, 32767))
+                                                                  .addComponent(this.jScrollPane2, Alignment.TRAILING,
+                                                                        -1, 461, 32767)
                                                                   .addGroup(
-                                                                     layout.createParallelGroup(Alignment.TRAILING)
-                                                                        .addComponent(this.jButton9, -1, -1, 32767)
-                                                                        .addComponent(this.jLabel6, Alignment.LEADING)
-                                                                        .addGroup(
-                                                                           layout.createSequentialGroup()
-                                                                              .addComponent(this.hottimeItemID, -2, 107, -2)
-                                                                              .addGap(22, 22, 22)
-                                                                              .addComponent(this.hottimeRecvCount, -2, 108, -2)
-                                                                        )
-                                                                  )
-                                                            )
-                                                      )
-                                                )
-                                                .addGroup(
-                                                   Alignment.LEADING,
-                                                   layout.createSequentialGroup()
-                                                      .addComponent(this.jButton10, -2, 114, -2)
-                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
-                                                      .addComponent(this.jButton11, -2, 121, -2)
-                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
-                                                      .addComponent(this.jButton12, -2, 108, -2)
-                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
-                                                      .addComponent(this.jButton13)
-                                                )
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED, -1, 32767)
-                                    )
-                              )
-                              .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup().addComponent(this.jLabel5).addGap(0, 461, 32767))
-                                    .addComponent(this.jScrollPane2, Alignment.TRAILING, -1, 461, 32767)
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addComponent(this.jLabel2)
-                                          .addPreferredGap(ComponentPlacement.RELATED, -1, 32767)
-                                          .addComponent(this.jCheckBox2)
-                                    )
-                              )
-                        )
-                  )
-                  .addGap(22, 22, 22)
-            )
-      );
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(this.jLabel2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED, -1,
+                                                                                    32767)
+                                                                              .addComponent(this.jCheckBox2)))))
+                              .addGap(22, 22, 22)));
       layout.setVerticalGroup(
-         layout.createParallelGroup(Alignment.LEADING)
-            .addGroup(
-               layout.createSequentialGroup()
-                  .addContainerGap()
+            layout.createParallelGroup(Alignment.LEADING)
                   .addGroup(
-                     layout.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(dongsi)
-                        .addComponent(runtime)
-                        .addComponent(this.jCheckBox2)
-                        .addComponent(this.jLabel2)
-                  )
-                  .addPreferredGap(ComponentPlacement.RELATED)
-                  .addGroup(
-                     layout.createParallelGroup(Alignment.LEADING, false)
-                        .addGroup(
-                           layout.createSequentialGroup()
+                        layout.createSequentialGroup()
+                              .addContainerGap()
                               .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING, false)
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addComponent(this.jScrollPane1, -2, 210, -2)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.jLabel4)
-                                                .addComponent(this.jLabel3)
-                                                .addComponent(this.jLabel1)
-                                          )
-                                          .addGap(9, 9, 9)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(mesoRate, -2, -1, -2)
-                                                .addComponent(dropRate, -2, -1, -2)
-                                                .addComponent(expRate, -2, -1, -2)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addComponent(this.jButton16)
-                                    )
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addComponent(this.Receiver, -2, 62, -2)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addComponent(this.jButton8, -2, 31, -2)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.realCash, -2, 23, -2)
-                                                .addComponent(this.jButton4, -2, 23, -2)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.hongboPoint, -2, 23, -2)
-                                                .addComponent(this.jButton5)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.itemCode, -2, 23, -2)
-                                                .addComponent(this.jButton6, -2, -1, -2)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.meso, -2, 23, -2)
-                                                .addComponent(this.jButton7, -2, -1, -2)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.jButton15)
-                                                .addComponent(this.killPoint, -2, 23, -2)
-                                          )
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.LEADING)
-                                                .addComponent(this.jButton18, -1, -1, 32767)
-                                                .addComponent(this.jButton20, -2, 35, -2)
-                                          )
-                                    )
-                              )
+                                    layout.createParallelGroup(Alignment.BASELINE)
+                                          .addComponent(dongsi)
+                                          .addComponent(runtime)
+                                          .addComponent(this.jCheckBox2)
+                                          .addComponent(this.jLabel2))
                               .addPreferredGap(ComponentPlacement.RELATED)
                               .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING, false)
-                                    .addComponent(this.jButton19, -1, -1, 32767)
-                                    .addComponent(this.jComboBox1, -2, 51, -2)
-                              )
-                              .addPreferredGap(ComponentPlacement.UNRELATED)
-                              .addComponent(this.noticeMsg, -2, 31, -2)
-                              .addPreferredGap(ComponentPlacement.UNRELATED)
+                                    layout.createParallelGroup(Alignment.LEADING, false)
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.LEADING, false)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(this.jScrollPane1, -2, 210,
+                                                                                    -2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.jLabel4)
+                                                                                          .addComponent(this.jLabel3)
+                                                                                          .addComponent(this.jLabel1))
+                                                                              .addGap(9, 9, 9)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(mesoRate, -2,
+                                                                                                -1, -2)
+                                                                                          .addComponent(dropRate, -2,
+                                                                                                -1, -2)
+                                                                                          .addComponent(expRate, -2, -1,
+                                                                                                -2))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addComponent(this.jButton16))
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(this.Receiver, -2, 62, -2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addComponent(this.jButton8, -2, 31, -2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.realCash,
+                                                                                                -2, 23, -2)
+                                                                                          .addComponent(this.jButton4,
+                                                                                                -2, 23, -2))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(
+                                                                                                this.hongboPoint, -2,
+                                                                                                23, -2)
+                                                                                          .addComponent(this.jButton5))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.itemCode,
+                                                                                                -2, 23, -2)
+                                                                                          .addComponent(this.jButton6,
+                                                                                                -2, -1, -2))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.meso, -2,
+                                                                                                23, -2)
+                                                                                          .addComponent(this.jButton7,
+                                                                                                -2, -1, -2))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.jButton15)
+                                                                                          .addComponent(this.killPoint,
+                                                                                                -2, 23, -2))
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.LEADING)
+                                                                                          .addComponent(this.jButton18,
+                                                                                                -1, -1, 32767)
+                                                                                          .addComponent(this.jButton20,
+                                                                                                -2, 35, -2))))
+                                                      .addPreferredGap(ComponentPlacement.RELATED)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.LEADING, false)
+                                                                  .addComponent(this.jButton19, -1, -1, 32767)
+                                                                  .addComponent(this.jComboBox1, -2, 51, -2))
+                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
+                                                      .addComponent(this.noticeMsg, -2, 31, -2)
+                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.BASELINE)
+                                                                  .addComponent(this.jButton10)
+                                                                  .addComponent(this.jButton11)
+                                                                  .addComponent(this.jButton12)
+                                                                  .addComponent(this.jButton13))
+                                                      .addPreferredGap(ComponentPlacement.RELATED)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.LEADING)
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(this.jButton14)
+                                                                              .addGap(7, 7, 7)
+                                                                              .addComponent(this.jLabel6)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(
+                                                                                                this.hottimeItemID, -2,
+                                                                                                35, -2)
+                                                                                          .addComponent(
+                                                                                                this.hottimeRecvCount,
+                                                                                                -2, 35, -2)))
+                                                                  .addGroup(
+                                                                        layout.createSequentialGroup()
+                                                                              .addComponent(this.jButton2, -2, 51, -2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addComponent(this.jButton3, -2, 51, -2)
+                                                                              .addPreferredGap(
+                                                                                    ComponentPlacement.RELATED)
+                                                                              .addGroup(
+                                                                                    layout.createParallelGroup(
+                                                                                          Alignment.BASELINE)
+                                                                                          .addComponent(this.jButton1,
+                                                                                                -2, 51, -2)
+                                                                                          .addComponent(this.jButton9,
+                                                                                                -2, 51, -2))))
+                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
+                                                      .addComponent(this.jButton21, -2, 51, -2))
+                                          .addComponent(this.jScrollPane2))
+                              .addPreferredGap(ComponentPlacement.UNRELATED, -1, 32767)
                               .addGroup(
-                                 layout.createParallelGroup(Alignment.BASELINE)
-                                    .addComponent(this.jButton10)
-                                    .addComponent(this.jButton11)
-                                    .addComponent(this.jButton12)
-                                    .addComponent(this.jButton13)
-                              )
+                                    layout.createParallelGroup(Alignment.LEADING)
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGap(17, 17, 17)
+                                                      .addComponent(this.jLabel7)
+                                                      .addGap(3, 3, 3)
+                                                      .addComponent(this.jLabel8)
+                                                      .addGap(11, 11, 11)
+                                                      .addComponent(this.jLabel9))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addGap(37, 37, 37)
+                                                      .addComponent(this.jLabel10)
+                                                      .addGap(1, 1, 1)
+                                                      .addComponent(this.jLabel11, -2, 40, -2))
+                                          .addGroup(
+                                                layout.createSequentialGroup()
+                                                      .addComponent(this.jLabel12)
+                                                      .addGroup(
+                                                            layout.createParallelGroup(Alignment.BASELINE)
+                                                                  .addComponent(this.hottimeStart, -2, -1, -2)
+                                                                  .addComponent(this.jLabel13)
+                                                                  .addComponent(this.hottimeEnd, -2, -1, -2)
+                                                                  .addComponent(this.jCheckBox1)
+                                                                  .addComponent(this.jButton17, -2, 21, -2)
+                                                                  .addComponent(this.hottimeRate, -2, -1, -2)
+                                                                  .addComponent(this.jLabel14))
+                                                      .addPreferredGap(ComponentPlacement.UNRELATED)
+                                                      .addComponent(this.FreezeChat, -2, 61, -2)))
                               .addPreferredGap(ComponentPlacement.RELATED)
-                              .addGroup(
-                                 layout.createParallelGroup(Alignment.LEADING)
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addComponent(this.jButton14)
-                                          .addGap(7, 7, 7)
-                                          .addComponent(this.jLabel6)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.hottimeItemID, -2, 35, -2)
-                                                .addComponent(this.hottimeRecvCount, -2, 35, -2)
-                                          )
-                                    )
-                                    .addGroup(
-                                       layout.createSequentialGroup()
-                                          .addComponent(this.jButton2, -2, 51, -2)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addComponent(this.jButton3, -2, 51, -2)
-                                          .addPreferredGap(ComponentPlacement.RELATED)
-                                          .addGroup(
-                                             layout.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(this.jButton1, -2, 51, -2)
-                                                .addComponent(this.jButton9, -2, 51, -2)
-                                          )
-                                    )
-                              )
-                              .addPreferredGap(ComponentPlacement.UNRELATED)
-                              .addComponent(this.jButton21, -2, 51, -2)
-                        )
-                        .addComponent(this.jScrollPane2)
-                  )
-                  .addPreferredGap(ComponentPlacement.UNRELATED, -1, 32767)
-                  .addGroup(
-                     layout.createParallelGroup(Alignment.LEADING)
-                        .addGroup(
-                           layout.createSequentialGroup()
-                              .addGap(17, 17, 17)
-                              .addComponent(this.jLabel7)
-                              .addGap(3, 3, 3)
-                              .addComponent(this.jLabel8)
-                              .addGap(11, 11, 11)
-                              .addComponent(this.jLabel9)
-                        )
-                        .addGroup(
-                           layout.createSequentialGroup()
-                              .addGap(37, 37, 37)
-                              .addComponent(this.jLabel10)
-                              .addGap(1, 1, 1)
-                              .addComponent(this.jLabel11, -2, 40, -2)
-                        )
-                        .addGroup(
-                           layout.createSequentialGroup()
-                              .addComponent(this.jLabel12)
-                              .addGroup(
-                                 layout.createParallelGroup(Alignment.BASELINE)
-                                    .addComponent(this.hottimeStart, -2, -1, -2)
-                                    .addComponent(this.jLabel13)
-                                    .addComponent(this.hottimeEnd, -2, -1, -2)
-                                    .addComponent(this.jCheckBox1)
-                                    .addComponent(this.jButton17, -2, 21, -2)
-                                    .addComponent(this.hottimeRate, -2, -1, -2)
-                                    .addComponent(this.jLabel14)
-                              )
-                              .addPreferredGap(ComponentPlacement.UNRELATED)
-                              .addComponent(this.FreezeChat, -2, 61, -2)
-                        )
-                  )
-                  .addPreferredGap(ComponentPlacement.RELATED)
-                  .addComponent(this.jLabel5)
-            )
-      );
+                              .addComponent(this.jLabel5)));
       this.pack();
    }
 
@@ -1186,8 +1350,8 @@ public class AdminClient extends JFrame {
                      chr.gainRealCash(rc);
                      String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                      chr.dropMessage(
-                        5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                     );
+                           5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                   } catch (NumberFormatException var17) {
                      JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                      return;
@@ -1207,8 +1371,8 @@ public class AdminClient extends JFrame {
                      chrx.gainRealCash(rc);
                      String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                      chrx.dropMessage(
-                        5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                     );
+                           5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                   } catch (NumberFormatException var16) {
                      JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                      return;
@@ -1228,8 +1392,8 @@ public class AdminClient extends JFrame {
                      chrxx.gainRealCash(rc);
                      String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                      chrxx.dropMessage(
-                        5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                     );
+                           5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                   } catch (NumberFormatException var15) {
                      JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                      return;
@@ -1259,8 +1423,8 @@ public class AdminClient extends JFrame {
                               chrxxx.gainRealCash(rc);
                               String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                               chrxxx.dropMessage(
-                                 5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                              );
+                                    5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                            } catch (NumberFormatException var20) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1281,8 +1445,8 @@ public class AdminClient extends JFrame {
                               chrxxxx.gainRealCash(rc);
                               String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                               chrxxxx.dropMessage(
-                                 5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                              );
+                                    5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                            } catch (NumberFormatException var19) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1303,8 +1467,8 @@ public class AdminClient extends JFrame {
                               chrxxxxx.gainRealCash(rc);
                               String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
                               chrxxxxx.dropMessage(
-                                 5, Integer.parseInt(this.realCash.getText()) + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다."
-                              );
+                                    5, Integer.parseInt(this.realCash.getText()) + " " + cashName
+                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
                            } catch (NumberFormatException var18) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1362,7 +1526,9 @@ public class AdminClient extends JFrame {
          }
       } else {
          String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
-         JOptionPane.showMessageDialog(this, cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.351", 2);
+         JOptionPane.showMessageDialog(this,
+               cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.351",
+               2);
       }
    }
 
@@ -1754,7 +1920,8 @@ public class AdminClient extends JFrame {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxx.gainHongboPoint(rc);
                               String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
-                              chrxxx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                              chrxxx.dropMessage(5,
+                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
                            } catch (NumberFormatException var20) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1773,7 +1940,8 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxxx.gainHongboPoint(rc);
-                              chrxxxx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                              chrxxxx.dropMessage(5,
+                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
                            } catch (NumberFormatException var19) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1792,7 +1960,8 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxxxx.gainHongboPoint(rc);
-                              chrxxxxx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                              chrxxxxx.dropMessage(5,
+                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
                            } catch (NumberFormatException var18) {
                               JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
                               return;
@@ -1813,7 +1982,8 @@ public class AdminClient extends JFrame {
                      while (rs2.next()) {
                         int rc = rs2.getInt("hongbo_point");
                         int point = Integer.parseInt(this.hongboPoint.getText());
-                        PreparedStatement ps3 = con.prepareStatement("UPDATE accounts SET hongbo_point = ? WHERE `id` = ?");
+                        PreparedStatement ps3 = con
+                              .prepareStatement("UPDATE accounts SET hongbo_point = ? WHERE `id` = ?");
                         ps3.setInt(1, rc + point);
                         ps3.setInt(2, rs.getInt("accountid"));
                         ps3.executeUpdate();
@@ -1857,9 +2027,9 @@ public class AdminClient extends JFrame {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
          Item item;
          if (GameConstants.getInventoryType(itemID) == MapleInventoryType.EQUIP) {
-            item = ii.randomizeStats((Equip)ii.getEquipById(itemID));
+            item = ii.randomizeStats((Equip) ii.getEquipById(itemID));
          } else {
-            item = new Item(itemID, (short)0, (short)quantity, 0);
+            item = new Item(itemID, (short) 0, (short) quantity, 0);
          }
 
          item.setGMLog(CurrentTime.getAllCurrentTime() + "에 서버 관리기 아이템 지급을 통해 만들어진 아이템");
@@ -1918,20 +2088,22 @@ public class AdminClient extends JFrame {
                      if (p != null) {
                         MapleCabinet cabinet = p.getCabinet();
                         if (cabinet == null) {
-                           JOptionPane.showMessageDialog(this, "해당 유저의 보관함을 열람하는 과정에서 오류가 발생하였습니다.", "Jihyeon 1.2.354", 1);
+                           JOptionPane.showMessageDialog(this, "해당 유저의 보관함을 열람하는 과정에서 오류가 발생하였습니다.", "Jihyeon 1.2.354",
+                                 1);
                            return;
                         }
 
                         cabinet.addCabinetItem(
-                           new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM 선물]", fDate + "에 운영자가 보낸 아이템입니다.", item)
-                        );
+                              new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L,
+                                    "[GM 선물]", fDate + "에 운영자가 보낸 아이템입니다.", item));
                         p.send(CField.maplecabinetResult(8));
                         p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                         p.dropMessage(5, "[알림] 운영자로부터 아이템 도착하였습니다. 메이플 보관함을 통해 수령해주시기 바랍니다.");
                         find = true;
                         JOptionPane.showMessageDialog(this, "해당 플레이어와 동일한 계정 내에 캐릭터에게 전송되었습니다.", "Jihyeon 1.2.354", 1);
                      } else {
-                        ps = con.prepareStatement("SELECT `cabinet_index` FROM `cabinet_items` WHERE `accountid` = ? ORDER BY `cabinet_index` DESC");
+                        ps = con.prepareStatement(
+                              "SELECT `cabinet_index` FROM `cabinet_items` WHERE `accountid` = ? ORDER BY `cabinet_index` DESC");
                         ps.setInt(1, accountID);
                         rs = ps.executeQuery();
                         if (rs.next()) {
@@ -1939,13 +2111,11 @@ public class AdminClient extends JFrame {
                         }
 
                         ps = con.prepareStatement(
-                           "INSERT INTO `cabinet_items` (accountid, itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade, cabinet_index, cabinet_expired_time, cabinet_title, cabinet_desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                           1
-                        );
+                              "INSERT INTO `cabinet_items` (accountid, itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade, cabinet_index, cabinet_expired_time, cabinet_title, cabinet_desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                              1);
                         pse = con.prepareStatement(
-                           "INSERT INTO `cabinet_equipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-                        );
-                        MapleInventoryType mit = MapleInventoryType.getByType((byte)(item.getItemId() / 1000000));
+                              "INSERT INTO `cabinet_equipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        MapleInventoryType mit = MapleInventoryType.getByType((byte) (item.getItemId() / 1000000));
                         if (item.getPosition() == -55) {
                            return;
                         }
@@ -1970,7 +2140,7 @@ public class AdminClient extends JFrame {
 
                         ps.setLong(idx.getAndIncrement(), item.getExpiration());
                         ps.setInt(idx.getAndIncrement(), item.getFlag());
-                        ps.setByte(idx.getAndIncrement(), (byte)8);
+                        ps.setByte(idx.getAndIncrement(), (byte) 8);
                         ps.setString(idx.getAndIncrement(), item.getGiftFrom());
                         ps.setInt(idx.getAndIncrement(), item.getOnceTrade());
                         ps.setInt(idx.getAndIncrement(), lastIndex + 1);
@@ -1987,8 +2157,9 @@ public class AdminClient extends JFrame {
                         long iid = rs.getLong(1);
                         rs.close();
                         item.setInventoryId(iid);
-                        if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED) || mit.equals(MapleInventoryType.CASH_EQUIP)) {
-                           Equip equip = (Equip)item;
+                        if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED)
+                              || mit.equals(MapleInventoryType.CASH_EQUIP)) {
+                           Equip equip = (Equip) item;
                            if (equip.getUniqueId() > 0L && equip.getItemId() / 10000 == 166) {
                               Android android = equip.getAndroid();
                               if (android != null) {
@@ -2042,7 +2213,7 @@ public class AdminClient extends JFrame {
                            pse.setShort(index++, equip.getSpecialAttribute());
                            pse.setByte(index++, equip.getReqLevel());
                            pse.setByte(index++, equip.getGrowthEnchant());
-                           pse.setByte(index++, (byte)(equip.getFinalStrike() ? 1 : 0));
+                           pse.setByte(index++, (byte) (equip.getFinalStrike() ? 1 : 0));
                            pse.setShort(index++, equip.getBossDamage());
                            pse.setShort(index++, equip.getIgnorePDR());
                            pse.setByte(index++, equip.getTotalDamage());
@@ -2108,8 +2279,8 @@ public class AdminClient extends JFrame {
                }
 
                cabinet.addCabinetItem(
-                  new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM 선물]", fDate + "에 운영자가 보낸 아이템입니다.", item)
-               );
+                     new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM 선물]",
+                           fDate + "에 운영자가 보낸 아이템입니다.", item));
                p.send(CField.maplecabinetResult(8));
                p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                p.dropMessage(5, "[알림] 운영자로부터 아이템이 도착하였습니다. 메이플 보관함을 통해 수령해주시기 바랍니다.");
@@ -2128,9 +2299,9 @@ public class AdminClient extends JFrame {
 
    private void jButton9ActionPerformed(ActionEvent evt) {
       if (!this.hottimeItemID.getText().isEmpty()
-         && !this.hottimeItemID.getText().equals("아이템 코드, 갯수")
-         && !this.hottimeRecvCount.getText().isEmpty()
-         && !this.hottimeRecvCount.getText().equals("지급 받을 회원수")) {
+            && !this.hottimeItemID.getText().equals("아이템 코드, 갯수")
+            && !this.hottimeRecvCount.getText().isEmpty()
+            && !this.hottimeRecvCount.getText().equals("지급 받을 회원수")) {
          List<MapleCharacter> player = new LinkedList<>();
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -2163,9 +2334,9 @@ public class AdminClient extends JFrame {
             itemID = Integer.parseInt(args[0]);
             quantity = Integer.parseInt(args[1]);
             if (!this.hottimeRecvCount.getText().equals("ALL")
-               && !this.hottimeRecvCount.getText().equals("all")
-               && !this.hottimeRecvCount.getText().equals("전체")
-               && !this.hottimeRecvCount.getText().equals("모두")) {
+                  && !this.hottimeRecvCount.getText().equals("all")
+                  && !this.hottimeRecvCount.getText().equals("전체")
+                  && !this.hottimeRecvCount.getText().equals("모두")) {
                userCount = Math.min(Integer.parseInt(this.hottimeRecvCount.getText()), player.size());
             } else {
                userCount = player.size();
@@ -2206,14 +2377,13 @@ public class AdminClient extends JFrame {
                         Calendar CAL = new GregorianCalendar(Locale.KOREA);
                         String fDate = sdf.format(CAL.getTime());
                         cabinet.addCabinetItem(
-                           new MapleCabinetItem(
-                              cabinet.getNextIndex(),
-                              System.currentTimeMillis() + 604800000L,
-                              "[핫타임 보상]",
-                              fDate + "에 지급된 핫타임 보상입니다.",
-                              new Item(itemID, (short)0, (short)quantity, 0, MapleInventoryIdentifier.getInstance())
-                           )
-                        );
+                              new MapleCabinetItem(
+                                    cabinet.getNextIndex(),
+                                    System.currentTimeMillis() + 604800000L,
+                                    "[핫타임 보상]",
+                                    fDate + "에 지급된 핫타임 보상입니다.",
+                                    new Item(itemID, (short) 0, (short) quantity, 0,
+                                          MapleInventoryIdentifier.getInstance())));
                         g.send(CField.maplecabinetResult(8));
                         g.setSaveFlag(g.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                         String message = "";
@@ -2223,11 +2393,12 @@ public class AdminClient extends JFrame {
 
                         if (!all && userCount < 5) {
                            Center.Broadcast.broadcastMessage(
-                              CField.chatMsg(21, "[" + g.getName() + "] 님이 핫타임 이벤트 보상으로 " + ii.getName(itemID) + " " + quantity + "개를 지급 받았습니다. 모두 축하해주세요!")
-                           );
+                                 CField.chatMsg(21, "[" + g.getName() + "] 님이 핫타임 이벤트 보상으로 " + ii.getName(itemID) + " "
+                                       + quantity + "개를 지급 받았습니다. 모두 축하해주세요!"));
                         }
 
-                        message = message + "[" + ii.getName(itemID) + "] " + quantity + "개를 핫타임 보상으로 지급 받았습니다.\r\n[메이플 보관함]을 확인해주세요.";
+                        message = message + "[" + ii.getName(itemID) + "] " + quantity
+                              + "개를 핫타임 보상으로 지급 받았습니다.\r\n[메이플 보관함]을 확인해주세요.";
                         g.dropMessage(1, message);
                         g.dropMessage(5, message);
                         recipient.add(g);
@@ -2327,10 +2498,10 @@ public class AdminClient extends JFrame {
 
                   for (int i = 0; i < quantity; i++) {
                      Item item = null;
-                     if ((item = chr.getInventory(MapleInventoryType.getByType((byte)TI)).findById(itemID)) != null) {
+                     if ((item = chr.getInventory(MapleInventoryType.getByType((byte) TI)).findById(itemID)) != null) {
                         MapleInventoryManipulator.removeFromSlot(
-                           chr.getClient(), MapleInventoryType.getByType((byte)TI), item.getPosition(), (short)1, false, false
-                        );
+                              chr.getClient(), MapleInventoryType.getByType((byte) TI), item.getPosition(), (short) 1,
+                              false, false);
                         found = true;
                      }
                   }
@@ -2403,7 +2574,7 @@ public class AdminClient extends JFrame {
    }
 
    private void jButton19ActionPerformed(ActionEvent evt) {
-      String d = (String)this.jComboBox1.getSelectedItem();
+      String d = (String) this.jComboBox1.getSelectedItem();
       if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
          if (d.equals("초심자패키지")) {
             try (Connection con = DBConnection.getConnection()) {
@@ -2412,7 +2583,8 @@ public class AdminClient extends JFrame {
                ResultSet rs = ps.executeQuery();
 
                while (rs.next()) {
-                  PreparedStatement ps2 = con.prepareStatement("INSERT INTO `beginner_package` (`accountid`, `name`) VALUES (?, ?)");
+                  PreparedStatement ps2 = con
+                        .prepareStatement("INSERT INTO `beginner_package` (`accountid`, `name`) VALUES (?, ?)");
                   ps2.setInt(1, rs.getInt("accountid"));
                   ps2.setString(2, null);
                   ps2.executeUpdate();
@@ -2457,7 +2629,8 @@ public class AdminClient extends JFrame {
 
                while (rs_.next()) {
                   int accountID = rs_.getInt("accountid");
-                  PreparedStatement ps = con.prepareStatement("SELECT `accountid` FROM extreme_point_log WHERE `accountid` = ? && type='" + tier + "'");
+                  PreparedStatement ps = con.prepareStatement(
+                        "SELECT `accountid` FROM extreme_point_log WHERE `accountid` = ? && type='" + tier + "'");
                   ps.setInt(1, accountID);
                   ResultSet rs = ps.executeQuery();
                   if (rs.next()) {
@@ -2620,7 +2793,9 @@ public class AdminClient extends JFrame {
             } else if (!isTempban) {
                JOptionPane.showMessageDialog(this, "시리얼 밴 처리 되었습니다.", "Jihyeon 1.2.331", 1);
             } else if (showCommandHelp) {
-               JOptionPane.showMessageDialog(this, "입력값을 확인해 주세요. \n*** 올바른 커맨드 사용법 ***\n-시리얼 밴: 캐릭이름, 사유\n-기간 밴: 캐릭이름, 사유, 일수(숫자)", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this,
+                     "입력값을 확인해 주세요. \n*** 올바른 커맨드 사용법 ***\n-시리얼 밴: 캐릭이름, 사유\n-기간 밴: 캐릭이름, 사유, 일수(숫자)",
+                     "Jihyeon 1.2.331", 1);
             }
          }
       } else {
@@ -2697,7 +2872,8 @@ public class AdminClient extends JFrame {
       addChatLog(type, channel, message, sender, reciver, null);
    }
 
-   public static void addChatLog(int type, int channel, String message, String sender, String reciver, MapleCharacter chr) {
+   public static void addChatLog(int type, int channel, String message, String sender, String reciver,
+         MapleCharacter chr) {
       if (!isDisabledChat() || DBConfig.isGanglim) {
          String ch = "";
          if (channel == 1) {

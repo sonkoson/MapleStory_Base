@@ -86,15 +86,14 @@ public class Ark extends Pirate {
 
    @Override
    public void onAttack(
-      MapleMonster monster,
-      boolean boss,
-      AttackPair attackPair,
-      Skill skill,
-      long totalDamage,
-      AttackInfo attack,
-      SecondaryStatEffect effect,
-      RecvPacketOpcode opcode
-   ) {
+         MapleMonster monster,
+         boolean boss,
+         AttackPair attackPair,
+         Skill skill,
+         long totalDamage,
+         AttackInfo attack,
+         SecondaryStatEffect effect,
+         RecvPacketOpcode opcode) {
       if (totalDamage > 0L) {
          if (attack.skillID == 155100009) {
             int slv = this.getPlayer().getTotalSkillLevel(155111207);
@@ -115,17 +114,18 @@ public class Ark extends Pirate {
                   int wreakageCount = 0;
 
                   for (Wreckage wreak : this.getPlayer().getMap().getAllWreakage()) {
-                     if (wreak.getOwner() != null && wreak.getOwner().getId() == this.getPlayer().getId() && wreak.getSkillID() == 155111207) {
+                     if (wreak.getOwner() != null && wreak.getOwner().getId() == this.getPlayer().getId()
+                           && wreak.getSkillID() == 155111207) {
                         wreakageCount++;
                      }
                   }
 
                   if (wreakageCount < eff.getZ()) {
                      this.getPlayer()
-                        .getMap()
-                        .spawnWreckage(
-                           new Wreckage(this.getPlayer(), eff.getQ() * 1000, 155111207, this.getPlayer().incAndGetWreckageCount(), monster.getTruePosition())
-                        );
+                           .getMap()
+                           .spawnWreckage(
+                                 new Wreckage(this.getPlayer(), eff.getQ() * 1000, 155111207,
+                                       this.getPlayer().incAndGetWreckageCount(), monster.getTruePosition()));
                   }
                }
             }
@@ -133,43 +133,46 @@ public class Ark extends Pirate {
 
          if (attack.skillID == 155121003) {
             SecondaryStatEffect eff = SkillFactory.getSkill(155121004).getEffect(155121102);
-            SecondaryStatEffect eff2 = SkillFactory.getSkill(155121102).getEffect(this.getPlayer().getTotalSkillLevel(155121102));
+            SecondaryStatEffect eff2 = SkillFactory.getSkill(155121102)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(155121102));
             if (eff != null && eff2 != null) {
                Rectangle rect = eff.calculateBoundingBox(monster.getPosition(), false);
                Point pos = this.getPlayer().getMap().calcDropPos(new Point(rect.x, rect.y - 23), monster.getPosition());
                rect.y = pos.y - 23;
-               this.getPlayer().getMap().spawnMist(new AffectedArea(rect, this.getPlayer(), eff, pos, System.currentTimeMillis() + eff2.getQ() * 1000));
+               this.getPlayer().getMap().spawnMist(new AffectedArea(rect, this.getPlayer(), eff, pos,
+                     System.currentTimeMillis() + eff2.getQ() * 1000));
             }
          }
 
          if (attack.skillID == 155121306) {
             SecondaryStatEffect eff = SkillFactory.getSkill(155121006).getEffect(attack.skillLevel);
-            SecondaryStatEffect eff2 = SkillFactory.getSkill(155121306).getEffect(this.getPlayer().getTotalSkillLevel(155121306));
+            SecondaryStatEffect eff2 = SkillFactory.getSkill(155121306)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(155121306));
             if (eff != null) {
                Rectangle rect = eff.calculateBoundingBox(this.getPlayer().getPosition(), false);
                Point point = this.getPlayer().getPosition();
                point.y -= 341;
-               this.getPlayer().getMap().spawnMist(new AffectedArea(rect, this.getPlayer(), eff, point, System.currentTimeMillis() + eff2.getY() * 1000));
+               this.getPlayer().getMap().spawnMist(new AffectedArea(rect, this.getPlayer(), eff, point,
+                     System.currentTimeMillis() + eff2.getY() * 1000));
                if (monster.checkResistSkill(MobTemporaryStatFlag.FREEZE)) {
                   monster.applyStatus(
-                     this.getPlayer(),
-                     new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, 155121306, null, false),
-                     false,
-                     effect.getDuration(),
-                     false,
-                     effect
-                  );
-                  monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L, this.getPlayer(), attack.skillID);
+                        this.getPlayer(),
+                        new MobTemporaryStatEffect(MobTemporaryStatFlag.FREEZE, 1, 155121306, null, false),
+                        false,
+                        effect.getDuration(),
+                        false,
+                        effect);
+                  monster.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + 90000L,
+                        this.getPlayer(), attack.skillID);
                } else {
                   this.getPlayer()
-                     .send(
-                        MobPacket.monsterResist(
-                           monster,
-                           this.getPlayer(),
-                           (int)((monster.getResistSkill(MobTemporaryStatFlag.FREEZE) - System.currentTimeMillis()) / 1000L),
-                           attack.skillID
-                        )
-                     );
+                        .send(
+                              MobPacket.monsterResist(
+                                    monster,
+                                    this.getPlayer(),
+                                    (int) ((monster.getResistSkill(MobTemporaryStatFlag.FREEZE)
+                                          - System.currentTimeMillis()) / 1000L),
+                                    attack.skillID));
                }
             }
          }
@@ -180,8 +183,8 @@ public class Ark extends Pirate {
 
    @Override
    public void afterAttack(
-      boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill, long totalExp, RecvPacketOpcode opcode
-   ) {
+         boolean boss, AttackInfo attack, long totalDamage, SecondaryStatEffect effect, Skill skill, int multiKill,
+         long totalExp, RecvPacketOpcode opcode) {
       if (attack.skillID == 400051080 && !this.onArkEndlessBeast) {
          this.onArkEndlessBeast = true;
       }
@@ -251,23 +254,24 @@ public class Ark extends Pirate {
       }
 
       if (this.getPlayer().getBuffedValue(SecondaryStatFlag.ImpendingDeath) != null
-         && this.getPlayer().getBuffedValue(SecondaryStatFlag.SpectralForm) != null
-         && this.getPlayer().getBuffedEffect(SecondaryStatFlag.indiePartialNotDamaged, 400051334) == null
-         && attack.skillID != 400051048
-         && attack.skillID != 155100009
-         && attack.skillID != 155111207
-         && attack.skillID != 155121006
-         && attack.skillID != 155121306) {
+            && this.getPlayer().getBuffedValue(SecondaryStatFlag.SpectralForm) != null
+            && this.getPlayer().getBuffedEffect(SecondaryStatFlag.indiePartialNotDamaged, 400051334) == null
+            && attack.skillID != 400051048
+            && attack.skillID != 155100009
+            && attack.skillID != 155111207
+            && attack.skillID != 155121006
+            && attack.skillID != 155121306) {
          SecondaryStatEffect eff = this.getPlayer().getBuffedEffect(SecondaryStatFlag.ImpendingDeath);
          if (eff != null) {
             List<MapleMapObject> mobs_ = this.getPlayer()
-               .getMap()
-               .getMapObjectsInRange(this.getPlayer().getPosition(), 640000.0, Arrays.asList(MapleMapObjectType.MONSTER));
+                  .getMap()
+                  .getMapObjectsInRange(this.getPlayer().getPosition(), 640000.0,
+                        Arrays.asList(MapleMapObjectType.MONSTER));
             List<Integer> mobList = new ArrayList<>();
             int bulletCount = eff.getZ();
 
             for (MapleMapObject mo : mobs_) {
-               MapleMonster mons = (MapleMonster)mo;
+               MapleMonster mons = (MapleMonster) mo;
                mobList.add(mons.getObjectId());
                if (mobList.size() >= bulletCount) {
                   break;
@@ -279,7 +283,8 @@ public class Ark extends Pirate {
                if (this.getPlayer().getTotalSkillLevel(500061013) > 0) {
                   skillID = 500061013;
                   if (this.getPlayer().getTotalSkillLevel(155141001) > 0) {
-                     this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE, 300);
+                     this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE,
+                           300);
                   }
                }
 
@@ -289,7 +294,7 @@ public class Ark extends Pirate {
                      Collections.shuffle(mobs_);
                      MapleMapObject mob_ = mobs_.stream().findAny().orElse(null);
                      if (mob_ != null) {
-                        MapleMonster mons = (MapleMonster)mob_;
+                        MapleMonster mons = (MapleMonster) mob_;
                         mobList.add(mons.getObjectId());
                      }
                   }
@@ -300,29 +305,32 @@ public class Ark extends Pirate {
                ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                info.initImpendingDead();
                ForceAtom forceAtom = new ForceAtom(
-                  info, 155100009, this.getPlayer().getId(), false, true, this.getPlayer().getId(), ForceAtom.AtomType.IMPENDING_DEAD, mobList, mobList.size()
-               );
+                     info, 155100009, this.getPlayer().getId(), false, true, this.getPlayer().getId(),
+                     ForceAtom.AtomType.IMPENDING_DEAD, mobList, mobList.size());
                this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             }
          }
       }
 
       if (attack.skillID == 155001000 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155001001).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155001001)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155101002 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155101003).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155101003)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155111003 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155111005).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155111005)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
@@ -331,42 +339,47 @@ public class Ark extends Pirate {
       }
 
       if (attack.skillID == 155121003 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155121005).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155121005)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155141002 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155141003).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155141003)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155141009 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155141010).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155141010)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155141014 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155141015).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155141015)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155141019 && attack.targets > 0) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(155141020).getEffect(this.getPlayer().getSkillLevel(attack.skillID));
+         SecondaryStatEffect eff = SkillFactory.getSkill(155141020)
+               .getEffect(this.getPlayer().getSkillLevel(attack.skillID));
          if (eff != null) {
             eff.applyTo(this.getPlayer());
          }
       }
 
       if (attack.skillID == 155121202 && attack.targets > 0) {
-         int delta = (int)(this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * effect.getW());
+         int delta = (int) (this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * effect.getW());
          this.getPlayer().addHP(delta, false);
       }
 
@@ -374,7 +387,7 @@ public class Ark extends Pirate {
          SecondaryStatEffect eff = SkillFactory.getSkill(155111202).getEffect(attack.skillLevel);
          if (eff != null) {
             if (attack.targets > 0) {
-               int delta = (int)(this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * eff.getW());
+               int delta = (int) (this.getPlayer().getStat().getCurrentMaxHp(this.getPlayer()) * 0.01 * eff.getW());
                this.getPlayer().addHP(delta);
             }
 
@@ -386,7 +399,8 @@ public class Ark extends Pirate {
 
       if (attack.skillID == 155121306 || attack.skillID == 400051334) {
          if (this.specterStateCount > 0 && this.getPlayer().getBuffedValue(SecondaryStatFlag.SpectralForm) == null) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(155101006).getEffect(this.getPlayer().getTotalSkillLevel(155101006));
+            SecondaryStatEffect eff = SkillFactory.getSkill(155101006)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(155101006));
             if (eff != null) {
                eff.applyTo(this.getPlayer());
             }
@@ -414,7 +428,8 @@ public class Ark extends Pirate {
             }
 
             this.getPlayer().send(CField.userBonusAttackRequest(155141001, true, objList));
-            this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE, Math.max(value - 1, 0));
+            this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE,
+                  Math.max(value - 1, 0));
          }
       }
 
@@ -424,15 +439,18 @@ public class Ark extends Pirate {
    @Override
    public void activeSkillPrepare(PacketDecoder packet) {
       if (this.getActiveSkillPrepareID() == 400051334) {
-         SecondaryStatEffect eff = SkillFactory.getSkill(400051334).getEffect(this.getPlayer().getTotalSkillLevel(400051334));
+         SecondaryStatEffect eff = SkillFactory.getSkill(400051334)
+               .getEffect(this.getPlayer().getTotalSkillLevel(400051334));
          if (eff != null) {
-            this.getPlayer().temporaryStatSet(400051334, eff.getUpdatableTime(), SecondaryStatFlag.indiePartialNotDamaged, 1);
+            this.getPlayer().temporaryStatSet(400051334, eff.getUpdatableTime(),
+                  SecondaryStatFlag.indiePartialNotDamaged, 1);
             this.getPlayer().temporaryStatSet(400051035, eff.getDuration(), SecondaryStatFlag.MemoryOfRoot, 1);
          }
       } else if (this.getActiveSkillPrepareID() == 400051080) {
          this.onArkEndlessBeast = true;
          if (this.specterStateCount > 0 && this.getPlayer().getBuffedValue(SecondaryStatFlag.SpectralForm) == null) {
-            SecondaryStatEffect eff = SkillFactory.getSkill(155101006).getEffect(this.getPlayer().getTotalSkillLevel(155101006));
+            SecondaryStatEffect eff = SkillFactory.getSkill(155101006)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(155101006));
             if (eff != null) {
                eff.applyTo(this.getPlayer());
             }
@@ -483,7 +501,7 @@ public class Ark extends Pirate {
                   time = Long.valueOf(lastTime);
                }
 
-               int diff = (int)(now - time);
+               int diff = (int) (now - time);
                this.contactCaravanPopup(r, diff);
             }
 
@@ -582,8 +600,9 @@ public class Ark extends Pirate {
          case 155111207:
             Field field = this.getPlayer().getMap();
             List<MapleMapObject> mobs = this.getPlayer()
-               .getMap()
-               .getMapObjectsInRange(this.getPlayer().getPosition(), 320000.0, Arrays.asList(MapleMapObjectType.MONSTER));
+                  .getMap()
+                  .getMapObjectsInRange(this.getPlayer().getPosition(), 320000.0,
+                        Arrays.asList(MapleMapObjectType.MONSTER));
             List<Integer> mobList = new LinkedList<>();
             List<Wreckage> wreakageList = new LinkedList<>();
             int i = 0;
@@ -597,27 +616,27 @@ public class Ark extends Pirate {
             Collections.sort(wreakageList, (r1, r2) -> r1.getObjectId() - r2.getObjectId());
 
             for (MapleMapObject mo : mobs) {
-               MapleMonster mons = (MapleMonster)mo;
+               MapleMonster mons = (MapleMonster) mo;
                mobList.add(mons.getObjectId());
                if (++i >= 12) {
                   break;
                }
             }
 
-            field.broadcastMessage(CField.DelWreckage(this.getPlayer().getId(), wreakageList, this.getPlayer().getCooldownLimit(22171095) != 0L));
+            field.broadcastMessage(CField.DelWreckage(this.getPlayer().getId(), wreakageList,
+                  this.getPlayer().getCooldownLimit(22171095) != 0L));
             ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
             info.initReturningHatred(position);
             ForceAtom forceAtom2 = new ForceAtom(
-               info,
-               this.getActiveSkillID(),
-               this.getPlayer().getId(),
-               false,
-               true,
-               this.getPlayer().getId(),
-               ForceAtom.AtomType.RETURNING_HATRED,
-               mobList,
-               wreakageList.size()
-            );
+                  info,
+                  this.getActiveSkillID(),
+                  this.getPlayer().getId(),
+                  false,
+                  true,
+                  this.getPlayer().getId(),
+                  ForceAtom.AtomType.RETURNING_HATRED,
+                  mobList,
+                  wreakageList.size());
             this.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom2));
             effect.applyTo(this.getPlayer(), true);
             break;
@@ -637,15 +656,14 @@ public class Ark extends Pirate {
    private void contactCaravanPopup(int r, int diff) {
       if (r == 0) {
          this.getPlayer()
-            .send(
-               CField.addPopupSay(
-                  3001532,
-                  5000,
-                  "앗, 오랜만이네. 아, 그렇게 오래는 안되었던가... 그래도 이정도 지났으면 오랜만이라고 하는게 맞는 것 같은데... 얼마 안되었는데 오랜만이라고 했다고 기분 상했으면 어쩌지... 말실수 할 줄 알았으면 내가 받는게 아니었는데, 아침 점괘가 이상하더라니... 전부 내 실수야. 미안해...",
-                  ""
-               )
-            );
-         this.getPlayer().dropMessage(5, "니야는 여전한 것 같다. 니야를 달래고 카라반의 상황에 대해 이야기를 나누었다.");
+               .send(
+                     CField.addPopupSay(
+                           3001532,
+                           5000,
+                           "Ah, it's been a while. Oh, hasn't it been that long... But if it's been this long, I guess it's right to say it's been a while... What if I said it's been a while but it hasn't been that long and you get offended... If I knew I'd slip up, I shouldn't have answered, the morning fortune was strange... It's all my fault. I'm sorry...",
+                           ""));
+         this.getPlayer().dropMessage(5,
+               "Niya seems the same. I comforted Niya and talked about the situation of the caravan.");
       } else if (r == 1) {
          String timeStr = "";
          int hours = diff / 3600;
@@ -653,15 +671,15 @@ public class Ark extends Pirate {
          minutes /= 60;
          int seconds = minutes % 60;
          if (hours > 0) {
-            timeStr = hours + "시간 ";
+            timeStr = hours + "hours ";
          }
 
          if (minutes > 0) {
-            timeStr = timeStr + minutes + "분 ";
+            timeStr = timeStr + minutes + "min ";
          }
 
          if (seconds > 0) {
-            timeStr = timeStr + seconds + "초 ";
+            timeStr = timeStr + seconds + "sec ";
          }
 
          if (timeStr.isEmpty()) {
@@ -669,28 +687,29 @@ public class Ark extends Pirate {
          }
 
          this.getPlayer()
-            .send(
-               CField.addPopupSay(
-                  3001533,
-                  5000,
-                  "이전 너와 교신한 후 정확히 "
-                     + timeStr
-                     + "분 지난 것이다, 치르.\r\n전파가 잡히지 않아서 걱정했는데 전파 장치가 아직 작동하는 것 같아서 다행인 것이다, 치르.\r\n바크바크 녀석은 마음만 느낄 수 있으면 된다는 망발을 했지만 역시 실제로 교신해야 서로 무사한 것을 확인할 수 있다고 본다. 치르.",
-                  ""
-               )
-            );
-         this.getPlayer().dropMessage(5, "웨이는 여전히 바크바크와 다투는 것 같다. 전파장치를 좀 더 잘 사용할 수 있는 방법에 대해 이야기를 나누었다.");
+               .send(
+                     CField.addPopupSay(
+                           3001533,
+                           5000,
+                           "Exactly "
+                                 + timeStr
+                                 + " has passed since I last communicated with you, Chir.\r\nI was worried because I couldn't get a signal, but I'm glad the radio seems to be working, Chir.\r\nBarkbark said nonsense that feeling the heart is enough, but I think we need to actually communicate to confirm each other's safety. Chir.",
+                           ""));
+         this.getPlayer().dropMessage(5,
+               "Wei seems to be arguing with Barkbark as usual. Discussed ways to use the radio device better.");
       } else if (r == 2) {
-         this.getPlayer().send(CField.addPopupSay(3001534, 3000, "헤이! 왓썹 브로. 롱타임노씨이지만 유와 내 하트가 뜨겁게 뛰고있으니 전혀 걱정하지 않았돠아!\r\n말이 나왔으니 오랜만에 내 뮤직을 리슨.", ""));
-         this.getPlayer().dropMessage(5, "바크바크는 여전한 것 같다. 바크바크의 노래에 대해 이야기를 나누었다.");
+         this.getPlayer().send(CField.addPopupSay(3001534, 3000,
+               "Hey! What's up bro. Long time no see, but my heart is beating hot with you so I wasn't worried at all!\r\nSpeaking of which, listen to my music after a long time.",
+               ""));
+         this.getPlayer().dropMessage(5, "Barkbark seems the same. Talked about Barkbark's song.");
       } else if (r == 3) {
          this.getPlayer()
-            .send(
-               CField.addPopupSay(
-                  3001535, 3000, "앗. 반짝반짝한 걸 준 사람, 잘 있었냐! 나 요즘 밥 많이 먹었더니 이 만큼 컸다! 어제는 넘어지고 울지도 않았어! 헤헤...\r\n(이건 비밀인데 이 근처에서 반짝반짝하는 것도 발견했어!)", ""
-               )
-            );
-         this.getPlayer().dropMessage(5, "마르는 씩씩하게 자라고 있는 것 같다. 마르가 어제 한 놀이에 대해 이야기를 나누었다.");
+               .send(
+                     CField.addPopupSay(
+                           3001535, 3000,
+                           "Ah. The person who gave me the shiny thing, how have you been! I ate a lot properly these days so I grew this much! I didn't even cry when I fell yesterday! Hehe...\r\n(This is a secret, but I found something shiny around here too!)",
+                           ""));
+         this.getPlayer().dropMessage(5, "Mar seems to be growing up bravely. Talked about what Mar played yesterday.");
       }
    }
 
@@ -710,11 +729,13 @@ public class Ark extends Pirate {
          this.cancelOldestAbyssTask();
       }
 
-      if (this.getPlayer().getCanNextSpecterStateTime() != 0L && this.getPlayer().getCanNextSpecterStateTime() <= System.currentTimeMillis()) {
+      if (this.getPlayer().getCanNextSpecterStateTime() != 0L
+            && this.getPlayer().getCanNextSpecterStateTime() <= System.currentTimeMillis()) {
          this.getPlayer().setCanNextSpecterStateTime(0L);
       }
 
-      if (this.getPlayer().getCanNextSpecterStateTime() == 0L || this.getPlayer().getCanNextSpecterStateTime() <= System.currentTimeMillis()) {
+      if (this.getPlayer().getCanNextSpecterStateTime() == 0L
+            || this.getPlayer().getCanNextSpecterStateTime() <= System.currentTimeMillis()) {
          int skillID = 155000007;
          SecondaryStatEffect effect = this.getPlayer().getBuffedEffect(SecondaryStatFlag.SpecterState);
          if (effect == null) {
@@ -724,7 +745,8 @@ public class Ark extends Pirate {
          if (effect != null) {
             int value = this.specterStateCount;
             if (this.getPlayer().getBuffedValue(SecondaryStatFlag.SpectralForm) != null) {
-               if (this.getPlayer().getCanNextSpecterStateTime() == 0L || this.getPlayer().getCanNextSpecterStateTime() > System.currentTimeMillis()) {
+               if (this.getPlayer().getCanNextSpecterStateTime() == 0L
+                     || this.getPlayer().getCanNextSpecterStateTime() > System.currentTimeMillis()) {
                   value = Math.max(0, value - 23);
                   if (value <= 0) {
                      this.getPlayer().temporaryStatResetBySkillID(155101006);
@@ -769,14 +791,16 @@ public class Ark extends Pirate {
 
                      v = Math.min(++v, effect.getX());
                      this.getPlayer()
-                        .temporaryStatSet(
-                           155120014, effect.getDuration() > 5000 ? effect.getDuration() : effect.getDuration() * 4, SecondaryStatFlag.BattleHolic, v
-                        );
+                           .temporaryStatSet(
+                                 155120014,
+                                 effect.getDuration() > 5000 ? effect.getDuration() : effect.getDuration() * 4,
+                                 SecondaryStatFlag.BattleHolic, v);
                   }
 
                   if (this.getPlayer().getTotalSkillLevel(155141001) > 0 && target > 0) {
                      int value = this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.AwakenAbyss, 0);
-                     this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE, Math.min(value + 10, 300));
+                     this.getPlayer().temporaryStatSet(SecondaryStatFlag.AwakenAbyss, 155141001, Integer.MAX_VALUE,
+                           Math.min(value + 10, 300));
                   }
             }
          }
@@ -797,7 +821,8 @@ public class Ark extends Pirate {
                case 155001100:
                case 155141000:
                   flag = SecondaryStatFlag.PlainSpellBullets;
-                  count = this.plainSpellBulletCount / 2 + this.scarletSpellBulletCount + this.gustSpellBulletCount + this.abyssSpellBulletCount;
+                  count = this.plainSpellBulletCount / 2 + this.scarletSpellBulletCount + this.gustSpellBulletCount
+                        + this.abyssSpellBulletCount;
                   if (count < 5) {
                      this.plainSpellBulletCount += 2;
                   }
@@ -852,11 +877,13 @@ public class Ark extends Pirate {
                return;
             }
 
-            SecondaryStatEffect effect = SkillFactory.getSkill(attackSkillID).getEffect(this.getPlayer().getTotalSkillLevel(attackSkillID));
+            SecondaryStatEffect effect = SkillFactory.getSkill(attackSkillID)
+                  .getEffect(this.getPlayer().getTotalSkillLevel(attackSkillID));
             if (effect != null) {
                if (this.getPlayer().getBuffedValue(SecondaryStatFlag.InfinitySpell) != null) {
                   int bulletCount = 0;
-                  bulletCount = this.plainSpellBulletCount / 2 + this.scarletSpellBulletCount + this.gustSpellBulletCount + this.abyssSpellBulletCount;
+                  bulletCount = this.plainSpellBulletCount / 2 + this.scarletSpellBulletCount
+                        + this.gustSpellBulletCount + this.abyssSpellBulletCount;
                   this.plainSpellBulletCount += (5 - bulletCount) * 2;
                   if (flag.equals(SecondaryStatFlag.PlainSpellBullets)) {
                      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE, flag, 1);
@@ -879,10 +906,14 @@ public class Ark extends Pirate {
       this.gustSpellBulletCount = 0;
       this.scarletSpellBulletCount = 0;
       this.plainSpellBulletCount = 0;
-      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE, SecondaryStatFlag.AbysSpellBullets, 1);
-      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE, SecondaryStatFlag.GustSpellBullets, 1);
-      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE, SecondaryStatFlag.ScarletSpellBullets, 1);
-      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE, SecondaryStatFlag.PlainSpellBullets, 1);
+      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE,
+            SecondaryStatFlag.AbysSpellBullets, 1);
+      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE,
+            SecondaryStatFlag.GustSpellBullets, 1);
+      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE,
+            SecondaryStatFlag.ScarletSpellBullets, 1);
+      this.getPlayer().temporaryStatSet(this.getPlayer().getJob(), Integer.MAX_VALUE,
+            SecondaryStatFlag.PlainSpellBullets, 1);
    }
 
    @Override
