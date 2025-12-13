@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import constants.ServerConstants;
 import java.io.FileInputStream;
@@ -47,7 +47,7 @@ public class MapleDimensionalMirror {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -83,10 +83,11 @@ public class MapleDimensionalMirror {
                }
             }
 
-            mirror.add(new MapleDimensionalMirrorEntry(title, desc, Integer.valueOf(minlevel), Integer.valueOf(type), rewardItems));
+            mirror.add(new MapleDimensionalMirrorEntry(title, desc, Integer.valueOf(minlevel), Integer.valueOf(type),
+                  rewardItems));
          }
 
-         System.out.println("총 " + mirror.size() + "개의 컨텐츠 도우미 데이터를 불러왔습니다.");
+         System.out.println("Loaded " + mirror.size() + " Dimensional Mirror data.");
       } catch (Exception var26) {
          var26.printStackTrace();
       } finally {

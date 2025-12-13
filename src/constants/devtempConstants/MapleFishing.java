@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class MapleFishing {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -64,7 +64,7 @@ public class MapleFishing {
             fishingItem.add(new Triple<>(Integer.valueOf(itemid), Integer.valueOf(quantity), Integer.valueOf(weight)));
          }
 
-         System.out.println("총 " + fishingItem.size() + "개의 낚시 아이템 정보를 불러왔습니다.");
+         System.out.println("Loaded " + fishingItem.size() + " fishing items.");
       } catch (Exception var20) {
          var20.printStackTrace();
       } finally {

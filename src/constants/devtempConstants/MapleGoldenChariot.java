@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class MapleGoldenChariot {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -69,10 +69,11 @@ public class MapleGoldenChariot {
                }
             }
 
-            goldenChariotList.add(new MapleGoldenChariot(Integer.valueOf(day), Integer.valueOf(itemid), Integer.valueOf(quantity)));
+            goldenChariotList.add(
+                  new MapleGoldenChariot(Integer.valueOf(day), Integer.valueOf(itemid), Integer.valueOf(quantity)));
          }
 
-         System.out.println("[황금마차] " + goldenChariotList.size() + "개 캐싱완료");
+         System.out.println("[Golden Chariot] Loaded " + goldenChariotList.size() + " items.");
       } catch (Exception var20) {
          var20.printStackTrace();
       } finally {

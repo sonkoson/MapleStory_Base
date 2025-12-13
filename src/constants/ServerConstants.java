@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import constants.devtempConstants.MapleDimensionalMirror;
 import database.DBConfig;
@@ -36,10 +36,10 @@ public class ServerConstants {
    public static boolean SAVE_SEND_PACKET = false;
    public static final List<Pair<String, String>> dungeonList = new ArrayList<>();
    public static final String remoteIP = "175.207.0.33";
-   public static final String[] guildMedalList = new String[]{"길드이름"};
-   public static final int[] guildMedalItemID = new int[]{1142656};
-   public static final int[] singleMedalItemID = new int[]{1143037};
-   public static final int[] donatorMedalItemID = new int[]{1142172};
+   public static final String[] guildMedalList = new String[] { "GuildMedal" };
+   public static final int[] guildMedalItemID = new int[] { 1142656 };
+   public static final int[] singleMedalItemID = new int[] { 1143037 };
+   public static final int[] donatorMedalItemID = new int[] { 1142172 };
    public static boolean tempServer = false;
    public static double connectedRate = 1.9;
    public static int StartMap = 180000100;
@@ -47,11 +47,11 @@ public class ServerConstants {
    public static int TownMap2 = 111;
    public static int TownMap3 = 111;
    public static boolean disableBanMap = true;
-   public static String serverName = DBConfig.isGanglim ? "강림" : "강림";
+   public static String serverName = DBConfig.isGanglim ? "Ganglim" : "Ganglim";
    public static byte[] origCRCBytes = null;
    public static List<Integer> fuckNegativeArray = new ArrayList<>();
    public static boolean useTempCharacterName = false;
-   public static String tempCharacterName = "임시";
+   public static String tempCharacterName = "TempChar";
    public static int JuhunFever;
    public static boolean JangGangFever;
    public static String WORLD_UI;
@@ -169,12 +169,13 @@ public class ServerConstants {
          count++;
       }
 
-      System.out.println("총 " + count + "개의 트레이드 시스템 데이터를 불러왔습니다.");
+      System.out.println("Loaded " + count + " Mirror Dungeons.");
    }
 
    static java.util.Properties getDefaultProperties() throws FileNotFoundException, IOException {
       java.util.Properties props = new java.util.Properties();
-      FileInputStream fileInputStream = new FileInputStream(DBConfig.isGanglim ? "settings_ganglim.properties" : "settings_jin.properties");
+      FileInputStream fileInputStream = new FileInputStream(
+            DBConfig.isGanglim ? "settings_ganglim.properties" : "settings_jin.properties");
       props.load(fileInputStream);
       fileInputStream.close();
       return props;
@@ -186,7 +187,7 @@ public class ServerConstants {
 
    static {
       if (DBConfig.isGanglim) {
-         serverName = "강림";
+         serverName = "Ganglim";
          connectedRate = 1.8;
       }
 
@@ -200,8 +201,8 @@ public class ServerConstants {
       dailyEventType = null;
       goldMapleDropRate = 1;
       useExpRateByLevel = true;
-      expRateChangeLevels = new int[]{1, 200, 210, 220, 230, 240, 250, 260, 270, 280, 285, 290};
-      expRateByLevels = new int[]{300, 150, 100, 75, 50, 35, 30, 35, 50, 75, 100, 200};
+      expRateChangeLevels = new int[] { 1, 200, 210, 220, 230, 240, 250, 260, 270, 280, 285, 290 };
+      expRateByLevels = new int[] { 300, 150, 100, 75, 50, 35, 30, 35, 50, 75, 100, 200 };
       expFeverRate = 1.0;
       mesoFeverRate = 1.0;
       dropFeverRate = 1.0;
@@ -216,8 +217,8 @@ public class ServerConstants {
       guildSaveTime = 0L;
       enableCRCBin = !DBConfig.isHosting;
       if (DBConfig.isGanglim) {
-         expRateChangeLevels = new int[]{1, 200, 250, 300};
-         expRateByLevels = new int[]{500, 100, 50, 1};
+         expRateChangeLevels = new int[] { 1, 200, 250, 300 };
+         expRateByLevels = new int[] { 500, 100, 50, 1 };
          juhunHottimeStartTime = "20:00";
          juhunHottimeEndTime = "22:00";
       }
@@ -237,10 +238,10 @@ public class ServerConstants {
             TownMap = 121;
             TownMap2 = 121;
             TownMap3 = 121;
-            System.out.println("설정값 불러오기 실패");
+            System.out.println("Failed to load Server Properties.");
             var13.printStackTrace();
          } finally {
-            System.out.println("캐시 추가 배율 설정됨 " + cashPlusRate + "%(총 " + (100 + cashPlusRate) + "%)");
+            System.out.println("Cash Plus Rate: " + cashPlusRate + "% (Total: " + (100 + cashPlusRate) + "%)");
             System.out.println("StartMap : " + StartMap);
             System.out.println("TownMap : " + TownMap);
             System.out.println("TownMap2 : " + TownMap2);
@@ -256,7 +257,7 @@ public class ServerConstants {
          } catch (Exception var11) {
             StartMap = 100;
             TownMap = 100;
-            System.out.println("설정값 불러오기 실패");
+            System.out.println("Failed to load Server Properties.");
             var11.printStackTrace();
          } finally {
             System.out.println("StartMap : " + StartMap);
@@ -277,278 +278,315 @@ public class ServerConstants {
       accountShareQuestEx = new ArrayList<Integer>() {
          {
             this.addAll(
-               List.of(
-                  20,
-                  21,
-                  22,
-                  23,
-                  24,
-                  100,
-                  101,
-                  102,
-                  103,
-                  104,
-                  105,
-                  106,
-                  107,
-                  108,
-                  110,
-                  111,
-                  112,
-                  120,
-                  121,
-                  122,
-                  130,
-                  131,
-                  132,
-                  133,
-                  140,
-                  141,
-                  142,
-                  143,
-                  144,
-                  145,
-                  150,
-                  151,
-                  160,
-                  161,
-                  162,
-                  170,
-                  171,
-                  172,
-                  180,
-                  181,
-                  182,
-                  183,
-                  184,
-                  190,
-                  191,
-                  192,
-                  193,
-                  200,
-                  201,
-                  202,
-                  203,
-                  204,
-                  210,
-                  211,
-                  212,
-                  213,
-                  214,
-                  215,
-                  216,
-                  1100,
-                  1110,
-                  1111,
-                  1068,
-                  1235858,
-                  1235859
-               )
-            );
+                  List.of(
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        110,
+                        111,
+                        112,
+                        120,
+                        121,
+                        300,
+                        122,
+                        301,
+                        130,
+                        302,
+                        131,
+                        303,
+                        132,
+                        304,
+                        133,
+                        305,
+                        140,
+                        306,
+                        141,
+                        307,
+                        142,
+                        308,
+                        143,
+                        309,
+                        144,
+                        310,
+                        145,
+                        311,
+                        150,
+                        312,
+                        151,
+                        313,
+                        160,
+                        314,
+                        161,
+                        315,
+                        162,
+                        316,
+                        170,
+                        317,
+                        171,
+                        318,
+                        172,
+                        319,
+                        180,
+                        320,
+                        181,
+                        321,
+                        182,
+                        322,
+                        183,
+                        323,
+                        184,
+                        324,
+                        190,
+                        325,
+                        191,
+                        326,
+                        192,
+                        327,
+                        193,
+                        328,
+                        200,
+                        329,
+                        201,
+                        330,
+                        202,
+                        331,
+                        203,
+                        332,
+                        204,
+                        333,
+                        210,
+                        334,
+                        211,
+                        335,
+                        212,
+                        336,
+                        213,
+                        337,
+                        214,
+                        338,
+                        215,
+                        339,
+                        216,
+                        340,
+                        1100,
+                        341,
+                        1110,
+                        342,
+                        1111,
+                        343,
+                        1068,
+                        344,
+                        1235858,
+                        345,
+                        1235859,
+                        346));
             this.addAll(
-               List.of(
-                  18098,
-                  18790,
-                  1211345,
-                  1236000,
-                  1236001,
-                  1234567,
-                  1234568,
-                  1234579,
-                  1235999,
-                  1234699,
-                  19770,
-                  19771,
-                  501045,
-                  501046,
-                  501053,
-                  16180,
-                  17015,
-                  1234555
-               )
-            );
+                  List.of(
+                        18098,
+                        18790,
+                        1211345,
+                        1236000,
+                        1236001,
+                        1234567,
+                        1234568,
+                        1234579,
+                        1235999,
+                        1234699,
+                        19770,
+                        19771,
+                        501045,
+                        501046,
+                        501053,
+                        16180,
+                        17015,
+                        1234555));
             this.addAll(
-               List.of(
-                  1234599,
-                  100000,
-                  100001,
-                  100002,
-                  100003,
-                  100004,
-                  100005,
-                  100006,
-                  100007,
-                  100100,
-                  100101,
-                  100200,
-                  100201,
-                  100300,
-                  100301,
-                  100302,
-                  100400,
-                  100401,
-                  100402,
-                  100403,
-                  100404,
-                  100500,
-                  100600,
-                  100601,
-                  100700,
-                  100701,
-                  100800,
-                  100801,
-                  100802,
-                  100803,
-                  100900,
-                  100901,
-                  100902,
-                  101000,
-                  101001,
-                  101002,
-                  101003,
-                  101100,
-                  101101,
-                  101102,
-                  101103,
-                  101104,
-                  101105,
-                  110000
-               )
-            );
+                  List.of(
+                        1234599,
+                        100000,
+                        100001,
+                        100002,
+                        100003,
+                        100004,
+                        100005,
+                        100006,
+                        100007,
+                        100100,
+                        100101,
+                        100200,
+                        100201,
+                        100300,
+                        100301,
+                        100302,
+                        100400,
+                        100401,
+                        100402,
+                        100403,
+                        100404,
+                        100500,
+                        100600,
+                        100601,
+                        100700,
+                        100701,
+                        100800,
+                        100801,
+                        100802,
+                        100803,
+                        100900,
+                        100901,
+                        100902,
+                        101000,
+                        101001,
+                        101002,
+                        101003,
+                        101100,
+                        101101,
+                        101102,
+                        101103,
+                        101104,
+                        101105,
+                        110000));
          }
       };
       accountShareQuestEx.addAll(
-         List.of(
-            QuestExConstants.NeoEventNormalMob.getQuestID(),
-            QuestExConstants.NeoEventEliteMob.getQuestID(),
-            QuestExConstants.NeoEventRuneAct.getQuestID(),
-            QuestExConstants.NeoEventRandomPortal.getQuestID(),
-            QuestExConstants.NeoEventAdventureLog.getQuestID()
-         )
-      );
+            List.of(
+                  QuestExConstants.NeoEventNormalMob.getQuestID(),
+                  QuestExConstants.NeoEventEliteMob.getQuestID(),
+                  QuestExConstants.NeoEventRuneAct.getQuestID(),
+                  QuestExConstants.NeoEventRandomPortal.getQuestID(),
+                  QuestExConstants.NeoEventAdventureLog.getQuestID()));
       accountShareQuestEx.addAll(
-         List.of(
-            QuestExConstants.UnionMobInfo.getQuestID(),
-            QuestExConstants.UnionCoin.getQuestID(),
-            QuestExConstants.UnionPreset.getQuestID(),
-            QuestExConstants.UnionRankInfo.getQuestID()
-         )
-      );
+            List.of(
+                  QuestExConstants.UnionMobInfo.getQuestID(),
+                  QuestExConstants.UnionCoin.getQuestID(),
+                  QuestExConstants.UnionPreset.getQuestID(),
+                  QuestExConstants.UnionRankInfo.getQuestID()));
       accountShareQuestEx.addAll(
-         List.of(QuestExConstants.IntensePowerCrystal.getQuestID(), QuestExConstants.NeoCoreEvent.getQuestID(), QuestExConstants.KillPoint.getQuestID())
-      );
+            List.of(QuestExConstants.IntensePowerCrystal.getQuestID(), QuestExConstants.NeoCoreEvent.getQuestID(),
+                  QuestExConstants.KillPoint.getQuestID()));
       accountShareQuestEx.add(QuestExConstants.CubeLevelUp.getQuestID());
       if (!DBConfig.isGanglim) {
          accountShareQuestEx.add(QuestExConstants.JinQuestExAccount.getQuestID());
          accountShareQuestEx.add(QuestExConstants.JinRestPointReward.getQuestID());
       }
 
-      monsterCollectionQuestEx = new int[]{
-         20,
-         21,
-         22,
-         23,
-         24,
-         100,
-         101,
-         102,
-         103,
-         104,
-         105,
-         106,
-         107,
-         108,
-         110,
-         111,
-         112,
-         120,
-         121,
-         122,
-         130,
-         131,
-         132,
-         133,
-         140,
-         141,
-         142,
-         143,
-         144,
-         145,
-         150,
-         151,
-         160,
-         161,
-         162,
-         170,
-         171,
-         172,
-         180,
-         181,
-         182,
-         183,
-         184,
-         190,
-         191,
-         192,
-         193,
-         200,
-         201,
-         202,
-         203,
-         204,
-         210,
-         211,
-         212,
-         213,
-         214,
-         215,
-         216,
-         1100,
-         1110,
-         1111,
-         100000,
-         100001,
-         100002,
-         100003,
-         100004,
-         100005,
-         100006,
-         100007,
-         100100,
-         100101,
-         100200,
-         100201,
-         100300,
-         100301,
-         100302,
-         100400,
-         100401,
-         100402,
-         100403,
-         100404,
-         100500,
-         100600,
-         100601,
-         100700,
-         100701,
-         100800,
-         100801,
-         100802,
-         100803,
-         100900,
-         100901,
-         100902,
-         101000,
-         101001,
-         101002,
-         101003,
-         101100,
-         101101,
-         101102,
-         101103,
-         101104,
-         101105,
-         110000
+      monsterCollectionQuestEx = new int[] {
+            20,
+            21,
+            22,
+            23,
+            24,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            110,
+            111,
+            112,
+            120,
+            121,
+            122,
+            130,
+            131,
+            132,
+            133,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            150,
+            151,
+            160,
+            161,
+            162,
+            170,
+            171,
+            172,
+            180,
+            181,
+            182,
+            183,
+            184,
+            190,
+            191,
+            192,
+            193,
+            200,
+            201,
+            202,
+            203,
+            204,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            1100,
+            1110,
+            1111,
+            100000,
+            100001,
+            100002,
+            100003,
+            100004,
+            100005,
+            100006,
+            100007,
+            100100,
+            100101,
+            100200,
+            100201,
+            100300,
+            100301,
+            100302,
+            100400,
+            100401,
+            100402,
+            100403,
+            100404,
+            100500,
+            100600,
+            100601,
+            100700,
+            100701,
+            100800,
+            100801,
+            100802,
+            100803,
+            100900,
+            100901,
+            100902,
+            101000,
+            101001,
+            101002,
+            101003,
+            101100,
+            101101,
+            101102,
+            101103,
+            101104,
+            101105,
+            110000
       };
       timeScheduleEntry = null;
       useCriticalDll = false;

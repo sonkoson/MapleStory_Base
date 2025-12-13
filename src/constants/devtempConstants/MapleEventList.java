@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +21,8 @@ public class MapleEventList {
    int eventEndTime;
    List<Integer> items;
 
-   public MapleEventList(String eventName, String eventDesc, int eventEndHour, int eventStartTime, int eventEndTime, List<Integer> items) {
+   public MapleEventList(String eventName, String eventDesc, int eventEndHour, int eventStartTime, int eventEndTime,
+         List<Integer> items) {
       this.eventName = eventName;
       this.eventDesc = eventDesc;
       this.eventEndHour = eventEndHour;
@@ -59,7 +60,7 @@ public class MapleEventList {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -100,12 +101,12 @@ public class MapleEventList {
             }
 
             EventList.put(
-               count++,
-               new MapleEventList(eventName, eventDesc, Integer.parseInt(eventEndHour), Integer.parseInt(eventStartTime), Integer.parseInt(eventEndTime), items)
-            );
+                  count++,
+                  new MapleEventList(eventName, eventDesc, Integer.parseInt(eventEndHour),
+                        Integer.parseInt(eventStartTime), Integer.parseInt(eventEndTime), items));
          }
 
-         System.out.println(EventList.size() + "개의 이벤트 리스트 데이터를 불러왔습니다.");
+         System.out.println("Loaded " + EventList.size() + " event list data.");
       } catch (Exception var29) {
          var29.printStackTrace();
       } finally {

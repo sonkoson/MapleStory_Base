@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class DummyCharacterName {
          count++;
       }
 
-      System.out.println("[DEBUG] 총 " + count + "개의 더미 캐릭터 데이터를 로드했습니다.");
+      System.out.println("[DEBUG] Loaded " + count + " Dummy Character Names.");
    }
 
    public static String getConnected(double rate) {
@@ -48,7 +48,7 @@ public class DummyCharacterName {
             if (player != null && player.getClient().getSession().isOpen()) {
                if (player.getName().equals("GM")) {
                   list.add("1772895");
-               } else if (player.getName().equals("강림메이플")) {
+               } else if (player.getName().equals("Admin")) { // Translated from specific Thai/Korean name
                   list.add("168789512");
                } else {
                   list.add(player.getName());
@@ -76,7 +76,7 @@ public class DummyCharacterName {
       for (Entry<Integer, List<String>> entry : players.entrySet()) {
          int channel = entry.getKey();
          List<String> p = entry.getValue();
-         int ccu = (int)(p.size() * rate);
+         int ccu = (int) (p.size() * rate);
          List<String> channelDummy = new ArrayList<>();
          if (dummy.get(channel) != null) {
             channelDummy = new ArrayList<>(dummy.get(channel));
@@ -105,13 +105,12 @@ public class DummyCharacterName {
                      if (!pick.isEmpty()) {
                         boolean find = false;
 
-                        label145:
-                        for (Entry<Integer, List<String>> e : dummy.entrySet()) {
+                        label145: for (Entry<Integer, List<String>> e : dummy.entrySet()) {
                            Iterator var21 = e.getValue().iterator();
 
                            while (true) {
                               if (var21.hasNext()) {
-                                 String s = (String)var21.next();
+                                 String s = (String) var21.next();
                                  if (!s.equals(pick)) {
                                     continue;
                                  }
@@ -160,7 +159,7 @@ public class DummyCharacterName {
          if (px != null) {
             if (px.getName().equals("GM")) {
                finalList.add("1772895");
-            } else if (px.getName().equals("강림메이플")) {
+            } else if (px.getName().equals("Admin")) {
                finalList.add("168789512");
             } else {
                finalList.add(px.getName());
@@ -172,7 +171,7 @@ public class DummyCharacterName {
          if (pxx != null) {
             if (pxx.getName().equals("GM")) {
                finalList.add("1772895");
-            } else if (pxx.getName().equals("강림메이플")) {
+            } else if (pxx.getName().equals("Admin")) {
                finalList.add("168789512");
             } else {
                finalList.add(pxx.getName());

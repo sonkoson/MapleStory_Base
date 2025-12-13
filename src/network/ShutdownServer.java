@@ -41,7 +41,8 @@ public class ShutdownServer implements ShutdownServerMBean {
    @Override
    public void run() {
       if (this.mode == 0) {
-         Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0, "서버가 잠시후 종료됩니다. 모두 종료해주시기 바랍니다."));
+         Center.Broadcast.broadcastMessage(
+               CWvsContext.serverNotice(0, "The server will shut down shortly. Please log off safely."));
 
          try {
             Thread.sleep(10000L);
@@ -52,7 +53,7 @@ public class ShutdownServer implements ShutdownServerMBean {
 
          for (GameServer cs : GameServer.getAllInstances()) {
             cs.setShutdown();
-            cs.setServerMessage("서버가 잠시후 종료됩니다. 모두 종료해주시기 바랍니다.");
+            cs.setServerMessage("The server will shut down shortly. Please log off safely.");
 
             for (Field map : cs.getMapFactory().getAllMaps()) {
                for (MapleCharacter chr : map.getCharacters()) {
@@ -63,7 +64,7 @@ public class ShutdownServer implements ShutdownServerMBean {
 
          Center.Guild.save();
          Center.Alliance.save();
-         System.out.println("커뮤니티와 경매장이 저장되었습니다.");
+         System.out.println("Community and Auction saved.");
          this.mode++;
       } else if (this.mode == 1) {
          while (this.mode != 1) {
@@ -103,7 +104,7 @@ public class ShutdownServer implements ShutdownServerMBean {
          Timer.EventTimer.getInstance().stop();
          Timer.EtcTimer.getInstance().stop();
          Timer.PingTimer.getInstance().stop();
-         System.out.println("서버가 종료되었습니다.");
+         System.out.println("Server has shut down.");
 
          try {
             Thread.sleep(3000L);

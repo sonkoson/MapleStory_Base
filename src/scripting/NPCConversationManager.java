@@ -2,8 +2,7 @@ package scripting;
 
 import api.DonationRequest;
 import constants.GameConstants;
-import constants.JosaType;
-import constants.Locales;
+
 import constants.ServerConstants;
 import database.DBConfig;
 import database.DBConnection;
@@ -135,39 +134,39 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    private byte lastMsg = -1;
    public boolean pendingDisposal = false;
    private Invocable iv;
-   public int[] bmWeapons = new int[]{
-      1212128,
-      1213021,
-      1222121,
-      1232121,
-      1242138,
-      1242140,
-      1262050,
-      1272039,
-      1282039,
-      1292021,
-      1302354,
-      1312212,
-      1322263,
-      1332288,
-      1362148,
-      1372236,
-      1382273,
-      1402267,
-      1412188,
-      1422196,
-      1432226,
-      1442284,
-      1452265,
-      1462251,
-      1472274,
-      1482231,
-      1492244,
-      1522151,
-      1532156,
-      1582043,
-      1592021,
-      1214021
+   public int[] bmWeapons = new int[] {
+         1212128,
+         1213021,
+         1222121,
+         1232121,
+         1242138,
+         1242140,
+         1262050,
+         1272039,
+         1282039,
+         1292021,
+         1302354,
+         1312212,
+         1322263,
+         1332288,
+         1362148,
+         1372236,
+         1382273,
+         1402267,
+         1412188,
+         1422196,
+         1432226,
+         1442284,
+         1452265,
+         1462251,
+         1472274,
+         1482231,
+         1492244,
+         1522151,
+         1532156,
+         1582043,
+         1592021,
+         1214021
    };
 
    public NPCConversationManager(MapleClient c, int npc, int questid, byte type, Invocable iv) {
@@ -216,8 +215,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)0, text, "00 01", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 0, text, "00 01", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -226,16 +225,17 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int f = ScriptMessageFlag.BigScenario.getFlag() | ScriptMessageFlag.NpcReplacedByUser.getFlag();
       if (this.id == 2159361) {
          f = ScriptMessageFlag.Scenario.getFlag()
-            | ScriptMessageFlag.NpcReplacedByUser.getFlag()
-            | ScriptMessageFlag.Self.getFlag()
-            | ScriptMessageFlag.FlipImage.getFlag();
+               | ScriptMessageFlag.NpcReplacedByUser.getFlag()
+               | ScriptMessageFlag.Self.getFlag()
+               | ScriptMessageFlag.FlipImage.getFlag();
       }
 
       for (ScriptMessageFlag var7 : flag) {
          ;
       }
 
-      this.c.getPlayer().send(CField.NPCPacket.getScriptMessage(0, 0, GameObjectType.User, f, ScriptMessageType.AskMenu, 1, text, null));
+      this.c.getPlayer().send(
+            CField.NPCPacket.getScriptMessage(0, 0, GameObjectType.User, f, ScriptMessageType.AskMenu, 1, text, null));
    }
 
    public void askYesNo(String text, GameObjectType objectType, ScriptMessageFlag... flag) {
@@ -253,19 +253,18 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       this.c
-         .getPlayer()
-         .send(
-            CField.NPCPacket.getScriptMessage(
-               templateID,
-               replacedNpcTemplate,
-               objectType,
-               f,
-               ScriptMessageType.AskYesNo,
-               (f & ScriptMessageFlag.Scenario.getFlag()) == 0 && (f & ScriptMessageFlag.BigScenario.getFlag()) == 0 ? 0 : 1,
-               text,
-               null
-            )
-         );
+            .getPlayer()
+            .send(
+                  CField.NPCPacket.getScriptMessage(
+                        templateID,
+                        replacedNpcTemplate,
+                        objectType,
+                        f,
+                        ScriptMessageType.AskYesNo,
+                        (f & ScriptMessageFlag.Scenario.getFlag()) == 0
+                              && (f & ScriptMessageFlag.BigScenario.getFlag()) == 0 ? 0 : 1,
+                        text,
+                        null));
    }
 
    public void askAccept(String text, GameObjectType objectType, ScriptMessageFlag... flag) {
@@ -287,8 +286,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       this.c
-         .getPlayer()
-         .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f, ScriptMessageType.AskAccept, DLGColorType, text, null));
+            .getPlayer()
+            .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f,
+                  ScriptMessageType.AskAccept, DLGColorType, text, null));
    }
 
    public void sayNpc(String text, GameObjectType objectType, ScriptMessageFlag... flag) {
@@ -299,7 +299,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.sayNpc(text, objectType, prev, next, 0, flag);
    }
 
-   public void sayNpc(String text, GameObjectType objectType, boolean prev, boolean next, int DLGColorType, ScriptMessageFlag... flag) {
+   public void sayNpc(String text, GameObjectType objectType, boolean prev, boolean next, int DLGColorType,
+         ScriptMessageFlag... flag) {
       int f = 0;
 
       for (ScriptMessageFlag smf : flag) {
@@ -322,11 +323,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       addPacket.write(next);
       addPacket.writeInt(0);
       this.c
-         .getPlayer()
-         .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f, ScriptMessageType.Say, DLGColorType, text, addPacket));
+            .getPlayer()
+            .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f,
+                  ScriptMessageType.Say, DLGColorType, text, addPacket));
    }
 
-   public void sayReplacedNpc(String text, boolean prev, boolean next, int DLGColorType, int replacedNpc, ScriptMessageFlag... flag) {
+   public void sayReplacedNpc(String text, boolean prev, boolean next, int DLGColorType, int replacedNpc,
+         ScriptMessageFlag... flag) {
       int f = 0;
 
       for (ScriptMessageFlag smf : flag) {
@@ -340,13 +343,15 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       addPacket.write(next);
       addPacket.writeInt(0);
       this.c
-         .getPlayer()
-         .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpc, GameObjectType.Npc, f, ScriptMessageType.Say, DLGColorType, text, addPacket));
+            .getPlayer()
+            .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpc, GameObjectType.Npc, f,
+                  ScriptMessageType.Say, DLGColorType, text, addPacket));
    }
 
    public void askAngelicBuster() {
       int templateID = this.getNpc();
-      this.c.getPlayer().send(CField.NPCPacket.getScriptMessage(templateID, 0, GameObjectType.Npc, 0, ScriptMessageType.AskAngelicBuster, 0, "", null));
+      this.c.getPlayer().send(CField.NPCPacket.getScriptMessage(templateID, 0, GameObjectType.Npc, 0,
+            ScriptMessageType.AskAngelicBuster, 0, "", null));
    }
 
    public void askMenu(String text, GameObjectType objectType, ScriptMessageFlag... flag) {
@@ -368,8 +373,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       this.c
-         .getPlayer()
-         .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f, ScriptMessageType.AskMenu, dlgColor, text, null));
+            .getPlayer()
+            .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f,
+                  ScriptMessageType.AskMenu, dlgColor, text, null));
    }
 
    public void sendNext(String text, int type, int id) {
@@ -377,30 +383,30 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)0, text, "00 01", (byte)type));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 0, text, "00 01", (byte) type));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
 
    public void sendPlayerToNpcS(String text) {
-      this.sendNextS(text, (byte)3, this.id);
+      this.sendNextS(text, (byte) 3, this.id);
    }
 
    public void sendNextNoESC(String text) {
-      this.sendNextS(text, (byte)1, this.id);
+      this.sendNextS(text, (byte) 1, this.id);
    }
 
    public void sendNextNoESC(String text, int id) {
-      this.sendNextS(text, (byte)1, id);
+      this.sendNextS(text, (byte) 1, id);
    }
 
    public void sendNextSelf(String text) {
-      this.sendNextS(text, (byte)16, this.id);
+      this.sendNextS(text, (byte) 16, this.id);
    }
 
    public void sendNextSelfNoESC(String text) {
-      this.sendNextS(text, (byte)17, this.id);
+      this.sendNextS(text, (byte) 17, this.id);
    }
 
    public void sendNextS(String text, byte type) {
@@ -412,8 +418,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimpleS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)0, text, "00 01", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 0, text, "00 01", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -427,8 +433,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)0, text, "01 00", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 0, text, "01 00", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -442,8 +448,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimpleS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)0, text, "01 00", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 0, text, "01 00", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -457,18 +463,18 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)0, text, "01 01", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 0, text, "01 01", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
 
    public void PlayerToNpc(String text) {
-      this.sendNextPrevS(text, (byte)3);
+      this.sendNextPrevS(text, (byte) 3);
    }
 
    public void sendNextPrevS(String text) {
-      this.sendNextPrevS(text, (byte)3);
+      this.sendNextPrevS(text, (byte) 3);
    }
 
    public void sendNextPrevS(String text, byte type) {
@@ -480,8 +486,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimpleS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)0, text, "01 01", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 0, text, "01 01", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -495,8 +501,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)0, text, "00 00", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 0, text, "00 00", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -510,8 +516,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimpleS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)0, text, "00 00", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.Say.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 0, text, "00 00", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.Say.getType();
          }
       }
    }
@@ -525,8 +531,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)3, text, "", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.AskYesNo.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 3, text, "", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.AskYesNo.getType();
          }
       }
    }
@@ -534,7 +540,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public void sendYesNoScenario(String text, int id) {
       if (this.lastMsg <= -1) {
          this.c.getSession().writeAndFlush(CField.NPCPacket.getYesNoScenario(id, 0, 3, text, ""));
-         this.lastMsg = (byte)ScriptMessageType.AskYesNo.getType();
+         this.lastMsg = (byte) ScriptMessageType.AskYesNo.getType();
       }
    }
 
@@ -547,8 +553,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimpleS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)3, text, "", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.AskYesNo.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 3, text, "", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.AskYesNo.getType();
          }
       }
    }
@@ -570,8 +576,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.lastMsg = (byte)ScriptMessageType.AskAccept.getType();
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, this.lastMsg, text, "", (byte)0));
+            this.lastMsg = (byte) ScriptMessageType.AskAccept.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, this.lastMsg, text, "", (byte) 0));
          }
       }
    }
@@ -585,8 +591,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.lastMsg = (byte)ScriptMessageType.AskAccept.getType();
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, this.lastMsg, text, "", (byte)1));
+            this.lastMsg = (byte) ScriptMessageType.AskAccept.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, this.lastMsg, text, "", (byte) 1));
          }
       }
    }
@@ -596,8 +602,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void askCustomMixHairAndProb(String text) {
-      this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkMixStyle(this.id, text, GameConstants.isAngelicBuster(this.c.getPlayer().getJob()), false));
-      this.lastMsg = (byte)ScriptMessageType.AskCustomMixHairAndProb.getType();
+      this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkMixStyle(this.id, text,
+            GameConstants.isAngelicBuster(this.c.getPlayer().getJob()), false));
+      this.lastMsg = (byte) ScriptMessageType.AskCustomMixHairAndProb.getType();
    }
 
    public void askCustomMixHairAndProb(String text, int dressUp) {
@@ -606,12 +613,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void askCustomMixHairAndProb(String text, int dressUp, boolean isBeta) {
       this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkMixStyle(this.id, text, dressUp == 1, isBeta));
-      this.lastMsg = (byte)ScriptMessageType.AskCustomMixHairAndProb.getType();
+      this.lastMsg = (byte) ScriptMessageType.AskCustomMixHairAndProb.getType();
    }
 
    public void askAvatar(String text, int... args) {
       this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, false, false, args));
-      this.lastMsg = (byte)ScriptMessageType.AskAvatar.getType();
+      this.lastMsg = (byte) ScriptMessageType.AskAvatar.getType();
    }
 
    public void sendStyle(String text, int bAngelicBuster, int... args) {
@@ -620,8 +627,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          zeroBeta = this.c.getPlayer().getZeroInfo().isBeta();
       }
 
-      this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, bAngelicBuster == 1, zeroBeta, args));
-      this.lastMsg = (byte)ScriptMessageType.AskAvatar.getType();
+      this.c.getSession()
+            .writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, bAngelicBuster == 1, zeroBeta, args));
+      this.lastMsg = (byte) ScriptMessageType.AskAvatar.getType();
    }
 
    public void askAvatar(String text, boolean bAngelicBuster, int... args) {
@@ -630,8 +638,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          zeroBeta = this.c.getPlayer().getZeroInfo().isBeta();
       }
 
-      this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, bAngelicBuster, zeroBeta, args));
-      this.lastMsg = (byte)ScriptMessageType.AskAvatar.getType();
+      this.c.getSession()
+            .writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, bAngelicBuster, zeroBeta, args));
+      this.lastMsg = (byte) ScriptMessageType.AskAvatar.getType();
    }
 
    public void askAvatar(String text, int[] args1, int[] args2) {
@@ -642,7 +651,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, false, false, args1));
          }
 
-         this.lastMsg = (byte)ScriptMessageType.AskAvatar.getType();
+         this.lastMsg = (byte) ScriptMessageType.AskAvatar.getType();
       }
    }
 
@@ -659,8 +668,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (!text.contains("#L")) {
             this.sendNext(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte)6, text, "", (byte)0));
-            this.lastMsg = (byte)ScriptMessageType.AskMenu.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(id, (byte) 6, text, "", (byte) 0));
+            this.lastMsg = (byte) ScriptMessageType.AskMenu.getType();
          }
       }
    }
@@ -670,10 +679,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (!text.contains("#L")) {
             this.sendNext(text);
          } else {
-            NpcTalk npctalk = new NpcTalk((byte)3, 0, false, (byte)6, (short)130, (byte)1);
+            NpcTalk npctalk = new NpcTalk((byte) 3, 0, false, (byte) 6, (short) 130, (byte) 1);
             npctalk.text = text;
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(npctalk));
-            this.lastMsg = (byte)ScriptMessageType.AskMenu.getType();
+            this.lastMsg = (byte) ScriptMessageType.AskMenu.getType();
          }
       }
    }
@@ -683,8 +692,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (!text.contains("#L")) {
             this.sendNext(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)6, text, "", (byte)16));
-            this.lastMsg = (byte)ScriptMessageType.AskMenu.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 6, text, "", (byte) 16));
+            this.lastMsg = (byte) ScriptMessageType.AskMenu.getType();
          }
       }
    }
@@ -698,8 +707,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (!text.contains("#L")) {
             this.sendNextS(text, type);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)6, text, "", type, idd));
-            this.lastMsg = (byte)ScriptMessageType.AskMenu.getType();
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 6, text, "", type, idd));
+            this.lastMsg = (byte) ScriptMessageType.AskMenu.getType();
          }
       }
    }
@@ -708,10 +717,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (this.lastMsg <= -1) {
          if (GameConstants.isZero(this.c.getPlayer().getJob())) {
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyleZero(this.id, text, styles1, styles2));
-            this.lastMsg = (byte)ScriptMessageType.AskAvatarZero.getType();
+            this.lastMsg = (byte) ScriptMessageType.AskAvatarZero.getType();
          } else {
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkStyle(this.id, text, false, false, styles1));
-            this.lastMsg = (byte)ScriptMessageType.AskAvatar.getType();
+            this.lastMsg = (byte) ScriptMessageType.AskAvatar.getType();
          }
       }
    }
@@ -722,7 +731,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.sendSimple(text);
          } else {
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkNum(this.id, text, def, min, max));
-            this.lastMsg = (byte)ScriptMessageType.AskNumber.getType();
+            this.lastMsg = (byte) ScriptMessageType.AskNumber.getType();
          }
       }
    }
@@ -751,8 +760,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       addPacket.writeLong(max);
       addPacket.writeInt(0);
       this.c
-         .getPlayer()
-         .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f, ScriptMessageType.AskNumber, 0, text, addPacket));
+            .getPlayer()
+            .send(CField.NPCPacket.getScriptMessage(templateID, replacedNpcTemplate, objectType, f,
+                  ScriptMessageType.AskNumber, 0, text, addPacket));
    }
 
    public void sendGetText(String text) {
@@ -765,7 +775,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.sendSimple(text);
          } else {
             this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkText(id, text));
-            this.lastMsg = (byte)ScriptMessageType.AskText.getType();
+            this.lastMsg = (byte) ScriptMessageType.AskText.getType();
          }
       }
    }
@@ -788,8 +798,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalkTextFlag(replacedNpcTemplate, templateID, text, f));
-            this.lastMsg = (byte)ScriptMessageType.AskText.getType();
+            this.c.getSession()
+                  .writeAndFlush(CField.NPCPacket.getNPCTalkTextFlag(replacedNpcTemplate, templateID, text, f));
+            this.lastMsg = (byte) ScriptMessageType.AskText.getType();
          }
       }
    }
@@ -815,16 +826,16 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void setSkin(int color) {
-      this.getPlayer().setSkinColor((byte)color);
+      this.getPlayer().setSkinColor((byte) color);
       this.getPlayer().updateSingleStat(MapleStat.SKIN, color);
       this.getPlayer().equipChanged();
    }
 
    public int setRandomAvatar(int ticket, int... args_all) {
-      this.gainItem(ticket, (short)-1);
+      this.gainItem(ticket, (short) -1);
       int args = args_all[Randomizer.nextInt(args_all.length)];
       if (args < 100) {
-         this.c.getPlayer().setSkinColor((byte)args);
+         this.c.getPlayer().setSkinColor((byte) args);
          this.c.getPlayer().updateSingleStat(MapleStat.SKIN, args);
       } else if (args < 30000) {
          this.c.getPlayer().setFace(args);
@@ -839,7 +850,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public int setZeroBetaAvatar(int ticket, int args) {
-      this.gainItem(ticket, (short)-1);
+      this.gainItem(ticket, (short) -1);
       ZeroInfo zeroInfo = this.c.getPlayer().getZeroInfo();
       if (zeroInfo == null) {
          return 0;
@@ -865,9 +876,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public int setAvatar(int ticket, int args) {
-      this.gainItem(ticket, (short)-1);
+      this.gainItem(ticket, (short) -1);
       if (args < 100) {
-         this.c.getPlayer().setSkinColor((byte)args);
+         this.c.getPlayer().setSkinColor((byte) args);
          this.c.getPlayer().updateSingleStat(MapleStat.SKIN, args);
       } else if (args >= 30000 && (args <= 50000 || args >= 59999)) {
          this.c.getPlayer().setBaseColor(-1);
@@ -888,9 +899,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public int setZeroAvatar(int ticket, int args1, int args2) {
-      this.gainItem(ticket, (short)-1);
+      this.gainItem(ticket, (short) -1);
       if (args1 < 100 || args1 < 100) {
-         this.c.getPlayer().setSkinColor((byte)args1);
+         this.c.getPlayer().setSkinColor((byte) args1);
          this.c.getPlayer().updateSingleStat(MapleStat.SKIN, args1);
          this.c.getPlayer().getZeroInfo().setSubSkin(args2);
          this.c.getPlayer().updateSingleStat(MapleStat.SKIN, args2);
@@ -928,7 +939,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void sendStorage() {
       this.c.getPlayer().setStorageNPC(this.id);
-      this.c.getSession().writeAndFlush(StoragePacket.getStorage((byte)23));
+      this.c.getSession().writeAndFlush(StoragePacket.getStorage((byte) 23));
    }
 
    public void openShop(int id) {
@@ -948,16 +959,18 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (!MapleItemInformationProvider.getInstance().itemExists(id)) {
             return -1;
          } else {
-            Item item = MapleInventoryManipulator.addbyId_Gachapon(this.c, id, (short)quantity);
+            Item item = MapleInventoryManipulator.addbyId_Gachapon(this.c, id, (short) quantity);
             if (item == null) {
                return -1;
             } else {
                byte rareness = GameConstants.gachaponRareItem(item.getItemId());
                if (rareness > 0) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.getGachaponMega(this.c.getPlayer().getName(), " : got a(n)", item, rareness, msg));
+                  Center.Broadcast.broadcastMessage(
+                        CWvsContext.getGachaponMega(this.c.getPlayer().getName(), " : got a(n)", item, rareness, msg));
                }
 
-               this.c.getSession().writeAndFlush(CWvsContext.InfoPacket.getShowItemGain(item.getItemId(), (short)quantity, true));
+               this.c.getSession()
+                     .writeAndFlush(CWvsContext.InfoPacket.getShowItemGain(item.getItemId(), (short) quantity, true));
                return item.getItemId();
             }
          }
@@ -1019,7 +1032,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void gainAp(int amount) {
-      this.c.getPlayer().gainAp((short)amount);
+      this.c.getPlayer().gainAp((short) amount);
    }
 
    public void expandInventory(byte type, int amt) {
@@ -1056,7 +1069,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             Integer id = skill.getKey().getId();
             newList.put(SkillFactory.getSkill(id), skill.getValue());
          } else {
-            newList.put(skill.getKey(), new SkillEntry(0, (byte)0, -1L));
+            newList.put(skill.getKey(), new SkillEntry(0, (byte) 0, -1L));
          }
       }
 
@@ -1068,8 +1081,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public void autoSkillMaster() {
       for (int i = 0; i < this.getPlayer().getJob() % 10 + 1; i++) {
          int job = i + 1 == this.getPlayer().getJob() % 10 + 1
-            ? this.getPlayer().getJob() - this.getPlayer().getJob() % 100
-            : this.getPlayer().getJob() - (i + 1);
+               ? this.getPlayer().getJob() - this.getPlayer().getJob() % 100
+               : this.getPlayer().getJob() - (i + 1);
          if (this.getPlayer().getJob() >= 330 && this.c.getPlayer().getJob() <= 332) {
             if (job == 300) {
                job = 301;
@@ -1158,7 +1171,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void updateBuddyCapacity(int capacity) {
-      this.c.getPlayer().setBuddyCapacity((byte)capacity);
+      this.c.getPlayer().setBuddyCapacity((byte) capacity);
    }
 
    public int getBuddyCapacity() {
@@ -1246,7 +1259,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          for (PartyMemberEntry chr : this.getPlayer().getParty().getPartyMember().getPartyMemberList()) {
             MapleCharacter curChar = this.c.getChannelServer().getPlayerStorage().getCharacterByName(chr.getName());
             if (curChar.getEventInstance() == null && this.getPlayer().getEventInstance() == null
-               || curChar.getEventInstance() == this.getPlayer().getEventInstance()) {
+                  || curChar.getEventInstance() == this.getPlayer().getEventInstance()) {
                curChar.changeMap(target, target.getPortal(0));
                curChar.gainExp(exp, true, false, true);
             }
@@ -1265,7 +1278,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          for (PartyMemberEntry chr : this.getPlayer().getParty().getPartyMember().getPartyMemberList()) {
             MapleCharacter curChar = this.c.getChannelServer().getPlayerStorage().getCharacterByName(chr.getName());
             if (curChar.getEventInstance() == null && this.getPlayer().getEventInstance() == null
-               || curChar.getEventInstance() == this.getPlayer().getEventInstance()) {
+                  || curChar.getEventInstance() == this.getPlayer().getEventInstance()) {
                curChar.changeMap(target, target.getPortal(0));
                curChar.gainExp(exp, true, false, true);
                curChar.gainMeso(meso, true);
@@ -1285,7 +1298,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public boolean registerSquad(String type, int minutes, String startText) {
       if (this.c.getChannelServer().getMapleSquad(type) == null) {
-         MapleSquad squad = new MapleSquad(this.c.getChannel(), type, this.c.getPlayer(), minutes * 60 * 1000, startText);
+         MapleSquad squad = new MapleSquad(this.c.getChannel(), type, this.c.getPlayer(), minutes * 60 * 1000,
+               startText);
          boolean ret = this.c.getChannelServer().addMapleSquad(squad, type);
          if (ret) {
             Field map = this.c.getPlayer().getMap();
@@ -1331,12 +1345,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (squad == null) {
          return -1;
       } else {
-         return (byte)(squad.getLeader() != null && squad.getLeader().getId() == this.c.getPlayer().getId() ? 1 : 0);
+         return (byte) (squad.getLeader() != null && squad.getLeader().getId() == this.c.getPlayer().getId() ? 1 : 0);
       }
    }
 
    public void giveAllStatItemwatk(int itemid, short stat, short watk) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       item.addStr(stat);
       item.addDex(stat);
       item.addInt(stat);
@@ -1347,13 +1361,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void gainCashItem(int itemID) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemID);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemID);
       item.setUniqueId(MapleInventoryIdentifier.getInstance());
       MapleInventoryManipulator.addFromDrop(this.c, item, false);
    }
 
    public void giveSupportItem(int itemid, short allStat, short attack, byte downLevel) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       item.addStr(allStat);
       item.addDex(allStat);
       item.addInt(allStat);
@@ -1365,7 +1379,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void giveSupportItemPeriod(int itemid, short allStat, short attack, long period) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       item.addStr(allStat);
       item.addDex(allStat);
       item.addInt(allStat);
@@ -1418,7 +1432,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       } else if (squad.getMembers().contains(this.c.getPlayer())) {
          return 1;
       } else {
-         return (byte)(squad.isBanned(this.c.getPlayer()) ? 2 : 0);
+         return (byte) (squad.isBanned(this.c.getPlayer()) ? 2 : 0);
       }
    }
 
@@ -1427,7 +1441,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void genericGuildMessage(int code) {
-      this.c.getSession().writeAndFlush(CWvsContext.GuildPacket.genericGuildMessage((byte)code));
+      this.c.getSession().writeAndFlush(CWvsContext.GuildPacket.genericGuildMessage((byte) code));
    }
 
    public void createGuild() {
@@ -1460,8 +1474,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                this.sendNext("자네의 길드 인원수는 더 이상 늘릴 수 없다네.");
             } else {
                this.sendNext(
-                  "Please check if your guild capacity is full, if you have the GP needed or if subtracting GP would decrease a guild level. (Limit: 200)"
-               );
+                     "Please check if your guild capacity is full, if you have the GP needed or if subtracting GP would decrease a guild level. (Limit: 200)");
             }
          }
       }
@@ -1481,64 +1494,64 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void changeStat(short slot, int type, int amount) {
-      Equip sel = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(slot);
+      Equip sel = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(slot);
       switch (type) {
          case 0:
-            sel.setStr((short)amount);
+            sel.setStr((short) amount);
             break;
          case 1:
-            sel.setDex((short)amount);
+            sel.setDex((short) amount);
             break;
          case 2:
-            sel.setInt((short)amount);
+            sel.setInt((short) amount);
             break;
          case 3:
-            sel.setLuk((short)amount);
+            sel.setLuk((short) amount);
             break;
          case 4:
-            sel.setHp((short)amount);
+            sel.setHp((short) amount);
             break;
          case 5:
-            sel.setMp((short)amount);
+            sel.setMp((short) amount);
             break;
          case 6:
-            sel.setWatk((short)amount);
+            sel.setWatk((short) amount);
             break;
          case 7:
-            sel.setMatk((short)amount);
+            sel.setMatk((short) amount);
             break;
          case 8:
-            sel.setWdef((short)amount);
+            sel.setWdef((short) amount);
             break;
          case 9:
-            sel.setMdef((short)amount);
+            sel.setMdef((short) amount);
             break;
          case 10:
-            sel.setAcc((short)amount);
+            sel.setAcc((short) amount);
             break;
          case 11:
-            sel.setAvoid((short)amount);
+            sel.setAvoid((short) amount);
             break;
          case 12:
-            sel.setHands((short)amount);
+            sel.setHands((short) amount);
             break;
          case 13:
-            sel.setSpeed((short)amount);
+            sel.setSpeed((short) amount);
             break;
          case 14:
-            sel.setJump((short)amount);
+            sel.setJump((short) amount);
             break;
          case 15:
-            sel.setUpgradeSlots((byte)amount);
+            sel.setUpgradeSlots((byte) amount);
             break;
          case 16:
-            sel.setViciousHammer((byte)amount);
+            sel.setViciousHammer((byte) amount);
             break;
          case 17:
-            sel.setLevel((byte)amount);
+            sel.setLevel((byte) amount);
             break;
          case 18:
-            sel.setEnhance((byte)amount);
+            sel.setEnhance((byte) amount);
             break;
          case 19:
             sel.setPotential1(amount);
@@ -1565,7 +1578,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void openDuey() {
       this.c.getPlayer().setConversation(2);
-      this.c.getSession().writeAndFlush(CField.sendDuey((byte)9, null, null));
+      this.c.getSession().writeAndFlush(CField.sendDuey((byte) 9, null, null));
    }
 
    public void sendPVPWindow(int op) {
@@ -1598,20 +1611,24 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.c.getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(150101)).setCustomData("0");
          this.c.getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(150100)).setCustomData("0");
       } else {
-         this.c.getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(150101)).setCustomData(String.valueOf(this.c.getPlayer().getIntRecord(150101) + 1));
+         this.c.getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(150101))
+               .setCustomData(String.valueOf(this.c.getPlayer().getIntRecord(150101) + 1));
       }
    }
 
    public boolean start_DojoAgent(boolean dojo, boolean party) {
-      return dojo ? Event_DojoAgent.warpStartDojo(this.c.getPlayer(), party) : Event_DojoAgent.warpStartAgent(this.c.getPlayer(), party);
+      return dojo ? Event_DojoAgent.warpStartDojo(this.c.getPlayer(), party)
+            : Event_DojoAgent.warpStartAgent(this.c.getPlayer(), party);
    }
 
    public boolean start_PyramidSubway(int pyramid) {
-      return pyramid >= 0 ? Event_PyramidSubway.warpStartPyramid(this.c.getPlayer(), pyramid) : Event_PyramidSubway.warpStartSubway(this.c.getPlayer());
+      return pyramid >= 0 ? Event_PyramidSubway.warpStartPyramid(this.c.getPlayer(), pyramid)
+            : Event_PyramidSubway.warpStartSubway(this.c.getPlayer());
    }
 
    public boolean bonus_PyramidSubway(int pyramid) {
-      return pyramid >= 0 ? Event_PyramidSubway.warpBonusPyramid(this.c.getPlayer(), pyramid) : Event_PyramidSubway.warpBonusSubway(this.c.getPlayer());
+      return pyramid >= 0 ? Event_PyramidSubway.warpBonusPyramid(this.c.getPlayer(), pyramid)
+            : Event_PyramidSubway.warpBonusSubway(this.c.getPlayer());
    }
 
    public final short getKegs() {
@@ -1649,7 +1666,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.c.getPlayer().getStat().dex = 32767;
       this.c.getPlayer().getStat().int_ = 32767;
       this.c.getPlayer().getStat().luk = 32767;
-      int overrDemon = GameConstants.isDemonSlayer(this.c.getPlayer().getJob()) ? GameConstants.getMPByJob(this.c.getPlayer()) : 500000;
+      int overrDemon = GameConstants.isDemonSlayer(this.c.getPlayer().getJob())
+            ? GameConstants.getMPByJob(this.c.getPlayer())
+            : 500000;
       this.c.getPlayer().getStat().maxhp = 500000L;
       this.c.getPlayer().getStat().maxmp = overrDemon;
       this.c.getPlayer().getStat().setHp(500000L, this.c.getPlayer());
@@ -1660,15 +1679,16 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       statup.put(MapleStat.INT, 32767L);
       statup.put(MapleStat.HP, 500000L);
       statup.put(MapleStat.MAXHP, 500000L);
-      statup.put(MapleStat.MP, (long)overrDemon);
-      statup.put(MapleStat.MAXMP, (long)overrDemon);
+      statup.put(MapleStat.MP, (long) overrDemon);
+      statup.put(MapleStat.MAXMP, (long) overrDemon);
       this.c.getPlayer().getStat().recalcLocalStats(this.c.getPlayer());
       this.c.getSession().writeAndFlush(CWvsContext.updatePlayerStats(statup, this.c.getPlayer()));
    }
 
    public Triple<String, Map<Integer, String>, Long> getSpeedRun(String typ) {
       ExpeditionType type = ExpeditionType.valueOf(typ);
-      return SpeedRunner.getSpeedRunData(type) != null ? SpeedRunner.getSpeedRunData(type) : new Triple<>("", new HashMap<>(), 0L);
+      return SpeedRunner.getSpeedRunData(type) != null ? SpeedRunner.getSpeedRunData(type)
+            : new Triple<>("", new HashMap<>(), 0L);
    }
 
    public boolean getSR(Triple<String, Map<Integer, String>, Long> ma, int sel) {
@@ -1692,22 +1712,22 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public Equip getEquip(int itemid) {
-      return (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      return (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
    }
 
    public void setExpiration(Object statsSel, long expire) {
       if (statsSel instanceof Equip) {
-         ((Equip)statsSel).setExpiration(System.currentTimeMillis() + expire * 24L * 60L * 60L * 1000L);
+         ((Equip) statsSel).setExpiration(System.currentTimeMillis() + expire * 24L * 60L * 60L * 1000L);
       }
    }
 
    public void setLock(Object statsSel) {
       if (statsSel instanceof Equip) {
-         Equip eq = (Equip)statsSel;
+         Equip eq = (Equip) statsSel;
          if (eq.getExpiration() == -1L) {
-            eq.setFlag((byte)(eq.getFlag() | ItemFlag.PROTECTED.getValue()));
+            eq.setFlag((byte) (eq.getFlag() | ItemFlag.PROTECTED.getValue()));
          } else {
-            eq.setFlag((byte)(eq.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue()));
+            eq.setFlag((byte) (eq.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue()));
          }
       }
    }
@@ -1716,9 +1736,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (!(statsSel instanceof Item)) {
          return false;
       } else {
-         Item it = (Item)statsSel;
+         Item it = (Item) statsSel;
          return MapleInventoryManipulator.checkSpace(this.getClient(), it.getItemId(), it.getQuantity(), it.getOwner())
-            && MapleInventoryManipulator.addFromDrop(this.getClient(), it, false);
+               && MapleInventoryManipulator.addFromDrop(this.getClient(), it, false);
       }
    }
 
@@ -1727,13 +1747,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public boolean replaceItem(int slot, int invType, Object statsSel, int offset, String type, boolean takeSlot) {
-      MapleInventoryType inv = MapleInventoryType.getByType((byte)invType);
+      MapleInventoryType inv = MapleInventoryType.getByType((byte) invType);
       if (inv == null) {
          return false;
       } else {
-         Item item = this.getPlayer().getInventory(inv).getItem((short)slot);
+         Item item = this.getPlayer().getInventory(inv).getItem((short) slot);
          if (item == null || statsSel instanceof Item) {
-            item = (Item)statsSel;
+            item = (Item) statsSel;
          }
 
          if (offset > 0) {
@@ -1741,69 +1761,69 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                return false;
             }
 
-            Equip eq = (Equip)item;
+            Equip eq = (Equip) item;
             if (takeSlot) {
                if (eq.getUpgradeSlots() < 1) {
                   return false;
                }
 
-               eq.setUpgradeSlots((byte)(eq.getUpgradeSlots() - 1));
+               eq.setUpgradeSlots((byte) (eq.getUpgradeSlots() - 1));
                if (eq.getExpiration() == -1L) {
-                  eq.setFlag((byte)(eq.getFlag() | ItemFlag.PROTECTED.getValue()));
+                  eq.setFlag((byte) (eq.getFlag() | ItemFlag.PROTECTED.getValue()));
                } else {
-                  eq.setFlag((byte)(eq.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue()));
+                  eq.setFlag((byte) (eq.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue()));
                }
             }
 
             if (type.equalsIgnoreCase("Slots")) {
-               eq.setUpgradeSlots((byte)(eq.getUpgradeSlots() + offset));
-               eq.setViciousHammer((byte)(eq.getViciousHammer() + offset));
+               eq.setUpgradeSlots((byte) (eq.getUpgradeSlots() + offset));
+               eq.setViciousHammer((byte) (eq.getViciousHammer() + offset));
             } else if (type.equalsIgnoreCase("Level")) {
-               eq.setLevel((byte)(eq.getLevel() + offset));
+               eq.setLevel((byte) (eq.getLevel() + offset));
             } else if (type.equalsIgnoreCase("Hammer")) {
-               eq.setViciousHammer((byte)(eq.getViciousHammer() + offset));
+               eq.setViciousHammer((byte) (eq.getViciousHammer() + offset));
             } else if (type.equalsIgnoreCase("STR")) {
-               eq.setStr((short)(eq.getStr() + offset));
+               eq.setStr((short) (eq.getStr() + offset));
             } else if (type.equalsIgnoreCase("DEX")) {
-               eq.setDex((short)(eq.getDex() + offset));
+               eq.setDex((short) (eq.getDex() + offset));
             } else if (type.equalsIgnoreCase("INT")) {
-               eq.setInt((short)(eq.getInt() + offset));
+               eq.setInt((short) (eq.getInt() + offset));
             } else if (type.equalsIgnoreCase("LUK")) {
-               eq.setLuk((short)(eq.getLuk() + offset));
+               eq.setLuk((short) (eq.getLuk() + offset));
             } else if (type.equalsIgnoreCase("HP")) {
-               eq.setHp((short)(eq.getHp() + offset));
+               eq.setHp((short) (eq.getHp() + offset));
             } else if (type.equalsIgnoreCase("MP")) {
-               eq.setMp((short)(eq.getMp() + offset));
+               eq.setMp((short) (eq.getMp() + offset));
             } else if (type.equalsIgnoreCase("WATK")) {
-               eq.setWatk((short)(eq.getWatk() + offset));
+               eq.setWatk((short) (eq.getWatk() + offset));
             } else if (type.equalsIgnoreCase("MATK")) {
-               eq.setMatk((short)(eq.getMatk() + offset));
+               eq.setMatk((short) (eq.getMatk() + offset));
             } else if (type.equalsIgnoreCase("WDEF")) {
-               eq.setWdef((short)(eq.getWdef() + offset));
+               eq.setWdef((short) (eq.getWdef() + offset));
             } else if (type.equalsIgnoreCase("MDEF")) {
-               eq.setMdef((short)(eq.getMdef() + offset));
+               eq.setMdef((short) (eq.getMdef() + offset));
             } else if (type.equalsIgnoreCase("ACC")) {
-               eq.setAcc((short)(eq.getAcc() + offset));
+               eq.setAcc((short) (eq.getAcc() + offset));
             } else if (type.equalsIgnoreCase("Avoid")) {
-               eq.setAvoid((short)(eq.getAvoid() + offset));
+               eq.setAvoid((short) (eq.getAvoid() + offset));
             } else if (type.equalsIgnoreCase("Hands")) {
-               eq.setHands((short)(eq.getHands() + offset));
+               eq.setHands((short) (eq.getHands() + offset));
             } else if (type.equalsIgnoreCase("Speed")) {
-               eq.setSpeed((short)(eq.getSpeed() + offset));
+               eq.setSpeed((short) (eq.getSpeed() + offset));
             } else if (type.equalsIgnoreCase("Jump")) {
-               eq.setJump((short)(eq.getJump() + offset));
+               eq.setJump((short) (eq.getJump() + offset));
             } else if (type.equalsIgnoreCase("ItemEXP")) {
                eq.setItemEXP(eq.getItemEXP() + offset);
             } else if (type.equalsIgnoreCase("Expiration")) {
                eq.setExpiration(eq.getExpiration() + offset);
             } else if (type.equalsIgnoreCase("Flag")) {
-               eq.setFlag((byte)(eq.getFlag() + offset));
+               eq.setFlag((byte) (eq.getFlag() + offset));
             }
 
             item = eq.copy();
          }
 
-         MapleInventoryManipulator.removeFromSlot(this.getClient(), inv, (short)slot, item.getQuantity(), false);
+         MapleInventoryManipulator.removeFromSlot(this.getClient(), inv, (short) slot, item.getQuantity(), false);
          return MapleInventoryManipulator.addFromDrop(this.getClient(), item, false);
       }
    }
@@ -1825,7 +1845,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public int getTotalStat(int itemId) {
-      return MapleItemInformationProvider.getInstance().getTotalStat((Equip)MapleItemInformationProvider.getInstance().getEquipById(itemId));
+      return MapleItemInformationProvider.getInstance()
+            .getTotalStat((Equip) MapleItemInformationProvider.getInstance().getEquipById(itemId));
    }
 
    public int getReqLevel(int itemId) {
@@ -1844,7 +1865,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          for (GameServer cserv : GameServer.getAllInstances()) {
             for (MapleCharacter chr : cserv.getPlayerStorage().getAllCharacters()) {
                if (chr.getGuildId() == this.getPlayer().getGuildId()) {
-                  mse.applyTo(chr, chr, true, null, duration, (byte)0, true, false);
+                  mse.applyTo(chr, chr, true, null, duration, (byte) 0, true, false);
                   chr.dropMessage(5, "Your guild has gotten a " + msg + " buff.");
                }
             }
@@ -1854,12 +1875,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public boolean createAlliance(String alliancename) {
       Party pt = this.c.getPlayer().getParty();
-      MapleCharacter otherChar = this.c.getChannelServer().getPlayerStorage().getCharacterById(pt.getPartyMember().getMemberByIndex(1).getId());
+      MapleCharacter otherChar = this.c.getChannelServer().getPlayerStorage()
+            .getCharacterById(pt.getPartyMember().getMemberByIndex(1).getId());
       if (otherChar != null && otherChar.getId() != this.c.getPlayer().getId()) {
          try {
             return Center.Alliance.createAlliance(
-               alliancename, this.c.getPlayer().getId(), otherChar.getId(), this.c.getPlayer().getGuildId(), otherChar.getGuildId()
-            );
+                  alliancename, this.c.getPlayer().getId(), otherChar.getId(), this.c.getPlayer().getGuildId(),
+                  otherChar.getGuildId());
          } catch (Exception var5) {
             System.out.println("createAlliance 함수 실행중 오류발생" + var5.toString());
             var5.printStackTrace();
@@ -1874,10 +1896,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       try {
          Guild gs = Center.Guild.getGuild(this.c.getPlayer().getGuildId());
          if (gs != null
-            && this.c.getPlayer().getGuildRank() == 1
-            && this.c.getPlayer().getAllianceRank() == 1
-            && Center.Alliance.getAllianceLeader(gs.getAllianceId()) == this.c.getPlayer().getId()
-            && Center.Alliance.changeAllianceCapacity(gs.getAllianceId())) {
+               && this.c.getPlayer().getGuildRank() == 1
+               && this.c.getPlayer().getAllianceRank() == 1
+               && Center.Alliance.getAllianceLeader(gs.getAllianceId()) == this.c.getPlayer().getId()
+               && Center.Alliance.changeAllianceCapacity(gs.getAllianceId())) {
             this.gainMeso(-10000000L);
             return true;
          }
@@ -1893,10 +1915,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       try {
          Guild gs = Center.Guild.getGuild(this.c.getPlayer().getGuildId());
          if (gs != null
-            && this.c.getPlayer().getGuildRank() == 1
-            && this.c.getPlayer().getAllianceRank() == 1
-            && Center.Alliance.getAllianceLeader(gs.getAllianceId()) == this.c.getPlayer().getId()
-            && Center.Alliance.disbandAlliance(gs.getAllianceId())) {
+               && this.c.getPlayer().getGuildRank() == 1
+               && this.c.getPlayer().getAllianceRank() == 1
+               && Center.Alliance.getAllianceLeader(gs.getAllianceId()) == this.c.getPlayer().getId()
+               && Center.Alliance.disbandAlliance(gs.getAllianceId())) {
             return true;
          }
       } catch (Exception var2) {
@@ -1920,7 +1942,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
       for (Skill skil : SkillFactory.getAllSkills()) {
          if (GameConstants.isApplicableSkill(skil.getId()) && skil.getId() < 90000000) {
-            sa.put(skil, new SkillEntry((byte)skil.getMaxLevel(), (byte)skil.getMaxLevel(), SkillFactory.getDefaultSExpiry(skil)));
+            sa.put(skil, new SkillEntry((byte) skil.getMaxLevel(), (byte) skil.getMaxLevel(),
+                  SkillFactory.getDefaultSExpiry(skil)));
          }
       }
 
@@ -1932,7 +1955,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
       for (Skill skil : SkillFactory.getAllSkills()) {
          if (GameConstants.isApplicableSkill(skil.getId()) && skil.canBeLearnedBy(this.getPlayer().getJob())) {
-            sa.put(skil, new SkillEntry((byte)skil.getMaxLevel(), (byte)skil.getMaxLevel(), SkillFactory.getDefaultSExpiry(skil)));
+            sa.put(skil, new SkillEntry((byte) skil.getMaxLevel(), (byte) skil.getMaxLevel(),
+                  SkillFactory.getDefaultSExpiry(skil)));
          }
       }
 
@@ -1944,101 +1968,100 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public final boolean dropItem(int slot, int invType, int quantity) {
-      MapleInventoryType inv = MapleInventoryType.getByType((byte)invType);
-      return inv == null ? false : MapleInventoryManipulator.drop(this.c, inv, (short)slot, (short)quantity, true);
+      MapleInventoryType inv = MapleInventoryType.getByType((byte) invType);
+      return inv == null ? false : MapleInventoryManipulator.drop(this.c, inv, (short) slot, (short) quantity, true);
    }
 
    public final void sendRPS() {
-      this.c.getSession().writeAndFlush(CField.getRPSMode((byte)8, -1, -1, -1));
+      this.c.getSession().writeAndFlush(CField.getRPSMode((byte) 8, -1, -1, -1));
    }
 
    public final void setQuestRecord(Object ch, int questid, String data) {
-      ((MapleCharacter)ch).getQuestIfNullAdd(MapleQuest.getInstance(questid)).setCustomData(data);
+      ((MapleCharacter) ch).getQuestIfNullAdd(MapleQuest.getInstance(questid)).setCustomData(data);
    }
 
    public final void doWeddingEffect(Object ch) {
-      final MapleCharacter chr = (MapleCharacter)ch;
+      final MapleCharacter chr = (MapleCharacter) ch;
       final MapleCharacter player = this.getPlayer();
       this.getMap()
-         .broadcastMessage(
-            CWvsContext.yellowChat(
-               player.getName() + ", do you take " + chr.getName() + " as your wife and promise to stay beside her through all downtimes, crashes, and lags?"
-            )
-         );
+            .broadcastMessage(
+                  CWvsContext.yellowChat(
+                        player.getName() + ", do you take " + chr.getName()
+                              + " as your wife and promise to stay beside her through all downtimes, crashes, and lags?"));
       Timer.CloneTimer.getInstance()
-         .schedule(
-            new Runnable() {
-               @Override
-               public void run() {
-                  if (chr != null && player != null) {
-                     chr.getMap()
-                        .broadcastMessage(
-                           CWvsContext.yellowChat(
-                              chr.getName()
-                                 + ", do you take "
-                                 + player.getName()
-                                 + " as your husband and promise to stay beside him through all downtimes, crashes, and lags?"
-                           )
-                        );
-                  } else {
-                     NPCConversationManager.this.warpMap(680000500, 0);
-                  }
-               }
-            },
-            10000L
-         );
+            .schedule(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        if (chr != null && player != null) {
+                           chr.getMap()
+                                 .broadcastMessage(
+                                       CWvsContext.yellowChat(
+                                             chr.getName()
+                                                   + ", do you take "
+                                                   + player.getName()
+                                                   + " as your husband and promise to stay beside him through all downtimes, crashes, and lags?"));
+                        } else {
+                           NPCConversationManager.this.warpMap(680000500, 0);
+                        }
+                     }
+                  },
+                  10000L);
       Timer.CloneTimer.getInstance()
-         .schedule(
-            new Runnable() {
-               @Override
-               public void run() {
-                  if (chr != null && player != null) {
-                     NPCConversationManager.this.setQuestRecord(player, 160001, "2");
-                     NPCConversationManager.this.setQuestRecord(chr, 160001, "2");
-                     NPCConversationManager.this.sendNPCText(
-                        player.getName()
-                           + " and "
-                           + chr.getName()
-                           + ", I wish you two all the best on your "
-                           + chr.getClient().getChannelServer().getServerName()
-                           + " journey together!",
-                        9201002
-                     );
-                     chr.getMap().startExtendedMapEffect("You may now kiss the bride, " + player.getName() + "!", 5120006);
-                     if (chr.getGuildId() > 0) {
-                        Center.Guild.guildPacket(chr.getGuildId(), CWvsContext.sendMarriage(false, chr.getName()));
-                     }
+            .schedule(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        if (chr != null && player != null) {
+                           NPCConversationManager.this.setQuestRecord(player, 160001, "2");
+                           NPCConversationManager.this.setQuestRecord(chr, 160001, "2");
+                           NPCConversationManager.this.sendNPCText(
+                                 player.getName()
+                                       + " and "
+                                       + chr.getName()
+                                       + ", I wish you two all the best on your "
+                                       + chr.getClient().getChannelServer().getServerName()
+                                       + " journey together!",
+                                 9201002);
+                           chr.getMap().startExtendedMapEffect("You may now kiss the bride, " + player.getName() + "!",
+                                 5120006);
+                           if (chr.getGuildId() > 0) {
+                              Center.Guild.guildPacket(chr.getGuildId(),
+                                    CWvsContext.sendMarriage(false, chr.getName()));
+                           }
 
-                     if (player.getGuildId() > 0) {
-                        Center.Guild.guildPacket(player.getGuildId(), CWvsContext.sendMarriage(false, player.getName()));
-                     }
-                  } else {
-                     if (player != null) {
-                        NPCConversationManager.this.setQuestRecord(player, 160001, "3");
-                        NPCConversationManager.this.setQuestRecord(player, 160002, "0");
-                     } else if (chr != null) {
-                        NPCConversationManager.this.setQuestRecord(chr, 160001, "3");
-                        NPCConversationManager.this.setQuestRecord(chr, 160002, "0");
-                     }
+                           if (player.getGuildId() > 0) {
+                              Center.Guild.guildPacket(player.getGuildId(),
+                                    CWvsContext.sendMarriage(false, player.getName()));
+                           }
+                        } else {
+                           if (player != null) {
+                              NPCConversationManager.this.setQuestRecord(player, 160001, "3");
+                              NPCConversationManager.this.setQuestRecord(player, 160002, "0");
+                           } else if (chr != null) {
+                              NPCConversationManager.this.setQuestRecord(chr, 160001, "3");
+                              NPCConversationManager.this.setQuestRecord(chr, 160002, "0");
+                           }
 
-                     NPCConversationManager.this.warpMap(680000500, 0);
-                  }
-               }
-            },
-            20000L
-         );
+                           NPCConversationManager.this.warpMap(680000500, 0);
+                        }
+                     }
+                  },
+                  20000L);
    }
 
    public void putKey(int index, int key, int type, int action) {
-      this.getPlayer().changeKeybinding(index, key, (byte)type, action);
-      this.getClient().getSession().writeAndFlush(CField.getKeymap(this.getPlayer().getKeyLayout(), this.getPlayer().getQuickSlotKeyMapped()));
+      this.getPlayer().changeKeybinding(index, key, (byte) type, action);
+      this.getClient().getSession()
+            .writeAndFlush(CField.getKeymap(this.getPlayer().getKeyLayout(), this.getPlayer().getQuickSlotKeyMapped()));
    }
 
    public void logDonator(String log, int previous_points) {
       StringBuilder logg = new StringBuilder();
       logg.append(MapleCharacterUtil.makeMapleReadable(this.getPlayer().getName()));
       logg.append(" [CID: ").append(this.getPlayer().getId()).append("] ");
-      logg.append(" [Account: ").append(MapleCharacterUtil.makeMapleReadable(this.getClient().getAccountName())).append("] ");
+      logg.append(" [Account: ").append(MapleCharacterUtil.makeMapleReadable(this.getClient().getAccountName()))
+            .append("] ");
       logg.append(log);
       logg.append(" [Previous: " + previous_points + "] [Now: " + this.getPlayer().getPoints() + "]");
       DBConnection db = new DBConnection();
@@ -2074,7 +2097,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public boolean isEligibleName(String t) {
       return MapleCharacterUtil.canCreateChar(t, this.getPlayer().isGM(), true)
-         && (!LoginInformationProvider.getInstance().isForbiddenName(t) || this.getPlayer().isGM());
+            && (!LoginInformationProvider.getInstance().isForbiddenName(t) || this.getPlayer().isGM());
    }
 
    public String checkDrop(int mobId) {
@@ -2087,7 +2110,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          for (int i = 0; i < ranks.size(); i++) {
             MonsterDropEntry de = ranks.get(i);
-            if (de.chance > 0 && (de.questid <= 0 || de.questid > 0 && MapleQuest.getInstance(de.questid).getName().length() > 0)) {
+            if (de.chance > 0
+                  && (de.questid <= 0 || de.questid > 0 && MapleQuest.getInstance(de.questid).getName().length() > 0)) {
                itemId = de.itemId;
                if (num == 0) {
                   name.append("Drops for #o" + mobId + "#\r\n");
@@ -2098,29 +2122,26 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                if (itemId == 0) {
                   itemId = 4031041;
                   namez = de.Minimum * this.getClient().getChannelServer().getMesoRate()
-                     + " to "
-                     + de.Maximum * this.getClient().getChannelServer().getMesoRate()
-                     + " meso";
+                        + " to "
+                        + de.Maximum * this.getClient().getChannelServer().getMesoRate()
+                        + " meso";
                }
 
-               ch = (int)(de.chance * this.getClient().getChannelServer().getDropRate());
+               ch = (int) (de.chance * this.getClient().getChannelServer().getDropRate());
                name.append(
-                  num
-                     + 1
-                     + ") #v"
-                     + itemId
-                     + "#"
-                     + namez
-                     + " - "
-                     + Integer.valueOf(ch >= 999999 ? 1000000 : ch).doubleValue() / 10000.0
-                     + "% chance. "
-                     + (
-                        de.questid > 0 && MapleQuest.getInstance(de.questid).getName().length() > 0
-                           ? "Requires quest " + MapleQuest.getInstance(de.questid).getName() + " to be started."
-                           : ""
-                     )
-                     + "\r\n"
-               );
+                     num
+                           + 1
+                           + ") #v"
+                           + itemId
+                           + "#"
+                           + namez
+                           + " - "
+                           + Integer.valueOf(ch >= 999999 ? 1000000 : ch).doubleValue() / 10000.0
+                           + "% chance. "
+                           + (de.questid > 0 && MapleQuest.getInstance(de.questid).getName().length() > 0
+                                 ? "Requires quest " + MapleQuest.getInstance(de.questid).getName() + " to be started."
+                                 : "")
+                           + "\r\n");
                num++;
             }
          }
@@ -2146,7 +2167,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             DBConnection db = new DBConnection();
 
             try (Connection con = DBConnection.getConnection()) {
-               PreparedStatement ps = con.prepareStatement("UPDATE queststatus SET customData = ? WHERE characterid = ? AND (quest = ? OR quest = ?)");
+               PreparedStatement ps = con.prepareStatement(
+                     "UPDATE queststatus SET customData = ? WHERE characterid = ? AND (quest = ? OR quest = ?)");
                ps.setString(1, "0");
                ps.setInt(2, this.getPlayer().getMarriageId());
                ps.setInt(3, 160001);
@@ -2170,7 +2192,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          } else if (chz < -1) {
             this.sendNext("Please make sure your partner is logged on.");
          } else {
-            MapleCharacter cPlayer = GameServer.getInstance(chz).getPlayerStorage().getCharacterById(this.getPlayer().getMarriageId());
+            MapleCharacter cPlayer = GameServer.getInstance(chz).getPlayerStorage()
+                  .getCharacterById(this.getPlayer().getMarriageId());
             if (cPlayer != null) {
                cPlayer.dropMessage(1, "Your partner has divorced you.");
                cPlayer.setMarriageId(0);
@@ -2230,7 +2253,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       try {
          boolean var5;
          try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("UPDATE compensationlog_confirmed SET taken = ? WHERE chrname LIKE ?");
+            PreparedStatement ps = con
+                  .prepareStatement("UPDATE compensationlog_confirmed SET taken = ? WHERE chrname LIKE ?");
             ps.setInt(1, taken);
             ps.setString(2, this.getPlayer().getName());
             ps.executeUpdate();
@@ -2249,24 +2273,33 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void setInnerStatsLine1() {
-      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(), Collections.EMPTY_LIST, 0, false);
+      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(),
+            Collections.EMPTY_LIST, 0, false);
       this.c.getPlayer().getInnerSkills().add(isvh);
-      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(), isvh.getSkillLevel());
-      this.c.getSession().writeAndFlush(CField.updateInnerPotential((byte)1, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
+      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(),
+            isvh.getSkillLevel());
+      this.c.getSession().writeAndFlush(
+            CField.updateInnerPotential((byte) 1, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
    }
 
    public void setInnerStatsLine2() {
-      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(), Collections.EMPTY_LIST, 0, false);
+      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(),
+            Collections.EMPTY_LIST, 0, false);
       this.c.getPlayer().getInnerSkills().add(isvh);
-      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(), isvh.getSkillLevel());
-      this.c.getSession().writeAndFlush(CField.updateInnerPotential((byte)2, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
+      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(),
+            isvh.getSkillLevel());
+      this.c.getSession().writeAndFlush(
+            CField.updateInnerPotential((byte) 2, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
    }
 
    public void setInnerStatsLine3() {
-      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(), Collections.EMPTY_LIST, 0, false);
+      CharacterPotentialHolder isvh = CharacterPotential.getInstance().renewSkill(this.c.getPlayer().getInnerSkills(),
+            Collections.EMPTY_LIST, 0, false);
       this.c.getPlayer().getInnerSkills().add(isvh);
-      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(), isvh.getSkillLevel());
-      this.c.getSession().writeAndFlush(CField.updateInnerPotential((byte)3, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
+      this.c.getPlayer().changeSkillLevel(SkillFactory.getSkill(isvh.getSkillId()), isvh.getSkillLevel(),
+            isvh.getSkillLevel());
+      this.c.getSession().writeAndFlush(
+            CField.updateInnerPotential((byte) 3, isvh.getSkillId(), isvh.getSkillLevel(), isvh.getRank()));
    }
 
    public void openAuctionUI() {
@@ -2301,9 +2334,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             chr.changeMap(map, new Point(-592, -451));
          }
 
-         chr.setWolfScore((byte)MaxCatchSize);
+         chr.setWolfScore((byte) MaxCatchSize);
          chr.setSheepScore(CatchSize);
-         map.broadcastMessage(CField.farmScore((byte)MaxCatchSize, CatchSize));
+         map.broadcastMessage(CField.farmScore((byte) MaxCatchSize, CatchSize));
       }
 
       map.broadcastMessage(CWvsContext.serverNotice(1, "[술래 목록]\r\n" + CatchingName2));
@@ -2313,7 +2346,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void gainSponserItem(int item, String name, short allstat, short damage, byte upgradeslot) {
       if (GameConstants.isEquip(item)) {
-         Equip Item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(item);
+         Equip Item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(item);
          Item.setOwner(name);
          Item.setStr(allstat);
          Item.setDex(allstat);
@@ -2328,20 +2361,21 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
    }
 
-   public void gainZeniaItemA(int item, String name, short allstat, short damage, byte allstatp, byte damagep, byte sponbossdr, byte sponidr) {
+   public void gainZeniaItemA(int item, String name, short allstat, short damage, byte allstatp, byte damagep,
+         byte sponbossdr, byte sponidr) {
       if (GameConstants.isEquip(item)) {
-         Equip Item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(item);
+         Equip Item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(item);
          Item.setOwner(name);
-         Item.setStr((short)(Item.getStr() + allstat));
-         Item.setDex((short)(Item.getDex() + allstat));
-         Item.setInt((short)(Item.getInt() + allstat));
-         Item.setLuk((short)(Item.getLuk() + allstat));
-         Item.setWatk((short)(Item.getWatk() + damage));
-         Item.setMatk((short)(Item.getMatk() + damage));
-         Item.setAllStat((byte)(Item.getAllStat() + allstatp));
-         Item.setTotalDamage((byte)(Item.getTotalDamage() + damagep));
-         Item.setBossDamage((byte)(Item.getBossDamage() + sponbossdr));
-         Item.setIgnorePDR((byte)(Item.getIgnorePDR() + sponidr));
+         Item.setStr((short) (Item.getStr() + allstat));
+         Item.setDex((short) (Item.getDex() + allstat));
+         Item.setInt((short) (Item.getInt() + allstat));
+         Item.setLuk((short) (Item.getLuk() + allstat));
+         Item.setWatk((short) (Item.getWatk() + damage));
+         Item.setMatk((short) (Item.getMatk() + damage));
+         Item.setAllStat((byte) (Item.getAllStat() + allstatp));
+         Item.setTotalDamage((byte) (Item.getTotalDamage() + damagep));
+         Item.setBossDamage((byte) (Item.getBossDamage() + sponbossdr));
+         Item.setIgnorePDR((byte) (Item.getIgnorePDR() + sponidr));
          MapleInventoryManipulator.addFromDrop(this.c, Item, false);
       } else {
          this.gainItem(item, allstat, damage);
@@ -2349,21 +2383,21 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void gainZeniaItem(
-      int item, String name, short allstat, short damage, byte allstatp, byte damagep, byte sponbossdr, byte sponidr, byte upgradeslot, int flag, int Potential
-   ) {
+         int item, String name, short allstat, short damage, byte allstatp, byte damagep, byte sponbossdr, byte sponidr,
+         byte upgradeslot, int flag, int Potential) {
       if (GameConstants.isEquip(item)) {
-         Equip Item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(item);
+         Equip Item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(item);
          Item.setOwner(name);
-         Item.setStr((short)(Item.getStr() + allstat));
-         Item.setDex((short)(Item.getDex() + allstat));
-         Item.setInt((short)(Item.getInt() + allstat));
-         Item.setLuk((short)(Item.getLuk() + allstat));
-         Item.setWatk((short)(Item.getWatk() + damage));
-         Item.setMatk((short)(Item.getMatk() + damage));
-         Item.setAllStat((byte)(Item.getAllStat() + allstatp));
-         Item.setTotalDamage((byte)(Item.getTotalDamage() + damagep));
-         Item.setBossDamage((byte)(Item.getBossDamage() + sponbossdr));
-         Item.setIgnorePDR((byte)(Item.getIgnorePDR() + sponidr));
+         Item.setStr((short) (Item.getStr() + allstat));
+         Item.setDex((short) (Item.getDex() + allstat));
+         Item.setInt((short) (Item.getInt() + allstat));
+         Item.setLuk((short) (Item.getLuk() + allstat));
+         Item.setWatk((short) (Item.getWatk() + damage));
+         Item.setMatk((short) (Item.getMatk() + damage));
+         Item.setAllStat((byte) (Item.getAllStat() + allstatp));
+         Item.setTotalDamage((byte) (Item.getTotalDamage() + damagep));
+         Item.setBossDamage((byte) (Item.getBossDamage() + sponbossdr));
+         Item.setIgnorePDR((byte) (Item.getIgnorePDR() + sponidr));
          Item.setPotential1(Potential);
          Item.setPotential2(Potential);
          Item.setPotential3(Potential);
@@ -2372,7 +2406,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          Item.setPotential6(Potential);
          Item.setFlag(flag);
          Item.setUpgradeSlots(upgradeslot);
-         Item.setKarmaCount((byte)0);
+         Item.setKarmaCount((byte) 0);
          MapleInventoryManipulator.addFromDrop(this.c, Item, false);
       } else {
          this.gainItem(item, allstat, damage);
@@ -2405,14 +2439,18 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   isuse = " (선택된 항목)";
                }
 
-               if (type == 1 && ii.isCash(item.getLeft()) && item.getLeft() >= 1000000 && item.getLeft() / 1000000 == 1) {
-                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z" + item.getLeft() + "#" + isuse;
+               if (type == 1 && ii.isCash(item.getLeft()) && item.getLeft() >= 1000000
+                     && item.getLeft() / 1000000 == 1) {
+                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z"
+                        + item.getLeft() + "#" + isuse;
                   i++;
                } else if (type == 0 && item.getLeft() / 10000 >= 2 && item.getLeft() / 10000 < 3) {
-                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z" + item.getLeft() + "#" + isuse;
+                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z"
+                        + item.getLeft() + "#" + isuse;
                   i++;
                } else if (type == 2 && item.getLeft() / 10000 >= 3 && item.getLeft() / 10000 <= 5) {
-                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z" + item.getLeft() + "#" + isuse;
+                  chat = chat + "\r\n" + color + "#L" + item.getLeft() + "##i" + item.getLeft() + " ##z"
+                        + item.getLeft() + "#" + isuse;
                   i++;
                }
             }
@@ -2442,7 +2480,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       MapleQuest quest = MapleQuest.getInstance(1465);
       MapleQuestStatus qs = this.c.getPlayer().getQuest(quest);
       if (quest != null && qs.getStatus() != 2) {
-         qs.setStatus((byte)2);
+         qs.setStatus((byte) 2);
          this.c.getPlayer().updateQuest(this.c.getPlayer().getQuest(quest), true);
       }
    }
@@ -2457,7 +2495,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public int getAndroidGender() {
       int itemid = this.c.getPlayer().getAndroid().getItemId();
-      return MapleItemInformationProvider.getInstance().getAndroidBasicSettings(MapleItemInformationProvider.getInstance().getAndroid(itemid)).getGender();
+      return MapleItemInformationProvider.getInstance()
+            .getAndroidBasicSettings(MapleItemInformationProvider.getInstance().getAndroid(itemid)).getGender();
    }
 
    public void setJaguar(int mobid) {
@@ -2470,11 +2509,11 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public void addEquip(short pos, int itemid) {
       MapleInventory equip = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED);
       boolean isExist = false;
-      if (equip.getItem((short)-10) != null) {
+      if (equip.getItem((short) -10) != null) {
          isExist = true;
       }
 
-      Equip eq = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip eq = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       int flag = eq.getFlag();
       if (ItemFlag.POSSIBLE_TRADING.check(flag)) {
          flag -= ItemFlag.POSSIBLE_TRADING.getValue();
@@ -2482,7 +2521,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
       eq.setFlag(flag);
       eq.setPosition(pos);
-      eq.setState((byte)0);
+      eq.setState((byte) 0);
       equip.addFromDB(eq.copy());
       this.getChar().fakeRelog();
    }
@@ -2552,7 +2591,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void setAllStat(int itemid, short stat, short watk, byte upgrade) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       item.addStr(stat);
       item.addDex(stat);
       item.addInt(stat);
@@ -2564,7 +2603,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void setAllStat(int itemid, short stat, short watk) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemid);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemid);
       item.addStr(stat);
       item.addDex(stat);
       item.addInt(stat);
@@ -2647,13 +2686,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public void resetAP() {
       PlayerStats playerst = this.c.getPlayer().getStat();
       Map statupdate = new EnumMap<>(MapleStat.class);
-      playerst.setStr((short)4, this.c.getPlayer());
+      playerst.setStr((short) 4, this.c.getPlayer());
       statupdate.put(MapleStat.STR, 4);
-      playerst.setDex((short)4, this.c.getPlayer());
+      playerst.setDex((short) 4, this.c.getPlayer());
       statupdate.put(MapleStat.DEX, 4);
-      playerst.setInt((short)4, this.c.getPlayer());
+      playerst.setInt((short) 4, this.c.getPlayer());
       statupdate.put(MapleStat.INT, 4);
-      playerst.setLuk((short)4, this.c.getPlayer());
+      playerst.setLuk((short) 4, this.c.getPlayer());
       statupdate.put(MapleStat.LUK, 4);
       this.c.getSession().writeAndFlush(CWvsContext.updatePlayerStats(statupdate, true, this.c.getPlayer()));
    }
@@ -2663,7 +2702,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void BuyPET(int itemID) {
-      Item item = new Item(itemID, (short)1, (short)1, 0);
+      Item item = new Item(itemID, (short) 1, (short) 1, 0);
       item.setExpiration(System.currentTimeMillis() + 2592000000L);
       MaplePet pet = MaplePet.createPet(itemID, MapleInventoryIdentifier.getInstance());
       item.setPet(pet);
@@ -2680,7 +2719,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       Iterator iter = this.getPartyMembers().iterator();
 
       while (iter.hasNext()) {
-         if (((MapleCharacter)iter.next()).getItemQuantity(itemID, false) > 0) {
+         if (((MapleCharacter) iter.next()).getItemQuantity(itemID, false) > 0) {
             i++;
          }
       }
@@ -2694,7 +2733,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
       while (iter.hasNext()) {
          MapleCharacter player;
-         if ((player = (MapleCharacter)iter.next()).getLevel() >= minLevel && player.getLevel() <= maxLevel) {
+         if ((player = (MapleCharacter) iter.next()).getLevel() >= minLevel && player.getLevel() <= maxLevel) {
             i++;
          }
       }
@@ -2706,7 +2745,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       Iterator iter = this.getPartyMembers().iterator();
 
       while (iter.hasNext()) {
-         ((MapleCharacter)iter.next()).gainItem(itemID, quantity, false, 0L, "");
+         ((MapleCharacter) iter.next()).gainItem(itemID, quantity, false, 0L, "");
       }
    }
 
@@ -2739,7 +2778,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (item == null) {
          return -1;
       } else {
-         Equip equip = (Equip)item;
+         Equip equip = (Equip) item;
          return equip.getSPGrade();
       }
    }
@@ -2749,7 +2788,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (item == null) {
          return "";
       } else {
-         Equip equip = (Equip)item;
+         Equip equip = (Equip) item;
          return equip.getOwner();
       }
    }
@@ -2764,21 +2803,23 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public final void destroyEquip(Equip equip) {
       this.getPlayer().getInventory(MapleInventoryType.EQUIP).removeItem(equip.getPosition());
-      this.getPlayer().send(CWvsContext.InventoryPacket.clearInventoryItem(MapleInventoryType.EQUIP, equip.getPosition(), false));
+      this.getPlayer()
+            .send(CWvsContext.InventoryPacket.clearInventoryItem(MapleInventoryType.EQUIP, equip.getPosition(), false));
    }
 
    public final void enchantFallEquip(Equip equip, int allStat, int attack) {
       equip.setSPGrade(equip.getSPGrade() - 1);
-      equip.setStr((short)(equip.getStr() - allStat));
-      equip.setInt((short)(equip.getInt() - allStat));
-      equip.setDex((short)(equip.getDex() - allStat));
-      equip.setLuk((short)(equip.getLuk() - allStat));
-      equip.setMatk((short)(equip.getMatk() - attack));
-      equip.setWatk((short)(equip.getWatk() - attack));
+      equip.setStr((short) (equip.getStr() - allStat));
+      equip.setInt((short) (equip.getInt() - allStat));
+      equip.setDex((short) (equip.getDex() - allStat));
+      equip.setLuk((short) (equip.getLuk() - allStat));
+      equip.setMatk((short) (equip.getMatk() - attack));
+      equip.setWatk((short) (equip.getWatk() - attack));
       equip.setSPAllStat(equip.getSPAllStat() - allStat);
       equip.setSPAttack(equip.getSPAttack() - attack);
       equip.setOwner(equip.getSPGrade() + "성");
-      this.c.getPlayer().send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte)1, this.c.getPlayer(), (byte)0));
+      this.c.getPlayer()
+            .send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte) 1, this.c.getPlayer(), (byte) 0));
    }
 
    public final void enchantEquip_(Equip equip, int allStat, int attack) {
@@ -2799,12 +2840,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      equip.setStr((short)(equip.getStr() + allStat));
-      equip.setInt((short)(equip.getInt() + allStat));
-      equip.setDex((short)(equip.getDex() + allStat));
-      equip.setLuk((short)(equip.getLuk() + allStat));
-      equip.setWatk((short)(equip.getWatk() + attack));
-      equip.setMatk((short)(equip.getMatk() + attack));
+      equip.setStr((short) (equip.getStr() + allStat));
+      equip.setInt((short) (equip.getInt() + allStat));
+      equip.setDex((short) (equip.getDex() + allStat));
+      equip.setLuk((short) (equip.getLuk() + allStat));
+      equip.setWatk((short) (equip.getWatk() + attack));
+      equip.setMatk((short) (equip.getMatk() + attack));
       equip.setSPAllStat(equip.getSPAllStat() + allStat);
       equip.setSPAttack(equip.getSPAttack() + attack);
       equip.setOwner(equip.getSPGrade() + "성");
@@ -2812,19 +2853,21 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (GameConstants.isZeroWeapon(equip.getItemId())) {
          this.c.getPlayer().forceReAddItem(equip, MapleInventoryType.EQUIPPED);
       } else {
-         this.c.getPlayer().send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, invType, this.c.getPlayer(), (byte)0));
+         this.c.getPlayer()
+               .send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, invType, this.c.getPlayer(), (byte) 0));
       }
 
       if (GameConstants.isZeroWeapon(equip.getItemId())) {
-         Equip zeroEquip = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)(equip.getPosition() == -11 ? -10 : -11));
+         Equip zeroEquip = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+               .getItem((short) (equip.getPosition() == -11 ? -10 : -11));
          zeroEquip.setSPGrade(zeroEquip.getSPGrade() + 1);
          zeroEquip.setSpecialPotential(1);
-         zeroEquip.setStr((short)(zeroEquip.getStr() + allStat));
-         zeroEquip.setInt((short)(zeroEquip.getInt() + allStat));
-         zeroEquip.setDex((short)(zeroEquip.getDex() + allStat));
-         zeroEquip.setLuk((short)(zeroEquip.getLuk() + allStat));
-         zeroEquip.setWatk((short)(zeroEquip.getWatk() + attack));
-         zeroEquip.setMatk((short)(zeroEquip.getMatk() + attack));
+         zeroEquip.setStr((short) (zeroEquip.getStr() + allStat));
+         zeroEquip.setInt((short) (zeroEquip.getInt() + allStat));
+         zeroEquip.setDex((short) (zeroEquip.getDex() + allStat));
+         zeroEquip.setLuk((short) (zeroEquip.getLuk() + allStat));
+         zeroEquip.setWatk((short) (zeroEquip.getWatk() + attack));
+         zeroEquip.setMatk((short) (zeroEquip.getMatk() + attack));
          zeroEquip.setSPAllStat(zeroEquip.getSPAllStat() + allStat);
          zeroEquip.setSPAttack(zeroEquip.getSPAttack() + attack);
          zeroEquip.setOwner(zeroEquip.getSPGrade() + "성");
@@ -2834,13 +2877,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public final void enchantEquip2(Equip equip, int allStat, int attack) {
       equip.setCashEnchantCount(equip.getCashEnchantCount() + 1);
-      equip.setStr((short)(equip.getStr() + allStat));
-      equip.setInt((short)(equip.getInt() + allStat));
-      equip.setDex((short)(equip.getDex() + allStat));
-      equip.setLuk((short)(equip.getLuk() + allStat));
-      equip.setWatk((short)(equip.getWatk() + attack));
-      equip.setMatk((short)(equip.getMatk() + attack));
-      this.c.getPlayer().send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte)6, this.c.getPlayer(), (byte)0));
+      equip.setStr((short) (equip.getStr() + allStat));
+      equip.setInt((short) (equip.getInt() + allStat));
+      equip.setDex((short) (equip.getDex() + allStat));
+      equip.setLuk((short) (equip.getLuk() + allStat));
+      equip.setWatk((short) (equip.getWatk() + attack));
+      equip.setMatk((short) (equip.getMatk() + attack));
+      this.c.getPlayer()
+            .send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte) 6, this.c.getPlayer(), (byte) 0));
    }
 
    public final boolean renewSpecialPotential(short slot, boolean useEssence) {
@@ -2848,12 +2892,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       if (item == null) {
          return false;
       } else {
-         Equip equip = (Equip)item;
-         String[] gradeString = new String[]{"최하급", "하급", "중급", "상급", "최상급"};
-         int[][] attack = new int[][]{{2, 4}, {3, 7}, {5, 11}, {8, 16}, {14, 21}};
-         int[][] allStat = new int[][]{{4, 7}, {6, 11}, {10, 17}, {17, 25}, {25, 35}};
-         int[][] attack2 = new int[][]{{4, 7}, {6, 11}, {10, 18}, {17, 25}, {24, 32}};
-         int[][] allStat2 = new int[][]{{12, 16}, {15, 21}, {20, 28}, {31, 40}, {44, 55}};
+         Equip equip = (Equip) item;
+         String[] gradeString = new String[] { "최하급", "하급", "중급", "상급", "최상급" };
+         int[][] attack = new int[][] { { 2, 4 }, { 3, 7 }, { 5, 11 }, { 8, 16 }, { 14, 21 } };
+         int[][] allStat = new int[][] { { 4, 7 }, { 6, 11 }, { 10, 17 }, { 17, 25 }, { 25, 35 } };
+         int[][] attack2 = new int[][] { { 4, 7 }, { 6, 11 }, { 10, 18 }, { 17, 25 }, { 24, 32 } };
+         int[][] allStat2 = new int[][] { { 12, 16 }, { 15, 21 }, { 20, 28 }, { 31, 40 }, { 44, 55 } };
          int grade = -1;
          int rand = Randomizer.rand(0, 100);
          int allStat_ = 0;
@@ -2892,33 +2936,33 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          equip.setSpecialPotential(1);
-         equip.setStr((short)(equip.getStr() - equip.getSPAllStat() + allStat_));
-         equip.setInt((short)(equip.getInt() - equip.getSPAllStat() + allStat_));
-         equip.setDex((short)(equip.getDex() - equip.getSPAllStat() + allStat_));
-         equip.setLuk((short)(equip.getLuk() - equip.getSPAllStat() + allStat_));
-         equip.setMatk((short)(equip.getMatk() - equip.getSPAttack() + attack_));
-         equip.setWatk((short)(equip.getWatk() - equip.getSPAttack() + attack_));
+         equip.setStr((short) (equip.getStr() - equip.getSPAllStat() + allStat_));
+         equip.setInt((short) (equip.getInt() - equip.getSPAllStat() + allStat_));
+         equip.setDex((short) (equip.getDex() - equip.getSPAllStat() + allStat_));
+         equip.setLuk((short) (equip.getLuk() - equip.getSPAllStat() + allStat_));
+         equip.setMatk((short) (equip.getMatk() - equip.getSPAttack() + attack_));
+         equip.setWatk((short) (equip.getWatk() - equip.getSPAttack() + attack_));
          equip.setSPGrade(var14);
          equip.setSPAllStat(allStat_);
          equip.setSPAttack(attack_);
          equip.setOwner("<" + gradeString[var14 - 1] + ">");
-         this.c.getPlayer().send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte)1, this.c.getPlayer(), (byte)0));
+         this.c.getPlayer()
+               .send(CWvsContext.InventoryPacket.updateSpecialItemUse(equip, (byte) 1, this.c.getPlayer(), (byte) 0));
          if (this.c.getPlayer().isGM()) {
             this.c
-               .getPlayer()
-               .dropMessage(
-                  5,
-                  "무기 감정 결과 : 등급("
-                     + gradeString[var14 - 1]
-                     + ") / 올스탯 : "
-                     + allStat_
-                     + ", 공마 : "
-                     + attack_
-                     + ", equipAllStat : "
-                     + equip.getAllStat()
-                     + ", equipAttack : "
-                     + equip.getMatk()
-               );
+                  .getPlayer()
+                  .dropMessage(
+                        5,
+                        "무기 감정 결과 : 등급("
+                              + gradeString[var14 - 1]
+                              + ") / 올스탯 : "
+                              + allStat_
+                              + ", 공마 : "
+                              + attack_
+                              + ", equipAllStat : "
+                              + equip.getAllStat()
+                              + ", equipAttack : "
+                              + equip.getMatk());
          }
 
          return true;
@@ -2933,7 +2977,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          Item rewardItem = MapleItemInformationProvider.getInstance().getEquipById(itemID);
          Equip rewardEquip = null;
          if (rewardItem != null) {
-            rewardEquip = (Equip)rewardItem;
+            rewardEquip = (Equip) rewardItem;
          }
 
          if (rewardEquip != null) {
@@ -2987,9 +3031,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public final int unboxingMapleRoyal() {
       MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-      int rewardItemID = ii.getMasterPieceRewardItemID(this.c.getPlayer().isGM(), false, -1, this.getPlayer().getGender());
+      int rewardItemID = ii.getMasterPieceRewardItemID(this.c.getPlayer().isGM(), false, -1,
+            this.getPlayer().getGender());
       Item rewardItem = ii.getEquipById(rewardItemID);
-      Equip rewardEquip = (Equip)rewardItem;
+      Equip rewardEquip = (Equip) rewardItem;
       rewardEquip.setUniqueId(MapleInventoryIdentifier.getInstance());
       if (rewardEquip.isMasterLabel()) {
          rewardEquip.setCsGrade(3);
@@ -3000,8 +3045,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          rewardEquip.setCsOption3(10000 + Randomizer.rand(1, 4) * 1000 + stat);
          rewardEquip.setCsOptionExpireDate(System.currentTimeMillis() + 31536000000L);
          Center.Broadcast.broadcastGachaponMessage(
-            this.c.getPlayer().getName() + "님이 " + ii.getName(5680157) + "에서 {" + ii.getName(rewardEquip.getItemId()) + "} 아이템을 획득하였습니다", 5068300, rewardEquip
-         );
+               this.c.getPlayer().getName() + "님이 " + ii.getName(5680157) + "에서 {" + ii.getName(rewardEquip.getItemId())
+                     + "} 아이템을 획득하였습니다",
+               5068300, rewardEquip);
       } else {
          int rand = Randomizer.rand(0, 100);
          if (rand <= 8) {
@@ -3019,7 +3065,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       rewardEquip.setSpecialRoyal(true);
       if (this.c.getPlayer().getKeyValue("tAble") != null) {
          this.c.getPlayer().setKeyValue("tAble", null);
-         rewardEquip.setFlag((short)ItemFlag.KARMA_EQ.getValue());
+         rewardEquip.setFlag((short) ItemFlag.KARMA_EQ.getValue());
       }
 
       short TI = MapleInventoryManipulator.addFromAuction(this.c, rewardEquip);
@@ -3049,14 +3095,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          long[] ringID = MapleRing.makeRing(itemID, this.c.getPlayer(), target);
-         Equip eq = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemID, ringID[1]);
+         Equip eq = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemID, ringID[1]);
          MapleRing ring = MapleRing.loadFromDb(ringID[1]);
          if (ring != null) {
             eq.setRing(ring);
          }
 
          MapleInventoryManipulator.addbyItem(this.c, eq);
-         eq = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemID, ringID[0]);
+         eq = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemID, ringID[0]);
          ring = MapleRing.loadFromDb(ringID[0]);
          if (ring != null) {
             eq.setRing(ring);
@@ -3079,7 +3125,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             c.getSession().writeAndFlush(CField.onUserTeleport(65535, 0));
             c.getSession().writeAndFlush(CField.UIPacket.setStandAloneMode(true));
             c.getSession().writeAndFlush(CField.UIPacket.IntroLock(true));
-            c.getSession().writeAndFlush(CField.getStackEventGauge(c.getPlayer().getKillPoint() % 100, c.getPlayer().getKillPoint() / 100));
+            c.getSession().writeAndFlush(
+                  CField.getStackEventGauge(c.getPlayer().getKillPoint() % 100, c.getPlayer().getKillPoint() / 100));
             Timer.MapTimer.getInstance().schedule(new Runnable() {
                @Override
                public void run() {
@@ -3100,12 +3147,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public final int checkSymbolCount() {
       int src = this.c.getPlayer().getSymbolSrc();
       if (src > 0) {
-         Equip source = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)src);
+         Equip source = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) src);
          if (source.getArcLevel() == 1 && source.getArcEXP() <= 0) {
             int itemID = source.getItemId();
             AtomicInteger count = new AtomicInteger(0);
             this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).list().forEach(item -> {
-               Equip equip = (Equip)item;
+               Equip equip = (Equip) item;
                if (equip.getItemId() == itemID && equip.getArcEXP() == 0 && equip.getArcLevel() == 1) {
                   count.getAndAdd(1);
                }
@@ -3122,50 +3169,57 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public final void mergeSymbol() {
       int src = this.c.getPlayer().getSymbolSrc();
       if (src > 0) {
-         Equip source = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)src);
+         Equip source = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) src);
          List<Short> removes = new LinkedList<>();
 
          for (Item item : this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).list()) {
-            Equip srcE = (Equip)item;
+            Equip srcE = (Equip) item;
             if (source.getItemId() == item.getItemId() && srcE.getArcLevel() == 1 && srcE.getArcEXP() == 0) {
                this.symbolExp(item.getPosition(), true);
                removes.add(item.getPosition());
                Equip target = null;
-               if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1600) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1600).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1600);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1601) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1601).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1601);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1602) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1602).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1602);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1603) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1603).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1603);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1604) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1604).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1604);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1605) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1605).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1605);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1700) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1700).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1700);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1701) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1701).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1701);
-               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1702) != null
-                  && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1702).getItemId()) {
-                  target = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1702);
+               if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1600) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1600).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1600);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1601) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1601).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1601);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1602) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1602).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1602);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1603) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1603).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1603);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1604) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1604).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1604);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1605) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1605).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1605);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1700) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1700).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1700);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1701) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1701).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1701);
+               } else if (this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1702) != null
+                     && source.getItemId() == this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) -1702).getItemId()) {
+                  target = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1702);
                }
 
                if (target != null
-                  && (
-                     GameConstants.isAuthenticSymbol(target.getItemId())
-                        ? GameConstants.getExpNeededForAuthenticSymbol(target.getArcLevel()) <= target.getArcEXP()
-                        : GameConstants.getExpNeededForArcaneSymbol(target.getArcLevel()) <= target.getArcEXP()
-                  )) {
+                     && (GameConstants.isAuthenticSymbol(target.getItemId())
+                           ? GameConstants.getExpNeededForAuthenticSymbol(target.getArcLevel()) <= target.getArcEXP()
+                           : GameConstants.getExpNeededForArcaneSymbol(target.getArcLevel()) <= target.getArcEXP())) {
                   break;
                }
             }
@@ -3177,56 +3231,56 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public final void symbolExp(int src, boolean multi) {
       try {
-         Equip source = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)src);
+         Equip source = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) src);
          Equip target = null;
          if (source == null) {
             this.c.getSession().writeAndFlush(CWvsContext.enableActions(this.c.getPlayer()));
             return;
          }
 
-         Item temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1600);
+         Item temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1600);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1601);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1601);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1602);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1602);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1603);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1603);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1604);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1604);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1605);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1605);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1700);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1700);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1701);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1701);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
-         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-1702);
+         temp = this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -1702);
          if (temp != null && source.getItemId() == temp.getItemId()) {
-            target = (Equip)temp;
+            target = (Equip) temp;
          }
 
          if (target == null) {
@@ -3236,7 +3290,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          if (GameConstants.isAuthenticSymbol(target.getItemId())) {
             if (target.getArcLevel() >= 11) {
-               this.c.getPlayer().dropMessage(1, "더 이상 강화할 수 없습니다.");
+               this.c.getPlayer().dropMessage(1, "You cannot upgrade this any further.");
                this.c.getSession().writeAndFlush(CWvsContext.enableActions(this.c.getPlayer()));
                return;
             }
@@ -3247,14 +3301,16 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          this.c.getSession().writeAndFlush(CWvsContext.InventoryPacket.mergeArcaneSymbol(target, source));
-         int exp = Math.min(target.getArcEXP() + source.getArcEXP() + 1, GameConstants.getExpNeededForArcaneSymbol(target.getArcLevel()));
+         int exp = Math.min(target.getArcEXP() + source.getArcEXP() + 1,
+               GameConstants.getExpNeededForArcaneSymbol(target.getArcLevel()));
          if (GameConstants.isAuthenticSymbol(target.getItemId())) {
-            exp = Math.min(target.getArcEXP() + source.getArcEXP() + 1, GameConstants.getExpNeededForAuthenticSymbol(target.getArcLevel()));
+            exp = Math.min(target.getArcEXP() + source.getArcEXP() + 1,
+                  GameConstants.getExpNeededForAuthenticSymbol(target.getArcLevel()));
          }
 
          target.setArcEXP(exp);
          if (!multi) {
-            this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).removeSlot((short)src);
+            this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).removeSlot((short) src);
             List<Item> removes = new ArrayList<>();
 
             for (Item item : this.c.getPlayer().getSymbols()) {
@@ -3263,7 +3319,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                }
             }
 
-            removes.stream().collect(Collectors.toList()).forEach(itemx -> this.c.getPlayer().getSymbols().remove(itemx));
+            removes.stream().collect(Collectors.toList())
+                  .forEach(itemx -> this.c.getPlayer().getSymbols().remove(itemx));
          }
 
          this.c.getSession().writeAndFlush(CWvsContext.InventoryPacket.updateArcaneSymbol(target));
@@ -3300,25 +3357,27 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public final boolean increaseStorageSlots(int slot) {
       if (this.getPlayer().getStorage().getSlots() + slot < 152) {
-         this.getPlayer().getStorage().increaseSlots((byte)slot);
-         this.getPlayer().dropMessage(1, "창고슬롯을 늘렸습니다. 현재 창고 슬롯은 " + this.getPlayer().getStorage().getSlots() + "칸 입니다.");
+         this.getPlayer().getStorage().increaseSlots((byte) slot);
+         this.getPlayer().dropMessage(1,
+               "Storage slots increased. Current storage slots: " + this.getPlayer().getStorage().getSlots() + ".");
          return true;
       } else {
-         this.getPlayer().dropMessage(1, "슬롯을 더 이상 늘릴 수 없습니다.");
+         this.getPlayer().dropMessage(1, "You cannot increase slots any further.");
          return false;
       }
    }
 
    public final boolean increasePendantSlots(int days) {
       MapleQuestStatus marr = this.c.getPlayer().getQuestNoAdd(MapleQuest.getInstance(122700));
-      if (marr != null && marr.getCustomData() != null && Long.parseLong(marr.getCustomData()) >= System.currentTimeMillis()) {
-         this.getPlayer().dropMessage(1, "이미 펜던트 늘리기가 적용중입니다.");
+      if (marr != null && marr.getCustomData() != null
+            && Long.parseLong(marr.getCustomData()) >= System.currentTimeMillis()) {
+         this.getPlayer().dropMessage(1, "Pendant slot expansion is already active.");
          return false;
       } else {
          this.getPlayer()
-            .getQuestIfNullAdd(MapleQuest.getInstance(122700))
-            .setCustomData(String.valueOf(System.currentTimeMillis() + days * 24L * 60L * 60000L));
-         this.c.getSession().writeAndFlush(CSPacket.buyPendantSlot((short)30));
+               .getQuestIfNullAdd(MapleQuest.getInstance(122700))
+               .setCustomData(String.valueOf(System.currentTimeMillis() + days * 24L * 60L * 60000L));
+         this.c.getSession().writeAndFlush(CSPacket.buyPendantSlot((short) 30));
          return true;
       }
    }
@@ -3329,13 +3388,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       } else {
          this.getPlayer().getDamageSkinSaveInfo().addSlotCount(slot);
          this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.DAMAGE_SKIN_SAVE.getFlag());
-         this.getPlayer().updateOneInfo(13190, "slotCount", String.valueOf(this.getPlayer().getDamageSkinSaveInfo().getSlotCount()));
+         this.getPlayer().updateOneInfo(13190, "slotCount",
+               String.valueOf(this.getPlayer().getDamageSkinSaveInfo().getSlotCount()));
          return true;
       }
    }
 
    public final boolean setExGradeOption(int itemSlot, int lines, int level, int... source) {
-      Item item = this.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)itemSlot);
+      Item item = this.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) itemSlot);
       if (item == null) {
          return false;
       } else {
@@ -3368,7 +3428,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.c.getPlayer().addWeeklyQuest(wq);
       }
 
-      this.c.getPlayer().send(CField.addPopupSay(9010060, 15000, "#e[익스트림 주간 퀘스트]#n\r\n\r\n" + msg + "\r\n퀘스트가 등록되었습니다.", ""));
+      this.c.getPlayer()
+            .send(CField.addPopupSay(9010060, 15000, "#e[익스트림 주간 퀘스트]#n\r\n\r\n" + msg + "\r\n퀘스트가 등록되었습니다.", ""));
    }
 
    public final void addPopupSay(String title, String message, int npc, int duration) {
@@ -3386,7 +3447,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    public final void completeWeeklyQuest(int questID) {
       this.c.getPlayer().getWeeklyQuest().stream().filter(q -> q.getQuestID() == questID).forEach(q -> {
          if (q.getType() == 0) {
-            this.c.getPlayer().gainItem(q.getNeedID(), (short)(-q.getNeedQuantity()), false, -1L, "");
+            this.c.getPlayer().gainItem(q.getNeedID(), (short) (-q.getNeedQuantity()), false, -1L, "");
          }
       });
    }
@@ -3406,24 +3467,24 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void sendUIJobChange() {
       if (this.c.getPlayer().getJob() / 1000 != 0) {
-         this.c.getPlayer().dropMessage(1, "모험가 직업군만 자유전직이 가능합니다.");
+         this.c.getPlayer().dropMessage(1, "Only Explorers can change jobs freely.");
       } else {
          for (VCore core : this.c.getPlayer().getVCoreSkillsNoLock()) {
             if (core.getState() == 2) {
-               this.c.getPlayer().dropMessage(1, "V스킬 코어를 전부 장착해제 후 시도해주시기 바랍니다.");
+               this.c.getPlayer().dropMessage(1, "Please unequip all V Matrix cores before attempting.");
                return;
             }
          }
 
          Equip test2 = null;
          if (this.c.getPlayer().getJob() / 100 == 4) {
-            test2 = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-10);
+            test2 = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
          }
 
          if (test2 == null) {
             this.c.getPlayer().send(CField.UIPacket.openUI(164));
          } else {
-            this.c.getPlayer().dropMessage(1, "도적 직업군은 보조무기/방패/블레이드를 해제하셔야 합니다.");
+            this.c.getPlayer().dropMessage(1, "Thieves must unequip secondary weapons/shields/blades.");
          }
       }
    }
@@ -3483,8 +3544,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.c.getSession().writeAndFlush(CField.playSE(path));
    }
 
-   public void spineEffect(String path, String animation, String unk1, int onoff, int loop, int postRender, int endDelay) {
-      this.c.getSession().writeAndFlush(CField.EffectPacket.spineEffect(path, animation, 0, 0, 1, 0, "", unk1, 0, 0, 0));
+   public void spineEffect(String path, String animation, String unk1, int onoff, int loop, int postRender,
+         int endDelay) {
+      this.c.getSession()
+            .writeAndFlush(CField.EffectPacket.spineEffect(path, animation, 0, 0, 1, 0, "", unk1, 0, 0, 0));
    }
 
    public void environmentChange(int mode, String env, int option) {
@@ -3495,7 +3558,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.c.getSession().writeAndFlush(CField.getOnOffFade(term, key, unk));
    }
 
-   public void getOnOff(int term, String key, String path, int rx, int ry, int rz, int org, int postRender, int unk1, int unk2) {
+   public void getOnOff(int term, String key, String path, int rx, int ry, int rz, int org, int postRender, int unk1,
+         int unk2) {
       this.c.getSession().writeAndFlush(CField.getOnOff(term, key, path, rx, ry, rz, org, postRender, unk1, unk2));
    }
 
@@ -3595,30 +3659,33 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       StringBuilder sb = new StringBuilder(
-         "페어리 브로의 황금상자 사용 (당첨 아이템 : "
-            + (itemID == 0 ? "꽝" : MapleItemInformationProvider.getInstance().getName(itemID))
-            + ", 닉네임 : "
-            + this.getPlayer().getName()
-            + ")"
-      );
+            "페어리 브로의 황금상자 사용 (당첨 아이템 : "
+                  + (itemID == 0 ? "꽝" : MapleItemInformationProvider.getInstance().getName(itemID))
+                  + ", 닉네임 : "
+                  + this.getPlayer().getName()
+                  + ")");
       LoggingManager.putLog(new ConsumeLog(this.c.getPlayer(), 1, sb));
       String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
-      this.getPlayer().dropMessage(5, "4,000 " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 잃었습니다.");
+      this.getPlayer().dropMessage(5, "You have lost 4,000 " + cashName + ".");
       if (itemID == 0) {
-         this.sendSimple("아쉽게도 #b페어리 브로의 황금 상자#k에서 아무런 아이템도 획득하지 못했어요.. 다음에 더 좋은 결과가 있길 바랄게요 !\r\n\r\n#L0#한 번 더 개봉하겠습니다.#l");
+         this.sendSimple(
+               "Unfortunately, you didn't get anything from the #bFairy Bro's Golden Box#k... Better luck next time!\r\n\r\n#L0#Open again.#l");
       } else {
-         this.getPlayer().gainItem(itemID, itemQuantity, false, 0L, "페어리 브로의 황금상자에서 얻은 아이템");
-         this.sendSimple("축하합니다! #b페어리 브로의 황금 상자#k에서 #b#i" + itemID + "##z" + itemID + "# " + itemQuantity + "개#k를 획득하였습니다!!\r\n\r\n#L0#한 번 더 개봉하겠습니다.#l");
+         this.getPlayer().gainItem(itemID, itemQuantity, false, 0L, "Item obtained from Fairy Bro's Golden Box");
+         this.sendSimple("Congratulations! You obtained #b#i" + itemID + "##z" + itemID + "# " + itemQuantity
+               + " #kfrom #bFairy Bro's Golden Box#k!!\r\n\r\n#L0#Open again.#l");
          if (broadcast) {
-            Item item = new Item(itemID, (short)1, (short)itemQuantity, 0);
+            Item item = new Item(itemID, (short) 1, (short) itemQuantity, 0);
             if (itemID / 1000000 == 1) {
                Center.Broadcast.broadcastGachaponMessage(
-                  this.getPlayer().getName() + "님이 페어리 브로의 황금상자에서 " + MapleItemInformationProvider.getInstance().getName(itemID) + "을(를) 획득하였습니다.",
-                  5060048,
-                  item
-               );
+                     this.getPlayer().getName() + " obtained "
+                           + MapleItemInformationProvider.getInstance().getName(itemID)
+                           + " from Fairy Bro's Golden Box.",
+                     5060048,
+                     item);
             } else {
-               Center.Broadcast.broadcastGachaponMessage(this.getPlayer().getName() + "님이 페어리 브로의 황금상자에서 {" + itemID + "}을(를) 획득하였습니다.", 5060048, item);
+               Center.Broadcast.broadcastGachaponMessage(
+                     this.getPlayer().getName() + "님이 페어리 브로의 황금상자에서 {" + itemID + "}을(를) 획득하였습니다.", 5060048, item);
             }
          }
       }
@@ -3646,7 +3713,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          for (WeeklyItemEntry entry : WeeklyItemManager.getBonusItems()) {
-            text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity() + "개#k - #e재고";
+            text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity()
+                  + "개#k - #e재고";
             if (entry.getRemainCount() == 0) {
                text = text + " 없음";
             } else {
@@ -3663,7 +3731,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          for (WeeklyItemEntry entry : WeeklyItemManager.getExtremeItems()) {
-            text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity() + "개#k - #e재고";
+            text = text + "  #b#i" + entry.getItemID() + "##z" + entry.getItemID() + "# " + entry.getItemQuantity()
+                  + "개#k - #e재고";
             if (entry.getRemainCount() == 0) {
                text = text + " 없음";
             } else {
@@ -3674,7 +3743,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          if (WeeklyItemManager.canBuyWeeklyItems()) {
-            text = text + "\r\n#L0##b#e페어리 브로의 황금상자#n를 개봉해보고 싶어요! #e#k(4,000 " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + ")#n#l\r\n";
+            text = text + "\r\n#L0##b#e페어리 브로의 황금상자#n를 개봉해보고 싶어요! #e#k(4,000 "
+                  + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + ")#n#l\r\n";
          } else {
             text = text + "\r\n#b현재 모든 한정 수량 아이템이 매진되었습니다.";
          }
@@ -3686,7 +3756,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void showDojangRanking() {
       if (!this.canEnterDojang()) {
-         this.sendNext("#e#b토요일 23시 40분#k#n부터 #e#b일요일 00시 04분#k#n까지 #b랭킹 집계#k를 위해 지금은 랭킹을 볼 수 없어. #b#e00시 05#n#k분 이후에 다시 시도해줘.");
+         this.sendNext(
+               "#e#b토요일 23시 40분#k#n부터 #e#b일요일 00시 04분#k#n까지 #b랭킹 집계#k를 위해 지금은 랭킹을 볼 수 없어. #b#e00시 05#n#k분 이후에 다시 시도해줘.");
          this.dispose();
       } else {
          this.c.getPlayer().send(CField.getMulungDojangRanking(this.c.getPlayer()));
@@ -3762,8 +3833,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.c.getPlayer().updateOneInfo(1234590, "dojang_point_get", "1");
             this.c.getPlayer().dropMessage(5, point + "포인트를 획득하였습니다.");
             this.c
-               .getPlayer()
-               .updateOneInfo(42003, "point", String.valueOf(Math.min(500000, this.c.getPlayer().getOneInfoQuestInteger(42003, "point") + point)));
+                  .getPlayer()
+                  .updateOneInfo(42003, "point", String
+                        .valueOf(Math.min(500000, this.c.getPlayer().getOneInfoQuestInteger(42003, "point") + point)));
             String text = "너는 지난주 무릉도장";
             if (type == 0) {
                text = text + "(챌린지)";
@@ -3830,7 +3902,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void bigScriptProgressMessage(String message) {
-      this.c.getPlayer().send(CField.UIPacket.sendBigScriptProgressMessage(message, FontType.NanumGothic, FontColorType.Yellow));
+      this.c.getPlayer()
+            .send(CField.UIPacket.sendBigScriptProgressMessage(message, FontType.NanumGothic, FontColorType.Yellow));
    }
 
    public void bigScriptProgressMessage(String message, FontType fontType, FontColorType fontColorType) {
@@ -3997,7 +4070,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          zellerYear = year;
       }
 
-      int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100) + zellerYear / 400;
+      int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100)
+            + zellerYear / 400;
       int dayOfWeek = computation % 7;
       return (dayOfWeek != 0 || hours != 23 || minutes < 40) && (dayOfWeek != 1 || hours != 0 || minutes >= 5);
    }
@@ -4006,36 +4080,35 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       List<Integer> blockedList = new ArrayList<>();
       MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
       this.c
-         .getPlayer()
-         .getInventory(MapleInventoryType.EQUIPPED)
-         .list()
-         .forEach(
-            item -> {
-               if (!ii.isCash(item.getItemId())) {
-                  if (item.getPosition() != -11
-                     && item.getPosition() != -10
-                     && (item.getPosition() > -1600 || item.getPosition() < -1700)
-                     && item.getPosition() != -117
-                     && item.getPosition() != -122
-                     && item.getPosition() != -131) {
-                     blockedList.add(item.getItemId());
-                  } else if (item.getPosition() == -11) {
-                     boolean find = false;
+            .getPlayer()
+            .getInventory(MapleInventoryType.EQUIPPED)
+            .list()
+            .forEach(
+                  item -> {
+                     if (!ii.isCash(item.getItemId())) {
+                        if (item.getPosition() != -11
+                              && item.getPosition() != -10
+                              && (item.getPosition() > -1600 || item.getPosition() < -1700)
+                              && item.getPosition() != -117
+                              && item.getPosition() != -122
+                              && item.getPosition() != -131) {
+                           blockedList.add(item.getItemId());
+                        } else if (item.getPosition() == -11) {
+                           boolean find = false;
 
-                     for (int ix : this.bmWeapons) {
-                        if (item.getItemId() == ix) {
-                           find = true;
-                           break;
+                           for (int ix : this.bmWeapons) {
+                              if (item.getItemId() == ix) {
+                                 find = true;
+                                 break;
+                              }
+                           }
+
+                           if (!find) {
+                              blockedList.add(item.getItemId());
+                           }
                         }
                      }
-
-                     if (!find) {
-                        blockedList.add(item.getItemId());
-                     }
-                  }
-               }
-            }
-         );
+                  });
       if (blockedList.size() <= 0) {
          return true;
       } else {
@@ -4057,7 +4130,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       for (Item item : new ArrayList<>(this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).list())) {
          for (int i : this.bmWeapons) {
             if (item.getItemId() == i) {
-               equip = (Equip)item;
+               equip = (Equip) item;
                break;
             }
          }
@@ -4067,7 +4140,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          for (Item item : new ArrayList<>(this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).list())) {
             for (int ix : this.bmWeapons) {
                if (item.getItemId() == ix) {
-                  equip = (Equip)item;
+                  equip = (Equip) item;
                   break;
                }
             }
@@ -4080,7 +4153,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return -1;
       } else {
          int weaponID = equip.getItemId() + 1;
-         Equip genesis = (Equip)ii.getEquipById(weaponID);
+         Equip genesis = (Equip) ii.getEquipById(weaponID);
          if (genesis == null) {
             this.sendNext("알 수 없는 오류가 발생했습니다.");
             this.dispose();
@@ -4089,7 +4162,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             if (BonusStat.resetBonusStat(genesis, BonusStatPlaceType.LevelledRebirthFlame)) {
             }
 
-            MapleInventoryManipulator.removeById(this.c, MapleInventoryType.getByType(equip.getType()), equip.getItemId(), 1, false, false);
+            MapleInventoryManipulator.removeById(this.c, MapleInventoryType.getByType(equip.getType()),
+                  equip.getItemId(), 1, false, false);
             MapleInventoryManipulator.addbyItem(this.c, genesis);
             return genesis.getItemId();
          }
@@ -4103,7 +4177,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       for (Item item : new ArrayList<>(this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).list())) {
          for (int i : this.bmWeapons) {
             if (item.getItemId() == i + 1) {
-               equip = (Equip)item;
+               equip = (Equip) item;
                break;
             }
          }
@@ -4113,7 +4187,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          for (Item item : new ArrayList<>(this.c.getPlayer().getInventory(MapleInventoryType.EQUIP).list())) {
             for (int ix : this.bmWeapons) {
                if (item.getItemId() == ix + 1) {
-                  equip = (Equip)item;
+                  equip = (Equip) item;
                   break;
                }
             }
@@ -4125,17 +4199,17 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.dispose();
       } else {
          int weaponID = equip.getItemId();
-         Equip genesis = (Equip)ii.getEquipById(weaponID);
+         Equip genesis = (Equip) ii.getEquipById(weaponID);
          if (genesis == null) {
             this.sendNext("알 수 없는 오류가 발생했습니다.");
             this.dispose();
          } else {
             int flag = EquipEnchantMan.filterForJobWeapon(weaponID);
-            ItemUpgradeFlag[] flagArray = new ItemUpgradeFlag[]{ItemUpgradeFlag.INC_PAD, ItemUpgradeFlag.INC_MAD};
-            ItemUpgradeFlag[] flagArray2 = new ItemUpgradeFlag[]{
-               ItemUpgradeFlag.INC_STR, ItemUpgradeFlag.INC_DEX, ItemUpgradeFlag.INC_LUK, ItemUpgradeFlag.INC_MHP
+            ItemUpgradeFlag[] flagArray = new ItemUpgradeFlag[] { ItemUpgradeFlag.INC_PAD, ItemUpgradeFlag.INC_MAD };
+            ItemUpgradeFlag[] flagArray2 = new ItemUpgradeFlag[] {
+                  ItemUpgradeFlag.INC_STR, ItemUpgradeFlag.INC_DEX, ItemUpgradeFlag.INC_LUK, ItemUpgradeFlag.INC_MHP
             };
-            ItemUpgradeFlag[] flagArray3 = new ItemUpgradeFlag[]{ItemUpgradeFlag.INC_INT};
+            ItemUpgradeFlag[] flagArray3 = new ItemUpgradeFlag[] { ItemUpgradeFlag.INC_INT };
             List<EquipEnchantScroll> source = new ArrayList<>();
 
             for (ItemUpgradeFlag f : flagArray) {
@@ -4145,8 +4219,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   option.setOption(f.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
                   if (f2.check(flag)) {
                      option.setOption(
-                        f2.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3) * (f2 == ItemUpgradeFlag.INC_MHP ? 50 : 1)
-                     );
+                           f2.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3)
+                                 * (f2 == ItemUpgradeFlag.INC_MHP ? 50 : 1));
                      if (option.flag > 0) {
                         source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
                      }
@@ -4157,40 +4231,50 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             if (equip.getItemId() == 1242140) {
                source.clear();
                EquipEnchantOption option = new EquipEnchantOption();
-               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
-               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(),
+                     EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(),
+                     EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
                source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
             }
 
             if (equip.getItemId() == 1232121) {
                source.clear();
                EquipEnchantOption option = new EquipEnchantOption();
-               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
-               option.setOption(ItemUpgradeFlag.INC_MHP.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3) * 50);
+               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(),
+                     EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_MHP.getValue(),
+                     EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3) * 50);
                source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
             }
 
             if (equip.getItemId() == 1292021) {
                source.clear();
                EquipEnchantOption option = new EquipEnchantOption();
-               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
-               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(),
+                     EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(),
+                     EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
                source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
             }
 
             if (equip.getItemId() == 1362148) {
                source.clear();
                EquipEnchantOption option = new EquipEnchantOption();
-               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
-               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(),
+                     EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(),
+                     EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
                source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
             }
 
             if (equip.getItemId() == 1362148) {
                source.clear();
                EquipEnchantOption option = new EquipEnchantOption();
-               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
-               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(), EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_PAD.getValue(),
+                     EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
+               option.setOption(ItemUpgradeFlag.INC_LUK.getValue(),
+                     EquipEnchantMan.getIncPrimaryStatWeapon(ii.getReqLevel(weaponID), 3));
                source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
             }
 
@@ -4205,7 +4289,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                } else {
                   Equip zeroEquip = null;
                   if (GameConstants.isZero(this.c.getPlayer().getJob())) {
-                     zeroEquip = (Equip)this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)(equip.getPosition() == -11 ? -10 : -11));
+                     zeroEquip = (Equip) this.c.getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                           .getItem((short) (equip.getPosition() == -11 ? -10 : -11));
                   }
 
                   for (int ixx = 0; ixx < 8; ixx++) {
@@ -4216,18 +4301,20 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   genesis.setItemState(equip.getItemState() | ItemStateFlag.AMAZING_HYPER_UPGRADE_CHECKED.getValue());
                   byte grade = genesis.getAdditionalGrade();
 
-                  genesis.setLines((byte)3);
-                  genesis.setState((byte)19);
+                  genesis.setLines((byte) 3);
+                  genesis.setState((byte) 19);
 
                   for (int ixx = 0; ixx < 3; ixx++) {
                      int optionGrade = 3;
-                     int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(false, ixx), GradeRandomOption.Black);
+                     int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade,
+                           genesis.getPotentials(false, ixx), GradeRandomOption.Black);
                      genesis.setPotentialOption(ixx, option);
                   }
 
                   for (int ixx = 0; ixx < 3; ixx++) {
                      int optionGrade = 2;
-                     int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(true, ixx), GradeRandomOption.Additional);
+                     int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade,
+                           genesis.getPotentials(true, ixx), GradeRandomOption.Additional);
                      genesis.setPotentialOption(ixx + 3, option);
                   }
 
@@ -4249,12 +4336,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   }
 
                   MapleInventoryManipulator.removeFromSlot(
-                     this.c, MapleInventoryType.getByType(equip.getType()), equip.getPosition(), equip.getQuantity(), false, false
-                  );
+                        this.c, MapleInventoryType.getByType(equip.getType()), equip.getPosition(), equip.getQuantity(),
+                        false, false);
                   MapleInventoryManipulator.addbyItem(this.c, genesis);
                   Center.Broadcast.broadcastMessage(
-                     CWvsContext.serverNotice(6, this.c.getPlayer().getName() + "님이 봉인된 힘을 해방하고 검은 마법사의 힘이 담긴 제네시스 무기의 주인이 되었습니다.")
-                  );
+                        CWvsContext.serverNotice(6,
+                              this.c.getPlayer().getName() + "님이 봉인된 힘을 해방하고 검은 마법사의 힘이 담긴 제네시스 무기의 주인이 되었습니다."));
                   this.dispose();
                }
             }
@@ -4288,10 +4375,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.dispose();
       } else {
          String v0 = "#e<제네시스 무기>#n\r\n제네시스 무기가 강력한 힘으로 가득 찼습니다.\r\n제네시스 무기에 잠재된 힘을 완전히 깨울 수 있을 것 같은데, 해방을 시작해 보시겠습니까?\r\n\r\n#r- 15% 주문서로 모든 강화 완료\r\n- 스타포스 22성\r\n- 유니크 잠재능력 보유\r\n- 에픽 에디셔널 잠재능력 보유\r\n- 주문서/스타포스 강화 불가\r\n- 추가옵션/소울은 완전 해방 시 초기화\r\n#b#L0##i"
-            + (weapon.get() + 1)
-            + "# #z"
-            + (weapon.get() + 1)
-            + "##l";
+               + (weapon.get() + 1)
+               + "# #z"
+               + (weapon.get() + 1)
+               + "##l";
          this.sendSimple(v0);
       }
    }
@@ -4307,13 +4394,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          for (Entry<Integer, PraisePoint> entry : ranks.entrySet()) {
             v0 = v0
-               + "#e["
-               + entry.getKey()
-               + "위]#n #b"
-               + entry.getValue().getName()
-               + "#k, 누적 포인트 : "
-               + nf.format((long)entry.getValue().getTotalPoint())
-               + "\r\n";
+                  + "#e["
+                  + entry.getKey()
+                  + "위]#n #b"
+                  + entry.getValue().getName()
+                  + "#k, 누적 포인트 : "
+                  + nf.format((long) entry.getValue().getTotalPoint())
+                  + "\r\n";
             if (++count >= 30) {
                break;
             }
@@ -4426,7 +4513,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          zellerYear = year;
       }
 
-      int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100) + zellerYear / 400;
+      int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100)
+            + zellerYear / 400;
       int dayOfWeek = computation % 7;
       return (day != 1 || hours != 0 || minutes < 0) && (day != 1 || hours != 0 || minutes >= 5);
    }
@@ -4442,7 +4530,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (!maps.isEmpty()) {
-         List<Field> targets = maps.stream().sorted((a, b) -> a.getCharactersSize() - b.getCharactersSize()).collect(Collectors.toList());
+         List<Field> targets = maps.stream().sorted((a, b) -> a.getCharactersSize() - b.getCharactersSize())
+               .collect(Collectors.toList());
          if (targets != null && !targets.isEmpty()) {
             return targets.get(0).getChannel();
          }
@@ -4462,7 +4551,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (!maps.isEmpty()) {
-         List<Field> targets = maps.stream().sorted((a, b) -> a.getCharactersSize() - b.getCharactersSize()).collect(Collectors.toList());
+         List<Field> targets = maps.stream().sorted((a, b) -> a.getCharactersSize() - b.getCharactersSize())
+               .collect(Collectors.toList());
          if (targets != null && !targets.isEmpty()) {
             return targets.get(0).getChannel();
          }
@@ -4483,8 +4573,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          int month = Integer.parseInt(dates[1]);
          int day = Integer.parseInt(dates[2]);
          if (year == 2022
-            && (month == 1 || month == 2)
-            && (day == 28 || day == 29 || day == 30 || day == 31 || day == 1 || day == 2 || day == 3 || day == 4 || day == 5 || day == 6)) {
+               && (month == 1 || month == 2)
+               && (day == 28 || day == 29 || day == 30 || day == 31 || day == 1 || day == 2 || day == 3 || day == 4
+                     || day == 5 || day == 6)) {
             PreparedStatement ps = null;
             ResultSet rs = null;
 
@@ -4536,15 +4627,15 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int type = 0;
       boolean first = true;
       if (!point.contains("초심자")
-         && !point.contains("설날")
-         && !point.contains("어린이날")
-         && !point.contains("추석")
-         && !point.contains("3주년")
-         && !point.contains("크리스마스")
-         && !point.contains("가정의달")
-         && !point.contains("상시패키지")
-         && !point.contains("2023")
-         && !point.contains("5월")) {
+            && !point.contains("설날")
+            && !point.contains("어린이날")
+            && !point.contains("추석")
+            && !point.contains("3주년")
+            && !point.contains("크리스마스")
+            && !point.contains("가정의달")
+            && !point.contains("상시패키지")
+            && !point.contains("2023")
+            && !point.contains("5월")) {
          try {
             p = Integer.parseInt(point);
          } catch (NumberFormatException var86) {
@@ -4605,48 +4696,48 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             while (rs.next()) {
                String name = rs.getString("name");
                if (point.contains("초심자") && name.equals("초심자패키지")
-                  || point.contains("설날A") && name.equals("설날A")
-                  || point.contains("설날B") && name.equals("설날B")
-                  || point.contains("설날C") && name.equals("설날C")
-                  || point.contains("가정의달C") && name.equals("가정의달C")
-                  || point.contains("가정의달B") && name.equals("가정의달B")
-                  || point.contains("가정의달A") && name.equals("가정의달A")
-                  || point.contains("가정의달S") && name.equals("가정의달S")
-                  || point.contains("가정의달SS") && name.equals("가정의달SS")
-                  || point.contains("가정의달SSS") && name.equals("가정의달SSS")
-                  || point.equals("추석패키지I") && name.equals("추석패키지I")
-                  || point.equals("추석패키지II") && name.equals("추석패키지II")
-                  || point.equals("추석패키지III") && name.equals("추석패키지III")
-                  || point.equals("추석패키지IV") && name.equals("추석패키지IV")
-                  || point.equals("3주년패키지I") && name.equals("3주년패키지I")
-                  || point.equals("3주년패키지II") && name.equals("3주년패키지II")
-                  || point.equals("3주년패키지III") && name.equals("3주년패키지III")
-                  || point.equals("크리스마스패키지1") && name.equals("크리스마스패키지1")
-                  || point.equals("크리스마스패키지2") && name.equals("크리스마스패키지2")
-                  || point.equals("크리스마스패키지3") && name.equals("크리스마스패키지3")
-                  || point.equals("크리스마스패키지4") && name.equals("크리스마스패키지4")
-                  || point.equals("2023패키지1") && name.equals("2023패키지1")
-                  || point.equals("2023패키지2") && name.equals("2023패키지2")
-                  || point.equals("2023패키지3") && name.equals("2023패키지3")
-                  || point.equals("2023패키지4") && name.equals("2023패키지4")
-                  || point.equals("2023패키지5") && name.equals("2023패키지5")
-                  || point.equals("2023패키지6") && name.equals("2023패키지6")
-                  || point.equals("2023패키지7") && name.equals("2023패키지7")
-                  || point.equals("2023패키지8") && name.equals("2023패키지8")
-                  || point.equals("2023패키지9") && name.equals("2023패키지9")
-                  || point.equals("2023패키지10") && name.equals("2023패키지10")
-                  || point.equals("2023패키지11") && name.equals("2023패키지11")
-                  || point.equals("5월패키지1") && name.equals("5월패키지1")
-                  || point.equals("5월패키지2") && name.equals("5월패키지2")
-                  || point.equals("5월패키지3") && name.equals("5월패키지3")
-                  || point.equals("5월패키지4") && name.equals("5월패키지4")
-                  || point.equals("5월패키지5") && name.equals("5월패키지5")
-                  || point.equals("5월패키지6") && name.equals("5월패키지6")
-                  || point.equals("5월패키지7") && name.equals("5월패키지7")
-                  || point.equals("5월패키지8") && name.equals("5월패키지8")
-                  || point.equals("5월패키지9") && name.equals("5월패키지9")
-                  || point.equals("5월패키지10") && name.equals("5월패키지10")
-                  || point.equals("5월패키지11") && name.equals("5월패키지11")) {
+                     || point.contains("설날A") && name.equals("설날A")
+                     || point.contains("설날B") && name.equals("설날B")
+                     || point.contains("설날C") && name.equals("설날C")
+                     || point.contains("가정의달C") && name.equals("가정의달C")
+                     || point.contains("가정의달B") && name.equals("가정의달B")
+                     || point.contains("가정의달A") && name.equals("가정의달A")
+                     || point.contains("가정의달S") && name.equals("가정의달S")
+                     || point.contains("가정의달SS") && name.equals("가정의달SS")
+                     || point.contains("가정의달SSS") && name.equals("가정의달SSS")
+                     || point.equals("추석패키지I") && name.equals("추석패키지I")
+                     || point.equals("추석패키지II") && name.equals("추석패키지II")
+                     || point.equals("추석패키지III") && name.equals("추석패키지III")
+                     || point.equals("추석패키지IV") && name.equals("추석패키지IV")
+                     || point.equals("3주년패키지I") && name.equals("3주년패키지I")
+                     || point.equals("3주년패키지II") && name.equals("3주년패키지II")
+                     || point.equals("3주년패키지III") && name.equals("3주년패키지III")
+                     || point.equals("크리스마스패키지1") && name.equals("크리스마스패키지1")
+                     || point.equals("크리스마스패키지2") && name.equals("크리스마스패키지2")
+                     || point.equals("크리스마스패키지3") && name.equals("크리스마스패키지3")
+                     || point.equals("크리스마스패키지4") && name.equals("크리스마스패키지4")
+                     || point.equals("2023패키지1") && name.equals("2023패키지1")
+                     || point.equals("2023패키지2") && name.equals("2023패키지2")
+                     || point.equals("2023패키지3") && name.equals("2023패키지3")
+                     || point.equals("2023패키지4") && name.equals("2023패키지4")
+                     || point.equals("2023패키지5") && name.equals("2023패키지5")
+                     || point.equals("2023패키지6") && name.equals("2023패키지6")
+                     || point.equals("2023패키지7") && name.equals("2023패키지7")
+                     || point.equals("2023패키지8") && name.equals("2023패키지8")
+                     || point.equals("2023패키지9") && name.equals("2023패키지9")
+                     || point.equals("2023패키지10") && name.equals("2023패키지10")
+                     || point.equals("2023패키지11") && name.equals("2023패키지11")
+                     || point.equals("5월패키지1") && name.equals("5월패키지1")
+                     || point.equals("5월패키지2") && name.equals("5월패키지2")
+                     || point.equals("5월패키지3") && name.equals("5월패키지3")
+                     || point.equals("5월패키지4") && name.equals("5월패키지4")
+                     || point.equals("5월패키지5") && name.equals("5월패키지5")
+                     || point.equals("5월패키지6") && name.equals("5월패키지6")
+                     || point.equals("5월패키지7") && name.equals("5월패키지7")
+                     || point.equals("5월패키지8") && name.equals("5월패키지8")
+                     || point.equals("5월패키지9") && name.equals("5월패키지9")
+                     || point.equals("5월패키지10") && name.equals("5월패키지10")
+                     || point.equals("5월패키지11") && name.equals("5월패키지11")) {
                   find = true;
                }
             }
@@ -4825,8 +4916,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          byte var108;
          try (Connection con = DBConnection.getConnection()) {
             ps = con.prepareStatement(
-               "INSERT INTO `donation_request` (`account_name`, `player_name`, `real_name`, `point`, `type`, `status`) VALUES (?, ?, ?, ?, ?, ?)"
-            );
+                  "INSERT INTO `donation_request` (`account_name`, `player_name`, `real_name`, `point`, `type`, `status`) VALUES (?, ?, ?, ?, ?, ?)");
             ps.setString(1, this.getClient().getAccountName());
             ps.setString(2, this.getPlayer().getName());
             ps.setString(3, realName);
@@ -4925,7 +5015,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          ps.setString(2, this.getClient().getAccountName());
          rs = ps.executeQuery();
          String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#")
-            + "다음 신청 내역을 취소하시겠습니까? 입금 후 취소 시 취소건 처리에 대해 문의해주셔야 하고 시간이 소요될 수 있으므로 반드시 입금 전 취소해주시기 바랍니다.\r\n\r\n";
+               + "다음 신청 내역을 취소하시겠습니까? 입금 후 취소 시 취소건 처리에 대해 문의해주셔야 하고 시간이 소요될 수 있으므로 반드시 입금 전 취소해주시기 바랍니다.\r\n\r\n";
 
          while (rs.next()) {
             int status = rs.getInt("status");
@@ -4990,10 +5080,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          boolean find = false;
 
          String msg;
-         for (msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<신청한 " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + " 충전 신청 내역>#n\r\n";
-            rs.next();
-            find = true
-         ) {
+         for (msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<신청한 " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트")
+               + " 충전 신청 내역>#n\r\n"; rs.next(); find = true) {
             id = rs.getInt("id");
             int status = rs.getInt("status");
             if (status == 0) {
@@ -5072,7 +5160,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          ps.setString(1, this.getClient().getAccountName());
          rs = ps.executeQuery();
          boolean find = false;
-         String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<" + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + " 충전 내역>#n\r\n";
+         String msg = (DBConfig.isGanglim ? "#fs11#" : "#fs12#") + "#e<" + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트")
+               + " 충전 내역>#n\r\n";
          int totalPoint = 0;
 
          String msg2;
@@ -5112,13 +5201,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             if (!name.contains("패키지") && !name.contains("어린이날")
-               || name.contains("추석")
-               || name.contains("가정의달")
-               || name.contains("3주년")
-               || name.contains("크리스마스패키지")
-               || name.contains("상시패키지")
-               || name.contains("2023패키지")
-               || name.contains("5월")) {
+                  || name.contains("추석")
+                  || name.contains("가정의달")
+                  || name.contains("3주년")
+                  || name.contains("크리스마스패키지")
+                  || name.contains("상시패키지")
+                  || name.contains("2023패키지")
+                  || name.contains("5월")) {
                totalPoint += Integer.parseInt(p);
             }
 
@@ -5126,7 +5215,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          NumberFormat nf = NumberFormat.getInstance();
-         msg = msg + "#e총 누적 금액#n : #b" + nf.format((long)totalPoint) + "#k\r\n\r\n#e<충전 내역>#n\r\n";
+         msg = msg + "#e총 누적 금액#n : #b" + nf.format((long) totalPoint) + "#k\r\n\r\n#e<충전 내역>#n\r\n";
          if (!find) {
             msg = msg + "충전 내역이 없습니다.";
          } else {
@@ -5165,8 +5254,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else if (day >= 2 && day <= 30) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "chuseok_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_chuseok_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_chuseok_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5184,8 +5273,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else if (day >= 16 && day <= 31) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "3aniv_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_3aniv_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_3aniv_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5203,8 +5292,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else if (day >= 5 && day <= 20) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "may_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_may_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_may_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5219,12 +5308,12 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int month = Integer.parseInt(dates[1]);
       int day = Integer.parseInt(dates[2]);
       if (year == 2022 && month == 5 && day == 5
-         || year == 2022 && month == 5 && day == 6
-         || year == 2022 && month == 5 && day == 7
-         || year == 2022 && month == 5 && day == 28) {
+            || year == 2022 && month == 5 && day == 6
+            || year == 2022 && month == 5 && day == 7
+            || year == 2022 && month == 5 && day == 28) {
          return this.getPlayer().getOneInfoQuestInteger(1235999, "cd_package") >= 2
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_cd_package") < 2;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_cd_package") < 2;
       } else {
          return false;
       }
@@ -5240,9 +5329,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int day = Integer.parseInt(dates[2]);
       return year == 2022
             && (month == 1 || month == 2)
-            && (day == 28 || day == 29 || day == 30 || day == 31 || day == 1 || day == 2 || day == 3 || day == 4 || day == 5 || day == 6)
-         ? this.getPlayer().getOneInfoQuestInteger(1234579, "nyd_package" + type) < 1
-         : false;
+            && (day == 28 || day == 29 || day == 30 || day == 31 || day == 1 || day == 2 || day == 3 || day == 4
+                  || day == 5 || day == 6)
+                        ? this.getPlayer().getOneInfoQuestInteger(1234579, "nyd_package" + type) < 1
+                        : false;
    }
 
    public boolean canBuy2023MayPackage(int type) {
@@ -5255,8 +5345,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int day = Integer.parseInt(dates[2]);
       if (year == 2023 && month == 5) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "2023_may_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_2023_may_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_2023_may_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5272,8 +5362,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int day = Integer.parseInt(dates[2]);
       if (year == 2023 && (month == 2 && day >= 22 || month == 3 && day <= 25)) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "2023_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_2023_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_2023_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5329,8 +5419,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else if (day >= 18 && day <= 27) {
          return this.getPlayer().getOneInfoQuestInteger(1234579, "xmas_package_" + type) >= 1
-            ? false
-            : this.getPlayer().getOneInfoQuestInteger(1236000, "get_xmas_package_" + type) < 1;
+               ? false
+               : this.getPlayer().getOneInfoQuestInteger(1236000, "get_xmas_package_" + type) < 1;
       } else {
          return false;
       }
@@ -5387,7 +5477,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             long now = System.currentTimeMillis();
             long delta = canTime - now;
             if (delta > 0L) {
-               int minute = (int)(delta / 1000L / 60L);
+               int minute = (int) (delta / 1000L / 60L);
                this.sendNext(minute + "분 후에 입장할 수 있습니다.");
                this.dispose();
                return false;
@@ -5455,13 +5545,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             String name = rs.getString("name");
             String p = rs.getString("price").replace(",", "");
             if (!name.contains("패키지") && !name.contains("어린이날")
-               || name.contains("추석")
-               || name.contains("가정의달")
-               || name.contains("3주년")
-               || name.contains("크리스마스")
-               || name.contains("상시패키지")
-               || name.contains("2023")
-               || name.contains("5월")) {
+                  || name.contains("추석")
+                  || name.contains("가정의달")
+                  || name.contains("3주년")
+                  || name.contains("크리스마스")
+                  || name.contains("상시패키지")
+                  || name.contains("2023")
+                  || name.contains("5월")) {
                totalPoint += Integer.parseInt(p);
             }
          }
@@ -5502,7 +5592,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.c.getPlayer().send(packet.getPacket());
    }
 
-   public void effectText(String text, int textSpeed, int fadeSpeed, int textWidth, int type, int nameWidth, int nameHeight) {
+   public void effectText(String text, int textSpeed, int fadeSpeed, int textWidth, int type, int nameWidth,
+         int nameHeight) {
       TextEffect e = new TextEffect(-1, text, textSpeed, fadeSpeed, textWidth, type, nameWidth, nameHeight);
       this.c.getPlayer().send(e.encodeForLocal());
    }
@@ -5540,7 +5631,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void npcMoveForcely(int templateID, int forceX, int moveX, int speedRate) {
-      this.c.getPlayer().send(CField.NPCPacket.npcMoveForcely(this.getNpcObjectID(templateID), forceX, moveX, speedRate));
+      this.c.getPlayer()
+            .send(CField.NPCPacket.npcMoveForcely(this.getNpcObjectID(templateID), forceX, moveX, speedRate));
    }
 
    public void setQuickMove() {
@@ -5575,7 +5667,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "현재 많은 유저가 참여중입니다. 잠시 후 시도해주세요.");
+      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
    }
 
    public void enterMission2Space() {
@@ -5587,7 +5679,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "현재 많은 유저가 참여중입니다. 잠시 후 시도해주세요.");
+      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
    }
 
    public void enterExtremeRail() {
@@ -5599,7 +5691,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "현재 많은 유저가 참여중입니다. 잠시 후 시도해주세요.");
+      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
    }
 
    public int getRecoveryExtremePointWeek() {
@@ -5610,7 +5702,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          long time = System.currentTimeMillis();
          long target = sdf.parse(b).getTime();
          long delta = target - time;
-         int deltaDay = (int)(delta / 86400000L);
+         int deltaDay = (int) (delta / 86400000L);
          int remainPoint = this.getPlayer().getExtremeRealCash();
          if (remainPoint > 0) {
             int canCount = 0;
@@ -5642,7 +5734,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          long time = System.currentTimeMillis();
          long target = sdf.parse(b).getTime();
          long delta = target - time;
-         int deltaDay = (int)(delta / 86400000L);
+         int deltaDay = (int) (delta / 86400000L);
          int remainPoint = this.getPlayer().getExtremeRealCash();
          int getCount = this.getPlayer().getGetExtremeRealCash();
          if (remainPoint > 0) {
@@ -5661,11 +5753,11 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
             int c = canCount - getCount;
             if (c > 0) {
-               int p = (int)(remainPoint * (0.2 * c));
+               int p = (int) (remainPoint * (0.2 * c));
                this.getPlayer().setGetExtremeRealCash(canCount);
                this.getPlayer().gainRealCash(p);
                String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
-               this.getPlayer().dropMessage(5, p + " " + cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 획득했습니다.");
+               this.getPlayer().dropMessage(5, "You have obtained " + p + " " + cashName + ".");
                return p;
             }
 
@@ -5701,7 +5793,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          long time = rs.getTimestamp("createdat").getTime();
          long delta = target - time;
-         int deltaMinute = (int)(delta / 86400000L);
+         int deltaMinute = (int) (delta / 86400000L);
          if (deltaMinute >= 0) {
             return 0;
          }
@@ -5728,21 +5820,21 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void exchangeSupportEquip(int itemID, int allStat, int attack, int downLevel) {
-      Equip item = (Equip)MapleItemInformationProvider.getInstance().getEquipById(itemID);
-      item.addStr((short)allStat);
-      item.addDex((short)allStat);
-      item.addInt((short)allStat);
-      item.addLuk((short)allStat);
-      item.addWatk((short)attack);
-      item.addMatk((short)attack);
-      item.setDownLevel((byte)downLevel);
+      Equip item = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemID);
+      item.addStr((short) allStat);
+      item.addDex((short) allStat);
+      item.addInt((short) allStat);
+      item.addLuk((short) allStat);
+      item.addWatk((short) attack);
+      item.addMatk((short) attack);
+      item.setDownLevel((byte) downLevel);
       item.setCHUC(10);
       item.setItemState(item.getItemState() | ItemStateFlag.AMAZING_HYPER_UPGRADE_CHECKED.getValue());
-      item.setUpgradeSlots((byte)0);
-      item.setState((byte)2);
-      item.setLines((byte)3);
+      item.setUpgradeSlots((byte) 0);
+      item.setState((byte) 2);
+      item.setLines((byte) 3);
       if (!DBConfig.isGanglim) {
-         item.setState((byte)19);
+         item.setState((byte) 19);
          item.setPotential1(40086);
          item.setPotential2(30086);
          item.setPotential3(30086);
@@ -5763,7 +5855,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (text.contains("#L")) {
             this.sendSimple(text);
          } else {
-            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte)19, text, "00 00", (byte)0));
+            this.c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(this.id, (byte) 19, text, "00 00", (byte) 0));
             this.lastMsg = 0;
          }
       }
@@ -5814,7 +5906,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else {
          this.c.getPlayer().setKeyValue(190823, "grade", String.valueOf(grade));
-         this.c.getPlayer().getMap().broadcastMessage(this.c.getPlayer(), CField.onZodiacRankInfo(this.c.getPlayer().getId(), grade), true);
+         this.c.getPlayer().getMap().broadcastMessage(this.c.getPlayer(),
+               CField.onZodiacRankInfo(this.c.getPlayer().getId(), grade), true);
          this.c.getSession().writeAndFlush(CField.playSE("Sound/MiniGame.img/Result_Yut"));
          this.showEffect(false, "Effect/CharacterEff.img/gloryonGradeup");
          return true;
@@ -5856,13 +5949,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public void addEnchantLog(int itemID, int equipItemID, long serialNumber, int type, int result, String log) {
-      LoggingManager.putLog(new EnchantLog(this.c.getPlayer(), itemID, equipItemID, serialNumber, type, result, new StringBuilder(log)));
+      LoggingManager.putLog(new EnchantLog(this.c.getPlayer(), itemID, equipItemID, serialNumber, type, result,
+            new StringBuilder(log)));
    }
 
    public void addCustomLog(int type, String message) {
       LoggingManager.putLog(
-         new CustomLog(this.c.getPlayer().getName(), this.c.getAccountName(), this.c.getPlayer().getId(), this.c.getAccID(), type, new StringBuilder(message))
-      );
+            new CustomLog(this.c.getPlayer().getName(), this.c.getAccountName(), this.c.getPlayer().getId(),
+                  this.c.getAccID(), type, new StringBuilder(message)));
    }
 
    public void setSaveQuestInfoFlag() {
@@ -5923,7 +6017,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          int skillid = skill.getId();
          int skillbase = skillid / 10000;
          if (!skill.isInvisible() && GameConstants.isJobCode(skillbase) && !GameConstants.isNovice(skillbase)) {
-            this.c.getPlayer().changeSingleSkillLevel(skill, 0, (byte)skill.getMasterLevel());
+            this.c.getPlayer().changeSingleSkillLevel(skill, 0, (byte) skill.getMasterLevel());
          }
       }
 
@@ -5934,7 +6028,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public boolean skipIntro() {
-      return DBConfig.isGanglim && this.c.getPlayer().getParty() != null && this.c.getPlayer().getParty().getLeader().isSkipIntro();
+      return DBConfig.isGanglim && this.c.getPlayer().getParty() != null
+            && this.c.getPlayer().getParty().getLeader().isSkipIntro();
    }
 
    private void sendHairColorChange(boolean android, boolean dressUp, int[] hairs) {

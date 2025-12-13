@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import constants.ServerConstants;
 import java.io.DataInputStream;
@@ -41,7 +41,7 @@ public class MapleClientCRC {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -60,7 +60,7 @@ public class MapleClientCRC {
             CRCCheckFiles.put(i, wz);
          }
 
-         System.out.println("총 " + CRCCheckFiles.size() + "개의 WZ경로를 불러왔습니다.");
+         System.out.println("Loaded total " + CRCCheckFiles.size() + " WZ paths.");
       } catch (Exception var25) {
          var25.printStackTrace();
       } finally {

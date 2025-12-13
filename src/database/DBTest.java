@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,11 +15,11 @@ public class DBTest {
          System.out.println(++i);
 
          try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM characters WHERE name='설단'");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM characters WHERE name='Seoldan'");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                String name = rs.getString("name");
-               PreparedStatement s = con.prepareStatement("UPDATE characters SET name='설단' WHERE name='설단'");
+               PreparedStatement s = con.prepareStatement("UPDATE characters SET name='Seoldan' WHERE name='Seoldan'");
                s.executeUpdate();
             }
          } catch (SQLException var9) {

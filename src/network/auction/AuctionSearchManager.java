@@ -145,8 +145,8 @@ public enum AuctionSearchManager {
    }
 
    public static List<AuctionItemPackage> setFilterItemType(
-      List<AuctionItemPackage> filter, AuctionSearchManager.ClassifyFlag itemTypeFlag, int itemClass, int itemSemiClass
-   ) {
+         List<AuctionItemPackage> filter, AuctionSearchManager.ClassifyFlag itemTypeFlag, int itemClass,
+         int itemSemiClass) {
       List<AuctionItemPackage> removeList;
       MapleItemInformationProvider ii;
       Map<String, Map<String, List<Pair<Integer, Integer>>>> itemBigData;
@@ -157,8 +157,7 @@ public enum AuctionSearchManager {
       itemBigData = new HashMap<>();
       dataName = "";
       semiDataName = "";
-      label271:
-      switch (itemTypeFlag) {
+      label271: switch (itemTypeFlag) {
          case Armor:
             itemBigData = itemDetailCategoryMap.getOrDefault("ItemDetailCategory_Armor", null);
             switch (itemClass) {
@@ -815,16 +814,16 @@ public enum AuctionSearchManager {
          return false;
       } else {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-         Equip equip = (Equip)item;
+         Equip equip = (Equip) item;
          AuctionSearchManager.OptionValueFlag optionFlag = AuctionSearchManager.OptionValueFlag.getFlag(optionValue);
          if (optionFlag == null) {
             return false;
          } else {
             int[] options = new int[0];
             if (optionFlag == AuctionSearchManager.OptionValueFlag.Potential) {
-               options = new int[]{equip.getPotential1(), equip.getPotential2(), equip.getPotential3()};
+               options = new int[] { equip.getPotential1(), equip.getPotential2(), equip.getPotential3() };
             } else if (optionFlag == AuctionSearchManager.OptionValueFlag.Additional) {
-               options = new int[]{equip.getPotential4(), equip.getPotential5(), equip.getPotential6()};
+               options = new int[] { equip.getPotential4(), equip.getPotential5(), equip.getPotential6() };
             }
 
             int getNormalValue = -1;
@@ -848,49 +847,50 @@ public enum AuctionSearchManager {
                   getNormalValue = equip.getStr();
                   getExGradeValue = equip.getTotalStr();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.STR, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.STR, (short) getNormalValue);
                   }
                   break;
                case NormalEx_Dex:
                   getNormalValue = equip.getDex();
                   getExGradeValue = equip.getTotalDex();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.DEX, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.DEX, (short) getNormalValue);
                   }
                   break;
                case NormalEx_Int:
                   getNormalValue = equip.getInt();
                   getExGradeValue = equip.getTotalInt();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.INT, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.INT, (short) getNormalValue);
                   }
                   break;
                case NormalEx_Luk:
                   getNormalValue = equip.getLuk();
                   getExGradeValue = equip.getTotalLuk();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.LUK, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.LUK, (short) getNormalValue);
                   }
                   break;
                case NormalEx_Pad:
                   getNormalValue = equip.getWatk();
                   getExGradeValue = equip.getTotalWatk();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.WATK, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.WATK, (short) getNormalValue);
                   }
                   break;
                case NormalEx_Mad:
                   getNormalValue = equip.getMatk();
                   getExGradeValue = equip.getTotalMatk();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MATK, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MATK, (short) getNormalValue);
                   }
                   break;
                case All_BdR:
                   getNormalValue = equip.getBossDamage();
                   getExGradeValue = equip.getTotalBossDamage();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.BOSS_DAMAGE, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.BOSS_DAMAGE,
+                           (short) getNormalValue);
                   }
 
                   getPotentialValue.add("incDAMr");
@@ -899,42 +899,46 @@ public enum AuctionSearchManager {
                   getNormalValue = equip.getIgnorePDR();
                   getExGradeValue = equip.getTotalIgnorePDR();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.IGNORE_PDR, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.IGNORE_PDR,
+                           (short) getNormalValue);
                   }
                   break;
                case NormalEx_MaxHP:
                   getNormalValue = equip.getHp();
                   getExGradeValue = equip.getTotalHp();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MHP, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MHP, (short) getNormalValue);
                   }
                   break;
                case NormalEx_MaxMP:
                   getNormalValue = equip.getMp();
                   getExGradeValue = equip.getTotalMp();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MMP, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.MMP, (short) getNormalValue);
                   }
                   break;
                case NormalEx_DecLev:
                   getNormalValue = equip.getDownLevel();
                   getExGradeValue = equip.getTotalDownLevel();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.DOWNLEVEL, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.DOWNLEVEL,
+                           (short) getNormalValue);
                   }
                   break;
                case NormalEx_Damage:
                   getNormalValue = equip.getTotalDamage();
                   getExGradeValue = equip.getTotalMaxDamage();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.TOTAL_DAMAGE, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.TOTAL_DAMAGE,
+                           (short) getNormalValue);
                   }
                   break;
                case NormalEx_AllStatR:
                   getNormalValue = equip.getAllStat();
                   getExGradeValue = equip.getTotalAllStat();
                   if (!equip.isAmazingHyperUpgradeUsed()) {
-                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.ALL_STAT, (short)getNormalValue);
+                     getExGradeValue -= StarForceHyperUpgrade.getHUStat(equip, EquipStat.ALL_STAT,
+                           (short) getNormalValue);
                   }
                   break;
                case Normal_Tuc:
@@ -1096,8 +1100,8 @@ public enum AuctionSearchManager {
                return getExGradeValue - getNormalValue >= value;
             } else if (getCsOptionValue >= 0 && optionFlag == AuctionSearchManager.OptionValueFlag.CsOption) {
                return equip.getCsOption1() / 1000 == getCsOptionValue && equip.getCsOption1() % 1000 >= value
-                  || equip.getCsOption2() / 1000 == getCsOptionValue && equip.getCsOption2() % 1000 >= value
-                  || equip.getCsOption3() / 1000 == getCsOptionValue && equip.getCsOption3() % 1000 >= value;
+                     || equip.getCsOption2() / 1000 == getCsOptionValue && equip.getCsOption2() % 1000 >= value
+                     || equip.getCsOption3() / 1000 == getCsOptionValue && equip.getCsOption3() % 1000 >= value;
             } else {
                if (!getPotentialValue.isEmpty()) {
                   switch (optionFlag) {
@@ -1114,7 +1118,10 @@ public enum AuctionSearchManager {
 
                         return false;
                      case SoulWeapon:
-                        return equip.getSoulPotential() != 0 && potentialCheck(equip, equip.getSoulPotential(), getPotentialValue, value);
+                        return equip.getSoulPotential() != 0
+                              && potentialCheck(equip, equip.getSoulPotential(), getPotentialValue, value);
+                     default:
+                        return false;
                   }
                }
 
@@ -1140,11 +1147,11 @@ public enum AuctionSearchManager {
             Object data = potentialInfo.getClass().getDeclaredField(name).get(potentialInfo);
             boolean func = true;
             if (data instanceof Integer) {
-               func = (Integer)data < value;
+               func = (Integer) data < value;
             } else if (data instanceof Byte) {
-               func = (Byte)data < value;
+               func = (Byte) data < value;
             } else if (data instanceof Short) {
-               func = (Short)data < value;
+               func = (Short) data < value;
             }
 
             if (func) {
@@ -1153,20 +1160,22 @@ public enum AuctionSearchManager {
             }
          }
       } catch (Exception var12) {
-         System.out.println("잠재 체크 오류");
+         System.out.println("Potential check error");
          var12.printStackTrace();
       }
 
       return valueCheck;
    }
 
-   public static boolean checkItemIfAdd(List<Pair<Integer, Integer>> detailDataList, Item item, int optionValue, boolean isOptionAnd) {
+   public static boolean checkItemIfAdd(List<Pair<Integer, Integer>> detailDataList, Item item, int optionValue,
+         boolean isOptionAnd) {
       if (item != null && detailDataList != null) {
          int checkCount = 0;
 
          for (Pair<Integer, Integer> data : detailDataList) {
             AuctionSearchManager flag = getFlag(data.left);
-            if (flag != null && checkOptionValueCorrect(optionValue, flag) && isItemHasOptions(flag, data.right, optionValue, item)) {
+            if (flag != null && checkOptionValueCorrect(optionValue, flag)
+                  && isItemHasOptions(flag, data.right, optionValue, item)) {
                checkCount++;
             }
          }
@@ -1178,8 +1187,8 @@ public enum AuctionSearchManager {
    }
 
    public static List<AuctionItemPackage> searchEquipDetailOption(
-      List<AuctionItemPackage> filter, int optionValue, List<Pair<Integer, Integer>> detailDataList, boolean isOptionAnd
-   ) {
+         List<AuctionItemPackage> filter, int optionValue, List<Pair<Integer, Integer>> detailDataList,
+         boolean isOptionAnd) {
       ArrayList<AuctionItemPackage> itemList = new ArrayList<>();
 
       for (AuctionItemPackage item : filter) {

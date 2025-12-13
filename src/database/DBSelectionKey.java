@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 public enum DBSelectionKey {
    INSERT_OR_UPDATE(1),

@@ -30,7 +30,7 @@ public class PortalPlayerInteraction extends AbstractPlayerInteraction {
             this.playPortalSE();
             this.warp(910001000, "st00");
          } else {
-            this.playerMessage(5, "레벨 30 이상 되어야 마이스터 빌로 이동하실 수 있습니다.");
+            this.playerMessage(5, "You must be at least level 30 to enter Ardentmill.");
          }
       }
    }

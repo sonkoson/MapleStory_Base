@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.io.FileInputStream;
@@ -51,16 +51,17 @@ public class PlayerNPCConstants {
          DamageRank3_X = Integer.parseInt(props.getProperty("DamageRank3_X", "0"));
          DamageRank3_Y = Integer.parseInt(props.getProperty("DamageRank3_Y", "0"));
          DamageRank3_FH = Integer.parseInt(props.getProperty("DamageRank3_FH", "0"));
-         System.out.println("플레이어NPC 좌표데이터 불러오기 성공");
+         System.out.println("Player NPC Position Data loaded successfully.");
       } catch (Exception var1) {
-         System.out.println("NPC설정 불러오기 실패");
+         System.out.println("Failed to load Player NPC Position Data.");
          var1.printStackTrace();
       }
    }
 
    static Properties getDefaultProperties() throws FileNotFoundException, IOException {
       Properties props = new Properties();
-      FileInputStream fileInputStream = new FileInputStream(DBConfig.isGanglim ? "settings_ganglim.properties" : "settings_jin.properties");
+      FileInputStream fileInputStream = new FileInputStream(
+            DBConfig.isGanglim ? "settings_ganglim.properties" : "settings_jin.properties");
       props.load(fileInputStream);
       fileInputStream.close();
       return props;

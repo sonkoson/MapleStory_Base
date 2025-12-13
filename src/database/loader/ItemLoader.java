@@ -1,4 +1,4 @@
-package database.loader;
+﻿package database.loader;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -59,9 +59,8 @@ public enum ItemLoader {
 
    public void LoadEquipExceptionalUpgrade(Equip equip, String table) {
       try (
-         Connection con = DBConnection.getConnection();
-         PreparedStatement psEx = con.prepareStatement("SELECT * FROM `" + table + "` WHERE inventoryitemid = ?");
-      ) {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement psEx = con.prepareStatement("SELECT * FROM `" + table + "` WHERE inventoryitemid = ?");) {
          psEx.setLong(1, equip.getInventoryId());
 
          try (ResultSet rsEx = psEx.executeQuery()) {
@@ -81,7 +80,7 @@ public enum ItemLoader {
             }
          }
       } catch (Exception var14) {
-         System.out.println("익셉셔널 아이템 정보 불러오기 오류");
+         System.out.println("Error loading exceptional item info");
          var14.printStackTrace();
       }
    }
@@ -93,7 +92,8 @@ public enum ItemLoader {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         ps = con.prepareStatement("SELECT * FROM `cabinet_items` LEFT JOIN `cabinet_equipment` USING(`inventoryitemid`) WHERE `accountid` = ?");
+         ps = con.prepareStatement(
+               "SELECT * FROM `cabinet_items` LEFT JOIN `cabinet_equipment` USING(`inventoryitemid`) WHERE `accountid` = ?");
          ps.setInt(1, accountID);
          rs = ps.executeQuery();
 
@@ -106,8 +106,10 @@ public enum ItemLoader {
                   mit = MapleInventoryType.CASH_EQUIP;
                }
 
-               if (!mit.equals(MapleInventoryType.EQUIP) && !mit.equals(MapleInventoryType.EQUIPPED) && !mit.equals(MapleInventoryType.CASH_EQUIP)) {
-                  Item item = new Item(rs.getInt("itemid"), rs.getShort("position"), rs.getShort("quantity"), rs.getInt("flag"), rs.getLong("uniqueid"));
+               if (!mit.equals(MapleInventoryType.EQUIP) && !mit.equals(MapleInventoryType.EQUIPPED)
+                     && !mit.equals(MapleInventoryType.CASH_EQUIP)) {
+                  Item item = new Item(rs.getInt("itemid"), rs.getShort("position"), rs.getShort("quantity"),
+                        rs.getInt("flag"), rs.getLong("uniqueid"));
                   item.setOwner(rs.getString("owner"));
                   item.setInventoryId(rs.getLong("inventoryitemid"));
                   item.setExpiration(rs.getLong("expiredate"));
@@ -126,19 +128,19 @@ public enum ItemLoader {
                   }
 
                   if (GameConstants.isIntensePowerCrystal(item.getItemId())) {
-                     PreparedStatement ps2 = con.prepareStatement("SELECT * FROM `intense_power_crystal` WHERE `item_unique_id` = ?");
+                     PreparedStatement ps2 = con
+                           .prepareStatement("SELECT * FROM `intense_power_crystal` WHERE `item_unique_id` = ?");
                      ps2.setLong(1, item.getUniqueId());
                      ResultSet rs2 = ps2.executeQuery();
                      if (rs2.next()) {
                         IntensePowerCrystal ipc = new IntensePowerCrystal(
-                           rs2.getInt("player_id"),
-                           rs2.getLong("item_unique_id"),
-                           rs2.getInt("member_count"),
-                           rs2.getInt("mob_id"),
-                           rs2.getLong("price"),
-                           rs2.getLong("unk"),
-                           rs2.getLong("gain_time")
-                        );
+                              rs2.getInt("player_id"),
+                              rs2.getLong("item_unique_id"),
+                              rs2.getInt("member_count"),
+                              rs2.getInt("mob_id"),
+                              rs2.getLong("price"),
+                              rs2.getLong("unk"),
+                              rs2.getLong("gain_time"));
                         item.setIntensePowerCrystal(ipc);
                      }
 
@@ -148,13 +150,14 @@ public enum ItemLoader {
 
                   item_ = item.copy();
                } else {
-                  Equip equip = new Equip(rs.getInt("itemid"), rs.getShort("position"), rs.getLong("uniqueid"), rs.getInt("flag"));
+                  Equip equip = new Equip(rs.getInt("itemid"), rs.getShort("position"), rs.getLong("uniqueid"),
+                        rs.getInt("flag"));
                   if (equip.getPosition() != -55) {
-                     equip.setQuantity((short)1);
+                     equip.setQuantity((short) 1);
                      equip.setInventoryId(rs.getLong("inventoryitemid"));
                      equip.setOwner(rs.getString("owner"));
                      equip.setExpiration(rs.getLong("expiredate"));
-                     equip.setUpgradeSlots((byte)Math.max(0, rs.getByte("upgradeslots")));
+                     equip.setUpgradeSlots((byte) Math.max(0, rs.getByte("upgradeslots")));
                      equip.setLevel(rs.getByte("level"));
                      equip.setStr(rs.getShort("str"));
                      equip.setDex(rs.getShort("dex"));
@@ -164,7 +167,7 @@ public enum ItemLoader {
                      equip.setMp(rs.getShort("mp"));
                      equip.setHpR(rs.getShort("hpR"));
                      equip.setMpR(rs.getShort("mpR"));
-                     Equip eq = (Equip)ii.getEquipById(equip.getItemId());
+                     Equip eq = (Equip) ii.getEquipById(equip.getItemId());
                      if (equip.getHpR() == 0 && eq.getHpR() > 0) {
                         equip.setHpR(eq.getHpR());
                      }
@@ -201,12 +204,13 @@ public enum ItemLoader {
                      equip.setPVPDamage(rs.getShort("pvpDamage"));
                      equip.setCharmEXP(rs.getShort("charmEXP"));
                      if (equip.getCharmEXP() < 0) {
-                        equip.setCharmEXP(((Equip)ii.getEquipById(equip.getItemId())).getCharmEXP());
+                        equip.setCharmEXP(((Equip) ii.getEquipById(equip.getItemId())).getCharmEXP());
                      }
 
                      if (equip.getUniqueId() > -1L) {
                         if (GameConstants.isEffectRing(rs.getInt("itemid"))) {
-                           MapleRing ring = MapleRing.loadFromDb(equip.getUniqueId(), mit.equals(MapleInventoryType.EQUIPPED));
+                           MapleRing ring = MapleRing.loadFromDb(equip.getUniqueId(),
+                                 mit.equals(MapleInventoryType.EQUIPPED));
                            if (ring != null) {
                               equip.setRing(ring);
                            }
@@ -272,10 +276,9 @@ public enum ItemLoader {
                }
 
                ret.add(
-                  new MapleCabinetItem(
-                     rs.getInt("cabinet_index"), rs.getLong("cabinet_expired_time"), rs.getString("cabinet_title"), rs.getString("cabinet_desc"), item_
-                  )
-               );
+                     new MapleCabinetItem(
+                           rs.getInt("cabinet_index"), rs.getLong("cabinet_expired_time"),
+                           rs.getString("cabinet_title"), rs.getString("cabinet_desc"), item_));
             }
          }
       } catch (SQLException var26) {
@@ -312,19 +315,18 @@ public enum ItemLoader {
             ps.executeUpdate();
             ps.close();
             ps = con.prepareStatement(
-               "INSERT INTO `cabinet_items` (accountid, itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade, cabinet_index, cabinet_expired_time, cabinet_title, cabinet_desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-               1
-            );
+                  "INSERT INTO `cabinet_items` (accountid, itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade, cabinet_index, cabinet_expired_time, cabinet_title, cabinet_desc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                  1);
             pse = con.prepareStatement(
-               "INSERT INTO `cabinet_equipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-            );
-            psee = con.prepareStatement("INSERT INTO `cabinet_equipenchant` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?)");
+                  "INSERT INTO `cabinet_equipment` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            psee = con.prepareStatement(
+                  "INSERT INTO `cabinet_equipenchant` VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?)");
             int ai = 0;
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
 
             for (MapleCabinetItem item_ : new LinkedList<>(items)) {
                Item item = item_.getItem();
-               MapleInventoryType mit = MapleInventoryType.getByType((byte)(item.getItemId() / 1000000));
+               MapleInventoryType mit = MapleInventoryType.getByType((byte) (item.getItemId() / 1000000));
                if (item.getPosition() != -55) {
                   if (mit == MapleInventoryType.EQUIP && ii.isCash(item.getItemId())) {
                      mit = MapleInventoryType.CASH_EQUIP;
@@ -346,7 +348,7 @@ public enum ItemLoader {
 
                   ps.setLong(idx.getAndIncrement(), item.getExpiration());
                   ps.setInt(idx.getAndIncrement(), item.getFlag());
-                  ps.setByte(idx.getAndIncrement(), (byte)this.value);
+                  ps.setByte(idx.getAndIncrement(), (byte) this.value);
                   ps.setString(idx.getAndIncrement(), item.getGiftFrom());
                   ps.setInt(idx.getAndIncrement(), item.getOnceTrade());
                   ps.setInt(idx.getAndIncrement(), item_.getIndex());
@@ -361,8 +363,9 @@ public enum ItemLoader {
                      long iid = rs.getLong(1);
                      rs.close();
                      item.setInventoryId(iid);
-                     if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED) || mit.equals(MapleInventoryType.CASH_EQUIP)) {
-                        Equip equip = (Equip)item;
+                     if (mit.equals(MapleInventoryType.EQUIP) || mit.equals(MapleInventoryType.EQUIPPED)
+                           || mit.equals(MapleInventoryType.CASH_EQUIP)) {
+                        Equip equip = (Equip) item;
                         if (equip.getUniqueId() > 0L && equip.getItemId() / 10000 == 166) {
                            Android android = equip.getAndroid();
                            if (android != null) {
@@ -416,7 +419,7 @@ public enum ItemLoader {
                         pse.setShort(index++, equip.getSpecialAttribute());
                         pse.setByte(index++, equip.getReqLevel());
                         pse.setByte(index++, equip.getGrowthEnchant());
-                        pse.setByte(index++, (byte)(equip.getFinalStrike() ? 1 : 0));
+                        pse.setByte(index++, (byte) (equip.getFinalStrike() ? 1 : 0));
                         pse.setShort(index++, equip.getBossDamage());
                         pse.setShort(index++, equip.getIgnorePDR());
                         pse.setByte(index++, equip.getTotalDamage());
@@ -449,34 +452,34 @@ public enum ItemLoader {
                         pse.executeUpdate();
                         if (equip.getExceptionalSlot() > 0) {
                            String exInfo = "INSERT INTO `cabinet_equipment_exceptional` (`inventoryitemid`, `slot`, `str`, `dex`, `int`, `luk`, `hp`, `mp`, `watk`, `matk`, `wdef`, `mdef`, `acc`, `avoid`) VALUES ("
-                              + iid
-                              + ", "
-                              + equip.getExceptionalSlot()
-                              + ", "
-                              + equip.getExceptSTR()
-                              + ", "
-                              + equip.getExceptDEX()
-                              + ", "
-                              + equip.getExceptINT()
-                              + ", "
-                              + equip.getExceptLUK()
-                              + ", "
-                              + equip.getExceptHP()
-                              + ", "
-                              + equip.getExceptMP()
-                              + ", "
-                              + equip.getExceptWATK()
-                              + ", "
-                              + equip.getExceptMATK()
-                              + ", "
-                              + equip.getExceptWDEF()
-                              + ", "
-                              + equip.getExceptMDEF()
-                              + ", "
-                              + equip.getExceptAVOID()
-                              + ", "
-                              + equip.getExceptJUMP()
-                              + ")";
+                                 + iid
+                                 + ", "
+                                 + equip.getExceptionalSlot()
+                                 + ", "
+                                 + equip.getExceptSTR()
+                                 + ", "
+                                 + equip.getExceptDEX()
+                                 + ", "
+                                 + equip.getExceptINT()
+                                 + ", "
+                                 + equip.getExceptLUK()
+                                 + ", "
+                                 + equip.getExceptHP()
+                                 + ", "
+                                 + equip.getExceptMP()
+                                 + ", "
+                                 + equip.getExceptWATK()
+                                 + ", "
+                                 + equip.getExceptMATK()
+                                 + ", "
+                                 + equip.getExceptWDEF()
+                                 + ", "
+                                 + equip.getExceptMDEF()
+                                 + ", "
+                                 + equip.getExceptAVOID()
+                                 + ", "
+                                 + equip.getExceptJUMP()
+                                 + ")";
                            psList.add(exInfo);
                         }
                      }
@@ -515,12 +518,12 @@ public enum ItemLoader {
                      psEx.executeUpdate();
                      psEx.close();
                   } catch (Exception var43) {
-                     System.out.println("[ERROR] 익셉셔널 정보 저장 오류");
+                     System.out.println("[ERROR] Exceptional info save error");
                      var43.printStackTrace();
                   }
                }
             } catch (Exception var45) {
-               System.out.println("[ERROR] 익셉셔널 정보 저장 오류");
+               System.out.println("[ERROR] Exceptional info save error");
                var45.printStackTrace();
             }
          }
@@ -549,9 +552,8 @@ public enum ItemLoader {
       DBConnection db = new DBConnection();
 
       try (
-         Connection con = DBConnection.getConnection();
-         PreparedStatement ps = con.prepareStatement(query.toString());
-      ) {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(query.toString());) {
          ps.setInt(1, this.value);
          if (this.getValue() != 7) {
             ps.setInt(2, id);
@@ -568,8 +570,10 @@ public enum ItemLoader {
                   }
 
                   Item item_;
-                  if (!mit.equals(MapleInventoryType.EQUIP) && !mit.equals(MapleInventoryType.EQUIPPED) && !mit.equals(MapleInventoryType.CASH_EQUIP)) {
-                     Item item = new Item(rs.getInt("itemid"), rs.getShort("position"), rs.getShort("quantity"), rs.getInt("flag"), rs.getLong("uniqueid"));
+                  if (!mit.equals(MapleInventoryType.EQUIP) && !mit.equals(MapleInventoryType.EQUIPPED)
+                        && !mit.equals(MapleInventoryType.CASH_EQUIP)) {
+                     Item item = new Item(rs.getInt("itemid"), rs.getShort("position"), rs.getShort("quantity"),
+                           rs.getInt("flag"), rs.getLong("uniqueid"));
                      item.setOwner(rs.getString("owner"));
                      item.setInventoryId(rs.getLong("inventoryitemid"));
                      item.setExpiration(rs.getLong("expiredate"));
@@ -588,19 +592,19 @@ public enum ItemLoader {
                      }
 
                      if (GameConstants.isIntensePowerCrystal(item.getItemId())) {
-                        PreparedStatement ps2 = con.prepareStatement("SELECT * FROM `intense_power_crystal` WHERE `item_unique_id` = ?");
+                        PreparedStatement ps2 = con
+                              .prepareStatement("SELECT * FROM `intense_power_crystal` WHERE `item_unique_id` = ?");
                         ps2.setLong(1, item.getUniqueId());
                         ResultSet rs2 = ps2.executeQuery();
                         if (rs2.next()) {
                            IntensePowerCrystal ipc = new IntensePowerCrystal(
-                              rs2.getInt("player_id"),
-                              rs2.getLong("item_unique_id"),
-                              rs2.getInt("member_count"),
-                              rs2.getInt("mob_id"),
-                              rs2.getLong("price"),
-                              rs2.getLong("unk"),
-                              rs2.getLong("gain_time")
-                           );
+                                 rs2.getInt("player_id"),
+                                 rs2.getLong("item_unique_id"),
+                                 rs2.getInt("member_count"),
+                                 rs2.getInt("mob_id"),
+                                 rs2.getLong("price"),
+                                 rs2.getLong("unk"),
+                                 rs2.getLong("gain_time"));
                            item.setIntensePowerCrystal(ipc);
                         }
 
@@ -609,39 +613,40 @@ public enum ItemLoader {
                      }
 
                      if (item.getUniqueId() == -1L
-                        && (mit.getType() == MapleInventoryType.CASH.getType() || mit.getType() == MapleInventoryType.CASH_EQUIP.getType())) {
+                           && (mit.getType() == MapleInventoryType.CASH.getType()
+                                 || mit.getType() == MapleInventoryType.CASH_EQUIP.getType())) {
                         item.setUniqueId(MapleInventoryIdentifier.getInstance());
                      }
 
                      item_ = item.copy();
                      items.put(rs.getLong("inventoryitemid"), new Pair<>(item_, mit));
                   } else {
-                     Equip equip = new Equip(rs.getInt("itemid"), rs.getShort("position"), rs.getLong("uniqueid"), rs.getInt("flag"));
+                     Equip equip = new Equip(rs.getInt("itemid"), rs.getShort("position"), rs.getLong("uniqueid"),
+                           rs.getInt("flag"));
                      if (!login && equip.getPosition() != -55
-                        || mit.equals(MapleInventoryType.EQUIPPED) && equip.getPosition() < -1800 & equip.getPosition() > -1900
-                        || equip.getPosition() == -10
-                        || equip.getPosition() == -11
-                        || equip.getPosition() == -111
-                        || equip.getPosition() == -1507) {
+                           || mit.equals(MapleInventoryType.EQUIPPED)
+                                 && equip.getPosition() < -1800 & equip.getPosition() > -1900
+                           || equip.getPosition() == -10
+                           || equip.getPosition() == -11
+                           || equip.getPosition() == -111
+                           || equip.getPosition() == -1507) {
                         int itemid = equip.getItemId();
-                        if ((
-                              itemid == 1109000
-                                 || itemid >= 1009017 && itemid <= 1009082
-                                 || itemid >= 1709000 && itemid <= 1709018
-                                 || itemid >= 1079000 && itemid <= 1079005
-                                 || itemid >= 1059000 && itemid <= 1059049
-                                 || itemid >= 1009000 && itemid <= 1009016
-                           )
-                           && equip.getUniqueId() <= -1L) {
+                        if ((itemid == 1109000
+                              || itemid >= 1009017 && itemid <= 1009082
+                              || itemid >= 1709000 && itemid <= 1709018
+                              || itemid >= 1079000 && itemid <= 1079005
+                              || itemid >= 1059000 && itemid <= 1059049
+                              || itemid >= 1009000 && itemid <= 1009016)
+                              && equip.getUniqueId() <= -1L) {
                            equip.setUniqueId(Randomizer.rand(100055555, 109999999));
                         }
 
-                        equip.setQuantity((short)1);
+                        equip.setQuantity((short) 1);
                         equip.setInventoryId(rs.getLong("inventoryitemid"));
                         equip.setTempUniqueID(rs.getLong("inventoryitemid"));
                         equip.setOwner(rs.getString("owner"));
                         equip.setExpiration(rs.getLong("expiredate"));
-                        equip.setUpgradeSlots((byte)Math.max(0, rs.getByte("upgradeslots")));
+                        equip.setUpgradeSlots((byte) Math.max(0, rs.getByte("upgradeslots")));
                         equip.setLevel(rs.getByte("level"));
                         equip.setStr(rs.getShort("str"));
                         equip.setDex(rs.getShort("dex"));
@@ -651,7 +656,7 @@ public enum ItemLoader {
                         equip.setMp(rs.getShort("mp"));
                         equip.setHpR(rs.getShort("hpR"));
                         equip.setMpR(rs.getShort("mpR"));
-                        Equip eq = (Equip)ii.getEquipById(equip.getItemId());
+                        Equip eq = (Equip) ii.getEquipById(equip.getItemId());
                         if (equip.getHpR() == 0 && eq.getHpR() > 0) {
                            equip.setHpR(eq.getHpR());
                         }
@@ -688,12 +693,13 @@ public enum ItemLoader {
                         equip.setPVPDamage(rs.getShort("pvpDamage"));
                         equip.setCharmEXP(rs.getShort("charmEXP"));
                         if (equip.getCharmEXP() < 0) {
-                           equip.setCharmEXP(((Equip)ii.getEquipById(equip.getItemId())).getCharmEXP());
+                           equip.setCharmEXP(((Equip) ii.getEquipById(equip.getItemId())).getCharmEXP());
                         }
 
                         if (equip.getUniqueId() > -1L) {
                            if (GameConstants.isEffectRing(rs.getInt("itemid"))) {
-                              MapleRing ring = MapleRing.loadFromDb(equip.getUniqueId(), mit.equals(MapleInventoryType.EQUIPPED));
+                              MapleRing ring = MapleRing.loadFromDb(equip.getUniqueId(),
+                                    mit.equals(MapleInventoryType.EQUIPPED));
                               if (ring != null) {
                                  equip.setRing(ring);
                               }
@@ -750,17 +756,18 @@ public enum ItemLoader {
                            equip.setSerialNumberEquip(System.currentTimeMillis() + Randomizer.nextInt());
                         }
 
-                        if (GameConstants.isCanUpgradeExceptionalEquip(equip.getItemId()) && !this.table_equip_exceptional.isEmpty()) {
+                        if (GameConstants.isCanUpgradeExceptionalEquip(equip.getItemId())
+                              && !this.table_equip_exceptional.isEmpty()) {
                            this.LoadEquipExceptionalUpgrade(equip, this.table_equip_exceptional);
                         }
                      }
 
                      item_ = equip.copy();
-                     this.checkEquip((Equip)item_);
+                     this.checkEquip((Equip) item_);
                      if (GameConstants.isDemonAvenger(jobId)) {
                         int itemId = item_.getItemId();
                         if (GameConstants.isArcaneSymbol(itemId) || GameConstants.isAuthenticSymbol(itemId)) {
-                           this.checkDemonAvangerSymbol((Equip)item_);
+                           this.checkDemonAvangerSymbol((Equip) item_);
                         }
                      }
 
@@ -769,22 +776,20 @@ public enum ItemLoader {
 
                   if (this.getValue() == 7) {
                      Center.Auction.addItem(
-                        new AuctionItemPackage(
-                           rs.getInt("characterid"),
-                           rs.getInt("accountid"),
-                           rs.getString("ownername"),
-                           item_.copy(),
-                           rs.getLong("bid"),
-                           rs.getLong("meso"),
-                           rs.getLong("expired"),
-                           rs.getBoolean("bargain"),
-                           rs.getInt("buyer"),
-                           rs.getLong("buytime"),
-                           rs.getLong("starttime"),
-                           rs.getInt("status"),
-                           rs.getInt("historyID")
-                        )
-                     );
+                           new AuctionItemPackage(
+                                 rs.getInt("characterid"),
+                                 rs.getInt("accountid"),
+                                 rs.getString("ownername"),
+                                 item_.copy(),
+                                 rs.getLong("bid"),
+                                 rs.getLong("meso"),
+                                 rs.getLong("expired"),
+                                 rs.getBoolean("bargain"),
+                                 rs.getInt("buyer"),
+                                 rs.getLong("buytime"),
+                                 rs.getLong("starttime"),
+                                 rs.getInt("status"),
+                                 rs.getInt("historyID")));
                   }
                }
             }
@@ -817,7 +822,8 @@ public enum ItemLoader {
       this.saveItems(items, con, id, null);
    }
 
-   public void saveItems(List<Pair<Item, MapleInventoryType>> items, Connection con, int id, List<AuctionItemPackage> aitems) throws SQLException {
+   public void saveItems(List<Pair<Item, MapleInventoryType>> items, Connection con, int id,
+         List<AuctionItemPackage> aitems) throws SQLException {
       StringBuilder query = new StringBuilder();
       query.append("DELETE FROM `");
       query.append(this.table);
@@ -846,9 +852,11 @@ public enum ItemLoader {
          }
 
          ps_sb.append(this.arg);
-         ps_sb.append(", itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade");
+         ps_sb.append(
+               ", itemid, inventorytype, position, quantity, owner, GM_Log, uniqueid, expiredate, flag, `type`, sender, once_trade");
          if (this.getValue() == 7) {
-            ps_sb.append(", bid, meso, expired, bargain, ownername, buyer, buytime, starttime, `status`, inventoryitemid");
+            ps_sb.append(
+                  ", bid, meso, expired, bargain, ownername, buyer, buytime, starttime, `status`, inventoryitemid");
          }
 
          ps_sb.append(") VALUES (");
@@ -957,7 +965,7 @@ public enum ItemLoader {
 
                if (item.getItemId() / 1000000 == 1) {
                   count++;
-                  Equip equip = (Equip)item;
+                  Equip equip = (Equip) item;
                   if (equip.getUniqueId() > 0L && equip.getItemId() / 10000 == 166) {
                      Android android = equip.getAndroid();
                      if (android != null) {
@@ -967,36 +975,36 @@ public enum ItemLoader {
 
                   if (equip.getExceptionalSlot() > 0 && !this.table_equip_exceptional.isEmpty()) {
                      String exInfo = "INSERT INTO `"
-                        + this.table_equip_exceptional
-                        + "` (`inventoryitemid`, `slot`, `str`, `dex`, `int`, `luk`, `hp`, `mp`, `watk`, `matk`, `wdef`, `mdef`, `acc`, `avoid`) VALUES ("
-                        + autoIncrement
-                        + ", "
-                        + equip.getExceptionalSlot()
-                        + ", "
-                        + equip.getExceptSTR()
-                        + ", "
-                        + equip.getExceptDEX()
-                        + ", "
-                        + equip.getExceptINT()
-                        + ", "
-                        + equip.getExceptLUK()
-                        + ", "
-                        + equip.getExceptHP()
-                        + ", "
-                        + equip.getExceptMP()
-                        + ", "
-                        + equip.getExceptWATK()
-                        + ", "
-                        + equip.getExceptMATK()
-                        + ", "
-                        + equip.getExceptWDEF()
-                        + ", "
-                        + equip.getExceptMDEF()
-                        + ", "
-                        + equip.getExceptAVOID()
-                        + ", "
-                        + equip.getExceptJUMP()
-                        + ")";
+                           + this.table_equip_exceptional
+                           + "` (`inventoryitemid`, `slot`, `str`, `dex`, `int`, `luk`, `hp`, `mp`, `watk`, `matk`, `wdef`, `mdef`, `acc`, `avoid`) VALUES ("
+                           + autoIncrement
+                           + ", "
+                           + equip.getExceptionalSlot()
+                           + ", "
+                           + equip.getExceptSTR()
+                           + ", "
+                           + equip.getExceptDEX()
+                           + ", "
+                           + equip.getExceptINT()
+                           + ", "
+                           + equip.getExceptLUK()
+                           + ", "
+                           + equip.getExceptHP()
+                           + ", "
+                           + equip.getExceptMP()
+                           + ", "
+                           + equip.getExceptWATK()
+                           + ", "
+                           + equip.getExceptMATK()
+                           + ", "
+                           + equip.getExceptWDEF()
+                           + ", "
+                           + equip.getExceptMDEF()
+                           + ", "
+                           + equip.getExceptAVOID()
+                           + ", "
+                           + equip.getExceptJUMP()
+                           + ")";
                      psList.add(exInfo);
                   }
 
@@ -1127,7 +1135,7 @@ public enum ItemLoader {
                   psEx.executeUpdate();
                   psEx.close();
                } catch (Exception var32) {
-                  System.out.println("[ERROR] 익셉셔널 정보 저장 오류");
+                  System.out.println("[ERROR] Exceptional info save error");
                   var32.printStackTrace();
                }
             }
@@ -1138,7 +1146,7 @@ public enum ItemLoader {
    public void checkSymbol(Equip equip, int jobId) {
       int neededStat = 0;
       if (GameConstants.isArcaneSymbol(equip.getItemId()) || GameConstants.isAuthenticSymbol(equip.getItemId())) {
-         if (equip.getOwner().equals("강화된 심볼")) {
+         if (equip.getOwner().equals("Enhanced Symbol")) {
             neededStat += 1500;
          }
 
@@ -1159,60 +1167,60 @@ public enum ItemLoader {
          }
 
          if ((jobId < 100 || jobId >= 200)
-            && jobId != 512
-            && jobId != 1512
-            && jobId != 2512
-            && (jobId < 1100 || jobId >= 1200)
-            && !GameConstants.isAran(jobId)
-            && !GameConstants.isBlaster(jobId)
-            && !GameConstants.isDemonSlayer(jobId)
-            && !GameConstants.isMichael(jobId)
-            && !GameConstants.isKaiser(jobId)
-            && !GameConstants.isZero(jobId)
-            && !GameConstants.isArk(jobId)
-            && !GameConstants.isAdele(jobId)) {
+               && jobId != 512
+               && jobId != 1512
+               && jobId != 2512
+               && (jobId < 1100 || jobId >= 1200)
+               && !GameConstants.isAran(jobId)
+               && !GameConstants.isBlaster(jobId)
+               && !GameConstants.isDemonSlayer(jobId)
+               && !GameConstants.isMichael(jobId)
+               && !GameConstants.isKaiser(jobId)
+               && !GameConstants.isZero(jobId)
+               && !GameConstants.isArk(jobId)
+               && !GameConstants.isAdele(jobId)) {
             if ((jobId < 200 || jobId >= 300)
-               && !GameConstants.isFlameWizard(jobId)
-               && !GameConstants.isEvan(jobId)
-               && !GameConstants.isLuminous(jobId)
-               && (jobId < 3200 || jobId >= 3300)
-               && !GameConstants.isKinesis(jobId)
-               && !GameConstants.isIllium(jobId)
-               && !GameConstants.isLara(jobId)) {
+                  && !GameConstants.isFlameWizard(jobId)
+                  && !GameConstants.isEvan(jobId)
+                  && !GameConstants.isLuminous(jobId)
+                  && (jobId < 3200 || jobId >= 3300)
+                  && !GameConstants.isKinesis(jobId)
+                  && !GameConstants.isIllium(jobId)
+                  && !GameConstants.isLara(jobId)) {
                if (!GameConstants.isKain(jobId)
-                  && (jobId < 300 || jobId >= 400)
-                  && jobId != 522
-                  && jobId != 532
-                  && !GameConstants.isMechanic(jobId)
-                  && !GameConstants.isAngelicBuster(jobId)
-                  && (jobId < 1300 || jobId >= 1400)
-                  && !GameConstants.isMercedes(jobId)
-                  && (jobId < 3300 || jobId >= 3400)) {
+                     && (jobId < 300 || jobId >= 400)
+                     && jobId != 522
+                     && jobId != 532
+                     && !GameConstants.isMechanic(jobId)
+                     && !GameConstants.isAngelicBuster(jobId)
+                     && (jobId < 1300 || jobId >= 1400)
+                     && !GameConstants.isMercedes(jobId)
+                     && (jobId < 3300 || jobId >= 3400)) {
                   if ((jobId < 400 || jobId >= 500)
-                     && (jobId < 1400 || jobId >= 1500)
-                     && !GameConstants.isPhantom(jobId)
-                     && !GameConstants.isKadena(jobId)
-                     && !GameConstants.isHoyoung(jobId)) {
+                        && (jobId < 1400 || jobId >= 1500)
+                        && !GameConstants.isPhantom(jobId)
+                        && !GameConstants.isKadena(jobId)
+                        && !GameConstants.isHoyoung(jobId)) {
                      if (GameConstants.isDemonAvenger(jobId)) {
                         if (equip.getHp() != neededStat) {
-                           equip.setHp((short)neededStat);
+                           equip.setHp((short) neededStat);
                         }
                      } else if (GameConstants.isXenon(jobId) && equip.getStr() != neededStat) {
-                        equip.setStr((short)neededStat);
-                        equip.setDex((short)neededStat);
-                        equip.setLuk((short)neededStat);
+                        equip.setStr((short) neededStat);
+                        equip.setDex((short) neededStat);
+                        equip.setLuk((short) neededStat);
                      }
                   } else if (equip.getLuk() != neededStat) {
-                     equip.setLuk((short)neededStat);
+                     equip.setLuk((short) neededStat);
                   }
                } else if (equip.getDex() != neededStat) {
-                  equip.setDex((short)neededStat);
+                  equip.setDex((short) neededStat);
                }
             } else if (equip.getInt() != neededStat) {
-               equip.setInt((short)neededStat);
+               equip.setInt((short) neededStat);
             }
          } else if (equip.getStr() != neededStat) {
-            equip.setStr((short)neededStat);
+            equip.setStr((short) neededStat);
          }
       }
    }
@@ -1220,12 +1228,12 @@ public enum ItemLoader {
    public void checkDemonAvangerSymbol(Equip symbol) {
       int itemId = symbol.getItemId();
       if (GameConstants.isArcaneSymbol(itemId)) {
-         short checkStat = (short)(210 * (symbol.getArcLevel() + 2));
+         short checkStat = (short) (210 * (symbol.getArcLevel() + 2));
          if (symbol.getHp() != checkStat) {
             symbol.setHp(checkStat);
          }
       } else if (GameConstants.isAuthenticSymbol(itemId)) {
-         short checkStat = (short)(210 * (2 * symbol.getArcLevel() + 3));
+         short checkStat = (short) (210 * (2 * symbol.getArcLevel() + 3));
          if (symbol.getHp() != checkStat) {
             symbol.setHp(checkStat);
          }
@@ -1246,7 +1254,8 @@ public enum ItemLoader {
          potentials.addAll(equip.getPotentials(false, 3));
 
          for (int i = 0; i < potentials.size(); i++) {
-            if (potentials.get(i) != 0 && MapleItemInformationProvider.getInstance().getPotentialInfo(potentials.get(i)).get(0).boss) {
+            if (potentials.get(i) != 0
+                  && MapleItemInformationProvider.getInstance().getPotentialInfo(potentials.get(i)).get(0).boss) {
                InventoryHandler.setPotential(GradeRandomOption.Black, false, equip, i);
             }
          }
@@ -1255,7 +1264,8 @@ public enum ItemLoader {
          additionalPotentials.addAll(equip.getPotentials(true, 3));
 
          for (int ix = 0; ix < additionalPotentials.size(); ix++) {
-            if (additionalPotentials.get(ix) != 0 && MapleItemInformationProvider.getInstance().getPotentialInfo(additionalPotentials.get(ix)).get(0).boss) {
+            if (additionalPotentials.get(ix) != 0 && MapleItemInformationProvider.getInstance()
+                  .getPotentialInfo(additionalPotentials.get(ix)).get(0).boss) {
                InventoryHandler.setPotential(GradeRandomOption.Additional, false, equip, ix);
             }
          }

@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import database.callback.DBCallback;
 import database.callback.DBGenerateKeyCallback;
@@ -22,15 +22,17 @@ public class DBProcessor extends Thread {
          while (this.selector != null && !this.selector.isQueryEmpty()) {
             Pair<DBSelectionKey, Pair<String, Object>> query = this.selector.getAndRemove();
             if (query != null && query.left != null) {
-               switch ((DBSelectionKey)query.left) {
+               switch ((DBSelectionKey) query.left) {
                   case INSERT_OR_UPDATE:
-                     DBConnection.insertOrUpdate((String)query.getRight().left, (DBCallback)query.getRight().right);
+                     DBConnection.insertOrUpdate((String) query.getRight().left, (DBCallback) query.getRight().right);
                      break;
                   case INSERT_OR_UPDATE_BATCH:
-                     DBConnection.insertOrUpdateBatch((String)query.getRight().left, (DBCallback)query.getRight().right);
+                     DBConnection.insertOrUpdateBatch((String) query.getRight().left,
+                           (DBCallback) query.getRight().right);
                      break;
                   case INSERT_RETURN_GENERATED_KEYS:
-                     DBConnection.insertOrUpdateGenerateKey((String)query.getRight().left, (DBGenerateKeyCallback)query.getRight().right);
+                     DBConnection.insertOrUpdateGenerateKey((String) query.getRight().left,
+                           (DBGenerateKeyCallback) query.getRight().right);
                }
             }
          }
@@ -53,9 +55,9 @@ public class DBProcessor extends Thread {
          Exception e = var9;
 
          try {
-            FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "DBProcessor 오류 발생 ", e);
+            FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "DBProcessor error occurred ", e);
          } catch (Exception var7) {
-            System.out.println("DBProcessor 오류 저장 실패 : " + var7.toString());
+            System.out.println("DBProcessor error save failed : " + var7.toString());
             var7.printStackTrace();
          } finally {
             this.error = true;
@@ -72,13 +74,13 @@ public class DBProcessor extends Thread {
       try {
          while (!this.selector.isQueryEmpty()) {
             Pair<DBSelectionKey, Pair<String, Object>> query = this.selector.getAndRemove();
-            FileoutputUtil.log("Log_NotInserted.rtf", (String)query.getRight().left + "\r\n");
+            FileoutputUtil.log("Log_NotInserted.rtf", (String) query.getRight().left + "\r\n");
          }
       } catch (Exception var4) {
          Exception e = var4;
 
          try {
-            FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "입력안된 쿼리 저장 오류 발생 ", e);
+            FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "Error saving unentered query ", e);
          } catch (Exception var3) {
             var3.printStackTrace();
          }

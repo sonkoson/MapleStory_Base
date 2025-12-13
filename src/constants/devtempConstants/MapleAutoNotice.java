@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class MapleAutoNotice {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -60,7 +60,7 @@ public class MapleAutoNotice {
          }
 
          this.setNoticeType(noticeType);
-         System.out.println("총 " + this.notices.size() + "개의 자동 공지사항 데이터를 불러왔습니다. (공지사항 주기 : " + interval + "m/s)");
+         System.out.println("Loaded " + this.notices.size() + " Auto Notice messages. (Interval: " + interval + "ms)");
       } catch (Exception var19) {
          var19.printStackTrace();
       } finally {

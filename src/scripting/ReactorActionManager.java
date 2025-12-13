@@ -44,7 +44,8 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
       int numItems = 0;
 
       for (ReactorDropEntry d : chances) {
-         if (Randomizer.nextInt(1000000) < d.chance && (d.questid <= 0 || this.getPlayer().getQuestStatus(d.questid) == 1)) {
+         if (Randomizer.nextInt(1000000) < d.chance
+               && (d.questid <= 0 || this.getPlayer().getQuestStatus(d.questid) == 1)) {
             numItems++;
             items.add(d);
          }
@@ -62,26 +63,26 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
       for (ReactorDropEntry dx : items) {
          if (dx.itemId == 0) {
             int range = maxMeso - minMeso;
-            int mesoDrop = (int)(Randomizer.nextInt(range) + minMeso * GameServer.getInstance(this.getClient().getChannel()).getMesoRate());
-            this.reactor.getMap().spawnMesoDrop(mesoDrop, dropPos, this.reactor, this.getPlayer(), false, (byte)0);
+            int mesoDrop = (int) (Randomizer.nextInt(range)
+                  + minMeso * GameServer.getInstance(this.getClient().getChannel()).getMesoRate());
+            this.reactor.getMap().spawnMesoDrop(mesoDrop, dropPos, this.reactor, this.getPlayer(), false, (byte) 0);
          } else {
             Item drop;
             if (GameConstants.getInventoryType(dx.itemId) != MapleInventoryType.EQUIP) {
-               drop = new Item(dx.itemId, (short)0, (short)1, 0);
+               drop = new Item(dx.itemId, (short) 0, (short) 1, 0);
             } else {
-               drop = ii.randomizeStats((Equip)ii.getEquipById(dx.itemId));
+               drop = ii.randomizeStats((Equip) ii.getEquipById(dx.itemId));
             }
 
             drop.setGMLog(
-               FileoutputUtil.CurrentReadable_Time()
-                  + "에 "
-                  + this.c.getPlayer().getName()
-                  + "이(가) "
-                  + this.reactor.getReactorId()
-                  + " 리액터로 부터 얻은 아이템. (맵ID : "
-                  + this.getPlayer().getMapId()
-                  + ")"
-            );
+                  FileoutputUtil.CurrentReadable_Time()
+                        + " : "
+                        + this.c.getPlayer().getName()
+                        + " obtained item from reactor "
+                        + this.reactor.getReactorId()
+                        + ". (Map ID : "
+                        + this.getPlayer().getMapId()
+                        + ")");
             this.reactor.getMap().spawnItemDrop(this.reactor, this.getPlayer(), drop, dropPos, false, false);
          }
 
@@ -92,13 +93,15 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
    public void dropSingleItem(int itemId) {
       Item drop;
       if (GameConstants.getInventoryType(itemId) != MapleInventoryType.EQUIP) {
-         drop = new Item(itemId, (short)0, (short)1, 0);
+         drop = new Item(itemId, (short) 0, (short) 1, 0);
       } else {
-         drop = MapleItemInformationProvider.getInstance().randomizeStats((Equip)MapleItemInformationProvider.getInstance().getEquipById(itemId));
+         drop = MapleItemInformationProvider.getInstance()
+               .randomizeStats((Equip) MapleItemInformationProvider.getInstance().getEquipById(itemId));
       }
 
       drop.setGMLog("Dropped from reactor " + this.reactor.getReactorId() + " on map " + this.getPlayer().getMapId());
-      this.reactor.getMap().spawnItemDrop(this.reactor, this.getPlayer(), drop, this.reactor.getPosition(), false, false);
+      this.reactor.getMap().spawnItemDrop(this.reactor, this.getPlayer(), drop, this.reactor.getPosition(), false,
+            false);
    }
 
    @Override
@@ -164,15 +167,17 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
    }
 
    public void cancelHarvest(boolean succ) {
-      this.getPlayer().setFatigue((byte)(this.getPlayer().getFatigue() + 1));
-      this.getPlayer().getMap().broadcastMessage(this.getPlayer(), CField.showHarvesting(this.getPlayer().getId(), 0), false);
+      this.getPlayer().setFatigue((byte) (this.getPlayer().getFatigue() + 1));
+      this.getPlayer().getMap().broadcastMessage(this.getPlayer(), CField.showHarvesting(this.getPlayer().getId(), 0),
+            false);
       this.getPlayer().getMap().broadcastMessage(CField.harvestResult(this.getPlayer().getId(), succ));
    }
 
    public void doHarvest() {
       int pID = this.getReactor().getReactorId() < 200000 ? 92000000 : 92010000;
-      String pName = this.getReactor().getReactorId() < 200000 ? "채집" : "채광";
-      if (this.getPlayer().getFatigue() < 200 && !(this.getReactor().getTruePosition().distanceSq(this.getPlayer().getTruePosition()) > 10000.0)) {
+      String pName = this.getReactor().getReactorId() < 200000 ? "Hb" : "Mn";
+      if (this.getPlayer().getFatigue() < 200
+            && !(this.getReactor().getTruePosition().distanceSq(this.getPlayer().getTruePosition()) > 10000.0)) {
          int he = this.getPlayer().getProfessionLevel(pID);
          if (he > 0) {
             int hm = this.getReactor().getReactorId() % 100;
@@ -211,13 +216,13 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             }
 
             this.cancelHarvest(succ);
-            this.playerMessage(5, pName + "의 숙련도가 증가하였습니다. (+" + masteryIncrease + ")");
+            this.playerMessage(5, "Your mastery of " + pName + " has increased. (+" + masteryIncrease + ")");
             this.getPlayer().addProfessionExp(pID, masteryIncrease);
             AchievementFactory.checkMakingSkillFatigueInc(this.getPlayer(), pID, 1);
             AchievementFactory.checkMakingskillGather(this.getPlayer(), succ, pID);
          }
       } else {
-         this.c.getPlayer().dropMessage(5, "피로도가 부족하여" + pName + "을 할 수 없습니다.");
+         this.c.getPlayer().dropMessage(5, "You do not have enough fatigue to perform " + pName + ".");
       }
    }
 }

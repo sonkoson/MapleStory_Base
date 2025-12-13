@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class MapleDailyGift {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -64,10 +64,11 @@ public class MapleDailyGift {
                }
             }
 
-            dailyItems.add(new MapleDailyGiftInfo(Integer.valueOf(day), Integer.valueOf(itemid), Integer.valueOf(quantity), Integer.valueOf(sn)));
+            dailyItems.add(new MapleDailyGiftInfo(Integer.valueOf(day), Integer.valueOf(itemid),
+                  Integer.valueOf(quantity), Integer.valueOf(sn)));
          }
 
-         System.out.println("총 " + dailyItems.size() + "개의 데일리 기프트 설정 데이터를 불러왔습니다.");
+         System.out.println("Loaded " + dailyItems.size() + " Daily Gift data.");
       } catch (Exception var21) {
          var21.printStackTrace();
       } finally {

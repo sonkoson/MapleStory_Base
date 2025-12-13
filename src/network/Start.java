@@ -149,7 +149,8 @@ public class Start {
          Timer.SaveTimer.getInstance().start();
          Timer.HottimeTimer.getInstance().start();
          ServerConstants.WORLD_UI = ServerProperties.getProperty("net.sf.odinms.login.serverUI");
-         ServerConstants.ChangeMapUI = Boolean.parseBoolean(ServerProperties.getProperty("net.sf.odinms.login.ChangeMapUI"));
+         ServerConstants.ChangeMapUI = Boolean
+               .parseBoolean(ServerProperties.getProperty("net.sf.odinms.login.ChangeMapUI"));
          MapleMonsterCustomHP.Load();
          Start.AllLoding allLoding = new Start.AllLoding();
          allLoding.start();
@@ -158,14 +159,14 @@ public class Start {
          ServerConstants.loadMirrorDungeon();
          MapleDimensionalMirror.Load();
          SmartMobNoticeData.loadSmartMobNoticeData();
-         System.out.println("indie 서버 개방을 시작합니다.");
-         System.out.println("로그인 서버 개방을 시작합니다.");
+         System.out.println("Starting Indie Server.");
+         System.out.println("Starting Login Server.");
          LoginServer.startLoginServer();
-         System.out.println("채널 서버 개방을 시작합니다.");
+         System.out.println("Starting Channel Server.");
          GameServer.startChannelServer();
-         System.out.println("캐시샵 서버 개방을 시작합니다.");
+         System.out.println("Starting Cash Shop Server.");
          CashShopServer.startCashShopServer();
-         System.out.println("메이플 옥션 서버 개방을 시작합니다.");
+         System.out.println("Starting Maple Auction Server.");
          AuctionServer.startAuctionServer();
 
          try {
@@ -283,7 +284,7 @@ public class Start {
          ServerConstants.cacheFaceHair = ServerConstants.cacheFaceHair + file.getName();
       }
 
-      System.out.println("헤어 및 성형코드를 캐싱 완료 하였습니다.");
+      System.out.println("Cached Hair and Face codes.");
    }
 
    private class AllLoding extends Thread {
@@ -301,14 +302,14 @@ public class Start {
 
                CharacterPotential.loadSkillLevelTables();
             }
-         }, "스킬", this);
+         }, "Skills", this);
          Start.LoadingThread QuestLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
                MapleLifeFactory.loadQuestCounts();
                MapleQuest.initQuests();
             }
-         }, "퀘스트", this);
+         }, "Quests", this);
          Start.LoadingThread ItemLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
@@ -321,13 +322,13 @@ public class Start {
                CashItemFactory.getInstance().initialize();
                AuctionSearchManager.init();
             }
-         }, "아이템", this);
+         }, "Items", this);
          Start.LoadingThread GuildRankingLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
                MapleGuildRanking.getInstance().load();
             }
-         }, "길드 랭킹", this);
+         }, "Guild Ranking", this);
          Start.LoadingThread EtcLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
@@ -343,7 +344,7 @@ public class Start {
                MonsterCollection.cacheMonsterCollection();
                AchievementFactory.loadData();
             }
-         }, "기타", this);
+         }, "Etc", this);
          Start.LoadingThread MonsterLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
@@ -353,7 +354,7 @@ public class Start {
                BossWill.load();
                BossPapulatus.load();
             }
-         }, "몬스터", this);
+         }, "Monsters", this);
          Start.LoadingThread MatrixLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
@@ -361,15 +362,16 @@ public class Start {
                VCoreEnforcement.LoadEnforcement();
                VMatrixOption.Load();
             }
-         }, "V코어", this);
+         }, "V Matrix", this);
          Start.LoadingThread UnionLoader = new Start.LoadingThread(new Runnable() {
             @Override
             public void run() {
                MapleUnionData.loadData();
             }
-         }, "유니온", this);
-         Start.LoadingThread[] LoadingThreads = new Start.LoadingThread[]{
-            SkillLoader, QuestLoader, ItemLoader, GuildRankingLoader, EtcLoader, MonsterLoader, MatrixLoader, UnionLoader
+         }, "Union", this);
+         Start.LoadingThread[] LoadingThreads = new Start.LoadingThread[] {
+               SkillLoader, QuestLoader, ItemLoader, GuildRankingLoader, EtcLoader, MonsterLoader, MatrixLoader,
+               UnionLoader
          };
 
          for (Thread t : LoadingThreads) {
@@ -394,13 +396,14 @@ public class Start {
             }
          }
 
-         System.out.println("모든 캐싱 작업이 완료되었습니다. (소요 시간 " + (System.currentTimeMillis() - Start.startTime) / 1000L + "초)");
+         System.out.println("All caching operations completed. (Duration "
+               + (System.currentTimeMillis() - Start.startTime) / 1000L + "s)");
          GameConstants.isOpen = true;
          long before = Runtime.getRuntime().freeMemory();
          System.gc();
          long after = Runtime.getRuntime().freeMemory();
          DecimalFormat df = new DecimalFormat(",###.000");
-         System.out.println("메모리를 " + df.format((after - before) / 1000000.0) + " MB 만큼 GC하였습니다.");
+         System.out.println("GC cleaned " + df.format((after - before) / 1000000.0) + " MB of memory.");
          CMDCommand.main();
       }
    }
@@ -415,7 +418,7 @@ public class Start {
 
       @Override
       public synchronized void start() {
-         System.out.println(this.LoadingThreadName + " 로드가 시작됩니다.");
+         System.out.println(this.LoadingThreadName + " loading started.");
          super.start();
       }
    }
@@ -437,14 +440,13 @@ public class Start {
          this.StartTime = System.currentTimeMillis();
          this.WrappedRunnable.run();
          System.out
-            .println(
-               this.LoadingThreadName
-                  + " 로드가 완료되었습니다. (소요 시간 "
-                  + (System.currentTimeMillis() - this.StartTime) / 1000L
-                  + "초. ["
-                  + (Start.CompletedLoadingThreads.get() + 1)
-                  + "/8])"
-            );
+               .println(
+                     this.LoadingThreadName
+                           + " load completed. (Duration "
+                           + (System.currentTimeMillis() - this.StartTime) / 1000L
+                           + "s. ["
+                           + (Start.CompletedLoadingThreads.get() + 1)
+                           + "/8])");
          synchronized (this.ToNotify) {
             Start.CompletedLoadingThreads.incrementAndGet();
             this.ToNotify.notify();

@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 public class DBEventManager {
    static DBProcessor[] processors;
@@ -70,7 +70,7 @@ public class DBEventManager {
          tempProcessor.start();
          processors[number] = tempProcessor;
       } catch (Exception var7) {
-         System.out.println("DBProcessor 재실행 실패");
+         System.out.println("DBProcessor restart failed");
          var7.printStackTrace();
       }
    }

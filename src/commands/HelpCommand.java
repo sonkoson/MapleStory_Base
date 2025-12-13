@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import objects.users.MapleClient;
 
@@ -14,8 +14,9 @@ public class HelpCommand implements Command {
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{
-         new CommandDefinition("GM명령어", "[페이지 - 기본값 : 1]", "명령어 도움말을 표시합니다.", 1), new CommandDefinition("GM도움말", "[페이지 - 기본값 : 1]", "명령어 도움말을 표시합니다.", 1)
+      return new CommandDefinition[] {
+            new CommandDefinition("!help", "[page - default: 1]", "Shows the list of commands.", 1),
+            new CommandDefinition("!commands", "[page - default: 1]", "Shows the list of commands.", 1)
       };
    }
 }

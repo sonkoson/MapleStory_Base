@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import network.models.CField;
 import objects.fields.Field;
@@ -10,7 +10,7 @@ import objects.utils.Timer;
 public class FieldCommand implements Command {
    @Override
    public void execute(final MapleClient c, String[] splitted) throws Exception, IllegalCommandSyntaxException {
-      if (splitted[0].equals("빙고시작") && splitted.length > 1) {
+      if (splitted[0].equals("!bingo") && splitted.length > 1) {
          String var3 = splitted[1];
          switch (var3) {
             case "0":
@@ -62,6 +62,7 @@ public class FieldCommand implements Command {
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{new CommandDefinition("빙고시작", "0 or 1", "빙고 게임을 시작합니다.", 6)};
+      return new CommandDefinition[] {
+            new CommandDefinition("!bingo", "0 or 1", "Starts or stops the bingo game.", 6) };
    }
 }

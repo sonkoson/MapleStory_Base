@@ -86,7 +86,8 @@ public class AuctionHandler {
       MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
       int op = slea.readInt();
       if (AuctionServer.getPlayerStorage().getCharacterById(c.getPlayer().getId()) == null) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "알 수 없는 오류가 발생하였습니다.\r\n경매장 재접속 부탁드립니다."));
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1, "Unknown error occurred.\r\nPlease reconnect to the Auction House."));
       } else {
          switch (op) {
             case 0:
@@ -153,7 +154,7 @@ public class AuctionHandler {
             case 60:
             default:
                System.out.println(
-                     "Unhandled 경매 action by " + c.getPlayer().getName() + " : " + op + ", " + slea.toString());
+                     "Unhandled Auction action by " + c.getPlayer().getName() + " : " + op + ", " + slea.toString());
                break;
             case 10: {
                slea.skip(4);
@@ -168,27 +169,27 @@ public class AuctionHandler {
                Item itemxxxxxxxx = c.getPlayer().getInventory(MapleInventoryType.getByType(inv)).getItem(slot);
                if (GameConstants.isEquip(itemxxxxxxxx.getItemId())
                      && (((Equip) itemxxxxxxxx).getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "장비의 흔적은 판매 등록이 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be listed for sale.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (quantity <= 0 || System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 3000L) {
-                  c.getPlayer().ban("아이템 복사 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("Permanent ban for item duplication hack usage", true, true, true);
                   return;
                }
 
                if (itemxxxxxxxx == null || itemxxxxxxxx.getItemId() != itemID || itemxxxxxxxx.getQuantity() < quantity
                      || c.getPlayer().getMeso() < 2000L) {
-                  c.getPlayer().dropMessage(1, "오류가 발생했습니다.");
+                  c.getPlayer().dropMessage(1, "An error occurred.");
                   return;
                }
 
                if (itemxxxxxxxx.getItemId() / 1000000 == 1) {
                   Equip e = (Equip) itemxxxxxxxx;
                   if (e.getCashEnchantCount() > 0) {
-                     c.getPlayer().dropMessage(1, "치장 옵션 부여를 적용한 아이템은 등록할 수 없습니다.");
+                     c.getPlayer().dropMessage(1, "Items with decorative options applied cannot be listed.");
                      c.getSession().writeAndFlush(
                            new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                      return;
@@ -196,27 +197,27 @@ public class AuctionHandler {
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxx.getItemId())) {
-                  c.getPlayer().dropMessage(1, "해당 아이템은 등록이 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "This item cannot be listed.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                StringBuilder sb = new StringBuilder();
-               sb.append("경매장 아이템 등록 (계정 : ");
+               sb.append("Auction Item Listing (Account : ");
                sb.append(c.getAccountName());
-               sb.append(", 캐릭터 : ");
+               sb.append(", Character : ");
                sb.append(c.getPlayer().getName());
-               sb.append(", 등록 가격 : ");
+               sb.append(", Price : ");
                sb.append(meso);
-               sb.append(", 아이템 : ");
+               sb.append(", Item : ");
                sb.append(itemxxxxxxxx.getItemId());
                sb.append(" ");
                sb.append(itemxxxxxxxx.getQuantity());
-               sb.append("개");
+               sb.append("count");
                long serialNumber = 0L;
                if (itemxxxxxxxx instanceof Equip) {
-                  sb.append(" (정보 : ");
+                  sb.append(" (Info : ");
                   serialNumber = ((Equip) itemxxxxxxxx).getSerialNumberEquip();
                   sb.append(((Equip) itemxxxxxxxx).toString());
                }
@@ -295,14 +296,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "장비의 흔적은 재등록이 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be re-listed.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "해당 아이템은 등록이 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "This item cannot be listed.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -356,20 +357,20 @@ public class AuctionHandler {
                      0);
                Center.Auction.addItem(aitem);
                StringBuilder sbx = new StringBuilder();
-               sbx.append("경매장 아이템 재등록 (계정 : ");
+               sbx.append("Auction Item Re-listing (Account : ");
                sbx.append(c.getAccountName());
-               sbx.append(", 캐릭터 : ");
+               sbx.append(", Character : ");
                sbx.append(c.getPlayer().getName());
-               sbx.append(", 등록 가격 : ");
+               sbx.append(", Price : ");
                sbx.append(aitem.getMesos());
-               sbx.append(", 아이템 : ");
+               sbx.append(", Item : ");
                sbx.append(itemxxxxxxxxx.getItem().getItemId());
                sbx.append(" ");
                sbx.append(itemxxxxxxxxx.getItem().getQuantity());
-               sbx.append("개");
+               sbx.append("count");
                long serialNumberx = 0L;
                if (itemxxxxxxxxx.getItem() instanceof Equip) {
-                  sbx.append(" (정보 : ");
+                  sbx.append(" (Info : ");
                   serialNumberx = ((Equip) itemxxxxxxxxx.getItem()).getSerialNumberEquip();
                   sbx.append(((Equip) itemxxxxxxxxx.getItem()).toString());
                }
@@ -411,18 +412,18 @@ public class AuctionHandler {
                itemxxxxxxxxxx.setHistoryID(AuctionHistoryIDManager.getAndIncrement());
                int flag = 2;
                StringBuilder sbx = new StringBuilder();
-               sbx.append("경매장 아이템 등록 취소 (계정 : ");
+               sbx.append("Auction Item Listing Cancel (Account : ");
                sbx.append(c.getAccountName());
-               sbx.append(", 캐릭터 : ");
+               sbx.append(", Character : ");
                sbx.append(c.getPlayer().getName());
-               sbx.append(", 아이템 : ");
+               sbx.append(", Item : ");
                sbx.append(itemxxxxxxxxxx.getItem().getItemId());
                sbx.append(" ");
                sbx.append(itemxxxxxxxxxx.getItem().getQuantity());
-               sbx.append("개");
+               sbx.append("count");
                long serialNumberx = 0L;
                if (itemxxxxxxxxxx.getItem() instanceof Equip) {
-                  sbx.append(" (정보 : ");
+                  sbx.append(" (Info : ");
                   serialNumberx = ((Equip) itemxxxxxxxxxx.getItem()).getSerialNumberEquip();
                   sbx.append(((Equip) itemxxxxxxxxxx.getItem()).toString());
                }
@@ -490,14 +491,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "장비의 흔적은 구매가 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be purchased.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "해당 아이템은 구매가 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "This item cannot be purchased.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -514,27 +515,27 @@ public class AuctionHandler {
                      && !ii.isCash(itemxxxxxxxxxxx.getItem().getItemId())) {
                   StringBuilder sbx = new StringBuilder();
                   sbx.append(
-                        "경매장 아이템 가격 수정 핵 사용 / 등록된 가격 : "
+                        "Auction Item Price Edit Hack Usage / Registered Price : "
                               + itemxxxxxxxxxxx.getMesos()
-                              + ", 클라이언트 가격 : "
+                              + ", Client Price : "
                               + mesoxx / itemxxxxxxxxxxx.getItem().getQuantity()
-                              + " [이름 : "
+                              + " [Name : "
                               + c.getPlayer().getName()
                               + "]");
                   sbx.append(c.getAccountName());
-                  sbx.append(", 아이템 : ");
+                  sbx.append(", Item : ");
                   sbx.append(itemxxxxxxxxxxx.getItem().getItemId());
                   sbx.append(" ");
                   sbx.append(itemxxxxxxxxxxx.getItem().getQuantity());
-                  sbx.append("개");
+                  sbx.append("count");
                   long serialNumberx = 0L;
                   if (itemxxxxxxxxxxx.getItem() instanceof Equip) {
-                     sbx.append(" (정보 : ");
+                     sbx.append(" (Info : ");
                      serialNumberx = ((Equip) itemxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                      sbx.append(((Equip) itemxxxxxxxxxxx.getItem()).toString());
                   }
 
-                  sbx.append("), 판매자 : ");
+                  sbx.append("), Seller : ");
                   sbx.append(itemxxxxxxxxxxx.getOwnerName());
                   sbx.append(")");
                   LoggingManager.putLog(
@@ -553,23 +554,23 @@ public class AuctionHandler {
                boolean isPremiumUserxx = isPremiumUser(c.getPlayer());
                int limitCountxx = isPremiumUserxx ? 20 : 10;
                StringBuilder sbx = new StringBuilder();
-               sbx.append("경매장 아이템 구매완료 (계정 : ");
+               sbx.append("Auction Item Purchase Complete (Account : ");
                sbx.append(c.getAccountName());
-               sbx.append(", 캐릭터 : ");
+               sbx.append(", Character : ");
                sbx.append(c.getPlayer().getName());
-               sbx.append(", 아이템 : ");
+               sbx.append(", Item : ");
                sbx.append(itemxxxxxxxxxxx.getItem().getItemId());
                sbx.append(" ");
                sbx.append(itemxxxxxxxxxxx.getItem().getQuantity());
-               sbx.append("개");
+               sbx.append("count");
                long serialNumberx = 0L;
                if (itemxxxxxxxxxxx.getItem() instanceof Equip) {
-                  sbx.append(" (정보 : ");
+                  sbx.append(" (Info : ");
                   serialNumberx = ((Equip) itemxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                   sbx.append(((Equip) itemxxxxxxxxxxx.getItem()).toString());
                }
 
-               sbx.append("), 판매자 : ");
+               sbx.append("), Seller : ");
                sbx.append(itemxxxxxxxxxxx.getOwnerName());
                sbx.append(")");
                LoggingManager.putLog(
@@ -582,7 +583,7 @@ public class AuctionHandler {
                            AuctionLogType.BuyItem.getType(),
                            sbx));
                StringBuilder sb2 = new StringBuilder(sbx.toString());
-               sb2.replace(8, 12, "판매완료");
+               sb2.replace(8, 12, "Sell Done");
                int sellerAccID = itemxxxxxxxxxxx.getAccountID();
                String sellerAccName = "";
                int sellerChrID = itemxxxxxxxxxxx.getOwnerId();
@@ -666,7 +667,7 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "장비의 흔적은 구매가 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be purchased.");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -680,34 +681,34 @@ public class AuctionHandler {
                }
 
                if (quantityx < 0 || System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 3000L) {
-                  c.getPlayer().ban("아이템 복사 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("Permanent ban due to item duplication hack", true, true, true);
                   return;
                }
 
                if (mesoxxx / quantityx != itemxxxxxxxxxxxx.getMesos()) {
                   StringBuilder sbxx = new StringBuilder();
                   sbxx.append(
-                        "경매장 아이템 가격 수정 핵 사용 / 등록된 가격 : "
+                        "Auction Item Price Edit Hack Usage / Registered Price : "
                               + itemxxxxxxxxxxxx.getMesos()
-                              + ", 클라이언트 가격 : "
+                              + ", Client Price : "
                               + mesoxxx / itemxxxxxxxxxxxx.getItem().getQuantity()
-                              + " [이름 : "
+                              + " [Name : "
                               + c.getPlayer().getName()
                               + "]");
                   sbxx.append(c.getAccountName());
-                  sbxx.append(", 아이템 : ");
+                  sbxx.append(", Item : ");
                   sbxx.append(itemxxxxxxxxxxxx.getItem().getItemId());
                   sbxx.append(" ");
                   sbxx.append(itemxxxxxxxxxxxx.getItem().getQuantity());
-                  sbxx.append("개");
+                  sbxx.append("count");
                   long serialNumberxx = 0L;
                   if (itemxxxxxxxxxxxx.getItem() instanceof Equip) {
-                     sbxx.append(" (정보 : ");
+                     sbxx.append(" (Info : ");
                      serialNumberxx = ((Equip) itemxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                      sbxx.append(((Equip) itemxxxxxxxxxxxx.getItem()).toString());
                   }
 
-                  sbxx.append("), 판매자 : ");
+                  sbxx.append("), Seller : ");
                   sbxx.append(itemxxxxxxxxxxxx.getOwnerName());
                   sbxx.append(")");
                   LoggingManager.putLog(
@@ -758,23 +759,23 @@ public class AuctionHandler {
                }
 
                StringBuilder sbxx = new StringBuilder();
-               sbxx.append("경매장 아이템 구매완료 (계정 : ");
+               sbxx.append("Auction Item Purchase Complete (Account : ");
                sbxx.append(c.getAccountName());
-               sbxx.append(", 캐릭터 : ");
+               sbxx.append(", Character : ");
                sbxx.append(c.getPlayer().getName());
-               sbxx.append(", 아이템 : ");
+               sbxx.append(", Item : ");
                sbxx.append(itemxxxxxxxxxxxx.getItem().getItemId());
                sbxx.append(" ");
                sbxx.append(quantityx);
-               sbxx.append("개");
+               sbxx.append("count");
                long serialNumberxx = 0L;
                if (itemxxxxxxxxxxxx.getItem() instanceof Equip) {
-                  sbxx.append(" (정보 : ");
+                  sbxx.append(" (Info : ");
                   serialNumberxx = ((Equip) itemxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                   sbxx.append(((Equip) itemxxxxxxxxxxxx.getItem()).toString());
                }
 
-               sbxx.append("), 판매자 : ");
+               sbxx.append("), Seller : ");
                sbxx.append(itemxxxxxxxxxxxx.getOwnerName());
                sbxx.append(")");
                LoggingManager.putLog(
@@ -782,7 +783,7 @@ public class AuctionHandler {
                            c.getPlayer(), itemxxxxxxxxxxxx.getItem().getItemId(), quantityx, mesoxxx, serialNumberxx,
                            AuctionLogType.BuyItem.getType(), sbxx));
                StringBuilder sb2 = new StringBuilder(sbxx.toString());
-               sb2.replace(8, 12, "판매완료");
+               sb2.replace(8, 12, "Sell Done");
                int sellerAccID = itemxxxxxxxxxxxx.getAccountID();
                String sellerAccName = "";
                int sellerChrID = itemxxxxxxxxxxxx.getOwnerId();
@@ -862,7 +863,7 @@ public class AuctionHandler {
                }
 
                if (itemxxxxxxxxxxxxxx.getItem().getQuantity() <= 0) {
-                  c.getPlayer().ban("경매장 수령 버그 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("Permanent ban due to Auction claim bug abuse", true, true, true);
                   return;
                }
 
@@ -887,19 +888,19 @@ public class AuctionHandler {
                      sbxxxx.append(
                            "이미 수령한 대금을 다시 수령 시도 : 아이템 (" + itemIDxxx + ") [이름 : " + c.getPlayer().getName() + "]");
                      sbxxxx.append(c.getAccountName());
-                     sbxxxx.append(", 아이템 : ");
+                     sbxxxx.append(", Item : ");
                      sbxxxx.append(itemxxxxxxxxxxxxxx.getItem().getItemId());
                      sbxxxx.append(" ");
                      sbxxxx.append(itemxxxxxxxxxxxxxx.getItem().getQuantity());
-                     sbxxxx.append("개");
+                     sbxxxx.append("count");
                      long serialNumberxxxx = 0L;
                      if (itemxxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                        sbxxxx.append(" (정보 : ");
+                        sbxxxx.append(" (Info : ");
                         serialNumberxxxx = ((Equip) itemxxxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                         sbxxxx.append(((Equip) itemxxxxxxxxxxxxxx.getItem()).toString());
                      }
 
-                     sbxxxx.append("), 판매자 : ");
+                     sbxxxx.append("), Seller : ");
                      sbxxxx.append(itemxxxxxxxxxxxxxx.getOwnerName());
                      sbxxxx.append(")");
                      LoggingManager.putLog(
@@ -929,25 +930,25 @@ public class AuctionHandler {
                itemxxxxxxxxxxxxxx.setType(typexxxx);
                c.getPlayer().setMeso(c.getPlayer().getMeso() + delta);
                StringBuilder sbxxxx = new StringBuilder();
-               sbxxxx.append("경매장 대금 수령 (계정 : ");
+               sbxxxx.append("Auction Fund Claim (Account : ");
                sbxxxx.append(c.getAccountName());
-               sbxxxx.append(", 캐릭터 : ");
+               sbxxxx.append(", Character : ");
                sbxxxx.append(c.getPlayer().getName());
-               sbxxxx.append(", 수령 메소 : ");
+               sbxxxx.append(", Claimed Mesos : ");
                sbxxxx.append(delta);
-               sbxxxx.append(", 아이템 : ");
+               sbxxxx.append(", Item : ");
                sbxxxx.append(itemxxxxxxxxxxxxxx.getItem().getItemId());
                sbxxxx.append(" ");
                sbxxxx.append(itemxxxxxxxxxxxxxx.getItem().getQuantity());
-               sbxxxx.append("개");
+               sbxxxx.append("count");
                long serialNumberxxxx = 0L;
                if (itemxxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                  sbxxxx.append(" (정보 : ");
+                  sbxxxx.append(" (Info : ");
                   serialNumberxxxx = ((Equip) itemxxxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                   sbxxxx.append(((Equip) itemxxxxxxxxxxxxxx.getItem()).toString());
                }
 
-               sbxxxx.append("), 판매자 : ");
+               sbxxxx.append("), Seller : ");
                sbxxxx.append(itemxxxxxxxxxxxxxx.getOwnerName());
                sbxxxx.append(")");
                LoggingManager.putLog(
@@ -994,7 +995,7 @@ public class AuctionHandler {
                }
 
                if (itemxxxxxxxxxxxxx.getItem().getQuantity() <= 0) {
-                  c.getPlayer().ban("경매장 수령 버그 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("Permanent ban for Auction claim bug abuse", true, true, true);
                   return;
                }
 
@@ -1028,19 +1029,19 @@ public class AuctionHandler {
                      sbxxx.append(
                            "이미 수령한 아이템을 다시 수령 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
-                     sbxxx.append(", 아이템 : ");
+                     sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
                      sbxxx.append(" ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getQuantity());
-                     sbxxx.append("개");
+                     sbxxx.append("count");
                      long serialNumberxxx = 0L;
                      if (itemxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                        sbxxx.append(" (정보 : ");
+                        sbxxx.append(" (Info : ");
                         serialNumberxxx = ((Equip) itemxxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                         sbxxx.append(((Equip) itemxxxxxxxxxxxxx.getItem()).toString());
                      }
 
-                     sbxxx.append("), 판매자 : ");
+                     sbxxx.append("), Seller : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getOwnerName());
                      sbxxx.append(")");
                      LoggingManager.putLog(
@@ -1061,19 +1062,19 @@ public class AuctionHandler {
                      sbxxx.append(
                            "이미 수령한 아이템을 다시 수령 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
-                     sbxxx.append(", 아이템 : ");
+                     sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
                      sbxxx.append(" ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getQuantity());
-                     sbxxx.append("개");
+                     sbxxx.append("count");
                      long serialNumberxxx = 0L;
                      if (itemxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                        sbxxx.append(" (정보 : ");
+                        sbxxx.append(" (Info : ");
                         serialNumberxxx = ((Equip) itemxxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                         sbxxx.append(((Equip) itemxxxxxxxxxxxxx.getItem()).toString());
                      }
 
-                     sbxxx.append("), 판매자 : ");
+                     sbxxx.append("), Seller : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getOwnerName());
                      sbxxx.append(")");
                      LoggingManager.putLog(
@@ -1100,19 +1101,19 @@ public class AuctionHandler {
                      sbxxx.append(
                            "이미 반환한 아이템을 다시 반환 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
-                     sbxxx.append(", 아이템 : ");
+                     sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
                      sbxxx.append(" ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getQuantity());
-                     sbxxx.append("개");
+                     sbxxx.append("count");
                      long serialNumberxxx = 0L;
                      if (itemxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                        sbxxx.append(" (정보 : ");
+                        sbxxx.append(" (Info : ");
                         serialNumberxxx = ((Equip) itemxxxxxxxxxxxxx.getItem()).getSerialNumberEquip();
                         sbxxx.append(((Equip) itemxxxxxxxxxxxxx.getItem()).toString());
                      }
 
-                     sbxxx.append("), 판매자 : ");
+                     sbxxx.append("), Seller : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getOwnerName());
                      sbxxx.append(")");
                      LoggingManager.putLog(

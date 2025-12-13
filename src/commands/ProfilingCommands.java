@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,14 +9,16 @@ import objects.utils.CPUSampler;
 public class ProfilingCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{
-         new CommandDefinition("감시시작", "", "프로파일러로 CPU 감시를 시작합니다.", 6), new CommandDefinition("감시종료", "<파일이름>", "프로파일러로 CPU 감시를 종료하고 해당 파일이름으로 결과를 저장합니다.", 6)
+      return new CommandDefinition[] {
+            new CommandDefinition("!startprofiling", "", "Starts CPU profiling for the server.", 6),
+            new CommandDefinition("!stopprofiling", "<filename>",
+                  "Stops CPU profiling and saves it to the specified file.", 6)
       };
    }
 
    @Override
    public void execute(MapleClient c, String[] splitted) {
-      if (splitted[0].equals("감시시작")) {
+      if (splitted[0].equals("!startprofiling")) {
          CPUSampler sampler = CPUSampler.getInstance();
          sampler.addIncluded("api");
          sampler.addIncluded("commands");
@@ -27,7 +29,8 @@ public class ProfilingCommands implements Command {
          sampler.addIncluded("scripting");
          sampler.addIncluded("security");
          sampler.start();
-      } else if (splitted[0].equals("감시종료")) {
+         c.getPlayer().dropMessage(6, "Profiling started.");
+      } else if (splitted[0].equals("!stopprofiling")) {
          CPUSampler sampler = CPUSampler.getInstance();
 
          try {
@@ -38,7 +41,7 @@ public class ProfilingCommands implements Command {
 
             File file = new File(filename);
             if (file.exists()) {
-               c.getPlayer().dropMessage(6, "입력한 파일이 이미 존재합니다. 다른 이름을 사용해 주세요.");
+               c.getPlayer().dropMessage(6, "The file already exists. Please choose a different filename.");
                return;
             }
 
@@ -46,8 +49,10 @@ public class ProfilingCommands implements Command {
             FileWriter fw = new FileWriter(file);
             sampler.save(fw, 1, 10);
             fw.close();
+            c.getPlayer().dropMessage(6, "Profiling stopped and saved to " + filename);
          } catch (IOException var7) {
             System.err.println("Error saving profile" + var7);
+            c.getPlayer().dropMessage(6, "Error saving profile: " + var7.getMessage());
          }
 
          sampler.reset();

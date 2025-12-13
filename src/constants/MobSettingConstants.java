@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class MobSettingConstants {
          count++;
       }
 
-      System.out.println("[DEBUG] 총 " + count + "개의 커스텀 몹 설정 데이터를 불러왔습니다.");
+      System.out.println("[DEBUG] Loaded " + count + " Custom Mob MaxHP Settings.");
    }
 
    public static long getMaxHP(int mobID) {

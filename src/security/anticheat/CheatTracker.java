@@ -123,22 +123,22 @@ public class CheatTracker {
    }
 
    public final void checkSameDamage(Long eachd, double expected) {
-      if (eachd > 2000L && this.lastDamage == eachd && this.chr.get() != null && (this.chr.get().getLevel() < 175 || eachd.longValue() > expected * 2.0)) {
+      if (eachd > 2000L && this.lastDamage == eachd && this.chr.get() != null
+            && (this.chr.get().getLevel() < 175 || eachd.longValue() > expected * 2.0)) {
          this.numSameDamage++;
          if (this.numSameDamage > 5) {
             this.registerOffense(
-               CheatingOffense.SAME_DAMAGE,
-               this.numSameDamage
-                  + " times, damage "
-                  + eachd
-                  + ", expected "
-                  + expected
-                  + " [Level: "
-                  + this.chr.get().getLevel()
-                  + ", Job: "
-                  + this.chr.get().getJob()
-                  + "]"
-            );
+                  CheatingOffense.SAME_DAMAGE,
+                  this.numSameDamage
+                        + " times, damage "
+                        + eachd
+                        + ", expected "
+                        + expected
+                        + " [Level: "
+                        + this.chr.get().getLevel()
+                        + ", Job: "
+                        + this.chr.get().getJob()
+                        + "]");
             this.numSameDamage = 0;
          }
       } else {
@@ -257,10 +257,11 @@ public class CheatTracker {
          if (offense.shouldAutoban(entry.getCount())) {
             byte type = offense.getBanType();
             if (type == 1) {
-               AutobanManager.getInstance().autoban(chrhardref.getClient(), StringUtil.makeEnumHumanReadable(offense.name()));
+               AutobanManager.getInstance().autoban(chrhardref.getClient(),
+                     StringUtil.makeEnumHumanReadable(offense.name()));
             } else if (type == 2) {
                chrhardref.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("You have been disconnected due to abnormal activity.");
             }
 
             this.gm_message = 0;
@@ -282,20 +283,19 @@ public class CheatTracker {
                   this.gm_message++;
                   if (this.gm_message % 100 == 0) {
                      Center.Broadcast.broadcastGMMessage(
-                        CWvsContext.serverNotice(
-                           6,
-                           "[GM Message] "
-                              + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
-                              + " (level "
-                              + chrhardref.getLevel()
-                              + ") suspected of hacking! "
-                              + StringUtil.makeEnumHumanReadable(offense.name())
-                              + (param == null ? "" : " - " + param)
-                        )
-                     );
+                           CWvsContext.serverNotice(
+                                 6,
+                                 "[GM Message] "
+                                       + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
+                                       + " (level "
+                                       + chrhardref.getLevel()
+                                       + ") suspected of hacking! "
+                                       + StringUtil.makeEnumHumanReadable(offense.name())
+                                       + (param == null ? "" : " - " + param)));
                   }
 
-                  if (this.gm_message >= 300 && chrhardref.getLevel() < (offense == CheatingOffense.SAME_DAMAGE ? 175 : 150)) {
+                  if (this.gm_message >= 300
+                        && chrhardref.getLevel() < (offense == CheatingOffense.SAME_DAMAGE ? 175 : 150)) {
                      Timestamp created = chrhardref.getClient().getCreated();
                      long time = System.currentTimeMillis();
                      if (created != null) {
@@ -304,34 +304,31 @@ public class CheatTracker {
 
                      if (time + 1296000000L >= System.currentTimeMillis()) {
                         AutobanManager.getInstance()
-                           .autoban(
-                              chrhardref.getClient(),
-                              StringUtil.makeEnumHumanReadable(offense.name()) + " over 500 times " + (param == null ? "" : " - " + param)
-                           );
+                              .autoban(
+                                    chrhardref.getClient(),
+                                    StringUtil.makeEnumHumanReadable(offense.name()) + " over 500 times "
+                                          + (param == null ? "" : " - " + param));
                      } else {
                         this.gm_message = 0;
                         Center.Broadcast.broadcastGMMessage(
-                           CWvsContext.serverNotice(
-                              6,
-                              "[GM Message] "
-                                 + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
-                                 + " (level "
-                                 + chrhardref.getLevel()
-                                 + ") suspected of autoban! "
-                                 + StringUtil.makeEnumHumanReadable(offense.name())
-                                 + (param == null ? "" : " - " + param)
-                           )
-                        );
+                              CWvsContext.serverNotice(
+                                    6,
+                                    "[GM Message] "
+                                          + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
+                                          + " (level "
+                                          + chrhardref.getLevel()
+                                          + ") suspected of autoban! "
+                                          + StringUtil.makeEnumHumanReadable(offense.name())
+                                          + (param == null ? "" : " - " + param)));
                         FileoutputUtil.log(
-                           "Log_Hacker.rtf",
-                           "[GM Message] "
-                              + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
-                              + " (level "
-                              + chrhardref.getLevel()
-                              + ") suspected of autoban! "
-                              + StringUtil.makeEnumHumanReadable(offense.name())
-                              + (param == null ? "" : " - " + param)
-                        );
+                              "Log_Hacker.rtf",
+                              "[GM Message] "
+                                    + MapleCharacterUtil.makeMapleReadable(chrhardref.getName())
+                                    + " (level "
+                                    + chrhardref.getLevel()
+                                    + ") suspected of autoban! "
+                                    + StringUtil.makeEnumHumanReadable(offense.name())
+                                    + (param == null ? "" : " - " + param));
                      }
                   }
                default:
@@ -342,7 +339,8 @@ public class CheatTracker {
    }
 
    public boolean canSmega() {
-      if (this.lastSmegaTime + 10000L > System.currentTimeMillis() && this.chr.get() != null && !this.chr.get().isGM()) {
+      if (this.lastSmegaTime + 10000L > System.currentTimeMillis() && this.chr.get() != null
+            && !this.chr.get().isGM()) {
          return false;
       } else {
          this.lastSmegaTime = System.currentTimeMillis();
@@ -351,7 +349,8 @@ public class CheatTracker {
    }
 
    public boolean canAvatarSmega() {
-      if (this.lastASmegaTime + 300000L > System.currentTimeMillis() && this.chr.get() != null && !this.chr.get().isGM()) {
+      if (this.lastASmegaTime + 300000L > System.currentTimeMillis() && this.chr.get() != null
+            && !this.chr.get().isGM()) {
          return false;
       } else {
          this.lastASmegaTime = System.currentTimeMillis();
@@ -462,7 +461,8 @@ public class CheatTracker {
 
          CheatingOffenseEntry[] offenses_copy;
          try {
-            offenses_copy = CheatTracker.this.offenses.values().toArray(new CheatingOffenseEntry[CheatTracker.this.offenses.size()]);
+            offenses_copy = CheatTracker.this.offenses.values()
+                  .toArray(new CheatingOffenseEntry[CheatTracker.this.offenses.size()]);
          } finally {
             CheatTracker.this.rL.unlock();
          }

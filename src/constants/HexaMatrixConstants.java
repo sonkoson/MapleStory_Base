@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,25 +14,34 @@ import objects.wz.provider.MapleDataProviderFactory;
 import objects.wz.provider.MapleDataTool;
 
 public class HexaMatrixConstants {
-   private static int[] originSkillUpgradeSolErdaCost = new int[]{1, 1, 1, 2, 2, 2, 3, 3, 10, 3, 3, 4, 4, 4, 4, 4, 4, 5, 15, 5, 5, 5, 5, 5, 6, 6, 6, 7, 20};
-   private static int[] originSkillUpgradeSolErdaPieceCost = new int[]{
-      30, 35, 40, 45, 50, 55, 60, 65, 200, 80, 90, 100, 110, 120, 130, 140, 150, 160, 350, 170, 180, 190, 200, 210, 220, 230, 240, 250, 500
+   private static int[] originSkillUpgradeSolErdaCost = new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 10, 3, 3, 4, 4, 4, 4, 4, 4,
+         5, 15, 5, 5, 5, 5, 5, 6, 6, 6, 7, 20 };
+   private static int[] originSkillUpgradeSolErdaPieceCost = new int[] {
+         30, 35, 40, 45, 50, 55, 60, 65, 200, 80, 90, 100, 110, 120, 130, 140, 150, 160, 350, 170, 180, 190, 200, 210,
+         220, 230, 240, 250, 500
    };
-   private static int[] masteryCoreUpgradeSolErdaCost = new int[]{1, 1, 1, 1, 1, 1, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 3, 8, 3, 3, 3, 3, 3, 3, 3, 3, 4, 10};
-   private static int[] masteryCoreUpgradeSolErdaPieceCost = new int[]{
-      15, 18, 20, 23, 25, 28, 30, 33, 100, 40, 45, 50, 55, 60, 65, 70, 75, 80, 175, 85, 90, 95, 100, 105, 110, 115, 120, 125, 250
+   private static int[] masteryCoreUpgradeSolErdaCost = new int[] { 1, 1, 1, 1, 1, 1, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2,
+         3, 8, 3, 3, 3, 3, 3, 3, 3, 3, 4, 10 };
+   private static int[] masteryCoreUpgradeSolErdaPieceCost = new int[] {
+         15, 18, 20, 23, 25, 28, 30, 33, 100, 40, 45, 50, 55, 60, 65, 70, 75, 80, 175, 85, 90, 95, 100, 105, 110, 115,
+         120, 125, 250
    };
-   private static int[] enforceCoreUpgradeSolErdaCost = new int[]{1, 1, 1, 2, 2, 2, 3, 3, 8, 3, 3, 3, 3, 3, 3, 3, 3, 4, 12, 4, 4, 4, 4, 4, 5, 5, 5, 6, 15};
-   private static int[] enforceCoreUpgradeSolErdaPieceCost = new int[]{
-      23, 27, 30, 34, 38, 42, 45, 49, 150, 60, 68, 75, 83, 90, 98, 105, 113, 120, 263, 128, 135, 143, 150, 158, 165, 173, 180, 188, 375
+   private static int[] enforceCoreUpgradeSolErdaCost = new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 8, 3, 3, 3, 3, 3, 3, 3, 3,
+         4, 12, 4, 4, 4, 4, 4, 5, 5, 5, 6, 15 };
+   private static int[] enforceCoreUpgradeSolErdaPieceCost = new int[] {
+         23, 27, 30, 34, 38, 42, 45, 49, 150, 60, 68, 75, 83, 90, 98, 105, 113, 120, 263, 128, 135, 143, 150, 158, 165,
+         173, 180, 188, 375
    };
-   private static int[] publicCoreUpgradeSolErdaCost = new int[]{1, 1, 1, 2, 2, 2, 3, 3, 10, 3, 3, 4, 4, 4, 4, 4, 4, 5, 15, 5, 5, 5, 5, 5, 6, 6, 6, 7, 20};
-   private static int[] publicCoreUpgradeSolErdaPieceCost = new int[]{
-      30, 35, 40, 45, 50, 55, 60, 65, 200, 80, 90, 100, 110, 120, 130, 140, 150, 160, 350, 170, 180, 190, 200, 210, 220, 230, 240, 250, 500
+   private static int[] publicCoreUpgradeSolErdaCost = new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 10, 3, 3, 4, 4, 4, 4, 4, 4,
+         5, 15, 5, 5, 5, 5, 5, 6, 6, 6, 7, 20 };
+   private static int[] publicCoreUpgradeSolErdaPieceCost = new int[] {
+         30, 35, 40, 45, 50, 55, 60, 65, 200, 80, 90, 100, 110, 120, 130, 140, 150, 160, 350, 170, 180, 190, 200, 210,
+         220, 230, 240, 250, 500
    };
-   private static int[] hexaStatUpgradeSolErdaCost = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-   private static int[] hexaStatUpgradeSolErdaPieceCost = new int[]{10, 10, 10, 20, 20, 20, 20, 30, 30, 50, 50};
-   private static double[] hexaStatUpgradeWeight = new double[]{0.35, 0.35, 0.35, 0.2, 0.2, 0.2, 0.2, 0.15, 0.1, 0.05};
+   private static int[] hexaStatUpgradeSolErdaCost = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+   private static int[] hexaStatUpgradeSolErdaPieceCost = new int[] { 10, 10, 10, 20, 20, 20, 20, 30, 30, 50, 50 };
+   private static double[] hexaStatUpgradeWeight = new double[] { 0.35, 0.35, 0.35, 0.2, 0.2, 0.2, 0.2, 0.15, 0.1,
+         0.05 };
    public static int solErdaStrengthMax = 1000;
    public static int solErdaMax = 20;
    public static final Map<Integer, List<Integer>> sixthJobSkillCore = new HashMap<>();
@@ -44,9 +53,9 @@ public class HexaMatrixConstants {
    private static final Map<Integer, String> coreName = new HashMap<>();
    private static final Map<Integer, String> coreDesc = new HashMap<>();
    private static final Map<HexaMatrixConstants.HexaStatOption, Map<Integer, Double>> mainHexaStatValue = new EnumMap<>(
-      HexaMatrixConstants.HexaStatOption.class
-   );
-   private static final Map<HexaMatrixConstants.HexaStatOption, Map<Integer, Double>> subHexaStatValue = new EnumMap<>(HexaMatrixConstants.HexaStatOption.class);
+         HexaMatrixConstants.HexaStatOption.class);
+   private static final Map<HexaMatrixConstants.HexaStatOption, Map<Integer, Double>> subHexaStatValue = new EnumMap<>(
+         HexaMatrixConstants.HexaStatOption.class);
 
    public static int getHexaStatCoreIdByIndex(int index) {
       return 50000000;
@@ -92,7 +101,7 @@ public class HexaMatrixConstants {
             coreName.put(coreId, name);
             coreDesc.put(coreId, desc);
          } catch (Exception var24) {
-            System.out.println("6차 코어 정보 파싱 오류");
+            System.out.println("6th Job Skill Info Load Error");
             var24.printStackTrace();
          }
       }
@@ -139,7 +148,7 @@ public class HexaMatrixConstants {
 
             sixthJobCommonCore.put(jobId, cList);
          } catch (Exception var23) {
-            System.out.println("6차 직업 코어 파싱 오류");
+            System.out.println("6th Job Mastery/Enhance Info Load Error");
             var23.printStackTrace();
          }
       }
@@ -149,9 +158,10 @@ public class HexaMatrixConstants {
 
       for (MapleData typeData : mainType.getChildren()) {
          try {
-            HexaMatrixConstants.HexaStatOption type = HexaMatrixConstants.HexaStatOption.findByValue(Integer.parseInt(typeData.getName()));
+            HexaMatrixConstants.HexaStatOption type = HexaMatrixConstants.HexaStatOption
+                  .findByValue(Integer.parseInt(typeData.getName()));
             if (type == null) {
-               System.out.println("정의되지 않은 헥사스텟" + typeData.getName());
+               System.out.println("Undefined Hexa Stat Type: " + typeData.getName());
             } else {
                Map<Integer, Double> tempMap = new HashMap<>();
 
@@ -169,7 +179,7 @@ public class HexaMatrixConstants {
                mainHexaStatValue.put(type, tempMap);
             }
          } catch (Exception var22) {
-            System.out.println("헥사 스텟 메인 옵션 파싱 오류");
+            System.out.println("Hexa Stat Info Load Error");
             var22.printStackTrace();
          }
       }
@@ -178,9 +188,10 @@ public class HexaMatrixConstants {
 
       for (MapleData typeData : subType.getChildren()) {
          try {
-            HexaMatrixConstants.HexaStatOption type = HexaMatrixConstants.HexaStatOption.findByValue(Integer.parseInt(typeData.getName()));
+            HexaMatrixConstants.HexaStatOption type = HexaMatrixConstants.HexaStatOption
+                  .findByValue(Integer.parseInt(typeData.getName()));
             if (type == null) {
-               System.out.println("정의되지 않은 헥사스텟" + typeData.getName());
+               System.out.println("Undefined Hexa Stat Type (Sub): " + typeData.getName());
             } else {
                Map<Integer, Double> tempMap = new HashMap<>();
 
@@ -198,20 +209,20 @@ public class HexaMatrixConstants {
                subHexaStatValue.put(type, tempMap);
             }
          } catch (Exception var21) {
-            System.out.println("헥사 스텟 서브 옵션 파싱 오류");
+            System.out.println("Hexa Stat Info Load Error (Sub)");
             var21.printStackTrace();
          }
       }
 
-      System.out.println("Hexa Matrix 정보 로드 완료");
+      System.out.println("Hexa Matrix Data loading complete.");
    }
 
    public static HexaMatrixConstants.HexaMatrixFlag[] getSkillFlags() {
-      return new HexaMatrixConstants.HexaMatrixFlag[]{
-         HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE,
-         HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE,
-         HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE,
-         HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE
+      return new HexaMatrixConstants.HexaMatrixFlag[] {
+            HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE,
+            HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE,
+            HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE,
+            HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE
       };
    }
 

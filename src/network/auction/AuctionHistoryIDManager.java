@@ -16,11 +16,12 @@ public class AuctionHistoryIDManager {
       try {
          label58: {
             try (Connection con = DBConnection.getConnection()) {
-               PreparedStatement ps = con.prepareStatement("select historyID from `auctionitems` order by historyID DESC");
+               PreparedStatement ps = con
+                     .prepareStatement("select historyID from `auctionitems` order by historyID DESC");
                ResultSet rs = ps.executeQuery();
                if (rs.next()) {
                   idx.set(rs.getInt("historyID") + 1);
-                  System.out.println("경매장 historyID가 " + idx.get() + "(으)로 초기화 되었습니다.");
+                  System.out.println("Auction historyID reset to " + idx.get() + ".");
                   rs.close();
                   ps.close();
                   break label58;
@@ -35,7 +36,7 @@ public class AuctionHistoryIDManager {
       } catch (SQLException var6) {
       }
 
-      System.out.println("옥션 완료 아이템 인덱싱 로드 완료.");
+      System.out.println("Auction completed item indexing load finished.");
    }
 
    public static int getAndIncrement() {

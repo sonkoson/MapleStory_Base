@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConnection;
 import java.sql.Connection;
@@ -62,9 +62,9 @@ public class TimeScheduleEntry {
             }
          }
 
-         System.out.println("특정 시간 발생 이벤트 체크 데이터를 불러왔습니다.");
+         System.out.println("Time Schedule Event Check Data loaded.");
       } catch (SQLException var17) {
-         throw new RuntimeException("[오류] DB 연결에 실패하였습니다.");
+         throw new RuntimeException("[Error] Failed to connect to DB.");
       } finally {
          try {
             if (ps != null) {
@@ -153,9 +153,9 @@ public class TimeScheduleEntry {
          ps.setInt(2, this.getSpecialHottimeCheck());
          ps.executeUpdate();
          ps.close();
-         System.out.println("특정 시간 발생 이벤트 체크 데이터를 저장했습니다.");
+         System.out.println("Time Schedule Event Check Data saved.");
       } catch (SQLException var16) {
-         throw new RuntimeException("[오류] DB 연결에 실패하였습니다.");
+         throw new RuntimeException("[Error] Failed to connect to DB.");
       } finally {
          try {
             if (ps != null) {

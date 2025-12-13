@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import java.util.Collection;
 import network.game.GameServer;
@@ -18,6 +18,7 @@ public class ServerMessageCommand implements Command {
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{new CommandDefinition("서버공지", "<메시지>", "서버 전체의 노란색 공지 메시지를 바꿉니다.", 2)};
+      return new CommandDefinition[] { new CommandDefinition("!servermessage", "<message>",
+            "Sets the server message displayed at the top of the screen.", 2) };
    }
 }

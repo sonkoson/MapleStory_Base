@@ -28,7 +28,8 @@ public class NPCScriptManager extends AbstractScriptManager {
                return;
             }
 
-            Invocable iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "map/" + script + ".js", c);
+            Invocable iv = this
+                  .getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "map/" + script + ".js", c);
             if (iv == null) {
                iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/notcoded.js", c);
                if (iv == null) {
@@ -37,8 +38,8 @@ public class NPCScriptManager extends AbstractScriptManager {
                }
             }
 
-            ScriptEngine scriptengine = (ScriptEngine)iv;
-            NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte)-1, iv);
+            ScriptEngine scriptengine = (ScriptEngine) iv;
+            NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte) -1, iv);
             this.cms.put(c, cm);
             scriptengine.put("cm", cm);
             c.getPlayer().setConversation(1);
@@ -47,16 +48,17 @@ public class NPCScriptManager extends AbstractScriptManager {
             try {
                iv.invokeFunction("start");
             } catch (NoSuchMethodException var14) {
-               iv.invokeFunction("action", (byte)1, (byte)0, 0);
+               iv.invokeFunction("action", (byte) 1, (byte) 0, 0);
             }
 
             Object var18 = null;
          } catch (NumberFormatException var15) {
-            System.err.println("넘버포맷오류 영자님 구동기찍어주셈 : " + script);
+            System.err.println("NumberFormat Error, please check the server console: " + script);
             this.dispose(c);
          } catch (Exception var16) {
             System.err.println("Error executing NPC script, NPC ID : " + npc + " / " + script + "." + var16);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing NPC script, NPC ID : " + npc + " / " + (script != null ? script : "") + "." + var16);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing NPC script, NPC ID : " + npc + " / " + (script != null ? script : "") + "." + var16);
             this.dispose(c);
          }
       } finally {
@@ -83,13 +85,16 @@ public class NPCScriptManager extends AbstractScriptManager {
                iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/" + npc + ".js", c);
                c.setLastUsedScriptName("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/" + npc + ".js");
             } else {
-               iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "item/" + script + ".js", c);
-               c.setLastUsedScriptName("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "item/" + script + ".js");
+               iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "item/" + script + ".js",
+                     c);
+               c.setLastUsedScriptName(
+                     "scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "item/" + script + ".js");
             }
 
             if (iv == null && script != null && customNpc) {
                c.setLastUsedScriptName("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/" + script + ".js");
-               iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/" + script + ".js", c);
+               iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/" + script + ".js",
+                     c);
             }
 
             if (iv == null) {
@@ -100,8 +105,8 @@ public class NPCScriptManager extends AbstractScriptManager {
                }
             }
 
-            ScriptEngine scriptengine = (ScriptEngine)iv;
-            NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte)-1, iv);
+            ScriptEngine scriptengine = (ScriptEngine) iv;
+            NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte) -1, iv);
             if (script != null) {
                cm.script = script;
             }
@@ -114,16 +119,17 @@ public class NPCScriptManager extends AbstractScriptManager {
             try {
                iv.invokeFunction("start");
             } catch (NoSuchMethodException var15) {
-               iv.invokeFunction("action", (byte)1, (byte)0, 0);
+               iv.invokeFunction("action", (byte) 1, (byte) 0, 0);
             }
 
             return;
          } catch (NumberFormatException var16) {
-            System.err.println("넘버포맷오류 영자님 구동기찍어주셈 : " + script);
+            System.err.println("NumberFormat Error, please check the server console: " + script);
             this.dispose(c);
          } catch (Exception var17) {
             System.err.println("Error executing NPC script, NPC ID : " + npc + " / " + script + "." + var17);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing NPC script, NPC ID : " + npc + " / " + (script != null ? script : "") + "." + var17);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing NPC script, NPC ID : " + npc + " / " + (script != null ? script : "") + "." + var17);
             if (DBConfig.isGanglim && c.isGm()) {
                c.getPlayer().dropMessage(5, "Error! " + var17.toString());
             }
@@ -153,12 +159,14 @@ public class NPCScriptManager extends AbstractScriptManager {
                cm.getIv().invokeFunction("action", mode, type, selection);
             }
          } catch (NumberFormatException var12) {
-            System.err.println("넘버포맷오류 영자님 구동기찍어주셈 : " + cm.script);
+            System.err.println("NumberFormat Error, please check the server console: " + cm.script);
             this.dispose(c);
          } catch (Exception var13) {
-            System.err.println("Error executing NPC script. NPC ID : " + cm.getNpc() + " / " + c.getLastUsedScriptName() + ":" + var13);
+            System.err.println("Error executing NPC script. NPC ID : " + cm.getNpc() + " / " + c.getLastUsedScriptName()
+                  + ":" + var13);
             this.dispose(c);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing NPC script, NPC ID : " + cm.getNpc() + "." + var13);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing NPC script, NPC ID : " + cm.getNpc() + "." + var13);
          } finally {
             lock.unlock();
          }
@@ -183,12 +191,13 @@ public class NPCScriptManager extends AbstractScriptManager {
                cm.getIv().invokeFunction("action", mode, type, selection1, selection2);
             }
          } catch (NumberFormatException var13) {
-            System.err.println("넘버포맷오류 영자님 구동기찍어주셈 : " + cm.script);
+            System.err.println("NumberFormat Error, please check the server console: " + cm.script);
             this.dispose(c);
          } catch (Exception var14) {
             System.err.println("Error executing NPC script. NPC ID : " + cm.getNpc() + ":" + var14);
             this.dispose(c);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing NPC script, NPC ID : " + cm.getNpc() + " / " + c.getLastUsedScriptName() + "." + var14);
+            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing NPC script, NPC ID : " + cm.getNpc() + " / "
+                  + c.getLastUsedScriptName() + "." + var14);
          } finally {
             lock.unlock();
          }
@@ -205,15 +214,16 @@ public class NPCScriptManager extends AbstractScriptManager {
                return;
             }
 
-            Invocable iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
+            Invocable iv = this
+                  .getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
             if (iv != null) {
-               ScriptEngine scriptengine = (ScriptEngine)iv;
-               NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte)0, iv);
+               ScriptEngine scriptengine = (ScriptEngine) iv;
+               NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte) 0, iv);
                this.cms.put(c, cm);
                scriptengine.put("qm", cm);
                c.getPlayer().setConversation(1);
                c.setClickedNPC();
-               iv.invokeFunction("start", (byte)1, (byte)0, 0);
+               iv.invokeFunction("start", (byte) 1, (byte) 0, 0);
                Object var13 = null;
                return;
             }
@@ -221,7 +231,8 @@ public class NPCScriptManager extends AbstractScriptManager {
             this.dispose(c);
          } catch (Exception var11) {
             System.err.println("Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
             this.dispose(c);
             return;
          } finally {
@@ -239,15 +250,16 @@ public class NPCScriptManager extends AbstractScriptManager {
             return;
          }
 
-         Invocable iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
+         Invocable iv = this
+               .getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
          if (iv != null) {
-            ScriptEngine scriptengine = (ScriptEngine)iv;
-            NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte)0, iv);
+            ScriptEngine scriptengine = (ScriptEngine) iv;
+            NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte) 0, iv);
             this.cms.put(c, cm);
             scriptengine.put("qm", cm);
             c.getPlayer().setConversation(1);
             c.setClickedNPC();
-            iv.invokeFunction("start", (byte)1, (byte)0, 0);
+            iv.invokeFunction("start", (byte) 1, (byte) 0, 0);
             Object var13 = null;
             return;
          }
@@ -255,7 +267,8 @@ public class NPCScriptManager extends AbstractScriptManager {
          this.dispose(c);
       } catch (Exception var11) {
          System.err.println("Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
-         FileoutputUtil.log("Log_Script_Except.rtf", "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
+         FileoutputUtil.log("Log_Script_Except.rtf",
+               "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var11);
          this.dispose(c);
          return;
       } finally {
@@ -277,8 +290,10 @@ public class NPCScriptManager extends AbstractScriptManager {
                cm.getIv().invokeFunction("start", mode, type, selection);
             }
          } catch (Exception var11) {
-            System.err.println("Error executing Quest script. (" + cm.getQuest() + ")...NPC: " + cm.getNpc() + ":" + var11);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing Quest script. (" + cm.getQuest() + ")..NPCID: " + cm.getNpc() + ":" + var11);
+            System.err
+                  .println("Error executing Quest script. (" + cm.getQuest() + ")...NPC: " + cm.getNpc() + ":" + var11);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing Quest script. (" + cm.getQuest() + ")..NPCID: " + cm.getNpc() + ":" + var11);
             this.dispose(c);
          } finally {
             lock.unlock();
@@ -296,22 +311,24 @@ public class NPCScriptManager extends AbstractScriptManager {
                return;
             }
 
-            Invocable iv = this.getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
+            Invocable iv = this
+                  .getInvocable("scripts/" + (DBConfig.isGanglim ? "Royal/" : "Jin/") + "quest/" + quest + ".js", c);
             if (iv != null) {
-               ScriptEngine scriptengine = (ScriptEngine)iv;
-               NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte)1, iv);
+               ScriptEngine scriptengine = (ScriptEngine) iv;
+               NPCConversationManager cm = new NPCConversationManager(c, npc, quest, (byte) 1, iv);
                this.cms.put(c, cm);
                scriptengine.put("qm", cm);
                c.getPlayer().setConversation(1);
                c.setClickedNPC();
-               iv.invokeFunction("end", (byte)1, (byte)0, 0);
+               iv.invokeFunction("end", (byte) 1, (byte) 0, 0);
                return;
             }
 
             this.dispose(c);
          } catch (Exception var12) {
             System.err.println("Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var12);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var12);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing Quest script. (" + quest + ")..NPCID: " + npc + ":" + var12);
             this.dispose(c);
             return;
          } finally {
@@ -334,8 +351,10 @@ public class NPCScriptManager extends AbstractScriptManager {
                cm.getIv().invokeFunction("end", mode, type, selection);
             }
          } catch (Exception var11) {
-            System.err.println("Error executing Quest script. (" + cm.getQuest() + ")...NPC: " + cm.getNpc() + ":" + var11);
-            FileoutputUtil.log("Log_Script_Except.rtf", "Error executing Quest script. (" + cm.getQuest() + ")..NPCID: " + cm.getNpc() + ":" + var11);
+            System.err
+                  .println("Error executing Quest script. (" + cm.getQuest() + ")...NPC: " + cm.getNpc() + ":" + var11);
+            FileoutputUtil.log("Log_Script_Except.rtf",
+                  "Error executing Quest script. (" + cm.getQuest() + ")..NPCID: " + cm.getNpc() + ":" + var11);
             this.dispose(c);
          } finally {
             lock.unlock();

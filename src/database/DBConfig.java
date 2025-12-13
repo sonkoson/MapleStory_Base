@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,7 +38,7 @@ public class DBConfig {
          hosting = prop.getProperty("isHosting", "true").equals("true");
          ganglim = prop.getProperty("isGanglim", "true").equals("true");
       } catch (Exception var6) {
-         System.out.println("기본값 불러오기 실패 팩 기본값 사용");
+         System.out.println("Failed to load default values, using pack defaults");
          var6.printStackTrace();
          hosting = false;
          ganglim = true;
@@ -51,8 +51,8 @@ public class DBConfig {
       isGanglim = ganglim;
       isJin = !ganglim;
       DB_URL = isGanglim
-         ? "jdbc:mariadb://127.0.0.1:3306/ganglim?characterEncoding=utf8&autoReconnect=true"
-         : "jdbc:mariadb://127.0.0.1:3306/odin_sea?characterEncoding=utf8&autoReconnect=true";
+            ? "jdbc:mariadb://127.0.0.1:3306/ganglim?characterEncoding=utf8&autoReconnect=true"
+            : "jdbc:mariadb://127.0.0.1:3306/odin_sea?characterEncoding=utf8&autoReconnect=true";
       DB_PASSWORD = "fuckjin";
    }
 }

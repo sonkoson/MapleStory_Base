@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -24,11 +24,11 @@ public class DBConnection {
       try {
          dataSource = setupDataSource(DBConfig.DB_URL);
       } catch (Exception var1) {
-         System.err.println("데이터베이스를 연결하는 과정에서 오류가 발생하였습니다.2\r\n" + var1.toString());
+         System.err.println("Error occurred while connecting to the database.2\r\n" + var1.toString());
          System.exit(1);
       }
 
-      System.out.println("데이터베이스와 연결되었습니다.");
+      System.out.println("Connected to the database.");
    }
 
    private static HikariDataSource setupDataSource(String URL) throws Exception {
@@ -49,7 +49,7 @@ public class DBConnection {
       try {
          dataSource.close();
       } catch (Exception var1) {
-         System.err.println("데이터베이스를 종료하는 과정에서 오류가 발생하였습니다!\r\n" + var1);
+         System.err.println("Error occurred while closing the database!\r\n" + var1);
       }
 
       dataSource = null;
@@ -59,7 +59,7 @@ public class DBConnection {
       try {
          return dataSource.getConnection();
       } catch (SQLException var3) {
-         System.err.println("데이터베이스에 연결할 수 없습니다!" + var3.getMessage());
+         System.err.println("Cannot connect to the database!" + var3.getMessage());
 
          try {
             return dataSource.getConnection();
@@ -85,7 +85,7 @@ public class DBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdate 작업중 오류가 발생하였습니다. : " + var14.getSQLState());
+         System.out.println("Error during DB InsertOrUpdate operation : " + var14.getSQLState());
          var14.printStackTrace();
       } finally {
          try {
@@ -121,8 +121,8 @@ public class DBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdateBatch 작업중 오류가 발생하였습니다. : " + var14.getSQLState());
-         System.out.println("해당쿼리 : " + query);
+         System.out.println("Error during DB InsertOrUpdateBatch operation : " + var14.getSQLState());
+         System.out.println("Query : " + query);
          var14.printStackTrace();
       } finally {
          try {
@@ -161,7 +161,7 @@ public class DBConnection {
             con.commit();
          }
       } catch (SQLException var15) {
-         System.out.println("DB InsertOrUpdate 작업중 오류가 발생하였습니다. : " + var15.getSQLState());
+         System.out.println("Error during DB InsertOrUpdate operation : " + var15.getSQLState());
          var15.printStackTrace();
       } finally {
          try {

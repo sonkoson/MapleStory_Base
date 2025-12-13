@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import constants.devtempConstants.MapleClientCRC;
 import constants.devtempConstants.MapleDailyGift;
@@ -23,94 +23,93 @@ import scripting.ReactorScriptManager;
 public class ReloadingCommands implements Command {
    @Override
    public void execute(MapleClient c, String[] splitted) throws Exception, IllegalCommandSyntaxException {
-      if (splitted[0].equals("옵코드리셋")) {
+      if (splitted[0].equals("!reloadops")) {
          SendPacketOpcode.reloadValues();
          RecvPacketOpcode.reloadValues();
-         c.getPlayer().dropMessage(5, "[시스템] 옵코드 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("디버그옵코드")) {
+         c.getPlayer().dropMessage(5, "[System] Ops reloading completed.");
+      } else if (splitted[0].equals("!setop")) {
          for (SendPacketOpcode send : SendPacketOpcode.values()) {
             if (send.name().equals(splitted[1])) {
                send.setValue(Short.parseShort(splitted[2]));
-               c.getPlayer().dropMessage(5, "[디버그 옵코드] " + send.name() + " : " + send.getValue());
+               c.getPlayer().dropMessage(5, "[Set Op] " + send.name() + " : " + send.getValue());
                break;
             }
          }
-      } else if (splitted[0].equals("드롭리셋")) {
+      } else if (splitted[0].equals("!reloaddrops")) {
          MapleMonsterInformationProvider.getInstance().clearDrops();
          ReactorScriptManager.getInstance().clearDrops();
-         c.getPlayer().dropMessage(5, "[시스템] 드롭 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("포탈리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Drops reloading completed.");
+      } else if (splitted[0].equals("!reloadportals")) {
          PortalScriptManager.getInstance().clearScripts();
-         c.getPlayer().dropMessage(5, "[시스템] 포탈 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("상점리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Portal scripts reloading completed.");
+      } else if (splitted[0].equals("!reloadshops")) {
          MapleShopFactory.getInstance().clear();
-         c.getPlayer().dropMessage(5, "[시스템] 상점 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("이벤트리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Shops reloading completed.");
+      } else if (splitted[0].equals("!reloadevents")) {
          for (GameServer instance : GameServer.getAllInstances()) {
             instance.reloadEvents();
          }
-
-         c.getPlayer().dropMessage(5, "[시스템] 이벤트 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("스킬리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Events reloading completed.");
+      } else if (splitted[0].equals("!reloadskills")) {
          SkillFactory.load();
-         c.getPlayer().dropMessage(5, "[시스템] 스킬 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("황금상자리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Skills reloading completed.");
+      } else if (splitted[0].equals("!reloadweekly")) {
          WeeklyItemManager.loadWeeklyItems();
-         c.getPlayer().dropMessage(5, "[시스템] 페어리 브로의 황금상자 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("황금상자저장")) {
+         c.getPlayer().dropMessage(5, "[System] Weekly items reloading completed.");
+      } else if (splitted[0].equals("!saveweekly")) {
          WeeklyItemManager.saveWeeklyItems();
-         c.getPlayer().dropMessage(5, "[시스템] 페어리 브로의 황금상자가 DB에 저장되었습니다.");
-      } else if (splitted[0].equals("골드애플리셋")) {
+         c.getPlayer().dropMessage(5, "[System] Weekly items saved to DB.");
+      } else if (splitted[0].equals("!resetgoldapple")) {
          RoyalStyle.resetGoldApple();
-         c.getPlayer().dropMessage(5, "[시스템] 골드애플 리셋이 완료되었습니다.");
-      } else if (splitted[0].equals("체력리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Gold Apple reset completed.");
+      } else if (splitted[0].equals("!reloadmobhp")) {
          MapleMonsterCustomHP.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 체력 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("데일리아이템리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Custom Mob HP loading completed.");
+      } else if (splitted[0].equals("!reloaddailygift")) {
          MapleDailyGift.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 데일리아이템 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("디멘션미러리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Daily Gift loading completed.");
+      } else if (splitted[0].equals("!reloaddimen")) {
          MapleDimensionalMirror.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 디멘션미러 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("이벤트리스트리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Dimensional Mirror loading completed.");
+      } else if (splitted[0].equals("!reloadeventlist")) {
          MapleEventList.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 이벤트 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("낚시리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Event List loading completed.");
+      } else if (splitted[0].equals("!reloadfishing")) {
          MapleFishing.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 낚시 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("황금마차리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Fishing loading completed.");
+      } else if (splitted[0].equals("!reloadgoldenchariot")) {
          MapleGoldenChariot.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel 황금마차 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("위젯CRC리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel Golden Chariot loading completed.");
+      } else if (splitted[0].equals("!reloadcrc")) {
          MapleClientCRC.Load();
-         c.getPlayer().dropMessage(5, "[시스템] Excel WZ CRC 리스트가 리로드 되었습니다");
-      } else if (splitted[0].equals("전투력측정리로드")) {
+         c.getPlayer().dropMessage(5, "[System] Excel WZ CRC loading completed.");
+      } else if (splitted[0].equals("!reloadrank")) {
          DamageMeasurementRank.loadRank();
-         c.getPlayer().dropMessage(5, "[시스템] 전투력측정 랭킹이 리로드되었습니다.");
+         c.getPlayer().dropMessage(5, "[System] Damage Measurement Rank loading completed.");
       }
    }
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{
-         new CommandDefinition("옵코드리셋", "", "리시브와 센드 옵코드를 properties에서 다시 불러옵니다.", 6),
-         new CommandDefinition("포탈리셋", "", "캐시된 포탈스크립트를 비우고 js를 다시 불러옵니다.", 6),
-         new CommandDefinition("드롭리셋", "", "캐시된 드롭 데이터를 비우고 DB에서 다시 불러옵니다.", 6),
-         new CommandDefinition("상점리셋", "", "캐시된 상점 데이터를 비우고 DB에서 다시 불러옵니다.", 6),
-         new CommandDefinition("이벤트리셋", "", "캐시되고 실행중인 이벤트를 모두 종료하고 js를 다시 불러옵니다.", 6),
-         new CommandDefinition("스킬리셋", "", "캐시된 스킬을 비우고 wz에서 다시 불러옵니다.", 6),
-         new CommandDefinition("황금상자리셋", "", "캐시된 황금상자 데이터를 비우고 DB에서 다시 불러옵니다.", 6),
-         new CommandDefinition("골드애플리셋", "", "골드애플 아이템목록을 다시불러옵니다.", 6),
-         new CommandDefinition("황금상자저장", "", "서버에 있는 황금상자 데이터를 DB에 저장합니다.", 6),
-         new CommandDefinition("디버그옵코드", "", "", 6),
-         new CommandDefinition("체력리로드", "", "", 6),
-         new CommandDefinition("데일리아이템리로드", "", "", 6),
-         new CommandDefinition("디멘션미러리로드", "", "", 6),
-         new CommandDefinition("이벤트리스트리로드", "", "", 6),
-         new CommandDefinition("낚시리로드", "", "", 6),
-         new CommandDefinition("황금마차리로드", "", "", 6),
-         new CommandDefinition("위젯CRC리로드", "", "", 6),
-         new CommandDefinition("전투력측정리로드", "", "", 6)
+      return new CommandDefinition[] {
+            new CommandDefinition("!reloadops", "", "Reloads Send/Recv Packet Opcodes from properties.", 6),
+            new CommandDefinition("!setop", "<name> <value>", "Sets a specific opcode value.", 6),
+            new CommandDefinition("!reloadportals", "", "Clears portal scripts from memory.", 6),
+            new CommandDefinition("!reloaddrops", "", "Clears drops from memory.", 6),
+            new CommandDefinition("!reloadshops", "", "Clears shops from memory.", 6),
+            new CommandDefinition("!reloadevents", "", "Reloads events on all channel servers.", 6),
+            new CommandDefinition("!reloadskills", "", "Reloads skills from WZ.", 6),
+            new CommandDefinition("!reloadweekly", "", "Reloads weekly items from DB.", 6),
+            new CommandDefinition("!saveweekly", "", "Saves weekly items to DB.", 6),
+            new CommandDefinition("!resetgoldapple", "", "Resets Gold Apple items.", 6),
+            new CommandDefinition("!reloadmobhp", "", "Reloads custom mob HP.", 6),
+            new CommandDefinition("!reloaddailygift", "", "Reloads daily gift info.", 6),
+            new CommandDefinition("!reloaddimen", "", "Reloads dimensional mirror info.", 6),
+            new CommandDefinition("!reloadeventlist", "", "Reloads event list.", 6),
+            new CommandDefinition("!reloadfishing", "", "Reloads fishing info.", 6),
+            new CommandDefinition("!reloadgoldenchariot", "", "Reloads golden chariot info.", 6),
+            new CommandDefinition("!reloadcrc", "", "Reloads CRC info.", 6),
+            new CommandDefinition("!reloadrank", "", "Reloads damage measurement rank.", 6)
       };
    }
 }

@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import java.io.File;
@@ -40,12 +40,12 @@ public class ForceAtomConstants {
             randomDelayMin.put(atomNum, MapleDataTool.getInt("randomDelayMin", atom, 0));
             randomDelayMax.put(atomNum, MapleDataTool.getInt("randomDelayMax", atom, 0));
          } catch (Exception var6) {
-            System.out.println("ForceAtom 파싱 오류");
+            System.out.println("ForceAtom Info Load Error");
             var6.printStackTrace();
          }
       }
 
-      System.out.println("ForceAtom 정보 로드 완료");
+      System.out.println("ForceAtom Info Load Complete");
    }
 
    static int Random(int a, int b) {

@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.io.FileInputStream;
@@ -22,17 +22,18 @@ public class DailySettingConstants {
 
    public static void main(String[] args) {
       if (ServerConstants.useDailyGift) {
-         System.out.println("데일리 기프트가 활성화되었습니다.");
+         System.out.println("Daily Gift System check successfully started.");
          Check();
       } else {
-         System.out.println("데일리 기프트가 비활성화 상태입니다.");
+         System.out.println("Daily Gift System check skipped (System disabled).");
       }
    }
 
    private static void Check() {
       try {
-         System.out.println("데일리 기프트 설정을 초기화합니다.");
-         FileInputStream setting = new FileInputStream("data/" + (DBConfig.isGanglim ? "Ganglim" : "Jin") + "/dailyGift.cfg");
+         System.out.println("Checking Daily Gift System properties...");
+         FileInputStream setting = new FileInputStream(
+               "data/" + (DBConfig.isGanglim ? "Ganglim" : "Jin") + "/dailyGift.cfg");
          Properties setting_ = new Properties();
          setting_.load(setting);
          setting.close();
@@ -54,7 +55,7 @@ public class DailySettingConstants {
             }
          }
       } catch (Exception var6) {
-         System.err.println("[오류] 데일리기프트 셋팅을 불러오는데 실패하였습니다.");
+         System.err.println("[Error] Failed to load Daily Gift System settings.");
          var6.printStackTrace();
       }
    }

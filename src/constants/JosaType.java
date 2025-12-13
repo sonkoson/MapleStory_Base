@@ -1,10 +1,10 @@
-package constants;
+﻿package constants;
 
 public enum JosaType {
-   이가(0),
-   은는(1),
-   을를(2),
-   과와(3);
+   Type_0(0),
+   Type_1(1),
+   Type_2(2),
+   Type_3(3);
 
    private int type;
 

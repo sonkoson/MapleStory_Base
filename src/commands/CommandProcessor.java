@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import constants.ServerConstants;
 import java.util.ArrayList;
@@ -128,12 +128,13 @@ public class CommandProcessor {
    public void dropHelp(MapleCharacter chr, int page) {
       List<DefinitionCommandPair> allCommands = new ArrayList<>(this.commands.values());
       int startEntry = (page - 1) * 20;
-      chr.dropMessage(6, "명령 도움말: --------" + page + "---------");
+      chr.dropMessage(6, "Command Help: --------" + page + "---------");
 
       for (int i = startEntry; i < startEntry + 20 && i < allCommands.size(); i++) {
          CommandDefinition commandDefinition = allCommands.get(i).getDefinition();
-         if (commandDefinition.getRequiredLevel() > 0 && chr.hasGmLevel((byte)commandDefinition.getRequiredLevel())) {
-            chr.dropMessage(6, commandDefinition.getCommand() + " " + commandDefinition.getParameterDescription() + ": " + commandDefinition.getHelp());
+         if (commandDefinition.getRequiredLevel() > 0 && chr.hasGmLevel((byte) commandDefinition.getRequiredLevel())) {
+            chr.dropMessage(6, commandDefinition.getCommand() + " " + commandDefinition.getParameterDescription() + ": "
+                  + commandDefinition.getHelp());
          }
       }
 
@@ -152,7 +153,8 @@ public class CommandProcessor {
          if (splitted.length > 0 && splitted[0].length() > 0) {
             DefinitionCommandPair definitionCommandPair = this.commands.get(splitted[0]);
             if (definitionCommandPair != null
-               && (c.getPlayer().getGMLevel() >= definitionCommandPair.getDefinition().getRequiredLevel() || line.charAt(0) == '/')) {
+                  && (c.getPlayer().getGMLevel() >= definitionCommandPair.getDefinition().getRequiredLevel()
+                        || line.charAt(0) == '/')) {
                try {
                   definitionCommandPair.getCommand().execute(c, splitted);
                   List<String> commands = new ArrayList<>(Arrays.asList(splitted));
@@ -178,7 +180,7 @@ public class CommandProcessor {
                return true;
             }
 
-            c.getPlayer().dropMessage(6, "명령어 " + splitted[0] + " 은(는) 존재하지 않거나 실행권한이 없습니다.");
+            c.getPlayer().dropMessage(6, "Command " + splitted[0] + " does not exist or you do not have permission.");
             return true;
          }
       }

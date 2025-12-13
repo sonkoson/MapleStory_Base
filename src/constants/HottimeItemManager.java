@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.text.SimpleDateFormat;
@@ -31,6 +31,6 @@ public class HottimeItemManager {
          }
       }
 
-      System.out.println("총 " + count + "개의 자동 핫타임 아이템 스케쥴 데이터를 불러왔습니다.");
+      System.out.println("Loaded " + count + " Hottime Items.");
    }
 }

@@ -1,4 +1,4 @@
-package api;
+﻿package api;
 
 import database.DBConfig;
 import database.DBConnection;
@@ -108,7 +108,7 @@ public class DonationRequest extends JFrame {
                {null, null, null, null, null, null, null, null},
                {null, null, null, null, null, null, null, null}
             },
-            new String[]{"id", "신청 시간", "계정 ID", "캐릭터 이름", "입금자명", "신청 포인트", "유형", "상태"}
+            new String[]{"id", "เนยย เนเธ’เธ เนยยเนเธย", "เนเธ“ยเนย โ€ข ID", "เนเธยเนเธเธเนยเธ เนยเธ”เนเธย", "เนยโ€ฆเนเธยเนยยเนเธโ€ฆ", "เนยย เนเธ’เธ เนยเธเนยเธเนยเธ", "เนยย เนยโ€ข", "เนยยเนยย"}
          ) {
             boolean[] canEdit = new boolean[]{false, false, false, false, false, false, false, false};
 
@@ -131,31 +131,31 @@ public class DonationRequest extends JFrame {
          jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
       }
 
-      this.jLabel1.setText("포인트 충전 신청 내역 -");
-      this.jButton1.setText("새로고침");
+      this.jLabel1.setText("เนยเธเนยเธเนยเธ เนเธ–เธเนย ย เนยย เนเธ’เธ เนยเธ”เนโ€”เธ -");
+      this.jButton1.setText("เนยยเนเธยเนเธ“ย เนเธเธ");
       this.jButton1.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             DonationRequest.this.jButton1ActionPerformed(evt);
          }
       });
-      this.jTextField1.setFont(new Font("나눔고딕", 0, 18));
-      this.jTextField1.setText("선택된 대상");
-      this.jButton2.setText("충전 완료");
+      this.jTextField1.setFont(new Font("เนยยเนยโ€เนเธ“ย เนโ€โ€ข", 0, 18));
+      this.jTextField1.setText("เนยย เนยยเนยย เนยโฌเนยย");
+      this.jButton2.setText("เนเธ–เธเนย ย เนยยเนเธย");
       this.jButton2.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             DonationRequest.this.jButton2ActionPerformed(evt);
          }
       });
-      this.jButton3.setText("미처리");
+      this.jButton3.setText("เนเธเธเนเธ’ยเนเธเธ");
       this.jButton3.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             DonationRequest.this.jButton3ActionPerformed(evt);
          }
       });
-      this.jButton4.setText("입금 누락");
+      this.jButton4.setText("เนยโ€ฆเนเธย เนยยเนยเธ");
       this.jButton4.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
@@ -229,7 +229,7 @@ public class DonationRequest extends JFrame {
    private void jButton2ActionPerformed(ActionEvent evt) {
       if (jTable1.getSelectedRow() >= 0) {
          Object obj = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 7);
-         jTable1.getModel().setValueAt("처리완료", jTable1.getSelectedRow(), 7);
+         jTable1.getModel().setValueAt("เนเธ’ยเนเธเธเนยยเนเธย", jTable1.getSelectedRow(), 7);
          PreparedStatement ps = null;
 
          try (Connection con = DBConnection.getConnection()) {
@@ -258,7 +258,7 @@ public class DonationRequest extends JFrame {
    private void jButton3ActionPerformed(ActionEvent evt) {
       if (jTable1.getSelectedRow() >= 0) {
          Object obj = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 7);
-         jTable1.getModel().setValueAt("미처리", jTable1.getSelectedRow(), 7);
+         jTable1.getModel().setValueAt("เนเธเธเนเธ’ยเนเธเธ", jTable1.getSelectedRow(), 7);
          PreparedStatement ps = null;
 
          try (Connection con = DBConnection.getConnection()) {
@@ -287,7 +287,7 @@ public class DonationRequest extends JFrame {
    private void jButton4ActionPerformed(ActionEvent evt) {
       if (jTable1.getSelectedRow() >= 0) {
          Object obj = jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 7);
-         jTable1.getModel().setValueAt("입금누락", jTable1.getSelectedRow(), 7);
+         jTable1.getModel().setValueAt("เนยโ€ฆเนเธยเนยยเนยเธ", jTable1.getSelectedRow(), 7);
          PreparedStatement ps = null;
 
          try (Connection con = DBConnection.getConnection()) {
@@ -336,113 +336,113 @@ public class DonationRequest extends JFrame {
                String status = "";
                int s = rs.getInt("status");
                if (s == 0) {
-                  status = "미처리";
+                  status = "เนเธเธเนเธ’ยเนเธเธ";
                } else if (s == 1) {
-                  status = "처리완료";
+                  status = "เนเธ’ยเนเธเธเนยยเนเธย";
                } else if (s == 2) {
-                  status = "입금누락";
+                  status = "เนยโ€ฆเนเธยเนยยเนยเธ";
                }
 
                int t = rs.getInt("type");
                String type = "";
                if (t == 0) {
-                  type = "일반";
+                  type = "เนยเธเนเธย";
                } else if (t == 1) {
-                  type = "이벤트";
+                  type = "เนยเธ”เนเธ’เธเนยเธ";
                } else if (t == 2) {
-                  type = "초심자패키지";
+                  type = "เนเธ”ยเนยเธเนยยเนยเธเนยเธเนเธโฌ";
                } else if (t == 3) {
-                  type = "보너스이벤트";
+                  type = "เนเธ“เธ”เนยยเนยเธเนยเธ”เนเธ’เธเนยเธ";
                } else if (t == 5) {
-                  type = "설날A";
+                  type = "เนยเธเนยย A";
                } else if (t == 6) {
-                  type = "설날B";
+                  type = "เนยเธเนยย B";
                } else if (t == 7) {
-                  type = "설날C";
+                  type = "เนยเธเนยย C";
                } else if (t == 8) {
-                  type = "어린이날";
+                  type = "เนโ€“เธ”เนเธเธเนยเธ”เนยย ";
                } else if (t == 9) {
-                  type = "가정의달C";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธC";
                } else if (t == 10) {
-                  type = "가정의달B";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธB";
                } else if (t == 11) {
-                  type = "가정의달A";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธA";
                } else if (t == 12) {
-                  type = "가정의달S";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธS";
                } else if (t == 13) {
-                  type = "가정의달SS";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธSS";
                } else if (t == 14) {
-                  type = "가정의달SSS";
+                  type = "เนเธโฌเนย โ€ขเนยยเนยเธSSS";
                } else if (t == 15) {
-                  type = "상시패키지1";
+                  type = "เนยยเนยยเนยเธเนยเธเนเธโฌ1";
                } else if (t == 16) {
-                  type = "상시패키지2";
+                  type = "เนยยเนยยเนยเธเนยเธเนเธโฌ2";
                } else if (t == 17) {
-                  type = "추석패키지I";
+                  type = "เนเธ–โ€เนยยเนยเธเนยเธเนเธโฌI";
                } else if (t == 18) {
-                  type = "추석패키지II";
+                  type = "เนเธ–โ€เนยยเนยเธเนยเธเนเธโฌII";
                } else if (t == 19) {
-                  type = "추석패키지III";
+                  type = "เนเธ–โ€เนยยเนยเธเนยเธเนเธโฌIII";
                } else if (t == 20) {
-                  type = "추석패키지 IV";
+                  type = "เนเธ–โ€เนยยเนยเธเนยเธเนเธโฌ IV";
                } else if (t == 21) {
-                  type = "3주년패키지I";
+                  type = "3เนเธเธเนโ€ฆยเนยเธเนยเธเนเธโฌI";
                } else if (t == 22) {
-                  type = "3주년패키지II";
+                  type = "3เนเธเธเนโ€ฆยเนยเธเนยเธเนเธโฌII";
                } else if (t == 23) {
-                  type = "3주년패키지III";
+                  type = "3เนเธเธเนโ€ฆยเนยเธเนยเธเนเธโฌIII";
                } else if (t == 24) {
-                  type = "크리스마스패키지1";
+                  type = "เนยเธเนเธเธเนยเธเนเธยเนยเธเนยเธเนยเธเนเธโฌ1";
                } else if (t == 25) {
-                  type = "크리스마스패키지2";
+                  type = "เนยเธเนเธเธเนยเธเนเธยเนยเธเนยเธเนยเธเนเธโฌ2";
                } else if (t == 26) {
-                  type = "크리스마스패키지3";
+                  type = "เนยเธเนเธเธเนยเธเนเธยเนยเธเนยเธเนยเธเนเธโฌ3";
                } else if (t == 27) {
-                  type = "크리스마스패키지4";
+                  type = "เนยเธเนเธเธเนยเธเนเธยเนยเธเนยเธเนยเธเนเธโฌ4";
                } else if (t == 28) {
-                  type = "2023패키지1";
+                  type = "2023เนยเธเนยเธเนเธโฌ1";
                } else if (t == 29) {
-                  type = "2023패키지2";
+                  type = "2023เนยเธเนยเธเนเธโฌ2";
                } else if (t == 30) {
-                  type = "2023패키지3";
+                  type = "2023เนยเธเนยเธเนเธโฌ3";
                } else if (t == 31) {
-                  type = "2023패키지4";
+                  type = "2023เนยเธเนยเธเนเธโฌ4";
                } else if (t == 32) {
-                  type = "2023패키지5";
+                  type = "2023เนยเธเนยเธเนเธโฌ5";
                } else if (t == 33) {
-                  type = "2023패키지6";
+                  type = "2023เนยเธเนยเธเนเธโฌ6";
                } else if (t == 34) {
-                  type = "2023패키지7";
+                  type = "2023เนยเธเนยเธเนเธโฌ7";
                } else if (t == 35) {
-                  type = "2023패키지8";
+                  type = "2023เนยเธเนยเธเนเธโฌ8";
                } else if (t == 36) {
-                  type = "2023패키지9";
+                  type = "2023เนยเธเนยเธเนเธโฌ9";
                } else if (t == 37) {
-                  type = "2023패키지10";
+                  type = "2023เนยเธเนยเธเนเธโฌ10";
                } else if (t == 38) {
-                  type = "2023패키지11";
+                  type = "2023เนยเธเนยเธเนเธโฌ11";
                } else if (t == 39) {
-                  type = "5월패키지1";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ1";
                } else if (t == 40) {
-                  type = "5월패키지2";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ2";
                } else if (t == 41) {
-                  type = "5월패키지3";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ3";
                } else if (t == 42) {
-                  type = "5월패키지4";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ4";
                } else if (t == 43) {
-                  type = "5월패키지5";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ5";
                } else if (t == 44) {
-                  type = "5월패키지6";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ6";
                } else if (t == 45) {
-                  type = "5월패키지7";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ7";
                } else if (t == 46) {
-                  type = "5월패키지8";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ8";
                } else if (t == 47) {
-                  type = "5월패키지9";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ9";
                } else if (t == 48) {
-                  type = "5월패키지10";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ10";
                } else if (t == 49) {
-                  type = "5월패키지11";
+                  type = "5เนยโ€เนยเธเนยเธเนเธโฌ11";
                }
 
                m.insertRow(

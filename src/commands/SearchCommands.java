@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,20 +19,22 @@ public class SearchCommands implements Command {
    @Override
    public void execute(MapleClient c, String[] splitted) throws Exception, IllegalCommandSyntaxException {
       if (splitted.length == 1) {
-         c.getPlayer().dropMessage(6, splitted[0] + ": <엔피시> <몹> <아이템> <맵> <스킬>");
+         c.getPlayer().dropMessage(6, splitted[0] + ": <npc> <mob> <item> <map> <skill> <quest>");
       } else {
          String type = splitted[1];
          String search = StringUtil.joinStringFrom(splitted, 2);
          MapleData data = null;
-         MapleDataProvider dataProvider = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/String.wz"));
-         c.getPlayer().dropMessage(6, "<<타입: " + type + " | 검색어: " + search + ">>");
-         if (type.equalsIgnoreCase("엔피시")) {
+         MapleDataProvider dataProvider = MapleDataProviderFactory
+               .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/String.wz"));
+         c.getPlayer().dropMessage(6, "<<Type: " + type + " | Search: " + search + ">>");
+         if (type.equalsIgnoreCase("npc")) {
             List<String> retNpcs = new ArrayList<>();
             data = dataProvider.getData("Npc.img");
             List<Pair<Integer, String>> npcPairList = new LinkedList<>();
 
             for (MapleData npcIdData : data.getChildren()) {
-               npcPairList.add(new Pair<>(Integer.parseInt(npcIdData.getName()), MapleDataTool.getString(npcIdData.getChildByPath("name"), "NO-NAME")));
+               npcPairList.add(new Pair<>(Integer.parseInt(npcIdData.getName()),
+                     MapleDataTool.getString(npcIdData.getChildByPath("name"), "NO-NAME")));
             }
 
             for (Pair<Integer, String> npcPair : npcPairList) {
@@ -46,9 +48,9 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetNpc);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 엔피시가 없습니다.");
+               c.getPlayer().dropMessage(6, "No NPC found.");
             }
-         } else if (type.equalsIgnoreCase("맵")) {
+         } else if (type.equalsIgnoreCase("map")) {
             List<String> retMaps = new ArrayList<>();
             data = dataProvider.getData("Map.img");
             List<Pair<Integer, String>> mapPairList = new LinkedList<>();
@@ -56,13 +58,11 @@ public class SearchCommands implements Command {
             for (MapleData mapAreaData : data.getChildren()) {
                for (MapleData mapIdData : mapAreaData.getChildren()) {
                   mapPairList.add(
-                     new Pair<>(
-                        Integer.parseInt(mapIdData.getName()),
-                        MapleDataTool.getString(mapIdData.getChildByPath("streetName"), "NO-NAME")
-                           + " - "
-                           + MapleDataTool.getString(mapIdData.getChildByPath("mapName"), "NO-NAME")
-                     )
-                  );
+                        new Pair<>(
+                              Integer.parseInt(mapIdData.getName()),
+                              MapleDataTool.getString(mapIdData.getChildByPath("streetName"), "NO-NAME")
+                                    + " - "
+                                    + MapleDataTool.getString(mapIdData.getChildByPath("mapName"), "NO-NAME")));
                }
             }
 
@@ -77,15 +77,16 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetMap);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 맵이 없습니다.");
+               c.getPlayer().dropMessage(6, "No Map found.");
             }
-         } else if (type.equalsIgnoreCase("몹")) {
+         } else if (type.equalsIgnoreCase("mob")) {
             List<String> retMobs = new ArrayList<>();
             data = dataProvider.getData("Mob.img");
             List<Pair<Integer, String>> mobPairList = new LinkedList<>();
 
             for (MapleData mobIdData : data.getChildren()) {
-               mobPairList.add(new Pair<>(Integer.parseInt(mobIdData.getName()), MapleDataTool.getString(mobIdData.getChildByPath("name"), "NO-NAME")));
+               mobPairList.add(new Pair<>(Integer.parseInt(mobIdData.getName()),
+                     MapleDataTool.getString(mobIdData.getChildByPath("name"), "NO-NAME")));
             }
 
             for (Pair<Integer, String> mobPair : mobPairList) {
@@ -99,11 +100,11 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetMob);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 몬스터가 없습니다.");
+               c.getPlayer().dropMessage(6, "No Mob found.");
             }
          } else if (type.equalsIgnoreCase("REACTOR")) {
             c.getPlayer().dropMessage(6, "NOT ADDED YET");
-         } else if (type.equalsIgnoreCase("아이템")) {
+         } else if (type.equalsIgnoreCase("item")) {
             List<String> retItems = new ArrayList<>();
 
             for (Pair<Integer, String> itemPair : MapleItemInformationProvider.getInstance().getAllItems()) {
@@ -118,9 +119,9 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetItem);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 아이템이 없습니다.");
+               c.getPlayer().dropMessage(6, "No Item found.");
             }
-         } else if (type.equalsIgnoreCase("스킬")) {
+         } else if (type.equalsIgnoreCase("skill")) {
             List<String> retSkills = new ArrayList<>();
             data = dataProvider.getData("Skill.img");
             List<Pair<Integer, String>> skillPairList = new LinkedList<>();
@@ -150,16 +151,18 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetSkill);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 스킬이 없습니다.");
+               c.getPlayer().dropMessage(6, "No Skill found.");
             }
-         } else if (type.equalsIgnoreCase("퀘스트")) {
+         } else if (type.equalsIgnoreCase("quest")) {
             List<String> retQuests = new ArrayList<>();
-            dataProvider = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Quest.wz"));
+            dataProvider = MapleDataProviderFactory
+                  .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Quest.wz"));
             data = dataProvider.getData("QuestInfo.img");
             List<Pair<Integer, String>> questPairList = new LinkedList<>();
 
             for (MapleData questIdData : data.getChildren()) {
-               questPairList.add(new Pair<>(Integer.parseInt(questIdData.getName()), MapleDataTool.getString(questIdData.getChildByPath("name"), "NO-NAME")));
+               questPairList.add(new Pair<>(Integer.parseInt(questIdData.getName()),
+                     MapleDataTool.getString(questIdData.getChildByPath("name"), "NO-NAME")));
             }
 
             for (Pair<Integer, String> questPair : questPairList) {
@@ -174,18 +177,20 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetQuest);
                }
             } else {
-               c.getPlayer().dropMessage(6, "발견된 퀘스트가 없습니다.");
+               c.getPlayer().dropMessage(6, "No Quest found.");
             }
          } else {
-            c.getPlayer().dropMessage(6, "해당 검색은 처리할 수 없습니다.");
+            c.getPlayer().dropMessage(6, "Type not found.");
          }
       }
    }
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{
-         new CommandDefinition("찾기", "<타입> <검색어>", "맵, 아이템 등의 고유번호ID를 검색합니다.", 2), new CommandDefinition("검색", "<타입> <검색어>", "맵, 아이템 등의 고유번호ID를 검색합니다.", 2)
+      return new CommandDefinition[] {
+            new CommandDefinition("!search", "<type> <search>", "Searches for an ID with the given type and keyword.",
+                  2),
+            new CommandDefinition("!find", "<type> <search>", "Searches for an ID with the given type and keyword.", 2)
       };
    }
 }

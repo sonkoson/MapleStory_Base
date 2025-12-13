@@ -297,8 +297,8 @@ public class Center {
 
    public static boolean isChannelAvailable(int ch) {
       return GameServer.getInstance(ch) != null && GameServer.getInstance(ch).getPlayerStorage() != null
-         ? GameServer.getInstance(ch).getPlayerStorage().getConnectedClients() < (ch == 1 ? 600 : 400)
-         : false;
+            ? GameServer.getInstance(ch).getPlayerStorage().getConnectedClients() < (ch == 1 ? 600 : 400)
+            : false;
    }
 
    public static void registerLoadTop1Ranker() {
@@ -315,9 +315,9 @@ public class Center {
       DBConnection db = new DBConnection();
 
       try (
-         Connection con = DBConnection.getConnection();
-         PreparedStatement ps = con.prepareStatement("SELECT * FROM characters WHERE gm = 0 ORDER BY level, tsd_total_point DESC LIMIT 1");
-      ) {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                  "SELECT * FROM characters WHERE gm = 0 ORDER BY level, tsd_total_point DESC LIMIT 1");) {
          ResultSet rs = ps.executeQuery();
          if (rs.next()) {
             ServerConstants.top1Ranker = MapleCharacter.loadCharFromDB(rs.getInt("id"), null, false);
@@ -329,14 +329,14 @@ public class Center {
          var9.printStackTrace();
       }
 
-      System.out.println("전광판에 등록될 랭킹 1위 캐릭터가 업데이트 되었습니다.");
+      System.out.println("The ranking #1 character for the leaderboard has been updated.");
    }
 
    public static void unregisterAutoSave() {
       if (autoSaveTask != null) {
          autoSaveTask.cancel(true);
          autoSaveTask = null;
-         System.out.println("자동 저장 쓰레드가 종료됩니다.");
+         System.out.println("Auto-save thread is terminating.");
       } else {
          registerAutoSave();
       }
@@ -354,7 +354,7 @@ public class Center {
                      return;
                   }
 
-                  System.out.println("30분 이상 자동저장이 돌아가지 않아 저장이 재시작 됩니다.");
+                  System.out.println("Auto-save has not run for over 30 minutes, restarting save process.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                }
@@ -398,13 +398,14 @@ public class Center {
                            }
                         }
                      } catch (Exception var8) {
-                        System.out.println("캐릭터 저장 오류 발생");
+                        System.out.println("Character save error occurred");
                         var8.printStackTrace();
                      }
 
                      long endTime = System.currentTimeMillis();
                      ServerConstants.currentSaveCount.addAndGet(1);
-                     System.out.println("총 " + Center.saveChrCount.get() + "개의 캐릭터의 자동 저장이 수행되었습니다. [" + (endTime - startTime) + "ms]");
+                     System.out.println("Total " + Center.saveChrCount.get() + " characters auto-saved. ["
+                           + (endTime - startTime) + "ms]");
                      int total = ServerConstants.totalSaveCount.get();
                      int current = ServerConstants.currentSaveCount.get();
                      if (current == total && total > 1) {
@@ -412,7 +413,7 @@ public class Center {
                            System.out.println(current + " / " + total);
                         }
 
-                        System.out.println("모든 저장이 완료되었습니다.");
+                        System.out.println("All saves completed.");
                         ServerConstants.totalSaveCount.set(0);
                         ServerConstants.currentSaveCount.set(0);
                         ServerConstants.workingSave = false;
@@ -428,12 +429,12 @@ public class Center {
                         try {
                            WeeklyItemManager.saveWeeklyItems();
                         } catch (Exception var3) {
-                           System.out.println("주간아이템 저장 오류 발생");
+                           System.out.println("Weekly item save error occurred");
                            var3.printStackTrace();
                         }
 
                         ServerConstants.currentSaveCount.addAndGet(1);
-                        System.out.println("주간아이템 저장완료");
+                        System.out.println("Weekly item save completed");
                         int total = ServerConstants.totalSaveCount.get();
                         int current = ServerConstants.currentSaveCount.get();
                         if (current == total && total > 1) {
@@ -441,7 +442,7 @@ public class Center {
                               System.out.println(current + " / " + total);
                            }
 
-                           System.out.println("모든 저장이 완료되었습니다.");
+                           System.out.println("All saves completed.");
                            ServerConstants.totalSaveCount.set(0);
                            ServerConstants.currentSaveCount.set(0);
                            ServerConstants.workingSave = false;
@@ -460,13 +461,13 @@ public class Center {
                         try {
                            Center.Guild.save();
                         } catch (Exception var7) {
-                           System.out.println("길드 저장 오류 발생");
+                           System.out.println("Guild save error occurred");
                            var7.printStackTrace();
                         }
 
                         long endTime = System.currentTimeMillis();
                         ServerConstants.currentSaveCount.addAndGet(1);
-                        System.out.println("길드저장완료 [" + (endTime - startTime) + "ms]");
+                        System.out.println("Guild save completed [" + (endTime - startTime) + "ms]");
                         int total = ServerConstants.totalSaveCount.get();
                         int current = ServerConstants.currentSaveCount.get();
                         if (current == total && total > 1) {
@@ -474,7 +475,7 @@ public class Center {
                               System.out.println(current + " / " + total);
                            }
 
-                           System.out.println("모든 저장이 완료되었습니다.");
+                           System.out.println("All saves completed.");
                            ServerConstants.totalSaveCount.set(0);
                            ServerConstants.currentSaveCount.set(0);
                            ServerConstants.workingSave = false;
@@ -490,13 +491,13 @@ public class Center {
                         try {
                            Center.Alliance.save();
                         } catch (Exception var7) {
-                           System.out.println("연합 저장 오류 발생");
+                           System.out.println("Alliance save error occurred");
                            var7.printStackTrace();
                         }
 
                         long endTime = System.currentTimeMillis();
                         ServerConstants.currentSaveCount.addAndGet(1);
-                        System.out.println("연합저장완료 [" + (endTime - startTime) + "ms]");
+                        System.out.println("Alliance save completed [" + (endTime - startTime) + "ms]");
                         int total = ServerConstants.totalSaveCount.get();
                         int current = ServerConstants.currentSaveCount.get();
                         if (current == total && total > 1) {
@@ -504,7 +505,7 @@ public class Center {
                               System.out.println(current + " / " + total);
                            }
 
-                           System.out.println("모든 저장이 완료되었습니다.");
+                           System.out.println("All saves completed.");
                            ServerConstants.totalSaveCount.set(0);
                            ServerConstants.currentSaveCount.set(0);
                            ServerConstants.workingSave = false;
@@ -528,13 +529,13 @@ public class Center {
                            try {
                               Center.Guild.saveNoLock();
                            } catch (Exception var7) {
-                              System.out.println("길드 저장 오류 발생");
+                              System.out.println("Guild save error occurred");
                               var7.printStackTrace();
                            }
 
                            long endTime = System.currentTimeMillis();
                            ServerConstants.currentSaveCount.addAndGet(1);
-                           System.out.println("길드저장완료 [" + (endTime - startTime) + "ms]");
+                           System.out.println("Guild save completed [" + (endTime - startTime) + "ms]");
                            int total = ServerConstants.totalSaveCount.get();
                            int current = ServerConstants.currentSaveCount.get();
                            if (current == total && total > 1) {
@@ -542,7 +543,7 @@ public class Center {
                                  System.out.println(current + " / " + total);
                               }
 
-                              System.out.println("모든 저장이 완료되었습니다.");
+                              System.out.println("All saves completed.");
                               ServerConstants.totalSaveCount.set(0);
                               ServerConstants.currentSaveCount.set(0);
                               ServerConstants.workingSave = false;
@@ -558,13 +559,13 @@ public class Center {
                            try {
                               Center.Alliance.save();
                            } catch (Exception var7) {
-                              System.out.println("연합 저장 오류 발생");
+                              System.out.println("Alliance save error occurred");
                               var7.printStackTrace();
                            }
 
                            long endTime = System.currentTimeMillis();
                            ServerConstants.currentSaveCount.addAndGet(1);
-                           System.out.println("연합저장완료 [" + (endTime - startTime) + "ms]");
+                           System.out.println("Alliance save completed [" + (endTime - startTime) + "ms]");
                            int total = ServerConstants.totalSaveCount.get();
                            int current = ServerConstants.currentSaveCount.get();
                            if (current == total && total > 1) {
@@ -572,7 +573,7 @@ public class Center {
                                  System.out.println(current + " / " + total);
                               }
 
-                              System.out.println("모든 저장이 완료되었습니다.");
+                              System.out.println("All saves completed.");
                               ServerConstants.totalSaveCount.set(0);
                               ServerConstants.currentSaveCount.set(0);
                               ServerConstants.workingSave = false;
@@ -590,12 +591,12 @@ public class Center {
                      try {
                         DojangRanking.saveRanks();
                      } catch (Exception var3) {
-                        System.out.println("무릉 저장오류 발생");
+                        System.out.println("Mu Lung save error occurred");
                         var3.printStackTrace();
                      }
 
                      ServerConstants.currentSaveCount.addAndGet(1);
-                     System.out.println("무릉랭킹저장완료");
+                     System.out.println("Mu Lung ranking save completed");
                      int total = ServerConstants.totalSaveCount.get();
                      int current = ServerConstants.currentSaveCount.get();
                      if (current == total && total > 1) {
@@ -603,7 +604,7 @@ public class Center {
                            System.out.println(current + " / " + total);
                         }
 
-                        System.out.println("모든 저장이 완료되었습니다.");
+                        System.out.println("All saves completed.");
                         ServerConstants.totalSaveCount.set(0);
                         ServerConstants.currentSaveCount.set(0);
                         ServerConstants.workingSave = false;
@@ -617,7 +618,7 @@ public class Center {
                         ServerConstants.totalSaveCount.addAndGet(1);
                         PraisePointRank.loadRanks();
                         ServerConstants.currentSaveCount.addAndGet(1);
-                        System.out.println("칭찬포인트저장완료");
+                        System.out.println("Praise point save completed");
                         int total = ServerConstants.totalSaveCount.get();
                         int current = ServerConstants.currentSaveCount.get();
                         if (current == total && total > 1) {
@@ -625,7 +626,7 @@ public class Center {
                               System.out.println(current + " / " + total);
                            }
 
-                           System.out.println("모든 저장이 완료되었습니다.");
+                           System.out.println("All saves completed.");
                            ServerConstants.totalSaveCount.set(0);
                            ServerConstants.currentSaveCount.set(0);
                            ServerConstants.workingSave = false;
@@ -635,7 +636,7 @@ public class Center {
                }
 
                if (Center.enableAuctionSave) {
-                  System.out.println("경매장 자동저장이 수행됩니다. 경매장 저장이 끝날때까지 종료하지 마세요.");
+                  System.out.println("Auction auto-save is running. Do not terminate until Auction save is finished.");
                   Timer.SaveTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
@@ -644,7 +645,7 @@ public class Center {
                         Center.Auction.save();
                         long endTime = System.currentTimeMillis();
                         ServerConstants.currentSaveCount.addAndGet(1);
-                        System.out.println("경매장저장완료 [" + (endTime - startTime) + "ms]");
+                        System.out.println("Auction save completed [" + (endTime - startTime) + "ms]");
                         int total = ServerConstants.totalSaveCount.get();
                         int current = ServerConstants.currentSaveCount.get();
                         if (current == total && total > 1) {
@@ -652,7 +653,7 @@ public class Center {
                               System.out.println(current + " / " + total);
                            }
 
-                           System.out.println("모든 저장이 완료되었습니다.");
+                           System.out.println("All saves completed.");
                            ServerConstants.totalSaveCount.set(0);
                            ServerConstants.currentSaveCount.set(0);
                            ServerConstants.workingSave = false;
@@ -688,7 +689,8 @@ public class Center {
                                     }
                                  }
 
-                                 GameServer.getInstance(player.getClient().getChannel()).getPlayerStorage().deregisterPlayer(player);
+                                 GameServer.getInstance(player.getClient().getChannel()).getPlayerStorage()
+                                       .deregisterPlayer(player);
                                  AdminClient.updatePlayerList();
                               }
                            }
@@ -735,9 +737,9 @@ public class Center {
                   Item item = null;
                   MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                   if (itemID / 1000000 == 1) {
-                     item = ii.randomizeStats((Equip)ii.getEquipById(itemID));
+                     item = ii.randomizeStats((Equip) ii.getEquipById(itemID));
                   } else {
-                     item = new Item(itemID, (short)0, quantity, 0, MapleInventoryIdentifier.getInstance());
+                     item = new Item(itemID, (short) 0, quantity, 0, MapleInventoryIdentifier.getInstance());
                   }
 
                   MapleCabinet cabinet = chr.getCabinet();
@@ -746,16 +748,17 @@ public class Center {
                      Calendar CAL = new GregorianCalendar(Locale.KOREA);
                      String fDate = sdf.format(CAL.getTime());
                      cabinet.addCabinetItem(
-                        new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L, "[핫타임 보상]", fDate + "에 지급된 핫타임 보상입니다.", item)
-                     );
+                           new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
+                                 "[Hottime Reward]", fDate + " Hottime reward distributed.", item));
                      chr.send(CField.maplecabinetResult(8));
                      chr.setSaveFlag(chr.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                      if (DBConfig.isGanglim) {
-                        chr.send(CField.chatMsg(1, "[강림 핫타임] 핫타임 보상이 지급되었습니다.\r\n[메이플 보관함]을 통해 수령 가능합니다."));
-                        chr.dropMessage(1, "핫타임 보상이 지급되었습니다. [메이플 보관함]을 통해 수령 가능합니다.");
+                        chr.send(CField.chatMsg(1,
+                              "[Ganglim Hottime] Hottime reward distributed.\r\nClaim from [Maple Cabinet]."));
+                        chr.dropMessage(1, "Hottime reward distributed. Claim from [Maple Cabinet].");
                      } else {
-                        chr.dropMessage(5, "[알림] 핫타임 보상이 지급되었습니다. [메이플 보관함]을 확인해주세요.");
-                        chr.dropMessage(1, "핫타임 보상이 지급되었습니다.\r\n[메이플 보관함]을 확인해주세요.");
+                        chr.dropMessage(5, "[Notice] Hottime reward distributed. Please check [Maple Cabinet].");
+                        chr.dropMessage(1, "Hottime reward distributed.\r\nPlease check [Maple Cabinet].");
                      }
                   }
                }
@@ -768,83 +771,7 @@ public class Center {
 
    public static List<Integer> getStackRewards(long beforeTotalPoint, int point) {
       List<Integer> ret = new ArrayList<>();
-      int[] rewards = new int[]{
-         10,
-         30,
-         50,
-         75,
-         100,
-         150,
-         200,
-         250,
-         300,
-         350,
-         400,
-         450,
-         500,
-         550,
-         600,
-         650,
-         700,
-         750,
-         800,
-         850,
-         900,
-         950,
-         1000,
-         1050,
-         1100,
-         1150,
-         1200,
-         1250,
-         1300,
-         1350,
-         1400,
-         1450,
-         1500,
-         1550,
-         1600,
-         1650,
-         1700,
-         1750,
-         1800,
-         1850,
-         1900,
-         1950,
-         2000,
-         2100,
-         2200,
-         2300,
-         2400,
-         2500,
-         2600,
-         2700,
-         2800,
-         2900,
-         3000,
-         3100,
-         3200,
-         3300,
-         3400,
-         3500,
-         3600,
-         3700,
-         3800,
-         3900,
-         4000,
-         4100,
-         4200,
-         4300,
-         4400,
-         4500,
-         4600,
-         4700,
-         4800,
-         4900,
-         5000
-      };
-      if (DBConfig.isGanglim) {
-         rewards = new int[]{
+      int[] rewards = new int[] {
             10,
             30,
             50,
@@ -858,23 +785,99 @@ public class Center {
             400,
             450,
             500,
+            550,
             600,
+            650,
+            700,
             750,
+            800,
+            850,
             900,
+            950,
             1000,
+            1050,
             1100,
+            1150,
+            1200,
             1250,
+            1300,
+            1350,
             1400,
+            1450,
             1500,
+            1550,
             1600,
+            1650,
+            1700,
             1750,
+            1800,
+            1850,
             1900,
+            1950,
             2000,
             2100,
             2200,
             2300,
             2400,
-            2500
+            2500,
+            2600,
+            2700,
+            2800,
+            2900,
+            3000,
+            3100,
+            3200,
+            3300,
+            3400,
+            3500,
+            3600,
+            3700,
+            3800,
+            3900,
+            4000,
+            4100,
+            4200,
+            4300,
+            4400,
+            4500,
+            4600,
+            4700,
+            4800,
+            4900,
+            5000
+      };
+      if (DBConfig.isGanglim) {
+         rewards = new int[] {
+               10,
+               30,
+               50,
+               75,
+               100,
+               150,
+               200,
+               250,
+               300,
+               350,
+               400,
+               450,
+               500,
+               600,
+               750,
+               900,
+               1000,
+               1100,
+               1250,
+               1400,
+               1500,
+               1600,
+               1750,
+               1900,
+               2000,
+               2100,
+               2200,
+               2300,
+               2400,
+               2500
          };
       }
 
@@ -895,9 +898,8 @@ public class Center {
       long totalDonation = 0L;
 
       try (
-         Connection con = DBConnection.getConnection();
-         PreparedStatement ps = con.prepareStatement("SELECT * FROM `donation_log` WHERE `account` = ?");
-      ) {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM `donation_log` WHERE `account` = ?");) {
          ps.setString(1, accountName);
 
          try (ResultSet rs = ps.executeQuery()) {
@@ -917,17 +919,18 @@ public class Center {
       int account_id = 0;
       String player_name = "";
       int player_id = 0;
-      if (!type.equals("일반") && !type.equals("이벤트 참여") && !type.equals("신년 이벤트") && !type.equals("클스마스 이벤트") && !type.equals("보너스이벤트")) {
+      if (!type.equals("일반") && !type.equals("이벤트 참여") && !type.equals("신년 이벤트") && !type.equals("클스마스 이벤트")
+            && !type.equals("보너스이벤트")) {
          if (type.equals("초심자 패키지")
-            || type.contains("설날")
-            || type.contains("어린이날")
-            || type.contains("추석")
-            || type.contains("가정의달")
-            || type.contains("3주년")
-            || type.contains("상시패키지")
-            || type.contains("크리스마스")
-            || type.contains("2023")
-            || type.contains("5월")) {
+               || type.contains("설날")
+               || type.contains("어린이날")
+               || type.contains("추석")
+               || type.contains("가정의달")
+               || type.contains("3주년")
+               || type.contains("상시패키지")
+               || type.contains("크리스마스")
+               || type.contains("2023")
+               || type.contains("5월")) {
             PreparedStatement ps = null;
             ResultSet rs = null;
             int id = 0;
@@ -945,12 +948,15 @@ public class Center {
 
                if (findChar) {
                   if (id == 0) {
-                     System.out.println("[ERROR] 계정을 찾을 수 없어 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+                     System.out.println(
+                           "[ERROR] Account not found, auto-charge failed. (Account : " + accountName + ", Amount : "
+                                 + point + ")");
                      return false;
                   }
 
                   if (type.equals("초심자 패키지")) {
-                     PreparedStatement ps2 = con.prepareStatement("INSERT INTO `beginner_package` (`accountid`, `name`) VALUES (?, ?)");
+                     PreparedStatement ps2 = con
+                           .prepareStatement("INSERT INTO `beginner_package` (`accountid`, `name`) VALUES (?, ?)");
                      ps2.setInt(1, id);
                      ps2.setString(2, null);
                      ps2.executeUpdate();
@@ -959,14 +965,14 @@ public class Center {
                   }
 
                   if (type.contains("가정의달")
-                     || type.contains("추석")
-                     || type.contains("3주년")
-                     || type.contains("상시패키지")
-                     || type.contains("크리스마스")
-                     || type.contains("2023")
-                     || type.contains("5월")) {
+                        || type.contains("추석")
+                        || type.contains("3주년")
+                        || type.contains("상시패키지")
+                        || type.contains("크리스마스")
+                        || type.contains("2023")
+                        || type.contains("5월")) {
                      if (!DBConfig.isGanglim) {
-                        Center.sunShineStorage.addSunShineGuage((int)(point * 0.2));
+                        Center.sunShineStorage.addSunShineGuage((int) (point * 0.2));
                         Center.sunShineStorage.save();
                      }
 
@@ -1098,7 +1104,8 @@ public class Center {
                      }
                   }
 
-                  ps = con.prepareStatement("INSERT INTO `donation_log` (`date`, `account`, `name`, `price`) VALUES (?, ?, ?, ?)");
+                  ps = con.prepareStatement(
+                        "INSERT INTO `donation_log` (`date`, `account`, `name`, `price`) VALUES (?, ?, ?, ?)");
                   SimpleDateFormat sdf = new SimpleDateFormat("yyyy. M. d");
                   String fDate = sdf.format(System.currentTimeMillis());
                   ps.setString(1, fDate);
@@ -1120,191 +1127,331 @@ public class Center {
                         for (MapleCharacter chr : cs.getPlayerStorage().getAllCharacters()) {
                            if (chr.getName().equals(name)) {
                               if (type.equals("초심자 패키지")) {
-                                 chr.dropMessage(5, "초심자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "초심자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Beginner Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Beginner Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                               } else if (type.equals("설날A")) {
-                                 chr.dropMessage(5, "설날 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "설날 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "nyd_package1", "1");
                               } else if (type.equals("설날B")) {
-                                 chr.dropMessage(5, "설날 마스터베리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "설날 마스터베리 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "nyd_package2", "1");
                               } else if (type.equals("설날C")) {
-                                 chr.dropMessage(5, "설날 대놓고 가성비 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "설날 대놓고 가성비 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Lunar New Year Value Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Lunar New Year Value Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "nyd_package3", "1");
                               } else if (type.equals("어린이날")) {
-                                 chr.dropMessage(5, "어린이 날 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "어린이 날 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
-                                 chr.updateOneInfo(1235999, "cd_package", String.valueOf(chr.getOneInfoQuestInteger(1235999, "cd_package") + 1));
+                                 chr.dropMessage(5,
+                                       "Children's Day Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Children's Day Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
+                                 chr.updateOneInfo(1235999, "cd_package",
+                                       String.valueOf(chr.getOneInfoQuestInteger(1235999, "cd_package") + 1));
                               } else if (type.equals("가정의달C")) {
-                                 chr.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_1", "1");
                               } else if (type.equals("가정의달B")) {
-                                 chr.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_2", "1");
                               } else if (type.equals("가정의달A")) {
-                                 chr.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_3", "1");
                               } else if (type.equals("가정의달S")) {
-                                 chr.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_4", "1");
                               } else if (type.equals("가정의달SS")) {
-                                 chr.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_5", "1");
                               } else if (type.equals("가정의달SSS")) {
-                                 chr.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "may_package_6", "1");
                               } else if (type.equals("상시패키지1")) {
-                                 chr.dropMessage(5, "봉인된 스탯 상자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "봉인된 스탯 상자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1236001, "a_package_1", "1");
                               } else if (type.equals("상시패키지2")) {
-                                 chr.dropMessage(5, "훈장 옵션 강화권 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "훈장 옵션 강화권 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1236001, "a_package_2", "1");
                               } else if (type.equals("추석패키지I")) {
-                                 chr.dropMessage(5, "추석 패키지 I 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "추석 패키지 I 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chuseok Package I has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_1", "1");
                               } else if (type.equals("추석패키지II")) {
-                                 chr.dropMessage(5, "추석 패키지 II 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "추석 패키지 II 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chuseok Package II has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_2", "1");
                               } else if (type.equals("추석패키지III")) {
-                                 chr.dropMessage(5, "추석 패키지 III 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "추석 패키지 III 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chuseok Package III has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_3", "1");
                               } else if (type.equals("추석패키지IV")) {
-                                 chr.dropMessage(5, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_4", "1");
                               } else if (type.equals("추석패키지IV")) {
-                                 chr.dropMessage(5, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_4", "1");
                               } else if (type.equals("3주년패키지I")) {
-                                 chr.dropMessage(5, "강림 놀라운 라벨 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "강림 놀라운 라벨 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Ganglim Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Ganglim Amazing Label Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_1", "1");
                               } else if (type.equals("3주년패키지II")) {
-                                 chr.dropMessage(5, "강림 위습의 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "강림 위습의 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Ganglim Wisp Enhancement Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Ganglim Wisp Enhancement Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_2", "1");
                               } else if (type.equals("3주년패키지III")) {
-                                 chr.dropMessage(5, "강림 리마스터 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "강림 리마스터 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Ganglim Remaster Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Ganglim Remaster Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_3", "1");
                               } else if (type.equals("크리스마스패키지1")) {
-                                 chr.dropMessage(5, "메리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "메리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Merry Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Merry Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "xmas_package_1", "1");
                               } else if (type.equals("크리스마스패키지2")) {
-                                 chr.dropMessage(5, "크리스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "크리스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Chris Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Chris Package has been distributed. Please claim it from the Cash Shop.", ""));
                                  chr.updateOneInfo(1234579, "xmas_package_2", "1");
                               } else if (type.equals("크리스마스패키지3")) {
-                                 chr.dropMessage(5, "마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Mas Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Mas Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "xmas_package_3", "1");
                               } else if (type.equals("크리스마스패키지4")) {
-                                 chr.dropMessage(5, "강림 크리스마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "강림 크리스마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Ganglim Christmas Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Ganglim Christmas Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "xmas_package_4", "1");
                               } else if (type.equals("2023패키지1")) {
-                                 chr.dropMessage(5, "깡총깡총 뛰어서 300을 가느냐 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "깡총깡총 뛰어서 300을 가느냐 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Hop hop to 300 Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Hop hop to 300 Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_1", "1");
                               } else if (type.equals("2023패키지2")) {
-                                 chr.dropMessage(5, "토끼도 강해야 잡지! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "토끼도 강해야 잡지! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Strong Rabbit Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Strong Rabbit Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_2", "1");
                               } else if (type.equals("2023패키지3")) {
-                                 chr.dropMessage(5, "토끼는 무슨 옷을 입나? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "토끼는 무슨 옷을 입나? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Rabbit Outfit Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Rabbit Outfit Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_3", "1");
                               } else if (type.equals("2023패키지4")) {
-                                 chr.dropMessage(5, "나와라! 토끼처럼 귀여운 펫! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "나와라! 토끼처럼 귀여운 펫! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Cute Rabbit Pet Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Cute Rabbit Pet Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_4", "1");
                               } else if (type.equals("2023패키지5")) {
-                                 chr.dropMessage(5, "세이비어 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "세이비어 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Savior Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Savior Package has been distributed. Please claim it from the Cash Shop.", ""));
                                  chr.updateOneInfo(1234579, "2023_package_5", "1");
                               } else if (type.equals("2023패키지6")) {
-                                 chr.dropMessage(5, "계모년 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_6", "1");
                               } else if (type.equals("2023패키지7")) {
-                                 chr.dropMessage(5, "계모년 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_7", "1");
                               } else if (type.equals("2023패키지8")) {
-                                 chr.dropMessage(5, "계모년 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_8", "1");
                               } else if (type.equals("2023패키지9")) {
-                                 chr.dropMessage(5, "계모년 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_9", "1");
                               } else if (type.equals("2023패키지10")) {
-                                 chr.dropMessage(5, "계모년 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_10", "1");
                               } else if (type.equals("2023패키지11")) {
-                                 chr.dropMessage(5, "계모년 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "계모년 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_package_11", "1");
                               } else if (type.equals("5월패키지1")) {
-                                 chr.dropMessage(5, "300만큼 사랑해 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "300만큼 사랑해 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_1", "1");
                               } else if (type.equals("5월패키지2")) {
-                                 chr.dropMessage(5, "Power OverWhelming 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "Power OverWhelming 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_2", "1");
                               } else if (type.equals("5월패키지3")) {
-                                 chr.dropMessage(5, "M@STERPIECE 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "M@STERPIECE 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_3", "1");
                               } else if (type.equals("5월패키지4")) {
-                                 chr.dropMessage(5, "어쩌면 진생역전? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "어쩌면 진생역전? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_4", "1");
                               } else if (type.equals("5월패키지5")) {
-                                 chr.dropMessage(5, "에리스의 황금사과 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "에리스의 황금사과 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_5", "1");
                               } else if (type.equals("5월패키지6")) {
-                                 chr.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_6", "1");
                               } else if (type.equals("5월패키지7")) {
-                                 chr.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_7", "1");
                               } else if (type.equals("5월패키지8")) {
-                                 chr.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_8", "1");
                               } else if (type.equals("5월패키지9")) {
-                                 chr.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_9", "1");
                               } else if (type.equals("5월패키지10")) {
-                                 chr.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_10", "1");
                               } else if (type.equals("5월패키지11")) {
-                                 chr.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chr.send(CField.addPopupSay(9062000, 3000, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.", ""));
+                                 chr.dropMessage(5,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
+                                 chr.send(CField.addPopupSay(9062000, 3000,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.",
+                                       ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_11", "1");
                               }
 
@@ -1331,7 +1478,8 @@ public class Center {
                                  chrx.updateOneInfo(1234579, "nyd_package3", "1");
                               } else if (type.equals("어린이날")) {
                                  chrx.dropMessage(5, "어린이 날 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chrx.updateOneInfo(1235999, "cd_package", String.valueOf(chrx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
+                                 chrx.updateOneInfo(1235999, "cd_package",
+                                       String.valueOf(chrx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
                               } else if (type.equals("가정의달C")) {
                                  chrx.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
                                  chrx.updateOneInfo(1234579, "may_package_1", "1");
@@ -1351,109 +1499,144 @@ public class Center {
                                  chrx.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
                                  chrx.updateOneInfo(1234579, "may_package_6", "1");
                               } else if (type.equals("상시패키지1")) {
-                                 chrx.dropMessage(5, "봉인된 스탯 상자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1236001, "a_package_1", "1");
                               } else if (type.equals("상시패키지2")) {
-                                 chrx.dropMessage(5, "훈장 옵션 강화권 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1236001, "a_package_2", "1");
                               } else if (type.equals("추석패키지I")) {
-                                 chrx.dropMessage(5, "추석 패키지 I 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_1", "1");
                               } else if (type.equals("추석패키지II")) {
-                                 chrx.dropMessage(5, "추석 패키지 II 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_2", "1");
                               } else if (type.equals("추석패키지III")) {
-                                 chrx.dropMessage(5, "추석 패키지 III 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_3", "1");
                               } else if (type.equals("추석패키지IV")) {
-                                 chrx.dropMessage(5, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_4", "1");
                               } else if (type.equals("3주년패키지I")) {
-                                 chrx.dropMessage(5, "강림 놀라운 라벨 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Advent Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_1", "1");
                               } else if (type.equals("3주년패키지II")) {
-                                 chrx.dropMessage(5, "강림 위습의 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Advent Wisp's Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_2", "1");
                               } else if (type.equals("3주년패키지III")) {
-                                 chrx.dropMessage(5, "강림 리마스터 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Advent Remaster Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_3", "1");
                               } else if (type.equals("크리스마스패키지1")) {
-                                 chrx.dropMessage(5, "메리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Merry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_1", "1");
                               } else if (type.equals("크리스마스패키지2")) {
-                                 chrx.dropMessage(5, "크리스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Chris Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_2", "1");
                               } else if (type.equals("크리스마스패키지3")) {
-                                 chrx.dropMessage(5, "마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Mas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_3", "1");
                               } else if (type.equals("크리스마스패키지4")) {
-                                 chrx.dropMessage(5, "강림 크리스마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Advent Christmas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_4", "1");
                               } else if (type.equals("2023패키지1")) {
-                                 chrx.dropMessage(5, "깡총깡총 뛰어서 300을 가느냐 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Hopping to 300? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_1", "1");
                               } else if (type.equals("2023패키지2")) {
-                                 chrx.dropMessage(5, "토끼도 강해야 잡지! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Even Rabbits Need Strength to Catch! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_2", "1");
                               } else if (type.equals("2023패키지3")) {
-                                 chrx.dropMessage(5, "토끼는 무슨 옷을 입나? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "What Do Rabbits Wear? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_3", "1");
                               } else if (type.equals("2023패키지4")) {
-                                 chrx.dropMessage(5, "나와라! 토끼처럼 귀여운 펫! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Come Out! Cute Rabbit-like Pet! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_4", "1");
                               } else if (type.equals("2023패키지5")) {
-                                 chrx.dropMessage(5, "세이비어 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Savior Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_5", "1");
                               } else if (type.equals("2023패키지6")) {
-                                 chrx.dropMessage(5, "계모년 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_6", "1");
                               } else if (type.equals("2023패키지7")) {
-                                 chrx.dropMessage(5, "계모년 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_7", "1");
                               } else if (type.equals("2023패키지8")) {
-                                 chrx.dropMessage(5, "계모년 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_8", "1");
                               } else if (type.equals("2023패키지9")) {
-                                 chrx.dropMessage(5, "계모년 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_9", "1");
                               } else if (type.equals("2023패키지10")) {
-                                 chrx.dropMessage(5, "계모년 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_10", "1");
                               } else if (type.equals("2023패키지11")) {
-                                 chrx.dropMessage(5, "계모년 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_11", "1");
                               } else if (type.equals("5월패키지1")) {
-                                 chrx.dropMessage(5, "300만큼 사랑해 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_1", "1");
                               } else if (type.equals("5월패키지2")) {
-                                 chrx.dropMessage(5, "Power OverWhelming 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_2", "1");
                               } else if (type.equals("5월패키지3")) {
-                                 chrx.dropMessage(5, "M@STERPIECE 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_3", "1");
                               } else if (type.equals("5월패키지4")) {
-                                 chrx.dropMessage(5, "어쩌면 진생역전? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_4", "1");
                               } else if (type.equals("5월패키지5")) {
-                                 chrx.dropMessage(5, "에리스의 황금사과 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_5", "1");
                               } else if (type.equals("5월패키지6")) {
-                                 chrx.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_6", "1");
                               } else if (type.equals("5월패키지7")) {
-                                 chrx.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_7", "1");
                               } else if (type.equals("5월패키지8")) {
-                                 chrx.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_8", "1");
                               } else if (type.equals("5월패키지9")) {
-                                 chrx.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_9", "1");
                               } else if (type.equals("5월패키지10")) {
-                                 chrx.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_10", "1");
                               } else if (type.equals("5월패키지11")) {
-                                 chrx.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_11", "1");
                               }
 
@@ -1468,141 +1651,188 @@ public class Center {
                            if (chrxx.getName().equals(name)) {
                               player_name = name;
                               if (type.equals("초심자 패키지")) {
-                                 chrxx.dropMessage(5, "초심자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Beginner Package has been distributed. Please claim it from the Cash Shop.");
                               } else if (type.equals("설날A")) {
-                                 chrxx.dropMessage(5, "설날 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package1", "1");
                               } else if (type.equals("설날B")) {
-                                 chrxx.dropMessage(5, "설날 마스터베리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package2", "1");
                               } else if (type.equals("설날C")) {
-                                 chrxx.dropMessage(5, "설날 대놓고 가성비 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Lunar New Year Great Value Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package3", "1");
                               } else if (type.equals("어린이날")) {
-                                 chrxx.dropMessage(5, "어린이 날 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
-                                 chrxx.updateOneInfo(1235999, "cd_package", String.valueOf(chrxx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
+                                 chrxx.dropMessage(5,
+                                       "Children's Day Package has been distributed. Please claim it from the Cash Shop.");
+                                 chrxx.updateOneInfo(1235999, "cd_package",
+                                       String.valueOf(chrxx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
                               } else if (type.equals("가정의달C")) {
-                                 chrxx.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_1", "1");
                               } else if (type.equals("가정의달B")) {
-                                 chrxx.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_2", "1");
                               } else if (type.equals("가정의달A")) {
-                                 chrxx.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_3", "1");
                               } else if (type.equals("가정의달S")) {
-                                 chrxx.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_4", "1");
                               } else if (type.equals("가정의달SS")) {
-                                 chrxx.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_5", "1");
                               } else if (type.equals("가정의달SSS")) {
-                                 chrxx.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_6", "1");
                               } else if (type.equals("상시패키지1")) {
-                                 chrxx.dropMessage(5, "봉인된 스탯 상자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1236001, "a_package_1", "1");
                               } else if (type.equals("상시패키지2")) {
-                                 chrxx.dropMessage(5, "훈장 옵션 강화권 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1236001, "a_package_2", "1");
                               } else if (type.equals("추석패키지I")) {
-                                 chrxx.dropMessage(5, "추석 패키지 I 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_1", "1");
                               } else if (type.equals("추석패키지II")) {
-                                 chrxx.dropMessage(5, "추석 패키지 II 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_2", "1");
                               } else if (type.equals("추석패키지III")) {
-                                 chrxx.dropMessage(5, "추석 패키지 III 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_3", "1");
                               } else if (type.equals("추석패키지IV")) {
-                                 chrxx.dropMessage(5, "추석 패키지 IV 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_4", "1");
                               } else if (type.equals("3주년패키지I")) {
-                                 chrxx.dropMessage(5, "강림 놀라운 라벨 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Advent Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_1", "1");
                               } else if (type.equals("3주년패키지II")) {
-                                 chrxx.dropMessage(5, "강림 위습의 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Advent Wisp's Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_2", "1");
                               } else if (type.equals("3주년패키지III")) {
-                                 chrxx.dropMessage(5, "강림 리마스터 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Advent Remaster Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_3", "1");
                               } else if (type.equals("크리스마스패키지1")) {
-                                 chrxx.dropMessage(5, "메리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Merry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_1", "1");
                               } else if (type.equals("크리스마스패키지2")) {
-                                 chrxx.dropMessage(5, "크리스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Chris Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_2", "1");
                               } else if (type.equals("크리스마스패키지3")) {
-                                 chrxx.dropMessage(5, "마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Mas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_3", "1");
                               } else if (type.equals("크리스마스패키지4")) {
-                                 chrxx.dropMessage(5, "강림 크리스마스 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Advent Christmas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_4", "1");
                               } else if (type.equals("2023패키지1")) {
-                                 chrxx.dropMessage(5, "깡총깡총 뛰어서 300을 가느냐 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Hopping to 300? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_1", "1");
                               } else if (type.equals("2023패키지2")) {
-                                 chrxx.dropMessage(5, "토끼도 강해야 잡지! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Even Rabbits Need Strength to Catch! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_2", "1");
                               } else if (type.equals("2023패키지3")) {
-                                 chrxx.dropMessage(5, "토끼는 무슨 옷을 입나? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "What Do Rabbits Wear? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_3", "1");
                               } else if (type.equals("2023패키지4")) {
-                                 chrxx.dropMessage(5, "나와라! 토끼처럼 귀여운 펫! 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Come Out! Cute Rabbit-like Pet! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_4", "1");
                               } else if (type.equals("2023패키지5")) {
-                                 chrxx.dropMessage(5, "세이비어 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Savior Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_5", "1");
                               } else if (type.equals("2023패키지6")) {
-                                 chrxx.dropMessage(5, "계모년 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_6", "1");
                               } else if (type.equals("2023패키지7")) {
-                                 chrxx.dropMessage(5, "계모년 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_7", "1");
                               } else if (type.equals("2023패키지8")) {
-                                 chrxx.dropMessage(5, "계모년 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_8", "1");
                               } else if (type.equals("2023패키지9")) {
-                                 chrxx.dropMessage(5, "계모년 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_9", "1");
                               } else if (type.equals("2023패키지10")) {
-                                 chrxx.dropMessage(5, "계모년 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_10", "1");
                               } else if (type.equals("2023패키지11")) {
-                                 chrxx.dropMessage(5, "계모년 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_11", "1");
                               } else if (type.equals("5월패키지1")) {
-                                 chrxx.dropMessage(5, "300만큼 사랑해 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_1", "1");
                               } else if (type.equals("5월패키지2")) {
-                                 chrxx.dropMessage(5, "Power OverWhelming 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_2", "1");
                               } else if (type.equals("5월패키지3")) {
-                                 chrxx.dropMessage(5, "M@STERPIECE 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_3", "1");
                               } else if (type.equals("5월패키지4")) {
-                                 chrxx.dropMessage(5, "어쩌면 진생역전? 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_4", "1");
                               } else if (type.equals("5월패키지5")) {
-                                 chrxx.dropMessage(5, "에리스의 황금사과 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_5", "1");
                               } else if (type.equals("5월패키지6")) {
-                                 chrxx.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_6", "1");
                               } else if (type.equals("5월패키지7")) {
-                                 chrxx.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_7", "1");
                               } else if (type.equals("5월패키지8")) {
-                                 chrxx.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_8", "1");
                               } else if (type.equals("5월패키지9")) {
-                                 chrxx.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_9", "1");
                               } else if (type.equals("5월패키지10")) {
-                                 chrxx.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_10", "1");
                               } else if (type.equals("5월패키지11")) {
-                                 chrxx.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrxx.dropMessage(5,
+                                       "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_11", "1");
                               }
 
@@ -1616,7 +1846,8 @@ public class Center {
                   ps.close();
                   rs.close();
                   if (!found) {
-                     ps = con.prepareStatement("INSERT INTO `questinfo_account` (`account_id`, `quest`, `customData`, `date`) VALUES(?, ?, ?, ?)");
+                     ps = con.prepareStatement(
+                           "INSERT INTO `questinfo_account` (`account_id`, `quest`, `customData`, `date`) VALUES(?, ?, ?, ?)");
                      ps.setInt(1, id);
                      if (type.equals("초심자 패키지")) {
                         ps.setInt(2, 1234555);
@@ -1631,14 +1862,16 @@ public class Center {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "nyd_package3=1");
                      } else if (type.equals("어린이날")) {
-                        PreparedStatement ps2 = con.prepareStatement("SELECT `customData` FROM `questinfo_account` WHERE `account_id` = ? and `quest` = ?");
+                        PreparedStatement ps2 = con.prepareStatement(
+                              "SELECT `customData` FROM `questinfo_account` WHERE `account_id` = ? and `quest` = ?");
                         ps2.setInt(1, id);
                         ps2.setInt(2, 1235999);
                         ResultSet rs2 = ps2.executeQuery();
                         boolean check = true;
                         if (rs2.next()) {
                            check = false;
-                           PreparedStatement ps3 = con.prepareStatement("DELETE FROM `questinfo_account` WHERE `account_id` = ? and `quest` = ?");
+                           PreparedStatement ps3 = con.prepareStatement(
+                                 "DELETE FROM `questinfo_account` WHERE `account_id` = ? and `quest` = ?");
                            ps3.setInt(1, id);
                            ps3.setInt(2, 1235999);
                            ps3.executeQuery();
@@ -1805,10 +2038,12 @@ public class Center {
                   return true;
                }
 
-               System.out.println("[ERROR] 계정을 찾을 수 없어 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+               System.out
+                     .println("[ERROR] 계정을 찾을 수 없어 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
                return false;
             } catch (SQLException var90) {
-               System.out.println("[ERROR] DB 처리 도중 오류가 발생하여 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+               System.out.println(
+                     "[ERROR] DB 처리 도중 오류가 발생하여 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
                return true;
             } finally {
                try {
@@ -1842,7 +2077,7 @@ public class Center {
          }
 
          if (!DBConfig.isGanglim) {
-            Center.sunShineStorage.addSunShineGuage((int)(point * 0.2));
+            Center.sunShineStorage.addSunShineGuage((int) (point * 0.2));
             Center.sunShineStorage.save();
          }
 
@@ -1887,35 +2122,35 @@ public class Center {
                      if (chrxxx.getName().equals(name)) {
                         if (DBConfig.isGanglim) {
                            if (ServerConstants.cashPlusRate > 0) {
-                              int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
+                              int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
                               chrxxx.gainCashPointEvent(pricex, bonuscash);
                               int totalcash = pricex + bonuscash;
                               chrxxx.dropMessage(
-                                 1, nf.format((long)totalcash) + "(" + nf.format((long)pricex) + "+보너스" + nf.format((long)bonuscash) + ") 캐시를 지급 받았습니다."
-                              );
+                                    1, nf.format((long) totalcash) + "(" + nf.format((long) pricex) + "+Bonus"
+                                          + nf.format((long) bonuscash) + ") Cash has been distributed.");
                               chrxxx.send(
-                                 CField.addPopupSay(
-                                    9062000,
-                                    3000,
-                                    "#b"
-                                       + nf.format((long)totalcash)
-                                       + "("
-                                       + nf.format((long)pricex)
-                                       + "+보너스"
-                                       + nf.format((long)bonuscash)
-                                       + ") 캐시#k를 지급 받았습니다.",
-                                    ""
-                                 )
-                              );
+                                    CField.addPopupSay(
+                                          9062000,
+                                          3000,
+                                          "#b"
+                                                + nf.format((long) totalcash)
+                                                + "("
+                                                + nf.format((long) pricex)
+                                                + "+Bonus"
+                                                + nf.format((long) bonuscash)
+                                                + ") Cash#k has been distributed.",
+                                          ""));
                            } else {
                               chrxxx.gainCashPoint(pricex);
-                              chrxxx.dropMessage(1, nf.format((long)pricex) + " 캐시를 지급 받았습니다.");
-                              chrxxx.send(CField.addPopupSay(9062000, 3000, "#b" + nf.format((long)pricex) + " 캐시#k를 지급 받았습니다.", ""));
+                              chrxxx.dropMessage(1, nf.format((long) pricex) + " Cash has been distributed.");
+                              chrxxx.send(CField.addPopupSay(9062000, 3000,
+                                    "#b" + nf.format((long) pricex) + " Cash#k has been distributed.", ""));
                            }
                         } else {
                            chrxxx.gainRealCash(pricex);
-                           chrxxx.dropMessage(1, "강림 포인트를 " + nf.format((long)pricex) + "포인트 지급 받았습니다.");
-                           chrxxx.send(CField.addPopupSay(9062000, 3000, "강림 포인트 #b" + nf.format((long)pricex) + "#k포인트를 지급 받았습니다.", ""));
+                           chrxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
+                           chrxxx.send(CField.addPopupSay(9062000, 3000,
+                                 "You have received #b" + nf.format((long) pricex) + "#k Advent Points.", ""));
                         }
 
                         found = true;
@@ -1931,19 +2166,19 @@ public class Center {
                   if (chrxxxx.getName().equals(name)) {
                      if (DBConfig.isGanglim) {
                         if (ServerConstants.cashPlusRate > 0) {
-                           int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
+                           int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
                            chrxxxx.gainCashPointEvent(pricex, bonuscash);
                            int totalcash = pricex + bonuscash;
                            chrxxxx.dropMessage(
-                              1, nf.format((long)totalcash) + "(" + nf.format((long)pricex) + "+보너스" + nf.format((long)bonuscash) + ") 캐시를 지급 받았습니다."
-                           );
+                                 1, nf.format((long) totalcash) + "(" + nf.format((long) pricex) + "+Bonus"
+                                       + nf.format((long) bonuscash) + ") Cash has been distributed.");
                         } else {
                            chrxxxx.gainCashPoint(pricex);
-                           chrxxxx.dropMessage(1, nf.format((long)pricex) + " 캐시를 지급 받았습니다.");
+                           chrxxxx.dropMessage(1, nf.format((long) pricex) + " Cash has been distributed.");
                         }
                      } else {
                         chrxxxx.gainRealCash(pricex);
-                        chrxxxx.dropMessage(1, "강림 포인트를 " + nf.format((long)pricex) + "포인트 지급 받았습니다.");
+                        chrxxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -1958,19 +2193,19 @@ public class Center {
                   if (chrxxxxx.getName().equals(name)) {
                      if (DBConfig.isGanglim) {
                         if (ServerConstants.cashPlusRate > 0) {
-                           int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
+                           int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
                            chrxxxxx.gainCashPointEvent(pricex, bonuscash);
                            int totalcash = pricex + bonuscash;
                            chrxxxxx.dropMessage(
-                              1, nf.format((long)totalcash) + "(" + nf.format((long)pricex) + "+보너스" + nf.format((long)bonuscash) + ") 캐시를 지급 받았습니다."
-                           );
+                                 1, nf.format((long) totalcash) + "(" + nf.format((long) pricex) + "+Bonus"
+                                       + nf.format((long) bonuscash) + ") Cash has been distributed.");
                         } else {
                            chrxxxxx.gainCashPoint(pricex);
-                           chrxxxxx.dropMessage(1, nf.format((long)pricex) + " 캐시를 지급 받았습니다.");
+                           chrxxxxx.dropMessage(1, nf.format((long) pricex) + " Cash has been distributed.");
                         }
                      } else {
                         chrxxxxx.gainRealCash(pricex);
-                        chrxxxxx.dropMessage(1, "강림 포인트를 " + nf.format((long)pricex) + "포인트 지급 받았습니다.");
+                        chrxxxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -2001,9 +2236,10 @@ public class Center {
                   rs2 = ps2.executeQuery();
                   if (rs2.next()) {
                      int rc = rs2.getInt("value");
-                     PreparedStatement ps3 = con.prepareStatement("UPDATE `acckeyvalue` SET `value` = ? WHERE `id` = ? and `key` = ?");
+                     PreparedStatement ps3 = con
+                           .prepareStatement("UPDATE `acckeyvalue` SET `value` = ? WHERE `id` = ? and `key` = ?");
                      if (ServerConstants.cashPlusRate > 0) {
-                        int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
+                        int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
                         remainCash = rc + pricex + bonuscash;
                         ps3.setString(1, String.valueOf(rc + pricex + bonuscash));
                      } else {
@@ -2016,11 +2252,12 @@ public class Center {
                      ps3.executeUpdate();
                      ps3.close();
                   } else {
-                     PreparedStatement ps3 = con.prepareStatement("INSERT INTO `acckeyvalue` (`id`, `key`, `value`) VALUES(?, ?, ?)");
+                     PreparedStatement ps3 = con
+                           .prepareStatement("INSERT INTO `acckeyvalue` (`id`, `key`, `value`) VALUES(?, ?, ?)");
                      ps3.setInt(1, accountID);
                      ps3.setString(2, "CashPoint");
                      if (ServerConstants.cashPlusRate > 0) {
-                        int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
+                        int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
                         ps3.setString(3, String.valueOf(pricex + bonuscash));
                         remainCash = pricex + bonuscash;
                      } else {
@@ -2040,14 +2277,16 @@ public class Center {
                   rs2 = ps2.executeQuery();
                   if (rs2.next()) {
                      int rc = rs2.getInt("value");
-                     PreparedStatement ps3 = con.prepareStatement("UPDATE `acckeyvalue` SET `value` = ? WHERE `id` = ? and `key` = ?");
+                     PreparedStatement ps3 = con
+                           .prepareStatement("UPDATE `acckeyvalue` SET `value` = ? WHERE `id` = ? and `key` = ?");
                      ps3.setString(1, String.valueOf(rc + pricex));
                      ps3.setInt(2, accountID);
                      ps3.setString(3, "DPointAll");
                      ps3.executeUpdate();
                      ps3.close();
                   } else {
-                     PreparedStatement ps3 = con.prepareStatement("INSERT INTO `acckeyvalue` (`id`, `key`, `value`) VALUES(?, ?, ?)");
+                     PreparedStatement ps3 = con
+                           .prepareStatement("INSERT INTO `acckeyvalue` (`id`, `key`, `value`) VALUES(?, ?, ?)");
                      ps3.setInt(1, accountID);
                      ps3.setString(2, "DPointAll");
                      ps3.setString(3, String.valueOf(pricex));
@@ -2076,7 +2315,9 @@ public class Center {
                }
 
                if (!f) {
-                  System.out.println("[ERROR] DB 처리 도중 오류가 발생하여 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+                  System.out.println(
+                        "[ERROR] An error occurred during DB processing, so automatic charge was not processed. (Account : "
+                              + accountName + ", Amount : " + point + ")");
                   return false;
                }
             }
@@ -2105,27 +2346,30 @@ public class Center {
                rs.close();
             }
 
-            ps = con.prepareStatement("INSERT INTO `donation_log` (`date`, `account`, `name`, `price`) VALUES (?, ?, ?, ?)");
+            ps = con.prepareStatement(
+                  "INSERT INTO `donation_log` (`date`, `account`, `name`, `price`) VALUES (?, ?, ?, ?)");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy. M. d");
             String fDate = sdf.format(System.currentTimeMillis());
             ps.setString(1, fDate);
             ps.setString(2, accountName);
             if (type.equals("이벤트 참여")) {
-               targetName = "이벤트참여";
+               targetName = "EventParticipation";
             } else if (type.equals("신년 이벤트")) {
-               targetName = "신년이벤트";
+               targetName = "NewYearEvent";
             } else if (type.equals("클스마스 이벤트")) {
-               targetName = "클스마스이벤트";
+               targetName = "ChristmasEvent";
             } else if (type.equals("보너스이벤트")) {
-               targetName = "보너스이벤트";
+               targetName = "BonusEvent";
             }
 
             ps.setString(3, targetName);
-            ps.setString(4, nf.format((long)point));
+            ps.setString(4, nf.format((long) point));
             ps.executeQuery();
          } catch (SQLException var93) {
             var93.printStackTrace();
-            System.out.println("[ERROR] DB 처리 도중 오류가 발생하여 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+            System.out.println(
+                  "[ERROR] An error occurred during DB processing, so automatic charge was not processed. (Account : "
+                        + accountName + ", Amount : " + point + ")");
             return false;
          } finally {
             try {
@@ -2143,18 +2387,19 @@ public class Center {
          }
 
          StringBuilder sb = new StringBuilder();
-         sb.append("후원 포인트 지급");
+         sb.append("Donation Point Distribution");
          sb.append(" (계정ID : ");
          sb.append(accountName);
          sb.append(") ");
          if (ServerConstants.cashPlusRate > 0) {
-            int bonuscash = (int)((double)pricex * ServerConstants.cashPlusRate / 100.0);
-            sb.append(pricex + " 포인트, " + bonuscash + " 보너스 (잔여금액 : " + remainCash + ")");
+            int bonuscash = (int) ((double) pricex * ServerConstants.cashPlusRate / 100.0);
+            sb.append(pricex + " Points, " + bonuscash + " Bonus (Remaining Amount : " + remainCash + ")");
          } else {
-            sb.append(pricex + " 포인트 (잔여금액 : " + remainCash + ")");
+            sb.append(pricex + " Points (Remaining Amount : " + remainCash + ")");
          }
 
-         LoggingManager.putLog(new DonationLog(accountName, String.valueOf(pricex), sb, player_name, player_id, account_id));
+         LoggingManager
+               .putLog(new DonationLog(accountName, String.valueOf(pricex), sb, player_name, player_id, account_id));
       }
 
       return true;
@@ -2175,7 +2420,7 @@ public class Center {
    }
 
    public static void registerLoggingSave() {
-      System.out.println("로그 기록 이벤트가 등록되었습니다.");
+      System.out.println("Log recording event has been registered.");
       loggingSaveTask = Timer.HottimeTimer.getInstance().register(new Runnable() {
          @Override
          public void run() {
@@ -2185,11 +2430,11 @@ public class Center {
    }
 
    public static void registerHottimeItem() {
-      System.out.println("자동 핫타임 아이템 이벤트가 등록되었습니다.");
+      System.out.println("Auto Hot Time Item event has been registered.");
       autoHottimeItemTask = Timer.HottimeTimer.getInstance().register(() -> {
          for (HottimeItemEntry entry : new ArrayList<>(HottimeItemManager.entryList)) {
             if (System.currentTimeMillis() >= entry.getTime()) {
-               gainItemExpiration(entry.getItemID(), 0, (short)entry.getQuantity());
+               gainItemExpiration(entry.getItemID(), 0, (short) entry.getQuantity());
                HottimeItemManager.entryList.remove(entry);
             }
          }
@@ -2197,32 +2442,34 @@ public class Center {
    }
 
    public static void registerAutoFever() {
-      System.out.println("자동 핫타임 피버 이벤트가 등록되었습니다.");
+      System.out.println("Auto Hot Time Fever event has been registered.");
       autoFeverTask = Timer.HottimeTimer.getInstance().register(() -> {
          List<AutoHottimeEntry> removes = new ArrayList<>();
 
          for (AutoHottimeEntry entry : AutoHottimeManager.entryList) {
-            if (System.currentTimeMillis() >= entry.getStartTime() && System.currentTimeMillis() < entry.getEndTime() && !entry.isStarted()) {
+            if (System.currentTimeMillis() >= entry.getStartTime() && System.currentTimeMillis() < entry.getEndTime()
+                  && !entry.isStarted()) {
                String type = "";
                if (entry.getEventType() == AutoHottimeEntry.EventType.Exp) {
                   ServerConstants.expFeverRate = entry.getRate();
-                  type = "경험치";
+                  type = "Exp";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Drop) {
                   ServerConstants.dropFeverRate = entry.getRate();
-                  type = "드롭";
+                  type = "Drop";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Meso) {
                   ServerConstants.mesoFeverRate = entry.getRate();
-                  type = "메소";
+                  type = "Meso";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Give) {
-                  type = "지급";
+                  type = "Distribution";
                }
 
                if (type.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버이벤트] 핫타임 이벤트가 시작되었습니다."));
-                  System.out.println("핫타임 자동 아이템 지급 시작!");
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] Hot Time Event has started."));
+                  System.out.println("Hot Time Auto Item Distribution Started!");
                } else {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버이벤트] " + type + " " + entry.getRate() + "배 이벤트가 시작되었습니다."));
-                  System.out.println(entry.getEventType().name() + " " + entry.getRate() + " 피버 시작!");
+                  Center.Broadcast.broadcastMessage(
+                        CField.chatMsg(3, "[FeverEvent] " + type + " " + entry.getRate() + "x Event has started."));
+                  System.out.println(entry.getEventType().name() + " " + entry.getRate() + " Fever Started!");
                }
 
                entry.setStarted(true);
@@ -2233,23 +2480,24 @@ public class Center {
                String typex = "";
                if (entry.getEventType() == AutoHottimeEntry.EventType.Exp) {
                   ServerConstants.expFeverRate = 1.0;
-                  typex = "경험치";
+                  typex = "Exp";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Drop) {
                   ServerConstants.dropFeverRate = 1.0;
-                  typex = "드롭";
+                  typex = "Drop";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Meso) {
                   ServerConstants.mesoFeverRate = 1.0;
-                  typex = "메소";
+                  typex = "Meso";
                } else if (entry.getEventType() == AutoHottimeEntry.EventType.Give) {
-                  typex = "지급";
+                  typex = "Distribution";
                }
 
                if (typex.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버이벤트] 핫타임 이벤트가 종료되었습니다."));
-                  System.out.println("핫타임 자동 아이템 지급 종료!");
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] Hot Time Event has ended."));
+                  System.out.println("Hot Time Auto Item Distribution Ended!");
                } else {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버이벤트] " + typex + " " + entry.getRate() + "배 이벤트가 종료되었습니다."));
-                  System.out.println(entry.getEventType().name() + " " + entry.getRate() + "피버 종료");
+                  Center.Broadcast.broadcastMessage(
+                        CField.chatMsg(3, "[FeverEvent] " + typex + " " + entry.getRate() + "x Event has ended."));
+                  System.out.println(entry.getEventType().name() + " " + entry.getRate() + " Fever Ended");
                }
             }
          }
@@ -2267,9 +2515,9 @@ public class Center {
 
    public static void registerAutoNotice() {
       if (MapleAutoNotice.autoNotice == null) {
-         System.err.println("[ERROR] 자동 공지사항 데이터 로드에 실패하였습니다.");
+         System.err.println("[ERROR] Failed to load auto-notice data.");
       } else {
-         System.out.println("자동 공지사항 시스템이 등록되었습니다.");
+         System.out.println("Auto Notice System has been registered.");
          autoNoticeTask = Timer.HottimeTimer.getInstance().register(new Runnable() {
             @Override
             public void run() {
@@ -2277,1184 +2525,1353 @@ public class Center {
                List<String> notices = new ArrayList<>(autoNotice.getNotice());
                Collections.shuffle(notices);
                String notice = notices.stream().collect(Collectors.toList()).stream().findAny().get();
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(autoNotice.getNoticeType(), "[" + ServerConstants.serverName + "] " + notice));
+               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(autoNotice.getNoticeType(),
+                     "[" + ServerConstants.serverName + "] " + notice));
             }
          }, MapleAutoNotice.autoNotice.getInterval());
       }
    }
 
    public static void registerAutoCharge() {
-      System.out.println("후원 자동 충전 시스템이 등록되었습니다.");
+      System.out.println("Donation Auto Charge System has been registered.");
       autoChargeTask = Timer.HottimeTimer.getInstance()
-         .register(
-            new Runnable() {
-               @Override
-               public void run() {
-                  PreparedStatement ps = null;
-                  ResultSet rs = null;
-                  boolean find = false;
+            .register(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        PreparedStatement ps = null;
+                        ResultSet rs = null;
+                        boolean find = false;
 
-                  try {
-                     try (Connection con = DBConnection.getConnection()) {
-                        ps = con.prepareStatement("SELECT * FROM `price` WHERE `check` = ?");
-                        ps.setInt(1, 0);
-                        rs = ps.executeQuery();
+                        try {
+                           try (Connection con = DBConnection.getConnection()) {
+                              ps = con.prepareStatement("SELECT * FROM `price` WHERE `check` = ?");
+                              ps.setInt(1, 0);
+                              rs = ps.executeQuery();
 
-                        while (rs.next()) {
-                           String name = rs.getString("name").trim().replace("\n", "").replace("\t", "");
-                           name = name.split("\\(")[0];
-                           PreparedStatement ps2 = null;
-                           ResultSet rs2 = null;
+                              while (rs.next()) {
+                                 String name = rs.getString("name").trim().replace("\n", "").replace("\t", "");
+                                 name = name.split("\\(")[0];
+                                 PreparedStatement ps2 = null;
+                                 ResultSet rs2 = null;
 
-                           try {
-                              String price = rs.getString("price").replace(",", "");
-                              int p = Integer.parseInt(price);
-                              ps2 = con.prepareStatement("SELECT * FROM `donation_request` WHERE `real_name` = ? and `point` = ? and `status` = ?");
-                              ps2.setString(1, name);
-                              ps2.setInt(2, p);
-                              ps2.setInt(3, 0);
-                              rs2 = ps2.executeQuery();
+                                 try {
+                                    String price = rs.getString("price").replace(",", "");
+                                    int p = Integer.parseInt(price);
+                                    ps2 = con.prepareStatement(
+                                          "SELECT * FROM `donation_request` WHERE `real_name` = ? and `point` = ? and `status` = ?");
+                                    ps2.setString(1, name);
+                                    ps2.setInt(2, p);
+                                    ps2.setInt(3, 0);
+                                    rs2 = ps2.executeQuery();
 
-                              while (rs2.next()) {
-                                 int type = rs2.getInt("type");
-                                 String t = "일반";
-                                 if (type == 1) {
-                                    t = "이벤트 참여";
-                                 } else if (type == 2) {
-                                    t = "초심자 패키지";
-                                 } else if (type == 3) {
-                                    t = "보너스이벤트";
-                                 } else if (type == 5) {
-                                    t = "설날A";
-                                 } else if (type == 6) {
-                                    t = "설날B";
-                                 } else if (type == 7) {
-                                    t = "설날C";
-                                 } else if (type == 8) {
-                                    t = "어린이날";
-                                 } else if (type == 9) {
-                                    t = "가정의달C";
-                                 } else if (type == 10) {
-                                    t = "가정의달B";
-                                 } else if (type == 11) {
-                                    t = "가정의달A";
-                                 } else if (type == 12) {
-                                    t = "가정의달S";
-                                 } else if (type == 13) {
-                                    t = "가정의달SS";
-                                 } else if (type == 14) {
-                                    t = "가정의달SSS";
-                                 } else if (type == 15) {
-                                    t = "상시패키지1";
-                                 } else if (type == 16) {
-                                    t = "상시패키지2";
-                                 } else if (type == 17) {
-                                    t = "추석패키지I";
-                                 } else if (type == 18) {
-                                    t = "추석패키지II";
-                                 } else if (type == 19) {
-                                    t = "추석패키지III";
-                                 } else if (type == 20) {
-                                    t = "추석패키지IV";
-                                 } else if (type == 21) {
-                                    t = "3주년패키지I";
-                                 } else if (type == 22) {
-                                    t = "3주년패키지II";
-                                 } else if (type == 23) {
-                                    t = "3주년패키지III";
-                                 } else if (type == 24) {
-                                    t = "크리스마스패키지1";
-                                 } else if (type == 25) {
-                                    t = "크리스마스패키지2";
-                                 } else if (type == 26) {
-                                    t = "크리스마스패키지3";
-                                 } else if (type == 27) {
-                                    t = "크리스마스패키지4";
-                                 } else if (type == 28) {
-                                    t = "2023패키지1";
-                                 } else if (type == 29) {
-                                    t = "2023패키지2";
-                                 } else if (type == 30) {
-                                    t = "2023패키지3";
-                                 } else if (type == 31) {
-                                    t = "2023패키지4";
-                                 } else if (type == 32) {
-                                    t = "2023패키지5";
-                                 } else if (type == 33) {
-                                    t = "2023패키지6";
-                                 } else if (type == 34) {
-                                    t = "2023패키지7";
-                                 } else if (type == 35) {
-                                    t = "2023패키지8";
-                                 } else if (type == 36) {
-                                    t = "2023패키지9";
-                                 } else if (type == 37) {
-                                    t = "2023패키지10";
-                                 } else if (type == 38) {
-                                    t = "2023패키지11";
-                                 } else if (type == 39) {
-                                    t = "5월패키지1";
-                                 } else if (type == 40) {
-                                    t = "5월패키지2";
-                                 } else if (type == 41) {
-                                    t = "5월패키지3";
-                                 } else if (type == 42) {
-                                    t = "5월패키지4";
-                                 } else if (type == 43) {
-                                    t = "5월패키지5";
-                                 } else if (type == 44) {
-                                    t = "5월패키지6";
-                                 } else if (type == 45) {
-                                    t = "5월패키지7";
-                                 } else if (type == 46) {
-                                    t = "5월패키지8";
-                                 } else if (type == 47) {
-                                    t = "5월패키지9";
-                                 } else if (type == 48) {
-                                    t = "5월패키지10";
-                                 } else if (type == 49) {
-                                    t = "5월패키지11";
-                                 }
+                                    while (rs2.next()) {
+                                       int type = rs2.getInt("type");
+                                       String t = "일반";
+                                       if (type == 1) {
+                                          t = "이벤트 참여";
+                                       } else if (type == 2) {
+                                          t = "초심자 패키지";
+                                       } else if (type == 3) {
+                                          t = "보너스이벤트";
+                                       } else if (type == 5) {
+                                          t = "설날A";
+                                       } else if (type == 6) {
+                                          t = "설날B";
+                                       } else if (type == 7) {
+                                          t = "설날C";
+                                       } else if (type == 8) {
+                                          t = "어린이날";
+                                       } else if (type == 9) {
+                                          t = "가정의달C";
+                                       } else if (type == 10) {
+                                          t = "가정의달B";
+                                       } else if (type == 11) {
+                                          t = "가정의달A";
+                                       } else if (type == 12) {
+                                          t = "가정의달S";
+                                       } else if (type == 13) {
+                                          t = "가정의달SS";
+                                       } else if (type == 14) {
+                                          t = "가정의달SSS";
+                                       } else if (type == 15) {
+                                          t = "상시패키지1";
+                                       } else if (type == 16) {
+                                          t = "상시패키지2";
+                                       } else if (type == 17) {
+                                          t = "추석패키지I";
+                                       } else if (type == 18) {
+                                          t = "추석패키지II";
+                                       } else if (type == 19) {
+                                          t = "추석패키지III";
+                                       } else if (type == 20) {
+                                          t = "추석패키지IV";
+                                       } else if (type == 21) {
+                                          t = "3주년패키지I";
+                                       } else if (type == 22) {
+                                          t = "3주년패키지II";
+                                       } else if (type == 23) {
+                                          t = "3주년패키지III";
+                                       } else if (type == 24) {
+                                          t = "크리스마스패키지1";
+                                       } else if (type == 25) {
+                                          t = "크리스마스패키지2";
+                                       } else if (type == 26) {
+                                          t = "크리스마스패키지3";
+                                       } else if (type == 27) {
+                                          t = "크리스마스패키지4";
+                                       } else if (type == 28) {
+                                          t = "2023패키지1";
+                                       } else if (type == 29) {
+                                          t = "2023패키지2";
+                                       } else if (type == 30) {
+                                          t = "2023패키지3";
+                                       } else if (type == 31) {
+                                          t = "2023패키지4";
+                                       } else if (type == 32) {
+                                          t = "2023패키지5";
+                                       } else if (type == 33) {
+                                          t = "2023패키지6";
+                                       } else if (type == 34) {
+                                          t = "2023패키지7";
+                                       } else if (type == 35) {
+                                          t = "2023패키지8";
+                                       } else if (type == 36) {
+                                          t = "2023패키지9";
+                                       } else if (type == 37) {
+                                          t = "2023패키지10";
+                                       } else if (type == 38) {
+                                          t = "2023패키지11";
+                                       } else if (type == 39) {
+                                          t = "5월패키지1";
+                                       } else if (type == 40) {
+                                          t = "5월패키지2";
+                                       } else if (type == 41) {
+                                          t = "5월패키지3";
+                                       } else if (type == 42) {
+                                          t = "5월패키지4";
+                                       } else if (type == 43) {
+                                          t = "5월패키지5";
+                                       } else if (type == 44) {
+                                          t = "5월패키지6";
+                                       } else if (type == 45) {
+                                          t = "5월패키지7";
+                                       } else if (type == 46) {
+                                          t = "5월패키지8";
+                                       } else if (type == 47) {
+                                          t = "5월패키지9";
+                                       } else if (type == 48) {
+                                          t = "5월패키지10";
+                                       } else if (type == 49) {
+                                          t = "5월패키지11";
+                                       }
 
-                                 if (DBConfig.isGanglim && !t.equals("일반")) {
-                                    return;
-                                 }
+                                       if (DBConfig.isGanglim && !t.equals("일반")) {
+                                          return;
+                                       }
 
-                                 if (Center.doCharge(t, rs2.getString("account_name"), p)) {
-                                    find = true;
-                                    PreparedStatement ps3 = null;
-                                    ps3 = con.prepareStatement("UPDATE `price` SET `check` = ? WHERE `name` = ? and `price` = ?");
-                                    ps3.setInt(1, 1);
-                                    ps3.setString(2, rs.getString("name"));
-                                    ps3.setString(3, rs.getString("price"));
-                                    ps3.executeUpdate();
-                                    ps3.close();
-                                    ps3 = con.prepareStatement("UPDATE `donation_request` SET `status` = ? WHERE `real_name` = ? and `point` = ?");
-                                    ps3.setInt(1, 1);
-                                    ps3.setString(2, name);
-                                    ps3.setInt(3, p);
-                                    ps3.executeUpdate();
-                                    ps3.close();
-                                    System.out
-                                       .println("자동 충전 완료 : 캐릭터(" + rs2.getString("player_name") + "), 입금자 명(" + name + "), 금액(" + rs.getString("price") + ")");
-                                    DonationRequest.init();
-                                    if (!DBConfig.isGanglim) {
-                                       DiscordBotHandler.requestSendTelegram(
-                                          "충전 완료 > 캐릭터(" + rs2.getString("player_name") + "), 입금자 명(" + name + "), 금액(" + rs.getString("price") + ")",
-                                          -517653288L
-                                       );
-                                    } else {
-                                       DiscordBotHandler.requestSendTelegramDonation(
-                                          "충전 완료 > 캐릭터(" + rs2.getString("player_name") + "), 입금자 명(" + name + "), 금액(" + rs.getString("price") + ")"
-                                       );
+                                       if (Center.doCharge(t, rs2.getString("account_name"), p)) {
+                                          find = true;
+                                          PreparedStatement ps3 = null;
+                                          ps3 = con.prepareStatement(
+                                                "UPDATE `price` SET `check` = ? WHERE `name` = ? and `price` = ?");
+                                          ps3.setInt(1, 1);
+                                          ps3.setString(2, rs.getString("name"));
+                                          ps3.setString(3, rs.getString("price"));
+                                          ps3.executeUpdate();
+                                          ps3.close();
+                                          ps3 = con.prepareStatement(
+                                                "UPDATE `donation_request` SET `status` = ? WHERE `real_name` = ? and `point` = ?");
+                                          ps3.setInt(1, 1);
+                                          ps3.setString(2, name);
+                                          ps3.setInt(3, p);
+                                          ps3.executeUpdate();
+                                          ps3.close();
+                                          System.out
+                                                .println("Auto Charge Complete : Character("
+                                                      + rs2.getString("player_name") + "), Depositor("
+                                                      + name + "), Amount(" + rs.getString("price") + ")");
+                                          DonationRequest.init();
+                                          if (!DBConfig.isGanglim) {
+                                             DiscordBotHandler.requestSendTelegram(
+                                                   "Charge Complete > Character(" + rs2.getString("player_name")
+                                                         + "), Depositor(" + name
+                                                         + "), Amount(" + rs.getString("price") + ")",
+                                                   -517653288L);
+                                          } else {
+                                             DiscordBotHandler.requestSendTelegramDonation(
+                                                   "Charge Complete > Character(" + rs2.getString("player_name")
+                                                         + "), Depositor(" + name
+                                                         + "), Amount(" + rs.getString("price") + ")");
+                                          }
+                                       }
+                                    }
+
+                                    rs2.close();
+                                    ps2.close();
+                                 } catch (SQLException var28) {
+                                    try {
+                                       if (rs2 != null) {
+                                          rs2.close();
+                                          ResultSet var37 = null;
+                                       }
+
+                                       if (ps2 != null) {
+                                          ps2.close();
+                                          PreparedStatement var36 = null;
+                                       }
+                                    } catch (SQLException var27) {
                                     }
                                  }
                               }
-
-                              rs2.close();
-                              ps2.close();
-                           } catch (SQLException var28) {
-                              try {
-                                 if (rs2 != null) {
-                                    rs2.close();
-                                    ResultSet var37 = null;
-                                 }
-
-                                 if (ps2 != null) {
-                                    ps2.close();
-                                    PreparedStatement var36 = null;
-                                 }
-                              } catch (SQLException var27) {
+                           } catch (SQLException var30) {
+                           }
+                        } finally {
+                           try {
+                              if (ps != null) {
+                                 ps.close();
+                                 PreparedStatement var32 = null;
                               }
+
+                              if (rs != null) {
+                                 rs.close();
+                                 ResultSet var33 = null;
+                              }
+                           } catch (SQLException var25) {
                            }
                         }
-                     } catch (SQLException var30) {
                      }
-                  } finally {
-                     try {
-                        if (ps != null) {
-                           ps.close();
-                           PreparedStatement var32 = null;
-                        }
-
-                        if (rs != null) {
-                           rs.close();
-                           ResultSet var33 = null;
-                        }
-                     } catch (SQLException var25) {
-                     }
-                  }
-               }
-            },
-            60000L
-         );
+                  },
+                  60000L);
    }
 
    public static void registerAutoHottime() {
-      System.out.println("핫타임 자동지급 시스템이 등록되었습니다.");
+      System.out.println("Hot Time Auto Distribution System has been registered.");
       autoHottimeTask = Timer.HottimeTimer.getInstance()
-         .register(
-            new Runnable() {
-               @Override
-               public void run() {
-                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-                  Calendar CAL = new GregorianCalendar(Locale.KOREA);
-                  String fDate = sdf.format(CAL.getTime());
-                  String[] dates = fDate.split("-");
-                  int year = Integer.parseInt(dates[0]);
-                  int month = Integer.parseInt(dates[1]);
-                  int day = Integer.parseInt(dates[2]);
-                  int hours = Integer.parseInt(dates[3]);
-                  int minutes = Integer.parseInt(dates[4]);
-                  int seconds = Integer.parseInt(dates[5]);
-                  int zellerMonth = 0;
-                  int zellerYear = 0;
-                  if (month < 3) {
-                     zellerMonth = month + 12;
-                     zellerYear = year - 1;
-                  } else {
-                     zellerMonth = month;
-                     zellerYear = year;
-                  }
+            .register(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+                        Calendar CAL = new GregorianCalendar(Locale.KOREA);
+                        String fDate = sdf.format(CAL.getTime());
+                        String[] dates = fDate.split("-");
+                        int year = Integer.parseInt(dates[0]);
+                        int month = Integer.parseInt(dates[1]);
+                        int day = Integer.parseInt(dates[2]);
+                        int hours = Integer.parseInt(dates[3]);
+                        int minutes = Integer.parseInt(dates[4]);
+                        int seconds = Integer.parseInt(dates[5]);
+                        int zellerMonth = 0;
+                        int zellerYear = 0;
+                        if (month < 3) {
+                           zellerMonth = month + 12;
+                           zellerYear = year - 1;
+                        } else {
+                           zellerMonth = month;
+                           zellerYear = year;
+                        }
 
-                  int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100) + zellerYear / 400;
-                  int dayOfWeek = computation % 7;
-                  if (Center.lastMonth == 0) {
-                     Center.lastMonth = month;
-                  }
+                        int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4
+                              + 6 * (zellerYear / 100) + zellerYear / 400;
+                        int dayOfWeek = computation % 7;
+                        if (Center.lastMonth == 0) {
+                           Center.lastMonth = month;
+                        }
 
-                  if (Center.lastCheckLoggedinTime == 0L || Center.lastCheckLoggedinTime + 300000L <= System.currentTimeMillis()) {
-                     PreparedStatement ps = null;
-                     ResultSet rs = null;
-                     DBProcessor dis = DBEventManager.getNextProcessor();
+                        if (Center.lastCheckLoggedinTime == 0L
+                              || Center.lastCheckLoggedinTime + 300000L <= System.currentTimeMillis()) {
+                           PreparedStatement ps = null;
+                           ResultSet rs = null;
+                           DBProcessor dis = DBEventManager.getNextProcessor();
 
-                     try (Connection con = DBConnection.getConnection()) {
-                        ps = con.prepareStatement("SELECT * FROM `accounts` WHERE `loggedin` > 0 or `allowed` > 0");
-                        rs = ps.executeQuery();
+                           try (Connection con = DBConnection.getConnection()) {
+                              ps = con
+                                    .prepareStatement("SELECT * FROM `accounts` WHERE `loggedin` > 0 or `allowed` > 0");
+                              rs = ps.executeQuery();
 
-                        while (rs.next()) {
-                           final int accountID = rs.getInt("id");
-                           if (rs.getInt("loggedin") > 0) {
-                              boolean find = false;
+                              while (rs.next()) {
+                                 final int accountID = rs.getInt("id");
+                                 if (rs.getInt("loggedin") > 0) {
+                                    boolean find = false;
 
-                              for (GameServer cs : GameServer.getAllInstances()) {
-                                 for (Field map : cs.getMapFactory().getAllMaps()) {
-                                    for (MapleCharacter chr : new ArrayList<>(map.getCharacters())) {
-                                       if (chr != null
-                                          && chr.getClient().getAccID() == accountID
-                                          && (
-                                             !chr.getClient().getSession().isActive()
-                                                || !chr.getClient().getSession().isOpen()
-                                                || System.currentTimeMillis() - chr.getLastHeartBeatTime() > 300000L
-                                          )) {
+                                    for (GameServer cs : GameServer.getAllInstances()) {
+                                       for (Field map : cs.getMapFactory().getAllMaps()) {
+                                          for (MapleCharacter chr : new ArrayList<>(map.getCharacters())) {
+                                             if (chr != null
+                                                   && chr.getClient().getAccID() == accountID
+                                                   && (!chr.getClient().getSession().isActive()
+                                                         || !chr.getClient().getSession().isOpen()
+                                                         || System.currentTimeMillis()
+                                                               - chr.getLastHeartBeatTime() > 300000L)) {
+                                                find = true;
+                                             }
+                                          }
+                                       }
+                                    }
+
+                                    for (MapleCharacter p : new ArrayList<>(
+                                          CashShopServer.getPlayerStorage().getAllCharacters())) {
+                                       if (p.getAccountID() == accountID && (!p.getClient().getSession().isActive()
+                                             || !p.getClient().getSession().isOpen())) {
                                           find = true;
                                        }
                                     }
+
+                                    for (MapleCharacter px : new ArrayList<>(
+                                          AuctionServer.getPlayerStorage().getAllCharacters())) {
+                                       if (px.getAccountID() == accountID && (!px.getClient().getSession().isActive()
+                                             || !px.getClient().getSession().isOpen())) {
+                                          find = true;
+                                       }
+                                    }
+
+                                    if (find) {
+                                       dis.addQuery(DBSelectionKey.INSERT_OR_UPDATE,
+                                             "UPDATE `accounts` SET `loggedin` = ? WHERE id = ?", new DBCallback() {
+                                                @Override
+                                                public void execute(PreparedStatement ps) throws SQLException {
+                                                   ps.setInt(1, 0);
+                                                   ps.setInt(2, accountID);
+                                                }
+                                             });
+                                    }
                                  }
                               }
-
-                              for (MapleCharacter p : new ArrayList<>(CashShopServer.getPlayerStorage().getAllCharacters())) {
-                                 if (p.getAccountID() == accountID && (!p.getClient().getSession().isActive() || !p.getClient().getSession().isOpen())) {
-                                    find = true;
+                           } catch (SQLException var153) {
+                              var153.printStackTrace();
+                           } finally {
+                              try {
+                                 if (ps != null) {
+                                    ps.close();
+                                    PreparedStatement var157 = null;
                                  }
-                              }
 
-                              for (MapleCharacter px : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
-                                 if (px.getAccountID() == accountID && (!px.getClient().getSession().isActive() || !px.getClient().getSession().isOpen())) {
-                                    find = true;
+                                 if (rs != null) {
+                                    rs.close();
+                                    ResultSet var162 = null;
                                  }
-                              }
-
-                              if (find) {
-                                 dis.addQuery(DBSelectionKey.INSERT_OR_UPDATE, "UPDATE `accounts` SET `loggedin` = ? WHERE id = ?", new DBCallback() {
-                                    @Override
-                                    public void execute(PreparedStatement ps) throws SQLException {
-                                       ps.setInt(1, 0);
-                                       ps.setInt(2, accountID);
-                                    }
-                                 });
+                              } catch (SQLException var138) {
+                                 var138.printStackTrace();
                               }
                            }
-                        }
-                     } catch (SQLException var153) {
-                        var153.printStackTrace();
-                     } finally {
-                        try {
-                           if (ps != null) {
-                              ps.close();
-                              PreparedStatement var157 = null;
-                           }
 
-                           if (rs != null) {
-                              rs.close();
-                              ResultSet var162 = null;
-                           }
-                        } catch (SQLException var138) {
-                           var138.printStackTrace();
-                        }
-                     }
-
-                     Center.lastCheckLoggedinTime = System.currentTimeMillis();
-                  }
-
-                  if (Center.lastMonth != 0 && Center.lastMonth != month) {
-                     for (GameServer cs : GameServer.getAllInstances()) {
-                        for (Field map : cs.getMapFactory().getAllMaps()) {
-                           for (MapleCharacter chrx : new ArrayList<>(map.getCharacters())) {
-                              if (chrx != null) {
-                                 chrx.updateOneInfo(1234570, "blackmage_clear", "");
-                                 chrx.updateOneInfo(1234570, "lastMonth", String.valueOf(month));
-                              }
-                           }
-                        }
-                     }
-
-                     System.out.println("[알림] 월간 보스가 초기화되었습니다.");
-                     Center.lastMonth = month;
-                  }
-
-                  if (!DBConfig.isGanglim
-                     && (month == 2 && day >= 25 || month == 3 || month == 4)
-                     && (
-                        hours == 0 && minutes == 5 && seconds == 10
-                           || hours == 4 && minutes == 0 && seconds == 1
-                           || hours == 8 && minutes == 0 && seconds == 1
-                           || hours == 12 && minutes == 0 && seconds == 1
-                           || hours == 16 && minutes == 0 && seconds == 1
-                           || hours == 20 && minutes == 0 && seconds == 1
-                     )) {
-                     for (int i = 1; i <= 3; i++) {
-                        Field target = GameServer.getInstance(i).getMapFactory().getMap(910010000);
-                        if (target == null) {
-                           return;
+                           Center.lastCheckLoggedinTime = System.currentTimeMillis();
                         }
 
-                        Field_EventRabbit f = (Field_EventRabbit)target;
-                        if (f != null) {
-                           f.resetFully(false);
-                           MapleMonster mob = MapleLifeFactory.getMonster(9500006 + Randomizer.rand(0, 1));
-                           mob.setHp(20000000L);
-                           mob.getStats().setHp(20000000L);
-                           target.spawnMonsterOnGroundBelow(mob, new Point(-82, 153));
-                           f.setRabbitSpawnedTime(System.currentTimeMillis());
-                        }
-                     }
-
-                     for (GameServer cs : GameServer.getAllInstances()) {
-                        for (MapleCharacter chrxx : cs.getPlayerStorage().getAllCharacters()) {
-                           if (chrxx != null) {
-                              int type = 1;
-                              int gameType = 9;
-                              chrxx.removeRandomPortal();
-                              RandomPortalType portalType = RandomPortalType.get(type);
-                              RandomPortalGameType portalGameType = RandomPortalGameType.get(gameType);
-                              Point pos = chrxx.getMap().calcDropPos(chrxx.getTruePosition(), chrxx.getPosition());
-                              RandomPortal portal = new RandomPortal(portalType, Randomizer.rand(1000000, 9999999), pos, chrxx.getId(), portalGameType);
-                              chrxx.updateOneInfo(15142, "gameType", "9");
-                              chrxx.send(CField.addPopupSay(9062000, 5000, "월묘 이벤트 소굴이 열렸습니다. 격파되기 전에 입장해야 보상을 획득할 수 있습니다.", ""));
-                              chrxx.send(CWvsContext.getScriptProgressMessage("월묘 이벤트 소굴이 열렸습니다. 격파되기 전에 입장해야 보상을 획득할 수 있습니다."));
-                              chrxx.setRandomPortal(portal);
-                              chrxx.setRandomPortalSpawnedTime(System.currentTimeMillis());
-                              chrxx.send(CField.randomPortalCreated(portal));
-                           }
-                        }
-                     }
-                  }
-
-                  TimeScheduleEntry timeScheduleEntry = ServerConstants.timeScheduleEntry;
-                  if (day == 1) {
-                     if (hours >= 0 && minutes >= 1 && seconds >= 0 && timeScheduleEntry.getPraiseRankCheck1() != month) {
-                        int count = 0;
-
-                        for (GameServer cs : GameServer.getAllInstances()) {
-                           for (MapleCharacter chrxxx : cs.getPlayerStorage().getAllCharacters()) {
-                              if (chrxxx != null && chrxxx.getClient().getSession().isOpen()) {
-                                 chrxxx.saveToDB(false, false);
-                                 count++;
-                              }
-                           }
-                        }
-
-                        timeScheduleEntry.setPraiseRankCheck1(month);
-                        timeScheduleEntry.setChange(true);
-                        System.out.println("총 " + count + "개의 캐릭터의 자동 저장이 수행되었습니다.");
-                     } else if (hours >= 0 && minutes >= 3 && seconds >= 0 && timeScheduleEntry.getPraiseRankCheck2() != month && !DBConfig.isGanglim) {
-                        PraiseDonationMesoRank.recalculateRanks();
-                        PraiseDonationMesoRank.loadRanks();
-                        timeScheduleEntry.setPraiseRankCheck2(month);
-                        timeScheduleEntry.setChange(true);
-                     }
-                  }
-
-                  if (dayOfWeek == 5) {
-                     if (hours >= 0 && minutes >= 0 && seconds >= 1 && timeScheduleEntry.getWeekQuestCheck() != day) {
-                        for (GameServer cs : GameServer.getAllInstances()) {
-                           for (Field map : cs.getMapFactory().getAllMaps()) {
-                              for (MapleCharacter chrxxxx : new ArrayList<>(map.getCharacters())) {
-                                 if (chrxxxx != null) {
-                                    chrxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(), "count", "180");
-                                    if (!DBConfig.isGanglim) {
-                                       chrxxxx.updateOneInfo(1234569, "demian_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "demian_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "demian_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "swoo_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "swoo_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "swoo_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "lucid_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "lucid_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "lucid_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "will_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "will_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "will_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "hell_demian_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hell_swoo_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hell_lucid_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hell_will_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hell_dunkel_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "blackmage_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "jinhillah_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "jinhillah_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "jinhillah_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_zakum_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_pierre_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_banban_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_velum_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_velum_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_velum_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_b_queen_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_magnus_clear", "");
-                                       chrxxxx.updateOneInfo(1234589, "dunkel_clear", "");
-                                       chrxxxx.updateOneInfo(1234589, "dunkel_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234589, "dunkel_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234589, "dusk_clear", "");
-                                       chrxxxx.updateOneInfo(1234589, "dusk_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234589, "dusk_clear_multi", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(), "eNum", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(), "eNum_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(), "eNum_multi", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "clear", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "clear_single", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "clear_multi", "0");
-                                       chrxxxx.updateInfoQuest(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_swoo_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_demian_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_lucid_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_will_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_dusk_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "normal_dunkel_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_demian_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_demian_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_demian_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_lucid_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_lucid_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_lucid_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_will_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_will_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_will_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear_multi", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_swoo_clear", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_swoo_clear_single", "");
-                                       chrxxxx.updateOneInfo(1234569, "hard_swoo_clear_multi", "");
-                                    }
-
-                                    if (!DBConfig.isGanglim) {
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_zakum", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_pierre", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_banban", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_b_queen", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_magnus", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_velum", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_papulatus", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_swoo", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_demian", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_lucid", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_will", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_dusk", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_normal_dunkel", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_demian", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_swoo", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_lucid", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_will", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_chaos_dusk", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_hard_dunkel", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "reward_jinhillah", "");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "week", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "lock", "0");
-                                    }
-
-                                    if (!DBConfig.isGanglim) {
-                                       int count = chrxxxx.getOneInfoQuestInteger(19770, "count");
-                                       if (count > 0 && chrxxxx.getOneInfoQuestInteger(19770, "active") == 0) {
-                                          chrxxxx.updateOneInfo(19770, "count", String.valueOf(count - 1));
-                                       }
-                                    }
-
-                                    chrxxxx.updateOneInfo(1234569, "ride_vehicle_select", "");
-                                    chrxxxx.updateOneInfo(1234571, "swoo_week_quest", "");
-                                    chrxxxx.removeWeeklyQuest(1234571);
-                                    chrxxxx.updateOneInfo(1234572, "demian_week_quest", "");
-                                    chrxxxx.removeWeeklyQuest(1234572);
-                                    chrxxxx.setStackEventGauge();
-
-                                    for (int j = 0; j < 6; j++) {
-                                       int itemID = 2431968 + j;
-                                       if (DBConfig.isGanglim) {
-                                          chrxxxx.updateOneInfo(1234569, "use_" + itemID, "0");
-                                       } else {
-                                          chrxxxx.updateOneInfo(1234569, "use_" + itemID + "_single", "0");
-                                          chrxxxx.updateOneInfo(1234569, "use_" + itemID + "_multi", "0");
-                                       }
-                                    }
-
-                                    MapleQuest quest = MapleQuest.getInstance(100717);
-                                    MapleQuestStatus status = chrxxxx.getQuest(quest);
-                                    if (chrxxxx.getOneInfoQuestInteger(QuestExConstants.NeoEventAdventureLog.getQuestID(), "start") == 1) {
-                                       chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(100717), 0));
-                                       chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(QuestExConstants.NeoEventNormalMob.getQuestID()), 0));
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(), "start", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(), "mission", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(), "state", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventNormalMob.getQuestID(), "m0", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventEliteMob.getQuestID(), "m1", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventRuneAct.getQuestID(), "RunAct", "0");
-                                       chrxxxx.updateOneInfo(QuestExConstants.NeoEventRandomPortal.getQuestID(), "count", "0");
-                                       if (chrxxxx.getQuestStatus(QuestExConstants.NeoEventEliteMob.getQuestID()) > 0) {
-                                          chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(QuestExConstants.NeoEventEliteMob.getQuestID()), 0));
-                                       }
-
-                                       if (chrxxxx.getQuestStatus(QuestExConstants.NeoEventRuneAct.getQuestID()) > 0) {
-                                          chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(QuestExConstants.NeoEventRuneAct.getQuestID()), 0));
-                                       }
-
-                                       if (chrxxxx.getQuestStatus(QuestExConstants.NeoEventRandomPortal.getQuestID()) > 0) {
-                                          chrxxxx.updateQuest(
-                                             new MapleQuestStatus(MapleQuest.getInstance(QuestExConstants.NeoEventRandomPortal.getQuestID()), 0)
-                                          );
-                                       }
-                                    }
-
-                                    Calendar cal = Calendar.getInstance();
-                                    cal.setTimeInMillis(System.currentTimeMillis());
-                                    int currentWeek = cal.get(3);
-                                    chrxxxx.updateOneInfo(1234570, "lastWeek5", String.valueOf(currentWeek));
-                                    chrxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(), "lastWeek5", String.valueOf(currentWeek));
-                                 }
-                              }
-                           }
-                        }
-
-                        timeScheduleEntry.setWeekQuestCheck(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-                  } else if (dayOfWeek == 0) {
-                     if (!DBConfig.isGanglim) {
-                        if (hours == 20 && minutes == 59 && seconds == 50) {
+                        if (Center.lastMonth != 0 && Center.lastMonth != month) {
                            for (GameServer cs : GameServer.getAllInstances()) {
                               for (Field map : cs.getMapFactory().getAllMaps()) {
-                                 for (MapleCharacter chrxxxxx : new ArrayList<>(map.getCharacters())) {
-                                    if (chrxxxxx != null) {
-                                       chrxxxxx.send(CField.addPopupSay(9062000, 3000, "페어리브로의 황금상자 물품 보급 10초 전 입니다.", ""));
-                                       chrxxxxx.dropMessage(5, "페어리브로의 황금상자 물품 보급 10초 전 입니다.");
+                                 for (MapleCharacter chrx : new ArrayList<>(map.getCharacters())) {
+                                    if (chrx != null) {
+                                       chrx.updateOneInfo(1234570, "blackmage_clear", "");
+                                       chrx.updateOneInfo(1234570, "lastMonth", String.valueOf(month));
                                     }
                                  }
                               }
                            }
+
+                           System.out.println("[Notice] Monthly Boss has been reset.");
+                           Center.lastMonth = month;
                         }
 
-                        if (hours == 21 && minutes == 0 && seconds == 0) {
+                        if (!DBConfig.isGanglim
+                              && (month == 2 && day >= 25 || month == 3 || month == 4)
+                              && (hours == 0 && minutes == 5 && seconds == 10
+                                    || hours == 4 && minutes == 0 && seconds == 1
+                                    || hours == 8 && minutes == 0 && seconds == 1
+                                    || hours == 12 && minutes == 0 && seconds == 1
+                                    || hours == 16 && minutes == 0 && seconds == 1
+                                    || hours == 20 && minutes == 0 && seconds == 1)) {
+                           for (int i = 1; i <= 3; i++) {
+                              Field target = GameServer.getInstance(i).getMapFactory().getMap(910010000);
+                              if (target == null) {
+                                 return;
+                              }
+
+                              Field_EventRabbit f = (Field_EventRabbit) target;
+                              if (f != null) {
+                                 f.resetFully(false);
+                                 MapleMonster mob = MapleLifeFactory.getMonster(9500006 + Randomizer.rand(0, 1));
+                                 mob.setHp(20000000L);
+                                 mob.getStats().setHp(20000000L);
+                                 target.spawnMonsterOnGroundBelow(mob, new Point(-82, 153));
+                                 f.setRabbitSpawnedTime(System.currentTimeMillis());
+                              }
+                           }
+
                            for (GameServer cs : GameServer.getAllInstances()) {
-                              for (Field map : cs.getMapFactory().getAllMaps()) {
-                                 for (MapleCharacter chrxxxxxx : new ArrayList<>(map.getCharacters())) {
-                                    if (chrxxxxxx != null) {
-                                       chrxxxxxx.send(CField.addPopupSay(9062000, 3000, "페어리브로의 황금상자 물품이 보급되었습니다.", ""));
-                                       chrxxxxxx.dropMessage(5, "페어리브로의 황금상자 물품이 보급되었습니다. " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + " 상점에서 이용 가능합니다.");
-                                    }
+                              for (MapleCharacter chrxx : cs.getPlayerStorage().getAllCharacters()) {
+                                 if (chrxx != null) {
+                                    int type = 1;
+                                    int gameType = 9;
+                                    chrxx.removeRandomPortal();
+                                    RandomPortalType portalType = RandomPortalType.get(type);
+                                    RandomPortalGameType portalGameType = RandomPortalGameType.get(gameType);
+                                    Point pos = chrxx.getMap().calcDropPos(chrxx.getTruePosition(),
+                                          chrxx.getPosition());
+                                    RandomPortal portal = new RandomPortal(portalType,
+                                          Randomizer.rand(1000000, 9999999), pos, chrxx.getId(), portalGameType);
+                                    chrxx.updateOneInfo(15142, "gameType", "9");
+                                    chrxx.send(CField.addPopupSay(9062000, 5000,
+                                          "Moon Bunny Event Lair has opened. You must enter before it is defeated to claim current rewards.",
+                                          ""));
+                                    chrxx.send(CWvsContext
+                                          .getScriptProgressMessage(
+                                                "Moon Bunny Event Lair has opened. You must enter before it is defeated to claim current rewards."));
+                                    chrxx.setRandomPortal(portal);
+                                    chrxx.setRandomPortalSpawnedTime(System.currentTimeMillis());
+                                    chrxx.send(CField.randomPortalCreated(portal));
                                  }
                               }
                            }
                         }
-                     }
 
-                     if (hours >= 23 && minutes >= 59 && seconds >= 1 && timeScheduleEntry.getDojangRankCheck1() != day) {
-                        for (GameServer cs : GameServer.getAllInstances()) {
-                           for (Field map : cs.getMapFactory().getAllMaps()) {
-                              for (MapleCharacter chrxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                                 if (chrxxxxxxx != null) {
-                                    Item item = null;
-                                    chrxxxxxxx.getInventory(MapleInventoryType.SETUP)
-                                       .list()
-                                       .stream()
-                                       .collect(Collectors.toList())
-                                       .forEach(
-                                          i -> {
-                                             if (i.getItemId() == 3700525 || i.getItemId() == 3700526 || i.getItemId() == 3700307 || i.getItemId() == 3700308) {
-                                                MapleInventoryManipulator.removeFromSlot(
-                                                   chrxxxxxxx.getClient(), MapleInventoryType.SETUP, i.getPosition(), i.getQuantity(), false, false
-                                                );
+                        TimeScheduleEntry timeScheduleEntry = ServerConstants.timeScheduleEntry;
+                        if (day == 1) {
+                           if (hours >= 0 && minutes >= 1 && seconds >= 0
+                                 && timeScheduleEntry.getPraiseRankCheck1() != month) {
+                              int count = 0;
+
+                              for (GameServer cs : GameServer.getAllInstances()) {
+                                 for (MapleCharacter chrxxx : cs.getPlayerStorage().getAllCharacters()) {
+                                    if (chrxxx != null && chrxxx.getClient().getSession().isOpen()) {
+                                       chrxxx.saveToDB(false, false);
+                                       count++;
+                                    }
+                                 }
+                              }
+
+                              timeScheduleEntry.setPraiseRankCheck1(month);
+                              timeScheduleEntry.setChange(true);
+                              System.out.println("Auto-save completed for a total of " + count + " characters.");
+                           } else if (hours >= 0 && minutes >= 3 && seconds >= 0
+                                 && timeScheduleEntry.getPraiseRankCheck2() != month && !DBConfig.isGanglim) {
+                              PraiseDonationMesoRank.recalculateRanks();
+                              PraiseDonationMesoRank.loadRanks();
+                              timeScheduleEntry.setPraiseRankCheck2(month);
+                              timeScheduleEntry.setChange(true);
+                           }
+                        }
+
+                        if (dayOfWeek == 5) {
+                           if (hours >= 0 && minutes >= 0 && seconds >= 1
+                                 && timeScheduleEntry.getWeekQuestCheck() != day) {
+                              for (GameServer cs : GameServer.getAllInstances()) {
+                                 for (Field map : cs.getMapFactory().getAllMaps()) {
+                                    for (MapleCharacter chrxxxx : new ArrayList<>(map.getCharacters())) {
+                                       if (chrxxxx != null) {
+                                          chrxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(),
+                                                "count", "180");
+                                          if (!DBConfig.isGanglim) {
+                                             chrxxxx.updateOneInfo(1234569, "demian_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "demian_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "demian_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "swoo_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "swoo_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "swoo_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "lucid_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "lucid_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "lucid_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "will_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "will_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "will_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "hell_demian_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hell_swoo_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hell_lucid_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hell_will_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hell_dunkel_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "blackmage_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "guardian_angel_slime_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "jinhillah_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "jinhillah_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "jinhillah_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_papulatus_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_zakum_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_pierre_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_banban_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_velum_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_velum_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_velum_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_b_queen_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_magnus_clear", "");
+                                             chrxxxx.updateOneInfo(1234589, "dunkel_clear", "");
+                                             chrxxxx.updateOneInfo(1234589, "dunkel_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234589, "dunkel_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234589, "dusk_clear", "");
+                                             chrxxxx.updateOneInfo(1234589, "dusk_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234589, "dusk_clear_multi", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum_single",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum_multi",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(),
+                                                   "eNum", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(), "eNum",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(),
+                                                   "eNum_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(),
+                                                   "eNum_multi", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "clear",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(),
+                                                   "clear_single", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(),
+                                                   "clear_multi", "0");
+                                             chrxxxx.updateInfoQuest(
+                                                   QuestExConstants.WeeklyQuestResetCount.getQuestID(), "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_swoo_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_demian_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_lucid_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_will_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_dusk_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "normal_dunkel_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_demian_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_demian_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_demian_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_lucid_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_lucid_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_lucid_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_will_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_will_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_will_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "chaos_dusk_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_dunkel_clear_multi", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_swoo_clear", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_swoo_clear_single", "");
+                                             chrxxxx.updateOneInfo(1234569, "hard_swoo_clear_multi", "");
+                                          }
+
+                                          if (!DBConfig.isGanglim) {
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_zakum", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_pierre", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_banban", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_b_queen", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_magnus", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_velum", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_papulatus", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_swoo", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_demian", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_lucid", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_will", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_dusk", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_normal_dunkel", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_demian", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_swoo", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_lucid", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_will", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_chaos_dusk", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_hard_dunkel", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(),
+                                                   "reward_jinhillah", "");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "week",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoCoreEvent.getQuestID(), "lock",
+                                                   "0");
+                                          }
+
+                                          if (!DBConfig.isGanglim) {
+                                             int count = chrxxxx.getOneInfoQuestInteger(19770, "count");
+                                             if (count > 0 && chrxxxx.getOneInfoQuestInteger(19770, "active") == 0) {
+                                                chrxxxx.updateOneInfo(19770, "count", String.valueOf(count - 1));
                                              }
                                           }
-                                       );
-                                    if (chrxxxxxxx.getStorage() != null) {
-                                       chrxxxxxxx.getStorage().removeById(3700525);
-                                       chrxxxxxxx.getStorage().removeById(3700526);
-                                       chrxxxxxxx.getStorage().removeById(3700307);
-                                       chrxxxxxxx.getStorage().removeById(3700308);
-                                    }
-                                 }
-                              }
-                           }
-                        }
 
-                        PreparedStatement ps = null;
+                                          chrxxxx.updateOneInfo(1234569, "ride_vehicle_select", "");
+                                          chrxxxx.updateOneInfo(1234571, "swoo_week_quest", "");
+                                          chrxxxx.removeWeeklyQuest(1234571);
+                                          chrxxxx.updateOneInfo(1234572, "demian_week_quest", "");
+                                          chrxxxx.removeWeeklyQuest(1234572);
+                                          chrxxxx.setStackEventGauge();
 
-                        try (Connection con = DBConnection.getConnection()) {
-                           ps = con.prepareStatement("DELETE FROM `inventoryitems` WHERE itemid = ? or itemid = ? or itemid = ? or itemid = ?");
-                           ps.setInt(1, 3700525);
-                           ps.setInt(2, 3700526);
-                           ps.setInt(3, 3700308);
-                           ps.setInt(4, 3700307);
-                           ps.executeUpdate();
-                        } catch (SQLException var150) {
-                           var150.printStackTrace();
-                        } finally {
-                           try {
-                              if (ps != null) {
-                                 ps.close();
-                                 PreparedStatement var172 = null;
-                              }
-                           } catch (SQLException var137) {
-                              var137.printStackTrace();
-                           }
-                        }
+                                          for (int j = 0; j < 6; j++) {
+                                             int itemID = 2431968 + j;
+                                             if (DBConfig.isGanglim) {
+                                                chrxxxx.updateOneInfo(1234569, "use_" + itemID, "0");
+                                             } else {
+                                                chrxxxx.updateOneInfo(1234569, "use_" + itemID + "_single", "0");
+                                                chrxxxx.updateOneInfo(1234569, "use_" + itemID + "_multi", "0");
+                                             }
+                                          }
 
-                        timeScheduleEntry.setDojangRankCheck1(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-                  } else if (dayOfWeek == 1) {
-                     if (!DBConfig.isGanglim) {
-                        if (hours == 14 && minutes == 59 && seconds == 50) {
-                           for (GameServer cs : GameServer.getAllInstances()) {
-                              for (Field map : cs.getMapFactory().getAllMaps()) {
-                                 for (MapleCharacter chrxxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                                    if (chrxxxxxxxx != null) {
-                                       chrxxxxxxxx.send(CField.addPopupSay(9062000, 3000, "페어리브로의 황금상자 물품 보급 10초 전 입니다.", ""));
-                                       chrxxxxxxxx.dropMessage(5, "페어리브로의 황금상자 물품 보급 10초 전 입니다.");
-                                    }
-                                 }
-                              }
-                           }
-                        }
+                                          MapleQuest quest = MapleQuest.getInstance(100717);
+                                          MapleQuestStatus status = chrxxxx.getQuest(quest);
+                                          if (chrxxxx.getOneInfoQuestInteger(
+                                                QuestExConstants.NeoEventAdventureLog.getQuestID(), "start") == 1) {
+                                             chrxxxx.updateQuest(
+                                                   new MapleQuestStatus(MapleQuest.getInstance(100717), 0));
+                                             chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest
+                                                   .getInstance(QuestExConstants.NeoEventNormalMob.getQuestID()), 0));
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(),
+                                                   "start", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(),
+                                                   "mission", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventAdventureLog.getQuestID(),
+                                                   "state", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventNormalMob.getQuestID(),
+                                                   "m0", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventEliteMob.getQuestID(), "m1",
+                                                   "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventRuneAct.getQuestID(),
+                                                   "RunAct", "0");
+                                             chrxxxx.updateOneInfo(QuestExConstants.NeoEventRandomPortal.getQuestID(),
+                                                   "count", "0");
+                                             if (chrxxxx.getQuestStatus(
+                                                   QuestExConstants.NeoEventEliteMob.getQuestID()) > 0) {
+                                                chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest
+                                                      .getInstance(QuestExConstants.NeoEventEliteMob.getQuestID()), 0));
+                                             }
 
-                        if (hours == 15 && minutes == 0 && seconds == 0) {
-                           for (GameServer cs : GameServer.getAllInstances()) {
-                              for (Field map : cs.getMapFactory().getAllMaps()) {
-                                 for (MapleCharacter chrxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                                    if (chrxxxxxxxxx != null) {
-                                       chrxxxxxxxxx.send(CField.addPopupSay(9062000, 3000, "페어리브로의 황금상자 물품이 보급되었습니다.", ""));
-                                       chrxxxxxxxxx.dropMessage(5, "페어리브로의 황금상자 물품이 보급되었습니다. " + (DBConfig.isGanglim ? "후원 캐시" : "강림 포인트") + " 상점에서 이용 가능합니다.");
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
+                                             if (chrxxxx
+                                                   .getQuestStatus(QuestExConstants.NeoEventRuneAct.getQuestID()) > 0) {
+                                                chrxxxx.updateQuest(new MapleQuestStatus(MapleQuest
+                                                      .getInstance(QuestExConstants.NeoEventRuneAct.getQuestID()), 0));
+                                             }
 
-                     if (hours >= 0 && minutes >= 0 && seconds >= 1 && timeScheduleEntry.getDojangRankCheck2() != day) {
-                        Calendar cal = Calendar.getInstance();
-                        cal.setTimeInMillis(System.currentTimeMillis());
-                        int currentWeek = cal.get(3);
-                        int weekYear = cal.getWeekYear();
-                        int lastYear = weekYear;
-                        int var227;
-                        if (currentWeek == 1) {
-                           var227 = 52;
-                           lastYear = weekYear - 1;
-                        } else {
-                           var227 = currentWeek - 1;
-                        }
+                                             if (chrxxxx.getQuestStatus(
+                                                   QuestExConstants.NeoEventRandomPortal.getQuestID()) > 0) {
+                                                chrxxxx.updateQuest(
+                                                      new MapleQuestStatus(
+                                                            MapleQuest.getInstance(
+                                                                  QuestExConstants.NeoEventRandomPortal.getQuestID()),
+                                                            0));
+                                             }
+                                          }
 
-                        DojangRanking.saveRanks(var227, lastYear);
-                        timeScheduleEntry.setDojangRankCheck2(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-
-                     if (hours >= 0 && minutes >= 0 && seconds >= 30 && timeScheduleEntry.getDojangRankCheck3() != day) {
-                        DojangRanking.nextWeekend();
-                        timeScheduleEntry.setDojangRankCheck3(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-
-                     if (hours >= 0 && minutes >= 1 && seconds >= 1 && timeScheduleEntry.getDojangRankCheck4() != day) {
-                        DojangRanking.calculateRankerReward();
-                        timeScheduleEntry.setDojangRankCheck4(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-                  } else if (dayOfWeek == 2 && hours >= 0 && minutes >= 0 && seconds >= 1 && timeScheduleEntry.getDreamBreakerRankCheck() != day) {
-                     for (GameServer cs : GameServer.getAllInstances()) {
-                        for (Field map : cs.getMapFactory().getAllMaps()) {
-                           for (MapleCharacter chrxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                              if (chrxxxxxxxxxx != null) {
-                                 if (DBConfig.isGanglim) {
-                                    chrxxxxxxxxxx.getClient().removeKeyValue("HgradeWeek");
-                                 }
-
-                                 if (DBConfig.isGanglim) {
-                                    chrxxxxxxxxxx.updateOneInfo(1234569, "hell_lucid_clear", "");
-                                    chrxxxxxxxxxx.updateOneInfo(1234569, "hell_demian_clear", "");
-                                    chrxxxxxxxxxx.updateOneInfo(1234569, "hell_swoo_clear", "");
-                                    chrxxxxxxxxxx.updateOneInfo(1234569, "hell_will_clear", "");
-                                    chrxxxxxxxxxx.updateOneInfo(1234569, "hell_dunkel_clear", "");
-                                    int count = chrxxxxxxxxxx.getOneInfoQuestInteger(19770, "count");
-                                    if (count > 0 && chrxxxxxxxxxx.getOneInfoQuestInteger(19770, "active") == 0) {
-                                       chrxxxxxxxxxx.updateOneInfo(19770, "count", String.valueOf(0));
-                                    }
-                                 }
-
-                                 int[] weekQuests = new int[]{26000, 34151};
-
-                                 for (int weekQuest : weekQuests) {
-                                    if (chrxxxxxxxxxx.getQuestStatus(weekQuest) > 0) {
-                                       chrxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(weekQuest), 0));
-                                    }
-                                 }
-
-                                 UnmodifiableIterator var275 = WeeklyQuests.dailyQuests.keySet().iterator();
-
-                                 while (var275.hasNext()) {
-                                    int wQuest = (Integer)var275.next();
-                                    if (chrxxxxxxxxxx.getQuestStatus(wQuest) > 0) {
-                                       if (wQuest == 39165) {
-                                          chrxxxxxxxxxx.updateOneInfo(39100, "FC", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39105, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39105, "NpcSpeech", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39106, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39106, "NpcSpeech", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39107, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39107, "NpcSpeech", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39108, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39108, "NpcSpeech", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39116, "success", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39125, "success", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39152, "success", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39161, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39162, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39163, "start", "0");
-                                          chrxxxxxxxxxx.updateOneInfo(39164, "start", "0");
-                                       } else if (wQuest == 39002) {
-                                          chrxxxxxxxxxx.updateOneInfo(15708, "cq", "0");
-                                       }
-
-                                       chrxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(wQuest), 0));
-
-                                       for (int wq : WeeklyQuests.dailyQuests.get(wQuest)) {
-                                          chrxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(wq), 0));
+                                          Calendar cal = Calendar.getInstance();
+                                          cal.setTimeInMillis(System.currentTimeMillis());
+                                          int currentWeek = cal.get(3);
+                                          chrxxxx.updateOneInfo(1234570, "lastWeek5", String.valueOf(currentWeek));
+                                          chrxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(),
+                                                "lastWeek5", String.valueOf(currentWeek));
                                        }
                                     }
                                  }
+                              }
 
-                                 int rank = DreamBreakerRank.getRank(chrxxxxxxxxxx.getName());
-                                 if (rank > 0) {
-                                    chrxxxxxxxxxx.updateOneInfo(20200128, "last_week_dream_breaker", fDate);
+                              timeScheduleEntry.setWeekQuestCheck(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+                        } else if (dayOfWeek == 0) {
+                           if (!DBConfig.isGanglim) {
+                              if (hours == 20 && minutes == 59 && seconds == 50) {
+                                 for (GameServer cs : GameServer.getAllInstances()) {
+                                    for (Field map : cs.getMapFactory().getAllMaps()) {
+                                       for (MapleCharacter chrxxxxx : new ArrayList<>(map.getCharacters())) {
+                                          if (chrxxxxx != null) {
+                                             chrxxxxx.send(CField.addPopupSay(9062000, 3000,
+                                                   "Fairy Bros' Golden Box item distribution is in 10 seconds.", ""));
+                                             chrxxxxx.dropMessage(5,
+                                                   "Fairy Bros' Golden Box item distribution is in 10 seconds.");
+                                          }
+                                       }
+                                    }
                                  }
+                              }
 
-                                 chrxxxxxxxxxx.send(CWvsContext.onCharacterModified(chrxxxxxxxxxx, -1L));
-                                 HyperHandler.updateSkills(chrxxxxxxxxxx, 0);
-                                 chrxxxxxxxxxx.updateMatrixSkillsNoLock();
-                                 Calendar cal = Calendar.getInstance();
-                                 cal.setTimeInMillis(System.currentTimeMillis());
-                                 int currentWeek = cal.get(3);
-                                 chrxxxxxxxxxx.updateOneInfo(1234570, "lastWeek2", String.valueOf(currentWeek));
-                                 chrxxxxxxxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(), "lastWeek2", String.valueOf(currentWeek));
+                              if (hours == 21 && minutes == 0 && seconds == 0) {
+                                 for (GameServer cs : GameServer.getAllInstances()) {
+                                    for (Field map : cs.getMapFactory().getAllMaps()) {
+                                       for (MapleCharacter chrxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                          if (chrxxxxxx != null) {
+                                             chrxxxxxx.send(
+                                                   CField.addPopupSay(9062000, 3000,
+                                                         "Fairy Bros' Golden Box items have been distributed.", ""));
+                                             chrxxxxxx.dropMessage(5,
+                                                   "Fairy Bros' Golden Box items have been distributed. "
+                                                         + (DBConfig.isGanglim ? "Donation Cash" : "Advent Point")
+                                                         + " Available in the Shop.");
+                                          }
+                                       }
+                                    }
+                                 }
                               }
                            }
-                        }
-                     }
 
-                     DreamBreakerRank.clearRank();
-                     timeScheduleEntry.setDreamBreakerRankCheck(day);
-                     timeScheduleEntry.setChange(true);
-                     DamageMeasurementRank.resetRank();
+                           if (hours >= 23 && minutes >= 59 && seconds >= 1
+                                 && timeScheduleEntry.getDojangRankCheck1() != day) {
+                              for (GameServer cs : GameServer.getAllInstances()) {
+                                 for (Field map : cs.getMapFactory().getAllMaps()) {
+                                    for (MapleCharacter chrxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                       if (chrxxxxxxx != null) {
+                                          Item item = null;
+                                          chrxxxxxxx.getInventory(MapleInventoryType.SETUP)
+                                                .list()
+                                                .stream()
+                                                .collect(Collectors.toList())
+                                                .forEach(
+                                                      i -> {
+                                                         if (i.getItemId() == 3700525 || i.getItemId() == 3700526
+                                                               || i.getItemId() == 3700307
+                                                               || i.getItemId() == 3700308) {
+                                                            MapleInventoryManipulator.removeFromSlot(
+                                                                  chrxxxxxxx.getClient(), MapleInventoryType.SETUP,
+                                                                  i.getPosition(), i.getQuantity(), false, false);
+                                                         }
+                                                      });
+                                          if (chrxxxxxxx.getStorage() != null) {
+                                             chrxxxxxxx.getStorage().removeById(3700525);
+                                             chrxxxxxxx.getStorage().removeById(3700526);
+                                             chrxxxxxxx.getStorage().removeById(3700307);
+                                             chrxxxxxxx.getStorage().removeById(3700308);
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
 
-                     for (GameServer cs : GameServer.getAllInstances()) {
-                        for (Field map : cs.getMapFactory().getAllMaps()) {
-                           for (MapleCharacter chrxxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                              if (chrxxxxxxxxxxx != null) {
-                                 DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxx);
+                              PreparedStatement ps = null;
+
+                              try (Connection con = DBConnection.getConnection()) {
+                                 ps = con.prepareStatement(
+                                       "DELETE FROM `inventoryitems` WHERE itemid = ? or itemid = ? or itemid = ? or itemid = ?");
+                                 ps.setInt(1, 3700525);
+                                 ps.setInt(2, 3700526);
+                                 ps.setInt(3, 3700308);
+                                 ps.setInt(4, 3700307);
+                                 ps.executeUpdate();
+                              } catch (SQLException var150) {
+                                 var150.printStackTrace();
+                              } finally {
+                                 try {
+                                    if (ps != null) {
+                                       ps.close();
+                                       PreparedStatement var172 = null;
+                                    }
+                                 } catch (SQLException var137) {
+                                    var137.printStackTrace();
+                                 }
+                              }
+
+                              timeScheduleEntry.setDojangRankCheck1(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+                        } else if (dayOfWeek == 1) {
+                           if (!DBConfig.isGanglim) {
+                              if (hours == 14 && minutes == 59 && seconds == 50) {
+                                 for (GameServer cs : GameServer.getAllInstances()) {
+                                    for (Field map : cs.getMapFactory().getAllMaps()) {
+                                       for (MapleCharacter chrxxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                          if (chrxxxxxxxx != null) {
+                                             chrxxxxxxxx.send(CField.addPopupSay(9062000, 3000,
+                                                   "Fairy Bros' Golden Box item distribution is in 10 seconds.", ""));
+                                             chrxxxxxxxx.dropMessage(5,
+                                                   "Fairy Bros' Golden Box item distribution is in 10 seconds.");
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+
+                              if (hours == 15 && minutes == 0 && seconds == 0) {
+                                 for (GameServer cs : GameServer.getAllInstances()) {
+                                    for (Field map : cs.getMapFactory().getAllMaps()) {
+                                       for (MapleCharacter chrxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                          if (chrxxxxxxxxx != null) {
+                                             chrxxxxxxxxx.send(
+                                                   CField.addPopupSay(9062000, 3000,
+                                                         "Fairy Bros' Golden Box items have been distributed.", ""));
+                                             chrxxxxxxxxx.dropMessage(5,
+                                                   "Fairy Bros' Golden Box items have been distributed. "
+                                                         + (DBConfig.isGanglim ? "Donation Cash" : "Advent Point")
+                                                         + " Available in the Shop.");
+                                          }
+                                       }
+                                    }
+                                 }
                               }
                            }
+
+                           if (hours >= 0 && minutes >= 0 && seconds >= 1
+                                 && timeScheduleEntry.getDojangRankCheck2() != day) {
+                              Calendar cal = Calendar.getInstance();
+                              cal.setTimeInMillis(System.currentTimeMillis());
+                              int currentWeek = cal.get(3);
+                              int weekYear = cal.getWeekYear();
+                              int lastYear = weekYear;
+                              int var227;
+                              if (currentWeek == 1) {
+                                 var227 = 52;
+                                 lastYear = weekYear - 1;
+                              } else {
+                                 var227 = currentWeek - 1;
+                              }
+
+                              DojangRanking.saveRanks(var227, lastYear);
+                              timeScheduleEntry.setDojangRankCheck2(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+
+                           if (hours >= 0 && minutes >= 0 && seconds >= 30
+                                 && timeScheduleEntry.getDojangRankCheck3() != day) {
+                              DojangRanking.nextWeekend();
+                              timeScheduleEntry.setDojangRankCheck3(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+
+                           if (hours >= 0 && minutes >= 1 && seconds >= 1
+                                 && timeScheduleEntry.getDojangRankCheck4() != day) {
+                              DojangRanking.calculateRankerReward();
+                              timeScheduleEntry.setDojangRankCheck4(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+                        } else if (dayOfWeek == 2 && hours >= 0 && minutes >= 0 && seconds >= 1
+                              && timeScheduleEntry.getDreamBreakerRankCheck() != day) {
+                           for (GameServer cs : GameServer.getAllInstances()) {
+                              for (Field map : cs.getMapFactory().getAllMaps()) {
+                                 for (MapleCharacter chrxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                    if (chrxxxxxxxxxx != null) {
+                                       if (DBConfig.isGanglim) {
+                                          chrxxxxxxxxxx.getClient().removeKeyValue("HgradeWeek");
+                                       }
+
+                                       if (DBConfig.isGanglim) {
+                                          chrxxxxxxxxxx.updateOneInfo(1234569, "hell_lucid_clear", "");
+                                          chrxxxxxxxxxx.updateOneInfo(1234569, "hell_demian_clear", "");
+                                          chrxxxxxxxxxx.updateOneInfo(1234569, "hell_swoo_clear", "");
+                                          chrxxxxxxxxxx.updateOneInfo(1234569, "hell_will_clear", "");
+                                          chrxxxxxxxxxx.updateOneInfo(1234569, "hell_dunkel_clear", "");
+                                          int count = chrxxxxxxxxxx.getOneInfoQuestInteger(19770, "count");
+                                          if (count > 0 && chrxxxxxxxxxx.getOneInfoQuestInteger(19770, "active") == 0) {
+                                             chrxxxxxxxxxx.updateOneInfo(19770, "count", String.valueOf(0));
+                                          }
+                                       }
+
+                                       int[] weekQuests = new int[] { 26000, 34151 };
+
+                                       for (int weekQuest : weekQuests) {
+                                          if (chrxxxxxxxxxx.getQuestStatus(weekQuest) > 0) {
+                                             chrxxxxxxxxxx.updateQuest(
+                                                   new MapleQuestStatus(MapleQuest.getInstance(weekQuest), 0));
+                                          }
+                                       }
+
+                                       UnmodifiableIterator var275 = WeeklyQuests.dailyQuests.keySet().iterator();
+
+                                       while (var275.hasNext()) {
+                                          int wQuest = (Integer) var275.next();
+                                          if (chrxxxxxxxxxx.getQuestStatus(wQuest) > 0) {
+                                             if (wQuest == 39165) {
+                                                chrxxxxxxxxxx.updateOneInfo(39100, "FC", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39105, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39105, "NpcSpeech", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39106, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39106, "NpcSpeech", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39107, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39107, "NpcSpeech", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39108, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39108, "NpcSpeech", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39116, "success", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39125, "success", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39152, "success", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39161, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39162, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39163, "start", "0");
+                                                chrxxxxxxxxxx.updateOneInfo(39164, "start", "0");
+                                             } else if (wQuest == 39002) {
+                                                chrxxxxxxxxxx.updateOneInfo(15708, "cq", "0");
+                                             }
+
+                                             chrxxxxxxxxxx.updateQuest(
+                                                   new MapleQuestStatus(MapleQuest.getInstance(wQuest), 0));
+
+                                             for (int wq : WeeklyQuests.dailyQuests.get(wQuest)) {
+                                                chrxxxxxxxxxx
+                                                      .updateQuest(new MapleQuestStatus(MapleQuest.getInstance(wq), 0));
+                                             }
+                                          }
+                                       }
+
+                                       int rank = DreamBreakerRank.getRank(chrxxxxxxxxxx.getName());
+                                       if (rank > 0) {
+                                          chrxxxxxxxxxx.updateOneInfo(20200128, "last_week_dream_breaker", fDate);
+                                       }
+
+                                       chrxxxxxxxxxx.send(CWvsContext.onCharacterModified(chrxxxxxxxxxx, -1L));
+                                       HyperHandler.updateSkills(chrxxxxxxxxxx, 0);
+                                       chrxxxxxxxxxx.updateMatrixSkillsNoLock();
+                                       Calendar cal = Calendar.getInstance();
+                                       cal.setTimeInMillis(System.currentTimeMillis());
+                                       int currentWeek = cal.get(3);
+                                       chrxxxxxxxxxx.updateOneInfo(1234570, "lastWeek2", String.valueOf(currentWeek));
+                                       chrxxxxxxxxxx.updateOneInfo(QuestExConstants.IntensePowerCrystal.getQuestID(),
+                                             "lastWeek2", String.valueOf(currentWeek));
+                                    }
+                                 }
+                              }
+                           }
+
+                           DreamBreakerRank.clearRank();
+                           timeScheduleEntry.setDreamBreakerRankCheck(day);
+                           timeScheduleEntry.setChange(true);
+                           DamageMeasurementRank.resetRank();
+
+                           for (GameServer cs : GameServer.getAllInstances()) {
+                              for (Field map : cs.getMapFactory().getAllMaps()) {
+                                 for (MapleCharacter chrxxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                    if (chrxxxxxxxxxxx != null) {
+                                       DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxx);
+                                    }
+                                 }
+                              }
+                           }
+
+                           for (MapleCharacter chrxxxxxxxxxxxx : CashShopServer.getPlayerStorage().getAllCharacters()) {
+                              if (chrxxxxxxxxxxxx != null) {
+                                 DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxxx);
+                              }
+                           }
+
+                           for (MapleCharacter chrxxxxxxxxxxxxx : AuctionServer.getPlayerStorage().getAllCharacters()) {
+                              if (chrxxxxxxxxxxxxx != null) {
+                                 DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxxxx);
+                              }
+                           }
+
+                           Center.Broadcast
+                                 .broadcastMessage(CField.chatMsg(5,
+                                       "Combat Power Ranking has been reset, and ranking rewards/buffs have been distributed."));
+                           System.out.println("Combat Power Ranking has been reset.");
                         }
-                     }
 
-                     for (MapleCharacter chrxxxxxxxxxxxx : CashShopServer.getPlayerStorage().getAllCharacters()) {
-                        if (chrxxxxxxxxxxxx != null) {
-                           DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxxx);
+                        if (dayOfWeek != 0 && dayOfWeek != 1) {
+                           if (hours >= 21 && minutes >= 0 && seconds >= 1
+                                 && timeScheduleEntry.getHottimeCheck() != day) {
+                              Center.gainItemExpiration(DBConfig.isGanglim ? 2435885 : 2433424, -1, (short) 1);
+                              Center.hottime = dayOfWeek + "2100";
+                              timeScheduleEntry.setHottimeCheck(day);
+                              timeScheduleEntry.setChange(true);
+                           }
+                        } else if (hours >= 21 && minutes >= 0 && seconds >= 1
+                              && timeScheduleEntry.getHottimeCheck() != day) {
+                           Center.gainItemExpiration(DBConfig.isGanglim ? 2435885 : 2435885, -1, (short) 1);
+                           Center.hottime = dayOfWeek + "2100";
+                           timeScheduleEntry.setHottimeCheck(day);
+                           timeScheduleEntry.setChange(true);
                         }
-                     }
 
-                     for (MapleCharacter chrxxxxxxxxxxxxx : AuctionServer.getPlayerStorage().getAllCharacters()) {
-                        if (chrxxxxxxxxxxxxx != null) {
-                           DamageMeasurementRank.applyDamageRankBuff(chrxxxxxxxxxxxxx);
-                        }
-                     }
+                        if (hours >= 0 && minutes >= 0 && seconds >= 0
+                              && timeScheduleEntry.getDailyGiftCheck() != day) {
+                           for (GameServer cs : GameServer.getAllInstances()) {
+                              for (Field map : cs.getMapFactory().getAllMaps()) {
+                                 for (MapleCharacter chrxxxxxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
+                                    if (chrxxxxxxxxxxxxxx != null) {
+                                       AchievementFactory.resetDayChange(chrxxxxxxxxxxxxxx);
+                                       if (chrxxxxxxxxxxxxxx.getLevel() >= 33) {
+                                          if (day == 1) {
+                                             MapleDailyGiftInfo gift = chrxxxxxxxxxxxxxx.getDailyGift();
+                                             gift.setDailyDay(0);
+                                             gift.setDailyCount(0);
+                                             chrxxxxxxxxxxxxxx.send(CField.getDailyGiftRecord(
+                                                   "count=0;day=0;date=" + CurrentTime.getCurrentTime2()));
+                                             chrxxxxxxxxxxxxxx.updateInfoQuest(16700,
+                                                   "count=0;day=0;date=" + CurrentTime.getCurrentTime2());
+                                          } else {
+                                             String value = chrxxxxxxxxxxxxxx.getOneInfoQuest(16700, "count");
+                                             if (value != null && !value.isEmpty()) {
+                                                chrxxxxxxxxxxxxxx.updateInfoQuest(
+                                                      16700,
+                                                      "count=0;day=" + chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay()
+                                                            + ";date=" + CurrentTime.getCurrentTime2());
+                                             } else {
+                                                chrxxxxxxxxxxxxxx.updateInfoQuest(16700,
+                                                      "count=0;day=0;date=" + CurrentTime.getCurrentTime2());
+                                             }
 
-                     Center.Broadcast.broadcastMessage(CField.chatMsg(5, "전투력 측정 랭킹이 초기화되며, 랭킹 보상 및 버프가 지급되었습니다."));
-                     System.out.println("전투력 랭킹이 초기화되었습니다.");
-                  }
+                                             chrxxxxxxxxxxxxxx.getDailyGift().setDailyCount(0);
+                                             chrxxxxxxxxxxxxxx.getDailyGift()
+                                                   .saveDailyGift(
+                                                         chrxxxxxxxxxxxxxx.getAccountID(),
+                                                         chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay(),
+                                                         chrxxxxxxxxxxxxxx.getDailyGift().getDailyCount(),
+                                                         chrxxxxxxxxxxxxxx.getDailyGift().getDailyData());
+                                             chrxxxxxxxxxxxxxx.send(
+                                                   CField.getDailyGiftRecord(
+                                                         "count="
+                                                               + chrxxxxxxxxxxxxxx.getDailyGift().getDailyCount()
+                                                               + ";day="
+                                                               + chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay()
+                                                               + ";date="
+                                                               + GameConstants.getCurrentDate_NoTime()));
+                                          }
+                                       }
 
-                  if (dayOfWeek != 0 && dayOfWeek != 1) {
-                     if (hours >= 21 && minutes >= 0 && seconds >= 1 && timeScheduleEntry.getHottimeCheck() != day) {
-                        Center.gainItemExpiration(DBConfig.isGanglim ? 2435885 : 2433424, -1, (short)1);
-                        Center.hottime = dayOfWeek + "2100";
-                        timeScheduleEntry.setHottimeCheck(day);
-                        timeScheduleEntry.setChange(true);
-                     }
-                  } else if (hours >= 21 && minutes >= 0 && seconds >= 1 && timeScheduleEntry.getHottimeCheck() != day) {
-                     Center.gainItemExpiration(DBConfig.isGanglim ? 2435885 : 2435885, -1, (short)1);
-                     Center.hottime = dayOfWeek + "2100";
-                     timeScheduleEntry.setHottimeCheck(day);
-                     timeScheduleEntry.setChange(true);
-                  }
+                                       if (chrxxxxxxxxxxxxxx.getLevel() >= 101 && chrxxxxxxxxxxxxxx
+                                             .getQuestStatus(QuestExConstants.HasteEventInit.getQuestID()) >= 1) {
+                                          String[] customData = new String[] { "", "", "", "", "count=0", "count=0",
+                                                "RunAct=0", "suddenMK=0" };
 
-                  if (hours >= 0 && minutes >= 0 && seconds >= 0 && timeScheduleEntry.getDailyGiftCheck() != day) {
-                     for (GameServer cs : GameServer.getAllInstances()) {
-                        for (Field map : cs.getMapFactory().getAllMaps()) {
-                           for (MapleCharacter chrxxxxxxxxxxxxxx : new ArrayList<>(map.getCharacters())) {
-                              if (chrxxxxxxxxxxxxxx != null) {
-                                 AchievementFactory.resetDayChange(chrxxxxxxxxxxxxxx);
-                                 if (chrxxxxxxxxxxxxxx.getLevel() >= 33) {
-                                    if (day == 1) {
-                                       MapleDailyGiftInfo gift = chrxxxxxxxxxxxxxx.getDailyGift();
-                                       gift.setDailyDay(0);
-                                       gift.setDailyCount(0);
-                                       chrxxxxxxxxxxxxxx.send(CField.getDailyGiftRecord("count=0;day=0;date=" + CurrentTime.getCurrentTime2()));
-                                       chrxxxxxxxxxxxxxx.updateInfoQuest(16700, "count=0;day=0;date=" + CurrentTime.getCurrentTime2());
-                                    } else {
-                                       String value = chrxxxxxxxxxxxxxx.getOneInfoQuest(16700, "count");
-                                       if (value != null && !value.isEmpty()) {
+                                          for (int i = QuestExConstants.HasteEventInit
+                                                .getQuestID(); i <= QuestExConstants.HasteEventSuddenMK
+                                                      .getQuestID(); i++) {
+                                             if (i != QuestExConstants.HasteEventEliteBoss.getQuestID()) {
+                                                MapleQuest.getInstance(i).forceStart(chrxxxxxxxxxxxxxx, 9010010, "");
+                                                chrxxxxxxxxxxxxxx.updateInfoQuest(i,
+                                                      customData[i - QuestExConstants.HasteEventInit.getQuestID()]);
+                                             }
+                                          }
+
                                           chrxxxxxxxxxxxxxx.updateInfoQuest(
-                                             16700, "count=0;day=" + chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay() + ";date=" + CurrentTime.getCurrentTime2()
-                                          );
+                                                QuestExConstants.HasteEvent.getQuestID(),
+                                                "M1=0;M2=0;M3=0;M4=0;M5=0;M6=0;date=21/11/03;booster=0;openBox=0;unlockBox=0;str=Stage 1 Box Challenge! Complete 1 Daily Mission!");
+                                       }
+
+                                       if (chrxxxxxxxxxxxxxx.getMapleUnion() != null) {
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(18790, "damage", "0");
+                                          if (chrxxxxxxxxxxxxxx.getFieldUnion() != null) {
+                                             chrxxxxxxxxxxxxxx.getFieldUnion().updateTotalDamage();
+                                          }
+                                       }
+
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1211345, "get_meso", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1211345, "today", "0");
+                                       if (!DBConfig.isGanglim) {
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "lastDay", String.valueOf(day));
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1068, "lastDay", String.valueOf(day));
+                                       }
+
+                                       chrxxxxxxxxxxxxxx.setTodayContribution(0);
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(),
+                                             "practice", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(),
+                                             "enter", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "daily1", "");
+                                       chrxxxxxxxxxxxxxx.removeMobQuest(1400);
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "daily2", "");
+                                       chrxxxxxxxxxxxxxx.removeMobQuest(1401);
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234568, "arkana", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234579, "clear_mPark", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1235858, "praise", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(501045, "mp", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "praise_hongbo", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "jumpMap", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hell_boss_count", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "UnionMiniGame_Count", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "UnionMiniGame_Q", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "praise_dailyQuest_ClearCount", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "praise_dailyQuest_MobCount", "");
+                                       if (DBConfig.isGanglim) {
+                                          for (int ix = 0; ix <= 14; ix++) {
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(100778, ix + "_buy_count", "0");
+                                          }
                                        } else {
-                                          chrxxxxxxxxxxxxxx.updateInfoQuest(16700, "count=0;day=0;date=" + CurrentTime.getCurrentTime2());
-                                       }
-
-                                       chrxxxxxxxxxxxxxx.getDailyGift().setDailyCount(0);
-                                       chrxxxxxxxxxxxxxx.getDailyGift()
-                                          .saveDailyGift(
-                                             chrxxxxxxxxxxxxxx.getAccountID(),
-                                             chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay(),
-                                             chrxxxxxxxxxxxxxx.getDailyGift().getDailyCount(),
-                                             chrxxxxxxxxxxxxxx.getDailyGift().getDailyData()
-                                          );
-                                       chrxxxxxxxxxxxxxx.send(
-                                          CField.getDailyGiftRecord(
-                                             "count="
-                                                + chrxxxxxxxxxxxxxx.getDailyGift().getDailyCount()
-                                                + ";day="
-                                                + chrxxxxxxxxxxxxxx.getDailyGift().getDailyDay()
-                                                + ";date="
-                                                + GameConstants.getCurrentDate_NoTime()
-                                          )
-                                       );
-                                    }
-                                 }
-
-                                 if (chrxxxxxxxxxxxxxx.getLevel() >= 101 && chrxxxxxxxxxxxxxx.getQuestStatus(QuestExConstants.HasteEventInit.getQuestID()) >= 1
-                                    )
-                                  {
-                                    String[] customData = new String[]{"", "", "", "", "count=0", "count=0", "RunAct=0", "suddenMK=0"};
-
-                                    for (int i = QuestExConstants.HasteEventInit.getQuestID(); i <= QuestExConstants.HasteEventSuddenMK.getQuestID(); i++) {
-                                       if (i != QuestExConstants.HasteEventEliteBoss.getQuestID()) {
-                                          MapleQuest.getInstance(i).forceStart(chrxxxxxxxxxxxxxx, 9010010, "");
-                                          chrxxxxxxxxxxxxxx.updateInfoQuest(i, customData[i - QuestExConstants.HasteEventInit.getQuestID()]);
-                                       }
-                                    }
-
-                                    chrxxxxxxxxxxxxxx.updateInfoQuest(
-                                       QuestExConstants.HasteEvent.getQuestID(),
-                                       "M1=0;M2=0;M3=0;M4=0;M5=0;M6=0;date=21/11/03;booster=0;openBox=0;unlockBox=0;str=1단계 상자 도전 중! 일일 미션 1개를 완료하세요!"
-                                    );
-                                 }
-
-                                 if (chrxxxxxxxxxxxxxx.getMapleUnion() != null) {
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(18790, "damage", "0");
-                                    if (chrxxxxxxxxxxxxxx.getFieldUnion() != null) {
-                                       chrxxxxxxxxxxxxxx.getFieldUnion().updateTotalDamage();
-                                    }
-                                 }
-
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1211345, "get_meso", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1211345, "today", "0");
-                                 if (!DBConfig.isGanglim) {
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "lastDay", String.valueOf(day));
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1068, "lastDay", String.valueOf(day));
-                                 }
-
-                                 chrxxxxxxxxxxxxxx.setTodayContribution(0);
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "practice", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "enter", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "daily1", "");
-                                 chrxxxxxxxxxxxxxx.removeMobQuest(1400);
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "daily2", "");
-                                 chrxxxxxxxxxxxxxx.removeMobQuest(1401);
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234568, "arkana", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234579, "clear_mPark", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1235858, "praise", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(501045, "mp", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "praise_hongbo", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "jumpMap", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hell_boss_count", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "UnionMiniGame_Count", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "UnionMiniGame_Q", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "praise_dailyQuest_ClearCount", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "praise_dailyQuest_MobCount", "");
-                                 if (DBConfig.isGanglim) {
-                                    for (int ix = 0; ix <= 14; ix++) {
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(100778, ix + "_buy_count", "0");
-                                    }
-                                 } else {
-                                    for (int ix = 0; ix <= 14; ix++) {
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.KillPoint.getQuestID(), ix + "_buy_count", "0");
-                                    }
-                                 }
-
-                                 chrxxxxxxxxxxxxxx.getTraits().forEach((key, value) -> value.setTodayExp(0));
-                                 int lastDay = chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(1234570, "lastDay");
-                                 if (DBConfig.isGanglim && lastDay != day) {
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "lastDay", String.valueOf(day));
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1068, "lastDay", String.valueOf(day));
-                                    chrxxxxxxxxxxxxxx.getClient().setKeyValue("day_qitem", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "miniGame4_count", "0");
-                                    QuestExConstants.bossQuests.forEach((key, value) -> {
-                                       if (value > 0) {
-                                          if (chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(value, "mobid") > 0) {
-                                             chrxxxxxxxxxxxxxx.updateOneInfo(value, "mobid", "");
-                                          }
-
-                                          if (chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(value, "mobDead") > 0) {
-                                             chrxxxxxxxxxxxxxx.updateOneInfo(value, "mobDead", "");
+                                          for (int ix = 0; ix <= 14; ix++) {
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.KillPoint.getQuestID(),
+                                                   ix + "_buy_count", "0");
                                           }
                                        }
-                                    });
 
-                                    for (int ix = 0; ix < 2; ix++) {
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "demian_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "swoo_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "lucid_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "will_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "tengu_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "normal_mitsuhide_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "hard_mitsuhide_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "guardian_angel_slime_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "jinhillah_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_papulatus_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_zakum_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_pierre_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_banban_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_velum_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_b_queen_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "hard_magnus_clear", "");
-                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "akairum_clear", "");
-                                    }
+                                       chrxxxxxxxxxxxxxx.getTraits().forEach((key, value) -> value.setTodayExp(0));
+                                       int lastDay = chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(1234570, "lastDay");
+                                       if (DBConfig.isGanglim && lastDay != day) {
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "lastDay", String.valueOf(day));
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1068, "lastDay", String.valueOf(day));
+                                          chrxxxxxxxxxxxxxx.getClient().setKeyValue("day_qitem", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "miniGame4_count", "0");
+                                          QuestExConstants.bossQuests.forEach((key, value) -> {
+                                             if (value > 0) {
+                                                if (chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(value, "mobid") > 0) {
+                                                   chrxxxxxxxxxxxxxx.updateOneInfo(value, "mobid", "");
+                                                }
 
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "pinkbean_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "vonleon_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "vonleon_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234571, "vonleon_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(), "clear", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "dunkel_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234589, "dunkel_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234590, "dusk_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234589, "dusk_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "blackmage_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(), "eNum", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_swoo_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_demian_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_lucid_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_dusk_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_dunkel_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_demian_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_lucid_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_will_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "chaos_dusk_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_dunkel_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_will_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_swoo_clear", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "ResetBoss", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "OffsetCount", "0");
-                                 }
+                                                if (chrxxxxxxxxxxxxxx.getOneInfoQuestInteger(value, "mobDead") > 0) {
+                                                   chrxxxxxxxxxxxxxx.updateOneInfo(value, "mobDead", "");
+                                                }
+                                             }
+                                          });
 
-                                 UnmodifiableIterator var279 = DailyQuests.dailyQuests.keySet().iterator();
+                                          for (int ix = 0; ix < 2; ix++) {
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "demian_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "swoo_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "lucid_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "will_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "tengu_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "normal_mitsuhide_clear",
+                                                   "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "hard_mitsuhide_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "guardian_angel_slime_clear",
+                                                   "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "jinhillah_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_papulatus_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_zakum_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_pierre_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_banban_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_velum_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "chaos_b_queen_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "hard_magnus_clear", "");
+                                             chrxxxxxxxxxxxxxx.updateOneInfo(1234569 + ix, "akairum_clear", "");
+                                          }
 
-                                 while (var279.hasNext()) {
-                                    int arcaneDailyQuest = (Integer)var279.next();
-                                    if (chrxxxxxxxxxxxxxx.getQuestStatus(arcaneDailyQuest) > 0) {
-                                       chrxxxxxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(arcaneDailyQuest), 0));
-
-                                       for (Integer DailyQuest : DailyQuests.dailyQuests.get(arcaneDailyQuest)) {
-                                          chrxxxxxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(DailyQuest), 0));
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "pinkbean_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "vonleon_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "vonleon_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234571, "vonleon_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.SerniumSeren.getQuestID(),
+                                                "clear", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "dunkel_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234589, "dunkel_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234590, "dusk_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234589, "dusk_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234570, "blackmage_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosPinkBeen.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.HardMagnus.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Cygnus.getQuestID(), "eNum",
+                                                "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosZakum.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosPierre.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosVonBon.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(
+                                                QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.ChaosVellum.getQuestID(),
+                                                "eNum", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_swoo_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_demian_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_lucid_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_dusk_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_dunkel_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_demian_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_lucid_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_will_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "chaos_dusk_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_dunkel_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "normal_will_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "hard_swoo_clear", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "ResetBoss", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "OffsetCount", "0");
                                        }
 
-                                       chrxxxxxxxxxxxxxx.send(CWvsContext.onCharacterModified(chrxxxxxxxxxxxxxx, -1L));
+                                       UnmodifiableIterator var279 = DailyQuests.dailyQuests.keySet().iterator();
+
+                                       while (var279.hasNext()) {
+                                          int arcaneDailyQuest = (Integer) var279.next();
+                                          if (chrxxxxxxxxxxxxxx.getQuestStatus(arcaneDailyQuest) > 0) {
+                                             chrxxxxxxxxxxxxxx.updateQuest(
+                                                   new MapleQuestStatus(MapleQuest.getInstance(arcaneDailyQuest), 0));
+
+                                             for (Integer DailyQuest : DailyQuests.dailyQuests.get(arcaneDailyQuest)) {
+                                                chrxxxxxxxxxxxxxx.updateQuest(
+                                                      new MapleQuestStatus(MapleQuest.getInstance(DailyQuest), 0));
+                                             }
+
+                                             chrxxxxxxxxxxxxxx
+                                                   .send(CWvsContext.onCharacterModified(chrxxxxxxxxxxxxxx, -1L));
+                                          }
+                                       }
+
+                                       HyperHandler.updateSkills(chrxxxxxxxxxxxxxx, 0);
+                                       chrxxxxxxxxxxxxxx.updateMatrixSkillsNoLock();
+                                       if (chrxxxxxxxxxxxxxx.getQuestStatus(16011) > 0) {
+                                          chrxxxxxxxxxxxxxx
+                                                .updateQuest(new MapleQuestStatus(MapleQuest.getInstance(16011), 0));
+                                       }
+
+                                       if (chrxxxxxxxxxxxxxx.getQuestStatus(16012) > 0) {
+                                          chrxxxxxxxxxxxxxx
+                                                .updateQuest(new MapleQuestStatus(MapleQuest.getInstance(16012), 0));
+                                       }
+
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(100711, "today", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(100712, "today", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(100711, "lock", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(100712, "lock", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_2", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_3", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_4", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_5", "0");
+                                       chrxxxxxxxxxxxxxx.setStackEventGauge();
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear", "");
+                                       if (!DBConfig.isGanglim) {
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear_multi", "");
+                                       }
+
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "zakum_clear", "");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Zakum.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Magnus.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Hillah.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(), "eNum",
+                                             "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(),
+                                             "eNum", "0");
+                                       chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(), "eNum",
+                                             "0");
+                                       if (!DBConfig.isGanglim) {
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(),
+                                                "eNum_single", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(),
+                                                "eNum_multi", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(),
+                                                "eNum_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(),
+                                                "eNum_multi", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(),
+                                                "eNum_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(),
+                                                "eNum_multi", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(),
+                                                "eNum_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(),
+                                                "eNum_multi", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(),
+                                                "eNum_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(),
+                                                "eNum_multi", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(),
+                                                "eNum_single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(),
+                                                "eNum_multi", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(),
+                                                "eNum_single", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(),
+                                                "eNum_multi", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(),
+                                                "eNum_single", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(),
+                                                "eNum_multi", "0");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "eliteMonster_Count", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(7003, "Single", "");
+                                          chrxxxxxxxxxxxxxx.updateOneInfo(7003, "Multi", "");
+                                          chrxxxxxxxxxxxxxx.updateInfoQuest(
+                                                QuestExConstants.DailyQuestResetCount.getQuestID(), "");
+                                       }
+
+                                       if (chrxxxxxxxxxxxxxx.getQuestStatus(3528) > 0) {
+                                          chrxxxxxxxxxxxxxx
+                                                .updateQuest(new MapleQuestStatus(MapleQuest.getInstance(3528), 0));
+                                       }
                                     }
-                                 }
-
-                                 HyperHandler.updateSkills(chrxxxxxxxxxxxxxx, 0);
-                                 chrxxxxxxxxxxxxxx.updateMatrixSkillsNoLock();
-                                 if (chrxxxxxxxxxxxxxx.getQuestStatus(16011) > 0) {
-                                    chrxxxxxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(16011), 0));
-                                 }
-
-                                 if (chrxxxxxxxxxxxxxx.getQuestStatus(16012) > 0) {
-                                    chrxxxxxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(16012), 0));
-                                 }
-
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(100711, "today", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(100712, "today", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(100711, "lock", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(100712, "lock", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_2", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_3", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_4", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234567, "buy_lp_5", "0");
-                                 chrxxxxxxxxxxxxxx.setStackEventGauge();
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear", "");
-                                 if (!DBConfig.isGanglim) {
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "papulatus_clear_multi", "");
-                                 }
-
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(1234569, "zakum_clear", "");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Zakum.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Magnus.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Hillah.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(), "eNum", "0");
-                                 chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(), "eNum", "0");
-                                 if (!DBConfig.isGanglim) {
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(), "eNum_single", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.PinkBeen.getQuestID(), "eNum_multi", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(), "eNum_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Pierre.getQuestID(), "eNum_multi", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(), "eNum_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.CrimsonQueen.getQuestID(), "eNum_multi", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(), "eNum_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonBon.getQuestID(), "eNum_multi", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(), "eNum_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Vellum.getQuestID(), "eNum_multi", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(), "eNum_single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Arkarium.getQuestID(), "eNum_multi", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(), "eNum_single", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.VonLeon.getQuestID(), "eNum_multi", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(), "eNum_single", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(QuestExConstants.Horntail.getQuestID(), "eNum_multi", "0");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(1235859, "eliteMonster_Count", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(7003, "Single", "");
-                                    chrxxxxxxxxxxxxxx.updateOneInfo(7003, "Multi", "");
-                                    chrxxxxxxxxxxxxxx.updateInfoQuest(QuestExConstants.DailyQuestResetCount.getQuestID(), "");
-                                 }
-
-                                 if (chrxxxxxxxxxxxxxx.getQuestStatus(3528) > 0) {
-                                    chrxxxxxxxxxxxxxx.updateQuest(new MapleQuestStatus(MapleQuest.getInstance(3528), 0));
                                  }
                               }
                            }
-                        }
-                     }
 
-                     PreparedStatement ps = null;
+                           PreparedStatement ps = null;
 
-                     try (Connection con = DBConnection.getConnection()) {
-                        ps = con.prepareStatement("UPDATE `characters` SET `todayContribution` = ?");
-                        ps.setInt(1, 0);
-                        ps.executeUpdate();
-                     } catch (SQLException var147) {
-                        var147.printStackTrace();
-                     } finally {
-                        try {
-                           if (ps != null) {
-                              ps.close();
-                              PreparedStatement var182 = null;
-                           }
-                        } catch (SQLException var136) {
-                           var136.printStackTrace();
-                        }
-                     }
-
-                     if (day == 1) {
-                        ps = null;
-
-                        try (Connection con = DBConnection.getConnection()) {
-                           ps = con.prepareStatement("DELETE FROM `dailygift`");
-                           ps.executeUpdate();
-                        } catch (SQLException var144) {
-                           var144.printStackTrace();
-                        } finally {
-                           try {
-                              if (ps != null) {
-                                 ps.close();
-                                 PreparedStatement var184 = null;
+                           try (Connection con = DBConnection.getConnection()) {
+                              ps = con.prepareStatement("UPDATE `characters` SET `todayContribution` = ?");
+                              ps.setInt(1, 0);
+                              ps.executeUpdate();
+                           } catch (SQLException var147) {
+                              var147.printStackTrace();
+                           } finally {
+                              try {
+                                 if (ps != null) {
+                                    ps.close();
+                                    PreparedStatement var182 = null;
+                                 }
+                              } catch (SQLException var136) {
+                                 var136.printStackTrace();
                               }
-                           } catch (SQLException var135) {
-                              var135.printStackTrace();
                            }
+
+                           if (day == 1) {
+                              ps = null;
+
+                              try (Connection con = DBConnection.getConnection()) {
+                                 ps = con.prepareStatement("DELETE FROM `dailygift`");
+                                 ps.executeUpdate();
+                              } catch (SQLException var144) {
+                                 var144.printStackTrace();
+                              } finally {
+                                 try {
+                                    if (ps != null) {
+                                       ps.close();
+                                       PreparedStatement var184 = null;
+                                    }
+                                 } catch (SQLException var135) {
+                                    var135.printStackTrace();
+                                 }
+                              }
+                           }
+
+                           timeScheduleEntry.setDailyGiftCheck(day);
+                           timeScheduleEntry.setChange(true);
                         }
+
+                        Center.lastAutoHottimeTime = System.currentTimeMillis();
                      }
-
-                     timeScheduleEntry.setDailyGiftCheck(day);
-                     timeScheduleEntry.setChange(true);
-                  }
-
-                  Center.lastAutoHottimeTime = System.currentTimeMillis();
-               }
-            },
-            1000L
-         );
+                  },
+                  1000L);
    }
 
    public static void cancelExpHottimeTask(boolean forced) {
@@ -3462,7 +3879,7 @@ public class Center {
          expHottimeTask.cancel(true);
          expHottimeTask = null;
          if (!forced && ServerConstants.currentHottimeRate > 1.0) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[경험치피버] 경험치 이벤트가 종료되었습니다."));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[ExpFever] Exp Event has ended."));
          }
 
          ServerConstants.currentHottimeRate = 1.0;
@@ -3474,7 +3891,7 @@ public class Center {
          juhunHottimeTask.cancel(true);
          juhunHottimeTask = null;
          if (!forced && ServerConstants.JuhunFever == 1) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버타임] 주문의 흔적 피버타임이 종료되었습니다."));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time has ended."));
          }
 
          ServerConstants.JuhunFever = 0;
@@ -3483,159 +3900,212 @@ public class Center {
 
    public static void registerAutoJuhunHottime() {
       cancelJuhunHottimeTask(true);
-      System.out.println("주문의 흔적 피버타임 시스템이 등록되었습니다.");
+      System.out.println("Spell Trace Fever Time System has been registered.");
       juhunHottimeTask = Timer.HottimeTimer.getInstance()
-         .register(
-            new Runnable() {
-               @Override
-               public void run() {
-                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-                  Calendar CAL = new GregorianCalendar(Locale.KOREA);
-                  String fDate = sdf.format(CAL.getTime());
-                  String[] dates = fDate.split("-");
-                  int year = Integer.parseInt(dates[0]);
-                  int month = Integer.parseInt(dates[1]);
-                  int day = Integer.parseInt(dates[2]);
-                  int hours = Integer.parseInt(dates[3]);
-                  int minutes = Integer.parseInt(dates[4]);
-                  int seconds = Integer.parseInt(dates[5]);
-                  int zellerMonth = 0;
-                  int zellerYear = 0;
-                  if (month < 3) {
-                     zellerMonth = month + 12;
-                     zellerYear = year - 1;
-                  } else {
-                     zellerMonth = month;
-                     zellerYear = year;
-                  }
+            .register(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+                        Calendar CAL = new GregorianCalendar(Locale.KOREA);
+                        String fDate = sdf.format(CAL.getTime());
+                        String[] dates = fDate.split("-");
+                        int year = Integer.parseInt(dates[0]);
+                        int month = Integer.parseInt(dates[1]);
+                        int day = Integer.parseInt(dates[2]);
+                        int hours = Integer.parseInt(dates[3]);
+                        int minutes = Integer.parseInt(dates[4]);
+                        int seconds = Integer.parseInt(dates[5]);
+                        int zellerMonth = 0;
+                        int zellerYear = 0;
+                        if (month < 3) {
+                           zellerMonth = month + 12;
+                           zellerYear = year - 1;
+                        } else {
+                           zellerMonth = month;
+                           zellerYear = year;
+                        }
 
-                  int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4 + 6 * (zellerYear / 100) + zellerYear / 400;
-                  int dayOfWeek = computation % 7;
-                  if (DBConfig.isGanglim) {
-                     TextEffect e = null;
-                     String str = null;
-                     switch (dayOfWeek) {
-                        case 0:
-                        case 1:
-                           if (ServerConstants.dailyEventType != DailyEventType.ExpRateFever_) {
-                              ServerConstants.dailyEventType = DailyEventType.ExpRateFever_;
-                              e = new TextEffect(-1, "[주말의 강림 버닝] 경험치 추가 획득\r\n레벨 범위 몬스터 사냥 시 경험치 100% 추가 획득!!", 50, 5000, 4, 0);
-                              str = "[주말의 강림 버닝] '경험치 100% 추가 획득' 이벤트가 진행됩니다. 오른쪽 경험치 획득 로그에는 표기되지 않지만, 실제로는 적용중입니다.";
+                        int computation = day + 26 * (zellerMonth + 1) / 10 + zellerYear + zellerYear / 4
+                              + 6 * (zellerYear / 100) + zellerYear / 400;
+                        int dayOfWeek = computation % 7;
+                        if (DBConfig.isGanglim) {
+                           TextEffect e = null;
+                           String str = null;
+                           switch (dayOfWeek) {
+                              case 0:
+                              case 1:
+                                 if (ServerConstants.dailyEventType != DailyEventType.ExpRateFever_) {
+                                    ServerConstants.dailyEventType = DailyEventType.ExpRateFever_;
+                                    e = new TextEffect(-1,
+                                          "[Weekend Advent Burning] Exp Bonus\r\nGain 100% extra Exp when hunting monsters in level range!!",
+                                          50, 5000, 4, 0);
+                                    str = "[Weekend Advent Burning] '100% Extra Exp' event is active. It is not shown in the chat log, but it is applied.";
+                                 }
+                                 break;
+                              case 2:
+                                 if (ServerConstants.dailyEventType != DailyEventType.DropRateFever) {
+                                    ServerConstants.dailyEventType = DailyEventType.DropRateFever;
+                                    e = new TextEffect(-1,
+                                          "[Monday Advent Burning] Item Drop Rate Increase\r\nItem Drop Rate increased by 50% when hunting!!",
+                                          50,
+                                          5000, 4, 0);
+                                    str = "[Monday Advent Burning] 'Item Drop Rate 50% Increase' event is active.";
+                                 }
+                                 break;
+                              case 3:
+                              case 5:
+                                 if (ServerConstants.dailyEventType != DailyEventType.StarForceDiscount) {
+                                    ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
+                                    e = new TextEffect(
+                                          -1,
+                                          String.format(
+                                                "[%s Advent Burning] Star Force Cost Discount\r\nStar Force enhancement cost %d%s discount applied!!",
+                                                dayOfWeek == 3 ? "Tuesday" : "Thursday", 30, "%"),
+                                          50,
+                                          5000,
+                                          4,
+                                          0);
+                                    str = String.format(
+                                          "[%s Advent Burning] 'Star Force Cost Discount' event is active.",
+                                          dayOfWeek == 3 ? "Tuesday" : "Thursday");
+                                 }
+                                 break;
+                              case 4:
+                                 if (ServerConstants.dailyEventType != DailyEventType.ExpRateFever) {
+                                    ServerConstants.dailyEventType = DailyEventType.ExpRateFever;
+                                    e = new TextEffect(-1,
+                                          "[Wednesday Advent Burning] Exp Bonus\r\nGain 50% extra Exp when hunting monsters in level range!!",
+                                          50, 5000, 4, 0);
+                                    str = "[Wednesday Advent Burning] '50% Extra Exp' event is active. It is not shown in the chat log, but it is applied.";
+                                 }
+                                 break;
+                              case 6:
+                                 if (ServerConstants.dailyEventType != DailyEventType.MesoRateFever) {
+                                    ServerConstants.dailyEventType = DailyEventType.MesoRateFever;
+                                    e = new TextEffect(-1,
+                                          "[Friday Advent Burning] Meso Bonus\r\nGain 100% extra Meso when hunting!!",
+                                          50, 5000, 4,
+                                          0);
+                                    str = "[Friday Advent Burning] '100% Extra Meso' event is active.";
+                                 }
                            }
-                           break;
-                        case 2:
-                           if (ServerConstants.dailyEventType != DailyEventType.DropRateFever) {
-                              ServerConstants.dailyEventType = DailyEventType.DropRateFever;
-                              e = new TextEffect(-1, "[월요일의 강림 버닝] 아이템 획득 확률 증가\r\n사냥 시 아이템 획득 확률 50% 증가!!", 50, 5000, 4, 0);
-                              str = "[월요일의 강림 버닝] '아이템 획득 확률 50% 증가' 이벤트가 진행됩니다.";
+
+                           if (e != null) {
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
                            }
-                           break;
-                        case 3:
-                        case 5:
-                           if (ServerConstants.dailyEventType != DailyEventType.StarForceDiscount) {
-                              ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
-                              e = new TextEffect(
-                                 -1,
-                                 String.format("[%s요일의 강림 버닝] 스타포스 강화 비용 할인\r\n스타포스 강화 비용 %d%s 할인 적용!!", dayOfWeek == 3 ? "화" : "목", 30, "%"),
-                                 50,
-                                 5000,
-                                 4,
-                                 0
-                              );
-                              str = String.format("[%s요일의 강림 버닝] '스타포스 강화 비용 할인' 이벤트가 진행됩니다.", dayOfWeek == 3 ? "화" : "목");
+
+                           if (str != null) {
+                              Center.Broadcast.broadcastMessage(CField.chatMsg(5, str));
                            }
-                           break;
-                        case 4:
-                           if (ServerConstants.dailyEventType != DailyEventType.ExpRateFever) {
+                        }
+
+                        TimeScheduleEntry timeScheduleEntry = ServerConstants.timeScheduleEntry;
+                        if (!DBConfig.isGanglim && timeScheduleEntry.getDailyEventCheck1() != day) {
+                           if (dayOfWeek == 0 || dayOfWeek == 1) {
                               ServerConstants.dailyEventType = DailyEventType.ExpRateFever;
-                              e = new TextEffect(-1, "[수요일의 강림 버닝] 경험치 추가 획득\r\n레벨 범위 몬스터 사냥 시 경험치 50% 추가 획득!!", 50, 5000, 4, 0);
-                              str = "[수요일의 강림 버닝] '경험치 50% 추가 획득' 이벤트가 진행됩니다. 오른쪽 경험치 획득 로그에는 표기되지 않지만, 실제로는 적용중입니다.";
-                           }
-                           break;
-                        case 6:
-                           if (ServerConstants.dailyEventType != DailyEventType.MesoRateFever) {
+                              TextEffect e = new TextEffect(-1,
+                                    "[Weekend Daily] Exp Bonus\r\nGain 20% extra Exp when hunting monsters in level range!",
+                                    50, 5000, 4, 0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast
+                                    .broadcastMessage(
+                                          CField.chatMsg(3, "[Weekend Daily] 20% Extra Exp event is active."));
+                           } else if (dayOfWeek == 2) {
                               ServerConstants.dailyEventType = DailyEventType.MesoRateFever;
-                              e = new TextEffect(-1, "[금요일의 강림 버닝] 메소 추가 획득\r\n사냥 시 메소 100% 추가 획득!!", 50, 5000, 4, 0);
-                              str = "[금요일의 강림 버닝] '메소 100% 추가 획득' 이벤트가 진행됩니다.";
+                              TextEffect e = new TextEffect(-1,
+                                    "[Monday Daily] Meso Bonus\r\nGain 20% extra Meso when hunting!",
+                                    50, 5000, 4,
+                                    0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast
+                                    .broadcastMessage(
+                                          CField.chatMsg(3, "[Monday Daily] 20% Extra Meso event is active."));
+                           } else if (dayOfWeek == 3) {
+                              ServerConstants.dailyEventType = DailyEventType.DropRateFever;
+                              TextEffect e = new TextEffect(-1,
+                                    "[Tuesday Daily] Item Drop Rate Increase\r\nItem Drop Rate increased by 20% when hunting!",
+                                    50,
+                                    5000, 4, 0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast
+                                    .broadcastMessage(CField.chatMsg(3,
+                                          "[Tuesday Daily] 20% Item Drop Rate Increase event is active."));
+                           } else if (dayOfWeek == 4) {
+                              ServerConstants.dailyEventType = DailyEventType.MobGenFever;
+                              TextEffect e = new TextEffect(-1,
+                                    "[Wednesday Daily] Monster Spawn Rate Increase\r\nMonster Spawn Rate increased by 20%!",
+                                    50,
+                                    5000, 4,
+                                    0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast
+                                    .broadcastMessage(CField.chatMsg(3,
+                                          "[Wednesday Daily] Monster Spawn Rate Increase event is active."));
+                           } else if (dayOfWeek == 5) {
+                              ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
+                              TextEffect e = new TextEffect(-1,
+                                    "[Thursday Daily] Star Force Cost Discount\r\nStar Force enhancement cost is discounted by 30%!",
+                                    50,
+                                    5000, 4, 0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast
+                                    .broadcastMessage(CField.chatMsg(3,
+                                          "[Thursday Daily] Star Force Cost Discount event is active."));
+                           } else if (dayOfWeek == 6) {
+                              ServerConstants.dailyEventType = DailyEventType.CubeFever;
+                              TextEffect e = new TextEffect(-1,
+                                    "[Friday Daily] Monster Collection Registration Rate Increase\r\nMonster Collection new monster registration rate increased by 20%!",
+                                    50, 5000, 4,
+                                    0);
+                              Center.Broadcast.broadcastMessage(e.encodeForLocal());
+                              Center.Broadcast.broadcastMessage(
+                                    CField.chatMsg(3,
+                                          "[Friday Daily] Monster Collection Registration Rate Increase event is active."));
                            }
+
+                           timeScheduleEntry.setDailyEventCheck1(day);
+                           timeScheduleEntry.setChange(true);
+                        }
+
+                        String[] startTime = ServerConstants.juhunHottimeStartTime.split(":");
+                        String[] endTime = ServerConstants.juhunHottimeEndTime.split(":");
+                        double rate = ServerConstants.expHottimeRate;
+                        if (hours == Integer.parseInt(startTime[0]) && minutes == Integer.parseInt(startTime[1])
+                              && seconds == 1) {
+                           if (DBConfig.isGanglim) {
+                              Center.Broadcast
+                                    .broadcastMessage(
+                                          CField.chatMsg(5,
+                                                "[Spell Trace Fever Time] Spell Trace Fever Time will run until 10 PM."));
+                           } else {
+                              Center.Broadcast
+                                    .broadcastMessage(CField.chatMsg(3,
+                                          "[FeverTime] Spell Trace Fever Time will run until 10 PM."));
+                           }
+
+                           Center.Broadcast.broadcastMessage(CWvsContext.scrollUpgradeFeverTime(2));
+                           ServerConstants.JuhunFever = 1;
+                        }
+
+                        if (hours == Integer.parseInt(endTime[0]) && minutes == Integer.parseInt(endTime[1])
+                              && seconds == 1) {
+                           if (DBConfig.isGanglim) {
+                              Center.Broadcast
+                                    .broadcastMessage(CField.chatMsg(5,
+                                          "[Spell Trace Fever Time] Spell Trace Fever Time is ending."));
+                           } else {
+                              Center.Broadcast.broadcastMessage(
+                                    CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time is ending."));
+                           }
+
+                           ServerConstants.JuhunFever = 0;
+                        }
+
+                        Center.lastJuhunFeverTime = System.currentTimeMillis();
                      }
-
-                     if (e != null) {
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                     }
-
-                     if (str != null) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(5, str));
-                     }
-                  }
-
-                  TimeScheduleEntry timeScheduleEntry = ServerConstants.timeScheduleEntry;
-                  if (!DBConfig.isGanglim && timeScheduleEntry.getDailyEventCheck1() != day) {
-                     if (dayOfWeek == 0 || dayOfWeek == 1) {
-                        ServerConstants.dailyEventType = DailyEventType.ExpRateFever;
-                        TextEffect e = new TextEffect(-1, "[주말의 데일리] 경험치 추가 획득\r\n레벨 범위 몬스터 사냥 시 경험치 20% 추가 획득!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[주말의 데일리] 경험치 20% 추가 획득 이벤트가 진행됩니다."));
-                     } else if (dayOfWeek == 2) {
-                        ServerConstants.dailyEventType = DailyEventType.MesoRateFever;
-                        TextEffect e = new TextEffect(-1, "[월요일 데일리] 메소 추가 획득\r\n사냥 시 메소 20% 추가 획득!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[월요일 데일리] 메소 20% 추가 획득 이벤트가 진행됩니다."));
-                     } else if (dayOfWeek == 3) {
-                        ServerConstants.dailyEventType = DailyEventType.DropRateFever;
-                        TextEffect e = new TextEffect(-1, "[화요일 데일리] 아이템 획득 확률 증가\r\n사냥 시 아이템 획득 확률 20% 증가!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[화요일 데일리] 아이템 획득 확률 20% 증가 이벤트가 진행됩니다."));
-                     } else if (dayOfWeek == 4) {
-                        ServerConstants.dailyEventType = DailyEventType.MobGenFever;
-                        TextEffect e = new TextEffect(-1, "[수요일 데일리] 몬스터 젠량 증가\r\n몬스터 젠량 20% 증가!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[수요일 데일리] 몬스터 젠량 증가 이벤트가 진행됩니다."));
-                     } else if (dayOfWeek == 5) {
-                        ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
-                        TextEffect e = new TextEffect(-1, "[목요일 데일리] 스타포스 강화 비용 할인\r\n스타포스 강화 비용이 30% 할인됩니다!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[목요일 데일리] 스타포스 강화 비용 할인 이벤트가 진행됩니다."));
-                     } else if (dayOfWeek == 6) {
-                        ServerConstants.dailyEventType = DailyEventType.CubeFever;
-                        TextEffect e = new TextEffect(-1, "[금요일 데일리] 몬스터 컬렉션 신규 몬스터 등록 확률 20% 증가\r\n몬스터 컬렉션 신규 몬스터 등록 확률 증가!", 50, 5000, 4, 0);
-                        Center.Broadcast.broadcastMessage(e.encodeForLocal());
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[금요일 데일리] 몬스터 컬렉션 신규 몬스터 등록 확률 증가 이벤트가 진행됩니다."));
-                     }
-
-                     timeScheduleEntry.setDailyEventCheck1(day);
-                     timeScheduleEntry.setChange(true);
-                  }
-
-                  String[] startTime = ServerConstants.juhunHottimeStartTime.split(":");
-                  String[] endTime = ServerConstants.juhunHottimeEndTime.split(":");
-                  double rate = ServerConstants.expHottimeRate;
-                  if (hours == Integer.parseInt(startTime[0]) && minutes == Integer.parseInt(startTime[1]) && seconds == 1) {
-                     if (DBConfig.isGanglim) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[주문의 흔적 피버타임] 주문의 흔적 피버타임이 오후 10시까지 진행됩니다."));
-                     } else {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버타임] 주문의 흔적 피버타임이 오후 10시까지 진행됩니다."));
-                     }
-
-                     Center.Broadcast.broadcastMessage(CWvsContext.scrollUpgradeFeverTime(2));
-                     ServerConstants.JuhunFever = 1;
-                  }
-
-                  if (hours == Integer.parseInt(endTime[0]) && minutes == Integer.parseInt(endTime[1]) && seconds == 1) {
-                     if (DBConfig.isGanglim) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[주문의 흔적 피버타임] 주문의 흔적 피버타임이 종료됩니다."));
-                     } else {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[피버타임] 주문의 흔적 피버타임이 종료됩니다."));
-                     }
-
-                     ServerConstants.JuhunFever = 0;
-                  }
-
-                  Center.lastJuhunFeverTime = System.currentTimeMillis();
-               }
-            },
-            1000L
-         );
+                  },
+                  1000L);
    }
 
    public static void registerCheckTask() {
@@ -3664,7 +4134,8 @@ public class Center {
             }
 
             for (Integer c : Center.respawnTask.keySet()) {
-               if (Center.lastRespawnTime.get(c) != 0L && System.currentTimeMillis() - Center.lastRespawnTime.get(c) <= 10000L) {
+               if (Center.lastRespawnTime.get(c) != 0L
+                     && System.currentTimeMillis() - Center.lastRespawnTime.get(c) <= 10000L) {
                   Center.lastRespawnTime.remove(c);
                   Center.lastRespawnTime.put(c, 0L);
                   Center.respawnTask.get(c).cancel(true);
@@ -3678,20 +4149,22 @@ public class Center {
    }
 
    public static void checkRegenThread() {
-      System.out.println("몹리젠 쓰레드 체크 타이머가 등록되었습니다.");
+      System.out.println("Mob Regen Thread Check Timer has been registered.");
       Timer.EtcTimer.getInstance().register(new Runnable() {
          @Override
          public void run() {
             try {
                for (Integer c : Center.respawnTask.keySet()) {
-                  if (Center.lastRespawnTime.get(c) != 0L && System.currentTimeMillis() - Center.lastRespawnTime.get(c) >= 30000L) {
+                  if (Center.lastRespawnTime.get(c) != 0L
+                        && System.currentTimeMillis() - Center.lastRespawnTime.get(c) >= 30000L) {
                      try {
                         Center.respawnTask.get(c).cancel(true);
                      } catch (Exception var4) {
                      }
 
                      Integer[] chs = GameServer.getAllInstance().toArray(new Integer[0]);
-                     Center.respawnTask.put(c, Timer.WorldTimer.getInstance().register(new Center.Respawn(chs, c), 1000L));
+                     Center.respawnTask.put(c,
+                           Timer.WorldTimer.getInstance().register(new Center.Respawn(chs, c), 1000L));
                   }
                }
             } catch (Exception var5) {
@@ -3702,7 +4175,7 @@ public class Center {
 
    public static void registerAutoExpBuff() {
       cancelExpHottimeTask(true);
-      System.out.println("자동 핫타임 경험치 이벤트 시스템이 등록되었습니다.");
+      System.out.println("Auto Hot Time Exp Event System has been registered.");
       expHottimeTask = Timer.WorldTimer.getInstance().register(new Runnable() {
          @Override
          public void run() {
@@ -3720,12 +4193,13 @@ public class Center {
             String[] endTime = ServerConstants.expHottimeEndTime.split(":");
             double rate = ServerConstants.expHottimeRate;
             if (hours == Integer.parseInt(startTime[0]) && minutes == Integer.parseInt(startTime[1]) && seconds == 1) {
-               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[이벤트] 경험치 " + rate + "배 이벤트가 " + endTime[0] + "시 " + endTime[1] + "분까지 진행됩니다."));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(3,
+                     "[Event] Exp " + rate + "x event will run until " + endTime[0] + ":" + endTime[1] + "."));
                ServerConstants.currentHottimeRate = rate;
             }
 
             if (hours == Integer.parseInt(endTime[0]) && minutes == Integer.parseInt(endTime[1]) && seconds == 1) {
-               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[이벤트] 경험치 이벤트가 종료되었습니다."));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Event] Exp Event has ended."));
                ServerConstants.currentHottimeRate = 1.0;
                Center.expHottimeTask.cancel(true);
                Center.expHottimeTask = null;
@@ -3735,122 +4209,131 @@ public class Center {
    }
 
    public static void autoCCU() {
-      System.out.println("동접알리미 On");
+      System.out.println("CCU Notifier On");
       Timer.EtcTimer.getInstance()
-         .register(
-            new Runnable() {
-               @Override
-               public void run() {
-                  int count = 0;
-                  int fakeCount = 0;
+            .register(
+                  new Runnable() {
+                     @Override
+                     public void run() {
+                        int count = 0;
+                        int fakeCount = 0;
 
-                  for (GameServer gameServer : GameServer.getAllInstances()) {
-                     int size = Math.round((float)gameServer.getPlayerCountInChannel());
-                     count += size;
-                     fakeCount = (int)(fakeCount + size * ServerConstants.connectedRate);
-                  }
-
-                  int csCount = 0;
-
-                  for (MapleCharacter p : new ArrayList<>(CashShopServer.getPlayerStorage().getAllCharacters())) {
-                     if (p != null) {
-                        csCount++;
-                     }
-                  }
-
-                  csCount = Math.round((float)csCount);
-                  count += csCount;
-                  fakeCount = (int)(fakeCount + csCount * ServerConstants.connectedRate);
-                  int auctionCount = 0;
-
-                  for (MapleCharacter px : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
-                     if (px != null) {
-                        auctionCount++;
-                     }
-                  }
-
-                  auctionCount = Math.round((float)auctionCount);
-                  count += auctionCount;
-                  fakeCount = (int)(fakeCount + auctionCount * ServerConstants.connectedRate);
-                  if (Center.ccu < count) {
-                     Center.ccu = count;
-                  }
-
-                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-                  Calendar CAL = new GregorianCalendar(Locale.KOREA);
-                  String fDate = sdf.format(CAL.getTime());
-                  String[] dates = fDate.split("-");
-                  int year = Integer.parseInt(dates[0]);
-                  int month = Integer.parseInt(dates[1]);
-                  int day = Integer.parseInt(dates[2]);
-                  int hours = Integer.parseInt(dates[3]);
-                  int minutes = Integer.parseInt(dates[4]);
-                  int seconds = Integer.parseInt(dates[5]);
-                  if (Center.todayccu < count) {
-                     Center.todayccu = count;
-                     Center.todayBestCCUDate = hours + "시 " + minutes + "분 " + seconds + "초 ";
-                  }
-
-                  if (Center.lasthour == -1) {
-                     if (!DBConfig.isGanglim) {
-                        Center.lasthour = hours;
-                        DiscordBotHandler.requestSendTelegram("[" + hours + "시 59분 59초] 1시간 단위의 동시접속자를 기록합니다.\r\n동시 접속자 알림은 정각에 전송됩니다.", -593683313L);
-                     } else if (DiscordBotHandler.requestSendTelegramCCU("[" + hours + "시 59분 59초] 1시간 단위의 동시접속자를 기록합니다.\r\n동시 접속자 알림은 정각에 전송됩니다.")) {
-                        Center.lasthour = hours;
-                     }
-                  }
-
-                  if (Center.lasthour != hours && minutes == 0) {
-                     if (!DBConfig.isGanglim) {
-                        DiscordBotHandler.requestSendTelegram("[" + Center.lasthour + "시 59분 59초] 까지의 최대 동시접속자 : " + Center.ccu + "명", -593683313L);
-                        Center.ccu = 0;
-                        Center.lasthour = hours;
-                        if (Center.lasthour == 23) {
-                           DiscordBotHandler.requestSendTelegram(
-                              "[오늘의 피크타임]\r\n[ " + Center.todayBestCCUDate + " ]에\r\n최대 동시 접속자 " + Center.todayccu + "명을 기록하였습니다.", -593683313L
-                           );
-                           Center.todayccu = 0;
+                        for (GameServer gameServer : GameServer.getAllInstances()) {
+                           int size = Math.round((float) gameServer.getPlayerCountInChannel());
+                           count += size;
+                           fakeCount = (int) (fakeCount + size * ServerConstants.connectedRate);
                         }
-                     } else {
-                        DiscordBotHandler.requestSendTelegramCCU("[" + Center.lasthour + "시 59분 59초] 까지의 최대 동시접속자 : " + Center.ccu + "명");
-                        Center.ccu = 0;
-                        Center.lasthour = hours;
-                        if (Center.lasthour == 23) {
-                           DiscordBotHandler.requestSendTelegramCCU(
-                              "[오늘의 피크타임]\r\n[ " + Center.todayBestCCUDate + " ]에\r\n최대 동시 접속자 " + Center.todayccu + "명을 기록하였습니다."
-                           );
-                           Center.todayccu = 0;
-                        }
-                     }
-                  }
 
-                  if (seconds == 0) {
-                     PreparedStatement ps = null;
+                        int csCount = 0;
 
-                     try (Connection con = DBConnection.getConnection()) {
-                        ps = con.prepareStatement(
-                           "INSERT INTO `ccu` (`id`, `timestamp`, `count`) VALUES(1, CURRENT_TIMESTAMP(), ?) ON DUPLICATE KEY UPDATE `timestamp` = CURRENT_TIMESTAMP(), `count` = ?"
-                        );
-                        ps.setInt(1, DBConfig.isGanglim ? fakeCount : count);
-                        ps.setInt(2, DBConfig.isGanglim ? fakeCount : count);
-                        ps.executeQuery();
-                     } catch (SQLException var31) {
-                        var31.printStackTrace();
-                     } finally {
-                        try {
-                           if (ps != null) {
-                              ps.close();
-                              PreparedStatement var46 = null;
+                        for (MapleCharacter p : new ArrayList<>(CashShopServer.getPlayerStorage().getAllCharacters())) {
+                           if (p != null) {
+                              csCount++;
                            }
-                        } catch (SQLException var28) {
-                           var28.printStackTrace();
+                        }
+
+                        csCount = Math.round((float) csCount);
+                        count += csCount;
+                        fakeCount = (int) (fakeCount + csCount * ServerConstants.connectedRate);
+                        int auctionCount = 0;
+
+                        for (MapleCharacter px : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
+                           if (px != null) {
+                              auctionCount++;
+                           }
+                        }
+
+                        auctionCount = Math.round((float) auctionCount);
+                        count += auctionCount;
+                        fakeCount = (int) (fakeCount + auctionCount * ServerConstants.connectedRate);
+                        if (Center.ccu < count) {
+                           Center.ccu = count;
+                        }
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+                        Calendar CAL = new GregorianCalendar(Locale.KOREA);
+                        String fDate = sdf.format(CAL.getTime());
+                        String[] dates = fDate.split("-");
+                        int year = Integer.parseInt(dates[0]);
+                        int month = Integer.parseInt(dates[1]);
+                        int day = Integer.parseInt(dates[2]);
+                        int hours = Integer.parseInt(dates[3]);
+                        int minutes = Integer.parseInt(dates[4]);
+                        int seconds = Integer.parseInt(dates[5]);
+                        if (Center.todayccu < count) {
+                           Center.todayccu = count;
+                           Center.todayBestCCUDate = hours + ":" + minutes + ":" + seconds + " ";
+                        }
+
+                        if (Center.lasthour == -1) {
+                           if (!DBConfig.isGanglim) {
+                              Center.lasthour = hours;
+                              DiscordBotHandler.requestSendTelegram(
+                                    "[" + hours
+                                          + ":59:59] Recording hourly concurrent users.\r\nConcurrent users notification will be sent at the top of the hour.",
+                                    -593683313L);
+                           } else if (DiscordBotHandler.requestSendTelegramCCU(
+                                 "[" + hours
+                                       + ":59:59] Recording hourly concurrent users.\r\nConcurrent users notification will be sent at the top of the hour.")) {
+                              Center.lasthour = hours;
+                           }
+                        }
+
+                        if (Center.lasthour != hours && minutes == 0) {
+                           if (!DBConfig.isGanglim) {
+                              DiscordBotHandler.requestSendTelegram(
+                                    "[" + Center.lasthour + ":59:59] Max Concurrent Users: " + Center.ccu,
+                                    -593683313L);
+                              Center.ccu = 0;
+                              Center.lasthour = hours;
+                              if (Center.lasthour == 23) {
+                                 DiscordBotHandler.requestSendTelegram(
+                                       "[Today's Peak Time]\r\nRecorded " + Center.todayccu
+                                             + " max concurrent users at [ "
+                                             + Center.todayBestCCUDate + " ].",
+                                       -593683313L);
+                                 Center.todayccu = 0;
+                              }
+                           } else {
+                              DiscordBotHandler.requestSendTelegramCCU(
+                                    "[" + Center.lasthour + ":59:59] Max Concurrent Users: " + Center.ccu);
+                              Center.ccu = 0;
+                              Center.lasthour = hours;
+                              if (Center.lasthour == 23) {
+                                 DiscordBotHandler.requestSendTelegramCCU(
+                                       "[Today's Peak Time]\r\nRecorded " + Center.todayccu
+                                             + " max concurrent users at [ "
+                                             + Center.todayBestCCUDate + " ].");
+                                 Center.todayccu = 0;
+                              }
+                           }
+                        }
+
+                        if (seconds == 0) {
+                           PreparedStatement ps = null;
+
+                           try (Connection con = DBConnection.getConnection()) {
+                              ps = con.prepareStatement(
+                                    "INSERT INTO `ccu` (`id`, `timestamp`, `count`) VALUES(1, CURRENT_TIMESTAMP(), ?) ON DUPLICATE KEY UPDATE `timestamp` = CURRENT_TIMESTAMP(), `count` = ?");
+                              ps.setInt(1, DBConfig.isGanglim ? fakeCount : count);
+                              ps.setInt(2, DBConfig.isGanglim ? fakeCount : count);
+                              ps.executeQuery();
+                           } catch (SQLException var31) {
+                              var31.printStackTrace();
+                           } finally {
+                              try {
+                                 if (ps != null) {
+                                    ps.close();
+                                    PreparedStatement var46 = null;
+                                 }
+                              } catch (SQLException var28) {
+                                 var28.printStackTrace();
+                              }
+                           }
                         }
                      }
-                  }
-               }
-            },
-            1000L
-         );
+                  },
+                  1000L);
    }
 
    public static void registerRespawn() {
@@ -3867,7 +4350,8 @@ public class Center {
    }
 
    public static void handleMap(Field map, int numTimes, int size, long now) {
-      if (AdminClient.getNextDisableChatTime() != 0L && AdminClient.getNextDisableChatTime() <= System.currentTimeMillis()) {
+      if (AdminClient.getNextDisableChatTime() != 0L
+            && AdminClient.getNextDisableChatTime() <= System.currentTimeMillis()) {
          AdminClient.setNextDisableChatTime(0L);
          AdminClient.setDisabledChat(true);
       }
@@ -3878,12 +4362,12 @@ public class Center {
                if (item.shouldExpire(now)) {
                   item.expire(map);
                } else if (item.shouldFFA(now)) {
-                  item.setDropType((byte)2);
+                  item.setDropType((byte) 2);
                }
             }
          }
       } catch (Exception var18) {
-         System.out.println("[오류] 필드 아이템 삭제중 오류 발생 : " + var18);
+         System.out.println("[Error] Error occurred while removing field items : " + var18);
          FileoutputUtil.outputFileError("Log_FieldItem_Except.rtf", var18);
          var18.printStackTrace();
       }
@@ -3893,7 +4377,7 @@ public class Center {
          try {
             event.onUpdatePerSecond(System.currentTimeMillis());
          } catch (Exception var15) {
-            System.out.println("[오류] 이벤트 필드 업데이트 함수 실행중 오류 발생 : " + var15);
+            System.out.println("[Error] Error occurred during event field update : " + var15);
             FileoutputUtil.outputFileError("Log_EventField_Except.rtf", var15);
             var15.printStackTrace();
          }
@@ -3904,7 +4388,7 @@ public class Center {
             map.respawn(false, now);
          } catch (Exception var14) {
             FileoutputUtil.outputFileError("Log_Respawn_Except.rtf", var14);
-            System.out.println("맵 리스폰 오류 발생");
+            System.out.println("Map Respawn Error Occurred");
             var14.printStackTrace();
          }
 
@@ -3916,12 +4400,12 @@ public class Center {
                   handleCooldowns(chr, numTimes, hurt, now);
                } catch (Exception var13) {
                   FileoutputUtil.outputFileError("Log_PlayerUpdate_Except.rtf", var13);
-                  System.out.println("[오류] handleCooldowns 함수 실행중 오류 발생 (닉네임 : " + chr.getName() + ")");
+                  System.out.println("[Error] Error occurred in handleCooldowns (Name : " + chr.getName() + ")");
                   var13.printStackTrace();
                }
             }
          } catch (Exception var17) {
-            System.out.println("[오류] 캐릭터 업데이트 함수 실행중 오류 발생 : " + var17);
+            System.out.println("[Error] Error occurred during character update : " + var17);
             var17.printStackTrace();
          }
 
@@ -3929,20 +4413,22 @@ public class Center {
             map.fieldUpdatePerSeconds();
          } catch (Exception var12) {
             FileoutputUtil.outputFileError("Log_MapUpdate_Except.rtf", var12);
-            System.out.println("[오류] 필드 업데이트 함수 실행중 오류 발생 : " + var12);
+            System.out.println("[Error] Error occurred during field update : " + var12);
             var12.printStackTrace();
          }
 
          try {
             if (map.getAllFieldAttackObj().size() > 0) {
-               map.getAllFieldAttackObj().stream().filter(obj -> obj.checkRemove(System.currentTimeMillis())).forEach(map::removeFieldAttackObj);
+               map.getAllFieldAttackObj().stream().filter(obj -> obj.checkRemove(System.currentTimeMillis()))
+                     .forEach(map::removeFieldAttackObj);
             }
 
             if (map.getAllWreakage().size() > 0) {
                for (Wreckage wreakage : new ArrayList<>(map.getAllWreakage())) {
                   if (wreakage.getEndTime() <= now) {
                      wreakage.removeWreckage(wreakage.getOwner().getMap(), false);
-                     map.broadcastMessage(CField.DelWreckage(wreakage.getOwner().getId(), Collections.singletonList(wreakage), false));
+                     map.broadcastMessage(
+                           CField.DelWreckage(wreakage.getOwner().getId(), Collections.singletonList(wreakage), false));
                      if (wreakage.getOwner() != null) {
                         wreakage.getOwner().decAndGetWreckageCount();
                      }
@@ -3971,7 +4457,8 @@ public class Center {
 
                for (Entry<Integer, SecondAtom.Atom> atom : map.getSecondAtoms().entrySet()) {
                   SecondAtom.Atom a = atom.getValue();
-                  if (a != null && a.getExpire() > 0 && System.currentTimeMillis() - a.getCreateTime() >= a.getExpire()) {
+                  if (a != null && a.getExpire() > 0
+                        && System.currentTimeMillis() - a.getCreateTime() >= a.getExpire()) {
                      removes.add(a);
                   }
                }
@@ -3980,7 +4467,8 @@ public class Center {
                   int owner = a.getPlayerID();
                   MapleCharacter p = map.getCharacterById(owner);
                   boolean check = true;
-                  if (a.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows && p != null && p.hasBuffBySkillID(162111002)) {
+                  if (a.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows && p != null
+                        && p.hasBuffBySkillID(162111002)) {
                      check = false;
                   }
 
@@ -4021,17 +4509,17 @@ public class Center {
                }
 
                if (!map.isTown()
-                  && !FieldLimitType.NO_EXP_DECREASE.check(map.getFieldLimit())
-                  && map.getId() != 993026800
-                  && map.getId() != 272030410
-                  && map.getId() != 272020600
-                  && map.getId() != 272020500
-                  && map.getId() != 272020310
-                  && map.getId() != 272020300
-                  && map.getId() != 271041300
-                  && map.getId() != 271040300
-                  && (map.getId() < 105200529 || map.getId() > 105200520)
-                  && (map.getId() < 105200129 || map.getId() > 105200120)) {
+                     && !FieldLimitType.NO_EXP_DECREASE.check(map.getFieldLimit())
+                     && map.getId() != 993026800
+                     && map.getId() != 272030410
+                     && map.getId() != 272020600
+                     && map.getId() != 272020500
+                     && map.getId() != 272020310
+                     && map.getId() != 272020300
+                     && map.getId() != 271041300
+                     && map.getId() != 271040300
+                     && (map.getId() < 105200529 || map.getId() > 105200520)
+                     && (map.getId() < 105200129 || map.getId() > 105200120)) {
                   if (map.getLastCheckMacroTime() == 0L) {
                      map.setLastCheckMacroTime(System.currentTimeMillis());
                   } else if (System.currentTimeMillis() - map.getLastCheckMacroTime() >= 2100000L) {
@@ -4040,10 +4528,10 @@ public class Center {
                            if (!player.isEnterRandomPortal()) {
                               player.tryAntiMacro(AntiMacroType.Auto, null);
                               StringBuilder sb = new StringBuilder();
-                              sb.append("매크로 탐지 시도");
-                              sb.append(" (계정ID : ");
+                              sb.append("Anti-Macro Detection Attempt");
+                              sb.append(" (Account ID : ");
                               sb.append(player.getClient().getAccountName());
-                              sb.append(", 캐릭터 이름 : ");
+                              sb.append(", Character Name : ");
                               sb.append(player.getName());
                               sb.append(")");
                               LoggingManager.putLog(new MacroLog(player, 0, 0, sb));
@@ -4058,9 +4546,11 @@ public class Center {
                      map.setLastSpawnRuneTime(System.currentTimeMillis());
                      if (map.getAllRune().isEmpty()) {
                         for (Spawns spawns : map.getClosestSpawns(
-                           new Point(Randomizer.rand(map.getLeft(), map.getRight()), Randomizer.rand(map.getTop(), map.getBottom())), 1
-                        )) {
-                           RuneStone rune = new RuneStone(RuneStoneType.get(Randomizer.rand(0, 9)), 0, spawns.getPosition().x, spawns.getPosition().y, map);
+                              new Point(Randomizer.rand(map.getLeft(), map.getRight()),
+                                    Randomizer.rand(map.getTop(), map.getBottom())),
+                              1)) {
+                           RuneStone rune = new RuneStone(RuneStoneType.get(Randomizer.rand(0, 9)), 0,
+                                 spawns.getPosition().x, spawns.getPosition().y, map);
                            map.addMapObject(rune);
                            map.broadcastMessage(CField.spawnRune(rune, false));
                            map.broadcastMessage(CField.spawnRune(rune, true));
@@ -4068,11 +4558,14 @@ public class Center {
 
                         map.setLastSpawnRuneTime(System.currentTimeMillis());
                      }
-                  } else if (System.currentTimeMillis() - map.getLastSpawnRuneTime() >= 600000L && map.getAllRune().isEmpty()) {
+                  } else if (System.currentTimeMillis() - map.getLastSpawnRuneTime() >= 600000L
+                        && map.getAllRune().isEmpty()) {
                      for (Spawns spawns : map.getClosestSpawns(
-                        new Point(Randomizer.rand(map.getLeft(), map.getRight()), Randomizer.rand(map.getTop(), map.getBottom())), 1
-                     )) {
-                        RuneStone rune = new RuneStone(RuneStoneType.get(Randomizer.rand(0, 9)), 0, spawns.getPosition().x, spawns.getPosition().y, map);
+                           new Point(Randomizer.rand(map.getLeft(), map.getRight()),
+                                 Randomizer.rand(map.getTop(), map.getBottom())),
+                           1)) {
+                        RuneStone rune = new RuneStone(RuneStoneType.get(Randomizer.rand(0, 9)), 0,
+                              spawns.getPosition().x, spawns.getPosition().y, map);
                         map.addMapObject(rune);
                         map.broadcastMessage(CField.spawnRune(rune, false));
                         map.broadcastMessage(CField.spawnRune(rune, true));
@@ -4093,7 +4586,8 @@ public class Center {
 
                      if (!map.getAllRune().isEmpty()) {
                         RuneStone rune = map.getAllRune().get(0);
-                        if (rune != null && rune.getLastRuneTouchTime() != 0L && System.currentTimeMillis() >= rune.getLastRuneTouchTime() + 12000L) {
+                        if (rune != null && rune.getLastRuneTouchTime() != 0L
+                              && System.currentTimeMillis() >= rune.getLastRuneTouchTime() + 12000L) {
                            rune.clearOccupier();
                            rune.setLastRuneTouchTime(0L);
                         }
@@ -4104,7 +4598,7 @@ public class Center {
 
             map.updateFieldFallingCatcher(now);
          } catch (Exception var16) {
-            System.out.println("[오류] 필드 업데이트 중 오류 발생 : " + var16);
+            System.out.println("[Error] Error occurred during field update : " + var16);
             FileoutputUtil.outputFileError("Log_FieldUpdate_Except.rtf", var16);
             var16.printStackTrace();
          }
@@ -4122,7 +4616,7 @@ public class Center {
             for (MapleCoolDownValueHolder m : chr.getCooldowns()) {
                int reduceR = chr.getStat().reduceCooltimeR;
                if (reduceR > 0) {
-                  int reduc = (int)((System.currentTimeMillis() - m.startTime) * reduceR / 100L);
+                  int reduc = (int) ((System.currentTimeMillis() - m.startTime) * reduceR / 100L);
                   chr.changeCooldown(m.skillId, -reduc);
                }
 
@@ -4150,11 +4644,11 @@ public class Center {
             }
 
             if (chr.canHPRecover(now)) {
-               chr.addHP((int)chr.getStat().getHealHP());
+               chr.addHP((int) chr.getStat().getHealHP());
             }
 
             if (chr.canMPRecover(now)) {
-               chr.addMP((int)chr.getStat().getHealMP());
+               chr.addMP((int) chr.getStat().getHealMP());
             }
 
             if (chr.canFairy(now)) {
@@ -4175,7 +4669,7 @@ public class Center {
                if (m != null && m.startTime + m.length < now) {
                   chr.dispelDebuff(m.disease);
                   if (m.disease == SecondaryStatFlag.WillPoison && chr.getMap() instanceof Field_WillBattle) {
-                     Field_WillBattle f = (Field_WillBattle)chr.getMap();
+                     Field_WillBattle f = (Field_WillBattle) chr.getMap();
                      f.sendWillRemovePoison(chr);
                      chr.setLastWillAttackTime(0L);
                   }
@@ -4183,7 +4677,8 @@ public class Center {
             }
          }
 
-         if (hurt && chr.isAlive() && chr.getInventory(MapleInventoryType.EQUIPPED).findById(chr.getMap().getHPDecProtect()) == null) {
+         if (hurt && chr.isAlive()
+               && chr.getInventory(MapleInventoryType.EQUIPPED).findById(chr.getMap().getHPDecProtect()) == null) {
             if (chr.getMapId() == 749040100 && chr.getInventory(MapleInventoryType.CASH).findById(5451000) == null) {
                chr.addHP(-chr.getMap().getHPDec());
             } else if (chr.getMapId() != 749040100) {
@@ -4224,7 +4719,7 @@ public class Center {
                lock.writeLock().unlock();
             }
 
-            return (objects.context.guild.alliance.Alliance)var2;
+            return (objects.context.guild.alliance.Alliance) var2;
          } else {
             return ret;
          }
@@ -4328,7 +4823,8 @@ public class Center {
          }
       }
 
-      public static void allianceChat(int gid, MapleCharacter chr, int cid, String msg, Item item, String itemName, int achievementID, long achievementTime) {
+      public static void allianceChat(int gid, MapleCharacter chr, int cid, String msg, Item item, String itemName,
+            int achievementID, long achievementTime) {
          objects.context.guild.Guild g = Center.Guild.getGuild(gid);
          if (g != null) {
             objects.context.guild.alliance.Alliance ga = getAlliance(g.getAllianceId());
@@ -4378,7 +4874,8 @@ public class Center {
                if (guild != null) {
                   if (targetGuild != null) {
                      PacketEncoder p = new PacketEncoder();
-                     GuildPacket.WithdrawGuildInAlliance a = new GuildPacket.WithdrawGuildInAlliance(allianceID, targetGuild.getId(), kick);
+                     GuildPacket.WithdrawGuildInAlliance a = new GuildPacket.WithdrawGuildInAlliance(allianceID,
+                           targetGuild.getId(), kick);
                      a.encode(p);
                      guild.broadcast(p.getPacket());
                   } else {
@@ -4516,7 +5013,8 @@ public class Center {
          List<AuctionItemPackage> items_ = new ArrayList<>();
 
          for (AuctionItemPackage aitem : new ArrayList<>(items)) {
-            if ((aitem.getBuyer() == 999999 || aitem.getBuyer() == 0) && aitem.getExpiredTime() > System.currentTimeMillis()) {
+            if ((aitem.getBuyer() == 999999 || aitem.getBuyer() == 0)
+                  && aitem.getExpiredTime() > System.currentTimeMillis()) {
                items_.add(aitem);
             }
          }
@@ -4526,34 +5024,40 @@ public class Center {
 
       public static List<AuctionItemPackage> getHistoryItems(int accountID, int playerID) {
          List<AuctionItemPackage> items_ = new ArrayList<>();
-         items.stream().sorted(Comparator.comparingInt(AuctionItemPackage::getHistoryID)).collect(Collectors.toList()).forEach(item -> {
-            if (DBConfig.isGanglim) {
-               LocalDateTime date = LocalDateTime.of(2022, 4, 26, 0, 0, 0);
-               long milliSeconds = Timestamp.valueOf(date).getTime();
-               if (item.getExpiredTime() < milliSeconds) {
-                  int type = item.getType(true, true);
-                  if ((type == 2 || type == 7) && item.getBid() == playerID || type != 7 && type >= 3 && item.getAccountID() == accountID) {
+         items.stream().sorted(Comparator.comparingInt(AuctionItemPackage::getHistoryID)).collect(Collectors.toList())
+               .forEach(item -> {
+                  if (DBConfig.isGanglim) {
+                     LocalDateTime date = LocalDateTime.of(2022, 4, 26, 0, 0, 0);
+                     long milliSeconds = Timestamp.valueOf(date).getTime();
+                     if (item.getExpiredTime() < milliSeconds) {
+                        int type = item.getType(true, true);
+                        if ((type == 2 || type == 7) && item.getBid() == playerID
+                              || type != 7 && type >= 3 && item.getAccountID() == accountID) {
+                           items_.add(item);
+                        }
+                     } else if (item.getItem().getQuantity() > 0
+                           && (item.getOwnerId() == playerID || item.getBuyer() == playerID)) {
+                        items_.add(item);
+                     }
+                  } else if (item.getItem().getQuantity() > 0
+                        && (item.getOwnerId() == playerID || item.getBuyer() == playerID)) {
                      items_.add(item);
                   }
-               } else if (item.getItem().getQuantity() > 0 && (item.getOwnerId() == playerID || item.getBuyer() == playerID)) {
-                  items_.add(item);
-               }
-            } else if (item.getItem().getQuantity() > 0 && (item.getOwnerId() == playerID || item.getBuyer() == playerID)) {
-               items_.add(item);
-            }
-         });
+               });
          return items_;
       }
 
       public static List<AuctionItemPackage> getMarketPriceItems(int playerID) {
          List<AuctionItemPackage> items_ = new ArrayList<>();
-         items.stream().sorted((a, b) -> b.getHistoryID() - a.getHistoryID()).collect(Collectors.toList()).forEach(item -> {
-            int temp = item.getType(item.getOwnerId() == playerID, false);
-            int type = item.getOwnerId() != playerID && temp == 2 ? 3 : temp;
-            if (item.getItem().getQuantity() > 0 && item.getBuyer() != 0 && (type == 3 || type >= 7 && type <= 9) && item.getBuyTime() > 0L) {
-               items_.add(item);
-            }
-         });
+         items.stream().sorted((a, b) -> b.getHistoryID() - a.getHistoryID()).collect(Collectors.toList())
+               .forEach(item -> {
+                  int temp = item.getType(item.getOwnerId() == playerID, false);
+                  int type = item.getOwnerId() != playerID && temp == 2 ? 3 : temp;
+                  if (item.getItem().getQuantity() > 0 && item.getBuyer() != 0 && (type == 3 || type >= 7 && type <= 9)
+                        && item.getBuyTime() > 0L) {
+                     items_.add(item);
+                  }
+               });
          return items_;
       }
 
@@ -4579,16 +5083,16 @@ public class Center {
             ItemLoader.AUCTION.loadItems(false, -1, 0);
 
             try (
-               Connection con = DBConnection.getConnection();
-               PreparedStatement ps = con.prepareStatement("SELECT * FROM `auctions`");
-               ResultSet rs = ps.executeQuery();
-            ) {
+                  Connection con = DBConnection.getConnection();
+                  PreparedStatement ps = con.prepareStatement("SELECT * FROM `auctions`");
+                  ResultSet rs = ps.executeQuery();) {
                while (rs.next()) {
-                  addAuction(rs.getInt("characterid"), rs.getLong("bid"), rs.getInt("inventoryid"), rs.getByte("status"));
+                  addAuction(rs.getInt("characterid"), rs.getLong("bid"), rs.getInt("inventoryid"),
+                        rs.getByte("status"));
                }
             }
 
-            System.out.println("총 " + items.size() + "개의 메이플 옥션 아이템이 로드되었습니다.");
+            System.out.println("A total of " + items.size() + " Maple Auction items have been loaded.");
          } catch (SQLException var11) {
             var11.printStackTrace();
          }
@@ -4652,32 +5156,32 @@ public class Center {
 
       public static void checkExpiredRecruiment() {
          queue.stream()
-            .collect(Collectors.toList())
-            .forEach(
-               party -> {
-                  if (party.getBossPartyRecruiment().getEndRecruimentTime() <= System.currentTimeMillis()) {
-                     party.getBossPartyRecruiment().setEntry(null);
-                     party.getPartyMember().clearRegisterRequestPlayer();
-                     queue.remove(party);
+               .collect(Collectors.toList())
+               .forEach(
+                     party -> {
+                        if (party.getBossPartyRecruiment().getEndRecruimentTime() <= System.currentTimeMillis()) {
+                           party.getBossPartyRecruiment().setEntry(null);
+                           party.getPartyMember().clearRegisterRequestPlayer();
+                           queue.remove(party);
 
-                     for (PartyMemberEntry entry : party.getPartyMemberList()) {
-                        int ch = Center.Find.findChannel(entry.getName());
-                        if (ch > 0) {
-                           MapleCharacter player = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(entry.getName());
-                           if (player != null) {
-                              PacketEncoder packet = new PacketEncoder();
-                              objects.context.party.Party.PartyPacket.PartyDataUpdate p = new objects.context.party.Party.PartyPacket.PartyDataUpdate(
-                                 party, player.getClient().getChannel()
-                              );
-                              p.encode(packet);
-                              player.send(packet.getPacket());
-                              player.dropMessage(5, "파티 모집 기간이 만료되어 모집이 완료 처리되었습니다.");
+                           for (PartyMemberEntry entry : party.getPartyMemberList()) {
+                              int ch = Center.Find.findChannel(entry.getName());
+                              if (ch > 0) {
+                                 MapleCharacter player = GameServer.getInstance(ch).getPlayerStorage()
+                                       .getCharacterByName(entry.getName());
+                                 if (player != null) {
+                                    PacketEncoder packet = new PacketEncoder();
+                                    objects.context.party.Party.PartyPacket.PartyDataUpdate p = new objects.context.party.Party.PartyPacket.PartyDataUpdate(
+                                          party, player.getClient().getChannel());
+                                    p.encode(packet);
+                                    player.send(packet.getPacket());
+                                    player.dropMessage(5,
+                                          "The party recruitment period has expired, so the recruitment has been completed.");
+                                 }
+                              }
                            }
                         }
-                     }
-                  }
-               }
-            );
+                     });
       }
 
       public static void registerBossPartyRecruiment(objects.context.party.Party party) {
@@ -4695,8 +5199,7 @@ public class Center {
          });
          PacketEncoder packet = new PacketEncoder();
          objects.context.party.Party.BossPartyRecruimentPacket.DisplayList display = new objects.context.party.Party.BossPartyRecruimentPacket.DisplayList(
-            bossType, difficulty, list
-         );
+               bossType, difficulty, list);
          display.encode(packet);
          player.send(packet.getPacket());
       }
@@ -4704,10 +5207,12 @@ public class Center {
       public static void openBossPartyRecruiment(MapleCharacter player, int id, int bossType, int bossDifficulty) {
          AtomicBoolean find = new AtomicBoolean(false);
          queue.stream().collect(Collectors.toList()).forEach(p -> {
-            if (p.getBossPartyRecruiment() != null && p.getId() == id && p.getBossPartyRecruiment().getEndRecruimentTime() >= System.currentTimeMillis()) {
+            if (p.getBossPartyRecruiment() != null && p.getId() == id
+                  && p.getBossPartyRecruiment().getEndRecruimentTime() >= System.currentTimeMillis()) {
                find.set(true);
                PacketEncoder packetx = new PacketEncoder();
-               objects.context.party.Party.BossPartyRecruimentPacket.Open openx = new objects.context.party.Party.BossPartyRecruimentPacket.Open(p);
+               objects.context.party.Party.BossPartyRecruimentPacket.Open openx = new objects.context.party.Party.BossPartyRecruimentPacket.Open(
+                     p);
                openx.encode(packetx);
                player.send(packetx.getPacket());
             }
@@ -4715,22 +5220,20 @@ public class Center {
          if (!find.get()) {
             List<objects.context.party.Party> list = new ArrayList<>();
             queue.stream()
-               .collect(Collectors.toList())
-               .forEach(
-                  p -> {
-                     objects.context.party.boss.BossPartyRecruiment recruiment = p.getBossPartyRecruiment();
-                     if (recruiment != null
-                        && recruiment.getEntry() != null
-                        && recruiment.getBossType() == bossType
-                        && recruiment.getEntry().getBossDifficulty() == bossDifficulty) {
-                        list.add(p);
-                     }
-                  }
-               );
+                  .collect(Collectors.toList())
+                  .forEach(
+                        p -> {
+                           objects.context.party.boss.BossPartyRecruiment recruiment = p.getBossPartyRecruiment();
+                           if (recruiment != null
+                                 && recruiment.getEntry() != null
+                                 && recruiment.getBossType() == bossType
+                                 && recruiment.getEntry().getBossDifficulty() == bossDifficulty) {
+                              list.add(p);
+                           }
+                        });
             PacketEncoder packet = new PacketEncoder();
             objects.context.party.Party.BossPartyRecruimentPacket.Open open = new objects.context.party.Party.BossPartyRecruimentPacket.Open(
-               id, bossType, (byte)bossDifficulty, list
-            );
+                  id, bossType, (byte) bossDifficulty, list);
             open.encode(packet);
             player.send(packet.getPacket());
          }
@@ -4750,7 +5253,7 @@ public class Center {
          for (objects.context.party.Party p : new ArrayList<>(queue)) {
             if (p.getBossPartyRecruiment() != null && p.getId() == id) {
                if (p.getPartyMember().getPartyMemberList().size() >= 6) {
-                  player.dropMessage(1, "해당 파티에 정원이 가득차 신청할 수 없습니다.");
+                  player.dropMessage(1, "The party is full, so you cannot apply.");
                   return;
                }
 
@@ -4759,26 +5262,24 @@ public class Center {
                p.getPartyMember().addRegisterRequestPlayer(entry);
                PacketEncoder packet = new PacketEncoder();
                objects.context.party.Party.BossPartyRecruimentPacket.UpdateJoinMember member = new objects.context.party.Party.BossPartyRecruimentPacket.UpdateJoinMember(
-                  p.getId(), entry
-               );
+                     p.getId(), entry);
                member.encode(packet);
                player.send(packet.getPacket());
                packet = new PacketEncoder();
                objects.context.party.Party.BossPartyRecruimentMessage.CompleteJoinRequest message = new objects.context.party.Party.BossPartyRecruimentMessage.CompleteJoinRequest(
-                  p.getLeader().getName(), p.getId(), p
-               );
+                     p.getLeader().getName(), p.getId(), p);
                message.encode(packet);
                player.send(packet.getPacket());
                packet = new PacketEncoder();
                objects.context.party.Party.RequestJoinPartyFromRecruiment.RequestJoinParty join = new objects.context.party.Party.RequestJoinPartyFromRecruiment.RequestJoinParty(
-                  entry
-               );
+                     entry);
                join.encode(packet);
 
                for (PartyMemberEntry e : p.getPartyMemberList()) {
                   int ch = Center.Find.findChannel(e.getName());
                   if (ch > 0) {
-                     MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(e.getName());
+                     MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage()
+                           .getCharacterByName(e.getName());
                      if (player_ != null) {
                         player_.send(packet.getPacket());
                      }
@@ -4788,13 +5289,14 @@ public class Center {
          }
 
          if (!find) {
-            player.dropMessage(1, "해당 파티가 존재하지 않습니다.");
+            player.dropMessage(1, "The party does not exist.");
          }
       }
    }
 
    public static class Broadcast {
-      public static void broadcastEliteBossWMI(int mapID, int state, int eliteMobID, int remainTime, GameServer channel) {
+      public static void broadcastEliteBossWMI(int mapID, int state, int eliteMobID, int remainTime,
+            GameServer channel) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.ELITE_MOB_WORLD_MAP_NOTICE.getValue());
          packet.write(state);
@@ -4890,38 +5392,37 @@ public class Center {
 
    public static class Buddy {
       public static void buddyChat(
-         int[] recipientCharacterIds,
-         MapleCharacter user,
-         String nameFrom,
-         String chattext,
-         Item item,
-         String itemName,
-         int achievementID,
-         long achievementTime
-      ) {
+            int[] recipientCharacterIds,
+            MapleCharacter user,
+            String nameFrom,
+            String chattext,
+            Item item,
+            String itemName,
+            int achievementID,
+            long achievementTime) {
          for (int characterId : recipientCharacterIds) {
             int ch = Center.Find.findChannel(characterId);
             if (ch >= 0) {
                MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterById(characterId);
                if (chr != null && chr.getBuddylist().containsVisible(user.getAccountID())) {
                   chr.getClient()
-                     .getSession()
-                     .writeAndFlush(
-                        CField.multiChat(
-                           user, chattext, 0, item, itemName, achievementID, achievementTime, new ReportLogEntry(user.getName(), chattext, user.getId())
-                        )
-                     );
+                        .getSession()
+                        .writeAndFlush(
+                              CField.multiChat(
+                                    user, chattext, 0, item, itemName, achievementID, achievementTime,
+                                    new ReportLogEntry(user.getName(), chattext, user.getId())));
                   if (chr.getClient().isMonitored()) {
                      Center.Broadcast.broadcastGMMessage(
-                        CWvsContext.serverNotice(6, "[GM Message] " + nameFrom + " said to " + chr.getName() + " (Buddy): " + chattext)
-                     );
+                           CWvsContext.serverNotice(6,
+                                 "[GM Message] " + nameFrom + " said to " + chr.getName() + " (Buddy): " + chattext));
                   }
                }
             }
          }
       }
 
-      public static void updateBuddies(String name, int characterId, int channel, int[] buddies, int accId, boolean offline) {
+      public static void updateBuddies(String name, int characterId, int channel, int[] buddies, int accId,
+            boolean offline) {
          try {
             for (int buddy : buddies) {
                int ch = Center.Find.findAccChannel(buddy);
@@ -4941,20 +5442,21 @@ public class Center {
 
                         ble.setName(name);
                         ble.setCharacterId(characterId);
-                        c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddyChannel(ble.getCharacterId(), accId, mcChannel, name));
+                        c.getSession().writeAndFlush(CWvsContext.BuddylistPacket
+                              .updateBuddyChannel(ble.getCharacterId(), accId, mcChannel, name));
                      }
                   }
                }
             }
          } catch (Exception var14) {
-            System.out.println("[오류] updateBuddies함수 실행 중 오류 발생 " + var14);
+            System.out.println("[Error] Error occurred during updateBuddies function execution " + var14);
             var14.printStackTrace();
          }
       }
 
       public static void buddyChanged(
-         int cid, int cidFrom, int accId, String name, int channel, Friend.BuddyOperation operation, int level, int job, String memo
-      ) {
+            int cid, int cidFrom, int accId, String name, int channel, Friend.BuddyOperation operation, int level,
+            int job, String memo) {
          int ch = Center.Find.findChannel(cid);
          if (ch > 0) {
             MapleCharacter addChar = GameServer.getInstance(ch).getPlayerStorage().getCharacterById(cid);
@@ -4963,18 +5465,22 @@ public class Center {
                switch (operation) {
                   case ADDED:
                      if (buddylist.contains(accId)) {
-                        buddylist.put(new FriendEntry(name, accId, cidFrom, "그룹 미지정", channel, true, level, job, memo));
+                        buddylist.put(
+                              new FriendEntry(name, accId, cidFrom, "Unassigned", channel, true, level, job, memo));
                         addChar.getClient()
-                           .getSession()
-                           .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddyChannel(cidFrom, accId, channel, buddylist.get(accId).getName()));
+                              .getSession()
+                              .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddyChannel(cidFrom, accId, channel,
+                                    buddylist.get(accId).getName()));
                      }
                      break;
                   case DELETED:
                      if (buddylist.contains(accId)) {
-                        buddylist.put(new FriendEntry(name, accId, cidFrom, "그룹 미지정", -1, buddylist.get(accId).isVisible(), level, job, memo));
+                        buddylist.put(new FriendEntry(name, accId, cidFrom, "Unassigned", -1,
+                              buddylist.get(accId).isVisible(), level, job, memo));
                         addChar.getClient()
-                           .getSession()
-                           .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddyChannel(cidFrom, accId, -1, buddylist.get(accId).getName()));
+                              .getSession()
+                              .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddyChannel(cidFrom, accId, -1,
+                                    buddylist.get(accId).getName()));
                      }
                }
             }
@@ -4982,8 +5488,8 @@ public class Center {
       }
 
       public static Friend.BuddyAddResult requestBuddyAdd(
-         String addName, int channelFrom, int cidFrom, int accIdFrom, String nameFrom, int levelFrom, int jobFrom, String groupName, String memo
-      ) {
+            String addName, int channelFrom, int cidFrom, int accIdFrom, String nameFrom, int levelFrom, int jobFrom,
+            String groupName, String memo) {
          for (GameServer server : GameServer.getAllInstances()) {
             MapleCharacter addChar = server.getPlayerStorage().getCharacterByName(addName);
             if (addChar != null) {
@@ -4997,7 +5503,8 @@ public class Center {
                }
 
                if (!buddylist.contains(accIdFrom)) {
-                  buddylist.addBuddyRequest(addChar.getClient(), cidFrom, accIdFrom, nameFrom, channelFrom, levelFrom, jobFrom, groupName, memo);
+                  buddylist.addBuddyRequest(addChar.getClient(), cidFrom, accIdFrom, nameFrom, channelFrom, levelFrom,
+                        jobFrom, groupName, memo);
                } else if (buddylist.containsVisible(accIdFrom)) {
                   return Friend.BuddyAddResult.ALREADY_ON_LIST;
                }
@@ -5202,7 +5709,9 @@ public class Center {
 
                for (MapleCharacter p : new ArrayList<>(queue.getPlayers())) {
                   if (p.getId() != player.getId()) {
-                     p.dropMessage(5, player.getName() + "님이 대기열에서 나갔습니다. [대기중 플레이어: " + queue.getPlayers().size() + "명]");
+                     p.dropMessage(5,
+                           player.getName() + " has left the queue. [Players in Queue: " + queue.getPlayers().size()
+                                 + "]");
                   }
                }
             } else {
@@ -5247,7 +5756,7 @@ public class Center {
                if (p.getId() != player.getId()) {
                   queue.sendWaitQueueSuccess(p, WaitQueueResult.CancelByAnother);
                   queue.sendWaitQueueType(WaitQueueType.Cancel);
-                  p.dropMessage(5, player.getName() + "님이 게임을 취소했습니다.");
+                  p.dropMessage(5, player.getName() + " has cancelled the game.");
                }
             }
 
@@ -5310,7 +5819,7 @@ public class Center {
             }
          }
 
-         System.out.println("전체 GameWaitQueue 수 : " + queues.size());
+         System.out.println("Total GameWaitQueue count : " + queues.size());
       }
 
       public static Map<Integer, WaitQueue> retrieveAllQueues() {
@@ -5319,13 +5828,13 @@ public class Center {
 
       private static String getMiniGameName(int fieldId) {
          if (fieldId == 993189800) {
-            return "초능력 윷놀이";
+            return "Psychic Yutnori";
          } else if (fieldId == 993189400) {
-            return "메이플 원카드";
+            return "Maple One Card";
          } else if (fieldId == 993195100) {
-            return "메이플 사커";
+            return "Maple Soccer";
          } else {
-            return fieldId == 993189600 ? "메이플 배틀리버스" : "";
+            return fieldId == 993189600 ? "Maple Battle Revers" : "";
          }
       }
    }
@@ -5352,7 +5861,7 @@ public class Center {
             rs.close();
             ps.close();
          } catch (Exception var8) {
-            System.out.println("길드 로딩 오류 발생");
+            System.out.println("Guild Loading Error Occurred");
             var8.printStackTrace();
          }
       }
@@ -5393,7 +5902,7 @@ public class Center {
                lock.writeLock().unlock();
             }
 
-            return (objects.context.guild.Guild)var2;
+            return (objects.context.guild.Guild) var2;
          } else {
             return ret;
          }
@@ -5426,19 +5935,19 @@ public class Center {
       }
 
       public static List<objects.context.guild.Guild> getGuildForSearch(
-         int world, int minGuildLevel, int maxGuildLevel, int minMemberSize, int maxMemberSize, int minAvgLevel, int maxAvgLevel
-      ) {
+            int world, int minGuildLevel, int maxGuildLevel, int minMemberSize, int maxMemberSize, int minAvgLevel,
+            int maxAvgLevel) {
          List<objects.context.guild.Guild> ret = new LinkedList<>();
          lock.readLock().lock();
 
          try {
             guilds.values()
-               .stream()
-               .filter(g -> g.getLevel() >= minGuildLevel && g.getLevel() <= maxGuildLevel)
-               .filter(g -> g.getMembers().size() >= minMemberSize && g.getMembers().size() <= maxMemberSize)
-               .filter(g -> g.getAvgLevel() >= minAvgLevel && g.getAvgLevel() <= maxAvgLevel)
-               .collect(Collectors.toList())
-               .forEach(ret::add);
+                  .stream()
+                  .filter(g -> g.getLevel() >= minGuildLevel && g.getLevel() <= maxGuildLevel)
+                  .filter(g -> g.getMembers().size() >= minMemberSize && g.getMembers().size() <= maxMemberSize)
+                  .filter(g -> g.getAvgLevel() >= minAvgLevel && g.getAvgLevel() <= maxAvgLevel)
+                  .collect(Collectors.toList())
+                  .forEach(ret::add);
          } finally {
             lock.readLock().unlock();
          }
@@ -5459,7 +5968,8 @@ public class Center {
          return var0;
       }
 
-      public static List<objects.context.guild.Guild.RecruitmentGuildData> getAllRecruitmentGuildByPlayerID(int playerID) {
+      public static List<objects.context.guild.Guild.RecruitmentGuildData> getAllRecruitmentGuildByPlayerID(
+            int playerID) {
          List<objects.context.guild.Guild.RecruitmentGuildData> temp = new LinkedList<>();
          lock.readLock().lock();
 
@@ -5475,10 +5985,11 @@ public class Center {
             lock.readLock().unlock();
          }
 
-         return (List<objects.context.guild.Guild.RecruitmentGuildData>)var2;
+         return (List<objects.context.guild.Guild.RecruitmentGuildData>) var2;
       }
 
-      public static List<objects.context.guild.Guild> getGuildForSearch(int worldid, byte mode, String text, boolean likeSearch) {
+      public static List<objects.context.guild.Guild> getGuildForSearch(int worldid, byte mode, String text,
+            boolean likeSearch) {
          List<objects.context.guild.Guild> ret = new LinkedList<>();
          lock.readLock().lock();
 
@@ -5499,9 +6010,11 @@ public class Center {
             if (mode == 1 || mode == 3) {
                List<objects.context.guild.Guild> var10;
                if (likeSearch) {
-                  var10 = guilds.values().stream().filter(g -> g.getLeaderName().contains(text)).collect(Collectors.toList());
+                  var10 = guilds.values().stream().filter(g -> g.getLeaderName().contains(text))
+                        .collect(Collectors.toList());
                } else {
-                  var10 = guilds.values().stream().filter(g -> g.getLeaderName().equals(text)).collect(Collectors.toList());
+                  var10 = guilds.values().stream().filter(g -> g.getLeaderName().equals(text))
+                        .collect(Collectors.toList());
                }
 
                if (var10.size() > 0) {
@@ -5532,7 +6045,7 @@ public class Center {
                   return null;
                }
 
-               g = (objects.context.guild.Guild)var1.next();
+               g = (objects.context.guild.Guild) var1.next();
             } while (!g.getName().equalsIgnoreCase(guildName));
 
             var3 = g;
@@ -5559,7 +6072,8 @@ public class Center {
          setGuildMemberOnline(mc, bOnline, channel, forceBroadcast, true);
       }
 
-      public static void setGuildMemberOnline(GuildCharacter mc, boolean bOnline, int channel, boolean forceBroadcast, boolean show) {
+      public static void setGuildMemberOnline(GuildCharacter mc, boolean bOnline, int channel, boolean forceBroadcast,
+            boolean show) {
          objects.context.guild.Guild g = getGuild(mc.getGuildId());
          if (g != null) {
             g.setOnline(mc.getId(), mc.getName(), bOnline, channel, forceBroadcast, show);
@@ -5585,7 +6099,8 @@ public class Center {
          }
       }
 
-      public static void guildChat(int gid, MapleCharacter chr, int cid, String msg, Item item, String itemName, int achievementID, long achievementTime) {
+      public static void guildChat(int gid, MapleCharacter chr, int cid, String msg, Item item, String itemName,
+            int achievementID, long achievementTime) {
          objects.context.guild.Guild g = getGuild(gid);
          if (g != null) {
             g.guildChat(chr, cid, msg, item, itemName, achievementID, achievementTime);
@@ -5613,7 +6128,8 @@ public class Center {
          }
       }
 
-      public static void editJoinSetting(int guildID, int playerID, boolean allowJoinRequest, int connectTimeFlag, int activityFlag, int ageGroupFlag) {
+      public static void editJoinSetting(int guildID, int playerID, boolean allowJoinRequest, int connectTimeFlag,
+            int activityFlag, int ageGroupFlag) {
          objects.context.guild.Guild g = getGuild(guildID);
          if (g != null) {
             g.setJoinSetting(playerID, allowJoinRequest, connectTimeFlag, activityFlag, ageGroupFlag);
@@ -5663,7 +6179,8 @@ public class Center {
          }
       }
 
-      public static void changeRankTitleRole(boolean add, int gid, int playerID, int index, String newName, int newRole) {
+      public static void changeRankTitleRole(boolean add, int gid, int playerID, int index, String newName,
+            int newRole) {
          objects.context.guild.Guild g = getGuild(gid);
          if (g != null) {
             g.changeRankTitleRole(add, playerID, index, newName, newRole);
@@ -5677,7 +6194,8 @@ public class Center {
          }
       }
 
-      public static boolean setGuildEmblem(int gid, short bg, byte bgcolor, short logo, byte logocolor, objects.context.guild.Guild.BCOp bcop, byte[] imageData) {
+      public static boolean setGuildEmblem(int gid, short bg, byte bgcolor, short logo, byte logocolor,
+            objects.context.guild.Guild.BCOp bcop, byte[] imageData) {
          objects.context.guild.Guild g = getGuild(gid);
          return g != null ? g.setGuildEmblem(bg, bgcolor, logo, logocolor, bcop, imageData) : false;
       }
@@ -5713,7 +6231,7 @@ public class Center {
             for (GameServer cs : GameServer.getAllInstances()) {
                for (MapleCharacter chr : cs.getPlayerStorage().getAllCharacters()) {
                   if (chr.getId() == memberId) {
-                     chr.setGuildRank((byte)5);
+                     chr.setGuildRank((byte) 5);
                      find = true;
                      break;
                   }
@@ -5723,7 +6241,7 @@ public class Center {
             if (!find) {
                for (MapleCharacter chrx : CashShopServer.getPlayerStorage().getAllCharacters()) {
                   if (chrx.getId() == memberId) {
-                     chrx.setGuildRank((byte)5);
+                     chrx.setGuildRank((byte) 5);
                      find = true;
                      break;
                   }
@@ -5732,7 +6250,7 @@ public class Center {
                if (!find) {
                   for (MapleCharacter chrxx : AuctionServer.getPlayerStorage().getAllCharacters()) {
                      if (chrxx.getId() == memberId) {
-                        chrxx.setGuildRank((byte)5);
+                        chrxx.setGuildRank((byte) 5);
                         find = true;
                         break;
                      }
@@ -5740,7 +6258,8 @@ public class Center {
 
                   if (!find) {
                      try (Connection con = DBConnection.getConnection()) {
-                        try (PreparedStatement ps = con.prepareStatement("UPDATE `characters` SET `guildrank` = 5 WHERE `id` = ?")) {
+                        try (PreparedStatement ps = con
+                              .prepareStatement("UPDATE `characters` SET `guildrank` = 5 WHERE `id` = ?")) {
                            ps.setInt(1, memberId);
                            ps.executeUpdate();
                            ps.close();
@@ -5748,7 +6267,7 @@ public class Center {
 
                         con.close();
                      } catch (Exception var20) {
-                        FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "DB 오류 발생", var20);
+                        FileoutputUtil.outputFileErrorReason("Log_DBProcessor_Except.rtf", "DB Error Occurred", var20);
                      }
                   }
                }
@@ -5872,10 +6391,11 @@ public class Center {
          }
       }
 
-      public static void changeEmblem(int gid, int affectedPlayers, objects.context.guild.Guild mgs, boolean isCustom, byte[] imageData, int playerID) {
+      public static void changeEmblem(int gid, int affectedPlayers, objects.context.guild.Guild mgs, boolean isCustom,
+            byte[] imageData, int playerID) {
          GuildPacket.ChangeEmblem changeEmblem = new GuildPacket.ChangeEmblem(
-            gid, playerID, (short)mgs.getLogoBG(), (byte)mgs.getLogoBGColor(), (short)mgs.getLogo(), (byte)mgs.getLogoColor(), imageData
-         );
+               gid, playerID, (short) mgs.getLogoBG(), (byte) mgs.getLogoBGColor(), (short) mgs.getLogo(),
+               (byte) mgs.getLogoColor(), imageData);
          PacketEncoder p = new PacketEncoder();
          changeEmblem.encode(p);
          Center.Broadcast.sendGuildPacket(affectedPlayers, p.getPacket(), -1, gid);
@@ -5886,7 +6406,8 @@ public class Center {
             int ch = Center.Find.findChannel(affectedPlayers);
             MapleCharacter mc = Center.getStorage(ch).getCharacterById(affectedPlayers);
             if (mc != null && ch > 0) {
-               mc.dropMessage(5, "길드 마크가 변경되었습니다. 변경된 길드 마크는 채널이동 이후부터 적용됩니다.");
+               mc.dropMessage(5,
+                     "The guild mark has been changed. The changed guild mark will be applied after changing channels.");
                mc.getMap().broadcastMessage(p.getPacket());
             }
          }
@@ -5905,9 +6426,9 @@ public class Center {
                } else {
                   bDifferentGuild = guildid != mc.getGuildId();
                   mc.setGuildId(guildid);
-                  mc.setGuildRank((byte)rank);
+                  mc.setGuildRank((byte) rank);
                   mc.setGuildContribution(contribution);
-                  mc.setAllianceRank((byte)alliancerank);
+                  mc.setAllianceRank((byte) alliancerank);
                   mc.saveGuildStatus();
                }
 
@@ -6020,7 +6541,8 @@ public class Center {
                if (mmc != null) {
                   int ch = Center.Find.findChannel(mmc.getId());
                   if (ch > 0) {
-                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(mmc.getName());
+                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                           .getCharacterByName(mmc.getName());
                      if (chr != null) {
                         chr.getClient().getSession().writeAndFlush(CField.removeMessengerPlayer(position));
                      }
@@ -6028,7 +6550,7 @@ public class Center {
                }
             }
          } catch (Exception var8) {
-            System.out.println("[오류] leaveMessenger 함수 실행 중 오류 발생! " + var8.toString());
+            System.out.println("[Error] Error occurred during leaveMessenger function execution! " + var8.toString());
             var8.printStackTrace();
          }
       }
@@ -6059,10 +6581,13 @@ public class Center {
             if (messengerchar != null && !messengerchar.getName().equals(namefrom)) {
                int ch = Center.Find.findChannel(messengerchar.getName());
                if (ch > 0) {
-                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(messengerchar.getName());
+                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                        .getCharacterByName(messengerchar.getName());
                   if (chr != null) {
-                     MapleCharacter from = GameServer.getInstance(fromchannel).getPlayerStorage().getCharacterByName(namefrom);
-                     chr.getClient().getSession().writeAndFlush(CField.updateMessengerPlayer(namefrom, from, position, fromchannel - 1));
+                     MapleCharacter from = GameServer.getInstance(fromchannel).getPlayerStorage()
+                           .getCharacterByName(namefrom);
+                     chr.getClient().getSession()
+                           .writeAndFlush(CField.updateMessengerPlayer(namefrom, from, position, fromchannel - 1));
                   }
                }
             }
@@ -6082,15 +6607,19 @@ public class Center {
                   int mposition = messenger.getPositionByName(messengerchar.getName());
                   int ch = Center.Find.findChannel(messengerchar.getName());
                   if (ch > 0) {
-                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(messengerchar.getName());
+                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                           .getCharacterByName(messengerchar.getName());
                      if (chr != null) {
                         if (!messengerchar.getName().equals(from)) {
-                           MapleCharacter fromCh = GameServer.getInstance(fromchannel).getPlayerStorage().getCharacterByName(from);
+                           MapleCharacter fromCh = GameServer.getInstance(fromchannel).getPlayerStorage()
+                                 .getCharacterByName(from);
                            if (fromCh != null) {
-                              chr.getClient().getSession().writeAndFlush(CField.addMessengerPlayer(from, fromCh, position, fromchannel - 1));
+                              chr.getClient().getSession()
+                                    .writeAndFlush(CField.addMessengerPlayer(from, fromCh, position, fromchannel - 1));
                               fromCh.getClient()
-                                 .getSession()
-                                 .writeAndFlush(CField.addMessengerPlayer(chr.getName(), chr, mposition, messengerchar.getChannel() - 1));
+                                    .getSession()
+                                    .writeAndFlush(CField.addMessengerPlayer(chr.getName(), chr, mposition,
+                                          messengerchar.getChannel() - 1));
                            }
                         } else {
                            chr.getClient().getSession().writeAndFlush(CField.joinMessenger(mposition));
@@ -6111,9 +6640,11 @@ public class Center {
                if (messengerchar != null && !messengerchar.getName().equals(namefrom)) {
                   int ch = Center.Find.findChannel(messengerchar.getName());
                   if (ch > 0) {
-                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(messengerchar.getName());
+                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                           .getCharacterByName(messengerchar.getName());
                      if (chr != null) {
-                        chr.getClient().getSession().writeAndFlush(CField.messengerChat(charname, text, new ReportLogEntry(charname, text, 0)));
+                        chr.getClient().getSession().writeAndFlush(
+                              CField.messengerChat(charname, text, new ReportLogEntry(charname, text, 0)));
                      }
                   }
                }
@@ -6130,9 +6661,11 @@ public class Center {
                if (messengerchar != null && !messengerchar.getName().equals(namefrom)) {
                   int ch = Center.Find.findChannel(messengerchar.getName());
                   if (ch > 0) {
-                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(messengerchar.getName());
+                     MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                           .getCharacterByName(messengerchar.getName());
                      if (chr != null) {
-                        chr.getClient().getSession().writeAndFlush(CField.messengerWhisperChat(charname, text, new ReportLogEntry(charname, text, 0)));
+                        chr.getClient().getSession().writeAndFlush(
+                              CField.messengerWhisperChat(charname, text, new ReportLogEntry(charname, text, 0)));
                      }
                   }
                }
@@ -6148,8 +6681,9 @@ public class Center {
                MapleCharacter targeter = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(target);
                if (targeter == null || targeter.getMessenger() != null) {
                   from.getClient()
-                     .getSession()
-                     .writeAndFlush(CField.messengerChat(sender, " : " + target + " is already using Maple Messenger", new ReportLogEntry(sender, "", 0)));
+                        .getSession()
+                        .writeAndFlush(CField.messengerChat(sender,
+                              " : " + target + " is already using Maple Messenger", new ReportLogEntry(sender, "", 0)));
                } else if (targeter.isIntern() && !gm) {
                   from.getClient().getSession().writeAndFlush(CField.messengerNote(target, 4, 0));
                } else {
@@ -6172,11 +6706,13 @@ public class Center {
       private static final AtomicInteger runningPartyId = new AtomicInteger(1);
       private static final AtomicInteger runningExpedId = new AtomicInteger(1);
 
-      public static void partyChat(int partyid, String chattext, MapleCharacter user, Item item, String itemName, int achievementID, long achievementTime) {
+      public static void partyChat(int partyid, String chattext, MapleCharacter user, Item item, String itemName,
+            int achievementID, long achievementTime) {
          partyChat(partyid, chattext, user, 1, item, itemName, achievementID, achievementTime);
       }
 
-      public static void expedChat(int expedId, String chattext, MapleCharacter user, Item item, String itemName, int achievementID, long achievementTime) {
+      public static void expedChat(int expedId, String chattext, MapleCharacter user, Item item, String itemName,
+            int achievementID, long achievementTime) {
          Expedition party = getExped(expedId);
          if (party != null) {
             for (int i : party.getParties()) {
@@ -6200,7 +6736,8 @@ public class Center {
             for (PartyMemberEntry partychar : party.getPartyMemberList()) {
                int ch = Center.Find.findChannel(partychar.getName());
                if (ch > 0 && (exception == null || partychar.getId() != exception.getId())) {
-                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(partychar.getName());
+                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                        .getCharacterByName(partychar.getName());
                   if (chr != null) {
                      chr.getClient().getSession().writeAndFlush(packet);
                   }
@@ -6210,26 +6747,26 @@ public class Center {
       }
 
       public static void partyChat(
-         int partyid, String chattext, MapleCharacter user, int mode, Item item, String itemName, int achievementID, long achievementTime
-      ) {
+            int partyid, String chattext, MapleCharacter user, int mode, Item item, String itemName, int achievementID,
+            long achievementTime) {
          objects.context.party.Party party = getParty(partyid);
          if (party != null) {
             for (PartyMemberEntry partychar : party.getPartyMemberList()) {
                int ch = Center.Find.findChannel(partychar.getName());
                if (ch > 0) {
-                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(partychar.getName());
+                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                        .getCharacterByName(partychar.getName());
                   if (chr != null && !chr.getName().equalsIgnoreCase(user.getName())) {
                      chr.getClient()
-                        .getSession()
-                        .writeAndFlush(
-                           CField.multiChat(
-                              user, chattext, mode, item, itemName, achievementID, achievementTime, new ReportLogEntry(user.getName(), chattext, user.getId())
-                           )
-                        );
+                           .getSession()
+                           .writeAndFlush(
+                                 CField.multiChat(
+                                       user, chattext, mode, item, itemName, achievementID, achievementTime,
+                                       new ReportLogEntry(user.getName(), chattext, user.getId())));
                      if (chr.getClient().isMonitored()) {
                         Center.Broadcast.broadcastGMMessage(
-                           CWvsContext.serverNotice(6, "[GM Message] " + user.getName() + " said to " + chr.getName() + " (Party): " + chattext)
-                        );
+                              CWvsContext.serverNotice(6, "[GM Message] " + user.getName() + " said to " + chr.getName()
+                                    + " (Party): " + chattext));
                      }
                   }
                }
@@ -6243,7 +6780,8 @@ public class Center {
             for (PartyMemberEntry partychar : party.getPartyMemberList()) {
                int ch = Center.Find.findChannel(partychar.getName());
                if (ch > 0) {
-                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(partychar.getName());
+                  MapleCharacter chr = GameServer.getInstance(ch).getPlayerStorage()
+                        .getCharacterByName(partychar.getName());
                   if (chr != null) {
                      chr.dropMessage(5, chattext);
                   }
@@ -6274,7 +6812,7 @@ public class Center {
                   if (party.getPartyMemberList().size() >= 6) {
                      PartySearch toRemove = getSearchByParty(partyID);
                      if (toRemove != null) {
-                        removeSearch(toRemove, "파티 정원이 가득차 파티찾기가 종료됩니다.");
+                        removeSearch(toRemove, "Party listing is ended because the party is full.");
                      }
                   }
                   break;
@@ -6295,7 +6833,7 @@ public class Center {
                case PartySetting:
                   break;
                default:
-                  throw new RuntimeException("알려지지 않은 파티 행동입니다. " + operation.name());
+                  throw new RuntimeException("Unknown party operation. " + operation.name());
             }
 
             if (operation == PartyOperation.Withdraw || operation == PartyOperation.KickParty) {
@@ -6306,14 +6844,14 @@ public class Center {
                      player.setParty(null);
                      PacketEncoder packet = new PacketEncoder();
                      objects.context.party.Party.PartyPacket.WithdrawParty p = new objects.context.party.Party.PartyPacket.WithdrawParty(
-                        party, player.getName(), channel, player.getId(), operation
-                     );
+                           party, player.getName(), channel, player.getId(), operation);
                      p.encode(packet);
                      player.send(packet.getPacket());
                   }
                }
 
-               if (memberEntry.getId() == party.getLeader().getId() && party.getPartyMember().getPartyMemberList().size() > 0) {
+               if (memberEntry.getId() == party.getLeader().getId()
+                     && party.getPartyMember().getPartyMemberList().size() > 0) {
                   PartyMemberEntry entry = null;
 
                   for (PartyMemberEntry e : party.getPartyMember().getPartyMemberList()) {
@@ -6347,43 +6885,38 @@ public class Center {
                         if (operation == PartyOperation.Join) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.JoinMember p = new objects.context.party.Party.PartyPacket.JoinMember(
-                              party, memberEntry.getName(), memberEntry.getChannel()
-                           );
+                                 party, memberEntry.getName(), memberEntry.getChannel());
                            p.encode(packet);
                            player.send(packet.getPacket());
                         } else if (operation == PartyOperation.SilentUpdate || operation == PartyOperation.LogOnOff) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.PartyDataUpdate p = new objects.context.party.Party.PartyPacket.PartyDataUpdate(
-                              party, player.getClient().getChannel()
-                           );
+                                 party, player.getClient().getChannel());
                            p.encode(packet);
                            player.send(packet.getPacket());
-                        } else if (operation == PartyOperation.ChangeLeader || operation == PartyOperation.ChangeLeaderDisconnect) {
+                        } else if (operation == PartyOperation.ChangeLeader
+                              || operation == PartyOperation.ChangeLeaderDisconnect) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.ChangeLeader p = new objects.context.party.Party.PartyPacket.ChangeLeader(
-                              memberEntry.getId(), operation == PartyOperation.ChangeLeaderDisconnect
-                           );
+                                 memberEntry.getId(), operation == PartyOperation.ChangeLeaderDisconnect);
                            p.encode(packet);
                            player.send(packet.getPacket());
                         } else if (operation == PartyOperation.PartySetting) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.ChangePartySetting p = new objects.context.party.Party.PartyPacket.ChangePartySetting(
-                              party.getPatryTitle(), party.isPrivateParty(), party.isOnlyLeaderPickUp()
-                           );
+                                 party.getPatryTitle(), party.isPrivateParty(), party.isOnlyLeaderPickUp());
                            p.encode(packet);
                            player.send(packet.getPacket());
                         } else if (operation == PartyOperation.Disband) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.WithdrawParty p = new objects.context.party.Party.PartyPacket.WithdrawParty(
-                              party, player.getName(), channelx, player.getId(), operation
-                           );
+                                 party, player.getName(), channelx, player.getId(), operation);
                            p.encode(packet);
                            player.send(packet.getPacket());
                         } else if (operation == PartyOperation.Withdraw || operation == PartyOperation.KickParty) {
                            PacketEncoder packet = new PacketEncoder();
                            objects.context.party.Party.PartyPacket.WithdrawParty p = new objects.context.party.Party.PartyPacket.WithdrawParty(
-                              party, memberEntry.getName(), channelx, memberEntry.getId(), operation
-                           );
+                                 party, memberEntry.getName(), channelx, memberEntry.getId(), operation);
                            p.encode(packet);
                            player.send(packet.getPacket());
                         }
@@ -6392,7 +6925,7 @@ public class Center {
                }
             }
          } catch (Exception var10) {
-            System.out.println("[오류] updateParty함수 실행 중 오류 발생! " + var10.toString());
+            System.out.println("[Error] Error occurred during updateParty function execution! " + var10.toString());
             var10.printStackTrace();
          }
       }
@@ -6470,7 +7003,8 @@ public class Center {
       public static PartySearch getSearch(objects.context.party.Party party) {
          for (List<PartySearch> ps : searches.values()) {
             for (PartySearch p : ps) {
-               if (p.getId() == party.getId() && !p.getType().exped || p.getId() == party.getExpeditionId() && p.getType().exped) {
+               if (p.getId() == party.getId() && !p.getType().exped
+                     || p.getId() == party.getExpeditionId() && p.getType().exped) {
                   return p;
                }
             }
@@ -6528,79 +7062,79 @@ public class Center {
       public static HashMap<Integer, List<Center.RemainBuffStorage.BuffInfo>> buffStorage = new HashMap<>();
 
       private static Object[][] checkBuffList() {
-         return new Object[][]{
-            {SecondaryStatFlag.ExpBuffRate, -2450134},
-            {SecondaryStatFlag.ExpBuffRate, -2450155},
-            {SecondaryStatFlag.ExpBuffRate, -2450163},
-            {SecondaryStatFlag.ExpBuffRate, -2450164},
-            {SecondaryStatFlag.ExpBuffRate, -2450019},
-            {SecondaryStatFlag.ExpBuffRate, -2450042},
-            {SecondaryStatFlag.ExpBuffRate, -2450043},
-            {SecondaryStatFlag.ExpBuffRate, -2450062},
-            {SecondaryStatFlag.ExpBuffRate, -2450064},
-            {SecondaryStatFlag.ExpBuffRate, -2450070},
-            {SecondaryStatFlag.ExpBuffRate, -2450085},
-            {SecondaryStatFlag.ExpBuffRate, -2450086},
-            {SecondaryStatFlag.ExpBuffRate, -2450087},
-            {SecondaryStatFlag.ExpBuffRate, -2450088},
-            {SecondaryStatFlag.ExpBuffRate, -2450090},
-            {SecondaryStatFlag.ExpBuffRate, -2450091},
-            {SecondaryStatFlag.ExpBuffRate, -2450092},
-            {SecondaryStatFlag.ExpBuffRate, -2450093},
-            {SecondaryStatFlag.ExpBuffRate, -2450100},
-            {SecondaryStatFlag.ExpBuffRate, -2450101},
-            {SecondaryStatFlag.ExpBuffRate, -2450102},
-            {SecondaryStatFlag.ExpBuffRate, -2450103},
-            {SecondaryStatFlag.ExpBuffRate, -2450115},
-            {SecondaryStatFlag.ExpBuffRate, -2450116},
-            {SecondaryStatFlag.ExpBuffRate, -2450127},
-            {SecondaryStatFlag.ExpBuffRate, -2450130},
-            {SecondaryStatFlag.ExpBuffRate, -2450135},
-            {SecondaryStatFlag.ExpBuffRate, -2450141},
-            {SecondaryStatFlag.ExpBuffRate, -2450144},
-            {SecondaryStatFlag.ExpBuffRate, -2450153},
-            {SecondaryStatFlag.ExpBuffRate, -2450159},
-            {SecondaryStatFlag.ExpBuffRate, -2450162},
-            {SecondaryStatFlag.ExpBuffRate, -2450166},
-            {SecondaryStatFlag.ExpBuffRate, -2450167},
-            {SecondaryStatFlag.ExpBuffRate, -2450171},
-            {SecondaryStatFlag.ExpBuffRate, -2450175},
-            {SecondaryStatFlag.ExpBuffRate, -2450179},
-            {SecondaryStatFlag.ExpBuffRate, -2450181},
-            {SecondaryStatFlag.DropRate, -2003551},
-            {SecondaryStatFlag.MesoUpByItem, -2003551},
-            {SecondaryStatFlag.DropRate, -2003559},
-            {SecondaryStatFlag.MesoUpByItem, -2003559},
-            {SecondaryStatFlag.DropRate, -2003575},
-            {SecondaryStatFlag.MesoUpByItem, -2003575},
-            {SecondaryStatFlag.LuckOfUnion, -2023661},
-            {SecondaryStatFlag.LuckOfUnion, -2023662},
-            {SecondaryStatFlag.LuckOfUnion, -2023663},
-            {SecondaryStatFlag.WealthOfUnion, -2023664},
-            {SecondaryStatFlag.WealthOfUnion, -2023665},
-            {SecondaryStatFlag.WealthOfUnion, -2023666},
-            {SecondaryStatFlag.ExpBuffRate, -2450147},
-            {SecondaryStatFlag.ExpBuffRate, -2450148},
-            {SecondaryStatFlag.ExpBuffRate, -2450149}
+         return new Object[][] {
+               { SecondaryStatFlag.ExpBuffRate, -2450134 },
+               { SecondaryStatFlag.ExpBuffRate, -2450155 },
+               { SecondaryStatFlag.ExpBuffRate, -2450163 },
+               { SecondaryStatFlag.ExpBuffRate, -2450164 },
+               { SecondaryStatFlag.ExpBuffRate, -2450019 },
+               { SecondaryStatFlag.ExpBuffRate, -2450042 },
+               { SecondaryStatFlag.ExpBuffRate, -2450043 },
+               { SecondaryStatFlag.ExpBuffRate, -2450062 },
+               { SecondaryStatFlag.ExpBuffRate, -2450064 },
+               { SecondaryStatFlag.ExpBuffRate, -2450070 },
+               { SecondaryStatFlag.ExpBuffRate, -2450085 },
+               { SecondaryStatFlag.ExpBuffRate, -2450086 },
+               { SecondaryStatFlag.ExpBuffRate, -2450087 },
+               { SecondaryStatFlag.ExpBuffRate, -2450088 },
+               { SecondaryStatFlag.ExpBuffRate, -2450090 },
+               { SecondaryStatFlag.ExpBuffRate, -2450091 },
+               { SecondaryStatFlag.ExpBuffRate, -2450092 },
+               { SecondaryStatFlag.ExpBuffRate, -2450093 },
+               { SecondaryStatFlag.ExpBuffRate, -2450100 },
+               { SecondaryStatFlag.ExpBuffRate, -2450101 },
+               { SecondaryStatFlag.ExpBuffRate, -2450102 },
+               { SecondaryStatFlag.ExpBuffRate, -2450103 },
+               { SecondaryStatFlag.ExpBuffRate, -2450115 },
+               { SecondaryStatFlag.ExpBuffRate, -2450116 },
+               { SecondaryStatFlag.ExpBuffRate, -2450127 },
+               { SecondaryStatFlag.ExpBuffRate, -2450130 },
+               { SecondaryStatFlag.ExpBuffRate, -2450135 },
+               { SecondaryStatFlag.ExpBuffRate, -2450141 },
+               { SecondaryStatFlag.ExpBuffRate, -2450144 },
+               { SecondaryStatFlag.ExpBuffRate, -2450153 },
+               { SecondaryStatFlag.ExpBuffRate, -2450159 },
+               { SecondaryStatFlag.ExpBuffRate, -2450162 },
+               { SecondaryStatFlag.ExpBuffRate, -2450166 },
+               { SecondaryStatFlag.ExpBuffRate, -2450167 },
+               { SecondaryStatFlag.ExpBuffRate, -2450171 },
+               { SecondaryStatFlag.ExpBuffRate, -2450175 },
+               { SecondaryStatFlag.ExpBuffRate, -2450179 },
+               { SecondaryStatFlag.ExpBuffRate, -2450181 },
+               { SecondaryStatFlag.DropRate, -2003551 },
+               { SecondaryStatFlag.MesoUpByItem, -2003551 },
+               { SecondaryStatFlag.DropRate, -2003559 },
+               { SecondaryStatFlag.MesoUpByItem, -2003559 },
+               { SecondaryStatFlag.DropRate, -2003575 },
+               { SecondaryStatFlag.MesoUpByItem, -2003575 },
+               { SecondaryStatFlag.LuckOfUnion, -2023661 },
+               { SecondaryStatFlag.LuckOfUnion, -2023662 },
+               { SecondaryStatFlag.LuckOfUnion, -2023663 },
+               { SecondaryStatFlag.WealthOfUnion, -2023664 },
+               { SecondaryStatFlag.WealthOfUnion, -2023665 },
+               { SecondaryStatFlag.WealthOfUnion, -2023666 },
+               { SecondaryStatFlag.ExpBuffRate, -2450147 },
+               { SecondaryStatFlag.ExpBuffRate, -2450148 },
+               { SecondaryStatFlag.ExpBuffRate, -2450149 }
          };
       }
 
       private static Object[][] checkIndieBuffList() {
-         return new Object[][]{
-            {SecondaryStatFlag.indieEXP, -2023128},
-            {SecondaryStatFlag.indieEXP, -2023556},
-            {SecondaryStatFlag.indieBDR, -2003596},
-            {SecondaryStatFlag.indieDamR, -2003597},
-            {SecondaryStatFlag.indieIgnoreMobPdpR, -2003598},
-            {SecondaryStatFlag.indieStatR, -2003599},
-            {SecondaryStatFlag.indieEXP, -2450124},
-            {SecondaryStatFlag.indieEXP, -2023882},
-            {SecondaryStatFlag.indiePAD, -2023658},
-            {SecondaryStatFlag.indiePAD, -2023659},
-            {SecondaryStatFlag.indiePAD, -2023660},
-            {SecondaryStatFlag.indieMAD, -2023658},
-            {SecondaryStatFlag.indieMAD, -2023659},
-            {SecondaryStatFlag.indieMAD, -2023660}
+         return new Object[][] {
+               { SecondaryStatFlag.indieEXP, -2023128 },
+               { SecondaryStatFlag.indieEXP, -2023556 },
+               { SecondaryStatFlag.indieBDR, -2003596 },
+               { SecondaryStatFlag.indieDamR, -2003597 },
+               { SecondaryStatFlag.indieIgnoreMobPdpR, -2003598 },
+               { SecondaryStatFlag.indieStatR, -2003599 },
+               { SecondaryStatFlag.indieEXP, -2450124 },
+               { SecondaryStatFlag.indieEXP, -2023882 },
+               { SecondaryStatFlag.indiePAD, -2023658 },
+               { SecondaryStatFlag.indiePAD, -2023659 },
+               { SecondaryStatFlag.indiePAD, -2023660 },
+               { SecondaryStatFlag.indieMAD, -2023658 },
+               { SecondaryStatFlag.indieMAD, -2023659 },
+               { SecondaryStatFlag.indieMAD, -2023660 }
          };
       }
 
@@ -6613,8 +7147,8 @@ public class Center {
          SecondaryStat sc = user.getSecondaryStat();
 
          for (int i = 0; i < checkBuffList().length; i++) {
-            SecondaryStatFlag buffStat = (SecondaryStatFlag)checkBuffList()[i][0];
-            int buffId = (Integer)checkBuffList()[i][1];
+            SecondaryStatFlag buffStat = (SecondaryStatFlag) checkBuffList()[i][0];
+            int buffId = (Integer) checkBuffList()[i][1];
             long till = sc.getTill(buffStat);
             int reason = sc.getReason(buffStat);
             if (till != 0L && buffId == reason) {
@@ -6624,12 +7158,13 @@ public class Center {
          }
 
          for (int ix = 0; ix < checkIndieBuffList().length; ix++) {
-            SecondaryStatFlag indieStat = (SecondaryStatFlag)checkIndieBuffList()[ix][0];
-            int buffId = (Integer)checkIndieBuffList()[ix][1];
+            SecondaryStatFlag indieStat = (SecondaryStatFlag) checkIndieBuffList()[ix][0];
+            int buffId = (Integer) checkIndieBuffList()[ix][1];
             long indieTill = sc.getIndieTill(indieStat, buffId);
             if (indieTill != 0L) {
                int value = sc.getIndieValue(indieStat, buffId);
-               buffStorage.get(user.getId()).add(new Center.RemainBuffStorage.BuffInfo(indieStat, value, buffId, indieTill));
+               buffStorage.get(user.getId())
+                     .add(new Center.RemainBuffStorage.BuffInfo(indieStat, value, buffId, indieTill));
             }
          }
       }
@@ -6638,7 +7173,8 @@ public class Center {
          if (buffStorage.get(user.getId()) != null) {
             for (Center.RemainBuffStorage.BuffInfo bi : buffStorage.get(user.getId())) {
                if (bi.remainTill > System.currentTimeMillis()) {
-                  user.temporaryStatSet(bi.buffID, (int)(bi.remainTill - System.currentTimeMillis()), bi.flag, bi.value);
+                  user.temporaryStatSet(bi.buffID, (int) (bi.remainTill - System.currentTimeMillis()), bi.flag,
+                        bi.value);
                }
             }
 
@@ -6696,7 +7232,7 @@ public class Center {
                      Center.handleMap(map, this.numTimes, map.getCharactersSize(), now);
                   } catch (Exception var9) {
                      FileoutputUtil.outputFileError("Log_FieldSetUpdate_Except.rtf", var9);
-                     System.out.println("필드셋 업데이트 오류 발생");
+                     System.out.println("Field Set Update Error Occurred");
                      var9.printStackTrace();
                   }
                }
@@ -6713,7 +7249,8 @@ public class Center {
             }
          }
 
-         if (this.lastUpdateCheckRecruimentTime == 0L || this.lastUpdateCheckRecruimentTime <= System.currentTimeMillis()) {
+         if (this.lastUpdateCheckRecruimentTime == 0L
+               || this.lastUpdateCheckRecruimentTime <= System.currentTimeMillis()) {
             try {
                Center.BossPartyRecruiment.checkExpiredRecruiment();
                this.lastUpdateCheckRecruimentTime = System.currentTimeMillis() + 10000L;
@@ -6743,13 +7280,13 @@ public class Center {
       public static boolean save() {
          StringBuilder sb = new StringBuilder();
          sb.append("sunShineGuage = ")
-            .append(sunShineGuage)
-            .append("\r\n")
-            .append("randomBuff = ")
-            .append(randomBuff)
-            .append("\r\n")
-            .append("endTime = ")
-            .append(endTime);
+               .append(sunShineGuage)
+               .append("\r\n")
+               .append("randomBuff = ")
+               .append(randomBuff)
+               .append("\r\n")
+               .append("endTime = ")
+               .append(endTime);
 
          try {
             OutputStream output = new FileOutputStream("data/bloomFlower.data");
@@ -6764,34 +7301,33 @@ public class Center {
 
       public static void autoSave() {
          Timer.EtcTimer.getInstance()
-            .register(
-               new Runnable() {
-                  @Override
-                  public void run() {
-                     StringBuilder sb = new StringBuilder();
-                     sb.append("sunShineGuage = ")
-                        .append(Center.sunShineStorage.sunShineGuage)
-                        .append("\r\n")
-                        .append("randomBuff = ")
-                        .append(Center.sunShineStorage.randomBuff)
-                        .append("\r\n")
-                        .append("endTime = ")
-                        .append(Center.sunShineStorage.endTime);
+               .register(
+                     new Runnable() {
+                        @Override
+                        public void run() {
+                           StringBuilder sb = new StringBuilder();
+                           sb.append("sunShineGuage = ")
+                                 .append(Center.sunShineStorage.sunShineGuage)
+                                 .append("\r\n")
+                                 .append("randomBuff = ")
+                                 .append(Center.sunShineStorage.randomBuff)
+                                 .append("\r\n")
+                                 .append("endTime = ")
+                                 .append(Center.sunShineStorage.endTime);
 
-                     try {
-                        OutputStream output = new FileOutputStream("data/bloomFlower.data");
-                        String str = sb.toString();
-                        byte[] by = str.getBytes();
-                        output.write(by);
-                     } catch (Exception var5) {
-                        System.out.println("센터 자동저장중 오류 발생");
-                        var5.printStackTrace();
-                     }
-                  }
-               },
-               30000L,
-               2000L
-            );
+                           try {
+                              OutputStream output = new FileOutputStream("data/bloomFlower.data");
+                              String str = sb.toString();
+                              byte[] by = str.getBytes();
+                              output.write(by);
+                           } catch (Exception var5) {
+                              System.out.println("Error occurred during Center auto-save");
+                              var5.printStackTrace();
+                           }
+                        }
+                     },
+                     30000L,
+                     2000L);
       }
 
       public static boolean loadBloomflower() {
@@ -6808,9 +7344,9 @@ public class Center {
                long now = System.currentTimeMillis();
                if (now < endTime) {
                   bloomFlower = true;
-                  SimpleDateFormat sdf = new SimpleDateFormat("MM월 dd일 HH시 mm분 까지");
+                  SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
                   String endTime2 = sdf.format(endTime);
-                  System.out.println(endTime2 + " 블루밍 이벤트가 진행됩니다.");
+                  System.out.println("Blooming event will proceed until " + endTime2 + ".");
                   timer = Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
@@ -6850,13 +7386,14 @@ public class Center {
                      Timer.MapTimer.getInstance().schedule(new Runnable() {
                         @Override
                         public void run() {
-                           map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
+                           map.broadcastMessage(
+                                 CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
                         }
                      }, 3000L);
                   }
                }
 
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "빨간꽃이 피었습니다."));
+               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "Red Flower has bloomed."));
             }
 
             if (blueFlower && sunShineGuage >= 666666) {
@@ -6871,13 +7408,14 @@ public class Center {
                      Timer.MapTimer.getInstance().schedule(new Runnable() {
                         @Override
                         public void run() {
-                           map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
+                           map.broadcastMessage(
+                                 CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
                         }
                      }, 3000L);
                   }
                }
 
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "파란꽃이 피었습니다."));
+               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "Blue Flower has bloomed."));
             }
 
             if (yellowFlower && sunShineGuage == 1000000) {
@@ -6893,34 +7431,60 @@ public class Center {
                      Timer.MapTimer.getInstance().schedule(new Runnable() {
                         @Override
                         public void run() {
-                           map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
+                           map.broadcastMessage(
+                                 CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
                         }
                      }, 3000L);
                   }
                }
 
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "노란꽃이 피었습니다."));
+               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "Yellow Flower has bloomed."));
                randomBuff = Randomizer.rand(1, 5);
                endTime = System.currentTimeMillis() + 21600000L;
-               SimpleDateFormat sdf = new SimpleDateFormat("MM월 dd일 HH시 mm분 까지");
+               SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
                String endTime2 = sdf.format(endTime);
-               TextEffect e = new TextEffect(-1, "광장에 꽃이 피어 이벤트가 진행중입니다.", 100, 1000, 4, 0);
+               TextEffect e = new TextEffect(-1, "Flowers have bloomed in the square, event is in progress.", 100, 1000,
+                     4, 0);
                Center.Broadcast.broadcastMessage(e.encodeForLocal());
                if (randomBuff == 1) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][아케인 심볼 드롭률 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
-                  DiscordBotHandler.requestSendMegaphone("@everyone 광장에 꽃이피어 [경험치 1.5배][아케인 심볼 드롭률 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!");
+                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5,
+                        "Flowers have bloomed in the square! [Exp 1.5x][Arcane Symbol Drop Rate 1.5x] event will be active until "
+                              + endTime2 + "!"));
+                  DiscordBotHandler.requestSendMegaphone(
+                        "@everyone Flowers have bloomed in the square! [Exp 1.5x][Arcane Symbol Drop Rate 1.5x] event will be active until "
+                              + endTime2 + "!");
                } else if (randomBuff == 2) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][드롭률 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
-                  DiscordBotHandler.requestSendMegaphone("@everyone 광장에 꽃이피어 [경험치 1.5배][드롭률 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!");
+                  Center.Broadcast.broadcastMessage(
+                        CWvsContext.serverNotice(5,
+                              "Flowers have bloomed in the square! [Exp 1.5x][Drop Rate 1.5x] event will be active until "
+                                    + endTime2 + "!"));
+                  DiscordBotHandler
+                        .requestSendMegaphone(
+                              "@everyone Flowers have bloomed in the square! [Exp 1.5x][Drop Rate 1.5x] event will be active until "
+                                    + endTime2 + "!");
                } else if (randomBuff == 3) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
-                  DiscordBotHandler.requestSendMegaphone("@everyone 광장에 꽃이피어 [경험치 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!");
+                  Center.Broadcast.broadcastMessage(
+                        CWvsContext.serverNotice(5,
+                              "Flowers have bloomed in the square! [Exp 1.5x][Meso Rate 1.5x] event will be active until "
+                                    + endTime2 + "!"));
+                  DiscordBotHandler.requestSendMegaphone(
+                        "@everyone Flowers have bloomed in the square! [Exp 1.5x][Meso Rate 1.5x] event will be active until "
+                              + endTime2 + "!");
                } else if (randomBuff == 4) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [아케인 심볼 드롭률 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
-                  DiscordBotHandler.requestSendMegaphone("@everyone 광장에 꽃이피어 [아케인 심볼 드롭률 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!");
+                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5,
+                        "Flowers have bloomed in the square! [Arcane Symbol Drop Rate 1.5x][Meso Rate 1.5x] event will be active until "
+                              + endTime2 + "!"));
+                  DiscordBotHandler.requestSendMegaphone(
+                        "@everyone Flowers have bloomed in the square! [Arcane Symbol Drop Rate 1.5x][Meso Rate 1.5x] event will be active until "
+                              + endTime2 + "!");
                } else if (randomBuff == 5) {
-                  Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [드롭률 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
-                  DiscordBotHandler.requestSendMegaphone("@everyone 광장에 꽃이피어 [드롭률 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!");
+                  Center.Broadcast.broadcastMessage(
+                        CWvsContext.serverNotice(5,
+                              "Flowers have bloomed in the square! [Drop Rate 1.5x][Meso Rate 1.5x] event will be active until "
+                                    + endTime2 + "!"));
+                  DiscordBotHandler.requestSendMegaphone(
+                        "@everyone Flowers have bloomed in the square! [Drop Rate 1.5x][Meso Rate 1.5x] event will be active until "
+                              + endTime2 + "!");
                }
 
                sunShineGuage = 0;
@@ -6948,7 +7512,7 @@ public class Center {
                for (GameServer gxxx : GameServer.getAllInstances()) {
                   for (Field map : gxxx.getMapFactory().getAllLoadedMaps()) {
                      int buffItemId = 5121112;
-                     map.startMapEffect("따사로운 봄 햇살이 쏟아져내립니다.", buffItemId);
+                     map.startMapEffect("Warm spring sunshine pours down.", buffItemId);
                      int buff = 2024012;
 
                      for (MapleCharacter mChar : map.getCharactersThreadsafe()) {
@@ -6975,22 +7539,41 @@ public class Center {
          if (bloom) {
             randomBuff = Randomizer.rand(1, 5);
             endTime = System.currentTimeMillis() + 21600000L;
-            TextEffect e = new TextEffect(-1, "광장에 꽃이 피어 이벤트가 진행중입니다.", 100, 1000, 4, 0);
+            TextEffect e = new TextEffect(-1, "Flowers have bloomed in the square, event is in progress.", 100, 1000, 4,
+                  0);
             Center.Broadcast.broadcastMessage(e.encodeForLocal());
-            SimpleDateFormat sdf = new SimpleDateFormat("MM월 dd일 HH시 mm분 까지");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd HH:mm");
             String endTime2 = sdf.format(endTime);
             if (randomBuff == 1) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][드롭률 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Exp 1.5x][Drop Rate 1.5x] event will be active until "
+                                 + endTime2 + "!"));
             } else if (randomBuff == 2) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Exp 1.5x][Meso Rate 1.5x] event will be active until "
+                                 + endTime2 + "!"));
             } else if (randomBuff == 3) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [경험치 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Exp 1.5x][Meso Rate 1.5x] event will be active until "
+                                 + endTime2 + "!"));
             } else if (randomBuff == 4) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [드롭률 1.5배][메소 획득량 1.5배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Drop Rate 1.5x][Meso Rate 1.5x] event will be active until "
+                                 + endTime2 + "!"));
             } else if (randomBuff == 5) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [드롭률 1.5배][심볼 드롭률 2배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Drop Rate 1.5x][Symbol Drop Rate 2x] event will be active until "
+                                 + endTime2 + "!"));
             } else if (randomBuff == 6) {
-               Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(5, "광장에 꽃이피어 [메소 획득량 1.5배][심볼 드롭률 2배] 이벤트가 " + endTime2 + " 적용됩니다!"));
+               Center.Broadcast.broadcastMessage(
+                     CWvsContext.serverNotice(5,
+                           "Flowers have bloomed in the square! [Meso Rate 1.5x][Symbol Drop Rate 2x] event will be active until "
+                                 + endTime2 + "!"));
             }
 
             sunShineGuage = 0;
@@ -7013,7 +7596,7 @@ public class Center {
             for (GameServer g : GameServer.getAllInstances()) {
                for (Field map : g.getMapFactory().getAllLoadedMaps()) {
                   int buffItemId = 5121112;
-                  map.startMapEffect("따사로운 봄 햇살이 쏟아져내립니다.", buffItemId);
+                  map.startMapEffect("Warm spring sunshine pours down.", buffItemId);
                   int buff = 2024012;
 
                   for (MapleCharacter mChar : map.getCharactersThreadsafe()) {
@@ -7033,7 +7616,8 @@ public class Center {
                   Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
-                        map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
+                        map.broadcastMessage(
+                              CField.NPCPacket.npcSpecialAction(npc.getObjectId(), "special2", 210000000, 1));
                      }
                   }, 3000L);
                }
@@ -7045,7 +7629,8 @@ public class Center {
                   Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
-                        map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc1.getObjectId(), "special2", 210000000, 1));
+                        map.broadcastMessage(
+                              CField.NPCPacket.npcSpecialAction(npc1.getObjectId(), "special2", 210000000, 1));
                      }
                   }, 3000L);
                }
@@ -7057,7 +7642,8 @@ public class Center {
                   Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
-                        map.broadcastMessage(CField.NPCPacket.npcSpecialAction(npc2.getObjectId(), "special2", 210000000, 1));
+                        map.broadcastMessage(
+                              CField.NPCPacket.npcSpecialAction(npc2.getObjectId(), "special2", 210000000, 1));
                      }
                   }, 3000L);
                }

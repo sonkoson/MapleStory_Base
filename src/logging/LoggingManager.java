@@ -1,4 +1,4 @@
-package logging;
+﻿package logging;
 
 import database.LogDBConnection;
 import java.sql.Connection;
@@ -22,15 +22,14 @@ public class LoggingManager {
          try (Connection con = LogDBConnection.getConnection()) {
             Iterator var4 = list.iterator();
 
-            label141:
-            while (true) {
+            label141: while (true) {
                LoggingEntry entry;
                while (true) {
                   if (!var4.hasNext()) {
                      break label141;
                   }
 
-                  entry = (LoggingEntry)var4.next();
+                  entry = (LoggingEntry) var4.next();
 
                   try {
                      if (entry != null) {
@@ -39,10 +38,10 @@ public class LoggingManager {
                      }
                   } catch (Exception var22) {
                      count++;
-                     System.out.println("로그 insert 작업 중 오류 발생!");
+                     System.out.println("Error during log insert operation!");
                      if (entry != null) {
                         try {
-                           System.out.println("오류 발생한 로그 : " + entry.getLoggingType().name());
+                           System.out.println("Error log : " + entry.getLoggingType().name());
                         } catch (Exception var21) {
                         }
                      }
@@ -71,7 +70,7 @@ public class LoggingManager {
          list.clear();
          list = null;
          if (count > 0) {
-            System.out.println(String.format("로그저장중 실패 발생. 기록 실패 갯수 %d개", count));
+            System.out.println(String.format("Log save failed. Failed count %d", count));
          }
       }
    }

@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import database.DBConnection;
 import java.sql.Connection;
@@ -20,8 +20,8 @@ public class BanningCommands implements Command {
    @Override
    public void execute(MapleClient c, String[] splitted) throws Exception {
       GameServer cserv = c.getChannelServer();
-      if (!splitted[0].equals("밴") && !splitted[0].equals("영구밴")) {
-         if (splitted[0].equals("기간밴")) {
+      if (!splitted[0].equals("!ban") && !splitted[0].equals("!hellban")) {
+         if (splitted[0].equals("!tempban")) {
             String targetName = splitted[1];
             String reason = splitted[2];
             int numDay = Integer.parseInt(splitted[3]);
@@ -56,9 +56,9 @@ public class BanningCommands implements Command {
             }
 
             if (banLogs != null && !banLogs.isEmpty()) {
-               banLogs = banLogs + "," + reason + "(기간밴)";
+               banLogs = banLogs + "," + reason + "(TempBan)";
             } else {
-               banLogs = reason + "(기간밴)";
+               banLogs = reason + "(TempBan)";
             }
 
             for (MapleCharacter p : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
@@ -114,19 +114,22 @@ public class BanningCommands implements Command {
                      cal.add(5, numDay);
                      DateFormat df = DateFormat.getInstance();
                      target.tempban(banLogs, cal, false);
-                     c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터가 " + df.format(cal.getTime()) + " 까지 성공적으로 밴 되었습니다.");
+                     c.getPlayer().dropMessage(6,
+                           splitted[1] + " has been banned until " + df.format(cal.getTime()) + ".");
                   } else {
                      Calendar cal = Calendar.getInstance();
                      cal.add(5, numDay);
                      DateFormat df = DateFormat.getInstance();
-                     PreparedStatement ps = con.prepareStatement("UPDATE accounts SET tempban = ?, banreason = ? WHERE id = ?");
+                     PreparedStatement ps = con
+                           .prepareStatement("UPDATE accounts SET tempban = ?, banreason = ? WHERE id = ?");
                      Timestamp TS = new Timestamp(cal.getTimeInMillis());
                      ps.setTimestamp(1, TS);
                      ps.setString(2, banLogs);
                      ps.setInt(3, accountID);
                      ps.execute();
                      ps.close();
-                     c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터가 " + df.format(cal.getTime()) + " 까지 오프라인 밴처리되었습니다.");
+                     c.getPlayer().dropMessage(6,
+                           splitted[1] + " (Offline) has been banned until " + df.format(cal.getTime()) + ".");
                   }
                } catch (SQLException var25) {
                }
@@ -135,22 +138,22 @@ public class BanningCommands implements Command {
                cal.add(5, numDay);
                DateFormat df = DateFormat.getInstance();
                target.tempban(banLogs, cal, false);
-               c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터가 " + df.format(cal.getTime()) + " 까지 성공적으로 밴 되었습니다.");
+               c.getPlayer().dropMessage(6, splitted[1] + " has been banned until " + df.format(cal.getTime()) + ".");
             }
-         } else if (splitted[0].equals("밴풀기")) {
+         } else if (splitted[0].equals("!unban")) {
             if (splitted.length < 2) {
-               c.getPlayer().dropMessage(6, "밴풀기 <캐릭터이름>");
+               c.getPlayer().dropMessage(6, "!unban <character name>");
             } else {
                byte result = MapleClient.unban(splitted[1]);
                if (result == -1) {
-                  c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터를 발견하지 못했습니다.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " not found.");
                } else if (result == -2) {
-                  c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터의 밴을 해제하는데 오류가 발생했습니다.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " found, but error occurred during unban.");
                } else {
-                  c.getPlayer().dropMessage(6, splitted[1] + " 캐릭터가 성공적으로 밴이 해제되었습니다.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " successfully unbanned.");
                }
             }
-         } else if (splitted[0].equals("접속끊기")) {
+         } else if (splitted[0].equals("!dc")) {
             int level = 0;
             MapleCharacter victim;
             if (splitted[1].charAt(0) == '-') {
@@ -171,7 +174,7 @@ public class BanningCommands implements Command {
 
             if (level < 2) {
                victim.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("Forced disconnection initiated.");
                if (level >= 1) {
                   victim.getClient().disconnect(false);
                }
@@ -185,7 +188,7 @@ public class BanningCommands implements Command {
          }
 
          boolean byAdminClient = false;
-         boolean hellban = splitted[0].equals("영구밴");
+         boolean hellban = splitted[0].equals("!hellban");
          String targetName = splitted[1];
          StringBuilder sb = new StringBuilder(c.getPlayer().getName());
          sb.append(" banned ").append(splitted[1]).append(": ").append(StringUtil.joinStringFrom(splitted, 2));
@@ -273,22 +276,23 @@ public class BanningCommands implements Command {
 
             if (target != null) {
                if (target.ban(banLogs, true, false, hellban)) {
-                  c.getPlayer().dropMessage(6, targetName + "(이)가 밴처리 되었습니다.");
+                  c.getPlayer().dropMessage(6, targetName + " has been banned.");
                } else {
-                  c.getPlayer().dropMessage(6, "밴에 실패했습니다.");
+                  c.getPlayer().dropMessage(6, "Error occurred while banning.");
                }
 
                target.serialBan(byAdminClient);
-            } else if (MapleCharacter.ban(targetName, banLogs, false, c.getPlayer().isAdmin() ? 250 : c.getPlayer().getGMLevel(), false)) {
-               c.getPlayer().dropMessage(6, targetName + " 오프라인 밴 성공.");
+            } else if (MapleCharacter.ban(targetName, banLogs, false,
+                  c.getPlayer().isAdmin() ? 250 : c.getPlayer().getGMLevel(), false)) {
+               c.getPlayer().dropMessage(6, targetName + " (Offline) has been banned.");
             } else {
-               c.getPlayer().dropMessage(6, targetName + " 를 밴 하는데 실패했습니다.");
+               c.getPlayer().dropMessage(6, targetName + " failed to ban.");
             }
          } else {
             if (target.ban(banLogs, true, false, hellban)) {
-               c.getPlayer().dropMessage(6, targetName + "(이)가 밴처리 되었습니다.");
+               c.getPlayer().dropMessage(6, targetName + " has been banned.");
             } else {
-               c.getPlayer().dropMessage(6, "밴에 실패했습니다.");
+               c.getPlayer().dropMessage(6, "Error while banning.");
             }
 
             target.serialBan(byAdminClient);
@@ -298,11 +302,13 @@ public class BanningCommands implements Command {
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{
-         new CommandDefinition("밴", "<캐릭터이름> <이유>", "해당 ip와 mac주소, 계정을 영구적으로 밴 시킵니다.", 3),
-         new CommandDefinition("밴풀기", "<캐릭터이름>", "밴 된 ip와 mac주소, 계정의 밴을 해제합니다.", 3),
-         new CommandDefinition("기간밴", "<캐릭터이름> <이유> <밴 될 일수>", "해당 계정을 해당 일 수 동안 밴 시킵니다.", 3),
-         new CommandDefinition("접속끊기", "[-f] <캐릭터이름>", "해당 캐릭터를 강제로 접속종료시킵니다. 현접에걸렸다면 -f 옵션을 사용하세요.", 3)
+      return new CommandDefinition[] {
+            new CommandDefinition("!ban", "<character name> <reason>", "Permanently bans the IP, MAC, and Account.", 3),
+            new CommandDefinition("!unban", "<character name>", "Unbans the IP, MAC, and Account.", 3),
+            new CommandDefinition("!tempban", "<character name> <reason> <days>",
+                  "Temporarily bans the account for the specified number of days.", 3),
+            new CommandDefinition("!dc", "[-f] <character name>", "Disconnects the player. Use -f to force disconnect.",
+                  3)
       };
    }
 }

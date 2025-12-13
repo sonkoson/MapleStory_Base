@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class MapleMonsterCustomHP {
                      value = curCell.getCellFormula();
                      break;
                   case NUMERIC:
-                     value = String.valueOf((int)curCell.getNumericCellValue());
+                     value = String.valueOf((int) curCell.getNumericCellValue());
                      break;
                   case STRING:
                      value = curCell.getStringCellValue();
@@ -64,7 +64,7 @@ public class MapleMonsterCustomHP {
             maxHP.put(mid, mhp);
          }
 
-         System.out.println("총 " + maxHP.size() + "개의 커스텀 몹 설정 데이터를 불러왔습니다.");
+         System.out.println("Loaded " + maxHP.size() + " custom monster HP settings.");
       } catch (Exception var21) {
          var21.printStackTrace();
       } finally {

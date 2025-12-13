@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class AutoNotice {
          }
       }
 
-      System.out.println("총 " + count + "개의 자동 공지사항 데이터를 불러왔습니다. (공지사항 주기 : " + this.getInterval() + "m/s)");
+      System.out.println("Loaded " + count + " Auto Notice messages. (Interval: " + this.getInterval() + "ms)");
    }
 
    public int getInterval() {

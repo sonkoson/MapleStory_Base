@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -22,13 +22,14 @@ public class LogDBConnection {
 
    public static synchronized void init() {
       try {
-         dataSource = setupDataSource("jdbc:mariadb://127.0.0.1:3306/maple_log?characterEncoding=utf8&autoReconnect=true");
+         dataSource = setupDataSource(
+               "jdbc:mariadb://127.0.0.1:3306/maple_log?characterEncoding=utf8&autoReconnect=true");
       } catch (Exception var1) {
-         System.err.println("로그 데이터베이스를 연결하는 과정에서 오류가 발생하였습니다.1\r\n" + var1.toString());
+         System.err.println("Error occurred while connecting to the log database.1\r\n" + var1.toString());
          System.exit(1);
       }
 
-      System.out.println("로그 데이터베이스와 연결되었습니다.");
+      System.out.println("Connected to the log database.");
    }
 
    private static HikariDataSource setupDataSource(String URL) throws Exception {
@@ -49,7 +50,7 @@ public class LogDBConnection {
       try {
          dataSource.close();
       } catch (Exception var1) {
-         System.err.println("데이터베이스를 종료하는 과정에서 오류가 발생하였습니다!\r\n" + var1);
+         System.err.println("Error occurred while closing the database!\r\n" + var1);
       }
 
       dataSource = null;
@@ -59,7 +60,7 @@ public class LogDBConnection {
       try {
          return dataSource.getConnection();
       } catch (SQLException var3) {
-         System.err.println("데이터베이스에 연결할 수 없습니다!" + var3.getMessage());
+         System.err.println("Cannot connect to the database!" + var3.getMessage());
 
          try {
             return dataSource.getConnection();
@@ -85,7 +86,7 @@ public class LogDBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdate 작업중 오류가 발생하였습니다. : " + var14.getSQLState());
+         System.out.println("DB InsertOrUpdate ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var14.getSQLState());
          var14.printStackTrace();
       } finally {
          try {
@@ -121,7 +122,7 @@ public class LogDBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdateBatch 작업중 오류가 발생하였습니다. : " + var14.getSQLState());
+         System.out.println("DB InsertOrUpdateBatch ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var14.getSQLState());
          var14.printStackTrace();
       } finally {
          try {
@@ -160,7 +161,7 @@ public class LogDBConnection {
             con.commit();
          }
       } catch (SQLException var15) {
-         System.out.println("DB InsertOrUpdate 작업중 오류가 발생하였습니다. : " + var15.getSQLState());
+         System.out.println("DB InsertOrUpdate ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var15.getSQLState());
          var15.printStackTrace();
       } finally {
          try {

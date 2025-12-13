@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import network.game.GameServer;
 import network.models.CWvsContext;
@@ -7,31 +7,31 @@ import objects.utils.StringUtil;
 
 public class NoticeCommand implements Command {
    private int getNoticeType(String typestring) {
-      if (typestring.equals("공지")) {
+      if (typestring.equals("notice")) {
          return 0;
-      } else if (typestring.equals("팝업")) {
+      } else if (typestring.equals("popup")) {
          return 1;
-      } else if (typestring.equals("연파랑")) {
+      } else if (typestring.equals("megaphone")) {
          return 2;
-      } else if (typestring.equals("분홍")) {
+      } else if (typestring.equals("pink")) {
          return 5;
-      } else if (typestring.equals("공지분홍")) {
+      } else if (typestring.equals("pinknotice")) {
          return 5;
       } else {
-         return typestring.equals("파랑") ? 6 : -1;
+         return typestring.equals("blue") ? 6 : -1;
       }
    }
 
    @Override
    public void execute(MapleClient c, String[] splitted) throws Exception, IllegalCommandSyntaxException {
-      if (splitted[0].equals("공지")) {
+      if (splitted[0].equals("!notice")) {
          int joinmod = 1;
          int range = -1;
-         if (splitted[1].equals("맵")) {
+         if (splitted[1].equals("m")) {
             range = 0;
-         } else if (splitted[1].equals("채널")) {
+         } else if (splitted[1].equals("c")) {
             range = 1;
-         } else if (splitted[1].equals("서버")) {
+         } else if (splitted[1].equals("w")) {
             range = 2;
          }
 
@@ -48,8 +48,8 @@ public class NoticeCommand implements Command {
          }
 
          StringBuilder sb = new StringBuilder();
-         if (splitted[tfrom].equals("공지분홍")) {
-            sb.append("[공지]");
+         if (splitted[tfrom].equals("pinknotice")) {
+            sb.append("[Notice]");
          } else {
             sb.append("");
          }
@@ -71,6 +71,8 @@ public class NoticeCommand implements Command {
 
    @Override
    public CommandDefinition[] getDefinition() {
-      return new CommandDefinition[]{new CommandDefinition("공지", "[맵 채널 서버] [공지/팝업/연파랑/공지분홍/분홍/파랑] 메시지", "해당 옵션대로 메시지를 출력합니다.", 2)};
+      return new CommandDefinition[] {
+            new CommandDefinition("!notice", "[m/c/w] [notice/popup/megaphone/pink/pinknotice/blue] <message>",
+                  "Sends a server notice with the specified type and range.", 2) };
    }
 }
