@@ -10,7 +10,7 @@ var slot_3 = Array();
 var slot_4 = Array();
 var slot_5 = Array();
 var statsSel;
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function start() {
 	action(1, 0, 0);
@@ -25,21 +25,21 @@ function action(mode, type, selection) {
 	if (status == 1) {
 		// Changed to Item Drop
 		cm.dispose();
-		cm.openNpcCustom(cm.getClient(), 1012121, "아이템버리기");
+		cm.openNpcCustom(cm.getClient(), 1012121, "ItemDiscard");
 
 		/*
-				var txt = "[로얄메이플 아이템 버리기 시스템]";
-				txt += "\r\n#d* 드롭에는 10 만 메소가 필요합니다.#k\r\n";
-				//txt += "#L2##b장비 아이템#k 을 드롭하겠습니다.#k\r\n";
-				txt += "#L3##b소비 아이템#k 을 드롭하겠습니다.#k\r\n";
-				//txt += "#L5##b기타 아이템#k 을 드롭하겠습니다.#k\r\n";
-				txt += "#L1##r캐쉬 아이템#k 을 드롭하겠습니다.#k\r\n";
-				txt += "#L6##b캐시코디 아이템#k 을 드롭하겠습니다.#k\r\n";
+				var txt = "[ระบบทิ้งไอเท็ม Royal Maple]";
+				txt += "\r\n#d* การทิ้งต้องใช้ 100,000 เมโซ#k\r\n";
+				//txt += "#L2##bไอเท็มสวมใส่#k 을 드롭하겠습니다.#k\r\n";
+				txt += "#L3##bไอเท็มใช้งาน#k 을 드롭하겠습니다.#k\r\n";
+				//txt += "#L5##bไอเท็มอื่นๆ#k 을 드롭하겠습니다.#k\r\n";
+				txt += "#L1##rไอเท็มแคช#k 을 드롭하겠습니다.#k\r\n";
+				txt += "#L6##bไอเท็มแฟชั่นแคช#k 을 드롭하겠습니다.#k\r\n";
 				cm.sendSimple(txt);
 		*/
 	} else if (status == 2) {
 		var ok = false;
-		var selStr = "#fnNanumGothic Extrabold##dPlease select the item you want to drop.#k\r\n";
+		var selStr = "#fnNanumGothic Extrabold##dกรุณาเลือกไอเท็มที่ต้องการทิ้ง#k\r\n";
 		for (var x = 0; x < invs.length; x++) {
 			var inv = cm.getInventory(invs[x]);
 			for (var i = 0; i <= inv.getSlotLimit(); i++) {
@@ -99,7 +99,7 @@ function action(mode, type, selection) {
 			}
 		}
 		if (!ok) {
-			cm.sendOk("#fnNanumGothic Extrabold##rIt seems you have no items in your inventory..#k");
+			cm.sendOk("#fnNanumGothic Extrabold##rดูเหมือนว่าคุณไม่มีไอเท็มในกระเป๋าของคุณ..#k");
 			cm.dispose();
 			return;
 		}
@@ -126,24 +126,24 @@ function action(mode, type, selection) {
 			statsSel = inzz.getItem(slot_5[selected]);
 		}
 		if (statsSel == null) {
-			cm.sendOk("#fnNanumGothic Extrabold##rError Information\r\n\r\nPlease try again.#k");
+			cm.sendOk("#fnNanumGothic Extrabold##rข้อมูลผิดพลาด\r\n\r\nกรุณาลองใหม่อีกครั้ง#k");
 			cm.dispose();
 			return;
 		}
-		cm.sendGetNumber("#fnNanumGothic Extrabold##v" + statsSel.getItemId() + "##t" + statsSel.getItemId() + "#\r\n\r\n#dPlease enter the quantity to drop.#k", 1, 1, statsSel.getQuantity());
+		cm.sendGetNumber("#fnNanumGothic Extrabold##v" + statsSel.getItemId() + "##t" + statsSel.getItemId() + "#\r\n\r\n#dกรุณาระบุจำนวนที่ต้องการทิ้ง#k", 1, 1, statsSel.getQuantity());
 	} else if (status == 4) {
 		if (cm.getMeso() >= 100000) {
 			if (statsSel.getItemId() !== 1143032 && statsSel.getItemId() !== 1142373 && statsSel.getItemId() !== 1112750 && statsSel.getItemId() !== 1182058 && statsSel.getItemId() !== 1142551 && statsSel.getItemId() !== 1182062 && statsSel.getItemId() !== 1182063 && statsSel.getItemId() !== 1182064 && statsSel.getItemId() !== 1182192) {
 				cm.gainMeso(-100000);
 				if (!cm.dropItem(selected, invv, selection)) {
-					cm.sendOk("#fnNanumGothic Extrabold##r[Error Information]#k\r\n\r\nPlease try again.");
+					cm.sendOk("#fnNanumGothic Extrabold##r[ข้อมูลผิดพลาด]#k\r\n\r\nกรุณาลองใหม่อีกครั้ง");
 				}
 			} else {
-				cm.sendOk("#fnNanumGothic Extrabold##rYou cannot drop this item.#k");
+				cm.sendOk("#fnNanumGothic Extrabold##rคุณไม่สามารถทิ้งไอเท็มนี้ได้#k");
 				cm.dispose();
 			}
 		} else {
-			cm.sendOk("#fnNanumGothic Extrabold##rNot enough mesos to drop.#k");
+			cm.sendOk("#fnNanumGothic Extrabold##rเมโซไม่เพียงพอสำหรับการทิ้งไอเท็ม#k");
 			cm.dispose();
 		}
 		cm.dispose();

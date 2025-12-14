@@ -20,7 +20,7 @@ S = "#fUI/CashShop.img/CSEffect/today/0#"
 획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
 색 = "#fc0xFF6600CC#"
 검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
+핑크색 = "#fc0xFFFF3366#"
 분홍색 = "#fc0xFFF781D8#"
 엔터 = "\r\n"
 엔터2 = "\r\n\r\n"
@@ -50,10 +50,10 @@ function action(mode, type, sel) {
 
         var msg = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
         msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n";
-        msg +="        #L1##fUI/Basic.img/Zenia/SCBtn/400##l      ";//육성퀘스트
-        msg +="#L2##fUI/Basic.img/Zenia/SCBtn/402##l\r\n";//일일퀘스트
-        msg +="        #L1000##fUI/Basic.img/Zenia/SCBtn/405##l      ";//능력치랭크
-        msg +="#L3##fUI/Basic.img/Zenia/SCBtn/403##l";//레벨업보상
+        msg += "        #L1##fUI/Basic.img/Zenia/SCBtn/400##l      ";//육성퀘스트
+        msg += "#L2##fUI/Basic.img/Zenia/SCBtn/402##l\r\n";//일일퀘스트
+        msg += "        #L1000##fUI/Basic.img/Zenia/SCBtn/405##l      ";//능력치랭크
+        msg += "#L3##fUI/Basic.img/Zenia/SCBtn/403##l";//레벨업보상
         //msg +="#L999##fUI/Basic.img/Zenia/SCBtn/404##l";//헌트패스
         //msg +="#L777##fUI/Basic.img/Zenia/SCBtn/401##l";//메소패스
         cm.sendSimple(msg);
@@ -66,7 +66,7 @@ function action(mode, type, sel) {
                 break;
             case 2:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 1530042, "일퀘");
+                cm.openNpcCustom(cm.getClient(), 1530042, "DailyQuest");
                 break;
             case 3:
                 cm.dispose();
@@ -87,9 +87,9 @@ function action(mode, type, sel) {
             case 1000: // 랭크승급
                 var msg = "#fs11#";
 
-                msg +="    #L1##b메인랭크승급#l  ";
-                msg +="#L2#보스랭크승급#l  ";
-                msg +="#L3#능력랭크승급#l";
+                msg += "    #L1##b메인랭크승급#l  ";
+                msg += "#L2#보스랭크승급#l  ";
+                msg += "#L3#능력랭크승급#l";
 
                 cm.sendSimple(msg);
                 break;

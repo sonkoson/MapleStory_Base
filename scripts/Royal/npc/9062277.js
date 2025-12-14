@@ -271,7 +271,7 @@ function action(mode, type, sel) {
                         break;
                     case 92: // 초월아케인 재료교환
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 9000213, "초월아케인재료교환");
+                        cm.openNpcCustom(cm.getClient(), 9000213, "TranscendenceArcaneMaterialExchange");
                         break;
                 }
                 break;

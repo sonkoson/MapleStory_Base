@@ -12,6 +12,6 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         cm.dispose();
-        cm.openNpcCustom(cm.getClient(), 1530059, "일퀘");
+        cm.openNpcCustom(cm.getClient(), 1530059, "DailyQuest");
     }
 }

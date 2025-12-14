@@ -93,6 +93,6 @@ function action(mode, type, selection) {
         cm.sendYesNo("#fs11#ลบไอเท็มออกจากกระเป๋าเรียบร้อยแล้ว\r\n#bคุณมีไอเท็มอื่นที่ต้องการทิ้งอีกหรือไม่?");
     } else if (status == 4) {
         cm.dispose();
-        cm.openNpcCustom(cm.getClient(), 1012121, "아이템버리기");
+        cm.openNpcCustom(cm.getClient(), 1012121, "ItemDiscard");
     }
 }
