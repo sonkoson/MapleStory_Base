@@ -27,11 +27,11 @@ function action(mode, type, sel) {
         switch (sel) {
             case 1:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "색변캐시");
+                cm.openNpcCustom(cm.getClient(), 9000213, "ColorChangeCash");
                 break;
             case 2:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "색변캐시2");
+                cm.openNpcCustom(cm.getClient(), 9000213, "ColorChangeCash2");
                 break;
         }
     }

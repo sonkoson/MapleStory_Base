@@ -7,7 +7,7 @@ var bossid = 9300891;
 var startmap = 350160240;
 //var secondmap = 450004250;
 var exitmap = 910001000;
-var bossname = "하드 데미안"
+var bossname = "Hard Demian"
 var limit = 3;
 var time = 30;
 var x = 1091,
@@ -27,35 +27,35 @@ function action(mode, type, sel) {
         return;
     }
     if (status == 0) {
-        var msg = "#e<하드 데미안 원정>#n\r\n" + "데미안에게 맞설 준비는 되셨습니까?\r\n";
-        msg += "<제한 시간 : #r" + time + "분#k>\r\n#d<일일 입장 횟수#k #d: #b" + cm.GetCount(bossname + "c") + "회#k / #r" + limit + "회#k>#k" + enter;
-        msg += "#d<데스 카운트 :#k #r10회#k>#k" + enter;
-        msg += "<보스 보상 : #i1022278##z1022278# 등>" + enter;
-        msg += "#L0##b 하드 데미안 입장을 신청한다.";
+        var msg = "#e<Hard Demian Expedition>#n\r\n" + "พร้อมที่จะเผชิญหน้ากับ Demian แล้วหรือยัง?\r\n";
+        msg += "<เวลาจำกัด : #r" + time + " นาที#k>\r\n#d<จำนวนครั้งเข้า/วัน#k #d: #b" + cm.GetCount(bossname + "c") + " ครั้ง#k / #r" + limit + " ครั้ง#k>#k" + enter;
+        msg += "#d<Death Count :#k #r10 ครั้ง#k>#k" + enter;
+        msg += "<รางวัลบอส : #i1022278##z1022278# ฯลฯ>" + enter;
+        msg += "#L0##b ขอเข้าท้าทาย Hard Demian";
         cm.sendSimple(msg);
     } else if (status == 1) {
         if (!cm.CountCheck(bossname + "c", limit)) {
-            cm.sendOk("하루에 " + limit + "번만 가능하답니다.");
+            cm.sendOk("เข้าได้เพียงวันละ " + limit + " ครั้งเท่านั้น");
             cm.dispose();
             return;
         }
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("파티를 꾸리고 도전하시길 바랍니다.");
+            cm.sendOk("กรุณาสร้างปาร์ตี้เพื่อเข้าท้าทาย");
             cm.dispose();
             return;
         }
         if (!isPartyLeader()) {
-            cm.sendOk("파티장이 아니면 신청할 수 없습니다.");
+            cm.sendOk("ไม่ใช่หัวหน้าปาร์ตี้จึงไม่สามารถขอเข้าได้");
             cm.dispose();
             return;
         }
         if (!cm.allMembersHere()) {
-            cm.sendOk("파티원이 전원 이곳에 모여있어야 합니다.");
+            cm.sendOk("สมาชิกปาร์ตี้ทุกคนต้องมารวมตัวกันที่นี่");
             cm.dispose();
             return;
         }
         if (cm.getPlayerCount(startmap) > 0) {
-            cm.sendOk("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k");
+            cm.sendOk("มีคนกำลังท้าทายอยู่แล้ว\r\n#bกรุณาใช้แชแนลอื่น#k");
             cm.dispose();
             return;
         }
@@ -69,7 +69,7 @@ function action(mode, type, sel) {
             }
         }
         if (!countPass) {
-            cm.sendOk("파티원 중 던전 입장 횟수가 남아있지 않은 파티원이 있습니다.");
+            cm.sendOk("มีสมาชิกในปาร์ตี้ที่จำนวนครั้งเข้าดันเจี้ยนหมดแล้ว");
             cm.dispose();
             return;
         } else {
@@ -81,7 +81,7 @@ function action(mode, type, sel) {
             }
         }
         if (cm.getPlayerCount(startmap) > 0) {
-            cm.sendOk("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k");
+            cm.sendOk("มีคนกำลังท้าทายอยู่แล้ว\r\n#bกรุณาใช้แชแนลอื่น#k");
             cm.dispose();
             return;
         }

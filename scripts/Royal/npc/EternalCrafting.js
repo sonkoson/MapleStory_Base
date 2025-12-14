@@ -78,7 +78,7 @@ function action(M, T, S) {
         }
         if (-(originitem.getState() - selectitem.getState()) > 0) {
             txt += "" + state + "\r\n"
-        } // 잠재능력등급
+        } // Potential Grade
         if (selectitem.getEnhance() > 0) {
             txt += "Star Force : \r\n";
             if (selectitem.getEquipmentType() == 5888) {
@@ -93,64 +93,64 @@ function action(M, T, S) {
                 }
             }
             txt += "#k\r\n#d";
-        } //스타포스 강화
+        } // Star Force Enhancement
         if (-(originitem.getStr() - selectitem.getStr()) > 0) {
             txt += "STR : + " + -(originitem.getStr() - selectitem.getStr()) + "\r\n"
-        } //힘
+        } // STR
         if (-(originitem.getDex() - selectitem.getDex()) > 0) {
             txt += "DEX : + " + -(originitem.getDex() - selectitem.getDex()) + "\r\n"
-        } //덱스
+        } // DEX
         if (-(originitem.getInt() - selectitem.getInt()) > 0) {
             txt += "INT : + " + -(originitem.getInt() - selectitem.getInt()) + "\r\n"
-        } //인트
+        } // INT
         if (-(originitem.getLuk() - selectitem.getLuk()) > 0) {
             txt += "LUK : + " + -(originitem.getLuk() - selectitem.getLuk()) + "\r\n"
-        } //럭
+        } // LUK
         if (-(originitem.getHp() - selectitem.getHp()) > 0) {
             txt += "HP : + " + -(originitem.getHp() - selectitem.getHp()) + "\r\n"
-        } //HP
+        } // HP
         if (-(originitem.getMp() - selectitem.getMp()) > 0) {
             txt += "MP : + " + -(originitem.getMp() - selectitem.getMp()) + "\r\n"
-        } //Mp
+        } // MP
         if (-(originitem.getWatk() - selectitem.getWatk()) > 0) {
             txt += "Attack : + " + -(originitem.getWatk() - selectitem.getWatk()) + "\r\n"
-        } //공격력
+        } // Attack Power
         if (-(originitem.getMatk() - selectitem.getMatk()) > 0) {
             txt += "Magic Attack : + " + -(originitem.getMatk() - selectitem.getMatk()) + "\r\n"
-        } //마력
+        } // Magic Power
         if (-(originitem.getWdef() - selectitem.getWdef()) > 0) {
             txt += "Defense : + " + -(originitem.getWdef() - selectitem.getWdef()) + "\r\n"
-        } //방어력
+        } // Defense
         if (-(originitem.getSpeed() - selectitem.getSpeed()) > 0) {
             txt += "Speed : + " + -(originitem.getSpeed() - selectitem.getSpeed()) + "\r\n"
-        } //스피드
+        } // Speed
         if (-(originitem.getJump() - selectitem.getJump()) > 0) {
             txt += "Jump : + " + -(originitem.getJump() - selectitem.getJump()) + "\r\n"
-        } //점프
+        } // Jump
         if (-(originitem.getBossDamage() - selectitem.getBossDamage()) > 0) {
             txt += "Boss Damage : + " + -(originitem.getBossDamage() - selectitem.getBossDamage()) + "%\r\n"
-        } //보스데미지
+        } // Boss Damage
         if (-(originitem.getIgnorePDR() - selectitem.getIgnorePDR()) > 0) {
             txt += "Ignore Enemy Defense : + " + -(originitem.getIgnorePDR() - selectitem.getIgnorePDR()) + "%\r\n"
-        } //몬스터방어력무시
+        } // Ignore Monster Defense
         if (-(originitem.getTotalDamage() - selectitem.getTotalDamage()) > 0) {
             txt += "Total Damage : + " + -(originitem.getTotalDamage() - selectitem.getTotalDamage()) + "%\r\n"
-        } //총데미지
+        } // Total Damage
         if (-(originitem.getAllStat() - selectitem.getAllStat()) > 0) {
             txt += "All Stat : + " + -(originitem.getAllStat() - selectitem.getAllStat()) + "%\r\n"
-        } //올스탯
+        } // All Stat
         if (selectitem.getLevel() > 0) {
             txt += "Upgrade Count : " + selectitem.getLevel() + "\r\n"
-        } //주문서 성공 횟수
+        } // Scroll Success Count
         if (selectitem.getViciousHammer() > 0) {
             txt += "Golden Hammer Applied\r\n"
-        } //황금망치
+        } // Golden Hammer
         if (selectitem.getKarmaCount() > 0) {
             txt += "Karma Scissors Count : " + (selectitem.getKarmaCount()) + "\r\n"
-        } //카르마 가위 횟수
+        } // Karma Scissors Count
         if (selectitem.getUpgradeSlots() > 0) {
             txt += "Upgrade Slots : " + (selectitem.getUpgradeSlots()) + "\r\n"
-        } // 업그레이드 횟수
+        } // Upgrade Count
         txt += "หากต้องการอัปเกรด กรุณาพิมพ์ \r\n#e#rupgrade#n#k ในช่องข้อความ\r\n\r\n";
         txt += "#fs11##r※ ออปชั่นศักยภาพจะไม่แสดงให้เห็นแต่จะถูกถ่ายโอนไปด้วย\r\n "
         cm.sendGetText(txt, 1052206);
@@ -162,14 +162,14 @@ function action(M, T, S) {
             return;
         } else {
             for (var i = 0; i < Material.length; i++) {
-                if (!cm.haveItem(Material[i][0], Material[i][1])) {   //재료체크
+                if (!cm.haveItem(Material[i][0], Material[i][1])) {   // Material Check
                     cm.sendOkS("#fs11#กรุณาตรวจสอบว่าคุณมี #r#z" + Material[i][0] + "##k เพียงพอหรือไม่", 0x04, 1052206);
                     cm.dispose();
                     return;
                 }
             }
 
-            //아이템값 구하기
+            // Get Item Value
             var upitem = 0;
             for (var i = 0; i < 5; i++) {
                 if (itemlist[0] + i == selectitem.getItemId()) {
@@ -182,7 +182,7 @@ function action(M, T, S) {
                     upitem = itemlist2[2] + i;
                 }
             }
-            if (Math.floor(Math.random() * 100) <= suc) {// 성공했을때
+            if (Math.floor(Math.random() * 100) <= suc) {// On Success
                 wonitem = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(selectitem.getItemId());
                 giveitem = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(upitem);
                 giveitem.addStr(- (originitem.getStr() - selectitem.getStr()));
@@ -228,7 +228,7 @@ function action(M, T, S) {
                 msg += "#i" + upitem + "##b#z" + upitem + "##k";
                 cm.sendOkS(msg, 0x04, 1052206);
                 cm.dispose();
-            } else { // 실패했을때
+            } else { // On Failure
                 for (var i = 0; i < Material.length; i++) {
                     cm.gainItem(Material[i][0], -Material[i][1]);
                 }

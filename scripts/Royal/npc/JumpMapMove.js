@@ -124,8 +124,8 @@ function action(mode, type, selection) {
                 case 1:
                     selStr += "#fs11#\r\nโปรดตรวจสอบ #bเลเวลเฉลี่ยของมอนสเตอร์#n#k ที่ปรากฏในพื้นที่ล่าก่อนย้าย#fs11#\r\n\r\n";
                     selStr += "#b#L931000500##b#fMap/MapHelper.img/minimap/anothertrader# Jaguar Habitat (สำหรับ Wild Hunter เท่านั้น)#l\r\n\r\n";
-                    //selStr += "#r#L993134100#Lv.15~270  │ 유니온 0티어초보자사냥터          │ 유니온0티어사냥터#l\r\n";
-                    //selStr += "#r#L993134150#Lv.15~270  │ 유니온 0티어초보자사냥터          │ 유니온0티어사냥터#l\r\n";
+                    //selStr += "#r#L993134100#Lv.15~270  │ Union 0 Tier Beginner Hunting Ground          │ Union 0 Tier Hunting Ground#l\r\n";
+                    //selStr += "#r#L993134150#Lv.15~270  │ Union 0 Tier Beginner Hunting Ground          │ Union 0 Tier Hunting Ground#l\r\n";
                     selStr += "#b#L100010000##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.10  #dHenesys - North Hill#l\r\n";
                     selStr += "#b#L103050340##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.30  #dVictoria Road - Training Center 2#l\r\n";
                     selStr += "#b#L101030500##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.30  #dNorth Forest - End of the Forest#l\r\n";

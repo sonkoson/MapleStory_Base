@@ -61,110 +61,110 @@ function action(mode, type, selection) {
     } else if (status == 1) {
         var text = cm.getText();
 
-        if (text != "동의합니다" && !isenglish) {
+        if (text != "I Agree" && !isenglish) {
             cm.dispose();
-            cm.sendOk("#fs11#동의 하지않는다면 도와줄 방법이 없어요\r\n#b동의#k 한다면 다시 '#r#e동의합니다#k#n' 를 입력해주세요");
+            cm.sendOk("#fs11#หากคุณไม่ยอมรับ ฉันคงช่วยอะไรไม่ได้\r\nถ้า #bยอมรับ#k กรุณาพิมพ์ว่า '#r#eI Agree#k#n' อีกครั้ง");
             return;
         }
 
-        var v0 = "#b#h0##k님, 아래 직업 중 원하는 직업을 선택해주세요.#n\r\n\r\n";
+        var v0 = "คุณ #b#h0##k, กรุณาเลือกอาชีพที่ต้องการด้านล่าง#n\r\n\r\n";
         var job = cm.getPlayer().getJob();
-        if (job == 0) { // 모험가(초보자)
-            if (cm.getPlayer().getSubcategory() == 1) { // 듀얼블레이드
-                v0 += "#b#L400#듀얼블레이드#k로 시작하겠습니다.#l\r\n";
-            } else if (cm.getPlayer().getSubcategory() == 2) { // 캐논슈터
-                v0 += "#b#L501#캐논슈터#k로 시작하겠습니다.#l\r\n";
-            } else if (cm.getPlayer().getSubcategory() == 3) { // 패스파인더
-                v0 += "#b#L301#패스파인더#k로 시작하겠습니다.#l\r\n";
+        if (job == 0) { // Adventurer
+            if (cm.getPlayer().getSubcategory() == 1) { // Dual Blade
+                v0 += "#b#L400#Dual Blade#k#l\r\n";
+            } else if (cm.getPlayer().getSubcategory() == 2) { // Cannoneer
+                v0 += "#b#L501#Cannoneer#k#l\r\n";
+            } else if (cm.getPlayer().getSubcategory() == 3) { // Pathfinder
+                v0 += "#b#L301#Pathfinder#k#l\r\n";
             } else {
-                v0 += "#b#L100#전사#k로 시작하겠습니다.#l\r\n";
-                v0 += "#b#L200#마법사#k로 시작하겠습니다.#l\r\n";
-                v0 += "#b#L300#궁수#k로 시작하겠습니다.#l\r\n";
-                v0 += "#b#L400#도적#k으로 시작하겠습니다.#l\r\n";
-                v0 += "#b#L500#해적#k으로 시작하겠습니다.#l\r\n";
+                v0 += "#b#L100#Warrior#k#l\r\n";
+                v0 += "#b#L200#Magician#k#l\r\n";
+                v0 += "#b#L300#Archer#k#l\r\n";
+                v0 += "#b#L400#Thief#k#l\r\n";
+                v0 += "#b#L500#Pirate#k#l\r\n";
             }
-        } else if (job == 1000) { // 시그너스(노블레스)
-            v0 += "#b#L1100#소울마스터#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L1200#플레임위자드#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L1300#윈드브레이커#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L1400#나이트워커#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L1500#스트라이커#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 5000) { // 미하일
-            v0 += "#b#L5100#미하일#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 2000) { // 영웅(레전드)
-            v0 += "#b#L2100#아란#k으로 시작하겠습니다.#l\r\n";
-        } else if (job == 2001) { // 영웅(에반)
-            v0 += "#b#L2200#에반#k으로 시작하겠습니다.#l\r\n";
-        } else if (job == 2002) { // 영웅(메르세데스)
-            v0 += "#b#L2300#메르세데스#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 2003) { // 영웅(팬텀)
-            v0 += "#b#L2400#팬텀#k으로 시작하겠습니다.#l\r\n";
-        } else if (job == 2004) { // 영웅(루미너스)
-            v0 += "#b#L2700#루미너스#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 2005) { // 영웅(은월)
-            v0 += "#b#L2500#은월#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 3000) { // 레지스탕스(시티즌)
-            v0 += "#b#L3200#배틀메이지#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L3300#와일드헌터#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L3500#메카닉#k으로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L3700#블래스터#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 3001) { // 데몬
-            v0 += "#b#L3100#데몬슬레이어#k로 시작하겠습니다.#l\r\n";
-            v0 += "#b#L3101#데몬어벤져 [비추천]#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 3002) { // 제논
-            v0 += "#b#L3600#제논#k으로 시작하겠습니다.#l\r\n";
-        } else if (job == 6000) { // 카이저
-            v0 += "#b#L6100#카이저#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 6001) { // 엔젤릭버스터
-            v0 += "#b#L6500#엔젤릭버스터#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 6002) { // 카데나
-            v0 += "#b#L6400#카데나#k로 시작하겠습니다.#l\r\n";
-        } else if (job == 10112) { // 제로
-            v0 += "#b#L10112#제로 [비추천]#k로 시작하겠습니다.#l\r\n"
-        } else if (job == 14000) { // 키네시스
-            v0 += "#b#L14200#키네시스#k로 시작하겠습니다.#l\r\n"
-        } else if (job == 15000) { // 일리움
-            v0 += "#b#L15200#일리움#k으로 시작하겠습니다.#l\r\n"
-        } else if (job == 15001) { // 아크
-            v0 += "#b#L15500#아크#k로 시작하겠습니다.#l\r\n"
-        } else if (job == 16000) { // 호영
-            v0 += "#b#L16400#호영#k으로 시작하겠습니다.#l\r\n"
-        } else if (job == 15002) { // 아델
-            v0 += "#b#L15100#아델#k으로 시작하겠습니다.#l\r\n"
-        } else if (job == 6003) { // 카인
-            v0 += "#b#L6300#카인#k으로 시작하겠습니다.#l\r\n";
-        } else if (job == 16001) { // 라라
-            v0 += "#b#L16200#라라#k로 시작하겠습니다.#l\r\n"
-        } else if (job == 15003) { // 칼리
-            v0 += "#b#L15400#칼리#k로 시작하겠습니다.#l\r\n"
+        } else if (job == 1000) { // Cygnus
+            v0 += "#b#L1100#Dawn Warrior#k#l\r\n";
+            v0 += "#b#L1200#Blaze Wizard#k#l\r\n";
+            v0 += "#b#L1300#Wind Archer#k#l\r\n";
+            v0 += "#b#L1400#Night Walker#k#l\r\n";
+            v0 += "#b#L1500#Thunder Breaker#k#l\r\n";
+        } else if (job == 5000) { // Mikhail
+            v0 += "#b#L5100#Mikhail#k#l\r\n";
+        } else if (job == 2000) { // Aran
+            v0 += "#b#L2100#Aran#k#l\r\n";
+        } else if (job == 2001) { // Evan
+            v0 += "#b#L2200#Evan#k#l\r\n";
+        } else if (job == 2002) { // Mercedes
+            v0 += "#b#L2300#Mercedes#k#l\r\n";
+        } else if (job == 2003) { // Phantom
+            v0 += "#b#L2400#Phantom#k#l\r\n";
+        } else if (job == 2004) { // Luminous
+            v0 += "#b#L2700#Luminous#k#l\r\n";
+        } else if (job == 2005) { // Shade
+            v0 += "#b#L2500#Shade#k#l\r\n";
+        } else if (job == 3000) { // Resistance
+            v0 += "#b#L3200#Battle Mage#k#l\r\n";
+            v0 += "#b#L3300#Wild Hunter#k#l\r\n";
+            v0 += "#b#L3500#Mechanic#k#l\r\n";
+            v0 += "#b#L3700#Blaster#k#l\r\n";
+        } else if (job == 3001) { // Demon
+            v0 += "#b#L3100#Demon Slayer#k#l\r\n";
+            v0 += "#b#L3101#Demon Avenger [Not Recommended]#k#l\r\n";
+        } else if (job == 3002) { // Xenon
+            v0 += "#b#L3600#Xenon#k#l\r\n";
+        } else if (job == 6000) { // Kaiser
+            v0 += "#b#L6100#Kaiser#k#l\r\n";
+        } else if (job == 6001) { // Angelic Buster
+            v0 += "#b#L6500#Angelic Buster#k#l\r\n";
+        } else if (job == 6002) { // Cadena
+            v0 += "#b#L6400#Cadena#k#l\r\n";
+        } else if (job == 10112) { // Zero
+            v0 += "#b#L10112#Zero [Not Recommended]#k#l\r\n"
+        } else if (job == 14000) { // Kinesis
+            v0 += "#b#L14200#Kinesis#k#l\r\n"
+        } else if (job == 15000) { // Illium
+            v0 += "#b#L15200#Illium#k#l\r\n"
+        } else if (job == 15001) { // Ark
+            v0 += "#b#L15500#Ark#k#l\r\n"
+        } else if (job == 16000) { // Hoyoung
+            v0 += "#b#L16400#Hoyoung#k#l\r\n"
+        } else if (job == 15002) { // Adele
+            v0 += "#b#L15100#Adele#k#l\r\n"
+        } else if (job == 6003) { // Kain
+            v0 += "#b#L6300#Kain#k#l\r\n";
+        } else if (job == 16001) { // Lara
+            v0 += "#b#L16200#Lara#k#l\r\n"
+        } else if (job == 15003) { // Khali
+            v0 += "#b#L15400#Khali#k#l\r\n"
         }
         cm.askMenu(v0, 1, GameObjectType.User, ScriptMessageFlag.NoEsc, ScriptMessageFlag.BigScenario);
     } else if (status == 2) {
         jobCode = selection;
         if (selection == 100 || selection == 200 || selection == 300 || selection == 400 && cm.getPlayer().getSubcategory() != 1 || selection == 500) {
             adventure = true;
-            var v0 = "희망하는 2차 직업을 선택해주세요. 적정 레벨을 달성하면 자동으로 전직이 진행됩니다.#b\r\n\r\n";
+            var v0 = "กรุณาเลือกอาชีพคลาส 2 ที่ต้องการ เมื่อเลเวลถึงที่กำหนดจะเปลี่ยนคลาสให้อัตโนมัติ#b\r\n\r\n";
             if (selection == 100) {
-                v0 += "#L110#파이터 (4차직업 : 히어로)#l\r\n";
-                v0 += "#L120#페이지 (4차직업 : 팔라딘)#l\r\n";
-                v0 += "#L130#스피어맨 (4차직업 : 다크나이트)#l\r\n";
+                v0 += "#L110#Fighter (4th: Hero)#l\r\n";
+                v0 += "#L120#Page (4th: Paladin)#l\r\n";
+                v0 += "#L130#Spearman (4th: Dark Knight)#l\r\n";
             } else if (selection == 200) {
-                v0 += "#L210#위자드(불,독) (4차직업 : 아크메이지(불,독))#l\r\n";
-                v0 += "#L220#위자드(썬,콜) (4차직업 : 아크메이지(썬,콜))#l\r\n";
-                v0 += "#L230#클레릭 (4차직업 : 비숍)#l\r\n";
+                v0 += "#L210#Wizard (Fire/Poison) (4th: Arch Mage F/P)#l\r\n";
+                v0 += "#L220#Wizard (Ice/Lightning) (4th: Arch Mage I/L)#l\r\n";
+                v0 += "#L230#Cleric (4th: Bishop)#l\r\n";
             } else if (selection == 300) {
-                v0 += "#L310#헌터 (4차직업 : 보우마스터)#l\r\n";
-                v0 += "#L320#사수 (4차직업 : 신궁)#l\r\n";
+                v0 += "#L310#Hunter (4th: Bowmaster)#l\r\n";
+                v0 += "#L320#Crossbowman (4th: Marksman)#l\r\n";
             } else if (selection == 400) {
-                v0 += "#L410#어쌔신 (4차직업 : 나이트로드)#l\r\n";
-                v0 += "#L420#시프 (4차직업 : 섀도어)#l\r\n";
+                v0 += "#L410#Assassin (4th: Night Lord)#l\r\n";
+                v0 += "#L420#Bandit (4th: Shadower)#l\r\n";
             } else if (selection == 500) {
-                v0 += "#L510#인파이터 (4차직업 : 바이퍼)#l\r\n";
-                v0 += "#L520#건슬링거 (4차직업 : 캡틴)#l\r\n";
+                v0 += "#L510#Brawler (4th: Buccaneer)#l\r\n";
+                v0 += "#L520#Gunslinger (4th: Corsair)#l\r\n";
             }
             cm.sendSimple(v0);
         } else if (selection == 2700) {
-            var v0 = "#e루미너스#n를 선택하셨습니다. 원하는 계열을 선택해주세요.\r\n\r\n#b#L0##e어둠 계열#n을 선택하겠습니다.#l\r\n#L1##e빛 계열#n을 선택하겠습니다.#l";
+            var v0 = "คุณเลือก #eLuminous#n กรุณาเลือกสายที่ต้องการ\r\n\r\n#b#L0##eDark#n#l\r\n#L1##eLight#n#l";
             cm.askMenu(v0, 1, GameObjectType.User, ScriptMessageFlag.NoEsc, ScriptMessageFlag.BigScenario);
         } else {
             changeJob();
@@ -190,14 +190,14 @@ function action(mode, type, selection) {
 function selectJob(s) {
     var selectJob = getJobName(s);
     if (cm.getPlayer().getSubcategory() == 1) {
-        selectJob = "듀얼블레이드";
+        selectJob = "Dual Blade";
     }
     if (selectJob == "" || s == 800 || s == 900 || s == 910) {
         cm.sendNext("?");
         cm.dispose();
         return;
     }
-    var v0 = "선택하신 직업은 #e" + selectJob + "#n입니다. 해당 직업으로 전직하시겠습니까?\r\n 선택 시 해당 직업으로 전직되며 초기 자금이 지급됩니다.\r\n\r\n#L0#네 선택하겠습니다.#l\r\n#L1#다시 생각해보겠습니다.#l";
+    var v0 = "คุณเลือกอาชีพ #e" + selectJob + "#n คุณต้องการเปลี่ยนเป็นอาชีพนี้หรือไม่?\r\n หากเลือกแล้ว จะทำการเปลี่ยนอาชีพทันทีพร้อมรับเงินเริ่มต้น\r\n\r\n#L0#ยืนยัน#l\r\n#L1#ขอคิดดูก่อน#l";
     cm.askMenu(v0, 1, GameObjectType.User, ScriptMessageFlag.NoEsc, ScriptMessageFlag.BigScenario);
     //	cm.sendYesNo("선택하신 직업은 #e" + selectJob + "#n입니다. #b예#k 버튼을 누르시면 해당 직업으로 전직되며 초기 자금이 지급됩니다.");
 }
@@ -276,88 +276,88 @@ function changeJob() {
     //cm.resetStats(4, 4, 4, 4);
     cm.getPlayer().statReset();
     cm.autoSkillMaster();
-    cm.getPlayer().send(Packages.network.models.CField.addPopupSay(1052206, 20000, "기본적인 컨텐츠는\r\n체력바 우측 #r붉은 버튼#k 혹은 #r~키#k를 눌러서 확인 할 수 있으며 게임내 명령어는 채팅창에 #b@도움말#k을 입력하여 확인할 수 있습니다.\r\n게임을 이용하면서 어렵거나 궁금한점은 #b홈페이지,디스코드에 #r가이드#k 혹은 #b디스코드 내에 #r질문답변#k 게시판을 참고해주세요.", ""));
+    cm.getPlayer().send(Packages.network.models.CField.addPopupSay(1052206, 20000, "ข้อมูลพื้นฐานต่างๆ สามารถดูได้โดยกดปุ่ม #rสีแดง#k ทางขวาของแถบ HP หรือกดปุ่ม #r~#k \r\nคำสั่งในเกมสามารถตรวจสอบได้โดยพิมพ์ #b@help#k ในช่องแชท\r\nหากมีข้อสงสัยหรือปัญหา สามารถดู #rGuide#k ได้ที่ #bDiscord#k หรือถามในห้อง #rQ&A#k", ""));
     cm.dispose();
 }
 
 function getJobName(job) {
     selectJob = "";
     if (job == 100) {
-        selectJob = "전사";
+        selectJob = "Warrior";
     } else if (job == 200) {
-        selectJob = "마법사";
+        selectJob = "Magician";
     } else if (job == 300) {
-        selectJob = "궁수";
+        selectJob = "Archer";
     } else if (job == 301) {
-        selectJob = "패스파인더";
+        selectJob = "Pathfinder";
     } else if (job == 400) {
-        selectJob = "도적";
+        selectJob = "Thief";
     } else if (job == 500) {
-        selectJob = "해적";
+        selectJob = "Pirate";
     } else if (job == 501) {
-        selectJob = "캐논슈터";
+        selectJob = "Cannoneer";
     } else if (job == 1100) {
-        selectJob = "소울마스터";
+        selectJob = "Dawn Warrior";
     } else if (job == 1200) {
-        selectJob = "플레임위자드";
+        selectJob = "Blaze Wizard";
     } else if (job == 1300) {
-        selectJob = "윈드브레이커";
+        selectJob = "Wind Archer";
     } else if (job == 1400) {
-        selectJob = "나이트워커";
+        selectJob = "Night Walker";
     } else if (job == 1500) {
-        selectJob = "스트라이커";
+        selectJob = "Thunder Breaker";
     } else if (job == 2100) {
-        selectJob = "아란";
+        selectJob = "Aran";
     } else if (job == 2200) {
-        selectJob = "에반";
+        selectJob = "Evan";
     } else if (job == 2300) {
-        selectJob = "메르세데스";
+        selectJob = "Mercedes";
     } else if (job == 2400) {
-        selectJob = "팬텀";
+        selectJob = "Phantom";
     } else if (job == 2700) {
-        selectJob = "루미너스";
+        selectJob = "Luminous";
     } else if (job == 2500) {
-        selectJob = "은월";
+        selectJob = "Shade";
     } else if (job == 3100) {
-        selectJob = "데몬슬레이어";
+        selectJob = "Demon Slayer";
     } else if (job == 3101) {
-        selectJob = "데몬어벤져";
+        selectJob = "Demon Avenger";
     } else if (job == 3200) {
-        selectJob = "배틀메이지";
+        selectJob = "Battle Mage";
     } else if (job == 3300) {
-        selectJob = "와일드헌터";
+        selectJob = "Wild Hunter";
     } else if (job == 3500) {
-        selectJob = "메카닉";
+        selectJob = "Mechanic";
     } else if (job == 3600) {
-        selectJob = "제논";
+        selectJob = "Xenon";
     } else if (job == 3700) {
-        selectJob = "블래스터";
+        selectJob = "Blaster";
     } else if (job == 5100) {
-        selectJob = "미하일";
+        selectJob = "Mikhail";
     } else if (job == 6100) {
-        selectJob = "카이저";
+        selectJob = "Kaiser";
     } else if (job == 6500) {
-        selectJob = "엔젤릭버스터";
+        selectJob = "Angelic Buster";
     } else if (job == 6400) {
-        selectJob = "카데나";
+        selectJob = "Cadena";
     } else if (job == 10112) {
-        selectJob = "제로";
+        selectJob = "Zero";
     } else if (job == 14200) {
-        selectJob = "키네시스";
+        selectJob = "Kinesis";
     } else if (job == 15200) {
-        selectJob = "일리움";
+        selectJob = "Illium";
     } else if (job == 15500) {
-        selectJob = "아크";
+        selectJob = "Ark";
     } else if (job == 16400) {
-        selectJob = "호영";
+        selectJob = "Hoyoung";
     } else if (job == 15100) {
-        selectJob = "아델";
+        selectJob = "Adele";
     } else if (job == 6300) {
-        selectJob = "카인";
+        selectJob = "Kain";
     } else if (job == 16200) {
-        selectJob = "라라";
+        selectJob = "Lara";
     } else if (job == 15400) {
-        selectJob = "칼리";
+        selectJob = "Khali";
     }
 
     return selectJob;

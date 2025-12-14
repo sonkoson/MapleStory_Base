@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        cm.sendYesNo("도전을 마치고 퇴장하시겠습니까?");
+        cm.sendYesNo("ต้องการสิ้นสุดการท้าทายและออกจากพื้นที่หรือไม่?");
     } else if (status == 1) {
         cm.warp(262000000);
     }

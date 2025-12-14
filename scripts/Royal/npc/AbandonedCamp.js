@@ -97,7 +97,7 @@ function action(mode, type, selection) {
             }
             cm.sendYesNo("เงื่อนไขครบถ้วนแล้ว ต้องการจบเควสหรือไม่?\r\n\r\n" + talk);
         } else {
-            var talk = "#e#b[" + quest[sel][1] + " Quest]#n#k\r\n";
+            var talk = "#e#b[" + quest[sel][0] + " Quest]#n#k\r\n";
             for (var i = 0; i < check[sel].length; i++) {
                 count = cm.getPlayer().getKeyValue("Quest_" + check[sel][i][0]);
                 talk += "#o" + check[sel][i][0] + "# (" + count + " / " + check[sel][i][1] + ") ตัว\r\n";

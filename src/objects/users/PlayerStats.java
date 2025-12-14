@@ -409,7 +409,7 @@ public class PlayerStats implements Serializable {
                this.mp = (int) (this.localmaxmp * 0.1);
                chra.updateSingleStat(MapleStat.HP, this.hp);
                chra.updateSingleStat(MapleStat.MP, this.mp);
-               chra.dropMessage(5, "구사 일생의 효과로 죽음의 운명을 회피했습니다.");
+               chra.dropMessage(5, "คุณรอดพ้นจากความตายด้วยผลของสกิล");
                chra.temporaryStatReset(SecondaryStatFlag.PreReviveOnce);
             } else {
                chra.playerDead(bmDecrementDC);

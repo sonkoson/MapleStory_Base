@@ -4,7 +4,7 @@ importPackage(Packages.constants);
 
 function start() {
     status = -1;
-    action (1, 0, 0);
+    action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
@@ -14,20 +14,20 @@ function action(mode, type, selection) {
         return;
     }
     if (mode == 0) {
-        status --;
+        status--;
     }
     if (mode == 1) {
         status++;
     }
 
     if (status == 0) {
-        cm.sendYesNo("#fs11##d꽃 무더기#k 너머로 꽃이 #d반짝#k 입니다.\r\n#b꽃#k 을 가져 가시겠습니까?");
+        cm.sendYesNo("#fs11#มีดอกไม้ #dเปล่งประกาย#k อยู่หลัง #dกองดอกไม้#k\r\nคุณต้องการหยิบ #bดอกไม้#k ไปหรือไม่?");
     } else if (status == 1) {
-        cm.sendNextS("#b좋아, 이제 #fs14#존#fs12# 님께 가볼까..?#k", 2);
-   } else if (status == 2) {
+        cm.sendNextS("#bเอาล่ะ, ทีนี้กลับไปหา #fs14#John#fs12# กันดีไหม..?#k", 2);
+    } else if (status == 2) {
         cm.warp(ServerConstants.TownMap, 0);
-        cm.gainItem(4033970,1);
+        cm.gainItem(4033970, 1);
         cm.dispose();
-   
+
     }
 }

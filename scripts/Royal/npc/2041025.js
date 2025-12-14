@@ -15,8 +15,8 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        cm.sendYesNo("삐리 삐리~ 저를 통해 안전한 곳으로 나가실 수 있습니다.\r\n"
-        +"삐리 삐리~ 이대로 밖으로 나가시겠습니까?");
+        cm.sendYesNo("ปี๊บ ปี๊บ~ ข้าสามารถพาท่านออกไปสู่พื้นที่ปลอดภัยได้\r\n"
+            + "ปี๊บ ปี๊บ~ ต้องการออกไปข้างนอกตอนนี้เลยหรือไม่?");
     } else if (status == 1) {
         cm.warp(220080000);
         cm.dispose();

@@ -1,41 +1,41 @@
 importPackage(Packages.scripting);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-보라색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+var Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var Color = "#fc0xFF6600CC#"
+var PurpleColor = "#fc0xFF6600CC#"
+var BlackColor = "#fc0xFF000000#"
+var PinkColor = "#fc0xFFFF3366#"
+var LightPinkColor = "#fc0xFFF781D8#"
+var Enter = "\r\n"
+var Enter2 = "\r\n\r\n"
 enter = "\r\n";
 
 var seld = -1;
 var a = "";
 var prevallstat = 0, prevatk = 0, nextallstat = 0, nextatk = 0;
-var 사용재화 = 0, 재화가격 = 0, 사용재화S = "";
+var useCurrency = 0, currencyPrice = 0, useCurrencyName = "";
 var logtype = 0, maxcount = 0;
 var allstat = 2, atk = 2; // 1회당 올스탯/공마 증가치
 var maxstat = 80000;
 
 var currencyOptions = [
-    { id: 4310308, price: 30, name: "네오코어",   maxCount: 1000, logType: 10 },
-    { id: 4031227, price: 50, name: "찬빛",       maxCount:  600, logType: 11 },
-    { id: 2437760, price: 300, name: "아케인심볼", maxCount:  100, logType: 12 }, // seld=3
-    { id: 2633336, price: 300, name: "어센틱심볼", maxCount:  100, logType: 13 }, // seld=4
-    { id: 4009547, price: 1000, name: "에르다조각", maxCount:  30, logType: 14 }  // seld=5
+    { id: 4310308, price: 30, name: "Neo Core", maxCount: 1000, logType: 10 },
+    { id: 4031227, price: 50, name: "Bright Light", maxCount: 600, logType: 11 },
+    { id: 2437760, price: 300, name: "Arcane Symbol", maxCount: 100, logType: 12 }, // seld=3
+    { id: 2633336, price: 300, name: "Authentic Symbol", maxCount: 100, logType: 13 }, // seld=4
+    { id: 4009547, price: 1000, name: "Erda Fragment", maxCount: 30, logType: 14 }  // seld=5
 ];
 
 function buildCurrencyMenu() {
@@ -43,7 +43,7 @@ function buildCurrencyMenu() {
     for (var i = 0; i < currencyOptions.length; i++) {
         var opt = currencyOptions[i];
         var idx = i + 1;
-        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(1회 최대 : " + opt.maxCount + "회)#k\r\n";
+        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(Max per time : " + opt.maxCount + " times)#k\r\n";
     }
     return txt;
 }
@@ -63,100 +63,92 @@ function action(mode, type, selection) {
     if (status == 0) {
         if (cm.getPlayer().getKeyValue("cashallstat") == null)
             cm.getPlayer().setKeyValue("cashallstat", "0");
-        if (cm.getPlayer().getKeyValue("cashatk")     == null)
+        if (cm.getPlayer().getKeyValue("cashatk") == null)
             cm.getPlayer().setKeyValue("cashatk", "0");
 
         if (cm.getPlayer().getKeyValue("cashallstat") > maxstat - 2 ||
-            cm.getPlayer().getKeyValue("cashatk")     > maxstat - 2) {
+            cm.getPlayer().getKeyValue("cashatk") > maxstat - 2) {
             cm.getPlayer().setKeyValue("cashallstat", maxstat);
-            cm.getPlayer().setKeyValue("cashatk",     maxstat);
+            cm.getPlayer().setKeyValue("cashatk", maxstat);
         }
 
         prevallstat = parseInt(cm.getPlayer().getKeyValue("cashallstat"));
-        prevatk     = parseInt(cm.getPlayer().getKeyValue("cashatk"));
+        prevatk = parseInt(cm.getPlayer().getKeyValue("cashatk"));
 
-        var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
+        var txt = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
         txt += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n";
-        txt += "#fc0xFF000000#      어떤 재화를 사용하여 캐릭터를 강화해보시겠어요?#l\r\n\r\n";
+        txt += "#fc0xFF000000#      ต้องการใช้ไอเท็มใดเพื่ออัปเกรดตัวละคร?#l\r\n\r\n";
         txt += "#fc0xFF6542D7#";
-        txt += buildCurrencyMenu();  // ← 배열 기반으로 자동 생성
+        txt += buildCurrencyMenu();  // ← Automatically generated based on array
         cm.sendSimple(txt);
 
     } else if (status == 1) {
         seld = selection;
         var opt = currencyOptions[seld - 1];
         if (!opt) {
-            cm.sendOk("#fs11##fc0xFF000000#유효하지 않은 선택입니다.");
+            cm.sendOk("#fs11##fc0xFF000000#ตัวเลือกไม่ถูกต้อง");
             cm.dispose();
             return;
         }
-        사용재화   = opt.id;
-        재화가격   = opt.price;
-        사용재화S  = opt.name;
-        maxcount   = opt.maxCount;
-        logtype    = opt.logType;
-
-        var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n";
-        txt += "#fs11##fc0xFF000000#       #b#i" + 사용재화 + "##z" + 사용재화 + "# " + 재화가격 + "개#fc0xFF000000#로 캐릭터를 강화할 수 있습니다#b \r\n#r                      (1회당 올스탯 2 / 공 마 2 증가)#k\r\n\r\n";
-        txt += "#fs13#"+ 보라색 + "                         < 현재 적용 중인 스탯 >\r\n";
-        txt += "#fs11#"+ 검은색 + "                                 올스탯 #b+ " + prevallstat + "\r\n";
-        txt += 검은색 + "                                 공　마 #b+ " + prevatk + "\r\n\r\n";
-        txt += 핑크색 + "                     캐릭터 강화를 진행하시겠습니까?";
+        txt += "#fs11##fc0xFF000000#       #b#i" + useCurrency + "##z" + useCurrency + "# " + currencyPrice + " ชิ้น#fc0xFF000000# สามารถอัปเกรดตัวละครได้#b \r\n#r                      (เพิ่ม All Stat 2 / Att & Matt 2 ต่อครั้ง)#k\r\n\r\n";
+        txt += "#fs13#" + PurpleColor + "                         < สเตตัสที่ใช้อยู่ปัจจุบัน >\r\n";
+        txt += "#fs11#" + BlackColor + "                                 All Stat #b+ " + prevallstat + "\r\n";
+        txt += BlackColor + "                                 Att & Matt #b+ " + prevatk + "\r\n\r\n";
+        txt += PinkColor + "                     ต้องการดำเนินการอัปเกรดตัวละครหรือไม่?";
         cm.sendSimple(txt);
 
     } else if (status == 2) {
-        var possible = Math.floor(cm.itemQuantity(사용재화) / 재화가격);
+        var possible = Math.floor(cm.itemQuantity(useCurrency) / currencyPrice);
         possible = Math.min(possible, maxcount);
         cm.askNumber(
-            "#fs11##fc0xFF000000#캐릭터를 몇 회 강화할까? \r\n#Cgray#(현재 강화 가능한 횟수 : " + possible + "번)",
+            "#fs11##fc0xFF000000#ต้องการอัปเกรดตัวละครกี่ครั้ง? \r\n#Cgray#(จำนวนครั้งที่สามารถอัปเกรดได้ตอนนี้ : " + possible + " ครั้ง)",
             GameObjectType.User, 1, 1, possible, ScriptMessageFlag.NpcReplacedByUser
         );
 
     } else if (status == 3) {
         a = selection;
         nextallstat = prevallstat + allstat * a;
-        nextatk     = prevatk     + atk     * a;
+        nextatk = prevatk + atk * a;
 
         if (nextallstat > maxstat || nextatk > maxstat) {
-            cm.sendOk("#fs11#현재 캐릭터강화 수치는 80,000 을 초과할 수 없습니다");
+            cm.sendOk("#fs11#ค่าการอัปเกรดตัวละครปัจจุบันไม่สามารถเกิน 80,000 ได้");
             cm.dispose();
             return;
         }
 
-        var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
+        var txt = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
         txt += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n";
-        txt += "#fs13#" + 보라색 + "                         < 현재 적용 중인 스탯 >\r\n";
-        txt += "#fs11#" + 검은색 + "                                 올스탯 #b+ " + prevallstat + "\r\n";
-        txt += 검은색 + "                                 공　마 #b+ " + prevatk + "\r\n\r\n";
-        txt += "#fs13#" + 보라색 + "                       < 강화 후 적용되는 스탯 >\r\n";
-        txt += "#fs11#" + 검은색 + "                                 올스탯 #b+ " + nextallstat + "\r\n";
-        txt += 검은색 + "                                 공　마 #b+ " + nextatk + "\r\n\r\n";
-        txt += 검은색 + "#r                    사용할 #i" + 사용재화 + "##z" + 사용재화 + "# 갯수 : " + (재화가격 * a) + "개\r\n\r\n";
-        txt += 검은색 + " 정말 강화를 진행하시겠다면 아래에 #r'동의합니다'" + 검은색 + " 를 입력해주세요";
+        txt += "#fs13#" + PurpleColor + "                         < สเตตัสที่ใช้อยู่ปัจจุบัน >\r\n";
+        txt += "#fs11#" + BlackColor + "                                 All Stat #b+ " + prevallstat + "\r\n";
+        txt += BlackColor + "                                 Att & Matt #b+ " + prevatk + "\r\n\r\n";
+        txt += "#fs13#" + PurpleColor + "                       < สเตตัสที่จะได้รับหลังอัปเกรด >\r\n";
+        txt += "#fs11#" + BlackColor + "                                 All Stat #b+ " + nextallstat + "\r\n";
+        txt += BlackColor + "                                 Att & Matt #b+ " + nextatk + "\r\n\r\n";
+        txt += BlackColor + "#r                    จำนวน #i" + useCurrency + "##z" + useCurrency + "# ที่ต้องใช้ : " + (currencyPrice * a) + " ชิ้น\r\n\r\n";
+        txt += BlackColor + " หากต้องการดำเนินการอัปเกรดจริงๆ กรุณาพิมพ์ #r'Y'" + BlackColor + " ด้านล่าง";
         cm.sendGetText(txt);
 
     } else if (status == 4) {
-        if (cm.getText() != "동의합니다") {
-            cm.sendOk("#fs11#동의 하지않는다면 도와줄 방법이 없어요\r\n#b동의#k 한다면 다시 '#r#e동의합니다#k#n' 를 입력해주세요");
+        if (cm.getText() != "Y" && cm.getText() != "y") {
+            cm.sendOk("#fs11#หากไม่พิมพ์ Y ก็ช่วยอะไรไม่ได้นะ\r\n#bหากตกลง#k ให้พิมพ์ '#r#eY#k#n' อีกครั้ง");
             cm.dispose();
             return;
         }
-        if (!cm.haveItem(사용재화, 재화가격 * a)) {
-            cm.sendOk("#fs11##fc0xFF000000#" + a + "회 강화하기 위해선 #b" + (재화가격 * a) + " #z" + 사용재화 + "##fc0xFF000000#가 필요합니다.");
+        if (!cm.haveItem(useCurrency, currencyPrice * a)) {
+            cm.sendOk("#fs11##fc0xFF000000#ต้องมี #b" + (currencyPrice * a) + " #z" + useCurrency + "##fc0xFF000000# เพื่อการอัปเกรด " + a + " ครั้ง");
             cm.dispose();
             return;
         }
         cm.dispose();
         try {
-            cm.addCustomLog(logtype, "[캐릭터강화] | 누적스탯 : " + nextallstat + " | 누적공마 : " + nextatk + " |\r\nㄴ | 강화횟수 : " + a + " | 사용재화 :  " + 사용재화S + " " + (재화가격 * a) + "개 |");
-            cm.effectText("#fn나눔고딕 ExtraBold##fs20#[캐릭터강화] 캐릭터가 < " + a + " > 회 강화되었습니다", 50, 1000, 6, 0, 330, -550);
+            cm.addCustomLog(logtype, "[Character Upgrade] | Total Stat : " + nextallstat + " | Total Att/Matt : " + nextatk + " |\r\nㄴ | Upgrade Count : " + a + " | Currency :  " + useCurrencyName + " " + (currencyPrice * a) + " EA |");
+            cm.effectText("#fnArial##fs20#[Character Upgrade] ตัวละครได้รับการอัปเกรด < " + a + " > ครั้ง", 50, 1000, 6, 0, 330, -550);
             cm.getPlayer().setKeyValue("cashallstat", nextallstat);
-            cm.getPlayer().setKeyValue("cashatk",     nextatk);
+            cm.getPlayer().setKeyValue("cashatk", nextatk);
             cm.getPlayer().setBonusCTSStat();
-            cm.gainItem(사용재화, -재화가격 * a);
-        } catch(err) {
-            cm.addCustomLog(50, "[CashEn.js] 에러 발생 : " + err);
+            cm.gainItem(useCurrency, -currencyPrice * a);
+        } catch (err) {
+            cm.addCustomLog(50, "[CashEn.js] Error : " + err);
         }
     }
 }

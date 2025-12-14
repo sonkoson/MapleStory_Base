@@ -20,7 +20,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0 && type == 3 && selection == -1) {
-            cm.sayNpc("#fs11#그러면 게임에 참여하고 싶을 때 다시 찾아와줘~", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.sayNpc("#fs11#ถ้าอย่างนั้น เมื่อไหร่ที่อยากเล่นเกมก็กลับมาหาฉันได้เสมอนะ~", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         } else if (mode == 0 && type == 6) {
@@ -31,16 +31,16 @@ function action(mode, type, selection) {
             status++;
         else
             status--;
-        
+
         if (status == 0) {
-            v0 = "#fs11#내가 준비한 미니게임에서 #b#e#i4310307:# #t4310307##n#k을 얻어봐~\r\n";
-            v0 += "#L1# #r#e<알록달록 초대장>#n 참여하기#l#k\r\n";
-            v0 += "#L2# #b#e<알록달록 초대장>#n 설명듣기#l#k\r\n\r\n";
-            v0 += "#L3# #r#e<높이높이 로얄캐슬>#n 참여하기#l#k\r\n";
-            v0 += "#L4# #b#e<높이높이 로얄캐슬>#n 설명듣기#l#k\r\n\r\n";
-            v0 += "#L5# #r#e<레인보우 러쉬>#n 참여하기#l#k\r\n";
-            v0 += "#L6# #b#e<레인보우 러쉬>#n 설명듣기#l#k\r\n\r\n";
-            v0 += "#L100# 더 이상 궁금한 것이 없어.#l\r\n";
+            v0 = "#fs11#ลองมารับ #b#e#i4310307:# #t4310307##n#k จากมินิเกมที่ฉันเตรียมไว้สิ~\r\n";
+            v0 += "#L1# #r#e<บัตรเชิญหลากสีสัน>#n เข้าร่วม#l#k\r\n";
+            v0 += "#L2# #b#e<บัตรเชิญหลากสีสัน>#n ฟังคำอธิบาย#l#k\r\n\r\n";
+            v0 += "#L3# #r#e<รอยัลคาสเซิลเสียดฟ้า>#n เข้าร่วม#l#k\r\n";
+            v0 += "#L4# #b#e<รอยัลคาสเซิลเสียดฟ้า>#n ฟังคำอธิบาย#l#k\r\n\r\n";
+            v0 += "#L5# #r#e<เรนโบว์รัช>#n เข้าร่วม#l#k\r\n";
+            v0 += "#L6# #b#e<เรนโบว์รัช>#n ฟังคำอธิบาย#l#k\r\n\r\n";
+            v0 += "#L100# ไม่มีข้อสงสัยอะไรแล้ว#l\r\n";
 
             cm.askMenu(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc);
         } else if (status == 1) {
@@ -48,29 +48,29 @@ function action(mode, type, selection) {
                 sel = selection;
             }
             if (sel == 2) {
-                var v0 = "#b#e알록달록 초대장#n#k은 로얄 캐슬로 사람들을 초대하기 위해\r\n초대장을 보내는 것이 목표인 게임이야~";
+                var v0 = "#b#eบัตรเชิญหลากสีสัน#n#kคือเกมที่มีเป้าหมายคือการส่งบัตรเชิญ\r\nเพื่อเชิญผู้คนมาที่รอยัลคาสเซิล~";
                 cm.sayNpc(v0, GameObjectType.Npc, false, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 1) {
-                var v0 = "지금 #e#b<알록달록 초대장>#n#k에 참여할래~?\r\n\r\n#r(게임 중에는 해상도가 1024x768로 변경됩니다.)#k";
+                var v0 = "ต้องการเข้าร่วม #e#b<บัตรเชิญหลากสีสัน>#n#k ตอนนี้เลยไหม~?\r\n\r\n#r(ความละเอียดหน้าจอจะเปลี่ยนเป็น 1024x768 ระหว่างเล่นเกม)#k";
                 cm.askYesNo(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 3) {
-                var v0 = "지금 #e#b<높이높이 로얄캐슬>#n#k에 참여할래~?\r\n\r\n#r(게임 중에는 해상도가 1024x768로 변경됩니다.)#k";
+                var v0 = "ต้องการเข้าร่วม #e#b<รอยัลคาสเซิลเสียดฟ้า>#n#k ตอนนี้เลยไหม~?\r\n\r\n#r(ความละเอียดหน้าจอจะเปลี่ยนเป็น 1024x768 ระหว่างเล่นเกม)#k";
                 cm.askYesNo(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 4) {
-                var v0 = "#b#e높이높이 로얄캐슬#n#k은 우리만의 탑을 높게 쌓아\r\n올리는 게임이야~";
+                var v0 = "#b#eรอยัลคาสเซิลเสียดฟ้า#n#kคือเกมที่เราจะสร้างหอคอยของเรา\r\nให้สูงขึ้นไปเรื่อยๆ~";
                 cm.sayNpc(v0, GameObjectType.Npc, false, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 5) {
-                var v0 = "지금 #e#b<레인보우 러쉬>#n#k에 참여할래~?\r\n\r\n#r(게임 중에는 해상도가 1366x768로 변경됩니다.)#k";
+                var v0 = "ต้องการเข้าร่วม #e#b<เรนโบว์รัช>#n#k ตอนนี้เลยไหม~?\r\n\r\n#r(ความละเอียดหน้าจอจะเปลี่ยนเป็น 1366x768 ระหว่างเล่นเกม)#k";
                 cm.askYesNo(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 6) {
-                var v0 = "#b#e레인보우 러쉬#n#k는 이쁜 무지갯빛 길을 달리는 게임이야~";
+                var v0 = "#b#eเรนโบว์รัช#n#kคือเกมที่วิ่งไปบนถนนสายรุ้งแสนสวย~";
                 cm.sayNpc(v0, GameObjectType.Npc, false, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 100) {
                 cm.dispose();
             }
         } else if (status == 2) {
             if (sel == 2) {
-                var v0 = "초대장을 보내기 위해선 대기하고 있는 초대장과\r\n#b#e동일한 색상의 버튼#n#k을 누르기만 하면 돼~";
+                var v0 = "วิธีการส่งบัตรเชิญเพียงแค่กด #b#eปุ่มสีเดียวกัน#n#k\r\nกับบัตรเชิญที่รออยู่เท่านั้นเอง~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 1) {
                 cm.enterMission2Space();
@@ -85,48 +85,48 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } else if (sel == 4) {
-                var v0 = "한 층 한 층이 옆에서 나타나면 #r#eSpace#k#n 키를 눌러서 멈출 수 있는데, 이때 집중해서 #e#b타이밍#k#n을 잘 맞추는 것이 중요해~";
+                var v0 = "เมื่อแต่ละชั้นปรากฏขึ้นจากด้านข้าง กดปุ่ม #r#eSpace#k#n เพื่อหยุดมัน\r\nสิ่งสำคัญคือต้องกะ #e#bจังหวะ#k#n ให้ดี~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 6) {
-                var v0 = "신비한 #b#e눈꽃 순록#n#k을 타고 무지갯빛 길을 마음껏 달려봐~";
+                var v0 = "ขี่ #b#eกวางหิมะ#n#k สุดมหัศจรรย์แล้ววิ่งไปบนถนนสายรุ้งอย่างอิสระ~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             }
         } else if (status == 3) {
             if (sel == 2) {
-                var v0 = "초대장에는 #b#e3가지 종류#n#k가 있어~\r\n\r\n각각 다른 모양과 색깔을 지니고 있으니 구분은 쉬울 거야~\r\n\r\n#i03801591##i03801592##i03801593#";
+                var v0 = "บัตรเชิญมี #b#e3 ประเภท#n#k~\r\n\r\nแต่ละประเภทมีรูปร่างและสีต่างกัน แยกออกได้ง่ายแน่นอน~\r\n\r\n#i03801591##i03801592##i03801593#";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 4) {
-                var v0 = "범위 내에 멈추지 못한다고 무조건 실패하는 건 아니지만,\r\n쌓는 층의 폭이 줄어들 거야~\r\n\r\n물론 완전히 다른 위치에 멈추면 바로 #e<GAME OVER>#n~";
+                var v0 = "ถ้าหยุดไม่ตรงในขอบเขต ก็ไม่ได้หมายความว่าจะล้มเหลวทันที\r\nแต่ความกว้างของชั้นที่สร้างจะลดลง~\r\n\r\nแน่นอนว่าถ้าหยุดในตำแหน่งที่ผิดไปเลยก็ #e<GAME OVER>#n ทันที~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 6) {
-                var v0 = "점점 더 빨라지는 눈꽃 순록을 타고 #e#b좌우 방향키#k#n를 이용해 장애물을 피해야 해~\r\n\r\n#b#e순발력#n#k이 필요하겠지~?";
+                var v0 = "ขี่กวางหิมะที่วิ่งเร็วขึ้นเรื่อยๆ และใช้ #e#bปุ่มทิศทางซ้ายขวา#k#n เพื่อหลบสิ่งกีดขวาง~\r\n\r\nต้องใช้ #b#eไหวพริบ#n#k หน่อยนะ~?";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             }
         } else if (status == 4) {
             if (sel == 2) {
-                var v0 = "하지만 주의해야 할 #r#e특별한 초대장#n#l#k이 하나 있어~\r\n#i03801594#\r\n이 초대장은 #b#e동서남북 종이접기 모양#n#k을 띠고 있는데\r\n본 모습을 숨기고 있다가 전송 직전에 앞서 말한 세 초대장의 모습으로 변할 거야~";
+                var v0 = "แต่มี #r#eบัตรเชิญพิเศษ#n#l#k หนึ่งใบที่ต้องระวัง~\r\n#i03801594#\r\nบัตรเชิญนี้มีรูปร่างเป็น #b#eทิศตะวันออก ตะวันตก ใต้ เหนือ#n#k\r\nมันจะซ่อนรูปร่างจริงไว้จนกว่าจะส่ง แล้วเปลี่ยนเป็นหนึ่งในสามรูปแบบที่บอกไป~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 4) {
-                var v0 = "폭이 줄어들수록 높이 쌓기 더 어렵다는 건 알겠지~?\r\n그래서 높은 #e#b집중력#k#n이 필요해~";
+                var v0 = "ยิ่งความกว้างลดลง ก็ยิ่งสร้างให้สูงยากขึ้นใช่ไหมล่ะ~?\r\nดังนั้นต้องใช้ #e#bสมาธิ#k#n สูงนะ~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 6) {
-                var v0 = "길을 가로막는 #r#e먹구름#n#l#k을 주의해~ \r\n\부딪히면 그대로 #e<GAME OVER>#n~";
+                var v0 = "ระวัง #r#eเมฆฝน#n#l#k ที่ขวางทางด้วยนะ~\r\nถ้าชนเข้าก็ #e<GAME OVER>#n ทันที~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             }
         } else if (status == 5) {
             if (sel == 2) {
-                var v0 = "그리고 초대장을 보내다 보면 #r#e피버 게이지#n#l#k가 차오를 거야~\r\n\r\n#r#e피버 게이지#n#l#k가 가득 차면 #b#e스페이스 바#n#k를 빠르게 눌러\r\n더 빠르게 초대장을 보낼 수 있어~\r\n\r\n#i3801199#";
+                var v0 = "และเมื่อส่งบัตรเชิญไปเรื่อยๆ #r#eเกจฟีเวอร์#n#l#k จะเต็ม~\r\n\r\nเมื่อ #r#eเกจฟีเวอร์#n#l#k เต็มกด #b#eSpacebar#n#k รัวๆ\r\nเพื่อส่งบัตรเชิญได้เร็วยิ่งขึ้น~\r\n\r\n#i3801199#";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 4) {
-                var v0 = "마지막으로 탑을 높이 쌓을수록 더 많은 #b#e보상#n#k을 줄게~\r\n이제 #b#e높이높이 로얄캐슬#n#k에 대해 이해했어~?\r\n\r\n어서 시작하자~";
+                var v0 = "สุดท้าย ยิ่งสร้างหอคอยได้สูงเท่าไหร่ ฉันจะให้ #b#eรางวัล#n#k มากขึ้นเท่านั้น~\r\nตอนนี้เข้าใจเกี่ยวกับ #b#eรอยัลคาสเซิลเสียดฟ้า#n#k แล้วใช่ไหม~?\r\n\r\nงั้นมาเริ่มกันเถอะ~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 6) {
-                var v0 = "마지막으로 더 멀리 달릴수록 더 많은 #b#e보상#n#k을 줄게~\r\n이제 #b#e레인보우 러쉬#n#k에 대해 이해했어~?\그럼 시작하자~";
+                var v0 = "สุดท้าย ยิ่งวิ่งไปได้ไกลเท่าไหร่ ฉันจะให้ #b#eรางวัล#n#k มากขึ้นเท่านั้น~\r\nตอนนี้เข้าใจเกี่ยวกับ #b#eเรนโบว์รัช#n#k แล้วใช่ไหม~?\r\nงั้นมาเริ่มกันเถอะ~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             }
         } else if (status == 6) {
             if (sel == 2) {
-                var v0 = "아름다운 로얄캐슬에 많은 사람이 올 수 있도록 초대장을\r\n많이 보내줘~!\r\n\r\n물론 #b#e보상#n#k도 빠짐없이 줄게~";
+                var v0 = "ช่วยส่งบัตรเชิญให้มากๆ เพื่อให้ผู้คนมาร่วมงานที่รอยัลคาสเซิลแสนสวยกันเถอะ~!\r\n\r\nแน่นอนว่าฉันจะให้ #b#eรางวัล#n#k อย่างงามเลยละ~";
                 cm.sayNpc(v0, GameObjectType.Npc, true, true, ScriptMessageFlag.NpcReplacedByNpc);
             } else if (sel == 4 || sel == 6) {
                 cm.dispose();

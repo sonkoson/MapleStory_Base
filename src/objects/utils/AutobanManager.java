@@ -28,7 +28,7 @@ public class AutobanManager implements Runnable {
          if (!c.getPlayer().isGM() && !c.getPlayer().isClone()) {
             this.addPoints(c, 5000, 0L, reason);
          } else {
-            c.getPlayer().dropMessage(5, "[경고] 운영자는 오토밴 대상이 아닙니다. : " + reason);
+            c.getPlayer().dropMessage(5, "[แจ้งเตือน] GM ไม่อยู่ในเงื่อนไขการแบนอัตโนมัติ : " + reason);
          }
       }
    }
@@ -56,7 +56,8 @@ public class AutobanManager implements Runnable {
 
          if (this.points.get(acc) < 5000) {
             if (expiration > 0L) {
-               this.expirations.add(new AutobanManager.ExpirationEntry(System.currentTimeMillis() + expiration, acc, points));
+               this.expirations
+                     .add(new AutobanManager.ExpirationEntry(System.currentTimeMillis() + expiration, acc, points));
             }
          } else if (!c.getPlayer().isGM() && !c.getPlayer().isClone()) {
             StringBuilder sb = new StringBuilder("오토밴 (name : ");
@@ -66,11 +67,12 @@ public class AutobanManager implements Runnable {
             sb.append(") 사유 : ");
             String reason_ = String.join(", ", this.reasons.get(acc));
             sb.append(reason_);
-            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0, "[오토밴] " + c.getPlayer().getName() + "이(가) 밴처리되었습니다. (사유: " + reason + ")"));
+            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0,
+                  "[Autoban] " + c.getPlayer().getName() + " ถูกแบน (สาเหตุ: " + reason + ")"));
             c.getPlayer().ban(sb.toString(), true, true, false);
             c.disconnect(false);
          } else {
-            c.getPlayer().dropMessage(5, "[경고] 운영자는 오토밴 대상이 아닙니다. : " + reason);
+            c.getPlayer().dropMessage(5, "[แจ้งเตือน] GM ไม่อยู่ในเงื่อนไขการแบนอัตโนมัติ : " + reason);
          }
       } finally {
          this.lock.unlock();
@@ -102,7 +104,7 @@ public class AutobanManager implements Runnable {
       }
 
       public int compareTo(AutobanManager.ExpirationEntry o) {
-         return (int)(this.time - o.time);
+         return (int) (this.time - o.time);
       }
 
       @Override
@@ -110,7 +112,7 @@ public class AutobanManager implements Runnable {
          if (!(oth instanceof AutobanManager.ExpirationEntry)) {
             return false;
          } else {
-            AutobanManager.ExpirationEntry ee = (AutobanManager.ExpirationEntry)oth;
+            AutobanManager.ExpirationEntry ee = (AutobanManager.ExpirationEntry) oth;
             return this.time == ee.time && this.points == ee.points && this.acc == ee.acc;
          }
       }

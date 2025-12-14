@@ -38,21 +38,21 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         if (cm.getPlayer().getAndroid() == null) {
-            cm.sendOk("안드로이드가 없는 분은 안드로이드 메이크업을 하실 수 없습니다. 안드로이드와 함께 찾아와 주세요.");
+            cm.sendOk("หากคุณไม่มี Android คุณจะไม่สามารถใช้บริการแต่งหน้า Android ได้ กรุณากลับมาพร้อมกับ Android");
             cm.dispose();
             return;
         }
-        var v0 = "안녕하세요? 안드로이드 뷰티를 담당하고 있는 #b써니#k라고 해요! 원하는 기능을 선택해주세요.\r\n\r\n";
-        v0 += "#L1##b#i5150057# 헤어#k#l     ";
-        v0 += "#L2##b#i5151036# 염색#k#l   ";
-        v0 += "#L3##b#i5152057# 성형#k#l\r\n";
-        v0 += "#L4##b#i5152100# 컬러 렌즈#k#l";
-        v0 += "#L5##i5153015# 피부 색깔#l\r\n";
+        var v0 = "สวัสดี ฉันชื่อ #bSunny#k ผู้ดูแลความงามของ Android! กรุณาเลือกฟังก์ชันที่คุณต้องการ\r\n\r\n";
+        v0 += "#L1##b#i5150057# ทรงผม#k#l     ";
+        v0 += "#L2##b#i5151036# สีผม#k#l   ";
+        v0 += "#L3##b#i5152057# ใบหน้า#k#l\r\n";
+        v0 += "#L4##b#i5152100# คอนแทคเลนส์#k#l";
+        v0 += "#L5##i5153015# สีผิว#l\r\n";
         cm.sendSimple(v0);
     } else if (status == 1) {
         if (selection == 5) {
             beauty = 1;
-            cm.askAvatarAndroid("마음에 드는 스타일을 선택해보세요.", skin);
+            cm.askAvatarAndroid("เลือกสไตล์ที่คุณชอบได้เลย", skin);
         } else if (selection == 1) {
             getmhair = 0;
             getfhair = 0;
@@ -127,12 +127,12 @@ function action(mode, type, selection) {
         if (selection == 1) {
             beauty = 2;
             hairList = cm.getAndroidGender() == 0 ? mhair : fhair;
-            var msg = "현재 다양한 헤어 스타일이 준비되어 있습니다. ";
+            var msg = "เรามีทรงผมหลากหลายรูปแบบเตรียมไว้ให้คุณ ";
             var count = 0;
             count = hairList.length;
-            msg = "원하시는 페이지를 선택해주시기 바랍니다. #e(총 " + count + " 페이지)#n\r\n\r\n#b";
+            msg = "กรุณาเลือกหน้าที่ต้องการ #e(ทั้งหมด " + count + " หน้า)#n\r\n\r\n#b";
             for (var i = 0; i < count; ++i) {
-                msg += "#L" + i + "##e" + (i + 1) + "페이지#n 헤어 스타일을 이용하겠습니다.#l\r\n";
+                msg += "#L" + i + "##eหน้า " + (i + 1) + "#n เลือกดูทรงผม#l\r\n";
             }
             cm.sendSimple(msg);
         } else if (selection == 2) {
@@ -148,16 +148,16 @@ function action(mode, type, selection) {
                     haircolor.push(current + i);
                 }
             }
-            cm.askAvatarAndroid("마음에 드는 스타일을 선택해보세요.", haircolor);
+            cm.askAvatarAndroid("เลือกสไตล์ที่คุณชอบได้เลย", haircolor);
         } else if (selection == 3) {
             beauty = 4;
             face = cm.getAndroidGender() == 0 ? mface : fface;
-            var msg = "현재 다양한 성형 스타일이 준비되어 있습니다. ";
+            var msg = "เรามีรูปแบบใบหน้าหลากหลายรูปแบบเตรียมไว้ให้คุณ ";
             var count = 0;
             count = face.length;
-            msg = "원하시는 페이지를 선택해주시기 바랍니다. #e(총 " + count + " 페이지)#n\r\n\r\n#b";
+            msg = "กรุณาเลือกหน้าที่ต้องการ #e(ทั้งหมด " + count + " หน้า)#n\r\n\r\n#b";
             for (var i = 0; i < count; ++i) {
-                msg += "#L" + i + "##e" + (i + 1) + "페이지#n 성형 스타일을 이용하겠습니다.#l\r\n";
+                msg += "#L" + i + "##eหน้า " + (i + 1) + "#n เลือกดูใบหน้า#l\r\n";
             }
             cm.sendSimple(msg);
         } else if (selection == 4) {
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
             } else {
                 colors = Array(current, current + 100, current + 200, current + 300, current + 400, current + 500, current + 600, current + 700, current + 800);
             }
-            cm.askAvatarAndroid("마음에 드는 스타일을 선택해보세요.", colors);
+            cm.askAvatarAndroid("เลือกสไตล์ที่คุณชอบได้เลย", colors);
         }
     } else if (status == 2) {
         selection = selection & 0xFF;
@@ -187,9 +187,9 @@ function action(mode, type, selection) {
         } else if (beauty == 5) {
             cm.setFaceAndroid(colors[selection]);
         } else if (beauty == 2) {
-            cm.askAvatarAndroid("마음에 드는 스타일을 선택해보세요.", hairList[selection]);
+            cm.askAvatarAndroid("เลือกสไตล์ที่คุณชอบได้เลย", hairList[selection]);
         } else if (beauty == 4) {
-            cm.askAvatarAndroid("마음에 드는 스타일을 선택해보세요.", face[selection]);
+            cm.askAvatarAndroid("เลือกสไตล์ที่คุณชอบได้เลย", face[selection]);
         }
         if (beauty != 2 && beauty != 4) {
             cm.dispose();

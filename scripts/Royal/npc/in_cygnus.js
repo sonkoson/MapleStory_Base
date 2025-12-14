@@ -6,11 +6,11 @@ function start() {
 }
 
 function action(mode, type, selection) {
-        var count = 1;
+    var count = 1;
     setting = [
         ["Normal_Cygnus", count, 271040100, 170],
     ]
-    name = ["노멀"]
+    name = ["Normal"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -21,10 +21,10 @@ function action(mode, type, selection) {
 
     if (status == 0) {
         if (cm.getPlayer().getMapId() == 271040100) {
-            cm.sendYesNo("전투를 마치고 시그너스의 후원으로 퇴장하시겠습니까?");
+            cm.sendYesNo("ต้องการออกจากสวนของ Cygnus หลังจากจบการต่อสู้หรือไม่?");
         } else {
-            talk = "타락한 시그너스에게 맞설 준비는 되셨습니까?\r\n\r\n"
-            talk += "#L0# #b시그너스(노멀) 입장을 신청한다.";
+            talk = "พร้อมที่จะเผชิญหน้ากับ Fallen Cygnus แล้วหรือยัง?\r\n\r\n"
+            talk += "#L0# #bขอเข้าท้าทาย Cygnus (Normal) (Lv. 170+)";
             cm.sendSimple(talk);
         }
     } else if (status == 1) {
@@ -35,37 +35,37 @@ function action(mode, type, selection) {
         }
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("1인 이상의 파티에 속해야만 입장할 수 있습니다.");
+            cm.sendOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있습니다.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้");
             cm.dispose();
             return;
-	} else if (!cm.allMembersHere()) {
-	    cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
-	    cm.dispose();
+        } else if (!cm.allMembersHere()) {
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ที่เดียวกัน");
+            cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendNext("이미 다른 파티가 안으로 들어가 시그너스에게 도전하고 있는 중입니다.");
+            cm.sendNext("มีปาร์ตี้อื่นกำลังท้าทาย Cygnus อยู่ข้างในแล้ว");
             cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "오늘 시그너스를 클리어한 파티원이 있습니다. 시그너스(노멀)은 하루에 " + setting[st][1] + "회만 클리어 가능합니다.\r\n"
-            talk += "#r#e<클리어 기록은 매일 자정에 일괄 초기화됩니다.>#k#n"
+            talk = "มีสมาชิกในปาร์ตี้ที่เคลียร์ Cygnus ไปแล้วในวันนี้\r\nCygnus (Normal) สามารถเคลียร์ได้วันละ " + setting[st][1] + " ครั้งเท่านั้น\r\n"
+            talk += "#r#e<บันทึกการเคลียร์จะรีเซ็ตทุกวันเวลาเที่ยงคืน>#k#n"
             cm.sendOk(talk);
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 #b#e"
+            talk = "สมาชิกในปาร์ตี้ #b#e"
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
-            talk += "#k#n님의 레벨이 부족합니다. 시그너스는 레벨 " + setting[st][3] + "이상만 도전하실 수 있습니다.";
+            talk += "#k#n เลเวลไม่เพียงพอ Cygnus เข้าได้เฉพาะเลเวล " + setting[st][3] + " ขึ้นไปเท่านั้น";
         } else {
             cm.addBoss(setting[st][0]);
             em = cm.getEventManager(setting[st][0]);

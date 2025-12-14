@@ -1,19 +1,19 @@
 
 /*
 
-    * 단문엔피시 자동제작 스크립트를 통해 만들어진 스크립트 입니다.
+    * This script was created via the Simple NPC Auto-Production Script.
 
     * (Guardian Project Development Source Script)
 
-    뭐지요 에 의해 만들어 졌습니다.
+    Created by Mojiyo.
 
-    엔피시아이디 : 1105008
+    NPC ID : 1105008
 
-    엔피시 이름 : 체키
+    NPC Name : Checky
 
-    엔피시가 있는 맵 : 헤네시스 : 리나의 집 (100000003)
+    NPC Map : Henesys : Rina's House (100000003)
 
-    엔피시 설명 : MISSINGNO
+    NPC Description : MISSINGNO
 
 
 */

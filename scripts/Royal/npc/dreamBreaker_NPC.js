@@ -15,7 +15,7 @@ var selectStage = 0;
 var quantity = 0;
 var clear = false;
 var coin = 0;
-var 코인 = 0;
+var coinMode = 0;
 
 function start() {
     status = -1;
@@ -33,16 +33,16 @@ function action(mode, type, sel) {
         status++;
     }
     if (status == 0) {
-        if (cm.getPlayer().getMapId() == 921171100) { // 보상맵
+        if (cm.getPlayer().getMapId() == 921171100) { // Reward Map
             var stage = cm.getPlayer().getOneInfoQuestInteger(15901, "stage");
             var selectedStage = cm.getPlayer().getOneInfoQuestInteger(15901, "selectedStage");
             if (stage == selectedStage) {
-                cm.sendNext("음! 도전에 #r실패#k했군요?\r\n힘들다면 조금 낮은 단계부터 도전해 보는게 어때요?");
+                cm.sendNext("อืม! การท้าทาย #rล้มเหลว#k งั้นเหรอ?\r\nถ้ายากเกินไป ลองลดระดับความยากลงหน่อยไหม?");
             } else if (stage > selectedStage) {
                 clear = true;
-                var clearstage = stage - 1; // 성공한 스테이지
+                var clearstage = stage - 1; // Cleared Stage
 
-                talk = "와~ #b" + clearstage + "스테이지#k 까지 돌파하셨군요? 대단해요~\r\n\r\n";
+                talk = "ว้าว~ ผ่านถึง #bStage " + clearstage + "#k แล้วเหรอ? สุดยอดไปเลย~\r\n\r\n";
 
                 var b_best = cm.getPlayer().getOneInfoQuestInteger(15901, "best_b");
                 var b_besttime = cm.getPlayer().getOneInfoQuestInteger(15901, "besttime_b");
@@ -54,22 +54,22 @@ function action(mode, type, sel) {
                 DreamBreakerRank.editRecord(cm.getPlayer().getName(), best, besttime);
                 var rank = DreamBreakerRank.getRank(cm.getPlayer().getName());
                 if ((rank > b_rank || score > b_score) && (rank > 0 && rank <= 100)) {
-                    talk += "이번주 #r#e랭킹 신기록#k#n이군요! 랭킹에 등록해 드릴게요\r\n\r\n";
+                    talk += "นี่เป็น #r#eสถิติใหม่ประจำสัปดาห์#k#n! ฉันจะลงทะเบียนในอันดับให้นะ\r\n\r\n";
                 }
 
                 if (score > b_score) {
-                    talk += "#r게다가 개인 신기록#k을 세우셨군요!";
+                    talk += "แถมยังสร้าง #rสถิติใหม่ส่วนตัว#k อีกด้วย!";
                 }
                 cm.sendNext(talk);
             }
         } else {
-            talk = "#b#e<드림브레이커>#k#n\r\n"
-                talk += "아웅.... 언제쯤 편안하게 잠을 잘 수 있을까?\r\n\r\n"
-                talk += "#L0# #b<드림브레이커>에 도전한다.#l\r\n"
-                talk += "#L1# 나의 기록을 확인한다.#l\r\n"
-                talk += "#L2# 주간 랭킹을 확인한다.#l\r\n"
-                talk += "#L4# 드림 코인을 교환한다.#l\r\n";
-            talk += "#L3# 설명을 듣는다.#l";
+            talk = "#b#e<Dream Breaker>#k#n\r\n"
+            talk += "งือ.... เมื่อไหร่จะได้นอนหลับสบายๆ สักทีนะ?\r\n\r\n"
+            talk += "#L0# #bท้าทาย <Dream Breaker>#l\r\n"
+            talk += "#L1# ตรวจสอบสถิติของฉัน#l\r\n"
+            talk += "#L2# ตรวจสอบอันดับประจำสัปดาห์#l\r\n"
+            talk += "#L4# แลกเปลี่ยน Dream Coin#l\r\n";
+            talk += "#L3# ฟังคำอธิบาย#l";
             cm.sendSimple(talk);
         }
     } else if (status == 1) {
@@ -77,11 +77,11 @@ function action(mode, type, sel) {
             if (clear) {
                 quantity = cm.getPlayer().getOneInfoQuestInteger(15901, "stage") - 1;
                 if (!cm.canHold(4036068, quantity)) {
-                    cm.sendNext("인벤토리 공간을 확보하고 다시 말 걸어주세요!");
+                    cm.sendNext("กรุณาเคลียร์ช่องเก็บของแล้วมาคุยกันใหม่นะ!");
                     cm.dispose();
                     return;
                 }
-                cm.sendNext("자 여기 #i4036068##b#z4036068##k #r" + quantity + "개#k를 선물로 드릴게요!\r\n\r\n그럼 다음에 또 도와주세요!");
+                cm.sendNext("นี่ครับ รับ #i4036068##b#z4036068##k #r" + quantity + " ชิ้น#k เป็นของขวัญไปเลย!\r\n\r\nไว้มาช่วยอีกนะ!");
             } else {
                 cm.warp(ServerConstants.TownMap, 0);
                 cm.dispose();
@@ -90,24 +90,24 @@ function action(mode, type, sel) {
         } else {
             if (sel == 0) {
                 var bestStage = cm.getPlayer().getOneInfoQuestInteger(15901, "best");
-                talk = "당신의 최고 기록은 #r#e" + bestStage + "단계#k#n군요?\r\n"
-                    talk += "현재 도전할 수 있는 스테이지는 다음과 같아요.\r\n\r\n"
-                    floor = bestStage - (bestStage % 10);
+                talk = "สถิติสูงสุดของคุณคือ #r#eStage " + bestStage + "#k#n สินะ?\r\n"
+                talk += "Stage ที่สามารถท้าทายได้ในขณะนี้มีดังนี้\r\n\r\n"
+                floor = bestStage - (bestStage % 10);
                 for (var i = floor; i >= 0; i -= 10) {
                     i = i == 0 ? 1 : i;
-                    talk += "#L" + (i) + "##b" + (i) + "#k 단계\r\n";
+                    talk += "#L" + (i) + "##bStage " + (i) + "#k\r\n";
                 }
                 cm.sendSimple(talk);
             } else if (sel == 1) {
-                talk = "당신의 #e<드림브레이커 기록>#n을 알려드릴게요!\r\n\r\n"
-                    talk += "#e개인 최고기록 : #b" + cm.getPlayer().getOneInfoQuestInteger(15901, "best") + "스테이지#k#n\r\n"
-                    talk += "#e오늘 입장 횟수 : #b" + cm.getPlayer().GetCount("dream_breaker") + " 번#k#n\r\n"
-                    var lastWeek = cm.getPlayer().getOneInfoQuestInteger(20200128, "last_week_dream_breaker");
-                var lw = "기록 없음";
+                talk = "ฉันจะบอก #e<สถิติ Dream Breaker>#n ของคุณให้ฟัง!\r\n\r\n"
+                talk += "#eสถิติสูงสุดส่วนตัว : #bStage " + cm.getPlayer().getOneInfoQuestInteger(15901, "best") + "#k#n\r\n"
+                talk += "#eจำนวนครั้งที่เข้าวันนี้ : #b" + cm.getPlayer().GetCount("dream_breaker") + " ครั้ง#k#n\r\n"
+                var lastWeek = cm.getPlayer().getOneInfoQuestInteger(20200128, "last_week_dream_breaker");
+                var lw = "ไม่มีสถิติ";
                 if (lastWeek != 0) {
-                    lw = lastWeek + "위";
+                    lw = "อันดับ " + lastWeek;
                 }
-                talk += "#e지난주 랭킹 : #b" + lw + "#k#n\r\n"
+                talk += "#eอันดับสัปดาห์ที่แล้ว : #b" + lw + "#k#n\r\n"
                 cm.sendNext(talk);
                 cm.dispose();
             } else if (sel == 2) {
@@ -115,12 +115,12 @@ function action(mode, type, sel) {
                 cm.dispose();
             } else if (sel == 3) {
                 sss = true;
-                talk = "무엇을 알려드릴까요?\r\n\r\n";
-                talk += "#L0# #e드림브레이커 규칙#l\r\n"
-                talk += "#L1# 드림포인트 획득과 스킬 사용#l\r\n"
-                talk += "#L2# 드림브레이커 보상#l\r\n"
-                talk += "#L3# 드림브레이커 랭킹#l\r\n";
-                talk += "#L4# 설명을 듣지 않는다."
+                talk = "อยากรู้อะไรเหรอ?\r\n\r\n";
+                talk += "#L0# #eกฎของ Dream Breaker#l\r\n"
+                talk += "#L1# การรับ Dream Point และการใช้สกิล#l\r\n"
+                talk += "#L2# รางวัลจาก Dream Breaker#l\r\n"
+                talk += "#L3# อันดับ Dream Breaker#l\r\n";
+                talk += "#L4# ไม่ฟังคำอธิบาย"
                 cm.sendSimple(talk);
             } else if (sel == 4) {
                 if (cm.haveItem(4036068, 300)) {
@@ -164,32 +164,32 @@ function action(mode, type, sel) {
                 } else if (cm.haveItem(4310227, 30)) {
                     coin = 1;
                 }
-                cm.sendGetNumber("#i4036068##b#z4036068##k을 #i1712003##r#z1712003##k으로 교환 할래요?\r\n(#b드림 코인 30개#k = #r아케인심볼 : 레헬른 1개#k)\r\n 최대 #e#r" + coin + "#n#k개 교환 가능.)", coin, 1, coin);
-                코인 = 1;
+                cm.sendGetNumber("Do you want to exchange #i4036068##b#z4036068##k for #i1712003##r#z1712003##k?\r\n(#b30 Dream Coins#k = #r1 Arcane Symbol : Lachelein#k)\r\n Max exchange: #e#r" + coin + "#n#k pieces)", coin, 1, coin);
+                coinMode = 1;
             }
         }
     } else if (status >= 2 && sss) {
         if (status == 2 && select == -1) {
             select = sel;
         }
-        name = ["드림브레이커 규칙", "드림포인트", "드림브레이커 보상", "드림브레이커 랭킹"];
+        name = ["กฎของ Dream Breaker", "Dream Point", "รางวัล Dream Breaker", "อันดับ Dream Breaker"];
         dialogue = [
-            ["루시드의 악몽을 멈추기 위해선 #b#e숙면의 오르골#k#n을 지키고 #r#e악몽의 오르골#k#n을 파괴해야 해요.",
-                "총 #e5개의 방#n 중에서 #b#e숙면의 오르골#k#n이 더 많으면 #b#e노란색 게이지가 왼쪽으로#k#n 차오르고, #r#e악몽의 오르골#k#n이 더 많으면 #r#e보라색 게이지가 오른쪽으로#k#n 차오를 거예요.\r\n\r\n결과적으로 제한시간 #e3분 이내에 #b노란색 게이지#k#n를 다 채우면 스테이지를 클리어하게 되죠.",
-                "드림브레이커는 #e하루 3회#n까지 입장 할 수 있어요.",
-                "그럼 저를 도와 #r#e루시드의 악몽#k#n을 멈춰주세요!"
+            ["เพื่อหยุดฝันร้ายของ Lucid คุณต้องปกป้อง #b#eMusic Box of Sleep#k#n และทำลาย #r#eMusic Box of Nightmare#k#n",
+                "ในบรรดา #eห้องทั้ง 5#n ถ้ามี #b#eMusic Box of Sleep#k#n มากกว่า #b#eเกจสีเหลืองจะเพิ่มไปทางซ้าย#k#n และถ้ามี #r#eMusic Box of Nightmare#k#n มากกว่า #r#eเกจสีม่วงจะเพิ่มไปทางขวา#k#n\r\n\r\nสรุปคือถ้าทำให้ #bเกจสีเหลือง#k#n เต็มภายในเวลาจำกัด #e3 นาที#n ก็จะผ่าน Stage",
+                "Dream Breaker สามารถเข้าได้ #eวันละ 3 ครั้ง#n",
+                "งั้นช่วยฉันหยุด #r#eฝันร้ายของ Lucid#k#n หน่อยนะ!"
             ],
-            ["#e드림포인트#n는 드림브레이커에서 #r#e스테이지를 클리어 할때마다#k#n 얻는 점수로, #b#e전략스킬#k#n을 발동핼 때 사용해요.\r\n\r\n획득되는 드림포인트는 #e매 10스테이지#n마다 #e10씩 증가#n하고 최대 #b#e3000점#k#n까지 누적할 수 있답니다.",
-                "사용할 수 있는 #b#e전략스킬#n#k은 다음과 같아요.\r\n\r\n#e<게이지 홀드>#n\r\n드림포인트: 200 소모 / 5초간 게이지의 이동을 멈춤.\r\n\r\n#e<자각의 종>#n\r\n드림포인트: 300 소모 / 랜덤한 악몽의 오르골 1개를 제거.\r\n\r\n#e<헝겊인형 소환>#n\r\n드림포인트: 400 소모 / 주변의 몬스터를 도발하는 헝겊인형 소환. (15초간 유지)\r\n\r\n#e<폭파>#n\r\n드림포인트: 900 소모 / 모든 몬스터를 처치, 10초간 재소환을 막음.",
-                "하나의 스테이지에서는 #r#e동일한 스킬을 두 번 사용할 수 없으니#k#n 스킬 사용은 신중하게 하세요!"
+            ["#eDream Point#n คือคะแนนที่ได้รับเมื่อ #r#eผ่าน Stage#k#n ใน Dream Breaker ใช้สำหรับเปิดใช้งาน #b#eTactical Skill#k#n\r\n\r\nDream Point ที่ได้รับจะ #eเพิ่มขึ้นทีละ 10#n ทุกๆ #e10 Stage#n และสะสมได้สูงสุด #b#e3000 แต้ม#k#n",
+                "Skill ที่ใช้ได้มีดังนี้\r\n\r\n#e<Gauge Hold>#n\r\nDream Point: 200 / หยุดการเคลื่อนที่ของเกจ 5 วินาที\r\n\r\n#e<Bell of Awakening>#n\r\nDream Point: 300 / ลบ Music Box of Nightmare 1 อันแบบสุ่ม\r\n\r\n#e<Summon Ragdoll>#n\r\nDream Point: 400 / เรียกตุ๊กตาผ้ามาดึงดูดความสนใจมอนสเตอร์ (อยู่นาน 15 วินาที)\r\n\r\n#e<Explosion>#n\r\nDream Point: 900 / กำจัดมอนสเตอร์ทั้งหมด, ป้องกันการเกิดใหม่ 10 วินาที",
+                "ในหนึ่ง Stage #r#eไม่สามารถใช้สกิลเดิมซ้ำได้#k#n ควรใช้สกิลอย่างระมัดระวังนะ!"
             ],
-            ["스테이지를 클리어 하면 #e최종적으로 도달한 스테이지#n 만큼의 코인을 얻을 수 있어요.",
-                "마지막으로 일일 #b도전 횟수를 모두 소모#k한 뒤 #b레헬른 중심가#k오른쪽에 위치한 #r주간 랭킹 1~5위 유저#k를 찾아가면 #b하루 1번 다양한 선물#k을 받을 수 있으니 꼭 찾아가 보세요!"
+            ["เมื่อเคลียร์ Stage จะได้รับ Coin ตามจำนวน #eStage ที่ไปถึงล่าสุด#n",
+                "สุดท้ายหลังจาก #bใช้จำนวนครั้งท้าทายหมดแล้ว#k ถ้าไปหา #rผู้เล่นอันดับ 1-5 ประจำสัปดาห์#k ที่อยู่ทางขวาของ #bLachelein Main Street#k จะได้รับ #bของขวัญต่างๆ วันละ 1 ครั้ง#k อย่าลืมไปหาด้วยนะ!"
             ],
-            ["스테이지를 클리어 하면 #b도달 스테이지 / 클리어 시간#k을 기준으로 #b주간 최고기록#k인 경우 #r자동으로 랭킹에 등록#k돼요.",
-                "주간랭킹은 #b매 주 월요일 자정#k에 초기화 돼요.\r\n랭킹 정산을 위해 #r일요일 오후 11시 30분 부터 월요일 자정 12시 30분 까지는#k 입장이 제한 된답니다.",
-                "그리고 주간 랭킹 #e1~5등#n에 기록된 캐릭터는 #b레헬른 중심가#k 한켠에 그 모습이 1주일간 기록되고 여러 용사님들에게 선물을 드리는 역할을 수행해요.",
-                "#r최고의 드림브레이커#k가 되어 용사님들로부터 선망의 대상이 되어 보세요!"
+            ["เมื่อเคลียร์ Stage หากเป็น #bสถิติสูงสุดประจำสัปดาห์#k โดยดูจาก #bStage ที่ทำได้ / เวลาที่ใช้#k จะถูก #rลงทะเบียนในอันดับอัตโนมัติ#k",
+                "อันดับประจำสัปดาห์จะรีเซ็ต #bทุกวันจันทร์เวลาเที่ยงคืน#k\r\nและจะจำกัดการเข้าตั้งแต่ #rวันอาทิตย์ 23:30 น. ถึง วันจันทร์ 00:30 น.#k เพื่อคำนวณอันดับ",
+                "และตัวละครที่ได้อันดับ #e1~5#n ประจำสัปดาห์ จะถูกบันทึกที่ #bLachelein Main Street#k เป็นเวลา 1 สัปดาห์ และทำหน้าที่มอบของขวัญให้กับเหล่านักรบ",
+                "#rจงเป็นสุดยอด Dream Breaker#k และเป็นที่น่าอิจฉาของเหล่านักรบดูสิ!"
             ]
         ];
 
@@ -205,10 +205,10 @@ function action(mode, type, sel) {
             cm.sendNextPrev(talk);
         }
     } else if (status == 2) {
-        if (코인 == 1) {
+        if (coinMode == 1) {
             var leftslot = cm.getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot();
             if (leftslot < sel) {
-                cm.sendOk("인벤토리 공간이 최소한 " + sel + "칸은 필요합니다. 장비 탭의 공간을 " + sel + "칸 이상 비워주세요.");
+                cm.sendOk("ช่องเก็บของต้องว่างอย่างน้อย " + sel + " ช่อง กรุณาเคลียร์ช่องเก็บของแท็บ [Equip] ให้ว่างอย่างน้อย " + sel + " ช่อง");
                 cm.dispose();
                 return;
             }
@@ -217,7 +217,7 @@ function action(mode, type, sel) {
                 for (var i = 0; i < sel; ++i) {
                     cm.gainItem(1712003, 1);
                 }
-                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "개를 받아");
+                cm.sendOk("นี่ครับ รับ #i1712003# #b#z1712003##k " + sel + " ชิ้น ไปเลย");
                 cm.dispose();
                 return;
             } else if (cm.haveItem(4310227, sel * 30)) {
@@ -225,11 +225,11 @@ function action(mode, type, sel) {
                 for (var i = 0; i < sel; ++i) {
                     cm.gainItem(1712003, 1);
                 }
-                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "개를 받아");
+                cm.sendOk("นี่ครับ รับ #i1712003# #b#z1712003##k " + sel + " ชิ้น ไปเลย");
                 cm.dispose();
                 return;
             } else {
-                cm.sendOk("재료도 없으면서 선넘지마!");
+                cm.sendOk("ไม่มีของแล้วยังจะมาขออีก!");
                 cm.dispose();
                 return;
             }
@@ -241,19 +241,19 @@ function action(mode, type, sel) {
             return;
         } else {
             selectStage = sel;
-            talk = "<드림브레이커> #b" + selectStage + "단계#k에 도전할 건가요?\r\n\r\n";
-            talk += "#b오늘 도전 횟수 " + cm.getPlayer().GetCount("dream_breaker") + " / 3";
+            talk = "ต้องการท้าทาย <Dream Breaker> #bStage " + selectStage + "#k หรือไม่?\r\n\r\n";
+            talk += "#bจำนวนท้าทายวันนี้ " + cm.getPlayer().GetCount("dream_breaker") + " / 3";
             cm.sendYesNo(talk);
         }
     } else if (status == 3) {
         if (cm.getPlayerCount(921171000) > 0) {
-            cm.sendOk("이미 누군가 도전 중이에요.");
+            cm.sendOk("ตอนนี้มีคนกำลังท้าทายอยู่");
             cm.dispose();
             return;
         }
 
         if (cm.getPlayer().GetCount("dream_breaker") >= 3) {
-            cm.sendOk("오늘은 더 이상 #b#e<드림 브레이커>#k#n에 도전할 수 없어요.\r\n\r\n#r#e(1일 3회 입장 가능)#k#n");
+            cm.sendOk("วันนี้ไม่สามารถท้าทาย #b#e<Dream Breaker>#k#n ได้อีกแล้ว\r\n\r\n#r#e(เข้าได้วันละ 3 ครั้ง)#k#n");
             cm.dispose();
         } else {
             cm.getPlayer().updateOneInfo(15901, "selectedStage", "" + selectStage);

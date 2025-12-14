@@ -67,9 +67,9 @@ function action(mode, type, selection) {
         }
     }
     if (status == 0) {
-        var 홍보포인트 = comma(cm.getPlayer().getHPoint());
+        var PromoPoint = comma(cm.getPlayer().getHPoint());
 
-        chat = star + "#fs11# Promotion Point ปัจจุบันของคุณ #h0# : #r" + 홍보포인트 + "P#k\r\n";
+        chat = star + "#fs11# Promotion Point ปัจจุบันของคุณ #h0# : #r" + PromoPoint + "P#k\r\n";
         for (i = 0; i < item.length; i++) {
             price = item[i][2].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             chat += color + "#L" + i + "##i" + item[i][0] + "# #z" + item[i][0] + "# #r#e" + item[i][3] + "#l#n\r\n              #fc0xFF000000#ราคา : #e#r" + price + "P#b#n " + item[i][4] + "#k#n\r\n";
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         } else {
             var suk1 = Math.floor((cm.getPlayer().getHPoint() / item[selection][2]));
             stigmacoin = Math.min(suk1);
-            cm.sendGetNumber("\r\n#fn나눔고딕#คุณต้องการซื้อ #i " + item[selection][0] + "##z" + item[selection][0] + " # จำนวน #fc0xFF7401DF#" + item[selection][1] + "#k ชิ้น จริงหรือไม่? \r\n#Cgray#(จำนวน #z" + item[selection][0] + "# ที่สามารถซื้อได้ : " + stigmacoin + " ชิ้น)", 1, 1, stigmacoin);
+            cm.sendGetNumber("\r\n#fnArial#คุณต้องการซื้อ #i " + item[selection][0] + "##z" + item[selection][0] + " # จำนวน #fc0xFF7401DF#" + item[selection][1] + "#k ชิ้น จริงหรือไม่? \r\n#Cgray#(จำนวน #z" + item[selection][0] + "# ที่สามารถซื้อได้ : " + stigmacoin + " ชิ้น)", 1, 1, stigmacoin);
         }
     } else if (status == 2) {
         b = selection;

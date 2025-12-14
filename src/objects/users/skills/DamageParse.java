@@ -43,16 +43,15 @@ import security.anticheat.CheatingOffense;
 
 public class DamageParse {
    public static void applyAttack(
-      AttackInfo attack,
-      Skill skill,
-      MapleCharacter player,
-      int attackCount,
-      double maxDamagePerMonster,
-      SecondaryStatEffect effect,
-      AttackType attackType,
-      boolean energy,
-      RecvPacketOpcode opcode
-   ) {
+         AttackInfo attack,
+         Skill skill,
+         MapleCharacter player,
+         int attackCount,
+         double maxDamagePerMonster,
+         SecondaryStatEffect effect,
+         AttackType attackType,
+         boolean energy,
+         RecvPacketOpcode opcode) {
       if (!player.isAlive()) {
          player.getCheatTracker().registerOffense(CheatingOffense.ATTACKING_WHILE_DEAD);
       } else {
@@ -139,8 +138,8 @@ public class DamageParse {
    }
 
    public static final void applyAttackMagic(
-      AttackInfo attack, Skill theSkill, MapleCharacter player, SecondaryStatEffect effect, double maxDamagePerHit, RecvPacketOpcode opcode
-   ) {
+         AttackInfo attack, Skill theSkill, MapleCharacter player, SecondaryStatEffect effect, double maxDamagePerHit,
+         RecvPacketOpcode opcode) {
       if (!player.isAlive()) {
          player.getCheatTracker().registerOffense(CheatingOffense.ATTACKING_WHILE_DEAD);
       } else {
@@ -232,15 +231,15 @@ public class DamageParse {
             }
 
             if (player.getMonsterComboTime() < System.currentTimeMillis() - 8000L) {
-               player.setMonsterCombo((short)0);
+               player.setMonsterCombo((short) 0);
             }
 
-            player.addMonsterCombo((short)1);
+            player.addMonsterCombo((short) 1);
             AchievementFactory.checkComboKillIncrease(player, player.getMonsterCombo());
             if (player.getMonsterCombo() >= 300
-               && GameConstants.isYetiPinkBean(player.getJob())
-               && player.getQuestStatus(100567) == 1
-               && !player.getOneInfo(100565, "questNum").equals("100566")) {
+                  && GameConstants.isYetiPinkBean(player.getJob())
+                  && player.getQuestStatus(100567) == 1
+                  && !player.getOneInfo(100565, "questNum").equals("100566")) {
                player.updateOneInfo(100565, "questNum", "100566");
                player.updateOneInfo(100567, "ComboK", "300");
                player.send(CWvsContext.getShowQuestCompletion(100567));
@@ -248,15 +247,14 @@ public class DamageParse {
 
             if (player.getMonsterCombo() > 1 && monster != null) {
                player.getClient()
-                  .getSession()
-                  .writeAndFlush(
-                     CWvsContext.InfoPacket.comboKill(
-                        player.getStylishKillSkin(),
-                        Math.min(9999, player.getMonsterCombo()),
-                        monster.getObjectId(),
-                        monster.giveComboExpToCharacter(player, (int)(monster.getMobExp() / Randomizer.rand(1, 3)))
-                     )
-                  );
+                     .getSession()
+                     .writeAndFlush(
+                           CWvsContext.InfoPacket.comboKill(
+                                 player.getStylishKillSkin(),
+                                 Math.min(9999, player.getMonsterCombo()),
+                                 monster.getObjectId(),
+                                 monster.giveComboExpToCharacter(player,
+                                       (int) (monster.getMobExp() / Randomizer.rand(1, 3)))));
             }
 
             if (monster != null) {
@@ -278,17 +276,17 @@ public class DamageParse {
 
                long exp = 0L;
                if (player.getMonsterCombo() >= 50 && player.getMonsterCombo() <= 300) {
-                  exp = (long)(monster.getStats().getExp() * 5L * expr);
-                  item = new Item(2023484, (short)0, (short)1, 0);
+                  exp = (long) (monster.getStats().getExp() * 5L * expr);
+                  item = new Item(2023484, (short) 0, (short) 1, 0);
                } else if (player.getMonsterCombo() >= 350 && player.getMonsterCombo() <= 700) {
-                  exp = (long)(monster.getStats().getExp() * 7L * expr);
-                  item = new Item(2023494, (short)0, (short)1, 0);
+                  exp = (long) (monster.getStats().getExp() * 7L * expr);
+                  item = new Item(2023494, (short) 0, (short) 1, 0);
                } else if (player.getMonsterCombo() > 700 && player.getMonsterCombo() <= 2000) {
-                  exp = (long)(monster.getStats().getExp() * 10L * expr);
-                  item = new Item(2023495, (short)0, (short)1, 0);
+                  exp = (long) (monster.getStats().getExp() * 10L * expr);
+                  item = new Item(2023495, (short) 0, (short) 1, 0);
                } else if (player.getMonsterCombo() > 2000) {
-                  exp = (long)(monster.getStats().getExp() * 11L * expr);
-                  item = new Item(2023669, (short)0, (short)1, 0);
+                  exp = (long) (monster.getStats().getExp() * 11L * expr);
+                  item = new Item(2023669, (short) 0, (short) 1, 0);
                }
 
                if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeCombokillEXP) {
@@ -304,7 +302,8 @@ public class DamageParse {
                }
 
                pos.x = monster.getTruePosition().x + (d % 2 == 0 ? 25 * (d + 1) / 2 : -(25 * (d / 2)));
-               monster.getMap().spawnMobDrop(item, monster.getMap().calcDropPos(pos, monster.getTruePosition()), monster, player, (byte)0, 0, exp);
+               monster.getMap().spawnMobDrop(item, monster.getMap().calcDropPos(pos, monster.getTruePosition()),
+                     monster, player, (byte) 0, 0, exp);
             }
 
             player.setMonsterComboTime(System.currentTimeMillis());
@@ -312,7 +311,8 @@ public class DamageParse {
       }
    }
 
-   public static final AttackInfo Modify_AttackCrit(AttackInfo attack, MapleCharacter chr, int type, SecondaryStatEffect effect) {
+   public static final AttackInfo Modify_AttackCrit(AttackInfo attack, MapleCharacter chr, int type,
+         SecondaryStatEffect effect) {
       if (attack.skillID != 4211006 && attack.skillID != 3211003 && attack.skillID != 4111004) {
          int CriticalRate = chr.getStat().passive_sharpeye_rate() + (effect == null ? 0 : effect.getCr());
          boolean shadow = chr.getBuffedValue(SecondaryStatFlag.ShadowPartner) != null && (type == 1 || type == 2);
@@ -331,8 +331,8 @@ public class DamageParse {
                      && attack.skillID != 4331006
                      && attack.skillID != 21120005
                      && attack.skillID != 21121013
-                  ? 0
-                  : mid_att;
+                           ? 0
+                           : mid_att;
                if (toCrit == 0) {
                   for (Pair<Long, Boolean> eachd : p.attack) {
                      if (!eachd.right && hit < mid_att) {
@@ -368,12 +368,12 @@ public class DamageParse {
                      if (attack.skillID == 4221016) {
                         eachd.right = hit == 3;
                      } else if (attack.skillID == 3221007
-                        || attack.skillID == 23121003
-                        || attack.skillID == 21120005
-                        || attack.skillID == 21121013
-                        || attack.skillID == 4341005
-                        || attack.skillID == 4331006
-                        || eachd.left > 999999L) {
+                           || attack.skillID == 23121003
+                           || attack.skillID == 21120005
+                           || attack.skillID == 21121013
+                           || attack.skillID == 4341005
+                           || attack.skillID == 4331006
+                           || eachd.left > 999999L) {
                         eachd.right = true;
                      } else if (hit >= mid_att) {
                         eachd.right = p.attack.get(hit - mid_att).right;
@@ -411,17 +411,19 @@ public class DamageParse {
             ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
             info.initRuneofPurification(monster.getPosition(), summon.getPosition());
             ForceAtom forceAtom = new ForceAtom(
-               info, 80002888, player.getId(), true, false, monster.getObjectId(), ForceAtom.AtomType.ENERGY_BURST, Collections.EMPTY_LIST, 1
-            );
+                  info, 80002888, player.getId(), true, false, monster.getObjectId(), ForceAtom.AtomType.ENERGY_BURST,
+                  Collections.EMPTY_LIST, 1);
             player.getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
             SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
             statManager.changeStatValue(SecondaryStatFlag.RuneofPurification, 80002888, 1);
-            player.getSecondaryStat().RuneofPurificationGuage = Math.min(1000, player.getSecondaryStat().RuneofPurificationGuage + 10);
+            player.getSecondaryStat().RuneofPurificationGuage = Math.min(1000,
+                  player.getSecondaryStat().RuneofPurificationGuage + 10);
             statManager.temporaryStatSet();
             if (player.getSecondaryStat().RuneofPurificationGuage == 1000) {
                statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
                statManager.changeStatValue(SecondaryStatFlag.RuneofPurification, 80002888, 2);
-               int remainTime = (int)(player.getSecondaryStat().getTill(SecondaryStatFlag.RuneofPurification) - System.currentTimeMillis());
+               int remainTime = (int) (player.getSecondaryStat().getTill(SecondaryStatFlag.RuneofPurification)
+                     - System.currentTimeMillis());
                int addTime = 30000 - remainTime;
                statManager.changeTill(SecondaryStatFlag.indieSummon, 80002888, addTime);
                statManager.changeTill(SecondaryStatFlag.RuneofPurification, 80002888, addTime);
@@ -434,7 +436,7 @@ public class DamageParse {
    static void attackBonusRecv(PacketDecoder lea, AttackInfo ret) {
       int unk1_1 = lea.readByte();
       lea.readByte();
-      ret.slot = (byte)lea.readShort();
+      ret.slot = (byte) lea.readShort();
       ret.consumeItemID = lea.readInt();
       ret.isUnstableMemorize = lea.readByte() == 1;
       ret.isJumpAttack = lea.readByte() == 1;
@@ -468,7 +470,8 @@ public class DamageParse {
       lea.readInt();
    }
 
-   public static AttackInfo OnMeleeAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode, boolean retry) {
+   public static AttackInfo OnMeleeAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode,
+         boolean retry) {
       AttackInfo ret = new AttackInfo();
       if (ServerConstants.useCriticalDll) {
          ret.dllAttackCount = lea.readInt();
@@ -486,8 +489,8 @@ public class DamageParse {
 
       byte specialType = lea.readByte();
       ret.tbyte = lea.readByte();
-      ret.targets = (byte)(ret.tbyte >>> 4 & 15);
-      ret.hits = (byte)(ret.tbyte & 15);
+      ret.targets = (byte) (ret.tbyte >>> 4 & 15);
+      ret.hits = (byte) (ret.tbyte & 15);
       ret.skillID = lea.readInt();
       ret.skillLevel = lea.readInt();
       int skillID = ret.skillID;
@@ -508,28 +511,26 @@ public class DamageParse {
             lea.readInt();
             lea.readInt();
          } else if (skillID != 3321003
-            && skillID != 14000029
-            && skillID != 25120115
-            && (
-               undefinedIDA.isUnknown379(skillID)
-                  || skillID == 14110034
-                  || skillID == 31241001
-                  || skillID == 152141000
-                  || skillID == 14110035
-                  || GameConstants.isKeydownSkill(skillID)
-                  || GameConstants.isSuperNovaSkill(skillID)
-            )
-            && !retry) {
+               && skillID != 14000029
+               && skillID != 25120115
+               && (undefinedIDA.isUnknown379(skillID)
+                     || skillID == 14110034
+                     || skillID == 31241001
+                     || skillID == 152141000
+                     || skillID == 14110035
+                     || GameConstants.isKeydownSkill(skillID)
+                     || GameConstants.isSuperNovaSkill(skillID))
+               && !retry) {
             ret.keydown = lea.readInt();
          }
 
          if (GameConstants.isRushBombSkill(skillID)
-            || skillID == 5300007
-            || skillID == 14101029
-            || skillID == 11101030
-            || skillID >= 400031003 && skillID <= 400031004
-            || skillID == 400031068
-            || skillID == 64101008) {
+               || skillID == 5300007
+               || skillID == 14101029
+               || skillID == 11101030
+               || skillID >= 400031003 && skillID <= 400031004
+               || skillID == 400031068
+               || skillID == 64101008) {
             int damage = lea.readInt();
          }
 
@@ -593,11 +594,11 @@ public class DamageParse {
             ret.lifting = lea.readByte();
             ret.alone = lea.readByte();
             byte fa = lea.readByte();
-            byte foreAction = (byte)(fa & 127);
+            byte foreAction = (byte) (fa & 127);
             boolean left = (fa >> 7 & 1) != 0;
             byte frameIndex = lea.readByte();
             int refImgMobID = lea.readInt();
-            byte calcDamageStatIndex = (byte)(lea.readByte() & 127);
+            byte calcDamageStatIndex = (byte) (lea.readByte() & 127);
             Point affectedSpawnPos = new Point(lea.readShort(), lea.readShort());
             new Point(lea.readShort(), lea.readShort());
             ret.affectedSpawnPos.add(affectedSpawnPos);
@@ -678,7 +679,8 @@ public class DamageParse {
             lea.readShort();
          }
 
-         if (skillID == 400031016 || skillID == 3221019 || skillID == 400041024 || skillID == 80002452 || undefinedIDA.sub_140A87740(skillID)) {
+         if (skillID == 400031016 || skillID == 3221019 || skillID == 400041024 || skillID == 80002452
+               || undefinedIDA.sub_140A87740(skillID)) {
             lea.readShort();
             lea.readShort();
          }
@@ -717,7 +719,8 @@ public class DamageParse {
             lea.readByte();
          }
 
-         if (skillID == 21121029 || skillID == 37121052 || undefinedIDA.sub_1409CEA40(skillID) || skillID == 11121014 || undefinedIDA.sub_140A90650(skillID)) {
+         if (skillID == 21121029 || skillID == 37121052 || undefinedIDA.sub_1409CEA40(skillID) || skillID == 11121014
+               || undefinedIDA.sub_140A90650(skillID)) {
             lea.readByte();
             lea.readInt();
             lea.readInt();
@@ -732,7 +735,8 @@ public class DamageParse {
                   SecondaryStatEffect effect = SkillFactory.getSkill(24121052).getEffect(ret.skillLevel);
                   if (effect != null) {
                      Rect rect = new Rect(pos, effect.getLt2(), effect.getRb2(), false);
-                     AffectedArea aa = new AffectedArea(rect, player, effect, pos, System.currentTimeMillis() + effect.getDuration());
+                     AffectedArea aa = new AffectedArea(rect, player, effect, pos,
+                           System.currentTimeMillis() + effect.getDuration());
                      player.getMap().spawnMist(aa);
                   }
                }
@@ -767,7 +771,8 @@ public class DamageParse {
       return ret;
    }
 
-   public static AttackInfo OnShootAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode, boolean retry) {
+   public static AttackInfo OnShootAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode,
+         boolean retry) {
       AttackInfo ret = new AttackInfo();
       if (ServerConstants.useCriticalDll) {
          ret.dllAttackCount = lea.readInt();
@@ -785,8 +790,8 @@ public class DamageParse {
 
       byte specialType = lea.readByte();
       ret.tbyte = lea.readByte();
-      ret.targets = (byte)(ret.tbyte >>> 4 & 15);
-      ret.hits = (byte)(ret.tbyte & 15);
+      ret.targets = (byte) (ret.tbyte >>> 4 & 15);
+      ret.hits = (byte) (ret.tbyte & 15);
       ret.skillID = lea.readInt();
       ret.skillLevel = lea.readInt();
       int skillID = ret.skillID;
@@ -851,11 +856,11 @@ public class DamageParse {
             ret.lifting = lea.readByte();
             ret.alone = lea.readByte();
             byte fa = lea.readByte();
-            byte foreAction = (byte)(fa & 127);
+            byte foreAction = (byte) (fa & 127);
             boolean left = (fa >> 7 & 1) != 0;
             byte frameIndex = lea.readByte();
             int refImgMobID = lea.readInt();
-            byte calcDamageStatIndex = (byte)(lea.readByte() & 127);
+            byte calcDamageStatIndex = (byte) (lea.readByte() & 127);
             Point affectedSpawnPos = new Point(lea.readShort(), lea.readShort());
             new Point(lea.readShort(), lea.readShort());
             ret.affectedSpawnPos.add(affectedSpawnPos);
@@ -971,7 +976,8 @@ public class DamageParse {
       return onAttack(lea, player, opcode, false);
    }
 
-   public static final AttackInfo onAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode, boolean retry, boolean test) {
+   public static final AttackInfo onAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode,
+         boolean retry, boolean test) {
       AttackInfo ret = new AttackInfo();
       if (ServerConstants.useCriticalDll) {
          ret.dllAttackCount = lea.readInt();
@@ -989,15 +995,16 @@ public class DamageParse {
 
       byte specialType = lea.readByte();
       ret.tbyte = lea.readByte();
-      ret.targets = (byte)(ret.tbyte >>> 4 & 15);
-      ret.hits = (byte)(ret.tbyte & 15);
+      ret.targets = (byte) (ret.tbyte >>> 4 & 15);
+      ret.hits = (byte) (ret.tbyte & 15);
       ret.skillID = lea.readInt();
       ret.skillLevel = lea.readInt();
       int skillID = ret.skillID;
 
       try {
          boolean forced = false;
-         if (opcode == RecvPacketOpcode.NON_TARGET_FORCE_ATOM_ATTACK || opcode == RecvPacketOpcode.MELEE_ATTACK || opcode == RecvPacketOpcode.SHOOT_ATTACK) {
+         if (opcode == RecvPacketOpcode.NON_TARGET_FORCE_ATOM_ATTACK || opcode == RecvPacketOpcode.MELEE_ATTACK
+               || opcode == RecvPacketOpcode.SHOOT_ATTACK) {
             ret.bAddAttackProc = lea.readByte() == 1;
          }
 
@@ -1007,17 +1014,15 @@ public class DamageParse {
          ret.teleportAttackAction = TeleportAttackAction.fromRemote(lea);
          if (opcode == RecvPacketOpcode.MELEE_ATTACK && GameConstants.sub_140A874C0(skillID)) {
             lea.readInt();
-         } else if ((
-               undefinedIDA.isUnknown379(skillID)
-                  || GameConstants.isKeydownSkill(skillID)
-                  || GameConstants.isSuperNovaSkill(skillID)
-                  || skillID == 4221052
-                  || skillID == 65121052
-                  || skillID >= 14110034 && skillID <= 14110035
-                  || skillID == 31241001
-                  || skillID == 152141000
-            )
-            && !retry) {
+         } else if ((undefinedIDA.isUnknown379(skillID)
+               || GameConstants.isKeydownSkill(skillID)
+               || GameConstants.isSuperNovaSkill(skillID)
+               || skillID == 4221052
+               || skillID == 65121052
+               || skillID >= 14110034 && skillID <= 14110035
+               || skillID == 31241001
+               || skillID == 152141000)
+               && !retry) {
             ret.keydown = lea.readInt();
          }
 
@@ -1030,12 +1035,12 @@ public class DamageParse {
          }
 
          if (GameConstants.isRushBombSkill(skillID)
-            || skillID == 5300007
-            || skillID == 14101029
-            || skillID == 11101030
-            || skillID >= 400031003 && skillID <= 400031004
-            || skillID == 400031068
-            || skillID == 64101008) {
+               || skillID == 5300007
+               || skillID == 14101029
+               || skillID == 11101030
+               || skillID >= 400031003 && skillID <= 400031004
+               || skillID == 400031068
+               || skillID == 64101008) {
             int var33 = lea.readInt();
          }
 
@@ -1121,11 +1126,11 @@ public class DamageParse {
             ret.lifting = lea.readByte();
             ret.alone = lea.readByte();
             byte fa = lea.readByte();
-            byte foreAction = (byte)(fa & 127);
+            byte foreAction = (byte) (fa & 127);
             boolean left = (fa >> 7 & 1) != 0;
             byte frameIndex = lea.readByte();
             int refImgMobID = lea.readInt();
-            byte calcDamageStatIndex = (byte)(lea.readByte() & 127);
+            byte calcDamageStatIndex = (byte) (lea.readByte() & 127);
             Point affectedSpawnPos = new Point(lea.readShort(), lea.readShort());
             new Point(lea.readShort(), lea.readShort());
             ret.affectedSpawnPos.add(affectedSpawnPos);
@@ -1283,11 +1288,11 @@ public class DamageParse {
          }
 
          if (ret.skillID == 21120019
-            || ret.skillID == 37121052
-            || ret.skillID >= 400041002 && ret.skillID <= 400041005
-            || ret.skillID >= 500061025 && ret.skillID <= 500061028
-            || ret.skillID == 11121014
-            || ret.skillID == 5101004) {
+               || ret.skillID == 37121052
+               || ret.skillID >= 400041002 && ret.skillID <= 400041005
+               || ret.skillID >= 500061025 && ret.skillID <= 500061028
+               || ret.skillID == 11121014
+               || ret.skillID == 5101004) {
             ret.unk2 = lea.readByte();
             ret.position2 = new Point(lea.readInt(), lea.readInt());
          }
@@ -1301,7 +1306,8 @@ public class DamageParse {
                   SecondaryStatEffect effect = SkillFactory.getSkill(24121052).getEffect(ret.skillLevel);
                   if (effect != null) {
                      Rect rect = new Rect(pos, effect.getLt2(), effect.getRb2(), false);
-                     AffectedArea aa = new AffectedArea(rect, player, effect, pos, System.currentTimeMillis() + effect.getDuration());
+                     AffectedArea aa = new AffectedArea(rect, player, effect, pos,
+                           System.currentTimeMillis() + effect.getDuration());
                      player.getMap().spawnMist(aa);
                   }
                }
@@ -1336,9 +1342,9 @@ public class DamageParse {
             short sY = lea.readShort();
             PacketEncoder packet = new PacketEncoder();
             packet.write((ret.display & 32768) != 0);
-            packet.writeInt((int)sb);
-            packet.writeInt((int)sX);
-            packet.writeInt((int)sY);
+            packet.writeInt((int) sb);
+            packet.writeInt((int) sX);
+            packet.writeInt((int) sY);
             ret.unk2 = sb;
             ret.position2 = new Point(sX, sY);
             SkillEffect e = new SkillEffect(player.getId(), player.getLevel(), ret.skillID, ret.skillLevel, packet);
@@ -1410,14 +1416,16 @@ public class DamageParse {
       } catch (Exception var28) {
          long pos = lea.getPosition();
          lea.seek(0L);
-         FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", ret.skillID + " // Damage Parse Error " + lea.toString(), var28);
+         FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf",
+               ret.skillID + " // Damage Parse Error " + lea.toString(), var28);
          lea.seek(pos);
       }
 
       return ret;
    }
 
-   public static final AttackInfo onAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode, boolean retry) {
+   public static final AttackInfo onAttack(PacketDecoder lea, MapleCharacter player, RecvPacketOpcode opcode,
+         boolean retry) {
       AttackInfo ret = new AttackInfo();
       if (ServerConstants.useCriticalDll) {
          ret.dllAttackCount = lea.readInt();
@@ -1440,14 +1448,15 @@ public class DamageParse {
 
       lea.skip(1);
       ret.tbyte = lea.readByte();
-      ret.targets = (byte)(ret.tbyte >>> 4 & 15);
-      ret.hits = (byte)(ret.tbyte & 15);
+      ret.targets = (byte) (ret.tbyte >>> 4 & 15);
+      ret.hits = (byte) (ret.tbyte & 15);
       ret.skillID = lea.readInt();
       ret.skillLevel = lea.readInt();
       int skillID = ret.skillID;
       int mastery = 0;
       boolean forced = false;
-      if (opcode == RecvPacketOpcode.NON_TARGET_FORCE_ATOM_ATTACK || opcode == RecvPacketOpcode.MELEE_ATTACK || opcode == RecvPacketOpcode.SHOOT_ATTACK) {
+      if (opcode == RecvPacketOpcode.NON_TARGET_FORCE_ATOM_ATTACK || opcode == RecvPacketOpcode.MELEE_ATTACK
+            || opcode == RecvPacketOpcode.SHOOT_ATTACK) {
          ret.bAddAttackProc = lea.readByte() == 1;
       }
 
@@ -1467,27 +1476,25 @@ public class DamageParse {
          lea.readInt();
          lea.readInt();
       } else if (skillID != 3321003 && skillID != 14000029 && skillID != 25120115 && skillID != 35110017) {
-         if ((
-               undefinedIDA.isUnknown379(skillID)
-                  || skillID == 14110034
-                  || skillID == 31241001
-                  || skillID == 152141000
-                  || skillID == 14110035
-                  || GameConstants.isKeydownSkill(skillID)
-                  || GameConstants.isSuperNovaSkill(skillID)
-            )
-            && !retry) {
+         if ((undefinedIDA.isUnknown379(skillID)
+               || skillID == 14110034
+               || skillID == 31241001
+               || skillID == 152141000
+               || skillID == 14110035
+               || GameConstants.isKeydownSkill(skillID)
+               || GameConstants.isSuperNovaSkill(skillID))
+               && !retry) {
             ret.keydown = lea.readInt();
          }
 
          if (GameConstants.isRushBombSkill(skillID)
-            || skillID == 5300007
-            || skillID == 14101029
-            || skillID == 11101030
-            || skillID == 400031003
-            || skillID == 400031004
-            || skillID == 400031068
-            || skillID == 64101008) {
+               || skillID == 5300007
+               || skillID == 14101029
+               || skillID == 11101030
+               || skillID == 400031003
+               || skillID == 400031004
+               || skillID == 400031068
+               || skillID == 64101008) {
             rushBomb = lea.readInt();
          }
       }
@@ -1650,7 +1657,7 @@ public class DamageParse {
          }
 
          if (opcode == RecvPacketOpcode.SHOOT_ATTACK) {
-            ret.bulletCashItemPos = (byte)lea.readShort();
+            ret.bulletCashItemPos = (byte) lea.readShort();
             ret.AOE = lea.readByte();
             lea.skip(2);
             lea.skip(2);
@@ -1679,11 +1686,11 @@ public class DamageParse {
          ret.lifting = lifting;
          ret.alone = alone;
          byte fa = lea.readByte();
-         byte foreAction = (byte)(fa & 127);
+         byte foreAction = (byte) (fa & 127);
          boolean left = (fa >> 7 & 1) != 0;
          byte frameIndex = lea.readByte();
          int refImgMobID = lea.readInt();
-         byte calcDamageStatIndex = (byte)(lea.readByte() & 127);
+         byte calcDamageStatIndex = (byte) (lea.readByte() & 127);
          Point affectedSpawnPos = new Point(lea.readShort(), lea.readShort());
          new Point(lea.readShort(), lea.readShort());
          ret.affectedSpawnPos.add(affectedSpawnPos);
@@ -1874,11 +1881,11 @@ public class DamageParse {
             }
 
             if (ret.skillID == 21120019
-               || ret.skillID == 37121052
-               || ret.skillID >= 400041002 && ret.skillID <= 400041005
-               || ret.skillID >= 500061025 && ret.skillID <= 500061028
-               || ret.skillID == 11121014
-               || ret.skillID == 5101004) {
+                  || ret.skillID == 37121052
+                  || ret.skillID >= 400041002 && ret.skillID <= 400041005
+                  || ret.skillID >= 500061025 && ret.skillID <= 500061028
+                  || ret.skillID == 11121014
+                  || ret.skillID == 5101004) {
                ret.unk2 = lea.readByte();
                ret.position2 = new Point(lea.readInt(), lea.readInt());
             }
@@ -1892,7 +1899,8 @@ public class DamageParse {
                      SecondaryStatEffect effect = SkillFactory.getSkill(24121052).getEffect(ret.skillLevel);
                      if (effect != null) {
                         Rect rect = new Rect(pos, effect.getLt2(), effect.getRb2(), false);
-                        AffectedArea aa = new AffectedArea(rect, player, effect, pos, System.currentTimeMillis() + effect.getDuration());
+                        AffectedArea aa = new AffectedArea(rect, player, effect, pos,
+                              System.currentTimeMillis() + effect.getDuration());
                         player.getMap().spawnMist(aa);
                      }
                   }
@@ -1927,9 +1935,9 @@ public class DamageParse {
                short sY = lea.readShort();
                PacketEncoder packet = new PacketEncoder();
                packet.write((ret.display & 32768) != 0);
-               packet.writeInt((int)sb);
-               packet.writeInt((int)sX);
-               packet.writeInt((int)sY);
+               packet.writeInt((int) sb);
+               packet.writeInt((int) sX);
+               packet.writeInt((int) sY);
                ret.unk2 = sb;
                ret.position2 = new Point(sX, sY);
                SkillEffect e = new SkillEffect(player.getId(), player.getLevel(), ret.skillID, ret.skillLevel, packet);
@@ -1947,7 +1955,8 @@ public class DamageParse {
                lea.skip(1);
             }
 
-            if (opcode == RecvPacketOpcode.MAGIC_ATTACK && skillID != 32111016 && skillID != 12120023 && GameConstants.isEvan(player.getJob())) {
+            if (opcode == RecvPacketOpcode.MAGIC_ATTACK && skillID != 32111016 && skillID != 12120023
+                  && GameConstants.isEvan(player.getJob())) {
                boolean isDragonAttack = lea.readByte() == 1;
                if (isDragonAttack) {
                   ret.dragonPos = lea.readPos();
@@ -2004,7 +2013,8 @@ public class DamageParse {
                ret.targetPosition = lea.readPos();
             }
          } catch (Exception var45) {
-            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", ret.skillID + " 공격 데미지 추가 정보 파싱 오류 : " + lea.toString(true), var45);
+            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf",
+                  ret.skillID + " 공격 데미지 추가 정보 파싱 오류 : " + lea.toString(true), var45);
          }
 
          return ret;
@@ -2033,7 +2043,8 @@ public class DamageParse {
       lea.readInt();
    }
 
-   static void decodeMakeAttackInfoPacket(PacketDecoder lea, AttackInfo ret, int oid, int refImgMobID, List<Pair<Long, Boolean>> allDamageNumbers) {
+   static void decodeMakeAttackInfoPacket(PacketDecoder lea, AttackInfo ret, int oid, int refImgMobID,
+         List<Pair<Long, Boolean>> allDamageNumbers) {
       int hitType = lea.readByte();
       if (hitType == 1 || hitType == 2) {
          String animationName = lea.readMapleAsciiString();
@@ -2071,7 +2082,8 @@ public class DamageParse {
 
    public static void doHideAndSeek(MapleCharacter player, AttackInfo attack, boolean catched) {
       for (MapleCharacter attackedPlayers : player.getMap()
-         .getNearestPvpChar(player.getPosition(), 91.0, 40.0, attack.display >= 256, Collections.unmodifiableCollection(player.getMap().getCharacters()))) {
+            .getNearestPvpChar(player.getPosition(), 91.0, 40.0, attack.display >= 256,
+                  Collections.unmodifiableCollection(player.getMap().getCharacters()))) {
          if (attackedPlayers.isAlive() && attackedPlayers.isCatched && player.isCatching) {
             CatchPlayer(player, attackedPlayers);
          }
@@ -2080,7 +2092,8 @@ public class DamageParse {
 
    public static void CatchPlayer(MapleCharacter player, MapleCharacter catched) {
       player.getMap().broadcastMessage(CField.harvestResult(player.getId(), true));
-      player.getMap().broadcastMessage(CWvsContext.serverNotice(6, "[술래잡기 알림] 늑대 " + player.getName() + "님이 양 " + catched.getName() + "님을 잡으셨습니다."));
+      player.getMap().broadcastMessage(CWvsContext.serverNotice(6,
+            "[ประกาศซ่อนแอบ] หมาป่า " + player.getName() + " จับแกะ " + catched.getName() + " ได้แล้ว"));
       catched.getStat().setHp(0L, catched);
       catched.updateSingleStat(MapleStat.HP, 0L);
       player.addSheepScore();
@@ -2102,20 +2115,19 @@ public class DamageParse {
             chrx.updateSingleStat(MapleStat.HP, chrx.getStat().getHp());
             if (chrx.isCatching) {
                chrx.changeMap(
-                  chrx.getClient().getChannelServer().getMapFactory().getMap(910040003),
-                  chrx.getClient().getChannelServer().getMapFactory().getMap(910040003).getPortalSP().get(0)
-               );
+                     chrx.getClient().getChannelServer().getMapFactory().getMap(910040003),
+                     chrx.getClient().getChannelServer().getMapFactory().getMap(910040003).getPortalSP().get(0));
                chrx.isWolfShipWin = true;
             } else {
                chrx.changeMap(
-                  chrx.getClient().getChannelServer().getMapFactory().getMap(910040006),
-                  chrx.getClient().getChannelServer().getMapFactory().getMap(910040006).getPortalSP().get(0)
-               );
+                     chrx.getClient().getChannelServer().getMapFactory().getMap(910040006),
+                     chrx.getClient().getChannelServer().getMapFactory().getMap(910040006).getPortalSP().get(0));
                chrx.isWolfShipWin = false;
             }
          }
 
-         player.getMap().broadcastMessage(CWvsContext.serverNotice(1, "[술래잡기 알림]\r\n양들이 모두 잡혀서 늑대가 승리하였습니다!\r\n모든 분들은 게임 보상맵으로 이동 됩니다."));
+         player.getMap().broadcastMessage(CWvsContext.serverNotice(1,
+               "[ประกาศซ่อนแอบ]\r\nแกะถูกจับหมดแล้ว หมาป่าเป็นฝ่ายชนะ!\r\nทุกคนจะถูกย้ายไปยังแผนที่รางวัล"));
       }
    }
 }

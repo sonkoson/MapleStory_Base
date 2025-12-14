@@ -17,24 +17,24 @@ importPackage(Packages.database);
 importPackage(Packages.scripting);
 
 var startmap = [
-    450009400, // 노말
-    450009450, // 하드
-    450009400, // 노말 연습
-    450009450, // 하드 연습
+    450009400, // Normal
+    450009450, // Hard
+    450009400, // Normal Practice
+    450009450, // Hard Practice
 ];
 var exitmap = 15;
-var bossname = "더스크"
+var bossname = "Gloom"
 var limit = [
-    3, // 노말
-    3, // 카오스
-    20, // 노말 연습
-    20 // 카오스 연습
+    3, // Normal
+    3, // Chaos
+    20, // Normal Practice
+    20 // Chaos Practice
 ];
 var time = 30;
 var deathcount = 5;
 var practice = false;
 
-var diff = ["노말", "카오스", "노말연습", "카오스연습"];
+var diff = ["Normal", "Chaos", "Normal Practice", "Chaos Practice"];
 
 function start() {
     practice = false;
@@ -50,12 +50,12 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-        text = "검은 마법사의 사념으로 이루어진 거대 괴수 더스크를 내버려 두어선 안된다.\r\n\r\n"
-        text += "#L0##b공허의 눈(노멀 모드)으로 이동한다.#r(레벨 245이상)#k#l\r\n"
-        text += "#L1##b공허의 눈(카오스 모드)으로 이동한다.#r(레벨 245이상)#k#l\r\n"
-        text += "#L2##b공허의 눈(노멀 연습 모드)으로 이동한다.#r(레벨 245이상)#k#l\r\n"
-        text += "#L3##b공허의 눈(카오스 연습 모드)으로 이동한다.#r(레벨 245이상)#k#l\r\n\r\n"
-        text += "#L4#이동하지 않는다.#l";
+        text = "เราไม่สามารถปล่อยสัตว์ศิลายักษ์ Gloom ที่เกิดจากความคิดชั่วร้ายของ Black Mage ไว้ได้\r\n\r\n"
+        text += "#L0##bไปยัง Eye of the Void (Normal Mode)#r(Level 245+)#k#l\r\n"
+        text += "#L1##bไปยัง Eye of the Void (Chaos Mode)#r(Level 245+)#k#l\r\n"
+        text += "#L2##bไปยัง Eye of the Void (Normal Practice Mode)#r(Level 245+)#k#l\r\n"
+        text += "#L3##bไปยัง Eye of the Void (Chaos Practice Mode)#r(Level 245+)#k#l\r\n\r\n"
+        text += "#L4#ไม่ต้องการย้าย#l";
         cm.askMenuSelfNew(text);
     } else if (status == 1) {
         if (selection == 4) {
@@ -68,7 +68,7 @@ function action(mode, type, selection) {
             practice = true;
         }
         if (practice) {
-            cm.askYesNo("연습 모드에 입장을 선택하였습니다. 연습 모드에서는 #b#e경험치와 보상을 얻을 수 없으며#n#k 보스 몬스터의 종류와 상관없이 #b#e하루 5회#n#k만 이용할 수 있습니다. 입장하시겠습니까?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.askYesNo("คุณได้เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eคุณจะไม่ได้รับ EXP และของรางวัล#n#k และสามารถเข้าได้ #b#eวันละ 5 ครั้ง#n#k เท่านั้น ต้องการเข้าสู่หรือไม่?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         } else {
             enterBoss();
         }
@@ -82,7 +82,7 @@ function enterBoss() {
     var p = cm.getPlayer();
     var q = cm.getPlayer().getOneInfoQuest(1234589, n);
     if (q != null && !q.isEmpty() && q == "1" && !practice) {
-        cm.sayNpc("금주에 이미 격파하여 목요일 00시에 횟수 초기화 이후 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("คุณได้กำจัดบอสไปแล้วในสัปดาห์นี้ สามารถเข้าได้อีกครั้งหลังจากการรีเซ็ตในวันพฤหัสบดีเวลา 00:00 น.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
@@ -92,27 +92,27 @@ function enterBoss() {
         keyValue = "boss_practice";
     }
     if (!cm.CountCheck(keyValue, limit[difficulty])) {
-        cm.sayNpc("하루에 " + limit[difficulty] + "번만 시도 가능하며, 격파 이후 목요일부터 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สามารถเข้าได้ " + limit[difficulty] + " ครั้งต่อวัน และสามารถท้าทายได้ใหม่ตั้งแต่วันพฤหัสบดีหลังจากกำจัดบอสแล้ว", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (cm.getPlayer().getParty() == null) {
-        cm.sayNpc("1인 이상의 파티에 속해야만 입장할 수 있습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ต้องอยู่ในปาร์ตี้ที่มีสมาชิก 1 คนขึ้นไปจึงจะสามารถเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!isPartyLeader()) {
-        cm.sayNpc("파티장이 아니면 신청할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถสมัครได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!cm.allMembersHere()) {
-        cm.sayNpc("파티원이 전원 이곳에 모여있어야 합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สมาชิกปาร์ตี้ทุกคนต้องมารวมตัวกันที่นี่", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (cm.getPlayerCount(startmap[difficulty]) > 0) {
-        cm.sayNpc("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("มีคนกำลังท้าทายอยู่แล้ว\r\n#bกรุณาใช้แชแนลอื่น#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
@@ -140,12 +140,12 @@ function enterBoss() {
         }
     }
     if (!timePass && !practice) {
-        cm.sayNpc("입장 제한시간이 남은 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ไม่สามารถเข้าได้เนื่องจากมีสมาชิกปาร์ตี้ที่ยังติดเวลาจำกัดการเข้า", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!countPass) {
-        cm.sayNpc("입장 제한횟수가 부족하거나 레벨 제한이 맞지 않는 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ไม่สามารถเข้าได้เนื่องจากมีสมาชิกปาร์ตี้ที่มีจำนวนครั้งการเข้าไม่เพียงพอหรือเลเวลไม่ถึงเกณฑ์", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     } else {
@@ -173,7 +173,7 @@ function enterBoss() {
     eim.setProperty("Leader", cm.getPlayer().getParty().getLeader().getName());
     eim.setProperty("DeathCount", deathcount);
     eim.setProperty("BossMode", practice ? 1 : 0);
-    eim.startEventTimer(60000 * time); // 30분
+    eim.startEventTimer(60000 * time); // 30 min
     eim.registerParty(cm.getPlayer().getParty(), cm.getPlayer().getMap());
 }
 

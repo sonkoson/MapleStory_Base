@@ -2,19 +2,22 @@ var enter = "\r\n";
 var seld = -1;
 
 var items = [
-   {'itemid' : 2048753, 'qty' : 10, 'allstat' : 0, 'atk' : 0,
-   'recipes' : [[2048717, 100], [4009005, 100], [4001715, 10]], 'price' : 10, 'chance' : 100,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 2048753, 'qty': 10, 'allstat': 0, 'atk': 0,
+      'recipes': [[2048717, 100], [4009005, 100], [4001715, 10]], 'price': 10, 'chance': 100,
+      'fail': [[4001715, 1]]
    },
-   {'itemid' : 2048753, 'qty' : 100, 'allstat' : 0, 'atk' : 0,
-   'recipes' : [[2048717, 1000], [4009005, 1000], [4001715, 100]], 'price' : 100, 'chance' : 100,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 2048753, 'qty': 100, 'allstat': 0, 'atk': 0,
+      'recipes': [[2048717, 1000], [4009005, 1000], [4001715, 100]], 'price': 100, 'chance': 100,
+      'fail': [[4001715, 1]]
    },
-   {'itemid' : 2002093, 'qty' : 1, 'allstat' : 0, 'atk' : 0,
-   'recipes' : [[4000916, 1], [4021031, 200], [4001878, 30], [4009005, 200]], 'price' : 10, 'chance' : 100,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 2002093, 'qty': 1, 'allstat': 0, 'atk': 0,
+      'recipes': [[4000916, 1], [4021031, 200], [4001878, 30], [4009005, 200]], 'price': 10, 'chance': 100,
+      'fail': [[4001715, 1]]
    },
-] // 올스탯과 공마는 장비아이템에만 적용됨
+] // All Stat and Attack/Magic are only applied to equipment items
 
 var item;
 var isEquip = false;
@@ -30,12 +33,12 @@ function action(mode, type, sel) {
    } else {
       cm.dispose();
       return;
-       }
+   }
    if (status == 0) {
-      var msg = "#fs11#소비 아이템을 제작 하고싶으신가요?#k#n"+enter;
+      var msg = "#fs11#ต้องการสร้างไอเท็มใช้งานหรือไม่?#k#n" + enter;
       msg += "";
       for (i = 0; i < items.length; i++)
-         msg += "#fs11##b#L"+i+"##i"+items[i]['itemid']+"##z"+items[i]['itemid']+"# "+items[i]['qty']+"개#k"+enter;
+         msg += "#fs11##b#L" + i + "##i" + items[i]['itemid'] + "##z" + items[i]['itemid'] + "# " + items[i]['qty'] + " ชิ้น#k" + enter;
 
       cm.sendSimple(msg);
    } else if (status == 1) {
@@ -45,49 +48,49 @@ function action(mode, type, sel) {
 
       canMake = checkItems(item);
 
-      var msg = "#fs11#선택한 아이템은 다음과 같습니다.#fs11##b"+enter;
-      msg += "#fs11#아이템 : #i"+item['itemid']+"##z"+item['itemid']+"# "+item['qty']+"개"+enter;
+      var msg = "#fs11#ไอเท็มที่เลือกมีดังนี้#fs11##b" + enter;
+      msg += "#fs11#ไอเท็ม : #i" + item['itemid'] + "##z" + item['itemid'] + "# " + item['qty'] + " ชิ้น" + enter;
 
       if (isEquip) {
          if (item['allstat'] > 0)
-            msg += "올스탯 : +"+item['allstat']+enter;
+            msg += "All Stat : +" + item['allstat'] + enter;
          if (item['atk'] > 0)
-            msg += "공격력, 마력 : +"+item['atk']+enter;
+            msg += "Attack, Magic : +" + item['atk'] + enter;
       }
 
       msg += enter;
-      msg += "#fs11##k선택한 아이템을 제작하기 위한 레시피입니다.#fs11##d"+enter+enter;
+      msg += "#fs11##kนี่คือสูตรสำหรับการสร้างไอเท็มที่เลือก#fs11##d" + enter + enter;
 
       if (item['recipes'].length > 0) {
          for (i = 0; i < item['recipes'].length; i++)
-            msg += "#b#i"+item['recipes'][i][0]+"##z"+item['recipes'][i][0]+"# "+item['recipes'][i][1]+"개 #r/ #c"+item['recipes'][i][0]+"#개 보유 중#k"+enter;
+            msg += "#b#i" + item['recipes'][i][0] + "##z" + item['recipes'][i][0] + "# " + item['recipes'][i][1] + " ชิ้น #r/ #c" + item['recipes'][i][0] + "# ชิ้น ที่มีอยู่#k" + enter;
       }
 
       if (item['price'] > 0)
-        // msg += "#i5200002#"+item['price']+" 메소"+enter;
-      msg +="#fs11#"+enter;
-      msg += canMake ? "#r선택하신 아이템을 만들기 위한 재료들이 모두 모였습니다."+enter+"정말 제작하시려면 '예'를 눌러주세요." : "#r선택하신 아이템을 만들기 위한 재료들이 충분하지 않습니다.";
+         // msg += "#i5200002#"+item['price']+" Meso"+enter;
+         msg += "#fs11#" + enter;
+      msg += canMake ? "#rรวบรวมวัตถุดิบครบแล้ว" + enter + "กด 'ใช่' เพื่อเริ่มการสร้าง" : "#rวัตถุดิบไม่เพียงพอสำหรับการสร้างไอเท็มที่เลือก";
 
       if (canMake) cm.sendYesNo(msg);
       else {
          cm.sendOk(msg);
          cm.dispose();
       }
-      
+
    } else if (status == 2) {
       canMake = checkItems(item);
 
       if (!canMake) {
-         cm.sendOk("재료가 충분한지 다시 한 번 확인해주세요.");
+         cm.sendOk("กรุณาตรวจสอบว่ามีวัตถุดิบเพียงพอหรือไม่");
          cm.dispose();
          return;
       }
       payItems(item);
       if (Packages.objects.utils.Randomizer.rand(1, 100) <= item['chance']) {
          gainItem(item);
-         cm.sendOk("#fs11#제작에 성공하였습니다.");
+         cm.sendOk("#fs11#การสร้างสำเร็จ!");
       } else {
-         cm.sendOk("#fs11#제작에 실패했습니다.");
+         cm.sendOk("#fs11#การสร้างล้มเหลว");
          gainFail(item);
       }
       cm.dispose();
@@ -115,7 +118,7 @@ function payItems(i) {
       if (Math.floor(recipe[j][0] / 1000000) == 1)
          Packages.objects.item.MapleInventoryManipulator.removeById(cm.getClient(), Packages.objects.item.MapleInventoryType.EQUIP, recipe[j][0], 1, false, false);
       else cm.gainItem(recipe[j][0], -recipe[j][1]);
-           cm.gainMeso(-1000000);
+      cm.gainMeso(-1000000);
    }
 }
 

@@ -63,7 +63,7 @@ function action(mode, type, sel) {
                     return;
                 }
 
-                cm.openNpcCustom(cm.getClient(), 3004434, "버려진 야영지");
+                cm.openNpcCustom(cm.getClient(), 3004434, "AbandonedCamp");
                 break;
             case 2:
                 cm.dispose();
@@ -73,7 +73,7 @@ function action(mode, type, sel) {
                     return;
                 }
 
-                cm.openNpcCustom(cm.getClient(), 3004434, "헤이븐");
+                cm.openNpcCustom(cm.getClient(), 3004434, "HavenDailyQuest");
                 break;
             case 3:
                 cm.dispose();
@@ -83,7 +83,7 @@ function action(mode, type, sel) {
                     return;
                 }
 
-                cm.openNpcCustom(cm.getClient(), 3004434, "아케인일퀘");
+                cm.openNpcCustom(cm.getClient(), 3004434, "ArcaneDailyQuest");
                 break;
             case 4:
                 cm.dispose();
@@ -93,7 +93,7 @@ function action(mode, type, sel) {
                     return;
                 }
 
-                cm.openNpcCustom(cm.getClient(), 3004434, "어센틱일퀘");
+                cm.openNpcCustom(cm.getClient(), 3004434, "AuthenticDailyQuest");
                 break;
             case 5:
                 cm.dispose();
@@ -103,7 +103,7 @@ function action(mode, type, sel) {
                     return;
                 }
 
-                cm.openNpc(1052230, "일퀘무지개빛");
+                cm.openNpc(1052230, "DailyQuestRainbowLight");
                 break;
             case 9:
                 cm.dispose();

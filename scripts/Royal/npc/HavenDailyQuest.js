@@ -88,7 +88,7 @@ function action(mode, type, selection) {
             }
             cm.sendYesNo("เงื่อนไขสำหรับเควสนี้ครบแล้ว คุณต้องการส่งเควสหรือไม่?\r\n\r\n" + say);
         } else {
-            var say = "#e#b[เควส " + quest[sel][1] + "]#n#k\r\n";
+            var say = "#e#b[เควส " + quest[sel][0] + "]#n#k\r\n";
             for (var i = 0; i < check[sel].length; i++) {
                 count = cm.getPlayer().getKeyValue("Quest_" + check[sel][i][0]);
                 say += "#o" + check[sel][i][0] + "# (" + count + " / " + check[sel][i][1] + ") ตัว\r\n";

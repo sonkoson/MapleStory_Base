@@ -4,13 +4,13 @@ var banitem = [1712001, 1712002, 1712003, 1712004, 1712005, 1712006, 1713000, 17
 
 function ConvertNumber(number) {
     var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', '만 ', '억 ', '조 ', '경 '];
-    var splitUnit = 10000;
+    var unitWords = ['', 'K ', 'M ', 'B ', 'T '];
+    var splitUnit = 1000;
     var splitCount = unitWords.length;
     var resultArray = [];
     var resultString = '';
     if (inputNumber == false) {
-        cm.sendOk("Error occurred. Please try again.\r\n(Parsing Error)");
+        cm.sendOk("เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง\r\n(Parsing Error)");
         cm.dispose();
         return;
     }
@@ -56,26 +56,26 @@ var items = [ //Enhance Count, Success Rate, Cost, AllStat, Att/Mag
 
 function getAddEnhance(item) {
     var owner = item.getOwner();
-    return owner == "1강" ? 1 :
-        owner == "2강" ? 2 :
-            owner == "3강" ? 3 :
-                owner == "4강" ? 4 :
-                    owner == "5강" ? 5 :
-                        owner == "6강" ? 6 :
-                            owner == "7강" ? 7 :
-                                owner == "8강" ? 8 :
-                                    owner == "9강" ? 9 :
-                                        owner == "10강" ? 10 :
-                                            owner == "11강" ? 11 :
-                                                owner == "12강" ? 12 :
-                                                    owner == "13강" ? 13 :
-                                                        owner == "14강" ? 14 :
-                                                            owner == "15강" ? 15 :
-                                                                owner == "16강" ? 16 :
-                                                                    owner == "17강" ? 17 :
-                                                                        owner == "18강" ? 18 :
-                                                                            owner == "19강" ? 19 :
-                                                                                owner == "20강" ? 20 :
+    return owner == "1 Star" ? 1 :
+        owner == "2 Star" ? 2 :
+            owner == "3 Star" ? 3 :
+                owner == "4 Star" ? 4 :
+                    owner == "5 Star" ? 5 :
+                        owner == "6 Star" ? 6 :
+                            owner == "7 Star" ? 7 :
+                                owner == "8 Star" ? 8 :
+                                    owner == "9 Star" ? 9 :
+                                        owner == "10 Star" ? 10 :
+                                            owner == "11 Star" ? 11 :
+                                                owner == "12 Star" ? 12 :
+                                                    owner == "13 Star" ? 13 :
+                                                        owner == "14 Star" ? 14 :
+                                                            owner == "15 Star" ? 15 :
+                                                                owner == "16 Star" ? 16 :
+                                                                    owner == "17 Star" ? 17 :
+                                                                        owner == "18 Star" ? 18 :
+                                                                            owner == "19 Star" ? 19 :
+                                                                                owner == "20 Star" ? 20 :
                                                                                     0;
 }
 
@@ -98,17 +98,17 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         var count = 0;
-        var say = "#fs11##bPlease select the equipment to enhance.#k\r\n\r\n#rThis is a separate enhancement system from Star Force.#k\r\n#r#eDo not enhance Symbols as stats will not apply.#n#k\r\n\r\n";
+        var say = "#fs11##bโปรดเลือกอุปกรณ์ที่ต้องการอัพเกรด#k\r\n\r\n#rนี่เป็นระบบอัพเกรดที่แยกจาก Star Force#k\r\n#r#eอย่าอัพเกรด Symbol เนื่องจากค่าสถานะจะไม่ถูกนำไปใช้#n#k\r\n\r\n";
         for (i = 0; i <= cm.getInventory(1).getSlotLimit(); i++) {
             if (cm.getInventory(1).getItem(i) != null) {
                 if (!Packages.objects.item.MapleItemInformationProvider.getInstance().isCash(cm.getInventory(1).getItem(i).getItemId())) {
-                    say += "#L" + i + "##e#b#i" + cm.getInventory(1).getItem(i).getItemId() + "# #z" + cm.getInventory(1).getItem(i).getItemId() + "# #r[Slot " + i + "]#k#l\r\n";
+                    say += "#L" + i + "##e#b#i" + cm.getInventory(1).getItem(i).getItemId() + "# #z" + cm.getInventory(1).getItem(i).getItemId() + "# #r[ช่อง " + i + "]#k#l\r\n";
                     count++;
                 }
             }
         }
         if (count <= 0) {
-            cm.sendOk("Please check if you have the equipment to enhance.");
+            cm.sendOk("โปรดตรวจสอบว่ามีอุปกรณ์สำหรับอัพเกรดหรือไม่");
             cm.dispose();
             return;
         }
@@ -118,20 +118,20 @@ function action(mode, type, selection) {
             slot = selection;
             item = cm.getInventory(1).getItem(selection);
         }
-        if (item.getOwner().equals("20강")) {
-            cm.sendOk("Item is already fully enhanced to +20.");
+        if (item.getOwner().equals("20 Star")) {
+            cm.sendOk("ไอเท็มถูกอัพเกรดสูงสุดถึง +20 แล้ว");
             cm.dispose();
             return;
         }
-        if (item.getOwner().equals("[홍보]")) {
-            cm.sendOk("Promotion items cannot be enhanced.");
+        if (item.getOwner().equals("[Promotion]")) {
+            cm.sendOk("ไอเท็มโปรโมชั่นไม่สามารถอัพเกรดได้");
             cm.dispose();
             return;
         }
 
         itemid = item.getItemId();
         if (banitem.indexOf(itemid) != -1) {
-            cm.sendOk("#fs11#Symbol items cannot be enhanced.");
+            cm.sendOk("#fs11#ไอเท็ม Symbol ไม่สามารถอัพเกรดได้");
             cm.dispose();
             return;
         }
@@ -140,60 +140,60 @@ function action(mode, type, selection) {
         var notice = "";
         say = "";
         say += "#fs 11#";
-        say += "#rEnhance : +" + getAddEnhance(item) + " -> +" + (getAddEnhance(item) + 1) + "#k\r\n";
-        say += "On Success: #bAll Stats +" + items[getAddEnhance(item) + 1][3] + ", Att/Mag +" + items[getAddEnhance(item) + 1][4] + "#k increase\r\n";
-        say += "Meso Required :#b " + items[getAddEnhance(item) + 1][2] + " Meso#k\r\n";
-        say += "#bSuccess Rate " + items[getAddEnhance(item) + 1][1] + "%#k, Stats decrease on failure\r\n";
-        say += "However, you can use #b" + ConvertNumber(keep) + " Meso#k to protect item stats.\r\n\r\n\r\n";
-        say += "#r<Item Info>\r\n";
-        say += "Item : #i" + itemid + "# #z" + itemid + "#\r\n";
+        say += "#rอัพเกรด : +" + getAddEnhance(item) + " -> +" + (getAddEnhance(item) + 1) + "#k\r\n";
+        say += "เมื่อสำเร็จ: #bAll Stats +" + items[getAddEnhance(item) + 1][3] + ", Att/Mag +" + items[getAddEnhance(item) + 1][4] + "#k เพิ่มขึ้น\r\n";
+        say += "Meso ที่ต้องใช้ :#b " + items[getAddEnhance(item) + 1][2] + " Meso#k\r\n";
+        say += "#bโอกาสสำเร็จ " + items[getAddEnhance(item) + 1][1] + "%#k, ค่าสถานะจะลดลงเมื่อล้มเหลว\r\n";
+        say += "อย่างไรก็ตาม คุณสามารถใช้ #b" + ConvertNumber(keep) + " Meso#k เพื่อป้องกันค่าสถานะไอเท็มได้\r\n\r\n\r\n";
+        say += "#r<ข้อมูลไอเท็ม>\r\n";
+        say += "ไอเท็ม : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | StarForce : " + item.getEnhance() + "\r\n";
         say += "All Stat : " + item.getAllStat() + "%  |  Total Dmg : " + item.getTotalDamage() + "%  |  Boss Dmg : " + item.getBossDamage() + "%\r\n";
-        say += "Enhance Count : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
+        say += "จำนวนการอัพเกรด : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
         cm.sendSimple(notice + say +
-            "#L1##bUse " + ConvertNumber(keep) + " Meso to prevent destruction/slipping.#l\r\n" +
-            "#L2#Enhance without destruction/slipping prevention.#k#l");
+            "#L1##bใช้ " + ConvertNumber(keep) + " Meso เพื่อป้องกันการทำลาย/การลดระดับ#l\r\n" +
+            "#L2#อัพเกรดโดยไม่ป้องกันการทำลาย/การลดระดับ#k#l");
     } else if (status == 2) {
         if (re == 0) {
             choice = selection;
         }
-        if (item.getOwner().equals("20강")) {
-            cm.sendOk("Item is already fully enhanced to +20.");
+        if (item.getOwner().equals("20 Star")) {
+            cm.sendOk("ไอเท็มถูกอัพเกรดสูงสุดถึง +20 แล้ว");
             cm.dispose();
             return;
         }
 
         say = "";
         say += "#fs 11#";
-        say += "Enhance : #b+" + getAddEnhance(item) + " -> +" + (getAddEnhance(item) + 1) + "#k\r\n";
-        say += "On Success: #bAll Stats +" + items[getAddEnhance(item) + 1][3] + ", Att/Mag +" + items[getAddEnhance(item) + 1][4] + "#k increase\r\n";
-        say += "Meso Required : #b" + items[getAddEnhance(item) + 1][2] + " Meso#k\r\n";
-        say += "#bSuccess Rate " + items[getAddEnhance(item) + 1][1] + "%#k";
+        say += "อัพเกรด : #b+" + getAddEnhance(item) + " -> +" + (getAddEnhance(item) + 1) + "#k\r\n";
+        say += "เมื่อสำเร็จ: #bAll Stats +" + items[getAddEnhance(item) + 1][3] + ", Att/Mag +" + items[getAddEnhance(item) + 1][4] + "#k เพิ่มขึ้น\r\n";
+        say += "Meso ที่ต้องใช้ : #b" + items[getAddEnhance(item) + 1][2] + " Meso#k\r\n";
+        say += "#bโอกาสสำเร็จ " + items[getAddEnhance(item) + 1][1] + "%#k";
         if (selection == 1 || choice == 1) {
             say += "\r\n";
         } else if (selection == 2 || choice == 2) {
-            say += ", Stats decrease on failure\r\n\r\n";
+            say += ", ค่าสถานะจะลดลงหากล้มเหลว\r\n\r\n";
         }
-        say += "#r<Item Info>\r\n";
-        say += "Item : #i" + itemid + "# #z" + itemid + "#\r\n";
+        say += "#r<ข้อมูลไอเท็ม>\r\n";
+        say += "ไอเท็ม : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | StarForce : " + item.getEnhance() + "\r\n";
         say += "All Stat : " + item.getAllStat() + "%  |  Total Dmg : " + item.getTotalDamage() + "%  |  Boss Dmg : " + item.getBossDamage() + "%\r\n";
-        say += "Enhance Count : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
+        say += "จำนวนการอัพเกรด : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
         if (selection == 1 || choice == 1) {
-            cm.sendYesNo(say + "Do you really want to use " + ConvertNumber(keep) + " Meso to prevent slipping?\r\n" +
-                "Prevention cost is consumed regardless of success/failure.\r\n\r\n#bTotal Required : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + " Meso#k#l");
+            cm.sendYesNo(say + "คุณต้องการใช้ " + ConvertNumber(keep) + " Meso เพื่อป้องกันการลดระดับใช่หรือไม่?\r\n" +
+                "ค่าป้องกันจะถูกใช้ไม่ว่าจะสำเร็จหรือล้มเหลว\r\n\r\n#bจำนวนที่ต้องการทั้งหมด : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + " Meso#k#l");
         } else if (selection == 2 || choice == 2) {
-            cm.sendYesNo(say + "Do you really want to attempt enhancement without using " + ConvertNumber(keep) + " Meso protection?\r\n" +
-                "Enhancement rank will drop if enhancement fails.");
+            cm.sendYesNo(say + "คุณต้องการอัพเกรดโดยไม่ใช้ " + ConvertNumber(keep) + " Meso ในการป้องกันหรือไม่?\r\n" +
+                "ระดับการอัพเกรดจะลดลงหากการอัพเกรดล้มเหลว");
         }
     } else if (status == 3) {
         if (choice == 1) {
             if (cm.getPlayer().getMeso() >= (items[getAddEnhance(item) + 1][2] + keep)) {
                 cm.gainMeso(-(items[getAddEnhance(item) + 1][2] + keep));
             } else {
-                cm.sendOk("Not enough Meso for protected enhancement.\r\nTotal Required : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + " Meso");
+                cm.sendOk("Meso ไม่เพียงพอสำหรับการป้องกันการอัพเกรด\r\nต้องใช้ทั้งหมด : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + " Meso");
                 cm.dispose();
                 return;
             }
@@ -201,7 +201,7 @@ function action(mode, type, selection) {
             if (cm.getPlayer().getMeso() >= items[getAddEnhance(item) + 1][2]) {
                 cm.gainMeso(-items[getAddEnhance(item) + 1][2]);
             } else {
-                cm.sendOk("Not enough Meso.");
+                cm.sendOk("Meso ไม่เพียงพอ");
                 cm.dispose();
                 return;
             }
@@ -218,17 +218,17 @@ function action(mode, type, selection) {
                 item.addLuk(items[getAddEnhance(item) + 1][3]);
                 item.addWatk(items[getAddEnhance(item) + 1][4]);
                 item.addMatk(items[getAddEnhance(item) + 1][4]);
-                item.setOwner("" + (getAddEnhance(item) + 1) + "강");
+                item.setOwner("" + (getAddEnhance(item) + 1) + " Star");
                 cm.getPlayer().send(Packages.network.models.CWvsContext.InventoryPacket.updateInventoryItem(Packages.objects.item.MapleInventoryType.EQUIP, item, false, cm.getPlayer()));
 
                 say = "";
-                say += "#fs11##r<Item Info>\r\n";
-                say += "Item : #i" + itemid + "# #z" + itemid + "#\r\n";
+                say += "#fs11##r<ข้อมูลไอเท็ม>\r\n";
+                say += "ไอเท็ม : #i" + itemid + "# #z" + itemid + "#\r\n";
                 say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                 say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | StarForce : " + item.getEnhance() + "\r\n";
                 say += "All Stat : " + item.getAllStat() + "%  |  Total Dmg : " + item.getTotalDamage() + "%  |  Boss Dmg : " + item.getBossDamage() + "%\r\n";
-                say += "Enhance Count : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
-                cm.sendYesNo("#bEnhancement Successful#k.\r\nPress 'Yes' to continue enhancing.\r\n\r\n" + say);
+                say += "จำนวนการอัพเกรด : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
+                cm.sendYesNo("#bอัพเกรดสำเร็จ#k\r\nกด 'ใช่' เพื่ออัพเกรดต่อ\r\n\r\n" + say);
 
                 cm.addEnchantLog(1, item.getItemId(), item.getSerialNumberEquip(), 10, 0, "Meso Enhancement " + (getAddEnhance(item) - 1) + "->" + getAddEnhance(item) + " Success (Acc : " + cm.getClient().getAccountName() + ", Char : " + cm.getPlayer().getName() + ", Item [" + item.toString() + "])");
 
@@ -237,13 +237,13 @@ function action(mode, type, selection) {
             } else {
                 if (choice == 1 || getAddEnhance(item) == 0) {
                     say = "";
-                    say += "#fs11##r<Item Info>\r\n";
-                    say += "Item : #i" + itemid + "# #z" + itemid + "#\r\n";
+                    say += "#fs11##r<ข้อมูลไอเท็ม>\r\n";
+                    say += "ไอเท็ม : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | StarForce : " + item.getEnhance() + "\r\n";
                     say += "All Stat : " + item.getAllStat() + "%  |  Total Dmg : " + item.getTotalDamage() + "%  |  Boss Dmg : " + item.getBossDamage() + "%\r\n";
-                    say += "Enhance Count : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
-                    cm.sendYesNo("#rEnhancement failed#k but " + ConvertNumber(keep) + " Meso was used to #rprotect rank#k.\r\nPress 'Yes' to continue enhancing.\r\n\r\n" + say);
+                    say += "จำนวนการอัพเกรด : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
+                    cm.sendYesNo("#rการอัพเกรดล้มเหลว#k แต่ใช้ " + ConvertNumber(keep) + " Meso เพื่อ #rป้องกันระดับ#k เรียบร้อยแล้ว\r\nกด 'ใช่' เพื่ออัพเกรดต่อ\r\n\r\n" + say);
 
                     cm.addEnchantLog(1, item.getItemId(), item.getSerialNumberEquip(), 10, 1, "Meso Enhancement " + getAddEnhance(item) + "->" + (getAddEnhance(item) + 1) + " Failed Protected (Acc : " + cm.getClient().getAccountName() + ", Char : " + cm.getPlayer().getName() + ", Item [" + item.toString() + "])");
 
@@ -257,18 +257,18 @@ function action(mode, type, selection) {
                     item.setWatk(item.getWatk() - items[getAddEnhance(item)][4]);
                     item.setMatk(item.getMatk() - items[getAddEnhance(item)][4]);
 
-                    item.setOwner("" + (getAddEnhance(item) - 1) + "강");
+                    item.setOwner("" + (getAddEnhance(item) - 1) + " Star");
 
                     cm.getPlayer().send(Packages.network.models.CWvsContext.InventoryPacket.updateInventoryItem(Packages.objects.item.MapleInventoryType.EQUIP, item, false, cm.getPlayer()));
 
                     say = "";
-                    say += "#r<Item Info>\r\n";
-                    say += "Item : #i" + itemid + "# #z" + itemid + "#\r\n";
+                    say += "#r<ข้อมูลไอเท็ม>\r\n";
+                    say += "ไอเท็ม : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | StarForce : " + item.getEnhance() + "\r\n";
                     say += "All Stat : " + item.getAllStat() + "%  |  Total Dmg : " + item.getTotalDamage() + "%  |  Boss Dmg : " + item.getBossDamage() + "%\r\n";
-                    say += "Enhance Count : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
-                    cm.sendYesNo("#rEnhancement failed#k and #rrank dropped#k.\r\nPress 'Yes' to continue enhancing.\r\n\r\n" + say);
+                    say += "จำนวนการอัพเกรด : " + getAddEnhance(item) + "#k\r\n\r\n\r\n";
+                    cm.sendYesNo("#rการอัพเกรดล้มเหลว#k และ #rระดับลดลง#k\r\nกด 'ใช่' เพื่ออัพเกรดต่อ\r\n\r\n" + say);
 
                     cm.addEnchantLog(1, item.getItemId(), item.getSerialNumberEquip(), 10, 1, "Meso Enhancement " + (getAddEnhance(item) - 1) + "->" + getAddEnhance(item) + " Failed Dropped (Acc : " + cm.getClient().getAccountName() + ", Char : " + cm.getPlayer().getName() + ", Item [" + item.toString() + "])");
 

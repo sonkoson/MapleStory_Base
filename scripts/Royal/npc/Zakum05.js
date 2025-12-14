@@ -18,14 +18,14 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        talk = "잠깐!! 어느 자쿰의 제단으로 이동하시겠소?\r\n\r\n"
-        talk+= "#L0# #b노멀 자쿰#l\r\n";
-        talk+= "#L1# #b카오스 자쿰#l\r\n";
+        talk = "เดี๋ยวก่อน!! เจ้าต้องการไปยังแท่นบูชาของ Zakum อันไหน?\r\n\r\n"
+        talk += "#L0# #bNormal Zakum#l\r\n";
+        talk += "#L1# #bChaos Zakum#l\r\n";
         cm.sendSimple(talk);
     } else if (status == 1) {
         if (cm.itemQuantity(4001017) == 0) {
-            nameplus = selection == 0 ? "노멀" : "카오스"
-            cm.getPlayer().dropMessage(5, nameplus+" 자쿰에게 바칠 제물이 없어 이동할 수 없습니다.");
+            nameplus = selection == 0 ? "Normal" : "Chaos"
+            cm.getPlayer().dropMessage(5, "ไม่สามารถเคลื่อนย้ายได้เนื่องจากไม่มีของบูชาสำหรับ " + nameplus + " Zakum");
             cm.dispose();
             return;
         }

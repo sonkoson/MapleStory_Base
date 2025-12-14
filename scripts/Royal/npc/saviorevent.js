@@ -1,22 +1,22 @@
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+var purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var starBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var starYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var starWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var starBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var starRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var color = "#fc0xFF6600CC#"
+var black = "#fc0xFF000000#"
+var pink = "#fc0xFFFF3366#"
+var lightPink = "#fc0xFFF781D8#"
+var enter = "\r\n"
+var enter2 = "\r\n\r\n"
 enter = "\r\n";
 
 importPackage(Packages.objects.item);
@@ -24,9 +24,9 @@ importPackage(Packages.constants);
 
 
 var need = [
-        {'itemid' : 4317001, 'qty' : 1},
-        {'itemid' : 4317002, 'qty' : 1},
-        {'itemid' : 4317003, 'qty' : 1}
+    { 'itemid': 4317001, 'qty': 1 },
+    { 'itemid': 4317002, 'qty': 1 },
+    { 'itemid': 4317003, 'qty': 1 }
 ]
 
 var tocoin = 4310184, toqty = 1;
@@ -52,7 +52,7 @@ function MakeItem(itemid) {
 }
 
 function MakeItem1(itemid) {
-    //장비 아이템 옵션 부여하기
+    //Grant equipment item options
     var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
     var it = ii.getEquipById(itemid);
     it.setStr(1000);
@@ -79,8 +79,8 @@ function MakeItem1(itemid) {
 }
 
 function start() {
-     status = -1;    
-     action (1, 0, 0);
+    status = -1;
+    action(1, 0, 0);
 }
 
 function action(mode, type, sel) {
@@ -97,177 +97,177 @@ function action(mode, type, sel) {
     }
 
     if (status == 0) {
-        // 첫 이벤트 클릭시 애니메이션재생
+        // Animation play on first click
 
-            var msg = "　　　#i1802959# #fs11##e[로얄메이플] - SAVIOR 이벤트#n#fs11# #i1802959#\r\n#fs11##Cblue#              항상 로얄 메이플을 이용해주셔서 감사합니다#k\r\n";
-                    msg += 핑크색 + "                               #L100#이벤트안내#fc0xFF000000##l\r\n\r\n";
-                    msg += "                      이벤트 기간 : #b02.20 ~ 03.31\r\n";
-                    msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
-                    //msg += "#L1##fc0xFFFF3366#이벤트 맵#fc0xFF000000# 이동#l\r\n";
-                    msg += "#L2##fc0xFFFF3366#이벤트 아이템#fc0xFF000000# 교환#l\r\n";
-                    msg += "#L3##fc0xFF6600CC#이벤트 아이템#fc0xFF000000# 상점#l\r\n";
-                    msg += "#L4##fc0xFF6600CC#이벤트 아이템 수급처#fc0xFF000000# 확인#l\r\n";
-                    msg += "#L5##fc0xFF6600CC#스페셜 아이템#fc0xFF000000# 지급받기#l\r\n";
-                    msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
-            cm.sendSimple(msg);
-     } else if(status == 1) {
+        var msg = "　　　#i1802959# #fs11##e[Royal Maple] - SAVIOR Event#n#fs11# #i1802959#\r\n#fs11##Cblue#              ขอบคุณที่ใช้บริการ Royal Maple เสมอมา#k\r\n";
+        msg += pink + "                               #L100#แนะนำกิจกรรม#fc0xFF000000##l\r\n\r\n";
+        msg += "                      ระยะเวลากิจกรรม : #b02.20 ~ 03.31\r\n";
+        msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
+        //msg += "#L1##fc0xFFFF3366#Map Event#fc0xFF000000# Warp#l\r\n";
+        msg += "#L2##fc0xFFFF3366#แลกเปลี่ยน#fc0xFF000000# ไอเทมกิจกรรม#l\r\n";
+        msg += "#L3##fc0xFF6600CC#ร้านค้า#fc0xFF000000# ไอเทมกิจกรรม#l\r\n";
+        msg += "#L4##fc0xFF6600CC#ตรวจสอบ#fc0xFF000000# แหล่งหาไอเทมกิจกรรม#l\r\n";
+        msg += "#L5##fc0xFF6600CC#รับ#fc0xFF000000# ไอเทมพิเศษ#l\r\n";
+        msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
+        cm.sendSimple(msg);
+    } else if (status == 1) {
         seld = sel;
-        switch(sel) {
+        switch (sel) {
             case 100:
-            var msg = "#fn나눔고딕 Extrabold##d(사냥과 잠수를하면 다양한 사탕들이 드롭되던데..)#k\r\n\r\n#b얼른 사탕들을 모아야겠어!\r\n\r\n";
-                    msg += "#r그런데 이벤트 코인은 어디에 사용하는거지..?\r\n";
-            cm.sendNextS(msg, 2);
-            break;
-            
+                var msg = "#fnNanumGothic Extrabold##d(ถ้าล่ามอนสเตอร์และ AFK จะมีลูกอมต่างๆ ดรอปออกมา..)#k\r\n\r\n#bต้องรีบสะสมลูกอมแล้ว!\r\n\r\n";
+                msg += "#rว่าแต่เหรียญกิจกรรมเอาไว้ใช้ทำอะไรนะ..?\r\n";
+                cm.sendNextS(msg, 2);
+                break;
+
             case 1:
-            cm.warp(993031000, 0);
-            cm.dispose();
-
-            break;
-            
-            case 2:
-            var msg = "#fs11#" + 핑크색 + "사탕을 모아오셨나요?! SAVIOR 코인으로 교환해드릴 수 있어요!" + 검은색 +enter+enter;
-
-            for (i = 0; i < need.length; i++) {
-                if (i != need.length - 1) msg += "#i"+need[i]['itemid']+"##z"+need[i]['itemid']+"# "+need[i]['qty']+"개와"+enter;
-                else msg += "#fs11##i"+need[i]['itemid']+"##z"+need[i]['itemid']+"# "+need[i]['qty']+"개를 주신다면\r\n대신 제가 가진 #b#i"+tocoin+"##z"+tocoin+"#" + 검은색 + "을 드리죠!";
-            }
-                
-            if (haveNeed(1))
-                cm.sendNext(msg);
-            else {
-                msg += enter+enter+"허나.. 모험가님은 사탕을 모두 가지고있지 않으시네요";
-                cm.sendOk(msg);
+                cm.warp(993031000, 0);
                 cm.dispose();
-            }
-            break;
+
+                break;
+
+            case 2:
+                var msg = "#fs11#" + pink + "สะสมลูกอมมาแล้วเหรอ?! แลกเป็นเหรียญ SAVIOR ให้ได้นะ!" + black + enter + enter;
+
+                for (i = 0; i < need.length; i++) {
+                    if (i != need.length - 1) msg += "#i" + need[i]['itemid'] + "##z" + need[i]['itemid'] + "# " + need[i]['qty'] + "ชิ้น และ" + enter;
+                    else msg += "#fs11##i" + need[i]['itemid'] + "##z" + need[i]['itemid'] + "# " + need[i]['qty'] + "ชิ้น ถ้าให้ฉันล่ะก็\r\nจะให้ #b#i" + tocoin + "##z" + tocoin + "#" + black + " เป็นการตอบแทน!";
+                }
+
+                if (haveNeed(1))
+                    cm.sendNext(msg);
+                else {
+                    msg += enter + enter + "แต่ว่า.. ท่านนักผจญภัยมีลูกอมไม่ครบนี่นา";
+                    cm.sendOk(msg);
+                    cm.dispose();
+                }
+                break;
 
             case 3:
-            cm.dispose();
-            cm.openShop(6666);
-            break;
+                cm.dispose();
+                cm.openShop(6666);
+                break;
 
             case 4:
-            var msg = "#fs11#";
-                    msg += "#fs11##b#i4317001##z4317001#\r\n#i4317002##z4317002#\r\n#i4317003##z4317003#\r\n\r\n";
-                    msg += "#r#e[낚시]#b 시 일정 확률로 위 세가지 아이템 획득가능\r\n";
-                    msg += "#r#e[사냥]#b 시 일정 확률로 위 세가지 아이템 획득가능\r\n\r\n";
-                    msg += 핑크색 + "                   위 세가지 사탕을\r\n\r\n#b#i4310184# #z4310184#" + 핑크색 + " 으로교환할 수 있습니다";
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
-            
-            
-            case 5:
-            if (cm.getClient().getKeyValue("savioreventitem") == null) {
-                msg = "#fs11#스페셜 아이템을 지급받으시겠어요?\r\n\r\n#r※ 스페셜 아이템은 계정당 1회만 지급됩니다\r\n※ 스페셜 아이템은 30일 기간제이며 기간만료시 삭제됩니다";
-                msg += "\r\n\r\n < 확정 아이템 리스트 >\r\n\r\n";
-                    msg += 색 + "#i"+bosang1[0]+"# #z"+bosang1[0]+"#" +enter;
-                msg += "\r\n\r\n < 랜덤 아이템 리스트 >\r\n\r\n";
-                for (i = 0; i < bosang.length; i++) {
-                    msg += 색 + "#i"+bosang[i]+"# #z"+bosang[i]+"#" +enter;
-                }
-                cm.sendYesNo(msg);
-            } else {
-                msg = "#fs11#" + 검은색 + "이미 #fc0xFFFF3366#스페셜 아이템" + 검은색 + " 을 지급받으셨습니다";
-                cm.dispose();
+                var msg = "#fs11#";
+                msg += "#fs11##b#i4317001##z4317001#\r\n#i4317002##z4317002#\r\n#i4317003##z4317003#\r\n\r\n";
+                msg += "#r#e[ตกปลา]#b มีโอกาสได้รับไอเทม 3 อย่างข้างต้น\r\n";
+                msg += "#r#e[ล่ามอนสเตอร์]#b มีโอกาสได้รับไอเทม 3 อย่างข้างต้น\r\n\r\n";
+                msg += pink + "                   นำลูกอม 3 อย่างข้างต้น\r\n\r\n#b#i4310184# #z4310184#" + pink + " มาแลกเปลี่ยนเป็น";
                 cm.sendOk(msg);
-            }
-            break;
+                cm.dispose();
+                break;
+
+
+            case 5:
+                if (cm.getClient().getKeyValue("savioreventitem") == null) {
+                    msg = "#fs11#ต้องการรับไอเทมพิเศษหรือไม่?\r\n\r\n#r※ ไอเทมพิเศษรับได้ 1 ครั้งต่อบัญชีเท่านั้น\r\n※ ไอเทมพิเศษมีอายุ 30 วัน และจะถูกลบเมื่อหมดอายุ";
+                    msg += "\r\n\r\n < รายการไอเทมแน่นอน >\r\n\r\n";
+                    msg += color + "#i" + bosang1[0] + "# #z" + bosang1[0] + "#" + enter;
+                    msg += "\r\n\r\n < รายการไอเทมสุ่ม >\r\n\r\n";
+                    for (i = 0; i < bosang.length; i++) {
+                        msg += color + "#i" + bosang[i] + "# #z" + bosang[i] + "#" + enter;
+                    }
+                    cm.sendYesNo(msg);
+                } else {
+                    msg = "#fs11#" + black + "ได้รับ #fc0xFFFF3366#ไอเทมพิเศษ" + black + " ไปแล้ว";
+                    cm.dispose();
+                    cm.sendOk(msg);
+                }
+                break;
 
             case 1000:
-            if (getCount() == 7) {
-                if (getClear() == null) {
-                    cm.sendYesNo("#fs11#도장을 다 받아오셨군요! 특별한 선물을 지급받으시겠어요?\r\n\r\n#r※ 특별한 아이템은 계정당 1회만 지급됩니다");
-                    break;
+                if (getCount() == 7) {
+                    if (getClear() == null) {
+                        cm.sendYesNo("#fs11#สะสมตราประทับครบแล้วเหรอ! ต้องการรับของขวัญพิเศษหรือไม่?\r\n\r\n#r※ ไอเทมพิเศษรับได้ 1 ครั้งต่อบัญชีเท่านั้น");
+                        break;
+                    } else {
+                        msg = "#fs11#ได้รับของขวัญพิเศษไปแล้ว!";
+                    }
                 } else {
-                    msg = "#fs11#이미 특별한 선물을 지급받으셨어요!";
+                    msg = "#fs11#สะสมตราประทับยังไม่ครบ..\r\n\r\n" + pink + star + " จำนวนตราประทับปัจจุบัน : " + getCount() + " / 7";
                 }
-            } else {
-                msg = "#fs11#도장을다 받아오지 못하셨어요..\r\n\r\n" + 핑크색 + 별 + " 현재 찍은 도장 갯수 : " + getCount() + " / 7";
-            }
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
+                cm.sendOk(msg);
+                cm.dispose();
+                break;
 
             case 1001:
-            cm.warp(ServerConstants.TownMap, 0);
-            cm.dispose();
-            break;
-            
-        }
-        
-    } else if(status == 2) {
-        switch(seld) {
-            case 100:
-                cm.sendOk("#fs11#" + 색 + "이벤트 상점에서 #i4310184# #z4310184#으로 다양한 아이템을 구매할 수 있어요!");
+                cm.warp(ServerConstants.TownMap, 0);
                 cm.dispose();
-            break;
-            
+                break;
+
+        }
+
+    } else if (status == 2) {
+        switch (seld) {
+            case 100:
+                cm.sendOk("#fs11#" + color + "สามารถซื้อไอเทมต่างๆ ได้ที่ร้านค้ากิจกรรมด้วย #i4310184# #z4310184#!");
+                cm.dispose();
+                break;
+
             case 2:
-            temp = [];
-            for (i = 0; i < need.length; i++) {
-                temp.push(Math.floor(cm.itemQuantity(need[i]['itemid']) / need[i]['qty']));
-            }
-            temp.sort();
-            max = temp[0];
-            cm.sendGetNumber("#fs11#모험가님은 최대 #b #i" + tocoin + "##z"+ tocoin + "# " + max+"개를#k 교환할 수 있어요..\r\n\r\n몇 개를 교환하시겠어요?", 1, 1, max);
-            break;
+                temp = [];
+                for (i = 0; i < need.length; i++) {
+                    temp.push(Math.floor(cm.itemQuantity(need[i]['itemid']) / need[i]['qty']));
+                }
+                temp.sort();
+                max = temp[0];
+                cm.sendGetNumber("#fs11#ท่านนักผจญภัยสามารถแลกได้สูงสุด #b #i" + tocoin + "##z" + tocoin + "# " + max + "ชิ้น#k ..\r\n\r\nต้องการแลกกี่ชิ้น?", 1, 1, max);
+                break;
 
             case 5:
-            i = Packages.objects.utils.Randomizer.rand(0, 7);
+                i = Packages.objects.utils.Randomizer.rand(0, 7);
 
-            if (!cm.canHold(bosang[i], 1)) {
-                cm.sendOk("#fs11#인벤토리 공간이 부족합니다.");
-                cm.dispose();
-                return;
-            }
+                if (!cm.canHold(bosang[i], 1)) {
+                    cm.sendOk("#fs11#ช่องเก็บของไม่พอ");
+                    cm.dispose();
+                    return;
+                }
 
-            if (!cm.canHold(bosang1[0], 1)) {
-                cm.sendOk("#fs11#인벤토리 공간이 부족합니다.");
+                if (!cm.canHold(bosang1[0], 1)) {
+                    cm.sendOk("#fs11#ช่องเก็บของไม่พอ");
+                    cm.dispose();
+                    return;
+                }
+
+                msg = "#fs11#" + obtain + enter;
+                msg += color + "#i" + bosang1[0] + "# #z" + bosang1[0] + "#" + enter;
+                msg += color + "#i" + bosang[i] + "# #z" + bosang[i] + "#" + enter;
+                MakeItem(bosang[i]);
+                MakeItem1(bosang1[0]);
+                cm.getClient().setKeyValue("savioreventitem", "1");
+                msg += pink + "\r\nได้รับไอเทมดังต่อไปนี้";
+                cm.sendOk(msg);
                 cm.dispose();
-                return;
-            }
-            
-            msg = "#fs11#" + 획득 + enter;
-            msg += 색 + "#i"+bosang1[0]+"# #z"+bosang1[0]+"#" +enter;
-            msg += 색 + "#i"+bosang[i]+"# #z"+bosang[i]+"#" +enter;
-            MakeItem(bosang[i]);
-            MakeItem1(bosang1[0]);
-            cm.getClient().setKeyValue("savioreventitem", "1");
-            msg += 핑크색 + "\r\n위와 같은 아이템이 지급되었습니다";
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
+                break;
 
         }
-    } else if(status == 3) {
-        switch(seld) {
+    } else if (status == 3) {
+        switch (seld) {
             case 2:
-            if (!haveNeed(sel)) {
-                cm.sendOk("#fs11#모험가님의 사탕이 부족해요");
+                if (!haveNeed(sel)) {
+                    cm.sendOk("#fs11#ลูกอมของท่านนักผจญภัยไม่พอ");
+                    cm.dispose();
+                    return;
+                }
+                for (i = 0; i < need.length; i++) {
+                    cm.gainItem(need[i]['itemid'], -(need[i]['qty'] * sel));
+                }
+                cm.gainItem(tocoin, (toqty * sel));
+                cm.sendOk("#fs11#การแลกเปลี่ยนเสร็จสมบูรณ์!");
                 cm.dispose();
-                return;
-            }
-            for (i = 0; i < need.length; i++) {
-                cm.gainItem(need[i]['itemid'], -(need[i]['qty'] * sel));
-            }
-            cm.gainItem(tocoin, (toqty * sel));
-            cm.sendOk("#fs11#교환이 완료되었습니다!");
-            cm.dispose();
-            break;
+                break;
 
         }
     }
 }
 
 function haveNeed(a) {
-        var ret = true;
-        for (i = 0; i < need.length; i++) {
-                if (!cm.haveItem(need[i]['itemid'], (need[i]['qty'] * a)))
-                        ret = false;
-        }
-        return ret;
+    var ret = true;
+    for (i = 0; i < need.length; i++) {
+        if (!cm.haveItem(need[i]['itemid'], (need[i]['qty'] * a)))
+            ret = false;
+    }
+    return ret;
 }
 
 

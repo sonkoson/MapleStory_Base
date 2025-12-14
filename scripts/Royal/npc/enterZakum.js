@@ -1,9 +1,9 @@
 function start() {
     status = -1;
     action(1, 0, 0);
-    cm.sendSimple("잠깐, 어느 자쿰의 제단으로 이동하시겠소?\r\n#b" +
-        "#L211042400#노말 자쿰#l\r\n" +
-        "#L211042401#카오스 자쿰#l\r\n");
+    cm.sendSimple("เดี๋ยวก่อน ท่านต้องการเดินทางไปที่แท่นบูชา Zakum ระดับใด?\r\n#b" +
+        "#L211042400#Normal Zakum#l\r\n" +
+        "#L211042401#Chaos Zakum#l\r\n");
 }
 
 function action(M, T, S) {
@@ -20,9 +20,9 @@ function action(M, T, S) {
     if (status == 1) {
         S0 = S;
         needItem = (S0 == 211042402) ? 4001796 : 4001017;
-        getZakum = (S0 == 211042401) ? "카오스 " : "노말 ";
+        getZakum = (S0 == 211042401) ? "Chaos " : "Normal ";
         if (!cm.haveItem(needItem)) {
-            cm.getPlayer().dropMessage(5, getZakum + "자쿰에게 바칠 제물이 없어 이동할 수 없습니다.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถเดินทางไปได้เนื่องจากไม่มีเครื่องบรรณาการสำหรับ " + getZakum + "Zakum");
             cm.dispose();
             return;
         }

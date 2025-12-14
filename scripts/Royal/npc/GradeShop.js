@@ -349,7 +349,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item14[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item14[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item14[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item14[a][0]) + "\r\n사용 캐시 : " + -item14[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item14[a][0]) + "\r\nUsed Cash : " + -item14[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item14[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -362,7 +362,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item13[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item13[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item13[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item13[a][0]) + "\r\n사용 캐시 : " + -item13[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item13[a][0]) + "\r\nUsed Cash : " + -item13[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item13[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -375,7 +375,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item12[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item12[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item12[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item12[a][0]) + "\r\n사용 캐시 : " + -item12[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item12[a][0]) + "\r\nUsed Cash : " + -item12[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item12[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -388,7 +388,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item11[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item11[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item11[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item11[a][0]) + "\r\n사용 캐시 : " + -item11[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item11[a][0]) + "\r\nUsed Cash : " + -item11[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item11[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -401,7 +401,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item10[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item10[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item10[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item10[a][0]) + "\r\n사용 캐시 : " + -item10[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item10[a][0]) + "\r\nUsed Cash : " + -item10[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item10[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -414,7 +414,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item9[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item9[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item9[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item9[a][0]) + "\r\n사용 캐시 : " + -item9[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item9[a][0]) + "\r\nUsed Cash : " + -item9[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item9[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -427,7 +427,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item8[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item8[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item8[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item8[a][0]) + "\r\n사용 캐시 : " + -item8[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item8[a][0]) + "\r\nUsed Cash : " + -item8[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item8[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -440,7 +440,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item7[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item7[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item7[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item7[a][0]) + "\r\n사용 캐시 : " + -item7[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item7[a][0]) + "\r\nUsed Cash : " + -item7[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item7[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -453,7 +453,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item6[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item6[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item6[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item6[a][0]) + "\r\n사용 캐시 : " + -item6[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item6[a][0]) + "\r\nUsed Cash : " + -item6[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item6[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -466,7 +466,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item5[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item5[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item5[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item5[a][0]) + "\r\n사용 캐시 : " + -item5[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item5[a][0]) + "\r\nUsed Cash : " + -item5[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item5[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -479,7 +479,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item4[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item4[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item4[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item4[a][0]) + "\r\n사용 캐시 : " + -item4[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item4[a][0]) + "\r\nUsed Cash : " + -item4[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item4[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -492,7 +492,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item3[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item3[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item3[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item3[a][0]) + "\r\n사용 캐시 : " + -item3[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item3[a][0]) + "\r\nUsed Cash : " + -item3[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item3[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -505,7 +505,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item2[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item2[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item2[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item2[a][0]) + "\r\n사용 캐시 : " + -item2[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item2[a][0]) + "\r\nUsed Cash : " + -item2[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item2[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -518,7 +518,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item1[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item1[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item1[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item1[a][0]) + "\r\n사용 캐시 : " + -item1[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item1[a][0]) + "\r\nUsed Cash : " + -item1[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item1[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");
@@ -531,7 +531,7 @@ function action(mode, type, selection) {
                 if (cm.getPlayer().getCashPoint() >= item[a][2] * cost) {
                     cm.getPlayer().gainCashPoint(-item[a][2] * cost);
                     cm.getPlayer().gainDonationPoint(item[a][3]);
-                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP등급]/[MVP]등급구매.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n이전등급 : " + cm.getPlayer().getHgrades() + "\r\n달성등급 : " + cm.getItemName(item[a][0]) + "\r\n사용 캐시 : " + -item[a][2] + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+                    Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPGrade]/[MVP]GradePurchase.log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPrevious Grade : " + cm.getPlayer().getHgrades() + "\r\nAchieved Grade : " + cm.getItemName(item[a][0]) + "\r\nUsed Cash : " + -item[a][2] + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
                     cm.getPlayer().setHgrade(item[a][4]);
                     cm.getPlayer().giveDonatorBuff();
                     cm.sendOk("#fs11#ได้รับระดับ MVP แล้ว\r\nกรุณาใช้ NPC โดเนทเพื่อรับรางวัลความสำเร็จ/รายสัปดาห์");

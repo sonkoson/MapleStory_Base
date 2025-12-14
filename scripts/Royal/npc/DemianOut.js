@@ -17,9 +17,9 @@ function action(mode, type, selection) {
     if (status == 0) {
         var eim = cm.getPlayer().getEventInstance();
         if (eim.getProperty("stage") == "4") {
-            cm.sendYesNoS("데미안을 물리쳤다. '세계수 정상으로 가는 길'로 돌아갈까?", 0x26);
+            cm.sendYesNoS("กำจัด Damien สำเร็จแล้ว. จะกลับไปที่ 'Road to Fallen World Tree' หรือไม่?", 0x26);
         } else {
-            cm.sendYesNoS("이곳은 위험하다. 전투를 포기하고 밖으로 나갈까?", 0x26);
+            cm.sendYesNoS("ที่นี่อันตรายเกินไป. จะยอมแพ้การต่อสู้และออกไปข้างนอกหรือไม่?", 0x26);
         }
     } else if (status == 1) {
         cm.warp(105300303, 1);

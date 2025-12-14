@@ -1,6 +1,6 @@
 importPackage(Packages.database);
 
-var jobList = [ //4차 이상만 뜨게끔 유도
+var jobList = [ // Only show 4th job or higher
     // Adventurers
     [112, "Hero"], [122, "Paladin"], [132, "Dark Knight"],
     [212, "Arch Mage (Fire, Poison)"], [222, "Arch Mage (Ice, Lightning)"], [232, "Bishop"],

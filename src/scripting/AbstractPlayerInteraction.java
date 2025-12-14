@@ -102,7 +102,7 @@ public abstract class AbstractPlayerInteraction {
       this.c.getPlayer().setRegisterTransferField(map);
       this.c.getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis() + 500L);
       if (this.c.getPlayer().getClient().getChannel() != channel) {
-         this.c.getPlayer().dropMessage(5, "Moving to channel " + channel + ".");
+         this.c.getPlayer().dropMessage(5, "กำลังย้ายไปแชนแนล " + channel + ".");
          this.c.getPlayer().changeChannel(channel);
       }
    }
@@ -565,7 +565,7 @@ public abstract class AbstractPlayerInteraction {
                         + " obtained item.");
             String name = ii.getName(id);
             if (id / 10000 == 114 && name != null && name.length() > 0) {
-               String msg = "You have acquired the <" + name + "> medal!";
+               String msg = "คุณได้รับเหรียญตรา <" + name + ">!";
                cg.getPlayer().dropMessage(-1, msg);
                cg.getPlayer().dropMessage(5, msg);
             }

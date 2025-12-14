@@ -6,12 +6,12 @@ function start() {
 }
 
 function action(mode, type, selection) {
-        var count = 1;
+    var count = 1;
     setting = [
         ["Normal_Pierre", count, 105200200, 100],
         ["Chaos_Pierre", count, 105200600, 210]
     ]
-    name = ["노멀", "하드"]
+    name = ["Normal", "Chaos"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -21,57 +21,57 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "#r#e<루타비스 남쪽 정원 입구>#k#n\r\n"
-        talk += "루타비스 남쪽 봉인의 수호자인 #r피에르#k가 지키고 있는 정원으로 가는 문이다. #r클리어 기록은 자정을 기준으로 초기화 됩니다.#k#n\r\n\r\n"
-        talk += "#L0##i4033611##b#z4033611#를 사용하여 노말 모드로 이동한다.#l\r\n"
-        talk += "#L1##i4033611##b#z4033611#를 사용하여 카오스 모드로 이동한다.#l\r\n"
+        talk = "#r#e<ทางเข้าสวนแห่ง Root Abyss (South)>#k#n\r\n"
+        talk += "ประตูสู่สวนที่ #rPierre#k ผู้พิทักษ์ผนึกทางใต้ของ Root Abyss เฝ้าอยู่ #rบันทึกการเคลียร์จะถูกรีเซ็ตตอนเที่ยงคืน#k#n\r\n\r\n"
+        talk += "#L0##i4033611##bใช้ #z4033611# เพื่อเข้าสู่โหมด Normal#l\r\n"
+        talk += "#L1##i4033611##bใช้ #z4033611# เพื่อเข้าสู่โหมด Chaos#l\r\n"
         cm.sendSimple(talk);
     } else if (status == 1) {
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("1인 이상의 파티에 속해야만 입장할 수 있습니다.");
+            cm.sendOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있습니다.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าดันเจี้ยนได้");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2] + 10) >= 1 || cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendNext("이미 다른 파티가 안으로 들어가 피에르에게 도전하고 있는 중입니다.");
+            cm.sendNext("มีปาร์ตี้อื่นกำลังท้าทาย Pierre อยู่ข้างในแล้ว");
             cm.dispose();
             return;
-	} else if (!cm.allMembersHere()) {
-	    cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
-	    cm.dispose();
+        } else if (!cm.allMembersHere()) {
+            cm.sendOk("สมาชิกปาร์ตี้ทุกคนต้องอยู่ในแผนที่เดียวกัน");
+            cm.dispose();
             return;
         }
         if (!cm.partyhaveItem(4033611, 1)) {
-            talk = "파티원 중 #i4033611# #b#z4033611##k를 소지하고 있지 않은 파티원이 있습니다.";
+            talk = "มีสมาชิกในปาร์ตี้ที่ไม่มีไอเท็ม #i4033611# #b#z4033611##k";
             cm.sendOk(talk);
             cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "파티원 중 #b#e"
+            talk = "สมาชิกในปาร์ตี้ #b#e"
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + ""
             }
-            talk += "#k#n님이 오늘 입장했습니다. 피에르는 하루에 " + setting[st][1] + "번만 도전하실 수 있습니다.";
+            talk += "#k#n เข้าดันเจี้ยนวันนี้ไปแล้ว Pierre สามารถท้าทายได้วันละ " + setting[st][1] + " ครั้งเท่านั้น";
             cm.sendOk(talk);
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 #b#e"
+            talk = "สมาชิกในปาร์ตี้ #b#e"
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
-            talk += "#k#n님의 레벨이 부족합니다. 피에르는 레벨 " + setting[st][3] + "이상만 도전하실 수 있습니다.";
+            talk += "#k#n เลเวลไม่ถึงเกณฑ์ Pierre สามารถท้าทายได้ตั้งแต่เลเวล " + setting[st][3] + " ขึ้นไป";
         } else {
             cm.givePartyItems(4033611, -1);
             cm.addBoss(setting[st][0]);

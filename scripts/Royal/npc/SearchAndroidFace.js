@@ -63,10 +63,10 @@ function action(mode, type, selection) {
 
         if (searchTarget.length >= MIN_SEARCHNAME_LENGTH) {
             if (isHairId) { //Hair
-                chat += '#fs11##fn돋움##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนทรงผมของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองเลือกทรงผมที่ต้องการดูสิ'
+                chat += '#fs11##fnArial##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนทรงผมของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองเลือกทรงผมที่ต้องการดูสิ'
                 searchedMolding = searchHair(searchTarget)
             } else {
-                chat += '#fs11##fn돋움##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนหน้าตาของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองดูหน้าตาที่ต้องการดูสิ'
+                chat += '#fs11##fnArial##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนหน้าตาของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองดูหน้าตาที่ต้องการดูสิ'
                 searchedMolding = searchFace(searchTarget)
             }
 

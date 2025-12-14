@@ -59,7 +59,7 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         var say = "นี่คือเควสรายวัน กรุณาเลือกเควสที่คุณต้องการทำ\r\n";
-        //say += "#L0##e#b레벨범위 몬스터 #r(-20~+10레벨) #b10000마리#d (무제한)#l\r\n\r\n";
+        //say += "#L0##e#bLevel Range Monsters #r(-20~+10 Level) #b10000#d (Unlimited)#l\r\n\r\n";
         for (var i = 0; i < quest.length; i++) {
             say += "#L" + i + "##e#b[" + quest[i][0] + "]#n#k\r\n#e#d";
             for (var a = 0; a < check[i].length; a++) {
@@ -83,7 +83,7 @@ function action(mode, type, selection) {
             }
         }
 
-        // 이게 null이면 다시 설정해줘야댐.
+        // If null, reset.
         if (cm.getPlayer().getKeyValue("QuestMax_" + quest[sel][0][0]) == null) {
             for (var a = 0; a < check[sel].length; a++) {
                 cm.getPlayer().setKeyValue("QuestMax_" + check[sel][a][0], check[sel][a][1]);
@@ -113,8 +113,8 @@ function action(mode, type, selection) {
             }
             say += "#e#bคุณสามารถส่งเควสได้หลังจากกำจัดมอนสเตอร์ครบแล้ว\r\n";
 
-            /*            say += "#L0##e#r사냥터로 이동하기#l#k\r\n\r\n";
-                        say += "[첫번째 맵에서 이동시 두번째맵으로 이동합니다]\r\n\r\n";*/
+            /*            say += "#L0##e#rMove to Hunting Ground#l#k\r\n\r\n";
+                        say += "[If used in the first map, moves to the second map]\r\n\r\n";*/
             say += "#fc0xFF6600CC#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";

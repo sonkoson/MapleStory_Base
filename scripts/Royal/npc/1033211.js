@@ -13,10 +13,10 @@ function action(mode, type, sel) {
         cm.dispose();
         return;
     }
-    
-    
+
+
     if (status == 0) {
-        cm.sendOk("#fs11#그만좀 와라");
+        cm.sendOk("#fs11#เลิกมาได้แล้วน่า");
         cm.dispose();
     }
 }

@@ -17,18 +17,18 @@ importPackage(Packages.database);
 importPackage(Packages.scripting);
 
 var startmap = [
-    220080100, // 이지
-    220080200, // 노말
-    220080300, // 카오스
-    220080300, // 카오스 연습
+    220080100, // Easy
+    220080200, // Normal
+    220080300, // Chaos
+    220080300, // Chaos Practice
 ];
 var exitmap = 15;
-var bossname = "파풀라투스"
+var bossname = "Papulatus"
 var time = 30;
 var deathcount = 5;
 var practice = false;
 var checkItem = false;
-var diff = ["이지", "노말", "카오스", "카오스연습"];
+var diff = ["Easy", "Normal", "Chaos", "Chaos Practice"];
 
 function start() {
     practice = false;
@@ -45,22 +45,22 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if (cm.getPlayer().getParty() == null) {
-            cm.sayNpc("1인 이상의 파티에 속해야만 입장할 수 있습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.sayNpc("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         }
-        text = "#e<보스: 파풀라투스>#n\r\n"
-        text += "사고뭉치 파풀라투스가 차원을 계속 부수는 것을 막아야 합니다. 도와주시겠어요?\r\n\r\n\r\n"
-        text += "#L1# 노말 모드 ( 레벨 155 이상 )"
+        text = "#e<Boss: Papulatus>#n\r\n"
+        text += "ต้องหยุดยั้งเจ้าตัวป่วน Papulatus ไม่ให้ทำลายมิติ ช่วยหน่อยได้ไหม?\r\n\r\n\r\n"
+        text += "#L1# Normal Mode ( เลเวล 155 ขึ้นไป )"
         text += " #r[" + cm.getPlayer().getOneInfoQuestInteger(1234569, "papulatus_clear") + "/" + (cm.getPlayer().getBossTier() + 1) + "]#l#k\r\n";
-        text += "#L2# 카오스 모드 ( 레벨 190 이상 )"
+        text += "#L2# Chaos Mode ( เลเวล 190 ขึ้นไป )"
         text += " #r[" + cm.getPlayer().getOneInfoQuestInteger(1234569, "chaos_papulatus_clear") + "/" + (cm.getPlayer().getBossTier() + 1) + "]#l#k";
         for (i = 0; i < cm.getPlayer().getPartyMembers().size(); i++) {
             chr = cm.getPlayer().getPartyMembers().get(i);
-            chr.dropMessage(5, "[노말 파풀라투스] 오늘 해당 보스를 " + chr.getOneInfoQuestInteger(1234569, "papulatus_clear") + "번 입장 하셨습니다. 총 " + (chr.getBossTier() + 1) + "번 입장 하실 수 있습니다.");
-            chr.dropMessage(5, "[카오스 파풀라투스] 오늘 해당 보스를 " + chr.getOneInfoQuestInteger(1234569, "chaos_papulatus_clear") + "번 입장 하셨습니다. 총 " + (chr.getBossTier() + 1) + "번 입장 하실 수 있습니다.");
+            chr.dropMessage(5, "[Normal Papulatus] วันนี้เข้าบอสนี้ไปแล้ว " + chr.getOneInfoQuestInteger(1234569, "papulatus_clear") + " ครั้ง เข้าได้ทั้งหมด " + (chr.getBossTier() + 1) + " ครั้ง");
+            chr.dropMessage(5, "[Chaos Papulatus] วันนี้เข้าบอสนี้ไปแล้ว " + chr.getOneInfoQuestInteger(1234569, "chaos_papulatus_clear") + " ครั้ง เข้าได้ทั้งหมด " + (chr.getBossTier() + 1) + " ครั้ง");
         }
-        text += "\r\n#L3# 카오스 연습 모드 ( 레벨 190 이상 )#l";
+        text += "\r\n#L3# Chaos Practice Mode ( เลเวล 190 ขึ้นไป )#l";
 
         cm.askMenu(text, GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
     } else if (status == 1) {
@@ -71,16 +71,16 @@ function action(mode, type, selection) {
         }
         if (!cm.haveItem(4031179)) {
             if (!cm.canHold(4031179, 1)) {
-                cm.sayNpc("기타 인벤토리 공간이 부족합니다. 기타 인벤토리 공간을 충분히 확보해주세요.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+                cm.sayNpc("ช่องเก็บของ ETC ไม่เพียงพอ กรุณาทำช่องว่างให้เพียงพอ", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
                 cm.dispose();
                 return;
             }
             cm.gainItem(4031179, 1);
-            cm.sayNpc("차원 균열의 조각이 없으시군요. 파풀라투스를 만나기 위해서 꼭 필요합니다. 제가 갖고 있던 것을 드릴테니, 파풀라투스가 차원을 부수는 것을 꼭 막아 주세요!", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.sayNpc("ดูเหมือนจะไม่มีชิ้นส่วนรอยแยกมิติ จำเป็นต้องมีเพื่อไปเจอ Papulatus ข้าจะให้ส่วนที่ข้ามี ดังนั้นช่วยหยุดยั้ง Papulatus จากการทำลายมิติด้วยนะ!", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             checkItem = true;
         } else {
             if (practice) {
-                cm.askYesNo("연습 모드에 입장을 선택하였습니다. 연습 모드에서는 #b#e경험치와 보상을 얻을 수 없으며#n#k 보스 몬스터의 종류와 상관없이 #b#e하루 5회#n#k만 이용할 수 있습니다. 입장하시겠습니까?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+                cm.askYesNo("เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eจะไม่ได้รับ EXP และของรางวัล#n#k และเข้าได้เพียง #b#eวันละ 5 ครั้ง#n#k โดยไม่คำนึงถึงชนิดบอส ต้องการเข้าหรือไม่?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             } else {
                 enterBoss();
             }
@@ -88,7 +88,7 @@ function action(mode, type, selection) {
     } else if (status == 2) {
         if (checkItem) {
             if (practice) {
-                cm.askYesNo("연습 모드에 입장을 선택하였습니다. 연습 모드에서는 #b#e경험치와 보상을 얻을 수 없으며#n#k 보스 몬스터의 종류와 상관없이 #b#e하루 5회#n#k만 이용할 수 있습니다. 입장하시겠습니까?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+                cm.askYesNo("เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eจะไม่ได้รับ EXP และของรางวัล#n#k และเข้าได้เพียง #b#eวันละ 5 ครั้ง#n#k โดยไม่คำนึงถึงชนิดบอส ต้องการเข้าหรือไม่?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             } else {
                 enterBoss();
             }
@@ -103,37 +103,37 @@ function action(mode, type, selection) {
 function enterBoss() {
     var n = "papulatus_clear";
     if (difficulty == 2) {
-        // 카오스는 1주에 1회, 노말/이지는 1일 1회
+        // Chaos 1/week, Normal/Easy 1/day (Standard logic, but keeping script logic)
         n = "chaos_papulatus_clear";
     }
     if (cm.getPlayer().getParty() == null) {
-        cm.sayNpc("1인 이상의 파티에 속해야만 입장할 수 있습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     var p = cm.getPlayer();
 
     if (!practice) {
-        // 격파 체크
+        // Clear Check
         for (i = 0; i < cm.getPlayer().getPartyMembers().size(); i++) {
             chr = cm.getPlayer().getPartyMembers().get(i);
             var q = chr.getOneInfoQuestInteger(1234569, n);
             if (q >= chr.getBossTier() + 1) {
                 if (DBConfig.isGanglim) {
-                    cm.sayNpc("일일 입장횟수를 모두 사용한 파티원이 있어 00시 횟수 초기화 이후 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+                    cm.sayNpc("มีสมาชิกในปาร์ตี้ใช้จำนวนครั้งเข้าเล่นหมดแล้ว สามารถลองใหม่ได้หลังรีเซ็ตตอนเที่ยงคืน", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    cm.sayNpc("금일에 이미 격파한 파티원이 있어 00시에 횟수 초기화 이후 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+                    cm.sayNpc("มีสมาชิกในปาร์ตี้ที่ชนะบอสไปแล้ววันนี้ สามารถลองใหม่ได้หลังรีเซ็ตตอนเที่ยงคืน", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 cm.dispose();
                 return;
             }
         }
     }
-    var keyValue = "papulatus_c"; // 이지/노말 통합 (카오스 제외)
+    var keyValue = "papulatus_c"; // Easy/Normal Combined (Exclude Chaos)
     if (practice) {
         keyValue = "boss_practice";
         if (!cm.CountCheck(keyValue, 20)) {
-            cm.sayNpc("하루에 20번만 시도 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.sayNpc("สามารถเข้าฝึกซ้อมได้วันละ 20 ครั้งเท่านั้น", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         }
@@ -141,17 +141,17 @@ function enterBoss() {
 
 
     if (!isPartyLeader()) {
-        cm.sayNpc("파티장이 아니면 신청할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!cm.allMembersHere()) {
-        cm.sayNpc("파티원이 전원 이곳에 모여있어야 합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สมาชิกปาร์ตี้ทุกคนต้องมารวมตัวกันที่นี่", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (cm.getPlayerCount(startmap[difficulty]) > 0) {
-        cm.sayNpc("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("มีคนกำลังท้าทายอยู่แล้ว\r\n#bกรุณาใช้แชแนลอื่น#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
@@ -186,12 +186,12 @@ function enterBoss() {
         }
     }
     if (!timePass && !practice) {
-        cm.sayNpc("입장 제한시간이 남은 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("มีสมาชิกในปาร์ตี้ที่ยังติดเวลาหน่วงการเข้าอยู่", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!countPass) {
-        cm.sayNpc("입장 제한횟수가 부족하거나 레벨 제한이 맞지 않는 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("มีสมาชิกในปาร์ตี้ที่เข้าได้ไม่พอหรือเลเวลไม่ถึงเกณฑ์", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     } else {
@@ -217,7 +217,7 @@ function enterBoss() {
     cm.resetMap(startmap[difficulty]);
     cm.dispose();
 
-    if (difficulty == 0) { // 이지 모드는 데카 50개
+    if (difficulty == 0) { // Easy Mode Death Count 50
         deathcount = 50;
     }
     var em = cm.getEventManager("Boss");
@@ -229,7 +229,7 @@ function enterBoss() {
     eim.setProperty("Leader", cm.getPlayer().getParty().getLeader().getName());
     eim.setProperty("DeathCount", deathcount);
     eim.setProperty("BossMode", practice ? 1 : 0);
-    eim.startEventTimer(60000 * time); // 30분
+    eim.startEventTimer(60000 * time); // 30 min
 
     eim.registerParty(cm.getPlayer().getParty(), cm.getPlayer().getMap());
 }

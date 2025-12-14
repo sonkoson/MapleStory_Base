@@ -13,7 +13,7 @@ function action(mode, type, selection) {
     if (status == 0) {
         var text = "#fUI/Basic.img/RoyalBtn/StartImg/0#";
 
-        text += "\r\n#fn나눔고딕 Extrabold##d							ยินดีต้อนรับสู่ Royal Maple#k\r\n#r								โปรดอ่านประกาศใน Discord#k\r\n#b									ขอให้สนุก";
+        text += "\r\n#fnArial##d							ยินดีต้อนรับสู่ Royal Maple#k\r\n#r								โปรดอ่านประกาศใน Discord#k\r\n#b									ขอให้สนุก";
         cm.sendOk(text);
         cm.dispose();
     }

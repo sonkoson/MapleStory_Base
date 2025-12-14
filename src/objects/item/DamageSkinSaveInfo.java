@@ -15,15 +15,17 @@ public class DamageSkinSaveInfo {
    private int slotCount;
 
    public static String getDefaultDesc() {
-      return ServerConstants.serverName + " 데미지 스킨 정보이다.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n";
+      return ServerConstants.serverName + " ข้อมูล Damage Skin.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n";
    }
 
    public DamageSkinSaveInfo(MapleCharacter player) {
       String slotCount = player.getOneInfoQuest(13190, "slotCount");
       this.slotCount = slotCount != null && !slotCount.isEmpty() ? Integer.parseInt(slotCount) : 0;
       MapleQuestStatus damSkin = player.getQuestIfNullAdd(MapleQuest.getInstance(7291));
-      int damageSkinID = damSkin == null ? 0 : (damSkin.getCustomData() == null ? 0 : Integer.parseInt(damSkin.getCustomData()));
-      this.activeDamageSkinData = new DamageSkinSaveData(damageSkinID, GameConstants.getDamageSkinItemID(damageSkinID), false, getDefaultDesc());
+      int damageSkinID = damSkin == null ? 0
+            : (damSkin.getCustomData() == null ? 0 : Integer.parseInt(damSkin.getCustomData()));
+      this.activeDamageSkinData = new DamageSkinSaveData(damageSkinID, GameConstants.getDamageSkinItemID(damageSkinID),
+            false, getDefaultDesc());
    }
 
    public DamageSkinSaveData getActiveDamageSkinData() {

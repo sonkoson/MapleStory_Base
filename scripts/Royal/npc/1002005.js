@@ -31,10 +31,10 @@ function action(mode, type, sel) {
 	} else {
 		cm.dispose();
 		return;
-    	}
+	}
 	if (status == 0) {
-		var msg ="#fs11#반갑네 #h #! 무엇이든 맡아주지.\r\n#fs11##d"+enter;
-		msg += "#L1#" + 색 + "[일반창고] " + 검은색 + "이용하기"+enter;
+		var msg = "#fs11#ยินดีต้อนรับ #h #! ฉันรับฝากของได้ทุกอย่างเลยนะ\r\n#fs11##d" + enter;
+		msg += "#L1#" + 색 + "[คลังเก็บของทั่วไป] " + 검은색 + "ฝาก/ถอนของ" + enter;
 		//msg += "#L2#" + 색 + "[캐시창고] " + 검은색 + "이용하기 (사용불가)";
 		cm.sendSimple(msg);
 		//cm.sendStorage();
@@ -45,11 +45,11 @@ function action(mode, type, sel) {
 			case 1:
 				cm.dispose();
 				cm.sendStorage();
-			break;
+				break;
 			case 2:
 				cm.dispose();
 				cm.openNpcCustom(cm.getClient(), 9000213, "캐시창고");
-			break;
+				break;
 		}
 	}
 }

@@ -1,8 +1,8 @@
 importPackage(Packages.database);
 importPackage(java.lang);
 
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
+var color = "#fc0xFF6600CC#";
+var black = "#fc0xFF000000#";
 
 var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 var couponid = "";
@@ -20,7 +20,6 @@ function start() {
     action(1, 0, 0);
 }
 
-
 function action(mode, type, sel) {
     if (mode == 1) {
         status++;
@@ -28,10 +27,9 @@ function action(mode, type, sel) {
         cm.dispose();
         return;
     }
-    
-    
+
     if (status == 0) {
-Packages.network.center.Center.Guild.getGuild(3210).setAllianceId(0);
+        Packages.network.center.Center.Guild.getGuild(3210).setAllianceId(0);
         var date = new Date();
         var year = date.getFullYear();
         var month = ("0" + (1 + date.getMonth())).slice(-2);
@@ -41,13 +39,13 @@ Packages.network.center.Center.Guild.getGuild(3210).setAllianceId(0);
         var seconds = ("0" + date.getSeconds()).slice(-2);
 
         var today = year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
-        cm.sendOk(today);
-        cm.dispose();
+
+        cm.sendGetText("#fs11#เวลาปัจจุบัน: " + today + "\r\n\r\n#bกรุณากรอกรหัสคูปองของคุณ:#k");
     } else if (status == 1) {
         couponid = cm.getText();
-        con = DBConnection.getConnection();
-        ps = con.prepareStatement("SELECT * FROM coupon");
-        rs = ps.executeQuery();
+        var con = DBConnection.getConnection();
+        var ps = con.prepareStatement("SELECT * FROM coupon");
+        var rs = ps.executeQuery();
         while (rs.next()) {
             if (couponid == rs.getString("id")) {
                 cancoupon = true;
@@ -64,14 +62,14 @@ Packages.network.center.Center.Guild.getGuild(3210).setAllianceId(0);
         ps.close();
         con.close();
 
-        // 쿠폰 미존재
+        // Check if coupon exists
         if (!cancoupon) {
-            cm.sendOk("#fs11##fc0xFF000000#존재하지않는 쿠폰번호 입니다.");
+            cm.sendOk("#fs11##fc0xFF000000#ไม่พบรหัสคูปองนี้");
             cm.dispose();
             return;
         }
-        
-        // 쿠폰 사용기간 체크
+
+        // Check coupon validity period
         var date = new Date();
         var year = date.getFullYear();
         var month = ("0" + (1 + date.getMonth())).slice(-2);
@@ -81,46 +79,44 @@ Packages.network.center.Center.Guild.getGuild(3210).setAllianceId(0);
         var seconds = ("0" + date.getSeconds()).slice(-2);
 
         var today = year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
-        
+
         if (today > endtime) {
-            cm.sendOk("#fs11##fc0xFF000000#해당 쿠폰은 사용기간이 만료된 쿠폰입니다.");
-            cm.dispose();
-            return;
-        }
-        
-        if (today < starttime) {
-            cm.sendOk("#fs11##fc0xFF000000#해당 쿠폰은 아직 사용할 수 없는 쿠폰입니다.");
+            cm.sendOk("#fs11##fc0xFF000000#คูปองหมดอายุแล้ว");
             cm.dispose();
             return;
         }
 
-        // 쿠폰 이미 사용
-        if (cm.getClient().getKeyValue(couponid) != null) {
-            cm.sendOk("#fs11##fc0xFF000000#이미 사용하신 쿠폰입니다.");
+        if (today < starttime) {
+            cm.sendOk("#fs11##fc0xFF000000#คูปองนี้ยังไม่เปิดให้ใช้งาน");
             cm.dispose();
             return;
         }
-        
-        // maxcount가 있을경우
+
+        // Check if already used
+        if (cm.getClient().getKeyValue(couponid) != null) {
+            cm.sendOk("#fs11##fc0xFF000000#คุณใช้คูปองนี้ไปแล้ว");
+            cm.dispose();
+            return;
+        }
+
+        // Check max count
         if (maxcount > 0) {
-            // current count가 maxcount와 동일할 경우
             if (currentcount >= maxcount) {
-                cm.sendOk("#fs11##fc0xFF000000#해당 쿠폰은 이미 모두 소진된 쿠폰입니다.");
+                cm.sendOk("#fs11##fc0xFF000000#คูปองนี้ถูกใช้จนหมดโควต้าแล้ว");
                 cm.dispose();
                 return;
             } else {
-                con = DBConnection.getConnection();
-                psmodify = con.prepareStatement("UPDATE coupon SET currentcount = " + (currentcount + 1) + " Where id = '" + couponid + "'");
-                rsmodify = psmodify.executeQuery();
-                rsmodify.close();
+                var con = DBConnection.getConnection();
+                var psmodify = con.prepareStatement("UPDATE coupon SET currentcount = " + (currentcount + 1) + " Where id = '" + couponid + "'");
+                psmodify.executeUpdate();
                 psmodify.close();
                 con.close();
             }
         }
 
-        // 정상쿠폰 = 아이템 지급
-        msg = "#fs11##fc0xFF000000#쿠폰이 정상적으로 사용되어 아이템이 지급됩니다.\r\n\r\n#r※ 쿠폰의 구성품은 아래와 같습니다.\r\n\r\n";
-        msg += 색 + "#i" + itemid + "# #z" + itemid +"# " + qty + "개" + enter;
+        // Give item
+        var msg = "#fs11##fc0xFF000000#แลกคูปองสำเร็จ! คุณได้รับไอเท็มเรียบร้อยแล้ว\r\n\r\n#rรายละเอียดของขวัญ:\r\n\r\n";
+        msg += color + "#i" + itemid + "# #z" + itemid + "# " + qty + " ชิ้น" + enter;
         cm.gainItem(itemid, qty);
         cm.getClient().setKeyValue(couponid, today);
         cm.sendOk(msg);

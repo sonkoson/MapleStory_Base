@@ -25,10 +25,10 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        txt = "#fs11##b각종 스탯의 랭크#fc0xFF000000#를 올릴 수 있는 시스템이라네 원하는 항목을 골라보게나#n#k\r\n\r\n#b";
-        txt += "#L0#데미지 랭크\r\n";
-        txt += "#L4#보스 공격력 랭크\r\n";
-		/*
+        txt = "#fs11##bนี่คือระบบที่สามารถเพิ่ม #eRank ของค่าสเตตัสต่างๆ#n#fc0xFF000000# ได้ ลองเลือกหัวข้อที่ต้องการดูสิ#n#k\r\n\r\n#b";
+        txt += "#L0#Damage Rank\r\n";
+        txt += "#L4#Boss Damage Rank\r\n";
+        /*
 if (cm.getPlayer().isGM()) {
         txt += "#L1#경험치 랭크\r\n";
         txt += "#L2#드롭률 랭크\r\n";
@@ -42,12 +42,12 @@ if (cm.getPlayer().isGM()) {
     } else if (status == 1) {
         sel = selection;
         if (sel == 0) {
-            //데미지 티어
+            // Damage Tier
             maxtear = 15;
             tearname = "DamageTear";
-            tearnamestring = "데미지 랭크";
-            effect = "데미지";
-            
+            tearnamestring = "Damage Rank";
+            effect = "Damage";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
@@ -55,9 +55,9 @@ if (cm.getPlayer().isGM()) {
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             damageup = 0;
-            
+
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#ถึงระดับสูงสุดแล้ว\r\n\r\n#fc0xFF1A9714#สูงสุด " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bปัจจุบัน " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
@@ -85,7 +85,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin1;
                     needcoincount = 1400;
                     damageup = 25;
-                    suc= 100;
+                    suc = 100;
                     break;
                 case 5:
                     needcoin = HuntCoin1;
@@ -183,42 +183,42 @@ if (cm.getPlayer().isGM()) {
                     damageup = 300;
                     suc = 100;
                     break;
-                    
+
             }
             txt = "#fs11#";
-            
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + damageup + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+
+            txt += "#fc0xFF1A9714#สูงสุด " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
+
+            txt += "#bปัจจุบัน " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bเลื่อนเป็น " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
+
+            txt += "โอกาสเลื่อนขั้น, ผลของ Rank ที่เลื่อนขั้น และ\r\n#rไอเทม#fc0xFF000000#ที่จำเป็นสำหรับการเลื่อนขั้น มีดังนี้\r\n\r\n";
+            txt += "#b#eโอกาสสำเร็จ : " + suc + "%#k\r\n";
+            txt += "#r#eเมื่อสำเร็จ " + effect + " รวม + #r#e" + damageup + "%#n#k\r\nวัตถุดิบ : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "ชิ้น#k\r\n\r\n";
+
+            txt += "#fs11##fc0xFF000000#ต้องการดำเนินการ #eเลื่อนขั้น#n หรือไม่?";
             cm.sendYesNo(txt);
         } else if (sel == 1) {
-            //경험치 티어
+            // EXP Tier
             maxtear = 8;
             tearname = "ExpTear";
-            tearnamestring = "경험치 랭크";
-            effect = "경험치";
-            
+            tearnamestring = "EXP Rank";
+            effect = "EXP";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
-            
+
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             up = 0;
-            
+
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#Already at max rank.\r\n\r\n#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
-            
+
             switch (uptear) {
                 case 1://1티어
                     needcoin = HuntCoin1;
@@ -242,7 +242,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin10000;
                     needcoincount = 2;
                     up = 18;
-                    suc= 50;
+                    suc = 50;
                     break;
                 case 5:
                     needcoin = HuntCoin10000;
@@ -271,39 +271,39 @@ if (cm.getPlayer().isGM()) {
             }
 
             txt = "#fs11#";
-            
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+
+            txt += "#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
+
+            txt += "#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bUpgrade " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
+
+            txt += "Here are the upgrade probability, rank effect, and\r\nrequired #ritems#fc0xFF000000# for upgrade.\r\n\r\n";
+            txt += "#b#eUpgrade Success Rate : " + suc + "%#k\r\n";
+            txt += "#r#eTotal " + effect + " on Success + #r#e" + up + "%#n#k\r\nMaterials : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + " pcs#k\r\n\r\n";
+
+            txt += "#fs11##fc0xFF000000#Do you really want to proceed with #eUpgrade#n?";
             cm.sendYesNo(txt);
         } else if (sel == 2) {
-            //드롭 티어
+            // Drop Tier
             maxtear = 8;
             tearname = "DropTear";
-            tearnamestring = "드롭률 랭크";
-            effect = "드롭";
-            
+            tearnamestring = "Drop Rate Rank";
+            effect = "Drop Rate";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
-            
+
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             up = 0;
-            
+
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#Already at max rank.\r\n\r\n#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
-            
+
             switch (uptear) {
                 case 1://1티어
                     needcoin = HuntCoin1;
@@ -327,7 +327,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin10000;
                     needcoincount = 2;
                     up = 60;
-                    suc= 50;
+                    suc = 50;
                     break;
                 case 5:
                     needcoin = HuntCoin10000;
@@ -356,39 +356,39 @@ if (cm.getPlayer().isGM()) {
             }
 
             txt = "#fs11#";
-            
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+
+            txt += "#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
+
+            txt += "#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bUpgrade " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
+
+            txt += "Here are the upgrade probability, rank effect, and\r\nrequired #ritems#fc0xFF000000# for upgrade.\r\n\r\n";
+            txt += "#b#eUpgrade Success Rate : " + suc + "%#k\r\n";
+            txt += "#r#eTotal " + effect + " on Success + #r#e" + up + "%#n#k\r\nMaterials : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + " pcs#k\r\n\r\n";
+
+            txt += "#fs11##fc0xFF000000#Do you really want to proceed with #eUpgrade#n?";
             cm.sendYesNo(txt);
         } else if (sel == 3) {
-            //크뎀 티어
+            // Crit Dmg Tier
             maxtear = 8;
             tearname = "CridamTear";
-            tearnamestring = "크리티컬 데미지 랭크";
-            effect = "크리티컬 데미지";
-            
+            tearnamestring = "Critical Damage Rank";
+            effect = "Critical Damage";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
-            
+
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             up = 0;
-            
+
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#Already at max rank.\r\n\r\n#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
-            
+
             switch (uptear) {
                 case 1://1티어
                     needcoin = HuntCoin1;
@@ -412,7 +412,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin1;
                     needcoincount = 2500;
                     up = 25;
-                    suc= 100;
+                    suc = 100;
                     break;
                 case 5:
                     needcoin = HuntCoin1;
@@ -441,39 +441,39 @@ if (cm.getPlayer().isGM()) {
             }
 
             txt = "#fs11#";
-            
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+
+            txt += "#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
+
+            txt += "#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bUpgrade " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
+
+            txt += "Here are the upgrade probability, rank effect, and\r\nrequired #ritems#fc0xFF000000# for upgrade.\r\n\r\n";
+            txt += "#b#eUpgrade Success Rate : " + suc + "%#k\r\n";
+            txt += "#r#eTotal " + effect + " on Success + #r#e" + up + "%#n#k\r\nMaterials : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + " pcs#k\r\n\r\n";
+
+            txt += "#fs11##fc0xFF000000#Do you really want to proceed with #eUpgrade#n?";
             cm.sendYesNo(txt);
         } else if (sel == 4) {
-            //보공 티어
+            // Boss Dmg Tier
             maxtear = 10;
             tearname = "BossdamTear";
-            tearnamestring = "보스공격력 랭크";
-            effect = "보스 공격력";
-            
+            tearnamestring = "Boss Damage Rank";
+            effect = "Boss Damage";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
-            
+
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             up = 0;
-            
+
             if (mytear >= maxtear) {
                 cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
                 cm.dispose();
                 return;
             }
-            
+
             switch (uptear) {
                 case 1://1티어
                     needcoin = HuntCoin1;
@@ -497,7 +497,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin1;
                     needcoincount = 3000;
                     up = 50;
-                    suc= 85;
+                    suc = 85;
                     break;
                 case 5:
                     needcoin = HuntCoin1;
@@ -538,39 +538,39 @@ if (cm.getPlayer().isGM()) {
             }
 
             txt = "#fs11#";
-            
+
             txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
+
             txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
             txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
+
             txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
             txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
             txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
+
             txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
             cm.sendYesNo(txt);
         } else if (sel == 5) {
-            //메소 티어
+            // Meso Tier
             maxtear = 8;
             tearname = "MesoTear";
-            tearnamestring = "메소 랭크";
-            effect = "메소";
-            
+            tearnamestring = "Meso Rank";
+            effect = "Meso";
+
             if (cm.getPlayer().getKeyValue(999, tearname) < 0) {
                 cm.getPlayer().setKeyValue(999, tearname, "0");
             }
-            
+
             mytear = cm.getPlayer().getKeyValue(999, tearname);
             uptear = mytear + 1;
             up = 0;
-            
+
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#Already at max rank.\r\n\r\n#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
-            
+
             switch (uptear) {
                 case 1://1티어
                     needcoin = HuntCoin1;
@@ -594,7 +594,7 @@ if (cm.getPlayer().isGM()) {
                     needcoin = HuntCoin10000;
                     needcoincount = 2;
                     up = 60;
-                    suc= 50;
+                    suc = 50;
                     break;
                 case 5:
                     needcoin = HuntCoin10000;
@@ -623,22 +623,22 @@ if (cm.getPlayer().isGM()) {
             }
 
             txt = "#fs11#";
-            
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
-            
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
-            
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
-            
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+
+            txt += "#fc0xFF1A9714#Max " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
+
+            txt += "#bCurrent " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bUpgrade " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
+
+            txt += "Here are the upgrade probability, rank effect, and\r\nrequired #ritems#fc0xFF000000# for upgrade.\r\n\r\n";
+            txt += "#b#eUpgrade Success Rate : " + suc + "%#k\r\n";
+            txt += "#r#eTotal " + effect + " on Success + #r#e" + up + "%#n#k\r\nMaterials : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + " pcs#k\r\n\r\n";
+
+            txt += "#fs11##fc0xFF000000#Do you really want to proceed with #eUpgrade#n?";
             cm.sendYesNo(txt);
         }
     } else if (status == 2) {
         if (!cm.haveItem(needcoin, needcoincount)) {
-            cm.sendOk("#fs11#승급에 필요한 코인이 부족합니다.");
+            cm.sendOk("#fs11#Coin ที่จำเป็นสำหรับการเลื่อนขั้นไม่เพียงพอ");
             cm.dispose();
             return;
         }
@@ -647,10 +647,10 @@ if (cm.getPlayer().isGM()) {
         if (Packages.objects.utils.Randomizer.isSuccess(suc)) {
             try {
                 if (uptear >= 10) // 10랭크 이상만 월드 메세지 전송
-                    cm.worldGMMessage(22, "[스탯랭크] " + cm.getPlayer().getName() + "님이 [" + tearnamestring + "] 를 " + uptear + "랭크로 승급하셨습니다.");
-                //Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/랭크승급/[스탯랭크승급].log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n승급랭크 : " + tearnamestring + "\r\n승급등급 : " + uptear + "\r\n\r\n", true);
-                cm.addCustomLog(3, "[스탯랭크] " + tearnamestring + " 승급등급 : " + uptear + "");
-                cm.effectText("#fn나눔고딕 ExtraBold##fs20#[스탯랭크] < " + tearnamestring + " > 를 " + uptear + "랭크로 승급하였습니다", 50, 1000, 6, 0, 330, -550);
+                    cm.worldGMMessage(22, "[Stat Rank] คุณ " + cm.getPlayer().getName() + " เลื่อนขั้น [" + tearnamestring + "] เป็น Rank " + uptear + " เรียบร้อยแล้ว");
+                //Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/UpgradeRank/[StatRankUpgrade].log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nName : " + cm.getPlayer().getName() + "\r\nUpgrade Rank : " + tearnamestring + "\r\nUpgrade Tier : " + uptear + "\r\n\r\n", true);
+                cm.addCustomLog(3, "[Stat Rank] " + tearnamestring + " Upgrade Tier : " + uptear + "");
+                cm.effectText("#fnArial##fs20#[Stat Rank] Upgraded < " + tearnamestring + " > to Rank " + uptear + "", 50, 1000, 6, 0, 330, -550);
 
                 cm.getPlayer().setKeyValue(999, tearname, "" + uptear + "");
                 cm.getPlayer().setBonusCTSStat();
@@ -662,13 +662,13 @@ if (cm.getPlayer().isGM()) {
 
                 cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
                 cm.showEffect(false, "Effect/CharacterEff.img/GradeUp");
-                
-                cm.sendYesNo("#fs11##fc0xFF000000#승급에 성공하셨습니다!\r\n\r\n#b" + tearnamestring + " : [" + uptear + "랭크]\r\n\r\n#fc0xFF000000#또 승급을 시도하시겠어요?");
-            } catch(err) {
-                cm.addCustomLog(50, "[StatRank.js] 에러 발생 : " + err + "");
+
+                cm.sendYesNo("#fs11##fc0xFF000000#เลื่อนขั้นสำเร็จ!\r\n\r\n#b" + tearnamestring + " : [Rank " + uptear + "]\r\n\r\n#fc0xFF000000#ต้องการลองเลื่อนขั้นต่อหรือไม่?");
+            } catch (err) {
+                cm.addCustomLog(50, "[StatRank.js] Error Occurred : " + err + "");
             }
         } else {
-            cm.sendYesNo("#fs11##fc0xFF000000#승급에 실패하셨습니다..\r\n\r\n#b" + tearnamestring + " : [" + (uptear - 1) + "랭크]\r\n\r\n#fc0xFF000000#다시 승급을 시도하시겠어요?");
+            cm.sendYesNo("#fs11##fc0xFF000000#เลื่อนขั้นล้มเหลว..\r\n\r\n#b" + tearnamestring + " : [Rank " + (uptear - 1) + "]\r\n\r\n#fc0xFF000000#ต้องการลองเลื่อนขั้นใหม่อีกครั้งหรือไม่?");
         }
     } else if (status == 3) {
         status = 0;

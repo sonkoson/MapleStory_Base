@@ -215,7 +215,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 50)) {
                 cm.gainItem(5060048, 15);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "3");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 골드 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Gold Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 3 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -228,7 +228,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 70)) {
                 cm.gainItem(5068305, 5);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "4");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 플래티넘 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Platinum Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 4 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -241,7 +241,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 90)) {
                 cm.gainItem(2049376, 5);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "5");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 다이아몬드 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Diamond Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 5 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -254,7 +254,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 110)) {
                 cm.gainItem(4310308, 500);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "6");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 마스터 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Master Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 6 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -267,7 +267,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 130)) {
                 cm.gainItem(4001715, 500);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "7");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 그랜드마스터 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Grand Master Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 7 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -280,7 +280,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 150)) {
                 cm.gainItem(2430044, 1);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "8");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 레전드 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Legend Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 8 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -292,7 +292,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 170)) {
                 cm.gainItem(4310266, 2000);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "9");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 레전드 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Legend Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 9 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -305,7 +305,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 200)) {
                 cm.gainItem(2430891, 1);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "10");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 레전드 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Legend Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 10 สำเร็จแล้ว");
                 cm.dispose();
             } else {
@@ -318,7 +318,7 @@ function action(mode, type, selection) {
             if (cm.haveItem(4001753, 200)) {
                 cm.gainItem(4310266, 1000);
                 cm.getPlayer().setKeyValue(0, "Tear_Upgrade1", "10");
-                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + "님이 챌린저 티어로 승급 하였습니다."));
+                //Packages.network.center.Center.Broadcast.broadcastMessage(Packages.network.models.CField.chatMsg(8, cm.getPlayer().getName() + " has been promoted to Challenger Tier."));
                 cm.sendOk("ยินดีด้วย! คุณอัปเกรดเป็นระดับ 10 สำเร็จแล้ว");
                 cm.dispose();
             } else {

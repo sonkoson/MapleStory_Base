@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        cm.sendYesNo("전투를 마치고 이동합니다.");
+        cm.sendYesNo("ต้องการออกจากพื้นที่ต่อสู้หรือไม่?");
     } else if (status == 1) {
         cm.warp(401060000, "enter_magnusDoor");
         cm.dispose();

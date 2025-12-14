@@ -18,7 +18,7 @@ var maxEnhance = 100;   // Max Enhance Level
 function getAddEnhance(item) {
     var owner = item.getOwner();
     // 1-3 digits allowed
-    var m = owner.match(/^(\d{1,3})강$/);
+    var m = owner.match(/^(\d{1,3}) Star$/);
     if (!m) return 0;
     var lvl = parseInt(m[1], 10);
     return (lvl >= 1 && lvl <= 100) ? lvl : 0;
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         cm.sendNext("#fs11#คุณแน่ใจหรือไม่ที่จะตีบวก #r#i" + item.getItemId() + ":# #z" + item.getItemId() + ":##k? การตัดสินใจนี้ไม่สามารถย้อนกลับได้");
     } else if (status == 3) {
         if (selectionDetails == 1) {
-            cm.sendScreenText("#fs27##fn나눔고딕 Extrabold##fc0xFF6B66FF#เกี่ยวกับระบบตีบวกไอเท็มแฟชั่น#k", false);
+            cm.sendScreenText("#fs27##fnArial##fc0xFF6B66FF#เกี่ยวกับระบบตีบวกไอเท็มแฟชั่น#k", false);
         } else {
             if (!cm.haveItem(coin, price)) {
                 cm.sendOk("#fs11#" + black + "วัตถุดิบไม่เพียงพอ! ต้องการ #i4033213##r#t4033213# 1 ชิ้น#d");
@@ -152,7 +152,7 @@ function action(mode, type, selection) {
                 item.setWatk(item.getWatk() + atk);
                 item.setMatk(item.getMatk() + atk);
                 item.setHp(item.getHp() + 10);
-                item.setOwner("" + (getAddEnhance(item) + 1) + "강");
+                item.setOwner("" + (getAddEnhance(item) + 1) + " Star");
                 cm.gainItem(coin, -price);
                 cm.getPlayer().send(Packages.network.models.CWvsContext.InventoryPacket.updateInventoryItem(Packages.objects.item.MapleInventoryType.CASH_EQUIP, item, false, cm.getPlayer()));
                 talk = "#fs11#" + black + "#bตีบวกสำเร็จ!#k นี่คือออพชั่นของไอเท็มที่คุณตีบวก\r\n";

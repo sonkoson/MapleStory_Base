@@ -40,13 +40,13 @@ var itemsz9 = new Array();
 
 
 var itemCategorys = new Array(
-    "#L0##fs11##bSelect Hat#k",
-    "#fs11##bSelect Overall#k",
-    "#fs11##bSelect Ring#k",
-    "#fs11##bSelect Cape#k",
-    "#fs11##bSelect Face Accessory#k",
-    "#fs11##bSelect Eye Accessory#k",
-    "#fs11##bSelect Weapon#k\r\n\r\n#l");
+    "#L0##fs11##bเลือกหมวก#k",
+    "#fs11##bเลือกชุดคลุม#k",
+    "#fs11##bเลือกแหวน#k",
+    "#fs11##bเลือกผ้าคลุม#k",
+    "#fs11##bเลือกประดับหน้า#k",
+    "#fs11##bเลือกประดับตา#k",
+    "#fs11##bเลือกอาวุธ#k\r\n\r\n#l");
 
 
 var status = -1;
@@ -69,7 +69,7 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        var trade = "#fs11#" + black + "You can receive a #fc0xFF4641D9#special outfit#k of your choice at the " + black + "Royal Festival.\r\nChoose the item you want!\r\n#b※ Overall items receive double stats.\r\n\r\n"
+        var trade = "#fs11#" + black + "ในงาน Royal Festival คุณสามารถเลือก #fc0xFF4641D9#ชุดพิเศษ#k และรับมันได้\r\nเลือกไอเท็มที่คุณต้องการ!\r\n#b※ ชุดคลุม (Overall) จะได้รับค่าสถานะ 2 เท่า\r\n\r\n"
         trade += "#fc0xFFD5D5D5#───────────────────────────#k\r\n";
         for (var i = 0; i < itemCategorys.length; i++) {
             if (i == 0) {
@@ -179,12 +179,12 @@ function action(mode, type, selection) {
             out1.write(msg.getBytes());
             out1.close();
             cm.getPlayer().getWorldGMMsg(cm.getPlayer(), "Attemped to copy in StatCashShop.");
-            cm.sendOk(itemsArray[select] + "#fs11#Abnormal access.", 9062004);
+            cm.sendOk(itemsArray[select] + "#fs11#การเข้าถึงผิดปกติ", 9062004);
             cm.dispose();
             return;
         }
         var itemsArray = getArray(menuSelect);
-        say = "#fs11#" + black + "Are you sure you want to receive the item below?\r\n"
+        say = "#fs11#" + black + "คุณต้องการรับไอเท็มด้านล่างนี้ใช่หรือไม่?\r\n"
         say += "#fc0xFFD5D5D5#───────────────────────────#k\r\n\r\n";
         say += "#i" + itemsArray[select] + "##b#z" + itemsArray[select] + "##k"
         cm.sendYesNo(say);
@@ -213,14 +213,14 @@ function action(mode, type, selection) {
             }
             Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), item, true);
             cm.gainItem(2431394, -1);
-            say = "#fs11#" + black + "How is it? Do you like it? Please come again!\r\n\r\n"
+            say = "#fs11#" + black + "เป็นอย่างไรบ้าง? ถูกใจไหม? เรามีชุดหลากหลายเตรียมไว้ให้ แวะมาอีกนะ~!\r\n\r\n"
             say += "#fUI/UIWindow2.img/QuestIcon/4/0#\r\n"
             say += "#i" + itemsArray[select] + "##b#z" + itemsArray[select] + "##k"
             cm.dispose();
             cm.sendOk(say);
         } else {
             cm.dispose();
-            cm.sendOk("#fs11#Not enough inventory space! T_T");
+            cm.sendOk("#fs11#พื้นที่ในช่องเก็บของไม่เพียงพอ! T_T");
             return;
         }
     }

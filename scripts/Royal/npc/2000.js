@@ -32,13 +32,13 @@ function action(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        say = 별 + 색 + "우편함을 확인 하시겠습니까?" + 엔터2 + 별빨 + "#r인벤토리의 공간을 충분히 비워주시길 바랍니다."
+        say = 별 + 색 + "คุณต้องการตรวจสอบกล่องจดหมายรับของหรือไม่?" + 엔터2 + 별빨 + "#rกรุณาทำช่องว่างในกระเป๋าให้เพียงพอด้วยนะ"
         try {
             con = DBConnection.getConnection();
             ps = con.prepareStatement("SELECT * FROM `offline` WHERE `chrid` = " + cm.getPlayer().getId() + "");
             rs = ps.executeQuery();
             while (rs.next()) {
-                say += "#z" + rs.getString("item") + "##i" + rs.getString("name") + "#" + rs.getInt("qua") + "개\r\n";
+                say += "#z" + rs.getString("item") + "##i" + rs.getString("name") + "#" + rs.getInt("qua") + "ชิ้น\r\n";
             }
             rs.close();
             ps.close();
@@ -47,22 +47,22 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } catch (e) {
-            cm.sendOk("오류가 발생하였습니다.\r\n\r\n" + e);
+            cm.sendOk("เกิดข้อผิดพลาด\r\n\r\n" + e);
             cm.dispose();
             return;
         }
     } else if (status == 1) {
         if (cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot() < 10 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot() < 10 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.ETC).getNumFreeSlot() < 10) {
-            cm.sendOk("#fs11#장비,소비,기타 칸을 10칸 이상 비워주세요");
+            cm.sendOk("#fs11#กรุณาทำช่องว่างในช่องสวมใส่, ใช้แล้วหมดไป, และอื่นๆ ให้ว่างอย่างน้อย 10 ช่อง");
             cm.dispose();
             return;
         }
 
         if (Offline.pickUpItemOff(cm.getPlayer())) {
             Offline.removeItemOff(cm.getPlayer().getId());
-            cm.sendOk("#fs11#우편함에 있는 아이템을 지급 받으셨습니다.\r\n인벤토리를 확인하세요");
+            cm.sendOk("#fs11#ได้รับไอเท็มจากกล่องจดหมายเรียบร้อยแล้ว\r\nกรุณาตรวจสอบในกระเป๋า");
         } else {
-            cm.sendOk("#fs11#우편함에 아이템이 없습니다.");
+            cm.sendOk("#fs11#ไม่มีไอเท็มในกล่องจดหมาย");
         }
         cm.dispose();
     }

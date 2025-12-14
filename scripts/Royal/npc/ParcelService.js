@@ -100,7 +100,7 @@ function action(mode, type, selection) {
                 return;
             }
             if (cm.getPlayer().getAccountTotalLevel() < 8075) {
-                //     cm.sendOk("#fs11##fc0xFF000000#계정 내 통합 레벨 8075 이상만 이용할 수 있습니다.");
+                //     cm.sendOk("#fs11##fc0xFF000000#Only available for accounts with total level 8075 or higher.");
                 //   cm.dispose();
                 // return;
             }

@@ -4,7 +4,7 @@ importPackage(Packages.constants);
 
 function start() {
     status = -1;
-    action (1, 0, 0);
+    action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
@@ -14,27 +14,27 @@ function action(mode, type, selection) {
         return;
     }
     if (mode == 0) {
-        status --;
+        status--;
     }
     if (mode == 1) {
         status++;
     }
 
     if (status == 0) {
-        cm.sendNext("#fs 11#여기까지 운이 좋게.. 찾아 오셨군요..\r\n이런 험난한 #b폐광#k 에는 무슨 용무신가요?");
-    } else if (status == 1) { 
-        cm.sendNextPrevS("#fn나눔고딕 Extrabold##b혹시 이 근처에서 #fs14#이지병장#fs12# 님을 못보셨나요?#k",2);
-    } else if (status == 2) { 
-        cm.sendNextPrev("#fn나눔고딕 Extrabold#아! 그.. 멍청한.. 놈..\r\n아니.. 그분이라면 아까 제 도움을 받아 먼저 귀환 하셨어요.");
-    } else if (status == 3) { 
-        cm.sendNextS("#fn나눔고딕 Extrabold##d(정말이지.. 괜한.. 고생을 했군..)#k\r\n\r\n아! 감사드립니다. 그럼 저도 이만 가보도록 하겠습니다.",2);
-    } else if (status == 4) { 
-        cm.sendNextPrev("#fn나눔고딕 Extrabold#잠깐만요.!! 이곳은 위험하니 제가 돌려 보내 드릴게요.!");
-    } else if (status == 5) { 
-        cm.sendNextS("#fn나눔고딕 Extrabold##d(얼른 복귀해서 소식을 전해드리자..)#k\r\n\r\n#b엇!! 도움을 주셔서.. 정말 감사드립니다.!#k",2);
-    } else if (status == 6) { 
-        cm.sendYesNo("#fn나눔고딕 Extrabold#그럼.. 신의 가호가 당신을 지킬 것입니다.\r\n지금 바로! 밖으로 나가 보시겠어요.?");
-    } else if (status == 7) { 
+        cm.sendNext("#fs 11#โชคดีจริงๆ ที่ท่านหาทางมาถึงที่นี่ได้..\r\nมีธุระอะไรใน #bDead Mine#k อันตรายแห่งนี้หรือ?");
+    } else if (status == 1) {
+        cm.sendNextPrevS("#fnArial##bบังเอิญว่า.. แถวนี้ท่านเห็น #fs14#Sergeant Charlie#fs12# บ้างไหม?#k", 2);
+    } else if (status == 2) {
+        cm.sendNextPrev("#fnArial#อ้อ! เจ้า.. ทึ่ม.. นั่น..\r\nเอ่อ.. ไม่สิ.. ท่านคนนั้นได้รับความช่วยเหลือจากข้า แล้วกลับไปก่อนแล้วล่ะ");
+    } else if (status == 3) {
+        cm.sendNextS("#fnArial##d(ให้ตายสิ.. ลำบากเปล่าแท้ๆ..)#k\r\n\r\nอ่า! ขอบคุณมาก งั้นข้าขอตัวกลับก่อนล่ะ", 2);
+    } else if (status == 4) {
+        cm.sendNextPrev("#fnArial#เดี๋ยวก่อน!! ที่นี่มันอันตราย ให้ข้าส่งท่านกลับไปดีกว่า!");
+    } else if (status == 5) {
+        cm.sendNextS("#fnArial##d(รีบกลับไปแจ้งข่าวดีกว่า..)#k\r\n\r\n#bเอ๊ะ!! ขอบคุณมากเลยที่ช่วย..!#k", 2);
+    } else if (status == 6) {
+        cm.sendYesNo("#fnArial#งั้น.. ขอให้พระเจ้าคุ้มครอง\r\nจะออกไปข้างนอกตอนนี้เลยไหม?");
+    } else if (status == 7) {
         cm.warp(ServerConstants.TownMap, 0);
         cm.forceStartQuest(504);
         cm.dispose();

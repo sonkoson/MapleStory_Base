@@ -2,23 +2,27 @@ var enter = "\r\n";
 var seld = -1;
 
 var items = [
-   {'itemid' : 1032206, 'qty' : 1, 'allstat' : 10, 'atk' : 10,
-   'recipes' : [[4310237, 500], [4009005, 100], [4001715, 10]], 'price' : 10, 'chance' : 70,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 1032206, 'qty': 1, 'allstat': 10, 'atk': 10,
+      'recipes': [[4310237, 500], [4009005, 100], [4001715, 10]], 'price': 10, 'chance': 70,
+      'fail': [[4001715, 1]]
    },
-   {'itemid' : 1032207, 'qty' : 1, 'allstat' : 15, 'atk' : 15,
-   'recipes' : [[1032206, 1], [4310237, 1000], [4009005, 500], [4001715, 50]], 'price' : 10, 'chance' : 60,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 1032207, 'qty': 1, 'allstat': 15, 'atk': 15,
+      'recipes': [[1032206, 1], [4310237, 1000], [4009005, 500], [4001715, 50]], 'price': 10, 'chance': 60,
+      'fail': [[4001715, 1]]
    },
-   {'itemid' : 1032208, 'qty' : 1, 'allstat' : 20, 'atk' : 20,
-   'recipes' : [[1032207, 1], [4310237, 2000], [4001715, 100], [4009005, 900], [2450064, 3]], 'price' : 10, 'chance' : 50,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 1032208, 'qty': 1, 'allstat': 20, 'atk': 20,
+      'recipes': [[1032207, 1], [4310237, 2000], [4001715, 100], [4009005, 900], [2450064, 3]], 'price': 10, 'chance': 50,
+      'fail': [[4001715, 1]]
    },
-   {'itemid' : 1032209, 'qty' : 1, 'allstat' : 35, 'atk' : 35,
-   'recipes' : [[1032208, 1], [4310237, 7000], [4001715, 300], [4009005, 1500], [2450064, 4]], 'price' : 10, 'chance' : 40,
-   'fail' : [[4001715, 1]]
+   {
+      'itemid': 1032209, 'qty': 1, 'allstat': 35, 'atk': 35,
+      'recipes': [[1032208, 1], [4310237, 7000], [4001715, 300], [4009005, 1500], [2450064, 4]], 'price': 10, 'chance': 40,
+      'fail': [[4001715, 1]]
    },
-] // 올스탯과 공마는 장비아이템에만 적용되어여
+] // All Stat and Attack/Magic are only applied to equipment items
 
 var item;
 var isEquip = false;
@@ -34,16 +38,16 @@ function action(mode, type, sel) {
    } else {
       cm.dispose();
       return;
-       }
+   }
    if (status == 0) {
-      var msg = "#fs11#제작하실 아이템을 선택해주세요."+enter;
-      msg += "#fs11#레시피와 아이템의 정보는 선택하면 나옵니다.#fs12##b"+enter;
-      msg += "#fs11##k1단계 효과 : #b착용 시 경험치 20% 추가 획득"+enter;
-      msg += "#k2단계 효과 : #b착용 시 경험치 30% 추가 획득"+enter;
-      msg += "#k3단계 효과 : #b착용 시 경험치 40% 추가 획득"+enter;
-      msg += "#k4단계 효과 : #b착용 시 경험치 50% 추가 획득#k"+enter;
+      var msg = "#fs11#โปรดเลือกไอเท็มที่ต้องการสร้าง" + enter;
+      msg += "#fs11#ข้อมูลสูตรและไอเท็มจะปรากฏเมื่อเลือก#fs12##b" + enter;
+      msg += "#fs11##kผลลัพธ์ขั้นที่ 1 : #bได้รับ EXP เพิ่มขึ้น 20% เมื่อสวมใส่" + enter;
+      msg += "#kผลลัพธ์ขั้นที่ 2 : #bได้รับ EXP เพิ่มขึ้น 30% เมื่อสวมใส่" + enter;
+      msg += "#kผลลัพธ์ขั้นที่ 3 : #bได้รับ EXP เพิ่มขึ้น 40% เมื่อสวมใส่" + enter;
+      msg += "#kผลลัพธ์ขั้นที่ 4 : #bได้รับ EXP เพิ่มขึ้น 50% เมื่อสวมใส่#k" + enter;
       for (i = 0; i < items.length; i++)
-         msg += "#fs11##L"+i+"##i"+items[i]['itemid']+"##z"+items[i]['itemid']+"# 제작"+enter;
+         msg += "#fs11##L" + i + "##i" + items[i]['itemid'] + "##z" + items[i]['itemid'] + "# สร้าง" + enter;
 
       cm.sendSimple(msg);
    } else if (status == 1) {
@@ -53,53 +57,53 @@ function action(mode, type, sel) {
 
       canMake = checkItems(item);
 
-      var msg = "#fs11#선택하신 아이템은 다음과 같습니다.#fs11##b"+enter;
-      msg += "#fs11#아이템 : #i"+item['itemid']+"##z"+item['itemid']+"#"+enter;
+      var msg = "#fs11#ไอเท็มที่เลือกมีดังนี้#fs11##b" + enter;
+      msg += "#fs11#ไอเท็ม : #i" + item['itemid'] + "##z" + item['itemid'] + "#" + enter;
 
       if (isEquip) {
          if (item['allstat'] > 0)
-            msg += "올스탯 : +"+item['allstat']+enter;
+            msg += "All Stat : +" + item['allstat'] + enter;
          if (item['atk'] > 0)
-            msg += "공격력, 마력 : +"+item['atk']+enter;
+            msg += "Attack, Magic : +" + item['atk'] + enter;
       }
 
       msg += enter;
-      msg += "#fs11##k선택하신 아이템을 제작하기 위한 레시피입니다.#fs11##d"+enter+enter;
+      msg += "#fs11##kนี่คือสูตรสำหรับการสร้างไอเท็มที่เลือก#fs11##d" + enter + enter;
 
       if (item['recipes'].length > 0) {
          for (i = 0; i < item['recipes'].length; i++)
-            msg += "#b#i"+item['recipes'][i][0]+"##z"+item['recipes'][i][0]+"# "+item['recipes'][i][1]+"개 #r/ #c"+item['recipes'][i][0]+"#개 보유 중#k"+enter;
+            msg += "#b#i" + item['recipes'][i][0] + "##z" + item['recipes'][i][0] + "# " + item['recipes'][i][1] + " ชิ้น #r/ #c" + item['recipes'][i][0] + "# ชิ้น ที่มีอยู่#k" + enter;
       }
 
       if (item['price'] > 0)
-        // msg += "#i5200002#"+item['price']+" 메소"+enter;
+         // msg += "#i5200002#"+item['price']+" Meso"+enter;
 
-      msg += enter+"#fs11##e제작 성공 확률 : "+item['chance']+"%#n"+enter+enter;
-      msg += "#k제작 실패시 다음과 같은 아이템이 지급됩니다.#fs11##d"+enter+enter;
+         msg += enter + "#fs11##eโอกาสสำเร็จ : " + item['chance'] + "%#n" + enter + enter;
+      msg += "#kหากล้มเหลว จะได้รับไอเท็มดังต่อไปนี้#fs11##d" + enter + enter;
       if (item['fail'].length > 0) {
          for (i = 0; i < item['fail'].length; i++)
-            msg += "#i"+item['fail'][i][0]+"##z"+item['fail'][i][0]+"# "+item['fail'][i][1]+"개"+enter;
+            msg += "#i" + item['fail'][i][0] + "##z" + item['fail'][i][0] + "# " + item['fail'][i][1] + " ชิ้น" + enter;
       }
-      msg +="#fs11#"+enter;
-      msg += canMake ? "#b선택하신 아이템을 만들기 위한 재료들이 모두 모였습니다."+enter+"정말 제작하시려면 '예'를 눌러주세요." : "#r선택하신 아이템을 만들기 위한 재료들이 충분하지 않습니다.";
+      msg += "#fs11#" + enter;
+      msg += canMake ? "#bรวบรวมวัตถุดิบครบแล้ว" + enter + "กด 'ใช่' เพื่อเริ่มการสร้าง" : "#rวัตถุดิบไม่เพียงพอสำหรับการสร้างไอเท็มที่เลือก";
 
       if (canMake) cm.sendYesNo(msg);
       else {
          cm.sendOk(msg);
          cm.dispose();
       }
-      
+
    } else if (status == 2) {
       canMake = checkItems(item);
 
       if (!canMake) {
-         cm.sendOk("재료가 충분한지 다시 한 번 확인해주세요.");
+         cm.sendOk("กรุณาตรวจสอบว่ามีวัตถุดิบเพียงพอหรือไม่");
          cm.dispose();
          return;
       }
 
       if (cm.getInvSlots(6) < 5) {
-         cm.sendOkS("#fs11##fc0xFF6600CC#인벤토리를 치장탭을 5칸이상 비워주세요", 2);
+         cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาทำช่องว่างในกระเป๋าช่อง Cash อย่างน้อย 5 ช่อง", 2);
          cm.dispose();
          return;
       }
@@ -107,10 +111,10 @@ function action(mode, type, sel) {
       payItems(item);
       if (Packages.objects.utils.Randomizer.rand(1, 100) <= item['chance']) {
          gainItem(item);
-         cm.sendOk("#fs11#축하드립니다. 제작에 성공하였습니다");
-         cm.worldGMMessage(21, "[경험치귀고리] " + cm.getPlayer().getName() + "님께서 ["+cm.getItemName(item['itemid'])+"] 을 제작하였습니다.");
+         cm.sendOk("#fs11#ยินดีด้วย! การสร้างสำเร็จ");
+         cm.worldGMMessage(21, "[Exp Earring] คุณ " + cm.getPlayer().getName() + " ได้สร้าง [" + cm.getItemName(item['itemid']) + "]");
       } else {
-         cm.sendOk("#fs11#제작에 실패했습니다 #b아이템 결정#k이 지급되었습니다.");
+         cm.sendOk("#fs11#การสร้างล้มเหลว ได้รับ #bItem Crystal#k ชดเชย");
          gainFail(item);
       }
       cm.dispose();
@@ -138,7 +142,7 @@ function payItems(i) {
       if (Math.floor(recipe[j][0] / 1000000) == 1)
          Packages.objects.item.MapleInventoryManipulator.removeById(cm.getClient(), Packages.objects.item.MapleInventoryType.EQUIP, recipe[j][0], 1, false, false);
       else cm.gainItem(recipe[j][0], -recipe[j][1]);
-           cm.gainMeso(-1000000);
+      cm.gainMeso(-1000000);
    }
 }
 

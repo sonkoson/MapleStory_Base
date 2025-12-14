@@ -4,12 +4,12 @@ var equipped = false;
 
 var banitem = [1712001, 1712002, 1712003, 1712004, 1712005, 1712006, 1713000, 1713001, 1713002, 1713003, 1713004, 1713005];
 
-var canowner = ["20강", "△", "★", "★△", "★★", "★★△"];
+var canowner = ["20 Star", "△", "★", "★△", "★★", "★★△"];
 
 function ConvertNumber(number) {
     var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', '만 ', '억 ', '조 ', '경 '];
-    var splitUnit = 10000;
+    var unitWords = ['', 'K ', 'M ', 'B ', 'T ', 'Q '];
+    var splitUnit = 1000;
     var splitCount = unitWords.length;
     var resultArray = [];
     var resultString = '';
@@ -62,7 +62,7 @@ function getStar(star) {
                 star == 4 ? "★★" :
                     star == 5 ? "★★△" :
                         star == 6 ? "★★★" :
-                            "20강";
+                            "20 Star";
 }
 
 var keep = 10000000000; //Protection Cost (Meso)

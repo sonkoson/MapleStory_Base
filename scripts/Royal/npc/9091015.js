@@ -14,9 +14,9 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-            cm.sendYesNoS("이곳은 위험하다. 전투를 포기하고 밖으로 나갈까?", 0x26);
+        cm.sendYesNoS("ที่นี่อันตราย จะยอมแพ้การต่อสู้แล้วออกไปข้างนอกไหม?", 0x26);
     } else if (status == 1) {
-        cm.warp(450012200,0);
+        cm.warp(450012200, 0);
         cm.dispose();
     }
 }

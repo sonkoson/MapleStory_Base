@@ -62,8 +62,8 @@ public class MapleTrait {
 
          for (byte i = 0; i < 100; i++) {
             if (GameConstants.getTraitExpNeededForLevel(i) > this.localTotalExp) {
-               this.exp = (short)(GameConstants.getTraitExpNeededForLevel(i) - this.localTotalExp);
-               this.level = (byte)(i - 1);
+               this.exp = (short) (GameConstants.getTraitExpNeededForLevel(i) - this.localTotalExp);
+               this.level = (byte) (i - 1);
                return this.level > oldLevel;
             }
          }
@@ -105,12 +105,12 @@ public class MapleTrait {
    }
 
    public static enum MapleTraitType {
-      charisma(500, MapleStat.CHARISMA, "카리스마"),
-      insight(500, MapleStat.INSIGHT, "통찰력"),
-      will(500, MapleStat.WILL, "의지"),
-      craft(500, MapleStat.CRAFT, "손재주"),
-      sense(500, MapleStat.SENSE, "감성"),
-      charm(5000, MapleStat.CHARM, "매력");
+      charisma(500, MapleStat.CHARISMA, "Ambition"),
+      insight(500, MapleStat.INSIGHT, "Insight"),
+      will(500, MapleStat.WILL, "Willpower"),
+      craft(500, MapleStat.CRAFT, "Diligence"),
+      sense(500, MapleStat.SENSE, "Empathy"),
+      charm(5000, MapleStat.CHARM, "Charm");
 
       final int limit;
       final MapleStat stat;

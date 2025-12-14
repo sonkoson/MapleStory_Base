@@ -96,7 +96,7 @@ function action(mode, type, selection) {
         if (cm.getPlayer().getCashPoint() >= item[a][2] * cost) {
             cm.gainItem(item[a][0], item[a][1] * cost);
             cm.getPlayer().gainCashPoint(-item[a][2] * cost);
-            Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP캐시상점].log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n구매한 아이템 : " + cm.getItemName(item[a][0]) + "[" + item[a][0] + "] (" + cost + "개)\r\n사용 캐시 : " + -item[a][2] * cost + "\r\n보유 캐시 : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+            Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP_CashShop].log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPurchased Item : " + cm.getItemName(item[a][0]) + "[" + item[a][0] + "] (" + cost + " qty)\r\nUsed Cash : " + -item[a][2] * cost + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
             cm.sendOkS("#fs11#" + color + "การซื้อเสร็จสมบูรณ์" + star, 2);
             cm.dispose();
         } else {

@@ -1,32 +1,32 @@
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
-enter = "\r\n";
+var Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var Color = "#fc0xFF6600CC#"
+var Black = "#fc0xFF000000#"
+var Pink = "#fc0xFFFF3366#"
+var LightPink = "#fc0xFFF781D8#"
+var Enter = "\r\n"
+var Enter2 = "\r\n\r\n"
+var Enter = "\r\n";
 
 importPackage(Packages.objects.item);
 importPackage(Packages.constants);
 
 
 var need = [
-        {'itemid' : 4317001, 'qty' : 1},
-        {'itemid' : 4317002, 'qty' : 1},
-        {'itemid' : 4317003, 'qty' : 1}
+    { 'itemid': 4317001, 'qty': 1 },
+    { 'itemid': 4317002, 'qty': 1 },
+    { 'itemid': 4317003, 'qty': 1 }
 ]
 
 var tocoin = 4310184, toqty = 1;
@@ -48,7 +48,7 @@ function MakeItem(itemid) {
     it.setMatk(333);
     it.setCHUC(30);
     it.setAllStat(5);
-    it.setOwner("로얄 메이플");
+    it.setOwner("Royal Maple");
     it.setExpiration((new Date()).getTime() + (1000 * 60 * 60 * 24 * 30));
     Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getPlayer().getClient(), it, false);
 }
@@ -61,8 +61,8 @@ function MakeItem1(itemid) {
 }
 
 function start() {
-     status = -1;    
-     action (1, 0, 0);
+    status = -1;
+    action(1, 0, 0);
 }
 
 function action(mode, type, sel) {
@@ -88,286 +88,286 @@ function action(mode, type, sel) {
         count = cm.getClient().getKeyValue("1stday");
         if (count == 0) {
             dayitem = [
-            [4310282, 30]
+                [4310282, 30]
             ]
         } else if (count == 1) {
             dayitem = [
-            [4310237, 1000]
+                [4310237, 1000]
             ]
         } else if (count == 2) {
             dayitem = [
-            [4310266, 1000]
+                [4310266, 1000]
             ]
         } else if (count == 3) {
             dayitem = [
-            [4310229, 1000]
+                [4310229, 1000]
             ]
         } else if (count == 4) {
             dayitem = [
-            [4001715, 100]
+                [4001715, 100]
             ]
         } else if (count == 5) {
             dayitem = [
-            [2630127, 1]
+                [2630127, 1]
             ]
         } else if (count == 6) {
             dayitem = [
-            [2439990, 2]
+                [2439990, 2]
             ]
         } else if (count == 7) {
             dayitem = [
-            [5060048, 5]
+                [5060048, 5]
             ]
         } else if (count == 8) {
             dayitem = [
-            [4036660, 10]
+                [4036660, 10]
             ]
         } else if (count == 9) {
             dayitem = [
-            [5068305, 5]
+                [5068305, 5]
             ]
         } else if (count == 10) {
             dayitem = [
-            [4036661, 2]
+                [4036661, 2]
             ]
         } else if (count == 11) {
             dayitem = [
-            [2439932, 1]
+                [2439932, 1]
             ]
         } else if (count == 12) {
             dayitem = [
-            [2439932, 2]
+                [2439932, 2]
             ]
         } else if (count == 13) {
             dayitem = [
-            [2439990, 2]
+                [2439990, 2]
             ]
         }
 
-            var msg = "　#i4310175# #fs11##e[로얄메이플] - 1St Anniversary 이벤트#n#fs11# #i4310175#\r\n#fs11##Cblue#              항상 로얄 메이플을 이용해주셔서 감사합니다#k\r\n";
-                    msg += 핑크색 + "                               #L100#이벤트안내#fc0xFF000000##l\r\n\r\n";
-                    msg += "                      이벤트 기간 : #b04.17 ~ 05.31\r\n";
-                    msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
-                    //msg += "#L1##fc0xFFFF3366#이벤트 맵#fc0xFF000000# 이동#l\r\n";
-                    //msg += "#L2##fc0xFFFF3366#이벤트 아이템#fc0xFF000000# 교환#l\r\n";
-                    msg += "#L3##fc0xFF6600CC#이벤트 코인샵#fc0xFF000000# 이용#l\r\n";
-                    msg += "#L4##fc0xFF6600CC#이벤트 아이템 수급처#fc0xFF000000# 확인#l\r\n";
-                    msg += "#L5##fc0xFF6600CC#스페셜 아이템#fc0xFF000000# 지급받기#l\r\n\r\n";
-                    msg += "#L6##fc0xFF6600CC#출석체크#fc0xFF000000#[ " + count + "일/14일 ]#l\r\n";
-                    msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
+        var msg = "　#i4310175# #fs11##e[Royal Maple] - 1St Anniversary Event#n#fs11# #i4310175#\r\n#fs11##Cblue#              ขอบคุณที่ใช้บริการ Royal Maple ครับ#k\r\n";
+        msg += Pink + "                               #L100#รายละเอียดกิจกรรม#fc0xFF000000##l\r\n\r\n";
+        msg += "                      ระยะเวลากิจกรรม : #b04.17 ~ 05.31\r\n";
+        msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
+        //msg += "#L1##fc0xFFFF3366#ไปที่แผนที่กิจกรรม#fc0xFF000000# #l\r\n";
+        //msg += "#L2##fc0xFFFF3366#แลกเปลี่ยนไอเท็มกิจกรรม#fc0xFF000000# #l\r\n";
+        msg += "#L3##fc0xFF6600CC#ใช้ร้านค้าเหรียญกิจกรรม#fc0xFF000000# 이용#l\r\n";
+        msg += "#L4##fc0xFF6600CC#ตรวจสอบแหล่งหาไอเท็มกิจกรรม#fc0xFF000000# #l\r\n";
+        msg += "#L5##fc0xFF6600CC#รับไอเท็มพิเศษ#fc0xFF000000# #l\r\n\r\n";
+        msg += "#L6##fc0xFF6600CC#เช็คชื่อ#fc0xFF000000#[ " + count + "วัน/14วัน ]#l\r\n";
+        msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
 
-            cm.sendSimple(msg);
-     } else if(status == 1) {
+        cm.sendSimple(msg);
+    } else if (status == 1) {
         seld = sel;
-        switch(sel) {
+        switch (sel) {
             case 100:
-            var msg = "#fn나눔고딕 Extrabold##d(사냥과 잠수를하면 코인이 드롭되던데..)#k\r\n\r\n#b얼른 코인을 모아야겠어!\r\n\r\n";
-                    msg += "#r그런데 이벤트 코인은 어디에 사용하는거지..?\r\n";
-            cm.sendNextS(msg, 2);
-            break;
-            
+                var msg = "#fnNanumGothic Extrabold##d(ล่ามอนสเตอร์และตกปลาก็จะมีเหรียญดรอปนะ..)#k\r\n\r\n#bต้องรีบไปสะสมเหรียญแล้วสิ!\r\n\r\n";
+                msg += "#rแต่ว่าเหรียญกิจกรรมเอาไปใช้ที่ไหนกันนะ..?\r\n";
+                cm.sendNextS(msg, 2);
+                break;
+
             case 1:
-            cm.warp(993031000, 0);
-            cm.dispose();
-
-            break;
-            
-            case 2:
-            var msg = "#fs11#" + 핑크색 + "사탕을 모아오셨나요?! 1St Anniversary 코인으로 교환해드릴 수 있어요!" + 검은색 +enter+enter;
-
-            for (i = 0; i < need.length; i++) {
-                if (i != need.length - 1) msg += "#i"+need[i]['itemid']+"##z"+need[i]['itemid']+"# "+need[i]['qty']+"개와"+enter;
-                else msg += "#fs11##i"+need[i]['itemid']+"##z"+need[i]['itemid']+"# "+need[i]['qty']+"개를 주신다면\r\n대신 제가 가진 #b#i"+tocoin+"##z"+tocoin+"#" + 검은색 + "을 드리죠!";
-            }
-                
-            if (haveNeed(1))
-                cm.sendNext(msg);
-            else {
-                msg += enter+enter+"허나.. 모험가님은 사탕을 모두 가지고있지 않으시네요";
-                cm.sendOk(msg);
+                cm.warp(993031000, 0);
                 cm.dispose();
-            }
-            break;
+
+                break;
+
+            case 2:
+                var msg = "#fs11#" + Pink + "สะสมลูกอมมาแล้วเหรอคะ?! ฉันสามารถแลกเป็น 1St Anniversary Coin ให้ได้นะ!" + Black + Enter + Enter;
+
+                for (i = 0; i < need.length; i++) {
+                    if (i != need.length - 1) msg += "#i" + need[i]['itemid'] + "##z" + need[i]['itemid'] + "# " + need[i]['qty'] + " ชิ้น และ" + Enter;
+                    else msg += "#fs11##i" + need[i]['itemid'] + "##z" + need[i]['itemid'] + "# " + need[i]['qty'] + " ชิ้น\r\nถ้าคุณให้ฉัน ฉันจะให้ #b#i" + tocoin + "##z" + tocoin + "#" + Black + " แทนค่ะ!";
+                }
+
+                if (haveNeed(1))
+                    cm.sendNext(msg);
+                else {
+                    msg += Enter + Enter + "แต่ว่า.. ท่านนักผจญภัยยังมีลูกอมไม่ครบนี่คะ";
+                    cm.sendOk(msg);
+                    cm.dispose();
+                }
+                break;
 
             case 3:
-            cm.dispose();
-            cm.openShop(5555);
-            break;
+                cm.dispose();
+                cm.openShop(5555);
+                break;
 
             case 4:
-            var msg = "#fs11#";
-                    msg += "#fs11##b#i4310175##z4310175#\r\n\r\n";
-                    msg += "#r#e[낚시]#b 시 일정 확률로 위 코인 획득가능\r\n";
-                    msg += "#r#e[사냥]#b 시 일정 확률로 위 코인 획득가능";
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
-            
-            
+                var msg = "#fs11#";
+                msg += "#fs11##b#i4310175##z4310175#\r\n\r\n";
+                msg += "#r#e[ตกปลา]#b มีโอกาสได้รับเหรียญข้างต้น\r\n";
+                msg += "#r#e[ล่ามอนสเตอร์]#b มีโอกาสได้รับเหรียญข้างต้น";
+                cm.sendOk(msg);
+                cm.dispose();
+                break;
+
+
             case 5:
-            if (cm.getClient().getKeyValue("1steventitem") == null) {
-                msg = "#fs11#스페셜 아이템을 지급받으시겠어요?\r\n\r\n#r※ 스페셜 아이템은 계정당 1회만 지급됩니다\r\n※ 스페셜 아이템은 30일 기간제이며 기간만료시 삭제됩니다";
-                msg += "\r\n\r\n#b < 2개월 스페셜 아이템 리스트 >\r\n\r\n";
-                    msg += 색 + "#i"+bosang1[0]+"# #z"+bosang1[0]+"#" +enter;
-                msg += "\r\n\r\n#b < 1개월 스페셜 아이템 리스트 >\r\n\r\n";
-                for (i = 0; i < bosang.length; i++) {
-                    msg += 색 + "#i"+bosang[i]+"# #z"+bosang[i]+"#" +enter;
+                if (cm.getClient().getKeyValue("1steventitem") == null) {
+                    msg = "#fs11#ต้องการรับไอเท็มพิเศษหรือไม่?\r\n\r\n#r※ ไอเท็มพิเศษรับได้ 1 ครั้งต่อบัญชีเท่านั้น\r\n※ ไอเท็มพิเศษมีอายุ 30 วัน และจะถูกลบเมื่อหมดอายุ";
+                    msg += "\r\n\r\n#b < รายการไอเท็มพิเศษ 2 เดือน >\r\n\r\n";
+                    msg += Color + "#i" + bosang1[0] + "# #z" + bosang1[0] + "#" + Enter;
+                    msg += "\r\n\r\n#b < รายการไอเท็มพิเศษ 1 เดือน >\r\n\r\n";
+                    for (i = 0; i < bosang.length; i++) {
+                        msg += Color + "#i" + bosang[i] + "# #z" + bosang[i] + "#" + Enter;
+                    }
+                    cm.sendYesNo(msg);
+                } else {
+                    msg = "#fs11#" + Black + "คุณได้รับ #fc0xFFFF3366#ไอเท็มพิเศษ" + Black + " ไปแล้ว";
+                    cm.dispose();
+                    cm.sendOk(msg);
+                }
+                break;
+
+            case 6:
+                // Check
+                // Date
+                var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+                today = new Date();
+                month = months[today.getMonth()];
+                day = today.getDate();
+
+                today = month + day;
+
+                count = cm.getClient().getKeyValue("1stday");
+
+                if (count >= 14) {
+                    cm.sendOk("#fs11#" + Black + "คุณเช็คชื่อ #fc0xFFFF3366#ครบแล้ว" + Black + " ทั้งหมด\r\n\r\nจำนวนวันที่เช็คชื่อ : " + count + "/14");
+                    cm.dispose();
+                }
+
+                if (cm.getClient().getKeyValue("1stdaylast") == today) {
+                    cm.sendOk("#fs11#" + Black + "วันนี้คุณได้ทำการ #fc0xFFFF3366#เช็คชื่อ" + Black + " ไปแล้ว\r\n\r\nจำนวนวันที่เช็คชื่อ : " + count + "/14");
+                    cm.dispose();
+                }
+
+                msg = "#fs11#ต้องการเช็คชื่อหรือไม่?\r\n\r\n#r※ ของรางวัลเช็คชื่อวันนี้คือ.\r\n\r\n";
+                for (i = 0; i < dayitem.length; i++) {
+                    msg += Color + "#i" + dayitem[i][0] + "# #z" + dayitem[i][0] + "# " + dayitem[i][1] + " ชิ้น" + Enter;
                 }
                 cm.sendYesNo(msg);
-            } else {
-                msg = "#fs11#" + 검은색 + "이미 #fc0xFFFF3366#스페셜 아이템" + 검은색 + " 을 지급받으셨습니다";
-                cm.dispose();
-                cm.sendOk(msg);
-            }
-            break;
 
-            case 6:
-            // 출석 체크
-            // 날짜 불러오기
-            var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-            today = new Date();
-            month = months[today.getMonth()];
-            day = today.getDate();
-
-            today = month + day;
-
-            count = cm.getClient().getKeyValue("1stday");
-
-            if (count >= 14) {
-                cm.sendOk("#fs11#" + 검은색 + "이미 모든 #fc0xFFFF3366#출석 체크" + 검은색 + " 를 하셨습니다\r\n\r\n현재 출석 일수 : " + count + "/14");
-                cm.dispose();
-            }
-
-            if (cm.getClient().getKeyValue("1stdaylast") == today) {
-                cm.sendOk("#fs11#" + 검은색 + "오늘은 이미 #fc0xFFFF3366#출석 체크" + 검은색 + " 를 하셨습니다\r\n\r\n현재 출석 일수 : " + count + "/14");
-                cm.dispose();
-            }
-
-            msg = "#fs11#출석 체크를 하시겠어요?\r\n\r\n#r※ 오늘 출석체크의 보상은 아래와 같습니다.\r\n\r\n";
-            for (i = 0; i < dayitem.length; i++) {
-                msg += 색 + "#i"+dayitem[i][0]+"# #z"+ dayitem[i][0]+"# " + dayitem[i][1] + "개" +enter;
-            }
-            cm.sendYesNo(msg);
-
-            break;
+                break;
 
             case 1000:
-            if (getCount() == 7) {
-                if (getClear() == null) {
-                    cm.sendYesNo("#fs11#도장을 다 받아오셨군요! 특별한 선물을 지급받으시겠어요?\r\n\r\n#r※ 특별한 아이템은 계정당 1회만 지급됩니다");
-                    break;
+                if (getCount() == 7) {
+                    if (getClear() == null) {
+                        cm.sendYesNo("#fs11#도장을 다 받아오셨군요! 특별한 선물을 지급받으시겠어요?\r\n\r\n#r※ 특별한 아이템은 계정당 1회만 지급됩니다");
+                        break;
+                    } else {
+                        msg = "#fs11#이미 특별한 선물을 지급받으셨어요!";
+                    }
                 } else {
-                    msg = "#fs11#이미 특별한 선물을 지급받으셨어요!";
+                    msg = "#fs11#도장을다 받아오지 못하셨어요..\r\n\r\n" + 핑크색 + 별 + " 현재 찍은 도장 갯수 : " + getCount() + " / 7";
                 }
-            } else {
-                msg = "#fs11#도장을다 받아오지 못하셨어요..\r\n\r\n" + 핑크색 + 별 + " 현재 찍은 도장 갯수 : " + getCount() + " / 7";
-            }
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
+                cm.sendOk(msg);
+                cm.dispose();
+                break;
 
             case 1001:
-            cm.warp(ServerConstants.TownMap, 0);
-            cm.dispose();
-            break;
-            
-        }
-        
-    } else if(status == 2) {
-        switch(seld) {
-            case 100:
-                cm.sendOk("#fs11#" + 색 + "이벤트 코인샵 에서 #i4310175# #z4310175#으로 다양한 아이템을 구매할 수 있어요!");
+                cm.warp(ServerConstants.TownMap, 0);
                 cm.dispose();
-            break;
-            
+                break;
+
+        }
+
+    } else if (status == 2) {
+        switch (seld) {
+            case 100:
+                cm.sendOk("#fs11#" + Color + "สามารถซื้อไอเท็มหลากหลายได้ที่ Event Coin Shop ด้วย #i4310175# #z4310175# !");
+                cm.dispose();
+                break;
+
             case 2:
-            temp = [];
-            for (i = 0; i < need.length; i++) {
-                temp.push(Math.floor(cm.itemQuantity(need[i]['itemid']) / need[i]['qty']));
-            }
-            temp.sort();
-            max = temp[0];
-            cm.sendGetNumber("#fs11#모험가님은 최대 #b #i" + tocoin + "##z"+ tocoin + "# " + max+"개를#k 교환할 수 있어요..\r\n\r\n몇 개를 교환하시겠어요?", 1, 1, max);
-            break;
+                temp = [];
+                for (i = 0; i < need.length; i++) {
+                    temp.push(Math.floor(cm.itemQuantity(need[i]['itemid']) / need[i]['qty']));
+                }
+                temp.sort();
+                max = temp[0];
+                cm.sendGetNumber("#fs11#ท่านนักผจญภัยสามารถแลกสูงสุด #b #i" + tocoin + "##z" + tocoin + "# " + max + " ชิ้น#k \r\n\r\nต้องการแลกเท่าไหร่คะ?", 1, 1, max);
+                break;
 
             case 5:
-            if (cm.getInvSlots(3) < 1 || cm.getInvSlots(6) < 7) {
-                cm.sendOk("#fs11#인벤토리 공간이 부족합니다.\r\n설치 탭에 1칸, 치장 탭에 7칸이 필요합니다.");
+                if (cm.getInvSlots(3) < 1 || cm.getInvSlots(6) < 7) {
+                    cm.sendOk("#fs11#ช่องเก็บของไม่เพียงพอ\r\nต้องการช่องว่างในแถบ Setup 1 ช่อง และ Cash 7 ช่อง");
+                    cm.dispose();
+                    return;
+                }
+
+                msg = "#fs11#" + Obtain + Enter + Enter;
+                msg += Color + "#i" + bosang1[0] + "# #z" + bosang1[0] + "#" + Enter;
+                for (i = 0; i < bosang.length; i++) {
+                    msg += Color + "#i" + bosang[i] + "# #z" + bosang[i] + "#" + Enter;
+                    MakeItem(bosang[i]);
+                }
+                MakeItem1(bosang1[0], 1);
+                cm.getClient().setKeyValue("1steventitem", "1");
+                msg += Pink + "\r\nได้รับไอเท็มเรียบร้อยแล้ว";
+                cm.sendOk(msg);
                 cm.dispose();
-                return;
-            }
-            
-            msg = "#fs11#" + 획득 + enter + enter;
-            msg += 색 + "#i"+bosang1[0]+"# #z"+bosang1[0]+"#" +enter;
-            for (i = 0; i < bosang.length; i++) {
-                msg += 색 + "#i"+bosang[i]+"# #z"+bosang[i]+"#" +enter;
-                MakeItem(bosang[i]);
-            }
-            MakeItem1(bosang1[0], 1);
-            cm.getClient().setKeyValue("1steventitem", "1");
-            msg += 핑크색 + "\r\n위와 같은 아이템이 지급되었습니다";
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
+                break;
 
             case 6:
-            // 출석 체크
-            // 날짜 불러오기
-            var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-            today = new Date();
-            month = months[today.getMonth()];
-            day = today.getDate();
+                // 출석 체크
+                // 날짜 불러오기
+                var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+                today = new Date();
+                month = months[today.getMonth()];
+                day = today.getDate();
 
-            today = month + day
+                today = month + day
 
-            count = cm.getClient().getKeyValue("1stday");
-            plustcount = parseInt(count) + 1;
-            
-            if (cm.getInvSlots(1) < 1 || cm.getInvSlots(2) < 1 || cm.getInvSlots(3) < 1 || cm.getInvSlots(4) < 1 || cm.getInvSlots(5) < 1) {
-                cm.sendOkS("#fs11##fc0xFF6600CC#인벤토리를 탭별로 1칸이상 비워주세요", 2);
+                count = cm.getClient().getKeyValue("1stday");
+                plustcount = parseInt(count) + 1;
+
+                if (cm.getInvSlots(1) < 1 || cm.getInvSlots(2) < 1 || cm.getInvSlots(3) < 1 || cm.getInvSlots(4) < 1 || cm.getInvSlots(5) < 1) {
+                    cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาเคลียร์ช่องเก็บของแต่ละแท็บให้ว่างอย่างน้อย 1 ช่อง", 2);
+                    cm.dispose();
+                    return;
+                }
+
+                cm.getClient().setKeyValue("1stday", plustcount);
+                cm.getClient().setKeyValue("1stdaylast", today);
+                msg = "#fs11#เช็คชื่อเรียบร้อยแล้ว\r\n\r\n#r※ ของรางวัลเช็คชื่อวันนี้คือ.\r\n\r\n";
+                for (i = 0; i < dayitem.length; i++) {
+                    msg += Color + "#i" + dayitem[i][0] + "# #z" + dayitem[i][0] + "# " + dayitem[i][1] + " ชิ้น" + Enter;
+                    cm.gainItem(dayitem[i][0], dayitem[i][1]);
+                }
+                cm.sendOk(msg);
                 cm.dispose();
-                return;
-            }
-
-            cm.getClient().setKeyValue("1stday", plustcount);
-            cm.getClient().setKeyValue("1stdaylast", today);
-            msg = "#fs11#출석 체크를 완료했습니다\r\n\r\n#r※ 오늘 출석체크의 보상은 아래와 같습니다.\r\n\r\n";
-            for (i = 0; i < dayitem.length; i++) {
-                msg += 색 + "#i"+dayitem[i][0]+"# #z"+ dayitem[i][0]+"# " + dayitem[i][1] + "개" +enter;
-                cm.gainItem(dayitem[i][0], dayitem[i][1]);
-            }
-            cm.sendOk(msg);
-            cm.dispose();
-            break;
+                break;
 
         }
-    } else if(status == 3) {
-        switch(seld) {
+    } else if (status == 3) {
+        switch (seld) {
             case 2:
-            if (!haveNeed(sel)) {
-                cm.sendOk("#fs11#모험가님의 사탕이 부족해요");
+                if (!haveNeed(sel)) {
+                    cm.sendOk("#fs11#ลูกอมของท่านนักผจญภัยไม่เพียงพอค่ะ");
+                    cm.dispose();
+                    return;
+                }
+                for (i = 0; i < need.length; i++) {
+                    cm.gainItem(need[i]['itemid'], -(need[i]['qty'] * sel));
+                }
+                cm.gainItem(tocoin, (toqty * sel));
+                cm.sendOk("#fs11#แลกเปลี่ยนเรียบร้อยแล้วค่ะ!");
                 cm.dispose();
-                return;
-            }
-            for (i = 0; i < need.length; i++) {
-                cm.gainItem(need[i]['itemid'], -(need[i]['qty'] * sel));
-            }
-            cm.gainItem(tocoin, (toqty * sel));
-            cm.sendOk("#fs11#교환이 완료되었습니다!");
-            cm.dispose();
-            break;
+                break;
 
         }
     }
 }
 
 function haveNeed(a) {
-        var ret = true;
-        for (i = 0; i < need.length; i++) {
-                if (!cm.haveItem(need[i]['itemid'], (need[i]['qty'] * a)))
-                        ret = false;
-        }
-        return ret;
+    var ret = true;
+    for (i = 0; i < need.length; i++) {
+        if (!cm.haveItem(need[i]['itemid'], (need[i]['qty'] * a)))
+            ret = false;
+    }
+    return ret;
 }
 
 

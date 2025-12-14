@@ -1,26 +1,26 @@
 importPackage(Packages.scripting);
 importPackage(Packages.objects.item);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-보라색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+var purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var starBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var starYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var starWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var starBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var starRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var color = "#fc0xFF6600CC#"
+var purpleColor = "#fc0xFF6600CC#"
+var black = "#fc0xFF000000#"
+var pink = "#fc0xFFFF3366#"
+var lightPink = "#fc0xFFF781D8#"
+var enter = "\r\n"
+var enter2 = "\r\n\r\n"
 enter = "\r\n";
 
 var status = -1;
@@ -45,11 +45,11 @@ function action(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        cm.sendGetText("\r\n#fs11##fc0xFF000000#원하는 치장 아이템을 검색해!\r\n\r\n아이템의 정확한 명칭을 모른다면\r\n#b아이템의 이름 일부분만 입력해도 검색이 가능하니 알아두라구#fc0xFF000000#\r\n#fs11#\r\n#b예시로 치어 팡팡 → '팡팡' 으로 검색이 가능해!#fc0xFF000000#\r\n#b※ 한벌옷은 스탯이 2배로 부여됩니다\r\n\r\n");
+        cm.sendGetText("\r\n#fs11##fc0xFF000000#ค้นหาไอเท็มแฟชั่นที่ต้องการ!\r\n\r\nหากไม่ทราบชื่อไอเท็มที่ถูกต้อง\r\n#bสามารถค้นหาด้วยชื่อบางส่วนได้นะ จำไว้ด้วยล่ะ#fc0xFF000000#\r\n#fs11#\r\n#bตัวอย่างเช่น Cheer Pang Pang → ค้นหาด้วยคำว่า \'Pang Pang\' ก็ได้!#fc0xFF000000#\r\n#b※ ชุด Overall จะได้รับค่าสเตตัส 2 เท่า\r\n\r\n");
     } else if (status == 1) {
         searchname = cm.getText();
         if (cm.getText().equals("") || cm.getText().equals(" ")) {
-            cm.sendOk("잘못 입력한거 같은데?");
+            cm.sendOk("ดูเหมือนจะพิมพ์ผิดนะ?");
             cm.dispose();
             return;
         }
@@ -61,67 +61,67 @@ function action(mode, type, selection) {
             return;
         }
         if (!MapleItemInformationProvider.getInstance().isCash(sel)) {
-            cm.sendOk("#fs11#오류가 발생 했어");
+            cm.sendOk("#fs11#เกิดข้อผิดพลาด");
             cm.dispose();
             return;
         }
 
-        // 지급받을 아이템이 검색한 아이템이 아닐경우
+        // If the item to receive is not the searched item
         itemname = cm.getItemName(sel);
         if (itemname.toLowerCase().indexOf(searchname.toLowerCase()) == -1) {
-            cm.sendOk("#fs11#오류가 발생 했어ㅋㅋ");
+            cm.sendOk("#fs11#เกิดข้อผิดพลาด 555");
             cm.dispose();
             return;
         }
 
         if (isPetEquip(sel)) {
-            cm.sendOk("#fs11#펫 장비는 지급받으실 수 없어요");
+            cm.sendOk("#fs11#ไม่สามารถรับอุปกรณ์สัตว์เลี้ยงได้");
             cm.dispose();
             return;
         }
 
         if (rachika.indexOf(sel) != -1) {
-            cm.sendOk("#fs11##r[R]#b스페셜 반지#k 아이템은 지급받을 수 없어요");
+            cm.sendOk("#fs11##r[R]#bไอเท็ม Special Ring#k ไม่สามารถรับได้");
             cm.dispose();
             return;
         }
 
         if (clearitem.indexOf(sel) != -1) {
-            cm.sendOk("#fs11##r[R]#b스페셜 캐시#k 아이템은 지급받을 수 없어요");
+            cm.sendOk("#fs11##r[R]#bไอเท็ม Special Cash#k ไม่สามารถรับได้");
             cm.dispose();
             return;
         }
 
         if (special.indexOf(sel) != -1) {
-            cm.sendOk("#fs11##r[R]#b스페셜 캐시#k 아이템은 지급받을 수 없어요");
+            cm.sendOk("#fs11##r[R]#bไอเท็ม Special Cash#k ไม่สามารถรับได้");
             cm.dispose();
             return;
         }
 
         if (bugitem.indexOf(sel) != -1) {
-            cm.sendOk("#fs11#현재 문제가 있는 아이템이라 지급받을 수 없어요");
+            cm.sendOk("#fs11#ไอเท็มนี้มีปัญหา ไม่สามารถรับได้");
             cm.dispose();
             return;
         }
 
         if (banitem.indexOf(sel) != -1) {
-            cm.sendOk("#fs11#해당 아이템은 지급받을 수 없어요");
+            cm.sendOk("#fs11#ไอเท็มนี้ไม่สามารถรับได้");
             cm.dispose();
             return;
         }
 
-        cm.sendYesNo("#fs11#정말 선택한 #i" + sel + "##b#t" + sel + "##k (을)를 지급 받을거야?");
+        cm.sendYesNo("#fs11#ต้องการรับ #i" + sel + "##b#t" + sel + "##k ที่เลือกจริงๆ เหรอ?");
     } else if (status == 3) {
-        var ii =Packages.objects.item.MapleItemInformationProvider.getInstance();
+        var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
         if (!MapleItemInformationProvider.getInstance().isCash(sel)) {
-            cm.sendOk("#fs11#오류가 발생 했어");
+            cm.sendOk("#fs11#เกิดข้อผิดพลาด");
             cm.dispose();
             return;
         }
 
-        // 치장 슬롯 1칸
+        // 1 Decoration slot
         if (cm.getInvSlots(6) <= 0) {
-            cm.sendOk("#fs11#인벤토리 공간이 부족합니다. [치장] 탭의 1칸을 비워주세요");
+            cm.sendOk("#fs11#ช่องเก็บของไม่พอ กรุณาเคลียร์ช่อง [Decoration] 1 ช่อง");
             cm.dispose();
             return;
         }
@@ -146,10 +146,10 @@ function action(mode, type, selection) {
         if (Packages.constants.GameConstants.isWeapon(sel)) {
             ItemInfo.setUniqueId(MapleInventoryIdentifier.getInstance());
         }
-        Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(),ItemInfo, true);
+        Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), ItemInfo, true);
         cm.gainItem(2431394, -1);
         cm.dispose();
-        cm.sayNpc("#fs11#선택한 아이템이 지급되었다!", GameObjectType.User, false, false, ScriptMessageFlag.NpcReplacedByUser);
+        cm.sayNpc("#fs11#ได้รับไอเท็มที่เลือกแล้ว!", GameObjectType.User, false, false, ScriptMessageFlag.NpcReplacedByUser);
     }
 }
 

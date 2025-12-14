@@ -74,11 +74,11 @@ function action(mode, type, selection) {
         }
     }
     if (status == 0) {
-        var 보유포인트 = comma(cm.getPlayer().getDonationPoint());
-        var 현재등급 = cm.getPlayer().getHgrades();
+        var currentPoints = comma(cm.getPlayer().getDonationPoint());
+        var currentGrade = cm.getPlayer().getHgrades();
 
-        chat = star + "#fs11# แต้มปัจจุบันของคุณ #h0# : #r" + 보유포인트 + "P#k\r\n";
-        chat += star + " ระดับปัจจุบันของคุณ #h0# : #fc0xFFFF3366#" + 현재등급 + "\r\n";
+        chat = star + "#fs11# แต้มปัจจุบันของคุณ #h0# : #r" + currentPoints + "P#k\r\n";
+        chat += star + " ระดับปัจจุบันของคุณ #h0# : #fc0xFFFF3366#" + currentGrade + "\r\n";
         chat += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
         for (i = 0; i < item.length; i++) {
             price = item[i][2].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

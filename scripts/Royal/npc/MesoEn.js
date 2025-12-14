@@ -4,14 +4,14 @@ var equipped = false;
 
 var banitem = [1712001, 1712002, 1712003, 1712004, 1712005, 1712006, 1713000, 1713001, 1713002, 1713003, 1713004, 1713005];
 
-var canowner = ["", "1강", "2강", "3강", "4강", "5강", "6강", "7강", "8강", "9강", "10강", "11강", "12강", "13강", "14강", "15강", "16강", "17강", "18강", "19강", "20강"];
+var canowner = ["", "1 Star", "2 Star", "3 Star", "4 Star", "5 Star", "6 Star", "7 Star", "8 Star", "9 Star", "10 Star", "11 Star", "12 Star", "13 Star", "14 Star", "15 Star", "16 Star", "17 Star", "18 Star", "19 Star", "20 Star"];
 
 var cantowner = ["△", "★", "★△", "★★", "★★△", "★★★"];
 
 function ConvertNumber(number) {
     var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', '만 ', '억 ', '조 ', '경 '];
-    var splitUnit = 10000;
+    var unitWords = ['', 'K ', 'M ', 'B ', 'T ', 'Q '];
+    var splitUnit = 1000;
     var splitCount = unitWords.length;
     var resultArray = [];
     var resultString = '';
@@ -62,26 +62,26 @@ var items = [ //Enhance Count, Success Rate, Cost (Meso or Pouch), AllStat, Att/
 
 function getAddEnhance(item) {
     var owner = item.getOwner();
-    return owner == "1강" ? 1 :
-        owner == "2강" ? 2 :
-            owner == "3강" ? 3 :
-                owner == "4강" ? 4 :
-                    owner == "5강" ? 5 :
-                        owner == "6강" ? 6 :
-                            owner == "7강" ? 7 :
-                                owner == "8강" ? 8 :
-                                    owner == "9강" ? 9 :
-                                        owner == "10강" ? 10 :
-                                            owner == "11강" ? 11 :
-                                                owner == "12강" ? 12 :
-                                                    owner == "13강" ? 13 :
-                                                        owner == "14강" ? 14 :
-                                                            owner == "15강" ? 15 :
-                                                                owner == "16강" ? 16 :
-                                                                    owner == "17강" ? 17 :
-                                                                        owner == "18강" ? 18 :
-                                                                            owner == "19강" ? 19 :
-                                                                                owner == "20강" ? 20 :
+    return owner == "1 Star" ? 1 :
+        owner == "2 Star" ? 2 :
+            owner == "3 Star" ? 3 :
+                owner == "4 Star" ? 4 :
+                    owner == "5 Star" ? 5 :
+                        owner == "6 Star" ? 6 :
+                            owner == "7 Star" ? 7 :
+                                owner == "8 Star" ? 8 :
+                                    owner == "9 Star" ? 9 :
+                                        owner == "10 Star" ? 10 :
+                                            owner == "11 Star" ? 11 :
+                                                owner == "12 Star" ? 12 :
+                                                    owner == "13 Star" ? 13 :
+                                                        owner == "14 Star" ? 14 :
+                                                            owner == "15 Star" ? 15 :
+                                                                owner == "16 Star" ? 16 :
+                                                                    owner == "17 Star" ? 17 :
+                                                                        owner == "18 Star" ? 18 :
+                                                                            owner == "19 Star" ? 19 :
+                                                                                owner == "20 Star" ? 20 :
                                                                                     0;
 }
 
@@ -151,7 +151,7 @@ function action(mode, type, selection) {
             }
         }
 
-        if (item.getOwner().equals("20강")) {
+        if (item.getOwner().equals("20 Star")) {
             cm.sendOk("#fs11#Item is already fully enhanced to +20.");
             cm.dispose();
             return;
@@ -161,7 +161,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         }
-        if (item.getOwner().equals("[홍보]")) {
+        if (item.getOwner().equals("[Promotion]")) {
             cm.sendOk("#fs11#Promotion items cannot be enhanced.");
             cm.dispose();
             return;
@@ -197,7 +197,7 @@ function action(mode, type, selection) {
         if (re == 0) {
             choice = selection;
         }
-        if (item.getOwner().equals("20강")) {
+        if (item.getOwner().equals("20 Star")) {
             cm.sendOk("#fs11#Item is already fully enhanced to +20.");
             cm.dispose();
             return;
@@ -279,7 +279,7 @@ function action(mode, type, selection) {
                 item.addLuk(items[getAddEnhance(item) + 1][3]);
                 item.addWatk(items[getAddEnhance(item) + 1][4]);
                 item.addMatk(items[getAddEnhance(item) + 1][4]);
-                item.setOwner("" + (getAddEnhance(item) + 1) + "강");
+                item.setOwner("" + (getAddEnhance(item) + 1) + " Star");
                 cm.getPlayer().send(Packages.network.models.CWvsContext.InventoryPacket.updateInventoryItem(Packages.objects.item.MapleInventoryType.EQUIP, item, false, cm.getPlayer()));
 
                 say = "#fs11#";
@@ -314,7 +314,7 @@ function action(mode, type, selection) {
                     item.setWatk(item.getWatk() - items[getAddEnhance(item)][4]);
                     item.setMatk(item.getMatk() - items[getAddEnhance(item)][4]);
 
-                    item.setOwner("" + (getAddEnhance(item) - 1) + "강");
+                    item.setOwner("" + (getAddEnhance(item) - 1) + " Star");
 
                     cm.getPlayer().send(Packages.network.models.CWvsContext.InventoryPacket.updateInventoryItem(Packages.objects.item.MapleInventoryType.EQUIP, item, false, cm.getPlayer()));
 

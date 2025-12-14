@@ -17,24 +17,24 @@ importPackage(Packages.database);
 importPackage(Packages.scripting);
 
 var startmap = [
-	450012210, // 노말
-	450012600, // 하드
-	450012210, // 노말 연습
-	450012600, // 하드 연습
+    450012210, // Normal
+    450012600, // Hard
+    450012210, // Normal Practice
+    450012600, // Hard Practice
 ];
 var exitmap = 15;
-var bossname = "듄켈"
+var bossname = "Dunkel"
 var limit = [
-	3, // 노말
-	3, // 하드
-	20, // 노말 연습
-	20 // 하드 연습
+    3, // Normal
+    3, // Hard
+    20, // Normal Practice
+    20 // Hard Practice
 ];
 var time = 30;
 var deathcount = 5;
 var practice = false;
 
-var diff = ["노말", "하드", "노말연습", "하드연습"];
+var diff = ["Normal", "Hard", "Normal Practice", "Hard Practice"];
 
 function start() {
     practice = false;
@@ -50,17 +50,17 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-	cm.askMenuScenarioSelf("친위대장 듄켈과 그의 친위대를 막아야한다.\r\n#L0##b끝에 가까운 곳(노멀 모드)으로 이동한다.#r(레벨 255이상)#k#l\r\n#L1##b끝에 가까운 곳(하드 모드)으로 이동한다.#r(레벨 255이상)#k#l\r\n#L2##b끝에 가까운 곳(노멀 연습 모드)으로 이동한다.#r(레벨 255이상)#k#l\r\n#L3##b끝에 가까운 곳(하드 연습 모드)으로 이동한다.#r(레벨 255이상)#k#l", ScriptMessageFlag.FlipImage);
+        cm.askMenuScenarioSelf("ต้องหยุดยั้งหัวหน้าหน่วยองครักษ์ Dunkel และหน่วยองครักษ์ของเขา\r\n#L0##bไปยังสถานที่ใกล้จุดจบ (Normal Mode)#r(Lv. 255+)#k#l\r\n#L1##bไปยังสถานที่ใกล้จุดจบ (Hard Mode)#r(Lv. 255+)#k#l\r\n#L2##bไปยังสถานที่ใกล้จุดจบ (Normal Practice Mode)#r(Lv. 255+)#k#l\r\n#L3##bไปยังสถานที่ใกล้จุดจบ (Hard Practice Mode)#r(Lv. 255+)#k#l", ScriptMessageFlag.FlipImage);
     } else if (status == 1) {
         difficulty = selection;
         bn = diff[difficulty] + " " + bossname;
         if (selection == 2 || selection == 3) {
-	practice = true;
+            practice = true;
         }
         if (practice) {
-            cm.askYesNo("연습 모드에 입장을 선택하였습니다. 연습 모드에서는 #b#e경험치와 보상을 얻을 수 없으며#n#k 보스 몬스터의 종류와 상관없이 #b#e하루 5회#n#k만 이용할 수 있습니다. 입장하시겠습니까?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.askYesNo("เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eจะไม่ได้รับ EXP และของรางวัล#n#k และเข้าได้เพียง #b#eวันละ 5 ครั้ง#n#k โดยไม่คำนึงถึงชนิดบอส ต้องการเข้าหรือไม่?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-                enterBoss();
+            enterBoss();
         }
     } else if (status == 2) {
         enterBoss();
@@ -72,7 +72,7 @@ function enterBoss() {
     var p = cm.getPlayer();
     var q = cm.getPlayer().getOneInfoQuest(1234589, n);
     if (q != null && !q.isEmpty() && q == "1" && !practice) {
-        cm.sayNpc("금주에 이미 격파하여 목요일 00시에 횟수 초기화 이후 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สัปดาห์นี้ได้กำจัดไปแล้ว จะสามารถท้าทายได้ใหม่หลังจากรีเซ็ตในวันพฤหัสบดี เวลา 00:00 น.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
@@ -82,34 +82,34 @@ function enterBoss() {
         keyValue = "boss_practice";
     }
     if (!cm.CountCheck(keyValue, limit[difficulty])) {
-        cm.sayNpc("하루에 " + limit[difficulty] + "번만 시도 가능하며, 격파 이후 목요일부터 다시 도전 가능합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สามารถท้าทายได้วันละ " + limit[difficulty] + " ครั้ง และหลังจากกำจัดได้แล้ว จะสามารถท้าทายได้ใหม่ตั้งแต่วันพฤหัสบดีเป็นต้นไป", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (cm.getPlayer().getParty() == null) {
-        cm.sayNpc("1인 이상의 파티에 속해야만 입장할 수 있습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!isPartyLeader()) {
-        cm.sayNpc("파티장이 아니면 신청할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!cm.allMembersHere()) {
-        cm.sayNpc("파티원이 전원 이곳에 모여있어야 합니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("สมาชิกปาร์ตี้ทุกคนต้องมารวมตัวกันที่นี่", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
-        if (cm.getPlayerCount(startmap[difficulty]) > 0) {
-            cm.sayNpc("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
-            cm.dispose();
+    if (cm.getPlayerCount(startmap[difficulty]) > 0) {
+        cm.sayNpc("มีคนกำลังท้าทายอยู่แล้ว\r\n#bกรุณาใช้แชแนลอื่น#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.dispose();
+        return;
+    }
+    if (!practice) {
+        if (!cm.canEnterBoss("dunkel_can_time")) {
             return;
         }
-    if (!practice) {
-	if (!cm.canEnterBoss("dunkel_can_time")) {
-		return;
-	}
     }
     var it = cm.getClient().getChannelServer().getPartyMembers(cm.getParty()).iterator();
     var countPass = true;
@@ -125,17 +125,17 @@ function enterBoss() {
             break;
         }
         if (!chr.canEnterBoss("dunkel_can_time")) {
-	timePass = false;
-	break;
+            timePass = false;
+            break;
         }
     }
     if (!timePass && !practice) {
-        	cm.sayNpc("입장 제한시간이 남은 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
-	cm.dispose();
-	return;
+        cm.sayNpc("มีสมาชิกในปาร์ตี้ที่ยังติดเวลาหน่วงการเข้าอยู่", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.dispose();
+        return;
     }
     if (!countPass) {
-        cm.sayNpc("입장 제한횟수가 부족하거나 레벨 제한이 맞지 않는 파티원이 있어 입장할 수 없습니다.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("มีสมาชิกในปาร์ตี้ที่เข้าได้ไม่พอหรือเลเวลไม่ถึงเกณฑ์", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     } else {
@@ -149,10 +149,10 @@ function enterBoss() {
             ps.close();
             con.close();
             AC(chr, keyValue);
-    	chr.setCurrentBossPhase(1);
+            chr.setCurrentBossPhase(1);
         }
     }
-        cm.resetMap(startmap[difficulty]);
+    cm.resetMap(startmap[difficulty]);
     cm.dispose();
     var em = cm.getEventManager("Boss");
     var eim = em.readyInstance();
@@ -163,7 +163,7 @@ function enterBoss() {
     eim.setProperty("Leader", cm.getPlayer().getParty().getLeader().getName());
     eim.setProperty("DeathCount", deathcount);
     eim.setProperty("BossMode", practice ? 1 : 0);
-    eim.startEventTimer(60000 * time); // 30분
+    eim.startEventTimer(60000 * time); // 30 min
     eim.registerParty(cm.getPlayer().getParty(), cm.getPlayer().getMap());
 }
 
@@ -177,12 +177,12 @@ function isPartyLeader() {
 function AC(player, boss) {
     player.CountAdd(boss);
     if (!practice) {
-    	player.updateCanTime("dunkel_can_time", 0);
+        player.updateCanTime("dunkel_can_time", 0);
     }
 }
 
 function CC(player, boss, limit) {
-     var q = player.getOneInfoQuest(1234589, "dunkel_clear");
+    var q = player.getOneInfoQuest(1234589, "dunkel_clear");
     if (q != null && !q.isEmpty() && q == "1" && !practice) {
         return false;
     }

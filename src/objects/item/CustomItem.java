@@ -74,7 +74,7 @@ public class CustomItem {
             }
 
             chr.updateInfoQuest(454545, data);
-            chr.dropMessage(5, "제니아에서 초월석 데이터를 성공적으로 가져왔습니다. (기존 데이터도 유지됩니다.)");
+            chr.dropMessage(5, "นำเข้าข้อมูลหินทรานเซนเดนซ์จากเซเนียสำเร็จ (ข้อมูลเดิมยังคงอยู่)");
          }
       }
    }
