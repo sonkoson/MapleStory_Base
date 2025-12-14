@@ -3629,6 +3629,9 @@ public class CommonJob implements BasicJob {
          case AutoChargeStackOnOff:
             Object field = this.player.getJobField("autoChargeStackOnOffStack");
             packet.writeInt(field != null ? (Integer) field : 0);
+            break;
+         default:
+            break;
       }
    }
 
