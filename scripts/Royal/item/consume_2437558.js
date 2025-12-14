@@ -15,7 +15,7 @@ importPackage(Packages.server.life);
 var itemlist = [
        	
 ]
-var Ãßµ© = 0;
+var ì¶”ë€ = 0;
 
 function start() {
 	status = -1;
@@ -30,13 +30,13 @@ function action(mode, type, sel) {
     	}
 	if (status == 0) {
 
-		var msg = "#bÄ­#k ÈÄ¿øÆ÷ÀÎÆ® ±³È¯±Ç¿¡¼­\r\n´ÙÀ½°ú°°Àº #bº¸»ó#kÀÌ ³ª¿Ô½À´Ï´Ù.#d\r\n\r\n";
+		var msg = "#bì¹¸#k í›„ì›í¬ì¸íŠ¸ êµí™˜ê¶Œì—ì„œ\r\në‹¤ìŒê³¼ê°™ì€ #bë³´ìƒ#kì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.#d\r\n\r\n";
                 as = Packages.objects.utils.Randomizer.rand(100000, 100000);
 		for (i = 0; i < itemlist.length; i ++) {
 			cm.gainItem(itemlist[i]['itemid'],itemlist[i]['qty']);
-			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"°³ \r\n";
+			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"ê°œ \r\n";
 		}
-msg += "#bÈÄ¿øÆ÷ÀÎÆ®#k : 100000 #rP#k \r\n";
+msg += "#bí›„ì›í¬ì¸íŠ¸#k : 100000 #rP#k \r\n";
                 cm.getPlayer().gainDonationPoint(as);
                 cm.gainItem(2437558, -1);
 		cm.sendOk(msg);

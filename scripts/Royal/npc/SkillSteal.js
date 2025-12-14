@@ -1,4 +1,4 @@
-﻿/*
+/*
 Royal SkillSteal Ver.366
 */
 

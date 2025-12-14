@@ -21,7 +21,7 @@ var itemlist = [
 	{'itemid' : 2520001, 'qty' : 10}
 
 ]
-var Ãßµ© = 0;
+var ì¶”ë€ = 0;
 
 function start() {
 	status = -1;
@@ -35,10 +35,10 @@ function action(mode, type, sel) {
 		return;
     	}
 	if (status == 0) {
-		var msg = "´«²É Á¤·ÉÀÇ »óÀÚ¿¡¼­\r\n´ÙÀ½°ú°°Àº #bº¸»ó#kÀÌ ³ª¿Ô½À´Ï´Ù.#d\r\n\r\n";
+		var msg = "ëˆˆê½ƒ ì •ë ¹ì˜ ìƒìì—ì„œ\r\në‹¤ìŒê³¼ê°™ì€ #bë³´ìƒ#kì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.#d\r\n\r\n";
 		for (i = 0; i < itemlist.length; i ++) {
 			cm.gainItem(itemlist[i]['itemid'],itemlist[i]['qty']);
-			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"°³ \r\n";
+			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"ê°œ \r\n";
 		}
                 cm.gainItem(2430217, -1);
 		cm.sendOk(msg);

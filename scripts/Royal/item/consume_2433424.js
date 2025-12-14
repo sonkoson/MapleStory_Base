@@ -17,6 +17,6 @@ function action(mode, type, sel) {
 	if (status == 0) {
 		cm.gainItem(2433424, -1);
 		cm.dispose();
-		cm.sendOkS("»Ð", 700);
+		cm.sendOkS("ë¿…", 700);
 	}
 }

@@ -20,7 +20,7 @@ function action(mode, type, selection) {
     if (status == 0) {
         var leftslot = cm.getPlayer().getNX();
         if (leftslot >= 895000) {
-            cm.sendOk("Ä³½Ã ÃÖ´ë ÇÑµµ´Â 90¸¸ Ä³½Ã ÀÔ´Ï´Ù. ÇöÀç Ä³½Ã ¹üÀ§¸¦ ÃÊ°úÇÏ¿© ÀÌ »óÀÚ¸¦ ¿­ ¼ö ¾ø½À´Ï´Ù.");
+            cm.sendOk("ìºì‹œ ìµœëŒ€ í•œë„ëŠ” 90ë§Œ ìºì‹œ ìž…ë‹ˆë‹¤. í˜„ìž¬ ìºì‹œ ë²”ìœ„ë¥¼ ì´ˆê³¼í•˜ì—¬ ì´ ìƒìžë¥¼ ì—´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             cm.dispose();
             return;
         }

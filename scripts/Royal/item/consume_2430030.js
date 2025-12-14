@@ -2,15 +2,15 @@ var st = 0;
 var status = -1;
 importPackage(Packages.server.quest);
 bossname = [
-    ["½º¿ì", 13, "Normal_Lotus", "Hard_Lotus"],
-    ["µ¥¹Ì¾È", 15, "Normal_Demian", "Hard_Demian"],
-    ["·ç½Ãµå", 19, "Easy_Lucid", "Normal_Lucid", "Hard_Lucid"],
-    ["Àª", 23, "Normal_Will", "Hard_Will"],
-    //["µáÄÌ", 27, "Normal_Dunkel", "Hard_Dunkel"],
-    //["´õ½ºÅ©", 26, "Normal_Dusk", "Chaos_Dusk"],
-    //["°íÅëÀÇ ¹Ì±Ã : Áø Èú¶ó", 24, "Normal_JinHillah"],
-    //["ÃÊ¿ùÀÚ : °ËÀº ¸¶¹ı»ç", 25, "Black_Mage"],
-    //["¼±ÅÃ¹ŞÀº ¼¼·»", 28, "Hard_Seren"],
+    ["ìŠ¤ìš°", 13, "Normal_Lotus", "Hard_Lotus"],
+    ["ë°ë¯¸ì•ˆ", 15, "Normal_Demian", "Hard_Demian"],
+    ["ë£¨ì‹œë“œ", 19, "Easy_Lucid", "Normal_Lucid", "Hard_Lucid"],
+    ["ìœŒ", 23, "Normal_Will", "Hard_Will"],
+    //["ë“„ì¼ˆ", 27, "Normal_Dunkel", "Hard_Dunkel"],
+    //["ë”ìŠ¤í¬", 26, "Normal_Dusk", "Chaos_Dusk"],
+    //["ê³ í†µì˜ ë¯¸ê¶ : ì§„ íë¼", 24, "Normal_JinHillah"],
+    //["ì´ˆì›”ì : ê²€ì€ ë§ˆë²•ì‚¬", 25, "Black_Mage"],
+    //["ì„ íƒë°›ì€ ì„¸ë Œ", 28, "Hard_Seren"],
            ]
 function start() {
     status = -1;
@@ -31,20 +31,20 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        ¸» = "#fs11##b[#h #]#fc0xFF000000# : #fc0xFF000000#¾î¶² #rº¸½º#fc0xFF000000#ÀÇ #bÀÔÀå È½¼ö#fc0xFF000000#¸¦ ÃÊ±âÈ­ ÇÒ±î?\r\nÃÊ±âÈ­±ÇÀº ÇÏ·ç¿¡ #r1¹ø#fc0xFF000000#¸¸ »ç¿ë°¡´ÉÇÏ´Ï ½ÅÁßÈ÷ °ñ¶ó¾ß°Ú¾î\r\n\r\n";
+        ë§ = "#fs11##b[#h #]#fc0xFF000000# : #fc0xFF000000#ì–´ë–¤ #rë³´ìŠ¤#fc0xFF000000#ì˜ #bì…ì¥ íšŸìˆ˜#fc0xFF000000#ë¥¼ ì´ˆê¸°í™” í• ê¹Œ?\r\nì´ˆê¸°í™”ê¶Œì€ í•˜ë£¨ì— #r1ë²ˆ#fc0xFF000000#ë§Œ ì‚¬ìš©ê°€ëŠ¥í•˜ë‹ˆ ì‹ ì¤‘íˆ ê³¨ë¼ì•¼ê² ì–´\r\n\r\n";
         for (var a = 0; a < bossname.length; a++) {
-            ¸» += "#L"+a+"##b#fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[a][1]+"/Icon/normal/0# "+bossname[a][0]+"#fc0xFF000000#\r\n";
+            ë§ += "#L"+a+"##b#fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[a][1]+"/Icon/normal/0# "+bossname[a][0]+"#fc0xFF000000#\r\n";
         }
-        cm.sendSimpleS(¸», 2);
+        cm.sendSimpleS(ë§, 2);
     } else if (status == 1) {
         st = selection;
-        cm.sendYesNoS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#fs11##n#fc0xFF000000# Å¬¸®¾î È½¼ö ÃÊ±âÈ­¸¦ ÁøÇà ÇÏ½Ã°Ú¾î¿ä?\r\n\r\n#fs11##r¡Ø »ç¿ë½Ã µÇµ¹¸± ¼ö ¾ø½À´Ï´Ù", 4, 9010061);
+        cm.sendYesNoS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#fs11##n#fc0xFF000000# í´ë¦¬ì–´ íšŸìˆ˜ ì´ˆê¸°í™”ë¥¼ ì§„í–‰ í•˜ì‹œê² ì–´ìš”?\r\n\r\n#fs11##râ€» ì‚¬ìš©ì‹œ ë˜ëŒë¦´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤", 4, 9010061);
     } else if (status == 2) {
         if (cm.getPlayer().getV("ResetBoss") == null) {
 	cm.getPlayer().addKV("ResetBoss", "0");
         }
         if (cm.getPlayer().getV("ResetBoss") != "0") {
-	cm.sendOkS("#fs11#¸Â´Ù ¿À´Ã ÀÌ¹Ì ÃÊ±âÈ­±ÇÀ» »ç¿ëÇß¾úÁö",2);
+	cm.sendOkS("#fs11#ë§ë‹¤ ì˜¤ëŠ˜ ì´ë¯¸ ì´ˆê¸°í™”ê¶Œì„ ì‚¬ìš©í–ˆì—ˆì§€",2);
 	cm.dispose();
 	return;
         }
@@ -52,14 +52,14 @@ function action(mode, type, selection) {
         cm.gainItem(2430030, -1);
         cm.getPlayer().removeV(bossname[st][2]);
         cm.getPlayer().addKV("ResetBoss", "1");
-        // ´Ù¸¥ ³­ÀÌµµ ÀÖÀ»½Ã ¸ğµÎ ÃÊ±âÈ­
+        // ë‹¤ë¥¸ ë‚œì´ë„ ìˆì„ì‹œ ëª¨ë‘ ì´ˆê¸°í™”
         if (bossname[st][3] != null)
             cm.getPlayer().removeV(bossname[st][3]);
         if (bossname[st][4] != null)
             cm.getPlayer().removeV(bossname[st][4]);
 
-        cm.addConsumeLog(2430032, "º¸½º ÃÊ±âÈ­ »ç¿ë (¾ÆÀÌÅÛ : 2430030, ÃÊ±âÈ­ º¸½º : " + bossname[st][0] + ")");
-        cm.sendOkS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#fs11##n#fc0xFF000000# Å¬¸®¾î È½¼ö ÃÊ±âÈ­°¡ ¿Ï·á µÇ¾ú½À´Ï´Ù.", 4, 9010061);
+        cm.addConsumeLog(2430032, "ë³´ìŠ¤ ì´ˆê¸°í™” ì‚¬ìš© (ì•„ì´í…œ : 2430030, ì´ˆê¸°í™” ë³´ìŠ¤ : " + bossname[st][0] + ")");
+        cm.sendOkS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#fs11##n#fc0xFF000000# í´ë¦¬ì–´ íšŸìˆ˜ ì´ˆê¸°í™”ê°€ ì™„ë£Œ ë˜ì—ˆìŠµë‹ˆë‹¤.", 4, 9010061);
         cm.dispose();
     }
 }

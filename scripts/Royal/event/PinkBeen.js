@@ -1,8 +1,8 @@
 importPackage(Packages.objects.utils);
 
-// ÀÌº¥Æ®¸Å´ÏÀú ÃÊ±âÈ­ÇÒ ³»¿ë(Ã¤³Îº°·Î Àû¿ëµÊ)
+// ì´ë²¤íŠ¸ë§¤ë‹ˆì € ì´ˆê¸°í™”í•  ë‚´ìš©(ì±„ë„ë³„ë¡œ ì ìš©ë¨)
 function init() {
-    //ÀÔÀå °¡´ÉÇÑ ¸Ê °¹¼ö ÃÑ8°³¾¿(ÀÌÁö¿Í ³ë¸»Àº ÅëÇÕ)
+    //ì…ì¥ ê°€ëŠ¥í•œ ë§µ ê°¯ìˆ˜ ì´8ê°œì”©(ì´ì§€ì™€ ë…¸ë§ì€ í†µí•©)
     em.setProperty("status0", "0");
     //em.setProperty("status1", "0");
     //em.setProperty("status2", "0");
@@ -41,7 +41,7 @@ function playerEntry(eim, player) {
 }
 
 function scheduledTimeout(eim) {
-    //¤¡¤§¤¡¤§
+    //ã„±ã„·ã„±ã„·
     var it = eim.getPlayers().iterator();
     var exitMap = 270050300;
     if (eim.getProperty("mode") == "chaos") {
@@ -132,7 +132,7 @@ function playerExit(eim, player) {
 function allMonstersDead(eim) {}
 
 function leftParty(eim, player) {
-    // Å»Åğ
+    // íƒˆí‡´
     var exitMap = 270050300;
     if (eim.getProperty("mode") == "chaos") {
         exitMap = 270051300;

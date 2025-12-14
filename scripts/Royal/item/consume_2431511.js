@@ -20,7 +20,7 @@ function action(mode, type, selection) {
         if (status == 0) {
 	cm.gainItem(2431511, -1);
 	cm.gainItem(2049360, 1);
-	cm.sendOkS("#b³î¶ó¿î Àåºñ°­È­ ÁÖ¹®¼­¸¦ ¾ò¾ú´Ù!#k", 2)
+	cm.sendOkS("#bë†€ë¼ìš´ ì¥ë¹„ê°•í™” ì£¼ë¬¸ì„œë¥¼ ì–»ì—ˆë‹¤!#k", 2)
 	cm.dispose();
 	}
 }

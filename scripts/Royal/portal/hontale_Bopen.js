@@ -1,45 +1,45 @@
 /*
- * Ç»¾î¿Â¶óÀÎ ¼Ò½º ½ºÅ©¸³Æ® ÀÔ´Ï´Ù.
+ * í“¨ì–´ì˜¨ë¼ì¸ ì†ŒìŠ¤ ìŠ¤í¬ë¦½íŠ¸ ì…ë‹ˆë‹¤.
  * 
- * Æ÷Å»À§Ä¡ : 
- * Æ÷Å»¼³¸í : 
+ * í¬íƒˆìœ„ì¹˜ : 
+ * í¬íƒˆì„¤ëª… : 
  * 
- * Á¦ÀÛ : ÁÖÅ©ºí·¢
+ * ì œì‘ : ì£¼í¬ë¸”ë™
  * 
  */
 
 function enter(pi) {
     var eim = pi.getPlayer().getEventInstance();
-    if (pi.getPlayer().getMapId() == 240050101) { //Ã¹¹øÂ° ¹Ì·Î¹æ
+    if (pi.getPlayer().getMapId() == 240050101) { //ì²«ë²ˆì§¸ ë¯¸ë¡œë°©
         if (eim.getProperty("Maze02open") == null) {
-            pi.getPlayer().message(5, "¾Ë ¼ö ¾ø´Â ÈûÀ¸·Î Æ÷Å»ÀÌ ¸·ÇôÀÖ¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            pi.getPlayer().message(5, "ì•Œ ìˆ˜ ì—†ëŠ” í˜ìœ¼ë¡œ í¬íƒˆì´ ë§‰í˜€ìˆì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         } else {
             pi.warp(240050102);
             return true;
         }
     }
-    if (pi.getPlayer().getMapId() == 240050102) { //µÎ¹øÂ° ¹Ì·Î¹æ
+    if (pi.getPlayer().getMapId() == 240050102) { //ë‘ë²ˆì§¸ ë¯¸ë¡œë°©
         if (eim.getProperty("Maze03open") == null) {
-            pi.getPlayer().message(5, "¾Ë ¼ö ¾ø´Â ÈûÀ¸·Î Æ÷Å»ÀÌ ¸·ÇôÀÖ¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            pi.getPlayer().message(5, "ì•Œ ìˆ˜ ì—†ëŠ” í˜ìœ¼ë¡œ í¬íƒˆì´ ë§‰í˜€ìˆì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         } else {
             pi.warp(240050103);
             return true;
         }
     }
-    if (pi.getPlayer().getMapId() == 240050103) { //¼¼¹øÂ° ¹Ì·Î¹æ
+    if (pi.getPlayer().getMapId() == 240050103) { //ì„¸ë²ˆì§¸ ë¯¸ë¡œë°©
         if (eim.getProperty("Maze04open") == null) {
-            pi.getPlayer().message(5, "¾Ë ¼ö ¾ø´Â ÈûÀ¸·Î Æ÷Å»ÀÌ ¸·ÇôÀÖ¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            pi.getPlayer().message(5, "ì•Œ ìˆ˜ ì—†ëŠ” í˜ìœ¼ë¡œ í¬íƒˆì´ ë§‰í˜€ìˆì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         } else {
             pi.warp(240050104);
             return true;
         }
     }
-    if (pi.getPlayer().getMapId() == 240050104) { //³×¹øÂ° ¹Ì·Î¹æ
+    if (pi.getPlayer().getMapId() == 240050104) { //ë„¤ë²ˆì§¸ ë¯¸ë¡œë°©
         if (eim.getProperty("Maze05open") == null) {
-            pi.getPlayer().message(5, "¾Ë ¼ö ¾ø´Â ÈûÀ¸·Î Æ÷Å»ÀÌ ¸·ÇôÀÖ¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            pi.getPlayer().message(5, "ì•Œ ìˆ˜ ì—†ëŠ” í˜ìœ¼ë¡œ í¬íƒˆì´ ë§‰í˜€ìˆì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         } else {
             pi.warp(240050105);
@@ -47,15 +47,15 @@ function enter(pi) {
         }
     }
     
-    if (pi.getPlayer().getMapId() == 240050105) { //µÎ¹øÂ° ¹Ì·Î¹æ
+    if (pi.getPlayer().getMapId() == 240050105) { //ë‘ë²ˆì§¸ ë¯¸ë¡œë°©
         if (pi.haveItem(4001092, 1)) {
             pi.gainItem(4001092, -1);
-            eim.broadcastPlayerMsg(5, "ºÓÀº ¿­¼èÀÇ ÈûÀ¸·Î ÀÌµ¿µÇ¾ú½À´Ï´Ù.");
+            eim.broadcastPlayerMsg(5, "ë¶‰ì€ ì—´ì‡ ì˜ í˜ìœ¼ë¡œ ì´ë™ë˜ì—ˆìŠµë‹ˆë‹¤.");
             pi.allPartyWarp(240050100, false);
             eim.addAchievementRatio(5);
             return true;
         } else {
-            pi.getPlayer().message(5, "¾Ë ¼ö ¾ø´Â ÈûÀ¸·Î Æ÷Å»ÀÌ ¸·ÇôÀÖ¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            pi.getPlayer().message(5, "ì•Œ ìˆ˜ ì—†ëŠ” í˜ìœ¼ë¡œ í¬íƒˆì´ ë§‰í˜€ìˆì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         }
     }

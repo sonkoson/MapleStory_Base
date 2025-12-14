@@ -37,12 +37,12 @@ function action(M, T, S)
 		}
 		if (cm.getPlayer().getJob() == 10112) {
 
-		cm.sendOkS("#fs11##fc0xFF000000#�ڳ��� ������ ���� ������ �ϴ� ������ #fc0xFFFF3300##e������ �ɼ�#fc0xFF000000##n�� �ο��س��ٳ�! #fc0xFF990033#[Zenia]#fc0xFF000000#���� ��ſ� �ð� �����ð�\r\n#b"
+		cm.sendOkS("#fs11##fc0xFF000000#자네의 여정에 힘이 됐으면 하는 마음에 #fc0xFFFF3300##e쓸만한 옵션#fc0xFF000000##n을 부여해놨다네! #fc0xFF990033#[Zenia]#fc0xFF000000#에서 즐거운 시간 보내시게\r\n#b"
 
 			+ "  #i3700503:# #t3700503:#\r\n"
 			+ "  #i1122372:# #t1122372:#\r\n"
-			+ "  #i5002239:# #t5002239:# (�ڼ���)\r\n"
-			+ "  #i2430732:# #t2430732:# (Ư�� �������(�Һ�ĭ))\r\n"
+			+ "  #i5002239:# #t5002239:# (자석펫)\r\n"
+			+ "  #i2430732:# #t2430732:# (특수 보조장비(소비칸))\r\n"
 			+ "  #i"+S+":# #t"+S+":# #e#k#n\r\n", 4, 9062294);
 		               cm.gainItem(2633552, -1);
 		               cm.gainItem(3700503, 1);
@@ -70,7 +70,7 @@ function action(M, T, S)
 
 		wList = [];
 		getWeapon(cm.getPlayer().getJob());
-		selStr = "#fs 11##fc0xFF000000#���� ĳ���͸� ���� ��������ϼ�! #b�������� �´� ����#fc0xFF000000#�� ��󺸰Գ�.\r\n";
+		selStr = "#fs 11##fc0xFF000000#버닝 캐릭터를 위한 지원장비일세! #b직업군에 맞는 무기#fc0xFF000000#를 골라보게나.\r\n";
 		for(i = 0; i < wList.length; i++)
 		{
 			selStr += "#b#L"+wList[i]+"##i"+wList[i]+":# #t"+wList[i]+":##l\r\n";
@@ -84,19 +84,19 @@ function action(M, T, S)
 	{
 		if(S == 0 || S == 1213020)
 		{
-			cm.getPlayer().dropMessage(5, "���� ����� ����߽��ϴ�.");
+			cm.getPlayer().dropMessage(5, "상자 사용을 취소했습니다.");
 			cm.dispose();
 			return;
 		}
 
-		cm.sendOkS("#fs11##fc0xFF000000#�ڳ��� ������ ���� ������ �ϴ� ������ #fc0xFFFF3300##e������ �ɼ�#fc0xFF000000##n�� �ο��س��ٳ�! #fc0xFF990033#[Zenia]#fc0xFF000000#���� ��ſ� �ð� �����ð�\r\n#b"
+		cm.sendOkS("#fs11##fc0xFF000000#자네의 여정에 힘이 됐으면 하는 마음에 #fc0xFFFF3300##e쓸만한 옵션#fc0xFF000000##n을 부여해놨다네! #fc0xFF990033#[Zenia]#fc0xFF000000#에서 즐거운 시간 보내시게\r\n#b"
 			+ "  #i3700503:# #t3700503:#\r\n"
 			+ "  #i1122372:# #t1122372:#\r\n"
-			+ "  #i5002239:# #t5002239:# (�ڼ���)\r\n"
-			+ "  #i2430732:# #t2430732:# (Ư�� �������(�Һ�ĭ))\r\n"
+			+ "  #i5002239:# #t5002239:# (자석펫)\r\n"
+			+ "  #i2430732:# #t2430732:# (특수 보조장비(소비칸))\r\n"
 			+ "  #i"+S+":# #t"+S+":# #e#k#n\r\n", 4, 9062294);
 			if (wList.indexOf(S) == -1) {
-				cm.sendOk("���������� ����");
+				cm.sendOk("비정상적인 접근");
 				cm.dispose();
 				return;
 			}
@@ -107,7 +107,7 @@ function action(M, T, S)
 
 		Packages.objects.item.MapleInventoryManipulator.addId_Item(cm.getClient(), 5002239, 1, "", Packages.objects.item.MaplePet.createPet(5002239, -1), 60, "", false);
 
-	item = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(1122372); //����
+	item = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(1122372); //도미
 	item.setStr(item.getStr() + 40);
 	item.setDex(item.getDex() + 40);
 	item.setInt(item.getInt() + 40);
@@ -156,55 +156,55 @@ function getWeapon(i)
 {
 	switch(Math.floor(cm.getPlayer().getJob()))
 	{
-		/* ���� */
+		/* 전사 */
 		case 100:
-		wList.push(1302344); // �Ѽհ�
-		wList.push(1312204); // �Ѽյ���
-		wList.push(1322256); // �Ѽյб�
-		wList.push(1402260); // �μհ�
-		wList.push(1412182); // �μյ���
-		wList.push(1422190); // �μյб�
-		wList.push(1432219); // â
-		wList.push(1442276); // ����
+		wList.push(1302344); // 한손검
+		wList.push(1312204); // 한손도끼
+		wList.push(1322256); // 한손둔기
+		wList.push(1402260); // 두손검
+		wList.push(1412182); // 두손도끼
+		wList.push(1422190); // 두손둔기
+		wList.push(1432219); // 창
+		wList.push(1442276); // 폴암
 		break;
 
-		case 110: //�����
+		case 110: //히어로
 		case 111:
 		case 112:
-		wList.push(1302344); // �Ѽհ�
-		wList.push(1402260); // �μհ�
+		wList.push(1302344); // 한손검
+		wList.push(1402260); // 두손검
 		break;
 
-		case 120: //�ȶ��
+		case 120: //팔라딘
 		case 121:
 		case 122:
-		wList.push(1302344); // �Ѽհ�
-		wList.push(1312204); // �Ѽյ���
-		wList.push(1322256); // �Ѽյб�
-		wList.push(1402260); // �μհ�
-		wList.push(1412182); // �μյ���
-		wList.push(1422190); // �μյб�
+		wList.push(1302344); // 한손검
+		wList.push(1312204); // 한손도끼
+		wList.push(1322256); // 한손둔기
+		wList.push(1402260); // 두손검
+		wList.push(1412182); // 두손도끼
+		wList.push(1422190); // 두손둔기
 		break;
 
-		case 130: //��ũ ����Ʈ
+		case 130: //다크 나이트
 		case 131:
 		case 132:
-		wList.push(1432219); // â
-		wList.push(1442276); // ����
+		wList.push(1432219); // 창
+		wList.push(1442276); // 폴암
 		break;
 
-		case 1100: //�ҿ� ������
+		case 1100: //소울 마스터
 		case 1110:
 		case 1111:
 		case 1112:
-		wList.push(1402260); // �μհ�
+		wList.push(1402260); // 두손검
 		break;
 
 		case 2100:
 		case 2110:
 		case 2111:
 		case 2112:
-		wList.push(1442276); // ����
+		wList.push(1442276); // 폴암
 		break;
 
 		case 3100:
@@ -215,30 +215,30 @@ function getWeapon(i)
 		case 3120:
 		case 3121:
 		case 3122:
-		wList.push(1312204); // �Ѽյ���
-		wList.push(1322256); // �Ѽյб�
-		wList.push(1232114); // �������
+		wList.push(1312204); // 한손도끼
+		wList.push(1322256); // 한손둔기
+		wList.push(1232114); // 데스페라도
 		break;
 
 		case 3700:
 		case 3710:
 		case 3711:
 		case 3712:
-		wList.push(1582027); // ��Ʋ�� ������
+		wList.push(1582027); // 건틀렛 리볼버
 		break;
 
 		case 5100:
-		case 5110: //������
+		case 5110: //미하일
 		case 5111:
 		case 5112:
-		wList.push(1302344); // �Ѽհ�
+		wList.push(1302344); // 한손검
 		break;
 
 		case 6100:
 		case 6110:
 		case 6111:
 		case 6112:
-		wList.push(1402260); // �μհ�
+		wList.push(1402260); // 두손검
 		break;
 
 		case 15002:
@@ -246,10 +246,10 @@ function getWeapon(i)
 		case 15110:
 		case 15111:
 		case 15112:
-		wList.push(1213028); // Ʃ��
+		wList.push(1213028); // 튜너
 		break;
 
-		/* ������ */
+		/* 마법사 */
 		case 200:
 		case 210:
 		case 211:
@@ -274,42 +274,42 @@ function getWeapon(i)
 		case 2216:
 		case 2217:
 		case 2218:
-		wList.push(1372229); // �ϵ�
-		wList.push(1382266); // ������
+		wList.push(1372229); // 완드
+		wList.push(1382266); // 스태프
 		break;
 
 		case 2700:
 		case 2710:
 		case 2711:
 		case 2712:
-		wList.push(1212121); // ���̴׷ε�
+		wList.push(1212121); // 샤이닝로드
 		break;
 
 		case 3200:
 		case 3210:
 		case 3211:
 		case 3212:
-		wList.push(1382266); // ������
+		wList.push(1382266); // 스태프
 		break;
 
 		case 14200:
 		case 14210:
 		case 14211:
 		case 14212:
-		wList.push(1262040); // ESP ������
+		wList.push(1262040); // ESP 리미터
 		break;
 
 		case 15200:
 		case 15210:
 		case 15211:
 		case 15212:
-		wList.push(1282022); // ���� ��Ʋ��
+		wList.push(1282022); // 매직 건틀렛
 		break;
 
-		/* ��1�� */
+		/* 궁1수 */
 		case 300:
-		wList.push(1452258); // Ȱ
-		wList.push(1462244); // ����
+		wList.push(1452258); // 활
+		wList.push(1462244); // 석궁
 		break;
 
 		case 310:
@@ -319,7 +319,7 @@ function getWeapon(i)
 		case 1310:
 		case 1311:
 		case 1312:
-		wList.push(1452258); // Ȱ
+		wList.push(1452258); // 활
 		break;
 
 		case 320:
@@ -329,21 +329,21 @@ function getWeapon(i)
 		case 3310:
 		case 3311:
 		case 3312:
-		wList.push(1462244); // ����
+		wList.push(1462244); // 석궁
 		break;
 
 		case 301:
 		case 330:
 		case 331:
 		case 332:
-		wList.push(1592028); // ���μ�Ʈ ����
+		wList.push(1592028); // 에인션트 보우
 		break;
 
 		case 2300:
 		case 2310:
 		case 2311:
 		case 2312:
-		wList.push(1522144); // ��� �����
+		wList.push(1522144); // 듀얼 보우건
 		break;
 
 		case 400:
@@ -353,15 +353,15 @@ function getWeapon(i)
 		case 420:
 		case 421:
 		case 422:
-		wList.push(1332280); // �ܰ�
-		wList.push(1472266); // �ƴ�
+		wList.push(1332280); // 단검
+		wList.push(1472266); // 아대
 		break;
 
 		case 1400:
 		case 1410:
 		case 1411:
 		case 1412:
-		wList.push(1472266); // �ƴ�
+		wList.push(1472266); // 아대
 		break;
 
 		case 430:
@@ -369,42 +369,42 @@ function getWeapon(i)
 		case 432:
 		case 433:
 		case 434:
-		wList.push(1332280); // �ܰ�
+		wList.push(1332280); // 단검
 		break;
 
 		case 2400:
 		case 2410:
 		case 2411:
 		case 2412:
-		wList.push(1362141); // ����
+		wList.push(1362141); // 케인
 		break;
 
 		case 3600:
 		case 3610:
 		case 3611:
 		case 3612:
-		wList.push(1242120); // �������ҵ�
+		wList.push(1242120); // 에너지소드
 		break;
 
 		case 6400:
 		case 6410:
 		case 6411:
 		case 6412:
-		wList.push(1272021); // ü��
+		wList.push(1272021); // 체인
 		break;
 
 		case 6300:
 		case 6310:
 		case 6311:
 		case 6312:
-		wList.push(1214028); // �극�� ����
+		wList.push(1214028); // 브레스 슈터
 		break;
 
-		//����
+		//해적
 		case 500:
-		wList.push(1482222); // ��Ŭ
-		wList.push(1492236); // ��
-		wList.push(1532148); // �ڵ�ĳ��
+		wList.push(1482222); // 너클
+		wList.push(1492236); // 건
+		wList.push(1532148); // 핸드캐논
 		break;
 
 		case 510:
@@ -422,7 +422,7 @@ function getWeapon(i)
 		case 15510:
 		case 15511:
 		case 15512:
-		wList.push(1482222); // ��Ŭ
+		wList.push(1482222); // 너클
 		break;
 
 		case 520:
@@ -432,35 +432,35 @@ function getWeapon(i)
 		case 3510:
 		case 3511:
 		case 3512:
-		wList.push(1492236); // ��
+		wList.push(1492236); // 건
 		break;
 
 		case 530:
 		case 531:
 		case 532:
 		case 501:
-		wList.push(1532148); // �ڵ�ĳ��
+		wList.push(1532148); // 핸드캐논
 		break;
 
 		case 16400:
 		case 16410:
 		case 16411:
 		case 16412:
-		wList.push(1292028); // ��ä
+		wList.push(1292028); // 부채
 		break;
 
-		case 16200: //���
+		case 16200: //라라
 		case 16210:
 		case 16211:
 		case 16212:
-		wList.push(1372229); // �ϵ�
+		wList.push(1372229); // 완드
 		break;
 
 		case 6500:
 		case 6510:
 		case 6511:
 		case 6512:
-		wList.push(1222114); // �ҿｴ��
+		wList.push(1222114); // 소울슈터
 		break;
 
 		case 10110:

@@ -15,22 +15,22 @@ var keyname = "testbox";
 
 var enter = "\r\n";
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
 
 function start() {
 	St = -1;
@@ -47,17 +47,17 @@ function action(M, T, S) {
 	    St++;
 
 	if(St == 0) {
-		var msg = "#fs11#[R] ¿äÁ¤ÀÇ ¼±¹° »óÀÚ - ÀÏ¿äÀÏÀ» »ç¿ë ÇÏ½Ã°Ú¾î¿ä?\r\n\r\n#r¡Ø º» Ä³¸¯ÅÍ¿¡ ¼ö·É ±ÇÀåÇÕ´Ï´Ù.\r\n¡Ø ÇØ´ç »óÀÚ´Â ÀÌº¥Æ® ±â°£ ³»¿¡ »ç¿ëÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.";
-        msg += "\r\n\r\n#b < [R] ¿äÁ¤ÀÇ ¼±¹° »óÀÚ - ÀÏ¿äÀÏ º¸»ó ¸ñ·Ï >\r\n\r\n";
-		msg += "ÀÌº¥Æ®¿¡ Âü¿© ÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. ¸ğÇè°¡´Ô!\r\n"+enter
+		var msg = "#fs11#[R] ìš”ì •ì˜ ì„ ë¬¼ ìƒì - ì¼ìš”ì¼ì„ ì‚¬ìš© í•˜ì‹œê² ì–´ìš”?\r\n\r\n#râ€» ë³¸ ìºë¦­í„°ì— ìˆ˜ë ¹ ê¶Œì¥í•©ë‹ˆë‹¤.\r\nâ€» í•´ë‹¹ ìƒìëŠ” ì´ë²¤íŠ¸ ê¸°ê°„ ë‚´ì— ì‚¬ìš©í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.";
+        msg += "\r\n\r\n#b < [R] ìš”ì •ì˜ ì„ ë¬¼ ìƒì - ì¼ìš”ì¼ ë³´ìƒ ëª©ë¡ >\r\n\r\n";
+		msg += "ì´ë²¤íŠ¸ì— ì°¸ì—¬ í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. ëª¨í—˜ê°€ë‹˜!\r\n"+enter
 		for(var i = 0; i<item.length; i++) {
 			msg += "#i"+item[i][0]+"# #z"+item[i][0]+"# ("+item[i][1]+")"+enter
 		}
-		msg += "\r\nÇØ´ç ¾ÆÀÌÅÛ ¸®½ºÆ®¸¦ È®ÀÎÇÏ°í Áö±ŞÀ» ¹ŞÀ¸½Ã°Ú¾î¿ä?"
+		msg += "\r\ní•´ë‹¹ ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ë¥¼ í™•ì¸í•˜ê³  ì§€ê¸‰ì„ ë°›ìœ¼ì‹œê² ì–´ìš”?"
 		cm.sendYesNo(msg);
 	} else if(St == 1) {
 		// if (cm.getClient().getKeyValue(keyname) != null) {
-		// 	cm.sendOk("¿À·ù ¿À·ù ¹Ú½º ¾øÀ½");
+		// 	cm.sendOk("ì˜¤ë¥˜ ì˜¤ë¥˜ ë°•ìŠ¤ ì—†ìŒ");
 		// 	cm.gainItem(boxcode, -1);
 		// 	cm.addCustomLog(99, boxcode+" / "+cm.getPlayer().getNamte()+"");
 		// 	cm.dispose();
@@ -66,23 +66,23 @@ function action(M, T, S) {
 		var invenuse = cm.getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot();
 		var invenetc = cm.getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot();
 		if(invenuse < 20 || invenetc < 20){
-			cm.sendOk("¼ÒºñÃ¢°ú ±âÅ¸Ã¢À» 20Ä­ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+			cm.sendOk("ì†Œë¹„ì°½ê³¼ ê¸°íƒ€ì°½ì„ 20ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
 			cm.dispose();
 			return;
 		}
 		if(!cm.haveItem(boxcode, 1)){
 			cm.gainItem(boxcode, -1);
 			cm.addCustomLog(99, boxcode+" / "+cm.getPlayer().getNamte()+"");
-			cm.sendOk("¿À·ù ¿À·ù ¹Ú½º ¾øÀ½");
+			cm.sendOk("ì˜¤ë¥˜ ì˜¤ë¥˜ ë°•ìŠ¤ ì—†ìŒ");
 			cm.dispose();
 			return;
 		}
-		var msg = "#r#fs11#´õ¿í ´õ °­ÇØÁö½Ã±æ ÀÀ¿øÇÕ´Ï´Ù. ¸ğÇè°¡´Ô!\r\n#b"+enter
+		var msg = "#r#fs11#ë”ìš± ë” ê°•í•´ì§€ì‹œê¸¸ ì‘ì›í•©ë‹ˆë‹¤. ëª¨í—˜ê°€ë‹˜!\r\n#b"+enter
 		for(var i = 0; i<item.length; i++) {
 			msg += "#i"+item[i][0]+"# #z"+item[i][0]+"# ("+item[i][1]+")"+enter
 			cm.gainItem(item[i][0], item[i][1]);
 		}
-		msg += "\r\n¾ÆÀÌÅÛÀÌ Á¤»óÀûÀ¸·Î Áö±ŞµÇ¾ú½À´Ï´Ù."
+		msg += "\r\nì•„ì´í…œì´ ì •ìƒì ìœ¼ë¡œ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤."
 		//cm.getClient().setKeyValue(keyname, "1");
 		cm.gainItem(boxcode, -1);
 		cm.sendOk(msg);

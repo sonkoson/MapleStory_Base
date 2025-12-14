@@ -13,7 +13,7 @@ function enter(pi) {
         }
         pi.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, pos);
         map.getReactor(2408003).setState(1);
-        pi.mapMessage(6, "µ¿±¼ÀÌ ¿ï¸®¸é¼­ °Å´ëÇÑ »ı¹°Ã¼°¡ ´Ù°¡¿À°í ÀÖ½À´Ï´Ù.")
+        pi.mapMessage(6, "ë™êµ´ì´ ìš¸ë¦¬ë©´ì„œ ê±°ëŒ€í•œ ìƒë¬¼ì²´ê°€ ë‹¤ê°€ì˜¤ê³  ìˆìŠµë‹ˆë‹¤.")
     }
     return false;
 }

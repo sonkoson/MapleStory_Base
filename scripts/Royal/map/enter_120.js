@@ -16,9 +16,9 @@ function action(mode, type, sel) {
 
     
     if (status == 0) {
-        cm.effectText("#fn³ª´®°íµñ ExtraBold##fs20#< °­¸²¿ùµå¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù >", 50, 1000, 6, 0, 380, -550);
+        cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs20#< ê°•ë¦¼ì›”ë“œì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤ >", 50, 1000, 6, 0, 380, -550);
 
-        cm.getPlayer().send(Packages.network.models.CField.addPopupSay(1052206, 10000, "[°­¸²¿ùµå]¿¡ ¿À½Å°ÍÀ»\r\n#rÈ¯¿µÇÕ´Ï´Ù!!!#k\r\n\r\nNPC ½´°¡¸¦ ÅëÇØ\r\n#bÀÌ¿ë±ÔÄ¢¿¡ µ¿ÀÇ#kÇÏ½Å ´ÙÀ½\r\n¿øÇÏ´Â Á÷¾÷À¸·Î #rÀüÁ÷#kÇØ º¸¼¼¿ä!", ""));
+        cm.getPlayer().send(Packages.network.models.CField.addPopupSay(1052206, 10000, "[ê°•ë¦¼ì›”ë“œ]ì— ì˜¤ì‹ ê²ƒì„\r\n#rí™˜ì˜í•©ë‹ˆë‹¤!!!#k\r\n\r\nNPC ìŠˆê°€ë¥¼ í†µí•´\r\n#bì´ìš©ê·œì¹™ì— ë™ì˜#kí•˜ì‹  ë‹¤ìŒ\r\nì›í•˜ëŠ” ì§ì—…ìœ¼ë¡œ #rì „ì§#kí•´ ë³´ì„¸ìš”!", ""));
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

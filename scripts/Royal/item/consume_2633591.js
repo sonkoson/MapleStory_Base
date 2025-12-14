@@ -33,25 +33,25 @@ function action(mode, type, selection) {
         status++;
     }
 	if (status == 0) {
-		var v0 = "#fs11##d#eÈ¹µæÇÏ°í ½ÍÀº ¾î¼¾Æ½½Éº¼À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.#n#k\r\n\r\n"
+		var v0 = "#fs11##d#eíšë“í•˜ê³  ì‹¶ì€ ì–´ì„¼í‹±ì‹¬ë³¼ì„ ì„ íƒí•´ ì£¼ì„¸ìš”.#n#k\r\n\r\n"
 		for (i = 0; i < AUTsymbolListCode.length; i++) {
 			v0 += "#L" + i + "# #r#i" + AUTsymbolListCode[i] + "# #z" + AUTsymbolListCode[i] + "##k#l\r\n";
 		}
 		cm.sendOk(v0);
 	} else if (status == 1) {
 		sel = selection;
-		var v0 = "#fs11#Á¤¸»·Î ¼±ÅÃÇÏ½Å ¾ÆÀÌÅÛÀ¸·Î ±³È¯ÇÏ½Ç °Ç°¡¿ä?\r\n\r\n"
+		var v0 = "#fs11#ì •ë§ë¡œ ì„ íƒí•˜ì‹  ì•„ì´í…œìœ¼ë¡œ êµí™˜í•˜ì‹¤ ê±´ê°€ìš”?\r\n\r\n"
 		v0 += "#r#i" + AUTsymbolListCode[sel] + "# #z" + AUTsymbolListCode[sel] + "##k"
 		cm.sendYesNo(v0);
 	} else if (status == 2) {
 		var invenequip = cm.getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot();
 		if (invenequip < 2) {
-			cm.sendOk("#fs11#ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+			cm.sendOk("#fs11#ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
 		if (!cm.haveItem(itemcode, 1)) {
-			cm.sendOk("#r#i" + itemcode + "# #z" + itemcode + "# 1°³#k°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+			cm.sendOk("#r#i" + itemcode + "# #z" + itemcode + "# 1ê°œ#kê°€ í•„ìš”í•©ë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
@@ -76,7 +76,7 @@ function action(mode, type, selection) {
 			AUTSymbolList.setLuk(1200);
 		}
 		Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), AUTSymbolList, false);
-		cm.sendOk("Áö±ŞµÇ¾ú½À´Ï´Ù.");
+		cm.sendOk("ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		cm.dispose();
 	}
 }

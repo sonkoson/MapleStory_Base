@@ -20,12 +20,12 @@ function action(mode, type, selection) {
         status++;
     }
         if (status == 0) {
-		cm.sendYesNoS("¾È³çÇÏ¼¼¿ä! °­È­¼® ·£´ı ²Ù·¯¹Ì¸¦ ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. ¿¹¸¦ ´©¸£½Ã¸é ·£´ıÀ¸·Î °­È­¼® 1°³°¡ Áö±ŞµË´Ï´Ù.",0x24);
+		cm.sendYesNoS("ì•ˆë…•í•˜ì„¸ìš”! ê°•í™”ì„ ëœë¤ ê¾¸ëŸ¬ë¯¸ë¥¼ ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤. ì˜ˆë¥¼ ëˆ„ë¥´ì‹œë©´ ëœë¤ìœ¼ë¡œ ê°•í™”ì„ 1ê°œê°€ ì§€ê¸‰ë©ë‹ˆë‹¤.",0x24);
 	} else if (status == 1) {
-		¾ÆÀÌÅÛ1 = itemid[Math.floor(Math.random() * itemid.length)];
-		cm.gainItem(¾ÆÀÌÅÛ1, 1);
+		ì•„ì´í…œ1 = itemid[Math.floor(Math.random() * itemid.length)];
+		cm.gainItem(ì•„ì´í…œ1, 1);
 		cm.gainItem(2431341, -1);
-		cm.cm.sendOkS("´ÙÀ½ ¾ÆÀÌÅÛÀÌ ¼ö·ÉµÇ¾ú½À´Ï´Ù:\r\n\r\n#i" + ¾ÆÀÌÅÛ1 + "##z" + ¾ÆÀÌÅÛ1 + "#",0x24);
+		cm.cm.sendOkS("ë‹¤ìŒ ì•„ì´í…œì´ ìˆ˜ë ¹ë˜ì—ˆìŠµë‹ˆë‹¤:\r\n\r\n#i" + ì•„ì´í…œ1 + "##z" + ì•„ì´í…œ1 + "#",0x24);
 		cm.dispose();
     	}
 }

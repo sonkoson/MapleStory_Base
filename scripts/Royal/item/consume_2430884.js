@@ -30,11 +30,11 @@ function action(mode, type, selection)
         		i += ChannelServer.getAllInstances().get(j).getPlayerStorage().getAllCharacters().size();
         	}
 		txt =   " #fUI/UIWindow5.img/Disguise/backgrnd1##l\r\n\r\n"
-			+ "#L00#10¼ºÃÊ±âÈ­#l#L01#13¼ºÃÊ±âÈ­#l#L02#15¼ºÃÊ±âÈ­#l#L03#17¼ºÃÊ±âÈ­\r\n"
+			+ "#L00#10ì„±ì´ˆê¸°í™”#l#L01#13ì„±ì´ˆê¸°í™”#l#L02#15ì„±ì´ˆê¸°í™”#l#L03#17ì„±ì´ˆê¸°í™”\r\n"
                                     if (cm.getPlayer().isGM())
 			{
-		//	txt += "#k\r\n#e¡¡ ¡¡ÈÄ¿ø¡¡¡¡¡¡¡¡È«º¸¡¡¡¡¡¡¡¡ÅÛÀÛ¡¡¡¡¡¡¡¡Å°°ª¡¡#n\r\n"
-			+ " #L100#ÈÄ¿øº¸»ó#l   #L101#È«º¸º¸»ó#l   #L102##rÅÛÀÛÇÏ±â#d   #L103#Å°°ª¼³Á¤#l\r\n"
+		//	txt += "#k\r\n#eã€€ ã€€í›„ì›ã€€ã€€ã€€ã€€í™ë³´ã€€ã€€ã€€ã€€í…œì‘ã€€ã€€ã€€ã€€í‚¤ê°’ã€€#n\r\n"
+			+ " #L100#í›„ì›ë³´ìƒ#l   #L101#í™ë³´ë³´ìƒ#l   #L102##rí…œì‘í•˜ê¸°#d   #L103#í‚¤ê°’ì„¤ì •#l\r\n"
 			}
 		cm.sendSimpleS(txt, 2);
 	}
@@ -45,7 +45,7 @@ function action(mode, type, selection)
 		switch(selection)
 		{
 
-			/* À°¼º */
+			/* ìœ¡ì„± */
 			case 0:
 						cm.dispose();
 			cm.openNpcCustom(cm.getClient(), 2510024, "reset10");
@@ -68,57 +68,57 @@ function action(mode, type, selection)
 
 			case 4:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "µô·®Ã¼Å©");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ë”œëŸ‰ì²´í¬");
 					break;
 
 			case 5:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "ÃßÃµÀÎ");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì¶”ì²œì¸");
 					break;
 
 			case 6:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "Àåºñ¹é¾÷");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì¥ë¹„ë°±ì—…");
 					break;
 
 			case 7:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "ÅÛ¹ö¸®±â");
+			cm.openNpcCustom(cm.getClient(), 2510024, "í…œë²„ë¦¬ê¸°");
 					break;
 
 			case 8:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "Ã¢°íÀÌ¿ë");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì°½ê³ ì´ìš©");
 					break;
 
 			case 9:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "¿øÅ¬Å¥ºê");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì›í´íë¸Œ");
 					break;
 
 			case 10:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "¿øÅ¬È¯ºÒ");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì›í´í™˜ë¶ˆ");
 					break;
 
 			case 11:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "ÀáÀçºÎ¿©");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì ì¬ë¶€ì—¬");
 					break;
 
 			case 12:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "Á÷¾÷º¯°æ");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ì§ì—…ë³€ê²½");
 					break;
 
 			case 13:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "»Ì±âÀÌ¿ë");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ë½‘ê¸°ì´ìš©");
 					break;
 
 			case 14:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "ÅÃ¹è°Å·¡");
+			cm.openNpcCustom(cm.getClient(), 2510024, "íƒë°°ê±°ë˜");
 					break;
 
 			case 15:
@@ -127,17 +127,17 @@ function action(mode, type, selection)
 					break;
 			case 16:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "´Ğº¯ÇÏ±â");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ë‹‰ë³€í•˜ê¸°");
 					break;
 
 			case 17:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "ºĞ¾ç¹Ş±â");
+			cm.openNpcCustom(cm.getClient(), 2510024, "ë¶„ì–‘ë°›ê¸°");
 					break;
 
 			case 1919:
 						cm.dispose();
-			cm.openNpcCustom(cm.getClient(), 2510024, "È®·ü»Ì±â");
+			cm.openNpcCustom(cm.getClient(), 2510024, "í™•ë¥ ë½‘ê¸°");
 					break;
 			case 41:
 			cm.openNpc(1012001);
@@ -147,7 +147,7 @@ function action(mode, type, selection)
 			cm.openNpc(9000161);
 			break;
 
-			/* Á¦ÀÛ */
+			/* ì œì‘ */
 			case 50:
 			cm.openNpc(9062000);
 			break;
@@ -160,7 +160,7 @@ function action(mode, type, selection)
 			cm.openNpc(1022005);
 			break;
 
-			/* ¾È³» */
+			/* ì•ˆë‚´ */
 			case 60:
 			cm.openNpc(1540405);
 			break;
@@ -169,7 +169,7 @@ function action(mode, type, selection)
 			cm.openNpc("npc_9010057");
 			break;
 
-			/* È®Àå */
+			/* í™•ì¥ */
 			case 70:
 			cm.openNpc(9000100);
 			break;
@@ -177,16 +177,16 @@ function action(mode, type, selection)
 			case 71:
 			if(cm.getPlayer().getQuestStatus(6500) == 2)
 			{
-				cm.sendOkS("´ç½ÅÀº ÀÌ¹Ì ¸ğµç °ÍÀ» °®Ãá ÆĞ¼Ç ÇÇÇÃÀÔ´Ï´Ù. ´õ ¸ÚÁø ¾ÆÀÌÅÛÀ» ±¸ÇØ ÁÖ¸Ó´Ï¿¡ ³Ö¾î ´ç½Å¸¸ÀÇ ÆĞ¼ÇÀ» ¿Ï¼º½ÃÅ²´Ù¸é ´õ ¸ÚÁú °Å¿¹¿ä.", 4, 1012117);
+				cm.sendOkS("ë‹¹ì‹ ì€ ì´ë¯¸ ëª¨ë“  ê²ƒì„ ê°–ì¶˜ íŒ¨ì…˜ í”¼í”Œì…ë‹ˆë‹¤. ë” ë©‹ì§„ ì•„ì´í…œì„ êµ¬í•´ ì£¼ë¨¸ë‹ˆì— ë„£ì–´ ë‹¹ì‹ ë§Œì˜ íŒ¨ì…˜ì„ ì™„ì„±ì‹œí‚¨ë‹¤ë©´ ë” ë©‹ì§ˆ ê±°ì˜ˆìš”.", 4, 1012117);
 				return;
 			}
 
 			cm.forceCompleteQuest(6500);
-			cm.sendOkS("ÁøÁ¤ÇÑ ¸ÚÀïÀÌ¶ó¸é º¸ÀÌ´Â °÷»Ó¸¸ ¾Æ´Ï¶ó º¸ÀÌÁö ¾Ê´Â °÷, ÁÖ¸Ó´Ï ¾ÈÂÊ±îÁö ½Å°æÀ» ¾²´Â ¹ıÀÌÁÒ. ÁÖ¸Ó´Ï ¾È¿¡ ¹» ³Ö´À³Ä¿¡ µû¶ó ÀÚ½ÅÀÇ ÀÎ»óÀÌ ´Ş¶óÁø´Ù´Â °Í! ÀØÁö ¸¶¼¼¿ä. º¸ÀÌÁö ¾Ê´Â °÷±îÁö ¼¼½ÉÇÏ°Ô ¿¬ÃâÇÏ´Â °ÍÀÌ¾ß¸»·Î ÆĞ¼ÇÀÇ ¿Ï¼ºÀÌÁÒ.", 4, 1012117);
+			cm.sendOkS("ì§„ì •í•œ ë©‹ìŸì´ë¼ë©´ ë³´ì´ëŠ” ê³³ë¿ë§Œ ì•„ë‹ˆë¼ ë³´ì´ì§€ ì•ŠëŠ” ê³³, ì£¼ë¨¸ë‹ˆ ì•ˆìª½ê¹Œì§€ ì‹ ê²½ì„ ì“°ëŠ” ë²•ì´ì£ . ì£¼ë¨¸ë‹ˆ ì•ˆì— ë­˜ ë„£ëŠëƒì— ë”°ë¼ ìì‹ ì˜ ì¸ìƒì´ ë‹¬ë¼ì§„ë‹¤ëŠ” ê²ƒ! ìŠì§€ ë§ˆì„¸ìš”. ë³´ì´ì§€ ì•ŠëŠ” ê³³ê¹Œì§€ ì„¸ì‹¬í•˜ê²Œ ì—°ì¶œí•˜ëŠ” ê²ƒì´ì•¼ë§ë¡œ íŒ¨ì…˜ì˜ ì™„ì„±ì´ì£ .", 4, 1012117);
 			break;
 
 			default:
-			cm.getPlayer().dropMessage(1, "ÇöÀç ÀÌ¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+			cm.getPlayer().dropMessage(1, "í˜„ì¬ ì´ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			break;
 		}
 	}

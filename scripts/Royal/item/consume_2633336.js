@@ -11,13 +11,13 @@ var enter = "\r\n";
 
 var item1 = [2633336, 1];
 var ac = [
-[1713000, "¾î¼¾Æ½ ½Éº¼ : ¼¼¸£´Ï¿ò", "5"], 
-[1713001, "¾î¼¾Æ½ ½Éº¼ : ¾Æ¸£Å©½º", "5"],
-[1713002, "¾î¼¾Æ½ ½Éº¼ : ¿Àµğ¿ò", "5"],
-[1713003, "¾î¼¾Æ½ ½Éº¼ : µµ¿ø°æ", "5"],
-[1713004, "¾î¼¾Æ½ ½Éº¼ : ¾Æ¸£Å×¸®¾Æ", "5"]
+[1713000, "ì–´ì„¼í‹± ì‹¬ë³¼ : ì„¸ë¥´ë‹ˆì›€", "5"], 
+[1713001, "ì–´ì„¼í‹± ì‹¬ë³¼ : ì•„ë¥´í¬ìŠ¤", "5"],
+[1713002, "ì–´ì„¼í‹± ì‹¬ë³¼ : ì˜¤ë””ì›€", "5"],
+[1713003, "ì–´ì„¼í‹± ì‹¬ë³¼ : ë„ì›ê²½", "5"],
+[1713004, "ì–´ì„¼í‹± ì‹¬ë³¼ : ì•„ë¥´í…Œë¦¬ì•„", "5"]
 ];
-var º° = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, sel) {
     if (mode == -1) {
@@ -33,11 +33,11 @@ function action(mode, type, sel) {
             status--;
         if (status == 0) {
             var chat = "#fs11#";
-            chat += "#fc0xFF7401DF#< ±³È¯½Ã½ºÅÛ :: ½Éº¼±³È¯ >#k" + enter + enter;
-            chat += "#r"+º°+" ÀÎº¥Åä¸® °ø°£À» ²À È®º¸ÇØÁÖ½ÅÈÄ »ç¿ëÇÏ½Ã±â ¹Ù¶ø´Ï´Ù"+ enter + enter ;
+            chat += "#fc0xFF7401DF#< êµí™˜ì‹œìŠ¤í…œ :: ì‹¬ë³¼êµí™˜ >#k" + enter + enter;
+            chat += "#r"+ë³„+" ì¸ë²¤í† ë¦¬ ê³µê°„ì„ ê¼­ í™•ë³´í•´ì£¼ì‹ í›„ ì‚¬ìš©í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤"+ enter + enter ;
             chat += "#fc0xFF000000#";
             for(var i = 0;i<ac.length;i++) {
-                chat += "#b#L" + i + "##i" + ac[i][0] + "# " + ac[i][1] + " ±³È¯" + enter;
+                chat += "#b#L" + i + "##i" + ac[i][0] + "# " + ac[i][1] + " êµí™˜" + enter;
             }
             cm.sendOkS(chat, 0x00);
         } else if (status == 1) {
@@ -46,24 +46,24 @@ function action(mode, type, sel) {
             var suk1 = Math.floor((cm.itemQuantity(item1[0]) / 1));
             stigmacoin = Math.min(suk1);
             msg = "#fs11#" + enter;
-            msg += "#i" + item1[0] + "# #z" + item1[0] + "# #fc0xFF7401DF#" + item1[1] + "#k °³¸¦ ÁÖ½Ã¸é" + enter;
-            msg += "#i" + ac[seld][0] + "# " + ac[seld][1] + " #fc0xFF7401DF#" + ac[seld][2] + "#k °³¸¦ ±³È¯ÇØµå¸³´Ï´Ù." + enter;
-            msg += "#Cgray#(ÇöÀç ±³È¯ °¡´ÉÇÑ #z" + item1[0] + "# °¹¼ö : " + stigmacoin + "°³)";
+            msg += "#i" + item1[0] + "# #z" + item1[0] + "# #fc0xFF7401DF#" + item1[1] + "#k ê°œë¥¼ ì£¼ì‹œë©´" + enter;
+            msg += "#i" + ac[seld][0] + "# " + ac[seld][1] + " #fc0xFF7401DF#" + ac[seld][2] + "#k ê°œë¥¼ êµí™˜í•´ë“œë¦½ë‹ˆë‹¤." + enter;
+            msg += "#Cgray#(í˜„ì¬ êµí™˜ ê°€ëŠ¥í•œ #z" + item1[0] + "# ê°¯ìˆ˜ : " + stigmacoin + "ê°œ)";
             cm.sendGetNumber(msg, 1, 1, stigmacoin);
         } else if (status == 2) {
             var cost = sel;
             if((item1[1] * cost) < 0){
-                cm.addCustomLog(4, "[¾î¼¾Æ½½Éº¼] " + cm.getPlayer().getID() + " qty :" + qty +"°³ À½¼ö Àû¿ë");
+                cm.addCustomLog(4, "[ì–´ì„¼í‹±ì‹¬ë³¼] " + cm.getPlayer().getID() + " qty :" + qty +"ê°œ ìŒìˆ˜ ì ìš©");
                 cm.dispose();
                 return;
             }
             if (cm.haveItem(item1[0], item1[1] * cost) && cm.canHold(1713000, cost*5)) {
                 cm.gainItem(item1[0], -item1[1] * cost);
                 cm.gainItem(ac[seld][0], cost*5);
-                cm.sendOk("#fs11#±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù\r\n");
+                cm.sendOk("#fs11#êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤\r\n");
                 cm.dispose();
             } else {
-                cm.sendOk("#fs11##rÀÎº¥Åä¸® ÀÚ¸®°¡ ºÎÁ·ÇÕ´Ï´Ù");
+                cm.sendOk("#fs11##rì¸ë²¤í† ë¦¬ ìë¦¬ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤");
                 cm.dispose();
             }
                 

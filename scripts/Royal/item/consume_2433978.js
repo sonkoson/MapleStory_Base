@@ -26,7 +26,7 @@ function action(mode, type, selection) {
     if (status == 0) {
 	cm.gainItem(code, -1);
 	cm.getPlayer().gainMeso(100000000, true);
-	cm.getPlayer().dropMessage(5, "1¾ï ¸Ş¼Ò¸¦ È¹µæÇß½À´Ï´Ù.");
+	cm.getPlayer().dropMessage(5, "1ì–µ ë©”ì†Œë¥¼ íšë“í–ˆìŠµë‹ˆë‹¤.");
 	cm.dispose();
 	}
 }

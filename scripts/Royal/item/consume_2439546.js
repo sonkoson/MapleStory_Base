@@ -16,14 +16,14 @@ function action(mode, type, sel) {
 		return;
     	}
 	if (status == 0) {
-		var msg = "#fs11#¿øÇÏ½Ã´Â ½Éº¼À» ¼±ÅÃÇØÁÖ¼¼¿ä#d#fs11#"+enter;
+		var msg = "#fs11#ì›í•˜ì‹œëŠ” ì‹¬ë³¼ì„ ì„ íƒí•´ì£¼ì„¸ìš”#d#fs11#"+enter;
 		for (i = 1; i <= 6; i++) msg += "#L"+i+"##i171200"+i+"##z171200"+i+"#"+enter;
 		cm.sendSimple(msg);
 	} else if (status == 1) {
 		seld = sel;
 		if (sel > 6) return;
-		var msg = "#fs11#¼±ÅÃÇÏ½Å ½Éº¼Àº #d#i171200"+seld+"##z171200"+seld+"##kÀÔ´Ï´Ù."+enter;
-		msg += "#fs11#Á¤¸»·Î »óÀÚ¸¦ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?";
+		var msg = "#fs11#ì„ íƒí•˜ì‹  ì‹¬ë³¼ì€ #d#i171200"+seld+"##z171200"+seld+"##kì…ë‹ˆë‹¤."+enter;
+		msg += "#fs11#ì •ë§ë¡œ ìƒìë¥¼ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
 		cm.sendYesNo(msg);
 	} else if (status == 2) {
 		itemid = Integer.parseInt("171200"+seld);
@@ -32,7 +32,7 @@ function action(mode, type, sel) {
       cm.gainItem(itemid, 1);
 }
 		cm.gainItem(2439546, -1);
-		cm.sendOk("#fs11#ÃàÇÏÇÕ´Ï´Ù! »óÀÚ¿¡¼­ #b#i"+itemid+"##z"+itemid+"# "+q+"°³#k°¡ ³ª¿Ô½À´Ï´Ù!");
+		cm.sendOk("#fs11#ì¶•í•˜í•©ë‹ˆë‹¤! ìƒìì—ì„œ #b#i"+itemid+"##z"+itemid+"# "+q+"ê°œ#kê°€ ë‚˜ì™”ìŠµë‹ˆë‹¤!");
 		cm.dispose();
 	}
 }

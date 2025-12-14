@@ -17,7 +17,7 @@ function action(mode, type, sel) {
 	cm.setIngameDirectionMode(false, false, false);
 	cm.setBlind(1, 255, 240, 240, 240, 0, 0);
 	cm.effectPlay("Map/Effect3.img/BossLucid/Lucid5", 0, 89, 36, 1, 0, 1);
-	cm.sendScenarioNpcNoESC("#face6#¾î¸Ó, ÀÌ¸¦ ¾îÂ°? ²ŞÀÌ ¹«³ÊÁö³ªºÁ¿ä~!", 1, 3000);
+	cm.sendScenarioNpcNoESC("#face6#ì–´ë¨¸, ì´ë¥¼ ì–´ì§¸? ê¿ˆì´ ë¬´ë„ˆì§€ë‚˜ë´ìš”~!", 1, 3000);
     } else if (status == 1) {
 	cm.setBlind(0, 0, 0, 0, 0, 500, 0); //off
 	cm.effectSound("Sound/SoundEff.img/ArcaneRiver/phase2");

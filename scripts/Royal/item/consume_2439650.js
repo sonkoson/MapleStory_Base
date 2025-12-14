@@ -29,8 +29,8 @@ function action(mode, type, sel) {
     	}
 	if (status == 0) {
 		var msg = "#r[#z"+need +"#]#k"+enter;
-		msg += enter+"#fn³ª´®°íµñ##fs17##r#e¡ØÁÖÀÇ! Àı´ë ÇØ´ç »óÀÚ »ç¿ëÇÏ¿© »ÌÀº ¾ÆÀÌÅÛ¿¡ ¾ÆÅ©ÀÌ³ë »ç¿ëÇÏÁö ¸¶¼¼¿ä!!!!!#fs12##fnµ¸¿ò##n#k"+enter+enter;
-        msg += "#r#i"+need +"##z"+need +"##k¸¦ Á¤¸» »ç¿ëÇÏ½Ã°Ú½À´Ï±î? "+ItemList.length+"°³ÀÇ ¾ÆÀÌÅÛ Áß 1°¡Áö¸¦ ¼±ÅÃÇÏ¿© È¹µæÇÕ´Ï´Ù.#b"+enter;
+		msg += enter+"#fnë‚˜ëˆ”ê³ ë”•##fs17##r#eâ€»ì£¼ì˜! ì ˆëŒ€ í•´ë‹¹ ìƒì ì‚¬ìš©í•˜ì—¬ ë½‘ì€ ì•„ì´í…œì— ì•„í¬ì´ë…¸ ì‚¬ìš©í•˜ì§€ ë§ˆì„¸ìš”!!!!!#fs12##fnë‹ì›€##n#k"+enter+enter;
+        msg += "#r#i"+need +"##z"+need +"##kë¥¼ ì •ë§ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ? "+ItemList.length+"ê°œì˜ ì•„ì´í…œ ì¤‘ 1ê°€ì§€ë¥¼ ì„ íƒí•˜ì—¬ íšë“í•©ë‹ˆë‹¤.#b"+enter;
         for (i = 0; i < ItemList.length; i++) {
             msg += "#L"+i+"##i"+ItemList[i]+"##z"+ItemList[i]+"#" +enter;
         }
@@ -38,13 +38,13 @@ function action(mode, type, sel) {
 	} else if (status == 1) {
 		seld = sel;
 		if (!cm.haveItem(need, qty)) {
-			cm.sendOk("#b#i"+need+"##z"+need+"##k°¡ ¾ø´Â °Í °°Àºµ¥¿ä?");
+			cm.sendOk("#b#i"+need+"##z"+need+"##kê°€ ì—†ëŠ” ê²ƒ ê°™ì€ë°ìš”?");
 			cm.dispose();
 			return;
 		}
 		selected = ItemList[sel];
 		if (!cm.canHold(selected)) {
-			cm.sendOk("ÀåºñÃ¢¿¡ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+			cm.sendOk("ì¥ë¹„ì°½ì— ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
@@ -60,7 +60,7 @@ function action(mode, type, sel) {
 		Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), itemz, false);
 
 		cm.gainItem(need, -qty);
-		var msg = "¾î¶§? #r#i"+selected+"##z"+selected+"##k¾ÆÀÌÅÛÀº Àß ¹Ş¾Ò¾î¿ä? Á¤¸» ¾î¸ŞÀÌÂ¡ÇÏÁö ¾Ê¾Æ¿ä? ´ÙÀ½¹ø¿¡ ¶Ç #b#i"+need+"##z"+need+"##k°¡ »ı±â¸é ³ª¸¦ Ã£¾Æ¿ÍÁà¿ä!";
+		var msg = "ì–´ë•Œ? #r#i"+selected+"##z"+selected+"##kì•„ì´í…œì€ ì˜ ë°›ì•˜ì–´ìš”? ì •ë§ ì–´ë©”ì´ì§•í•˜ì§€ ì•Šì•„ìš”? ë‹¤ìŒë²ˆì— ë˜ #b#i"+need+"##z"+need+"##kê°€ ìƒê¸°ë©´ ë‚˜ë¥¼ ì°¾ì•„ì™€ì¤˜ìš”!";
 		cm.sendOk(msg);
 		cm.dispose();
 	}

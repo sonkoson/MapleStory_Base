@@ -1,4 +1,4 @@
-﻿importPackage(Packages.database);
+importPackage(Packages.database);
 importPackage(java.lang);
 
 색 = "#fc0xFF6600CC#"

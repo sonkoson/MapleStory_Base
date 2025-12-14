@@ -27,16 +27,16 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var send = "#fs11#¿øÇÏ½Ã´Â ±â´ÉÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n";
-        send += "#L0#BGM ÇöÀç¸Ê(ÇöÀçÃ¤³Î) ´ë±â¿­ È®ÀÎ#l\r\n";
-        send += "#L1#BGM ÇöÀç¸Ê(ÇöÀçÃ¤³Î) ´ë±â¿­ µî·Ï(20¾ï ¸Ş¼Ò)#l\r\n";
+        var send = "#fs11#ì›í•˜ì‹œëŠ” ê¸°ëŠ¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n";
+        send += "#L0#BGM í˜„ì¬ë§µ(í˜„ì¬ì±„ë„) ëŒ€ê¸°ì—´ í™•ì¸#l\r\n";
+        send += "#L1#BGM í˜„ì¬ë§µ(í˜„ì¬ì±„ë„) ëŒ€ê¸°ì—´ ë“±ë¡(20ì–µ ë©”ì†Œ)#l\r\n";
 		
 		/*
         if (cm.getPlayer().isGM()) {
         send += "\r\n\r\n";
         send += "#r#e   <GM Menu>#k#n\r\n";
-        send += "#L2#BGM ÇöÀç¸Ê(ÀüÃ¼Ã¤³Î) ´ë±â¿­ µî·Ï#l\r\n";
-        send += "#L3#BGM ÇöÀç¸Ê(ÀüÃ¼Ã¤³Î) ´ë±â¿­ ÃÊ±âÈ­#l";
+        send += "#L2#BGM í˜„ì¬ë§µ(ì „ì²´ì±„ë„) ëŒ€ê¸°ì—´ ë“±ë¡#l\r\n";
+        send += "#L3#BGM í˜„ì¬ë§µ(ì „ì²´ì±„ë„) ëŒ€ê¸°ì—´ ì´ˆê¸°í™”#l";
         }
 		*/
         cm.sendSimple(send);
@@ -46,11 +46,11 @@ function action(mode, type, selection) {
         if (seld == 0) {
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() == 0) {
-                cm.sendOk("#fs11#ÇöÀç ³ë·¡ ´ë±â¿­ÀÌ ¾ø½À´Ï´Ù.");
+                cm.sendOk("#fs11#í˜„ì¬ ë…¸ë˜ ëŒ€ê¸°ì—´ì´ ì—†ìŠµë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
-            var musiclist = "#fs11#ÇöÀç ´ë±â¿­¿¡ µî·ÏµÈ BGM ¸ñ·ÏÀÔ´Ï´Ù.\r\n#r¡Ø ¾à 5ºĞ Àç»ıÈÄ ´ÙÀ½ °îÀ¸·Î ³Ñ¾î°©´Ï´Ù.#k\r\n\r\n";
+            var musiclist = "#fs11#í˜„ì¬ ëŒ€ê¸°ì—´ì— ë“±ë¡ëœ BGM ëª©ë¡ì…ë‹ˆë‹¤.\r\n#râ€» ì•½ 5ë¶„ ì¬ìƒí›„ ë‹¤ìŒ ê³¡ìœ¼ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.#k\r\n\r\n";
             for (var i = 0; i < mapmusic.size(); i++) {
                 musiclist += mapmusic.get(i) + "\r\n";
             }
@@ -61,20 +61,20 @@ function action(mode, type, selection) {
         if (seld == 1) {
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() > 8) {
-                cm.sendOk("#fs11#´ë±â¿­Àº ÃÖ´ë 8°³ ±îÁö µî·Ï °¡´ÉÇÕ´Ï´Ù.");
+                cm.sendOk("#fs11#ëŒ€ê¸°ì—´ì€ ìµœëŒ€ 8ê°œ ê¹Œì§€ ë“±ë¡ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
             if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11##i4001715# #z4001715# 20°³°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                cm.sendOk("#fs11##i4001715# #z4001715# 20ê°œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
             var musiclist = cm.getAllSound();
-            var musicask = "#fs11#¿øÇÏ´Â BGMÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n";
+            var musicask = "#fs11#ì›í•˜ëŠ” BGMì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
-                if (musiclist.get(i) == "[Å×ÀÏÁîÀ§¹ö] Reminiscence")
+                if (musiclist.get(i) == "[í…Œì¼ì¦ˆìœ„ë²„] Reminiscence")
                     musicask += "\r\n\r\n#b< Other Music >#k\r\n";
                 musicask += "#L" + i + "#" + musiclist.get(i) + "#l\r\n";
             }
@@ -84,27 +84,27 @@ function action(mode, type, selection) {
         if (seld == 2) {
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() > 8) {
-                cm.sendOk("#fs11#´ë±â¿­Àº ÃÖ´ë 8°³ ±îÁö µî·Ï °¡´ÉÇÕ´Ï´Ù.");
+                cm.sendOk("#fs11#ëŒ€ê¸°ì—´ì€ ìµœëŒ€ 8ê°œ ê¹Œì§€ ë“±ë¡ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
             if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11##i4001715# #z4001715# 20°³°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                cm.sendOk("#fs11##i4001715# #z4001715# 20ê°œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
             var musiclist = cm.getAllSound();
-            var musicask = "#fs11#¿øÇÏ´Â BGMÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n";
+            var musicask = "#fs11#ì›í•˜ëŠ” BGMì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
-                if (musiclist.get(i) == "[Å×ÀÏÁîÀ§¹ö] Reminiscence")
+                if (musiclist.get(i) == "[í…Œì¼ì¦ˆìœ„ë²„] Reminiscence")
                     musicask += "\r\n\r\n#b< Other Music >#k\r\n";
                 musicask += "#L" + i + "#" + musiclist.get(i) + "#l\r\n";
             }
             cm.sendSimple(musicask);
         }
         if (seld == 3) {
-            cm.askYesNo("#fs11#Á¤¸» BGM ÇöÀç¸Ê(ÀüÃ¼Ã¤³Î) ´ë±â¿­À» ÃÊ±âÈ­ ÇÏ½Ã°Ú½À´Ï±î?", GameObjectType.Npc, ScriptMessageFlag.None);
+            cm.askYesNo("#fs11#ì •ë§ BGM í˜„ì¬ë§µ(ì „ì²´ì±„ë„) ëŒ€ê¸°ì—´ì„ ì´ˆê¸°í™” í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", GameObjectType.Npc, ScriptMessageFlag.None);
         }
 		*/
     }
@@ -113,14 +113,14 @@ function action(mode, type, selection) {
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#¼±ÅÃÇÏ½Å ³ë·¡°¡ " + musiclist.get(selection) + " ¸Â³ª¿ä?\r\n\r\n#r#i4001715# #z4001715# 20°³#b°¡ ÇÊ¿äÇÑµ¥ ÁøÇàÇÏ½Ã°Ú¾î¿ä?", GameObjectType.Npc, ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#ì„ íƒí•˜ì‹  ë…¸ë˜ê°€ " + musiclist.get(selection) + " ë§ë‚˜ìš”?\r\n\r\n#r#i4001715# #z4001715# 20ê°œ#bê°€ í•„ìš”í•œë° ì§„í–‰í•˜ì‹œê² ì–´ìš”?", GameObjectType.Npc, ScriptMessageFlag.None);
             }
         }
         if (seld == 2) {
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#¼±ÅÃÇÏ½Å ³ë·¡°¡ " + musiclist.get(selection) + " ¸Â³ª¿ä?", GameObjectType.Npc, ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#ì„ íƒí•˜ì‹  ë…¸ë˜ê°€ " + musiclist.get(selection) + " ë§ë‚˜ìš”?", GameObjectType.Npc, ScriptMessageFlag.None);
             }
         }
         if (seld == 3) {
@@ -129,26 +129,26 @@ function action(mode, type, selection) {
                 channel.getMapFactory().getMap(cm.getPlayer().getMapId()).clearMusicList();
             }
             cm.dispose();
-            cm.sendOk("#fs11#ÇöÀç¸Ê(ÀüÃ¼Ã¤³Î) ¸®½ºÆ® ÃÊ±âÈ­ ¿Ï·á");
+            cm.sendOk("#fs11#í˜„ì¬ë§µ(ì „ì²´ì±„ë„) ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™” ì™„ë£Œ");
         }
     }
     if (status == 3) {
         if (seld == 1) {
             if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11##i4001715# #z4001715# 20°³°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                cm.sendOk("#fs11##i4001715# #z4001715# 20ê°œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
             cm.gainItem(4001715, -20);
             cm.addMapMusic(tempsel);
             var musiclist = cm.getAllSound();
-            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " °îÀÌ\r\nÇöÀç¸Ê(ÇöÀçÃ¤³Î) ´ë±â¿­¿¡ µî·ÏµÇ¾ú½À´Ï´Ù.");
+            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " ê³¡ì´\r\ní˜„ì¬ë§µ(í˜„ì¬ì±„ë„) ëŒ€ê¸°ì—´ì— ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
             cm.dispose();
         }
         if (seld == 2) {
             cm.addServerMapMusicServer(tempsel);
             var musiclist = cm.getAllSound();
-            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " °îÀÌ\r\nÇöÀç¸Ê(ÀüÃ¼Ã¤³Î) ´ë±â¿­¿¡ µî·ÏµÇ¾ú½À´Ï´Ù.");
+            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " ê³¡ì´\r\ní˜„ì¬ë§µ(ì „ì²´ì±„ë„) ëŒ€ê¸°ì—´ì— ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
             cm.dispose();
         }
     }

@@ -23,14 +23,14 @@ function action(mode, type, sel) {
 		return;
     	}
 	if (status == 0) {
-		var msg = "#b#i"+need+"##z"+need+"# "+qty+"°³#k°¡ ÀÖÀ¸¸é #b#i5060048##z5060048##k ÇÏ³ª¶û ±³È¯ÇÒ ¼ö ÀÖ½À´Ï´Ù."+enter;
-		//msg += "#L1#¾ÆÀÌÅÛ ¸®½ºÆ®º¸±â"+enter;
-		msg += "#L3#±³È¯ÇÏ±â";
+		var msg = "#b#i"+need+"##z"+need+"# "+qty+"ê°œ#kê°€ ìˆìœ¼ë©´ #b#i5060048##z5060048##k í•˜ë‚˜ë‘ êµí™˜í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤."+enter;
+		//msg += "#L1#ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ë³´ê¸°"+enter;
+		msg += "#L3#êµí™˜í•˜ê¸°";
 		cm.sendSimple(msg);
 	} else if (status == 1) {
 		seld = sel;
 		if (sel == 1) {
-			var msg = "°ñµå¾ÖÇÃ Á¶°¢¿¡¼± ´ÙÀ½°ú °°Àº ¾ÆÀÌÅÛµéÀÌ µîÀåÇÕ´Ï´Ù.#b"+enter;
+			var msg = "ê³¨ë“œì• í”Œ ì¡°ê°ì—ì„  ë‹¤ìŒê³¼ ê°™ì€ ì•„ì´í…œë“¤ì´ ë“±ì¥í•©ë‹ˆë‹¤.#b"+enter;
 			for (i = 0; i < Itemlist.length; i++)
 				msg += "#i"+Itemlist[i]+"##z"+Itemlist[i]+"#"+enter;
 
@@ -38,15 +38,15 @@ function action(mode, type, sel) {
 			cm.dispose();
 		} else {
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##kÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+				cm.sendOk("#b#i"+need+"##z"+need+"##kì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 				cm.dispose();
 				return;
 			}
-			cm.sendYesNo("Á¤¸» #b#i"+need+"##z"+need+"##kÀ» ÀÌ¿ëÇØ ±³È¯ ÇÏ½Ã°Ú½À´Ï±î?");
+			cm.sendYesNo("ì •ë§ #b#i"+need+"##z"+need+"##kì„ ì´ìš©í•´ êµí™˜ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		}
 	} else if (status == 2) {
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##kÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+				cm.sendOk("#b#i"+need+"##z"+need+"##kì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 				cm.dispose();
 				return;
 			}
@@ -54,7 +54,7 @@ function action(mode, type, sel) {
 			item = Itemlist[Math.floor(Math.random() * Itemlist.length)];
 
 			if (!cm.canHold(item)) {
-				cm.sendOk("Ä³½ÃÄ­¿¡ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+				cm.sendOk("ìºì‹œì¹¸ì— ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 				cm.dispose();
 				return;
 			}
@@ -65,7 +65,7 @@ function action(mode, type, sel) {
 			    cm.gainItem(item, 1);
 			}
 			cm.gainItem(need, -qty);
-			var msg = "#r#i"+item+"##z"+item+"##kÈ¹µæ";
+			var msg = "#r#i"+item+"##z"+item+"##kíšë“";
 			cm.sendOk(msg);
 			cm.dispose();
 	}

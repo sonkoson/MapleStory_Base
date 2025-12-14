@@ -1,4 +1,4 @@
-﻿h = "#fUI/UIMiniGame.img/starPlanetRPS/heart#";
+h = "#fUI/UIMiniGame.img/starPlanetRPS/heart#";
 g = "#fMap/MapHelper.img/minimap/anothertrader#";
 a = "#i3801317#"
 b = "#i3801313#"

@@ -19,16 +19,16 @@ function action(mode, type, selection) {
         status++;
     }
         if (status == 0) {
-		cm.sendYesNoS("¾È³çÇÏ¼¼¿ä! ·£´ı Ä¥Èæº¸½º Àå½Å±¸ »óÀÚÀÔ´Ï´Ù. ¿¹¸¦ ´©¸£½Ã¸é ·£´ıÇÑ Ä¥Èæº¸½º ¾ÆÀÌÅÛ 1Á¾ÀÌ Áö±ŞµË´Ï´Ù.",0x24);
+		cm.sendYesNoS("ì•ˆë…•í•˜ì„¸ìš”! ëœë¤ ì¹ í‘ë³´ìŠ¤ ì¥ì‹ êµ¬ ìƒìì…ë‹ˆë‹¤. ì˜ˆë¥¼ ëˆ„ë¥´ì‹œë©´ ëœë¤í•œ ì¹ í‘ë³´ìŠ¤ ì•„ì´í…œ 1ì¢…ì´ ì§€ê¸‰ë©ë‹ˆë‹¤.",0x24);
 	} else if (status == 1) {
-		¾ÆÀÌÅÛ1 = itemid[Math.floor(Math.random() * itemid.length)];
-		//¾ÆÀÌÅÛ2 = itemid[Math.floor(Math.random() * itemid.length)];
-		//¾ÆÀÌÅÛ3 = itemid[Math.floor(Math.random() * itemid.length)];
-		cm.gainItem(¾ÆÀÌÅÛ1, 1);
-		//cm.gainItem(¾ÆÀÌÅÛ2, 1);
-		//cm.gainItem(¾ÆÀÌÅÛ3, 1);
+		ì•„ì´í…œ1 = itemid[Math.floor(Math.random() * itemid.length)];
+		//ì•„ì´í…œ2 = itemid[Math.floor(Math.random() * itemid.length)];
+		//ì•„ì´í…œ3 = itemid[Math.floor(Math.random() * itemid.length)];
+		cm.gainItem(ì•„ì´í…œ1, 1);
+		//cm.gainItem(ì•„ì´í…œ2, 1);
+		//cm.gainItem(ì•„ì´í…œ3, 1);
 		cm.gainItem(2432408, -1);
-		cm.cm.sendOkS("´ÙÀ½ ¾ÆÀÌÅÛÀÌ ¼ö·ÉµÇ¾ú½À´Ï´Ù:\r\n\r\n#i" + ¾ÆÀÌÅÛ1 + "##z" + ¾ÆÀÌÅÛ1 + "#\r\n#i" + ¾ÆÀÌÅÛ2 + "##z" + ¾ÆÀÌÅÛ2 + "#\r\n#i" + ¾ÆÀÌÅÛ3 + "##z" + ¾ÆÀÌÅÛ3 + "#",0x24);
+		cm.cm.sendOkS("ë‹¤ìŒ ì•„ì´í…œì´ ìˆ˜ë ¹ë˜ì—ˆìŠµë‹ˆë‹¤:\r\n\r\n#i" + ì•„ì´í…œ1 + "##z" + ì•„ì´í…œ1 + "#\r\n#i" + ì•„ì´í…œ2 + "##z" + ì•„ì´í…œ2 + "#\r\n#i" + ì•„ì´í…œ3 + "##z" + ì•„ì´í…œ3 + "#",0x24);
 		cm.dispose();
     	}
 }

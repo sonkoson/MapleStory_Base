@@ -25,7 +25,7 @@ function action(mode, type, selection) {
             if (limited) {
                 var count = Integer.parseInt(cm.getPlayer().getKeyValue("Today_EnergyDrink"));
                 if (count == limitedcount) {
-                    cm.getPlayer().message(5, "ÇÇ·Î È¸º¹Á¦¸¦ ÀÌ¹Ì 3¹ø ¸ğµÎ »ç¿ëÇÏ¼Ì½À´Ï´Ù.");
+                    cm.getPlayer().message(5, "í”¼ë¡œ íšŒë³µì œë¥¼ ì´ë¯¸ 3ë²ˆ ëª¨ë‘ ì‚¬ìš©í•˜ì…¨ìŠµë‹ˆë‹¤.");
                     cm.dispose();
                     return;
                 }
@@ -35,7 +35,7 @@ function action(mode, type, selection) {
             }
             cm.getPlayer().getProfession().addFatigue(-fatigue);
             cm.getPlayer().updateSingleStat(PlayerStat.FATIGUE, cm.getPlayer().getProfession().getFatigue());
-            cm.getPlayer().message("ÇÇ·Îµµ°¡ "+fatigue+"¸¸Å­ È¸º¹µÇ¾ú½À´Ï´Ù.");
+            cm.getPlayer().message("í”¼ë¡œë„ê°€ "+fatigue+"ë§Œí¼ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤.");
             cm.gainItem(2430212, -1);
         } else { 
             cm.dispose();

@@ -1,6 +1,6 @@
 function enter(pi) {
     pi.warp(304020000,0);
-         pi.getPlayer().dropMessage(-1, "ÀÌÂëµÇ´Ï.. Á¤¸» ±ÍÂú±º.. ¾Ë·».. Àç´Â ¶Ç ´©±¸¾ß..");
-         pi.getPlayer().dropMessage(5, "ÀÌÂëµÇ´Ï.. Á¤¸» ±ÍÂú±º.. ¾Ë·».. Àç´Â ¶Ç ´©±¸¾ß..");
+         pi.getPlayer().dropMessage(-1, "ì´ì¯¤ë˜ë‹ˆ.. ì •ë§ ê·€ì°®êµ°.. ì•Œë Œ.. ì¬ëŠ” ë˜ ëˆ„êµ¬ì•¼..");
+         pi.getPlayer().dropMessage(5, "ì´ì¯¤ë˜ë‹ˆ.. ì •ë§ ê·€ì°®êµ°.. ì•Œë Œ.. ì¬ëŠ” ë˜ ëˆ„êµ¬ì•¼..");
 	return true;
 }

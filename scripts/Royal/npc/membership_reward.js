@@ -27,25 +27,25 @@ function action(mode, type, selection) {
 		v = "reward2";
 	}
 	if (reward == 0) {
-		cm.sendNext("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+		cm.sendNext("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	}
-	cm.sendYesNo("#b#i" + reward + "# #z" + reward + "##kÀ»(¸¦) ¼ö·ÉÇÏ½Ã°Ú½À´Ï±î?");
+	cm.sendYesNo("#b#i" + reward + "# #z" + reward + "##kì„(ë¥¼) ìˆ˜ë ¹í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
     } else if (status == 1) {
 	if (!cm.canHold(reward, 1)) {
-		cm.sendNext("ÀÎº¥Åä¸® °ø°£À» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+		cm.sendNext("ì¸ë²¤í† ë¦¬ ê³µê°„ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	}
 	if (cm.getPlayer().getOneInfoQuestInteger(501045, v) > 0) {
-		cm.sendNext("ÀÌ¹Ì ÇØ´ç µî±Ş¿¡ º¸»óÀ» ¼ö·É¹Ş¾Ò½À´Ï´Ù.");
+		cm.sendNext("ì´ë¯¸ í•´ë‹¹ ë“±ê¸‰ì— ë³´ìƒì„ ìˆ˜ë ¹ë°›ì•˜ìŠµë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	}
 	cm.getPlayer().updateOneInfo(501045, v, "1");
 	cm.gainItem(reward, 1);
-	cm.sendNext("#b#i" + reward + "# #z" + reward + "##kÀ»(¸¦) È¹µæÇß½À´Ï´Ù.");
+	cm.sendNext("#b#i" + reward + "# #z" + reward + "##kì„(ë¥¼) íšë“í–ˆìŠµë‹ˆë‹¤.");
 	cm.dispose();
     }
 }

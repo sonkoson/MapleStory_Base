@@ -1,4 +1,4 @@
-﻿importPackage(Packages.objects.item);
+importPackage(Packages.objects.item);
 importPackage(Packages.constants);
 importPackage(Packages.client);
 importPackage(Packages.network);

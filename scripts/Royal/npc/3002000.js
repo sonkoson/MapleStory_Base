@@ -1,4 +1,4 @@
-﻿var enter = "\r\n";
+var enter = "\r\n";
 
 var itemid = 4001326;
 var size = 7;

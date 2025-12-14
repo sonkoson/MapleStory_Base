@@ -22,7 +22,7 @@ function action(mode, type, sel) {
         cm.getPlayer().setTransferFieldOverlap(true);
         return;
 
-        cm.effectText("#fn³ª´®°íµñ ExtraBold##fs16#< °­¸²¿ùµå > - °­¸² Å¸¿î", 100, 1000, 6, 0, 430, -550);
+        cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs16#< ê°•ë¦¼ì›”ë“œ > - ê°•ë¦¼ íƒ€ìš´", 100, 1000, 6, 0, 430, -550);
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

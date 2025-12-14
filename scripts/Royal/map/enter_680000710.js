@@ -22,7 +22,7 @@ function action(mode, type, sel) {
 	
 	if (cm.getPlayer().getOneInfoQuestInteger(1234567, "see_intro") == 1) {
             		cm.getPlayer().send(CField.DirectionPacket.IntroEnableUI(1));
-		cm.effectText("Ç×»ó Áñ°Å¿òÀÌ °¡µæÂù Áø Ä³½½", 100, 1000, 4, 0, 0, -200);
+		cm.effectText("í•­ìƒ ì¦ê±°ì›€ì´ ê°€ë“ì°¬ ì§„ ìºìŠ¬", 100, 1000, 4, 0, 0, -200);
 		cm.dispose();
 		if (cm.getPlayer().getOneInfoQuestInteger(121212, "job_select") == 0) {
 			cm.openNpc(1540208);
@@ -52,12 +52,12 @@ function action(mode, type, sel) {
 	cm.setBlind(0, 0, 0, 0, 0, 250, 0);
 	cm.delay(2500);
     } else if (status == 5) {
-	cm.effectText("#fn³ª´®°íµñ ExtraBold##fs18#<Áø Ä³½½>", 100, 1000, 6, 0, -50, -50);
+	cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs18#<ì§„ ìºìŠ¬>", 100, 1000, 6, 0, -50, -50);
 	cm.delay(2000);
     } else if (status == 6) {
-	cm.sayNpc("¿ì¿Í...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ìš°ì™€...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 7) {
-	cm.sayNpc("°¡±îÀÌ¼­ º¸´Ï Á¤¸» #r#e°Å´ëÇÑ ¼º#n#kÀÌÀİ¾Æ...?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ê°€ê¹Œì´ì„œ ë³´ë‹ˆ ì •ë§ #r#eê±°ëŒ€í•œ ì„±#n#kì´ì–ì•„...?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 8) {
 	cm.delay(1000);
     } else if (status == 9) {
@@ -77,30 +77,30 @@ function action(mode, type, sel) {
 	cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 9062475, false);
 	cm.delay(2000);
     } else if (status == 14) {
-	cm.sayReplacedNpc("¿Í! #e#b#h0##k!!!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì™€! #e#b#h0##k!!!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 15) {
-	cm.sayReplacedNpc("ÇìÇì! ±â´Ù·È¾î¿ä!\r\n#fs30##r¹İ°¡¿ö¿ä! ¹İ°©ÁÒ? È¯¿µÇØ¿ä!", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í—¤í—¤! ê¸°ë‹¤ë ¸ì–´ìš”!\r\n#fs30##rë°˜ê°€ì›Œìš”! ë°˜ê°‘ì£ ? í™˜ì˜í•´ìš”!", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 16) {
-	cm.sayReplacedNpc("#bÁ¦°¡ º¸³½ ¼ø·Ï#kÀº Àß Å¸°í ¿Ô¾î¿ä?", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("#bì œê°€ ë³´ë‚¸ ìˆœë¡#kì€ ì˜ íƒ€ê³  ì™”ì–´ìš”?", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 17) {
 	cm.npcMoveForcely(9062474, -1, 10, 100);
 	cm.delay(1000);
     } else if (status == 18) {
-	cm.sayReplacedNpc("ÁøÁ¤ÇØ, ¸®¿À...¸ğÃ³·³ Ã£¾Æ¿Â »ç¶÷À» ³î¶ó°Ô ÇÏ¸é ¸ø½á.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì§„ì •í•´, ë¦¬ì˜¤...ëª¨ì²˜ëŸ¼ ì°¾ì•„ì˜¨ ì‚¬ëŒì„ ë†€ë¼ê²Œ í•˜ë©´ ëª»ì¨.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 19) {
-	cm.sayReplacedNpc("¾Ñ... ¹Ì¾ÈÇØ¿ä!\r\nÀú´Â #b¸®¿À#k¶ó°í ÇØ¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì•—... ë¯¸ì•ˆí•´ìš”!\r\nì €ëŠ” #bë¦¬ì˜¤#kë¼ê³  í•´ìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 20) {
-	cm.sayReplacedNpc("ÈÄÈÄ. #e#b#h0##k. \r\nµåµğ¾î ¿Ô±¸³ª. ³ª´Â #b¸£³×#k¶ó°í ÇØ.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í›„í›„. #e#b#h0##k. \r\në“œë””ì–´ ì™”êµ¬ë‚˜. ë‚˜ëŠ” #bë¥´ë„¤#kë¼ê³  í•´.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 21) {
-	cm.sayReplacedNpc("ÀÌ°÷Àº #r<Áø Ä³½½>#kÀÌ¾ß.\r\nÂ÷¿øÀÌ °ãÃÄÁø °÷¿¡ ºñÄ¡´Â µ¡¾ø´Â #b#eÈ¯»ó#n#kÀÌÁö", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì´ê³³ì€ #r<ì§„ ìºìŠ¬>#kì´ì•¼.\r\nì°¨ì›ì´ ê²¹ì³ì§„ ê³³ì— ë¹„ì¹˜ëŠ” ë§ì—†ëŠ” #b#eí™˜ìƒ#n#kì´ì§€", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 22) {	
-	cm.sayNpc("³ÊÈñ°¡ Áø Ä³½½ÀÇ Á¤·ÉÀÌ±¸³ª.\r\n±×·±µ¥... #bÈ¯»ó#kÀÌ¶ó´Ï?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ë„ˆí¬ê°€ ì§„ ìºìŠ¬ì˜ ì •ë ¹ì´êµ¬ë‚˜.\r\nê·¸ëŸ°ë°... #bí™˜ìƒ#kì´ë¼ë‹ˆ?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 23) {
-	cm.sayReplacedNpc("¿©±ä #b¼­·Î ´Ù¸¥ µÎ Â÷¿ø#kÀÌ ÇÕÃÄÁö¸é¼­ »ı°Ü³­ °ø°£ÀÌ¿¡¿ä!\r\nÂ÷¿øÀÌ ¾ÈÁ¤À» Ã£À¸¸é Áø Ä³½½Àº ´Ù½Ã »ç¶óÁú °Å¿¹¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì—¬ê¸´ #bì„œë¡œ ë‹¤ë¥¸ ë‘ ì°¨ì›#kì´ í•©ì³ì§€ë©´ì„œ ìƒê²¨ë‚œ ê³µê°„ì´ì—ìš”!\r\nì°¨ì›ì´ ì•ˆì •ì„ ì°¾ìœ¼ë©´ ì§„ ìºìŠ¬ì€ ë‹¤ì‹œ ì‚¬ë¼ì§ˆ ê±°ì˜ˆìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 24) {
-	cm.sayReplacedNpc("ÈÄÈÄ. ±×·¡¼­ ´Ùµé ÃÊ´ëÇÑ °Å¾ß.\r\nÀÌ¹Ì ¸¹Àº »ç¶÷µéÀÌ ÃÊ´ë¸¦ ¹Ş°í Áø Ä³½½¿¡ µµÂøÇß¾î!", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í›„í›„. ê·¸ë˜ì„œ ë‹¤ë“¤ ì´ˆëŒ€í•œ ê±°ì•¼.\r\nì´ë¯¸ ë§ì€ ì‚¬ëŒë“¤ì´ ì´ˆëŒ€ë¥¼ ë°›ê³  ì§„ ìºìŠ¬ì— ë„ì°©í–ˆì–´!", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 25) {
-	cm.sayReplacedNpc("±×·³ ¸ÕÀú ¿Â »ç¶÷µéÀ» ¼Ò°³ÇØ ÁÙ°Ô.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ê·¸ëŸ¼ ë¨¼ì € ì˜¨ ì‚¬ëŒë“¤ì„ ì†Œê°œí•´ ì¤„ê²Œ.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 26) {
 	cm.setBlind(1, 255, 0, 0, 0, 250, 2);
 	cm.delay(250);
@@ -122,60 +122,60 @@ function action(mode, type, sel) {
 	cm.setBlind(0, 0, 0, 0, 0, 250, 0);
 	cm.delay(300);
     } else if (status == 31) {	
-	cm.sayReplacedNpc("È¥ÀÚ¼­µµ Àß ³ë´Â »ç¶÷! ¿©±â ºÙ¾î¶ó~", false, true, 1, 9062461, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í˜¼ìì„œë„ ì˜ ë…¸ëŠ” ì‚¬ëŒ! ì—¬ê¸° ë¶™ì–´ë¼~", false, true, 1, 9062461, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 32) {	
-            cm.sayReplacedNpc("³ªº¸´Ù °ÔÀÓÀ» ÀßÇÏ´Â »ç¶÷Àº ¾øÀ»°É?!", false, true, 1, 9062462, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+            cm.sayReplacedNpc("ë‚˜ë³´ë‹¤ ê²Œì„ì„ ì˜í•˜ëŠ” ì‚¬ëŒì€ ì—†ì„ê±¸?!", false, true, 1, 9062462, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 33) {
-	cm.sayReplacedNpc("¿©±â´Â ¸ğµÎµé #b¸ğ¿©¼­ °ÔÀÓ#kÀ» ÇÏ°í ÀÖ¾î¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì—¬ê¸°ëŠ” ëª¨ë‘ë“¤ #bëª¨ì—¬ì„œ ê²Œì„#kì„ í•˜ê³  ìˆì–´ìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 34) {
-	cm.sayReplacedNpc("°ÔÀÓÀÌ¶ó´Ï... À¯Ä¡ÇÑ ¾î¸°ÀÌµé °°À¸´Ï. \r\n³ª´Â #r¼º°øÇÑ »óÀÎ#kÀÌ µÉ °Å¾ß!", false, true, 1, 9062463, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ê²Œì„ì´ë¼ë‹ˆ... ìœ ì¹˜í•œ ì–´ë¦°ì´ë“¤ ê°™ìœ¼ë‹ˆ. \r\në‚˜ëŠ” #rì„±ê³µí•œ ìƒì¸#kì´ ë  ê±°ì•¼!", false, true, 1, 9062463, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 35) {
-	cm.sayReplacedNpc("#b°ÔÀÓ#kÀ» Áñ±â¸é #i4310307:##b#t4310307##kÀ» ¾òÀ» ¼ö ÀÖ¾î¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("#bê²Œì„#kì„ ì¦ê¸°ë©´ #i4310307:##b#t4310307##kì„ ì–»ì„ ìˆ˜ ìˆì–´ìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 36) {
-	cm.sayReplacedNpc("#i4310307:##b#t4310307##kÀ» »ç¿ëÇØ¼­ Àú »óÀÎ ²Ş³ª¹« Ä£±¸¿¡°Ô #r¸ÚÁø ¹°°Ç#kÀ» ±¸ÇÒ ¼ö ÀÖÀ» °Å¾ß.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("#i4310307:##b#t4310307##kì„ ì‚¬ìš©í•´ì„œ ì € ìƒì¸ ê¿ˆë‚˜ë¬´ ì¹œêµ¬ì—ê²Œ #rë©‹ì§„ ë¬¼ê±´#kì„ êµ¬í•  ìˆ˜ ìˆì„ ê±°ì•¼.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 37) {
 	cm.cameraZoom(1500, 2000, 1500, -450, -100);
 	cm.delay(1500);
     } else if (status == 38) {
-	cm.sayReplacedNpc("Èì... Á¤¸» °­ÇÑ ÈûÀÌ ´À²¸Áö´Â±º. ¸¸Á·½º·¯¿ö.", false, true, 1, 9062459, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í ... ì •ë§ ê°•í•œ í˜ì´ ëŠê»´ì§€ëŠ”êµ°. ë§Œì¡±ìŠ¤ëŸ¬ì›Œ.", false, true, 1, 9062459, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 39) {
-	cm.sayReplacedNpc("Àú »ç¶÷Àº ¾ÆÁÖ °­ÇÑ ÈûÀ» °¡Áø º¸¼®, \r\n#i4310308:##r#t4310308##k¸¦ ±¸ÇÏ°í ÀÖ¾î.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì € ì‚¬ëŒì€ ì•„ì£¼ ê°•í•œ í˜ì„ ê°€ì§„ ë³´ì„, \r\n#i4310308:##r#t4310308##kë¥¼ êµ¬í•˜ê³  ìˆì–´.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 40) {
-	cm.sayReplacedNpc("#b°­ÇÑ º¸½º#k¸¦ Ã³Ä¡ÇÏ¸é #i4310308:##r#t4310308##k¸¦ ¸¸µé ¼ö ÀÖ´ë¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("#bê°•í•œ ë³´ìŠ¤#kë¥¼ ì²˜ì¹˜í•˜ë©´ #i4310308:##r#t4310308##kë¥¼ ë§Œë“¤ ìˆ˜ ìˆëŒ€ìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 41) {
 	cm.cameraZoom(3000, 2000, 3000, 200, -100);
 	cm.delay(3000);
     } else if (status == 42) {	
-	cm.sayReplacedNpc("¿ÀÈ£... ´ç½Å ²Ï³ª ÁÁÀº ¹°°ÇÀ» °¡Áö°í ÀÖ±º?", false, true, 1, 9062457, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì˜¤í˜¸... ë‹¹ì‹  ê½¤ë‚˜ ì¢‹ì€ ë¬¼ê±´ì„ ê°€ì§€ê³  ìˆêµ°?", false, true, 1, 9062457, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 43) {
-	cm.sayReplacedNpc("ÈÄÈÄ. ¸ŞÀÌÇÃ ¿ùµå¿¡´Â Áø±ÍÇÑ ¹°°ÇÀÌ ¸¹´ä´Ï´Ù.\r\n±×¶õµğ½º¿¡µµ ½ÅºñÇÑ ¹°°ÇÀÌ Âü ¸¹±º¿ä.", false, true, 1, 9062455, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í›„í›„. ë©”ì´í”Œ ì›”ë“œì—ëŠ” ì§„ê·€í•œ ë¬¼ê±´ì´ ë§ë‹µë‹ˆë‹¤.\r\nê·¸ë€ë””ìŠ¤ì—ë„ ì‹ ë¹„í•œ ë¬¼ê±´ì´ ì°¸ ë§êµ°ìš”.", false, true, 1, 9062455, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 44) {
-	cm.sayReplacedNpc("¿©±â¿¡´Â #r´Ù¾çÇÑ »óÀÎºĞµé#kÀÌ ÀÖ´ä´Ï´Ù!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì—¬ê¸°ì—ëŠ” #rë‹¤ì–‘í•œ ìƒì¸ë¶„ë“¤#kì´ ìˆë‹µë‹ˆë‹¤!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 45) {
-	cm.sayReplacedNpc("Àú »óÀÎµéÀº Áø Ä³½½ÀÌ »ı°Ü³­ ÈûÀÇ ¿øÃµ, \r\n#i4310306:##b#t4310306##k¸¦ ÁÖ¸é #rÁø±ÍÇÑ ¹°°Ç#kÀ» ÁÙ °Å¾ß.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì € ìƒì¸ë“¤ì€ ì§„ ìºìŠ¬ì´ ìƒê²¨ë‚œ í˜ì˜ ì›ì²œ, \r\n#i4310306:##b#t4310306##kë¥¼ ì£¼ë©´ #rì§„ê·€í•œ ë¬¼ê±´#kì„ ì¤„ ê±°ì•¼.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 46) {
 	cm.cameraZoom(1500, 2000, 1500, 500, -100);
 	cm.delay(1500);
     } else if (status == 47) {
 	cm.spawnLocalNpc(9062453, -295, -320, 1, 48, false);
 	cm.spawnLocalNpc(9062454, -8, -320, 0, 63, false);
-	cm.sayReplacedNpc("²ÙÁØÇÑ ÈÆ·Ã¸¸ÀÌ ÆòÈ­¸¦ ÁöÅ³ ÈûÀ» ±â¸¦ ¼ö ÀÖ½À´Ï´Ù.", false, true, 1, 9062451, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ê¾¸ì¤€í•œ í›ˆë ¨ë§Œì´ í‰í™”ë¥¼ ì§€í‚¬ í˜ì„ ê¸°ë¥¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", false, true, 1, 9062451, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 48) {	
-	cm.sayReplacedNpc("ÃÊ´ë¹ŞÀº °÷¿¡¼­µµ ¿­½ÉÈ÷ ÈÆ·ÃÇÏ´Â »ç¶÷µµ ÀÖÁö.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì´ˆëŒ€ë°›ì€ ê³³ì—ì„œë„ ì—´ì‹¬íˆ í›ˆë ¨í•˜ëŠ” ì‚¬ëŒë„ ìˆì§€.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 49) {
 	cm.cameraZoom(2000, 2000, 2000, -200, -300);
 	cm.delay(2000);
     } else if (status == 50) {
-	cm.sayNpc("Á¤¸» #b¸ŞÀÌÇÃ ¿ùµå#k¿Í #r±×¶õµğ½º#kÀÇ ´Ù¾çÇÑ »ç¶÷µéÀÌ ¸ğ¿© ÀÖ±¸³ª.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ì •ë§ #bë©”ì´í”Œ ì›”ë“œ#kì™€ #rê·¸ë€ë””ìŠ¤#kì˜ ë‹¤ì–‘í•œ ì‚¬ëŒë“¤ì´ ëª¨ì—¬ ìˆêµ¬ë‚˜.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 51) {	
-	cm.sayReplacedNpc("±×·³¿ä! ³Ê¹« ´Ê°Ô ¿À¼Ì¾î¿ä!!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ê·¸ëŸ¼ìš”! ë„ˆë¬´ ëŠ¦ê²Œ ì˜¤ì…¨ì–´ìš”!!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 52) {
 	cm.cameraZoom(4000, 800, 4000, -200, -360);
 	cm.delay(4000);
     } else if (status == 53) {
-	cm.sayReplacedNpc("ÈÄÈÄ. #rÁø Ä³½½#kÀÌ ºÎµğ ³Ê¿¡°Ôµµ ÁÁÀº Ãß¾ïÀ¸·Î ³²±æ ¹Ù¶ö°Ô.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("í›„í›„. #rì§„ ìºìŠ¬#kì´ ë¶€ë”” ë„ˆì—ê²Œë„ ì¢‹ì€ ì¶”ì–µìœ¼ë¡œ ë‚¨ê¸¸ ë°”ë„ê²Œ.", false, true, 1, 9062474, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 54) {
-	cm.sayReplacedNpc("ÀúÈñ¿Í ÇÔ²² #rÁø Ä³½½#k¿¡¼­ ÁÁÀº ½Ã°£ º¸³»¿ä!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	cm.sayReplacedNpc("ì €í¬ì™€ í•¨ê»˜ #rì§„ ìºìŠ¬#kì—ì„œ ì¢‹ì€ ì‹œê°„ ë³´ë‚´ìš”!", false, true, 1, 9062475, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     } else if (status == 55) {
 	cm.setBlind(1, 255, 0, 0, 0, 250, 2);
 	cm.delay(250);

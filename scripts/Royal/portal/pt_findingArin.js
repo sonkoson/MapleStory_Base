@@ -1,5 +1,5 @@
 function enter(pi) {
-    pi.getPlayer().dropMessage(-1, "Áö±İÀº ºÀÀÎµÇ¾î ÀÖ½À´Ï´Ù.");
-    pi.getPlayer().dropMessage(5, "Áö±İÀº ºÀÀÎµÇ¾î ÀÖ½À´Ï´Ù.");
+    pi.getPlayer().dropMessage(-1, "ì§€ê¸ˆì€ ë´‰ì¸ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
+    pi.getPlayer().dropMessage(5, "ì§€ê¸ˆì€ ë´‰ì¸ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
     return false;
 }

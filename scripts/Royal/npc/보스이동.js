@@ -1,4 +1,4 @@
-﻿importPackage(Packages.scripting.newscripting)
+importPackage(Packages.scripting.newscripting)
 importPackage(Packages.constants)
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";

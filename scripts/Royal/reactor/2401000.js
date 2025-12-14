@@ -3,6 +3,6 @@ function act() {
     rm.changeMusic("Bgm14/HonTale");
     rm.spawnMonster(8810026,71,260);
     //rm.getMap().killMonster(rm.getMap().getMonsterById(8810026));
-    rm.mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ È¥Å×ÀÏÀÌ ³ªÅ¸³µ½À´Ï´Ù!");
+    rm.mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ í˜¼í…Œì¼ì´ ë‚˜íƒ€ë‚¬ìŠµë‹ˆë‹¤!");
 	}
 }

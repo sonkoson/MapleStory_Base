@@ -18,14 +18,14 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-var chat = "ÁøÁ¤ÇÑ °­ÇÔÀ» ¿øÇÏ´Â°¡?\r\n";
-chat += "±×·¸´Ù¸é #b°¢¼º Æ÷ÀÎÆ®#k·Î ÁøÁ¤ÇÑ °­ÇÔÀ» Ã£¾Æº¸´Â°Ç ¾î¶§?\r\n\r\n";
-chat += "#e#rÇöÀç º¸À¯ÁßÀÎ °¢¼º Æ÷ÀÎÆ® : #k" + cm.getPlayer().getGP() + "\r\n";
-chat += "#r#eÇöÀç ´©ÀûµÈ ½ºÇÇ¸´ Æ÷ÀÎÆ® : #k" + cm.getPlayer().getSpiritp() + "\r\n";
-chat += "\r\n#e<°¢¼º ¾È³»>#n#b\r\n";
-chat += "\r\n	°¢¼ºÆ÷ÀÎÆ®´Â ¿©½ÅÀÇ ´«¹°¿¡¼­ È¹µæ °¡´É ÇÕ´Ï´Ù.\r\n";
-chat += "	°¢¼ºÀ» ÇÏ±âÀ§ÇØ¼± [500 °¢¼º Æ÷ÀÎÆ®]°¡ ÇÊ¿äÇÕ´Ï´Ù.\r\n";
-chat += "	°¢¼ºÀ» ÇßÀ»½Ã¿¡´Â AP¿Í ½ºÇÇ¸´Æ÷ÀÎÆ®¸¦ È¹µæ ÇÕ´Ï´Ù.\r\n";
+var chat = "ì§„ì •í•œ ê°•í•¨ì„ ì›í•˜ëŠ”ê°€?\r\n";
+chat += "ê·¸ë ‡ë‹¤ë©´ #bê°ì„± í¬ì¸íŠ¸#kë¡œ ì§„ì •í•œ ê°•í•¨ì„ ì°¾ì•„ë³´ëŠ”ê±´ ì–´ë•Œ?\r\n\r\n";
+chat += "#e#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°ì„± í¬ì¸íŠ¸ : #k" + cm.getPlayer().getGP() + "\r\n";
+chat += "#r#eí˜„ì¬ ëˆ„ì ëœ ìŠ¤í”¼ë¦¿ í¬ì¸íŠ¸ : #k" + cm.getPlayer().getSpiritp() + "\r\n";
+chat += "\r\n#e<ê°ì„± ì•ˆë‚´>#n#b\r\n";
+chat += "\r\n	ê°ì„±í¬ì¸íŠ¸ëŠ” ì—¬ì‹ ì˜ ëˆˆë¬¼ì—ì„œ íšë“ ê°€ëŠ¥ í•©ë‹ˆë‹¤.\r\n";
+chat += "	ê°ì„±ì„ í•˜ê¸°ìœ„í•´ì„  [500 ê°ì„± í¬ì¸íŠ¸]ê°€ í•„ìš”í•©ë‹ˆë‹¤.\r\n";
+chat += "	ê°ì„±ì„ í–ˆì„ì‹œì—ëŠ” APì™€ ìŠ¤í”¼ë¦¿í¬ì¸íŠ¸ë¥¼ íšë“ í•©ë‹ˆë‹¤.\r\n";
 
 cm.sendYesNo(chat);
 } else if (status == 1) {
@@ -36,10 +36,10 @@ var Jessica = cm.getPlayer().getSpiritp() + jessica2;
 cm.gainAp(jessica);
 cm.getPlayer().gainGP(-500);
 cm.getPlayer().addSpiritPoint(jessica2);
-cm.sendOk("#bAbillit Points + " + jessica + "\r\n½ºÇÇ¸´ Æ÷ÀÎÆ® + " + jessica2 + "\r\n½ºÇÇ¸´ Æ÷ÀÎÆ® ÇÕ°è : " + cm.getPlayer().getSpiritp() + "\r\n\r\n#r°¢¼º#k ÇÑ°ÍÀ» ÃàÇÏÇÑ´Ù.");
+cm.sendOk("#bAbillit Points + " + jessica + "\r\nìŠ¤í”¼ë¦¿ í¬ì¸íŠ¸ + " + jessica2 + "\r\nìŠ¤í”¼ë¦¿ í¬ì¸íŠ¸ í•©ê³„ : " + cm.getPlayer().getSpiritp() + "\r\n\r\n#rê°ì„±#k í•œê²ƒì„ ì¶•í•˜í•œë‹¤.");
 cm.dispose();
 } else {
-cm.sendOk("°¢¼º Æ÷ÀÎÆ®´Â È®½ÇÈ÷ ¸ğ¿©ÀÖ´Â°Ç°¡?");
+cm.sendOk("ê°ì„± í¬ì¸íŠ¸ëŠ” í™•ì‹¤íˆ ëª¨ì—¬ìˆëŠ”ê±´ê°€?");
 cm.dispose();
 }
 } else {

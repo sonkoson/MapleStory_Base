@@ -23,7 +23,7 @@ function action(mode, type, sel) {
         status++;
     }
     if (status == 0) {	
-	cm.sendPlayerToNpcS("µå·¡°ïÀÇ ¾ËÀ» ¹ß°ßÇß´Ù!");
+	cm.sendPlayerToNpcS("ë“œë˜ê³¤ì˜ ì•Œì„ ë°œê²¬í–ˆë‹¤!");
 	cm.showEffect("killing/clear");
     } else {
 	cm.warp(993000601);

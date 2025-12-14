@@ -2,8 +2,8 @@ var seld, seld2;
 var enter = "\r\n"
 var ch = 0;
 
-var Potential = ["Å©¸®Æ¼ÄÃ µ¥¹ÌÁö + 8 %", "º¸½º °ø°İ ½Ã µ¥¹ÌÁö + 40 % ", "¸Ş¼Ò È¹µæ·® + 20% ", "¾ÆÀÌÅÛ È¹µæ È®·ü + 20 % ", "¿Ã½ºÅİ + 20 % ", "°ø°İ·Â + 12% ", "¸¶·Â + 12% ", "¿Ã½ºÅİ + 12%", "Å©¸®Æ¼ÄÃ È®·ü + 12% ",
-"ÄğÅ¸ÀÓ °¨¼Ò + 10%","¹æ¾îÀ² ¹«½Ã + 30%","Èû + 12%","µ¦½º + 12%","ÀÎÆ® + 12%","·° + 12%","Ã¼·Â + 12%"];
+var Potential = ["í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ + 8 %", "ë³´ìŠ¤ ê³µê²© ì‹œ ë°ë¯¸ì§€ + 40 % ", "ë©”ì†Œ íšë“ëŸ‰ + 20% ", "ì•„ì´í…œ íšë“ í™•ë¥  + 20 % ", "ì˜¬ìŠ¤í…Ÿ + 20 % ", "ê³µê²©ë ¥ + 12% ", "ë§ˆë ¥ + 12% ", "ì˜¬ìŠ¤í…Ÿ + 12%", "í¬ë¦¬í‹°ì»¬ í™•ë¥  + 12% ",
+"ì¿¨íƒ€ì„ ê°ì†Œ + 10%","ë°©ì–´ìœ¨ ë¬´ì‹œ + 30%","í˜ + 12%","ë±ìŠ¤ + 12%","ì¸íŠ¸ + 12%","ëŸ­ + 12%","ì²´ë ¥ + 12%"];
 var Potentiallist = [];
 var itemid;
 
@@ -28,18 +28,18 @@ function action(M, T, S) {
 	    
 
 	if(St == 0) {
-		var msg ="ÀáÀç´É·Â ºÎ¿© ½Ã½ºÅÛ"+enter;
-		//msg+="#L1#  À­ÀáÀç ¼³Á¤"+enter;
-		msg+="#L2#  ¾Æ·§ÀáÀç ¼³Á¤"+enter;
+		var msg ="ì ì¬ëŠ¥ë ¥ ë¶€ì—¬ ì‹œìŠ¤í…œ"+enter;
+		//msg+="#L1#  ìœ—ì ì¬ ì„¤ì •"+enter;
+		msg+="#L2#  ì•„ë«ì ì¬ ì„¤ì •"+enter;
 		cm.sendSimple(msg);
 	} else if(St == 1) {
 		seld = S;
 		if(!cm.haveItem(4310237, seld*1)){
-			cm.sendOk("ÄÚÀÎÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+			cm.sendOk("ì½”ì¸ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
-		var msg ="ÀáÀç´É·ÂÀ» ºÎ¿©ÇÒ ¾ÆÀÌÅÛÀ» ¼±ÅÃÇØÁÖ¼¼¿ä."+enter+enter;
+		var msg ="ì ì¬ëŠ¥ë ¥ì„ ë¶€ì—¬í•  ì•„ì´í…œì„ ì„ íƒí•´ì£¼ì„¸ìš”."+enter+enter;
 		for (j = 0; j < cm.getInventory(1).getSlotLimit(); j++) {
 			if (cm.getInventory(1).getItem(j) != null) {
 				itemid = cm.getInventory(1).getItem(j).getItemId();
@@ -53,11 +53,11 @@ function action(M, T, S) {
 			itemid = cm.getInventory(1).getItem(S);
 		}
 		if(itemid.getPotential1() == 0 && seld == 2){
-			cm.sendOk("À­ÀáÀç´É·ÂÀÌ ¾øÀ¸¸é ºÒ°¡´ÉÇÕ´Ï´Ù.");
+			cm.sendOk("ìœ—ì ì¬ëŠ¥ë ¥ì´ ì—†ìœ¼ë©´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
-		var msg ="ÀáÀç´É·ÂÀ» ¼±ÅÃÇØÁÖ¼¼¿ä."+enter+enter;
+		var msg ="ì ì¬ëŠ¥ë ¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”."+enter+enter;
 		for(var i = 0; i < Potential.length; i++){
 			msg+="#L"+i+"# #b"+Potential[i]+"#k"+enter;
 		}
@@ -78,7 +78,7 @@ function action(M, T, S) {
                                     cm.gainItem(2437279, -1);
 		}
 		cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.getByType(1));
-		cm.sendOk("ÀáÀç´É·ÂÀÌ Àû¿ëµÇ¼Ë½À´Ï´Ù.");
+		cm.sendOk("ì ì¬ëŠ¥ë ¥ì´ ì ìš©ë˜ì…§ìŠµë‹ˆë‹¤.");
 		cm.dispose();
 	}
 }

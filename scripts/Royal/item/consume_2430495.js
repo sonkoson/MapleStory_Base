@@ -19,23 +19,23 @@ function action(mode, type, selection) {
     }
     
     if (status == 0) {
-        cm.sendYesNo("ÄÚµğÀü¿ëÅÛ ·£´ı »óÀÚ ¸¦ ¿©½Ã°Ú½À´Ï±î? #b¸ğµç ÀÎº¥Åä¸® °ø°£ÀÌ 5Ä­ ÀÌ»ó#kÇÊ¿äÇÕ´Ï´Ù. ¶ÇÇÑ, ¼ÒÁö¸Ş¼Ò°¡ 20¾ï ¹Ì¸¸ÀÌ¾î¾ß ÇÕ´Ï´Ù.");
+        cm.sendYesNo("ì½”ë””ì „ìš©í…œ ëœë¤ ìƒì ë¥¼ ì—¬ì‹œê² ìŠµë‹ˆê¹Œ? #bëª¨ë“  ì¸ë²¤í† ë¦¬ ê³µê°„ì´ 5ì¹¸ ì´ìƒ#kí•„ìš”í•©ë‹ˆë‹¤. ë˜í•œ, ì†Œì§€ë©”ì†Œê°€ 20ì–µ ë¯¸ë§Œì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
     } else if (status == 1) {
-        var item = "ÄÚµğÀü¿ëÅÛ ¿¡¼­ ¾Æ·¡ÀÇ ¾ÆÀÌÅÛÀÌ ³ª¿Ô½À´Ï´Ù.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n";
+        var item = "ì½”ë””ì „ìš©í…œ ì—ì„œ ì•„ë˜ì˜ ì•„ì´í…œì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n";
 	var leftslot1 = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.SETUP).getNumFreeSlot();
         if (leftslot1 < 5) {
-            cm.sendOk("ÀÎº¥Åä¸® °ø°£ÀÌ ÃÖ¼ÒÇÑ 5Ä­Àº ÇÊ¿äÇÕ´Ï´Ù. ¼³Ä¡ ÅÇÀÇ °ø°£À» 5Ä­ÀÌ»ó ºñ¿öÁÖ½Å ÈÄ ´Ù½Ã ¿­¾îÁÖ¼¼¿ä.");
+            cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ìµœì†Œí•œ 5ì¹¸ì€ í•„ìš”í•©ë‹ˆë‹¤. ì„¤ì¹˜ íƒ­ì˜ ê³µê°„ì„ 5ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì‹  í›„ ë‹¤ì‹œ ì—´ì–´ì£¼ì„¸ìš”.");
             cm.dispose();
             return;
         }
 	var leftslot3 = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot();
         if (leftslot3 < 5) {
-            cm.sendOk("ÀÎº¥Åä¸® °ø°£ÀÌ ÃÖ¼ÒÇÑ 5Ä­Àº ÇÊ¿äÇÕ´Ï´Ù. Àåºñ ÅÇÀÇ °ø°£À» 5Ä­ÀÌ»ó ºñ¿öÁÖ½Å ÈÄ ´Ù½Ã ¿­¾îÁÖ¼¼¿ä.");
+            cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ìµœì†Œí•œ 5ì¹¸ì€ í•„ìš”í•©ë‹ˆë‹¤. ì¥ë¹„ íƒ­ì˜ ê³µê°„ì„ 5ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì‹  í›„ ë‹¤ì‹œ ì—´ì–´ì£¼ì„¸ìš”.");
             cm.dispose();
             return;
         }
         if (cm.getMeso() > 2147400000) {
-            cm.sendOk("21¾ï ¸Ş¼Ò ÀÌ»óÀ» ¼ÒÀ¯ÁßÀÌ½Å ºĞµéÀº ¸Ş¼Ò¸¦ È­Æä·Î ±³È¯ÇØÁÖ½Å ÈÄ »ç¿ëÇÏ¼¼¿ä.");
+            cm.sendOk("21ì–µ ë©”ì†Œ ì´ìƒì„ ì†Œìœ ì¤‘ì´ì‹  ë¶„ë“¤ì€ ë©”ì†Œë¥¼ í™”í˜ë¡œ êµí™˜í•´ì£¼ì‹  í›„ ì‚¬ìš©í•˜ì„¸ìš”.");
             cm.dispose();
             return;
         }
@@ -55,19 +55,19 @@ function action(mode, type, selection) {
             var rand = Math.floor(Math.random() * 30);
             if (rand < 10) {
                 var calculate = Math.floor(Math.random() * normalequip.length);
-                item += "#i"+normalequip[calculate]+"# #z"+normalequip[calculate]+"# 1°³\r\n";
+                item += "#i"+normalequip[calculate]+"# #z"+normalequip[calculate]+"# 1ê°œ\r\n";
                 cm.gainItem(normalequip[calculate], 1);
             } else if (rand < 20) {
                 var calculate = Math.floor(Math.random() * rareequip.length);
-                item += "#i"+rareequip[calculate]+"# #z"+rareequip[calculate]+"# 1°³\r\n";
+                item += "#i"+rareequip[calculate]+"# #z"+rareequip[calculate]+"# 1ê°œ\r\n";
                 cm.gainItem(rareequip[calculate], 1);
             } else if (rand < 30 && Packages.objects.utils.Randomizer.isSuccess(50)) {
                 var calculate = Math.floor(Math.random() * rareacc.length);
-                item += "#i"+rareacc[calculate]+"# #z"+rareacc[calculate]+"# 1°³\r\n";
+                item += "#i"+rareacc[calculate]+"# #z"+rareacc[calculate]+"# 1ê°œ\r\n";
                 cm.gainItem(rareacc[calculate], 1);
             } else if (rand < 30) {
                 var calculate = Math.floor(Math.random() * cube.length);
-                item += "#i"+cube[calculate][0]+"# #t"+cube[calculate][0]+"# "+cube[calculate][1]+"°³\r\n";
+                item += "#i"+cube[calculate][0]+"# #t"+cube[calculate][0]+"# "+cube[calculate][1]+"ê°œ\r\n";
                 cm.gainItem(cube[calculate][0], cube[calculate][1]);
             } else if (rand < 30) {
                 var meso = 0;
@@ -80,7 +80,7 @@ function action(mode, type, selection) {
                 } else {
                     meso = Packages.objects.utils.Randomizer.rand(10000000, 333300000);
                 }
-                item += "#e#b"+meso+"#k#n ¸Ş¼Ò\r\n";
+                item += "#e#b"+meso+"#k#n ë©”ì†Œ\r\n";
                 cm.gainMeso(meso);
             } else {
                 var calculate = Math.floor(Math.random() * leaf.length);
@@ -96,7 +96,7 @@ function action(mode, type, selection) {
                 } else if (leaf[calculate][1] == 4) {
                     quantity = Packages.objects.utils.Randomizer.rand(500, 1000);
                 }
-                item += "#i"+leaf[calculate][0]+"# #t"+leaf[calculate][0]+"# "+quantity+"°³\r\n";
+                item += "#i"+leaf[calculate][0]+"# #t"+leaf[calculate][0]+"# "+quantity+"ê°œ\r\n";
                 cm.gainItem(leaf[calculate][0], quantity);
             }
         }

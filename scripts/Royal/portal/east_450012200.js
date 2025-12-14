@@ -3,6 +3,6 @@ function enter(pi) {
     pi.warp(450012300,"sp");
 	return true;
 	} else {
-	pi.playerMessage("Æ÷Å»À» ÀÌ¿ëÇÏ·Á¸é ·¹º§ÀÌ 255ÀÌ»ó ÀÌ¿©¾ßÇÕ´Ï´Ù.");
+	pi.playerMessage("í¬íƒˆì„ ì´ìš©í•˜ë ¤ë©´ ë ˆë²¨ì´ 255ì´ìƒ ì´ì—¬ì•¼í•©ë‹ˆë‹¤.");
 	}
 }

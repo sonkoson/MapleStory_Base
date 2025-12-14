@@ -2,15 +2,15 @@ var st = 0;
 var status = -1;
 importPackage(Packages.server.quest);
 bossname = [
-    ["½º¿ì", 13, "Normal_Lotus", "Hard_Lotus"],
-    ["µ¥¹Ì¾È", 15, "Normal_Demian", "Hard_Demian"],
-    ["·ç½Ãµå", 19, "Easy_Lucid", "Normal_Lucid", "Hard_Lucid"],
-    ["Àª", 23, "Normal_Will", "Hard_Will"],
-    //["µáÄÌ", 27, "Normal_Dunkel", "Hard_Dunkel"],
-    //["´õ½ºÅ©", 26, "Normal_Dusk", "Chaos_Dusk"],
-    //["°íÅëÀÇ ¹Ì±Ã : Áø Èú¶ó", 24, "Normal_JinHillah"],
-    //["ÃÊ¿ùÀÚ : °ËÀº ¸¶¹ı»ç", 25, "Black_Mage", "Hard_Dunkel"],
-    //["¼±ÅÃ¹ŞÀº ¼¼·»", 28, "Hard_Seren"],
+    ["ìŠ¤ìš°", 13, "Normal_Lotus", "Hard_Lotus"],
+    ["ë°ë¯¸ì•ˆ", 15, "Normal_Demian", "Hard_Demian"],
+    ["ë£¨ì‹œë“œ", 19, "Easy_Lucid", "Normal_Lucid", "Hard_Lucid"],
+    ["ìœŒ", 23, "Normal_Will", "Hard_Will"],
+    //["ë“„ì¼ˆ", 27, "Normal_Dunkel", "Hard_Dunkel"],
+    //["ë”ìŠ¤í¬", 26, "Normal_Dusk", "Chaos_Dusk"],
+    //["ê³ í†µì˜ ë¯¸ê¶ : ì§„ íë¼", 24, "Normal_JinHillah"],
+    //["ì´ˆì›”ì : ê²€ì€ ë§ˆë²•ì‚¬", 25, "Black_Mage", "Hard_Dunkel"],
+    //["ì„ íƒë°›ì€ ì„¸ë Œ", 28, "Hard_Seren"],
            ]
 function start() {
     status = -1;
@@ -31,19 +31,19 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        ¸» = "#fs11##b[#h #]#fc0xFF000000# : ¾î¶² #rº¸½º#fc0xFF000000#ÀÇ #bÀÔÀå È½¼ö#fc0xFF000000#¸¦ 1È¸ Â÷°¨ ÇÒ±î?\r\n#r0È¸ ¹Ì¸¸#fc0xFF000000#À¸·Î °¨¼ÒÇÏÁö´Â ¾ÊÀ¸´Ï ÁÖÀÇÇÏÀÚ\r\n\r\n";
+        ë§ = "#fs11##b[#h #]#fc0xFF000000# : ì–´ë–¤ #rë³´ìŠ¤#fc0xFF000000#ì˜ #bì…ì¥ íšŸìˆ˜#fc0xFF000000#ë¥¼ 1íšŒ ì°¨ê° í• ê¹Œ?\r\n#r0íšŒ ë¯¸ë§Œ#fc0xFF000000#ìœ¼ë¡œ ê°ì†Œí•˜ì§€ëŠ” ì•Šìœ¼ë‹ˆ ì£¼ì˜í•˜ì\r\n\r\n";
         for (var a = 0; a < bossname.length; a++) {
-            ¸» += "#L"+a+"##b#fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[a][1]+"/Icon/normal/0# "+bossname[a][0]+"#fc0xFF000000#\r\n";
+            ë§ += "#L"+a+"##b#fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[a][1]+"/Icon/normal/0# "+bossname[a][0]+"#fc0xFF000000#\r\n";
         }
-        cm.sendSimpleS(¸», 2);
+        cm.sendSimpleS(ë§, 2);
     } else if (status == 1) {
         st = selection;
-        cm.sendYesNoS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#n#fs11##fc0xFF000000# ÀÔÀå È½¼ö¸¦ 1È¸ Â÷°¨ ÇÏ½Ã°Ú¾î¿ä?\r\n\r\n#fs11##r¡Ø »ç¿ë½Ã µÇµ¹¸± ¼ö ¾ø½À´Ï´Ù", 4, 9010061);
+        cm.sendYesNoS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#n#fs11##fc0xFF000000# ì…ì¥ íšŸìˆ˜ë¥¼ 1íšŒ ì°¨ê° í•˜ì‹œê² ì–´ìš”?\r\n\r\n#fs11##râ€» ì‚¬ìš©ì‹œ ë˜ëŒë¦´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤", 4, 9010061);
     } else if (status == 2) {
 
         cm.gainItem(2430032, -1);
         cm.getPlayer().addKV(bossname[st][2], parseInt(cm.getPlayer().getV(bossname[st][2])) - 1);
-        // ´Ù¸¥ ³­ÀÌµµ ÀÖÀ»½Ã ¸ğµÎ ÃÊ±âÈ­
+        // ë‹¤ë¥¸ ë‚œì´ë„ ìˆì„ì‹œ ëª¨ë‘ ì´ˆê¸°í™”
         if (bossname[st][3] != null) {
             cm.getPlayer().addKV(bossname[st][3], parseInt(cm.getPlayer().getV(bossname[st][3])) - 1);
         }
@@ -51,7 +51,7 @@ function action(mode, type, selection) {
             cm.getPlayer().addKV(bossname[st][4], parseInt(cm.getPlayer().getV(bossname[st][4])) - 1);
         }
 
-        // 0È¸ ¹Ì¸¸ÀÏ½Ã 0È¸·Î º¯°æ
+        // 0íšŒ ë¯¸ë§Œì¼ì‹œ 0íšŒë¡œ ë³€ê²½
         if (parseInt(cm.getPlayer().getV(bossname[st][2])) < 0) {
             cm.getPlayer().addKV(bossname[st][2], "0");
         }
@@ -61,8 +61,8 @@ function action(mode, type, selection) {
         if (parseInt(cm.getPlayer().getV(bossname[st][4])) < 0) {
             cm.getPlayer().addKV(bossname[st][4], "0");
         }
-        cm.addConsumeLog(2430032, "º¸½º Â÷°¨ »ç¿ë (¾ÆÀÌÅÛ : 2430032, Â÷°¨ º¸½º : " + bossname[st][0] + ")");
-        cm.sendOkS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#n#fs11##fc0xFF000000# ÀÔÀå È½¼ö°¡ 1È¸ Â÷°¨ µÇ¾ú½À´Ï´Ù.", 4, 9010061);
+        cm.addConsumeLog(2430032, "ë³´ìŠ¤ ì°¨ê° ì‚¬ìš© (ì•„ì´í…œ : 2430032, ì°¨ê° ë³´ìŠ¤ : " + bossname[st][0] + ")");
+        cm.sendOkS("#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/"+bossname[st][1]+"/Icon/normal/0#\r\n"+bossname[st][0]+"#n#fs11##fc0xFF000000# ì…ì¥ íšŸìˆ˜ê°€ 1íšŒ ì°¨ê° ë˜ì—ˆìŠµë‹ˆë‹¤.", 4, 9010061);
         cm.dispose();
     }
 }

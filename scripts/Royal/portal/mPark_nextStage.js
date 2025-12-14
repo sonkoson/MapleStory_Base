@@ -1,16 +1,16 @@
 /*
- * Ç»¾î¿Â¶óÀÎ ¼Ò½º ½ºÅ©¸³Æ® ÀÔ´Ï´Ù.
+ * í“¨ì–´ì˜¨ë¼ì¸ ì†ŒìŠ¤ ìŠ¤í¬ë¦½íŠ¸ ì…ë‹ˆë‹¤.
  * 
- * Æ÷Å»À§Ä¡ : 
- * Æ÷Å»¼³¸í : 
+ * í¬íƒˆìœ„ì¹˜ : 
+ * í¬íƒˆì„¤ëª… : 
  * 
- * Á¦ÀÛ : ÁÖÅ©ºí·¢
+ * ì œì‘ : ì£¼í¬ë¸”ë™
  * 
  */
 
 function enter(pi) {
 	if (pi.getClient().getChannelServer().getMapFactory().getMap(pi.getPlayer().getMapId()).getNumMonsters() > 0) {
-		pi.getPlayer().dropMessage(5, "¸ğµç ¸ó½ºÅÍ¸¦ Ã³Ä¡ÇÏ¼Å¾ß ´ÙÀ½ ¸ÊÀ¸·Î ÀÌµ¿ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+		pi.getPlayer().dropMessage(5, "ëª¨ë“  ëª¬ìŠ¤í„°ë¥¼ ì²˜ì¹˜í•˜ì…”ì•¼ ë‹¤ìŒ ë§µìœ¼ë¡œ ì´ë™í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 	} else {
 		pi.resetMap(pi.getPlayer().getMapId() + 100, true);
 		pi.warp(pi.getPlayer().getMapId() + 100, 0);

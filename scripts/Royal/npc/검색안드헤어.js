@@ -1,4 +1,4 @@
-﻿importPackage(Packages.tools.RandomStream);
+importPackage(Packages.tools.RandomStream);
 
 var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
 var MapleStat = Packages.client.MapleStat

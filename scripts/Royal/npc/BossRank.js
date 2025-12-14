@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 importPackage(Packages.server);
 
 req = [

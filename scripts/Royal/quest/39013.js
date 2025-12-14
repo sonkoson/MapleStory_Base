@@ -13,11 +13,11 @@ function start(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        qm.sayNpc("ÇÓÇÓ! ÀÌºÁ", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("í•¥í•¥! ì´ë´", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 1) {
         qm.sayNpc("?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
     } else if (status == 2) {
-        qm.askAccept("#face0#ÇÒ ¸»ÀÌ ÀÖ¾î.\r\n¾ÆÁÖ Áß¿äÇÑ ÀÏÀÌ¾ß. ÇÓÇÓ!\r\n#r(¼ö¶ô ½Ã ¹Ù·Î ÀÌµ¿µË´Ï´Ù.)", GameObjectType.Npc, 1, ScriptMessageFlag.Scenario);
+        qm.askAccept("#face0#í•  ë§ì´ ìˆì–´.\r\nì•„ì£¼ ì¤‘ìš”í•œ ì¼ì´ì•¼. í•¥í•¥!\r\n#r(ìˆ˜ë½ ì‹œ ë°”ë¡œ ì´ë™ë©ë‹ˆë‹¤.)", GameObjectType.Npc, 1, ScriptMessageFlag.Scenario);
     } else if (status == 3) {
         qm.forceStartQuest();
 		qm.warp(450002000);
@@ -32,31 +32,31 @@ function end(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        qm.sayNpc("#face3#ÇÓÇÓ! ¾î¼­ ¿À°Ô!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("#face3#í•¥í•¥! ì–´ì„œ ì˜¤ê²Œ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 1) {
-        qm.sayNpc("°ÅÁş¸»ÀïÀÌ¿¡°Ô ¹«½¼ ÀÏÀÎ°¡¿ä?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        qm.sayNpc("ê±°ì§“ë§ìŸì´ì—ê²Œ ë¬´ìŠ¨ ì¼ì¸ê°€ìš”?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
     } else if (status == 2) {
-        qm.sayNpc("ÇÓ! ¾ÆÁ÷µµ ¸¶À½¿¡ ´ã¾ÆµÎ°í ÀÖ´Â °Ç°¡! ³»°¡ »ç°úÇÏÁö!\r\n¿ÀÇØ°¡ ÀÖ¾ú´ø °Í °°±º! ÇÓÇÓ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("í•¥! ì•„ì§ë„ ë§ˆìŒì— ë‹´ì•„ë‘ê³  ìˆëŠ” ê±´ê°€! ë‚´ê°€ ì‚¬ê³¼í•˜ì§€!\r\nì˜¤í•´ê°€ ìˆì—ˆë˜ ê²ƒ ê°™êµ°! í•¥í•¥!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 3) {
-        qm.sayNpc("¹«Åä¿ÍÀÇ ÀÏµµ Àß ÇØ°áµÇ°í ½Ã¹Ì¾Æµµ Á¤½Ä ÁÖ¹æÀåÀ¸·Î µé¾î¿À°í ³ª¼± ÁÖ¹æ¿¡ ¿©À¯°¡ »ı±â´Â ÁÙ ¾Ë¾Ò¾î... ±×·±µ¥...", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("ë¬´í† ì™€ì˜ ì¼ë„ ì˜ í•´ê²°ë˜ê³  ì‹œë¯¸ì•„ë„ ì •ì‹ ì£¼ë°©ì¥ìœ¼ë¡œ ë“¤ì–´ì˜¤ê³  ë‚˜ì„  ì£¼ë°©ì— ì—¬ìœ ê°€ ìƒê¸°ëŠ” ì¤„ ì•Œì•˜ì–´... ê·¸ëŸ°ë°...", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 4) {
-        qm.sayNpc("ÀÌÁ¦´Â ÁÖº¯ÀÇ ¸ó½ºÅÍµé±îÁö ³¿»õ¸¦ ¸Ã°í ÁÖ¹æ¿¡ Ä§ÀÔÀ» ÇÏ±â ½ÃÀÛÇß´Ù! ÇÓ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("ì´ì œëŠ” ì£¼ë³€ì˜ ëª¬ìŠ¤í„°ë“¤ê¹Œì§€ ëƒ„ìƒˆë¥¼ ë§¡ê³  ì£¼ë°©ì— ì¹¨ì…ì„ í•˜ê¸° ì‹œì‘í–ˆë‹¤! í•¥!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 5) {
-        qm.sayNpc("ÁÖ¹æÀå´Ô°ú ½Ã¹Ì¾Æ´Â ±¦Âú³ª¿ä?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        qm.sayNpc("ì£¼ë°©ì¥ë‹˜ê³¼ ì‹œë¯¸ì•„ëŠ” ê´œì°®ë‚˜ìš”?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
     } else if (status == 6) {
-        qm.sayNpc("#face0#ÇÓ! ¿ä¸®»ç°¡ ¾øÀ¸¸é ¿ä¸®°¡ ¾ø´Ù´Â °Ç ¾Æ´ÂÁö ¿ä¸®¸¸ ½ï ÈÉÃÄ °¡°í ÀÖ´Â °Ô ´õ È­°¡ ³­´Ù°í!! ÇÓ!!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("#face0#í•¥! ìš”ë¦¬ì‚¬ê°€ ì—†ìœ¼ë©´ ìš”ë¦¬ê°€ ì—†ë‹¤ëŠ” ê±´ ì•„ëŠ”ì§€ ìš”ë¦¬ë§Œ ì™ í›”ì³ ê°€ê³  ìˆëŠ” ê²Œ ë” í™”ê°€ ë‚œë‹¤ê³ !! í•¥!!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 7) {
-        qm.sayNpc("#face3#±×·¡¼­ ÁÖº¯ ¸ó½ºÅÍµéÀ» Á» È¥Âá ³»ÁÖ¸é ÁÁ°Ú±º! ÇÓ?", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("#face3#ê·¸ë˜ì„œ ì£¼ë³€ ëª¬ìŠ¤í„°ë“¤ì„ ì¢€ í˜¼ì­ ë‚´ì£¼ë©´ ì¢‹ê² êµ°! í•¥?", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 8) {
-        qm.sayNpc("À¸À½...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        qm.sayNpc("ìœ¼ìŒ...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
     } else if (status == 9) {
-        qm.sayNpc("ÁÖ¹æ º¸Á¶ ¾÷¹«¶ó°í »ı°¢ÇØ¶ó! ÇÓ! ¹«Åä¿Í ¸¶À» ÁÖ¹ÎµéÀ» À§ÇÑ ÀÏÀÌ´Ï\r\n#bÀÏ´ç#kµµ ¼·¼·Ä¡ ¾Ê°Ô ÁÖÁö! ÇÓ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("ì£¼ë°© ë³´ì¡° ì—…ë¬´ë¼ê³  ìƒê°í•´ë¼! í•¥! ë¬´í† ì™€ ë§ˆì„ ì£¼ë¯¼ë“¤ì„ ìœ„í•œ ì¼ì´ë‹ˆ\r\n#bì¼ë‹¹#kë„ ì„­ì„­ì¹˜ ì•Šê²Œ ì£¼ì§€! í•¥!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 10) {
-        qm.sayNpc("¹«Åä¿Í ÀÌ°÷À» À§ÇÑ ÀÏÀÌ¶ó¸é µµ¿ï°Ô¿ä.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        qm.sayNpc("ë¬´í† ì™€ ì´ê³³ì„ ìœ„í•œ ì¼ì´ë¼ë©´ ë„ìš¸ê²Œìš”.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
     } else if (status == 11) {
-        qm.sayNpc("#face3#ÇÓÇÓÇÓ! ÁÁ¾Æ.\r\nº¸Á¶ ¾÷¹«´Â ¸ÅÀÏ #b¼¼ °¡Áö#k¸¦ ÁÙ°Å¾ß.\r\nÆ¯º°È÷ ¿À´ÃÀÇ ¾÷¹« Áß ¸¶À½¿¡ ¾Èµå´Â ¾÷¹«´Â ±³Ã¼ÇÒ ¼ö ÀÖ´Â ±âÈ¸µµ ÁÖÁö! ÇÓÇÓÇÓ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("#face3#í•¥í•¥í•¥! ì¢‹ì•„.\r\në³´ì¡° ì—…ë¬´ëŠ” ë§¤ì¼ #bì„¸ ê°€ì§€#kë¥¼ ì¤„ê±°ì•¼.\r\níŠ¹ë³„íˆ ì˜¤ëŠ˜ì˜ ì—…ë¬´ ì¤‘ ë§ˆìŒì— ì•ˆë“œëŠ” ì—…ë¬´ëŠ” êµì²´í•  ìˆ˜ ìˆëŠ” ê¸°íšŒë„ ì£¼ì§€! í•¥í•¥í•¥!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 12) {
-        qm.sayNpc("´ç¿¬È÷ º¸Á¶ ¾÷¹«¿¡ ´ëÇÑ º¸»óµµ ÀÖÀ¸´Ï ¾ğÁ¦µç ÁØºñ°¡ µÇ¸é ³ª¿¡°Ô ¸»ÇÏ¶ó°í ÇÓÇÓÇÓ!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
+        qm.sayNpc("ë‹¹ì—°íˆ ë³´ì¡° ì—…ë¬´ì— ëŒ€í•œ ë³´ìƒë„ ìˆìœ¼ë‹ˆ ì–¸ì œë“  ì¤€ë¹„ê°€ ë˜ë©´ ë‚˜ì—ê²Œ ë§í•˜ë¼ê³  í•¥í•¥í•¥!", GameObjectType.Npc, false, true, 1, ScriptMessageFlag.Scenario);
     } else if (status == 13) {
 		qm.forceCompleteQuest();
 		qm.dispose();

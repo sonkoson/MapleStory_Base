@@ -23,7 +23,7 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        var msg = "#r#e°Å´ëÇÑ µå·¡°ï°úÀÇ °áÅõ#n#k°¡ ¿ë»ç´ÔÀ» ±â´Ù¸®°í ÀÖ½À´Ï´Ù!\r\n#b#eÀ¯´Ï¿Â ·¹ÀÌµå¿¡ ÀÔÀå#n#k ÇÏ½Ã°Ú½À´Ï±î?";
+        var msg = "#r#eê±°ëŒ€í•œ ë“œë˜ê³¤ê³¼ì˜ ê²°íˆ¬#n#kê°€ ìš©ì‚¬ë‹˜ì„ ê¸°ë‹¤ë¦¬ê³  ìˆìŠµë‹ˆë‹¤!\r\n#b#eìœ ë‹ˆì˜¨ ë ˆì´ë“œì— ì…ì¥#n#k í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
         cm.sendYesNo(msg);
     } else if (status == 1) {
 	var a = Packages.objects.utils.Randomizer.rand(0, 1);
@@ -42,7 +42,7 @@ function action(mode, type, selection) {
 		break;
 	}
 	if (!find) {
-		cm.sendNext("ÇöÀç À¯´Ï¿Â ÀüÅõ¸¦ ÀÌ¿ëÇÏ´Â ¿ë»ç°¡ ¸¹¾Æ ÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇÏ½Ã°Å³ª Àá½Ã ÈÄ ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+		cm.sendNext("í˜„ì¬ ìœ ë‹ˆì˜¨ ì „íˆ¬ë¥¼ ì´ìš©í•˜ëŠ” ìš©ì‚¬ê°€ ë§ì•„ ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•˜ì‹œê±°ë‚˜ ì ì‹œ í›„ ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	}
@@ -50,7 +50,7 @@ function action(mode, type, selection) {
         	var em = cm.getEventManager("unionRaid");
         	var eim = em.readyInstance();
 	if (eim == null) {
-		cm.sendNext("¾Ë ¼ö ¾ø´Â ¿À·ù·Î ÀÎÇÏ¿© ÁøÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+		cm.sendNext("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ë¡œ ì¸í•˜ì—¬ ì§„í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		dispose();
 		return;
 	}

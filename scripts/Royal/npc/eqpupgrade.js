@@ -1,28 +1,28 @@
 var enter = "\r\n";
 var seld = -1;
 
-Æ÷ÄÏ = "#fUI/Basic.img/RoyalBtn/theblackcoin/23#";
-°ËÀº¸¶¹ı»ç = "#fUI/Basic.img/RoyalBtn/theblackcoin/42#";
+í¬ì¼“ = "#fUI/Basic.img/RoyalBtn/theblackcoin/23#";
+ê²€ì€ë§ˆë²•ì‚¬ = "#fUI/Basic.img/RoyalBtn/theblackcoin/42#";
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
-¿£ÅÍ = "\r\n"
-¿£ÅÍ2 = "\r\n\r\n"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
+ì—”í„° = "\r\n"
+ì—”í„°2 = "\r\n\r\n"
 
 function start() {
     status = -1;
@@ -38,13 +38,13 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "º¸½º ÁøÇàÁß¿£ ÀÌ¿ëÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+            cm.getPlayer().dropMessage(5, "ë³´ìŠ¤ ì§„í–‰ì¤‘ì—” ì´ìš©ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
 
         var msg = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        msg += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
+        msg += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
         msg +="#L1##fUI/Basic.img/Zenia/SCBtn/600##l";
         msg +="#L2##fUI/Basic.img/Zenia/SCBtn/601##l";
         msg +="#L3##fUI/Basic.img/Zenia/SCBtn/602##l";
@@ -55,10 +55,10 @@ function action(mode, type, sel) {
         switch (sel) {
             case 1:
             var msg = "#fs11#";
-            msg += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n#fc0xFFFF3300#";
-            msg += »ö + "              #L1##fUI/UIWindow4.img/pointShop/100658/iconShop# Àåºñ ÀÏ¹İ°­È­#l#L2##fUI/UIWindow4.img/pointShop/100658/iconShop# Àåºñ ÃÊ¿ù°­È­#l\r\n\r\n";
-            msg += »ö + "                         #L3##fUI/UIWindow4.img/pointShop/501372/iconShop# #r¸Ş¼Ò°­È­ ÃÊ±âÈ­#l\r\n\r\n";
-            msg += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n#fc0xFFFF3300#";
+            msg += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n#fc0xFFFF3300#";
+            msg += ìƒ‰ + "              #L1##fUI/UIWindow4.img/pointShop/100658/iconShop# ì¥ë¹„ ì¼ë°˜ê°•í™”#l#L2##fUI/UIWindow4.img/pointShop/100658/iconShop# ì¥ë¹„ ì´ˆì›”ê°•í™”#l\r\n\r\n";
+            msg += ìƒ‰ + "                         #L3##fUI/UIWindow4.img/pointShop/501372/iconShop# #rë©”ì†Œê°•í™” ì´ˆê¸°í™”#l\r\n\r\n";
+            msg += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n#fc0xFFFF3300#";
             cm.sendSimple(msg);
             break;
         case 2:

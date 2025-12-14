@@ -17,7 +17,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-	    var cps ="#e∞Ò∂Û∫¡\r\n"
+	    var cps ="#eÍ≥®ÎùºÎ¥ê\r\n"
 	    cps += "#b#L1##v1302212# #t1302212#\r\n";
 	    cps += "#b#L2##v1312114# #t1312114#\r\n";
 	    cps += "#b#L3##v1322154# #t1322154#\r\n";
@@ -36,9 +36,9 @@ function action(mode, type, selection) {
 	    cps += "#b#L16##v1482138# #t1482138#\r\n";
 	    cps += "#b#L17##v1522068# #t1522068#\r\n";
 	    cps += "#b#L18##v1532073# #t1532073#\r\n";
-	    cps += "#b#L19##v1232060# #t1232060#< µ•∏Û æÓ∫•¡Æ >\r\n";
-	    cps += "#b#L20##v1242065# #t1242065#< ¡¶≥Ì >\r\n";
-	    cps += "#b#L21##v1222061# #t1222061#< ø£¡©∏Ø πˆΩ∫≈Õ >\r\n";
+	    cps += "#b#L19##v1232060# #t1232060#< Îç∞Î™¨ Ïñ¥Î≤§Ï†∏ >\r\n";
+	    cps += "#b#L20##v1242065# #t1242065#< Ï†úÎÖº >\r\n";
+	    cps += "#b#L21##v1222061# #t1222061#< ÏóîÏ†§Î¶≠ Î≤ÑÏä§ÌÑ∞ >\r\n";
 	    cm.sendSimple(cps);
 	    
 	 } else if (selection == 1) {

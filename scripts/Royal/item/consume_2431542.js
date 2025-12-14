@@ -1,15 +1,15 @@
 
 /*
 
-    ���� �ҽ� ���� ��ũ��Ʈ �Դϴ�. (���� : Ƽ��)
+    히나 소스 팩의 스크립트 입니다. (제작 : 티썬)
 
-    ���ǽþ��̵� : ?
+    엔피시아이디 : ?
     
-    ���ǽ� �̸� : ������ ���
+    엔피시 이름 : 메이플 운영자
 
-    ���ǽð� �ִ� �� : ?
+    엔피시가 있는 맵 : ?
 
-    ���ǽ� ���� : 40���� ������
+    엔피시 설명 : 40레벨 장비상자
 
 
 */
@@ -31,7 +31,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-	    cm.sendOk("���޿Ϸ�");
+	    cm.sendOk("지급완료");
 		cm.teachSkill(80001246, 1, 1);
 	    cm.gainItem(2431542,-1);
 	    cm.dispose();

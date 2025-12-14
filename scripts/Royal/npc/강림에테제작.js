@@ -1,4 +1,4 @@
-﻿importPackage(Packages.constants);
+importPackage(Packages.constants);
 
 var enter = "\r\n";
 

@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 var enter = "\r\n";
 var seld = -1;
 

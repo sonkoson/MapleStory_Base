@@ -2,9 +2,9 @@ importPackage(java.awt);
 importPackage(Packages.objects.utils);
 importPackage(Packages.network.models);
 
-// ÀÌº¥Æ®¸Å´ÏÀú ÃÊ±âÈ­ÇÒ ³»¿ë(Ã¤³Îº°·Î Àû¿ëµÊ)
+// ì´ë²¤íŠ¸ë§¤ë‹ˆì € ì´ˆê¸°í™”í•  ë‚´ìš©(ì±„ë„ë³„ë¡œ ì ìš©ë¨)
 function init() {
-    //ÀÔÀå °¡´ÉÇÑ ¸Ê °¹¼ö ÃÑ8°³¾¿(ÀÌÁö¿Í ³ë¸»Àº ÅëÇÕ)
+    //ì…ì¥ ê°€ëŠ¥í•œ ë§µ ê°¯ìˆ˜ ì´8ê°œì”©(ì´ì§€ì™€ ë…¸ë§ì€ í†µí•©)
     em.setProperty("status0", "0");
     em.setProperty("Cstatus0", "0");
 
@@ -30,7 +30,7 @@ function playerEntry(eim, player) {
 }
 
 function scheduledTimeout(eim) {
-    //¤¡¤§¤¡¤§
+    //ã„±ã„·ã„±ã„·
     var it = eim.getPlayers().iterator();
     var exitMap = 105200000;
     while (it.hasNext()) {
@@ -135,7 +135,7 @@ function playerExit(eim, player) {
 function allMonstersDead(eim) {}
 
 function leftParty(eim, player) {
-    // Å»Åğ
+    // íƒˆí‡´
     var exitMap = 105200000;
     playerExit(eim, player);
     player.changeMap(exitMap);

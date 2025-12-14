@@ -4,11 +4,11 @@ importPackage(Packages.database);
 importPackage(Packages.launch.world);
 importPackage(Packages.packet.creators);
 
-// ¼¼ÆÃ
+// ì„¸íŒ…
 var status = -1;
 var own = 1221
 var need = 2431136
-var name = "³Ê¿Í ÇÔ²² ¾Æ¸®¾Æ"
+var name = "ë„ˆì™€ í•¨ê»˜ ì•„ë¦¬ì•„"
 function start() {
     status = -1;
     action (1, 0, 0);
@@ -26,7 +26,7 @@ function action(mode, type, selection) {
 	cm.teachSkill(80000000+own, 1, 0)
 	cm.gainItem(need, -1);
 
-	cm.showInfo("[½ºÅ³] "+name+" ¶óÀÌµù È¹µæ!!");
+	cm.showInfo("[ìŠ¤í‚¬] "+name+" ë¼ì´ë”© íšë“!!");
 			cm.updateChar();
 			cm.dispose();
 	}

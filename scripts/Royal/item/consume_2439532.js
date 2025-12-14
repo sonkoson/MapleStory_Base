@@ -19,7 +19,7 @@ var itemlist = [
 	{'itemid' : 2630281, 'qty' : 1}
 	
 ]
-var Ãßµ© = 0;
+var ì¶”ë€ = 0;
 
 function start() {
 	status = -1;
@@ -33,13 +33,13 @@ function action(mode, type, sel) {
 		return;
     	}
 	if (status == 0) {
-		//ÈÄÆ÷ = Packages.objects.utils.Randomizer.rand(30000, 30000);
-                //cm.getPlayer().gainDPoint(ÈÄÆ÷);
-		var msg = "#bÄ­[ç¨]#kÀÇ º£Å¸ Æ¯º° »óÀÚ¿¡¼­\r\n´ÙÀ½°ú°°Àº #bº¸»ó#kÀÌ ³ª¿Ô½À´Ï´Ù.#d\r\n\r\n";
-		//msg += "ÈÄ¿ø Æ÷ÀÎÆ® +"+ÈÄÆ÷+"\r\n";
+		//í›„í¬ = Packages.objects.utils.Randomizer.rand(30000, 30000);
+                //cm.getPlayer().gainDPoint(í›„í¬);
+		var msg = "#bì¹¸[è‘‰]#kì˜ ë² íƒ€ íŠ¹ë³„ ìƒìì—ì„œ\r\në‹¤ìŒê³¼ê°™ì€ #bë³´ìƒ#kì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.#d\r\n\r\n";
+		//msg += "í›„ì› í¬ì¸íŠ¸ +"+í›„í¬+"\r\n";
 		for (i = 0; i < itemlist.length; i ++) {
 			cm.gainItem(itemlist[i]['itemid'],itemlist[i]['qty']);
-			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"°³ \r\n";
+			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"ê°œ \r\n";
 		}
                 cm.gainItem(2439532, -1);
 		cm.sendOk(msg);

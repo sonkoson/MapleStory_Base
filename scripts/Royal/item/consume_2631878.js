@@ -20,7 +20,7 @@ function action(mode, type, selection) {
 		cm.gainItem(2630281, 100);
 		cm.gainItem(2631878, -1);
 	    } else {
-		cm.sendOk("¼ÒºñÃ¢¿¡ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+		cm.sendOk("ì†Œë¹„ì°½ì— ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 	    }
 	}
     }

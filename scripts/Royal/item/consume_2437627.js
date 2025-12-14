@@ -3,7 +3,7 @@ importPackage(Packages.server);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
 importPackage(Packages.server.items);
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -23,9 +23,9 @@ function action(mode, type, selection) {
         if (status == 0) {
 		cm.getPlayer().gainDonationPoint(4000000);
 		cm.gainItem(5068305, 48);
-                cm.gainItem(4033114, 1500); // ÀÀ°íµÈ¾ÇÀÇÁ¤¼ö
-                cm.gainItem(5062005, 30); // ¾î¸ŞÀÌÂ¡Å¥ºê
-                 cm.gainItem(3994718, 30); //µ¹µ¢ÀÌ
+                cm.gainItem(4033114, 1500); // ì‘ê³ ëœì•…ì˜ì •ìˆ˜
+                cm.gainItem(5062005, 30); // ì–´ë©”ì´ì§•íë¸Œ
+                 cm.gainItem(3994718, 30); //ëŒë©ì´
 		cm.gainItem(2437627, -1);
 		cm.dispose();
 	}

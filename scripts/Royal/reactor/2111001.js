@@ -5,7 +5,7 @@ Zakum Altar - Summons Zakum.
 function act() {
 	if (rm.getMap().getId() == 280030100) {
     rm.getMap().spawnZakum(-10, 86);
-    //rm.dropMessage(5,"¿ø¼®ÀÇ ÈûÀ¸·Î ÀÚÄñÀÌ ¼ÒÈ¯µË´Ï´Ù.");
+    //rm.dropMessage(5,"ì›ì„ì˜ í˜ìœ¼ë¡œ ìì¿°ì´ ì†Œí™˜ë©ë‹ˆë‹¤.");
     if (!rm.getPlayer().isGM()) {
         rm.getMap().startSpeedRun();
     }

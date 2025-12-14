@@ -1,4 +1,4 @@
-﻿// 후원시스템
+// 후원시스템
 importPackage(Packages.server);
 importPackage(Packages.database);
 importPackage(Packages.client);

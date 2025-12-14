@@ -1,4 +1,4 @@
-﻿보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
+보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
 파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
 별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
 별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"

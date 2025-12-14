@@ -3,7 +3,7 @@ var day;
 var item = -1;
 function enter(pi) {
 	if (pi.getClient().getChannelServer().getMapFactory().getMap(pi.getPlayer().getMapId()).getNumMonsters() > 0) {
-	    pi.getPlayer().dropMessage(5, "╦П╣Г ╦С╫╨ем╦╕ цЁд║го╪е╬ъ е╛╦╝╬Н╟║ ╟║╢игу╢о╢ы.");
+	    pi.getPlayer().dropMessage(5, "К╙╗К⌠═ К╙╛Л┼╓М└╟К╔╪ Л╡≤Л╧≤М∙≤Л┘■Л∙╪ М│╢К╕╛Л√╢Й╟─ Й╟─К┼╔М∙╘К▀┬К▀╓.");
 	} else {
 		if (pi.getPlayer().getQuestStatus(100573) == 1) {
 			pi.getPlayer().updateOneInfo(100573, "monsterPark", String(pi.getPlayer().getOneInfoQuestInteger(100573, "monsterPark") + 1));

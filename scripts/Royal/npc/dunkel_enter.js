@@ -17,24 +17,24 @@ importPackage(Packages.database);
 importPackage(Packages.scripting);
 
 var startmap = [
-	450012210, // ³ë¸»
-	450012600, // ÇÏµå
-	450012210, // ³ë¸» ¿¬½À
-	450012600, // ÇÏµå ¿¬½À
+	450012210, // ë…¸ë§
+	450012600, // í•˜ë“œ
+	450012210, // ë…¸ë§ ì—°ìŠµ
+	450012600, // í•˜ë“œ ì—°ìŠµ
 ];
 var exitmap = 15;
-var bossname = "µáÄÌ"
+var bossname = "ë“„ì¼ˆ"
 var limit = [
-	3, // ³ë¸»
-	3, // ÇÏµå
-	20, // ³ë¸» ¿¬½À
-	20 // ÇÏµå ¿¬½À
+	3, // ë…¸ë§
+	3, // í•˜ë“œ
+	20, // ë…¸ë§ ì—°ìŠµ
+	20 // í•˜ë“œ ì—°ìŠµ
 ];
 var time = 30;
 var deathcount = 5;
 var practice = false;
 
-var diff = ["³ë¸»", "ÇÏµå", "³ë¸»¿¬½À", "ÇÏµå¿¬½À"];
+var diff = ["ë…¸ë§", "í•˜ë“œ", "ë…¸ë§ì—°ìŠµ", "í•˜ë“œì—°ìŠµ"];
 
 function start() {
     practice = false;
@@ -50,7 +50,7 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-	cm.askMenuScenarioSelf("Ä£À§´ëÀå µáÄÌ°ú ±×ÀÇ Ä£À§´ë¸¦ ¸·¾Æ¾ßÇÑ´Ù.\r\n#L0##b³¡¿¡ °¡±î¿î °÷(³ë¸Ö ¸ğµå)À¸·Î ÀÌµ¿ÇÑ´Ù.#r(·¹º§ 255ÀÌ»ó)#k#l\r\n#L1##b³¡¿¡ °¡±î¿î °÷(ÇÏµå ¸ğµå)À¸·Î ÀÌµ¿ÇÑ´Ù.#r(·¹º§ 255ÀÌ»ó)#k#l\r\n#L2##b³¡¿¡ °¡±î¿î °÷(³ë¸Ö ¿¬½À ¸ğµå)À¸·Î ÀÌµ¿ÇÑ´Ù.#r(·¹º§ 255ÀÌ»ó)#k#l\r\n#L3##b³¡¿¡ °¡±î¿î °÷(ÇÏµå ¿¬½À ¸ğµå)À¸·Î ÀÌµ¿ÇÑ´Ù.#r(·¹º§ 255ÀÌ»ó)#k#l", ScriptMessageFlag.FlipImage);
+	cm.askMenuScenarioSelf("ì¹œìœ„ëŒ€ì¥ ë“„ì¼ˆê³¼ ê·¸ì˜ ì¹œìœ„ëŒ€ë¥¼ ë§‰ì•„ì•¼í•œë‹¤.\r\n#L0##bëì— ê°€ê¹Œìš´ ê³³(ë…¸ë©€ ëª¨ë“œ)ìœ¼ë¡œ ì´ë™í•œë‹¤.#r(ë ˆë²¨ 255ì´ìƒ)#k#l\r\n#L1##bëì— ê°€ê¹Œìš´ ê³³(í•˜ë“œ ëª¨ë“œ)ìœ¼ë¡œ ì´ë™í•œë‹¤.#r(ë ˆë²¨ 255ì´ìƒ)#k#l\r\n#L2##bëì— ê°€ê¹Œìš´ ê³³(ë…¸ë©€ ì—°ìŠµ ëª¨ë“œ)ìœ¼ë¡œ ì´ë™í•œë‹¤.#r(ë ˆë²¨ 255ì´ìƒ)#k#l\r\n#L3##bëì— ê°€ê¹Œìš´ ê³³(í•˜ë“œ ì—°ìŠµ ëª¨ë“œ)ìœ¼ë¡œ ì´ë™í•œë‹¤.#r(ë ˆë²¨ 255ì´ìƒ)#k#l", ScriptMessageFlag.FlipImage);
     } else if (status == 1) {
         difficulty = selection;
         bn = diff[difficulty] + " " + bossname;
@@ -58,7 +58,7 @@ function action(mode, type, selection) {
 	practice = true;
         }
         if (practice) {
-            cm.askYesNo("¿¬½À ¸ğµå¿¡ ÀÔÀåÀ» ¼±ÅÃÇÏ¿´½À´Ï´Ù. ¿¬½À ¸ğµå¿¡¼­´Â #b#e°æÇèÄ¡¿Í º¸»óÀ» ¾òÀ» ¼ö ¾øÀ¸¸ç#n#k º¸½º ¸ó½ºÅÍÀÇ Á¾·ù¿Í »ó°ü¾øÀÌ #b#eÇÏ·ç 5È¸#n#k¸¸ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù. ÀÔÀåÇÏ½Ã°Ú½À´Ï±î?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.askYesNo("ì—°ìŠµ ëª¨ë“œì— ì…ì¥ì„ ì„ íƒí•˜ì˜€ìŠµë‹ˆë‹¤. ì—°ìŠµ ëª¨ë“œì—ì„œëŠ” #b#eê²½í—˜ì¹˜ì™€ ë³´ìƒì„ ì–»ì„ ìˆ˜ ì—†ìœ¼ë©°#n#k ë³´ìŠ¤ ëª¬ìŠ¤í„°ì˜ ì¢…ë¥˜ì™€ ìƒê´€ì—†ì´ #b#eí•˜ë£¨ 5íšŒ#n#kë§Œ ì´ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì…ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         } else {
                 enterBoss();
         }
@@ -72,7 +72,7 @@ function enterBoss() {
     var p = cm.getPlayer();
     var q = cm.getPlayer().getOneInfoQuest(1234589, n);
     if (q != null && !q.isEmpty() && q == "1" && !practice) {
-        cm.sayNpc("±İÁÖ¿¡ ÀÌ¹Ì °İÆÄÇÏ¿© ¸ñ¿äÀÏ 00½Ã¿¡ È½¼ö ÃÊ±âÈ­ ÀÌÈÄ ´Ù½Ã µµÀü °¡´ÉÇÕ´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ê¸ˆì£¼ì— ì´ë¯¸ ê²©íŒŒí•˜ì—¬ ëª©ìš”ì¼ 00ì‹œì— íšŸìˆ˜ ì´ˆê¸°í™” ì´í›„ ë‹¤ì‹œ ë„ì „ ê°€ëŠ¥í•©ë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
@@ -82,27 +82,27 @@ function enterBoss() {
         keyValue = "boss_practice";
     }
     if (!cm.CountCheck(keyValue, limit[difficulty])) {
-        cm.sayNpc("ÇÏ·ç¿¡ " + limit[difficulty] + "¹ø¸¸ ½Ãµµ °¡´ÉÇÏ¸ç, °İÆÄ ÀÌÈÄ ¸ñ¿äÀÏºÎÅÍ ´Ù½Ã µµÀü °¡´ÉÇÕ´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("í•˜ë£¨ì— " + limit[difficulty] + "ë²ˆë§Œ ì‹œë„ ê°€ëŠ¥í•˜ë©°, ê²©íŒŒ ì´í›„ ëª©ìš”ì¼ë¶€í„° ë‹¤ì‹œ ë„ì „ ê°€ëŠ¥í•©ë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (cm.getPlayer().getParty() == null) {
-        cm.sayNpc("1ÀÎ ÀÌ»óÀÇ ÆÄÆ¼¿¡ ¼ÓÇØ¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("1ì¸ ì´ìƒì˜ íŒŒí‹°ì— ì†í•´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!isPartyLeader()) {
-        cm.sayNpc("ÆÄÆ¼ÀåÀÌ ¾Æ´Ï¸é ½ÅÃ»ÇÒ ¼ö ¾ø½À´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("íŒŒí‹°ì¥ì´ ì•„ë‹ˆë©´ ì‹ ì²­í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
     if (!cm.allMembersHere()) {
-        cm.sayNpc("ÆÄÆ¼¿øÀÌ Àü¿ø ÀÌ°÷¿¡ ¸ğ¿©ÀÖ¾î¾ß ÇÕ´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("íŒŒí‹°ì›ì´ ì „ì› ì´ê³³ì— ëª¨ì—¬ìˆì–´ì•¼ í•©ë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     }
         if (cm.getPlayerCount(startmap[difficulty]) > 0) {
-            cm.sayNpc("ÀÌ¹Ì ´©±º°¡°¡ µµÀüÁßÀÔ´Ï´Ù.\r\n#b´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØ ÁÖ¼¼¿ä.#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+            cm.sayNpc("ì´ë¯¸ ëˆ„êµ°ê°€ê°€ ë„ì „ì¤‘ì…ë‹ˆë‹¤.\r\n#bë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ ì£¼ì„¸ìš”.#k", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         }
@@ -130,12 +130,12 @@ function enterBoss() {
         }
     }
     if (!timePass && !practice) {
-        	cm.sayNpc("ÀÔÀå Á¦ÇÑ½Ã°£ÀÌ ³²Àº ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        	cm.sayNpc("ì…ì¥ ì œí•œì‹œê°„ì´ ë‚¨ì€ íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
 	cm.dispose();
 	return;
     }
     if (!countPass) {
-        cm.sayNpc("ÀÔÀå Á¦ÇÑÈ½¼ö°¡ ºÎÁ·ÇÏ°Å³ª ·¹º§ Á¦ÇÑÀÌ ¸ÂÁö ¾Ê´Â ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
+        cm.sayNpc("ì…ì¥ ì œí•œíšŸìˆ˜ê°€ ë¶€ì¡±í•˜ê±°ë‚˜ ë ˆë²¨ ì œí•œì´ ë§ì§€ ì•ŠëŠ” íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", GameObjectType.User, ScriptMessageFlag.NpcReplacedByNpc);
         cm.dispose();
         return;
     } else {
@@ -163,7 +163,7 @@ function enterBoss() {
     eim.setProperty("Leader", cm.getPlayer().getParty().getLeader().getName());
     eim.setProperty("DeathCount", deathcount);
     eim.setProperty("BossMode", practice ? 1 : 0);
-    eim.startEventTimer(60000 * time); // 30ºĞ
+    eim.startEventTimer(60000 * time); // 30ë¶„
     eim.registerParty(cm.getPlayer().getParty(), cm.getPlayer().getMap());
 }
 

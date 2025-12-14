@@ -4,7 +4,7 @@ importPackage(Packages.objects.utils);
 importPackage(Packages.objects.item);
 
 var status = -1;
-var limit = 30; // ÀÏÀÏ 30°³ Á¦ÇÑ
+var limit = 30; // ì¼ì¼ 30ê°œ ì œí•œ
 var itemList = [2049153, 2049004, 2430441, 2048716, 2048717, 5680148, 5520001, 2436605, 2049100, 2432577, 2432576, 2432575, 2432578, 2432579];
 var prop = [15, 15, 15, 3, 2, 2, 2, 30, 60, 7, 7, 7, 7, 7];
 
@@ -22,20 +22,20 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-	cm.sendYesNo("Èñ±ÍÇÑ º¸¹° »óÀÚ¸¦ °³ºÀ ÇÏ½Ã°Ú½À´Ï±î? »óÀÚ´Â #bÇÏ·ç¿¡ " + limit + "È¸#k¸¸ °³ºÀÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+	cm.sendYesNo("í¬ê·€í•œ ë³´ë¬¼ ìƒìë¥¼ ê°œë´‰ í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ìƒìëŠ” #bí•˜ë£¨ì— " + limit + "íšŒ#kë§Œ ê°œë´‰í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
     } else if (status == 1) {
     var invenuse = cm.getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot();
     var invencash = cm.getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot();
       if (invenuse < 2 && invencash < 2) {
-        cm.sendOk("ÀÎº¥Åä¸® °ø°£À» ºñ¿öÁÖ¼¼¿ä.");
+        cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì„ ë¹„ì›Œì£¼ì„¸ìš”.");
         cm.dispose();
         return;
       }
       
 	if (cm.getPlayer().CountCheck("elite_boss_reward", limit)) {
-		var text = "»óÀÚ¿¡¼­ ¾Æ·¡ÀÇ ¾ÆÀÌÅÛÀÌ ³ª¿Ô½À´Ï´Ù.\r\n#b±İÀÏÀº " + (limit - cm.getPlayer().GetCount("elite_boss_reward")) + "È¸#k ´õ °³ºÀÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n";
+		var text = "ìƒìì—ì„œ ì•„ë˜ì˜ ì•„ì´í…œì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.\r\n#bê¸ˆì¼ì€ " + (limit - cm.getPlayer().GetCount("elite_boss_reward")) + "íšŒ#k ë” ê°œë´‰í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n";
 		var find = false;
-		// ¾ÆÀÌÅÛ Áö±Ş
+		// ì•„ì´í…œ ì§€ê¸‰
 		for (var i = 0; i < itemList.length; ++i) {
 			var itemID = itemList[i];
 			if (Packages.objects.utils.Randomizer.nextInt(100) <= prop[i]) {
@@ -45,14 +45,14 @@ function action(mode, type, selection) {
 			}
 		}
 		if (!find) {
-			text = "»óÀÚ¿¡¼­ ¾Æ¹«·± ¾ÆÀÌÅÛµµ È¹µæÇÏÁö ¸øÇß½À´Ï´Ù.";
+			text = "ìƒìì—ì„œ ì•„ë¬´ëŸ° ì•„ì´í…œë„ íšë“í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.";
 		}
 		cm.gainItem(2433834, -1);
 		cm.sendNext(text);
 		cm.dispose();
 		cm.getPlayer().CountAdd("elite_boss_reward");
 	} else {
-		cm.sendNext("±İÀÏÀº ´õ ÀÌ»ó °³ºÀÇÒ ¼ö ¾ø½À´Ï´Ù.");
+		cm.sendNext("ê¸ˆì¼ì€ ë” ì´ìƒ ê°œë´‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		cm.dispose();
 	}
     }

@@ -26,7 +26,7 @@ function action(mode, type, selection) {
     if (status == 0) {
 	cm.gainItem(code, -1);
 	cm.getPlayer().addHonorExp(10000);
-	cm.getPlayer().dropMessage(5, "10000 ¸í¼ºÄ¡¸¦ È¹µæÇß½À´Ï´Ù.");
+	cm.getPlayer().dropMessage(5, "10000 ëª…ì„±ì¹˜ë¥¼ íšë“í–ˆìŠµë‹ˆë‹¤.");
 	cm.dispose();
 	}
 }

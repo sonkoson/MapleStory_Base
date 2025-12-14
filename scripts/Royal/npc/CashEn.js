@@ -1,41 +1,41 @@
 importPackage(Packages.scripting);
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-º¸¶ó»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
-¿£ÅÍ = "\r\n"
-¿£ÅÍ2 = "\r\n\r\n"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ë³´ë¼ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
+ì—”í„° = "\r\n"
+ì—”í„°2 = "\r\n\r\n"
 enter = "\r\n";
 
 var seld = -1;
 var a = "";
 var prevallstat = 0, prevatk = 0, nextallstat = 0, nextatk = 0;
-var »ç¿ëÀçÈ­ = 0, ÀçÈ­°¡°İ = 0, »ç¿ëÀçÈ­S = "";
+var ì‚¬ìš©ì¬í™” = 0, ì¬í™”ê°€ê²© = 0, ì‚¬ìš©ì¬í™”S = "";
 var logtype = 0, maxcount = 0;
-var allstat = 2, atk = 2; // 1È¸´ç ¿Ã½ºÅÈ/°ø¸¶ Áõ°¡Ä¡
+var allstat = 2, atk = 2; // 1íšŒë‹¹ ì˜¬ìŠ¤íƒ¯/ê³µë§ˆ ì¦ê°€ì¹˜
 var maxstat = 80000;
 
 var currencyOptions = [
-    { id: 4310308, price: 30, name: "³×¿ÀÄÚ¾î",   maxCount: 1000, logType: 10 },
-    { id: 4031227, price: 50, name: "Âùºû",       maxCount:  600, logType: 11 },
-    { id: 2437760, price: 300, name: "¾ÆÄÉÀÎ½Éº¼", maxCount:  100, logType: 12 }, // seld=3
-    { id: 2633336, price: 300, name: "¾î¼¾Æ½½Éº¼", maxCount:  100, logType: 13 }, // seld=4
-    { id: 4009547, price: 1000, name: "¿¡¸£´ÙÁ¶°¢", maxCount:  30, logType: 14 }  // seld=5
+    { id: 4310308, price: 30, name: "ë„¤ì˜¤ì½”ì–´",   maxCount: 1000, logType: 10 },
+    { id: 4031227, price: 50, name: "ì°¬ë¹›",       maxCount:  600, logType: 11 },
+    { id: 2437760, price: 300, name: "ì•„ì¼€ì¸ì‹¬ë³¼", maxCount:  100, logType: 12 }, // seld=3
+    { id: 2633336, price: 300, name: "ì–´ì„¼í‹±ì‹¬ë³¼", maxCount:  100, logType: 13 }, // seld=4
+    { id: 4009547, price: 1000, name: "ì—ë¥´ë‹¤ì¡°ê°", maxCount:  30, logType: 14 }  // seld=5
 ];
 
 function buildCurrencyMenu() {
@@ -43,7 +43,7 @@ function buildCurrencyMenu() {
     for (var i = 0; i < currencyOptions.length; i++) {
         var opt = currencyOptions[i];
         var idx = i + 1;
-        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(1È¸ ÃÖ´ë : " + opt.maxCount + "È¸)#k\r\n";
+        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(1íšŒ ìµœëŒ€ : " + opt.maxCount + "íšŒ)#k\r\n";
     }
     return txt;
 }
@@ -76,40 +76,40 @@ function action(mode, type, selection) {
         prevatk     = parseInt(cm.getPlayer().getKeyValue("cashatk"));
 
         var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fc0xFF000000#      ¾î¶² ÀçÈ­¸¦ »ç¿ëÇÏ¿© Ä³¸¯ÅÍ¸¦ °­È­ÇØº¸½Ã°Ú¾î¿ä?#l\r\n\r\n";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fc0xFF000000#      ì–´ë–¤ ì¬í™”ë¥¼ ì‚¬ìš©í•˜ì—¬ ìºë¦­í„°ë¥¼ ê°•í™”í•´ë³´ì‹œê² ì–´ìš”?#l\r\n\r\n";
         txt += "#fc0xFF6542D7#";
-        txt += buildCurrencyMenu();  // ¡ç ¹è¿­ ±â¹İÀ¸·Î ÀÚµ¿ »ı¼º
+        txt += buildCurrencyMenu();  // â† ë°°ì—´ ê¸°ë°˜ìœ¼ë¡œ ìë™ ìƒì„±
         cm.sendSimple(txt);
 
     } else if (status == 1) {
         seld = selection;
         var opt = currencyOptions[seld - 1];
         if (!opt) {
-            cm.sendOk("#fs11##fc0xFF000000#À¯È¿ÇÏÁö ¾ÊÀº ¼±ÅÃÀÔ´Ï´Ù.");
+            cm.sendOk("#fs11##fc0xFF000000#ìœ íš¨í•˜ì§€ ì•Šì€ ì„ íƒì…ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
-        »ç¿ëÀçÈ­   = opt.id;
-        ÀçÈ­°¡°İ   = opt.price;
-        »ç¿ëÀçÈ­S  = opt.name;
+        ì‚¬ìš©ì¬í™”   = opt.id;
+        ì¬í™”ê°€ê²©   = opt.price;
+        ì‚¬ìš©ì¬í™”S  = opt.name;
         maxcount   = opt.maxCount;
         logtype    = opt.logType;
 
         var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fs11##fc0xFF000000#       #b#i" + »ç¿ëÀçÈ­ + "##z" + »ç¿ëÀçÈ­ + "# " + ÀçÈ­°¡°İ + "°³#fc0xFF000000#·Î Ä³¸¯ÅÍ¸¦ °­È­ÇÒ ¼ö ÀÖ½À´Ï´Ù#b \r\n#r                      (1È¸´ç ¿Ã½ºÅÈ 2 / °ø ¸¶ 2 Áõ°¡)#k\r\n\r\n";
-        txt += "#fs13#"+ º¸¶ó»ö + "                         < ÇöÀç Àû¿ë ÁßÀÎ ½ºÅÈ >\r\n";
-        txt += "#fs11#"+ °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + prevallstat + "\r\n";
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + prevatk + "\r\n\r\n";
-        txt += ÇÎÅ©»ö + "                     Ä³¸¯ÅÍ °­È­¸¦ ÁøÇàÇÏ½Ã°Ú½À´Ï±î?";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fs11##fc0xFF000000#       #b#i" + ì‚¬ìš©ì¬í™” + "##z" + ì‚¬ìš©ì¬í™” + "# " + ì¬í™”ê°€ê²© + "ê°œ#fc0xFF000000#ë¡œ ìºë¦­í„°ë¥¼ ê°•í™”í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤#b \r\n#r                      (1íšŒë‹¹ ì˜¬ìŠ¤íƒ¯ 2 / ê³µ ë§ˆ 2 ì¦ê°€)#k\r\n\r\n";
+        txt += "#fs13#"+ ë³´ë¼ìƒ‰ + "                         < í˜„ì¬ ì ìš© ì¤‘ì¸ ìŠ¤íƒ¯ >\r\n";
+        txt += "#fs11#"+ ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + prevallstat + "\r\n";
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + prevatk + "\r\n\r\n";
+        txt += í•‘í¬ìƒ‰ + "                     ìºë¦­í„° ê°•í™”ë¥¼ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
         cm.sendSimple(txt);
 
     } else if (status == 2) {
-        var possible = Math.floor(cm.itemQuantity(»ç¿ëÀçÈ­) / ÀçÈ­°¡°İ);
+        var possible = Math.floor(cm.itemQuantity(ì‚¬ìš©ì¬í™”) / ì¬í™”ê°€ê²©);
         possible = Math.min(possible, maxcount);
         cm.askNumber(
-            "#fs11##fc0xFF000000#Ä³¸¯ÅÍ¸¦ ¸î È¸ °­È­ÇÒ±î? \r\n#Cgray#(ÇöÀç °­È­ °¡´ÉÇÑ È½¼ö : " + possible + "¹ø)",
+            "#fs11##fc0xFF000000#ìºë¦­í„°ë¥¼ ëª‡ íšŒ ê°•í™”í• ê¹Œ? \r\n#Cgray#(í˜„ì¬ ê°•í™” ê°€ëŠ¥í•œ íšŸìˆ˜ : " + possible + "ë²ˆ)",
             GameObjectType.User, 1, 1, possible, ScriptMessageFlag.NpcReplacedByUser
         );
 
@@ -119,44 +119,44 @@ function action(mode, type, selection) {
         nextatk     = prevatk     + atk     * a;
 
         if (nextallstat > maxstat || nextatk > maxstat) {
-            cm.sendOk("#fs11#ÇöÀç Ä³¸¯ÅÍ°­È­ ¼öÄ¡´Â 80,000 À» ÃÊ°úÇÒ ¼ö ¾ø½À´Ï´Ù");
+            cm.sendOk("#fs11#í˜„ì¬ ìºë¦­í„°ê°•í™” ìˆ˜ì¹˜ëŠ” 80,000 ì„ ì´ˆê³¼í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
             cm.dispose();
             return;
         }
 
         var txt  = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fs13#" + º¸¶ó»ö + "                         < ÇöÀç Àû¿ë ÁßÀÎ ½ºÅÈ >\r\n";
-        txt += "#fs11#" + °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + prevallstat + "\r\n";
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + prevatk + "\r\n\r\n";
-        txt += "#fs13#" + º¸¶ó»ö + "                       < °­È­ ÈÄ Àû¿ëµÇ´Â ½ºÅÈ >\r\n";
-        txt += "#fs11#" + °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + nextallstat + "\r\n";
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + nextatk + "\r\n\r\n";
-        txt += °ËÀº»ö + "#r                    »ç¿ëÇÒ #i" + »ç¿ëÀçÈ­ + "##z" + »ç¿ëÀçÈ­ + "# °¹¼ö : " + (ÀçÈ­°¡°İ * a) + "°³\r\n\r\n";
-        txt += °ËÀº»ö + " Á¤¸» °­È­¸¦ ÁøÇàÇÏ½Ã°Ú´Ù¸é ¾Æ·¡¿¡ #r'µ¿ÀÇÇÕ´Ï´Ù'" + °ËÀº»ö + " ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fs13#" + ë³´ë¼ìƒ‰ + "                         < í˜„ì¬ ì ìš© ì¤‘ì¸ ìŠ¤íƒ¯ >\r\n";
+        txt += "#fs11#" + ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + prevallstat + "\r\n";
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + prevatk + "\r\n\r\n";
+        txt += "#fs13#" + ë³´ë¼ìƒ‰ + "                       < ê°•í™” í›„ ì ìš©ë˜ëŠ” ìŠ¤íƒ¯ >\r\n";
+        txt += "#fs11#" + ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + nextallstat + "\r\n";
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + nextatk + "\r\n\r\n";
+        txt += ê²€ì€ìƒ‰ + "#r                    ì‚¬ìš©í•  #i" + ì‚¬ìš©ì¬í™” + "##z" + ì‚¬ìš©ì¬í™” + "# ê°¯ìˆ˜ : " + (ì¬í™”ê°€ê²© * a) + "ê°œ\r\n\r\n";
+        txt += ê²€ì€ìƒ‰ + " ì •ë§ ê°•í™”ë¥¼ ì§„í–‰í•˜ì‹œê² ë‹¤ë©´ ì•„ë˜ì— #r'ë™ì˜í•©ë‹ˆë‹¤'" + ê²€ì€ìƒ‰ + " ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”";
         cm.sendGetText(txt);
 
     } else if (status == 4) {
-        if (cm.getText() != "µ¿ÀÇÇÕ´Ï´Ù") {
-            cm.sendOk("#fs11#µ¿ÀÇ ÇÏÁö¾Ê´Â´Ù¸é µµ¿ÍÁÙ ¹æ¹ıÀÌ ¾ø¾î¿ä\r\n#bµ¿ÀÇ#k ÇÑ´Ù¸é ´Ù½Ã '#r#eµ¿ÀÇÇÕ´Ï´Ù#k#n' ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+        if (cm.getText() != "ë™ì˜í•©ë‹ˆë‹¤") {
+            cm.sendOk("#fs11#ë™ì˜ í•˜ì§€ì•ŠëŠ”ë‹¤ë©´ ë„ì™€ì¤„ ë°©ë²•ì´ ì—†ì–´ìš”\r\n#bë™ì˜#k í•œë‹¤ë©´ ë‹¤ì‹œ '#r#eë™ì˜í•©ë‹ˆë‹¤#k#n' ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
             cm.dispose();
             return;
         }
-        if (!cm.haveItem(»ç¿ëÀçÈ­, ÀçÈ­°¡°İ * a)) {
-            cm.sendOk("#fs11##fc0xFF000000#" + a + "È¸ °­È­ÇÏ±â À§ÇØ¼± #b" + (ÀçÈ­°¡°İ * a) + " #z" + »ç¿ëÀçÈ­ + "##fc0xFF000000#°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+        if (!cm.haveItem(ì‚¬ìš©ì¬í™”, ì¬í™”ê°€ê²© * a)) {
+            cm.sendOk("#fs11##fc0xFF000000#" + a + "íšŒ ê°•í™”í•˜ê¸° ìœ„í•´ì„  #b" + (ì¬í™”ê°€ê²© * a) + " #z" + ì‚¬ìš©ì¬í™” + "##fc0xFF000000#ê°€ í•„ìš”í•©ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
         cm.dispose();
         try {
-            cm.addCustomLog(logtype, "[Ä³¸¯ÅÍ°­È­] | ´©Àû½ºÅÈ : " + nextallstat + " | ´©Àû°ø¸¶ : " + nextatk + " |\r\n¤¤ | °­È­È½¼ö : " + a + " | »ç¿ëÀçÈ­ :  " + »ç¿ëÀçÈ­S + " " + (ÀçÈ­°¡°İ * a) + "°³ |");
-            cm.effectText("#fn³ª´®°íµñ ExtraBold##fs20#[Ä³¸¯ÅÍ°­È­] Ä³¸¯ÅÍ°¡ < " + a + " > È¸ °­È­µÇ¾ú½À´Ï´Ù", 50, 1000, 6, 0, 330, -550);
+            cm.addCustomLog(logtype, "[ìºë¦­í„°ê°•í™”] | ëˆ„ì ìŠ¤íƒ¯ : " + nextallstat + " | ëˆ„ì ê³µë§ˆ : " + nextatk + " |\r\nã„´ | ê°•í™”íšŸìˆ˜ : " + a + " | ì‚¬ìš©ì¬í™” :  " + ì‚¬ìš©ì¬í™”S + " " + (ì¬í™”ê°€ê²© * a) + "ê°œ |");
+            cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs20#[ìºë¦­í„°ê°•í™”] ìºë¦­í„°ê°€ < " + a + " > íšŒ ê°•í™”ë˜ì—ˆìŠµë‹ˆë‹¤", 50, 1000, 6, 0, 330, -550);
             cm.getPlayer().setKeyValue("cashallstat", nextallstat);
             cm.getPlayer().setKeyValue("cashatk",     nextatk);
             cm.getPlayer().setBonusCTSStat();
-            cm.gainItem(»ç¿ëÀçÈ­, -ÀçÈ­°¡°İ * a);
+            cm.gainItem(ì‚¬ìš©ì¬í™”, -ì¬í™”ê°€ê²© * a);
         } catch(err) {
-            cm.addCustomLog(50, "[CashEn.js] ¿¡·¯ ¹ß»ı : " + err);
+            cm.addCustomLog(50, "[CashEn.js] ì—ëŸ¬ ë°œìƒ : " + err);
         }
     }
 }

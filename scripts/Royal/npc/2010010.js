@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 importPackage(java.util);
 importPackage(java.awt);
 importPackage(Packages.constants);

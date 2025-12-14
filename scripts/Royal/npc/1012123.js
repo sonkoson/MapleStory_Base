@@ -38,21 +38,21 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         if (cm.getPlayer().getAndroid() == null) {
-            cm.sendOk("¾Èµå·ÎÀÌµå°¡ ¾ø´Â ºĞÀº ¾Èµå·ÎÀÌµå ¸ŞÀÌÅ©¾÷À» ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ¾Èµå·ÎÀÌµå¿Í ÇÔ²² Ã£¾Æ¿Í ÁÖ¼¼¿ä.");
+            cm.sendOk("ì•ˆë“œë¡œì´ë“œê°€ ì—†ëŠ” ë¶„ì€ ì•ˆë“œë¡œì´ë“œ ë©”ì´í¬ì—…ì„ í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì•ˆë“œë¡œì´ë“œì™€ í•¨ê»˜ ì°¾ì•„ì™€ ì£¼ì„¸ìš”.");
             cm.dispose();
             return;
         }
-        var v0 = "¾È³çÇÏ¼¼¿ä? ¾Èµå·ÎÀÌµå ºäÆ¼¸¦ ´ã´çÇÏ°í ÀÖ´Â #b½á´Ï#k¶ó°í ÇØ¿ä! ¿øÇÏ´Â ±â´ÉÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n";
-        v0 += "#L1##b#i5150057# Çì¾î#k#l     ";
-        v0 += "#L2##b#i5151036# ¿°»ö#k#l   ";
-        v0 += "#L3##b#i5152057# ¼ºÇü#k#l\r\n";
-        v0 += "#L4##b#i5152100# ÄÃ·¯ ·»Áî#k#l";
-        v0 += "#L5##i5153015# ÇÇºÎ »ö±ò#l\r\n";
+        var v0 = "ì•ˆë…•í•˜ì„¸ìš”? ì•ˆë“œë¡œì´ë“œ ë·°í‹°ë¥¼ ë‹´ë‹¹í•˜ê³  ìˆëŠ” #bì¨ë‹ˆ#kë¼ê³  í•´ìš”! ì›í•˜ëŠ” ê¸°ëŠ¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n";
+        v0 += "#L1##b#i5150057# í—¤ì–´#k#l     ";
+        v0 += "#L2##b#i5151036# ì—¼ìƒ‰#k#l   ";
+        v0 += "#L3##b#i5152057# ì„±í˜•#k#l\r\n";
+        v0 += "#L4##b#i5152100# ì»¬ëŸ¬ ë Œì¦ˆ#k#l";
+        v0 += "#L5##i5153015# í”¼ë¶€ ìƒ‰ê¹”#l\r\n";
         cm.sendSimple(v0);
     } else if (status == 1) {
         if (selection == 5) {
             beauty = 1;
-            cm.askAvatarAndroid("¸¶À½¿¡ µå´Â ½ºÅ¸ÀÏÀ» ¼±ÅÃÇØº¸¼¼¿ä.", skin);
+            cm.askAvatarAndroid("ë§ˆìŒì— ë“œëŠ” ìŠ¤íƒ€ì¼ì„ ì„ íƒí•´ë³´ì„¸ìš”.", skin);
         } else if (selection == 1) {
             getmhair = 0;
             getfhair = 0;
@@ -127,12 +127,12 @@ function action(mode, type, selection) {
         if (selection == 1) {
             beauty = 2;
             hairList = cm.getAndroidGender() == 0 ? mhair : fhair;
-            var msg = "ÇöÀç ´Ù¾çÇÑ Çì¾î ½ºÅ¸ÀÏÀÌ ÁØºñµÇ¾î ÀÖ½À´Ï´Ù. ";
+            var msg = "í˜„ì¬ ë‹¤ì–‘í•œ í—¤ì–´ ìŠ¤íƒ€ì¼ì´ ì¤€ë¹„ë˜ì–´ ìˆìŠµë‹ˆë‹¤. ";
             var count = 0;
             count = hairList.length;
-            msg = "¿øÇÏ½Ã´Â ÆäÀÌÁö¸¦ ¼±ÅÃÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù. #e(ÃÑ " + count + " ÆäÀÌÁö)#n\r\n\r\n#b";
+            msg = "ì›í•˜ì‹œëŠ” í˜ì´ì§€ë¥¼ ì„ íƒí•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤. #e(ì´ " + count + " í˜ì´ì§€)#n\r\n\r\n#b";
             for (var i = 0; i < count; ++i) {
-                msg += "#L" + i + "##e" + (i + 1) + "ÆäÀÌÁö#n Çì¾î ½ºÅ¸ÀÏÀ» ÀÌ¿ëÇÏ°Ú½À´Ï´Ù.#l\r\n";
+                msg += "#L" + i + "##e" + (i + 1) + "í˜ì´ì§€#n í—¤ì–´ ìŠ¤íƒ€ì¼ì„ ì´ìš©í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
             }
             cm.sendSimple(msg);
         } else if (selection == 2) {
@@ -148,16 +148,16 @@ function action(mode, type, selection) {
                     haircolor.push(current + i);
                 }
             }
-            cm.askAvatarAndroid("¸¶À½¿¡ µå´Â ½ºÅ¸ÀÏÀ» ¼±ÅÃÇØº¸¼¼¿ä.", haircolor);
+            cm.askAvatarAndroid("ë§ˆìŒì— ë“œëŠ” ìŠ¤íƒ€ì¼ì„ ì„ íƒí•´ë³´ì„¸ìš”.", haircolor);
         } else if (selection == 3) {
             beauty = 4;
             face = cm.getAndroidGender() == 0 ? mface : fface;
-            var msg = "ÇöÀç ´Ù¾çÇÑ ¼ºÇü ½ºÅ¸ÀÏÀÌ ÁØºñµÇ¾î ÀÖ½À´Ï´Ù. ";
+            var msg = "í˜„ì¬ ë‹¤ì–‘í•œ ì„±í˜• ìŠ¤íƒ€ì¼ì´ ì¤€ë¹„ë˜ì–´ ìˆìŠµë‹ˆë‹¤. ";
             var count = 0;
             count = face.length;
-            msg = "¿øÇÏ½Ã´Â ÆäÀÌÁö¸¦ ¼±ÅÃÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù. #e(ÃÑ " + count + " ÆäÀÌÁö)#n\r\n\r\n#b";
+            msg = "ì›í•˜ì‹œëŠ” í˜ì´ì§€ë¥¼ ì„ íƒí•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤. #e(ì´ " + count + " í˜ì´ì§€)#n\r\n\r\n#b";
             for (var i = 0; i < count; ++i) {
-                msg += "#L" + i + "##e" + (i + 1) + "ÆäÀÌÁö#n ¼ºÇü ½ºÅ¸ÀÏÀ» ÀÌ¿ëÇÏ°Ú½À´Ï´Ù.#l\r\n";
+                msg += "#L" + i + "##e" + (i + 1) + "í˜ì´ì§€#n ì„±í˜• ìŠ¤íƒ€ì¼ì„ ì´ìš©í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
             }
             cm.sendSimple(msg);
         } else if (selection == 4) {
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
             } else {
                 colors = Array(current, current + 100, current + 200, current + 300, current + 400, current + 500, current + 600, current + 700, current + 800);
             }
-            cm.askAvatarAndroid("¸¶À½¿¡ µå´Â ½ºÅ¸ÀÏÀ» ¼±ÅÃÇØº¸¼¼¿ä.", colors);
+            cm.askAvatarAndroid("ë§ˆìŒì— ë“œëŠ” ìŠ¤íƒ€ì¼ì„ ì„ íƒí•´ë³´ì„¸ìš”.", colors);
         }
     } else if (status == 2) {
         selection = selection & 0xFF;
@@ -187,9 +187,9 @@ function action(mode, type, selection) {
         } else if (beauty == 5) {
             cm.setFaceAndroid(colors[selection]);
         } else if (beauty == 2) {
-            cm.askAvatarAndroid("¸¶À½¿¡ µå´Â ½ºÅ¸ÀÏÀ» ¼±ÅÃÇØº¸¼¼¿ä.", hairList[selection]);
+            cm.askAvatarAndroid("ë§ˆìŒì— ë“œëŠ” ìŠ¤íƒ€ì¼ì„ ì„ íƒí•´ë³´ì„¸ìš”.", hairList[selection]);
         } else if (beauty == 4) {
-            cm.askAvatarAndroid("¸¶À½¿¡ µå´Â ½ºÅ¸ÀÏÀ» ¼±ÅÃÇØº¸¼¼¿ä.", face[selection]);
+            cm.askAvatarAndroid("ë§ˆìŒì— ë“œëŠ” ìŠ¤íƒ€ì¼ì„ ì„ íƒí•´ë³´ì„¸ìš”.", face[selection]);
         }
         if (beauty != 2 && beauty != 4) {
             cm.dispose();

@@ -29,10 +29,10 @@ function action(mode, type, selection) {
         status++;
     }
         if (status == 0) {
-		var msg = "#fs11#´ÙÀ½°ú °°Àº ¾ÆÀÌÅÛÀ» È¹µæÇÏ¼Ì½À´Ï´Ù."+enter;
+		var msg = "#fs11#ë‹¤ìŒê³¼ ê°™ì€ ì•„ì´í…œì„ íšë“í•˜ì…¨ìŠµë‹ˆë‹¤."+enter;
 		for (i = 0; i < reward.length; i++) {
 			cm.gainItem(reward[i][0], reward[i][1]);
-			msg += "#i"+reward[i][0]+"##b#z"+reward[i][0]+"# "+reward[i][1]+"°³#k"+enter;
+			msg += "#i"+reward[i][0]+"##b#z"+reward[i][0]+"# "+reward[i][1]+"ê°œ#k"+enter;
 		}
 		cm.sendOk(msg);
 		cm.gainItem(2438683, -1);

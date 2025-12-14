@@ -15,73 +15,73 @@ function action(mode, type, selection) {
     else 
         status--;
     if (status == 0) {
-		cm.sendOk("µ¥¹ÌÁö ½ºÅ²Àº Ä³¸¯ÅÍ ÀÚÃ¼ ±â´ÉÀ» ÀÌ¿ëÇØ ÁÖ¼¼¿ä.");
+		cm.sendOk("ë°ë¯¸ì§€ ìŠ¤í‚¨ì€ ìºë¦­í„° ìì²´ ê¸°ëŠ¥ì„ ì´ìš©í•´ ì£¼ì„¸ìš”.");
 		cm.dispose();
 		return;
 
-		cm.sendNext("#fs11#¿øÇÏ½Ã´Â ±â´ÉÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä.\r\n\ÇöÀç Àû¿ëÁßÀÎ µ¥¹ÌÁö ½ºÅ² : #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "\r\n\r\n#L1##b 1¹ø½½·Ô #rÀúÀå#b#k#l\r\n#L2##b 1¹ø½½·Ô #rÀû¿ë#b - " + (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") == -1 ? "ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##k#l")
-+ "\r\n\r\n#L11##b 2¹ø½½·Ô #rÀúÀå#b#k#l\r\n#L22##b 2¹ø½½·Ô #rÀû¿ë#b - " + (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") == -1 ? "ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##k#l")
-+ "\r\n\r\n#L111##b 3¹ø½½·Ô #rÀúÀå#b#k#l\r\n#L222##b 3¹ø½½·Ô #rÀû¿ë#b - " + (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") == -1 ? "ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k#l")
+		cm.sendNext("#fs11#ì›í•˜ì‹œëŠ” ê¸°ëŠ¥ì„ ì„ íƒí•´ ì£¼ì„¸ìš”.\r\n\í˜„ì¬ ì ìš©ì¤‘ì¸ ë°ë¯¸ì§€ ìŠ¤í‚¨ : #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "\r\n\r\n#L1##b 1ë²ˆìŠ¬ë¡¯ #rì €ì¥#b#k#l\r\n#L2##b 1ë²ˆìŠ¬ë¡¯ #rì ìš©#b - " + (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") == -1 ? "ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##k#l")
++ "\r\n\r\n#L11##b 2ë²ˆìŠ¬ë¡¯ #rì €ì¥#b#k#l\r\n#L22##b 2ë²ˆìŠ¬ë¡¯ #rì ìš©#b - " + (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") == -1 ? "ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##k#l")
++ "\r\n\r\n#L111##b 3ë²ˆìŠ¬ë¡¯ #rì €ì¥#b#k#l\r\n#L222##b 3ë²ˆìŠ¬ë¡¯ #rì ìš©#b - " + (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") == -1 ? "ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤." : "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k#l")
 );
     } else if (status == 1) {
 		selsave = selection;
 		if (selsave == 1) {
-			cm.sendYesNo("#fs11#ÇöÀç µ¥¹ÌÁö ½ºÅ²À» ÀúÀåÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") != -1 ? "ÇöÀç ÀúÀåµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##k ´ë½Å\r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀ» ÀúÀå½ÃÅ°½Ã°Ú½À´Ï±î?");
+			cm.sendYesNo("#fs11#í˜„ì¬ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì €ì¥í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") != -1 ? "í˜„ì¬ ì €ì¥ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##k ëŒ€ì‹ \r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì„ ì €ì¥ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 		} else if (selsave == 11) {
-			cm.sendYesNo("#fs11#ÇöÀç µ¥¹ÌÁö ½ºÅ²À» ÀúÀåÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") != -1 ? "ÇöÀç ÀúÀåµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##k ´ë½Å\r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀ» ÀúÀå½ÃÅ°½Ã°Ú½À´Ï±î?");
+			cm.sendYesNo("#fs11#í˜„ì¬ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì €ì¥í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") != -1 ? "í˜„ì¬ ì €ì¥ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##k ëŒ€ì‹ \r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì„ ì €ì¥ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 		} else if (selsave == 111) {
-			cm.sendYesNo("#fs11#ÇöÀç µ¥¹ÌÁö ½ºÅ²À» ÀúÀåÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") != -1 ? "ÇöÀç ÀúÀåµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k ´ë½Å\r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀ» ÀúÀå½ÃÅ°½Ã°Ú½À´Ï±î?");
+			cm.sendYesNo("#fs11#í˜„ì¬ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì €ì¥í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") != -1 ? "í˜„ì¬ ì €ì¥ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k ëŒ€ì‹ \r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì„ ì €ì¥ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 		} else if (selsave == 2) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù.");
+				cm.sendOk("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			} else {
-				cm.sendYesNo("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²À» Àû¿ëÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\nÇöÀç Àû¿ëµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ´ë½Å\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##kÀ» Àû¿ë½ÃÅ°½Ã°Ú½À´Ï±î?");
+				cm.sendYesNo("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì ìš©í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\ní˜„ì¬ ì ìš©ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ëŒ€ì‹ \r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##kì„ ì ìš©ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 			}
 		} else if (selsave == 22) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù.");
+				cm.sendOk("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			} else {
-				cm.sendYesNo("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²À» Àû¿ëÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\nÇöÀç Àû¿ëµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ´ë½Å\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##kÀ» Àû¿ë½ÃÅ°½Ã°Ú½À´Ï±î?");
+				cm.sendYesNo("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì ìš©í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\ní˜„ì¬ ì ìš©ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ëŒ€ì‹ \r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##kì„ ì ìš©ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 			}
 		} else if (selsave == 222) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²ÀÌ ¾ø½À´Ï´Ù.");
+				cm.sendOk("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì´ ì—†ìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			} else {
-				cm.sendYesNo("#fs11#ÀúÀåµÈ µ¥¹ÌÁö ½ºÅ²À» Àû¿ëÇÏ·Á ÇÏ½Ã´Â±º¿ä!\r\nÇöÀç Àû¿ëµÈ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ´ë½Å\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##kÀ» Àû¿ë½ÃÅ°½Ã°Ú½À´Ï±î?");
+				cm.sendYesNo("#fs11#ì €ì¥ëœ ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ ì ìš©í•˜ë ¤ í•˜ì‹œëŠ”êµ°ìš”!\r\ní˜„ì¬ ì ìš©ëœ #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k ëŒ€ì‹ \r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##kì„ ì ìš©ì‹œí‚¤ì‹œê² ìŠµë‹ˆê¹Œ?");
 			}
 		} 
     } else if (status == 2) {
 		if (selsave == 1) {
 			cm.getPlayer().updateOneInfo(7294, "save_damage_skin", (cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + ""));
-			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			cm.dispose();
 		} else if (selsave == 11) {
 			cm.getPlayer().updateOneInfo(7295, "save_damage_skin", (cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + ""));
-			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			cm.dispose();
 		} else if (selsave == 111) {
 			cm.getPlayer().updateOneInfo(7296, "save_damage_skin", (cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + ""));
-			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##kì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			cm.dispose();
 		} else if (selsave == 2) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") != -1) {
 				cm.setDamageSkin(cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin"));
-				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##kÀÌ Àû¿ëµÇ¾ú½À´Ï´Ù.");
+				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##kì´ ì ìš©ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			}
 		} else if (selsave == 22) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") != -1) {
 				cm.setDamageSkin(cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin"));
-				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##kÀÌ Àû¿ëµÇ¾ú½À´Ï´Ù.");
+				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##kì´ ì ìš©ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			}
 		} else if (selsave == 222) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") != -1) {
 				cm.setDamageSkin(cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin"));
-				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##kÀÌ Àû¿ëµÇ¾ú½À´Ï´Ù.");
+				cm.sendOk("#fs11##b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##kì´ ì ìš©ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				cm.dispose();
 			}
 		}

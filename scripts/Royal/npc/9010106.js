@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 
 var status = -1;
 var s = -1;

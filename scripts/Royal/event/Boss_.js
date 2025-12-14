@@ -27,7 +27,7 @@ function spawnBoss(bossid, point, mapid, eim) {
 
     map.spawnMonsterOnGroundBelow(mobzz, point);
 
-    if ((eim.getProperty("BossName") == "³ë¸» ½º¿ì" || eim.getProperty("BossName") == "ÇÏµå ½º¿ì") && eim.getProperty("KillCount") == 0) {
+    if ((eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°" || eim.getProperty("BossName") == "í•˜ë“œ ìŠ¤ìš°") && eim.getProperty("KillCount") == 0) {
         eim.startSpawnSelfDestructMob(mobzz, map);
     }
 }
@@ -53,22 +53,22 @@ function playerEntry(eim, player) {
     player.setDeathCount(deathCount);
     if (player.isLeader() && mobid != null) {
         var map = eim.getMapFactory().getMap(mapid);
-        if (eim.getProperty("BossName") == "³ë¸» ½º¿ì" || eim.getProperty("BossName") == "ÇÏµå ½º¿ì") {
+        if (eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°" || eim.getProperty("BossName") == "í•˜ë“œ ìŠ¤ìš°") {
             eim.registerEventSchedule("lotusBlueDebris", BossConstants.LOTUS_BLUE_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusBlueDebris, 1, BossConstants.LOTUS_BLUE_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
                 BossConstants.LOTUS_BLUE_ATOM_AMOUNT, 
-                eim.getProperty("BossName") == "³ë¸» ½º¿ì" ? BossConstants.LOTUS_BLUE_ATOM_PROP : BossConstants.LOTUS_BLUE_ATOM_HARD_PROP);
+                eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°" ? BossConstants.LOTUS_BLUE_ATOM_PROP : BossConstants.LOTUS_BLUE_ATOM_HARD_PROP);
             eim.registerEventSchedule("lotusPurpleDebris", BossConstants.LOTUS_PURPLE_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusPurpleDebris, 2, BossConstants.LOTUS_PURPLE_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
                 BossConstants.LOTUS_PURPLE_ATOM_AMOUNT, 
-                eim.getProperty("BossName") == "³ë¸» ½º¿ì" ? BossConstants.LOTUS_PURPLE_ATOM_PROP : BossConstants.LOTUS_PURPLE_ATOM_HARD_PROP);
+                eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°" ? BossConstants.LOTUS_PURPLE_ATOM_PROP : BossConstants.LOTUS_PURPLE_ATOM_HARD_PROP);
             eim.registerEventSchedule("lotusYellowDebris", BossConstants.LOTUS_YELLOW_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusYellowDebris, 3, BossConstants.LOTUS_YELLOW_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
                 BossConstants.LOTUS_YELLOW_ATOM_AMOUNT, 
-                eim.getProperty("BossName") == "³ë¸» ½º¿ì" ? BossConstants.LOTUS_YELLOW_ATOM_PROP : BossConstants.LOTUS_YELLOW_ATOM_HARD_PROP);
+                eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°" ? BossConstants.LOTUS_YELLOW_ATOM_PROP : BossConstants.LOTUS_YELLOW_ATOM_HARD_PROP);
             eim.registerEventSchedule("spawnSelfDestructMob", 10000, "spawnSelfDestructMob", map);
         }
-        if (eim.getProperty("BossName") == "·ç½Ãµå") {
+        if (eim.getProperty("BossName") == "ë£¨ì‹œë“œ") {
             map.spawnMonsterOnGroundBelow(em.getMonster(rucif), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8880171), new Point(1439, 48));
             map.spawnMonsterOnGroundBelow(em.getMonster(8880171), new Point(1439, 48));
@@ -80,23 +80,23 @@ function playerEntry(eim, player) {
             map.spawnMonsterOnGroundBelow(em.getMonster(8880168), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8880169), new Point(x, y));
             spawnBoss(mobid, new Point(x, y), mapid, eim);
-        } //else if (eim.getProperty("BossName") == "Ä«¿À½º º§·ë") {
+        } //else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ ë²¨ë£¸") {
         //spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), mapid, eim);
         //} 
-        else if (eim.getProperty("BossName") == "Ä«¿À½º ÇÎÅ©ºó") {
+        else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ í•‘í¬ë¹ˆ") {
             map.spawnMonsterOnGroundBelow(em.getMonster(8820115), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820116), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820117), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820118), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820102), new Point(4, y));
             spawnBoss(8820210, new Point(x, y), mapid, eim);
-        } else if (eim.getProperty("BossName") == "½º¿ì2") {
+        } else if (eim.getProperty("BossName") == "ìŠ¤ìš°2") {
             mobid = Integer.parseInt(eim.getProperty("Boss_Second"));
             x = Integer.parseInt(eim.getProperty("Boss_x_2"));
             y = Integer.parseInt(eim.getProperty("Boss_y_2"));
             spawnBoss(mobid, new Point(x, y), mapid, eim);
         } else {
-            if (eim.getProperty("BossName") != "Áø°İÀÇ°ÅÀÎ") {
+            if (eim.getProperty("BossName") != "ì§„ê²©ì˜ê±°ì¸") {
                 spawnBoss(mobid, new Point(x, y), mapid, eim);
             } else {
                 spawnz(eim);
@@ -125,7 +125,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(100000000);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "ÀÌµ¿µÇ¾ú½À´Ï´Ù.");
+            chr.dropMessage(5, "ì´ë™ë˜ì—ˆìŠµë‹ˆë‹¤.");
 
         }
     } else {
@@ -134,7 +134,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(100000000);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "½Ã°£ÀÌ Áö³ª, ÆÄÆ¼°¡ ÇØÃ¼µË´Ï´Ù.");
+            chr.dropMessage(5, "ì‹œê°„ì´ ì§€ë‚˜, íŒŒí‹°ê°€ í•´ì²´ë©ë‹ˆë‹¤.");
 
         }
     }
@@ -158,7 +158,7 @@ function playerDead(eim, player) {
             eim.unregisterAll();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "µ¥½ºÄ«¿îÆ®¸¦ ¸ğµÎ ¼Ò¸ğÇÏ¿´½À´Ï´Ù.");
+                chr.dropMessage(5, "ë°ìŠ¤ì¹´ìš´íŠ¸ë¥¼ ëª¨ë‘ ì†Œëª¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
                 chr.setClock(0);
                 var tese = chr.getWarpMap(100000000);
                 chr.changeMap(tese, tese.getPortal(0));
@@ -217,7 +217,7 @@ function playerExit(eim, player) {
 
 function allMonstersDead(eim) {
     kc = Integer.parseInt(eim.getProperty("KillCount"));
-    if (eim.getProperty("BossName") == "·ç½Ãµå") {
+    if (eim.getProperty("BossName") == "ë£¨ì‹œë“œ") {
         if (kc == 0) {
             eim.setProperty("KillCount", 99);
             var it = eim.getPlayers().iterator();
@@ -235,7 +235,7 @@ function allMonstersDead(eim) {
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880165), new Point(1085, -619));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880168), new Point(525, -685));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880171), new Point(329, -855));
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -245,20 +245,20 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(4033804, 1);
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ¿À¸£°ñÀÌ Áö±ŞµÇ¾úÀ¸´Ï, ÀÔÀå ¿£ÇÇ½Ã¿¡°Ô °¡Á®´Ù ÁÖ½Ã±æ ¹Ù¶ø´Ï´Ù. ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
-                //chr.worldGMMessage(7, "[Å¬¸®¾î] ·ç½Ãµåº¸½º°¡ Å¬¸®¾î µÆ½À´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ì˜¤ë¥´ê³¨ì´ ì§€ê¸‰ë˜ì—ˆìœ¼ë‹ˆ, ì…ì¥ ì—”í”¼ì‹œì—ê²Œ ê°€ì ¸ë‹¤ ì£¼ì‹œê¸¸ ë°”ëë‹ˆë‹¤. ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
+                //chr.worldGMMessage(7, "[í´ë¦¬ì–´] ë£¨ì‹œë“œë³´ìŠ¤ê°€ í´ë¦¬ì–´ ëìŠµë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "Áø°İÀÇ°ÅÀÎ") {
+    } else if (eim.getProperty("BossName") == "ì§„ê²©ì˜ê±°ì¸") {
         eim.restartEventTimer(10000);
         eim.setProperty("IsClear", "1");
         var it = eim.getPlayers().iterator();
         while (it.hasNext()) {
             var chr = it.next();
             chr.gainItem(Integer.parseInt(eim.getProperty("Boss_Reward")), 1);
-            chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! Åä¹ú ÁõÇ¥°¡ Áö±ŞµÇ¾úÀ¸´Ï, Áø°İÀÇ °ÅÀÎ ¿£ÇÇ½Ã¿¡°Ô °¡Á®´Ù ÁÖ½Ã±æ ¹Ù¶ø´Ï´Ù. ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+            chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! í† ë²Œ ì¦í‘œê°€ ì§€ê¸‰ë˜ì—ˆìœ¼ë‹ˆ, ì§„ê²©ì˜ ê±°ì¸ ì—”í”¼ì‹œì—ê²Œ ê°€ì ¸ë‹¤ ì£¼ì‹œê¸¸ ë°”ëë‹ˆë‹¤. ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
         }
-    } else if (eim.getProperty("BossName") == "³ë¸» ½º¿ì") {
+    } else if (eim.getProperty("BossName") == "ë…¸ë§ ìŠ¤ìš°") {
         if (kc == 0) {
             eim.setProperty("KillCount", 1);
             var it = eim.getPlayers().iterator();
@@ -316,10 +316,10 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "µ¥¹Ì¾È2") {
+    } else if (eim.getProperty("BossName") == "ë°ë¯¸ì•ˆ2") {
         if (kc == 0) {
             var x = Integer.parseInt(eim.getProperty("Boss_x_2"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_2"));
@@ -328,7 +328,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -340,11 +340,11 @@ function allMonstersDead(eim) {
                 chr.setClock(0);
                 var tese = chr.getWarpMap(100000000);
                 chr.changeMap(tese, tese.getPortal(0));
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! º¸»óÀÌ ÀÚµ¿À¸·Î Áö±ŞµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ë³´ìƒì´ ìë™ìœ¼ë¡œ ì§€ê¸‰ë©ë‹ˆë‹¤.");
             }
             eim.unregisterAll();
         }
-    } else if (eim.getProperty("BossName") == "µ¥¹Ì¾È") {
+    } else if (eim.getProperty("BossName") == "ë°ë¯¸ì•ˆ") {
         if (kc == 0) {
             var x = Integer.parseInt(eim.getProperty("Boss_x_2"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_2"));
@@ -353,7 +353,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -362,11 +362,11 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "³ë¸» Àª") {
-        if (kc == 0) { //1Æä Å¬¸®¾î
+    } else if (eim.getProperty("BossName") == "ë…¸ë§ ìœŒ") {
+        if (kc == 0) { //1í˜ í´ë¦¬ì–´
             var x = Integer.parseInt(eim.getProperty("Boss_x_2"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_2"));
             eim.setProperty("KillCount", 1);
@@ -374,7 +374,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(eim.getProperty("SecondMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk1")), new Point(eim.getProperty("Boss_unsuk1_x"), eim.getProperty("Boss_unsuk1_y")));
             eim.getMapFactory().getMap(eim.getProperty("SecondMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk2")), new Point(eim.getProperty("Boss_unsuk2_x"), eim.getProperty("Boss_unsuk2_y")));
@@ -382,7 +382,7 @@ function allMonstersDead(eim) {
 
             //spawnBoss(Integer.parseInt(eim.getProperty("Boss_unsuk1")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
             //spawnBoss(Integer.parseInt(eim.getProperty("Boss_unsuk2")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
-        } else if (kc == 1) { //2Æä Å¬¸®¾î
+        } else if (kc == 1) { //2í˜ í´ë¦¬ì–´
             var x = Integer.parseInt(eim.getProperty("Boss_x_3"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_3"));
             eim.setProperty("KillCount", 2);
@@ -390,23 +390,23 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("ThirdMap")));
-                chr.dropMessage(5, "3ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "3í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Third1")), new Point(x, y), Integer.parseInt(eim.getProperty("ThirdMap")), eim);
             eim.getMapFactory().getMap(eim.getProperty("ThirdMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk1")), new Point(eim.getProperty("Boss_unsuk1_x"), eim.getProperty("Boss_unsuk1_y")));
             eim.getMapFactory().getMap(eim.getProperty("ThirdMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk2")), new Point(eim.getProperty("Boss_unsuk2_x"), eim.getProperty("Boss_unsuk2_y")));
 
-        } else if (kc == 2) { //3Æä Å¬¸®¾î
+        } else if (kc == 2) { //3í˜ í´ë¦¬ì–´
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! º¸»óÀÌ ÀÚµ¿À¸·Î Áö±ŞµË´Ï´Ù. Àá½Ã ÈÄ ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ë³´ìƒì´ ìë™ìœ¼ë¡œ ì§€ê¸‰ë©ë‹ˆë‹¤. ì ì‹œ í›„ ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "Å©·Î½º") {
+    } else if (eim.getProperty("BossName") == "í¬ë¡œìŠ¤") {
         if (kc == 0) {
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
@@ -414,10 +414,10 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "Å©·Î½º Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í¬ë¡œìŠ¤ í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "Ä«¿À½º ÆÄÇ®¶óÅõ½º") {
+    } else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ íŒŒí’€ë¼íˆ¬ìŠ¤") {
         if (kc == 0) {
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
@@ -425,10 +425,10 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "Ä«¿À½º ÆÄÇ®¶óÅõ½º Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "ì¹´ì˜¤ìŠ¤ íŒŒí’€ë¼íˆ¬ìŠ¤ í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "Áø Èú¶ó") {
+    } else if (eim.getProperty("BossName") == "ì§„ íë¼") {
         if (kc == 0) {
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
@@ -436,10 +436,10 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "Áø Èú¶ó Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "ì§„ íë¼ í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
-    } else if (eim.getProperty("BossName") == "Ä«¿À½º ÇÇ¿¡¸£") {
+    } else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ í”¼ì—ë¥´") {
         if (kc == 0) {
             var x = 491;
             var y = 551;
@@ -448,7 +448,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200611);
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(105200611).resetFully();
             spawnBoss(8900001, new Point(x, y), 105200611, eim);
@@ -460,7 +460,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200612);
-                chr.dropMessage(5, "3ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "3í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(105200612).resetFully();
             spawnBoss(8900002, new Point(x, y), 105200612, eim);
@@ -470,33 +470,33 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
                 chr.gainItem(4310064, 10);
             }
         }
-    } else if (eim.getProperty("BossName") == "Ä«¿À½º ¹İ¹İ") {
+    } else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ ë°˜ë°˜") {
         if (kc == 0) {
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
                 chr.gainItem(4310064, 10);
             }
         }
-    } else if (eim.getProperty("BossName") == "Ä«¿À½º º§·ë") {
+    } else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ ë²¨ë£¸") {
         if (kc == 0) {
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
                 chr.gainItem(4310064, 10);
             }
         }
-    } else if (eim.getProperty("BossName") == "Ä«¿À½º Äı") {
+    } else if (eim.getProperty("BossName") == "ì¹´ì˜¤ìŠ¤ í€¸") {
         if (kc == 0) {
             var x = 48;
             var y = 135;
@@ -505,7 +505,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200711);
-                chr.dropMessage(5, "2ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "2í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(105200711).resetFully();
             spawnBoss(8920001, new Point(x, y), 105200711, eim);
@@ -517,7 +517,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200712);
-                chr.dropMessage(5, "3ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "3í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(105200712).resetFully();
             spawnBoss(8920002, new Point(x, y), 105200712, eim);
@@ -529,7 +529,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200713);
-                chr.dropMessage(5, "4ÆäÀÌÁö·Î ³Ñ¾î°©´Ï´Ù.");
+                chr.dropMessage(5, "4í˜ì´ì§€ë¡œ ë„˜ì–´ê°‘ë‹ˆë‹¤.");
             }
             eim.getMapFactory().getMap(105200713).resetFully();
             spawnBoss(8920003, new Point(x, y), 105200713, eim);
@@ -540,7 +540,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(4310064, 10);
-                chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+                chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
             }
         }
     } else {
@@ -549,7 +549,7 @@ function allMonstersDead(eim) {
         var it = eim.getPlayers().iterator();
         while (it.hasNext()) {
             var chr = it.next();
-            chr.dropMessage(5, "Å¬¸®¾î¸¦ ÃàÇÏµå¸³´Ï´Ù! ÀÚµ¿À¸·Î ÅğÀåµË´Ï´Ù.");
+            chr.dropMessage(5, "í´ë¦¬ì–´ë¥¼ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤! ìë™ìœ¼ë¡œ í‡´ì¥ë©ë‹ˆë‹¤.");
         }
     }
 }
@@ -564,7 +564,7 @@ function leftParty(eim, player) {
         var tese = chr.getWarpMap(100000000);
         chr.setClock(0);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "ÆÄÆ¼¿øÀÌ ÆÄÆ¼¸¦ ±×¸¸µÖ¼­ ¿øÁ¤´ë°¡ ÇØÃ¼µË´Ï´Ù.");
+        chr.dropMessage(5, "íŒŒí‹°ì›ì´ íŒŒí‹°ë¥¼ ê·¸ë§Œë‘¬ì„œ ì›ì •ëŒ€ê°€ í•´ì²´ë©ë‹ˆë‹¤.");
     }
     eim.unregisterAll();
     if (eim != null) {
@@ -581,7 +581,7 @@ function disbandParty(eim) {
         chr.setClock(0);
         var tese = chr.getWarpMap(100000000);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "ÆÄÆ¼ÀåÀÌ ÆÄÆ¼¸¦ ±×¸¸µÖ¼­ ¿øÁ¤´ë°¡ ÇØÃ¼µË´Ï´Ù.");
+        chr.dropMessage(5, "íŒŒí‹°ì¥ì´ íŒŒí‹°ë¥¼ ê·¸ë§Œë‘¬ì„œ ì›ì •ëŒ€ê°€ í•´ì²´ë©ë‹ˆë‹¤.");
     }
     eim.unregisterAll();
     if (eim != null) {

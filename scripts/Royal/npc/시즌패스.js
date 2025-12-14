@@ -1,4 +1,4 @@
-﻿var status = -1;
+var status = -1;
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
 파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";

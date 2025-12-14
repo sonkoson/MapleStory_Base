@@ -21,10 +21,10 @@ function action(M, T, S)
 
 	if(St == 0)
 	{
-		txt = "È¤½Ã #b#i2430112:# #t2430112##kÀ» °¡Áö°í ÀÖÀ¸½Å°¡¿ä?\r\nÅ¥ºê Á¶°¢À» ¸ð¾Æ¼­ »õ·Î¿î ¾ÆÀÌÅÛÀ» ¸¸µé¾îµå¸®°í ÀÖ´Âµ¥ ÇØº¸½Ã°Ú´ÂÁö¡¦\r\n#l";
+		txt = "í˜¹ì‹œ #b#i2430112:# #t2430112##kì„ ê°€ì§€ê³  ìžˆìœ¼ì‹ ê°€ìš”?\r\níë¸Œ ì¡°ê°ì„ ëª¨ì•„ì„œ ìƒˆë¡œìš´ ì•„ì´í…œì„ ë§Œë“¤ì–´ë“œë¦¬ê³  ìžˆëŠ”ë° í•´ë³´ì‹œê² ëŠ”ì§€â€¦\r\n#l";
 		for(i = 0; i < inz.length; i++)
 		{
-			txt += "#L"+ i +"##r("+inz[i][1]+"°³ ÇÊ¿ä)#b #i"+inz[i][0]+":# #t"+inz[i][0]+"#\r\n";
+			txt += "#L"+ i +"##r("+inz[i][1]+"ê°œ í•„ìš”)#b #i"+inz[i][0]+":# #t"+inz[i][0]+"#\r\n";
 		}
 		cm.sendSimple(txt);
 	}
@@ -33,21 +33,21 @@ function action(M, T, S)
 	{
 		if(!cm.haveItem(2430112, inz[S][1]))
 		{
-			cm.getPlayer().dropMessage(1, "¹Ì¶óÅ¬ Å¥ºê Á¶°¢ÀÌ "+Number(inz[S][1] - cm.itemQuantity(2430112))+"°³ ºÎÁ·ÇÕ´Ï´Ù");
+			cm.getPlayer().dropMessage(1, "ë¯¸ë¼í´ íë¸Œ ì¡°ê°ì´ "+Number(inz[S][1] - cm.itemQuantity(2430112))+"ê°œ ë¶€ì¡±í•©ë‹ˆë‹¤");
 			cm.dispose();
 			return;
 		}
 
 		if(!cm.canHold(inz[S][0]))
 		{
-			cm.getPlayer().dropMessage(1, "ÀÎº¥Åä¸®¿¡ ¿©À¯ ½½·ÔÀÌ ¾ø½À´Ï´Ù.");
+			cm.getPlayer().dropMessage(1, "ì¸ë²¤í† ë¦¬ì— ì—¬ìœ  ìŠ¬ë¡¯ì´ ì—†ìŠµë‹ˆë‹¤.");
 			cm.dispose();
 			return;
 		}
 
 		cm.gainItem(2430112, -inz[S][1]);
 		cm.gainItem(inz[S][0], 1);
-		cm.getPlayer().dropMessage(1, "±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+		cm.getPlayer().dropMessage(1, "êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		cm.dispose();
 	}
 }

@@ -1,4 +1,4 @@
-﻿var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
+var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
 var MapleStat = Packages.client.MapleStat
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";

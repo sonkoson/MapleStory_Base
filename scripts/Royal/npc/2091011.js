@@ -1,4 +1,4 @@
-﻿importPackage(java.util);
+importPackage(java.util);
 importPackage(java.lang);
 importPackage(java.io);
 importPackage(java.text);

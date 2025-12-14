@@ -37,13 +37,13 @@ function action(mode, type, sel) {
 
             if (gameType == 8) {
                 if (!cm.canHold(2434639, 3)) {
-                    cm.sendNext("ÀÎº¥Åä¸® °ø°£ÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ°í ´Ù½Ã ¸» °É¾îÁÖ°Ú¾î?");
+                    cm.sendNext("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ìˆëŠ”ì§€ í™•ì¸í•˜ê³  ë‹¤ì‹œ ë§ ê±¸ì–´ì£¼ê² ì–´?");
                     cm.dispose();
                     return;
                 }
                 killWolf = cm.getPlayer().getOneInfoQuestInteger(15142, "kill_wolf");
                 if (killWolf == 1) {
-                    cm.sendNextNoESC("Èä¾ÇÇÑ #e#rºÒ²É´Á´ë#n#k¸¦ ÅğÄ¡ÇÏ´Ù´Ï! ´ë´ÜÇÑ ½Ç·ÂÀÌ±º.");
+                    cm.sendNextNoESC("í‰ì•…í•œ #e#rë¶ˆê½ƒëŠ‘ëŒ€#n#kë¥¼ í‡´ì¹˜í•˜ë‹¤ë‹ˆ! ëŒ€ë‹¨í•œ ì‹¤ë ¥ì´êµ°.");
                 } else {
                     d = cm.getPlayer().getOneInfoQuest(15142, "wolf_damage");
                     if (d == null || d == "") {
@@ -52,39 +52,39 @@ function action(mode, type, sel) {
                     damage = Long.parseLong(d);
                     var text = "";
                     if (damage < 1250000000) {
-                        text = "Àû´çÇÑ";
+                        text = "ì ë‹¹í•œ";
                     } else if (damage >= 1250000000 && damage < 12500000000) {
-                        text = "»ó´çÇÑ";
+                        text = "ìƒë‹¹í•œ";
                     } else if (damage >= 12500000000 && damage < 75000000000) {
-                        text = "¸·´ëÇÑ";
+                        text = "ë§‰ëŒ€í•œ";
                     } else if (damage >= 75000000000) {
-                        text = "Ä¡¸íÀûÀÎ";
+                        text = "ì¹˜ëª…ì ì¸";
                     }
-                    cm.sendNextNoESC("³Ê´Â ºÒ²É´Á´ë¿¡°Ô #e#b" + text + "#n#k µ¥¹ÌÁö¸¦ ÁÖ¾ú±º.");
+                    cm.sendNextNoESC("ë„ˆëŠ” ë¶ˆê½ƒëŠ‘ëŒ€ì—ê²Œ #e#b" + text + "#n#k ë°ë¯¸ì§€ë¥¼ ì£¼ì—ˆêµ°.");
                 }
             } else {
-                cm.sendSimple("³Ê ¶ÇÇÑ ÈÇ¸¢ÇÑ »ç³É²ÛÀÌ±º ±×·¡...¼ö°íÇß´Ù.\r\n\r\n#b#L0#¿ø·¡ ÀÖ´ø°÷À¸·Î º¸³»Áà.#l");
+                cm.sendSimple("ë„ˆ ë˜í•œ í›Œë¥­í•œ ì‚¬ëƒ¥ê¾¼ì´êµ° ê·¸ë˜...ìˆ˜ê³ í–ˆë‹¤.\r\n\r\n#b#L0#ì›ë˜ ìˆë˜ê³³ìœ¼ë¡œ ë³´ë‚´ì¤˜.#l");
             }
         } else {
             var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
 
             /*if (gameType == 9) {
-                cm.sendYesNo("¼³³¯ ÀÌº¥Æ® ¼Ò±¼ÀÌ ¿­·È´Ù. ÀÔÀå ÈÄ ÈûÀ» ÇÕÃÄ °Å´ë ¿ù¹¦¸¦ ¹°¸®Ä¡¸é ¶±±¹ ÄÚÀÎÀ» È¹µæÇÒ ¼ö ÀÖ´Ù³×. ÀÔÀåÇÒÅÙ°¡? °Å´ë ¿ù¹¦°¡ Ã³Ä¡µÇ¸é ÀÔÀåÇÒ ¼ö ¾ø´Ù°í.");
+                cm.sendYesNo("ì„¤ë‚  ì´ë²¤íŠ¸ ì†Œêµ´ì´ ì—´ë ¸ë‹¤. ì…ì¥ í›„ í˜ì„ í•©ì³ ê±°ëŒ€ ì›”ë¬˜ë¥¼ ë¬¼ë¦¬ì¹˜ë©´ ë–¡êµ­ ì½”ì¸ì„ íšë“í•  ìˆ˜ ìˆë‹¤ë„¤. ì…ì¥í• í…ê°€? ê±°ëŒ€ ì›”ë¬˜ê°€ ì²˜ì¹˜ë˜ë©´ ì…ì¥í•  ìˆ˜ ì—†ë‹¤ê³ .");
             } else {*/
                 if (gameType == 8) {
                     if (!cm.getPlayer().CountCheck("spark_wolf", 5)) {
-                        cm.sendNext("¿À´ÃÀº ´õ ÀÌ»ó ÀÔÀåÇÒ ¼ö ¾ø´Ù. ´ÙÀ½¿¡ ´Ù½Ã º¸µµ·Ï ÇÏÁö.");
+                        cm.sendNext("ì˜¤ëŠ˜ì€ ë” ì´ìƒ ì…ì¥í•  ìˆ˜ ì—†ë‹¤. ë‹¤ìŒì— ë‹¤ì‹œ ë³´ë„ë¡ í•˜ì§€.");
                         cm.dispose();
                         return;
                     }
                 } else {
                     if (!cm.getPlayer().CountCheck("random_portal", 20)) {
-                        cm.sendNext("¿À´ÃÀº ´õ ÀÌ»ó ÀÔÀåÇÒ ¼ö ¾ø´Ù. ´ÙÀ½¿¡ ´Ù½Ã º¸µµ·Ï ÇÏÁö.");
+                        cm.sendNext("ì˜¤ëŠ˜ì€ ë” ì´ìƒ ì…ì¥í•  ìˆ˜ ì—†ë‹¤. ë‹¤ìŒì— ë‹¤ì‹œ ë³´ë„ë¡ í•˜ì§€.");
                         cm.dispose();
                         return;
                     }
                 }
-                cm.sendNext("³ª´Â ¸ŞÀÌÇÃ¿ùµå ÃÖ°íÀÇ Çö»ó±İ »ç³É²Û #e#rÆú·Î#n#k,\r\nµ¿»ı #e#bÇÁ¸®Åä#n#k¿Í ÇÔ²² ¸¶¹°µéÀ» ÅğÄ¡ÇÏ°í ÀÖ´Ù.");
+                cm.sendNext("ë‚˜ëŠ” ë©”ì´í”Œì›”ë“œ ìµœê³ ì˜ í˜„ìƒê¸ˆ ì‚¬ëƒ¥ê¾¼ #e#rí´ë¡œ#n#k,\r\në™ìƒ #e#bí”„ë¦¬í† #n#kì™€ í•¨ê»˜ ë§ˆë¬¼ë“¤ì„ í‡´ì¹˜í•˜ê³  ìˆë‹¤.");
             //}
         }
     } else if (status == 1) {
@@ -92,7 +92,7 @@ function action(mode, type, sel) {
             var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
             if (gameType == 8) {
                 if (killWolf) {
-                    cm.sendNextNoESC("#e#rºÒ²É´Á´ë#n#k´Â ¿ì¸® ÇüÁ¦°¡ ¾ÆÁÖ ¿À·£½Ã°£ ÃßÀûÇÏ´ø ÀûÀÌ¾úÁö...\r\n¹°·Ğ ³à¼®Àº ´Ù½Ã ³ªÅ¸³ª°ÚÁö¸¸, ³Ê ´öºĞ¿¡ ÇÑµ¿¾ÈÀº ¿©ÇàÀÚµéÀ» ¾àÅ»ÇÒ ¼ö ¾øÀ» °Å´Ù.");
+                    cm.sendNextNoESC("#e#rë¶ˆê½ƒëŠ‘ëŒ€#n#këŠ” ìš°ë¦¬ í˜•ì œê°€ ì•„ì£¼ ì˜¤ëœì‹œê°„ ì¶”ì í•˜ë˜ ì ì´ì—ˆì§€...\r\në¬¼ë¡  ë…€ì„ì€ ë‹¤ì‹œ ë‚˜íƒ€ë‚˜ê² ì§€ë§Œ, ë„ˆ ë•ë¶„ì— í•œë™ì•ˆì€ ì—¬í–‰ìë“¤ì„ ì•½íƒˆí•  ìˆ˜ ì—†ì„ ê±°ë‹¤.");
                 } else {
                     var reward = 0;
                     var quantity = 0;
@@ -109,25 +109,25 @@ function action(mode, type, sel) {
                         reward = 2434636;
                         quantity = 1;
                     }
-                    cm.sendNextNoESC("ÀÚ #b#i" + reward + "# #z" + reward + "#" + quantity + "°³#k¸¦ ¼±¹°·Î ÁÖ¸¶. ±×·³ ´ÙÀ½¿¡ ¶Ç º¸µµ·Ï ÇÏÁö!");
+                    cm.sendNextNoESC("ì #b#i" + reward + "# #z" + reward + "#" + quantity + "ê°œ#kë¥¼ ì„ ë¬¼ë¡œ ì£¼ë§ˆ. ê·¸ëŸ¼ ë‹¤ìŒì— ë˜ ë³´ë„ë¡ í•˜ì§€!");
                     cm.gainItem(reward, quantity);
                     cm.getPlayer().updateOneInfo(15142, "wolf_damage", "0");
                     cm.getPlayer().updateOneInfo(15142, "kill_wolf", "0");
                 }
             } else {
-                cm.sendNextNoESC("ÈŞ... Èûµç »ç³ÉÀÌ¾ú´Ù.\r\n³Ê´Â º¸±âº¸´Ù ÈÇ¸¢ÇÑ ½Ç·ÂÀ» °¡Áö°í ÀÖ´õ±º? °í¸¿´Ù.");
+                cm.sendNextNoESC("íœ´... í˜ë“  ì‚¬ëƒ¥ì´ì—ˆë‹¤.\r\në„ˆëŠ” ë³´ê¸°ë³´ë‹¤ í›Œë¥­í•œ ì‹¤ë ¥ì„ ê°€ì§€ê³  ìˆë”êµ°? ê³ ë§™ë‹¤.");
             }
         } else {
             var portal = cm.getPlayer().getRandomPortal();
             if (portal != null) {
                 var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
                 if (portal.getType().getType() == 3) {
-                    cm.sendSimple("¿ì¸® ÇüÁ¦°¡ ¿À·£ ½Ã°£ Ãß°İÇÏ´ø ÃÖ°­ÀÇ ¸ó½ºÅÍ #e#rºÒ²É´Á´ë#n#kÀÇ ¼Ò±¼À» ¸¶Ä§³» Ã£¾Æ³Â´Ù. ³à¼®Àº ¸ŞÀÌÇÃ¿ùµåÀÇ ¿©ÇàÀÚµéÀ» ´ÚÄ¡´Â´ë·Î ¾àÅ»ÇÏ´Â ¾ÆÁÖ ¾Ç¶öÇÑ ³ğÀÌÁö... ¾î¶§, ³ª¿Í ÇÔ²² ³à¼®À» ÅğÄ¡ÇÏ·¯ °¡°Ú³ª?\r\n\r\n#b#L0#ÇÔ²² ÇÑ´Ù.#l\r\n#L1#ÇÔ²²ÇÏÁö ¾Ê´Â´Ù.#l");
+                    cm.sendSimple("ìš°ë¦¬ í˜•ì œê°€ ì˜¤ëœ ì‹œê°„ ì¶”ê²©í•˜ë˜ ìµœê°•ì˜ ëª¬ìŠ¤í„° #e#rë¶ˆê½ƒëŠ‘ëŒ€#n#kì˜ ì†Œêµ´ì„ ë§ˆì¹¨ë‚´ ì°¾ì•„ëƒˆë‹¤. ë…€ì„ì€ ë©”ì´í”Œì›”ë“œì˜ ì—¬í–‰ìë“¤ì„ ë‹¥ì¹˜ëŠ”ëŒ€ë¡œ ì•½íƒˆí•˜ëŠ” ì•„ì£¼ ì•…ë„í•œ ë†ˆì´ì§€... ì–´ë•Œ, ë‚˜ì™€ í•¨ê»˜ ë…€ì„ì„ í‡´ì¹˜í•˜ëŸ¬ ê°€ê² ë‚˜?\r\n\r\n#b#L0#í•¨ê»˜ í•œë‹¤.#l\r\n#L1#í•¨ê»˜í•˜ì§€ ì•ŠëŠ”ë‹¤.#l");
                 /*} else if (gameType == 9) {
 	      var ret = cm.checkEnterRabbit();
                     if (ret == -1) {
                         cm.getPlayer().removeRandomPortal();
-                        cm.sendNext("°Å´ë ´«»ç¶÷ÀÌ Ã³Ä¡µÇ¾î ÀÔÀåÇÒ ¼ö ¾ø´Ù³×. #e28ÀÏ 20½Ã±îÁö 00½Ã, 04½Ã, 08½Ã, 12½Ã, 16½Ã, 20½Ã 4½Ã°£ °£°İ#nÀ¸·Î °Å´ë ´«»ç¶÷ÀÌ ÃâÇöÇÏ´Ï Âü°íÇÏ¶ó°í.");
+                        cm.sendNext("ê±°ëŒ€ ëˆˆì‚¬ëŒì´ ì²˜ì¹˜ë˜ì–´ ì…ì¥í•  ìˆ˜ ì—†ë‹¤ë„¤. #e28ì¼ 20ì‹œê¹Œì§€ 00ì‹œ, 04ì‹œ, 08ì‹œ, 12ì‹œ, 16ì‹œ, 20ì‹œ 4ì‹œê°„ ê°„ê²©#nìœ¼ë¡œ ê±°ëŒ€ ëˆˆì‚¬ëŒì´ ì¶œí˜„í•˜ë‹ˆ ì°¸ê³ í•˜ë¼ê³ .");
                         cm.dispose();
                         return;
                     }
@@ -136,7 +136,7 @@ function action(mode, type, sel) {
                     cm.getPlayer().setEnterRandomPortal(true);
                     cm.dispose();*/
                 } else {
-                    cm.sendSimple("ÀÌÁ¦ ¸· »ç³ÉÀ» ¶°³ª´Â ±æÀÌ¾ú´Âµ¥, ÀÚ³×µµ ³ª¿Í ÇÔ²² #b¸¶¹°#kµéÀ» ÅğÄ¡ÇÏ·¯ °¡°Ú³ª?\r\n\r\n#b#L0#ÇÔ²² ÇÑ´Ù.#l\r\n#L1#ÇÔ²²ÇÏÁö ¾Ê´Â´Ù.#l");
+                    cm.sendSimple("ì´ì œ ë§‰ ì‚¬ëƒ¥ì„ ë– ë‚˜ëŠ” ê¸¸ì´ì—ˆëŠ”ë°, ìë„¤ë„ ë‚˜ì™€ í•¨ê»˜ #bë§ˆë¬¼#kë“¤ì„ í‡´ì¹˜í•˜ëŸ¬ ê°€ê² ë‚˜?\r\n\r\n#b#L0#í•¨ê»˜ í•œë‹¤.#l\r\n#L1#í•¨ê»˜í•˜ì§€ ì•ŠëŠ”ë‹¤.#l");
                 }
             }
         }
@@ -159,12 +159,12 @@ function action(mode, type, sel) {
                     cm.dispose();
                     return;
                 }
-                cm.sendNextNoESC("ÀÚ, ¿©±â ³Ê¸¦ À§ÇØ ÀÛÀº ¼±¹°À» ÁØºñÇß´Ù.\r\n#b#i" + reward + "# #z" + reward + "#" + quantity + "°³#k\r\n¾à¼ÒÇÏÁö¸¸ ¼ºÀÇÇ¥½Ã¶ó°í »ı°¢ÇÏ°í ¹Şµµ·Ï.");
+                cm.sendNextNoESC("ì, ì—¬ê¸° ë„ˆë¥¼ ìœ„í•´ ì‘ì€ ì„ ë¬¼ì„ ì¤€ë¹„í–ˆë‹¤.\r\n#b#i" + reward + "# #z" + reward + "#" + quantity + "ê°œ#k\r\nì•½ì†Œí•˜ì§€ë§Œ ì„±ì˜í‘œì‹œë¼ê³  ìƒê°í•˜ê³  ë°›ë„ë¡.");
                 cm.gainItem(reward, quantity);
                 cm.getPlayer().updateOneInfo(15142, "wolf_damage", "0");
                 cm.getPlayer().updateOneInfo(15142, "kill_wolf", "0");
             } else {
-                cm.sendNextNoESC("¾ÕÀ¸·Îµµ ¿­½ÉÈ÷ »ç³ÉÇÏ¸é ¿ì¸® #e#rÇö»ó±İ »ç³É²Û ÇüÁ¦#n#k¸¦ ¸¸³¯ ¼ö ÀÖÀ» °Å´Ù.");
+                cm.sendNextNoESC("ì•ìœ¼ë¡œë„ ì—´ì‹¬íˆ ì‚¬ëƒ¥í•˜ë©´ ìš°ë¦¬ #e#rí˜„ìƒê¸ˆ ì‚¬ëƒ¥ê¾¼ í˜•ì œ#n#kë¥¼ ë§Œë‚  ìˆ˜ ìˆì„ ê±°ë‹¤.");
             }
         } else {
             if (sel == 0) {

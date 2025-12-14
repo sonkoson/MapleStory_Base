@@ -1,4 +1,4 @@
-﻿importPackage(Packages.constants);
+importPackage(Packages.constants);
 
 function start() {
     status = -1;

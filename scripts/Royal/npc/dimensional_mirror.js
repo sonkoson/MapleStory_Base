@@ -21,39 +21,39 @@ function action(mode, type, selection) {
     }
     var player = cm.getPlayer();
     if (status == 0) {
-        if (f == 1) { // ÈÄ¿ø ½Ã½ºÅÛ
+        if (f == 1) { // í›„ì› ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "DÈÄ¿ø½Ã½ºÅÛ");
-        } else if (f == 2) { // È«º¸ ½Ã½ºÅÛ
+            cm.openNpc(2003, "Dí›„ì›ì‹œìŠ¤í…œ");
+        } else if (f == 2) { // í™ë³´ ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "DÈ«º¸½Ã½ºÅÛ");
-        } else if (f == 3) { // ´Ğ³×ÀÓ º¯°æ
+            cm.openNpc(2003, "Dí™ë³´ì‹œìŠ¤í…œ");
+        } else if (f == 3) { // ë‹‰ë„¤ì„ ë³€ê²½
             cm.dispose();
-            cm.openNpc(2003, "D´Ğ³×ÀÓº¯°æ");
-        } else if (f == 4) { // Á÷¾÷ º¯°æ
+            cm.openNpc(2003, "Dë‹‰ë„¤ì„ë³€ê²½");
+        } else if (f == 4) { // ì§ì—… ë³€ê²½
             cm.dispose();
-            cm.openNpc(2003, "DÀÚÀ¯ÀüÁ÷");
-       } else if (f == 5) { // V ¸ÅÆ®¸¯½º
+            cm.openNpc(2003, "Dììœ ì „ì§");
+       } else if (f == 5) { // V ë§¤íŠ¸ë¦­ìŠ¤
            cm.dispose();
-           cm.openNpc(2003, "D¸ÅÆ®¸¯½º");
-        } else if (f == 6) { // À¯´Ï¿Â
+           cm.openNpc(2003, "Dë§¤íŠ¸ë¦­ìŠ¤");
+        } else if (f == 6) { // ìœ ë‹ˆì˜¨
             cm.dispose();
-            cm.openNpc(2003, "DÀ¯´Ï¿Â½Ã½ºÅÛ");
-        } else if (f == 7) { // ÀüÅõ·Â ÃøÁ¤
+            cm.openNpc(2003, "Dìœ ë‹ˆì˜¨ì‹œìŠ¤í…œ");
+        } else if (f == 7) { // ì „íˆ¬ë ¥ ì¸¡ì •
             cm.dispose();
-            cm.openNpc(2003, "DÀüÅõ·ÂÃøÁ¤");
-        } else if (f == 8) { // ¼ºÀå ½Ã½ºÅÛ
+            cm.openNpc(2003, "Dì „íˆ¬ë ¥ì¸¡ì •");
+        } else if (f == 8) { // ì„±ì¥ ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "D¼ºÀå½Ã½ºÅÛ");
-        } else if (f == 9) { // °áÈ¥ ½Ã½ºÅÛ
+            cm.openNpc(2003, "Dì„±ì¥ì‹œìŠ¤í…œ");
+        } else if (f == 9) { // ê²°í˜¼ ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "D°áÈ¥½Ã½ºÅÛ");
-        } else if (f == 10) { // ·©Å· ½Ã½ºÅÛ
+            cm.openNpc(2003, "Dê²°í˜¼ì‹œìŠ¤í…œ");
+        } else if (f == 10) { // ë­í‚¹ ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "D·©Å·½Ã½ºÅÛ");
-        } else if (f == 11) { // °­È­ ½Ã½ºÅÛ
+            cm.openNpc(2003, "Dë­í‚¹ì‹œìŠ¤í…œ");
+        } else if (f == 11) { // ê°•í™” ì‹œìŠ¤í…œ
             cm.dispose();
-            cm.openNpc(2003, "D°­È­½Ã½ºÅÛ");
+            cm.openNpc(2003, "Dê°•í™”ì‹œìŠ¤í…œ");
        }
     }
 }

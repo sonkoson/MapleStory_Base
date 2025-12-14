@@ -26,13 +26,13 @@ function action(mode, type, selection) {
         else
             status--;
 	if (status == 0) {
-	cm.sendYesNo("¿©Á¦ ¹«±â ·£´ı »óÀÚ¸¦ Á¤¸»·Î ±î½Ã°Ú½À´Ï±î?");
+	cm.sendYesNo("ì—¬ì œ ë¬´ê¸° ëœë¤ ìƒìë¥¼ ì •ë§ë¡œ ê¹Œì‹œê² ìŠµë‹ˆê¹Œ?");
 	} else if (status == 1) {
 	itemSet = itemid[Math.floor(Math.random() * itemid.length)];
 	var itemQty = 1
 	cm.gainItem(itemNed, -1);
 	cm.gainItem(itemSet, itemQty);
-	cm.sendOk("#i"+itemSet+":#¡¡#b#z"+itemSet+"# ÀÌ(°¡) ³ª¿Ô½À´Ï´Ù!!");
+	cm.sendOk("#i"+itemSet+":#ã€€#b#z"+itemSet+"# ì´(ê°€) ë‚˜ì™”ìŠµë‹ˆë‹¤!!");
 	cm.dispose();
 	}
 }

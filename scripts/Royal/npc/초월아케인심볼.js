@@ -13,13 +13,13 @@ var available = [];
 var chosenId = -1;
 var paySel = -1;
 
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#";
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#";
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#";
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#";
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#";
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#";
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#";
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#";
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#";
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#";
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#";
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#";
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#";
 
 var DONATION_COST = 30000;
 var HPOINT_COST = 3000000;
@@ -50,29 +50,29 @@ function action(mode, type, selection) {
                 var it = chr.getInventory(MapleInventoryType.EQUIPPED).findById(id);
                 if (it != null) {
                     var own = it.getOwner();
-                    if (own == "" || own.match(/ÃÊ¿ù\s*[1-9]¼º/)) {
+                    if (own == "" || own.match(/ì´ˆì›”\s*[1-9]ì„±/)) {
                         available.push(id);
                     }
                 }
             }
             if (available.length == 0) {
-                cm.sendOk("°­È­ °¡´ÉÇÑ ¾ÆÄÉÀÎ ½Éº¼ÀÌ ¾ø½À´Ï´Ù.\r\n(ÀÌ¹Ì ÃÊ¿ù 10¼ºÀÎ ½Éº¼¸¸ ³²¾Ò½À´Ï´Ù.)");
+                cm.sendOk("ê°•í™” ê°€ëŠ¥í•œ ì•„ì¼€ì¸ ì‹¬ë³¼ì´ ì—†ìŠµë‹ˆë‹¤.\r\n(ì´ë¯¸ ì´ˆì›” 10ì„±ì¸ ì‹¬ë³¼ë§Œ ë‚¨ì•˜ìŠµë‹ˆë‹¤.)");
                 cm.dispose();
                 return;
             }
             var msg = "#fs11#     #fUI/Basic.img/Zenia/SC/0#\r\n" +
-                "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n" +
-                "#fc0xFFFF3366##e                 < ¾ÆÄÉÀÎ ½Éº¼ ÃÊ¿ù °­È­ >#n\r\n" +
-                "#fc0xFFFF3366##e       < ÃÊ¿ù 1¼º´ç : ¿Ã½ºÅÈ + 300, °ø/¸¶ + 80 >#n\r\n\r\n" +
-                "#e#r      ÃÊ¿ùÇÒ ¾ÆÄÉÀÎ ½Éº¼À» ¼±ÅÃÇÏ¼¼¿ä. (ÃÖ´ë 10¼º)#k\r\n" +
-                "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª#n\r\n";
+                "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n" +
+                "#fc0xFFFF3366##e                 < ì•„ì¼€ì¸ ì‹¬ë³¼ ì´ˆì›” ê°•í™” >#n\r\n" +
+                "#fc0xFFFF3366##e       < ì´ˆì›” 1ì„±ë‹¹ : ì˜¬ìŠ¤íƒ¯ + 300, ê³µ/ë§ˆ + 80 >#n\r\n\r\n" +
+                "#e#r      ì´ˆì›”í•  ì•„ì¼€ì¸ ì‹¬ë³¼ì„ ì„ íƒí•˜ì„¸ìš”. (ìµœëŒ€ 10ì„±)#k\r\n" +
+                "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•#n\r\n";
             for (var i = 0; i < available.length; i++) {
                 var id = available[i];
                 var it = chr.getInventory(MapleInventoryType.EQUIPPED).findById(id);
                 var own = it.getOwner() || "";
-                var m = own.match(/ÃÊ¿ù\s*([1-9])¼º/);
+                var m = own.match(/ì´ˆì›”\s*([1-9])ì„±/);
                 var curStar = m ? parseInt(m[1], 10) : 0;
-                var starText = curStar > 0 ? "ÃÊ¿ù " + curStar + "¼º" : "¹ÌÃÊ¿ù";
+                var starText = curStar > 0 ? "ì´ˆì›” " + curStar + "ì„±" : "ë¯¸ì´ˆì›”";
                 msg += "#L" + i + "##i" + id + "# #b#z" + id + "##k  #e#fc0xFFF781D8#(" + starText + ")#n#k#l\r\n";
             }
             cm.sendSimple(msg);
@@ -80,9 +80,9 @@ function action(mode, type, selection) {
 
         case 1:
             chosenId = available[selection];
-            var payMsg = "#fc0xFF000000##fs11#ÃÊ¿ù¿¡ ÇÊ¿äÇÑ °áÁ¦ ¼ö´ÜÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n\r\n" +
-                "#fc0xFF000000##e#L0#" + º°ÆÄ + " ÈÄ¿ø Æ÷ÀÎÆ® #r-30,000P#k#l\r\n\r\n" +
-                "#fc0xFF000000##L1#" + º°º¸ + " È«º¸ Æ÷ÀÎÆ® #r-3,000,000P#k#l";
+            var payMsg = "#fc0xFF000000##fs11#ì´ˆì›”ì— í•„ìš”í•œ ê²°ì œ ìˆ˜ë‹¨ì„ ì„ íƒí•˜ì„¸ìš”.\r\n\r\n" +
+                "#fc0xFF000000##e#L0#" + ë³„íŒŒ + " í›„ì› í¬ì¸íŠ¸ #r-30,000P#k#l\r\n\r\n" +
+                "#fc0xFF000000##L1#" + ë³„ë³´ + " í™ë³´ í¬ì¸íŠ¸ #r-3,000,000P#k#l";
             cm.sendSimple(payMsg);
             break;
 
@@ -90,14 +90,14 @@ function action(mode, type, selection) {
             paySel = selection;
             if (paySel == 0) {
                 if (chr.getDonationPoint() < DONATION_COST) {
-                    cm.sendOk("ÈÄ¿øÆ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                    cm.sendOk("í›„ì›í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                     cm.dispose();
                     return;
                 }
                 chr.gainDonationPoint(-DONATION_COST);
             } else {
                 if (chr.getHPoint() < HPOINT_COST) {
-                    cm.sendOk("È«º¸Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                    cm.sendOk("í™ë³´í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                     cm.dispose();
                     return;
                 }
@@ -106,11 +106,11 @@ function action(mode, type, selection) {
             var equip = chr.getInventory(MapleInventoryType.EQUIPPED).findById(chosenId);
             var own = equip.getOwner();
             var curStar = 0;
-            var m = own.match(/ÃÊ¿ù\s*([1-9])¼º/);
+            var m = own.match(/ì´ˆì›”\s*([1-9])ì„±/);
             if (m) curStar = parseInt(m[1], 10);
-            // 5¼º ÀÌ»ó Â÷´Ü
+            // 5ì„± ì´ìƒ ì°¨ë‹¨
             if (curStar >= MAX_STAR) {
-                cm.sendOk("ÀÌ¹Ì ÃÊ¿ù 5¼º ½Éº¼Àº ´õ ÀÌ»ó °­È­ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                cm.sendOk("ì´ë¯¸ ì´ˆì›” 5ì„± ì‹¬ë³¼ì€ ë” ì´ìƒ ê°•í™”í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
@@ -121,11 +121,11 @@ function action(mode, type, selection) {
             equip.setLuk(java.lang.Short.valueOf(equip.getLuk() + BONUS_STAT + ""));
             equip.setWatk(java.lang.Short.valueOf(equip.getWatk() + BONUS_WATK + ""));
             equip.setMatk(java.lang.Short.valueOf(equip.getMatk() + BONUS_MATK + ""));
-            equip.setOwner("ÃÊ¿ù " + nextStar + "¼º");
+            equip.setOwner("ì´ˆì›” " + nextStar + "ì„±");
             chr.send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
             cm.sendOk("#fs11#" +
-                "#b#eÃÊ¿ù " + nextStar + "¼º ¿Ï·á!#k\r\n" +
-                "(¿Ã½ºÅÈ +" + BONUS_STAT + " / °ø°İ·Â¡¤¸¶·Â +" + BONUS_WATK + ")");
+                "#b#eì´ˆì›” " + nextStar + "ì„± ì™„ë£Œ!#k\r\n" +
+                "(ì˜¬ìŠ¤íƒ¯ +" + BONUS_STAT + " / ê³µê²©ë ¥Â·ë§ˆë ¥ +" + BONUS_WATK + ")");
             cm.dispose();
             break;
     }

@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 
 var Time = new Date();
 var Year = Time.getFullYear() + "";

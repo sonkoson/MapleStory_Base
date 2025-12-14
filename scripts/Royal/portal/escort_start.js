@@ -1,7 +1,7 @@
 /*
 
-ep1.ÇÏ¾á¸¶¹ı»ç
-Á¦ÀÛ :: usf - ¿ÍÂè(uuff1234)
+ep1.í•˜ì–€ë§ˆë²•ì‚¬
+ì œì‘ :: usf - ì™€ì®œ(uuff1234)
 		nate - uuff1236@nate.com
 
 */
@@ -10,13 +10,13 @@ function enter(pi) {
 	if (pi.isQuestActive(300)) {
     if (pi.getQuestStatus(300) == 1) {
 		pi.warp(302010100,0);
-		pi.getPlayer().dropMessage(-1,"[¾Ë¸²] ¿À¸¥ÂÊ Æ÷Å»·Î ÀÌµ¿ÇÏ¼¼¿ä.");
-		pi.getPlayer().dropMessage(5,"[¾Ë¸²] ¿À¸¥ÂÊ Æ÷Å»·Î ÀÌµ¿ÇÏ¼¼¿ä.");
+		pi.getPlayer().dropMessage(-1,"[ì•Œë¦¼] ì˜¤ë¥¸ìª½ í¬íƒˆë¡œ ì´ë™í•˜ì„¸ìš”.");
+		pi.getPlayer().dropMessage(5,"[ì•Œë¦¼] ì˜¤ë¥¸ìª½ í¬íƒˆë¡œ ì´ë™í•˜ì„¸ìš”.");
 	} else {
-		pi.getPlayer().dropMessage(-1,"[¾Ë¸²] ¿ŞÂÊÀÇ ÇÖ»ç¸£¿¡°Ô ´ëÈ­¸¦ °Å¼¼¿ä.");
-		pi.getPlayer().dropMessage(5,"[¾Ë¸²] ¿ŞÂÊÀÇ ÇÖ»ç¸£¿¡°Ô ´ëÈ­¸¦ °Å¼¼¿ä.");
+		pi.getPlayer().dropMessage(-1,"[ì•Œë¦¼] ì™¼ìª½ì˜ í•«ì‚¬ë¥´ì—ê²Œ ëŒ€í™”ë¥¼ ê±°ì„¸ìš”.");
+		pi.getPlayer().dropMessage(5,"[ì•Œë¦¼] ì™¼ìª½ì˜ í•«ì‚¬ë¥´ì—ê²Œ ëŒ€í™”ë¥¼ ê±°ì„¸ìš”.");
 	//pi.forceCompleteQuest(3164);
-	//pi.playerMessage("Äù½ºÆ® ¿Ï·á");
+	//pi.playerMessage("í€˜ìŠ¤íŠ¸ ì™„ë£Œ");
 		}
     }
 }

@@ -1,5 +1,5 @@
 var status;
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -18,7 +18,7 @@ function action(mode, type, selection) {
     }
         if (status == 0) {
 		cm.gainItem(2049360, one);
-		cm.sendOkS("#i2049360##z2049360# È¹µæ!", 2);
+		cm.sendOkS("#i2049360##z2049360# íšë“!", 2);
 		cm.gainItem(2431486, -1);
 		cm.dispose();
 	}

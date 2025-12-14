@@ -20,7 +20,7 @@ function start() {
 
 function action(mode, type, selection) {
     if (status >= 0 && mode == 0) {
-        cm.sendNext("´ÙÀ½¿¡ ¶Ç ÀÌ¿ëÇØÁÖ¼¼¿ä!");
+        cm.sendNext("ë‹¤ìŒì— ë˜ ì´ìš©í•´ì£¼ì„¸ìš”!");
         cm.dispose();
         return;
     }
@@ -40,16 +40,16 @@ function action(mode, type, selection) {
             var itemda = dropItems[Packages.objects.utils.Randomizerrand(0, dropItems.length - 1)];
             var itemname = MapleItemInformationProvider.getInstance().getName(itemda);
             cm.gainItem(itemda, 1);
-            cm.sendYesNo("ÆÇµµ¶óÀÇ ¿­¼è·Î ÆÇµµ¶óÀÇ »óÀÚ¸¦ ¿­¾ú½À´Ï´Ù.\r\nÆÇµµ¶óÀÇ »óÀÚ¸¦ ÇÑ ¹ø ´õ ¿­¾îº¸½Ã°Ú½À´Ï±î?\r\n#eÇöÀç Fever°ÔÀÌÁö:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda + "##z" + itemda + "# 1°³");
-            Packages.network.center.Center.Broadcast.broadcastMessage(CField.getGameMessage(20, new StringBuilder().append(cm.getPlayer().getName()).append("´ÔÀÌ ÆÇµµ¶ó»óÀÚ ½ºÆä¼È ¿¡¼­ ").append(itemname).append(" ¸¦ ¾ò¾ú½À´Ï´Ù.").toString()));
+            cm.sendYesNo("íŒë„ë¼ì˜ ì—´ì‡ ë¡œ íŒë„ë¼ì˜ ìƒìë¥¼ ì—´ì—ˆìŠµë‹ˆë‹¤.\r\níŒë„ë¼ì˜ ìƒìë¥¼ í•œ ë²ˆ ë” ì—´ì–´ë³´ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#eí˜„ì¬ Feverê²Œì´ì§€:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda + "##z" + itemda + "# 1ê°œ");
+            Packages.network.center.Center.Broadcast.broadcastMessage(CField.getGameMessage(20, new StringBuilder().append(cm.getPlayer().getName()).append("ë‹˜ì´ íŒë„ë¼ìƒì ìŠ¤í˜ì…œ ì—ì„œ ").append(itemname).append(" ë¥¼ ì–»ì—ˆìŠµë‹ˆë‹¤.").toString()));
         } else {
             var itemda1 = dropItems2[Math.floor(Math.random() * dropItems2.length)];
             cm.gainItem(itemda1, 1);
-            cm.sendYesNo("ÆÇµµ¶óÀÇ ¿­¼è·Î ÆÇµµ¶óÀÇ »óÀÚ¸¦ ¿­¾ú½À´Ï´Ù.\r\nÆÇµµ¶óÀÇ »óÀÚ¸¦ ÇÑ ¹ø ´õ ¿­¾îº¸½Ã°Ú½À´Ï±î?\r\n#eÇöÀç Fever°ÔÀÌÁö:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda1 + "##z" + itemda1 + "# 1°³");
+            cm.sendYesNo("íŒë„ë¼ì˜ ì—´ì‡ ë¡œ íŒë„ë¼ì˜ ìƒìë¥¼ ì—´ì—ˆìŠµë‹ˆë‹¤.\r\níŒë„ë¼ì˜ ìƒìë¥¼ í•œ ë²ˆ ë” ì—´ì–´ë³´ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#eí˜„ì¬ Feverê²Œì´ì§€:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda1 + "##z" + itemda1 + "# 1ê°œ");
         }
     } else {
         if (!cm.haveItem(5060028, 1) || !cm.haveItem(4170049, 1)) {
-            cm.sendOk("»óÀÚ¸¦ ¿­·Á¸é ÆÇµµ¶óÀÇ »óÀÚ, ÆÇµµ¶óÀÇ ¿­¼è °¢°¢ 1°³¾¿ ÇÊ¿äÇÕ´Ï´Ù.");
+            cm.sendOk("ìƒìë¥¼ ì—´ë ¤ë©´ íŒë„ë¼ì˜ ìƒì, íŒë„ë¼ì˜ ì—´ì‡  ê°ê° 1ê°œì”© í•„ìš”í•©ë‹ˆë‹¤.");
             cm.dispose();
         }
         var coin1 = coin[Packages.objects.utils.Randomizerrand(0, coin.length - 1)];
@@ -104,12 +104,12 @@ function action(mode, type, selection) {
             var itemda = dropItems[Packages.objects.utils.Randomizerrand(0, dropItems.length - 1)];
             var itemname = MapleItemInformationProvider.getInstance().getName(itemda);
             cm.gainItem(itemda, 1);
-            cm.sendYesNo("ÆÇµµ¶óÀÇ ¿­¼è·Î ÆÇµµ¶óÀÇ »óÀÚ¸¦ ¿­¾ú½À´Ï´Ù.\r\nÆÇµµ¶óÀÇ »óÀÚ¸¦ ÇÑ ¹ø ´õ ¿­¾îº¸½Ã°Ú½À´Ï±î?\r\n#eÇöÀç Fever°ÔÀÌÁö:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda + "##z" + itemda + "# 1°³");
-            Center.Broadcast.broadcastMessage(CField.getGameMessage(20, new StringBuilder().append(cm.getPlayer().getName()).append("´ÔÀÌ ÆÇµµ¶ó»óÀÚ ½ºÆä¼È ¿¡¼­ ").append(itemname).append(" ¸¦ ¾ò¾ú½À´Ï´Ù.").toString()));
+            cm.sendYesNo("íŒë„ë¼ì˜ ì—´ì‡ ë¡œ íŒë„ë¼ì˜ ìƒìë¥¼ ì—´ì—ˆìŠµë‹ˆë‹¤.\r\níŒë„ë¼ì˜ ìƒìë¥¼ í•œ ë²ˆ ë” ì—´ì–´ë³´ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#eí˜„ì¬ Feverê²Œì´ì§€:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda + "##z" + itemda + "# 1ê°œ");
+            Center.Broadcast.broadcastMessage(CField.getGameMessage(20, new StringBuilder().append(cm.getPlayer().getName()).append("ë‹˜ì´ íŒë„ë¼ìƒì ìŠ¤í˜ì…œ ì—ì„œ ").append(itemname).append(" ë¥¼ ì–»ì—ˆìŠµë‹ˆë‹¤.").toString()));
         } else {
             var itemda1 = dropItems2[Math.floor(Math.random() * dropItems2.length)];
             cm.gainItem(itemda1, 1);
-            cm.sendYesNo("ÆÇµµ¶óÀÇ ¿­¼è·Î ÆÇµµ¶óÀÇ »óÀÚ¸¦ ¿­¾ú½À´Ï´Ù.\r\nÆÇµµ¶óÀÇ »óÀÚ¸¦ ÇÑ ¹ø ´õ ¿­¾îº¸½Ã°Ú½À´Ï±î?\r\n#eÇöÀç Fever°ÔÀÌÁö:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda1 + "##z" + itemda1 + "# 1°³");
+            cm.sendYesNo("íŒë„ë¼ì˜ ì—´ì‡ ë¡œ íŒë„ë¼ì˜ ìƒìë¥¼ ì—´ì—ˆìŠµë‹ˆë‹¤.\r\níŒë„ë¼ì˜ ìƒìë¥¼ í•œ ë²ˆ ë” ì—´ì–´ë³´ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#eí˜„ì¬ Feverê²Œì´ì§€:#r" + cm.getPlayer().getPandoraBoxFever() + "%#k#n\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v" + itemda1 + "##z" + itemda1 + "# 1ê°œ");
         }
         cm.gainItem(5060028, -1);
         cm.gainItem(4170049, -1);

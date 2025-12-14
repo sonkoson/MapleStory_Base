@@ -17,7 +17,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0 && type == 3 && selection == -1) {
-            //cm.sayNpc("¿ª½Ã Àå»ç´Â ½±Áö ¾Ê±º¿ä...", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
+            //cm.sayNpc("ì—­ì‹œ ì¥ì‚¬ëŠ” ì‰½ì§€ ì•Šêµ°ìš”...", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         } else if (mode == 0) {
@@ -31,38 +31,38 @@ function action(mode, type, selection) {
         
         if (status == 0) {
             var result = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame3_result");
-            var canGain = cm.getPlayer().canGainStackEventGauge(1); // ÄÚ¾î Áª ±İÀÏ È¹µæ °¡´É·®
-            if (result == 2) { // Ç×º¹
-                var v0 = "µµÁß¿¡ Æ÷±âÇÏ´Ù´Ï, Á¤¸» ½Ç¸ÁÀÌ¾ß!\r\n²ö±â°¡ ¾ø´Â »ç¶÷¿¡°Õ º¸»óÀ» ÁÙ ¼ö ¾ø¾î.";
+            var canGain = cm.getPlayer().canGainStackEventGauge(1); // ì½”ì–´ ì ¬ ê¸ˆì¼ íšë“ ê°€ëŠ¥ëŸ‰
+            if (result == 2) { // í•­ë³µ
+                var v0 = "ë„ì¤‘ì— í¬ê¸°í•˜ë‹¤ë‹ˆ, ì •ë§ ì‹¤ë§ì´ì•¼!\r\nëˆê¸°ê°€ ì—†ëŠ” ì‚¬ëŒì—ê² ë³´ìƒì„ ì¤„ ìˆ˜ ì—†ì–´.";
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 1) { // ½Â¸®
+            } else if (result == 1) { // ìŠ¹ë¦¬
                 
-                var v0 = "ÀÌ¹ø °ÔÀÓÀÇ ½Â¸®ÀÚ´Â #b#h0##k! Á¦¹ıÀÎ°É?\r\n\r\n";
+                var v0 = "ì´ë²ˆ ê²Œì„ì˜ ìŠ¹ë¦¬ìëŠ” #b#h0##k! ì œë²•ì¸ê±¸?\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "¿À´ÃÀº ÀÌ¹Ì #e#rÀÏÀÏ Á¦ÇÑ·®#k#nÀ» ´Ş¼ºÇØ¼­ º¸»óÀ» ´õ Ã¬°Ü ÁÙ ¼ö ¾ø¾î.";
+                    v0 += "ì˜¤ëŠ˜ì€ ì´ë¯¸ #e#rì¼ì¼ ì œí•œëŸ‰#k#nì„ ë‹¬ì„±í•´ì„œ ë³´ìƒì„ ë” ì±™ê²¨ ì¤„ ìˆ˜ ì—†ì–´.";
                 } else {
-                    v0 += "#e#b³×¿À Áª 120°³#k#n¸¦ Ã¬°ÜÁÙ°Ô!\r\n\r\n#r(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)#k";
+                    v0 += "#e#bë„¤ì˜¤ ì ¬ 120ê°œ#k#në¥¼ ì±™ê²¨ì¤„ê²Œ!\r\n\r\n#r(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 4) { // ÆĞ¹è
-                var v0 = "¾Æ½±Áö¸¸ ´ÙÀ½¿¡ ´Ù½Ã ½ÂºÎ¸¦ ³»º¸ÀÚ°í!\r\n\r\n";
+            } else if (result == 4) { // íŒ¨ë°°
+                var v0 = "ì•„ì‰½ì§€ë§Œ ë‹¤ìŒì— ë‹¤ì‹œ ìŠ¹ë¶€ë¥¼ ë‚´ë³´ìê³ !\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "¿À´ÃÀº ÀÌ¹Ì #e#rÀÏÀÏ Á¦ÇÑ·®#k#nÀ» ´Ş¼ºÇØ¼­ º¸»óÀ» ´õ Ã¬°Ü ÁÙ ¼ö ¾ø¾î.";
+                    v0 += "ì˜¤ëŠ˜ì€ ì´ë¯¸ #e#rì¼ì¼ ì œí•œëŸ‰#k#nì„ ë‹¬ì„±í•´ì„œ ë³´ìƒì„ ë” ì±™ê²¨ ì¤„ ìˆ˜ ì—†ì–´.";
                 } else {
-                    v0 += "#e#b³×¿À Áª 40°³#k#n¸¦ Ã¬°ÜÁÙ°Ô!\r\n\r\n#r(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)#k";
+                    v0 += "#e#bë„¤ì˜¤ ì ¬ 40ê°œ#k#në¥¼ ì±™ê²¨ì¤„ê²Œ!\r\n\r\n#r(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 3) { // ¹«½ÂºÎ
-                var v0 = "¹«½ÂºÎ¶ó´Ï ¾ÆÁÖ Ä¡¿­ÇÑ ½ÂºÎ¿´¾î!\r\n\r\n";
+            } else if (result == 3) { // ë¬´ìŠ¹ë¶€
+                var v0 = "ë¬´ìŠ¹ë¶€ë¼ë‹ˆ ì•„ì£¼ ì¹˜ì—´í•œ ìŠ¹ë¶€ì˜€ì–´!\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "¿À´ÃÀº ÀÌ¹Ì #e#rÀÏÀÏ Á¦ÇÑ·®#k#nÀ» ´Ş¼ºÇØ¼­ º¸»óÀ» ´õ Ã¬°Ü ÁÙ ¼ö ¾ø¾î.";
+                    v0 += "ì˜¤ëŠ˜ì€ ì´ë¯¸ #e#rì¼ì¼ ì œí•œëŸ‰#k#nì„ ë‹¬ì„±í•´ì„œ ë³´ìƒì„ ë” ì±™ê²¨ ì¤„ ìˆ˜ ì—†ì–´.";
                 } else {
-                    v0 += "#e#b³×¿À Áª 60°³#k#n¸¦ Ã¬°ÜÁÙ°Ô!\r\n\r\n#r(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)#k";
+                    v0 += "#e#bë„¤ì˜¤ ì ¬ 60ê°œ#k#në¥¼ ì±™ê²¨ì¤„ê²Œ!\r\n\r\n#r(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             } else {
-                // °­Á¦ Á¾·á
-                var v0 = "µµÁß¿¡ ³ª°¡´Ù´Ï, Á¤¸» ½Ç¸ÁÀÌ¾ß!\r\n²ö±â°¡ ¾ø´Â »ç¶÷¿¡°Õ º¸»óÀ» ÁÙ ¼ö ¾ø¾î.";
+                // ê°•ì œ ì¢…ë£Œ
+                var v0 = "ë„ì¤‘ì— ë‚˜ê°€ë‹¤ë‹ˆ, ì •ë§ ì‹¤ë§ì´ì•¼!\r\nëˆê¸°ê°€ ì—†ëŠ” ì‚¬ëŒì—ê² ë³´ìƒì„ ì¤„ ìˆ˜ ì—†ì–´.";
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             }
         } else if (status == 1) {

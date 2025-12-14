@@ -14,7 +14,7 @@ function start() {
 
 function action(mode, type, selection) {
     if (mode == 0 && type == 3) {
-	cm.sendNext("¹¹¾ß ÀÌ·¨´Ù Àú·¨´ÙÇÏ°í! ÇÏÁö¸¸ ¾ó¸¶ ¾È ÀÖ¾î ¾û¾û ¿ï¸é¼­ µ¹¾Æ°¡°í ½Í¾îÇÒ°É?");
+	cm.sendNext("ë­ì•¼ ì´ëž¬ë‹¤ ì €ëž¬ë‹¤í•˜ê³ ! í•˜ì§€ë§Œ ì–¼ë§ˆ ì•ˆ ìžˆì–´ ì—‰ì—‰ ìš¸ë©´ì„œ ëŒì•„ê°€ê³  ì‹¶ì–´í• ê±¸?");
 	cm.dispose();
     }
     if (mode == -1) {
@@ -31,9 +31,9 @@ function action(mode, type, selection) {
 
         if (status == 0) {
 	if (cm.getPlayer().getMap().checkDojangClear()) {
-		cm.sendYesNo("¹¹¾ß? »ó´ë¹æ ¾²·¯¶ß·Á³õ°í ¾îµô°¡? ÀÌÁ¦ ´ÙÀ½ ´Ü°è·Î ³Ñ¾î°¡±â¸¸ ÇÏ¸é µÇ´Âµ¥? ±ÞÇÑ º¼ÀÏÀÌ¶óµµ »ý°¢³ª¼Ì³ª?");
+		cm.sendYesNo("ë­ì•¼? ìƒëŒ€ë°© ì“°ëŸ¬ëœ¨ë ¤ë†“ê³  ì–´ë”œê°€? ì´ì œ ë‹¤ìŒ ë‹¨ê³„ë¡œ ë„˜ì–´ê°€ê¸°ë§Œ í•˜ë©´ ë˜ëŠ”ë°? ê¸‰í•œ ë³¼ì¼ì´ë¼ë„ ìƒê°ë‚˜ì…¨ë‚˜?");
 	} else {
-		cm.sendYesNo("¿©±â¼­ Æ÷±âÇÏ´Â°Å¾ß? ¿ª½Ã ÈÄÈ¸ÇÒÁÙ ¾Ë¾Ò´Ù°í!");
+		cm.sendYesNo("ì—¬ê¸°ì„œ í¬ê¸°í•˜ëŠ”ê±°ì•¼? ì—­ì‹œ í›„íšŒí• ì¤„ ì•Œì•˜ë‹¤ê³ !");
 	}
         } else if (status == 1) {
 	cm.warp(925020002);

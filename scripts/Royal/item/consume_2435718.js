@@ -20,12 +20,12 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-	var zz= "100% È®Á¤ »óÇ° : #i4310218:##z4310218:# 3 ~ 5°³ Áö±Ş.\r\n" +
-		"#d#i2435718:##z2435718:#¿¡¼­ È¹µæ °¡´ÉÇÑ »óÇ° ¸ñ·ÏÀÔ´Ï´Ù.\r\n";
+	var zz= "100% í™•ì • ìƒí’ˆ : #i4310218:##z4310218:# 3 ~ 5ê°œ ì§€ê¸‰.\r\n" +
+		"#d#i2435718:##z2435718:#ì—ì„œ íšë“ ê°€ëŠ¥í•œ ìƒí’ˆ ëª©ë¡ì…ë‹ˆë‹¤.\r\n";
 		for (i = 0; i < items.length; i++) {
-		zz += "#i" + items[i][0] + ":##z" + items[i][0] + ":# " + items[i][1] + "°³\r\n";
+		zz += "#i" + items[i][0] + ":##z" + items[i][0] + ":# " + items[i][1] + "ê°œ\r\n";
 		}
-	zz += "»óÀÚ¸¦ °³ºÀÇÏ½Ã°Ú½À´Ï±î?";
+	zz += "ìƒìë¥¼ ê°œë´‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
 	cm.sendYesNo(zz);
     } else if (status == 1) {
 	rand = Math.floor(Math.random() * items.length);
@@ -34,6 +34,6 @@ function action(mode, type, selection) {
 	cm.gainItem(items[rand][0], items[rand][1]);
 	cm.dispose();
 	cm.gainItem(2435718, -1);
-	cm.sendOk("#b[100% È¹µæ!] #i4310218:##z4310218:#ÀÌ " + rand2 + "°³ Áö±ŞµÇ¾ú½À´Ï´Ù.#k\r\n#i" + items[rand][0] + ":##z" + items[rand][0] + ":# ¾ÆÀÌÅÛÀÌ " + items[rand][1] + "°³ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+	cm.sendOk("#b[100% íšë“!] #i4310218:##z4310218:#ì´ " + rand2 + "ê°œ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.#k\r\n#i" + items[rand][0] + ":##z" + items[rand][0] + ":# ì•„ì´í…œì´ " + items[rand][1] + "ê°œ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 }

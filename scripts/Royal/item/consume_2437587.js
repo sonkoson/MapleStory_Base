@@ -3,7 +3,7 @@ importPackage(Packages.server);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
 importPackage(Packages.server.items);
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -22,15 +22,15 @@ function action(mode, type, selection) {
     }
         if (status == 0) {
 		cm.getPlayer().gainDonationPoint(1200000);
-                cm.gainItem(5068305, 13); // ºí·¢ º£¸®
-                cm.gainItem(5062005, 15); // ¾î¸ŞÀÌÂ¡ Å¥ºê
-                cm.gainItem(4031466, 200); // ¾îµÒÀÇ ¿µÈ¥¼®
-                cm.gainItem(4310261, 1000); // »ç³ÉÄÚÀÎ
-                cm.gainItem(4001715, 80); // 1¾ïÄÚÀÎ
-                cm.gainItem(2439653, 16); // ¿µÈ¯ºÒ 10°³
-                cm.gainItem(2437122, 3); // ÃÖÁ¾ µ¥¹ÌÁö
-                cm.gainItem(2023287, 3); // Å©¸®µ¥¹ÌÁö
-                cm.gainItem(3994545, 3); // µµ½Ã¶ô
+                cm.gainItem(5068305, 13); // ë¸”ë™ ë² ë¦¬
+                cm.gainItem(5062005, 15); // ì–´ë©”ì´ì§• íë¸Œ
+                cm.gainItem(4031466, 200); // ì–´ë‘ ì˜ ì˜í˜¼ì„
+                cm.gainItem(4310261, 1000); // ì‚¬ëƒ¥ì½”ì¸
+                cm.gainItem(4001715, 80); // 1ì–µì½”ì¸
+                cm.gainItem(2439653, 16); // ì˜í™˜ë¶ˆ 10ê°œ
+                cm.gainItem(2437122, 3); // ìµœì¢… ë°ë¯¸ì§€
+                cm.gainItem(2023287, 3); // í¬ë¦¬ë°ë¯¸ì§€
+                cm.gainItem(3994545, 3); // ë„ì‹œë½
 		cm.gainItem(2437587, -1);
 		cm.dispose();
 	}

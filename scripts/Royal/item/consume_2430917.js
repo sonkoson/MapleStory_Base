@@ -36,7 +36,7 @@ function action(M, T, S)
 			return;
 		}
 		if (cm.getPlayer().getJob() == 10112) {
-				cm.sayReplacedNpc("#fs11##fc0xFF000000#�ڳ��� ������ ���� ������ �ϴ� ������ #fc0xFFFF3300##e������ �ɼ�#fc0xFF000000##n�� �ο��س��ٳ�! #fc0xFF990033#[Zenia]#fc0xFF000000#���� ��ſ� �ð� �����ð�\r\n#b"
+				cm.sayReplacedNpc("#fs11##fc0xFF000000#자네의 여정에 힘이 됐으면 하는 마음에 #fc0xFFFF3300##e쓸만한 옵션#fc0xFF000000##n을 부여해놨다네! #fc0xFF990033#[Zenia]#fc0xFF000000#에서 즐거운 시간 보내시게\r\n#b"
 			+ "  #i1003561:# #t1003561:#\r\n"
 			+ "  #i1052467:# #t1052467:#\r\n"
 			+ "  #i1032148:# #t1032148:#\r\n"
@@ -74,7 +74,7 @@ function action(M, T, S)
 
 		wList = [];
 		getWeapon(cm.getPlayer().getJob());
-		selStr = "#fs 11##fc0xFF990033#[Zenia]#fc0xFF000000#�� �°� �������� ȯ���ϳ�! �̰� �ڳ��� ������ ������ ���� ����ϼ�, ������ �´� ���⸦ �����غ��Գ�.#b\r\n";
+		selStr = "#fs 11##fc0xFF990033#[Zenia]#fc0xFF000000#에 온걸 진심으로 환영하네! 이건 자네의 모험을 도와줄 지원 장비일세, 직업에 맞는 무기를 선택해보게나.#b\r\n";
 
 		for(i = 0; i < wList.length; i++)
 		{
@@ -87,7 +87,7 @@ function action(M, T, S)
 
 	else if(St == 1)
 	{
-				cm.sayReplacedNpc("#fs11##fc0xFF000000#�ڳ��� ������ ���� ������ �ϴ� ������ #fc0xFFFF3300##e������ �ɼ�#fc0xFF000000##n�� �ο��س��ٳ�! #fc0xFF990033#[Zenia]#fc0xFF000000#���� ��ſ� �ð� �����ð�\r\n#b"
+				cm.sayReplacedNpc("#fs11##fc0xFF000000#자네의 여정에 힘이 됐으면 하는 마음에 #fc0xFFFF3300##e쓸만한 옵션#fc0xFF000000##n을 부여해놨다네! #fc0xFF990033#[Zenia]#fc0xFF000000#에서 즐거운 시간 보내시게\r\n#b"
 			+ "  #i1003561:# #t1003561:#\r\n"
 			+ "  #i1052467:# #t1052467:#\r\n"
 			+ "  #i1032148:# #t1032148:#\r\n"
@@ -99,7 +99,7 @@ function action(M, T, S)
 			+ "  #i"+S+":# #t"+S+":# #e#k#n\r\n", false, true, 1, 9062294, ScriptMessageFlag.NpcReplacedByNpc);
 
 			if (wList.indexOf(S) == -1) {
-				cm.sendOk("���������� ����");
+				cm.sendOk("비정상적인 접근");
 				cm.dispose();
 				return;
 			}
@@ -158,56 +158,56 @@ function getWeapon(i)
 {
 	switch(Math.floor(cm.getPlayer().getJob()))
 	{
-		/* ���� */
+		/* 전사 */
 		case 100:
-		wList.push(1302334); // �Ѽհ�
-		wList.push(1312200); // �Ѽյ���
-		wList.push(1322251); // �Ѽյб�
-		wList.push(1402252); // �μհ�
-		wList.push(1412178); // �μյ���
-		wList.push(1422185); // �μյб�
-		wList.push(1432215); // â
-		wList.push(1442269); // ����
+		wList.push(1302334); // 한손검
+		wList.push(1312200); // 한손도끼
+		wList.push(1322251); // 한손둔기
+		wList.push(1402252); // 두손검
+		wList.push(1412178); // 두손도끼
+		wList.push(1422185); // 두손둔기
+		wList.push(1432215); // 창
+		wList.push(1442269); // 폴암
 		break;
 
-		case 110: //�����
+		case 110: //히어로
 		case 111:
 		case 112:
-		wList.push(1302334); // �Ѽհ�
-		wList.push(1402252); // �μհ�
+		wList.push(1302334); // 한손검
+		wList.push(1402252); // 두손검
 		break;
 
-		case 120: //�ȶ��
+		case 120: //팔라딘
 		case 121:
 		case 122:
-		wList.push(1302334); // �Ѽհ�
-		wList.push(1312200); // �Ѽյ���
-		wList.push(1322251); // �Ѽյб�
-		wList.push(1402252); // �μհ�
+		wList.push(1302334); // 한손검
+		wList.push(1312200); // 한손도끼
+		wList.push(1322251); // 한손둔기
+		wList.push(1402252); // 두손검
 
-		wList.push(1412178); // �μյ���
-		wList.push(1422185); // �μյб�
+		wList.push(1412178); // 두손도끼
+		wList.push(1422185); // 두손둔기
 		break;
 
-		case 130: //��ũ ����Ʈ
+		case 130: //다크 나이트
 		case 131:
 		case 132:
-		wList.push(1432215); // â
-		wList.push(1442269); // ����
+		wList.push(1432215); // 창
+		wList.push(1442269); // 폴암
 		break;
 
-		case 1100: //�ҿ� ������
+		case 1100: //소울 마스터
 		case 1110:
 		case 1111:
 		case 1112:
-		wList.push(1402252); // �μհ�
+		wList.push(1402252); // 두손검
 		break;
 
 		case 2100:
 		case 2110:
 		case 2111:
 		case 2112:
-		wList.push(1442269); // ����
+		wList.push(1442269); // 폴암
 		break;
 
 		case 3100:
@@ -218,30 +218,30 @@ function getWeapon(i)
 		case 3120:
 		case 3121:
 		case 3122:
-		wList.push(1312200); // �Ѽյ���
-		wList.push(1322251); // �Ѽյб�
-		wList.push(1232110); // �������
+		wList.push(1312200); // 한손도끼
+		wList.push(1322251); // 한손둔기
+		wList.push(1232110); // 데스페라도
 		break;
 
 		case 3700:
 		case 3710:
 		case 3711:
 		case 3712:
-		wList.push(1582021); // ��Ʋ�� ������
+		wList.push(1582021); // 건틀렛 리볼버
 		break;
 
 		case 5100:
-		case 5110: //������
+		case 5110: //미하일
 		case 5111:
 		case 5112:
-		wList.push(1302334); // �Ѽհ�
+		wList.push(1302334); // 한손검
 		break;
 
 		case 6100:
 		case 6110:
 		case 6111:
 		case 6112:
-		wList.push(1402252); // �μհ�
+		wList.push(1402252); // 두손검
 		break;
 
 		case 15002:
@@ -249,10 +249,10 @@ function getWeapon(i)
 		case 15110:
 		case 15111:
 		case 15112:
-		wList.push(1213020); // Ʃ��
+		wList.push(1213020); // 튜너
 		break;
 
-		/* ������ */
+		/* 마법사 */
 		case 200:
 		case 210:
 		case 211:
@@ -269,48 +269,48 @@ function getWeapon(i)
 		case 2211:
 		case 2212:
 		case 2217:
-		wList.push(1372223); // �ϵ�
-		wList.push(1382260); // ������
+		wList.push(1372223); // 완드
+		wList.push(1382260); // 스태프
 		break;
 
 		case 2700:
 		case 2710:
 		case 2711:
 		case 2712:
-		wList.push(1212116); // ���̴׷ε�
+		wList.push(1212116); // 샤이닝로드
 		break;
 
 		case 3200:
 		case 3210:
 		case 3211:
 		case 3212:
-		wList.push(1382260); // ������
+		wList.push(1382260); // 스태프
 		break;
 
 		case 14200:
 		case 14210:
 		case 14211:
 		case 14212:
-		wList.push(1262027); // ESP ������
+		wList.push(1262027); // ESP 리미터
 		break;
 
 		case 15200:
 		case 15210:
 		case 15211:
 		case 15212:
-		wList.push(1282019); // ���� ��Ʋ��
+		wList.push(1282019); // 매직 건틀렛
 		break;
 
-		/* ��1�� */
+		/* 궁1수 */
 		case 300:
-		wList.push(1452253); // Ȱ
-		wList.push(1462240); // ����
+		wList.push(1452253); // 활
+		wList.push(1462240); // 석궁
 		break;
 
 		case 310:
 		case 1300:
 		case 1310:
-		wList.push(1452253); // Ȱ
+		wList.push(1452253); // 활
 		break;
 
 		case 320:
@@ -320,21 +320,21 @@ function getWeapon(i)
 		case 3310:
 		case 3311:
 		case 3312:
-		wList.push(1462240); // ����
+		wList.push(1462240); // 석궁
 		break;
 
 		case 301:
 		case 330:
 		case 331:
 		case 332:
-		wList.push(1592008); // ���μ�Ʈ ����
+		wList.push(1592008); // 에인션트 보우
 		break;
 
 		case 2300:
 		case 2310:
 		case 2311:
 		case 2312:
-		wList.push(1522139); // ��� �����
+		wList.push(1522139); // 듀얼 보우건
 		break;
 
 		case 400:
@@ -344,15 +344,15 @@ function getWeapon(i)
 		case 420:
 		case 421:
 		case 422:
-		wList.push(1332275); // �ܰ�
-		wList.push(1472262); // �ƴ�
+		wList.push(1332275); // 단검
+		wList.push(1472262); // 아대
 		break;
 
 		case 1400:
 		case 1410:
 		case 1411:
 		case 1412:
-		wList.push(1472262); // �ƴ�
+		wList.push(1472262); // 아대
 		break;
 
 		case 430:
@@ -360,42 +360,42 @@ function getWeapon(i)
 		case 432:
 		case 433:
 		case 434:
-		wList.push(1332275); // �ܰ�
+		wList.push(1332275); // 단검
 		break;
 
 		case 2400:
 		case 2410:
 		case 2411:
 		case 2412:
-		wList.push(1362136); // ����
+		wList.push(1362136); // 케인
 		break;
 
 		case 3600:
 		case 3610:
 		case 3611:
 		case 3612:
-		wList.push(1242117); // �������ҵ�
+		wList.push(1242117); // 에너지소드
 		break;
 
 		case 6400:
 		case 6410:
 		case 6411:
 		case 6412:
-		wList.push(1272031); // ü��
+		wList.push(1272031); // 체인
 		break;
 
 		case 6300:
 		case 6310:
 		case 6311:
 		case 6312:
-		wList.push(1214020); // �극�� ����
+		wList.push(1214020); // 브레스 슈터
 		break;
 
-		//����
+		//해적
 		case 500:
-		wList.push(1482217); // ��Ŭ
-		wList.push(1492232); // ��
-		wList.push(1532145); // �ڵ�ĳ��
+		wList.push(1482217); // 너클
+		wList.push(1492232); // 건
+		wList.push(1532145); // 핸드캐논
 		break;
 
 		case 510:
@@ -413,7 +413,7 @@ function getWeapon(i)
 		case 15510:
 		case 15511:
 		case 15512:
-		wList.push(1482217); // ��Ŭ
+		wList.push(1482217); // 너클
 		break;
 
 		case 520:
@@ -423,35 +423,35 @@ function getWeapon(i)
 		case 3510:
 		case 3511:
 		case 3512:
-		wList.push(1492232); // ��
+		wList.push(1492232); // 건
 		break;
 
 		case 530:
 		case 531:
 		case 532:
 		case 501:
-		wList.push(1532145); // �ڵ�ĳ��
+		wList.push(1532145); // 핸드캐논
 		break;
 
 		case 16400:
 		case 16410:
 		case 16411:
 		case 16412:
-		wList.push(1292023); // ��ä
+		wList.push(1292023); // 부채
 		break;
 
-		case 16200: //���
+		case 16200: //라라
 		case 16210:
 		case 16211:
 		case 16212:
-		wList.push(1372223); // �ϵ�
+		wList.push(1372223); // 완드
 		break;
 
 		case 6500:
 		case 6510:
 		case 6511:
 		case 6512:
-		wList.push(1222110); // �ҿｴ��
+		wList.push(1222110); // 소울슈터
 		break;
 		case 10110:
 		break;

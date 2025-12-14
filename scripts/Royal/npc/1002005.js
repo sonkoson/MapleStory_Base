@@ -1,4 +1,4 @@
-﻿importPackage(java.lang);
+importPackage(java.lang);
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
 파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";

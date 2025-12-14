@@ -1,8 +1,8 @@
 importPackage(Packages.objects.utils);
 
-// ÀÌº¥Æ®¸Å´ÏÀú ÃÊ±âÈ­ÇÒ ³»¿ë(Ã¤³Îº°·Î Àû¿ëµÊ)
+// ì´ë²¤íŠ¸ë§¤ë‹ˆì € ì´ˆê¸°í™”í•  ë‚´ìš©(ì±„ë„ë³„ë¡œ ì ìš©ë¨)
 function init() {
-    //ÀÔÀå °¡´ÉÇÑ ¸Ê °¹¼ö ÃÑ8°³¾¿(ÀÌÁö¿Í ³ë¸»Àº ÅëÇÕ)
+    //ì…ì¥ ê°€ëŠ¥í•œ ë§µ ê°¯ìˆ˜ ì´8ê°œì”©(ì´ì§€ì™€ ë…¸ë§ì€ í†µí•©)
     em.setProperty("status0", "0");
 
 }
@@ -79,7 +79,7 @@ function playerDisconnected(eim, player) {
 }
 
 function changedMap(eim, player, mapid) {
-    if (mapid != parseInt(eim.getProperty("map")) && mapid != 211070101 && mapid != 211070103 && mapid != 211070105 && mapid != 211070350 && mapid != 211070450 && mapid != 211070550) { //°øÁß°¨¿Á!
+    if (mapid != parseInt(eim.getProperty("map")) && mapid != 211070101 && mapid != 211070103 && mapid != 211070105 && mapid != 211070350 && mapid != 211070450 && mapid != 211070550) { //ê³µì¤‘ê°ì˜¥!
         eim.unregisterPlayer(player);
         if (eim != null) {
             if (eim.getPlayerCount() <= 0) {
@@ -103,7 +103,7 @@ function playerExit(eim, player) {
 function allMonstersDead(eim) {}
 
 function leftParty(eim, player) {
-    // Å»Åğ
+    // íƒˆí‡´
     var exitMap = 211070000;
     playerExit(eim, player);
     player.changeMap(exitMap);

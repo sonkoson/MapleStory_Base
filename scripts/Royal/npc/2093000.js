@@ -1,4 +1,4 @@
-﻿importPackage(java.sql);
+importPackage(java.sql);
 
 importPackage(java.util);
 importPackage(java.lang);

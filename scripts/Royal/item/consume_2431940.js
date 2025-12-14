@@ -21,7 +21,7 @@ function action(mode, type, selection) {
         if (status == 0) {
             cm.getPlayer().getProfession().addFatigue(-fatigue);
             cm.getPlayer().updateSingleStat(PlayerStat.FATIGUE, cm.getPlayer().getProfession().getFatigue());
-            cm.getPlayer().message("ÇÇ·Îµµ°¡ "+fatigue+"¸¸Å­ È¸º¹µÇ¾ú½À´Ï´Ù.");
+            cm.getPlayer().message("í”¼ë¡œë„ê°€ "+fatigue+"ë§Œí¼ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤.");
             cm.dispose();
         } else { 
             cm.dispose();

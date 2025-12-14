@@ -1,4 +1,4 @@
-﻿var status = -1;
+var status = -1;
 var selectedSlot = -1;
 var itemList = [];
 

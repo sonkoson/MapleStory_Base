@@ -14,22 +14,22 @@ function action(mode, type, selection) {
         else	
             status--;
         if (status == 0) {
-	var chat = "¾î¶² ½ºÅ³À» ¸¶½ºÅÍ ÇØº¼±î?\r\n\r\n";
-	chat += cm.¸¶½ºÅÍ¸®ºÏ();
+	var chat = "ì–´ë–¤ ìŠ¤í‚¬ì„ ë§ˆìŠ¤í„° í•´ë³¼ê¹Œ?\r\n\r\n";
+	chat += cm.ë§ˆìŠ¤í„°ë¦¬ë¶();
  	chat += "\r\n";
-	chat += "#L0##r#fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l";
+	chat += "#L0##r#fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l";
 	cm.sendSimpleS(chat,2);
 	} else if (status == 1) {
 	if (selection != -1 && selection != 0) {
           if (cm.getPlayer().getMasterLevel(selection) == 20) {
 	    cm.teachSkill(selection,cm.getPlayer().getSkillLevel(selection),30);
-	    cm.sendOkS("ÀÌ°É·Î ³ªµµ Á»´õ °­ÇØÁø°É±î?",2);
+	    cm.sendOkS("ì´ê±¸ë¡œ ë‚˜ë„ ì¢€ë” ê°•í•´ì§„ê±¸ê¹Œ?",2);
 	    cm.gainItem(2431790,-1);
           } else {
             if (cm.getPlyer.getMasterLevel(selection) == 30) {
-	        cm.sendOkS("ÀÌ¹Ì ¸¶½ºÅÍÇÑ ½ºÅ³°°Àºµ¥.",2);
+	        cm.sendOkS("ì´ë¯¸ ë§ˆìŠ¤í„°í•œ ìŠ¤í‚¬ê°™ì€ë°.",2);
             } else {
-	        cm.sendOkS("¾ÆÁ÷ ¹è¿ì±â¿¡ ¾î·Á¿î ½ºÅ³°°´Ù.",2);
+	        cm.sendOkS("ì•„ì§ ë°°ìš°ê¸°ì— ì–´ë ¤ìš´ ìŠ¤í‚¬ê°™ë‹¤.",2);
             }
           }
 	}

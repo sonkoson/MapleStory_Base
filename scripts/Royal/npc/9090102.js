@@ -1,4 +1,4 @@
-﻿var invtype = 0;
+var invtype = 0;
 var St = -1;
 var rotation = 0;
 var S1 = 0, S2 = 0, S3 = 0, S4 = 0;

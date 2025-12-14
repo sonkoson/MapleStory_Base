@@ -14,15 +14,15 @@ function action(mode, type, selection) {
         else	
             status--;
         if (status == 0) {
-	var chat = "¾î¶² ½ºÅ³À» ¸¶½ºÅÍ ÇØº¼±î?\r\n\r\n";
-	chat += cm.¸¶½ºÅÍ¸®ºÏ();
+	var chat = "ì–´ë–¤ ìŠ¤í‚¬ì„ ë§ˆìŠ¤í„° í•´ë³¼ê¹Œ?\r\n\r\n";
+	chat += cm.ë§ˆìŠ¤í„°ë¦¬ë¶();
  	chat += "\r\n";
-	chat += "#L0##r#fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l";
+	chat += "#L0##r#fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l";
 	cm.sendSimpleS(chat,2);
 	} else if (status == 1) {
 	if (selection != -1 && selection != 0) {
 	    cm.teachSkill(selection,cm.getPlayer().getSkillLevel(selection),20);
-	    cm.sendOkS("ÀÌ°É·Î ³ªµµ Á»´õ °­ÇØÁø°É±î?",2);
+	    cm.sendOkS("ì´ê±¸ë¡œ ë‚˜ë„ ì¢€ë” ê°•í•´ì§„ê±¸ê¹Œ?",2);
 	    cm.gainItem(2431789,-1);
 	}
 	cm.dispose();

@@ -10,13 +10,13 @@ importPackage(Packages.client);
 importPackage(Packages.server);
 importPackage(Packages.tools.packet);
 
-±âº»Áö±Ş = [1004404, 1052893, 1102799];
-Àü»ç = [1302334, 1402252, 1412178, 1422185, 1432215, 1442269, 1582021, 1232110, 1312200, 1322251, 1213023];
-¸¶¹ı»ç = [1212116, 1372223, 1382260, 1262027, 1282019];
-±Ã¼ö = [1452253, 1462240, 1522139, 1592008, 1214020];
-µµÀû = [1472262, 1332275, 1362136, 1272031, 1292023];
-ÇØÀû = [1492232, 1482217, 1222110, 1532145];
-Á¦³í = [1242117];
+ê¸°ë³¸ì§€ê¸‰ = [1004404, 1052893, 1102799];
+ì „ì‚¬ = [1302334, 1402252, 1412178, 1422185, 1432215, 1442269, 1582021, 1232110, 1312200, 1322251, 1213023];
+ë§ˆë²•ì‚¬ = [1212116, 1372223, 1382260, 1262027, 1282019];
+ê¶ìˆ˜ = [1452253, 1462240, 1522139, 1592008, 1214020];
+ë„ì  = [1472262, 1332275, 1362136, 1272031, 1292023];
+í•´ì  = [1492232, 1482217, 1222110, 1532145];
+ì œë…¼ = [1242117];
 
 var purple = "#fc0xFF7401DF#";
 
@@ -34,20 +34,20 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-	var text = "#fn³ª´®°íµñ#" + purple + "Á¦·Î ½Å±ÔÀ¯Àú¸¦ À§ÇÑ Áö¿øÀåºñ ÀÔ´Ï´Ù.#k#n\r\n\r\n";
-	text += "#dÀÚ½ÅÀÇ Á÷¾÷¿¡ ¸Â´Â Àåºñ¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä#k\r\n\r\n\r\n";
-	text += "#b#L1#Àü»ç#k\r\n";
+	var text = "#fnë‚˜ëˆ”ê³ ë”•#" + purple + "ì œë¡œ ì‹ ê·œìœ ì €ë¥¼ ìœ„í•œ ì§€ì›ì¥ë¹„ ì…ë‹ˆë‹¤.#k#n\r\n\r\n";
+	text += "#dìì‹ ì˜ ì§ì—…ì— ë§ëŠ” ì¥ë¹„ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”#k\r\n\r\n\r\n";
+	text += "#b#L1#ì „ì‚¬#k\r\n";
 	text += "#fUI/UIWindow2.img/QuestIcon/3/0#\r\n";
 
 		break;
 	}
 	cm.sendSimple(text);
 	} else if (status == 1) {
-	    var a = "#fn³ª´®°íµñ#" + purple + "<Á¦·Î>#k#n\r\n\r\n";
-	    a += "#e#b#h0##k#n ´ÔÀ» À§ÇÑ Àåºñ¸¦ Áö±ŞÇØµå·È½À´Ï´Ù\r\nÁñ°Å¿î ½Ã°£ µÇ½Ã±æ ¹Ù¶ø´Ï´Ù!";
-	    for (i = 0; i < ±âº»Áö±Ş.length; i++) {
-	        a += "#b#i"+ ±âº»Áö±Ş[i] +"# #z"+ ±âº»Áö±Ş[i] +"# #k\r\n";
-	        var inz =Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(±âº»Áö±Ş[i]);
+	    var a = "#fnë‚˜ëˆ”ê³ ë”•#" + purple + "<ì œë¡œ>#k#n\r\n\r\n";
+	    a += "#e#b#h0##k#n ë‹˜ì„ ìœ„í•œ ì¥ë¹„ë¥¼ ì§€ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤\r\nì¦ê±°ìš´ ì‹œê°„ ë˜ì‹œê¸¸ ë°”ëë‹ˆë‹¤!";
+	    for (i = 0; i < ê¸°ë³¸ì§€ê¸‰.length; i++) {
+	        a += "#b#i"+ ê¸°ë³¸ì§€ê¸‰[i] +"# #z"+ ê¸°ë³¸ì§€ê¸‰[i] +"# #k\r\n";
+	        var inz =Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(ê¸°ë³¸ì§€ê¸‰[i]);
 	        inz.setReqLevel(-90);
 	    inz.setStr(80);
 	    inz.setDex(80);
@@ -56,7 +56,7 @@ function action(mode, type, selection) {
                   inz.setState(4);
 	        Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), inz);
 	    }
-	    a += "#b#i"+ selection +"# #z"+ selection +"##k #e#r(¼±ÅÃÇÑ ¾ÆÀÌÅÛ)#k#n\r\n";
+	    a += "#b#i"+ selection +"# #z"+ selection +"##k #e#r(ì„ íƒí•œ ì•„ì´í…œ)#k#n\r\n";
 	    var inz =Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(selection);
 	    inz.setReqLevel(-90);
 	    inz.setStr(80);

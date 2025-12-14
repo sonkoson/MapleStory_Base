@@ -19,6 +19,6 @@ function action(mode, type, sel) {
         qty = cm.getPlayer().getItemQuantity(5680148, false);
         cm.dispose();
         cm.gainItem(5680148, -qty);
-        cm.getPlayer().dropMessage(1, "»ç¿ëµÇÁö ¾Ê´Â ¾ÆÀÌÅÛÀÔ´Ï´Ù.\r\nÇØ´ç ¾ÆÀÌÅÛÀÌ »èÁ¦µË´Ï´Ù.");
+        cm.getPlayer().dropMessage(1, "ì‚¬ìš©ë˜ì§€ ì•ŠëŠ” ì•„ì´í…œì…ë‹ˆë‹¤.\r\ní•´ë‹¹ ì•„ì´í…œì´ ì‚­ì œë©ë‹ˆë‹¤.");
     }
 }

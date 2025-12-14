@@ -1,4 +1,4 @@
-﻿/*
+/*
 제니아 우편함
 */
 importPackage(Packages.objects.item);

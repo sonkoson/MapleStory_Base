@@ -2,6 +2,6 @@ function act() {
 	if (rm.getMap().getId() == 240060300) {
     rm.changeMusic("Bgm14/HonTale");
     rm.spawnMonster(8810215,71,260);
-    rm.mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ È¥Å×ÀÏÀÌ ³ªÅ¸³µ½À´Ï´Ù!");
+    rm.mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ í˜¼í…Œì¼ì´ ë‚˜íƒ€ë‚¬ìŠµë‹ˆë‹¤!");
 	}
 }

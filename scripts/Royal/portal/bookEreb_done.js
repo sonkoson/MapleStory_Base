@@ -1,7 +1,7 @@
 function enter(pi) {
     if (pi.getPlayerCount(310030210) > 0) {
-         pi.getPlayer().dropMessage(-1, "ÀÌ¹Ì ´©°¡ Å¾½ÂÁß ÀÌ¹Ç·Î Àá½Ã ±â´Ù·ÁÁÖ¼¼¿ä.");
-         pi.getPlayer().dropMessage(5, "ÀÌ¹Ì ´©°¡ Å¾½ÂÁß ÀÌ¹Ç·Î Àá½Ã ±â´Ù·ÁÁÖ¼¼¿ä.");
+         pi.getPlayer().dropMessage(-1, "ì´ë¯¸ ëˆ„ê°€ íƒ‘ìŠ¹ì¤‘ ì´ë¯€ë¡œ ì ì‹œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.");
+         pi.getPlayer().dropMessage(5, "ì´ë¯¸ ëˆ„ê°€ íƒ‘ìŠ¹ì¤‘ ì´ë¯€ë¡œ ì ì‹œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.");
     } else {
     pi.TimeMoveMap(310030210,304000000,20);
     return true;

@@ -1,4 +1,4 @@
-﻿importPackage(Packages.network.models);
+importPackage(Packages.network.models);
 var status = -1;
 
 function start() {

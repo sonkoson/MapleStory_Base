@@ -25,15 +25,15 @@ function action(mode, type, sel) {
 	cm.setBlind(1, 0, 0, 0, 0, 0, 255); //off
 	cm.delay(1400);
     } else if (status == 2) {
-	cm.effectText("#fn³ª´®°íµñ ExtraBold##fs18#<Áø Ä³½½> ÀÔ±¸", 100, 1000, 6, 0, -50, -50);
+	cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs18#<ì§„ ìºìŠ¬> ì…êµ¬", 100, 1000, 6, 0, -50, -50);
 	cm.delay(2000);
     } else if (status == 3) {
-	cm.sayNpc("Àú°÷ÀÌ Áø Ä³½½ÀÌ±¸³ª.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ì €ê³³ì´ ì§„ ìºìŠ¬ì´êµ¬ë‚˜.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 4) {
 	cm.forcedMove(2, 300);
 	cm.delay(2000);
     } else if (status == 5) {
-	cm.sayNpc("µè´ø ´ë·Î Á¤¸» ¾Æ¸§´ä´Ù.\r\n¾î¼­ °¡º¸ÀÚ.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ë“£ë˜ ëŒ€ë¡œ ì •ë§ ì•„ë¦„ë‹µë‹¤.\r\nì–´ì„œ ê°€ë³´ì.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 6) {
 	cm.delay(1000);
     } else if (status == 7) {

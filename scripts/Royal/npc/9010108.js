@@ -32,10 +32,10 @@ function action(mode, type, selection) {
 	}
 	if (coin > 0) {		
 		s = 0;
-		cm.sendNext("#b#i4310229:##t4310229##kÀ» #b" + coin + "°³#k³ª ¸ðÀ¸¼Ì±º¿ä? ´ë´ÜÇØ¿ä~\r\n\r\n±×·³ ±¤ÀåÀ¸·Î º¸³» µå¸±°Ô¿ä. ¾È³çÈ÷ °¡¼¼¿ä~");
+		cm.sendNext("#b#i4310229:##t4310229##kì„ #b" + coin + "ê°œ#kë‚˜ ëª¨ìœ¼ì…¨êµ°ìš”? ëŒ€ë‹¨í•´ìš”~\r\n\r\nê·¸ëŸ¼ ê´‘ìž¥ìœ¼ë¡œ ë³´ë‚´ ë“œë¦´ê²Œìš”. ì•ˆë…•ížˆ ê°€ì„¸ìš”~");
 	} else {
 		s = 1;
-		cm.sendNext("À½~ ¾ÆÁ÷ À¯´Ï¿Â ÄÚÀÎÀ» ÇÏ³ªµµ ¾òÁö ¸øÇÏ¼Ì±º¿ä? È¹µæÀÌ ³Ê¹« ¾î·Á¿ì½Ã´Ù¸é ½Ã°£À» Á¶±Ý °¡Áø µÚ µé¾î¿Í º¸¼¼¿ä. À¯´Ï¿ÂÀÇ ±¸¼º¿øµéÀÌ ¿­½ÉÈ÷ ÄÚÀÎÀ» ¸ð¾Æ µÑ °Å¿¹¿ä.");
+		cm.sendNext("ìŒ~ ì•„ì§ ìœ ë‹ˆì˜¨ ì½”ì¸ì„ í•˜ë‚˜ë„ ì–»ì§€ ëª»í•˜ì…¨êµ°ìš”? íšë“ì´ ë„ˆë¬´ ì–´ë ¤ìš°ì‹œë‹¤ë©´ ì‹œê°„ì„ ì¡°ê¸ˆ ê°€ì§„ ë’¤ ë“¤ì–´ì™€ ë³´ì„¸ìš”. ìœ ë‹ˆì˜¨ì˜ êµ¬ì„±ì›ë“¤ì´ ì—´ì‹¬ížˆ ì½”ì¸ì„ ëª¨ì•„ ë‘˜ ê±°ì˜ˆìš”.");
 	}
     } else if (status == 1) {
    	if (s == 0) {
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
 		cm.warp(ServerConstants.TownMap, 0);
 		cm.dispose();
 	} else {
-		cm.sendNext("±×·³ ±¤ÀåÀ¸·Î º¸³» µå¸±°Ô¿ä. ¾È³çÈ÷ °¡¼¼¿ä~");
+		cm.sendNext("ê·¸ëŸ¼ ê´‘ìž¥ìœ¼ë¡œ ë³´ë‚´ ë“œë¦´ê²Œìš”. ì•ˆë…•ížˆ ê°€ì„¸ìš”~");
 	}
     } else if (status == 2) {
     	cm.warp(15);

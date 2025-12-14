@@ -1,5 +1,5 @@
 function act() {
-    rm.mapMessage(5, "Â÷¿øÀÇ ±Õ¿­ÀÌ <Â÷¿øÀÇ ±Õ¿­ Á¶°¢>À¸·Î ¸Ş²Ù¾îÁ³½À´Ï´Ù.");
+    rm.mapMessage(5, "ì°¨ì›ì˜ ê· ì—´ì´ <ì°¨ì›ì˜ ê· ì—´ ì¡°ê°>ìœ¼ë¡œ ë©”ê¾¸ì–´ì¡ŒìŠµë‹ˆë‹¤.");
     rm.changeMusic("Bgm09/TimeAttack");
     if (rm.getMap().getId() == 220080300) {
         rm.spawnMonster(8500020, 0, 179);

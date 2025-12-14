@@ -11,7 +11,7 @@ var arkMaps = [
 	350060900,
 ];
 
-// ÀÌº¥Æ®¸Å´ÏÀú ÃÊ±âÈ­ÇÒ ³»¿ë(Ã¤³Îº°·Î Àû¿ëµÊ)
+// ì´ë²¤íŠ¸ë§¤ë‹ˆì € ì´ˆê¸°í™”í•  ë‚´ìš©(ì±„ë„ë³„ë¡œ ì ìš©ë¨)
 function init() {
     em.setProperty("status0", "0");
 }
@@ -125,7 +125,7 @@ function playerExit(eim, player) {
 function allMonstersDead(eim) {}
 
 function leftParty(eim, player) {
-    // Å»Åğ
+    // íƒˆí‡´
     var exitMap = ServerConstants.TownMap;
     playerExit(eim, player);
     player.changeMap(exitMap);

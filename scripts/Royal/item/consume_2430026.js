@@ -24,11 +24,11 @@ function action(mode, type, selection) {
         else
             status--;
 	if (status == 0) {
-	cm.sendYesNo("#fs11##i5062005##z5062005# #b0°³ ~ 3°³#k\r\n#i5062503##z5062503# #b0°³ ~ 3°³#k\r\n°¡ ·£´ıÀ¸·Î Áö±ŞµË´Ï´Ù »óÀÚ¸¦ ¿©½Ã°Ú½À´Ï±î?");
+	cm.sendYesNo("#fs11##i5062005##z5062005# #b0ê°œ ~ 3ê°œ#k\r\n#i5062503##z5062503# #b0ê°œ ~ 3ê°œ#k\r\nê°€ ëœë¤ìœ¼ë¡œ ì§€ê¸‰ë©ë‹ˆë‹¤ ìƒìë¥¼ ì—¬ì‹œê² ìŠµë‹ˆê¹Œ?");
 	} else if (status == 1) {
 a = Packages.objects.utils.Randomizer.rand(0,3);
 b = Packages.objects.utils.Randomizer.rand(0,3);
-cm.sendOk("#fs11##i5062005##z5062005# #b" + a + "°³#k\r\n#i5062503##z5062503# #b" + b + "°³#k\r\nÀ§ ¾ÆÀÌÅÛµéÀÌ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+cm.sendOk("#fs11##i5062005##z5062005# #b" + a + "ê°œ#k\r\n#i5062503##z5062503# #b" + b + "ê°œ#k\r\nìœ„ ì•„ì´í…œë“¤ì´ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	cm.gainItem(2430026, -1);
 	cm.gainItem(5062005, a);
 	cm.gainItem(5062503, b);

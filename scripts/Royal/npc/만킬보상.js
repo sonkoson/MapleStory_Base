@@ -1,4 +1,4 @@
-﻿/*일일 퀘스트
+/*일일 퀘스트
 10만 마리 잡기	*/
 
  importPackage(java.lang);

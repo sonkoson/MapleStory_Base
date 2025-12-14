@@ -1,7 +1,7 @@
 /*
- * га╥на╖ф╝ : 1.2.214 SpiritStyle
- * Script Author : го©Д(ifhayo)
- * юл аж╪╝ю╨ аЖ©ЛаЖ ╬й╬фаж╪лю╦╦И аа╟з╫ю╢о╢ы.
+ * М■└К║°Л═²М┼╦ : 1.2.214 SpiritStyle
+ * Script Author : М∙≤Л ■(ifhayo)
+ * Л²╢ Лё╪Л└²Л²─ Л╖─Л ╟Л╖─ Л∙┼Л∙└Лё╪Л┘╗Л°╪К╘╢ Л╒▀Й╡═Л┼╣К▀┬К▀╓.
  *
  */
 
@@ -36,7 +36,7 @@ function action(mode, type, selection) {
 	if (status == 0) {
 		cm.getPlayer().innerLevelUp();
 		cm.gainItem(2432970,-1);
-		cm.sendOk("╪╨╟ЬюШю╦╥н #bюлЁй ╬Н╨Т╦╝ф╪#k╦╕ ╟Ё╧Ф го©╢╫ю╢о╢ы.");
+		cm.sendOk("Л└╠ЙЁ╣Л═│Л°╪К║° #bЛ²╢К└┬ Л√╢К╧▄К╕╛М▀╟#kК╔╪ Й╟°К╟╘ М∙≤Л≤─Л┼╣К▀┬К▀╓.");
 		cm.dispose();
 	}
 }

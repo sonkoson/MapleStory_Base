@@ -19,7 +19,7 @@ function action(mode, type, selection) {
     }
         if (status == 0) {
 	//cm.getPlayer().AddStarDustCoin(50);
-	cm.getPlayer().dropMessage(6, "¸®ÇÁ Æ÷ÀÎÆ® 50 È¹µæ!");
+	cm.getPlayer().dropMessage(6, "ë¦¬í”„ í¬ì¸íŠ¸ 50 íšë“!");
 	cm.gainItem(2431510, -1);
 	cm.dispose();
 	}

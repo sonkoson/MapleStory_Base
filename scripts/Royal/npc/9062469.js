@@ -1,4 +1,4 @@
-﻿importPackage(Packages.scripting);
+importPackage(Packages.scripting);
 importPackage(Packages.constants);
 
 var status = -1;

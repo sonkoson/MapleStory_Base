@@ -1,12 +1,12 @@
 /*
- * ¾ÆÄ«ÀÌ·³
+ * ì•„ì¹´ì´ëŸ¼
  */
 function enter(pi) {
     var map = pi.getPlayer().getMap();
     if (pi.getMonsterCount(map.getId()) <= 0) {
         pi.warp(map.getId() - 100);
     } else {
-        pi.getPlayer().message(5, "ÀÌµ¿ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+        pi.getPlayer().message(5, "ì´ë™ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
     }
     return false;
 }

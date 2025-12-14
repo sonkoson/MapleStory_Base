@@ -1,7 +1,7 @@
 function enter(pi) {
     pi.warp(302010400,0);
 	pi.forceCompleteQuest(300);
-    pi.getPlayer().dropMessage(-1, "µµÂøÇß´Ù... ÇÖ»ç¸£¿¡°Ô ¸»À» °É¾îº¸ÀÚ.");
-    pi.getPlayer().dropMessage(5, "µµÂøÇß´Ù... ÇÖ»ç¸£¿¡°Ô ¸»À» °É¾îº¸ÀÚ.");
+    pi.getPlayer().dropMessage(-1, "ë„ì°©í–ˆë‹¤... í•«ì‚¬ë¥´ì—ê²Œ ë§ì„ ê±¸ì–´ë³´ì.");
+    pi.getPlayer().dropMessage(5, "ë„ì°©í–ˆë‹¤... í•«ì‚¬ë¥´ì—ê²Œ ë§ì„ ê±¸ì–´ë³´ì.");
     return true;
 }

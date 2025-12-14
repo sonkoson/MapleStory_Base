@@ -1,4 +1,4 @@
 function enter(pi) {
 	//pi.playPortalSE();
-	pi.playerMessage(5,"[¾Ë¸²] 4ÃşÀº ÀÔÀåÀÌ ºÒ°¡´É ÇÕ´Ï´Ù.");
+	pi.playerMessage(5,"[ì•Œë¦¼] 4ì¸µì€ ì…ì¥ì´ ë¶ˆê°€ëŠ¥ í•©ë‹ˆë‹¤.");
 }

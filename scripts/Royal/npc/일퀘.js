@@ -1,4 +1,4 @@
-﻿var enter = "\r\n";
+var enter = "\r\n";
 var seld = -1;
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";

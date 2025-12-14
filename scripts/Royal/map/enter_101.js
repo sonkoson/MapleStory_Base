@@ -23,7 +23,7 @@ function action(mode, type, sel) {
         return;
 
 
-        cm.effectText("#fn³ª´®°íµñ ExtraBold##fs16#< °­¸²¿ùµå > - °­¸² ¸¶À» 1¹øÁö", 100, 1000, 6, 0, 430, -550);
+        cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs16#< ê°•ë¦¼ì›”ë“œ > - ê°•ë¦¼ ë§ˆì„ 1ë²ˆì§€", 100, 1000, 6, 0, 430, -550);
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

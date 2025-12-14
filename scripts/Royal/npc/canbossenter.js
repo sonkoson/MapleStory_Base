@@ -1,4 +1,4 @@
-﻿importPackage(Packages.scripting.newscripting)
+importPackage(Packages.scripting.newscripting)
 importPackage(Packages.constants)
 
 enter = "\r\n"

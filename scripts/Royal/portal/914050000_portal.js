@@ -3,7 +3,7 @@ importPackage(Packages.objects.users);
 function enter(pi) {
     pi.warp(141030000,0);
     pi.getPlayer().cancelEffectFromBuffStat(SecondaryStatFlag.RIDING_VEHICLE);
-    pi.getPlayer().dropMessage(-1, "[Ç×ÇØ ¼º°ø] ¿À¸¥ÂÊÀÇ µûº¸¸¦ Ã£¾Æ°¡ µûº¸ÀÇ ºÎÅ¹À» µé¾îÁÖ¼¼¿ä.");
-    pi.getPlayer().dropMessage(5, "[Ç×ÇØ ¼º°ø] ¿À¸¥ÂÊÀÇ µûº¸¸¦ Ã£¾Æ°¡ µûº¸ÀÇ ºÎÅ¹À» µé¾îÁÖ¼¼¿ä.");
+    pi.getPlayer().dropMessage(-1, "[í•­í•´ ì„±ê³µ] ì˜¤ë¥¸ìª½ì˜ ë”°ë³´ë¥¼ ì°¾ì•„ê°€ ë”°ë³´ì˜ ë¶€íƒì„ ë“¤ì–´ì£¼ì„¸ìš”.");
+    pi.getPlayer().dropMessage(5, "[í•­í•´ ì„±ê³µ] ì˜¤ë¥¸ìª½ì˜ ë”°ë³´ë¥¼ ì°¾ì•„ê°€ ë”°ë³´ì˜ ë¶€íƒì„ ë“¤ì–´ì£¼ì„¸ìš”.");
     return true;
 }

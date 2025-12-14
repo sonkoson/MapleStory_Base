@@ -1,10 +1,10 @@
 function enter(pi) {
          if (pi.getQuestStatus(5) == 2 && pi.getQuestStatus(4) == 2 && pi.getQuestStatus(6) == 2) {
 	pi.warp(331002100);
-	pi.playerMessage(5, "[¾Ë¸²] 2-1¹ÝÀ¸·Î °¡¼¼¿ä!");
-	pi.playerMessage(-1, "[¾Ë¸²] 2-1¹ÝÀ¸·Î °¡¼¼¿ä!");
+	pi.playerMessage(5, "[ì•Œë¦¼] 2-1ë°˜ìœ¼ë¡œ ê°€ì„¸ìš”!");
+	pi.playerMessage(-1, "[ì•Œë¦¼] 2-1ë°˜ìœ¼ë¡œ ê°€ì„¸ìš”!");
         } else{
-	pi.playerMessage(5, "[¾Ë¸²] ¼±Çà Äù½ºÆ®¸¦ ÁøÇà ÇØÁÖ¼¼¿ä.");
-	pi.playerMessage(-1, "[¾Ë¸²] ¼±Çà Äù½ºÆ®¸¦ ÁøÇà ÇØÁÖ¼¼¿ä.");
+	pi.playerMessage(5, "[ì•Œë¦¼] ì„ í–‰ í€˜ìŠ¤íŠ¸ë¥¼ ì§„í–‰ í•´ì£¼ì„¸ìš”.");
+	pi.playerMessage(-1, "[ì•Œë¦¼] ì„ í–‰ í€˜ìŠ¤íŠ¸ë¥¼ ì§„í–‰ í•´ì£¼ì„¸ìš”.");
 	}
 }

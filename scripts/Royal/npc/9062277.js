@@ -1,4 +1,4 @@
-﻿// 상점시스템
+// 상점시스템
 
 importPackage(Packages.scripting);
 

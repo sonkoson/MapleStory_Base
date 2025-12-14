@@ -1,4 +1,4 @@
-﻿importPackage(Packages.handling.world);
+importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";

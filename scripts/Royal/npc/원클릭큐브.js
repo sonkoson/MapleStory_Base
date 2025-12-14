@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @projectDescription 큐브 스크립트
  *
  * @author vent

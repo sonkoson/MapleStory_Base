@@ -2,15 +2,15 @@ weapon = [1212129, 1213022, 1214022, 1222122, 1232122, 1242139, 1242141, 1262051
 
 
 var potential = [
-    ["º¸½º°ø°Ý·Â 40%", 40603],
-    ["°ø°Ý·Â 12%", 40051], //°ø°Ý·Â 12%
-    ["¸¶·Â 12%", 40052], //¸¶·Â 12%
-    ["°ø°Ý·Â 12%", 40051], //°ø°Ý·Â 9%
-    ["¸¶·Â 12%", 40052] //¸¶·Â9%
+    ["ë³´ìŠ¤ê³µê²©ë ¥ 40%", 40603],
+    ["ê³µê²©ë ¥ 12%", 40051], //ê³µê²©ë ¥ 12%
+    ["ë§ˆë ¥ 12%", 40052], //ë§ˆë ¥ 12%
+    ["ê³µê²©ë ¥ 12%", 40051], //ê³µê²©ë ¥ 9%
+    ["ë§ˆë ¥ 12%", 40052] //ë§ˆë ¥9%
 ];
 
 function MakeItem(itemid) {
-    //Àåºñ ¾ÆÀÌÅÛ ¿É¼Ç ºÎ¿©ÇÏ±â
+    //ìž¥ë¹„ ì•„ì´í…œ ì˜µì…˜ ë¶€ì—¬í•˜ê¸°
     var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
     var it = ii.getEquipById(itemid);
     it.setStr(1000);
@@ -53,75 +53,75 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var text = "#fs11#¼ö·ÉÇÒ Á¦³×½Ã½º ¹«±â¸¦ ¼±ÅÃÇÏ¼¼¿ä."
-		text += "\r\n\r\n#r#e¡Ø ¼ö·ÉÇÑ Á¦³×½Ã½º ¹«±â´Â ¾î¶°ÇÑ °æ¿ì¿¡µµ ´Ù¸¥ Á¾·ù·Î ±³È¯ÇÏ°Å³ª º¹±¸ÇÒ ¼ö ¾øÀ¸´Ï, ¹Ýµå½Ã »ç¿ëÇÒ Á÷¾÷±ºÀÇ ¹«±â¸¦ ¼ö·ÉÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.#k#n#b\r\n\r\n";
+        var text = "#fs11#ìˆ˜ë ¹í•  ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì„ íƒí•˜ì„¸ìš”."
+		text += "\r\n\r\n#r#eâ€» ìˆ˜ë ¹í•œ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ëŠ” ì–´ë– í•œ ê²½ìš°ì—ë„ ë‹¤ë¥¸ ì¢…ë¥˜ë¡œ êµí™˜í•˜ê±°ë‚˜ ë³µêµ¬í•  ìˆ˜ ì—†ìœ¼ë‹ˆ, ë°˜ë“œì‹œ ì‚¬ìš©í•  ì§ì—…êµ°ì˜ ë¬´ê¸°ë¥¼ ìˆ˜ë ¹í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.#k#n#b\r\n\r\n";
         for (var i = 0; i < weapon.length; i++) {
             text += "#L" + i + "##i" + weapon[i] + "##z" + weapon[i] + "##l\r\n";
         }
         cm.sendSimple(text);
     } else if (status == 1) {
         choice = selection;
-        say += "   #fs11##b¼±ÅÃ#k : #r#i" + weapon[choice] + "##z" + weapon[choice] + "##k\r\n\r\n";
-        var text = "   Ã¹ ¹øÂ° ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n\r\n#b";
+        say += "   #fs11##bì„ íƒ#k : #r#i" + weapon[choice] + "##z" + weapon[choice] + "##k\r\n\r\n";
+        var text = "   ì²« ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n\r\n#b";
         for (var i = 0; i < 3; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 2) {
         p1 = selection;
-        say += "   #b#fs11#Ã¹ ¹øÂ° ÀáÀç´É·Â : " + potential[p1][0] + "#k\r\n";
-        var text = "\r\n   µÎ ¹øÂ° ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#b";
+        say += "   #b#fs11#ì²« ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ : " + potential[p1][0] + "#k\r\n";
+        var text = "\r\n   ë‘ ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#b";
         for (var i = 0; i < 3; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 3) {
         p2 = selection;
-        say += "   #b#fs11#µÎ ¹øÂ° ÀáÀç´É·Â : " + potential[p2][0] + "#k\r\n";
-        var text = "\r\n   ¼¼ ¹øÂ° ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#b";
+        say += "   #b#fs11#ë‘ ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ : " + potential[p2][0] + "#k\r\n";
+        var text = "\r\n   ì„¸ ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#b";
         for (var i = 3; i < 5; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 4) {
         p3 = selection;
-        say += "   #b#fs11#¼¼ ¹øÂ° ÀáÀç´É·Â : " + potential[p3][0] + "#k\r\n";
-        var text = "\r\n   Ã¹ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#b";
+        say += "   #b#fs11#ì„¸ ë²ˆì§¸ ìž ìž¬ëŠ¥ë ¥ : " + potential[p3][0] + "#k\r\n";
+        var text = "\r\n   ì²« ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#b";
         for (var i = 1; i < 3; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 5) {
         p4 = selection;
-        say += "   #b#fs11#Ã¹ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·Â : " + potential[p4][0] + "#k\r\n";
-        var text = "\r\n   µÎ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#b";
+        say += "   #b#fs11#ì²« ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ : " + potential[p4][0] + "#k\r\n";
+        var text = "\r\n   ë‘ ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#b";
         for (var i = 1; i < 3; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 6) {
         p5 = selection;
-        say += "   #b#fs11#µÎ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·Â : " + potential[p5][0] + "#k\r\n";
-        var text = "\r\n   ¼¼ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·ÂÀÇ ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#b";
+        say += "   #b#fs11#ë‘ ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ : " + potential[p5][0] + "#k\r\n";
+        var text = "\r\n   ì„¸ ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ì˜ ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#b";
         for (var i = 3; i < 5; i++) {
             text += "#L" + i + "#" + potential[i][0] + "#l\r\n";
         }
         cm.sendSimple(say + text);
     } else if (status == 7) {
         p6 = selection;
-        say += "   #b#fs11#¼¼ ¹øÂ° ¿¡µð¼Å³Î ÀáÀç´É·Â : " + potential[p6][0] + "\r\n";
-        say += "   ¿Ã½ºÅÈ + 1000, °ø¸¶ + 1100, º¸½º °ø°Ý·Â 50%\r\n   ¹æ¾î·Â ¹«½Ã 50% ºÎ¿©#k\r\n\r\n";
-        cm.sendYesNo(say + "   Á¤¸»·Î À§ Á¶°ÇÀÇ Á¦³×½Ã½º ¹«±â¸¦ »ÌÀ¸½Ã°Ú½À´Ï±î?\r\n\r\n   #b#i" + item + "##z" + item + "# 1°³#k°¡ ¼Ò¸ðµË´Ï´Ù.");
+        say += "   #b#fs11#ì„¸ ë²ˆì§¸ ì—ë””ì…”ë„ ìž ìž¬ëŠ¥ë ¥ : " + potential[p6][0] + "\r\n";
+        say += "   ì˜¬ìŠ¤íƒ¯ + 1000, ê³µë§ˆ + 1100, ë³´ìŠ¤ ê³µê²©ë ¥ 50%\r\n   ë°©ì–´ë ¥ ë¬´ì‹œ 50% ë¶€ì—¬#k\r\n\r\n";
+        cm.sendYesNo(say + "   ì •ë§ë¡œ ìœ„ ì¡°ê±´ì˜ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ë½‘ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n   #b#i" + item + "##z" + item + "# 1ê°œ#kê°€ ì†Œëª¨ë©ë‹ˆë‹¤.");
     } else if (status == 8) {
         if (cm.haveItem(2439614, 1)) {
             cm.gainItem(2439614, -1);
             MakeItem(weapon[choice]);
-            cm.sendOk("#fs11##i" + weapon[choice] + "##z" + weapon[choice] + "# Á¦ÀÛÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
-            //Packages.handling.world.World.Broadcast.broadcastMessage(Packages.tools.packet.CWvsContext.serverNotice(2, "", "[Á¦³×½Ã½º] : " + cm.getPlayer().getName() + " À¯Àú°¡ ÇØ¹æµÈ Á¦³×½Ã½º ¹«±â¸¦ Á¦ÀÛÇÏ¼Ì½À´Ï´Ù."));
+            cm.sendOk("#fs11##i" + weapon[choice] + "##z" + weapon[choice] + "# ì œìž‘ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+            //Packages.handling.world.World.Broadcast.broadcastMessage(Packages.tools.packet.CWvsContext.serverNotice(2, "", "[ì œë„¤ì‹œìŠ¤] : " + cm.getPlayer().getName() + " ìœ ì €ê°€ í•´ë°©ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì œìž‘í•˜ì…¨ìŠµë‹ˆë‹¤."));
             cm.dispose();
             return;
         } else {
-            cm.sendOk("#fs11##i" + item + "##z" + item + "#¸¦ °¡Áö°í ÀÕ´ÂÁö È®ÀÎÇØ ÁÖ¼¼¿ä.\r\nÈ¤½Ã Àåºñ ÀÎº¥Åä¸® ½½·ÔÀÌ ²Ë Âù °ÍÀº ¾Æ´ÑÁö È®ÀÎÇØ ÁÖ¼¼¿ä.");
+            cm.sendOk("#fs11##i" + item + "##z" + item + "#ë¥¼ ê°€ì§€ê³  ìž‡ëŠ”ì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.\r\ní˜¹ì‹œ ìž¥ë¹„ ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì´ ê½‰ ì°¬ ê²ƒì€ ì•„ë‹Œì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.");
             cm.dispose();
             return;
         }

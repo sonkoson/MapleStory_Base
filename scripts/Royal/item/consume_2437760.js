@@ -11,14 +11,14 @@ var enter = "\r\n";
 
 var item1 = [2437760, 1];
 var ac = [
-[1712001, "¾ÆÄÉÀÎ ½Éº¼ : ¼Ò¸êÀÇ ¿©·Î", "5"],
-[1712002, "¾ÆÄÉÀÎ ½Éº¼ : ÃòÃò ¾ÆÀÏ·£µå", "5"],
-[1712003, "¾ÆÄÉÀÎ ½Éº¼ : ·¹Çï¸¥", "5"],
-[1712004, "¾ÆÄÉÀÎ ½Éº¼ : ¾Æ¸£Ä«³ª", "5"],
-[1712005, "¾ÆÄÉÀÎ ½Éº¼ : ¸ğ¶ó½º", "5"],
-[1712006, "¾ÆÄÉÀÎ ½Éº¼ : ¿¡½ºÆä¶ó", "5"]
+[1712001, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ì†Œë©¸ì˜ ì—¬ë¡œ", "5"],
+[1712002, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ì¸„ì¸„ ì•„ì¼ëœë“œ", "5"],
+[1712003, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ë ˆí—¬ë¥¸", "5"],
+[1712004, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ì•„ë¥´ì¹´ë‚˜", "5"],
+[1712005, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ëª¨ë¼ìŠ¤", "5"],
+[1712006, "ì•„ì¼€ì¸ ì‹¬ë³¼ : ì—ìŠ¤í˜ë¼", "5"]
 ];
-var º° = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, sel) {
     if (mode == -1) {
@@ -34,11 +34,11 @@ function action(mode, type, sel) {
             status--;
         if (status == 0) {
             var chat = "#fs11#";
-            chat += "#fc0xFF7401DF#< ±³È¯½Ã½ºÅÛ :: ½Éº¼±³È¯ >#k" + enter + enter;
-            chat += "#r"+º°+" ÀÎº¥Åä¸® °ø°£À» ²À È®º¸ÇØÁÖ½ÅÈÄ »ç¿ëÇÏ½Ã±â ¹Ù¶ø´Ï´Ù"+ enter + enter ;
+            chat += "#fc0xFF7401DF#< êµí™˜ì‹œìŠ¤í…œ :: ì‹¬ë³¼êµí™˜ >#k" + enter + enter;
+            chat += "#r"+ë³„+" ì¸ë²¤í† ë¦¬ ê³µê°„ì„ ê¼­ í™•ë³´í•´ì£¼ì‹ í›„ ì‚¬ìš©í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤"+ enter + enter ;
             chat += "#fc0xFF000000#";
             for(var i = 0;i<ac.length;i++) {
-                chat += "#b#L" + i + "##i" + ac[i][0] + "# " + ac[i][1] + " ±³È¯" + enter;
+                chat += "#b#L" + i + "##i" + ac[i][0] + "# " + ac[i][1] + " êµí™˜" + enter;
             }
             cm.sendOkS(chat, 0x00);
         } else if (status == 1) {
@@ -46,25 +46,25 @@ function action(mode, type, sel) {
             var suk1 = Math.floor((cm.itemQuantity(item1[0]) / 1));
             stigmacoin = Math.min(suk1);
             msg = "#fs11#" + enter;
-            msg += "#i" + item1[0] + "# #z" + item1[0] + "# #fc0xFF7401DF#" + item1[1] + "#k °³¸¦ ÁÖ½Ã¸é" + enter;
-            msg += "#i" + ac[seld][0] + "# " + ac[seld][1] + " #fc0xFF7401DF#" + ac[seld][2] + "#k °³¸¦ ±³È¯ÇØµå¸³´Ï´Ù." + enter;
-            msg += "#Cgray#(ÇöÀç ±³È¯ °¡´ÉÇÑ #z" + item1[0] + "# °¹¼ö : " + stigmacoin + "°³)";
+            msg += "#i" + item1[0] + "# #z" + item1[0] + "# #fc0xFF7401DF#" + item1[1] + "#k ê°œë¥¼ ì£¼ì‹œë©´" + enter;
+            msg += "#i" + ac[seld][0] + "# " + ac[seld][1] + " #fc0xFF7401DF#" + ac[seld][2] + "#k ê°œë¥¼ êµí™˜í•´ë“œë¦½ë‹ˆë‹¤." + enter;
+            msg += "#Cgray#(í˜„ì¬ êµí™˜ ê°€ëŠ¥í•œ #z" + item1[0] + "# ê°¯ìˆ˜ : " + stigmacoin + "ê°œ)";
             cm.sendGetNumber(msg, 1, 1, stigmacoin);
         } else if (status == 2) {
             var cost = sel;
             if((item1[1] * cost) < 0){
-                cm.addCustomLog(4, "[¾ÆÄÉÀÎ½Éº¼] " + cm.getPlayer().getID() + " qty :" + qty +"°³ À½¼ö Àû¿ë");
+                cm.addCustomLog(4, "[ì•„ì¼€ì¸ì‹¬ë³¼] " + cm.getPlayer().getID() + " qty :" + qty +"ê°œ ìŒìˆ˜ ì ìš©");
                 cm.dispose();
                 return;
             }
             if (cm.haveItem(item1[0], item1[1] * cost) && cm.canHold(1713000, cost*5)) {
                 cm.gainItem(item1[0], -item1[1] * cost);
                 cm.gainItem(ac[seld][0], cost*5);
-                cm.sendOk("#fs11#±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù\r\n");
+                cm.sendOk("#fs11#êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤\r\n");
                 cm.dispose();
                 return;
             } else {
-                cm.sendOk("#fs11##rÀÎº¥Åä¸® ÀÚ¸®°¡ ºÎÁ·ÇÕ´Ï´Ù");
+                cm.sendOk("#fs11##rì¸ë²¤í† ë¦¬ ìë¦¬ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤");
                 cm.dispose();
                 return;
             }

@@ -1,4 +1,4 @@
-﻿var 별 = "#fUI/GuildMark.img/Mark/Pattern/00004001/14#";
+var 별 = "#fUI/GuildMark.img/Mark/Pattern/00004001/14#";
 
 var sel = 0
 

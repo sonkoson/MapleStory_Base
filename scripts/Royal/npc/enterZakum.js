@@ -1,9 +1,9 @@
 function start() {
     status = -1;
     action(1, 0, 0);
-    cm.sendSimple("Àá±ñ, ¾î´À ÀÚÄñÀÇ Á¦´ÜÀ¸·Î ÀÌµ¿ÇÏ½Ã°Ú¼Ò?\r\n#b" +
-        "#L211042400#³ë¸» ÀÚÄñ#l\r\n" +
-        "#L211042401#Ä«¿À½º ÀÚÄñ#l\r\n");
+    cm.sendSimple("ì ê¹, ì–´ëŠ ìì¿°ì˜ ì œë‹¨ìœ¼ë¡œ ì´ë™í•˜ì‹œê² ì†Œ?\r\n#b" +
+        "#L211042400#ë…¸ë§ ìì¿°#l\r\n" +
+        "#L211042401#ì¹´ì˜¤ìŠ¤ ìì¿°#l\r\n");
 }
 
 function action(M, T, S) {
@@ -20,9 +20,9 @@ function action(M, T, S) {
     if (status == 1) {
         S0 = S;
         needItem = (S0 == 211042402) ? 4001796 : 4001017;
-        getZakum = (S0 == 211042401) ? "Ä«¿À½º " : "³ë¸» ";
+        getZakum = (S0 == 211042401) ? "ì¹´ì˜¤ìŠ¤ " : "ë…¸ë§ ";
         if (!cm.haveItem(needItem)) {
-            cm.getPlayer().dropMessage(5, getZakum + "ÀÚÄñ¿¡°Ô ¹ÙÄ¥ Á¦¹°ÀÌ ¾ø¾î ÀÌµ¿ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            cm.getPlayer().dropMessage(5, getZakum + "ìì¿°ì—ê²Œ ë°”ì¹  ì œë¬¼ì´ ì—†ì–´ ì´ë™í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             cm.dispose();
             return;
         }

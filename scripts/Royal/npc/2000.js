@@ -1,4 +1,4 @@
-﻿/*후라이 까지말라 (kms_word@naver.com)*/
+/*후라이 까지말라 (kms_word@naver.com)*/
 
 
 별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"

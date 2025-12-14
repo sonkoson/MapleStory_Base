@@ -95,7 +95,7 @@ importPackage(Packages.server);
 importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -113,19 +113,19 @@ function action(mode, type, selection) {
         status++;
     }
         if (status == 0) {
-        if (cm.getPlayer().getLevel() >= 10 && cm.getPlayer().getKeyValue(0, "60½Ã°£1") && cm.haveItem(4000492, 1)) {
+        if (cm.getPlayer().getLevel() >= 10 && cm.getPlayer().getKeyValue(0, "60ì‹œê°„1") && cm.haveItem(4000492, 1)) {
 		cm.gainItem(3700376, 1);
 		cm.gainItem(5062010, 1000);
 		cm.gainItem(4001715, 50);
 		cm.gainItem(4009463, 1);
                 cm.getPlayer().gainAp(20);
 	        //cm.getPlayer().setKeyValue(201909081, "chair_p", cm.getPlayer().getKeyValue(201909081, "chair_p") + 3599);
-                cm.getPlayer().setKeyValue(0, "60½Ã°£1", ""+(cm.getPlayer().getKeyValue(0, "60½Ã°£1") + 1));
+                cm.getPlayer().setKeyValue(0, "60ì‹œê°„1", ""+(cm.getPlayer().getKeyValue(0, "60ì‹œê°„1") + 1));
 		cm.gainItem(4000492, -1);
 		cm.gainItem(2437173, -1);
 		cm.dispose();
     } else {
-     cm.sendOk("#rÁ¶°ÇÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.#k");
+     cm.sendOk("#rì¡°ê±´ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.#k");
      cm.dispose();
 }
 	}

@@ -1,6 +1,6 @@
 importPackage(Packages.objects.utils);
 
-// ÀÌº¥Æ®¸Å´ÏÀú ÃÊ±âÈ­ÇÒ ³»¿ë(Ã¤³Îº°·Î Àû¿ëµÊ)
+// ì´ë²¤íŠ¸ë§¤ë‹ˆì € ì´ˆê¸°í™”í•  ë‚´ìš©(ì±„ë„ë³„ë¡œ ì ìš©ë¨)
 function init() {
     em.setProperty("status0", "0");
     em.setProperty("Cstatus0", "0");
@@ -135,7 +135,7 @@ function playerExit(eim, player) {
 function allMonstersDead(eim) {}
 
 function leftParty(eim, player) {
-    // Å»Åğ
+    // íƒˆí‡´
     var exitMap = 211042401;
     if (eim.getProperty("mode") == "normal") {
         exitMap = 211042400;

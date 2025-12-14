@@ -15,7 +15,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-cm.Æ¯º°¾ÆÀÌÅÛ¼³Á¤(1142072,10,15,0);
+cm.íŠ¹ë³„ì•„ì´í…œì„¤ì •(1142072,10,15,0);
 cm.gainItem(2430368, -1);
 cm.dispose();
 }

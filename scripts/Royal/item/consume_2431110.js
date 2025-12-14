@@ -3,17 +3,17 @@
 
 /*
 
-	ǻ�� �¶��� �ҽ� ���� ��ũ��Ʈ �Դϴ�.
+	퓨어 온라인 소스 팩의 스크립트 입니다.
 
-        ���� : ��ũ����
+        제작 : 주크블랙
 
-	���ǽþ��̵� : 
+	엔피시아이디 : 
 	
-	���ǽ� �̸� :
+	엔피시 이름 :
 
-	���ǽð� �ִ� �� : 
+	엔피시가 있는 맵 : 
 
-	���ǽ� ���� : 
+	엔피시 설명 : 
 
 
 */
@@ -39,11 +39,11 @@ function action(mode, type, selection) {
     }
     
     if (status == 0) {
-        cm.sendYesNo("����Ÿ�� ���ڸ� ���ðڽ��ϱ�? �κ��丮 �Һ��ǿ� ������ ��ĭ �̻� �ʿ��մϴ�.");
+        cm.sendYesNo("해피타임 상자를 여시겠습니까? 인벤토리 소비탭에 공간이 한칸 이상 필요합니다.");
     } else if (status == 1) {
         var leftslot = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot();
         if (leftslot < 1) {
-            cm.sendOk("�κ��丮 ������ �ּ��� 1ĭ�� �ʿ��մϴ�. �Һ� ���� ������ 1ĭ�̻� ����ֽ� �� �ٽ� �����ּ���.");
+            cm.sendOk("인벤토리 공간이 최소한 1칸은 필요합니다. 소비 탭의 공간을 1칸이상 비워주신 후 다시 열어주세요.");
             cm.dispose();
             return;
         }
@@ -53,11 +53,11 @@ function action(mode, type, selection) {
             var itemid = 0;
             if (rand < 2) {
                 itemid = scroll[Math.floor(Math.random() * scroll.length)];
-            item += "#b#i"+itemid+"# #t"+itemid+"# 1��#k\r\n";
+            item += "#b#i"+itemid+"# #t"+itemid+"# 1개#k\r\n";
             cm.gainItem(itemid, 1);
         }
         cm.gainItem(2431110, -1);
-        cm.sendOk("���ε� �ڹ��迡�� �Ʒ��� �������� ���Խ��ϴ�.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n"+item);
+        cm.sendOk("봉인된 자물쇠에서 아래의 아이템이 나왔습니다.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n"+item);
         
         cm.dispose();
     }

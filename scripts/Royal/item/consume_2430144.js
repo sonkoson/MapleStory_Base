@@ -16,13 +16,13 @@ function action(mode, type, selection) {
             status--;
         if (status == 0) {
 	    if (!cm.canHold(2290285)) {
-                cm.sendOk("ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+                cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	    }
             cm.gainItem(2430144, -1);
 	    cm.gainItem(2290285, 1);
-	    cm.getPlayer().dropMessage(6, "½ÅºñÀÇ ¸¶½ºÅÍ¸® ºÏÀ¸·Î ±³È¯µÇ¾ú½À´Ï´Ù.");
+	    cm.getPlayer().dropMessage(6, "ì‹ ë¹„ì˜ ë§ˆìŠ¤í„°ë¦¬ ë¶ìœ¼ë¡œ êµí™˜ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	    cm.dispose();
             
         } else { 

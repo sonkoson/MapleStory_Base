@@ -1,4 +1,4 @@
-﻿importPackage(Packages.constants);
+importPackage(Packages.constants);
 
 var status = 0;
 var invs = Array(1, 5, 6, 2, 3);

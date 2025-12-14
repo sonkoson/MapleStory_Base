@@ -4,7 +4,7 @@ function action() {
             cm.getPlayer().gainExp(cm.getPlayer().getNeededExp() - cm.getPlayer().getExp(), false, false, false);
 	    cm.dispose();
         } else { 
-            cm.sendOk("ÇØ´ç ·¹º§Àº È¿°ú¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.");
+            cm.sendOk("í•´ë‹¹ ë ˆë²¨ì€ íš¨ê³¼ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             cm.dispose();
 		return;
         }

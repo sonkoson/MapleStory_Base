@@ -3,7 +3,7 @@ importPackage(Packages.server);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
 importPackage(Packages.server.items);
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -24,7 +24,7 @@ function action(mode, type, selection) {
 		        item = MapleItemInformationProvider.getInstance().getEquipById(1713001);
 		        item.setAutEXP(9999);
 		        Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), item, false);
-		        cm.sendOk("#b¸¸·¾ #i1713001##z1713001##b 1°³#fc0xFF000000#¸¦ È¹µæ ÇÏ¿´½À´Ï´Ù.");
+		        cm.sendOk("#bë§Œë ™ #i1713001##z1713001##b 1ê°œ#fc0xFF000000#ë¥¼ íšë“ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		cm.gainItem(2637001, -1);
 		cm.dispose();
 	}

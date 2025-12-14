@@ -1,4 +1,4 @@
-﻿var enter = "\r\n";
+var enter = "\r\n";
 var seld = -1;
 
 별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"

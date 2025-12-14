@@ -1,6 +1,6 @@
 function action() {
 	isok = false;
-	list = ["±è¾ÆÁö", "³ª¿µ", "ÅÚ·¹Æ÷Æ®", "¸ù¸ù", "°õÀÌ°õÀÌ"]
+	list = ["ê¹€ì•„ì§€", "ë‚˜ì˜", "í…”ë ˆí¬íŠ¸", "ëª½ëª½", "ê³°ì´ê³°ì´"]
 	for (i=0; i<list.length; i++) {
 		if (cm.getPlayer().getName() == list[i]) {
 			isok = true;
@@ -12,12 +12,12 @@ function action() {
             cm.getPlayer().gainExp(cm.getPlayer().getNeededExp() - cm.getPlayer().getExp(), false, false, false);
 	    cm.dispose();
         } else { 
-            cm.sendOk("ÇØ´ç ·¹º§Àº È¿°ú¸¦ º¼ ¼ö ¾ø½À´Ï´Ù.");
+            cm.sendOk("í•´ë‹¹ ë ˆë²¨ì€ íš¨ê³¼ë¥¼ ë³¼ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             cm.dispose();
 		return;
         }
 	} else {
-		cm.sendOk("ÇØ´ç ÆøÇ³ ¼ºÀåÀÇ ºñ¾àÀº ÄûÁî Á¤´äÀÚ¿¡°Ô¸¸ Àû¿ëµË´Ï´Ù.");
+		cm.sendOk("í•´ë‹¹ í­í’ ì„±ìž¥ì˜ ë¹„ì•½ì€ í€´ì¦ˆ ì •ë‹µìžì—ê²Œë§Œ ì ìš©ë©ë‹ˆë‹¤.");
 		cm.dispose();
 		return;
 	}

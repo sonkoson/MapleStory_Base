@@ -86,7 +86,7 @@ function action(mode, type, selection) {
             type = types[i];
             name = type.name();
             if (i == 0) {
-                msg += "                                                              #b#fs13##L" + i + "#ÀÎº¥Åä¸®#l\r\n\r\n";
+                msg += "                                                              #b#fs13##L" + i + "#ì¸ë²¤í† ë¦¬#l\r\n\r\n";
             } else {
                 var id = cm.getPlayer().equippedCustomItem(type);
                 var image = 0;
@@ -94,16 +94,16 @@ function action(mode, type, selection) {
                     image = getImage(id);
 
                 if (image > 0) {
-                    msg += "#fs11##fc0xFF6600CC##i" + image + "#  \t" + name + " #r(Âø¿ë Áß)\r\n\r\n";
+                    msg += "#fs11##fc0xFF6600CC##i" + image + "#  \t" + name + " #r(ì°©ìš© ì¤‘)\r\n\r\n";
                 } else {
-                    msg += "#fc0xFF6600CC##fUI/UIWindow.img/IconBase/0# \t" + name + "#fc0xFF000000# (¹ÌÂø¿ë)\r\n\r\n";
+                    msg += "#fc0xFF6600CC##fUI/UIWindow.img/IconBase/0# \t" + name + "#fc0xFF000000# (ë¯¸ì°©ìš©)\r\n\r\n";
                 }
             }
         }
         cm.sendSimple(msg);
     } else if (status == 1) {
         inven = cm.getPlayer().getCustomInventory();
-        var msg = "#fs11##bÀåºñ ¸ñ·ÏÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n";
+        var msg = "#fs11##bì¥ë¹„ ëª©ë¡ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n";
         for (i = 0; i < types.length; i++) {
             type = types[i];
             name = type.name();
@@ -119,7 +119,7 @@ function action(mode, type, selection) {
         if (selection == 0) {
             name = "Inventory";
         }
-        var msg = "#fs11##fc0xFF000000#º¸À¯ÇÏ°í ÀÖ´Â #fc0xFF6600CC#" + name + " #fc0xFF000000#¸ñ·Ï #b(Å¬¸¯ ½Ã ÀåÂø ¹× ÀåÂøÇØÁ¦)#fc0xFF000000#\r\n";
+        var msg = "#fs11##fc0xFF000000#ë³´ìœ í•˜ê³  ìˆëŠ” #fc0xFF6600CC#" + name + " #fc0xFF000000#ëª©ë¡ #b(í´ë¦­ ì‹œ ì¥ì°© ë° ì¥ì°©í•´ì œ)#fc0xFF000000#\r\n";
         for (i = 0; i < inven.size(); i++) {
             item = Packages.constants.GameConstants.customItems.get(i);
             size = inven.get(i);
@@ -131,22 +131,22 @@ function action(mode, type, selection) {
 
                 msg += item.getName();
                 if (cm.getPlayer().equippedCustomItem(type) == i)
-                    msg += " #r(ÀåÂø Áß)#fc0xFF000000#";
+                    msg += " #r(ì¥ì°© ì¤‘)#fc0xFF000000#";
                 msg += "#l\r\n\r\n";
 
                 effects = item.getEffects();
                 for (j = 0; j < effects.size(); j++) {
                     var effect = effects.get(j).getLeft().name();
                     if (effect == "BdR") {
-                        effect = "º¸½º °ø°İ½Ã µ¥¹ÌÁö +";
+                        effect = "ë³´ìŠ¤ ê³µê²©ì‹œ ë°ë¯¸ì§€ +";
                     } else if (effect == "AllStatR") {
-                        effect = "¿Ã½ºÅÈ +";
+                        effect = "ì˜¬ìŠ¤íƒ¯ +";
                     } else if (effect == "CrD") {
-                        effect = "Å©¸®µ¥¹ÌÁö +";
+                        effect = "í¬ë¦¬ë°ë¯¸ì§€ +";
                     } else if (effect == "DropR") {
-                        effect = "¾ÆÀÌÅÛ µå·Ó·ü +";
+                        effect = "ì•„ì´í…œ ë“œë¡­ë¥  +";
                     } else if (effect == "MesoR") {
-                        effect = "¸Ş¼Ò È¹µæ·® +";
+                        effect = "ë©”ì†Œ íšë“ëŸ‰ +";
                     }
                     msg += "#r\t" + effect + " " + effects.get(j).getRight() + "%\r\n";
                 }
@@ -162,26 +162,26 @@ function action(mode, type, selection) {
 
         inven = cm.getPlayer().getCustomInventory();
         size = inven.get(selection);
-        if (size == 0) { // Å×½ºÆ®¿ë
+        if (size == 0) { // í…ŒìŠ¤íŠ¸ìš©
             cm.getPlayer().addCustomItem(selection);
-            cm.sendOk("¹«±â ¾òÀ½.");
+            cm.sendOk("ë¬´ê¸° ì–»ìŒ.");
             cm.dispose();
             return;
         }
 
         item = Packages.constants.GameConstants.customItems.get(selection);
         equipped = cm.getPlayer().equippedCustomItem(item.getType());
-        if (equipped == selection) { // °í¸¥ ÅÛÀ» ÀåÂø ÁßÀÏ¶§
+        if (equipped == selection) { // ê³ ë¥¸ í…œì„ ì¥ì°© ì¤‘ì¼ë•Œ
             cm.getPlayer().unequipCustomItem(equipped);
-            cm.sendOk(item.getName() + " ÀåÂø ÇØÁ¦");
-        } else if (equipped >= 0) { // °°Àº À§Ä¡ ´Ù¸¥ ÅÛ ÀåÂø ÁßÀÏ¶§
+            cm.sendOk(item.getName() + " ì¥ì°© í•´ì œ");
+        } else if (equipped >= 0) { // ê°™ì€ ìœ„ì¹˜ ë‹¤ë¥¸ í…œ ì¥ì°© ì¤‘ì¼ë•Œ
             ori = Packages.constants.GameConstants.customItems.get(equipped);
             cm.getPlayer().unequipCustomItem(equipped);
             cm.getPlayer().equipCustomItem(selection);
-            cm.sendOk(ori.getName() + " ÀåÂøÀ» ÇØÁ¦ÇÏ¿´½À´Ï´Ù. " + item.getName() + " ÀåÂø");
+            cm.sendOk(ori.getName() + " ì¥ì°©ì„ í•´ì œí•˜ì˜€ìŠµë‹ˆë‹¤. " + item.getName() + " ì¥ì°©");
         } else {
             cm.getPlayer().equipCustomItem(selection);
-            cm.sendOk(item.getName() + " ÀåÂø");
+            cm.sendOk(item.getName() + " ì¥ì°©");
         }
         cm.dispose();
         return;

@@ -19,22 +19,22 @@ status++;
 else
 status--;
 if (status == 0) {
-	cm.sendYesNo("ºÀÀÎµÈ »óÀÚ3À» ¿©½Ã°Ú½À´Ï±î? ¿©½Ã±â Àü, #r¼³Ä¡ ÀÎº¥Åä¸® °ø°£, ¼Òºñ ÀÎº¥Åä¸® °ø°£ÀÌ 5Ä­ ÀÌ»ó#k ºñ¿öÁ® ÀÖ´ÂÁö È®ÀÎÇØ ÁÖ¼¼¿ä.");
+	cm.sendYesNo("ë´‰ì¸ëœ ìƒì3ì„ ì—¬ì‹œê² ìŠµë‹ˆê¹Œ? ì—¬ì‹œê¸° ì „, #rì„¤ì¹˜ ì¸ë²¤í† ë¦¬ ê³µê°„, ì†Œë¹„ ì¸ë²¤í† ë¦¬ ê³µê°„ì´ 5ì¹¸ ì´ìƒ#k ë¹„ì›Œì ¸ ìˆëŠ”ì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 } else if (status == 1) {
 		var leftslot3 = cm.getPlayer().getInventory(PureInventoryType.SETUP).getNumFreeSlot();
                if (leftslot3 < 5) {
-                   cm.sendOk("ÀÎº¥Åä¸® °ø°£ÀÌ ÃÖ¼ÒÇÑ 5Ä­Àº ÇÊ¿äÇÕ´Ï´Ù. ¼³Ä¡ ÅÇÀÇ °ø°£À» 5Ä­ÀÌ»ó ºñ¿öÁÖ½Å ÈÄ ´Ù½Ã ¿­¾îÁÖ¼¼¿ä.");
+                   cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ìµœì†Œí•œ 5ì¹¸ì€ í•„ìš”í•©ë‹ˆë‹¤. ì„¤ì¹˜ íƒ­ì˜ ê³µê°„ì„ 5ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì‹  í›„ ë‹¤ì‹œ ì—´ì–´ì£¼ì„¸ìš”.");
                    cm.dispose();
                    return;
                }
 		var leftslot2 = cm.getPlayer().getInventory(PureInventoryType.USE).getNumFreeSlot();
                if (leftslot2 < 5) {
-                   cm.sendOk("ÀÎº¥Åä¸® °ø°£ÀÌ ÃÖ¼ÒÇÑ 5Ä­Àº ÇÊ¿äÇÕ´Ï´Ù. ¼Òºñ ÅÇÀÇ °ø°£À» 5Ä­ÀÌ»ó ºñ¿öÁÖ½Å ÈÄ ´Ù½Ã ¿­¾îÁÖ¼¼¿ä.");
+                   cm.sendOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ìµœì†Œí•œ 5ì¹¸ì€ í•„ìš”í•©ë‹ˆë‹¤. ì†Œë¹„ íƒ­ì˜ ê³µê°„ì„ 5ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì‹  í›„ ë‹¤ì‹œ ì—´ì–´ì£¼ì„¸ìš”.");
                    cm.dispose();
                    return;
                }
 
-		var item = "ºÀÀÎµÈ ÀÚ¹°¼è¿¡¼­ ¾Æ·¡ÀÇ ¾ÆÀÌÅÛÀÌ ³ª¿Ô½À´Ï´Ù.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n";
+		var item = "ë´‰ì¸ëœ ìë¬¼ì‡ ì—ì„œ ì•„ë˜ì˜ ì•„ì´í…œì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n\r\n";
 			
 			
 			for (var i = 0; i < 2 + Packages.objects.utils.Randomizer.nextInt(2); i++) {
@@ -50,7 +50,7 @@ if (status == 0) {
 			    } else {
 				itemid = rewards[Packages.objects.utils.Randomizer.nextInt(rewards.length)];
 			    }
-			    item += "#b#i"+itemid+"# #z"+itemid+"# "+quantity+"°³#k\r\n";
+			    item += "#b#i"+itemid+"# #z"+itemid+"# "+quantity+"ê°œ#k\r\n";
 			    cm.gainItem(itemid, quantity);
 			}
 			

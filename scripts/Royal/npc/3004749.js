@@ -1,25 +1,25 @@
 importPackage(Packages.scripting);
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-º¸¶ó»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
-¿£ÅÍ = "\r\n"
-¿£ÅÍ2 = "\r\n\r\n"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ë³´ë¼ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
+ì—”í„° = "\r\n"
+ì—”í„°2 = "\r\n\r\n"
 enter = "\r\n";
 
 var seld = -1;
@@ -31,12 +31,12 @@ var prevatk = 0;
 var nextallstat = 0;
 var nextatk = 0;
 
-var »ç¿ëÀçÈ­ = 0;
-var ÀçÈ­°¡°İ = 0;
-var »ç¿ëÀçÈ­S = "";
+var ì‚¬ìš©ì¬í™” = 0;
+var ì¬í™”ê°€ê²© = 0;
+var ì‚¬ìš©ì¬í™”S = "";
 var maxcount = 0;
 var price = 30;
-var allstat = 2, atk = 2; // 1È¸´ç ¿Ã½ºÅİ, °ø¸¶ Áõ°¡Ä¡
+var allstat = 2, atk = 2; // 1íšŒë‹¹ ì˜¬ìŠ¤í…Ÿ, ê³µë§ˆ ì¦ê°€ì¹˜
 
 function start() {
     status = -1;
@@ -61,82 +61,82 @@ function action(mode, type, selection) {
         prevatk = parseInt(cm.getPlayer().getKeyValue("cashatk"));
         
         txt = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fc0xFF000000#     ¾î¶² ÀçÈ­¸¦ »ç¿ëÇÏ¿© Ä³¸¯ÅÍ¸¦ °­È­ÇØº¸½Ã°Ú¾î¿ä?#l\r\n\r\n";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fc0xFF000000#     ì–´ë–¤ ì¬í™”ë¥¼ ì‚¬ìš©í•˜ì—¬ ìºë¦­í„°ë¥¼ ê°•í™”í•´ë³´ì‹œê² ì–´ìš”?#l\r\n\r\n";
         txt += "#fc0xFF6542D7##L1##i4310308# #z4310308##l";
         txt += "#fc0xFF6542D7##L2##i4031227# #z4031227##l";
         
         cm.sendSimple(txt);
     } else if (status == 1) {
         seld = selection;
-        if (seld == 1) { // ³×¿ÀÄÚ¾î
-            »ç¿ëÀçÈ­ = 4310308;
-            ÀçÈ­°¡°İ = 30;
-            »ç¿ëÀçÈ­S = "³×¿ÀÄÚ¾î";
+        if (seld == 1) { // ë„¤ì˜¤ì½”ì–´
+            ì‚¬ìš©ì¬í™” = 4310308;
+            ì¬í™”ê°€ê²© = 30;
+            ì‚¬ìš©ì¬í™”S = "ë„¤ì˜¤ì½”ì–´";
             maxcount = 1000;
-        } else if (seld == 2) { // ºÓÀº±¸½½
-            »ç¿ëÀçÈ­ = 4031227;
-            ÀçÈ­°¡°İ = 100;
-            »ç¿ëÀçÈ­S = "ºÓÀº±¸½½";
+        } else if (seld == 2) { // ë¶‰ì€êµ¬ìŠ¬
+            ì‚¬ìš©ì¬í™” = 4031227;
+            ì¬í™”ê°€ê²© = 100;
+            ì‚¬ìš©ì¬í™”S = "ë¶‰ì€êµ¬ìŠ¬";
             maxcount = 300;
         } else {
-            cm.sendOk("#fs11##fc0xFF000000#»ç¿ëÇÏ½Ç ÀçÈ­¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä");
+            cm.sendOk("#fs11##fc0xFF000000#ì‚¬ìš©í•˜ì‹¤ ì¬í™”ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”");
             cm.dispose();
             return;
         }
         
         txt = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fs11##fc0xFF000000#       #b#i" + »ç¿ëÀçÈ­ + "##z" + »ç¿ëÀçÈ­ + "# " + ÀçÈ­°¡°İ + "°³#fc0xFF000000#·Î Ä³¸¯ÅÍ¸¦ °­È­ÇÒ ¼ö ÀÖ½À´Ï´Ù#b \r\n#r                      (1È¸´ç ¿Ã½ºÅÈ 2 / °ø ¸¶ 2 Áõ°¡)#k" + enter + enter;
-        txt += "#fs13#" + º¸¶ó»ö + "                         < ÇöÀç Àû¿ë ÁßÀÎ ½ºÅÈ >" + enter;
-        txt += "#fs11#" + °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + prevallstat + enter;
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + prevatk + enter + enter;
-        txt += ÇÎÅ©»ö + "                     Ä³¸¯ÅÍ °­È­¸¦ ÁøÇàÇÏ½Ã°Ú½À´Ï±î?";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fs11##fc0xFF000000#       #b#i" + ì‚¬ìš©ì¬í™” + "##z" + ì‚¬ìš©ì¬í™” + "# " + ì¬í™”ê°€ê²© + "ê°œ#fc0xFF000000#ë¡œ ìºë¦­í„°ë¥¼ ê°•í™”í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤#b \r\n#r                      (1íšŒë‹¹ ì˜¬ìŠ¤íƒ¯ 2 / ê³µ ë§ˆ 2 ì¦ê°€)#k" + enter + enter;
+        txt += "#fs13#" + ë³´ë¼ìƒ‰ + "                         < í˜„ì¬ ì ìš© ì¤‘ì¸ ìŠ¤íƒ¯ >" + enter;
+        txt += "#fs11#" + ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + prevallstat + enter;
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + prevatk + enter + enter;
+        txt += í•‘í¬ìƒ‰ + "                     ìºë¦­í„° ê°•í™”ë¥¼ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
 
         cm.sendSimple(txt);
     } else if (status == 2) {
-        var suk1 = Math.floor((cm.itemQuantity(»ç¿ëÀçÈ­) / ÀçÈ­°¡°İ));
+        var suk1 = Math.floor((cm.itemQuantity(ì‚¬ìš©ì¬í™”) / ì¬í™”ê°€ê²©));
         stigmacoin = Math.min(suk1);
         stigmacoin = Math.min(1000, stigmacoin);
 
         if (stigmacoin > maxcount)
             //stigmacoin = maxcount
 
-        //cm.sendGetNumber("#fs11##fc0xFF000000#Ä³¸¯ÅÍ¸¦ ¸îÈ¸ °­È­ ÇÏ½Ã°Ú½À´Ï±î? \r\n#Cgray#(ÇöÀç °­È­ °¡´ÉÇÑ È½¼ö : " + stigmacoin + "¹ø)", 1, 1, stigmacoin);
-        cm.askNumber("#fs11##fc0xFF000000#Ä³¸¯ÅÍ¸¦ ¸î È¸ °­È­ÇÒ±î? \r\n#Cgray#(ÇöÀç °­È­ °¡´ÉÇÑ È½¼ö : " + stigmacoin + "¹ø)", GameObjectType.User, 1, 1, stigmacoin, ScriptMessageFlag.NpcReplacedByUser);
+        //cm.sendGetNumber("#fs11##fc0xFF000000#ìºë¦­í„°ë¥¼ ëª‡íšŒ ê°•í™” í•˜ì‹œê² ìŠµë‹ˆê¹Œ? \r\n#Cgray#(í˜„ì¬ ê°•í™” ê°€ëŠ¥í•œ íšŸìˆ˜ : " + stigmacoin + "ë²ˆ)", 1, 1, stigmacoin);
+        cm.askNumber("#fs11##fc0xFF000000#ìºë¦­í„°ë¥¼ ëª‡ íšŒ ê°•í™”í• ê¹Œ? \r\n#Cgray#(í˜„ì¬ ê°•í™” ê°€ëŠ¥í•œ íšŸìˆ˜ : " + stigmacoin + "ë²ˆ)", GameObjectType.User, 1, 1, stigmacoin, ScriptMessageFlag.NpcReplacedByUser);
     } else if (status == 3) {
         a = selection;
         nextallstat = prevallstat + (allstat * a);
         nextatk = prevatk + (atk * a);
         
-        if (a < 0 | ÀçÈ­°¡°İ * a > 30000) {
+        if (a < 0 | ì¬í™”ê°€ê²© * a > 30000) {
             cm.dispose();
             return;
         }
 
         txt = "#fs11#       #fUI/Basic.img/Zenia/SC/0#\r\n";
-        txt += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª\r\n";
-        txt += "#fs13#" + º¸¶ó»ö + "                         < ÇöÀç Àû¿ë ÁßÀÎ ½ºÅÈ >" + enter;
-        txt += "#fs11#" + °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + prevallstat + enter;
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + prevatk + enter + enter;
-        txt += "#fs13#" + º¸¶ó»ö + "                       < °­È­ ÈÄ Àû¿ëµÇ´Â ½ºÅÈ >" + enter;
-        txt += "#fs11#" + °ËÀº»ö + "                                 ¿Ã½ºÅÈ #b+ " + nextallstat + enter;
-        txt += °ËÀº»ö + "                                 °ø¡¡¸¶ #b+ " + nextatk + enter + enter;
-        txt += °ËÀº»ö + "#r                    »ç¿ëÇÒ #i" + »ç¿ëÀçÈ­ + "##z" + »ç¿ëÀçÈ­ + "# °¹¼ö : " + (ÀçÈ­°¡°İ * a) + "°³" + enter + enter;
-        txt += °ËÀº»ö + " Á¤¸» °­È­¸¦ ÁøÇàÇÏ½Ã°Ú´Ù¸é ¾Æ·¡¿¡ #r'µ¿ÀÇÇÕ´Ï´Ù'" + °ËÀº»ö + " ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä";
+        txt += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•\r\n";
+        txt += "#fs13#" + ë³´ë¼ìƒ‰ + "                         < í˜„ì¬ ì ìš© ì¤‘ì¸ ìŠ¤íƒ¯ >" + enter;
+        txt += "#fs11#" + ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + prevallstat + enter;
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + prevatk + enter + enter;
+        txt += "#fs13#" + ë³´ë¼ìƒ‰ + "                       < ê°•í™” í›„ ì ìš©ë˜ëŠ” ìŠ¤íƒ¯ >" + enter;
+        txt += "#fs11#" + ê²€ì€ìƒ‰ + "                                 ì˜¬ìŠ¤íƒ¯ #b+ " + nextallstat + enter;
+        txt += ê²€ì€ìƒ‰ + "                                 ê³µã€€ë§ˆ #b+ " + nextatk + enter + enter;
+        txt += ê²€ì€ìƒ‰ + "#r                    ì‚¬ìš©í•  #i" + ì‚¬ìš©ì¬í™” + "##z" + ì‚¬ìš©ì¬í™” + "# ê°¯ìˆ˜ : " + (ì¬í™”ê°€ê²© * a) + "ê°œ" + enter + enter;
+        txt += ê²€ì€ìƒ‰ + " ì •ë§ ê°•í™”ë¥¼ ì§„í–‰í•˜ì‹œê² ë‹¤ë©´ ì•„ë˜ì— #r'ë™ì˜í•©ë‹ˆë‹¤'" + ê²€ì€ìƒ‰ + " ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”";
         
 
         cm.sendGetText(txt);
     } else if (status == 4) {
         var text = cm.getText();
-        if (text != "µ¿ÀÇÇÕ´Ï´Ù") {
+        if (text != "ë™ì˜í•©ë‹ˆë‹¤") {
             cm.dispose();
-            cm.sendOk("#fs11#µ¿ÀÇ ÇÏÁö¾Ê´Â´Ù¸é µµ¿ÍÁÙ ¹æ¹ıÀÌ ¾ø¾î¿ä\r\n#bµ¿ÀÇ#k ÇÑ´Ù¸é ´Ù½Ã '#r#eµ¿ÀÇÇÕ´Ï´Ù#k#n' ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+            cm.sendOk("#fs11#ë™ì˜ í•˜ì§€ì•ŠëŠ”ë‹¤ë©´ ë„ì™€ì¤„ ë°©ë²•ì´ ì—†ì–´ìš”\r\n#bë™ì˜#k í•œë‹¤ë©´ ë‹¤ì‹œ '#r#eë™ì˜í•©ë‹ˆë‹¤#k#n' ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
             return;
         }
 
-        if (!cm.haveItem(»ç¿ëÀçÈ­, ÀçÈ­°¡°İ * a)) {
-            cm.sendOk("#fs11##fc0xFF000000#" + a + "È¸ °­È­ÇÏ±â À§ÇØ¼± #b" + ÀçÈ­°¡°İ * a + " #z" + »ç¿ëÀçÈ­ + "##fc0xFF000000#°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+        if (!cm.haveItem(ì‚¬ìš©ì¬í™”, ì¬í™”ê°€ê²© * a)) {
+            cm.sendOk("#fs11##fc0xFF000000#" + a + "íšŒ ê°•í™”í•˜ê¸° ìœ„í•´ì„  #b" + ì¬í™”ê°€ê²© * a + " #z" + ì‚¬ìš©ì¬í™” + "##fc0xFF000000#ê°€ í•„ìš”í•©ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
@@ -144,19 +144,19 @@ function action(mode, type, selection) {
         cm.dispose();
 
         try {
-            cm.addCustomLog(10, "[Ä³¸¯ÅÍ°­È­] | ´©Àû½ºÅÈ : " + nextallstat + " | ´©Àû°ø¸¶ : " + nextatk + " |\r\n¤¤ | °­È­È½¼ö : " + a + " | »ç¿ëÀçÈ­ :  " + »ç¿ëÀçÈ­S + " " + (ÀçÈ­°¡°İ * a) + "°³ |");
-            cm.effectText("#fn³ª´®°íµñ ExtraBold##fs20#[Ä³¸¯ÅÍ°­È­] Ä³¸¯ÅÍ°¡ < " + a + " > È¸ °­È­µÇ¾ú½À´Ï´Ù", 50, 1000, 6, 0, 330, -550);
+            cm.addCustomLog(10, "[ìºë¦­í„°ê°•í™”] | ëˆ„ì ìŠ¤íƒ¯ : " + nextallstat + " | ëˆ„ì ê³µë§ˆ : " + nextatk + " |\r\nã„´ | ê°•í™”íšŸìˆ˜ : " + a + " | ì‚¬ìš©ì¬í™” :  " + ì‚¬ìš©ì¬í™”S + " " + (ì¬í™”ê°€ê²© * a) + "ê°œ |");
+            cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs20#[ìºë¦­í„°ê°•í™”] ìºë¦­í„°ê°€ < " + a + " > íšŒ ê°•í™”ë˜ì—ˆìŠµë‹ˆë‹¤", 50, 1000, 6, 0, 330, -550);
             cm.getPlayer().setKeyValue("cashallstat", nextallstat);
             cm.getPlayer().setKeyValue("cashatk", nextatk);
             cm.getPlayer().setBonusCTSStat();
-            cm.gainItem(»ç¿ëÀçÈ­, -ÀçÈ­°¡°İ * a);
+            cm.gainItem(ì‚¬ìš©ì¬í™”, -ì¬í™”ê°€ê²© * a);
             
             prevflag = cm.getPlayer().getSaveFlag();
             cm.getPlayer().setSaveFlag(4096); // KeyValue
             cm.getPlayer().saveToDB(false, false);
             cm.getPlayer().setSaveFlag(prevflag)
         } catch(err) {
-            cm.addCustomLog(50, "[CashEn.js] ¿¡·¯ ¹ß»ı : " + err + "");
+            cm.addCustomLog(50, "[CashEn.js] ì—ëŸ¬ ë°œìƒ : " + err + "");
         }
     }
 }

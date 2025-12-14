@@ -15,29 +15,29 @@ function MakeItem(itemid) {
     it.setMatk(333);
     it.setCHUC(30);
     it.setAllStat(5);
-    it.setOwner("°­¸²¿ùµå");
+    it.setOwner("ê°•ë¦¼ì›”ë“œ");
     it.setExpiration((new Date()).getTime() + (1000 * 60 * 60 * 24 * 30));
     Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getPlayer().getClient(), it, false);
 }
 
 var enter = "\r\n";
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
 
 function start() {
 	St = -1;
@@ -54,32 +54,32 @@ function action(M, T, S) {
 	    St++;
 
 	if(St == 0) {
-		var msg = "#fs11#½ºÆä¼È ¾ÆÀÌÅÛÀ» Áö±Ş¹ŞÀ¸½Ã°Ú¾î¿ä?\r\n\r\n#r¡Ø ½ºÆä¼È ¾ÆÀÌÅÛÀº °èÁ¤´ç 1È¸¸¸ Áö±ŞµË´Ï´Ù (Ä³¸¯ÅÍ ÀÌµ¿ ºÒ°¡)\r\n¡Ø ½ºÆä¼È ¾ÆÀÌÅÛÀº 30ÀÏ ±â°£Á¦ÀÌ¸ç ±â°£¸¸·á½Ã »èÁ¦µË´Ï´Ù";
-        msg += "\r\n\r\n#b < 1°³¿ù ½ºÆä¼È ¾ÆÀÌÅÛ ¸®½ºÆ® >\r\n\r\n";
+		var msg = "#fs11#ìŠ¤í˜ì…œ ì•„ì´í…œì„ ì§€ê¸‰ë°›ìœ¼ì‹œê² ì–´ìš”?\r\n\r\n#râ€» ìŠ¤í˜ì…œ ì•„ì´í…œì€ ê³„ì •ë‹¹ 1íšŒë§Œ ì§€ê¸‰ë©ë‹ˆë‹¤ (ìºë¦­í„° ì´ë™ ë¶ˆê°€)\r\nâ€» ìŠ¤í˜ì…œ ì•„ì´í…œì€ 30ì¼ ê¸°ê°„ì œì´ë©° ê¸°ê°„ë§Œë£Œì‹œ ì‚­ì œë©ë‹ˆë‹¤";
+        msg += "\r\n\r\n#b < 1ê°œì›” ìŠ¤í˜ì…œ ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ >\r\n\r\n";
         for (i = 0; i < bosang1.length; i++) {
-            msg += »ö + "#i"+bosang1[i]+"# #z"+bosang1[i]+"#" +enter;
+            msg += ìƒ‰ + "#i"+bosang1[i]+"# #z"+bosang1[i]+"#" +enter;
         }
         cm.sendYesNo(msg);
 	} else if(St == 1) {
 		var invenEQUIP = cm.getPlayer().getInventory(MapleInventoryType.CASH_EQUIP).getNumFreeSlot();
 		if(invenEQUIP < 4){
-			cm.sendOk("Ä¡ÀåÄ­À» 4Ä­ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+			cm.sendOk("ì¹˜ì¥ì¹¸ì„ 4ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
 			cm.dispose();
 			return;
 		}
 		if(!cm.haveItem(boxcode, 1)){
 			cm.gainItem(boxcode, -1);
 			cm.addCustomLog(99, boxcode+" / "+cm.getPlayer().getNamte()+"");
-			cm.sendOk("¿À·ù ¿À·ù ¹Ú½º ¾øÀ½");
+			cm.sendOk("ì˜¤ë¥˜ ì˜¤ë¥˜ ë°•ìŠ¤ ì—†ìŒ");
 			cm.dispose();
 			return;
 		}
-		var msg = "#fs11#" + È¹µæ + enter + enter;
+		var msg = "#fs11#" + íšë“ + enter + enter;
         for (i = 0; i < bosang1.length; i++) {
-            msg += »ö + "#i"+bosang1[i]+"# #z"+bosang1[i]+"#" +enter;
+            msg += ìƒ‰ + "#i"+bosang1[i]+"# #z"+bosang1[i]+"#" +enter;
             MakeItem(bosang1[i]);
         }
-        msg += ÇÎÅ©»ö + "\r\nÀ§¿Í °°Àº ¾ÆÀÌÅÛÀÌ Áö±ŞµÇ¾ú½À´Ï´Ù";
+        msg += í•‘í¬ìƒ‰ + "\r\nìœ„ì™€ ê°™ì€ ì•„ì´í…œì´ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤";
         cm.gainItem(boxcode, -1);
         cm.sendOk(msg);
         cm.dispose();

@@ -1,4 +1,4 @@
-﻿importPackage(Packages.database);
+importPackage(Packages.database);
 
 var 모험가 = [ //4차 이상만 뜨게끔 유도
     // 모험가

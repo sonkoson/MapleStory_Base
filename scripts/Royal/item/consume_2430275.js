@@ -17,7 +17,7 @@ function action(mode, type, selection) {
         if (status == 0) {
 	 cm.gainItem(2430275,-1);
                cm.teachSkill(80001033,1,1);
-               cm.getPlayer().Message(6, "¶óÀÌµùÀ» ¾ò¾ú½À´Ï´Ù (½´ÇÇ°Ö¸¸ÀÇ ¿­±â±¸)");
+               cm.getPlayer().Message(6, "ë¼ì´ë”©ì„ ì–»ì—ˆìŠµë‹ˆë‹¤ (ìŠˆí”¼ê²”ë§Œì˜ ì—´ê¸°êµ¬)");
 	 cm.dispose();
     }
 }

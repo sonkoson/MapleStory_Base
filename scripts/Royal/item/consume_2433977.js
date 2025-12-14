@@ -29,7 +29,7 @@ var itemlist = [
 	{'itemid' : 5068304, 'qty' : 3}
 	
 ]
-var Ãßµ© = 0;
+var ì¶”ë€ = 0;
 
 function start() {
 	status = -1;
@@ -44,21 +44,21 @@ function action(mode, type, sel) {
     	}
 	if (status == 0) {
 
-		var msg = "#bÄ­[ç¨]#kÀÇ ÇÖÅ¸ÀÓ»óÀÚ¿¡¼­\r\n´ÙÀ½°ú°°Àº #bº¸»ó#kÀÌ ³ª¿Ô½À´Ï´Ù.#d\r\n\r\n";
+		var msg = "#bì¹¸[è‘‰]#kì˜ í•«íƒ€ì„ìƒìì—ì„œ\r\në‹¤ìŒê³¼ê°™ì€ #bë³´ìƒ#kì´ ë‚˜ì™”ìŠµë‹ˆë‹¤.#d\r\n\r\n";
 		for (i = 0; i < itemlist.length; i ++) {
 			cm.gainItem(itemlist[i]['itemid'],itemlist[i]['qty']);
-			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"°³ \r\n";
+			msg += "#i"+itemlist[i]['itemid']+"##z"+itemlist[i]['itemid']+"# "+itemlist[i]['qty']+"ê°œ \r\n";
 		}
 		cm.gainItem(2433977, -1);
 		cm.sendOk(msg);
 		a = new Date();
-        fFile1 = new File("Log/ÇÖÅ¸ÀÓ/ÇÖÅ¸ÀÓ»óÀÚ °³ºÀ "+ Number(a.getMonth() + 1)+"¿ù "+a.getDate()+"ÀÏ "+a.getHours()+"½Ã "+a.getMinutes()+"ºĞ "+a.getSeconds()+"ÃÊ " + cm.getPlayer().getName() + ".log");
+        fFile1 = new File("Log/í•«íƒ€ì„/í•«íƒ€ì„ìƒì ê°œë´‰ "+ Number(a.getMonth() + 1)+"ì›” "+a.getDate()+"ì¼ "+a.getHours()+"ì‹œ "+a.getMinutes()+"ë¶„ "+a.getSeconds()+"ì´ˆ " + cm.getPlayer().getName() + ".log");
             if (!fFile1.exists()) {
                 fFile1.createNewFile();
             }
-        out1 = new FileOutputStream("Log/ÇÖÅ¸ÀÓ/ÇÖÅ¸ÀÓ»óÀÚ °³ºÀ "+ Number(a.getMonth() + 1)+"¿ù "+a.getDate()+"ÀÏ "+a.getHours()+"½Ã "+a.getMinutes()+"ºĞ "+a.getSeconds()+"ÃÊ " + cm.getPlayer().getName() + ".log", false);
-        var msg = "Ä³¸¯ÅÍ : " + cm.getPlayer().getName() + "\r\n";
-        msg += "°³ºÀ ½Ã°¢ : "+a.getFullYear()+"³â "+Number(a.getMonth() + 1)+"¿ù "+a.getDate()+"ÀÏ "+a.getHours()+"½Ã "+a.getMinutes()+"ºĞ "+a.getSeconds()+"ÃÊ\r\n";
+        out1 = new FileOutputStream("Log/í•«íƒ€ì„/í•«íƒ€ì„ìƒì ê°œë´‰ "+ Number(a.getMonth() + 1)+"ì›” "+a.getDate()+"ì¼ "+a.getHours()+"ì‹œ "+a.getMinutes()+"ë¶„ "+a.getSeconds()+"ì´ˆ " + cm.getPlayer().getName() + ".log", false);
+        var msg = "ìºë¦­í„° : " + cm.getPlayer().getName() + "\r\n";
+        msg += "ê°œë´‰ ì‹œê° : "+a.getFullYear()+"ë…„ "+Number(a.getMonth() + 1)+"ì›” "+a.getDate()+"ì¼ "+a.getHours()+"ì‹œ "+a.getMinutes()+"ë¶„ "+a.getSeconds()+"ì´ˆ\r\n";
         out1.write(msg.getBytes());
         out1.close();
 		cm.sendOk(msg);

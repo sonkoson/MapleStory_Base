@@ -25,9 +25,9 @@ function action(mode, type, sel) {
     } else if (status == 2) {
 	cm.delay(2000);
     } else if (status == 3) {
-	cm.sayNpc("°ÅÀÇ ´Ù ¿Â °Í °°´Ù...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ê±°ì˜ ë‹¤ ì˜¨ ê²ƒ ê°™ë‹¤...", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 4) {
-	cm.sayNpc("Á¤·ÉµéÀÌ º¸³»ÁØ ¼ø·ÏÀ» Å¸°í ¿À´Ï ±İ¹æ µµÂøÇÏ´Â±º.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	cm.sayNpc("ì •ë ¹ë“¤ì´ ë³´ë‚´ì¤€ ìˆœë¡ì„ íƒ€ê³  ì˜¤ë‹ˆ ê¸ˆë°© ë„ì°©í•˜ëŠ”êµ°.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
     } else if (status == 5) {
 	cm.delay(2000);
     } else if (status == 6) {

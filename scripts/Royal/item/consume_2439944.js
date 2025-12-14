@@ -1,24 +1,24 @@
 importPackage(Packages.objects.item);
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
-¿£ÅÍ = "\r\n"
-¿£ÅÍ2 = "\r\n\r\n"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
+ì—”í„° = "\r\n"
+ì—”í„°2 = "\r\n\r\n"
 
 var enter = "\r\n";
 var seld = -1;
@@ -39,26 +39,26 @@ function action(mode, type, sel) {
         return;
     }
     if (status == 0) {
-        var msg = "#fs11##b#i" + itemcode +"##z" + itemcode + "##k¸¦ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?  \r\n#b" + enter;
-        msg += "#L1##b»ç¿ëÇÏ±â" + enter;
+        var msg = "#fs11##b#i" + itemcode +"##z" + itemcode + "##kë¥¼ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?  \r\n#b" + enter;
+        msg += "#L1##bì‚¬ìš©í•˜ê¸°" + enter;
 
         cm.sendSimple(msg);
     } else if (status == 1) {
-        var msg = "#fs11#¹Ş°í½ÍÀº #bÆê#kÀ» ¼±ÅÃ ÇØÁÖ¼¼¿ä" + enter;
+        var msg = "#fs11#ë°›ê³ ì‹¶ì€ #bí«#kì„ ì„ íƒ í•´ì£¼ì„¸ìš”" + enter;
         for (var i = 0; i < pets.length; i++)
             msg += "#L" + i + "##i" + pets[i] + "##b#z" + pets[i] + "##k" + enter;
         cm.sendSimple(msg);
     } else if (status == 2) {
         seld = sel;
-        cm.sendYesNo("#fs11#Á¤¸»·Î #i" + pets[seld] + "##b#z" + pets[seld] + "##kÀ»(¸¦) ¹ŞÀ¸½Ã°Ú½À´Ï±î?");
+        cm.sendYesNo("#fs11#ì •ë§ë¡œ #i" + pets[seld] + "##b#z" + pets[seld] + "##kì„(ë¥¼) ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?");
     } else if (status == 3) {
-        cm.sendGetNumber("#fs11#" + °ËÀº»ö + "#i " + pets[seld] + "# #b#z" + pets[seld] + "#" + °ËÀº»ö + " À»(¸¦) ¸î¹ø ±¸¸Å ÇÏ½Ã°Ú½À´Ï±î?\r\n" + ÇÎÅ©»ö + "1¹ø´ç 15ÀÏ ÀÔ´Ï´Ù 1 = 15ÀÏ, 2 = 30ÀÏ... ÃÖ´ë150ÀÏ", 1, 1, 10);
+        cm.sendGetNumber("#fs11#" + ê²€ì€ìƒ‰ + "#i " + pets[seld] + "# #b#z" + pets[seld] + "#" + ê²€ì€ìƒ‰ + " ì„(ë¥¼) ëª‡ë²ˆ êµ¬ë§¤ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n" + í•‘í¬ìƒ‰ + "1ë²ˆë‹¹ 15ì¼ ì…ë‹ˆë‹¤ 1 = 15ì¼, 2 = 30ì¼... ìµœëŒ€150ì¼", 1, 1, 10);
     } else if (status == 4) {
         count = sel;
-        cm.sendYesNo("#fs11#Áö±Ş¹ŞÀ¸½Ç ÆêÀ» È®ÀÎÇÏ¼¼¿ä\r\n #i" + pets[seld] + "##b#z" + pets[seld] + "# - " + count * 15 + "ÀÏ#k\r\n\r\n" + ÇÎÅ©»ö + "ÇØ´ç ÆêÀ» Áö±Ş¹ŞÀ¸½Ã°Ú½À´Ï±î?");
+        cm.sendYesNo("#fs11#ì§€ê¸‰ë°›ìœ¼ì‹¤ í«ì„ í™•ì¸í•˜ì„¸ìš”\r\n #i" + pets[seld] + "##b#z" + pets[seld] + "# - " + count * 15 + "ì¼#k\r\n\r\n" + í•‘í¬ìƒ‰ + "í•´ë‹¹ í«ì„ ì§€ê¸‰ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?");
     } else if (status == 5) {
         if (!cm.haveItem(itemcode, count)) {
-            cm.sendOk("#fs11#»óÀÚ°¡ ºÎÁ·ÇÕ´Ï´Ù");
+            cm.sendOk("#fs11#ìƒìê°€ ë¶€ì¡±í•©ë‹ˆë‹¤");
             cm.dispose();
             return;
         }
@@ -69,7 +69,7 @@ function action(mode, type, sel) {
         item.setPet(pet);
         item.setUniqueId(pet.getUniqueId());
         Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), item, false);
-        cm.sendOk("#fs11#±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+        cm.sendOk("#fs11#êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         cm.gainItem(itemcode, -count);
         cm.dispose();
     }

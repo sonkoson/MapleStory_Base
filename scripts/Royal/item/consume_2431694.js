@@ -1,7 +1,7 @@
 /*
- * ÇÁ·ÎÁ§Æ® : 1.2.214 SpiritStyle
- * Script Author : ÇÏ¿ä(ifhayo)4021031
- * ÀÌ ÁÖ¼®Àº Áö¿ìÁö ¾Ê¾ÆÁÖ¼ÌÀ¸¸é ÁÁ°Ú½À´Ï´Ù.
+ * í”„ë¡œì íŠ¸ : 1.2.214 SpiritStyle
+ * Script Author : í•˜ìš”(ifhayo)4021031
+ * ì´ ì£¼ì„ì€ ì§€ìš°ì§€ ì•Šì•„ì£¼ì…¨ìœ¼ë©´ ì¢‹ê² ìŠµë‹ˆë‹¤.
  *
  */
 
@@ -44,17 +44,17 @@ function action(mode, type, selection) {
 	cm.gainItem(itemNed, -1);
 		if(itemSet == 4310119 || itemSet == 4310020 || itemSet == 3994720 || itemSet == 2000004 || itemSet == 4021031) {
 				if(itemSet == 4310020) {
-				cm.getPlayer().send(MainPacketCreator.getGMText(6, "¾ÆÀÌÅÛÀ» È¹µæÇÏ¿´½À´Ï´Ù. (ÇÇ¸´½Ã½º ÄÚÀÎ)"));
+				cm.getPlayer().send(MainPacketCreator.getGMText(6, "ì•„ì´í…œì„ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤. (í”¼ë¦¿ì‹œìŠ¤ ì½”ì¸)"));
 				} else if(itemSet == 4310119) {
-				cm.getPlayer().send(MainPacketCreator.getGMText(6, "¾ÆÀÌÅÛÀ» È¹µæÇÏ¿´½À´Ï´Ù. (¸ó½ºÅÍÆÄÅ© ±â³äÁÖÈ­)"));
+				cm.getPlayer().send(MainPacketCreator.getGMText(6, "ì•„ì´í…œì„ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤. (ëª¬ìŠ¤í„°íŒŒí¬ ê¸°ë…ì£¼í™”)"));
 				} else if(itemSet == 4021031) {
-				cm.getPlayer().send(MainPacketCreator.getGMText(6, "¾ÆÀÌÅÛÀ» È¹µæÇÏ¿´½À´Ï´Ù. (ÁÖ¹®ÀÇ ÈçÀû "+itemQty+"°³)"));
+				cm.getPlayer().send(MainPacketCreator.getGMText(6, "ì•„ì´í…œì„ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤. (ì£¼ë¬¸ì˜ í”ì  "+itemQty+"ê°œ)"));
 
 				} else {
-				cm.getPlayer().send(MainPacketCreator.getGMText(6, "¾ÆÀÌÅÛÀ» È¹µæÇÏ¿´½À´Ï´Ù. ("+Packages.server.items.ItemInformation.getInstance().getName(itemSet)+")"));
+				cm.getPlayer().send(MainPacketCreator.getGMText(6, "ì•„ì´í…œì„ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤. ("+Packages.server.items.ItemInformation.getInstance().getName(itemSet)+")"));
 				}
 		} else {
-	cm.getPlayer().send(MainPacketCreator.getGMText(6, "¾ÆÀÌÅÛÀ» È¹µæÇÏ¿´½À´Ï´Ù. ("+Packages.server.items.ItemInformation.getInstance().getName(itemSet)+")"));
+	cm.getPlayer().send(MainPacketCreator.getGMText(6, "ì•„ì´í…œì„ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤. ("+Packages.server.items.ItemInformation.getInstance().getName(itemSet)+")"));
 		}
 	cm.dispose();
 	}

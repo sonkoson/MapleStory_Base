@@ -31,46 +31,46 @@ function setup(eim) {
 function playerEntry(eim, player) {
 	if (eim.getProperty("mob_setup") == null) {
             eim.setProperty("mob_setup", "1");
-            // Aeos´Ô Á¦°ø °¨»çÇÕ´Ï´Ù.
+            // Aeosë‹˜ ì œê³µ ê°ì‚¬í•©ë‹ˆë‹¤.
 
             var map = eim.getMapFactory().getMap(921174100);
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303208), new java.awt.Point(2003, 1472), player.getBattleUserInfo()); // 3Ãş ¿ì ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303207), new java.awt.Point(-2725, 1472), player.getBattleUserInfo()); // 3Ãş ¿ì ¿ø°ø
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303208), new java.awt.Point(2003, 1472), player.getBattleUserInfo()); // 3ì¸µ ìš° ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303207), new java.awt.Point(-2725, 1472), player.getBattleUserInfo()); // 3ì¸µ ìš° ì›ê³µ
             
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-772, -100), player.getBattleUserInfo()); // 3Ãş ¿ì ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1035, -100), player.getBattleUserInfo()); // 3Ãş ¿ì Ãµ·Ï
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1211, -100), player.getBattleUserInfo()); // 3Ãş ¿ì ¿ø°ø
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-772, -100), player.getBattleUserInfo()); // 3ì¸µ ìš° ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1035, -100), player.getBattleUserInfo()); // 3ì¸µ ìš° ì²œë¡
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1211, -100), player.getBattleUserInfo()); // 3ì¸µ ìš° ì›ê³µ
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2426, -99), player.getBattleUserInfo()); // 3Ãş ÁÂ ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-2239, -99), player.getBattleUserInfo()); // 3Ãş ÁÂ Ãµ·Ï
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1979, -99), player.getBattleUserInfo()); // 3Ãş ÁÂ ¿ø°ø
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2426, -99), player.getBattleUserInfo()); // 3ì¸µ ì¢Œ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-2239, -99), player.getBattleUserInfo()); // 3ì¸µ ì¢Œ ì²œë¡
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1979, -99), player.getBattleUserInfo()); // 3ì¸µ ì¢Œ ì›ê³µ
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2018, 259), player.getBattleUserInfo()); // 2Ãş ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1834, 259), player.getBattleUserInfo()); // 2Ãş ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1507, 259), player.getBattleUserInfo()); // 2Ãş Ãµ·Ï
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1383, 259), player.getBattleUserInfo()); // 2Ãş Ãµ·Ï
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2018, 259), player.getBattleUserInfo()); // 2ì¸µ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1834, 259), player.getBattleUserInfo()); // 2ì¸µ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1507, 259), player.getBattleUserInfo()); // 2ì¸µ ì²œë¡
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1383, 259), player.getBattleUserInfo()); // 2ì¸µ ì²œë¡
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2478, 634), player.getBattleUserInfo()); // 1Ãş ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-2157, 634), player.getBattleUserInfo()); // 1Ãş Ãµ·Ï
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1751, 634), player.getBattleUserInfo()); // 1Ãş ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1172, 634), player.getBattleUserInfo()); // 1Ãş Ãµ·Ï
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-855, 634), player.getBattleUserInfo()); // 1Ãş ¿ø°ø
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-701, 634), player.getBattleUserInfo()); // 1Ãş Ãµ·Ï
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-2478, 634), player.getBattleUserInfo()); // 1ì¸µ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-2157, 634), player.getBattleUserInfo()); // 1ì¸µ ì²œë¡
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-1751, 634), player.getBattleUserInfo()); // 1ì¸µ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-1172, 634), player.getBattleUserInfo()); // 1ì¸µ ì²œë¡
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303202), new java.awt.Point(-855, 634), player.getBattleUserInfo()); // 1ì¸µ ì›ê³µ
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303203), new java.awt.Point(-701, 634), player.getBattleUserInfo()); // 1ì¸µ ì²œë¡
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(680, 260), player.getBattleUserInfo()); // 2Ãş Å©·Î³ë½º
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(894, 260), player.getBattleUserInfo()); // 2Ãş ÆÄÀÌ·¿
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1112, 260), player.getBattleUserInfo()); // 2Ãş ÆÄÀÌ·¿
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1342, 260), player.getBattleUserInfo()); // 2Ãş Å©·Î³ë½º
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1458, 260), player.getBattleUserInfo()); // 2Ãş ÆÄÀÌ·¿
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(680, 260), player.getBattleUserInfo()); // 2ì¸µ í¬ë¡œë…¸ìŠ¤
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(894, 260), player.getBattleUserInfo()); // 2ì¸µ íŒŒì´ë ›
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1112, 260), player.getBattleUserInfo()); // 2ì¸µ íŒŒì´ë ›
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1342, 260), player.getBattleUserInfo()); // 2ì¸µ í¬ë¡œë…¸ìŠ¤
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1458, 260), player.getBattleUserInfo()); // 2ì¸µ íŒŒì´ë ›
 
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(263, 629), player.getBattleUserInfo()); // 1Ãş Å©·Î³ë½º
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(567, 629), player.getBattleUserInfo()); // 1Ãş Å©·Î³ë½º
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(838, 629), player.getBattleUserInfo()); // 1Ãş ÆÄÀÌ·¿
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1070, 629), player.getBattleUserInfo()); // 1Ãş ÆÄÀÌ·¿
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1261, 629), player.getBattleUserInfo()); // 1Ãş ÆÄÀÌ·¿
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1533, 629), player.getBattleUserInfo()); // 1Ãş Å©·Î³ë½º
-            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1796, 629), player.getBattleUserInfo()); // 1Ãş Å©·Î³ë½º
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(263, 629), player.getBattleUserInfo()); // 1ì¸µ í¬ë¡œë…¸ìŠ¤
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(567, 629), player.getBattleUserInfo()); // 1ì¸µ í¬ë¡œë…¸ìŠ¤
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(838, 629), player.getBattleUserInfo()); // 1ì¸µ íŒŒì´ë ›
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1070, 629), player.getBattleUserInfo()); // 1ì¸µ íŒŒì´ë ›
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303205), new java.awt.Point(1261, 629), player.getBattleUserInfo()); // 1ì¸µ íŒŒì´ë ›
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1533, 629), player.getBattleUserInfo()); // 1ì¸µ í¬ë¡œë…¸ìŠ¤
+            map.spawnMonsterOnBattlePvP(em.getMonster(9303204), new java.awt.Point(1796, 629), player.getBattleUserInfo()); // 1ì¸µ í¬ë¡œë…¸ìŠ¤
 
             map.spawnMonsterOnBattlePvP(em.getMonster(9303200), new java.awt.Point(-1399, 1410), player.getBattleUserInfo());
             map.spawnMonsterOnBattlePvP(em.getMonster(9303200), new java.awt.Point(-1145, 1352), player.getBattleUserInfo());
@@ -84,7 +84,7 @@ function playerEntry(eim, player) {
             map.spawnMonsterOnBattlePvP(em.getMonster(9303201), new java.awt.Point(-614, 1410), player.getBattleUserInfo());
             map.spawnMonsterOnBattlePvP(em.getMonster(9303201), new java.awt.Point(-685, 1410), player.getBattleUserInfo());
             map.spawnMonsterOnBattlePvP(em.getMonster(9303201), new java.awt.Point(287, 1410), player.getBattleUserInfo());
-            // ¿©±â±îÁö Çì³×
+            // ì—¬ê¸°ê¹Œì§€ í—¤ë„¤
 	}
 }
 
@@ -103,7 +103,7 @@ function monsterValue(eim, mobid) {
 }
 
 function onMapLoad(eim, player) {
-    // ¸Ê¿¡ ´Ù½Ã Á¢¼Ó½Ã¿¡ ¹èÆ² À¯Àú ·Îµù
+    // ë§µì— ë‹¤ì‹œ ì ‘ì†ì‹œì— ë°°í‹€ ìœ ì € ë¡œë”©
 }
 
 function playerDisconnected(eim, player) {

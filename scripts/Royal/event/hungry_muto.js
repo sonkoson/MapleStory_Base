@@ -37,7 +37,7 @@ function playerEntry(eim, player) {
     var difficulty = Integer.parseInt(eim.getProperty("Difficulty"));
  
     if (player.isLeader()) {
-        // ¹«Åä ¸÷ ¼ÒÈ¯
+        // ë¬´í†  ëª¹ ì†Œí™˜
         for (var i = 0; i < 6; ++i) {
                 eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642000), new Point(105, -354));
                 eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642002), new Point(2644, -345));
@@ -49,7 +49,7 @@ function playerEntry(eim, player) {
                 eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642014), new Point(1405, -1637));	
         }
 
-        // ¿­¸Å ³ª¹« º¸½º´Â ·£´ý À§Ä¡¿¡ ¼ÒÈ¯
+        // ì—´ë§¤ ë‚˜ë¬´ ë³´ìŠ¤ëŠ” ëžœë¤ ìœ„ì¹˜ì— ì†Œí™˜
         eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642016), randArea[Math.floor(Math.random() * randArea.length)]);
 	eim.startHungryMuto(player, difficulty, mapid);
     }
@@ -60,10 +60,10 @@ function scheduledTimeout(eim) {
     var it = eim.getPlayers().iterator();
     while (it.hasNext()) {
         var chr = it.next();
-        var tese = chr.getWarpMap(450002023); // ¹«Åä ´ë±â½Ç
+        var tese = chr.getWarpMap(450002023); // ë¬´í†  ëŒ€ê¸°ì‹¤
         chr.setClock(0);
         chr.changeMap(tese, tese.getPortal(0));
-        // °ÔÀÓ ¿À¹ö ÀÌÆåÆ®
+        // ê²Œìž„ ì˜¤ë²„ ì´íŽ™íŠ¸
 
     }
     eim.unregisterAll();
@@ -119,7 +119,7 @@ function monsterKilled(eim, player, point) {
 
 
 function leftParty(eim, player) {
-    // ÇØ´ç ÆÄÆ¼¿ø ¸ÊÀÌµ¿ ¹× °ÔÀÓ ¿À¹ö
+    // í•´ë‹¹ íŒŒí‹°ì› ë§µì´ë™ ë° ê²Œìž„ ì˜¤ë²„
 }
 
 

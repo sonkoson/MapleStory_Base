@@ -9,17 +9,17 @@ function action (mode, type, selection) {
     }
     if (status == 0) {
         var count = 0;
-        var say = "#fs11##b°­È­ÇÒ Àåºñ#k¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä\r\n\r\n#r½ºÅ¸Æ÷½º¿Í´Â º°°³ÀÇ °­È­ ½Ã½ºÅÛ#kÀ¸·Î ±âÁ¸¿¡ ÀÖ´Â\r\n#r½ºÅ¸Æ÷½º ¶Ç´Â ÁÖ¹®¼­ ÀÛ µîÀÇ ¿µÇâ#kÀ» ¹ŞÁö ¾Ê½À´Ï´Ù.#k\r\n\r\n";
+        var say = "#fs11##bê°•í™”í•  ì¥ë¹„#kë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”\r\n\r\n#rìŠ¤íƒ€í¬ìŠ¤ì™€ëŠ” ë³„ê°œì˜ ê°•í™” ì‹œìŠ¤í…œ#kìœ¼ë¡œ ê¸°ì¡´ì— ìˆëŠ”\r\n#rìŠ¤íƒ€í¬ìŠ¤ ë˜ëŠ” ì£¼ë¬¸ì„œ ì‘ ë“±ì˜ ì˜í–¥#kì„ ë°›ì§€ ì•ŠìŠµë‹ˆë‹¤.#k\r\n\r\n";
         for (i = 0; i < cm.getInventory(1).getSlotLimit(); i++) {
             if (cm.getInventory(1).getItem(i) != null) {
                 if (!Packages.objects.item.MapleItemInformationProvider.getInstance().isCash(cm.getInventory(1).getItem(i).getItemId())) {
-                    say += "#L" + i + "##e#b#i" + cm.getInventory(1).getItem(i).getItemId() + "# #z" + cm.getInventory(1).getItem(i).getItemId() + "# (" + i + "¹øÂ° ½½·Ô)#l\r\n";
+                    say += "#L" + i + "##e#b#i" + cm.getInventory(1).getItem(i).getItemId() + "# #z" + cm.getInventory(1).getItem(i).getItemId() + "# (" + i + "ë²ˆì§¸ ìŠ¬ë¡¯)#l\r\n";
                     count++;
                 }
             }
         }
         if (count <= 0) {
-            cm.sendOk("°­È­ÇÒ Àåºñ¸¦ ¼ÒÁöÇÏ°í ÀÖ´ÂÁö È®ÀÎÇØ ÁÖ¼¼¿ä.");
+            cm.sendOk("ê°•í™”í•  ì¥ë¹„ë¥¼ ì†Œì§€í•˜ê³  ìˆëŠ”ì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.");
             cm.dispose();
             return;
         }
@@ -29,70 +29,70 @@ function action (mode, type, selection) {
             slot = selection;
             item = cm.getInventory(1).getItem(selection);
         }
-        if (item.getOwner().equals("15°­")) {
-            cm.sendOk("ÀÌ¹Ì 15°­±îÁö °­È­°¡ ¿Ï·áµÈ ¾ÆÀÌÅÛ ÀÔ´Ï´Ù.");
+        if (item.getOwner().equals("15ê°•")) {
+            cm.sendOk("ì´ë¯¸ 15ê°•ê¹Œì§€ ê°•í™”ê°€ ì™„ë£Œëœ ì•„ì´í…œ ì…ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
         itemid = item.getItemId();
-        //°­È­¼ö, °­È­¼º°øÈ®·ü, °­È­¸Ş¼Ò, ¿Ã½ºÅÈ, °ø¸¶ 
+        //ê°•í™”ìˆ˜, ê°•í™”ì„±ê³µí™•ë¥ , ê°•í™”ë©”ì†Œ, ì˜¬ìŠ¤íƒ¯, ê³µë§ˆ 
         var notice = "";
         say = "";
         say += "#fs 11#";
-        say += "#r°­È­ : " + getAddEnhance(item) + "°­ -> " + (getAddEnhance(item) + 1) + "°­#k\r\n";
-        say += "°­È­ ¼º°ø ½Ã #b¿Ã½ºÅÈ +" + items[getAddEnhance(item) + 1][3] + ", °ø¸¶ +" + items[getAddEnhance(item) + 1][4] + "#k Áõ°¡\r\n";
-        say += "±âº»°­È­¿¡ ÇÊ¿äÇÑ ¸Ş¼Ò :#b " + items[getAddEnhance(item) + 1][2] + " ¸Ş¼Ò#k\r\n";
-        say += "#b¼º°øÈ®·ü " + items[getAddEnhance(item) + 1][1] + "%#k, ½ÇÆĞ ½Ã ¾ÆÀÌÅÛ ¿É¼Ç ÇÏ¶ô\r\n";
-        say += "´Ü, #b" + ConvertNumber(keep) + "¸Ş¼Ò#k¸¦ ¼Ò¸ğÇÏ¿© ¾ÆÀÌÅÛ ¿É¼Ç º¸È£ °¡´É\r\n\r\n\r\n";        
-        say += "#r<¾ÆÀÌÅÛ Á¤º¸>\r\n";
-        say += "°­È­ÇÒ ¾ÆÀÌÅÛ : #i" + itemid + "# #z" + itemid + "#\r\n";
+        say += "#rê°•í™” : " + getAddEnhance(item) + "ê°• -> " + (getAddEnhance(item) + 1) + "ê°•#k\r\n";
+        say += "ê°•í™” ì„±ê³µ ì‹œ #bì˜¬ìŠ¤íƒ¯ +" + items[getAddEnhance(item) + 1][3] + ", ê³µë§ˆ +" + items[getAddEnhance(item) + 1][4] + "#k ì¦ê°€\r\n";
+        say += "ê¸°ë³¸ê°•í™”ì— í•„ìš”í•œ ë©”ì†Œ :#b " + items[getAddEnhance(item) + 1][2] + " ë©”ì†Œ#k\r\n";
+        say += "#bì„±ê³µí™•ë¥  " + items[getAddEnhance(item) + 1][1] + "%#k, ì‹¤íŒ¨ ì‹œ ì•„ì´í…œ ì˜µì…˜ í•˜ë½\r\n";
+        say += "ë‹¨, #b" + ConvertNumber(keep) + "ë©”ì†Œ#kë¥¼ ì†Œëª¨í•˜ì—¬ ì•„ì´í…œ ì˜µì…˜ ë³´í˜¸ ê°€ëŠ¥\r\n\r\n\r\n";        
+        say += "#r<ì•„ì´í…œ ì •ë³´>\r\n";
+        say += "ê°•í™”í•  ì•„ì´í…œ : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
-        say += "°ø°İ·Â : " + item.getWatk() + "  |  ¸¶·Â : " + item.getMatk() + "  | ½ºÅ¸Æ÷½º : " + item.getEnhance() + "¼º\r\n";
-        say += "¿Ã ½ºÅÈ : " + item.getAllStat() + "%  |  ÃÑ µ¥¹ÌÁö : " + item.getTotalDamage() + "%  |  º¸½º °ø°İ·Â : " + item.getBossDamage() + "%\r\n";
-        say += "¾ÆÀÌÅÛ °­È­ È½¼ö : " + getAddEnhance(item) + "°­#k\r\n\r\n\r\n";
+        say += "ê³µê²©ë ¥ : " + item.getWatk() + "  |  ë§ˆë ¥ : " + item.getMatk() + "  | ìŠ¤íƒ€í¬ìŠ¤ : " + item.getEnhance() + "ì„±\r\n";
+        say += "ì˜¬ ìŠ¤íƒ¯ : " + item.getAllStat() + "%  |  ì´ ë°ë¯¸ì§€ : " + item.getTotalDamage() + "%  |  ë³´ìŠ¤ ê³µê²©ë ¥ : " + item.getBossDamage() + "%\r\n";
+        say += "ì•„ì´í…œ ê°•í™” íšŸìˆ˜ : " + getAddEnhance(item) + "ê°•#k\r\n\r\n\r\n";
         cm.sendSimple(notice + say +
-        "#L1##b" + ConvertNumber(keep) + "¸Ş¼Ò¸¦ »ç¿ëÇÏ¿© ÆÄ±«, ¹Ì²ô·¯ÁüÀ» ¹æÁö ÇÏ°Ú½À´Ï´Ù.#l\r\n" +
-        "#L2#ÆÄ±«, ¹Ì²ô·¯Áü ¹æÁö¸¦ »ç¿ëÇÏÁö ¾Ê°í °­È­ÇÏ°Ú½À´Ï´Ù.#k#l");
+        "#L1##b" + ConvertNumber(keep) + "ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì—¬ íŒŒê´´, ë¯¸ë„ëŸ¬ì§ì„ ë°©ì§€ í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n" +
+        "#L2#íŒŒê´´, ë¯¸ë„ëŸ¬ì§ ë°©ì§€ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ê°•í™”í•˜ê² ìŠµë‹ˆë‹¤.#k#l");
     } else if (status == 2) {
         if (re == 0) {
             choice = selection;
         }
-        if (item.getOwner().equals("20°­")) {
-            cm.sendOk("ÀÌ¹Ì 20°­±îÁö °­È­°¡ ¿Ï·áµÈ ¾ÆÀÌÅÛ ÀÔ´Ï´Ù.");
+        if (item.getOwner().equals("20ê°•")) {
+            cm.sendOk("ì´ë¯¸ 20ê°•ê¹Œì§€ ê°•í™”ê°€ ì™„ë£Œëœ ì•„ì´í…œ ì…ë‹ˆë‹¤.");
             cm.dispose();
             return;
         }
-        //°­È­¼ö, °­È­¼º°øÈ®·ü, °­È­¸Ş¼Ò, ¿Ã½ºÅÈ, °ø¸¶ 
+        //ê°•í™”ìˆ˜, ê°•í™”ì„±ê³µí™•ë¥ , ê°•í™”ë©”ì†Œ, ì˜¬ìŠ¤íƒ¯, ê³µë§ˆ 
         say = "";
         say += "#fs 11#";
-        say += "°­È­ : #b" + getAddEnhance(item) + "°­ -> " + (getAddEnhance(item) + 1) + "°­#k\r\n";
-        say += "°­È­ ¼º°ø ½Ã #b¿Ã½ºÅÈ +" + items[getAddEnhance(item) + 1][3] + ", °ø¸¶ +" + items[getAddEnhance(item) + 1][4] + "#k Áõ°¡\r\n";
-        say += "±âº»°­È­¿¡ ÇÊ¿äÇÑ ¸Ş¼Ò : #b" + items[getAddEnhance(item) + 1][2] + "¸Ş¼Ò#k\r\n";
-        say += "#b¼º°øÈ®·ü " + items[getAddEnhance(item) + 1][1] + "%#k";
+        say += "ê°•í™” : #b" + getAddEnhance(item) + "ê°• -> " + (getAddEnhance(item) + 1) + "ê°•#k\r\n";
+        say += "ê°•í™” ì„±ê³µ ì‹œ #bì˜¬ìŠ¤íƒ¯ +" + items[getAddEnhance(item) + 1][3] + ", ê³µë§ˆ +" + items[getAddEnhance(item) + 1][4] + "#k ì¦ê°€\r\n";
+        say += "ê¸°ë³¸ê°•í™”ì— í•„ìš”í•œ ë©”ì†Œ : #b" + items[getAddEnhance(item) + 1][2] + "ë©”ì†Œ#k\r\n";
+        say += "#bì„±ê³µí™•ë¥  " + items[getAddEnhance(item) + 1][1] + "%#k";
         if (selection == 1 || choice == 1) {
             say += "\r\n";
         } else if (selection == 2 || choice == 2) {
-            say += ", ½ÇÆĞ ½Ã ¾ÆÀÌÅÛ ¿É¼Ç ÇÏ¶ô\r\n\r\n";
+            say += ", ì‹¤íŒ¨ ì‹œ ì•„ì´í…œ ì˜µì…˜ í•˜ë½\r\n\r\n";
         }   
-        say += "#r<¾ÆÀÌÅÛ Á¤º¸>\r\n";
-        say += "°­È­ÇÒ ¾ÆÀÌÅÛ : #i" + itemid + "# #z" + itemid + "#\r\n";
+        say += "#r<ì•„ì´í…œ ì •ë³´>\r\n";
+        say += "ê°•í™”í•  ì•„ì´í…œ : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
-        say += "°ø°İ·Â : " + item.getWatk() + "  |  ¸¶·Â : " + item.getMatk() + "  | ½ºÅ¸Æ÷½º : " + item.getEnhance() + "¼º\r\n";
-        say += "¿Ã ½ºÅÈ : " + item.getAllStat() + "%  |  ÃÑ µ¥¹ÌÁö : " + item.getTotalDamage() + "%  |  º¸½º °ø°İ·Â : " + item.getBossDamage() + "%\r\n";
-        say += "¾ÆÀÌÅÛ °­È­ È½¼ö : " + getAddEnhance(item) + "°­#k\r\n\r\n\r\n";
+        say += "ê³µê²©ë ¥ : " + item.getWatk() + "  |  ë§ˆë ¥ : " + item.getMatk() + "  | ìŠ¤íƒ€í¬ìŠ¤ : " + item.getEnhance() + "ì„±\r\n";
+        say += "ì˜¬ ìŠ¤íƒ¯ : " + item.getAllStat() + "%  |  ì´ ë°ë¯¸ì§€ : " + item.getTotalDamage() + "%  |  ë³´ìŠ¤ ê³µê²©ë ¥ : " + item.getBossDamage() + "%\r\n";
+        say += "ì•„ì´í…œ ê°•í™” íšŸìˆ˜ : " + getAddEnhance(item) + "ê°•#k\r\n\r\n\r\n";
         if (selection == 1 || choice == 1) {
-            cm.sendYesNo(say + "Á¤¸»·Î " + ConvertNumber(keep) + "¸Ş¼Ò¸¦ »ç¿ëÇÏ¿© ¹Ì²ô·¯ÁüÀ» ¹æÁö ÇÏ½Ã°Ú½À´Ï±î?\r\n" +
-            "¼º°ø/½ÇÆĞ ¿©ºÎ¿Í »ó°ü¾øÀÌ ¹Ì²ô·¯Áü ¹æÁö ¸Ş¼Ò´Â ¼Ò¸ğµË´Ï´Ù.\r\n\r\n#bÃÑ ÇÊ¿ä ¸Ş¼Ò : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + "¸Ş¼Ò#k#l");
+            cm.sendYesNo(say + "ì •ë§ë¡œ " + ConvertNumber(keep) + "ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì—¬ ë¯¸ë„ëŸ¬ì§ì„ ë°©ì§€ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n" +
+            "ì„±ê³µ/ì‹¤íŒ¨ ì—¬ë¶€ì™€ ìƒê´€ì—†ì´ ë¯¸ë„ëŸ¬ì§ ë°©ì§€ ë©”ì†ŒëŠ” ì†Œëª¨ë©ë‹ˆë‹¤.\r\n\r\n#bì´ í•„ìš” ë©”ì†Œ : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + "ë©”ì†Œ#k#l");
         } else if (selection == 2 || choice == 2) {
-            cm.sendYesNo(say + "Á¤¸»·Î " + ConvertNumber(keep) + "¸Ş¼Ò¸¦ »ç¿ëÇÏÁö ¾Ê°í °­È­¸¦ ½ÃµµÇÏ½Ã°Ú½À´Ï±î?\r\n" +
-            "°­È­ ½ÇÆĞ½Ã °­È­ µî±ŞÀÌ ÇÏ¶ôÇÕ´Ï´Ù.");
+            cm.sendYesNo(say + "ì •ë§ë¡œ " + ConvertNumber(keep) + "ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ê°•í™”ë¥¼ ì‹œë„í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n" +
+            "ê°•í™” ì‹¤íŒ¨ì‹œ ê°•í™” ë“±ê¸‰ì´ í•˜ë½í•©ë‹ˆë‹¤.");
         }
     } else if (status == 3) {
         if (choice == 1) {
             if (cm.getPlayer().getMeso() >= (items[getAddEnhance(item) + 1][2] + keep)) {
                 cm.gainMeso(-(items[getAddEnhance(item) + 1][2] + keep));
             } else {
-                cm.sendOk("¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© º¸È£ °­È­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.\r\nÃÑ ÇÊ¿ä °­È­ ¸Ş¼Ò : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + "¸Ş¼Ò");
+                cm.sendOk("ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ ë³´í˜¸ ê°•í™”ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.\r\nì´ í•„ìš” ê°•í™” ë©”ì†Œ : " + ConvertNumber(items[getAddEnhance(item) + 1][2] + keep) + "ë©”ì†Œ");
                 cm.dispose();
                 return;
             }
@@ -100,7 +100,7 @@ function action (mode, type, selection) {
             if (cm.getPlayer().getMeso() >= items[getAddEnhance(item) + 1][2]) {
                 cm.gainMeso(-items[getAddEnhance(item) + 1][2]);
             } else {
-                cm.sendOk("¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© °­È­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+                cm.sendOk("ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ ê°•í™”ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
                 cm.dispose();
                 return;
             }
@@ -117,29 +117,29 @@ function action (mode, type, selection) {
                 item.setLuk(item.getLuk() + items[getAddEnhance(item) + 1][3]);
                 item.setWatk(item.getWatk() + items[getAddEnhance(item) + 1][4]);
                 item.setMatk(item.getMatk() + items[getAddEnhance(item) + 1][4]);
-                item.setOwner(""+(getAddEnhance(item)+1)+"°­");
+                item.setOwner(""+(getAddEnhance(item)+1)+"ê°•");
                 cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                 say = "";     
-                say += "#fs11##r<¾ÆÀÌÅÛ Á¤º¸>\r\n";
-                say += "°­È­ÇÒ ¾ÆÀÌÅÛ : #i" + itemid + "# #z" + itemid + "#\r\n";
+                say += "#fs11##r<ì•„ì´í…œ ì •ë³´>\r\n";
+                say += "ê°•í™”í•  ì•„ì´í…œ : #i" + itemid + "# #z" + itemid + "#\r\n";
                 say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
-                say += "°ø°İ·Â : " + item.getWatk() + "  |  ¸¶·Â : " + item.getMatk() + "  | ½ºÅ¸Æ÷½º : " + item.getEnhance() + "¼º\r\n";
-                say += "¿Ã ½ºÅÈ : " + item.getAllStat() + "%  |  ÃÑ µ¥¹ÌÁö : " + item.getTotalDamage() + "%  |  º¸½º °ø°İ·Â : " + item.getBossDamage() + "%\r\n";
-                say += "¾ÆÀÌÅÛ °­È­ È½¼ö : " + getAddEnhance(item) + "°­#k\r\n\r\n\r\n";
-                cm.sendYesNo("#b°­È­¿¡ ¼º°ø#kÇÏ¿´½À´Ï´Ù.\r\n°è¼Ó °­È­ÇÏ½Ã·Á¸é '¿¹'¸¦ ´­·¯ ÁÖ¼¼¿ä.\r\n\r\n" + say);
+                say += "ê³µê²©ë ¥ : " + item.getWatk() + "  |  ë§ˆë ¥ : " + item.getMatk() + "  | ìŠ¤íƒ€í¬ìŠ¤ : " + item.getEnhance() + "ì„±\r\n";
+                say += "ì˜¬ ìŠ¤íƒ¯ : " + item.getAllStat() + "%  |  ì´ ë°ë¯¸ì§€ : " + item.getTotalDamage() + "%  |  ë³´ìŠ¤ ê³µê²©ë ¥ : " + item.getBossDamage() + "%\r\n";
+                say += "ì•„ì´í…œ ê°•í™” íšŸìˆ˜ : " + getAddEnhance(item) + "ê°•#k\r\n\r\n\r\n";
+                cm.sendYesNo("#bê°•í™”ì— ì„±ê³µ#kí•˜ì˜€ìŠµë‹ˆë‹¤.\r\nê³„ì† ê°•í™”í•˜ì‹œë ¤ë©´ 'ì˜ˆ'ë¥¼ ëˆŒëŸ¬ ì£¼ì„¸ìš”.\r\n\r\n" + say);
 
                 re = 1;
                 status = 1;
             } else {
                 if (choice == 1 || getAddEnhance(item) == 0) {
                     say = "";
-                    say += "#fs11##r<¾ÆÀÌÅÛ Á¤º¸>\r\n";
-                    say += "°­È­ÇÒ ¾ÆÀÌÅÛ : #i" + itemid + "# #z" + itemid + "#\r\n";
+                    say += "#fs11##r<ì•„ì´í…œ ì •ë³´>\r\n";
+                    say += "ê°•í™”í•  ì•„ì´í…œ : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
-                    say += "°ø°İ·Â : " + item.getWatk() + "  |  ¸¶·Â : " + item.getMatk() + "  | ½ºÅ¸Æ÷½º : " + item.getEnhance() + "¼º\r\n";
-                    say += "¿Ã ½ºÅÈ : " + item.getAllStat() + "%  |  ÃÑ µ¥¹ÌÁö : " + item.getTotalDamage() + "%  |  º¸½º °ø°İ·Â : " + item.getBossDamage() + "%\r\n";
-                    say += "¾ÆÀÌÅÛ °­È­ È½¼ö : " + getAddEnhance(item) + "°­#k\r\n\r\n\r\n";
-                    cm.sendYesNo("#r°­È­¿¡ ½ÇÆĞ#kÇÏ¿´Áö¸¸" + ConvertNumber(keep) + " ¸Ş¼Ò¸¦ »ç¿ëÇÏ¿© #r°­È­ µî±Ş#kÀÌ º¸È£µÇ¾ú½À´Ï´Ù.\r\n°è¼Ó °­È­ÇÏ½Ã·Á¸é '¿¹'¸¦ ´­·¯ ÁÖ¼¼¿ä.\r\n\r\n" + say);
+                    say += "ê³µê²©ë ¥ : " + item.getWatk() + "  |  ë§ˆë ¥ : " + item.getMatk() + "  | ìŠ¤íƒ€í¬ìŠ¤ : " + item.getEnhance() + "ì„±\r\n";
+                    say += "ì˜¬ ìŠ¤íƒ¯ : " + item.getAllStat() + "%  |  ì´ ë°ë¯¸ì§€ : " + item.getTotalDamage() + "%  |  ë³´ìŠ¤ ê³µê²©ë ¥ : " + item.getBossDamage() + "%\r\n";
+                    say += "ì•„ì´í…œ ê°•í™” íšŸìˆ˜ : " + getAddEnhance(item) + "ê°•#k\r\n\r\n\r\n";
+                    cm.sendYesNo("#rê°•í™”ì— ì‹¤íŒ¨#kí•˜ì˜€ì§€ë§Œ" + ConvertNumber(keep) + " ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì—¬ #rê°•í™” ë“±ê¸‰#kì´ ë³´í˜¸ë˜ì—ˆìŠµë‹ˆë‹¤.\r\nê³„ì† ê°•í™”í•˜ì‹œë ¤ë©´ 'ì˜ˆ'ë¥¼ ëˆŒëŸ¬ ì£¼ì„¸ìš”.\r\n\r\n" + say);
                     re = 1;
                     status = 1;
                 } else if (choice == 2) {
@@ -150,19 +150,19 @@ function action (mode, type, selection) {
                     item.setWatk(item.getWatk() - items[getAddEnhance(item)][4]);
                     item.setMatk(item.getMatk() - items[getAddEnhance(item)][4]);
                     if (getAddEnhance(item) > 1 && getAddEnhance(item) < 15) {
-                        item.setOwner(""+(getAddEnhance(item)-1)+"°­");
+                        item.setOwner(""+(getAddEnhance(item)-1)+"ê°•");
                     } else if (getAddEnhance(item) == 1) {
                         item.setOwner("");
                     }                    
                     cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                     say = "";     
-                    say += "#r<¾ÆÀÌÅÛ Á¤º¸>\r\n";
-                    say += "°­È­ÇÒ ¾ÆÀÌÅÛ : #i" + itemid + "# #z" + itemid + "#\r\n";
+                    say += "#r<ì•„ì´í…œ ì •ë³´>\r\n";
+                    say += "ê°•í™”í•  ì•„ì´í…œ : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
-                    say += "°ø°İ·Â : " + item.getWatk() + "  |  ¸¶·Â : " + item.getMatk() + "  | ½ºÅ¸Æ÷½º : " + item.getEnhance() + "¼º\r\n";
-                    say += "¿Ã ½ºÅÈ : " + item.getAllStat() + "%  |  ÃÑ µ¥¹ÌÁö : " + item.getTotalDamage() + "%  |  º¸½º °ø°İ·Â : " + item.getBossDamage() + "%\r\n";
-                    say += "¾ÆÀÌÅÛ °­È­ È½¼ö : " + getAddEnhance(item) + "°­#k\r\n\r\n\r\n";
-                    cm.sendYesNo("#r°­È­¿¡ ½ÇÆĞ#kÇÏ¿© #r°­È­ µî±Ş#kÀÌ ÇÏ¶ôÇÏ¿´½À´Ï´Ù.\r\n°è¼Ó °­È­ÇÏ½Ã·Á¸é '¿¹'¸¦ ´­·¯ ÁÖ¼¼¿ä.\r\n\r\n" + say);
+                    say += "ê³µê²©ë ¥ : " + item.getWatk() + "  |  ë§ˆë ¥ : " + item.getMatk() + "  | ìŠ¤íƒ€í¬ìŠ¤ : " + item.getEnhance() + "ì„±\r\n";
+                    say += "ì˜¬ ìŠ¤íƒ¯ : " + item.getAllStat() + "%  |  ì´ ë°ë¯¸ì§€ : " + item.getTotalDamage() + "%  |  ë³´ìŠ¤ ê³µê²©ë ¥ : " + item.getBossDamage() + "%\r\n";
+                    say += "ì•„ì´í…œ ê°•í™” íšŸìˆ˜ : " + getAddEnhance(item) + "ê°•#k\r\n\r\n\r\n";
+                    cm.sendYesNo("#rê°•í™”ì— ì‹¤íŒ¨#kí•˜ì—¬ #rê°•í™” ë“±ê¸‰#kì´ í•˜ë½í•˜ì˜€ìŠµë‹ˆë‹¤.\r\nê³„ì† ê°•í™”í•˜ì‹œë ¤ë©´ 'ì˜ˆ'ë¥¼ ëˆŒëŸ¬ ì£¼ì„¸ìš”.\r\n\r\n" + say);
                     re = 1;
                     status = 1;
                 } else {

@@ -17,9 +17,9 @@ function action(mode, type, sel) {
     
     if (status == 0) {
         if (mailboxcheck()) {
-            cm.getPlayer().dropMessage(-22, "[¿ìÆíÇÔ] ¼ö·ÉÇÏÁö ¾ÊÀº ¾ÆÀÌÅÛÀÌ ÀÖ½À´Ï´Ù. ÀÌº¥Æ® NPC - ¿ìÆíÇÔ¿¡¼­ ¼ö·ÉÇØ ÁÖ¼¼¿ä!");
+            cm.getPlayer().dropMessage(-22, "[ìš°í¸í•¨] ìˆ˜ë ¹í•˜ì§€ ì•Šì€ ì•„ì´í…œì´ ìˆìŠµë‹ˆë‹¤. ì´ë²¤íŠ¸ NPC - ìš°í¸í•¨ì—ì„œ ìˆ˜ë ¹í•´ ì£¼ì„¸ìš”!");
         }
-        cm.effectText("#fn³ª´®°íµñ ExtraBold##fs16#< °­¸²¿ùµå > - °­¸² Á¤¿ø", 100, 1000, 6, 0, 430, -550);
+        cm.effectText("#fnë‚˜ëˆ”ê³ ë”• ExtraBold##fs16#< ê°•ë¦¼ì›”ë“œ > - ê°•ë¦¼ ì •ì›", 100, 1000, 6, 0, 430, -550);
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

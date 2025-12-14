@@ -107,7 +107,7 @@ importPackage(Packages.server);
 importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 
-one = Math.floor(Math.random() * 5) + 1 // ÃÖ¼Ò 10 ÃÖ´ë 35 , È¥Å×ÀÏ
+one = Math.floor(Math.random() * 5) + 1 // ìµœì†Œ 10 ìµœëŒ€ 35 , í˜¼í…Œì¼
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -125,7 +125,7 @@ function action(mode, type, selection) {
         status++;
     }
         if (status == 0) {
-        if (cm.getPlayer().getLevel() >= 10 && cm.getPlayer().getKeyValue(0, "270½Ã°£3") && cm.haveItem(4033752, 1)) {
+        if (cm.getPlayer().getLevel() >= 10 && cm.getPlayer().getKeyValue(0, "270ì‹œê°„3") && cm.haveItem(4033752, 1)) {
 item = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquipById(1114304);
 	item.setStr(100);
 	item.setDex(100);
@@ -148,12 +148,12 @@ item = Packages.objects.item.MapleItemInformationProvider.getInstance().getEquip
 		//cm.gainItem(4033752, 1);
                 cm.getPlayer().gainAp(50);
 	        //cm.getPlayer().setKeyValue(42003, "point", cm.getPlayer().getKeyValue(42003, "point") + 1799);
-                cm.getPlayer().setKeyValue(0, "270½Ã°£3", ""+(cm.getPlayer().getKeyValue(0, "270½Ã°£3") + 1));
+                cm.getPlayer().setKeyValue(0, "270ì‹œê°„3", ""+(cm.getPlayer().getKeyValue(0, "270ì‹œê°„3") + 1));
 		cm.gainItem(2630115, -1);
 		cm.gainItem(4033752, -1);
 		cm.dispose();
     } else {
-     cm.sendOk("#rÁ¶°ÇÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.#k");
+     cm.sendOk("#rì¡°ê±´ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.#k");
      cm.dispose();
 }
 	}

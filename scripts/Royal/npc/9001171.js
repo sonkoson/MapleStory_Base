@@ -1,4 +1,4 @@
-﻿var status = -1;
+var status = -1;
 var sel = 0;
 
 var limit = 6; // 일일 제한 횟수

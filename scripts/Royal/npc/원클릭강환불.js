@@ -1,4 +1,4 @@
-﻿
+
 
 var JavaString = Packages.java.lang.String;
 var Integer = Packages.java.lang.Integer;

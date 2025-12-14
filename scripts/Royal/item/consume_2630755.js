@@ -18,7 +18,7 @@ function action(mode, type, selection) {
     }
         if (status == 0) {
 		cm.gainItem(2048716, 10);
-		cm.sendOkS("#i2048716##z2048716# 10∞≥ »πµÊ!", 2);
+		cm.sendOkS("#i2048716##z2048716# 10Í∞ú ÌöçÎìù!", 2);
 		cm.gainItem(2630755, -1);
 		cm.dispose();
 	}

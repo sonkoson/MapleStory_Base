@@ -1,4 +1,4 @@
-﻿/* guild creation npc */
+/* guild creation npc */
 var status = -1;
 var sel;
 

@@ -16,6 +16,6 @@ function action(mode, type, sel) {
     	}
 	if (status == 0) {
 		cm.dispose();
-		cm.sendOkS("ÁØºñÁß - Ã¤¿ø", 0x24);
+		cm.sendOkS("ì¤€ë¹„ì¤‘ - ì±„ì›", 0x24);
 	}
 }

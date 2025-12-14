@@ -1,4 +1,4 @@
-﻿별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
 별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
 별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
 별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"

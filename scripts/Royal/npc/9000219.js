@@ -1,4 +1,4 @@
-﻿var status = -1;
+var status = -1;
 
 var year, month, date2, date, day
 var hour, minute;

@@ -148,7 +148,7 @@ function playerDisconnected(eim, player) {
 }
 
 function monsterValue(eim, mobId) {
-    if (mobId >= 9300142 && mobId <= 9300146) { // À¯·¹Å×ÀÇ »ç¹«½Ç
+    if (mobId >= 9300142 && mobId <= 9300146) { // ìœ ë ˆí…Œì˜ ì‚¬ë¬´ì‹¤
         if (eim.getMapInstance(926110203).getAllMonstersThreadsafe().size() <= 0 && em.getProperty("stage5").equals("1")) {
             em.setProperty("stage5", "2");
             eim.getMapInstance(926110203).clearEffect();
@@ -161,7 +161,7 @@ function monsterValue(eim, mobId) {
     } else if (mobId == 9300137 || mobId == 9300138) {
         if (em.getProperty("clear_protect") == null) {
             em.setProperty("stage7", "1");
-            eim.broadcastPlayerMsg(5, "·Î¹Ì¿À¸¦ ±¸ÇÏ´Âµ¥ ½ÇÆÐÇß½À´Ï´Ù.");
+            eim.broadcastPlayerMsg(5, "ë¡œë¯¸ì˜¤ë¥¼ êµ¬í•˜ëŠ”ë° ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
         }
     } else if (mobId == 9300139 || mobId == 9300140) { //boss
         //13 = boss, 14 = urete, 15 = romeo&juliet
@@ -171,7 +171,7 @@ function monsterValue(eim, mobId) {
         eim.getMapInstance(13).killAllMonsters(true);
         if (em.getProperty("stage7").equals("0")) {
             eim.gainPartyExpPQ(eim.getMapInstance(13), 45000, "rnj", 70);
-            eim.broadcastPlayerMsg(6, "·Î¹Ì¿À¸¦ ±¸ÇÏ´Âµ¥ ¼º°øÇß½À´Ï´Ù.");
+            eim.broadcastPlayerMsg(6, "ë¡œë¯¸ì˜¤ë¥¼ êµ¬í•˜ëŠ”ë° ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
             eim.getMapInstance(14).spawnNpc(2112012, new java.awt.Point(232, 150));
             eim.getMapInstance(15).spawnNpc(2112004, new java.awt.Point(157, 128));
             eim.getMapInstance(15).spawnNpc(2112003, new java.awt.Point(107, 128));

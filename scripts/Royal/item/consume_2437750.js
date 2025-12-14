@@ -27,7 +27,7 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         var text = "#b#e<#t" + box + "#>#k#n\r\n\r\n";
-        text += "±³È¯ÇÏ°í½ÍÀº #b¾ÆÄÉÀÎ ½Éº¼#k À» ¼±ÅÃÇØÁÖ¼¼¿ä. µ¿ÀÏÇÑ ¾ÆÀÌÅÛÀ¸·Î 1°³°¡ Áö±ÞµË´Ï´Ù.\r\n";
+        text += "êµí™˜í•˜ê³ ì‹¶ì€ #bì•„ì¼€ì¸ ì‹¬ë³¼#k ì„ ì„ íƒí•´ì£¼ì„¸ìš”. ë™ì¼í•œ ì•„ì´í…œìœ¼ë¡œ 1ê°œê°€ ì§€ê¸‰ë©ë‹ˆë‹¤.\r\n";
         for (i = 0; i < 6; i++) {
             text += "#L" + (1712001 + i) + "# #i" + (1712001 + i) + "# #b#z" + (1712001 + i) + "##k\r\n";
         }
@@ -36,7 +36,7 @@ function action(mode, type, selection) {
     } else if (status == 1) {
         cm.gainItem(selection, 1);
         cm.gainItem(box, -1);
-        cm.sendOk("±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+        cm.sendOk("êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         cm.dispose();
     }
 }

@@ -1,4 +1,4 @@
-﻿var enter = "\r\n";
+var enter = "\r\n";
 var seld = -1;
 
 var items = [

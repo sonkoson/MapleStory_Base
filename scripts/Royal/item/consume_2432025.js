@@ -15,7 +15,7 @@ function action(mode, type, selection) {
     else 
         status--;
     if (status == 0) {
-		cm.getPlayer().dropMessage(5, "»õ·Î¿î ½ºÅ³ÀÌ µî·ÏµÇ¾ú½À´Ï´Ù.");
+		cm.getPlayer().dropMessage(5, "ìƒˆë¡œìš´ ìŠ¤í‚¬ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		cm.teachSkill(60001218, 1, 1);
 		cm.teachSkill(60000219, 1, 1);
 		cm.gainItem(2432025, -1);

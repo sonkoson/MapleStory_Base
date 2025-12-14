@@ -1,4 +1,4 @@
-﻿importPackage(Packages.server);
+importPackage(Packages.server);
 importPackage(Packages.objects.item);
 
 var MapleInventoryType = Java.type("objects.item.MapleInventoryType");

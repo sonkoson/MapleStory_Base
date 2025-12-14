@@ -40,7 +40,7 @@ function action(mode, type, selection) {
 	status = 1;
     }
     if (status == 0) {
-	txt = "ÇöÀç Á÷¾÷ÀÌ Âø¿ë °¡´ÉÇÑ Àåºñ¸¦ ¿ì¼± ÃßÃµÇØ µå¸³´Ï´Ù.\r\n¹ŞÀ¸½Ç ¹«±â¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä.\r\n#b";
+	txt = "í˜„ì¬ ì§ì—…ì´ ì°©ìš© ê°€ëŠ¥í•œ ì¥ë¹„ë¥¼ ìš°ì„  ì¶”ì²œí•´ ë“œë¦½ë‹ˆë‹¤.\r\në°›ìœ¼ì‹¤ ë¬´ê¸°ë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”.\r\n#b";
 	/*if (Packages.constants.GameConstants.isLuminous(cm.getPlayer().getJob())) {
 		txt += "#L0##i" + inz[0] + ":##z" + inz[0] + ":#\r\n";
 	} else if (Packages.constants.GameConstants.isAngelicBuster(cm.getPlayer().getJob())) {
@@ -107,11 +107,11 @@ function action(mode, type, selection) {
 	} else if (Packages.constants.GameConstants.isZero(cm.getPlayer().getJob())) {
 		txt += "#L26##i" + inz[29] + ":##z" + inz[29] + ":#\r\n";
 	}*/
-	txt += "\r\n#L100#ÀüÃ¼ ¾ÆÀÌÅÛ ¸®½ºÆ®¸¦ º»´Ù.\r\n#L101#»ç¿ë Ãë¼Ò";
+	txt += "\r\n#L100#ì „ì²´ ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ë¥¼ ë³¸ë‹¤.\r\n#L101#ì‚¬ìš© ì·¨ì†Œ";
 	cm.sendSimple(txt);
     } else if (status == 1) {
 	if (selection == 100) {
-		txt = "¿øÇÏ½Ã´Â ¹«±â¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä.\r\n#b";
+		txt = "ì›í•˜ì‹œëŠ” ë¬´ê¸°ë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”.\r\n#b";
 		for (i = 0; i < inz.length; i++) {
 			txt += "#L" + i + "##i" + inz[i] + ":##z" + inz[i] + ":#\r\n";
 		}
@@ -121,7 +121,7 @@ function action(mode, type, selection) {
 	}
     } else if (status == 2) {
 	select = selection;
-	cm.sendSimple("¹Ş°í ½ÍÀº Àåºñ°¡ ÀÌ Àåºñ°¡ È®½ÇÇÑ°¡¿ä?\r\n#i" + inz[selection] + ":# #z" + inz[selection] + ":#\r\n\r\n#e#r¡ØÁÖÀÇ¡Ø#k#n\r\nÇÑ ¹ø Á¶°¢À» ¾ÆÀÌÅÛÀ¸·Î ±³È¯ÇÏ¸é #r»óÀÚ°¡ »èÁ¦#kµÇ¸ç, ´Ù½Ã ´Ù¸¥ ¾ÆÀÌÅÛÀ¸·Î ±³È¯ÇÒ ¼ö ¾ø½À´Ï´Ù.\r\n\r\n#b#L0#³× ¸Â½À´Ï´Ù.\r\n#L1#¾Æ´Õ´Ï´Ù. ´Ù½Ã ¼±ÅÃÇÏ°Ú½À´Ï´Ù.");
+	cm.sendSimple("ë°›ê³  ì‹¶ì€ ì¥ë¹„ê°€ ì´ ì¥ë¹„ê°€ í™•ì‹¤í•œê°€ìš”?\r\n#i" + inz[selection] + ":# #z" + inz[selection] + ":#\r\n\r\n#e#râ€»ì£¼ì˜â€»#k#n\r\ní•œ ë²ˆ ì¡°ê°ì„ ì•„ì´í…œìœ¼ë¡œ êµí™˜í•˜ë©´ #rìƒìê°€ ì‚­ì œ#kë˜ë©°, ë‹¤ì‹œ ë‹¤ë¥¸ ì•„ì´í…œìœ¼ë¡œ êµí™˜í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ë„¤ ë§ìŠµë‹ˆë‹¤.\r\n#L1#ì•„ë‹™ë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•˜ê² ìŠµë‹ˆë‹¤.");
     } else if (status == 3) {
 	cm.dispose();
 	//cm.gainItem(inz[select], 1);
@@ -138,6 +138,6 @@ function action(mode, type, selection) {
 	item.setEnhance(item.getEnhance() + 15);
 	Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), item, false);
 	cm.gainItem(2630117, -1);
-	cm.sendOk("¾ÆÀÌÅÛÀÌ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+	cm.sendOk("ì•„ì´í…œì´ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 }

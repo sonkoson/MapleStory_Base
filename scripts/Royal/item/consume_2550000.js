@@ -100,7 +100,7 @@ function action(mode, type, selection) {
    cm.gainItem(need, -1);
    cm.dispose();
   } else {
-   cm.sendOk("ÀåºñÄ­ÀÇ ºó °ø°£ÀÌ ¾ø½À´Ï´Ù. 2Ä­ ÀÌ»óÀÇ ¿©À¯ °ø°£À» ¸¸µå½Å µÚ ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
+   cm.sendOk("ìž¥ë¹„ì¹¸ì˜ ë¹ˆ ê³µê°„ì´ ì—†ìŠµë‹ˆë‹¤. 2ì¹¸ ì´ìƒì˜ ì—¬ìœ  ê³µê°„ì„ ë§Œë“œì‹  ë’¤ ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
    cm.dispose();
   }
  }

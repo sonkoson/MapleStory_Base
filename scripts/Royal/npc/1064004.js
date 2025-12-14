@@ -1,4 +1,4 @@
-﻿importPackage(Packages.constants);
+importPackage(Packages.constants);
 importPackage(Packages.objects.item);
 
 var status = -1;

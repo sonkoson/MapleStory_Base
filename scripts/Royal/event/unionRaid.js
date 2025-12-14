@@ -82,7 +82,7 @@ function monsterKilled(eim, player, point) {
 
 
 function leftParty(eim, player) {
-    // ÇØ´ç ÆÄÆ¼¿ø ¸ÊÀÌµ¿ ¹× °ÔÀÓ ¿À¹ö
+    // í•´ë‹¹ íŒŒí‹°ì› ë§µì´ë™ ë° ê²Œì„ ì˜¤ë²„
 }
 
 

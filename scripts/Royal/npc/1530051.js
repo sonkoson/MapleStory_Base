@@ -1,4 +1,4 @@
-﻿importPackage(Packages.database);
+importPackage(Packages.database);
 importPackage(java.lang);
 
 var enter = "\r\n";

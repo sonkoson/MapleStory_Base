@@ -18,7 +18,7 @@ function action(mode, type, sel) {
     if (status == 0) {
 
         msg = "#fs11##fUI/Basic.img/Zenia/SC/4#\r\n";
-        msg += "#Cgray##fs11#¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª#fc0xFF000000#\r\n";
+        msg += "#Cgray##fs11#â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•#fc0xFF000000#\r\n";
         msg += "             #L1##fUI/Basic.img/Zenia/SCBtn/110##l";
         msg += "#L2##fUI/Basic.img/Zenia/SCBtn/111##l";
         cm.sendSimple(msg);
@@ -27,11 +27,11 @@ function action(mode, type, sel) {
         switch (sel) {
             case 1:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "»öº¯Ä³½Ã");
+                cm.openNpcCustom(cm.getClient(), 9000213, "ìƒ‰ë³€ìºì‹œ");
                 break;
             case 2:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "»öº¯Ä³½Ã2");
+                cm.openNpcCustom(cm.getClient(), 9000213, "ìƒ‰ë³€ìºì‹œ2");
                 break;
         }
     }

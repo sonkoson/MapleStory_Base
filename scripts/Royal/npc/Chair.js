@@ -1,4 +1,4 @@
-﻿importPackage(Packages.server);
+importPackage(Packages.server);
 var ii = Packages.objects.item.MapleItemInformationProvider.getInstance();
 
 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";

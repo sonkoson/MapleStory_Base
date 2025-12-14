@@ -1,4 +1,4 @@
-﻿var status = -1;
+var status = -1;
 var sel = 0;
 
 var limit = 10; // 충전 횟수 제한

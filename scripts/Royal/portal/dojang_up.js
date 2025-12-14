@@ -4,7 +4,7 @@ function enter(pi) {
 		return;
 	}
 	if (!pi.getPlayer().getMap().checkDojangClear()) {
-		pi.getPlayer().dropMessage(5,"¾ÆÁ÷ ¹®ÀÌ ¿­¸®Áö ¾Ê¾Ò½À´Ï´Ù.");
+		pi.getPlayer().dropMessage(5,"ì•„ì§ ë¬¸ì´ ì—´ë¦¬ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 	} else {
 		pi.getPlayer().addMulungPoint();
 

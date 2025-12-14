@@ -31,7 +31,7 @@ function action(mode, type, sel) {
 	if (status == 0) {
 
 if (!cm.canHold(1662141)) {
-cm.sendOk("#fs11#ÀåºñÄ­¿¡ ºó °ø°£ÀÌ ¾ø½À´Ï´Ù.");
+cm.sendOk("#fs11#ì¥ë¹„ì¹¸ì— ë¹ˆ ê³µê°„ì´ ì—†ìŠµë‹ˆë‹¤.");
 cm.dispose();
 return;
 }

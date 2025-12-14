@@ -16,9 +16,9 @@ function action(mode, type, selection) {
             status--;
         if (status == 0) {
 	if(cm.getPlayer().getMapId() == 992002000) {
-	cm.sendYesNo("´Ù½Ã À§·Î ¿Ã¶ó°¡°Ú¾î?");
+	cm.sendYesNo("ë‹¤ì‹œ ìœ„ë¡œ ì˜¬ë¼ê°€ê² ì–´?");
 	} else {
-	cm.sendOk("º°°Íµµ ¾Æ´Ñ ÀÏ·Î ºÎ¸£Áö ¸»¶ó±¸!!");
+	cm.sendOk("ë³„ê²ƒë„ ì•„ë‹Œ ì¼ë¡œ ë¶€ë¥´ì§€ ë§ë¼êµ¬!!");
 	cm.dispose();
 	}
 } else if (status == 1) {

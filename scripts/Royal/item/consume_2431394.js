@@ -1,25 +1,25 @@
 importPackage(Packages.scripting);
 
-º¸¶ó = "#fMap/MapHelper.img/weather/starPlanet/7#";
-ÆÄ¶û = "#fMap/MapHelper.img/weather/starPlanet/8#";
-º°ÆÄ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-º°³ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-º°Èò = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-º°°¥ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-º°»¡ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-º°°Ë = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-º°º¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-º° = "#fUI/FarmUI.img/objectStatus/star/whole#"
+ë³´ë¼ = "#fMap/MapHelper.img/weather/starPlanet/7#";
+íŒŒë‘ = "#fMap/MapHelper.img/weather/starPlanet/8#";
+ë³„íŒŒ = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+ë³„ë…¸ = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+ë³„í° = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+ë³„ê°ˆ = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+ë³„ë¹¨ = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+ë³„ê²€ = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+ë³„ë³´ = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+ë³„ = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-º¸»ó = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-È¹µæ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-»ö = "#fc0xFF6600CC#"
-º¸¶ó»ö = "#fc0xFF6600CC#"
-°ËÀº»ö = "#fc0xFF000000#"
-ÇÎÅ©»ö ="#fc0xFFFF3366#"
-ºĞÈ«»ö = "#fc0xFFF781D8#"
-¿£ÅÍ = "\r\n"
-¿£ÅÍ2 = "\r\n\r\n"
+ë³´ìƒ = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+íšë“ = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+ìƒ‰ = "#fc0xFF6600CC#"
+ë³´ë¼ìƒ‰ = "#fc0xFF6600CC#"
+ê²€ì€ìƒ‰ = "#fc0xFF000000#"
+í•‘í¬ìƒ‰ ="#fc0xFFFF3366#"
+ë¶„í™ìƒ‰ = "#fc0xFFF781D8#"
+ì—”í„° = "\r\n"
+ì—”í„°2 = "\r\n\r\n"
 enter = "\r\n";
 
 var status = -1;
@@ -40,21 +40,21 @@ function action(mode, type, selection) {
     
     
     if (status == 0) {
-        // Ä¡Àå ½½·Ô 1Ä­
+        // ì¹˜ì¥ ìŠ¬ë¡¯ 1ì¹¸
         if (cm.getInvSlots(6) <= 0) {
-            cm.sendOk("#fs11#ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. [Ä¡Àå] ÅÇÀÇ 1Ä­À» ºñ¿öÁÖ¼¼¿ä");
+            cm.sendOk("#fs11#ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. [ì¹˜ì¥] íƒ­ì˜ 1ì¹¸ì„ ë¹„ì›Œì£¼ì„¸ìš”");
             cm.dispose();
             return;
         }
 
         v0 = "#fs11#\r\n";
-        v0 += ÇÎÅ©»ö + "[°­¸²¿ùµå]" + °ËÀº»ö + " ÀÇ ÇÑÁ¤ Ä³½Ã ¸ñ·ÏÀÌ´Ù ¿øÇÏ´Â ¹æ½ÄÀ» ¼±ÅÃÇØº¸ÀÚ!\r\n\r\n";
-        v0 += "#L1000#[" + ÇÎÅ©»ö + "°Ë»ö Ä³½Ã" + °ËÀº»ö + "] ·Î Áö±Ş¹ŞÀ»·¡#l\r\n";
-        v0 += "#L1001#[" + ÇÎÅ©»ö + "ÇØ¿Ü Ä³½Ã" + °ËÀº»ö + "] ·Î Áö±Ş¹ŞÀ»·¡#l\r\n";
-        v0 += "#L1002#[" + ÇÎÅ©»ö + "Á¦´Ï¾Æ ½ºÆä¼È Ä³½Ã" + °ËÀº»ö + "] ·Î Áö±Ş¹ŞÀ»·¡#l\r\n";
-        v0 += "#L1003#[" + ÇÎÅ©»ö + "·Î¾â ½ºÆä¼È Ä³½Ã" + °ËÀº»ö + "] ·Î Áö±Ş¹ŞÀ»·¡#l\r\n";
+        v0 += í•‘í¬ìƒ‰ + "[ê°•ë¦¼ì›”ë“œ]" + ê²€ì€ìƒ‰ + " ì˜ í•œì • ìºì‹œ ëª©ë¡ì´ë‹¤ ì›í•˜ëŠ” ë°©ì‹ì„ ì„ íƒí•´ë³´ì!\r\n\r\n";
+        v0 += "#L1000#[" + í•‘í¬ìƒ‰ + "ê²€ìƒ‰ ìºì‹œ" + ê²€ì€ìƒ‰ + "] ë¡œ ì§€ê¸‰ë°›ì„ë˜#l\r\n";
+        v0 += "#L1001#[" + í•‘í¬ìƒ‰ + "í•´ì™¸ ìºì‹œ" + ê²€ì€ìƒ‰ + "] ë¡œ ì§€ê¸‰ë°›ì„ë˜#l\r\n";
+        v0 += "#L1002#[" + í•‘í¬ìƒ‰ + "ì œë‹ˆì•„ ìŠ¤í˜ì…œ ìºì‹œ" + ê²€ì€ìƒ‰ + "] ë¡œ ì§€ê¸‰ë°›ì„ë˜#l\r\n";
+        v0 += "#L1003#[" + í•‘í¬ìƒ‰ + "ë¡œì–„ ìŠ¤í˜ì…œ ìºì‹œ" + ê²€ì€ìƒ‰ + "] ë¡œ ì§€ê¸‰ë°›ì„ë˜#l\r\n";
         v0 += "\r\n\r\n";
-        v0 += ÇÎÅ©»ö + "< ÇÑÁ¤Ä³½Ã ¸ñ·Ï >\r\n";
+        v0 += í•‘í¬ìƒ‰ + "< í•œì •ìºì‹œ ëª©ë¡ >\r\n";
         for (var i = 0; i < rachikaonlyring.length; i++) {
                 v0 += "#L" + i + "##i" + rachikaonlyring[i] + "# #b#z" + rachikaonlyring[i] + "##l\r\n";
         }
@@ -73,24 +73,24 @@ function action(mode, type, selection) {
             return;
         } else if (seld == 1002) {
             cm.dispose();
-            cm.openNpcCustom(cm.getClient(), 9000213, "»öº¯Ä³½ÃSS");
+            cm.openNpcCustom(cm.getClient(), 9000213, "ìƒ‰ë³€ìºì‹œSS");
             return;
         } else if (seld == 1003) {
             cm.dispose();
-            cm.openNpcCustom(cm.getClient(), 9000213, "»öº¯Ä³½Ã2SS");
+            cm.openNpcCustom(cm.getClient(), 9000213, "ìƒ‰ë³€ìºì‹œ2SS");
             return;
         }
 
         if (onlyone.indexOf(sel) != -1) {
-            cm.askYesNo("#fs11##i" + sel + "##b #z" + sel + "##k (À»)¸¦ ¹ŞÀ»±î?\r\n\r\n#r¡Ø ÀÌ Á¾·ùÀÇ ¹İÁö´Â Áßº¹Âø¿ëÀÌ ºÒ°¡´ÉÇÏ°í\r\n#i1114000##z1114000# ¾ÆÀÌÅÛ°ú °°ÀÌ Âø¿ëÇÒ ¼ö ¾ø¾î", GameObjectType.User, ScriptMessageFlag.NpcReplacedByUser);
+            cm.askYesNo("#fs11##i" + sel + "##b #z" + sel + "##k (ì„)ë¥¼ ë°›ì„ê¹Œ?\r\n\r\n#râ€» ì´ ì¢…ë¥˜ì˜ ë°˜ì§€ëŠ” ì¤‘ë³µì°©ìš©ì´ ë¶ˆê°€ëŠ¥í•˜ê³ \r\n#i1114000##z1114000# ì•„ì´í…œê³¼ ê°™ì´ ì°©ìš©í•  ìˆ˜ ì—†ì–´", GameObjectType.User, ScriptMessageFlag.NpcReplacedByUser);
         } else {
-            cm.askYesNo("#fs11##i" + sel + "##b #z" + sel + "##k (À»)¸¦ ¹ŞÀ»±î?\r\n\r\n#r¡Ø ¼±ÅÃÀº µÇµ¹¸±¼ö ¾ø¾î!!", GameObjectType.User, ScriptMessageFlag.NpcReplacedByUser);
+            cm.askYesNo("#fs11##i" + sel + "##b #z" + sel + "##k (ì„)ë¥¼ ë°›ì„ê¹Œ?\r\n\r\n#râ€» ì„ íƒì€ ë˜ëŒë¦´ìˆ˜ ì—†ì–´!!", GameObjectType.User, ScriptMessageFlag.NpcReplacedByUser);
         }
     } else if (status == 2) {
         var ii =Packages.objects.item.MapleItemInformationProvider.getInstance();
 
         if (!Packages.objects.item.MapleItemInformationProvider.getInstance().isCash(sel)) {
-            cm.sendOk("#fs11#¿À·ù°¡ ¹ß»ı Çß¾î¿ä.");
+            cm.sendOk("#fs11#ì˜¤ë¥˜ê°€ ë°œìƒ í–ˆì–´ìš”.");
             cm.dispose();
             return;
         }
@@ -105,6 +105,6 @@ function action(mode, type, selection) {
         Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), item, false);
         cm.gainItem(2431394, -1);
         cm.dispose();
-        cm.sayNpc("#fs11#¼±ÅÃÇÑ ¾ÆÀÌÅÛÀÌ Áö±ŞµÇ¾ú´Ù!", GameObjectType.User, false, false, ScriptMessageFlag.NpcReplacedByUser);
+        cm.sayNpc("#fs11#ì„ íƒí•œ ì•„ì´í…œì´ ì§€ê¸‰ë˜ì—ˆë‹¤!", GameObjectType.User, false, false, ScriptMessageFlag.NpcReplacedByUser);
     }
 }
