@@ -199,7 +199,7 @@ function selectJob(s) {
     }
     var v0 = "คุณเลือกอาชีพ #e" + selectJob + "#n คุณต้องการเปลี่ยนเป็นอาชีพนี้หรือไม่?\r\n หากเลือกแล้ว จะทำการเปลี่ยนอาชีพทันทีพร้อมรับเงินเริ่มต้น\r\n\r\n#L0#ยืนยัน#l\r\n#L1#ขอคิดดูก่อน#l";
     cm.askMenu(v0, 1, GameObjectType.User, ScriptMessageFlag.NoEsc, ScriptMessageFlag.BigScenario);
-    //	cm.sendYesNo("선택하신 직업은 #e" + selectJob + "#n입니다. #b예#k 버튼을 누르시면 해당 직업으로 전직되며 초기 자금이 지급됩니다.");
+    //	cm.sendYesNo("The selected job is #e" + selectJob + "#n. Press #bYes#k to switch to that job and receive initial funds.");
 }
 
 function changeJob() {
@@ -224,7 +224,7 @@ function changeJob() {
         cm.teachSkill(30021237, 1, 1);
     }
     if (jobCode == 2700) {
-        if (type_ == 0) { // 어둠 계열
+        if (type_ == 0) { // Dark Series
             cm.teachSkill(27001201, 20, 20);
             cm.teachSkill(27000207, 5, 5);
         } else if (type_ == 1) {

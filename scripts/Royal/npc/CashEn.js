@@ -27,7 +27,7 @@ var a = "";
 var prevallstat = 0, prevatk = 0, nextallstat = 0, nextatk = 0;
 var useCurrency = 0, currencyPrice = 0, useCurrencyName = "";
 var logtype = 0, maxcount = 0;
-var allstat = 2, atk = 2; // 1회당 올스탯/공마 증가치
+var allstat = 2, atk = 2; // stats/att/magic att increase per time
 var maxstat = 80000;
 
 var currencyOptions = [

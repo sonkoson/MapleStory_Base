@@ -1,25 +1,25 @@
 importPackage(Packages.client);
 importPackage(Packages.objects.item);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 = "#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+var Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var Color = "#fc0xFF6600CC#"
+var BlackColor = "#fc0xFF000000#"
+var PinkColor = "#fc0xFFFF3366#"
+var LightPinkColor = "#fc0xFFF781D8#"
+var Enter = "\r\n"
+var Enter2 = "\r\n\r\n"
 
 var enter = "\r\n";
 var seld = -1, seld2 = -1;
@@ -111,7 +111,7 @@ function action(mode, type, sel) {
     }
     /*
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("점검 중 입니다.");
+            cm.sendOk("Under maintenance.");
             cm.dispose();
             return;
         }
@@ -162,9 +162,9 @@ function action(mode, type, sel) {
                                         }
                     */
                     var msg = "#fs11#";
-                    msg += 별 + " #fc0xFF000000#กรุณาเลือกอาชีพที่ต้องการ" + enter;
-                    msg += 별 + " #fc0xFF000000##bPrice for 1 Job Change#fc0xFF000000# คือ #fc0xFFFF3366#" + price + "P#fc0xFF000000# Royal Point" + enter;
-                    msg += 별 + " ปัจจุบัน #fc0xFFFF3366##h ##fc0xFF000000# Your Points : #fc0xFFFF3366#" + cm.getPlayer().getDonationPoint() + "P#k" + 검은색 + enter;
+                    msg += Star + " #fc0xFF000000#กรุณาเลือกอาชีพที่ต้องการ" + enter;
+                    msg += Star + " #fc0xFF000000##bPrice for 1 Job Change#fc0xFF000000# คือ #fc0xFFFF3366#" + price + "P#fc0xFF000000# Royal Point" + enter;
+                    msg += Star + " ปัจจุบัน #fc0xFFFF3366##h ##fc0xFF000000# Your Points : #fc0xFFFF3366#" + cm.getPlayer().getDonationPoint() + "P#k" + BlackColor + enter;
                     msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#" + enter;
                     for (i = 0; i < jobs.length; i++)
                         msg += "#L" + i + "##fc0xFF6600CC#" + jobs[i]['jobname'] + "#fc0xFF000000# Change Job to " + jobs[i]['jobname'] + enter;
@@ -173,7 +173,7 @@ function action(mode, type, sel) {
                 } else if (status == 2) {
                     seld2 = sel;
 
-                    var msg = "#fs11##fc0xFF000000#직업변경을 하기 전에 다음 유의사항을 필독해주세요" + enter;
+                    var msg = "#fs11##fc0xFF000000#Please read the following precautions before changing jobs." + enter;
                     msg += "#fc0xFFFF3366#" + price + " Royal Point#fc0xFF000000# แต้มจะถูกหัก และจะไม่รับแจ้งปัญหาหรือกู้คืนใดๆ เกี่ยวกับระบบนี้" + enter;
                     msg += "หากไม่ได้ตั้งใจจะเปลี่ยนเป็นอาชีพนี้จริงๆ ให้กด #b'No'#fc0xFF000000# แล้วเลือกใหม่" + enter;
                     msg += enter + "#fs12##bหากยอมรับ#fc0xFF000000#ให้กด #b'Yes'#fc0xFF000000#";
@@ -193,7 +193,7 @@ function action(mode, type, sel) {
                     if (deamon == 1) {
                         cm.sendOk("#fs11#เปลี่ยนอาชีพเรียบร้อยแล้ว\r\n#r※ เกจ MP จะแสดงผลเมื่อย้ายแชแนลหรือล็อกอินใหม่");
                     } else {
-                        cm.effectText("#fn나눔고딕 ExtraBold##fs20#[Job Change] เปลี่ยนเป็น < " + tempjob['jobname'] + " > เรียบร้อยแล้ว", 50, 1000, 6, 0, 330, -550);
+                        cm.effectText("#fnArial##fs20#[Job Change] เปลี่ยนเป็น < " + tempjob['jobname'] + " > เรียบร้อยแล้ว", 50, 1000, 6, 0, 330, -550);
                     }
                     prevflag = cm.getPlayer().getSaveFlag();
                     cm.getPlayer().setSaveFlag(1024); // VMatrix
@@ -209,7 +209,7 @@ function action(mode, type, sel) {
                     msg += "จะเปลี่ยนเป็นอาชีพที่เลือกทันที" + enter + enter;
                     msg += "Arcane Symbol จะถูกเปลี่ยนเป็นค่าสเตตัสหลักของอาชีพใหม่โดยอัตโนมัติ" + enter;
                     msg += "Authentic Symbol จะถูกเปลี่ยนเป็นค่าสเตตัสหลักของอาชีพใหม่โดยอัตโนมัติ" + enter;
-                    msg += "ㄴ ※ มีผลกับ Symbol ที่สวมใส่อยู่และในช่องเก็บของทั้งหมด" + enter + enter;
+                    msg += "- ※ มีผลกับ Symbol ที่สวมใส่อยู่และในช่องเก็บของทั้งหมด" + enter + enter;
                     msg += "#r#fs11#※ หากไม่ตรวจสอบข้อมูลข้างต้นแล้วเปลี่ยนอาชีพ ทางเราไม่สามารถกู้คืนแก้ไขให้ได้"
                     cm.sendOk(msg);
                     cm.dispose();

@@ -11,13 +11,13 @@ function start() {
 
 var nf = NumberFormat.getInstance();
 
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-회색 = "#fc0xFFB2B2B2#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
+Gray = "#fc0xFFB2B2B2#"
 
 var grade = [
-    [0, "일반"],
+    [0, "Normal"],
     [1, "Grade D"],
     [2, "Grade C"],
     [3, "Grade B"],
@@ -36,13 +36,13 @@ var grade = [
 ]
 
 var pgrade = [
-    [0, "Lv.0 일반"],
-    [1, "Lv.1 비기닝"],
-    [2, "Lv.2 라이징"],
-    [3, "Lv.3 플라잉"],
-    [4, "Lv.4 샤이닝"],
-    [5, "Lv.5 아이돌"],
-    [6, "Lv.6 슈퍼스타"]
+    [0, "Lv.0 Normal"],
+    [1, "Lv.1 Beginning"],
+    [2, "Lv.2 Rising"],
+    [3, "Lv.3 Flying"],
+    [4, "Lv.4 Shining"],
+    [5, "Lv.5 Idol"],
+    [6, "Lv.6 Superstar"]
 ]
 
 function action(mode, type, sel) {
@@ -54,22 +54,22 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "You cannot use this while a boss battle is in progress.");
             cm.dispose();
             return;
         }
 
-        var msg = "#fs11##fc0xFF990033##e[강림월드]#n#fc0xFF000000#의 각종 랭킹을 확인할 수 있는 게시판입니다.#b" + enter + enter;
-        msg += "#L1#레벨 랭킹" + enter;
-        msg += "#L8#직업 랭킹" + enter;
-        //msg += "#L6# 보스헌터 랭킹"+enter;
-        //msg += "#L2# 메소 랭킹"+enter;
-        msg += "#L4#길드 랭킹" + enter;
-        msg += "#L3#인기도 랭킹" + enter;
-        msg += "#L5#무릉도장 랭킹"+enter;
-        //msg += "#L7# PVP 대결 랭킹"+enter;
-        msg += "#L9#전투력 측정 랭킹#l" + enter;
-        msg += "#L10#누적 홍보횟수 랭킹#l" + enter;
+        var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000#'s Ranking Board.#b" + enter + enter;
+        msg += "#L1#Level Ranking" + enter;
+        msg += "#L8#Job Ranking" + enter;
+        //msg += "#L6# Boss Hunter Ranking"+enter;
+        //msg += "#L2# Meso Ranking"+enter;
+        msg += "#L4#Guild Ranking" + enter;
+        msg += "#L3#Fame Ranking" + enter;
+        msg += "#L5#Mu Lung Dojo Ranking" + enter;
+        //msg += "#L7# PVP Battle Ranking"+enter;
+        msg += "#L9#Combat Power Ranking#l" + enter;
+        msg += "#L10#Promotion Count Ranking#l" + enter;
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;
@@ -83,20 +83,20 @@ function action(mode, type, sel) {
                 cm.openNpc(2094000);
                 break;
             case 3:
-                cm.sendOk(getRank("SELECT id, name, fame FROM characters WHERE `fame` > 0 AND `gm` = 0 ORDER BY `fame` DESC LIMIT ", "fame", "인기도", 50));
+                cm.sendOk(getRank("SELECT id, name, fame FROM characters WHERE `fame` > 0 AND `gm` = 0 ORDER BY `fame` DESC LIMIT ", "fame", "Fame", 50));
                 cm.dispose();
                 break;
             case 4:
-                cm.sendOk(getRankGuild("SELECT name, GP FROM guilds WHERE `GP` > 0 AND `GP` < 250000000 ORDER BY `GP` DESC LIMIT ", "GP", "보유 GP", 50));
+                cm.sendOk(getRankGuild("SELECT name, GP FROM guilds WHERE `GP` > 0 AND `GP` < 250000000 ORDER BY `GP` DESC LIMIT ", "GP", "GP Owned", 50));
                 cm.dispose();
                 break;
             case 5:
-	     cm.showDojangRanking();
-	     cm.getPlayer().dropMessage(5, "무릉도장 기록이 순위표에 반영되기까지 시간이 걸릴 수 있습니다. 정산 포인트는 매주 랭킹 정산 이후 전체랭킹 기준으로 지급됩니다.");
-	     cm.dispose();
+                cm.showDojangRanking();
+                cm.getPlayer().dropMessage(5, "It may take some time for Mu Lung Dojo records to be reflected in the rankings. Points are distributed based on overall ranking after weekly settlement.");
+                cm.dispose();
                 break;
             case 6:
-                cm.sendOk(getRank("SELECT * FROM characters WHERE `basebpoint` > 0 AND `gm` = 0 ORDER BY `basebpoint` DESC LIMIT ", "basebpoint", "누적포인트", 10));
+                cm.sendOk(getRank("SELECT * FROM characters WHERE `basebpoint` > 0 AND `gm` = 0 ORDER BY `basebpoint` DESC LIMIT ", "basebpoint", "Points", 10));
                 cm.dispose();
                 break;
             case 7:
@@ -105,18 +105,18 @@ function action(mode, type, sel) {
                 break;
             case 8:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9076004, "직업랭킹");
+                cm.openNpcCustom(cm.getClient(), 9076004, "JobRanking");
                 break;
             case 9:
-                  var msg = "#fs11##fc0xFF990033##e[강림월드]#n#fc0xFF000000#의 각종 랭킹을 확인할 수 있는 게시판입니다.#b" + enter + enter;
-                msg += "#L1#전체 랭킹" + enter;
-                msg += "#L2#직업 랭킹" + enter;
+                var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000#'s Ranking Board.#b" + enter + enter;
+                msg += "#L1#Overall Ranking" + enter;
+                msg += "#L2#Job Ranking" + enter;
                 cm.sendSimple(msg);
                 //cm.sendOk(getRankDamage("SELECT `player_id`, `damage`, `name`, `job` FROM damage_measurement_rank ORDER BY damage DESC LIMIT ", "damage", "", 100));
                 //cm.dispose();
                 break;
             case 10:
-                cm.sendOk(getRankPCount("SELECT `id`, `KEY`, `value` FROM acckeyvalue WHERE `value` > 0 AND `key` = 'PCount' ORDER BY CAST(`value` AS unsigned) DESC LIMIT ", "value", "누적 홍보횟수", 100));
+                cm.sendOk(getRankPCount("SELECT `id`, `KEY`, `value` FROM acckeyvalue WHERE `value` > 0 AND `key` = 'PCount' ORDER BY CAST(`value` AS unsigned) DESC LIMIT ", "value", "PromoCount", 100));
                 cm.dispose();
                 break;
         }
@@ -129,7 +129,7 @@ function action(mode, type, sel) {
                     break;
                 } else if (sel == 2) {
                     cm.dispose();
-                    cm.openNpcCustom(cm.getClient(), 9000213, "직업데미지랭킹");
+                    cm.openNpcCustom(cm.getClient(), 9000213, "JobDamageRanking");
                     break;
                 }
                 break;
@@ -138,7 +138,7 @@ function action(mode, type, sel) {
 }
 
 function getRank(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "위#k 까지만 보여집니다.\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
     var as = 0;
     var names = [];
     var name = "";
@@ -150,41 +150,41 @@ function getRank(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
         var pssearchaccid = con.prepareStatement("SELECT banned FROM accounts Where id in (SELECT accountid FROM characters Where id = " + rs.getInt('id') + ")");
         var rssearchaccid = pssearchaccid.executeQuery();
-        
+
         while (rssearchaccid.next()) {
             var banned = rssearchaccid.getInt("banned");
         }
-        
+
         name = rs.getString('name');
-        
+
         if (name == null) {
-            name = "#r삭제된 캐릭터";
+            name = "#rDeleted Character";
         }
-        
+
         if (banned > 0) {
-            name = "#r이용정지";
+            name = "#rBanned";
         }
-        
-        ret += 회색 + aas + "#b" + name + "#fc0xFF000000# | " + v3 + " : " + 핑크색 + rs.getInt(v2) + "#k\r\n";
+
+        ret += Gray + aas + "#b" + name + "#fc0xFF000000# | " + v3 + " : " + Pink + rs.getInt(v2) + "#k\r\n";
     }
     rs.close();
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "랭킹이 없습니다.";
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRankGuild(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "위#k 까지만 보여집니다.\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
     var as = 0;
     var names = [];
     var name = "";
@@ -196,27 +196,27 @@ function getRankGuild(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
 
         name = rs.getString('name');
-        
-        ret += 회색 + aas + "#b" + name + "#fc0xFF000000# | " + v3 + " : " + 핑크색 + rs.getInt(v2) + "#k\r\n";
+
+        ret += Gray + aas + "#b" + name + "#fc0xFF000000# | " + v3 + " : " + Pink + rs.getInt(v2) + "#k\r\n";
     }
     rs.close();
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "랭킹이 없습니다.";
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRankPCount(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "위#k 까지만 보여집니다.\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n";
     var as = 0;
     var names = [];
 
@@ -224,51 +224,51 @@ function getRankPCount(v1, v2, v3, v4) {
     var ps = con.prepareStatement(v1 + v4);
     var rs = ps.executeQuery();
 
-    
+
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
 
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE accountid = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
         var rs2 = ps2.executeQuery();
         var ps3 = con.prepareStatement("SELECT `value` FROM acckeyvalue WHERE id = " + rs.getString("id") + " AND `key` = 'pGrade'");
         var rs3 = ps3.executeQuery();
-        
-        // 캐릭터 닉네임 불러오기
+
+        // Load character nickname
         var findchr = false;
 
 
-        
+
         while (rs2.next()) {
             var pssearchaccid = con.prepareStatement("SELECT banned FROM accounts Where id = " + rs.getString("id"));
             var rssearchaccid = pssearchaccid.executeQuery();
-            
+
             while (rssearchaccid.next()) {
                 var banned = rssearchaccid.getInt("banned");
             }
-            
+
             if (banned > 0) {
-                ret += 회색 + aas + "#r이용정지";
+                ret += Gray + aas + "#rBanned";
             } else {
-                ret += 회색 + aas + "#b" + rs2.getString("name");
+                ret += Gray + aas + "#b" + rs2.getString("name");
             }
             findchr = true;
         }
 
-        // 캐릭터가 없을경우
+        // If character does not exist
         if (!findchr)
-            ret += 회색 + aas + "#r이용정지";
+            ret += Gray + aas + "#rBanned";
 
 
-        // 홍보 등급 불러오기 & 작성
+        // Load Promotion Grade & Write
         while (rs3.next()) {
-            ret += 검은색 + " | " + v3 + " : " + 색 + nf.format(rs.getInt(v2)) + 검은색 + " | " + 핑크색 + "[" + pgrade[rs3.getInt("value")][1] + "]#k\r\n";
+            ret += Black + " | " + v3 + " : " + Color + nf.format(rs.getInt(v2)) + Black + " | " + Pink + "[" + pgrade[rs3.getInt("value")][1] + "]#k\r\n";
         }
     }
 
@@ -279,16 +279,16 @@ function getRankPCount(v1, v2, v3, v4) {
     rs3.close();
     ps3.close();
     con.close();
-    
-    if (ret.equals("")) return "랭킹이 없습니다.";
+
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRankDPoint(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "위#k 까지만 보여집니다.\r\n";
-    ret += 핑크색 + "※ 대표캐릭터 선정 방식\r\n";
-    ret += 핑크색 + "ㄴ 디스코드 [봇 명령어] 채널에서 설정 가능\r\n";
-    ret += 핑크색 + "ㄴ 설정하지않을시 계정내 레벨순서 (레벨이같다면 생성순서)\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n";
+    ret += Pink + "※ Representative Character Selection Method\r\n";
+    ret += Pink + "- Can be set in Discord [Bot Commands] channel\r\n";
+    ret += Pink + "- If not set, order by account level (creation order if level is same)\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -296,45 +296,45 @@ function getRankDPoint(v1, v2, v3, v4) {
     var ps = con.prepareStatement(v1 + v4);
     var rs = ps.executeQuery();
 
-    
+
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-           aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-           aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-           aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
-        
+
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE accountid = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
         var rs2 = ps2.executeQuery();
         var ps3 = con.prepareStatement("SELECT `value` FROM acckeyvalue WHERE id = " + rs.getString("id") + " AND `key` = 'hGrade'");
         var rs3 = ps3.executeQuery();
-        
-        // 캐릭터 닉네임 불러오기
+
+        // Load character nickname
         var findchr = false;
         var findgrade = false;
 
         while (rs2.next()) {
-            ret += 회색 + aas + "#b" + rs2.getString("name");
+            ret += Gray + aas + "#b" + rs2.getString("name");
             findchr = true;
         }
 
-        // 캐릭터가 없을경우
+        // If character does not exist
         if (!findchr)
-            ret += 회색 + aas + "#r이용정지";
+            ret += Gray + aas + "#rBanned";
 
 
-        // MVP 등급 불러오기 & 작성
+        // Load MVP Grade & Write
         while (rs3.next()) {
-            ret += 검은색 + " | " + v3 + " : " + 색 + nf.format(rs.getInt(v2)) + 검은색 + " | " + 핑크색 + "[" + grade[rs3.getInt("value")][1] + "]#k\r\n";
+            ret += Black + " | " + v3 + " : " + Color + nf.format(rs.getInt(v2)) + Black + " | " + Pink + "[" + grade[rs3.getInt("value")][1] + "]#k\r\n";
             findgrade = true;
         }
 
-        // MVP 등급 없을경우
+        // If no MVP Grade
         if (!findgrade)
-            ret += 검은색 + " | " + v3 + " : " + 색 + nf.format(rs.getInt(v2)) + "#k\r\n";
+            ret += Black + " | " + v3 + " : " + Color + nf.format(rs.getInt(v2)) + "#k\r\n";
 
     }
 
@@ -345,49 +345,49 @@ function getRankDPoint(v1, v2, v3, v4) {
     rs3.close();
     ps3.close();
     con.close();
-    
-    if (ret.equals("")) return "랭킹이 없습니다.";
+
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRankCashEn(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "위#k 까지만 보여집니다.\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
     var as = 0;
     var names = [];
 
     var con = DBConnection.getConnection();
     var ps = con.prepareStatement(v1 + v4);
     var rs = ps.executeQuery();
-    
+
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-           aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-           aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-           aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
-        
+
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE id = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
         var rs2 = ps2.executeQuery();
 
         var ps3 = con.prepareStatement("SELECT `value` FROM keyvalue WHERE id = " + rs.getString("id") + " AND `key` = 'cashatk'");
         var rs3 = ps3.executeQuery();
-        
-        // 캐릭터 닉네임 불러오기
+
+        // Load character nickname
         var findchr = false;
 
         while (rs2.next()) {
-            ret += 회색 + aas + "#b" + rs2.getString("name");
+            ret += Gray + aas + "#b" + rs2.getString("name");
             findchr = true;
         }
 
-        // 캐릭터가 없을경우
+        // If character does not exist
         if (!findchr)
-            ret += 회색 + aas + "#r이용정지";
+            ret += Gray + aas + "#rBanned";
         while (rs3.next()) {
-            ret += 검은색 + " | " + v3 + " : " + 색 + nf.format(rs.getInt(v2)) + 검은색 + " | Atk : " + 색 + nf.format(rs3.getInt(v2)) + "#k\r\n";
+            ret += Black + " | " + v3 + " : " + Color + nf.format(rs.getInt(v2)) + Black + " | Atk : " + Color + nf.format(rs3.getInt(v2)) + "#k\r\n";
         }
 
     }
@@ -397,70 +397,70 @@ function getRankCashEn(v1, v2, v3, v4) {
     rs2.close();
     ps2.close();
     con.close();
-    
-    if (ret.equals("")) return "랭킹이 없습니다.";
+
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRankDamage(v1, v2, v3, v4) {
-    var ret = "#fs11#랭킹은 최대 #r100위#k 까지만 보여집니다.\r\n";
-    ret += 핑크색 + "※ 데미지는 억 단위부터 표기됩니다\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r100th#k place.\r\n";
+    ret += Pink + "※ Damage is shown from units of 100 million\r\n\r\n";
     var as = 0;
     var names = [];
 
     var con = DBConnection.getConnection();
     var ps = con.prepareStatement(v1 + v4);
     var rs = ps.executeQuery();
-    
+
     var psmodify = con.prepareStatement("UPDATE damage_measurement_rank SET job = (SELECT job FROM characters Where id = player_id), name = (SELECT name FROM characters Where id = player_id)");
     var rsmodify = psmodify.executeQuery();
-    
+
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-           aas = "#e00#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else if (as < 100) {
-           aas = "#e0#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
         } else {
-           aas = "#e#fc0xFF09A17F#" + as + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
         }
-        
+
         name = rs.getString("name");
         job = Packages.constants.GameConstants.getJobNameById(rs.getInt("job"));
         damage = ConvertNumber(rs.getString(v2));
         playerid = rs.getInt("player_id");
-        
+
         var pssearchaccid = con.prepareStatement("SELECT banned FROM accounts Where id in (SELECT accountid FROM characters Where id = " + playerid + ")");
         var rssearchaccid = pssearchaccid.executeQuery();
-        
+
         while (rssearchaccid.next()) {
             var banned = rssearchaccid.getInt("banned");
         }
-        
+
         if (name == null) {
-            name = "#r삭제된 캐릭터";
+            name = "#rDeleted Character";
         }
 
-/* 정지캐릭 안뜨게하게
-        if (banned > 0) { // 이용정지 캐릭터는 표기X
-            name = "#r이용정지";
-            as -= 1;
-        } else {
-            ret += 회색 + aas + "#b" + name;
-            ret += 검은색 + " | 직업 : "  + 색 + job + " | #e" + 검은색 + damage + 검은색 + "#k#n\r\n";
+        /* Hide banned characters
+                if (banned > 0) { // Banned characters not shown
+                    name = "#rBanned";
+                    as -= 1;
+                } else {
+                    ret += Gray + aas + "#b" + name;
+                    ret += Black + " | Job : "  + Color + job + " | #e" + Black + damage + Black + "#k#n\r\n";
+                }
+        
+                if (as == 100) {
+                    break;
+                }
+        */
+
+        if (banned > 0) { // Banned characters not shown
+            name = "#rBanned";
         }
 
-        if (as == 100) {
-            break;
-        }
-*/
-
-        if (banned > 0) { // 이용정지 캐릭터는 표기X
-            name = "#r이용정지";
-        }
-
-        ret += 회색 + aas + "#b" + name;
-        ret += 검은색 + " | 직업 : "  + 색 + job + " | #e" + 검은색 + damage + 검은색 + "#k#n\r\n";
+        ret += Gray + aas + "#b" + name;
+        ret += Black + " | Job : " + Color + job + " | #e" + Black + damage + Black + "#k#n\r\n";
 
 
 
@@ -471,13 +471,13 @@ function getRankDamage(v1, v2, v3, v4) {
     rsmodify.close();
     psmodify.close();
     con.close();
-    
-    if (ret.equals("")) return "랭킹이 없습니다.";
+
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
 function getRank3(v1, v2, v3, v4, v5) {
-    var ret = "#fs11#랭킹은 최대 #r" + v4 + "명#k 까지만 보여집니다.\r\n\r\n";
+    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#r place.\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -493,32 +493,32 @@ function getRank3(v1, v2, v3, v4, v5) {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "랭킹이 없습니다.";
+    if (ret.equals("")) return "No rankings available.";
     return ret;
 }
 
-function ConvertNumber(number) { //모 블로그 참조함, 이 부분에 대해서는 키네시스(kinesis8@nate.com), 라피스#2519 에게 저작권이 없음
-    var inputNumber  = number < 0 ? false : number;
-    var unitWords    = ['', '만 ', '억 ', '조 ', '경 '];
-    var splitUnit    = 10000;
-    var splitCount   = unitWords.length;
-    var resultArray  = [];
+function ConvertNumber(number) { // Derived from a blog
+    var inputNumber = number < 0 ? false : number;
+    var unitWords = ['', 'K', 'M', 'B', 'T', 'Q'];
+    var splitUnit = 1000;
+    var splitCount = unitWords.length;
+    var resultArray = [];
     var resultString = '';
     if (inputNumber == false) {
-        cm.sendOk("#fs11#오류가 발생하였습니다. 다시 시도해 주세요.\r\n(파싱오류)");
+        cm.sendOk("#fs11#An error occurred. Please try again.\r\n(Parsing Error)");
         cm.dispose();
         return;
     }
     for (var i = 0; i < splitCount; i++) {
         var unitResult = (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
         unitResult = Math.floor(unitResult);
-        if (unitResult > 0){
+        if (unitResult > 0) {
             resultArray[i] = unitResult;
         }
     }
-    for (var i = 2; i < resultArray.length; i++) {
-        if(!resultArray[i]) continue;
-        resultString = String(resultArray[i]) + unitWords[i] + resultString;
+    for (var i = 0; i < resultArray.length; i++) {
+        if (!resultArray[i]) continue;
+        resultString = String(resultArray[i]) + unitWords[i] + " " + resultString;
     }
     return resultString;
 }

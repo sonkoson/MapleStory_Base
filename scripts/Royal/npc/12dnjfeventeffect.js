@@ -5,102 +5,103 @@ importPackage(Packages.scripting);
 importPackage(Packages.constants);
 
 function start() {
-    status = -1;
-    action(1, 0, 0);
+	status = -1;
+	action(1, 0, 0);
 }
 
 function action(mode, type, sel) {
-    if (mode == 1) {
-        status++;
-    } else {
-        cm.dispose();
-        return;
-    }
-    if (status == 0) {
-	cm.setIngameDirectionMode(false, false, false);
-	cm.setBlind(1, 255, 0, 0, 0, 0, 0);
-	cm.setStandAloneMode(true);
-	cm.spawnLocalNpc(2001003, -208, -108, 0, 156, true);
-	cm.spawnLocalNpc(2001002, -92, 8, 1, 156, true);
-	cm.delay(1200);
-    } else if (status == 1) {
-	cm.setBlind(0, 0, 0, 0, 0, 1000, 0); //off
-	cm.effectText("#fn나눔고딕 ExtraBold##fs20#<크리스마스 언덕>", 100, 1000, 6, 0, -50, -100);
-	cm.delay(3000);
-    } else if (status == 2) {
-	cm.effectPlay("Effect/OnUserEff.img/emotion/whatl", 0, 0, 0, 0, 0, false);
-	cm.delay(3000);
-    } else if (status == 3) {
-	cm.sayNpc("여기는어디지..?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 4) {
-	cm.sayNpc("저 눈사람들은 대체뭐야.....", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 5) {
-	cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001004, false);
-	cm.delay(1000);
-    } else if (status == 6) {
-	cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001003, false);
-	cm.delay(1000);
-    } else if (status == 7) {
-	cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001002, false);
-	cm.delay(2000);
-    } else if (status == 8) {
-	cm.sayReplacedNpc("헤헤! 기다렸어요!..#fs30##r반가워요! 반갑죠? 환영해요!", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 9) {
-	cm.sayReplacedNpc("얼마나 기다렸는지 알아요?!", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 10) {
-	cm.sayReplacedNpc("진정해, 아가야...모처럼 찾아온 사람을 놀라게 하면 못써.", false, true, 1,  2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 11) {
-	cm.sayReplacedNpc("아앗... 죄송해요 오랜만에 사람을 만나서", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 12) {
-	cm.sayReplacedNpc("후후. #e#b#h0##k. \r\n드디어 왔구나. 우리는 #b멋쟁이 눈사람#k이라고 해.", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 13) {
-	cm.sayNpc("멋쟁이 눈사람...?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 14) {
-	cm.sayReplacedNpc("이곳은 #r<크리스마스 언덕>#k이야.\r\n보일듯 말듯한 가까운 달빛이 비추는 #b#e천국#n#k이지", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 15) {
-	cm.sayNpc("#b크리스마스 언덕#k..? #b천국#k..?\r\n그런데 저를 왜 기다리신건가요..?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 16) {
-	cm.sayReplacedNpc("저희는 항상 이곳에서 송편을 빚고있어요\r\n크리스마스를 맞이하여 이곳에 놀러오는 #b모험가#k님들께 #b인사#k를 드리고있어요", false, true, 1,  2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 17) {
-	cm.sayNpc("어... 그 사탕 나도 있으면 좋겠는데", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 18) {
-	cm.sayReplacedNpc("#i4317001# #i4317002# #i4317003#\r\n낚시와 사냥시 일정확률로 이 세가지 사탕을 얻을 수 있어요!", false, true, 1,  2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 19) {
-	cm.sayNpc("그 사탕은 어디에 쓰는거야?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 20) {
-	cm.sayReplacedNpc("세가지 사탕을 모두 가지고 #b저에게#k 말을걸면\r\n#i4310320# #b#z4310320##k 으로 교환할 수 있어요!", false, true, 1,  2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 21) {
-	cm.sayNpc("그 크리스마스 코인은 어디에 쓰는건데?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 22) {
-	cm.sayReplacedNpc("#b이벤트 코인샵#k에서 다양한 아이템을 구매할 수 있지\r\n물론 코인샵도 #b목도리 눈사람#k에게 말을 걸어보렴", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 23) {
-	cm.sayReplacedNpc("우리는 이만 사탕을 배달하러 가야해\r\n언제나 #b< 강림월드 >#k 에서 재밌는 모험이 되길 바래", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 24) {
-	cm.sayNpc("ㄱ...고마워\r\n#fs12#(별것도 아닌데 설명이 거창하네...)", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 25) {
-	cm.removeLocalNpc(2001003);
-	cm.delay(1000);
-    } else if (status == 26) {
-	cm.sayReplacedNpc("#fs25#얼른 안오고 뭐해!!", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 27) {
-	cm.sayReplacedNpc("저희도 이만 가볼게요 좋은 모험되세요 !", false, true, 1, 2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 28) {
-	cm.sayReplacedNpc("#fs30##r안녕히가세요 모험가님!!!! 헤헤", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    } else if (status == 29) {
-	cm.delay(1000);
-    } else if (status == 30) {
-	cm.removeLocalNpc(2001002);
-	cm.delay(1000);
-    } else if (status == 31) {
-	cm.sayNpc("나도이제 이벤트를 즐기러 가볼까나?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
-    } else if (status == 32) {
-	cm.showEffect(false, "rootabyss/firework");
-	cm.delay(5000);
-    } else if (status == 33) {
-	cm.setStandAloneMode(false);
-	cm.endIngameDirectionMode(1);
-	cm.warp(ServerConstants.TownMap, 0);
-	cm.dispose();
-	cm.openNpcCustom(cm.getClient(), 2001004, "12dnjfevent");
-    }
+	if (mode == 1) {
+		status++;
+	} else {
+		cm.dispose();
+		return;
+	}
+	if (status == 0) {
+		cm.setIngameDirectionMode(false, false, false);
+		cm.setBlind(1, 255, 0, 0, 0, 0, 0);
+		cm.setStandAloneMode(true);
+		cm.spawnLocalNpc(2001003, -208, -108, 0, 156, true);
+		cm.spawnLocalNpc(2001002, -92, 8, 1, 156, true);
+		cm.delay(1200);
+	} else if (status == 1) {
+		cm.setBlind(0, 0, 0, 0, 0, 1000, 0); //off
+		cm.effectText("#fnNanumGothic ExtraBold##fs20#<Christmas Hill>", 100, 1000, 6, 0, -50, -100);
+		cm.delay(3000);
+	} else if (status == 2) {
+		cm.effectPlay("Effect/OnUserEff.img/emotion/whatl", 0, 0, 0, 0, 0, false);
+		cm.delay(3000);
+	} else if (status == 3) {
+		cm.sayNpc("Where am I...?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 4) {
+		cm.sayNpc("What are those snowmen doing there.....", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 5) {
+		cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001004, false);
+		cm.delay(1000);
+	} else if (status == 6) {
+		cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001003, false);
+		cm.delay(1000);
+	} else if (status == 7) {
+		cm.effectPlay("Effect/OnUserEff.img/emotion/oh", 0, 0, 0, 0, 2001002, false);
+		cm.delay(2000);
+	} else if (status == 8) {
+		cm.sayReplacedNpc("Hehe! I've been waiting!..#fs30##rNice to meet you! You're welcome here!", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 9) {
+		cm.sayReplacedNpc("Do you know how long I've waited?!", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 10) {
+		cm.sayReplacedNpc("Calm down, child... You shouldn't startle our guest.", false, true, 1, 2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 11) {
+		cm.sayReplacedNpc("Ah... Sorry, it's been so long since I met a human.", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 12) {
+		cm.sayReplacedNpc("Huhu. #e#b#h0##k. \r\nYou've finally arrived. We are the #bFancy Snowmen#k.", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 13) {
+		cm.sayNpc("Fancy Snowmen...?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 14) {
+		cm.sayReplacedNpc("This is #r<Christmas Hill>#k.\r\nIt's a #b#eParadise#n#k where the moonlight shines so close.", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 15) {
+		cm.sayNpc("#bChristmas Hill#k..? #bParadise#k..?\r\nBut why were you waiting for me..?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 16) {
+		cm.sayReplacedNpc("We are always making Songpyeon here.\r\nWe greet the #bAdventurers#k who visit here for Christmas.", false, true, 1, 2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 17) {
+		cm.sayNpc("Uh... I wish I had those candies too.", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 18) {
+		cm.sayReplacedNpc("#i4317001# #i4317002# #i4317003#\r\nYou can get these three candies with a certain probability when fishing and hunting!", false, true, 1, 2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 19) {
+		cm.sayNpc("What are those candies used for?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 20) {
+		cm.sayReplacedNpc("If you bring all three candies and talk to #bme#k,\r\nyou can exchange them for #i4310320# #b#z4310320##k!", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 21) {
+		cm.sayNpc("What are those Christmas Coins used for?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 22) {
+		cm.sayReplacedNpc("You can buy various items at the #bEvent Coin Shop#k.\r\nOf course, talk to the #bScarf Snowman#k for the Coin Shop.", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 23) {
+		cm.sayReplacedNpc("We have to go deliver candies now.\r\nWe hope you always have a fun adventure in #b< Royal Maple >#k.", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 24) {
+		cm.sayNpc("Th...Thank you.\r\n#fs12#(It's not much, but the explanation is grand...)", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 25) {
+		cm.removeLocalNpc(2001003);
+		cm.delay(1000);
+	} else if (status == 26) {
+		cm.sayReplacedNpc("#fs25#What are you doing? Come on!!", false, true, 1, 2001003, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 27) {
+		cm.sayReplacedNpc("We'll be going now. Have a great adventure!", false, true, 1, 2001002, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 28) {
+		cm.sayReplacedNpc("#fs30##rGoodbye, Adventurer!!!! Hehe", false, true, 1, 2001004, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+	} else if (status == 29) {
+		cm.delay(1000);
+	} else if (status == 30) {
+		cm.removeLocalNpc(2001002);
+		cm.delay(1000);
+	} else if (status == 31) {
+	} else if (status == 31) {
+		cm.sayNpc("Shall I go enjoy the event now too?", GameObjectType.User, false, true, 1, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage, ScriptMessageFlag.NoEsc);
+	} else if (status == 32) {
+		cm.showEffect(false, "rootabyss/firework");
+		cm.delay(5000);
+	} else if (status == 33) {
+		cm.setStandAloneMode(false);
+		cm.endIngameDirectionMode(1);
+		cm.warp(ServerConstants.TownMap, 0);
+		cm.dispose();
+		cm.openNpcCustom(cm.getClient(), 2001004, "12dnjfevent");
+	}
 }

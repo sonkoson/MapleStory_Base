@@ -1,23 +1,23 @@
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 = "#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
-enter = "\r\n";
+var Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var Color = "#fc0xFF6600CC#"
+var BlackColor = "#fc0xFF000000#"
+var PinkColor = "#fc0xFFFF3366#"
+var LightPinkColor = "#fc0xFFF781D8#"
+var Enter = "\r\n"
+var Enter2 = "\r\n\r\n"
+var enter = "\r\n";
 
 importPackage(Packages.objects.item);
 
@@ -74,7 +74,7 @@ function action(mode, type, sel) {
 
     if (status == 0) {
         var msg = "　　　#i4317002# #fs14##e[Royal Maple] - Candy Event#n#fs11# #i4317002#\r\n#fs11##Cblue#                  ขอบคุณที่ใช้บริการ Royal Maple เสมอมา#k\r\n";
-        msg += 핑크색 + "                               #L100#Event Info#fc0xFF000000##l\r\n\r\n";
+        msg += PinkColor + "                               #L100#Event Info#fc0xFF000000##l\r\n\r\n";
         msg += "                      Event Period : #b08.15 ~ 08.31\r\n";
         msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
         msg += "#L1##fc0xFFFF3366#รับ Event Ring#fc0xFF000000##l\r\n";
@@ -87,36 +87,36 @@ function action(mode, type, sel) {
         seld = sel;
         switch (sel) {
             case 100:
-                var msg = "#fn나눔고딕 Extrabold##d(เห็นว่าถ้าล่ามอนสเตอร์จะมีลูกอมดรอปสินะ..)#k\r\n\r\n#bรีบไปล่ามอนสเตอร์แล้วสะสมลูกอมดีกว่า!\r\n\r\n";
+                var msg = "#fnArial##d(เห็นว่าถ้าล่ามอนสเตอร์จะมีลูกอมดรอปสินะ..)#k\r\n\r\n#bรีบไปล่ามอนสเตอร์แล้วสะสมลูกอมดีกว่า!\r\n\r\n";
                 msg += "#L96##rว่าแต่ Event Item เอาไว้ใช้ทำอะไรนะ..?#l\r\n";
                 cm.sendNextS(msg, 2);
                 break;
 
             case 1:
                 if (cm.getClient().getKeyValue("candyeventitem") == null) {
-                    말 = "#fs11#" + 검은색;
-                    말 += "สามารถสุ่มรับ Effect Ring ที่มีค่าสเตตัสได้หลากหลายเลยนะ" + enter;
-                    말 += 핑크색 + "※ 1 ครั้งต่อบัญชี เป็นเวลา 15 วัน" + enter + enter;
-                    말 += 핑크색 + "ต้องการรับจริงๆ ไหม?"
-                    cm.sendYesNo(말);
+                    say = "#fs11#" + BlackColor;
+                    say += "สามารถสุ่มรับ Effect Ring ที่มีค่าสเตตัสได้หลากหลายเลยนะ" + enter;
+                    say += PinkColor + "※ 1 ครั้งต่อบัญชี เป็นเวลา 15 วัน" + enter + enter;
+                    say += PinkColor + "ต้องการรับจริงๆ ไหม?"
+                    cm.sendYesNo(say);
                 } else {
-                    말 = "#fs11#" + 검은색 + "ได้รับ #fc0xFFFF3366#[Event Ring]" + 검은색 + " ไปแล้ว";
+                    say = "#fs11#" + BlackColor + "ได้รับ #fc0xFFFF3366#[Event Ring]" + BlackColor + " ไปแล้ว";
                     cm.dispose();
-                    cm.sendOk(말);
+                    cm.sendOk(say);
                 }
                 break;
 
             case 2:
                 if (cm.getClient().getKeyValue("candyeventpet") == null) {
-                    말 = "#fs11#" + 검은색;
-                    말 += "สามารถสุ่มรับสัตว์เลี้ยงแม่เหล็กสุดน่ารักได้" + enter;
-                    말 += 핑크색 + "※ 1 ครั้งต่อบัญชี เป็นเวลา 15 วัน" + enter + enter;
-                    말 += 핑크색 + "ต้องการรับจริงๆ ไหม?"
-                    cm.sendYesNo(말);
+                    say = "#fs11#" + BlackColor;
+                    say += "สามารถสุ่มรับสัตว์เลี้ยงแม่เหล็กสุดน่ารักได้" + enter;
+                    say += PinkColor + "※ 1 ครั้งต่อบัญชี เป็นเวลา 15 วัน" + enter + enter;
+                    say += PinkColor + "ต้องการรับจริงๆ ไหม?"
+                    cm.sendYesNo(say);
                 } else {
-                    말 = "#fs11#" + 검은색 + "ได้รับ #fc0xFFFF3366#[Event Magnet Pet]" + 검은색 + " ไปแล้ว";
+                    say = "#fs11#" + BlackColor + "ได้รับ #fc0xFFFF3366#[Event Magnet Pet]" + BlackColor + " ไปแล้ว";
                     cm.dispose();
-                    cm.sendOk(말);
+                    cm.sendOk(say);
                 }
                 break;
 
@@ -126,7 +126,7 @@ function action(mode, type, sel) {
                 break;
 
             case 4:
-                var msg = "#fs11#" + 색 + "คู่มือแหล่งหา Event Item\r\n\r\n";
+                var msg = "#fs11#" + Color + "คู่มือแหล่งหา Event Item\r\n\r\n";
                 msg += "#fs11##b#i4317001##z4317001#\r\n#i4317002##z4317002#\r\n#i4317003##z4317003#\r\n\r\n";
                 msg += "#r#e[ตกปลา]#b มีโอกาสได้รับไอเท็ม 3 อย่างข้างต้นจากการ\r\n";
                 msg += "#r#e[ล่ามอนสเตอร์]#b มีโอกาสได้รับไอเท็ม 3 อย่างข้างต้นจากการ";
@@ -138,7 +138,7 @@ function action(mode, type, sel) {
     } else if (status == 2) {
         switch (seld) {
             case 100:
-                cm.sendOk("#fs11#" + 색 + "สามารถใช้ลูกอมซื้อไอเท็มต่างๆ ได้ที่ร้านค้ากิจกรรม!");
+                cm.sendOk("#fs11#" + Color + "สามารถใช้ลูกอมซื้อไอเท็มต่างๆ ได้ที่ร้านค้ากิจกรรม!");
                 cm.dispose();
                 break;
 

@@ -160,7 +160,7 @@ function action(mode, type, selection) {
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | All Stat% : " + item.getAllStat() + "% | StarForce : " + item.getEnhance() + "\r\n";
         cm.sendSimple(notice + say +
-            "#L1##bUse " + ConvertNumber(keep) + " Meso to protect rank drop.#l\r\n" +
+            "#L1##bUse 100 Extra #z4001715# to protect rank drop.#l\r\n" +
             "#L2#Enhance without rank drop protection.#k#l");
     } else if (status == 2) {
         if (re == 0) {
@@ -185,9 +185,9 @@ function action(mode, type, selection) {
         say += "Att : " + item.getWatk() + "  |  Mag : " + item.getMatk() + "  | All Stat% : " + item.getAllStat() + "% | StarForce : " + item.getEnhance() + "\r\n";
 
         if (selection == 1 || choice == 1) {
-            cm.sendYesNo(say + "\r\nDo you really want to use " + ConvertNumber(keep) + " Meso to protect rank drop?\r\n" + "Prevention cost is consumed regardless of success/failure.");
+            cm.sendYesNo(say + "\r\nDo you really want to use 100 Extra #z4001715# to protect rank drop?\r\n" + "Prevention cost is consumed regardless of success/failure.");
         } else if (selection == 2 || choice == 2) {
-            cm.sendYesNo(say + "\r\nDo you really want to attempt enhancement without using " + ConvertNumber(keep) + " Meso protection?\r\n" + "Rank will drop if enhancement fails.");
+            cm.sendYesNo(say + "\r\nDo you really want to attempt enhancement without using 100 Extra #z4001715# protection?\r\n" + "Rank will drop if enhancement fails.");
         }
 
     } else if (status == 3) {

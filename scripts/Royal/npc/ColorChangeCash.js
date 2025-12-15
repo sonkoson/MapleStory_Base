@@ -194,7 +194,7 @@ function action(mode, type, selection) {
             cm.dispose();
         } else {
             cm.dispose();
-            cm.sendOk("#fs11#พื้นที่ในช่องเก็บของไม่เพียงพอ! ㅠㅠ");
+            cm.sendOk("#fs11#พื้นที่ในช่องเก็บของไม่เพียงพอ! T_T");
             return;
         }
     }

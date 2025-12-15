@@ -23,37 +23,37 @@ function action(mode, type, selection) {
     if (status == 0) {
         if (f == 1) { // Sponsorship System
             cm.dispose();
-            cm.openNpc(2003, "D후원시스템");
+            cm.openNpc(2003, "DonationSystem");
         } else if (f == 2) { // Promotion System
             cm.dispose();
-            cm.openNpc(2003, "D홍보시스템");
+            cm.openNpc(2003, "PromotionSystem");
         } else if (f == 3) { // Change Nickname
             cm.dispose();
-            cm.openNpc(2003, "D닉네임변경");
+            cm.openNpc(2003, "NicknameChange");
         } else if (f == 4) { // Change Job
             cm.dispose();
-            cm.openNpc(2003, "D자유전직");
+            cm.openNpc(2003, "FreeJobChange");
         } else if (f == 5) { // V Matrix
             cm.dispose();
-            cm.openNpc(2003, "D매트릭스");
+            cm.openNpc(2003, "MatrixSystem");
         } else if (f == 6) { // Union
             cm.dispose();
-            cm.openNpc(2003, "D유니온시스템");
+            cm.openNpc(2003, "UnionSystem");
         } else if (f == 7) { // Combat Power Measurement
             cm.dispose();
-            cm.openNpc(2003, "D전투력측정");
+            cm.openNpc(2003, "BattlePowerCheck");
         } else if (f == 8) { // Growth System
             cm.dispose();
-            cm.openNpc(2003, "D성장시스템");
+            cm.openNpc(2003, "GrowthSystem");
         } else if (f == 9) { // Marriage System
             cm.dispose();
-            cm.openNpc(2003, "D결혼시스템");
+            cm.openNpc(2003, "MarriageSystem");
         } else if (f == 10) { // Ranking System
             cm.dispose();
-            cm.openNpc(2003, "D랭킹시스템");
+            cm.openNpc(2003, "RankingSystem");
         } else if (f == 11) { // Enhancement System
             cm.dispose();
-            cm.openNpc(2003, "D강화시스템");
+            cm.openNpc(2003, "EnhancementSystem");
         }
     }
 }

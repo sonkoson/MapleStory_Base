@@ -6,11 +6,11 @@ function start() {
 }
 
 function action(mode, type, selection) {
-        var count = 1;
+    var count = 1;
     setting = [
         ["Black_Mage", count, 450013000, 275, 7]
     ]
-    name = ["노멀"];
+    name = ["Normal"];
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -20,61 +20,61 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "검은 마법사와 대적하기 위해 #b어둠의 신전#k으로 이동할까?\r\n\r\n";
-        talk += "#L0##b어둠의 신전으로 이동한다.#r(레벨 270이상)#l\r\n";
+        talk = "ต้องการเดินทางไปยัง #bTemple of Darkness#k เพื่อต่อสู้กับ Black Mage หรือไม่?\r\n\r\n";
+        talk += "#L0##bเดินทางไป Temple of Darkness#r(เลเวล 270 ขึ้นไป)#l\r\n";
         cm.sendSimpleS(talk, 0x38);
     } else if (status == 1) {
         st = selection;
         if (cm.getParty() == null) {
-            cm.sendOkS("1인 이상 파티를 맺어야만 입장할 수 있습니다.", 0x24);
+            cm.sendOkS("ต้องมีปาร์ตี้อย่างน้อย 1 คนจึงจะสามารถเข้าได้", 0x24);
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1 || cm.getPlayerCount(setting[st][2] + 100) >= 1 || cm.getPlayerCount(setting[st][2] + 200) >= 1 || cm.getPlayerCount(setting[st][2] + 300) >= 1 || cm.getPlayerCount(setting[st][2] + 400) >= 1 || cm.getPlayerCount(setting[st][2] + 500) >= 1 || cm.getPlayerCount(setting[st][2] + 600) >= 1 || cm.getPlayerCount(setting[st][2] + 700) >= 1 || cm.getPlayerCount(setting[st][2] + 750) >= 1) {
-            cm.sendOkS("이미 누군가가 검은 마법사에 도전하고 있습니다.\r\n다른채널을 이용 해 주세요.", 0x24);
+            cm.sendOkS("มีคนกำลังท้าทาย Black Mage อยู่แล้ว\r\nกรุณาใช้แชนแนลอื่น", 0x24);
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOkS("파티장만이 입장을 신청할 수 있습니다.", 0x24);
+            cm.sendOkS("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สมัครเข้าได้", 0x24);
             cm.dispose();
             return;
         } else if (!cm.allMembersHere()) {
-            cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ในสถานที่เดียวกัน");
             cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "파티원 중 "
+            talk = "ในสมาชิกปาร์ตี้ "
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + ""
             }
-            talk += "#k#n님이 오늘 입장횟수를 모두 소진하셨습니다";
+            talk += "#k#n ใช้โควต้าการเข้าของวันนี้หมดแล้ว";
             cm.sendOkS(talk, 0x24);
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 "
+            talk = "ในสมาชิกปาร์ตี้ "
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
-            talk += "#k#n님의 레벨이 부족합니다.\r\n검은 마법사는 " + setting[st][3] + " 레벨 이상만 입장 가능합니다.";
+            talk += "#k#n มีเลเวลไม่ถึงเกณฑ์\r\nBlack Mage เข้าได้ตั้งแต่เลเวล " + setting[st][3] + " ขึ้นไป";
             cm.sendOkS(talk, 0x24);
             cm.dispose();
             return;
         } else if (!cm.isBossTier(setting[st][4])) {
-            talk = "파티원 중 "
+            talk = "ในสมาชิกปาร์ตี้ "
             for (i = 0; i < cm.BossTierChrList(setting[st][4]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.BossTierChrList(setting[st][4])[i] + ""
             }
-            talk += "#k#n님의 보스랭크가 부족합니다.\r\n검은 마법사는 " + setting[st][4] + " 랭크 이상만 입장 가능합니다.";
+            talk += "#k#n มี Boss Rank ไม่เพียงพอ\r\nBlack Mage เข้าได้ตั้งแต่ Rank " + setting[st][4] + " ขึ้นไป";
             cm.sendOkS(talk, 0x26);
             cm.dispose();
             return;

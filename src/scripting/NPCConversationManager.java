@@ -1065,7 +1065,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       Map<Skill, SkillEntry> newList = new HashMap<>();
 
       for (Entry<Skill, SkillEntry> skill : skills.entrySet()) {
-         if (skill.getKey().getName().contains("라이딩")) {
+         if (skill.getKey().getName().contains("Riding")) {
             Integer id = skill.getKey().getId();
             newList.put(SkillFactory.getSkill(id), skill.getValue());
          } else {
@@ -4572,7 +4572,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
    }
 
    public boolean canDonationEvent(String point) {
-      if (point.contains("초심자")) {
+      if (point.contains("Beginner")) {
          return false;
       } else {
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
@@ -4597,7 +4597,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                boolean find = false;
 
                while (rs.next()) {
-                  if (rs.getString("name").equals("보너스이벤트")) {
+                  if (rs.getString("name").equals("BonusEvent")) {
                      find = true;
                      break;
                   }
@@ -4636,16 +4636,16 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       int p = 0;
       int type = 0;
       boolean first = true;
-      if (!point.contains("초심자")
-            && !point.contains("설날")
-            && !point.contains("어린이날")
-            && !point.contains("추석")
-            && !point.contains("3주년")
-            && !point.contains("크리스마스")
-            && !point.contains("가정의달")
-            && !point.contains("상시패키지")
+      if (!point.contains("Beginner")
+            && !point.contains("LunarNewYear")
+            && !point.contains("ChildrenDay")
+            && !point.contains("Chuseok")
+            && !point.contains("3rdAnniversary")
+            && !point.contains("Christmas")
+            && !point.contains("FamilyMonth")
+            && !point.contains("RegularPackage")
             && !point.contains("2023")
-            && !point.contains("5월")) {
+            && !point.contains("May")) {
          try {
             p = Integer.parseInt(point);
          } catch (NumberFormatException var86) {
@@ -4672,7 +4672,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-               if (!rs.getString("name").equals("초심자패키지") && !rs.getString("name").contains("설날")) {
+               if (!rs.getString("name").equals("BeginnerPackage") && !rs.getString("name").contains("설날")) {
                   first = false;
                }
             }
@@ -4705,7 +4705,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
             while (rs.next()) {
                String name = rs.getString("name");
-               if (point.contains("초심자") && name.equals("초심자패키지")
+               if (point.contains("Beginner") && name.equals("BeginnerPackage")
                      || point.contains("설날A") && name.equals("설날A")
                      || point.contains("설날B") && name.equals("설날B")
                      || point.contains("설날C") && name.equals("설날C")

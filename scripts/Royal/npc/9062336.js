@@ -2,7 +2,7 @@ var status = -1;
 
 function start() {
     status = -1;
-    action (1, 0, 0);
+    action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
@@ -11,17 +11,17 @@ function action(mode, type, selection) {
         return;
     }
     if (mode == 0) {
-	status--;
-	cm.dispose();
+        status--;
+        cm.dispose();
     }
     if (mode == 1) {
         status++;
     }
 
     if (status == 0) {
-	cm.sendYesNo("#fs11##fc0xFF6600CC#빙고운도 더럽게 없으면서 마을로 돌아갈꺼야??");
+        cm.sendYesNo("#fs11##fc0xFF6600CC#ไม่มีดวงเรื่องบิงโกเลย จะกลับเมืองแล้วเหรอ??");
     } else if (status == 1) {
-	cm.warp(100000000);
-	cm.dispose();
+        cm.warp(100000000);
+        cm.dispose();
     }
 }

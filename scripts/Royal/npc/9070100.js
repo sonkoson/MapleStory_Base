@@ -6,11 +6,11 @@ function start() {
 }
 
 function action(mode, type, selection) {
-        var count = 1;
+    var count = 1;
     setting = [
         ["URS", count, 970072300, 360]
     ]
-    name = ["노멀", "하드"]
+    name = ["Normal", "Hard"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -20,31 +20,31 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "#b자네는 무엇을 원하나?#k\r\n\r\n"
-        talk += "#L0#토벌하러 간다.#l\r\n"
-        //talk += "#L99#우르스 전리품으로 보상과 교환하겠습니다.#l"
+        talk = "#bWhat do you want?#k\r\n\r\n"
+        talk += "#L0#Go to subdue.#l\r\n"
+        //talk += "#L99#Exchange for Ursus loot rewards.#l"
         cm.sendSimpleS(talk, 0x26);
     } else if (status == 1) {
         st = selection;
         if (cm.getParty() == null) {
-            cm.sendOk("1인 이상 파티를 맺어야만 입장할 수 있어.");
+            cm.sendOk("You must be in a party of 1 or more to enter.");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendOk("이미 누군가가 우르스 토벌에 도전하고 있어.\r\n다른채널을 이용 해 줘.");
+            cm.sendOk("Someone is already challenging Ursus.\r\nPlease use another channel.");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만이 입장을 신청할 수 있어.");
+            cm.sendOk("Only the party leader can apply for entry.");
             cm.dispose();
             return;
-	} else if (!cm.allMembersHere()) {
-	    cm.sendOk("모든 멤버가 같은 장소에 있어야 해.");
-	    cm.dispose();
+        } else if (!cm.allMembersHere()) {
+            cm.sendOk("All members must be in the same place.");
+            cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "파티원 중 이미 입장한 사람이 있어.\r\n\r\n"
+            talk = "Someone in the party has already entered today.\r\n\r\n"
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 talk += "#b#e-" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + "\r\n"
             }
@@ -52,7 +52,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 우르스에 도전하기 위한 레벨이 부족한 사람이 있어."
+            talk = "Someone in the party does not meet the level requirement for Ursus."
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 talk += "#b#e-" + cm.LevelNotAvailableChrList(setting[st][3])[i] + "\r\n"
             }

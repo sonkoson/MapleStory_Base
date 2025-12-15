@@ -29,18 +29,18 @@ function action(mode, type, selection) {
             status++;
         else
             status--;
-        
+
         if (status == 0) {
             var success = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame3_success");
             var neoGem = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame3_coin");
-            var canGain = cm.getPlayer().canGainStackEventGauge(1); // 코어 젬 금일 획득 가능량
-            var v0 = "재밌게 놀았어~? 이번엔 #e#b" + success + "#n#k장을 보냈네~!\r\n\r\n";
+            var canGain = cm.getPlayer().canGainStackEventGauge(1); // Core Gem Daily Obtainable Amount
+            var v0 = "Did you have fun? This time you sent #e#b" + success + "#n#k cards!\r\n\r\n";
             if (canGain <= 0) {
-                v0 += "이미 #e일일 제한량#n을 달성해서 보상을 더 줄 수 없어~\r\n\r\n";
+                v0 += "You have already reached the #eDaily Limit#n, so I can't give you more rewards~\r\n\r\n";
             } else {
-                v0 += "#e#b네오 젬 " + neoGem + "개#k#n를 챙겨줄게!";
+                v0 += "I'll give you #e#b" + neoGem + " Neo Gems#k#n!";
             }
-            v0 += "#r(보상은 퇴장 시 지급됩니다)#k";
+            v0 += "#r(Rewards are given upon exit)#k";
 
             cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         } else if (status == 1) {

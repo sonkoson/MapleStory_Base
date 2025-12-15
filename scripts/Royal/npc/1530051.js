@@ -36,7 +36,7 @@ function action(mode, type, sel) {
 
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "This feature cannot be used during boss battles.");
             cm.dispose();
             return;
         }
@@ -71,25 +71,25 @@ function action(mode, type, sel) {
             return;
         }
 
-        // 현재 보유 홍보 포인트, 등급, 누적 횟수 표시
-        var 홍보포인트 = comma(cm.getPlayer().getHPoint());
-        var 홍보등급 = cm.getPlayer().getPgrades();
-        var 홍보횟수 = comma(cm.getClient().getKeyValue("PCount"));
+        // Display current Promotion Points, Grade, Cumulative Count
+        var promoPoint = comma(cm.getPlayer().getHPoint());
+        var promoGrade = cm.getPlayer().getPgrades();
+        var promoCount = comma(cm.getClient().getKeyValue("PCount"));
 
         var msg = "#fs11#";
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000# 님의 홍보 포인트 : #fc0xFFFF3366#" + 홍보포인트 + "P#fc0xFF000000##n" + enter;
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000# 님의 홍보 등급 : #fc0xFFFF3366#" + 홍보등급 + "#fc0xFF000000##n#b" + enter;
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000# 님의 누적 홍보 횟수 : #fc0xFFFF3366#" + 홍보횟수 + " 번#k#b" + enter + enter;
+        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Promotion Points : #fc0xFFFF3366#" + promoPoint + "P#fc0xFF000000##n" + enter;
+        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Promotion Grade : #fc0xFFFF3366#" + promoGrade + "#fc0xFF000000##n#b" + enter;
+        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Total Promotion Count : #fc0xFFFF3366#" + promoCount + "#k#b" + enter + enter;
 
-        msg += "#L1##e[ 홍보 포인트 상점 ]#n#l    "+enter+enter;
-        msg += "#L4#[ 초월 아케인심볼 ]#l" + enter+ enter;
-        msg += "#L5#[ 치장아이템 강화 ]#l" + enter+ enter;
-        msg += "#L2#홍보 등급의 혜택을 알고싶습니다.#l" + enter;
-        msg += "#L3#홍보 포인트를 수령하겠습니다.#l" + enter; // ← 새 옵션 추가
+        msg += "#L1##e[ Promotion Point Shop ]#n#l    " + enter + enter;
+        msg += "#L4#[ Transcendent Arcane Symbol ]#l" + enter + enter;
+        msg += "#L5#[ Enhance Cosmetic Items ]#l" + enter + enter;
+        msg += "#L2#I want to know the benefits of Promotion Grade.#l" + enter;
+        msg += "#L3#I want to receive Promotion Points.#l" + enter; // ← New option added
 
         if (cm.getPlayer().isGM()) {
-            msg += enter + enter + "#r#h GM#님, GM 전용 메뉴입니다!#fc0xFF000000#" + enter;
-            msg += "#L99#GM: 홍보포인트/횟수 지급 메뉴 열기#l";
+            msg += enter + enter + "#r#h GM#, This is a GM-only menu!#fc0xFF000000#" + enter;
+            msg += "#L99#GM: Open Promotion Point/Count Distribution Menu#l";
         }
 
         cm.sendSimple(msg);
@@ -122,59 +122,59 @@ function action(mode, type, sel) {
             cm.openNpcCustom(cm.getClient(), 9000331, "강림캐시강화");
             return;
         }
-        // 99) GM 전용
+        // 99) GM Only
         else if (seld == 99 && cm.getPlayer().isGM()) {
-            var gmMsg = "#fs12#[GM 메뉴] 무엇을 하시겠습니까?#fc0xFF000000##fs11#" + enter;
-            gmMsg += "#L100#1. 유저에게 홍보 포인트 지급#l" + enter;
-            gmMsg += "#L101#2. 유저에게 누적 홍보 횟수 지급#l";
+            var gmMsg = "#fs12#[GM Menu] What would you like to do?#fc0xFF000000##fs11#" + enter;
+            gmMsg += "#L100#1. Give Promotion Points to User#l" + enter;
+            gmMsg += "#L101#2. Give Cumulative Promotion Count to User#l";
 
             cm.sendSimple(gmMsg);
             return;
         }
 
-        cm.sendOk("잘못된 접근입니다.");
+        cm.sendOk("Invalid access.");
         cm.dispose();
     }
     else if (status == 2) {
         if (seld == 99 && cm.getPlayer().isGM()) {
             seldGM = sel;
             if (seldGM == 100) {
-                cm.sendGetText("포인트를 지급할 유저의 닉네임을 정확히 입력하세요.");
+                cm.sendGetText("Please enter the exact nickname of the user to give points to.");
                 step = 1;
                 return;
             } else if (seldGM == 101) {
-                cm.sendGetText("누적 횟수를 지급할 유저의 닉네임을 정확히 입력하세요.");
+                cm.sendGetText("Please enter the exact nickname of the user to give cumulative count to.");
                 step = 1;
                 return;
             } else {
-                cm.sendOk("잘못된 접근입니다.");
+                cm.sendOk("Invalid access.");
                 cm.dispose();
                 return;
             }
         }
 
-        cm.sendOk("잘못된 흐름입니다.");
+        cm.sendOk("Invalid flow.");
         cm.dispose();
     }
     else if (status == 3) {
         if (step == 1) {
             targetName = cm.getText().trim();
             if (targetName.length < 1) {
-                cm.sendOk("유효한 닉네임을 입력해주세요.");
+                cm.sendOk("Please enter a valid nickname.");
                 cm.dispose();
                 return;
             }
 
             if (seldGM == 100) {
-                cm.sendGetText("🔹 [" + targetName + "] 님에게 지급할 홍보 포인트(P)를 입력하세요.\r\n(숫자만 입력, 예: 500)");
+                cm.sendGetText("🔹 Enter Promotion Points (P) to give to [" + targetName + "].\r\n(Numbers only, e.g., 500)");
             } else if (seldGM == 101) {
-                cm.sendGetText("🔹 [" + targetName + "] 님에게 지급할 누적 홍보 횟수(번)를 입력하세요.\r\n(숫자만 입력, 예: 10)");
+                cm.sendGetText("🔹 Enter Cumulative Promotion Count to give to [" + targetName + "].\r\n(Numbers only, e.g., 10)");
             }
             step = 2;
             return;
 
         } else {
-            cm.sendOk("예상치 못한 오류가 발생했습니다.");
+            cm.sendOk("An unexpected error occurred.");
             cm.dispose();
             return;
         }
@@ -183,31 +183,31 @@ function action(mode, type, sel) {
         if (step == 2) {
             var txt = cm.getText().trim();
             if (!/^\d+$/.test(txt)) {
-                cm.sendOk("숫자만 입력해주세요.");
+                cm.sendOk("Please enter numbers only.");
                 cm.dispose();
                 return;
             }
             amount = parseInt(txt);
 
             var target = cm.getClient().getChannelServer()
-                            .getPlayerStorage()
-                            .getCharacterByName(targetName);
+                .getPlayerStorage()
+                .getCharacterByName(targetName);
 
             if (target == null) {
-                cm.sendOk("해당 이름의 캐릭터가 현재 채널에 존재하지 않습니다.\r\n채널을 옮겼거나 접속이 끊겼을 수 있습니다.");
+                cm.sendOk("The character with that name does not exist in the current channel.\r\nThey may have changed channels or disconnected.");
                 cm.dispose();
                 return;
             }
 
             if (!cm.getPlayer().isGM()) {
-                cm.sendOk("권한이 없습니다.");
+                cm.sendOk("You do not have permission.");
                 cm.dispose();
                 return;
             }
 
             if (seldGM == 100) {
                 target.gainHPoint(amount);
-                cm.sendOk("[" + targetName + "] 님에게 홍보 포인트 " + amount + "P 를 지급하였습니다.");
+                cm.sendOk("Given " + amount + "P Promotion Points to [" + targetName + "].");
                 cm.dispose();
                 return;
 
@@ -215,18 +215,18 @@ function action(mode, type, sel) {
                 var oldCount = parseInt(target.getClient().getKeyValue("PCount"));
                 var newCount = oldCount + amount;
                 target.getClient().setKeyValue("PCount", "" + newCount);
-                cm.sendOk("[" + targetName + "] 님의 누적 홍보 횟수를 " + amount + " 회 늘려서, 총 " + newCount + " 회로 설정하였습니다.");
+                cm.sendOk("Increased [" + targetName + "]'s cumulative promotion count by " + amount + ", setting total to " + newCount + ".");
                 cm.dispose();
                 return;
 
             } else {
-                cm.sendOk("잘못된 접근입니다.");
+                cm.sendOk("Invalid access.");
                 cm.dispose();
                 return;
             }
 
         } else {
-            cm.sendOk("예상치 못한 흐름 오류가 발생했습니다.");
+            cm.sendOk("An unexpected flow error occurred.");
             cm.dispose();
             return;
         }
@@ -256,12 +256,12 @@ function giveHongboReward() {
         rs = ps.executeQuery();
 
         var totalBlog = 0;  // 지급할 홍보 횟수 합계
-        var totalEtc  = 0;  // 지급할 홍보 포인트 합계
+        var totalEtc = 0;  // 지급할 홍보 포인트 합계
         var idList = new java.util.ArrayList();
 
         while (rs.next()) {
             totalBlog += rs.getInt("blog");
-            totalEtc  += rs.getInt("etc");
+            totalEtc += rs.getInt("etc");
             idList.add(rs.getInt("id"));
         }
         rs.close();
@@ -269,9 +269,9 @@ function giveHongboReward() {
 
         if (idList.size() == 0) {
             cm.sendOk(
-                "#fs11#▶ 현재 미지급된 홍보 보상 데이터가 없습니다.\r\n" +
-                "   홍보 포인트 지급 예정 합계: 0P\r\n" +
-                "   홍보 횟수 지급 예정 합계: 0회"
+                "#fs11#▶ No pending promotion reward data found.\r\n" +
+                "   Total Promotion Points to distribute: 0P\r\n" +
+                "   Total Promotion Count to distribute: 0"
             );
             cm.dispose();
             return;
@@ -296,16 +296,16 @@ function giveHongboReward() {
         updatePS.close();
 
         cm.sendOk(
-            "#fs11#▶ 홍보 보상이 정상 처리되었습니다." + enter +
-            "   - 지급된 포인트 : " + totalEtc.toLocaleString() + "P" + enter +
-            "   - 지급된 홍보 횟수 : " + totalBlog + " 회" + enter + enter +
-            "   - (이전 보상 누적: " + oldCount + " → 현재: " + newCount + " 회)"
+            "#fs11#▶ Promotion rewards have been successfully processed." + enter +
+            "   - Points Distributed : " + totalEtc.toLocaleString() + "P" + enter +
+            "   - Promotion Count Distributed : " + totalBlog + "" + enter + enter +
+            "   - (Previous Cumulative: " + oldCount + " → Current: " + newCount + ")"
         );
         cm.dispose();
         return;
 
     } catch (e) {
-        cm.sendOk("홍보 보상 처리 중 오류가 발생했습니다:\r\n" + e.toString());
+        cm.sendOk("An error occurred while processing promotion rewards:\r\n" + e.toString());
         e.printStackTrace();
         try {
             if (con != null && !con.isClosed()) {
@@ -317,9 +317,9 @@ function giveHongboReward() {
         cm.dispose();
         return;
     } finally {
-        try { if (rs  != null && !rs.isClosed())  rs.close();  } catch(e2) {}
-        try { if (ps  != null && !ps.isClosed())  ps.close();  } catch(e2) {}
-        try { if (con != null && !con.isClosed()) con.close(); } catch(e2) {}
+        try { if (rs != null && !rs.isClosed()) rs.close(); } catch (e2) { }
+        try { if (ps != null && !ps.isClosed()) ps.close(); } catch (e2) { }
+        try { if (con != null && !con.isClosed()) con.close(); } catch (e2) { }
     }
 }
 
@@ -328,9 +328,9 @@ function setpGrade(gradeA) {
     cm.getClient().setKeyValue("pGrade", "" + gradeA);
     cm.getPlayer().giveDonatorBuff();
     cm.sendOk(
-        "#fs11#축하합니다! 홍보 등급이 변경되셨습니다.\r\n\r\n" +
-        "기존등급 : #r" + grade[loadpGrade][1] + "#k\r\n" +
-        "변경등급 : #b" + grade[gradeA][1]
+        "#fs11#Congratulations! Your Promotion Grade has changed.\r\n\r\n" +
+        "Previous Grade : #r" + grade[loadpGrade][1] + "#k\r\n" +
+        "New Grade : #b" + grade[gradeA][1]
     );
     cm.dispose();
 }

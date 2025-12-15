@@ -30,12 +30,14 @@ function action(mode, type, selection) {
         txt += "#L4#Boss Damage Rank\r\n";
         /*
 if (cm.getPlayer().isGM()) {
-        txt += "#L1#경험치 랭크\r\n";
-        txt += "#L2#드롭률 랭크\r\n";
-        txt += "#L3#크리티컬 데미지 랭크\r\n";
 
-        //txt += "#L5#메소 랭크\r\n";
-        //txt += "#L6#올스탯 랭크\r\n";
+
+        txt += "#L1#EXP Rank\r\n";
+        txt += "#L2#Drop Rate Rank\r\n";
+        txt += "#L3#Critical Damage Rank\r\n";
+
+        //txt += "#L5#Meso Rank\r\n";
+        //txt += "#L6#All Stats Rank\r\n";
 }
 */
         cm.sendSimple(txt);
@@ -63,7 +65,7 @@ if (cm.getPlayer().isGM()) {
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1:// Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 200;
                     damageup = 10;
@@ -220,7 +222,7 @@ if (cm.getPlayer().isGM()) {
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1://Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 5000;
                     up = 3;
@@ -257,14 +259,14 @@ if (cm.getPlayer().isGM()) {
                     suc = 30;
                     break;
                 case 7:
-                    needcoin = HuntCoin10000;
-                    needcoincount = 30;
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 30;//2 needed
                     up = 40;
                     suc = 20;
                     break;
                 case 8:
-                    needcoin = HuntCoin10000;
-                    needcoincount = 50;
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 50;//2 needed
                     up = 50;
                     suc = 10;
                     break;
@@ -305,7 +307,7 @@ if (cm.getPlayer().isGM()) {
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1://Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 5000;
                     up = 10;
@@ -336,21 +338,21 @@ if (cm.getPlayer().isGM()) {
                     suc = 45;
                     break;
                 case 6:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 10;//2개필요
-                    up = 120;//데미지
+                    needcoin = HuntCoin10000;// 10,000 Coin
+                    needcoincount = 10;// 2 Needed
+                    up = 120;// Damage
                     suc = 30;
                     break;
                 case 7:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 30;//2개필요
-                    up = 180;//데미지
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 30;//2 needed
+                    up = 180;//Damage
                     suc = 20;
                     break;
                 case 8:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 50;//2개필요
-                    up = 300;//데미지
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 50;//2 needed
+                    up = 300;//Damage
                     suc = 10;
                     break;
             }
@@ -390,7 +392,7 @@ if (cm.getPlayer().isGM()) {
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1://Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 400;
                     up = 10;
@@ -421,21 +423,21 @@ if (cm.getPlayer().isGM()) {
                     suc = 100;
                     break;
                 case 6:
-                    needcoin = HuntCoin1;//만개짜리코인
+                    needcoin = HuntCoin1;// 10,000 Coin
                     needcoincount = 4800;
-                    up = 35;//데미지
+                    up = 35;//Damage
                     suc = 100;
                     break;
                 case 7:
                     needcoin = HuntCoin1;
                     needcoincount = 6000;
-                    up = 40;//데미지
+                    up = 40;//Damage
                     suc = 100;
                     break;
                 case 8:
                     needcoin = HuntCoin1;
                     needcoincount = 9000;
-                    up = 45;//데미지
+                    up = 45;//Damage
                     suc = 100;
                     break;
             }
@@ -469,13 +471,13 @@ if (cm.getPlayer().isGM()) {
             up = 0;
 
             if (mytear >= maxtear) {
-                cm.sendOk("#fs11#이미 최고등급입니다.\r\n\r\n#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n");
+                cm.sendOk("#fs11#ถึงระดับสูงสุดแล้ว\r\n\r\n#fc0xFF1A9714#สูงสุด " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n#bปัจจุบัน " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n");
                 cm.dispose();
                 return;
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1://Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 500;
                     up = 10;
@@ -508,13 +510,13 @@ if (cm.getPlayer().isGM()) {
                 case 6:
                     needcoin = HuntCoin1;
                     needcoincount = 7000;
-                    up = 100;//데미지
+                    up = 100;// Damage
                     suc = 70;
                     break;
                 case 7:
                     needcoin = HuntCoin1;
                     needcoincount = 10000;
-                    up = 120;//데미지
+                    up = 120;//Damage
                     suc = 60;
                     break;
                 case 8:
@@ -539,16 +541,16 @@ if (cm.getPlayer().isGM()) {
 
             txt = "#fs11#";
 
-            txt += "#fc0xFF1A9714#최대 " + tearnamestring + " : #fc0xFF000000##e[" + maxtear + "랭크]#n\r\n\r\n";
+            txt += "#fc0xFF1A9714#สูงสุด " + tearnamestring + " : #fc0xFF000000##e[Rank " + maxtear + "]#n\r\n\r\n";
 
-            txt += "#b현재 " + tearnamestring + " : #fc0xFF000000##e[" + mytear + "랭크]#n\r\n";
-            txt += "#b승급 " + tearnamestring + " : #fc0xFF000000##e[" + uptear + "랭크]#n\r\n\r\n";
+            txt += "#bปัจจุบัน " + tearnamestring + " : #fc0xFF000000##e[Rank " + mytear + "]#n\r\n";
+            txt += "#bเลื่อนเป็น " + tearnamestring + " : #fc0xFF000000##e[Rank " + uptear + "]#n\r\n\r\n";
 
-            txt += "승급확률, 승급한 랭크의 효과와\r\n승급에 필요한 #r아이템#fc0xFF000000#은 다음과 같다네\r\n\r\n";
-            txt += "#b#e승급 성공 확률 : " + suc + "%#k\r\n";
-            txt += "#r#e승급 성공 시 총 " + effect + " + #r#e" + up + "%#n#k\r\n승급 재료 : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + "개#k\r\n\r\n";
+            txt += "โอกาสเลื่อนขั้น, ผลของ Rank ที่เลื่อนขั้น และ\r\n#rไอเทม#fc0xFF000000#ที่จำเป็นสำหรับการเลื่อนขั้น มีดังนี้\r\n\r\n";
+            txt += "#b#eโอกาสสำเร็จ : " + suc + "%#k\r\n";
+            txt += "#r#eเมื่อสำเร็จ " + effect + " รวม + #r#e" + up + "%#n#k\r\nวัตถุดิบ : #i" + needcoin + "# #b#z" + needcoin + "# " + needcoincount + " ชิ้น#k\r\n\r\n";
 
-            txt += "#fs11##fc0xFF000000#정말 #e승급#n을 진행 하겠나?";
+            txt += "#fs11##fc0xFF000000#ต้องการดำเนินการ #eเลื่อนขั้น#n หรือไม่?";
             cm.sendYesNo(txt);
         } else if (sel == 5) {
             // Meso Tier
@@ -572,7 +574,7 @@ if (cm.getPlayer().isGM()) {
             }
 
             switch (uptear) {
-                case 1://1티어
+                case 1://Tier 1
                     needcoin = HuntCoin1;
                     needcoincount = 5000;
                     up = 10;
@@ -603,21 +605,21 @@ if (cm.getPlayer().isGM()) {
                     suc = 45;
                     break;
                 case 6:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 10;//2개필요
-                    up = 90;//데미지
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 10;//2 needed
+                    up = 90;// Damage
                     suc = 30;
                     break;
                 case 7:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 30;//2개필요
-                    up = 100;//데미지
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 30;//2 needed
+                    up = 100;//Damage
                     suc = 20;
                     break;
                 case 8:
-                    needcoin = HuntCoin10000;//만개짜리코인
-                    needcoincount = 50;//2개필요
-                    up = 120;//데미지
+                    needcoin = HuntCoin10000;//10,000 Coin
+                    needcoincount = 50;//2 needed
+                    up = 120;//Damage
                     suc = 10;
                     break;
             }
@@ -646,7 +648,7 @@ if (cm.getPlayer().isGM()) {
         cm.gainItem(needcoin, -needcoincount);
         if (Packages.objects.utils.Randomizer.isSuccess(suc)) {
             try {
-                if (uptear >= 10) // 10랭크 이상만 월드 메세지 전송
+                if (uptear >= 10) // Send world message only from Rank 10+
                     cm.worldGMMessage(22, "[Stat Rank] คุณ " + cm.getPlayer().getName() + " เลื่อนขั้น [" + tearnamestring + "] เป็น Rank " + uptear + " เรียบร้อยแล้ว");
                 //Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/UpgradeRank/[StatRankUpgrade].log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nName : " + cm.getPlayer().getName() + "\r\nUpgrade Rank : " + tearnamestring + "\r\nUpgrade Tier : " + uptear + "\r\n\r\n", true);
                 cm.addCustomLog(3, "[Stat Rank] " + tearnamestring + " Upgrade Tier : " + uptear + "");

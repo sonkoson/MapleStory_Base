@@ -37,15 +37,15 @@ function action(M, T, S) {
 
     if (St == 0) {
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("안녕하세요? 메이플월드를 여행하는 일은 즐거우신가요?");
+            cm.sendOk("Hello? Are you enjoying your journey in Maple World?");
             cm.dispose();
             return;
         }
-        cm.sendSimple("안녕하세요? 메이플월드를 여행하는 일은 즐거우신가요?\r\n"
-            + "#L0##r대화를 끝낸다.#l\r\n"
-            + "#L1##b아이템의 옵션을 변경한다.(장비)#l\r\n"
-            + "#L3##b아이템의 옵션을 변경한다.(치장)#l\r\n"
-            + "#L2##b잠재능력 코드를 확인한다.#l");
+        cm.sendSimple("Hello? Are you enjoying your journey in Maple World?\r\n"
+            + "#L0##rEnd conversation.#l\r\n"
+            + "#L1##bChange Item Options (Equipment).#l\r\n"
+            + "#L3##bChange Item Options (Cash).#l\r\n"
+            + "#L2##bCheck Potential Codes.#l");
     }
 
     else if (St == 1) {
@@ -54,7 +54,7 @@ function action(M, T, S) {
             case 1:
                 inz = cm.getInventory(1);
                 invtype = 1;
-                txt = "현재 #b#h ##k 님이 보유하고 있는 장비 아이템 목록입니다. 인벤토리에 정렬된 순서로 출력되었으니 #r옵션을 변경하고 싶은 아이템#k을 선택해주세요.\r\n#b#fs11#";
+                txt = "Here is the list of equipment items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -64,7 +64,7 @@ function action(M, T, S) {
             case 3:
                 inz = cm.getInventory(6);
                 invtype = 6;
-                txt = "현재 #b#h ##k 님이 보유하고 있는 치장 아이템 목록입니다. 인벤토리에 정렬된 순서로 출력되었으니 #r옵션을 변경하고 싶은 아이템#k을 선택해주세요.\r\n#b#fs11#";
+                txt = "Here is the list of cash items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -143,7 +143,7 @@ function action(M, T, S) {
                 } else if (invtype == 6) {
                     cm.getPlayer().forceReAddItem(inz, Packages.client.inventory.MapleInventoryType.CASH);
                 } else {
-                    cm.sendOk("오류 발생");
+                    cm.sendOk("Error Occurrence");
                     cm.dispose();
                     return;
                 }
@@ -161,39 +161,39 @@ function action(M, T, S) {
 
 function showPotentialCode() {
     var list = [
-        "　< 주요 스탯% 관련 잠재능력 코드 >",
-        "　힘　: +3%(10041)　힘　: +6%(20041)　힘　: +9%(30041)　힘　: +12%(40041)",
-        "　덱스: +3%(10042)　덱스: +6%(20042)　덱스: +9%(30042)　덱스: +12%(40042)",
-        "　인트: +3%(10043)　인트: +6%(20043)　인트: +9%(30043)　인트: +12%(40043)",
-        "　럭　: +3%(10044)　럭　: +6%(20044)　럭　: +9%(30044)　럭　: +12%(40044)",
-        "　올스텟: +9%(40086)　　 올스텟: +12%(40081)　　 올스텟: +20%(60002)",
-        "　< 기타 스탯% 관련 잠재능력 코드 >",
-        "　최대체력: +3%(10045)　최대체력: +6%(20045)　최대체력: +9%(30045)　최대체력: +12%(40045)",
-        "　최대마나: +3%(10046)　최대마나: +6%(20046)　최대마나: +9%(30046)　최대마나: +12%(40046)",
-        "　회피치　: +3%(10048)　회피치　: +6%(20048)　회피치　: +9%(30048)　회피치　: +12%(40048)",
-        "　< 무기 관련 잠재능력 코드 >",
-        "　데미지: +6%(20070)　데미지: +9%(30070)　데미지: +12%(40070)",
-        "　공격력: +6%(20051)　공격력: +9%(30051)　공격력: +12%(40051)",
-        "　마력　: +6%(20052)　마력　: +9%(30052)　마력　: +12%(40052)",
-        "　< 몬스터 방어율 무시 관련 잠재능력 코드 >",
+        "　< Main Stat% Potential Codes >",
+        "　STR : +3%(10041)　STR : +6%(20041)　STR : +9%(30041)　STR : +12%(40041)",
+        "　DEX : +3%(10042)　DEX : +6%(20042)　DEX : +9%(30042)　DEX : +12%(40042)",
+        "　INT : +3%(10043)　INT : +6%(20043)　INT : +9%(30043)　INT : +12%(40043)",
+        "　LUK : +3%(10044)　LUK : +6%(20044)　LUK : +9%(30044)　LUK : +12%(40044)",
+        "　All Stat: +9%(40086)　　 All Stat: +12%(40081)　　 All Stat: +20%(60002)",
+        "　< Other Stat% Potential Codes >",
+        "　MaxHP: +3%(10045)　MaxHP: +6%(20045)　MaxHP: +9%(30045)　MaxHP: +12%(40045)",
+        "　MaxMP: +3%(10046)　MaxMP: +6%(20046)　MaxMP: +9%(30046)　MaxMP: +12%(40046)",
+        "　Avoid: +3%(10048)　Avoid: +6%(20048)　Avoid: +9%(30048)　Avoid: +12%(40048)",
+        "　< Weapon Potential Codes >",
+        "　Damage: +6%(20070)　Damage: +9%(30070)　Damage: +12%(40070)",
+        "　Attack: +6%(20051)　Attack: +9%(30051)　Attack: +12%(40051)",
+        "　Magic Attack: +6%(20052)　Magic Attack: +9%(30052)　Magic Attack: +12%(40052)",
+        "　< Ignore Monster Defense Potential Codes >",
         "　+15%(10291)　+20%(20291)　+30%(30291)　+35%(40291)　+40%(40292)",
-        "　< 보스 몬스터 공격시 데미지 관련 잠재능력 코드 >",
+        "　< Boss Damage Potential Codes >",
         "　+20%(30601)　+25%(40601)　+30%(30602)　+35%(40602)　+40%(40603)",
-        "　< 크리티컬 관련 잠재능력 코드 >",
-        "　크리티컬 발동: +8%(20055)　+10%(30055)　+12%(40055)",
-        "　크리티컬 최소 데미지: +15%(40056)　크리티컬 최대 데미지: +15%(40057)",
-        "　< 장신구 · 방어구 관련 잠재능력 코드 >",
-        "　메소 획득량: +20%(40650)　아이템 획득 확률: +20%(40656)",
-        "　피격 후 무적시간: 1초(20366)　2초(30366)　3초(40366)",
-        "　< 쓸만한 스킬 관련 잠재능력 코드 >",
-        "　(유니크)　헤이스트(31001)　미스틱 도어(31002)　샤프 아이즈(31003)　하이퍼 바디(31004)",
-        "　(레전드리)　컴뱃 오더스(41005)　어드밴스드 블레스(41006)　윈드 부스터(41007)"
+        "　< Critical Potential Codes >",
+        "　Critical Rate: +8%(20055)　+10%(30055)　+12%(40055)",
+        "　Crit Min Dmg: +15%(40056)　Crit Max Dmg: +15%(40057)",
+        "　< Accessory · Armor Potential Codes >",
+        "　Meso Obtain: +20%(40650)　Item Drop Rate: +20%(40656)",
+        "　Invincibility time after hit: 1 sec(20366)　2 sec(30366)　3 sec(40366)",
+        "　< Decent Skill Potential Codes >",
+        "　(Unique)　Haste(31001)　Mystic Door(31002)　Sharp Eyes(31003)　Hyper Body(31004)",
+        "　(Legendary)　Combat Orders(41005)　Advanced Bless(41006)　Wind Booster(41007)"
     ];
     for (var i = 0; i < list.length; i++) {
         send(20, list[i]);
     }
-    cm.getPlayer().dropMessage(1, "채팅창을 최대로 확대하면 모든 내용이 표시됩니다.");
+    cm.getPlayer().dropMessage(1, "Maximize the chat window to see all content.");
     cm.dispose();
 }
 
-// 나머지 addItemInfo 함수는 기존과 동일하게 사용하시면 됩니다.
+// Use the remaining addItemInfo function as is.

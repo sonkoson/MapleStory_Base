@@ -111,7 +111,7 @@ function action(mode, type, sel) {
     }
     /*
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("점검 중 입니다.");
+            cm.sendOk("Under maintenance.");
             cm.dispose();
             return;
         }
@@ -372,7 +372,7 @@ function updateArcSymbolStats(inv, invType, oldType, newType) {
 function getArcStar(owner) {
     if (!owner) return 0;
     var m = owner.match(/Transcendence\s*([0-9]+)Star/);
-    if (!m) m = owner.match(/초월\s*([0-9]+)성/);
+
     return m ? parseInt(m[1], 10) : 0;
 }
 

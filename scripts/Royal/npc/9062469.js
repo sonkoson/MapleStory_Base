@@ -17,7 +17,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0 && type == 3 && selection == -1) {
-            //cm.sayNpc("역시 장사는 쉽지 않군요...", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
+            //cm.sayNpc("Business is not easy...", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         } else if (mode == 0) {
@@ -28,42 +28,42 @@ function action(mode, type, selection) {
             status++;
         else
             status--;
-        
+
         if (status == 0) {
             var result = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame1_result");
-            var canGain = cm.getPlayer().canGainStackEventGauge(1); // 코어 젬 금일 획득 가능량
-            
-            if (result == 2) { // 항복
-                var v0 = "도중에 포기하다니, 정말 실망이야!\r\n끈기가 없는 사람에겐 보상을 줄 수 없어.";
+            var canGain = cm.getPlayer().canGainStackEventGauge(1); // Core Gem Daily Limit
+
+            if (result == 2) { // Surrender
+                var v0 = "ยอมแพ้กลางคันแบบนี้ น่าผิดหวังจริงๆ!\r\nฉันให้รางวัลกับคนที่ไม่ความอดทนไม่ได้หรอกนะ";
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 1) { // 승리
-                
-                var v0 = "이번 게임의 승리자는 #b#h0##k! 제법인걸?\r\n\r\n";
+            } else if (result == 1) { // Victory
+
+                var v0 = "ผู้ชนะในเกมนี้คือ #b#h0##k! เก่งใช้ได้เลยนี่?\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "오늘은 이미 #e#r일일 제한량#k#n을 달성해서 보상을 더 챙겨 줄 수 없어.";
+                    v0 += "วันนี้คุณได้รับรางวัลครบ #e#rDaily Limit#k#n แล้ว ไม่สามารถรับเพิ่มได้อีก";
                 } else {
-                    v0 += "#e#b네오 젬 60개#k#n를 챙겨줄게!\r\n\r\n#r(보상은 퇴장 시 지급됩니다)#k";
+                    v0 += "ฉันจะให้ #e#bNeo Gem 60 อัน#k#n นะ!\r\n\r\n#r(รางวัลจะได้รับเมื่อออกจากแผนที่)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 4) { // 패배
-                var v0 = "아쉽지만 다음에 다시 승부를 내보자고!\r\n\r\n";
+            } else if (result == 4) { // Defeat
+                var v0 = "น่าเสียดายจัง ไว้มาตัดสินกันคราวหน้านะ!\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "오늘은 이미 #e#r일일 제한량#k#n을 달성해서 보상을 더 챙겨 줄 수 없어.";
+                    v0 += "วันนี้คุณได้รับรางวัลครบ #e#rDaily Limit#k#n แล้ว ไม่สามารถรับเพิ่มได้อีก";
                 } else {
-                    v0 += "#e#b네오 젬 20개#k#n를 챙겨줄게!\r\n\r\n#r(보상은 퇴장 시 지급됩니다)#k";
+                    v0 += "ฉันจะให้ #e#bNeo Gem 20 อัน#k#n นะ!\r\n\r\n#r(รางวัลจะได้รับเมื่อออกจากแผนที่)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            } else if (result == 3) { // 무승부
-                var v0 = "무승부라니 아주 치열한 승부였어!\r\n\r\n";
+            } else if (result == 3) { // Draw
+                var v0 = "เสมอเหรอเนี่ย เป็นการต่อสู้ที่ดุเดือดจริงๆ!\r\n\r\n";
                 if (canGain <= 0) {
-                    v0 += "오늘은 이미 #e#r일일 제한량#k#n을 달성해서 보상을 더 챙겨 줄 수 없어.";
+                    v0 += "วันนี้คุณได้รับรางวัลครบ #e#rDaily Limit#k#n แล้ว ไม่สามารถรับเพิ่มได้อีก";
                 } else {
-                    v0 += "#e#b네오 젬 30개#k#n를 챙겨줄게!\r\n\r\n#r(보상은 퇴장 시 지급됩니다)#k";
+                    v0 += "ฉันจะให้ #e#bNeo Gem 30 อัน#k#n นะ!\r\n\r\n#r(รางวัลจะได้รับเมื่อออกจากแผนที่)#k";
                 }
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             } else {
-                // 강제 종료
-                var v0 = "도중에 나가다니, 정말 실망이야!\r\n끈기가 없는 사람에겐 보상을 줄 수 없어.";
+                // Forced Exit
+                var v0 = "ออกกลางคันแบบนี้ น่าผิดหวังจริงๆ!\r\nฉันให้รางวัลกับคนที่ไม่ความอดทนไม่ได้หรอกนะ";
                 cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             }
         } else if (status == 1) {
@@ -72,7 +72,7 @@ function action(mode, type, selection) {
             var prevneoGem = cm.getPlayer().getKeyValue(100712, "point");
 
             if (canGain > 0) {
-                
+
                 if (result == 1) {
                     cm.getPlayer().setKeyValue(100712, "point", prevneoGem + 60);
                     //cm.getPlayer().gainStackEventGauge(1, 60, false);

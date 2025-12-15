@@ -1,25 +1,24 @@
-// 이벤트NPC 카스토르
-별보 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 = "#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-하늘색 = "#fc0xFF58D4D3#"
-enter = "\r\n"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+// Event NPC Castor
+var starBo = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var starBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var starYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var starWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var starBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var starRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var rewardIcon = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var obtainIcon = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var color = "#fc0xFF6600CC#"
+var black = "#fc0xFF000000#"
+var pink = "#fc0xFFFF3366#"
+var lightPink = "#fc0xFFF781D8#"
+var skyBlue = "#fc0xFF58D4D3#"
+var enter = "\r\n"
+var enter2 = "\r\n\r\n"
 
 var seld = -1;
 var status = -1;
@@ -48,21 +47,21 @@ function action(mode, type, sel) {
         var msg = "#fs11##fUI/Basic.img/Zenia/SC/1#\r\n";
         msg += "#Cgray#――――――――――――――――――――――――――――――――――――――――\r\n";
 
-        msg += "#L110#" + 별파 + 하늘색 + " [EVENT]#b [" + 색 + "오픈기념 이벤트 주화 상점#b]" + 핑크색 + " 바로가기#l\r\n";
-        msg += "#L10#" + 별파 + 하늘색 + " [EVENT]#b [" + 색 + "강림월드 사냥 페스티벌#b]" + 핑크색 + " 바로가기#l\r\n";
-        //msg += "#L100#" + 별보 + 하늘색 + "[EVENT]#b [" + 색 + "미니게임#b] " + 검은색 + "진행하기#l\r\n";
+        msg += "#L110#" + starBlue + skyBlue + " [EVENT]#b [" + color + "ร้านค้าเหรียญกิจกรรมฉลองเปิดเซิร์ฟ#b]" + pink + " ไปทันที#l\r\n";
+        msg += "#L10#" + starBlue + skyBlue + " [EVENT]#b [" + color + "เทศกาลล่าสัตว์ Advent World#b]" + pink + " ไปทันที#l\r\n";
+        //msg += "#L100#" + starPurple + skyBlue + "[EVENT]#b [" + color + "Mini Game#b] " + black + "เล่นเกม#l\r\n";
 
         msg += "\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――";
 
-        //msg += "#L16#" + 별보 + "#r[상시]#b [" + 색 + "강림쿠폰#b] " + 검은색 + "이벤트 코드 입력하기\r\n";
-        
-        msg += "#L14#" + 별보 + "#r [EVENT]#b [" + 색 + "매일접속보상#b] " + 검은색 + "지급받기#l\r\n";
-        msg += "#L11#" + 별보 + "#r [EVENT]#b [" + 색 + "유니온 8000#b] " + 검은색 + "보상 받기 (" + checkunion() + ")#l\r\n";
+        //msg += "#L16#" + starPurple + "#r[ตลอดเวลา]#b [" + color + "Advent Coupon#b] " + black + "กรอกโค้ดกิจกรรม\r\n";
 
-        //msg += "#L12#" + 별보 + "#r[상시]#b [" + 색 + "수박화채#b] " + 검은색 + "만들기#l　";
-        //msg += "#L13#" + 별보 + "#r[상시]#b [" + 색 + "돌림판#b] " + 검은색 + "이용하기#l\r\n";
+        msg += "#L14#" + starPurple + "#r [EVENT]#b [" + color + "รางวัลล็อกอินรายวัน#b] " + black + "รับรางวัล#l\r\n";
+        msg += "#L11#" + starPurple + "#r [EVENT]#b [" + color + "Union 8000#b] " + black + "รับรางวัล (" + checkunion() + ")#l\r\n";
 
-        //msg += "#L15#" + 별보 + "#r[상시]#b [" + 색 + "우편함#b] " + 검은색 + "확인하기#l\r\n";
+        //msg += "#L12#" + starPurple + "#r[ตลอดเวลา]#b [" + color + "Watermelon Punch#b] " + black + "ทำ#l　";
+        //msg += "#L13#" + starPurple + "#r[ตลอดเวลา]#b [" + color + "Roulette#b] " + black + "หมุนวงล้อ#l\r\n";
+
+        //msg += "#L15#" + starPurple + "#r[ตลอดเวลา]#b [" + color + "Mailbox#b] " + black + "ตรวจสอบ#l\r\n";
         cm.sendSimple(msg);
 
     } else if (status == 1) {
@@ -84,26 +83,26 @@ function action(mode, type, sel) {
             case 11:
                 var v = cm.getPlayer().getOneInfoQuest(18771, "rank");
                 if (v == null | v.isEmpty()) {
-                    cm.sendOk("#fs11#현재 유니온 정보가 없으십니다!\r\n\r\n먼저 유니온 시스템을 이용하여 유니온을 생성해주세요\r\n#b[컨텐츠시스템 - 유니온] #rOR #b[@유니온] #k명령어 사용");
+                    cm.sendOk("#fs11#คุณไม่มีข้อมูล Union ในขณะนี้!\r\n\r\nกรุณาสร้าง Union โดยใช้ระบบ Union ก่อน\r\n#b[ระบบคอนเทรนต์ - Union] #rOR #b[@Union] #kใช้คำสั่ง");
                     return;
                 }
 
                 if (cm.getClient().getKeyValue("unionevent") == null) {
                     if (cm.getInvSlots(1) < 5 || cm.getInvSlots(2) < 5 || cm.getInvSlots(3) < 5 || cm.getInvSlots(4) < 5 || cm.getInvSlots(5) < 5) {
-                        cm.sendOkS("#fs11##fc0xFF6600CC#인벤토리를 탭별로 5칸이상 비워주세요", 2);
+                        cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาเคลียร์ช่องเก็บของให้ว่างอย่างน้อย 5 ช่องในแต่ละแท็บ", 2);
                         cm.dispose();
                         return;
                     }
                     if (cm.getPlayer().getUnionLevel() >= 8000) {
                         var msg = "#fs11#";
-                        msg += "유니온 8천 달성 축하드립니다." + 엔터;
-                        msg += "작지만 성장에 도움이 되는 아이템을 지급 하였습니다." + 엔터;
-                        msg += "#i4310229##z4310229# 2000개" + 엔터;
-                        msg += "#i4310266##z4310266# 1000개" + 엔터;
-                        msg += "#i4310237##z4310237# 2000개" + 엔터;
-                        msg += "#i4001715##z4001715# 200개" + 엔터;
-                        msg += "#i5060048##z5060048# 5개" + 엔터;
-                        msg += "#i2630009##z2630009# 3개" + 엔터;
+                        msg += "ยินดีด้วยที่บรรลุ Union 8000" + enter;
+                        msg += "เราได้มอบไอเทมเล็กๆ น้อยๆ เพื่อช่วยในการเติบโตของคุณแล้ว" + enter;
+                        msg += "#i4310229##z4310229# 2000 ชิ้น" + enter;
+                        msg += "#i4310266##z4310266# 1000 ชิ้น" + enter;
+                        msg += "#i4310237##z4310237# 2000 ชิ้น" + enter;
+                        msg += "#i4001715##z4001715# 200 ชิ้น" + enter;
+                        msg += "#i5060048##z5060048# 5 ชิ้น" + enter;
+                        msg += "#i2630009##z2630009# 3 ชิ้น" + enter;
                         cm.sendOk(msg);
                         cm.gainItem(4310229, 2000);
                         cm.gainItem(4310266, 1000);
@@ -114,11 +113,11 @@ function action(mode, type, sel) {
                         cm.getClient().setKeyValue("unionevent", "1");
                         cm.dispose();
                     } else {
-                        cm.sendOk("#fs11#유니온 레벨이 모자라는거 같은데요?\r\n현재 유니온 레벨 :#r" + cm.getPlayer().getUnionLevel());
+                        cm.sendOk("#fs11#ดูเหมือนว่าเลเวล Union ของคุณยังไม่ถึงนะ?\r\nเลเวล Union ปัจจุบัน :#r" + cm.getPlayer().getUnionLevel());
                         cm.dispose();
                     }
                 } else {
-                    cm.sendOk("#fs11#이미 유니온 이벤트에 참여하셨습니다.");
+                    cm.sendOk("#fs11#คุณได้เข้าร่วมกิจกรรม Union ไปแล้ว");
                     cm.dispose();
                 }
                 return;
@@ -150,35 +149,35 @@ function action(mode, type, sel) {
 
 
 
-            // 미니게임
+            // Mini Game
             case 100:
                 var msg = "#fs11#    #fUI/Basic.img/Zenia/SC/1#\r\n";
                 msg += "#Cgray#――――――――――――――――――――――――――――――――――――――――\r\n";
-                msg += "                  #L10#" + 핑크색 + 파랑 + "[에르다 스펙트럼]" + 색 + " 진행" + 검은색 + " 하기#l" + enter;
-                msg += "                    #L11#" + 핑크색 + 파랑 + "[배고픈 무토]" + 색 + " 진행" + 검은색 + " 하기#l" + enter;
-                msg += "                   #L12#" + 핑크색 + 파랑 + "[드림 브레이커]" + 색 + " 진행" + 검은색 + " 하기#l" + enter;
-                //msg += "                   #L13#" + 핑크색 + 파랑 + "[스피릿 세이버]" + 색 + " 진행" + 검은색 + " 하기#l" + enter;
+                msg += "                  #L10#" + pink + blue + "[Erda Spectrum]" + color + " เล่น" + black + " เกม#l" + enter;
+                msg += "                    #L11#" + pink + blue + "[Hungry Muto]" + color + " เล่น" + black + " เกม#l" + enter;
+                msg += "                   #L12#" + pink + blue + "[Dream Breaker]" + color + " เล่น" + black + " เกม#l" + enter;
+                //msg += "                   #L13#" + pink + blue + "[Spirit Savior]" + color + " เล่น" + black + " เกม#l" + enter;
 
                 msg += enter;
 
-                msg += "         #L1#" + 색 + 파랑 + "#r[솔로]" + 색 + " 게임" + 검은색 + " 하기#l";
-                msg += "#L2#" + 색 + 파랑 + "#r[멀티]" + 색 + " 게임" + 검은색 + " 하기#l" + enter;
+                msg += "         #L1#" + color + blue + "#r[Solo]" + color + " เล่น" + black + " เกม#l";
+                msg += "#L2#" + color + blue + "#r[Multi]" + color + " เล่น" + black + " เกม#l" + enter;
 
                 msg += enter;
 
-                msg += "                        #L3#" + 색 + 파랑 + "#b[고전]" + 색 + " 게임" + 검은색 + " 하기#l";
+                msg += "                        #L3#" + color + blue + "#b[Classic]" + color + " เล่น" + black + " เกม#l";
                 msg += "\r\n\r\n#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――";
                 cm.sendSimple(msg);
                 return;
 
             case 123:
                 if (cm.haveItem(3010432, 1)) {
-                    cm.sendOk("#fs11##d이미 가지고 있는거 같은데?");
+                    cm.sendOk("#fs11##dดูเหมือนว่าคุณจะมีอยู่แล้วนะ?");
                     cm.dispose();
                     return;
                 }
                 cm.gainItem(3010432, 1);
-                cm.sendOk("#fs11##i3010432##b#z3010432# #d 아이템이 지급되었습니다.");
+                cm.sendOk("#fs11##i3010432##b#z3010432# #d มอบไอเทมเรียบร้อยแล้ว");
                 cm.dispose();
                 return;
 
@@ -190,7 +189,7 @@ function action(mode, type, sel) {
         }
     } else if (status == 2) {
         switch (seld) {
-            // 미니게임
+            // Mini Game
             case 100:
                 switch (sel) {
                     case 1:
@@ -228,10 +227,10 @@ function action(mode, type, sel) {
 
 function checkunion() {
     if (cm.getClient().getKeyValue("unionevent") == null && cm.getPlayer().getUnionLevel() >= 8000) {
-        return "#b수령가능";
+        return "#bรับได้";
     } else if (cm.getClient().getKeyValue("unionevent") == null && cm.getPlayer().getUnionLevel() < 8000) {
-        return "#r레벨부족";
+        return "#rเลเวลไม่พอ";
     } else if (cm.getClient().getKeyValue("unionevent") != null) {
-        return "#r수령완료";
+        return "#rรับไปแล้ว";
     }
 }

@@ -152,19 +152,19 @@ function action(mode, type, selection) {
             cm.sendOk(chat)
         }
 
-    } else if (status == 2) { //직업출력        
+    } else if (status == 2) { // Job Output        
         if (selectedStealSkillSlot == null) {
             selectedStealSkillSlot = selection;
         }
 
         chat += 'กรุณาเลือกอาชีพที่ต้องการขโมยสกิล' + enter
 
-        //stealSkills에서 해당되는 차수의 스킬을 모두가져와서 
-        //skillId에서 jobId을 잘라내서 직업목록을 파싱하는방식
-        //직업별로 다 따로하는거보다는 이게 좀더 편해서그럼
-        //가져온 목록은 0~해당차수의 스킬 길이만큼 iteration을 돌려서 
-        //selection을 만들고 seletedStealSkillSlot은 글로벌 변수니까 
-        //굳이 forkedList같은걸 만들지않고 필요할때마다 가져오기로함
+        // Get all skills of the corresponding degree from stealSkills and
+        // parse the job list by cutting jobId from skillId.
+        // It's easier than doing it separately for each job.
+        // The retrieved list is iterated from 0 to the length of the skills of the corresponding degree
+        // to create a selection. Since selectedStealSkillSlot is a global variable,
+        // I decided not to create a forkedList and get it whenever needed.
         for (var i = 0; i < stealSkills[selectedStealSkillSlot].length; i++) {
             var skillId = stealSkills[selectedStealSkillSlot][i];
             var jobId = Math.floor(skillId / 10000);
@@ -177,41 +177,41 @@ function action(mode, type, selection) {
             }
         }
         cm.sendSimple(chat)
-    } else if (status == 3) { //스킬목록출력
+    } else if (status == 3) { // Skill List Output
         if (selectedJobIndex == null) {
             selectedJobIndex = selection;
         }
 
         chat += 'กรุณาเลือกสกิลที่ต้องการขโมย' + enter
 
-        //selectedJobIndex는 한번만 쓰이는데 굳이해야할까? 했는데 언젠가 한번은 쓰겠지뭐
-        //걍 셀렉션 한번 래핑하는겸에 일케하기로함        
+        // selectedJobIndex is used only once, so I wondered if I should do it, but I guess I'll use it sometime.
+        // I decided to do this since I'm wrapping the selection once.        
         var selectedJobId = jobList[selectedJobIndex];
         for (var i = 0; i < stealSkills[selectedStealSkillSlot].length; i++) {
             var skillId = stealSkills[selectedStealSkillSlot][i];
             var jobId = Math.floor(skillId / 10000);
             if (jobId == selectedJobId) {
                 chat += '#L' + i + '#';
-                chat += '#s' + skillId + '#'; //스킬 이미지
-                chat += Packages.objects.users.skills.SkillFactory.getSkillName(skillId); //스킬이름
+                chat += '#s' + skillId + '#'; // Skill Image
+                chat += Packages.objects.users.skills.SkillFactory.getSkillName(skillId); // Skill Name
                 chat += enter;
             }
         }
         cm.sendSimple(chat);
-    } else if (status == 4) { //스킬넣을 슬롯선택
+    } else if (status == 4) { // Select slot to put skill in
         if (selectedSkillIndex == null) {
             selectedSkillIndex = selection;
         }
         chat += 'กรุณาเลือกช่องที่จะใส่สกิล' + enter;
         var stolenSkillArray = getStoleanSkillArray();
-        //selectedStealSkillSlot값을 업데이트하는 셀렉션은 0부터하는데
-        //해당 메서드와 인덱스차이가 1나므로 이렇게함 다른데쓰이는걸 고치는거보단 이게나은듯
-        //어레이 인덱스로도 쓰이니까 이게 나은듯
+        // The selection that updates the selectedStealSkillSlot value starts from 0,
+        // but since there is a 1 index difference with the method, I did this.
+        // It's better than fixing it elsewhere since it's also used as an array index.
 
         numstealslot = GameConstants.getNumSteal(selectedStealSkillSlot + 1);
 
         for (var i = 0; i < numstealslot; i++) {
-            var stolenSkill = stolenSkillArray[selectedStealSkillSlot][i]; //.left, .right를 갖고있는 일종의 튜플
+            var stolenSkill = stolenSkillArray[selectedStealSkillSlot][i]; // A kind of tuple with .left, .right
             chat += '#L' + i + '#';
             chat += (i + 1) + ' Slot: '
             if (stolenSkill != null) {

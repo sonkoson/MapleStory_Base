@@ -11,7 +11,7 @@ function action(mode, type, selection) {
     else
         status--;
     if (status == 0) {
-	cm.dispose();
-	cm.openNpcCustom(cm.getClient(), 9062611, "이벤트");
+        cm.dispose();
+        cm.openNpcCustom(cm.getClient(), 9062611, "Event");
     }
 }

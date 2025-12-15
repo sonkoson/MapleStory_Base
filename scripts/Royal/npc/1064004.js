@@ -20,7 +20,7 @@ function action(mode, type, selection) {
         var chat = "รู้ใช่ไหมว่าต้องใช้ #bOld Tree Key#k เพื่อไปพบผู้พิทักษ์แห่งการผนึก? ถ้าต้องการล่ะก็ บอกข้าได้เลย.#b\r\n\r\n";
         chat += "#L1# ซื้อ #i4033611# #z4033611# ในราคา 400,000 meso\r\n";
         chat += "#L2# ซื้อ #i4033611# #z4033611# 10 ชิ้น ในราคา 3,600,000 meso\r\n";
-        //chat += "#L2# #i4310064# #z4310064#을 교환하기";
+        //chat += "#L2# Exchange #i4310064# #z4310064#";
         cm.sendSimple(chat);
 
     } else if (status == 1) {

@@ -5,25 +5,25 @@ importPackage(Packages.client);
 importPackage(java.lang);
 importPackage(Packages.network.game);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 = "#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+var Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+var Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+var StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+var StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+var StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+var StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+var StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+var StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+var StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+var S = "#fUI/CashShop.img/CSEffect/today/0#"
+var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+var Color = "#fc0xFF6600CC#"
+var Black = "#fc0xFF000000#"
+var Pink = "#fc0xFFFF3366#"
+var LightPink = "#fc0xFFF781D8#"
+var Enter = "\r\n"
+var Enter2 = "\r\n\r\n"
 enter = "\r\n";
 
 var seld = -1;
@@ -35,7 +35,7 @@ var reward = 0;
 var seldgrade = 0;
 var S1 = -1;
 
-// 달성보상
+// Achievement Reward
 var nreward = [
     { 'ngrade': 1, 'items': [[1143891, 1], [4310266, 2000], [4001715, 200]], 'select': false },
     { 'ngrade': 2, 'items': [[1143892, 1], [4310266, 3000], [4001715, 300]], 'select': false },
@@ -52,10 +52,10 @@ var nreward = [
     { 'ngrade': 13, 'items': [[1143903, 1], [1162079, 1], [2439988, 1], [5068306, 15], [4031227, 15000], [4310308, 20000]], 'select': false },
     { 'ngrade': 14, 'items': [[1143904, 1], [1190565, 1], [2439988, 1], [5068306, 15], [4031227, 20000], [4310308, 25000]], 'select': false },
     { 'ngrade': 15, 'items': [[1143905, 1], [2439959, 1], [2439988, 1], [5068306, 20], [4031227, 25000], [4310308, 30000]], 'select': false }
-] // ngrade는 밑에 grade
+] // ngrade matches grade below
 
 var grade = [
-    [0, "일반"],
+    [0, "Normal"],
     [1, "VIP Bronze"],
     [2, "VIP Silver"],
     [3, "VIP Gold"],
@@ -196,33 +196,33 @@ function action(mode, type, sel) {
             cm.getClient().setKeyValue("DPointAll", "0");
 
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "This feature cannot be used during boss battles.");
             cm.dispose();
             return;
         }
 
-        var 보유캐시 = comma(cm.getPlayer().getCashPoint());
-        var 보유포인트 = comma(cm.getPlayer().getDonationPoint());
-        var 현재등급 = cm.getPlayer().getHgrades();
-        var 누적캐시 = comma(cm.getClient().getKeyValue("DPointAll"));
+        var ownedCash = comma(cm.getPlayer().getCashPoint());
+        var ownedPoint = comma(cm.getPlayer().getDonationPoint());
+        var currentGrade = cm.getPlayer().getHgrades();
+        var totalCash = comma(cm.getClient().getKeyValue("DPointAll"));
 
-        var msg = "#fs11#" + 검은색;
-        msg += "         " + 별흰 + " 현재 #fc0xFFFF3366##h ##fc0xFF000000# 님의 등급 : #fc0xFFFF3366#" + 현재등급 + 검은색 + enter;
-        msg += "         " + 별흰 + " 현재 #fc0xFFFF3366##h ##fc0xFF000000# 님의 누적 캐시 : #fc0xFFFF3366#" + 누적캐시 + "C#b" + enter + enter;
-        msg += " #fc0xFF000000#　　- 보유 캐시 : #fc0xFFFF3366#" + 보유캐시 + "C#k" + 검은색;
-        msg += " #fc0xFF000000#   - 보유 포인트 : #fc0xFFFF3366#" + 보유포인트 + "P#k" + 검은색 + enter;
+        var msg = "#fs11#" + Black;
+        msg += "         " + StarWhite + " Current #fc0xFFFF3366##h ##fc0xFF000000#'s Grade : #fc0xFFFF3366#" + currentGrade + Black + Enter;
+        msg += "         " + StarWhite + " Current #fc0xFFFF3366##h ##fc0xFF000000#'s Total Cash : #fc0xFFFF3366#" + totalCash + "C#b" + Enter + Enter;
+        msg += " #fc0xFF000000#　　- Owned Cash : #fc0xFFFF3366#" + ownedCash + "C#k" + Black;
+        msg += " #fc0xFF000000#   - Owned Points : #fc0xFFFF3366#" + ownedPoint + "P#k" + Black + Enter;
         msg += "#l#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
-        msg += "　　　　#b#L22##e[ 캐시 상점 ]#n#l";
-        msg += "      #b#L2##e[ 포인트 상점 ]#n#l" + enter + enter;
-        msg += "　　　#b#L3#[ 초월 아케인심볼 ]#l";
-        msg += "  #b#L4#[ 치장아이템 강화 ]#l" + enter;
-        //msg += "      #b#L2#- 포인트 상점 -#l" +enter;
+        msg += "　　　　#b#L22##e[ Cash Shop ]#n#l";
+        msg += "      #b#L2##e[ Point Shop ]#n#l" + Enter + Enter;
+        msg += "　　　#b#L3#[ Transcendent Arcane Symbol ]#l";
+        msg += "  #b#L4#[ Enhance Cosmetic Items ]#l" + Enter;
+        //msg += "      #b#L2#- Point Shop -#l" +Enter;
 
         msg += "#l\r\n#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
 
-        msg += 색 + "　　　　#L5#- 등급 달성보상 수령 -#l" + enter;
-        msg += 색 + "　　　　#L50#- 누적 캐시보상 수령 -#l #Cgray##L61#(보상보기)#l#k" + enter;
-        msg += 색 + "　　　　#L6#- 등급 주간보상 수령 -#l #Cgray##L60#(보상보기)#l#k" + enter;
+        msg += Color + "　　　　#L5#- Receive Grade Achievement Reward -#l" + Enter;
+        msg += Color + "　　　　#L50#- Receive Cumulative Cash Reward -#l #Cgray##L61#(View Rewards)#l#k" + Enter;
+        msg += Color + "　　　　#L6#- Receive Grade Weekly Reward -#l #Cgray##L60#(View Rewards)#l#k" + Enter;
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;
@@ -243,16 +243,16 @@ function action(mode, type, sel) {
                 cm.openNpcCustom(cm.getClient(), 9000331, "강림캐시강화");
                 break;
             case 5:
-                var msg = "#fs11#현재 #b#h ##k님의 등급은 #b" + cm.getPlayer().getHgrades() + "#k입니다." + enter;
+                var msg = "#fs11#Current #b#h ##k's grade is #b" + cm.getPlayer().getHgrades() + "#k." + Enter;
                 var a = "";
-                a += "#L999##r달성 보상 미리보기#k" + enter + enter;
+                a += "#L999##rAchievement Reward Preview#k" + Enter + Enter;
                 for (i = 0; i < nreward.length; i++) {
                     if (cm.getClient().getKeyValue("nd_" + nreward[i]['ngrade']) == null && cm.getPlayer().getHgrade() >= nreward[i]['ngrade']) {
-                        a += "#L" + i + "##b" + grade[nreward[i]['ngrade']][1] + " 누적 보상 (지급 가능)#k" + enter;
+                        a += "#L" + i + "##b" + grade[nreward[i]['ngrade']][1] + " Cumulative Reward (Available)#k" + Enter;
                     }
                 }
                 if (a.equals("")) {
-                    msg += "받을 수 있는 보상이 없습니다.";
+                    msg += "There are no rewards available to collect.";
                     cm.sendOk(msg);
                     cm.dispose();
                     return;
@@ -282,9 +282,9 @@ function action(mode, type, sel) {
 
                 var rlist = "";
                 for (a = 0; a < daily.length; a++) {
-                    rlist += "#b#i" + daily[a][0] + "##z" + daily[a][0] + "# " + daily[a][1] + "개" + enter;
+                    rlist += "#b#i" + daily[a][0] + "##z" + daily[a][0] + "# " + daily[a][1] + " (Qty)" + Enter;
                 }
-                cm.sendYesNo("#fs11##b " + cm.getPlayer().getHgrades() + " 보상 수령 가능!#k#r (매주 월요일 초기화)#k\r\n\r\n" + rlist + "\r\n\r\n #r수령 하시겠습니까?");
+                cm.sendYesNo("#fs11##b " + cm.getPlayer().getHgrades() + " Reward Available!#k#r (Reset every Monday)#k\r\n\r\n" + rlist + "\r\n\r\n #rDo you want to receive it?");
                 break;
 
             case 22:
@@ -304,7 +304,6 @@ function action(mode, type, sel) {
                 cm.sendSimple(msg);
                 break;
 
-            case 33: // 주간미션 초기화
                 var con = DBConnection.getConnection();
                 var ps = con.prepareStatement("DELETE FROM acckeyvalue WHERE `key` = 'HgradeWeek'");
                 ps.executeUpdate();
@@ -319,70 +318,70 @@ function action(mode, type, sel) {
                     }
                 }
 
-                cm.sendOkS("초기화완료", 2);
+                cm.sendOkS("Reset Complete", 2);
                 cm.dispose();
                 break;
 
-            case 50: // 누적보상
-                var msg = 별 + " #fs11##fc0xFF000000#현재 #fc0xFFFF3366##h ##fc0xFF000000# 님의 누적 캐시 : #fc0xFFFF3366#" + cm.getClient().getKeyValue("DPointAll") + "C#fc0xFF000000##b" + enter;
-                msg += 색 + "받으실 누적보상을 선택해 주세요#b" + enter;
-                msg += "#L1998#<전체채팅 칭호> 캐릭터" + enter;
-                msg += "#L1999#<전체채팅 칭호> 계정공용" + enter + enter;
-                msg += "#L10#10만 누적보상  " + checkDPointAll(10) + enter;
-                msg += "#L20#20만 누적보상  " + checkDPointAll(20) + enter;
-                msg += "#L30#30만 누적보상  " + checkDPointAll(30) + enter;
-                msg += "#L50#50만 누적보상  " + checkDPointAll(50) + enter;
-                msg += "#L75#75만 누적보상  " + checkDPointAll(75) + enter;
-                msg += "#L100#100만 누적보상  " + checkDPointAll(100) + enter;
-                msg += "#L125#125만 누적보상  " + checkDPointAll(125) + enter;
-                msg += "#L150#150만 누적보상  " + checkDPointAll(150) + enter;
-                msg += "#L200#200만 누적보상  " + checkDPointAll(200) + enter;
-                msg += "#L250#250만 누적보상  " + checkDPointAll(250) + enter;
-                msg += "#L300#300만 누적보상  " + checkDPointAll(300) + enter;
-                msg += "#L350#350만 누적보상  " + checkDPointAll(350) + enter;
-                msg += "#L400#400만 누적보상  " + checkDPointAll(400) + enter;
-                msg += "#L450#450만 누적보상  " + checkDPointAll(450) + enter;
-                msg += "#L500#500만 누적보상  " + checkDPointAll(500) + enter;
-                msg += "#L550#550만 누적보상  " + checkDPointAll(550) + enter;
-                msg += "#L600#600만 누적보상  " + checkDPointAll(600) + enter;
-                msg += "#L650#650만 누적보상  " + checkDPointAll(650) + enter;
-                msg += "#L700#700만 누적보상  " + checkDPointAll(700) + enter;
-                msg += "#L750#750만 누적보상  " + checkDPointAll(750) + enter;
-                msg += "#L800#800만 누적보상  " + checkDPointAll(800) + enter;
-                msg += "#L850#850만 누적보상  " + checkDPointAll(850) + enter;
-                msg += "#L900#900만 누적보상  " + checkDPointAll(900) + enter;
-                msg += "#L950#950만 누적보상  " + checkDPointAll(950) + enter;
-                msg += "#L1000#1000만 누적보상  " + checkDPointAll(1000) + enter;
-                msg += "#L1050#1050만 누적보상  " + checkDPointAll(1050) + enter;
-                msg += "#L1100#1100만 누적보상  " + checkDPointAll(1100) + enter;
-                msg += "#L1150#1150만 누적보상  " + checkDPointAll(1150) + enter;
-                msg += "#L1200#1200만 누적보상  " + checkDPointAll(1200) + enter;
-                msg += "#L1250#1250만 누적보상  " + checkDPointAll(1250) + enter;
-                msg += "#L1300#1300만 누적보상  " + checkDPointAll(1300) + enter;
-                msg += "#L1350#1350만 누적보상  " + checkDPointAll(1350) + enter;
-                msg += "#L1400#1400만 누적보상  " + checkDPointAll(1400) + enter;
-                msg += "#L1450#1450만 누적보상  " + checkDPointAll(1450) + enter;
-                msg += "#L1500#1500만 누적보상  " + checkDPointAll(1500) + enter;
-                msg += "#L1550#1550만 누적보상  " + checkDPointAll(1550) + enter;
-                msg += "#L1600#1600만 누적보상  " + checkDPointAll(1600) + enter;
-                msg += "#L1650#1650만 누적보상  " + checkDPointAll(1650) + enter;
-                msg += "#L1700#1700만 누적보상  " + checkDPointAll(1700) + enter;
-                msg += "#L1750#1750만 누적보상  " + checkDPointAll(1750) + enter;
-                msg += "#L1800#1800만 누적보상  " + checkDPointAll(1800) + enter;
-                msg += "#L1850#1850만 누적보상  " + checkDPointAll(1850) + enter;
-                msg += "#L1900#1900만 누적보상  " + checkDPointAll(1900) + enter;
-                msg += "#L1950#1950만 누적보상  " + checkDPointAll(1950) + enter;
-                msg += "#L2000#2000만 누적보상  " + checkDPointAll(2000) + enter;
-                msg += "#L2100#2100만 누적보상  " + checkDPointAll(2100) + enter;
-                msg += "#L2200#2200만 누적보상  " + checkDPointAll(2200) + enter;
-                msg += "#L2300#2300만 누적보상  " + checkDPointAll(2300) + enter;
-                msg += "#L2400#2400만 누적보상  " + checkDPointAll(2400) + enter;
-                msg += "#L2500#2500만 누적보상  " + checkDPointAll(2500) + enter;
-                msg += "#L2600#2600만 누적보상  " + checkDPointAll(2600) + enter;
-                msg += "#L2700#2700만 누적보상  " + checkDPointAll(2700) + enter;
-                msg += "#L2800#2800만 누적보상  " + checkDPointAll(2800) + enter;
-                msg += "#L2900#2900만 누적보상  " + checkDPointAll(2900) + enter;
-                msg += "#L3000#3000만 누적보상  " + checkDPointAll(3000) + enter;
+            case 50: // Cumulative Reward
+                var msg = Star + " #fs11##fc0xFF000000#Current #fc0xFFFF3366##h ##fc0xFF000000#'s Cumulative Cash : #fc0xFFFF3366#" + cm.getClient().getKeyValue("DPointAll") + "C#fc0xFF000000##b" + Enter;
+                msg += Color + "Please select the cumulative reward to receive#b" + Enter;
+                msg += "#L1998#<All Chat Title> Character" + Enter;
+                msg += "#L1999#<All Chat Title> Account Shared" + Enter + Enter;
+                msg += "#L10#100k Cumulative Reward  " + checkDPointAll(10) + Enter;
+                msg += "#L20#200k Cumulative Reward  " + checkDPointAll(20) + Enter;
+                msg += "#L30#300k Cumulative Reward  " + checkDPointAll(30) + Enter;
+                msg += "#L50#500k Cumulative Reward  " + checkDPointAll(50) + Enter;
+                msg += "#L75#750k Cumulative Reward  " + checkDPointAll(75) + Enter;
+                msg += "#L100#1m Cumulative Reward  " + checkDPointAll(100) + Enter;
+                msg += "#L125#1.25m Cumulative Reward  " + checkDPointAll(125) + Enter;
+                msg += "#L150#1.5m Cumulative Reward  " + checkDPointAll(150) + Enter;
+                msg += "#L200#2m Cumulative Reward  " + checkDPointAll(200) + Enter;
+                msg += "#L250#2.5m Cumulative Reward  " + checkDPointAll(250) + Enter;
+                msg += "#L300#3m Cumulative Reward  " + checkDPointAll(300) + Enter;
+                msg += "#L350#3.5m Cumulative Reward  " + checkDPointAll(350) + Enter;
+                msg += "#L400#4m Cumulative Reward  " + checkDPointAll(400) + Enter;
+                msg += "#L450#4.5m Cumulative Reward  " + checkDPointAll(450) + Enter;
+                msg += "#L500#5m Cumulative Reward  " + checkDPointAll(500) + Enter;
+                msg += "#L550#5.5m Cumulative Reward  " + checkDPointAll(550) + Enter;
+                msg += "#L600#6m Cumulative Reward  " + checkDPointAll(600) + Enter;
+                msg += "#L650#6.5m Cumulative Reward  " + checkDPointAll(650) + Enter;
+                msg += "#L700#7m Cumulative Reward  " + checkDPointAll(700) + Enter;
+                msg += "#L750#7.5m Cumulative Reward  " + checkDPointAll(750) + Enter;
+                msg += "#L800#8m Cumulative Reward  " + checkDPointAll(800) + Enter;
+                msg += "#L850#8.5m Cumulative Reward  " + checkDPointAll(850) + Enter;
+                msg += "#L900#9m Cumulative Reward  " + checkDPointAll(900) + Enter;
+                msg += "#L950#9.5m Cumulative Reward  " + checkDPointAll(950) + Enter;
+                msg += "#L1000#10m Cumulative Reward  " + checkDPointAll(1000) + Enter;
+                msg += "#L1050#10.5m Cumulative Reward  " + checkDPointAll(1050) + Enter;
+                msg += "#L1100#11m Cumulative Reward  " + checkDPointAll(1100) + Enter;
+                msg += "#L1150#11.5m Cumulative Reward  " + checkDPointAll(1150) + Enter;
+                msg += "#L1200#12m Cumulative Reward  " + checkDPointAll(1200) + Enter;
+                msg += "#L1250#12.5m Cumulative Reward  " + checkDPointAll(1250) + Enter;
+                msg += "#L1300#13m Cumulative Reward  " + checkDPointAll(1300) + Enter;
+                msg += "#L1350#13.5m Cumulative Reward  " + checkDPointAll(1350) + Enter;
+                msg += "#L1400#14m Cumulative Reward  " + checkDPointAll(1400) + Enter;
+                msg += "#L1450#14.5m Cumulative Reward  " + checkDPointAll(1450) + Enter;
+                msg += "#L1500#15m Cumulative Reward  " + checkDPointAll(1500) + Enter;
+                msg += "#L1550#15.5m Cumulative Reward  " + checkDPointAll(1550) + Enter;
+                msg += "#L1600#16m Cumulative Reward  " + checkDPointAll(1600) + Enter;
+                msg += "#L1650#16.5m Cumulative Reward  " + checkDPointAll(1650) + Enter;
+                msg += "#L1700#17m Cumulative Reward  " + checkDPointAll(1700) + Enter;
+                msg += "#L1750#17.5m Cumulative Reward  " + checkDPointAll(1750) + Enter;
+                msg += "#L1800#18m Cumulative Reward  " + checkDPointAll(1800) + Enter;
+                msg += "#L1850#18.5m Cumulative Reward  " + checkDPointAll(1850) + Enter;
+                msg += "#L1900#19m Cumulative Reward  " + checkDPointAll(1900) + Enter;
+                msg += "#L1950#19.5m Cumulative Reward  " + checkDPointAll(1950) + Enter;
+                msg += "#L2000#20m Cumulative Reward  " + checkDPointAll(2000) + Enter;
+                msg += "#L2100#21m Cumulative Reward  " + checkDPointAll(2100) + Enter;
+                msg += "#L2200#22m Cumulative Reward  " + checkDPointAll(2200) + Enter;
+                msg += "#L2300#23m Cumulative Reward  " + checkDPointAll(2300) + Enter;
+                msg += "#L2400#24m Cumulative Reward  " + checkDPointAll(2400) + Enter;
+                msg += "#L2500#25m Cumulative Reward  " + checkDPointAll(2500) + Enter;
+                msg += "#L2600#26m Cumulative Reward  " + checkDPointAll(2600) + Enter;
+                msg += "#L2700#27m Cumulative Reward  " + checkDPointAll(2700) + Enter;
+                msg += "#L2800#28m Cumulative Reward  " + checkDPointAll(2800) + Enter;
+                msg += "#L2900#29m Cumulative Reward  " + checkDPointAll(2900) + Enter;
+                msg += "#L3000#30m Cumulative Reward  " + checkDPointAll(3000) + Enter;
                 cm.sendSimple(msg);
                 break;
 
@@ -406,13 +405,13 @@ function action(mode, type, sel) {
                     daily_15     // MVP Black
                 ];
 
-                var previewMsg = "#fs11##e주간 보상 전체 미리보기 (매주 월요일 초기화)#n\r\n\r\n";
+                var previewMsg = "#fs11##eWeekly Reward Full Preview (Resets every Monday)#n\r\n\r\n";
 
                 for (var i = 1; i < allDaily.length; i++) {
                     var list = allDaily[i];
                     previewMsg += "#fs11##e#r- " + grade[i][1] + " -#k#n#b#e\r\n";
                     for (var j = 0; j < list.length; j++) {
-                        previewMsg += "#i" + list[j][0] + "# #z" + list[j][0] + "# " + list[j][1] + "개\r\n";
+                        previewMsg += "#i" + list[j][0] + "# #z" + list[j][0] + "# " + list[j][1] + " (Qty)\r\n";
                     }
                     previewMsg += "\r\n";
                 }
@@ -506,14 +505,14 @@ function action(mode, type, sel) {
             case 5:
                 seld2 = sel;
 
-                if (seld2 == 999) { // 달성보상 미리보기
-                    var msg = "#fs11#" + 색 + "MVP 등급 달성시 받으실 수 있는 보상 입니다" + enter + enter;
+                if (seld2 == 999) { // Achievement Reward Preview
+                    var msg = "#fs11#" + Color + "Rewards available when achieving MVP Grade" + Enter + Enter;
                     for (i = 0; i < nreward.length; i++) {
-                        msg += "#r#e- " + grade[1 + i][1] + " -" + enter;
+                        msg += "#r#e- " + grade[1 + i][1] + " -" + Enter;
                         for (ii = 0; ii < nreward[i]['items'].length; ii++) {
-                            msg += "#b#e#i" + nreward[i]['items'][ii][0] + "# #z" + nreward[i]['items'][ii][0] + "# " + nreward[i]['items'][ii][1] + "개 \r\n";
+                            msg += "#b#e#i" + nreward[i]['items'][ii][0] + "# #z" + nreward[i]['items'][ii][0] + "# " + nreward[i]['items'][ii][1] + " (Qty) \r\n";
                         }
-                        msg += enter;
+                        msg += Enter;
                     }
                     cm.sendOk(msg);
                     cm.dispose();
@@ -521,7 +520,7 @@ function action(mode, type, sel) {
                 }
 
                 if (cm.getInvSlots(1) < 3 || cm.getInvSlots(2) < 3 || cm.getInvSlots(3) < 3 || cm.getInvSlots(4) < 3 || cm.getInvSlots(5) < 3) {
-                    cm.sendOkS("#fs11##fc0xFF6600CC#인벤토리를 탭별로 3칸이상 비워주세요", 2);
+                    cm.sendOkS("#fs11##fc0xFF6600CC#Please keep at least 3 inventory slots empty per tab.", 2);
                     cm.dispose();
                     return;
                 }
@@ -533,18 +532,18 @@ function action(mode, type, sel) {
                 }
 
                 if (!nreward[seld2]['select']) {
-                    var msg = "#b#e[ 달성보상 ] #k#n에서\r\n다음과같은 #b보상#k을 지급 받으시겠습니까?\r\n" + enter + enter;
+                    var msg = "#b#e[ Achievement Reward ] #k#n\r\nDo you want to receive the following #bRewards#k?\r\n" + Enter + Enter;
                     for (i = 0; i < nreward[seld2]['items'].length; i++) {
                         //cm.gainItem(nreward[seld2]['items'][i][0], nreward[seld2]['items'][i][1]);
-                        msg += "#b#e#i" + nreward[seld2]['items'][i][0] + "# #z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + "개 \r\n";
+                        msg += "#b#e#i" + nreward[seld2]['items'][i][0] + "# #z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + " (Qty) \r\n";
                     }
-                    //msg += "#L1#지급받겠습니다.";
-                    //msg += "#L2#다음에";
+                    //msg += "#L1#I will receive it.";
+                    //msg += "#L2#Next time";
                     cm.sendYesNo(msg);
                 } else {
-                    var msg = "해당 보상은 선택형 보상입니다. 받으실 보상을 선택해주세요.#b" + enter;
+                    var msg = "This reward is a selectable reward. Please choose the reward you want to receive.#b" + Enter;
                     for (i = 0; i < nreward[seld2]['items'].length; i++)
-                        msg += "#L" + i + "##i" + nreward[seld2]['items'][i][0] + "##z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + "개" + enter;
+                        msg += "#L" + i + "##i" + nreward[seld2]['items'][i][0] + "##z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + " (Qty)" + Enter;
                     cm.sendSimple(msg);
                 }
                 break;
@@ -553,7 +552,7 @@ function action(mode, type, sel) {
                 if (cm.getClient().getKeyValue("HgradeWeek") == null) {
                     for (a = 0; a < daily.length; a++) {
                         if (!cm.canHold(daily[a][0], daily[a][1])) {
-                            cm.sendOk("인벤토리에 공간이 부족합니다.");
+                            cm.sendOk("Not enough inventory space.");
                             cm.dispose();
                             return;
                         }
@@ -563,8 +562,8 @@ function action(mode, type, sel) {
                     }
                     cm.getClient().setKeyValue("HgradeWeek", "1");
                     //Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP주간보상].log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n등급 : " + cm.getPlayer().getHgrades() + "\r\n\r\n", true);
-                    cm.addCustomLog(99, "[주간보상] 등급 : " + cm.getPlayer().getHgrades() + "");
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.addCustomLog(99, "[Weekly Reward] Grade : " + cm.getPlayer().getHgrades() + "");
+                    cm.sendOk("#fs11#Reward distribution complete.");
                     cm.dispose();
                 }
                 break;
@@ -653,19 +652,19 @@ function action(mode, type, sel) {
                     case 1998:
                     case 1999:
                         var chatConfig = {
-                            1998: { required: 5000000, scope: '캐릭터', note: '※ 누적 500만 미만 시 1회만 설정 가능' },
-                            1999: { required: 10000000, scope: '계정', note: '' }
+                            1998: { required: 5000000, scope: 'Character', note: '※ Can only set once if cumulative is under 5 million' },
+                            1999: { required: 10000000, scope: 'Account', note: '' }
                         };
                         var cc = chatConfig[seld50];
                         if (cm.getPlayer().getDPointAll() >= cc.required) {
                             var msg = "#fs11#";
-                            msg += 색 + "< 전체채팅 칭호 우선순위 >\r\n";
-                            msg += 검은색 + "캐릭터칭호 → 계정칭호 → 메인랭크 순서입니다.\r\n";
+                            msg += Color + "< All Chat Title Priority >\r\n";
+                            msg += Black + "Character Title → Account Title → Main Rank.\r\n";
                             if (seld50 === 1998) msg += "#r" + cc.note + "#k\r\n\r\n";
-                            msg += "적용할 " + cc.scope + " 칭호를 입력해 주세요.";
+                            msg += "Please enter the " + cc.scope + " title to apply.";
                             cm.sendGetText(msg);
                         } else {
-                            cm.sendOk("#fs11#누적금액이 부족합니다.");
+                            cm.sendOk("#fs11#Insufficient cumulative amount.");
                             cm.dispose();
                         }
                         break;
@@ -678,7 +677,7 @@ function action(mode, type, sel) {
                         var cfg = rewardConfig[threshold];
 
                         if (!cfg) {
-                            cm.sendOk("#fs11#잘못된 보상 항목입니다.");
+                            cm.sendOk("#fs11#Invalid reward item.");
                             cm.dispose();
                             break;
                         }
@@ -688,9 +687,9 @@ function action(mode, type, sel) {
                             cm.getClient().setKeyValue(key, "1");
                             cm.gainItem(4036661, cfg.spins);
                             if (cfg.berries > 0) cm.gainItem(5068306, cfg.berries);
-                            cm.sendOk("#fs11#보상이 지급되었습니다.");
+                            cm.sendOk("#fs11#Reward has been distributed.");
                         } else {
-                            cm.sendOk("#fs11#이미 수령하셨거나 누적금액이 부족합니다.");
+                            cm.sendOk("#fs11#Already collected or insufficient cumulative amount.");
                         }
                         cm.dispose();
                         break;
@@ -704,17 +703,17 @@ function action(mode, type, sel) {
                 tradePoint = 0
             }
             if (tradePoint >= tradePoint + sel) {
-                cm.sendOk("계정당 포인트 충전은 최대 300만 까지 가능합니다.");
+                cm.sendOk("Account point charging is possible up to 3 million.");
                 cm.dispose();
                 return;
             }
             if (cm.getPlayer().getCashPoint() < sel) {
-                cm.sendOk("보유하신 캐시잔액보다 큰값을 입력하셨습니다.");
+                cm.sendOk("You entered a value larger than your cash balance.");
                 cm.dispose();
                 return;
             }
             if (0 > sel) {
-                cm.sendOk("오류 발생 오류 발생");
+                cm.sendOk("Error Occurrence Error Occurrence");
                 cm.dispose();
                 return;
             }
@@ -722,7 +721,7 @@ function action(mode, type, sel) {
             cm.getPlayer().gainDonationPoint(sel);
 
             cm.getClient().setKeyValue("tradepoint", "" + (tradePoint + sel));
-            cm.sendOk(comma(sel) + "환전이 완료되었습니다.");
+            cm.sendOk(comma(sel) + "Exchange complete.");
             cm.dispose();
             return;
         }
@@ -731,7 +730,7 @@ function action(mode, type, sel) {
             case 1:
                 seldreward = sel;
                 reward = getQ(seldreward);
-                cm.sendYesNo("정말 해당 보상을 지급받으시겠습니까?\r\n총 #b" + reward + " 후원포인트#k를 얻게됩니다.");
+                cm.sendYesNo("Do you really want to receive this reward?\r\nYou will get #b" + reward + " Donation Points#k.");
                 break;
 
             case 4:
@@ -749,7 +748,7 @@ function action(mode, type, sel) {
                         cm.gainItem(nreward[seld2]['items'][i][0], nreward[seld2]['items'][i][1]);
                     }
                     cm.getClient().setKeyValue("nd_" + nreward[seld2]['ngrade'], "1");
-                    cm.sendOkS("#fs11##b#e감사합니다~!", 2);
+                    cm.sendOkS("#fs11##b#eThank you~!", 2);
                     cm.dispose();
                     return;
                 }
@@ -762,17 +761,17 @@ function action(mode, type, sel) {
                         Get500MedalString = cm.getClient().getKeyValue("500MedalString");
                         if (cm.getClient().getKeyValue("DPointAll") >= 10000000) {
                             cm.getClient().getPlayer().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#e감사합니다~!", 2);
+                            cm.sendOkS("#fs11##b#eThank you~!", 2);
                             cm.dispose();
                             return;
                         } else if (SetMedalString != null && Get500MedalString == null) {
                             cm.getClient().setKeyValue("500MedalString", "1");
                             cm.getClient().getPlayer().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#e감사합니다~!", 2);
+                            cm.sendOkS("#fs11##b#eThank you~!", 2);
                             cm.dispose();
                             return;
                         } else {
-                            cm.sendOkS("#fs11##b#e아 맞다 이미 설정했었지..", 2);
+                            cm.sendOkS("#fs11##b#eOh right, I already set it..", 2);
                             cm.dispose();
                             return;
                         }
@@ -782,7 +781,7 @@ function action(mode, type, sel) {
                         SetMedalString = cm.getText();
                         if (SetMedalString != null) {
                             cm.getClient().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#e감사합니다~!", 2);
+                            cm.sendOkS("#fs11##b#eThank you~!", 2);
                             cm.dispose();
                             return;
                         }
@@ -794,7 +793,7 @@ function action(mode, type, sel) {
             case 1:
                 getReward(seldreward);
                 cm.getPlayer().gainDonationPoint(reward);
-                cm.sendOk("수령이 완료되었습니다.");
+                cm.sendOk("Collection complete.");
                 cm.dispose();
                 break;
 
@@ -802,7 +801,7 @@ function action(mode, type, sel) {
                 switch (seld3) {
                     case 1:
                         DeleteReward(sel);
-                        cm.sendOk("삭제가 완료되었습니다.");
+                        cm.sendOk("Deletion complete.");
                         cm.dispose();
                         break;
                 }
@@ -812,7 +811,7 @@ function action(mode, type, sel) {
                 cm.gainItem(nreward[seld2]['items'][seld3][0], nreward[seld2]['items'][seld3][1]);
 
                 cm.getClient().setKeyValue("nd_" + nreward[seld2]['ngrade'], "1");
-                cm.sendOk("#fs11#지급이 완료되었습니다.");
+                cm.sendOk("#fs11#Distribution complete.");
                 cm.dispose();
                 break;
         }
@@ -834,7 +833,7 @@ function action(mode, type, sel) {
                             ps.close();
                             con.close();
                         }
-                        cm.sendOk("변경이 완료되었습니다.");
+                        cm.sendOk("Change complete.");
                         cm.dispose();
                         break;
                 }
@@ -866,7 +865,7 @@ function getList() {
 
     while (rs.next()) {
         if (rs.getInt("cid") == cm.getPlayer().getId() || rs.getString("name").equals(cm.getPlayer().getName())) {
-            ret += "#L" + rs.getInt("id") + "##b" + rs.getString("name") + " (지급대상)\r\n";
+            ret += "#L" + rs.getInt("id") + "##b" + rs.getString("name") + " (Eligible)\r\n";
             break;
         }
     }
@@ -874,7 +873,7 @@ function getList() {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "#fs11#현재 수령 가능한 후원 보상이 없습니다.";
+    if (ret.equals("")) return "#fs11#There are no donation rewards available to collect.";
     return ret;
 }
 function getQ(id) {
@@ -891,7 +890,7 @@ function getQ(id) {
     rs.close();
     ps.close();
     con.close();
-    if (ret.equals("")) return "후원 보상이 없습니다.";
+    if (ret.equals("")) return "No donation rewards found.";
     return ret;
 }
 
@@ -915,10 +914,10 @@ function checkDPointAll(cash) {
     keyvalue = "DPointAll_" + cash + ""
     if (cm.getPlayer().getDPointAll() >= price) {
         if (cm.getClient().getKeyValue(keyvalue) < 1) {
-            return "#b(수령가능)#b";
+            return "#b(Available)#b";
         }
-        return "#fc0xFF9A9A9A#(수령완료)#b";
+        return "#fc0xFF9A9A9A#(Collected)#b";
     } else {
-        return "#r(금액부족)#b";
+        return "#r(Insufficient Amount)#b";
     }
 }

@@ -12,12 +12,12 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "This feature cannot be used during boss battles.");
             cm.dispose();
             return;
         }
 
         cm.dispose();
-        cm.openNpcCustom(cm.getClient(), 9062611, "이벤트");
+        cm.openNpcCustom(cm.getClient(), 9062611, "Event");
     }
 }
