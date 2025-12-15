@@ -252,7 +252,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton1ActionPerformed(evt);
          }
       });
-      this.realCash.setFont(new Font("굴림", 0, 10));
+      this.realCash.setFont(new Font("Arial", 0, 10));
       this.realCash.setText("Point to Give");
       this.realCash.addMouseListener(new MouseAdapter() {
          @Override
@@ -273,7 +273,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton4ActionPerformed(evt);
          }
       });
-      this.hongboPoint.setFont(new Font("굴림", 0, 10));
+      this.hongboPoint.setFont(new Font("Arial", 0, 10));
       this.hongboPoint.setText("Point to Give");
       this.hongboPoint.addMouseListener(new MouseAdapter() {
          @Override
@@ -294,7 +294,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton5ActionPerformed(evt);
          }
       });
-      this.itemCode.setFont(new Font("굴림", 0, 10));
+      this.itemCode.setFont(new Font("Arial", 0, 10));
       this.itemCode.setText("Item Code,Quantity");
       this.itemCode.addMouseListener(new MouseAdapter() {
          @Override
@@ -318,7 +318,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton6ActionPerformed(evt);
          }
       });
-      this.meso.setFont(new Font("굴림", 0, 10));
+      this.meso.setFont(new Font("Arial", 0, 10));
       this.meso.setText("Meso to Give");
       this.meso.addMouseListener(new MouseAdapter() {
          @Override
@@ -342,7 +342,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton7ActionPerformed(evt);
          }
       });
-      this.Receiver.setFont(new Font("맑은 고딕", 1, 24));
+      this.Receiver.setFont(new Font("Arial", 1, 24));
       this.Receiver.setText("Character Name to Give");
       this.Receiver.addMouseListener(new MouseAdapter() {
          @Override
@@ -363,7 +363,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton8ActionPerformed(evt);
          }
       });
-      this.jLabel6.setFont(new Font("맑은 고딕", 1, 24));
+      this.jLabel6.setFont(new Font("Arial", 1, 24));
       this.jLabel6.setText("Hot Time Give -");
       this.hottimeItemID.setText("Item Code,Quantity");
       this.hottimeItemID.addMouseListener(new MouseAdapter() {
@@ -398,13 +398,13 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton9ActionPerformed(evt);
          }
       });
-      this.jLabel7.setFont(new Font("맑은 고딕", 1, 24));
+      this.jLabel7.setFont(new Font("Arial", 1, 24));
       this.jLabel7.setText("Hot Time Help");
       this.jLabel8.setText("To give to all members, in the Number of Members to Receive");
       this.jLabel9.setText("field, please write ALL or all.");
-      this.jLabel10.setFont(new Font("맑은 고딕", 0, 14));
+      this.jLabel10.setFont(new Font("Arial", 0, 14));
       this.jLabel10.setText("Made by. Jihyeon");
-      this.jLabel11.setFont(new Font("맑은 고딕", 1, 36));
+      this.jLabel11.setFont(new Font("Arial", 1, 36));
       this.jLabel11.setText("Ganglim");
       this.FreezeChat.setText("Freeze Chat");
       this.FreezeChat.addActionListener(new ActionListener() {
@@ -455,7 +455,7 @@ public class AdminClient extends JFrame {
             AdminClient.this.jButton14ActionPerformed(evt);
          }
       });
-      this.killPoint.setFont(new Font("굴림", 0, 10));
+      this.killPoint.setFont(new Font("Arial", 0, 10));
       this.killPoint.setText("Point to Give");
       this.killPoint.addMouseListener(new MouseAdapter() {
          @Override

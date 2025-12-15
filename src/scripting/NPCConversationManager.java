@@ -4672,7 +4672,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-               if (!rs.getString("name").equals("BeginnerPackage") && !rs.getString("name").contains("설날")) {
+               if (!rs.getString("name").equals("BeginnerPackage") && !rs.getString("name").contains("LunarNewYear")) {
                   first = false;
                }
             }
@@ -4706,48 +4706,48 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             while (rs.next()) {
                String name = rs.getString("name");
                if (point.contains("Beginner") && name.equals("BeginnerPackage")
-                     || point.contains("설날A") && name.equals("설날A")
-                     || point.contains("설날B") && name.equals("설날B")
-                     || point.contains("설날C") && name.equals("설날C")
-                     || point.contains("가정의달C") && name.equals("가정의달C")
-                     || point.contains("가정의달B") && name.equals("가정의달B")
-                     || point.contains("가정의달A") && name.equals("가정의달A")
-                     || point.contains("가정의달S") && name.equals("가정의달S")
-                     || point.contains("가정의달SS") && name.equals("가정의달SS")
-                     || point.contains("가정의달SSS") && name.equals("가정의달SSS")
-                     || point.equals("추석패키지I") && name.equals("추석패키지I")
-                     || point.equals("추석패키지II") && name.equals("추석패키지II")
-                     || point.equals("추석패키지III") && name.equals("추석패키지III")
-                     || point.equals("추석패키지IV") && name.equals("추석패키지IV")
-                     || point.equals("3주년패키지I") && name.equals("3주년패키지I")
-                     || point.equals("3주년패키지II") && name.equals("3주년패키지II")
-                     || point.equals("3주년패키지III") && name.equals("3주년패키지III")
-                     || point.equals("크리스마스패키지1") && name.equals("크리스마스패키지1")
-                     || point.equals("크리스마스패키지2") && name.equals("크리스마스패키지2")
-                     || point.equals("크리스마스패키지3") && name.equals("크리스마스패키지3")
-                     || point.equals("크리스마스패키지4") && name.equals("크리스마스패키지4")
-                     || point.equals("2023패키지1") && name.equals("2023패키지1")
-                     || point.equals("2023패키지2") && name.equals("2023패키지2")
-                     || point.equals("2023패키지3") && name.equals("2023패키지3")
-                     || point.equals("2023패키지4") && name.equals("2023패키지4")
-                     || point.equals("2023패키지5") && name.equals("2023패키지5")
-                     || point.equals("2023패키지6") && name.equals("2023패키지6")
-                     || point.equals("2023패키지7") && name.equals("2023패키지7")
-                     || point.equals("2023패키지8") && name.equals("2023패키지8")
-                     || point.equals("2023패키지9") && name.equals("2023패키지9")
-                     || point.equals("2023패키지10") && name.equals("2023패키지10")
-                     || point.equals("2023패키지11") && name.equals("2023패키지11")
-                     || point.equals("5월패키지1") && name.equals("5월패키지1")
-                     || point.equals("5월패키지2") && name.equals("5월패키지2")
-                     || point.equals("5월패키지3") && name.equals("5월패키지3")
-                     || point.equals("5월패키지4") && name.equals("5월패키지4")
-                     || point.equals("5월패키지5") && name.equals("5월패키지5")
-                     || point.equals("5월패키지6") && name.equals("5월패키지6")
-                     || point.equals("5월패키지7") && name.equals("5월패키지7")
-                     || point.equals("5월패키지8") && name.equals("5월패키지8")
-                     || point.equals("5월패키지9") && name.equals("5월패키지9")
-                     || point.equals("5월패키지10") && name.equals("5월패키지10")
-                     || point.equals("5월패키지11") && name.equals("5월패키지11")) {
+                     || point.contains("LunarNewYearA") && name.equals("LunarNewYearA")
+                     || point.contains("LunarNewYearB") && name.equals("LunarNewYearB")
+                     || point.contains("LunarNewYearC") && name.equals("LunarNewYearC")
+                     || point.contains("FamilyMonthC") && name.equals("FamilyMonthC")
+                     || point.contains("FamilyMonthB") && name.equals("FamilyMonthB")
+                     || point.contains("FamilyMonthA") && name.equals("FamilyMonthA")
+                     || point.contains("FamilyMonthS") && name.equals("FamilyMonthS")
+                     || point.contains("FamilyMonthSS") && name.equals("FamilyMonthSS")
+                     || point.contains("FamilyMonthSSS") && name.equals("FamilyMonthSSS")
+                     || point.equals("ChuseokPackageI") && name.equals("ChuseokPackageI")
+                     || point.equals("ChuseokPackageII") && name.equals("ChuseokPackageII")
+                     || point.equals("ChuseokPackageIII") && name.equals("ChuseokPackageIII")
+                     || point.equals("ChuseokPackageIV") && name.equals("ChuseokPackageIV")
+                     || point.equals("3rdAnniversaryPackageI") && name.equals("3rdAnniversaryPackageI")
+                     || point.equals("3rdAnniversaryPackageII") && name.equals("3rdAnniversaryPackageII")
+                     || point.equals("3rdAnniversaryPackageIII") && name.equals("3rdAnniversaryPackageIII")
+                     || point.equals("ChristmasPackage1") && name.equals("ChristmasPackage1")
+                     || point.equals("ChristmasPackage2") && name.equals("ChristmasPackage2")
+                     || point.equals("ChristmasPackage3") && name.equals("ChristmasPackage3")
+                     || point.equals("ChristmasPackage4") && name.equals("ChristmasPackage4")
+                     || point.equals("Package2023_1") && name.equals("Package2023_1")
+                     || point.equals("Package2023_2") && name.equals("Package2023_2")
+                     || point.equals("Package2023_3") && name.equals("Package2023_3")
+                     || point.equals("Package2023_4") && name.equals("Package2023_4")
+                     || point.equals("Package2023_5") && name.equals("Package2023_5")
+                     || point.equals("Package2023_6") && name.equals("Package2023_6")
+                     || point.equals("Package2023_7") && name.equals("Package2023_7")
+                     || point.equals("Package2023_8") && name.equals("Package2023_8")
+                     || point.equals("Package2023_9") && name.equals("Package2023_9")
+                     || point.equals("Package2023_10") && name.equals("Package2023_10")
+                     || point.equals("Package2023_11") && name.equals("Package2023_11")
+                     || point.equals("MayPackage1") && name.equals("MayPackage1")
+                     || point.equals("MayPackage2") && name.equals("MayPackage2")
+                     || point.equals("MayPackage3") && name.equals("MayPackage3")
+                     || point.equals("MayPackage4") && name.equals("MayPackage4")
+                     || point.equals("MayPackage5") && name.equals("MayPackage5")
+                     || point.equals("MayPackage6") && name.equals("MayPackage6")
+                     || point.equals("MayPackage7") && name.equals("MayPackage7")
+                     || point.equals("MayPackage8") && name.equals("MayPackage8")
+                     || point.equals("MayPackage9") && name.equals("MayPackage9")
+                     || point.equals("MayPackage10") && name.equals("MayPackage10")
+                     || point.equals("MayPackage11") && name.equals("MayPackage11")) {
                   find = true;
                }
             }
@@ -4774,142 +4774,142 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
          }
 
-         if (point.contains("초심자")) {
+         if (point.contains("Beginner")) {
             p = 10000;
             type = 2;
-         } else if (point.equals("설날A")) {
+         } else if (point.equals("LunarNewYearA")) {
             p = 100000;
             type = 5;
-         } else if (point.equals("설날B")) {
+         } else if (point.equals("LunarNewYearB")) {
             p = 100000;
             type = 6;
-         } else if (point.equals("설날C")) {
+         } else if (point.equals("LunarNewYearC")) {
             p = 50000;
             type = 7;
-         } else if (point.equals("어린이날")) {
+         } else if (point.equals("ChildrenDay")) {
             p = 55000;
             type = 8;
-         } else if (point.equals("가정의달C")) {
+         } else if (point.equals("FamilyMonthC")) {
             p = 50000;
             type = 9;
-         } else if (point.equals("가정의달B")) {
+         } else if (point.equals("FamilyMonthB")) {
             p = 100000;
             type = 10;
-         } else if (point.equals("가정의달A")) {
+         } else if (point.equals("FamilyMonthA")) {
             p = 300000;
             type = 11;
-         } else if (point.equals("가정의달S")) {
+         } else if (point.equals("FamilyMonthS")) {
             p = 500000;
             type = 12;
-         } else if (point.equals("가정의달SS")) {
+         } else if (point.equals("FamilyMonthSS")) {
             p = 1000000;
             type = 13;
-         } else if (point.equals("가정의달SSS")) {
+         } else if (point.equals("FamilyMonthSSS")) {
             p = 1500000;
             type = 14;
-         } else if (point.equals("상시패키지1")) {
+         } else if (point.equals("RegularPackage1")) {
             p = 500000;
             type = 15;
-         } else if (point.equals("상시패키지2")) {
+         } else if (point.equals("RegularPackage2")) {
             p = 1000000;
             type = 16;
-         } else if (point.equals("추석패키지I")) {
+         } else if (point.equals("ChuseokPackageI")) {
             p = 10000;
             type = 17;
-         } else if (point.equals("추석패키지II")) {
+         } else if (point.equals("ChuseokPackageII")) {
             p = 25000;
             type = 18;
-         } else if (point.equals("추석패키지III")) {
+         } else if (point.equals("ChuseokPackageIII")) {
             p = 75000;
             type = 19;
-         } else if (point.equals("추석패키지IV")) {
+         } else if (point.equals("ChuseokPackageIV")) {
             p = 110000;
             type = 20;
-         } else if (point.equals("3주년패키지I")) {
+         } else if (point.equals("3rdAnniversaryPackageI")) {
             p = 55000;
             type = 21;
-         } else if (point.equals("3주년패키지II")) {
+         } else if (point.equals("3rdAnniversaryPackageII")) {
             p = 55000;
             type = 22;
-         } else if (point.equals("3주년패키지III")) {
+         } else if (point.equals("3rdAnniversaryPackageIII")) {
             p = 110000;
             type = 23;
-         } else if (point.equals("크리스마스패키지1")) {
+         } else if (point.equals("ChristmasPackage1")) {
             p = 30000;
             type = 24;
-         } else if (point.equals("크리스마스패키지2")) {
+         } else if (point.equals("ChristmasPackage2")) {
             p = 50000;
             type = 25;
-         } else if (point.equals("크리스마스패키지3")) {
+         } else if (point.equals("ChristmasPackage3")) {
             p = 50000;
             type = 26;
-         } else if (point.equals("크리스마스패키지4")) {
+         } else if (point.equals("ChristmasPackage4")) {
             p = 110000;
             type = 27;
-         } else if (point.equals("2023패키지1")) {
+         } else if (point.equals("Package2023_1")) {
             p = 30000;
             type = 28;
-         } else if (point.equals("2023패키지2")) {
+         } else if (point.equals("Package2023_2")) {
             p = 50000;
             type = 29;
-         } else if (point.equals("2023패키지3")) {
+         } else if (point.equals("Package2023_3")) {
             p = 50000;
             type = 30;
-         } else if (point.equals("2023패키지4")) {
+         } else if (point.equals("Package2023_4")) {
             p = 50000;
             type = 31;
-         } else if (point.equals("2023패키지5")) {
+         } else if (point.equals("Package2023_5")) {
             p = 110000;
             type = 32;
-         } else if (point.equals("2023패키지6")) {
+         } else if (point.equals("Package2023_6")) {
             p = 50000;
             type = 33;
-         } else if (point.equals("2023패키지7")) {
+         } else if (point.equals("Package2023_7")) {
             p = 100000;
             type = 34;
-         } else if (point.equals("2023패키지8")) {
+         } else if (point.equals("Package2023_8")) {
             p = 300000;
             type = 35;
-         } else if (point.equals("2023패키지9")) {
+         } else if (point.equals("Package2023_9")) {
             p = 500000;
             type = 36;
-         } else if (point.equals("2023패키지10")) {
+         } else if (point.equals("Package2023_10")) {
             p = 1000000;
             type = 37;
-         } else if (point.equals("2023패키지11")) {
+         } else if (point.equals("Package2023_11")) {
             p = 1500000;
             type = 38;
-         } else if (point.equals("5월패키지1")) {
+         } else if (point.equals("MayPackage1")) {
             p = 30000;
             type = 39;
-         } else if (point.equals("5월패키지2")) {
+         } else if (point.equals("MayPackage2")) {
             p = 50000;
             type = 40;
-         } else if (point.equals("5월패키지3")) {
+         } else if (point.equals("MayPackage3")) {
             p = 50000;
             type = 41;
-         } else if (point.equals("5월패키지4")) {
+         } else if (point.equals("MayPackage4")) {
             p = 50000;
             type = 42;
-         } else if (point.equals("5월패키지5")) {
+         } else if (point.equals("MayPackage5")) {
             p = 110000;
             type = 43;
-         } else if (point.equals("5월패키지6")) {
+         } else if (point.equals("MayPackage6")) {
             p = 50000;
             type = 44;
-         } else if (point.equals("5월패키지7")) {
+         } else if (point.equals("MayPackage7")) {
             p = 100000;
             type = 45;
-         } else if (point.equals("5월패키지8")) {
+         } else if (point.equals("MayPackage8")) {
             p = 300000;
             type = 46;
-         } else if (point.equals("5월패키지9")) {
+         } else if (point.equals("MayPackage9")) {
             p = 500000;
             type = 47;
-         } else if (point.equals("5월패키지10")) {
+         } else if (point.equals("MayPackage10")) {
             p = 1000000;
             type = 48;
-         } else if (point.equals("5월패키지11")) {
+         } else if (point.equals("MayPackage11")) {
             p = 1500000;
             type = 49;
          }
@@ -4994,7 +4994,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          var25 = false;
       } catch (SQLException var21) {
-         this.sendNext("알 수 없는 오류가 발생하였습니다.");
+         this.sendNext("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
          this.dispose();
          return false;
       } finally {
@@ -5183,44 +5183,44 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             msg2 = msg2 + "#eCharacter Name#n : #b" + name + "#k\r\n";
             msg2 = msg2 + "#eCharge Amount#n : #b" + rs.getString("price") + "#k\r\n";
             String p = rs.getString("price").replace(",", "");
-            if (name.equals("이벤트참여")) {
+            if (name.equals("EventParticipation")) {
                msg2 = msg2 + "#eCharge Type#n : #bEvent Participation#k\r\n";
-            } else if (name.equals("신년이벤트")) {
+            } else if (name.equals("NewYearEvent")) {
                msg2 = msg2 + "#eCharge Type#n : #bNew Year Event Participation#k\r\n";
-            } else if (name.equals("클스마스이벤트")) {
+            } else if (name.equals("ChristmasEvent")) {
                msg2 = msg2 + "#eCharge Type#n : #bChristmas Event Participation#k\r\n";
-            } else if (name.equals("보너스이벤트")) {
+            } else if (name.equals("BonusEvent")) {
                msg2 = msg2 + "#eCharge Type#n : #bBonus Event Participation#k\r\n";
-            } else if (name.equals("초보자패키지")) {
+            } else if (name.equals("BeginnerPackage")) {
                msg2 = msg2 + "#eCharge Type#n : #bBeginner Package#k\r\n";
-            } else if (name.equals("어린이날")) {
+            } else if (name.equals("ChildrenDay")) {
                msg2 = msg2 + "#eCharge Type#n : #bChildren's Day Package#k\r\n";
-            } else if (name.contains("가정의달")) {
+            } else if (name.contains("FamilyMonth")) {
                msg2 = msg2 + "#eCharge Type#n : #bFamily Month Package#k\r\n";
-            } else if (name.contains("추석")) {
+            } else if (name.contains("Chuseok")) {
                msg2 = msg2 + "#eCharge Type#n : #bChuseok Package#k\r\n";
-            } else if (name.contains("3주년")) {
+            } else if (name.contains("3rdAnniversary")) {
                msg2 = msg2 + "#eCharge Type#n : #b3rd Anniversary Package#k\r\n";
-            } else if (name.contains("크리스마스")) {
+            } else if (name.contains("Christmas")) {
                msg2 = msg2 + "#eCharge Type#n : #bChristmas Package#k\r\n";
             } else if (name.contains("2023")) {
                msg2 = msg2 + "#eCharge Type#n : #b2023 Package#k\r\n";
-            } else if (name.contains("5월")) {
+            } else if (name.contains("May")) {
                msg2 = msg2 + "#eCharge Type#n : #b23 Family Month Package#k\r\n";
-            } else if (name.contains("상시패키지")) {
+            } else if (name.contains("RegularPackage")) {
                msg2 = msg2 + "#eCharge Type#n : #bAlways Package#k\r\n";
             } else {
                msg2 = msg2 + "#eCharge Type#n : #bNormal Charge#k\r\n";
             }
 
-            if (!name.contains("패키지") && !name.contains("어린이날")
-                  || name.contains("추석")
-                  || name.contains("가정의달")
-                  || name.contains("3주년")
-                  || name.contains("크리스마스패키지")
-                  || name.contains("상시패키지")
-                  || name.contains("2023패키지")
-                  || name.contains("5월")) {
+            if (!name.contains("Package") && !name.contains("ChildrenDay")
+                  || name.contains("Chuseok")
+                  || name.contains("FamilyMonth")
+                  || name.contains("3rdAnniversary")
+                  || name.contains("ChristmasPackage")
+                  || name.contains("RegularPackage")
+                  || name.contains("Package2023_")
+                  || name.contains("May")) {
                totalPoint += Integer.parseInt(p);
             }
 
@@ -5558,14 +5558,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          while (rs.next()) {
             String name = rs.getString("name");
             String p = rs.getString("price").replace(",", "");
-            if (!name.contains("패키지") && !name.contains("어린이날")
-                  || name.contains("추석")
-                  || name.contains("가정의달")
-                  || name.contains("3주년")
-                  || name.contains("크리스마스")
-                  || name.contains("상시패키지")
+            if (!name.contains("Package") && !name.contains("ChildrenDay")
+                  || name.contains("Chuseok")
+                  || name.contains("FamilyMonth")
+                  || name.contains("3rdAnniversary")
+                  || name.contains("Christmas")
+                  || name.contains("RegularPackage")
                   || name.contains("2023")
-                  || name.contains("5월")) {
+                  || name.contains("May")) {
                totalPoint += Integer.parseInt(p);
             }
          }

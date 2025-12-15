@@ -1603,7 +1603,8 @@ public abstract class AbstractPlayerInteraction {
                      this.getClient().getPlayer().getMap()
                            .spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642016), muto.getRandArea());
                      this.getClient().getPlayer().getMap()
-                           .broadcastMessage(CWvsContext.getScriptProgressMessage("굴라가 더욱 격렬하게 저항하며 강력한 몬스터들이 등장합니다!"));
+                           .broadcastMessage(CWvsContext.getScriptProgressMessage(
+                                 "Gula ต่อต้านอย่างรุนแรงและมอนสเตอร์ที่แข็งแกร่งก็ปรากฏตัวขึ้น!"));
                      muto.setEnhanceMob(true);
                   }
 
