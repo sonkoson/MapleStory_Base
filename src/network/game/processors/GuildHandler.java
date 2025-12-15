@@ -246,7 +246,8 @@ public class GuildHandler {
          Guild guild = Center.Guild.getGuild(Integer.parseInt(guildid));
          if (guild == null) {
             System.out.println(
-                  "길드에 가입신청을 취소하는 도중 길드가 사라졌거나, 비정상적 접근입니다. cid : " + chr.getId() + ", name : " + chr.getName());
+                  "Guild request cancel error: Guild missing or invalid access. cid : " + chr.getId() + ", name : "
+                        + chr.getName());
          } else {
             guild.removeJoinRequester(chr.getId(), false);
          }
@@ -401,7 +402,7 @@ public class GuildHandler {
                      return;
                   }
 
-                  player.dropMessage(1, "길드를 찾지 못하였습니다. 올바른 길드 이름을 입력해 주세요.");
+                  player.dropMessage(1, "ไม่พบกิลด์ กรุณาตรวจสอบชื่อกิลด์ให้ถูกต้อง");
                   return;
                }
 
@@ -577,7 +578,8 @@ public class GuildHandler {
                   Guild guildxxxxxx = player.getGuild();
                   if (guildxxxxxx == null) {
                      System.out.println(
-                           "길드 가입 신청을 수락하는 도중에 길드가 null입니다. cid : " + player.getId() + ", name : " + player.getName());
+                           "Guild is null during join acceptance. cid : " + player.getId() + ", name : "
+                                 + player.getName());
                      return;
                   }
 
@@ -812,7 +814,7 @@ public class GuildHandler {
 
                      if (!Center.Guild.setGuildEmblem(player.getGuildId(), (short) 0, (byte) 0, (short) 0, (byte) 0,
                            Guild.BCOp.CUSTOMEMBLEMCHANGE, imageData)) {
-                        player.dropMessage(1, "길드마크를 만들기 위한 GP가 부족합니다.");
+                        player.dropMessage(1, "GP ไม่เพียงพอสำหรับการสร้างตรากิลด์");
                         return;
                      }
                   }
@@ -821,7 +823,7 @@ public class GuildHandler {
                   break;
                }
 
-               player.dropMessage(1, "길드 마크 제작은 영웅의 전당에서만 할 수 있습니다.");
+               player.dropMessage(1, "การสร้างตรากิลด์สามารถทำได้ที่ Hall of Heroes เท่านั้น");
                return;
             case ChangeNotice:
                String notice = packet.readMapleAsciiString();
@@ -892,7 +894,7 @@ public class GuildHandler {
 
                   SecondaryStatEffect effect = skilli.getEffect(eff);
                   if (effect == null) {
-                     System.out.println("guildSkillID : " + guildSkillID + " / Level : " + eff + " effect가 null");
+                     System.out.println("guildSkillID : " + guildSkillID + " / Level : " + eff + " effect is null");
                      return;
                   }
 
@@ -925,7 +927,7 @@ public class GuildHandler {
             case ChangeAllianceRank:
                if (player.getAllianceRank() <= 2 && !Center.Alliance
                      .changeAllianceRank(player.getGuild().getAllianceId(), packet.readInt(), packet.readByte())) {
-                  player.dropMessage(5, "연합 직위를 변경하는 도중 알 수 없는 오류가 발생했습니다.");
+                  player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุขณะเปลี่ยนระดับพันธมิตร");
                }
                break;
             case ChangeAllianceRankRole:
@@ -977,7 +979,7 @@ public class GuildHandler {
                                  alliance.getId(), guildxxxxx.getId(),
                                  request == GuildRequestResultType.Request.KickGuildInAlliance
                                        && player.getAllianceRank() == 1)) {
-                        player.dropMessage(5, "알 수 없는 오류가 발생하였습니다.");
+                        player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                         return;
                      }
                   } else if (guildxxxxx != null
@@ -987,16 +989,16 @@ public class GuildHandler {
                               || request == GuildRequestResultType.Request.KickGuildInAlliance
                                     && player.getAllianceRank() == 1)
                         && !Center.Alliance.disbandAlliance(alliance.getId())) {
-                     player.dropMessage(5, "알 수 없는 오류가 발생하였습니다.");
+                     player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                      return;
                   }
                } catch (Exception var35) {
-                  System.out.println("연합 탈퇴 / 추방 처리 중 오류발생" + var35.toString());
+                  System.out.println("Error processing alliance withdrawal/expulsion" + var35.toString());
                   var35.printStackTrace();
                }
          }
       } catch (Exception var39) {
-         System.out.println("길드 핸들러 오류 발생");
+         System.out.println("Guild handler error occurred");
          var39.printStackTrace();
       }
    }
@@ -1012,20 +1014,20 @@ public class GuildHandler {
 
             MapleCharacter warpCharacter = client.getChannelServer().getPlayerStorage().getCharacterById(playerID);
             if (warpCharacter == null) {
-               client.getPlayer().dropMessage(6, "현재 채널에서 해당 유저를 찾을 수 없습니다.");
+               client.getPlayer().dropMessage(6, "ไม่พบผู้ใช้ในแชนแนลปัจจุบัน");
                return;
             }
 
             if (level.getSourceId() == 91001016) {
                if (FieldLimitType.RegularExpLoss.check(warpCharacter.getMap().getFieldLimit())
                      || FieldLimitType.SpecificPortalScrollLimit.check(warpCharacter.getMap().getFieldLimit())) {
-                  client.getPlayer().dropMessage(1, "상대방이 해당 스킬을 사용할 수 없는 위치입니다.");
+                  client.getPlayer().dropMessage(1, "เป้าหมายอยู่ในตำแหน่งที่ไม่สามารถใช้สกิลนี้ได้");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
 
                if (warpCharacter.getMap().getLevelLimit() > client.getPlayer().getLevel()) {
-                  client.getPlayer().dropMessage(1, "레벨이 부족하여 이동할 수 없습니다.");
+                  client.getPlayer().dropMessage(1, "เลเวลไม่เพียงพอที่จะเคลื่อนย้าย");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
@@ -1034,13 +1036,13 @@ public class GuildHandler {
             } else {
                if (FieldLimitType.RegularExpLoss.check(client.getPlayer().getMap().getFieldLimit())
                      || FieldLimitType.SpecificPortalScrollLimit.check(client.getPlayer().getMap().getFieldLimit())) {
-                  client.getPlayer().dropMessage(1, "해당 스킬을 사용할 수 없는 위치입니다.");
+                  client.getPlayer().dropMessage(1, "ไม่สามารถใช้สกิลในตำแหน่งนี้ได้");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
 
                if (client.getPlayer().getMap().getLevelLimit() > warpCharacter.getLevel()) {
-                  client.getPlayer().dropMessage(1, "지정한 길드원의 레벨이 부족하여 이동시킬 수 없습니다.");
+                  client.getPlayer().dropMessage(1, "สมาชิกกิลด์ที่เลือกมีเลเวลต่ำเกินไปที่จะถูกเคลื่อนย้าย");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }

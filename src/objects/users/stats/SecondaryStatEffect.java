@@ -450,7 +450,9 @@ public class SecondaryStatEffect implements Serializable {
                   String dddddd = MapleDataTool.getString(dd);
                   System.out.println(dddddd);
                   throw new RuntimeException(
-                        String.format("식 파싱 실패. %s %s %d", source.getParent().getName(), var18, level), var14);
+                        String.format("Expression parsing failed. %s %s %d", source.getParent().getName(), var18,
+                              level),
+                        var14);
                }
             }
          }

@@ -23,22 +23,21 @@ public class BuddyListHandler {
       CharacterNameAndId pendingBuddyRequest = c.getPlayer().getBuddylist().pollPendingRequest();
       if (pendingBuddyRequest != null) {
          c.getSession()
-            .writeAndFlush(
-               CWvsContext.BuddylistPacket.requestBuddylistAdd(
-                  pendingBuddyRequest.getId(),
-                  pendingBuddyRequest.getAccId(),
-                  pendingBuddyRequest.getName(),
-                  pendingBuddyRequest.getLevel(),
-                  pendingBuddyRequest.getJob(),
-                  c,
-                  pendingBuddyRequest.getGroupName(),
-                  pendingBuddyRequest.getMemo()
-               )
-            );
+               .writeAndFlush(
+                     CWvsContext.BuddylistPacket.requestBuddylistAdd(
+                           pendingBuddyRequest.getId(),
+                           pendingBuddyRequest.getAccId(),
+                           pendingBuddyRequest.getName(),
+                           pendingBuddyRequest.getLevel(),
+                           pendingBuddyRequest.getJob(),
+                           c,
+                           pendingBuddyRequest.getGroupName(),
+                           pendingBuddyRequest.getMemo()));
       }
    }
 
-   public static final BuddyListHandler.CharacterIdNameBuddyCapacity getCharacterIdAndNameFromDatabase(String name, String groupname, String memo) throws SQLException {
+   public static final BuddyListHandler.CharacterIdNameBuddyCapacity getCharacterIdAndNameFromDatabase(String name,
+         String groupname, String memo) throws SQLException {
       DBConnection db = new DBConnection();
       Connection con = DBConnection.getConnection();
       PreparedStatement ps = con.prepareStatement("SELECT * FROM characters WHERE name LIKE ?");
@@ -47,8 +46,8 @@ public class BuddyListHandler {
       BuddyListHandler.CharacterIdNameBuddyCapacity ret = null;
       if (rs.next()) {
          ret = new BuddyListHandler.CharacterIdNameBuddyCapacity(
-            rs.getInt("id"), rs.getInt("accountid"), name, rs.getInt("level"), rs.getInt("job"), rs.getInt("buddyCapacity"), groupname, memo
-         );
+               rs.getInt("id"), rs.getInt("accountid"), name, rs.getInt("level"), rs.getInt("job"),
+               rs.getInt("buddyCapacity"), groupname, memo);
       }
 
       rs.close();
@@ -85,22 +84,24 @@ public class BuddyListHandler {
          }
 
          if (ble != null && !ble.isVisible()) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "이미 친구로 등록되어 있습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เป็นเพื่อนกันเรียบร้อยแล้ว"));
             return;
          }
 
          if (buddylist.isFull()) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "친구리스트가 꽉 찼습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รายชื่อเพื่อนเต็มแล้ว"));
             return;
          }
 
          if (accid == c.getAccID()) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "자기계정에 있는 캐릭터는 친구추가 하실 수 없습니다."));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.serverNotice(1, "ไม่สามารถเพิ่มตัวละครในบัญชีตัวเองเป็นเพื่อนได้"));
             return;
          }
 
          if (accountBuddyCheck == 0) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 이 기능은 사용하실 수 없습니다.\r\n계정 통합 친구를 체크해 주세요."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
+                  "ขณะนี้ฟังก์ชันนี้ไม่สามารถใช้งานได้\r\nกรุณาตรวจสอบเพื่อนที่เชื่อมโยงบัญชี"));
             return;
          }
 
@@ -113,15 +114,14 @@ public class BuddyListHandler {
                   channel = c.getChannel();
                   if (!otherChar.isGM() || c.getPlayer().isGM()) {
                      charWithId = new BuddyListHandler.CharacterIdNameBuddyCapacity(
-                        otherChar.getId(),
-                        otherChar.getAccountID(),
-                        otherChar.getName(),
-                        otherChar.getLevel(),
-                        otherChar.getJob(),
-                        otherChar.getBuddylist().getCapacity(),
-                        groupName,
-                        memo
-                     );
+                           otherChar.getId(),
+                           otherChar.getAccountID(),
+                           otherChar.getName(),
+                           otherChar.getLevel(),
+                           otherChar.getJob(),
+                           otherChar.getBuddylist().getCapacity(),
+                           groupName,
+                           memo);
                   }
                } else {
                   channel = Center.Find.findChannel(addName);
@@ -133,7 +133,8 @@ public class BuddyListHandler {
 
                   for (String name : new ArrayList<>(DummyCharacterName.dummyList)) {
                      if (name.equals(addName)) {
-                        charWithId = new BuddyListHandler.CharacterIdNameBuddyCapacity(100000000 + id, 100000000 + id, addName, 200, 6512, 15, groupName, memo);
+                        charWithId = new BuddyListHandler.CharacterIdNameBuddyCapacity(100000000 + id, 100000000 + id,
+                              addName, 200, 6512, 15, groupName, memo);
                      }
 
                      id++;
@@ -144,18 +145,18 @@ public class BuddyListHandler {
                   Friend.BuddyAddResult buddyAddResult = null;
                   if (channel != -1) {
                      buddyAddResult = Center.Buddy.requestBuddyAdd(
-                        addName,
-                        c.getChannel(),
-                        c.getPlayer().getId(),
-                        c.getAccID(),
-                        c.getPlayer().getName(),
-                        c.getPlayer().getLevel(),
-                        c.getPlayer().getJob(),
-                        groupName,
-                        memo
-                     );
+                           addName,
+                           c.getChannel(),
+                           c.getPlayer().getId(),
+                           c.getAccID(),
+                           c.getPlayer().getName(),
+                           c.getPlayer().getLevel(),
+                           c.getPlayer().getJob(),
+                           groupName,
+                           memo);
                   } else {
-                     PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) as buddyCount FROM buddies WHERE accid = ? AND pending = 0");
+                     PreparedStatement ps = con.prepareStatement(
+                           "SELECT COUNT(*) as buddyCount FROM buddies WHERE accid = ? AND pending = 0");
                      ps.setInt(1, charWithId.getAccId());
                      ResultSet rs = ps.executeQuery();
                      if (!rs.next()) {
@@ -193,10 +194,10 @@ public class BuddyListHandler {
                   }
 
                   if (buddyAddResult == Friend.BuddyAddResult.BUDDYLIST_FULL) {
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "상대 친구목록이 꽉 찼습니다."));
+                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รายชื่อเพื่อนของอีกฝ่ายเต็มแล้ว"));
                      return;
                   } else if (buddyAddResult == Friend.BuddyAddResult.ADD_BLOCKED) {
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "상대가 친구 추가 거부 상태입니다."));
+                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อีกฝ่ายปฏิเสธการเพิ่มเพื่อน"));
                      return;
                   } else {
                      int displayChannel = -1;
@@ -204,8 +205,7 @@ public class BuddyListHandler {
                      if (buddyAddResult != Friend.BuddyAddResult.ALREADY_ON_LIST) {
                         if (channel == -1) {
                            PreparedStatement psx = con.prepareStatement(
-                              "INSERT INTO buddies (`accid`, `buddyid`, `buddyaccid`, `groupname`, `pending`, `memo`) VALUES (?, ?, ?, ?, 1, ?)"
-                           );
+                                 "INSERT INTO buddies (`accid`, `buddyid`, `buddyaccid`, `groupname`, `pending`, `memo`) VALUES (?, ?, ?, ?, 1, ?)");
                            psx.setInt(1, charWithId.getAccId());
                            psx.setInt(2, c.getPlayer().getId());
                            psx.setInt(3, c.getAccID());
@@ -216,19 +216,20 @@ public class BuddyListHandler {
                         }
 
                         buddylist.put(
-                           new FriendEntry(
-                              charWithId.getName(), accid, otherCid, groupName, displayChannel, true, charWithId.getLevel(), charWithId.getJob(), memo
-                           )
-                        );
+                              new FriendEntry(
+                                    charWithId.getName(), accid, otherCid, groupName, displayChannel, true,
+                                    charWithId.getLevel(), charWithId.getJob(), memo));
                         c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.buddyAddMessage(addName));
-                        c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), ble, (byte)21));
+                        c.getSession().writeAndFlush(
+                              CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), ble, (byte) 21));
                         return;
                      }
 
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "상대방의 친구목록에 신청자의 캐릭터가 등록되어 있습니다."));
+                     c.getSession().writeAndFlush(
+                           CWvsContext.serverNotice(1, "ตัวละครของคุณอยู่ในรายชื่อเพื่อนของอีกฝ่ายเรียบร้อยแล้ว"));
                   }
                } else {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "대상을 발견하지 못했습니다."));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ไม่พบเป้าหมาย"));
                   return;
                }
             }
@@ -247,7 +248,7 @@ public class BuddyListHandler {
                      int channelx = Center.Find.findAccChannel(otherAccId);
                      int otherChrId = 0;
                      String otherName = null;
-                     String groupNamex = "그룹 미지정";
+                     String groupNamex = "ไม่ได้จัดกลุ่ม";
                      String otherMemo = "";
                      int otherLevel = 0;
                      int otherJob = 0;
@@ -262,7 +263,8 @@ public class BuddyListHandler {
                      }
 
                      if (otherCharx == null) {
-                        PreparedStatement psx = con.prepareStatement("SELECT id, name, level, job FROM characters WHERE accountid = ?");
+                        PreparedStatement psx = con
+                              .prepareStatement("SELECT id, name, level, job FROM characters WHERE accountid = ?");
                         psx.setInt(1, otherAccId);
                         ResultSet rsx = psx.executeQuery();
                         if (rsx.next()) {
@@ -283,13 +285,17 @@ public class BuddyListHandler {
                      }
 
                      if (otherName != null) {
-                        FriendEntry blex = new FriendEntry(otherName, otherAccId, otherChrId, groupNamex, channelx, true, otherLevel, otherJob, otherMemo);
+                        FriendEntry blex = new FriendEntry(otherName, otherAccId, otherChrId, groupNamex, channelx,
+                              true, otherLevel, otherJob, otherMemo);
                         buddylist.put(blex);
-                        c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)24));
+                        c.getSession().writeAndFlush(
+                              CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 24));
                         if (otherClient != null) {
-                           notifyRemoteChannel(c, otherClient.getChannel(), otherChrId, Friend.BuddyOperation.ADDED, otherMemo);
+                           notifyRemoteChannel(c, otherClient.getChannel(), otherChrId, Friend.BuddyOperation.ADDED,
+                                 otherMemo);
                         } else if (otherCharx != null) {
-                           notifyRemoteChannel(c, otherCharx.getClient().getChannel(), otherChrId, Friend.BuddyOperation.ADDED, otherMemo);
+                           notifyRemoteChannel(c, otherCharx.getClient().getChannel(), otherChrId,
+                                 Friend.BuddyOperation.ADDED, otherMemo);
                         }
                      }
                   } catch (SQLException var49) {
@@ -300,7 +306,7 @@ public class BuddyListHandler {
 
                nextPendingRequest(c);
             } catch (Exception var50) {
-               System.out.println("친구리스트 오류 발생");
+               System.out.println("Buddy list error occurred");
                var50.printStackTrace();
             }
          } else if (mode == 4) {
@@ -327,38 +333,45 @@ public class BuddyListHandler {
             FriendEntry blex = buddylist.get(otherAccId);
             String otherMemox = null;
             if (buddylist.containsVisible(otherAccId)) {
-               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccId), blex.getCharacterId(), Friend.BuddyOperation.DELETED, otherMemox);
+               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccId), blex.getCharacterId(),
+                     Friend.BuddyOperation.DELETED, otherMemox);
             }
 
             buddylist.remove(otherAccId);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)43));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 43));
             nextPendingRequest(c);
          } else if (mode == 5) {
             int otherAccIdx = slea.readInt();
             FriendEntry blex = buddylist.get(otherAccIdx);
             String otherMemox = null;
             if (buddylist.containsVisible(otherAccIdx)) {
-               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccIdx), blex.getCharacterId(), Friend.BuddyOperation.DELETED, otherMemox);
+               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccIdx), blex.getCharacterId(),
+                     Friend.BuddyOperation.DELETED, otherMemox);
             }
 
             buddylist.remove(otherAccIdx);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)43));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 43));
             nextPendingRequest(c);
          } else if (mode == 7) {
             int otherAccIdx = slea.readInt();
             FriendEntry blex = buddylist.get(otherAccIdx);
             String otherMemox = buddylist.get(otherAccIdx).getMemo();
             if (buddylist.containsVisible(otherAccIdx)) {
-               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccIdx), blex.getCharacterId(), Friend.BuddyOperation.DELETED, otherMemox);
+               notifyRemoteChannel(c, Center.Find.findAccChannel(otherAccIdx), blex.getCharacterId(),
+                     Friend.BuddyOperation.DELETED, otherMemox);
             }
 
             buddylist.remove(otherAccIdx);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)43));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 43));
             nextPendingRequest(c);
          } else if (mode == 10) {
             if (c.getPlayer().getMeso() >= 50000L) {
                try (Connection con = DBConnection.getConnection()) {
-                  PreparedStatement psx = con.prepareStatement("UPDATE `characters` SET `buddyCapacity` = ? WHERE `accountid` = ?");
+                  PreparedStatement psx = con
+                        .prepareStatement("UPDATE `characters` SET `buddyCapacity` = ? WHERE `accountid` = ?");
                   psx.setInt(1, c.getPlayer().getBuddyCapacity() + 5);
                   psx.setInt(2, c.getAccID());
                   psx.executeQuery();
@@ -366,11 +379,11 @@ public class BuddyListHandler {
                   var47.printStackTrace();
                }
 
-               c.getPlayer().setBuddyCapacity((byte)(c.getPlayer().getBuddyCapacity() + 5));
+               c.getPlayer().setBuddyCapacity((byte) (c.getPlayer().getBuddyCapacity() + 5));
                c.getPlayer().gainMeso(-50000L, false);
             }
          } else if (mode == 11) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 이 기능은 사용하실 수 없습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ขณะนี้ฟังก์ชันนี้ไม่สามารถใช้งานได้"));
          } else if (mode == 12) {
             slea.skip(1);
             int otherCid = slea.readInt();
@@ -387,39 +400,46 @@ public class BuddyListHandler {
             }
 
             entry.setMemo(memox);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), entry, (byte)24));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), entry, (byte) 24));
          } else if (mode == 13) {
             int otherCid = slea.readInt();
             FriendEntry blex = buddylist.get(otherCid);
             String groupname = slea.readMapleAsciiString();
             FriendEntry blz = buddylist.get(otherCid);
             blz.setGroupName(groupname);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)24));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 24));
          } else if (mode == 14) {
             int otherCid = slea.readInt();
             FriendEntry blex = buddylist.get(otherCid);
             String groupname = slea.readMapleAsciiString();
             FriendEntry blz = buddylist.get(otherCid);
             blz.setGroupName(groupname);
-            c.getSession().writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte)24));
+            c.getSession()
+                  .writeAndFlush(CWvsContext.BuddylistPacket.updateBuddylist(buddylist.getBuddies(), blex, (byte) 24));
          } else if (mode == 15) {
-            Center.Buddy.loggedOff(c.getPlayer().getName(), c.getPlayer().getId(), c.getAccID(), c.getChannel(), buddylist.getBuddyIds());
-            c.getPlayer().dropMessage(5, "오프라인 상태로 변경되었습니다.");
+            Center.Buddy.loggedOff(c.getPlayer().getName(), c.getPlayer().getId(), c.getAccID(), c.getChannel(),
+                  buddylist.getBuddyIds());
+            c.getPlayer().dropMessage(5, "เปลี่ยนสถานะเป็นออฟไลน์เรียบร้อยแล้ว");
          }
       }
    }
 
-   private static final void notifyRemoteChannel(MapleClient c, int remoteChannel, int otherId, Friend.BuddyOperation operation, String memo) {
+   private static final void notifyRemoteChannel(MapleClient c, int remoteChannel, int otherId,
+         Friend.BuddyOperation operation, String memo) {
       MapleCharacter player = c.getPlayer();
       if (remoteChannel > 0) {
-         Center.Buddy.buddyChanged(otherId, player.getId(), c.getAccID(), player.getName(), c.getChannel(), operation, player.getLevel(), player.getJob(), memo);
+         Center.Buddy.buddyChanged(otherId, player.getId(), c.getAccID(), player.getName(), c.getChannel(), operation,
+               player.getLevel(), player.getJob(), memo);
       }
    }
 
    private static final class CharacterIdNameBuddyCapacity extends CharacterNameAndId {
       private int buddyCapacity;
 
-      public CharacterIdNameBuddyCapacity(int id, int accId, String name, int level, int job, int buddyCapacity, String groupname, String memo) {
+      public CharacterIdNameBuddyCapacity(int id, int accId, String name, int level, int job, int buddyCapacity,
+            String groupname, String memo) {
          super(id, accId, name, level, job, groupname, memo);
          this.buddyCapacity = buddyCapacity;
       }

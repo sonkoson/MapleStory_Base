@@ -18,10 +18,11 @@ public class ErdaSpectrumHandler {
          if (type == 33) {
             slea.readInt();
             slea.readInt();
-            ErdaSpectrum fieldset = (ErdaSpectrum)c.getPlayer().getMap().getFieldSetInstance();
+            ErdaSpectrum fieldset = (ErdaSpectrum) c.getPlayer().getMap().getFieldSetInstance();
             int Erda = Integer.parseInt(fieldset.getVar("Erda")) + 10;
             fieldset.setVar("Erda", String.valueOf(Erda));
-            final Point pos = new Point(Integer.parseInt(fieldset.getVar("ballPos").split(",")[0]), Integer.parseInt(fieldset.getVar("ballPos").split(",")[1]));
+            final Point pos = new Point(Integer.parseInt(fieldset.getVar("ballPos").split(",")[0]),
+                  Integer.parseInt(fieldset.getVar("ballPos").split(",")[1]));
 
             for (int i = 0; i < 10; i++) {
                Timer.EventTimer.getInstance().schedule(new Runnable() {
@@ -35,20 +36,24 @@ public class ErdaSpectrumHandler {
             if (c.getPlayer().getMap().getId() != 450001500) {
                if (c.getPlayer().getMap().getId() == 450001400) {
                   c.getPlayer()
-                     .getMap()
-                     .broadcastMessage(ErdaSpectrum.ErdaSpectrumErdaInfo(Erda, Integer.parseInt(fieldset.getVar("TransferCount")), fieldset.getVar("lastPuck")));
+                        .getMap()
+                        .broadcastMessage(ErdaSpectrum.ErdaSpectrumErdaInfo(Erda,
+                              Integer.parseInt(fieldset.getVar("TransferCount")), fieldset.getVar("lastPuck")));
                } else {
                   c.getPlayer()
-                     .getMap()
-                     .broadcastMessage(ErdaSpectrum.ErdaSpectrumCrackInfo(Erda, c.getPlayer().getMap().getAllMonstersThreadsafe().size() - 1));
+                        .getMap()
+                        .broadcastMessage(ErdaSpectrum.ErdaSpectrumCrackInfo(Erda,
+                              c.getPlayer().getMap().getAllMonstersThreadsafe().size() - 1));
                }
             } else {
-               c.getPlayer().getMap().broadcastMessage(ErdaSpectrum.ErdaSpectrumWormInfo(Erda, fieldset.getVar("elim")));
+               c.getPlayer().getMap()
+                     .broadcastMessage(ErdaSpectrum.ErdaSpectrumWormInfo(Erda, fieldset.getVar("elim")));
             }
 
             c.getPlayer()
-               .getMap()
-               .broadcastMessage(ErdaSpectrum.ErdaSpectrumErdaInfo(Erda, Integer.parseInt(fieldset.getVar("TransferCount")), fieldset.getVar("lastPuck")));
+                  .getMap()
+                  .broadcastMessage(ErdaSpectrum.ErdaSpectrumErdaInfo(Erda,
+                        Integer.parseInt(fieldset.getVar("TransferCount")), fieldset.getVar("lastPuck")));
          }
       }
    }
@@ -56,7 +61,7 @@ public class ErdaSpectrumHandler {
    public static void ErdaSpectrumTouchObject(PacketDecoder slea, MapleClient c) {
       MapleCharacter chr = c.getPlayer();
       if (c.getPlayer().getMap().getFieldSetInstance() != null && chr != null) {
-         ErdaSpectrum fieldset = (ErdaSpectrum)chr.getMap().getFieldSetInstance();
+         ErdaSpectrum fieldset = (ErdaSpectrum) chr.getMap().getFieldSetInstance();
          if (fieldset != null) {
             if (Integer.parseInt(fieldset.getVar("Erda")) >= 10) {
                fieldset.erdaDec();
@@ -66,7 +71,7 @@ public class ErdaSpectrumHandler {
                chr.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8641018), new Point(483, 47));
                chr.getMap().broadcastMessage(ErdaSpectrum.ErdaSpectrumPhase(3));
             } else {
-               chr.dropMessage(5, "에르다 응집기를 사용하는 데 필요한 에르다가 부족합니다.");
+               chr.dropMessage(5, "Erda ไม่เพียงพอสำหรับการใช้ Erda Collector");
             }
          }
       }
@@ -75,7 +80,7 @@ public class ErdaSpectrumHandler {
    public static void ErdaSpectrumPuckInArea(PacketDecoder slea, MapleClient c) {
       MapleCharacter chr = c.getPlayer();
       if (chr.getMap().getFieldSetInstance() != null && chr != null) {
-         ErdaSpectrum fieldset = (ErdaSpectrum)chr.getMap().getFieldSetInstance();
+         ErdaSpectrum fieldset = (ErdaSpectrum) chr.getMap().getFieldSetInstance();
          if (fieldset != null) {
             int areaType = slea.readInt();
             slea.readInt();

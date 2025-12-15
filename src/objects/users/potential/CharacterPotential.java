@@ -44,7 +44,8 @@ public class CharacterPotential {
                skillLevels[idx++] = Integer.parseInt(arg);
             }
 
-            skillLevelTables.add(new Pair<>(grade, new CharacterPotentialSkillLevel(skillID, new CharacterPotentialSkillLevelEntry(grade, skillLevels))));
+            skillLevelTables.add(new Pair<>(grade, new CharacterPotentialSkillLevel(skillID,
+                  new CharacterPotentialSkillLevelEntry(grade, skillLevels))));
          }
 
          rs.close();
@@ -52,22 +53,23 @@ public class CharacterPotential {
       } catch (SQLException var15) {
       }
 
-      System.out.println("어빌리티 스킬 레벨 데이터가 캐싱되었습니다.");
+      System.out.println("Ability Skill Level data has been cached.");
    }
 
-   public CharacterPotentialHolder renewSkill(List<CharacterPotentialHolder> inners, List<CharacterPotentialHolder> newValues, int rank, boolean locked) {
+   public CharacterPotentialHolder renewSkill(List<CharacterPotentialHolder> inners,
+         List<CharacterPotentialHolder> newValues, int rank, boolean locked) {
       return this.renewSkill(inners, newValues, rank, false, locked);
    }
 
    public CharacterPotentialHolder renewSkill(
-      List<CharacterPotentialHolder> inners, List<CharacterPotentialHolder> newValues, int rank, boolean ultimateCirculatorPos, boolean locked
-   ) {
+         List<CharacterPotentialHolder> inners, List<CharacterPotentialHolder> newValues, int rank,
+         boolean ultimateCirculatorPos, boolean locked) {
       return this.getRandomSkill(inners, newValues, rank, locked, ultimateCirculatorPos);
    }
 
    public CharacterPotentialHolder getRandomSkill(
-      List<CharacterPotentialHolder> inners, List<CharacterPotentialHolder> newValues, int grade, boolean locked, boolean ultimateCirculatorPos
-   ) {
+         List<CharacterPotentialHolder> inners, List<CharacterPotentialHolder> newValues, int grade, boolean locked,
+         boolean ultimateCirculatorPos) {
       List<Pair<Integer, Integer>> skillList = this.getCharacterPotentialSkillListByGrade(grade);
 
       for (CharacterPotentialHolder holder : newValues) {
@@ -96,7 +98,8 @@ public class CharacterPotential {
             skillLevel = random;
          }
 
-         return new CharacterPotentialHolder(randomSkill, (byte)skillLevel, (byte)SkillFactory.getSkill(randomSkill).getMaxLevel(), (byte)grade, locked);
+         return new CharacterPotentialHolder(randomSkill, (byte) skillLevel,
+               (byte) SkillFactory.getSkill(randomSkill).getMaxLevel(), (byte) grade, locked);
       } else {
          return null;
       }

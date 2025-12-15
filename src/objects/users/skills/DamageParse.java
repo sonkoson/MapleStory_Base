@@ -625,9 +625,9 @@ public class DamageParse {
                limit = 300000000000000L;
                if (damage > limit) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("데미지 핵 사용 : ");
+                  sb.append("Damage Hack Detected : ");
                   sb.append(player.getName());
-                  sb.append(", 스킬ID : ");
+                  sb.append(", SkillID : ");
                   sb.append(skillID);
                   sb.append(")");
                   LoggingManager.putLog(new DamageHackLog(player, damage, sb));

@@ -437,7 +437,7 @@ public class DueyHandler {
             }
          }
       } catch (Exception var4) {
-         System.out.println("듀이 아이템 오류 발생");
+         System.out.println("Duey item error occurred");
          var4.printStackTrace();
       }
 

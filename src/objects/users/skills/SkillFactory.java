@@ -37,13 +37,14 @@ public class SkillFactory {
    private static final Map<Integer, SummonedSkillEntry> SummonSkillInformation = new HashMap<>();
    private static final Map<Integer, FieldSkill> fieldSkills = new HashMap<>();
    private static final Map<Integer, Integer> ridingSkillInfo = new HashMap<>();
-   private static final MapleData delayData = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Character.wz"))
-      .getData("00002000.img");
-   private static final MapleData stringData = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/String.wz"))
-      .getData("Skill.img");
+   private static final MapleData delayData = MapleDataProviderFactory
+         .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Character.wz"))
+         .getData("00002000.img");
+   private static final MapleData stringData = MapleDataProviderFactory
+         .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/String.wz"))
+         .getData("Skill.img");
    private static final MapleDataProvider datasource = MapleDataProviderFactory.getDataProvider(
-      new File(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz")
-   );
+         new File(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz"));
 
    public static void load() {
       int del = 0;
@@ -67,7 +68,8 @@ public class SkillFactory {
    public static void cachingSkills(MapleDataFileEntry topDir, MapleDataDirectoryEntry root, MapleDataProvider source) {
       int skillid = 0;
       if (topDir.getName().length() <= 10) {
-         for (MapleData data : source.getData(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz/" + root.getName(), topDir.getName())) {
+         for (MapleData data : source
+               .getData(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz/" + root.getName(), topDir.getName())) {
             if (data.getName().equals("skill")) {
                for (MapleData data2 : data) {
                   try {
@@ -81,19 +83,21 @@ public class SkillFactory {
                         MapleData summon_data = data2.getChildByPath("summon/attack1/info");
                         if (summon_data != null) {
                            SummonedSkillEntry sse = new SummonedSkillEntry();
-                           sse.type = (byte)MapleDataTool.getInt("type", summon_data, 0);
-                           sse.mobCount = (byte)(skillid == 33101008 ? 3 : MapleDataTool.getInt("mobCount", summon_data, 1));
-                           sse.attackCount = (byte)MapleDataTool.getInt("attackCount", summon_data, 1);
+                           sse.type = (byte) MapleDataTool.getInt("type", summon_data, 0);
+                           sse.mobCount = (byte) (skillid == 33101008 ? 3
+                                 : MapleDataTool.getInt("mobCount", summon_data, 1));
+                           sse.attackCount = (byte) MapleDataTool.getInt("attackCount", summon_data, 1);
                            if (summon_data.getChildByPath("range/lt") != null) {
                               MapleData ltd = summon_data.getChildByPath("range/lt");
-                              sse.lt = (Point)ltd.getData();
-                              sse.rb = (Point)summon_data.getChildByPath("range/rb").getData();
+                              sse.lt = (Point) ltd.getData();
+                              sse.rb = (Point) summon_data.getChildByPath("range/rb").getData();
                            } else {
                               sse.lt = new Point(-100, -100);
                               sse.rb = new Point(100, 100);
                            }
 
-                           sse.delay = MapleDataTool.getInt("effectAfter", summon_data, 0) + MapleDataTool.getInt("attackAfter", summon_data, 0);
+                           sse.delay = MapleDataTool.getInt("effectAfter", summon_data, 0)
+                                 + MapleDataTool.getInt("attackAfter", summon_data, 0);
 
                            for (MapleData effect : summon_data) {
                               if (effect.getChildren().size() > 0) {
@@ -121,17 +125,17 @@ public class SkillFactory {
          for (MapleData datax : source.getData(topDir.getName())) {
             skillid = Integer.parseInt(datax.getName());
             SkillFactory.CraftingEntry skil = new SkillFactory.CraftingEntry(
-               skillid,
-               (byte)MapleDataTool.getInt("incFatigability", datax, 0),
-               (byte)MapleDataTool.getInt("reqSkillLevel", datax, 0),
-               (byte)MapleDataTool.getInt("incSkillProficiency", datax, 0),
-               MapleDataTool.getInt("needOpenItem", datax, 0) > 0,
-               MapleDataTool.getInt("period", datax, 0)
-            );
+                  skillid,
+                  (byte) MapleDataTool.getInt("incFatigability", datax, 0),
+                  (byte) MapleDataTool.getInt("reqSkillLevel", datax, 0),
+                  (byte) MapleDataTool.getInt("incSkillProficiency", datax, 0),
+                  MapleDataTool.getInt("needOpenItem", datax, 0) > 0,
+                  MapleDataTool.getInt("period", datax, 0));
 
             for (MapleData d : datax.getChildByPath("target")) {
                skil.targetItems
-                  .add(new Triple<>(MapleDataTool.getInt("item", d, 0), MapleDataTool.getInt("count", d, 0), MapleDataTool.getInt("probWeight", d, 0)));
+                     .add(new Triple<>(MapleDataTool.getInt("item", d, 0), MapleDataTool.getInt("count", d, 0),
+                           MapleDataTool.getInt("probWeight", d, 0)));
             }
 
             for (MapleData d : datax.getChildByPath("recipe")) {
@@ -229,19 +233,19 @@ public class SkillFactory {
             SecondaryStatEffect effect = skill.getEffect(level);
             if (effect != null) {
                String content = "Skill ID: "
-                  + skill.getId()
-                  + "\nSkill Name: "
-                  + skill.getName()
-                  + "\nSkill MaxLevel: "
-                  + maxLevel
-                  + "\nSkill MasterLevel: "
-                  + masterLevel
-                  + "\nSkill Effect Level: "
-                  + level
-                  + "\nSkill ScondaryEffect: "
-                  + effect.toString()
-                  + "\n----------------------------------------------------------------------------------------------------------\n";
-               File file = new File(String.format("D:\\MapleStory\\%d_%s_스킬정보.txt", skillid, skill.getName()));
+                     + skill.getId()
+                     + "\nSkill Name: "
+                     + skill.getName()
+                     + "\nSkill MaxLevel: "
+                     + maxLevel
+                     + "\nSkill MasterLevel: "
+                     + masterLevel
+                     + "\nSkill Effect Level: "
+                     + level
+                     + "\nSkill ScondaryEffect: "
+                     + effect.toString()
+                     + "\n----------------------------------------------------------------------------------------------------------\n";
+               File file = new File(String.format("D:\\MapleStory\\%d_%s_SkillInfo.txt", skillid, skill.getName()));
                FileOutputStream writer = null;
 
                try {
@@ -285,35 +289,35 @@ public class SkillFactory {
          }
 
          String content = "Skill ID["
-            + count
-            + "]: "
-            + skillSet.getKey()
-            + "\nSkill Name: "
-            + skillSet.getValue().getName()
-            + "\nSkill SkillType: "
-            + skillSet.getValue().getSkillType()
-            + "\nSkill Type: "
-            + skillSet.getValue().getType()
-            + "\nSkill isHyper: "
-            + skillSet.getValue().isHyper()
-            + "\nSkill isMagic: "
-            + skillSet.getValue().isMagic()
-            + "\nSkill isSpecialSkill: "
-            + skillSet.getValue().isSpecialSkill()
-            + "\nSkill isSummon: "
-            + skillSet.getValue().isSummon()
-            + "\nSkill isChargeSkill: "
-            + skillSet.getValue().isChargeSkill()
-            + "\nSkill isFourthJob: "
-            + skillSet.getValue().isFourthJob()
-            + "\nSkill isMovement: "
-            + skillSet.getValue().isMovement()
-            + "\nSkill Effect Level(Masterlevel): "
-            + masterLevel
-            + "\nSkill ScondaryEffect: "
-            + skillSet.getValue().getEffect(masterLevel).toString()
-            + "\n----------------------------------------------------------------------------------------------------------\n";
-         File file = new File("D:\\MapleStory\\Royal_372_스킬정보.txt");
+               + count
+               + "]: "
+               + skillSet.getKey()
+               + "\nSkill Name: "
+               + skillSet.getValue().getName()
+               + "\nSkill SkillType: "
+               + skillSet.getValue().getSkillType()
+               + "\nSkill Type: "
+               + skillSet.getValue().getType()
+               + "\nSkill isHyper: "
+               + skillSet.getValue().isHyper()
+               + "\nSkill isMagic: "
+               + skillSet.getValue().isMagic()
+               + "\nSkill isSpecialSkill: "
+               + skillSet.getValue().isSpecialSkill()
+               + "\nSkill isSummon: "
+               + skillSet.getValue().isSummon()
+               + "\nSkill isChargeSkill: "
+               + skillSet.getValue().isChargeSkill()
+               + "\nSkill isFourthJob: "
+               + skillSet.getValue().isFourthJob()
+               + "\nSkill isMovement: "
+               + skillSet.getValue().isMovement()
+               + "\nSkill Effect Level(Masterlevel): "
+               + masterLevel
+               + "\nSkill ScondaryEffect: "
+               + skillSet.getValue().getEffect(masterLevel).toString()
+               + "\n----------------------------------------------------------------------------------------------------------\n";
+         File file = new File("D:\\MapleStory\\Royal_372_SkillInfo.txt");
          FileOutputStream writer = null;
 
          try {
@@ -336,7 +340,8 @@ public class SkillFactory {
       }
    }
 
-   public static byte[] EncodeFieldSkill(int skillID, int skillLevel, int refMobID, int mobSkill, int minBulletCount, int maxBulletCount) {
+   public static byte[] EncodeFieldSkill(int skillID, int skillLevel, int refMobID, int mobSkill, int minBulletCount,
+         int maxBulletCount) {
       if (getFieldSkill(skillID) != null && getFieldSkill(skillID).getFieldSkillEntry(skillLevel) != null) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.FIELD_SKILL_RESULT.getValue());
@@ -381,7 +386,8 @@ public class SkillFactory {
       public List<Triple<Integer, Integer, Integer>> targetItems = new ArrayList<>();
       public Map<Integer, Integer> reqItems = new HashMap<>();
 
-      public CraftingEntry(int id, byte incFatigability, byte reqSkillLevel, byte incSkillProficiency, boolean needOpenItem, int period) {
+      public CraftingEntry(int id, byte incFatigability, byte reqSkillLevel, byte incSkillProficiency,
+            boolean needOpenItem, int period) {
          super(id);
          this.incFatigability = incFatigability;
          this.reqSkillLevel = reqSkillLevel;

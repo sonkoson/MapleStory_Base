@@ -94,13 +94,14 @@ public class ItemOptionInfo {
 
    public static int getItemGrade(int curGrade, int optPos, GradeRandomOption opt) {
       boolean fever = ServerConstants.dailyEventType == DailyEventType.CubeFever;
-      ItemOptionPercentageInfo.ItemGradePercentageInfo info = ItemOptionPercentageInfo.getItemGradePercentageInfo(opt, curGrade);
+      ItemOptionPercentageInfo.ItemGradePercentageInfo info = ItemOptionPercentageInfo.getItemGradePercentageInfo(opt,
+            curGrade);
       if (info == null) {
          return curGrade;
       } else {
          int randomValue = Randomizer.nextInt(ItemOptionPercentageInfo.ItemGradePercentageInfo.getRandomValue());
          if (fever) {
-            randomValue = (int)(randomValue / 1.05);
+            randomValue = (int) (randomValue / 1.05);
          }
 
          if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeCubeUpFever) {
@@ -112,7 +113,8 @@ public class ItemOptionInfo {
          } else if (curGrade >= 4) {
             return curGrade;
          } else {
-            return randomValue >= ItemOptionPercentageInfo.ItemGradePercentageInfo.getPercentageInfo(optPos) ? curGrade : curGrade + 1;
+            return randomValue >= ItemOptionPercentageInfo.ItemGradePercentageInfo.getPercentageInfo(optPos) ? curGrade
+                  : curGrade + 1;
          }
       }
    }
@@ -126,7 +128,7 @@ public class ItemOptionInfo {
       loadItemInfo();
 
       for (int x = 0; x < 20; x++) {
-         System.out.println(x + 1 + "회차 결과 (등급 : 레전드리) (사용 아이템 등급 : 장인의 큐브)");
+         System.out.println(x + 1 + "th result (Grade : Legendary) (Item Grade used : Master Cube)");
          int level = 4;
 
          for (int i = 0; i < 3; i++) {
@@ -146,7 +148,8 @@ public class ItemOptionInfo {
             List<ItemOption> list = options.get(opt);
             if (list != null && !list.isEmpty()) {
                for (ItemOption op : list) {
-                  if (option != GradeRandomOption.Additional && option != GradeRandomOption.OccultAdditional && option != GradeRandomOption.AmazingAdditional) {
+                  if (option != GradeRandomOption.Additional && option != GradeRandomOption.OccultAdditional
+                        && option != GradeRandomOption.AmazingAdditional) {
                      if (!isAdditional(op.id)) {
                         allPoptions.add(op);
                      }
@@ -158,30 +161,30 @@ public class ItemOptionInfo {
          }
 
          allPoptions = allPoptions.stream()
-            .filter(a -> getCustomMaxLine(itemID, a, optionTypes) > 0)
-            .filter(a -> a.reqLevel <= ii.getReqLevel(itemID))
-            .filter(a -> ItemOptionPercentageInfo.getItemOptionPercentageInfo(option, a.id) > 0)
-            .collect(Collectors.toList());
+               .filter(a -> getCustomMaxLine(itemID, a, optionTypes) > 0)
+               .filter(a -> a.reqLevel <= ii.getReqLevel(itemID))
+               .filter(a -> ItemOptionPercentageInfo.getItemOptionPercentageInfo(option, a.id) > 0)
+               .collect(Collectors.toList());
          if (DBConfig.isGanglim) {
             List<Integer> removeList = List.of(
-               31001, 31002, 31003, 31004, 32091, 32092, 32093, 32094, 32661, 40081, 42059, 42116, 42650, 42656, 42661, 32058, 42058
-            );
+                  31001, 31002, 31003, 31004, 32091, 32092, 32093, 32094, 32661, 40081, 42059, 42116, 42650, 42656,
+                  42661, 32058, 42058);
             allPoptions = allPoptions.stream()
-               .filter(
-                  a -> a.id != 42601
-                     && !isAdditinalDamageCheck(a.id)
-                     && !isAdditionalStatValue(a.id)
-                     && !isAdditionalDamage(a.id)
-                     && a.id != 32071
-                     && a.id != 40091
-                     && a.id != 40092
-                     && (a.id < 42091 || a.id > 42096)
-               )
-               .filter(a -> !removeList.contains(a.id))
-               .collect(Collectors.toList());
+                  .filter(
+                        a -> a.id != 42601
+                              && !isAdditinalDamageCheck(a.id)
+                              && !isAdditionalStatValue(a.id)
+                              && !isAdditionalDamage(a.id)
+                              && a.id != 32071
+                              && a.id != 40091
+                              && a.id != 40092
+                              && (a.id < 42091 || a.id > 42096))
+                  .filter(a -> !removeList.contains(a.id))
+                  .collect(Collectors.toList());
          }
 
-         List<Integer> removeList = List.of(30053, 30054, 40053, 40054, 32055, 32056, 42055, 42056, 32013, 32014, 42013, 42014);
+         List<Integer> removeList = List.of(30053, 30054, 40053, 40054, 32055, 32056, 42055, 42056, 32013, 32014, 42013,
+               42014);
          allPoptions = allPoptions.stream().filter(a -> !removeList.contains(a.id)).collect(Collectors.toList());
          int max = 0;
 
@@ -201,7 +204,7 @@ public class ItemOptionInfo {
 
          return 0;
       } else {
-         System.out.println(grade + " 레어리티의 아이템 옵션이 로드되지 않았습니다.");
+         System.out.println(grade + " rarity item options were not loaded.");
          return 0;
       }
    }
@@ -274,7 +277,8 @@ public class ItemOptionInfo {
       }
    }
 
-   private static int checkMaxLines(int itemID, int optionType, ItemOption option, ItemOptionInfo.Function func, List<Integer> beforeOptions, int max) {
+   private static int checkMaxLines(int itemID, int optionType, ItemOption option, ItemOptionInfo.Function func,
+         List<Integer> beforeOptions, int max) {
       int ret = 0;
       ItemOptionLevelData levelData = getItemOptionLevelData(itemID, option.id);
       if (levelData == null) {
@@ -302,7 +306,8 @@ public class ItemOptionInfo {
    public static List<Integer> getOptionTypes(int itemID) {
       List<Integer> ret = new ArrayList<>();
       ret.add(0);
-      if (GameConstants.isWeapon(itemID) || GameConstants.isSubWeapon(itemID) || GameConstants.isEmblem(itemID) || GameConstants.isShield(itemID)) {
+      if (GameConstants.isWeapon(itemID) || GameConstants.isSubWeapon(itemID) || GameConstants.isEmblem(itemID)
+            || GameConstants.isShield(itemID)) {
          ret.add(10);
       } else if (GameConstants.isAndroidHeart(itemID) && DBConfig.isGanglim) {
          ret.add(10);
@@ -311,29 +316,27 @@ public class ItemOptionInfo {
       }
 
       if (!GameConstants.isBetaWeapon(itemID)
-         && (
-            GameConstants.isCap(itemID)
-               || GameConstants.isRing(itemID)
-               || GameConstants.isGlove(itemID)
-               || GameConstants.isShoes(itemID)
-               || GameConstants.isShieldBodyPart(itemID)
-               || GameConstants.isCoat(itemID)
-               || !GameConstants.isLongcoat(itemID)
-               || GameConstants.isPants(itemID)
-               || GameConstants.isCape(itemID)
-               || GameConstants.isBelt(itemID)
-               || GameConstants.isShoulder(itemID)
-         )) {
+            && (GameConstants.isCap(itemID)
+                  || GameConstants.isRing(itemID)
+                  || GameConstants.isGlove(itemID)
+                  || GameConstants.isShoes(itemID)
+                  || GameConstants.isShieldBodyPart(itemID)
+                  || GameConstants.isCoat(itemID)
+                  || !GameConstants.isLongcoat(itemID)
+                  || GameConstants.isPants(itemID)
+                  || GameConstants.isCape(itemID)
+                  || GameConstants.isBelt(itemID)
+                  || GameConstants.isShoulder(itemID))) {
          ret.add(20);
       } else {
          ret.add(21);
       }
 
       if (!GameConstants.isPendant(itemID)
-         && !GameConstants.isRing(itemID)
-         && !GameConstants.isFaceAccessory(itemID)
-         && !GameConstants.isEyeAccessory(itemID)
-         && !GameConstants.isEarAccessory(itemID)) {
+            && !GameConstants.isRing(itemID)
+            && !GameConstants.isFaceAccessory(itemID)
+            && !GameConstants.isEyeAccessory(itemID)
+            && !GameConstants.isEarAccessory(itemID)) {
          ret.add(41);
       } else {
          ret.add(40);

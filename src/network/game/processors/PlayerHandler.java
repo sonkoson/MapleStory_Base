@@ -216,12 +216,11 @@ public class PlayerHandler {
                if (type == 1 && action >= 1000 && action != 400051001) {
                   Skill skil = SkillFactory.getSkill(action);
                   if (skil != null
-                     && (
-                        !skil.isFourthJob() && !skil.isBeginnerSkill() && skil.isInvisible() && chr.getSkillLevel(skil) <= 0
-                           || action >= 91000000 && action < 100000000
-                     )
-                     && !GameConstants.isLinkSkill(skil.getId())
-                     && !GameConstants.isTheSeedSkill(skil.getId())) {
+                        && (!skil.isFourthJob() && !skil.isBeginnerSkill() && skil.isInvisible()
+                              && chr.getSkillLevel(skil) <= 0
+                              || action >= 91000000 && action < 100000000)
+                        && !GameConstants.isLinkSkill(skil.getId())
+                        && !GameConstants.isTheSeedSkill(skil.getId())) {
                      continue;
                   }
                }
@@ -287,7 +286,8 @@ public class PlayerHandler {
          if (toUse == null) {
             chr.getCheatTracker().registerOffense(CheatingOffense.USING_UNAVAILABLE_ITEM, Integer.toString(itemId));
          } else {
-            if (!DBConfig.isGanglim && ServerConstants.useChairFishing && chr.getMapId() == ServerConstants.chairFishingMapID) {
+            if (!DBConfig.isGanglim && ServerConstants.useChairFishing
+                  && chr.getMapId() == ServerConstants.chairFishingMapID) {
                chr.startFishingTask();
             }
 
@@ -333,14 +333,16 @@ public class PlayerHandler {
             }
 
             if (ii.getChairTamingMob(itemID) > 0 && itemID != 3015564) {
-               chr.temporaryStatSet(80002894, Integer.MAX_VALUE, SecondaryStatFlag.RideVehicle, ii.getChairTamingMob(itemID));
+               chr.temporaryStatSet(80002894, Integer.MAX_VALUE, SecondaryStatFlag.RideVehicle,
+                     ii.getChairTamingMob(itemID));
             }
 
             if (itemId == 3015440) {
                meso = slea.readInt();
                chr.setMaxMesoChairCount(meso);
                if (chr.getMesoChairCount() > 0L) {
-                  chr.getClient().getSession().writeAndFlush(CField.setMesoChairCount(chr.getId(), itemId, chr.getMesoChairCount()));
+                  chr.getClient().getSession()
+                        .writeAndFlush(CField.setMesoChairCount(chr.getId(), itemId, chr.getMesoChairCount()));
                }
 
                Timer.BuffTimer timer = Timer.BuffTimer.getInstance();
@@ -376,9 +378,10 @@ public class PlayerHandler {
             if (itemID / 1000 == 3016) {
                List<MapleCharacter> list = new ArrayList<>();
                list.add(chr);
-               int[] randEmotions = new int[]{2, 10, 14, 17};
+               int[] randEmotions = new int[] { 2, 10, 14, 17 };
                chr.setChairEmotion(randEmotions[Randomizer.nextInt(randEmotions.length)]);
-               CustomChair chair = new CustomChair(chr, itemID, list, new Rect(-400, -265, 400, 265), new Point(posX, posY));
+               CustomChair chair = new CustomChair(chr, itemID, list, new Rect(-400, -265, 400, 265),
+                     new Point(posX, posY));
                chr.getMap().addCustomChair(chair);
                chr.setCustomChair(chair);
             }
@@ -455,7 +458,7 @@ public class PlayerHandler {
             int vote = slea.readInt();
             int unknown2 = slea.readInt();
             if (targetChr.isAlreadyCodyVote(chr.getId())) {
-               chr.dropMessage(1, "투표는 캐릭터가 앉아있는 동안 1회만 할 수 있습니다.");
+               chr.dropMessage(1, "สามารถโหวตได้เพียงครั้งเดียวขณะนั่ง");
             } else {
                targetChr.setCodyVote(chr.getId(), vote);
             }
@@ -580,8 +583,8 @@ public class PlayerHandler {
                } else if (GameConstants.isMercedes(job)) {
                   specialSkill = 23110004;
                } else if (GameConstants.isMechanic(job)
-                  && player.getBuffedValue(SecondaryStatFlag.RideVehicle) != null
-                  && player.getBuffedValue(SecondaryStatFlag.RideVehicle) == 1932016) {
+                     && player.getBuffedValue(SecondaryStatFlag.RideVehicle) != null
+                     && player.getBuffedValue(SecondaryStatFlag.RideVehicle) == 1932016) {
                   specialSkill = 35120018;
                } else if (GameConstants.isKinesis(job)) {
                   specialSkill = 142001007;
@@ -596,10 +599,11 @@ public class PlayerHandler {
                if (job == 121 || job == 122) {
                   specialSkill = 1210001;
                   if (player.getTotalSkillLevel(1220006) > 0) {
-                     SecondaryStatEffect eff = SkillFactory.getSkill(1220006).getEffect(player.getTotalSkillLevel(1220006));
+                     SecondaryStatEffect eff = SkillFactory.getSkill(1220006)
+                           .getEffect(player.getTotalSkillLevel(1220006));
                      attacker.applyStatus(
-                        player, new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, 1220006, null, false), false, eff.getDuration(), true, eff
-                     );
+                           player, new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, 1220006, null, false),
+                           false, eff.getDuration(), true, eff);
                      specialSkill = 1220006;
                   }
                }
@@ -622,7 +626,8 @@ public class PlayerHandler {
             if (onAetherGuard) {
                SecondaryStatEffect eff = player.getSkillLevelData(151121004);
                if (eff != null) {
-                  player.temporaryStatSet(151121011, eff.getSubTime() / 1000, SecondaryStatFlag.indiePartialNotDamaged, 1);
+                  player.temporaryStatSet(151121011, eff.getSubTime() / 1000, SecondaryStatFlag.indiePartialNotDamaged,
+                        1);
                   SpecialSkillEffect e = new SpecialSkillEffect(player.getId(), 151121004, null);
                   player.send(e.encodeForLocal());
                   player.getMap().broadcastMessage(player, e.encodeForRemote(), false);
@@ -659,7 +664,8 @@ public class PlayerHandler {
                      if (v <= 0) {
                         player.temporaryStatReset(SecondaryStatFlag.HolyMagicShell);
                      } else {
-                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                              player.getSecondaryStat());
                         statManager.changeStatValue(SecondaryStatFlag.HolyMagicShell, 2311009, v - 1);
                         statManager.temporaryStatSet();
                      }
@@ -672,7 +678,8 @@ public class PlayerHandler {
                      if (v <= 0) {
                         player.temporaryStatReset(SecondaryStatFlag.BlessingArmor);
                      } else {
-                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                              player.getSecondaryStat());
                         statManager.changeStatValue(SecondaryStatFlag.BlessingArmor, 1210016, v - 1);
                         statManager.temporaryStatSet();
                      }
@@ -692,10 +699,10 @@ public class PlayerHandler {
                   packet.write(faceLeft);
                   packet.writeInt(objectID);
                   if (attacker == null
-                     || attacker.getId() != mobTemplateID
-                     || attacker.getLinkCID() > 0
-                     || attacker.isFake()
-                     || attacker.getStats().isFriendly()) {
+                        || attacker.getId() != mobTemplateID
+                        || attacker.getLinkCID() > 0
+                        || attacker.isFake()
+                        || attacker.getStats().isFriendly()) {
                      return;
                   }
 
@@ -714,7 +721,7 @@ public class PlayerHandler {
 
                         if (attackInfo.isDeadlyAttack()) {
                            deadlyAttack = true;
-                           mpattack = (int)(stats.getMp() - 1L);
+                           mpattack = (int) (stats.getMp() - 1L);
                         } else {
                            mpattack += attackInfo.getMpBurn();
                         }
@@ -724,7 +731,8 @@ public class PlayerHandler {
                            fixDamRType = attackInfo.getFixDamRType();
                         }
 
-                        MobSkillInfo skillx = MobSkillFactory.getMobSkill(attackInfo.getDiseaseSkill(), attackInfo.getDiseaseLevel());
+                        MobSkillInfo skillx = MobSkillFactory.getMobSkill(attackInfo.getDiseaseSkill(),
+                              attackInfo.getDiseaseLevel());
                         if (skillx != null && (damage == -1 || damage > 0)) {
                            skillx.applyEffect(player, attacker, null, false);
                            attacker.setLastSkillUsed(skillx, System.currentTimeMillis(), skillx.getCoolTime());
@@ -746,9 +754,9 @@ public class PlayerHandler {
                      int bof = player.getTotalSkillLevel(bx);
                      if (bof > 0) {
                         SecondaryStatEffect eff = bx.getEffect(bof);
-                        int hp = (int)(eff.getY() * player.getStat().getCurrentMaxHp() * 0.01);
+                        int hp = (int) (eff.getY() * player.getStat().getCurrentMaxHp() * 0.01);
                         player.addHP(hp);
-                        int delta = (int)(GameConstants.getMPByJob(c.getPlayer()) - c.getPlayer().getStat().getMp());
+                        int delta = (int) (GameConstants.getMPByJob(c.getPlayer()) - c.getPlayer().getStat().getMp());
                         if (delta > 0) {
                            delta = Math.min(delta, eff.getZ());
                            c.getPlayer().addMP(delta, true);
@@ -772,18 +780,20 @@ public class PlayerHandler {
                         if (mob != null) {
                            mob.damage(c.getPlayer(), reflectDamage, true);
                            if (skillID == 31101003) {
-                              SecondaryStatEffect e = SkillFactory.getSkill(skillID).getEffect(player.getTotalSkillLevel(skillID));
+                              SecondaryStatEffect e = SkillFactory.getSkill(skillID)
+                                    .getEffect(player.getTotalSkillLevel(skillID));
                               if (e != null && e.makeChanceResult()) {
                                  mob.applyStatus(
-                                    player, new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, skillID, null, false), false, e.getSubTime(), true, e
-                                 );
+                                       player,
+                                       new MobTemporaryStatEffect(MobTemporaryStatFlag.STUN, 1, skillID, null, false),
+                                       false, e.getSubTime(), true, e);
                               }
                            }
                         }
 
                         packet.write(powerGuard);
                         packet.writeInt(reflectMobID);
-                        packet.write((int)var44);
+                        packet.write((int) var44);
                         packet.writeShort(ptHit.x);
                         packet.writeShort(ptHit.y);
                      }
@@ -839,7 +849,8 @@ public class PlayerHandler {
                            player.temporaryStatReset(SecondaryStatFlag.StormGuard);
                         } else {
                            vx = vx - fixDamR;
-                           SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                           SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                 player.getSecondaryStat());
                            statManager.changeStatValue(SecondaryStatFlag.StormGuard, e.getSourceId(), vx);
                            statManager.temporaryStatSet();
                         }
@@ -856,26 +867,27 @@ public class PlayerHandler {
                if (damage > 0) {
                   if (player.getMap() instanceof Field_WillBattle) {
                      if (attackIndex.equals(AttackIndex.Mob_Attack5)) {
-                        Field_WillBattle f = (Field_WillBattle)player.getMap();
+                        Field_WillBattle f = (Field_WillBattle) player.getMap();
                         player.setWillMoonGaugeUpdateableTime(System.currentTimeMillis() + 3000L);
                      }
 
                      if (attackIndex.equals(AttackIndex.Mob_Attack6)) {
-                        Field_WillBattle f = (Field_WillBattle)player.getMap();
+                        Field_WillBattle f = (Field_WillBattle) player.getMap();
                         player.setWillMoonGauge(Math.max(0, player.getWillMoonGauge() - 3));
                         f.sendWillUpdateMoonGauge(player, player.getWillMoonGauge());
                      }
                   }
 
-                  if (player.getMap() instanceof Field_FerociousBattlefield && player.getBuffedValue(SecondaryStatFlag.DuskDarkness) == null) {
-                     Field_FerociousBattlefield f = (Field_FerociousBattlefield)player.getMap();
+                  if (player.getMap() instanceof Field_FerociousBattlefield
+                        && player.getBuffedValue(SecondaryStatFlag.DuskDarkness) == null) {
+                     Field_FerociousBattlefield f = (Field_FerociousBattlefield) player.getMap();
                      f.setDuskGaugeByOnHit(player);
                   }
 
                   if (player.getMap() instanceof Field_Hillah) {
                      MapleMonster monster = player.getMap().getMonsterById(8870100);
                      if (monster != null && monster.isVampireState()) {
-                        monster.heal((long)(monster.getMobMaxHp() * 0.05), 0, false);
+                        monster.heal((long) (monster.getMobMaxHp() * 0.05), 0, false);
                      }
                   }
 
@@ -884,7 +896,8 @@ public class PlayerHandler {
                      Integer vx = player.getBodyOfSteal();
                      if (vx < e.getY()) {
                         player.setBodyOfSteal(vx + 1);
-                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                              player.getSecondaryStat());
                         statManager.changeStatValue(SecondaryStatFlag.StackDamR, 400011066, 1);
                         statManager.changeStatValue(SecondaryStatFlag.indieSuperStance, 400011066, 1);
                         statManager.changeStatValue(SecondaryStatFlag.indieAsrR, 400011066, e.getIndieAsrR());
@@ -909,7 +922,8 @@ public class PlayerHandler {
                            if (reduceDam >= value) {
                               player.temporaryStatReset(SecondaryStatFlag.RWBarrier);
                            } else {
-                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                    player.getSecondaryStat());
                               statManager.changeStatValue(SecondaryStatFlag.RWBarrier, 37000006, value - reduceDam);
                               statManager.temporaryStatSet();
                            }
@@ -925,13 +939,14 @@ public class PlayerHandler {
                            if (player.getBuffedValue(SecondaryStatFlag.RWBarrierHeal) != null) {
                               SecondaryStatEffect effect = player.getBuffedEffect(SecondaryStatFlag.RWBarrierHeal);
                               if (effect != null) {
-                                 int reduceDamx = (int)Math.round(effect.getX() * (damage * 0.01));
+                                 int reduceDamx = (int) Math.round(effect.getX() * (damage * 0.01));
                                  damage = reduceDamx;
                               }
                            } else if (c.getPlayer().getTotalSkillLevel(37120011) > 0) {
-                              SecondaryStatEffect effect = SkillFactory.getSkill(37120011).getEffect(c.getPlayer().getTotalSkillLevel(37120011));
+                              SecondaryStatEffect effect = SkillFactory.getSkill(37120011)
+                                    .getEffect(c.getPlayer().getTotalSkillLevel(37120011));
                               if (effect != null) {
-                                 int reduceDamx = (int)(damage * 0.01 * effect.getDamAbsorbShieldR());
+                                 int reduceDamx = (int) (damage * 0.01 * effect.getDamAbsorbShieldR());
                                  damage -= reduceDamx;
                               }
                            }
@@ -945,109 +960,118 @@ public class PlayerHandler {
                                     vx = value;
                                  }
 
-                                 int rwMagnumBlow = (Integer)player.getJobField("rwMagnumBlow");
-                                 player.invokeJobMethod("setRWMagnumBlow", Math.min(rwMagnumBlow + 1, eff.getY() / eff.getX()));
-                                 player.temporaryStatSet(37121052, eff.getSubTime(), SecondaryStatFlag.RWMagnumBlow, vx);
+                                 int rwMagnumBlow = (Integer) player.getJobField("rwMagnumBlow");
+                                 player.invokeJobMethod("setRWMagnumBlow",
+                                       Math.min(rwMagnumBlow + 1, eff.getY() / eff.getX()));
+                                 player.temporaryStatSet(37121052, eff.getSubTime(), SecondaryStatFlag.RWMagnumBlow,
+                                       vx);
                               }
                            }
                         }
 
-                        if (player.getStat().dodgeChance > 0 && Randomizer.nextInt(100) < player.getStat().dodgeChance) {
+                        if (player.getStat().dodgeChance > 0
+                              && Randomizer.nextInt(100) < player.getStat().dodgeChance) {
                            IncDecHP eff = new IncDecHP(player.getId(), 0);
                            c.getSession().writeAndFlush(eff.encodeForLocal());
                            player.getMap().broadcastMessage(player, eff.encodeForRemote(), false);
                            return;
                         }
 
-                        int[] skills = new int[]{1000003, 2300003, 152000006, 155100010, 15512001, 33101005, 162000006};
+                        int[] skills = new int[] { 1000003, 2300003, 152000006, 155100010, 15512001, 33101005,
+                              162000006 };
 
                         for (int skillx : skills) {
                            int lev = player.getTotalSkillLevel(skillx);
                            if (lev > 0) {
                               SecondaryStatEffect effect = SkillFactory.getSkill(skillx).getEffect(lev);
                               if (effect != null) {
-                                 int reduceDamx = (int)Math.ceil(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                                 int reduceDamx = (int) Math.ceil(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                                  damage -= reduceDamx;
                                  break;
                               }
                            }
                         }
 
-                        skills = new int[]{151000005, 151110007, 5200009, 63000007, 63120014};
+                        skills = new int[] { 151000005, 151110007, 5200009, 63000007, 63120014 };
 
                         for (int skillxx : skills) {
                            int lev = player.getTotalSkillLevel(skillxx);
                            if (lev > 0) {
                               SecondaryStatEffect effect = SkillFactory.getSkill(skillxx).getEffect(lev);
                               if (effect != null) {
-                                 int reduceDamx = (int)(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                                 int reduceDamx = (int) (originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                                  damage -= reduceDamx;
                               }
                            }
                         }
 
-                        skills = new int[]{110, 264, 265};
+                        skills = new int[] { 110, 264, 265 };
 
                         for (int skillxxx : skills) {
                            int lev = player.getTotalSkillLevel(skillxxx);
                            if (lev > 0) {
                               SecondaryStatEffect effect = SkillFactory.getSkill(skillxxx).getEffect(lev);
                               if (effect != null) {
-                                 int reduceDamx = (int)(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                                 int reduceDamx = (int) (originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                                  damage -= reduceDamx;
                               }
                            }
                         }
 
-                        skills = new int[]{80000000, 80002775, 80002776};
+                        skills = new int[] { 80000000, 80002775, 80002776 };
 
                         for (int skillxxxx : skills) {
                            int lev = player.getTotalSkillLevel(skillxxxx);
                            if (lev > 0) {
                               SecondaryStatEffect effect = SkillFactory.getSkill(skillxxxx).getEffect(lev);
                               if (effect != null) {
-                                 int reduceDamx = (int)(originalDamage * 0.01 * effect.getQ2());
+                                 int reduceDamx = (int) (originalDamage * 0.01 * effect.getQ2());
                                  damage -= reduceDamx;
                               }
                            }
                         }
 
                         if (player.hasBuffBySkillID(1101006)) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(1101006).getEffect(player.getSkillLevel(1101006));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(1101006)
+                                 .getEffect(player.getSkillLevel(1101006));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getX());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getX());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(15110024) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(15110024).getEffect(c.getPlayer().getTotalSkillLevel(15110024));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(15110024)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(15110024));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(20050285) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(20050285).getEffect(c.getPlayer().getTotalSkillLevel(20050285));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(20050285)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(20050285));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(33111011) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(33111011).getEffect(c.getPlayer().getTotalSkillLevel(33111011));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(33111011)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(33111011));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(35120018) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(35120018).getEffect(c.getPlayer().getTotalSkillLevel(35120018));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(35120018)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(35120018));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getX());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getX());
                               damage -= reduceDamx;
                            }
                         }
@@ -1057,7 +1081,7 @@ public class PlayerHandler {
                            if (gSLV > 0) {
                               SecondaryStatEffect effect = SkillFactory.getSkill(91000026).getEffect(gSLV);
                               if (effect != null) {
-                                 int reduceDamx = (int)Math.ceil(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
+                                 int reduceDamx = (int) Math.ceil(originalDamage * 0.01 * effect.getDamAbsorbShieldR());
                                  damage -= reduceDamx;
                               }
                            }
@@ -1066,7 +1090,8 @@ public class PlayerHandler {
                         if (player.getTotalSkillLevel(152100011) > 0 && damage > 0) {
                            Summoned summon = player.getSummonByMovementType(SummonMoveAbility.SHADOW_SERVANT_EXTEND);
                            if (summon != null) {
-                              SecondaryStatEffect effect = SkillFactory.getSkill(152100011).getEffect(player.getTotalSkillLevel(152100011));
+                              SecondaryStatEffect effect = SkillFactory.getSkill(152100011)
+                                    .getEffect(player.getTotalSkillLevel(152100011));
                               if (effect != null) {
                                  PostSkillEffect e_ = new PostSkillEffect(player.getId(), 0, 1, null);
                                  player.send(e_.encodeForLocal());
@@ -1074,7 +1099,7 @@ public class PlayerHandler {
                                  SpecialSkillEffect eff = new SpecialSkillEffect(player.getId(), 152100011, null);
                                  player.send(eff.encodeForLocal());
                                  player.getMap().broadcastMessage(player, eff.encodeForRemote(), false);
-                                 int reduceDamx = (int)(originalDamage * 0.01 * effect.getX());
+                                 int reduceDamx = (int) (originalDamage * 0.01 * effect.getX());
                                  damage -= reduceDamx;
                               }
                            }
@@ -1085,7 +1110,7 @@ public class PlayerHandler {
                            if (ss != null && ss.EmpressBlessX == 400001053) {
                               SecondaryStatEffect eff = player.getBuffedEffect(SecondaryStatFlag.EmpressBless);
                               if (eff != null) {
-                                 int reduceDamx = (int)(damage * 0.01 * eff.getZ());
+                                 int reduceDamx = (int) (damage * 0.01 * eff.getZ());
                                  damage -= reduceDamx;
                               }
                            }
@@ -1094,15 +1119,16 @@ public class PlayerHandler {
                         if (player.getBuffedValue(SecondaryStatFlag.IceAura) != null) {
                            SecondaryStatEffect effect = player.getBuffedEffect(SecondaryStatFlag.IceAura);
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getY());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getY());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (player.hasBuffBySkillID(1101006)) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(1101006).getEffect(player.getSkillLevel(1101006));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(1101006)
+                                 .getEffect(player.getSkillLevel(1101006));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getX());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getX());
                               damage -= reduceDamx;
                            }
                         }
@@ -1113,7 +1139,8 @@ public class PlayerHandler {
                            if (player.getSpiritWardCount() == 0) {
                               player.temporaryStatReset(SecondaryStatFlag.SpiritGuard);
                            } else {
-                              player.temporaryStatSet(25121209, Integer.MAX_VALUE, SecondaryStatFlag.SpiritGuard, player.getSpiritWardCount());
+                              player.temporaryStatSet(25121209, Integer.MAX_VALUE, SecondaryStatFlag.SpiritGuard,
+                                    player.getSpiritWardCount());
                            }
                         }
 
@@ -1121,7 +1148,7 @@ public class PlayerHandler {
                         if (player.getBuffedValue(SecondaryStatFlag.DamageReduce) != null) {
                            SecondaryStatEffect eff = player.getBuffedEffect(SecondaryStatFlag.DamageReduce);
                            if (eff != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * eff.getX());
+                              int reduceDamx = (int) (originalDamage * 0.01 * eff.getX());
                               damage -= reduceDamx;
                            }
                         }
@@ -1129,16 +1156,16 @@ public class PlayerHandler {
                         e = player.getBuffedEffect(SecondaryStatFlag.PartyBarrier);
                         if (e != null) {
                            vx = player.getBuffedValue(SecondaryStatFlag.PartyBarrier);
-                           damage = (int)Math.ceil(originalDamage * 0.01 * vx.intValue());
+                           damage = (int) Math.ceil(originalDamage * 0.01 * vx.intValue());
                         }
 
                         e = player.getBuffedEffect(SecondaryStatFlag.KinesisPsychicEnrageShield);
                         if (e != null) {
-                           int reduceDamx = (int)(originalDamage * 0.01 * e.getX());
+                           int reduceDamx = (int) (originalDamage * 0.01 * e.getX());
                            damage -= reduceDamx;
                            player.invokeJobMethod("gainPP", e.getY());
                            Object point = player.getJobField("PPoint");
-                           if (point != null && (Integer)point <= 0) {
+                           if (point != null && (Integer) point <= 0) {
                               player.temporaryStatReset(SecondaryStatFlag.KinesisPsychicEnrageShield);
                            }
                         }
@@ -1157,8 +1184,10 @@ public class PlayerHandler {
                               if (shield - shieldLoss <= 0) {
                                  player.temporaryStatReset(SecondaryStatFlag.SiphonVitalityShield);
                               } else {
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
-                                 statManager.changeStatValue(SecondaryStatFlag.SiphonVitalityShield, eff.getSourceId(), shield - shieldLoss);
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
+                                 statManager.changeStatValue(SecondaryStatFlag.SiphonVitalityShield, eff.getSourceId(),
+                                       shield - shieldLoss);
                                  statManager.temporaryStatSet();
                               }
                            }
@@ -1177,8 +1206,10 @@ public class PlayerHandler {
                                     damage = 1;
                                  }
 
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
-                                 statManager.changeStatValue(SecondaryStatFlag.PowerTransferGauge, 65101002, remainShield);
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
+                                 statManager.changeStatValue(SecondaryStatFlag.PowerTransferGauge, 65101002,
+                                       remainShield);
                                  statManager.temporaryStatSet();
                               }
                            }
@@ -1195,7 +1226,8 @@ public class PlayerHandler {
                               if (remainShield <= 0) {
                                  player.temporaryStatReset(SecondaryStatFlag.BlitzShield);
                               } else {
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
                                  statManager.changeStatValue(SecondaryStatFlag.BlitzShield, 400001010, remainShield);
                                  statManager.temporaryStatSet();
                               }
@@ -1203,25 +1235,28 @@ public class PlayerHandler {
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(13110025) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(13110025).getEffect(c.getPlayer().getTotalSkillLevel(13110025));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(13110025)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(13110025));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getX());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getX());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(21120004) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(21120004).getEffect(c.getPlayer().getTotalSkillLevel(21120004));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(21120004)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(21120004));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getT());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getT());
                               damage -= reduceDamx;
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(51120003) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(51120003).getEffect(c.getPlayer().getTotalSkillLevel(51120003));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(51120003)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(51120003));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getT());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getT());
                               damage -= reduceDamx;
                            }
                         }
@@ -1229,7 +1264,7 @@ public class PlayerHandler {
                         if (c.getPlayer().hasBuffBySkillID(32111012)) {
                            SecondaryStatEffect effect = c.getPlayer().getBuffedEffect(SecondaryStatFlag.BlueAura);
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getY());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getY());
                               damage -= reduceDamx;
                            }
                         }
@@ -1238,19 +1273,21 @@ public class PlayerHandler {
                            SecondaryStatEffect eff = player.getBuffedEffect(SecondaryStatFlag.AutoChargeStackOnOff);
                            Object stack = player.getJobField("autoChargeStackOnOffStack");
                            if (eff != null && stack != null) {
-                              int hp = (int)(player.getStat().getCurrentMaxHp() * 0.01) * eff.getY();
-                              if ((Integer)stack > 0 && damage >= hp) {
-                                 damage -= (int)(damage * 0.01) * eff.getQ();
-                                 player.setJobField("autoChargeStackOnOffStack", (Integer)stack - 1);
-                                 player.temporaryStatSet(400031053, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStackOnOff, 1);
+                              int hp = (int) (player.getStat().getCurrentMaxHp() * 0.01) * eff.getY();
+                              if ((Integer) stack > 0 && damage >= hp) {
+                                 damage -= (int) (damage * 0.01) * eff.getQ();
+                                 player.setJobField("autoChargeStackOnOffStack", (Integer) stack - 1);
+                                 player.temporaryStatSet(400031053, Integer.MAX_VALUE,
+                                       SecondaryStatFlag.AutoChargeStackOnOff, 1);
                               }
                            }
                         }
 
                         if (c.getPlayer().getTotalSkillLevel(1210015) > 0) {
-                           SecondaryStatEffect effect = SkillFactory.getSkill(1210015).getEffect(c.getPlayer().getTotalSkillLevel(1210015));
+                           SecondaryStatEffect effect = SkillFactory.getSkill(1210015)
+                                 .getEffect(c.getPlayer().getTotalSkillLevel(1210015));
                            if (effect != null) {
-                              int reduceDamx = (int)(originalDamage * 0.01 * effect.getY());
+                              int reduceDamx = (int) (originalDamage * 0.01 * effect.getY());
                               damage -= reduceDamx;
                            }
                         }
@@ -1260,13 +1297,14 @@ public class PlayerHandler {
                            vx = player.getBuffedValue(SecondaryStatFlag.DemonDamAbsorbShield);
                            if (vx != null && vx > 0) {
                               int shieldx = vx;
-                              int reduce = (int)(damage * 0.01 * shieldx);
+                              int reduce = (int) (damage * 0.01 * shieldx);
                               damage -= reduce;
                               player.setDemonDamAbsorbShieldX(player.getDemonDamAbsorbShieldX() - 1);
                               if (player.getDemonDamAbsorbShieldX() <= 0) {
                                  player.temporaryStatReset(SecondaryStatFlag.DemonDamAbsorbShield);
                               } else {
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
                                  statManager.changeStatValue(SecondaryStatFlag.DemonDamAbsorbShield, 400001016, vx);
                                  statManager.temporaryStatSet();
                               }
@@ -1275,22 +1313,24 @@ public class PlayerHandler {
 
                         e = player.getBuffedEffect(SecondaryStatFlag.indieDamReduceR);
                         if (e != null) {
-                           for (IndieTemporaryStatEntry entry : player.getIndieTemporaryStatEntries(SecondaryStatFlag.indieDamReduceR)) {
+                           for (IndieTemporaryStatEntry entry : player
+                                 .getIndieTemporaryStatEntries(SecondaryStatFlag.indieDamReduceR)) {
                               int shieldx = entry.getStatValue();
-                              int reduce = (int)(damage * 0.01 * shieldx);
+                              int reduce = (int) (damage * 0.01 * shieldx);
                               damage += reduce;
                            }
                         }
 
                         value = player.getBuffedValue(SecondaryStatFlag.DarknessAura);
                         if (value != null && player.getBuffedValue(SecondaryStatFlag.DEF) != null) {
-                           int reduce = (int)(damage * 0.01 * value.intValue());
+                           int reduce = (int) (damage * 0.01 * value.intValue());
                            damage -= reduce;
                         }
 
                         e = player.getBuffedEffect(SecondaryStatFlag.indieBarrier);
                         if (e != null) {
-                           for (IndieTemporaryStatEntry entry : player.getIndieTemporaryStatEntries(SecondaryStatFlag.indieBarrier)) {
+                           for (IndieTemporaryStatEntry entry : player
+                                 .getIndieTemporaryStatEntries(SecondaryStatFlag.indieBarrier)) {
                               int shieldx = entry.getStatValue();
                               int temp = damage;
                               damage -= shieldx;
@@ -1300,11 +1340,13 @@ public class PlayerHandler {
 
                               shieldx -= temp;
                               if (shieldx > 0) {
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
                                  statManager.changeStatValue(SecondaryStatFlag.indieBarrier, e.getSourceId(), shieldx);
                                  statManager.temporaryStatSet();
                               } else {
-                                 c.getPlayer().temporaryStatResetBySkillID(SecondaryStatFlag.indieBarrier, entry.getSkillID());
+                                 c.getPlayer().temporaryStatResetBySkillID(SecondaryStatFlag.indieBarrier,
+                                       entry.getSkillID());
                               }
                            }
                         }
@@ -1312,7 +1354,7 @@ public class PlayerHandler {
                         e = player.getBuffedEffect(SecondaryStatFlag.DemonFrenzy);
                         if (e != null) {
                            int absorb = e.getS();
-                           int reduce = (int)(damage * 0.01 * absorb);
+                           int reduce = (int) (damage * 0.01 * absorb);
                            damage -= reduce;
                         }
                      }
@@ -1322,7 +1364,8 @@ public class PlayerHandler {
                         if (vxx <= 0) {
                            player.temporaryStatReset(SecondaryStatFlag.HolyMagicShell);
                         } else {
-                           SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                           SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                 player.getSecondaryStat());
                            statManager.changeStatValue(SecondaryStatFlag.HolyMagicShell, 2311009, vxx - 1);
                            statManager.temporaryStatSet();
                         }
@@ -1330,7 +1373,8 @@ public class PlayerHandler {
 
                      vxx = player.getBuffedValue(SecondaryStatFlag.GuardianOfLight);
                      if (vxx != null) {
-                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                        SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                              player.getSecondaryStat());
                         statManager.changeStatValue(SecondaryStatFlag.GuardianOfLight, 50001214, vxx - 1);
                         statManager.temporaryStatSet();
                         if (vxx <= 1) {
@@ -1342,7 +1386,7 @@ public class PlayerHandler {
                      if (e != null) {
                         vxx = player.getBuffedValue(SecondaryStatFlag.StormGuard);
                         if (vxx != null) {
-                           int d = (int)(originalDamage / (player.getStat().getCurrentMaxHp() * 0.01));
+                           int d = (int) (originalDamage / (player.getStat().getCurrentMaxHp() * 0.01));
                            int reduce = Math.min(100, Math.min(vxx, d));
                            if (fixDamR == 0) {
                               damage = 0;
@@ -1354,7 +1398,8 @@ public class PlayerHandler {
                               player.temporaryStatReset(SecondaryStatFlag.StormGuard);
                            } else {
                               vxx = vxx - reduce;
-                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                    player.getSecondaryStat());
                               statManager.changeStatValue(SecondaryStatFlag.StormGuard, e.getSourceId(), vxx);
                               statManager.temporaryStatSet();
                            }
@@ -1363,7 +1408,7 @@ public class PlayerHandler {
 
                      e = player.getBuffedEffect(SecondaryStatFlag.Nobility);
                      if (e != null) {
-                        int nobilityShield = (Integer)player.getJobField("nobilityShield");
+                        int nobilityShield = (Integer) player.getJobField("nobilityShield");
                         if (nobilityShield > 0) {
                            if (nobilityShield > damage) {
                               nobilityShield -= damage;
@@ -1396,7 +1441,7 @@ public class PlayerHandler {
 
                   SecondaryStatEffect nobilityEffect;
                   if ((nobilityEffect = player.getBuffedEffect(SecondaryStatFlag.Nobility)) != null) {
-                     damage -= (int)player.invokeJobMethod("onNobilityInit", nobilityEffect, damage);
+                     damage -= (int) player.invokeJobMethod("onNobilityInit", nobilityEffect, damage);
                   }
                }
 
@@ -1406,15 +1451,17 @@ public class PlayerHandler {
                      dead = true;
                   }
 
-                  if ((overHP || dead || deadlyAttack) && player.getBuffedValue(SecondaryStatFlag.AutoChargeStackOnOff) != null) {
+                  if ((overHP || dead || deadlyAttack)
+                        && player.getBuffedValue(SecondaryStatFlag.AutoChargeStackOnOff) != null) {
                      Object stack = player.getJobField("autoChargeStackOnOffStack");
                      stack = 2;
-                     if (stack != null && (Integer)stack > 0) {
+                     if (stack != null && (Integer) stack > 0) {
                         SecondaryStatEffect eff = player.getBuffedEffect(SecondaryStatFlag.AutoChargeStackOnOff);
                         if (eff != null) {
-                           damage = (int)(damage - damage * 0.01 * eff.getQ());
-                           player.setJobField("autoChargeStackOnOffStack", (Integer)stack - 1);
-                           player.temporaryStatSet(400031053, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStackOnOff, 1);
+                           damage = (int) (damage - damage * 0.01 * eff.getQ());
+                           player.setJobField("autoChargeStackOnOffStack", (Integer) stack - 1);
+                           player.temporaryStatSet(400031053, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStackOnOff,
+                                 1);
                         }
                      }
                   }
@@ -1429,12 +1476,13 @@ public class PlayerHandler {
                      int hploss = 0;
                      int mploss = 0;
                      int skillxxxxx = player.getTotalSkillLevel(12000024) > 0 ? 12000024 : 27000003;
-                     SecondaryStatEffect eff = SkillFactory.getSkill(skillxxxxx).getEffect(player.getTotalSkillLevel(skillxxxxx));
+                     SecondaryStatEffect eff = SkillFactory.getSkill(skillxxxxx)
+                           .getEffect(player.getTotalSkillLevel(skillxxxxx));
                      if (eff != null) {
-                        mploss = (int)(damage * (eff.getX() / 100.0)) + mpattack;
+                        mploss = (int) (damage * (eff.getX() / 100.0)) + mpattack;
                         hploss = damage - mploss;
                         if (mploss > stats.getMp()) {
-                           mploss = (int)stats.getMp();
+                           mploss = (int) stats.getMp();
                            hploss = damage - mploss + mpattack;
                         }
 
@@ -1445,11 +1493,11 @@ public class PlayerHandler {
                      int mploss = 0;
                      if (deadlyAttack) {
                         if (stats.getHp() > 1L) {
-                           hploss = (int)(stats.getHp() - 1L);
+                           hploss = (int) (stats.getHp() - 1L);
                         }
 
                         if (stats.getMp() > 1L) {
-                           mploss = (int)(stats.getMp() - 1L);
+                           mploss = (int) (stats.getMp() - 1L);
                         }
 
                         if (player.getBuffedValue(SecondaryStatFlag.Infinity) != null) {
@@ -1458,12 +1506,13 @@ public class PlayerHandler {
 
                         player.addMPHP(-hploss, -mploss);
                      } else {
-                        mploss = (int)(damage * (player.getBuffedValue(SecondaryStatFlag.MagicGuard).doubleValue() / 100.0)) + mpattack;
+                        mploss = (int) (damage
+                              * (player.getBuffedValue(SecondaryStatFlag.MagicGuard).doubleValue() / 100.0)) + mpattack;
                         hploss = damage - mploss;
                         if (player.getBuffedValue(SecondaryStatFlag.Infinity) != null) {
                            mploss = 0;
                         } else if (mploss > stats.getMp()) {
-                           mploss = (int)stats.getMp();
+                           mploss = (int) stats.getMp();
                            hploss = damage - mploss + mpattack;
                         }
 
@@ -1472,11 +1521,13 @@ public class PlayerHandler {
                   } else if (player.getBuffedValue(SecondaryStatFlag.MountainGuardian) != null) {
                      SecondaryStatEffect level = player.getBuffedEffect(SecondaryStatFlag.MountainGuardian);
                      if (level != null) {
-                        damage -= (int)Math.ceil(damage * 0.01 * player.getBuffedValue(SecondaryStatFlag.MountainGuardian).intValue());
+                        damage -= (int) Math.ceil(
+                              damage * 0.01 * player.getBuffedValue(SecondaryStatFlag.MountainGuardian).intValue());
                         player.addMPHP(-damage, -level.getU());
                      }
                   } else if (deadlyAttack) {
-                     player.addMPHP(stats.getHp() > 1L ? -(stats.getHp() - 1L) : 0L, stats.getMp() > 1L ? -(stats.getMp() - 1L) : 0L);
+                     player.addMPHP(stats.getHp() > 1L ? -(stats.getHp() - 1L) : 0L,
+                           stats.getMp() > 1L ? -(stats.getMp() - 1L) : 0L);
                   } else {
                      player.addMPHP(-damage, -mpattack);
                   }
@@ -1497,7 +1548,7 @@ public class PlayerHandler {
                map.broadcastMessage(player, packet.getPacket(), false);
                if (GameConstants.isXenon(player.getJob())) {
                   if (player.getBuffedValue(SecondaryStatFlag.ShadowPartner) != null && damage > 0) {
-                     long virtualProjectionHP = (Long)player.getJobField("virtualProjectionHP") - damage;
+                     long virtualProjectionHP = (Long) player.getJobField("virtualProjectionHP") - damage;
                      if (virtualProjectionHP <= 0L) {
                         player.temporaryStatResetBySkillID(36111006);
                      }
@@ -1511,16 +1562,15 @@ public class PlayerHandler {
                      ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
                      info.initPinPointRocket();
                      ForceAtom forceAtom = new ForceAtom(
-                        info,
-                        36110004,
-                        player.getId(),
-                        false,
-                        true,
-                        player.getId(),
-                        ForceAtom.AtomType.EAGIS_SYSTEM,
-                        Collections.singletonList(attacker.getObjectId()),
-                        bulletCount
-                     );
+                           info,
+                           36110004,
+                           player.getId(),
+                           false,
+                           true,
+                           player.getId(),
+                           ForceAtom.AtomType.EAGIS_SYSTEM,
+                           Collections.singletonList(attacker.getObjectId()),
+                           bulletCount);
                      player.getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
                      player.send(CField.skillCooldown(36110004, 1500));
                      player.addCooldown(36110004, System.currentTimeMillis(), 1500L);
@@ -1528,7 +1578,7 @@ public class PlayerHandler {
 
                   ex = SkillFactory.getSkill(30020232).getEffect(player.getTotalSkillLevel(30020232));
                   if (ex != null && ex.makeChanceResult()) {
-                     player.gainXenonSurplus((short)1);
+                     player.gainXenonSurplus((short) 1);
                   }
                }
             }
@@ -1543,21 +1593,22 @@ public class PlayerHandler {
             int toAdd = skill.getAttackCount();
             short combo = chr.getCombo();
             long curr = System.currentTimeMillis();
-            combo = (short)Math.min(1000, combo + toAdd);
+            combo = (short) Math.min(1000, combo + toAdd);
             chr.setLastCombo(curr);
             chr.setCombo(combo);
             if (combo >= 1000
-               && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoostActivate) == null
-               && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoost) == null) {
+                  && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoostActivate) == null
+                  && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoost) == null) {
                chr.temporaryStatSet(21111030, 300000, SecondaryStatFlag.AdrenalinBoostActivate, 1);
-               chr.setCombo((short)1000);
+               chr.setCombo((short) 1000);
             } else if (chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoostActivate) == null
-               && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoost) == null
-               && chr.getCombo() > 0
-               && chr.getComboBuffStack() / 50 != chr.getCombo() / 50) {
+                  && chr.getBuffedValue(SecondaryStatFlag.AdrenalinBoost) == null
+                  && chr.getCombo() > 0
+                  && chr.getComboBuffStack() / 50 != chr.getCombo() / 50) {
                int stack = Math.min(10, Math.max(0, chr.getCombo() / 50));
                chr.setComboBuffStack(stack);
-               chr.temporaryStatSet(21000000, Integer.MAX_VALUE, SecondaryStatFlag.ComboAbilityBuff, chr.getComboBuffStack() * 50);
+               chr.temporaryStatSet(21000000, Integer.MAX_VALUE, SecondaryStatFlag.ComboAbilityBuff,
+                     chr.getComboBuffStack() * 50);
             }
 
             c.getSession().writeAndFlush(CField.aranCombo(combo));
@@ -1573,7 +1624,7 @@ public class PlayerHandler {
             combo = 0;
          }
 
-         combo = (short)Math.max(0, combo - toAdd);
+         combo = (short) Math.max(0, combo - toAdd);
          chr.setLastCombo(curr);
          chr.setCombo(combo);
          c.getSession().writeAndFlush(CField.aranCombo(combo));
@@ -1692,7 +1743,8 @@ public class PlayerHandler {
                chr.getMap().broadcastMessage(CField.updateCharLook(chr));
             }
 
-            MapleInventoryManipulator.removeFromSlot(chr.getClient(), MapleInventoryType.USE, slot, (short)1, false, true);
+            MapleInventoryManipulator.removeFromSlot(chr.getClient(), MapleInventoryType.USE, slot, (short) 1, false,
+                  true);
             chr.send(CWvsContext.enableActions(chr));
             if (fakeRelog) {
                chr.fakeRelog();
@@ -1807,18 +1859,18 @@ public class PlayerHandler {
          }
 
          if (skillID == 4211016
-            || skillID == 4101011
-            || skillID == 30010186
-            || skillID == 400021041
-            || skillID == 4331006
-            || skillID == 24121003
-            || skillID == 32111016
-            || skillID == 31101002
-            || skillID == 5201005
-            || skillID == 5201011
-            || skillID == 400021049
-            || skillID == 400021050
-            || skillID == 80003228) {
+               || skillID == 4101011
+               || skillID == 30010186
+               || skillID == 400021041
+               || skillID == 4331006
+               || skillID == 24121003
+               || skillID == 32111016
+               || skillID == 31101002
+               || skillID == 5201005
+               || skillID == 5201011
+               || skillID == 400021049
+               || skillID == 400021050
+               || skillID == 80003228) {
             exclusive = true;
          }
 
@@ -1841,50 +1893,47 @@ public class PlayerHandler {
          int skillLevel = slea.readInt();
          if (chr.isGM() || chr.getClient().isGm() && !DBConfig.isHosting) {
             chr.send(
-               CField.chatMsg(
-                  16,
-                  "스킬 사용 : "
-                     + skillID
-                     + " ("
-                     + SkillFactory.getSkillName(skillID)
-                     + ", SkillLevel : "
-                     + skillLevel
-                     + ") [Type : "
-                     + SkillFactory.getSkill(skillID).getType()
-                     + "]"
-               )
-            );
+                  CField.chatMsg(
+                        16,
+                        "스킬 사용 : "
+                              + skillID
+                              + " ("
+                              + SkillFactory.getSkillName(skillID)
+                              + ", SkillLevel : "
+                              + skillLevel
+                              + ") [Type : "
+                              + SkillFactory.getSkill(skillID).getType()
+                              + "]"));
             chr.dropMessage(5, slea.toString());
          }
 
          Skill skill = SkillFactory.getSkill(skillID);
          if (skill != null
-            && (!GameConstants.isAngel(skillID) || chr.getStat().equippedSummon % 10000 == skillID % 10000)
-            && (!chr.inPVP() || !skill.isPVPDisabled())) {
-            if ((
-                  chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) <= 0
-                     || chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) != skillLevel
-               )
-               && skillID != 32120019
-               && chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) <= 0
-               && !GameConstants.isStackedLinkSkill(skillID, chr)
-               && !GameConstants.isAngel(skillID)
-               && skill.getId() != 80001242
-               && skill.getId() != 80003062
-               && skill.getId() != 80001416
-               && skill.getId() != 30001080
-               && skill.getId() != 400001064
-               && !GameConstants.isObsidianBarrier(skillID)
-               && !GameConstants.isRelicUnbound(skillID)
-               && undefinedIDA.isTemporarySkill(skillID)
-               && chr.getJob() != 13100
-               && chr.getJob() != 13500) {
+               && (!GameConstants.isAngel(skillID) || chr.getStat().equippedSummon % 10000 == skillID % 10000)
+               && (!chr.inPVP() || !skill.isPVPDisabled())) {
+            if ((chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) <= 0
+                  || chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) != skillLevel)
+                  && skillID != 32120019
+                  && chr.getTotalSkillLevel(GameConstants.getLinkedAranSkill(skillID)) <= 0
+                  && !GameConstants.isStackedLinkSkill(skillID, chr)
+                  && !GameConstants.isAngel(skillID)
+                  && skill.getId() != 80001242
+                  && skill.getId() != 80003062
+                  && skill.getId() != 80001416
+                  && skill.getId() != 30001080
+                  && skill.getId() != 400001064
+                  && !GameConstants.isObsidianBarrier(skillID)
+                  && !GameConstants.isRelicUnbound(skillID)
+                  && undefinedIDA.isTemporarySkill(skillID)
+                  && chr.getJob() != 13100
+                  && chr.getJob() != 13500) {
                if (!GameConstants.isTheSeedSkill(skillID)) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer(), exclusive));
                   return;
                }
 
-               Item item = chr.getInventory(MapleInventoryType.EQUIPPED).findById(GameConstants.getTheSeedRingBySkill(skillID));
+               Item item = chr.getInventory(MapleInventoryType.EQUIPPED)
+                     .findById(GameConstants.getTheSeedRingBySkill(skillID));
                if (item == null) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer(), exclusive));
                   return;
@@ -1894,12 +1943,13 @@ public class PlayerHandler {
             int realSkillID = GameConstants.getLinkedAranSkill(skillID);
             skillLevel = Math.max(1, chr.getTotalSkillLevel(realSkillID));
             if (GameConstants.isTheSeedSkill(skillID)) {
-               Item item = chr.getInventory(MapleInventoryType.EQUIPPED).findById(GameConstants.getTheSeedRingBySkill(skillID));
+               Item item = chr.getInventory(MapleInventoryType.EQUIPPED)
+                     .findById(GameConstants.getTheSeedRingBySkill(skillID));
                if (item == null) {
                   return;
                }
 
-               skillLevel = ((Equip)item).getTheSeedRingLevel();
+               skillLevel = ((Equip) item).getTheSeedRingLevel();
             }
 
             switch (skillID) {
@@ -1943,10 +1993,10 @@ public class PlayerHandler {
       slea.readByte();
    }
 
-   public static final void meleeAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr, RecvPacketOpcode opcode) {
-      if ((
-            chr == null
-               || opcode == RecvPacketOpcode.BODY_ATTACK
+   public static final void meleeAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr,
+         RecvPacketOpcode opcode) {
+      if ((chr == null
+            || opcode == RecvPacketOpcode.BODY_ATTACK
                   && chr.getBuffedValue(SecondaryStatFlag.Inflation) == null
                   && chr.getBuffedValue(SecondaryStatFlag.BulletParty) == null
                   && chr.getBuffedValue(SecondaryStatFlag.MegaSmasher) == null
@@ -1955,11 +2005,10 @@ public class PlayerHandler {
                   && chr.getBuffedValue(SecondaryStatFlag.TeleportMasteryOn) == null
                   && chr.getBuffedValue(SecondaryStatFlag.ChillingStep) == null
                   && chr.getBuffedValue(SecondaryStatFlag.Asura) == null
-                  && chr.getBuffedValue(SecondaryStatFlag.indieSummon) == null
-         )
-         && chr.getJob() != 13100
-         && chr.getJob() != 13500
-         && !GameConstants.isLara(chr.getJob())) {
+                  && chr.getBuffedValue(SecondaryStatFlag.indieSummon) == null)
+            && chr.getJob() != 13100
+            && chr.getJob() != 13500
+            && !GameConstants.isLara(chr.getJob())) {
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else if (chr.getMap() == null) {
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
@@ -1975,7 +2024,8 @@ public class PlayerHandler {
                attack = DamageParse.onAttack(slea, chr, opcode, true, true);
             } catch (Exception var16) {
                slea.seek(pos);
-               FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "물리 데미지 패킷 분석 실패 : " + slea.toString(), var17);
+               FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "물리 데미지 패킷 분석 실패 : " + slea.toString(),
+                     var17);
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
@@ -1984,9 +2034,10 @@ public class PlayerHandler {
          if (attack == null) {
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
-            boolean mirror = chr.getBuffedValue(SecondaryStatFlag.ShadowPartner) != null || chr.getBuffedValue(SecondaryStatFlag.BuckShot) != null;
+            boolean mirror = chr.getBuffedValue(SecondaryStatFlag.ShadowPartner) != null
+                  || chr.getBuffedValue(SecondaryStatFlag.BuckShot) != null;
             double maxdamage = chr.getStat().getCurrentMaxBaseDamage();
-            Item shield = c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)-10);
+            Item shield = c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
             int attackCount = shield != null && shield.getItemId() / 10000 == 134 ? 2 : 1;
             int skillLevel = 0;
             SecondaryStatEffect effect = null;
@@ -1994,7 +2045,8 @@ public class PlayerHandler {
             if (attack.skillID != 0) {
                skill = SkillFactory.getSkill(GameConstants.getLinkedAranSkill(attack.skillID));
                if (attack.skillID != 80001770 && skill == null
-                  || GameConstants.isAngel(attack.skillID) && chr.getStat().equippedSummon % 10000 != attack.skillID % 10000) {
+                     || GameConstants.isAngel(attack.skillID)
+                           && chr.getStat().equippedSummon % 10000 != attack.skillID % 10000) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
@@ -2017,45 +2069,51 @@ public class PlayerHandler {
 
             if (!chr.isHidden()) {
                if (!chr.hasBuffBySkillID(400011003) && !chr.hasBuffBySkillID(500061000)) {
-                  chr.getMap().broadcastMessage(chr, CField.closeRangeAttack(chr, opcode == RecvPacketOpcode.BODY_ATTACK, attack), chr.getTruePosition());
+                  chr.getMap().broadcastMessage(chr,
+                        CField.closeRangeAttack(chr, opcode == RecvPacketOpcode.BODY_ATTACK, attack),
+                        chr.getTruePosition());
                } else {
                   MapleCharacter target = chr.getClient()
-                     .getChannelServer()
-                     .getPlayerStorage()
-                     .getCharacterById(chr.getBuffedValueDefault(SecondaryStatFlag.HolyUnity, 0));
+                        .getChannelServer()
+                        .getPlayerStorage()
+                        .getCharacterById(chr.getBuffedValueDefault(SecondaryStatFlag.HolyUnity, 0));
                   if (target != null) {
-                     target.getMap().broadcastMessage(CField.closeRangeAttack(target, opcode == RecvPacketOpcode.BODY_ATTACK, attack), attack.targetPosition);
+                     target.getMap().broadcastMessage(
+                           CField.closeRangeAttack(target, opcode == RecvPacketOpcode.BODY_ATTACK, attack),
+                           attack.targetPosition);
                   }
                }
             } else if (!chr.hasBuffBySkillID(400011003) && !chr.hasBuffBySkillID(500061000)) {
-               chr.getMap().broadcastGMMessage(chr, CField.closeRangeAttack(chr, opcode == RecvPacketOpcode.BODY_ATTACK, attack), false);
+               chr.getMap().broadcastGMMessage(chr,
+                     CField.closeRangeAttack(chr, opcode == RecvPacketOpcode.BODY_ATTACK, attack), false);
             } else {
                MapleCharacter target = chr.getClient()
-                  .getChannelServer()
-                  .getPlayerStorage()
-                  .getCharacterById(chr.getBuffedValueDefault(SecondaryStatFlag.HolyUnity, 0));
+                     .getChannelServer()
+                     .getPlayerStorage()
+                     .getCharacterById(chr.getBuffedValueDefault(SecondaryStatFlag.HolyUnity, 0));
                if (target != null) {
-                  target.getMap().broadcastGMMessage(chr, CField.closeRangeAttack(target, opcode == RecvPacketOpcode.BODY_ATTACK, attack), false);
+                  target.getMap().broadcastGMMessage(chr,
+                        CField.closeRangeAttack(target, opcode == RecvPacketOpcode.BODY_ATTACK, attack), false);
                }
             }
 
             attack = DamageParse.Modify_AttackCrit(attack, chr, 1, effect);
             DamageParse.applyAttack(
-               attack,
-               skill,
-               c.getPlayer(),
-               attackCount,
-               maxdamage,
-               effect,
-               mirror ? AttackType.NON_RANGED_WITH_MIRROR : AttackType.NON_RANGED,
-               opcode == RecvPacketOpcode.BODY_ATTACK,
-               opcode
-            );
+                  attack,
+                  skill,
+                  c.getPlayer(),
+                  attackCount,
+                  maxdamage,
+                  effect,
+                  mirror ? AttackType.NON_RANGED_WITH_MIRROR : AttackType.NON_RANGED,
+                  opcode == RecvPacketOpcode.BODY_ATTACK,
+                  opcode);
          }
       }
    }
 
-   public static final void shootAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr, RecvPacketOpcode opcode) {
+   public static final void shootAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr,
+         RecvPacketOpcode opcode) {
       if (chr == null) {
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else if (chr.getMap() == null) {
@@ -2068,7 +2126,8 @@ public class PlayerHandler {
             attack = DamageParse.onAttack(slea, chr, opcode);
          } catch (Exception var19) {
             slea.seek(pos);
-            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "원거리 데미지 패킷 분석 실패 : " + slea.toString(), var19);
+            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "원거리 데미지 패킷 분석 실패 : " + slea.toString(),
+                  var19);
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -2082,7 +2141,8 @@ public class PlayerHandler {
             Skill skill = null;
             if (attack.skillID != 0) {
                skill = SkillFactory.getSkill(GameConstants.getLinkedAranSkill(attack.skillID));
-               if (skill == null || GameConstants.isAngel(attack.skillID) && chr.getStat().equippedSummon % 10000 != attack.skillID % 10000) {
+               if (skill == null || GameConstants.isAngel(attack.skillID)
+                     && chr.getStat().equippedSummon % 10000 != attack.skillID % 10000) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
@@ -2149,7 +2209,8 @@ public class PlayerHandler {
                case 4121007:
                case 14001004:
                case 14111005:
-                  basedamage = Math.max(statst.getCurrentMaxBaseDamage(), statst.getTotalLuk() * 5.0F * (statst.getTotalWatk() + projectileWatk) / 100.0F);
+                  basedamage = Math.max(statst.getCurrentMaxBaseDamage(),
+                        statst.getTotalLuk() * 5.0F * (statst.getTotalWatk() + projectileWatk) / 100.0F);
                   break;
                case 4111004:
                   basedamage = 53000.0;
@@ -2172,32 +2233,36 @@ public class PlayerHandler {
 
             if (!chr.isHidden()) {
                if (attack.skillID == 3211006) {
-                  chr.getMap().broadcastMessage(chr, CField.strafeAttack(chr, visProjectile, chr.getTotalSkillLevel(3220010), attack), chr.getTruePosition());
+                  chr.getMap().broadcastMessage(chr,
+                        CField.strafeAttack(chr, visProjectile, chr.getTotalSkillLevel(3220010), attack),
+                        chr.getTruePosition());
                } else {
-                  chr.getMap().broadcastMessage(chr, CField.rangedAttack(chr, visProjectile, attack), chr.getTruePosition());
+                  chr.getMap().broadcastMessage(chr, CField.rangedAttack(chr, visProjectile, attack),
+                        chr.getTruePosition());
                }
             } else if (attack.skillID == 3211006) {
-               chr.getMap().broadcastGMMessage(chr, CField.strafeAttack(chr, visProjectile, chr.getTotalSkillLevel(3220010), attack), false);
+               chr.getMap().broadcastGMMessage(chr,
+                     CField.strafeAttack(chr, visProjectile, chr.getTotalSkillLevel(3220010), attack), false);
             } else {
                chr.getMap().broadcastGMMessage(chr, CField.rangedAttack(chr, visProjectile, attack), false);
             }
 
             DamageParse.applyAttack(
-               attack,
-               skill,
-               chr,
-               bulletCount,
-               basedamage,
-               effect,
-               ShadowPartner != null ? AttackType.RANGED_WITH_SHADOWPARTNER : AttackType.RANGED,
-               false,
-               opcode
-            );
+                  attack,
+                  skill,
+                  chr,
+                  bulletCount,
+                  basedamage,
+                  effect,
+                  ShadowPartner != null ? AttackType.RANGED_WITH_SHADOWPARTNER : AttackType.RANGED,
+                  false,
+                  opcode);
          }
       }
    }
 
-   public static final void magicAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr, RecvPacketOpcode opcode) {
+   public static final void magicAttack(PacketDecoder slea, MapleClient c, MapleCharacter chr,
+         RecvPacketOpcode opcode) {
       if (chr != null && chr.getMap() != null) {
          AttackInfo attack = null;
          long pos = slea.getPosition();
@@ -2206,7 +2271,8 @@ public class PlayerHandler {
             attack = DamageParse.onAttack(slea, chr, opcode);
          } catch (Exception var13) {
             slea.seek(pos);
-            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "마법 데미지 패킷 분석 실패 : " + slea.toString(), var13);
+            FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "마법 데미지 패킷 분석 실패 : " + slea.toString(),
+                  var13);
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -2215,7 +2281,8 @@ public class PlayerHandler {
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             Skill skill = SkillFactory.getSkill(GameConstants.getLinkedAranSkill(attack.skillID));
-            if (skill != null && (!GameConstants.isAngel(attack.skillID) || chr.getStat().equippedSummon % 10000 == attack.skillID % 10000)) {
+            if (skill != null && (!GameConstants.isAngel(attack.skillID)
+                  || chr.getStat().equippedSummon % 10000 == attack.skillID % 10000)) {
                int skillLevel = chr.getTotalSkillLevel(skill);
                if (GameConstants.isYetiPinkBean(chr.getJob()) && skillLevel == 0) {
                   skillLevel = 1;
@@ -2234,14 +2301,16 @@ public class PlayerHandler {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                } else {
                   attack = DamageParse.Modify_AttackCrit(attack, chr, 3, effect);
-                  double maxdamage = chr.getStat().getCurrentMaxBaseDamage() * (effect.getDamage() + chr.getStat().getDamageIncrease(attack.skillID)) / 100.0;
+                  double maxdamage = chr.getStat().getCurrentMaxBaseDamage()
+                        * (effect.getDamage() + chr.getStat().getDamageIncrease(attack.skillID)) / 100.0;
                   if (GameConstants.isPyramidSkill(attack.skillID)) {
                      maxdamage = 1.0;
                   } else if (GameConstants.isNovice(skill.getId() / 10000) && skill.getId() % 10000 == 1000) {
                      maxdamage = 40.0;
                   }
 
-                  if (GameConstants.isKinesis(chr.getJob()) && attack.skillID != 142001002 && attack.skillID != 142141500) {
+                  if (GameConstants.isKinesis(chr.getJob()) && attack.skillID != 142001002
+                        && attack.skillID != 142141500) {
                      chr.invokeJobMethod("givePPoint", attack.skillID, false, attack.targets);
                   }
 
@@ -2264,7 +2333,8 @@ public class PlayerHandler {
                      case 27121202:
                      case 27121303:
                         int var16 = effect.getAttackCount();
-                        DamageParse.applyAttack(attack, skill, chr, skillLevel, maxdamage, effect, AttackType.RANGED, false, opcode);
+                        DamageParse.applyAttack(attack, skill, chr, skillLevel, maxdamage, effect, AttackType.RANGED,
+                              false, opcode);
                         break;
                      default:
                         DamageParse.applyAttackMagic(attack, skill, chr, effect, maxdamage, opcode);
@@ -2282,7 +2352,7 @@ public class PlayerHandler {
    public static final void DropMeso(int meso, MapleCharacter chr) {
       if (chr.isAlive() && meso >= 10 && meso <= 50000 && meso <= chr.getMeso()) {
          chr.gainMeso(-meso, false, true, true);
-         chr.getMap().spawnMesoDrop(meso, chr.getTruePosition(), chr, chr, true, (byte)0);
+         chr.getMap().spawnMesoDrop(meso, chr.getTruePosition(), chr, chr, true, (byte) 0);
          chr.getCheatTracker().checkDrop(true);
       } else {
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
@@ -2290,7 +2360,8 @@ public class PlayerHandler {
    }
 
    public static final void ChangeAndroidEmotion(int emote, MapleCharacter chr) {
-      if (emote > 0 && chr != null && chr.getMap() != null && !chr.isHidden() && emote <= 17 && chr.getAndroid() != null) {
+      if (emote > 0 && chr != null && chr.getMap() != null && !chr.isHidden() && emote <= 17
+            && chr.getAndroid() != null) {
          chr.getMap().broadcastMessage(CField.showAndroidEmotion(chr.getId(), emote));
       }
    }
@@ -2344,17 +2415,17 @@ public class PlayerHandler {
             long now = System.currentTimeMillis();
             if (healHP != 0 && chr.canHP(now + 1000L)) {
                if (healHP > stats.getHealHP()) {
-                  healHP = (int)stats.getHealHP();
+                  healHP = (int) stats.getHealHP();
                }
 
                chr.addHP(healHP);
                if (chr.getJob() == 2711 || chr.getJob() == 2712) {
                   SecondaryStatEffect eff = chr.getSkillLevelData(27110007);
                   if (eff != null) {
-                     int hpPercent = (int)(chr.getStat().getHp() * 100L / chr.getStat().getCurrentMaxHp());
-                     int mpPercent = (int)(chr.getStat().getMp() * 100L / chr.getStat().getCurrentMaxMp(chr));
+                     int hpPercent = (int) (chr.getStat().getHp() * 100L / chr.getStat().getCurrentMaxHp());
+                     int mpPercent = (int) (chr.getStat().getMp() * 100L / chr.getStat().getCurrentMaxMp(chr));
                      if (hpPercent < mpPercent) {
-                        int recoveryHp = (int)(chr.getStat().getCurrentMaxHp() / 100L * eff.getT());
+                        int recoveryHp = (int) (chr.getStat().getCurrentMaxHp() / 100L * eff.getT());
                         chr.addHP(recoveryHp);
                      }
                   }
@@ -2363,17 +2434,17 @@ public class PlayerHandler {
 
             if (healMP != 0 && !GameConstants.isDemonSlayer(chr.getJob()) && chr.canMP(now + 1000L)) {
                if (healMP > stats.getHealMP()) {
-                  healMP = (int)stats.getHealMP();
+                  healMP = (int) stats.getHealMP();
                }
 
                chr.addMP(healMP);
                if (chr.getJob() == 2711 || chr.getJob() == 2712) {
                   SecondaryStatEffect eff = chr.getSkillLevelData(27110007);
                   if (eff != null) {
-                     int hpPercent = (int)(chr.getStat().getHp() * 100L / chr.getStat().getCurrentMaxHp());
-                     int mpPercent = (int)(chr.getStat().getMp() * 100L / chr.getStat().getCurrentMaxMp(chr));
+                     int hpPercent = (int) (chr.getStat().getHp() * 100L / chr.getStat().getCurrentMaxHp());
+                     int mpPercent = (int) (chr.getStat().getMp() * 100L / chr.getStat().getCurrentMaxMp(chr));
                      if (mpPercent < hpPercent) {
-                        int recoveryMp = (int)(chr.getStat().getCurrentMaxMp(chr) / 100L * eff.getT());
+                        int recoveryMp = (int) (chr.getStat().getCurrentMaxMp(chr) / 100L * eff.getT());
                         chr.addMP(recoveryMp);
                      }
                   }
@@ -2409,7 +2480,7 @@ public class PlayerHandler {
          byte z = 0;
 
          for (int i = 0; i < keyPadStateSize; i++) {
-            z = i % 2 != 0 ? (byte)(z >> 4) : slea.readByte();
+            z = i % 2 != 0 ? (byte) (z >> 4) : slea.readByte();
             keyPadStates.add(z & 15);
          }
 
@@ -2419,9 +2490,11 @@ public class PlayerHandler {
             try {
                if (chr.isHidden()) {
                   chr.setLastRes(res);
-                  c.getPlayer().getMap().broadcastGMMessage(chr, CField.movePlayer(chr.getId(), res, startPos, ovPos, encodedGatherDuration), false);
+                  c.getPlayer().getMap().broadcastGMMessage(chr,
+                        CField.movePlayer(chr.getId(), res, startPos, ovPos, encodedGatherDuration), false);
                } else {
-                  c.getPlayer().getMap().broadcastMessage(c.getPlayer(), CField.movePlayer(chr.getId(), res, startPos, ovPos, encodedGatherDuration), false);
+                  c.getPlayer().getMap().broadcastMessage(c.getPlayer(),
+                        CField.movePlayer(chr.getId(), res, startPos, ovPos, encodedGatherDuration), false);
                }
             } catch (Exception var15) {
                System.out.println("movePlayer 함수 실행중 오류 발생 broadcastMessage 오류 : " + var15.toString());
@@ -2435,17 +2508,20 @@ public class PlayerHandler {
                MapleCharacter fol = map.getCharacterById(chr.getFollowId());
                if (fol != null) {
                   Point original_pos = fol.getPosition();
-                  fol.getClient().getSession().writeAndFlush(CField.moveFollow(Original_Pos, original_pos, pos, res, encodedGatherDuration));
+                  fol.getClient().getSession()
+                        .writeAndFlush(CField.moveFollow(Original_Pos, original_pos, pos, res, encodedGatherDuration));
                   MovementParse.updatePosition(res, fol, 0);
                   map.movePlayer(fol, pos);
-                  map.broadcastMessage(fol, CField.movePlayer(fol.getId(), res, startPos, ovPos, encodedGatherDuration), false);
+                  map.broadcastMessage(fol, CField.movePlayer(fol.getId(), res, startPos, ovPos, encodedGatherDuration),
+                        false);
                } else {
                   chr.checkFollow();
                }
             }
 
             int count = c.getPlayer().getFallCounter();
-            boolean samepos = pos.y > c.getPlayer().getOldPosition().y && Math.abs(pos.x - c.getPlayer().getOldPosition().x) < 5;
+            boolean samepos = pos.y > c.getPlayer().getOldPosition().y
+                  && Math.abs(pos.x - c.getPlayer().getOldPosition().x) < 5;
             if (samepos && (pos.y > map.getBottom() + 250 || map.getFootholds().findBelow(pos) == null)) {
                if (count > 5) {
                   c.getPlayer().changeMap(map, map.getPortal(0));
@@ -2534,13 +2610,15 @@ public class PlayerHandler {
                }
 
                if (chr.getCooldownLimit(80002282) != 0L) {
-                  chr.temporaryStatSet(80002282, (int)(900000L - chr.getCooldownLimit(80002282)), SecondaryStatFlag.RuneBlocked, 1);
+                  chr.temporaryStatSet(80002282, (int) (900000L - chr.getCooldownLimit(80002282)),
+                        SecondaryStatFlag.RuneBlocked, 1);
                }
 
                if (chr.getCooldownLimit(2310013) != 0L) {
                   SecondaryStatEffect effect = chr.getSkillLevelData(2311009);
                   if (effect != null) {
-                     chr.temporaryStatSet(2310013, (int)(effect.getY() * 1000 - chr.getCooldownLimit(2310013)), SecondaryStatFlag.HolyMagicShellBlocked, 1);
+                     chr.temporaryStatSet(2310013, (int) (effect.getY() * 1000 - chr.getCooldownLimit(2310013)),
+                           SecondaryStatFlag.HolyMagicShellBlocked, 1);
                   }
                }
 
@@ -2558,7 +2636,8 @@ public class PlayerHandler {
                }
 
                if (wheel) {
-                  UseWheel e = new UseWheel(c.getPlayer().getId(), chr.getInventory(MapleInventoryType.CASH).countById(5510000) - 1);
+                  UseWheel e = new UseWheel(c.getPlayer().getId(),
+                        chr.getInventory(MapleInventoryType.CASH).countById(5510000) - 1);
                   c.getSession().writeAndFlush(e.encodeForLocal());
                   chr.getStat().setHp(chr.getStat().getCurrentMaxHp() / 100L * 40L, chr);
                   MapleInventoryManipulator.removeById(c, MapleInventoryType.CASH, 5510000, 1, true, false);
@@ -2642,7 +2721,8 @@ public class PlayerHandler {
    public static final void ReIssueMedal(PacketDecoder slea, MapleClient c, MapleCharacter chr) {
       MapleQuest q = MapleQuest.getInstance(slea.readShort());
       int itemid = q.getMedalItem();
-      if (itemid != slea.readInt() || itemid <= 0 || !GameConstants.isMedal(itemid) || chr.getQuestStatus(q.getId()) != 2) {
+      if (itemid != slea.readInt() || itemid <= 0 || !GameConstants.isMedal(itemid)
+            || chr.getQuestStatus(q.getId()) != 2) {
          c.getSession().writeAndFlush(CField.UIPacket.reissueMedal(itemid, 4));
       } else if (chr.haveItem(itemid, 1, true, true)) {
          c.getSession().writeAndFlush(CField.UIPacket.reissueMedal(itemid, 3));
@@ -2653,8 +2733,8 @@ public class PlayerHandler {
       } else {
          chr.gainMeso(-100L, true, true, true);
          MapleInventoryManipulator.addById(
-            c, itemid, (short)1, "Redeemed item through medal quest " + q.getId() + " on " + FileoutputUtil.CurrentReadable_Date()
-         );
+               c, itemid, (short) 1,
+               "Redeemed item through medal quest " + q.getId() + " on " + FileoutputUtil.CurrentReadable_Date());
          c.getSession().writeAndFlush(CField.UIPacket.reissueMedal(itemid, 0));
       }
    }
@@ -2669,9 +2749,9 @@ public class PlayerHandler {
       }
 
       if (User.getInnerLevel() == 0) {
-         System.out.println("[오류] 어빌리티를 활성화 하지 않은 상태로 어빌리티 스킬 변화를 시도하였습니다. (Name : " + User.getName() + ")");
+         System.out.println("[Error] Attempted ability change without activation. (Name : " + User.getName() + ")");
       } else if (fixedOptions.size() > 2) {
-         System.out.println("[오류] 어빌리티 스킬을 2개 이상 고정 시도하였습니다. (Name : " + User.getName() + ")");
+         System.out.println("[Error] Attempted to lock more than 2 ability skills. (Name : " + User.getName() + ")");
       } else {
          int rare = 0;
          int epic = 1;
@@ -2701,7 +2781,7 @@ public class PlayerHandler {
             }
 
             if (User.getInnerExp() < OptionRequirePoint) {
-               System.out.println("[오류] 어빌리티를 재설정 하는데 필요한 명성치가 부족합니다. (Name : " + User.getName() + ")");
+               System.out.println("[Error] Insufficient Honor EXP to reset ability. (Name : " + User.getName() + ")");
             } else {
                User.addHonorExp(-OptionRequirePoint);
                InnerAbility.gachaAbility(User, fixedOptions);
@@ -2714,11 +2794,12 @@ public class PlayerHandler {
       MapleCharacter User = c.getPlayer();
       int itemID = slea.readInt();
       int itemSLOT = slea.readInt();
-      if (User.getInventory(MapleInventoryType.USE).getItem((short)itemSLOT).getItemId() == itemID && itemID == 2702006) {
+      if (User.getInventory(MapleInventoryType.USE).getItem((short) itemSLOT).getItemId() == itemID
+            && itemID == 2702006) {
          if (User.getInnerSkills().size() < 1) {
             User.send(CWvsContext.enableActions(User));
          } else {
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short)itemSLOT, (short)1, false);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) itemSLOT, (short) 1, false);
             InnerAbility.gachaAbilityLegendary(User);
          }
       } else {
@@ -2730,11 +2811,12 @@ public class PlayerHandler {
       MapleCharacter User = c.getPlayer();
       int itemID = slea.readInt();
       int itemSLOT = slea.readInt();
-      if (User.getInventory(MapleInventoryType.USE).getItem((short)itemSLOT).getItemId() == itemID && (itemID == 2702003 || itemID == 2702004)) {
+      if (User.getInventory(MapleInventoryType.USE).getItem((short) itemSLOT).getItemId() == itemID
+            && (itemID == 2702003 || itemID == 2702004)) {
          if (User.getInnerSkills().size() < 1) {
             User.send(CWvsContext.enableActions(User));
          } else {
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short)itemSLOT, (short)1, false);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) itemSLOT, (short) 1, false);
             InnerAbility.gachaAbilityChaos(User);
          }
       } else {
@@ -2746,11 +2828,12 @@ public class PlayerHandler {
       MapleCharacter User = c.getPlayer();
       int itemID = slea.readInt();
       int itemSLOT = slea.readInt();
-      if (User.getInventory(MapleInventoryType.USE).getItem((short)itemSLOT).getItemId() == itemID && (itemID == 2702007 || itemID == 2702008)) {
+      if (User.getInventory(MapleInventoryType.USE).getItem((short) itemSLOT).getItemId() == itemID
+            && (itemID == 2702007 || itemID == 2702008)) {
          if (User.getInnerSkills().size() < 1) {
             User.send(CWvsContext.enableActions(User));
          } else {
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short)itemSLOT, (short)1, false);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) itemSLOT, (short) 1, false);
             InnerAbility.gachaAbilityBlack(User, itemID, itemSLOT);
          }
       } else {
@@ -2773,14 +2856,12 @@ public class PlayerHandler {
 
          for (Triple<Integer, Integer, Integer> ability : User.blackAbilitys) {
             holders.add(
-               new CharacterPotentialHolder(
-                  ability.getLeft(),
-                  (byte)ability.getMid().intValue(),
-                  (byte)InnerAbility.innerAbilityInfos.get(ability.getLeft()).getMaxLevel(),
-                  (byte)ability.getRight().intValue(),
-                  false
-               )
-            );
+                  new CharacterPotentialHolder(
+                        ability.getLeft(),
+                        (byte) ability.getMid().intValue(),
+                        (byte) InnerAbility.innerAbilityInfos.get(ability.getLeft()).getMaxLevel(),
+                        (byte) ability.getRight().intValue(),
+                        false));
          }
 
          for (CharacterPotentialHolder cph : holders) {
@@ -2791,11 +2872,13 @@ public class PlayerHandler {
 
          for (int i = 0; i < holders.size(); i++) {
             CharacterPotentialHolder holder = holders.get(i);
-            User.send(CField.updateInnerPotential((byte)(i + 1), holder.getSkillId(), holder.getSkillLevel(), holder.getRank()));
-            AchievementFactory.checkAbility(User, holders.get(i).getSkillId(), holders.get(i).getSkillLevel(), holders.get(i).getRank(), 0);
+            User.send(CField.updateInnerPotential((byte) (i + 1), holder.getSkillId(), holder.getSkillLevel(),
+                  holder.getRank()));
+            AchievementFactory.checkAbility(User, holders.get(i).getSkillId(), holders.get(i).getSkillLevel(),
+                  holders.get(i).getRank(), 0);
          }
 
-         User.send(CWvsContext.showPopupMessage("어빌리티 재설정에 성공 하였습니다."));
+         User.send(CWvsContext.showPopupMessage("รีเซ็ต Ability เรียบร้อยแล้ว"));
          User.getStat().recalcLocalStats(User);
          User.blackAbilitys.clear();
       }
@@ -2838,13 +2921,14 @@ public class PlayerHandler {
                      }
 
                      if (GameConstants.isDemonSlayer(chr.getJob())) {
-                        int delta = (int)(chr.getStat().getCurrentMaxMp(chr) - chr.getStat().getMp());
+                        int delta = (int) (chr.getStat().getCurrentMaxMp(chr) - chr.getStat().getMp());
                         if (delta > 0) {
                            delta = Math.min(delta, atom.getInfo().inc);
                            chr.addMP(delta, true);
                         }
                      } else if (GameConstants.isAngelicBuster(chr.getJob())) {
-                        SecondaryStatEffect effectxx = SkillFactory.getSkill(400051011).getEffect(chr.getSkillLevel(400051011));
+                        SecondaryStatEffect effectxx = SkillFactory.getSkill(400051011)
+                              .getEffect(chr.getSkillLevel(400051011));
                         if (effectxx != null) {
                            Integer valuex = chr.getBuffedValue(SecondaryStatFlag.EnergyBurst);
                            int vx = 0;
@@ -2858,8 +2942,10 @@ public class PlayerHandler {
                                  chr.setEnergyBurst(0);
                                  vx++;
                                  int unit = vx - 1;
-                                 SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(), chr.getSecondaryStat());
-                                 statManager.changeStatValue(SecondaryStatFlag.indiePMDR, 400051011, unit * effectxx.getQ());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(),
+                                       chr.getSecondaryStat());
+                                 statManager.changeStatValue(SecondaryStatFlag.indiePMDR, 400051011,
+                                       unit * effectxx.getQ());
                                  statManager.changeStatValue(SecondaryStatFlag.EnergyBurst, 400051011, vx);
                                  statManager.temporaryStatSet();
                               }
@@ -2881,7 +2967,8 @@ public class PlayerHandler {
                         MapleCharacter target = chr.getMap().getCharacterById(keyxx);
                         if (target != null) {
                            int blessMarkSKillID = chr.getBlessMarkSkillID();
-                           SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID).getEffect(chr.getTotalSkillLevel(blessMarkSKillID));
+                           SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID)
+                                 .getEffect(chr.getTotalSkillLevel(blessMarkSKillID));
                            target.applyBlessMark(blessMark, 1, false, 0);
                         }
                      }
@@ -2890,15 +2977,15 @@ public class PlayerHandler {
                   } else if (skillID == 400011058) {
                      SecondaryStatEffect eff = SkillFactory.getSkill(400011060).getEffect(chr.getSkillLevel(400011058));
                      chr.getMap()
-                        .spawnMist(
-                           new AffectedArea(eff.calculateBoundingBox(new Point(x, y), false), chr, eff, new Point(x, y), System.currentTimeMillis() + 2000L)
-                        );
+                           .spawnMist(
+                                 new AffectedArea(eff.calculateBoundingBox(new Point(x, y), false), chr, eff,
+                                       new Point(x, y), System.currentTimeMillis() + 2000L));
                   } else if (skillID == 400011059) {
                      SecondaryStatEffect eff = SkillFactory.getSkill(400011061).getEffect(chr.getSkillLevel(400011059));
                      chr.getMap()
-                        .spawnMist(
-                           new AffectedArea(eff.calculateBoundingBox(new Point(x, y), false), chr, eff, new Point(x, y), System.currentTimeMillis() + 2000L)
-                        );
+                           .spawnMist(
+                                 new AffectedArea(eff.calculateBoundingBox(new Point(x, y), false), chr, eff,
+                                       new Point(x, y), System.currentTimeMillis() + 2000L));
                   }
                }
                break;
@@ -2951,7 +3038,8 @@ public class PlayerHandler {
                         }
                      }
 
-                     List<MapleMonster> mobs_ = chr.getMap().getMobsInRect(new Point(posXxx, posYxx), -600, -600, 600, 600);
+                     List<MapleMonster> mobs_ = chr.getMap().getMobsInRect(new Point(posXxx, posYxx), -600, -600, 600,
+                           600);
                      Collections.shuffle(mobs_);
                      MapleMonster m = mobs_.stream().filter(m_ -> m_.getObjectId() != byMobIDxx).findAny().orElse(null);
                      if (mobs_.size() == 1) {
@@ -2964,8 +3052,9 @@ public class PlayerHandler {
                      }
 
                      if (skillID == 14000028 || skillID == 14110033) {
-                        int x = chr.getSkillLevelDataOne(skillID == 14000028 ? 14001027 : 14121016, SecondaryStatEffect::getX);
-                        int heal = (int)(chr.getStat().getCurrentMaxHp(chr) * 0.01 * x);
+                        int x = chr.getSkillLevelDataOne(skillID == 14000028 ? 14001027 : 14121016,
+                              SecondaryStatEffect::getX);
+                        int heal = (int) (chr.getStat().getCurrentMaxHp(chr) * 0.01 * x);
                         chr.healHP(heal);
                      }
 
@@ -2977,16 +3066,15 @@ public class PlayerHandler {
                         ForceAtom.AtomInfo atomInfox = new ForceAtom.AtomInfo();
                         atomInfox.initShadowBatRegen(++keyxx, new Point(posXxx, posYxx));
                         ForceAtom atom = new ForceAtom(
-                           atomInfox,
-                           skillID != 14110035 && skillID != 14110033 && skillID != 14110034 ? 14000029 : 14110035,
-                           chr.getId(),
-                           true,
-                           true,
-                           byMobIDxx,
-                           ForceAtom.AtomType.SHADOW_BAT_REGEN,
-                           Collections.singletonList(m.getObjectId()),
-                           1
-                        );
+                              atomInfox,
+                              skillID != 14110035 && skillID != 14110033 && skillID != 14110034 ? 14000029 : 14110035,
+                              chr.getId(),
+                              true,
+                              true,
+                              byMobIDxx,
+                              ForceAtom.AtomType.SHADOW_BAT_REGEN,
+                              Collections.singletonList(m.getObjectId()),
+                              1);
                         chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                         chr.setBlackJackCount(chr.getBlackJackCount() + 1);
                      }
@@ -3009,7 +3097,8 @@ public class PlayerHandler {
                   realSkillID = 65141500;
                }
 
-               SecondaryStatEffect effectx = SkillFactory.getSkill(realSkillID).getEffect(chr.getSkillLevel(realSkillID));
+               SecondaryStatEffect effectx = SkillFactory.getSkill(realSkillID)
+                     .getEffect(chr.getSkillLevel(realSkillID));
                if (effectx != null) {
                   for (int nextx = 0; nextx < atomCountxx; nextx++) {
                      int skillID2 = slea.readInt();
@@ -3078,40 +3167,37 @@ public class PlayerHandler {
                         }
 
                         ForceAtom atom = new ForceAtom(
-                           atomInfo,
-                           skillID,
-                           chr.getId(),
-                           true,
-                           true,
-                           byMobIDx,
-                           ForceAtom.AtomType.ATOM_REGEN,
-                           Collections.singletonList(toMobIDx),
-                           atomCountxx
-                        );
+                              atomInfo,
+                              skillID,
+                              chr.getId(),
+                              true,
+                              true,
+                              byMobIDx,
+                              ForceAtom.AtomType.ATOM_REGEN,
+                              Collections.singletonList(toMobIDx),
+                              atomCountxx);
                         if (realSkillID == 65121100) {
                            atom = new ForceAtom(
-                              atomInfo,
-                              skillID,
-                              chr.getId(),
-                              true,
-                              true,
-                              byMobIDx,
-                              ForceAtom.AtomType.AUTO_SOUL_SEEKER_REGEN,
-                              Collections.singletonList(toMobIDx),
-                              atomCountxx
-                           );
+                                 atomInfo,
+                                 skillID,
+                                 chr.getId(),
+                                 true,
+                                 true,
+                                 byMobIDx,
+                                 ForceAtom.AtomType.AUTO_SOUL_SEEKER_REGEN,
+                                 Collections.singletonList(toMobIDx),
+                                 atomCountxx);
                         } else if (skillID == 65141502) {
                            atom = new ForceAtom(
-                              atomInfo,
-                              skillID,
-                              chr.getId(),
-                              true,
-                              true,
-                              byMobIDx,
-                              ForceAtom.AtomType.GrandFinale_Cheerballoon_REGEN,
-                              Collections.singletonList(toMobIDx),
-                              atomCountxx
-                           );
+                                 atomInfo,
+                                 skillID,
+                                 chr.getId(),
+                                 true,
+                                 true,
+                                 byMobIDx,
+                                 ForceAtom.AtomType.GrandFinale_Cheerballoon_REGEN,
+                                 Collections.singletonList(toMobIDx),
+                                 atomCountxx);
                         }
 
                         chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
@@ -3173,7 +3259,8 @@ public class PlayerHandler {
                            atomType = ForceAtom.AtomType.DAShieldChasing2_2;
                         }
 
-                        ForceAtom atom = new ForceAtom(atomInfo, 31221014, chr.getId(), true, true, byMobID, atomType, Collections.singletonList(toMobID), 1);
+                        ForceAtom atom = new ForceAtom(atomInfo, 31221014, chr.getId(), true, true, byMobID, atomType,
+                              Collections.singletonList(toMobID), 1);
                         chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                         chr.addShieldChasingCount(key);
                      } else {
@@ -3209,23 +3296,23 @@ public class PlayerHandler {
                SecondaryStatEffect e = SkillFactory.getSkill(152120016).getEffect(1);
 
                for (int ix = 0; ix < e.getBulletCount(); ix++) {
-                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(chr.getTruePosition(), e.getLt2().x, e.getLt2().y, e.getRb2().x, e.getRb2().y);
+                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(chr.getTruePosition(), e.getLt2().x,
+                        e.getLt2().y, e.getRb2().x, e.getRb2().y);
                   if (!mobs.isEmpty()) {
                      Collections.shuffle(mobs);
                      MapleMonster target = mobs.stream().findAny().orElse(null);
                      if (target != null) {
                         atomInfox.initMagicMissile();
                         ForceAtom atom = new ForceAtom(
-                           atomInfox,
-                           152120016,
-                           chr.getId(),
-                           false,
-                           true,
-                           chr.getId(),
-                           ForceAtom.AtomType.MAGIC_MISSILE,
-                           Collections.singletonList(target.getObjectId()),
-                           1
-                        );
+                              atomInfox,
+                              152120016,
+                              chr.getId(),
+                              false,
+                              true,
+                              chr.getId(),
+                              ForceAtom.AtomType.MAGIC_MISSILE,
+                              Collections.singletonList(target.getObjectId()),
+                              1);
                         chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                      }
                   }
@@ -3249,7 +3336,8 @@ public class PlayerHandler {
                   }
 
                   e = SkillFactory.getSkill(effID).getEffect(1);
-                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(new Point(posXxxx, posYxxx), e.getLt().x, e.getLt().y, e.getRb().x, e.getRb().y);
+                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(new Point(posXxxx, posYxxx), e.getLt().x,
+                        e.getLt().y, e.getRb().x, e.getRb().y);
                   if (!mobs.isEmpty()) {
                      CollectionUtil.sortMonsterByBossHP(mobs);
                   }
@@ -3258,10 +3346,11 @@ public class PlayerHandler {
                      if (!mobs.isEmpty()) {
                         MapleMonster target = mobs.remove(0);
                         if (target != null) {
-                           atomInfox.initCraftJabelinSplitted(0, new Rect(e.getLt(), e.getRb()), new Point(posXxxx, posYxxx));
+                           atomInfox.initCraftJabelinSplitted(0, new Rect(e.getLt(), e.getRb()),
+                                 new Point(posXxxx, posYxxx));
                            ForceAtom atom = new ForceAtom(
-                              atomInfox, effID, chr.getId(), false, true, chr.getId(), atomType, Collections.singletonList(target.getObjectId()), 1
-                           );
+                                 atomInfox, effID, chr.getId(), false, true, chr.getId(), atomType,
+                                 Collections.singletonList(target.getObjectId()), 1);
                            chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                         }
                      }
@@ -3307,23 +3396,23 @@ public class PlayerHandler {
                SecondaryStatEffect e4 = SkillFactory.getSkill(152141004).getEffect(1);
 
                for (int i = 0; i < e4.getBulletCount(); i++) {
-                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(chr.getTruePosition(), e4.getLt2().x, e4.getLt2().y, e4.getRb2().x, e4.getRb2().y);
+                  List<MapleMonster> mobs = chr.getMap().getMobsInRect(chr.getTruePosition(), e4.getLt2().x,
+                        e4.getLt2().y, e4.getRb2().x, e4.getRb2().y);
                   if (!mobs.isEmpty()) {
                      Collections.shuffle(mobs);
                      MapleMonster target = mobs.stream().findAny().orElse(null);
                      if (target != null) {
                         atomInfox.initMagicMissile();
                         ForceAtom atom = new ForceAtom(
-                           atomInfox,
-                           152141005,
-                           chr.getId(),
-                           false,
-                           true,
-                           chr.getId(),
-                           ForceAtom.AtomType.GloryWingJavelin_VI_MagicMissile,
-                           Collections.singletonList(target.getObjectId()),
-                           1
-                        );
+                              atomInfox,
+                              152141005,
+                              chr.getId(),
+                              false,
+                              true,
+                              chr.getId(),
+                              ForceAtom.AtomType.GloryWingJavelin_VI_MagicMissile,
+                              Collections.singletonList(target.getObjectId()),
+                              1);
                         chr.getMap().broadcastMessage(CField.getCreateForceAtom(atom));
                      }
                   }
@@ -3432,7 +3521,8 @@ public class PlayerHandler {
                            }
 
                            attackCount = Math.min(21, attackCount);
-                           chr.send(CField.blackJack(400041080, chr.getSkillLevel(400041022), posXxx, posYxx, attackCount));
+                           chr.send(CField.blackJack(400041080, chr.getSkillLevel(400041022), posXxx, posYxx,
+                                 attackCount));
                         }
                      }
                   }
@@ -3463,8 +3553,10 @@ public class PlayerHandler {
                                  chr.setEnergyBurst(0);
                                  v++;
                                  int unit = v - 1;
-                                 SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(), chr.getSecondaryStat());
-                                 statManager.changeStatValue(SecondaryStatFlag.indiePMDR, 400051011, unit * effectx.getQ());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(),
+                                       chr.getSecondaryStat());
+                                 statManager.changeStatValue(SecondaryStatFlag.indiePMDR, 400051011,
+                                       unit * effectx.getQ());
                                  statManager.changeStatValue(SecondaryStatFlag.EnergyBurst, 400051011, v);
                                  statManager.temporaryStatSet();
                               }
@@ -3537,7 +3629,7 @@ public class PlayerHandler {
 
       if (elementid != 0) {
          if (SkillFactory.getSkill(elementid) == null) {
-            FileoutputUtil.log("Log_Skill_Except.rtf", elementid + "스킬이 NULL임 ");
+            FileoutputUtil.log("Log_Skill_Except.rtf", elementid + "Skill is NULL ");
          } else {
             SecondaryStatEffect e = SkillFactory.getSkill(elementid).getEffect(chr.getTotalSkillLevel(tempskill));
             if (e != null && chr.getBuffedEffect(SecondaryStatFlag.indieSummon, elementid) == null) {
@@ -3603,7 +3695,8 @@ public class PlayerHandler {
             List<Grenade> gCount = new ArrayList<>();
 
             for (Grenade g : player.getMap().getAllGrenadesThreadsafe()) {
-               if ((g.getSkillId() == 61111100 || g.getSkillId() == 61111113 || g.getSkillId() == 61111218) && g.getOwnerId() == player.getId()) {
+               if ((g.getSkillId() == 61111100 || g.getSkillId() == 61111113 || g.getSkillId() == 61111218)
+                     && g.getOwnerId() == player.getId()) {
                   gCount.add(g);
                }
             }
@@ -3643,9 +3736,11 @@ public class PlayerHandler {
 
          SecondaryStatEffect effect = player.getSkillLevelData(skillID);
          if (effect != null && check) {
-            if (!player.checkSpiritFlow(skillID) && !GameConstants.isKeydownEndCooltimeSkill(skillID) && effect.getCooldown(player) > 0) {
+            if (!player.checkSpiritFlow(skillID) && !GameConstants.isKeydownEndCooltimeSkill(skillID)
+                  && effect.getCooldown(player) > 0) {
                player.send(CField.skillCooldown(GameConstants.getLinkedAranSkill(skillID), effect.getCooldown(player)));
-               player.addCooldown(GameConstants.getLinkedAranSkill(skillID), System.currentTimeMillis(), effect.getCooldown(player));
+               player.addCooldown(GameConstants.getLinkedAranSkill(skillID), System.currentTimeMillis(),
+                     effect.getCooldown(player));
             }
 
             if (skillID != 400031003 && skillID != 22140024) {
@@ -3722,27 +3817,30 @@ public class PlayerHandler {
          }
       }
 
-      if (chr.getBuffedValue(SecondaryStatFlag.StopForceAtomInfo) != null && chr.getBuffedValue(SecondaryStatFlag.StopForceAtomInfo) != null) {
+      if (chr.getBuffedValue(SecondaryStatFlag.StopForceAtomInfo) != null
+            && chr.getBuffedValue(SecondaryStatFlag.StopForceAtomInfo) != null) {
          SecondaryStatEffect effect = chr.getBuffedEffect(SecondaryStatFlag.StopForceAtomInfo);
          if (effect != null) {
             int activeSkillID = chr.getBuffedEffect(SecondaryStatFlag.StopForceAtomInfo).getSourceId();
             ForceAtom.AtomInfo info = new ForceAtom.AtomInfo();
-            boolean transform = activeSkillID == 61110211 || activeSkillID == 61121217 || activeSkillID == 61101002 || activeSkillID == 400011059;
-            boolean advanced = activeSkillID == 61120007 || activeSkillID == 61121217 || activeSkillID == 61101002 || activeSkillID == 400011059;
+            boolean transform = activeSkillID == 61110211 || activeSkillID == 61121217 || activeSkillID == 61101002
+                  || activeSkillID == 400011059;
+            boolean advanced = activeSkillID == 61120007 || activeSkillID == 61121217 || activeSkillID == 61101002
+                  || activeSkillID == 400011059;
             info.initWillOfSword(transform, isStrike);
             ForceAtom forceAtom = new ForceAtom(
-               info,
-               skillID,
-               chr.getId(),
-               false,
-               true,
-               chr.getId(),
-               isStrike ? ForceAtom.AtomType.WILL_OF_SWORD_STRIKE : ForceAtom.AtomType.WILL_OF_SWORD,
-               oids,
-               advanced ? 5 : 3
-            );
+                  info,
+                  skillID,
+                  chr.getId(),
+                  false,
+                  true,
+                  chr.getId(),
+                  isStrike ? ForceAtom.AtomType.WILL_OF_SWORD_STRIKE : ForceAtom.AtomType.WILL_OF_SWORD,
+                  oids,
+                  advanced ? 5 : 3);
             chr.getMap().broadcastMessage(CField.getCreateForceAtom(forceAtom));
-            chr.temporaryStatSet(SecondaryStatFlag.StopForceAtomInfo, activeSkillID, Integer.MAX_VALUE, effect.getLevel(), 0);
+            chr.temporaryStatSet(SecondaryStatFlag.StopForceAtomInfo, activeSkillID, Integer.MAX_VALUE,
+                  effect.getLevel(), 0);
             chr.setJobField("lastWillOfSwordCharge", System.currentTimeMillis());
          }
       }
@@ -3776,9 +3874,9 @@ public class PlayerHandler {
       }
 
       int slot = slea.readInt();
-      Item item = c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)slot);
+      Item item = c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) slot);
       if (item != null) {
-         Equip equip = (Equip)item.copy();
+         Equip equip = (Equip) item.copy();
          String owner = equip.getOwner();
          int totalExp = 0;
          int finalExp = 0;
@@ -3790,79 +3888,79 @@ public class PlayerHandler {
             }
 
             totalExp += equip.getArcEXP();
-            finalExp = (int)Math.floor(totalExp * 0.8);
+            finalExp = (int) Math.floor(totalExp * 0.8);
             equip.setArcEXP(finalExp);
             equip.setArcLevel(1);
          }
 
-         equip.setStr((short)0);
-         equip.setInt((short)0);
-         equip.setDex((short)0);
-         equip.setLuk((short)0);
-         equip.setWatk((short)0);
-         equip.setMatk((short)0);
+         equip.setStr((short) 0);
+         equip.setInt((short) 0);
+         equip.setDex((short) 0);
+         equip.setLuk((short) 0);
+         equip.setWatk((short) 0);
+         equip.setMatk((short) 0);
          if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
-            && c.getPlayer().getJob() != 512
-            && c.getPlayer().getJob() != 1512
-            && c.getPlayer().getJob() != 2512
-            && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
-            && !GameConstants.isAran(c.getPlayer().getJob())
-            && !GameConstants.isBlaster(c.getPlayer().getJob())
-            && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
-            && !GameConstants.isMichael(c.getPlayer().getJob())
-            && !GameConstants.isKaiser(c.getPlayer().getJob())
-            && !GameConstants.isZero(c.getPlayer().getJob())
-            && !GameConstants.isArk(c.getPlayer().getJob())
-            && !GameConstants.isAdele(c.getPlayer().getJob())) {
+               && c.getPlayer().getJob() != 512
+               && c.getPlayer().getJob() != 1512
+               && c.getPlayer().getJob() != 2512
+               && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
+               && !GameConstants.isAran(c.getPlayer().getJob())
+               && !GameConstants.isBlaster(c.getPlayer().getJob())
+               && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
+               && !GameConstants.isMichael(c.getPlayer().getJob())
+               && !GameConstants.isKaiser(c.getPlayer().getJob())
+               && !GameConstants.isZero(c.getPlayer().getJob())
+               && !GameConstants.isArk(c.getPlayer().getJob())
+               && !GameConstants.isAdele(c.getPlayer().getJob())) {
             if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
-               && !GameConstants.isFlameWizard(c.getPlayer().getJob())
-               && !GameConstants.isEvan(c.getPlayer().getJob())
-               && !GameConstants.isLuminous(c.getPlayer().getJob())
-               && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
-               && !GameConstants.isKinesis(c.getPlayer().getJob())
-               && !GameConstants.isIllium(c.getPlayer().getJob())
-               && !GameConstants.isLara(c.getPlayer().getJob())) {
+                  && !GameConstants.isFlameWizard(c.getPlayer().getJob())
+                  && !GameConstants.isEvan(c.getPlayer().getJob())
+                  && !GameConstants.isLuminous(c.getPlayer().getJob())
+                  && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
+                  && !GameConstants.isKinesis(c.getPlayer().getJob())
+                  && !GameConstants.isIllium(c.getPlayer().getJob())
+                  && !GameConstants.isLara(c.getPlayer().getJob())) {
                if ((c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
-                  && c.getPlayer().getJob() != 522
-                  && c.getPlayer().getJob() != 532
-                  && !GameConstants.isMechanic(c.getPlayer().getJob())
-                  && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
-                  && !GameConstants.isMercedes(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
+                     && c.getPlayer().getJob() != 522
+                     && c.getPlayer().getJob() != 532
+                     && !GameConstants.isMechanic(c.getPlayer().getJob())
+                     && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
+                     && !GameConstants.isMercedes(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
                   if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
-                     && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
-                     && !GameConstants.isPhantom(c.getPlayer().getJob())
-                     && !GameConstants.isKadena(c.getPlayer().getJob())
-                     && !GameConstants.isHoyoung(c.getPlayer().getJob())
-                     && !GameConstants.isKhali(c.getPlayer().getJob())) {
+                        && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
+                        && !GameConstants.isPhantom(c.getPlayer().getJob())
+                        && !GameConstants.isKadena(c.getPlayer().getJob())
+                        && !GameConstants.isHoyoung(c.getPlayer().getJob())
+                        && !GameConstants.isKhali(c.getPlayer().getJob())) {
                      if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                        equip.setHp((short)6300);
+                        equip.setHp((short) 6300);
                      } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                        equip.setStr((short)144);
-                        equip.setDex((short)144);
-                        equip.setLuk((short)144);
+                        equip.setStr((short) 144);
+                        equip.setDex((short) 144);
+                        equip.setLuk((short) 144);
                      }
                   } else {
-                     equip.setLuk((short)300);
+                     equip.setLuk((short) 300);
                   }
                } else {
-                  equip.setDex((short)300);
+                  equip.setDex((short) 300);
                }
             } else {
-               equip.setInt((short)300);
+               equip.setInt((short) 300);
             }
          } else {
-            equip.setStr((short)300);
+            equip.setStr((short) 300);
          }
 
          if (!owner.isEmpty()) {
-            equip.setWatk((short)(equip.getWatk() + 750));
-            equip.setMatk((short)(equip.getMatk() + 750));
-            equip.setStr((short)(equip.getStr() + 1500));
-            equip.setDex((short)(equip.getDex() + 1500));
-            equip.setInt((short)(equip.getInt() + 1500));
-            equip.setLuk((short)(equip.getLuk() + 1500));
+            equip.setWatk((short) (equip.getWatk() + 750));
+            equip.setMatk((short) (equip.getMatk() + 750));
+            equip.setStr((short) (equip.getStr() + 1500));
+            equip.setDex((short) (equip.getDex() + 1500));
+            equip.setInt((short) (equip.getInt() + 1500));
+            equip.setLuk((short) (equip.getLuk() + 1500));
          }
 
          if (toArcane > 0) {
@@ -3882,9 +3980,9 @@ public class PlayerHandler {
       }
 
       int slot = slea.readInt();
-      Item item = c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short)slot);
+      Item item = c.getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) slot);
       if (item != null) {
-         Equip equip = (Equip)item;
+         Equip equip = (Equip) item;
          int totalExp = 0;
          int finalExp = 0;
          if (toArcane > 0) {
@@ -3895,79 +3993,79 @@ public class PlayerHandler {
             }
 
             totalExp += equip.getArcEXP();
-            finalExp = (int)Math.floor(totalExp * 0.8);
+            finalExp = (int) Math.floor(totalExp * 0.8);
             equip.setArcEXP(finalExp);
             equip.setArcLevel(1);
          }
 
-         equip.setStr((short)0);
-         equip.setInt((short)0);
-         equip.setDex((short)0);
-         equip.setLuk((short)0);
-         equip.setWatk((short)0);
-         equip.setMatk((short)0);
+         equip.setStr((short) 0);
+         equip.setInt((short) 0);
+         equip.setDex((short) 0);
+         equip.setLuk((short) 0);
+         equip.setWatk((short) 0);
+         equip.setMatk((short) 0);
          if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
-            && c.getPlayer().getJob() != 512
-            && c.getPlayer().getJob() != 532
-            && c.getPlayer().getJob() != 1512
-            && c.getPlayer().getJob() != 2512
-            && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
-            && !GameConstants.isAran(c.getPlayer().getJob())
-            && !GameConstants.isBlaster(c.getPlayer().getJob())
-            && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
-            && !GameConstants.isMichael(c.getPlayer().getJob())
-            && !GameConstants.isKaiser(c.getPlayer().getJob())
-            && !GameConstants.isZero(c.getPlayer().getJob())
-            && !GameConstants.isArk(c.getPlayer().getJob())
-            && !GameConstants.isAdele(c.getPlayer().getJob())) {
+               && c.getPlayer().getJob() != 512
+               && c.getPlayer().getJob() != 532
+               && c.getPlayer().getJob() != 1512
+               && c.getPlayer().getJob() != 2512
+               && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
+               && !GameConstants.isAran(c.getPlayer().getJob())
+               && !GameConstants.isBlaster(c.getPlayer().getJob())
+               && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
+               && !GameConstants.isMichael(c.getPlayer().getJob())
+               && !GameConstants.isKaiser(c.getPlayer().getJob())
+               && !GameConstants.isZero(c.getPlayer().getJob())
+               && !GameConstants.isArk(c.getPlayer().getJob())
+               && !GameConstants.isAdele(c.getPlayer().getJob())) {
             if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
-               && !GameConstants.isFlameWizard(c.getPlayer().getJob())
-               && !GameConstants.isEvan(c.getPlayer().getJob())
-               && !GameConstants.isLuminous(c.getPlayer().getJob())
-               && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
-               && !GameConstants.isKinesis(c.getPlayer().getJob())
-               && !GameConstants.isIllium(c.getPlayer().getJob())
-               && !GameConstants.isLara(c.getPlayer().getJob())) {
+                  && !GameConstants.isFlameWizard(c.getPlayer().getJob())
+                  && !GameConstants.isEvan(c.getPlayer().getJob())
+                  && !GameConstants.isLuminous(c.getPlayer().getJob())
+                  && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
+                  && !GameConstants.isKinesis(c.getPlayer().getJob())
+                  && !GameConstants.isIllium(c.getPlayer().getJob())
+                  && !GameConstants.isLara(c.getPlayer().getJob())) {
                if ((c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
-                  && c.getPlayer().getJob() != 522
-                  && !GameConstants.isMechanic(c.getPlayer().getJob())
-                  && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
-                  && !GameConstants.isMercedes(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
+                     && c.getPlayer().getJob() != 522
+                     && !GameConstants.isMechanic(c.getPlayer().getJob())
+                     && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
+                     && !GameConstants.isMercedes(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
                   if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
-                     && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
-                     && !GameConstants.isPhantom(c.getPlayer().getJob())
-                     && !GameConstants.isKadena(c.getPlayer().getJob())
-                     && !GameConstants.isHoyoung(c.getPlayer().getJob())
-                     && !GameConstants.isKhali(c.getPlayer().getJob())) {
+                        && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
+                        && !GameConstants.isPhantom(c.getPlayer().getJob())
+                        && !GameConstants.isKadena(c.getPlayer().getJob())
+                        && !GameConstants.isHoyoung(c.getPlayer().getJob())
+                        && !GameConstants.isKhali(c.getPlayer().getJob())) {
                      if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                        equip.setHp((short)6300);
+                        equip.setHp((short) 6300);
                      } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                        equip.setStr((short)144);
-                        equip.setDex((short)144);
-                        equip.setLuk((short)144);
+                        equip.setStr((short) 144);
+                        equip.setDex((short) 144);
+                        equip.setLuk((short) 144);
                      }
                   } else {
-                     equip.setLuk((short)300);
+                     equip.setLuk((short) 300);
                   }
                } else {
-                  equip.setDex((short)300);
+                  equip.setDex((short) 300);
                }
             } else {
-               equip.setInt((short)300);
+               equip.setInt((short) 300);
             }
          } else {
-            equip.setStr((short)300);
+            equip.setStr((short) 300);
          }
 
          if (!equip.getOwner().isEmpty()) {
-            equip.setWatk((short)(equip.getWatk() + 750));
-            equip.setMatk((short)(equip.getMatk() + 750));
-            equip.setStr((short)(equip.getStr() + 1500));
-            equip.setDex((short)(equip.getDex() + 1500));
-            equip.setInt((short)(equip.getInt() + 1500));
-            equip.setLuk((short)(equip.getLuk() + 1500));
+            equip.setWatk((short) (equip.getWatk() + 750));
+            equip.setMatk((short) (equip.getMatk() + 750));
+            equip.setStr((short) (equip.getStr() + 1500));
+            equip.setDex((short) (equip.getDex() + 1500));
+            equip.setInt((short) (equip.getInt() + 1500));
+            equip.setLuk((short) (equip.getLuk() + 1500));
          }
 
          if (toArcane > 0) {
@@ -3976,7 +4074,7 @@ public class PlayerHandler {
             equip.setItemState(equip.getItemState() - ItemStateFlag.UNSTABLITY.getValue());
          }
 
-         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short)toArcane, (short)1, false);
+         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (short) toArcane, (short) 1, false);
          c.getPlayer().send(CWvsContext.arcaneCatalyst2(equip));
          c.getPlayer().send(CWvsContext.InventoryPacket.updateArcaneSymbol(equip));
       }
@@ -3984,17 +4082,18 @@ public class PlayerHandler {
 
    public static void UpgradeAuthenticSymbol(PacketDecoder slea, MapleClient c, int p) {
       try {
-         Equip item = (Equip)c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)p);
+         Equip item = (Equip) c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) p);
          if (item == null) {
             return;
          }
 
-         if (c.getPlayer().getMeso() < GameConstants.getMesoNeededForAuthenticSymbolUpgrade(item.getArcLevel(), item.getItemId())) {
+         if (c.getPlayer().getMeso() < GameConstants.getMesoNeededForAuthenticSymbolUpgrade(item.getArcLevel(),
+               item.getItemId())) {
             return;
          }
 
          if (item.getArcLevel() >= 11) {
-            c.getPlayer().dropMessage(1, "더 이상 강화할 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถอัพเกรดได้อีกต่อไป");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -4010,11 +4109,73 @@ public class PlayerHandler {
          }
 
          if (item.getArcLevel() == 1) {
-            item.setStr((short)0);
-            item.setInt((short)0);
-            item.setDex((short)0);
-            item.setLuk((short)0);
+            item.setStr((short) 0);
+            item.setInt((short) 0);
+            item.setDex((short) 0);
+            item.setLuk((short) 0);
             if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
+                  && c.getPlayer().getJob() != 512
+                  && c.getPlayer().getJob() != 1512
+                  && c.getPlayer().getJob() != 2512
+                  && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
+                  && !GameConstants.isAran(c.getPlayer().getJob())
+                  && !GameConstants.isBlaster(c.getPlayer().getJob())
+                  && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
+                  && !GameConstants.isMichael(c.getPlayer().getJob())
+                  && !GameConstants.isKaiser(c.getPlayer().getJob())
+                  && !GameConstants.isZero(c.getPlayer().getJob())
+                  && !GameConstants.isArk(c.getPlayer().getJob())
+                  && !GameConstants.isAdele(c.getPlayer().getJob())) {
+               if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
+                     && !GameConstants.isFlameWizard(c.getPlayer().getJob())
+                     && !GameConstants.isEvan(c.getPlayer().getJob())
+                     && !GameConstants.isLuminous(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
+                     && !GameConstants.isKinesis(c.getPlayer().getJob())
+                     && !GameConstants.isIllium(c.getPlayer().getJob())
+                     && !GameConstants.isLara(c.getPlayer().getJob())) {
+                  if (!GameConstants.isKain(c.getPlayer().getJob())
+                        && (c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
+                        && c.getPlayer().getJob() != 522
+                        && c.getPlayer().getJob() != 532
+                        && !GameConstants.isMechanic(c.getPlayer().getJob())
+                        && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
+                        && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
+                        && !GameConstants.isMercedes(c.getPlayer().getJob())
+                        && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
+                     if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
+                           && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
+                           && !GameConstants.isPhantom(c.getPlayer().getJob())
+                           && !GameConstants.isKadena(c.getPlayer().getJob())
+                           && !GameConstants.isHoyoung(c.getPlayer().getJob())
+                           && !GameConstants.isKhali(c.getPlayer().getJob())) {
+                        if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
+                           item.setHp((short) 1050);
+                        } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
+                           item.setStr((short) 240);
+                           item.setDex((short) 240);
+                           item.setLuk((short) 240);
+                        }
+                     } else {
+                        item.setLuk((short) 500);
+                     }
+                  } else {
+                     item.setDex((short) 500);
+                  }
+               } else {
+                  item.setInt((short) 500);
+               }
+            } else {
+               item.setStr((short) 500);
+            }
+         }
+
+         c.getPlayer().gainMeso(
+               -GameConstants.getMesoNeededForAuthenticSymbolUpgrade(item.getArcLevel(), item.getItemId()), true);
+         item.setArcEXP(item.getArcEXP() - GameConstants.getExpNeededForAuthenticSymbol(item.getArcLevel()));
+         item.setArcLevel(item.getArcLevel() + 1);
+         item.setArc((short) (10 * item.getArcLevel()));
+         if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
                && c.getPlayer().getJob() != 512
                && c.getPlayer().getJob() != 1512
                && c.getPlayer().getJob() != 2512
@@ -4027,7 +4188,7 @@ public class PlayerHandler {
                && !GameConstants.isZero(c.getPlayer().getJob())
                && !GameConstants.isArk(c.getPlayer().getJob())
                && !GameConstants.isAdele(c.getPlayer().getJob())) {
-               if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
+            if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
                   && !GameConstants.isFlameWizard(c.getPlayer().getJob())
                   && !GameConstants.isEvan(c.getPlayer().getJob())
                   && !GameConstants.isLuminous(c.getPlayer().getJob())
@@ -4035,7 +4196,7 @@ public class PlayerHandler {
                   && !GameConstants.isKinesis(c.getPlayer().getJob())
                   && !GameConstants.isIllium(c.getPlayer().getJob())
                   && !GameConstants.isLara(c.getPlayer().getJob())) {
-                  if (!GameConstants.isKain(c.getPlayer().getJob())
+               if (!GameConstants.isKain(c.getPlayer().getJob())
                      && (c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
                      && c.getPlayer().getJob() != 522
                      && c.getPlayer().getJob() != 532
@@ -4044,97 +4205,37 @@ public class PlayerHandler {
                      && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
                      && !GameConstants.isMercedes(c.getPlayer().getJob())
                      && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
-                     if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
+                  if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
                         && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
                         && !GameConstants.isPhantom(c.getPlayer().getJob())
                         && !GameConstants.isKadena(c.getPlayer().getJob())
                         && !GameConstants.isHoyoung(c.getPlayer().getJob())
                         && !GameConstants.isKhali(c.getPlayer().getJob())) {
-                        if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                           item.setHp((short)1050);
-                        } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                           item.setStr((short)240);
-                           item.setDex((short)240);
-                           item.setLuk((short)240);
-                        }
-                     } else {
-                        item.setLuk((short)500);
-                     }
-                  } else {
-                     item.setDex((short)500);
-                  }
-               } else {
-                  item.setInt((short)500);
-               }
-            } else {
-               item.setStr((short)500);
-            }
-         }
-
-         c.getPlayer().gainMeso(-GameConstants.getMesoNeededForAuthenticSymbolUpgrade(item.getArcLevel(), item.getItemId()), true);
-         item.setArcEXP(item.getArcEXP() - GameConstants.getExpNeededForAuthenticSymbol(item.getArcLevel()));
-         item.setArcLevel(item.getArcLevel() + 1);
-         item.setArc((short)(10 * item.getArcLevel()));
-         if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
-            && c.getPlayer().getJob() != 512
-            && c.getPlayer().getJob() != 1512
-            && c.getPlayer().getJob() != 2512
-            && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
-            && !GameConstants.isAran(c.getPlayer().getJob())
-            && !GameConstants.isBlaster(c.getPlayer().getJob())
-            && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
-            && !GameConstants.isMichael(c.getPlayer().getJob())
-            && !GameConstants.isKaiser(c.getPlayer().getJob())
-            && !GameConstants.isZero(c.getPlayer().getJob())
-            && !GameConstants.isArk(c.getPlayer().getJob())
-            && !GameConstants.isAdele(c.getPlayer().getJob())) {
-            if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
-               && !GameConstants.isFlameWizard(c.getPlayer().getJob())
-               && !GameConstants.isEvan(c.getPlayer().getJob())
-               && !GameConstants.isLuminous(c.getPlayer().getJob())
-               && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
-               && !GameConstants.isKinesis(c.getPlayer().getJob())
-               && !GameConstants.isIllium(c.getPlayer().getJob())
-               && !GameConstants.isLara(c.getPlayer().getJob())) {
-               if (!GameConstants.isKain(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
-                  && c.getPlayer().getJob() != 522
-                  && c.getPlayer().getJob() != 532
-                  && !GameConstants.isMechanic(c.getPlayer().getJob())
-                  && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
-                  && !GameConstants.isMercedes(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
-                  if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
-                     && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
-                     && !GameConstants.isPhantom(c.getPlayer().getJob())
-                     && !GameConstants.isKadena(c.getPlayer().getJob())
-                     && !GameConstants.isHoyoung(c.getPlayer().getJob())
-                     && !GameConstants.isKhali(c.getPlayer().getJob())) {
                      if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                        item.setHp((short)(item.getHp() + 420));
+                        item.setHp((short) (item.getHp() + 420));
                      } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                        item.setStr((short)(item.getStr() + 96));
-                        item.setDex((short)(item.getDex() + 96));
-                        item.setLuk((short)(item.getLuk() + 96));
+                        item.setStr((short) (item.getStr() + 96));
+                        item.setDex((short) (item.getDex() + 96));
+                        item.setLuk((short) (item.getLuk() + 96));
                      }
                   } else {
-                     item.setLuk((short)(item.getLuk() + 200));
+                     item.setLuk((short) (item.getLuk() + 200));
                   }
                } else {
-                  item.setDex((short)(item.getDex() + 200));
+                  item.setDex((short) (item.getDex() + 200));
                }
             } else {
-               item.setInt((short)(item.getInt() + 200));
+               item.setInt((short) (item.getInt() + 200));
             }
          } else {
-            item.setStr((short)(item.getStr() + 200));
+            item.setStr((short) (item.getStr() + 200));
          }
 
          c.getSession().writeAndFlush(CWvsContext.InventoryPacket.updateArcaneSymbol(item));
          c.getPlayer().send(UpgradeAuthenticSymbol(p));
       } catch (Exception var5) {
-         System.out.println("[오류] UpgradeAuthenticSymbol 함수 실행중 오류 발생 (캐릭터 이름 : " + c.getPlayer().getName() + ") " + var5.toString());
+         System.out.println("[Error] Error executing UpgradeAuthenticSymbol function (Character Name : "
+               + c.getPlayer().getName() + ") " + var5.toString());
          var5.printStackTrace();
       }
    }
@@ -4147,17 +4248,18 @@ public class PlayerHandler {
             return;
          }
 
-         Equip item = (Equip)c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short)pos);
+         Equip item = (Equip) c.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) pos);
          if (item == null) {
             return;
          }
 
-         if (c.getPlayer().getMeso() < GameConstants.getMesoNeededForArcaneSymbolUpgrade(item.getArcLevel(), item.getItemId())) {
+         if (c.getPlayer().getMeso() < GameConstants.getMesoNeededForArcaneSymbolUpgrade(item.getArcLevel(),
+               item.getItemId())) {
             return;
          }
 
          if (item.getArcLevel() >= 20) {
-            c.getPlayer().dropMessage(1, "더 이상 강화할 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถอัพเกรดได้อีกต่อไป");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -4173,11 +4275,72 @@ public class PlayerHandler {
          }
 
          if (item.getArcLevel() == 1 && item.getOwner().isEmpty()) {
-            item.setStr((short)0);
-            item.setInt((short)0);
-            item.setDex((short)0);
-            item.setLuk((short)0);
+            item.setStr((short) 0);
+            item.setInt((short) 0);
+            item.setDex((short) 0);
+            item.setLuk((short) 0);
             if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
+                  && c.getPlayer().getJob() != 512
+                  && c.getPlayer().getJob() != 1512
+                  && c.getPlayer().getJob() != 2512
+                  && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
+                  && !GameConstants.isAran(c.getPlayer().getJob())
+                  && !GameConstants.isBlaster(c.getPlayer().getJob())
+                  && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
+                  && !GameConstants.isMichael(c.getPlayer().getJob())
+                  && !GameConstants.isKaiser(c.getPlayer().getJob())
+                  && !GameConstants.isZero(c.getPlayer().getJob())
+                  && !GameConstants.isArk(c.getPlayer().getJob())
+                  && !GameConstants.isAdele(c.getPlayer().getJob())) {
+               if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
+                     && !GameConstants.isFlameWizard(c.getPlayer().getJob())
+                     && !GameConstants.isEvan(c.getPlayer().getJob())
+                     && !GameConstants.isLuminous(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
+                     && !GameConstants.isKinesis(c.getPlayer().getJob())
+                     && !GameConstants.isIllium(c.getPlayer().getJob())
+                     && !GameConstants.isLara(c.getPlayer().getJob())) {
+                  if ((c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
+                        && c.getPlayer().getJob() != 522
+                        && c.getPlayer().getJob() != 532
+                        && !GameConstants.isMechanic(c.getPlayer().getJob())
+                        && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
+                        && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
+                        && !GameConstants.isMercedes(c.getPlayer().getJob())
+                        && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
+                     if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
+                           && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
+                           && !GameConstants.isPhantom(c.getPlayer().getJob())
+                           && !GameConstants.isKadena(c.getPlayer().getJob())
+                           && !GameConstants.isHoyoung(c.getPlayer().getJob())
+                           && !GameConstants.isKhali(c.getPlayer().getJob())) {
+                        if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
+                           item.setHp((short) 630);
+                        } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
+                           item.setStr((short) 144);
+                           item.setDex((short) 144);
+                           item.setLuk((short) 144);
+                        }
+                     } else {
+                        item.setLuk((short) 300);
+                     }
+                  } else {
+                     item.setDex((short) 300);
+                  }
+               } else {
+                  item.setInt((short) 300);
+               }
+            } else {
+               item.setStr((short) 300);
+            }
+         }
+
+         c.getPlayer().gainMeso(
+               -GameConstants.getMesoNeededForArcaneSymbolUpgrade(item.getArcLevel(), item.getItemId()), true);
+         item.setArcEXP(item.getArcEXP() - GameConstants.getExpNeededForArcaneSymbol(item.getArcLevel()) + 1);
+         item.setArcLevel(item.getArcLevel() + 1);
+         item.setArc((short) (10 * (item.getArcLevel() + 2)));
+         if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
                && c.getPlayer().getJob() != 512
                && c.getPlayer().getJob() != 1512
                && c.getPlayer().getJob() != 2512
@@ -4190,7 +4353,7 @@ public class PlayerHandler {
                && !GameConstants.isZero(c.getPlayer().getJob())
                && !GameConstants.isArk(c.getPlayer().getJob())
                && !GameConstants.isAdele(c.getPlayer().getJob())) {
-               if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
+            if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
                   && !GameConstants.isFlameWizard(c.getPlayer().getJob())
                   && !GameConstants.isEvan(c.getPlayer().getJob())
                   && !GameConstants.isLuminous(c.getPlayer().getJob())
@@ -4198,7 +4361,8 @@ public class PlayerHandler {
                   && !GameConstants.isKinesis(c.getPlayer().getJob())
                   && !GameConstants.isIllium(c.getPlayer().getJob())
                   && !GameConstants.isLara(c.getPlayer().getJob())) {
-                  if ((c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
+               if (!GameConstants.isKain(c.getPlayer().getJob())
+                     && (c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
                      && c.getPlayer().getJob() != 522
                      && c.getPlayer().getJob() != 532
                      && !GameConstants.isMechanic(c.getPlayer().getJob())
@@ -4206,97 +4370,37 @@ public class PlayerHandler {
                      && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
                      && !GameConstants.isMercedes(c.getPlayer().getJob())
                      && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
-                     if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
+                  if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
                         && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
                         && !GameConstants.isPhantom(c.getPlayer().getJob())
                         && !GameConstants.isKadena(c.getPlayer().getJob())
                         && !GameConstants.isHoyoung(c.getPlayer().getJob())
                         && !GameConstants.isKhali(c.getPlayer().getJob())) {
-                        if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                           item.setHp((short)630);
-                        } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                           item.setStr((short)144);
-                           item.setDex((short)144);
-                           item.setLuk((short)144);
-                        }
-                     } else {
-                        item.setLuk((short)300);
-                     }
-                  } else {
-                     item.setDex((short)300);
-                  }
-               } else {
-                  item.setInt((short)300);
-               }
-            } else {
-               item.setStr((short)300);
-            }
-         }
-
-         c.getPlayer().gainMeso(-GameConstants.getMesoNeededForArcaneSymbolUpgrade(item.getArcLevel(), item.getItemId()), true);
-         item.setArcEXP(item.getArcEXP() - GameConstants.getExpNeededForArcaneSymbol(item.getArcLevel()) + 1);
-         item.setArcLevel(item.getArcLevel() + 1);
-         item.setArc((short)(10 * (item.getArcLevel() + 2)));
-         if ((c.getPlayer().getJob() < 100 || c.getPlayer().getJob() >= 200)
-            && c.getPlayer().getJob() != 512
-            && c.getPlayer().getJob() != 1512
-            && c.getPlayer().getJob() != 2512
-            && (c.getPlayer().getJob() < 1100 || c.getPlayer().getJob() >= 1200)
-            && !GameConstants.isAran(c.getPlayer().getJob())
-            && !GameConstants.isBlaster(c.getPlayer().getJob())
-            && !GameConstants.isDemonSlayer(c.getPlayer().getJob())
-            && !GameConstants.isMichael(c.getPlayer().getJob())
-            && !GameConstants.isKaiser(c.getPlayer().getJob())
-            && !GameConstants.isZero(c.getPlayer().getJob())
-            && !GameConstants.isArk(c.getPlayer().getJob())
-            && !GameConstants.isAdele(c.getPlayer().getJob())) {
-            if ((c.getPlayer().getJob() < 200 || c.getPlayer().getJob() >= 300)
-               && !GameConstants.isFlameWizard(c.getPlayer().getJob())
-               && !GameConstants.isEvan(c.getPlayer().getJob())
-               && !GameConstants.isLuminous(c.getPlayer().getJob())
-               && (c.getPlayer().getJob() < 3200 || c.getPlayer().getJob() >= 3300)
-               && !GameConstants.isKinesis(c.getPlayer().getJob())
-               && !GameConstants.isIllium(c.getPlayer().getJob())
-               && !GameConstants.isLara(c.getPlayer().getJob())) {
-               if (!GameConstants.isKain(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 300 || c.getPlayer().getJob() >= 400)
-                  && c.getPlayer().getJob() != 522
-                  && c.getPlayer().getJob() != 532
-                  && !GameConstants.isMechanic(c.getPlayer().getJob())
-                  && !GameConstants.isAngelicBuster(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 1300 || c.getPlayer().getJob() >= 1400)
-                  && !GameConstants.isMercedes(c.getPlayer().getJob())
-                  && (c.getPlayer().getJob() < 3300 || c.getPlayer().getJob() >= 3400)) {
-                  if ((c.getPlayer().getJob() < 400 || c.getPlayer().getJob() >= 500)
-                     && (c.getPlayer().getJob() < 1400 || c.getPlayer().getJob() >= 1500)
-                     && !GameConstants.isPhantom(c.getPlayer().getJob())
-                     && !GameConstants.isKadena(c.getPlayer().getJob())
-                     && !GameConstants.isHoyoung(c.getPlayer().getJob())
-                     && !GameConstants.isKhali(c.getPlayer().getJob())) {
                      if (GameConstants.isDemonAvenger(c.getPlayer().getJob())) {
-                        item.setHp((short)(item.getHp() + 210));
+                        item.setHp((short) (item.getHp() + 210));
                      } else if (GameConstants.isXenon(c.getPlayer().getJob())) {
-                        item.setStr((short)(item.getStr() + 48));
-                        item.setDex((short)(item.getDex() + 48));
-                        item.setLuk((short)(item.getLuk() + 48));
+                        item.setStr((short) (item.getStr() + 48));
+                        item.setDex((short) (item.getDex() + 48));
+                        item.setLuk((short) (item.getLuk() + 48));
                      }
                   } else {
-                     item.setLuk((short)(item.getLuk() + 100));
+                     item.setLuk((short) (item.getLuk() + 100));
                   }
                } else {
-                  item.setDex((short)(item.getDex() + 100));
+                  item.setDex((short) (item.getDex() + 100));
                }
             } else {
-               item.setInt((short)(item.getInt() + 100));
+               item.setInt((short) (item.getInt() + 100));
             }
          } else {
-            item.setStr((short)(item.getStr() + 100));
+            item.setStr((short) (item.getStr() + 100));
          }
 
          c.getSession().writeAndFlush(CWvsContext.InventoryPacket.updateArcaneSymbol(item));
          c.getPlayer().send(UpgradeArcaneSymbol(pos));
       } catch (Exception var4) {
-         System.out.println("[오류] UpdateSymbol 함수 실행중 오류 발생 (캐릭터 이름 : " + c.getPlayer().getName() + ") " + var4.toString());
+         System.out.println("[Error] Error executing UpdateSymbol function (Character Name : " + c.getPlayer().getName()
+               + ") " + var4.toString());
          var4.printStackTrace();
       }
    }
@@ -4326,26 +4430,27 @@ public class PlayerHandler {
          case 0:
             int srcItemSlot = slea.readInt();
             int targetItemSlot = slea.readInt();
-            Equip src = (Equip)User.getInventory(MapleInventoryType.EQUIP).getItem((short)srcItemSlot);
-            Equip target = (Equip)User.getInventory(MapleInventoryType.EQUIPPED).listById(src.getItemId()).get(0);
+            Equip src = (Equip) User.getInventory(MapleInventoryType.EQUIP).getItem((short) srcItemSlot);
+            Equip target = (Equip) User.getInventory(MapleInventoryType.EQUIPPED).listById(src.getItemId()).get(0);
             if (!GameConstants.isArcaneSymbol(src.getItemId()) && !GameConstants.isAuthenticSymbol(src.getItemId())) {
                return;
             }
 
-            if (!GameConstants.isArcaneSymbol(target.getItemId()) && !GameConstants.isAuthenticSymbol(target.getItemId())) {
+            if (!GameConstants.isArcaneSymbol(target.getItemId())
+                  && !GameConstants.isAuthenticSymbol(target.getItemId())) {
                return;
             }
 
             if (src != null && target != null) {
                if (src.getItemId() == target.getItemId()) {
                   if (!src.getOwner().isEmpty()) {
-                     c.getPlayer().dropMessage(1, "강화된 심볼은 합칠 수 없습니다.");
+                     c.getPlayer().dropMessage(1, "ไม่สามารถรวมสัญลักษณ์ที่อัพเกรดแล้วได้");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                      return;
                   }
 
                   c.getSession().writeAndFlush(CWvsContext.InventoryPacket.mergeArcaneSymbol(target, src));
-                  User.getInventory(MapleInventoryType.EQUIP).removeSlot((short)srcItemSlot);
+                  User.getInventory(MapleInventoryType.EQUIP).removeSlot((short) srcItemSlot);
                   int incEXP = src.getArcEXP();
                   if (src.getArcLevel() > 1) {
                      incEXP = 0;
@@ -4385,10 +4490,10 @@ public class PlayerHandler {
                return;
             }
 
-            Equip targetItem = (Equip)User.getInventory(MapleInventoryType.EQUIPPED).listById(itemId).get(0);
+            Equip targetItem = (Equip) User.getInventory(MapleInventoryType.EQUIPPED).listById(itemId).get(0);
 
             for (Item item : items) {
-               Equip symbol = (Equip)item;
+               Equip symbol = (Equip) item;
                if (symbol.getArcLevel() == 1 && symbol.getArcEXP() == 1 && symbol.getOwner().isEmpty()) {
                   equips.add(symbol);
                   c.getSession().writeAndFlush(CWvsContext.InventoryPacket.mergeArcaneSymbol(targetItem, symbol));
@@ -4476,7 +4581,8 @@ public class PlayerHandler {
             chr.invokeJobMethod("gainPP", -pp);
          }
 
-         chr.getMap().broadcastMessage(CField.getRecreatePathPsychicLock(chr.getId(), skillId, skillLevel, action, actionSpeed, isLeft, skillInfos, keys));
+         chr.getMap().broadcastMessage(CField.getRecreatePathPsychicLock(chr.getId(), skillId, skillLevel, action,
+               actionSpeed, isLeft, skillInfos, keys));
       }
    }
 
@@ -4501,10 +4607,12 @@ public class PlayerHandler {
          if (value == null) {
             if (effect != null) {
                c.getPlayer().setPsychicTornadoStartTime(System.currentTimeMillis());
-               c.getPlayer().temporaryStatSet(400021008, effect.getDuration() + 2000, SecondaryStatFlag.PsychicTornado, 1);
+               c.getPlayer().temporaryStatSet(400021008, effect.getDuration() + 2000, SecondaryStatFlag.PsychicTornado,
+                     1);
             }
          } else if (value < 3) {
-            int duration = (int)(effect.getDuration() - (System.currentTimeMillis() - c.getPlayer().getPsychicTornadoStartTime())) + 2000;
+            int duration = (int) (effect.getDuration()
+                  - (System.currentTimeMillis() - c.getPlayer().getPsychicTornadoStartTime())) + 2000;
             c.getPlayer().temporaryStatSet(400021008, duration, SecondaryStatFlag.PsychicTornado, value + 1);
          }
       }
@@ -4578,7 +4686,7 @@ public class PlayerHandler {
 
                chr.invokeJobMethod("gainPP", -pp);
             } else if (skillID == 142001002 || skillID == 142141000) {
-               chr.invokeJobMethod("givePPoint", skillID, false, (byte)0);
+               chr.invokeJobMethod("givePPoint", skillID, false, (byte) 0);
             }
          } else if (chr.getSkillLevel(142120038) > 0) {
             SecondaryStatEffect effectxx = SkillFactory.getSkill(142120038).getEffect(chr.getSkillLevel(142120038));
@@ -4596,7 +4704,7 @@ public class PlayerHandler {
          area.setPosStartY(slea.readInt());
          chr.addPsychicArea(area);
          if (skillID == 400021008) {
-            chr.invokeJobMethod("givePPoint", 400021008, true, (byte)0);
+            chr.invokeJobMethod("givePPoint", 400021008, true, (byte) 0);
          }
 
          chr.getMap().broadcastMessage(CField.getCreatePsychicArea(chr.getId(), area));
@@ -4628,7 +4736,8 @@ public class PlayerHandler {
             }
          }
 
-         c.getPlayer().getMap().broadcastMessage(CField.getDoActivePsychicArea(psychicKey, c.getPlayer().getAndAddActivePsychicAreaCount()));
+         c.getPlayer().getMap().broadcastMessage(
+               CField.getDoActivePsychicArea(psychicKey, c.getPlayer().getAndAddActivePsychicAreaCount()));
       }
    }
 
@@ -4669,15 +4778,18 @@ public class PlayerHandler {
                      int add = hyper * count;
                      int dr = effect.getY() * count + add - effect.getS();
                      Map<MobTemporaryStatFlag, MobTemporaryStatEffect> statups = new HashMap<>();
-                     statups.put(MobTemporaryStatFlag.PDR, new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, dr, skillID, null, false));
-                     statups.put(MobTemporaryStatFlag.MDR, new MobTemporaryStatEffect(MobTemporaryStatFlag.MDR, dr, skillID, null, false));
+                     statups.put(MobTemporaryStatFlag.PDR,
+                           new MobTemporaryStatEffect(MobTemporaryStatFlag.PDR, dr, skillID, null, false));
+                     statups.put(MobTemporaryStatFlag.MDR,
+                           new MobTemporaryStatEffect(MobTemporaryStatFlag.MDR, dr, skillID, null, false));
                      int speed = effect.getZ() * count - effect.getS();
-                     statups.put(MobTemporaryStatFlag.SPEED, new MobTemporaryStatEffect(MobTemporaryStatFlag.SPEED, speed, skillID, null, false));
+                     statups.put(MobTemporaryStatFlag.SPEED,
+                           new MobTemporaryStatEffect(MobTemporaryStatFlag.SPEED, speed, skillID, null, false));
                      int groundMark = effect.getX() * count + effect.getS();
                      statups.put(
-                        MobTemporaryStatFlag.PSYCHIC_GROUND_MARK,
-                        new MobTemporaryStatEffect(MobTemporaryStatFlag.PSYCHIC_GROUND_MARK, groundMark, skillID, null, false)
-                     );
+                           MobTemporaryStatFlag.PSYCHIC_GROUND_MARK,
+                           new MobTemporaryStatEffect(MobTemporaryStatFlag.PSYCHIC_GROUND_MARK, groundMark, skillID,
+                                 null, false));
 
                      for (MapleMonster mob : mobs) {
                         mob.applyMonsterBuff(statups, skillID, effect.getDuration(), null, Collections.EMPTY_LIST);
@@ -4692,7 +4804,8 @@ public class PlayerHandler {
    public static void setDefaultWingItem(PacketDecoder slea, MapleClient c) {
       int itemId = slea.readInt();
       c.getPlayer().setDefaultWingItem(itemId);
-      c.getPlayer().getMap().broadcastMessage(c.getPlayer(), CField.setDefaultWingItem(c.getPlayer().getId(), itemId), false);
+      c.getPlayer().getMap().broadcastMessage(c.getPlayer(), CField.setDefaultWingItem(c.getPlayer().getId(), itemId),
+            false);
    }
 
    public static void battleRecordServerOnCalcRequest(PacketDecoder slea, MapleClient c) {
@@ -4708,8 +4821,8 @@ public class PlayerHandler {
       if (chr != null) {
          Object sonicBlowCount = chr.getJobField("sonicBlowAttackCount");
          if (sonicBlowCount != null) {
-            if ((Integer)sonicBlowCount > 0) {
-               int reduce = 2500 * (15 - (Integer)sonicBlowCount);
+            if ((Integer) sonicBlowCount > 0) {
+               int reduce = 2500 * (15 - (Integer) sonicBlowCount);
                chr.changeCooldown(400041039, -reduce);
                chr.setJobField("sonicBlowAttackCount", 0);
             }
@@ -4735,7 +4848,7 @@ public class PlayerHandler {
                slea.readByte();
                int remainCount = slea.readInt();
                if (chr.getRemainCooltime(skillID) > 0L) {
-                  int cooltime = (int)(chr.getRemainCooltime(skillID) - remainCount * 3500);
+                  int cooltime = (int) (chr.getRemainCooltime(skillID) - remainCount * 3500);
                   chr.giveCoolDowns(skillID, System.currentTimeMillis(), cooltime);
                   chr.send(CField.skillCooldown(skillID, cooltime));
                }
@@ -4750,29 +4863,27 @@ public class PlayerHandler {
       info.initIllusionaryShot(c.getPlayer().isFacingLeft());
       if (c.getPlayer().hasBuffBySkillID(400031020)) {
          ForceAtom atom = new ForceAtom(
-            info,
-            400031020,
-            c.getPlayer().getId(),
-            false,
-            true,
-            c.getPlayer().getId(),
-            ForceAtom.AtomType.ILLUSIONARY_SHOT,
-            Collections.singletonList(targetID),
-            1
-         );
+               info,
+               400031020,
+               c.getPlayer().getId(),
+               false,
+               true,
+               c.getPlayer().getId(),
+               ForceAtom.AtomType.ILLUSIONARY_SHOT,
+               Collections.singletonList(targetID),
+               1);
          c.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
       } else if (c.getPlayer().hasBuffBySkillID(400031021)) {
          ForceAtom atom = new ForceAtom(
-            info,
-            400031021,
-            c.getPlayer().getId(),
-            false,
-            true,
-            c.getPlayer().getId(),
-            ForceAtom.AtomType.ILLUSIONARY_SHOT,
-            Collections.singletonList(targetID),
-            1
-         );
+               info,
+               400031021,
+               c.getPlayer().getId(),
+               false,
+               true,
+               c.getPlayer().getId(),
+               ForceAtom.AtomType.ILLUSIONARY_SHOT,
+               Collections.singletonList(targetID),
+               1);
          c.getPlayer().getMap().broadcastMessage(CField.getCreateForceAtom(atom));
       }
    }
@@ -4796,18 +4907,20 @@ public class PlayerHandler {
             int incRecovery = int_ / effect.getY();
             if (party != null) {
                for (PartyMemberEntry pc : party.getPartyMemberList()) {
-                  if (pc.isOnline() && pc.getFieldID() == player.getMapId() && pc.getChannel() == player.getClient().getChannel()) {
+                  if (pc.isOnline() && pc.getFieldID() == player.getMapId()
+                        && pc.getChannel() == player.getClient().getChannel()) {
                      MapleCharacter victim = c.getChannelServer().getPlayerStorage().getCharacterByName(pc.getName());
                      if (victim != null && victim.isAlive()) {
                         Rectangle bounds = effect.calculateBoundingBox(player.getPosition(), player.isFacingLeft());
 
-                        for (MapleMapObject ch : player.getMap().getMapObjectsInRect(bounds, Arrays.asList(MapleMapObjectType.PLAYER))) {
-                           MapleCharacter chr = (MapleCharacter)ch;
+                        for (MapleMapObject ch : player.getMap().getMapObjectsInRect(bounds,
+                              Arrays.asList(MapleMapObjectType.PLAYER))) {
+                           MapleCharacter chr = (MapleCharacter) ch;
                            if (chr.getId() == victim.getId()) {
                               int incRecoveryHP = Math.min(effect.getZ(), incRecovery + effect.getX());
                               int incRecoveryMP = Math.min(effect.getZ(), incRecovery + effect.getX());
-                              incRecoveryHP = (int)(victim.getStat().getCurrentMaxHp() * (incRecoveryHP * 0.01));
-                              incRecoveryMP = (int)(victim.getStat().getCurrentMaxMp(chr) * (incRecoveryMP * 0.01));
+                              incRecoveryHP = (int) (victim.getStat().getCurrentMaxHp() * (incRecoveryHP * 0.01));
+                              incRecoveryMP = (int) (victim.getStat().getCurrentMaxMp(chr) * (incRecoveryMP * 0.01));
                               victim.addMPHP(incRecoveryHP, incRecoveryMP);
                               HPHeal e = new HPHeal(victim.getId(), incRecoveryHP);
                               victim.send(e.encodeForLocal());
@@ -4869,9 +4982,9 @@ public class PlayerHandler {
             } else {
                int maxChargeTime = effect.getDuration() + effect.getZ() * 1000;
                int chargeTime = Math.min(
-                  maxChargeTime,
-                  effect.getDuration() + (int)((System.currentTimeMillis() - player.getMegaSmasherChargeStartTime()) / (effect.getY() * 1000)) * 1000
-               );
+                     maxChargeTime,
+                     effect.getDuration() + (int) ((System.currentTimeMillis() - player.getMegaSmasherChargeStartTime())
+                           / (effect.getY() * 1000)) * 1000);
                player.send(CField.megaSmasherAttack(100, player.getPosition(), player.isFacingLeft(), chargeTime));
                player.temporaryStatResetBySkillID(400041007);
                player.setMegaSmasherChargeStartTime(0L);
@@ -4888,9 +5001,9 @@ public class PlayerHandler {
 
             int maxChargeTime = effect.getDuration() + effect.getZ() * 1000;
             int chargeTime = Math.min(
-               maxChargeTime,
-               effect.getDuration() + (int)((System.currentTimeMillis() - player.getMegaSmasherChargeStartTime()) / (effect.getY() * 1000)) * 1000
-            );
+                  maxChargeTime,
+                  effect.getDuration() + (int) ((System.currentTimeMillis() - player.getMegaSmasherChargeStartTime())
+                        / (effect.getY() * 1000)) * 1000);
             Map<SecondaryStatFlag, Integer> statups = new HashMap<>();
             statups.put(SecondaryStatFlag.indiePartialNotDamaged, 1);
             statups.put(SecondaryStatFlag.MegaSmasher, 1);
@@ -4908,7 +5021,8 @@ public class PlayerHandler {
          SecondaryStatEffect effect = player.getBuffedEffect(SecondaryStatFlag.SpotLight);
          if (effect != null) {
             int duration = effect.getDuration();
-            duration = (int)(duration - (System.currentTimeMillis() - (player.getSecondaryStat().getTill(SecondaryStatFlag.SpotLight) - duration)));
+            duration = (int) (duration - (System.currentTimeMillis()
+                  - (player.getSecondaryStat().getTill(SecondaryStatFlag.SpotLight) - duration)));
             if (duration > 0) {
                Map<SecondaryStatFlag, Integer> statups = new HashMap<>();
                statups.put(SecondaryStatFlag.indieAsrR, effect.getW() * spotlightCount);
@@ -4965,16 +5079,16 @@ public class PlayerHandler {
 
                      int partyCount = slea.readInt();
                      int blessMarkSKillID = player.getBlessMarkSkillID();
-                     SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID).getEffect(player.getTotalSkillLevel(blessMarkSKillID));
+                     SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID)
+                           .getEffect(player.getTotalSkillLevel(blessMarkSKillID));
 
                      for (int ix = 0; ix < partyCount; ix++) {
                         MapleCharacter target = map.getCharacterById(slea.readInt());
                         if (target != null
-                           && (
-                              target.getId() == player.getId()
-                                 || target.getParty() != null && player.getParty() != null && target.getParty().getId() == player.getParty().getId()
-                           )) {
-                           int addHP = (int)(effect.getDamage() * (target.getStat().getCurrentMaxHp() * 0.01));
+                              && (target.getId() == player.getId()
+                                    || target.getParty() != null && player.getParty() != null
+                                          && target.getParty().getId() == player.getParty().getId())) {
+                           int addHP = (int) (effect.getDamage() * (target.getStat().getCurrentMaxHp() * 0.01));
                            target.healHP(addHP);
                            target.applyBlessMark(blessMark, 1, false, 0);
                         }
@@ -4991,16 +5105,17 @@ public class PlayerHandler {
       int objectID = slea.readInt();
       int skillID = slea.readInt();
       Point usePosition = slea.readPos();
-      AffectedArea mist = (AffectedArea)c.getPlayer().getMap().getMapObject(objectID, MapleMapObjectType.MIST);
+      AffectedArea mist = (AffectedArea) c.getPlayer().getMap().getMapObject(objectID, MapleMapObjectType.MIST);
       SecondaryStatEffect effect = mist.getSource();
       if (effect != null) {
          switch (mist.getSourceSkillID()) {
             case 2311011:
                if (mist.getRemainHealCount() > 0) {
-                  int delta = (int)(effect.getX() * (c.getPlayer().getStat().getCurrentMaxHp() * 0.01));
+                  int delta = (int) (effect.getX() * (c.getPlayer().getStat().getCurrentMaxHp() * 0.01));
                   if (c.getPlayer().getStat().getHp() < c.getPlayer().getStat().getCurrentMaxHp()) {
                      c.getPlayer().addHP(delta);
-                     PostSkillEffect e_ = new PostSkillEffect(c.getPlayer().getId(), mist.getSourceSkillID(), mist.getSkillLevel(), null);
+                     PostSkillEffect e_ = new PostSkillEffect(c.getPlayer().getId(), mist.getSourceSkillID(),
+                           mist.getSkillLevel(), null);
                      c.getPlayer().send(e_.encodeForLocal());
                      c.getPlayer().getMap().broadcastMessage(c.getPlayer(), e_.encodeForRemote(), false);
                      mist.setRemainHealCount(mist.getRemainHealCount() - 1);
@@ -5011,17 +5126,18 @@ public class PlayerHandler {
                MapleCharacter chr = c.getPlayer();
                MapleCharacter owner = null;
                if (chr.getParty() != null) {
-                  owner = chr.getPartyMembers().stream().filter(pUser -> pUser.getId() == mist.getOwnerId()).findFirst().orElse(null);
+                  owner = chr.getPartyMembers().stream().filter(pUser -> pUser.getId() == mist.getOwnerId()).findFirst()
+                        .orElse(null);
                } else if (mist.getOwnerId() == chr.getId()) {
                   owner = chr;
                }
 
                if (owner != null) {
                   chr.addHP(
-                     chr.getStat().getCurrentMaxHp()
-                        * (mist.getSource().getU2() + owner.getStat().getTotalInt() / mist.getSource().getDOT() * mist.getSource().getW2())
-                        / 100L
-                  );
+                        chr.getStat().getCurrentMaxHp()
+                              * (mist.getSource().getU2() + owner.getStat().getTotalInt() / mist.getSource().getDOT()
+                                    * mist.getSource().getW2())
+                              / 100L);
                   chr.getMap().broadcastMessage(CField.removeAffectedArea(mist.getObjectId(), 2321015, false));
                   chr.getMap().removeMapObject(mist);
                   return;
@@ -5034,28 +5150,30 @@ public class PlayerHandler {
                }
 
                double t = effect.getT();
-               c.getPlayer().temporaryStatSet(SecondaryStatFlag.NewFlying, 80003059, (int)(t * 1000.0), objectID);
+               c.getPlayer().temporaryStatSet(SecondaryStatFlag.NewFlying, 80003059, (int) (t * 1000.0), objectID);
                break;
             case 400051076:
                if (c.getPlayer().getId() == mist.getOwnerId()) {
-                  c.getPlayer().getMap().broadcastMessage(CField.removeAffectedArea(mist.getObjectId(), 400051076, false));
+                  c.getPlayer().getMap()
+                        .broadcastMessage(CField.removeAffectedArea(mist.getObjectId(), 400051076, false));
                   c.getPlayer().getMap().removeMapObject(mist);
                   SecondaryStatEffect e = SkillFactory.getSkill(400051077).getEffect(effect.getLevel());
                   if (e != null) {
                      e.applyTo(c.getPlayer());
-                     int hp = (int)(c.getPlayer().getStat().getCurrentMaxHp() * 0.01) * effect.getX();
+                     int hp = (int) (c.getPlayer().getStat().getCurrentMaxHp() * 0.01) * effect.getX();
                      c.getPlayer().healHP(hp, true);
                   }
                }
                break;
             case 500061031:
                if (c.getPlayer().getId() == mist.getOwnerId()) {
-                  c.getPlayer().getMap().broadcastMessage(CField.removeAffectedArea(mist.getObjectId(), 500061031, false));
+                  c.getPlayer().getMap()
+                        .broadcastMessage(CField.removeAffectedArea(mist.getObjectId(), 500061031, false));
                   c.getPlayer().getMap().removeMapObject(mist);
                   SecondaryStatEffect e = SkillFactory.getSkill(500061032).getEffect(effect.getLevel());
                   if (e != null) {
                      e.applyTo(c.getPlayer());
-                     int hp = (int)(c.getPlayer().getStat().getCurrentMaxHp() * 0.01) * effect.getX();
+                     int hp = (int) (c.getPlayer().getStat().getCurrentMaxHp() * 0.01) * effect.getX();
                      c.getPlayer().healHP(hp, true);
                   }
                }
@@ -5363,18 +5481,19 @@ public class PlayerHandler {
       int positionX = slea.readInt();
       int positionY = slea.readInt();
       if (c.getPlayer().getMapId() != ServerConstants.TownMap
-         && c.getPlayer().getMapId() != ServerConstants.TownMap2
-         && c.getPlayer().getMapId() != ServerConstants.TownMap3) {
+            && c.getPlayer().getMapId() != ServerConstants.TownMap2
+            && c.getPlayer().getMapId() != ServerConstants.TownMap3) {
          c.getPlayer()
-            .getMap()
-            .getAllFieldAttackObj()
-            .stream()
-            .filter(objx -> objx.getPlayerID() == c.getPlayer().getId())
-            .collect(Collectors.toList())
-            .forEach(objx -> c.getPlayer().getMap().removeFieldAttackObj(objx));
+               .getMap()
+               .getAllFieldAttackObj()
+               .stream()
+               .filter(objx -> objx.getPlayerID() == c.getPlayer().getId())
+               .collect(Collectors.toList())
+               .forEach(objx -> c.getPlayer().getMap().removeFieldAttackObj(objx));
          SecondaryStatEffect effect = SkillFactory.getSkill(3111013).getEffect(c.getPlayer().getSkillLevel(3111013));
          if (effect != null) {
-            FieldAttackObj obj = new FieldAttackObj(c.getPlayer().getId(), 0, direction, new Point(positionX, positionY), effect.getU() * 1000);
+            FieldAttackObj obj = new FieldAttackObj(c.getPlayer().getId(), 0, direction,
+                  new Point(positionX, positionY), effect.getU() * 1000);
             c.getPlayer().getMap().spawnFieldAttackObj(obj);
             c.getPlayer().giveCoolDowns(3111013, System.currentTimeMillis(), effect.getCooldown(c.getPlayer()));
             c.getPlayer().send(CField.skillCooldown(3111013, effect.getCooldown(c.getPlayer())));
@@ -5480,7 +5599,8 @@ public class PlayerHandler {
             int forceY = slea.readInt();
             int count = 1;
             packet.writeShort(count);
-            SecondaryStatEffect eff = SkillFactory.getSkill(skillID).getEffect(c.getPlayer().getTotalSkillLevel(skillID));
+            SecondaryStatEffect eff = SkillFactory.getSkill(skillID)
+                  .getEffect(c.getPlayer().getTotalSkillLevel(skillID));
             if (eff != null) {
                for (int i = 0; i < count; i++) {
                   packet.write(0);
@@ -5518,10 +5638,11 @@ public class PlayerHandler {
       if (player != null) {
          Field field = player.getMap();
          if (field instanceof Field_BuzzingHouse) {
-            Field_BuzzingHouse f = (Field_BuzzingHouse)field;
+            Field_BuzzingHouse f = (Field_BuzzingHouse) field;
             byte type = slea.readByte();
             if (type == 3) {
-               int neoGem = (player.getBuzzingHouseBlockCount() - player.getBuzzingHousePerfectCount()) * 5 + player.getBuzzingHousePerfectCount() * 10;
+               int neoGem = (player.getBuzzingHouseBlockCount() - player.getBuzzingHousePerfectCount()) * 5
+                     + player.getBuzzingHousePerfectCount() * 10;
                player.updateOneInfo(1234569, "miniGame2_coin", String.valueOf(neoGem));
                player.send(CField.getBuzzingHouseCoinCount(neoGem));
                player.send(CField.getBuzzingHouseResult(3));
@@ -5561,8 +5682,9 @@ public class PlayerHandler {
       if (player != null) {
          Field field = player.getMap();
          if (field instanceof Field_BuzzingHouse) {
-            Field_BuzzingHouse f = (Field_BuzzingHouse)field;
-            int neoGem = (player.getBuzzingHouseBlockCount() - player.getBuzzingHousePerfectCount()) * 5 + player.getBuzzingHousePerfectCount() * 10;
+            Field_BuzzingHouse f = (Field_BuzzingHouse) field;
+            int neoGem = (player.getBuzzingHouseBlockCount() - player.getBuzzingHousePerfectCount()) * 5
+                  + player.getBuzzingHousePerfectCount() * 10;
             player.updateOneInfo(1234569, "miniGame2_coin", String.valueOf(neoGem));
             player.send(CField.getBuzzingHouseCoinCount(neoGem));
             player.send(CField.getBuzzingHouseResult(3));
@@ -5580,7 +5702,7 @@ public class PlayerHandler {
          chr.setNextConsume(0L);
          boolean deathCount = chr.getDeathCount() > 0;
          if (chr.getMap() instanceof Field_JinHillah) {
-            Field_JinHillah f = (Field_JinHillah)chr.getMap();
+            Field_JinHillah f = (Field_JinHillah) chr.getMap();
             int count = 0;
 
             for (Field_JinHillah.JinHillahDeathCount dc : new ArrayList<>(chr.getJinHillahDeathCount())) {
@@ -5599,7 +5721,7 @@ public class PlayerHandler {
             if (buffFreezer) {
                if (chr.isEquippedSoulWeapon()) {
                   if (!isAlive) {
-                     chr.setSoulCount((short)0);
+                     chr.setSoulCount((short) 0);
                   }
 
                   chr.temporaryStatReset(SecondaryStatFlag.FullSoulMP);
@@ -5638,11 +5760,12 @@ public class PlayerHandler {
                if (chr.getMap() instanceof Field_BlackMageBattlePhase4) {
                   chr.setBlackMageAttributes(2);
                   chr.temporaryStatReset(SecondaryStatFlag.BlackMageAttributes);
-                  chr.temporaryStatSet(SecondaryStatFlag.BlackMageAttributes, 0, Integer.MAX_VALUE, chr.getBlackMageAttributes());
+                  chr.temporaryStatSet(SecondaryStatFlag.BlackMageAttributes, 0, Integer.MAX_VALUE,
+                        chr.getBlackMageAttributes());
                }
 
                if (chr.getMap() instanceof Field_WillBattle) {
-                  Field_WillBattle f = (Field_WillBattle)chr.getMap();
+                  Field_WillBattle f = (Field_WillBattle) chr.getMap();
                   if (f.getPhase() == 1) {
                      f.sendWillSetMoonGauge(chr, 100, 45);
                   } else if (f.getPhase() == 2) {
@@ -5664,7 +5787,7 @@ public class PlayerHandler {
 
             if (chr.isEquippedSoulWeapon()) {
                if (!isAlive) {
-                  chr.setSoulCount((short)0);
+                  chr.setSoulCount((short) 0);
                }
 
                chr.temporaryStatReset(SecondaryStatFlag.FullSoulMP);
@@ -5685,7 +5808,8 @@ public class PlayerHandler {
          }
 
          if (chr.isEquippedSoulWeapon()) {
-            chr.temporaryStatSet(chr.getEquippedSoulSkill(), Integer.MAX_VALUE, SecondaryStatFlag.SoulMP, chr.getSoulCount());
+            chr.temporaryStatSet(chr.getEquippedSoulSkill(), Integer.MAX_VALUE, SecondaryStatFlag.SoulMP,
+                  chr.getSoulCount());
             chr.checkSoulState(false);
          }
 
@@ -5695,10 +5819,11 @@ public class PlayerHandler {
 
    public static void dailyGiftRequest(PacketDecoder slea, MapleClient c) {
       if (c.getPlayer().getDailyGift() == null) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "알 수 없는 오류가 발생하였습니다."));
+         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ"));
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
-         if (c.getPlayer().getDailyGift().getDailyDay() == 0 || !c.getPlayer().getDailyGift().getDailyData().equals(CurrentTime.getCurrentTime2())) {
+         if (c.getPlayer().getDailyGift().getDailyDay() == 0
+               || !c.getPlayer().getDailyGift().getDailyData().equals(CurrentTime.getCurrentTime2())) {
             String value = c.getPlayer().getOneInfoQuest(16700, "count");
             int data = c.getPlayer().getDailyGift().getDailyDay();
             if (value == null || value.isEmpty()) {
@@ -5754,25 +5879,22 @@ public class PlayerHandler {
             c.getPlayer().getDailyGift().setDailyCount(1);
             c.getPlayer().getDailyGift().setDailyData(CurrentTime.getCurrentTime2());
             c.getPlayer()
-               .getDailyGift()
-               .saveDailyGift(
-                  c.getPlayer().getClient().getAccID(),
-                  c.getPlayer().getDailyGift().getDailyDay(),
-                  c.getPlayer().getDailyGift().getDailyCount(),
-                  c.getPlayer().getDailyGift().getDailyData()
-               );
+                  .getDailyGift()
+                  .saveDailyGift(
+                        c.getPlayer().getClient().getAccID(),
+                        c.getPlayer().getDailyGift().getDailyDay(),
+                        c.getPlayer().getDailyGift().getDailyCount(),
+                        c.getPlayer().getDailyGift().getDailyData());
             c.getSession()
-               .writeAndFlush(
-                  CField.getDailyGiftRecord(
-                     "count="
-                        + c.getPlayer().getDailyGift().getDailyCount()
-                        + ";day="
-                        + c.getPlayer().getDailyGift().getDailyDay()
-                        + ";date="
-                        + CurrentTime.getCurrentTime2()
-                  )
-               );
-            c.getPlayer().send(CField.OnDailyGift((byte)2, 0, quantity));
+                  .writeAndFlush(
+                        CField.getDailyGiftRecord(
+                              "count="
+                                    + c.getPlayer().getDailyGift().getDailyCount()
+                                    + ";day="
+                                    + c.getPlayer().getDailyGift().getDailyDay()
+                                    + ";date="
+                                    + CurrentTime.getCurrentTime2()));
+            c.getPlayer().send(CField.OnDailyGift((byte) 2, 0, quantity));
          }
 
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
@@ -5799,43 +5921,45 @@ public class PlayerHandler {
 
                int itemID = GameConstants.getDamageSkinItemID(damageSkinID);
                if (info.hasSaveDamageSkin(itemID)) {
-                  c.getPlayer().dropMessage(1, "이미 해당 데미지 스킨이 저장되어있습니다.");
+                  c.getPlayer().dropMessage(1, "Damage Skin นี้ถูกบันทึกไว้แล้ว");
                   c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
 
-               info.putDamageSkinData(new DamageSkinSaveData(damageSkinID, itemID, false, DamageSkinSaveInfo.getDefaultDesc()));
-               c.getPlayer().send(CField.damageSkinSaveResult((byte)0, info));
-               c.getPlayer().dropMessage(1, "데미지 스킨이 저장되었습니다.");
+               info.putDamageSkinData(
+                     new DamageSkinSaveData(damageSkinID, itemID, false, DamageSkinSaveInfo.getDefaultDesc()));
+               c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
+               c.getPlayer().dropMessage(1, "บันทึก Damage Skin เรียบร้อยแล้ว");
                c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.DAMAGE_SKIN_SAVE.getFlag());
             }
          } else if (type == 1) {
             short damageSkinIDx = slea.readShort();
             int itemID = GameConstants.getDamageSkinItemID(damageSkinIDx);
             if (!info.hasSaveDamageSkin(itemID)) {
-               c.getPlayer().send(CField.damageSkinSaveResult((byte)1, info));
+               c.getPlayer().send(CField.damageSkinSaveResult((byte) 1, info));
                return;
             }
 
             info.removeDamageSkinData(damageSkinIDx);
-            c.getPlayer().send(CField.damageSkinSaveResult((byte)0, info));
-            c.getPlayer().dropMessage(1, "데미지 스킨이 삭제되었습니다.");
+            c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
+            c.getPlayer().dropMessage(1, "ลบ Damage Skin เรียบร้อยแล้ว");
             c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.DAMAGE_SKIN_SAVE.getFlag());
          } else if (type == 2) {
             short damageSkinIDx = slea.readShort();
             int itemID = GameConstants.getDamageSkinItemID(damageSkinIDx);
             if (!info.hasSaveDamageSkin(itemID)) {
-               c.getPlayer().send(CField.damageSkinSaveResult((byte)1, info));
+               c.getPlayer().send(CField.damageSkinSaveResult((byte) 1, info));
                return;
             }
 
             MapleQuest quest = MapleQuest.getInstance(7291);
             MapleQuestStatus questStatus = new MapleQuestStatus(quest, 1);
-            String skinString = String.valueOf((int)damageSkinIDx);
+            String skinString = String.valueOf((int) damageSkinIDx);
             questStatus.setCustomData(skinString == null ? "0" : skinString);
             c.getPlayer().updateQuest(questStatus);
-            info.setActiveDamageSkinData(new DamageSkinSaveData(damageSkinIDx, itemID, false, DamageSkinSaveInfo.getDefaultDesc()));
-            c.getPlayer().send(CField.damageSkinSaveResult((byte)0, info));
+            info.setActiveDamageSkinData(
+                  new DamageSkinSaveData(damageSkinIDx, itemID, false, DamageSkinSaveInfo.getDefaultDesc()));
+            c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
             c.getPlayer().dropMessage(1, "데미지 스킨이 변경되었습니다.");
          }
       }
@@ -5867,7 +5991,8 @@ public class PlayerHandler {
 
          for (byte i = 0; i < skills.size(); i++) {
             c.getSession()
-               .writeAndFlush(CField.updateInnerPotential((byte)(i + 1), skills.get(i).getSkillId(), skills.get(i).getSkillLevel(), skills.get(i).getRank()));
+                  .writeAndFlush(CField.updateInnerPotential((byte) (i + 1), skills.get(i).getSkillId(),
+                        skills.get(i).getSkillLevel(), skills.get(i).getRank()));
          }
       }
 
@@ -5893,14 +6018,14 @@ public class PlayerHandler {
 
    public static void demianObjectMakeEnterAck(PacketDecoder slea, MapleClient c) {
       if (c.getPlayer().getMap() instanceof Field_Demian) {
-         Field_Demian map = (Field_Demian)c.getPlayer().getMap();
+         Field_Demian map = (Field_Demian) c.getPlayer().getMap();
          map.onFlyingSwordMakeEnterAck(slea);
       }
    }
 
    public static void demianNodeEnd(PacketDecoder slea, MapleClient c) {
       if (c.getPlayer().getMap() instanceof Field_Demian) {
-         Field_Demian map = (Field_Demian)c.getPlayer().getMap();
+         Field_Demian map = (Field_Demian) c.getPlayer().getMap();
          map.onDemianNodeEnd(c.getPlayer(), slea);
       }
    }
@@ -5910,7 +6035,7 @@ public class PlayerHandler {
          int type = slea.readInt();
          int target = slea.readInt();
          int targetType = slea.readInt();
-         Field_Demian map = (Field_Demian)c.getPlayer().getMap();
+         Field_Demian map = (Field_Demian) c.getPlayer().getMap();
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.USER_REMOTE_STIGMA_RESPONSE.getValue());
          packet.writeInt(c.getPlayer().getId());
@@ -5942,13 +6067,14 @@ public class PlayerHandler {
                }
             } else if (map.checkStigmaDecObject()) {
                c.getPlayer().resetStigma();
-               if (((Field_Demian)c.getPlayer().getMap()).isHellmode()) {
+               if (((Field_Demian) c.getPlayer().getMap()).isHellmode()) {
                   for (MapleCharacter chrs : c.getPlayer().getMap().getCharacters()) {
                      chrs.temporaryStatReset(SecondaryStatFlag.DebuffIncHP);
                   }
 
-                  ((Field_Demian)c.getPlayer().getMap()).sendDemianNotice(216, "낙인이 해제되어 5초간 물약 사용이 가능해집니다.", -1, 5000);
-                  ((Field_Demian)c.getPlayer().getMap()).setPotionTime(System.currentTimeMillis() + 5000L);
+                  ((Field_Demian) c.getPlayer().getMap()).sendDemianNotice(216, "낙인이 해제되어 5초간 물약 사용이 가능해집니다.", -1,
+                        5000);
+                  ((Field_Demian) c.getPlayer().getMap()).setPotionTime(System.currentTimeMillis() + 5000L);
                }
             }
          }
@@ -6025,7 +6151,8 @@ public class PlayerHandler {
                   return;
                }
 
-               SecondaryStatEffect effect = SkillFactory.getSkill(skillID).getEffect(player.getTotalSkillLevel(skillID));
+               SecondaryStatEffect effect = SkillFactory.getSkill(skillID)
+                     .getEffect(player.getTotalSkillLevel(skillID));
                if (effect != null) {
                   int time = effect.getDuration(effect.getSubTime(), player);
                   switch (player.getBuffedValue(SecondaryStatFlag.RWMagnumBlow)) {
@@ -6146,7 +6273,8 @@ public class PlayerHandler {
                   y = player.getSkillLevelDataOne(400021002, eff -> eff.getY());
                }
 
-               player.getMap().spawnMist(new AffectedArea(rect, player, effect, pos, System.currentTimeMillis() + y * 1000 + 3000L));
+               player.getMap().spawnMist(
+                     new AffectedArea(rect, player, effect, pos, System.currentTimeMillis() + y * 1000 + 3000L));
             }
          }
       }
@@ -6160,23 +6288,24 @@ public class PlayerHandler {
          Point pos = slea.readPos();
          if (skillID == 400031037) {
             AffectedArea area = player.getMap()
-               .getAllMistsThreadsafe()
-               .stream()
-               .filter(m -> m.getOwnerId() == player.getId())
-               .filter(m -> m.getSourceSkillID() == 400031040)
-               .findFirst()
-               .orElse(null);
+                  .getAllMistsThreadsafe()
+                  .stream()
+                  .filter(m -> m.getOwnerId() == player.getId())
+                  .filter(m -> m.getSourceSkillID() == 400031040)
+                  .findFirst()
+                  .orElse(null);
             if (area != null) {
                SecondaryStatEffect eff = area.getSource();
                if (eff != null) {
-                  int remainDuration = (int)(eff.getDuration() - (System.currentTimeMillis() - area.getStartTime()));
+                  int remainDuration = (int) (eff.getDuration() - (System.currentTimeMillis() - area.getStartTime()));
                   if (remainDuration > 0) {
                      player.getMap().broadcastMessage(CField.removeAffectedArea(area.getObjectId(), 400031040, false));
                      player.getMap().removeMapObject(area);
                   }
 
                   Rect rect = new Rect(pos, eff.getLt(), eff.getRb(), false);
-                  AffectedArea area2 = new AffectedArea(rect, player, eff, pos, System.currentTimeMillis() + remainDuration);
+                  AffectedArea area2 = new AffectedArea(rect, player, eff, pos,
+                        System.currentTimeMillis() + remainDuration);
                   area2.setStartTime(area.getStartTime());
                   player.getMap().spawnMist(area2);
                }
@@ -6194,11 +6323,12 @@ public class PlayerHandler {
          SecondaryStatEffect effect = player.getSkillLevelData(skillID);
          if (effect != null) {
             if (skillID == 400051006
-               && player.getBuffedValue(SecondaryStatFlag.BulletParty) != null
-               && player.getBulletPartyValue() < effect.getX() * effect.getY()) {
+                  && player.getBuffedValue(SecondaryStatFlag.BulletParty) != null
+                  && player.getBulletPartyValue() < effect.getX() * effect.getY()) {
                player.setBulletPartyValue(player.getBulletPartyValue() + 1);
                if (player.getBulletPartyValue() % effect.getX() == 0) {
-                  SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                  SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                        player.getSecondaryStat());
                   statManager.changeStatValue(SecondaryStatFlag.BulletParty, 400051006, player.getBulletPartyValue());
                   statManager.changeTill(SecondaryStatFlag.BulletParty, 400051006, 1000);
                   statManager.temporaryStatSet();
@@ -6218,7 +6348,8 @@ public class PlayerHandler {
             if (skillID != 162101012 && skillID != 162121042 && skillID != 162111006) {
                if (c.isGm()) {
                   SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-                  c.getPlayer().dropMessage(5, "StackRequest Skill : " + skillID + " Time : " + sdf.format(System.currentTimeMillis()));
+                  c.getPlayer().dropMessage(5,
+                        "StackRequest Skill : " + skillID + " Time : " + sdf.format(System.currentTimeMillis()));
                }
 
                if (GameConstants.isBlessStackSkill(skillID)) {
@@ -6226,16 +6357,19 @@ public class PlayerHandler {
                   if (currentBlessStack >= 2) {
                      c.getPlayer().temporaryStatSet(SecondaryStatFlag.EmpressBlessStack, skillID, Integer.MAX_VALUE, 2);
                   } else {
-                     c.getPlayer().temporaryStatSet(SecondaryStatFlag.EmpressBlessStack, skillID, Integer.MAX_VALUE, currentBlessStack + 1);
+                     c.getPlayer().temporaryStatSet(SecondaryStatFlag.EmpressBlessStack, skillID, Integer.MAX_VALUE,
+                           currentBlessStack + 1);
                   }
                }
 
                if (skillID == 400011000) {
-                  int currentAuraWeaponStack = c.getPlayer().getBuffedValueDefault(SecondaryStatFlag.AuraWeaponStack, 0);
+                  int currentAuraWeaponStack = c.getPlayer().getBuffedValueDefault(SecondaryStatFlag.AuraWeaponStack,
+                        0);
                   if (currentAuraWeaponStack >= 2) {
                      c.getPlayer().temporaryStatSet(SecondaryStatFlag.AuraWeaponStack, skillID, Integer.MAX_VALUE, 2);
                   } else {
-                     c.getPlayer().temporaryStatSet(SecondaryStatFlag.AuraWeaponStack, skillID, Integer.MAX_VALUE, currentAuraWeaponStack + 1);
+                     c.getPlayer().temporaryStatSet(SecondaryStatFlag.AuraWeaponStack, skillID, Integer.MAX_VALUE,
+                           currentAuraWeaponStack + 1);
                   }
                }
 
@@ -6251,9 +6385,11 @@ public class PlayerHandler {
                if (skillID == 400001037) {
                   int value = player.getBuffedValueDefault(SecondaryStatFlag.MagicCircuitFullDriveStack, 0);
                   if (value >= 4) {
-                     player.temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, skillID, Integer.MAX_VALUE, 4);
+                     player.temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, skillID, Integer.MAX_VALUE,
+                           4);
                   } else {
-                     player.temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, skillID, Integer.MAX_VALUE, value + 1);
+                     player.temporaryStatSet(SecondaryStatFlag.MagicCircuitFullDriveStack, skillID, Integer.MAX_VALUE,
+                           value + 1);
                   }
                }
 
@@ -6262,13 +6398,14 @@ public class PlayerHandler {
                   if (value >= 3) {
                      player.temporaryStatSet(SecondaryStatFlag.ChainArtsStrokeVI, skillID, Integer.MAX_VALUE, 3);
                   } else {
-                     player.temporaryStatSet(SecondaryStatFlag.ChainArtsStrokeVI, skillID, Integer.MAX_VALUE, value + 1);
+                     player.temporaryStatSet(SecondaryStatFlag.ChainArtsStrokeVI, skillID, Integer.MAX_VALUE,
+                           value + 1);
                   }
                }
 
                player.send(CField.updateSkillStackRequestResult(skillID));
             } else if (GameConstants.isLara(player.getJob())) {
-               Lara lara = (Lara)job;
+               Lara lara = (Lara) job;
                lara.updateLaraSkillStack(skillID);
             }
          }
@@ -6280,7 +6417,7 @@ public class PlayerHandler {
       SecondaryStatEffect effect = c.getPlayer().getSkillLevelData(400011038);
       if (effect != null) {
          int x = effect.getX();
-         int hp = (int)(c.getPlayer().getStat().getCurrentMaxHp(c.getPlayer()) * 0.01 * x);
+         int hp = (int) (c.getPlayer().getStat().getCurrentMaxHp(c.getPlayer()) * 0.01 * x);
          c.getPlayer().healHP(-hp);
       }
    }
@@ -6299,9 +6436,9 @@ public class PlayerHandler {
             summoned.getOwner().removeVisibleMapObject(summoned);
             c.getPlayer().removeSummon(summoned);
             Summoned summon = new Summoned(
-               c.getPlayer(), skillID, skillLevel, c.getPlayer().getPosition(), SummonMoveAbility.SHADOW_SERVANT_EXTEND, flip, removeTime
-            );
-            c.getPlayer().getMap().spawnSummon(summon, (int)span);
+                  c.getPlayer(), skillID, skillLevel, c.getPlayer().getPosition(),
+                  SummonMoveAbility.SHADOW_SERVANT_EXTEND, flip, removeTime);
+            c.getPlayer().getMap().spawnSummon(summon, (int) span);
             c.getPlayer().addSummon(summon);
          }
       } else if (skillID == 400031005) {
@@ -6337,9 +6474,9 @@ public class PlayerHandler {
 
             for (int i = 0; i < 3; i++) {
                Summoned summonx = new Summoned(
-                  c.getPlayer(), 400011012 + i, skillLevel, c.getPlayer().getPosition(), SummonMoveAbility.FIX_V_MOVE, flip, removeTime
-               );
-               c.getPlayer().getMap().spawnSummon(summonx, (int)span);
+                     c.getPlayer(), 400011012 + i, skillLevel, c.getPlayer().getPosition(),
+                     SummonMoveAbility.FIX_V_MOVE, flip, removeTime);
+               c.getPlayer().getMap().spawnSummon(summonx, (int) span);
                c.getPlayer().addSummon(summonx);
             }
          }
@@ -6371,7 +6508,7 @@ public class PlayerHandler {
       if (player != null) {
          int objectID = slea.readInt();
          int skillID = slea.readInt();
-         AffectedArea area = (AffectedArea)player.getMap().getMapObject(objectID, MapleMapObjectType.MIST);
+         AffectedArea area = (AffectedArea) player.getMap().getMapObject(objectID, MapleMapObjectType.MIST);
          if (skillID == 2111013 && player.isGM()) {
             player.dropMessage(6, "remove area x: " + area.getTruePosition().getX());
          }
@@ -6381,7 +6518,8 @@ public class PlayerHandler {
                player.temporaryStatResetBySkillID(80001455);
             }
 
-            player.getMap().broadcastMessage(CField.removeAffectedArea(area.getObjectId(), area.getSourceSkillID(), false));
+            player.getMap()
+                  .broadcastMessage(CField.removeAffectedArea(area.getObjectId(), area.getSourceSkillID(), false));
             player.getMap().removeMapObject(area);
          }
       }
@@ -6480,7 +6618,8 @@ public class PlayerHandler {
          if (map != null) {
             SecondAtom.Atom atom = map.getSecondAtom(key);
             if (atom != null) {
-               if (atom.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows || atom.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows2) {
+               if (atom.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows
+                     || atom.getType() == SecondAtom.SecondAtomType.WhereTheRiverFlows2) {
                   return;
                }
 
@@ -6496,8 +6635,8 @@ public class PlayerHandler {
                            SecondAtomData data = SkillFactory.getSkill(atom.getSkillID()).getSecondAtomData();
                            SecondAtomData.atom at = data.getAtoms().get(3);
                            SecondAtom.Atom a = new SecondAtom.Atom(
-                              map, player.getId(), 2121052, ForceAtom.SN.getAndAdd(1), SecondAtom.SecondAtomType.MegiddoFlame, 0, null
-                           );
+                                 map, player.getId(), 2121052, ForceAtom.SN.getAndAdd(1),
+                                 SecondAtom.SecondAtomType.MegiddoFlame, 0, null);
                            a.setPlayerID(player.getId());
                            a.setTargetObjectID(atom.getTargetObjectID());
                            a.setExpire(at.getExpire());
@@ -6521,9 +6660,10 @@ public class PlayerHandler {
                      }
                      break;
                   case 400011047:
-                     SecondaryStatEffect effect = SkillFactory.getSkill(400011047).getEffect(player.getTotalSkillLevel(400011047));
+                     SecondaryStatEffect effect = SkillFactory.getSkill(400011047)
+                           .getEffect(player.getTotalSkillLevel(400011047));
                      if (effect == null) {
-                        int maxHP = (int)(player.getStat().getCurrentMaxHp() * 0.01 * effect.getX());
+                        int maxHP = (int) (player.getStat().getCurrentMaxHp() * 0.01 * effect.getX());
                         if (player.getStat().getCurrentMaxHp() <= player.getStat().getHp()) {
                            int y = effect.getY();
                            int v = effect.getV();
@@ -6533,8 +6673,10 @@ public class PlayerHandler {
                               v_ = value;
                            }
 
-                           int barrier = (int)Math.min(player.getStat().getCurrentMaxHp() * 0.01 * y, v_ + maxHP * 0.01 * v);
-                           player.temporaryStatSet(400011047, effect.getDuration(), SecondaryStatFlag.indieBarrier, barrier);
+                           int barrier = (int) Math.min(player.getStat().getCurrentMaxHp() * 0.01 * y,
+                                 v_ + maxHP * 0.01 * v);
+                           player.temporaryStatSet(400011047, effect.getDuration(), SecondaryStatFlag.indieBarrier,
+                                 barrier);
                         } else {
                            player.healHP(maxHP, true, false);
                         }
@@ -6582,7 +6724,7 @@ public class PlayerHandler {
          SecondAtom.Atom atom = c.getPlayer().getSecondAtom(key);
          if (atom != null) {
             if (atom.getType().getType() >= SecondAtom.SecondAtomType.Creation1.getType()
-               && atom.getType().getType() <= SecondAtom.SecondAtomType.Creation6.getType()) {
+                  && atom.getType().getType() <= SecondAtom.SecondAtomType.Creation6.getType()) {
                SecondaryStatEffect effect = c.getPlayer().getSkillLevelData(151111002);
                if (effect != null) {
                   int ether = secondAtomSize * effect.getY();
@@ -6647,7 +6789,8 @@ public class PlayerHandler {
                      player.changeJob(afterJob, true);
 
                      for (int i = 0; i < player.getJob() % 10 + 1; i++) {
-                        int job = i + 1 == player.getJob() % 10 + 1 ? player.getJob() - player.getJob() % 100 : player.getJob() - (i + 1);
+                        int job = i + 1 == player.getJob() % 10 + 1 ? player.getJob() - player.getJob() % 100
+                              : player.getJob() - (i + 1);
                         if (player.getJob() >= 330 && player.getJob() <= 332 && job == 300) {
                            job = 301;
                         }
@@ -6688,18 +6831,18 @@ public class PlayerHandler {
                      player.getLinkSkill().updateLinkSkillByFreeJobChange(player);
                      player.updateOneInfo(122870, "AutoJob", String.valueOf(player.getJob() / 10 * 10));
                      short ap = 20;
-                     ap = (short)(ap + (player.getLevel() * 5 - player.getHpApUsed()));
+                     ap = (short) (ap + (player.getLevel() * 5 - player.getHpApUsed()));
                      player.setRemainingAp(ap);
-                     player.getStat().setStr((short)4, player);
-                     player.getStat().setDex((short)4, player);
-                     player.getStat().setInt((short)4, player);
-                     player.getStat().setLuk((short)4, player);
+                     player.getStat().setStr((short) 4, player);
+                     player.getStat().setDex((short) 4, player);
+                     player.getStat().setInt((short) 4, player);
+                     player.getStat().setLuk((short) 4, player);
                      Map<MapleStat, Long> statups = new EnumMap<>(MapleStat.class);
                      statups.put(MapleStat.STR, 4L);
                      statups.put(MapleStat.DEX, 4L);
                      statups.put(MapleStat.INT, 4L);
                      statups.put(MapleStat.LUK, 4L);
-                     statups.put(MapleStat.AVAILABLEAP, (long)ap);
+                     statups.put(MapleStat.AVAILABLEAP, (long) ap);
                      player.send(CWvsContext.updatePlayerStats(statups, true, player));
                      if (GameConstants.isAutoMaxSkill()) {
                         player.maxskill(player.getJob());
@@ -6726,7 +6869,7 @@ public class PlayerHandler {
       Field map = c.getPlayer().getMap();
       if (map != null) {
          if (map instanceof Field_LucidBattle) {
-            Field_LucidBattle field = (Field_LucidBattle)map;
+            Field_LucidBattle field = (Field_LucidBattle) map;
             field.onActivateStatue();
          }
       }
@@ -6736,7 +6879,7 @@ public class PlayerHandler {
       Field map = c.getPlayer().getMap();
       if (map != null) {
          if (map instanceof Field_LucidBattle) {
-            Field_LucidBattle field = (Field_LucidBattle)map;
+            Field_LucidBattle field = (Field_LucidBattle) map;
             field.onContagionResult(slea.readInt());
          }
       }
@@ -6776,7 +6919,8 @@ public class PlayerHandler {
                cabinet.removeCabinetItem(index);
                player.setSaveFlag(player.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                StringBuilder sb = new StringBuilder("캐비넷에서 아이템 출고");
-               LoggingManager.putLog(new CabinetLog(player, item_.getItemId(), item_.getQuantity(), CabinetLogType.TakeOutItem.getType(), sb));
+               LoggingManager.putLog(new CabinetLog(player, item_.getItemId(), item_.getQuantity(),
+                     CabinetLogType.TakeOutItem.getType(), sb));
                PacketEncoder packet = new PacketEncoder();
                packet.writeShort(SendPacketOpcode.MAPLE_CABINET.getValue());
                packet.writeInt(12);
@@ -6796,7 +6940,7 @@ public class PlayerHandler {
          Field map = player.getMap();
          if (map != null) {
             if (map instanceof Field_DreamBreaker) {
-               Field_DreamBreaker f = (Field_DreamBreaker)map;
+               Field_DreamBreaker f = (Field_DreamBreaker) map;
                if (f != null) {
                   int dreamPoint = f.getDreamPoint();
                   if (f.isUsedSkill(skillIndex)) {
@@ -6918,7 +7062,7 @@ public class PlayerHandler {
          Field map = player.getMap();
          if (map != null) {
             if (map instanceof Field_WillBattle) {
-               Field_WillBattle f = (Field_WillBattle)map;
+               Field_WillBattle f = (Field_WillBattle) map;
                int needGauge = 45;
                if (f.getPhase() == 2) {
                   needGauge = 40;
@@ -6963,7 +7107,7 @@ public class PlayerHandler {
          if (map != null) {
             if (player.isAlive()) {
                if (map instanceof Field_WillBattle) {
-                  Field_WillBattle f = (Field_WillBattle)map;
+                  Field_WillBattle f = (Field_WillBattle) map;
                   int objectID = slea.readInt();
                   SpiderWeb web = f.getSpiderWeb(objectID);
                   if (web != null) {
@@ -6972,11 +7116,11 @@ public class PlayerHandler {
                         player.setWillCanRemoveWeb(player.getWillCanRemoveWeb() - 1);
                      } else {
                         if (player.getIndieTemporaryStats(SecondaryStatFlag.indiePartialNotDamaged).size() > 0
-                           || player.getBuffedValue(SecondaryStatFlag.NotDamaged) != null
-                           || player.getBuffedValue(SecondaryStatFlag.BlitzShield) != null
-                           || player.getBuffedValue(SecondaryStatFlag.StormGuard) != null
-                           || player.getBuffedValue(SecondaryStatFlag.EtherealForm) != null
-                           || player.getBuffedValue(SecondaryStatFlag.Asura) != null) {
+                              || player.getBuffedValue(SecondaryStatFlag.NotDamaged) != null
+                              || player.getBuffedValue(SecondaryStatFlag.BlitzShield) != null
+                              || player.getBuffedValue(SecondaryStatFlag.StormGuard) != null
+                              || player.getBuffedValue(SecondaryStatFlag.EtherealForm) != null
+                              || player.getBuffedValue(SecondaryStatFlag.Asura) != null) {
                            return;
                         }
 
@@ -6986,8 +7130,10 @@ public class PlayerHandler {
                            if (value <= 0) {
                               player.temporaryStatReset(SecondaryStatFlag.HolyMagicShell);
                            } else {
-                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
-                              statManager.changeStatValue(SecondaryStatFlag.HolyMagicShell, eff.getSourceId(), value - 1);
+                              SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                    player.getSecondaryStat());
+                              statManager.changeStatValue(SecondaryStatFlag.HolyMagicShell, eff.getSourceId(),
+                                    value - 1);
                               statManager.temporaryStatSet();
                            }
 
@@ -7000,7 +7146,8 @@ public class PlayerHandler {
                               if (v <= 0) {
                                  player.temporaryStatReset(SecondaryStatFlag.BlessingArmor);
                               } else {
-                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(), player.getSecondaryStat());
+                                 SecondaryStatManager statManager = new SecondaryStatManager(player.getClient(),
+                                       player.getSecondaryStat());
                                  statManager.changeStatValue(SecondaryStatFlag.BlessingArmor, 1210016, v - 1);
                                  statManager.temporaryStatSet();
                               }
@@ -7010,7 +7157,7 @@ public class PlayerHandler {
                         }
 
                         if (!player.isGM()) {
-                           player.addHP(-((long)(player.getStat().getCurrentMaxHp() * 0.3)));
+                           player.addHP(-((long) (player.getStat().getCurrentMaxHp() * 0.3)));
                            player.giveDebuff(SecondaryStatFlag.Seal, 1, 0, 5000L, 120, 40);
                         }
                      }
@@ -7034,7 +7181,7 @@ public class PlayerHandler {
             if (player.isAlive()) {
                if (!player.isJinHillahDeathCountOut()) {
                   if (map instanceof Field_JinHillah) {
-                     Field_JinHillah f = (Field_JinHillah)map;
+                     Field_JinHillah f = (Field_JinHillah) map;
                      if (player.getId() == playerID) {
                         if (player.getDiseases(SecondaryStatFlag.Stun) != null) {
                            player.send(CWvsContext.enableActions(player));
@@ -7042,7 +7189,7 @@ public class PlayerHandler {
                         }
 
                         if (player.getBuffedValue(SecondaryStatFlag.NotDamaged) != null
-                           || player.getBuffedValue(SecondaryStatFlag.indiePartialNotDamaged) != null) {
+                              || player.getBuffedValue(SecondaryStatFlag.indiePartialNotDamaged) != null) {
                            player.send(CWvsContext.enableActions(player));
                            return;
                         }
@@ -7086,7 +7233,7 @@ public class PlayerHandler {
          }
 
          if (map instanceof Field_JinHillah) {
-            Field_JinHillah f = (Field_JinHillah)map;
+            Field_JinHillah f = (Field_JinHillah) map;
             f.sendJinHillahUpdateAltarStatus();
          }
       } else if (c.isGm()) {
@@ -7105,7 +7252,7 @@ public class PlayerHandler {
          if (item != null && (item.getItemId() == 2892000 || item.getItemId() == 2892001)) {
             android.setEar(!android.isEar());
             c.getPlayer().updateAndroid();
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short)1, true);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, true);
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             c.getPlayer().dropMessage(1, "알 수 없는 오류가 발생했습니다.");
@@ -7120,7 +7267,7 @@ public class PlayerHandler {
          Field map = player.getMap();
          if (map != null) {
             if (map instanceof Field_BlackMageBattlePhase3) {
-               Field_BlackMageBattlePhase3 f = (Field_BlackMageBattlePhase3)map;
+               Field_BlackMageBattlePhase3 f = (Field_BlackMageBattlePhase3) map;
                int objectID = slea.readInt();
                int key = slea.readInt();
                BlackMageOrcaAttackEntry entry = f.getOrcaAttackEntry(key);
@@ -7143,7 +7290,7 @@ public class PlayerHandler {
          Field map = player.getMap();
          if (map != null) {
             if (map instanceof Field_BlackMageBattlePhase4) {
-               Field_BlackMageBattlePhase4 f = (Field_BlackMageBattlePhase4)map;
+               Field_BlackMageBattlePhase4 f = (Field_BlackMageBattlePhase4) map;
                Integer value = player.getBuffedValue(SecondaryStatFlag.BlackMageAttributes);
                int v = 2;
                if (value != null) {
@@ -7157,7 +7304,8 @@ public class PlayerHandler {
                }
 
                player.temporaryStatReset(SecondaryStatFlag.BlackMageAttributes);
-               c.getPlayer().temporaryStatSet(SecondaryStatFlag.BlackMageAttributes, 0, Integer.MAX_VALUE, player.getBlackMageAttributes());
+               c.getPlayer().temporaryStatSet(SecondaryStatFlag.BlackMageAttributes, 0, Integer.MAX_VALUE,
+                     player.getBlackMageAttributes());
                f.blackMageTamporarySkill(player, 8);
             }
          }
@@ -7191,7 +7339,7 @@ public class PlayerHandler {
 
             SecondaryStatEffect effect = player.getSkillLevelData(skillID);
             if (effect != null) {
-               int maxHP = (int)(player.getStat().getCurrentMaxHp() * effect.getHp() / 100L);
+               int maxHP = (int) (player.getStat().getCurrentMaxHp() * effect.getHp() / 100L);
                List<Integer> targets = player.parsePartyFlag(partyFlag);
                int count = 0;
 
@@ -7225,7 +7373,7 @@ public class PlayerHandler {
             int tcount = slea.readInt();
             SecondaryStatEffect effect = player.getSkillLevelData(skillID);
             if (effect != null) {
-               int hp = (int)(player.getStat().getCurrentMaxHp() * effect.getHp() / 100L);
+               int hp = (int) (player.getStat().getCurrentMaxHp() * effect.getHp() / 100L);
                List<Integer> targets = player.parsePartyFlag(partyFlag);
                int remaining = Math.min(tcount - ucount, 12);
                int indieDamR = effect.getIndieDamR() + remaining * effect.getX();
@@ -7393,7 +7541,7 @@ public class PlayerHandler {
       slea.skip(4);
       MapleCharacter player = c.getPlayer();
       if (player != null) {
-         Field_EagleHunt f = (Field_EagleHunt)player.getMap();
+         Field_EagleHunt f = (Field_EagleHunt) player.getMap();
          int size = slea.readInt();
          f.shootResult();
 
@@ -7416,7 +7564,7 @@ public class PlayerHandler {
          if (map != null) {
             int result = slea.readByte();
             if (result == 1 && map instanceof Field_CourtshipDance) {
-               Field_CourtshipDance f = (Field_CourtshipDance)map;
+               Field_CourtshipDance f = (Field_CourtshipDance) map;
                f.nextStep();
             }
          }
@@ -7459,7 +7607,7 @@ public class PlayerHandler {
             if (map != null) {
                SecondAtom.Atom atom = player.getSecondAtom(key);
                if (atom != null) {
-                  int maxHP = (int)(player.getStat().getCurrentMaxHp() * 0.01 * effect.getX());
+                  int maxHP = (int) (player.getStat().getCurrentMaxHp() * 0.01 * effect.getX());
                   if (player.getStat().getCurrentMaxHp() <= player.getStat().getHp()) {
                      int y = effect.getY();
                      int v = effect.getV();
@@ -7469,7 +7617,7 @@ public class PlayerHandler {
                         v_ = value;
                      }
 
-                     int barrier = (int)Math.min(player.getStat().getCurrentMaxHp() * 0.01 * y, v_ + maxHP * 0.01 * v);
+                     int barrier = (int) Math.min(player.getStat().getCurrentMaxHp() * 0.01 * y, v_ + maxHP * 0.01 * v);
                      player.temporaryStatSet(400011047, effect.getDuration(), SecondaryStatFlag.indieBarrier, barrier);
                   } else {
                      player.healHP(maxHP, true, false);
@@ -7488,7 +7636,7 @@ public class PlayerHandler {
             SecondaryStatEffect e = player.getBuffedEffect(SecondaryStatFlag.GrandCrossSize);
             if (e != null) {
                if (player.getStat().getHPPercent() >= e.getU2()) {
-                  player.addHP((long)(-player.getStat().getCurrentMaxHp() * e.getU2() / 100.0));
+                  player.addHP((long) (-player.getStat().getCurrentMaxHp() * e.getU2() / 100.0));
                } else {
                   player.temporaryStatReset(SecondaryStatFlag.GrandCrossSize);
                }
@@ -7497,7 +7645,8 @@ public class PlayerHandler {
 
          if (skillID == 400021086 && player.getAutoChargeStack() > 0) {
             player.setAutoChargeStack(player.getAutoChargeStack() - 1);
-            player.temporaryStatSet(400021086, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack, player.getAutoChargeStack());
+            player.temporaryStatSet(400021086, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack,
+                  player.getAutoChargeStack());
          }
       }
    }
@@ -7507,7 +7656,8 @@ public class PlayerHandler {
       MapleCharacter player = c.getPlayer();
       if (player != null) {
          if (skillID == 400031053 || skillID == 500061016) {
-            player.setJobField("autoChargeStackOnOffStack", (Integer)player.getJobField("autoChargeStackOnOffStack") + 1);
+            player.setJobField("autoChargeStackOnOffStack",
+                  (Integer) player.getJobField("autoChargeStackOnOffStack") + 1);
             player.temporaryStatSet(400031053, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStackOnOff, 1);
          }
       }
@@ -7530,22 +7680,27 @@ public class PlayerHandler {
                         return;
                      }
 
-                     Long time = (Long)player.getTempKeyValue("NextAutoChargeTime");
+                     Long time = (Long) player.getTempKeyValue("NextAutoChargeTime");
                      if (time != null && time > System.currentTimeMillis()) {
-                        player.temporaryStatSet(SecondaryStatFlag.AutoChargeStack, skillID, Integer.MAX_VALUE, value < 0 ? 0 : value);
+                        player.temporaryStatSet(SecondaryStatFlag.AutoChargeStack, skillID, Integer.MAX_VALUE,
+                              value < 0 ? 0 : value);
                      } else {
                         player.setTempKeyValue("NextAutoChargeTime", System.currentTimeMillis() + effect.getQ() * 1000);
-                        player.temporaryStatSet(SecondaryStatFlag.AutoChargeStack, skillID, Integer.MAX_VALUE, value + 1);
+                        player.temporaryStatSet(SecondaryStatFlag.AutoChargeStack, skillID, Integer.MAX_VALUE,
+                              value + 1);
                      }
                   }
                }
             } else if (player.getAutoChargeSkillID() == skillID
-               && (player.getLastAutoChargeTime() == 0L || System.currentTimeMillis() - player.getLastAutoChargeTime() >= player.getAutoChargeCycle())) {
-               if (player.getBuffedValue(SecondaryStatFlag.AutoChargeStack) != null && player.getAutoChargeStack() < player.getAutoChargeMaxStack()) {
+                  && (player.getLastAutoChargeTime() == 0L || System.currentTimeMillis()
+                        - player.getLastAutoChargeTime() >= player.getAutoChargeCycle())) {
+               if (player.getBuffedValue(SecondaryStatFlag.AutoChargeStack) != null
+                     && player.getAutoChargeStack() < player.getAutoChargeMaxStack()) {
                   player.setAutoChargeStack(player.getAutoChargeStack() + 1);
                }
 
-               player.temporaryStatSet(player.getAutoChargeSkillID(), Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack, player.getAutoChargeStack());
+               player.temporaryStatSet(player.getAutoChargeSkillID(), Integer.MAX_VALUE,
+                     SecondaryStatFlag.AutoChargeStack, player.getAutoChargeStack());
                player.setLastAutoChargeTime(System.currentTimeMillis());
             }
          }
@@ -7648,8 +7803,9 @@ public class PlayerHandler {
                int delta = Math.min(needQ, currentQ + c.getPlayer().getMutoPickupItemQ());
                muto.updateRecipe(itemID, delta);
                c.getPlayer()
-                  .getMap()
-                  .broadcastMessage(new HungryMuto.RecipeUpdate(FoodType.getFoodType(muto.getType()), muto.getDifficulty(), muto.getRecipes()).encode());
+                     .getMap()
+                     .broadcastMessage(new HungryMuto.RecipeUpdate(FoodType.getFoodType(muto.getType()),
+                           muto.getDifficulty(), muto.getRecipes()).encode());
                c.getSession().writeAndFlush(CField.MapEff("Map/Effect3.img/hungryMutoMsg/msg4"));
                if (muto.checkClear()) {
                   boolean perfect = muto.addScore();
@@ -7664,18 +7820,28 @@ public class PlayerHandler {
                      c.getPlayer().getMap().killAllMonsters(true);
 
                      for (int next = 0; next < 6; next++) {
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642001), new Point(105, -354));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642003), new Point(2644, -345));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642005), new Point(-929, -356));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642007), new Point(3778, -343));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642009), new Point(-1045, -847));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642011), new Point(3935, -841));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642013), new Point(1434, -791));
-                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642015), new Point(1405, -1637));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642001),
+                              new Point(105, -354));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642003),
+                              new Point(2644, -345));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642005),
+                              new Point(-929, -356));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642007),
+                              new Point(3778, -343));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642009),
+                              new Point(-1045, -847));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642011),
+                              new Point(3935, -841));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642013),
+                              new Point(1434, -791));
+                        c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642015),
+                              new Point(1405, -1637));
                      }
 
-                     c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642016), muto.getRandArea());
-                     c.getPlayer().getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("굴라가 더욱 격렬하게 저항하며 강력한 몬스터들이 등장합니다!"));
+                     c.getPlayer().getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642016),
+                           muto.getRandArea());
+                     c.getPlayer().getMap()
+                           .broadcastMessage(CWvsContext.getScriptProgressMessage("굴라가 더욱 격렬하게 저항하며 강력한 몬스터들이 등장합니다!"));
                      muto.setEnhanceMob(true);
                   }
 
@@ -7698,7 +7864,8 @@ public class PlayerHandler {
 
             c.getPlayer().setMutoPickupItemID(0);
             c.getPlayer().setMutoPickupItemQ(0);
-            c.getPlayer().getMap().broadcastMessage(new HungryMuto.PickupItemUpdate(c.getPlayer().getId(), 0, 0).encode());
+            c.getPlayer().getMap()
+                  .broadcastMessage(new HungryMuto.PickupItemUpdate(c.getPlayer().getId(), 0, 0).encode());
          }
 
          if (endGame) {
@@ -7717,7 +7884,8 @@ public class PlayerHandler {
          }
       }
 
-      c.getPlayer().getMap().broadcastMessage(CField.showChair(c.getPlayer(), c.getPlayer().getChair(), null, c.getPlayer().getMesoChairCount()));
+      c.getPlayer().getMap().broadcastMessage(
+            CField.showChair(c.getPlayer(), c.getPlayer().getChair(), null, c.getPlayer().getMesoChairCount()));
    }
 
    public static void inviteChairRequest(PacketDecoder slea, MapleClient c) {
@@ -7756,12 +7924,14 @@ public class PlayerHandler {
             }
 
             if (chair != null) {
-               int[] randEmotions = new int[]{2, 10, 14, 17};
+               int[] randEmotions = new int[] { 2, 10, 14, 17 };
                c.getPlayer().setChairEmotion(randEmotions[Randomizer.nextInt(randEmotions.length)]);
                chair.updatePlayer(c.getPlayer());
                c.getPlayer().setChair(owner.getChair());
-               c.getPlayer().getMap().broadcastMessage(c.getPlayer(), CField.showChair(c.getPlayer(), c.getPlayer().getChair(), "", 0L), false);
-               c.getPlayer().getMap().broadcastMessage(CField.customChairResult(c.getPlayer(), true, true, false, chair));
+               c.getPlayer().getMap().broadcastMessage(c.getPlayer(),
+                     CField.showChair(c.getPlayer(), c.getPlayer().getChair(), "", 0L), false);
+               c.getPlayer().getMap()
+                     .broadcastMessage(CField.customChairResult(c.getPlayer(), true, true, false, chair));
                c.getPlayer().setCustomChair(chair);
             } else {
                c.getPlayer().send(CField.sitOnDummyChair(ownerID, 1));
@@ -7803,8 +7973,8 @@ public class PlayerHandler {
       SecondaryStatEffect effect = c.getPlayer().getSkillLevelData(skillID);
       if (effect != null) {
          JupiterThunder thunder = new JupiterThunder(
-            c.getPlayer().getId(), skillID, x, y, delay, unk2, unk3, rlType, unk5, effect.getX(), effect.getSubTime() / 1000, effect.getTime()
-         );
+               c.getPlayer().getId(), skillID, x, y, delay, unk2, unk3, rlType, unk5, effect.getX(),
+               effect.getSubTime() / 1000, effect.getTime());
          c.getPlayer().setJupiterThunder(thunder);
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.JUPITER_THUNDER.getValue());
@@ -7855,8 +8025,9 @@ public class PlayerHandler {
          JupiterThunder jupiterThunder = chr.getJupiterThunder();
          if (jupiterThunder != null) {
             if (chr.getSkillLevel(jupiterThunder.getSkillID()) > 0) {
-               SecondaryStatEffect effect = SkillFactory.getSkill(jupiterThunder.getSkillID()).getEffect(chr.getSkillLevel(jupiterThunder.getSkillID()));
-               long changeTime = (long)(-effect.getT() * remainCount * 1000.0);
+               SecondaryStatEffect effect = SkillFactory.getSkill(jupiterThunder.getSkillID())
+                     .getEffect(chr.getSkillLevel(jupiterThunder.getSkillID()));
+               long changeTime = (long) (-effect.getT() * remainCount * 1000.0);
                chr.changeCooldown(jupiterThunder.getSkillID(), changeTime);
             }
 
@@ -7898,7 +8069,7 @@ public class PlayerHandler {
       MapleCharacter player = c.getPlayer();
       if (player != null) {
          if (player.getBuffedValue(SecondaryStatFlag.Morph) != null) {
-            Item item = player.getInventory(MapleInventoryType.USE).getItem((short)itemPOS);
+            Item item = player.getInventory(MapleInventoryType.USE).getItem((short) itemPOS);
             if (item != null && (item == null || item.getItemId() == itemID)) {
                int extern = player.getOneInfoQuestInteger(12860, "extern");
                int inner = player.getOneInfoQuestInteger(12860, "inner");
@@ -7931,8 +8102,9 @@ public class PlayerHandler {
                      inner = 0;
                }
 
-               MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (byte)itemPOS, (short)1, false);
-               player.updateInfoQuest(12860, "extern=" + extern + ";inner=" + inner + ";primium=" + (primium ? 1 : 0) + ";");
+               MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (byte) itemPOS, (short) 1, false);
+               player.updateInfoQuest(12860,
+                     "extern=" + extern + ";inner=" + inner + ";primium=" + (primium ? 1 : 0) + ";");
                PacketEncoder packet = new PacketEncoder();
                packet.writeShort(SendPacketOpcode.USER_KAISER_COLOR_OR_MORPH_CHANGE.getValue());
                packet.writeInt(player.getId());
@@ -7963,7 +8135,8 @@ public class PlayerHandler {
                   System.out.println("[ERROR] 지역 스킬 시전에 오류가 발생하였습니다. (skillID: " + skillID + ")");
                } else {
                   Rect rect = new Rect(point, effect.getLt(), effect.getRb(), false);
-                  AffectedArea area = new AffectedArea(rect, player, effect, point, System.currentTimeMillis() + effect.getDuration());
+                  AffectedArea area = new AffectedArea(rect, player, effect, point,
+                        System.currentTimeMillis() + effect.getDuration());
                   field.spawnMist(area);
                }
             }
@@ -8100,18 +8273,22 @@ public class PlayerHandler {
       String currentName = slea.readMapleAsciiString();
       String requestName = slea.readMapleAsciiString();
       boolean tempNameChange = false;
-      if (ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시") && c.getPlayer().getLevel() >= 210) {
+      if (ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시")
+            && c.getPlayer().getLevel() >= 210) {
          tempNameChange = true;
       }
 
       boolean tempNick = false;
-      if (c.getPlayer().getOneInfoCustomInteger("Char", "TempChangeNick") == 0 && c.getPlayer().getName().startsWith("임시")) {
+      if (c.getPlayer().getOneInfoCustomInteger("Char", "TempChangeNick") == 0
+            && c.getPlayer().getName().startsWith("임시")) {
          tempNick = true;
       }
 
-      if (itemID != 4034803 || c.getPlayer().getItemQuantity(itemID, false) >= 1 || DBConfig.isGanglim && c.getPlayer().getName().contains("휴면")) {
+      if (itemID != 4034803 || c.getPlayer().getItemQuantity(itemID, false) >= 1
+            || DBConfig.isGanglim && c.getPlayer().getName().contains("휴면")) {
          int r = 6;
-         if (MapleCharacterUtil.canCreateChar(requestName, false, false) && !LoginInformationProvider.getInstance().isForbiddenName(requestName)) {
+         if (MapleCharacterUtil.canCreateChar(requestName, false, false)
+               && !LoginInformationProvider.getInstance().isForbiddenName(requestName)) {
             r = 0;
          }
 
@@ -8151,7 +8328,8 @@ public class PlayerHandler {
 
             if (tempNick) {
                c.getPlayer().updateOneInfoCustom("Char", "TempChangeNick", "1");
-            } else if (c.getPlayer().getOneInfoCustomInteger("Char", "TempChangeNick") == 0 && requestName.startsWith("임시")) {
+            } else if (c.getPlayer().getOneInfoCustomInteger("Char", "TempChangeNick") == 0
+                  && requestName.startsWith("임시")) {
                c.getPlayer().updateOneInfoCustom("Char", "TempChangeNick", "1");
             }
 
@@ -8184,10 +8362,9 @@ public class PlayerHandler {
                   sb.append(requestName);
                   sb.append(")");
                   LoggingManager.putLog(
-                     new CreateCharLog(
-                        c.getPlayer().getName(), c.getAccountName(), c.getPlayer().getId(), c.getAccID(), CreateCharLogType.ChangeCharName.getType(), sb
-                     )
-                  );
+                        new CreateCharLog(
+                              c.getPlayer().getName(), c.getAccountName(), c.getPlayer().getId(), c.getAccID(),
+                              CreateCharLogType.ChangeCharName.getType(), sb));
                }
             } catch (SQLException var29) {
                System.out.println("[ERROR] 닉네임 변경 중 DB오류가 발생하였습니다.");
@@ -8227,10 +8404,9 @@ public class PlayerHandler {
       if (player != null) {
          int result = 9;
          if (!player.haveItem(itemID)
-            && (
-               !ServerConstants.useTempCharacterName
-                  || ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시") && c.getPlayer().getLevel() < 210
-            )) {
+               && (!ServerConstants.useTempCharacterName
+                     || ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시")
+                           && c.getPlayer().getLevel() < 210)) {
             result = 3;
          }
 
@@ -8255,7 +8431,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_MultiYutGame) {
-               Field_MultiYutGame f = (Field_MultiYutGame)field;
+               Field_MultiYutGame f = (Field_MultiYutGame) field;
                MultiYutGameDlg game = f.getYutGameDlg();
                if (game == null) {
                   return;
@@ -8295,7 +8471,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_MultiYutGame) {
-               Field_MultiYutGame f = (Field_MultiYutGame)field;
+               Field_MultiYutGame f = (Field_MultiYutGame) field;
                MultiYutGameDlg game = f.getYutGameDlg();
                if (game == null) {
                   return;
@@ -8347,7 +8523,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_MultiYutGame) {
-               Field_MultiYutGame f = (Field_MultiYutGame)field;
+               Field_MultiYutGame f = (Field_MultiYutGame) field;
                MultiYutGameDlg game = f.getYutGameDlg();
                if (game == null) {
                   return;
@@ -8370,7 +8546,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_MultiYutGame) {
-               Field_MultiYutGame f = (Field_MultiYutGame)field;
+               Field_MultiYutGame f = (Field_MultiYutGame) field;
                MultiYutGameDlg game = f.getYutGameDlg();
                if (game == null) {
                   return;
@@ -8394,28 +8570,34 @@ public class PlayerHandler {
                   int pieceIndex = slea.readInt();
                   YutGameResult_GameInfo info = f.getYutGameDlg().getGameInfo(team ^ 1);
                   game.doGoHome(info, pieceIndex);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.CarryAndGo.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.CarryAndGo
+                     .getType()) {
                   int piece1 = slea.readInt();
                   int piece2 = slea.readInt();
                   game.doCarryAndGo(gameInfo, piece1, piece2);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.ChangePosition.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.ChangePosition
+                     .getType()) {
                   int piece1 = slea.readInt();
                   int piece2 = slea.readInt();
                   game.doChangePosition(gameInfo, piece1, piece2);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.GoMyFront.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.GoMyFront
+                     .getType()) {
                   int pieceIndex = slea.readInt();
                   int position = slea.readInt();
                   YutGameResult_GameInfo info = f.getYutGameDlg().getGameInfo(team ^ 1);
                   game.doGoMyFront(info, pieceIndex, position);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.BackHug.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.BackHug
+                     .getType()) {
                   int pieceIndex = slea.readInt();
                   int position = slea.readInt();
                   YutGameResult_GameInfo info = f.getYutGameDlg().getGameInfo(team);
                   game.doBackHug(info, pieceIndex, position);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.FinishLineFront.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.FinishLineFront
+                     .getType()) {
                   int position = slea.readInt();
                   game.doFinishLineFront(gameInfo, position);
-               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.InstallBomb.getType()) {
+               } else if (gameInfo.getSuperItem().getActivePieceItem() == YutGameSuperItem.PieceItemType.InstallBomb
+                     .getType()) {
                   int position = slea.readInt();
                   game.doInstallBomb(gameInfo, position);
                }
@@ -8436,7 +8618,8 @@ public class PlayerHandler {
       if (player != null) {
          slea.readInt();
          int type = slea.readInt();
-         UnionHandler.startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/dimensional_mirror.js", c, type, 9062454);
+         UnionHandler.startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/dimensional_mirror.js", c, type,
+               9062454);
       }
    }
 
@@ -8471,7 +8654,7 @@ public class PlayerHandler {
             slea.readInt();
             int type = slea.readInt();
             if (field instanceof Field_Mission2Space) {
-               Field_Mission2Space f = (Field_Mission2Space)field;
+               Field_Mission2Space f = (Field_Mission2Space) field;
                f.checkInput(type);
             }
          }
@@ -8484,7 +8667,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_Mission2Space) {
-               Field_Mission2Space f = (Field_Mission2Space)field;
+               Field_Mission2Space f = (Field_Mission2Space) field;
                f.endGame();
             }
          }
@@ -8497,7 +8680,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_ExtremeRail) {
-               Field_ExtremeRail f = (Field_ExtremeRail)field;
+               Field_ExtremeRail f = (Field_ExtremeRail) field;
                slea.readInt();
                slea.readInt();
                int distance = slea.readInt();
@@ -8513,7 +8696,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_ExtremeRail) {
-               Field_ExtremeRail f = (Field_ExtremeRail)field;
+               Field_ExtremeRail f = (Field_ExtremeRail) field;
                f.endGame(f.getDistance());
             }
          }
@@ -8526,7 +8709,7 @@ public class PlayerHandler {
          Field field = player.getMap();
          if (field != null) {
             if (field instanceof Field_ExtremeRail) {
-               Field_ExtremeRail f = (Field_ExtremeRail)field;
+               Field_ExtremeRail f = (Field_ExtremeRail) field;
                int distance = slea.readInt();
                f.setDistance(distance);
             }
@@ -8595,14 +8778,14 @@ public class PlayerHandler {
                      if (GameConstants.isZero(player.getJob()) && second) {
                         ZeroInfo zeroInfox = player.getZeroInfo();
                         entry.setItemID(zeroInfox.getSubHair());
-                        entry.setBaseProb((byte)zeroInfox.getMixHairBaseProb());
-                        entry.setBaseColor((byte)zeroInfox.getMixBaseHairColor());
-                        entry.setAddColor((byte)zeroInfox.getMixAddHairColor());
+                        entry.setBaseProb((byte) zeroInfox.getMixHairBaseProb());
+                        entry.setBaseColor((byte) zeroInfox.getMixBaseHairColor());
+                        entry.setAddColor((byte) zeroInfox.getMixAddHairColor());
                      } else {
                         entry.setItemID(second ? player.getSecondHair() : player.getHair());
-                        entry.setBaseProb((byte)(second ? player.getSecondBaseProb() : player.getBaseProb()));
-                        entry.setBaseColor((byte)(second ? player.getSecondBaseColor() : player.getBaseColor()));
-                        entry.setAddColor((byte)(second ? player.getSecondAddColor() : player.getAddColor()));
+                        entry.setBaseProb((byte) (second ? player.getSecondBaseProb() : player.getBaseProb()));
+                        entry.setBaseColor((byte) (second ? player.getSecondBaseColor() : player.getBaseColor()));
+                        entry.setAddColor((byte) (second ? player.getSecondAddColor() : player.getAddColor()));
                      }
                   } else if (type == MannequinType.FaceRoom) {
                      int face = second ? player.getSecondFace() : player.getFace();
@@ -8630,9 +8813,9 @@ public class PlayerHandler {
                      }
 
                      entry.setItemID(face);
-                     entry.setBaseProb((byte)faceBaseProb);
-                     entry.setBaseColor((byte)faceBaseColor);
-                     entry.setAddColor((byte)faceAddColor);
+                     entry.setBaseProb((byte) faceBaseProb);
+                     entry.setBaseColor((byte) faceBaseColor);
+                     entry.setAddColor((byte) faceAddColor);
                   } else if (type == MannequinType.SkinRoom) {
                      if (GameConstants.isZero(player.getJob()) && second) {
                         entry.setItemID(player.getZeroInfo().getSubSkin());
@@ -8652,9 +8835,9 @@ public class PlayerHandler {
                      entry.setItemID(0);
                   }
 
-                  entry.setBaseProb((byte)0);
-                  entry.setBaseColor((byte)-1);
-                  entry.setAddColor((byte)0);
+                  entry.setBaseProb((byte) 0);
+                  entry.setBaseColor((byte) -1);
+                  entry.setAddColor((byte) 0);
                   mannequin.updateMannequin(player, type, requestType, MannequinResultType.Save, slot, entry);
                   mannequin.sendMannequinResult(player, type, requestType, 1);
                   player.setSaveFlag2(player.getSaveFlag2() | CharacterSaveFlag2.MANNEQUIN.getFlag());
@@ -8672,9 +8855,9 @@ public class PlayerHandler {
                         zeroInfo.setMixBaseHairColor(entry.getBaseColor());
                         zeroInfo.setMixAddHairColor(entry.getAddColor());
                         entry.setItemID(beforeHair);
-                        entry.setBaseProb((byte)beforeBaseProb);
-                        entry.setBaseColor((byte)beforeBaseColor);
-                        entry.setAddColor((byte)beforeAddColor);
+                        entry.setBaseProb((byte) beforeBaseProb);
+                        entry.setBaseColor((byte) beforeBaseColor);
+                        entry.setAddColor((byte) beforeAddColor);
                         zeroInfo.sendUpdateZeroInfo(player, ZeroInfoFlag.SubHair);
                      } else {
                         int beforeHair = second ? player.getSecondHair() : player.getHair();
@@ -8692,7 +8875,8 @@ public class PlayerHandler {
                            int entryBaseProb = entry.getBaseProb();
                            int mixHair = entryHair;
                            if (entryBaseColor != -1 && entryBaseProb > 0) {
-                              mixHair = entryHair / 10 * 10 * 1000 + entryBaseColor * 1000 + entryAddColor * 100 + entryBaseProb;
+                              mixHair = entryHair / 10 * 10 * 1000 + entryBaseColor * 1000 + entryAddColor * 100
+                                    + entryBaseProb;
                            }
 
                            player.updateSingleStat(MapleStat.HAIR, mixHair);
@@ -8707,16 +8891,17 @@ public class PlayerHandler {
                            int entryBaseProb = entry.getBaseProb();
                            int mixHair = entryHair;
                            if (entryBaseColor != -1 && entryBaseProb > 0) {
-                              mixHair = entryHair / 10 * 10 * 1000 + entryBaseColor * 1000 + entryAddColor * 100 + entryBaseProb;
+                              mixHair = entryHair / 10 * 10 * 1000 + entryBaseColor * 1000 + entryAddColor * 100
+                                    + entryBaseProb;
                            }
 
                            player.updateSingleStat(MapleStat.HAIR, mixHair);
                         }
 
                         entry.setItemID(beforeHair);
-                        entry.setBaseProb((byte)beforeBaseProb);
-                        entry.setBaseColor((byte)beforeBaseColor);
-                        entry.setAddColor((byte)beforeAddColor);
+                        entry.setBaseProb((byte) beforeBaseProb);
+                        entry.setBaseColor((byte) beforeBaseColor);
+                        entry.setAddColor((byte) beforeAddColor);
                      }
                   } else if (type == MannequinType.FaceRoom) {
                      ZeroInfo zeroInfo = null;
@@ -8759,7 +8944,8 @@ public class PlayerHandler {
                         int entryBaseProb = entry.getBaseProb();
                         int mixFace = entryFace;
                         if (entryBaseColor != -1 && entryBaseProb > 0) {
-                           mixFace = (entryFace / 1000 * 1000 + entryFace % 100 + entryBaseColor * 100) * 1000 + entryAddColor * 100 + entryBaseProb;
+                           mixFace = (entryFace / 1000 * 1000 + entryFace % 100 + entryBaseColor * 100) * 1000
+                                 + entryAddColor * 100 + entryBaseProb;
                         }
 
                         player.updateSingleStat(MapleStat.FACE, mixFace);
@@ -8774,16 +8960,17 @@ public class PlayerHandler {
                         int entryBaseProb = entry.getBaseProb();
                         int mixFace = entryFace;
                         if (entryBaseColor != -1 && entryBaseProb > 0) {
-                           mixFace = (entryFace / 1000 * 1000 + entryFace % 100 + entryBaseColor * 100) * 1000 + entryAddColor * 100 + entryBaseProb;
+                           mixFace = (entryFace / 1000 * 1000 + entryFace % 100 + entryBaseColor * 100) * 1000
+                                 + entryAddColor * 100 + entryBaseProb;
                         }
 
                         player.updateSingleStat(MapleStat.FACE, mixFace);
                      }
 
                      entry.setItemID(beforeFace);
-                     entry.setBaseProb((byte)beforeBaseProb);
-                     entry.setBaseColor((byte)beforeBaseColor);
-                     entry.setAddColor((byte)beforeAddColor);
+                     entry.setBaseProb((byte) beforeBaseProb);
+                     entry.setBaseColor((byte) beforeBaseColor);
+                     entry.setAddColor((byte) beforeAddColor);
                      if (zeroInfo != null) {
                         zeroInfo.sendUpdateZeroInfo(player, ZeroInfoFlag.SubFace);
                      }
@@ -8792,13 +8979,13 @@ public class PlayerHandler {
                         int beforeSkin = player.getZeroInfo().getSubSkin();
                         if (entry.getItemID() >= 0 && entry.getItemID() < 100) {
                            player.getZeroInfo().setSubSkin(entry.getItemID());
-                           player.setSecondSkinColor((byte)entry.getItemID());
+                           player.setSecondSkinColor((byte) entry.getItemID());
                         } else if (entry.getItemID() >= 12000 && entry.getItemID() <= 13000) {
                            player.getZeroInfo().setSubSkin(entry.getItemID() - 12000);
-                           player.setSecondSkinColor((byte)(entry.getItemID() - 12000));
+                           player.setSecondSkinColor((byte) (entry.getItemID() - 12000));
                         } else {
                            player.getZeroInfo().setSubSkin(0);
-                           player.setSecondSkinColor((byte)0);
+                           player.setSecondSkinColor((byte) 0);
                         }
 
                         player.getZeroInfo().sendUpdateZeroInfo(player, ZeroInfoFlag.SubSkin);
@@ -8807,20 +8994,20 @@ public class PlayerHandler {
                         int beforeSkin = second ? player.getSecondSkinColor() : player.getSkinColor();
                         if (second) {
                            if (entry.getItemID() >= 0 && entry.getItemID() < 100) {
-                              player.setSecondSkinColor((byte)entry.getItemID());
+                              player.setSecondSkinColor((byte) entry.getItemID());
                               player.updateSingleStat(MapleStat.SKIN, player.getSecondSkinColor());
                            } else if (entry.getItemID() >= 12000 && entry.getItemID() <= 13000) {
-                              player.setSecondSkinColor((byte)(entry.getItemID() - 12000));
+                              player.setSecondSkinColor((byte) (entry.getItemID() - 12000));
                               player.updateSingleStat(MapleStat.SKIN, player.getSecondSkinColor());
                            } else {
-                              player.setSecondSkinColor((byte)0);
+                              player.setSecondSkinColor((byte) 0);
                               player.updateSingleStat(MapleStat.SKIN, player.getSecondSkinColor());
                            }
                         } else if (entry.getItemID() >= 0 && entry.getItemID() < 100) {
-                           player.setSkinColor((byte)entry.getItemID());
+                           player.setSkinColor((byte) entry.getItemID());
                            player.updateSingleStat(MapleStat.SKIN, player.getSkinColor());
                         } else if (entry.getItemID() >= 12000 && entry.getItemID() <= 13000) {
-                           player.setSkinColor((byte)(entry.getItemID() - 12000));
+                           player.setSkinColor((byte) (entry.getItemID() - 12000));
                            player.updateSingleStat(MapleStat.SKIN, player.getSkinColor());
                         } else {
                            player.setSkinColor(0);
@@ -8867,8 +9054,8 @@ public class PlayerHandler {
                int yPos = packet.readInt();
                if (level.getQ2() > player.getSecondAtomCount(SecondAtom.SecondAtomType.DragonVein)) {
                   SecondAtom.Atom a = new SecondAtom.Atom(
-                     field, player.getId(), 162101000, SecondAtom.SN.getAndAdd(1), SecondAtom.SecondAtomType.DragonVein, 0, null, new Point(xPos, yPos)
-                  );
+                        field, player.getId(), 162101000, SecondAtom.SN.getAndAdd(1),
+                        SecondAtom.SecondAtomType.DragonVein, 0, null, new Point(xPos, yPos));
                   Skill skill = SkillFactory.getSkill(162101000);
                   List<SecondAtom.Atom> atoms = new ArrayList<>();
                   if (skill != null) {
@@ -8921,7 +9108,8 @@ public class PlayerHandler {
             if (mobSkillInfo != null) {
                for (MapleMonster mob : player.getMap().getAllMonstersThreadsafe()) {
                   if (mob.getStats().isBoss() || mob.getId() == 8920005) {
-                     int heal = (int)(mob.getStats().getMaxHp() * 0.01 * mobSkillInfo.getMobSkillStatsInt(MobSkillStat.bossHeal));
+                     int heal = (int) (mob.getStats().getMaxHp() * 0.01
+                           * mobSkillInfo.getMobSkillStatsInt(MobSkillStat.bossHeal));
                      mob.heal(heal, 0, true);
                   }
                }
@@ -8948,7 +9136,7 @@ public class PlayerHandler {
          Field map = player.getMap();
          if (map != null) {
             if (map instanceof Field_SerenPhase2) {
-               Field_SerenPhase2 f = (Field_SerenPhase2)map;
+               Field_SerenPhase2 f = (Field_SerenPhase2) map;
                packet.skip(8);
                int delaySN = packet.readInt();
                int serealNumber = f.getDelaySN();
@@ -8974,7 +9162,8 @@ public class PlayerHandler {
          if (target != null) {
             SecondaryStatEffect holyUnity = chr.getBuffedEffect(SecondaryStatFlag.HolyUnity);
             if (holyUnity != null) {
-               MapleCharacter oldTarget = chr.getMap().getCharacterById(chr.getBuffedValue(SecondaryStatFlag.HolyUnity));
+               MapleCharacter oldTarget = chr.getMap()
+                     .getCharacterById(chr.getBuffedValue(SecondaryStatFlag.HolyUnity));
                if (oldTarget != null) {
                   oldTarget.temporaryStatReset(SecondaryStatFlag.HolyUnity);
                   if (oldTarget.hasBuffBySkillID(1221054)) {
@@ -8987,10 +9176,10 @@ public class PlayerHandler {
                statManager.changeStatValue(SecondaryStatFlag.HolyUnity, 400011003, targetID);
                statManager.temporaryStatSet();
                long duration = chr.getSecondaryStat().getTill(SecondaryStatFlag.HolyUnity) - System.currentTimeMillis();
-               target.temporaryStatSet(SecondaryStatFlag.HolyUnity, 400011021, (int)duration, chr.getId());
+               target.temporaryStatSet(SecondaryStatFlag.HolyUnity, 400011021, (int) duration, chr.getId());
                chr.setJobField("lastHolyUnityCharId", target.getId());
                if (isInvincible) {
-                  target.temporaryStatSet(1221054, (int)duration, SecondaryStatFlag.indiePartialNotDamaged, 1);
+                  target.temporaryStatSet(1221054, (int) duration, SecondaryStatFlag.indiePartialNotDamaged, 1);
                }
             }
          }
@@ -9017,7 +9206,7 @@ public class PlayerHandler {
                   int option3 = slea.readInt();
                   slea.skip(1);
                   int option4 = slea.readInt();
-                  ((Field_TrainMaster)chr.getMap()).movePlayer(chr.getId(), option1, option2, option3, option4);
+                  ((Field_TrainMaster) chr.getMap()).movePlayer(chr.getId(), option1, option2, option3, option4);
                case 1:
                case 2:
                case 3:
@@ -9081,8 +9270,9 @@ public class PlayerHandler {
                         boolean isBoss = slea.readInt() > 0;
                         long maxHp = slea.readLong();
                         Point pos = new Point(slea.readInt(), slea.readInt());
-                        int[][] mobList = new int[][]{
-                           {9834020, 9834021, 9834022, 9834023}, {9834024, 9834025, 9834026, 9834027}, {9834028, 9834029, 9834030, 9834031}
+                        int[][] mobList = new int[][] {
+                              { 9834020, 9834021, 9834022, 9834023 }, { 9834024, 9834025, 9834026, 9834027 },
+                              { 9834028, 9834029, 9834030, 9834031 }
                         };
                         int a = 1;
                         if (isBoss && harved) {
@@ -9099,7 +9289,8 @@ public class PlayerHandler {
                            mob.getStats().setChange(true);
                         }
 
-                        ChangeableStats stat = new ChangeableStats(mob.getStats(), new OverrideMonsterStats(maxHp, mob.getStats().getMp(), 0L));
+                        ChangeableStats stat = new ChangeableStats(mob.getStats(),
+                              new OverrideMonsterStats(maxHp, mob.getStats().getMp(), 0L));
                         stat.level = level;
                         stat.PDRate = pdRate;
                         stat.MDRate = mdRate;
@@ -9110,7 +9301,8 @@ public class PlayerHandler {
                         return;
                      case 2:
                         if (chr.getMap().getAllMonster().size() > 0) {
-                           chr.getMap().killMonster(chr.getMap().getAllMonster().get(chr.getMap().getAllMonster().size() - 1));
+                           chr.getMap().killMonster(
+                                 chr.getMap().getAllMonster().get(chr.getMap().getAllMonster().size() - 1));
                         }
 
                         return;
@@ -9133,8 +9325,9 @@ public class PlayerHandler {
             return;
          }
 
-         int[][] itemList = new int[][]{
-            {4001832, 100}, {4001832, 200}, {4001832, 300}, {2711001, 10}, {2711005, 10}, {2711006, 10}, {2048723, 1}, {2048724, 1}
+         int[][] itemList = new int[][] {
+               { 4001832, 100 }, { 4001832, 200 }, { 4001832, 300 }, { 2711001, 10 }, { 2711005, 10 }, { 2711006, 10 },
+               { 2048723, 1 }, { 2048724, 1 }
          };
          int rand = Randomizer.nextInt(itemList.length);
          double rate;
@@ -9200,7 +9393,8 @@ public class PlayerHandler {
                rate = 10.0;
          }
 
-         if (chr.getInventory(MapleInventoryType.USE).getNumFreeSlot() > 0 && chr.getInventory(MapleInventoryType.ETC).getNumFreeSlot() > 0) {
+         if (chr.getInventory(MapleInventoryType.USE).getNumFreeSlot() > 0
+               && chr.getInventory(MapleInventoryType.ETC).getNumFreeSlot() > 0) {
             chr.gainExp(GameConstants.getExpNeededForLevel(chr.getLevel()) * rate / 100.0, false, false, false);
             if (Randomizer.nextBoolean()) {
                int meso = 5000000;
@@ -9213,8 +9407,10 @@ public class PlayerHandler {
             chr.checkHasteQuestComplete(QuestExConstants.HasteEventSuddenMK.getQuestID());
             chr.updateOneInfo(QuestExConstants.SuddenMKInit.getQuestID(), "Quest", "0");
             chr.updateOneInfo(QuestExConstants.SuddenMKInit.getQuestID(), "state", "1");
-            chr.updateOneInfo(QuestExConstants.SuddenMKInit.getQuestID(), "LastComplete", System.currentTimeMillis() + "");
-            c.getSession().writeAndFlush(CWvsContext.InfoPacket.getShowItemGain(itemList[rand][0], (byte)itemList[rand][1], true));
+            chr.updateOneInfo(QuestExConstants.SuddenMKInit.getQuestID(), "LastComplete",
+                  System.currentTimeMillis() + "");
+            c.getSession().writeAndFlush(
+                  CWvsContext.InfoPacket.getShowItemGain(itemList[rand][0], (byte) itemList[rand][1], true));
             c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
          } else {
             chr.dropMessage(5, "소비창과 기타창을 1칸 비워주세요.");
@@ -9246,7 +9442,7 @@ public class PlayerHandler {
       int chrId = MapleCharacterUtil.getIdByName(chrName);
       int accId = MapleCharacterUtil.getAccByName(chrName);
       if (chrId == -1 && type2 == 0) {
-         c.getPlayer().send(CWvsContext.blackList(false, (byte)6, chrName, denoteName, chrId, 0));
+         c.getPlayer().send(CWvsContext.blackList(false, (byte) 6, chrName, denoteName, chrId, 0));
       } else {
          if (type2 == 0) {
             BlackList blackList = new BlackList(chrName, denoteName, chrId, 0);
@@ -9289,7 +9485,8 @@ public class PlayerHandler {
                Point addPos = new Point(x, y);
                Rectangle rectangle = new Rectangle(x - 100, y - 100, 200, 200);
                if (chr.getMap().getLeft() <= x - 100 && x + 100 <= chr.getMap().getRight()) {
-                  AffectedArea aa = new AffectedArea(rectangle, chr, summonEffect, addPos, 1, System.currentTimeMillis() + summonEffect.getDOTTime() * 1000);
+                  AffectedArea aa = new AffectedArea(rectangle, chr, summonEffect, addPos, 1,
+                        System.currentTimeMillis() + summonEffect.getDOTTime() * 1000);
                   chr.getMap().spawnMist(aa);
                }
             }
@@ -9346,7 +9543,7 @@ public class PlayerHandler {
       MapleCharacter chr = c.getPlayer();
       if (chr != null) {
          int index = p.readInt();
-         int remain = (int)p.available();
+         int remain = (int) p.available();
          byte[] buffer = p.read(remain);
          boolean delete = buffer[0] == 0;
          new String(buffer);
@@ -9358,7 +9555,8 @@ public class PlayerHandler {
                try (ResultSet rs = ps.executeQuery()) {
                   while (rs.next()) {
                      if (rs.getInt("index") == index) {
-                        try (PreparedStatement ps2 = con.prepareStatement("DELETE FROM `shortcutcmd` WHERE `chrid` = ? AND `index` = ?")) {
+                        try (PreparedStatement ps2 = con
+                              .prepareStatement("DELETE FROM `shortcutcmd` WHERE `chrid` = ? AND `index` = ?")) {
                            ps2.setInt(1, chr.getId());
                            ps2.setInt(2, index);
                            ps2.execute();
@@ -9370,7 +9568,8 @@ public class PlayerHandler {
             }
 
             if (!delete) {
-               try (PreparedStatement ps = con.prepareStatement("INSERT INTO `shortcutcmd` (`chrid`, `index`, `data`) VALUES (?, ?, ?)")) {
+               try (PreparedStatement ps = con
+                     .prepareStatement("INSERT INTO `shortcutcmd` (`chrid`, `index`, `data`) VALUES (?, ?, ?)")) {
                   ps.setInt(1, chr.getId());
                   ps.setInt(2, index);
                   Blob blob = new SerialBlob(buffer);
@@ -9393,16 +9592,16 @@ public class PlayerHandler {
          Map<Integer, byte[]> chatShortKeyMap = new HashMap<>();
 
          try (
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT `index`, `data` FROM `shortcutcmd` WHERE `chrid` = ?");
-         ) {
+               Connection con = DBConnection.getConnection();
+               PreparedStatement ps = con
+                     .prepareStatement("SELECT `index`, `data` FROM `shortcutcmd` WHERE `chrid` = ?");) {
             ps.setInt(1, chr.getId());
 
             try (ResultSet rs = ps.executeQuery()) {
                while (rs.next()) {
                   int index = rs.getInt("index");
                   Blob data = rs.getBlob("data");
-                  chatShortKeyMap.put(index, data.getBytes(1L, (int)data.length()));
+                  chatShortKeyMap.put(index, data.getBytes(1L, (int) data.length()));
                }
             }
          } catch (Exception var13) {
@@ -9490,7 +9689,7 @@ public class PlayerHandler {
                   String context = p.readMapleAsciiString();
                   p.readByte();
                   if (targetName.equals(chr.getName())) {
-                     chr.send(CSPacket.OnMemoResult((byte)9, (byte)5));
+                     chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 5));
                      return;
                   } else {
                      int mySentBox = 0;
@@ -9505,25 +9704,25 @@ public class PlayerHandler {
                         chr.dropMessage(1, "보낸 메시지함이 가득찼습니다.");
                         return;
                      } else if (MapleCharacterUtil.canCreateChar(targetName, false, true)) {
-                        chr.send(CSPacket.OnMemoResult((byte)9, (byte)1));
+                        chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 1));
                         return;
                      } else {
                         int ch = Center.Find.findChannel(targetName);
                         int count = MapleCharacterUtil.memoCount(targetName);
                         if (count >= 30) {
-                           chr.send(CSPacket.OnMemoResult((byte)9, (byte)2));
+                           chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 2));
                            return;
                         } else {
                            int targetId = MapleCharacterUtil.getIdByName(targetName);
                            if (targetId == -1) {
-                              chr.send(CSPacket.OnMemoResult((byte)9, (byte)1));
+                              chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 1));
                               return;
                            } else {
                               Pair<MapleMessage, MapleMessage> memoResult = MapleCharacterUtil.sendNewMemo(
-                                 chr.getId(), chr.getName(), targetId, targetName, context, 0, chr.getClient().isGm()
-                              );
+                                    chr.getId(), chr.getName(), targetId, targetName, context, 0,
+                                    chr.getClient().isGm());
                               if (memoResult == null) {
-                                 chr.send(CSPacket.OnMemoResult((byte)9, (byte)1));
+                                 chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 1));
                                  return;
                               } else {
                                  int index = 0;
@@ -9536,7 +9735,7 @@ public class PlayerHandler {
                                     }
                                  }
 
-                                 chr.send(CSPacket.OnMemoResult((byte)8, (byte)0));
+                                 chr.send(CSPacket.OnMemoResult((byte) 8, (byte) 0));
                                  chr.send(CSPacket.updateSentMessage(index, memoResult.right));
                                  chr.gainMeso(-10000L, true);
                                  if (ch >= 0) {
@@ -9612,7 +9811,8 @@ public class PlayerHandler {
          int value = client.getPlayer().getBuffedValueDefault(SecondaryStatFlag.HowlingGale, 0);
          if (value < 3) {
             if (value == 2) {
-               client.getPlayer().temporaryStatSet(400031003, Integer.MAX_VALUE, SecondaryStatFlag.HowlingGale, value + 1);
+               client.getPlayer().temporaryStatSet(400031003, Integer.MAX_VALUE, SecondaryStatFlag.HowlingGale,
+                     value + 1);
                client.getPlayer().setLastHowlingGaleUseTime(0L);
             } else {
                client.getPlayer().temporaryStatSet(400031003, 20000, SecondaryStatFlag.HowlingGale, value + 1);
@@ -9710,40 +9910,51 @@ public class PlayerHandler {
 
                int needErdax;
                if (coreType == 1) {
-                  needErdax = HexaMatrixConstants.getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE);
+                  needErdax = HexaMatrixConstants
+                        .getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE);
                } else if (coreType == 2) {
-                  needErdax = HexaMatrixConstants.getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE);
+                  needErdax = HexaMatrixConstants
+                        .getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE);
                } else if (coreType == 3) {
-                  needErdax = HexaMatrixConstants.getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE);
+                  needErdax = HexaMatrixConstants
+                        .getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE);
                } else {
                   if (coreType != 4) {
-                     chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
+                     chr.send(CWvsContext.hexaMatrixReslut(type,
+                           HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
                      return;
                   }
 
-                  needErdax = HexaMatrixConstants.getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE);
+                  needErdax = HexaMatrixConstants
+                        .getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE);
                }
 
                int needPiecex;
                if (coreType == 1) {
-                  needPiecex = HexaMatrixConstants.getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE);
+                  needPiecex = HexaMatrixConstants
+                        .getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE);
                } else if (coreType == 2) {
-                  needPiecex = HexaMatrixConstants.getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE);
+                  needPiecex = HexaMatrixConstants
+                        .getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE);
                } else if (coreType == 3) {
-                  needPiecex = HexaMatrixConstants.getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE);
+                  needPiecex = HexaMatrixConstants
+                        .getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE);
                } else {
                   if (coreType != 4) {
-                     chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
+                     chr.send(CWvsContext.hexaMatrixReslut(type,
+                           HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
                      return;
                   }
 
-                  needPiecex = HexaMatrixConstants.getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE);
+                  needPiecex = HexaMatrixConstants
+                        .getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE);
                }
 
                int haveErdax = chr.getSolErda();
                int havePiecexx = chr.getItemQuantity(4009547, false) + chr.getItemQuantity(4009548, false);
                if (needErdax > haveErdax) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type,
+                        HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
                   return;
                }
 
@@ -9784,13 +9995,15 @@ public class PlayerHandler {
                int checkLevel = slea.readInt();
                int coreLevel = chr.getHexaCore().getSkillCoreLevel(coreIdx);
                if (coreLevel != checkLevel) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(),
+                        0, 0));
                   return;
                }
 
                int coreEnforcelevel = slea.readInt();
                if (coreLevel >= coreEnforcelevel) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(),
+                        0, 0));
                   return;
                }
 
@@ -9803,45 +10016,55 @@ public class PlayerHandler {
 
                for (; i < coreEnforcelevel; i++) {
                   if (coreType == 1) {
-                     needErdax += HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE, i);
+                     needErdax += HexaMatrixConstants
+                           .getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE, i);
                   } else if (coreType == 2) {
-                     needErdax += HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE, i);
+                     needErdax += HexaMatrixConstants
+                           .getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE, i);
                   } else if (coreType == 3) {
-                     needErdax += HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
+                     needErdax += HexaMatrixConstants
+                           .getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
                   } else {
                      if (coreType != 4) {
                         chr.dropMessage(1, "오류가 발생했습니다.");
                         return;
                      }
 
-                     needErdax += HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE, i);
+                     needErdax += HexaMatrixConstants
+                           .getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE, i);
                   }
 
                   if (coreType == 1) {
-                     needPiecex += HexaMatrixConstants.getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE, i);
+                     needPiecex += HexaMatrixConstants
+                           .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.SKILL_CORE, i);
                   } else if (coreType == 2) {
-                     needPiecex += HexaMatrixConstants.getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE, i);
+                     needPiecex += HexaMatrixConstants
+                           .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.MASTERY_CORE, i);
                   } else if (coreType == 3) {
-                     needPiecex += HexaMatrixConstants.getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
+                     needPiecex += HexaMatrixConstants
+                           .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
                   } else {
                      if (coreType != 4) {
                         chr.dropMessage(1, "오류가 발생했습니다.");
                         return;
                      }
 
-                     needPiecex += HexaMatrixConstants.getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE, i);
+                     needPiecex += HexaMatrixConstants
+                           .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.COMMON_CORE, i);
                   }
                }
 
                if (needErdax != checkErda || needPiecex != checkPiece) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UserInfoError.getType(),
+                        0, 0));
                   return;
                }
 
                i = chr.getSolErda();
                int havePiecex = chr.getItemQuantity(4009547, false) + chr.getItemQuantity(4009548, false);
                if (needErdax > i) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type,
+                        HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
                   return;
                }
 
@@ -9873,12 +10096,15 @@ public class PlayerHandler {
                chr.send(CWvsContext.hexaMatrixReslut(type, 0, coreIdx, checkLevel));
                break;
             case 2: {
-               int needErda = HexaMatrixConstants.getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT);
-               int needPiece = HexaMatrixConstants.getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT);
+               int needErda = HexaMatrixConstants
+                     .getNeedSolErdaToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT);
+               int needPiece = HexaMatrixConstants
+                     .getNeedSolErdaPieceToOpenHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT);
                int haveErda = chr.getSolErda();
                int havePiece = chr.getItemQuantity(4009547, false) + chr.getItemQuantity(4009548, false);
                if (needErda > haveErda) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type,
+                        HexaMatrixConstants.HexaMatrixMsg.NotEnoughSolErda.getType(), 0, 0));
                   return;
                }
 
@@ -9901,9 +10127,9 @@ public class PlayerHandler {
                data.resetAndAddHexaStat(stat0, stat1, stat2);
                Skill skill = SkillFactory.getSkill(500071000);
                byte level = 1;
-               byte masterlevel = (byte)skill.getMaxLevel();
+               byte masterlevel = (byte) skill.getMaxLevel();
                if (level > skill.getMaxLevel()) {
-                  level = (byte)skill.getMaxLevel();
+                  level = (byte) skill.getMaxLevel();
                }
 
                c.getPlayer().changeSkillLevel(skill, level, masterlevel);
@@ -9915,18 +10141,22 @@ public class PlayerHandler {
                int coreIdxxxx = slea.readInt();
                int index = HexaMatrixConstants.getHexaStatIndexByCoreId(coreIdxxxx);
                HexaCore.HexaStatData data = chr.getHexaCore().getStat(index);
-               if (data == null || data.getStats().get(0) == null || data.getStats().get(1) == null || data.getStats().get(2) == null) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
+               if (data == null || data.getStats().get(0) == null || data.getStats().get(1) == null
+                     || data.getStats().get(2) == null) {
+                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(),
+                        0, 0));
                   return;
                }
 
                if (data.getStats().get(0).level + data.getStats().get(1).level + data.getStats().get(2).level >= 20) {
-                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(), 0, 0));
+                  chr.send(CWvsContext.hexaMatrixReslut(type, HexaMatrixConstants.HexaMatrixMsg.UnknownError.getType(),
+                        0, 0));
                   return;
                }
 
                int havePiecexxx = chr.getItemQuantity(4009547, false) + chr.getItemQuantity(4009548, false);
-               int needPiecexx = HexaMatrixConstants.getNeedSolErdaPieceToUpgradeMainHexaStat(data.getStats().get(0).level);
+               int needPiecexx = HexaMatrixConstants
+                     .getNeedSolErdaPieceToUpgradeMainHexaStat(data.getStats().get(0).level);
                if (havePiecexxx < needPiecexx) {
                   chr.dropMessage(1, "솔 에르다 조각이 부족합니다.");
                   return;
@@ -9985,7 +10215,8 @@ public class PlayerHandler {
                sb.append(c.getPlayer().getName());
                sb.append("(");
                sb.append(result == 0 ? "메인스탯" : (result == 1 ? "에디셔널스탯1" : "에디셔널스탯2"));
-               sb.append("+1) 결과 : (" + data.getStats().get(0).level + " / " + data.getStats().get(1).level + " / " + data.getStats().get(2).level + ")");
+               sb.append("+1) 결과 : (" + data.getStats().get(0).level + " / " + data.getStats().get(1).level + " / "
+                     + data.getStats().get(2).level + ")");
                LoggingManager.putLog(new EnchantLog(c.getPlayer(), 0, 0, 0L, EnchantLogType.HexaStat.getType(), 0, sb));
                data.setChanged(true);
                chr.send(CWvsContext.hexaMatrixStatUpdate(chr.getHexaCore()));
@@ -10075,15 +10306,13 @@ public class PlayerHandler {
             case 8:
                String secondPassword = slea.readMapleAsciiString();
                chr.send(
-                  CWvsContext.hexaMatrixReslut(
-                     type,
-                     c.CheckSecondPassword(secondPassword)
-                        ? HexaMatrixConstants.HexaMatrixMsg.Reslut.getType()
-                        : HexaMatrixConstants.HexaMatrixMsg.SecondPassWordError.getType(),
-                     0,
-                     0
-                  )
-               );
+                     CWvsContext.hexaMatrixReslut(
+                           type,
+                           c.CheckSecondPassword(secondPassword)
+                                 ? HexaMatrixConstants.HexaMatrixMsg.Reslut.getType()
+                                 : HexaMatrixConstants.HexaMatrixMsg.SecondPassWordError.getType(),
+                           0,
+                           0));
          }
       }
    }
@@ -10117,72 +10346,72 @@ public class PlayerHandler {
 
             for (String info : infos) {
                String[] keyvalue = info.split("\\=");
-               String[] keys368 = new String[]{
-                  "wndHtK1",
-                  "damEff1",
-                  "mAnd1",
-                  "mSE1",
-                  "vME1",
-                  "fLoc1",
-                  "sNum1",
-                  "mE1",
-                  "vSE1",
-                  "fType1",
-                  "mBG1",
-                  "mobInf1",
-                  "mM1",
-                  "sAuto1",
-                  "mSV1",
-                  "vE1",
-                  "sCon1",
-                  "magUI1",
-                  "vSync1",
-                  "qsEff1",
-                  "mME1",
-                  "vBG1",
-                  "vM1",
-                  "vSV1"
+               String[] keys368 = new String[] {
+                     "wndHtK1",
+                     "damEff1",
+                     "mAnd1",
+                     "mSE1",
+                     "vME1",
+                     "fLoc1",
+                     "sNum1",
+                     "mE1",
+                     "vSE1",
+                     "fType1",
+                     "mBG1",
+                     "mobInf1",
+                     "mM1",
+                     "sAuto1",
+                     "mSV1",
+                     "vE1",
+                     "sCon1",
+                     "magUI1",
+                     "vSync1",
+                     "qsEff1",
+                     "mME1",
+                     "vBG1",
+                     "vM1",
+                     "vSV1"
                };
-               String[] keys369 = new String[]{
-                  "cmbMsg2",
-                  "chTime2",
-                  "fcW2",
-                  "mlUpTy2",
-                  "chPos2",
-                  "fcA2",
-                  "petHP2",
-                  "pBack2",
-                  "simItm2",
-                  "aOther2",
-                  "qsTime2",
-                  "fSize2",
-                  "mEdge2",
-                  "fcF2",
-                  "fcG2",
-                  "aMine2",
-                  "avMega2",
-                  "mlUpAc2",
-                  "trem2",
-                  "aUI2"
+               String[] keys369 = new String[] {
+                     "cmbMsg2",
+                     "chTime2",
+                     "fcW2",
+                     "mlUpTy2",
+                     "chPos2",
+                     "fcA2",
+                     "petHP2",
+                     "pBack2",
+                     "simItm2",
+                     "aOther2",
+                     "qsTime2",
+                     "fSize2",
+                     "mEdge2",
+                     "fcF2",
+                     "fcG2",
+                     "aMine2",
+                     "avMega2",
+                     "mlUpAc2",
+                     "trem2",
+                     "aUI2"
                };
-               String[] keys370 = new String[]{
-                  "silTy3",
-                  "gqCB3",
-                  "gqI3",
-                  "silBo3",
-                  "gqCE3",
-                  "gqL3",
-                  "gqP3",
-                  "gqCL3",
-                  "gqT3",
-                  "silTh3",
-                  "gqCP3",
-                  "gqCT3",
-                  "damAmt3",
-                  "wrnHP3",
-                  "gqB3",
-                  "gqE3",
-                  "wrnMP3"
+               String[] keys370 = new String[] {
+                     "silTy3",
+                     "gqCB3",
+                     "gqI3",
+                     "silBo3",
+                     "gqCE3",
+                     "gqL3",
+                     "gqP3",
+                     "gqCL3",
+                     "gqT3",
+                     "silTh3",
+                     "gqCP3",
+                     "gqCT3",
+                     "damAmt3",
+                     "wrnHP3",
+                     "gqB3",
+                     "gqE3",
+                     "wrnMP3"
                };
 
                for (String check : keys368) {

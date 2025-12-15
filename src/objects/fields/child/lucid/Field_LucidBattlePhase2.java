@@ -66,7 +66,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
    @Override
    public MapleMonster getBoss() {
-      int[] boss = new int[]{8880150, 8880151, 8880152, 8880153, 8880191};
+      int[] boss = new int[] { 8880150, 8880151, 8880152, 8880153, 8880191 };
 
       for (int mob : boss) {
          MapleMonster ret = this.getMonsterById(mob);
@@ -97,19 +97,23 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
    public void onMobEnter(MapleMonster mob) {
       super.onMobEnter(mob);
       if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
-         mob.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + System.currentTimeMillis(), null, 0);
+         mob.addResistSkill(MobTemporaryStatFlag.FREEZE, System.currentTimeMillis() + System.currentTimeMillis(), null,
+               0);
          if (this.getBoss() != null && this.getBoss().getId() == mob.getId()) {
-            MobTemporaryStatEffect e = new MobTemporaryStatEffect(MobTemporaryStatFlag.INVINCIBLE, 1, 146, new MobSkillInfo(146, 18), true);
+            MobTemporaryStatEffect e = new MobTemporaryStatEffect(MobTemporaryStatFlag.INVINCIBLE, 1, 146,
+                  new MobSkillInfo(146, 18), true);
             e.setCancelTask(5000L);
             mob.applyStatus(e);
          }
       }
 
       if (DBConfig.isGanglim
-         && (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HardLucidBoss || this.getFieldSetInstance() instanceof NormalLucidBoss)
-         && this.getBoss() != null
-         && this.getBoss().getId() == mob.getId()) {
-         MobTemporaryStatEffect e = new MobTemporaryStatEffect(MobTemporaryStatFlag.INVINCIBLE, 1, 146, new MobSkillInfo(146, 18), true);
+            && (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HardLucidBoss
+                  || this.getFieldSetInstance() instanceof NormalLucidBoss)
+            && this.getBoss() != null
+            && this.getBoss().getId() == mob.getId()) {
+         MobTemporaryStatEffect e = new MobTemporaryStatEffect(MobTemporaryStatFlag.INVINCIBLE, 1, 146,
+               new MobSkillInfo(146, 18), true);
          e.setCancelTask(0L);
          mob.applyStatus(e);
       }
@@ -135,7 +139,8 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
       Point pt = new Point(620, -50);
       MapleMonster mob = MapleLifeFactory.getMonster(8880152);
       mob.setPosition(pt);
-      if (DBConfig.isGanglim && this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
+      if (DBConfig.isGanglim && this.getFieldSetInstance() != null
+            && this.getFieldSetInstance() instanceof HellLucidBoss) {
          long hp = mob.getStats().getMaxHp();
          ChangeableStats cs = new ChangeableStats(mob.getStats());
          cs.hp = hp * 40L;
@@ -146,7 +151,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
          mob.setOverrideStats(cs);
       }
 
-      this.spawnMonsterOnGroundBelow(mob, pt, (byte)-2, true);
+      this.spawnMonsterOnGroundBelow(mob, pt, (byte) -2, true);
 
       for (MapleMonster m : this.getAllMonstersThreadsafe()) {
          this.killMonster(m, false);
@@ -377,10 +382,11 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                this.broadcastMessage(CField.getClock(10));
 
                for (PartyMemberEntry entry : party.getPartyMember().getPartyMemberList()) {
-                  MapleCharacter character = GameServer.getInstance(pp.getClient().getChannel()).getPlayerStorage().getCharacterById(entry.getId());
+                  MapleCharacter character = GameServer.getInstance(pp.getClient().getChannel()).getPlayerStorage()
+                        .getCharacterById(entry.getId());
                   if (character != null
-                     && character.getDeathCount() > 0
-                     && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
+                        && character.getDeathCount() > 0
+                        && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
                      character.setRegisterTransferFieldTime(System.currentTimeMillis() + 10000L);
                      character.setRegisterTransferField(450004300 + sub);
                   }
@@ -407,10 +413,11 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                }
 
                for (PartyMemberEntry entryx : party.getPartyMember().getPartyMemberList()) {
-                  MapleCharacter character = GameServer.getInstance(pp.getClient().getChannel()).getPlayerStorage().getCharacterById(entryx.getId());
+                  MapleCharacter character = GameServer.getInstance(pp.getClient().getChannel()).getPlayerStorage()
+                        .getCharacterById(entryx.getId());
                   if (character != null
-                     && character.getDeathCount() > 0
-                     && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
+                        && character.getDeathCount() > 0
+                        && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
                      character.setRegisterTransferFieldTime(System.currentTimeMillis() + 10000L);
                      character.setRegisterTransferField(450004600 + sub);
                   }
@@ -443,7 +450,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                         p.setCanAttackLucidRewardMob(true);
                         p.addGuildContributionByBoss(mob.getId());
-                        p.gainItem(4001879, (short)quantity, false, -1L, "루시드 격파로 얻은 아이템");
+                        p.gainItem(4001879, (short) quantity, false, -1L, "ไอเทมที่ได้รับจากการกำจัด Lucid");
                      }
 
                      if (!set) {
@@ -454,7 +461,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                            for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
                               names.add(mpc.getName());
-                              StringBuilder sb = new StringBuilder("보스 노말 루시드 격파");
+                              StringBuilder sb = new StringBuilder("กำจัด Boss Normal Lucid");
                               MapleCharacter playerxxxx = this.getCharacterById(mpc.getId());
                               if (playerxxxx != null) {
                                  LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
@@ -464,17 +471,16 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                            if (!DBConfig.isGanglim) {
                               list = String.join(",", names);
                               Center.Broadcast.broadcastMessage(
-                                 CField.chatMsg(
-                                    DBConfig.isGanglim ? 8 : 22,
-                                    "[보스격파] [CH."
-                                       + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                       + "] '"
-                                       + p.getParty().getLeader().getName()
-                                       + "' 파티("
-                                       + list
-                                       + ")가 [노말 루시드]를 격파하였습니다."
-                                 )
-                              );
+                                    CField.chatMsg(
+                                          DBConfig.isGanglim ? 8 : 22,
+                                          "[보스격파] [CH."
+                                                + (this.getChannel() == 2 ? "20세 이상"
+                                                      : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                                + "] '"
+                                                + p.getParty().getLeader().getName()
+                                                + "' Party("
+                                                + list
+                                                + ") has defeated [Normal Lucid]."));
                            }
                         } else if (mob.getId() == 8880153) {
                            this.bossClearQex(p, 1234569, "hard_lucid_clear");
@@ -491,11 +497,13 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                               for (PartyMemberEntry mpcx : new ArrayList<>(p.getParty().getPartyMemberList())) {
                                  boolean hell = false;
-                                 if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
+                                 if (this.getFieldSetInstance() != null
+                                       && this.getFieldSetInstance() instanceof HellLucidBoss) {
                                     MapleCharacter p_ = this.getCharacterById(mpcx.getId());
                                     if (p_ != null) {
                                        String keyValue = "hell_lucid_point";
-                                       p_.updateOneInfo(787777, keyValue, String.valueOf(p_.getOneInfoQuestInteger(787777, keyValue) + 3));
+                                       p_.updateOneInfo(787777, keyValue,
+                                             String.valueOf(p_.getOneInfoQuestInteger(787777, keyValue) + 3));
                                        if (!check) {
                                           this.bossClearQex(p, 1234569, "hell_lucid_clear");
                                           check = true;
@@ -505,39 +513,39 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                     hell = true;
                                  }
 
-                                 StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 루시드 격파 (" + list + ")");
+                                 StringBuilder sb = new StringBuilder(
+                                       "กำจัด Boss " + (hell ? "Hell" : "Hard") + " Lucid (" + list + ")");
                                  MapleCharacter playerxxxx = this.getCharacterById(mpcx.getId());
                                  if (playerxxxx != null) {
                                     LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
                                  }
                               }
 
-                              if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
+                              if (this.getFieldSetInstance() != null
+                                    && this.getFieldSetInstance() instanceof HellLucidBoss) {
                                  Center.Broadcast.broadcastMessage(
-                                    CField.chatMsg(
-                                       22,
-                                       "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                          + "] '"
-                                          + p.getParty().getLeader().getName()
-                                          + "' 파티("
-                                          + list
-                                          + ")가 [헬 루시드]를 격파하였습니다."
-                                    )
-                                 );
+                                       CField.chatMsg(
+                                             22,
+                                             "[Boss Defeated] [CH."
+                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                                         : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                                   + "] ปาร์ตี้ '"
+                                                   + p.getParty().getLeader().getName()
+                                                   + "' ("
+                                                   + list
+                                                   + ") ได้กำจัด [Hell Lucid] แล้ว"));
                               } else if (!DBConfig.isGanglim) {
                                  Center.Broadcast.broadcastMessage(
-                                    CField.chatMsg(
-                                       22,
-                                       "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                          + "] '"
-                                          + p.getParty().getLeader().getName()
-                                          + "' 파티("
-                                          + list
-                                          + ")가 [하드 루시드]를 격파하였습니다."
-                                    )
-                                 );
+                                       CField.chatMsg(
+                                             22,
+                                             "[보스격파] [CH."
+                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                                         : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                                   + "] '"
+                                                   + p.getParty().getLeader().getName()
+                                                   + "' Party("
+                                                   + list
+                                                   + ") has defeated [Hard Lucid]."));
                               }
                            } else {
                               String list = "";
@@ -551,10 +559,13 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                               for (PartyMemberEntry mpcx : new ArrayList<>(p.getParty().getPartyMemberList())) {
                                  boolean hellx = false;
-                                 if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
-                                    MapleCharacter p_ = p.getClient().getChannelServer().getPlayerStorage().getCharacterById(mpcx.getId());
+                                 if (this.getFieldSetInstance() != null
+                                       && this.getFieldSetInstance() instanceof HellLucidBoss) {
+                                    MapleCharacter p_ = p.getClient().getChannelServer().getPlayerStorage()
+                                          .getCharacterById(mpcx.getId());
                                     if (p_ != null) {
-                                       p_.updateOneInfo(1234569, "hell_lucid_clear", String.valueOf(p_.getOneInfoQuestInteger(1234569, "hell_lucid_clear") + 1));
+                                       p_.updateOneInfo(1234569, "hell_lucid_clear", String
+                                             .valueOf(p_.getOneInfoQuestInteger(1234569, "hell_lucid_clear") + 1));
                                     } else {
                                        this.updateOfflineBossLimit(mpcx.getId(), 1234569, "hell_lucid_clear", "1");
                                     }
@@ -562,39 +573,42 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                     hellx = true;
                                  }
 
-                                 StringBuilder sb = new StringBuilder("보스 " + (hellx ? "헬" : "하드") + " 루시드 격파 (" + list + ")");
+                                 StringBuilder sb = new StringBuilder(
+                                       "กำจัด Boss " + (hellx ? "Hell" : "Hard") + " Lucid (" + list + ")");
                                  MapleCharacter playerxxxx = this.getCharacterById(mpcx.getId());
                                  if (playerxxxx != null) {
                                     LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
                                  }
                               }
 
-                              if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellLucidBoss) {
+                              if (this.getFieldSetInstance() != null
+                                    && this.getFieldSetInstance() instanceof HellLucidBoss) {
                                  Center.Broadcast.broadcastMessage(
-                                    CField.chatMsg(
-                                       22,
-                                       "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                          + "] '"
-                                          + p.getParty().getLeader().getName()
-                                          + "' 파티("
-                                          + list
-                                          + ")가 [헬 루시드]를 격파하였습니다."
-                                    )
-                                 );
+                                       CField.chatMsg(
+                                             22,
+                                             "[Boss Defeated] [CH."
+                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                                         : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                                   + "] ปาร์ตี้ '"
+                                                   + p.getParty().getLeader().getName()
+                                                   + "' ("
+                                                   + list
+                                                   + ") ได้กำจัด [Hell Lucid] แล้ว"));
                               }
                            }
                         }
 
                         if (DBConfig.isGanglim) {
                            if (this.getFieldSetInstance() == null
-                              || this.getFieldSetInstance() != null && !(this.getFieldSetInstance() instanceof HellLucidBoss)) {
+                                 || this.getFieldSetInstance() != null
+                                       && !(this.getFieldSetInstance() instanceof HellLucidBoss)) {
                               this.bossClear(mob.getId(), 1234569, "lucid_clear");
                            }
                         } else {
                            this.bossClear(mob.getId(), 1234569, "lucid_clear");
                            if (this.getFieldSetInstance() == null
-                              || this.getFieldSetInstance() != null && !(this.getFieldSetInstance() instanceof HellLucidBoss)) {
+                                 || this.getFieldSetInstance() != null
+                                       && !(this.getFieldSetInstance() instanceof HellLucidBoss)) {
                               boolean multiCheck = false;
 
                               for (MapleCharacter partyMember : this.getCharacters()) {

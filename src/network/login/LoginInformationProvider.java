@@ -42,8 +42,7 @@ public class LoginInformationProvider {
 
       MapleData infoData = prov.getData("MakeCharInfo.img");
 
-      label135:
-      for (MapleData dat : infoData) {
+      label135: for (MapleData dat : infoData) {
          try {
             int type;
             if (dat.getName().equals("000_1")) {
@@ -64,7 +63,7 @@ public class LoginInformationProvider {
                      continue label135;
                   }
 
-                  d = (MapleData)key.next();
+                  d = (MapleData) key.next();
                   if (d.getName().contains("female")) {
                      val = 1;
                      break;
@@ -77,7 +76,40 @@ public class LoginInformationProvider {
                }
 
                for (MapleData da : d) {
-                  Triple<Integer, String, Integer> keyx = new Triple<>(val, MapleDataTool.getString(da.getChildByPath("name"), ""), type);
+                  String keyName = MapleDataTool.getString(da.getChildByPath("name"), "");
+                  switch (keyName) {
+                     case "궁모":
+                        keyName = "UltimateExplorer";
+                        break;
+                     case "모자":
+                        keyName = "Hat";
+                        break;
+                     case "상의":
+                        keyName = "Top";
+                        break;
+                     case "의상":
+                        keyName = "Overall";
+                        break;
+                     case "하의":
+                        keyName = "Bottom";
+                        break;
+                     case "망토":
+                        keyName = "Cape";
+                        break;
+                     case "신발":
+                        keyName = "Shoes";
+                        break;
+                     case "무기":
+                        keyName = "Weapon";
+                        break;
+                     case "얼굴":
+                        keyName = "Face";
+                        break;
+                     case "헤어":
+                        keyName = "Hair";
+                        break;
+                  }
+                  Triple<Integer, String, Integer> keyx = new Triple<>(val, keyName, type);
                   List<Integer> our = this.makeCharInfo.get(keyx);
                   if (our == null) {
                      our = new ArrayList<>();
@@ -111,8 +143,8 @@ public class LoginInformationProvider {
 
       for (MapleData dat : infoData.getChildByPath("UltimateAdventurer")) {
          Triple<Integer, String, Integer> key = new Triple<>(
-            -1, MapleDataTool.getString(dat.getChildByPath("name"), "궁모"), LoginInformationProvider.JobType.UltimateAdventurer.type
-         );
+               -1, MapleDataTool.getString(dat.getChildByPath("name"), "Ultimate Adventurer"),
+               LoginInformationProvider.JobType.UltimateAdventurer.type);
          List<Integer> our = this.makeCharInfo.get(key);
          if (our == null) {
             our = new ArrayList<>();
@@ -125,9 +157,9 @@ public class LoginInformationProvider {
       }
 
       if (DBConfig.isGanglim) {
-         this.ForbiddenName.add("제니아");
-         this.ForbiddenName.add("강림");
-         this.ForbiddenName.add("강림메이플");
+         this.ForbiddenName.add("Zenia");
+         this.ForbiddenName.add("Ganglim");
+         this.ForbiddenName.add("GanglimMaple");
          this.ForbiddenName.add("Royal");
          this.ForbiddenName.add("Royalmaple");
       }

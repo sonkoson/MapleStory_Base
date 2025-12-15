@@ -94,21 +94,22 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
 
    public void channelActive(ChannelHandlerContext ctx) throws Exception {
       String address = ctx.channel().remoteAddress().toString().split(":")[0];
-      byte[] serverRecv = new byte[]{-2, 11, -60, 92};
-      byte[] serverSend = new byte[]{-39, 62, 62, 80};
-      MapleClient client = new MapleClient(ctx.channel(), new MapleAESOFB(serverSend, (short)-380), new MapleAESOFB(serverRecv, (short)379), this.serverType);
+      byte[] serverRecv = new byte[] { -2, 11, -60, 92 };
+      byte[] serverSend = new byte[] { -39, 62, 62, 80 };
+      MapleClient client = new MapleClient(ctx.channel(), new MapleAESOFB(serverSend, (short) -380),
+            new MapleAESOFB(serverRecv, (short) 379), this.serverType);
       client.setChannel(this.channel);
       if (this.serverType == ServerType.LOGIN) {
-         ctx.writeAndFlush(LoginPacket.getHello((short)379, serverSend, serverRecv));
+         ctx.writeAndFlush(LoginPacket.getHello((short) 379, serverSend, serverRecv));
       } else {
-         ctx.writeAndFlush(LoginPacket.getServerHello((short)379, serverSend, serverRecv));
+         ctx.writeAndFlush(LoginPacket.getServerHello((short) 379, serverSend, serverRecv));
       }
 
       ctx.channel().attr(MapleClient.CLIENTKEY).set(client);
    }
 
    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-      MapleClient client = (MapleClient)ctx.channel().attr(MapleClient.CLIENTKEY).get();
+      MapleClient client = (MapleClient) ctx.channel().attr(MapleClient.CLIENTKEY).get();
       if (client != null) {
          client.disconnect(false);
          ctx.channel().attr(MapleClient.CLIENTKEY).set(null);
@@ -120,47 +121,51 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
 
    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
       if (evt instanceof IdleStateEvent) {
-         IdleStateEvent var3 = (IdleStateEvent)evt;
+         IdleStateEvent var3 = (IdleStateEvent) evt;
       }
    }
 
    protected void channelRead0(ChannelHandlerContext ctx, PacketDecoder slea) throws Exception {
-      MapleClient c = (MapleClient)ctx.channel().attr(MapleClient.CLIENTKEY).get();
+      MapleClient c = (MapleClient) ctx.channel().attr(MapleClient.CLIENTKEY).get();
       short header_num = slea.readShort();
       String address = ctx.channel().remoteAddress().toString().split(":")[0];
       if (ServerConstants.DEBUG_RECEIVE
-         && header_num != RecvPacketOpcode.QUEST_ACTION.getValue()
-         && header_num != 112
-         && header_num != RecvPacketOpcode.HEAL_OVER_TIME.getValue()
-         && header_num != RecvPacketOpcode.NPC_ACTION.getValue()
-         && header_num != RecvPacketOpcode.MOVE_SUMMON.getValue()
-         && header_num != RecvPacketOpcode.MOVE_LIFE.getValue()
-         && header_num != RecvPacketOpcode.TAKE_DAMAGE.getValue()
-         && header_num != RecvPacketOpcode.AUTO_AGGRO.getValue()
-         && header_num != RecvPacketOpcode.MOVE_PET.getValue()
-         && header_num != 956
-         && header_num != 377
-         && header_num != RecvPacketOpcode.KEY_PRESSING.getValue()
-         && header_num != RecvPacketOpcode.MOVE_PLAYER.getValue()
-         && header_num != RecvPacketOpcode.HEAL_OVER_TIME.getValue()
-         && header_num != RecvPacketOpcode.INSTANCE_TABLE.getValue()
-         && header_num != RecvPacketOpcode.TEMPORARY_STAT_UPDATE_REQUEST.getValue()) {
-         StringBuilder sb = new StringBuilder("[RECEIVE] " + header_num + " : " + RecvPacketOpcode.getOpcodeName(header_num) + " :\n");
-         sb.append(HexTool.toString(slea.getByteArray())).append("\n").append(HexTool.toStringFromAscii(slea.getByteArray()) + "\n");
+            && header_num != RecvPacketOpcode.QUEST_ACTION.getValue()
+            && header_num != 112
+            && header_num != RecvPacketOpcode.HEAL_OVER_TIME.getValue()
+            && header_num != RecvPacketOpcode.NPC_ACTION.getValue()
+            && header_num != RecvPacketOpcode.MOVE_SUMMON.getValue()
+            && header_num != RecvPacketOpcode.MOVE_LIFE.getValue()
+            && header_num != RecvPacketOpcode.TAKE_DAMAGE.getValue()
+            && header_num != RecvPacketOpcode.AUTO_AGGRO.getValue()
+            && header_num != RecvPacketOpcode.MOVE_PET.getValue()
+            && header_num != 956
+            && header_num != 377
+            && header_num != RecvPacketOpcode.KEY_PRESSING.getValue()
+            && header_num != RecvPacketOpcode.MOVE_PLAYER.getValue()
+            && header_num != RecvPacketOpcode.HEAL_OVER_TIME.getValue()
+            && header_num != RecvPacketOpcode.INSTANCE_TABLE.getValue()
+            && header_num != RecvPacketOpcode.TEMPORARY_STAT_UPDATE_REQUEST.getValue()) {
+         StringBuilder sb = new StringBuilder(
+               "[RECEIVE] " + header_num + " : " + RecvPacketOpcode.getOpcodeName(header_num) + " :\n");
+         sb.append(HexTool.toString(slea.getByteArray())).append("\n")
+               .append(HexTool.toStringFromAscii(slea.getByteArray()) + "\n");
          System.out.println(sb.toString());
       }
 
       if (!ServerConstants.INGAME_TEST_RECV_BLOCK
-         || this.serverType != ServerType.GAME
-         || header_num == RecvPacketOpcode.PLAYER_LOGGEDIN.getValue()
-         || header_num == RecvPacketOpcode.PRIVATE_SERVER_AUTH.getValue()) {
+            || this.serverType != ServerType.GAME
+            || header_num == RecvPacketOpcode.PLAYER_LOGGEDIN.getValue()
+            || header_num == RecvPacketOpcode.PRIVATE_SERVER_AUTH.getValue()) {
          if (!ServerConstants.fuckNegativeArray.isEmpty()) {
             for (int check : ServerConstants.fuckNegativeArray) {
                String toHex = Integer.toHexString(check).toUpperCase();
                String last = toHex.substring(6, 8) + " " + toHex.substring(4, 6);
                if (slea.toString().contains(last)) {
-                  StringBuilder sb = new StringBuilder("[NegativeArray 발생 의심 패킷] " + header_num + " : " + RecvPacketOpcode.getOpcodeName(header_num) + " :\n");
-                  sb.append(HexTool.toString(slea.getByteArray())).append("\n").append(HexTool.toStringFromAscii(slea.getByteArray()) + "\n");
+                  StringBuilder sb = new StringBuilder("[Suspected NegativeArray Packet] " + header_num + " : "
+                        + RecvPacketOpcode.getOpcodeName(header_num) + " :\n");
+                  sb.append(HexTool.toString(slea.getByteArray())).append("\n")
+                        .append(HexTool.toStringFromAscii(slea.getByteArray()) + "\n");
                   FileoutputUtil.log("./ErrorLog/NegativeArrayDebug.txt", sb.toString(), false);
                }
             }
@@ -172,7 +177,8 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
                   this.handlePacket(recv, slea, c, this.serverType);
                } catch (Exception var11) {
                   if (!DBConfig.isHosting) {
-                     System.out.println("[오류] handlePacket 함수 실행중 오류 발생 (" + RecvPacketOpcode.getOpcodeName(header_num) + ") " + var11.toString());
+                     System.out.println("[Error] Error during handlePacket execution ("
+                           + RecvPacketOpcode.getOpcodeName(header_num) + ") " + var11.toString());
                      var11.getStackTrace().toString();
                      var11.printStackTrace();
                   }
@@ -258,7 +264,7 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
 
                      for (int i = 0; i < endBytes.length - 1; i++) {
                         byte numPointer = endBytes[i];
-                        endBytes[i] = (byte)(numPointer | 128);
+                        endBytes[i] = (byte) (numPointer | 128);
                      }
 
                      PacketEncoder p = new PacketEncoder();
@@ -302,12 +308,12 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
                      if (second < 50.0) {
                         player.setSpeedHackCheckCount(player.getSpeedHackCheckCount() + 1);
                         if (player.getSpeedHackCheckCount() >= 3) {
-                           StringBuilder sb = new StringBuilder("스피드 핵 사용 의심 (");
-                           sb.append("계정 : ");
+                           StringBuilder sb = new StringBuilder("Suspected Speed Hack (");
+                           sb.append("Account : ");
                            sb.append(c.getAccountName());
-                           sb.append(", 캐릭터 : ");
+                           sb.append(", Character : ");
                            sb.append(c.getPlayer().getName());
-                           sb.append(", 사용 배수 : " + (int)(60.0 / second) + "배");
+                           sb.append(", Multiplier : " + (int) (60.0 / second) + "x");
                            sb.append("))");
                            LoggingManager.putLog(new HackLog(HackLogType.SpeedHack.getType(), c.getPlayer(), sb));
                         }
@@ -379,7 +385,7 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             }
             break;
          case U_OTP_REQUEST:
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "U-OTP 기능은 추후 업데이트 예정입니다!"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ฟังก์ชัน U-OTP จะอัปเดตในภายหลัง!"));
             break;
          case PACKET_ERROR:
             if (slea.available() >= 6L) {
@@ -399,26 +405,26 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
                String from = "";
                if (c.getPlayer() != null) {
                   from = "Chr: "
-                     + c.getPlayer().getName()
-                     + " LVL("
-                     + c.getPlayer().getLevel()
-                     + ") job: "
-                     + c.getPlayer().getJob()
-                     + " MapID: "
-                     + c.getPlayer().getMapId();
+                        + c.getPlayer().getName()
+                        + " LVL("
+                        + c.getPlayer().getLevel()
+                        + ") job: "
+                        + c.getPlayer().getJob()
+                        + " MapID: "
+                        + c.getPlayer().getMapId();
                }
 
                String Recv = from
-                  + "\r\n"
-                  + "SendOP(-38): "
-                  + op
-                  + " ["
-                  + pHeaderStr
-                  + "] ("
-                  + (badPacketSize - 4)
-                  + ")\r\n"
-                  + slea.toString(false)
-                  + "\r\n\r\n";
+                     + "\r\n"
+                     + "SendOP(-38): "
+                     + op
+                     + " ["
+                     + pHeaderStr
+                     + "] ("
+                     + (badPacketSize - 4)
+                     + ")\r\n"
+                     + slea.toString(false)
+                     + "\r\n\r\n";
                if (!op.equals("NPC_TALK")) {
                   if (!DBConfig.isGanglim) {
                      DiscordBotHandler.requestSendTelegram(Recv, -506322922L);
@@ -801,7 +807,7 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             break;
          case USE_SKILL_BOOK:
             slea.readInt();
-            InventoryHandler.UseSkillBook((byte)slea.readShort(), slea.readInt(), c, c.getPlayer());
+            InventoryHandler.UseSkillBook((byte) slea.readShort(), slea.readInt(), c, c.getPlayer());
             break;
          case USE_CATCH_ITEM:
             InventoryHandler.UseCatchItem(slea, c, c.getPlayer());
@@ -819,7 +825,7 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             InventoryHandler.userSoulEffectRequest(slea, c);
             break;
          case REWARD_ITEM:
-            InventoryHandler.UseRewardItem((byte)slea.readShort(), slea.readInt(), c, c.getPlayer());
+            InventoryHandler.UseRewardItem((byte) slea.readShort(), slea.readInt(), c, c.getPlayer());
             break;
          case HYPNOTIZE_DMG:
             MobHandler.HypnotizeDmg(slea, c.getPlayer());
@@ -1037,13 +1043,14 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             break;
          case PET_COMMAND:
             MaplePet pet = null;
-            pet = c.getPlayer().getPet((byte)slea.readInt());
+            pet = c.getPlayer().getPet((byte) slea.readInt());
             slea.readByte();
             if (pet == null) {
                return;
             }
 
-            PetHandler.PetCommand(pet, PetDataFactory.getPetCommand(pet.getPetItemId(), slea.readByte()), c, c.getPlayer());
+            PetHandler.PetCommand(pet, PetDataFactory.getPetCommand(pet.getPetItemId(), slea.readByte()), c,
+                  c.getPlayer());
             break;
          case PET_FOOD:
             PetHandler.PetFood(slea, c, c.getPlayer());
@@ -1511,11 +1518,13 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             break;
          case ARCANE_CATALYST_UNSTABILITY_PREVIEW:
          case ARCANE_CATALYST_RESTORE_PREVIEW:
-            PlayerHandler.arcaneCatalystPreview(slea, c, header == RecvPacketOpcode.ARCANE_CATALYST_UNSTABILITY_PREVIEW);
+            PlayerHandler.arcaneCatalystPreview(slea, c,
+                  header == RecvPacketOpcode.ARCANE_CATALYST_UNSTABILITY_PREVIEW);
             break;
          case ARCANE_CATALYST_UNSTABILITY_REQUEST:
          case ARCANE_CATALYST_RESTORE_REQUEST:
-            PlayerHandler.arcaneCatalystRequest(slea, c, header == RecvPacketOpcode.ARCANE_CATALYST_UNSTABILITY_REQUEST);
+            PlayerHandler.arcaneCatalystRequest(slea, c,
+                  header == RecvPacketOpcode.ARCANE_CATALYST_UNSTABILITY_REQUEST);
             break;
          case REQUEST_FREE_CHANGE_JOB:
             PlayerHandler.requestFreeChangeJob(slea, c);
@@ -1967,12 +1976,12 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
                      if (second < 50.0) {
                         player.setSpeedHackCheckCount(player.getSpeedHackCheckCount() + 1);
                         if (player.getSpeedHackCheckCount() >= 3) {
-                           StringBuilder sb = new StringBuilder("스피드 핵 사용 의심 (");
-                           sb.append("계정 : ");
+                           StringBuilder sb = new StringBuilder("Suspected Speed Hack (");
+                           sb.append("Account : ");
                            sb.append(c.getAccountName());
-                           sb.append(", 캐릭터 : ");
+                           sb.append(", Character : ");
                            sb.append(c.getPlayer().getName());
-                           sb.append(", 사용 배수 : " + (int)(60.0 / second) + "배");
+                           sb.append(", Multiplier : " + (int) (60.0 / second) + "x");
                            sb.append("))");
                            LoggingManager.putLog(new HackLog(HackLogType.SpeedHack.getType(), c.getPlayer(), sb));
                         }

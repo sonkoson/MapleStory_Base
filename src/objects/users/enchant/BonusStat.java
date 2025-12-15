@@ -20,7 +20,7 @@ public class BonusStat {
    public static double Rate_BlackRebirthFlame = 1.405;
 
    public static boolean test(Item item, int lines, int level, int... source_) {
-      Equip equip = (Equip)item;
+      Equip equip = (Equip) item;
       if (equip == null) {
          return false;
       } else {
@@ -42,31 +42,31 @@ public class BonusStat {
    }
 
    public static boolean resetBonusStat(Item item, BonusStatPlaceType placeType, boolean fromDrop) {
-      Equip equip = (Equip)item;
+      Equip equip = (Equip) item;
       MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
       if (ii != null && equip != null) {
          if (equip.getItemId() == 1113306) {
             setKarmaOption(equip, placeType, fromDrop);
             return true;
          } else if (!GameConstants.isRing(equip.getItemId())
-            && equip.getItemId() / 1000 != 1092
-            && equip.getItemId() / 1000 != 1342
-            && equip.getItemId() / 1000 != 1712
-            && equip.getItemId() / 1000 != 1713
-            && equip.getItemId() / 1000 != 1152
-            && equip.getItemId() / 1000 != 1142
-            && equip.getItemId() / 1000 != 1143
-            && equip.getItemId() / 1000 != 1149
-            && equip.getItemId() / 1000 != 1672
-            && !GameConstants.isSecondaryWeapon(equip.getItemId())
-            && equip.getItemId() / 1000 != 1190
-            && equip.getItemId() / 1000 != 1191
-            && equip.getItemId() / 1000 != 1182
-            && equip.getItemId() / 1000 != 1662
-            && equip.getItemId() / 1000 != 1802
-            && equip.getItemId() / 1000 != 1902
-            && equip.getItemId() / 1000 != 1098
-            && equip.getItemId() / 1000 != 1099) {
+               && equip.getItemId() / 1000 != 1092
+               && equip.getItemId() / 1000 != 1342
+               && equip.getItemId() / 1000 != 1712
+               && equip.getItemId() / 1000 != 1713
+               && equip.getItemId() / 1000 != 1152
+               && equip.getItemId() / 1000 != 1142
+               && equip.getItemId() / 1000 != 1143
+               && equip.getItemId() / 1000 != 1149
+               && equip.getItemId() / 1000 != 1672
+               && !GameConstants.isSecondaryWeapon(equip.getItemId())
+               && equip.getItemId() / 1000 != 1190
+               && equip.getItemId() / 1000 != 1191
+               && equip.getItemId() / 1000 != 1182
+               && equip.getItemId() / 1000 != 1662
+               && equip.getItemId() / 1000 != 1802
+               && equip.getItemId() / 1000 != 1902
+               && equip.getItemId() / 1000 != 1098
+               && equip.getItemId() / 1000 != 1099) {
             Map<ExItemType, Integer> source = new HashMap<>();
             int lines = getExItemLines(equip.getExGradeOption());
             boolean bossReward = ii.isBossReward(item.getItemId());
@@ -80,7 +80,8 @@ public class BonusStat {
 
             while (source.size() < lines) {
                ExItemType type = ExItemType.getRandom();
-               if (!source.containsKey(type) && GameConstants.IsEligibleExOptionPart(item.getItemId(), ii.getReqLevel(item.getItemId()), type)) {
+               if (!source.containsKey(type) && GameConstants.IsEligibleExOptionPart(item.getItemId(),
+                     ii.getReqLevel(item.getItemId()), type)) {
                   int num2 = randomizeLevel(placeType, bossReward);
                   source.put(type, num2);
                }
@@ -105,13 +106,14 @@ public class BonusStat {
                if (!ii.isTradeBlocked(equip.getItemId()) && !ii.isEquipTradeBlocked(equip.getItemId())) {
                   if (!fromDrop) {
                      equip.setFlag(equip.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue());
-                     equip.setKarmaCount((byte)(placeType.type > BonusStatPlaceType.LevelledRebirthFlame.type ? 10 : 5));
+                     equip.setKarmaCount(
+                           (byte) (placeType.type > BonusStatPlaceType.LevelledRebirthFlame.type ? 10 : 5));
                   }
                } else if (ii.isPKarmaEnabled(equip.getItemId())) {
                   if (ii.isPitchedBossset(equip.getItemId())) {
-                     equip.setKarmaCount((byte)5);
+                     equip.setKarmaCount((byte) 5);
                   } else {
-                     equip.setKarmaCount((byte)10);
+                     equip.setKarmaCount((byte) 10);
                   }
                }
             }
@@ -125,7 +127,7 @@ public class BonusStat {
 
       for (Entry<ExItemType, Integer> option : options.entrySet()) {
          int num3 = option.getKey().getType() * 10 + option.getValue();
-         num1 += num3 * (long)Math.pow(1000.0, num2++);
+         num1 += num3 * (long) Math.pow(1000.0, num2++);
       }
 
       equip.setExGradeOption(num1);
@@ -237,7 +239,8 @@ public class BonusStat {
       }
 
       if (DBConfig.isGanglim) {
-         return type == BonusStatPlaceType.BlackRebirthFlame && Randomizer.nextBoolean() ? Randomizer.rand(max - 1, max) : Randomizer.rand(min, max);
+         return type == BonusStatPlaceType.BlackRebirthFlame && Randomizer.nextBoolean() ? Randomizer.rand(max - 1, max)
+               : Randomizer.rand(min, max);
       } else {
          Map<Integer, Integer> source = new HashMap<>();
 
@@ -265,7 +268,7 @@ public class BonusStat {
    }
 
    public static int f(double rate, int x, int min, int max) {
-      return (int)(Math.pow(rate, -x + max - min) * 1000.0);
+      return (int) (Math.pow(rate, -x + max - min) * 1000.0);
    }
 
    public static Map<ExItemType, Integer> getExItemOptions(Equip equip) {
@@ -275,8 +278,8 @@ public class BonusStat {
       for (int index = 0; index < 5; index++) {
          long num1 = exGradeOption % 1000L;
          if (num1 > 0L) {
-            int num2 = (int)(num1 % 10L);
-            ExItemType exItemType = ExItemType.getItemType((int)(num1 / 10L));
+            int num2 = (int) (num1 % 10L);
+            ExItemType exItemType = ExItemType.getItemType((int) (num1 / 10L));
             ret.put(exItemType, num2);
          }
 
@@ -293,8 +296,8 @@ public class BonusStat {
       for (int index = 0; index < 5; index++) {
          long num1 = exGradeOption % 1000L;
          if (num1 > 0L) {
-            int num2 = (int)(num1 % 10L);
-            ExItemType exItemType = ExItemType.getItemType((int)(num1 / 10L));
+            int num2 = (int) (num1 % 10L);
+            ExItemType exItemType = ExItemType.getItemType((int) (num1 / 10L));
             if (exItemType.getType() >= 4 && exItemType.getType() <= 9) {
                ret.putIfAbsent(exItemType, 0);
                switch (exItemType.getType()) {
@@ -429,7 +432,9 @@ public class BonusStat {
                }
             }
 
-            return (int)Math.ceil((type == ExItemType.Pad ? ii.getPad(equip.getItemId()) : ii.getMad(equip.getItemId())) * num2 * num3 / 100.0);
+            return (int) Math
+                  .ceil((type == ExItemType.Pad ? ii.getPad(equip.getItemId()) : ii.getMad(equip.getItemId())) * num2
+                        * num3 / 100.0);
          case Speed:
          case Jump:
          case DamR:
@@ -439,7 +444,7 @@ public class BonusStat {
          case BdR:
             return level * 2;
          default:
-            System.out.println("[오류] 계산할 수 없는 추가옵션 " + type + " 입니다.");
+            System.out.println("[Error] Unable to calculate additional option " + type + ".");
             return 0;
       }
    }

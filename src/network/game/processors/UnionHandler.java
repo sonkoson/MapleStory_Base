@@ -42,7 +42,8 @@ public class UnionHandler {
 
       MapleUnion union = c.getPlayer().getMapleUnion();
       if (union == null) {
-         c.getPlayer().dropMessage(1, "계정 내 캐릭터 종합 레벨이 500을 넘지 않거나 로드에 실패하였습니다.\r\n\r\n계정 내 캐릭터 종합 레벨이 500을 넘었다면 마을 내 유니온 엔피시를 찾아가보세요.");
+         c.getPlayer().dropMessage(1,
+               "ไม่สามารถโหลดข้อมูล Maple Union ได้ หรือเลเวลรวมของตัวละครในบัญชียังไม่ถึง 500\r\n\r\nหากเลเวลรวมเกิน 500 แล้ว กรุณาไปหา NPC Union ในเมือง");
          c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
       } else {
          c.getPlayer().vaildateMapleUnion(c.getPlayer().getMapleUnion(), true);
@@ -73,7 +74,7 @@ public class UnionHandler {
 
          int activeRaidersCount = slea.readInt();
          if (activeRaidersCount > MapleUnionData.getRankData(union.rank).getAttackerCount()) {
-            c.getPlayer().dropMessage(1, "최대 공격대원을 초과하여 공격대를 배치할 수 없습니다. 다시 시도해주시기 바랍니다.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถจัดสมาชิกกองกำลังเกินจำนวนสูงสุดได้ กรุณาลองใหม่อีกครั้ง");
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             c.getPlayer().send(CField.UIPacket.closeUI(1148));
          } else {
@@ -111,14 +112,14 @@ public class UnionHandler {
             c.getPlayer().send(packet.getPacket());
             c.getPlayer().getStat().recalcLocalStats(c.getPlayer());
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
-            c.getPlayer().updateOneInfo(QuestExConstants.UnionPreset.getQuestID(), "presetNo", String.valueOf(presetID));
+            c.getPlayer().updateOneInfo(QuestExConstants.UnionPreset.getQuestID(), "presetNo",
+                  String.valueOf(presetID));
             c.getPlayer()
-               .setSaveFlag(
-                  c.getPlayer().getSaveFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_DATA.getFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_GROUP.getFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_RAIDERS.getFlag()
-               );
+                  .setSaveFlag(
+                        c.getPlayer().getSaveFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_DATA.getFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_GROUP.getFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_RAIDERS.getFlag());
          }
       }
    }
@@ -142,7 +143,7 @@ public class UnionHandler {
          c.getPlayer().updateInfoQuest(18790 + presetID + 1, matrix.toString());
          int activeRaidersCount = slea.readInt();
          if (activeRaidersCount > MapleUnionData.getRankData(union.rank).getAttackerCount()) {
-            c.getPlayer().dropMessage(1, "최대 공격대원을 초과하여 공격대를 배치할 수 없습니다. 다시 시도해주시기 바랍니다.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถจัดสมาชิกกองกำลังเกินจำนวนสูงสุดได้ กรุณาลองใหม่อีกครั้ง");
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             c.getPlayer().send(CField.UIPacket.closeUI(1148));
          } else {
@@ -170,14 +171,14 @@ public class UnionHandler {
             c.getPlayer().send(packet.getPacket());
             c.getPlayer().getStat().recalcLocalStats(c.getPlayer());
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
-            c.getPlayer().updateOneInfo(QuestExConstants.UnionPreset.getQuestID(), "presetNo", String.valueOf(presetID));
+            c.getPlayer().updateOneInfo(QuestExConstants.UnionPreset.getQuestID(), "presetNo",
+                  String.valueOf(presetID));
             c.getPlayer()
-               .setSaveFlag(
-                  c.getPlayer().getSaveFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_DATA.getFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_GROUP.getFlag()
-                     | CharacterSaveFlag.MAPLE_UNION_RAIDERS.getFlag()
-               );
+                  .setSaveFlag(
+                        c.getPlayer().getSaveFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_DATA.getFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_GROUP.getFlag()
+                              | CharacterSaveFlag.MAPLE_UNION_RAIDERS.getFlag());
          }
       }
    }
@@ -278,7 +279,8 @@ public class UnionHandler {
                default:
                   break;
                case 11:
-                  if (DBConfig.isGanglim && player.getEventInstance() == null && player.getMap().getId() != ServerConstants.TownMap) {
+                  if (DBConfig.isGanglim && player.getEventInstance() == null
+                        && player.getMap().getId() != ServerConstants.TownMap) {
                      player.warp(ServerConstants.TownMap);
                   }
                   break;
@@ -317,14 +319,16 @@ public class UnionHandler {
                      NPCScriptManager.getInstance().start(c, 9062297, "membership_point", true);
                   } else if (modex == 1) {
                      int flag = slea.readInt();
-                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/membership_reward.js", c, flag, 9062297);
+                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/membership_reward.js", c, flag,
+                           9062297);
                   } else if (modex == 2) {
                      int flag = slea.readInt();
-                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/membership_skill.js", c, flag, 9062297);
+                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/membership_skill.js", c, flag,
+                           9062297);
                   }
                   break;
                case 41:
-                  modex = (byte)slea.readInt();
+                  modex = (byte) slea.readInt();
                   c.removeClickedNPC();
                   NPCScriptManager.getInstance().dispose(c);
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
@@ -333,8 +337,8 @@ public class UnionHandler {
                      iv = NPCHandler.getInvocable("npc/notcoded.js", c, true);
                   }
 
-                  ScriptEngine scriptengine = (ScriptEngine)iv;
-                  NPCConversationManager cm = new NPCConversationManager(c, 1531010, -1, (byte)-1, iv);
+                  ScriptEngine scriptengine = (ScriptEngine) iv;
+                  NPCConversationManager cm = new NPCConversationManager(c, 1531010, -1, (byte) -1, iv);
                   scriptengine.put("cm", cm);
                   c.getPlayer().setConversation(1);
                   c.setClickedNPC();
@@ -347,9 +351,11 @@ public class UnionHandler {
                case 47:
                   int mode = slea.readInt();
                   if (mode == 1001) {
-                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/adventure_report.js", c, 0, 9062454);
+                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/adventure_report.js", c, 0,
+                           9062454);
                   } else if (mode == 1003) {
-                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/adventure_report.js", c, 1, 9062454);
+                     startNpcWithFlag((DBConfig.isGanglim ? "Royal/" : "Jin/") + "npc/adventure_report.js", c, 1,
+                           9062454);
                   }
                   break;
                case 48:
@@ -381,8 +387,8 @@ public class UnionHandler {
          iv = getInvocable("npc/notcoded.js", c, true);
       }
 
-      ScriptEngine scriptengine = (ScriptEngine)iv;
-      NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte)-1, iv);
+      ScriptEngine scriptengine = (ScriptEngine) iv;
+      NPCConversationManager cm = new NPCConversationManager(c, npc, -1, (byte) -1, iv);
       scriptengine.put("cm", cm);
       NPCScriptManager.getInstance().putConversationManager(c, cm);
       c.getPlayer().setConversation(1);
@@ -426,7 +432,7 @@ public class UnionHandler {
                linesx = linesx + streamx.collect(Collectors.joining(System.lineSeparator()));
                engine.eval(linesx);
             } catch (IOException | ScriptException var13) {
-               System.out.println("유니온 스크립트 오류 발생");
+               System.out.println("Union script error occurred");
                var13.printStackTrace();
                return null;
             }
@@ -434,6 +440,6 @@ public class UnionHandler {
       } else if (c != null && npc) {
       }
 
-      return (Invocable)engine;
+      return (Invocable) engine;
    }
 }

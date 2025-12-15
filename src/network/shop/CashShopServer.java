@@ -35,7 +35,8 @@ public class CashShopServer {
 
       try {
          bootstrap = new ServerBootstrap();
-         ((ServerBootstrap)((ServerBootstrap)bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class))
+         ((ServerBootstrap) ((ServerBootstrap) bootstrap.group(bossGroup, workerGroup)
+               .channel(NioServerSocketChannel.class))
                .childHandler(new ChannelInitializer<SocketChannel>() {
                   public void initChannel(SocketChannel ch) throws Exception {
                      ch.pipeline().addLast("decoder", new MapleNettyDecoder());
@@ -45,12 +46,12 @@ public class CashShopServer {
                   }
                })
                .option(ChannelOption.SO_BACKLOG, 128))
-            .childOption(ChannelOption.SO_SNDBUF, 4194304)
-            .childOption(ChannelOption.SO_KEEPALIVE, true);
+               .childOption(ChannelOption.SO_SNDBUF, 4194304)
+               .childOption(ChannelOption.SO_KEEPALIVE, true);
          ChannelFuture f = bootstrap.bind(8700).sync();
-         System.out.println("캐시샵 서버가 8700 포트를 성공적으로 개방하였습니다.");
+         System.out.println("Cash Shop Server successfully opened port 8700.");
       } catch (InterruptedException var3) {
-         System.err.println("[오류] 캐시샵 서버가 8700 포트를 개방하는데 실패했습니다.");
+         System.err.println("[Error] Cash Shop Server failed to open port 8700.");
          var3.printStackTrace();
       }
    }
@@ -65,9 +66,9 @@ public class CashShopServer {
 
    public static final void shutdown() {
       if (!finishedShutdown) {
-         System.out.println("캐시샵 서버에 접속된 모든 유저를 저장합니다.");
+         System.out.println("Saving all users connected to Cash Shop Server.");
          players.disconnectAll();
-         System.out.println("캐시샵이 종료됩니다.");
+         System.out.println("Cash Shop Server is shutting down.");
          finishedShutdown = true;
       }
    }

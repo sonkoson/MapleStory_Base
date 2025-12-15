@@ -100,50 +100,63 @@ public class VMatrixHandler {
             }
 
             c.getPlayer()
-               .changeSkillLevel_Skip(skill1, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) - vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill1,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) - vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (skill2 != null) {
             c.getPlayer()
-               .changeSkillLevel_Skip(skill2, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill2) - vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill2,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill2) - vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (skill3 != null) {
             c.getPlayer()
-               .changeSkillLevel_Skip(skill3, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill3) - vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill3,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill3) - vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (info != null
-            && info.getSpecialCoreOption() != null
-            && c.getPlayer().getEquippedSpecialCore().getRight() == info.getSpecialCoreOption().getSkillId()) {
+               && info.getSpecialCoreOption() != null
+               && c.getPlayer().getEquippedSpecialCore().getRight() == info.getSpecialCoreOption().getSkillId()) {
             c.getPlayer().setEquippedSpecialCore(null);
          }
       } else {
          if (skill1 != null) {
             if (GameConstants.isAngelicBuster(c.getPlayer().getJob())
-               || GameConstants.isArk(c.getPlayer().getJob())
-               || GameConstants.isEunWol(c.getPlayer().getJob())
-               || GameConstants.isXenon(c.getPlayer().getJob())
-               || GameConstants.isStriker(c.getPlayer().getJob())) {
+                  || GameConstants.isArk(c.getPlayer().getJob())
+                  || GameConstants.isEunWol(c.getPlayer().getJob())
+                  || GameConstants.isXenon(c.getPlayer().getJob())
+                  || GameConstants.isStriker(c.getPlayer().getJob())) {
                c.getPlayer().changeSkillLevel(400051001, c.getPlayer().getTotalSkillLevel(400051000), 30);
             }
 
             c.getPlayer()
-               .changeSkillLevel_Skip(skill1, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) + vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill1,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) + vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (skill2 != null) {
             c.getPlayer()
-               .changeSkillLevel_Skip(skill2, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill2) + vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill2,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill2) + vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (skill3 != null) {
             c.getPlayer()
-               .changeSkillLevel_Skip(skill3, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill3) + vcore.getLevel()), (byte)maxLevel, false);
+                  .changeSkillLevel_Skip(skill3,
+                        (byte) Math.min(maxLevel, c.getPlayer().getSkillLevel(skill3) + vcore.getLevel()),
+                        (byte) maxLevel, false);
          }
 
          if (info.getSpecialCoreOption() != null && c.getPlayer().getEquippedSpecialCore() == null) {
-            c.getPlayer().setEquippedSpecialCore(new Pair<>(vcore.getCoreId(), info.getSpecialCoreOption().getSkillId()));
+            c.getPlayer()
+                  .setEquippedSpecialCore(new Pair<>(vcore.getCoreId(), info.getSpecialCoreOption().getSkillId()));
          }
       }
    }
@@ -273,12 +286,12 @@ public class VMatrixHandler {
                }
 
                if (dest == -1) {
-                  c.getPlayer().dropMessage(1, "장착 가능한 슬롯이 없습니다.");
+                  c.getPlayer().dropMessage(1, "ไม่มีช่องว่างสำหรับสวมใส่");
                   return;
                }
 
                if (!checkEquippedVCore(dest, c.getPlayer())) {
-                  c.getPlayer().dropMessage(1, "개방되지 않은 슬롯에는 장착할 수 없습니다.");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ในช่องที่ยังไม่เปิดใช้งาน");
                   return;
                }
             }
@@ -321,7 +334,7 @@ public class VMatrixHandler {
 
             while (true) {
                if (var85.hasNext()) {
-                  VCore core = (VCore)var85.next();
+                  VCore core = (VCore) var85.next();
                   if (core.getIndex() != coreIndex) {
                      continue;
                   }
@@ -330,7 +343,7 @@ public class VMatrixHandler {
                }
 
                if (!checkEquippedVCore(destPos, c.getPlayer())) {
-                  c.getPlayer().dropMessage(1, "개방되지 않은 슬롯에는 장착할 수 없습니다.");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ในช่องที่ยังไม่เปิดใช้งาน");
                   return;
                }
 
@@ -340,12 +353,15 @@ public class VMatrixHandler {
 
                int slotIndex = vcore.getPosition();
                if (slotIndex != originPos) {
-                  System.out.println("클라이언트가 보낸 원본 위치와 실제 장착된 위치가 다름. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+                  System.out.println(
+                        "Original position sent by client differs from actual equipped position. (Character Name : "
+                              + c.getPlayer().getName() + ")");
                   return;
                }
 
                if (vcore.getState() != 2) {
-                  System.out.println("장착 되어 있는 코어가 아닌 코어를 이동하려함. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+                  System.out.println("Attempting to move a core that is not equipped. (Character Name : "
+                        + c.getPlayer().getName() + ")");
                   return;
                }
 
@@ -472,32 +488,39 @@ public class VMatrixHandler {
                   Skill skill2 = SkillFactory.getSkill(corexx.getSkill2());
                   Skill skill3 = SkillFactory.getSkill(corexx.getSkill3());
                   c.getPlayer()
-                     .changeSkillLevel_Skip(
-                        skill1, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)), (byte)maxLevel, false
-                     );
+                        .changeSkillLevel_Skip(
+                              skill1,
+                              (byte) Math.min(maxLevel,
+                                    c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)),
+                              (byte) maxLevel, false);
                   if (skill2 != null) {
                      c.getPlayer()
-                        .changeSkillLevel_Skip(
-                           skill2, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)), (byte)maxLevel, false
-                        );
+                           .changeSkillLevel_Skip(
+                                 skill2,
+                                 (byte) Math.min(maxLevel,
+                                       c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)),
+                                 (byte) maxLevel, false);
                   }
 
                   if (skill3 != null) {
                      c.getPlayer()
-                        .changeSkillLevel_Skip(
-                           skill3, (byte)Math.min(maxLevel, c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)), (byte)maxLevel, false
-                        );
+                           .changeSkillLevel_Skip(
+                                 skill3,
+                                 (byte) Math.min(maxLevel,
+                                       c.getPlayer().getSkillLevel(skill1) + (afterLevel - currentLevel)),
+                                 (byte) maxLevel, false);
                   }
 
                   if (GameConstants.isAngelicBuster(c.getPlayer().getJob())
-                     || GameConstants.isArk(c.getPlayer().getJob())
-                     || GameConstants.isEunWol(c.getPlayer().getJob())) {
+                        || GameConstants.isArk(c.getPlayer().getJob())
+                        || GameConstants.isEunWol(c.getPlayer().getJob())) {
                      c.getPlayer().changeSkillLevel(400051001, c.getPlayer().getTotalSkillLevel(400051000), 30);
                   }
 
                   c.getPlayer().setChangedSkills();
                   c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 3, 0));
-                  c.getSession().writeAndFlush(CWvsContext.CoreEnforcementResult(sidex, totalExp, currentLevel, afterLevel));
+                  c.getSession()
+                        .writeAndFlush(CWvsContext.CoreEnforcementResult(sidex, totalExp, currentLevel, afterLevel));
                   c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
                }
                break;
@@ -595,14 +618,15 @@ public class VMatrixHandler {
             }
 
             if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-               c.getPlayer().dropMessage(1, "스킬 코어를 더 이상 소지할 수 없습니다. 코어를 분해하거나 강화하여 공간을 확보해주시기 바랍니다.");
+               c.getPlayer().dropMessage(1,
+                     "ไม่สามารถเก็บ Skill Core ได้เพิ่มอีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
 
             int quantity = VCoreData.getNeedMakePieceOfCore(infox.getType()) * size;
             if (c.getPlayer().getPieceOfCore() < quantity) {
-               c.getPlayer().dropMessage(1, "V코어 조각이 부족합니다!");
+               c.getPlayer().dropMessage(1, "V-Core Piece ไม่เพียงพอ!");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
@@ -644,6 +668,30 @@ public class VMatrixHandler {
                }
 
                corexx = new VCore(
+                     System.currentTimeMillis(),
+                     coreID,
+                     c.getPlayer().getId(),
+                     1,
+                     0,
+                     1,
+                     connectSkill[0],
+                     connectSkill[1],
+                     connectSkill[2],
+                     specialCoreOption,
+                     availableTime,
+                     -1,
+                     false);
+               c.getPlayer().addVCoreSkills(corexx);
+               c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
+            }
+
+            VSpecialCoreOption specialCoreOption = VCoreData.getSpecialCoreOption(coreID);
+            long availableTime = -1L;
+            if (specialCoreOption != null) {
+               availableTime = System.currentTimeMillis() + 1209600000L;
+            }
+
+            corexx = new VCore(
                   System.currentTimeMillis(),
                   coreID,
                   c.getPlayer().getId(),
@@ -656,33 +704,7 @@ public class VMatrixHandler {
                   specialCoreOption,
                   availableTime,
                   -1,
-                  false
-               );
-               c.getPlayer().addVCoreSkills(corexx);
-               c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
-            }
-
-            VSpecialCoreOption specialCoreOption = VCoreData.getSpecialCoreOption(coreID);
-            long availableTime = -1L;
-            if (specialCoreOption != null) {
-               availableTime = System.currentTimeMillis() + 1209600000L;
-            }
-
-            corexx = new VCore(
-               System.currentTimeMillis(),
-               coreID,
-               c.getPlayer().getId(),
-               1,
-               0,
-               1,
-               connectSkill[0],
-               connectSkill[1],
-               connectSkill[2],
-               specialCoreOption,
-               availableTime,
-               -1,
-               false
-            );
+                  false);
             c.getSession().writeAndFlush(CWvsContext.MakeCoreResult(corexx, size));
             c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
             break;
@@ -698,12 +720,13 @@ public class VMatrixHandler {
             }
 
             if (totalPoint - usingPoint < 1) {
-               System.out.println("매트릭스 포인트 부족. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               System.out.println("Insufficient Matrix Points. (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
             if (slotx.getSlotEnforcement() >= VMatrixOption.info.equipSlotEnhanceMax) {
-               System.out.println("최대 슬롯 강화를 달성하였지만 슬롯 강화 시도 (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               System.out.println("Attempting to enhance slot despite reaching max level. (Character Name : "
+                     + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -718,14 +741,17 @@ public class VMatrixHandler {
             slea.skip(4);
             slotx = c.getPlayer().getVMatrixSlot(slotIndexx);
             if (slotx.getReleased() != 0 || slotx.getIndex() < 4) {
-               c.getPlayer().dropMessage(1, "이미 개방된 슬롯이거나 개방할 수 없는 슬롯입니다. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               c.getPlayer().dropMessage(1, "ช่องนี้เปิดอยู่แล้วหรือเป็นช่องที่ไม่สามารถเปิดได้ (Character Name : "
+                     + c.getPlayer().getName() + ")");
                return;
             }
 
             int userLevel = c.getPlayer().getLevel();
-            int reqLevel = 200 + (slotx.getIndex() + 1 - VMatrixOption.info.equipSlotMin) * VMatrixOption.info.extendLevel;
+            int reqLevel = 200
+                  + (slotx.getIndex() + 1 - VMatrixOption.info.equipSlotMin) * VMatrixOption.info.extendLevel;
             if (reqLevel > 300) {
-               System.out.println("확장 불가능 슬롯. 만렙 초과 슬롯 (Index: " + slotIndexx + ") (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               System.out.println("Slot cannot be extended. Slot exceeds max level (Index: " + slotIndexx
+                     + ") (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -742,7 +768,8 @@ public class VMatrixHandler {
             }
 
             if (meso > c.getPlayer().getMeso()) {
-               c.getPlayer().dropMessage(1, "슬롯 개방 도중 메소가 부족합니다. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               c.getPlayer().dropMessage(1,
+                     "Meso ไม่เพียงพอสำหรับเปิดช่อง (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -764,7 +791,8 @@ public class VMatrixHandler {
             }
 
             if (c.getPlayer().getMeso() < VMatrixOption.info.matrixPointResetMeso) {
-               c.getPlayer().dropMessage(1, "슬롯 강화 초기화 중 메소가 부족합니다. (캐릭터 이름 : " + c.getPlayer().getName() + ")");
+               c.getPlayer().dropMessage(1,
+                     "Meso ไม่เพียงพอสำหรับการรีเซ็ตการอัพเกรดช่อง (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -802,7 +830,7 @@ public class VMatrixHandler {
             side = slea.readInt();
             String password = slea.readMapleAsciiString();
             if (!c.getSecondPassword().equals(password)) {
-               c.getPlayer().dropMessage(1, "2차 비밀번호를 확인해 주세요.");
+               c.getPlayer().dropMessage(1, "กรุณาตรวจสอบรหัสผ่านชั้นที่ 2");
                return;
             }
 
@@ -865,18 +893,20 @@ public class VMatrixHandler {
                }
             }
 
-            if (GameConstants.isZero(chr.getJob()) && chr.hasBuffBySkillID(Zero.ZeroSkill.Transcendent_Time.getSkillID()) && skillID == 400001068) {
+            if (GameConstants.isZero(chr.getJob())
+                  && chr.hasBuffBySkillID(Zero.ZeroSkill.Transcendent_Time.getSkillID()) && skillID == 400001068) {
                int skillLevel = slea.readInt();
                slea.skip(96);
                List<Integer> idx = new ArrayList<>();
                idx.add(slea.readInt());
-               c.getPlayer().send(CField.userThrowingBombAck(skillID, (byte)skillLevel, idx));
+               c.getPlayer().send(CField.userThrowingBombAck(skillID, (byte) skillLevel, idx));
                return;
             }
 
             switch (skillID) {
                case 151101001:
-                  SecondaryStatEffect effect = SkillFactory.getSkill(151101001).getEffect(chr.getTotalSkillLevel(151101001));
+                  SecondaryStatEffect effect = SkillFactory.getSkill(151101001)
+                        .getEffect(chr.getTotalSkillLevel(151101001));
                   if (effect != null) {
                      chr.addEtherPoint(-effect.getY());
                   }
@@ -887,7 +917,7 @@ public class VMatrixHandler {
                   break;
                }
                case 400021048:
-                  chr.invokeJobMethod("givePPoint", 400021048, true, (byte)0);
+                  chr.invokeJobMethod("givePPoint", 400021048, true, (byte) 0);
                   break;
                case 400031056: {
                   Integer value = chr.getBuffedValue(SecondaryStatFlag.RepeatingCrossbowCartridge);
@@ -904,7 +934,8 @@ public class VMatrixHandler {
                      chr.temporaryStatReset(SecondaryStatFlag.RepeatingCrossbowCartridge);
                   } else {
                      value = value - 1;
-                     SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(), chr.getSecondaryStat());
+                     SecondaryStatManager statManager = new SecondaryStatManager(chr.getClient(),
+                           chr.getSecondaryStat());
                      statManager.changeStatValue(SecondaryStatFlag.RepeatingCrossbowCartridge, 400031055, value);
                      statManager.temporaryStatSet();
                   }
@@ -931,15 +962,16 @@ public class VMatrixHandler {
                   boolean allUse = slea.readByte() == 1;
                   slea.seek(savepos);
                   int value = chr.getBuffedValueDefault(SecondaryStatFlag.AutoChargeStack, 0);
-                  chr.temporaryStatSet(400051008, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack, allUse ? 0 : value - 1);
+                  chr.temporaryStatSet(400051008, Integer.MAX_VALUE, SecondaryStatFlag.AutoChargeStack,
+                        allUse ? 0 : value - 1);
                }
             }
 
             if (skillID != 400021048
-               && skillID != 400041059
-               && skillID != 400041060
-               && !chr.checkSpiritFlow(skillID)
-               && !GameConstants.isKeydownEndCooltimeSkill(skillID)) {
+                  && skillID != 400041059
+                  && skillID != 400041060
+                  && !chr.checkSpiritFlow(skillID)
+                  && !GameConstants.isKeydownEndCooltimeSkill(skillID)) {
                if (skillID == 12120023) {
                   skillID = 12121002;
                }
@@ -1003,7 +1035,8 @@ public class VMatrixHandler {
                chr.getMap().broadcastMessage(chr, CField.userThrowingBombAck(skillID, skillLevel, idxs), true);
             } else {
                int blessMarkSKillID = chr.getBlessMarkSkillID();
-               SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID).getEffect(chr.getTotalSkillLevel(blessMarkSKillID));
+               SecondaryStatEffect blessMark = SkillFactory.getSkill(blessMarkSKillID)
+                     .getEffect(chr.getTotalSkillLevel(blessMarkSKillID));
                chr.applyBlessMark(blessMark, 1, false, 0);
                SecondaryStatEffect effect = SkillFactory.getSkill(skillID).getEffect(chr.getTotalSkillLevel(skillID));
                if (effect != null) {

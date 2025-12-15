@@ -81,7 +81,8 @@ public class LoginServer {
 
       try {
          bootstrap = new ServerBootstrap();
-         ((ServerBootstrap)((ServerBootstrap)bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class))
+         ((ServerBootstrap) ((ServerBootstrap) bootstrap.group(bossGroup, workerGroup)
+               .channel(NioServerSocketChannel.class))
                .childHandler(new ChannelInitializer<SocketChannel>() {
                   public void initChannel(SocketChannel ch) {
                      ch.pipeline().addLast("decoder", new MapleNettyDecoder());
@@ -91,22 +92,22 @@ public class LoginServer {
                   }
                })
                .option(ChannelOption.SO_BACKLOG, 128))
-            .childOption(ChannelOption.SO_SNDBUF, 4194304)
-            .childOption(ChannelOption.SO_KEEPALIVE, true);
+               .childOption(ChannelOption.SO_SNDBUF, 4194304)
+               .childOption(ChannelOption.SO_KEEPALIVE, true);
          ChannelFuture f = bootstrap.bind(8484).sync();
-         System.out.println("로그인 서버가 8484 포트를 성공적으로 개방하였습니다.");
+         System.out.println("Login Server successfully bound to port 8484.");
       } catch (InterruptedException var3) {
-         System.err.println("[오류] 로그인 서버가 8484 포트를 개방하는데 실패했습니다.");
+         System.err.println("[Error] Failed to bind Login Server to port 8484.");
          var3.printStackTrace();
       } catch (Exception var4) {
-         System.err.println("[오류] 로그인 서버가 8484 포트를 개방하는데 실패했습니다.");
+         System.err.println("[Error] Failed to bind Login Server to port 8484.");
          var4.printStackTrace();
       }
    }
 
    public static final void shutdown() {
       if (!finishedShutdown) {
-         System.out.println("로그인 서버가 종료됩니다.");
+         System.out.println("Login Server is shutting down.");
          finishedShutdown = true;
       }
    }

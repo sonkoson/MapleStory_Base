@@ -35,9 +35,9 @@ public class CalcDamage {
    public double getRand(long nRand, long f0, long f1) {
       long rand = nRand & 4294967295L;
       if (f0 > f1) {
-         return f1 + (double)(rand % 10000000L) * (f0 - f1) / 9999999.0;
+         return f1 + (double) (rand % 10000000L) * (f0 - f1) / 9999999.0;
       } else {
-         return f0 != f1 ? f0 + (double)(rand % 10000000L) * (f1 - f0) / 9999999.0 : f0;
+         return f0 != f1 ? f0 + (double) (rand % 10000000L) * (f1 - f0) / 9999999.0 : f0;
       }
    }
 
@@ -56,8 +56,8 @@ public class CalcDamage {
          return true;
       } else {
          return player.getBuffedValue(SecondaryStatFlag.IgnorePImmune) != null
-            ? true
-            : this.is_equalibrium_skill(skillID) || this.is_royal_guard_skill(skillID);
+               ? true
+               : this.is_equalibrium_skill(skillID) || this.is_royal_guard_skill(skillID);
       }
    }
 
@@ -70,8 +70,8 @@ public class CalcDamage {
    }
 
    private int getPAD(MapleCharacter player) {
-      Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short)-11);
-      Equip e_weapon = (Equip)weapon_item;
+      Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
+      Equip e_weapon = (Equip) weapon_item;
       double watk = e_weapon.getTotalWatk();
       List<IndieTemporaryStatEntry> indiePAD = player.getIndieTemporaryStats(SecondaryStatFlag.indiePAD);
       if (indiePAD != null && indiePAD.size() != 0) {
@@ -91,12 +91,12 @@ public class CalcDamage {
          watk *= mult;
       }
 
-      return (int)watk;
+      return (int) watk;
    }
 
    private int getMAD(MapleCharacter player) {
-      Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short)-11);
-      Equip e_weapon = (Equip)weapon_item;
+      Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
+      Equip e_weapon = (Equip) weapon_item;
       double matk = e_weapon.getMatk();
       List<IndieTemporaryStatEntry> indieMAD = player.getIndieTemporaryStats(SecondaryStatFlag.indieMAD);
       if (indieMAD != null && indieMAD.size() != 0) {
@@ -116,13 +116,13 @@ public class CalcDamage {
          matk *= mult;
       }
 
-      return (int)matk;
+      return (int) matk;
    }
 
    public List<Pair<Long, Boolean>> PDamageForPvM(MapleCharacter player, AttackInfo attack) {
       boolean isdebug = true;
       if (player != null && attack != null) {
-         Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short)-11);
+         Item weapon_item = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
          if (weapon_item == null) {
             return null;
          } else {
@@ -132,7 +132,7 @@ public class CalcDamage {
             AtomicInteger Int = new AtomicInteger(stat.getInt());
             AtomicInteger Luk = new AtomicInteger(stat.getLuk());
             new ArrayList<>(player.getInventory(MapleInventoryType.EQUIPPED).list()).forEach(item -> {
-               Equip eqp = (Equip)item;
+               Equip eqp = (Equip) item;
                Str.addAndGet(eqp.getTotalStr());
                Dex.addAndGet(eqp.getTotalDex());
                Int.addAndGet(eqp.getTotalInt());
@@ -147,7 +147,8 @@ public class CalcDamage {
             Int.addAndGet(player.getBuffedValueDefault(SecondaryStatFlag.indieINT, 0));
             Luk.addAndGet(player.getBuffedValueDefault(SecondaryStatFlag.indieLUK, 0));
             if (player.isGM()) {
-               player.dropMessage(5, "계산된 STR DEX INT LUK " + Str.get() + " / " + Dex.get() + " / " + Int.get() + " / " + Luk.get());
+               player.dropMessage(5, "Calculated STR DEX INT LUK " + Str.get() + " / " + Dex.get() + " / " + Int.get()
+                     + " / " + Luk.get());
             }
 
             int playerstar = stat.getStarForce();
@@ -160,13 +161,13 @@ public class CalcDamage {
             if (GameConstants.isDemonAvenger(jobid)) {
                double consts = CalcDamageUtil.getJobConstants(jobid) + 1.3;
                maxdmg = CalcDamageUtil.calcDemonAvengerDamage(
-                  player.getStat().getHp(), player.getStat().getCurrentMaxHp(), player.getStat().getTotalStr(), pad, consts
-               );
+                     player.getStat().getHp(), player.getStat().getCurrentMaxHp(), player.getStat().getTotalStr(), pad,
+                     consts);
             } else {
                maxdmg = CalcDamageUtil.getBaseDamageByWT(player, weapon_item.getItemId(), pad, mad, attack.skillID);
             }
 
-            long mindmg = (long)(maxdmg * 0.2 + 0.5);
+            long mindmg = (long) (maxdmg * 0.2 + 0.5);
             mindmg = 14588L;
             maxdmg = 72942L;
             if (isdebug) {
@@ -217,13 +218,13 @@ public class CalcDamage {
                            if (damage != 0) {
                               totaldmg *= damage / 100.0;
                            } else if (player.isGM()) {
-                              player.dropMessage(6, "데미지가 0인 스킬 ID : " + skillID);
+                              player.dropMessage(6, "Skill ID with 0 damage : " + skillID);
                            }
                         } else if (player.isGM()) {
-                           player.dropMessage(6, "이펙트가 null인 스킬 Skill ID : " + skillID);
+                           player.dropMessage(6, "Skill Effect is null Skill ID : " + skillID);
                         }
                      } else if (player.isGM()) {
-                        player.dropMessage(6, "존재하지 않는 스킬 ID : " + skillID);
+                        player.dropMessage(6, "Non-existent Skill ID : " + skillID);
                      }
                   }
 
@@ -235,17 +236,18 @@ public class CalcDamage {
 
                   double critrate = CalcDamageUtil.get_rand(rand[index++ % this.numRand], 100.0, 0.0);
                   if (shuffleIndex) {
-                     index += (int)CalcDamageUtil.get_rand(rand[(index + attackcount) % this.numRand], 0.0, 9.0);
+                     index += (int) CalcDamageUtil.get_rand(rand[(index + attackcount) % this.numRand], 0.0, 9.0);
                   }
 
                   boolean iscrit = false;
                   if (critrate <= 5.0) {
-                     int critdmg = (int)CalcDamageUtil.get_rand(rand[index++ % this.numRand], 5000.0, 2000.0);
-                     totaldmg += critdmg / 10000.0 * (long)totaldmg;
+                     int critdmg = (int) CalcDamageUtil.get_rand(rand[index++ % this.numRand], 5000.0, 2000.0);
+                     totaldmg += critdmg / 10000.0 * (long) totaldmg;
                      iscrit = true;
                   }
 
-                  totaldmg = CalcDamageUtil.calcLevelDiffDamage(player.getLevel(), monster.getStats().getLevel(), totaldmg);
+                  totaldmg = CalcDamageUtil.calcLevelDiffDamage(player.getLevel(), monster.getStats().getLevel(),
+                        totaldmg);
                   index++;
                   Field field = player.getMap();
                   int mapstar = field.getNeedStarForce();
@@ -253,7 +255,7 @@ public class CalcDamage {
                   int maparcane = field.getNeedArcaneForce();
                   if (mapstar > 0) {
                      if (player.isGM()) {
-                        player.dropMessage(6, "스타포스맵 : " + playerstar + " / " + mapstar);
+                        player.dropMessage(6, "Star Force Map : " + playerstar + " / " + mapstar);
                      }
 
                      totaldmg = CalcDamageUtil.calcStarForceDamage(playerstar, mapstar, totaldmg);
@@ -261,7 +263,7 @@ public class CalcDamage {
 
                   if (mapauthentic > 0) {
                      if (player.isGM()) {
-                        player.dropMessage(6, "어센틱포스맵 : " + playerauthentic + " / " + mapauthentic);
+                        player.dropMessage(6, "Authentic Force Map : " + playerauthentic + " / " + mapauthentic);
                      }
 
                      totaldmg = CalcDamageUtil.calcAuthenticForceDamage(playerauthentic, mapauthentic, totaldmg);
@@ -269,7 +271,7 @@ public class CalcDamage {
 
                   if (maparcane > 0) {
                      if (player.isGM()) {
-                        player.dropMessage(6, "어센틱포스맵 : " + playerarcane + " / " + maparcane);
+                        player.dropMessage(6, "Arcane Force Map : " + playerarcane + " / " + maparcane);
                      }
 
                      totaldmg = CalcDamageUtil.calcArcaneForceDamage(playerarcane, maparcane, totaldmg);
@@ -281,10 +283,12 @@ public class CalcDamage {
                   }
 
                   if (player.isGM()) {
-                     if (p.left == (long)totaldmg) {
-                        player.dropMessage(6, "데미지 일치 " + attackcount + "타  서버데미지 : " + totaldmg + " / 클라데미지 : " + p.left);
+                     if (p.left == (long) totaldmg) {
+                        player.dropMessage(6, "Damage Match " + attackcount + " hits Server Damage : " + totaldmg
+                              + " / Client Damage : " + p.left);
                      } else {
-                        player.dropMessage(6, "데미지 불일치 " + attackcount + "타 서버데미지 : " + totaldmg + " / 클라데미지 : " + p.left + " SKILLID : " + attack.skillID);
+                        player.dropMessage(6, "Damage Mismatch " + attackcount + " hits Server Damage : " + totaldmg
+                              + " / Client Damage : " + p.left + " SKILLID : " + attack.skillID);
                      }
                   }
 

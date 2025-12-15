@@ -586,7 +586,7 @@ public class MapleTrade {
          c.getClient().getSession()
                .writeAndFlush(CField.InteractionPacket.getCashTradeStart(c.getClient(), c.getTrade(), (byte) 0));
       } else {
-         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "이미 누군가와 트레이드 중입니다."));
+         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
       }
    }
 
@@ -598,7 +598,7 @@ public class MapleTrade {
             c1.getTrade().setPartner(c2.getTrade());
             c2.getClient().getSession().writeAndFlush(CField.InteractionPacket.getTradeInvite(c1, isTrade));
          } else {
-            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "이미 누군가와 트레이드 중입니다."));
+            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
             cancelTrade(c1.getTrade(), c1.getClient(), c1);
          }
       }
@@ -612,7 +612,7 @@ public class MapleTrade {
             c1.getTrade().setPartner(c2.getTrade());
             c2.getClient().getSession().writeAndFlush(CField.InteractionPacket.getCashTradeInvite(c1));
          } else {
-            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "이미 누군가와 트레이드 중입니다."));
+            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
             cancelTrade(c1.getTrade(), c1.getClient(), c1);
          }
       }
@@ -644,7 +644,7 @@ public class MapleTrade {
          c1.getClient().getSession()
                .writeAndFlush(CField.InteractionPacket.getCashTradeStart(c1.getClient(), c1.getTrade(), (byte) 1));
       } else {
-         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "상대방이 이미 트레이드를 종료했습니다."));
+         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "อีกฝ่ายได้ยกเลิกการแลกเปลี่ยนแล้ว"));
       }
    }
 

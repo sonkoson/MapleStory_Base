@@ -27,7 +27,7 @@ public class SessionBlockManager {
          int cBlockCount = info.blockCount.get();
          long newUnblockTime = info.count(a);
          if (newUnblockTime != 0L) {
-            System.out.println("해당 아이피가 차단됩니다. : " + ip);
+            System.out.println("The IP is blocked. : " + ip);
             if (a.registerFirewall(cBlockCount)) {
                registerFirewall(ip, newUnblockTime);
             }
@@ -40,7 +40,7 @@ public class SessionBlockManager {
          }
 
          info.unblock();
-         System.out.println("해당 아이피의 차단이 해제되었습니다. : " + ip);
+         System.out.println("The IP has been unblocked. : " + ip);
       }
 
       return true;
@@ -53,21 +53,24 @@ public class SessionBlockManager {
    public static void registerFirewall(String ip, long unblockTime) {
       try {
          Runtime.getRuntime()
-            .exec(String.format("netsh advfirewall firewall add rule name=\"MapleStory_LoginBlock_%s\" dir=in action=block remoteip=%s", ip, ip));
+               .exec(String.format(
+                     "netsh advfirewall firewall add rule name=\"MapleStory_LoginBlock_%s\" dir=in action=block remoteip=%s",
+                     ip, ip));
          firewalls.put(ip, unblockTime);
-         System.out.println("방화벽 규칙이 추가되었습니다. : " + ip);
+         System.out.println("Firewall rule added. : " + ip);
       } catch (IOException var4) {
-         System.err.println("방화벽 규칙 추가에 실패했습니다. : \r\n" + var4);
+         System.err.println("Failed to add firewall rule. : \r\n" + var4);
       }
    }
 
    public static void unregisterFirewall(String ip) {
       try {
-         Runtime.getRuntime().exec(String.format("netsh advfirewall firewall delete rule name=\"MapleStory_LoginBlock_%s\"", ip));
+         Runtime.getRuntime()
+               .exec(String.format("netsh advfirewall firewall delete rule name=\"MapleStory_LoginBlock_%s\"", ip));
          firewalls.remove(ip);
-         System.out.println("방화벽 규칙이 제거되었습니다. : " + ip);
+         System.out.println("Firewall rule removed. : " + ip);
       } catch (IOException var2) {
-         System.err.println("방화벽 규칙 제거에 실패했습니다. : \r\n" + var2);
+         System.err.println("Failed to remove firewall rule. : \r\n" + var2);
       }
    }
 
@@ -176,7 +179,8 @@ public class SessionBlockManager {
          }
 
          info.latestCountTime = cur;
-         if (cur > info.firstCountTime + a.firstDiff(cBlockCount) || cur > info.latestCountTime + a.latestDiff(cBlockCount)) {
+         if (cur > info.firstCountTime + a.firstDiff(cBlockCount)
+               || cur > info.latestCountTime + a.latestDiff(cBlockCount)) {
             info.reset();
          }
 

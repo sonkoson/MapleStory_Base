@@ -27,7 +27,7 @@ public class LoginPacket {
       mplew.writeInt(379);
       mplew.encodeBuffer(recvIv);
       mplew.encodeBuffer(sendIv);
-      mplew.write((byte)1);
+      mplew.write((byte) 1);
       mplew.write(4);
       return mplew.getPacket();
    }
@@ -40,14 +40,14 @@ public class LoginPacket {
       mplew.writeMapleAsciiString(LoginPacket.version);
       mplew.encodeBuffer(recvIv);
       mplew.encodeBuffer(sendIv);
-      mplew.write((byte)1);
+      mplew.write((byte) 1);
       mplew.write(0);
       mplew.write(35);
       mplew.write(1);
-      mplew.writeInt((int)mapleVersion);
+      mplew.writeInt((int) mapleVersion);
       mplew.encodeBuffer(recvIv);
       mplew.encodeBuffer(sendIv);
-      mplew.write((byte)1);
+      mplew.write((byte) 1);
       int version = 37908;
       mplew.writeInt(version);
       mplew.writeInt(version);
@@ -225,7 +225,8 @@ public class LoginPacket {
          if (channels.contains(ix)) {
             int max = 60;
             if (DBConfig.isGanglim) {
-               load = (int)Math.min((double)max, GameServer.getInstance(ix).getPlayerStorage().getConnectedClients() * 3.3);
+               load = (int) Math.min((double) max,
+                     GameServer.getInstance(ix).getPlayerStorage().getConnectedClients() * 3.3);
             } else {
                load = Math.min(max, GameServer.getInstance(ix).getPlayerStorage().getConnectedClients() * 3);
             }
@@ -233,7 +234,7 @@ public class LoginPacket {
             load = 1;
          }
 
-         mplew.writeMapleAsciiString(worldName + "-" + (ix == 1 ? ix : (ix == 2 ? "20세" : ix - 1)));
+         mplew.writeMapleAsciiString(worldName + "-" + (ix == 1 ? ix : (ix == 2 ? "20+" : ix - 1)));
          mplew.writeInt(load == 0 ? 1 : load);
          mplew.write(serverId);
          mplew.write(ix - 1);
@@ -278,7 +279,7 @@ public class LoginPacket {
       w.writeShort(SendPacketOpcode.CHANNEL_BACK_IMG.getValue());
       w.write(!redisplay ? 1 : 0);
       if (!redisplay) {
-         String[] list = new String[]{"default", "default1", "default2", "default3"};
+         String[] list = new String[] { "default", "default1", "default2", "default3" };
          w.writeMapleAsciiString(list[Randomizer.rand(0, 3)]);
          w.write(1);
          w.writeMapleAsciiString("");
@@ -303,7 +304,7 @@ public class LoginPacket {
    public static final byte[] getChannelBackImgNew() {
       PacketEncoder w = new PacketEncoder();
       w.writeShort(SendPacketOpcode.CHANNEL_BACK_IMG_NEW.getValue());
-      String[] list = new String[]{"default", "default1", "default2", "default3"};
+      String[] list = new String[] { "default", "default1", "default2", "default3" };
       w.writeMapleAsciiString(list[Randomizer.rand(0, 3)]);
       return w.getPacket();
    }
@@ -326,7 +327,8 @@ public class LoginPacket {
       return mplew.getPacket();
    }
 
-   public static final byte[] getCharList(boolean isGm, String secondpw, List<MapleCharacter> chars, int charslots, byte nameChange, List<Integer> charPosition) {
+   public static final byte[] getCharList(boolean isGm, String secondpw, List<MapleCharacter> chars, int charslots,
+         byte nameChange, List<Integer> charPosition) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.CHARLIST.getValue());
       mplew.write(0);

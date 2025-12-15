@@ -106,7 +106,8 @@ import scripting.ScriptMessageFlag;
 import scripting.ScriptMessageType;
 
 public class CField {
-   public static final byte[] BlackLabel(String msg, int delay, int textspeed, int type, int x, int y, int type1, int type2) {
+   public static final byte[] BlackLabel(String msg, int delay, int textspeed, int type, int x, int y, int type1,
+         int type2) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.USER_ON_EFFECT.getValue());
       mplew.write(61);
@@ -127,8 +128,8 @@ public class CField {
    }
 
    public static byte[] showSpineScreen(
-      boolean isBinary, boolean isLoop, boolean isPostRender, String path, String animationName, int endDelay, boolean useKey, String key
-   ) {
+         boolean isBinary, boolean isLoop, boolean isPostRender, String path, String animationName, int endDelay,
+         boolean useKey, String key) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.FIELD_EFFECT.getValue());
       mplew.write(32);
@@ -272,11 +273,12 @@ public class CField {
       mplew.writeShort(SendPacketOpcode.PVP_SCORE.getValue());
       mplew.writeInt(score);
       mplew.write(kill ? 1 : 0);
-      System.out.print("피비피스코어" + mplew);
+      System.out.print("PVPScore" + mplew);
       return mplew.getPacket();
    }
 
-   public static byte[] getPVPResult(List<Pair<Integer, MapleCharacter>> flags, int exp, int winningTeam, int playerTeam) {
+   public static byte[] getPVPResult(List<Pair<Integer, MapleCharacter>> flags, int exp, int winningTeam,
+         int playerTeam) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.PVP_RESULT.getValue());
       mplew.writeInt(flags.size());
@@ -298,7 +300,7 @@ public class CField {
       mplew.writeInt(0);
       mplew.write(winningTeam);
       mplew.write(playerTeam);
-      System.out.print("리절트" + mplew);
+      System.out.print("Result" + mplew);
       return mplew.getPacket();
    }
 
@@ -351,7 +353,7 @@ public class CField {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.PVP_MODE.getValue());
       mplew.write(mode);
-      System.out.print("PVP모드" + mplew);
+      System.out.print("PVPMode" + mplew);
       return mplew.getPacket();
    }
 
@@ -367,11 +369,11 @@ public class CField {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.CAPTURE_FLAGS.getValue());
       mplew.encodeRect(map.getArea(0));
-      mplew.writeInt(((Point)map.getGuardians().get(0).left).x);
-      mplew.writeInt(((Point)map.getGuardians().get(0).left).y);
+      mplew.writeInt(((Point) map.getGuardians().get(0).left).x);
+      mplew.writeInt(((Point) map.getGuardians().get(0).left).y);
       mplew.encodeRect(map.getArea(1));
-      mplew.writeInt(((Point)map.getGuardians().get(1).left).x);
-      mplew.writeInt(((Point)map.getGuardians().get(1).left).y);
+      mplew.writeInt(((Point) map.getGuardians().get(1).left).x);
+      mplew.writeInt(((Point) map.getGuardians().get(1).left).y);
       return mplew.getPacket();
    }
 
@@ -638,17 +640,19 @@ public class CField {
    }
 
    public static byte[] multiChat(
-      MapleCharacter chr, String chattext, int mode, Item item, String itemName, int achievementID, long achievementTime, ReportLogEntry report
-   ) {
+         MapleCharacter chr, String chattext, int mode, Item item, String itemName, int achievementID,
+         long achievementTime, ReportLogEntry report) {
       PacketEncoder mplew = new PacketEncoder();
-      mplew.writeShort(item == null && achievementID <= 0 ? SendPacketOpcode.MULTICHAT.getValue() : SendPacketOpcode.MULTICHAT_ITEM.getValue());
+      mplew.writeShort(item == null && achievementID <= 0 ? SendPacketOpcode.MULTICHAT.getValue()
+            : SendPacketOpcode.MULTICHAT_ITEM.getValue());
       mplew.write(mode);
       mplew.writeInt(chr.getAccountID());
       mplew.writeInt(chr.getId());
       mplew.writeMapleAsciiString(chr.getName());
       mplew.writeMapleAsciiString(chattext);
       report.encode(mplew);
-      PacketHelper.onChatBonusPacket(mplew, achievementID > 0 ? 2 : (item != null ? 1 : 0), item, itemName, achievementID, achievementTime);
+      PacketHelper.onChatBonusPacket(mplew, achievementID > 0 ? 2 : (item != null ? 1 : 0), item, itemName,
+            achievementID, achievementTime);
       return mplew.getPacket();
    }
 
@@ -663,8 +667,8 @@ public class CField {
    }
 
    public static byte[] getWhisper(
-      String sender, int channel, String text, Item item, String itemName, int achievementID, long achievementTime, ReportLogEntry report
-   ) {
+         String sender, int channel, String text, Item item, String itemName, int achievementID, long achievementTime,
+         ReportLogEntry report) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.WHISPER.getValue());
       mplew.write(18);
@@ -763,7 +767,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getSpineScreen(int binary, int loop, int postRender, int endDelay, String path, String animationName, String key) {
+   public static byte[] getSpineScreen(int binary, int loop, int postRender, int endDelay, String path,
+         String animationName, String key) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.FIELD_EFFECT.getValue());
       mplew.write(32);
@@ -866,7 +871,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getOnOff(int term, String key, String path, int rx, int ry, int rz, int org, int postRender, int unk1, int unk2) {
+   public static byte[] getOnOff(int term, String key, String path, int rx, int ry, int rz, int org, int postRender,
+         int unk1, int unk2) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.FIELD_EFFECT.getValue());
       mplew.write(25);
@@ -1252,7 +1258,7 @@ public class CField {
       mplew.encodePos(chr.getPosition());
       boolean isStandChair = GameConstants.isStandChair(chairID);
       mplew.write(isStandChair ? 5 : chr.getStance());
-      mplew.writeShort(chr.getName().equals("진 귀신") ? 0 : chr.getFH());
+      mplew.writeShort(chr.getName().equals("Jin Ghost") ? 0 : chr.getFH());
       mplew.write(0);
       mplew.write(0);
       mplew.write(chairID != 0);
@@ -1261,7 +1267,7 @@ public class CField {
          getCustomChairPacket(mplew, chr, chairID, chr.getChairText(), true);
       }
 
-      if (chr.getName().equals("나이스")) {
+      if (chr.getName().equals("Nice")) {
       }
 
       mplew.write(0);
@@ -1288,7 +1294,7 @@ public class CField {
 
       byte flag = 0;
       if (chr.getSkillLevel(1320016) > 0 && chr.getJob() == 132 && !chr.skillisCooling(1320019)) {
-         flag = (byte)(flag | 1);
+         flag = (byte) (flag | 1);
       }
 
       mplew.write(flag);
@@ -1311,7 +1317,8 @@ public class CField {
 
       mplew.writeInt(0);
       mplew.write(1);
-      if (chr.getBuffedValue(SecondaryStatFlag.RideVehicle) != null && chr.getBuffedValue(SecondaryStatFlag.RideVehicle) == 1932249) {
+      if (chr.getBuffedValue(SecondaryStatFlag.RideVehicle) != null
+            && chr.getBuffedValue(SecondaryStatFlag.RideVehicle) == 1932249) {
          mplew.writeInt(0);
       }
 
@@ -1368,7 +1375,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getChatText(int cidfrom, String namefrom, String text, boolean whiteBG, int chatFlag, ReportLogEntry report) {
+   public static byte[] getChatText(int cidfrom, String namefrom, String text, boolean whiteBG, int chatFlag,
+         ReportLogEntry report) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.CHATTEXT.getValue());
       if (cidfrom % 27 == 0) {
@@ -1395,7 +1403,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getLinkItemChatText(int cidfrom, String namefrom, String text, boolean whiteBG, int show, Item item, int unk, ReportLogEntry report) {
+   public static byte[] getLinkItemChatText(int cidfrom, String namefrom, String text, boolean whiteBG, int show,
+         Item item, int unk, ReportLogEntry report) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.USER_CHAT_ITEM_LINK.getValue());
       mplew.writeInt(cidfrom);
@@ -1445,7 +1454,7 @@ public class CField {
       mplew.writeInt(scroll.getItemId());
       mplew.writeInt(equipment.getItemId());
       mplew.writeInt(flag);
-      int[] flags = new int[]{1, 2, 4, 8, 16, 32, 64, 256, 512, 4096, 8192};
+      int[] flags = new int[] { 1, 2, 4, 8, 16, 32, 64, 256, 512, 4096, 8192 };
 
       for (int i = 0; i < flags.length; i++) {
          if ((flag & flags[i]) != 0) {
@@ -1476,7 +1485,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getRedCubeStart(MapleCharacter chr, Item item, int cubeId, boolean changeLevel, int remainCount, int tryCount, int levelUpCount) {
+   public static byte[] getRedCubeStart(MapleCharacter chr, Item item, int cubeId, boolean changeLevel, int remainCount,
+         int tryCount, int levelUpCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.SHOW_REDCUBE_EFFECT.getValue());
       mplew.writeInt(chr.getId());
@@ -1490,7 +1500,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getInGameCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel, int remainCount) {
+   public static byte[] getInGameCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel,
+         int remainCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.SHOW_INGAME_CUBE_RESULT.getValue());
       mplew.writeInt(chr.getId());
@@ -1502,7 +1513,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getInGameAdditionalCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel, int remainCount) {
+   public static byte[] getInGameAdditionalCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel,
+         int remainCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.USER_ITEM_IN_GAME_ADDITIONAL_CUBE_RESULT.getValue());
       mplew.writeInt(chr.getId());
@@ -1514,7 +1526,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getAdditionalCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel, int remainCount, int tryCount, int levelUpCount) {
+   public static byte[] getAdditionalCubeResult(MapleCharacter chr, Item item, int cubeId, boolean changeLevel,
+         int remainCount, int tryCount, int levelUpCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.SHOW_ADDITIONAL_CUBE_RESULT.getValue());
       mplew.writeInt(chr.getId());
@@ -1528,7 +1541,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getBlackCubeResult(MapleCharacter chr, Item item, int cubeID, int remainCount, int tryCount, int levelUpCount) {
+   public static byte[] getBlackCubeResult(MapleCharacter chr, Item item, int cubeID, int remainCount, int tryCount,
+         int levelUpCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.BLACK_CUBE_RESULT.getValue());
       mplew.writeLong(item.getTempUniqueID());
@@ -1545,7 +1559,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] getWhiteAdditionalCubeResult(MapleCharacter chr, Item item, int cubeID, int remainCount, int tryCount, int levelUpCount) {
+   public static byte[] getWhiteAdditionalCubeResult(MapleCharacter chr, Item item, int cubeID, int remainCount,
+         int tryCount, int levelUpCount) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.WHITE_ADDITIONAL_CUBE_RESULT.getValue());
       mplew.writeLong(item.getTempUniqueID());
@@ -1637,25 +1652,24 @@ public class CField {
    }
 
    public static final byte[] pvpAttack(
-      int cid,
-      int playerLevel,
-      int skill,
-      int skillLevel,
-      int speed,
-      int mastery,
-      int projectile,
-      int attackCount,
-      int chargeTime,
-      int stance,
-      int direction,
-      int range,
-      int linkSkill,
-      int linkSkillLevel,
-      boolean movementSkill,
-      boolean pushTarget,
-      boolean pullTarget,
-      List<AttackPair> attack
-   ) {
+         int cid,
+         int playerLevel,
+         int skill,
+         int skillLevel,
+         int speed,
+         int mastery,
+         int projectile,
+         int attackCount,
+         int chargeTime,
+         int stance,
+         int direction,
+         int range,
+         int linkSkill,
+         int linkSkillLevel,
+         boolean movementSkill,
+         boolean pushTarget,
+         boolean pullTarget,
+         List<AttackPair> attack) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.PVP_ATTACK.getValue());
       mplew.writeInt(cid);
@@ -1692,7 +1706,7 @@ public class CField {
       }
 
       mplew.writeZeroBytes(10);
-      System.out.print("어택" + mplew);
+      System.out.print("Attack" + mplew);
       return mplew.getPacket();
    }
 
@@ -1868,7 +1882,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] movePlayer(int cid, List<LifeMovementFragment> moves, Point startPos, Point ovPos, int encodedGatherDuration) {
+   public static byte[] movePlayer(int cid, List<LifeMovementFragment> moves, Point startPos, Point ovPos,
+         int encodedGatherDuration) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.MOVE_PLAYER.getValue());
       mplew.writeInt(cid);
@@ -1895,7 +1910,8 @@ public class CField {
       return addAttackInfo(3, player, 0, 0, attackInfo);
    }
 
-   public static byte[] addAttackInfo(int type, MapleCharacter player, int consumeID, int ultLevel, AttackInfo attackInfo) {
+   public static byte[] addAttackInfo(int type, MapleCharacter player, int consumeID, int ultLevel,
+         AttackInfo attackInfo) {
       PacketEncoder mplew = new PacketEncoder();
       if (type == 0) {
          mplew.writeShort(SendPacketOpcode.CLOSE_RANGE_ATTACK.getValue());
@@ -1945,11 +1961,11 @@ public class CField {
       }
    }
 
-   public static void attackInternal(PacketEncoder mplew, int type, MapleCharacter player, int consumeID, int ultLevel, AttackInfo attackInfo) {
+   public static void attackInternal(PacketEncoder mplew, int type, MapleCharacter player, int consumeID, int ultLevel,
+         AttackInfo attackInfo) {
       if (type == 1
-         && (GameConstants.getAdvancedBulletCountHyperSkill(attackInfo.skillID) != 0 || GameConstants.getAdvancedAttackCountHyperSkill(attackInfo.skillID) != 0)
-         )
-       {
+            && (GameConstants.getAdvancedBulletCountHyperSkill(attackInfo.skillID) != 0
+                  || GameConstants.getAdvancedAttackCountHyperSkill(attackInfo.skillID) != 0)) {
          int passiveId = 0;
          int passiveLv = 0;
          if (GameConstants.getAdvancedBulletCountHyperSkill(attackInfo.skillID) == 0) {
@@ -2054,7 +2070,8 @@ public class CField {
 
             if (GameConstants.isKinesisPsychiclockSkill(attackInfo.skillID)) {
                if (player.getPsychicLock() != null) {
-                  Optional<PsychicLock.Info> info = player.getPsychicLock().getLocks().stream().filter(l -> l.getMobId() == attackPair.objectid).findFirst();
+                  Optional<PsychicLock.Info> info = player.getPsychicLock().getLocks().stream()
+                        .filter(l -> l.getMobId() == attackPair.objectid).findFirst();
                   if (info.isPresent()) {
                      mplew.writeInt(info.get().getPsychicLockKey());
                   } else {
@@ -2076,18 +2093,18 @@ public class CField {
       if (attackInfo.skillID == 2221052 || attackInfo.skillID == 11121052 || attackInfo.skillID == 12121054) {
          mplew.writeInt(attackInfo.keydown);
       } else if (GameConstants.isSuperNovaSkill(attackInfo.skillID)
-         || GameConstants.isScreenCenterAttackSkill(attackInfo.skillID)
-         || attackInfo.skillID == 101000202
-         || attackInfo.skillID == 101000102
-         || GameConstants.isFieldAttackSkill(attackInfo.skillID)
-         || attackInfo.skillID == 400041019
-         || attackInfo.skillID == 400031016
-         || attackInfo.skillID == 400041024
-         || attackInfo.skillID == 3221019
-         || GameConstants.isSeekingAttackSkill(attackInfo.skillID)
-         || attackInfo.skillID == 400021075
-         || attackInfo.skillID == 400001055
-         || attackInfo.skillID == 400001056) {
+            || GameConstants.isScreenCenterAttackSkill(attackInfo.skillID)
+            || attackInfo.skillID == 101000202
+            || attackInfo.skillID == 101000102
+            || GameConstants.isFieldAttackSkill(attackInfo.skillID)
+            || attackInfo.skillID == 400041019
+            || attackInfo.skillID == 400031016
+            || attackInfo.skillID == 400041024
+            || attackInfo.skillID == 3221019
+            || GameConstants.isSeekingAttackSkill(attackInfo.skillID)
+            || attackInfo.skillID == 400021075
+            || attackInfo.skillID == 400001055
+            || attackInfo.skillID == 400001056) {
          mplew.writeInt(attackInfo.forcedPos.x);
          mplew.writeInt(attackInfo.forcedPos.y);
       }
@@ -2124,16 +2141,16 @@ public class CField {
       }
 
       if (attackInfo.skillID == 400041062
-         || attackInfo.skillID == 400041079
-         || attackInfo.skillID == 400051080
-         || attackInfo.skillID == 400041074
-         || attackInfo.skillID == 400041064
-         || attackInfo.skillID == 400041065
-         || attackInfo.skillID == 400041066
-         || attackInfo.skillID == 400011125
-         || attackInfo.skillID == 400011126
-         || attackInfo.skillID == 155121007
-         || attackInfo.skillID == 80003017) {
+            || attackInfo.skillID == 400041079
+            || attackInfo.skillID == 400051080
+            || attackInfo.skillID == 400041074
+            || attackInfo.skillID == 400041064
+            || attackInfo.skillID == 400041065
+            || attackInfo.skillID == 400041066
+            || attackInfo.skillID == 400011125
+            || attackInfo.skillID == 400011126
+            || attackInfo.skillID == 155121007
+            || attackInfo.skillID == 80003017) {
          mplew.writeInt(attackInfo.forcedPos.x);
          mplew.writeInt(attackInfo.forcedPos.y);
       }
@@ -2157,10 +2174,10 @@ public class CField {
       }
 
       if (attackInfo.skillID == 21120019
-         || attackInfo.skillID == 37121052
-         || attackInfo.skillID >= 400041002 && attackInfo.skillID <= 400041005
-         || attackInfo.skillID == 11121014
-         || attackInfo.skillID == 5101004) {
+            || attackInfo.skillID == 37121052
+            || attackInfo.skillID >= 400041002 && attackInfo.skillID <= 400041005
+            || attackInfo.skillID == 11121014
+            || attackInfo.skillID == 5101004) {
          mplew.write(attackInfo.unk2);
          Point pos = attackInfo.position2;
          if (pos == null) {
@@ -2178,16 +2195,17 @@ public class CField {
          mplew.writeInt(0);
       }
 
-      if (GameConstants.isPathfinderSpecialThrowingBombSkill(attackInfo.skillID) || GameConstants.isThrowingBombSkill(attackInfo.skillID)) {
+      if (GameConstants.isPathfinderSpecialThrowingBombSkill(attackInfo.skillID)
+            || GameConstants.isThrowingBombSkill(attackInfo.skillID)) {
          mplew.writeInt(attackInfo.bombID);
          mplew.write(attackInfo.bombD);
       }
 
       if (attackInfo.skillID == 155101104
-         || attackInfo.skillID == 155101204
-         || attackInfo.skillID == 400051042
-         || attackInfo.skillID == 151101003
-         || attackInfo.skillID == 151101004) {
+            || attackInfo.skillID == 155101204
+            || attackInfo.skillID == 400051042
+            || attackInfo.skillID == 151101003
+            || attackInfo.skillID == 151101004) {
          mplew.write(1);
          mplew.writeInt(0);
          mplew.writeInt(0);
@@ -2208,7 +2226,8 @@ public class CField {
    }
 
    public static int sub_799020(int skillID) {
-      return skillID != 400021053 && skillID != 400021029 && skillID != 64111012 && (skillID <= 400020008 || skillID > 400020011) ? 0 : 1;
+      return skillID != 400021053 && skillID != 400021029 && skillID != 64111012
+            && (skillID <= 400020008 || skillID > 400020011) ? 0 : 1;
    }
 
    public static int sub_798F00(int skillID) {
@@ -2440,7 +2459,8 @@ public class CField {
       }
    }
 
-   public static byte[] skillPrepare(MapleCharacter from, int skillId, int level, short display, byte unk, Point position) {
+   public static byte[] skillPrepare(MapleCharacter from, int skillId, int level, short display, byte unk,
+         Point position) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.SKILL_PREPARE.getValue());
       mplew.writeInt(from.getId());
@@ -2465,25 +2485,24 @@ public class CField {
    }
 
    public static byte[] damagePlayer(int skill, int monsteridfrom, int cid, int damage) {
-      return damagePlayer(cid, skill, damage, monsteridfrom, (byte)0, 0, 0, false, 0, (byte)0, null, (byte)0, 0, 0);
+      return damagePlayer(cid, skill, damage, monsteridfrom, (byte) 0, 0, 0, false, 0, (byte) 0, null, (byte) 0, 0, 0);
    }
 
    public static byte[] damagePlayer(
-      int cid,
-      int type,
-      int damage,
-      int monsteridfrom,
-      byte direction,
-      int skillid,
-      int pDMG,
-      boolean pPhysical,
-      int pID,
-      byte pType,
-      Point pPos,
-      byte offset,
-      int offset_d,
-      int fake
-   ) {
+         int cid,
+         int type,
+         int damage,
+         int monsteridfrom,
+         byte direction,
+         int skillid,
+         int pDMG,
+         boolean pPhysical,
+         int pID,
+         byte pType,
+         Point pPos,
+         byte offset,
+         int offset_d,
+         int fake) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.DAMAGE_PLAYER.getValue());
       mplew.writeInt(cid);
@@ -2561,7 +2580,7 @@ public class CField {
       packet.writeInt(1531030);
       packet.writeInt(6);
       packet.writeInt(0);
-      packet.writeMapleAsciiString("빠른이동을 사용합니다.");
+      packet.writeMapleAsciiString("ใช้วาร์ปด่วน");
       packet.writeLong(PacketHelper.getTime(-2L));
       packet.writeLong(PacketHelper.getTime(-1L));
       return packet.getPacket();
@@ -2598,7 +2617,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static void getCustomChairPacket(PacketEncoder mplew, MapleCharacter player, int itemID, String message, boolean enterField) {
+   public static void getCustomChairPacket(PacketEncoder mplew, MapleCharacter player, int itemID, String message,
+         boolean enterField) {
       MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
       String type = ii.getChairType(itemID);
       switch (type) {
@@ -2730,13 +2750,14 @@ public class CField {
                mplew.writeMapleAsciiString(player.getName());
                mplew.writeInt(player.getId());
             } else if (itemID != 3015520
-               && itemID != 3018071
-               && itemID != 3018352
-               && itemID != 3018464
-               && itemID != 3015798
-               && itemID != 3015895
-               && itemID != 3018599) {
-               if (itemID == 3015440 || itemID == 3015650 || itemID == 3015651 || itemID == 3015897 || itemID == 3018430 | itemID == 3018450) {
+                  && itemID != 3018071
+                  && itemID != 3018352
+                  && itemID != 3018464
+                  && itemID != 3015798
+                  && itemID != 3015895
+                  && itemID != 3018599) {
+               if (itemID == 3015440 || itemID == 3015650 || itemID == 3015651 || itemID == 3015897
+                     || itemID == 3018430 | itemID == 3018450) {
                   mplew.writeLong(player.getMesoChairCount());
                } else if (itemID == 3018634) {
                   mplew.writeInt(0);
@@ -3012,7 +3033,8 @@ public class CField {
       return mplew.getPacket();
    }
 
-   public static byte[] moveFollow(Point otherStart, Point myStart, Point otherEnd, List<LifeMovementFragment> moves, int encodedGatherDuration) {
+   public static byte[] moveFollow(Point otherStart, Point myStart, Point otherEnd, List<LifeMovementFragment> moves,
+         int encodedGatherDuration) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.FOLLOW_MOVE.getValue());
       mplew.writeInt(encodedGatherDuration);
@@ -3296,7 +3318,7 @@ public class CField {
       }
 
       mplew.writeShort(mist.getSkillLevel());
-      int span = (int)(mist.getStartTime() - System.currentTimeMillis());
+      int span = (int) (mist.getStartTime() - System.currentTimeMillis());
       if (mist.getStartTime() == 0L) {
          span = 0;
       }
@@ -3346,7 +3368,8 @@ public class CField {
       System.out.println(mist.getPreUOL());
       mplew.write(mist.getPreUOL());
       if (mist.getMobSkill() != null) {
-         if (mist.getMobSkill().getSkillId() == MobSkillID.AREA_POISON.getVal() && mist.getMobSkill().getSkillLevel() == 26) {
+         if (mist.getMobSkill().getSkillId() == MobSkillID.AREA_POISON.getVal()
+               && mist.getMobSkill().getSkillLevel() == 26) {
             mplew.writeInt(210);
          } else if (mist.getMobSkill().getSkillId() == MobSkillID.JINHILLAH_MIST.getVal()) {
             mplew.writeInt(250);
@@ -3363,7 +3386,7 @@ public class CField {
          mplew.writeInt(0);
       }
 
-      int duration = (int)(mist.getEndTime() - mist.getStartTime());
+      int duration = (int) (mist.getEndTime() - mist.getStartTime());
       mplew.writeInt(mist.getSourceSkillID() == 2241001 ? 4 : 0);
       mplew.writeInt(0);
       if (GameConstants.isAffectedAreaSkill(mist.getSourceSkillID())) {
@@ -3873,10 +3896,8 @@ public class CField {
       } else {
          packet.write(true);
          packet.encodeBuffer(
-            HexTool.getByteArrayFromHexString(
-               "2A 00 00 00 52 00 00 00 47 00 00 00 49 00 00 00 1D 00 00 00 53 00 00 00 4F 00 00 00 51 00 00 00 02 00 00 00 03 00 00 00 04 00 00 00 05 00 00 00 10 00 00 00 11 00 00 00 12 00 00 00 13 00 00 00 06 00 00 00 07 00 00 00 08 00 00 00 09 00 00 00 14 00 00 00 1E 00 00 00 1F 00 00 00 20 00 00 00 0A 00 00 00 0B 00 00 00 21 00 00 00 22 00 00 00 25 00 00 00 26 00 00 00 31 00 00 00 32 00 00 00"
-            )
-         );
+               HexTool.getByteArrayFromHexString(
+                     "2A 00 00 00 52 00 00 00 47 00 00 00 49 00 00 00 1D 00 00 00 53 00 00 00 4F 00 00 00 51 00 00 00 02 00 00 00 03 00 00 00 04 00 00 00 05 00 00 00 10 00 00 00 11 00 00 00 12 00 00 00 13 00 00 00 06 00 00 00 07 00 00 00 08 00 00 00 09 00 00 00 14 00 00 00 1E 00 00 00 1F 00 00 00 20 00 00 00 0A 00 00 00 0B 00 00 00 21 00 00 00 22 00 00 00 25 00 00 00 26 00 00 00 31 00 00 00 32 00 00 00"));
       }
 
       return packet.getPacket();
@@ -4119,7 +4140,8 @@ public class CField {
    public static byte[] viewSkills(MapleCharacter chr) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.TARGET_SKILL.getValue());
-      List<Skill> skillList = chr.getSkills().keySet().stream().filter(skillx -> SkillEncode.is_stealable_skill(skillx.getId())).collect(Collectors.toList());
+      List<Skill> skillList = chr.getSkills().keySet().stream()
+            .filter(skillx -> SkillEncode.is_stealable_skill(skillx.getId())).collect(Collectors.toList());
       mplew.write(1);
       mplew.writeInt(chr.getId());
       mplew.writeInt(skillList.isEmpty() ? 2 : 4);
@@ -4223,8 +4245,8 @@ public class CField {
    }
 
    public static byte[] getRecreatePathPsychicLock(
-      int playerId, int skillId, short skillLevel, int action, int actionSpeed, boolean isLeft, List<Pair<Integer, Integer>> skillInfos, List<Integer> keys
-   ) {
+         int playerId, int skillId, short skillLevel, int action, int actionSpeed, boolean isLeft,
+         List<Pair<Integer, Integer>> skillInfos, List<Integer> keys) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.RECREATE_PATH_PSYCHIC_LOCK.getValue());
       packet.writeInt(playerId);
@@ -4310,69 +4332,71 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft, List<ExtraSkillInfo> extraSkills, int size) {
+   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft,
+         List<ExtraSkillInfo> extraSkills, int size) {
       return getRegisterExtraSkill(skillID, x, y, isLeft, extraSkills, size, Collections.emptyList());
    }
 
-   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft, List<ExtraSkillInfo> extraSkills, int size, List<Integer> targets) {
+   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft,
+         List<ExtraSkillInfo> extraSkills, int size, List<Integer> targets) {
       return getRegisterExtraSkill(skillID, x, y, isLeft, extraSkills, size, Collections.emptyList(), targets);
    }
 
    public static byte[] getRegisterExtraSkill(
-      int skillID, int x, int y, boolean isLeft, List<ExtraSkillInfo> extraSkills, int size, List<Integer> beforeTargets, List<Integer> targets
-   ) {
+         int skillID, int x, int y, boolean isLeft, List<ExtraSkillInfo> extraSkills, int size,
+         List<Integer> beforeTargets, List<Integer> targets) {
       return getRegisterExtraSkill(skillID, x, y, isLeft, extraSkills, size, beforeTargets, targets, 0);
    }
 
    public static byte[] getRegisterExtraSkill(
-      int skillID,
-      int x,
-      int y,
-      boolean isLeft,
-      List<ExtraSkillInfo> extraSkills,
-      int size,
-      List<Integer> beforeTargets,
-      List<Integer> targets,
-      int areaObjectID
-   ) {
+         int skillID,
+         int x,
+         int y,
+         boolean isLeft,
+         List<ExtraSkillInfo> extraSkills,
+         int size,
+         List<Integer> beforeTargets,
+         List<Integer> targets,
+         int areaObjectID) {
       return getRegisterExtraSkill(skillID, 0, x, y, isLeft, extraSkills, size, beforeTargets, targets, areaObjectID);
    }
 
-   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft, ExtraSkillInfo extraSkill, int count, int show) {
+   public static byte[] getRegisterExtraSkill(int skillID, int x, int y, boolean isLeft, ExtraSkillInfo extraSkill,
+         int count, int show) {
       List<ExtraSkillInfo> extraSkills = new ArrayList<>();
       extraSkills.add(extraSkill);
-      return getRegisterExtraSkill(skillID, 0, x, y, isLeft, extraSkills, 1, Collections.emptyList(), Collections.emptyList(), 0, count, show);
+      return getRegisterExtraSkill(skillID, 0, x, y, isLeft, extraSkills, 1, Collections.emptyList(),
+            Collections.emptyList(), 0, count, show);
    }
 
    public static byte[] getRegisterExtraSkill(
-      int skillID,
-      int reasonSkillID,
-      int x,
-      int y,
-      boolean isLeft,
-      List<ExtraSkillInfo> extraSkills,
-      int size,
-      List<Integer> beforeTargets,
-      List<Integer> targets,
-      int areaObjectID
-   ) {
-      return getRegisterExtraSkill(skillID, reasonSkillID, x, y, isLeft, extraSkills, size, beforeTargets, targets, areaObjectID, 0, 0);
+         int skillID,
+         int reasonSkillID,
+         int x,
+         int y,
+         boolean isLeft,
+         List<ExtraSkillInfo> extraSkills,
+         int size,
+         List<Integer> beforeTargets,
+         List<Integer> targets,
+         int areaObjectID) {
+      return getRegisterExtraSkill(skillID, reasonSkillID, x, y, isLeft, extraSkills, size, beforeTargets, targets,
+            areaObjectID, 0, 0);
    }
 
    public static byte[] getRegisterExtraSkill(
-      int skillID,
-      int reasonSkillID,
-      int x,
-      int y,
-      boolean isLeft,
-      List<ExtraSkillInfo> extraSkills,
-      int size,
-      List<Integer> beforeTargets,
-      List<Integer> targets,
-      int areaObjectID,
-      int count,
-      int show
-   ) {
+         int skillID,
+         int reasonSkillID,
+         int x,
+         int y,
+         boolean isLeft,
+         List<ExtraSkillInfo> extraSkills,
+         int size,
+         List<Integer> beforeTargets,
+         List<Integer> targets,
+         int areaObjectID,
+         int count,
+         int show) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.REGISTER_EXTRA_SKILL.getValue());
       packet.writeInt(skillID);
@@ -4522,17 +4546,19 @@ public class CField {
       return userBonusAttackRequest(skillID, force, mobList, 0);
    }
 
-   public static byte[] userBonusAttackRequest(int skillID, boolean force, List<Pair<Integer, Integer>> mobList, int jaguarBleedingStack) {
+   public static byte[] userBonusAttackRequest(int skillID, boolean force, List<Pair<Integer, Integer>> mobList,
+         int jaguarBleedingStack) {
       return userBonusAttackRequest(skillID, force, mobList, jaguarBleedingStack, 0);
    }
 
-   public static byte[] userBonusAttackRequest(int skillID, boolean force, List<Pair<Integer, Integer>> mobList, int jaguarBleedingStack, int delay) {
+   public static byte[] userBonusAttackRequest(int skillID, boolean force, List<Pair<Integer, Integer>> mobList,
+         int jaguarBleedingStack, int delay) {
       return userBonusAttackRequest(skillID, force, mobList, jaguarBleedingStack, delay, 0);
    }
 
    public static byte[] userBonusAttackRequest(
-      int skillID, boolean force, final List<Pair<Integer, Integer>> mobList, int jaguarBleedingStack, int delay, int afterImage
-   ) {
+         int skillID, boolean force, final List<Pair<Integer, Integer>> mobList, int jaguarBleedingStack, int delay,
+         int afterImage) {
       List<Triple<Integer, Integer, Integer>> mList = new ArrayList<Triple<Integer, Integer, Integer>>() {
          {
             for (Pair<Integer, Integer> pair : mobList) {
@@ -4544,8 +4570,8 @@ public class CField {
    }
 
    public static byte[] userBonusAttackRequest(
-      int skillID, List<Triple<Integer, Integer, Integer>> mobList, boolean force, int jaguarBleedingStack, int delay, int afterImage
-   ) {
+         int skillID, List<Triple<Integer, Integer, Integer>> mobList, boolean force, int jaguarBleedingStack,
+         int delay, int afterImage) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.USER_BONUS_ATTACK_REQUEST.getValue());
       packet.writeInt(skillID);
@@ -4616,7 +4642,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] finalAttackRequest(boolean fromAttack, int finalAttackSkill, int attackSkill, int attackIdx, List<Integer> targets) {
+   public static byte[] finalAttackRequest(boolean fromAttack, int finalAttackSkill, int attackSkill, int attackIdx,
+         List<Integer> targets) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.FINAL_ATTACK_REQUEST.getValue());
       packet.writeInt(fromAttack ? 1 : 0);
@@ -4773,7 +4800,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] crystalReactionCooltime(int playerID, int objectID, int passiveReactionSkillID, int cooltimeMS) {
+   public static byte[] crystalReactionCooltime(int playerID, int objectID, int passiveReactionSkillID,
+         int cooltimeMS) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.SUMMON_SET_ENERGY.getValue());
       packet.writeInt(playerID);
@@ -5100,7 +5128,7 @@ public class CField {
       packet.writeInt(0);
       packet.writeInt(delta);
       packet.writeInt(0);
-      packet.writeMapleAsciiString(DBConfig.isGanglim ? "후원 캐시" : "강림 포인트");
+      packet.writeMapleAsciiString(DBConfig.isGanglim ? "แคชสนับสนุน" : "แต้มกังลิม");
       return packet.getPacket();
    }
 
@@ -5224,7 +5252,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] createObstacle(ObstacleAtomCreateType oact, ObstacleInRowInfo oiri, ObstacleRadialInfo ori, Set<ObstacleAtom> atomInfos) {
+   public static byte[] createObstacle(ObstacleAtomCreateType oact, ObstacleInRowInfo oiri, ObstacleRadialInfo ori,
+         Set<ObstacleAtom> atomInfos) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.OBSTACLE_ATOM_CREATE.getValue());
       packet.writeInt(0);
@@ -5247,7 +5276,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] createSingleObstacle(ObstacleAtomCreateType oact, ObstacleInRowInfo oiri, ObstacleRadialInfo ori, ObstacleAtom atom) {
+   public static byte[] createSingleObstacle(ObstacleAtomCreateType oact, ObstacleInRowInfo oiri,
+         ObstacleRadialInfo ori, ObstacleAtom atom) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.SINGLE_OBSTACLE_ATOM_CREATE.getValue());
       packet.write(oact.getValue());
@@ -5315,7 +5345,8 @@ public class CField {
          packet.write(mobSkill.getSkillStatIntValue(MobSkillStat.noGravity));
          boolean notDestroyByCollide = mobSkill.getSkillStatIntValue(MobSkillStat.notDestroyByCollide) != 0;
          packet.write(notDestroyByCollide);
-         if (mobSkill.getSkillId() == MobSkillID.BOUNCE_ATTACK.getVal() && (mobSkill.getSkillLevel() == 3 || mobSkill.getSkillLevel() == 4)) {
+         if (mobSkill.getSkillId() == MobSkillID.BOUNCE_ATTACK.getVal()
+               && (mobSkill.getSkillLevel() == 3 || mobSkill.getSkillLevel() == 4)) {
             packet.writeInt(mobSkill.getRb2().x);
             packet.writeInt(mobSkill.getRb2().y);
          }
@@ -5411,11 +5442,13 @@ public class CField {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.ELITE_BOSS_CURSE_STATE.getValue());
       if (level == 0 || level == -1) {
-         packet.writeMapleAsciiString("룬을 해방하여 엘리트 보스의 저주를 풀어야 합니다!!\\r\\n잠시 후 필드에 엘리트 보스의 저주가 시작됩니다!!");
+         packet.writeMapleAsciiString(
+               "คุณต้องปลดปล่อยรูนเพื่อลบคำสาปของอีลีทบอส!!\\r\\nคำสาปของอีลีทบอสจะเริ่มขึ้นในไม่ช้า!!");
       } else if (level != -2) {
          packet.writeMapleAsciiString(
-            "룬을 해방하여 엘리트 보스의 저주를 풀어야 합니다!!\\r\\n저주 " + level + "단계 :  경험치 획득, 드롭률 " + GameConstants.getCursedRunesRate(level) + "% 감소 효과 적용 중"
-         );
+               "คุณต้องปลดปล่อยรูนเพื่อลบคำสาปของอีลีทบอส!!\\r\\nคำสาปขั้น " + level
+                     + " : อัตราได้รับค่าประสบการณ์และอัตราดรอปลดลง "
+                     + GameConstants.getCursedRunesRate(level) + "%");
       } else {
          packet.writeMapleAsciiString("");
       }
@@ -5659,7 +5692,8 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] customChairResult(MapleCharacter player, boolean create, boolean update, boolean remove, CustomChair chair) {
+   public static byte[] customChairResult(MapleCharacter player, boolean create, boolean update, boolean remove,
+         CustomChair chair) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.CUSTOM_CHAIR_RESULT.getValue());
       packet.writeInt(player.getId());
@@ -5675,7 +5709,7 @@ public class CField {
          packet.writeInt(player.getMap().getCustomChairsThreadsafe().size());
 
          for (MapleMapObject obj : player.getMap().getCustomChairsThreadsafe()) {
-            CustomChair cc = (CustomChair)obj;
+            CustomChair cc = (CustomChair) obj;
             packet.writeInt(cc.getObjectId());
             packet.write(create);
             if (create) {
@@ -5696,8 +5730,8 @@ public class CField {
    }
 
    public static byte[] userWaitQueueResponse(
-      int playerID, WaitQueueType type, WaitQueueResult result, WaitQueueError error, int waitingType, int waitingQueueID, int fieldID
-   ) {
+         int playerID, WaitQueueType type, WaitQueueResult result, WaitQueueError error, int waitingType,
+         int waitingQueueID, int fieldID) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.USER_WAIT_QUEUE_RESPONSE.getValue());
       packet.writeInt(playerID);
@@ -5839,8 +5873,9 @@ public class CField {
    public static byte[] showCubeLevelupLimit() {
       PacketEncoder o = new PacketEncoder();
       o.writeShort(SendPacketOpcode.SEND_CUBE_LEVELUP_LIMIT.getValue());
-      GradeRandomOption[] opts = new GradeRandomOption[]{
-         GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional, GradeRandomOption.AmazingAdditional
+      GradeRandomOption[] opts = new GradeRandomOption[] {
+            GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional,
+            GradeRandomOption.AmazingAdditional
       };
 
       for (GradeRandomOption opt : opts) {
@@ -5892,13 +5927,14 @@ public class CField {
       return packet.getPacket();
    }
 
-   public static byte[] showMonsterStackedDebuffMark(int skillId, int attackSkillId, List<Pair<Integer, Integer>> mobList, int duration, int maxStack) {
+   public static byte[] showMonsterStackedDebuffMark(int skillId, int attackSkillId,
+         List<Pair<Integer, Integer>> mobList, int duration, int maxStack) {
       return showMonsterStackedDebuffMark(skillId, attackSkillId, 0, mobList, duration, maxStack);
    }
 
    public static byte[] showMonsterStackedDebuffMark(
-      int skillId, int attackSkillId, int attackSkillId2, List<Pair<Integer, Integer>> mobList, int duration, int maxStack
-   ) {
+         int skillId, int attackSkillId, int attackSkillId2, List<Pair<Integer, Integer>> mobList, int duration,
+         int maxStack) {
       PacketEncoder o = new PacketEncoder();
       o.writeShort(SendPacketOpcode.SET_MONSTER_DEBUFF_MARK.getValue());
       o.write(1);
@@ -5977,7 +6013,7 @@ public class CField {
          mplew.writeLong(0L);
          mplew.writeLong(-1L);
          mplew.writeLong(aitem.getMesos());
-         mplew.writeLong((int)(aitem.getMesos() / item.getQuantity()));
+         mplew.writeLong((int) (aitem.getMesos() / item.getQuantity()));
          long duration = aitem.getExpiredTime();
          mplew.writeLong(PacketHelper.getKoreanTimestamp(duration));
          mplew.writeMapleAsciiString_("Extreme@@", 17);
@@ -6014,7 +6050,7 @@ public class CField {
                   mplew.writeLong(0L);
                   mplew.writeLong(-1L);
                   mplew.writeLong(aitem.getMesos());
-                  mplew.writeLong((int)(aitem.getMesos() / item.getQuantity()));
+                  mplew.writeLong((int) (aitem.getMesos() / item.getQuantity()));
                   long duration = aitem.getExpiredTime();
                   mplew.writeLong(PacketHelper.getKoreanTimestamp(duration));
                   mplew.writeMapleAsciiString_("Extreme@@", 17);
@@ -6050,7 +6086,7 @@ public class CField {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.AUCTION.getValue());
          mplew.writeInt(0);
-         System.out.print("옥션온" + mplew);
+         System.out.print("AuctionOn" + mplew);
          return mplew.getPacket();
       }
 
@@ -6087,12 +6123,13 @@ public class CField {
             boolean Refund = false;
             Item item = aitem.getItem();
             int status = aitem.getType(ownerId == aitem.getOwnerId(), false);
-            mplew.writeInt((int)item.getInventoryId());
+            mplew.writeInt((int) item.getInventoryId());
             mplew.encodeBuffer(HexTool.getByteArrayFromHexString("05 0A 2C 05"));
             mplew.writeInt(aitem.getBuyer());
             mplew.writeInt(item.getItemId());
             mplew.writeInt(status);
-            mplew.writeLong(status == 0 ? Center.Auction.getBidById(ownerId, (int)item.getInventoryId()) : aitem.getBid());
+            mplew.writeLong(
+                  status == 0 ? Center.Auction.getBidById(ownerId, (int) item.getInventoryId()) : aitem.getBid());
             mplew.writeLong(PacketHelper.getTime(aitem.getBuyTime() + 43200000L));
             mplew.writeLong(aitem.getMesos());
             mplew.writeInt(Refund ? 0 : (aitem.getItem().getItemId() / 1000000 == 1 ? 1 : 2));
@@ -6119,7 +6156,7 @@ public class CField {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.AUCTION_BUY.getValue());
          mplew.write(1);
-         mplew.writeInt((int)aitem.getItem().getInventoryId());
+         mplew.writeInt((int) aitem.getItem().getInventoryId());
          mplew.encodeBuffer(HexTool.getByteArrayFromHexString("05 0A 2C 05"));
          mplew.writeInt(aitem.getBuyer());
          mplew.writeInt(aitem.getItem().getItemId());
@@ -6153,8 +6190,8 @@ public class CField {
 
       public static byte[] addAuctionItemInfo(PacketEncoder mplew, AuctionItemPackage aitem) {
          Item item = aitem.getItem();
-         mplew.writeInt((int)item.getInventoryId());
-         mplew.writeInt((int)item.getInventoryId());
+         mplew.writeInt((int) item.getInventoryId());
+         mplew.writeInt((int) item.getInventoryId());
          mplew.writeInt(aitem.isBargain() ? 1 : 0);
          mplew.encodeBuffer(HexTool.getByteArrayFromHexString("05 95 B5 00"));
          mplew.writeInt(aitem.getOwnerId());
@@ -6176,11 +6213,12 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] addCompleteAuctionItemInfo(PacketEncoder mplew, AuctionItemPackage aitem, int ownerId, String buyername) {
+      public static byte[] addCompleteAuctionItemInfo(PacketEncoder mplew, AuctionItemPackage aitem, int ownerId,
+            String buyername) {
          Item item = aitem.getItem();
          int status = aitem.getType(ownerId == aitem.getOwnerId(), false);
-         mplew.writeInt((int)item.getInventoryId());
-         mplew.writeInt((int)item.getInventoryId());
+         mplew.writeInt((int) item.getInventoryId());
+         mplew.writeInt((int) item.getInventoryId());
          mplew.writeInt(aitem.isBargain() ? 1 : 0);
          mplew.encodeBuffer(HexTool.getByteArrayFromHexString("05 95 B5 00"));
          mplew.writeInt(aitem.getOwnerId());
@@ -6321,7 +6359,8 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] getEffectPlay(String string, int duration, int rx, int ry, int baseNPC, int notOrigin, boolean unk) {
+      public static byte[] getEffectPlay(String string, int duration, int rx, int ry, int baseNPC, int notOrigin,
+            boolean unk) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.USER_IN_GAME_DIRECTION_EVENT.getValue());
          mplew.write(CField.ingameDirectionType.effectPlay.getType());
@@ -6400,13 +6439,14 @@ public class CField {
    }
 
    public static class EffectPacket {
-      public static byte[] spineEffect(String path, String animation, int onoff, int loop, int postRender, int endDelay, String key) {
+      public static byte[] spineEffect(String path, String animation, int onoff, int loop, int postRender, int endDelay,
+            String key) {
          return spineEffect(path, animation, onoff, loop, postRender, endDelay, key, "", 0, 0, 0);
       }
 
       public static byte[] spineEffect(
-         String path, String animation, int onoff, int loop, int postRender, int endDelay, String key, String unk1, int unk2, int unk3, int unk4
-      ) {
+            String path, String animation, int onoff, int loop, int postRender, int endDelay, String key, String unk1,
+            int unk2, int unk3, int unk4) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.FIELD_EFFECT.getValue());
          packet.write(32);
@@ -6713,15 +6753,14 @@ public class CField {
       }
 
       public static byte[] getScriptMessage(
-         int speakerTemplateID,
-         int replacedNpcTemplateID,
-         byte speakerType,
-         int flag,
-         ScriptMessageType type,
-         int DLGColorType,
-         String text,
-         PacketEncoder addPacket
-      ) {
+            int speakerTemplateID,
+            int replacedNpcTemplateID,
+            byte speakerType,
+            int flag,
+            ScriptMessageType type,
+            int DLGColorType,
+            String text,
+            PacketEncoder addPacket) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.NPC_TALK.getValue());
          packet.writeInt(0);
@@ -6754,15 +6793,14 @@ public class CField {
       }
 
       public static byte[] getScriptMessage(
-         int speakerTemplateID,
-         int replacedNpcTemplateID,
-         GameObjectType speakerType,
-         int flag,
-         ScriptMessageType type,
-         int DLGColorType,
-         String text,
-         PacketEncoder addPacket
-      ) {
+            int speakerTemplateID,
+            int replacedNpcTemplateID,
+            GameObjectType speakerType,
+            int flag,
+            ScriptMessageType type,
+            int DLGColorType,
+            String text,
+            PacketEncoder addPacket) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.NPC_TALK.getValue());
          packet.writeInt(0);
@@ -6811,7 +6849,8 @@ public class CField {
          }
 
          mplew.write(0);
-         mplew.writeShort(ScriptMessageFlag.NoEsc.getFlag() | ScriptMessageFlag.NpcReplacedByNpc.getFlag() | ScriptMessageFlag.Scenario.getFlag());
+         mplew.writeShort(ScriptMessageFlag.NoEsc.getFlag() | ScriptMessageFlag.NpcReplacedByNpc.getFlag()
+               | ScriptMessageFlag.Scenario.getFlag());
          mplew.write(dlgColorType);
          mplew.writeInt(0);
          mplew.writeInt(replacedNpcTemplateID);
@@ -6914,7 +6953,7 @@ public class CField {
          mplew.writeShort(0);
          mplew.write(0);
          mplew.writeInt(0);
-         mplew.writeMapleAsciiString(talk + "히히발싸");
+         mplew.writeMapleAsciiString(talk + "Hehe Fire!");
          byte flag = 0;
          if (bAngelicBuster) {
             flag = 1;
@@ -6931,7 +6970,8 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] getNPCTalkStyle(int npc, String talk, boolean bAngelicBuster, boolean bZeroBeta, int... args) {
+      public static byte[] getNPCTalkStyle(int npc, String talk, boolean bAngelicBuster, boolean bZeroBeta,
+            int... args) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.NPC_TALK.getValue());
          mplew.writeInt(0);
@@ -7210,20 +7250,19 @@ public class CField {
          mplew.writeInt(summon.getSkillLevel());
          mplew.encodePos(summon.getPosition());
          mplew.write(
-            summon.getSkill() != 14110033
-                  && summon.getSkill() != 32111006
-                  && summon.getSkill() != 33101005
-                  && summon.getSkill() != 400031051
-                  && summon.getSkill() != 400031047
-               ? 4
-               : 5
-         );
+               summon.getSkill() != 14110033
+                     && summon.getSkill() != 32111006
+                     && summon.getSkill() != 33101005
+                     && summon.getSkill() != 400031051
+                     && summon.getSkill() != 400031047
+                           ? 4
+                           : 5);
          if (summon.getSkill() != 152141505
-            && summon.getSkill() != 1121055
-            && summon.getSkill() != 154110010
-            && summon.getSkill() != 14121003
-            && summon.getOwner() != null
-            && summon.getOwner().getMap() != null) {
+               && summon.getSkill() != 1121055
+               && summon.getSkill() != 154110010
+               && summon.getSkill() != 14121003
+               && summon.getOwner() != null
+               && summon.getOwner().getMap() != null) {
             MapleFoothold fh = summon.getOwner().getMap().getFootholds().findBelow(summon.getPosition());
             if (fh != null) {
                mplew.writeShort(fh.getId());
@@ -7243,21 +7282,19 @@ public class CField {
          mplew.writeInt(0);
          mplew.writeInt(0);
          MapleCharacter chr = summon.getOwner();
-         boolean avatarLook = (
-               summon.getSkill() == 400001071
-                  || summon.getSkill() == 4341006
-                  || summon.getSkill() == 14111024
-                  || summon.getSkill() == 14121054
-                  || summon.getSkill() == 14121055
-                  || summon.getSkill() == 14121056
-                  || summon.getSkill() == 400011005
-                  || summon.getSkill() == 131001017
-                  || summon.getSkill() >= 400031007 && summon.getSkill() <= 400031009
-                  || summon.getSkill() >= 500061046 && summon.getSkill() <= 500061049
-                  || summon.getSkill() == 400041028
-                  || summon.getSkill() == 500061004
-            )
-            && chr != null;
+         boolean avatarLook = (summon.getSkill() == 400001071
+               || summon.getSkill() == 4341006
+               || summon.getSkill() == 14111024
+               || summon.getSkill() == 14121054
+               || summon.getSkill() == 14121055
+               || summon.getSkill() == 14121056
+               || summon.getSkill() == 400011005
+               || summon.getSkill() == 131001017
+               || summon.getSkill() >= 400031007 && summon.getSkill() <= 400031009
+               || summon.getSkill() >= 500061046 && summon.getSkill() <= 500061049
+               || summon.getSkill() == 400041028
+               || summon.getSkill() == 500061004)
+               && chr != null;
          mplew.write(avatarLook);
          if (avatarLook) {
             PacketHelper.addCharLook(mplew, chr, true, summon.isZeroBeta());
@@ -7276,15 +7313,15 @@ public class CField {
                mplew.writeInt(30);
             } else if (summon.getSkill() != 400041028 && summon.getSkill() != 500061004) {
                mplew.writeInt(
-                  summon.getSkill() == 14111024 || summon.getSkill() == 400031007 || summon.getSkill() == 500061046 || summon.getSkill() == 400011005
-                     ? 400
-                     : (summon.getSkill() != 14121055 && summon.getSkill() != 400031008 ? 1200 : 800)
-               );
+                     summon.getSkill() == 14111024 || summon.getSkill() == 400031007 || summon.getSkill() == 500061046
+                           || summon.getSkill() == 400011005
+                                 ? 400
+                                 : (summon.getSkill() != 14121055 && summon.getSkill() != 400031008 ? 1200 : 800));
                mplew.writeInt(
-                  summon.getSkill() == 14111024 || summon.getSkill() == 400031007 || summon.getSkill() == 500061046 || summon.getSkill() == 400011005
-                     ? 30
-                     : (summon.getSkill() != 14121055 && summon.getSkill() != 400031008 ? 90 : 60)
-               );
+                     summon.getSkill() == 14111024 || summon.getSkill() == 400031007 || summon.getSkill() == 500061046
+                           || summon.getSkill() == 400011005
+                                 ? 30
+                                 : (summon.getSkill() != 14121055 && summon.getSkill() != 400031008 ? 90 : 60));
             } else {
                mplew.writeInt(450);
                mplew.writeInt(30);
@@ -7304,7 +7341,8 @@ public class CField {
          boolean isJaguar = summon.getSkill() >= 33001007 && summon.getSkill() <= 33001015;
          mplew.write(false);
          mplew.writeInt(summon.getSummonRemoveTime() - System.currentTimeMillis());
-         mplew.write(summon.getSkill() != 5321003 && summon.getSkill() != 152121005 && (summon.getSkill() < 400011012 || summon.getSkill() > 400011014) ? 1 : 0);
+         mplew.write(summon.getSkill() != 5321003 && summon.getSkill() != 152121005
+               && (summon.getSkill() < 400011012 || summon.getSkill() > 400011014) ? 1 : 0);
          mplew.writeInt(summon.getSummonRLType());
          if (chr != null) {
             SecondaryStatEffect level = chr.getSkillLevelData(summon.getSkill());
@@ -7428,8 +7466,8 @@ public class CField {
       }
 
       public static byte[] summonAttack(
-         int cid, int summonObjId, int summonSkillId, byte animation, byte tbyte, List<Pair<Integer, List<Long>>> allDamage, int level, boolean darkFlare
-      ) {
+            int cid, int summonObjId, int summonSkillId, byte animation, byte tbyte,
+            List<Pair<Integer, List<Long>>> allDamage, int level, boolean darkFlare) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.SUMMON_ATTACK.getValue());
          mplew.writeInt(cid);
@@ -7461,7 +7499,8 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] pvpSummonAttack(int cid, int playerLevel, int oid, int animation, Point pos, List<AttackPair> attack) {
+      public static byte[] pvpSummonAttack(int cid, int playerLevel, int oid, int animation, Point pos,
+            List<AttackPair> attack) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.PVP_SUMMON.getValue());
          mplew.writeInt(cid);
@@ -7596,7 +7635,8 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] setIngameDirectionMode(boolean zenia, boolean blackFrame, boolean forceMouseOver, boolean showUI) {
+      public static byte[] setIngameDirectionMode(boolean zenia, boolean blackFrame, boolean forceMouseOver,
+            boolean showUI) {
          PacketEncoder packet = new PacketEncoder();
          packet.writeShort(SendPacketOpcode.SET_IN_GAME_DIRECTION_MODE.getValue());
          packet.write(zenia);
@@ -7865,7 +7905,8 @@ public class CField {
          return mplew.getPacket();
       }
 
-      public static byte[] getDirectionInfo(String data, int duration, int x, int y, int a, int baseNPC, int notOrigin) {
+      public static byte[] getDirectionInfo(String data, int duration, int x, int y, int a, int baseNPC,
+            int notOrigin) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.USER_IN_GAME_DIRECTION_EVENT.getValue());
          mplew.write(3);

@@ -45,7 +45,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("창조와 파괴의 기사가 쓰러져 검은 마법사에게로 가는 길이 열린다.", 7000);
+         this.sendBlackMageNotice("Knight of Creation and Destruction พ่ายแพ้แล้ว เส้นทางสู่ Black Mage เปิดออก", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -58,10 +58,11 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
          Party party = p.getParty();
          if (party != null) {
             for (PartyMemberEntry entry : party.getPartyMember().getPartyMemberList()) {
-               MapleCharacter character = GameServer.getInstance(p.getClient().getChannel()).getPlayerStorage().getCharacterById(entry.getId());
+               MapleCharacter character = GameServer.getInstance(p.getClient().getChannel()).getPlayerStorage()
+                     .getCharacterById(entry.getId());
                if (character != null
-                  && character.getDeathCount() > 0
-                  && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
+                     && character.getDeathCount() > 0
+                     && (character.getEventInstance() != null || character.getMap().getFieldSetInstance() != null)) {
                   character.setCurrentBossPhase(2);
                   if (character.getRegisterTransferFieldTime() == 0L) {
                      character.setRegisterTransferField(this.getId() + 100);
@@ -88,7 +89,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
 
          if (this.nextSpawnShriekingWallTime != 0L && this.nextSpawnShriekingWallTime <= System.currentTimeMillis()) {
             this.prepareSpawnShriekingWalls();
-            this.sendBlackMageNotice("통곡의 장벽이 솟아올라 공간을 잠식한다.", 3000);
+            this.sendBlackMageNotice("Wailing Wall ปรากฏขึ้นและเข้าครอบงำพื้นที่", 3000);
             this.shriekingWallCreateTime = System.currentTimeMillis() + 2000L;
             if (this.spawnedShriekingWallsSize >= 10) {
                this.nextSpawnShriekingWallTime = 0L;
@@ -136,7 +137,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
          }
 
          if (this.nextSpawnRedLightningTime <= System.currentTimeMillis()) {
-            this.sendBlackMageNotice("불길한 붉은 번개가 내리쳐 움직임을 제한한다.", 3000);
+            this.sendBlackMageNotice("สายฟ้าสีแดงที่น่ากลัวฟาดลงมา จำกัดการเคลื่อนไหว", 3000);
             MapleMonster mob = MapleLifeFactory.getMonster(8880506);
             this.spawnMonsterOnGroundBelow(mob, new Point(400, 85));
             mob = MapleLifeFactory.getMonster(8880506);

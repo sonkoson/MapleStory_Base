@@ -617,14 +617,16 @@ public class ChatHandler {
                if (!find) {
                   AdminClient.addChatLog(6, c.getChannel(), text, c.getPlayer().getName(), recipientx);
                } else {
-                  AdminClient.addChatLog(6, c.getChannel(), text, c.getPlayer().getName(), recipientx + "(주작캐)");
+                  AdminClient.addChatLog(6, c.getChannel(), text, c.getPlayer().getName(),
+                        recipientx + "(Manipulated Char)");
                }
             }
 
             if (chx > 0) {
                MapleCharacter playerx = GameServer.getInstance(chx).getPlayerStorage().getCharacterByName(recipientx);
                if (playerx == null) {
-                  System.out.println("[오류] 귓속말을 받을 대상이 해당 채널 (Ch." + chx + ")에 존재하지 않음. (Name : " + recipientx + ")");
+                  System.out.println("[Error] Whisper recipient does not exist in the channel (Ch." + chx
+                        + "). (Name : " + recipientx + ")");
                } else {
                   playerx.getClient()
                         .getSession()

@@ -1790,13 +1790,13 @@ public class CashShopHandler {
                chr.gainMeso(-item.getPrice(), false);
                chr.getCashInventory().addToInventory(itemz);
                StringBuilder sb = new StringBuilder();
-               sb.append("캐시샵 아이템 메소 구매 (캐릭터 : ");
+               sb.append("Cash Shop Item Meso Purchase (Character : ");
                sb.append(c.getPlayer().getName());
-               sb.append(", 계정 : ");
+               sb.append(", Account : ");
                sb.append(c.getPlayer().getClient().getAccountName());
-               sb.append(", 가격 : ");
+               sb.append(", Price : ");
                sb.append(item.getPrice());
-               sb.append(" 메소)");
+               sb.append(" Meso)");
                LoggingManager.putLog(
                      new ItemLog(
                            c.getPlayer(),
@@ -2045,15 +2045,15 @@ public class CashShopHandler {
             }
 
             StringBuilder sb = new StringBuilder();
-            sb.append("캐시샵 패키지 아이템 캐시 구매 (캐릭터 : ");
+            sb.append("Cash Shop Package Item Cash Purchase (Character : ");
             sb.append(c.getPlayer().getName());
-            sb.append(", 계정 : ");
+            sb.append(", Account : ");
             sb.append(c.getPlayer().getClient().getAccountName());
-            sb.append(", 가격 : ");
+            sb.append(", Price : ");
             sb.append(itemx.getPrice());
-            sb.append(" 캐시(type:");
+            sb.append(" Cash(type:");
             sb.append(toChargex);
-            sb.append(", 아이템 리스트 : ");
+            sb.append(", Item List : ");
 
             for (Item itemsa : ccz.values()) {
                c.getPlayer().getCashInventory().addToInventory(itemsa);
@@ -2349,13 +2349,13 @@ public class CashShopHandler {
                chr.getCashInventory().addToInventory(itemz);
                if (itemxxx.getPrice() > 0) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("캐시샵 아이템 캐시 구매 (캐릭터 : ");
+                  sb.append("Cash Shop Item Cash Purchase (Character : ");
                   sb.append(c.getPlayer().getName());
-                  sb.append(", 계정 : ");
+                  sb.append(", Account : ");
                   sb.append(c.getPlayer().getClient().getAccountName());
-                  sb.append(", 가격 : ");
+                  sb.append(", Price : ");
                   sb.append(itemxxx.getPrice());
-                  sb.append(" 캐시(type:");
+                  sb.append(" Cash(type:");
                   sb.append(toChargexx);
                   sb.append(")");
                   LoggingManager.putLog(

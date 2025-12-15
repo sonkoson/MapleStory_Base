@@ -200,7 +200,8 @@ public class MapleClient implements Serializable {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         PreparedStatement ps = con.prepareStatement("SELECT id, name, gm FROM characters WHERE accountid = ? AND world = ?");
+         PreparedStatement ps = con
+               .prepareStatement("SELECT id, name, gm FROM characters WHERE accountid = ? AND world = ?");
          ps.setInt(1, accountID);
          ps.setInt(2, serverId);
          ResultSet rs = ps.executeQuery();
@@ -226,7 +227,8 @@ public class MapleClient implements Serializable {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         PreparedStatement ps = con.prepareStatement("SELECT count(*) FROM characters WHERE accountid = ? AND world = ?");
+         PreparedStatement ps = con
+               .prepareStatement("SELECT count(*) FROM characters WHERE accountid = ? AND world = ?");
          ps.setInt(1, this.accId);
          ps.setInt(2, serverId);
          ResultSet rs = ps.executeQuery();
@@ -469,14 +471,16 @@ public class MapleClient implements Serializable {
             this.nameChangeEnable = rs.getByte("nameChange");
             if (ServerConstants.ConnectorSetting1 && !this.gm) {
                if (allowed != 1) {
-                  this.session.write(CWvsContext.serverNotice(1, "전용 접속기로만 로그인할 수 있습니다.(오류코드 : 0x01)"));
+                  this.session.write(
+                        CWvsContext.serverNotice(1, "กรุณาเข้าเกมผ่านตัวเข้าเกมที่กำหนดเท่านั้น (Error Code: 0x01)"));
                   rs.close();
                   ps.close();
                   return 21;
                }
 
                if (connecterIP == null) {
-                  this.session.write(CWvsContext.serverNotice(1, "전용 접속기로만 로그인할 수 있습니다. (오류코드 : 0x03)"));
+                  this.session.write(
+                        CWvsContext.serverNotice(1, "กรุณาเข้าเกมผ่านตัวเข้าเกมที่กำหนดเท่านั้น (Error Code: 0x03)"));
                   rs.close();
                   ps.close();
                   return 21;
@@ -515,7 +519,8 @@ public class MapleClient implements Serializable {
                }
 
                if (updatePasswordHash && !forced) {
-                  PreparedStatement pss = con.prepareStatement("UPDATE `accounts` SET `password` = ?, `salt` = ? WHERE id = ?");
+                  PreparedStatement pss = con
+                        .prepareStatement("UPDATE `accounts` SET `password` = ?, `salt` = ? WHERE id = ?");
 
                   try {
                      String newSalt = LoginCrypto.makeSalt();
@@ -547,7 +552,7 @@ public class MapleClient implements Serializable {
       if (encType < 4) {
          for (int i = 0; i < encryptedPassword.length; i++) {
             byte b = encryptedPassword[i];
-            byte b2 = (byte)(b << 4 & 240 | b >>> 4 & 15);
+            byte b2 = (byte) (b << 4 & 240 | b >>> 4 & 15);
             encryptedPassword[i] = b2;
          }
 
@@ -564,7 +569,8 @@ public class MapleClient implements Serializable {
             for (int i = 0; i < decrypted.length; i++) {
                switch (encType) {
                   case 4:
-                     if (decrypted[i] != (byte)((encryptedPassword[i] & 255) << 1 | (encryptedPassword[i] & 255) >> 7)) {
+                     if (decrypted[i] != (byte) ((encryptedPassword[i] & 255) << 1
+                           | (encryptedPassword[i] & 255) >> 7)) {
                         return false;
                      }
                      break;
@@ -574,7 +580,7 @@ public class MapleClient implements Serializable {
                      }
                      break;
                   case 6:
-                     if (encryptedPassword[i] != (byte)(decrypted[i] * 2)) {
+                     if (encryptedPassword[i] != (byte) (decrypted[i] * 2)) {
                         return false;
                      }
                      break;
@@ -585,7 +591,7 @@ public class MapleClient implements Serializable {
                         aa += var9 = aa >>> 8;
                      }
 
-                     if (encryptedPassword[i] != (byte)aa) {
+                     if (encryptedPassword[i] != (byte) aa) {
                         return false;
                      }
                }
@@ -646,7 +652,8 @@ public class MapleClient implements Serializable {
                   accid = rs.getInt(1);
                   rs.close();
                   ps.close();
-                  ps = con.prepareStatement("UPDATE accounts SET tempban = DEFAULT, banned = 0, banreason = '' WHERE id = ?");
+                  ps = con.prepareStatement(
+                        "UPDATE accounts SET tempban = DEFAULT, banned = 0, banreason = '' WHERE id = ?");
                   ps.setInt(1, accid);
                   ps.executeUpdate();
                   ps.close();
@@ -740,7 +747,8 @@ public class MapleClient implements Serializable {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         PreparedStatement ps = con.prepareStatement("UPDATE accounts SET loggedin = ?, SessionIP = ?, lastlogin = CURRENT_TIMESTAMP() WHERE id = ?");
+         PreparedStatement ps = con.prepareStatement(
+               "UPDATE accounts SET loggedin = ?, SessionIP = ?, lastlogin = CURRENT_TIMESTAMP() WHERE id = ?");
          ps.setInt(1, newstate);
          ps.setString(2, SessionID);
          ps.setInt(3, this.getAccID());
@@ -781,8 +789,8 @@ public class MapleClient implements Serializable {
       byte var20;
       try (Connection con = DBConnection.getConnection()) {
          ps = con.prepareStatement(
-            String.format("SELECT id, name, banned, 2ndpassword, gm, gender %s FROM accounts WHERE cookie = ?", DBConfig.isGanglim ? ", discordid" : "")
-         );
+               String.format("SELECT id, name, banned, 2ndpassword, gm, gender %s FROM accounts WHERE cookie = ?",
+                     DBConfig.isGanglim ? ", discordid" : ""));
          ps.setString(1, cookie);
          rs = ps.executeQuery();
          if (!rs.next() || rs.getInt("banned") > 0) {
@@ -826,7 +834,8 @@ public class MapleClient implements Serializable {
       try {
          byte var7;
          try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT loggedin, lastlogin, banned, `birthday` + 0 AS `bday` FROM accounts WHERE id = ?");
+            PreparedStatement ps = con.prepareStatement(
+                  "SELECT loggedin, lastlogin, banned, `birthday` + 0 AS `bday` FROM accounts WHERE id = ?");
             ps.setInt(1, this.getAccID());
             ResultSet rs = ps.executeQuery();
             boolean next = rs.next();
@@ -839,7 +848,8 @@ public class MapleClient implements Serializable {
 
             this.birthday = rs.getInt("bday");
             byte state = rs.getByte("loggedin");
-            if ((state == 1 || state == 3) && rs.getTimestamp("lastlogin").getTime() + 20000L < System.currentTimeMillis()) {
+            if ((state == 1 || state == 3)
+                  && rs.getTimestamp("lastlogin").getTime() + 20000L < System.currentTimeMillis()) {
                state = 0;
                this.updateLoginState(state, this.getSessionIPAddress());
             }
@@ -869,9 +879,10 @@ public class MapleClient implements Serializable {
    public final void removalTask(boolean shutdown) {
       try {
          if (this.player.getMap() instanceof Field_MultiYutGame) {
-            Field_MultiYutGame f = (Field_MultiYutGame)this.player.getMap();
+            Field_MultiYutGame f = (Field_MultiYutGame) this.player.getMap();
             f.getYutGameDlg().surrender(this.player, this.player.getMiniGameTeam());
-            this.player.updateOneInfo(1234569, "miniGame1_can_time", String.valueOf(System.currentTimeMillis() + 900000L));
+            this.player.updateOneInfo(1234569, "miniGame1_can_time",
+                  String.valueOf(System.currentTimeMillis() + 900000L));
          }
 
          Center.GameWaitQueue.deleteQueue(this.player);
@@ -880,7 +891,8 @@ public class MapleClient implements Serializable {
          if (this.player.getMarriageId() > 0) {
             MapleQuestStatus stat1 = this.player.getQuestNoAdd(MapleQuest.getInstance(160001));
             MapleQuestStatus stat2 = this.player.getQuestNoAdd(MapleQuest.getInstance(160002));
-            if (stat1 != null && stat1.getCustomData() != null && (stat1.getCustomData().equals("2_") || stat1.getCustomData().equals("2"))) {
+            if (stat1 != null && stat1.getCustomData() != null
+                  && (stat1.getCustomData().equals("2_") || stat1.getCustomData().equals("2"))) {
                if (stat2 != null && stat2.getCustomData() != null) {
                   stat2.setCustomData("0");
                }
@@ -944,7 +956,8 @@ public class MapleClient implements Serializable {
             }
          }
       } catch (Throwable var7) {
-         System.out.println("[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") " + var7.toString());
+         System.out.println(
+               "[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") " + var7.toString());
          var7.printStackTrace();
          FileoutputUtil.outputFileError("Log_AccountStuck.rtf", var7);
       } finally {
@@ -1060,17 +1073,15 @@ public class MapleClient implements Serializable {
             }
 
             LoggingManager.putLog(
-               new ConnectLog(
-                  this.player.getName(),
-                  this.getAccountName(),
-                  this.player.getId(),
-                  this.getAccID(),
-                  ConnectLogType.Disconnect.getType(),
-                  getMac,
-                  getVolume,
-                  sb
-               )
-            );
+                  new ConnectLog(
+                        this.player.getName(),
+                        this.getAccountName(),
+                        this.player.getId(),
+                        this.getAccID(),
+                        ConnectLogType.Disconnect.getType(),
+                        getMac,
+                        getVolume,
+                        sb));
          } catch (Exception var70) {
             System.out.println("Disconnect 2 Err");
             var70.printStackTrace();
@@ -1089,7 +1100,8 @@ public class MapleClient implements Serializable {
                getVolume = macString.get(1);
             }
 
-            LoggingManager.putLog(new ConnectLog("", this.getAccountName(), 0, this.getAccID(), ConnectLogType.Disconnect.getType(), getMac, getVolume, sb));
+            LoggingManager.putLog(new ConnectLog("", this.getAccountName(), 0, this.getAccID(),
+                  ConnectLogType.Disconnect.getType(), getMac, getVolume, sb));
          } catch (Exception var69) {
             System.out.println("Disconnect 3 Err");
             var69.printStackTrace();
@@ -1108,7 +1120,8 @@ public class MapleClient implements Serializable {
             }
 
             try {
-               if (!this.player.isProcessChangeChannel() && this.player.getAntiMacro() != null && this.player.getAntiMacro().getCaptcha() != null) {
+               if (!this.player.isProcessChangeChannel() && this.player.getAntiMacro() != null
+                     && this.player.getAntiMacro().getCaptcha() != null) {
                   this.player.onFailedAntiMacro(this.player.getAntiMacro(), AntiMacroFailedType.Disconnection);
                }
             } catch (Exception var67) {
@@ -1121,7 +1134,8 @@ public class MapleClient implements Serializable {
                   this.removalTask(shutdown);
                }
             } catch (Exception var66) {
-               System.out.println("[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") " + var66.toString());
+               System.out.println("[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") "
+                     + var66.toString());
                var66.printStackTrace();
             }
 
@@ -1138,7 +1152,8 @@ public class MapleClient implements Serializable {
             try {
                this.player.cancelAllTask(true, false);
             } catch (Exception var64) {
-               System.out.println("[오류] disconnect 함수 실행 중 cancelAllTask에서 오류 발생! (이름 : " + this.player.getName() + ") " + var64.toString());
+               System.out.println("[오류] disconnect 함수 실행 중 cancelAllTask에서 오류 발생! (이름 : " + this.player.getName() + ") "
+                     + var64.toString());
                var64.printStackTrace();
             }
 
@@ -1156,7 +1171,8 @@ public class MapleClient implements Serializable {
                      PartyMemberEntry lchr = null;
 
                      for (PartyMemberEntry pchr : party.getPartyMemberList()) {
-                        if (pchr != null && map.getCharacterById(pchr.getId()) != null && (lchr == null || lchr.getLevel() < pchr.getLevel())) {
+                        if (pchr != null && map.getCharacterById(pchr.getId()) != null
+                              && (lchr == null || lchr.getLevel() < pchr.getLevel())) {
                            lchr = pchr;
                         }
                      }
@@ -1169,9 +1185,11 @@ public class MapleClient implements Serializable {
 
                if (friend != null) {
                   if (!this.serverTransition) {
-                     Center.Buddy.loggedOff(this.player.getName(), this.player.getId(), this.getAccID(), this.channel, friend.getBuddyIds());
+                     Center.Buddy.loggedOff(this.player.getName(), this.player.getId(), this.getAccID(), this.channel,
+                           friend.getBuddyIds());
                   } else {
-                     Center.Buddy.loggedOn(this.player.getName(), this.player.getId(), this.getAccID(), this.channel, friend.getBuddyIds());
+                     Center.Buddy.loggedOn(this.player.getName(), this.player.getId(), this.getAccID(), this.channel,
+                           friend.getBuddyIds());
                   }
                }
 
@@ -1179,7 +1197,8 @@ public class MapleClient implements Serializable {
                   Center.Guild.setGuildMemberOnline(mgc, false, -1);
                }
             } catch (Exception var76) {
-               System.out.println("[오류] disconnect 함수 실행 중 오류 발생! (이름 : " + this.player.getName() + ") " + var76.toString());
+               System.out.println(
+                     "[오류] disconnect 함수 실행 중 오류 발생! (이름 : " + this.player.getName() + ") " + var76.toString());
                var76.printStackTrace();
             } finally {
                if (gs != null) {
@@ -1222,9 +1241,11 @@ public class MapleClient implements Serializable {
 
             if (friend != null) {
                if (!this.serverTransition) {
-                  Center.Buddy.loggedOff(this.player.getName(), this.player.getId(), this.getAccID(), this.channel, friend.getBuddyIds());
+                  Center.Buddy.loggedOff(this.player.getName(), this.player.getId(), this.getAccID(), this.channel,
+                        friend.getBuddyIds());
                } else {
-                  Center.Buddy.loggedOn(this.player.getName(), this.player.getId(), this.getAccID(), this.channel, friend.getBuddyIds());
+                  Center.Buddy.loggedOn(this.player.getName(), this.player.getId(), this.getAccID(), this.channel,
+                        friend.getBuddyIds());
                }
             }
 
@@ -1251,7 +1272,8 @@ public class MapleClient implements Serializable {
          }
 
          if (save) {
-            this.player.saveToDB(true, this.getServerType() == ServerType.SHOP || this.getServerType() == ServerType.AUCTION);
+            this.player.saveToDB(true,
+                  this.getServerType() == ServerType.SHOP || this.getServerType() == ServerType.AUCTION);
          }
       }
 
@@ -1274,7 +1296,7 @@ public class MapleClient implements Serializable {
          }
 
          try {
-            DefaultTableModel model = (DefaultTableModel)ConnectorPanel.jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) ConnectorPanel.jTable1.getModel();
             if (model.getRowCount() >= 1) {
                for (int i = model.getRowCount() - 1; i >= 0; i--) {
                   if (model != null && this.getConnectorClient() != null) {
@@ -1284,7 +1306,8 @@ public class MapleClient implements Serializable {
                         if (name != null) {
                            if (this.player != null) {
                               model.setValueAt(name.replace(this.player.getName() + ",", ""), i, 3);
-                              ConnectorClient c = ConnectorServer.getInstance().getClientStorage().getClientByName(this.getAccountName());
+                              ConnectorClient c = ConnectorServer.getInstance().getClientStorage()
+                                    .getClientByName(this.getAccountName());
                               if (c != null) {
                                  c.removeInGameChar(this.player.getName());
                               }
@@ -1328,7 +1351,8 @@ public class MapleClient implements Serializable {
       try {
          byte var6;
          try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT guildid, guildrank, familyid, name FROM characters WHERE id = ? AND accountid = ?");
+            PreparedStatement ps = con.prepareStatement(
+                  "SELECT guildid, guildrank, familyid, name FROM characters WHERE id = ? AND accountid = ?");
             ps.setInt(1, cid);
             ps.setInt(2, this.accId);
             ResultSet rs = ps.executeQuery();
@@ -1604,7 +1628,8 @@ public class MapleClient implements Serializable {
 
          try {
             try (Connection con = DBConnection.getConnection()) {
-               PreparedStatement ps = con.prepareStatement("UPDATE character_slots SET charslots = ? WHERE worldid = ? AND accid = ?");
+               PreparedStatement ps = con
+                     .prepareStatement("UPDATE character_slots SET charslots = ? WHERE worldid = ? AND accid = ?");
                ps.setInt(1, this.charslots);
                ps.setInt(2, 49);
                ps.setInt(3, this.accId);
@@ -1712,7 +1737,8 @@ public class MapleClient implements Serializable {
             String email = rs.getString("email");
             rs.close();
             ps.close();
-            ps = con.prepareStatement("UPDATE accounts SET banned = 0, banreason = '' WHERE email = ?" + (sessionIP == null ? "" : " OR sessionIP = ?"));
+            ps = con.prepareStatement("UPDATE accounts SET banned = 0, banreason = '' WHERE email = ?"
+                  + (sessionIP == null ? "" : " OR sessionIP = ?"));
             ps.setString(1, email);
             if (sessionIP != null) {
                ps.setString(2, sessionIP);
@@ -1859,7 +1885,7 @@ public class MapleClient implements Serializable {
             }
          }
 
-         return (List<Integer>)var23;
+         return (List<Integer>) var23;
       } else {
          return this.charPosition;
       }
@@ -2030,7 +2056,8 @@ public class MapleClient implements Serializable {
             ps.setInt(1, this.accId);
             ps.executeUpdate();
             ps.close();
-            PreparedStatement pse = con.prepareStatement("INSERT INTO acckeyvalue (`id`, `key`, `value`) VALUES (?, ?, ?)");
+            PreparedStatement pse = con
+                  .prepareStatement("INSERT INTO acckeyvalue (`id`, `key`, `value`) VALUES (?, ?, ?)");
             pse.setInt(1, this.accId);
 
             for (Entry<String, String> keyValue : this.keyValues.entrySet()) {
@@ -2095,9 +2122,9 @@ public class MapleClient implements Serializable {
             label176: {
                boolean var5;
                try (
-                  Connection con = DBConnection.getConnection();
-                  PreparedStatement ps = con.prepareStatement("SELECT `chat_ban_time` FROM `accounts` WHERE `id` = ?");
-               ) {
+                     Connection con = DBConnection.getConnection();
+                     PreparedStatement ps = con
+                           .prepareStatement("SELECT `chat_ban_time` FROM `accounts` WHERE `id` = ?");) {
                   ps.setInt(1, this.getAccID());
 
                   try (ResultSet rs = ps.executeQuery()) {
@@ -2141,9 +2168,8 @@ public class MapleClient implements Serializable {
 
    public boolean setAccountChatBanTime(long bantime) {
       try (
-         Connection con = DBConnection.getConnection();
-         PreparedStatement ps = con.prepareStatement("UPDATE `accounts` SET `chat_ban_time` = ? WHERE `id` = ?");
-      ) {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE `accounts` SET `chat_ban_time` = ? WHERE `id` = ?");) {
          Timestamp ts = new Timestamp(bantime);
          ps.setTimestamp(1, ts);
          ps.setInt(2, this.getAccID());
@@ -2165,9 +2191,8 @@ public class MapleClient implements Serializable {
          try {
             String var5;
             try (
-               Connection con = DBConnection.getConnection();
-               PreparedStatement ps = con.prepareStatement("SELECT `phonenumber` FROM `accounts` WHERE `id` = ?");
-            ) {
+                  Connection con = DBConnection.getConnection();
+                  PreparedStatement ps = con.prepareStatement("SELECT `phonenumber` FROM `accounts` WHERE `id` = ?");) {
                ps.setInt(1, this.getAccID());
 
                try (ResultSet rs = ps.executeQuery()) {

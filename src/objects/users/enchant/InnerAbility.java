@@ -52,7 +52,8 @@ public class InnerAbility {
    private static int legendaryThirdAbilityEpicCirculator = 0;
 
    public static void loadInnerAbilityPercentage() {
-      Table table = Properties.loadTable(DBConfig.isGanglim ? "data/Ganglim" : "data/Jin", "InnerAbilityPercentage.data");
+      Table table = Properties.loadTable(DBConfig.isGanglim ? "data/Ganglim" : "data/Jin",
+            "InnerAbilityPercentage.data");
       gradeUpRare2Epic = Integer.parseInt(table.getProperty("gradeUpRare2Epic"));
       gradeUpEpic2Unique = Integer.parseInt(table.getProperty("gradeUpEpic2Unique"));
       gradeUpUnique2Legendary = Integer.parseInt(table.getProperty("gradeUpUnique2Legendary"));
@@ -66,16 +67,20 @@ public class InnerAbility {
       gradeUpUnique2LegendaryCirculator = Integer.parseInt(table.getProperty("gradeUpUnique2LegendaryCirculator"));
       UniqueSecondAbilityEpicCirculator = Integer.parseInt(table.getProperty("UniqueSecondAbilityEpicCirculator"));
       UniqueThirdAbilityEpicCirculator = Integer.parseInt(table.getProperty("UniqueThirdAbilityEpicCirculator"));
-      legendarySecondAbilityUniqueCirculator = Integer.parseInt(table.getProperty("legendarySecondAbilityUniqueCirculator"));
-      legendarySecondAbilityEpicCirculator = Integer.parseInt(table.getProperty("legendarySecondAbilityEpicCirculator"));
-      legendaryThirdAbilityUniqueCirculator = Integer.parseInt(table.getProperty("legendaryThirdAbilityUniqueCirculator"));
+      legendarySecondAbilityUniqueCirculator = Integer
+            .parseInt(table.getProperty("legendarySecondAbilityUniqueCirculator"));
+      legendarySecondAbilityEpicCirculator = Integer
+            .parseInt(table.getProperty("legendarySecondAbilityEpicCirculator"));
+      legendaryThirdAbilityUniqueCirculator = Integer
+            .parseInt(table.getProperty("legendaryThirdAbilityUniqueCirculator"));
       legendaryThirdAbilityEpicCirculator = Integer.parseInt(table.getProperty("legendaryThirdAbilityEpicCirculator"));
    }
 
    public static void loadingInnerAbility() {
-      MapleData OptionRequirePoint = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"))
-         .getData("InnerAbility.img")
-         .getChildByPath("OptionRequirePoint");
+      MapleData OptionRequirePoint = MapleDataProviderFactory
+            .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"))
+            .getData("InnerAbility.img")
+            .getChildByPath("OptionRequirePoint");
 
       for (MapleData data : OptionRequirePoint.getChildren()) {
          OptionRequirePointAbility.putIfAbsent(data.getName(), new ArrayList<>());
@@ -85,9 +90,10 @@ public class InnerAbility {
          }
       }
 
-      MapleData data00 = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz"))
-         .getData("7000.img")
-         .getChildByPath("skill");
+      MapleData data00 = MapleDataProviderFactory
+            .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Skill.wz"))
+            .getData("7000.img")
+            .getChildByPath("skill");
 
       for (MapleData data01 : data00.getChildren()) {
          MapleData data02 = data01.getChildByPath("common");
@@ -306,24 +312,22 @@ public class InnerAbility {
    public static boolean DuplicateCheck(List<Integer> ability, int checkAbility) {
       boolean dup = false;
       List<Pair<Integer, Integer>> duplic = new ArrayList<>(
-         Arrays.asList(
-            new Pair<>(70000000, 70000017),
-            new Pair<>(70000001, 70000018),
-            new Pair<>(70000002, 70000019),
-            new Pair<>(70000003, 70000020),
-            new Pair<>(70000004, 70000010),
-            new Pair<>(70000005, 70000011),
-            new Pair<>(70000006, 70000007),
-            new Pair<>(70000014, 70000043),
-            new Pair<>(70000015, 70000044),
-            new Pair<>(70000025, 70000040),
-            new Pair<>(70000026, 70000042),
-            new Pair<>(70000027, 70000031),
-            new Pair<>(70000028, 70000032),
-            new Pair<>(70000029, 70000030),
-            new Pair<>(70000033, 70000050)
-         )
-      );
+            Arrays.asList(
+                  new Pair<>(70000000, 70000017),
+                  new Pair<>(70000001, 70000018),
+                  new Pair<>(70000002, 70000019),
+                  new Pair<>(70000003, 70000020),
+                  new Pair<>(70000004, 70000010),
+                  new Pair<>(70000005, 70000011),
+                  new Pair<>(70000006, 70000007),
+                  new Pair<>(70000014, 70000043),
+                  new Pair<>(70000015, 70000044),
+                  new Pair<>(70000025, 70000040),
+                  new Pair<>(70000026, 70000042),
+                  new Pair<>(70000027, 70000031),
+                  new Pair<>(70000028, 70000032),
+                  new Pair<>(70000029, 70000030),
+                  new Pair<>(70000033, 70000050)));
 
       for (Integer ab : ability) {
          if (ab.equals(checkAbility)) {
@@ -335,7 +339,7 @@ public class InnerAbility {
 
          while (true) {
             if (var6.hasNext()) {
-               Pair<Integer, Integer> d = (Pair<Integer, Integer>)var6.next();
+               Pair<Integer, Integer> d = (Pair<Integer, Integer>) var6.next();
                if (ab.equals(d.getLeft()) && d.getRight().equals(checkAbility)) {
                   dup = true;
                } else {
@@ -384,14 +388,14 @@ public class InnerAbility {
             if (randomGrade < gradeUpUnique2Legendary) {
                rank = 3;
                generateAbility = GenerateAbilityLegendary(
-                  legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique, legendaryThirdAbilityEpic
-               );
+                     legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique,
+                     legendaryThirdAbilityEpic);
             }
             break;
          case 3:
             generateAbility = GenerateAbilityLegendary(
-               legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique, legendaryThirdAbilityEpic
-            );
+                  legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique,
+                  legendaryThirdAbilityEpic);
       }
 
       if (gradeLockLines.size() > 0) {
@@ -404,7 +408,8 @@ public class InnerAbility {
       for (int i = 0; i < 3; i++) {
          if (gradeLockLines.contains(i + 1)) {
             CharacterPotentialHolder inner = User.getInnerSkills().get(i);
-            abilitys.add(new Triple<>(inner.getSkillId(), Integer.valueOf(inner.getSkillLevel()), Integer.valueOf(inner.getRank())));
+            abilitys.add(new Triple<>(inner.getSkillId(), Integer.valueOf(inner.getSkillLevel()),
+                  Integer.valueOf(inner.getRank())));
             dup.add(inner.getSkillId());
          } else if (i == 0) {
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
@@ -429,43 +434,50 @@ public class InnerAbility {
             if (DBConfig.isGanglim) {
                abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), rank));
             } else {
-               abilitys.add(new Triple<>(generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), rank));
+               abilitys.add(new Triple<>(generateAbility.abi.getLeft(),
+                     Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), rank));
             }
 
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 1) {
-            generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+               generateAbility.setAbi(
+                     generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
             }
 
             if (DBConfig.isGanglim) {
-               abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), generateAbility.secondRank));
+               abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(),
+                     generateAbility.secondRank));
             } else {
                abilitys.add(
-                  new Triple<>(
-                     generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), generateAbility.secondRank
-                  )
-               );
+                     new Triple<>(
+                           generateAbility.abi.getLeft(),
+                           Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()),
+                           generateAbility.secondRank));
             }
 
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 2) {
-            generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+               generateAbility
+                     .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
             }
 
             if (DBConfig.isGanglim) {
-               abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), generateAbility.thirdRank));
+               abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(),
+                     generateAbility.thirdRank));
             } else {
                abilitys.add(
-                  new Triple<>(
-                     generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), generateAbility.thirdRank
-                  )
-               );
+                     new Triple<>(
+                           generateAbility.abi.getLeft(),
+                           Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()),
+                           generateAbility.thirdRank));
             }
          }
       }
@@ -475,14 +487,12 @@ public class InnerAbility {
 
       for (Triple<Integer, Integer, Integer> ability : abilitys) {
          holders.add(
-            new CharacterPotentialHolder(
-               ability.getLeft(),
-               (byte)ability.getMid().intValue(),
-               (byte)innerAbilityInfos.get(ability.getLeft()).maxLevel,
-               (byte)ability.getRight().intValue(),
-               false
-            )
-         );
+               new CharacterPotentialHolder(
+                     ability.getLeft(),
+                     (byte) ability.getMid().intValue(),
+                     (byte) innerAbilityInfos.get(ability.getLeft()).maxLevel,
+                     (byte) ability.getRight().intValue(),
+                     false));
       }
 
       for (CharacterPotentialHolder cph : holders) {
@@ -492,8 +502,10 @@ public class InnerAbility {
       User.setSaveFlag(User.getSaveFlag() | CharacterSaveFlag.INNER_SKILL.getFlag());
 
       for (int ix = 0; ix < holders.size(); ix++) {
-         User.send(CField.updateInnerPotential((byte)(ix + 1), holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(), holders.get(ix).getRank()));
-         AchievementFactory.checkAbility(User, holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(), holders.get(ix).getRank(), 0);
+         User.send(CField.updateInnerPotential((byte) (ix + 1), holders.get(ix).getSkillId(),
+               holders.get(ix).getSkillLevel(), holders.get(ix).getRank()));
+         AchievementFactory.checkAbility(User, holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(),
+               holders.get(ix).getRank(), 0);
       }
 
       if (User.isQuestStarted(501547)) {
@@ -506,7 +518,7 @@ public class InnerAbility {
          }
       }
 
-      User.send(CWvsContext.showPopupMessage("어빌리티 재설정에 성공 하였습니다."));
+      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
       User.getStat().recalcLocalStats(User);
    }
 
@@ -521,29 +533,29 @@ public class InnerAbility {
             int randomGradex = Randomizer.nextInt(100000);
             if (randomGradex < gradeUpEpic2UniqueCirculator) {
                rank = 2;
-               generateAbility = GenerateAbilityUnique(UniqueSecondAbilityEpicCirculator, UniqueThirdAbilityEpicCirculator);
+               generateAbility = GenerateAbilityUnique(UniqueSecondAbilityEpicCirculator,
+                     UniqueThirdAbilityEpicCirculator);
             }
             break;
          case 2:
-            generateAbility = GenerateAbilityUnique(UniqueSecondAbilityEpicCirculator, UniqueThirdAbilityEpicCirculator);
+            generateAbility = GenerateAbilityUnique(UniqueSecondAbilityEpicCirculator,
+                  UniqueThirdAbilityEpicCirculator);
             int randomGrade = Randomizer.nextInt(100000);
             if (randomGrade < gradeUpUnique2LegendaryCirculator) {
                rank = 3;
                generateAbility = GenerateAbilityLegendary(
-                  legendarySecondAbilityUniqueCirculator,
-                  legendarySecondAbilityEpicCirculator,
-                  legendaryThirdAbilityUniqueCirculator,
-                  legendaryThirdAbilityEpicCirculator
-               );
+                     legendarySecondAbilityUniqueCirculator,
+                     legendarySecondAbilityEpicCirculator,
+                     legendaryThirdAbilityUniqueCirculator,
+                     legendaryThirdAbilityEpicCirculator);
             }
             break;
          case 3:
             generateAbility = GenerateAbilityLegendary(
-               legendarySecondAbilityUniqueCirculator,
-               legendarySecondAbilityEpicCirculator,
-               legendaryThirdAbilityUniqueCirculator,
-               legendaryThirdAbilityEpicCirculator
-            );
+                  legendarySecondAbilityUniqueCirculator,
+                  legendarySecondAbilityEpicCirculator,
+                  legendaryThirdAbilityUniqueCirculator,
+                  legendaryThirdAbilityEpicCirculator);
       }
 
       for (int i = 0; i < 3; i++) {
@@ -551,22 +563,28 @@ public class InnerAbility {
             abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), rank));
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 1) {
-            generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+               generateAbility.setAbi(
+                     generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
             }
 
-            abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), generateAbility.secondRank));
+            abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(),
+                  generateAbility.secondRank));
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 2) {
-            generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+               generateAbility
+                     .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
             }
 
-            abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(), generateAbility.thirdRank));
+            abilitys.add(new Triple<>(generateAbility.abi.getLeft(), generateAbility.abi.getRight(),
+                  generateAbility.thirdRank));
          }
       }
 
@@ -574,14 +592,12 @@ public class InnerAbility {
 
       for (Triple<Integer, Integer, Integer> ability : abilitys) {
          holders.add(
-            new CharacterPotentialHolder(
-               ability.getLeft(),
-               (byte)ability.getMid().intValue(),
-               (byte)innerAbilityInfos.get(ability.getLeft()).maxLevel,
-               (byte)ability.getRight().intValue(),
-               false
-            )
-         );
+               new CharacterPotentialHolder(
+                     ability.getLeft(),
+                     (byte) ability.getMid().intValue(),
+                     (byte) innerAbilityInfos.get(ability.getLeft()).maxLevel,
+                     (byte) ability.getRight().intValue(),
+                     false));
          AchievementFactory.checkAbility(User, ability.getLeft(), ability.getMid(), ability.getRight(), 0);
       }
 
@@ -628,14 +644,14 @@ public class InnerAbility {
             if (randomGrade < gradeUpUnique2Legendary) {
                rank = 3;
                generateAbility = GenerateAbilityLegendary(
-                  legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique, legendaryThirdAbilityEpic
-               );
+                     legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique,
+                     legendaryThirdAbilityEpic);
             }
             break;
          case 3:
             generateAbility = GenerateAbilityLegendary(
-               legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique, legendaryThirdAbilityEpic
-            );
+                  legendarySecondAbilityUnique, legendarySecondAbilityEpic, legendaryThirdAbilityUnique,
+                  legendaryThirdAbilityEpic);
       }
 
       for (int i = 0; i < 3; i++) {
@@ -659,33 +675,38 @@ public class InnerAbility {
                generateAbility.setAbi(abi);
             }
 
-            abilitys.add(new Triple<>(generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), rank));
+            abilitys.add(new Triple<>(generateAbility.abi.getLeft(),
+                  Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), rank));
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 1) {
-            generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
+               generateAbility.setAbi(
+                     generateAbility.secondAbility.get(Randomizer.nextInt(generateAbility.secondAbility.size())));
             }
 
             abilitys.add(
-               new Triple<>(
-                  generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), generateAbility.secondRank
-               )
-            );
+                  new Triple<>(
+                        generateAbility.abi.getLeft(),
+                        Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()),
+                        generateAbility.secondRank));
             dup.add(generateAbility.abi.getLeft());
          } else if (i == 2) {
-            generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+            generateAbility
+                  .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
 
             while (DuplicateCheck(dup, generateAbility.abi.getLeft())) {
-               generateAbility.setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
+               generateAbility
+                     .setAbi(generateAbility.thirdAbility.get(Randomizer.nextInt(generateAbility.thirdAbility.size())));
             }
 
             abilitys.add(
-               new Triple<>(
-                  generateAbility.abi.getLeft(), Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()), generateAbility.thirdRank
-               )
-            );
+                  new Triple<>(
+                        generateAbility.abi.getLeft(),
+                        Randomizer.rand(generateAbility.abi.getMid(), generateAbility.abi.getRight()),
+                        generateAbility.thirdRank));
          }
       }
 
@@ -694,14 +715,12 @@ public class InnerAbility {
 
       for (Triple<Integer, Integer, Integer> ability : abilitys) {
          holders.add(
-            new CharacterPotentialHolder(
-               ability.getLeft(),
-               (byte)ability.getMid().intValue(),
-               (byte)innerAbilityInfos.get(ability.getLeft()).maxLevel,
-               (byte)ability.getRight().intValue(),
-               false
-            )
-         );
+               new CharacterPotentialHolder(
+                     ability.getLeft(),
+                     (byte) ability.getMid().intValue(),
+                     (byte) innerAbilityInfos.get(ability.getLeft()).maxLevel,
+                     (byte) ability.getRight().intValue(),
+                     false));
       }
 
       for (CharacterPotentialHolder cph : holders) {
@@ -711,11 +730,13 @@ public class InnerAbility {
       User.setSaveFlag(User.getSaveFlag() | CharacterSaveFlag.INNER_SKILL.getFlag());
 
       for (int ix = 0; ix < holders.size(); ix++) {
-         User.send(CField.updateInnerPotential((byte)(ix + 1), holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(), holders.get(ix).getRank()));
-         AchievementFactory.checkAbility(User, holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(), holders.get(ix).getRank(), 0);
+         User.send(CField.updateInnerPotential((byte) (ix + 1), holders.get(ix).getSkillId(),
+               holders.get(ix).getSkillLevel(), holders.get(ix).getRank()));
+         AchievementFactory.checkAbility(User, holders.get(ix).getSkillId(), holders.get(ix).getSkillLevel(),
+               holders.get(ix).getRank(), 0);
       }
 
-      User.send(CWvsContext.showPopupMessage("어빌리티 재설정에 성공 하였습니다."));
+      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
       User.getStat().recalcLocalStats(User);
    }
 
@@ -764,14 +785,12 @@ public class InnerAbility {
 
       for (Triple<Integer, Integer, Integer> ability : abilitys) {
          holders.add(
-            new CharacterPotentialHolder(
-               ability.getLeft(),
-               (byte)ability.getMid().intValue(),
-               (byte)innerAbilityInfos.get(ability.getLeft()).maxLevel,
-               (byte)ability.getRight().intValue(),
-               false
-            )
-         );
+               new CharacterPotentialHolder(
+                     ability.getLeft(),
+                     (byte) ability.getMid().intValue(),
+                     (byte) innerAbilityInfos.get(ability.getLeft()).maxLevel,
+                     (byte) ability.getRight().intValue(),
+                     false));
       }
 
       for (CharacterPotentialHolder cph : holders) {
@@ -781,11 +800,13 @@ public class InnerAbility {
       User.setSaveFlag(User.getSaveFlag() | CharacterSaveFlag.INNER_SKILL.getFlag());
 
       for (int i = 0; i < holders.size(); i++) {
-         User.send(CField.updateInnerPotential((byte)(i + 1), holders.get(i).getSkillId(), holders.get(i).getSkillLevel(), holders.get(i).getRank()));
-         AchievementFactory.checkAbility(User, holders.get(i).getSkillId(), holders.get(i).getSkillLevel(), holders.get(i).getRank(), 0);
+         User.send(CField.updateInnerPotential((byte) (i + 1), holders.get(i).getSkillId(),
+               holders.get(i).getSkillLevel(), holders.get(i).getRank()));
+         AchievementFactory.checkAbility(User, holders.get(i).getSkillId(), holders.get(i).getSkillLevel(),
+               holders.get(i).getRank(), 0);
       }
 
-      User.send(CWvsContext.showPopupMessage("어빌리티 재설정에 성공 하였습니다."));
+      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
       User.getStat().recalcLocalStats(User);
    }
 
@@ -833,16 +854,17 @@ public class InnerAbility {
       User.send(Black_CirculatorPacket(abilitys, itemID, itemSlot));
    }
 
-   public static byte[] Black_CirculatorPacket(List<Triple<Integer, Integer, Integer>> abilitys, int itemID, int itemSlot) {
+   public static byte[] Black_CirculatorPacket(List<Triple<Integer, Integer, Integer>> abilitys, int itemID,
+         int itemSlot) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.BLACK_CIRCULATOR_UI.getValue());
       packet.writeInt(3);
 
       for (int i = 0; i < 3; i++) {
-         packet.writeInt((Integer)abilitys.get(i).left);
-         packet.write((Integer)abilitys.get(i).mid);
+         packet.writeInt((Integer) abilitys.get(i).left);
+         packet.write((Integer) abilitys.get(i).mid);
          packet.write(i + 1);
-         packet.write((Integer)abilitys.get(i).right);
+         packet.write((Integer) abilitys.get(i).right);
       }
 
       packet.writeInt(itemID);
@@ -870,7 +892,8 @@ public class InnerAbility {
       return generateAbility;
    }
 
-   private static InnerAbility.GenerateAbility GenerateAbilityUnique(int UniqueSecondAbilityEpic, int UniqueThirdAbilityEpic) {
+   private static InnerAbility.GenerateAbility GenerateAbilityUnique(int UniqueSecondAbilityEpic,
+         int UniqueThirdAbilityEpic) {
       InnerAbility.GenerateAbility generateAbility = new InnerAbility.GenerateAbility();
       generateAbility.setAbi(UniqueAbility.get(Randomizer.nextInt(UniqueAbility.size())));
       int randomSecondAbility = Randomizer.nextInt(100000);
@@ -895,8 +918,8 @@ public class InnerAbility {
    }
 
    private static InnerAbility.GenerateAbility GenerateAbilityLegendary(
-      int legendarySecondAbilityUnique, int legendarySecondAbilityEpic, int legendaryThirdAbilityUnique, int legendaryThirdAbilityEpic
-   ) {
+         int legendarySecondAbilityUnique, int legendarySecondAbilityEpic, int legendaryThirdAbilityUnique,
+         int legendaryThirdAbilityEpic) {
       InnerAbility.GenerateAbility generateAbility = new InnerAbility.GenerateAbility();
       generateAbility.setAbi(LegendaryAbility.get(Randomizer.nextInt(LegendaryAbility.size())));
       int randomSecondAbility = Randomizer.nextInt(100000);
@@ -982,12 +1005,11 @@ public class InnerAbility {
       }
 
       public GenerateAbility(
-         Triple<Integer, Integer, Integer> abi,
-         List<Triple<Integer, Integer, Integer>> secondAbility,
-         List<Triple<Integer, Integer, Integer>> thirdAbility,
-         int secondRank,
-         int thirdRank
-      ) {
+            Triple<Integer, Integer, Integer> abi,
+            List<Triple<Integer, Integer, Integer>> secondAbility,
+            List<Triple<Integer, Integer, Integer>> thirdAbility,
+            int secondRank,
+            int thirdRank) {
          this.abi = abi;
          this.secondAbility = secondAbility;
          this.thirdAbility = thirdAbility;

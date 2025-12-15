@@ -22,16 +22,16 @@ public class HyperHandler {
       Skill skill = SkillFactory.getSkill(skillID);
       c.getSession().writeAndFlush(CWvsContext.enableActions(player));
       if (skill == null) {
-         player.dropMessage(1, "잘못된 스킬 정보입니다.");
+         player.dropMessage(1, "ข้อมูลสกิลไม่ถูกต้อง");
       } else if (player.getLevel() < 140) {
-         player.dropMessage(1, "하이퍼 스탯 설정이 불가능한 레벨입니다.");
+         player.dropMessage(1, "เลเวลยังไม่ถึงกำหนดในการตั้งค่า Hyper Stat");
       } else if (hStat != null && hStat.currentIndex == index && hStat.getStat() != null) {
          int skillLV = hStat.getStat().getSkillLevel(skillID);
          if (skillLV >= HyperStat.getMaxHyperStatLevel(skillID)) {
-            player.dropMessage(1, "이미 최대 레벨인 스탯입니다.");
+            player.dropMessage(1, "สเตตัสนี้ถึงเลเวลสูงสุดแล้ว");
          } else if (hStat.getStat().getRemainStatPoint() < HyperStat.getNeedHyperStatPoint(skillLV + 1)) {
             updateSkills(player, 0);
-            player.dropMessage(1, "다음 스탯까지 필요한 하이퍼 스탯 포인트가 부족합니다.");
+            player.dropMessage(1, "Hyper Stat Points ไม่เพียงพอสำหรับขั้นถัดไป");
          } else {
             hStat.getStat().setSkillLevel(skillID, skillLV + 1);
             updateSkills(player, skillID);
@@ -39,7 +39,7 @@ public class HyperHandler {
             player.getStat().recalcLocalStats(player);
          }
       } else {
-         player.dropMessage(1, "하이퍼 스탯 정보 로딩에 오류가 발생했습니다.");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูล Hyper Stat");
       }
    }
 
@@ -50,14 +50,14 @@ public class HyperHandler {
       HyperStat hStat = player.getHyperStat();
       c.getSession().writeAndFlush(CWvsContext.enableActions(player));
       if (player.getMeso() < 2000000L) {
-         player.dropMessage(1, "메소가 부족합니다.");
+         player.dropMessage(1, "Meso ไม่เพียงพอ");
       } else if (hStat != null && hStat.currentIndex != index && hStat.getStat() != null) {
          player.gainMeso(-2000000L, true);
          hStat.currentIndex = index;
          updateSkills(player, 0);
          player.getStat().recalcLocalStats(player);
       } else {
-         player.dropMessage(1, "하이퍼 스탯 정보 로딩에 오류가 발생했습니다.");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูล Hyper Stat");
       }
    }
 
@@ -68,18 +68,18 @@ public class HyperHandler {
       HyperStat hStat = player.getHyperStat();
       c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       if (player.getMeso() < 10000000L) {
-         player.dropMessage(1, "하이퍼 스탯을 초기화하기 위한 메소가 부족합니다.");
+         player.dropMessage(1, "Meso ไม่เพียงพอสำหรับรีเซ็ต Hyper Stat");
       } else if (player.getLevel() < 140) {
-         player.dropMessage(1, "하이퍼 스탯 설정이 불가능한 레벨입니다.");
+         player.dropMessage(1, "เลเวลยังไม่ถึงกำหนดในการตั้งค่า Hyper Stat");
       } else if (hStat != null && hStat.currentIndex == index && hStat.getStat() != null) {
          player.gainMeso(-10000000L, true);
          hStat.getStat().resetHyperStats();
          updateSkills(player, 0);
-         player.dropMessage(1, "하이퍼 스탯 재설정이 완료되었습니다.");
+         player.dropMessage(1, "รีเซ็ต Hyper Stat เรียบร้อยแล้ว");
          player.setChangedSkills();
          player.getStat().recalcLocalStats(player);
       } else {
-         player.dropMessage(1, "하이퍼 스탯 정보 로딩에 오류가 발생했습니다.");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูล Hyper Stat");
       }
    }
 
@@ -94,12 +94,12 @@ public class HyperHandler {
          if (info.skillID == skillID || skillID <= 0) {
             Skill skill = SkillFactory.getSkill(info.skillID);
             if (skill != null) {
-               update.put(skill, new SkillEntry(info.skillLV, (byte)skill.getMaxLevel(), -1L));
+               update.put(skill, new SkillEntry(info.skillLV, (byte) skill.getMaxLevel(), -1L));
             }
          }
       }
 
-      player.getClient().getSession().writeAndFlush(CWvsContext.updateSkills(update, true, false, (byte)7));
+      player.getClient().getSession().writeAndFlush(CWvsContext.updateSkills(update, true, false, (byte) 7));
       PacketEncoder o = new PacketEncoder();
       o.writeShort(SendPacketOpcode.HYPER_STAT_SET.getValue());
       o.write(hStat.currentIndex);
@@ -124,7 +124,8 @@ public class HyperHandler {
          int rate = 0;
          if (!tableName.startsWith("9200") && !tableName.startsWith("9201")) {
             if (tableName.equals("honorLeveling")) {
-               c.getSession().writeAndFlush(CWvsContext.updateSpecialStat(tableName, index, mode, c.getPlayer().getInnerNextExp()));
+               c.getSession().writeAndFlush(
+                     CWvsContext.updateSpecialStat(tableName, index, mode, c.getPlayer().getInnerNextExp()));
                return;
             }
 
@@ -142,7 +143,8 @@ public class HyperHandler {
 
                c.getSession().writeAndFlush(CWvsContext.updateSpecialStat(tableName, index, mode, delta));
             } else if (!"hyper".equals(tableName)) {
-               rate = Math.max(0, 100 - (index + 1 - c.getPlayer().getProfessionLevel(Integer.parseInt(tableName))) * 20);
+               rate = Math.max(0,
+                     100 - (index + 1 - c.getPlayer().getProfessionLevel(Integer.parseInt(tableName))) * 20);
             }
          } else {
             rate = 100;

@@ -20,12 +20,13 @@ import objects.wz.provider.MapleDataTool;
 
 public class CashItemFactory {
    private static final CashItemFactory instance = new CashItemFactory();
-   private static final int[] bestItems = new int[]{10002412, 10002413, 10002414, 10002576, 50200092};
+   private static final int[] bestItems = new int[] { 10002412, 10002413, 10002414, 10002576, 50200092 };
    private final Map<Integer, CashItemInfo> itemStats = new HashMap<>();
    private final Map<Integer, List<Integer>> itemPackage = new HashMap<>();
    private final Map<Integer, CashItemInfo.CashModInfo> itemMods = new HashMap<>();
    private final Map<Integer, List<Integer>> openBox = new HashMap<>();
-   private final MapleDataProvider data = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"));
+   private final MapleDataProvider data = MapleDataProviderFactory
+         .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"));
 
    public static final CashItemFactory getInstance() {
       return instance;
@@ -35,14 +36,14 @@ public class CashItemFactory {
       for (MapleData field : this.data.getData("Commodity.img").getChildren()) {
          int SN = MapleDataTool.getIntConvert("SN", field, 0);
          CashItemInfo stats = new CashItemInfo(
-            MapleDataTool.getIntConvert("ItemId", field, 0),
-            MapleDataTool.getIntConvert("Count", field, 1),
-            MapleDataTool.getIntConvert("Price", field, 0),
-            SN,
-            MapleDataTool.getIntConvert("Period", field, 0),
-            MapleDataTool.getIntConvert("Gender", field, 2),
-            MapleDataTool.getIntConvert("OnSale", field, 0) > 0 && MapleDataTool.getIntConvert("Price", field, 0) > 0
-         );
+               MapleDataTool.getIntConvert("ItemId", field, 0),
+               MapleDataTool.getIntConvert("Count", field, 1),
+               MapleDataTool.getIntConvert("Price", field, 0),
+               SN,
+               MapleDataTool.getIntConvert("Period", field, 0),
+               MapleDataTool.getIntConvert("Gender", field, 2),
+               MapleDataTool.getIntConvert("OnSale", field, 0) > 0
+                     && MapleDataTool.getIntConvert("Price", field, 0) > 0);
          if (SN > 0) {
             this.itemStats.put(SN, stats);
          }
@@ -69,22 +70,21 @@ public class CashItemFactory {
          ResultSet rs = ps.executeQuery();
          if (rs.next()) {
             CashItemInfo.CashModInfo ret = new CashItemInfo.CashModInfo(
-               rs.getInt("serial"),
-               rs.getInt("discount_price"),
-               rs.getInt("mark"),
-               rs.getInt("showup") > 0,
-               rs.getInt("itemid"),
-               rs.getInt("priority"),
-               rs.getInt("package") > 0,
-               rs.getInt("period"),
-               rs.getInt("gender"),
-               rs.getInt("count"),
-               rs.getInt("meso"),
-               rs.getInt("unk_1"),
-               rs.getInt("unk_2"),
-               rs.getInt("unk_3"),
-               rs.getInt("extra_flags")
-            );
+                  rs.getInt("serial"),
+                  rs.getInt("discount_price"),
+                  rs.getInt("mark"),
+                  rs.getInt("showup") > 0,
+                  rs.getInt("itemid"),
+                  rs.getInt("priority"),
+                  rs.getInt("package") > 0,
+                  rs.getInt("period"),
+                  rs.getInt("gender"),
+                  rs.getInt("count"),
+                  rs.getInt("meso"),
+                  rs.getInt("unk_1"),
+                  rs.getInt("unk_2"),
+                  rs.getInt("unk_3"),
+                  rs.getInt("extra_flags"));
             this.itemMods.put(ret.sn, ret);
             if (ret.showUp) {
                CashItemInfo cc = this.itemStats.get(ret.sn);
@@ -118,7 +118,7 @@ public class CashItemFactory {
          }
       }
 
-      System.out.println("캐시샵 판매 아이템 설정 로드가 완료되었습니다.");
+      System.out.println("Cash Shop sale item settings load completed.");
    }
 
    public final CashItemInfo getSimpleItem(int sn) {

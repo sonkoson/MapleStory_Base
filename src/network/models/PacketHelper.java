@@ -2140,7 +2140,7 @@ public class PacketHelper {
    }
 
    public static void addFarmInfo(PacketEncoder mplew) {
-      mplew.writeMapleAsciiString("생성중");
+      mplew.writeMapleAsciiString("Creating...");
       mplew.writeInt(0);
       mplew.writeInt(0);
       mplew.writeInt(0);

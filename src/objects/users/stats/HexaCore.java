@@ -36,9 +36,8 @@ public class HexaCore {
    public void init() {
       if (this.skillDataMap.isEmpty()) {
          try (
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM `hexa_cores` WHERE `player_id` = ?");
-         ) {
+               Connection con = DBConnection.getConnection();
+               PreparedStatement ps = con.prepareStatement("SELECT * FROM `hexa_cores` WHERE `player_id` = ?");) {
             ps.setInt(1, this.playerid);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -76,11 +75,11 @@ public class HexaCore {
 
          for (int skillId : coreSkillList) {
             Skill skill = SkillFactory.getSkill(skillId);
-            byte level_ = (byte)level;
+            byte level_ = (byte) level;
             if (skill != null) {
-               byte masterlevel = (byte)skill.getMaxLevel();
+               byte masterlevel = (byte) skill.getMaxLevel();
                if (level_ > skill.getMaxLevel()) {
-                  level_ = (byte)skill.getMaxLevel();
+                  level_ = (byte) skill.getMaxLevel();
                }
 
                this.skillLv.put(skillId, Integer.valueOf(level_));
@@ -134,7 +133,8 @@ public class HexaCore {
                   ps.executeUpdate();
                }
 
-               try (PreparedStatement ps = con.prepareStatement("INSERT INTO `hexa_cores` (`player_id`, `coreid`, `level`) VALUES(?, ?, ?)")) {
+               try (PreparedStatement ps = con
+                     .prepareStatement("INSERT INTO `hexa_cores` (`player_id`, `coreid`, `level`) VALUES(?, ?, ?)")) {
                   ps.setInt(1, this.playerid);
 
                   for (Entry<Integer, Integer> entry : this.skillDataMap.entrySet()) {
@@ -150,7 +150,7 @@ public class HexaCore {
             }
          }
       } catch (Exception var12) {
-         System.out.println("헥사스텟 저장 오류");
+         System.out.println("Hexa Stat Save Error");
          var12.printStackTrace();
       }
    }
@@ -179,9 +179,9 @@ public class HexaCore {
       if (this.getStatSize() > 0) {
          Skill skill = SkillFactory.getSkill(500071000);
          byte level = 1;
-         byte masterlevel = (byte)skill.getMaxLevel();
+         byte masterlevel = (byte) skill.getMaxLevel();
          if (level > skill.getMaxLevel()) {
-            level = (byte)skill.getMaxLevel();
+            level = (byte) skill.getMaxLevel();
          }
 
          chr.changeSkillLevel(skill, level, masterlevel);
@@ -403,7 +403,8 @@ public class HexaCore {
          this.index = hexaStatData.index;
 
          for (Entry<Integer, HexaCore.HexaStatInfo> entry : hexaStatData.skillData.entrySet()) {
-            this.skillData.put(entry.getKey(), new HexaCore.HexaStatInfo(entry.getValue().type, entry.getValue().level));
+            this.skillData.put(entry.getKey(),
+                  new HexaCore.HexaStatInfo(entry.getValue().type, entry.getValue().level));
          }
 
          this.changed = true;
@@ -415,15 +416,16 @@ public class HexaCore {
          this.index = index;
 
          try (
-            Connection con = DBConnection.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM `hexa_stats` WHERE `player_id` = ? AND `index` = ?");
-         ) {
+               Connection con = DBConnection.getConnection();
+               PreparedStatement ps = con
+                     .prepareStatement("SELECT * FROM `hexa_stats` WHERE `player_id` = ? AND `index` = ?");) {
             ps.setInt(1, playerid);
             ps.setInt(2, index);
 
             try (ResultSet rs = ps.executeQuery()) {
                while (rs.next()) {
-                  HexaMatrixConstants.HexaStatOption opt = HexaMatrixConstants.HexaStatOption.findByValue(rs.getInt("type"));
+                  HexaMatrixConstants.HexaStatOption opt = HexaMatrixConstants.HexaStatOption
+                        .findByValue(rs.getInt("type"));
                   if (opt != null) {
                      int pos = rs.getByte("pos");
                      HexaCore.HexaStatInfo info = new HexaCore.HexaStatInfo(opt, rs.getInt("level"));
@@ -442,13 +444,15 @@ public class HexaCore {
 
       public void saveHexaStat() {
          try (Connection con = DBConnection.getConnection()) {
-            try (PreparedStatement ps = con.prepareStatement("DELETE FROM `hexa_stats` WHERE `player_id` = ? AND `index` = ?")) {
+            try (PreparedStatement ps = con
+                  .prepareStatement("DELETE FROM `hexa_stats` WHERE `player_id` = ? AND `index` = ?")) {
                ps.setInt(1, this.playerid);
                ps.setInt(2, this.index);
                ps.executeUpdate();
             }
 
-            try (PreparedStatement ps = con.prepareStatement("INSERT INTO `hexa_stats` (`player_id`, `index`, `pos`, `type`, `level`) VALUES(?, ?, ?, ?, ?)")) {
+            try (PreparedStatement ps = con.prepareStatement(
+                  "INSERT INTO `hexa_stats` (`player_id`, `index`, `pos`, `type`, `level`) VALUES(?, ?, ?, ?, ?)")) {
                ps.setInt(1, this.playerid);
                ps.setInt(2, this.index);
 
@@ -487,7 +491,8 @@ public class HexaCore {
       }
 
       public int getSkillLevel(HexaMatrixConstants.HexaStatOption type) {
-         HexaCore.HexaStatInfo sData = this.skillData.values().stream().filter(data -> data.type == type).findFirst().orElse(null);
+         HexaCore.HexaStatInfo sData = this.skillData.values().stream().filter(data -> data.type == type).findFirst()
+               .orElse(null);
          return sData != null ? sData.type.getType() : 0;
       }
 

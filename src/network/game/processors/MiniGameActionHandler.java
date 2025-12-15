@@ -19,12 +19,13 @@ public class MiniGameActionHandler {
       if (c != null && chr != null) {
          if (chr.getMap() instanceof Field_BattleReverse) {
             if (action == null) {
-               System.out.println("Unhandled interaction action by " + chr.getName() + " : " + actionvalue + ", " + slea.toString());
+               System.out.println(
+                     "Unhandled interaction action by " + chr.getName() + " : " + actionvalue + ", " + slea.toString());
             } else if (c.getChannelServer().getPlayerStorage().getCharacterById(c.getPlayer().getId()) != null) {
-               c.getPlayer().setScrolledPosition((short)0);
+               c.getPlayer().setScrolledPosition((short) 0);
                switch (action) {
                   case BATTLEREVERSE_START_GAME:
-                     Field_BattleReverse fbrx = (Field_BattleReverse)chr.getMap();
+                     Field_BattleReverse fbrx = (Field_BattleReverse) chr.getMap();
                      int team = fbrx.getBattleReverseGameDlg().getGameInfo().getTeamByChr(chr);
                      if (team == 0) {
                         BattleReverseGameInfo gameInfox = fbrx.getBattleReverseGameDlg().getGameInfo();
@@ -40,7 +41,7 @@ public class MiniGameActionHandler {
                   case BATTLEREVERSE_PUT_STONE:
                      int x = slea.readInt();
                      int y = slea.readInt();
-                     Field_BattleReverse fbr = (Field_BattleReverse)chr.getMap();
+                     Field_BattleReverse fbr = (Field_BattleReverse) chr.getMap();
                      BattleReverseGameInfo gameInfo = fbr.getBattleReverseGameDlg().getGameInfo();
                      if (!gameInfo.isInit()) {
                         return;
@@ -56,10 +57,12 @@ public class MiniGameActionHandler {
 
                      for (Point pos : canputs) {
                         if (pos.equals(check)) {
-                           gameInfo.ProcessChips(x, y, (byte)team);
+                           gameInfo.ProcessChips(x, y, (byte) team);
                            MapleCharacter otherplayer = gameInfo.getCharacter(team == 1 ? 0 : 1);
-                           chr.send(BattleReversePacket.PutBattleReverseStone(gameInfo, new Point(x, y), team == 1 ? 0 : 1, chr));
-                           otherplayer.send(BattleReversePacket.PutBattleReverseStone(gameInfo, new Point(x, y), team == 1 ? 0 : 1, otherplayer));
+                           chr.send(BattleReversePacket.PutBattleReverseStone(gameInfo, new Point(x, y),
+                                 team == 1 ? 0 : 1, chr));
+                           otherplayer.send(BattleReversePacket.PutBattleReverseStone(gameInfo, new Point(x, y),
+                                 team == 1 ? 0 : 1, otherplayer));
                            gameInfo.nextTurnTeam();
                            byte[][] board = gameInfo.getBoard();
                            int chipcount = 0;
@@ -110,12 +113,17 @@ public class MiniGameActionHandler {
                                  return;
                               }
 
-                              chr.send(CField.UIPacket.sendBigScriptProgressMessage("상대방이 놓을수 있는 곳이 없어 턴이 넘어옵니다.", FontType.NanumGothic, FontColorType.Yellow));
+                              chr.send(CField.UIPacket.sendBigScriptProgressMessage(
+                                    "ฝ่ายตรงข้ามไม่สามารถวางหมากได้ ตาเดินจึงตกเป็นของคุณ", FontType.NanumGothic,
+                                    FontColorType.Yellow));
                               otherplayer.send(
-                                 CField.UIPacket.sendBigScriptProgressMessage("놓을수 있는 곳이 없어 턴이 종료됩니다.", FontType.NanumGothic, FontColorType.Yellow)
-                              );
-                              chr.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), chr));
-                              otherplayer.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), otherplayer));
+                                    CField.UIPacket.sendBigScriptProgressMessage(
+                                          "คุณไม่สามารถวางหมากได้ ตาเดินของคุณจึงสิ้นสุดลง", FontType.NanumGothic,
+                                          FontColorType.Yellow));
+                              chr.send(
+                                    BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), chr));
+                              otherplayer.send(BattleReversePacket.StartBattleReverseStone(gameInfo,
+                                    gameInfo.getTurnTeam(), otherplayer));
                            }
 
                            return;

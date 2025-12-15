@@ -59,9 +59,11 @@ import objects.wz.provider.MapleDataProvider;
 import objects.wz.provider.MapleDataProviderFactory;
 
 public class AchievementFactory {
-   private static final MapleData info = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"))
-      .getData("AchievementInfo.img");
-   private static final MapleDataProvider data = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"));
+   private static final MapleData info = MapleDataProviderFactory
+         .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"))
+         .getData("AchievementInfo.img");
+   private static final MapleDataProvider data = MapleDataProviderFactory
+         .getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz"));
    public static final List<AchievementGradeInfo> gradeInfos = new ArrayList<>();
    public static final List<AchievementInsigniaInfo> insigniaInfos = new ArrayList<>();
    public static final Map<Integer, AchievementData> achievementDatas = new HashMap<>();
@@ -107,13 +109,14 @@ public class AchievementFactory {
    }
 
    public static void checkMobKill(
-      MapleMonster mob, List<MapleCharacter> players, MapleCharacter lastAttacker, MapleCharacter highestDamagedAtacker, int skillID
-   ) {
+         MapleMonster mob, List<MapleCharacter> players, MapleCharacter lastAttacker,
+         MapleCharacter highestDamagedAtacker, int skillID) {
       if (ServerConstants.useAchievement) {
          for (MapleCharacter player : players) {
             if ((Mob.allMobList.contains(mob.getId()) || SkillUse.allSkillIDList.contains(skillID))
-               && (player.getMap().getFieldSetInstance() == null || player.getBossMode() != 1)) {
-               MobKillCheck mobKillCheck = new MobKillCheck(player, lastAttacker, highestDamagedAtacker, players, mob, skillID, false);
+                  && (player.getMap().getFieldSetInstance() == null || player.getBossMode() != 1)) {
+               MobKillCheck mobKillCheck = new MobKillCheck(player, lastAttacker, highestDamagedAtacker, players, mob,
+                     skillID, false);
                mobKillCheck.checkMission(player, AchievementSubMissionType.mob_kill, 1L);
             }
          }
@@ -122,21 +125,24 @@ public class AchievementFactory {
 
    public static void checkMobKillOptimum(MapleMonster mob, MapleCharacter player, int delta) {
       if (ServerConstants.useAchievement) {
-         MobKillOptimumCheck mobKillOptimumCheck = new MobKillOptimumCheck(player.getLevel(), mob.getStats().getLevel());
+         MobKillOptimumCheck mobKillOptimumCheck = new MobKillOptimumCheck(player.getLevel(),
+               mob.getStats().getLevel());
          mobKillOptimumCheck.checkMission(player, AchievementSubMissionType.mob_kill, delta);
       }
    }
 
-   public static void checkSpelltraceEnchant(MapleCharacter player, int scroll, int sucRate, int juhunNumber, boolean success) {
+   public static void checkSpelltraceEnchant(MapleCharacter player, int scroll, int sucRate, int juhunNumber,
+         boolean success) {
       if (ServerConstants.useAchievement) {
          SpelltraceEnchantCheck spelltraceEnchantCheck = new SpelltraceEnchantCheck(scroll, sucRate, success);
          spelltraceEnchantCheck.checkMission(player, AchievementSubMissionType.spell_trace_enchant, juhunNumber);
       }
    }
 
-   public static void checkStarforceEnchant(MapleCharacter player, String result, int starForce, String catchResult, long meso) {
+   public static void checkStarforceEnchant(MapleCharacter player, String result, int starForce, String catchResult,
+         long meso) {
       if (ServerConstants.useAchievement) {
-         StarforceEnchantCheck check = new StarforceEnchantCheck(result, starForce, catchResult, (int)meso);
+         StarforceEnchantCheck check = new StarforceEnchantCheck(result, starForce, catchResult, (int) meso);
          check.checkMission(player, AchievementSubMissionType.starforce_enchant, 1L);
       }
    }
@@ -275,7 +281,8 @@ public class AchievementFactory {
       }
    }
 
-   public static void checkMakingskillSynthesize(MapleCharacter player, boolean success, Equip item1, Equip item2, Equip result) {
+   public static void checkMakingskillSynthesize(MapleCharacter player, boolean success, Equip item1, Equip item2,
+         Equip result) {
       if (ServerConstants.useAchievement) {
          MakingskillSynthesizeCheck msr = new MakingskillSynthesizeCheck(success, item1, item2, result);
          msr.checkMission(player, AchievementSubMissionType.makingskill_synthesize, 1L);
@@ -361,7 +368,7 @@ public class AchievementFactory {
 
    public static void resetUserHit(MapleCharacter player) {
       if (ServerConstants.useAchievement) {
-         int[] aids = new int[]{558};
+         int[] aids = new int[] { 558 };
          List<AchievementEntry> updateList = new ArrayList<>();
 
          for (int aid : aids) {
@@ -384,7 +391,7 @@ public class AchievementFactory {
    public static void resetFieldLeave(MapleCharacter player) {
       if (ServerConstants.useAchievement) {
          if (player != null && player.getAchievement() != null) {
-            int[] aids = new int[]{558};
+            int[] aids = new int[] { 558 };
             List<AchievementEntry> updateList = new ArrayList<>();
 
             for (int aid : aids) {
@@ -407,7 +414,7 @@ public class AchievementFactory {
 
    public static void resetDayChange(MapleCharacter player) {
       if (ServerConstants.useAchievement) {
-         int[] aids = new int[]{216, 217, 218, 219, 220};
+         int[] aids = new int[] { 216, 217, 218, 219, 220 };
          List<AchievementEntry> updateList = new ArrayList<>();
 
          for (int aid : aids) {
@@ -428,15 +435,14 @@ public class AchievementFactory {
    }
 
    public static AchievementEntry checkMission(
-      long deltaScore,
-      MapleCharacter player,
-      Achievement achievement,
-      AchievementSubMissionType type,
-      Mission mission,
-      Score score,
-      int achievementID,
-      int subMissionID
-   ) {
+         long deltaScore,
+         MapleCharacter player,
+         Achievement achievement,
+         AchievementSubMissionType type,
+         Mission mission,
+         Score score,
+         int achievementID,
+         int subMissionID) {
       AchievementEntry e = null;
       long count = 0L;
       if (!achievement.checkCompleteAchievement(achievementID)) {
@@ -449,7 +455,8 @@ public class AchievementFactory {
                } catch (Exception var19) {
                   String subMission = ae.getSubMission();
                   if (subMission != null && !subMission.isEmpty()) {
-                     System.out.println("[ParseInt 오류발생] 업적ID : " + achievementID + "서브미션 : " + ae.getSubMission());
+                     System.out.println(
+                           "[ParseInt Error] AchievementID : " + achievementID + " SubMission : " + ae.getSubMission());
                      String[] args = subMission.split("=");
                      if (args.length > 1 && args[1].equals("4500guild_commitment_inc")) {
                         count = 4500L;
@@ -487,7 +494,8 @@ public class AchievementFactory {
                status = AchievementMissionStatus.Complete;
             }
 
-            e = new AchievementEntry(achievementID, subMissionID, status, System.currentTimeMillis(), type.name() + "=" + count);
+            e = new AchievementEntry(achievementID, subMissionID, status, System.currentTimeMillis(),
+                  type.name() + "=" + count);
          } else {
             e.setSubMission(type.name(), String.valueOf(count));
             if (canClear) {
@@ -518,7 +526,8 @@ public class AchievementFactory {
                   int checkCount = 0;
 
                   for (AchievementEntry aex : new ArrayList<>(achievement.getAchievements())) {
-                     if (aex.getAchievementID() == achievementID && aex.getStatus() == AchievementMissionStatus.Complete) {
+                     if (aex.getAchievementID() == achievementID
+                           && aex.getStatus() == AchievementMissionStatus.Complete) {
                         checkCount++;
                      }
                   }

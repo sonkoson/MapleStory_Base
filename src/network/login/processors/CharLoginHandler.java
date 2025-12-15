@@ -112,7 +112,7 @@ public class CharLoginHandler {
             c.getSession().writeAndFlush(LoginPacket.getLoginFailed(20));
          }
       } else {
-         System.out.println("로그인시도 오류 발생?");
+         System.out.println("Error during login attempt?");
       }
    }
 
@@ -174,7 +174,7 @@ public class CharLoginHandler {
                         try {
                            findchr.getClient().disconnect(false);
                            findchr.getClient().getSession().close();
-                           System.out.println("팅겼다고인마");
+                           System.out.println("Force disconnected");
 
                            try {
                               if (findchr.getClient().getPlayer() == null) {
@@ -195,7 +195,8 @@ public class CharLoginHandler {
                                           findchr.getId(),
                                           findchr.getAccountID(),
                                           21,
-                                          new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                          new StringBuilder(findchr.getName()
+                                                + " Failed to force disconnect stuck character. Save block set.")));
                            }
 
                            var25.printStackTrace();
@@ -226,7 +227,7 @@ public class CharLoginHandler {
                                        try {
                                           player.getClient().disconnect(false);
                                           player.getClient().getSession().close();
-                                          System.out.println("팅겼다고인마");
+                                          System.out.println("Force disconnected");
 
                                           try {
                                              if (player.getClient().getPlayer() == null) {
@@ -247,22 +248,23 @@ public class CharLoginHandler {
                                                          player.getAccountID(),
                                                          21,
                                                          new StringBuilder(
-                                                               player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                                               player.getName()
+                                                                     + " Failed to force disconnect stuck character. Save block set.")));
                                           }
 
-                                          System.out.println("끼인 캐릭터 disconnect 오류");
+                                          System.out.println("Stuck character disconnect error");
                                           var26.printStackTrace();
                                        }
                                     }
                                  }
                               } catch (Exception var27) {
-                                 FileoutputUtil.log("Log_Login_Error.rtf", "캐릭터 로드중 오류발생");
+                                 FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading character");
                                  FileoutputUtil.outputFileError("Log_Login_Error.rtf", var27);
                               }
                            }
                         }
                      } catch (Exception var28) {
-                        FileoutputUtil.log("Log_Login_Error.rtf", "맵 로드중 오류발생");
+                        FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading map");
                         FileoutputUtil.outputFileError("Log_Login_Error.rtf", var28);
                      }
                   }
@@ -281,7 +283,7 @@ public class CharLoginHandler {
                               try {
                                  player.getClient().disconnect(false);
                                  player.getClient().getSession().close();
-                                 System.out.println("팅겼다고인마");
+                                 System.out.println("Force disconnected");
 
                                  try {
                                     if (player.getClient().getPlayer() == null) {
@@ -300,16 +302,17 @@ public class CharLoginHandler {
                                                 player.getId(),
                                                 player.getAccountID(),
                                                 21,
-                                                new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                                new StringBuilder(player.getName()
+                                                      + " Failed to force disconnect stuck character. Save block set.")));
                                  }
 
-                                 System.out.println("낀 캐릭터 disconnect 오류22");
+                                 System.out.println("Stuck character disconnect error 22");
                                  var29.printStackTrace();
                               }
                            }
                         }
                      } catch (Exception var30) {
-                        FileoutputUtil.log("Log_Login_Error.rtf", "경매장 캐릭터 로드중 오류발생");
+                        FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading AH character");
                         FileoutputUtil.outputFileError("Log_Login_Error.rtf", var30);
                      }
                   }
@@ -328,7 +331,7 @@ public class CharLoginHandler {
                               try {
                                  player.getClient().disconnect(false);
                                  player.getClient().getSession().close();
-                                 System.out.println("팅겼다고인마");
+                                 System.out.println("Force disconnected");
 
                                  try {
                                     if (player.getClient().getPlayer() == null) {
@@ -347,16 +350,17 @@ public class CharLoginHandler {
                                                 player.getId(),
                                                 player.getAccountID(),
                                                 21,
-                                                new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                                new StringBuilder(player.getName()
+                                                      + " Failed to force disconnect stuck character. Save block set.")));
                                  }
 
-                                 System.out.println("낀캐릭터 disconnect 오류 33");
+                                 System.out.println("Stuck character disconnect error 33");
                                  var31.printStackTrace();
                               }
                            }
                         }
                      } catch (Exception var32) {
-                        FileoutputUtil.log("Log_Login_Error.rtf", "캐시샵 캐릭터 로드중 오류발생");
+                        FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading CS character");
                         FileoutputUtil.outputFileError("Log_Login_Error.rtf", var32);
                      }
                   }
@@ -442,13 +446,13 @@ public class CharLoginHandler {
                      "บัญชีนี้ถูกระงับการใช้งานชั่วคราว\r\n\r\nไม่สามารถเข้าใช้งานได้จนถึง: " + tempBan));
          String reason = tempBan + " (บัญชีถูกระงับชั่วคราว)";
          StringBuilder sb = new StringBuilder();
-         sb.append("기간밴 로그 (아이피 : ");
+         sb.append("Temp Ban Log (IP : ");
          sb.append(c.getSessionIPAddress());
-         sb.append(", 맥 : ");
+         sb.append(", Mac : ");
          sb.append(mac);
-         sb.append(", 볼륨 : ");
+         sb.append(", Volume : ");
          sb.append(volume);
-         sb.append(", 사유 : ");
+         sb.append(", Reason : ");
          sb.append(reason);
          sb.append(")");
          LoggingManager
@@ -475,7 +479,7 @@ public class CharLoginHandler {
             c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อุปกรณ์นี้ถูกจำกัดการเข้าถึง"));
             System.out
                   .println(
-                        "맥 밴 계정이 접속을 시도하였습니다. -> accountName : "
+                        "Mac banned account attempted to connect. -> accountName : "
                               + login
                               + ", (MAC Address [mac : "
                               + mac
@@ -484,16 +488,17 @@ public class CharLoginHandler {
                               + "]), ipAddress : "
                               + c.getSessionIPAddress());
             String whichTable = macBan && serialBan
-                  ? "macbans, serialban 테이블에 입력된 맥 주소로 로그인 시도"
-                  : (macBan ? "macbans 테이블에 입력된 맥 주소로 로그인 시도" : "serialban 테이블에 입력된 맥 주소로 로그인 시도");
+                  ? "Login attempt with MAC address found in macbans, serialban tables"
+                  : (macBan ? "Login attempt with MAC address found in macbans table"
+                        : "Login attempt with MAC address found in serialban table");
             StringBuilder sb = new StringBuilder();
-            sb.append("맥밴 로그 (아이피 : ");
+            sb.append("Mac Ban Log (IP : ");
             sb.append(c.getSessionIPAddress());
-            sb.append(", 맥 : ");
+            sb.append(", Mac : ");
             sb.append(mac);
-            sb.append(", 볼륨 : ");
+            sb.append(", Volume : ");
             sb.append(volume);
-            sb.append(", 사유 : ");
+            sb.append(", Reason : ");
             sb.append(whichTable);
             sb.append(")");
             LoggingManager
@@ -504,11 +509,11 @@ public class CharLoginHandler {
 
          if (ipBan) {
             c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "IP นี้ถูกจำกัดการเข้าถึง"));
-            String ipBanMsg = "ipBan 테이블에 입력된 IP 주소로 로그인 시도";
+            String ipBanMsg = "Login attempt with IP address found in ipBan table";
             StringBuilder sb1 = new StringBuilder();
-            sb1.append("IP밴 로그 (아이피 : ");
+            sb1.append("IP Ban Log (IP : ");
             sb1.append(c.getSessionIPAddress());
-            sb1.append(", 사유 : ");
+            sb1.append(", Reason : ");
             sb1.append(ipBanMsg);
             sb1.append(")");
             LoggingManager.putLog(
@@ -607,7 +612,7 @@ public class CharLoginHandler {
                   try {
                      findchr.getClient().disconnect(false);
                      findchr.getClient().getSession().close();
-                     System.out.println("팅겼다고인마");
+                     System.out.println("Force disconnected");
                   } catch (Exception var26) {
                      if (findchr != null) {
                         findchr.setBlockSave(true);
@@ -618,10 +623,11 @@ public class CharLoginHandler {
                                     findchr.getId(),
                                     findchr.getAccountID(),
                                     21,
-                                    new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                    new StringBuilder(findchr.getName()
+                                          + " Failed to force disconnect stuck character. Save block set.")));
                      }
 
-                     System.out.println("낀 캐릭터 저장금지 55");
+                     System.out.println("Stuck character save blocked 55");
                      var26.printStackTrace();
                   }
                }
@@ -650,7 +656,7 @@ public class CharLoginHandler {
                                  try {
                                     player.getClient().disconnect(false);
                                     player.getClient().getSession().close();
-                                    System.out.println("팅겼다고인마");
+                                    System.out.println("Force disconnected");
                                  } catch (Exception var23) {
                                     if (player != null) {
                                        player.setBlockSave(true);
@@ -661,22 +667,23 @@ public class CharLoginHandler {
                                                    player.getId(),
                                                    player.getAccountID(),
                                                    21,
-                                                   new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                                   new StringBuilder(player.getName()
+                                                         + " Failed to force disconnect stuck character. Save block set.")));
                                     }
 
-                                    System.out.println("낀캐릭터 저장금지 6");
+                                    System.out.println("Stuck character save blocked 6");
                                     var23.printStackTrace();
                                  }
                               }
                            }
                         } catch (Exception var24) {
-                           FileoutputUtil.log("Log_Login_Error.rtf", "캐릭터 로드중 오류발생");
+                           FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading character");
                            FileoutputUtil.outputFileError("Log_Login_Error.rtf", var24);
                         }
                      }
                   }
                } catch (Exception var25) {
-                  FileoutputUtil.log("Log_Login_Error.rtf", "맵 로드중 오류발생");
+                  FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading map");
                   FileoutputUtil.outputFileError("Log_Login_Error.rtf", var25);
                }
             }
@@ -694,7 +701,7 @@ public class CharLoginHandler {
                         try {
                            player.getClient().disconnect(false);
                            player.getClient().getSession().close();
-                           System.out.println("팅겼다고인마");
+                           System.out.println("Force disconnected");
                         } catch (Exception var21) {
                            if (player != null) {
                               player.setBlockSave(true);
@@ -705,16 +712,17 @@ public class CharLoginHandler {
                                           player.getId(),
                                           player.getAccountID(),
                                           21,
-                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                          new StringBuilder(player.getName()
+                                                + " Failed to force disconnect stuck character. Save block set.")));
                            }
 
-                           System.out.println("낀 캐릭터 저장금지 7");
+                           System.out.println("Stuck character save blocked 7");
                            var21.printStackTrace();
                         }
                      }
                   }
                } catch (Exception var22) {
-                  FileoutputUtil.log("Log_Login_Error.rtf", "경매장 캐릭터 로드중 오류발생");
+                  FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading AH character");
                   FileoutputUtil.outputFileError("Log_Login_Error.rtf", var22);
                }
             }
@@ -732,7 +740,7 @@ public class CharLoginHandler {
                         try {
                            player.getClient().disconnect(false);
                            player.getClient().getSession().close();
-                           System.out.println("팅겼다고인마");
+                           System.out.println("Force disconnected");
                         } catch (Exception var19) {
                            if (player != null) {
                               player.setBlockSave(true);
@@ -743,16 +751,17 @@ public class CharLoginHandler {
                                           player.getId(),
                                           player.getAccountID(),
                                           21,
-                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
+                                          new StringBuilder(player.getName()
+                                                + " Failed to force disconnect stuck character. Save block set.")));
                            }
 
-                           System.out.println("낀 캐릭터 저장금지 8");
+                           System.out.println("Stuck character save blocked 8");
                            var19.printStackTrace();
                         }
                      }
                   }
                } catch (Exception var20) {
-                  FileoutputUtil.log("Log_Login_Error.rtf", "캐시샵 캐릭터 로드중 오류발생");
+                  FileoutputUtil.log("Log_Login_Error.rtf", "Error while loading CS character");
                   FileoutputUtil.outputFileError("Log_Login_Error.rtf", var20);
                }
             }
@@ -805,7 +814,8 @@ public class CharLoginHandler {
       c.setNameChangeEnable((byte) 0);
       MapleCharacter.saveNameChange(afterName, cid);
       MapleCharacter.updateNameChangeCoupon(c);
-      c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "캐릭터 이름이 성공적으로 변경되었습니다. 변경을 위해 다시 로그인 바랍니다."));
+      c.getSession().writeAndFlush(
+            CWvsContext.serverNotice(1, "Character name successfully changed. Please relogin to effect changes."));
    }
 
    public static final void CreateChar(PacketDecoder slea, MapleClient c) {
@@ -831,7 +841,7 @@ public class CharLoginHandler {
          }
 
          if (!canUse) {
-            System.out.println("오류발생 : 임시 닉네임이 모두 사용중입니다. 변경이 필요합니다.");
+            System.out.println("Error: All temporary nicknames are in use. Change required.");
             return;
          }
       }
@@ -848,7 +858,8 @@ public class CharLoginHandler {
          } else {
             for (JobConstants.LoginJob j : JobConstants.LoginJob.values()) {
                if (j.getJobType() == job_type && j.getFlag() != JobConstants.LoginJob.JobFlag.ENABLED.getFlag()) {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "선택하신 직업군은 현재 생성이 불가능합니다."));
+                  c.getSession()
+                        .writeAndFlush(CWvsContext.serverNotice(1, "The selected job cannot be created at this time."));
                   return;
                }
             }
@@ -869,59 +880,62 @@ public class CharLoginHandler {
                      .isEligibleItem(
                            gender,
                            job.type != LoginInformationProvider.JobType.PathFinder.type
-                                 && job.type != LoginInformationProvider.JobType.Khali.type ? "궁모" : "모자",
+                                 && job.type != LoginInformationProvider.JobType.Khali.type ? "UltimateExplorer"
+                                       : "Hat",
                            job.type,
                            hat)) {
-                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                        + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[모자])");
+                  System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                        + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Outfit[Hat])");
                   return;
                }
             }
 
             int top = slea.readInt();
-            if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "상의" : "의상", job.type,
+            if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "Top" : "Overall", job.type,
                   top)) {
-               System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                     + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[상의])");
+               System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                     + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Outfit[Top])");
             } else {
                if (job.bottom) {
                   bottom = slea.readInt();
-                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "하의" : "의상", job.type,
+                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "Bottom" : "Overall",
+                        job.type,
                         bottom)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[하의])");
+                     System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Outfit[Bottom])");
                      return;
                   }
                }
 
                if (job.cape) {
                   cape = slea.readInt();
-                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "망토", job.type, cape)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[망토])");
+                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Cape", job.type, cape)) {
+                     System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Outfit[Cape])");
                      return;
                   }
                }
 
                int shoes = slea.readInt();
-               if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "신발", job.type, shoes)) {
-                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                        + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 신발)");
+               if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Shoes", job.type, shoes)) {
+                  System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                        + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Shoes)");
                } else {
                   int weapon = slea.readInt();
-                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "무기", job.type, weapon)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 무기)");
+                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Weapon", job.type, weapon)) {
+                     System.out.println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Weapon)");
                   } else {
                      if (slea.available() >= 4L) {
                         shield = slea.readInt();
                         if (job == LoginInformationProvider.JobType.Demon) {
                            shield = 1099000;
-                        } else if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "무기", job.type,
+                        } else if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Weapon", job.type,
                               shield)) {
                            System.out
-                                 .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                                       + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 방패)");
+                                 .println("Hack usage detected [name : " + name + ", accountName : "
+                                       + c.getAccountName()
+                                       + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Shield)");
                            return;
                         }
                      }
@@ -929,9 +943,10 @@ public class CharLoginHandler {
                      MapleCharacter newchar = MapleCharacter.getDefault(c, job);
                      newchar.setWorld((byte) c.getWorld());
                      newchar.setFace(face);
-                     if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "얼굴", job.type, face)) {
-                        System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                              + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 얼굴)");
+                     if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Face", job.type, face)) {
+                        System.out
+                              .println("Hack usage detected [name : " + name + ", accountName : " + c.getAccountName()
+                                    + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Face)");
                      } else {
                         newchar.setSecondFace(face);
                         if (hairColor < 0) {
@@ -943,10 +958,11 @@ public class CharLoginHandler {
                         }
 
                         newchar.setHair(hair);
-                        if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "헤어", job.type, hair)) {
+                        if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "Hair", job.type, hair)) {
                            System.out
-                                 .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
-                                       + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 헤어)");
+                                 .println("Hack usage detected [name : " + name + ", accountName : "
+                                       + c.getAccountName()
+                                       + "] Character creation WZ manipulation attempt (MakeCharInfo.img - Hair)");
                         } else {
                            newchar.setSecondHair(hair);
                            if (job == LoginInformationProvider.JobType.AngelicBuster) {
@@ -1098,7 +1114,7 @@ public class CharLoginHandler {
                                  && (!LoginInformationProvider.getInstance().isForbiddenName(name) || c.isGm())
                                  && (c.isGm() || c.canMakeCharacter(c.getWorld()))) {
                               StringBuilder sb = new StringBuilder();
-                              sb.append("캐릭터 생성 (아이피 : ");
+                              sb.append("Character Creation (IP : ");
                               sb.append(c.getSessionIPAddress());
                               sb.append(")");
                               MapleCharacter.saveNewCharToDB(newchar, job, subcategory);
@@ -1209,11 +1225,12 @@ public class CharLoginHandler {
             int weapon = slea.readInt();
             LoginInformationProvider.JobType jobType = LoginInformationProvider.JobType.Adventurer;
             jobType = LoginInformationProvider.JobType.UltimateAdventurer;
-            if (LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, hat)
-                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, top)
-                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, glove)
-                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, shoes)
-                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, weapon)) {
+            if (LoginInformationProvider.getInstance().isEligibleItem(-1, "UltimateExplorer", jobType.type, hat)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "UltimateExplorer", jobType.type, top)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "UltimateExplorer", jobType.type, glove)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "UltimateExplorer", jobType.type, shoes)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "UltimateExplorer", jobType.type,
+                        weapon)) {
                MapleCharacter newchar = MapleCharacter.getDefault(c, jobType);
                newchar.setJob(job);
                newchar.setWorld(c.getPlayer().getWorld());
@@ -1352,7 +1369,7 @@ public class CharLoginHandler {
 
          if (state == 0) {
             StringBuilder sb = new StringBuilder();
-            sb.append("캐릭터 삭제 (아이피 : ");
+            sb.append("Character Deletion (IP: ");
             sb.append(c.getSessionIPAddress());
             sb.append(")");
             LoggingManager.putLog(new CreateCharLog(name, c.getAccountName(), Character_ID, c.getAccID(),
@@ -1570,7 +1587,8 @@ public class CharLoginHandler {
       int world = slea.readInt();
       int aa = slea.readByte();
       if (ServerConstants.workingReboot) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 서버가 점검 진행중입니다. 점검 내용은 공지사항을 확인해주시기 바랍니다."));
+         c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
+               "ขณะนี้เซิร์ฟเวอร์กำลังปิดปรับปรุง กรุณาตรวจสอบประกาศสำหรับรายละเอียดเพิ่มเติม"));
       } else {
          c.getSession().writeAndFlush(LoginPacket.touchWorldResult(world));
       }
@@ -1625,7 +1643,7 @@ public class CharLoginHandler {
       checkSPWExist(c);
       if (!crcPass) {
          StringBuilder sb = new StringBuilder();
-         sb.append("파일 변조가 의심되는 유저 발생 해당 계정 : ");
+         sb.append("User suspected of file tampering. Account: ");
          sb.append(c.getAccountName());
          String saveName = c.getAccountName();
          if (saveName == null || saveName.isEmpty()) {

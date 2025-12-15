@@ -45,7 +45,7 @@ public class Field_Cygnus extends Field {
       super.onMobKilled(mob);
       List<Integer> mobs = new ArrayList<>(Arrays.asList(8850011, 8850111));
       if (mobs.contains(mob.getId())) {
-         int questId = (Integer)QuestExConstants.bossQuests.get(mob.getId());
+         int questId = (Integer) QuestExConstants.bossQuests.get(mob.getId());
          boolean set = false;
 
          for (MapleCharacter p : this.getCharactersThreadsafe()) {
@@ -55,11 +55,14 @@ public class Field_Cygnus extends Field {
                   String qexKey = "cygnus_clear";
                   int bossQuest = QuestExConstants.Cygnus.getQuestID();
                   int qexID = 1234569;
-                  List<Pair<Integer, String>> qex = new ArrayList<>(Arrays.asList(new Pair<>(qexID, qexKey), new Pair<>(bossQuest, "eNum")));
+                  List<Pair<Integer, String>> qex = new ArrayList<>(
+                        Arrays.asList(new Pair<>(qexID, qexKey), new Pair<>(bossQuest, "eNum")));
                   EventInstanceManager eim = p.getEventInstance();
                   if (eim != null) {
                      eim.restartEventTimer(300000L);
-                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("시그너스를 물리치셨습니다. 시그너스의 전당의 정문을 통해 이동해주시기 바랍니다.", 5120026);
+                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect(
+                           "คุณได้กำจัด Cygnus แล้ว กรุณาเดินผ่านประตูหลักของ Hall of Cygnus เพื่อดำเนินการต่อ",
+                           5120026);
                      List<Integer> partyPlayerList = eim.getPartyPlayerList();
                      if (partyPlayerList != null && !partyPlayerList.isEmpty()) {
                         for (Integer playerID : partyPlayerList) {
@@ -85,17 +88,20 @@ public class Field_Cygnus extends Field {
                                  player.updateOneInfo(bossQuest, "eNum", "1");
                                  if (!DBConfig.isGanglim) {
                                     if (multiMode) {
-                                       player.updateOneInfo(bossQuest, "eNum_multi", String.valueOf(player.getOneInfoQuestInteger(bossQuest, "eNum_multi") + 1));
+                                       player.updateOneInfo(bossQuest, "eNum_multi", String
+                                             .valueOf(player.getOneInfoQuestInteger(bossQuest, "eNum_multi") + 1));
                                     } else {
                                        player.updateOneInfo(
-                                          bossQuest, "eNum_single", String.valueOf(player.getOneInfoQuestInteger(bossQuest, "eNum_single") + 1)
-                                       );
+                                             bossQuest, "eNum_single", String.valueOf(
+                                                   player.getOneInfoQuestInteger(bossQuest, "eNum_single") + 1));
                                     }
                                  }
 
-                                 player.updateOneInfo(questId, "count", String.valueOf(player.getOneInfoQuestInteger(questId, "count") + 1));
+                                 player.updateOneInfo(questId, "count",
+                                       String.valueOf(player.getOneInfoQuestInteger(questId, "count") + 1));
                                  player.updateOneInfo(questId, "mobid", String.valueOf(mob.getId()));
-                                 player.updateOneInfo(questId, "lasttime", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+                                 player.updateOneInfo(questId, "lasttime",
+                                       new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
                                  player.updateOneInfo(questId, "mobDead", "1");
                                  find = true;
                                  break;
@@ -105,16 +111,18 @@ public class Field_Cygnus extends Field {
                            if (!find) {
                               this.updateOfflineBossLimit(playerID, questId, "count", "1");
                               this.updateOfflineBossLimit(playerID, questId, "mobid", String.valueOf(mob.getId()));
-                              this.updateOfflineBossLimit(playerID, questId, "lasttime", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+                              this.updateOfflineBossLimit(playerID, questId, "lasttime",
+                                    new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
                               this.updateOfflineBossLimit(playerID, questId, "mobDead", "1");
 
                               for (int count = 0; count < qex.size(); count++) {
                                  DBConnection db = new DBConnection();
 
                                  try (Connection con = DBConnection.getConnection()) {
-                                    PreparedStatement ps = con.prepareStatement("SELECT `customData` FROM questinfo WHERE characterid = ? and quest = ?");
+                                    PreparedStatement ps = con.prepareStatement(
+                                          "SELECT `customData` FROM questinfo WHERE characterid = ? and quest = ?");
                                     ps.setInt(1, playerID);
-                                    ps.setInt(2, (Integer)qex.get(count).left);
+                                    ps.setInt(2, (Integer) qex.get(count).left);
                                     ResultSet rs = ps.executeQuery();
                                     boolean f = false;
 
@@ -125,7 +133,7 @@ public class Field_Cygnus extends Field {
                                        StringBuilder sb = new StringBuilder();
                                        int i = 1;
                                        boolean a = false;
-                                       sb.append((String)qex.get(count).right);
+                                       sb.append((String) qex.get(count).right);
                                        sb.append("=");
                                        sb.append("1");
                                        sb.append(";");
@@ -147,21 +155,21 @@ public class Field_Cygnus extends Field {
                                           }
                                        }
 
-                                       PreparedStatement ps2 = con.prepareStatement("UPDATE questinfo SET customData = ? WHERE characterid = ? and quest = ?");
+                                       PreparedStatement ps2 = con.prepareStatement(
+                                             "UPDATE questinfo SET customData = ? WHERE characterid = ? and quest = ?");
                                        ps2.setString(1, sb.toString());
                                        ps2.setInt(2, playerID);
-                                       ps2.setInt(3, (Integer)qex.get(count).left);
+                                       ps2.setInt(3, (Integer) qex.get(count).left);
                                        ps2.executeUpdate();
                                        ps2.close();
                                     }
 
                                     if (!f) {
                                        PreparedStatement ps2 = con.prepareStatement(
-                                          "INSERT INTO questinfo (characterid, quest, customData, date) VALUES (?, ?, ?, ?)"
-                                       );
+                                             "INSERT INTO questinfo (characterid, quest, customData, date) VALUES (?, ?, ?, ?)");
                                        ps2.setInt(1, playerID);
-                                       ps2.setInt(2, (Integer)qex.get(count).left);
-                                       ps2.setString(3, (String)qex.get(count).right + "=1");
+                                       ps2.setInt(2, (Integer) qex.get(count).left);
+                                       ps2.setString(3, (String) qex.get(count).right + "=1");
                                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                                        String time = sdf.format(Calendar.getInstance().getTime());
                                        ps2.setString(4, time);
@@ -186,7 +194,8 @@ public class Field_Cygnus extends Field {
          }
       }
 
-      mobs = new ArrayList<>(Arrays.asList(8850000, 8850001, 8850002, 8850003, 8850004, 8850100, 8850101, 8850102, 8850103, 8850104));
+      mobs = new ArrayList<>(
+            Arrays.asList(8850000, 8850001, 8850002, 8850003, 8850004, 8850100, 8850101, 8850102, 8850103, 8850104));
       if (mobs.contains(mob.getId())) {
          for (MapleMonster m : this.getAllMonstersThreadsafe()) {
             if (m.getId() == 8850011 || m.getId() == 8850111) {

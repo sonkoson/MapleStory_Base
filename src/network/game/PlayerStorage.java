@@ -178,11 +178,10 @@ public class PlayerStorage {
          for (MapleCharacter chr : this.nameToChar.values()) {
             if (chr.getCheatTracker().getPoints() > 0) {
                cheaters.add(
-                  new CheaterData(
-                     chr.getCheatTracker().getPoints(),
-                     MapleCharacterUtil.makeMapleReadable(chr.getName()) + " (" + chr.getCheatTracker().getPoints() + ") " + chr.getCheatTracker().getSummary()
-                  )
-               );
+                     new CheaterData(
+                           chr.getCheatTracker().getPoints(),
+                           MapleCharacterUtil.makeMapleReadable(chr.getName()) + " ("
+                                 + chr.getCheatTracker().getPoints() + ") " + chr.getCheatTracker().getSummary()));
             }
          }
       } finally {
@@ -200,10 +199,9 @@ public class PlayerStorage {
          for (MapleCharacter chr : this.nameToChar.values()) {
             if (chr.getReportPoints() > 0) {
                cheaters.add(
-                  new CheaterData(
-                     chr.getReportPoints(), MapleCharacterUtil.makeMapleReadable(chr.getName()) + " (" + chr.getReportPoints() + ") " + chr.getReportSummary()
-                  )
-               );
+                     new CheaterData(
+                           chr.getReportPoints(), MapleCharacterUtil.makeMapleReadable(chr.getName()) + " ("
+                                 + chr.getReportPoints() + ") " + chr.getReportSummary()));
             }
          }
       } finally {
@@ -228,7 +226,7 @@ public class PlayerStorage {
             if (!chr.isGM() || !checkGM) {
                chr.getClient().disconnect(true);
                chr.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("User disconnected");
                Center.Find.forceDeregister(chr.getId(), chr.getName(), chr.getAccountID());
                itr.remove();
             }

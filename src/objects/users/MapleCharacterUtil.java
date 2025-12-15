@@ -18,14 +18,14 @@ public class MapleCharacterUtil {
    private static final Pattern petPattern = Pattern.compile("[a-zA-Z0-9]{4,12}");
 
    public static final boolean canCreateChar(String name, boolean gm, boolean force) {
-      if (ServerConstants.useTempCharacterName && name.startsWith("임시") && !force) {
+      if (ServerConstants.useTempCharacterName && name.startsWith("Temp") && !force) {
          return false;
       } else {
          return (name.length() >= 2 || name.getBytes(Charset.forName("MS949")).length >= 4)
                && (name.length() <= 6 || name.getBytes(Charset.forName("MS949")).length <= 13)
                && getIdByName(name) == -1
-            ? Pattern.matches("^[a-zA-Z0-9가-힝]*$", name)
-            : false;
+                     ? Pattern.matches("^[a-zA-Z0-9\\u0E00-\\u0E7F]*$", name)
+                     : false;
       }
    }
 
@@ -194,7 +194,8 @@ public class MapleCharacterUtil {
       if (LoginCryptoLegacy.isLegacyPassword(passhash) && LoginCryptoLegacy.checkPassword(pwd, passhash)) {
          return true;
       } else {
-         return salt == null && LoginCrypto.checkSha1Hash(passhash, pwd) ? true : LoginCrypto.checkSaltedSha512Hash(passhash, pwd, salt);
+         return salt == null && LoginCrypto.checkSha1Hash(passhash, pwd) ? true
+               : LoginCrypto.checkSaltedSha512Hash(passhash, pwd, salt);
       }
    }
 
@@ -214,7 +215,8 @@ public class MapleCharacterUtil {
                return null;
             }
 
-            Triple<Integer, Integer, Integer> id = new Triple<>(rs.getInt("id"), rs.getInt("accountid"), rs.getInt("gender"));
+            Triple<Integer, Integer, Integer> id = new Triple<>(rs.getInt("id"), rs.getInt("accountid"),
+                  rs.getInt("gender"));
             rs.close();
             ps.close();
             var7 = id;
@@ -247,7 +249,8 @@ public class MapleCharacterUtil {
       DBConnection db = new DBConnection();
 
       try (Connection con = DBConnection.getConnection()) {
-         PreparedStatement ps = con.prepareStatement("INSERT INTO notes (`to`, `from`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?)", 1);
+         PreparedStatement ps = con.prepareStatement(
+               "INSERT INTO notes (`to`, `from`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?)", 1);
          ps.setString(1, to);
          ps.setString(2, name);
          ps.setString(3, msg);
@@ -295,7 +298,8 @@ public class MapleCharacterUtil {
       return count;
    }
 
-   public static Pair<MapleMessage, MapleMessage> sendNewMemo(int fromcid, String from, int tocid, String to, String msg, int fame, boolean isGM) {
+   public static Pair<MapleMessage, MapleMessage> sendNewMemo(int fromcid, String from, int tocid, String to,
+         String msg, int fame, boolean isGM) {
       MapleMessage left = null;
       MapleMessage right = null;
       DBConnection db = new DBConnection();
@@ -305,11 +309,11 @@ public class MapleCharacterUtil {
       try (Connection con = DBConnection.getConnection()) {
          long now = System.currentTimeMillis();
          ps = con.prepareStatement(
-            "INSERT INTO notes (`type`, `fromcid`, `from`, `tocid`, `to`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 1
-         );
-         ps.setByte(1, (byte)0);
+               "INSERT INTO notes (`type`, `fromcid`, `from`, `tocid`, `to`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+               1);
+         ps.setByte(1, (byte) 0);
          ps.setInt(2, fromcid);
-         ps.setString(3, isGM ? "메이플GM" : from);
+         ps.setString(3, isGM ? "MapleGM" : from);
          ps.setInt(4, tocid);
          ps.setString(5, to);
          ps.setString(6, msg);
@@ -324,11 +328,11 @@ public class MapleCharacterUtil {
          ps.close();
          rs.close();
          ps = con.prepareStatement(
-            "INSERT INTO notes (`type`, `fromcid`, `from`, `tocid`, `to`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 1
-         );
-         ps.setByte(1, (byte)1);
+               "INSERT INTO notes (`type`, `fromcid`, `from`, `tocid`, `to`, `message`, `timestamp`, `gift`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+               1);
+         ps.setByte(1, (byte) 1);
          ps.setInt(2, fromcid);
-         ps.setString(3, isGM ? "메이플GM" : from);
+         ps.setString(3, isGM ? "MapleGM" : from);
          ps.setInt(4, tocid);
          ps.setString(5, to);
          ps.setString(6, msg);
