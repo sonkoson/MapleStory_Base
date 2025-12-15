@@ -93,7 +93,7 @@ public class CharLoginHandler {
                c.setAccountName(login);
                c.setPlayer(null);
                c.getSession().writeAndFlush(LoginPacket.getAuthSuccessRequest(c, login));
-               c.getSession().writeAndFlush(LoginPacket.getAccountInfoResult((byte)0, c, false));
+               c.getSession().writeAndFlush(LoginPacket.getAccountInfoResult((byte) 0, c, false));
                return;
             }
 
@@ -124,7 +124,8 @@ public class CharLoginHandler {
       String pwd = slea.readMapleAsciiString();
       int loginok = 0;
       if (!GameConstants.isOpen) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 서버 데이터를 로딩하고 있습니다.\r\n잠시 후 다시 시도해주시기 바랍니다."));
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1, "กำลังโหลดข้อมูลเซิร์ฟเวอร์\r\nกรุณาลองใหม่อีกครั้งในภายหลัง"));
          c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
       } else {
          if (DBConfig.isHosting || !pwd.equals("!xptmxm")) {
@@ -132,19 +133,19 @@ public class CharLoginHandler {
          } else if (AutoRegister.getCharacterExists(login)) {
             Pair<String, String> loginData = AutoRegister.getAccountsInfo(login);
             loginok = c.login(loginData.getLeft(), pwd);
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "2ndPassword : " + loginData.getRight()));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รหัสผ่านชั้นที่ 2: " + loginData.getRight()));
          } else {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "Don't have data :("));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ไม่พบข้อมูล :("));
             c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
          }
 
          Calendar tempbannedTill = c.getTempBanCalendar();
          if (!c.isGm() && DBConfig.isHosting) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "접속기를 통해 로그인해주시기 바랍니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "กรุณาเข้าสู่ระบบผ่านตัวเปิดเกม (Launcher)"));
             c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
             c.clearInformation();
          } else if (loginok == 3) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "해당 계정은 이용이 정지되었습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "บัญชีนี้ถูกระงับการใช้งาน"));
             c.clearInformation();
          } else {
             if (loginok != 0) {
@@ -188,15 +189,13 @@ public class CharLoginHandler {
                            if (findchr != null) {
                               findchr.setBlockSave(true);
                               LoggingManager.putLog(
-                                 new CustomLog(
-                                    findchr.getName(),
-                                    findchr.getClient().getAccountName(),
-                                    findchr.getId(),
-                                    findchr.getAccountID(),
-                                    21,
-                                    new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                 )
-                              );
+                                    new CustomLog(
+                                          findchr.getName(),
+                                          findchr.getClient().getAccountName(),
+                                          findchr.getId(),
+                                          findchr.getAccountID(),
+                                          21,
+                                          new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                            }
 
                            var25.printStackTrace();
@@ -220,7 +219,8 @@ public class CharLoginHandler {
                                        break;
                                     }
 
-                                    if (player != null && player.getName() != null && player.getName().equals(chr.getName())) {
+                                    if (player != null && player.getName() != null
+                                          && player.getName().equals(chr.getName())) {
                                        find = true;
 
                                        try {
@@ -240,15 +240,14 @@ public class CharLoginHandler {
                                           if (player != null) {
                                              player.setBlockSave(true);
                                              LoggingManager.putLog(
-                                                new CustomLog(
-                                                   player.getName(),
-                                                   player.getClient().getAccountName(),
-                                                   player.getId(),
-                                                   player.getAccountID(),
-                                                   21,
-                                                   new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                                )
-                                             );
+                                                   new CustomLog(
+                                                         player.getName(),
+                                                         player.getClient().getAccountName(),
+                                                         player.getId(),
+                                                         player.getAccountID(),
+                                                         21,
+                                                         new StringBuilder(
+                                                               player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                                           }
 
                                           System.out.println("끼인 캐릭터 disconnect 오류");
@@ -270,7 +269,8 @@ public class CharLoginHandler {
 
                   if (!find) {
                      try {
-                        for (MapleCharacter player : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
+                        for (MapleCharacter player : new ArrayList<>(
+                              AuctionServer.getPlayerStorage().getAllCharacters())) {
                            if (find || forcebreak) {
                               break;
                            }
@@ -294,15 +294,13 @@ public class CharLoginHandler {
                                  if (player != null) {
                                     player.setBlockSave(true);
                                     LoggingManager.putLog(
-                                       new CustomLog(
-                                          player.getName(),
-                                          player.getClient().getAccountName(),
-                                          player.getId(),
-                                          player.getAccountID(),
-                                          21,
-                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                       )
-                                    );
+                                          new CustomLog(
+                                                player.getName(),
+                                                player.getClient().getAccountName(),
+                                                player.getId(),
+                                                player.getAccountID(),
+                                                21,
+                                                new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                                  }
 
                                  System.out.println("낀 캐릭터 disconnect 오류22");
@@ -318,7 +316,8 @@ public class CharLoginHandler {
 
                   if (!find) {
                      try {
-                        for (MapleCharacter player : new ArrayList<>(CashShopServer.getPlayerStorage().getAllCharacters())) {
+                        for (MapleCharacter player : new ArrayList<>(
+                              CashShopServer.getPlayerStorage().getAllCharacters())) {
                            if (find || forcebreak) {
                               break;
                            }
@@ -342,15 +341,13 @@ public class CharLoginHandler {
                                  if (player != null) {
                                     player.setBlockSave(true);
                                     LoggingManager.putLog(
-                                       new CustomLog(
-                                          player.getName(),
-                                          player.getClient().getAccountName(),
-                                          player.getId(),
-                                          player.getAccountID(),
-                                          21,
-                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                       )
-                                    );
+                                          new CustomLog(
+                                                player.getName(),
+                                                player.getClient().getAccountName(),
+                                                player.getId(),
+                                                player.getAccountID(),
+                                                21,
+                                                new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                                  }
 
                                  System.out.println("낀캐릭터 disconnect 오류 33");
@@ -390,19 +387,21 @@ public class CharLoginHandler {
       String originalPassword = slea.readMapleAsciiString();
       String changePassword = slea.readMapleAsciiString();
       if (!originalPassword.equals(c.getSecondPassword())) {
-         c.getSession().writeAndFlush(LoginPacket.secondPwError((byte)20));
+         c.getSession().writeAndFlush(LoginPacket.secondPwError((byte) 20));
       } else {
          c.setSecondPassword(changePassword);
          c.updateSecondPassword();
-         c.getSession().writeAndFlush(LoginPacket.getChangeSPWResult((byte)0));
+         c.getSession().writeAndFlush(LoginPacket.getChangeSPWResult((byte) 0));
       }
    }
 
    public static void changeSPWRequest(MapleClient c) {
       if (DBConfig.isGanglim) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "2차 비밀번호 변경은 디스코드 내에 [봇명령어] 채널을 이용해주세요."));
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1, "สำหรับการเปลี่ยนรหัสผ่านชั้นที่ 2 กรุณาใช้ห้อง [คำสั่งบอท] ใน Discord"));
       } else {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "2차 비밀번호 변경은 홈페이지 고객센터로 문의해 주세요."));
+         c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
+               "สำหรับการเปลี่ยนรหัสผ่านชั้นที่ 2 กรุณาติดต่อฝ่ายบริการลูกค้าที่หน้าเว็บไซต์"));
       }
    }
 
@@ -436,10 +435,12 @@ public class CharLoginHandler {
       Calendar cal = c.getTempBanCalendar();
       String login = c.getAccountName();
       if (cal != null && cal.getTimeInMillis() != 0L) {
-         SimpleDateFormat sdf = new SimpleDateFormat("YYYY년 MM월 dd일 HH시 mm분");
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
          String tempBan = sdf.format(c.getTempBanCalendar().getTime());
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "해당 계정은 이용이 제한된 계정입니다.\r\n\r\n다음 기간까지 접속이 불가능합니다.\r\n\r\n" + tempBan));
-         String reason = tempBan + "까지 기간밴 당한 계정";
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1,
+                     "บัญชีนี้ถูกระงับการใช้งานชั่วคราว\r\n\r\nไม่สามารถเข้าใช้งานได้จนถึง: " + tempBan));
+         String reason = tempBan + " (บัญชีถูกระงับชั่วคราว)";
          StringBuilder sb = new StringBuilder();
          sb.append("기간밴 로그 (아이피 : ");
          sb.append(c.getSessionIPAddress());
@@ -450,7 +451,8 @@ public class CharLoginHandler {
          sb.append(", 사유 : ");
          sb.append(reason);
          sb.append(")");
-         LoggingManager.putLog(new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb));
+         LoggingManager
+               .putLog(new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb));
          noGame = true;
       }
 
@@ -470,21 +472,20 @@ public class CharLoginHandler {
          }
 
          if (macBan || serialBan) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "해당 기기는 접속이 제한되었습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อุปกรณ์นี้ถูกจำกัดการเข้าถึง"));
             System.out
-               .println(
-                  "맥 밴 계정이 접속을 시도하였습니다. -> accountName : "
-                     + login
-                     + ", (MAC Address [mac : "
-                     + mac
-                     + ", volume : "
-                     + volume
-                     + "]), ipAddress : "
-                     + c.getSessionIPAddress()
-               );
+                  .println(
+                        "맥 밴 계정이 접속을 시도하였습니다. -> accountName : "
+                              + login
+                              + ", (MAC Address [mac : "
+                              + mac
+                              + ", volume : "
+                              + volume
+                              + "]), ipAddress : "
+                              + c.getSessionIPAddress());
             String whichTable = macBan && serialBan
-               ? "macbans, serialban 테이블에 입력된 맥 주소로 로그인 시도"
-               : (macBan ? "macbans 테이블에 입력된 맥 주소로 로그인 시도" : "serialban 테이블에 입력된 맥 주소로 로그인 시도");
+                  ? "macbans, serialban 테이블에 입력된 맥 주소로 로그인 시도"
+                  : (macBan ? "macbans 테이블에 입력된 맥 주소로 로그인 시도" : "serialban 테이블에 입력된 맥 주소로 로그인 시도");
             StringBuilder sb = new StringBuilder();
             sb.append("맥밴 로그 (아이피 : ");
             sb.append(c.getSessionIPAddress());
@@ -495,13 +496,14 @@ public class CharLoginHandler {
             sb.append(", 사유 : ");
             sb.append(whichTable);
             sb.append(")");
-            LoggingManager.putLog(new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb));
+            LoggingManager
+                  .putLog(new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb));
             c.updateLoginState(0, c.getSessionIPAddress());
             noGame = true;
          }
 
          if (ipBan) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "해당 IP는 접속이 제한되었습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "IP นี้ถูกจำกัดการเข้าถึง"));
             String ipBanMsg = "ipBan 테이블에 입력된 IP 주소로 로그인 시도";
             StringBuilder sb1 = new StringBuilder();
             sb1.append("IP밴 로그 (아이피 : ");
@@ -509,7 +511,8 @@ public class CharLoginHandler {
             sb1.append(", 사유 : ");
             sb1.append(ipBanMsg);
             sb1.append(")");
-            LoggingManager.putLog(new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb1));
+            LoggingManager.putLog(
+                  new ConnectLog("", login, 0, c.getAccID(), ConnectLogType.Denied.getType(), mac, volume, sb1));
             noGame = true;
          }
       }
@@ -545,7 +548,7 @@ public class CharLoginHandler {
          String cookie = slea.readMapleAsciiString();
          int loginres = c.authAccountInfo(cookie);
          if (loginres == 1) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "해당 계정은 영구 이용정지 처리되었습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "บัญชีนี้ถูกระงับการใช้งานถาวร"));
             return;
          }
 
@@ -566,7 +569,7 @@ public class CharLoginHandler {
          }
 
          if (!isFirstLogin) {
-            c.getSession().writeAndFlush(LoginPacket.getAccountInfoResult((byte)0, c, true));
+            c.getSession().writeAndFlush(LoginPacket.getAccountInfoResult((byte) 0, c, true));
             c.getSession().writeAndFlush(LoginPacket.getCharWorld(world));
          }
 
@@ -609,15 +612,13 @@ public class CharLoginHandler {
                      if (findchr != null) {
                         findchr.setBlockSave(true);
                         LoggingManager.putLog(
-                           new CustomLog(
-                              findchr.getName(),
-                              findchr.getClient().getAccountName(),
-                              findchr.getId(),
-                              findchr.getAccountID(),
-                              21,
-                              new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                           )
-                        );
+                              new CustomLog(
+                                    findchr.getName(),
+                                    findchr.getClient().getAccountName(),
+                                    findchr.getId(),
+                                    findchr.getAccountID(),
+                                    21,
+                                    new StringBuilder(findchr.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                      }
 
                      System.out.println("낀 캐릭터 저장금지 55");
@@ -642,7 +643,8 @@ public class CharLoginHandler {
                                  break;
                               }
 
-                              if (player != null && player.getName() != null && player.getName().equals(chr.getName())) {
+                              if (player != null && player.getName() != null
+                                    && player.getName().equals(chr.getName())) {
                                  find = true;
 
                                  try {
@@ -653,15 +655,13 @@ public class CharLoginHandler {
                                     if (player != null) {
                                        player.setBlockSave(true);
                                        LoggingManager.putLog(
-                                          new CustomLog(
-                                             player.getName(),
-                                             player.getClient().getAccountName(),
-                                             player.getId(),
-                                             player.getAccountID(),
-                                             21,
-                                             new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                          )
-                                       );
+                                             new CustomLog(
+                                                   player.getName(),
+                                                   player.getClient().getAccountName(),
+                                                   player.getId(),
+                                                   player.getAccountID(),
+                                                   21,
+                                                   new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                                     }
 
                                     System.out.println("낀캐릭터 저장금지 6");
@@ -699,15 +699,13 @@ public class CharLoginHandler {
                            if (player != null) {
                               player.setBlockSave(true);
                               LoggingManager.putLog(
-                                 new CustomLog(
-                                    player.getName(),
-                                    player.getClient().getAccountName(),
-                                    player.getId(),
-                                    player.getAccountID(),
-                                    21,
-                                    new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                 )
-                              );
+                                    new CustomLog(
+                                          player.getName(),
+                                          player.getClient().getAccountName(),
+                                          player.getId(),
+                                          player.getAccountID(),
+                                          21,
+                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                            }
 
                            System.out.println("낀 캐릭터 저장금지 7");
@@ -739,15 +737,13 @@ public class CharLoginHandler {
                            if (player != null) {
                               player.setBlockSave(true);
                               LoggingManager.putLog(
-                                 new CustomLog(
-                                    player.getName(),
-                                    player.getClient().getAccountName(),
-                                    player.getId(),
-                                    player.getAccountID(),
-                                    21,
-                                    new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")
-                                 )
-                              );
+                                    new CustomLog(
+                                          player.getName(),
+                                          player.getClient().getAccountName(),
+                                          player.getId(),
+                                          player.getAccountID(),
+                                          21,
+                                          new StringBuilder(player.getName() + " 낀 캐릭터 팅구기 실패 저장 금지 설정")));
                            }
 
                            System.out.println("낀 캐릭터 저장금지 8");
@@ -787,27 +783,26 @@ public class CharLoginHandler {
             }
 
             c.getSession()
-               .writeAndFlush(
-                  LoginPacket.getCharList(c.isGm(), c.getSecondPassword(), chars, c.getCharacterSlots(), c.getNameChangeEnable(), c.getAndSetCharPosition())
-               );
+                  .writeAndFlush(
+                        LoginPacket.getCharList(c.isGm(), c.getSecondPassword(), chars, c.getCharacterSlots(),
+                              c.getNameChangeEnable(), c.getAndSetCharPosition()));
          }
       }
    }
 
    public static final void CheckCharName(String name, MapleClient c) {
       c.getSession()
-         .writeAndFlush(
-            LoginPacket.charNameResponse(
-               name, !MapleCharacterUtil.canCreateChar(name, c.isGm(), false) || LoginInformationProvider.getInstance().isForbiddenName(name) && !c.isGm()
-            )
-         );
+            .writeAndFlush(
+                  LoginPacket.charNameResponse(
+                        name, !MapleCharacterUtil.canCreateChar(name, c.isGm(), false)
+                              || LoginInformationProvider.getInstance().isForbiddenName(name) && !c.isGm()));
    }
 
    public static final void CheckCharNameChange(PacketDecoder slea, MapleClient c) {
       int cid = slea.readInt();
       String beforename = slea.readMapleAsciiString();
       String afterName = slea.readMapleAsciiString();
-      c.setNameChangeEnable((byte)0);
+      c.setNameChangeEnable((byte) 0);
       MapleCharacter.saveNameChange(afterName, cid);
       MapleCharacter.updateNameChangeCoupon(c);
       c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "캐릭터 이름이 성공적으로 변경되었습니다. 변경을 위해 다시 로그인 바랍니다."));
@@ -871,25 +866,30 @@ public class CharLoginHandler {
             if (job.hat) {
                hat = slea.readInt();
                if (!LoginInformationProvider.getInstance()
-                  .isEligibleItem(
-                     gender,
-                     job.type != LoginInformationProvider.JobType.PathFinder.type && job.type != LoginInformationProvider.JobType.Khali.type ? "궁모" : "모자",
-                     job.type,
-                     hat
-                  )) {
-                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[모자])");
+                     .isEligibleItem(
+                           gender,
+                           job.type != LoginInformationProvider.JobType.PathFinder.type
+                                 && job.type != LoginInformationProvider.JobType.Khali.type ? "궁모" : "모자",
+                           job.type,
+                           hat)) {
+                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                        + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[모자])");
                   return;
                }
             }
 
             int top = slea.readInt();
-            if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "상의" : "의상", job.type, top)) {
-               System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[상의])");
+            if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "상의" : "의상", job.type,
+                  top)) {
+               System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                     + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[상의])");
             } else {
                if (job.bottom) {
                   bottom = slea.readInt();
-                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "하의" : "의상", job.type, bottom)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[하의])");
+                  if (!LoginInformationProvider.getInstance().isEligibleItem(gender, job.bottom ? "하의" : "의상", job.type,
+                        bottom)) {
+                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[하의])");
                      return;
                   }
                }
@@ -897,35 +897,41 @@ public class CharLoginHandler {
                if (job.cape) {
                   cape = slea.readInt();
                   if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "망토", job.type, cape)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[망토])");
+                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 의상[망토])");
                      return;
                   }
                }
 
                int shoes = slea.readInt();
                if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "신발", job.type, shoes)) {
-                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 신발)");
+                  System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                        + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 신발)");
                } else {
                   int weapon = slea.readInt();
                   if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "무기", job.type, weapon)) {
-                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 무기)");
+                     System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                           + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 무기)");
                   } else {
                      if (slea.available() >= 4L) {
                         shield = slea.readInt();
                         if (job == LoginInformationProvider.JobType.Demon) {
                            shield = 1099000;
-                        } else if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "무기", job.type, shield)) {
+                        } else if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "무기", job.type,
+                              shield)) {
                            System.out
-                              .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 방패)");
+                                 .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                                       + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 방패)");
                            return;
                         }
                      }
 
                      MapleCharacter newchar = MapleCharacter.getDefault(c, job);
-                     newchar.setWorld((byte)c.getWorld());
+                     newchar.setWorld((byte) c.getWorld());
                      newchar.setFace(face);
                      if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "얼굴", job.type, face)) {
-                        System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 얼굴)");
+                        System.out.println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                              + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 얼굴)");
                      } else {
                         newchar.setSecondFace(face);
                         if (hairColor < 0) {
@@ -939,14 +945,15 @@ public class CharLoginHandler {
                         newchar.setHair(hair);
                         if (!LoginInformationProvider.getInstance().isEligibleItem(gender, "헤어", job.type, hair)) {
                            System.out
-                              .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName() + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 헤어)");
+                                 .println("핵 사용 감지 [name : " + name + ", accountName : " + c.getAccountName()
+                                       + "] 캐릭터 생성 wz 조작 시도 (MakeCharInfo.img - 헤어)");
                         } else {
                            newchar.setSecondHair(hair);
                            if (job == LoginInformationProvider.JobType.AngelicBuster) {
                               newchar.setSecondFace(21173);
                               newchar.setSecondHair(37141);
                            } else if (job == LoginInformationProvider.JobType.Zero) {
-                              newchar.setSecondGender((byte)1);
+                              newchar.setSecondGender((byte) 1);
                               newchar.setSecondFace(21290);
                               newchar.setSecondHair(37623);
                               newchar.setJob(10112);
@@ -955,7 +962,7 @@ public class CharLoginHandler {
                            newchar.setGender(gender);
                            newchar.setName(name);
                            if (c.isGm()) {
-                              newchar.setGMLevel((byte)5);
+                              newchar.setGMLevel((byte) 5);
                            }
 
                            newchar.setSkinColor(skin);
@@ -966,47 +973,50 @@ public class CharLoginHandler {
                            newchar.setDemonMarking(faceMark);
                            MapleItemInformationProvider li = MapleItemInformationProvider.getInstance();
                            MapleInventory equip = newchar.getInventory(MapleInventoryType.EQUIPPED);
-                           int[][] equips = new int[][]{{hat, -1}, {top, -5}, {bottom, -6}, {cape, -9}, {shoes, -7}, {weapon, -11}, {shield, -10}};
+                           int[][] equips = new int[][] { { hat, -1 }, { top, -5 }, { bottom, -6 }, { cape, -9 },
+                                 { shoes, -7 }, { weapon, -11 }, { shield, -10 } };
 
                            for (int[] i : equips) {
                               if (i[0] > 0) {
                                  Item item = li.getEquipById(i[0]);
-                                 item.setPosition((byte)i[1]);
+                                 item.setPosition((byte) i[1]);
                                  item.setGMLog("Character Creation");
                                  equip.addFromDB(item);
                               }
                            }
 
-                           int[][] skills = new int[][]{
-                              {80001152, 30001061},
-                              {80001152, 1281},
-                              {10001244, 10000252, 80001152},
-                              {20000194},
-                              {20010022, 20010194},
-                              {20020109, 20021110, 20020111, 20020112},
-                              {30010110, 30011109},
-                              {20031208, 20030190, 20031203, 20031205, 20030206, 20031207, 20031209, 20031251, 20031260},
-                              new int[0],
-                              {50001214},
-                              {20040216, 20040217, 20040218, 20040219, 20040221, 20041222},
-                              new int[0],
-                              {60011216, 60010217, 60011218, 60011219, 60011220, 60011222},
-                              new int[0],
-                              {30020232, 30020233, 30020234, 30020240},
-                              {100000279, 100000280, 100000282, 100001262, 100001263, 100001264, 100001265, 100001266, 100001268},
-                              {20051284, 20050285, 20050286},
-                              {131001000, 131001004, 131001024, 131001005, 131000016},
-                              {140000291},
-                              new int[0],
-                              {150000079},
-                              {150010079},
-                              new int[0],
-                              {160001075, 164001004},
-                              {150020079},
-                              new int[0],
-                              {135001000, 135001003, 135000021},
-                              {160011075},
-                              new int[0]
+                           int[][] skills = new int[][] {
+                                 { 80001152, 30001061 },
+                                 { 80001152, 1281 },
+                                 { 10001244, 10000252, 80001152 },
+                                 { 20000194 },
+                                 { 20010022, 20010194 },
+                                 { 20020109, 20021110, 20020111, 20020112 },
+                                 { 30010110, 30011109 },
+                                 { 20031208, 20030190, 20031203, 20031205, 20030206, 20031207, 20031209, 20031251,
+                                       20031260 },
+                                 new int[0],
+                                 { 50001214 },
+                                 { 20040216, 20040217, 20040218, 20040219, 20040221, 20041222 },
+                                 new int[0],
+                                 { 60011216, 60010217, 60011218, 60011219, 60011220, 60011222 },
+                                 new int[0],
+                                 { 30020232, 30020233, 30020234, 30020240 },
+                                 { 100000279, 100000280, 100000282, 100001262, 100001263, 100001264, 100001265,
+                                       100001266, 100001268 },
+                                 { 20051284, 20050285, 20050286 },
+                                 { 131001000, 131001004, 131001024, 131001005, 131000016 },
+                                 { 140000291 },
+                                 new int[0],
+                                 { 150000079 },
+                                 { 150010079 },
+                                 new int[0],
+                                 { 160001075, 164001004 },
+                                 { 150020079 },
+                                 new int[0],
+                                 { 135001000, 135001003, 135000021 },
+                                 { 160011075 },
+                                 new int[0]
                            };
                            if (skills[job.type].length > 0) {
                               Map<Skill, SkillEntry> ss = new HashMap<>();
@@ -1019,28 +1029,29 @@ public class CharLoginHandler {
                                        maxLevel = s.getMasterLevel();
                                     }
 
-                                    ss.put(s, new SkillEntry(1, (byte)maxLevel, -1L));
+                                    ss.put(s, new SkillEntry(1, (byte) maxLevel, -1L));
                                  }
                               }
 
                               if (job == LoginInformationProvider.JobType.EunWol) {
-                                 ss.put(SkillFactory.getSkill(25001000), new SkillEntry(0, (byte)25, -1L));
-                                 ss.put(SkillFactory.getSkill(25001002), new SkillEntry(0, (byte)25, -1L));
+                                 ss.put(SkillFactory.getSkill(25001000), new SkillEntry(0, (byte) 25, -1L));
+                                 ss.put(SkillFactory.getSkill(25001002), new SkillEntry(0, (byte) 25, -1L));
                               } else if (job == LoginInformationProvider.JobType.Zero) {
-                                 ss.put(SkillFactory.getSkill(101000103), new SkillEntry(8, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101000203), new SkillEntry(8, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101000101), new SkillEntry(0, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101100101), new SkillEntry(0, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101100201), new SkillEntry(0, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101110102), new SkillEntry(0, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101110200), new SkillEntry(0, (byte)10, -1L));
-                                 ss.put(SkillFactory.getSkill(101110203), new SkillEntry(0, (byte)10, -1L));
+                                 ss.put(SkillFactory.getSkill(101000103), new SkillEntry(8, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101000203), new SkillEntry(8, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101000101), new SkillEntry(0, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101100101), new SkillEntry(0, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101100201), new SkillEntry(0, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101110102), new SkillEntry(0, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101110200), new SkillEntry(0, (byte) 10, -1L));
+                                 ss.put(SkillFactory.getSkill(101110203), new SkillEntry(0, (byte) 10, -1L));
                               }
 
                               newchar.changeSkillLevel_Skip(ss, false);
                            }
 
-                           int[][] guidebooks = new int[][]{{4161001, 0}, {4161047, 1}, {4161048, 2000}, {4161052, 2001}, {4161054, 3}, {4161079, 2002}};
+                           int[][] guidebooks = new int[][] { { 4161001, 0 }, { 4161047, 1 }, { 4161048, 2000 },
+                                 { 4161052, 2001 }, { 4161054, 3 }, { 4161079, 2002 } };
                            int guidebook = 0;
 
                            for (int[] ixx : guidebooks) {
@@ -1052,11 +1063,12 @@ public class CharLoginHandler {
                            }
 
                            if (guidebook > 0) {
-                              newchar.getInventory(MapleInventoryType.ETC).addItem(new Item(guidebook, (short)0, (short)1, 0));
+                              newchar.getInventory(MapleInventoryType.ETC)
+                                    .addItem(new Item(guidebook, (short) 0, (short) 1, 0));
                            }
 
                            if (job == LoginInformationProvider.JobType.Zero) {
-                              newchar.setLevel((short)101);
+                              newchar.setLevel((short) 101);
                               newchar.getStat().str = 518;
                               newchar.getStat().maxhp = 6910L;
                               newchar.getStat().hp = 6910L;
@@ -1064,26 +1076,27 @@ public class CharLoginHandler {
                               newchar.getStat().mp = 100L;
                               newchar.setRemainingSp(3, 0);
                               newchar.setRemainingSp(3, 1);
-                           } else if (job == LoginInformationProvider.JobType.Kaiser || job == LoginInformationProvider.JobType.AngelicBuster) {
-                              Equip js = new Equip(1352504, (short)-10, (byte)0);
+                           } else if (job == LoginInformationProvider.JobType.Kaiser
+                                 || job == LoginInformationProvider.JobType.AngelicBuster) {
+                              Equip js = new Equip(1352504, (short) -10, (byte) 0);
                               if (job == LoginInformationProvider.JobType.Kaiser) {
                                  Equip var48 = null;
-                                 js = new Equip(1352504, (short)-10, (byte)0);
+                                 js = new Equip(1352504, (short) -10, (byte) 0);
                               } else if (job == LoginInformationProvider.JobType.AngelicBuster) {
                                  Equip var49 = null;
-                                 js = new Equip(1352600, (short)-10, (byte)0);
+                                 js = new Equip(1352600, (short) -10, (byte) 0);
                               }
 
-                              js.setWdef((short)5);
-                              js.setMdef((short)5);
-                              js.setUpgradeSlots((byte)7);
+                              js.setWdef((short) 5);
+                              js.setMdef((short) 5);
+                              js.setUpgradeSlots((byte) 7);
                               js.setExpiration(-1L);
                               equip.addFromDB(js.copy());
                            }
 
                            if (MapleCharacterUtil.canCreateChar(name, c.isGm(), true)
-                              && (!LoginInformationProvider.getInstance().isForbiddenName(name) || c.isGm())
-                              && (c.isGm() || c.canMakeCharacter(c.getWorld()))) {
+                                 && (!LoginInformationProvider.getInstance().isForbiddenName(name) || c.isGm())
+                                 && (c.isGm() || c.canMakeCharacter(c.getWorld()))) {
                               StringBuilder sb = new StringBuilder();
                               sb.append("캐릭터 생성 (아이피 : ");
                               sb.append(c.getSessionIPAddress());
@@ -1098,10 +1111,9 @@ public class CharLoginHandler {
                               c.createdChar(newchar.getId());
                               addEditedCharList(c, newchar.getId());
                               LoggingManager.putLog(
-                                 new CreateCharLog(
-                                    c.getPlayer().getName(), c.getAccountName(), newchar.getId(), c.getAccID(), CreateCharLogType.CreateChar.getType(), sb
-                                 )
-                              );
+                                    new CreateCharLog(
+                                          c.getPlayer().getName(), c.getAccountName(), newchar.getId(), c.getAccID(),
+                                          CreateCharLogType.CreateChar.getType(), sb));
                            } else {
                               c.getSession().writeAndFlush(LoginPacket.addNewCharEntry(newchar, false));
                            }
@@ -1117,11 +1129,13 @@ public class CharLoginHandler {
    public static final void PreCheckSPW(PacketDecoder slea, MapleClient c) {
       int encType = slea.readInt();
       byte[] encryptedPassword = slea.read(slea.readUShort());
-      if (c.isLoggedIn() && !loginFailCount(c) && GameServer.getInstance(c.getChannel()) != null && c.getWorld() == 49) {
-         if (c.CheckSecondPassword(encType, encryptedPassword) && encryptedPassword.length >= 4 && encryptedPassword.length <= 16) {
-            c.getSession().writeAndFlush(LoginPacket.preCheckSPWResult((byte)107));
+      if (c.isLoggedIn() && !loginFailCount(c) && GameServer.getInstance(c.getChannel()) != null
+            && c.getWorld() == 49) {
+         if (c.CheckSecondPassword(encType, encryptedPassword) && encryptedPassword.length >= 4
+               && encryptedPassword.length <= 16) {
+            c.getSession().writeAndFlush(LoginPacket.preCheckSPWResult((byte) 107));
          } else {
-            c.getSession().writeAndFlush(LoginPacket.preCheckSPWResult((byte)20));
+            c.getSession().writeAndFlush(LoginPacket.preCheckSPWResult((byte) 20));
          }
       }
    }
@@ -1130,9 +1144,11 @@ public class CharLoginHandler {
       int encType = slea.readInt();
       byte[] encryptedPassword = slea.read(slea.readUShort());
       int charId = slea.readInt();
-      if (c.isLoggedIn() && !loginFailCount(c) && c.login_Auth(charId) && GameServer.getInstance(c.getChannel()) != null && c.getWorld() == 0) {
-         if ((!c.CheckSecondPassword(encType, encryptedPassword) || encryptedPassword.length < 4 || encryptedPassword.length > 16) && !c.isGm()) {
-            c.getSession().writeAndFlush(LoginPacket.secondPwError((byte)20));
+      if (c.isLoggedIn() && !loginFailCount(c) && c.login_Auth(charId) && GameServer.getInstance(c.getChannel()) != null
+            && c.getWorld() == 0) {
+         if ((!c.CheckSecondPassword(encType, encryptedPassword) || encryptedPassword.length < 4
+               || encryptedPassword.length > 16) && !c.isGm()) {
+            c.getSession().writeAndFlush(LoginPacket.secondPwError((byte) 20));
          } else {
             if (c.getIdleTask() != null) {
                c.getIdleTask().cancel(true);
@@ -1141,7 +1157,8 @@ public class CharLoginHandler {
             String s = c.getSessionIPAddress();
             LoginServer.putLoginAuth(charId, s.substring(s.indexOf(47) + 1, s.length()), c.getTempIP());
             c.updateLoginState(1, s);
-            c.getSession().writeAndFlush(CField.getServerIP(c, Integer.parseInt(GameServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
+            c.getSession().writeAndFlush(CField.getServerIP(c,
+                  Integer.parseInt(GameServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
             c.setLoggedin = true;
          }
       } else {
@@ -1153,11 +1170,11 @@ public class CharLoginHandler {
    public static final void LoginWithCreateCharacter(PacketDecoder slea, MapleClient c) {
       int charId = slea.readInt();
       if (c.isLoggedIn()
-         && !loginFailCount(c)
-         && c.getSecondPassword() != null
-         && c.login_Auth(charId)
-         && GameServer.getInstance(c.getChannel()) != null
-         && c.getWorld() == 49) {
+            && !loginFailCount(c)
+            && c.getSecondPassword() != null
+            && c.login_Auth(charId)
+            && GameServer.getInstance(c.getChannel()) != null
+            && c.getWorld() == 49) {
          if (c.getIdleTask() != null) {
             c.getIdleTask().cancel(true);
          }
@@ -1165,22 +1182,24 @@ public class CharLoginHandler {
          String s = c.getSessionIPAddress();
          LoginServer.putLoginAuth(charId, s.substring(s.indexOf(47) + 1, s.length()), c.getTempIP());
          c.updateLoginState(1, s);
-         c.getSession().writeAndFlush(CField.getServerIP(c, Integer.parseInt(GameServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
+         c.getSession().writeAndFlush(CField.getServerIP(c,
+               Integer.parseInt(GameServer.getInstance(c.getChannel()).getIP().split(":")[1]), charId));
       }
    }
 
    public static final void CreateUltimate(PacketDecoder slea, MapleClient c) {
       if (c.isLoggedIn()
-         && c.getPlayer() != null
-         && c.getPlayer().getLevel() >= 120
-         && c.getPlayer().getMapId() == 130000000
-         && c.getPlayer().getQuestStatus(20734) == 0
-         && c.getPlayer().getQuestStatus(20616) == 2
-         && GameConstants.isKOC(c.getPlayer().getJob())
-         && c.canMakeCharacter(c.getPlayer().getWorld())) {
+            && c.getPlayer() != null
+            && c.getPlayer().getLevel() >= 120
+            && c.getPlayer().getMapId() == 130000000
+            && c.getPlayer().getQuestStatus(20734) == 0
+            && c.getPlayer().getQuestStatus(20616) == 2
+            && GameConstants.isKOC(c.getPlayer().getJob())
+            && c.canMakeCharacter(c.getPlayer().getWorld())) {
          String name = slea.readMapleAsciiString();
          int job = slea.readInt();
-         if (job >= 110 && job <= 520 && job % 10 <= 0 && (job % 100 == 10 || job % 100 == 20 || job % 100 == 30) && job != 430) {
+         if (job >= 110 && job <= 520 && job % 10 <= 0 && (job % 100 == 10 || job % 100 == 20 || job % 100 == 30)
+               && job != 430) {
             int face = slea.readInt();
             int hair = slea.readInt();
             int hat = slea.readInt();
@@ -1191,10 +1210,10 @@ public class CharLoginHandler {
             LoginInformationProvider.JobType jobType = LoginInformationProvider.JobType.Adventurer;
             jobType = LoginInformationProvider.JobType.UltimateAdventurer;
             if (LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, hat)
-               && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, top)
-               && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, glove)
-               && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, shoes)
-               && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, weapon)) {
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, top)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, glove)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, shoes)
+                  && LoginInformationProvider.getInstance().isEligibleItem(-1, "궁모", jobType.type, weapon)) {
                MapleCharacter newchar = MapleCharacter.getDefault(c, jobType);
                newchar.setJob(job);
                newchar.setWorld(c.getPlayer().getWorld());
@@ -1202,12 +1221,12 @@ public class CharLoginHandler {
                newchar.setHair(hair);
                newchar.setName(name);
                newchar.setSkinColor(3);
-               newchar.setLevel((short)51);
+               newchar.setLevel((short) 51);
                newchar.getStat().str = 4;
                newchar.getStat().dex = 4;
                newchar.getStat().int_ = 4;
                newchar.getStat().luk = 4;
-               newchar.setRemainingAp((short)254);
+               newchar.setRemainingAp((short) 254);
                newchar.setRemainingSp(job / 100 == 2 ? 128 : 122);
                newchar.getStat().maxhp += 150L;
                newchar.getStat().maxmp += 125L;
@@ -1249,31 +1268,33 @@ public class CharLoginHandler {
                }
 
                for (int i = 2490; i < 2507; i++) {
-                  newchar.setQuestAdd(MapleQuest.getInstance(i), (byte)2, null);
+                  newchar.setQuestAdd(MapleQuest.getInstance(i), (byte) 2, null);
                }
 
-               newchar.setQuestAdd(MapleQuest.getInstance(29947), (byte)2, null);
-               newchar.setQuestAdd(MapleQuest.getInstance(111111), (byte)0, c.getPlayer().getName());
+               newchar.setQuestAdd(MapleQuest.getInstance(29947), (byte) 2, null);
+               newchar.setQuestAdd(MapleQuest.getInstance(111111), (byte) 0, c.getPlayer().getName());
                Map<Skill, SkillEntry> ss = new HashMap<>();
-               ss.put(SkillFactory.getSkill(1074 + job / 100), new SkillEntry(5, (byte)5, -1L));
-               ss.put(SkillFactory.getSkill(80), new SkillEntry(1, (byte)1, -1L));
+               ss.put(SkillFactory.getSkill(1074 + job / 100), new SkillEntry(5, (byte) 5, -1L));
+               ss.put(SkillFactory.getSkill(80), new SkillEntry(1, (byte) 1, -1L));
                newchar.changeSkillLevel_Skip(ss, false);
                MapleItemInformationProvider li = MapleItemInformationProvider.getInstance();
-               int[] items = new int[]{1142257, hat, top, shoes, glove, weapon, hat + 1, top + 1, shoes + 1, glove + 1, weapon + 1};
+               int[] items = new int[] { 1142257, hat, top, shoes, glove, weapon, hat + 1, top + 1, shoes + 1,
+                     glove + 1, weapon + 1 };
 
                for (byte i = 0; i < items.length; i++) {
                   Item item = li.getEquipById(items[i]);
-                  item.setPosition((byte)(i + 1));
+                  item.setPosition((byte) (i + 1));
                   newchar.getInventory(MapleInventoryType.EQUIP).addFromDB(item);
                }
 
-               newchar.getInventory(MapleInventoryType.USE).addItem(new Item(2000004, (short)0, (short)100, 0));
-               newchar.getInventory(MapleInventoryType.USE).addItem(new Item(2000004, (short)0, (short)100, 0));
+               newchar.getInventory(MapleInventoryType.USE).addItem(new Item(2000004, (short) 0, (short) 100, 0));
+               newchar.getInventory(MapleInventoryType.USE).addItem(new Item(2000004, (short) 0, (short) 100, 0));
                c.getPlayer().fakeRelog();
-               if (!MapleCharacterUtil.canCreateChar(name, c.isGm(), false) || LoginInformationProvider.getInstance().isForbiddenName(name) && !c.isGm()) {
+               if (!MapleCharacterUtil.canCreateChar(name, c.isGm(), false)
+                     || LoginInformationProvider.getInstance().isForbiddenName(name) && !c.isGm()) {
                   c.getSession().writeAndFlush(CField.createUltimate(0));
                } else {
-                  MapleCharacter.saveNewCharToDB(newchar, jobType, (short)0);
+                  MapleCharacter.saveNewCharToDB(newchar, jobType, (short) 0);
                   MapleQuest.getInstance(20734).forceComplete(c.getPlayer(), 1101000);
                   c.getSession().writeAndFlush(CField.createUltimate(1));
                }
@@ -1334,8 +1355,9 @@ public class CharLoginHandler {
             sb.append("캐릭터 삭제 (아이피 : ");
             sb.append(c.getSessionIPAddress());
             sb.append(")");
-            LoggingManager.putLog(new CreateCharLog(name, c.getAccountName(), Character_ID, c.getAccID(), CreateCharLogType.DeleteChar.getType(), sb));
-            state = (byte)c.deleteCharacter(Character_ID);
+            LoggingManager.putLog(new CreateCharLog(name, c.getAccountName(), Character_ID, c.getAccID(),
+                  CreateCharLogType.DeleteChar.getType(), sb));
+            state = (byte) c.deleteCharacter(Character_ID);
             updateEditedCharList(c);
             c.loginAttempt = 0;
          }
@@ -1347,9 +1369,9 @@ public class CharLoginHandler {
    public static final void checkSecondPassword(PacketDecoder slea, MapleClient c) {
       String code = slea.readMapleAsciiString();
       if (!c.CheckSecondPassword(code)) {
-         c.getSession().writeAndFlush(LoginPacket.secondPwError((byte)20));
+         c.getSession().writeAndFlush(LoginPacket.secondPwError((byte) 20));
       } else {
-         c.getSession().writeAndFlush(LoginPacket.getSecondPasswordConfirm((byte)0));
+         c.getSession().writeAndFlush(LoginPacket.getSecondPasswordConfirm((byte) 0));
       }
    }
 
@@ -1372,7 +1394,7 @@ public class CharLoginHandler {
       String cookie = slea.readMapleAsciiString();
       int result = c.authAccountInfo(cookie);
       if (result == 0) {
-         c.getSession().writeAndFlush(LoginPacket.checkWebLoginEmailID((byte)result));
+         c.getSession().writeAndFlush(LoginPacket.checkWebLoginEmailID((byte) result));
       }
    }
 
@@ -1413,7 +1435,8 @@ public class CharLoginHandler {
    public static final void sendCRCCheckFileList(MapleClient c) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.CRC_CHECK_FILE.getValue());
-      Map<Integer, String> selectedMap = ServerConstants.enableCRCBin ? MapleClientCRC.CRCCheckFiles : MapleClientCRC.fastLoad;
+      Map<Integer, String> selectedMap = ServerConstants.enableCRCBin ? MapleClientCRC.CRCCheckFiles
+            : MapleClientCRC.fastLoad;
       int size = selectedMap.size();
       packet.writeInt(size);
 
@@ -1555,7 +1578,7 @@ public class CharLoginHandler {
 
    public static void checkFileCRC(PacketDecoder slea, MapleClient c) {
       boolean crcPass = true;
-      byte[] checkBytes = slea.read((int)slea.available());
+      byte[] checkBytes = slea.read((int) slea.available());
       byte[] origBytes = ServerConstants.origCRCBytes;
 
       try {
@@ -1563,10 +1586,9 @@ public class CharLoginHandler {
          File f = new File(CRCFile);
          if (!f.exists()) {
             try (
-               FileOutputStream fos = new FileOutputStream(f);
-               BufferedOutputStream bos = new BufferedOutputStream(fos);
-               DataOutputStream dos = new DataOutputStream(bos);
-            ) {
+                  FileOutputStream fos = new FileOutputStream(f);
+                  BufferedOutputStream bos = new BufferedOutputStream(fos);
+                  DataOutputStream dos = new DataOutputStream(bos);) {
                dos.write(checkBytes);
             }
          } else {
@@ -1617,10 +1639,9 @@ public class CharLoginHandler {
          }
 
          try (
-            FileOutputStream fos = new FileOutputStream(saveFile);
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
-            DataOutputStream dos = new DataOutputStream(bos);
-         ) {
+               FileOutputStream fos = new FileOutputStream(saveFile);
+               BufferedOutputStream bos = new BufferedOutputStream(fos);
+               DataOutputStream dos = new DataOutputStream(bos);) {
             dos.write(checkBytes);
          } catch (Exception var19) {
             System.out.println("CRC File Write Err");

@@ -35,7 +35,7 @@ public class PlayerCommand implements Command {
             amount = Integer.parseInt(splitted[1]);
          }
          if (amount < 0) {
-            c.getPlayer().dropMessage(5, "You cannot add negative stats.");
+            c.getPlayer().dropMessage(5, "คุณไม่สามารถเพิ่มค่าสถานะติดลบได้");
             return;
          }
 
@@ -58,11 +58,11 @@ public class PlayerCommand implements Command {
          }
 
          if (currentStat + amount > 32767) {
-            c.getPlayer().dropMessage(5, "You cannot raise a stat above 32,767.");
+            c.getPlayer().dropMessage(5, "คุณไม่สามารถเพิ่มค่าสถานะเกิน 32,767 ได้");
             return;
          }
          if (c.getPlayer().getRemainingAp() < amount) {
-            c.getPlayer().dropMessage(5, "You do not have enough AP.");
+            c.getPlayer().dropMessage(5, "คุณมีค่า AP ไม่เพียงพอ");
             return;
          }
 
@@ -81,21 +81,21 @@ public class PlayerCommand implements Command {
 
       } else if (splitted[0].equalsIgnoreCase("@check")) {
          c.getPlayer().dropMessage(5,
-               "Stats: STR=" + c.getPlayer().getStat().getStr() + " DEX=" + c.getPlayer().getStat().getDex() +
+               "สถานะ: STR=" + c.getPlayer().getStat().getStr() + " DEX=" + c.getPlayer().getStat().getDex() +
                      " INT=" + c.getPlayer().getStat().getInt() + " LUK=" + c.getPlayer().getStat().getLuk());
       } else if (splitted[0].equalsIgnoreCase("@ea") || splitted[0].equalsIgnoreCase("@dispose")) {
          c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
-         c.getPlayer().dropMessage(5, "Actions enabled.");
+         c.getPlayer().dropMessage(5, "ปลดล็อคการกระทำแล้ว");
       } else if (splitted[0].equalsIgnoreCase("@online")) {
          int total = 0;
          for (GameServer ch : GameServer.getAllInstances()) {
             total += ch.getPlayerStorage().getOnlinePlayerCount();
          }
-         c.getPlayer().dropMessage(6, "Total Online Players: " + total);
+         c.getPlayer().dropMessage(6, "ผู้เล่นออนไลน์ทั้งหมด: " + total);
       } else if (splitted[0].equalsIgnoreCase("@town")) {
          if (c.getPlayer().getEventInstance() != null || c.getPlayer().getMapId() == 109020001) { // Example blocked map
                                                                                                   // checks
-            c.getPlayer().dropMessage(5, "You cannot use this command here.");
+            c.getPlayer().dropMessage(5, "คุณไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
             return;
          }
          Field target = c.getChannelServer().getMapFactory().getMap(ServerConstants.TownMap);
@@ -109,30 +109,30 @@ public class PlayerCommand implements Command {
 
          // ... detailed implementations would go here, simplified for translation focus:
          c.getPlayer().dropMessage(5,
-               "HP/MP Stat raising is currently disabled via command due to complexity. Please use the character stat window.");
+               "การเพิ่มค่า HP/MP ผ่านคำสั่งถูกปิดใช้งานเนื่องจากความซับซ้อน กรุณาใช้หน้าต่างสถานะตัวละคร");
       } else if (splitted[0].equalsIgnoreCase("@help") || splitted[0].equalsIgnoreCase("@commands")) {
-         c.getPlayer().dropMessage(5, "Available Commands:");
-         c.getPlayer().dropMessage(5, "@str, @dex, @int, @luk <amount> - Raise stats");
-         c.getPlayer().dropMessage(5, "@check - Check stats");
-         c.getPlayer().dropMessage(5, "@ea / @dispose - Fix stuck character");
-         c.getPlayer().dropMessage(5, "@online - Show online players");
-         c.getPlayer().dropMessage(5, "@town - Warp to town");
+         c.getPlayer().dropMessage(5, "คำสั่งที่ใช้งานได้:");
+         c.getPlayer().dropMessage(5, "@str, @dex, @int, @luk <จำนวน> - เพิ่มค่าสถานะ");
+         c.getPlayer().dropMessage(5, "@check - ตรวจสอบสถานะ");
+         c.getPlayer().dropMessage(5, "@ea / @dispose - แก้ตัวละครค้าง");
+         c.getPlayer().dropMessage(5, "@online - แสดงผู้เล่นออนไลน์");
+         c.getPlayer().dropMessage(5, "@town - วาร์ปไปเมือง");
       }
    }
 
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("@str", "<amount>", "Increases STR.", 0),
-            new CommandDefinition("@dex", "<amount>", "Increases DEX.", 0),
-            new CommandDefinition("@int", "<amount>", "Increases INT.", 0),
-            new CommandDefinition("@luk", "<amount>", "Increases LUK.", 0),
-            new CommandDefinition("@check", "", "Checks your stats.", 0),
-            new CommandDefinition("@ea", "", "Unstucks your character.", 0),
-            new CommandDefinition("@dispose", "", "Unstucks your character.", 0),
-            new CommandDefinition("@online", "", "Shows online players.", 0),
-            new CommandDefinition("@town", "", "Warps to town.", 0),
-            new CommandDefinition("@help", "", "Shows help.", 0),
+            new CommandDefinition("@str", "<amount>", "เพิ่มค่า STR", 0),
+            new CommandDefinition("@dex", "<amount>", "เพิ่มค่า DEX", 0),
+            new CommandDefinition("@int", "<amount>", "เพิ่มค่า INT", 0),
+            new CommandDefinition("@luk", "<amount>", "เพิ่มค่า LUK", 0),
+            new CommandDefinition("@check", "", "ตรวจสอบสถานะของคุณ", 0),
+            new CommandDefinition("@ea", "", "แก้ตัวละครค้าง", 0),
+            new CommandDefinition("@dispose", "", "แก้ตัวละครค้าง", 0),
+            new CommandDefinition("@online", "", "แสดงผู้เล่นออนไลน์", 0),
+            new CommandDefinition("@town", "", "วาร์ปไปเมือง", 0),
+            new CommandDefinition("@help", "", "แสดงความช่วยเหลือ", 0),
       };
    }
 }

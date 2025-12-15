@@ -135,7 +135,7 @@ public class Start {
       }
 
       if (ServerCerficator.serverAuth()) {
-         System.err.println("[알려라] Dev 03-28");
+         System.err.println("[Info] Dev 03-28");
          Center.init();
          Timer.HeartBeatTimer.getInstance().start();
          Timer.WorldTimer.getInstance().start();

@@ -15,88 +15,88 @@ public class RoyalCommand implements Command {
       String split = splitted[0];
       if (split.equals("!setquestkv")) {
          if (splitted.length < 5) {
-            c.getPlayer().dropMessage(6, "Syntax: !setquestkv <player> <quest id> <key> <value>");
+            c.getPlayer().dropMessage(6, "รูปแบบคำสั่ง: !setquestkv <ชื่อผู้เล่น> <รหัสเควส> <คีย์> <ค่า>");
             return;
          }
 
          MapleCharacter victim = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (victim != null) {
             victim.updateOneInfo(Integer.parseInt(splitted[2]), splitted[3], splitted[4]);
-            c.getPlayer().dropMessage(6, "Quest KeyValue Set Complete.");
+            c.getPlayer().dropMessage(6, "ตั้งค่า KeyValue ของเควสเรียบร้อยแล้ว");
          } else {
-            c.getPlayer().dropMessage(6, "The victim does not exist.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่นดังกล่าว");
          }
       } else if (split.equals("!removequestkv")) {
          if (splitted.length < 4) {
-            c.getPlayer().dropMessage(6, "Syntax: !removequestkv <player> <quest id> <key>");
+            c.getPlayer().dropMessage(6, "รูปแบบคำสั่ง: !removequestkv <ชื่อผู้เล่น> <รหัสเควส> <คีย์>");
             return;
          }
 
          MapleCharacter chrx = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (chrx == null) {
-            c.getPlayer().dropMessage(6, "Player not found.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่น");
          } else {
             int t = Integer.parseInt(splitted[2]);
             String key = splitted[3];
             chrx.removeOneInfo(t, key);
-            c.getPlayer().dropMessage(6, "Quest KeyValue Delete Complete");
+            c.getPlayer().dropMessage(6, "ลบ KeyValue ของเควสเรียบร้อยแล้ว");
          }
       } else if (split.equals("!setcharkv")) {
          MapleCharacter chr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (chr == null) {
-            c.getPlayer().dropMessage(6, "Player not found.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่น");
          } else {
             String key = splitted[2];
             String value = splitted[3];
             chr.setKeyValue(key, value);
-            c.getPlayer().dropMessage(6, "Character KeyValue Set Complete");
+            c.getPlayer().dropMessage(6, "ตั้งค่า KeyValue ของตัวละครเรียบร้อยแล้ว");
          }
       } else if (split.equals("!removecharkv")) {
          if (splitted.length < 3) {
-            c.getPlayer().dropMessage(6, "!removecharkv <player> <key>");
+            c.getPlayer().dropMessage(6, "!removecharkv <ชื่อผู้เล่น> <คีย์>");
             return;
          }
 
          MapleCharacter chr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (chr == null) {
-            c.getPlayer().dropMessage(6, "Player not found.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่น");
          } else {
             String key = splitted[2];
             chr.removeKeyValue(key);
-            c.getPlayer().dropMessage(6, "Character KeyValue Delete Complete");
+            c.getPlayer().dropMessage(6, "ลบ KeyValue ของตัวละครเรียบร้อยแล้ว");
          }
       } else if (split.equals("!setaccountkv")) {
          if (splitted.length < 4) {
-            c.getPlayer().dropMessage(6, "!setaccountkv <player> <key> <value>");
+            c.getPlayer().dropMessage(6, "!setaccountkv <ชื่อผู้เล่น> <คีย์> <ค่า>");
             return;
          }
 
          MapleCharacter chr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (chr == null) {
-            c.getPlayer().dropMessage(6, "Player not found.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่น");
          } else {
             String key = splitted[2];
             String value = splitted[3];
             chr.getClient().setKeyValue(key, value);
-            c.getPlayer().dropMessage(6, "Account KeyValue Set Complete");
+            c.getPlayer().dropMessage(6, "ตั้งค่า KeyValue ของบัญชีเรียบร้อยแล้ว");
          }
       } else if (split.equals("!removeaccountkv")) {
          if (splitted.length < 3) {
-            c.getPlayer().dropMessage(6, "!removeaccountkv <player> <key>");
+            c.getPlayer().dropMessage(6, "!removeaccountkv <ชื่อผู้เล่น> <คีย์>");
             return;
          }
 
          MapleCharacter chr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
          if (chr == null) {
-            c.getPlayer().dropMessage(6, "Player not found.");
+            c.getPlayer().dropMessage(6, "ไม่พบผู้เล่น");
          } else {
             String key = splitted[2];
             chr.getClient().removeKeyValue(key);
-            c.getPlayer().dropMessage(6, "Account KeyValue Delete Complete");
+            c.getPlayer().dropMessage(6, "ลบ KeyValue ของบัญชีเรียบร้อยแล้ว");
          }
       } else if (split.equals("!giveoffline")) {
          if (splitted.length < 2) {
-            c.getPlayer().dropMessage(5, "!giveoffline <player> <itemid> <quantity>");
+            c.getPlayer().dropMessage(5, "!giveoffline <ชื่อผู้เล่น> <รหัสไอเทม> <จำนวน>");
             return;
          }
 
@@ -113,9 +113,10 @@ public class RoyalCommand implements Command {
                pse.executeUpdate();
                pse.close();
                c.getPlayer().dropMessage(5,
-                     "[Offline Gift] Given " + splitted[3] + " of item " + splitted[2] + " to " + splitted[1] + ".");
+                     "[ของขวัญออฟไลน์] มอบไอเทม " + splitted[2] + " จำนวน " + splitted[3] + " ชิ้น ให้กับ "
+                           + splitted[1] + " เรียบร้อยแล้ว");
             } else {
-               c.getPlayer().dropMessage(5, "Character not found.");
+               c.getPlayer().dropMessage(5, "ไม่พบตัวละคร");
             }
 
             rs.close();
@@ -125,7 +126,7 @@ public class RoyalCommand implements Command {
          }
       } else if (split.equals("!clearoffline")) {
          if (splitted.length < 2) {
-            c.getPlayer().dropMessage(5, "!clearoffline <player>");
+            c.getPlayer().dropMessage(5, "!clearoffline <ชื่อผู้เล่น>");
             return;
          }
 
@@ -138,9 +139,9 @@ public class RoyalCommand implements Command {
                pse.setInt(1, rs.getInt("id"));
                pse.execute();
                pse.close();
-               c.getPlayer().dropMessage(5, "[Offline Gift] Cleared offline gifts for " + splitted[1] + ".");
+               c.getPlayer().dropMessage(5, "[ของขวัญออฟไลน์] ลบของขวัญออฟไลน์ของ " + splitted[1] + " เรียบร้อยแล้ว");
             } else {
-               c.getPlayer().dropMessage(5, "Character not found.");
+               c.getPlayer().dropMessage(5, "ไม่พบตัวละคร");
             }
 
             rs.close();

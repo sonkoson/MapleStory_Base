@@ -38,7 +38,7 @@ public class UserInterfaceHandler {
                   }
 
                   if (chr.getId() != chr.getParty().getLeader().getId()) {
-                     chr.dropMessage(1, "파티장만 입장 가능합니다.");
+                     chr.dropMessage(1, "เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถเข้าได้");
                      return;
                   }
                }
@@ -116,7 +116,8 @@ public class UserInterfaceHandler {
                      ScriptManager.runScript(c, "q" + i + "e", MapleLifeFactory.getNPC(9010000), null);
                      break;
                   }
-               } else if (chr.getOneInfo(100565, "stepNum") != null && !chr.getOneInfo(100565, "stepNum").equals("finish")) {
+               } else if (chr.getOneInfo(100565, "stepNum") != null
+                     && !chr.getOneInfo(100565, "stepNum").equals("finish")) {
                   ScriptManager.runScript(c, "q" + i + "e", MapleLifeFactory.getNPC(9010000), null);
                   break;
                }

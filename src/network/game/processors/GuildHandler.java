@@ -44,12 +44,13 @@ public class GuildHandler {
          GuildRequestResultType.Result request = GuildRequestResultType.Result.getByType(type);
          switch (request) {
             case DeclineInvite:
+            default:
                String name = packet.readMapleAsciiString();
                MapleCharacter target = client.getChannelServer().getPlayerStorage().getCharacterByName(name);
                if (target != null) {
                   GuildPacket.sendGuildPacket(
-                     target, new GuildPacket.GuildMessageWithString(GuildRequestResultType.Result.DeclineInvite, client.getPlayer().getName())
-                  );
+                        target, new GuildPacket.GuildMessageWithString(GuildRequestResultType.Result.DeclineInvite,
+                              client.getPlayer().getName()));
                }
                break;
             case DeclineInviteAlliance:
@@ -74,7 +75,7 @@ public class GuildHandler {
                      }
 
                      if (leader != null) {
-                        leader.dropMessage(5, guildName + " 길드의 마스터가 연합 초대를 거부하였습니다.");
+                        leader.dropMessage(5, guildName + " หัวหน้ากิลด์ปฏิเสธคำเชิญเข้าร่วมพันธมิตร");
                      }
                   }
                }
@@ -102,7 +103,8 @@ public class GuildHandler {
          int playerId = slea.readInt();
          Guild guild = chr.getGuild();
          if (guild == null) {
-            System.out.println("길드 가입 신청을 수락하는 도중에 길드가 null입니다. cid : " + chr.getId() + ", name : " + chr.getName());
+            System.out.println(
+                  "Guild is null while accepting join request. cid : " + chr.getId() + ", name : " + chr.getName());
             return;
          }
 
@@ -123,7 +125,7 @@ public class GuildHandler {
          if (target != null) {
             mgc = target.getMGC();
          } else {
-            DBConnection db = new DBConnection();
+
             PreparedStatement ps = null;
             ResultSet rs = null;
             PreparedStatement ps2 = null;
@@ -136,21 +138,20 @@ public class GuildHandler {
                rs = ps.executeQuery();
                if (rs.next()) {
                   mgc = new GuildCharacter(
-                     playerId,
-                     (short)rs.getInt("level"),
-                     rs.getString("name"),
-                     (byte)-1,
-                     rs.getInt("job"),
-                     (byte)5,
-                     0,
-                     (byte)0,
-                     guild.getId(),
-                     0L,
-                     0,
-                     0L,
-                     0L,
-                     false
-                  );
+                        playerId,
+                        (short) rs.getInt("level"),
+                        rs.getString("name"),
+                        (byte) -1,
+                        rs.getInt("job"),
+                        (byte) 5,
+                        0,
+                        (byte) 0,
+                        guild.getId(),
+                        0L,
+                        0,
+                        0L,
+                        0L,
+                        false);
                }
 
                ps2 = con.prepareStatement("SELECT `guild_id` FROM guild_request_member WHERE `name` = ?");
@@ -176,7 +177,7 @@ public class GuildHandler {
                try {
                   if (ps != null) {
                      ps.close();
-                     PreparedStatement var34 = null;
+
                   }
 
                   if (rs != null) {
@@ -185,12 +186,12 @@ public class GuildHandler {
 
                   if (ps2 != null) {
                      ps2.close();
-                     PreparedStatement var35 = null;
+
                   }
 
                   if (rs2 != null) {
                      rs2.close();
-                     ResultSet var36 = null;
+
                   }
 
                   if (ps3 != null) {
@@ -205,7 +206,7 @@ public class GuildHandler {
             int s = Center.Guild.addGuildMember(mgc);
             guild.removeJoinRequester(playerId, true);
             if (s == 0 && target != null) {
-               target.dropMessage(1, "가입하려는 길드는 이미 정원이 꽉 찼습니다.");
+               target.dropMessage(1, "กิลด์ที่ท่านต้องการเข้าร่วมมีสมาชิกเต็มแล้ว");
                target.setGuildId(0);
                return;
             }
@@ -226,7 +227,8 @@ public class GuildHandler {
          int playerId = slea.readInt();
          Guild guild = chr.getGuild();
          if (guild == null) {
-            System.out.println("길드 가입 신청을 거절하는 도중에 길드가 null입니다. cid : " + chr.getId() + ", name : " + chr.getName());
+            System.out.println(
+                  "Guild is null while declining join request. cid : " + chr.getId() + ", name : " + chr.getName());
             return;
          }
 
@@ -235,7 +237,7 @@ public class GuildHandler {
    }
 
    public static void joinRequest(PacketDecoder packet, MapleCharacter player) {
-      GuildHandler.JoinRequestType type = GuildHandler.JoinRequestType.getByType(packet.readByte());
+      packet.readByte();
    }
 
    public static void removeJoinRequest(PacketDecoder slea, MapleCharacter chr) {
@@ -243,7 +245,8 @@ public class GuildHandler {
       if (guildid == null || !guildid.isEmpty()) {
          Guild guild = Center.Guild.getGuild(Integer.parseInt(guildid));
          if (guild == null) {
-            System.out.println("길드에 가입신청을 취소하는 도중 길드가 사라졌거나, 비정상적 접근입니다. cid : " + chr.getId() + ", name : " + chr.getName());
+            System.out.println(
+                  "길드에 가입신청을 취소하는 도중 길드가 사라졌거나, 비정상적 접근입니다. cid : " + chr.getId() + ", name : " + chr.getName());
          } else {
             guild.removeJoinRequester(chr.getId(), false);
          }
@@ -273,7 +276,7 @@ public class GuildHandler {
          int type = packet.readInt();
          GuildRequestResultType.Request request = GuildRequestResultType.Request.getByType(type);
          if (request == null) {
-            System.out.println("[ERROR] 등록되지 않은 길드 핸들러입니다. (Type : " + type + ")");
+            System.out.println("[ERROR] Unregistered Guild Handler. (Type : " + type + ")");
             return;
          }
 
@@ -281,13 +284,13 @@ public class GuildHandler {
             case CreateGuild_CheckName:
                if (player.getGuildId() <= 0 && player.getMapId() == 200000301) {
                   if (player.getMeso() < 10000000L) {
-                     player.dropMessage(1, "길드 제작에 필요한 메소 [1000만 메소] 가 충분하지 않습니다.");
+                     player.dropMessage(1, "มี Meso ไม่เพียงพอสำหรับการสร้างกิลด์ [10,000,000 Meso]");
                      return;
                   }
 
                   String guildNamex = packet.readMapleAsciiString();
                   if (!isGuildNameAcceptable(guildNamex)) {
-                     player.dropMessage(1, "해당 길드 이름은 만들 수 없습니다.");
+                     player.dropMessage(1, "ชื่อกิลด์นี้ไม่สามารถใช้งานได้");
                      return;
                   }
 
@@ -307,12 +310,12 @@ public class GuildHandler {
                   break;
                }
 
-               player.dropMessage(1, "이미 길드에 가입되어 있어 길드를 만들 수 없습니다.");
+               player.dropMessage(1, "ไม่สามารถสร้างกิลด์ได้เนื่องจากคุณมีกิลด์อยู่แล้ว");
                return;
             case CreateGuild_DoCreate: {
                String guildName = player.getCreateGuildName();
                if (!isGuildNameAcceptable(guildName)) {
-                  player.dropMessage(1, "해당 길드 이름은 만들 수 없습니다.");
+                  player.dropMessage(1, "ไม่สามารถสร้างกิลด์ด้วยชื่อนี้ได้");
                   return;
                }
 
@@ -335,7 +338,7 @@ public class GuildHandler {
 
                player.gainMeso(-10000000L, true, true, true);
                player.setGuildIdFromCreate(guildID);
-               player.setGuildRank((byte)1);
+               player.setGuildRank((byte) 1);
                player.saveGuildStatus();
                Guild guildxxx = Center.Guild.getGuild(guildID);
                if (guildxxx == null) {
@@ -355,13 +358,12 @@ public class GuildHandler {
                }
 
                respawnPlayer(player);
-               }
+            }
                break;
             case SearchGuild: {
                byte searchType = packet.readByte();
                byte searchType2 = packet.readByte();
                if (searchType2 == 1) {
-                  int leaderid = 0;
                   int guildIDx = player.getGuildId();
                   Guild guildxxxx = Center.Guild.getGuild(guildIDx);
                   if (guildxxxx == null) {
@@ -370,7 +372,7 @@ public class GuildHandler {
                   }
 
                   if (guildxxxx.getAllianceId() > 0) {
-                     leaderid = Center.Alliance.getAllianceLeader(guildxxxx.getAllianceId());
+                     Center.Alliance.getAllianceLeader(guildxxxx.getAllianceId());
                   }
 
                   String searchText = packet.readMapleAsciiString();
@@ -383,7 +385,7 @@ public class GuildHandler {
                         }
                      });
                      if (guilds.isEmpty()) {
-                        player.dropMessage(1, "길드를 찾지 못하였습니다. 올바른 길드 이름을 입력해 주세요.");
+                        player.dropMessage(1, "ไม่พบกิลด์ กรุณาตรวจสอบชื่อกิลด์ให้ถูกต้อง");
                         return;
                      }
 
@@ -391,8 +393,8 @@ public class GuildHandler {
                      byte unk2x = packet.readByte();
                      byte unk3 = packet.readByte();
                      GuildPacket.SearchGuildResult result = new GuildPacket.SearchGuildResult(
-                        player.getId(), searchType, searchType2, searchText, true, unk1x, unk2x, unk3, false, recruitment
-                     );
+                           player.getId(), searchType, searchType2, searchText, true, unk1x, unk2x, unk3, false,
+                           recruitment);
                      PacketEncoder p = new PacketEncoder();
                      result.encode(p);
                      player.send(p.getPacket());
@@ -404,7 +406,7 @@ public class GuildHandler {
                }
 
                if (searchType2 == 2) {
-                  player.dropMessage(5, "길드 블랙리스트 기능은 현재 준비중입니다.");
+                  player.dropMessage(5, "ระบบ Blacklist กิลด์ยังไม่เปิดให้บริการ");
                   player.send(CWvsContext.enableActions(player));
                   return;
                }
@@ -425,19 +427,21 @@ public class GuildHandler {
                   List<Guild.RecruitmentGuildData> recruitment = new ArrayList<>();
                   var152.forEach(gx -> recruitment.add(new Guild.RecruitmentGuildData(gx, player.getId(), false)));
                   GuildPacket.SearchGuildResult result = new GuildPacket.SearchGuildResult(
-                     player.getId(), searchType, searchType2, searchText, likeSearch, unk1x, unk2x, unk3, true, recruitment
-                  );
+                        player.getId(), searchType, searchType2, searchText, likeSearch, unk1x, unk2x, unk3, true,
+                        recruitment);
                   PacketEncoder p = new PacketEncoder();
                   result.encode(p);
                   player.send(p.getPacket());
                }
-               }
+            }
                break;
             case InviteAlliance:
-               if (player.getGuild() != null && player.getGuild().getAllianceId() != 0 && player.getGuildRank() == 1 && player.getAllianceRank() == 1) {
+               if (player.getGuild() != null && player.getGuild().getAllianceId() != 0 && player.getGuildRank() == 1
+                     && player.getAllianceRank() == 1) {
                   int allianceId = player.getGuild().getAllianceId();
                   if (!Center.Alliance.canInvite(allianceId)) {
-                     player.dropMessage(1, "연합에 더이상 길드를 초대할 수 없습니다. 연합은 최대 5길드 까지 가능합니다. 연합 자리가 부족한 경우 길드 연합 담당자 NPC를 통해 늘릴 수 있습니다.");
+                     player.dropMessage(1,
+                           "ไม่สามารถเชิญกิลด์เข้าร่วมพันธมิตรเพิ่มได้ พันธมิตรสามารถมีได้สูงสุด 5 กิลด์ หากต้องการเพิ่มจำนวน กรุณาติดต่อ NPC ผู้ดูแลกิลด์");
                      return;
                   }
 
@@ -445,7 +449,7 @@ public class GuildHandler {
                   if (Center.Alliance.inviteList.containsKey(targetGuildId)) {
                      long time = Center.Alliance.inviteTime.get(targetGuildId);
                      if (System.currentTimeMillis() - time <= 60000L && !player.getClient().isGm()) {
-                        player.dropMessage(1, "해당 길드는 다른 연합의 초대를 처리중입니다.");
+                        player.dropMessage(1, "กิลด์ดังกล่าวอยู่ระหว่างการดำเนินการคำเชิญจากพันธมิตรอื่น");
                         return;
                      }
 
@@ -457,7 +461,7 @@ public class GuildHandler {
                   if (leaderId > 0) {
                      int ch = Center.Find.findChannel(leaderId);
                      if (ch <= 0) {
-                        player.dropMessage(5, "해당 길드의 마스터가 오프라인 상태입니다.");
+                        player.dropMessage(5, "หัวหน้ากิลด์ดังกล่าวออฟไลน์อยู่");
                         return;
                      }
 
@@ -471,7 +475,7 @@ public class GuildHandler {
                      }
 
                      if (leader == null) {
-                        player.dropMessage(5, "해당 길드의 마스터가 오프라인 상태입니다.");
+                        player.dropMessage(5, "หัวหน้ากิลด์ดังกล่าวออฟไลน์อยู่");
                         return;
                      }
 
@@ -503,7 +507,8 @@ public class GuildHandler {
                Guild targetGuild = Center.Guild.getGuild(targetGuildIDxx);
                if (targetGuild == null) {
                   System.out
-                     .println(String.format("guild가 null입니다. (name : %s, cid : %d, targetGuildID : %d)", player.getName(), player.getId(), targetGuildIDxx));
+                        .println(String.format("Guild is null. (name : %s, cid : %d, targetGuildID : %d)",
+                              player.getName(), player.getId(), targetGuildIDxx));
                   return;
                }
 
@@ -530,7 +535,8 @@ public class GuildHandler {
                String removeTime = player.getOneInfoQuest(26015, "remove_time");
                if (removeTime != null && !removeTime.isEmpty()) {
                   if (Long.valueOf(removeTime) + 60000L > System.currentTimeMillis()) {
-                     GuildPacket.sendGuildPacket(player, new GuildPacket.GuildMessage(GuildRequestResultType.Result.NotYetPossibleJoinGuild));
+                     GuildPacket.sendGuildPacket(player,
+                           new GuildPacket.GuildMessage(GuildRequestResultType.Result.NotYetPossibleJoinGuild));
                      return;
                   }
 
@@ -539,7 +545,9 @@ public class GuildHandler {
 
                Guild guildxx = Center.Guild.getGuild(targetGuildIDx);
                if (guildxx == null) {
-                  System.out.println("길드에 가입을 요청하던 도중 길드가 없어졌거나, 비정상적 접근입니다. cid : " + player.getId() + ", name : " + player.getName());
+                  System.out.println(
+                        "Guild disappeared or invalid access during join request. cid : " + player.getId() + ", name : "
+                              + player.getName());
                   return;
                }
 
@@ -553,12 +561,12 @@ public class GuildHandler {
 
                guildxx.insertJoinRequester(player, text);
                GuildPacket.UpdateRecruitmentGuild update = new GuildPacket.UpdateRecruitmentGuild(
-                  new Guild.RecruitmentGuildData(guildxx, player.getId(), false)
-               );
+                     new Guild.RecruitmentGuildData(guildxx, player.getId(), false));
                GuildPacket.sendGuildPacket(player, update);
                break;
             case LoadJoinRequest:
-               GuildPacket.LoadJoinRequestList list = new GuildPacket.LoadJoinRequestList(Center.Guild.getAllRecruitmentGuildByPlayerID(player.getId()));
+               GuildPacket.LoadJoinRequestList list = new GuildPacket.LoadJoinRequestList(
+                     Center.Guild.getAllRecruitmentGuildByPlayerID(player.getId()));
                GuildPacket.sendGuildPacket(player, list);
                break;
             case AcceptJoinRequest:
@@ -568,7 +576,8 @@ public class GuildHandler {
                   int playerID = packet.readInt();
                   Guild guildxxxxxx = player.getGuild();
                   if (guildxxxxxx == null) {
-                     System.out.println("길드 가입 신청을 수락하는 도중에 길드가 null입니다. cid : " + player.getId() + ", name : " + player.getName());
+                     System.out.println(
+                           "길드 가입 신청을 수락하는 도중에 길드가 null입니다. cid : " + player.getId() + ", name : " + player.getName());
                      return;
                   }
 
@@ -589,7 +598,7 @@ public class GuildHandler {
                   if (target != null) {
                      mgc = target.getMGC();
                   } else {
-                     DBConnection db = new DBConnection();
+
                      PreparedStatement ps = null;
                      ResultSet rs = null;
                      PreparedStatement ps2 = null;
@@ -602,21 +611,20 @@ public class GuildHandler {
                         rs = ps.executeQuery();
                         if (rs.next()) {
                            mgc = new GuildCharacter(
-                              playerID,
-                              (short)rs.getInt("level"),
-                              rs.getString("name"),
-                              (byte)-1,
-                              rs.getInt("job"),
-                              (byte)5,
-                              0,
-                              (byte)0,
-                              guildxxxxxx.getId(),
-                              0L,
-                              0,
-                              0L,
-                              0L,
-                              false
-                           );
+                                 playerID,
+                                 (short) rs.getInt("level"),
+                                 rs.getString("name"),
+                                 (byte) -1,
+                                 rs.getInt("job"),
+                                 (byte) 5,
+                                 0,
+                                 (byte) 0,
+                                 guildxxxxxx.getId(),
+                                 0L,
+                                 0,
+                                 0L,
+                                 0L,
+                                 false);
                         }
 
                         ps2 = con.prepareStatement("SELECT `guild_id` FROM guild_request_member WHERE `name` = ?");
@@ -642,7 +650,7 @@ public class GuildHandler {
                         try {
                            if (ps != null) {
                               ps.close();
-                              PreparedStatement var154 = null;
+
                            }
 
                            if (rs != null) {
@@ -651,12 +659,12 @@ public class GuildHandler {
 
                            if (ps2 != null) {
                               ps2.close();
-                              PreparedStatement var163 = null;
+
                            }
 
                            if (rs2 != null) {
                               rs2.close();
-                              ResultSet var166 = null;
+
                            }
 
                            if (ps3 != null) {
@@ -671,14 +679,15 @@ public class GuildHandler {
                      int s = Center.Guild.addGuildMember(mgc);
                      Center.Guild.removeAllJoinRequester(playerID);
                      if (s == 0 && target != null) {
-                        target.dropMessage(1, "가입하려는 길드는 이미 정원이 꽉 찼습니다.");
+                        target.dropMessage(1, "กิลด์ที่ท่านต้องการเข้าร่วมมีสมาชิกเต็มแล้ว");
                         target.setGuildId(0);
                         return;
                      }
 
                      if (target != null) {
                         PacketEncoder p2 = new PacketEncoder();
-                        GuildPacket.JoinMember_InitGuild init = new GuildPacket.JoinMember_InitGuild(guildxxxxxx, target.getId());
+                        GuildPacket.JoinMember_InitGuild init = new GuildPacket.JoinMember_InitGuild(guildxxxxxx,
+                              target.getId());
                         init.encode(p2);
                         target.send(p2.getPacket());
                         target.saveGuildStatus();
@@ -694,7 +703,9 @@ public class GuildHandler {
                   int playerID = packet.readInt();
                   Guild guildxxxxxx = player.getGuild();
                   if (guildxxxxxx == null) {
-                     System.out.println("길드 가입 신청을 거절하는 도중에 길드가 null입니다. cid : " + player.getId() + ", name : " + player.getName());
+                     System.out.println(
+                           "Guild is null while declining join request. cid : " + player.getId() + ", name : "
+                                 + player.getName());
                      return;
                   }
 
@@ -715,7 +726,8 @@ public class GuildHandler {
                   if (result != null) {
                      player.send(result.getPacket());
                   } else {
-                     GuildPacket.sendGuildPacket(player, new GuildPacket.GuildMessageWithString(GuildRequestResultType.Result.InviteMessage, targetName));
+                     GuildPacket.sendGuildPacket(player, new GuildPacket.GuildMessageWithString(
+                           GuildRequestResultType.Result.InviteMessage, targetName));
                      GuildHandler.Invited inv = new GuildHandler.Invited(targetName, player.getGuildId());
                      if (!invited.contains(inv)) {
                         invited.add(inv);
@@ -734,15 +746,16 @@ public class GuildHandler {
                }
 
                Center.Guild.changeRankTitleRole(
-                  request != GuildRequestResultType.Request.ChangeRankRole, player.getGuildId(), player.getId(), index, newName, newRole
-               );
+                     request != GuildRequestResultType.Request.ChangeRankRole, player.getGuildId(), player.getId(),
+                     index, newName, newRole);
                break;
             case EditJoinSetting:
                boolean allowJoinRequest = packet.readByte() == 1;
                int connectTimeFlag = packet.readInt();
                int activityFlag = packet.readInt();
                int ageGroupFlag = packet.readInt();
-               Center.Guild.editJoinSetting(player.getGuildId(), player.getId(), allowJoinRequest, connectTimeFlag, activityFlag, ageGroupFlag);
+               Center.Guild.editJoinSetting(player.getGuildId(), player.getId(), allowJoinRequest, connectTimeFlag,
+                     activityFlag, ageGroupFlag);
                break;
             case ChangeLeader:
                int targetPlayerIDx = packet.readInt();
@@ -783,8 +796,9 @@ public class GuildHandler {
                      byte bgcolor = packet.readByte();
                      short logo = packet.readShort();
                      byte logocolor = packet.readByte();
-                     if (!Center.Guild.setGuildEmblem(player.getGuildId(), bg, bgcolor, logo, logocolor, Guild.BCOp.EMBELMCHANGE, null)) {
-                        player.dropMessage(1, "길드마크를 만들기 위한 GP가 부족합니다.");
+                     if (!Center.Guild.setGuildEmblem(player.getGuildId(), bg, bgcolor, logo, logocolor,
+                           Guild.BCOp.EMBELMCHANGE, null)) {
+                        player.dropMessage(1, "GP ไม่เพียงพอสำหรับการสร้างตรากิลด์");
                         return;
                      }
                   } else {
@@ -796,7 +810,8 @@ public class GuildHandler {
                         imageData[i] = packet.readByte();
                      }
 
-                     if (!Center.Guild.setGuildEmblem(player.getGuildId(), (short)0, (byte)0, (short)0, (byte)0, Guild.BCOp.CUSTOMEMBLEMCHANGE, imageData)) {
+                     if (!Center.Guild.setGuildEmblem(player.getGuildId(), (short) 0, (byte) 0, (short) 0, (byte) 0,
+                           Guild.BCOp.CUSTOMEMBLEMCHANGE, imageData)) {
                         player.dropMessage(1, "길드마크를 만들기 위한 GP가 부족합니다.");
                         return;
                      }
@@ -860,7 +875,8 @@ public class GuildHandler {
                      return;
                   }
 
-                  Center.Guild.purchaseSkill(player.getGuildId(), effectx.getSourceId(), levelUp, player.getName(), player.getId());
+                  Center.Guild.purchaseSkill(player.getGuildId(), effectx.getSourceId(), levelUp, player.getName(),
+                        player.getId());
                   break;
                }
 
@@ -907,9 +923,8 @@ public class GuildHandler {
                Center.Alliance.changeAllianceLeader(player.getGuild().getAllianceId(), chrId);
                break;
             case ChangeAllianceRank:
-               if (player.getAllianceRank() <= 2 && !Center.Alliance.changeAllianceRank(player.getGuild().getAllianceId(), packet.readInt(), packet.readByte())
-                  )
-                {
+               if (player.getAllianceRank() <= 2 && !Center.Alliance
+                     .changeAllianceRank(player.getGuild().getAllianceId(), packet.readInt(), packet.readByte())) {
                   player.dropMessage(5, "연합 직위를 변경하는 도중 알 수 없는 오류가 발생했습니다.");
                }
                break;
@@ -954,23 +969,24 @@ public class GuildHandler {
                   int guildCount = alliance.getGuildCount();
                   if (guildCount > 2) {
                      if (player.getGuildRank() == 1
-                        && (
-                           request == GuildRequestResultType.Request.WithdrawGuildInAlliance && player.getAllianceRank() == 2
-                              || request == GuildRequestResultType.Request.KickGuildInAlliance && player.getAllianceRank() == 1
-                        )
-                        && !Center.Alliance.removeGuildFromAlliance(
-                           alliance.getId(), guildxxxxx.getId(), request == GuildRequestResultType.Request.KickGuildInAlliance && player.getAllianceRank() == 1
-                        )) {
+                           && (request == GuildRequestResultType.Request.WithdrawGuildInAlliance
+                                 && player.getAllianceRank() == 2
+                                 || request == GuildRequestResultType.Request.KickGuildInAlliance
+                                       && player.getAllianceRank() == 1)
+                           && !Center.Alliance.removeGuildFromAlliance(
+                                 alliance.getId(), guildxxxxx.getId(),
+                                 request == GuildRequestResultType.Request.KickGuildInAlliance
+                                       && player.getAllianceRank() == 1)) {
                         player.dropMessage(5, "알 수 없는 오류가 발생하였습니다.");
                         return;
                      }
                   } else if (guildxxxxx != null
-                     && player.getGuildRank() == 1
-                     && (
-                        request == GuildRequestResultType.Request.WithdrawGuildInAlliance && player.getAllianceRank() == 2
-                           || request == GuildRequestResultType.Request.KickGuildInAlliance && player.getAllianceRank() == 1
-                     )
-                     && !Center.Alliance.disbandAlliance(alliance.getId())) {
+                        && player.getGuildRank() == 1
+                        && (request == GuildRequestResultType.Request.WithdrawGuildInAlliance
+                              && player.getAllianceRank() == 2
+                              || request == GuildRequestResultType.Request.KickGuildInAlliance
+                                    && player.getAllianceRank() == 1)
+                        && !Center.Alliance.disbandAlliance(alliance.getId())) {
                      player.dropMessage(5, "알 수 없는 오류가 발생하였습니다.");
                      return;
                   }
@@ -1002,7 +1018,7 @@ public class GuildHandler {
 
             if (level.getSourceId() == 91001016) {
                if (FieldLimitType.RegularExpLoss.check(warpCharacter.getMap().getFieldLimit())
-                  || FieldLimitType.SpecificPortalScrollLimit.check(warpCharacter.getMap().getFieldLimit())) {
+                     || FieldLimitType.SpecificPortalScrollLimit.check(warpCharacter.getMap().getFieldLimit())) {
                   client.getPlayer().dropMessage(1, "상대방이 해당 스킬을 사용할 수 없는 위치입니다.");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
@@ -1017,7 +1033,7 @@ public class GuildHandler {
                client.getPlayer().changeMap(warpCharacter.getMap(), warpCharacter.getPosition());
             } else {
                if (FieldLimitType.RegularExpLoss.check(client.getPlayer().getMap().getFieldLimit())
-                  || FieldLimitType.SpecificPortalScrollLimit.check(client.getPlayer().getMap().getFieldLimit())) {
+                     || FieldLimitType.SpecificPortalScrollLimit.check(client.getPlayer().getMap().getFieldLimit())) {
                   client.getPlayer().dropMessage(1, "해당 스킬을 사용할 수 없는 위치입니다.");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
@@ -1069,7 +1085,7 @@ public class GuildHandler {
          if (!(other instanceof GuildHandler.Invited)) {
             return false;
          } else {
-            GuildHandler.Invited oth = (GuildHandler.Invited)other;
+            GuildHandler.Invited oth = (GuildHandler.Invited) other;
             return this.gid == oth.gid && this.name.equals(oth);
          }
       }

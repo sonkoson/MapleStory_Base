@@ -39,17 +39,19 @@ public class PartyHandler {
                         case AcceptInvite:
                            if (party.getPartyMember().getPartyMemberList().size() < 6) {
                               c.getPlayer().setParty(party);
-                              Center.Party.updateParty(partyID, PartyOperation.Join, new PartyMemberEntry(c.getPlayer()));
+                              Center.Party.updateParty(partyID, PartyOperation.Join,
+                                    new PartyMemberEntry(c.getPlayer()));
                               c.getPlayer().receivePartyMemberHP();
                               c.getPlayer().updatePartyMemberHP();
                            } else {
-                              c.getPlayer().dropMessage(5, c.getPlayer().getName() + "님이 파티를 수락하셨습니다.");
+                              c.getPlayer().dropMessage(5, c.getPlayer().getName() + " ได้ตอบรับคำเชิญเข้าปาร์ตี้");
                            }
                            break;
                         case DeclineInvite:
-                           MapleCharacter leader = c.getChannelServer().getPlayerStorage().getCharacterById(party.getLeader().getId());
+                           MapleCharacter leader = c.getChannelServer().getPlayerStorage()
+                                 .getCharacterById(party.getLeader().getId());
                            if (leader != null) {
-                              leader.dropMessage(5, "'" + c.getPlayer().getName() + "'님이 파티 초대를 거절하였습니다.");
+                              leader.dropMessage(5, "'" + c.getPlayer().getName() + "' ปฏิเสธคำเชิญเข้าปาร์ตี้");
                            }
                      }
                   }
@@ -82,6 +84,7 @@ public class PartyHandler {
             if (type != null) {
                switch (type) {
                   case CreateParty:
+                  default:
                      String titlexx = slea.readMapleAsciiString();
                      boolean privatePartyx = slea.readByte() == 1;
                      boolean onlyLeaderPickUpx = slea.readByte() == 1;
@@ -95,33 +98,35 @@ public class PartyHandler {
                         Party.PartyPacket.CreateParty createParty = new Party.PartyPacket.CreateParty(party);
                         createParty.encode(packet);
                         player.send(packet.getPacket());
-                     } else if (memberEntry.equals(party.getLeader()) && party.getPartyMember().getPartyMemberList().size() == 1) {
+                     } else if (memberEntry.equals(party.getLeader())
+                           && party.getPartyMember().getPartyMemberList().size() == 1) {
                         PacketEncoder packet = new PacketEncoder();
                         Party.PartyPacket.CreateParty createParty = new Party.PartyPacket.CreateParty(party);
                         createParty.encode(packet);
                         player.send(packet.getPacket());
                      } else {
-                        player.dropMessage(5, "파티에 이미 가입되어 있어 파티를 만들 수 없습니다.");
+                        player.dropMessage(5, "คุณมีปาร์ตี้อยู่แล้ว ไม่สามารถสร้างปาร์ตี้ใหม่ได้");
                      }
                      break;
                   case WithdrawParty:
                      if (party != null) {
                         if (player.getMap().getFieldSetInstance() != null || player.getEventInstance() != null) {
-                           player.dropMessage(5, "해당 맵에서는 파티 탈퇴가 불가능합니다.");
+                           player.dropMessage(5, "ไม่สามารถออกจากปาร์ตี้ในแผนที่นี้ได้");
                            return;
                         }
 
                         boolean inBattle = false;
 
                         for (MapleCharacter partyMember : player.getPartyMembers()) {
-                           if (partyMember.getMap().getFieldSetInstance() != null || player.getEventInstance() != null) {
+                           if (partyMember.getMap().getFieldSetInstance() != null
+                                 || player.getEventInstance() != null) {
                               inBattle = true;
                               break;
                            }
                         }
 
                         if (inBattle) {
-                           player.dropMessage(5, "파티원이 보스와 전투 중에는 파티 탈퇴가 불가능합니다.");
+                           player.dropMessage(5, "ไม่สามารถออกจากปาร์ตี้ขณะที่สมาชิกกำลังต่อสู้กับบอส");
                            return;
                         }
 
@@ -172,13 +177,13 @@ public class PartyHandler {
                               c.getPlayer().receivePartyMemberHP();
                               c.getPlayer().updatePartyMemberHP();
                            } else {
-                              c.getPlayer().dropMessage(5, "해당 파티는 이미 파티원이 꽉 찼습니다.");
+                              c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "가입하려는 파티는 존재하지 않습니다.");
+                           c.getPlayer().dropMessage(5, "ไม่พบปาร์ตี้ที่ต้องการเข้าร่วม");
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "이미 파티에 가입되어 있어 파티에 가입할 수 없습니다.");
+                        c.getPlayer().dropMessage(5, "คุณมีปาร์ตี้อยู่แล้ว ไม่สามารถเข้าร่วมปาร์ตี้อื่นได้");
                      }
                      break;
                   case Invite:
@@ -194,51 +199,55 @@ public class PartyHandler {
                         createParty.encode(packet);
                         player.send(packet.getPacket());
                         if (channel > 0) {
-                           MapleCharacter target = GameServer.getInstance(channel).getPlayerStorage().getCharacterByName(targetName);
+                           MapleCharacter target = GameServer.getInstance(channel).getPlayerStorage()
+                                 .getCharacterByName(targetName);
                            if (target != null && target.getParty() == null) {
                               if (party.getPartyMember().getPartyMemberList().size() < 6) {
-                                 c.getPlayer().dropMessage(1, target.getName() + "님을 파티에 초대했습니다.");
+                                 c.getPlayer().dropMessage(1,
+                                       "เชิญ " + target.getName() + " เข้าร่วมปาร์ตี้เรียบร้อยแล้ว");
                                  packet = new PacketEncoder();
                                  Party.PartyPacket.InviteParty p = new Party.PartyPacket.InviteParty(
-                                    party.getId(), player.getId(), player.getName(), player.getLevel(), player.getJob()
-                                 );
+                                       party.getId(), player.getId(), player.getName(), player.getLevel(),
+                                       player.getJob());
                                  p.encode(packet);
                                  target.send(packet.getPacket());
                               } else {
-                                 c.getPlayer().dropMessage(5, "이미 파티원이 최대로 가득 찬 상태입니다.");
+                                 c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                               }
                            } else {
-                              c.getPlayer().dropMessage(5, "이미 파티에 가입되어 있는 대상입니다.");
+                              c.getPlayer().dropMessage(5, "ผู้เล่นเป้าหมายมีปาร์ตี้อยู่แล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "대상을 찾지 못했습니다.");
+                           c.getPlayer().dropMessage(5, "ไม่พบผู้เล่นเป้าหมาย");
                         }
                      } else if (channel > 0) {
-                        MapleCharacter target = GameServer.getInstance(channel).getPlayerStorage().getCharacterByName(targetName);
+                        MapleCharacter target = GameServer.getInstance(channel).getPlayerStorage()
+                              .getCharacterByName(targetName);
                         if (target != null && target.getParty() == null) {
                            if (party.getMembers().size() < 6) {
-                              c.getPlayer().dropMessage(1, target.getName() + "님을 파티에 초대했습니다.");
+                              c.getPlayer().dropMessage(1,
+                                    "เชิญ " + target.getName() + " เข้าร่วมปาร์ตี้เรียบร้อยแล้ว");
                               PacketEncoder packet = new PacketEncoder();
                               Party.PartyPacket.InviteParty p = new Party.PartyPacket.InviteParty(
-                                 party.getId(), player.getId(), player.getName(), player.getLevel(), player.getJob()
-                              );
+                                    party.getId(), player.getId(), player.getName(), player.getLevel(),
+                                    player.getJob());
                               p.encode(packet);
                               target.send(packet.getPacket());
                            } else {
-                              c.getPlayer().dropMessage(5, "이미 파티원이 최대로 가득 찬 상태입니다.");
+                              c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "이미 파티에 가입되어 있는 대상입니다.");
+                           c.getPlayer().dropMessage(5, "ผู้เล่นเป้าหมายมีปาร์ตี้อยู่แล้ว");
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "대상을 찾지 못했습니다.");
+                        c.getPlayer().dropMessage(5, "ไม่พบผู้เล่นเป้าหมาย");
                      }
                      break;
                   case KickParty:
                      PartyMemberEntry leaderEntry = party.getLeader();
                      if (leaderEntry.getId() == player.getId()) {
                         if (player.getMap().getFieldSetInstance() != null || player.getEventInstance() != null) {
-                           player.dropMessage(5, "해당 맵에서는 파티원 추방이 불가능합니다.");
+                           player.dropMessage(5, "ไม่สามารถไล่สมาชิกออกจากปาร์ตี้ในแผนที่นี้ได้");
                            return;
                         }
 
@@ -247,7 +256,8 @@ public class PartyHandler {
                            Center.Party.updateParty(party.getId(), PartyOperation.KickParty, entry);
                            if (c.getPlayer().getEventInstance() != null && entry.isOnline()) {
                               c.getPlayer().getEventInstance().disbandParty();
-                              MapleCharacter kickedPlayer = GameServer.getInstance(entry.getChannel()).getPlayerStorage().getCharacterById(entry.getId());
+                              MapleCharacter kickedPlayer = GameServer.getInstance(entry.getChannel())
+                                    .getPlayerStorage().getCharacterById(entry.getId());
                               if (kickedPlayer != null) {
                                  kickedPlayer.getMap().onLeftParty(kickedPlayer);
                               }
@@ -269,7 +279,7 @@ public class PartyHandler {
                      privatePartyx = slea.readByte() == 1;
                      onlyLeaderPickUpx = slea.readByte() == 1;
                      if (newTitle.length() < 0) {
-                        c.getPlayer().dropMessage(1, "한 글자 이상의 변경할 파티명을 입력해주십시오.");
+                        c.getPlayer().dropMessage(1, "กรุณาใส่ชื่อปาร์ตี้อย่างน้อย 1 ตัวอักษร");
                         return;
                      }
 
@@ -291,7 +301,7 @@ public class PartyHandler {
                      int minDojangRankx = slea.readInt();
                      int minUnionx = slea.readInt();
                      if (party != null) {
-                        player.dropMessage(5, "파티에 이미 가입되어 있어 파티를 만들 수 없습니다.");
+                        player.dropMessage(5, "คุณมีปาร์ตี้อยู่แล้ว ไม่สามารถสร้างใหม่ได้");
                         return;
                      }
 
@@ -301,12 +311,13 @@ public class PartyHandler {
                      party.setPartyTitle(partyTitle);
                      player.setParty(party);
                      BossPartyRecruimentEntry entry = new BossPartyRecruimentEntry(
-                        titlex, difficultyx, minLevelx, minArcanex, minAthenticx, minDojangRankx, minUnionx
-                     );
-                     BossPartyRecruiment recruimentx = new BossPartyRecruiment(bossType, player.getName(), player.getId(), entry);
+                           titlex, difficultyx, minLevelx, minArcanex, minAthenticx, minDojangRankx, minUnionx);
+                     BossPartyRecruiment recruimentx = new BossPartyRecruiment(bossType, player.getName(),
+                           player.getId(), entry);
                      party.setBossPartyRecruiment(recruimentx);
                      if (DBConfig.isGanglim) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(22, "[보스파티모집] " + player.getName() + " : " + titlex));
+                        Center.Broadcast
+                              .broadcastMessage(CField.chatMsg(22, "[보스파티모집] " + player.getName() + " : " + titlex));
                      }
 
                      PacketEncoder packet = new PacketEncoder();
@@ -326,23 +337,25 @@ public class PartyHandler {
                      int minDojangRankx = slea.readInt();
                      int minUnionx = slea.readInt();
                      BossPartyRecruimentEntry entry = new BossPartyRecruimentEntry(
-                        titlex, difficultyx, minLevelx, minArcanex, minAthenticx, minDojangRankx, minUnionx
-                     );
-                     BossPartyRecruiment recruimentx = new BossPartyRecruiment(bossType, player.getName(), player.getId(), entry);
+                           titlex, difficultyx, minLevelx, minArcanex, minAthenticx, minDojangRankx, minUnionx);
+                     BossPartyRecruiment recruimentx = new BossPartyRecruiment(bossType, player.getName(),
+                           player.getId(), entry);
                      party.setBossPartyRecruiment(recruimentx);
                      if (DBConfig.isGanglim) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(22, "[보스파티모집] " + player.getName() + " : " + titlex));
+                        Center.Broadcast
+                              .broadcastMessage(CField.chatMsg(22, "[보스파티모집] " + player.getName() + " : " + titlex));
                      }
 
                      PacketEncoder packet = new PacketEncoder();
-                     Party.UpdateBossPartyRecruiment.Create create = new Party.UpdateBossPartyRecruiment.Create(recruimentx);
+                     Party.UpdateBossPartyRecruiment.Create create = new Party.UpdateBossPartyRecruiment.Create(
+                           recruimentx);
                      create.encode(packet);
                      Center.Party.partyPacket(party.getId(), packet.getPacket(), null);
                      Center.BossPartyRecruiment.registerBossPartyRecruiment(party);
                      break;
                   }
                   case BossPartyRecruimentList:
-                     Center.BossPartyRecruiment.displayBossPartyRecruiment(player, -1, (byte)-1);
+                     Center.BossPartyRecruiment.displayBossPartyRecruiment(player, -1, (byte) -1);
                      break;
                   case ChangeBossPartyRecruimentSetting: {
                      int bossType = slea.readInt();
@@ -372,7 +385,8 @@ public class PartyHandler {
                      entry.setMinDojangRank(minDojangRank);
                      entry.setMinUnion(minUnion);
                      PacketEncoder packet = new PacketEncoder();
-                     Party.UpdateBossPartyRecruiment.ChangeSetting setting = new Party.UpdateBossPartyRecruiment.ChangeSetting(recruiment);
+                     Party.UpdateBossPartyRecruiment.ChangeSetting setting = new Party.UpdateBossPartyRecruiment.ChangeSetting(
+                           recruiment);
                      setting.encode(packet);
                      Center.Party.partyPacket(party.getId(), packet.getPacket(), null);
                      break;
@@ -395,11 +409,13 @@ public class PartyHandler {
                      if (targetParty != null) {
                         targetParty.getPartyMember().removeRegisterRequestPlayer(player.getId());
                         PacketEncoder packet = new PacketEncoder();
-                        Party.RequestJoinPartyFromRecruiment.RemoveRequest p = new Party.RequestJoinPartyFromRecruiment.RemoveRequest(player.getId());
+                        Party.RequestJoinPartyFromRecruiment.RemoveRequest p = new Party.RequestJoinPartyFromRecruiment.RemoveRequest(
+                              player.getId());
                         p.encode(packet);
                         Center.Party.partyPacket(targetParty.getId(), packet.getPacket(), null);
                         packet = new PacketEncoder();
-                        Party.CancelJoinRequestPacket.CancelJoinRequest request = new Party.CancelJoinRequestPacket.CancelJoinRequest(partyID);
+                        Party.CancelJoinRequestPacket.CancelJoinRequest request = new Party.CancelJoinRequestPacket.CancelJoinRequest(
+                              partyID);
                         request.encode(packet);
                         player.send(packet.getPacket());
                      }
@@ -409,13 +425,14 @@ public class PartyHandler {
                      int playerID = slea.readInt();
                      party.getPartyMember().removeRegisterRequestPlayer(playerID);
                      PacketEncoder packet = new PacketEncoder();
-                     Party.RequestJoinPartyFromRecruiment.RemoveRequest p = new Party.RequestJoinPartyFromRecruiment.RemoveRequest(playerID);
+                     Party.RequestJoinPartyFromRecruiment.RemoveRequest p = new Party.RequestJoinPartyFromRecruiment.RemoveRequest(
+                           playerID);
                      p.encode(packet);
                      Center.Party.partyPacket(party.getId(), packet.getPacket(), null);
                      switch (requestType) {
                         case AcceptRequest:
                            if (party.getPartyMember().getPartyMemberList().size() >= 6) {
-                              player.dropMessage(1, "파티 정원이 가득차 가입을 수락할 수 없습니다.");
+                              player.dropMessage(1, "ไม่สามารถรับสมาชิกเพิ่มได้เนื่องจากปาร์ตี้เต็ม");
                               return;
                            }
 
@@ -435,11 +452,13 @@ public class PartyHandler {
                                  party.getPartyMember().addMember(targetEntry);
                                  target.setParty(party);
                                  packet = new PacketEncoder();
-                                 Party.PartyPacket.JoinCompleteMessage message = new Party.PartyPacket.JoinCompleteMessage(party.isOnlyLeaderPickUp());
+                                 Party.PartyPacket.JoinCompleteMessage message = new Party.PartyPacket.JoinCompleteMessage(
+                                       party.isOnlyLeaderPickUp());
                                  message.encode(packet);
                                  target.send(packet.getPacket());
                                  packet = new PacketEncoder();
-                                 Party.PartyPacket.PartyDataUpdate logOnOff = new Party.PartyPacket.PartyDataUpdate(party, target.getClient().getChannel());
+                                 Party.PartyPacket.PartyDataUpdate logOnOff = new Party.PartyPacket.PartyDataUpdate(
+                                       party, target.getClient().getChannel());
                                  logOnOff.encode(packet);
                                  target.send(packet.getPacket());
                                  break;
@@ -449,8 +468,7 @@ public class PartyHandler {
                            if (target != null) {
                               packet = new PacketEncoder();
                               Party.PartyPacket.JoinMember joinMember = new Party.PartyPacket.JoinMember(
-                                 party, target.getName(), target.getClient().getChannel()
-                              );
+                                    party, target.getName(), target.getClient().getChannel());
                               joinMember.encode(packet);
                               Center.Party.partyPacket(party.getId(), packet.getPacket(), targetEntry);
                            }
@@ -459,12 +477,12 @@ public class PartyHandler {
                         case DeclineRequest:
                            int ch = Center.Find.findChannel(playerID);
                            if (ch > 0) {
-                              MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage().getCharacterById(playerID);
+                              MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage()
+                                    .getCharacterById(playerID);
                               if (player_ != null) {
                                  packet = new PacketEncoder();
                                  Party.BossPartyRecruimentMessage.DeclineJoinRequest message = new Party.BossPartyRecruimentMessage.DeclineJoinRequest(
-                                    c.getPlayer().getName(), party.getId()
-                                 );
+                                       c.getPlayer().getName(), party.getId());
                                  message.encode(packet);
                                  player_.send(packet.getPacket());
                                  return;
@@ -485,12 +503,12 @@ public class PartyHandler {
                      for (PartyMemberEntry ex : party.getPartyMember().getRegisterRequestList()) {
                         int ch = Center.Find.findChannel(ex.getName());
                         if (ch > 0) {
-                           MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage().getCharacterByName(ex.getName());
+                           MapleCharacter player_ = GameServer.getInstance(ch).getPlayerStorage()
+                                 .getCharacterByName(ex.getName());
                            if (player_ != null) {
                               packet = new PacketEncoder();
                               Party.BossPartyRecruimentPacket.CancelJoinMember cancelJoinMember = new Party.BossPartyRecruimentPacket.CancelJoinMember(
-                                 party.getId(), party.getLeader().getName()
-                              );
+                                    party.getId(), party.getLeader().getName());
                               cancelJoinMember.encode(packet);
                               player_.send(packet.getPacket());
                            }

@@ -1568,9 +1568,9 @@ public class CashShopHandler {
 
             c.getSession().writeAndFlush(CSPacket.showCouponRedeemedItem(itemz, mesos, maplePoints, c));
          } else if (info == null) {
-            c.getPlayer().dropMessage(1, "존재하지 않는 쿠폰 번호입니다.");
+            c.getPlayer().dropMessage(1, "รหัสคูปองไม่ถูกต้อง");
          } else {
-            c.getPlayer().dropMessage(1, "이미 사용된 쿠폰 번호 입니다.");
+            c.getPlayer().dropMessage(1, "รหัสคูปองนี้ถูกใช้งานไปแล้ว");
          }
       }
    }
@@ -1899,7 +1899,7 @@ public class CashShopHandler {
                }
             }
          } else if (action == 8) {
-            chr.dropMessage(1, "캐릭터 슬롯 늘리기는 캐시샵에서 구매할 수 없습니다.");
+            chr.dropMessage(1, "ไม่สามารถซื้อช่องตัวละครเพิ่มใน Cash Shop ได้");
          } else if (action == 9) {
             int toCharge = slea.readByte() + 1;
             int sn = slea.readInt();
@@ -1913,7 +1913,7 @@ public class CashShopHandler {
             MapleQuestStatus marr = c.getPlayer().getQuestNoAdd(MapleQuest.getInstance(122700));
             if (marr != null && marr.getCustomData() != null
                   && Long.parseLong(marr.getCustomData()) >= System.currentTimeMillis()) {
-               chr.dropMessage(1, "이미 펜던트 늘리기가 적용중입니다.");
+               chr.dropMessage(1, "ขยายช่องสร้อยคออยู่แล้ว");
                doCSPackets(c);
             } else {
                long days = 0L;
@@ -1968,13 +1968,13 @@ public class CashShopHandler {
                if (itemx.getPet() != null) {
                   if (itemx.getPet().getWonderGrade() > 0
                         && itemx.getExpiration() - System.currentTimeMillis() < 864000000L) {
-                     c.getPlayer().dropMessage(1, "해당 아이템은 이동할 수 없습니다.");
+                     c.getPlayer().dropMessage(1, "ไม่สามารถย้ายไอเทมนี้ได้");
                      doCSPackets(c);
                      return;
                   }
 
                   if (itemx.getItemId() == 5002239) {
-                     c.getPlayer().dropMessage(1, "해당 아이템은 이동할 수 없습니다.");
+                     c.getPlayer().dropMessage(1, "ไม่สามารถย้ายไอเทมนี้ได้");
                      doCSPackets(c);
                      return;
                   }
@@ -2085,7 +2085,7 @@ public class CashShopHandler {
             CashShop csinv = chr.getCashInventory();
             Item itemxx = csinv.findByCashId((int) uniqueid);
             if (itemxx == null) {
-               c.getPlayer().dropMessage(1, "오류가 발생했습니다! 해당 캐시아이템을 발견하지 못했습니다. GM에게 문의해 주세요.");
+               c.getPlayer().dropMessage(1, "เกิดข้อผิดพลาด! ไม่พบไอเทม Cash นี้ กรุณาติดต่อ GM");
                c.getSession().writeAndFlush(CSPacket.showNXMapleTokens(chr));
                return;
             }
@@ -2122,7 +2122,7 @@ public class CashShopHandler {
 
                short pos = MapleInventoryManipulator.addbyItem(c, tem, true);
                if (pos == -1) {
-                  c.getPlayer().dropMessage(1, "아이템을 넣을 공간이 부족합니다.");
+                  c.getPlayer().dropMessage(1, "ช่องในช่องเก็บของไม่เพียงพอ");
                   c.getSession().writeAndFlush(CSPacket.showNXMapleTokens(chr));
                   return;
                }
@@ -2130,7 +2130,7 @@ public class CashShopHandler {
                c.getPlayer().getCashInventory().removeFromInventory(itemxx);
                c.getSession().writeAndFlush(CSPacket.sendRandomBox(uniqueid, tem, pos));
             } else {
-               c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "정의되지 않은 상자입니다."));
+               c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "กล่องที่ไม่รู้จัก"));
             }
          } else {
             System.out.println("New Action: " + action + " Remaining: " + slea.toString());
@@ -2390,9 +2390,10 @@ public class CashShopHandler {
 
    public static void NxCharge(MapleClient c) {
       if (DBConfig.isGanglim) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "포인트 충전은\r\n[상점] - [소비 상점] 메이플 포인트를 이용해주세요."));
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1, "สำหรับการเติมพอยท์\r\nกรุณาใช้ [ร้านค้า] - [ร้านของใช้] Maple Point"));
       } else {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 사용할 수 없는 기능입니다."));
+         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ฟังก์ชั่นนี้ยังไม่เปิดให้บริการ"));
       }
 
       c.getSession().writeAndFlush(CSPacket.sendCSFail(0));

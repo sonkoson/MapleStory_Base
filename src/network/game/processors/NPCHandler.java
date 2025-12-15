@@ -69,7 +69,7 @@ public class NPCHandler {
                packet.write(act);
                packet.write(chatIndex);
                packet.writeInt(duration);
-               packet.encodeBuffer(slea.read((int)slea.available()));
+               packet.encodeBuffer(slea.read((int) slea.available()));
                c.getPlayer().send(packet.getPacket());
             }
          }
@@ -98,7 +98,7 @@ public class NPCHandler {
                      return;
                   }
 
-                  slot = (short)(slea.readShort() & 255);
+                  slot = (short) (slea.readShort() & 255);
                   itemId = slea.readInt();
                   quantity = slea.readShort();
                   shop.sell(c, GameConstants.getInventoryType(itemId), slot, quantity, true);
@@ -109,7 +109,7 @@ public class NPCHandler {
                      return;
                   }
 
-                  slot = (short)(slea.readShort() & 255);
+                  slot = (short) (slea.readShort() & 255);
                   shop.recharge(c, slot);
                   break;
                case 3:
@@ -133,7 +133,7 @@ public class NPCHandler {
                   }
 
                   for (int i = 0; i < count; i++) {
-                     slot = (byte)slea.readShort();
+                     slot = (byte) slea.readShort();
                      itemId = slea.readInt();
                      quantity = slea.readShort();
                      shop.sell(c, GameConstants.getInventoryType(itemId), slot, quantity, i == count - 1);
@@ -153,8 +153,10 @@ public class NPCHandler {
                npc.sendShop(c);
             } else {
                if (chr.isGM() || c.isGm()) {
-                  chr.dropMessage(5, "NPC ID : " + npc.getId() + ", NPC Name : " + npc.getName() + " Script : " + MapleLifeFactory.getScript(npc.getId()));
-                  System.out.println("NPC ID : " + npc.getId() + ", NPC Name : " + npc.getName() + " Script : " + MapleLifeFactory.getScript(npc.getId()));
+                  chr.dropMessage(5, "NPC ID : " + npc.getId() + ", NPC Name : " + npc.getName() + " Script : "
+                        + MapleLifeFactory.getScript(npc.getId()));
+                  System.out.println("NPC ID : " + npc.getId() + ", NPC Name : " + npc.getName() + " Script : "
+                        + MapleLifeFactory.getScript(npc.getId()));
                }
 
                if (chr.getConversation() == 1) {
@@ -198,79 +200,81 @@ public class NPCHandler {
       if (chr != null) {
          if (quest < 100566 || quest > 100578) {
             if (quest < 501524 || quest > 501553) {
-               if (!DBConfig.isGanglim && action == 1 && quest >= 2000030 && quest <= 2000035 && chr.getQuestStatus(quest) == 0) {
+               if (!DBConfig.isGanglim && action == 1 && quest >= 2000030 && quest <= 2000035
+                     && chr.getQuestStatus(quest) == 0) {
                   switch (quest) {
                      case 2000030:
                         if (chr.getLevel() >= 200) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่องเก็บอุปกรณ์ไม่เพียงพอ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712001));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712001));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isHoyoung(jobId)
-                                       && !GameConstants.isKhali(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isHoyoung(jobId)
+                                          && !GameConstants.isKhali(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "ได้รับไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
@@ -282,65 +286,66 @@ public class NPCHandler {
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712002));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712002));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isHoyoung(jobId)
-                                       && !GameConstants.isKhali(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isHoyoung(jobId)
+                                          && !GameConstants.isKhali(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
@@ -356,65 +361,66 @@ public class NPCHandler {
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712003));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712003));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isKhali(jobId)
-                                       && !GameConstants.isHoyoung(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isKhali(jobId)
+                                          && !GameConstants.isHoyoung(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
@@ -430,65 +436,66 @@ public class NPCHandler {
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712004));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712004));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isHoyoung(jobId)
-                                       && !GameConstants.isKhali(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isHoyoung(jobId)
+                                          && !GameConstants.isKhali(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
@@ -504,65 +511,66 @@ public class NPCHandler {
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712005));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712005));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isHoyoung(jobId)
-                                       && !GameConstants.isKhali(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isHoyoung(jobId)
+                                          && !GameConstants.isKhali(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
@@ -578,65 +586,66 @@ public class NPCHandler {
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                           Item item = ii.randomizeStats((Equip)ii.getEquipById(1712006));
-                           item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                           Item item = ii.randomizeStats((Equip) ii.getEquipById(1712006));
+                           item.setGMLog(
+                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
                            short jobId = chr.getJob();
-                           ((Equip)item).setArcLevel(5);
-                           ((Equip)item).setArc(70);
+                           ((Equip) item).setArcLevel(5);
+                           ((Equip) item).setArc(70);
                            if ((jobId < 100 || jobId >= 200)
-                              && jobId != 512
-                              && jobId != 1512
-                              && jobId != 2512
-                              && (jobId < 1100 || jobId >= 1200)
-                              && !GameConstants.isAran(jobId)
-                              && !GameConstants.isBlaster(jobId)
-                              && !GameConstants.isDemonSlayer(jobId)
-                              && !GameConstants.isMichael(jobId)
-                              && !GameConstants.isKaiser(jobId)
-                              && !GameConstants.isZero(jobId)
-                              && !GameConstants.isArk(jobId)
-                              && !GameConstants.isAdele(jobId)) {
+                                 && jobId != 512
+                                 && jobId != 1512
+                                 && jobId != 2512
+                                 && (jobId < 1100 || jobId >= 1200)
+                                 && !GameConstants.isAran(jobId)
+                                 && !GameConstants.isBlaster(jobId)
+                                 && !GameConstants.isDemonSlayer(jobId)
+                                 && !GameConstants.isMichael(jobId)
+                                 && !GameConstants.isKaiser(jobId)
+                                 && !GameConstants.isZero(jobId)
+                                 && !GameConstants.isArk(jobId)
+                                 && !GameConstants.isAdele(jobId)) {
                               if ((jobId < 200 || jobId >= 300)
-                                 && !GameConstants.isFlameWizard(jobId)
-                                 && !GameConstants.isEvan(jobId)
-                                 && !GameConstants.isLuminous(jobId)
-                                 && (jobId < 3200 || jobId >= 3300)
-                                 && !GameConstants.isKinesis(jobId)
-                                 && !GameConstants.isIllium(jobId)
-                                 && !GameConstants.isLara(jobId)) {
+                                    && !GameConstants.isFlameWizard(jobId)
+                                    && !GameConstants.isEvan(jobId)
+                                    && !GameConstants.isLuminous(jobId)
+                                    && (jobId < 3200 || jobId >= 3300)
+                                    && !GameConstants.isKinesis(jobId)
+                                    && !GameConstants.isIllium(jobId)
+                                    && !GameConstants.isLara(jobId)) {
                                  if (!GameConstants.isKain(jobId)
-                                    && (jobId < 300 || jobId >= 400)
-                                    && jobId != 522
-                                    && jobId != 532
-                                    && !GameConstants.isMechanic(jobId)
-                                    && !GameConstants.isAngelicBuster(jobId)
-                                    && (jobId < 1300 || jobId >= 1400)
-                                    && !GameConstants.isMercedes(jobId)
-                                    && (jobId < 3300 || jobId >= 3400)) {
+                                       && (jobId < 300 || jobId >= 400)
+                                       && jobId != 522
+                                       && jobId != 532
+                                       && !GameConstants.isMechanic(jobId)
+                                       && !GameConstants.isAngelicBuster(jobId)
+                                       && (jobId < 1300 || jobId >= 1400)
+                                       && !GameConstants.isMercedes(jobId)
+                                       && (jobId < 3300 || jobId >= 3400)) {
                                     if ((jobId < 400 || jobId >= 500)
-                                       && (jobId < 1400 || jobId >= 1500)
-                                       && !GameConstants.isPhantom(jobId)
-                                       && !GameConstants.isKadena(jobId)
-                                       && !GameConstants.isHoyoung(jobId)
-                                       && !GameConstants.isKhali(jobId)) {
+                                          && (jobId < 1400 || jobId >= 1500)
+                                          && !GameConstants.isPhantom(jobId)
+                                          && !GameConstants.isKadena(jobId)
+                                          && !GameConstants.isHoyoung(jobId)
+                                          && !GameConstants.isKhali(jobId)) {
                                        if (GameConstants.isDemonAvenger(jobId)) {
-                                          ((Equip)item).setHp((short)1470);
+                                          ((Equip) item).setHp((short) 1470);
                                        } else if (GameConstants.isXenon(jobId)) {
-                                          ((Equip)item).setStr((short)336);
-                                          ((Equip)item).setDex((short)336);
-                                          ((Equip)item).setLuk((short)336);
+                                          ((Equip) item).setStr((short) 336);
+                                          ((Equip) item).setDex((short) 336);
+                                          ((Equip) item).setLuk((short) 336);
                                        }
                                     } else {
-                                       ((Equip)item).setLuk((short)700);
+                                       ((Equip) item).setLuk((short) 700);
                                     }
                                  } else {
-                                    ((Equip)item).setDex((short)700);
+                                    ((Equip) item).setDex((short) 700);
                                  }
                               } else {
-                                 ((Equip)item).setInt((short)700);
+                                 ((Equip) item).setInt((short) 700);
                               }
                            } else {
-                              ((Equip)item).setStr((short)700);
+                              ((Equip) item).setStr((short) 700);
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
@@ -680,7 +689,7 @@ public class NPCHandler {
                      if (GameConstants.canForfeit(q.getId())) {
                         q.forfeit(chr);
                      } else {
-                        chr.dropMessage(1, "이 퀘스트는 포기할 수 없습니다.");
+                        chr.dropMessage(1, "เควสนี้ไม่สามารถยกเลิกได้");
                      }
                      break;
                   case 4:
@@ -698,7 +707,8 @@ public class NPCHandler {
                      int npc = slea.readInt();
                      slea.readInt();
                      if (c.getPlayer().isGM()) {
-                        c.getPlayer().dropMessage(5, "완료퀘스트ID : " + quest + " 엔피시 : " + npc + " 스크립트 : " + q.getEndscript());
+                        c.getPlayer().dropMessage(5,
+                              "완료퀘스트ID : " + quest + " 엔피시 : " + npc + " 스크립트 : " + q.getEndscript());
                      }
 
                      if (ScriptManager.get()._scripts.get(q.getEndscript()) != null) {
@@ -736,12 +746,12 @@ public class NPCHandler {
                      c.getPlayer().setConversation(4);
                      c.getPlayer().getStorage().sendStorage(c, c.getPlayer().getStorageNPC());
                   } else {
-                     c.getSession().writeAndFlush(StoragePacket.getStorage((byte)1));
+                     c.getSession().writeAndFlush(StoragePacket.getStorage((byte) 1));
                   }
                   break;
                case 4:
                   byte type = slea.readByte();
-                  short slotbyte = (short)slea.readByteToInt();
+                  short slotbyte = (short) slea.readByteToInt();
                   short slot = storage.getSlot(MapleInventoryType.getByType(type), slotbyte);
                   Item item = storage.takeOut(slot);
                   if (item == null) {
@@ -763,14 +773,15 @@ public class NPCHandler {
                      quantity = item.getQuantity();
                   }
 
-                  if (!GameConstants.isRechargable(item.getItemId()) && quantity >= 1 && haveqty && item.getQuantity() > quantity) {
+                  if (!GameConstants.isRechargable(item.getItemId()) && quantity >= 1 && haveqty
+                        && item.getQuantity() > quantity) {
                      if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), quantity, item.getOwner())) {
                         storage.store(item);
-                        chr.dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                        chr.dropMessage(1, "ช่องเก็บของเต็ม");
                         return;
                      }
 
-                     short restorequantity = (short)(item.getQuantity() - quantity);
+                     short restorequantity = (short) (item.getQuantity() - quantity);
                      Item restoreitem = item.copy();
                      item.setQuantity(quantity);
                      restoreitem.setQuantity(restorequantity);
@@ -784,10 +795,11 @@ public class NPCHandler {
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   } else {
                      int flag = item.getFlag();
-                     if (!GameConstants.isArcaneSymbol(item.getItemId()) && !GameConstants.isAuthenticSymbol(item.getItemId())) {
+                     if (!GameConstants.isArcaneSymbol(item.getItemId())
+                           && !GameConstants.isAuthenticSymbol(item.getItemId())) {
                         boolean karma = false;
                         if (item instanceof Equip) {
-                           Equip gg = (Equip)item;
+                           Equip gg = (Equip) item;
                            if (ItemFlag.KARMA_EQ.check(flag)) {
                               karma = true;
                            }
@@ -795,13 +807,13 @@ public class NPCHandler {
 
                         if (ii.isDropRestricted(item.getItemId()) || karma) {
                            if (ItemFlag.KARMA_EQ.check(flag)) {
-                              item.setFlag((short)(flag - ItemFlag.KARMA_EQ.getValue()));
+                              item.setFlag((short) (flag - ItemFlag.KARMA_EQ.getValue()));
                            } else if (ItemFlag.KARMA_USE.check(flag)) {
-                              item.setFlag((short)(flag - ItemFlag.KARMA_USE.getValue()));
+                              item.setFlag((short) (flag - ItemFlag.KARMA_USE.getValue()));
                            } else if (ItemFlag.POSSIBLE_ONCE_TRADE_IN_ACCOUNT.check(flag)) {
-                              item.setFlag((short)(flag - ItemFlag.POSSIBLE_ONCE_TRADE_IN_ACCOUNT.getValue()));
+                              item.setFlag((short) (flag - ItemFlag.POSSIBLE_ONCE_TRADE_IN_ACCOUNT.getValue()));
                            } else if (ItemFlag.KARMA_ACC_USE.check(flag)) {
-                              item.setFlag((short)(flag - ItemFlag.KARMA_ACC_USE.getValue()));
+                              item.setFlag((short) (flag - ItemFlag.KARMA_ACC_USE.getValue()));
                            } else if (flag == ItemFlag.None.getValue()) {
                            }
                         }
@@ -818,25 +830,24 @@ public class NPCHandler {
                      sb.append(", 아이템 : ");
                      sb.append(item.getItemId());
                      sb.append(" ");
-                     sb.append((int)quantity);
+                     sb.append((int) quantity);
                      sb.append("개");
                      if (item instanceof Equip) {
                         sb.append(", 장비옵션[");
-                        sb.append(((Equip)item).toString());
+                        sb.append(((Equip) item).toString());
                         sb.append("]");
                      }
 
                      sb.append(")");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
-                        serialNumber = ((Equip)item).getSerialNumberEquip();
+                        serialNumber = ((Equip) item).getSerialNumberEquip();
                      }
 
                      LoggingManager.putLog(
-                        new ItemLog(
-                           chr, c.getChannel(), item.getItemId(), quantity, chr.getMapId(), ConsumeLogType.StorageTakeOut.getType(), 0L, serialNumber, sb
-                        )
-                     );
+                           new ItemLog(
+                                 chr, c.getChannel(), item.getItemId(), quantity, chr.getMapId(),
+                                 ConsumeLogType.StorageTakeOut.getType(), 0L, serialNumber, sb));
                      MapleInventoryManipulator.addFromDrop(c, item, false);
                      storage.sendTakenOut(c, GameConstants.getInventoryType(item.getItemId()));
                   }
@@ -884,22 +895,22 @@ public class NPCHandler {
                   }
 
                   if (itemx.getItemId() != itemId
-                     || itemx.getQuantity() < quantityx && !GameConstants.isThrowingStar(itemId) && !GameConstants.isBullet(itemId)) {
+                        || itemx.getQuantity() < quantityx && !GameConstants.isThrowingStar(itemId)
+                              && !GameConstants.isBullet(itemId)) {
                      AutobanManager.getInstance()
-                        .addPoints(
-                           c,
-                           1000,
-                           0L,
-                           "Trying to store non-matching itemid ("
-                              + itemId
-                              + "/"
-                              + itemx.getItemId()
-                              + ") or quantity not in posession ("
-                              + quantityx
-                              + "/"
-                              + itemx.getQuantity()
-                              + ")"
-                        );
+                           .addPoints(
+                                 c,
+                                 1000,
+                                 0L,
+                                 "Trying to store non-matching itemid ("
+                                       + itemId
+                                       + "/"
+                                       + itemx.getItemId()
+                                       + ") or quantity not in posession ("
+                                       + quantityx
+                                       + "/"
+                                       + itemx.getQuantity()
+                                       + ")");
                      return;
                   }
 
@@ -943,7 +954,7 @@ public class NPCHandler {
                   sbx.append(", 아이템 : ");
                   sbx.append(itemx.getItemId());
                   sbx.append(" ");
-                  sbx.append((int)quantityx);
+                  sbx.append((int) quantityx);
                   sbx.append("개");
                   if (merge) {
                      sbx.append(") (창고 아이템과 병합 총 ");
@@ -953,29 +964,27 @@ public class NPCHandler {
 
                   if (itemx instanceof Equip) {
                      sbx.append(", 장비옵션[");
-                     sbx.append(((Equip)itemx).toString());
+                     sbx.append(((Equip) itemx).toString());
                      sbx.append("]");
                   }
 
                   sbx.append(")");
                   long serialNumber = 0L;
                   if (itemx instanceof Equip) {
-                     serialNumber = ((Equip)itemx).getSerialNumberEquip();
+                     serialNumber = ((Equip) itemx).getSerialNumberEquip();
                   }
 
                   LoggingManager.putLog(
-                     new ItemLog(
-                        chr,
-                        c.getChannel(),
-                        itemx.getItemId(),
-                        itemx.getQuantity(),
-                        chr.getMapId(),
-                        ConsumeLogType.StorageStore.getType(),
-                        0L,
-                        serialNumber,
-                        sbx
-                     )
-                  );
+                        new ItemLog(
+                              chr,
+                              c.getChannel(),
+                              itemx.getItemId(),
+                              itemx.getQuantity(),
+                              chr.getMapId(),
+                              ConsumeLogType.StorageStore.getType(),
+                              0L,
+                              serialNumber,
+                              sbx));
                   if (!merge) {
                      storage.store(itemx);
                   }
@@ -992,12 +1001,12 @@ public class NPCHandler {
                   long playerMesos = chr.getMeso();
                   if ((meso <= 0L || storageMesos < meso) && (meso >= 0L || playerMesos < -meso)) {
                      AutobanManager.getInstance()
-                        .addPoints(
-                           c,
-                           1000,
-                           0L,
-                           "Trying to store or take out unavailable amount of mesos (" + meso + "/" + storage.getMeso() + "/" + c.getPlayer().getMeso() + ")"
-                        );
+                           .addPoints(
+                                 c,
+                                 1000,
+                                 0L,
+                                 "Trying to store or take out unavailable amount of mesos (" + meso + "/"
+                                       + storage.getMeso() + "/" + c.getPlayer().getMeso() + ")");
                      return;
                   }
 
@@ -1026,7 +1035,8 @@ public class NPCHandler {
                   sbxx.append(", 메소 : ");
                   sbxx.append(Math.abs(meso));
                   sbxx.append(")");
-                  LoggingManager.putLog(new ItemLog(chr, c.getChannel(), 0, 0, chr.getMapId(), ConsumeLogType.StorageStore.getType(), 0L, 0L, sbxx));
+                  LoggingManager.putLog(new ItemLog(chr, c.getChannel(), 0, 0, chr.getMapId(),
+                        ConsumeLogType.StorageStore.getType(), 0L, 0L, sbxx));
                   storage.sendMeso(c);
                   break;
                case 8:
@@ -1092,7 +1102,7 @@ public class NPCHandler {
                         return;
                      }
 
-                     selection = (int)tempselection;
+                     selection = (int) tempselection;
                   } else if (slea.available() >= 4L) {
                      selection = slea.readInt();
                   } else if (slea.available() > 0L) {
@@ -1137,7 +1147,7 @@ public class NPCHandler {
          }
 
          if (lastMsgx == ScriptMessageType.Monologue.getType()) {
-            NPCScriptManager.getInstance().action(c, (byte)1, lastMsgx, -1);
+            NPCScriptManager.getInstance().action(c, (byte) 1, lastMsgx, -1);
             return;
          }
 
@@ -1153,7 +1163,7 @@ public class NPCHandler {
          }
 
          if (cm != null) {
-            cm.setLastMsg((byte)-1);
+            cm.setLastMsg((byte) -1);
          }
 
          if (lastMsgx == 4) {
@@ -1179,11 +1189,12 @@ public class NPCHandler {
                   return;
                }
 
-               selection = (int)tempselection;
+               selection = (int) tempselection;
             } else if (slea.available() >= 4L) {
                selection = slea.readInt();
             } else if (slea.available() > 0L) {
-               if (GameConstants.isZero(c.getPlayer().getJob()) && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
+               if (GameConstants.isZero(c.getPlayer().getJob())
+                     && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
                   slea.skip(1);
                   selection = slea.readByte();
                   selection2 = slea.readByte();
@@ -1196,9 +1207,10 @@ public class NPCHandler {
                }
             }
 
-            if (lastMsgx != ScriptMessageType.AskCustomMixHairAndProb.getType() && lastMsgx != ScriptMessageType.AskMixHairNew.getType()) {
+            if (lastMsgx != ScriptMessageType.AskCustomMixHairAndProb.getType()
+                  && lastMsgx != ScriptMessageType.AskMixHairNew.getType()) {
                if (lastMsgx == ScriptMessageType.AskAngelicBuster.getType()) {
-                  NPCScriptManager.getInstance().action(c, (byte)1, lastMsgx, selection, action);
+                  NPCScriptManager.getInstance().action(c, (byte) 1, lastMsgx, selection, action);
                   return;
                }
             } else {
@@ -1245,7 +1257,8 @@ public class NPCHandler {
 
             if (selection >= -1 && action != -1) {
                if (cm == null) {
-                  if (GameConstants.isZero(c.getPlayer().getJob()) && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
+                  if (GameConstants.isZero(c.getPlayer().getJob())
+                        && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
                      NPCScriptManager.getInstance().action(c, action, lastMsgx, selection, selection2);
                   } else {
                      NPCScriptManager.getInstance().action(c, action, lastMsgx, selection);
@@ -1258,7 +1271,8 @@ public class NPCHandler {
                   NPCScriptManager.getInstance().startQuest(c, action, lastMsgx, selection);
                } else if (cm.getType() == 1) {
                   NPCScriptManager.getInstance().endQuest(c, action, lastMsgx, selection);
-               } else if (GameConstants.isZero(c.getPlayer().getJob()) && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
+               } else if (GameConstants.isZero(c.getPlayer().getJob())
+                     && lastMsgx == ScriptMessageType.AskAvatarZero.getType()) {
                   NPCScriptManager.getInstance().action(c, action, lastMsgx, selection, selection2);
                } else {
                   NPCScriptManager.getInstance().action(c, action, lastMsgx, selection);
@@ -1285,18 +1299,22 @@ public class NPCHandler {
          int price = 0;
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
          Map<Equip, Integer> eqs = new HashMap<>();
-         MapleInventoryType[] types = new MapleInventoryType[]{MapleInventoryType.EQUIP, MapleInventoryType.EQUIPPED};
+         MapleInventoryType[] types = new MapleInventoryType[] { MapleInventoryType.EQUIP,
+               MapleInventoryType.EQUIPPED };
 
          for (MapleInventoryType type : types) {
             for (Item item : c.getPlayer().getInventory(type).newList()) {
                if (item instanceof Equip) {
-                  Equip eq = (Equip)item;
+                  Equip eq = (Equip) item;
                   if (eq.getDurability() >= 0) {
                      Map<String, Integer> eqStats = ii.getEquipStats(eq.getItemId());
-                     if (eqStats.containsKey("durability") && eqStats.get("durability") > 0 && eq.getDurability() < eqStats.get("durability")) {
-                        double rPercentage = 100.0 - Math.ceil(eq.getDurability() * 1000.0 / (eqStats.get("durability").intValue() * 10.0));
+                     if (eqStats.containsKey("durability") && eqStats.get("durability") > 0
+                           && eq.getDurability() < eqStats.get("durability")) {
+                        double rPercentage = 100.0
+                              - Math.ceil(eq.getDurability() * 1000.0 / (eqStats.get("durability").intValue() * 10.0));
                         eqs.put(eq, eqStats.get("durability"));
-                        price += (int)Math.ceil(rPercentage * ii.getPrice(eq.getItemId()) / (ii.getReqLevel(eq.getItemId()) < 70 ? 100.0 : 1.0));
+                        price += (int) Math.ceil(rPercentage * ii.getPrice(eq.getItemId())
+                              / (ii.getReqLevel(eq.getItemId()) < 70 ? 100.0 : 1.0));
                      }
                   }
                }
@@ -1309,7 +1327,8 @@ public class NPCHandler {
             for (Entry<Equip, Integer> eqqz : eqs.entrySet()) {
                Equip ez = eqqz.getKey();
                ez.setDurability(eqqz.getValue());
-               c.getPlayer().forceReAddItem(ez.copy(), ez.getPosition() < 0 ? MapleInventoryType.EQUIPPED : MapleInventoryType.EQUIP);
+               c.getPlayer().forceReAddItem(ez.copy(),
+                     ez.getPosition() < 0 ? MapleInventoryType.EQUIPPED : MapleInventoryType.EQUIP);
             }
          }
       }
@@ -1319,16 +1338,17 @@ public class NPCHandler {
       if (c.getPlayer().getMapId() == 240000000 && slea.available() >= 4L) {
          int position = slea.readInt();
          MapleInventoryType type = position < 0 ? MapleInventoryType.EQUIPPED : MapleInventoryType.EQUIP;
-         Item item = c.getPlayer().getInventory(type).getItem((short)position);
+         Item item = c.getPlayer().getInventory(type).getItem((short) position);
          if (item != null) {
-            Equip eq = (Equip)item;
+            Equip eq = (Equip) item;
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
             Map<String, Integer> eqStats = ii.getEquipStats(item.getItemId());
-            if (eq.getDurability() >= 0 && eqStats.containsKey("durability") && eqStats.get("durability") > 0 && eq.getDurability() < eqStats.get("durability")
-               )
-             {
-               double rPercentage = 100.0 - Math.ceil(eq.getDurability() * 1000.0 / (eqStats.get("durability").intValue() * 10.0));
-               int price = (int)Math.ceil(rPercentage * ii.getPrice(eq.getItemId()) / (ii.getReqLevel(eq.getItemId()) < 70 ? 100.0 : 1.0));
+            if (eq.getDurability() >= 0 && eqStats.containsKey("durability") && eqStats.get("durability") > 0
+                  && eq.getDurability() < eqStats.get("durability")) {
+               double rPercentage = 100.0
+                     - Math.ceil(eq.getDurability() * 1000.0 / (eqStats.get("durability").intValue() * 10.0));
+               int price = (int) Math.ceil(
+                     rPercentage * ii.getPrice(eq.getItemId()) / (ii.getReqLevel(eq.getItemId()) < 70 ? 100.0 : 1.0));
                if (c.getPlayer().getMeso() >= price) {
                   c.getPlayer().gainMeso(-price, false);
                   eq.setDurability(eqStats.get("durability"));
@@ -1359,7 +1379,8 @@ public class NPCHandler {
       for (Item i : c.getPlayer().getInventory(MapleInventoryType.ETC)) {
          if (i.getItemId() / 10000 == 422) {
             questItemInfo = ii.questItemInfo(i.getItemId());
-            if (questItemInfo != null && questItemInfo.getLeft() == qid && questItemInfo.getRight() != null && questItemInfo.getRight().contains(itemId)) {
+            if (questItemInfo != null && questItemInfo.getLeft() == qid && questItemInfo.getRight() != null
+                  && questItemInfo.getRight().contains(itemId)) {
                found = true;
                break;
             }
@@ -1372,7 +1393,7 @@ public class NPCHandler {
          if (stats != null && stats.getStatus() == 1) {
             stats.setCustomData(String.valueOf(newData));
             c.getPlayer().updateQuest(stats, true);
-            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.ETC, slot, (short)1, false);
+            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.ETC, slot, (short) 1, false);
          }
       }
    }
@@ -1402,7 +1423,8 @@ public class NPCHandler {
    }
 
    public static final void RPSGame(PacketDecoder slea, MapleClient c) {
-      if (slea.available() != 0L && c.getPlayer() != null && c.getPlayer().getMap() != null && c.getPlayer().getMap().containsNPC(9000019)) {
+      if (slea.available() != 0L && c.getPlayer() != null && c.getPlayer().getMap() != null
+            && c.getPlayer().getMap().containsNPC(9000019)) {
          byte mode = slea.readByte();
          switch (mode) {
             case 0:
@@ -1414,29 +1436,29 @@ public class NPCHandler {
                if (c.getPlayer().getMeso() >= 1000L) {
                   c.getPlayer().setRPS(new RockPaperScissors(c, mode));
                } else {
-                  c.getSession().writeAndFlush(CField.getRPSMode((byte)8, -1, -1, -1));
+                  c.getSession().writeAndFlush(CField.getRPSMode((byte) 8, -1, -1, -1));
                }
                break;
             case 1:
                if (c.getPlayer().getRPS() == null || !c.getPlayer().getRPS().answer(c, slea.readByte())) {
-                  c.getSession().writeAndFlush(CField.getRPSMode((byte)13, -1, -1, -1));
+                  c.getSession().writeAndFlush(CField.getRPSMode((byte) 13, -1, -1, -1));
                }
                break;
             case 2:
                if (c.getPlayer().getRPS() == null || !c.getPlayer().getRPS().timeOut(c)) {
-                  c.getSession().writeAndFlush(CField.getRPSMode((byte)13, -1, -1, -1));
+                  c.getSession().writeAndFlush(CField.getRPSMode((byte) 13, -1, -1, -1));
                }
                break;
             case 3:
                if (c.getPlayer().getRPS() == null || !c.getPlayer().getRPS().nextRound(c)) {
-                  c.getSession().writeAndFlush(CField.getRPSMode((byte)13, -1, -1, -1));
+                  c.getSession().writeAndFlush(CField.getRPSMode((byte) 13, -1, -1, -1));
                }
                break;
             case 4:
                if (c.getPlayer().getRPS() != null) {
                   c.getPlayer().getRPS().dispose(c);
                } else {
-                  c.getSession().writeAndFlush(CField.getRPSMode((byte)13, -1, -1, -1));
+                  c.getSession().writeAndFlush(CField.getRPSMode((byte) 13, -1, -1, -1));
                }
          }
       } else {
@@ -1459,8 +1481,8 @@ public class NPCHandler {
             iv = getInvocable("npc/notcoded.js", c, true);
          }
 
-         ScriptEngine scriptengine = (ScriptEngine)iv;
-         NPCConversationManager cm = new NPCConversationManager(c, 1531010, -1, (byte)-1, iv);
+         ScriptEngine scriptengine = (ScriptEngine) iv;
+         NPCConversationManager cm = new NPCConversationManager(c, 1531010, -1, (byte) -1, iv);
          scriptengine.put("cm", cm);
          c.getPlayer().setConversation(1);
          c.setClickedNPC();
@@ -1513,6 +1535,6 @@ public class NPCHandler {
       } else if (c != null && npc) {
       }
 
-      return (Invocable)engine;
+      return (Invocable) engine;
    }
 }

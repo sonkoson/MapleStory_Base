@@ -42,7 +42,7 @@ public class ShutdownServer implements ShutdownServerMBean {
    public void run() {
       if (this.mode == 0) {
          Center.Broadcast.broadcastMessage(
-               CWvsContext.serverNotice(0, "The server will shut down shortly. Please log off safely."));
+               CWvsContext.serverNotice(0, "เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบเพื่อความปลอดภัย"));
 
          try {
             Thread.sleep(10000L);
@@ -53,7 +53,7 @@ public class ShutdownServer implements ShutdownServerMBean {
 
          for (GameServer cs : GameServer.getAllInstances()) {
             cs.setShutdown();
-            cs.setServerMessage("The server will shut down shortly. Please log off safely.");
+            cs.setServerMessage("เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบเพื่อความปลอดภัย");
 
             for (Field map : cs.getMapFactory().getAllMaps()) {
                for (MapleCharacter chr : map.getCharacters()) {
@@ -75,7 +75,8 @@ public class ShutdownServer implements ShutdownServerMBean {
          }
 
          this.mode++;
-         Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0, "서버가 잠시후 종료됩니다. 모두 종료해주시기 바랍니다."));
+         Center.Broadcast.broadcastMessage(
+               CWvsContext.serverNotice(0, "เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบทุกคนครับ"));
          Integer[] chs = GameServer.getAllInstance().toArray(new Integer[0]);
          Integer[] var15 = chs;
          int var16 = chs.length;

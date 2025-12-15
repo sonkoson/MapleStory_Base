@@ -31,7 +31,7 @@ public class ChatHandler {
       if (text.charAt(0) == '~' && text.length() > 1) {
          if (!chr.isAccountChatBan()) {
             if (ServerConstants.useAdminClient && AdminClient.freezeChat) {
-               chr.dropMessage(6, "현재 채팅을 할 수 없습니다. 잠시 후 다시 시도해주시기 바랍니다.");
+               chr.dropMessage(6, "ขณะนี้ไม่สามารถใช้งานแชทได้ กรุณาลองใหม่ในภายหลัง");
             } else {
                onMegaphone(text, chr, null);
             }
@@ -42,7 +42,7 @@ public class ChatHandler {
                   QuestExConstants.UnionCoin.getQuestID(),
                   "point",
                   String.valueOf(chr.getOneInfoQuestInteger(QuestExConstants.UnionCoin.getQuestID(), "point") + 30));
-            chr.dropMessage(5, "유니온 코인 30개가 지급되었습니다.");
+            chr.dropMessage(5, "ได้รับ Union Coin 30 เหรียญ");
          }
 
          StringBuilder sb = new StringBuilder();
@@ -53,7 +53,7 @@ public class ChatHandler {
          sb.append(text.substring(1));
          if ((!DBConfig.isGanglim || !DBConfig.isHosting) && !DBConfig.isHosting && text.equals("지엠권한받기")) {
             chr.setGMLevel((byte) 6);
-            chr.dropMessage(5, "지엠 부여됨");
+            chr.dropMessage(5, "ได้รับสิทธิ์ GM");
          } else {
             if (!CommandProcessor.getInstance().processCommand(c, text)) {
                if (!chr.isIntern() && text.length() >= 80) {
@@ -65,10 +65,10 @@ public class ChatHandler {
                }
 
                if (!chr.getCanTalk() && !chr.isStaff()) {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(6, "대화 금지 상태이므로 채팅이 불가능합니다."));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(6, "คุณถูกระงับการแชท ไม่สามารถส่งข้อความได้"));
                } else {
                   if (ServerConstants.useAdminClient && AdminClient.freezeChat) {
-                     chr.dropMessage(6, "현재 채팅을 할 수 없습니다. 잠시 후 다시 시도해주시기 바랍니다.");
+                     chr.dropMessage(6, "ขณะนี้ไม่สามารถใช้งานแชทได้ กรุณาลองใหม่ในภายหลัง");
                      return;
                   }
 
@@ -157,7 +157,7 @@ public class ChatHandler {
       int megaPhoneTime = DBConfig.isGanglim ? 5000 : '\uea60';
       if (chr.getLastBroadcastingChat() != 0L
             && System.currentTimeMillis() - chr.getLastBroadcastingChat() < megaPhoneTime) {
-         chr.dropMessage(5, "전체 채팅은 " + megaPhoneTime / 1000 + "초에 한 번만 사용 가능합니다.");
+         chr.dropMessage(5, "คุณสามารถใช้โข่งได้ทุกๆ " + megaPhoneTime / 1000 + " วินาที");
       } else {
          String title = "";
          int level = 12;
@@ -348,7 +348,7 @@ public class ChatHandler {
                                  c.getPlayer().getName(), c.getChannel());
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "이미 해당 메신저는 최대 인원 입니다.");
+                        c.getPlayer().dropMessage(5, "ห้องแชทเต็มแล้ว");
                      }
                   }
                }

@@ -126,7 +126,7 @@ public class CWvsContext {
       mplew.writeInt(updateMask);
 
       for (Entry<MapleStat, Long> statupdate : mystats.entrySet()) {
-         switch ((MapleStat)statupdate.getKey()) {
+         switch ((MapleStat) statupdate.getKey()) {
             case SKIN:
             case BATTLE_RANK:
             case ICE_GAGE:
@@ -227,7 +227,7 @@ public class CWvsContext {
       mplew.writeInt(updateMask);
 
       for (Entry<MapleStat.Temp, Integer> statupdate : mystats.entrySet()) {
-         switch ((MapleStat.Temp)statupdate.getKey()) {
+         switch ((MapleStat.Temp) statupdate.getKey()) {
             case SPEED:
             case JUMP:
             case UNKNOWN:
@@ -489,7 +489,7 @@ public class CWvsContext {
                position = 123 + petindex;
             }
 
-            inv = chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short)(-position));
+            inv = chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short) (-position));
             peteqid = inv != null ? inv.getItemId() : 0;
             mplew.write(1);
             mplew.writeInt(petindex++);
@@ -505,7 +505,7 @@ public class CWvsContext {
       }
 
       mplew.write(0);
-      Item medal = chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short)-46);
+      Item medal = chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -46);
       mplew.writeInt(medal == null ? 0 : medal.getItemId());
       List<Pair<Integer, Long>> medalQuests = chr.getCompletedMedals();
       mplew.writeShort(medalQuests.size());
@@ -564,7 +564,7 @@ public class CWvsContext {
    }
 
    public static byte[] Mulung_Pts(int recv, int total) {
-      return showQuestMsg("You have received " + recv + " training points, for the accumulated total of " + total + " training points.");
+      return showQuestMsg("คุณได้รับคะแนนฝึกฝน " + recv + " คะแนน รวมทั้งหมด " + total + " คะแนน");
    }
 
    public static byte[] serverMessage(String message) {
@@ -645,7 +645,8 @@ public class CWvsContext {
       return mplew.getPacket();
    }
 
-   public static byte[] getHyperMegaphone(String text, String msg, int bEar, int op, MapleCharacter chr, MapleClient c, PacketDecoder slea) {
+   public static byte[] getHyperMegaphone(String text, String msg, int bEar, int op, MapleCharacter chr, MapleClient c,
+         PacketDecoder slea) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.SERVERMESSAGE.getValue());
       packet.write(8);
@@ -666,8 +667,8 @@ public class CWvsContext {
       long achievementTime = 0L;
       if (op == 1) {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-         byte invType = (byte)slea.readInt();
-         byte pos = (byte)slea.readInt();
+         byte invType = (byte) slea.readInt();
+         byte pos = (byte) slea.readInt();
          MapleInventoryType inv;
          if (pos > 0) {
             inv = MapleInventoryType.getByType(invType);
@@ -692,7 +693,8 @@ public class CWvsContext {
       return getGachaponMega(name, message, item, rareness, false, gacha);
    }
 
-   public static byte[] getGachaponMega(String name, String message, Item item, byte rareness, boolean dragon, String gacha) {
+   public static byte[] getGachaponMega(String name, String message, Item item, byte rareness, boolean dragon,
+         String gacha) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.SERVERMESSAGE.getValue());
       mplew.write(13);
@@ -776,7 +778,8 @@ public class CWvsContext {
       return mplew.getPacket();
    }
 
-   public static byte[] getIncubatorResult(int rewardID, short quantity, int rewardID2, short quantity2, int gachaponItemID) {
+   public static byte[] getIncubatorResult(int rewardID, short quantity, int rewardID2, short quantity2,
+         int gachaponItemID) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.INCUBATOR_RESULT.getValue());
       mplew.write(true);
@@ -785,7 +788,7 @@ public class CWvsContext {
       mplew.writeInt(gachaponItemID);
       mplew.writeInt(0);
       mplew.writeInt(rewardID2);
-      mplew.writeInt((int)quantity2);
+      mplew.writeInt((int) quantity2);
       mplew.write(0);
       mplew.write(0);
       return mplew.getPacket();
@@ -1011,7 +1014,8 @@ public class CWvsContext {
       return mplew.getPacket();
    }
 
-   public static byte[] getAvatarMega(MapleCharacter chr, int channel, int itemId, List<String> text, String msg, boolean ear) {
+   public static byte[] getAvatarMega(MapleCharacter chr, int channel, int itemId, List<String> text, String msg,
+         boolean ear) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.AVATAR_MEGA.getValue());
       mplew.writeInt(itemId);
@@ -1155,8 +1159,8 @@ public class CWvsContext {
    }
 
    public static byte[] UltimateMaterial(
-      int code, int speed, int unk0, int skill, short level, byte unk1, short unk2, short unk3, short unk4, int posx, int posy
-   ) {
+         int code, int speed, int unk0, int skill, short level, byte unk1, short unk2, short unk3, short unk4, int posx,
+         int posy) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.ULTIMATE_MATERIAL.getValue());
       mplew.writeInt(85930057);
@@ -1346,7 +1350,8 @@ public class CWvsContext {
       return packet.getPacket();
    }
 
-   public static byte[] miracleCirculatorWindow(int itemID, long uniqueID, int itemPos, List<CharacterPotentialHolder> skills) {
+   public static byte[] miracleCirculatorWindow(int itemID, long uniqueID, int itemPos,
+         List<CharacterPotentialHolder> skills) {
       PacketEncoder packet = new PacketEncoder();
       packet.writeShort(SendPacketOpcode.MIRACLE_CIRCULATOR_WINDOW.getValue());
       packet.writeInt(skills.size());
@@ -1388,7 +1393,8 @@ public class CWvsContext {
       return mplew.getPacket();
    }
 
-   public static byte[] AuctionAlarm(AuctionAlarmType type, int itemID, long price, int totalQuantity, int buyQuantity) {
+   public static byte[] AuctionAlarm(AuctionAlarmType type, int itemID, long price, int totalQuantity,
+         int buyQuantity) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.AUCTION_ALARM.getValue());
       mplew.write(0);
@@ -1437,7 +1443,7 @@ public class CWvsContext {
          mplew.writeLong(0L);
          mplew.writeMapleAsciiString("10000-AABBCCDD-EEFFAC");
          mplew.write(0);
-         mplew.writeMapleAsciiString(DBConfig.isGanglim ? "강림PC" : "진PC");
+         mplew.writeMapleAsciiString(DBConfig.isGanglim ? "Ganglim PC" : "Jin PC");
          mplew.writeInt(2);
          mplew.writeLong(PacketHelper.getTime(0L));
          mplew.writeLong(PacketHelper.getKoreanTimestamp(System.currentTimeMillis()));
@@ -1457,11 +1463,11 @@ public class CWvsContext {
       UnmodifiableIterator var1 = QuestExConstants.bossQuests.keySet().iterator();
 
       while (var1.hasNext()) {
-         Integer bossId = (Integer)var1.next();
+         Integer bossId = (Integer) var1.next();
          mplew.writeInt(bossId);
          mplew.writeInt(0);
          mplew.writeInt(0);
-         mplew.writeInt((Integer)QuestExConstants.bossQuests.get(bossId));
+         mplew.writeInt((Integer) QuestExConstants.bossQuests.get(bossId));
       }
 
       return mplew.getPacket();
@@ -1510,7 +1516,7 @@ public class CWvsContext {
       mplew.writeShort(SendPacketOpcode.EVENT_LIST.getValue());
       mplew.writeInt(0);
       mplew.write(1);
-      mplew.writeMapleAsciiString("메이플 이벤트");
+      mplew.writeMapleAsciiString("Maple Event");
       mplew.write(0);
       mplew.writeInt(0);
       LinkedHashMap<Integer, MapleEventList> eventList = MapleEventList.EventList;
@@ -1615,7 +1621,7 @@ public class CWvsContext {
          Calendar c = Calendar.getInstance();
          c.set(7, 1);
          if (SpecialSunday.activeRuneEXP) {
-            mplew.writeMapleAsciiString("룬 경험치 버프 효과 +100%");
+            mplew.writeMapleAsciiString("ผลของรูนเพิ่ม EXP +100%");
             mplew.writeInt(0);
             mplew.writeInt(17);
             mplew.writeInt(200);
@@ -1637,7 +1643,7 @@ public class CWvsContext {
          }
 
          if (SpecialSunday.activeCombokillEXP) {
-            mplew.writeMapleAsciiString("콤보킬 구슬 경험치 획득량 +300%");
+            mplew.writeMapleAsciiString("ได้รับ EXP จากลูกแก้ว Combo Kill +300%");
             mplew.writeInt(0);
             mplew.writeInt(37);
             mplew.writeInt(300);
@@ -1659,7 +1665,7 @@ public class CWvsContext {
          }
 
          if (SpecialSunday.activeSpellTrace) {
-            mplew.writeMapleAsciiString("주문의 흔적 강화 비용 50% 할인");
+            mplew.writeMapleAsciiString("ค่าอัพเกรด Spell Trace ลดลง 50%");
             mplew.writeInt(3);
             mplew.writeInt(4);
             mplew.writeInt(50);
@@ -1676,12 +1682,13 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
-            mplew.writeMapleAsciiString("#e일요일은 메이플! <썬데이 메이플> 이벤트!\r\n\r\n주문의 흔적 강화 비용\r\n#fc0xFFFFCC00#50% 할인!#k");
+            mplew.writeMapleAsciiString(
+                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\nค่าอัพเกรด Spell Trace\r\n#fc0xFFFFCC00#ลดราคา 50%!#k");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeAbility) {
-            mplew.writeMapleAsciiString("어빌리티 재설정 비용 50% 할인");
+            mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability ลดลง 50%");
             mplew.writeInt(6);
             mplew.writeInt(4);
             mplew.writeInt(50);
@@ -1697,13 +1704,13 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(0);
             mplew.writeInt(0);
-            mplew.writeMapleAsciiString("어빌리티 재설정 비용 50% 할인!");
+            mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability ลดลง 50%!");
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForceOpO) {
-            mplew.writeMapleAsciiString("스타포스 10성 이하 1+1 강화");
+            mplew.writeMapleAsciiString("Star Force 10 ดาวลงมา อัพเกรด 1+1");
             mplew.writeInt(4);
             mplew.writeInt(40);
             mplew.writeInt(1);
@@ -1720,12 +1727,13 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(12);
             mplew.writeMapleAsciiString("");
-            mplew.writeMapleAsciiString("#e일요일은 메이플! <썬데이 메이플> 이벤트!\r\n\r\n#fc0xFFFFCC00#10성 이하 스타포스 강화 성공시 1+1 강화!#k#n\r\n(슈페리얼 장비는 이벤트 대상에서 제외됩니다)");
+            mplew.writeMapleAsciiString(
+                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#เมื่ออัพเกรด Star Force 10 ดาวลงมาสำเร็จ รับ 1+1 ทันที!#k#n\r\n(ไม่รวมอุปกรณ์ Superior)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForce100) {
-            mplew.writeMapleAsciiString("스타포스 5, 10, 15성 100% 강화 성공");
+            mplew.writeMapleAsciiString("Star Force 5, 10, 15 ดาว อัพเกรดติด 100%");
             mplew.writeInt(4);
             mplew.writeInt(5);
             mplew.writeInt(0);
@@ -1749,13 +1757,12 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-               "#e일요일은 메이플! <썬데이 메이플> 이벤트!\r\n\r\n#fc0xFFFFCC00#스타포스 5성, 10성, 15성#k에서 강화 시도 시 성공 확률 100%!#n\r\n(슈페리얼 장비는 이벤트 대상에서 제외됩니다)"
-            );
+                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#โอกาสสำเร็จ 100% เมื่อตีบวกที่ 5, 10, 15 ดาว!#n\r\n(ไม่รวมอุปกรณ์ Superior)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForceDiscount) {
-            mplew.writeMapleAsciiString("스타포스 강화#k 비용 30% 할인");
+            mplew.writeMapleAsciiString("ค่าอัพเกรด Star Force#k ลดลง 30%");
             mplew.writeInt(4);
             mplew.writeInt(4);
             mplew.writeInt(0);
@@ -1773,13 +1780,12 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-               "#e일요일은 메이플! <썬데이 메이플> 이벤트!\r\n\r\n#fc0xFFFFCC00#스타포스 강화#k 비용 30% 할인#n\r\n(파괴방지 비용과 슈페리얼 장비는 이벤트 대상에서 제외되며, MVP/PC방 할인은 30% 할인된 가격에 추가로 적용됩니다)"
-            );
+                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#ค่าอัพเกรด Star Force#k ลดลง 30%#n\r\n(ไม่รวมค่ากันแตกและอุปกรณ์ Superior, ส่วนลด MVP/PC Cafe จะคำนวณจากราคาที่ลดแล้ว)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeSoulGacha) {
-            mplew.writeMapleAsciiString("위대한 소울 획득 확률 5배");
+            mplew.writeMapleAsciiString("โอกาสได้รับ Magnificent Soul เพิ่มขึ้น 5 เท่า");
             mplew.writeInt(20);
             mplew.writeInt(32);
             mplew.writeInt(5);
@@ -1795,7 +1801,7 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(0);
             mplew.writeInt(0);
-            mplew.writeMapleAsciiString("위대한 소울 획득 확률 5배!");
+            mplew.writeMapleAsciiString("โอกาสได้รับ Magnificent Soul เพิ่มขึ้น 5 เท่า!");
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString("");
          }
@@ -2020,8 +2026,10 @@ public class CWvsContext {
 
       for (int i = 0; i < maxLevel; i++) {
          o.writeInt(i);
-         o.writeInt(HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT, i));
-         o.writeInt(HexaMatrixConstants.getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT, i));
+         o.writeInt(
+               HexaMatrixConstants.getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT, i));
+         o.writeInt(HexaMatrixConstants
+               .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.HEXA_STAT, i));
       }
 
       maxLevel = HexaMatrixConstants.getHexaStatMasterLevel();
@@ -2387,8 +2395,8 @@ public class CWvsContext {
       }
 
       public static byte[] requestBuddylistAdd(
-         int cidFrom, int accId, String nameFrom, int levelFrom, int jobFrom, MapleClient c, String groupName, String memo
-      ) {
+            int cidFrom, int accId, String nameFrom, int levelFrom, int jobFrom, MapleClient c, String groupName,
+            String memo) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.BUDDYLIST.getValue());
          mplew.write(26);
@@ -2632,7 +2640,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] guildInvite(int gid, String guildName, int characterID, String charName, int levelFrom, int jobFrom) {
+      public static byte[] guildInvite(int gid, String guildName, int characterID, String charName, int levelFrom,
+            int jobFrom) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(103);
@@ -2797,13 +2806,13 @@ public class CWvsContext {
          if (c != null && c.getMGC() != null) {
             Guild g = Center.Guild.getGuild(c.getGuildId());
             if (g == null) {
-               return genericGuildMessage((byte)68);
+               return genericGuildMessage((byte) 68);
             } else {
                getGuildInfo(mplew, g);
                return mplew.getPacket();
             }
          } else {
-            return genericGuildMessage((byte)68);
+            return genericGuildMessage((byte) 68);
          }
       }
 
@@ -2830,7 +2839,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] editJoinSetting(int guildID, int playerID, boolean allowJoinRequest, int connectTimeFlag, int activityFlag, int ageGroupFlag) {
+      public static byte[] editJoinSetting(int guildID, int playerID, boolean allowJoinRequest, int connectTimeFlag,
+            int activityFlag, int ageGroupFlag) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(144);
@@ -2908,7 +2918,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] changeRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks, int[] permission) {
+      public static byte[] changeRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks,
+            int[] permission) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(122);
@@ -2923,7 +2934,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] addRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks, int[] permission) {
+      public static byte[] addRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks,
+            int[] permission) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(124);
@@ -2938,7 +2950,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] removeRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks, int[] permission) {
+      public static byte[] removeRankTitleRole(int gid, int playerID, int index, String newName, String[] ranks,
+            int[] permission) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(126);
@@ -2955,7 +2968,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] guildEmblemChange(int gid, short bg, byte bgcolor, short logo, byte logocolor, boolean isCustom, byte[] imageData, int playerID) {
+      public static byte[] guildEmblemChange(int gid, short bg, byte bgcolor, short logo, byte logocolor,
+            boolean isCustom, byte[] imageData, int playerID) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(132);
@@ -3024,7 +3038,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] guildSkillPurchased(int gid, int sid, int level, long expiration, String purchase, String activate) {
+      public static byte[] guildSkillPurchased(int gid, int sid, int level, long expiration, String purchase,
+            String activate) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
          mplew.write(160);
@@ -3071,7 +3086,7 @@ public class CWvsContext {
       public static byte[] genericGuildMessage(byte code) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(-1);
-         mplew.writeInt((int)code);
+         mplew.writeInt((int) code);
          if (code == 94 || code == 129) {
             mplew.writeInt(0);
          }
@@ -3507,11 +3522,13 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] moveInventoryItem(MapleInventoryType type, short src, short dst, boolean bag, boolean bothBag) {
-         return moveInventoryItem(type, src, dst, (short)-1, bag, bothBag, false);
+      public static byte[] moveInventoryItem(MapleInventoryType type, short src, short dst, boolean bag,
+            boolean bothBag) {
+         return moveInventoryItem(type, src, dst, (short) -1, bag, bothBag, false);
       }
 
-      public static byte[] moveInventoryItem(MapleInventoryType type, short src, short dst, short equipIndicator, boolean bag, boolean bothBag, boolean arcane) {
+      public static byte[] moveInventoryItem(MapleInventoryType type, short src, short dst, short equipIndicator,
+            boolean bag, boolean bothBag, boolean arcane) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(1);
@@ -3528,15 +3545,15 @@ public class CWvsContext {
          }
 
          if (equipIndicator != -1) {
-            mplew.write((int)equipIndicator);
+            mplew.write((int) equipIndicator);
          }
 
          return mplew.getPacket();
       }
 
       public static byte[] moveAndMergeInventoryItem(
-         MapleInventoryType type, short src, short dst, short total, boolean bag, boolean switchSrcDst, boolean bothBag
-      ) {
+            MapleInventoryType type, short src, short dst, short total, boolean bag, boolean switchSrcDst,
+            boolean bothBag) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(1);
@@ -3555,8 +3572,8 @@ public class CWvsContext {
       }
 
       public static byte[] moveAndMergeWithRestInventoryItem(
-         MapleInventoryType type, short src, short dst, short srcQ, short dstQ, boolean bag, boolean switchSrcDst, boolean bothBag
-      ) {
+            MapleInventoryType type, short src, short dst, short srcQ, short dstQ, boolean bag, boolean switchSrcDst,
+            boolean bothBag) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(1);
@@ -3589,7 +3606,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] updateInventoryItem(MapleInventoryType type, Item item, boolean exclusive, MapleCharacter chr) {
+      public static byte[] updateInventoryItem(MapleInventoryType type, Item item, boolean exclusive,
+            MapleCharacter chr) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(exclusive);
@@ -3608,10 +3626,11 @@ public class CWvsContext {
       }
 
       public static byte[] updateSpecialItemUse(Item item, byte invType, MapleCharacter chr) {
-         return updateSpecialItemUse(item, invType, false, chr, false, (byte)0);
+         return updateSpecialItemUse(item, invType, false, chr, false, (byte) 0);
       }
 
-      public static byte[] updateSpecialItemUse(Item item, byte invType, boolean theShort, MapleCharacter chr, boolean zeroweapon, byte zerotype) {
+      public static byte[] updateSpecialItemUse(Item item, byte invType, boolean theShort, MapleCharacter chr,
+            boolean zeroweapon, byte zerotype) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(0);
@@ -3666,7 +3685,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] scrolledItem(Item scroll, Item item, boolean destroyed, boolean potential, boolean equipped) {
+      public static byte[] scrolledItem(Item scroll, Item item, boolean destroyed, boolean potential,
+            boolean equipped) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(true);
@@ -3751,7 +3771,8 @@ public class CWvsContext {
          return mplew.getPacket();
       }
 
-      public static byte[] moveAndUpgradeItem(MapleInventoryType type, Item item, short oldpos, short newpos, MapleCharacter chr) {
+      public static byte[] moveAndUpgradeItem(MapleInventoryType type, Item item, short oldpos, short newpos,
+            MapleCharacter chr) {
          PacketEncoder mplew = new PacketEncoder();
          mplew.writeShort(SendPacketOpcode.INVENTORY_OPERATION.getValue());
          mplew.write(1);

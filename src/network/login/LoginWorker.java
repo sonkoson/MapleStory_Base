@@ -13,7 +13,8 @@ public class LoginWorker {
 
    public static void registerClient(MapleClient c, String id, String mac, String volume) {
       if (LoginServer.isAdminOnly() && !c.isGm() && !c.isLocalhost()) {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "현재 서버 점검중입니다. 자세한 내용은 홈페이지를 참고해주세요."));
+         c.getSession().writeAndFlush(
+               CWvsContext.serverNotice(1, "เซิร์ฟเวอร์กำลังปิดปรับปรุง กรุณาตรวจสอบรายละเอียดที่หน้าเว็บไซต์"));
          c.getSession().writeAndFlush(LoginPacket.getLoginFailed(7));
       } else {
          if (System.currentTimeMillis() - lastUpdate > 600000L) {
@@ -26,11 +27,11 @@ public class LoginWorker {
                return;
             }
 
-            double loadFactor = 1200.0 / ((double)LoginServer.getUserLimit() / load.size());
+            double loadFactor = 1200.0 / ((double) LoginServer.getUserLimit() / load.size());
 
             for (Entry<Integer, Integer> entry : load.entrySet()) {
                usersOn += entry.getValue();
-               load.put(entry.getKey(), Math.min(1200, (int)(entry.getValue().intValue() * loadFactor)));
+               load.put(entry.getKey(), Math.min(1200, (int) (entry.getValue().intValue() * loadFactor)));
             }
 
             LoginServer.setLoad(load, usersOn);

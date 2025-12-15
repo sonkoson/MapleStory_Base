@@ -246,7 +246,7 @@ public class AuctionHandler {
                if (itemxxxxxxxx.getQuantity() <= 0) {
                   c.getSession().writeAndFlush(
                         new Auction.RegisterItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0).encode());
-                  c.getPlayer().ban("아이템 복사 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("ถูกแบนถาวรเนื่องจากการใช้โปรแกรมช่วยเล่นปั๊มไอเทม", true, true, true);
                   return;
                }
 
@@ -320,7 +320,7 @@ public class AuctionHandler {
                if (itemxxxxxxxxx.getItem().getQuantity() <= 0) {
                   c.getSession().writeAndFlush(
                         new Auction.RegisterItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0).encode());
-                  c.getPlayer().ban("아이템 복사 핵 사용으로 인한 영구밴", true, true, true);
+                  c.getPlayer().ban("ถูกแบนถาวรเนื่องจากการใช้โปรแกรมช่วยเล่นปั๊มไอเทม", true, true, true);
                   return;
                }
 
@@ -1021,7 +1021,8 @@ public class AuctionHandler {
                   return;
                }
 
-               itemxxxxxxxxxxxxx.getItem().setGMLog(CurrentTime.getAllCurrentTime() + "에 경매장으로 부터 얻은 아이템");
+               itemxxxxxxxxxxxxx.getItem()
+                     .setGMLog(CurrentTime.getAllCurrentTime() + " ไอเทมที่ได้รับจาก Auction House");
                int typexxx = 0;
                if (statusx == 2) {
                   if (itemxxxxxxxxxxxxx.getType(isOwner, true) == 14) {
@@ -1422,7 +1423,7 @@ public class AuctionHandler {
                return true;
             }
          } catch (ParseException var5) {
-            System.out.println("경매장 핸들러 오류");
+            System.out.println("Auction Handler Error");
             var5.printStackTrace();
          }
       }

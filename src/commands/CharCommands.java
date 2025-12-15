@@ -174,7 +174,7 @@ public class CharCommands implements Command {
       } else if (splitted[0].equals("!fullskill")) {
          // Grant all skills
       } else if (splitted[0].equals("!whereami")) {
-         c.getPlayer().dropMessage(5, "Map: " + c.getPlayer().getMapId() + " x: " + c.getPlayer().getPosition().x
+         c.getPlayer().dropMessage(5, "แผนที่: " + c.getPlayer().getMapId() + " x: " + c.getPlayer().getPosition().x
                + " y: " + c.getPlayer().getPosition().y);
       }
       // Re-implementing logic found in the original file (specifically the ones at
@@ -182,7 +182,7 @@ public class CharCommands implements Command {
 
       else if (splitted[0].equals("!givecash")) {
          if (splitted.length < 3) {
-            c.getPlayer().dropMessage(5, "Usage: !givecash <player> <amount>");
+            c.getPlayer().dropMessage(5, "วิธีใช้: !givecash <ชื่อตัวละคร> <จำนวน>");
             return;
          }
 
@@ -193,8 +193,8 @@ public class CharCommands implements Command {
          for (GameServer cs : GameServer.getAllInstances()) {
             for (MapleCharacter chrxxxxxxxx : cs.getPlayerStorage().getAllCharacters()) {
                if (chrxxxxxxxx.getName().equals(targetName)) {
-                  chrxxxxxxxx.dropMessage(5, "You have received " + rc + " Cash.");
-                  c.getPlayer().dropMessage(5, targetName + " has received " + rc + " Cash.");
+                  chrxxxxxxxx.dropMessage(5, "คุณได้รับ " + rc + " แคช");
+                  c.getPlayer().dropMessage(5, targetName + " ได้รับ " + rc + " แคช");
                   chrxxxxxxxx.gainRealCash(rc);
                   find = true;
                   break;
@@ -214,7 +214,7 @@ public class CharCommands implements Command {
                ps2.setString(1, targetName);
                rs = ps2.executeQuery();
                if (!rs.next()) {
-                  c.getPlayer().dropMessage(5, targetName + " does not exist.");
+                  c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น " + targetName);
                   return;
                }
 
@@ -224,7 +224,7 @@ public class CharCommands implements Command {
                ps2.setInt(1, accountid);
                rs2 = ps2.executeQuery();
                if (!rs2.next()) {
-                  c.getPlayer().dropMessage(5, targetName + " does not exist.");
+                  c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น " + targetName);
                   return;
                }
 
@@ -245,11 +245,11 @@ public class CharCommands implements Command {
                // cleanup
             }
 
-            c.getPlayer().dropMessage(5, targetName + " has received " + rc + " Cash (Offline).");
+            c.getPlayer().dropMessage(5, targetName + " ได้รับ " + rc + " แคช (ขณะออฟไลน์)");
          }
       } else if (splitted[0].equals("!reloadscripts")) {
          ScriptManager.resetScript(c.getPlayer());
-         c.getPlayer().dropMessage(5, "Scripts reloaded.");
+         c.getPlayer().dropMessage(5, "โหลดสคริปต์ใหม่เรียบร้อยแล้ว");
       } else if (splitted[0].equals("!skillinfo")) {
          if (splitted.length < 2) {
             SkillFactory.printAllSkillInfos();
@@ -292,27 +292,27 @@ public class CharCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!heal", "", "Heals yourself.", 1),
-            new CommandDefinition("!job", "<job id>", "Changes your job.", 5),
-            new CommandDefinition("!level", "<quantity>", "Levels up.", 5),
-            new CommandDefinition("!levelupto", "<target level>", "Levels up to target.", 5),
-            new CommandDefinition("!item", "<item id> <quantity>", "Gives an item.", 5),
-            new CommandDefinition("!drop", "<item id> <quantity>", "Drops an item.", 5),
-            new CommandDefinition("!meso", "<amount>", "Gives mesos.", 5),
-            new CommandDefinition("!setstr", "<amount>", "Sets STR.", 5),
-            new CommandDefinition("!setdex", "<amount>", "Sets DEX.", 5),
-            new CommandDefinition("!setint", "<amount>", "Sets INT.", 5),
-            new CommandDefinition("!setluk", "<amount>", "Sets LUK.", 5),
-            new CommandDefinition("!sethp", "<amount>", "Sets HP.", 5),
-            new CommandDefinition("!setmp", "<amount>", "Sets MP.", 5),
-            new CommandDefinition("!setap", "<amount>", "Sets AP.", 5),
-            new CommandDefinition("!setsp", "<amount>", "Sets SP.", 5),
-            new CommandDefinition("!skill", "<skill id> <level> <master level>", "Gives a skill.", 5),
-            new CommandDefinition("!fame", "<amount>", "Sets fame.", 5),
-            new CommandDefinition("!shop", "<shop id>", "Opens a shop.", 5),
-            new CommandDefinition("!givecash", "<player> <amount>", "Gives cash to a player.", 6),
-            new CommandDefinition("!reloadscripts", "", "Reloads scripts from disk.", 6),
-            new CommandDefinition("!maxlevel", "", "Maxes out level and gives starter gear.", 6)
+            new CommandDefinition("!heal", "", "ฟื้นฟูเลือดและมานาของคุณ", 1),
+            new CommandDefinition("!job", "<job id>", "เปลี่ยนอาชีพของคุณ", 5),
+            new CommandDefinition("!level", "<quantity>", "เพิ่มเลเวล", 5),
+            new CommandDefinition("!levelupto", "<target level>", "เพิ่มเลเวลจนถึงเป้าหมาย", 5),
+            new CommandDefinition("!item", "<item id> <quantity>", "เสกไอเทม", 5),
+            new CommandDefinition("!drop", "<item id> <quantity>", "ดรอปไอเทม", 5),
+            new CommandDefinition("!meso", "<amount>", "เสกเงิน Meso", 5),
+            new CommandDefinition("!setstr", "<amount>", "ตั้งค่า STR", 5),
+            new CommandDefinition("!setdex", "<amount>", "ตั้งค่า DEX", 5),
+            new CommandDefinition("!setint", "<amount>", "ตั้งค่า INT", 5),
+            new CommandDefinition("!setluk", "<amount>", "ตั้งค่า LUK", 5),
+            new CommandDefinition("!sethp", "<amount>", "ตั้งค่า HP", 5),
+            new CommandDefinition("!setmp", "<amount>", "ตั้งค่า MP", 5),
+            new CommandDefinition("!setap", "<amount>", "ตั้งค่า AP", 5),
+            new CommandDefinition("!setsp", "<amount>", "ตั้งค่า SP", 5),
+            new CommandDefinition("!skill", "<skill id> <level> <master level>", "อัปสกิล", 5),
+            new CommandDefinition("!fame", "<amount>", "ตั้งค่าชื่อเสียง", 5),
+            new CommandDefinition("!shop", "<shop id>", "เปิดร้านค้า", 5),
+            new CommandDefinition("!givecash", "<player> <amount>", "ให้แคชกับผู้เล่น", 6),
+            new CommandDefinition("!reloadscripts", "", "โหลดสคริปต์ใหม่จากดิสก์", 6),
+            new CommandDefinition("!maxlevel", "", "เลเวลสูงสุดและรับของเริ่มต้น", 6)
       };
    }
 }
