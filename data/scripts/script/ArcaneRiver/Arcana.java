@@ -11,7 +11,7 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005015, 1);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -20,7 +20,7 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005100, 2);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -29,7 +29,7 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005000, 1);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -38,7 +38,7 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005200, 1);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -47,7 +47,7 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005400, 1);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -56,17 +56,17 @@ public class Arcana extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 225) {
             registerTransferField(450005500, 2);
         } else {
-            getPlayer().dropMessage(5, "225·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "225ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void morass_fish() {
         if (getPlayer().getLevel() >= 230) {
-            if (1 == target.askAccept("ÀÚ, ±×·³ ¾î¼­ ³¯Ä¡¸¦ Å¸°í ´ÙÀ½ Áö¿ªÀ¸·Î ÀÌµ¿ÇÒ±î?\r\n#b(¼ö¶ô ½Ã ÀÚµ¿ ÀÌµ¿ÇÕ´Ï´Ù.)", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askAccept("ì, ê·¸ëŸ¼ ì–´ì„œ ë‚ ì¹˜ë¥¼ íƒ€ê³  ë‹¤ìŒ ì§€ì—­ìœ¼ë¡œ ì´ë™í• ê¹Œ?\r\n#b(ìˆ˜ë½ ì‹œ ìë™ ì´ë™í•©ë‹ˆë‹¤.)", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450006000, 0);
             }
         } else {
-            self.sayOk("230·¹º§ ÀÌ»ó¸¸ ¸ğ¶ó½º·Î ÀÌµ¿ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("230ë ˆë²¨ ì´ìƒë§Œ ëª¨ë¼ìŠ¤ë¡œ ì´ë™í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 

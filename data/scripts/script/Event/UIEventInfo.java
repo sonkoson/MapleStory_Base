@@ -83,12 +83,12 @@ public class UIEventInfo extends ScriptEngineNPC {
     }
 
     public void weekHQuest() {
-        self.say("#b#eÀÚ, µåµð¾î! <ÇìÀÌ½ºÆ® È÷µç ¹Ì¼Ç>#n#kÀÌ ¿­·È¾î!\r\n\r\n#b2021³â 12¿ù 5ÀÏ ¿ÀÈÄ 11½Ã 59ºÐ#k±îÁö\r\n#b#e·¹º§ ¹üÀ§ ¸ó½ºÅÍ 44,444¸¶¸®#n#k...°¡ ¾Æ´Ï¶ó..#b#e88,888¸¶¸®#n#k¸¦ »ç³ÉÇÏ¸é µÈ´Ù±¸!");
-        self.say("#b#e<ÇìÀÌ½ºÆ® È÷µç ¹Ì¼Ç »óÀÚ>#n#k¿¡¼­´Â..\r\n#b#e#i2631097:# #t2631097:#,\r\n#i1114317:# #t1114317:##n#kÀ» ¹ÞÀ» ¼ö ÀÖÀ¸´Ï ÈûÀ» ³»!");
+        self.say("#b#eìž, ë“œë””ì–´! <í—¤ì´ìŠ¤íŠ¸ ížˆë“  ë¯¸ì…˜>#n#kì´ ì—´ë ¸ì–´!\r\n\r\n#b2021ë…„ 12ì›” 5ì¼ ì˜¤í›„ 11ì‹œ 59ë¶„#kê¹Œì§€\r\n#b#eë ˆë²¨ ë²”ìœ„ ëª¬ìŠ¤í„° 44,444ë§ˆë¦¬#n#k...ê°€ ì•„ë‹ˆë¼..#b#e88,888ë§ˆë¦¬#n#kë¥¼ ì‚¬ëƒ¥í•˜ë©´ ëœë‹¤êµ¬!");
+        self.say("#b#e<í—¤ì´ìŠ¤íŠ¸ ížˆë“  ë¯¸ì…˜ ìƒìž>#n#kì—ì„œëŠ”..\r\n#b#e#i2631097:# #t2631097:#,\r\n#i1114317:# #t1114317:##n#kì„ ë°›ì„ ìˆ˜ ìžˆìœ¼ë‹ˆ íž˜ì„ ë‚´!");
     }
 
     public void useHasteBooster() {
-        if (1 == self.askYesNo("#r#eÇìÀÌ½ºÆ® ºÎ½ºÅÍ#n#k¸¦ »ç¿ëÇÒ²¨¾ß?\r\n#b#e100ÃÊµ¿¾È ¸ó½ºÅÍ°¡ Ãß°¡·Î ¼ÒÈ¯µÈ´Ù±¸!#n#k\r\nÁøÁ¤ÇÑ »ç³É °¡¼ÓÀ» ÇÒ ¼ö ÀÖÁö!\r\n\r\n#e<»ç¿ë ÇÒ ¼ö ¾ø´Â °æ¿ì>#n\r\n 1. ·¹º§ ¹üÀ§ ¸ó½ºÅÍ°¡ ¾ø´Â ÇÊµå ¶Ç´Â ¸¶À».\r\n 2. ¿¤¸®Æ® º¸½º°¡ ¼ÒÈ¯ µÈ °æ¿ì.\r\n 3. ÇöÀç ÀÚ½ÅÀÌ ÇìÀÌ½ºÆ® ºÎ½ºÅÍ¸¦ »ç¿ë ÁßÀÎ °æ¿ì.\r\n 4. ÇöÀç ´Ù¸¥ ÇÃ·¹ÀÌ¾î°¡ ÇìÀÌ½ºÆ® ºÎ½ºÅÍ¸¦ »ç¿ë ÁßÀÎ °æ¿ì.")) {
+        if (1 == self.askYesNo("#r#eí—¤ì´ìŠ¤íŠ¸ ë¶€ìŠ¤í„°#n#kë¥¼ ì‚¬ìš©í• êº¼ì•¼?\r\n#b#e100ì´ˆë™ì•ˆ ëª¬ìŠ¤í„°ê°€ ì¶”ê°€ë¡œ ì†Œí™˜ëœë‹¤êµ¬!#n#k\r\nì§„ì •í•œ ì‚¬ëƒ¥ ê°€ì†ì„ í•  ìˆ˜ ìžˆì§€!\r\n\r\n#e<ì‚¬ìš© í•  ìˆ˜ ì—†ëŠ” ê²½ìš°>#n\r\n 1. ë ˆë²¨ ë²”ìœ„ ëª¬ìŠ¤í„°ê°€ ì—†ëŠ” í•„ë“œ ë˜ëŠ” ë§ˆì„.\r\n 2. ì—˜ë¦¬íŠ¸ ë³´ìŠ¤ê°€ ì†Œí™˜ ëœ ê²½ìš°.\r\n 3. í˜„ìž¬ ìžì‹ ì´ í—¤ì´ìŠ¤íŠ¸ ë¶€ìŠ¤í„°ë¥¼ ì‚¬ìš© ì¤‘ì¸ ê²½ìš°.\r\n 4. í˜„ìž¬ ë‹¤ë¥¸ í”Œë ˆì´ì–´ê°€ í—¤ì´ìŠ¤íŠ¸ ë¶€ìŠ¤í„°ë¥¼ ì‚¬ìš© ì¤‘ì¸ ê²½ìš°.")) {
             getPlayer().getMap().startHasteBooster(getPlayer());
         }
     }

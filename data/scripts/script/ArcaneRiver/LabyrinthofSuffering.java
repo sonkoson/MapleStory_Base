@@ -10,18 +10,18 @@ import scripting.newscripting.ScriptEngineNPC;
 public class LabyrinthofSuffering extends ScriptEngineNPC {
 
     public void q35740s() {
-        target.say("°íÅëÀÇ ¹Ì±Ã¿¡¼­ È¯¿µÀÌ ¾Æ´Ñ #bÁø Èú¶ó¸¦ ¹°¸®Ä¡ÀÚ.#k", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        target.say("ê³ í†µì˜ ë¯¸ê¶ì—ì„œ í™˜ì˜ì´ ì•„ë‹Œ #bì§„ íë¼ë¥¼ ë¬¼ë¦¬ì¹˜ì.#k", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
         getQuest().forceStart(getPlayer(), getNpc().getId(), "");
     }
 
     public void q35740e() {
-        target.say("¾Ñ, ½Ã±×³Ê½º´Ô²²¼­ ¿¬¶ôÀÌ..?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        target.say("ì•—, ì‹œê·¸ë„ˆìŠ¤ë‹˜ê»˜ì„œ ì—°ë½ì´..?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
         initNPC(MapleLifeFactory.getNPC(3003750));
-        if (1 == self.askAccept("#face0#°íÅëÀÇ ¹Ì±ÃÀ» Á¤º¹ÇÏ°í #bÁø Èú¶ó#k¸¦ ¹°¸®Ä¡½Å #h0#´Ô...\r\nÀÌ ¹°°ÇÀÌ ´ç½ÅÀÇ °øÀûÀ» ´õ ºû³»ÁÙ °Å¿¹¿ä.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#face0#ê³ í†µì˜ ë¯¸ê¶ì„ ì •ë³µí•˜ê³  #bì§„ íë¼#kë¥¼ ë¬¼ë¦¬ì¹˜ì‹  #h0#ë‹˜...\r\nì´ ë¬¼ê±´ì´ ë‹¹ì‹ ì˜ ê³µì ì„ ë” ë¹›ë‚´ì¤„ ê±°ì˜ˆìš”.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
             if (target.exchange(1143136, 1) > 0) {
                 getQuest().forceComplete(getPlayer(), getNpc().getId());
             } else {
-                self.say("#face0#ÀåºñÃ¢À» 1Ä­ÀÌ»ó ºñ¿ö ÁÖ½Å µÚ ´Ù½Ã ¸»À» °É¾î ÁÖ¼¼¿ä.", ScriptMessageFlag.Scenario);
+                self.say("#face0#ì¥ë¹„ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ì›Œ ì£¼ì‹  ë’¤ ë‹¤ì‹œ ë§ì„ ê±¸ì–´ ì£¼ì„¸ìš”.", ScriptMessageFlag.Scenario);
             }
         }
     }
@@ -31,7 +31,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450009300, 1);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -40,7 +40,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011600, 1);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -49,7 +49,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011530, 2);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -58,7 +58,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011500, 2);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -67,7 +67,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011510, 1);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -76,7 +76,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011120, 2);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -85,7 +85,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011590, 0);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -94,24 +94,24 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011320, 3);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void east_450011320() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 250) {
-            String text = "ÀÌÁúÀûÀÎ ±â¿îÀÌ ´À²¸Áø´Ù. ¾î´À °÷À¸·Î °¥±î?\r\n\r\n#b#L0#¿å¸ÁÀÇ Á¦´Ü ÀÔ±¸#l";
+            String text = "ì´ì§ˆì ì¸ ê¸°ìš´ì´ ëŠê»´ì§„ë‹¤. ì–´ëŠ ê³³ìœ¼ë¡œ ê°ˆê¹Œ?\r\n\r\n#b#L0#ìš•ë§ì˜ ì œë‹¨ ì…êµ¬#l";
             if (getPlayer().getLevel() >= 255) {
-                text += "\r\n#L1#¸®¸à-¼¼°èÀÇ ´«¹°#l";
+                text += "\r\n#L1#ë¦¬ë©˜-ì„¸ê³„ì˜ ëˆˆë¬¼#l";
             }
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
             switch (v) {
-                case 0: { //¿å¸ÁÀÇ Á¦´Ü ÀÔ±¸
+                case 0: { //ìš•ë§ì˜ ì œë‹¨ ì…êµ¬
                     registerTransferField(450011990, 1);
                     break;
                 }
-                case 1: { //¸®¸à ¼¼°èÀÇ ´«¹°
+                case 1: { //ë¦¬ë©˜ ì„¸ê³„ì˜ ëˆˆë¬¼
                     if (getPlayer().getLevel() >= 255) {
                         registerTransferField(450012000, 0);
                     }
@@ -119,7 +119,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -128,7 +128,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011540, 1);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -138,7 +138,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
             getPlayer().updateOneInfo(450011580, "altar", getPlayer().getMap().getId() + "");
             registerTransferField(450011580, 0);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -148,26 +148,26 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
             int mapid = getPlayer().getOneInfoQuestInteger(450011580, "altar");
             registerTransferField(mapid, 0);
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void BPReturn_JinHill() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 250) {
-            int v = target.askMenu("¾îµğ·Î °¥±î?\r\n#b#L0#±¤ÀåÀ¸·Î#l\r\n#L1#°íÅëÀÇ ¹Ì±Ã ÃÖ½ÉºÎ °ÅÁ¡#l");
+            int v = target.askMenu("ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n#b#L0#ê´‘ì¥ìœ¼ë¡œ#l\r\n#L1#ê³ í†µì˜ ë¯¸ê¶ ìµœì‹¬ë¶€ ê±°ì #l");
             switch (v) {
-                case 0: { //±¤Àå
+                case 0: { //ê´‘ì¥
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //¼¼°èÀÇ ´«¹° Áß´Ü3
+                case 1: { //ì„¸ê³„ì˜ ëˆˆë¬¼ ì¤‘ë‹¨3
                     registerTransferField(450011320, 7);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "250·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "250ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 }

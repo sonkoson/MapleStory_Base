@@ -11,7 +11,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450002021, 1);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -20,17 +20,17 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003010, 2);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void arcana_fish() {
         if (getPlayer().getLevel() >= 225) {
-            if (1 == self.askYesNo("#b(Áö±İ ¹Ù·Î ³¯Ä¡¸¦ Å¸°í ¾Æ¸£Ä«³ª·Î ÀÌµ¿ÇÏ½Ã°Ú½À´Ï±î?)", ScriptMessageFlag.NpcReplacedByNpc)) {
+            if (1 == self.askYesNo("#b(ì§€ê¸ˆ ë°”ë¡œ ë‚ ì¹˜ë¥¼ íƒ€ê³  ì•„ë¥´ì¹´ë‚˜ë¡œ ì´ë™í•˜ì‹œê² ìŠµë‹ˆê¹Œ?)", ScriptMessageFlag.NpcReplacedByNpc)) {
                 registerTransferField(450005010, 1);
             }
         } else {
-            self.sayOk("225·¹º§ ÀÌ»ó¸¸ ¾Æ¸£Ä«³ª·Î ÀÌµ¿ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("225ë ˆë²¨ ì´ìƒë§Œ ì•„ë¥´ì¹´ë‚˜ë¡œ ì´ë™í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 
@@ -39,7 +39,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003400, 4);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -48,7 +48,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003500, 1);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -57,7 +57,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003510, 1);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -66,7 +66,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003520, 1);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -75,7 +75,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003530, 2);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -84,7 +84,7 @@ public class Lacheln extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) {
             registerTransferField(450003600, 1);
         } else {
-            getPlayer().dropMessage(5, "220·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "220ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 }

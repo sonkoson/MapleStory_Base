@@ -15,10 +15,10 @@ import java.util.List;
 
 public class ArcaneRiver extends ScriptEngineNPC {
 
-    //½´ÇÇ°Ö¸¸ ¾ÆÄÉÀÎ¸®¹ö ÄüÆĞ½º
+    //ìŠˆí”¼ê²”ë§Œ ì•„ì¼€ì¸ë¦¬ë²„ í€µíŒ¨ìŠ¤
     @Script
     public void npc_3003146() {
-        if (getPlayer().isQuestStarted(501551)) { //<¼Ò¸êÀÇ ¿©·Î>·Î ½ºÅÜ¾÷!
+        if (getPlayer().isQuestStarted(501551)) { //<ì†Œë©¸ì˜ ì—¬ë¡œ>ë¡œ ìŠ¤í…ì—…!
             if (getPlayer().getOneInfoQuestInteger(501551, "value") < 1) {
                 getPlayer().updateOneInfo(501551, "value", "1");
             }
@@ -30,14 +30,14 @@ public class ArcaneRiver extends ScriptEngineNPC {
         //getPlayer().send(HexTool.getByteArrayFromHexString("64 00 0D 8C 98 00 00 00 00"));
         int level = getPlayer().getLevel();
         StringBuilder sb = new StringBuilder();
-        int t0 = 5; //¿©·Î
+        int t0 = 5; //ì—¬ë¡œ
         for (int i = 34164; i <= 34167; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         sb.append("t0=").append(t0).append(";");
-        int t1 = 0; //ÃòÃò
+        int t1 = 0; //ì¸„ì¸„
         if (level >= 210) {
             t1 = 3;
         }
@@ -47,7 +47,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t1=").append(t1).append(";");
-        int t2 = 0; //·¹Çï
+        int t2 = 0; //ë ˆí—¬
         if (level >= 220) {
             t2 = 3;
         }
@@ -57,7 +57,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t2=").append(t2).append(";");
-        int t3 = 0; //¾Æ¸£Ä«³ª
+        int t3 = 0; //ì•„ë¥´ì¹´ë‚˜
         if (level >= 225) {
             t3 = 3;
         }
@@ -67,7 +67,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t3=").append(t3).append(";");
-        int t4 = 0; //¸ğ¶ó½º
+        int t4 = 0; //ëª¨ë¼ìŠ¤
         if (level >= 230) {
             t4 = 3;
         }
@@ -75,7 +75,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t4--;
         }
         sb.append("t4=").append(t4).append(";");
-        int t5 = 0; //¿¡½ºÆä¶ó
+        int t5 = 0; //ì—ìŠ¤í˜ë¼
         if (level >= 235) {
             t5 = 3;
         }
@@ -86,7 +86,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t5--;
         }
         sb.append("t5=").append(t5).append(";");
-        int c0 = 0; //¿©·Î
+        int c0 = 0; //ì—¬ë¡œ
         for (int i = 34130; i <= 34150; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
@@ -97,11 +97,11 @@ public class ArcaneRiver extends ScriptEngineNPC {
                 c0++;
             }
         }
-        if (getPlayer().getQuestStatus(34129) == 2) { //¼Ò¸êÀÇ ¿©·Î ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(34129) == 2) { //ì†Œë©¸ì˜ ì—¬ë¡œ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c0 = t0;
         }
         sb.append("c0=").append(c0).append(";");
-        int c1 = 0; //ÃòÃò
+        int c1 = 0; //ì¸„ì¸„
         for (int i = 39017; i <= 39033; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c1++;
@@ -112,51 +112,51 @@ public class ArcaneRiver extends ScriptEngineNPC {
                 c1++;
             }
         }
-        if (getPlayer().getQuestStatus(39014) == 2) { //ÃòÃò ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(39014) == 2) { //ì¸„ì¸„ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c1 = t1;
         }
         sb.append("c1=").append(c1).append(";");
-        int c2 = 0; //·¹Çï
+        int c2 = 0; //ë ˆí—¬
         for (int i = 34381; i <= 34394; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c2++;
             }
         }
-        if (getPlayer().getQuestStatus(34378) == 2) { //·¹Çï¸¥ ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(34378) == 2) { //ë ˆí—¬ë¥¸ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c2 = t2;
         }
         sb.append("c2=").append(c2).append(";");
-        int c3 = 0; //¾Æ¸£Ä«³ª
+        int c3 = 0; //ì•„ë¥´ì¹´ë‚˜
         for (int i = 39038; i <= 39050; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c3++;
             }
         }
-        if (getPlayer().getQuestStatus(39035) == 2) { //¾Æ¸£Ä«³ª ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(39035) == 2) { //ì•„ë¥´ì¹´ë‚˜ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c3 = t3;
         }
         sb.append("c3=").append(c3).append(";");
-        int c4 = 0; //¸ğ¶ó½º
+        int c4 = 0; //ëª¨ë¼ìŠ¤
         for (int i = 34276; i <= 34296; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c4++;
             }
         }
-        if (getPlayer().getQuestStatus(34275) == 2) { //¸ğ¶ó½º ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(34275) == 2) { //ëª¨ë¼ìŠ¤ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c4 = t4;
         }
         sb.append("c4=").append(c4).append(";");
-        int c5 = 0; //¿¡½ºÆä¶ó
+        int c5 = 0; //ì—ìŠ¤í˜ë¼
         for (int i = 34780; i <= 34799; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c5++;
             }
         }
-        if (getPlayer().getQuestStatus(34773) == 2) { //¿¡½ºÆä¶ó ¸ŞÀÎÄù°¡ ±úÁ®ÀÖÀ¸¸é
+        if (getPlayer().getQuestStatus(34773) == 2) { //ì—ìŠ¤í˜ë¼ ë©”ì¸í€˜ê°€ ê¹¨ì ¸ìˆìœ¼ë©´
             c5 = t5;
         }
         sb.append("c5=").append(c5).append(";");
-        //ÈæÈæ Äù½ºÆ®¸¸µé¶§ ÀÌ°Å °í·Á¾ÈÇÏ°í ¸¸µé¾ú¾î ¤Ğ
+        //í‘í‘ í€˜ìŠ¤íŠ¸ë§Œë“¤ë•Œ ì´ê±° ê³ ë ¤ì•ˆí•˜ê³  ë§Œë“¤ì—ˆì–´ ã… 
 
         getPlayer().updateInfoQuest(39051, sb.toString());
         t0 = 3;
@@ -164,12 +164,12 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t0--;
         if (getPlayer().getLevel() >= 220)
             t0--;
-        t1 = 3; //¹è°íÇÂ¹«Åä
+        t1 = 3; //ë°°ê³ í”ˆë¬´í† 
         if (getPlayer().getLevel() >= 220)
             t1--;
         if (getPlayer().getLevel() >= 225)
             t1--;
-        t2 = 3; //µå¸²ºê·¹ÀÌÄ¿
+        t2 = 3; //ë“œë¦¼ë¸Œë ˆì´ì»¤
         if (getPlayer().getLevel() >= 225)
             t2--;
         if (getPlayer().getLevel() >= 230)
@@ -218,30 +218,30 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath0() {
         int t0 = 5;
-        for (int i = 34164; i <= 34167; i++) { //¿©±â¼öÁ¤
+        for (int i = 34164; i <= 34167; i++) { //ì—¬ê¸°ìˆ˜ì •
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34130; i <= 34150; i++) { //¿©±â¼öÁ¤
+        for (int i = 34130; i <= 34150; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        for (int i = 39055; i <= 39063; i++) { //¿©±â¼öÁ¤
+        for (int i = 39055; i <= 39063; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "¼Ò¸êÀÇ ¿©·Î"; //¿©±â¼öÁ¤
-        String key = "c0"; //¿©±â¼öÁ¤
-        int itemId = 1712001; //¿©±â¼öÁ¤
+        int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ì†Œë©¸ì˜ ì—¬ë¡œ"; //ì—¬ê¸°ìˆ˜ì •
+        String key = "c0"; //ì—¬ê¸°ìˆ˜ì •
+        int itemId = 1712001; //ì—¬ê¸°ìˆ˜ì •
         int questId = 34129;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -249,30 +249,30 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath1() {
         int t0 = 3;
-        for (int i = 34227; i <= 34228; i++) { //¿©±â¼öÁ¤
+        for (int i = 34227; i <= 34228; i++) { //ì—¬ê¸°ìˆ˜ì •
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39017; i <= 39033; i++) { //¿©±â¼öÁ¤
+        for (int i = 39017; i <= 39033; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        for (int i = 39064; i <= 39070; i++) { //¿©±â¼öÁ¤
+        for (int i = 39064; i <= 39070; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "ÃòÃò ¾ÆÀÏ·£µå"; //¿©±â¼öÁ¤
-        String key = "c1"; //¿©±â¼öÁ¤
-        int itemId = 1712002; //¿©±â¼öÁ¤
+        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ì¸„ì¸„ ì•„ì¼ëœë“œ"; //ì—¬ê¸°ìˆ˜ì •
+        String key = "c1"; //ì—¬ê¸°ìˆ˜ì •
+        int itemId = 1712002; //ì—¬ê¸°ìˆ˜ì •
         int questId = 39014;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -280,24 +280,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath2() {
         int t0 = 3;
-        for (int i = 34333; i <= 34334; i++) { //¿©±â¼öÁ¤
+        for (int i = 34333; i <= 34334; i++) { //ì—¬ê¸°ìˆ˜ì •
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34381; i <= 34394; i++) { //¿©±â¼öÁ¤
+        for (int i = 34381; i <= 34394; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "·¹Çï¸¥"; //¿©±â¼öÁ¤
-        String key = "c2"; //¿©±â¼öÁ¤
-        int itemId = 1712003; //¿©±â¼öÁ¤
+        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ë ˆí—¬ë¥¸"; //ì—¬ê¸°ìˆ˜ì •
+        String key = "c2"; //ì—¬ê¸°ìˆ˜ì •
+        int itemId = 1712003; //ì—¬ê¸°ìˆ˜ì •
         int questId = 34378;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -305,24 +305,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath3() {
         int t0 = 3;
-        for (int i = 34491; i <= 34492; i++) { //¿©±â¼öÁ¤
+        for (int i = 34491; i <= 34492; i++) { //ì—¬ê¸°ìˆ˜ì •
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39038; i <= 39050; i++) { //¿©±â¼öÁ¤
+        for (int i = 39038; i <= 39050; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "¾Æ¸£Ä«³ª"; //¿©±â¼öÁ¤
-        String key = "c3"; //¿©±â¼öÁ¤
-        int itemId = 1712004; //¿©±â¼öÁ¤
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ì•„ë¥´ì¹´ë‚˜"; //ì—¬ê¸°ìˆ˜ì •
+        String key = "c3"; //ì—¬ê¸°ìˆ˜ì •
+        int itemId = 1712004; //ì—¬ê¸°ìˆ˜ì •
         int questId = 39035;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -335,16 +335,16 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34276; i <= 34296; i++) { //¿©±â¼öÁ¤
+        for (int i = 34276; i <= 34296; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "¸ğ¶ó½º"; //¿©±â¼öÁ¤
-        String key = "c4"; //¿©±â¼öÁ¤
+        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ëª¨ë¼ìŠ¤"; //ì—¬ê¸°ìˆ˜ì •
+        String key = "c4"; //ì—¬ê¸°ìˆ˜ì •
         int itemId = 1712005;
         int questId = 34275;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -352,25 +352,25 @@ public class ArcaneRiver extends ScriptEngineNPC {
     }
 
     public void arcaneRiverQuickPath5() {
-        int t0 = 3; //¿¡½ºÆä¶ó
+        int t0 = 3; //ì—ìŠ¤í˜ë¼
         if (getPlayer().getLevel() >= 245) {
             t0--;
         }
         if (getPlayer().getLevel() >= 250) {
             t0--;
         }
-        int c0 = 0; //¿¡½ºÆä¶ó
+        int c0 = 0; //ì—ìŠ¤í˜ë¼
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34780; i <= 34799; i++) { //¿©±â¼öÁ¤
+        for (int i = 34780; i <= 34799; i++) { //ì—¬ê¸°ìˆ˜ì •
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //¿©±â¼öÁ¤
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //¿©±â¼öÁ¤
-        String cityName = "¿¡½ºÆä¶ó";
-        String key = "c5"; //¿©±â¼öÁ¤
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //ì—¬ê¸°ìˆ˜ì •
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //ì—¬ê¸°ìˆ˜ì •
+        String cityName = "ì—ìŠ¤í˜ë¼";
+        String key = "c5"; //ì—¬ê¸°ìˆ˜ì •
         int itemId = 1712006;
         int questId = 34773;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -380,7 +380,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
     @SuppressWarnings("deprecation")
     public void arcaneRiverQuickPath(String cityName, List<Integer> quests, String key, int t, int c, int basicPay, int totalPay, int itemId, int questID) {
         int commission = 500 * (t - c);
-        if (1 == self.askYesNo(cityName + " ÀÏÀÏ Äù½ºÆ®¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b" + commission + " ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay + "+" + totalPay + "°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askYesNo(cityName + " ì¼ì¼ í€˜ìŠ¤íŠ¸ë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b" + commission + " ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay + "+" + totalPay + "ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, (basicPay + totalPay)) > 0) {
                     MapleQuestStatus qStatus = new MapleQuestStatus(MapleQuest.getInstance(questID), 2);
@@ -397,17 +397,17 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39051, key, String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("¿Ï·áµÇ¾ú³×\r\nÅ©Å©.. ¶Ç ÀÌ¿ëÇØ ÁÖ½Ã°Ô³ª.", ScriptMessageFlag.Scenario);
+                    self.say("ì™„ë£Œë˜ì—ˆë„¤\r\ní¬í¬.. ë˜ ì´ìš©í•´ ì£¼ì‹œê²Œë‚˜.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("ÀÎº¥Åä¸®°¡ ºÎÁ·ÇÏ±º\r\nÀÎº¥Åä¸®¸¦ ºñ¿î µÚ ´Ù½Ã ÀÌ¿ëÇØÁÖ°Ô³ª");
+                    self.say("ì¸ë²¤í† ë¦¬ê°€ ë¶€ì¡±í•˜êµ°\r\nì¸ë²¤í† ë¦¬ë¥¼ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì´ìš©í•´ì£¼ê²Œë‚˜");
                 }
             } else {
-                self.say("ÀÚ³×ÀÇ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ °Í °°±º ´Ù½Ã È®ÀÎÇØº¸½Ã°Ô³ª");
+                self.say("ìë„¤ì˜ ë©”ì´í”Œ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œ ê²ƒ ê°™êµ° ë‹¤ì‹œ í™•ì¸í•´ë³´ì‹œê²Œë‚˜");
             }
         }
     }
 
-    public void arcaneRiverQuickPath10() { //¿¡¸£´Ù½ºÆåÆ®·³
+    public void arcaneRiverQuickPath10() { //ì—ë¥´ë‹¤ìŠ¤í™íŠ¸ëŸ¼
 
         int t = 3;
         if (getPlayer().getLevel() >= 210)
@@ -437,32 +437,32 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 1712001;
-        if (1 == self.askAccept("#r¿¡¸£´Ù ½ºÆåÆ®·³#kÀ» Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b" + commission + " ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i1712001:# #t1712001:# " + totalItem + "°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#rì—ë¥´ë‹¤ ìŠ¤í™íŠ¸ëŸ¼#kì„ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b" + commission + " ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i1712001:# #t1712001:# " + totalItem + "ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     getPlayer().updateOneInfo(34170, "count", "3");
                     getPlayer().updateOneInfo(34170, "date", sdf.format(new Date()));
                     getPlayer().updateOneInfo(39052, "c0", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("¿Ï·áµÇ¾ú³×\r\nÅ©Å©.. ¶Ç ÀÌ¿ëÇØ ÁÖ½Ã°Ô³ª.", ScriptMessageFlag.Scenario);
+                    self.say("ì™„ë£Œë˜ì—ˆë„¤\r\ní¬í¬.. ë˜ ì´ìš©í•´ ì£¼ì‹œê²Œë‚˜.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("ÀÎº¥Åä¸®°¡ ºÎÁ·ÇÏ±º\r\nÀÎº¥Åä¸®¸¦ ºñ¿î µÚ ´Ù½Ã ÀÌ¿ëÇØÁÖ°Ô³ª");
+                    self.say("ì¸ë²¤í† ë¦¬ê°€ ë¶€ì¡±í•˜êµ°\r\nì¸ë²¤í† ë¦¬ë¥¼ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì´ìš©í•´ì£¼ê²Œë‚˜");
                 }
             } else {
-                self.say("ÀÚ³×ÀÇ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ °Í °°±º ´Ù½Ã È®ÀÎÇØº¸½Ã°Ô³ª");
+                self.say("ìë„¤ì˜ ë©”ì´í”Œ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œ ê²ƒ ê°™êµ° ë‹¤ì‹œ í™•ì¸í•´ë³´ì‹œê²Œë‚˜");
             }
         }
     }
 
-    public void arcaneRiverQuickPath11() { //¹è°íÇÂ¹«Åä
+    public void arcaneRiverQuickPath11() { //ë°°ê³ í”ˆë¬´í† 
         if (getPlayer().getMutoHighRank() == -1) {
-            self.sayOk("#r¹è°íÇÂ ¹«Åä#k¿¡¼­ ÀÚ³×ÀÇ ÃÖ°í ¼º°ú¸¦ Ã£À» ¼ö ¾ø´Â °Í °°³×.\r\n±×°É ±âÁØÀ¸·Î ÀÏÀ» Ã³¸®ÇØ¾ß °øÆòÇÏÁö ¾Ê°Ú³ª? Å©Å©...\r\n\r\n(#b¾ÆÄÉÀÎ¸®¹ö ÄüÆĞ½º#k ÀÌ¿ë Àü ÃÖÃÊ 1È¸ÀÇ ÇØ´ç ÄÁÅÙÃ÷ ÇÃ·¹ÀÌ°¡ ÇÊ¿äÇÕ´Ï´Ù.)", ScriptMessageFlag.Scenario);
+            self.sayOk("#rë°°ê³ í”ˆ ë¬´í† #kì—ì„œ ìë„¤ì˜ ìµœê³  ì„±ê³¼ë¥¼ ì°¾ì„ ìˆ˜ ì—†ëŠ” ê²ƒ ê°™ë„¤.\r\nê·¸ê±¸ ê¸°ì¤€ìœ¼ë¡œ ì¼ì„ ì²˜ë¦¬í•´ì•¼ ê³µí‰í•˜ì§€ ì•Šê² ë‚˜? í¬í¬...\r\n\r\n(#bì•„ì¼€ì¸ë¦¬ë²„ í€µíŒ¨ìŠ¤#k ì´ìš© ì „ ìµœì´ˆ 1íšŒì˜ í•´ë‹¹ ì»¨í…ì¸  í”Œë ˆì´ê°€ í•„ìš”í•©ë‹ˆë‹¤.)", ScriptMessageFlag.Scenario);
             return;
         }
 
-        //#r¹è°íÇÂ ¹«Åä#k¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b500 ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i1712002:# #t1712002:# 15°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.
+        //#rë°°ê³ í”ˆ ë¬´í† #kë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b500 ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i1712002:# #t1712002:# 15ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.
         int t = 3;
-        for (int i = 34227; i <= 34228; i++) { //¿©±â¼öÁ¤
+        for (int i = 34227; i <= 34228; i++) { //ì—¬ê¸°ìˆ˜ì •
             if (getPlayer().getQuestStatus(i) == 2) {
                 t--;
             }
@@ -472,10 +472,10 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int basicPay = 5;
         int highDiff = getPlayer().getMutoHighDifficultly();
         int highRank = getPlayer().getMutoHighRank();
-        if (highDiff == 2) { //¾î·Á¿ò
-            if (highRank == 1) { //A·©Å©
+        if (highDiff == 2) { //ì–´ë ¤ì›€
+            if (highRank == 1) { //Aë­í¬
                 basicPay = 4;
-            } else if (highRank == 2) { //B·©Å©
+            } else if (highRank == 2) { //Bë­í¬
                 basicPay = 3;
             }
         } else if (highDiff == 1) {
@@ -494,8 +494,8 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
-        //#r¹è°íÇÂ ¹«Åä#k¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b500 ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i1712002:# #t1712002:# 15°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.
-        if (1 == self.askAccept("#r¹è°íÇÂ ¹«Åä#k¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b" + commission + " ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i1712002:# #t1712002:# " + totalItem + "°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.", ScriptMessageFlag.Scenario)) {
+        //#rë°°ê³ í”ˆ ë¬´í† #kë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b500 ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i1712002:# #t1712002:# 15ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.
+        if (1 == self.askAccept("#rë°°ê³ í”ˆ ë¬´í† #kë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b" + commission + " ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i1712002:# #t1712002:# " + totalItem + "ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(1712002, totalItem) > 0) {
                     while (getPlayer().GetCount("hungry_muto") < 3) {
@@ -503,20 +503,20 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c1", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("¿Ï·áµÇ¾ú³×\r\nÅ©Å©.. ¶Ç ÀÌ¿ëÇØ ÁÖ½Ã°Ô³ª.", ScriptMessageFlag.Scenario);
+                    self.say("ì™„ë£Œë˜ì—ˆë„¤\r\ní¬í¬.. ë˜ ì´ìš©í•´ ì£¼ì‹œê²Œë‚˜.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("ÀÎº¥Åä¸®°¡ ºÎÁ·ÇÏ±º\r\nÀÎº¥Åä¸®¸¦ ºñ¿î µÚ ´Ù½Ã ÀÌ¿ëÇØÁÖ°Ô³ª");
+                    self.say("ì¸ë²¤í† ë¦¬ê°€ ë¶€ì¡±í•˜êµ°\r\nì¸ë²¤í† ë¦¬ë¥¼ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì´ìš©í•´ì£¼ê²Œë‚˜");
                 }
             } else {
-                self.say("ÀÚ³×ÀÇ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ °Í °°±º ´Ù½Ã È®ÀÎÇØº¸½Ã°Ô³ª");
+                self.say("ìë„¤ì˜ ë©”ì´í”Œ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œ ê²ƒ ê°™êµ° ë‹¤ì‹œ í™•ì¸í•´ë³´ì‹œê²Œë‚˜");
             }
         }
     }
 
-    public void arcaneRiverQuickPath12() { //µå¸²ºê·¹ÀÌÄ¿
+    public void arcaneRiverQuickPath12() { //ë“œë¦¼ë¸Œë ˆì´ì»¤
         int best = getPlayer().getOneInfoQuestInteger(15901, "best");
         if (best <= 0) {
-            self.sayOk("#rµå¸²ºê·¹ÀÌÄ¿#k¿¡¼­ ÀÚ³×ÀÇ ÃÖ°í ¼º°ú¸¦ Ã£À» ¼ö ¾ø´Â °Í °°³×.\r\n±×°É ±âÁØÀ¸·Î ÀÏÀ» Ã³¸®ÇØ¾ß °øÆòÇÏÁö ¾Ê°Ú³ª? Å©Å©...\r\n\r\n(#b¾ÆÄÉÀÎ¸®¹ö ÄüÆĞ½º#k ÀÌ¿ë Àü ÃÖÃÊ 1È¸ÀÇ ÇØ´ç ÄÁÅÙÃ÷ ÇÃ·¹ÀÌ°¡ ÇÊ¿äÇÕ´Ï´Ù.)", ScriptMessageFlag.Scenario);
+            self.sayOk("#rë“œë¦¼ë¸Œë ˆì´ì»¤#kì—ì„œ ìë„¤ì˜ ìµœê³  ì„±ê³¼ë¥¼ ì°¾ì„ ìˆ˜ ì—†ëŠ” ê²ƒ ê°™ë„¤.\r\nê·¸ê±¸ ê¸°ì¤€ìœ¼ë¡œ ì¼ì„ ì²˜ë¦¬í•´ì•¼ ê³µí‰í•˜ì§€ ì•Šê² ë‚˜? í¬í¬...\r\n\r\n(#bì•„ì¼€ì¸ë¦¬ë²„ í€µíŒ¨ìŠ¤#k ì´ìš© ì „ ìµœì´ˆ 1íšŒì˜ í•´ë‹¹ ì»¨í…ì¸  í”Œë ˆì´ê°€ í•„ìš”í•©ë‹ˆë‹¤.)", ScriptMessageFlag.Scenario);
             return;
         }
         int t = 3;
@@ -534,7 +534,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310227;
-        if (1 == self.askAccept("#rµå¸²ºê·¹ÀÌÄ¿#k¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b" + commission + " ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i4310227:# #t4310227:# " + totalItem + "°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.\r\n\r\n(¡Ø #rÁÖÀÇ#k : ÄüÆĞ½º¸¦ ÅëÇØ ¿Ï·á ½Ã Èû³»¶ó! º¸³Ê½º ÄÚÀÎ Áö±Ş°ú ·©Å· ±â·ÏÀº µÇÁö ¾Ê½À´Ï´Ù.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#rë“œë¦¼ë¸Œë ˆì´ì»¤#kë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b" + commission + " ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i4310227:# #t4310227:# " + totalItem + "ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.\r\n\r\n(â€» #rì£¼ì˜#k : í€µíŒ¨ìŠ¤ë¥¼ í†µí•´ ì™„ë£Œ ì‹œ í˜ë‚´ë¼! ë³´ë„ˆìŠ¤ ì½”ì¸ ì§€ê¸‰ê³¼ ë­í‚¹ ê¸°ë¡ì€ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     while (getPlayer().GetCount("dream_breaker") < 3) {
@@ -542,17 +542,17 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c2", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("¿Ï·áµÇ¾ú³×\r\nÅ©Å©.. ¶Ç ÀÌ¿ëÇØ ÁÖ½Ã°Ô³ª.", ScriptMessageFlag.Scenario);
+                    self.say("ì™„ë£Œë˜ì—ˆë„¤\r\ní¬í¬.. ë˜ ì´ìš©í•´ ì£¼ì‹œê²Œë‚˜.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("ÀÎº¥Åä¸®°¡ ºÎÁ·ÇÏ±º\r\nÀÎº¥Åä¸®¸¦ ºñ¿î µÚ ´Ù½Ã ÀÌ¿ëÇØÁÖ°Ô³ª");
+                    self.say("ì¸ë²¤í† ë¦¬ê°€ ë¶€ì¡±í•˜êµ°\r\nì¸ë²¤í† ë¦¬ë¥¼ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì´ìš©í•´ì£¼ê²Œë‚˜");
                 }
             } else {
-                self.say("ÀÚ³×ÀÇ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ °Í °°±º ´Ù½Ã È®ÀÎÇØº¸½Ã°Ô³ª");
+                self.say("ìë„¤ì˜ ë©”ì´í”Œ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œ ê²ƒ ê°™êµ° ë‹¤ì‹œ í™•ì¸í•´ë³´ì‹œê²Œë‚˜");
             }
         }
     }
 
-    public void arcaneRiverQuickPath13() { //½ºÇÇ¸´¼¼ÀÌºñ¾î
+    public void arcaneRiverQuickPath13() { //ìŠ¤í”¼ë¦¿ì„¸ì´ë¹„ì–´
 
         int t = 3;
         if (getPlayer().getLevel() >= 230)
@@ -582,19 +582,19 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310235;
-        if (1 == self.askAccept("#r½ºÇÇ¸´ ¼¼ÀÌºñ¾î#k¸¦ Ã³¸®ÇØÁÖ¸é µÇ°Ú³ª?\r\n\r\nÀÇ·Ú±İÀº #b" + commission + " ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k¶ó³×.\r\nºÎ°¡ÀûÀ¸·Î ¾ò°ÔµÉ #b#i4310235:# #t4310235:# " + totalItem + "°³#k´Â ÀÚ³×¿¡°Ô ÁÖ°Ú³×.\r\nÀÚ³×´Â ¿À´Ã #r#e30°³ ÀÌ»ó#n#kÀÇ ½ºÇÇ¸´ ÄÚÀÎÀ» ¹Ş¾Æ¼­ ÀÌ¸¸Å­ÀÌ ÃÖ¼±ÀÌ¶ó°í ÇÏ´øµ¥? Å©Å©..\r\n\r\n\r\n(¡Ø #rÁÖÀÇ#k : ÄüÆĞ½º¸¦ ÅëÇØ ¿Ï·á ½Ã º¸³Ê½º ÄÚÀÎ Áö±ŞÀº µÇÁö ¾Ê½À´Ï´Ù.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#rìŠ¤í”¼ë¦¿ ì„¸ì´ë¹„ì–´#kë¥¼ ì²˜ë¦¬í•´ì£¼ë©´ ë˜ê² ë‚˜?\r\n\r\nì˜ë¢°ê¸ˆì€ #b" + commission + " ë©”ì´í”Œí¬ì¸íŠ¸#kë¼ë„¤.\r\në¶€ê°€ì ìœ¼ë¡œ ì–»ê²Œë  #b#i4310235:# #t4310235:# " + totalItem + "ê°œ#këŠ” ìë„¤ì—ê²Œ ì£¼ê² ë„¤.\r\nìë„¤ëŠ” ì˜¤ëŠ˜ #r#e30ê°œ ì´ìƒ#n#kì˜ ìŠ¤í”¼ë¦¿ ì½”ì¸ì„ ë°›ì•„ì„œ ì´ë§Œí¼ì´ ìµœì„ ì´ë¼ê³  í•˜ë˜ë°? í¬í¬..\r\n\r\n\r\n(â€» #rì£¼ì˜#k : í€µíŒ¨ìŠ¤ë¥¼ í†µí•´ ì™„ë£Œ ì‹œ ë³´ë„ˆìŠ¤ ì½”ì¸ ì§€ê¸‰ì€ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     getPlayer().updateOneInfo(16214, "date", sdf.format(new Date()));
                     getPlayer().updateOneInfo(16214, "count", "3");
                     getPlayer().updateOneInfo(39052, "c3", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("¿Ï·áµÇ¾ú³×\r\nÅ©Å©.. ¶Ç ÀÌ¿ëÇØ ÁÖ½Ã°Ô³ª.", ScriptMessageFlag.Scenario);
+                    self.say("ì™„ë£Œë˜ì—ˆë„¤\r\ní¬í¬.. ë˜ ì´ìš©í•´ ì£¼ì‹œê²Œë‚˜.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("ÀÎº¥Åä¸®°¡ ºÎÁ·ÇÏ±º\r\nÀÎº¥Åä¸®¸¦ ºñ¿î µÚ ´Ù½Ã ÀÌ¿ëÇØÁÖ°Ô³ª");
+                    self.say("ì¸ë²¤í† ë¦¬ê°€ ë¶€ì¡±í•˜êµ°\r\nì¸ë²¤í† ë¦¬ë¥¼ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì´ìš©í•´ì£¼ê²Œë‚˜");
                 }
             } else {
-                self.say("ÀÚ³×ÀÇ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ °Í °°±º ´Ù½Ã È®ÀÎÇØº¸½Ã°Ô³ª");
+                self.say("ìë„¤ì˜ ë©”ì´í”Œ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œ ê²ƒ ê°™êµ° ë‹¤ì‹œ í™•ì¸í•´ë³´ì‹œê²Œë‚˜");
             }
         }
     }

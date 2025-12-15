@@ -14,7 +14,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000570, 1);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -24,7 +24,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000760, 1);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -34,7 +34,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000500, 3);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -44,7 +44,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000680, 1);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -54,7 +54,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000690, 3);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -64,7 +64,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000630, 2);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -74,7 +74,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 3);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -84,7 +84,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000770, 2);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -94,39 +94,39 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 2);
         } else {
-            getPlayer().dropMessage(5, "260·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "260ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void east01_410000500() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "¾îµğ·Î °¥±î?\r\n\r\n#b#L0#ºÒÅ¸´Â ¼¼¸£´Ï¿ò#l";
+            String text = "ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n\r\n#b#L0#ë¶ˆíƒ€ëŠ” ì„¸ë¥´ë‹ˆì›€#l";
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
-            switch (v) { //ºÒÅ¸´Â ¼¼¸£´Ï¿ò
+            switch (v) { //ë¶ˆíƒ€ëŠ” ì„¸ë¥´ë‹ˆì›€
                 case 0: {
                     registerTransferField(410000800, 4);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "265ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void south_410000800() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "¾îµğ·Î °¥±î?\r\n\r\n#b#L0#¼¼¸£´Ï¿ò ±¤Àå#l";
+            String text = "ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n\r\n#b#L0#ì„¸ë¥´ë‹ˆì›€ ê´‘ì¥#l";
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
-            switch (v) { //¼¼¸£´Ï¿ò
+            switch (v) { //ì„¸ë¥´ë‹ˆì›€
                 case 0: {
                     registerTransferField(410000500, 5);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "265ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 

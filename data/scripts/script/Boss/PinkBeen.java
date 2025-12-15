@@ -25,37 +25,37 @@ public class PinkBeen extends ScriptEngineNPC {
         int[] normalMaps = new int[]{270050100};
         int[] chaosMaps = new int[]{270051100};
         if (em == null) {
-            self.say("ÇöÀç ÇÎÅ©ºó º¸½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("í˜„ì¬ í•‘í¬ë¹ˆ ë³´ìŠ¤ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         } else {
-            String v = "#e<º¸½º:ÇÎÅ©ºó>#n\r\nÄ§ÀÔÀÚ´Â ¿©½ÅÀÇ Á¦´ÜÀ¸·Î ÇâÇÑ µí ÇÕ´Ï´Ù. ±×¸¦ ¾î¼­ ÀúÁöÇÏÁö ¸øÇÏ¸é ¹«¼­¿î ÀÏÀÌ ÀÏ¾î³¯ °Ì´Ï´Ù.\r\n#b\r\n#L0# <º¸½º:ÇÎÅ©ºó> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l";
+            String v = "#e<ë³´ìŠ¤:í•‘í¬ë¹ˆ>#n\r\nì¹¨ì…ìëŠ” ì—¬ì‹ ì˜ ì œë‹¨ìœ¼ë¡œ í–¥í•œ ë“¯ í•©ë‹ˆë‹¤. ê·¸ë¥¼ ì–´ì„œ ì €ì§€í•˜ì§€ ëª»í•˜ë©´ ë¬´ì„œìš´ ì¼ì´ ì¼ì–´ë‚  ê²ë‹ˆë‹¤.\r\n#b\r\n#L0# <ë³´ìŠ¤:í•‘í¬ë¹ˆ> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l";
             int v0 = self.askMenu(v);
             if (v0 == 0) {
                 if (target.getParty() == null) {
-                    self.say("1ÀÎ ÀÌ»óÀÇ ÆÄÆ¼¿¡ ¼ÓÇØ¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("1ì¸ ì´ìƒì˜ íŒŒí‹°ì— ì†í•´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                 } else if (DBConfig.isGanglim && getPlayer().getParty().getLeader().getId() != getPlayer().getId()) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                 } else {
                     if (target.getParty().isPartySameMap()) {
                     	String v2 = "";
                     	if (DBConfig.isGanglim) {
-                    		v2 = "#e<º¸½º:ÇÎÅ©ºó>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#L0# ³ë¸Ö ¸ğµå ( ·¹º§ 160 ÀÌ»ó )#l\r\n";
-                    		//v2 += "#L1# Ä«¿À½º ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l\r\n#L2# Ä«¿À½º ¿¬½À ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l";
+                    		v2 = "#e<ë³´ìŠ¤:í•‘í¬ë¹ˆ>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#L0# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 160 ì´ìƒ )#l\r\n";
+                    		//v2 += "#L1# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l\r\n#L2# ì¹´ì˜¤ìŠ¤ ì—°ìŠµ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l";
                     	}
                     	else {
                     		boolean single = getPlayer().getPartyMemberSize() == 1;
-                    		v2 = "#e<º¸½º:ÇÎÅ©ºó>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n"
-                    				+ "#L0# ³ë¸Ö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 160 ÀÌ»ó )#l\r\n"
-                    				+ "#L1# Ä«¿À½º ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 170 ÀÌ»ó )#l\r\n"
-                    				+ "#L2# Ä«¿À½º ¿¬½À ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "( ·¹º§ 170 ÀÌ»ó )#l\r\n";
+                    		v2 = "#e<ë³´ìŠ¤:í•‘í¬ë¹ˆ>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n"
+                    				+ "#L0# ë…¸ë©€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 160 ì´ìƒ )#l\r\n"
+                    				+ "#L1# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 170 ì´ìƒ )#l\r\n"
+                    				+ "#L2# ì¹´ì˜¤ìŠ¤ ì—°ìŠµ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + "( ë ˆë²¨ 170 ì´ìƒ )#l\r\n";
                     		int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"));
-                    		v2 += "#L3# ³ë¸Ö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ÀÔÀåÈ½¼ö Áõ°¡ (" + ((single ? 2 : 1) - nreset) + "È¸ °¡´É)\r\n";
+                    		v2 += "#L3# ë…¸ë©€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì…ì¥íšŸìˆ˜ ì¦ê°€ (" + ((single ? 2 : 1) - nreset) + "íšŒ ê°€ëŠ¥)\r\n";
                     		int creset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"));
-                    		v2 += "#L4# Ä«¿À½º ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ÀÔÀåÈ½¼ö Áõ°¡ (" + (1 - creset) + "È¸ °¡´É)";
+                    		v2 += "#L4# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì…ì¥íšŸìˆ˜ ì¦ê°€ (" + (1 - creset) + "íšŒ ê°€ëŠ¥)";
                     	}
                         boolean canEnter = false;
                         int questID = QuestExConstants.PinkBeen.getQuestID();
                         int selection = self.askMenu(v2);
-                        if (selection == 1) { //³ë¸»¸ğµå
+                        if (selection == 1) { //ë…¸ë§ëª¨ë“œ
                             questID = QuestExConstants.ChaosPinkBeen.getQuestID();
                         }
                         String overLap = null;
@@ -64,38 +64,38 @@ public class PinkBeen extends ScriptEngineNPC {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("Çùµ¿ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. º¸À¯ Æ÷ÀÎÆ® : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("í˜‘ë™ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë³´ìœ  í¬ì¸íŠ¸ : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if (nreset > (single ? 1 : 0)) {
-                        			self.sayOk("±İÀÏ Ãß°¡ÀÔÀå Áõ°¡ °¡´É È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¿´½À´Ï´Ù.");
+                        			self.sayOk("ê¸ˆì¼ ì¶”ê°€ì…ì¥ ì¦ê°€ ê°€ëŠ¥ íšŸìˆ˜ë¥¼ ëª¨ë‘ ì‚¬ìš©í•˜ì˜€ìŠµë‹ˆë‹¤.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"), String.valueOf(nreset + 1));
-                        		self.sayOk("ÀÔÀå È½¼ö°¡ Áõ°¡µÇ¾ú½À´Ï´Ù.");
+                        		self.sayOk("ì…ì¥ íšŸìˆ˜ê°€ ì¦ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
                         		return;
                         	}
                         	if (selection == 4) {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int creset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("Çùµ¿ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. º¸À¯ Æ÷ÀÎÆ® : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("í˜‘ë™ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë³´ìœ  í¬ì¸íŠ¸ : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if (creset > 0) {
-                        			self.sayOk("ÀÌ¹øÁÖ Ãß°¡ÀÔÀå Áõ°¡ °¡´É È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¿´½À´Ï´Ù.");
+                        			self.sayOk("ì´ë²ˆì£¼ ì¶”ê°€ì…ì¥ ì¦ê°€ ê°€ëŠ¥ íšŸìˆ˜ë¥¼ ëª¨ë‘ ì‚¬ìš©í•˜ì˜€ìŠµë‹ˆë‹¤.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"), String.valueOf(creset + 1));
-                        		self.sayOk("ÀÔÀå È½¼ö°¡ Áõ°¡µÇ¾ú½À´Ï´Ù.");
+                        		self.sayOk("ì…ì¥ íšŸìˆ˜ê°€ ì¦ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
                         		return;
                         	}
                         	
-                        	if (selection == 0 || selection == 1 || selection == 2) { //Áø ÆÄÆ¼¿ø ÀÔÀå½Ãµµ Ã¼Å©
+                        	if (selection == 0 || selection == 1 || selection == 2) { //ì§„ íŒŒí‹°ì› ì…ì¥ì‹œë„ ì²´í¬
                         		if (target.getParty().getLeader().getId() != getPlayer().getId()) {
-                        			self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                        			self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                         			return;
                         		}
                         	}
@@ -103,11 +103,11 @@ public class PinkBeen extends ScriptEngineNPC {
                         }
                         if (selection == 0 || selection == 1) {
                             if (overLap == null) {
-                                if (selection == 0) { //³ë¸»¸ğµå
+                                if (selection == 0) { //ë…¸ë§ëª¨ë“œ
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (selection == 1) { //Ä«¿À½º¸ğµå
+                                } else if (selection == 1) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                     if (em.getProperty("Cstatus0").equals("0")) {
                                         canEnter = true;
                                     }
@@ -121,7 +121,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                             if (p != null) {
                                                 int count = p.getOneInfoQuestInteger(key, "pinkbean_clear");
                                                 if (count >= (1 + p.getBossTier())) {
-                                                    self.say("ÆÄÆ¼¿ø Áß #b#e" + p.getName() + "#n#k°¡ ¿À´Ã ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                                    self.say("íŒŒí‹°ì› ì¤‘ #b#e" + p.getName() + "#n#kê°€ ì˜¤ëŠ˜ ë” ì´ìƒ ë„ì „í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                                                     return;
                                                 }
                                                 p.updateOneInfo(key, "pinkbean_clear", String.valueOf(count + 1));
@@ -136,7 +136,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                     int map = selection == 0 ? normalMaps[0] : chaosMaps[0];
                                     eim.setProperty("map", map);
                                     eim.setProperty("mode", selection == 0 ? "normal" : "chaos");
-                                    eim.getMapInstance(map).setLastRespawnTime(Long.MAX_VALUE); //¸®½ºÆù¹æÁö
+                                    eim.getMapInstance(map).setLastRespawnTime(Long.MAX_VALUE); //ë¦¬ìŠ¤í°ë°©ì§€
                                     eim.getMapInstance(map).resetFully(false);
                                     if (selection == 0) {
                                     	if (DBConfig.isGanglim) {
@@ -154,16 +154,16 @@ public class PinkBeen extends ScriptEngineNPC {
                                     }
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.say("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.say("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 }
                             } else {
-                                self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÔÀåÇß±º¿ä ¿À´ÃÀº ´õ ÀÌ»ó µé¾î°¡½Ç ¼ö ¾ø½À´Ï´Ù.");
+                                self.say("íŒŒí‹°ì› ì¤‘#b#e" + overLap + "ê°€#n#k ì˜¤ëŠ˜ ì…ì¥í–ˆêµ°ìš” ì˜¤ëŠ˜ì€ ë” ì´ìƒ ë“¤ì–´ê°€ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                             }
                         } else if (selection == 2) {
-                            self.say("ÇÎÅ©ºó ·¹ÀÌµå ¿¬½À¸ğµå´Â ÁØºñÁßÀÔ´Ï´Ù!");
+                            self.say("í•‘í¬ë¹ˆ ë ˆì´ë“œ ì—°ìŠµëª¨ë“œëŠ” ì¤€ë¹„ì¤‘ì…ë‹ˆë‹¤!");
                         }
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ¸ğ¿© ÁÖ¼¼¿ä.");
+                        self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ëª¨ì—¬ ì£¼ì„¸ìš”.");
                     }
                 }
             }
@@ -188,8 +188,8 @@ public class PinkBeen extends ScriptEngineNPC {
     public void PinkBeen_Summon() {
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //ÆÄÆ¼Àå¸¸ ¼ÒÈ¯°¡´É(Áßº¹¼ÒÈ¯ ¹æÁö)
-                if (self.askAccept("¿©½ÅÀÇ °Å¿ï¸¸ ÀÖÀ¸¸é... ´Ù½Ã °ËÀº ¸¶¹ı»ç¸¦ ºÒ·¯³¾ ¼ö ÀÖ¾î!...\r\nÀÌ, ÀÌ»óÇØ... ¿Ö °ËÀº ¸¶¹ı»ç¸¦ ºÒ·¯³»Áö ¾Ê´Â °ÅÁö? ÀÌ ±â¿îÀº ¹¹Áö? °ËÀº ¸¶¹ı»ç¿Í´Â ÀüÇô ´Ù¸¥... Å©¾Æ¾Æ¾Ç!\r\n\r\n#b(Å°¸£½ºÅÏÀÇ ¾î±ú¿¡ ¼ÕÀ» ´í´Ù.)#k") == 1) {
+            if (target.getParty().getLeader().getId() == target.getId()) { //íŒŒí‹°ì¥ë§Œ ì†Œí™˜ê°€ëŠ¥(ì¤‘ë³µì†Œí™˜ ë°©ì§€)
+                if (self.askAccept("ì—¬ì‹ ì˜ ê±°ìš¸ë§Œ ìˆìœ¼ë©´... ë‹¤ì‹œ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ë¶ˆëŸ¬ë‚¼ ìˆ˜ ìˆì–´!...\r\nì´, ì´ìƒí•´... ì™œ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ë¶ˆëŸ¬ë‚´ì§€ ì•ŠëŠ” ê±°ì§€? ì´ ê¸°ìš´ì€ ë­ì§€? ê²€ì€ ë§ˆë²•ì‚¬ì™€ëŠ” ì „í˜€ ë‹¤ë¥¸... í¬ì•„ì•„ì•…!\r\n\r\n#b(í‚¤ë¥´ìŠ¤í„´ì˜ ì–´ê¹¨ì— ì†ì„ ëŒ„ë‹¤.)#k") == 1) {
                     if (eim.getProperty("summonMOB") == null) {
                         eim.setProperty("summonMOB", "1");
                         Field field = getPlayer().getMap();
@@ -204,7 +204,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                 field.spawnMonster(MapleLifeFactory.getMonster(8820004), new Point(5, -42), -2);
                                 field.spawnMonster(MapleLifeFactory.getMonster(8820005), new Point(5, -42), -2);
                                 field.spawnMonster(MapleLifeFactory.getMonster(8820006), new Point(5, -42), -2);
-                                field.spawnMonster(MapleLifeFactory.getMonster(8820014), new Point(5, -42), -2); //ÇÎÅ©ºó ¼ÒÈ¯¿ë
+                                field.spawnMonster(MapleLifeFactory.getMonster(8820014), new Point(5, -42), -2); //í•‘í¬ë¹ˆ ì†Œí™˜ìš©
                         	}
                         	else {
                         		int[] pinkbeanparts = {8820008, 8820002, 8820003, 8820004, 8820005, 8820006, 8820014};
@@ -235,7 +235,7 @@ public class PinkBeen extends ScriptEngineNPC {
                             	field.spawnMonster(MapleLifeFactory.getMonster(8820104), new Point(5, -42), -2);
                             	field.spawnMonster(MapleLifeFactory.getMonster(8820105), new Point(5, -42), -2);
                             	field.spawnMonster(MapleLifeFactory.getMonster(8820106), new Point(5, -42), -2);
-                            	field.spawnMonster(MapleLifeFactory.getMonster(8820114), new Point(5, -42), -2); //ÇÎÅ©ºó ¼ÒÈ¯¿ë
+                            	field.spawnMonster(MapleLifeFactory.getMonster(8820114), new Point(5, -42), -2); //í•‘í¬ë¹ˆ ì†Œí™˜ìš©
                         	}   
                         	else {
                         		int[] pinkbeanparts = {8820108, 8820102, 8820103, 8820104, 8820105, 8820106, 8820114};
@@ -266,7 +266,7 @@ public class PinkBeen extends ScriptEngineNPC {
                             }
                         }
 
-                        field.killMonster(field.getMonsterById(8820023)); //Á×Àº ¼®»óµé
+                        field.killMonster(field.getMonsterById(8820023)); //ì£½ì€ ì„ìƒë“¤
                         field.killMonster(field.getMonsterById(8820022));
                         field.killMonster(field.getMonsterById(8820021));
                         field.killMonster(field.getMonsterById(8820020));
@@ -280,13 +280,13 @@ public class PinkBeen extends ScriptEngineNPC {
     }
 
     public void PinkBeen_Out() {
-        if (self.askYesNo("ÀüÅõ¸¦ ÁßÁöÇÏ°í ³ª°¡½Ã°Ú½À´Ï±î?\r\n#r#e¡ØÁÖÀÇ : ÅğÀåÇÏ°Ô µÇ¸é ¿À´ÃÀº ´õ ÀÌ»ó ÇÎÅ©ºó¿¡ µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.#n#k") == 1) {
+        if (self.askYesNo("ì „íˆ¬ë¥¼ ì¤‘ì§€í•˜ê³  ë‚˜ê°€ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#r#eâ€»ì£¼ì˜ : í‡´ì¥í•˜ê²Œ ë˜ë©´ ì˜¤ëŠ˜ì€ ë” ì´ìƒ í•‘í¬ë¹ˆì— ë„ì „í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.#n#k") == 1) {
             List<Integer> normalMap = new ArrayList(Arrays.asList(270050100, 270050101, 270050102, 270050103, 270050104, 270050105, 270050106, 270050107, 270050108, 270050109));
-            //270050300(³ë¸» ÇÎÅ©ºó¸Ê¿¡¼­ ÅğÀåÇßÀ»°æ¿ì)
-            //270051300(Ä«¿À½º ÇÎÅ©ºó¸Ê¿¡¼­ ÅğÀåÇßÀ»°æ¿ì)
+            //270050300(ë…¸ë§ í•‘í¬ë¹ˆë§µì—ì„œ í‡´ì¥í–ˆì„ê²½ìš°)
+            //270051300(ì¹´ì˜¤ìŠ¤ í•‘í¬ë¹ˆë§µì—ì„œ í‡´ì¥í–ˆì„ê²½ìš°)
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
-            if (normalMap.contains(target.getMapId())) { //³ë¸»¸ÊÅğÀå
+            if (normalMap.contains(target.getMapId())) { //ë…¸ë§ë§µí‡´ì¥
                 registerTransferField(270050300);
             } else {
                 registerTransferField(270051300);
@@ -296,7 +296,7 @@ public class PinkBeen extends ScriptEngineNPC {
                 getPlayer().setEventInstance(null);
             }
         } else {
-            self.say("°è¼ÓÇØ¼­ µµÀüÇØÁÖ½Ê½Ã¿À.");
+            self.say("ê³„ì†í•´ì„œ ë„ì „í•´ì£¼ì‹­ì‹œì˜¤.");
         }
     }
 }

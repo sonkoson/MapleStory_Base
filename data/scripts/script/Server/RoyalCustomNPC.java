@@ -57,7 +57,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
      */
 
     String[] grades = new String[] {
-            "½ºÄ«¿ô", "¼­ÀüÆ®", "°¡µğ¾ğ", "¸¶½ºÅÍ", "Ä¿¸Ç´õ", "½´ÇÁ¸²"
+            "ìŠ¤ì¹´ì›ƒ", "ì„œì „íŠ¸", "ê°€ë””ì–¸", "ë§ˆìŠ¤í„°", "ì»¤ë§¨ë”", "ìŠˆí”„ë¦¼"
     };
 
     ItemEntry[] itemList = new ItemEntry[] {
@@ -79,8 +79,8 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void displayShop() {
         int grade = getPlayer().getOneInfoQuestInteger(100711, "grade");
-        String gradeName = "#e<" + grades[grade] + "µî±Ş °¢¼º »óÁ¡>#n";
-        String v0 = gradeName + "\r\n#eº¸À¯ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point")) + "\r\n\r\n#e[»óÁ¡ ¸®½ºÆ®]#n#b\r\n";
+        String gradeName = "#e<" + grades[grade] + "ë“±ê¸‰ ê°ì„± ìƒì >#n";
+        String v0 = gradeName + "\r\n#eë³´ìœ  í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point")) + "\r\n\r\n#e[ìƒì  ë¦¬ìŠ¤íŠ¸]#n#b\r\n";
         int item = 2630688 + grade;
 
         if (!DBConfig.isGanglim) {
@@ -94,7 +94,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             int itemID = entry.getItemID();
             int index = entry.getIndex();
             int buyCount = getPlayer().getOneInfoQuestInteger(100778, index + "_buy_count");
-            int remain = entry.getWorldLimit(grade - 1) - buyCount; // ±İÀÏ ±¸¸Å °¡´É È½¼ö
+            int remain = entry.getWorldLimit(grade - 1) - buyCount; // ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜
             if (entry.getWorldLimit(grade - 1) == 0) {
                 remain = -1;
             }
@@ -103,20 +103,20 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
             int check = getPlayer().getOneInfoQuestInteger(100711, "grade");
             if (gradeLimit > check) {
-                // ±¸¸Å °¡´É µî±ŞÀÌ ¾Æ´Ò ¶§
+                // êµ¬ë§¤ ê°€ëŠ¥ ë“±ê¸‰ì´ ì•„ë‹ ë•Œ
                 v0 += "     #i" + itemID + "#  #z" + itemID + "# #e(" + NumberFormat.getInstance().format(price) + " P)#n#l\r\n";
-                v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : 0È¸#b#n #r(µî±Ş ºÎÁ·)#b\r\n";
+                v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : 0íšŒ#b#n #r(ë“±ê¸‰ ë¶€ì¡±)#b\r\n";
             } else {
                 if (remain != -1 && remain <= 0) {
-                    // ±¸¸Å °¡´É È½¼ö°¡ ¾øÀ» ¶§
+                    // êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜ê°€ ì—†ì„ ë•Œ
                     v0 += "     #i" + itemID + "#  #z" + itemID + "# #e(" + NumberFormat.getInstance().format(price) + " P)#n#l\r\n";
-                    v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : " + remain + "È¸#b#n\r\n";
+                    v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : " + remain + "íšŒ#b#n\r\n";
                 } else {
                     v0 += "#L" + index + "##i" + itemID + "#  #z" + itemID + "# #e(" + NumberFormat.getInstance().format(price) + " P)#n#l\r\n";
                     if (remain == -1) {
-                        v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : Á¦ÇÑ ¾øÀ½#b#n\r\n";
+                        v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : ì œí•œ ì—†ìŒ#b#n\r\n";
                     } else {
-                        v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : " + remain + "È¸#b#n\r\n";
+                        v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : " + remain + "íšŒ#b#n\r\n";
                     }
                 }
             }
@@ -128,11 +128,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             }
             if (1 == target.exchange(item, 1)) {
                 getPlayer().updateOneInfo(100778, "0_buy_count", "1");
-                if (0 == self.askMenu("#b#i" + item + "# #z" + item + "##kÀ» º¸±ŞÇØµå·È½À´Ï´Ù.\r\n\r\n#b#L0#¾ÆÀÌÅÛ ¸ñ·ÏÀ¸·Î µ¹¾Æ°£´Ù.#l")) {
+                if (0 == self.askMenu("#b#i" + item + "# #z" + item + "##kì„ ë³´ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì•„ì´í…œ ëª©ë¡ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.#l")) {
                     displayShop();
                 }
             } else {
-                self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
             }
         } else {
             if (v1 > itemList.length) {
@@ -150,32 +150,32 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             if (pick.getWorldLimit(grade - 1) != 0 && 0 >= remain) {
                 return;
             }
-            String v2 = "#e<°¢¼º »óÁ¡>#n\r\n#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k";
+            String v2 = "#e<ê°ì„± ìƒì >#n\r\n#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k";
             if (pick.getWorldLimit(grade - 1) != 0) {
-                v2 += "\r\n\r\n#e±İÀÏ ±¸¸Å °¡´É È½¼ö : " + remain + "È¸\r\nº¸À¯ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point"));
+                v2 += "\r\n\r\n#eê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜ : " + remain + "íšŒ\r\në³´ìœ  í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point"));
             } else {
-                v2 += "\r\n\r\n#e±İÀÏ ±¸¸Å °¡´É È½¼ö : Á¦ÇÑ ¾øÀ½\r\nº¸À¯ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point"));
+                v2 += "\r\n\r\n#eê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜ : ì œí•œ ì—†ìŒ\r\në³´ìœ  í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getOneInfoQuestInteger(100778, "point"));
             }
-            v2 += "\r\n\r\n#n±¸¸Å ½Ã #b#e" + pick.getPrice(grade - 1) + " Æ÷ÀÎÆ®#n#k°¡ Â÷°¨µË´Ï´Ù. Á¤¸» ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?";
+            v2 += "\r\n\r\n#nêµ¬ë§¤ ì‹œ #b#e" + pick.getPrice(grade - 1) + " í¬ì¸íŠ¸#n#kê°€ ì°¨ê°ë©ë‹ˆë‹¤. ì •ë§ êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
             if (1 == self.askYesNo(v2)) {
                 int getPoint = getPlayer().getOneInfoQuestInteger(100778, "point");
                 if (getPoint < pick.getPrice(grade - 1)) {
-                    self.say("°¢¼º Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê°ì„± í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 if (1 == target.exchange(pick.getItemID(), 1)) {
                     getPlayer().updateOneInfo(100778, "point", String.valueOf(getPoint -  pick.getPrice(grade - 1)));
                     getPlayer().updateOneInfo(100712, "sum", String.valueOf(getPlayer().getOneInfoQuestInteger(100778, "point")));
 
-                    // ±¸¸Å Ã³¸®
+                    // êµ¬ë§¤ ì²˜ë¦¬
                     if (pick.getWorldLimit(grade - 1) != 0) {
                         getPlayer().updateOneInfo(100778, pick.getIndex() + "_buy_count", String.valueOf(buyCount + 1));
                     }
-                    if (0 == self.askMenu("#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k ±¸¸Å°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\r\n\r\n#b#L0#¾ÆÀÌÅÛ ¸ñ·ÏÀ¸·Î µ¹¾Æ°£´Ù.#l")) {
+                    if (0 == self.askMenu("#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k êµ¬ë§¤ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì•„ì´í…œ ëª©ë¡ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.#l")) {
                         displayShop();
                     }
                 } else {
-                    self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                    self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                 }
             }
         }
@@ -190,46 +190,46 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         int rc = getPlayer().getRebirthCount();
         int src = getPlayer().getSuperRebirthCount();
         String rGrade = getPlayer().getRebirthGrade();
-        String v0 = "#e<È¯»ı ¹× °¢¼º ½Ã½ºÅÛ>#n#k\r\n\r\n¾È³çÇÏ½Å°¡? ³ª´Â #bÈ¯»ı#k ¹× #b°¢¼º#kÀ» ´ã´çÇÏ°í ÀÖ´Â #bÈ¯»ı ¸¶¹ı»ç#k¶ó°í ÇÏ³×. ¹«¾ùÀ» ¿øÇÏ´Â°¡?\r\n\r\n";
-        v0 += "#e´©Àû È¯»ı È½¼ö : #b" + nf.format(rc) + "È¸#k\r\n";
-        v0 += "´©Àû °¢¼º È½¼ö : #b" + nf.format(src) + "È¸#k\r\n";
-        v0 += "°¢¼º µî±Ş : #b" + rGrade + "µî±Ş#k#n\r\n";
-        v0 += "#b#L0#È¯»ı¿¡ ´ëÇØ ¾Ë·ÁÁÖ¼¼¿ä.#l\r\n";
-        v0 += "#b#L1#°¢¼º¿¡ ´ëÇØ ¾Ë·ÁÁÖ¼¼¿ä.#l\r\n";
-        v0 += "#b#L2#È¯»ıÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#b#L3#°¢¼ºÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#b#L4#°¢¼º ½Â±ŞÀ» ÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#b#L5#È¯»ı »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#b#L6#°¢¼º »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
+        String v0 = "#e<í™˜ìƒ ë° ê°ì„± ì‹œìŠ¤í…œ>#n#k\r\n\r\nì•ˆë…•í•˜ì‹ ê°€? ë‚˜ëŠ” #bí™˜ìƒ#k ë° #bê°ì„±#kì„ ë‹´ë‹¹í•˜ê³  ìˆëŠ” #bí™˜ìƒ ë§ˆë²•ì‚¬#kë¼ê³  í•˜ë„¤. ë¬´ì—‡ì„ ì›í•˜ëŠ”ê°€?\r\n\r\n";
+        v0 += "#eëˆ„ì  í™˜ìƒ íšŸìˆ˜ : #b" + nf.format(rc) + "íšŒ#k\r\n";
+        v0 += "ëˆ„ì  ê°ì„± íšŸìˆ˜ : #b" + nf.format(src) + "íšŒ#k\r\n";
+        v0 += "ê°ì„± ë“±ê¸‰ : #b" + rGrade + "ë“±ê¸‰#k#n\r\n";
+        v0 += "#b#L0#í™˜ìƒì— ëŒ€í•´ ì•Œë ¤ì£¼ì„¸ìš”.#l\r\n";
+        v0 += "#b#L1#ê°ì„±ì— ëŒ€í•´ ì•Œë ¤ì£¼ì„¸ìš”.#l\r\n";
+        v0 += "#b#L2#í™˜ìƒí•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#b#L3#ê°ì„±í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#b#L4#ê°ì„± ìŠ¹ê¸‰ì„ í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#b#L5#í™˜ìƒ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#b#L6#ê°ì„± ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
         int v = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
-            case 0: //È¯»ı¼³¸í
-                self.say("#bÈ¯»ı ½Ã½ºÅÛ#kÀº #e250 ·¹º§#n ´Ş¼º ½Ã ÁøÇà °¡´ÉÇÏ¸ç, È¯»ı ÁøÇà ½Ã #e235 ·¹º§#n·Î µ¹¾Æ°¡Áö Å©Å©Å©, ¸ğµç ½ºÅÈ ÃÊ±âÈ­ (¿Ã½ºÅÈ 4, 4, 4, 4) ÈÄ ´ÙÀ½°ú °°Àº °ø½ÄÀ¸·Î »õ·Ó°Ô AP°¡ Áö±ŞµÈ´Ù³×.\r\n\r\n#b999 + (È¯»ı È½¼ö + °¢¼º È½¼ö) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("Ãß°¡·Î #b´©Àû È¯»ı È½¼ö#k°¡ 1È¸ Áõ°¡µÇ¸ç, È¯»ı Æ÷ÀÎÆ®°¡ ·¹º§º°·Î »óÀÌÇÏ°Ô Áö±Ş µÈ´Ù³×.", ScriptMessageFlag.NpcReplacedByNpc);
+            case 0: //í™˜ìƒì„¤ëª…
+                self.say("#bí™˜ìƒ ì‹œìŠ¤í…œ#kì€ #e250 ë ˆë²¨#n ë‹¬ì„± ì‹œ ì§„í–‰ ê°€ëŠ¥í•˜ë©°, í™˜ìƒ ì§„í–‰ ì‹œ #e235 ë ˆë²¨#në¡œ ëŒì•„ê°€ì§€ í¬í¬í¬, ëª¨ë“  ìŠ¤íƒ¯ ì´ˆê¸°í™” (ì˜¬ìŠ¤íƒ¯ 4, 4, 4, 4) í›„ ë‹¤ìŒê³¼ ê°™ì€ ê³µì‹ìœ¼ë¡œ ìƒˆë¡­ê²Œ APê°€ ì§€ê¸‰ëœë‹¤ë„¤.\r\n\r\n#b999 + (í™˜ìƒ íšŸìˆ˜ + ê°ì„± íšŸìˆ˜) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ì¶”ê°€ë¡œ #bëˆ„ì  í™˜ìƒ íšŸìˆ˜#kê°€ 1íšŒ ì¦ê°€ë˜ë©°, í™˜ìƒ í¬ì¸íŠ¸ê°€ ë ˆë²¨ë³„ë¡œ ìƒì´í•˜ê²Œ ì§€ê¸‰ ëœë‹¤ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
-            case 1: //°¢¼º¼³¸í
-                self.say("#b°¢¼º ½Ã½ºÅÛ#kÀº #e275 ·¹º§#n ´Ş¼º ½Ã ÁøÇà °¡´ÉÇÏ¸ç, °¢¼º ÁøÇà ½Ã #e235 ·¹º§#n·Î µ¹¾Æ°¡Áö Å©Å©Å©, ¸ğµç ½ºÅÈ ÃÊ±âÈ­ (¿Ã½ºÅÈ 4, 4, 4, 4) ÈÄ ´ÙÀ½°ú °°Àº °ø½ÄÀ¸·Î »õ·Ó°Ô AP°¡ Áö±ŞµÈ´Ù³×.\r\n\r\n#b999 + (È¯»ı È½¼ö + °¢¼º È½¼ö) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("Ãß°¡·Î #b´©Àû °¢¼º È½¼ö#k°¡ 1È¸ Áõ°¡µÇ¸ç, ·¹º§¿¡ µû¸¥ È¯»ı Æ÷ÀÎÆ®¿Í °¢¼º Æ÷ÀÎÆ® #b5~10 Æ÷ÀÎÆ®#k¸¦ »çÀÌ·Î ·£´ı È¹µæ ÇÏ°Ô µÈ´Ù³×.\r\n¶ÇÇÑ, °¢¼ºÀº È¯»ı°ú ´Ù¸£°Ô, °¢¼º µî±ŞÀÌ Á¸ÀçÇÏÁö.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("°¢¼º µî±ŞÀº #b¼­ÀüÆ® µî±Ş ºÎÅÍ ½´ÇÁ¸² µî±Ş#k±îÁö Á¸ÀçÇÑ´Ù³×.\r\n°¢¼º µî±ŞÀº µî±Ş¿¡ µû¶ó ÇıÅÃÀÌ Á¸ÀçÇÏÁö.\r\n\r\n°¢¼º µî±Ş¿¡ µû¶ó ÀÌ¿ë °¡´ÉÇÑ ¿¤¸®Æ® Ã¤³ÎÀÌ »óÀÌÇÏ¸ç, ¿¤¸®Æ® Ã¤³Î º° ¸ó½ºÅÍÀÇ Ã¼·Â ¹× º¸»óÀÌ ´Ş¶óÁø´Ù³×.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#e<¿¤¸®Æ® Ã¤³ÎÀÌ¶õ?>#n\r\n\r\n10~17 Ã¤³ÎÀº ¿¤¸®Æ® Ã¤³Î·Î½á, Ã¤³Îº° ¿ä±¸ °¢¼º µî±ŞÀÌ ´Ù¸£Áö.\r\n\r\n#b10~11 Ã¤³Î (¿¤¸®Æ® '°¡µğ¾ğ µî±Ş')#k : #e°¢¼º °¡µğ¾ğ µî±Ş ¿ä±¸#n, ÃâÇöÇÏ´Â ¸ğµç ÀÏ¹İ ¸ó½ºÅÍ Å©±â 2¹è·Î Áõ°¡, Ã¼·Â 10¹è Áõ°¡, ÇØ´ç ¸ó½ºÅÍ¿¡°Ô¼­ ¾ò´Â °æÇèÄ¡ 1.2¹è Àû¿ë\r\n#b12~13Ã¤³Î (¿¤¸®Æ® '¸¶½ºÅÍ µî±Ş')#k #e°¢¼º ¸¶½ºÅÍ µî±Ş ¿ä±¸#n, ÃâÇöÇÏ´Â ¸ğµç ÀÏ¹İ ¸ó½ºÅÍ Å©±â 2¹è·Î Áõ°¡, Ã¼·Â 17¹è Áõ°¡, ÇØ´ç ¸ó½ºÅÍ¿¡°Ô¼­ ¾ò´Â °æÇèÄ¡ 1.4¹è Àû¿ë\r\n#b14~15Ã¤³Î (¿¤¸®Æ® 'Ä¿¸Ç´õ µî±Ş') : #k#e°¢¼º Ä¿¸Ç´õ µî±Ş ¿ä±¸#n, ÃâÇöÇÏ´Â ¸ğµç ÀÏ¹İ ¸ó½ºÅÍ Å©±â 2¹è·Î Áõ°¡, Ã¼·Â 20¹è Áõ°¡, ÇØ´ç ¸ó½ºÅÍ¿¡°Ô¼­ ¾ò´Â °æÇèÄ¡ 1.7¹è Àû¿ë\r\n#b16~17Ã¤³Î (¿¤¸®Æ® '½´ÇÁ¸² µî±Ş') : #k#e°¢¼º ½´ÇÁ¸² µî±Ş ¿ä±¸#n, ÃâÇöÇÏ´Â ¸ğµç ÀÏ¹İ ¸ó½ºÅÍ Å©±â 2¹è·Î Áõ°¡, Ã¼·Â 40¹è Áõ°¡, ÇØ´ç ¸ó½ºÅÍ¿¡°Ô¼­ ¾ò´Â °æÇèÄ¡ 2¹è Àû¿ë", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("Ãß°¡·Î °¢¼º µî±Ş¿¡ µû¶ó °¢¼º »óÁ¡¿¡¼­ µî±Şº°·Î ±¸¸Å °¡´ÉÇÑ Ç°¸ñÀÌ ´Ù¸£¸ç, µî±ŞÀÌ ³ôÀ» ¼ö·Ï ´õ ÁÁÀº ÇıÅÃÀ» ¾òÀ» ¼ö ÀÖ´Ù³×.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#e<°¢¼º ½Â±Ş ¿ä±¸ Á¶°Ç>#n\r\n\r\n#b¼­ÀüÆ® µî±Ş#k : ´©Àû °¢¼º Æ÷ÀÎÆ® 20Á¡\r\n#b°¡µğ¾ğ µî±Ş#k : ´©Àû °¢¼º Æ÷ÀÎÆ® 40Á¡\r\n#b¸¶½ºÅÍµî±Ş#k : ´©Àû °¢¼º Æ÷ÀÎÆ® 80Á¡\r\n#bÄ¿¸Ç´õ µî±Ş#k : ´©Àû °¢¼º Æ÷ÀÎÆ® 200Á¡\r\n#b½´ÇÁ¸² µî±Ş#k : ´©Àû °¢¼º Æ÷ÀÎÆ® 350Á¡", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("¸¶Áö¸·À¸·Î °¢¼º ÁøÇà ½Ã #b°­¸² ¸®¹ö½º ¸â¹ö½Ê#k SP¸¦ 1°³ È¹µæÇÒ ¼ö ÀÖÁö. ¿ŞÂÊ º°¸ğ¾ç ¾ÆÀÌÄÜÀ» ÅëÇØ #b°­¸² ¸®¹ö½º ¸â¹ö½Ê#k ÇıÅÃÀ» ÀÌ¿ëÇÒ ¼ö ÀÖ´Ù³×.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("´©Àû °¢¼º È½¼ö¿¡ µû¶ó #b°­¸² ¸®¹ö½º ¸â¹ö½Ê#k µî±ŞÀ» ¿Ã¸± ¼ö ÀÖÀ¸¸ç, µî±Ş¿¡ µû¶ó ÃÖ´ë ÅõÀÚ °¡´ÉÇÑ ½ºÅ³ ·¹º§ÀÌ Áõ°¡µÈ´Ù³×.\r\n\r\n°¢¼ºÀ» ÅëÇØ ´Ù¾çÇÑ ½ºÅ³À» ¹è¿ì°í Ä³¸¯ÅÍ¸¦ ´õ¿í ¼ºÀå½ÃÄÑº¸°Ô³ª.", ScriptMessageFlag.NpcReplacedByNpc);
+            case 1: //ê°ì„±ì„¤ëª…
+                self.say("#bê°ì„± ì‹œìŠ¤í…œ#kì€ #e275 ë ˆë²¨#n ë‹¬ì„± ì‹œ ì§„í–‰ ê°€ëŠ¥í•˜ë©°, ê°ì„± ì§„í–‰ ì‹œ #e235 ë ˆë²¨#në¡œ ëŒì•„ê°€ì§€ í¬í¬í¬, ëª¨ë“  ìŠ¤íƒ¯ ì´ˆê¸°í™” (ì˜¬ìŠ¤íƒ¯ 4, 4, 4, 4) í›„ ë‹¤ìŒê³¼ ê°™ì€ ê³µì‹ìœ¼ë¡œ ìƒˆë¡­ê²Œ APê°€ ì§€ê¸‰ëœë‹¤ë„¤.\r\n\r\n#b999 + (í™˜ìƒ íšŸìˆ˜ + ê°ì„± íšŸìˆ˜) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ì¶”ê°€ë¡œ #bëˆ„ì  ê°ì„± íšŸìˆ˜#kê°€ 1íšŒ ì¦ê°€ë˜ë©°, ë ˆë²¨ì— ë”°ë¥¸ í™˜ìƒ í¬ì¸íŠ¸ì™€ ê°ì„± í¬ì¸íŠ¸ #b5~10 í¬ì¸íŠ¸#kë¥¼ ì‚¬ì´ë¡œ ëœë¤ íšë“ í•˜ê²Œ ëœë‹¤ë„¤.\r\në˜í•œ, ê°ì„±ì€ í™˜ìƒê³¼ ë‹¤ë¥´ê²Œ, ê°ì„± ë“±ê¸‰ì´ ì¡´ì¬í•˜ì§€.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ê°ì„± ë“±ê¸‰ì€ #bì„œì „íŠ¸ ë“±ê¸‰ ë¶€í„° ìŠˆí”„ë¦¼ ë“±ê¸‰#kê¹Œì§€ ì¡´ì¬í•œë‹¤ë„¤.\r\nê°ì„± ë“±ê¸‰ì€ ë“±ê¸‰ì— ë”°ë¼ í˜œíƒì´ ì¡´ì¬í•˜ì§€.\r\n\r\nê°ì„± ë“±ê¸‰ì— ë”°ë¼ ì´ìš© ê°€ëŠ¥í•œ ì—˜ë¦¬íŠ¸ ì±„ë„ì´ ìƒì´í•˜ë©°, ì—˜ë¦¬íŠ¸ ì±„ë„ ë³„ ëª¬ìŠ¤í„°ì˜ ì²´ë ¥ ë° ë³´ìƒì´ ë‹¬ë¼ì§„ë‹¤ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("#e<ì—˜ë¦¬íŠ¸ ì±„ë„ì´ë€?>#n\r\n\r\n10~17 ì±„ë„ì€ ì—˜ë¦¬íŠ¸ ì±„ë„ë¡œì¨, ì±„ë„ë³„ ìš”êµ¬ ê°ì„± ë“±ê¸‰ì´ ë‹¤ë¥´ì§€.\r\n\r\n#b10~11 ì±„ë„ (ì—˜ë¦¬íŠ¸ 'ê°€ë””ì–¸ ë“±ê¸‰')#k : #eê°ì„± ê°€ë””ì–¸ ë“±ê¸‰ ìš”êµ¬#n, ì¶œí˜„í•˜ëŠ” ëª¨ë“  ì¼ë°˜ ëª¬ìŠ¤í„° í¬ê¸° 2ë°°ë¡œ ì¦ê°€, ì²´ë ¥ 10ë°° ì¦ê°€, í•´ë‹¹ ëª¬ìŠ¤í„°ì—ê²Œì„œ ì–»ëŠ” ê²½í—˜ì¹˜ 1.2ë°° ì ìš©\r\n#b12~13ì±„ë„ (ì—˜ë¦¬íŠ¸ 'ë§ˆìŠ¤í„° ë“±ê¸‰')#k #eê°ì„± ë§ˆìŠ¤í„° ë“±ê¸‰ ìš”êµ¬#n, ì¶œí˜„í•˜ëŠ” ëª¨ë“  ì¼ë°˜ ëª¬ìŠ¤í„° í¬ê¸° 2ë°°ë¡œ ì¦ê°€, ì²´ë ¥ 17ë°° ì¦ê°€, í•´ë‹¹ ëª¬ìŠ¤í„°ì—ê²Œì„œ ì–»ëŠ” ê²½í—˜ì¹˜ 1.4ë°° ì ìš©\r\n#b14~15ì±„ë„ (ì—˜ë¦¬íŠ¸ 'ì»¤ë§¨ë” ë“±ê¸‰') : #k#eê°ì„± ì»¤ë§¨ë” ë“±ê¸‰ ìš”êµ¬#n, ì¶œí˜„í•˜ëŠ” ëª¨ë“  ì¼ë°˜ ëª¬ìŠ¤í„° í¬ê¸° 2ë°°ë¡œ ì¦ê°€, ì²´ë ¥ 20ë°° ì¦ê°€, í•´ë‹¹ ëª¬ìŠ¤í„°ì—ê²Œì„œ ì–»ëŠ” ê²½í—˜ì¹˜ 1.7ë°° ì ìš©\r\n#b16~17ì±„ë„ (ì—˜ë¦¬íŠ¸ 'ìŠˆí”„ë¦¼ ë“±ê¸‰') : #k#eê°ì„± ìŠˆí”„ë¦¼ ë“±ê¸‰ ìš”êµ¬#n, ì¶œí˜„í•˜ëŠ” ëª¨ë“  ì¼ë°˜ ëª¬ìŠ¤í„° í¬ê¸° 2ë°°ë¡œ ì¦ê°€, ì²´ë ¥ 40ë°° ì¦ê°€, í•´ë‹¹ ëª¬ìŠ¤í„°ì—ê²Œì„œ ì–»ëŠ” ê²½í—˜ì¹˜ 2ë°° ì ìš©", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ì¶”ê°€ë¡œ ê°ì„± ë“±ê¸‰ì— ë”°ë¼ ê°ì„± ìƒì ì—ì„œ ë“±ê¸‰ë³„ë¡œ êµ¬ë§¤ ê°€ëŠ¥í•œ í’ˆëª©ì´ ë‹¤ë¥´ë©°, ë“±ê¸‰ì´ ë†’ì„ ìˆ˜ë¡ ë” ì¢‹ì€ í˜œíƒì„ ì–»ì„ ìˆ˜ ìˆë‹¤ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("#e<ê°ì„± ìŠ¹ê¸‰ ìš”êµ¬ ì¡°ê±´>#n\r\n\r\n#bì„œì „íŠ¸ ë“±ê¸‰#k : ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ 20ì \r\n#bê°€ë””ì–¸ ë“±ê¸‰#k : ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ 40ì \r\n#bë§ˆìŠ¤í„°ë“±ê¸‰#k : ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ 80ì \r\n#bì»¤ë§¨ë” ë“±ê¸‰#k : ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ 200ì \r\n#bìŠˆí”„ë¦¼ ë“±ê¸‰#k : ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ 350ì ", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ë§ˆì§€ë§‰ìœ¼ë¡œ ê°ì„± ì§„í–‰ ì‹œ #bê°•ë¦¼ ë¦¬ë²„ìŠ¤ ë©¤ë²„ì‹­#k SPë¥¼ 1ê°œ íšë“í•  ìˆ˜ ìˆì§€. ì™¼ìª½ ë³„ëª¨ì–‘ ì•„ì´ì½˜ì„ í†µí•´ #bê°•ë¦¼ ë¦¬ë²„ìŠ¤ ë©¤ë²„ì‹­#k í˜œíƒì„ ì´ìš©í•  ìˆ˜ ìˆë‹¤ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ëˆ„ì  ê°ì„± íšŸìˆ˜ì— ë”°ë¼ #bê°•ë¦¼ ë¦¬ë²„ìŠ¤ ë©¤ë²„ì‹­#k ë“±ê¸‰ì„ ì˜¬ë¦´ ìˆ˜ ìˆìœ¼ë©°, ë“±ê¸‰ì— ë”°ë¼ ìµœëŒ€ íˆ¬ì ê°€ëŠ¥í•œ ìŠ¤í‚¬ ë ˆë²¨ì´ ì¦ê°€ëœë‹¤ë„¤.\r\n\r\nê°ì„±ì„ í†µí•´ ë‹¤ì–‘í•œ ìŠ¤í‚¬ì„ ë°°ìš°ê³  ìºë¦­í„°ë¥¼ ë”ìš± ì„±ì¥ì‹œì¼œë³´ê²Œë‚˜.", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
-            case 2: { //È¯»ıÇÏ°í ½Í½À´Ï´Ù.
+            case 2: { //í™˜ìƒí•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.
                 if (getPlayer().getLevel() < 250) {
-                    self.say("250 ·¹º§ ÀÌ»ó¸¸ È¯»ıÇÒ ¼ö ÀÖ´Ù³×.\r\nÀÚ³×´Â ´É·ÂÀÌ ºÎÁ·ÇØº¸ÀÌ´Â±º.");
+                    self.say("250 ë ˆë²¨ ì´ìƒë§Œ í™˜ìƒí•  ìˆ˜ ìˆë‹¤ë„¤.\r\nìë„¤ëŠ” ëŠ¥ë ¥ì´ ë¶€ì¡±í•´ë³´ì´ëŠ”êµ°.");
                     return;
                 }
-                v0 = "È¯»ıÀ» ÇÒ ¼ö ÀÖ´Â Á¶°Ç¿¡ ´Ş¼ºÇß±º. Áö±İ ¹Ù·Î È¯»ıÀ» ÇØº¸°Ú´Â°¡?\r\n\r\n#e´©Àû È¯»ı È½¼ö : #b" + nf.format(rc) + "È¸#k#n\r\n\r\n";
-                v0 += "#b#L0#È¯»ıÀ» ÇÏ°Ú½À´Ï´Ù.#l\r\n#L2#ÃÊ¿ù È¯»ıÀ» ÇÏ°Ú½À´Ï´Ù.\r\n#L1#Á¶±İ ´õ »ı°¢ÇÏ°Ú½À´Ï´Ù.#l";
+                v0 = "í™˜ìƒì„ í•  ìˆ˜ ìˆëŠ” ì¡°ê±´ì— ë‹¬ì„±í–ˆêµ°. ì§€ê¸ˆ ë°”ë¡œ í™˜ìƒì„ í•´ë³´ê² ëŠ”ê°€?\r\n\r\n#eëˆ„ì  í™˜ìƒ íšŸìˆ˜ : #b" + nf.format(rc) + "íšŒ#k#n\r\n\r\n";
+                v0 += "#b#L0#í™˜ìƒì„ í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n#L2#ì´ˆì›” í™˜ìƒì„ í•˜ê² ìŠµë‹ˆë‹¤.\r\n#L1#ì¡°ê¸ˆ ë” ìƒê°í•˜ê² ìŠµë‹ˆë‹¤.#l";
                 int vv = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv == 0) {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 1;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b¿¹#k¸¦ ´©¸£¸é È¯»ıµÇ¸ç, #b235 ·¹º§#k·Î µ¹¾Æ°¡°Ô µÈ´Ù³×.\r\n  #b- È¯»ı ½Ã AP : " + ap + "#k\r\n\r\nÁö±İ ¹Ù·Î È¯»ıÇÏ°Ú³ª?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#bì˜ˆ#kë¥¼ ëˆ„ë¥´ë©´ í™˜ìƒë˜ë©°, #b235 ë ˆë²¨#kë¡œ ëŒì•„ê°€ê²Œ ëœë‹¤ë„¤.\r\n  #b- í™˜ìƒ ì‹œ AP : " + ap + "#k\r\n\r\nì§€ê¸ˆ ë°”ë¡œ í™˜ìƒí•˜ê² ë‚˜?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         try {
                             getPlayer().doRebirth();
                             short Tap = 1179;
@@ -252,16 +252,16 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             getPlayer().send(CWvsContext.updatePlayerStats(statups, true, getPlayer()));
                         } catch (Exception e) {
                             DiscordBotHandler.requestSendTelegram(e.getMessage());
-                            System.out.println("È¯»ı¿À·ù ¹ß»ı ¸Ş¼¼Áö°¡ Àü¼ÛµË´Ï´Ù.");
+                            System.out.println("í™˜ìƒì˜¤ë¥˜ ë°œìƒ ë©”ì„¸ì§€ê°€ ì „ì†¡ë©ë‹ˆë‹¤.");
                         }
                     }
                 } else if (vv == 2) {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 2;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b¿¹#k¸¦ ´©¸£¸é È¯»ıµÇ¸ç, #b235 ·¹º§#k·Î µ¹¾Æ°¡°Ô µÈ´Ù³×.\r\nÃÊ¿ù È¯»ıÀº #r2,000 °­¸²Å©·¹µ÷#kÀÌ ÇÊ¿äÇÏ¸ç 2È¸ÀÇ È¯»ı È¿°ú¸¦ ¾òÀ» ¼ö ÀÖ´Ù³×.\r\n  #b- È¯»ı ½Ã AP : " + ap + "#k\r\n\r\nÁö±İ ¹Ù·Î ÃÊ¿ù È¯»ıÇÏ°Ú³ª?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#bì˜ˆ#kë¥¼ ëˆ„ë¥´ë©´ í™˜ìƒë˜ë©°, #b235 ë ˆë²¨#kë¡œ ëŒì•„ê°€ê²Œ ëœë‹¤ë„¤.\r\nì´ˆì›” í™˜ìƒì€ #r2,000 ê°•ë¦¼í¬ë ˆë”§#kì´ í•„ìš”í•˜ë©° 2íšŒì˜ í™˜ìƒ íš¨ê³¼ë¥¼ ì–»ì„ ìˆ˜ ìˆë‹¤ë„¤.\r\n  #b- í™˜ìƒ ì‹œ AP : " + ap + "#k\r\n\r\nì§€ê¸ˆ ë°”ë¡œ ì´ˆì›” í™˜ìƒí•˜ê² ë‚˜?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         if (getPlayer().getRealCash() < 2000) {
-                            self.say("°­¸² Å©·¹µ÷ÀÌ ºÎÁ·ÇØ º¸ÀÌ´Â±º. #r2,000 °­¸²Å©·¹µ÷#kÀÌ ÇÊ¿äÇÏ´Ù ¸»ÇÏÁö ¾Ê¾Ò¼Ò?");
+                            self.say("ê°•ë¦¼ í¬ë ˆë”§ì´ ë¶€ì¡±í•´ ë³´ì´ëŠ”êµ°. #r2,000 ê°•ë¦¼í¬ë ˆë”§#kì´ í•„ìš”í•˜ë‹¤ ë§í•˜ì§€ ì•Šì•˜ì†Œ?");
                             return;
                         }
                         try {
@@ -287,25 +287,25 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             getPlayer().gainRealCash(-2000);
                         } catch (Exception e) {
                             DiscordBotHandler.requestSendTelegram(e.getMessage());
-                            System.out.println("È¯»ı¿À·ù ¹ß»ı ¸Ş¼¼Áö°¡ Àü¼ÛµË´Ï´Ù.");
+                            System.out.println("í™˜ìƒì˜¤ë¥˜ ë°œìƒ ë©”ì„¸ì§€ê°€ ì „ì†¡ë©ë‹ˆë‹¤.");
                         }
                     }
                 }
                 break;
             }
-            case 3: { //°¢¼ºÀ» ÇÏ°Ú½À´Ï´Ù.
+            case 3: { //ê°ì„±ì„ í•˜ê² ìŠµë‹ˆë‹¤.
                 if (getPlayer().getLevel() < 275) {
-                    self.say("275 ·¹º§ ÀÌ»ó¸¸ °¢¼ºÇÒ ¼ö ÀÖ´Ù³×.\r\nÀÚ³×´Â ´É·ÂÀÌ ºÎÁ·ÇØº¸ÀÌ´Â±º.");
+                    self.say("275 ë ˆë²¨ ì´ìƒë§Œ ê°ì„±í•  ìˆ˜ ìˆë‹¤ë„¤.\r\nìë„¤ëŠ” ëŠ¥ë ¥ì´ ë¶€ì¡±í•´ë³´ì´ëŠ”êµ°.");
                     return;
                 }
-                v0 = "°¢¼ºÀ» ÇÒ ¼ö ÀÖ´Â Á¶°Ç¿¡ ´Ş¼ºÇß±º. Áö±İ ¹Ù·Î °¢¼ºÀ» ÇØº¸°Ú´Â°¡?\r\n\r\n#e´©Àû °¢¼º È½¼ö : #b" + nf.format(src) + "È¸#k#n\r\n\r\n";
-                v0 += "#b#L0#°¢¼ºÀ» ÇÏ°Ú½À´Ï´Ù.#l\r\n#L1#Á¶±İ ´õ »ı°¢ÇÏ°Ú½À´Ï´Ù.#l";
+                v0 = "ê°ì„±ì„ í•  ìˆ˜ ìˆëŠ” ì¡°ê±´ì— ë‹¬ì„±í–ˆêµ°. ì§€ê¸ˆ ë°”ë¡œ ê°ì„±ì„ í•´ë³´ê² ëŠ”ê°€?\r\n\r\n#eëˆ„ì  ê°ì„± íšŸìˆ˜ : #b" + nf.format(src) + "íšŒ#k#n\r\n\r\n";
+                v0 += "#b#L0#ê°ì„±ì„ í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n#L1#ì¡°ê¸ˆ ë” ìƒê°í•˜ê² ìŠµë‹ˆë‹¤.#l";
                 int vv = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv == 0) {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 1;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b¿¹#k¸¦ ´©¸£¸é °¢¼ºµÇ¸ç, #b235 ·¹º§#k·Î µ¹¾Æ°¡°Ô µÈ´Ù³×.\r\n  #b- È¯»ı ½Ã AP : " + ap + "#k\r\n\r\nÁö±İ ¹Ù·Î °¢¼ºÇÏ°Ú³ª?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#bì˜ˆ#kë¥¼ ëˆ„ë¥´ë©´ ê°ì„±ë˜ë©°, #b235 ë ˆë²¨#kë¡œ ëŒì•„ê°€ê²Œ ëœë‹¤ë„¤.\r\n  #b- í™˜ìƒ ì‹œ AP : " + ap + "#k\r\n\r\nì§€ê¸ˆ ë°”ë¡œ ê°ì„±í•˜ê² ë‚˜?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         try {
                             getPlayer().doSuperRebirth();
                             short Tap = 1179;
@@ -328,32 +328,32 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             getPlayer().send(CWvsContext.updatePlayerStats(statups, true, getPlayer()));
                         } catch (Exception e) {
                             DiscordBotHandler.requestSendTelegram(e.getMessage());
-                            System.out.println("°¢¼º¿À·ù ¹ß»ı ¸Ş¼¼Áö°¡ Àü¼ÛµË´Ï´Ù.");
+                            System.out.println("ê°ì„±ì˜¤ë¥˜ ë°œìƒ ë©”ì„¸ì§€ê°€ ì „ì†¡ë©ë‹ˆë‹¤.");
                         }
                     }
                 }
                 break;
             }
-            case 4: { //°¢¼º ½Â±Ş
+            case 4: { //ê°ì„± ìŠ¹ê¸‰
                 int total = getPlayer().getOneInfoQuestInteger(100712, "total");
 
-                v0 = "ÇöÀç #b#h0##k ÀÚ³×ÀÇ °¢¼º Á¤º¸´Â ¾Æ·¡¿Í °°´Ù³×.\r\n\r\n";
-                v0 += "#e´©Àû È¯»ı È½¼ö : #b" + nf.format(rc) + "È¸#k\r\n";
-                v0 += "´©Àû °¢¼º È½¼ö : #b" + nf.format(src) + "È¸#k\r\n";
-                v0 += "´©Àû °¢¼º Æ÷ÀÎÆ® : #b" + nf.format(total) + "#k\r\n";
-                v0 += "°¢¼º µî±Ş : #b" + rGrade + "µî±Ş#k#n\r\n\r\n";
-                v0 += "#b#L0#°¢¼º ½Â±ŞÀ» ÁøÇàÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-                v0 += "#L1#±×¸¸ ´ëÈ­ÇÏ°Ú½À´Ï´Ù.#l\r\n";
+                v0 = "í˜„ì¬ #b#h0##k ìë„¤ì˜ ê°ì„± ì •ë³´ëŠ” ì•„ë˜ì™€ ê°™ë‹¤ë„¤.\r\n\r\n";
+                v0 += "#eëˆ„ì  í™˜ìƒ íšŸìˆ˜ : #b" + nf.format(rc) + "íšŒ#k\r\n";
+                v0 += "ëˆ„ì  ê°ì„± íšŸìˆ˜ : #b" + nf.format(src) + "íšŒ#k\r\n";
+                v0 += "ëˆ„ì  ê°ì„± í¬ì¸íŠ¸ : #b" + nf.format(total) + "#k\r\n";
+                v0 += "ê°ì„± ë“±ê¸‰ : #b" + rGrade + "ë“±ê¸‰#k#n\r\n\r\n";
+                v0 += "#b#L0#ê°ì„± ìŠ¹ê¸‰ì„ ì§„í–‰í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+                v0 += "#L1#ê·¸ë§Œ ëŒ€í™”í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
                 int vv = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv == 0) {
                     int grade = getPlayer().getOneInfoQuestInteger(100711, "grade");
 
-                    String[] gradeName = {"½ºÄ«¿ô", "¼­ÀüÆ®", "°¡µğ¾ğ", "¸¶½ºÅÍ", "Ä¿¸Ç´õ", "½´ÇÁ¸²"};
-                    v0 = "#e<°¢¼º ½Â±Ş ½ÅÃ»>#n\r\n\r\n#eÇöÀç µî±Ş : #b" + gradeName[grade] + "#k#n\r\n";
-                    v0 += "#e´ÙÀ½ µî±Ş : #b" + gradeName[grade + 1] + "#k#n\r\n\r\n´ÙÀ½ µî±ŞÀ¸·Î ½Â±ŞÇÏ°Ú³ª?";
+                    String[] gradeName = {"ìŠ¤ì¹´ì›ƒ", "ì„œì „íŠ¸", "ê°€ë””ì–¸", "ë§ˆìŠ¤í„°", "ì»¤ë§¨ë”", "ìŠˆí”„ë¦¼"};
+                    v0 = "#e<ê°ì„± ìŠ¹ê¸‰ ì‹ ì²­>#n\r\n\r\n#eí˜„ì¬ ë“±ê¸‰ : #b" + gradeName[grade] + "#k#n\r\n";
+                    v0 += "#eë‹¤ìŒ ë“±ê¸‰ : #b" + gradeName[grade + 1] + "#k#n\r\n\r\në‹¤ìŒ ë“±ê¸‰ìœ¼ë¡œ ìŠ¹ê¸‰í•˜ê² ë‚˜?";
                     if (grade == 5) {
-                        v0 = "#e<°¢¼º ½Â±Ş ½ÅÃ»>#n\r\n\r\n#eÇöÀç µî±Ş : #b" + gradeName[grade] + "#k#n\r\n";
-                        v0 += "\r\nÀÚ³×´Â ´õ ÀÌ»ó ½Â±ŞÇÒ ¼ö ¾ø´Ù³×.";
+                        v0 = "#e<ê°ì„± ìŠ¹ê¸‰ ì‹ ì²­>#n\r\n\r\n#eí˜„ì¬ ë“±ê¸‰ : #b" + gradeName[grade] + "#k#n\r\n";
+                        v0 += "\r\nìë„¤ëŠ” ë” ì´ìƒ ìŠ¹ê¸‰í•  ìˆ˜ ì—†ë‹¤ë„¤.";
                         self.say(v0, ScriptMessageFlag.NpcReplacedByNpc);
                         return;
                     }
@@ -371,20 +371,20 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             need = 350;
                         }
                         if (total < need) {
-                            self.say("½Â±Ş Á¶°Ç¿¡ ´Ş¼ºÇÏÁö ¸øÇÏ¿© ½Â±ŞÀÌ ºÒ°¡´É ÇÏ´Ù³×.\r\n\r\n¿ä±¸ Æ÷ÀÎÆ® : #b" + need + "#k", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ìŠ¹ê¸‰ ì¡°ê±´ì— ë‹¬ì„±í•˜ì§€ ëª»í•˜ì—¬ ìŠ¹ê¸‰ì´ ë¶ˆê°€ëŠ¥ í•˜ë‹¤ë„¤.\r\n\r\nìš”êµ¬ í¬ì¸íŠ¸ : #b" + need + "#k", ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         getPlayer().updateOneInfo(100711, "grade", (grade + 1) + "");
-                        self.say("½Â±ŞÀÌ ¿Ï·áµÇ¾î #e" + gradeName[(grade + 1)] + " µî±Ş#nÀÌ µÇ¾ú´Ù³×.", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("ìŠ¹ê¸‰ì´ ì™„ë£Œë˜ì–´ #e" + gradeName[(grade + 1)] + " ë“±ê¸‰#nì´ ë˜ì—ˆë‹¤ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 }
                 break;
             }
-            case 5: { //È¯»ı»óÁ¡
+            case 5: { //í™˜ìƒìƒì 
                 openShop(9062194);
                 break;
             }
-            case 6: { //°¢¼º»óÁ¡
+            case 6: { //ê°ì„±ìƒì 
                 displayShop();
                 //openShop(9062195);
                 break;
@@ -398,26 +398,26 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             return;
         }
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n#b#h0##k ¾È³çÇÏ´Ù³É\r\n\r\n³ª´Â #r" + ServerConstants.serverName + "¼­¹ö#kÀÇ ±¤Àå »óÁ¡À» ¸Ã°íÀÖ´Â #b¹¦¹¦#k´Ù³É\r\nÇÊ¿äÇÑ°ÍÀÌ ÀÖ³É?\r\n#b" +
-                "#L0#Àåºñ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L1#¼Òºñ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L2#½ºÆå¾÷ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L3#¼³Ä¡ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L4#Ä³½Ã(¸Ş¼Ò) »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L5#º¸½º Æ÷ÀÎÆ® »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L6#ÈŞ½Ä Æ÷ÀÎÆ® »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l", ScriptMessageFlag.NpcReplacedByNpc);
+        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n#b#h0##k ì•ˆë…•í•˜ë‹¤ëƒ¥\r\n\r\në‚˜ëŠ” #r" + ServerConstants.serverName + "ì„œë²„#kì˜ ê´‘ì¥ ìƒì ì„ ë§¡ê³ ìˆëŠ” #bë¬˜ë¬˜#kë‹¤ëƒ¥\r\ní•„ìš”í•œê²ƒì´ ìˆëƒ¥?\r\n#b" +
+                "#L0#ì¥ë¹„ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L1#ì†Œë¹„ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L2#ìŠ¤í™ì—… ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L3#ì„¤ì¹˜ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L4#ìºì‹œ(ë©”ì†Œ) ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L5#ë³´ìŠ¤ í¬ì¸íŠ¸ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L6#íœ´ì‹ í¬ì¸íŠ¸ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l", ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
-            case 0: { //Àåºñ»óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #rÀåºñ »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#¸ğ·ç »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#r(Áö¼ÓÇØ¼­ Ãß°¡¿¹Á¤)#b#l\r\n" +
-                        "#L1#¹İÁö »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L2#º¸Á¶¹«±â »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L3#¿¥ºí·½ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L4#¾Û¼Ö·¦½º »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#r(¾Û¼Ö·¦½º ÄÚÀÎ)#b#l\r\n" +
-                        "#L5#¾Û¼Ö·¦½º »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#r(½ºÆ¼±×¸¶ ÄÚÀÎ)#b#l\r\n" +
-                        "#L6#¾ÆÄÉÀÎ »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#r(ÆÇÅ¸Áî¸¶ ÄÚÀÎ)#b#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            case 0: { //ì¥ë¹„ìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rì¥ë¹„ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#ëª¨ë£¨ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#r(ì§€ì†í•´ì„œ ì¶”ê°€ì˜ˆì •)#b#l\r\n" +
+                        "#L1#ë°˜ì§€ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L2#ë³´ì¡°ë¬´ê¸° ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L3#ì— ë¸”ë ˜ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L4#ì•±ì†”ë©ìŠ¤ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#r(ì•±ì†”ë©ìŠ¤ ì½”ì¸)#b#l\r\n" +
+                        "#L5#ì•±ì†”ë©ìŠ¤ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#r(ìŠ¤í‹°ê·¸ë§ˆ ì½”ì¸)#b#l\r\n" +
+                        "#L6#ì•„ì¼€ì¸ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#r(íŒíƒ€ì¦ˆë§ˆ ì½”ì¸)#b#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
-                    case 0: //¸ğ·ç»óÁ¡
+                    case 0: //ëª¨ë£¨ìƒì 
                         openShop(777777);
                         break;
                     case 1:
@@ -430,67 +430,67 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                         openShop(777780);
                         break;
                     case 4:
-                        openShop(777781); //¾Û¼Ö·¦½º ÄÚÀÎ
+                        openShop(777781); //ì•±ì†”ë©ìŠ¤ ì½”ì¸
                         break;
                     case 5:
-                        openShop(777782); //½ºÆ¼±×¸¶ ÄÚÀÎ
+                        openShop(777782); //ìŠ¤í‹°ê·¸ë§ˆ ì½”ì¸
                         break;
                     case 6:
-                        openShop(777783); //ÆÇÅ¸Áî¸¶ ÄÚÀÎ
+                        openShop(777783); //íŒíƒ€ì¦ˆë§ˆ ì½”ì¸
                         break;
                 }
                 break;
             }
-            case 1: { //¼Òºñ»óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #r¼Òºñ »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#¹°¾àÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L1#µµÇÎ¹°¾àÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L2#È­»ì, Ç¥Ã¢, ºÒ¸´À» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l", ScriptMessageFlag.NpcReplacedByNpc);
+            case 1: { //ì†Œë¹„ìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rì†Œë¹„ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#ë¬¼ì•½ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L1#ë„í•‘ë¬¼ì•½ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L2#í™”ì‚´, í‘œì°½, ë¶ˆë¦¿ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
-                    case 0: //¹°¾à±¸¸Å
+                    case 0: //ë¬¼ì•½êµ¬ë§¤
                         openShop(778777);
                         break;
-                    case 1: //µµÇÎ¹°¾à±¸¸Å
+                    case 1: //ë„í•‘ë¬¼ì•½êµ¬ë§¤
                         openShop(778778);
                         break;
-                    case 2: //È­»ì Ç¥Ã¢ ºÒ¸´ ±¸¸Å
+                    case 2: //í™”ì‚´ í‘œì°½ ë¶ˆë¦¿ êµ¬ë§¤
                         openShop(778779);
                         break;
                 }
                 break;
             }
-            case 2: { //½ºÆå¾÷»óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #r½ºÆå¾÷ »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#Å¥ºê¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L1#ÁÖ¹®¼­¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L2#È¯»ıÀÇ ºÒ²ÉÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L3#¼­Å§·¹ÀÌÅÍ¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L4#¼Ò¿ï»óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            case 2: { //ìŠ¤í™ì—…ìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rìŠ¤í™ì—… ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#íë¸Œë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L1#ì£¼ë¬¸ì„œë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L2#í™˜ìƒì˜ ë¶ˆê½ƒì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L3#ì„œí˜ë ˆì´í„°ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L4#ì†Œìš¸ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
-                    case 0: //Å¥ºê±¸¸Å
+                    case 0: //íë¸Œêµ¬ë§¤
                         openShop(779777);
                         break;
-                    case 1: //ÁÖ¹®¼­ ±¸¸Å
+                    case 1: //ì£¼ë¬¸ì„œ êµ¬ë§¤
                         openShop(779778);
                         break;
-                    case 2: //È¯»ıÀÇ ºÒ²É ±¸¸Å
+                    case 2: //í™˜ìƒì˜ ë¶ˆê½ƒ êµ¬ë§¤
                         openShop(779779);
                         break;
-                    case 3: //¼­Å§·¹ÀÌÅÍ ±¸¸Å
+                    case 3: //ì„œí˜ë ˆì´í„° êµ¬ë§¤
                         openShop(779780);
                         break;
-                    case 4: //¼Ò¿ï
+                    case 4: //ì†Œìš¸
                         openShop(779781);
                         break;
                 }
                 break;
             }
-            case 3: { //¼³Ä¡»óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #r¼³Ä¡ »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#ÀÇÀÚ¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L1#¶óÀÌµùÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L2#µ¥¹ÌÁö ½ºÅ²À» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L3#ÄªÈ£¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l", ScriptMessageFlag.NpcReplacedByNpc);
+            case 3: { //ì„¤ì¹˜ìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rì„¤ì¹˜ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#ì˜ìë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L1#ë¼ì´ë”©ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L2#ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L3#ì¹­í˜¸ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
                     case 0: {
                         openShop(780777);
@@ -511,14 +511,14 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 }
                 break;
             }
-            case 4: { //Ä³½Ã»óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #rÄ³½Ã(¸Ş¼Ò) »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#ÆêÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L1#ÆêÀåºñ(Àåºñ, ½ºÅ³)¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L2#Ä³½ÃÇ¥Ã¢À» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L3#È®¼º±â¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L4#Ä«¸£Å¸ÀÇ ÁøÁÖ¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä(¾Æµ¨ µî ±ÍÁ¦°Å).#l\r\n" +
-                        "#L5#¸ŞÀÌÇÃ Æ÷ÀÎÆ®¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            case 4: { //ìºì‹œìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rìºì‹œ(ë©”ì†Œ) ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#í«ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L1#í«ì¥ë¹„(ì¥ë¹„, ìŠ¤í‚¬)ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L2#ìºì‹œí‘œì°½ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L3#í™•ì„±ê¸°ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L4#ì¹´ë¥´íƒ€ì˜ ì§„ì£¼ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”(ì•„ë¸ ë“± ê·€ì œê±°).#l\r\n" +
+                        "#L5#ë©”ì´í”Œ í¬ì¸íŠ¸ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
                     case 0: {
                         openShop(781777);
@@ -547,43 +547,43 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 }
                 break;
             }
-            case 5: { //º¸½ºÆ÷ÀÎÆ® »óÁ¡
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #rº¸½º Æ÷ÀÎÆ® »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                        "#L0#º¸½º Æ÷ÀÎÆ® »óÁ¡À» ÀÌ¿ëÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                        "#L1#º¸½º Æ÷ÀÎÆ®´Â ¹«¾ùÀÎ°¡¿ä?#l", ScriptMessageFlag.NpcReplacedByNpc);
+            case 5: { //ë³´ìŠ¤í¬ì¸íŠ¸ ìƒì 
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rë³´ìŠ¤ í¬ì¸íŠ¸ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                        "#L0#ë³´ìŠ¤ í¬ì¸íŠ¸ ìƒì ì„ ì´ìš©í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                        "#L1#ë³´ìŠ¤ í¬ì¸íŠ¸ëŠ” ë¬´ì—‡ì¸ê°€ìš”?#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
                     case 0:
                         openShop(9073008);
                         break;
                     case 1:
-                        self.say("º¸½º Æ÷ÀÎÆ®¶õ º¸½º¸¦ ÀâÀ¸¸é ¾òÀ» ¼ö ÀÖ´Â Æ÷ÀÎÆ®´Ù ³É");
-                        self.say("º¸½º°¡ °­ÇÒ¼ö·Ï Æ÷ÀÎÆ®¸¦ ¸¹ÀÌ¾ò°í ¾àÇÏ¸é Æ÷ÀÎÆ®¸¦ ¾Æ¿¹ ¹ú ¼ö ¾ø´Â º¸½ºµµ ÀÖ´Ù ³É");
-                        self.say("º¸½ºº°·Î ¹ú ¼ö ÀÖ´Â Æ÷ÀÎÆ®´Â ÀÌ·¸´Ù ³É\r\n\r\nÄ«¿À½º ÀÚÄñ : 10~15 ·£´ı\r\n" +
-                                "Ä«¿À½º ÇÇ¿¡¸£ : 10~15 ·£´ı\r\n" +
-                                "Ä«¿À½º ¹İ¹İ : 10~15 ·£´ı\r\n" +
-                                "Ä«¿À½º ºí·¯µğÄı : 10~15 ·£´ı\r\n" +
-                                "ÇÏµå ¸Å±×³Ê½º : 20~25 ·£´ı\r\n" +
-                                "Ä«¿À½º º§·ë : 20~25 ·£´ı\r\n" +
-                                "Ä«¿À½º ÆÄÇ®¶óÅõ½º : 30~35 ·£´ı\r\n" +
-                                "³ë¸» ½º¿ì : 30~35 ·£´ı\r\n" +
-                                "³ë¸» µ¥¹Ì¾È : 40~45 ·£´ı\r\n" +
-                                "³ë¸» ·ç½Ãµå : 40~45 ·£´ı\r\n" +
-                                "³ë¸» Àª : 40~45 ·£´ı\r\n" +
-                                "³ë¸» ´õ½ºÅ© : 40~45 ·£´ı\r\n" +
-                                "³ë¸» µáÄÌ : 40~45 ·£´ı\r\n" +
-                                "ÇÏµå µ¥¹Ì¾È : 60~65 ·£´ı\r\n" +
-                                "ÇÏµå ½º¿ì : 60~65 ·£´ı\r\n" +
-                                "ÇÏµå ·ç½Ãµå : 60~65 ·£´ı\r\n" +
-                                "ÇÏµå Àª : 60~65 ·£´ı\r\n" +
-                                "Ä«¿À½º ´õ½ºÅ© : 70~75 ·£´ı\r\n" +
-                                "ÇÏµå µáÄÌ : 70~75 ·£´ı\r\n" +
-                                "Áø Èú¶ó : 70~75 ·£´ı\r\n" +
-                                "°ËÀº ¸¶¹ı»ç : 200~250 ·£´ı", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("ë³´ìŠ¤ í¬ì¸íŠ¸ë€ ë³´ìŠ¤ë¥¼ ì¡ìœ¼ë©´ ì–»ì„ ìˆ˜ ìˆëŠ” í¬ì¸íŠ¸ë‹¤ ëƒ¥");
+                        self.say("ë³´ìŠ¤ê°€ ê°•í• ìˆ˜ë¡ í¬ì¸íŠ¸ë¥¼ ë§ì´ì–»ê³  ì•½í•˜ë©´ í¬ì¸íŠ¸ë¥¼ ì•„ì˜ˆ ë²Œ ìˆ˜ ì—†ëŠ” ë³´ìŠ¤ë„ ìˆë‹¤ ëƒ¥");
+                        self.say("ë³´ìŠ¤ë³„ë¡œ ë²Œ ìˆ˜ ìˆëŠ” í¬ì¸íŠ¸ëŠ” ì´ë ‡ë‹¤ ëƒ¥\r\n\r\nì¹´ì˜¤ìŠ¤ ìì¿° : 10~15 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ í”¼ì—ë¥´ : 10~15 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ ë°˜ë°˜ : 10~15 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ ë¸”ëŸ¬ë””í€¸ : 10~15 ëœë¤\r\n" +
+                                "í•˜ë“œ ë§¤ê·¸ë„ˆìŠ¤ : 20~25 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ ë²¨ë£¸ : 20~25 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ íŒŒí’€ë¼íˆ¬ìŠ¤ : 30~35 ëœë¤\r\n" +
+                                "ë…¸ë§ ìŠ¤ìš° : 30~35 ëœë¤\r\n" +
+                                "ë…¸ë§ ë°ë¯¸ì•ˆ : 40~45 ëœë¤\r\n" +
+                                "ë…¸ë§ ë£¨ì‹œë“œ : 40~45 ëœë¤\r\n" +
+                                "ë…¸ë§ ìœŒ : 40~45 ëœë¤\r\n" +
+                                "ë…¸ë§ ë”ìŠ¤í¬ : 40~45 ëœë¤\r\n" +
+                                "ë…¸ë§ ë“„ì¼ˆ : 40~45 ëœë¤\r\n" +
+                                "í•˜ë“œ ë°ë¯¸ì•ˆ : 60~65 ëœë¤\r\n" +
+                                "í•˜ë“œ ìŠ¤ìš° : 60~65 ëœë¤\r\n" +
+                                "í•˜ë“œ ë£¨ì‹œë“œ : 60~65 ëœë¤\r\n" +
+                                "í•˜ë“œ ìœŒ : 60~65 ëœë¤\r\n" +
+                                "ì¹´ì˜¤ìŠ¤ ë”ìŠ¤í¬ : 70~75 ëœë¤\r\n" +
+                                "í•˜ë“œ ë“„ì¼ˆ : 70~75 ëœë¤\r\n" +
+                                "ì§„ íë¼ : 70~75 ëœë¤\r\n" +
+                                "ê²€ì€ ë§ˆë²•ì‚¬ : 200~250 ëœë¤", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                 }
                 break;
             }
-            case 6: { //ÈŞ½ÄÆ÷ÀÎÆ® »óÁ¡
+            case 6: { //íœ´ì‹í¬ì¸íŠ¸ ìƒì 
                 int currentDP = getPlayer().getDancePoint();
                 int[][] items = new int[][]{
                         {2350004, 100},
@@ -602,27 +602,27 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 String shopItems = "#b";
                 for (int i = 0; i < items.length; i++) {
                     if (items[i][0] == 2439178) {
-                        shopItems += "\r\n #L" + i + "##i" + items[i][0] + "# #z" + items[i][0] + "# (" + items[i][1] + "p) #r¿¬±İ¼ú È¹µæ»óÀÚ#b#l";
+                        shopItems += "\r\n #L" + i + "##i" + items[i][0] + "# #z" + items[i][0] + "# (" + items[i][1] + "p) #rì—°ê¸ˆìˆ  íšë“ìƒì#b#l";
                     } else {
                         shopItems += "\r\n #L" + i + "##i" + items[i][0] + "# #z" + items[i][0] + "# (" + items[i][1] + "p)#l";
                     }
                 }
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #rÈŞ½Ä Æ÷ÀÎÆ® »óÁ¡#kÀÌ´Ù³É\r\n\r\n#e [ÇöÀç ³ªÀÇ ÈŞ½Ä Æ÷ÀÎÆ® : " + currentDP + "p]#n\r\n" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #ríœ´ì‹ í¬ì¸íŠ¸ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\n#e [í˜„ì¬ ë‚˜ì˜ íœ´ì‹ í¬ì¸íŠ¸ : " + currentDP + "p]#n\r\n" +
                         shopItems, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv >= 0) {
                     if (items[vv][1] > currentDP) {
-                        self.sayOk("ÈŞ½Ä Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÑ°Ô ¾Æ´ÑÁö È®ÀÎÇØºÁ¶ó ³É", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.sayOk("íœ´ì‹ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•œê²Œ ì•„ë‹Œì§€ í™•ì¸í•´ë´ë¼ ëƒ¥", ScriptMessageFlag.NpcReplacedByNpc);
                         return;
                     }
-                    if (1 == self.askYesNo("Á¤¸»·Î #b#i" + items[vv][0] + "# #z" + items[vv][0] + "#¸¦#k " + items[vv][1] + "point¿¡ ±¸ÀÔÇÒ°Å ³É?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("ì •ë§ë¡œ #b#i" + items[vv][0] + "# #z" + items[vv][0] + "#ë¥¼#k " + items[vv][1] + "pointì— êµ¬ì…í• ê±° ëƒ¥?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         if (target.exchange(items[vv][0], 1) > 0) {
                             getPlayer().setDancePoint(currentDP - items[vv][1]);
-                            self.sayOk("±³È¯ÀÌ ¿Ï·áµÆ´Ù ³É ´ÙÀ½¿¡ ¶Ç¿Í¶ó ³É");
+                            self.sayOk("êµí™˜ì´ ì™„ë£Œëë‹¤ ëƒ¥ ë‹¤ìŒì— ë˜ì™€ë¼ ëƒ¥");
                         } else {
-                            self.sayOk("¿©À¯½½·ÔÀÌ ÀÖ´ÂÁö È®ÀÎÇØºÁ¶ó ³É", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.sayOk("ì—¬ìœ ìŠ¬ë¡¯ì´ ìˆëŠ”ì§€ í™•ì¸í•´ë´ë¼ ëƒ¥", ScriptMessageFlag.NpcReplacedByNpc);
                         }
                     } else {
-                        self.sayOk("½ÅÁßÈ÷ »ı°¢ÇØº¸°í ´Ù½Ã¿Í¶ó ³É", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.sayOk("ì‹ ì¤‘íˆ ìƒê°í•´ë³´ê³  ë‹¤ì‹œì™€ë¼ ëƒ¥", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 }
                 break;
@@ -632,11 +632,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void Royal_Pet_Shop() {
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #¾Ö¿Ï »óÁ¡#kÀÌ´Ù³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                "#L0#ÆêÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L1#ÆêÀåºñ(Àåºñ, ½ºÅ³)¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L2#Ä³½ÃÇ¥Ã¢À» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L3#¸ŞÀÌÇÃ Æ÷ÀÎÆ®¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #ì• ì™„ ìƒì #kì´ë‹¤ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                "#L0#í«ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L1#í«ì¥ë¹„(ì¥ë¹„, ìŠ¤í‚¬)ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L2#ìºì‹œí‘œì°½ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L3#ë©”ì´í”Œ í¬ì¸íŠ¸ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
         switch (vv) {
             case 0: {
                 openShop(781777);
@@ -659,11 +659,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void Royal_Gacha_Shop() {
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nÀÌ°÷Àº #r°¡Ã­ »óÁ¡#kÀÌ´Ù³É ÇÇ³Ó ¸Ó½ÅÀÌ³ª ¸Ó¸ŞÀÌµå °Å¿ï ºÎÈ­±â µî ´Ù¾çÇÑ ¾ÆÀÌÅÛÀÌ ÁØºñµÇ¾îÀÖ´Ù ³É\r\n\r\nÇÊ¿äÇÑ°ÍÀÌ ¹«¾ùÀÎÁö °ñ¶ó¶ó³É\r\n#b" +
-                "#L0#ÀÇÀÚ¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L1#¶óÀÌµùÀ» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L2#µ¥¹ÌÁö ½ºÅ²À» ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l\r\n" +
-                "#L3#ÄªÈ£¸¦ ±¸¸ÅÇÏ°í ½Í¾î¿ä.#l", ScriptMessageFlag.NpcReplacedByNpc);
+        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\nì´ê³³ì€ #rê°€ì±  ìƒì #kì´ë‹¤ëƒ¥ í”¼ë„› ë¨¸ì‹ ì´ë‚˜ ë¨¸ë©”ì´ë“œ ê±°ìš¸ ë¶€í™”ê¸° ë“± ë‹¤ì–‘í•œ ì•„ì´í…œì´ ì¤€ë¹„ë˜ì–´ìˆë‹¤ ëƒ¥\r\n\r\ní•„ìš”í•œê²ƒì´ ë¬´ì—‡ì¸ì§€ ê³¨ë¼ë¼ëƒ¥\r\n#b" +
+                "#L0#ì˜ìë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L1#ë¼ì´ë”©ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L2#ë°ë¯¸ì§€ ìŠ¤í‚¨ì„ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l\r\n" +
+                "#L3#ì¹­í˜¸ë¥¼ êµ¬ë§¤í•˜ê³  ì‹¶ì–´ìš”.#l", ScriptMessageFlag.NpcReplacedByNpc);
         switch (vv) {
             case 0: {
                 openShop(780777);
@@ -692,13 +692,13 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         int reward = -1;
         int[] arr;
         switch (itemID) {
-            case 5060002: //ÇÁ¸®¹Ì¾ö ºÎÈ­±â
-            case 5060005: //ÇÁ¸®¹Ì¾ö ºÎÈ­±â (¶óÀÌµù)
+            case 5060002: //í”„ë¦¬ë¯¸ì—„ ë¶€í™”ê¸°
+            case 5060005: //í”„ë¦¬ë¯¸ì—„ ë¶€í™”ê¸° (ë¼ì´ë”©)
                 arr = new int[]{2430050, 2430056, 2430072, 2430243, 2430506, 2430518, 2430566, 2430610, 2430633, 2430660, 2430726, 2430939, 2430727, 2430794, 2430968, 2431044, 2431135, 2431362, 2431364, 2431366, 2431367, 2431368, 2431369, 2431370, 2431371, 2431474, 2431490, 2431491, 2431492, 2431494, 2431496, 2431497, 2431498, 2431499, 2431500, 2431501, 2431502, 2431503, 2431505, 2431506, 2431527, 2431530, 2431700, 2431745, 2431760, 2431764, 2431765, 2431797, 2431799, 2431898, 2431914, 2431915, 2432006, 2432008, 2432015, 2432029, 2432030, 2432078, 2432085, 2432135, 2432149, 2432151, 2432216, 2432218, 2432291, 2432293, 2432295, 2432309, 2432347, 2432348, 2432349, 2432350, 2432351, 2432359, 2432361, 2432418, 2432433, 2432449, 2432498, 2432527, 2432528, 2432582, 2432645, 2432653, 2432724, 2432733, 2432994, 2432997, 2432998, 2432999, 2433000, 2433001, 2433002, 2433003, 2433006, 2433272, 2433274, 2433276, 2433345, 2433347, 2433349, 2433405, 2433406, 2433460, 2433603, 2433735, 2433736, 2433809, 2433811, 2433946, 2433948, 2434025, 2434077, 2434079, 2434275, 2434277, 2434377, 2434379, 2434515, 2434517, 2434525, 2434527, 2434582, 2434649, 2434737, 2434761, 2435089, 2435091, 2435112, 2435113, 2435114, 2435203, 2435205, 2435298, 2435442, 2435476, 2435517, 2435720, 2435722, 2435842, 2435843, 2435844, 2435845, 2435965, 2435967, 2435986, 2436030, 2436031, 2436183, 2436185, 2436292, 2436294, 2436405, 2436407, 2436524, 2436525, 2436526, 2436597, 2436599, 2436610, 2436648, 2436715, 2436716, 2436728, 2436730, 2436778, 2436780, 2436837, 2436839, 2436957, 2437026, 2437040, 2437042, 2437123, 2437125, 2437259, 2437261, 2437497, 2437625, 2437737, 2437738, 2437794, 2437852, 2438136, 2438137, 2438138, 2438139, 2438340, 2438373, 2438408, 2438409, 2438493, 2438494, 2438657, 2438743, 2438882, 2438886, 2439266, 2439278, 2439295, 2439406, 2439443, 2439666, 2439667, 2630116, 2630240, 2630261, 2630279, 2630386, 2630387, 2630448, 2630570, 2631460, 2631561, 2631563, 2631710, 2432328, 2437623, 2437719, 2437721, 2437923, 2438486, 2438640, 2438715, 2439034, 2439127, 2439331, 2439486, 2439675, 2439694, 2439808, 2439911, 2439913, 2439915, 2630451, 2630476, 2630488, 2630563, 2630573, 2630575, 2630763, 2630764, 2630765, 2630913, 2630917, 2630918, 2630919, 2630971, 2631136, 2631140, 2631413, 2631448, 2631518, 2631520, 2435296, 2437809, 2438380, 2438382, 2438488, 2438638, 2438745, 2439036, 2439144, 2439329, 2439484, 2439677, 2439909, 2439933, 2631191, 2631914, 2631800, 2631890, 2632275, 2632283, 2633075, 2633309, 2632352, 2632353, 2632887, 2632885, 2632361, 2632445, 2632713, 2632834, 2632913, 2633061, 2633075, 2633310, 2633601, 2633602};
                 reward = arr[Randomizer.rand(0, arr.length - 1)];
                 needItem = 4170000;
                 break;
-            case 5060003: //ÇÇ³Ó¸Ó½Å (ÀÇÀÚ)
+            case 5060003: //í”¼ë„›ë¨¸ì‹  (ì˜ì)
                 if (itemArray.size() == 0) {
                     Iterator it = MapleItemInformationProvider.getInstance().getAllItems().iterator();
                     boolean banned = false;
@@ -710,7 +710,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                 banned = true;
                             }
                         }
-                        if (itemPair.getLeft() >= 3010000 && itemPair.getLeft() <= 3018720 && (itemPair.getRight() != null && (!itemPair.getRight().contains("¸í¿¹ÀÇ")) && itemPair.getRight() != "") && banned == false) {
+                        if (itemPair.getLeft() >= 3010000 && itemPair.getLeft() <= 3018720 && (itemPair.getRight() != null && (!itemPair.getRight().contains("ëª…ì˜ˆì˜")) && itemPair.getRight() != "") && banned == false) {
                             itemArray.add(itemPair.getLeft());
                         }
                     }
@@ -720,34 +720,34 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 }
                 needItem = 4170023;
                 break;
-            case 5060004: //ÀüÀÚ·¹ÀÎÁö (¹ÌÁ¤)
-                needItem = 4170024; //¾ÆÀÌ½ºÅ¥ºê
+            case 5060004: //ì „ìë ˆì¸ì§€ (ë¯¸ì •)
+                needItem = 4170024; //ì•„ì´ìŠ¤íë¸Œ
                 break;
-            case 5060012: //¸Ó¸ŞÀÌµå ¹Ì·¯ (µ¥¹ÌÁö½ºÅ²)
+            case 5060012: //ë¨¸ë©”ì´ë“œ ë¯¸ëŸ¬ (ë°ë¯¸ì§€ìŠ¤í‚¨)
                 arr = new int[]{2431966, 2431965, 2431967, 2432131, 2438163, 2438164, 2438165, 2438166, 2438167, 2438168, 2438169, 2438170, 2438171, 2438172, 2438173, 2438174, 2438175, 2438176, 2438177, 2438179, 2438178, 2438180, 2438181, 2438182, 2438184, 2438185, 2438186, 2438187, 2438188, 2438189, 2438190, 2438191, 2438192, 2438193, 2438195, 2438196, 2438197, 2438201, 2438198, 2438199, 2438200, 2438202, 2438203, 2438204, 2438205, 2438206, 2438207, 2438208, 2438209, 2438210, 2438211, 2438212, 2438213, 2438214, 2438215, 2438216, 2438217, 2438218, 2438219, 2438220, 2438221, 2438222, 2438223, 2438224, 2438225, 2438226, 2438227, 2438228, 2438229, 2438230, 2438231, 2438232, 2438233, 2438234, 2438235, 2438236, 2438237, 2438238, 2438239, 2438240, 2438241, 2438242, 2438243, 2438244, 2438245, 2438246, 2438247, 2438248, 2438249, 2438250, 2438251, 2438252, 2438253, 2438254, 2438255, 2438256, 2438257, 2438258, 2438259, 2438260, 2438261, 2438262, 2438263, 2438264, 2438265, 2438266, 2438267, 2438268, 2438269, 2438270, 2438271, 2438272, 2438273, 2438274, 2438275, 2438276, 2438277, 2438278, 2438279, 2438280, 2438281, 2438282, 2438283, 2438284, 2438285, 2438286, 2438287, 2438288, 2438289, 2438290, 2438291, 2438292, 2438293, 2438294, 2438295, 2438296, 2438297, 2438298, 2438299, 2438300, 2438301, 2438302, 2438303, 2438304, 2438305, 2438306, 2438307, 2438308, 2438309, 2438310, 2438311, 2438312, 2438313, 2438314, 2438315, 2438353, 2438378, 2438379, 2438413, 2438415, 2438417, 2438419, 2438485, 2438492, 2438530, 2438637, 2438672, 2438713, 2438871, 2438881, 2438885, 2439298, 2439336, 2439337, 2439338, 2439381, 2439393, 2439395, 2439408, 2439572, 2439617, 2439652, 2439684, 2439686, 2439769, 2439925, 2439927, 2630137, 2630222, 2630178, 2630214, 2630235, 2630224, 2630262, 2630264, 2630266, 2439397, 2439399, 2630268, 2439682, 2439401, 2438149, 2438151, 2630477, 2630479, 2630481, 2630483, 2630485, 2630552, 2630554, 2630558, 2630560, 2630652, 2630743, 2630745, 2630747, 2630749, 2630751, 2630766, 2630804, 2631094, 2631135, 2631189, 2631183, 2631401, 2631471, 2631492, 2631610, 2630380, 2438147, 2631893, 2631885, 2631815, 2631798, 2632124, 2632281, 2632288, 2632350, 2632430, 2632544, 2632498, 2632712, 2632816, 5680862, 2632281, 2632888, 2632976, 2633045, 2633047, 2633074, 2633218, 2633220, 2633306, 2633313, 2633573, 2633599};
                 reward = arr[Randomizer.rand(0, arr.length - 1)];
                 needItem = 4170031;
                 break;
-            case 5060018: //¹«ÇÑÀÇ ¼­ (ÄªÈ£)
+            case 5060018: //ë¬´í•œì˜ ì„œ (ì¹­í˜¸)
                 arr = new int[]{3700000, 3700001, 3700005, 3700006, 3700007, 3700008, 3700009, 3700011, 3700012, 3700013, 3700014, 3700016, 3700468, 3700017, 3700018, 3700019, 3700020, 3700039, 3700040, 3700041, 3700042, 3700043, 3700044, 3700045, 3700046, 3700047, 3700048, 3700049, 3700057, 3700074, 3700075, 3700076, 3700077, 3700078, 3700079, 3700080, 3700081, 3700082, 3700084, 3700098, 3700099, 3700100, 3700101, 3700103, 3700106, 3700118, 3700119, 3700120, 3700135, 3700136, 3700141, 3700142, 3700143, 3700144, 3700147, 3700148, 3700149, 3700150, 3700156, 3700157, 3700158, 3700159, 3700164, 3700214, 3700215, 3700216, 3700217, 3700218, 3700219, 3700220, 3700228, 3700229, 3700230, 3700231, 3700242, 3700244, 3700245, 3700247, 3700248, 3700249, 3700250, 3700251, 3700252, 3700253, 3700254, 3700263, 3700268, 3700269, 3700270, 3700271, 3700272, 3700279, 3700280, 3700281, 3700284, 3700285, 3700286, 3700288, 3700321, 3700322, 3700334, 3700335, 3700336, 3700350, 3700351, 3700380, 3700385, 3700388, 3700389, 3700390, 3700402, 3700418, 3700419, 3700429, 3700442, 3700465, 3700466, 3700486, 3700000, 3700001, 3700005, 3700006, 3700007, 3700008, 3700009, 3700011, 3700012, 3700013, 3700014, 3700016, 3700017, 3700018, 3700019, 3700020, 3700039, 3700040, 3700041, 3700042, 3700043, 3700044, 3700045, 3700046, 3700047, 3700048, 3700049, 3700057, 3700074, 3700075, 3700076, 3700077, 3700078, 3700079, 3700080, 3700081, 3700082, 3700084, 3700085, 3700087, 3700098, 3700099, 3700100, 3700101, 3700103, 3700106, 3700118, 3700119, 3700120, 3700135, 3700136, 3700141, 3700142, 3700143, 3700144, 3700147, 3700148, 3700149, 3700150, 3700156, 3700157, 3700158, 3700159, 3700164, 3700214, 3700215, 3700216, 3700217, 3700218, 3700219, 3700220, 3700228, 3700229, 3700230, 3700231, 3700242, 3700244, 3700245, 3700247, 3700248, 3700249, 3700250, 3700251, 3700252, 3700253, 3700254, 3700263, 3700268, 3700269, 3700270, 3700271, 3700272, 3700279, 3700280, 3700281, 3700284, 3700285, 3700286, 3700288, 3700321, 3700322, 3700334, 3700335, 3700336, 3700350, 3700351, 3700380, 3700385, 3700388, 3700389, 3700390, 3700402, 3700418, 3700419, 3700429, 3700442, 3700465, 3700466, 3700486};
                 reward = arr[Randomizer.rand(0, arr.length - 1)];
                 needItem = 4170038;
                 break;
         }
         if (needItem == -1 || reward == -1) {
-            self.sayOk("Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+            self.sayOk("ì˜ëª»ëœ ì ‘ê·¼ì…ë‹ˆë‹¤.");
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                 getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1 ||
                 getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 3) {
-            self.sayOk("Àåºñ1Ä­, ¼Òºñ3Ä­, ¼³Ä¡1Ä­ ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+            self.sayOk("ì¥ë¹„1ì¹¸, ì†Œë¹„3ì¹¸, ì„¤ì¹˜1ì¹¸ ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
             return;
         }
         if (target.exchange(itemID, -1, needItem, -1, reward, 1) > 0) {
             getPlayer().send(CWvsContext.getIncubatorResult(reward, (short) 1, 0, (short) 0, itemID));
-        } else { //¿©±â·Î ¿Ã°æ¿ì ¾ø±äÇÔ
-            self.sayOk("½½·ÔÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+        } else { //ì—¬ê¸°ë¡œ ì˜¬ê²½ìš° ì—†ê¸´í•¨
+            self.sayOk("ìŠ¬ë¡¯ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
         }
     }
 
@@ -760,7 +760,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void rank_user() {
         int v = -1;
-        String L0 = "#L0#ÀÏÀÏ º¸»ó ¹Ş¾Æ°¡±â#l";
+        String L0 = "#L0#ì¼ì¼ ë³´ìƒ ë°›ì•„ê°€ê¸°#l";
         String L1 = "";
         String customText1 = Center.RankerCustomText;
         String customText2 = Center.Ranker2CustomText;
@@ -775,69 +775,69 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             rank = "3";
 
         if (getPlayer().getName().equals(npc.getName()))
-                L1 = "\r\n#fs11##L1#·©Ä¿¸¦ À§ÇÑ Æ¯º°¸Ş´º(¹®±¸º¯°æ)";
+                L1 = "\r\n#fs11##L1#ë­ì»¤ë¥¼ ìœ„í•œ íŠ¹ë³„ë©”ë‰´(ë¬¸êµ¬ë³€ê²½)";
 
-        // 1À§
+        // 1ìœ„
         if (rank == "1") {
             if (getPlayer().getName().equals(npc.getName()))
-                L0 = "#L0#Æ¯º°ÇÑ ÀÏÀÏ º¸»ó ¹Ş¾Æ°¡±â(1À§Àü¿ë)#l";
+                L0 = "#L0#íŠ¹ë³„í•œ ì¼ì¼ ë³´ìƒ ë°›ì•„ê°€ê¸°(1ìœ„ì „ìš©)#l";
 
             if (!customText1.equals("")) {
                 v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText1 + "\r\n\r\n#b" + L0 + L1);
             } else {
-                v = self.askMenu("#fs11#¾È³çÇÏ¼¼¿ä \r\nÀú´Â ÀüÅõ·Â ÃøÁ¤ ·©Å· " + rank + "À§¸¦ ´Ş¼ºÁßÀÎ #b" + npc.getName() + "#k ÀÔ´Ï´Ù.\r\n\r\n#b" + L0 + L1);
+                v = self.askMenu("#fs11#ì•ˆë…•í•˜ì„¸ìš” \r\nì €ëŠ” ì „íˆ¬ë ¥ ì¸¡ì • ë­í‚¹ " + rank + "ìœ„ë¥¼ ë‹¬ì„±ì¤‘ì¸ #b" + npc.getName() + "#k ì…ë‹ˆë‹¤.\r\n\r\n#b" + L0 + L1);
             }
-        // 2À§
+        // 2ìœ„
         } else if (rank == "2") {
             if (!customText2.equals("")) {
-                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText2 + "\r\n\r\n#b#L3#" + rank + "À§ ¶ó´Ï ´ë´ÜÇÏ¼¼¿ä !#l" + L1);
+                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText2 + "\r\n\r\n#b#L3#" + rank + "ìœ„ ë¼ë‹ˆ ëŒ€ë‹¨í•˜ì„¸ìš” !#l" + L1);
             } else {
-                v = self.askMenu("#fs11#¾È³çÇÏ¼¼¿ä \r\nÀú´Â ÀüÅõ·Â ÃøÁ¤ ·©Å· " + rank + "À§¸¦ ´Ş¼ºÁßÀÎ #b" + npc.getName() + "#k ÀÔ´Ï´Ù.\r\n\r\n#b#L3#" + rank + "À§ ¶ó´Ï ´ë´ÜÇÏ¼¼¿ä !#l" + L1);
+                v = self.askMenu("#fs11#ì•ˆë…•í•˜ì„¸ìš” \r\nì €ëŠ” ì „íˆ¬ë ¥ ì¸¡ì • ë­í‚¹ " + rank + "ìœ„ë¥¼ ë‹¬ì„±ì¤‘ì¸ #b" + npc.getName() + "#k ì…ë‹ˆë‹¤.\r\n\r\n#b#L3#" + rank + "ìœ„ ë¼ë‹ˆ ëŒ€ë‹¨í•˜ì„¸ìš” !#l" + L1);
             }
-        // 3À§
+        // 3ìœ„
         } else if (rank == "3") {
             if (!customText3.equals("")) {
-                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText3 + "\r\n\r\n#b#L3#" + rank + "À§ ¶ó´Ï ´ë´ÜÇÏ¼¼¿ä !#l" + L1);
+                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText3 + "\r\n\r\n#b#L3#" + rank + "ìœ„ ë¼ë‹ˆ ëŒ€ë‹¨í•˜ì„¸ìš” !#l" + L1);
             } else {
-               v = self.askMenu("#fs11#¾È³çÇÏ¼¼¿ä \r\nÀú´Â ÀüÅõ·Â ÃøÁ¤ ·©Å· " + rank + "À§¸¦ ´Ş¼ºÁßÀÎ #b" + npc.getName() + "#k ÀÔ´Ï´Ù.\r\n\r\n#b#L3#" + rank + "À§ ¶ó´Ï ´ë´ÜÇÏ¼¼¿ä !#l" + L1);
+               v = self.askMenu("#fs11#ì•ˆë…•í•˜ì„¸ìš” \r\nì €ëŠ” ì „íˆ¬ë ¥ ì¸¡ì • ë­í‚¹ " + rank + "ìœ„ë¥¼ ë‹¬ì„±ì¤‘ì¸ #b" + npc.getName() + "#k ì…ë‹ˆë‹¤.\r\n\r\n#b#L3#" + rank + "ìœ„ ë¼ë‹ˆ ëŒ€ë‹¨í•˜ì„¸ìš” !#l" + L1);
             }
         }
         switch (v) {
             case 0: {
                 if (getPlayer().getOneInfoQuestInteger(1234699, "dailyGiftCT") < 1) {
-                    if (rank == "1" && getPlayer().getName().equals(npc.getName())) {  // 1À§ º»ÀÎ º¸»ó
+                    if (rank == "1" && getPlayer().getName().equals(npc.getName())) {  // 1ìœ„ ë³¸ì¸ ë³´ìƒ
                         if (target.exchange(5062005, 20, 5062503, 20, 2430044, 1, 4001715, 50, 4031227, 500) > 0) {
                             getPlayer().updateOneInfo(1234699, "dailyGiftCT", "1");
-                            self.sayOk("#fs11#ÀÏÀÏ º¸»óÀ» ¼º°øÀûÀ¸·Î ¼ö·ÉÇß½À´Ï´Ù.\r\n\r\n\r\n#b" +
-                                    "#i5062005# #z5062005# 20°³\r\n" +
-                                    "#i5062503# #z5062503# 20°³\r\n" +
-                                    "#i2430044# #z2430044# 1°³\r\n" +
-                                    "#i4001715# #z4001715# 50°³\r\n" +
-                                    "#i4031227# #z4031227# 500°³\r\n");
+                            self.sayOk("#fs11#ì¼ì¼ ë³´ìƒì„ ì„±ê³µì ìœ¼ë¡œ ìˆ˜ë ¹í–ˆìŠµë‹ˆë‹¤.\r\n\r\n\r\n#b" +
+                                    "#i5062005# #z5062005# 20ê°œ\r\n" +
+                                    "#i5062503# #z5062503# 20ê°œ\r\n" +
+                                    "#i2430044# #z2430044# 1ê°œ\r\n" +
+                                    "#i4001715# #z4001715# 50ê°œ\r\n" +
+                                    "#i4031227# #z4031227# 500ê°œ\r\n");
                         } else {
-                            self.say("#fs11#ÀÎº¥Åä¸®¿¡ ¿©À¯°ø°£ÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
+                            self.say("#fs11#ì¸ë²¤í† ë¦¬ì— ì—¬ìœ ê³µê°„ì´ í•„ìš”í•©ë‹ˆë‹¤.");
                         }
-                    } else { // ÀüÃ¼ º¸»ó
+                    } else { // ì „ì²´ ë³´ìƒ
                         if (target.exchange(5062005, 10, 5062503, 10, 2430043, 1, 4001715, 20, 4031227, 200) > 0) {
                             getPlayer().updateOneInfo(1234699, "dailyGiftCT", "1");
-                            self.sayOk("#fs11#ÀÏÀÏ º¸»óÀ» ¼º°øÀûÀ¸·Î ¼ö·ÉÇß½À´Ï´Ù.\r\n\r\n\r\n#b" +
-                                    "#i5062005# #z5062005# 10°³\r\n" +
-                                    "#i5062503# #z5062503# 10°³\r\n" +
-                                    "#i2430043# #z2430043# 1°³\r\n" +
-                                    "#i4001715# #z4001715# 20°³\r\n" +
-                                    "#i4031227# #z4031227# 200°³\r\n");
+                            self.sayOk("#fs11#ì¼ì¼ ë³´ìƒì„ ì„±ê³µì ìœ¼ë¡œ ìˆ˜ë ¹í–ˆìŠµë‹ˆë‹¤.\r\n\r\n\r\n#b" +
+                                    "#i5062005# #z5062005# 10ê°œ\r\n" +
+                                    "#i5062503# #z5062503# 10ê°œ\r\n" +
+                                    "#i2430043# #z2430043# 1ê°œ\r\n" +
+                                    "#i4001715# #z4001715# 20ê°œ\r\n" +
+                                    "#i4031227# #z4031227# 200ê°œ\r\n");
                         } else {
-                            self.say("#fs11#ÀÎº¥Åä¸®¿¡ ¿©À¯°ø°£ÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
+                            self.say("#fs11#ì¸ë²¤í† ë¦¬ì— ì—¬ìœ ê³µê°„ì´ í•„ìš”í•©ë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.sayOk("#fs11#¿À´ÃÀº ÀÌ¹Ì ÀÏÀÏº¸»óÀ» ¹Ş¾Æ°¡¼Ì½À´Ï´Ù.");
+                    self.sayOk("#fs11#ì˜¤ëŠ˜ì€ ì´ë¯¸ ì¼ì¼ë³´ìƒì„ ë°›ì•„ê°€ì…¨ìŠµë‹ˆë‹¤.");
                 }
                 break;
             }
             case 1: {
                 if (getPlayer().getName().equals(npc.getName())) {
-                    String text = self.askText("#fs11#Ä¿½ºÅÒ ¹®±¸¸¦ ³Ö¾îÁÖ¼¼¿ä! Ä¿½ºÅÒ ¹®±¸´Â ¸®º×µ¿¾È À¯ÁöµË´Ï´Ù.");
+                    String text = self.askText("#fs11#ì»¤ìŠ¤í…€ ë¬¸êµ¬ë¥¼ ë„£ì–´ì£¼ì„¸ìš”! ì»¤ìŠ¤í…€ ë¬¸êµ¬ëŠ” ë¦¬ë¶“ë™ì•ˆ ìœ ì§€ë©ë‹ˆë‹¤.");
                     if (!text.equals("") && !text.contains("#")) {
                         if (rank == "1")
                             Center.RankerCustomText = text;
@@ -845,15 +845,15 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             Center.Ranker2CustomText = text;
                         if (rank == "3")
                             Center.Ranker3CustomText = text;
-                        self.sayOk("#fs11#Ä¿½ºÅÒ ¹®±¸°¡ ¼º°øÀûÀ¸·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+                        self.sayOk("#fs11#ì»¤ìŠ¤í…€ ë¬¸êµ¬ê°€ ì„±ê³µì ìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
                     } else {
-                        self.sayOk("#fs11## ¹× °ø¹éÀº »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("#fs11## ë° ê³µë°±ì€ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     }
                 }
                 break;
             }
             case 3: {
-                self.sayOk("#fs11#°¨»çÇÕ´Ï´Ù.");
+                self.sayOk("#fs11#ê°ì‚¬í•©ë‹ˆë‹¤.");
                 break;
             }
         }
@@ -879,7 +879,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 {450015240, 215, 220, 160},
                 {450015290, 215, 220, 190},
                 {450015300, 215, 220, 190},
-                {450003220, 220, 225, 190}, //¹«¹ı3
+                {450003220, 220, 225, 190}, //ë¬´ë²•3
                 {450003310, 220, 225, 210},
                 {450003320, 220, 225, 210},
                 {450003510, 220, 225, 240},
@@ -982,9 +982,9 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 {410003190, 270, 300, 200},
                 {410003200, 270, 300, 200},
         };
-        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/0#\r\n¿øÇÏ½Ã´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä.\r\n#b#L0#ÀûÁ¤ ·¹º§ »ç³ÉÅÍ#l\r\n#L1#ÇöÀç ·¹º§ ÀÌ¿ë°¡´ÉÇÑ ¸ğµç »ç³ÉÅÍ#l");
+        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/0#\r\nì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”.\r\n#b#L0#ì ì • ë ˆë²¨ ì‚¬ëƒ¥í„°#l\r\n#L1#í˜„ì¬ ë ˆë²¨ ì´ìš©ê°€ëŠ¥í•œ ëª¨ë“  ì‚¬ëƒ¥í„°#l");
         switch (v) {
-            case 0: { //ÀûÁ¤·¹º§
+            case 0: { //ì ì •ë ˆë²¨
                 List<Integer> maps = new ArrayList<>();
                 int index = 0;
                 String mapString = "     #fUI/UIWindow2.img/Script/Title/0#\r\n";
@@ -1039,12 +1039,12 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void consume_2439178() {
         initNPC(MapleLifeFactory.getNPC(9031005));
-        if (self.askYesNo("¿¬±İ¼úÀ» ¹è¿ì½Ã°Ú½À´Ï±î?\r\n\r\n¡Ø ´Ù¸¥ Á¾·ùÀÇ µµÇÎ¹°¾àÀ» 2°³ »ç¿ë °¡´ÉÇÏ°Ô µË´Ï´Ù. ¡Ø") == 1) {
+        if (self.askYesNo("ì—°ê¸ˆìˆ ì„ ë°°ìš°ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\nâ€» ë‹¤ë¥¸ ì¢…ë¥˜ì˜ ë„í•‘ë¬¼ì•½ì„ 2ê°œ ì‚¬ìš© ê°€ëŠ¥í•˜ê²Œ ë©ë‹ˆë‹¤. â€»") == 1) {
             if (target.exchange(2439178, -1) > 0) {
                 getPlayer().changeSkillLevel(92040000, 1, 13);
-                self.sayOk("¿¬±İ¼ú ½ºÅ³ È¹µæ¿¡ ¼º°øÇß½À´Ï´Ù.");
+                self.sayOk("ì—°ê¸ˆìˆ  ìŠ¤í‚¬ íšë“ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.");
             } else {
-                self.say("Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+                self.say("ì˜ëª»ëœ ì ‘ê·¼ì…ë‹ˆë‹¤.");
             }
         }
     }
@@ -1060,7 +1060,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             List.of(new Pair<>(4001716, 50), new Pair<>(4310266, 800), new Pair<>(4310308, 5000))
     );
 
-    //Á¦´Ï¾Æ°¡ 10À¸·Î °ª ³Ö¾î³ğ.. ¹Ù²Ù´ø°¡ »©´ø°¡ ÇØ¾ßÇÒµí?
+    //ì œë‹ˆì•„ê°€ 10ìœ¼ë¡œ ê°’ ë„£ì–´ë†ˆ.. ë°”ê¾¸ë˜ê°€ ë¹¼ë˜ê°€ í•´ì•¼í• ë“¯?
 
     List<Long> bossTierUpgradeMesoList = List.of(
             10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L
@@ -1068,7 +1068,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void bossRank() {
         if (getPlayer().getBossTier() >= 8) {
-            self.sayOk("ÃÖ°í´Ü°è±îÁö ½Â±ŞÀ» ÇÏ¿© ´õ ÀÌ»ó ½Â±ŞÀ» ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.sayOk("ìµœê³ ë‹¨ê³„ê¹Œì§€ ìŠ¹ê¸‰ì„ í•˜ì—¬ ë” ì´ìƒ ìŠ¹ê¸‰ì„ í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -1076,51 +1076,51 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             getPlayer().setBossTier(1);
         }
 
-        StringBuilder str = new StringBuilder("#fs11##fc0xFF990033##eº¸½º ·©Å© ½Â±Ş ½Ã½ºÅÛ#n#fc0xFF000000#ÀÌ¶ó³×.\r\n");
-        str.append("#bº¸½º ·©Å© ½Â±Ş#fc0xFF000000#À» ÅëÇØ ´õ¿í ´õ °­ÇØÁ®º¸Áö ¾Ê°Ú³ª!?\r\n\r\n");
-        str.append("#L0##b´ÙÀ½ ·¹º§·Î ½Â±ŞÇÏ°Ú½À´Ï´Ù.#l\r\n");
-        str.append("#L1##bº¸½º ·©Å©¶õ ¹«¾ùÀÎ°¡¿ä?#l");
+        StringBuilder str = new StringBuilder("#fs11##fc0xFF990033##eë³´ìŠ¤ ë­í¬ ìŠ¹ê¸‰ ì‹œìŠ¤í…œ#n#fc0xFF000000#ì´ë¼ë„¤.\r\n");
+        str.append("#bë³´ìŠ¤ ë­í¬ ìŠ¹ê¸‰#fc0xFF000000#ì„ í†µí•´ ë”ìš± ë” ê°•í•´ì ¸ë³´ì§€ ì•Šê² ë‚˜!?\r\n\r\n");
+        str.append("#L0##bë‹¤ìŒ ë ˆë²¨ë¡œ ìŠ¹ê¸‰í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n");
+        str.append("#L1##bë³´ìŠ¤ ë­í¬ë€ ë¬´ì—‡ì¸ê°€ìš”?#l");
         int select = self.askMenu(str.toString());
         if (select == 1) {
-            str = new StringBuilder("#fs11##fc0xFF990033#[·©Å©º° ½Â±Ş¹öÇÁ]\r\n\r\n");
-            str.append("[1] ·©Å© ´ç\r\n#bº¸½º °ø°İ·Â + 10%\r\n#bº¸½º ÀÔÀå°¡´ÉÈ½¼ö + 1\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 2·¹º§]\r\n#bÇÏµå ½º¿ì, µ¥¹Ì¾È, ·ç½Ãµå ÀÔÀå °¡´É\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 3·¹º§]\r\n#b°¡µğ¾ğ ¿£Á© ½½¶óÀÓ, ³ë¸Ö Àª ÀÔÀå °¡´É\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 4·¹º§]\r\n#b³ë¸Ö ´õ½ºÅ© ÀÔÀå °¡´É\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 5·¹º§]\r\n#bÇÏµå Àª, µáÄÌ ÀÔÀå °¡´É\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 6·¹º§]\r\n#bÄ«¿À½º ´õ½ºÅ©, Áø Èú¶ó ÀÔÀå °¡´É\r\n\r\n");
-            str.append("#fc0xFF990033#[º¸½º ·©Å© 7·¹º§]\r\n#b°ËÀº¸¶¹ı»ç, ¼¼·» ÀÔÀå °¡´É");
+            str = new StringBuilder("#fs11##fc0xFF990033#[ë­í¬ë³„ ìŠ¹ê¸‰ë²„í”„]\r\n\r\n");
+            str.append("[1] ë­í¬ ë‹¹\r\n#bë³´ìŠ¤ ê³µê²©ë ¥ + 10%\r\n#bë³´ìŠ¤ ì…ì¥ê°€ëŠ¥íšŸìˆ˜ + 1\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 2ë ˆë²¨]\r\n#bí•˜ë“œ ìŠ¤ìš°, ë°ë¯¸ì•ˆ, ë£¨ì‹œë“œ ì…ì¥ ê°€ëŠ¥\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 3ë ˆë²¨]\r\n#bê°€ë””ì–¸ ì—”ì ¤ ìŠ¬ë¼ì„, ë…¸ë©€ ìœŒ ì…ì¥ ê°€ëŠ¥\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 4ë ˆë²¨]\r\n#bë…¸ë©€ ë”ìŠ¤í¬ ì…ì¥ ê°€ëŠ¥\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 5ë ˆë²¨]\r\n#bí•˜ë“œ ìœŒ, ë“„ì¼ˆ ì…ì¥ ê°€ëŠ¥\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 6ë ˆë²¨]\r\n#bì¹´ì˜¤ìŠ¤ ë”ìŠ¤í¬, ì§„ íë¼ ì…ì¥ ê°€ëŠ¥\r\n\r\n");
+            str.append("#fc0xFF990033#[ë³´ìŠ¤ ë­í¬ 7ë ˆë²¨]\r\n#bê²€ì€ë§ˆë²•ì‚¬, ì„¸ë Œ ì…ì¥ ê°€ëŠ¥");
             self.sayOk(str.toString());
         } else {
-            str = new StringBuilder("#fs11#´ÙÀ½ ·¹º§·Î ·¹º§¾÷À» ÇÏ±â À§ÇØ¼± ¾Æ·¡¿Í °°Àº Àç·á°¡ ÇÊ¿äÇÏ´Ù³×.\r\n\r\n");
+            str = new StringBuilder("#fs11#ë‹¤ìŒ ë ˆë²¨ë¡œ ë ˆë²¨ì—…ì„ í•˜ê¸° ìœ„í•´ì„  ì•„ë˜ì™€ ê°™ì€ ì¬ë£Œê°€ í•„ìš”í•˜ë‹¤ë„¤.\r\n\r\n");
             for (var pair : bossTierUpgradeItemList.get(getPlayer().getBossTier())) {
-                str.append("#i").append(pair.left).append("# #b#z").append(pair.left).append("# #r").append(pair.right).append("°³#k\r\n");
+                str.append("#i").append(pair.left).append("# #b#z").append(pair.left).append("# #r").append(pair.right).append("ê°œ#k\r\n");
             }
-            str.append("\r\n#fs11##e#bÁ¤¸» ½Â±ŞÀ» ÇÒÅÙ°¡?#k#n");
+            str.append("\r\n#fs11##e#bì •ë§ ìŠ¹ê¸‰ì„ í• í…ê°€?#k#n");
             int askType = self.askYesNo(str.toString());
 
             if (askType == 1) {
                 for (var pair : bossTierUpgradeItemList.get(getPlayer().getBossTier())) {
                     if (!getPlayer().haveItem(pair.left, pair.right)) {
-                        self.sayOk("½Â±Ş¿¡ ÇÊ¿äÇÑ #eÀç·á#n°¡ ¸ğÀÚ¶õ °Í °°±º.");
+                        self.sayOk("ìŠ¹ê¸‰ì— í•„ìš”í•œ #eì¬ë£Œ#nê°€ ëª¨ìë€ ê²ƒ ê°™êµ°.");
                         return;
                     }
                 }
 
                 if (getPlayer().getMeso() < bossTierUpgradeMesoList.get(getPlayer().getBossTier())) {
-                    self.sayOk("½Â±Ş¿¡ ÇÊ¿äÇÑ #e¸Ş¼Ò#n°¡ ¸ğÀÚ¶õ °Í °°±º.");
+                    self.sayOk("ìŠ¹ê¸‰ì— í•„ìš”í•œ #eë©”ì†Œ#nê°€ ëª¨ìë€ ê²ƒ ê°™êµ°.");
                     return;
                 }
 
                 if (Math.floor(Math.random() * 100) < 100) {
                     int nextTier = getPlayer().getBossTier() + 1;
-                    Center.Broadcast.broadcastMessage(CField.chatMsg(8, "[º¸½º·©Å©] " + getPlayer().getName() + " ´ÔÀÌ " + nextTier + " ·¹º§·Î ·¹º§¾÷¿¡ ¼º°øÇÏ¿´½À´Ï´Ù."));
+                    Center.Broadcast.broadcastMessage(CField.chatMsg(8, "[ë³´ìŠ¤ë­í¬] " + getPlayer().getName() + " ë‹˜ì´ " + nextTier + " ë ˆë²¨ë¡œ ë ˆë²¨ì—…ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤."));
                     getPlayer().setBossTier(nextTier);
-                    str = new StringBuilder("ÃàÇÏÇÑ´Ù³×! ½Â±Ş¿¡ ¼º°øÇß±º\r\n");
+                    str = new StringBuilder("ì¶•í•˜í•œë‹¤ë„¤! ìŠ¹ê¸‰ì— ì„±ê³µí–ˆêµ°\r\n");
                     getPlayer().send(CField.showEffect("tdAnbur/idea_hyperMagic"));
                     self.sayOk(str.toString());
                 } else {
-                    self.sayOk("·¹º§¾÷¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+                    self.sayOk("ë ˆë²¨ì—…ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
                 }
                 for (var pair : bossTierUpgradeItemList.get(getPlayer().getBossTier())) {
                     getPlayer().removeItem(pair.left, pair.right);
@@ -1131,58 +1131,58 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
     }
 
     List<Pair<String, Integer>> jobs = new ArrayList<>(Arrays.asList(
-            new Pair<>("È÷¾î·Î", 112),
-            new Pair<>("ÆÈ¶óµò", 122),
-            new Pair<>("´ÙÅ©³ªÀÌÆ®", 132),
-            new Pair<>("¾ÆÅ©¸ŞÀÌÁö(ºÒ,µ¶)", 212),
-            new Pair<>("¾ÆÅ©¸ŞÀÌÁö(½ã,Äİ)", 222),
-            new Pair<>("ºñ¼ó", 232),
-            new Pair<>("º¸¿ì¸¶½ºÅÍ", 312),
-            new Pair<>("½Å±Ã", 322),
-            new Pair<>("ÆĞ½ºÆÄÀÎ´õ", 332),
-            new Pair<>("³ªÀÌÆ®·Îµå", 412),
-            new Pair<>("¼¨µµ¾î", 422),
-            new Pair<>("µà¾óºí·¹ÀÌ´õ", 434),
-            new Pair<>("¹ÙÀÌÆÛ", 512),
-            new Pair<>("Ä¸Æ¾", 522),
-            new Pair<>("Ä³³í¸¶½ºÅÍ", 532),
-            new Pair<>("¼Ò¿ï¸¶½ºÅÍ", 1112),
-            new Pair<>("ÇÃ·¹ÀÓÀ§ÀÚµå", 1212),
-            new Pair<>("À©µåºê·¹ÀÌÄ¿", 1312),
-            new Pair<>("³ªÀÌÆ®¿öÄ¿", 1412),
-            new Pair<>("½ºÆ®¶óÀÌÄ¿", 1512),
-            new Pair<>("¹ÌÇÏÀÏ", 5112),
-            new Pair<>("¾Æ¶õ", 2112),
-            new Pair<>("¿¡¹İ", 2218),
-            new Pair<>("¸Ş¸£¼¼µ¥½º", 2312),
-            new Pair<>("ÆÒÅÒ", 2412),
-            new Pair<>("Àº¿ù", 2512),
-            new Pair<>("·ç¹Ì³Ê½º", 2712),
-            new Pair<>("µ¥¸ó½½·¹ÀÌ¾î", 3112),
-            new Pair<>("µ¥¸ó¾îº¥Á®", 3122),
-            new Pair<>("¹èÆ²¸ŞÀÌÁö", 3212),
-            new Pair<>("¿ÍÀÏµåÇåÅÍ", 3312),
-            new Pair<>("¸ŞÄ«´Ğ", 3512),
-            new Pair<>("Á¦³í", 3612),
-            new Pair<>("ºí·¡½ºÅÍ", 3712),
-            new Pair<>("Ä«ÀÌÀú", 6112),
-            new Pair<>("Ä«ÀÎ", 6312),
-            new Pair<>("Ä«µ¥³ª", 6412),
-            new Pair<>("¿£Á©¸¯¹ö½ºÅÍ", 6512),
-            new Pair<>("Å°³×½Ã½º", 14212),
-            new Pair<>("¾Æµ¨", 15112),
-            new Pair<>("ÀÏ¸®¿ò", 15212),
-            new Pair<>("¾ÆÅ©", 15512),
-            new Pair<>("È£¿µ", 16412)
+            new Pair<>("íˆì–´ë¡œ", 112),
+            new Pair<>("íŒ”ë¼ë”˜", 122),
+            new Pair<>("ë‹¤í¬ë‚˜ì´íŠ¸", 132),
+            new Pair<>("ì•„í¬ë©”ì´ì§€(ë¶ˆ,ë…)", 212),
+            new Pair<>("ì•„í¬ë©”ì´ì§€(ì¬,ì½œ)", 222),
+            new Pair<>("ë¹„ìˆ", 232),
+            new Pair<>("ë³´ìš°ë§ˆìŠ¤í„°", 312),
+            new Pair<>("ì‹ ê¶", 322),
+            new Pair<>("íŒ¨ìŠ¤íŒŒì¸ë”", 332),
+            new Pair<>("ë‚˜ì´íŠ¸ë¡œë“œ", 412),
+            new Pair<>("ì„€ë„ì–´", 422),
+            new Pair<>("ë“€ì–¼ë¸”ë ˆì´ë”", 434),
+            new Pair<>("ë°”ì´í¼", 512),
+            new Pair<>("ìº¡í‹´", 522),
+            new Pair<>("ìºë…¼ë§ˆìŠ¤í„°", 532),
+            new Pair<>("ì†Œìš¸ë§ˆìŠ¤í„°", 1112),
+            new Pair<>("í”Œë ˆì„ìœ„ìë“œ", 1212),
+            new Pair<>("ìœˆë“œë¸Œë ˆì´ì»¤", 1312),
+            new Pair<>("ë‚˜ì´íŠ¸ì›Œì»¤", 1412),
+            new Pair<>("ìŠ¤íŠ¸ë¼ì´ì»¤", 1512),
+            new Pair<>("ë¯¸í•˜ì¼", 5112),
+            new Pair<>("ì•„ë€", 2112),
+            new Pair<>("ì—ë°˜", 2218),
+            new Pair<>("ë©”ë¥´ì„¸ë°ìŠ¤", 2312),
+            new Pair<>("íŒ¬í…€", 2412),
+            new Pair<>("ì€ì›”", 2512),
+            new Pair<>("ë£¨ë¯¸ë„ˆìŠ¤", 2712),
+            new Pair<>("ë°ëª¬ìŠ¬ë ˆì´ì–´", 3112),
+            new Pair<>("ë°ëª¬ì–´ë²¤ì ¸", 3122),
+            new Pair<>("ë°°í‹€ë©”ì´ì§€", 3212),
+            new Pair<>("ì™€ì¼ë“œí—Œí„°", 3312),
+            new Pair<>("ë©”ì¹´ë‹‰", 3512),
+            new Pair<>("ì œë…¼", 3612),
+            new Pair<>("ë¸”ë˜ìŠ¤í„°", 3712),
+            new Pair<>("ì¹´ì´ì €", 6112),
+            new Pair<>("ì¹´ì¸", 6312),
+            new Pair<>("ì¹´ë°ë‚˜", 6412),
+            new Pair<>("ì—”ì ¤ë¦­ë²„ìŠ¤í„°", 6512),
+            new Pair<>("í‚¤ë„¤ì‹œìŠ¤", 14212),
+            new Pair<>("ì•„ë¸", 15112),
+            new Pair<>("ì¼ë¦¬ì›€", 15212),
+            new Pair<>("ì•„í¬", 15512),
+            new Pair<>("í˜¸ì˜", 16412)
     ));
 
     public void freechange_job() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        int v = self.askMenu("ÀÚÀ¯ÀüÁ÷ ¸Ş´º(Á¦·Î ºÒ°¡´É!)\r\n\r\n#L0##b¸ğÇè°¡ ÀÚÀ¯ÀüÁ÷(#r#i4310086# #z4310086# 1°³ÇÊ¿ä)#b#l\r\n#L1#¸ğµçÁ÷¾÷ ÀÚÀ¯ÀüÁ÷#l");
+        int v = self.askMenu("ììœ ì „ì§ ë©”ë‰´(ì œë¡œ ë¶ˆê°€ëŠ¥!)\r\n\r\n#L0##bëª¨í—˜ê°€ ììœ ì „ì§(#r#i4310086# #z4310086# 1ê°œí•„ìš”)#b#l\r\n#L1#ëª¨ë“ ì§ì—… ììœ ì „ì§#l");
         switch (v) {
             case 0: {
                 if (getPlayer().getItemQuantity(4310086, false) <= 0) {
-                    self.sayOk("ÀÚÀ¯ÀüÁ÷ ÄÚÀÎÀÌ ÀÖ¾î¾ß ÀÚÀ¯ÀüÁ÷À» ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.sayOk("ììœ ì „ì§ ì½”ì¸ì´ ìˆì–´ì•¼ ììœ ì „ì§ì„ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                     break;
                 }
                 switch (getPlayer().getJob()) {
@@ -1203,7 +1203,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     case 532:
                         break;
                     default:
-                        self.sayOk("¸ğÇè°¡ Á÷¾÷±º¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                        self.sayOk("ëª¨í—˜ê°€ ì§ì—…êµ°ë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                 }
                 sendUIJobChange();
@@ -1211,17 +1211,17 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             }
             case 1: {
                 if (getPlayer().getJob() == 10112) {
-                    self.sayOk("Á¦·Î´Â ÀÌ¿ëÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+                    self.sayOk("ì œë¡œëŠ” ì´ìš©ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
                     return;
                 }
-                int vv = self.askMenu("¿øÇÏ½Ã´Â ÀÚÀ¯ÀüÁ÷ ¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n#b#L0#300·¹º§ ÀÚÀ¯ÀüÁ÷(235·Î È¯»ıÁøÇà)#l\r\n#L1#°­¸²Å©·¹µ÷ ÀÚÀ¯ÀüÁ÷#l\r\n#L2#300¾ï ¸Ş¼Ò ÀÚÀ¯ÀüÁ÷#l");
+                int vv = self.askMenu("ì›í•˜ì‹œëŠ” ììœ ì „ì§ ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n#b#L0#300ë ˆë²¨ ììœ ì „ì§(235ë¡œ í™˜ìƒì§„í–‰)#l\r\n#L1#ê°•ë¦¼í¬ë ˆë”§ ììœ ì „ì§#l\r\n#L2#300ì–µ ë©”ì†Œ ììœ ì „ì§#l");
                 switch (vv) {
-                    case 0: { //300·¹º§ ÀÚÀü
+                    case 0: { //300ë ˆë²¨ ìì „
                         if (getPlayer().getLevel() < 300) {
-                            self.sayOk("300·¹º§ ÀÌ»ó¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                            self.sayOk("300ë ˆë²¨ ì´ìƒë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                             return;
                         }
-                        String menu = "ÀÚÀ¯ÀüÁ÷À» ¿øÇÏ½Ã´Â Á÷¾÷À» ¼±ÅÃÇØÁÖ¼¼¿ä.#b";
+                        String menu = "ììœ ì „ì§ì„ ì›í•˜ì‹œëŠ” ì§ì—…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.#b";
                         for (Pair<String, Integer> job : jobs) {
                             if (job.getRight() == getPlayer().getJob()) {
                                 continue;
@@ -1237,11 +1237,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                         }
 
                         if (vvv > 0 && !selectJob.equals("")) {
-                            int yesNo = self.askYesNo("¼±ÅÃÇÏ½Å Á÷¾÷ÀÌ #r" + selectJob + "#kÀÌ ¸Â½À´Ï±î?\r\n\r\n(¿¹¸¦ ´©¸¦½Ã ÀÚÀ¯ÀüÁ÷ ¹× ·¹º§ÀÌ 235·Î ÃÊ±âÈ­°¡ ÀÌ·ç¾îÁı´Ï´Ù.)");
+                            int yesNo = self.askYesNo("ì„ íƒí•˜ì‹  ì§ì—…ì´ #r" + selectJob + "#kì´ ë§ìŠµë‹ˆê¹Œ?\r\n\r\n(ì˜ˆë¥¼ ëˆ„ë¥¼ì‹œ ììœ ì „ì§ ë° ë ˆë²¨ì´ 235ë¡œ ì´ˆê¸°í™”ê°€ ì´ë£¨ì–´ì§‘ë‹ˆë‹¤.)");
                             if (yesNo == 1) {
                                 for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                     if (core.getState() == 2) {
-                                        getPlayer().dropMessage(1, "V½ºÅ³ ÄÚ¾î¸¦ ÀüºÎ ÀåÂøÇØÁ¦ ÈÄ ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                                        getPlayer().dropMessage(1, "VìŠ¤í‚¬ ì½”ì–´ë¥¼ ì „ë¶€ ì¥ì°©í•´ì œ í›„ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                                         return;
                                     }
                                 }
@@ -1250,7 +1250,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                     test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                 }
                                 if (test2 != null) {
-                                    getPlayer().dropMessage(1, "º¸Á¶¹«±â/¹æÆĞ/ºí·¹ÀÌµå¸¦ ÇØÁ¦ÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+                                    getPlayer().dropMessage(1, "ë³´ì¡°ë¬´ê¸°/ë°©íŒ¨/ë¸”ë ˆì´ë“œë¥¼ í•´ì œí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
                                     return;
                                 }
                                 changeFreeJob(vvv);
@@ -1282,11 +1282,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     case 1: {
                         int realcash = getPlayer().getRealCash();
                         if (realcash < 30000) {
-                            self.sayOk("°­¸²Å©·¹µ÷ 3¸¸ ÀÌ»ó ÇÊ¿äÇÕ´Ï´Ù. ÇöÀç °­¸²Å©·¹µ÷ : " + realcash);
+                            self.sayOk("ê°•ë¦¼í¬ë ˆë”§ 3ë§Œ ì´ìƒ í•„ìš”í•©ë‹ˆë‹¤. í˜„ì¬ ê°•ë¦¼í¬ë ˆë”§ : " + realcash);
                             return;
                         }
-                        if (self.askYesNo("ÇöÀç °­¸²Å©·¹µ÷ÀÌ " + realcash + "¸¸Å­ ÀÖ½À´Ï´Ù. ÀÚÀ¯ÀüÁ÷ 1È¸ 30,000°­¸²Å©·¹µ÷ ÀÚÀ¯ÀüÁ÷À» ÁøÇàÇÏ½Ã°Ú½À´Ï±î?") == 1) {
-                            String menu = "ÀÚÀ¯ÀüÁ÷À» ¿øÇÏ½Ã´Â Á÷¾÷À» ¼±ÅÃÇØÁÖ¼¼¿ä.#b";
+                        if (self.askYesNo("í˜„ì¬ ê°•ë¦¼í¬ë ˆë”§ì´ " + realcash + "ë§Œí¼ ìˆìŠµë‹ˆë‹¤. ììœ ì „ì§ 1íšŒ 30,000ê°•ë¦¼í¬ë ˆë”§ ììœ ì „ì§ì„ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
+                            String menu = "ììœ ì „ì§ì„ ì›í•˜ì‹œëŠ” ì§ì—…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.#b";
                             for (Pair<String, Integer> job : jobs) {
                                 if (job.getRight() == getPlayer().getJob()) {
                                     continue;
@@ -1302,11 +1302,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             }
 
                             if (vvv > 0 && !selectJob.equals("")) {
-                                int yesNo = self.askYesNo("¼±ÅÃÇÏ½Å Á÷¾÷ÀÌ #r" + selectJob + "#kÀÌ ¸Â½À´Ï±î?\r\n\r\n(¿¹¸¦ ´©¸¦½Ã ÀÚÀ¯ÀüÁ÷ÀÌ ÀÌ·ç¾îÁı´Ï´Ù.)");
+                                int yesNo = self.askYesNo("ì„ íƒí•˜ì‹  ì§ì—…ì´ #r" + selectJob + "#kì´ ë§ìŠµë‹ˆê¹Œ?\r\n\r\n(ì˜ˆë¥¼ ëˆ„ë¥¼ì‹œ ììœ ì „ì§ì´ ì´ë£¨ì–´ì§‘ë‹ˆë‹¤.)");
                                 if (yesNo == 1) {
                                     for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                         if (core.getState() == 2) {
-                                            getPlayer().dropMessage(1, "V½ºÅ³ ÄÚ¾î¸¦ ÀüºÎ ÀåÂøÇØÁ¦ ÈÄ ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                                            getPlayer().dropMessage(1, "VìŠ¤í‚¬ ì½”ì–´ë¥¼ ì „ë¶€ ì¥ì°©í•´ì œ í›„ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                                             return;
                                         }
                                     }
@@ -1315,7 +1315,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                         test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                     }
                                     if (test2 != null) {
-                                        getPlayer().dropMessage(1, "º¸Á¶¹«±â/¹æÆĞ/ºí·¹ÀÌµå¸¦ ÇØÁ¦ÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+                                        getPlayer().dropMessage(1, "ë³´ì¡°ë¬´ê¸°/ë°©íŒ¨/ë¸”ë ˆì´ë“œë¥¼ í•´ì œí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
                                         return;
                                     }
                                     getPlayer().setRealCash(realcash - 30000);
@@ -1328,11 +1328,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     case 2: {
                         long meso = getPlayer().getMeso();
                         if (meso < 30000000000L) {
-                            self.sayOk("¸Ş¼Ò 300¾ï ÀÌ»ó ÇÊ¿äÇÕ´Ï´Ù. ÇöÀç ¸Ş¼Ò : " + meso);
+                            self.sayOk("ë©”ì†Œ 300ì–µ ì´ìƒ í•„ìš”í•©ë‹ˆë‹¤. í˜„ì¬ ë©”ì†Œ : " + meso);
                             return;
                         }
-                        if (self.askYesNo("ÇöÀç ¸Ş¼Ò " + meso + "¸¸Å­ ÀÖ½À´Ï´Ù. ÀÚÀ¯ÀüÁ÷ 1È¸ 300¾ï ¸Ş¼Ò ÀÚÀ¯ÀüÁ÷À» ÁøÇàÇÏ½Ã°Ú½À´Ï±î?") == 1) {
-                            String menu = "ÀÚÀ¯ÀüÁ÷À» ¿øÇÏ½Ã´Â Á÷¾÷À» ¼±ÅÃÇØÁÖ¼¼¿ä.#b";
+                        if (self.askYesNo("í˜„ì¬ ë©”ì†Œ " + meso + "ë§Œí¼ ìˆìŠµë‹ˆë‹¤. ììœ ì „ì§ 1íšŒ 300ì–µ ë©”ì†Œ ììœ ì „ì§ì„ ì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
+                            String menu = "ììœ ì „ì§ì„ ì›í•˜ì‹œëŠ” ì§ì—…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.#b";
                             for (Pair<String, Integer> job : jobs) {
                                 if (job.getRight() == getPlayer().getJob()) {
                                     continue;
@@ -1348,11 +1348,11 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             }
 
                             if (vvv > 0 && !selectJob.equals("")) {
-                                int yesNo = self.askYesNo("¼±ÅÃÇÏ½Å Á÷¾÷ÀÌ #r" + selectJob + "#kÀÌ ¸Â½À´Ï±î?\r\n\r\n(¿¹¸¦ ´©¸¦½Ã ÀÚÀ¯ÀüÁ÷ÀÌ ÀÌ·ç¾îÁı´Ï´Ù.)");
+                                int yesNo = self.askYesNo("ì„ íƒí•˜ì‹  ì§ì—…ì´ #r" + selectJob + "#kì´ ë§ìŠµë‹ˆê¹Œ?\r\n\r\n(ì˜ˆë¥¼ ëˆ„ë¥¼ì‹œ ììœ ì „ì§ì´ ì´ë£¨ì–´ì§‘ë‹ˆë‹¤.)");
                                 if (yesNo == 1) {
                                     for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                         if (core.getState() == 2) {
-                                            getPlayer().dropMessage(1, "V½ºÅ³ ÄÚ¾î¸¦ ÀüºÎ ÀåÂøÇØÁ¦ ÈÄ ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                                            getPlayer().dropMessage(1, "VìŠ¤í‚¬ ì½”ì–´ë¥¼ ì „ë¶€ ì¥ì°©í•´ì œ í›„ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                                             return;
                                         }
                                     }
@@ -1361,7 +1361,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                         test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                     }
                                     if (test2 != null) {
-                                        getPlayer().dropMessage(1, "º¸Á¶¹«±â/¹æÆĞ/ºí·¹ÀÌµå¸¦ ÇØÁ¦ÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+                                        getPlayer().dropMessage(1, "ë³´ì¡°ë¬´ê¸°/ë°©íŒ¨/ë¸”ë ˆì´ë“œë¥¼ í•´ì œí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
                                         return;
                                     }
                                     getPlayer().gainMeso(-30000000000L, true);
@@ -1387,7 +1387,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     getPlayer().changeSkillLevel(entry.getKey().getId(), (byte) 0, (byte) 0);
                 }
             }
-            getPlayer().changeJob(vvv, true); // Á÷¾÷ º¯°æ
+            getPlayer().changeJob(vvv, true); // ì§ì—… ë³€ê²½
             for (int i = 0; i < (getPlayer().getJob() % 10) + 1; i++) {
                 int job = ((i + 1) == ((getPlayer().getJob() % 10) + 1)) ? getPlayer().getJob() - (getPlayer().getJob() % 100) : getPlayer().getJob() - (i + 1);
                 if (getPlayer().getJob() >= 330 && getPlayer().getJob() <= 332) {
@@ -1418,14 +1418,14 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 div = 3002;
             } else if (GameConstants.isEunWol(job)) {
                 div = 2005;
-                getPlayer().maxSkillByID(25001000); // ¸Ş°¡ ÆİÄ¡
-                getPlayer().maxSkillByID(25001002); // ¼¶±Ç
+                getPlayer().maxSkillByID(25001000); // ë©”ê°€ í€ì¹˜
+                getPlayer().maxSkillByID(25001002); // ì„¬ê¶Œ
             } else if (GameConstants.isArk(job)) {
                 div = 15001;
-                getPlayer().maxSkillByID(155101006); // Àá½Ä Á¦¾î
+                getPlayer().maxSkillByID(155101006); // ì ì‹ ì œì–´
             }
             getPlayer().maxskill((getPlayer().getJob() / div) * div);
-            // ÃÊº¸ÀÚ ½ºÅ³
+            // ì´ˆë³´ì ìŠ¤í‚¬
             if (GameConstants.isMechanic(getPlayer().getJob())) {
                 getPlayer().maxSkillByID(30001068);
             }
@@ -1535,30 +1535,30 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     getPlayer().maxSkillByID(1281);
                     break;
             }
-            // ÀÚµ¿ÀüÁ÷ ¹æÁö
+            // ìë™ì „ì§ ë°©ì§€
             getPlayer().updateOneInfo(122870, "AutoJob", String.valueOf(getPlayer().getJob() / 10 * 10));
             getPlayer().maxskill(getPlayer().getJob());
 
             getPlayer().getStat().recalcLocalStats(getPlayer());
 
-            // À¯´Ï¿Â º¯°æ
+            // ìœ ë‹ˆì˜¨ ë³€ê²½
             getPlayer().firstLoadMapleUnion();
             getPlayer().sendUnionPacket();
-            getPlayer().dropMessage(1, "ÀÚÀ¯ÀüÁ÷ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+            getPlayer().dropMessage(1, "ììœ ì „ì§ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         } catch (Exception e) {
             DiscordBotHandler.requestSendTelegram(e.getMessage());
-            System.out.println("ÀÚÀ¯ÀüÁ÷¿À·ù°¡ ¹ß»ı ¸Ş¼¼Áö°¡ Àü¼ÛµË´Ï´Ù.");
+            System.out.println("ììœ ì „ì§ì˜¤ë¥˜ê°€ ë°œìƒ ë©”ì„¸ì§€ê°€ ì „ì†¡ë©ë‹ˆë‹¤.");
         }
     }
 
     public void sendUIJobChange() {
         if (getPlayer().getJob() / 1000 != 0) {
-            getPlayer().dropMessage(1, "¸ğÇè°¡ Á÷¾÷±º¸¸ ÀÚÀ¯ÀüÁ÷ÀÌ °¡´ÉÇÕ´Ï´Ù.");
+            getPlayer().dropMessage(1, "ëª¨í—˜ê°€ ì§ì—…êµ°ë§Œ ììœ ì „ì§ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
             return;
         }
         for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
             if (core.getState() == 2) {
-                getPlayer().dropMessage(1, "V½ºÅ³ ÄÚ¾î¸¦ ÀüºÎ ÀåÂøÇØÁ¦ ÈÄ ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                getPlayer().dropMessage(1, "VìŠ¤í‚¬ ì½”ì–´ë¥¼ ì „ë¶€ ì¥ì°©í•´ì œ í›„ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                 return;
             }
         }
@@ -1569,7 +1569,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         if (test2 == null) {
             getPlayer().send(CField.UIPacket.openUI(164));
         } else {
-            getPlayer().dropMessage(1, "µµÀû Á÷¾÷±ºÀº º¸Á¶¹«±â/¹æÆĞ/ºí·¹ÀÌµå¸¦ ÇØÁ¦ÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+            getPlayer().dropMessage(1, "ë„ì  ì§ì—…êµ°ì€ ë³´ì¡°ë¬´ê¸°/ë°©íŒ¨/ë¸”ë ˆì´ë“œë¥¼ í•´ì œí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
         }
     }
 
@@ -1631,19 +1631,19 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void sendCubeLevelUpInfo() {
         GradeRandomOption[] options = {GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional};
-        String cubeTotalInfo = "#fs11#Å¥ºê µî±Ş »ó½Â±îÁö #b³²Àº Å¥ºê »ç¿ë È½¼ö#k¸¦ È®ÀÎÇØ º¸¼¼¿ä.\r\n"
-                + "ÇØ´ç ¼öÄ¡´Â µî±Ş »ó½Â ½Ã ÃÊ±âÈ­µÇ¸ç, #b°èÁ¤ ³» °øÀ¯#kµË´Ï´Ù.\r\n\r\n";
+        String cubeTotalInfo = "#fs11#íë¸Œ ë“±ê¸‰ ìƒìŠ¹ê¹Œì§€ #bë‚¨ì€ íë¸Œ ì‚¬ìš© íšŸìˆ˜#kë¥¼ í™•ì¸í•´ ë³´ì„¸ìš”.\r\n"
+                + "í•´ë‹¹ ìˆ˜ì¹˜ëŠ” ë“±ê¸‰ ìƒìŠ¹ ì‹œ ì´ˆê¸°í™”ë˜ë©°, #bê³„ì • ë‚´ ê³µìœ #kë©ë‹ˆë‹¤.\r\n\r\n";
         for (GradeRandomOption option : options) {
             String cubeString = "";
             switch (option) {
                 case Red:
-                    cubeString = "·¹µå Å¥ºê";
+                    cubeString = "ë ˆë“œ íë¸Œ";
                     break;
                 case Black:
-                    cubeString = "ºí·¢ Å¥ºê";
+                    cubeString = "ë¸”ë™ íë¸Œ";
                     break;
                 case Additional:
-                    cubeString = "¿¡µğ¼Å³Î Å¥ºê";
+                    cubeString = "ì—ë””ì…”ë„ íë¸Œ";
                     break;
             }
             cubeTotalInfo += "#e[" + cubeString + "]#n\r\n";
@@ -1654,18 +1654,18 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 String gradeString = "";
                 if (levelUp.equals("RtoE")) {
                     grade = 1;
-                    gradeString = "·¹¾î¿¡¼­ ¿¡ÇÈ";
+                    gradeString = "ë ˆì–´ì—ì„œ ì—í”½";
                 }
                 else if (levelUp.equals("EtoU")) {
                     grade = 2;
-                    gradeString = "¿¡ÇÈ¿¡¼­ À¯´ÏÅ©";
+                    gradeString = "ì—í”½ì—ì„œ ìœ ë‹ˆí¬";
                 }
                 else if (levelUp.equals("UtoL")) {
                     grade = 3;
-                    gradeString = "À¯´ÏÅ©¿¡¼­ ·¹´ø´õ¸®";
+                    gradeString = "ìœ ë‹ˆí¬ì—ì„œ ë ˆë˜ë”ë¦¬";
                 }
                 int levelUpCount = GameConstants.getCubeLevelUpCount(option, grade);
-                cubeTotalInfo += gradeString + " " + levelUpCount + "È¸ Áß " + tryCount + "È¸ ´©Àû\r\n"; 
+                cubeTotalInfo += gradeString + " " + levelUpCount + "íšŒ ì¤‘ " + tryCount + "íšŒ ëˆ„ì \r\n"; 
             }
             if (option != GradeRandomOption.AmazingAdditional) {
                 cubeTotalInfo += "\r\n";

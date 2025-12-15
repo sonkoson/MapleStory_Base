@@ -39,7 +39,7 @@ public class MonsterInfoCommands implements Command {
          for (MapleMapObject monstermo : map.getMapObjectsInRange(c.getPlayer().getPosition(), range,
                Arrays.asList(MapleMapObjectType.MONSTER))) {
             MapleMonster mob = (MapleMonster) monstermo;
-            c.getPlayer().dropMessage(6, "Monster: " + mob.toString());
+            c.getPlayer().dropMessage(6, "มอนสเตอร์: " + mob.toString());
          }
       } else if (splitted[0].equals("!lowhp")) {
          for (MapleMapObject monstermo : map.getMapObjectsInRange(c.getPlayer().getPosition(), range,
@@ -53,13 +53,13 @@ public class MonsterInfoCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!killall", "(<range>) (<mapid>)", "Kills all monsters in the map.", 5),
+            new CommandDefinition("!killall", "(<range>) (<mapid>)", "ฆ่ามอนสเตอร์ทั้งหมดในแผนที่", 5),
             new CommandDefinition("!killallmsg", "(<range>) (<mapid>)",
-                  "Kills all monsters in the map with default drops.", 5),
-            new CommandDefinition("!killalldrop", "(<range>) (<mapid>)", "Kills all monsters in the map with drops.",
+                  "ฆ่ามอนสเตอร์ทั้งหมดในแผนที่ (ดรอปปกติ)", 5),
+            new CommandDefinition("!killalldrop", "(<range>) (<mapid>)", "ฆ่ามอนสเตอร์ทั้งหมดในแผนที่ (ดรอปทุกอย่าง)",
                   5),
-            new CommandDefinition("!mobinfo", "", "Shows information about monsters in the map.", 5),
-            new CommandDefinition("!lowhp", "", "Sets HP of all monsters in range to 10.", 5)
+            new CommandDefinition("!mobinfo", "", "แสดงข้อมูลมอนสเตอร์ในแผนที่", 5),
+            new CommandDefinition("!lowhp", "", "ตั้งค่า HP ของมอนสเตอร์ในระยะเป็น 10", 5)
       };
    }
 }

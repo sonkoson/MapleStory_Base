@@ -11,7 +11,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007000, 2);
         } else {
-            getPlayer().dropMessage(5, "235·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "235ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -20,7 +20,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007040, 3);
         } else {
-            getPlayer().dropMessage(5, "235·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "235ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -29,17 +29,17 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 240) {
             registerTransferField(450007170, 1);
         } else {
-            getPlayer().dropMessage(5, "240·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "240ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void npc_3003533() {
         if (getPlayer().getLevel() >= 235) {
-            if (1 == target.askYesNo("¾ÈÀ¸·Î µé¾î°¡¾ßÇÑ´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("ì•ˆìœ¼ë¡œ ë“¤ì–´ê°€ì•¼í•œë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450007200, 0);
             }
         } else {
-            getPlayer().dropMessage(5, "235·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "235ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 

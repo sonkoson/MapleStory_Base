@@ -22,8 +22,8 @@ public class GMUtil extends ScriptEngineNPC {
         if (!getPlayer().isGM()) {
             return;
         }
-        var type = self.askMenu("¾È³çÇÏ¼¼¿ä #h 0#´Ô, À¯Àú QuestInfo ¼öÁ¤¿ë ¿£ÇÇ½ÃÀÔ´Ï´Ù. ´ÙÀ½ Áß ¼öÁ¤ÇÒ Å¸ÀÔÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n#L0#Ä³¸¯ÅÍ QuestInfo ¼öÁ¤\r\n#L1#¾îÄ«¿îÆ® QuestInfo ¼öÁ¤");
-        var name = self.askText("¼öÁ¤ÇÏ½Ç À¯ÀúÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä. ¾îÄ«¿îÆ®ÀÇ °æ¿ì °èÁ¤ÀÇ ID¸¦ ÀÔ·ÂÇÏ¼Åµµ µË´Ï´Ù. ÇØ´ç À¯ÀúÀÇ Á¢¼Ó ¿©ºÎ´Â »ó°üÀÌ ¾ø½À´Ï´Ù.");
+        var type = self.askMenu("ì•ˆë…•í•˜ì„¸ìš” #h 0#ë‹˜, ìœ ì € QuestInfo ìˆ˜ì •ìš© ì—”í”¼ì‹œì…ë‹ˆë‹¤. ë‹¤ìŒ ì¤‘ ìˆ˜ì •í•  íƒ€ì…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n#L0#ìºë¦­í„° QuestInfo ìˆ˜ì •\r\n#L1#ì–´ì¹´ìš´íŠ¸ QuestInfo ìˆ˜ì •");
+        var name = self.askText("ìˆ˜ì •í•˜ì‹¤ ìœ ì €ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”. ì–´ì¹´ìš´íŠ¸ì˜ ê²½ìš° ê³„ì •ì˜ IDë¥¼ ì…ë ¥í•˜ì…”ë„ ë©ë‹ˆë‹¤. í•´ë‹¹ ìœ ì €ì˜ ì ‘ì† ì—¬ë¶€ëŠ” ìƒê´€ì´ ì—†ìŠµë‹ˆë‹¤.");
         int userID = findUserID(type, name);
         MapleCharacter user = null;
         if (userID >= 0) {
@@ -33,33 +33,33 @@ public class GMUtil extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.sayOk("ÇØ´ç Ä³¸¯ÅÍ È¤Àº °èÁ¤ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã ÇÑ ¹ø ½ÃµµÇØ ÁÖ¼¼¿ä.");
+            self.sayOk("í•´ë‹¹ ìºë¦­í„° í˜¹ì€ ê³„ì •ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ í•œ ë²ˆ ì‹œë„í•´ ì£¼ì„¸ìš”.");
             return;
         }
 
-        int questID = self.askNumber("º¯È¯ÇÏ½Ç QuestExÀÇ ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.", 0, 0, Integer.MAX_VALUE);
-        String questKey = self.askText("º¯È¯ÇÏ½Ç QuestExÀÇ Key¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+        int questID = self.askNumber("ë³€í™˜í•˜ì‹¤ QuestExì˜ IDë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.", 0, 0, Integer.MAX_VALUE);
+        String questKey = self.askText("ë³€í™˜í•˜ì‹¤ QuestExì˜ Keyë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 
         if (user != null) {
-            //ÀÎ°ÔÀÓ ³» Ä³¸¯ÅÍ°¡ Á¸ÀçÇÑ´Ù.
+            //ì¸ê²Œì„ ë‚´ ìºë¦­í„°ê°€ ì¡´ì¬í•œë‹¤.
             String questValue = user.getOneInfo(questID, questKey);
-            String newValue = self.askText("ÇØ´ç QuestEX´Â ÇöÀç " + questValue + " °ªÀÔ´Ï´Ù. º¯È¯ÇÏ½Ç °ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+            String newValue = self.askText("í•´ë‹¹ QuestEXëŠ” í˜„ì¬ " + questValue + " ê°’ì…ë‹ˆë‹¤. ë³€í™˜í•˜ì‹¤ ê°’ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
             if (newValue != null) {
                 user.updateOneInfo(questID, questKey, newValue);
-                self.sayOk("¼º°øÀûÀ¸·Î º¯È¯ÇÏ¿´½À´Ï´Ù.");
+                self.sayOk("ì„±ê³µì ìœ¼ë¡œ ë³€í™˜í•˜ì˜€ìŠµë‹ˆë‹¤.");
             } else {
-                self.sayOk("º¯È¯¿¡ ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+                self.sayOk("ë³€í™˜ì— ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.");
             }
         } else {
-            String newValue = self.askText("º¯È¯ÇÏ½Ç QuestEXÀÇ Value °ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+            String newValue = self.askText("ë³€í™˜í•˜ì‹¤ QuestEXì˜ Value ê°’ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
             if (newValue != null) {
                 if (updateUserQuestInfo(userID, type, questID, questKey, newValue)) {
-                    self.sayOk("¼º°øÀûÀ¸·Î º¯È¯ÇÏ¿´½À´Ï´Ù.");
+                    self.sayOk("ì„±ê³µì ìœ¼ë¡œ ë³€í™˜í•˜ì˜€ìŠµë‹ˆë‹¤.");
                 } else {
-                    self.sayOk("¹®Á¦°¡ ¹ß»ıÇÏ¿© DB¸¦ UpdateÇÏÁö ¸øÇß½À´Ï´Ù.");
+                    self.sayOk("ë¬¸ì œê°€ ë°œìƒí•˜ì—¬ DBë¥¼ Updateí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
                 }
             } else {
-                self.sayOk("º¯È¯¿¡ ¹®Á¦°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä.");
+                self.sayOk("ë³€í™˜ì— ë¬¸ì œê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.");
             }
         }
     }

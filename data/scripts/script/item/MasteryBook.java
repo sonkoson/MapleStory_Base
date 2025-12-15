@@ -61,23 +61,23 @@ public class MasteryBook extends ScriptEngineNPC {
         if (s.size() > 0) {
             String skillList = "";
             for (int skill : s) {
-                skillList += "#L" + skill + "# " + "#s" + skill + "# #fnµ¸¿ò##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
+                skillList += "#L" + skill + "# " + "#s" + skill + "# #fnë‹ì›€##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("ÀÚ³×°¡ ¿Ã¸± ¼ö ÀÖ´Â ½ºÅ³ÀÇ ¸ñ·ÏÀº ´ÙÀ½°ú °°³×.\r\n\r\n" + skillList + "\r\n#r#L0# #fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //¸¶½ºÅÍ¸®ºÏ »ç¿ëÃë¼Ò°¡ ¾Æ´Ï¸é
+            int v0 = self.askMenu("ìë„¤ê°€ ì˜¬ë¦´ ìˆ˜ ìˆëŠ” ìŠ¤í‚¬ì˜ ëª©ë¡ì€ ë‹¤ìŒê³¼ ê°™ë„¤.\r\n\r\n" + skillList + "\r\n#r#L0# #fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { //ë§ˆìŠ¤í„°ë¦¬ë¶ ì‚¬ìš©ì·¨ì†Œê°€ ì•„ë‹ˆë©´
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
                         list.put(SkillFactory.getSkill(v0), new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 20, -1));
                         getPlayer().changeSkillsLevel(list);
-                        //¸¶½ºÅÍ¸®ºÏ ÀÌÆåÆ®¶ß°Ô
-                        getPlayer().dropMessage(5, "¸¶½ºÅÍ¸® ºÏÀÌ ¼º°øÀûÀ¸·Î »ç¿ëµÇ¾ú½À´Ï´Ù.");
+                        //ë§ˆìŠ¤í„°ë¦¬ë¶ ì´í™íŠ¸ëœ¨ê²Œ
+                        getPlayer().dropMessage(5, "ë§ˆìŠ¤í„°ë¦¬ ë¶ì´ ì„±ê³µì ìœ¼ë¡œ ì‚¬ìš©ë˜ì—ˆìŠµë‹ˆë‹¤.");
                         getPlayer().send(CField.environmentChange("masteryBook/EnchantSuccess", 5, 100));
                     }
                 }
             }
         } else {
-            self.askMenu("ÀÚ³×´Â ¾ÆÁ÷ ¾î¶² 4Â÷ ½ºÅ³µµ ¹è¿ìÁö ¾Ê¾Ò°Å³ª ÇöÀç ÀÌ ¸¶½ºÅÍ¸® ºÏÀÌ Àû¿ëµÉ ½ºÅ³ÀÌ ¾ø´Â ¸ğ¾çÀÏ¼¼. È®ÀÎÇØº¸°í ´ÙÀ½¿¡ ´Ù½Ã »ç¿ëÇÏ°Ô³ª.\r\n\r\n#r#L0# #fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu("ìë„¤ëŠ” ì•„ì§ ì–´ë–¤ 4ì°¨ ìŠ¤í‚¬ë„ ë°°ìš°ì§€ ì•Šì•˜ê±°ë‚˜ í˜„ì¬ ì´ ë§ˆìŠ¤í„°ë¦¬ ë¶ì´ ì ìš©ë  ìŠ¤í‚¬ì´ ì—†ëŠ” ëª¨ì–‘ì¼ì„¸. í™•ì¸í•´ë³´ê³  ë‹¤ìŒì— ë‹¤ì‹œ ì‚¬ìš©í•˜ê²Œë‚˜.\r\n\r\n#r#L0# #fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 
@@ -101,23 +101,23 @@ public class MasteryBook extends ScriptEngineNPC {
         if (s.size() > 0) {
             String skillList = "";
             for (int skill : s) {
-                skillList += "#L" + skill + "# " + "#s" + skill + "# #fnµ¸¿ò##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
+                skillList += "#L" + skill + "# " + "#s" + skill + "# #fnë‹ì›€##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("ÀÚ³×°¡ ¿Ã¸± ¼ö ÀÖ´Â ½ºÅ³ÀÇ ¸ñ·ÏÀº ´ÙÀ½°ú °°³×.\r\n\r\n" + skillList + "\r\n#r#L0# #fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //¸¶½ºÅÍ¸®ºÏ »ç¿ëÃë¼Ò°¡ ¾Æ´Ï¸é
+            int v0 = self.askMenu("ìë„¤ê°€ ì˜¬ë¦´ ìˆ˜ ìˆëŠ” ìŠ¤í‚¬ì˜ ëª©ë¡ì€ ë‹¤ìŒê³¼ ê°™ë„¤.\r\n\r\n" + skillList + "\r\n#r#L0# #fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { //ë§ˆìŠ¤í„°ë¦¬ë¶ ì‚¬ìš©ì·¨ì†Œê°€ ì•„ë‹ˆë©´
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
                         list.put(SkillFactory.getSkill(v0), new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 30, -1));
                         getPlayer().changeSkillsLevel(list);
-                        //¸¶½ºÅÍ¸®ºÏ ÀÌÆåÆ®¶ß°Ô
-                        getPlayer().dropMessage(5, "¸¶½ºÅÍ¸® ºÏÀÌ ¼º°øÀûÀ¸·Î »ç¿ëµÇ¾ú½À´Ï´Ù.");
+                        //ë§ˆìŠ¤í„°ë¦¬ë¶ ì´í™íŠ¸ëœ¨ê²Œ
+                        getPlayer().dropMessage(5, "ë§ˆìŠ¤í„°ë¦¬ ë¶ì´ ì„±ê³µì ìœ¼ë¡œ ì‚¬ìš©ë˜ì—ˆìŠµë‹ˆë‹¤.");
                         getPlayer().send(CField.environmentChange("masteryBook/EnchantSuccess", 5, 100));
                     }
                 }
             }
         } else {
-            self.askMenu("ÀÚ³×´Â ¾ÆÁ÷ ¾î¶² 4Â÷ ½ºÅ³µµ ¹è¿ìÁö ¾Ê¾Ò°Å³ª ÇöÀç ÀÌ ¸¶½ºÅÍ¸® ºÏÀÌ Àû¿ëµÉ ½ºÅ³ÀÌ ¾ø´Â ¸ğ¾çÀÏ¼¼. È®ÀÎÇØº¸°í ´ÙÀ½¿¡ ´Ù½Ã »ç¿ëÇÏ°Ô³ª.\r\n\r\n#r#L0# #fnµ¸¿ò##fs14##e¸¶½ºÅÍ¸® ºÏ »ç¿ëÀ» Ãë¼ÒÇÑ´Ù.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu("ìë„¤ëŠ” ì•„ì§ ì–´ë–¤ 4ì°¨ ìŠ¤í‚¬ë„ ë°°ìš°ì§€ ì•Šì•˜ê±°ë‚˜ í˜„ì¬ ì´ ë§ˆìŠ¤í„°ë¦¬ ë¶ì´ ì ìš©ë  ìŠ¤í‚¬ì´ ì—†ëŠ” ëª¨ì–‘ì¼ì„¸. í™•ì¸í•´ë³´ê³  ë‹¤ìŒì— ë‹¤ì‹œ ì‚¬ìš©í•˜ê²Œë‚˜.\r\n\r\n#r#L0# #fnë‹ì›€##fs14##eë§ˆìŠ¤í„°ë¦¬ ë¶ ì‚¬ìš©ì„ ì·¨ì†Œí•œë‹¤.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 }

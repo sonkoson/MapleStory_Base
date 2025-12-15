@@ -11,57 +11,57 @@ public class Limen extends ScriptEngineNPC {
     public void BPReturn_dunkel() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("¾îµğ·Î °¥±î?\r\n#b#L0#±¤ÀåÀ¸·Î#l\r\n#L1#¼¼°èÀÇ ´«¹° Áß´Ü3#l");
+            int v = target.askMenu("ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n#b#L0#ê´‘ì¥ìœ¼ë¡œ#l\r\n#L1#ì„¸ê³„ì˜ ëˆˆë¬¼ ì¤‘ë‹¨3#l");
             switch (v) {
-                case 0: { //±¤Àå
+                case 0: { //ê´‘ì¥
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //¼¼°èÀÇ ´«¹° Áß´Ü3
+                case 1: { //ì„¸ê³„ì˜ ëˆˆë¬¼ ì¤‘ë‹¨3
                     registerTransferField(450012120, 3);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void BPReturn_BM() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("¾îµğ·Î °¥±î?\r\n#b#L0#±¤ÀåÀ¸·Î#l\r\n#L1#¼¼°è°¡ ³¡³ª´Â °÷ 1-3#l");
+            int v = target.askMenu("ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n#b#L0#ê´‘ì¥ìœ¼ë¡œ#l\r\n#L1#ì„¸ê³„ê°€ ëë‚˜ëŠ” ê³³ 1-3#l");
             switch (v) {
-                case 0: { //±¤Àå
+                case 0: { //ê´‘ì¥
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //¼¼°è°¡ ³¡³ª´Â °÷ 1-3
+                case 1: { //ì„¸ê³„ê°€ ëë‚˜ëŠ” ê³³ 1-3
                     registerTransferField(450012320, 2);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void east_450012320() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("¾îµğ·Î °¥±î?\r\n#b#L0#°ÅÀÎÀÇ ½ÉÀå#l\r\n#L1#¼¼°è°¡ ³¡³ª´Â °÷ 2-1#l");
+            int v = target.askMenu("ì–´ë””ë¡œ ê°ˆê¹Œ?\r\n#b#L0#ê±°ì¸ì˜ ì‹¬ì¥#l\r\n#L1#ì„¸ê³„ê°€ ëë‚˜ëŠ” ê³³ 2-1#l");
             switch (v) {
-                case 0: { //±¤Àå
+                case 0: { //ê´‘ì¥
                     registerTransferField(450012500, 2);
                     break;
                 }
-                case 1: { //#¼¼°è°¡ ³¡³ª´Â °÷ 2-1
+                case 1: { //#ì„¸ê³„ê°€ ëë‚˜ëŠ” ê³³ 2-1
                     registerTransferField(450012400, 3);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -70,7 +70,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012010, 1);
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -79,7 +79,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012100, 1);
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -88,7 +88,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012110, 1);
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -97,7 +97,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012120, 1);
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -106,7 +106,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012200, 3);
         } else {
-            getPlayer().dropMessage(5, "255·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "255ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 }

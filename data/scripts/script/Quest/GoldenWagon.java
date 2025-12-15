@@ -84,7 +84,7 @@ public class GoldenWagon extends ScriptEngineNPC {
         s.writeInt(252); //WorldShareQID 1
         s.writeInt(253); //WorldShareQID 2
         s.writeInt(254); //WorldShareQID 3
-        s.writeInt(3600); //ÃÑ Ã¤¿ö¾ßÇÏ´Â ÃÊ
+        s.writeInt(3600); //ì´ ì±„ì›Œì•¼í•˜ëŠ” ì´ˆ
         s.writeMapleAsciiString("chariotInfo4");
         s.writeMapleAsciiString("");
         s.writeMapleAsciiString("chariotPass4");
@@ -124,7 +124,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                 Date TodateDate =  dateFormat.parse(Today);
 
                 if (TodateDate.before(StartDate) || TodateDate.after(EndDate)){
-                    self.sayOk("#fs11#È²±İ¸¶Â÷ ÀÌº¥Æ® ÁøÇà±â°£ÀÌ ¾Æ´Õ´Ï´Ù\r\n\r\nÁøÇà±â°£ : " + Start + " ~ " + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                    self.sayOk("#fs11#í™©ê¸ˆë§ˆì°¨ ì´ë²¤íŠ¸ ì§„í–‰ê¸°ê°„ì´ ì•„ë‹™ë‹ˆë‹¤\r\n\r\nì§„í–‰ê¸°ê°„ : " + Start + " ~ " + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     return;
                 }
             } catch (ParseException ex) {
@@ -144,8 +144,8 @@ public class GoldenWagon extends ScriptEngineNPC {
                     String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                     p.writeMapleAsciiString(qex);
                     getPlayer().send(p.getPacket());
-                    self.sayOk("Ãâ¼® ¿Ï·á! µµÀåÀ» #b1°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-                } else { //»óÇ°¹Ş´Â³¯Â¥
+                    self.sayOk("ì¶œì„ ì™„ë£Œ! ë„ì¥ì„ #b1ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                } else { //ìƒí’ˆë°›ëŠ”ë‚ ì§œ
                     GoldenChariot gc = null;
                     for (GoldenChariot g : GoldenChariot.goldenChariotList) {
                         if (g.getDay() == getPlayer().getOneInfoQuestInteger(1234699, "day") + 1) {
@@ -153,7 +153,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("Áö±İ ¹Ù·Î Ãâ¼®À» ¿Ï·áÇÏ°í ¾Æ·¡ ¼±¹°À» ¹Ş¾Æ °¥·¡?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo("ì§€ê¸ˆ ë°”ë¡œ ì¶œì„ì„ ì™„ë£Œí•˜ê³  ì•„ë˜ ì„ ë¬¼ì„ ë°›ì•„ ê°ˆë˜?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
@@ -166,9 +166,9 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("Ãâ¼® ¿Ï·á! µµÀåÀ» #b1°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì¶œì„ ì™„ë£Œ! ë„ì¥ì„ #b1ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("¾ÆÀÌÅÛÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇØ! °ø°£À» ºñ¿î µÚ ´Ù½Ã ½Ãµµ ÇØÁà", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì•„ì´í…œì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•´! ê³µê°„ì„ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì‹œë„ í•´ì¤˜", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
@@ -181,14 +181,14 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("Ãâ¼® ¿Ï·á! µµÀåÀ» #b1°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì¶œì„ ì™„ë£Œ! ë„ì¥ì„ #b1ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("¾ÆÀÌÅÛÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇØ! °ø°£À» ºñ¿î µÚ ´Ù½Ã ½Ãµµ ÇØÁà", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì•„ì´í…œì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•´! ê³µê°„ì„ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì‹œë„ í•´ì¤˜", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
                 }
-            } else { //ÁÖ¸»
+            } else { //ì£¼ë§
                 boolean isGiftDay = false;
                 int gcDay = 0;
                 for (int i=1; i<=2; i++) {
@@ -208,8 +208,8 @@ public class GoldenWagon extends ScriptEngineNPC {
                     String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                     p.writeMapleAsciiString(qex);
                     getPlayer().send(p.getPacket());
-                    self.sayOk("Ãâ¼® ¿Ï·á! ÁÖ¸»ÀÌ¶ó¼­ µµÀåÀ» #b2°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-                } else { //»óÇ°¹Ş´Â³¯Â¥
+                    self.sayOk("ì¶œì„ ì™„ë£Œ! ì£¼ë§ì´ë¼ì„œ ë„ì¥ì„ #b2ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                } else { //ìƒí’ˆë°›ëŠ”ë‚ ì§œ
                     GoldenChariot gc = null;
                     for (GoldenChariot g : GoldenChariot.goldenChariotList) {
                         if (g.getDay() == gcDay) {
@@ -217,7 +217,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("Áö±İ ¹Ù·Î Ãâ¼®À» ¿Ï·áÇÏ°í ¾Æ·¡ ¼±¹°À» ¹Ş¾Æ °¥·¡?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo("ì§€ê¸ˆ ë°”ë¡œ ì¶œì„ì„ ì™„ë£Œí•˜ê³  ì•„ë˜ ì„ ë¬¼ì„ ë°›ì•„ ê°ˆë˜?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
@@ -230,9 +230,9 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("Ãâ¼® ¿Ï·á! ÁÖ¸»ÀÌ¶ó¼­ µµÀåÀ» #b2°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì¶œì„ ì™„ë£Œ! ì£¼ë§ì´ë¼ì„œ ë„ì¥ì„ #b2ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("¾ÆÀÌÅÛÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇØ! °ø°£À» ºñ¿î µÚ ´Ù½Ã ½Ãµµ ÇØÁà", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì•„ì´í…œì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•´! ê³µê°„ì„ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì‹œë„ í•´ì¤˜", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
@@ -245,9 +245,9 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("Ãâ¼® ¿Ï·á! ÁÖ¸»ÀÌ¶ó¼­ µµÀåÀ» #b2°³#k Âï¾î Áá¾î!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì¶œì„ ì™„ë£Œ! ì£¼ë§ì´ë¼ì„œ ë„ì¥ì„ #b2ê°œ#k ì°ì–´ ì¤¬ì–´!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("¾ÆÀÌÅÛÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇØ! °ø°£À» ºñ¿î µÚ ´Ù½Ã ½Ãµµ ÇØÁà", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ì•„ì´í…œì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•´! ê³µê°„ì„ ë¹„ìš´ ë’¤ ë‹¤ì‹œ ì‹œë„ í•´ì¤˜", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
@@ -257,24 +257,24 @@ public class GoldenWagon extends ScriptEngineNPC {
     }
 
     public void goldenchariotWIG() {
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n#bÆä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷#k´Â ¸ÅÀÏ Ãâ¼® µµÀåÀ» ÄçÄç! Âï°í ¼±¹°À» ÀÜ¶à ¹Ş¾Æ°¡´Â ½Å³ª´Â ÀÌº¥Æ®¾ß!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\nÀÌº¥Æ® ±â°£ µ¿¾È °ÔÀÓ¿¡ Á¢¼ÓÇÏ¸é ÀÌº¥Æ® ¾Ë¸²ÀÌ ¹öÆ°À» ´­·¯ #b#e<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n Ãâ¼®ÆÇÀ» ¿­¾îº¼ ¼ö ÀÖÁö!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\nÀÌº¥Æ® ±â°£ µ¿¾È¿¡´Â ¸ÅÀÏ ÀÚµ¿À¸·Î Á¢¼Ó ½Ã°£ÀÌ ´©ÀûµÇ°í #b60ºĞ#kÀÌ °¡µæ Â÷¸é Ãâ¼® µµÀåÀ» Äç! ÂïÀ» ¼ö ÀÖ¾î!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\nÂü°í·Î #bÁÖ¸»¿¡´Â ÇÑ ¹ø¿¡ µÎ °³#kÀÇ Ãâ¼® µµÀåÀÌ ÂïÈ÷´Ï±î Àı´ë ³õÄ¡Áö ¸»¶ó°í!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\nÃâ¼® ÀÏÂ÷¿¡ µû¸¥ ¼±¹°Àº ´ÙÀ½°ú °°¾Æ!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e<9È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633063:# #t2633063:##k#n\r\n\r\n\r\n#e<18È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633064:# #t2633064:##k#n\r\n\r\n\r\n#e<27È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2631708:# #t2631708:##k#n\r\n\r\n\r\n#e<36È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633065:# #t2633065:##k#n\r\n\r\n\r\n#e<45È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633066:# #t2633066:##k#n\r\n\r\n\r\n#e<54È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633067:# #t2633067:##k#n\r\n\r\n\r\n#e<63È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2631139:# #t2631139:##k#n\r\n\r\n\r\n#e<72È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633071:# #t2633071:##k#n\r\n\r\n\r\n#e<81È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633069:# #t2633069:##k#n\r\n\r\n\r\n#e<90È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633070:# #t2633070:##k#n\r\n\r\n\r\n#e<99È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633068:# #t2633068:##k#n\r\n\r\n\r\n#e<108È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633072:# #t2633072:##k#n\r\n\r\n\r\n#e<117È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2633073:# #t2633073:##k#n\r\n\r\n\r\n#e<126È¸ Ãâ¼® ¿Ï·á>\r\n#b#i2631717:# #t2631717:##k#n", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n±ôºıÇÏ°í Ãâ¼®À» ³õÃÆÀ» ¶§¸¦ ´ëºñÇÑ Æ¯º° Âù½º!\r\n#b#e<°ñµçÆĞ½º>#k#n¿¡ ´ëÇØ¼­µµ ¾Ë·Á ÁÙ°Ô!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\nÃâ¼®ÆÇÀÇ #b#e<°ñµçÆĞ½º>#k#n¸¦ »ç¿ëÇÏ¸é #b3Ãµ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®#k¸¦ ¼Ò¸ğÇÏ°í ¹ÌÃ³ #b¿Ï·áÇÏÁö ¸øÇÑ Ãâ¼®#k µµÀåÀ» ÇÑ ¹ø ÂïÀ» ¼ö°¡ ÀÖ¾î.", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n´Ü, °ñµçÆĞ½ºÀÇ #b»ç¿ë °¡´É ¼ö·®#kÀº #rÇÏ·ç Àü ³¯Â¥ ±âÁØ ¿Ï·áÇÏÁö ¸øÇÑ ÀÏÂ÷ ¼ö#k¸¸Å­À¸·Î Á¦ÇÑµÇ´Â Á¡ ¾Ë¾Æ µÖ!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n°ñµçÆĞ½º´Â »ç¿ë #r¿äÀÏ°ú »ó°ü¾øÀÌ ÇÏ³ªÀÇ µµÀå#k¸¸ Âï¾îÁØ´Ù´Â »ç½Çµµ ÀØÁö ¸»°í ¸»ÀÌ¾ß!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n¾ÆÂ÷! #eÁ¢¼Ó ½Ã°£ ´©Àû#n°ú #eº¸»ó È¹µæ ±â·Ï#nÀº #r¸ŞÀÌÇÃID ´ÜÀ§#k·Î ÁøÇàµÇ°í, #r101·¹º§ ÀÌ»óÀÇ Ä³¸¯ÅÍ#k¸¸ Á¢¼Ó ½Ã°£À» ½×À» ¼ö ÀÖ´Ù´Â °Íµµ À¯³äÇØ µÖ!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n±×¸®°í ³¯Â¥°¡ º¯°æµÉ ¶§ ´Ù¸¥ Çàµ¿À» ÇÏ°í ÀÖ´Ù¸é Á¢¼Ó ½Ã°£ÀÌ Á¤»óÀûÀ¸·Î ½×ÀÌÁö ¾ÊÀ» ¼ö ÀÖÀ¸´Ï±î, #e³¯Â¥°¡ ¹Ù²ï ´ÙÀ½¿¡´Â Ãâ¼®ÆÇÀ» ¿­¾î Á¢¼Ó ½Ã°£ÀÌ Àß ½×ÀÌ°í ÀÖ´ÂÁö ÇÑ ¹ø È®ÀÎ#nÇØ º¸µµ·Ï ÇØ!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n´õ ÀÚ¼¼ÇÑ ³»¿ëÀº °ø½Ä È¨ÆäÀÌÁö¸¦ Âü°íÇØ ºÁ!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<Æä¾î¸® ºê·ÎÀÇ È²±İ¸¶Â÷>#k#n\r\n\r\n\r\n#e¡Ø ÀÌº¥Æ® ±â°£#n\r\n  - 2021³â #r6¿ù 16ÀÏ(¼ö) ¿ÀÈÄ 11½Ã 59ºĞ#k±îÁö#k", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\n#bí˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨#këŠ” ë§¤ì¼ ì¶œì„ ë„ì¥ì„ ì¾…ì¾…! ì°ê³  ì„ ë¬¼ì„ ì”ëœ© ë°›ì•„ê°€ëŠ” ì‹ ë‚˜ëŠ” ì´ë²¤íŠ¸ì•¼!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì´ë²¤íŠ¸ ê¸°ê°„ ë™ì•ˆ ê²Œì„ì— ì ‘ì†í•˜ë©´ ì´ë²¤íŠ¸ ì•Œë¦¼ì´ ë²„íŠ¼ì„ ëˆŒëŸ¬ #b#e<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n ì¶œì„íŒì„ ì—´ì–´ë³¼ ìˆ˜ ìˆì§€!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì´ë²¤íŠ¸ ê¸°ê°„ ë™ì•ˆì—ëŠ” ë§¤ì¼ ìë™ìœ¼ë¡œ ì ‘ì† ì‹œê°„ì´ ëˆ„ì ë˜ê³  #b60ë¶„#kì´ ê°€ë“ ì°¨ë©´ ì¶œì„ ë„ì¥ì„ ì¾…! ì°ì„ ìˆ˜ ìˆì–´!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì°¸ê³ ë¡œ #bì£¼ë§ì—ëŠ” í•œ ë²ˆì— ë‘ ê°œ#kì˜ ì¶œì„ ë„ì¥ì´ ì°íˆë‹ˆê¹Œ ì ˆëŒ€ ë†“ì¹˜ì§€ ë§ë¼ê³ !", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì¶œì„ ì¼ì°¨ì— ë”°ë¥¸ ì„ ë¬¼ì€ ë‹¤ìŒê³¼ ê°™ì•„!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e<9íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633063:# #t2633063:##k#n\r\n\r\n\r\n#e<18íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633064:# #t2633064:##k#n\r\n\r\n\r\n#e<27íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2631708:# #t2631708:##k#n\r\n\r\n\r\n#e<36íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633065:# #t2633065:##k#n\r\n\r\n\r\n#e<45íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633066:# #t2633066:##k#n\r\n\r\n\r\n#e<54íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633067:# #t2633067:##k#n\r\n\r\n\r\n#e<63íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2631139:# #t2631139:##k#n\r\n\r\n\r\n#e<72íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633071:# #t2633071:##k#n\r\n\r\n\r\n#e<81íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633069:# #t2633069:##k#n\r\n\r\n\r\n#e<90íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633070:# #t2633070:##k#n\r\n\r\n\r\n#e<99íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633068:# #t2633068:##k#n\r\n\r\n\r\n#e<108íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633072:# #t2633072:##k#n\r\n\r\n\r\n#e<117íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2633073:# #t2633073:##k#n\r\n\r\n\r\n#e<126íšŒ ì¶œì„ ì™„ë£Œ>\r\n#b#i2631717:# #t2631717:##k#n", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nê¹œë¹¡í•˜ê³  ì¶œì„ì„ ë†“ì³¤ì„ ë•Œë¥¼ ëŒ€ë¹„í•œ íŠ¹ë³„ ì°¬ìŠ¤!\r\n#b#e<ê³¨ë“ íŒ¨ìŠ¤>#k#nì— ëŒ€í•´ì„œë„ ì•Œë ¤ ì¤„ê²Œ!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì¶œì„íŒì˜ #b#e<ê³¨ë“ íŒ¨ìŠ¤>#k#në¥¼ ì‚¬ìš©í•˜ë©´ #b3ì²œ ë©”ì´í”Œ í¬ì¸íŠ¸#kë¥¼ ì†Œëª¨í•˜ê³  ë¯¸ì²˜ #bì™„ë£Œí•˜ì§€ ëª»í•œ ì¶œì„#k ë„ì¥ì„ í•œ ë²ˆ ì°ì„ ìˆ˜ê°€ ìˆì–´.", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\në‹¨, ê³¨ë“ íŒ¨ìŠ¤ì˜ #bì‚¬ìš© ê°€ëŠ¥ ìˆ˜ëŸ‰#kì€ #rí•˜ë£¨ ì „ ë‚ ì§œ ê¸°ì¤€ ì™„ë£Œí•˜ì§€ ëª»í•œ ì¼ì°¨ ìˆ˜#kë§Œí¼ìœ¼ë¡œ ì œí•œë˜ëŠ” ì  ì•Œì•„ ë‘¬!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nê³¨ë“ íŒ¨ìŠ¤ëŠ” ì‚¬ìš© #rìš”ì¼ê³¼ ìƒê´€ì—†ì´ í•˜ë‚˜ì˜ ë„ì¥#kë§Œ ì°ì–´ì¤€ë‹¤ëŠ” ì‚¬ì‹¤ë„ ìŠì§€ ë§ê³  ë§ì´ì•¼!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nì•„ì°¨! #eì ‘ì† ì‹œê°„ ëˆ„ì #nê³¼ #eë³´ìƒ íšë“ ê¸°ë¡#nì€ #rë©”ì´í”ŒID ë‹¨ìœ„#kë¡œ ì§„í–‰ë˜ê³ , #r101ë ˆë²¨ ì´ìƒì˜ ìºë¦­í„°#kë§Œ ì ‘ì† ì‹œê°„ì„ ìŒ“ì„ ìˆ˜ ìˆë‹¤ëŠ” ê²ƒë„ ìœ ë…í•´ ë‘¬!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\nê·¸ë¦¬ê³  ë‚ ì§œê°€ ë³€ê²½ë  ë•Œ ë‹¤ë¥¸ í–‰ë™ì„ í•˜ê³  ìˆë‹¤ë©´ ì ‘ì† ì‹œê°„ì´ ì •ìƒì ìœ¼ë¡œ ìŒ“ì´ì§€ ì•Šì„ ìˆ˜ ìˆìœ¼ë‹ˆê¹Œ, #eë‚ ì§œê°€ ë°”ë€ ë‹¤ìŒì—ëŠ” ì¶œì„íŒì„ ì—´ì–´ ì ‘ì† ì‹œê°„ì´ ì˜ ìŒ“ì´ê³  ìˆëŠ”ì§€ í•œ ë²ˆ í™•ì¸#ní•´ ë³´ë„ë¡ í•´!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\në” ìì„¸í•œ ë‚´ìš©ì€ ê³µì‹ í™ˆí˜ì´ì§€ë¥¼ ì°¸ê³ í•´ ë´!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<í˜ì–´ë¦¬ ë¸Œë¡œì˜ í™©ê¸ˆë§ˆì°¨>#k#n\r\n\r\n\r\n#eâ€» ì´ë²¤íŠ¸ ê¸°ê°„#n\r\n  - 2021ë…„ #r6ì›” 16ì¼(ìˆ˜) ì˜¤í›„ 11ì‹œ 59ë¶„#kê¹Œì§€#k", ScriptMessageFlag.NpcReplacedByNpc);
     }
 
     public void goldenchariotPass() {
-        //self.sayOk("#b°ñµçÆĞ½º#k¸¦ »ç¿ëÇÏ·Á¸é #r3Ãµ ¸ŞÀÌÇÃÆ÷ÀÎÆ®#k°¡ ÇÊ¿äÇØ!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.sayOk("#fs11#Áö±İÀº ÆĞ½º ±â´ÉÀ» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.sayOk("#bê³¨ë“ íŒ¨ìŠ¤#kë¥¼ ì‚¬ìš©í•˜ë ¤ë©´ #r3ì²œ ë©”ì´í”Œí¬ì¸íŠ¸#kê°€ í•„ìš”í•´!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.sayOk("#fs11#ì§€ê¸ˆì€ íŒ¨ìŠ¤ ê¸°ëŠ¥ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
     }
 }

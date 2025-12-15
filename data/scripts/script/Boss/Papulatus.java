@@ -15,13 +15,13 @@ public class Papulatus extends ScriptEngineNPC {
     /*
     public void Populatus00() {
         initNPC(MapleLifeFactory.getNPC(2041021));
-        int menu = self.askMenu("#e<º¸½º: ÆÄÇ®¶óÅõ½º>#n\r\n»ç°í¹¶Ä¡ ÆÄÇ®¶óÅõ½º°¡ Â÷¿øÀ» °è¼Ó ºÎ¼ö´Â °ÍÀ» ¸·¾Æ¾ß ÇÕ´Ï´Ù. µµ¿ÍÁÖ½Ã°Ú¾î¿ä?\r\n\r\n\r\n#L0# ÀÌÁö ¸ğµå ( ·¹º§ 115 ÀÌ»ó )#l\r\n#L1# ³ë¸Ö ¸ğµå ( ·¹º§ 155 ÀÌ»ó )#l\r\n#L2# Ä«¿À½º ¸ğµå ( ·¹º§ 190 ÀÌ»ó )#l\r\n#L3# Ä«¿À½º ¿¬½À ¸ğµå( ·¹º§ 190 ÀÌ»ó )#l");
+        int menu = self.askMenu("#e<ë³´ìŠ¤: íŒŒí’€ë¼íˆ¬ìŠ¤>#n\r\nì‚¬ê³ ë­‰ì¹˜ íŒŒí’€ë¼íˆ¬ìŠ¤ê°€ ì°¨ì›ì„ ê³„ì† ë¶€ìˆ˜ëŠ” ê²ƒì„ ë§‰ì•„ì•¼ í•©ë‹ˆë‹¤. ë„ì™€ì£¼ì‹œê² ì–´ìš”?\r\n\r\n\r\n#L0# ì´ì§€ ëª¨ë“œ ( ë ˆë²¨ 115 ì´ìƒ )#l\r\n#L1# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 155 ì´ìƒ )#l\r\n#L2# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ ( ë ˆë²¨ 190 ì´ìƒ )#l\r\n#L3# ì¹´ì˜¤ìŠ¤ ì—°ìŠµ ëª¨ë“œ( ë ˆë²¨ 190 ì´ìƒ )#l");
         if (!getPlayer().haveItem(4031179)) {
             if (target.exchange(4031179, 1) > 0) {
-                self.say("#r#eÆÄÆ¼¿ø ¸ğµÎ#n#k #b#eÂ÷¿ø ±Õ¿­ÀÇ Á¶°¢#k#nÀÌ ¾øÀ¸½Ã±º¿ä. ÆÄÇ®¶óÅõ½º¸¦ ¸¸³ª±â À§ÇØ¼­ ²À ÇÊ¿äÇÕ´Ï´Ù. Á¦°¡ ¸¶Ä§ °®°í ÀÖ´Â °ÍÀ» µå¸®°Ú½À´Ï´Ù.");
-                self.say("#b#eÂ÷¿ø ±Õ¿­ÀÇ Á¶°¢#k#nÀ» µå·ÈÀ¸´Ï, ÆÄÇ®¶óÅõ½º°¡ Â÷¿øÀ» ºÎ¼ö´Â °ÍÀ» ²À ¸·¾Æ ÁÖ¼¼¿ä!");
+                self.say("#r#eíŒŒí‹°ì› ëª¨ë‘#n#k #b#eì°¨ì› ê· ì—´ì˜ ì¡°ê°#k#nì´ ì—†ìœ¼ì‹œêµ°ìš”. íŒŒí’€ë¼íˆ¬ìŠ¤ë¥¼ ë§Œë‚˜ê¸° ìœ„í•´ì„œ ê¼­ í•„ìš”í•©ë‹ˆë‹¤. ì œê°€ ë§ˆì¹¨ ê°–ê³  ìˆëŠ” ê²ƒì„ ë“œë¦¬ê² ìŠµë‹ˆë‹¤.");
+                self.say("#b#eì°¨ì› ê· ì—´ì˜ ì¡°ê°#k#nì„ ë“œë ¸ìœ¼ë‹ˆ, íŒŒí’€ë¼íˆ¬ìŠ¤ê°€ ì°¨ì›ì„ ë¶€ìˆ˜ëŠ” ê²ƒì„ ê¼­ ë§‰ì•„ ì£¼ì„¸ìš”!");
             } else {
-                self.say("±âÅ¸ ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. ±âÅ¸ ÀÎº¥Åä¸® °ø°£À» ÃæºĞÈ÷ È®º¸ÇØÁÖ¼¼¿ä.");
+                self.say("ê¸°íƒ€ ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. ê¸°íƒ€ ì¸ë²¤í† ë¦¬ ê³µê°„ì„ ì¶©ë¶„íˆ í™•ë³´í•´ì£¼ì„¸ìš”.");
                 return;
             }
         }
@@ -30,7 +30,7 @@ public class Papulatus extends ScriptEngineNPC {
      */
 
     public void Populatus01() {
-        if (self.askYesNo("»ß¸® »ß¸®~ Àú¸¦ ÅëÇØ ¾ÈÀüÇÑ °÷À¸·Î ³ª°¡½Ç ¼ö ÀÖ½À´Ï´Ù. »ß¸® »ß¸®~ ÀÌ´ë·Î ¹ÛÀ¸·Î ³ª°¡½Ã°Ú½À´Ï±î?") == 1) {
+        if (self.askYesNo("ì‚ë¦¬ ì‚ë¦¬~ ì €ë¥¼ í†µí•´ ì•ˆì „í•œ ê³³ìœ¼ë¡œ ë‚˜ê°€ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì‚ë¦¬ ì‚ë¦¬~ ì´ëŒ€ë¡œ ë°–ìœ¼ë¡œ ë‚˜ê°€ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);
@@ -44,19 +44,19 @@ public class Papulatus extends ScriptEngineNPC {
     private void enter(int diff) {
         EventManager em = getEventManager("Papulatus");
         if (em == null) {
-            self.say("Áö±İÀº ÆÄÇ®¶óÅõ½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("ì§€ê¸ˆì€ íŒŒí’€ë¼íˆ¬ìŠ¤ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty() == null) {
-            self.say("1ÀÎ ÀÌ»óÀÇ ÆÄÆ¼¿¡ ¼ÓÇØ¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.say("1ì¸ ì´ìƒì˜ íŒŒí‹°ì— ì†í•´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+            self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.say("ÆÄÆ¼¿øÀÌ Àü¿ø ÀÌ°÷¿¡ ¸ğ¿©ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+            self.say("íŒŒí‹°ì›ì´ ì „ì› ì´ê³³ì— ëª¨ì—¬ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
             return;
         }
         int[] startMaps = new int[]{220080100, 220080200, 220080300, 220080300};
@@ -73,11 +73,11 @@ public class Papulatus extends ScriptEngineNPC {
             case 1:
                 String q = getPlayer().getOneInfoQuest(1234569, "papulatus_clear");
                 if (q != null && !q.isEmpty() && q.equals("1")) {
-                    self.say("±İÀÏ¿¡ ÀÌ¹Ì °İÆÄÇÏ¿© 00½Ã¿¡ È½¼ö ÃÊ±âÈ­ ÀÌÈÄ ´Ù½Ã µµÀü °¡´ÉÇÕ´Ï´Ù.");
+                    self.say("ê¸ˆì¼ì— ì´ë¯¸ ê²©íŒŒí•˜ì—¬ 00ì‹œì— íšŸìˆ˜ ì´ˆê¸°í™” ì´í›„ ë‹¤ì‹œ ë„ì „ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                     return;
                 }
                 if (!getPlayer().CountCheck(key, 1)) {
-                    self.say("ÇÏ·ç¿¡ 1¹ø¸¸ ½Ãµµ ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("í•˜ë£¨ì— 1ë²ˆë§Œ ì‹œë„ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                     return;
                 }
                 if (diff == 1) {
@@ -89,7 +89,7 @@ public class Papulatus extends ScriptEngineNPC {
             case 2:
                 q = getPlayer().getOneInfoQuest(1234569, "chaos_papulatus_clear");
                 if (q != null && !q.isEmpty() && q.equals("1")) {
-                    self.say("±İÁÖ¿¡ ÀÌ¹Ì °İÆÄÇÏ¿© ¸ñ¿äÀÏ 00½Ã¿¡ È½¼ö ÃÊ±âÈ­ ÀÌÈÄ ´Ù½Ã µµÀü °¡´ÉÇÕ´Ï´Ù.");
+                    self.say("ê¸ˆì£¼ì— ì´ë¯¸ ê²©íŒŒí•˜ì—¬ ëª©ìš”ì¼ 00ì‹œì— íšŸìˆ˜ ì´ˆê¸°í™” ì´í›„ ë‹¤ì‹œ ë„ì „ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                     return;
                 }
                 status = "ChaosStatus";
@@ -98,12 +98,12 @@ public class Papulatus extends ScriptEngineNPC {
                 break;
             case 3:
                 initNPC(MapleLifeFactory.getNPC(9010000));
-                if (0 == self.askYesNo("¿¬½À ¸ğµå¿¡ ÀÔÀåÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¿¬½À ¸ğµå¿¡¼­´Â #b#e°æÇèÄ¡¿Í º¸»óÀ» ¾òÀ» ¼ö ¾øÀ¸¸ç#k#n º¸½º ¸ó½ºÅÍÀÇ Á¾·ù¿Í »ó°ü¾øÀÌ #b#eÇÏ·ç 20È¸#k#n¸¸ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n¿¬½À ¸ğµå¿¡¼­´Â »ç¸Á ÈÄ ºÎÈ°ÇÒ ¶§ ¹öÇÁ ÇÁ¸®Àú¸¦ »ç¿ëÇØµµ ¼Ò¸ğµÇÁö ¾Ê½À´Ï´Ù. ´Ü, #b#e¹öÇÁ ÇÁ¸®Àú°¡ 1°³ ÀÌ»ó#k#n ÀÖ¾î¾ß »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\nÀÔÀåÇÏ½Ã°Ú½À´Ï±î?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                if (0 == self.askYesNo("ì—°ìŠµ ëª¨ë“œì— ì…ì¥ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. ì—°ìŠµ ëª¨ë“œì—ì„œëŠ” #b#eê²½í—˜ì¹˜ì™€ ë³´ìƒì„ ì–»ì„ ìˆ˜ ì—†ìœ¼ë©°#k#n ë³´ìŠ¤ ëª¬ìŠ¤í„°ì˜ ì¢…ë¥˜ì™€ ìƒê´€ì—†ì´ #b#eí•˜ë£¨ 20íšŒ#k#në§Œ ì´ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nì—°ìŠµ ëª¨ë“œì—ì„œëŠ” ì‚¬ë§ í›„ ë¶€í™œí•  ë•Œ ë²„í”„ í”„ë¦¬ì €ë¥¼ ì‚¬ìš©í•´ë„ ì†Œëª¨ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¨, #b#eë²„í”„ í”„ë¦¬ì €ê°€ 1ê°œ ì´ìƒ#k#n ìˆì–´ì•¼ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nì…ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", ScriptMessageFlag.NpcReplacedByNpc)) {
                     return;
                 }
                 key = "boss_practice";
                 if (!getPlayer().CountCheck(key, 20)) {
-                    self.say("ÇÏ·ç¿¡ 20¹ø¸¸ ½Ãµµ °¡´ÉÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("í•˜ë£¨ì— 20ë²ˆë§Œ ì‹œë„ ê°€ëŠ¥í•©ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 status = "ChaosStatus";
@@ -136,21 +136,21 @@ public class Papulatus extends ScriptEngineNPC {
             }
         }
         if (!countPass) {
-            self.sayOk("ÀÔÀå Á¦ÇÑÈ½¼ö°¡ ºÎÁ·ÇÏ°Å³ª ·¹º§ Á¦ÇÑÀÌ ¸ÂÁö ¾Ê´Â ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.sayOk("ì…ì¥ ì œí•œíšŸìˆ˜ê°€ ë¶€ì¡±í•˜ê±°ë‚˜ ë ˆë²¨ ì œí•œì´ ë§ì§€ ì•ŠëŠ” íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (!timePass) {
-            self.sayOk("ÀÔÀå Á¦ÇÑ½Ã°£ÀÌ ³²Àº ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.sayOk("ì…ì¥ ì œí•œì‹œê°„ì´ ë‚¨ì€ íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         } else {
             String canTimeKey = null;
             if (diff == 2) {
                 canTimeKey = "papulatus_can_time";
             }
-            setBossEnter(target.getParty(), ("ÆÄÇ®¶óÅõ½º ³­ÀÌµµ : " + diff), key, canTimeKey, 3);
+            setBossEnter(target.getParty(), ("íŒŒí’€ë¼íˆ¬ìŠ¤ ë‚œì´ë„ : " + diff), key, canTimeKey, 3);
         }
         if (em.getProperty(status).equals("1")) {
-            self.sayOk("ÇöÀç ¸ğµç ÀÎ½ºÅÏ½º°¡ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+            self.sayOk("í˜„ì¬ ëª¨ë“  ì¸ìŠ¤í„´ìŠ¤ê°€ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
             return;
         }
         em.setProperty(status, "1");

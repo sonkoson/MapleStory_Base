@@ -17,7 +17,7 @@ public class Haven extends ScriptEngineNPC {
 
     @SuppressWarnings("deprecation")
     public void q39165s() {
-        //¼±ÅÃÇÏ´Â Äù½ºÆ®
+        //ì„ íƒí•˜ëŠ” í€˜ìŠ¤íŠ¸
         List<Integer> quests = new ArrayList<>();
         int[] questArray = {39101, 39102, 39103, 39104, 39105, 39106, 39107, 39108, 39111, 39112, 39113, 39114, 39115, 39116, 39117, 39118, 39119, 39121, 39122, 39123, 39124, 39125/*, 39126*/, 39127, 39131, 39132, 39133, 39134, 39135, 39136, 39141, 39142, 39143, 39144, 39145, 39146, 39147, 39148, 39149, 39150, 39151, 39152, 39153, 39154, 39155};
         MapleQuestStatus quest = getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(39165));
@@ -25,7 +25,7 @@ public class Haven extends ScriptEngineNPC {
             quest.setCustomData("0-0");
         }
         if (quest.getCustomData().split("-")[0].equals("0")) {
-            //ÃÊ±â Äù½ºÆ® ¼±Á¤ÇØÁà¾ßÇÔ
+            //ì´ˆê¸° í€˜ìŠ¤íŠ¸ ì„ ì •í•´ì¤˜ì•¼í•¨
             while (quests.size() < 4) {
                 int selectedQuest = questArray[Randomizer.nextInt(questArray.length)];
                 while (quests.contains(selectedQuest)) {
@@ -64,16 +64,16 @@ public class Haven extends ScriptEngineNPC {
                 .append(resetDay);
         quest.setCustomData(customData.toString());
         StringBuilder askText = new StringBuilder();
-        askText.append("ÀÌ¹ø ÁÖ ÀÚ³×¿¡°Ô ºÎÅ¹ÇÒ ÀÏÀº ¾Æ·¡¿Í °°´Ù³×.\r\n\r\n");
+        askText.append("ì´ë²ˆ ì£¼ ìë„¤ì—ê²Œ ë¶€íƒí•  ì¼ì€ ì•„ë˜ì™€ ê°™ë‹¤ë„¤.\r\n\r\n");
         for (Integer q : quests) {
             askText.append("#b#e#y")
                     .append(q)
                     .append("##k#n\r\n");
         }
-        askText.append("\r\n#eÁö±İ ¹Ù·Î ¼öÇàÇÏ½Ã°Ú³ª?#n\r\n(¸¶À½¿¡ µéÁö ¾Ê´Â´Ù¸é ±³Ã¼ÇÏ±â ¹öÆ°À» ´­·¯ ´Ù¸¥ ÀÓ¹«·Î ±³Ã¼ÇÒ ¼öµµ ÀÖ´Ù³×.)");
+        askText.append("\r\n#eì§€ê¸ˆ ë°”ë¡œ ìˆ˜í–‰í•˜ì‹œê² ë‚˜?#n\r\n(ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ë‹¤ë©´ êµì²´í•˜ê¸° ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ë¥¸ ì„ë¬´ë¡œ êµì²´í•  ìˆ˜ë„ ìˆë‹¤ë„¤.)");
         if (1 == self.askYesNo(askText.toString(), ScriptMessageFlag.Change)) {
             askText = new StringBuilder();
-            askText.append("¸ñ·Ï¿¡ ÀÖ´Â ÀÓ¹«°¡ ¸¶À½¿¡ µéÁö ¾Ê´Â°¡ º¸±º? ±×·¸´Ù¸é ´Ù¸¥ ÀÓ¹«¸¦ Ã£¾Æº¼ ¼öµµ ÀÖÁö. ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«¸¦ °ñ¶óÁÖ°Ô³ª.\r\n\r\n");
+            askText.append("ëª©ë¡ì— ìˆëŠ” ì„ë¬´ê°€ ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ê°€ ë³´êµ°? ê·¸ë ‡ë‹¤ë©´ ë‹¤ë¥¸ ì„ë¬´ë¥¼ ì°¾ì•„ë³¼ ìˆ˜ë„ ìˆì§€. êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ë¥¼ ê³¨ë¼ì£¼ê²Œë‚˜.\r\n\r\n");
             int index = 0;
             for (Integer q : quests) {
                 askText.append("#b#e")
@@ -85,13 +85,13 @@ public class Haven extends ScriptEngineNPC {
                         .append("##l#k#n\r\n");
                 index++;
             }
-            askText.append("#L4# #r#e´õ ÀÌ»ó ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«´Â ¾ø´Ù.#k#n#l");
+            askText.append("#L4# #r#eë” ì´ìƒ êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ëŠ” ì—†ë‹¤.#k#n#l");
             int selection = self.askMenu(askText.toString());
             List<Integer> changeQuest = new ArrayList<>();
             while (selection != 4) {
                 if (!changeQuest.contains(selection)) changeQuest.add(selection);
                 askText = new StringBuilder();
-                askText.append("¸ñ·Ï¿¡ ÀÖ´Â ÀÓ¹«°¡ ¸¶À½¿¡ µéÁö ¾Ê´Â°¡ º¸±º? ±×·¸´Ù¸é ´Ù¸¥ ÀÓ¹«¸¦ Ã£¾Æº¼ ¼öµµ ÀÖÁö. ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«¸¦ °ñ¶óÁÖ°Ô³ª.\r\n\r\n");
+                askText.append("ëª©ë¡ì— ìˆëŠ” ì„ë¬´ê°€ ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ê°€ ë³´êµ°? ê·¸ë ‡ë‹¤ë©´ ë‹¤ë¥¸ ì„ë¬´ë¥¼ ì°¾ì•„ë³¼ ìˆ˜ë„ ìˆì§€. êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ë¥¼ ê³¨ë¼ì£¼ê²Œë‚˜.\r\n\r\n");
                 for (int i = 0; i < 4; i++) {
                     if (changeQuest.contains(i)) {
                         askText.append("#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
@@ -99,12 +99,12 @@ public class Haven extends ScriptEngineNPC {
                         askText.append("#b#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
                     }
                 }
-                askText.append("#L4# #r#e´õ ÀÌ»ó ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«´Â ¾ø´Ù.#k#n#l");
+                askText.append("#L4# #r#eë” ì´ìƒ êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ëŠ” ì—†ë‹¤.#k#n#l");
                 if (changeQuest.size() == 4) break;
                 if (getSc().isStop()) break;
                 selection = self.askMenu(askText.toString());
             }
-            String scriptText = "»õ·Î¿î ÀÓ¹«¸¦ Ã£¾Ò³×.\r\nºÎÅ¹ÇÒ ÀÏÀº ¾Æ·¡¿Í °°´Ù³×.\r\n\r\n";
+            String scriptText = "ìƒˆë¡œìš´ ì„ë¬´ë¥¼ ì°¾ì•˜ë„¤.\r\në¶€íƒí•  ì¼ì€ ì•„ë˜ì™€ ê°™ë‹¤ë„¤.\r\n\r\n";
             List<Integer> tempQuests = quests;
             for (Integer c : changeQuest) {
                 int selectedQuest = questArray[Randomizer.nextInt(questArray.length)];
@@ -131,13 +131,13 @@ public class Haven extends ScriptEngineNPC {
             for (Integer q : quests) {
                 MapleQuest.getInstance(q).forceStart(getPlayer(), getNpc().getId(), "");
             }
-            self.sayOk("²À #e#rÀÏ¿äÀÏ ÀÚÁ¤#k#n±îÁö ÀÓ¹«¸¦ ¿Ï¼öÇØ¾ß ÇÑ´Ù´Â Á¡ ÀØÁö ¸»°Ô. ±×·³ ¾È³çÈ÷ ´Ù³à¿À°Ô³ª.");
+            self.sayOk("ê¼­ #e#rì¼ìš”ì¼ ìì •#k#nê¹Œì§€ ì„ë¬´ë¥¼ ì™„ìˆ˜í•´ì•¼ í•œë‹¤ëŠ” ì  ìŠì§€ ë§ê²Œ. ê·¸ëŸ¼ ì•ˆë…•íˆ ë‹¤ë…€ì˜¤ê²Œë‚˜.");
         }
     }
 
     @SuppressWarnings("deprecation")
     public void q39160s() {
-        //¿ù¿äÀÏ³¯ ¸®¼ÂµÈ´Ù.
+        //ì›”ìš”ì¼ë‚  ë¦¬ì…‹ëœë‹¤.
         Date time = new Date();
         if (time.getDay() == 1) {
             time.setDate(time.getDate() + 7);
@@ -149,14 +149,14 @@ public class Haven extends ScriptEngineNPC {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String resetDay = sdf.format(time);
         getQuest().forceStart(getPlayer(), getNpc().getId(), resetDay);
-        self.say("¸»¶ûÀÌ, ÀÌ¹ø¿¡µµ ¿Ô±º.\r\nÀÚ³×°¡ µµ¿ÍÁà¼­ ¾ó¸¶³ª °í¸¶¿îÁö ¸ğ¸£³×.\r\n#bÀú¹ø¿¡ º¸»óÀ» ¹ŞÀº µÚ·Î ÀÇ·Ú¸¦ 4¹ø ¿Ï·áÇß´Ù¸é ³ª¿¡°Ô ¾Ë·ÁÁÖ°Ô, ÇÖÇÖÇÖ.#k", ScriptMessageFlag.NoEsc);
+        self.say("ë§ë‘ì´, ì´ë²ˆì—ë„ ì™”êµ°.\r\nìë„¤ê°€ ë„ì™€ì¤˜ì„œ ì–¼ë§ˆë‚˜ ê³ ë§ˆìš´ì§€ ëª¨ë¥´ë„¤.\r\n#bì €ë²ˆì— ë³´ìƒì„ ë°›ì€ ë’¤ë¡œ ì˜ë¢°ë¥¼ 4ë²ˆ ì™„ë£Œí–ˆë‹¤ë©´ ë‚˜ì—ê²Œ ì•Œë ¤ì£¼ê²Œ, í•«í•«í•«.#k", ScriptMessageFlag.NoEsc);
     }
 
     public void q39160e() {
         if (target.exchange(4001842, (7 * 2)) > 0) {
             getQuest().forceComplete(getPlayer(), getNpc().getId());
             int level = getPlayer().getLevel();
-            //39164 - [ÁÖ°£ Äù½ºÆ®] ºí·¢Çìºì ³»ºÎ Æ¯¼ö ÀÇ·Ú : Àû ·Îº¿ Ã³Ä¡
+            //39164 - [ì£¼ê°„ í€˜ìŠ¤íŠ¸] ë¸”ë™í—¤ë¸ ë‚´ë¶€ íŠ¹ìˆ˜ ì˜ë¢° : ì  ë¡œë´‡ ì²˜ì¹˜
             if (level >= 216) {
                 getPlayer().updateInfoQuest(39164, "start=1");
             } else if (level >= 211) {
@@ -166,9 +166,9 @@ public class Haven extends ScriptEngineNPC {
             } else {
                 getPlayer().updateInfoQuest(39161, "start=1");
             }
-            self.say("¸»¶ûÀÌ, ÀÚ³×°¡ ²ÙÁØÈ÷ µµ¿ÍÁà¼­ Á¤ÂûÀÌ ÈÎ¾À ÆíÇØÁ³´Ù³×.\r\n¿©±â, ÀÌ°Ç ±×¿¡ ´ëÇÑ º¸»óÀÏ¼¼.\r\n#i4001842# #b#t4001842##k\r\n\r\n¾ÕÀ¸·Îµµ ¸ÅÁÖ ÀÇ·Ú¸¦ 4¹ø ¿Ï·áÇÏ¸é ³ª¿¡°Ô ¾Ë·ÁÁÖ°Ô. ÇÖÇÖÇÖ.");
+            self.say("ë§ë‘ì´, ìë„¤ê°€ ê¾¸ì¤€íˆ ë„ì™€ì¤˜ì„œ ì •ì°°ì´ í›¨ì”¬ í¸í•´ì¡Œë‹¤ë„¤.\r\nì—¬ê¸°, ì´ê±´ ê·¸ì— ëŒ€í•œ ë³´ìƒì¼ì„¸.\r\n#i4001842# #b#t4001842##k\r\n\r\nì•ìœ¼ë¡œë„ ë§¤ì£¼ ì˜ë¢°ë¥¼ 4ë²ˆ ì™„ë£Œí•˜ë©´ ë‚˜ì—ê²Œ ì•Œë ¤ì£¼ê²Œ. í•«í•«í•«.");
         } else {
-            self.say("¸»¶ûÀÌ ÀÚ³× °¡¹æ¿¡µç°Ô ¸¹³ªº¸±¸¸¸ ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã ¸»À»°É¾îÁÖ°Ô³ª.");
+            self.say("ë§ë‘ì´ ìë„¤ ê°€ë°©ì—ë“ ê²Œ ë§ë‚˜ë³´êµ¬ë§Œ ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ë§ì„ê±¸ì–´ì£¼ê²Œë‚˜.");
         }
     }
 
@@ -217,10 +217,10 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void bonusQuestStart(int mobId, int mobCount) {
-        self.say("¸»¶ûÀÌ, ±ä±Ş ÀÇ·Ú°¡ µé¾î¿Ô³×.\r\n#bÀû ·Îº¿ Ã³Ä¡#k ÀÇ·Ú¾ß.\r\n¹«¼­¿î ·Îº¿µéÀ» Ã³Ä¡ÇØÁÖ¸é µÈ´Ù³×. ´ÙÇàÈ÷µµ ±× ¼ıÀÚ°¡ ¸¹Áö´Â ¾ÊÀº °Í °°³×.");
-        if (self.askAccept("Ã³Ä¡ÇØ¾ß ÇÒ ·Îº¿Àº ¾Æ·¡¿Í °°³×.\r\n\r\n#r[ÀÇ·Ú : Àû ·Îº¿ Ã³Ä¡]#k\r\nÃ³Ä¡ ´ë»ó : #b#o" + mobId + "# " + mobCount + "#k\r\n\r\n¾î¶§? ÀÇ·Ú¸¦ ¼ö¶ôÇÒ ÅÙ°¡?") == 1) {
+        self.say("ë§ë‘ì´, ê¸´ê¸‰ ì˜ë¢°ê°€ ë“¤ì–´ì™”ë„¤.\r\n#bì  ë¡œë´‡ ì²˜ì¹˜#k ì˜ë¢°ì•¼.\r\në¬´ì„œìš´ ë¡œë´‡ë“¤ì„ ì²˜ì¹˜í•´ì£¼ë©´ ëœë‹¤ë„¤. ë‹¤í–‰íˆë„ ê·¸ ìˆ«ìê°€ ë§ì§€ëŠ” ì•Šì€ ê²ƒ ê°™ë„¤.");
+        if (self.askAccept("ì²˜ì¹˜í•´ì•¼ í•  ë¡œë´‡ì€ ì•„ë˜ì™€ ê°™ë„¤.\r\n\r\n#r[ì˜ë¢° : ì  ë¡œë´‡ ì²˜ì¹˜]#k\r\nì²˜ì¹˜ ëŒ€ìƒ : #b#o" + mobId + "# " + mobCount + "#k\r\n\r\nì–´ë•Œ? ì˜ë¢°ë¥¼ ìˆ˜ë½í•  í…ê°€?") == 1) {
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
-            self.say("°í¸¿³×. °©ÀÚ±â ¹«¼­¿î ·Îº¿µéÀÌ ´Ã¾î³ª¼­ Á¤ÂûÀÌ Èûµé¾î...\r\n´Ù Ã³Ä¡ÇÏ°í ³ª¸é ¿©±â·Î µ¹¾Æ¿À°Ô³ª.", ScriptMessageFlag.NoEsc);
+            self.say("ê³ ë§™ë„¤. ê°‘ìê¸° ë¬´ì„œìš´ ë¡œë´‡ë“¤ì´ ëŠ˜ì–´ë‚˜ì„œ ì •ì°°ì´ í˜ë“¤ì–´...\r\në‹¤ ì²˜ì¹˜í•˜ê³  ë‚˜ë©´ ì—¬ê¸°ë¡œ ëŒì•„ì˜¤ê²Œë‚˜.", ScriptMessageFlag.NoEsc);
         }
     }
 
@@ -228,14 +228,14 @@ public class Haven extends ScriptEngineNPC {
         if (target.exchange(4001842, (5 * 2)) > 0) {
             getPlayer().updateInfoQuest(getQuest().getId(), "start=0");
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.say("¸»¶ûÀÌ, #o" + mobId + "#µéÀ» Ã³Ä¡ÇØÁà¼­ °í¸¿³×.\r\nÀÌÁ¦ Á¤ÂûÀÌ Á» ¼ö¿ùÇØ Áö°Ú±¸¸¸..\r\n¿©±â, ÀÌ°Ç ±×¿¡ ´ëÇÑ º¸»óÀÏ¼¼.\r\n#i4001842# #b#t4001842##k\r\n\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×.", ScriptMessageFlag.NoEsc);
+            self.say("ë§ë‘ì´, #o" + mobId + "#ë“¤ì„ ì²˜ì¹˜í•´ì¤˜ì„œ ê³ ë§™ë„¤.\r\nì´ì œ ì •ì°°ì´ ì¢€ ìˆ˜ì›”í•´ ì§€ê² êµ¬ë§Œ..\r\nì—¬ê¸°, ì´ê±´ ê·¸ì— ëŒ€í•œ ë³´ìƒì¼ì„¸.\r\n#i4001842# #b#t4001842##k\r\n\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤.", ScriptMessageFlag.NoEsc);
         } else {
-            self.sayOk("¸»¶ûÀÌ ÀÚ³× °¡¹æ¿¡µç°Ô ¸¹³ªº¸±¸¸¸ ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã ¸»À»°É¾îÁÖ°Ô³ª.");
+            self.sayOk("ë§ë‘ì´ ìë„¤ ê°€ë°©ì—ë“ ê²Œ ë§ë‚˜ë³´êµ¬ë§Œ ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ë§ì„ê±¸ì–´ì£¼ê²Œë‚˜.");
         }
     }
 
     public void npc_2155000() {
-        self.say("¸»¶ûÀÌ ³»°Ô º¼ÀÏÀÌ ÀÖ´Â°¡?");
+        self.say("ë§ë‘ì´ ë‚´ê²Œ ë³¼ì¼ì´ ìˆëŠ”ê°€?");
     }
 
     public void q39101e() {
@@ -435,7 +435,7 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void itemQuest(int itemId, int needQty) {
-        self.say("±â´Ù¸®°í ÀÖ¾ú³×! ÀÌ ¹°°ÇµéÀÌ ²À ÇÊ¿äÇß°Åµç.\r\nÀ½...¿äÃ»ÇÑ ±×´ë·Î±º. #b¹°°ÇÀº ÀüºÎ °¡Á®°¡µµ·Ï ÇÏÁö.#k\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×, ¸»¶ûÀÌ.", ScriptMessageFlag.NoEsc);
+        self.say("ê¸°ë‹¤ë¦¬ê³  ìˆì—ˆë„¤! ì´ ë¬¼ê±´ë“¤ì´ ê¼­ í•„ìš”í–ˆê±°ë“ .\r\nìŒ...ìš”ì²­í•œ ê·¸ëŒ€ë¡œêµ°. #bë¬¼ê±´ì€ ì „ë¶€ ê°€ì ¸ê°€ë„ë¡ í•˜ì§€.#k\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤, ë§ë‘ì´.", ScriptMessageFlag.NoEsc);
         if (target.exchange(itemId, -needQty) > 0) {
             if (getPlayer().getItemQuantity(itemId, false) > 0) {
                 target.exchange(itemId, getPlayer().getItemQuantity(itemId, false));
@@ -444,13 +444,13 @@ public class Haven extends ScriptEngineNPC {
             FC = FC + 1;
             getPlayer().updateOneInfo(39100, "FC", String.valueOf(FC));
             getPlayer().gainExp(50000000, true, true, false);
-            bigScriptProgressMessage("°æÇèÄ¡¸¦ 50000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+            bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 50000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void repairQuest(int itemId, int needQty) {
-        self.say("Áõ°Å°¡ È®½ÇÇÏ±º. Áõ°Å¿ë Àç·á´Â ¸ğµÎ °¡Á®°¡°Ú³×.\r\n¼ö°í ¸¹¾Ò±º. ÀÚ³× ´öºĞ¿¡ ºÎ¼­Áø °¨½ÃÅ¾À» ´Ù½Ã ¾µ ¼ö ÀÖ°Ô µÆ¾î.\r\nÁ¤¸» ÇÏ±â Èûµç ÀÏÀÎµ¥...\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×, ¸»¶ûÀÌ.", ScriptMessageFlag.NoEsc);
+        self.say("ì¦ê±°ê°€ í™•ì‹¤í•˜êµ°. ì¦ê±°ìš© ì¬ë£ŒëŠ” ëª¨ë‘ ê°€ì ¸ê°€ê² ë„¤.\r\nìˆ˜ê³  ë§ì•˜êµ°. ìë„¤ ë•ë¶„ì— ë¶€ì„œì§„ ê°ì‹œíƒ‘ì„ ë‹¤ì‹œ ì“¸ ìˆ˜ ìˆê²Œ ëì–´.\r\nì •ë§ í•˜ê¸° í˜ë“  ì¼ì¸ë°...\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤, ë§ë‘ì´.", ScriptMessageFlag.NoEsc);
         if (target.exchange(itemId, -needQty) > 0) {
             if (getPlayer().getItemQuantity(itemId, false) > 0) {
                 target.exchange(itemId, getPlayer().getItemQuantity(itemId, false));
@@ -459,49 +459,49 @@ public class Haven extends ScriptEngineNPC {
             FC = FC + 1;
             getPlayer().updateOneInfo(39100, "FC", String.valueOf(FC));
             getPlayer().gainExp(50000000, true, true, false);
-            bigScriptProgressMessage("°æÇèÄ¡¸¦ 50000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+            bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 50000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void liberationQuest() {
-        self.say("·Îº¿µéÀ» ÇØ¹æ½ÃÄÑÁà¼­ °í¸¿³×.\r\nÀÚ³×¿¡°Ô ÀÎ»çÇÏ·Á´Â ·Îº¿µéÀÌ ³Ê¹« ¸¹¾Æ ÀüºÎ ¸»¸®´À¶ó Èûµé¾ú´Ù°í. ÀÚ³×´Ï±î ÇÒ ¼ö ÀÖ´Â ÀÏÀÌ¾ß.\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×, ¸»¶ûÀÌ.", ScriptMessageFlag.NoEsc);
+        self.say("ë¡œë´‡ë“¤ì„ í•´ë°©ì‹œì¼œì¤˜ì„œ ê³ ë§™ë„¤.\r\nìë„¤ì—ê²Œ ì¸ì‚¬í•˜ë ¤ëŠ” ë¡œë´‡ë“¤ì´ ë„ˆë¬´ ë§ì•„ ì „ë¶€ ë§ë¦¬ëŠë¼ í˜ë“¤ì—ˆë‹¤ê³ . ìë„¤ë‹ˆê¹Œ í•  ìˆ˜ ìˆëŠ” ì¼ì´ì•¼.\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤, ë§ë‘ì´.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;
         getPlayer().updateOneInfo(39100, "FC", String.valueOf(FC));
         getPlayer().gainExp(50000000, true, true, false);
-        bigScriptProgressMessage("°æÇèÄ¡¸¦ 50000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+        bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 50000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void NpcSpeechQuestStart(int mobId, int mobCount, int NpcSpeech) {
         getPlayer().updateInfoQuest(getQuest().getId(), "start=1;NpcSpeech=" + NpcSpeech + "1");
-        self.say("µµ¿òÀ» ¿äÃ»Çß´õ´Ï, ¸»¶ûÀÌ, ÀÚ³×°¡ ¿À´Ù´Ï!\r\nÀÚ³×¶ó¸é Á¤¸» Å« µµ¿òÀÌ µÉ°É¼¼.\r\nÀúÂÊ¿¡ °í¸¿´Ù°í ¸»ÀÌ¶óµµ ÇØ¾ß°Ú±º.", ScriptMessageFlag.NoEsc);
-        self.say("ÀÚ, ±×·³ ÀÏ ¾ê±â¸¦ ÇØº¼±î.\r\nÀÌ ±ÙÃ³ÀÇ #b#o" + mobId + "##kµéÀÌ °©ÀÚ±â ³Ê¹« ¸¹¾ÆÁ³¾î.\r\nµµÀúÈ÷ Á¤ÂûÀ» ÇÒ ¼ö°¡ ¾ø´Ù³×.\r\n#b#o" + mobId + "#" + mobCount + "¸¶¸®#k¸¦ Ã³Ä¡ÇØ ÁÖ°Ô.\r\n´Ù Ã³Ä¡ÇÑ ÈÄ¿£ ³ª¿¡°Ô ¾Ë·ÁÁÖ¸é µÇÁö, Àß ºÎÅ¹ÇÏ³×.", ScriptMessageFlag.NoEsc);
+        self.say("ë„ì›€ì„ ìš”ì²­í–ˆë”ë‹ˆ, ë§ë‘ì´, ìë„¤ê°€ ì˜¤ë‹¤ë‹ˆ!\r\nìë„¤ë¼ë©´ ì •ë§ í° ë„ì›€ì´ ë ê±¸ì„¸.\r\nì €ìª½ì— ê³ ë§™ë‹¤ê³  ë§ì´ë¼ë„ í•´ì•¼ê² êµ°.", ScriptMessageFlag.NoEsc);
+        self.say("ì, ê·¸ëŸ¼ ì¼ ì–˜ê¸°ë¥¼ í•´ë³¼ê¹Œ.\r\nì´ ê·¼ì²˜ì˜ #b#o" + mobId + "##kë“¤ì´ ê°‘ìê¸° ë„ˆë¬´ ë§ì•„ì¡Œì–´.\r\në„ì €íˆ ì •ì°°ì„ í•  ìˆ˜ê°€ ì—†ë‹¤ë„¤.\r\n#b#o" + mobId + "#" + mobCount + "ë§ˆë¦¬#kë¥¼ ì²˜ì¹˜í•´ ì£¼ê²Œ.\r\në‹¤ ì²˜ì¹˜í•œ í›„ì—” ë‚˜ì—ê²Œ ì•Œë ¤ì£¼ë©´ ë˜ì§€, ì˜ ë¶€íƒí•˜ë„¤.", ScriptMessageFlag.NoEsc);
     }
 
     public void NpcSpeechQuestEnd(int mobId) {
-        self.say("#o" + mobId + "#µéÀ» Ã³Ä¡ÇØÁà¼­ °í¸¿³×.\r\nÀÌÁ¦ Á¤ÂûÀÌ Á» ¼ö¿ùÇØ Áö°Ú±¸¸¸.\r\n¾Æ¹«³ª ¸øÇÏ´Â ÀÇ·ÚÀÎµ¥, ´ë´ÜÇØ!\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×, ¸»¶ûÀÌ.", ScriptMessageFlag.NoEsc);
+        self.say("#o" + mobId + "#ë“¤ì„ ì²˜ì¹˜í•´ì¤˜ì„œ ê³ ë§™ë„¤.\r\nì´ì œ ì •ì°°ì´ ì¢€ ìˆ˜ì›”í•´ ì§€ê² êµ¬ë§Œ.\r\nì•„ë¬´ë‚˜ ëª»í•˜ëŠ” ì˜ë¢°ì¸ë°, ëŒ€ë‹¨í•´!\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤, ë§ë‘ì´.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;
         getPlayer().updateOneInfo(39100, "FC", String.valueOf(FC));
         getPlayer().updateInfoQuest(getQuest().getId(), "");
         getPlayer().gainExp(50000000, true, true, false);
-        bigScriptProgressMessage("°æÇèÄ¡¸¦ 50000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+        bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 50000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void normalQuestEnd() {
-        self.say("µµ¿òÀº Àß ¹Ş¾Ò³×.\r\nÀÚ³×ÀÇ È°¾à¿¡ ´ëÇØ ³»°¡ Àß Àü´ŞÇØ µÎÁö.\r\nÀÚ³×°¡ ¾ø¾úÀ¸¸é Å«ÀÏ³µÀ» °Å¾ß.\r\n¾ÕÀ¸·Îµµ Àß ºÎÅ¹ÇÏ³×, ¸»¶ûÀÌ.", ScriptMessageFlag.NoEsc);
+        self.say("ë„ì›€ì€ ì˜ ë°›ì•˜ë„¤.\r\nìë„¤ì˜ í™œì•½ì— ëŒ€í•´ ë‚´ê°€ ì˜ ì „ë‹¬í•´ ë‘ì§€.\r\nìë„¤ê°€ ì—†ì—ˆìœ¼ë©´ í°ì¼ë‚¬ì„ ê±°ì•¼.\r\nì•ìœ¼ë¡œë„ ì˜ ë¶€íƒí•˜ë„¤, ë§ë‘ì´.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;
         getPlayer().updateOneInfo(39100, "FC", String.valueOf(FC));
         getPlayer().updateInfoQuest(getQuest().getId(), "");
         getPlayer().gainExp(50000000, true, true, false);
-        bigScriptProgressMessage("°æÇèÄ¡¸¦ 50000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+        bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 50000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 }

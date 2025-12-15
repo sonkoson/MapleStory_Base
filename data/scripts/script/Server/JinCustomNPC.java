@@ -68,19 +68,19 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
     public void displayShop() {
         int grade = getPlayer().getOneInfoQuestInteger(100161, "lv");
-        String gradeName = "#e<" + grades[grade] + "µî±Ş ¸â¹ö½Ê »óÁ¡>#n";
-        String v0 = gradeName + "\r\nº¸±Ş »óÀÚ´Â ¸ÅÀÏ 1È¸ ¹«·á·Î Áö¿øµË´Ï´Ù.";
-        v0 += "\r\n#eº¸À¯ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getRealCash()) + "#n\r\n";
+        String gradeName = "#e<" + grades[grade] + "ë“±ê¸‰ ë©¤ë²„ì‹­ ìƒì >#n";
+        String v0 = gradeName + "\r\në³´ê¸‰ ìƒìëŠ” ë§¤ì¼ 1íšŒ ë¬´ë£Œë¡œ ì§€ì›ë©ë‹ˆë‹¤.";
+        v0 += "\r\n#eë³´ìœ  í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getRealCash()) + "#n\r\n";
         int item = 2630688 + grade;
 
         if (grade > 0) {
             if (getPlayer().getOneInfoQuestInteger(100161, "0_buy_count") == 0) {
-                v0 += "#L0##b#e#i" + item + "# #z" + item + "##n º¸±Ş ¹Ş±â#k#l\r\n";
+                v0 += "#L0##b#e#i" + item + "# #z" + item + "##n ë³´ê¸‰ ë°›ê¸°#k#l\r\n";
             } else {
-                v0 += "\r\n#b#e#i" + item + "# #z" + item + "##n º¸±Ş ¹Ş±â #e#k(¼ö·É ¿Ï·á)#n#l";
+                v0 += "\r\n#b#e#i" + item + "# #z" + item + "##n ë³´ê¸‰ ë°›ê¸° #e#k(ìˆ˜ë ¹ ì™„ë£Œ)#n#l";
             }
         }
-        v0 += "\r\n\r\n#e<µ¥ÀÏ¸® ¸â¹ö½± »óÁ¡>#n\r\n#b";
+        v0 += "\r\n\r\n#e<ë°ì¼ë¦¬ ë©¤ë²„ì‰½ ìƒì >#n\r\n#b";
 
         if (grade == 0) {
             grade = 1;
@@ -89,21 +89,21 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             int itemID = entry.getItemID();
             int index = entry.getIndex();
             int buyCount = getPlayer().getOneInfoQuestInteger(100161, index + "_buy_count");
-            int remain = entry.getWorldLimit(grade - 1) - buyCount; // ±İÀÏ ±¸¸Å °¡´É È½¼ö
+            int remain = entry.getWorldLimit(grade - 1) - buyCount; // ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜
             int gradeLimit = entry.getGradeLimit();
             int price = entry.getPrice(grade - 1);
             if (gradeLimit > getPlayer().getOneInfoQuestInteger(100161, "lv")) {
-                // ±¸¸Å °¡´É µî±ŞÀÌ ¾Æ´Ò ¶§
+                // êµ¬ë§¤ ê°€ëŠ¥ ë“±ê¸‰ì´ ì•„ë‹ ë•Œ
                 v0 += "     #i" + itemID + "#  #z" + itemID + "# (" + NumberFormat.getInstance().format(price) + " P)#l\r\n";
-                v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : 0È¸#b#n #r(µî±Ş ºÎÁ·)#b\r\n";
+                v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : 0íšŒ#b#n #r(ë“±ê¸‰ ë¶€ì¡±)#b\r\n";
             } else {
                 if (remain <= 0) {
-                    // ±¸¸Å °¡´É È½¼ö°¡ ¾øÀ» ¶§
+                    // êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜ê°€ ì—†ì„ ë•Œ
                     v0 += "     #i" + itemID + "#  #z" + itemID + "# (" + NumberFormat.getInstance().format(price) + " P)#l\r\n";
-                    v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : " + remain + "È¸#b#n\r\n";
+                    v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : " + remain + "íšŒ#b#n\r\n";
                 } else {
                     v0 += "#L" + index + "##i" + itemID + "#  #z" + itemID + "# (" + NumberFormat.getInstance().format(price) + " P)#l\r\n";
-                    v0 += "#k#e           - ±İÀÏ ±¸¸Å °¡´É : " + remain + "È¸#b#n\r\n";
+                    v0 += "#k#e           - ê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ : " + remain + "íšŒ#b#n\r\n";
                 }
             }
         }
@@ -114,12 +114,12 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             }
             getPlayer().updateOneInfo(100161, "0_buy_count", "1");
             if (1 == target.exchange(item, 1)) {
-                if (0 == self.askMenu("#b#i" + item + "# #z" + item + "##kÀ» º¸±ŞÇØµå·È½À´Ï´Ù.\r\n\r\n#b#L0#¾ÆÀÌÅÛ ¸ñ·ÏÀ¸·Î µ¹¾Æ°£´Ù.#l")) {
+                if (0 == self.askMenu("#b#i" + item + "# #z" + item + "##kì„ ë³´ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì•„ì´í…œ ëª©ë¡ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.#l")) {
                     displayShop();
                 }
             } else {
                 getPlayer().updateOneInfo(100161, "0_buy_count", "0");
-                self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
             }
         } else {
             if (v1 == -1) {
@@ -140,23 +140,23 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             if (0 >= remain) {
                 return;
             }
-            String v2 = "#e<µ¥ÀÏ¸® ¸â¹ö½± »óÁ¡>#n\r\n#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k";
-            v2 += "\r\n\r\n#e±İÀÏ ±¸¸Å °¡´É È½¼ö : " + remain + "È¸\r\nº¸À¯ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
-            v2 += "\r\n\r\n#n±¸¸Å ½Ã #b#e" + pick.getPrice(grade - 1) + " Æ÷ÀÎÆ®#n#k°¡ Â÷°¨µË´Ï´Ù. Á¤¸» ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?";
+            String v2 = "#e<ë°ì¼ë¦¬ ë©¤ë²„ì‰½ ìƒì >#n\r\n#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k";
+            v2 += "\r\n\r\n#eê¸ˆì¼ êµ¬ë§¤ ê°€ëŠ¥ íšŸìˆ˜ : " + remain + "íšŒ\r\në³´ìœ  í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
+            v2 += "\r\n\r\n#nêµ¬ë§¤ ì‹œ #b#e" + pick.getPrice(grade - 1) + " í¬ì¸íŠ¸#n#kê°€ ì°¨ê°ë©ë‹ˆë‹¤. ì •ë§ êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
             if (1 == self.askYesNo(v2)) {
                 if (getPlayer().getRealCash() < pick.getPrice(grade - 1)) {
-                    self.say("°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 if (1 == target.exchange(pick.getItemID(), 1)) {
                     getPlayer().gainRealCash(-pick.getPrice(grade - 1));
-                    // ±¸¸Å Ã³¸®
+                    // êµ¬ë§¤ ì²˜ë¦¬
                     getPlayer().updateOneInfo(100161, pick.getIndex() + "_buy_count", String.valueOf(buyCount + 1));
-                    if (0 == self.askMenu("#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k ±¸¸Å°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.\r\n\r\n#b#L0#¾ÆÀÌÅÛ ¸ñ·ÏÀ¸·Î µ¹¾Æ°£´Ù.#l")) {
+                    if (0 == self.askMenu("#b#i" + pick.getItemID() + "# #z" + pick.getItemID() + "##k êµ¬ë§¤ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì•„ì´í…œ ëª©ë¡ìœ¼ë¡œ ëŒì•„ê°„ë‹¤.#l")) {
                         displayShop();
                     }
                 } else {
-                    self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                    self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                 }
             }
         }
@@ -219,23 +219,23 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     }
 
     public void renewOptionRoyal() {
-        // °­¸²Àº Âù¶õÇÑ ºûÀÇ °áÁ¤ÀÌ Àç·áÀÓ
+        // ê°•ë¦¼ì€ ì°¬ë€í•œ ë¹›ì˜ ê²°ì •ì´ ì¬ë£Œì„
         int requestItemID = 4031227;
 
         while (true) {
-            // Àç¼³Á¤ µå°¡ÀÚ
+            // ì¬ì„¤ì • ë“œê°€ì
             if (target.exchange(requestItemID, -100) > 0) {
                 ExtraAbilityGrade grade = getPlayer().getExtraAbilityGrade();
                 double rate = ExtraAbilityFactory.getGradeUpRate(grade, ExtraAbilityPayType.Donation);
                 boolean legendaryOption = false;
                 if (Randomizer.isSuccess((int) (rate * 10), 1000) && grade != ExtraAbilityGrade.Legendary) {
-                    // µî¾÷!
+                    // ë“±ì—…!
                     legendaryOption = true;
                     grade = ExtraAbilityGrade.getGrade(grade.getGradeID() + 1);
-                    getPlayer().send(CField.addPopupSay(9062000, 5000, "#e#r" + grade.getDesc() + " µî±Ş#k#nÀ¸·Î µî±Ş¾÷¿¡ ¼º°øÇß½À´Ï´Ù!", ""));
+                    getPlayer().send(CField.addPopupSay(9062000, 5000, "#e#r" + grade.getDesc() + " ë“±ê¸‰#k#nìœ¼ë¡œ ë“±ê¸‰ì—…ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤!", ""));
                     getPlayer().setExtraAbilityGrade(grade);
                     if (grade == ExtraAbilityGrade.Legendary) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]´ÔÀÌ ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ '·¹Àüµå¸® µî±Ş'À» ´Ş¼ºÇÏ¿´½À´Ï´Ù!"));
+                        Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]ë‹˜ì´ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° 'ë ˆì „ë“œë¦¬ ë“±ê¸‰'ì„ ë‹¬ì„±í•˜ì˜€ìŠµë‹ˆë‹¤!"));
                     }
                 }
 
@@ -243,10 +243,10 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 int luckyPoint = getPlayer().getOneInfoQuestInteger(787878, "lp");
                 boolean enableExtra = getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()][5].getOption() != ExtraAbilityOption.None;
                 if (!enableExtra) {
-                    // ¿¢½ºÆ®¶ó ½ºÅÈÀÌ ¾ø´Ù¸é.
-                    // ÀÏÁ¤ È®·ü·Î ´Ş¾ÆÁÖÀÚ.
+                    // ì—‘ìŠ¤íŠ¸ë¼ ìŠ¤íƒ¯ì´ ì—†ë‹¤ë©´.
+                    // ì¼ì • í™•ë¥ ë¡œ ë‹¬ì•„ì£¼ì.
                     if (grade == ExtraAbilityGrade.Legendary) {
-                        // ·¹Àüµå¸® ¿É¼Ç¿¡¼­ 1% È®·ü·Î ´Ş¸²
+                        // ë ˆì „ë“œë¦¬ ì˜µì…˜ì—ì„œ 1% í™•ë¥ ë¡œ ë‹¬ë¦¼
                         if (Randomizer.isSuccess(1)) {
                             enableExtra = true;
                         }
@@ -261,20 +261,20 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 luckyPoint += 3;
                 getPlayer().updateOneInfo(787878, "lp", String.valueOf(luckyPoint));
 
-                String v5 = "#fs11##b¿¢½ºÆ®¶ó ¾îºô¸®Æ¼#k Àç¼³Á¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.#r\r\n\r\n";
+                String v5 = "#fs11##bì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°#k ì¬ì„¤ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.#r\r\n\r\n";
 
-                v5 += "#e#kÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                v5 += "#e#kí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                 int index = 0;
 
-                StringBuilder sb = new StringBuilder("¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ °á°ú (");
-                sb.append("°èÁ¤ : " + getClient().getAccountName());
-                sb.append(", Ä³¸¯ÅÍ : " + getPlayer().getName());
-                sb.append(", µîÀâ ¿É¼Ç [");
+                StringBuilder sb = new StringBuilder("ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ê²°ê³¼ (");
+                sb.append("ê³„ì • : " + getClient().getAccountName());
+                sb.append(", ìºë¦­í„° : " + getPlayer().getName());
+                sb.append(", ë“±ì¡ ì˜µì…˜ [");
                 for (ExtraAbilityStatEntry e : entry) {
                     if (++index == 6) {
-                        v5 += "\r\n#k#e[¿¢½ºÆ®¶ó ½ºÅÈ]#n\r\n#r";
+                        v5 += "\r\n#k#e[ì—‘ìŠ¤íŠ¸ë¼ ìŠ¤íƒ¯]#n\r\n#r";
                     }
-                    sb.append("µî±Ş : ");
+                    sb.append("ë“±ê¸‰ : ");
                     sb.append(getPlayer().getExtraAbilityGrade().getDesc());
                     sb.append(", ");
                     sb.append("[index:" + index);
@@ -291,8 +291,8 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 getPlayer().checkExtraAbility();
 
                 int remain = getPlayer().getItemQuantity(requestItemID, false);
-                v5 += "\r\n#k#eº¸À¯ÁßÀÎ #z" + requestItemID + "# : " + remain + "°³";
-                v5 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+                v5 += "\r\n#k#eë³´ìœ ì¤‘ì¸ #z" + requestItemID + "# : " + remain + "ê°œ";
+                v5 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
                 if (luckyPoint >= 30) {
                     v5 += "#b" + luckyPoint + " (Lucky!!)#k";
                 } else {
@@ -304,16 +304,16 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     break;
                 } else {
                     /*if (type == ExtraAbilityPayType.Donation) {
-                        v5 += "\r\n\r\n#b#e1,000 °­¸² Æ÷ÀÎÆ®#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                        v5 += "\r\n\r\n#b#e1,000 ê°•ë¦¼ í¬ì¸íŠ¸#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                     } else if (type == ExtraAbilityPayType.Promotion) {
-                        v5 += "\r\n\r\n#b#e500 È«º¸ Æ÷ÀÎÆ®#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                        v5 += "\r\n\r\n#b#e500 í™ë³´ í¬ì¸íŠ¸#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                     } else if (type == ExtraAbilityPayType.Meso) {
-                        v5 += "\r\n\r\n#b#e500,000,000 ¸Ş¼Ò#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                        v5 += "\r\n\r\n#b#e500,000,000 ë©”ì†Œ#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                     }*/
-                    v5 += "\r\n\r\n#b#e#i" + requestItemID + "# #z" + requestItemID + "##k#nÀ» »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
-                    v5 += "\r\n#b#L0#ÇÑ ¹ø ´õ ¼³Á¤ÇÑ´Ù.#l\r\n#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l";
+                    v5 += "\r\n\r\n#b#e#i" + requestItemID + "# #z" + requestItemID + "##k#nì„ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
+                    v5 += "\r\n#b#L0#í•œ ë²ˆ ë” ì„¤ì •í•œë‹¤.#l\r\n#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l";
                     if (self.askMenu(v5) == 0) {
-                        if (self.askMenu("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k\r\n\r\n#b#L0#ÇÑ ¹ø ´õ ¼³Á¤ÇÑ´Ù.#l\r\n#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l") == 0) {
+                        if (self.askMenu("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k\r\n\r\n#b#L0#í•œ ë²ˆ ë” ì„¤ì •í•œë‹¤.#l\r\n#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l") == 0) {
                             renewOptionRoyal();
                         }
                         break;
@@ -321,51 +321,51 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     break;
                 }
             } else {
-                self.say("#fs11##zi" + requestItemID + "# #z" + requestItemID + "#ÀÌ ºÎÁ·ÇÏ¿© ´õ ÀÌ»ó Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                self.say("#fs11##zi" + requestItemID + "# #z" + requestItemID + "#ì´ ë¶€ì¡±í•˜ì—¬ ë” ì´ìƒ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                 break;
             }
         }
     }
     public void renewOption(ExtraAbilityPayType type) {
-        // ¤·¤· µ¹·ÁÁÖ¼¼¿µ
+        // ã…‡ã…‡ ëŒë ¤ì£¼ì„¸ì˜
         while (true) {
             if (type == ExtraAbilityPayType.Donation) {
                 if (getPlayer().getRealCash() < 1000) {
-                    self.say("#b°­¸² Æ÷ÀÎÆ®#k°¡ ºÎÁ·ÇÏ¿© Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("#bê°•ë¦¼ í¬ì¸íŠ¸#kê°€ ë¶€ì¡±í•˜ì—¬ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     break;
                 }
                 getPlayer().gainRealCash(-1000, true);
             } else if (type == ExtraAbilityPayType.Promotion) {
                 if (getPlayer().getHongboPoint() < 500) {
-                    self.say("#bÈ«º¸ Æ÷ÀÎÆ®#k°¡ ºÎÁ·ÇÏ¿© Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("#bí™ë³´ í¬ì¸íŠ¸#kê°€ ë¶€ì¡±í•˜ì—¬ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     break;
                 }
                 getPlayer().gainHongboPoint(-500, true);
             } else if (type == ExtraAbilityPayType.Meso) {
                 if (getPlayer().getMeso() < 500000000L) {
-                    self.say("#b¸Ş¼Ò#k°¡ ºÎÁ·ÇÏ¿© Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("#bë©”ì†Œ#kê°€ ë¶€ì¡±í•˜ì—¬ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     break;
                 }
                 getPlayer().gainMeso(-500000000L, true);
             }
 
-            // Àç¼³Á¤ µå°¡ÀÚ
+            // ì¬ì„¤ì • ë“œê°€ì
             ExtraAbilityGrade grade = getPlayer().getExtraAbilityGrade();
             if (grade == ExtraAbilityGrade.Legendary) {
                 if (type == ExtraAbilityPayType.Meso) {
-                    self.say("#b·¹Àüµå¸® µî±Ş#kÀº ¸Ş¼Ò¸¦ »ç¿ëÇÏ¿© Àç¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("#bë ˆì „ë“œë¦¬ ë“±ê¸‰#kì€ ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì—¬ ì¬ì„¤ì •í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
             }
 
             double rate = ExtraAbilityFactory.getGradeUpRate(grade, type);
             if (Randomizer.isSuccess((int) (rate * 10), 1000) && grade != ExtraAbilityGrade.Legendary) {
-                // µî¾÷!
+                // ë“±ì—…!
                 grade = ExtraAbilityGrade.getGrade(grade.getGradeID() + 1);
-                getPlayer().send(CField.addPopupSay(9062000, 5000, "#e#r" + grade.getDesc() + " µî±Ş#k#nÀ¸·Î µî±Ş¾÷¿¡ ¼º°øÇß½À´Ï´Ù!", ""));
+                getPlayer().send(CField.addPopupSay(9062000, 5000, "#e#r" + grade.getDesc() + " ë“±ê¸‰#k#nìœ¼ë¡œ ë“±ê¸‰ì—…ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤!", ""));
                 getPlayer().setExtraAbilityGrade(grade);
                 if (grade == ExtraAbilityGrade.Legendary) {
-                    Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]´ÔÀÌ ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ '·¹Àüµå¸® µî±Ş'À» ´Ş¼ºÇÏ¿´½À´Ï´Ù!"));
+                    Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]ë‹˜ì´ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° 'ë ˆì „ë“œë¦¬ ë“±ê¸‰'ì„ ë‹¬ì„±í•˜ì˜€ìŠµë‹ˆë‹¤!"));
                 }
             }
 
@@ -380,21 +380,21 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             if (grade == ExtraAbilityGrade.Legendary) {
                 int result = ExtraAbilityFactory.checkAllMaxValue(entry);
                 if (result == 2) {
-                    String msg = getPlayer().getName() + "´ÔÀÇ ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼¿¡¼­#r\r\n\r\n";
+                    String msg = getPlayer().getName() + "ë‹˜ì˜ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ì—ì„œ#r\r\n\r\n";
                     for (ExtraAbilityStatEntry e : entry) {
                         msg += String.format(e.getOption().getDesc(), e.getValue(), "%");
                         msg += "\r\n";
                     }
-                    msg += "#k\r\n¿É¼ÇÀÌ µîÀåÇß½À´Ï´Ù!";
+                    msg += "#k\r\nì˜µì…˜ì´ ë“±ì¥í–ˆìŠµë‹ˆë‹¤!";
                     Center.Broadcast.broadcastMessage(CField.addPopupSay(9062000, 5000, msg, ""));
                     legendaryOption = true;
                 } else if (result == 1) {
-                    String msg = "¿¢½ºÆ®¶ó ¾îºô¸®Æ¼¿¡¼­#r\r\n\r\n";
+                    String msg = "ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ì—ì„œ#r\r\n\r\n";
                     for (ExtraAbilityStatEntry e : entry) {
                         msg += String.format(e.getOption().getDesc(), e.getValue(), "%");
                         msg += "\r\n";
                     }
-                    msg += "#k\r\n¿É¼ÇÀÌ µîÀåÇß½À´Ï´Ù!";
+                    msg += "#k\r\nì˜µì…˜ì´ ë“±ì¥í–ˆìŠµë‹ˆë‹¤!";
                     getPlayer().send(CField.addPopupSay(9062000, 5000, msg, ""));
                     legendaryOption = true;
                 }
@@ -409,14 +409,14 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             }
             getPlayer().updateOneInfo(787878, "lp", String.valueOf(luckyPoint));
 
-            String v5 = "#b¿¢½ºÆ®¶ó ¾îºô¸®Æ¼#k Àç¼³Á¤ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.#r\r\n\r\n";
+            String v5 = "#bì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°#k ì¬ì„¤ì •ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.#r\r\n\r\n";
 
-            v5 += "#e#kÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+            v5 += "#e#kí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
 
-            StringBuilder sb = new StringBuilder("¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ °á°ú (");
-            sb.append("°èÁ¤ : " + getClient().getAccountName());
-            sb.append(", Ä³¸¯ÅÍ : " + getPlayer().getName());
-            sb.append(", µîÀâ ¿É¼Ç [");
+            StringBuilder sb = new StringBuilder("ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ê²°ê³¼ (");
+            sb.append("ê³„ì • : " + getClient().getAccountName());
+            sb.append(", ìºë¦­í„° : " + getPlayer().getName());
+            sb.append(", ë“±ì¡ ì˜µì…˜ [");
 
             int index = 0;
             for (ExtraAbilityStatEntry e : entry) {
@@ -424,7 +424,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 v5 += "\r\n";
 
                 index++;
-                sb.append("µî±Ş : ");
+                sb.append("ë“±ê¸‰ : ");
                 sb.append(getPlayer().getExtraAbilityGrade().getDesc());
                 sb.append(", ");
                 sb.append("[index:" + index);
@@ -440,13 +440,13 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             getPlayer().checkExtraAbility();
 
             if (type == ExtraAbilityPayType.Donation) {
-                v5 += "\r\n#k#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getRealCash());
+                v5 += "\r\n#k#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getRealCash());
             } else if (type == ExtraAbilityPayType.Promotion) {
-                v5 += "\r\n#k#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getHongboPoint());
+                v5 += "\r\n#k#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getHongboPoint());
             } else if (type == ExtraAbilityPayType.Meso) {
-                v5 += "\r\n#k#eº¸À¯ÁßÀÎ ¸Ş¼Ò : " + nf.format(getPlayer().getMeso());
+                v5 += "\r\n#k#eë³´ìœ ì¤‘ì¸ ë©”ì†Œ : " + nf.format(getPlayer().getMeso());
             }
-            v5 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+            v5 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
             if (luckyPoint >= 30) {
                 v5 += "#b" + luckyPoint + " (Lucky!!)#k";
             } else {
@@ -458,15 +458,15 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 break;
             } else {
                 if (type == ExtraAbilityPayType.Donation) {
-                    v5 += "\r\n\r\n#b#e1,000 °­¸² Æ÷ÀÎÆ®#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                    v5 += "\r\n\r\n#b#e1,000 ê°•ë¦¼ í¬ì¸íŠ¸#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                 } else if (type == ExtraAbilityPayType.Promotion) {
-                    v5 += "\r\n\r\n#b#e500 È«º¸ Æ÷ÀÎÆ®#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                    v5 += "\r\n\r\n#b#e500 í™ë³´ í¬ì¸íŠ¸#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                 } else if (type == ExtraAbilityPayType.Meso) {
-                    v5 += "\r\n\r\n#b#e500,000,000 ¸Ş¼Ò#k#n¸¦ »ç¿ëÇÏ¿© ¿É¼ÇÀ» ´Ù½Ã ¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?";
+                    v5 += "\r\n\r\n#b#e500,000,000 ë©”ì†Œ#k#në¥¼ ì‚¬ìš©í•˜ì—¬ ì˜µì…˜ì„ ë‹¤ì‹œ ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
                 }
-                v5 += "\r\n#b#L0#ÇÑ ¹ø ´õ ¼³Á¤ÇÑ´Ù.#l\r\n#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l";
+                v5 += "\r\n#b#L0#í•œ ë²ˆ ë” ì„¤ì •í•œë‹¤.#l\r\n#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l";
                 if (self.askMenu(v5) == 0) {
-                    if (self.askMenu("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k\r\n\r\n#b#L0#ÇÑ ¹ø ´õ ¼³Á¤ÇÑ´Ù.#l\r\n#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l") == 0) {
+                    if (self.askMenu("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k\r\n\r\n#b#L0#í•œ ë²ˆ ë” ì„¤ì •í•œë‹¤.#l\r\n#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l") == 0) {
                         renewOption(type);
                     }
                     break;
@@ -480,63 +480,63 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     public void test() {
         initNPC(MapleLifeFactory.getNPC(9010017));
         NumberFormat nf = NumberFormat.getInstance();
-        String v0 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç #b#h0##k´ÔÀÇ ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ Á¤º¸´Â ¾Æ·¡¿Í °°½À´Ï´Ù.\r\n\r\n";
-        v0 += "#eÇöÀç Àû¿ëÁßÀÎ ÇÁ¸®¼Â : #r" + getPlayer().getExtraAbilitySlot() + "¹ø#k\r\n";
-        v0 += "ÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+        String v0 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ #b#h0##kë‹˜ì˜ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì •ë³´ëŠ” ì•„ë˜ì™€ ê°™ìŠµë‹ˆë‹¤.\r\n\r\n";
+        v0 += "#eí˜„ì¬ ì ìš©ì¤‘ì¸ í”„ë¦¬ì…‹ : #r" + getPlayer().getExtraAbilitySlot() + "ë²ˆ#k\r\n";
+        v0 += "í˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
         int index = 0;
         for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
             if (++index == 6) {
-                v0 += "\r\n#k#e[¿¢½ºÆ®¶ó ½ºÅÈ]#n#r\r\n";
+                v0 += "\r\n#k#e[ì—‘ìŠ¤íŠ¸ë¼ ìŠ¤íƒ¯]#n#r\r\n";
             }
             v0 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
             v0 += "\r\n";
         }
-        v0 += "\r\n#b#L0#ÇöÀç ÇÁ¸®¼ÂÀÇ ¿É¼ÇÀ» Àç¼³Á¤ÇÑ´Ù.#l\r\n";
-        v0 += "#b#L1#ÇÁ¸®¼ÂÀ» º¯°æÇÑ´Ù.";
+        v0 += "\r\n#b#L0#í˜„ì¬ í”„ë¦¬ì…‹ì˜ ì˜µì…˜ì„ ì¬ì„¤ì •í•œë‹¤.#l\r\n";
+        v0 += "#b#L1#í”„ë¦¬ì…‹ì„ ë³€ê²½í•œë‹¤.";
         boolean presetLock = getPlayer().getOneInfoQuestInteger(787878, "e_preset_open") == 0;
         if (presetLock) {
-            v0 += " #e(Àá±è)#n";
+            v0 += " #e(ì ê¹€)#n";
         }
-        v0 += "#l\r\n#b#L2#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼¿¡ ´ëÇØ ¾Ë¾Æº»´Ù.#l\r\n";
+        v0 += "#l\r\n#b#L2#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ì— ëŒ€í•´ ì•Œì•„ë³¸ë‹¤.#l\r\n";
         int v1 = self.askMenu(v0);
         int requestItemID = 4031227;
         switch (v1) {
-            case 0: { // ¿É¼Ç Àç¼³Á¤
+            case 0: { // ì˜µì…˜ ì¬ì„¤ì •
                 if (DBConfig.isGanglim) {
-                    // °­¸²Àº Âù¶õÇÑ ºûÀÇ °áÁ¤ÀÌ Àç·áÀÓ
+                    // ê°•ë¦¼ì€ ì°¬ë€í•œ ë¹›ì˜ ê²°ì •ì´ ì¬ë£Œì„
                     int quantity = 100;
                     String v2 = "#fs11#";
                     boolean skipDesc = getPlayer().getOneInfoQuestInteger(787878, "skip_desc") == 1;
                     if (skipDesc) {
-                        v2 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç #e#b" + getPlayer().getExtraAbilitySlot() + "¹ø#k#n ÇÁ¸®¼ÂÀÌ Àû¿ëÁßÀÌ¸ç, ¾Æ·¡ÀÇ ¿É¼ÇÀÌ Àû¿ëÁßÀÔ´Ï´Ù.\r\n";
+                        v2 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ #e#b" + getPlayer().getExtraAbilitySlot() + "ë²ˆ#k#n í”„ë¦¬ì…‹ì´ ì ìš©ì¤‘ì´ë©°, ì•„ë˜ì˜ ì˜µì…˜ì´ ì ìš©ì¤‘ì…ë‹ˆë‹¤.\r\n";
                     } else {
-                        v2 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç #e#b" + getPlayer().getExtraAbilitySlot() + "¹ø#k#n ÇÁ¸®¼ÂÀÌ Àû¿ëÁßÀÌ¸ç, ¾Æ·¡ÀÇ ¿É¼ÇÀÌ Àû¿ëÁßÀÔ´Ï´Ù.\r\n#rÈ¹µæµÇ´Â ·°Å° Æ÷ÀÎÆ® ¹× ÀÌÅ» ¿É¼Ç À¯¹«, µî¾÷ È®·üµî#k ÀÚ¼¼ÇÑ ³»¿ëÀº #b#e¿¢½ºÆ®¶ó ¾îºô¸®Æ¼¿¡ ´ëÇØ ¾Ë¾Æº»´Ù.#n#k¸¦ ÂüÁ¶ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.\r\n\r\n";
+                        v2 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ #e#b" + getPlayer().getExtraAbilitySlot() + "ë²ˆ#k#n í”„ë¦¬ì…‹ì´ ì ìš©ì¤‘ì´ë©°, ì•„ë˜ì˜ ì˜µì…˜ì´ ì ìš©ì¤‘ì…ë‹ˆë‹¤.\r\n#ríšë“ë˜ëŠ” ëŸ­í‚¤ í¬ì¸íŠ¸ ë° ì´íƒˆ ì˜µì…˜ ìœ ë¬´, ë“±ì—… í™•ë¥ ë“±#k ìì„¸í•œ ë‚´ìš©ì€ #b#eì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ì— ëŒ€í•´ ì•Œì•„ë³¸ë‹¤.#n#kë¥¼ ì°¸ì¡°í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.\r\n\r\n";
                     }
-                    v2 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                    v2 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                     index = 0;
                     for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                         if (++index == 6) {
-                            v2 += "\r\n#k#e[¿¢½ºÆ®¶ó ½ºÅÈ]#n\r\n#r";
+                            v2 += "\r\n#k#e[ì—‘ìŠ¤íŠ¸ë¼ ìŠ¤íƒ¯]#n\r\n#r";
                         }
                         v2 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                         v2 += "\r\n";
                     }
-                    v2 += "\r\n#b#L0##e#z" + requestItemID + "##n¸¦ »ç¿ëÇÏ¿© ÇöÀç ¿É¼ÇÀ» Àç¼³Á¤ÇÑ´Ù.#l\r\n";
+                    v2 += "\r\n#b#L0##e#z" + requestItemID + "##në¥¼ ì‚¬ìš©í•˜ì—¬ í˜„ì¬ ì˜µì…˜ì„ ì¬ì„¤ì •í•œë‹¤.#l\r\n";
                     if (skipDesc) {
-                        v2 += "#L1#°­È­ ½Ã »ó´Ü ¼³¸íÀ» Ç¥½ÃÇÏ°Ú½À´Ï´Ù.#l\r\n";
+                        v2 += "#L1#ê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì„ í‘œì‹œí•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     } else {
-                        v2 += "#L1#°­È­ ½Ã »ó´Ü ¼³¸íÀ» Ç¥½ÃÇÏÁö ¾Ê°Ú½À´Ï´Ù.#l\r\n";
+                        v2 += "#L1#ê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì„ í‘œì‹œí•˜ì§€ ì•Šê² ìŠµë‹ˆë‹¤.#l\r\n";
                     }
                     int v3 = self.askMenu(v2);
                     switch (v3) {
-                        case 0: { // Âù¶õÇÑ ºûÀÇ °áÁ¤
-                            String v4 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b#z" + requestItemID + "# " + quantity + "°³#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ¿É¼ÇÀ» Àç¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                        case 0: { // ì°¬ë€í•œ ë¹›ì˜ ê²°ì •
+                            String v4 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b#z" + requestItemID + "# " + quantity + "ê°œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì˜µì…˜ì„ ì¬ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
 
-                            v4 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                            v4 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                             index = 0;
                             for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                                 if (++index == 6) {
-                                    v4 += "\r\n#k#e[¿¢½ºÆ®¶ó ½ºÅÈ]#n\r\n#r";
+                                    v4 += "\r\n#k#e[ì—‘ìŠ¤íŠ¸ë¼ ìŠ¤íƒ¯]#n\r\n#r";
                                 }
                                 v4 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                                 v4 += "\r\n";
@@ -544,27 +544,27 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
                             int luckyPoint = getPlayer().getOneInfoQuestInteger(787878, "lp");
                             int q = getPlayer().getItemQuantity(requestItemID, false);
-                            v4 += "\r\n#k#eº¸À¯ÁßÀÎ #z" + requestItemID + "# : " + q + "°³";
-                            v4 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+                            v4 += "\r\n#k#eë³´ìœ ì¤‘ì¸ #z" + requestItemID + "# : " + q + "ê°œ";
+                            v4 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
                             if (luckyPoint >= 30) {
                                 v4 += "#b" + luckyPoint + " (Lucky!!)#k";
                             } else {
                                 v4 += luckyPoint;
                             }
                             if (self.askYesNo(v4) == 1) {
-                                if (self.askYesNo("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k") == 1) {
+                                if (self.askYesNo("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k") == 1) {
                                     renewOptionRoyal();
                                     return;
                                 }
                             }
                             break;
                         }
-                        case 1: { // »ó´Ü ¼³¸í on/off
+                        case 1: { // ìƒë‹¨ ì„¤ëª… on/off
                             if (skipDesc) {
-                                self.say("#fs11##e#b°­È­ ½Ã »ó´Ü ¼³¸íÀÌ Ç¥½ÃµÊ#k#nÀ¸·Î ¼³Á¤µÇ¾ú½À´Ï´Ù.");
+                                self.say("#fs11##e#bê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì´ í‘œì‹œë¨#k#nìœ¼ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
                                 getPlayer().updateOneInfo(787878, "skip_desc", "0");
                             } else {
-                                self.say("#fs11##e#b°­È­ ½Ã »ó´Ü ¼³¸íÀÌ Ç¥½ÃµÇÁö ¾ÊÀ½#k#nÀ¸·Î ¼³Á¤µÇ¾ú½À´Ï´Ù.");
+                                self.say("#fs11##e#bê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì´ í‘œì‹œë˜ì§€ ì•ŠìŒ#k#nìœ¼ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
                                 getPlayer().updateOneInfo(787878, "skip_desc", "1");
                             }
                             break;
@@ -574,87 +574,87 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     String v2 = "";
                     boolean skipDesc = getPlayer().getOneInfoQuestInteger(787878, "skip_desc") == 1;
                     if (skipDesc) {
-                        v2 = "#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç #e#b" + getPlayer().getExtraAbilitySlot() + "¹ø#k#n ÇÁ¸®¼ÂÀÌ Àû¿ëÁßÀÌ¸ç, ¾Æ·¡ÀÇ ¿É¼ÇÀÌ Àû¿ëÁßÀÔ´Ï´Ù.\r\n";
+                        v2 = "#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ #e#b" + getPlayer().getExtraAbilitySlot() + "ë²ˆ#k#n í”„ë¦¬ì…‹ì´ ì ìš©ì¤‘ì´ë©°, ì•„ë˜ì˜ ì˜µì…˜ì´ ì ìš©ì¤‘ì…ë‹ˆë‹¤.\r\n";
                     } else {
-                        v2 = "#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç #e#b" + getPlayer().getExtraAbilitySlot() + "¹ø#k#n ÇÁ¸®¼ÂÀÌ Àû¿ëÁßÀÌ¸ç, ¾Æ·¡ÀÇ ¿É¼ÇÀÌ Àû¿ëÁßÀÔ´Ï´Ù. #b¼¼ °¡Áö Á¾·ù#k·Î ¿É¼ÇÀ» Àç¼³Á¤ÇÒ ¼ö ÀÖÀ¸¸ç, Á¾·ùº°·Î #rÈ¹µæµÇ´Â ·°Å° Æ÷ÀÎÆ® ¹× ÀÌÅ» ¿É¼Ç À¯¹«, µî¾÷ È®·üµî#kÀÌ ´Ş¶óÁö¸ç ÀÚ¼¼ÇÑ ³»¿ëÀº #b#e¿¢½ºÆ®¶ó ¾îºô¸®Æ¼¿¡ ´ëÇØ ¾Ë¾Æº»´Ù.#n#k¸¦ ÂüÁ¶ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.\r\n\r\n";
+                        v2 = "#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ #e#b" + getPlayer().getExtraAbilitySlot() + "ë²ˆ#k#n í”„ë¦¬ì…‹ì´ ì ìš©ì¤‘ì´ë©°, ì•„ë˜ì˜ ì˜µì…˜ì´ ì ìš©ì¤‘ì…ë‹ˆë‹¤. #bì„¸ ê°€ì§€ ì¢…ë¥˜#kë¡œ ì˜µì…˜ì„ ì¬ì„¤ì •í•  ìˆ˜ ìˆìœ¼ë©°, ì¢…ë¥˜ë³„ë¡œ #ríšë“ë˜ëŠ” ëŸ­í‚¤ í¬ì¸íŠ¸ ë° ì´íƒˆ ì˜µì…˜ ìœ ë¬´, ë“±ì—… í™•ë¥ ë“±#kì´ ë‹¬ë¼ì§€ë©° ìì„¸í•œ ë‚´ìš©ì€ #b#eì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ì— ëŒ€í•´ ì•Œì•„ë³¸ë‹¤.#n#kë¥¼ ì°¸ì¡°í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.\r\n\r\n";
                     }
-                    v2 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                    v2 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                     for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                         v2 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                         v2 += "\r\n";
                     }
-                    v2 += "\r\n#b#L0##e°­¸² Æ÷ÀÎÆ®#n¸¦ »ç¿ëÇÏ¿© ÇöÀç ¿É¼ÇÀ» Àç¼³Á¤ÇÑ´Ù.#l\r\n";
-                    v2 += "#L1##eÈ«º¸ Æ÷ÀÎÆ®#n¸¦ »ç¿ëÇÏ¿© ÇöÀç ¿É¼ÇÀ» Àç¼³Á¤ÇÑ´Ù.#l\r\n";
-                    v2 += "#L2##e¸Ş¼Ò#n¸¦ »ç¿ëÇÏ¿© ÇöÀç ¿É¼ÇÀ» Àç¼³Á¤ÇÑ´Ù.#l\r\n";
+                    v2 += "\r\n#b#L0##eê°•ë¦¼ í¬ì¸íŠ¸#në¥¼ ì‚¬ìš©í•˜ì—¬ í˜„ì¬ ì˜µì…˜ì„ ì¬ì„¤ì •í•œë‹¤.#l\r\n";
+                    v2 += "#L1##eí™ë³´ í¬ì¸íŠ¸#në¥¼ ì‚¬ìš©í•˜ì—¬ í˜„ì¬ ì˜µì…˜ì„ ì¬ì„¤ì •í•œë‹¤.#l\r\n";
+                    v2 += "#L2##eë©”ì†Œ#në¥¼ ì‚¬ìš©í•˜ì—¬ í˜„ì¬ ì˜µì…˜ì„ ì¬ì„¤ì •í•œë‹¤.#l\r\n";
                     if (skipDesc) {
-                        v2 += "#L3#°­È­ ½Ã »ó´Ü ¼³¸íÀ» Ç¥½ÃÇÏ°Ú½À´Ï´Ù.#l\r\n";
+                        v2 += "#L3#ê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì„ í‘œì‹œí•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     } else {
-                        v2 += "#L3#°­È­ ½Ã »ó´Ü ¼³¸íÀ» Ç¥½ÃÇÏÁö ¾Ê°Ú½À´Ï´Ù.#l\r\n";
+                        v2 += "#L3#ê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì„ í‘œì‹œí•˜ì§€ ì•Šê² ìŠµë‹ˆë‹¤.#l\r\n";
                     }
                     int v3 = self.askMenu(v2);
                     switch (v3) {
-                        case 0: { // Áø Æ÷ÀÎÆ®
-                            String v4 = "#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b1,000 °­¸² Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ¿É¼ÇÀ» Àç¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                        case 0: { // ì§„ í¬ì¸íŠ¸
+                            String v4 = "#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b1,000 ê°•ë¦¼ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì˜µì…˜ì„ ì¬ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
 
-                            v4 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                            v4 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                             for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                                 v4 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                                 v4 += "\r\n";
                             }
 
                             int luckyPoint = getPlayer().getOneInfoQuestInteger(787878, "lp");
-                            v4 += "\r\n#k#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getRealCash());
-                            v4 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+                            v4 += "\r\n#k#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getRealCash());
+                            v4 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
                             if (luckyPoint >= 30) {
                                 v4 += "#b" + luckyPoint + " (Lucky!!)#k";
                             } else {
                                 v4 += luckyPoint;
                             }
                             if (self.askYesNo(v4) == 1) {
-                                if (self.askYesNo("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k") == 1) {
+                                if (self.askYesNo("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k") == 1) {
                                     renewOption(ExtraAbilityPayType.Donation);
                                     return;
                                 }
                             }
                             break;
                         }
-                        case 1: { // È«º¸ Æ÷ÀÎÆ®
-                            String v4 = "#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b500 È«º¸ Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ¿É¼ÇÀ» Àç¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                        case 1: { // í™ë³´ í¬ì¸íŠ¸
+                            String v4 = "#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b500 í™ë³´ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì˜µì…˜ì„ ì¬ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
 
-                            v4 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                            v4 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                             for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                                 v4 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                                 v4 += "\r\n";
                             }
 
                             int luckyPoint = getPlayer().getOneInfoQuestInteger(787878, "lp");
-                            v4 += "\r\n#k#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getHongboPoint());
-                            v4 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+                            v4 += "\r\n#k#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getHongboPoint());
+                            v4 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
                             if (luckyPoint >= 30) {
                                 v4 += "#b" + luckyPoint + " (Lucky!!)#k";
                             } else {
                                 v4 += luckyPoint;
                             }
                             if (self.askYesNo(v4) == 1) {
-                                if (self.askYesNo("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k") == 1) {
+                                if (self.askYesNo("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k") == 1) {
                                     renewOption(ExtraAbilityPayType.Promotion);
                                     return;
                                 }
                             }
                             break;
                         }
-                        case 2: { // ¸Ş¼Ò
-                            String v4 = "#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b500,000,000 ¸Ş¼Ò#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ¿É¼ÇÀ» Àç¼³Á¤ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                        case 2: { // ë©”ì†Œ
+                            String v4 = "#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b500,000,000 ë©”ì†Œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì˜µì…˜ì„ ì¬ì„¤ì •í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
 
-                            v4 += "#eÇöÀç µî±Ş : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
+                            v4 += "#eí˜„ì¬ ë“±ê¸‰ : #r" + getPlayer().getExtraAbilityGrade().getDesc() + "#k#n#r\r\n\r\n";
                             for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                                 v4 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                                 v4 += "\r\n";
                             }
 
                             int luckyPoint = getPlayer().getOneInfoQuestInteger(787878, "lp");
-                            v4 += "\r\n#k#eº¸À¯ÁßÀÎ ¸Ş¼Ò : " + nf.format(getPlayer().getMeso());
-                            v4 += "\r\n·°Å° Æ÷ÀÎÆ® : ";
+                            v4 += "\r\n#k#eë³´ìœ ì¤‘ì¸ ë©”ì†Œ : " + nf.format(getPlayer().getMeso());
+                            v4 += "\r\nëŸ­í‚¤ í¬ì¸íŠ¸ : ";
                             if (luckyPoint >= 30) {
                                 v4 += "#b" + luckyPoint + " (Lucky!!)#k";
                             } else {
@@ -662,22 +662,22 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             }
                             if (self.askYesNo(v4) == 1) {
                                 if (getPlayer().getExtraAbilityGrade() == ExtraAbilityGrade.Legendary) {
-                                    self.say("#b·¹Àüµå¸® µî±Ş#kÀº ¸Ş¼Ò¸¦ »ç¿ëÇÏ¿© Àç¼³Á¤ÇÒ ¼ö ¾ø½À´Ï´Ù.");
-                                    return; // ·¹Àüµå¸®´Â ¸Ş¼Ò·Î ºÒ°¡
+                                    self.say("#bë ˆì „ë“œë¦¬ ë“±ê¸‰#kì€ ë©”ì†Œë¥¼ ì‚¬ìš©í•˜ì—¬ ì¬ì„¤ì •í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                                    return; // ë ˆì „ë“œë¦¬ëŠ” ë©”ì†Œë¡œ ë¶ˆê°€
                                 }
-                                if (self.askYesNo("#fs11##r#eÁ¤¸» Àç¼³Á¤ ÇÏ½Ã°Ú½À´Ï±î? Àç¼³Á¤ ½Ã ÇöÀç ¿É¼ÇÀº »ç¶óÁö°Ô µË´Ï´Ù.#n#k") == 1) {
+                                if (self.askYesNo("#fs11##r#eì •ë§ ì¬ì„¤ì • í•˜ì‹œê² ìŠµë‹ˆê¹Œ? ì¬ì„¤ì • ì‹œ í˜„ì¬ ì˜µì…˜ì€ ì‚¬ë¼ì§€ê²Œ ë©ë‹ˆë‹¤.#n#k") == 1) {
                                     renewOption(ExtraAbilityPayType.Meso);
                                     return;
                                 }
                             }
                             break;
                         }
-                        case 3: { // »ó´Ü ¼³¸í on/off
+                        case 3: { // ìƒë‹¨ ì„¤ëª… on/off
                             if (skipDesc) {
-                                self.say("#e#b°­È­ ½Ã »ó´Ü ¼³¸íÀÌ Ç¥½ÃµÊ#k#nÀ¸·Î ¼³Á¤µÇ¾ú½À´Ï´Ù.");
+                                self.say("#e#bê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì´ í‘œì‹œë¨#k#nìœ¼ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
                                 getPlayer().updateOneInfo(787878, "skip_desc", "0");
                             } else {
-                                self.say("#e#b°­È­ ½Ã »ó´Ü ¼³¸íÀÌ Ç¥½ÃµÇÁö ¾ÊÀ½#k#nÀ¸·Î ¼³Á¤µÇ¾ú½À´Ï´Ù.");
+                                self.say("#e#bê°•í™” ì‹œ ìƒë‹¨ ì„¤ëª…ì´ í‘œì‹œë˜ì§€ ì•ŠìŒ#k#nìœ¼ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
                                 getPlayer().updateOneInfo(787878, "skip_desc", "1");
                             }
                             break;
@@ -686,62 +686,62 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 }
                 break;
             }
-            case 1: { // ÇÁ¸®¼Â º¯°æ
+            case 1: { // í”„ë¦¬ì…‹ ë³€ê²½
                 if (presetLock) {
-                    String v2 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\nÇöÀç ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼ÂÀÌ Àá°ÜÀÖ½À´Ï´Ù. #bÄ³½Ã#k¸¦ »ç¿ëÇÏ¿© Àá±İÀ» ÇØÁ¦ÇÒ ¼ö ÀÖ½À´Ï´Ù.#b\r\n\r\n";
+                    String v2 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\ní˜„ì¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ì´ ì ê²¨ìˆìŠµë‹ˆë‹¤. #bìºì‹œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì ê¸ˆì„ í•´ì œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.#b\r\n\r\n";
                     if (DBConfig.isGanglim) {
-                        v2 += "#L0##e50,000 Ä³½Ã#n¸¦ »ç¿ëÇÏ¿© ÇØÁ¦ÇÑ´Ù.#l\r\n";
-                        v2 += "#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l\r\n";
+                        v2 += "#L0##e50,000 ìºì‹œ#në¥¼ ì‚¬ìš©í•˜ì—¬ í•´ì œí•œë‹¤.#l\r\n";
+                        v2 += "#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l\r\n";
                         int v3 = self.askMenu(v2);
                         if (v3 == 1) {
                             return;
                         }
                         switch (v3) {
                             case 0: {
-                                if (1 == self.askYesNo("#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b50,000 Ä³½Ã#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getCashPoint()))) {
+                                if (1 == self.askYesNo("#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b50,000 ìºì‹œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getCashPoint()))) {
                                     if (getPlayer().getCashPoint() < 50000) {
-                                        self.say("°­¸² Ä³½Ã°¡ ºÎÁ·ÇÏ¿© Àá±İ ÇØÁ¦¸¦ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                        self.say("ê°•ë¦¼ ìºì‹œê°€ ë¶€ì¡±í•˜ì—¬ ì ê¸ˆ í•´ì œë¥¼ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                                         return;
                                     }
                                     getPlayer().gainCashPoint(-50000);
                                     getPlayer().updateOneInfo(787878, "e_preset_open", "1");
-                                    self.say("#b50,000 Ä³½Ã#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ¿´½À´Ï´Ù.");
+                                    self.say("#b50,000 ìºì‹œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
                                     return;
                                 }
                                 break;
                             }
                         }
                     } else {
-                        v2 += "#L0#50,000 #e°­¸² Æ÷ÀÎÆ®#n¸¦ »ç¿ëÇÏ¿© ÇØÁ¦ÇÑ´Ù.#l\r\n";
-                        v2 += "#L1#50,000 #eÈ«º¸ Æ÷ÀÎÆ®#n¸¦ »ç¿ëÇÏ¿© ÇØÁ¦ÇÑ´Ù.#l\r\n";
-                        v2 += "#L2#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l\r\n";
+                        v2 += "#L0#50,000 #eê°•ë¦¼ í¬ì¸íŠ¸#në¥¼ ì‚¬ìš©í•˜ì—¬ í•´ì œí•œë‹¤.#l\r\n";
+                        v2 += "#L1#50,000 #eí™ë³´ í¬ì¸íŠ¸#në¥¼ ì‚¬ìš©í•˜ì—¬ í•´ì œí•œë‹¤.#l\r\n";
+                        v2 += "#L2#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l\r\n";
                         int v3 = self.askMenu(v2);
                         if (v3 == 2) {
                             return;
                         }
                         switch (v3) {
                             case 0: {
-                                if (1 == self.askYesNo("#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b50,000 °­¸² Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getRealCash()))) {
+                                if (1 == self.askYesNo("#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b50,000 ê°•ë¦¼ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getRealCash()))) {
                                     if (getPlayer().getRealCash() < 50000) {
-                                        self.say("°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© Àá±İ ÇØÁ¦¸¦ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                        self.say("ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì ê¸ˆ í•´ì œë¥¼ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                                         return;
                                     }
                                     getPlayer().gainRealCash(-50000, true);
                                     getPlayer().updateOneInfo(787878, "e_preset_open", "1");
-                                    self.say("#b50,000 °­¸² Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ¿´½À´Ï´Ù.");
+                                    self.say("#b50,000 ê°•ë¦¼ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
                                     return;
                                 }
                                 break;
                             }
                             case 1: {
-                                if (1 == self.askYesNo("#e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n#b50,000 °­¸² Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n#eº¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + nf.format(getPlayer().getHongboPoint()))) {
+                                if (1 == self.askYesNo("#e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n#b50,000 ê°•ë¦¼ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n#eë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + nf.format(getPlayer().getHongboPoint()))) {
                                     if (getPlayer().getHongboPoint() < 50000) {
-                                        self.say("È«º¸ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© Àá±İ ÇØÁ¦¸¦ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                        self.say("í™ë³´ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì ê¸ˆ í•´ì œë¥¼ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                                         return;
                                     }
                                     getPlayer().gainHongboPoint(-50000, true);
                                     getPlayer().updateOneInfo(787878, "e_preset_open", "1");
-                                    self.say("#b50,000 È«º¸ Æ÷ÀÎÆ®#k¸¦ »ç¿ëÇÏ¿© ¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â Àá±İÀ» ÇØÁ¦ÇÏ¿´½À´Ï´Ù.");
+                                    self.say("#b50,000 í™ë³´ í¬ì¸íŠ¸#kë¥¼ ì‚¬ìš©í•˜ì—¬ ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ ì ê¸ˆì„ í•´ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
                                     return;
                                 }
                                 break;
@@ -754,18 +754,18 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     if (DBConfig.isGanglim) {
                         meso = 10000000000L;
                     }
-                    String v2 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>\r\n\r\nÇöÀç Àû¿ëÁßÀÎ ÇÁ¸®¼Â : #r" + preset + "¹ø#k\r\n";
-                    v2 += "#eº¸À¯ÁßÀÎ ¸Ş¼Ò : #r" + nf.format(getPlayer().getMeso()) + "#k#n\r\n\r\n";
-                    v2 += "#b" + nf.format(meso) + "¸Ş¼Ò#k¸¦ »ç¿ëÇÏ¿© #b" + (preset ^ 1) + " ¹ø#k ÇÁ¸®¼ÂÀ¸·Î º¯°æÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                    String v2 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>\r\n\r\ní˜„ì¬ ì ìš©ì¤‘ì¸ í”„ë¦¬ì…‹ : #r" + preset + "ë²ˆ#k\r\n";
+                    v2 += "#eë³´ìœ ì¤‘ì¸ ë©”ì†Œ : #r" + nf.format(getPlayer().getMeso()) + "#k#n\r\n\r\n";
+                    v2 += "#b" + nf.format(meso) + "ë©”ì†Œ#kë¥¼ ì‚¬ìš©í•˜ì—¬ #b" + (preset ^ 1) + " ë²ˆ#k í”„ë¦¬ì…‹ìœ¼ë¡œ ë³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
                     if (1 == self.askYesNo(v2)) {
                         if (getPlayer().getMeso() < meso) {
-                            self.say("¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© ÇÁ¸®¼Â º¯°æÀ» ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                            self.say("ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ í”„ë¦¬ì…‹ ë³€ê²½ì„ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                             return;
                         }
                         getPlayer().gainMeso(-meso, true);
                         getPlayer().setExtraAbilitySlot((preset ^ 1));
                         getPlayer().checkExtraAbility();
-                        String v3 = "#fs11##e<¿¢½ºÆ®¶ó ¾îºô¸®Æ¼>#n\r\n\r\n#b#e" + getPlayer().getExtraAbilitySlot() + "¹ø ÇÁ¸®¼Â#n#kÀ¸·Î º¯°æµÇ¾ú½À´Ï´Ù.#r\r\n\r\n";
+                        String v3 = "#fs11##e<ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°>#n\r\n\r\n#b#e" + getPlayer().getExtraAbilitySlot() + "ë²ˆ í”„ë¦¬ì…‹#n#kìœ¼ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.#r\r\n\r\n";
                         for (ExtraAbilityStatEntry entry : getPlayer().getExtraAbilityStats()[getPlayer().getExtraAbilitySlot()]) {
                             v3 += "  " + String.format(entry.getOption().getDesc(), entry.getValue(), "%");
                             v3 += "\r\n";
@@ -775,62 +775,62 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 }
                 break;
             }
-            case 2: { // ¾îºô¿¡ ´ëÇØ
+            case 2: { // ì–´ë¹Œì— ëŒ€í•´
                 if (DBConfig.isGanglim) {
-                    self.say("#fs11##b¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ½Ã½ºÅÛ#kÀº Ä³¸¯ÅÍÀÇ Ãß°¡ÀûÀÎ ¼ºÀå ¼ö´ÜÀÔ´Ï´Ù.\r\n\r\n¿¢½ºÆ®¶ó ¾îºô¸®Æ¼´Â #e#r¿©¼¸ °³ÀÇ ·£´ı ¿É¼Ç#k#nÀ» ºÎ¿©ÇÏ´Â ¹æ½ÄÀ¸·Î, ÀçÈ­¸¦ ¼Ò¸ğÇÏ¿© ºÎ¿©µÇ´Â ¿É¼ÇÀÇ Á¾·ù¸¦ º¯°æÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n¿É¼Ç º¯°æÀº #e#bÂù¶õÇÑ ºûÀÇ °áÁ¤#k#nÀ» ÀçÈ­·Î ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù.");
-                    self.say("#fs11#³× ¹øÂ° ÁÙ ¿É¼ÇÀº #eVVIP Classic#n µî±ŞºÎÅÍ µîÀåÇÏ¸ç,\r\n´Ù¼¸ ¹øÂ° ÁÙ ¿É¼ÇÀº #eMVP Prime#n µî±ŞºÎÅÍ µîÀåÇÕ´Ï´Ù.\r\n¿©¼¸ ¹øÂ° ¿¢½ºÆ®¶ó ¿É¼ÇÀº #b'·¹Àüµå¸®' µî±Ş#k¿¡¼­ Àç¼³Á¤½Ã\r\n#e1% È®·ü#n·Î µîÀåÇÏ¸ç, ÇÑ ¹ø ÃâÇöÇÏ¸é ÀÌÈÄ ºÎÅÍ´Â °è¼ÓÇØ¼­ Àç¼³Á¤µË´Ï´Ù.");
-                    String v2 = "#fs11#º¸´Ù ÀÚ¼¼ÇÑ Á¤º¸´Â ¾Æ·¡ ¼±ÅÃÁö¸¦ ÅëÇØ È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#b#L0#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â¿¡ °üÇØ ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#b#L1#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ µî±Şº° ¿É¼ÇÀ» ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#b#L2#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ µî±Şº° È®·üÀ» ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#L3#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ·°Å° Æ÷ÀÎÆ®¿¡ ´ëÇØ ¾Ë°í ½Í½À´Ï´Ù.#l";
+                    self.say("#fs11##bì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì‹œìŠ¤í…œ#kì€ ìºë¦­í„°ì˜ ì¶”ê°€ì ì¸ ì„±ì¥ ìˆ˜ë‹¨ì…ë‹ˆë‹¤.\r\n\r\nì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ëŠ” #e#rì—¬ì„¯ ê°œì˜ ëœë¤ ì˜µì…˜#k#nì„ ë¶€ì—¬í•˜ëŠ” ë°©ì‹ìœ¼ë¡œ, ì¬í™”ë¥¼ ì†Œëª¨í•˜ì—¬ ë¶€ì—¬ë˜ëŠ” ì˜µì…˜ì˜ ì¢…ë¥˜ë¥¼ ë³€ê²½í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nì˜µì…˜ ë³€ê²½ì€ #e#bì°¬ë€í•œ ë¹›ì˜ ê²°ì •#k#nì„ ì¬í™”ë¡œ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+                    self.say("#fs11#ë„¤ ë²ˆì§¸ ì¤„ ì˜µì…˜ì€ #eVVIP Classic#n ë“±ê¸‰ë¶€í„° ë“±ì¥í•˜ë©°,\r\në‹¤ì„¯ ë²ˆì§¸ ì¤„ ì˜µì…˜ì€ #eMVP Prime#n ë“±ê¸‰ë¶€í„° ë“±ì¥í•©ë‹ˆë‹¤.\r\nì—¬ì„¯ ë²ˆì§¸ ì—‘ìŠ¤íŠ¸ë¼ ì˜µì…˜ì€ #b'ë ˆì „ë“œë¦¬' ë“±ê¸‰#kì—ì„œ ì¬ì„¤ì •ì‹œ\r\n#e1% í™•ë¥ #në¡œ ë“±ì¥í•˜ë©°, í•œ ë²ˆ ì¶œí˜„í•˜ë©´ ì´í›„ ë¶€í„°ëŠ” ê³„ì†í•´ì„œ ì¬ì„¤ì •ë©ë‹ˆë‹¤.");
+                    String v2 = "#fs11#ë³´ë‹¤ ìì„¸í•œ ì •ë³´ëŠ” ì•„ë˜ ì„ íƒì§€ë¥¼ í†µí•´ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ì— ê´€í•´ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#b#L1#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ë“±ê¸‰ë³„ ì˜µì…˜ì„ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#b#L2#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ë“±ê¸‰ë³„ í™•ë¥ ì„ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#L3#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ëŸ­í‚¤ í¬ì¸íŠ¸ì— ëŒ€í•´ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l";
                     int v3 = self.askMenu(v2);
                     switch (v3) {
                         case 0: {
-                            self.say("#fs11#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼ÂÀº ÃÊ±â 1°³ÀÇ ÇÁ¸®¼ÂÀ» ±âº»À¸·Î Á¦°øÇÏ¸ç, #bÄ³½Ã#k¸¦ #e50,000#n ¼Ò¸ğÇÏ¿© 1Ä­À» Ãß°¡ È®ÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n°¢ ÇÁ¸®¼Âº°·Î ´Ù¸¥ ¿É¼ÇÀ» ¼³Á¤ÇÏ¿© ÀÌ¿ëÇÒ ¼ö ÀÖÀ¸¸ç, ÇÁ¸®¼ÂÀ» º¯°æÇÒ ¶§¸¶´Ù #e100¾ï ¸Ş¼Ò#n¸¦ ¼Ò¸ğÇÕ´Ï´Ù.\r\n\r\n#e#r¡Ø ¿É¼Ç º¯°æÀº ÇöÀç »ç¿ë ÁßÀÎ ÇÁ¸®¼ÂÀ» ±âÁØÀ¸·Î Àû¿ëµÇ´Ï ÀÌ¿ë¿¡ ÁÖÀÇÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                            self.say("#fs11#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ì€ ì´ˆê¸° 1ê°œì˜ í”„ë¦¬ì…‹ì„ ê¸°ë³¸ìœ¼ë¡œ ì œê³µí•˜ë©°, #bìºì‹œ#kë¥¼ #e50,000#n ì†Œëª¨í•˜ì—¬ 1ì¹¸ì„ ì¶”ê°€ í™•ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nê° í”„ë¦¬ì…‹ë³„ë¡œ ë‹¤ë¥¸ ì˜µì…˜ì„ ì„¤ì •í•˜ì—¬ ì´ìš©í•  ìˆ˜ ìˆìœ¼ë©°, í”„ë¦¬ì…‹ì„ ë³€ê²½í•  ë•Œë§ˆë‹¤ #e100ì–µ ë©”ì†Œ#në¥¼ ì†Œëª¨í•©ë‹ˆë‹¤.\r\n\r\n#e#râ€» ì˜µì…˜ ë³€ê²½ì€ í˜„ì¬ ì‚¬ìš© ì¤‘ì¸ í”„ë¦¬ì…‹ì„ ê¸°ì¤€ìœ¼ë¡œ ì ìš©ë˜ë‹ˆ ì´ìš©ì— ì£¼ì˜í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                             break;
                         }
                         case 1: {
-                            self.say("#fs11##e[ ¿¢½ºÆ®¶ó ]#n\r\n\r\n#b- Àç»ç¿ë ´ë±â½Ã°£ 1~2ÃÊ °¨¼Ò\r\n- ºÎÈ° ½Ã ¹«Àû ½Ã°£ 2~4ÃÊ Áõ°¡\r\n- ¸ó½ºÅÍ °³Ã¼¼ö 1.5¹è Áõ°¡\r\n- ÃÖÁ¾ µ¥¹ÌÁö 5~20%\r\n- °æÇèÄ¡ È¹µæ·® 30~50%\r\n- ¸Ş¼Ò È¹µæ·® 30~50%\r\n- ¾ÆÀÌÅÛ µå·Ó·ü 30~50%\r\n- »óÅÂ ÀÌ»ó ³»¼º");
-                            self.say("#fs11##e[ ·¹Àüµå¸® ]#n\r\n\r\n#b- Àç»ç¿ë ´ë±â½Ã°£ 1~2ÃÊ °¨¼Ò\r\n- °æÇèÄ¡ È¹µæ·® 30~50%\r\n- ¾ÆÀÌÅÛ µå·Ó·ü 20~30%\r\n- ¸Ş¼Ò È¹µæ·® 20~30%\r\n- º¸½º¸ó½ºÅÍ °ø°İ½Ã µ¥¹ÌÁö 30~40%\r\n- ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 30~40%\r\n- Å©¸®Æ¼ÄÃ È®·ü 12%\r\n- °ø°İ·Â/¸¶·Â 12~16%\r\n- °ø°İ·Â/¸¶·Â +100~150\r\n- ¿Ã½ºÅÈ +18~25%\r\n- ¿Ã½ºÅÈ +200~300\r\n- HP +15~18%");
-                            self.say("#fs11##e[ À¯´ÏÅ© ]#n\r\n\r\n#b- °æÇèÄ¡ È¹µæ·® 10~20%\r\n- ¾ÆÀÌÅÛ µå·Ó·ü 10~20%\r\n- ¸Ş¼Ò È¹µæ·® 10~20%\r\n- º¸½º¸ó½ºÅÍ °ø°İ½Ã µ¥¹ÌÁö 20~30%\r\n- ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 20~30%\r\n- Å©¸®Æ¼ÄÃ È®·ü 9~12%\r\n- °ø°İ·Â/¸¶·Â 9~12%\r\n- °ø°İ·Â/¸¶·Â +80~100\r\n- ¿Ã½ºÅÈ +15~21%\r\n- ¿Ã½ºÅÈ +100~150\r\n- HP +12~15%");
-                            self.say("#fs11##e[ ¿¡ÇÈ ]#n\r\n\r\n#b- º¸½º¸ó½ºÅÍ °ø°İ½Ã µ¥¹ÌÁö 10~20%\r\n- ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 8~12%\r\n- Å©¸®Æ¼ÄÃ È®·ü 6~9%\r\n- °ø°İ·Â/¸¶·Â 6~9%\r\n- °ø°İ·Â/¸¶·Â +50~80\r\n- ¿Ã½ºÅÈ +12~15%\r\n- ¿Ã½ºÅÈ +80~100\r\n- HP +9~12%");
-                            self.say("#fs11##e[ ·¹¾î ]#n\r\n\r\n#b- ÇÇ°İ ½Ã ¹Ş´Â µ¥¹ÌÁö 60~80%\r\n- STR, DEX, INT, LUK +80~100\r\n- ¿Ã½ºÅÈ +50~80\r\n- HP +6~9%\r\n- HP +3000~5000\r\n- °ø°İ·Â/¸¶·Â +3~6%\r\n- °ø°İ·Â/¸¶·Â +30~50");
-                            self.say("#fs11##b¸ğµç ÁÙ#kÀÇ ¿É¼ÇÀº ÇöÀç µî±Ş¿¡ ¸Â´Â ¿É¼ÇÀÌ µîÀåÇÏ¸ç, ¿É¼Ç µîÀå È®·üÀÌ ´Ù¸¥ ¿É¼ÇÀÌ Á¸ÀçÇÕ´Ï´Ù.");
+                            self.say("#fs11##e[ ì—‘ìŠ¤íŠ¸ë¼ ]#n\r\n\r\n#b- ì¬ì‚¬ìš© ëŒ€ê¸°ì‹œê°„ 1~2ì´ˆ ê°ì†Œ\r\n- ë¶€í™œ ì‹œ ë¬´ì  ì‹œê°„ 2~4ì´ˆ ì¦ê°€\r\n- ëª¬ìŠ¤í„° ê°œì²´ìˆ˜ 1.5ë°° ì¦ê°€\r\n- ìµœì¢… ë°ë¯¸ì§€ 5~20%\r\n- ê²½í—˜ì¹˜ íšë“ëŸ‰ 30~50%\r\n- ë©”ì†Œ íšë“ëŸ‰ 30~50%\r\n- ì•„ì´í…œ ë“œë¡­ë¥  30~50%\r\n- ìƒíƒœ ì´ìƒ ë‚´ì„±");
+                            self.say("#fs11##e[ ë ˆì „ë“œë¦¬ ]#n\r\n\r\n#b- ì¬ì‚¬ìš© ëŒ€ê¸°ì‹œê°„ 1~2ì´ˆ ê°ì†Œ\r\n- ê²½í—˜ì¹˜ íšë“ëŸ‰ 30~50%\r\n- ì•„ì´í…œ ë“œë¡­ë¥  20~30%\r\n- ë©”ì†Œ íšë“ëŸ‰ 20~30%\r\n- ë³´ìŠ¤ëª¬ìŠ¤í„° ê³µê²©ì‹œ ë°ë¯¸ì§€ 30~40%\r\n- ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 30~40%\r\n- í¬ë¦¬í‹°ì»¬ í™•ë¥  12%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ 12~16%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +100~150\r\n- ì˜¬ìŠ¤íƒ¯ +18~25%\r\n- ì˜¬ìŠ¤íƒ¯ +200~300\r\n- HP +15~18%");
+                            self.say("#fs11##e[ ìœ ë‹ˆí¬ ]#n\r\n\r\n#b- ê²½í—˜ì¹˜ íšë“ëŸ‰ 10~20%\r\n- ì•„ì´í…œ ë“œë¡­ë¥  10~20%\r\n- ë©”ì†Œ íšë“ëŸ‰ 10~20%\r\n- ë³´ìŠ¤ëª¬ìŠ¤í„° ê³µê²©ì‹œ ë°ë¯¸ì§€ 20~30%\r\n- ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 20~30%\r\n- í¬ë¦¬í‹°ì»¬ í™•ë¥  9~12%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ 9~12%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +80~100\r\n- ì˜¬ìŠ¤íƒ¯ +15~21%\r\n- ì˜¬ìŠ¤íƒ¯ +100~150\r\n- HP +12~15%");
+                            self.say("#fs11##e[ ì—í”½ ]#n\r\n\r\n#b- ë³´ìŠ¤ëª¬ìŠ¤í„° ê³µê²©ì‹œ ë°ë¯¸ì§€ 10~20%\r\n- ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 8~12%\r\n- í¬ë¦¬í‹°ì»¬ í™•ë¥  6~9%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ 6~9%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +50~80\r\n- ì˜¬ìŠ¤íƒ¯ +12~15%\r\n- ì˜¬ìŠ¤íƒ¯ +80~100\r\n- HP +9~12%");
+                            self.say("#fs11##e[ ë ˆì–´ ]#n\r\n\r\n#b- í”¼ê²© ì‹œ ë°›ëŠ” ë°ë¯¸ì§€ 60~80%\r\n- STR, DEX, INT, LUK +80~100\r\n- ì˜¬ìŠ¤íƒ¯ +50~80\r\n- HP +6~9%\r\n- HP +3000~5000\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +3~6%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +30~50");
+                            self.say("#fs11##bëª¨ë“  ì¤„#kì˜ ì˜µì…˜ì€ í˜„ì¬ ë“±ê¸‰ì— ë§ëŠ” ì˜µì…˜ì´ ë“±ì¥í•˜ë©°, ì˜µì…˜ ë“±ì¥ í™•ë¥ ì´ ë‹¤ë¥¸ ì˜µì…˜ì´ ì¡´ì¬í•©ë‹ˆë‹¤.");
                             break;
                         }
                         case 2: {
-                            self.say("#fs11##e[·¹¾î ¡æ ¿¡ÇÈ µî±Ş »ó½Â È®·ü]#n\r\n#b15% È®·ü·Î Áõ°¡\r\n\r\n\r\n#k#e[¿¡ÇÈ ¡æ À¯´ÏÅ© µî±à »ğ½Â È®·ü]#n\r\n#b3.8% È®·ü·Î Áõ°¡\r\n\r\n\r\n#k#e[À¯´ÏÅ© ¡æ ·¹Àüµå¸® µî±Ş »ó½Â È®·ü]#n\r\n#b1% È®·ü·Î Áõ°¡\r\n#e[¿¢½ºÆ®¶ó µî±Ş µîÀå È®·ü]#n\r\n#b'·¹Àüµå¸®' µî±Ş¿¡¼­ 1% È®·ü·Î µîÀå");
+                            self.say("#fs11##e[ë ˆì–´ â†’ ì—í”½ ë“±ê¸‰ ìƒìŠ¹ í™•ë¥ ]#n\r\n#b15% í™•ë¥ ë¡œ ì¦ê°€\r\n\r\n\r\n#k#e[ì—í”½ â†’ ìœ ë‹ˆí¬ ë“±ê¸ ì‚½ìŠ¹ í™•ë¥ ]#n\r\n#b3.8% í™•ë¥ ë¡œ ì¦ê°€\r\n\r\n\r\n#k#e[ìœ ë‹ˆí¬ â†’ ë ˆì „ë“œë¦¬ ë“±ê¸‰ ìƒìŠ¹ í™•ë¥ ]#n\r\n#b1% í™•ë¥ ë¡œ ì¦ê°€\r\n#e[ì—‘ìŠ¤íŠ¸ë¼ ë“±ê¸‰ ë“±ì¥ í™•ë¥ ]#n\r\n#b'ë ˆì „ë“œë¦¬' ë“±ê¸‰ì—ì„œ 1% í™•ë¥ ë¡œ ë“±ì¥");
                             break;
                         }
                         case 3: {
-                            self.say("#fs11#·°Å° Æ÷ÀÎÆ®´Â »ç¿ëÇÑ ÀçÈ­¿¡ µû¶ó Â÷µî È¹µæÇÏ¸ç ¾Æ·¡¿Í °°ÀÌ È¹µæÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#e#r#z" + requestItemID + "# »ç¿ë ½Ã 3Æ÷ÀÎÆ®");
-                            self.say("#fs11#°­È­ ½Ã ¾òÀº ·°Å° Æ÷ÀÎÆ®°¡ #e#b30 Æ÷ÀÎÆ®#n#k¸¦ ³ÑÀ» ½Ã ÀÚµ¿À¸·Î 30Æ÷ÀÎÆ®°¡ Â÷°¨µÇ¸ç, 1~5ÁÙÀÌ ÇØ´ç ¿É¼ÇÀÇ ÃÖ´ë ¼öÄ¡·Î µîÀåÇÕ´Ï´Ù.\r\n\r\n#e5ÁÙ ·°Å°ÀÇ È®·üÀº 10%\r\n4ÁÙ ·°Å°ÀÇ È®·üÀº 10%\r\n3ÁÙ ·°Å°ÀÇ È®·üÀº 15%\r\n2ÁÙ ·°Å°ÀÇ È®·üÀº 25%\r\n1ÁÙ ·°Å°ÀÇ È®·üÀº 40% ÀÔ´Ï´Ù.");
+                            self.say("#fs11#ëŸ­í‚¤ í¬ì¸íŠ¸ëŠ” ì‚¬ìš©í•œ ì¬í™”ì— ë”°ë¼ ì°¨ë“± íšë“í•˜ë©° ì•„ë˜ì™€ ê°™ì´ íšë“í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#e#r#z" + requestItemID + "# ì‚¬ìš© ì‹œ 3í¬ì¸íŠ¸");
+                            self.say("#fs11#ê°•í™” ì‹œ ì–»ì€ ëŸ­í‚¤ í¬ì¸íŠ¸ê°€ #e#b30 í¬ì¸íŠ¸#n#kë¥¼ ë„˜ì„ ì‹œ ìë™ìœ¼ë¡œ 30í¬ì¸íŠ¸ê°€ ì°¨ê°ë˜ë©°, 1~5ì¤„ì´ í•´ë‹¹ ì˜µì…˜ì˜ ìµœëŒ€ ìˆ˜ì¹˜ë¡œ ë“±ì¥í•©ë‹ˆë‹¤.\r\n\r\n#e5ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 10%\r\n4ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 10%\r\n3ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 15%\r\n2ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 25%\r\n1ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 40% ì…ë‹ˆë‹¤.");
                             break;
                         }
                     }
                 } else {
-                    self.say("#fs11##b¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ½Ã½ºÅÛ#kÀº Ä³¸¯ÅÍÀÇ Ãß°¡ÀûÀÎ ¼ºÀå ¼ö´ÜÀÔ´Ï´Ù.\r\n\r\n¿¢½ºÆ®¶ó ¾îºô¸®Æ¼´Â #e#r¼¼ °³ÀÇ ·£´ı ¿É¼Ç#k#nÀ» ºÎ¿©ÇÏ´Â ¹æ½ÄÀ¸·Î, ÀçÈ­¸¦ ¼Ò¸ğÇÏ¿© ºÎ¿©µÇ´Â ¿É¼ÇÀÇ Á¾·ù¸¦ º¯°æÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n¿É¼Ç º¯°æÀº #e#b°­¸² Æ÷ÀÎÆ®, È«º¸ Æ÷ÀÎÆ®, ¸Ş¼Ò#k#n µîÀÇ ÀçÈ­·Î ÀÌ¿ë °¡´ÉÇÏ¸ç, ¼Ò¸ğÇÏ´Â ÀçÈ­¿¡ µû¶ó µîÀåÇÏ´Â ¿É¼ÇÀÇ ÃÖ´ë µî±Ş ¹× ¼öÄ¡¿¡ Â÷ÀÌ°¡ ¹ß»ıÇÕ´Ï´Ù.");
-                    self.say("#fs11#°¢ ÀçÈ­º° ¿É¼Ç º¯°æ¿¡ ¼Ò¸ğÇÏ´Â ºñ¿ëÀº ¾Æ·¡¿Í °°½À´Ï´Ù.\r\n\r\n#r°­¸² Æ÷ÀÎÆ® : 1,000\r\nÈ«º¸ Æ÷ÀÎÆ® : 500\r\n¸Ş¼Ò : 500,000,000");
-                    String v2 = "#fs11#º¸´Ù ÀÚ¼¼ÇÑ Á¤º¸´Â ¾Æ·¡ ¼±ÅÃÁö¸¦ ÅëÇØ È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#b#L0#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼Â¿¡ °üÇØ ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#b#L1#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ µî±Şº° ¿É¼ÇÀ» ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#b#L2#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ µî±Şº° È®·üÀ» ¾Ë°í ½Í½À´Ï´Ù.#l\r\n#L3#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ·°Å° Æ÷ÀÎÆ®¿¡ ´ëÇØ ¾Ë°í ½Í½À´Ï´Ù.#l";
+                    self.say("#fs11##bì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ì‹œìŠ¤í…œ#kì€ ìºë¦­í„°ì˜ ì¶”ê°€ì ì¸ ì„±ì¥ ìˆ˜ë‹¨ì…ë‹ˆë‹¤.\r\n\r\nì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹°ëŠ” #e#rì„¸ ê°œì˜ ëœë¤ ì˜µì…˜#k#nì„ ë¶€ì—¬í•˜ëŠ” ë°©ì‹ìœ¼ë¡œ, ì¬í™”ë¥¼ ì†Œëª¨í•˜ì—¬ ë¶€ì—¬ë˜ëŠ” ì˜µì…˜ì˜ ì¢…ë¥˜ë¥¼ ë³€ê²½í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nì˜µì…˜ ë³€ê²½ì€ #e#bê°•ë¦¼ í¬ì¸íŠ¸, í™ë³´ í¬ì¸íŠ¸, ë©”ì†Œ#k#n ë“±ì˜ ì¬í™”ë¡œ ì´ìš© ê°€ëŠ¥í•˜ë©°, ì†Œëª¨í•˜ëŠ” ì¬í™”ì— ë”°ë¼ ë“±ì¥í•˜ëŠ” ì˜µì…˜ì˜ ìµœëŒ€ ë“±ê¸‰ ë° ìˆ˜ì¹˜ì— ì°¨ì´ê°€ ë°œìƒí•©ë‹ˆë‹¤.");
+                    self.say("#fs11#ê° ì¬í™”ë³„ ì˜µì…˜ ë³€ê²½ì— ì†Œëª¨í•˜ëŠ” ë¹„ìš©ì€ ì•„ë˜ì™€ ê°™ìŠµë‹ˆë‹¤.\r\n\r\n#rê°•ë¦¼ í¬ì¸íŠ¸ : 1,000\r\ní™ë³´ í¬ì¸íŠ¸ : 500\r\në©”ì†Œ : 500,000,000");
+                    String v2 = "#fs11#ë³´ë‹¤ ìì„¸í•œ ì •ë³´ëŠ” ì•„ë˜ ì„ íƒì§€ë¥¼ í†µí•´ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#b#L0#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ì— ê´€í•´ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#b#L1#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ë“±ê¸‰ë³„ ì˜µì…˜ì„ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#b#L2#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ë“±ê¸‰ë³„ í™•ë¥ ì„ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n#L3#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° ëŸ­í‚¤ í¬ì¸íŠ¸ì— ëŒ€í•´ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l";
                     int v3 = self.askMenu(v2);
                     switch (v3) {
                         case 0: {
-                            self.say("#fs11#¿¢½ºÆ®¶ó ¾îºô¸®Æ¼ ÇÁ¸®¼ÂÀº ÃÊ±â 1°³ÀÇ ÇÁ¸®¼ÂÀ» ±âº»À¸·Î Á¦°øÇÏ¸ç, #b°­¸² Æ÷ÀÎÆ®#k ¶Ç´Â #bÈ«º¸ Æ÷ÀÎÆ®#k¸¦ #e50,000#n ¼Ò¸ğÇÏ¿© 1Ä­À» Ãß°¡ È®ÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n°¢ ÇÁ¸®¼Âº°·Î ´Ù¸¥ ¿É¼ÇÀ» ¼³Á¤ÇÏ¿© ÀÌ¿ëÇÒ ¼ö ÀÖÀ¸¸ç, ÇÁ¸®¼ÂÀ» º¯°æÇÒ ¶§¸¶´Ù #e30¾ï ¸Ş¼Ò#n¸¦ ¼Ò¸ğÇÕ´Ï´Ù.\r\n\r\n#e#r¡Ø ¿É¼Ç º¯°æÀº ÇöÀç »ç¿ë ÁßÀÎ ÇÁ¸®¼ÂÀ» ±âÁØÀ¸·Î Àû¿ëµÇ´Ï ÀÌ¿ë¿¡ ÁÖÀÇÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                            self.say("#fs11#ì—‘ìŠ¤íŠ¸ë¼ ì–´ë¹Œë¦¬í‹° í”„ë¦¬ì…‹ì€ ì´ˆê¸° 1ê°œì˜ í”„ë¦¬ì…‹ì„ ê¸°ë³¸ìœ¼ë¡œ ì œê³µí•˜ë©°, #bê°•ë¦¼ í¬ì¸íŠ¸#k ë˜ëŠ” #bí™ë³´ í¬ì¸íŠ¸#kë¥¼ #e50,000#n ì†Œëª¨í•˜ì—¬ 1ì¹¸ì„ ì¶”ê°€ í™•ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\nê° í”„ë¦¬ì…‹ë³„ë¡œ ë‹¤ë¥¸ ì˜µì…˜ì„ ì„¤ì •í•˜ì—¬ ì´ìš©í•  ìˆ˜ ìˆìœ¼ë©°, í”„ë¦¬ì…‹ì„ ë³€ê²½í•  ë•Œë§ˆë‹¤ #e30ì–µ ë©”ì†Œ#në¥¼ ì†Œëª¨í•©ë‹ˆë‹¤.\r\n\r\n#e#râ€» ì˜µì…˜ ë³€ê²½ì€ í˜„ì¬ ì‚¬ìš© ì¤‘ì¸ í”„ë¦¬ì…‹ì„ ê¸°ì¤€ìœ¼ë¡œ ì ìš©ë˜ë‹ˆ ì´ìš©ì— ì£¼ì˜í•˜ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                             break;
                         }
                         case 1: {
-                            self.say("#fs11##e[·¹Àüµå¸®]#n\r\n\r\n#b- °æÇèÄ¡ 10~20%\r\n- ¾ÆÀÌÅÛ µå·Ó·ü 10~20%\r\n- ¸Ş¼Ò È¹µæ·® 10~20%\r\n- Àç»ç¿ë ´ë±â½Ã°£ 1~2ÃÊ °¨¼Ò\r\n- Å©¸®Æ¼ÄÃ µ¥¹ÌÁö 5~8%\r\n- °ø°İ·Â/¸¶·Â 9~12%\r\n- º¸½º °ø°İ ½Ã µ¥¹ÌÁö 20~30%\r\n- ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 20~30%\r\n- Å©¸®Æ¼ÄÃ È®·ü 9~12%\r\n- ¿Ã½ºÅÈ +15~21%\r\n- hp +12~15%\r\n- °ø°İ·Â/¸¶·Â +80~100\r\n- ¿Ã½ºÅÈ +100~150");
-                            self.say("#fs11##e[ À¯´ÏÅ© ]#n\r\n\r\n#b- º¸½º °ø°İ ½Ã µ¥¹ÌÁö 10~20%\r\n- ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 8~12%\r\n- Å©¸®Æ¼ÄÃ È®·ü 6~9%\r\n- °ø°İ·Â/¸¶·Â 6~9%\r\n- ¿Ã½ºÅÈ +12~15%\r\n- hp +9~12%\r\n- °ø°İ·Â/¸¶·Â +50~80\r\n- ¿Ã½ºÅÈ +80~100");
-                            self.say("#fs11##e[ ¿¡ÇÈ ]#n\r\n\r\n#b- °ø°İ·Â/¸¶·Â 3~6%\r\n- ¿Ã½ºÅÈ +9~12%\r\n- hp +6~9%\r\n- ÇÇ°İ ½Ã ¹Ş´Â µ¥¹ÌÁö 60~80%\r\n- str, dex, int, luk +80~100\r\n- ¿Ã½ºÅÈ +50~80\r\n- hp +3000~5000\r\n- °ø°İ·Â/¸¶·Â +30~50");
-                            self.say("#fs11##e[ ·¹¾î ]#n\r\n\r\n#b- ÇÇ°İ ½Ã ¹Ş´Â µ¥¹ÌÁö 40~60%\r\n- str, dex, int, luk +50~80\r\n- ¿Ã½ºÅÈ +20~50\r\n- hp +1000~2000\r\n- °ø°İ·Â/¸¶·Â +10~30");
-                            self.say("#fs11##bÃ¹ ¹øÂ° ÁÙ#kÀº #eÇöÀç µî±ŞÀÇ ¿É¼Ç#nÀÌ µîÀåÇÏ°í, #bµÎ ¹øÂ° / ¼¼ ¹øÂ° ÁÙ#kÀº #eÇöÀç µî±Şº¸´Ù ÇÑ ´Ü°è ¾Æ·¡ ¿É¼Ç#nÀÌ ÃâÇöÇÏ¸ç, »ç¿ë ÇÑ ÀçÈ­¿¡ µû¶ó ÀÌÅ» ¿É¼ÇÀÌ µîÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-                            self.say("#fs11##bµÎ ¹øÂ° ÁÙ ¿É¼Ç#kÀº #e°­¸² Æ÷ÀÎÆ® ¹× È«º¸ Æ÷ÀÎÆ®#n »ç¿ë ½Ã #r30% È®·ü#k·Î #eÇöÀç µî±ŞÀÇ ¿É¼Ç#nÀÌ µîÀåÇÏ°í, #b¼¼ ¹øÂ° ÁÙ ¿É¼Ç#kÀº #e°­¸² Æ÷ÀÎÆ®#n »ç¿ë ½Ã #r10% È®·ü#k·Î #eÇöÀç µî±ŞÀÇ ¿É¼Ç#nÀÌ µîÀåÇÕ´Ï´Ù.");
+                            self.say("#fs11##e[ë ˆì „ë“œë¦¬]#n\r\n\r\n#b- ê²½í—˜ì¹˜ 10~20%\r\n- ì•„ì´í…œ ë“œë¡­ë¥  10~20%\r\n- ë©”ì†Œ íšë“ëŸ‰ 10~20%\r\n- ì¬ì‚¬ìš© ëŒ€ê¸°ì‹œê°„ 1~2ì´ˆ ê°ì†Œ\r\n- í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ 5~8%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ 9~12%\r\n- ë³´ìŠ¤ ê³µê²© ì‹œ ë°ë¯¸ì§€ 20~30%\r\n- ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 20~30%\r\n- í¬ë¦¬í‹°ì»¬ í™•ë¥  9~12%\r\n- ì˜¬ìŠ¤íƒ¯ +15~21%\r\n- hp +12~15%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +80~100\r\n- ì˜¬ìŠ¤íƒ¯ +100~150");
+                            self.say("#fs11##e[ ìœ ë‹ˆí¬ ]#n\r\n\r\n#b- ë³´ìŠ¤ ê³µê²© ì‹œ ë°ë¯¸ì§€ 10~20%\r\n- ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 8~12%\r\n- í¬ë¦¬í‹°ì»¬ í™•ë¥  6~9%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ 6~9%\r\n- ì˜¬ìŠ¤íƒ¯ +12~15%\r\n- hp +9~12%\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +50~80\r\n- ì˜¬ìŠ¤íƒ¯ +80~100");
+                            self.say("#fs11##e[ ì—í”½ ]#n\r\n\r\n#b- ê³µê²©ë ¥/ë§ˆë ¥ 3~6%\r\n- ì˜¬ìŠ¤íƒ¯ +9~12%\r\n- hp +6~9%\r\n- í”¼ê²© ì‹œ ë°›ëŠ” ë°ë¯¸ì§€ 60~80%\r\n- str, dex, int, luk +80~100\r\n- ì˜¬ìŠ¤íƒ¯ +50~80\r\n- hp +3000~5000\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +30~50");
+                            self.say("#fs11##e[ ë ˆì–´ ]#n\r\n\r\n#b- í”¼ê²© ì‹œ ë°›ëŠ” ë°ë¯¸ì§€ 40~60%\r\n- str, dex, int, luk +50~80\r\n- ì˜¬ìŠ¤íƒ¯ +20~50\r\n- hp +1000~2000\r\n- ê³µê²©ë ¥/ë§ˆë ¥ +10~30");
+                            self.say("#fs11##bì²« ë²ˆì§¸ ì¤„#kì€ #eí˜„ì¬ ë“±ê¸‰ì˜ ì˜µì…˜#nì´ ë“±ì¥í•˜ê³ , #bë‘ ë²ˆì§¸ / ì„¸ ë²ˆì§¸ ì¤„#kì€ #eí˜„ì¬ ë“±ê¸‰ë³´ë‹¤ í•œ ë‹¨ê³„ ì•„ë˜ ì˜µì…˜#nì´ ì¶œí˜„í•˜ë©°, ì‚¬ìš© í•œ ì¬í™”ì— ë”°ë¼ ì´íƒˆ ì˜µì…˜ì´ ë“±ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+                            self.say("#fs11##bë‘ ë²ˆì§¸ ì¤„ ì˜µì…˜#kì€ #eê°•ë¦¼ í¬ì¸íŠ¸ ë° í™ë³´ í¬ì¸íŠ¸#n ì‚¬ìš© ì‹œ #r30% í™•ë¥ #kë¡œ #eí˜„ì¬ ë“±ê¸‰ì˜ ì˜µì…˜#nì´ ë“±ì¥í•˜ê³ , #bì„¸ ë²ˆì§¸ ì¤„ ì˜µì…˜#kì€ #eê°•ë¦¼ í¬ì¸íŠ¸#n ì‚¬ìš© ì‹œ #r10% í™•ë¥ #kë¡œ #eí˜„ì¬ ë“±ê¸‰ì˜ ì˜µì…˜#nì´ ë“±ì¥í•©ë‹ˆë‹¤.");
                             break;
                         }
                         case 2: {
-                            self.say("#fs11##e[·¹¾î ¡æ ¿¡ÇÈ µî±Ş »ó½Â È®·ü]#n\r\n#b°­¸² Æ÷ÀÎÆ® : 15%\r\nÈ«º¸ Æ÷ÀÎÆ® : 10%\r\n¸Ş¼Ò : 5%\r\n\r\n\r\n#k#e[¿¡ÇÈ ¡æ À¯´ÏÅ© µî±à »ğ½Â È®·ü]#n\r\n#b°­¸² Æ÷ÀÎÆ® : 3.8%\r\nÈ«º¸ Æ÷ÀÎÆ® : 2.5%\r\n¸Ş¼Ò : 0.9%\r\n\r\n\r\n#k#e[À¯´ÏÅ© ¡æ ·¹Àüµå¸® µî±Ş »ó½Â È®·ü]#n\r\n#b°­¸² Æ÷ÀÎÆ® : 1%\r\nÈ«º¸ Æ÷ÀÎÆ® : 0.7%\r\n¸Ş¼Ò : ºÒ°¡");
+                            self.say("#fs11##e[ë ˆì–´ â†’ ì—í”½ ë“±ê¸‰ ìƒìŠ¹ í™•ë¥ ]#n\r\n#bê°•ë¦¼ í¬ì¸íŠ¸ : 15%\r\ní™ë³´ í¬ì¸íŠ¸ : 10%\r\në©”ì†Œ : 5%\r\n\r\n\r\n#k#e[ì—í”½ â†’ ìœ ë‹ˆí¬ ë“±ê¸ ì‚½ìŠ¹ í™•ë¥ ]#n\r\n#bê°•ë¦¼ í¬ì¸íŠ¸ : 3.8%\r\ní™ë³´ í¬ì¸íŠ¸ : 2.5%\r\në©”ì†Œ : 0.9%\r\n\r\n\r\n#k#e[ìœ ë‹ˆí¬ â†’ ë ˆì „ë“œë¦¬ ë“±ê¸‰ ìƒìŠ¹ í™•ë¥ ]#n\r\n#bê°•ë¦¼ í¬ì¸íŠ¸ : 1%\r\ní™ë³´ í¬ì¸íŠ¸ : 0.7%\r\në©”ì†Œ : ë¶ˆê°€");
                             break;
                         }
                         case 3: {
-                            self.say("#fs11#·°Å° Æ÷ÀÎÆ®´Â »ç¿ëÇÑ ÀçÈ­¿¡ µû¶ó Â÷µî È¹µæÇÏ¸ç ¾Æ·¡¿Í °°ÀÌ È¹µæÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#e#r¸Ş¼Ò »ç¿ë ½Ã : 1Æ÷ÀÎÆ®\r\nÈ«º¸ Æ÷ÀÎÆ® »ç¿ë ½Ã : 2Æ÷ÀÎÆ®\r\n°­¸² Æ÷ÀÎÆ® »ç¿ë ½Ã : 3Æ÷ÀÎÆ®");
-                            self.say("#fs11#°­È­ ½Ã ¾òÀº ·°Å° Æ÷ÀÎÆ®°¡ #e#b30 Æ÷ÀÎÆ®#n#k¸¦ ³ÑÀ» ½Ã ÀÚµ¿À¸·Î 30Æ÷ÀÎÆ®°¡ Â÷°¨µÇ¸ç, 1~3ÁÙÀÌ ÇØ´ç ¿É¼ÇÀÇ ÃÖ´ë ¼öÄ¡·Î µîÀåÇÕ´Ï´Ù.\r\n\r\n#e3ÁÙ ·°Å°ÀÇ È®·üÀº 20%\r\n2ÁÙ ·°Å°ÀÇ È®·üÀº 30%\r\n1ÁÙ ·°Å°ÀÇ È®·üÀº 50% ÀÔ´Ï´Ù.");
+                            self.say("#fs11#ëŸ­í‚¤ í¬ì¸íŠ¸ëŠ” ì‚¬ìš©í•œ ì¬í™”ì— ë”°ë¼ ì°¨ë“± íšë“í•˜ë©° ì•„ë˜ì™€ ê°™ì´ íšë“í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#e#rë©”ì†Œ ì‚¬ìš© ì‹œ : 1í¬ì¸íŠ¸\r\ní™ë³´ í¬ì¸íŠ¸ ì‚¬ìš© ì‹œ : 2í¬ì¸íŠ¸\r\nê°•ë¦¼ í¬ì¸íŠ¸ ì‚¬ìš© ì‹œ : 3í¬ì¸íŠ¸");
+                            self.say("#fs11#ê°•í™” ì‹œ ì–»ì€ ëŸ­í‚¤ í¬ì¸íŠ¸ê°€ #e#b30 í¬ì¸íŠ¸#n#kë¥¼ ë„˜ì„ ì‹œ ìë™ìœ¼ë¡œ 30í¬ì¸íŠ¸ê°€ ì°¨ê°ë˜ë©°, 1~3ì¤„ì´ í•´ë‹¹ ì˜µì…˜ì˜ ìµœëŒ€ ìˆ˜ì¹˜ë¡œ ë“±ì¥í•©ë‹ˆë‹¤.\r\n\r\n#e3ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 20%\r\n2ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 30%\r\n1ì¤„ ëŸ­í‚¤ì˜ í™•ë¥ ì€ 50% ì…ë‹ˆë‹¤.");
                             break;
                         }
                     }
@@ -855,39 +855,39 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     public void npc_2570100() {
         initNPC(MapleLifeFactory.getNPC(2570100));
         NumberFormat nf = NumberFormat.getNumberInstance();
-        String v0 = "±¸°æÇØ º¸°Ú³ª. ¿ì¸®°¡ ¹ß°ßÇÑ ¾Ë ¼ö ¾ø´Â ±â¿îÀÌ ´À²¸Áö´Â ¾ÆÀÌÅÛÀ». ¡¦ÀÚ³×°¡ °¡Áö°í ÀÖ´Â ±×°Í¿¡¼­µµ ºñ½ÁÇÑ ±â¿îÀÌ ´À²¸Áö´Â±º. ±¦Âú´Ù¸é ³»°¡ °¡Áø ¾ÆÀÌÅÛ°ú ±³È¯ÇØ ÁÖ°Ú³×.\r\n°ËÀº ±â¿îÀÌ ´À²¸Áö´Â Àåºñ¶ó¸é ÀÌ ±â¿î°ú Á¶ÇÕÇÏ¿© »õ·Î¿î ¾ÆÀÌÅÛÀ» ¸¸µé ¼ö ÀÖÀ» °Í °°±º. ÇÑ ¹ø ½ÃµµÇØ º¸°Ú³ª?\r\n\r\n";
-        v0 += "#b#L0##eÄ¥ÈæÀÇ ±â¿î#nÀ» #eÇï Æ÷ÀÎÆ®#n·Î ±³È¯ÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#L1##eÇï Æ÷ÀÎÆ® »óÁ¡#nÀ» ÀÌ¿ëÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#L2##e°¢¼ºÇÑ ÈûÀÌ ±êµç ¾ÆÀÌÅÛ#nÀ» Á¦ÀÛÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-        v0 += "#L3#´ÙÀ½¿¡ ´Ù½Ã Ã£¾Æ¿À°Ú½À´Ï´Ù.#l";
+        String v0 = "êµ¬ê²½í•´ ë³´ê² ë‚˜. ìš°ë¦¬ê°€ ë°œê²¬í•œ ì•Œ ìˆ˜ ì—†ëŠ” ê¸°ìš´ì´ ëŠê»´ì§€ëŠ” ì•„ì´í…œì„. â€¦ìë„¤ê°€ ê°€ì§€ê³  ìˆëŠ” ê·¸ê²ƒì—ì„œë„ ë¹„ìŠ·í•œ ê¸°ìš´ì´ ëŠê»´ì§€ëŠ”êµ°. ê´œì°®ë‹¤ë©´ ë‚´ê°€ ê°€ì§„ ì•„ì´í…œê³¼ êµí™˜í•´ ì£¼ê² ë„¤.\r\nê²€ì€ ê¸°ìš´ì´ ëŠê»´ì§€ëŠ” ì¥ë¹„ë¼ë©´ ì´ ê¸°ìš´ê³¼ ì¡°í•©í•˜ì—¬ ìƒˆë¡œìš´ ì•„ì´í…œì„ ë§Œë“¤ ìˆ˜ ìˆì„ ê²ƒ ê°™êµ°. í•œ ë²ˆ ì‹œë„í•´ ë³´ê² ë‚˜?\r\n\r\n";
+        v0 += "#b#L0##eì¹ í‘ì˜ ê¸°ìš´#nì„ #eí—¬ í¬ì¸íŠ¸#në¡œ êµí™˜í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#L1##eí—¬ í¬ì¸íŠ¸ ìƒì #nì„ ì´ìš©í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#L2##eê°ì„±í•œ í˜ì´ ê¹ƒë“  ì•„ì´í…œ#nì„ ì œì‘í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+        v0 += "#L3#ë‹¤ìŒì— ë‹¤ì‹œ ì°¾ì•„ì˜¤ê² ìŠµë‹ˆë‹¤.#l";
         int v1 = self.askMenu(v0);
         switch (v1) {
             case 0: {
                 int count = getPlayer().getItemQuantity(4036454, false);
                 int hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
-                String v2 = "ÀÚ³×°¡ °¡Áö°í ÀÖ´Â #b#i4036454# #z4036454##k¿¡¼­´Â ÁÁÁö ¾ÊÀº ´À³¦ÀÌ µå´Â±º. ¡¦±×·¡. Çï Æ÷ÀÎÆ®¶ó°í ºÎ¸£±â·Î ÇÏÁö. ÀÚ³×°¡ °¡Áø #b#z4036454##k ÇÏ³ª¸¦ #b3 Çï Æ÷ÀÎÆ®#k·Î ¹Ù²ã ÁÖ°Ú³×. ¾ÕÀ¸·Î ÀÚ³×¿ÍÀÇ ±³È¯¿¡¼­ »ç¿ëÇÏ°Ô µÉ Æ÷ÀÎÆ®°¡ µÉ Å×´Ï ÇÊ¿äÇÑ ¸¸Å­ °Ç³× ÁÖ°Ô³ª.\r\n\r\n";
-                v2 += "#b#eº¸À¯ ÁßÀÎ #z4036454# °¹¼ö : " + count + "\r\n";
-                v2 += "º¸À¯ ÁßÀÎ Çï Æ÷ÀÎÆ® : " + nf.format(hellPoint) + "#n\r\n\r\n";
-                v2 += "#b#L0##e#z4036454##nÀ» #eÇï Æ÷ÀÎÆ®#n·Î ±³È¯ÇØÁÖ¼¼¿ä.#l\r\n";
-                v2 += "#L1#´ÙÀ½¿¡ ´Ù½Ã Ã£¾Æ¿À°Ú½À´Ï´Ù.#l";
+                String v2 = "ìë„¤ê°€ ê°€ì§€ê³  ìˆëŠ” #b#i4036454# #z4036454##kì—ì„œëŠ” ì¢‹ì§€ ì•Šì€ ëŠë‚Œì´ ë“œëŠ”êµ°. â€¦ê·¸ë˜. í—¬ í¬ì¸íŠ¸ë¼ê³  ë¶€ë¥´ê¸°ë¡œ í•˜ì§€. ìë„¤ê°€ ê°€ì§„ #b#z4036454##k í•˜ë‚˜ë¥¼ #b3 í—¬ í¬ì¸íŠ¸#kë¡œ ë°”ê¿” ì£¼ê² ë„¤. ì•ìœ¼ë¡œ ìë„¤ì™€ì˜ êµí™˜ì—ì„œ ì‚¬ìš©í•˜ê²Œ ë  í¬ì¸íŠ¸ê°€ ë  í…Œë‹ˆ í•„ìš”í•œ ë§Œí¼ ê±´ë„¤ ì£¼ê²Œë‚˜.\r\n\r\n";
+                v2 += "#b#eë³´ìœ  ì¤‘ì¸ #z4036454# ê°¯ìˆ˜ : " + count + "\r\n";
+                v2 += "ë³´ìœ  ì¤‘ì¸ í—¬ í¬ì¸íŠ¸ : " + nf.format(hellPoint) + "#n\r\n\r\n";
+                v2 += "#b#L0##e#z4036454##nì„ #eí—¬ í¬ì¸íŠ¸#në¡œ êµí™˜í•´ì£¼ì„¸ìš”.#l\r\n";
+                v2 += "#L1#ë‹¤ìŒì— ë‹¤ì‹œ ì°¾ì•„ì˜¤ê² ìŠµë‹ˆë‹¤.#l";
                 int v3 = self.askMenu(v2);
                 if (v3 == 0) {
                     count = getPlayer().getItemQuantity(4036454, false);
                     if (count <= 0) {
-                        self.say("ÀÚ³×¿¡°Ô¼­´Â ¾î¶°ÇÑ ±â¿îµµ ´À²¸ÁöÁö ¾Ê´Â±º. Çã»óÀÌ¶óµµ º¸¾Ò³ª?");
+                        self.say("ìë„¤ì—ê²Œì„œëŠ” ì–´ë– í•œ ê¸°ìš´ë„ ëŠê»´ì§€ì§€ ì•ŠëŠ”êµ°. í—ˆìƒì´ë¼ë„ ë³´ì•˜ë‚˜?");
                         return;
                     }
-                    String v4 = "ÀÚ³×´Â #b#i4036454# #z4036454#À» " + count + "°³#k º¸À¯ÇÏ°í ÀÖ±º. ¸î °³¸¦ #bÇï Æ÷ÀÎÆ®#k·Î ±³È¯ÇÏ°í ½Í³ª?\r\n";
+                    String v4 = "ìë„¤ëŠ” #b#i4036454# #z4036454#ì„ " + count + "ê°œ#k ë³´ìœ í•˜ê³  ìˆêµ°. ëª‡ ê°œë¥¼ #bí—¬ í¬ì¸íŠ¸#kë¡œ êµí™˜í•˜ê³  ì‹¶ë‚˜?\r\n";
                     int v5 = self.askNumber(v4, count, 1, count);
                     if (v5 > count) {
                         return; //Hack
                     }
-                    if (1 == self.askYesNo("#b #b#i4036454# #z4036454# " + v5 + "°³#k¸¦ #b" + (3 * v5) + " Çï Æ÷ÀÎÆ®#k·Î ±³È¯ÇÏ°Ú³ª?")) {
+                    if (1 == self.askYesNo("#b #b#i4036454# #z4036454# " + v5 + "ê°œ#kë¥¼ #b" + (3 * v5) + " í—¬ í¬ì¸íŠ¸#kë¡œ êµí™˜í•˜ê² ë‚˜?")) {
                         if (1 == target.exchange(4036454, -v5)) {
                             getPlayer().updateOneInfo(1234999, "hp", String.valueOf(hellPoint + (3 * v5)));
-                            self.say("#b" + (3 * v5) + " Çï Æ÷ÀÎÆ®#k·Î ±³È¯ÇØÁáÀ¸´Ï È®ÀÎÇØº¸°Ô³ª.");
+                            self.say("#b" + (3 * v5) + " í—¬ í¬ì¸íŠ¸#kë¡œ êµí™˜í•´ì¤¬ìœ¼ë‹ˆ í™•ì¸í•´ë³´ê²Œë‚˜.");
                         } else {
-                            self.say("¾Ë ¼ö ¾ø´Â ÀÌÀ¯·Î ±³È¯¿¡ ½ÇÆĞÇß±º. ´Ù½Ã ½ÃµµÇØº¸°Ú³ª?");
+                            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì´ìœ ë¡œ êµí™˜ì— ì‹¤íŒ¨í–ˆêµ°. ë‹¤ì‹œ ì‹œë„í•´ë³´ê² ë‚˜?");
                         }
                     }
                 }
@@ -895,34 +895,34 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             }
             case 1: {
                 int hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
-                String v2 = "Å½¿å½º·¯¿î ÀÚÀÇ ¸»·Î´Â ÁÁÁö ¾Ê¾Æ. ¿øÇÏ´Â ¾ÆÀÌÅÛÀ» ÇÏ³ª¸¸ °ñ¶ó º¸°Ô. ±â»ç´Â ÇÑ ¹ø ³»¸° °áÁ¤À» ¹øº¹ÇÏÁö ¾Ê´Â´Ù³×. ÀÚ³×µµ °áÁ¤ÇÒ ¶§´Â ½ÅÁßÇÏ°Ô³ª. ÈÄÈ¸ÇÒ ¶§´Â ÀÌ¹Ì ´Ê¾úÀ» Å×´Ï.\r\n#b";
-                v2 += "#eº¸À¯ ÁßÀÎ Çï Æ÷ÀÎÆ® : " + nf.format(hellPoint) + "P\r\n\r\n";
-                v2 += "#k#e[¾ÆÀÌÅÛ ¸®½ºÆ®]#n#b\r\n";
+                String v2 = "íƒìš•ìŠ¤ëŸ¬ìš´ ìì˜ ë§ë¡œëŠ” ì¢‹ì§€ ì•Šì•„. ì›í•˜ëŠ” ì•„ì´í…œì„ í•˜ë‚˜ë§Œ ê³¨ë¼ ë³´ê²Œ. ê¸°ì‚¬ëŠ” í•œ ë²ˆ ë‚´ë¦° ê²°ì •ì„ ë²ˆë³µí•˜ì§€ ì•ŠëŠ”ë‹¤ë„¤. ìë„¤ë„ ê²°ì •í•  ë•ŒëŠ” ì‹ ì¤‘í•˜ê²Œë‚˜. í›„íšŒí•  ë•ŒëŠ” ì´ë¯¸ ëŠ¦ì—ˆì„ í…Œë‹ˆ.\r\n#b";
+                v2 += "#eë³´ìœ  ì¤‘ì¸ í—¬ í¬ì¸íŠ¸ : " + nf.format(hellPoint) + "P\r\n\r\n";
+                v2 += "#k#e[ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸]#n#b\r\n";
                 for (int i = 0; i < consumeList.length; ++i) {
                     v2 += "#L" + i + "##i" + consumeList[i] + "# #z" + consumeList[i] + "# #r(" + consumePrice[i] + "P)#b#l\r\n";
                 }
                 int v3 = self.askMenu(v2);
                 hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
                 if (consumePrice[v3] > hellPoint) {
-                    self.say("#bÇï Æ÷ÀÎÆ®#k°¡ ºÎÁ·ÇÏ±º. ¿øÇÏ´Â °ÍÀ» ¾ò±â À§ÇØ¼­´Â ´ë°¡¸¦ Ä¡·¯¾ß ÇÏÁö ¾Ê°Ú³ª?");
+                    self.say("#bí—¬ í¬ì¸íŠ¸#kê°€ ë¶€ì¡±í•˜êµ°. ì›í•˜ëŠ” ê²ƒì„ ì–»ê¸° ìœ„í•´ì„œëŠ” ëŒ€ê°€ë¥¼ ì¹˜ëŸ¬ì•¼ í•˜ì§€ ì•Šê² ë‚˜?");
                     return;
                 }
                 if (1 == target.exchange(consumeList[v3], 1)) {
                     getPlayer().updateOneInfo(1234999, "hp", String.valueOf(hellPoint - consumePrice[v3]));
-                    self.say("¿©±â ÀÖ³×. ÀÚ³×ÀÇ ÀÎº¥Åä¸®¸¦ È®ÀÎÇØº¸°Ô³ª.");
+                    self.say("ì—¬ê¸° ìˆë„¤. ìë„¤ì˜ ì¸ë²¤í† ë¦¬ë¥¼ í™•ì¸í•´ë³´ê²Œë‚˜.");
                 } else {
-                    self.say("ÀÚ³×ÀÇ ÀÎº¥Åä¸®°¡ °¡µæÂù °Í °°±º.");
+                    self.say("ìë„¤ì˜ ì¸ë²¤í† ë¦¬ê°€ ê°€ë“ì°¬ ê²ƒ ê°™êµ°.");
                 }
                 break;
             }
             case 2: {
-                String v2 = "±İ¹æÀÌ¶óµµ »ç¶óÁú µí ºÒ¾ÈÁ¤ÇÑ ±â¿îÀÌ±º. ÇÑ ¹ø¿¡ ¼º°øÇÏÁö ¸øÇÒ ¼öµµ ÀÖ´Ù³×. Á¤¸» ½ÃµµÇÏ°Ú³ª? µÎ·Á¿ï ¶§´Â µµ¸ÁÄ¡´Â °Íµµ ¹æ¹ıÀÌ°ÚÁö. ÇÏÁö¸¸ ¼º°øÇÏ¸é Áö±İº¸´Ù °­ÇÑ ÈûÀ» ¾òÀ» ¼ö ÀÖÀ» °É¼¼.\r\n\r\n#b(Á¦ÀÛ ½ÇÆĞ ½Ã Àç·á·Î »ç¿ëµÈ Ä¥Èæ Àåºñ¸¦ Á¦¿ÜÇÑ Æ÷ÀÎÆ®°¡ »ç¶óÁö¸ç, Á¦ÀÛ ¼º°ø ½Ã Àç·á·Î »ç¿ëµÈ Ä¥Èæ ÀåºñÀÇ ¿É¼ÇÀÌ °¢¼ºÇÑ Ä¥Èæ Àåºñ·Î Àü½ÂµË´Ï´Ù.)#n#b\r\n\r\n";
-                v2 += "#k#e[¾ÆÀÌÅÛ ¸®½ºÆ®]#n#b\r\n";
+                String v2 = "ê¸ˆë°©ì´ë¼ë„ ì‚¬ë¼ì§ˆ ë“¯ ë¶ˆì•ˆì •í•œ ê¸°ìš´ì´êµ°. í•œ ë²ˆì— ì„±ê³µí•˜ì§€ ëª»í•  ìˆ˜ë„ ìˆë‹¤ë„¤. ì •ë§ ì‹œë„í•˜ê² ë‚˜? ë‘ë ¤ìš¸ ë•ŒëŠ” ë„ë§ì¹˜ëŠ” ê²ƒë„ ë°©ë²•ì´ê² ì§€. í•˜ì§€ë§Œ ì„±ê³µí•˜ë©´ ì§€ê¸ˆë³´ë‹¤ ê°•í•œ í˜ì„ ì–»ì„ ìˆ˜ ìˆì„ ê±¸ì„¸.\r\n\r\n#b(ì œì‘ ì‹¤íŒ¨ ì‹œ ì¬ë£Œë¡œ ì‚¬ìš©ëœ ì¹ í‘ ì¥ë¹„ë¥¼ ì œì™¸í•œ í¬ì¸íŠ¸ê°€ ì‚¬ë¼ì§€ë©°, ì œì‘ ì„±ê³µ ì‹œ ì¬ë£Œë¡œ ì‚¬ìš©ëœ ì¹ í‘ ì¥ë¹„ì˜ ì˜µì…˜ì´ ê°ì„±í•œ ì¹ í‘ ì¥ë¹„ë¡œ ì „ìŠ¹ë©ë‹ˆë‹¤.)#n#b\r\n\r\n";
+                v2 += "#k#e[ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸]#n#b\r\n";
                 for (int i = 0; i < equipList.length; ++i) {
                 	if (i == 3) continue;
                     v2 += "#L" + i + "##i" + equipList[i] + "# #z" + equipList[i] + "##l\r\n";
                 }
-                v2 += "\r\n\r\n#r¡Ø ÇØ´ç Àåºñ´Â Á¦ÀÛ ½Ã ±³È¯ºÒ°¡»óÅÂ·Î º¯°æµË´Ï´Ù.";
+                v2 += "\r\n\r\n#râ€» í•´ë‹¹ ì¥ë¹„ëŠ” ì œì‘ ì‹œ êµí™˜ë¶ˆê°€ìƒíƒœë¡œ ë³€ê²½ë©ë‹ˆë‹¤.";
                 int v3 = self.askMenu(v2);
                 if (v3 == 3) return;
                 String pointName = "";
@@ -932,53 +932,53 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 int p = 25;
                 switch (v3) {
                     case 0: {
-                        pointName = "½º¿ì Æ÷ÀÎÆ®";
+                        pointName = "ìŠ¤ìš° í¬ì¸íŠ¸";
                         pointKey = "hell_swoo_point";
                         break;
                     }
                     case 1: {
-                        pointName = "µ¥¹Ì¾È Æ÷ÀÎÆ®";
+                        pointName = "ë°ë¯¸ì•ˆ í¬ì¸íŠ¸";
                         pointKey = "hell_demian_point";
                         break;
                     }
                     case 2:
-                        pointName = "·ç½Ãµå Æ÷ÀÎÆ®";
+                        pointName = "ë£¨ì‹œë“œ í¬ì¸íŠ¸";
                         pointKey = "hell_lucid_point";
                         break;
                     case 3:
-                        pointName = "Àª Æ÷ÀÎÆ®";
+                        pointName = "ìœŒ í¬ì¸íŠ¸";
                         pointKey = "hell_will_point";
                         break;
                     case 4:
-                        pointName = "´õ½ºÅ© Æ÷ÀÎÆ®";
+                        pointName = "ë”ìŠ¤í¬ í¬ì¸íŠ¸";
                         pointKey = "hell_dusk_point";
                         break;
                     case 5:
-                        pointName = "Áø Èú¶ó Æ÷ÀÎÆ®";
+                        pointName = "ì§„ íë¼ í¬ì¸íŠ¸";
                         pointKey = "hell_jinhillah_point";
                         break;
                     case 6:
-                        pointName = "µáÄÌ Æ÷ÀÎÆ®";
+                        pointName = "ë“„ì¼ˆ í¬ì¸íŠ¸";
                         pointKey = "hell_dunkel_point";
                         break;
                     case 7:
-                        pointName = "°ËÀº¸¶¹ı»ç Æ÷ÀÎÆ®";
+                        pointName = "ê²€ì€ë§ˆë²•ì‚¬ í¬ì¸íŠ¸";
                         pointKey = "hell_bm_point";
                         p = 5;
                         break;
                     case 8:
-                        pointName = "¼¼·» Æ÷ÀÎÆ®";
+                        pointName = "ì„¸ë Œ í¬ì¸íŠ¸";
                         pointKey = "hell_seren_point";
                         break;
                 }
 
                 if (pointName.isEmpty() || pointKey.isEmpty()) {
-                    self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+                    self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
                     return;
                 }
-                String v4 = "#b#i" + equipID + "# #z" + equipID + "##k¸¦ ¾ò°í ½Í³ªº¸±º. °­ÇÑ ÈûÀ» ¾ò±â À§ÇØ¼­´Â #b#z" + baseEquipID + "# 1°³#k¿Í #b" + p + " " + pointName + "#k, #b#z4036454# 50°³#k°¡ ÇÊ¿äÇÏ´Ù³×. Á¦ÀÛ¿¡ ½ÇÆĞÇÏ¸é Àç·á·Î »ç¿ëÇÑ Àåºñ´Â ³²Áö¸¸ Æ÷ÀÎÆ®¿Í °­¸² Ä¥ÈæÀÇ ±â¿îÀº »ç¶óÁö°Ô µÇÁö. ½ÃµµÇØ º¸°Ú³ª?\r\n\r\n\n";
+                String v4 = "#b#i" + equipID + "# #z" + equipID + "##kë¥¼ ì–»ê³  ì‹¶ë‚˜ë³´êµ°. ê°•í•œ í˜ì„ ì–»ê¸° ìœ„í•´ì„œëŠ” #b#z" + baseEquipID + "# 1ê°œ#kì™€ #b" + p + " " + pointName + "#k, #b#z4036454# 50ê°œ#kê°€ í•„ìš”í•˜ë‹¤ë„¤. ì œì‘ì— ì‹¤íŒ¨í•˜ë©´ ì¬ë£Œë¡œ ì‚¬ìš©í•œ ì¥ë¹„ëŠ” ë‚¨ì§€ë§Œ í¬ì¸íŠ¸ì™€ ê°•ë¦¼ ì¹ í‘ì˜ ê¸°ìš´ì€ ì‚¬ë¼ì§€ê²Œ ë˜ì§€. ì‹œë„í•´ ë³´ê² ë‚˜?\r\n\r\n\n";
                 int point = getPlayer().getOneInfoQuestInteger(787777, pointKey);
-                v4 += "#b#eº¸À¯ ÁßÀÎ " + pointName + " : " + nf.format(point) + "P#n#k\r\n\r\n#e#r¡Ø ÀÎº¥Åä¸® Á¤·Ä ±âÁØÀ¸·Î °¡Àå ¾Õ¿¡ ÀÖ´Â Àåºñ¸¦ Àç·á·Î »ç¿ëÇÕ´Ï´Ù.";
+                v4 += "#b#eë³´ìœ  ì¤‘ì¸ " + pointName + " : " + nf.format(point) + "P#n#k\r\n\r\n#e#râ€» ì¸ë²¤í† ë¦¬ ì •ë ¬ ê¸°ì¤€ìœ¼ë¡œ ê°€ì¥ ì•ì— ìˆëŠ” ì¥ë¹„ë¥¼ ì¬ë£Œë¡œ ì‚¬ìš©í•©ë‹ˆë‹¤.";
                 if (1 == self.askYesNo(v4)) {
                     Item item = null;
                     if (baseEquipID == 1162083) {
@@ -1000,40 +1000,40 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     }
                     int count = getPlayer().getInventory(MapleInventoryType.EQUIP).countByIdWithoutLock(baseEquipID);
                     if (count <= 0) {
-                        self.say("ÀÚ³×¿¡°Ô¼­´Â ¾î¶°ÇÑ ±â¿îµµ ´À²¸ÁöÁö ¾Ê´Â±º. Çã»óÀÌ¶óµµ º¸¾Ò³ª?");
+                        self.say("ìë„¤ì—ê²Œì„œëŠ” ì–´ë– í•œ ê¸°ìš´ë„ ëŠê»´ì§€ì§€ ì•ŠëŠ”êµ°. í—ˆìƒì´ë¼ë„ ë³´ì•˜ë‚˜?");
                         return;
                     }
                     if (point < p) {
-                        self.say(pointName + "°¡ ºÎÁ·ÇØº¸ÀÌ´Â±º.");
+                        self.say(pointName + "ê°€ ë¶€ì¡±í•´ë³´ì´ëŠ”êµ°.");
                         return;
                     }
                     int count2 = getPlayer().getInventory(MapleInventoryType.ETC).countByIdWithoutLock(4036454);
                     int removeQty = 50;
                     if (count2 < removeQty) {
-                        self.say("#b#i4036454# #z4036454#ÀÌ ºÎÁ·ÇØº¸ÀÌ´Â±º.");
+                        self.say("#b#i4036454# #z4036454#ì´ ë¶€ì¡±í•´ë³´ì´ëŠ”êµ°.");
                         return;
                     }
-                    // 50% È®·ü·Î Á¦ÀÛ
+                    // 50% í™•ë¥ ë¡œ ì œì‘
                     getPlayer().updateOneInfo(787777, pointKey, String.valueOf(point - p));
                     if (Randomizer.isSuccess(50)) {
                         item = getPlayer().getInventory(MapleInventoryType.EQUIP).findByIdWithoutLock(baseEquipID);
                         if (item == null) {
-                            self.say("ÀÚ³×¿¡°Ô¼­´Â ¾î¶°ÇÑ ±â¿îµµ ´À²¸ÁöÁö ¾Ê´Â±º. Çã»óÀÌ¶óµµ º¸¾Ò³ª?");
+                            self.say("ìë„¤ì—ê²Œì„œëŠ” ì–´ë– í•œ ê¸°ìš´ë„ ëŠê»´ì§€ì§€ ì•ŠëŠ”êµ°. í—ˆìƒì´ë¼ë„ ë³´ì•˜ë‚˜?");
                             return;
                         }
                         if (1 == target.exchange(baseEquipID, -1, 4036454, -removeQty)) {
-                            // ÀåºñÀÇ ¿É¼ÇÀ» °¡Á®¿ÀÀå
+                            // ì¥ë¹„ì˜ ì˜µì…˜ì„ ê°€ì ¸ì˜¤ì¥
                             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                             Equip equip = (Equip) item;
                             Item newItem = ii.getEquipById(equipID);
                             if (newItem == null) {
-                                self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+                                self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
                                 return;
                             }
                             Equip newEquip = (Equip) newItem;
                             Item baseItem = ii.getEquipById(item.getItemId());
                             if (baseItem == null) {
-                                self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+                                self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
                                 return;
                             }
                             Equip baseEquip = (Equip) baseItem;
@@ -1051,16 +1051,16 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             newEquip.setLuk((short) (newEquip.getLuk() + luk));
                             newEquip.setWatk((short) (newEquip.getWatk() + pad));
                             newEquip.setMatk((short) (newEquip.getMatk() + mad));
-                            // ±³ºÒ
+                            // êµë¶ˆ
                             newEquip.setFlag(newEquip.getFlag() | ItemFlag.POSSIBLE_TRADING.getValue());
 
                             MapleInventoryManipulator.addbyItem(getClient(), newEquip);
 
-                            self.say("¼º°øÇß±º. ÀÚ³×ÀÇ Àåºñ¿¡¼­ ¾Ë ¼ö ¾ø´Â ±â¿îÀÌ ´À²¸Áö³×. ¡¦¸¶Ä¡ ±× ¾Ç¸¶Ã³·³.");
+                            self.say("ì„±ê³µí–ˆêµ°. ìë„¤ì˜ ì¥ë¹„ì—ì„œ ì•Œ ìˆ˜ ì—†ëŠ” ê¸°ìš´ì´ ëŠê»´ì§€ë„¤. â€¦ë§ˆì¹˜ ê·¸ ì•…ë§ˆì²˜ëŸ¼.");
                         }
                     } else {
                     	target.exchange(4036454, -removeQty);
-                        self.say("¡¦½ÇÆĞÀÎ°¡. ±â¿îÀº »ç¶óÁ³Áö¸¸, ´ÙÇàÈ÷ ÀÚ³×ÀÇ Àåºñ´Â ³²¾ÒÀ¸´Ï µ¹·ÁÁÖ°Ú³×");
+                        self.say("â€¦ì‹¤íŒ¨ì¸ê°€. ê¸°ìš´ì€ ì‚¬ë¼ì¡Œì§€ë§Œ, ë‹¤í–‰íˆ ìë„¤ì˜ ì¥ë¹„ëŠ” ë‚¨ì•˜ìœ¼ë‹ˆ ëŒë ¤ì£¼ê² ë„¤");
                     }
                 }
                 break;
@@ -1072,43 +1072,43 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9000041));
             long totalMeso1 = PraiseDonationMeso.getTotalMeso(); 
 
-            String v0 = "#fs11#¾È³çÇÏ¼¼¿ä ¸ğÇè°¡ #b#h0##k´Ô, #e°­¸²¿ùµå#n¿¡¼­ »õ·Î¿Â #b½ÅÀÔ ´ººñ#kµéÀÇ Á¤ÂøÀ» À§ÇÑ #e#b´ººñ ±âºÎÇÔ#k#nÀ» ¿î¿µÇÏ°í ÀÖ½À´Ï´Ù.\r\n"
+            String v0 = "#fs11#ì•ˆë…•í•˜ì„¸ìš” ëª¨í—˜ê°€ #b#h0##kë‹˜, #eê°•ë¦¼ì›”ë“œ#nì—ì„œ ìƒˆë¡œì˜¨ #bì‹ ì… ë‰´ë¹„#kë“¤ì˜ ì •ì°©ì„ ìœ„í•œ #e#bë‰´ë¹„ ê¸°ë¶€í•¨#k#nì„ ìš´ì˜í•˜ê³  ìˆìŠµë‹ˆë‹¤.\r\n"
                 + "\r\n"
-                + "#fs12##e[ ÇöÀç ±âºÎµÈ ±İ¾× : #b" 
+                + "#fs12##e[ í˜„ì¬ ê¸°ë¶€ëœ ê¸ˆì•¡ : #b" 
                 + NumberFormat.getInstance().format(totalMeso1) 
-                + " ¸Ş¼Ò ]#k#n#fs11#\r\n"
+                + " ë©”ì†Œ ]#k#n#fs11#\r\n"
                 + "\r\n"
-                + "#b#L0#´ººñ ±âºÎÇÔÀÌ ¹«¾ùÀÎÁö Á» ´õ ¼³¸íÇØÁÖ¼¼¿ä.#l\r\n"
-                + "#L1#¸Ş¼Ò¸¦ ±âºÎÇÏ°Ú½À´Ï´Ù.#l\r\n"
-                + "#L2#±âºÎ ·©Å·À» º¸°Ú½À´Ï´Ù.#l\r\n"
-                + "#L3#±âºÎ º¸»óÀ» ¼ö·ÉÇÏ°Ú½À´Ï´Ù.#l\r\n"
-                + "#L4#´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÏ°Ú½À´Ï´Ù.#l\r\n"
-                + "#L5#ÄªÂù »óÁ¡À» ÀÌ¿ëÇÏ°Ú½À´Ï´Ù.#l";        
+                + "#b#L0#ë‰´ë¹„ ê¸°ë¶€í•¨ì´ ë¬´ì—‡ì¸ì§€ ì¢€ ë” ì„¤ëª…í•´ì£¼ì„¸ìš”.#l\r\n"
+                + "#L1#ë©”ì†Œë¥¼ ê¸°ë¶€í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n"
+                + "#L2#ê¸°ë¶€ ë­í‚¹ì„ ë³´ê² ìŠµë‹ˆë‹¤.#l\r\n"
+                + "#L3#ê¸°ë¶€ ë³´ìƒì„ ìˆ˜ë ¹í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n"
+                + "#L4#ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n"
+                + "#L5#ì¹­ì°¬ ìƒì ì„ ì´ìš©í•˜ê² ìŠµë‹ˆë‹¤.#l";        
                 int v1 = self.askMenu(v0);
         switch (v1) {
             case 0: {
-                String v2 = "#fs11#¼³¸íÀÌ ÇÊ¿äÇÑ Ç×¸ñÀ» ¼±ÅÃÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.\r\n\r\n";
-                v2 += "#b#L0#¸Ş¼Ò ±âºÎ´Â ¾î¶»°Ô ÇÏ³ª¿ä?#l\r\n";
-                //v2 += "#b#L1#±âºÎ ·©Å· º¸»ó¿¡ ´ëÇØ ¼³¸íÇØ ÁÖ¼¼¿ä.#l\r\n";
-                v2 += "#b#L2#±âºÎ ´©Àû º¸»ó¿¡ ´ëÇØ ¼³¸íÇØ ÁÖ¼¼¿ä.#l\r\n";
-                v2 += "#b#L3#´ººñ Áö¿ø±İ¿¡ ´ëÇØ ¼³¸íÇØ ÁÖ¼¼¿ä.#l\r\n";
+                String v2 = "#fs11#ì„¤ëª…ì´ í•„ìš”í•œ í•­ëª©ì„ ì„ íƒí•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.\r\n\r\n";
+                v2 += "#b#L0#ë©”ì†Œ ê¸°ë¶€ëŠ” ì–´ë–»ê²Œ í•˜ë‚˜ìš”?#l\r\n";
+                //v2 += "#b#L1#ê¸°ë¶€ ë­í‚¹ ë³´ìƒì— ëŒ€í•´ ì„¤ëª…í•´ ì£¼ì„¸ìš”.#l\r\n";
+                v2 += "#b#L2#ê¸°ë¶€ ëˆ„ì  ë³´ìƒì— ëŒ€í•´ ì„¤ëª…í•´ ì£¼ì„¸ìš”.#l\r\n";
+                v2 += "#b#L3#ë‰´ë¹„ ì§€ì›ê¸ˆì— ëŒ€í•´ ì„¤ëª…í•´ ì£¼ì„¸ìš”.#l\r\n";
                 int v3 = self.askMenu(v2);
                 switch (v3) {
                     case 0: {
-                       self.say("#fs11#±âºÎ ¸Ş¼Ò ´ÜÀ§´Â #b1¾ï ¸Ş¼Ò#k·Î #b1¾ï ¸Ş¼Ò#k ´ç #b100 ÄªÂù Æ÷ÀÎÆ®#k¸¦ È¹µæÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n"
-                               + "ÀÏÀÏ ÃÖ´ë ´©Àû °¡´É ÄªÂù Æ÷ÀÎÆ®´Â #r1,000,000À¸·Î Á¦ÇÑ#kµË´Ï´Ù.\r\n\r\n"
-                               + "#r¡Ø ÀÏÀÏ Á¦ÇÑ Æ÷ÀÎÆ®¸¦ Ã¤¿öµµ ·©Å·¿¡´Â ¹İ¿µµË´Ï´Ù.");                        break;
+                       self.say("#fs11#ê¸°ë¶€ ë©”ì†Œ ë‹¨ìœ„ëŠ” #b1ì–µ ë©”ì†Œ#kë¡œ #b1ì–µ ë©”ì†Œ#k ë‹¹ #b100 ì¹­ì°¬ í¬ì¸íŠ¸#kë¥¼ íšë“í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n"
+                               + "ì¼ì¼ ìµœëŒ€ ëˆ„ì  ê°€ëŠ¥ ì¹­ì°¬ í¬ì¸íŠ¸ëŠ” #r1,000,000ìœ¼ë¡œ ì œí•œ#kë©ë‹ˆë‹¤.\r\n\r\n"
+                               + "#râ€» ì¼ì¼ ì œí•œ í¬ì¸íŠ¸ë¥¼ ì±„ì›Œë„ ë­í‚¹ì—ëŠ” ë°˜ì˜ë©ë‹ˆë‹¤.");                        break;
                     }
                     case 1: {
-                        self.say("#fs11#±âºÎ ·©Å·Àº #e¸Å¿ù 1ÀÏ#n¸¶´Ù ¾Æ·¡ ±âÁØÀ¸·Î º¸»óÀ» Áö±ŞÇÕ´Ï´Ù.\r\n\r\n#b1À§ : 20¸¸ °­¸² Æ÷ÀÎÆ® + 100¸¸ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®\r\n2À§ : 15¸¸ °­¸² Æ÷ÀÎÆ® + 70¸¸ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®\r\n3À§~5À§ : 10¸¸ °­¸² Æ÷ÀÎÆ® + 50¸¸ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®\r\n6À§~10À§ : 5¸¸ °­¸² Æ÷ÀÎÆ® + 30¸¸ ¸ŞÀÌÇÃ Æ÷ÀÎÆ®#k\r\n\r\n¸Å¿ù 1ÀÏ¸¶´Ù ´ººñ ±âºÎÇÔ¿¡ ´©ÀûµÈ ¸Ş¼Ò°¡ #e1000¾ï ¸Ş¼Ò#n¸¦ ³Ñ±æ °æ¿ì #e´©ÀûµÈ ¸Ş¼ÒÀÇ 30%#n¸¦ ±âºÎ¿¡ Âü¿©ÇÑ À¯Àú Áß 30¾ï ÀÌ»ó ±âºÎÀÚ #e·£´ı 3¸í¿¡°Ô 1/n#n ÇÏ¿© Áö±ŞµË´Ï´Ù.\r\n\r\n#r(´Ü, ¸Ş¼Ò°¡ °úµµÇÏ°Ô ÁıÁßµÇ´Â ¹®Á¦¸¦ ¹æÁöÇÏ±â À§ÇØ 30%ÀÇ ÃÖ´ë ±İ¾×Àº 1500¾ïÀ¸·Î Á¦ÇÑµË´Ï´Ù.)");
+                        self.say("#fs11#ê¸°ë¶€ ë­í‚¹ì€ #eë§¤ì›” 1ì¼#në§ˆë‹¤ ì•„ë˜ ê¸°ì¤€ìœ¼ë¡œ ë³´ìƒì„ ì§€ê¸‰í•©ë‹ˆë‹¤.\r\n\r\n#b1ìœ„ : 20ë§Œ ê°•ë¦¼ í¬ì¸íŠ¸ + 100ë§Œ ë©”ì´í”Œ í¬ì¸íŠ¸\r\n2ìœ„ : 15ë§Œ ê°•ë¦¼ í¬ì¸íŠ¸ + 70ë§Œ ë©”ì´í”Œ í¬ì¸íŠ¸\r\n3ìœ„~5ìœ„ : 10ë§Œ ê°•ë¦¼ í¬ì¸íŠ¸ + 50ë§Œ ë©”ì´í”Œ í¬ì¸íŠ¸\r\n6ìœ„~10ìœ„ : 5ë§Œ ê°•ë¦¼ í¬ì¸íŠ¸ + 30ë§Œ ë©”ì´í”Œ í¬ì¸íŠ¸#k\r\n\r\në§¤ì›” 1ì¼ë§ˆë‹¤ ë‰´ë¹„ ê¸°ë¶€í•¨ì— ëˆ„ì ëœ ë©”ì†Œê°€ #e1000ì–µ ë©”ì†Œ#në¥¼ ë„˜ê¸¸ ê²½ìš° #eëˆ„ì ëœ ë©”ì†Œì˜ 30%#në¥¼ ê¸°ë¶€ì— ì°¸ì—¬í•œ ìœ ì € ì¤‘ 30ì–µ ì´ìƒ ê¸°ë¶€ì #eëœë¤ 3ëª…ì—ê²Œ 1/n#n í•˜ì—¬ ì§€ê¸‰ë©ë‹ˆë‹¤.\r\n\r\n#r(ë‹¨, ë©”ì†Œê°€ ê³¼ë„í•˜ê²Œ ì§‘ì¤‘ë˜ëŠ” ë¬¸ì œë¥¼ ë°©ì§€í•˜ê¸° ìœ„í•´ 30%ì˜ ìµœëŒ€ ê¸ˆì•¡ì€ 1500ì–µìœ¼ë¡œ ì œí•œë©ë‹ˆë‹¤.)");
                         break;
                     }
                     case 2: {
-                        self.say("#fs11#ÀÚ½ÅÀÌ ±âºÎÇÑ ´©Àû ¸Ş¼Ò¸¦ ±âÁØÀ¸·Î #e10¾ï ¸Ş¼Ò#n ´ÜÀ§·Î ´©ÀûµÉ ¶§¸¶´Ù ¾Æ·¡ÀÇ ¾ÆÀÌÅÛÀ» Áö±Ş¹ŞÀ» ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#b#i4031227# #z4031227# 1°³");
+                        self.say("#fs11#ìì‹ ì´ ê¸°ë¶€í•œ ëˆ„ì  ë©”ì†Œë¥¼ ê¸°ì¤€ìœ¼ë¡œ #e10ì–µ ë©”ì†Œ#n ë‹¨ìœ„ë¡œ ëˆ„ì ë  ë•Œë§ˆë‹¤ ì•„ë˜ì˜ ì•„ì´í…œì„ ì§€ê¸‰ë°›ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#b#i4031227# #z4031227# 1ê°œ");
                         break;
                     }
                     case 3: {
-                        self.say("#fs11#½Å±Ô À¯Àú´Â #e°èÁ¤ »ı¼º ÈÄ 3ÀÏÀÌ Áö³ª±â Àü#n±îÁö\r\n±¤ÀåÀÇ #b¡®±âºÎÇÔ¡¯#k NPC¸¦ ÅëÇØ #e´ººñ Áö¿ø±İ 500¾ï ¸Ş¼Ò#n¸¦\r\n¼ö·ÉÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n#b¦¦ ´ººñ Áö¿ø±İÀ¸·Î Áö±ŞµÈ 500¾ï ¸Ş¼Ò´Â ´ººñ ±âºÎÇÔ ´©Àû ¸Ş¼Ò¿¡¼­ Â÷°¨µË´Ï´Ù.\r\n\r\n¦¦ ´ººñ Áö¿ø±İÀº 250·¹º§ ÀÌ»ó Ä³¸¯ÅÍ¸¸ ¼ö·É °¡´ÉÇÕ´Ï´Ù.\r\n\r\n¦¦ ´ººñ Áö¿ø±İÀº À¯´Ï¿Â 8,000 ÀÌ»ó °èÁ¤¸¸ ¼ö·É °¡´ÉÇÕ´Ï´Ù.\r\n");
+                        self.say("#fs11#ì‹ ê·œ ìœ ì €ëŠ” #eê³„ì • ìƒì„± í›„ 3ì¼ì´ ì§€ë‚˜ê¸° ì „#nê¹Œì§€\r\nê´‘ì¥ì˜ #bâ€˜ê¸°ë¶€í•¨â€™#k NPCë¥¼ í†µí•´ #eë‰´ë¹„ ì§€ì›ê¸ˆ 500ì–µ ë©”ì†Œ#në¥¼\r\nìˆ˜ë ¹í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n#bâ”” ë‰´ë¹„ ì§€ì›ê¸ˆìœ¼ë¡œ ì§€ê¸‰ëœ 500ì–µ ë©”ì†ŒëŠ” ë‰´ë¹„ ê¸°ë¶€í•¨ ëˆ„ì  ë©”ì†Œì—ì„œ ì°¨ê°ë©ë‹ˆë‹¤.\r\n\r\nâ”” ë‰´ë¹„ ì§€ì›ê¸ˆì€ 250ë ˆë²¨ ì´ìƒ ìºë¦­í„°ë§Œ ìˆ˜ë ¹ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n\r\nâ”” ë‰´ë¹„ ì§€ì›ê¸ˆì€ ìœ ë‹ˆì˜¨ 8,000 ì´ìƒ ê³„ì •ë§Œ ìˆ˜ë ¹ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n");
                         break;
                     }
                 }
@@ -1129,8 +1129,8 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
 
                 if (day == 1 && hours == 00 && minutes >= 00 ||
-                        day == 1 && hours == 00 && minutes < 5) { // ¸Å´Ş 1ÀÏ 00½Ã 00ºĞºÎÅÍ 00½Ã 04ºĞ±îÁö ¼ö·É ºÒ°¡
-                    self.say("·©Å· Áı°è·Î ÀÎÇÏ¿© 00½Ã 04ºĞ±îÁö ±âºÎ¿¡ Âü¿©ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        day == 1 && hours == 00 && minutes < 5) { // ë§¤ë‹¬ 1ì¼ 00ì‹œ 00ë¶„ë¶€í„° 00ì‹œ 04ë¶„ê¹Œì§€ ìˆ˜ë ¹ ë¶ˆê°€
+                    self.say("ë­í‚¹ ì§‘ê³„ë¡œ ì¸í•˜ì—¬ 00ì‹œ 04ë¶„ê¹Œì§€ ê¸°ë¶€ì— ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
 
@@ -1138,7 +1138,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 long delta = System.currentTimeMillis() - timestamp.getTime();
 
                 if (delta < (1000 * 60 * 60 * 24 * 3L)) {
-                    self.say("°èÁ¤ »ı¼º ÈÄ 3ÀÏÀÌ Áö³­ °èÁ¤¸¸ ±âºÎ¿¡ Âü¿©ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("ê³„ì • ìƒì„± í›„ 3ì¼ì´ ì§€ë‚œ ê³„ì •ë§Œ ê¸°ë¶€ì— ì°¸ì—¬í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                     return;
                 }
 
@@ -1148,29 +1148,29 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 if (entry != null) {
                     myTotalMeso = entry.getTotalMeso();
                 }
-               String v2 = "#fs12##e#b<¸Ş¼Ò ±âºÎ>#k#n#fs11#\r\n\r\n"
-                       + "¸Ş¼Ò ±âºÎ´Â #b1¾ï ¸Ş¼Ò#k ´ÜÀ§·Î °¡´ÉÇÏ¸ç,\r\n#b1¾ï ¸Ş¼Ò ´ç 100 ÄªÂù Æ÷ÀÎÆ®#k¸¦ È¹µæÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n"
-                       + "ÀÏÀÏ ÃÖ´ë ´©Àû °¡´É ÄªÂù Æ÷ÀÎÆ®´Â #r1,000,000À¸·Î Á¦ÇÑ#kµÇ¸ç, ÀÏÀÏ Á¦ÇÑ Æ÷ÀÎÆ®¸¦ ³Ñ¾î¼­ ±âºÎÇØµµ ·©Å·¿¡´Â ¹İ¿µµË´Ï´Ù.\r\n\r\n";
+               String v2 = "#fs12##e#b<ë©”ì†Œ ê¸°ë¶€>#k#n#fs11#\r\n\r\n"
+                       + "ë©”ì†Œ ê¸°ë¶€ëŠ” #b1ì–µ ë©”ì†Œ#k ë‹¨ìœ„ë¡œ ê°€ëŠ¥í•˜ë©°,\r\n#b1ì–µ ë©”ì†Œ ë‹¹ 100 ì¹­ì°¬ í¬ì¸íŠ¸#kë¥¼ íšë“í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n"
+                       + "ì¼ì¼ ìµœëŒ€ ëˆ„ì  ê°€ëŠ¥ ì¹­ì°¬ í¬ì¸íŠ¸ëŠ” #r1,000,000ìœ¼ë¡œ ì œí•œ#kë˜ë©°, ì¼ì¼ ì œí•œ í¬ì¸íŠ¸ë¥¼ ë„˜ì–´ì„œ ê¸°ë¶€í•´ë„ ë­í‚¹ì—ëŠ” ë°˜ì˜ë©ë‹ˆë‹¤.\r\n\r\n";
                 long meso = getPlayer().getMeso();
                 int d = (int) (meso / 100000000);
-                v2 += "ÇöÀç ±âºÎÇÔ ¸Ş¼Ò : " + NumberFormat.getInstance().format(totalMeso) + " ¸Ş¼Ò#n\r\n";
-                v2 += "#eÀÌ¹ø ´Ş ³ªÀÇ ±âºÎ : " + NumberFormat.getInstance().format(myTotalMeso) + " ¸Ş¼Ò#n\r\n";
-                v2 += "ÇöÀç ±âºÎ °¡´É ¸Ş¼Ò : " + NumberFormat.getInstance().format(d * 100000000L) + " ¸Ş¼Ò#n \r\n                                  #r(" + d + "È¸ °¡´É)#k\r\n\r\n";
-                v2 += "¾ó¸¶³ª ±âºÎÇÏ½Ã°Ú½À´Ï±î? #b(ÀÔ·Â ¼öÄ¡´ç = 1¾ï ¸Ş¼Ò)#k\r\n\r\n";
+                v2 += "í˜„ì¬ ê¸°ë¶€í•¨ ë©”ì†Œ : " + NumberFormat.getInstance().format(totalMeso) + " ë©”ì†Œ#n\r\n";
+                v2 += "#eì´ë²ˆ ë‹¬ ë‚˜ì˜ ê¸°ë¶€ : " + NumberFormat.getInstance().format(myTotalMeso) + " ë©”ì†Œ#n\r\n";
+                v2 += "í˜„ì¬ ê¸°ë¶€ ê°€ëŠ¥ ë©”ì†Œ : " + NumberFormat.getInstance().format(d * 100000000L) + " ë©”ì†Œ#n \r\n                                  #r(" + d + "íšŒ ê°€ëŠ¥)#k\r\n\r\n";
+                v2 += "ì–¼ë§ˆë‚˜ ê¸°ë¶€í•˜ì‹œê² ìŠµë‹ˆê¹Œ? #b(ì…ë ¥ ìˆ˜ì¹˜ë‹¹ = 1ì–µ ë©”ì†Œ)#k\r\n\r\n";
                 int v3 = self.askNumber(v2, 1, 1, d);
                 if (v3 <= 0) {
-                    self.say("±âºÎÇÒ ¼ö ÀÖ´Â ÃÖ¼Ò ¸Ş¼Ò ´ÜÀ§º¸´Ù °¡Áø ¸Ş¼Ò°¡ Àû¾î ±âºÎ¸¦ ÁøÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê¸°ë¶€í•  ìˆ˜ ìˆëŠ” ìµœì†Œ ë©”ì†Œ ë‹¨ìœ„ë³´ë‹¤ ê°€ì§„ ë©”ì†Œê°€ ì ì–´ ê¸°ë¶€ë¥¼ ì§„í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 long donationMeso = v3 * 100000000L;
                 long donationMeso2 = v3;
                 if (donationMeso > getPlayer().getMeso()) {
-                    self.say("±âºÎÇÏ·Á ½ÃµµÇÑ ¸Ş¼Òº¸´Ù °¡Áø ¸Ş¼Ò°¡ Àû¾î ±âºÎ¸¦ ÁøÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê¸°ë¶€í•˜ë ¤ ì‹œë„í•œ ë©”ì†Œë³´ë‹¤ ê°€ì§„ ë©”ì†Œê°€ ì ì–´ ê¸°ë¶€ë¥¼ ì§„í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 int max = getPlayer().getOneInfoQuestInteger(1211345, "today");
                 int p = Math.min(1000000 - max, v3 * 100);
-                if (1 == self.askYesNo("#fs11#Á¤¸» #e" + NumberFormat.getInstance().format(donationMeso) + " ¸Ş¼Ò#n¸¦ ±âºÎÇÏ½Ã°Ú½À´Ï±î?\r\n±âºÎ ½Ã #r" + NumberFormat.getInstance().format(p) + " ÄªÂù Æ÷ÀÎÆ®#k¸¦ È¹µæÇÒ ¼ö ÀÖ½À´Ï´Ù.")) {
+                if (1 == self.askYesNo("#fs11#ì •ë§ #e" + NumberFormat.getInstance().format(donationMeso) + " ë©”ì†Œ#në¥¼ ê¸°ë¶€í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\nê¸°ë¶€ ì‹œ #r" + NumberFormat.getInstance().format(p) + " ì¹­ì°¬ í¬ì¸íŠ¸#kë¥¼ íšë“í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.")) {
                     getPlayer().gainMeso(-donationMeso, true);
 
                     if (p > 0) {
@@ -1184,36 +1184,36 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
                     getPlayer().updateOneInfo(1211345, "today", String.valueOf(max + p));
 
-                    Center.Broadcast.broadcastMessage(CField.chatMsg(4, "[" + getPlayer().getName() + "]´ÔÀÌ ´ººñ ±âºÎÇÔ¿¡ '" + donationMeso2 + "¾ï ¸Ş¼Ò'¸¦ ±âºÎÇÏ¼Ì½À´Ï´Ù."));
+                    Center.Broadcast.broadcastMessage(CField.chatMsg(4, "[" + getPlayer().getName() + "]ë‹˜ì´ ë‰´ë¹„ ê¸°ë¶€í•¨ì— '" + donationMeso2 + "ì–µ ë©”ì†Œ'ë¥¼ ê¸°ë¶€í•˜ì…¨ìŠµë‹ˆë‹¤."));
 
 
                     PraiseDonationMeso.doDonationMeso(getPlayer(), getPlayer().getAccountID(), donationMeso);
-                    self.say("#fs11##e" + NumberFormat.getInstance().format(donationMeso) + " ¸Ş¼Ò#n¸¦ ±âºÎÇÏ¿©\r\n#r" + NumberFormat.getInstance().format(p) + " ÄªÂù Æ÷ÀÎÆ®¸¦ È¹µæÇÏ¿´½À´Ï´Ù.");
+                    self.say("#fs11##e" + NumberFormat.getInstance().format(donationMeso) + " ë©”ì†Œ#në¥¼ ê¸°ë¶€í•˜ì—¬\r\n#r" + NumberFormat.getInstance().format(p) + " ì¹­ì°¬ í¬ì¸íŠ¸ë¥¼ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤.");
                 }
                 break;
             }
             case 2: {
-                List<PraiseDonationMesoRankEntry> ranks = PraiseDonationMesoRank.getTopRanker(); // »óÀ§ 50¸í
-                String v2 = "#fs12##e<±âºÎ ·©Å· »óÀ§ 50>#n\r\n\r\n";
+                List<PraiseDonationMesoRankEntry> ranks = PraiseDonationMesoRank.getTopRanker(); // ìƒìœ„ 50ëª…
+                String v2 = "#fs12##e<ê¸°ë¶€ ë­í‚¹ ìƒìœ„ 50>#n\r\n\r\n";
                 int count = 1;
                 for (PraiseDonationMesoRankEntry r : ranks) {
                     if (count < 10) {
-                        v2 = v2 + "#Cgray#00#b#e" + count + "À§#n#k";
+                        v2 = v2 + "#Cgray#00#b#e" + count + "ìœ„#n#k";
                     } else if (count >= 10 && count < 100) {
-                        v2 = v2 + "#Cgray#0#b#e" + count + "À§#n#k";
+                        v2 = v2 + "#Cgray#0#b#e" + count + "ìœ„#n#k";
                     } else {
-                        v2 = v2 + "#Cgray##b#e" + count + "À§#n#k";
+                        v2 = v2 + "#Cgray##b#e" + count + "ìœ„#n#k";
                     }
-                    v2 = v2 + " " + r.getPlayerName() + " #e(¸Ş¼Ò : " + NumberFormat.getInstance().format(r.getTotalMeso()) + ")#n\r\n";
+                    v2 = v2 + " " + r.getPlayerName() + " #e(ë©”ì†Œ : " + NumberFormat.getInstance().format(r.getTotalMeso()) + ")#n\r\n";
                     count++;
                 }
                 self.say(v2);
                 break;
             }
             case 3: {
-                String v2 = "#fs11#¾î¶² º¸»óÀ» ¼ö·ÉÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
-                v2 += "#b#L0#´©Àû º¸»óÀ» ¼ö·ÉÇÏ°Ú½À´Ï´Ù.#l\r\n";
-                //v2 += "#L1#±âºÎ ·©Å· º¸»óÀ» ¼ö·ÉÇÏ°Ú½À´Ï´Ù.#l";
+                String v2 = "#fs11#ì–´ë–¤ ë³´ìƒì„ ìˆ˜ë ¹í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
+                v2 += "#b#L0#ëˆ„ì  ë³´ìƒì„ ìˆ˜ë ¹í•˜ê² ìŠµë‹ˆë‹¤.#l\r\n";
+                //v2 += "#L1#ê¸°ë¶€ ë­í‚¹ ë³´ìƒì„ ìˆ˜ë ¹í•˜ê² ìŠµë‹ˆë‹¤.#l";
                 int v3 = self.askMenu(v2);
                 switch (v3) {
                     case 0: {
@@ -1221,36 +1221,36 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 int getCount      = getPlayer().getOneInfoQuestInteger(1211345, "get_reward");
                 int count         = (int)(totalMeso / 1_000_000_000L);
                 int remainCount   = count - getCount;
-                String v4 = "#fs11##e<´©Àû º¸»ó ¼ö·É>#n\r\n#eÃÑ ´©Àû ¸Ş¼Ò : "
+                String v4 = "#fs11##e<ëˆ„ì  ë³´ìƒ ìˆ˜ë ¹>#n\r\n#eì´ ëˆ„ì  ë©”ì†Œ : "
               + NumberFormat.getInstance().format(totalMeso) + "\r\n";
-                v4 += "¼ö·É °¡´É º¸»ó È½¼ö : " + remainCount + " È¸\r\n\r\n"
-        + "#b#n´©Àû ¸Ş¼Ò 10¾ï ´ç 1È¸#k º¸»ó ¼ö·É °¡´ÉÇÕ´Ï´Ù.\r\n\r\n";
-            v4 += remainCount + "È¸¸¦ ¸ğµÎ »ç¿ëÇÏ¿© ¾Æ·¡ÀÇ ¾ÆÀÌÅÛÀ» È¹µæÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n";
+                v4 += "ìˆ˜ë ¹ ê°€ëŠ¥ ë³´ìƒ íšŸìˆ˜ : " + remainCount + " íšŒ\r\n\r\n"
+        + "#b#nëˆ„ì  ë©”ì†Œ 10ì–µ ë‹¹ 1íšŒ#k ë³´ìƒ ìˆ˜ë ¹ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n\r\n";
+            v4 += remainCount + "íšŒë¥¼ ëª¨ë‘ ì‚¬ìš©í•˜ì—¬ ì•„ë˜ì˜ ì•„ì´í…œì„ íšë“í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n";
             v4 += "#b#i4031227# #z4031227# x" + remainCount;
             if (1 == self.askYesNo(v4)) {
                 if (remainCount <= 0) {
-                    self.say("¼ö·É °¡´É È½¼ö°¡ ºÎÁ·ÇÏ¿© º¸»óÀ» ¼ö·ÉÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ìˆ˜ë ¹ ê°€ëŠ¥ íšŸìˆ˜ê°€ ë¶€ì¡±í•˜ì—¬ ë³´ìƒì„ ìˆ˜ë ¹í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 if (target.exchange(4031227, remainCount) > 0) {
-                    self.say("´©Àû º¸»ó ¼ö·ÉÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                    self.say("ëˆ„ì  ë³´ìƒ ìˆ˜ë ¹ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                     getPlayer().updateOneInfo(1211345, "get_reward",
                         String.valueOf(getCount + remainCount));
                 } else {
-                    self.say("#bÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                    self.say("#bì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                 }
             }
                         break;
                     }
                     case 1: {
-                        // TODO: ·©Å· º¸»ó ¼ö·É, 1ÀÏ ·©Å· Á¤»ê, 1000¾ï ³ÑÀ» ½Ã 30¾ï ÀÌ»ó ±âºÎ Âü¿©ÇÑ 3¸í ÃßÃ· 1/n ¼ö·É ±¸Çö
+                        // TODO: ë­í‚¹ ë³´ìƒ ìˆ˜ë ¹, 1ì¼ ë­í‚¹ ì •ì‚°, 1000ì–µ ë„˜ì„ ì‹œ 30ì–µ ì´ìƒ ê¸°ë¶€ ì°¸ì—¬í•œ 3ëª… ì¶”ì²¨ 1/n ìˆ˜ë ¹ êµ¬í˜„
                         int rank = getPlayer().getOneInfoQuestInteger(1234599, "praise_reward");
                         int get = getPlayer().getOneInfoQuestInteger(1234599, "praise_reward_get");
                         long meso = getPlayer().getOneInfoQuestLong(1234599, "praise_reward2");
                         int get2 = getPlayer().getOneInfoQuestInteger(1234599, "praise_reward2_get");
 
                         if ((rank > 10 || get > 0) && (meso <= 0 || get2 > 0)) {
-                            self.say("±âºÎ ·©Å· º¸»ó ¼ö·É °¡´É ´ë»óÀÚ°¡ ¾Æ´Õ´Ï´Ù.");
+                            self.say("ê¸°ë¶€ ë­í‚¹ ë³´ìƒ ìˆ˜ë ¹ ê°€ëŠ¥ ëŒ€ìƒìê°€ ì•„ë‹™ë‹ˆë‹¤.");
                             return;
                         }
                         NumberFormat nf = NumberFormat.getInstance();
@@ -1259,7 +1259,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             getPlayer().updateOneInfo(1234599, "praise_reward2", "0");
                             getPlayer().updateOneInfo(1234599, "praise_reward2_get", "1");
 
-                            getPlayer().dropMessage(5, nf.format(meso) + "¸Ş¼Ò¸¦ Áö±Ş¹Ş¾Ò½À´Ï´Ù.");
+                            getPlayer().dropMessage(5, nf.format(meso) + "ë©”ì†Œë¥¼ ì§€ê¸‰ë°›ì•˜ìŠµë‹ˆë‹¤.");
                         }
                         if (rank > 0 && get == 0) {
                             int realPoint = 0;
@@ -1283,9 +1283,9 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             getPlayer().updateOneInfo(1234599, "praise_reward", "0");
                             getPlayer().updateOneInfo(1234599, "praise_reward_get", "1");
                             
-                            getPlayer().dropMessage(5, nf.format(realPoint) + " °­¸² Æ÷ÀÎÆ®¿Í " + nf.format(maplePoint) + " ¸ŞÀÌÇÃ Æ÷ÀÎÆ®¸¦ Áö±Ş¹Ş¾Ò½À´Ï´Ù.");
+                            getPlayer().dropMessage(5, nf.format(realPoint) + " ê°•ë¦¼ í¬ì¸íŠ¸ì™€ " + nf.format(maplePoint) + " ë©”ì´í”Œ í¬ì¸íŠ¸ë¥¼ ì§€ê¸‰ë°›ì•˜ìŠµë‹ˆë‹¤.");
                         }
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                         break;
                     }
                 }
@@ -1296,7 +1296,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 long delta = System.currentTimeMillis() - timestamp.getTime();
 
                 if (delta >= (1000 * 60 * 60 * 24 * 3L)) {
-                    self.say("°èÁ¤ »ı¼º ÈÄ 3ÀÏ ÀÌÀü±îÁö¸¸ ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("ê³„ì • ìƒì„± í›„ 3ì¼ ì´ì „ê¹Œì§€ë§Œ ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                     return;
                 }
 
@@ -1315,52 +1315,52 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
 
                 if (day == 1 && hours == 00 && minutes >= 00 ||
-                        day == 1 && hours == 00 && minutes < 5) { // ¸Å´Ş 1ÀÏ 00½Ã 00ºĞºÎÅÍ 00½Ã 04ºĞ±îÁö ¼ö·É ºÒ°¡
-                    self.say("·©Å· Áı°è·Î ÀÎÇÏ¿© 00½Ã 04ºĞ±îÁö ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        day == 1 && hours == 00 && minutes < 5) { // ë§¤ë‹¬ 1ì¼ 00ì‹œ 00ë¶„ë¶€í„° 00ì‹œ 04ë¶„ê¹Œì§€ ìˆ˜ë ¹ ë¶ˆê°€
+                    self.say("ë­í‚¹ ì§‘ê³„ë¡œ ì¸í•˜ì—¬ 00ì‹œ 04ë¶„ê¹Œì§€ ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
 
                 if (getPlayer().getLevel() < 250) {
-                    self.say("250·¹º§ ¹Ì¸¸ Ä³¸¯ÅÍ´Â ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("250ë ˆë²¨ ë¯¸ë§Œ ìºë¦­í„°ëŠ” ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
 
                 if (getPlayer().getUnionLevel() < 8000) {
-                    self.say("À¯´Ï¿Â ·¹º§ 8000 ÀÌ»óÀÌ¾î¾ß ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("ìœ ë‹ˆì˜¨ ë ˆë²¨ 8000 ì´ìƒì´ì–´ì•¼ ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                     return;
                 }
 
                 if (getPlayer().getOneInfoQuestInteger(1211345, "get_meso") > 0) {
-                    self.say("±İÀÏ¿¡ ÀÌ¹Ì ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÏ¿´½À´Ï´Ù.");
+                    self.say("ê¸ˆì¼ì— ì´ë¯¸ ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•˜ì˜€ìŠµë‹ˆë‹¤.");
                     return;
                 }
 
                 long remainMeso = PraiseDonationMeso.getTotalMeso();
                 long remainMeso2 = PraiseDonationMeso.getTotalMeso() - 500_0000_0000L;
                 if (remainMeso < 500_0000_0000L) {
-                    self.say("±âºÎÇÔ¿¡ ³²Àº ¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© ´ººñ Áö¿ø±İÀ» ¼ö·ÉÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê¸°ë¶€í•¨ì— ë‚¨ì€ ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ ë‰´ë¹„ ì§€ì›ê¸ˆì„ ìˆ˜ë ¹í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
 
             PraiseDonationMeso.addTotalMeso(-500_0000_0000L);
              getPlayer().gainMeso(500_0000_0000L, true);
                 getPlayer().updateOneInfo(1211345, "get_meso", "1");
-                Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]´ÔÀÌ ´ººñ Áö¿ø±İ '500¾ï ¸Ş¼Ò'¸¦ È¹µæÇÏ¼Ì½À´Ï´Ù!"));
+                Center.Broadcast.broadcastMessage(CField.chatMsg(5, "[" + getPlayer().getName() + "]ë‹˜ì´ ë‰´ë¹„ ì§€ì›ê¸ˆ '500ì–µ ë©”ì†Œ'ë¥¼ íšë“í•˜ì…¨ìŠµë‹ˆë‹¤!"));
 
-                self.say("#fs11#´ººñ Áö¿ø±İ #e#b500¾ï ¸Ş¼Ò#k#n¸¦ ¼ö·ÉÇÏ¿´½À´Ï´Ù.\r\n\r\n#e±âºÎÇÔ ³²Àº ¸Ş¼Ò : " + NumberFormat.getInstance().format(remainMeso2));
+                self.say("#fs11#ë‰´ë¹„ ì§€ì›ê¸ˆ #e#b500ì–µ ë©”ì†Œ#k#në¥¼ ìˆ˜ë ¹í•˜ì˜€ìŠµë‹ˆë‹¤.\r\n\r\n#eê¸°ë¶€í•¨ ë‚¨ì€ ë©”ì†Œ : " + NumberFormat.getInstance().format(remainMeso2));
                 break;
             }
-                case 5: { // ÄªÂù »óÁ¡
+                case 5: { // ì¹­ì°¬ ìƒì 
                     int praise = getPlayer().getPraisePoint().getPoint();
                     StringBuilder menu = new StringBuilder();
-                    menu.append("#fs14##e¡ì ÄªÂù Æ÷ÀÎÆ® »óÁ¡ ¡í#n\r\n\r\n")
-                        .append("#fs12#³» ÄªÂù Æ÷ÀÎÆ®: #b")
+                    menu.append("#fs14##eâ‰ª ì¹­ì°¬ í¬ì¸íŠ¸ ìƒì  â‰«#n\r\n\r\n")
+                        .append("#fs12#ë‚´ ì¹­ì°¬ í¬ì¸íŠ¸: #b")
                         .append(NumberFormat.getInstance().format(praise))
                         .append("P #k\r\n")
-                        .append("#fs11#¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡\r\n");
+                        .append("#fs11#â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\r\n");
 
-                    int[] itemIDs = {4036660, 4036661, 5068306};   // ¿¹½Ã ¾ÆÀÌÅÛ
-                    int[] prices  = {100000, 500000, 1000000};   // ÄªÂù Æ÷ÀÎÆ® ´ÜÀ§
+                    int[] itemIDs = {4036660, 4036661, 5068306};   // ì˜ˆì‹œ ì•„ì´í…œ
+                    int[] prices  = {100000, 500000, 1000000};   // ì¹­ì°¬ í¬ì¸íŠ¸ ë‹¨ìœ„
 
                     for (int i = 0; i < itemIDs.length; i++) {
                         menu.append("#fs11##L").append(i).append("#")
@@ -1368,32 +1368,32 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             .append("#z").append(itemIDs[i]).append("#    ")
                             .append("#fs11##b")
                             .append(NumberFormat.getInstance().format(prices[i]))
-                            .append(" Æ÷ÀÎÆ®#k#l\r\n");
+                            .append(" í¬ì¸íŠ¸#k#l\r\n");
                     }
 
-                    menu.append("#fs11#\r\n¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡\r\n")
-                        .append("#fs11#±¸¸ÅÇÒ »óÇ°À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
+                    menu.append("#fs11#\r\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\r\n")
+                        .append("#fs11#êµ¬ë§¤í•  ìƒí’ˆì„ ì„ íƒí•´ ì£¼ì„¸ìš”.");
 
                     int sel = self.askMenu(menu.toString());
                     int cost = prices[sel], item = itemIDs[sel];
 
                     if (praise < cost) {
-                        self.say("#fs12#ÄªÂù Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+                        self.say("#fs12#ì¹­ì°¬ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                         break;
                     }
 
                     String confirm = new StringBuilder()
-                        .append("#fs12#Á¤¸» #b")
+                        .append("#fs12#ì •ë§ #b")
                         .append(NumberFormat.getInstance().format(cost))
-                        .append("#k Æ÷ÀÎÆ®¸¦ »ç¿ëÇÏ¿©\r\n")
+                        .append("#k í¬ì¸íŠ¸ë¥¼ ì‚¬ìš©í•˜ì—¬\r\n")
                         .append("#fs12##i").append(item)
                         .append("# #z").append(item)
                         .append("##n\r\n")
-                        .append("#fs12#À»(¸¦) ±¸¸ÅÇÏ½Ã°Ú½À´Ï±î?")
+                        .append("#fs12#ì„(ë¥¼) êµ¬ë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")
                         .toString();
 
                     if (self.askYesNo(confirm) == 1) {
-                        // Æ÷ÀÎÆ® Â÷°¨
+                        // í¬ì¸íŠ¸ ì°¨ê°
                         PraisePoint pt = getPlayer().getPraisePoint();
                         pt.setPoint(pt.getPoint() - cost);
                         pt.setTotalPoint(pt.getTotalPoint() - cost);
@@ -1401,11 +1401,11 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                         getPlayer().setSaveFlag(
                             getPlayer().getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag()
                         );
-                        // ¾ÆÀÌÅÛ Áö±Ş
+                        // ì•„ì´í…œ ì§€ê¸‰
                         if (target.exchange(item, 1) > 0) {
-                            self.say("#fs12#±¸¸Å°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù!");
+                            self.say("#fs12#êµ¬ë§¤ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!");
                         } else {
-                            self.say("#fs12#ÀÎº¥Åä¸®¿¡ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+                            self.say("#fs12#ì¸ë²¤í† ë¦¬ì— ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                         }
                     }
                     break;
@@ -1414,19 +1414,19 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     }
 
     public void buyStone(long price, int count, int type, int rate) {
-        String payType = "°­¸² Æ÷ÀÎÆ®";
+        String payType = "ê°•ë¦¼ í¬ì¸íŠ¸";
         long getPrice = getPlayer().getRealCash();
         if (type == 1) {
-            payType = "È«º¸ Æ÷ÀÎÆ®";
+            payType = "í™ë³´ í¬ì¸íŠ¸";
             getPrice = getPlayer().getHongboPoint();
         } else if (type == 2) {
-            payType = "¸Ş¼Ò";
+            payType = "ë©”ì†Œ";
             getPrice = getPlayer().getMeso();
         } else if (type == 3) {
-            payType = "°­¸² Ä³½Ã";
+            payType = "ê°•ë¦¼ ìºì‹œ";
             getPrice = getPlayer().getCashPoint();
         } else if (type == 4) {
-            payType = "Âù¶õÇÑ ºûÀÇ °áÁ¤";
+            payType = "ì°¬ë€í•œ ë¹›ì˜ ê²°ì •";
             getPrice = getPlayer().getItemQuantity(4031227, false);
         }
 
@@ -1436,36 +1436,36 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v0 += "#fs11#";
         }
-        v0 += "#b" + nf.format(price) + " " + payType + "#k¸¦ »ç¿ëÇÏ¿© °¢ÀÎ¼®À» ²¨³»°Ú¾î?\r\n¾î¶² °¢ÀÎ¼®ÀÌ ²¨³»ÁúÁö´Â ²¨³»ºÁ¾ß ¾Ë¾Æ.\r\n\r\n#eº¸À¯ ÁßÀÎ " + payType + " : " + NumberFormat.getInstance().format(getPrice);
+        v0 += "#b" + nf.format(price) + " " + payType + "#kë¥¼ ì‚¬ìš©í•˜ì—¬ ê°ì¸ì„ì„ êº¼ë‚´ê² ì–´?\r\nì–´ë–¤ ê°ì¸ì„ì´ êº¼ë‚´ì§ˆì§€ëŠ” êº¼ë‚´ë´ì•¼ ì•Œì•„.\r\n\r\n#eë³´ìœ  ì¤‘ì¸ " + payType + " : " + NumberFormat.getInstance().format(getPrice);
         if (1 == self.askYesNo(v0)) {
             if (type == 0) {
                 if (getPlayer().getRealCash() < price) {
-                    self.say(payType + "°¡ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say(payType + "ê°€ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             } else if (type == 1) {
                 if (getPlayer().getHongboPoint() < price) {
-                    self.say(payType + "°¡ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say(payType + "ê°€ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             } else if (type == 2) {
                 if (getPlayer().getMeso() < price) {
-                    self.say(payType + "°¡ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say(payType + "ê°€ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             } else if (type == 3) {
                 if (getPlayer().getCashPoint() < price) {
-                    self.say("#fs11#" + payType + "°¡ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say("#fs11#" + payType + "ê°€ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             } else if (type == 4) {
                 if (getPlayer().getItemQuantity(4031227, false) < price) {
-                    self.say("#fs11#" + payType + "ÀÌ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say("#fs11#" + payType + "ì´ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             }
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < count) {
-                self.say("#b¼Òºñ ÀÎº¥Åä¸®#k ½½·ÔÀ» " + count + "Ä­ ÀÌ»ó È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁà.");
+                self.say("#bì†Œë¹„ ì¸ë²¤í† ë¦¬#k ìŠ¬ë¡¯ì„ " + count + "ì¹¸ ì´ìƒ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì¤˜.");
                 return;
             }
             if (type == 0) {
@@ -1478,7 +1478,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 getPlayer().gainCashPoint((int) -price);
             } else if (type == 4) {
                 if (target.exchange(4031227, (int)-price) < 0) {
-                    self.say("#fs11# " + payType + "ÀÌ ºÎÁ·ÇÑ °Å °°Àºµ¥? ¾Æ¹«¸® ³Ê¶óµµ °í¿ëºñ´Â È®½ÇÇØ¾ß ÇÏ´Â ¹ıÀÌÁö.");
+                    self.say("#fs11# " + payType + "ì´ ë¶€ì¡±í•œ ê±° ê°™ì€ë°? ì•„ë¬´ë¦¬ ë„ˆë¼ë„ ê³ ìš©ë¹„ëŠ” í™•ì‹¤í•´ì•¼ í•˜ëŠ” ë²•ì´ì§€.");
                     return;
                 }
             }
@@ -1501,7 +1501,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             String list2 = "";
             if (l1 > 0) {
                 list += "#i2432127# #z2432127# x" + l1;
-                list2 += "2432127 " + l1 + "°³";
+                list2 += "2432127 " + l1 + "ê°œ";
             }
             if (l2 > 0) {
                 if (l1 > 0) {
@@ -1509,24 +1509,24 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                     list2 += "\r\n";
                 }
                 list += "#i2432126# #z2432126# x" + l2;
-                list2 += "2432126 " + l2 + "°³";
+                list2 += "2432126 " + l2 + "ê°œ";
             }
 
-            StringBuilder sb = new StringBuilder("°¢ÀÎ¼® »Ì±â °á°ú (»ÌÀº ¾ÆÀÌÅÛ : " + list + ", »ç¿ëÀçÈ­ : " + payType + ", »ç¿ëÀÚ : " + getPlayer().getName() + ")");
+            StringBuilder sb = new StringBuilder("ê°ì¸ì„ ë½‘ê¸° ê²°ê³¼ (ë½‘ì€ ì•„ì´í…œ : " + list + ", ì‚¬ìš©ì¬í™” : " + payType + ", ì‚¬ìš©ì : " + getPlayer().getName() + ")");
             LoggingManager.putLog(new ConsumeLog(getPlayer(), 1, sb));
 
-            //objects.utils.FileoutputUtil.log("./TextLog/BuyStoneCraft.txt", "°¢ÀÎ¼® »Ì±â (¾ÆÀÌÅÛID : " + itemID + ", ÁöºÒ ¹æ½Ä : ÈÄ¿ø, »ç¿ëÀÚ : " + getPlayer().getName() + ")\r\n");
+            //objects.utils.FileoutputUtil.log("./TextLog/BuyStoneCraft.txt", "ê°ì¸ì„ ë½‘ê¸° (ì•„ì´í…œID : " + itemID + ", ì§€ë¶ˆ ë°©ì‹ : í›„ì›, ì‚¬ìš©ì : " + getPlayer().getName() + ")\r\n");
             String v7 = "";
             if (DBConfig.isGanglim) {
                 v7 += "#fs11#";
             }
-            v7 += "#b" + list + "#k\r\n²¨³»¿Â °¢ÀÎ¼®µéÀÌ¾ß.\r\n\r\nÇÑ ¹ø ´õ °¡Áö°í ¿Ã±î?\r\n¿øÇÑ´Ù¸é 10°³¾¿ °¡Áö°í ¿Ã ¼öµµ ÀÖ¾î.\r\n\r\n#b#L0#";
+            v7 += "#b" + list + "#k\r\nêº¼ë‚´ì˜¨ ê°ì¸ì„ë“¤ì´ì•¼.\r\n\r\ní•œ ë²ˆ ë” ê°€ì§€ê³  ì˜¬ê¹Œ?\r\nì›í•œë‹¤ë©´ 10ê°œì”© ê°€ì§€ê³  ì˜¬ ìˆ˜ë„ ìˆì–´.\r\n\r\n#b#L0#";
             if (type == 2) {
-                v7 += "1,500,000,000¸Ş¼Ò¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 1°³ È¹µæÇÕ´Ï´Ù.#l\r\n#L1#15,000,000,000¸Ş¼Ò¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 10°³ È¹µæÇÕ´Ï´Ù.#l";
+                v7 += "1,500,000,000ë©”ì†Œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 1ê°œ íšë“í•©ë‹ˆë‹¤.#l\r\n#L1#15,000,000,000ë©”ì†Œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 10ê°œ íšë“í•©ë‹ˆë‹¤.#l";
             } else if (type == 0 || type == 1 || type == 3) {
-                v7 += "3,000 " + payType + "¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 1°³ È¹µæÇÕ´Ï´Ù.#l\r\n#L1#30,000 " + payType + "¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 10°³ È¹µæÇÕ´Ï´Ù.#l";
+                v7 += "3,000 " + payType + "ë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 1ê°œ íšë“í•©ë‹ˆë‹¤.#l\r\n#L1#30,000 " + payType + "ë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 10ê°œ íšë“í•©ë‹ˆë‹¤.#l";
             } else {
-                v7 += payType + " 600°³¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 1°³ È¹µæÇÕ´Ï´Ù.#l\r\n#L1#" + payType + " 6000°³¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» 10°³ È¹µæÇÕ´Ï´Ù.#l";
+                v7 += payType + " 600ê°œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 1ê°œ íšë“í•©ë‹ˆë‹¤.#l\r\n#L1#" + payType + " 6000ê°œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ 10ê°œ íšë“í•©ë‹ˆë‹¤.#l";
             }
             
             int v6 = self.askMenu(v7);
@@ -1536,13 +1536,13 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             }
  long p;
  if (type == 2) {
-     // ¸Ş¼Ò
+     // ë©”ì†Œ
      p = 1500000000L * c;
  } else if (type == 4) {
-     // Âù¶õÇÑ ºûÀÇ °áÁ¤
+     // ì°¬ë€í•œ ë¹›ì˜ ê²°ì •
      p = 600L * c;
  } else {
-     // È«º¸ Æ÷ÀÎÆ®, °­¸² Ä³½Ã
+     // í™ë³´ í¬ì¸íŠ¸, ê°•ë¦¼ ìºì‹œ
      p = 3000L * c;
  }
             buyStone(p, c, type, rate);
@@ -1553,7 +1553,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     public void spinOff_UIOpen() {
         initNPC(MapleLifeFactory.getNPC(1530021));
         String v0 = "";
-        if (DBConfig.isGanglim) { // °¢ÀÎ¼®ÆÇÀÌ ¾øÀ»°æ¿ì 1È¸ Áö±Ş
+        if (DBConfig.isGanglim) { // ê°ì¸ì„íŒì´ ì—†ì„ê²½ìš° 1íšŒ ì§€ê¸‰
             if (getPlayer().getItemQuantity(2432128, false) < 1) {
                 getPlayer().gainItem(2432128, 1);
             }
@@ -1561,7 +1561,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v0 += "#fs11#";
         }
-        v0 += "#h0#! ¿À·£¸¸ÀÌ¾ß!\r\n½º½Â´Ô²²¼­ °ËÀº ¸¶¹ı»ç°¡ ³²±ä ±â·ÏÀ» ¿¬±¸ÇÏ½Ã´Ù°¡ ÀÌ»óÇÑ µ¹À» ¹ß°ßÇÏ¼Ì¾î.\r\n\r\n#b#i2432126# #z2432126#\r\n #i2432127#  #z2432127##k\n\r\n\r\nÀÌ°Ô ¹Ù·Î ±× µ¹ÀÌ¾ß.";
+        v0 += "#h0#! ì˜¤ëœë§Œì´ì•¼!\r\nìŠ¤ìŠ¹ë‹˜ê»˜ì„œ ê²€ì€ ë§ˆë²•ì‚¬ê°€ ë‚¨ê¸´ ê¸°ë¡ì„ ì—°êµ¬í•˜ì‹œë‹¤ê°€ ì´ìƒí•œ ëŒì„ ë°œê²¬í•˜ì…¨ì–´.\r\n\r\n#b#i2432126# #z2432126#\r\n #i2432127#  #z2432127##k\n\r\n\r\nì´ê²Œ ë°”ë¡œ ê·¸ ëŒì´ì•¼.";
 
         self.say(v0);
 
@@ -1569,8 +1569,8 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v1 += "#fs11#";
         }
-        v1 += "½º½Â´Ô²²¼­´Â #b¡°°ÑÀ¸·Î´Â Æò¹üÇØ º¸ÀÌ´Â µ¹ÀÌÁö¸¸ ¹Ì¾àÇÏ°Ô °ËÀº ¸¶¹ı»çÀÇ ±â¿îÀÌ ´À²¸Áø´Ù. ºÒ¾ÈÁ¤ÇÑ ±â¿îÀ» ´ÙµëÀ¸¸é ÈûÀÇ ÀÏºÎ¸¦ »ç¿ëÇÒ ¼ö ÀÖÀ»Áöµµ ¸ğ¸¥´Ù. ÇÏÁö¸¸¡¦¡¦¡±#k ÀÌ·¸°Ô Áß¾ó°Å¸®½Ã´õ´Ï °©ÀÚ±â ¾îµğ·Ğ°¡ »ç¶óÁö¼Ì¾î.\r\n\r\n¾î¶§? °ü½É ÀÖ¾î? (¸»ÇÏ°í ½Í¾î ÇÏ´Â ´«Ä¡´Ù. ÇÑ ¹ø µé¾î º¸±â·Î ÇÒ±î.)\r\n\r\n";
-        v1 += "#b#L0#°ËÀº ¸¶¹ı»ç°¡ ³²±ä µ¹?#l\r\n#L1#°¢ÀÎ ¼®ÆÇÀ» È®ÀÎÇÏ°í ½Í¾î.#l\r\n#L2#Æ÷ÀÎÆ®¸¦ »ç¿ëÇÏ¿© °¢ÀÎ¼®À» »Ì°í ½Í¾î.#l\r\n#L3#Æ÷ÀÎÆ®¸¦ »ç¿ëÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÏ°í ½Í¾î.#l";
+        v1 += "ìŠ¤ìŠ¹ë‹˜ê»˜ì„œëŠ” #bâ€œê²‰ìœ¼ë¡œëŠ” í‰ë²”í•´ ë³´ì´ëŠ” ëŒì´ì§€ë§Œ ë¯¸ì•½í•˜ê²Œ ê²€ì€ ë§ˆë²•ì‚¬ì˜ ê¸°ìš´ì´ ëŠê»´ì§„ë‹¤. ë¶ˆì•ˆì •í•œ ê¸°ìš´ì„ ë‹¤ë“¬ìœ¼ë©´ í˜ì˜ ì¼ë¶€ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆì„ì§€ë„ ëª¨ë¥¸ë‹¤. í•˜ì§€ë§Œâ€¦â€¦â€#k ì´ë ‡ê²Œ ì¤‘ì–¼ê±°ë¦¬ì‹œë”ë‹ˆ ê°‘ìê¸° ì–´ë””ë¡ ê°€ ì‚¬ë¼ì§€ì…¨ì–´.\r\n\r\nì–´ë•Œ? ê´€ì‹¬ ìˆì–´? (ë§í•˜ê³  ì‹¶ì–´ í•˜ëŠ” ëˆˆì¹˜ë‹¤. í•œ ë²ˆ ë“¤ì–´ ë³´ê¸°ë¡œ í• ê¹Œ.)\r\n\r\n";
+        v1 += "#b#L0#ê²€ì€ ë§ˆë²•ì‚¬ê°€ ë‚¨ê¸´ ëŒ?#l\r\n#L1#ê°ì¸ ì„íŒì„ í™•ì¸í•˜ê³  ì‹¶ì–´.#l\r\n#L2#í¬ì¸íŠ¸ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°ì¸ì„ì„ ë½‘ê³  ì‹¶ì–´.#l\r\n#L3#í¬ì¸íŠ¸ë¥¼ ì‚¬ìš©í•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•˜ê³  ì‹¶ì–´.#l";
         int v2 = self.askMenu(v1);
         switch (v2) {
             case 0: {
@@ -1578,23 +1578,23 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "½º½Â´Ô²²¼­´Â ÀÌ µ¹À» °¢ÀÎ¼®ÀÌ¶ó°í ºÎ¸£¼Ì¾î.\r\n\r\n#b(¿¤À©Àº µé°í ÀÖ´Â ¼®ÆÇ¿¡ ½×ÀÎ ¸ÕÁö¸¦ ÅĞ¾î³»´õ´Ï ³»°Ô °Ç³Ş´Ù. °¢ÀÎ¼® ÇÏ³ª°¡ °Ü¿ì µé¾î°¥ Å©±âÀÇ È¨ÀÌ ¼®ÆÇÀÇ ±ºµ¥±ºµ¥ ÆÄ¿© ÀÖ´Ù.)#k\r\n\r\nÀÌ µ¹ÀÇ ºÒ¾ÈÁ¤ÇÑ ±â¿îÀ» ´Ùµë´Â ÀÛ¾÷À» ¼¼°øÀÌ¶ó°í ÇÏ´Âµ¥, ¼¼°øÀ» ¸¶Ä£ °¢ÀÎ¼®À» ¼®ÆÇÀÇ È¨¿¡ ³¢¿ì¸é µ¹¿¡ ³²¾Æ ÀÖ´Â ÈûÀÇ ÀÏºÎ¸¦ »ç¿ëÇÒ ¼ö ÀÖÀ» °Å¾ß. ³ªµµ ½º½Â´Ô²²¼­ ÇÏ½Ã´Â ¸»¾¸À» µè±â¸¸ ÇÑ °Å¶ó¼­ Á¤È®ÇÏ°Ô´Â ¸ğ¸£Áö¸¸¡¦¡¦.\r\n\r\n";
-                v3 += "#b#L0#¾îµğ¼­ ¾òÀ» ¼ö ÀÖÁö?#l\r\n#L1#¼¼°øÇÏ´Â ¹æ¹ıÀº?#l";
+                v3 += "ìŠ¤ìŠ¹ë‹˜ê»˜ì„œëŠ” ì´ ëŒì„ ê°ì¸ì„ì´ë¼ê³  ë¶€ë¥´ì…¨ì–´.\r\n\r\n#b(ì—˜ìœˆì€ ë“¤ê³  ìˆëŠ” ì„íŒì— ìŒ“ì¸ ë¨¼ì§€ë¥¼ í„¸ì–´ë‚´ë”ë‹ˆ ë‚´ê²Œ ê±´ë„¸ë‹¤. ê°ì¸ì„ í•˜ë‚˜ê°€ ê²¨ìš° ë“¤ì–´ê°ˆ í¬ê¸°ì˜ í™ˆì´ ì„íŒì˜ êµ°ë°êµ°ë° íŒŒì—¬ ìˆë‹¤.)#k\r\n\r\nì´ ëŒì˜ ë¶ˆì•ˆì •í•œ ê¸°ìš´ì„ ë‹¤ë“¬ëŠ” ì‘ì—…ì„ ì„¸ê³µì´ë¼ê³  í•˜ëŠ”ë°, ì„¸ê³µì„ ë§ˆì¹œ ê°ì¸ì„ì„ ì„íŒì˜ í™ˆì— ë¼ìš°ë©´ ëŒì— ë‚¨ì•„ ìˆëŠ” í˜ì˜ ì¼ë¶€ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆì„ ê±°ì•¼. ë‚˜ë„ ìŠ¤ìŠ¹ë‹˜ê»˜ì„œ í•˜ì‹œëŠ” ë§ì”€ì„ ë“£ê¸°ë§Œ í•œ ê±°ë¼ì„œ ì •í™•í•˜ê²ŒëŠ” ëª¨ë¥´ì§€ë§Œâ€¦â€¦.\r\n\r\n";
+                v3 += "#b#L0#ì–´ë””ì„œ ì–»ì„ ìˆ˜ ìˆì§€?#l\r\n#L1#ì„¸ê³µí•˜ëŠ” ë°©ë²•ì€?#l";
                 int v4 = self.askMenu(v3);
                 switch (v4) {
                     case 0: {
                         String v5 = "";
                         if (DBConfig.isGanglim) {
-                            v5 = "#fs11#°¢ÀÎ¼®Àº °ËÀº ¸¶¹ı»çÀÇ ÁöÇÏ ¼­°í¿¡ ÀÖ´Â º¸°üÇÔ¿¡ µé¾î ÀÖ¾î.\r\n°á°è ¶§¹®¿¡ ½º½Â´ÔÀÌ³ª ³»°¡ ¾øÀ¸¸é ²¨³¾ ¼ö ¾øÀ¸´Ï±î ÇÊ¿äÇÏ¸é ³ªÇÑÅ× ¸»ÇØ.\r\n\r\n#h0# ³Ê¶ó°í ÇØµµ, °á°è ¸¶¹ı»ç °í¿ëºñ´Â Á¦´ë·Î ¹ŞÀ» °Å¾ß.\r\nº¸°üÇÔ¿¡¼­ ¾î¶² °¢ÀÎ¼®ÀÌ ²¨³»ÁúÁö´Â ³ªµµ ¸ô¶ó. ¾î¶² °Ô ³ª¿À´õ¶óµµ °í¿ëºñ´Â ¶È°°À¸´Ï±î ¾Ë¾ÆµÖ.\r\n\r\n";
-                            v5 += "#e°­¸² Ä³½Ã : 3,000 Ä³½Ã\r\n#b[Á¤¹ĞÇÑ °¢ÀÎ¼® 80%, Æò¹üÇÑ °¢ÀÎ¼® 20%]#k\r\nÂù¶õÇÑ ºûÀÇ °áÁ¤ : 500 °³\r\n#b[Á¤¹ĞÇÑ °¢ÀÎ¼® 10%, Æò¹üÇÑ °¢ÀÎ¼® 90%]#k#k";
+                            v5 = "#fs11#ê°ì¸ì„ì€ ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì§€í•˜ ì„œê³ ì— ìˆëŠ” ë³´ê´€í•¨ì— ë“¤ì–´ ìˆì–´.\r\nê²°ê³„ ë•Œë¬¸ì— ìŠ¤ìŠ¹ë‹˜ì´ë‚˜ ë‚´ê°€ ì—†ìœ¼ë©´ êº¼ë‚¼ ìˆ˜ ì—†ìœ¼ë‹ˆê¹Œ í•„ìš”í•˜ë©´ ë‚˜í•œí…Œ ë§í•´.\r\n\r\n#h0# ë„ˆë¼ê³  í•´ë„, ê²°ê³„ ë§ˆë²•ì‚¬ ê³ ìš©ë¹„ëŠ” ì œëŒ€ë¡œ ë°›ì„ ê±°ì•¼.\r\në³´ê´€í•¨ì—ì„œ ì–´ë–¤ ê°ì¸ì„ì´ êº¼ë‚´ì§ˆì§€ëŠ” ë‚˜ë„ ëª°ë¼. ì–´ë–¤ ê²Œ ë‚˜ì˜¤ë”ë¼ë„ ê³ ìš©ë¹„ëŠ” ë˜‘ê°™ìœ¼ë‹ˆê¹Œ ì•Œì•„ë‘¬.\r\n\r\n";
+                            v5 += "#eê°•ë¦¼ ìºì‹œ : 3,000 ìºì‹œ\r\n#b[ì •ë°€í•œ ê°ì¸ì„ 80%, í‰ë²”í•œ ê°ì¸ì„ 20%]#k\r\nì°¬ë€í•œ ë¹›ì˜ ê²°ì • : 500 ê°œ\r\n#b[ì •ë°€í•œ ê°ì¸ì„ 10%, í‰ë²”í•œ ê°ì¸ì„ 90%]#k#k";
                         } else {
-                            v5 = "°¢ÀÎ¼®Àº °ËÀº ¸¶¹ı»çÀÇ ÁöÇÏ ¼­°í¿¡ ÀÖ´Â º¸°üÇÔ¿¡ µé¾î ÀÖ¾î.\r\n°á°è ¶§¹®¿¡ ½º½Â´ÔÀÌ³ª ³»°¡ ¾øÀ¸¸é ²¨³¾ ¼ö ¾øÀ¸´Ï±î ÇÊ¿äÇÏ¸é ³ªÇÑÅ× ¸»ÇØ.\r\n\r\n#h0# ³Ê¶ó°í ÇØµµ, °á°è ¸¶¹ı»ç °í¿ëºñ´Â Á¦´ë·Î ¹ŞÀ» °Å¾ß.\r\nº¸°üÇÔ¿¡¼­ ¾î¶² °¢ÀÎ¼®ÀÌ ²¨³»ÁúÁö´Â ³ªµµ ¸ô¶ó. ¾î¶² °Ô ³ª¿À´õ¶óµµ °í¿ëºñ´Â ¶È°°À¸´Ï±î ¾Ë¾ÆµÖ.\r\n\r\n";
-                            v5 += "#e°­¸² Æ÷ÀÎÆ® : 3,000 #b(Á¤¹ĞÇÑ °¢ÀÎ¼® 80%, Æò¹üÇÑ °¢ÀÎ¼® 20%)#k\r\nÈ«º¸ Æ÷ÀÎÆ® : 3,000 #b(Á¤¹ĞÇÑ °¢ÀÎ¼® 60%, Æò¹üÇÑ °¢ÀÎ¼® 40%)#k\r\n¸Ş¼Ò : 1,500,000,000 #b(Á¤¹ĞÇÑ °¢ÀÎ¼® 10%, Æò¹üÇÑ °¢ÀÎ¼® 90%)#k";
+                            v5 = "ê°ì¸ì„ì€ ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì§€í•˜ ì„œê³ ì— ìˆëŠ” ë³´ê´€í•¨ì— ë“¤ì–´ ìˆì–´.\r\nê²°ê³„ ë•Œë¬¸ì— ìŠ¤ìŠ¹ë‹˜ì´ë‚˜ ë‚´ê°€ ì—†ìœ¼ë©´ êº¼ë‚¼ ìˆ˜ ì—†ìœ¼ë‹ˆê¹Œ í•„ìš”í•˜ë©´ ë‚˜í•œí…Œ ë§í•´.\r\n\r\n#h0# ë„ˆë¼ê³  í•´ë„, ê²°ê³„ ë§ˆë²•ì‚¬ ê³ ìš©ë¹„ëŠ” ì œëŒ€ë¡œ ë°›ì„ ê±°ì•¼.\r\në³´ê´€í•¨ì—ì„œ ì–´ë–¤ ê°ì¸ì„ì´ êº¼ë‚´ì§ˆì§€ëŠ” ë‚˜ë„ ëª°ë¼. ì–´ë–¤ ê²Œ ë‚˜ì˜¤ë”ë¼ë„ ê³ ìš©ë¹„ëŠ” ë˜‘ê°™ìœ¼ë‹ˆê¹Œ ì•Œì•„ë‘¬.\r\n\r\n";
+                            v5 += "#eê°•ë¦¼ í¬ì¸íŠ¸ : 3,000 #b(ì •ë°€í•œ ê°ì¸ì„ 80%, í‰ë²”í•œ ê°ì¸ì„ 20%)#k\r\ní™ë³´ í¬ì¸íŠ¸ : 3,000 #b(ì •ë°€í•œ ê°ì¸ì„ 60%, í‰ë²”í•œ ê°ì¸ì„ 40%)#k\r\në©”ì†Œ : 1,500,000,000 #b(ì •ë°€í•œ ê°ì¸ì„ 10%, í‰ë²”í•œ ê°ì¸ì„ 90%)#k";
                         }
                         self.say(v5);
 
-                        /*String v6 = "±×·¯°í º¸´Ï °ËÀº ¸¶¹ı»ç¿¡°Ô ¿µÇâÀ» ¹ŞÀº ±º´ÜÀåÀÇ ÀÜ»óÀ» Ã³Ä¡ÇÏ¸é °¢ÀÎ¼®À» ¾òÀ» ¼ö ÀÖÀ»Áöµµ ¸ô¶ó #r(½º¿ì, µ¥¹Ì¾È, ·ç½Ãµå, Àª, ´õ½ºÅ©, µáÄÌ, Áø Èú¶ó, °ËÀº ¸¶¹ı»ç Ã³Ä¡ ½Ã È®·üÀûÀ¸·Î ÇÏ±Ş °¢ÀÎ¼® »óÀÚ ¶Ç´Â Áß±Ş °¢ÀÎ¼® »óÀÚ¸¦ µå·ÓÇÒ ¼ö ÀÖ½À´Ï´Ù).#k";
-                        v6 += "\r\n\r\n#e30% È®·ü·Î ¡®ÇÏ±Ş °¢ÀÎ¼® »óÀÚ¡¯ µå·Ó(°³ÀÎ µå·Ó, ÃÖ´ë 1°³)#n\r\n#b¦¦ Á¤¹ĞÇÑ °¢ÀÎ¼® 10%, Æò¹üÇÑ °¢ÀÎ¼® 90%#k\r\n\r\n#e10% È®·ü·Î ¡®Áß±Ş °¢ÀÎ¼® »óÀÚ¡¯ µå·Ó(°³ÀÎ µå·Ó, ÃÖ´ë 1°³)#n\r\n#b¦¦ Á¤¹ĞÇÑ °¢ÀÎ¼® 30%, Æò¹üÇÑ °¢ÀÎ¼® 70%#k";
+                        /*String v6 = "ê·¸ëŸ¬ê³  ë³´ë‹ˆ ê²€ì€ ë§ˆë²•ì‚¬ì—ê²Œ ì˜í–¥ì„ ë°›ì€ êµ°ë‹¨ì¥ì˜ ì”ìƒì„ ì²˜ì¹˜í•˜ë©´ ê°ì¸ì„ì„ ì–»ì„ ìˆ˜ ìˆì„ì§€ë„ ëª°ë¼ #r(ìŠ¤ìš°, ë°ë¯¸ì•ˆ, ë£¨ì‹œë“œ, ìœŒ, ë”ìŠ¤í¬, ë“„ì¼ˆ, ì§„ íë¼, ê²€ì€ ë§ˆë²•ì‚¬ ì²˜ì¹˜ ì‹œ í™•ë¥ ì ìœ¼ë¡œ í•˜ê¸‰ ê°ì¸ì„ ìƒì ë˜ëŠ” ì¤‘ê¸‰ ê°ì¸ì„ ìƒìë¥¼ ë“œë¡­í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤).#k";
+                        v6 += "\r\n\r\n#e30% í™•ë¥ ë¡œ â€˜í•˜ê¸‰ ê°ì¸ì„ ìƒìâ€™ ë“œë¡­(ê°œì¸ ë“œë¡­, ìµœëŒ€ 1ê°œ)#n\r\n#bâ”” ì •ë°€í•œ ê°ì¸ì„ 10%, í‰ë²”í•œ ê°ì¸ì„ 90%#k\r\n\r\n#e10% í™•ë¥ ë¡œ â€˜ì¤‘ê¸‰ ê°ì¸ì„ ìƒìâ€™ ë“œë¡­(ê°œì¸ ë“œë¡­, ìµœëŒ€ 1ê°œ)#n\r\n#bâ”” ì •ë°€í•œ ê°ì¸ì„ 30%, í‰ë²”í•œ ê°ì¸ì„ 70%#k";
                         self.say(v6);*/
                         break;
                     }
@@ -1603,14 +1603,14 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                         if (DBConfig.isGanglim) {
                             v5 += "#fs11#";
                         }
-                        v5 += "½º½Â´Ô Çã¶ô ¾øÀÌ ÀúÈñ³¢¸® ÀÌ·¡µµ ±¦ÂúÀº °É±î¿ä¡¦¡¦?\r\n\r\n°¢ÀÎ¼®À» ÀúÇÑÅ× °¡Áö°í ¿À½Ã¸é ºÒ¾ÈÁ¤ÇÑ ±â¿îÀ» ´Ùµë¾î µå¸±°Ô¿ä.\r\n°¢ÀÎ¼®¿¡ ³²¾Æ ÀÖ´Â ±â¿îÀÌ ºÒ¾ÈÁ¤ÇØ¼­ ¼¼°ø¿¡ ½ÇÆĞÇÒ ¼öµµ ÀÖ¾î¿ä.\r\n\r\n";
+                        v5 += "ìŠ¤ìŠ¹ë‹˜ í—ˆë½ ì—†ì´ ì €í¬ë¼ë¦¬ ì´ë˜ë„ ê´œì°®ì€ ê±¸ê¹Œìš”â€¦â€¦?\r\n\r\nê°ì¸ì„ì„ ì €í•œí…Œ ê°€ì§€ê³  ì˜¤ì‹œë©´ ë¶ˆì•ˆì •í•œ ê¸°ìš´ì„ ë‹¤ë“¬ì–´ ë“œë¦´ê²Œìš”.\r\nê°ì¸ì„ì— ë‚¨ì•„ ìˆëŠ” ê¸°ìš´ì´ ë¶ˆì•ˆì •í•´ì„œ ì„¸ê³µì— ì‹¤íŒ¨í•  ìˆ˜ë„ ìˆì–´ìš”.\r\n\r\n";
                         self.sayReplacedNpc(v5, 1530040);
 
                         String v6 = "";
                         if (DBConfig.isGanglim) {
-                            v6 = "#fs11##h0# ÀÌ¶ó°í ÇØµµ, Á¶ÀÛ ¸¶¹ı»ç °í¿ëºñ´Â Á¦´ë·Î ¹ŞÀ» °Å¿¹¿ä. ¼¼°ø¿¡ ½ÇÆĞÇÏ´õ¶óµµ °í¿ëºñ´Â ¶È°°À¸´Ï±î ¾Ë°í °è¼¼¿ä.\r\n\r\n#e°­¸² Ä³½Ã : 1,000 Ä³½Ã\r\n°­¸² Æ÷ÀÎÆ® : 3,000 Æ÷ÀÎÆ®\r\nÂù¶õÇÑ ºûÀÇ °áÁ¤ : 200 °³";
+                            v6 = "#fs11##h0# ì´ë¼ê³  í•´ë„, ì¡°ì‘ ë§ˆë²•ì‚¬ ê³ ìš©ë¹„ëŠ” ì œëŒ€ë¡œ ë°›ì„ ê±°ì˜ˆìš”. ì„¸ê³µì— ì‹¤íŒ¨í•˜ë”ë¼ë„ ê³ ìš©ë¹„ëŠ” ë˜‘ê°™ìœ¼ë‹ˆê¹Œ ì•Œê³  ê³„ì„¸ìš”.\r\n\r\n#eê°•ë¦¼ ìºì‹œ : 1,000 ìºì‹œ\r\nê°•ë¦¼ í¬ì¸íŠ¸ : 3,000 í¬ì¸íŠ¸\r\nì°¬ë€í•œ ë¹›ì˜ ê²°ì • : 200 ê°œ";
                         } else {
-                            v6 = "#h0# ÀÌ¶ó°í ÇØµµ, Á¶ÀÛ ¸¶¹ı»ç °í¿ëºñ´Â Á¦´ë·Î ¹ŞÀ» °Å¿¹¿ä. ¼¼°ø¿¡ ½ÇÆĞÇÏ´õ¶óµµ °í¿ëºñ´Â ¶È°°À¸´Ï±î ¾Ë°í °è¼¼¿ä.\r\n\r\n#e°­¸² Æ÷ÀÎÆ® : 1,000\r\nÈ«º¸ Æ÷ÀÎÆ® : 1,000\r\n¸Ş¼Ò : 500,000,000";
+                            v6 = "#h0# ì´ë¼ê³  í•´ë„, ì¡°ì‘ ë§ˆë²•ì‚¬ ê³ ìš©ë¹„ëŠ” ì œëŒ€ë¡œ ë°›ì„ ê±°ì˜ˆìš”. ì„¸ê³µì— ì‹¤íŒ¨í•˜ë”ë¼ë„ ê³ ìš©ë¹„ëŠ” ë˜‘ê°™ìœ¼ë‹ˆê¹Œ ì•Œê³  ê³„ì„¸ìš”.\r\n\r\n#eê°•ë¦¼ í¬ì¸íŠ¸ : 1,000\r\ní™ë³´ í¬ì¸íŠ¸ : 1,000\r\në©”ì†Œ : 500,000,000";
                         }
                         self.sayReplacedNpc(v6, 1530040);
 
@@ -1618,8 +1618,8 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                         if (DBConfig.isGanglim) {
                             v7 += "#fs11#";
                         }
-                        v7 += "#r¡Ø ÀåÂøÇÑ °¢ÀÎ¼®Àº ÀÓÀÇ·Î ÇØÁ¦ÇÒ ¼ö ¾øÀ¸¸ç, ´Ù¸¥ °¢ÀÎ¼®À» ÀåÂøÇÏ¸é ±âÁ¸ °¢ÀÎ¼®À» ÆÄ±«ÇÏ°í ±× ÀÚ¸®¿¡ ÀåÂøÇÏ°Ô µË´Ï´Ù. ÆÄ±«µÈ °¢ÀÎ¼®Àº ÈçÀûÀÌ ³²Áö ¾ÊÀ¸¸ç È¸¼ö°¡ ºÒ°¡ÇÕ´Ï´Ù.";
-                        v7 += "\r\n\r\n¡Ø °¢ÀÎ¼®Àº ÇÃ·¯½º 10È¸, ¸¶ÀÌ³Ê½º 10È¸ ÃÑ 20È¸ÀÇ ¼¼°øÀ» ¸ğµÎ ¸¶ÃÄ¾ß ¿É¼ÇÀÌ Àû¿ëµË´Ï´Ù.\r\n\r\n";
+                        v7 += "#râ€» ì¥ì°©í•œ ê°ì¸ì„ì€ ì„ì˜ë¡œ í•´ì œí•  ìˆ˜ ì—†ìœ¼ë©°, ë‹¤ë¥¸ ê°ì¸ì„ì„ ì¥ì°©í•˜ë©´ ê¸°ì¡´ ê°ì¸ì„ì„ íŒŒê´´í•˜ê³  ê·¸ ìë¦¬ì— ì¥ì°©í•˜ê²Œ ë©ë‹ˆë‹¤. íŒŒê´´ëœ ê°ì¸ì„ì€ í”ì ì´ ë‚¨ì§€ ì•Šìœ¼ë©° íšŒìˆ˜ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤.";
+                        v7 += "\r\n\r\nâ€» ê°ì¸ì„ì€ í”ŒëŸ¬ìŠ¤ 10íšŒ, ë§ˆì´ë„ˆìŠ¤ 10íšŒ ì´ 20íšŒì˜ ì„¸ê³µì„ ëª¨ë‘ ë§ˆì³ì•¼ ì˜µì…˜ì´ ì ìš©ë©ë‹ˆë‹¤.\r\n\r\n";
                         self.sayReplacedNpc(v7, 1530040);
                         break;
                     }
@@ -1633,7 +1633,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "#e[¼®ÆÇ¿¡ ÀåÂøµÈ °¢ÀÎ¼®]#n\r\n\r\n";
+                v3 += "#e[ì„íŒì— ì¥ì°©ëœ ê°ì¸ì„]#n\r\n\r\n";
                 int item1 = getPlayer().getOneInfoQuestInteger(133333, "equip1");
                 int item2 = getPlayer().getOneInfoQuestInteger(133333, "equip2");
                 int item3 = getPlayer().getOneInfoQuestInteger(133333, "equip3");
@@ -1671,71 +1671,71 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 int optionMinus4 = getPlayer().getOneInfoQuestInteger(133333, "minusValue4");
                 int optionMinus5 = getPlayer().getOneInfoQuestInteger(133333, "minusValue5");
 
-                String lock1 = getPlayer().getOneInfoQuestInteger(133333, "lock1") > 0 ? "#r(Àá±è)" : "#b(¿­¸²)";
-                String lock2 = getPlayer().getOneInfoQuestInteger(133333, "lock2") > 0 ? "#r(Àá±è)" : "#b(¿­¸²)";
-                String lock3 = getPlayer().getOneInfoQuestInteger(133333, "lock3") > 0 ? "#r(Àá±è)" : "#b(¿­¸²)";
-                String lock4 = getPlayer().getOneInfoQuestInteger(133333, "lock4") > 0 ? "#r(Àá±è)" : "#b(¿­¸²)";
-                String lock5 = getPlayer().getOneInfoQuestInteger(133333, "lock5") > 0 ? "#r(Àá±è)" : "#b(¿­¸²)";
+                String lock1 = getPlayer().getOneInfoQuestInteger(133333, "lock1") > 0 ? "#r(ì ê¹€)" : "#b(ì—´ë¦¼)";
+                String lock2 = getPlayer().getOneInfoQuestInteger(133333, "lock2") > 0 ? "#r(ì ê¹€)" : "#b(ì—´ë¦¼)";
+                String lock3 = getPlayer().getOneInfoQuestInteger(133333, "lock3") > 0 ? "#r(ì ê¹€)" : "#b(ì—´ë¦¼)";
+                String lock4 = getPlayer().getOneInfoQuestInteger(133333, "lock4") > 0 ? "#r(ì ê¹€)" : "#b(ì—´ë¦¼)";
+                String lock5 = getPlayer().getOneInfoQuestInteger(133333, "lock5") > 0 ? "#r(ì ê¹€)" : "#b(ì—´ë¦¼)";
 
                 int unlock1 = getPlayer().getOneInfoQuestInteger(133333, "unlock1");
                 int unlock2 = getPlayer().getOneInfoQuestInteger(133333, "unlock2");
 
                 v3 += "\r\n" + lock1 + " " + lock2 + " " + lock3 + " " + lock4 + " " + lock5;
                 v3 += "\r\n\r\n#k";
-                String item = item1 > 0 ? ("#b#z" + item1 + "##k") : "#rÀåÂøµÇÁö ¾ÊÀ½#k";
-                String ImprintedCount = (plusCount1 + minusCount1) == 20 ? "#b¼¼°ø¿Ï·á#k" : "#b[" + plusCount1 + "/10] #r[" + minusCount1 + "/10]#k";
-                String ImprintedEnabled = (plusCount1 + minusCount1) == 20 ? "#fc0xFF9d1ffe#Àû¿ë#k" : "#fc0xFFc983ff#¹ÌÀû¿ë#k";
+                String item = item1 > 0 ? ("#b#z" + item1 + "##k") : "#rì¥ì°©ë˜ì§€ ì•ŠìŒ#k";
+                String ImprintedCount = (plusCount1 + minusCount1) == 20 ? "#bì„¸ê³µì™„ë£Œ#k" : "#b[" + plusCount1 + "/10] #r[" + minusCount1 + "/10]#k";
+                String ImprintedEnabled = (plusCount1 + minusCount1) == 20 ? "#fc0xFF9d1ffe#ì ìš©#k" : "#fc0xFFc983ff#ë¯¸ì ìš©#k";
                 ImprintedStoneOption plusOption1 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption1"));
                 ImprintedStoneOption minusOption1 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "minusOption1"));
-                v3 += "1¹øÂ° È¨ : " + item + " | " + ImprintedCount + "\r\n";
-                v3 += "¤¤ #b[" + String.format(plusOption1.getDesc(), "+", optionPlus1, "%", "") + ", #r" + String.format(minusOption1.getDesc(), "-", optionMinus1, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
+                v3 += "1ë²ˆì§¸ í™ˆ : " + item + " | " + ImprintedCount + "\r\n";
+                v3 += "ã„´ #b[" + String.format(plusOption1.getDesc(), "+", optionPlus1, "%", "") + ", #r" + String.format(minusOption1.getDesc(), "-", optionMinus1, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
 
-                item = item2 > 0 ? ("#b#z" + item2 + "##k") : "#rÀåÂøµÇÁö ¾ÊÀ½#k";
-                ImprintedCount = (plusCount2 + minusCount2) == 20 ? "#b¼¼°ø¿Ï·á" : "#b[" + plusCount2 + "/10] #r[" + minusCount2 + "/10]#k";
-                ImprintedEnabled = (plusCount2 + minusCount2) == 20 ? "#fc0xFF9d1ffe#Àû¿ë#k" : "#fc0xFFc983ff#¹ÌÀû¿ë#k";
+                item = item2 > 0 ? ("#b#z" + item2 + "##k") : "#rì¥ì°©ë˜ì§€ ì•ŠìŒ#k";
+                ImprintedCount = (plusCount2 + minusCount2) == 20 ? "#bì„¸ê³µì™„ë£Œ" : "#b[" + plusCount2 + "/10] #r[" + minusCount2 + "/10]#k";
+                ImprintedEnabled = (plusCount2 + minusCount2) == 20 ? "#fc0xFF9d1ffe#ì ìš©#k" : "#fc0xFFc983ff#ë¯¸ì ìš©#k";
                 ImprintedStoneOption plusOption2 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption2"));
                 ImprintedStoneOption minusOption2 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "minusOption2"));
-                v3 += "2¹øÂ° È¨ : " + item + " | " + ImprintedCount + "\r\n";
-                v3 += "¤¤ #b[" + String.format(plusOption2.getDesc(), "+", optionPlus2, "%", "") + ", #r" + String.format(minusOption2.getDesc(), "-", optionMinus2, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
+                v3 += "2ë²ˆì§¸ í™ˆ : " + item + " | " + ImprintedCount + "\r\n";
+                v3 += "ã„´ #b[" + String.format(plusOption2.getDesc(), "+", optionPlus2, "%", "") + ", #r" + String.format(minusOption2.getDesc(), "-", optionMinus2, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
 
-                item = item3 > 0 ? ("#b#z" + item3 + "##k") : "#rÀåÂøµÇÁö ¾ÊÀ½#k";
-                ImprintedCount = (plusCount3 + minusCount3) == 20 ? "#b¼¼°ø¿Ï·á" : "#b[" + plusCount3 + "/10] #r[" + minusCount3 + "/10]#k";
-                ImprintedEnabled = (plusCount3 + minusCount3) == 20 ? "#fc0xFF9d1ffe#Àû¿ë#k" : "#fc0xFFc983ff#¹ÌÀû¿ë#k";
+                item = item3 > 0 ? ("#b#z" + item3 + "##k") : "#rì¥ì°©ë˜ì§€ ì•ŠìŒ#k";
+                ImprintedCount = (plusCount3 + minusCount3) == 20 ? "#bì„¸ê³µì™„ë£Œ" : "#b[" + plusCount3 + "/10] #r[" + minusCount3 + "/10]#k";
+                ImprintedEnabled = (plusCount3 + minusCount3) == 20 ? "#fc0xFF9d1ffe#ì ìš©#k" : "#fc0xFFc983ff#ë¯¸ì ìš©#k";
                 ImprintedStoneOption plusOption3 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption3"));
                 ImprintedStoneOption minusOption3 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "minusOption3"));
-                v3 += "3¹øÂ° È¨ : " + item + " | " + ImprintedCount + "\r\n";
-                v3 += "¤¤ #b[" + String.format(plusOption3.getDesc(), "+", optionPlus3, "%", "") + ", #r" + String.format(minusOption3.getDesc(), "-", optionMinus3, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
+                v3 += "3ë²ˆì§¸ í™ˆ : " + item + " | " + ImprintedCount + "\r\n";
+                v3 += "ã„´ #b[" + String.format(plusOption3.getDesc(), "+", optionPlus3, "%", "") + ", #r" + String.format(minusOption3.getDesc(), "-", optionMinus3, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
 
-                item = item4 > 0 ? ("#b#z" + item4 + "##k") : "#rÀåÂøµÇÁö ¾ÊÀ½#k";
-                ImprintedCount = (plusCount4 + minusCount4) == 20 ? "#b¼¼°ø¿Ï·á" : "#b[" + plusCount4 + "/10] #r[" + minusCount4 + "/10]#k";
-                ImprintedEnabled = (plusCount4 + minusCount4) == 20 ? "#fc0xFF9d1ffe#Àû¿ë#k" : "#fc0xFFc983ff#¹ÌÀû¿ë#k";
+                item = item4 > 0 ? ("#b#z" + item4 + "##k") : "#rì¥ì°©ë˜ì§€ ì•ŠìŒ#k";
+                ImprintedCount = (plusCount4 + minusCount4) == 20 ? "#bì„¸ê³µì™„ë£Œ" : "#b[" + plusCount4 + "/10] #r[" + minusCount4 + "/10]#k";
+                ImprintedEnabled = (plusCount4 + minusCount4) == 20 ? "#fc0xFF9d1ffe#ì ìš©#k" : "#fc0xFFc983ff#ë¯¸ì ìš©#k";
                 ImprintedStoneOption plusOption4 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption4"));
                 ImprintedStoneOption minusOption4 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "minusOption4"));
-                v3 += "4¹øÂ° È¨ : " + item + " | " + ImprintedCount + "\r\n";
-                v3 += "¤¤ #b[" + String.format(plusOption4.getDesc(), "+", optionPlus4, "%", "") + ", #r" + String.format(minusOption4.getDesc(), "-", optionMinus4, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
+                v3 += "4ë²ˆì§¸ í™ˆ : " + item + " | " + ImprintedCount + "\r\n";
+                v3 += "ã„´ #b[" + String.format(plusOption4.getDesc(), "+", optionPlus4, "%", "") + ", #r" + String.format(minusOption4.getDesc(), "-", optionMinus4, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
 
                 /*if (unlock1 == 0) {
-                    v3 += " #e(ºÀÀÎµÊ)#n";
+                    v3 += " #e(ë´‰ì¸ë¨)#n";
                 }
                 v3 += "\r\n";*/
-                item = item5 > 0 ? ("#b#z" + item5 + "##k") : "#rÀåÂøµÇÁö ¾ÊÀ½#k";
-                ImprintedCount = (plusCount5 + minusCount5) == 20 ? "#b¼¼°ø¿Ï·á" : "#b[" + plusCount5 + "/10] #r[" + minusCount5 + "/10]#k";
-                ImprintedEnabled = (plusCount5 + minusCount5) == 20 ? "#fc0xFF9d1ffe#Àû¿ë#k" : "#fc0xFFc983ff#¹ÌÀû¿ë#k";
+                item = item5 > 0 ? ("#b#z" + item5 + "##k") : "#rì¥ì°©ë˜ì§€ ì•ŠìŒ#k";
+                ImprintedCount = (plusCount5 + minusCount5) == 20 ? "#bì„¸ê³µì™„ë£Œ" : "#b[" + plusCount5 + "/10] #r[" + minusCount5 + "/10]#k";
+                ImprintedEnabled = (plusCount5 + minusCount5) == 20 ? "#fc0xFF9d1ffe#ì ìš©#k" : "#fc0xFFc983ff#ë¯¸ì ìš©#k";
                 ImprintedStoneOption plusOption5 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption5"));
                 ImprintedStoneOption minusOption5 = ImprintedStoneOption.getByOption(getPlayer().getOneInfoQuestInteger(133333, "minusOption5"));
-                v3 += "5¹øÂ° È¨ : " + item + " | " + ImprintedCount + "\r\n";
-                v3 += "¤¤ #b[" + String.format(plusOption5.getDesc(), "+", optionPlus5, "%", "") + ", #r" + String.format(minusOption5.getDesc(), "-", optionMinus5, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
+                v3 += "5ë²ˆì§¸ í™ˆ : " + item + " | " + ImprintedCount + "\r\n";
+                v3 += "ã„´ #b[" + String.format(plusOption5.getDesc(), "+", optionPlus5, "%", "") + ", #r" + String.format(minusOption5.getDesc(), "-", optionMinus5, "%", "") + "]#k | " + ImprintedEnabled + "\r\n";
                 /*if (unlock2 == 0) {
-                    v3 += " #e(ºÀÀÎµÊ)#n";
+                    v3 += " #e(ë´‰ì¸ë¨)#n";
                 }
                 v3 += "\r\n";*/
-                //v3 += "\r\n#b#L0#°¢ÀÎ ¼®ÆÇÀ» ÀÎº¥Åä¸®¿¡ Áı¾î ³Ö½À´Ï´Ù.#l";
+                //v3 += "\r\n#b#L0#ê°ì¸ ì„íŒì„ ì¸ë²¤í† ë¦¬ì— ì§‘ì–´ ë„£ìŠµë‹ˆë‹¤.#l";
                 v3 += "\r\n";
-                v3 += "\r\n#b#L1#1¹øÂ° ¼®ÆÇÀÇ È¨À» Àá±İ ¼³Á¤À» º¯°æÇÏ°Ú½À´Ï´Ù.#l";
-                v3 += "\r\n#b#L2#2¹øÂ° ¼®ÆÇÀÇ È¨À» Àá±İ ¼³Á¤À» º¯°æÇÏ°Ú½À´Ï´Ù.#l";
-                v3 += "\r\n#b#L3#3¹øÂ° ¼®ÆÇÀÇ È¨À» Àá±İ ¼³Á¤À» º¯°æÇÏ°Ú½À´Ï´Ù.#l";
-                v3 += "\r\n#b#L4#4¹øÂ° ¼®ÆÇÀÇ È¨À» Àá±İ ¼³Á¤À» º¯°æÇÏ°Ú½À´Ï´Ù.#l";
-                v3 += "\r\n#b#L5#5¹øÂ° ¼®ÆÇÀÇ È¨À» Àá±İ ¼³Á¤À» º¯°æÇÏ°Ú½À´Ï´Ù.#l";
+                v3 += "\r\n#b#L1#1ë²ˆì§¸ ì„íŒì˜ í™ˆì„ ì ê¸ˆ ì„¤ì •ì„ ë³€ê²½í•˜ê² ìŠµë‹ˆë‹¤.#l";
+                v3 += "\r\n#b#L2#2ë²ˆì§¸ ì„íŒì˜ í™ˆì„ ì ê¸ˆ ì„¤ì •ì„ ë³€ê²½í•˜ê² ìŠµë‹ˆë‹¤.#l";
+                v3 += "\r\n#b#L3#3ë²ˆì§¸ ì„íŒì˜ í™ˆì„ ì ê¸ˆ ì„¤ì •ì„ ë³€ê²½í•˜ê² ìŠµë‹ˆë‹¤.#l";
+                v3 += "\r\n#b#L4#4ë²ˆì§¸ ì„íŒì˜ í™ˆì„ ì ê¸ˆ ì„¤ì •ì„ ë³€ê²½í•˜ê² ìŠµë‹ˆë‹¤.#l";
+                v3 += "\r\n#b#L5#5ë²ˆì§¸ ì„íŒì˜ í™ˆì„ ì ê¸ˆ ì„¤ì •ì„ ë³€ê²½í•˜ê² ìŠµë‹ˆë‹¤.#l";
 
 
                 int v4 = self.askMenu(v3);
@@ -1748,17 +1748,17 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                         if (getPlayer().getOneInfoQuestInteger(133333, "lock" + v4) > 0) {
                             getPlayer().updateOneInfo(133333, "lock" + v4, "0");
                             if (DBConfig.isGanglim) {
-                                self.say("#fs11##b" + (v4) + "¹øÂ° È¨ÀÇ Àá±İÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù");
+                                self.say("#fs11##b" + (v4) + "ë²ˆì§¸ í™ˆì˜ ì ê¸ˆì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤");
                             } else {
-                                self.say("#b" + (v4) + "¹øÂ° È¨ÀÇ Àá±İÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù");
+                                self.say("#b" + (v4) + "ë²ˆì§¸ í™ˆì˜ ì ê¸ˆì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤");
                             }
 
                         } else {
                             getPlayer().updateOneInfo(133333, "lock" + v4, "1");
                             if (DBConfig.isGanglim) {
-                                self.say("#fs11##b" + (v4) + "¹øÂ° È¨ÀÇ Àá±İÀÌ ¼³Á¤ µÇ¾ú½À´Ï´Ù");
+                                self.say("#fs11##b" + (v4) + "ë²ˆì§¸ í™ˆì˜ ì ê¸ˆì´ ì„¤ì • ë˜ì—ˆìŠµë‹ˆë‹¤");
                             } else {
-                                self.say("#b" + (v4) + "¹øÂ° È¨ÀÇ Àá±İÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù");
+                                self.say("#b" + (v4) + "ë²ˆì§¸ í™ˆì˜ ì ê¸ˆì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤");
                             }
                         }
                         break;
@@ -1771,16 +1771,16 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 String v3 = "";
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
-                    v3 += "°¢ÀÎ¼®ÀÌ ´õ ÇÊ¿äÇØ? °ËÀº ¸¶¹ı»çÀÇ ÁöÇÏ ¼­°í¿¡¼­ °¡Áö°í ¿Ã°Ô.\r\n\r\n°í¿ëºñ´Â ¾î¶»°Ô ÁöºÒÇÒ·¡?\r\n\r\n#b";
-                    v3 += "#L4#°­¸² 3,000 Ä³½Ã¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» È¹µæÇÕ´Ï´Ù.#l\r\n";
-                    v3 += "#L5#Âù¶õÇÑ ºûÀÇ °áÁ¤ 600°³¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» È¹µæÇÕ´Ï´Ù.#l\r\n";
-                    v3 += "#L3#Á¶±İ¸¸ ´õ °í¹ÎÇØ º¼°Ô.#l";
+                    v3 += "ê°ì¸ì„ì´ ë” í•„ìš”í•´? ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì§€í•˜ ì„œê³ ì—ì„œ ê°€ì§€ê³  ì˜¬ê²Œ.\r\n\r\nê³ ìš©ë¹„ëŠ” ì–´ë–»ê²Œ ì§€ë¶ˆí• ë˜?\r\n\r\n#b";
+                    v3 += "#L4#ê°•ë¦¼ 3,000 ìºì‹œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ íšë“í•©ë‹ˆë‹¤.#l\r\n";
+                    v3 += "#L5#ì°¬ë€í•œ ë¹›ì˜ ê²°ì • 600ê°œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ íšë“í•©ë‹ˆë‹¤.#l\r\n";
+                    v3 += "#L3#ì¡°ê¸ˆë§Œ ë” ê³ ë¯¼í•´ ë³¼ê²Œ.#l";
                 } else {
-                    v3 += "°¢ÀÎ¼®ÀÌ ´õ ÇÊ¿äÇØ? °ËÀº ¸¶¹ı»çÀÇ ÁöÇÏ ¼­°í¿¡¼­ °¡Áö°í ¿Ã°Ô.\r\n\r\n°í¿ëºñ´Â ¾î¶»°Ô ÁöºÒÇÒ·¡?\r\n\r\n#b";
-                    v3 += "#L0#°­¸² Æ÷ÀÎÆ® 3,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» È¹µæÇÕ´Ï´Ù.#l\r\n";
-                    v3 += "#L1#È«º¸ Æ÷ÀÎÆ® 3,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» È¹µæÇÕ´Ï´Ù.#l\r\n";
-                    v3 += "#L2#¸Ş¼Ò 1,500,000,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» È¹µæÇÕ´Ï´Ù.#l\r\n";
-                    v3 += "#L3#Á¶±İ¸¸ ´õ °í¹ÎÇØ º¼°Ô.#l";
+                    v3 += "ê°ì¸ì„ì´ ë” í•„ìš”í•´? ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì§€í•˜ ì„œê³ ì—ì„œ ê°€ì§€ê³  ì˜¬ê²Œ.\r\n\r\nê³ ìš©ë¹„ëŠ” ì–´ë–»ê²Œ ì§€ë¶ˆí• ë˜?\r\n\r\n#b";
+                    v3 += "#L0#ê°•ë¦¼ í¬ì¸íŠ¸ 3,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ íšë“í•©ë‹ˆë‹¤.#l\r\n";
+                    v3 += "#L1#í™ë³´ í¬ì¸íŠ¸ 3,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ íšë“í•©ë‹ˆë‹¤.#l\r\n";
+                    v3 += "#L2#ë©”ì†Œ 1,500,000,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ íšë“í•©ë‹ˆë‹¤.#l\r\n";
+                    v3 += "#L3#ì¡°ê¸ˆë§Œ ë” ê³ ë¯¼í•´ ë³¼ê²Œ.#l";
                 }
                 int v4 = self.askMenu(v3);
                 switch (v4) {
@@ -1813,25 +1813,25 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "¼¼°øÀº °¢ÀÎ ¼®ÆÇ¿¡ ³¢¿öÁ® ÀÖ´Â °¢ÀÎ¼®¿¡¸¸ °¡´ÉÇØ¿ä.\r\n°¢ÀÎ¼® ¼¼°ø ½Ã Áõ°¨ÇÏ´Â ¿É¼ÇÀº ÃÖÃÊ ¼¼°ø ½Ã ·£´ıÀ¸·Î Á¤ÇØÁö´Âµ¥, ¼®ÆÇ¿¡ ³¢¿öÁ® ÀÖ´Â °¢ÀÎ¼®ÀÌ ¹«¾ùÀÎÁö¿¡ µû¶ó Á¤ÇØÁö´Â ¿É¼ÇÀÇ Á¾·ù°¡ ´Ş¶óÁú ¼ö ÀÖ¾î¿ä.\r\n\r\n";
-                v3 += "#e¾Æ·¡ ¿É¼Ç Áß¿¡¼­ ÇÃ·¯½º ¿É¼Ç 1Á¾#n\r\n#b¦¦ Á¤¹ĞÇÑ °¢ÀÎ¼® : ¿Ã½ºÅÈ 5%, °ø°İ·Â 2%, ¸¶·Â 2%, Å©¸®Æ¼ÄÃ µ¥¹ÌÁö 2%, º¸½º °ø°İ·Â 5%, ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 5%, Å©¸®Æ¼ÄÃ È®·ü 5%, ÃÖÁ¾ µ¥¹ÌÁö 2%\r\n¦¦ Æò¹üÇÑ °¢ÀÎ¼® : ¿Ã½ºÅÈ 2%, º¸½º °ø°İ·Â 2%, ¸ó½ºÅÍ ¹æ¾î·Â ¹«½Ã 2%, Å©¸®Æ¼ÄÃ È®·ü 2%\r\n\r\n#k";
-                v3 += "#e¾Æ·¡ ¿É¼Ç Áß¿¡¼­ ¸¶ÀÌ³Ê½º ¿É¼Ç 1Á¾#n\r\n#b¦¦ Á¤¹ĞÇÑ °¢ÀÎ¼® : µ¥¹ÌÁö 2% °¨¼Ò (ÇÃ·¯½º ¿É¼ÇÀÌ ÃÖÁ¾ µ¥¹ÌÁö %ÀÎ °æ¿ì, ÃÖÁ¾ µ¥¹ÌÁö 2% °¨¼Ò È®Á¤)\r\nÆò¹üÇÑ °¢ÀÎ¼® : µ¥¹ÌÁö 1% °¨¼Ò, ¿Ã½ºÅÈ 1% °¨¼Ò#k\r\n\r\n";
+                v3 += "ì„¸ê³µì€ ê°ì¸ ì„íŒì— ë¼ì›Œì ¸ ìˆëŠ” ê°ì¸ì„ì—ë§Œ ê°€ëŠ¥í•´ìš”.\r\nê°ì¸ì„ ì„¸ê³µ ì‹œ ì¦ê°í•˜ëŠ” ì˜µì…˜ì€ ìµœì´ˆ ì„¸ê³µ ì‹œ ëœë¤ìœ¼ë¡œ ì •í•´ì§€ëŠ”ë°, ì„íŒì— ë¼ì›Œì ¸ ìˆëŠ” ê°ì¸ì„ì´ ë¬´ì—‡ì¸ì§€ì— ë”°ë¼ ì •í•´ì§€ëŠ” ì˜µì…˜ì˜ ì¢…ë¥˜ê°€ ë‹¬ë¼ì§ˆ ìˆ˜ ìˆì–´ìš”.\r\n\r\n";
+                v3 += "#eì•„ë˜ ì˜µì…˜ ì¤‘ì—ì„œ í”ŒëŸ¬ìŠ¤ ì˜µì…˜ 1ì¢…#n\r\n#bâ”” ì •ë°€í•œ ê°ì¸ì„ : ì˜¬ìŠ¤íƒ¯ 5%, ê³µê²©ë ¥ 2%, ë§ˆë ¥ 2%, í¬ë¦¬í‹°ì»¬ ë°ë¯¸ì§€ 2%, ë³´ìŠ¤ ê³µê²©ë ¥ 5%, ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 5%, í¬ë¦¬í‹°ì»¬ í™•ë¥  5%, ìµœì¢… ë°ë¯¸ì§€ 2%\r\nâ”” í‰ë²”í•œ ê°ì¸ì„ : ì˜¬ìŠ¤íƒ¯ 2%, ë³´ìŠ¤ ê³µê²©ë ¥ 2%, ëª¬ìŠ¤í„° ë°©ì–´ë ¥ ë¬´ì‹œ 2%, í¬ë¦¬í‹°ì»¬ í™•ë¥  2%\r\n\r\n#k";
+                v3 += "#eì•„ë˜ ì˜µì…˜ ì¤‘ì—ì„œ ë§ˆì´ë„ˆìŠ¤ ì˜µì…˜ 1ì¢…#n\r\n#bâ”” ì •ë°€í•œ ê°ì¸ì„ : ë°ë¯¸ì§€ 2% ê°ì†Œ (í”ŒëŸ¬ìŠ¤ ì˜µì…˜ì´ ìµœì¢… ë°ë¯¸ì§€ %ì¸ ê²½ìš°, ìµœì¢… ë°ë¯¸ì§€ 2% ê°ì†Œ í™•ì •)\r\ní‰ë²”í•œ ê°ì¸ì„ : ë°ë¯¸ì§€ 1% ê°ì†Œ, ì˜¬ìŠ¤íƒ¯ 1% ê°ì†Œ#k\r\n\r\n";
                 self.sayReplacedNpc(v3, 1530040);
 
                 String v4 = "";
                 if (DBConfig.isGanglim) {
                     v4 += "#fs11#";
-                    v4 += "°¢ÀÎ¼®Àº #eÇÃ·¯½º 10È¸ ¸¶ÀÌ³Ê½º 10È¸ ÃÑ 20È¸#nÀÇ ¼¼°øÀÌ °¡´ÉÇØ¿ä. ±â¿îÀÌ ºÒ¾ÈÁ¤ÇØ¼­ ¼¼°øÀÌ ½ÇÆĞÇÒ ¼öµµ ÀÖ´Ù´Â Á¡ ¾Ë°í °è¼¼¿ä!\r\n\r\n#r¼¼°øÀ» ½ÃµµÇÏ¸é ¼º°ø ¿©ºÎ¿Í´Â ¹«°üÇÏ°Ô ¼¼°ø °¡´É È½¼ö°¡ Â÷°¨µÇ°í º¹±¸ÇÒ ¼ö ¾ø¾î¿ä.#k\r\n\r\n#b";
-                    v4 += "#L4#°­¸² 1,000 Ä³½Ã¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L6#°­¸² 3,000 Æ÷ÀÎÆ®¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L5#Âù¶õÇÑ ºûÀÇ °áÁ¤ 200°³¸¦ ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L99#Á¶±İ¸¸ ´õ °í¹ÎÇØ º¼°Ô.#l\r\n";
+                    v4 += "ê°ì¸ì„ì€ #eí”ŒëŸ¬ìŠ¤ 10íšŒ ë§ˆì´ë„ˆìŠ¤ 10íšŒ ì´ 20íšŒ#nì˜ ì„¸ê³µì´ ê°€ëŠ¥í•´ìš”. ê¸°ìš´ì´ ë¶ˆì•ˆì •í•´ì„œ ì„¸ê³µì´ ì‹¤íŒ¨í•  ìˆ˜ë„ ìˆë‹¤ëŠ” ì  ì•Œê³  ê³„ì„¸ìš”!\r\n\r\n#rì„¸ê³µì„ ì‹œë„í•˜ë©´ ì„±ê³µ ì—¬ë¶€ì™€ëŠ” ë¬´ê´€í•˜ê²Œ ì„¸ê³µ ê°€ëŠ¥ íšŸìˆ˜ê°€ ì°¨ê°ë˜ê³  ë³µêµ¬í•  ìˆ˜ ì—†ì–´ìš”.#k\r\n\r\n#b";
+                    v4 += "#L4#ê°•ë¦¼ 1,000 ìºì‹œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L6#ê°•ë¦¼ 3,000 í¬ì¸íŠ¸ë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L5#ì°¬ë€í•œ ë¹›ì˜ ê²°ì • 200ê°œë¥¼ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L99#ì¡°ê¸ˆë§Œ ë” ê³ ë¯¼í•´ ë³¼ê²Œ.#l\r\n";
                 } else {
-                    v4 += "°¢ÀÎ¼®Àº #eÇÃ·¯½º 10È¸ ¸¶ÀÌ³Ê½º 10È¸ ÃÑ 20È¸#nÀÇ ¼¼°øÀÌ °¡´ÉÇØ¿ä. ±â¿îÀÌ ºÒ¾ÈÁ¤ÇØ¼­ ¼¼°øÀÌ ½ÇÆĞÇÒ ¼öµµ ÀÖ´Ù´Â Á¡ ¾Ë°í °è¼¼¿ä!\r\n\r\n#r¼¼°øÀ» ½ÃµµÇÏ¸é ¼º°ø ¿©ºÎ¿Í´Â ¹«°üÇÏ°Ô ¼¼°ø °¡´É È½¼ö°¡ Â÷°¨µÇ°í º¹±¸ÇÒ ¼ö ¾ø¾î¿ä.#k\r\n\r\n#b";
-                    v4 += "#L0#°­¸² Æ÷ÀÎÆ® 1,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L1#È«º¸ Æ÷ÀÎÆ® 1,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L2#¸Ş¼Ò 500,000,000À» ÁöºÒÇÏ¿© °¢ÀÎ¼®À» ¼¼°øÇÕ´Ï´Ù.#l\r\n";
-                    v4 += "#L3#Á¶±İ¸¸ ´õ °í¹ÎÇØ º¼°Ô.#l\r\n";
+                    v4 += "ê°ì¸ì„ì€ #eí”ŒëŸ¬ìŠ¤ 10íšŒ ë§ˆì´ë„ˆìŠ¤ 10íšŒ ì´ 20íšŒ#nì˜ ì„¸ê³µì´ ê°€ëŠ¥í•´ìš”. ê¸°ìš´ì´ ë¶ˆì•ˆì •í•´ì„œ ì„¸ê³µì´ ì‹¤íŒ¨í•  ìˆ˜ë„ ìˆë‹¤ëŠ” ì  ì•Œê³  ê³„ì„¸ìš”!\r\n\r\n#rì„¸ê³µì„ ì‹œë„í•˜ë©´ ì„±ê³µ ì—¬ë¶€ì™€ëŠ” ë¬´ê´€í•˜ê²Œ ì„¸ê³µ ê°€ëŠ¥ íšŸìˆ˜ê°€ ì°¨ê°ë˜ê³  ë³µêµ¬í•  ìˆ˜ ì—†ì–´ìš”.#k\r\n\r\n#b";
+                    v4 += "#L0#ê°•ë¦¼ í¬ì¸íŠ¸ 1,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L1#í™ë³´ í¬ì¸íŠ¸ 1,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L2#ë©”ì†Œ 500,000,000ì„ ì§€ë¶ˆí•˜ì—¬ ê°ì¸ì„ì„ ì„¸ê³µí•©ë‹ˆë‹¤.#l\r\n";
+                    v4 += "#L3#ì¡°ê¸ˆë§Œ ë” ê³ ë¯¼í•´ ë³¼ê²Œ.#l\r\n";
                 }
 
                 int v5 = self.askMenu(v4);
@@ -1849,18 +1849,18 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v6 += "#fs11#";    
         }
-        v6 += "¼¼°øÀ» ¿øÇÏ´Â È¨À» ¼±ÅÃÇØÁÖ¼¼¿ä. ¼±ÅÃÇÑ È¨¿¡ ÀåÂøµÈ °¢ÀÎ¼®ÀÇ ¼¼°øÀÌ ÁøÇàµË´Ï´Ù.";
+        v6 += "ì„¸ê³µì„ ì›í•˜ëŠ” í™ˆì„ ì„ íƒí•´ì£¼ì„¸ìš”. ì„ íƒí•œ í™ˆì— ì¥ì°©ëœ ê°ì¸ì„ì˜ ì„¸ê³µì´ ì§„í–‰ë©ë‹ˆë‹¤.";
         //int unlock1 = getPlayer().getOneInfoQuestInteger(133333, "unlock1");
         //int unlock2 = getPlayer().getOneInfoQuestInteger(133333, "unlock2");
 
-        v6 += "\r\n\r\n#b#L0#1¹øÂ° È¨¿¡ °¢ÀÎ¼®À» ¼¼°øÇÒ°Ô.#l\r\n";
-        v6 += "#b#L1#2¹øÂ° È¨¿¡ °¢ÀÎ¼®À» ¼¼°øÇÒ°Ô.#l\r\n";
-        v6 += "#b#L2#3¹øÂ° È¨¿¡ °¢ÀÎ¼®À» ¼¼°øÇÒ°Ô.#l\r\n";
+        v6 += "\r\n\r\n#b#L0#1ë²ˆì§¸ í™ˆì— ê°ì¸ì„ì„ ì„¸ê³µí• ê²Œ.#l\r\n";
+        v6 += "#b#L1#2ë²ˆì§¸ í™ˆì— ê°ì¸ì„ì„ ì„¸ê³µí• ê²Œ.#l\r\n";
+        v6 += "#b#L2#3ë²ˆì§¸ í™ˆì— ê°ì¸ì„ì„ ì„¸ê³µí• ê²Œ.#l\r\n";
         //if (unlock1 == 1) {
-            v6 += "#b#L3#4¹øÂ° È¨¿¡ °¢ÀÎ¼®À» ¼¼°øÇÒ°Ô.#l\r\n";
+            v6 += "#b#L3#4ë²ˆì§¸ í™ˆì— ê°ì¸ì„ì„ ì„¸ê³µí• ê²Œ.#l\r\n";
         //}
         //if (unlock2 == 1) {
-            v6 += "#b#L4#5¹øÂ° È¨¿¡ °¢ÀÎ¼®À» ¼¼°øÇÒ°Ô.#l\r\n";
+            v6 += "#b#L4#5ë²ˆì§¸ í™ˆì— ê°ì¸ì„ì„ ì„¸ê³µí• ê²Œ.#l\r\n";
         //}
 
         int v7 = self.askMenu(v6);
@@ -1870,7 +1870,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         int itemID = getPlayer().getOneInfoQuestInteger(133333, "equip" + index);
 
         if (itemID == 0) {
-            self.say("#e" + index + "È¨#n¿¡ ÀåÂøµÈ °¢ÀÎ¼®ÀÌ ¾ø´Â °É¿ä? ´Ù½Ã È®ÀÎÇØÁÖ½Ã°í ½ÃµµÇØÁÖ¼¼¿ä!");
+            self.say("#e" + index + "í™ˆ#nì— ì¥ì°©ëœ ê°ì¸ì„ì´ ì—†ëŠ” ê±¸ìš”? ë‹¤ì‹œ í™•ì¸í•´ì£¼ì‹œê³  ì‹œë„í•´ì£¼ì„¸ìš”!");
             return;
         }
         int remainCraftPlus = 10 - getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index);
@@ -1888,29 +1888,29 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v8 += "#fs11#";
         }
-        v8 += "#e[" + index + "¹øÂ° È¨]#n\r\n";
+        v8 += "#e[" + index + "ë²ˆì§¸ í™ˆ]#n\r\n";
         v8 += "#b#i" + itemID + "# #z" + itemID + "##k\r\n\r\n";
-        v8 += "#e³²Àº ÇÃ·¯½º ¼¼°ø È½¼ö : " + remainCraftPlus + "\r\n";
-        v8 += "#e³²Àº ¸¶ÀÌ³Ê½º ¼¼°ø È½¼ö : " + remainCraftMinus + "\r\n";
-        v8 += "#bÇÃ·¯½º ¿É¼Ç : " + String.format(plusOption.getDesc(), "+", plusValue, "%", "Áõ°¡") + "\r\n";
-        v8 += ("#r¸¶ÀÌ³Ê½º ¿É¼Ç : " + String.format(minusOption.getDesc(), "-", minusValue, "%", "°¨¼Ò") + "\r\n");
+        v8 += "#eë‚¨ì€ í”ŒëŸ¬ìŠ¤ ì„¸ê³µ íšŸìˆ˜ : " + remainCraftPlus + "\r\n";
+        v8 += "#eë‚¨ì€ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µ íšŸìˆ˜ : " + remainCraftMinus + "\r\n";
+        v8 += "#bí”ŒëŸ¬ìŠ¤ ì˜µì…˜ : " + String.format(plusOption.getDesc(), "+", plusValue, "%", "ì¦ê°€") + "\r\n";
+        v8 += ("#rë§ˆì´ë„ˆìŠ¤ ì˜µì…˜ : " + String.format(minusOption.getDesc(), "-", minusValue, "%", "ê°ì†Œ") + "\r\n");
         if (payType == ImprintedStonePayType.Donation) {
-            v8 += "ÇöÀç º¸À¯ÁßÀÎ °­¸² Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
+            v8 += "í˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
         } else if (payType == ImprintedStonePayType.Promotion) {
-            v8 += "ÇöÀç º¸À¯ÁßÀÎ È«º¸ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
+            v8 += "í˜„ì¬ ë³´ìœ ì¤‘ì¸ í™ë³´ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
         } else if (payType == ImprintedStonePayType.Meso) {
-            v8 += "ÇöÀç º¸À¯ÁßÀÎ ¸Ş¼Ò : " + NumberFormat.getInstance().format(getPlayer().getMeso());
+            v8 += "í˜„ì¬ ë³´ìœ ì¤‘ì¸ ë©”ì†Œ : " + NumberFormat.getInstance().format(getPlayer().getMeso());
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            v8 += "#k#eÇöÀç º¸À¯ÁßÀÎ Ä³½Ã : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
+            v8 += "#k#eí˜„ì¬ ë³´ìœ ì¤‘ì¸ ìºì‹œ : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
-            v8 += "#k#eÇöÀç º¸À¯ÁßÀÎ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
+            v8 += "#k#eí˜„ì¬ ë³´ìœ ì¤‘ì¸ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
-            v8 += "#k#eÇöÀç º¸À¯ÁßÀÎ Âù¶õÇÑ ºûÀÇ °áÁ¤ : " + getPlayer().getItemQuantity(4031227, false);
+            v8 += "#k#eí˜„ì¬ ë³´ìœ ì¤‘ì¸ ì°¬ë€í•œ ë¹›ì˜ ê²°ì • : " + getPlayer().getItemQuantity(4031227, false);
         }
-        v8 += "\r\n\r\n#k#nÇÃ·¯½º, ¸¶ÀÌ³Ê½º Áß ¾î¶² °ÍÀ» ¼¼°øÇÏ½Ã°Ú¾î¿ä?\r\n";
-        v8 += "#b#L0#ÇÃ·¯½º ¼¼°øÀ» ÁøÇàÇÒ°Ô.#l\r\n";
-        v8 += "#b#L1#¸¶ÀÌ³Ê½º ¼¼°øÀ» ÁøÇàÇÒ°Ô.#l\r\n";
-        v8 += "#b#L2#Á» ´õ »ı°¢ÇØº¼°Ô#l\r\n";
+        v8 += "\r\n\r\n#k#ní”ŒëŸ¬ìŠ¤, ë§ˆì´ë„ˆìŠ¤ ì¤‘ ì–´ë–¤ ê²ƒì„ ì„¸ê³µí•˜ì‹œê² ì–´ìš”?\r\n";
+        v8 += "#b#L0#í”ŒëŸ¬ìŠ¤ ì„¸ê³µì„ ì§„í–‰í• ê²Œ.#l\r\n";
+        v8 += "#b#L1#ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µì„ ì§„í–‰í• ê²Œ.#l\r\n";
+        v8 += "#b#L2#ì¢€ ë” ìƒê°í•´ë³¼ê²Œ#l\r\n";
         int v9 = self.askMenu(v8);
         switch (v9) {
             case 0: {
@@ -1925,24 +1925,24 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     }
 
     public void doMinusCraft(int itemID, int index, ImprintedStonePayType payType) {
-        String payMessage = "1,000 °­¸² Æ÷ÀÎÆ®";
+        String payMessage = "1,000 ê°•ë¦¼ í¬ì¸íŠ¸";
         if (payType == ImprintedStonePayType.Promotion) {
-            payMessage = "1,000 È«º¸ Æ÷ÀÎÆ®";
+            payMessage = "1,000 í™ë³´ í¬ì¸íŠ¸";
         } else if (payType == ImprintedStonePayType.Meso) {
-            payMessage = "500,000,000 ¸Ş¼Ò";
+            payMessage = "500,000,000 ë©”ì†Œ";
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            payMessage = "1,000 °­¸² Ä³½Ã";
+            payMessage = "1,000 ê°•ë¦¼ ìºì‹œ";
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
-            payMessage = "3,000 °­¸² Æ÷ÀÎÆ®";
+            payMessage = "3,000 ê°•ë¦¼ í¬ì¸íŠ¸";
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
-            payMessage = "Âù¶õÇÑ ºûÀÇ °áÁ¤ 200°³";
+            payMessage = "ì°¬ë€í•œ ë¹›ì˜ ê²°ì • 200ê°œ";
         }
         if (DBConfig.isGanglim) {
-            if (0 == self.askYesNo("#fs11#Á¤¸» #e" + payMessage + "#n¸¦ »ç¿ëÇÏ¿© ¼¼°øÀ» ÇÒ °Ç°¡¿ä?")) {
+            if (0 == self.askYesNo("#fs11#ì •ë§ #e" + payMessage + "#në¥¼ ì‚¬ìš©í•˜ì—¬ ì„¸ê³µì„ í•  ê±´ê°€ìš”?")) {
                 return;
             }
         } else {
-            if (0 == self.askYesNo("Á¤¸» #e" + payMessage + "#n¸¦ »ç¿ëÇÏ¿© ¼¼°øÀ» ÇÒ °Ç°¡¿ä?")) {
+            if (0 == self.askYesNo("ì •ë§ #e" + payMessage + "#në¥¼ ì‚¬ìš©í•˜ì—¬ ì„¸ê³µì„ í•  ê±´ê°€ìš”?")) {
                 return;
             }
         }
@@ -1950,45 +1950,45 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         int craftCount = getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index);
         if (craftCount >= 10) {
             if (DBConfig.isGanglim) {
-                self.say("#fs11#ÀÌ¹Ì ¸¶ÀÌ³Ê½º ¼¼°øÀ» ¿Ï·áÇÑ °¢ÀÎ¼®ÀÎ °Å °°³×¿ä.");    
+                self.say("#fs11#ì´ë¯¸ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µì„ ì™„ë£Œí•œ ê°ì¸ì„ì¸ ê±° ê°™ë„¤ìš”.");    
             } else {
-                self.say("ÀÌ¹Ì ¸¶ÀÌ³Ê½º ¼¼°øÀ» ¿Ï·áÇÑ °¢ÀÎ¼®ÀÎ °Å °°³×¿ä.");
+                self.say("ì´ë¯¸ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µì„ ì™„ë£Œí•œ ê°ì¸ì„ì¸ ê±° ê°™ë„¤ìš”.");
             }
             return;
         }
         if (payType == ImprintedStonePayType.Donation.getType()) {
             if (getPlayer().getRealCash() < 1000) {
-                self.say("°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainRealCash(-1000, true);
         } else if (payType == ImprintedStonePayType.Promotion.getType()) {
             if (getPlayer().getHongboPoint() < 1000) {
-                self.say("È«º¸ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("í™ë³´ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainHongboPoint(-1000, true);
         } else if (payType == ImprintedStonePayType.Meso.getType()) {
             if (getPlayer().getMeso() < 500000000) {
-                self.say("¸Ş¼Ò ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("ë©”ì†Œ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainMeso(-500000000, true);
         } else if (payType == ImprintedStonePayType.RoyalCash.getType()) {
             if (getPlayer().getCashPoint() < 1000) {
-                self.say("#fs11#°­¸² Ä³½Ã°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ê°•ë¦¼ ìºì‹œê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainCashPoint(-1000);
         } else if (payType == ImprintedStonePayType.RoyalDPoint.getType()) {
             if (getPlayer().getDonationPoint() < 3000) {
-                self.say("#fs11#°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainDonationPoint(-3000);
         } else if (payType == ImprintedStonePayType.RoyalRedBall.getType()) {
             if (target.exchange(4031227, -200) < 0) {
-                self.say("#fs11#Âù¶õÇÑ ºûÀÇ °áÁ¤ÀÌ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ì°¬ë€í•œ ë¹›ì˜ ê²°ì •ì´ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
         }
@@ -2002,9 +2002,9 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
         if (plusOption_ == 0) {
             if (DBConfig.isGanglim) {
-                self.say("#fs11#ÇÃ·¯½º ¼¼°øÀ» 1È¸ ÀÌ»ó ÇØ¾ß ¸¶ÀÌ³Ê½º ¼¼°øÀÌ °¡´ÉÇØ¿ä.");    
+                self.say("#fs11#í”ŒëŸ¬ìŠ¤ ì„¸ê³µì„ 1íšŒ ì´ìƒ í•´ì•¼ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µì´ ê°€ëŠ¥í•´ìš”.");    
             } else {
-                self.say("ÇÃ·¯½º ¼¼°øÀ» 1È¸ ÀÌ»ó ÇØ¾ß ¸¶ÀÌ³Ê½º ¼¼°øÀÌ °¡´ÉÇØ¿ä.");
+                self.say("í”ŒëŸ¬ìŠ¤ ì„¸ê³µì„ 1íšŒ ì´ìƒ í•´ì•¼ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µì´ ê°€ëŠ¥í•´ìš”.");
             }
             return;
         }
@@ -2015,7 +2015,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             };
             int minusOption2 = itemID == 2432127 ? options[Randomizer.rand(0, 1)] : ImprintedStoneOption.DamR.getOption();
             if (plusOption_ == ImprintedStoneOption.PMDR.getOption()) {
-                // ÇÃ·¯½º ¿É¼ÇÀÌ ÃÖÁ¾ µ¥¹ÌÁö Áõ°¡¸é ¸¶ÀÌ³Ê½º ¿É¼ÇÀº È®Á¤À¸·Î ÃÖÁ¾ µ¥¹ÌÁö
+                // í”ŒëŸ¬ìŠ¤ ì˜µì…˜ì´ ìµœì¢… ë°ë¯¸ì§€ ì¦ê°€ë©´ ë§ˆì´ë„ˆìŠ¤ ì˜µì…˜ì€ í™•ì •ìœ¼ë¡œ ìµœì¢… ë°ë¯¸ì§€
                 minusOption2 = ImprintedStoneOption.PMDR.getOption();
             }
             getPlayer().updateOneInfo(133333, "minusOption" + index, String.valueOf(minusOption2));
@@ -2039,26 +2039,26 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v10 += "#fs11#";
         }
-        v10 += "#e[¸¶ÀÌ³Ê½º ¼¼°ø]#n\r\n#b" + (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index)) + "¹øÂ° ¼¼°øÀÌ ¿Ï·áµÇ¾ú¾î¿ä.\r\n\r\n";
-        v10 += "#e³²Àº ¸¶ÀÌ³Ê½º ¼¼°ø È½¼ö : " + (remainCraftMinus - 1) + "\r\n";
-        v10 += ("#b¸¶ÀÌ³Ê½º ¿É¼Ç : " + String.format(minusOption.getDesc(), "-", minusValue, "%", "") + "\r\n");
+        v10 += "#e[ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µ]#n\r\n#b" + (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index)) + "ë²ˆì§¸ ì„¸ê³µì´ ì™„ë£Œë˜ì—ˆì–´ìš”.\r\n\r\n";
+        v10 += "#eë‚¨ì€ ë§ˆì´ë„ˆìŠ¤ ì„¸ê³µ íšŸìˆ˜ : " + (remainCraftMinus - 1) + "\r\n";
+        v10 += ("#bë§ˆì´ë„ˆìŠ¤ ì˜µì…˜ : " + String.format(minusOption.getDesc(), "-", minusValue, "%", "") + "\r\n");
         if (payType == ImprintedStonePayType.Donation) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
         } else if (payType == ImprintedStonePayType.Promotion) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ È«º¸ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ í™ë³´ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
         } else if (payType == ImprintedStonePayType.Meso) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ ¸Ş¼Ò : " + NumberFormat.getInstance().format(getPlayer().getMeso());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ë©”ì†Œ : " + NumberFormat.getInstance().format(getPlayer().getMeso());
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Ä³½Ã : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ ìºì‹œ : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ Âù¶õÇÑ ºûÀÇ °áÁ¤ : " + getPlayer().getItemQuantity(4031227, false);
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ì°¬ë€í•œ ë¹›ì˜ ê²°ì • : " + getPlayer().getItemQuantity(4031227, false);
         }
-        objects.utils.FileoutputUtil.log("./TextLog/EquipStoneCraft.txt", "°¢ÀÎ¼® ¼¼°ø(¸¶ÀÌ³Ê½º) (½½·Ô : " + index + ", ¾ÆÀÌÅÛID : " + itemID + ", ¿É¼Ç : " + minusOption.name() + ", °ª : " + minusValue + ", ÁöºÒ ¹æ½Ä : " + payType.name() + ", »ç¿ëÀÚ : " + getPlayer().getName() + ")\r\n");
+        objects.utils.FileoutputUtil.log("./TextLog/EquipStoneCraft.txt", "ê°ì¸ì„ ì„¸ê³µ(ë§ˆì´ë„ˆìŠ¤) (ìŠ¬ë¡¯ : " + index + ", ì•„ì´í…œID : " + itemID + ", ì˜µì…˜ : " + minusOption.name() + ", ê°’ : " + minusValue + ", ì§€ë¶ˆ ë°©ì‹ : " + payType.name() + ", ì‚¬ìš©ì : " + getPlayer().getName() + ")\r\n");
 
-        v10 += "\r\n#b#n#L0#ÇÑ ¹ø ´õ ¼¼°øÇÑ´Ù.#l\r\n";
-        v10 += "#L1#¼¼°øÀ» ±×¸¸µĞ´Ù.#l";
+        v10 += "\r\n#b#n#L0#í•œ ë²ˆ ë” ì„¸ê³µí•œë‹¤.#l\r\n";
+        v10 += "#L1#ì„¸ê³µì„ ê·¸ë§Œë‘”ë‹¤.#l";
         int v11 = self.askMenu(v10);
         //if (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index) >= 10 &&
         //        getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index) >= 10) {
@@ -2070,24 +2070,24 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     }
 
     public void doPlusCraft(int itemID, int index, ImprintedStonePayType payType) {
-        String payMessage = "1,000 °­¸² Æ÷ÀÎÆ®";
+        String payMessage = "1,000 ê°•ë¦¼ í¬ì¸íŠ¸";
         if (payType == ImprintedStonePayType.Promotion) {
-            payMessage = "1,000 È«º¸ Æ÷ÀÎÆ®";
+            payMessage = "1,000 í™ë³´ í¬ì¸íŠ¸";
         } else if (payType == ImprintedStonePayType.Meso) {
-            payMessage = "500,000,000 ¸Ş¼Ò";
+            payMessage = "500,000,000 ë©”ì†Œ";
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            payMessage = "1,000 °­¸² Ä³½Ã";
+            payMessage = "1,000 ê°•ë¦¼ ìºì‹œ";
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
-            payMessage = "3,000 °­¸² Æ÷ÀÎÆ®";
+            payMessage = "3,000 ê°•ë¦¼ í¬ì¸íŠ¸";
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
-            payMessage = "Âù¶õÇÑ ºûÀÇ °áÁ¤ 200°³";
+            payMessage = "ì°¬ë€í•œ ë¹›ì˜ ê²°ì • 200ê°œ";
         }
         if (DBConfig.isGanglim) {
-            if (0 == self.askYesNo("#fs11#Á¤¸» #e" + payMessage + "#n¸¦ »ç¿ëÇÏ¿© ¼¼°øÀ» ÇÒ °Ç°¡¿ä?")) {
+            if (0 == self.askYesNo("#fs11#ì •ë§ #e" + payMessage + "#në¥¼ ì‚¬ìš©í•˜ì—¬ ì„¸ê³µì„ í•  ê±´ê°€ìš”?")) {
                 return;
             }
         } else {
-            if (0 == self.askYesNo("Á¤¸» #e" + payMessage + "#n¸¦ »ç¿ëÇÏ¿© ¼¼°øÀ» ÇÒ °Ç°¡¿ä?")) {
+            if (0 == self.askYesNo("ì •ë§ #e" + payMessage + "#në¥¼ ì‚¬ìš©í•˜ì—¬ ì„¸ê³µì„ í•  ê±´ê°€ìš”?")) {
                 return;
             }
         }
@@ -2095,45 +2095,45 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         int craftCount = getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index);
         if (craftCount >= 10) {
             if (DBConfig.isGanglim) {
-                self.say("#fs11#ÀÌ¹Ì ÇÃ·¯½º ¼¼°øÀ» ¿Ï·áÇÑ °¢ÀÎ¼®ÀÎ °Å °°³×¿ä.");
+                self.say("#fs11#ì´ë¯¸ í”ŒëŸ¬ìŠ¤ ì„¸ê³µì„ ì™„ë£Œí•œ ê°ì¸ì„ì¸ ê±° ê°™ë„¤ìš”.");
             } else {
-                self.say("ÀÌ¹Ì ÇÃ·¯½º ¼¼°øÀ» ¿Ï·áÇÑ °¢ÀÎ¼®ÀÎ °Å °°³×¿ä.");
+                self.say("ì´ë¯¸ í”ŒëŸ¬ìŠ¤ ì„¸ê³µì„ ì™„ë£Œí•œ ê°ì¸ì„ì¸ ê±° ê°™ë„¤ìš”.");
             }
             return;
         }
         if (payType == ImprintedStonePayType.Donation.getType()) {
             if (getPlayer().getRealCash() < 1000) {
-                self.say("°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainRealCash(-1000, true);
         } else if (payType == ImprintedStonePayType.Promotion.getType()) {
             if (getPlayer().getHongboPoint() < 1000) {
-                self.say("È«º¸ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("í™ë³´ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainHongboPoint(-1000, true);
         } else if (payType == ImprintedStonePayType.Meso.getType()) {
             if (getPlayer().getMeso() < 500000000) {
-                self.say("¸Ş¼Ò ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("ë©”ì†Œ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainMeso(-500000000, true);
         } else if (payType == ImprintedStonePayType.RoyalCash.getType()) {
             if (getPlayer().getCashPoint() < 1000) {
-                self.say("#fs11#°­¸² Ä³½Ã°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ê°•ë¦¼ ìºì‹œê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainCashPoint(-1000);
         } else if (payType == ImprintedStonePayType.RoyalDPoint.getType()) {
             if (getPlayer().getDonationPoint() < 3000) {
-                self.say("#fs11#°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
             getPlayer().gainDonationPoint(-3000);
         } else if (payType == ImprintedStonePayType.RoyalRedBall.getType()) {
             if (target.exchange(4031227, -200) < 0) {
-                self.say("#fs11#Âù¶õÇÑ ºûÀÇ °áÁ¤ÀÌ ºÎÁ·ÇÏ¿© ¼¼°øÀ» ÁøÇàÇÒ ¼ö ¾ø¾î¿ä.");
+                self.say("#fs11#ì°¬ë€í•œ ë¹›ì˜ ê²°ì •ì´ ë¶€ì¡±í•˜ì—¬ ì„¸ê³µì„ ì§„í–‰í•  ìˆ˜ ì—†ì–´ìš”.");
                 return;
             }
         }
@@ -2193,29 +2193,29 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v10 += "#fs11#";
         }
-        v10 += "#e[ÇÃ·¯½º ¼¼°ø]#n\r\n#b" + (getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index)) + "¹øÂ° ¼¼°øÀÌ ¿Ï·áµÇ¾ú¾î¿ä.\r\n\r\n";
-        v10 += "#e³²Àº ÇÃ·¯½º ¼¼°ø È½¼ö : " + (remainCraftPlus - 1) + "\r\n";
-        v10 += ("#bÇÃ·¯½º ¿É¼Ç : " + String.format(plusOption.getDesc(), "+", plusValue, "%", "") + "\r\n");
+        v10 += "#e[í”ŒëŸ¬ìŠ¤ ì„¸ê³µ]#n\r\n#b" + (getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index)) + "ë²ˆì§¸ ì„¸ê³µì´ ì™„ë£Œë˜ì—ˆì–´ìš”.\r\n\r\n";
+        v10 += "#eë‚¨ì€ í”ŒëŸ¬ìŠ¤ ì„¸ê³µ íšŸìˆ˜ : " + (remainCraftPlus - 1) + "\r\n";
+        v10 += ("#bí”ŒëŸ¬ìŠ¤ ì˜µì…˜ : " + String.format(plusOption.getDesc(), "+", plusValue, "%", "") + "\r\n");
         if (payType == ImprintedStonePayType.Donation) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getRealCash());
         } else if (payType == ImprintedStonePayType.Promotion) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ È«º¸ Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ í™ë³´ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getHongboPoint());
         } else if (payType == ImprintedStonePayType.Meso) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ ¸Ş¼Ò : " + NumberFormat.getInstance().format(getPlayer().getMeso());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ë©”ì†Œ : " + NumberFormat.getInstance().format(getPlayer().getMeso());
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Ä³½Ã : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ ìºì‹œ : " + NumberFormat.getInstance().format(getPlayer().getCashPoint());
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ °­¸² Æ÷ÀÎÆ® : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ê°•ë¦¼ í¬ì¸íŠ¸ : " + NumberFormat.getInstance().format(getPlayer().getDonationPoint());
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
-            v10 += "#rÇöÀç º¸À¯ÁßÀÎ Âù¶õÇÑ ºûÀÇ °áÁ¤ : " + getPlayer().getItemQuantity(4031227, false);
+            v10 += "#rí˜„ì¬ ë³´ìœ ì¤‘ì¸ ì°¬ë€í•œ ë¹›ì˜ ê²°ì • : " + getPlayer().getItemQuantity(4031227, false);
         }
-        v10 += "\r\n#b#n#L0#ÇÑ ¹ø ´õ ¼¼°øÇÑ´Ù.#l\r\n";
-        v10 += "#L1#¼¼°øÀ» ±×¸¸µĞ´Ù.#l";
+        v10 += "\r\n#b#n#L0#í•œ ë²ˆ ë” ì„¸ê³µí•œë‹¤.#l\r\n";
+        v10 += "#L1#ì„¸ê³µì„ ê·¸ë§Œë‘”ë‹¤.#l";
         //if (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index) >= 10 &&
         //    getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index) >= 10) {
             getPlayer().checkImprintedStone();
         //}
-        objects.utils.FileoutputUtil.log("./TextLog/StoneCraft.txt", "°¢ÀÎ¼® ¼¼°ø(ÇÃ·¯½º) (½½·Ô : " + index + ", ¾ÆÀÌÅÛID : " + itemID + ", ¿É¼Ç : " + plusOption.name() + ", °ª : " + plusValue + ", ÁöºÒ ¹æ½Ä : " + payType.name() +", »ç¿ëÀÚ : " + getPlayer().getName() + ")\r\n");
+        objects.utils.FileoutputUtil.log("./TextLog/StoneCraft.txt", "ê°ì¸ì„ ì„¸ê³µ(í”ŒëŸ¬ìŠ¤) (ìŠ¬ë¡¯ : " + index + ", ì•„ì´í…œID : " + itemID + ", ì˜µì…˜ : " + plusOption.name() + ", ê°’ : " + plusValue + ", ì§€ë¶ˆ ë°©ì‹ : " + payType.name() +", ì‚¬ìš©ì : " + getPlayer().getName() + ")\r\n");
 
         int v11 = self.askMenu(v10);
         if (v11 == 0) {
@@ -2230,12 +2230,12 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         }
         initNPC(MapleLifeFactory.getNPC(9010032));
 
-        var v0 = "¾È³çÇÏ¼¼¿ä, ¿î¿µÀÚ´Ô.\r\n¿øÈ°ÇÑ È«º¸ ´©Àû º¸»ó Áö±ŞÀ» À§ÇØ ÁØºñµÈ ¼­ºñ½ºÀÔ´Ï´Ù.\r\nÁ¤ÇØÁø È«º¸ ÀÏ¼ö¸¦ ´Ş¼ºÇÑ À¯Àú¿¡°Ô ¾Æ·¡ ÈÆÀåÀ» ¼ö·ÉÇÏ¿© Áö±ŞÇØ ÁÖ¼¼¿ä.\r\n\r\n";
-        v0 += "#e[È«º¸ ´©Àû ÈÆÀå Áö±Ş ±âÁØ]#n\r\n";
-        v0 += "15ÀÏÂ÷ - #b#z1142070##k#r(¿Ã½ºÅÈ 250, °ø/¸¶ 200)#k\r\n";
-        v0 += "100ÀÏÂ÷ - #b#z1142072##k#r(¿Ã½ºÅÈ 400, °ø/¸¶ 350)#k\r\n\r\n";
-        v0 += "#b#L0#°­¸² ¼­Æ÷ÅÍ ÈÆÀåÀ» »ı¼ºÇÕ´Ï´Ù.#l\r\n";
-        v0 += "#L1#°­¸² ¼­Æ÷ÅÍÁî ÈÆÀåÀ» »ı¼ºÇÕ´Ï´Ù.#l\r\n";
+        var v0 = "ì•ˆë…•í•˜ì„¸ìš”, ìš´ì˜ìë‹˜.\r\nì›í™œí•œ í™ë³´ ëˆ„ì  ë³´ìƒ ì§€ê¸‰ì„ ìœ„í•´ ì¤€ë¹„ëœ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤.\r\nì •í•´ì§„ í™ë³´ ì¼ìˆ˜ë¥¼ ë‹¬ì„±í•œ ìœ ì €ì—ê²Œ ì•„ë˜ í›ˆì¥ì„ ìˆ˜ë ¹í•˜ì—¬ ì§€ê¸‰í•´ ì£¼ì„¸ìš”.\r\n\r\n";
+        v0 += "#e[í™ë³´ ëˆ„ì  í›ˆì¥ ì§€ê¸‰ ê¸°ì¤€]#n\r\n";
+        v0 += "15ì¼ì°¨ - #b#z1142070##k#r(ì˜¬ìŠ¤íƒ¯ 250, ê³µ/ë§ˆ 200)#k\r\n";
+        v0 += "100ì¼ì°¨ - #b#z1142072##k#r(ì˜¬ìŠ¤íƒ¯ 400, ê³µ/ë§ˆ 350)#k\r\n\r\n";
+        v0 += "#b#L0#ê°•ë¦¼ ì„œí¬í„° í›ˆì¥ì„ ìƒì„±í•©ë‹ˆë‹¤.#l\r\n";
+        v0 += "#L1#ê°•ë¦¼ ì„œí¬í„°ì¦ˆ í›ˆì¥ì„ ìƒì„±í•©ë‹ˆë‹¤.#l\r\n";
 
         int v1 = self.askMenu(v0);
         if (v1 == 0) {
@@ -2249,7 +2249,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 equip.setMatk((short) 200);
 
                 MapleInventoryManipulator.addFromDrop(getPlayer().getClient(), equip, true);
-                self.say("»ı¼ºÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                self.say("ìƒì„±ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
             }
         } else if (v1 == 1) {
             Equip equip = (Equip) MapleItemInformationProvider.getInstance().getEquipById(1142072);
@@ -2262,7 +2262,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 equip.setMatk((short) 350);
 
                 MapleInventoryManipulator.addFromDrop(getPlayer().getClient(), equip, true);
-                self.say("»ı¼ºÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                self.say("ìƒì„±ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
             }
         }
     }
@@ -2276,25 +2276,25 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         //totalPrice = 50000000; //TEST
 
 	/*if (true) {
-		self.say("Á¡°ËÁßÀÔ´Ï´Ù.");
+		self.say("ì ê²€ì¤‘ì…ë‹ˆë‹¤.");
 		return;
 	}*/
-        String v0 = "Áö±Ş ¹ŞÀ» º¸»óÀ» ¼±ÅÃÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.\r\n\r\n#b";
+        String v0 = "ì§€ê¸‰ ë°›ì„ ë³´ìƒì„ ì„ íƒí•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.\r\n\r\n#b";
         if (totalPrice < 25000000) {
-            self.say("Áö±Ş ¹ŞÀ» º¸»óÀÌ ¾ø½À´Ï´Ù.");
+            self.say("ì§€ê¸‰ ë°›ì„ ë³´ìƒì´ ì—†ìŠµë‹ˆë‹¤.");
         } else {
             boolean find = false;
             if (totalPrice >= 25000000) {
                 int check = getPlayer().getOneInfoQuestInteger(1235999, "get_reward_2500");
                 if (0 == check) {
-                    v0 += "#L2500#2500¸¸¿ø º¸»óÀ» ¼ö·É¹Ş°Ú½À´Ï´Ù.#l\r\n";
+                    v0 += "#L2500#2500ë§Œì› ë³´ìƒì„ ìˆ˜ë ¹ë°›ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     find = true;
                 }
             }
             if (totalPrice >= 30000000) {
                 int check = getPlayer().getOneInfoQuestInteger(1235999, "get_reward_3000");
                 if (0 == check) {
-                    v0 += "#L3000#3000¸¸¿ø º¸»óÀ» ¼ö·É¹Ş°Ú½À´Ï´Ù.#l\r\n";
+                    v0 += "#L3000#3000ë§Œì› ë³´ìƒì„ ìˆ˜ë ¹ë°›ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     find = true;
                 }
 
@@ -2302,29 +2302,29 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             if (totalPrice >= 35000000) {
                 int check = getPlayer().getOneInfoQuestInteger(1235999, "get_reward_3500");
                 if (0 == check) {
-                    v0 += "#L3500#3500¸¸¿ø º¸»óÀ» ¼ö·É¹Ş°Ú½À´Ï´Ù.#l\r\n";
+                    v0 += "#L3500#3500ë§Œì› ë³´ìƒì„ ìˆ˜ë ¹ë°›ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     find = true;
                 }
             }
             if (totalPrice >= 40000000) {
                 int check = getPlayer().getOneInfoQuestInteger(1235999, "get_reward_4000");
                 if (0 == check) {
-                    v0 += "#L4000#4000¸¸¿ø º¸»óÀ» ¼ö·É¹Ş°Ú½À´Ï´Ù.#l\r\n";
+                    v0 += "#L4000#4000ë§Œì› ë³´ìƒì„ ìˆ˜ë ¹ë°›ê² ìŠµë‹ˆë‹¤.#l\r\n";
                     find = true;
                 }
             }
             if (totalPrice >= 43000000) {
                 int under4000 = totalPrice - 43000000;
-                int count = under4000 / 3000000  + 1; // 4300¶§ ±âº» 1È¸ °¡´É
+                int count = under4000 / 3000000  + 1; // 4300ë•Œ ê¸°ë³¸ 1íšŒ ê°€ëŠ¥
                 int getCount = getPlayer().getOneInfoQuestInteger(1235999, "get_reward_4300");
                 int remain = count - getCount;
                 if (remain > 0) {
-                    v0 += "#L4300#4300¸¸¿ø º¸»óÀ» ¼ö·É¹Ş°Ú½À´Ï´Ù. (" + remain + "È¸ ¼ö·É °¡´É)#l\r\n";
+                    v0 += "#L4300#4300ë§Œì› ë³´ìƒì„ ìˆ˜ë ¹ë°›ê² ìŠµë‹ˆë‹¤. (" + remain + "íšŒ ìˆ˜ë ¹ ê°€ëŠ¥)#l\r\n";
                     find = true;
                 }
             }
             if (!find) {
-                self.say("Áö±Ş ¹ŞÀ» º¸»óÀÌ ¾ø½À´Ï´Ù.");
+                self.say("ì§€ê¸‰ ë°›ì„ ë³´ìƒì´ ì—†ìŠµë‹ˆë‹¤.");
                 return;
             }
         }
@@ -2345,11 +2345,11 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             MapleInventoryManipulator.addFromDrop(getPlayer().getClient(), equip, true);
                             getPlayer().setEnchantPoint(getPlayer().getEnchantPoint() + 250000);
                             getPlayer().updateOneInfo(1235999, "get_reward_2500", "1");
-                            self.say("º¸»ó Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                            self.say("ë³´ìƒ ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.say("Àåºñ ÀÎº¥Åä¸® °ø°£À» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
+                    self.say("ì¥ë¹„ ì¸ë²¤í† ë¦¬ ê³µê°„ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
                 }
                 break;
             case 3000:
@@ -2367,10 +2367,10 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 
                         getPlayer().gainRealCash(1500000, true);
                         getPlayer().updateOneInfo(1235999, "get_reward_3000", "1");
-                        self.say("º¸»ó Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                        self.say("ë³´ìƒ ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                     }
                 } else {
-                    self.say("Àåºñ ÀÎº¥Åä¸® °ø°£À» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
+                    self.say("ì¥ë¹„ ì¸ë²¤í† ë¦¬ ê³µê°„ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
                 }
                 break;
             case 3500:
@@ -2388,11 +2388,11 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             MapleInventoryManipulator.addFromDrop(getPlayer().getClient(), equip, true);
                             getPlayer().setEnchantPoint(getPlayer().getEnchantPoint() + 300000);
                             getPlayer().updateOneInfo(1235999, "get_reward_3500", "1");
-                            self.say("º¸»ó Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                            self.say("ë³´ìƒ ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.say("Àåºñ ÀÎº¥Åä¸® °ø°£À» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
+                    self.say("ì¥ë¹„ ì¸ë²¤í† ë¦¬ ê³µê°„ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
                 }
                 break;
             case 4000:
@@ -2411,11 +2411,11 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             getPlayer().gainRealCash(2000000, true);
                             MapleInventoryManipulator.addFromDrop(getPlayer().getClient(), equip, true);
                             getPlayer().updateOneInfo(1235999, "get_reward_4000", "1");
-                            self.say("SAVIOR º¸»ó Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                            self.say("SAVIOR ë³´ìƒ ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.say("Àåºñ ÀÎº¥Åä¸® °ø°£À» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.");
+                    self.say("ì¥ë¹„ ì¸ë²¤í† ë¦¬ ê³µê°„ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”.");
                 }
                 break;
             case 4300:
@@ -2445,14 +2445,14 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                             }
                         }
                         find = true;
-                        self.say("ENDLESS º¸»ó Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                        self.say("ENDLESS ë³´ìƒ ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                     } else {
-                        self.say("ENDLESS º¸»ó Áö±Ş Áß ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+                        self.say("ENDLESS ë³´ìƒ ì§€ê¸‰ ì¤‘ ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
                         return;
                     }
                 }
                 if (!find) {
-                    self.say("4300¸¸¿ø ´©Àû º¸»ó Áß ¹ŞÀ» ¼ö ÀÖ´Â ´©Àû º¸»óÀÌ ¾ø½À´Ï´Ù.\r\n#e(" + count + "È¸ ¼ö·É °¡´É Áß " + remain + "È¸ ¼ö·ÉÇÔ)");
+                    self.say("4300ë§Œì› ëˆ„ì  ë³´ìƒ ì¤‘ ë°›ì„ ìˆ˜ ìˆëŠ” ëˆ„ì  ë³´ìƒì´ ì—†ìŠµë‹ˆë‹¤.\r\n#e(" + count + "íšŒ ìˆ˜ë ¹ ê°€ëŠ¥ ì¤‘ " + remain + "íšŒ ìˆ˜ë ¹í•¨)");
                 }
                 break;
         }
@@ -2471,7 +2471,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
                 String name = rs.getString("name");
                 String p = rs.getString("price").replace(",", "");
 
-                if (!name.contains("ÆĞÅ°Áö") && !name.contains("¾î¸°ÀÌ³¯") || name.contains("Ãß¼®") || name.contains("°¡Á¤ÀÇ´Ş") || name.contains("3ÁÖ³â") || name.contains("Å©¸®½º¸¶½º") || name.contains("»ó½ÃÆĞÅ°Áö") || name.contains("2023")) {
+                if (!name.contains("íŒ¨í‚¤ì§€") && !name.contains("ì–´ë¦°ì´ë‚ ") || name.contains("ì¶”ì„") || name.contains("ê°€ì •ì˜ë‹¬") || name.contains("3ì£¼ë…„") || name.contains("í¬ë¦¬ìŠ¤ë§ˆìŠ¤") || name.contains("ìƒì‹œíŒ¨í‚¤ì§€") || name.contains("2023")) {
                     totalPoint += Integer.parseInt(p);
                 }
             }
@@ -2499,16 +2499,16 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     	}
     	initNPC(MapleLifeFactory.getNPC(9010033));
     	int restPoint = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinRestPointReward.getQuestID(), "RestPoint");
-    	String text = "¾È³çÇÏ¼¼¿ä.\r\n"
-    			+ "¸ğÇè°¡´ÔÀÇ ¼ºÀåÀ» µ½±â À§ÇØ ÁØºñµÈ Ãâ¼® ½Ã½ºÅÛÀÔ´Ï´Ù.\r\n"
-    			+ "Àá½Ã ¾É¾Æ¼­ ½¬°í °è½Ã¸é ÀúÈñ°¡ ÁØºñÇÑ ¼±¹°À» µå¸±°Ô¿ä!\r\n\r\n"
-    			+ "¼±¹°Àº ÈŞ½Ä ½Ã°£ÀÌ 540ºĞ ´©ÀûµÉ ¶§¸¶´Ù ÇÏ³ª¾¿!\r\n"
-    			+ "ÃÑ 15°³¸¦ ¹ŞÀ¸½Ç ¼ö ÀÖÀ¸´Ï±î Âü°íÇØ ÁÖ¼¼¿ä!\r\n\r\n"
-    			+ "ÇöÀç ´©Àû ÈŞ½Ä ½Ã°£ : " + restPoint + "ºĞ\r\n\r\n";
+    	String text = "ì•ˆë…•í•˜ì„¸ìš”.\r\n"
+    			+ "ëª¨í—˜ê°€ë‹˜ì˜ ì„±ì¥ì„ ë•ê¸° ìœ„í•´ ì¤€ë¹„ëœ ì¶œì„ ì‹œìŠ¤í…œì…ë‹ˆë‹¤.\r\n"
+    			+ "ì ì‹œ ì•‰ì•„ì„œ ì‰¬ê³  ê³„ì‹œë©´ ì €í¬ê°€ ì¤€ë¹„í•œ ì„ ë¬¼ì„ ë“œë¦´ê²Œìš”!\r\n\r\n"
+    			+ "ì„ ë¬¼ì€ íœ´ì‹ ì‹œê°„ì´ 540ë¶„ ëˆ„ì ë  ë•Œë§ˆë‹¤ í•˜ë‚˜ì”©!\r\n"
+    			+ "ì´ 15ê°œë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìˆìœ¼ë‹ˆê¹Œ ì°¸ê³ í•´ ì£¼ì„¸ìš”!\r\n\r\n"
+    			+ "í˜„ì¬ ëˆ„ì  íœ´ì‹ ì‹œê°„ : " + restPoint + "ë¶„\r\n\r\n";
     	
-    	text += "#L0# Ãâ¼® ½Ã½ºÅÛ¿¡ °üÇØ ÀÚ¼¼È÷ ¾Ë°í ½Í½À´Ï´Ù.#l\r\n";
-    	text += "#L1# ´©Àû ÈŞ½Ä ½Ã°£ º¸»óÀ» ¼ö·ÉÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
-    	text += "#L2# ´©Àû ÈŞ½Ä ½Ã°£À» ÃÊ±âÈ­ÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
+    	text += "#L0# ì¶œì„ ì‹œìŠ¤í…œì— ê´€í•´ ìì„¸íˆ ì•Œê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+    	text += "#L1# ëˆ„ì  íœ´ì‹ ì‹œê°„ ë³´ìƒì„ ìˆ˜ë ¹í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
+    	text += "#L2# ëˆ„ì  íœ´ì‹ ì‹œê°„ì„ ì´ˆê¸°í™”í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
     	
     	int menu = self.askMenu(text);
     	
@@ -2531,20 +2531,20 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     			};
     	
     	if (menu == 0) {
-    		text = "´©Àû ÈŞ½Ä ½Ã°£¿¡ µû¶ó ¾Æ·¡ÀÇ º¸»óÀ» È¹µæÇÒ ¼ö ÀÖÀ¸¸ç,\r\n";
-    		text += "ÈŞ½Ä ½Ã°£Àº ¸¶À»¿¡¼­ ÀÇÀÚ ¶Ç´Â ¶óÀÌµù¿¡ ¾É¾Æ ÀÖ´Â µ¿¾È¸¸ ´©ÀûµË´Ï´Ù.\r\n";
+    		text = "ëˆ„ì  íœ´ì‹ ì‹œê°„ì— ë”°ë¼ ì•„ë˜ì˜ ë³´ìƒì„ íšë“í•  ìˆ˜ ìˆìœ¼ë©°,\r\n";
+    		text += "íœ´ì‹ ì‹œê°„ì€ ë§ˆì„ì—ì„œ ì˜ì ë˜ëŠ” ë¼ì´ë”©ì— ì•‰ì•„ ìˆëŠ” ë™ì•ˆë§Œ ëˆ„ì ë©ë‹ˆë‹¤.\r\n";
     		for (int[] timeReward : restTimeRewards) {
         		int time = timeReward[0];
         		int itemID = timeReward[1];
         		int itemQty = timeReward[2];
         		
-        		text += time + "ºĞ - #i" + itemID + "# #t" + itemID + "# " + itemQty + "°³ \r\n";
+        		text += time + "ë¶„ - #i" + itemID + "# #t" + itemID + "# " + itemQty + "ê°œ \r\n";
         	}
     		self.sayOk(text);
     		return;
     	}
     	else if (menu == 1) {
-    		text = "ÈŞ½Ä½Ã°£ ´©Àû º¸»óÀº ¾Æ·¡¿Í °°½À´Ï´Ù. (ÇöÀç ´©Àû : " + restPoint + "ºĞ)\r\n";
+    		text = "íœ´ì‹ì‹œê°„ ëˆ„ì  ë³´ìƒì€ ì•„ë˜ì™€ ê°™ìŠµë‹ˆë‹¤. (í˜„ì¬ ëˆ„ì  : " + restPoint + "ë¶„)\r\n";
     		for (int i = 0; i < restTimeRewards.length; i++) {
         		int[] timeReward = restTimeRewards[i];
         		int time = timeReward[0];
@@ -2553,10 +2553,10 @@ public class  JinCustomNPC extends ScriptEngineNPC {
         		String timeKey = "recv" + time; 
         		int timeValue = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinRestPointReward.getQuestID(), timeKey);
         		if (restPoint < time) {
-        			text += "#L" + i + "#" + time + "ºĞ #i" + itemID + "# #t" + itemID + "# " + itemQty + "°³ #r¼ö·ÉºÒ°¡#k#l\r\n";
+        			text += "#L" + i + "#" + time + "ë¶„ #i" + itemID + "# #t" + itemID + "# " + itemQty + "ê°œ #rìˆ˜ë ¹ë¶ˆê°€#k#l\r\n";
         		}
         		else {
-        			text += "#L" + i + "#" + time + "ºĞ #i" + itemID + "# #t" + itemID + "# " + itemQty + "°³ " + (timeValue == 0 ? "#b¼ö·É°¡´É#k" : "#r¼ö·É¿Ï·á#k") + "#l\r\n";
+        			text += "#L" + i + "#" + time + "ë¶„ #i" + itemID + "# #t" + itemID + "# " + itemQty + "ê°œ " + (timeValue == 0 ? "#bìˆ˜ë ¹ê°€ëŠ¥#k" : "#rìˆ˜ë ¹ì™„ë£Œ#k") + "#l\r\n";
         		}
         	}
     		int sel = self.askMenu(text);
@@ -2568,33 +2568,33 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     		String timeKey = "recv" + time; 
     		int timeValue = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinRestPointReward.getQuestID(), timeKey);
     		if (restPoint < time) {
-    			self.sayOk("ÈŞ½Ä ½Ã°£ÀÌ ºÎÁ·ÇÏ¿© ÇØ´çº¸»óÀ» ¼ö·ÉÇÏÁö ¸øÇß½À´Ï´Ù.");
+    			self.sayOk("íœ´ì‹ ì‹œê°„ì´ ë¶€ì¡±í•˜ì—¬ í•´ë‹¹ë³´ìƒì„ ìˆ˜ë ¹í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
     			return;
     		}
     		if (timeValue == 0) {
     			if (getPlayer().getInventory(GameConstants.getInventoryType(itemID)).getNumFreeSlot() > 0) {
     				getPlayer().gainItem(itemID, itemQty);
     				getPlayer().updateOneInfo(QuestExConstants.JinRestPointReward.getQuestID(), timeKey, "1");
-    				self.sayOk("º¸»óÀÌ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+    				self.sayOk("ë³´ìƒì´ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
     			}
     			else {
-    				self.sayOk("ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÏ¿© º¸»óÀ» ¼ö·ÉÇÏÁö ¸øÇß½À´Ï´Ù.");
+    				self.sayOk("ì¸ë²¤í† ë¦¬ ê³µê°„ì´ ë¶€ì¡±í•˜ì—¬ ë³´ìƒì„ ìˆ˜ë ¹í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
     			}
     		}
     		else {
-    			self.sayOk("ÇØ´ç º¸»óÀº ÀÌ¹Ì ¼ö·ÉÇÏ¿´½À´Ï´Ù.");
+    			self.sayOk("í•´ë‹¹ ë³´ìƒì€ ì´ë¯¸ ìˆ˜ë ¹í•˜ì˜€ìŠµë‹ˆë‹¤.");
     		}
     		return;
     	}
     	else if (menu == 2) {
-    		text = "´©Àû ÈŞ½Ä ½Ã°£À» ÃÊ±âÈ­ÇÏ±â À§ÇØ¼­´Â \r\n#b60,000 °­¸² Æ÷ÀÎÆ®#k°¡ ÇÊ¿äÇÕ´Ï´Ù.\r\n";
-    		text += "ÃÊ±âÈ­ ½Ã ¼ö·ÉÇÏÁö ¾ÊÀº º¸»óÀº ¼ö·ÉÇÒ ¼ö ¾øÀ¸´Ï,\r\n";
-    		text += "¹İµå½Ã ¼ö·ÉÇÏÁö ¾ÊÀº º¸»óÀÌ ÀÖ´ÂÁö È®ÀÎÇØ ÁÖ¼¼¿ä.\r\n\r\n";
-    		text += "#fc0xFFB2B2B2#ÇöÀç ´©Àû ÈŞ½Ä ½Ã°£ : " + restPoint + "ºĞ#k\r\n";
-    		text += "#L0#´©Àû ÈŞ½Ä ½Ã°£À» ÃÊ±âÈ­ÇÕ´Ï´Ù.#l";
+    		text = "ëˆ„ì  íœ´ì‹ ì‹œê°„ì„ ì´ˆê¸°í™”í•˜ê¸° ìœ„í•´ì„œëŠ” \r\n#b60,000 ê°•ë¦¼ í¬ì¸íŠ¸#kê°€ í•„ìš”í•©ë‹ˆë‹¤.\r\n";
+    		text += "ì´ˆê¸°í™” ì‹œ ìˆ˜ë ¹í•˜ì§€ ì•Šì€ ë³´ìƒì€ ìˆ˜ë ¹í•  ìˆ˜ ì—†ìœ¼ë‹ˆ,\r\n";
+    		text += "ë°˜ë“œì‹œ ìˆ˜ë ¹í•˜ì§€ ì•Šì€ ë³´ìƒì´ ìˆëŠ”ì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.\r\n\r\n";
+    		text += "#fc0xFFB2B2B2#í˜„ì¬ ëˆ„ì  íœ´ì‹ ì‹œê°„ : " + restPoint + "ë¶„#k\r\n";
+    		text += "#L0#ëˆ„ì  íœ´ì‹ ì‹œê°„ì„ ì´ˆê¸°í™”í•©ë‹ˆë‹¤.#l";
     		if (0 == self.askMenu(text)) {
     			if (getPlayer().getRealCash() < 60000) {
-                    self.say("°­¸² Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÏ¿© ÃÊ±âÈ­ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.say("ê°•ë¦¼ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•˜ì—¬ ì´ˆê¸°í™”í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
     			getPlayer().gainRealCash(-60000);
@@ -2605,7 +2605,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
             		String timeKey = "recv" + time; 
             		getPlayer().updateOneInfo(QuestExConstants.JinRestPointReward.getQuestID(), timeKey, "0");
             	}
-    			self.sayOk("ÃÊ±âÈ­°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+    			self.sayOk("ì´ˆê¸°í™”ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
     		}
     		return;
     	}
@@ -2618,7 +2618,7 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     	String today = sdf.format(System.currentTimeMillis());
     	int missionTime = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionTime");
-    	if (missionTime == 0 || Integer.parseInt(today) != missionTime) { //Ã¹½ÃÀÛ ¶Ç´Â ³¯Â¥¹Ù²ñ
+    	if (missionTime == 0 || Integer.parseInt(today) != missionTime) { //ì²«ì‹œì‘ ë˜ëŠ” ë‚ ì§œë°”ë€œ
     		getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionTime", today);
     		getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionClear", "0");
     		getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyLevelMob", "0");
@@ -2630,21 +2630,21 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 		boolean checkLevelMob = dailyLevelMob >= 15000;
 		boolean checkRuneUse = dailyRuneUse >= 5;
 		if (dailyMissionClear > 0) {
-			self.sayOk("±İÀÏ ÀÏÀÏ ¹Ì¼ÇÀ» ÀÌ¹Ì ¿Ï·áÇÏ¼Ì½À´Ï´Ù.");
+			self.sayOk("ê¸ˆì¼ ì¼ì¼ ë¯¸ì…˜ì„ ì´ë¯¸ ì™„ë£Œí•˜ì…¨ìŠµë‹ˆë‹¤.");
 			return;
 		}
-		String text = "¾Æ·¡ ¹Ì¼ÇÀ» ÀüºÎ ¿Ï·áÇÏ¸é ³×¿À ½ºÅæ 200°³¸¦ ¼ö·ÉÇÒ ¼ö ÀÖ½À´Ï´Ù.\r\n\r\n";
-		text += "- ·¹º§ ¹üÀ§ ¸ó½ºÅÍ 15,000 ¸¶¸® Ã³Ä¡ " + (checkLevelMob ? "#b¿Ï·á#k" : ("#bÁøÇàÁß("  + dailyLevelMob + "/15000)#k")) + "\r\n";
-		text += "- ·é 5È¸ »ç¿ë " + (checkRuneUse ? "#b¿Ï·á#k" : ("#bÁøÇàÁß("  + dailyRuneUse + "/5)#k")) + "\r\n\r\n";
-		text += "#L0#ÀÏÀÏ¹Ì¼Ç º¸»óÀ» ¼ö·ÉÇÕ´Ï´Ù.#l";
+		String text = "ì•„ë˜ ë¯¸ì…˜ì„ ì „ë¶€ ì™„ë£Œí•˜ë©´ ë„¤ì˜¤ ìŠ¤í†¤ 200ê°œë¥¼ ìˆ˜ë ¹í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\r\n\r\n";
+		text += "- ë ˆë²¨ ë²”ìœ„ ëª¬ìŠ¤í„° 15,000 ë§ˆë¦¬ ì²˜ì¹˜ " + (checkLevelMob ? "#bì™„ë£Œ#k" : ("#bì§„í–‰ì¤‘("  + dailyLevelMob + "/15000)#k")) + "\r\n";
+		text += "- ë£¬ 5íšŒ ì‚¬ìš© " + (checkRuneUse ? "#bì™„ë£Œ#k" : ("#bì§„í–‰ì¤‘("  + dailyRuneUse + "/5)#k")) + "\r\n\r\n";
+		text += "#L0#ì¼ì¼ë¯¸ì…˜ ë³´ìƒì„ ìˆ˜ë ¹í•©ë‹ˆë‹¤.#l";
 		if (0 == self.askMenu(text)) {
 			if (checkLevelMob && checkRuneUse) {
                 getPlayer().gainStackEventGauge(0, 200, true);
                 getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionClear", "1");
-                self.sayOk("ÀÏÀÏ ÀÓ¹«¸¦ ¿Ï·áÇÏ¿© ³×¿À ½ºÅæ 200°³¸¦ È¹µæÇÏ¿´½À´Ï´Ù.");
+                self.sayOk("ì¼ì¼ ì„ë¬´ë¥¼ ì™„ë£Œí•˜ì—¬ ë„¤ì˜¤ ìŠ¤í†¤ 200ê°œë¥¼ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			}
 			else {
-				self.sayOk("¾ÆÁ÷ ÀÏÀÏ ¹Ì¼ÇÀ» ¸ğµÎ Å¬¸®¾îÇÏÁö ¾Ê¾Ò½À´Ï´Ù.");
+				self.sayOk("ì•„ì§ ì¼ì¼ ë¯¸ì…˜ì„ ëª¨ë‘ í´ë¦¬ì–´í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 				return;
 			}
 		}
@@ -2652,22 +2652,22 @@ public class  JinCustomNPC extends ScriptEngineNPC {
     
     public void sendCubeLevelUpInfo() {
     	GradeRandomOption[] options = {GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional, GradeRandomOption.AmazingAdditional};
-    	String cubeTotalInfo = "Å¥ºê µî±Ş »ó½Â±îÁö #b³²Àº Å¥ºê »ç¿ë È½¼ö#k¸¦ È®ÀÎÇØ º¸¼¼¿ä.\r\n"
-    			+ "ÇØ´ç ¼öÄ¡´Â µî±Ş »ó½Â ½Ã ÃÊ±âÈ­µÇ¸ç, #b°èÁ¤ ³» °øÀ¯#kµË´Ï´Ù.\r\n\r\n";
+    	String cubeTotalInfo = "íë¸Œ ë“±ê¸‰ ìƒìŠ¹ê¹Œì§€ #bë‚¨ì€ íë¸Œ ì‚¬ìš© íšŸìˆ˜#kë¥¼ í™•ì¸í•´ ë³´ì„¸ìš”.\r\n"
+    			+ "í•´ë‹¹ ìˆ˜ì¹˜ëŠ” ë“±ê¸‰ ìƒìŠ¹ ì‹œ ì´ˆê¸°í™”ë˜ë©°, #bê³„ì • ë‚´ ê³µìœ #kë©ë‹ˆë‹¤.\r\n\r\n";
     	for (GradeRandomOption option : options) {
     		String cubeString = "";
 			switch (option) {
 				case Red:
-					cubeString = "·¹µå Å¥ºê";
+					cubeString = "ë ˆë“œ íë¸Œ";
 					break;
 				case Black:
-					cubeString = "ºí·¢ Å¥ºê";
+					cubeString = "ë¸”ë™ íë¸Œ";
 					break;
 				case Additional:
-					cubeString = "¿¡µğ¼Å³Î Å¥ºê";
+					cubeString = "ì—ë””ì…”ë„ íë¸Œ";
 					break;
 				case AmazingAdditional:
-					cubeString = "È­ÀÌÆ® ¿¡µğ¼Å³Î Å¥ºê";
+					cubeString = "í™”ì´íŠ¸ ì—ë””ì…”ë„ íë¸Œ";
 					break;
 			}
 			cubeTotalInfo += "#e[" + cubeString + "]#n\r\n";
@@ -2678,18 +2678,18 @@ public class  JinCustomNPC extends ScriptEngineNPC {
 				String gradeString = "";
 				if (levelUp.equals("RtoE")) {
 					grade = 1;
-					gradeString = "·¹¾î¿¡¼­ ¿¡ÇÈ";
+					gradeString = "ë ˆì–´ì—ì„œ ì—í”½";
 				}
 				else if (levelUp.equals("EtoU")) {
 					grade = 2;
-					gradeString = "¿¡ÇÈ¿¡¼­ À¯´ÏÅ©";
+					gradeString = "ì—í”½ì—ì„œ ìœ ë‹ˆí¬";
 				}
 				else if (levelUp.equals("UtoL")) {
 					grade = 3;
-					gradeString = "À¯´ÏÅ©¿¡¼­ ·¹Àü´õ¸®";
+					gradeString = "ìœ ë‹ˆí¬ì—ì„œ ë ˆì „ë”ë¦¬";
 				}
 				int levelUpCount = GameConstants.getCubeLevelUpCount(option, grade);
-				cubeTotalInfo += gradeString + " " + levelUpCount + "È¸ Áß " + tryCount + "È¸ ´©Àû\r\n"; 
+				cubeTotalInfo += gradeString + " " + levelUpCount + "íšŒ ì¤‘ " + tryCount + "íšŒ ëˆ„ì \r\n"; 
 			}
 			if (option != GradeRandomOption.AmazingAdditional) {
 				cubeTotalInfo += "\r\n";

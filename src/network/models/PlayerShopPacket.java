@@ -75,7 +75,7 @@ public class PlayerShopPacket {
       mplew.write(7);
       mplew.writeShort(merch.getVisitorSlot(chr));
       mplew.writeInt(merch.getItemId());
-      mplew.writeMapleAsciiString("고용상인");
+      mplew.writeMapleAsciiString("Merchant");
 
       for (Pair<Byte, MapleCharacter> storechr : merch.getVisitors()) {
          mplew.write(storechr.left);
@@ -139,9 +139,9 @@ public class PlayerShopPacket {
       }
 
       mplew.writeShort(ips.getVisitorSlot(chr));
-      PacketHelper.addCharLook(mplew, ((MaplePlayerShop)ips).getMCOwner(), false, false);
+      PacketHelper.addCharLook(mplew, ((MaplePlayerShop) ips).getMCOwner(), false, false);
       mplew.writeMapleAsciiString(ips.getOwnerName());
-      mplew.writeShort(((MaplePlayerShop)ips).getMCOwner().getJob());
+      mplew.writeShort(((MaplePlayerShop) ips).getMCOwner().getJob());
 
       for (Pair<Byte, MapleCharacter> storechr : ips.getVisitors()) {
          mplew.write(storechr.left);
@@ -370,7 +370,8 @@ public class PlayerShopPacket {
    public static byte[] getMiniGameReady(boolean ready) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.PLAYER_INTERACTION.getValue());
-      mplew.writeInt(ready ? PlayerInteractionHandler.Interaction.READY.action : PlayerInteractionHandler.Interaction.UN_READY.action);
+      mplew.writeInt(ready ? PlayerInteractionHandler.Interaction.READY.action
+            : PlayerInteractionHandler.Interaction.UN_READY.action);
       return mplew.getPacket();
    }
 

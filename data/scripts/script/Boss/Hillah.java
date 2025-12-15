@@ -18,24 +18,24 @@ public class Hillah extends ScriptEngineNPC {
     public void hillah_accept() {
         EventManager em = getEventManager("Hillah");
         if (em == null) {
-            self.say("Áö±İÀº Èú¶ó ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("ì§€ê¸ˆì€ íë¼ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty() == null) {
-            self.sayOk("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.sayOk("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+            self.sayOk("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
             return;
         }
-        int v0 = self.askMenu("#e<º¸½º:Èú¶ó>#n\r\nÈú¶ó¸¦ Ã³Ä¡ÇÏ°í, ¾Æ½º¿ÏÀÇ ÁøÁ¤ÇÑ ÇØ¹æÀ» ÀÌ·ï³¾ ÁØºñ´Â µÇ¼Ì½À´Ï±î? ´Ù¸¥ Áö¿ª¿¡ ÀÖ´Â ÆÄÆ¼¿øÀÌ ÀÖ´Ù¸é, ¸ğµÎ ¸ğ¿© ÁÖ¼¼¿ä.\r\n#b\r\n#L0# <º¸½º:Èú¶ó> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
+        int v0 = self.askMenu("#e<ë³´ìŠ¤:íë¼>#n\r\níë¼ë¥¼ ì²˜ì¹˜í•˜ê³ , ì•„ìŠ¤ì™„ì˜ ì§„ì •í•œ í•´ë°©ì„ ì´ë¤„ë‚¼ ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ? ë‹¤ë¥¸ ì§€ì—­ì— ìˆëŠ” íŒŒí‹°ì›ì´ ìˆë‹¤ë©´, ëª¨ë‘ ëª¨ì—¬ ì£¼ì„¸ìš”.\r\n#b\r\n#L0# <ë³´ìŠ¤:íë¼> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l");
         if (v0 == 0) {
-            String v1Menu = "\r\n#L1# ÇÏµå ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l\r\n#L2# ÇÏµå ¿¬½À ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l"; //³ªÁß¿¡ Ãß°¡ µÉ ÇÏµå¸ğµå¿Í ¿¬½À¸ğµå
-            int v1 = self.askMenu("#e<º¸½º:Èú¶ó>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#L0# ³ë¸Ö ¸ğµå ( ·¹º§ 120 ÀÌ»ó )#l");
+            String v1Menu = "\r\n#L1# í•˜ë“œ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l\r\n#L2# í•˜ë“œ ì—°ìŠµ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l"; //ë‚˜ì¤‘ì— ì¶”ê°€ ë  í•˜ë“œëª¨ë“œì™€ ì—°ìŠµëª¨ë“œ
+            int v1 = self.askMenu("#e<ë³´ìŠ¤:íë¼>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#L0# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 120 ì´ìƒ )#l");
             if (v1 != -1) {
                 if (target.getParty().isPartySameMap()) {
-                    if (v1 == 0) { //³ë¸»Èú¶ó
+                    if (v1 == 0) { //ë…¸ë§íë¼
                         String overLap = checkEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID(), DBConfig.isGanglim);
                         if (overLap == null) {
                             boolean canEnter = false;
@@ -45,7 +45,7 @@ public class Hillah extends ScriptEngineNPC {
                             if (canEnter) {
                                 em.setProperty("status0", "1");
                                 EventInstanceManager eim = em.readyInstance();
-                                eim.setProperty("map", 262030100); //º¹µµ1·Î
+                                eim.setProperty("map", 262030100); //ë³µë„1ë¡œ
                                 MapleMapFactory mFactory = getClient().getChannelServer().getMapFactory();
                                 mFactory.getMap(262030100).setLastRespawnTime(0);
                                 mFactory.getMap(262030100).resetFully(true);
@@ -57,17 +57,17 @@ public class Hillah extends ScriptEngineNPC {
 
                                 mFactory.getMap(262030300).resetFully(false);
                                 mFactory.getMap(262030300).spawnMonster(MapleLifeFactory.getMonster(8870000), new Point(165, 196), 0);
-                                updateEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID()); //Èú¶ó´Â
+                                updateEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID()); //íë¼ëŠ”
                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                             } else {
-                                self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                self.sayOk("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                             }
                         } else {
-                            self.sayOk("ÆÄÆ¼¿ø Áß #b#e" + overLap + "#n#k´ÔÀÌ ¿À´Ã ÀÔÀåÇß½À´Ï´Ù. <º¸½º:Èú¶ó> ³ë¸Ö ¸ğµå´Â ÇÏ·ç¿¡ 1¹ø¸¸ µµÀüÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                            self.sayOk("íŒŒí‹°ì› ì¤‘ #b#e" + overLap + "#n#kë‹˜ì´ ì˜¤ëŠ˜ ì…ì¥í–ˆìŠµë‹ˆë‹¤. <ë³´ìŠ¤:íë¼> ë…¸ë©€ ëª¨ë“œëŠ” í•˜ë£¨ì— 1ë²ˆë§Œ ë„ì „í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.sayOk(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                    self.sayOk(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                 }
             }
         }
@@ -77,24 +77,24 @@ public class Hillah extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2184001));
         EventManager em = getEventManager("Hillah");
         if (em == null) {
-            self.say("Áö±İÀº Èú¶ó ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("ì§€ê¸ˆì€ íë¼ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty() == null) {
-            self.sayOk("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.sayOk("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+            self.sayOk("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
             return;
         }
-        int v0 = self.askMenu("#e<º¸½º:Èú¶ó>#n\r\nÈú¶ó¸¦ Ã³Ä¡ÇÏ°í, ¾Æ½º¿ÏÀÇ ÁøÁ¤ÇÑ ÇØ¹æÀ» ÀÌ·ï³¾ ÁØºñ´Â µÇ¼Ì½À´Ï±î? ´Ù¸¥ Áö¿ª¿¡ ÀÖ´Â ÆÄÆ¼¿øÀÌ ÀÖ´Ù¸é, ¸ğµÎ ¸ğ¿© ÁÖ¼¼¿ä.\r\n#b\r\n#L0# <º¸½º:Èú¶ó> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
+        int v0 = self.askMenu("#e<ë³´ìŠ¤:íë¼>#n\r\níë¼ë¥¼ ì²˜ì¹˜í•˜ê³ , ì•„ìŠ¤ì™„ì˜ ì§„ì •í•œ í•´ë°©ì„ ì´ë¤„ë‚¼ ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ? ë‹¤ë¥¸ ì§€ì—­ì— ìˆëŠ” íŒŒí‹°ì›ì´ ìˆë‹¤ë©´, ëª¨ë‘ ëª¨ì—¬ ì£¼ì„¸ìš”.\r\n#b\r\n#L0# <ë³´ìŠ¤:íë¼> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l");
         if (v0 == 0) {
-            String v1Menu = "\r\n#L1# ÇÏµå ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l\r\n#L2# ÇÏµå ¿¬½À ¸ğµå ( ·¹º§ 170 ÀÌ»ó )#l"; //³ªÁß¿¡ Ãß°¡ µÉ ÇÏµå¸ğµå¿Í ¿¬½À¸ğµå
-            int v1 = self.askMenu("#e<º¸½º:Èú¶ó>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#L0# ³ë¸Ö ¸ğµå ( ·¹º§ 120 ÀÌ»ó )#l");
+            String v1Menu = "\r\n#L1# í•˜ë“œ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l\r\n#L2# í•˜ë“œ ì—°ìŠµ ëª¨ë“œ ( ë ˆë²¨ 170 ì´ìƒ )#l"; //ë‚˜ì¤‘ì— ì¶”ê°€ ë  í•˜ë“œëª¨ë“œì™€ ì—°ìŠµëª¨ë“œ
+            int v1 = self.askMenu("#e<ë³´ìŠ¤:íë¼>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#L0# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 120 ì´ìƒ )#l");
             if (v1 != -1) {
                 if (target.getParty().isPartySameMap()) {
-                    if (v1 == 0) { //³ë¸»Èú¶ó
+                    if (v1 == 0) { //ë…¸ë§íë¼
                         String overLap = checkEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID());
                         if (overLap == null) {
                             boolean canEnter = false;
@@ -104,7 +104,7 @@ public class Hillah extends ScriptEngineNPC {
                             if (canEnter) {
                                 em.setProperty("status0", "1");
                                 EventInstanceManager eim = em.readyInstance();
-                                eim.setProperty("map", 262030100); //º¹µµ1·Î
+                                eim.setProperty("map", 262030100); //ë³µë„1ë¡œ
                                 MapleMapFactory mFactory = getClient().getChannelServer().getMapFactory();
                                 mFactory.getMap(262030100).setLastRespawnTime(0);
                                 mFactory.getMap(262030100).resetFully(true);
@@ -117,15 +117,15 @@ public class Hillah extends ScriptEngineNPC {
                                 mFactory.getMap(262030300).resetFully(false);
                                 mFactory.getMap(262030300).spawnMonster(MapleLifeFactory.getMonster(8870000), new Point(165, 196), 0);
 
-                                updateEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID()); //Èú¶ó´Â
+                                updateEventNumber(getPlayer(), QuestExConstants.Hillah.getQuestID()); //íë¼ëŠ”
                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                             }
                         } else {
-                            self.sayOk("ÆÄÆ¼¿ø Áß #b#e" + overLap + "#n#k´ÔÀÌ ¿À´Ã ÀÔÀåÇß½À´Ï´Ù. <º¸½º:Èú¶ó> ³ë¸Ö ¸ğµå´Â ÇÏ·ç¿¡ 1¹ø¸¸ µµÀüÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                            self.sayOk("íŒŒí‹°ì› ì¤‘ #b#e" + overLap + "#n#kë‹˜ì´ ì˜¤ëŠ˜ ì…ì¥í–ˆìŠµë‹ˆë‹¤. <ë³´ìŠ¤:íë¼> ë…¸ë©€ ëª¨ë“œëŠ” í•˜ë£¨ì— 1ë²ˆë§Œ ë„ì „í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         }
                     }
                 } else {
-                    self.sayOk(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                    self.sayOk(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                 }
             }
         }
@@ -135,7 +135,7 @@ public class Hillah extends ScriptEngineNPC {
     public void hillah_next() {
         EventInstanceManager eim = getEventInstance();
         if (eim == null) {
-            getPlayer().dropMessage(5, "ÀÌº¥Æ® ÀÎ½ºÅÏ½º°¡ ¾ø½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "ì´ë²¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         Field field = getPlayer().getMap();
@@ -144,7 +144,7 @@ public class Hillah extends ScriptEngineNPC {
                 case 262030100:
                     if (eim.getProperty("stage1_bloodTooth") == null) {
                         eim.setProperty("stage1_bloodTooth", "1");
-                        field.broadcastMessage(CWvsContext.getScriptProgressMessage("ºí·¯µåÅõ½º°¡ ¿ì¸®ÀÇ Ä§ÀÔÀ» ´«Ä¡Ã«½À´Ï´Ù!!! ºí·¯µåÅõ½º¸¦ ¹°¸®Ä¡¼¼¿ä."));
+                        field.broadcastMessage(CWvsContext.getScriptProgressMessage("ë¸”ëŸ¬ë“œíˆ¬ìŠ¤ê°€ ìš°ë¦¬ì˜ ì¹¨ì…ì„ ëˆˆì¹˜ì±˜ìŠµë‹ˆë‹¤!!! ë¸”ëŸ¬ë“œíˆ¬ìŠ¤ë¥¼ ë¬¼ë¦¬ì¹˜ì„¸ìš”."));
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
@@ -158,7 +158,7 @@ public class Hillah extends ScriptEngineNPC {
                 case 262030200:
                     if (eim.getProperty("stage2_bloodTooth") == null) {
                         eim.setProperty("stage2_bloodTooth", "1");
-                        field.broadcastMessage(CWvsContext.getScriptProgressMessage("ºí·¯µåÅõ½º°¡ ¿ì¸®ÀÇ Ä§ÀÔÀ» ´«Ä¡Ã«½À´Ï´Ù!!! ºí·¯µåÅõ½º¸¦ ¹°¸®Ä¡¼¼¿ä."));
+                        field.broadcastMessage(CWvsContext.getScriptProgressMessage("ë¸”ëŸ¬ë“œíˆ¬ìŠ¤ê°€ ìš°ë¦¬ì˜ ì¹¨ì…ì„ ëˆˆì¹˜ì±˜ìŠµë‹ˆë‹¤!!! ë¸”ëŸ¬ë“œíˆ¬ìŠ¤ë¥¼ ë¬¼ë¦¬ì¹˜ì„¸ìš”."));
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
                         field.spawnMonster(MapleLifeFactory.getMonster(8870003), new Point(777, 196), 43);
@@ -171,14 +171,14 @@ public class Hillah extends ScriptEngineNPC {
                     break;
             }
         } else {
-            getPlayer().dropMessage(5, "¾ÆÁ÷Àº Æ÷Å»À» ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "ì•„ì§ì€ í¬íƒˆì„ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
     public void out_hillah() {
         initNPC(MapleLifeFactory.getNPC(2184001));
-        if (1 == self.askYesNo("ÀÌ´ë·Î Æ÷±âÇÏ½Ã°Ú¾î¿ä?")) {
-            self.say("¾îÂ¿ ¼ö ¾ø±º¿ä. ¿©±â±îÁö µµ¿ÍÁÖ¼Å¼­ °¨»çÇß¾î¿ä.");
+        if (1 == self.askYesNo("ì´ëŒ€ë¡œ í¬ê¸°í•˜ì‹œê² ì–´ìš”?")) {
+            self.say("ì–´ì©” ìˆ˜ ì—†êµ°ìš”. ì—¬ê¸°ê¹Œì§€ ë„ì™€ì£¼ì…”ì„œ ê°ì‚¬í–ˆì–´ìš”.");
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
             target.registerTransferField(262030000);

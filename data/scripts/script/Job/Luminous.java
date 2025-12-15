@@ -37,7 +37,7 @@ public class Luminous extends ScriptEngineNPC {
          * 09 00 BE EE B5 D2 C0 C7 20 B1 E6
          */
 
-        int menu = self.askSelectMenu(List.of("ºûÀÇ ±æ", "¾îµÒÀÇ ±æ"), 0x1, ScriptMessageFlag.NoEsc);
+        int menu = self.askSelectMenu(List.of("ë¹›ì˜ ê¸¸", "ì–´ë‘ ì˜ ê¸¸"), 0x1, ScriptMessageFlag.NoEsc);
 
         /*
         cm.teachSkill(27001201, 20, 20);
@@ -50,7 +50,7 @@ public class Luminous extends ScriptEngineNPC {
         Map<Skill, SkillEntry> skillEntryMap = new HashMap<>();
         int route = -1;
         if (menu == 0) {
-            //¾îµÒ -> ºû
+            //ì–´ë‘  -> ë¹›
             skillEntryMap.put(SkillFactory.getSkill(27001201), new SkillEntry(-1, (byte) 20, -1));
             skillEntryMap.put(SkillFactory.getSkill(27000207), new SkillEntry(-1, (byte) 5, -1));
 
@@ -59,7 +59,7 @@ public class Luminous extends ScriptEngineNPC {
 
             route = 1;
         } else if (menu == 1) {
-            //ºû -> ¾îµÒ
+            //ë¹› -> ì–´ë‘ 
             skillEntryMap.put(SkillFactory.getSkill(27001100), new SkillEntry(-1, (byte) 20, -1));
             skillEntryMap.put(SkillFactory.getSkill(27000106), new SkillEntry(-1, (byte) 5, -1));
 
@@ -74,7 +74,7 @@ public class Luminous extends ScriptEngineNPC {
             getPlayer().changeSkillsLevel(skillEntryMap);
             getPlayer().updateOneInfo(25505, "route", String.valueOf(route));
             getPlayer().updateOneInfo(25505, "skill4", String.valueOf(getPlayer().getOneInfoQuestInteger(25505, "skill4") + 1));
-            getPlayer().send(CWvsContext.InfoPacket.brownMessage("»õ·Î¿î ¿î¸íÀ» ¼±ÅÃÇß½À´Ï´Ù."));
+            getPlayer().send(CWvsContext.InfoPacket.brownMessage("ìƒˆë¡œìš´ ìš´ëª…ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤."));
         }
     }
 }

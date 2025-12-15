@@ -23,56 +23,56 @@ import java.util.List;
 public class YetiXPinkBean extends ScriptEngineNPC {
 
     public void q100564s() {
-        int v = self.askMenu("#b#e< ¿¹Æ¼XÇÎÅ©ºó ¿ùµå >#k#n°¡ ¿­·È½À´Ï´Ù!\r\n\r\n#L0##e¿¹Æ¼#n¸¦ ¸¸µé°í ½Í¾î¿ä.#l\r\n#L1##eÇÎÅ©ºó#nÀ» ¸¸µé°í ½Í¾î¿ä.#l\r\n#L2##eÁØºñµÈ Á¤·ÉÀÇ Ææ´øÆ®#n¸¦ Àç¹ß±Ş ¹Ş°í½Í¾î¿ä.#l\r\n#L3##eÁ¡°Ë º¸»ó#nÀ» ¹Ş°í ½Í¾î¿ä.#l\r\n#L4#ÄªÈ£¸¦ ´Ù½Ã ÄªÈ£ ±³È¯±ÇÀ¸·Î ¹Ù²Ù°í ½Í¾î¿ä(¿¹¾ÆÀÏÃ¼, ÇÎ¾ÆÀÏÃ¼)#l");
+        int v = self.askMenu("#b#e< ì˜ˆí‹°Xí•‘í¬ë¹ˆ ì›”ë“œ >#k#nê°€ ì—´ë ¸ìŠµë‹ˆë‹¤!\r\n\r\n#L0##eì˜ˆí‹°#në¥¼ ë§Œë“¤ê³  ì‹¶ì–´ìš”.#l\r\n#L1##eí•‘í¬ë¹ˆ#nì„ ë§Œë“¤ê³  ì‹¶ì–´ìš”.#l\r\n#L2##eì¤€ë¹„ëœ ì •ë ¹ì˜ íœë˜íŠ¸#në¥¼ ì¬ë°œê¸‰ ë°›ê³ ì‹¶ì–´ìš”.#l\r\n#L3##eì ê²€ ë³´ìƒ#nì„ ë°›ê³  ì‹¶ì–´ìš”.#l\r\n#L4#ì¹­í˜¸ë¥¼ ë‹¤ì‹œ ì¹­í˜¸ êµí™˜ê¶Œìœ¼ë¡œ ë°”ê¾¸ê³  ì‹¶ì–´ìš”(ì˜ˆì•„ì¼ì²´, í•‘ì•„ì¼ì²´)#l");
         if (v == 0) {
-            self.say("ÇöÀç ¿¹Æ¼ Ä³¸¯ÅÍ´Â Ä³¸¯ÅÍ »ı¼º ¸Ş´º¸¦ ÅëÇØ »ı¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.say("í˜„ì¬ ì˜ˆí‹° ìºë¦­í„°ëŠ” ìºë¦­í„° ìƒì„± ë©”ë‰´ë¥¼ í†µí•´ ìƒì„±í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         } else if (v == 1) {
-            self.say("ÇöÀç ÇÎÅ©ºó Ä³¸¯ÅÍ´Â Ä³¸¯ÅÍ »ı¼º ¸Ş´º¸¦ ÅëÇØ »ı¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.say("í˜„ì¬ í•‘í¬ë¹ˆ ìºë¦­í„°ëŠ” ìºë¦­í„° ìƒì„± ë©”ë‰´ë¥¼ í†µí•´ ìƒì„±í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         } else if (v == 2) {
             if (getPlayer().getQuestStatus(100568) == 2 && getPlayer().getOneInfoQuestInteger(100568, "fairy") == 0) {
                 if (target.exchange(2633422, 2) > 0) {
                     getPlayer().updateOneInfo(100568, "fairy" , "1");
-                    self.sayOk("ÁØºñµÈ Á¤·ÉÀÇ Ææ´øÆ® ±³È¯±Ç (14ÀÏ) x 2 °³°¡ Àç¹ß±Ş ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                    self.sayOk("ì¤€ë¹„ëœ ì •ë ¹ì˜ íœë˜íŠ¸ êµí™˜ê¶Œ (14ì¼) x 2 ê°œê°€ ì¬ë°œê¸‰ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                 }
             } else {
-                self.sayOk("ÀÌ¹Ì Àç¹ß±ŞÀ» ¹Ş¾Ò°Å³ª Àç¹ß±Ş ´ë»óÀÌ ¾Æ´Õ´Ï´Ù.");
+                self.sayOk("ì´ë¯¸ ì¬ë°œê¸‰ì„ ë°›ì•˜ê±°ë‚˜ ì¬ë°œê¸‰ ëŒ€ìƒì´ ì•„ë‹™ë‹ˆë‹¤.");
             }
         } else if (v == 3) {
             if (getPlayer().getOneInfoQuestInteger(1234699, "pReward") == 0) {
                 if (target.exchange(2633201, 2) > 0) {
                     getPlayer().updateOneInfo(1234699, "pReward", "1");
                 } else {
-                    self.say("¼Òºñ ÀÎº¥Åä¸® 2Ä­ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+                    self.say("ì†Œë¹„ ì¸ë²¤í† ë¦¬ 2ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
                 }
             } else {
-                self.say("ÀÌ¹Ì ¹ß±ŞÀ» ¹Ş¾Æ Áö±Ş´ë»óÀÌ ¾Æ´Õ´Ï´Ù.");
+                self.say("ì´ë¯¸ ë°œê¸‰ì„ ë°›ì•„ ì§€ê¸‰ëŒ€ìƒì´ ì•„ë‹™ë‹ˆë‹¤.");
             }
         } else if (v == 4) {
-            int vv = self.askMenu("#b#L0#ÇÎ¾ÆÀÏÃ¼#k¸¦ #rÇÎ¾ÆÀÏÃ¼ ±³È¯±Ç#kÀ¸·Î ¹Ù²Ù±â#l\r\n#b#L1#¿¹¾ÆÀÏÃ¼#k¸¦ #r¿¹¾ÆÀÏÃ¼ ±³È¯±Ç#kÀ¸·Î ¹Ù²Ù±â#l");
+            int vv = self.askMenu("#b#L0#í•‘ì•„ì¼ì²´#kë¥¼ #rí•‘ì•„ì¼ì²´ êµí™˜ê¶Œ#kìœ¼ë¡œ ë°”ê¾¸ê¸°#l\r\n#b#L1#ì˜ˆì•„ì¼ì²´#kë¥¼ #rì˜ˆì•„ì¼ì²´ êµí™˜ê¶Œ#kìœ¼ë¡œ ë°”ê¾¸ê¸°#l");
             if (vv == 0) {
                 if (target.exchange(3700287, -1, 2434030, 1) > 0) {
-                    self.sayOk("¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                    self.sayOk("ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                 } else {
-                    self.sayOk("ÇÎ¾ÆÀÏÃ¼¸¦ °®°í °è½ÃÁö ¾Ê°Å³ª ¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø´ÂÁö È®ÀÎ ¹Ù¶ø´Ï´Ù.");
+                    self.sayOk("í•‘ì•„ì¼ì²´ë¥¼ ê°–ê³  ê³„ì‹œì§€ ì•Šê±°ë‚˜ ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ëŠ”ì§€ í™•ì¸ ë°”ëë‹ˆë‹¤.");
                 }
             } else if (vv == 1) {
                 if (target.exchange(3700682, -1, 2633232, 1) > 0) {
-                    self.sayOk("¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                    self.sayOk("ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                 } else {
-                    self.sayOk("¿¹¾ÆÀÏÃ¼¸¦ °®°í °è½ÃÁö ¾Ê°Å³ª ¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø´ÂÁö È®ÀÎ ¹Ù¶ø´Ï´Ù.");
+                    self.sayOk("ì˜ˆì•„ì¼ì²´ë¥¼ ê°–ê³  ê³„ì‹œì§€ ì•Šê±°ë‚˜ ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ëŠ”ì§€ í™•ì¸ ë°”ëë‹ˆë‹¤.");
                 }
             }
         }
     }
 
     public void q100565s() {
-        if (getPlayer().getJob() == 13100) { //ÇÎÅ©ºó ½ºÅ©¸³Æ®
-            target.say("Ã³À½ º¸´Â °÷ÀÌ¾ß! ÈïºĞµÇ´Âµ¥?!");
-            target.say("...ÁøÁ¤ÇÏÀÚ. ¿¹Æ¼ ³à¼®°ú ´Ù½Ã ¸¸³ª±â Àü±îÁö ÈûÀ» µÇÃ£¾Æ¾ßÇØ.");
-            target.say("ÀÌ·² ¶§¸¦ ´ëºñÇØ¼­ #e#b'½ºÅÜ¾÷'#k#n ¹Ì¼Ç ¸®½ºÆ®¸¦ ÁØºñÇßÁö!");
-            target.say("»õ·Î¿î ¼¼°è¿¡ ¿Ô´Ù°í ´çÈ²ÇÏÁö ¸»°í È­¸é ¿ŞÂÊ ÀÌº¥Æ® ¾Ë¸²ÀÌ¿¡ ÀÖ´Â #e#b'¿¹Æ¼xÇÎÅ©ºó ½ºÅÜ¾÷'#k#n ¾ÆÀÌÄÜÀ» »ìÆìº¸ÀÚ! ÀÏ´Ü °Å±â¿¡ ÀûÈù ¸ñÇ¥µéÀ» ÇÏ³ª¾¿ Ãæ½ÇÈ÷ ´Ş¼ºÇØº¼±î. #e#r±×·¯¸é ÈûÀ» ´Ù½Ã µÇÃ£À» ¼ö ÀÖÀ» °Å¾ß.");
-            target.say("¿¹Æ¼ ³à¼®¿¡°Ô Áú ¼ö´Â ¾øÁö. ´ÙÇàÈ÷ 'ÆÄ¿ö ¿¤¸¯¼­'¿Í ÀÌ°ÍÀú°Í °¡Á®¿ÔÀ¸´Ï ÇÑ ¹ø ¿­½ÉÈ÷ ÇØº¸ÀÚ! ÇìÇìÇì.");
-            target.say("ÁÁ¾Æ ÇÊ¿äÇÑ ¹°°Çµµ Ã¬°å¾î!\r\n#e#bÃ¹ ¹øÂ° ¸ñÇ¥´Â ·¹º§ 30 ´Ş¼ºÀÌ´Ù!");
+        if (getPlayer().getJob() == 13100) { //í•‘í¬ë¹ˆ ìŠ¤í¬ë¦½íŠ¸
+            target.say("ì²˜ìŒ ë³´ëŠ” ê³³ì´ì•¼! í¥ë¶„ë˜ëŠ”ë°?!");
+            target.say("...ì§„ì •í•˜ì. ì˜ˆí‹° ë…€ì„ê³¼ ë‹¤ì‹œ ë§Œë‚˜ê¸° ì „ê¹Œì§€ í˜ì„ ë˜ì°¾ì•„ì•¼í•´.");
+            target.say("ì´ëŸ´ ë•Œë¥¼ ëŒ€ë¹„í•´ì„œ #e#b'ìŠ¤í…ì—…'#k#n ë¯¸ì…˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¤€ë¹„í–ˆì§€!");
+            target.say("ìƒˆë¡œìš´ ì„¸ê³„ì— ì™”ë‹¤ê³  ë‹¹í™©í•˜ì§€ ë§ê³  í™”ë©´ ì™¼ìª½ ì´ë²¤íŠ¸ ì•Œë¦¼ì´ì— ìˆëŠ” #e#b'ì˜ˆí‹°xí•‘í¬ë¹ˆ ìŠ¤í…ì—…'#k#n ì•„ì´ì½˜ì„ ì‚´í´ë³´ì! ì¼ë‹¨ ê±°ê¸°ì— ì íŒ ëª©í‘œë“¤ì„ í•˜ë‚˜ì”© ì¶©ì‹¤íˆ ë‹¬ì„±í•´ë³¼ê¹Œ. #e#rê·¸ëŸ¬ë©´ í˜ì„ ë‹¤ì‹œ ë˜ì°¾ì„ ìˆ˜ ìˆì„ ê±°ì•¼.");
+            target.say("ì˜ˆí‹° ë…€ì„ì—ê²Œ ì§ˆ ìˆ˜ëŠ” ì—†ì§€. ë‹¤í–‰íˆ 'íŒŒì›Œ ì—˜ë¦­ì„œ'ì™€ ì´ê²ƒì €ê²ƒ ê°€ì ¸ì™”ìœ¼ë‹ˆ í•œ ë²ˆ ì—´ì‹¬íˆ í•´ë³´ì! í—¤í—¤í—¤.");
+            target.say("ì¢‹ì•„ í•„ìš”í•œ ë¬¼ê±´ë„ ì±™ê²¼ì–´!\r\n#e#bì²« ë²ˆì§¸ ëª©í‘œëŠ” ë ˆë²¨ 30 ë‹¬ì„±ì´ë‹¤!");
             getSc().flushSay();
             getQuest().forceComplete(getPlayer(), getNpc().getId());
             MapleQuest.getInstance(100566).forceStart(getPlayer(), getNpc().getId(), null);
@@ -80,13 +80,13 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 getPlayer().updateInfoQuest(100565, "questNum=100565");
             }
             getPlayer().send(CField.UIPacket.openUI(1267));
-        } else if (getPlayer().getJob() == 13500) { //¿¹Æ¼½ºÅ©¸³Æ®
-            target.say("¿¹Æ¼, ´Ù½Ã ÈûÀ» µÇÃ£¾Æ¾ß ÇÑ´Ù.\r\nÇÎÅ©ºó¿¡°Ô Áú ¼ö ¾ø´Ù...");
-            target.say("ÀÌ·² ¶§¸¦ ´ëºñÇØ¼­ #e#b'½ºÅÜ¾÷'#k#n ¹Ì¼Ç ¸®½ºÆ®¸¦ ÁØºñÇß´Ù.");
-            target.say("¿¹Æ¼, ´çÈ²ÇÏÁö ¾Ê´Â´Ù\r\nÈ­¸é ¿ŞÂÊ ÀÌº¥Æ® ¾Ë¸²ÀÌ¿¡ ÀÖ´Â #e#b'¿¹Æ¼xÇÎÅ©ºó ½ºÅÜ¾÷'#k#n¿¡¼­ ¸ñÇ¥¸¦ È®ÀÎÇÏ°í ÇÏ³ª¾¿ ÇÏ³ª¾¿ ÇØ³ª°£´Ù.\r\n#e#r±×¸®°í ÈûÀ» µÇÃ£´Â´Ù.");
-            target.say("¿¹Æ¼ ³à¼®¿¡°Ô Áú ¼ö´Â ¾øÁö. ´ÙÇàÈ÷ 'ÆÄ¿ö ¿¤¸¯¼­'¿Í ÀÌ°ÍÀú°Í °¡Á®¿ÔÀ¸´Ï ÇÑ ¹ø ¿­½ÉÈ÷ ÇØº¸ÀÚ! ÇìÇìÇì.");
-            target.say("ÇÎÅ©ºó¿¡°Ô Áú ¼ö ¾ø´Ù.\r\n¿¹Æ¼, Áı¿¡¼­ °¡Á®¿Â ¹°°Çµéµµ ÀÖ´Ù. Á¦´ë·Î ÇÑ´Ù.");
-            target.say("¿¹Æ¼, ÇÊ¿äÇÑ ¹°°Ç Ã¬°å´Ù.\r\n#e#bÃ¹ ¹øÂ° ¸ñÇ¥ ·¹º§ 30 ´Ş¼ºÇÑ´Ù.");
+        } else if (getPlayer().getJob() == 13500) { //ì˜ˆí‹°ìŠ¤í¬ë¦½íŠ¸
+            target.say("ì˜ˆí‹°, ë‹¤ì‹œ í˜ì„ ë˜ì°¾ì•„ì•¼ í•œë‹¤.\r\ní•‘í¬ë¹ˆì—ê²Œ ì§ˆ ìˆ˜ ì—†ë‹¤...");
+            target.say("ì´ëŸ´ ë•Œë¥¼ ëŒ€ë¹„í•´ì„œ #e#b'ìŠ¤í…ì—…'#k#n ë¯¸ì…˜ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¤€ë¹„í–ˆë‹¤.");
+            target.say("ì˜ˆí‹°, ë‹¹í™©í•˜ì§€ ì•ŠëŠ”ë‹¤\r\ní™”ë©´ ì™¼ìª½ ì´ë²¤íŠ¸ ì•Œë¦¼ì´ì— ìˆëŠ” #e#b'ì˜ˆí‹°xí•‘í¬ë¹ˆ ìŠ¤í…ì—…'#k#nì—ì„œ ëª©í‘œë¥¼ í™•ì¸í•˜ê³  í•˜ë‚˜ì”© í•˜ë‚˜ì”© í•´ë‚˜ê°„ë‹¤.\r\n#e#rê·¸ë¦¬ê³  í˜ì„ ë˜ì°¾ëŠ”ë‹¤.");
+            target.say("ì˜ˆí‹° ë…€ì„ì—ê²Œ ì§ˆ ìˆ˜ëŠ” ì—†ì§€. ë‹¤í–‰íˆ 'íŒŒì›Œ ì—˜ë¦­ì„œ'ì™€ ì´ê²ƒì €ê²ƒ ê°€ì ¸ì™”ìœ¼ë‹ˆ í•œ ë²ˆ ì—´ì‹¬íˆ í•´ë³´ì! í—¤í—¤í—¤.");
+            target.say("í•‘í¬ë¹ˆì—ê²Œ ì§ˆ ìˆ˜ ì—†ë‹¤.\r\nì˜ˆí‹°, ì§‘ì—ì„œ ê°€ì ¸ì˜¨ ë¬¼ê±´ë“¤ë„ ìˆë‹¤. ì œëŒ€ë¡œ í•œë‹¤.");
+            target.say("ì˜ˆí‹°, í•„ìš”í•œ ë¬¼ê±´ ì±™ê²¼ë‹¤.\r\n#e#bì²« ë²ˆì§¸ ëª©í‘œ ë ˆë²¨ 30 ë‹¬ì„±í•œë‹¤.");
             getSc().flushSay();
             getQuest().forceComplete(getPlayer(), getNpc().getId());
             MapleQuest.getInstance(100566).forceStart(getPlayer(), getNpc().getId(), null);
@@ -120,9 +120,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(2350000, 1) > 0) {
                 int questId = 100566;
                 clearStepUp(questId);
-                sayStepUp(1, 2350000, "ÄŞº¸Å³ 300 ´Ş¼º");
+                sayStepUp(1, 2350000, "ì½¤ë³´í‚¬ 300 ë‹¬ì„±");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -132,12 +132,12 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(4001832, 9000) > 0) {
                 int questId = 100567;
                 clearStepUp(questId);
-                sayStepUp(2, 4001832, "·¹º§ 50 ´Ş¼º");
+                sayStepUp(2, 4001832, "ë ˆë²¨ 50 ë‹¬ì„±");
                 if (getPlayer().getLevel() >= 50) {
                     getPlayer().updateOneInfo(100565, "questNum", "100567");
                 }
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -148,9 +148,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(100568, "fairy", "1");
                 int questId = 100568;
                 clearStepUp(questId);
-                sayStepUp(3, 2437095, "·¹º§ ¹üÀ§ ¸ó½ºÅÍ 999¸¶¸® Ã³Ä¡");
+                sayStepUp(3, 2437095, "ë ˆë²¨ ë²”ìœ„ ëª¬ìŠ¤í„° 999ë§ˆë¦¬ ì²˜ì¹˜");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù. ¼ÒºñÃ¢ 3Ä­ÀÇ ¿©À¯°¡ ÇÊ¿äÇÏ´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤. ì†Œë¹„ì°½ 3ì¹¸ì˜ ì—¬ìœ ê°€ í•„ìš”í•˜ë‹¤.");
             }
         }
     }
@@ -163,9 +163,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (getPlayer().getLevel() >= 70) {
                     getPlayer().updateOneInfo(100565, "questNum", "100569");
                 }
-                sayStepUp(4, 4001211, "·¹º§ 70 ´Ş¼º");
+                sayStepUp(4, 4001211, "ë ˆë²¨ 70 ë‹¬ì„±");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -175,9 +175,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(2048759, 200) > 0) {
                 int questId = 100570;
                 clearStepUp(questId);
-                sayStepUp(5, 2048759, "·é 2È¸ »ç¿ë");
+                sayStepUp(5, 2048759, "ë£¬ 2íšŒ ì‚¬ìš©");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -190,9 +190,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (getPlayer().getLevel() >= 100) {
                     getPlayer().updateOneInfo(100565, "questNum", "100571");
                 }
-                sayStepUp(6, 2048758, "·¹º§ 100 ´Ş¼º");
+                sayStepUp(6, 2048758, "ë ˆë²¨ 100 ë‹¬ì„±");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -202,9 +202,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(2633349, 20) > 0) {
                 int questId = 100572;
                 clearStepUp(questId);
-                sayStepUp(7, 2633349, "¸ó½ºÅÍ ÆÄÅ© 2È¸ Å¬¸®¾î");
+                sayStepUp(7, 2633349, "ëª¬ìŠ¤í„° íŒŒí¬ 2íšŒ í´ë¦¬ì–´");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -217,9 +217,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (getPlayer().getLevel() >= 150) {
                     getPlayer().updateOneInfo(100565, "questNum", "100573");
                 }
-                sayStepUp(8, 2631822, "·¹º§ 150 ´Ş¼º");
+                sayStepUp(8, 2631822, "ë ˆë²¨ 150 ë‹¬ì„±");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -229,9 +229,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(2048766, 30) > 0) {
                 int questId = 100574;
                 clearStepUp(questId);
-                sayStepUp(9, 2048766, "¿¤¸®Æ® ¸ó½ºÅÍ/Ã¨ÇÇ¾ğ 5¸¶¸® Ã³Ä¡");
+                sayStepUp(9, 2048766, "ì—˜ë¦¬íŠ¸ ëª¬ìŠ¤í„°/ì±”í”¼ì–¸ 5ë§ˆë¦¬ ì²˜ì¹˜");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -251,9 +251,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (chuk >= 50) {
                     getPlayer().updateOneInfo(100565, "questNum", "100575");
                 }
-                sayStepUp(10, 2434007, "½ºÅ¸Æ÷½º 50 ÀÌ»ó ¸ÂÃß±â");
+                sayStepUp(10, 2434007, "ìŠ¤íƒ€í¬ìŠ¤ 50 ì´ìƒ ë§ì¶”ê¸°");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -270,9 +270,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             if (target.exchange(5062010, 100) > 0) {
                 int questId = 100576;
                 clearStepUp(questId);
-                sayStepUp(11, 5062010, "Ä«¿À½º È¥Å×ÀÏ Ã³Ä¡");
+                sayStepUp(11, 5062010, "ì¹´ì˜¤ìŠ¤ í˜¼í…Œì¼ ì²˜ì¹˜");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -285,9 +285,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (getPlayer().getLevel() >= 200) {
                     getPlayer().updateOneInfo(100565, "questNum", "100577");
                 }
-                sayStepUp(12, 2434011, "·¹º§ 200 ´Ş¼º");
+                sayStepUp(12, 2434011, "ë ˆë²¨ 200 ë‹¬ì„±");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -298,20 +298,20 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 String start = "";
                 String end = "";
                 if (getPlayer().getJob() == 13100) {
-                    start = "ÁÁ¾Æ! #e" + 13 + "´Ü°è ¹Ì¼Ç#nÀ» Å¬¸®¾îÇß´Ù!";
-                    end = "¸ğµç ¹Ì¼ÇÀ» ¿Ï·áÇß±º! ÀÌÁ¦ ¾î´À Á¤µµ Èûµµ µ¹¾Æ¿Â °Í °°´Ù!\r\n¿¹Æ¼ ³à¼®. È¥ÂáÀ» ³»Áà¾ßÁö! ÇìÇì!";
+                    start = "ì¢‹ì•„! #e" + 13 + "ë‹¨ê³„ ë¯¸ì…˜#nì„ í´ë¦¬ì–´í–ˆë‹¤!";
+                    end = "ëª¨ë“  ë¯¸ì…˜ì„ ì™„ë£Œí–ˆêµ°! ì´ì œ ì–´ëŠ ì •ë„ í˜ë„ ëŒì•„ì˜¨ ê²ƒ ê°™ë‹¤!\r\nì˜ˆí‹° ë…€ì„. í˜¼ì­ì„ ë‚´ì¤˜ì•¼ì§€! í—¤í—¤!";
                 } else if (getPlayer().getJob() == 13500) {
-                    start = "¿¹Æ¼! #e" + 13 + "´Ü°è ¹Ì¼Ç#nÀ» Å¬¸®¾îÇß´Ù!";
-                    end = "¿¹Æ¼, ¸ğµç ¹Ì¼ÇÀ» ¿Ï·áÇß´Ù!\r\n¿¹Æ¼, ±Í¿©¿ò°ú °­·ÂÇÔÀ» ¸ğµÎ °¡Á³´Ù.\r\nÀÌÁ¦ ÇÎÅ©ºóÀ» ¿ÍÀåÃ¢ ¿ìÁö²öÇØÁÙ ¼ö ÀÖ´Ù.";
+                    start = "ì˜ˆí‹°! #e" + 13 + "ë‹¨ê³„ ë¯¸ì…˜#nì„ í´ë¦¬ì–´í–ˆë‹¤!";
+                    end = "ì˜ˆí‹°, ëª¨ë“  ë¯¸ì…˜ì„ ì™„ë£Œí–ˆë‹¤!\r\nì˜ˆí‹°, ê·€ì—¬ì›€ê³¼ ê°•ë ¥í•¨ì„ ëª¨ë‘ ê°€ì¡Œë‹¤.\r\nì´ì œ í•‘í¬ë¹ˆì„ ì™€ì¥ì°½ ìš°ì§€ëˆí•´ì¤„ ìˆ˜ ìˆë‹¤.";
                 }
-                target.say(start + "\r\n\r\n\r\n#e#b<" + 13 + "´Ü°è ½ºÅÜ¾÷ ¹Ì¼Ç ¿Ï·á º¸»ó>\r\nº¸»ó");
+                target.say(start + "\r\n\r\n\r\n#e#b<" + 13 + "ë‹¨ê³„ ìŠ¤í…ì—… ë¯¸ì…˜ ì™„ë£Œ ë³´ìƒ>\r\në³´ìƒ");
                 target.say(end);
                 int questId = 100578;
                 MapleQuest.getInstance(questId).forceComplete(getPlayer(), 9010000);
                 getPlayer().updateOneInfo(100565, "stepNum", "finish");
                 getPlayer().updateOneInfo(100565, "questNum", "100578");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -331,10 +331,10 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                     p.writeMapleAsciiString("r3=1;");
                 }
                 getPlayer().send(p.getPacket());
-                self.say("#b½ºÅÜ¾÷ ¹Ì¼ÇÀ» ÀüºÎ ¿Ï·áÇÏ¼Ì±º¿ä!#k\r\n¿ùµå ³» ÀÌµ¿ °¡´ÉÇÑ ÄªÈ£ ±³È¯±ÇÀ» º¸»óÀ¸·Î µå¸®°Ú½À´Ï´Ù.\r\n\r\n#e#b#i" + exItem + "# #z" + exItem + "#", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("#bìŠ¤í…ì—… ë¯¸ì…˜ì„ ì „ë¶€ ì™„ë£Œí•˜ì…¨êµ°ìš”!#k\r\nì›”ë“œ ë‚´ ì´ë™ ê°€ëŠ¥í•œ ì¹­í˜¸ êµí™˜ê¶Œì„ ë³´ìƒìœ¼ë¡œ ë“œë¦¬ê² ìŠµë‹ˆë‹¤.\r\n\r\n#e#b#i" + exItem + "# #z" + exItem + "#", ScriptMessageFlag.NpcReplacedByNpc);
                 getPlayer().updateOneInfo(100565, "questNum", "finish");
             } else {
-                target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+                target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
             }
         }
     }
@@ -343,14 +343,14 @@ public class YetiXPinkBean extends ScriptEngineNPC {
         String start = "";
         String end = "";
         if (getPlayer().getJob() == 13100) {
-            start = "ÁÁ¾Æ! #e" + d + "´Ü°è ¹Ì¼Ç#nÀ» Å¬¸®¾îÇß´Ù!";
-            end = "ÀÌ ±â¼¼¸¦ ¸ô¾Æ¼­ ´ÙÀ½ ´Ü°è·Î ³Ñ¾î°¡ º¼±î?\r\n´ÙÀ½Àº ¹Ù·Î ÀÌ°Å±º!\r\n\r\n";
+            start = "ì¢‹ì•„! #e" + d + "ë‹¨ê³„ ë¯¸ì…˜#nì„ í´ë¦¬ì–´í–ˆë‹¤!";
+            end = "ì´ ê¸°ì„¸ë¥¼ ëª°ì•„ì„œ ë‹¤ìŒ ë‹¨ê³„ë¡œ ë„˜ì–´ê°€ ë³¼ê¹Œ?\r\në‹¤ìŒì€ ë°”ë¡œ ì´ê±°êµ°!\r\n\r\n";
         } else if (getPlayer().getJob() == 13500) {
-            start = "¿¹Æ¼! #e" + d + "´Ü°è ¹Ì¼Ç#nÀ» Å¬¸®¾îÇß´Ù!\r\n¼±¹° ÀÚ°İ ÀÖ´Ù.";
-            end = "¿¹Æ¼, ÈûÀ» µÇÃ£°í ÀÖ´Ù. ¸ØÃßÁö ¾Ê´Â´Ù.\r\n´ÙÀ½ ¹Ì¼Çµµ ¹Ù·Î ÇØ¹ö¸°´Ù.\r\n\r\n";
+            start = "ì˜ˆí‹°! #e" + d + "ë‹¨ê³„ ë¯¸ì…˜#nì„ í´ë¦¬ì–´í–ˆë‹¤!\r\nì„ ë¬¼ ìê²© ìˆë‹¤.";
+            end = "ì˜ˆí‹°, í˜ì„ ë˜ì°¾ê³  ìˆë‹¤. ë©ˆì¶”ì§€ ì•ŠëŠ”ë‹¤.\r\në‹¤ìŒ ë¯¸ì…˜ë„ ë°”ë¡œ í•´ë²„ë¦°ë‹¤.\r\n\r\n";
         }
-        target.say(start + "\r\n\r\n\r\n#e#b<" + d + "´Ü°è ½ºÅÜ¾÷ ¹Ì¼Ç ¿Ï·á º¸»ó>\r\n\r\n" + "#i" + reward + "# #z" + reward + "#");
-        target.say(end + "#b#e<" + (d + 1) + "´Ü°è ½ºÅÜ¾÷ ¹Ì¼Ç>\r\n#k- " + nextMission);
+        target.say(start + "\r\n\r\n\r\n#e#b<" + d + "ë‹¨ê³„ ìŠ¤í…ì—… ë¯¸ì…˜ ì™„ë£Œ ë³´ìƒ>\r\n\r\n" + "#i" + reward + "# #z" + reward + "#");
+        target.say(end + "#b#e<" + (d + 1) + "ë‹¨ê³„ ìŠ¤í…ì—… ë¯¸ì…˜>\r\n#k- " + nextMission);
     }
 
     private void clearStepUp(int questId) {
@@ -360,13 +360,13 @@ public class YetiXPinkBean extends ScriptEngineNPC {
         getPlayer().updateOneInfo(100565, "questNum", " ");
     }
 
-    //////////ÇÎÅ©ºó º¸»ó¾ÆÀÌÅÛ ½ºÅ©¸³Æ®
+    //////////í•‘í¬ë¹ˆ ë³´ìƒì•„ì´í…œ ìŠ¤í¬ë¦½íŠ¸
     public void consume_2631822() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (target.exchange(1012478, 1, 1032241, 1, 1113149, 1, 1122150, 1, 1182087, 1, 2631822, -1) > 0) {
 
         } else {
-            target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+            target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
         }
     }
 
@@ -375,7 +375,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() > 1) {
             int[] rewards00 = new int[]{1302361, 1312218, 1322270, 1402273, 1412193, 1422201, 1432231, 1442289};
             int[] rewards01 = new int[]{1482236, 1532162};
-            String r = "¹«±â¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.#b\r\n\r\n";
+            String r = "ë¬´ê¸°ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.#b\r\n\r\n";
             if (getPlayer().getJob() == 13100) {
                 for (int i = 0; i < rewards00.length; i++) {
                     r += "#L" + i + "# #i" + rewards00[i] + "# #z" + rewards00[i] + "# #l\r\n";
@@ -395,7 +395,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             }
             target.exchange(2631528, -1);
         } else {
-            target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+            target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
         }
     }
 
@@ -406,14 +406,14 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 exchangePinkBeanSupportEquip(1022144);
             }
         } else {
-            target.say("º¸»óÀ» ¹ŞÀ» °ø°£ÀÌ ºÎÁ·ÇÑ °Í °°´Ù.");
+            target.say("ë³´ìƒì„ ë°›ì„ ê³µê°„ì´ ë¶€ì¡±í•œ ê²ƒ ê°™ë‹¤.");
         }
     }
 
     public void consume_2633195() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         int[][] reward = new int[][]{{2633222, 20}, {2633223, 10}};
-        int v = self.askMenu("µÑÁß ÇÏ³ª¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#b#L0# #i" + reward[0][0] + "# #z" + reward[0][0] + "# " + reward[0][1] + "°³\r\n#L1# #i" + reward[1][0] + "# #z" + reward[1][0] + "# " + reward[1][1] + "°³");
+        int v = self.askMenu("ë‘˜ì¤‘ í•˜ë‚˜ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#b#L0# #i" + reward[0][0] + "# #z" + reward[0][0] + "# " + reward[0][1] + "ê°œ\r\n#L1# #i" + reward[1][0] + "# #z" + reward[1][0] + "# " + reward[1][1] + "ê°œ");
         if (v >= 0 && target.exchange(reward[v][0], reward[v][1], 2633195, -1) > 0) {
 
         }
@@ -436,7 +436,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     public void consume_2633349() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (GameConstants.isYetiPinkBean(getPlayer().getJob())) {
-            self.say("ÇÎÅ©ºó°ú ¿¹Æ¼´Â ÀÍ½ºÆ®¸² ¼ºÀåºñ¾àÀ» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.say("í•‘í¬ë¹ˆê³¼ ì˜ˆí‹°ëŠ” ìµìŠ¤íŠ¸ë¦¼ ì„±ì¥ë¹„ì•½ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         String percent = "";
@@ -446,20 +446,20 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 for (int a = 0; a < GameConstants.extreamPotion()[getPlayer().getLevel() - 141][i - 1]; a++) {
                     levelUp.add(i);
                 }
-                percent += "- " + i + "·¹º§ »ó½Â : " + GameConstants.extreamPotion()[getPlayer().getLevel() - 141][i - 1] + "%\r\n";
+                percent += "- " + i + "ë ˆë²¨ ìƒìŠ¹ : " + GameConstants.extreamPotion()[getPlayer().getLevel() - 141][i - 1] + "%\r\n";
             }
-            if (1 == self.askYesNo("#r#eÀÍ½ºÆ®¸² ¼ºÀåÀÇ ºñ¾à#k#nÀ» Áö±İ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n¡Ø »ç¿ë ½Ã #e#b·£´ıÇÑ È®·ü#n#k¿¡ µû¶ó #b#e1 ~ 10·¹º§ÀÌ »ó½Â#k#nÇÏ¸ç,¡¡ Ä³¸¯ÅÍ ·¹º§ÀÌ ³ôÀ»¼ö·Ï ±× È®·üÀÌ ³·¾ÆÁı´Ï´Ù.\r\n\r\n<#b" + getPlayer().getLevel() + "·¹º§#k¿¡¼­ »ç¿ë>\r\n" + percent)) {
+            if (1 == self.askYesNo("#r#eìµìŠ¤íŠ¸ë¦¼ ì„±ì¥ì˜ ë¹„ì•½#k#nì„ ì§€ê¸ˆ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\nâ€» ì‚¬ìš© ì‹œ #e#bëœë¤í•œ í™•ë¥ #n#kì— ë”°ë¼ #b#e1 ~ 10ë ˆë²¨ì´ ìƒìŠ¹#k#ní•˜ë©°,ã€€ ìºë¦­í„° ë ˆë²¨ì´ ë†’ì„ìˆ˜ë¡ ê·¸ í™•ë¥ ì´ ë‚®ì•„ì§‘ë‹ˆë‹¤.\r\n\r\n<#b" + getPlayer().getLevel() + "ë ˆë²¨#kì—ì„œ ì‚¬ìš©>\r\n" + percent)) {
                 Collections.shuffle(levelUp);
                 int plus = levelUp.get(Randomizer.nextInt(levelUp.size()));
                 for (int i = 0; i < plus; i++) {
                     getPlayer().levelUp();
                 }
-                self.sayOk("ÀÍ½ºÆ®¸² ¼ºÀåÀÇ ºñ¾àÀ¸·Î #e#r" + plus + "·¹º§#k#n ¼ºÀåÇß½À´Ï´Ù!", ScriptMessageFlag.NoEsc);
+                self.sayOk("ìµìŠ¤íŠ¸ë¦¼ ì„±ì¥ì˜ ë¹„ì•½ìœ¼ë¡œ #e#r" + plus + "ë ˆë²¨#k#n ì„±ì¥í–ˆìŠµë‹ˆë‹¤!", ScriptMessageFlag.NoEsc);
                 target.exchange(2633349, -1);
             }
         } else {
             getPlayer().gainExp(571115568.0d, true, false, false);
-            self.sayOk("ÀÍ½ºÆ®¸² ¼ºÀåÀÇ ºñ¾àÀ¸·Î °æÇèÄ¡¸¦ 571115568¸¸Å­ È¹µæÇÏ¿´½À´Ï´Ù.", ScriptMessageFlag.NoEsc);
+            self.sayOk("ìµìŠ¤íŠ¸ë¦¼ ì„±ì¥ì˜ ë¹„ì•½ìœ¼ë¡œ ê²½í—˜ì¹˜ë¥¼ 571115568ë§Œí¼ íšë“í•˜ì˜€ìŠµë‹ˆë‹¤.", ScriptMessageFlag.NoEsc);
             target.exchange(2633349, -1);
         }
     }
@@ -467,7 +467,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     public void consume_2633222() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() >= 200 && getPlayer().getLevel() < 210) {
-            if (1 == self.askYesNo("#r#e< ¿¹Æ¼XÇÎÅ©ºó ¼ºÀåÀÇ ºñ¾à 1 > #k#nÀ» Áö±İ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#r#e< ì˜ˆí‹°Xí•‘í¬ë¹ˆ ì„±ì¥ì˜ ë¹„ì•½ 1 > #k#nì„ ì§€ê¸ˆ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(2633222, -1) > 0) {
                     getPlayer().levelUp();
                     getPlayer().setExp(0);
@@ -477,20 +477,20 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 }
             }
         } else if (getPlayer().getLevel() >= 210) {
-            if (1 == self.askYesNo("#r#e< ¿¹Æ¼XÇÎÅ©ºó ¼ºÀåÀÇ ºñ¾à 1 > #k#nÀ» Áö±İ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#r#e< ì˜ˆí‹°Xí•‘í¬ë¹ˆ ì„±ì¥ì˜ ë¹„ì•½ 1 > #k#nì„ ì§€ê¸ˆ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(2633222, -1) > 0) {
                     getPlayer().gainExp(6120258214.0d, true, false, false);
                 }
             }
         } else {
-            self.say("·¹º§ÀÌ ³·¾Æ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.say("ë ˆë²¨ì´ ë‚®ì•„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
     public void consume_2633223() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() >= 210 && getPlayer().getLevel() < 220) {
-            if (1 == self.askYesNo("#r#e< ¿¹Æ¼XÇÎÅ©ºó ¼ºÀåÀÇ ºñ¾à 2 > #k#nÀ» Áö±İ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#r#e< ì˜ˆí‹°Xí•‘í¬ë¹ˆ ì„±ì¥ì˜ ë¹„ì•½ 2 > #k#nì„ ì§€ê¸ˆ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(2633223, -1) > 0) {
                     getPlayer().levelUp();
                     getPlayer().setExp(0);
@@ -500,29 +500,29 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 }
             }
         } else if (getPlayer().getLevel() >= 220) {
-            if (1 == self.askYesNo("#r#e< ¿¹Æ¼XÇÎÅ©ºó ¼ºÀåÀÇ ºñ¾à 2 > #k#nÀ» Áö±İ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#r#e< ì˜ˆí‹°Xí•‘í¬ë¹ˆ ì„±ì¥ì˜ ë¹„ì•½ 2 > #k#nì„ ì§€ê¸ˆ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(2633223, -1) > 0) {
                     getPlayer().gainExp(27279159629.0d, true, false, false);
                 }
             }
         } else {
-            self.say("·¹º§ÀÌ ³·¾Æ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.say("ë ˆë²¨ì´ ë‚®ì•„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
     public void q100785s() {
-        self.say("¾È³çÇÏ¼¼¿ä! #b#e#h0##k#n´Ô.\r\n\r\n#b #i3700287# #z3700287##k¿Í #b#i3700682# #z3700682##k ÄªÈ£ 2°³¸¦\r\n#r¿¹Æ¼XÇÎÅ©ºó ÄªÈ£ ±³È¯±Ç#k°ú ±³È¯ÇØµå¸®°í ÀÖ½À´Ï´Ù.\r\n\r\n#e [È¹µæ °¡´ÉÇÑ ÄªÈ£]\r\n#b#n #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ì•ˆë…•í•˜ì„¸ìš”! #b#e#h0##k#në‹˜.\r\n\r\n#b #i3700287# #z3700287##kì™€ #b#i3700682# #z3700682##k ì¹­í˜¸ 2ê°œë¥¼\r\n#rì˜ˆí‹°Xí•‘í¬ë¹ˆ ì¹­í˜¸ êµí™˜ê¶Œ#kê³¼ êµí™˜í•´ë“œë¦¬ê³  ìˆìŠµë‹ˆë‹¤.\r\n\r\n#e [íšë“ ê°€ëŠ¥í•œ ì¹­í˜¸]\r\n#b#n #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
         if (target.exchange(3700287, -1, 3700682, -1, 2633243, 1) > 0) {
-            self.sayOk("ÄªÈ£ ±³È¯±ÇÀ» Áö±ŞÇØµå·È½À´Ï´Ù. ÀÎº¥Åä¸®¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.\r\n\r\n#fUI/UIWindow.img/Quest/reward#\r\n\r\n#b#e #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì¹­í˜¸ êµí™˜ê¶Œì„ ì§€ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤. ì¸ë²¤í† ë¦¬ë¥¼ í™•ì¸í•´ ì£¼ì„¸ìš”.\r\n\r\n#fUI/UIWindow.img/Quest/reward#\r\n\r\n#b#e #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            self.sayOk("ÄªÈ£ 2°³¸¦ º¸À¯ÇÏ¼Å¾ß ±³È¯ÀÌ °¡´ÉÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì¹­í˜¸ 2ê°œë¥¼ ë³´ìœ í•˜ì…”ì•¼ êµí™˜ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 
     public void consume_2633243() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (target.exchange(2633243, -1, 3700683, 1) > 0) {
-            self.sayOk("±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+            self.sayOk("êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -531,7 +531,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() >= 1) {
             if (target.exchange(2633422, -1) > 0) {
                 exchangeSupportEquipPeriod(1122334, 0, 0, 14);
-                self.sayOk("±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                self.sayOk("êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
             }
         }
     }

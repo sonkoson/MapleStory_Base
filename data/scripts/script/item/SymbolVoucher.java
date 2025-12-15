@@ -12,64 +12,64 @@ import java.util.*;
 public class SymbolVoucher extends ScriptEngineNPC {
 
     public void consume_2437750() {
-        //1°³
+        //1ê°œ
         changeArcaneSymbolVoucher(1);
     }
 
     public void consume_2437760() {
-        //5°³
+        //5ê°œ
         changeArcaneSymbolVoucher(5);
     }
 
     public void consume_2437880() {
-        //2°³
+        //2ê°œ
         changeArcaneSymbolVoucher(2);
     }
 
     public void consume_2438141() {
-        //1°³
+        //1ê°œ
         changeArcaneSymbolVoucher(1);
     }
 
     public void consume_2439301() {
-        //20°³
+        //20ê°œ
         changeArcaneSymbolVoucher(20);
     }
 
     public void consume_2439305() {
-        //1°³
+        //1ê°œ
         changeArcaneSymbolVoucher(1);
     }
 
     public void consume_2631878() {
-        //100°³
+        //100ê°œ
         changeArcaneSymbolVoucher(100);
     }
 
     public void consume_2631906() {
-        //10°³
+        //10ê°œ
         changeArcaneSymbolVoucher(10);
     }
 
     public void consume_2633385() {
-        //100°³
+        //100ê°œ
         changeArcaneSymbolVoucher(100);
     }
 
     public void consume_2630981() {
-        //5°³
+        //5ê°œ
         changeArcaneSymbolVoucher(5);
     }
 
     public void consume_2630983() {
-        //·£´ı
+        //ëœë¤
         /**
-         * 1°³ (45%)
-         * 2°³ (45%)
-         * 5°³ (9%)
-         * 10°³ (0.8%)
-         * 50°³ (0.16%)
-         * 100°³ (0.04%)
+         * 1ê°œ (45%)
+         * 2ê°œ (45%)
+         * 5ê°œ (9%)
+         * 10ê°œ (0.8%)
+         * 50ê°œ (0.16%)
+         * 100ê°œ (0.04%)
          * */
         HashMap<Integer, Double> itemQty = new HashMap();
         itemQty.put(1, 45.0d);
@@ -100,54 +100,54 @@ public class SymbolVoucher extends ScriptEngineNPC {
     public void changeArcaneSymbolVoucher(int quantity) {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. È®ÀÎ ÈÄ ´Ù½Ã »ç¿ëÇØÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. í™•ì¸ í›„ ë‹¤ì‹œ ì‚¬ìš©í•´ì£¼ì„¸ìš”.");
             return;
         }
         if (target.exchange(itemID, -1, 2630437, quantity) > 0) {
-            self.sayOk("¼±ÅÃ ¾ÆÄÉÀÎ½Éº¼ " + quantity + "°³ ±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ¼ÒºñÃ¢À» È®ÀÎÇØº¸¼¼¿ä.");
+            self.sayOk("ì„ íƒ ì•„ì¼€ì¸ì‹¬ë³¼ " + quantity + "ê°œ êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ì†Œë¹„ì°½ì„ í™•ì¸í•´ë³´ì„¸ìš”.");
         } else {
-            self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. È®ÀÎ ÈÄ ´Ù½Ã »ç¿ëÇØÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. í™•ì¸ í›„ ë‹¤ì‹œ ì‚¬ìš©í•´ì£¼ì„¸ìš”.");
         }
     }
 
     public void consume_2630437() {
-        //±³ºÒ ¼±ÅÃ ¾ÆÄÉÀÎ½Éº¼ ±³È¯±Ç
+        //êµë¶ˆ ì„ íƒ ì•„ì¼€ì¸ì‹¬ë³¼ êµí™˜ê¶Œ
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 200) {
-            self.sayOk("#fs11#200·¹º§ ÀÌ»ó¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.sayOk("#fs11#200ë ˆë²¨ ì´ìƒë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         String changeSymbol = "#fs11#";
-        if (getPlayer().getLevel() >= 200) { //¿©·Î
+        if (getPlayer().getLevel() >= 200) { //ì—¬ë¡œ
             changeSymbol += "#L5# #b#i1712001:# #t1712001:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 210) { //ÃòÃò
+        if (getPlayer().getLevel() >= 210) { //ì¸„ì¸„
             changeSymbol += "#L4# #b#i1712002:# #t1712002:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 220) { //·¹Çï¸¥
+        if (getPlayer().getLevel() >= 220) { //ë ˆí—¬ë¥¸
             changeSymbol += "#L3# #b#i1712003:# #t1712003:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 225) { //¾Æ¸£Ä«³ª
+        if (getPlayer().getLevel() >= 225) { //ì•„ë¥´ì¹´ë‚˜
             changeSymbol += "#L2# #b#i1712004:# #t1712004:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 230) { //¸ğ¶ó½º
+        if (getPlayer().getLevel() >= 230) { //ëª¨ë¼ìŠ¤
             changeSymbol += "#L1# #b#i1712005:# #t1712005:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 235) { //¿¡½ºÆä¶ó
+        if (getPlayer().getLevel() >= 235) { //ì—ìŠ¤í˜ë¼
             changeSymbol += "#L0# #b#i1712006:# #t1712006:# #k#l";
         }
 
-        int v = self.askMenu("#fs11#¹Ş°í ½ÍÀº #b¾ÆÄÉÀÎ½Éº¼#kÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä!\r\n\r\n" + changeSymbol);
+        int v = self.askMenu("#fs11#ë°›ê³  ì‹¶ì€ #bì•„ì¼€ì¸ì‹¬ë³¼#kì„ ì„ íƒí•´ ì£¼ì„¸ìš”!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[¾ÆÄÉÀÎ½Éº¼ ±³È¯±Ç Ä¡Æ®¿£Áø caseº¯°æ ½Ãµµ]\r\n À¯Àú ´Ğ³×ÀÓ : " + getPlayer().getName() + "\r\n ·¹º§ : " + getPlayer().getLevel() + "\r\n È¹µæ ½ÃµµÇÑ ½Éº¼ : ";
-        int number = self.askNumber("\r\nÀÎº¥Åä¸®¿¡ #b#i" + itemID + ":# #t" + itemID + ":##k ¾ÆÀÌÅÛÀÌ #b" + itemQty + "°³#k ÀÖ½À´Ï´Ù. #b#eÇÑ ¹ø¿¡ ¸î °³#n#k¸¦ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?\r\n ", itemQty, 1, itemQty);
+        String letter = "[ì•„ì¼€ì¸ì‹¬ë³¼ êµí™˜ê¶Œ ì¹˜íŠ¸ì—”ì§„ caseë³€ê²½ ì‹œë„]\r\n ìœ ì € ë‹‰ë„¤ì„ : " + getPlayer().getName() + "\r\n ë ˆë²¨ : " + getPlayer().getLevel() + "\r\n íšë“ ì‹œë„í•œ ì‹¬ë³¼ : ";
+        int number = self.askNumber("\r\nì¸ë²¤í† ë¦¬ì— #b#i" + itemID + ":# #t" + itemID + ":##k ì•„ì´í…œì´ #b" + itemQty + "ê°œ#k ìˆìŠµë‹ˆë‹¤. #b#eí•œ ë²ˆì— ëª‡ ê°œ#n#kë¥¼ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1712001;
         switch (v) {
             case 0: {
                 symbolID = 1712006;
                 if (getPlayer().getLevel() < 235) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¿¡½ºÆä¶ó";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì—ìŠ¤í˜ë¼";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -156,8 +156,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 1: {
                 symbolID = 1712005;
                 if (getPlayer().getLevel() < 230) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¸ğ¶ó½º";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ëª¨ë¼ìŠ¤";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -166,8 +166,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 2: {
                 symbolID = 1712004;
                 if (getPlayer().getLevel() < 225) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¾Æ¸£Ä«³ª";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì•„ë¥´ì¹´ë‚˜";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -176,8 +176,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 3: {
                 symbolID = 1712003;
                 if (getPlayer().getLevel() < 220) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "·¹Çï¸¥";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ë ˆí—¬ë¥¸";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -186,8 +186,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 4: {
                 symbolID = 1712002;
                 if (getPlayer().getLevel() < 210) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "ÃòÃò¾ÆÀÏ·£µå";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì¸„ì¸„ì•„ì¼ëœë“œ";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -196,8 +196,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 5: {
                 symbolID = 1712001;
                 if (getPlayer().getLevel() < 200) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¼Ò¸êÀÇ¿©·Î";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì†Œë©¸ì˜ì—¬ë¡œ";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -208,56 +208,56 @@ public class SymbolVoucher extends ScriptEngineNPC {
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
-            self.say("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+            self.say("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#k¸¦ ¹ŞÀ¸½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
-                    self.sayOk("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+                    self.sayOk("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
                 } else {
-                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "°³#k¸¦ Áö±ŞÇØµå·È½À´Ï´Ù!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#n#k");
+                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ì§€ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#n#k");
                 }
             }
         }
     }
 
     public void consume_2630512() {
-        //¿ùµå ³» ³ªÀÇ Ä³¸¯ÅÍ °£ ÀÌµ¿ °¡´É ¼±ÅÃ ¾ÆÄÉÀÎ½Éº¼ ±³È¯±Ç
+        //ì›”ë“œ ë‚´ ë‚˜ì˜ ìºë¦­í„° ê°„ ì´ë™ ê°€ëŠ¥ ì„ íƒ ì•„ì¼€ì¸ì‹¬ë³¼ êµí™˜ê¶Œ
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 200) {
-            self.sayOk("200·¹º§ ÀÌ»ó¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.sayOk("200ë ˆë²¨ ì´ìƒë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         String changeSymbol = "#fs11#";
-        if (getPlayer().getLevel() >= 200) { //¿©·Î
+        if (getPlayer().getLevel() >= 200) { //ì—¬ë¡œ
             changeSymbol += "#L5# #b#i1712001:# #t1712001:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 210) { //ÃòÃò
+        if (getPlayer().getLevel() >= 210) { //ì¸„ì¸„
             changeSymbol += "#L4# #b#i1712002:# #t1712002:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 220) { //·¹Çï¸¥
+        if (getPlayer().getLevel() >= 220) { //ë ˆí—¬ë¥¸
             changeSymbol += "#L3# #b#i1712003:# #t1712003:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 225) { //¾Æ¸£Ä«³ª
+        if (getPlayer().getLevel() >= 225) { //ì•„ë¥´ì¹´ë‚˜
             changeSymbol += "#L2# #b#i1712004:# #t1712004:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 230) { //¸ğ¶ó½º
+        if (getPlayer().getLevel() >= 230) { //ëª¨ë¼ìŠ¤
             changeSymbol += "#L1# #b#i1712005:# #t1712005:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 235) { //¿¡½ºÆä¶ó
+        if (getPlayer().getLevel() >= 235) { //ì—ìŠ¤í˜ë¼
             changeSymbol += "#L0# #b#i1712006:# #t1712006:# #k#l";
         }
 
-        int v = self.askMenu("#fs11#¹Ş°í ½ÍÀº #b¾ÆÄÉÀÎ½Éº¼#kÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä!\r\n\r\n" + changeSymbol);
+        int v = self.askMenu("#fs11#ë°›ê³  ì‹¶ì€ #bì•„ì¼€ì¸ì‹¬ë³¼#kì„ ì„ íƒí•´ ì£¼ì„¸ìš”!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[¾ÆÄÉÀÎ½Éº¼ ±³È¯±Ç Ä¡Æ®¿£Áø caseº¯°æ ½Ãµµ]\r\n À¯Àú ´Ğ³×ÀÓ : " + getPlayer().getName() + "\r\n ·¹º§ : " + getPlayer().getLevel() + "\r\n È¹µæ ½ÃµµÇÑ ½Éº¼ : ";
-        int number = self.askNumber("\r\nÀÎº¥Åä¸®¿¡ #b#i" + itemID + ":# #t" + itemID + ":##k ¾ÆÀÌÅÛÀÌ #b" + itemQty + "°³#k ÀÖ½À´Ï´Ù. #b#eÇÑ ¹ø¿¡ ¸î °³#n#k¸¦ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?\r\n ", itemQty, 1, itemQty);
+        String letter = "[ì•„ì¼€ì¸ì‹¬ë³¼ êµí™˜ê¶Œ ì¹˜íŠ¸ì—”ì§„ caseë³€ê²½ ì‹œë„]\r\n ìœ ì € ë‹‰ë„¤ì„ : " + getPlayer().getName() + "\r\n ë ˆë²¨ : " + getPlayer().getLevel() + "\r\n íšë“ ì‹œë„í•œ ì‹¬ë³¼ : ";
+        int number = self.askNumber("\r\nì¸ë²¤í† ë¦¬ì— #b#i" + itemID + ":# #t" + itemID + ":##k ì•„ì´í…œì´ #b" + itemQty + "ê°œ#k ìˆìŠµë‹ˆë‹¤. #b#eí•œ ë²ˆì— ëª‡ ê°œ#n#kë¥¼ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1712001;
         switch (v) {
             case 0: {
                 symbolID = 1712006;
                 if (getPlayer().getLevel() < 235) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¿¡½ºÆä¶ó";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì—ìŠ¤í˜ë¼";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -266,8 +266,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 1: {
                 symbolID = 1712005;
                 if (getPlayer().getLevel() < 230) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¸ğ¶ó½º";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ëª¨ë¼ìŠ¤";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -276,8 +276,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 2: {
                 symbolID = 1712004;
                 if (getPlayer().getLevel() < 225) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¾Æ¸£Ä«³ª";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì•„ë¥´ì¹´ë‚˜";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -286,8 +286,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 3: {
                 symbolID = 1712003;
                 if (getPlayer().getLevel() < 220) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "·¹Çï¸¥";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ë ˆí—¬ë¥¸";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -296,8 +296,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 4: {
                 symbolID = 1712002;
                 if (getPlayer().getLevel() < 210) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "ÃòÃò¾ÆÀÏ·£µå";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì¸„ì¸„ì•„ì¼ëœë“œ";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -306,8 +306,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 5: {
                 symbolID = 1712001;
                 if (getPlayer().getLevel() < 200) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¼Ò¸êÀÇ¿©·Î";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì†Œë©¸ì˜ì—¬ë¡œ";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -318,13 +318,13 @@ public class SymbolVoucher extends ScriptEngineNPC {
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
-            self.say("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+            self.say("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#k¸¦ ¹ŞÀ¸½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
-                    self.sayOk("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+                    self.sayOk("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
                 } else {
-                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "°³#k¸¦ Áö±ŞÇØµå·È½À´Ï´Ù!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#n#k");
+                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ì§€ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#n#k");
                 }
             }
         }
@@ -337,36 +337,36 @@ public class SymbolVoucher extends ScriptEngineNPC {
     public void consume_2633616() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 260) {
-            self.sayOk("#fs11#260·¹º§ ÀÌ»ó¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            self.sayOk("#fs11#260ë ˆë²¨ ì´ìƒë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             return;
         }
         String changeSymbol = "#fs11#";
-        if (getPlayer().getLevel() >= 260) { //¼¼¸£´Ï¿ò
+        if (getPlayer().getLevel() >= 260) { //ì„¸ë¥´ë‹ˆì›€
             changeSymbol += "#L2# #b#i1713000:# #t1713000:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 270) { //¾Æ¸£Å©½º
+        if (getPlayer().getLevel() >= 270) { //ì•„ë¥´í¬ìŠ¤
             changeSymbol += "#L1# #b#i1713001:# #t1713001:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 275) { // ¿Àµğ¿ò
+        if (getPlayer().getLevel() >= 275) { // ì˜¤ë””ì›€
             changeSymbol += "#L3# #b#i1713002:# #t1713002:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 280) { // µµ¿ø°æ
+        if (getPlayer().getLevel() >= 280) { // ë„ì›ê²½
             changeSymbol += "#L4# #b#i1713003:# #t1713003:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 280) { // ¾Æ¸£Å×¸®¾Æ
+        if (getPlayer().getLevel() >= 280) { // ì•„ë¥´í…Œë¦¬ì•„
             changeSymbol += "#L5# #b#i1713004:# #t1713004:# #k#l";
         }
-        int v = self.askMenu("#fs11#¹Ş°í ½ÍÀº #b¾î¼¾Æ½½Éº¼#kÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä!\r\n\r\n" + changeSymbol);
+        int v = self.askMenu("#fs11#ë°›ê³  ì‹¶ì€ #bì–´ì„¼í‹±ì‹¬ë³¼#kì„ ì„ íƒí•´ ì£¼ì„¸ìš”!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[¾î¼¾Æ½½Éº¼ ±³È¯±Ç Ä¡Æ®¿£Áø caseº¯°æ ½Ãµµ]\r\n À¯Àú ´Ğ³×ÀÓ : " + getPlayer().getName() + "\r\n ·¹º§ : " + getPlayer().getLevel() + "\r\n È¹µæ ½ÃµµÇÑ ½Éº¼ : ";
-        int number = self.askNumber("\r\nÀÎº¥Åä¸®¿¡ #b#i" + itemID + ":# #t" + itemID + ":##k ¾ÆÀÌÅÛÀÌ #b" + itemQty + "°³#k ÀÖ½À´Ï´Ù. #b#eÇÑ ¹ø¿¡ ¸î °³#n#k¸¦ »ç¿ëÇÏ½Ã°Ú½À´Ï±î?\r\n ", itemQty, 1, itemQty);
+        String letter = "[ì–´ì„¼í‹±ì‹¬ë³¼ êµí™˜ê¶Œ ì¹˜íŠ¸ì—”ì§„ caseë³€ê²½ ì‹œë„]\r\n ìœ ì € ë‹‰ë„¤ì„ : " + getPlayer().getName() + "\r\n ë ˆë²¨ : " + getPlayer().getLevel() + "\r\n íšë“ ì‹œë„í•œ ì‹¬ë³¼ : ";
+        int number = self.askNumber("\r\nì¸ë²¤í† ë¦¬ì— #b#i" + itemID + ":# #t" + itemID + ":##k ì•„ì´í…œì´ #b" + itemQty + "ê°œ#k ìˆìŠµë‹ˆë‹¤. #b#eí•œ ë²ˆì— ëª‡ ê°œ#n#kë¥¼ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1713000;
         switch (v) {
             case 1: {
                 symbolID = 1713001;
                 if (getPlayer().getLevel() < 270) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¾Æ¸£Å©½º";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì•„ë¥´í¬ìŠ¤";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -375,8 +375,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 2: {
                 symbolID = 1713000;
                 if (getPlayer().getLevel() < 260) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¼¼¸£´Ï¿ò";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì„¸ë¥´ë‹ˆì›€";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -385,8 +385,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 3: {
                 symbolID = 1713002;
                 if (getPlayer().getLevel() < 275) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¿Àµğ¿ò";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì˜¤ë””ì›€";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -395,8 +395,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 4: {
                 symbolID = 1713003;
                 if (getPlayer().getLevel() < 280) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "µµ¿ø°æ";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ë„ì›ê²½";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -405,8 +405,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
             case 5: {
                 symbolID = 1713004;
                 if (getPlayer().getLevel() < 280) {
-                    self.sayOk("#fs11#·¹º§ÀÌ ºÎÁ·ÇÏ¿© ±³È¯ÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                    letter += "¾Æ¸£Å×¸®¾Æ";
+                    self.sayOk("#fs11#ë ˆë²¨ì´ ë¶€ì¡±í•˜ì—¬ êµí™˜í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                    letter += "ì•„ë¥´í…Œë¦¬ì•„";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -417,13 +417,13 @@ public class SymbolVoucher extends ScriptEngineNPC {
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
-            self.say("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+            self.say("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#k¸¦ ¹ŞÀ¸½Ã°Ú½À´Ï±î?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
-                    self.sayOk("#fs11#ÀåºñÃ¢À» " + number + "Ä­ ÀÌ»ó ºñ¿ì°í ´Ù½Ã »ç¿ëÇØ ÁÖ¼¼¿ä.");
+                    self.sayOk("#fs11#ì¥ë¹„ì°½ì„ " + number + "ì¹¸ ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œ ì‚¬ìš©í•´ ì£¼ì„¸ìš”.");
                 } else {
-                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "°³#k¸¦ Áö±ŞÇØµå·È½À´Ï´Ù!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "°³#n#k");
+                    self.sayOk("#fs11#\r\n#b#t" + symbolID + ":# " + number + "ê°œ#kë¥¼ ì§€ê¸‰í•´ë“œë ¸ìŠµë‹ˆë‹¤!\r\n\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0##b#e\r\n#i" + symbolID + ":# #t" + symbolID + ":# " + number + "ê°œ#n#k");
                 }
             }
         }
@@ -432,13 +432,13 @@ public class SymbolVoucher extends ScriptEngineNPC {
     public void changeAuthenticSymbolVoucher(int quantity) {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. È®ÀÎ ÈÄ ´Ù½Ã »ç¿ëÇØÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. í™•ì¸ í›„ ë‹¤ì‹œ ì‚¬ìš©í•´ì£¼ì„¸ìš”.");
             return;
         }
         if (target.exchange(itemID, -1, 2633616, quantity) > 0) {
-            self.sayOk("¼±ÅÃ ¾î¼¾Æ½½Éº¼ " + quantity + "°³ ±³È¯ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ¼ÒºñÃ¢À» È®ÀÎÇØº¸¼¼¿ä.");
+            self.sayOk("ì„ íƒ ì–´ì„¼í‹±ì‹¬ë³¼ " + quantity + "ê°œ êµí™˜ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ì†Œë¹„ì°½ì„ í™•ì¸í•´ë³´ì„¸ìš”.");
         } else {
-            self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù. È®ÀÎ ÈÄ ´Ù½Ã »ç¿ëÇØÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤. í™•ì¸ í›„ ë‹¤ì‹œ ì‚¬ìš©í•´ì£¼ì„¸ìš”.");
         }
     }
 }

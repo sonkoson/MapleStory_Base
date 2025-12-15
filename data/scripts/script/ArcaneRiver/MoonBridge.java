@@ -12,7 +12,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009200, 5);
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -21,7 +21,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009100, 4);
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -30,7 +30,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009300, 4);
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -39,7 +39,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009200, 4);
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -48,7 +48,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009301, 2);
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -57,39 +57,39 @@ public class MoonBridge extends ScriptEngineNPC {
     public void BM1_Ship() {
         if (getPlayer().getLevel() >= 245) {
             if (getPlayer().getMap().getId() == 450009300 && getPlayer().getLevel() >= 250) {
-                int v = target.askMenu("¼ÒÇü ºñ°øÁ¤À» Å¸°í ¿øÇÏ´Â °©ÆÇÀ¸·Î °¥ ¼ö ÀÖ´Ù.\r\n¾îµğ·Î °¥±î?\r\n\r\n #b#L0#Ãß¶ô ÁöÁ¡#l\r\n\r\n #k#L2#¼ÒÇü ºñ°øÁ¤À» ÀÌ¿ëÇÏÁö ¾Ê´Â´Ù.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+                int v = target.askMenu("ì†Œí˜• ë¹„ê³µì •ì„ íƒ€ê³  ì›í•˜ëŠ” ê°‘íŒìœ¼ë¡œ ê°ˆ ìˆ˜ ìˆë‹¤.\r\nì–´ë””ë¡œ ê°ˆê¹Œ?\r\n\r\n #b#L0#ì¶”ë½ ì§€ì #l\r\n\r\n #k#L2#ì†Œí˜• ë¹„ê³µì •ì„ ì´ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
                 switch (v) {
-                    case 0: { //Ãß¶ô ÁöÁ¡
+                    case 0: { //ì¶”ë½ ì§€ì 
                         registerTransferField(450011120, 3);
                         break;
                     }
-                    case 2: //¼ÒÇüºñ°øÁ¤ ÀÌ¿ëx
+                    case 2: //ì†Œí˜•ë¹„ê³µì • ì´ìš©x
                         break;
                 }
             } else if (getPlayer().getLevel() >= 245) {
-                int v = target.askMenu("¼ÒÇü ºñ°øÁ¤À» Å¸°í ¿øÇÏ´Â °©ÆÇÀ¸·Î °¥ ¼ö ÀÖ´Ù.\r\n¾îµğ·Î °¥±î?\r\n\r\n #b#L0#ÀüÃÊ±âÁö#l\r\n\r\n #k#L2#¼ÒÇü ºñ°øÁ¤À» ÀÌ¿ëÇÏÁö ¾Ê´Â´Ù.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+                int v = target.askMenu("ì†Œí˜• ë¹„ê³µì •ì„ íƒ€ê³  ì›í•˜ëŠ” ê°‘íŒìœ¼ë¡œ ê°ˆ ìˆ˜ ìˆë‹¤.\r\nì–´ë””ë¡œ ê°ˆê¹Œ?\r\n\r\n #b#L0#ì „ì´ˆê¸°ì§€#l\r\n\r\n #k#L2#ì†Œí˜• ë¹„ê³µì •ì„ ì´ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
                 switch (v) {
-                    case 0: { //Ãß¶ô ÁöÁ¡
+                    case 0: { //ì¶”ë½ ì§€ì 
                         registerTransferField(450009050, 5);
                         break;
                     }
-                    case 2: //¼ÒÇüºñ°øÁ¤ ÀÌ¿ëx
+                    case 2: //ì†Œí˜•ë¹„ê³µì • ì´ìš©x
                         break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÌ¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì´ìš©í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     public void _450009050_out00() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() >= 245) {
-            if (1 == target.askYesNo("¹®ºê¸´Áö·Î ÀÌµ¿ÇÒ±î?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("ë¬¸ë¸Œë¦¿ì§€ë¡œ ì´ë™í• ê¹Œ?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450009100, 1);
             }
         } else {
-            getPlayer().dropMessage(5, "245·¹º§ ÀÌ»ó¸¸ ÀÌ¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "245ë ˆë²¨ ì´ìƒë§Œ ì´ìš©í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 

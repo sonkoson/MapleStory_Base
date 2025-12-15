@@ -14,196 +14,229 @@ public class JinHillah extends ScriptEngineNPC {
     }
 
     // Maze3_dungeon
+    // Maze3_dungeon
     public void Maze3_dungeon() {
         initNPC(MapleLifeFactory.getNPC(1402400));
-        String Message = "¡¯ »˙∂Û∏¶ ¿˙¡ˆ«œ±‚ ¿ß«ÿ #bøÂ∏¡¿« ¡¶¥‹#k¿∏∑Œ ¿Ãµø«“±Ó?\r\n\r\n";
+        String Message = "‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏î‡∏¥‡∏ô‡∏ó‡∏≤‡∏á‡πÑ‡∏õ‡∏¢‡∏±‡∏á #bAltar of Desire#k ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏´‡∏¢‡∏∏‡∏î‡∏¢‡∏±‡πâ‡∏á Verus Hilla ‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?\r\n\r\n";
         if (DBConfig.isGanglim) {
-            Message += "#L0#øÂ∏¡¿« ¡¶¥‹(#b«œµÂ ∏µÂ#k)¿∏∑Œ ¿Ãµø«—¥Ÿ. #r(∑π∫ß 250¿ÃªÛ) #g[" + getPlayer().getOneInfoQuestInteger(1234569, "jinhillah_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-            Message += "#L1#øÂ∏¡¿« ¡¶¥‹(#b«œµÂ ø¨Ω¿ ∏µÂ#k)¿∏∑Œ ¿Ãµø«—¥Ÿ. #r(∑π∫ß 250¿ÃªÛ)#k#l\r\n\r\n";
-            //Message += "#L5#øÂ∏¡¿« ¡¶¥‹(#r«Ô ∏µÂ#k)¿∏∑Œ ¿Ãµø«—¥Ÿ. #r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            Message += "#L2#¿Ãµø«œ¡ˆ æ ¥¬¥Ÿ.#l";
-        }
-        else {
-        	boolean single = getPlayer().getPartyMemberSize() == 1;
-            Message += "#L3##bøÂ∏¡¿« ¡¶¥‹(≥Î∏ª ∏µÂ)"+ (single ? "(ΩÃ±€)" : "(∏÷∆º)") +"¿∏∑Œ ¿Ãµø«—¥Ÿ.#r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            Message += "#L0##bøÂ∏¡¿« ¡¶¥‹(«œµÂ ∏µÂ)"+ (single ? "(ΩÃ±€)" : "(∏÷∆º)") +"¿∏∑Œ ¿Ãµø«—¥Ÿ.#r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            //Message += "#L5##bøÂ∏¡¿« ¡¶¥‹(#r«Ô ∏µÂ#b)¿∏∑Œ ¿Ãµø«—¥Ÿ.#r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            Message += "#L4##bøÂ∏¡¿« ¡¶¥‹(≥Î∏ª ø¨Ω¿ ∏µÂ)"+ (single ? "(ΩÃ±€)" : "(∏÷∆º)") +"¿∏∑Œ ¿Ãµø«—¥Ÿ.#r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            Message += "#L1##bøÂ∏¡¿« ¡¶¥‹(«œµÂ ø¨Ω¿ ∏µÂ)"+ (single ? "(ΩÃ±€)" : "(∏÷∆º)") +"¿∏∑Œ ¿Ãµø«—¥Ÿ.#r(∑π∫ß 250¿ÃªÛ)#k#l\r\n";
-            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "JinHillah" + (single ? "Single" : "Multi"));
-            Message += "#L8#¿‘¿Â ∞°¥… »Ωºˆ ¡ı∞° " + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + "(" + (1-reset) + "»∏ ∞°¥…)#l\r\n\r\n\r\n";
-            Message += "#L2#¿Ãµø«œ¡ˆ æ ¥¬¥Ÿ.#l";
+            Message += "#L0#‡πÄ‡∏î‡∏¥‡∏ô‡∏ó‡∏≤‡∏á‡πÑ‡∏õ‡∏¢‡∏±‡∏á Altar of Desire (#bHard Mode#k) #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ) #g["
+                    + getPlayer().getOneInfoQuestInteger(1234569, "jinhillah_clear") + "/"
+                    + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+            Message += "#L1#‡πÄ‡∏î‡∏¥‡∏ô‡∏ó‡∏≤‡∏á‡πÑ‡∏õ‡∏¢‡∏±‡∏á Altar of Desire (#bHard Practice Mode#k) #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n\r\n";
+            // Message += "#L5#‡πÄ‡∏î‡∏¥‡∏ô‡∏ó‡∏≤‡∏á‡πÑ‡∏õ‡∏¢‡∏±‡∏á Altar of Desire (#rHell Mode#k) #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250
+            // ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            Message += "#L2#‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å#l";
+        } else {
+            boolean single = getPlayer().getPartyMemberSize() == 1;
+            Message += "#L3##bAltar of Desire (Normal Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            Message += "#L0##bAltar of Desire (Hard Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            // Message += "#L5##bAltar of Desire (#rHell Mode#b) #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250
+            // ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            Message += "#L4##bAltar of Desire (Normal Practice Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            Message += "#L1##bAltar of Desire (Hard Practice Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(‡πÄ‡∏•‡πÄ‡∏ß‡∏• 250 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#k#l\r\n";
+            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "JinHillah" + (single ? "Single" : "Multi"));
+            Message += "#L8#‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ " + (single ? "(Single)" : "(Multi)") + "(" + (1 - reset)
+                    + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á)#l\r\n\r\n\r\n";
+            Message += "#L2#‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å#l";
         }
         int Menu = target.askMenu(Message, ScriptMessageFlag.BigScenario);
         if (Menu == 8 && !DBConfig.isGanglim) {
-        	if (getPlayer().getTogetherPoint() < 150) {
-        		self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. ∫∏¿Ø «˘µø∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint(), ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        		return;
-        	}
-        	boolean single = getPlayer().getPartyMemberSize() == 1;
-        	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "JinHillah"+ (single ? "Single" : "Multi"));
-        	if (reset > 0) {
-        		self.sayOk("¿Ãπ¯ ¡÷ø°¥¬ ¿ÃπÃ ¿‘¿Â∞°¥… »Ωºˆ∏¶ ¡ı∞°Ω√ƒ◊Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        		return;
-        	}
-        	getPlayer().gainTogetherPoint(-150);
-        	getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "JinHillah" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-        	self.sayOk("¿‘¿Â∞°¥… »Ωºˆ∞° ¡ı∞°µ«æ˙Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        	return;
+            if (getPlayer().getTogetherPoint() < 150) {
+                self.sayOk("Together Point ‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏ó‡∏µ‡πà‡∏°‡∏µ : " + getPlayer().getTogetherPoint(),
+                        ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                return;
+            }
+            boolean single = getPlayer().getPartyMemberSize() == 1;
+            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "JinHillah" + (single ? "Single" : "Multi"));
+            if (reset > 0) {
+                self.sayOk("‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ‡πÑ‡∏î‡πâ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß", ScriptMessageFlag.Scenario,
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                return;
+            }
+            getPlayer().gainTogetherPoint(-150);
+            getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "JinHillah" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+            self.sayOk("‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
+            return;
         }
-        if (Menu == 2) return; //¿Ãµø«œ¡ˆ æ ¥¬¥Ÿ
+        if (Menu == 2)
+            return; // ‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å
         if (target.getParty() == null) {
-            self.sayOk("1¿Œ ¿ÃªÛ ∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1 ‡∏Ñ‡∏ô‡∏à‡∏∂‡∏á‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("∆ƒ∆º¿Â¿ª ≈Î«ÿ ¡¯«‡«ÿ ¡÷Ω Ω√ø¿.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡πÉ‡∏´‡πâ‡∏´‡∏±‡∏ß‡∏´‡∏ô‡πâ‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡πÄ‡∏õ‡πá‡∏ô‡∏ú‡∏π‡πâ‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("∆ƒ∆ºø¯¿Ã ∏µŒ ∞∞¿∫∏ ø° ¿÷æÓæﬂ «’¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
-        switch (Menu) { //µ˚∑Œ ¡¶«—µ«¥¬∞≈ æ¯¿∏∏È πŸ∑Œ ¿‘¿Â∞°¥…«‘
-            case 0: { //«œµÂ∏µÂ
+        switch (Menu) { // ‡∏ñ‡πâ‡∏≤‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏Ç‡πâ‡∏≠‡∏à‡∏≥‡∏Å‡∏±‡∏î‡∏≠‡∏∑‡πà‡∏ô‡πÜ ‡∏Å‡πá‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏¢
+            case 0: { // Hard Mode
                 boolean GenesisQuest = false;
                 if (getPlayer().getQuestStatus(2000026) == 1) {
-                    int Genesis = target.askMenu("#e<¡¶≥◊Ω√Ω∫ π´±‚>#n\r\n∞À¿∫ ∏∂π˝ªÁ¿« »˚¿Ã ¥„±‰ #b¡¶≥◊Ω√Ω∫ π´±‚#k¿« ∫Òπ–¿ª «Æ±‚ ¿ß«— ¿”π´∏¶ ºˆ«‡ «“ ºˆ ¿÷¥Ÿ. æÓ∂ª∞‘ «“±Ó?\r\n\r\n#e#r<¿”π´ ºˆ«‡ ¡∂∞«>#n#b- ¿¸ø¯ '∫”¿∫ ∏∂≥‡ ¡¯ »˙∂Û¿Ã§“ »Á¿˚'¿ª ¡¯«‡ ¡ﬂ¿Ã∞Ì ¡¯ »˙∂Û ∞›∆ƒ ¡∂∞«¿ª øœ∑·«œ¡ˆ æ ¿∫ 2¿Œ ¿Ã«œ¿« ∆ƒ∆º∑Œ ∞›∆ƒ\r\n- 2¿Œ ∆ƒ∆º Ω√ √÷¡æ µ•πÃ¡ˆ 50% ∞®º“, 1∏Ì¿Ã∂Ûµµ Ω«∆–«“ ∞ÊøÏ ∏µÁ ∆ƒ∆ºø¯ «‘≤≤ Ω«∆–, µ•Ω∫ƒ´øÓ∆Æ∞° ≥≤æ∆ ¿÷¥¬ ∆ƒ∆ºø¯¿Ã ªÁ∏¡ ¡ﬂ¿Œ ªÛ≈¬ø°º≠¥¬ ¿™¿« HP 1πÃ∏∏¿∏∑Œ ∞®º“ ∫“∞°#n\r\n#k#L0#πÃº«¿ª ºˆ«‡«—¥Ÿ.#l\r\n#L1#πÃº«¿ª ºˆ«‡«œ¡ˆ æ ¥¬¥Ÿ.#l");
-                    if (Genesis == 0) { //πÃº«¿ª ºˆ«‡«—¥Ÿ.
+                    int Genesis = target.askMenu(
+                            "#e<Genesis Weapon>#n\r\n‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏õ‡∏•‡∏î‡∏•‡πá‡∏≠‡∏Ñ‡∏Ñ‡∏ß‡∏≤‡∏°‡∏•‡∏±‡∏ö‡∏Ç‡∏≠‡∏á #bGenesis Weapon#k ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏û‡∏•‡∏±‡∏á‡∏Ç‡∏≠‡∏á Black Mage ‡πÑ‡∏î‡πâ ‡∏à‡∏∞‡∏ó‡∏≥‡∏≠‡∏¢‡πà‡∏≤‡∏á‡πÑ‡∏£?\r\n\r\n#e#r<‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à>#n#b- ‡∏Å‡∏≥‡∏à‡∏±‡∏î‡∏î‡πâ‡∏ß‡∏¢‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡πÑ‡∏°‡πà‡πÄ‡∏Å‡∏¥‡∏ô 2 ‡∏Ñ‡∏ô ‡∏ã‡∏∂‡πà‡∏á‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏ó‡∏≥‡πÄ‡∏Ñ‡∏ß‡∏™‡∏ï‡πå 'Traces of Verus Hilla, the Red Witch' ‡πÅ‡∏•‡∏∞‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏ú‡πà‡∏≤‡∏ô‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç‡∏Å‡∏≤‡∏£‡∏Å‡∏≥‡∏à‡∏±‡∏î Verus Hilla\r\n- ‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ 2 ‡∏Ñ‡∏ô Final Damage ‡∏à‡∏∞‡∏•‡∏î‡∏•‡∏á 50%, ‡∏´‡∏≤‡∏Å‡∏°‡∏µ‡∏Ñ‡∏ô‡πÉ‡∏î‡∏Ñ‡∏ô‡∏´‡∏ô‡∏∂‡πà‡∏á‡∏•‡πâ‡∏°‡πÄ‡∏´‡∏•‡∏ß ‡∏ó‡∏±‡πâ‡∏á‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏•‡πâ‡∏°‡πÄ‡∏´‡∏•‡∏ß, ‡∏´‡∏≤‡∏Å‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏ó‡∏µ‡πà‡∏°‡∏µ Death Count ‡πÄ‡∏´‡∏•‡∏∑‡∏≠‡∏≠‡∏¢‡∏π‡πà‡∏ï‡∏≤‡∏¢ ‡∏à‡∏∞‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏•‡∏î HP ‡∏Ç‡∏≠‡∏á Verus Hilla ‡πÉ‡∏´‡πâ‡∏ï‡πà‡∏≥‡∏Å‡∏ß‡πà‡∏≤ 1 ‡πÑ‡∏î‡πâ#n\r\n#k#L0#‡∏£‡∏±‡∏ö‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l\r\n#L1#‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l");
+                    if (Genesis == 0) { // ‡∏£‡∏±‡∏ö‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à
                         GenesisQuest = true;
-                    } else if (Genesis == 1) { //πÃº«¿ª ºˆ«‡«œ¡ˆ æ ¥¬¥Ÿ.
+                    } else if (Genesis == 1) { // ‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à
                         GenesisQuest = false;
                     }
                 }
                 HardJinHillahEnter fieldSet = (HardJinHillahEnter) fieldSet("HardJinHillahEnter");
                 int enter = fieldSet.enter(target.getId(), false, GenesisQuest, 6);
                 if (enter == 6) {
-                    self.sayOk("¿ÃøÎ ∞°¥…«— ¿ŒΩ∫≈œΩ∫∞° æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÑ‡∏°‡πà‡∏°‡∏µ Instance ‡∏ß‡πà‡∏≤‡∏á ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("∫∏Ω∫ ∆ºæÓ∞° ∫Œ¡∑«— ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏£‡∏∞‡∏î‡∏±‡∏ö Boss Tier ‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -10) {
-                    target.sayOk("«ÿ¥Á πÃº«¿∫ µŒ∏Ì ¿Ã«œ∑Œ µµ¿¸ «“ ºˆ ¿÷Ω¿¥œ¥Ÿ.");
+                    target.sayOk("‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à‡∏ô‡∏µ‡πâ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏î‡πâ‡∏î‡πâ‡∏ß‡∏¢‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡πÑ‡∏°‡πà‡πÄ‡∏Å‡∏¥‡∏ô 2 ‡∏Ñ‡∏ô");
                     return;
                 }
                 if (enter == -20) {
-                    target.sayOk("¡¶≥◊Ω√Ω∫ ƒ˘Ω∫∆Æ∏¶ ¡¯«‡¡ﬂ¿Œ ±∏º∫¿∏∑Œ∏∏ ¡¯«‡«“ ºˆ ¿÷Ω¿¥œ¥Ÿ.");
+                    target.sayOk("‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ‡πÄ‡∏â‡∏û‡∏≤‡∏∞‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏ó‡∏≥‡πÄ‡∏Ñ‡∏ß‡∏™‡∏ï‡πå Genesis Weapon ‡∏≠‡∏¢‡∏π‡πà‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô");
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("√÷±Ÿ ¿œ¡÷¿œ ¿Ã≥ª ¡¯»˙∂Û∏¶ æ≤∑Ø∂ﬂ∏∞ ∆ƒ∆ºø¯¿Ã ¿÷Ω¿¥œ¥Ÿ. ¡¯»˙∂Û¥¬ ¿œ¡÷¿œø° 1»∏∏∏ ≈¨∏ÆæÓ ∞°¥…«’¥œ¥Ÿ\r\n#r<≈¨∏ÆæÓ ±‚∑œ¿∫ ∏≈¡÷ ∏Òø‰¿œø° ¿œ∞˝ √ ±‚»≠µÀ¥œ¥Ÿ.>", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏à‡∏±‡∏î Verus Hilla ‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ Verus Hilla ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡πÑ‡∏î‡πâ‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏•‡∏∞ 1 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á\r\n#r<‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ>",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("¿‘¿Â ¡¶«—»Ωºˆ∞° ∫Œ¡∑«œ∞≈≥™ ∑π∫ß ¡¶«—¿Ã ∏¬¡ˆ æ ¥¬ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠‡∏´‡∏£‡∏∑‡∏≠‡πÄ‡∏•‡πÄ‡∏ß‡∏•‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("¿‘¿Â ¡¶«—Ω√∞£¿Ã ≥≤¿∫ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏¢‡∏±‡∏á‡∏ï‡∏¥‡∏î‡πÄ‡∏ß‡∏•‡∏≤‡∏£‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
-            case 1: { //«œµÂ ø¨Ω¿ ∏µÂ
-                int practiceMode = self.askYesNo("ø¨Ω¿ ∏µÂø° ¿‘¿Â¿ª º±≈√«œø¥Ω¿¥œ¥Ÿ. ø¨Ω¿ ∏µÂø°º≠¥¬ #b#e∞Ê«Ëƒ°øÕ ∫∏ªÛ¿ª æÚ¿ª ºˆ æ¯¿∏∏Á#n#k ∫∏Ω∫ ∏ÛΩ∫≈Õ¿« ¡æ∑˘øÕ ªÛ∞¸æ¯¿Ã #b#e«œ∑Á 20»∏#n#k∏∏ ¿ÃøÎ«“ ºˆ ¿÷Ω¿¥œ¥Ÿ. ¿‘¿Â«œΩ√∞⁄Ω¿¥œ±Ó?");
+            case 1: { // Hard Practice Mode
+                int practiceMode = self.askYesNo(
+                        "‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏° ‡πÉ‡∏ô‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏° #b#e‡∏à‡∏∞‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö EXP ‡πÅ‡∏•‡∏∞‡∏£‡∏≤‡∏á‡∏ß‡∏±‡∏•#n#k ‡πÅ‡∏•‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ #b#e‡∏ß‡∏±‡∏ô‡∏•‡∏∞ 20 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á#n#k ‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô (‡∏£‡∏ß‡∏°‡∏ó‡∏∏‡∏Å‡∏ö‡∏≠‡∏™) ‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?");
                 if (practiceMode == 0) {
                     return;
                 }
                 HardJinHillahEnter fieldSet = (HardJinHillahEnter) fieldSet("HardJinHillahEnter");
                 int enter = fieldSet.enter(target.getId(), true, false, 6);
                 if (enter == 6) {
-                    self.sayOk("¿ÃøÎ ∞°¥…«— ¿ŒΩ∫≈œΩ∫∞° æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÑ‡∏°‡πà‡∏°‡∏µ Instance ‡∏ß‡πà‡∏≤‡∏á ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("∫∏Ω∫ ∆ºæÓ∞° ∫Œ¡∑«— ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏£‡∏∞‡∏î‡∏±‡∏ö Boss Tier ‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == 4)) {
-                    self.sayOk("∑π∫ß ¡¶«—¿Ã ∏¬¡ˆ æ ¥¬ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡πÄ‡∏•‡πÄ‡∏ß‡∏•‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -1) {
-                    self.sayOk("ø¨Ω¿ ∏µÂ¥¬ «œ∑Á 20»∏∏∏ ∞°¥…«’¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ß‡∏±‡∏ô‡∏•‡∏∞ 20 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
 
-            case 3: { //≥Î∏ª∏µÂ
+            case 3: { // Normal Mode
                 NormalJinHillahEnter fieldSet = (NormalJinHillahEnter) fieldSet("NormalJinHillahEnter");
                 int enter = fieldSet.enter(target.getId(), false, 6);
                 if (enter == 6) {
-                    self.sayOk("¿ÃøÎ ∞°¥…«— ¿ŒΩ∫≈œΩ∫∞° æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÑ‡∏°‡πà‡∏°‡∏µ Instance ‡∏ß‡πà‡∏≤‡∏á ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("∫∏Ω∫ ∆ºæÓ∞° ∫Œ¡∑«— ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏£‡∏∞‡∏î‡∏±‡∏ö Boss Tier ‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("√÷±Ÿ ¿œ¡÷¿œ ¿Ã≥ª ¡¯»˙∂Û∏¶ æ≤∑Ø∂ﬂ∏∞ ∆ƒ∆ºø¯¿Ã ¿÷Ω¿¥œ¥Ÿ. ¡¯»˙∂Û¥¬ ¿œ¡÷¿œø° 1»∏∏∏ ≈¨∏ÆæÓ ∞°¥…«’¥œ¥Ÿ\r\n#r<≈¨∏ÆæÓ ±‚∑œ¿∫ ∏≈¡÷ ∏Òø‰¿œø° ¿œ∞˝ √ ±‚»≠µÀ¥œ¥Ÿ.>", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏à‡∏±‡∏î Verus Hilla ‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ Verus Hilla ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡πÑ‡∏î‡πâ‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏•‡∏∞ 1 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á\r\n#r<‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ>",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("¿‘¿Â ¡¶«—»Ωºˆ∞° ∫Œ¡∑«œ∞≈≥™ ∑π∫ß ¡¶«—¿Ã ∏¬¡ˆ æ ¥¬ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠‡∏´‡∏£‡∏∑‡∏≠‡πÄ‡∏•‡πÄ‡∏ß‡∏•‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("¿‘¿Â ¡¶«—Ω√∞£¿Ã ≥≤¿∫ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏¢‡∏±‡∏á‡∏ï‡∏¥‡∏î‡πÄ‡∏ß‡∏•‡∏≤‡∏£‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
-            case 4: { //≥Î∏ª ø¨Ω¿ ∏µÂ
-                int practiceMode = self.askYesNo("ø¨Ω¿ ∏µÂø° ¿‘¿Â¿ª º±≈√«œø¥Ω¿¥œ¥Ÿ. ø¨Ω¿ ∏µÂø°º≠¥¬ #b#e∞Ê«Ëƒ°øÕ ∫∏ªÛ¿ª æÚ¿ª ºˆ æ¯¿∏∏Á#n#k ∫∏Ω∫ ∏ÛΩ∫≈Õ¿« ¡æ∑˘øÕ ªÛ∞¸æ¯¿Ã #b#e«œ∑Á 20»∏#n#k∏∏ ¿ÃøÎ«“ ºˆ ¿÷Ω¿¥œ¥Ÿ. ¿‘¿Â«œΩ√∞⁄Ω¿¥œ±Ó?");
+            case 4: { // Normal Practice Mode
+                int practiceMode = self.askYesNo(
+                        "‡∏Ñ‡∏∏‡∏ì‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏° ‡πÉ‡∏ô‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏° #b#e‡∏à‡∏∞‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö EXP ‡πÅ‡∏•‡∏∞‡∏£‡∏≤‡∏á‡∏ß‡∏±‡∏•#n#k ‡πÅ‡∏•‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ #b#e‡∏ß‡∏±‡∏ô‡∏•‡∏∞ 20 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á#n#k ‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô (‡∏£‡∏ß‡∏°‡∏ó‡∏∏‡∏Å‡∏ö‡∏≠‡∏™) ‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?");
                 if (practiceMode == 0) {
                     return;
                 }
                 NormalJinHillahEnter fieldSet = (NormalJinHillahEnter) fieldSet("NormalJinHillahEnter");
                 int enter = fieldSet.enter(target.getId(), true, 6);
                 if (enter == 6) {
-                    self.sayOk("¿ÃøÎ ∞°¥…«— ¿ŒΩ∫≈œΩ∫∞° æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÑ‡∏°‡πà‡∏°‡∏µ Instance ‡∏ß‡πà‡∏≤‡∏á ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("∫∏Ω∫ ∆ºæÓ∞° ∫Œ¡∑«— ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏£‡∏∞‡∏î‡∏±‡∏ö Boss Tier ‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == 4)) {
-                    self.sayOk("∑π∫ß ¡¶«—¿Ã ∏¬¡ˆ æ ¥¬ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡πÄ‡∏•‡πÄ‡∏ß‡∏•‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -1) {
-                    self.sayOk("ø¨Ω¿ ∏µÂ¥¬ «œ∑Á 20»∏∏∏ ∞°¥…«’¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ß‡∏±‡∏ô‡∏•‡∏∞ 20 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
             }
-            break;
-            case 5: { //«Ô∏µÂ
+                break;
+            case 5: { // Hell Mode
                 HellJinHillahEnter fieldSet = (HellJinHillahEnter) fieldSet("HellJinHillahEnter");
                 int enter = fieldSet.enter(target.getId(), 6);
                 if (enter == 6) {
-                    self.sayOk("¿ÃøÎ ∞°¥…«— ¿ŒΩ∫≈œΩ∫∞° æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡πÑ‡∏°‡πà‡∏°‡∏µ Instance ‡∏ß‡πà‡∏≤‡∏á ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("∫∏Ω∫ ∆ºæÓ∞° ∫Œ¡∑«— ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏£‡∏∞‡∏î‡∏±‡∏ö Boss Tier ‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("√÷±Ÿ ¿œ¡÷¿œ ¿Ã≥ª ¡¯»˙∂Û∏¶ æ≤∑Ø∂ﬂ∏∞ ∆ƒ∆ºø¯¿Ã ¿÷Ω¿¥œ¥Ÿ. ¡¯»˙∂Û¥¬ ¿œ¡÷¿œø° 1»∏∏∏ ≈¨∏ÆæÓ ∞°¥…«’¥œ¥Ÿ\r\n#r<≈¨∏ÆæÓ ±‚∑œ¿∫ ∏≈¡÷ ∏Òø‰¿œø° ¿œ∞˝ √ ±‚»≠µÀ¥œ¥Ÿ.>", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏à‡∏±‡∏î Verus Hilla ‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ Verus Hilla ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡πÑ‡∏î‡πâ‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏•‡∏∞ 1 ‡∏Ñ‡∏£‡∏±‡πâ‡∏á\r\n#r<‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ>",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("¿‘¿Â ¡¶«—»Ωºˆ∞° ∫Œ¡∑«œ∞≈≥™ ∑π∫ß ¡¶«—¿Ã ∏¬¡ˆ æ ¥¬ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠‡∏´‡∏£‡∏∑‡∏≠‡πÄ‡∏•‡πÄ‡∏ß‡∏•‡πÑ‡∏°‡πà‡∏ñ‡∏∂‡∏á‡πÄ‡∏Å‡∏ì‡∏ë‡πå",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("¿‘¿Â ¡¶«—Ω√∞£¿Ã ≥≤¿∫ ∆ƒ∆ºø¯¿Ã ¿÷æÓ ¿‘¿Â«“ ºˆ æ¯Ω¿¥œ¥Ÿ.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("‡∏°‡∏µ‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏µ‡πà‡∏¢‡∏±‡∏á‡∏ï‡∏¥‡∏î‡πÄ‡∏ß‡∏•‡∏≤‡∏£‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏î‡∏±‡∏ô‡πÄ‡∏à‡∏µ‡πâ‡∏¢‡∏ô", ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
@@ -212,7 +245,7 @@ public class JinHillah extends ScriptEngineNPC {
     }
 
     public void jinHillah_out() {
-        if (self.askYesNo("¿¸≈ı∏¶ ¡ﬂ¡ˆ«œ∞Ì ≥™∞°Ω√∞⁄Ω¿¥œ±Ó?") == 1) {
+        if (self.askYesNo("‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏´‡∏¢‡∏∏‡∏î‡∏Å‡∏≤‡∏£‡∏ï‡πà‡∏≠‡∏™‡∏π‡πâ‡πÅ‡∏•‡∏∞‡∏≠‡∏≠‡∏Å‡πÑ‡∏õ‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?") == 1) {
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
             registerTransferField(getPlayer().getMap().getReturnMap().getId());

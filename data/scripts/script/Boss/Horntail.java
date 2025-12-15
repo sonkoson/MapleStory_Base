@@ -16,78 +16,78 @@ import java.awt.*;
 
 public class Horntail extends ScriptEngineNPC {
 
-    public void hontale_enterToE() { //hontale ½ÇÈ­³Ä ;;
+    public void hontale_enterToE() { //hontale ì‹¤í™”ëƒ ;;
         if (target.getParty() == null) {
-            self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+            self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
         } else {
             if (target.getParty().getLeader().getId() != target.getId()) {
-                self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
             } else {
-                if (self.askYesNo("¼®ÆÇ¿¡ ¾²¿©Áø ±Û¾¾°¡ ºû³ª´õ´Ï ¼®ÆÇ µÚ·Î ÀÛÀº ¹®ÀÌ ¿­·È´Ù. ºñ¹ĞÅë·Î¸¦ ÀÌ¿ëÇÏ½Ã°Ú½À´Ï±î?") == 1) {
+                if (self.askYesNo("ì„íŒì— ì“°ì—¬ì§„ ê¸€ì”¨ê°€ ë¹›ë‚˜ë”ë‹ˆ ì„íŒ ë’¤ë¡œ ì‘ì€ ë¬¸ì´ ì—´ë ¸ë‹¤. ë¹„ë°€í†µë¡œë¥¼ ì´ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
                     if (target.getParty().isPartySameMap()) {
-                        target.getParty().registerTransferField(240050400); //ÆÄÆ¼¿ø ÀüÃ¼ÀÌµ¿!
+                        target.getParty().registerTransferField(240050400); //íŒŒí‹°ì› ì „ì²´ì´ë™!
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                        self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                     }
                 } else {
-                    self.say("ÀÌµ¿ÇÏ½Ã·Á¸é ´Ù½Ã ¸»À» °É¾î ÁÖ¼¼¿ä.");
+                    self.say("ì´ë™í•˜ì‹œë ¤ë©´ ë‹¤ì‹œ ë§ì„ ê±¸ì–´ ì£¼ì„¸ìš”.");
                 }
             }
         }
     }
 
     public void hontale_accept() {
-        //ÀÌÁö, ³ë¸»È¥Å×ÀÏ Ã¹½ÃÀÛ¸Ê(240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070)
-        //Ä«¿À½ºÈ¥Å×ÀÏ Ã¹½ÃÀÛ¸Ê(240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071)
+        //ì´ì§€, ë…¸ë§í˜¼í…Œì¼ ì²«ì‹œì‘ë§µ(240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070)
+        //ì¹´ì˜¤ìŠ¤í˜¼í…Œì¼ ì²«ì‹œì‘ë§µ(240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071)
         int[] normalHortailMaps = new int[]{240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070};
         int[] chaosHortailMaps = new int[]{240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071};
         EventManager em = getEventManager("Horntail");
         if (em == null) {
-            self.say("ÇöÀç È¥Å×ÀÏ º¸½º·¹ÀÌµå¸¦ ÀÌ¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.say("í˜„ì¬ í˜¼í…Œì¼ ë³´ìŠ¤ë ˆì´ë“œë¥¼ ì´ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         } else {
-            int v = self.askMenu("#e<º¸½º: È¥Å×ÀÏ>#n\r\nÈ¥Å×ÀÏÀÌ ºÎÈ°Çß´Ù. ÀÌ´ë·Î µĞ´Ù¸é È­»êÆø¹ßÀ» ÀÏÀ¸ÄÑ¼­ ¹Ì³ª¸£ ÀÏ´ë¸¦ Áö¿ÁÀ¸·Î ¸¸µé¾î ¹ö¸±°Å¾ß.\r\n#b\r\n#L0# <º¸½º: È¥Å×ÀÏ> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
+            int v = self.askMenu("#e<ë³´ìŠ¤: í˜¼í…Œì¼>#n\r\ní˜¼í…Œì¼ì´ ë¶€í™œí–ˆë‹¤. ì´ëŒ€ë¡œ ë‘”ë‹¤ë©´ í™”ì‚°í­ë°œì„ ì¼ìœ¼ì¼œì„œ ë¯¸ë‚˜ë¥´ ì¼ëŒ€ë¥¼ ì§€ì˜¥ìœ¼ë¡œ ë§Œë“¤ì–´ ë²„ë¦´ê±°ì•¼.\r\n#b\r\n#L0# <ë³´ìŠ¤: í˜¼í…Œì¼> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l");
             if (v == 0) {
             	String menu = "";
 
             	if (DBConfig.isGanglim) {
-            		menu = "#e<º¸½º: È¥Å×ÀÏ>#n\r\n¿øÇÏ´Â ¸ğµå¸¦ ¼±ÅÃÇÏ¶ó.\r\n\r\n#L0# ÀÌÁö ¸ğµå ( ·¹º§ 130 ÀÌ»ó )#l\r\n#L1# ³ë¸Ö ¸ğµå ( ·¹º§ 130 ÀÌ»ó )#l\r\n#L2# Ä«¿À½º ¸ğµå ( ·¹º§ 135 ÀÌ»ó )#l";
+            		menu = "#e<ë³´ìŠ¤: í˜¼í…Œì¼>#n\r\nì›í•˜ëŠ” ëª¨ë“œë¥¼ ì„ íƒí•˜ë¼.\r\n\r\n#L0# ì´ì§€ ëª¨ë“œ ( ë ˆë²¨ 130 ì´ìƒ )#l\r\n#L1# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 130 ì´ìƒ )#l\r\n#L2# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ ( ë ˆë²¨ 135 ì´ìƒ )#l";
             	} else {
             		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		menu = "#e<º¸½º: È¥Å×ÀÏ>#n\r\n¿øÇÏ´Â ¸ğµå¸¦ ¼±ÅÃÇÏ¶ó.\r\n\r\n"
-            				+ "#L0# ÀÌÁö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 130 ÀÌ»ó )#l\r\n"
-            				+ "#L1# ³ë¸Ö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "( ·¹º§ 130 ÀÌ»ó )#l\r\n"
-            				+ "#L2# Ä«¿À½º ¸ğµå "  + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 135 ÀÌ»ó )#l\r\n";
+            		menu = "#e<ë³´ìŠ¤: í˜¼í…Œì¼>#n\r\nì›í•˜ëŠ” ëª¨ë“œë¥¼ ì„ íƒí•˜ë¼.\r\n\r\n"
+            				+ "#L0# ì´ì§€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 130 ì´ìƒ )#l\r\n"
+            				+ "#L1# ë…¸ë©€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + "( ë ˆë²¨ 130 ì´ìƒ )#l\r\n"
+            				+ "#L2# ì¹´ì˜¤ìŠ¤ ëª¨ë“œ "  + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 135 ì´ìƒ )#l\r\n";
             		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"));
-            		menu += "#L3#ÀÔÀåÈ½¼ö Áõ°¡ (" + ((single ? 2 : 1) - reset) + "È¸ °¡´É)#l";
+            		menu += "#L3#ì…ì¥íšŸìˆ˜ ì¦ê°€ (" + ((single ? 2 : 1) - reset) + "íšŒ ê°€ëŠ¥)#l";
             	}
                 int v2 = self.askMenu(menu);
 
                 if (target.getParty() == null) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                     return;
                 } else {
                 	if (v2 == 3 && !DBConfig.isGanglim) {
                 		boolean single = getPlayer().getPartyMemberSize() == 1;
                 		if (getPlayer().getTogetherPoint() < 150) {
-                			self.sayOk("Çùµ¿Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. º¸À¯ Æ÷ÀÎÆ® : " + getPlayer().getTogetherPoint());
+                			self.sayOk("í˜‘ë™í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë³´ìœ  í¬ì¸íŠ¸ : " + getPlayer().getTogetherPoint());
                 			return;
                 		}
                 		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"));
                 		if (reset > (single ? 1 : 0)) {
-                			self.sayOk("¿À´ÃÀº ÀÔÀå°¡´É È½¼ö Áõ°¡°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+                			self.sayOk("ì˜¤ëŠ˜ì€ ì…ì¥ê°€ëŠ¥ íšŸìˆ˜ ì¦ê°€ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
                 			return;
                 		}
                 		getPlayer().gainTogetherPoint(-150);
                 		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-                		self.sayOk("ÀÔÀå È½¼ö°¡ Áõ°¡µÇ¾ú½À´Ï´Ù.");
+                		self.sayOk("ì…ì¥ íšŸìˆ˜ê°€ ì¦ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
                 		return;
                 	}
 
                     if (target.getParty().getLeader().getId() != target.getId()) {
-                        self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                        self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                     } else {
                         if (target.getParty().isPartySameMap()) {
-                            // ÀÌ¹Ì ´©°¡ ¾È¿¡ ÀÖ´ÂÁö ºÎÅÍ ¾Ë¾Æº¸ÀÚ
+                            // ì´ë¯¸ ëˆ„ê°€ ì•ˆì— ìˆëŠ”ì§€ ë¶€í„° ì•Œì•„ë³´ì
                             int[] fields = new int[]{};
                             int map = normalHortailMaps[0];
                             if (v2 == 2) {
@@ -107,9 +107,9 @@ public class Horntail extends ScriptEngineNPC {
                             }
                             if (findUser) {
                                 if (v2 == 0 || v2 == 1) {
-                                    self.say("ÇöÀç ÀÌÁö,³ë¸» ¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.say("í˜„ì¬ ì´ì§€,ë…¸ë§ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 } else if (v2 == 2) {
-                                    self.say("ÇöÀç Ä«¿À½º ¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.say("í˜„ì¬ ì¹´ì˜¤ìŠ¤ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 }
                                 return;
                             }
@@ -121,7 +121,7 @@ public class Horntail extends ScriptEngineNPC {
                                 canEnter = -2;
                             }
                             String mode = "easy";
-                            if (v2 == 0 || v2 == 1) { //ÀÌÁö, ³ë¸»¸ğµå
+                            if (v2 == 0 || v2 == 1) { //ì´ì§€, ë…¸ë§ëª¨ë“œ
                                 if (em.getProperty("status0").equals("0")) {
                                     em.setProperty("status0", "1");
                                     canEnter = 0;
@@ -129,7 +129,7 @@ public class Horntail extends ScriptEngineNPC {
                                         mode = "normal";
                                     }
                                 }
-                            } else if (v2 == 2) { //Ä«¿À½º¸ğµå
+                            } else if (v2 == 2) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                 em.setProperty("Cstatus0", "0");
                                 if (em.getProperty("Cstatus0").equals("0")) {
                                     em.setProperty("Cstatus0", "1");
@@ -140,9 +140,9 @@ public class Horntail extends ScriptEngineNPC {
 
                             if (canEnter == -1 || canEnter == -2) {
                                 if (canEnter == -2) {
-                                    self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÔÀåÇß±º. ±×·¸´Ù¸é ¿À´ÃÀº ´õ ÀÌ»ó µé¾î°¥ ¼ö ¾ø´Ù.");
+                                    self.say("íŒŒí‹°ì› ì¤‘#b#e" + overLap + "ê°€#n#k ì˜¤ëŠ˜ ì…ì¥í–ˆêµ°. ê·¸ë ‡ë‹¤ë©´ ì˜¤ëŠ˜ì€ ë” ì´ìƒ ë“¤ì–´ê°ˆ ìˆ˜ ì—†ë‹¤.");
                                 } else {
-                                    self.say("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.say("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 }
                             } else if (canEnter == 0){
                                 EventInstanceManager eim = em.readyInstance();
@@ -164,8 +164,8 @@ public class Horntail extends ScriptEngineNPC {
                                 updateEventNumber(getPlayer(), QuestExConstants.Horntail.getQuestID());
                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                             }
-                        } else { //ÆÄÆ¼¿ø ¸ğµÎ °°Àº¸Ê¿¡ ¾øÀ» ¶§
-                            self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                        } else { //íŒŒí‹°ì› ëª¨ë‘ ê°™ì€ë§µì— ì—†ì„ ë•Œ
+                            self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                         }
                     }
                 }
@@ -175,17 +175,17 @@ public class Horntail extends ScriptEngineNPC {
 
     public void hontale_out() {
         if (target.getMapId() == 240050400) {
-            if (self.askYesNo("#m240050000#·Î µ¹¾Æ°¡½Ã°Ú½À´Ï±î?") == 1) {
+            if (self.askYesNo("#m240050000#ë¡œ ëŒì•„ê°€ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
                 registerTransferField(240050000);
             } else {
-                self.say("´Ù½Ã »ı°¢ÇØ º¸½Ã°í ¸»À» °É¾î ÁÖ¼¼¿ä.");
+                self.say("ë‹¤ì‹œ ìƒê°í•´ ë³´ì‹œê³  ë§ì„ ê±¸ì–´ ì£¼ì„¸ìš”.");
             }
         } else {
-            if (self.askYesNo("ÀüÅõ¸¦ ±×¸¸µÎ°í ¹ÛÀ¸·Î ³ª°¡½Ã°Ú½À´Ï±î? ÅğÀå ½Ã ¿À´ÃÀº ´õ ÀÌ»ó ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.") == 1) {
-                //È½¼ö Â÷°¨!
+            if (self.askYesNo("ì „íˆ¬ë¥¼ ê·¸ë§Œë‘ê³  ë°–ìœ¼ë¡œ ë‚˜ê°€ì‹œê² ìŠµë‹ˆê¹Œ? í‡´ì¥ ì‹œ ì˜¤ëŠ˜ì€ ë” ì´ìƒ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.") == 1) {
+                //íšŸìˆ˜ ì°¨ê°!
                 registerTransferField(240050400);
             } else {
-                self.say("´Ù½Ã »ı°¢ÇØ º¸½Ã°í ¸»À» °É¾î ÁÖ¼¼¿ä.");
+                self.say("ë‹¤ì‹œ ìƒê°í•´ ë³´ì‹œê³  ë§ì„ ê±¸ì–´ ì£¼ì„¸ìš”.");
             }
         }
     }
@@ -201,11 +201,11 @@ public class Horntail extends ScriptEngineNPC {
                 		int mobId = 8810200;
                         if (eim.getProperty("mode").equals("normal")) {
                             mobId = 8810000;
-                        } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                        } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                             mobId = 8810100;
                         }
-                        tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //ÀÌ°Å º»¼·È­ ¸ÂÀ½¤»¤»
-                        mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                        tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //ì´ê±° ë³¸ì„­í™” ë§ìŒã…‹ã…‹
+                        mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                         tremble.forceHitReactor((byte)0);
                         tremble.forceHitReactor((byte)1);
                 	}
@@ -214,11 +214,11 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810200;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810000;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                            } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                 mobId = 8810100;
                             }
-                            tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //ÀÌ°Å º»¼·È­ ¸ÂÀ½¤»¤»
-                            mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                            tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //ì´ê±° ë³¸ì„­í™” ë§ìŒã…‹ã…‹
+                            mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}
@@ -226,7 +226,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810200;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810000;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                            } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                 mobId = 8810100;
                             }
                             final MapleMonster horntail = MapleLifeFactory.getMonster(mobId);
@@ -241,7 +241,7 @@ public class Horntail extends ScriptEngineNPC {
                             horntail.getStats().setMaxHp(cs.hp);
                             horntail.setOverrideStats(cs);
                             tremble.getMap().spawnMonster(horntail, -2);
-                            mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                            mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}
@@ -262,10 +262,10 @@ public class Horntail extends ScriptEngineNPC {
                 		int mobId = 8810201;
                         if (eim.getProperty("mode").equals("normal")) {
                             mobId = 8810001;
-                        } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                        } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                             mobId = 8810101;
                         }
-                        mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                        mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                         tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x + 89, tremble.getPosition().y - 21), -2);
                         tremble.forceHitReactor((byte)0);
                         tremble.forceHitReactor((byte)1);
@@ -275,10 +275,10 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810201;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810001;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                            } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                 mobId = 8810101;
                             }
-                            mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                            mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                             tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x + 89, tremble.getPosition().y - 21), -2);
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
@@ -287,7 +287,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810201;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810001;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //Ä«¿À½º¸ğµå
+                            } else if (eim.getProperty("mode").equals("chaos")) { //ì¹´ì˜¤ìŠ¤ëª¨ë“œ
                                 mobId = 8810101;
                             }
                             final MapleMonster horntail = MapleLifeFactory.getMonster(mobId);
@@ -302,7 +302,7 @@ public class Horntail extends ScriptEngineNPC {
                             horntail.getStats().setMaxHp(cs.hp);
                             horntail.setOverrideStats(cs);
                             tremble.getMap().spawnMonster(horntail, -2);
-                            mapMessage(6, "µ¿±¼ ±íÀº °÷¿¡¼­ ¹«½Ã¹«½ÃÇÑ »ı¸íÃ¼°¡ ³ªÅ¸³³´Ï´Ù.");
+                            mapMessage(6, "ë™êµ´ ê¹Šì€ ê³³ì—ì„œ ë¬´ì‹œë¬´ì‹œí•œ ìƒëª…ì²´ê°€ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}
@@ -317,7 +317,7 @@ public class Horntail extends ScriptEngineNPC {
         if (eim != null) {
             int enMap = 240060000;
             int chaosMap = 240060001;
-            if (eim.getProperty("stage1") != null && (target.getMapId() == enMap || target.getMapId() == chaosMap)) { //1´Ü°è
+            if (eim.getProperty("stage1") != null && (target.getMapId() == enMap || target.getMapId() == chaosMap)) { //1ë‹¨ê³„
                 playPortalSE();
                 getPlayer().changeMap(target.getMapId() + 100);
             } else if (eim.getProperty("stage2") != null && (target.getMapId() == enMap+100 || target.getMapId() == chaosMap + 100)) {
@@ -328,7 +328,7 @@ public class Horntail extends ScriptEngineNPC {
                     getPlayer().changeMap(target.getMapId() + 100);
                 }
             } else {
-                getPlayer().dropMessage(5, "¾ÆÁ÷ ÀÌ Æ÷Å»À» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                getPlayer().dropMessage(5, "ì•„ì§ ì´ í¬íƒˆì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             }
         }
     }

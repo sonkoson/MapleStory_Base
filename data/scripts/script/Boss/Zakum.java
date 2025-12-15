@@ -15,209 +15,228 @@ import scripting.newscripting.ScriptEngineNPC;
 
 public class Zakum extends ScriptEngineNPC {
 
-    public void zakum_accept() {
-        FieldSet fieldSet = fieldSet("ZakumEnter");
-        if (fieldSet == null) {
-            self.sayOk("Áö±İÀº ÀÚÄñ ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-            return;
-        }
-        int v0 = -1;
-        if (DBConfig.isGanglim) {
-        	if (target.getMapId() == 211042401) {
-                fieldSet = fieldSet("ChaosZakumEnter");
-                v0 = self.askMenu("#e<ÀÚÄñ : Ä«¿À½º¸ğµå>#n\r\nÀÚÄñÀÌ ºÎÈ°Çß´Ù³×. ÀÌ´ë·Î µĞ´Ù¸é È­»êÆø¹ßÀ» ÀÏÀ¸ÄÑ¼­ ¿¤³ª½º »ê¸Æ ÀüÃ¼¸¦ Áö¿ÁÀ¸·Î ¸¸µé¾î ¹ö¸±°Å¾ß.\r\n#b#e(ÆÄÆ¼¿øÀÌ µ¿½Ã¿¡ ÀÌµ¿µË´Ï´Ù.)#n#k\r\n#r(Ä«¿À½º ÀÚÄñÀº #e1ÁÖÀÏ¿¡ 1È¸ Å¬¸®¾î#nÇÒ ¼ö ÀÖÀ¸¸ç, Å¬¸®¾î ±â·ÏÀº #e¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÃÊ±âÈ­#n µË´Ï´Ù.)\r\n#b\r\n#L0# Ä«¿À½º ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
-            } else {
-                v0 = self.askMenu("#e<ÀÚÄñ : ³ë¸Ö¸ğµå>#n\r\nÀÚÄñÀÌ ºÎÈ°Çß´Ù³×. ÀÌ´ë·Î µĞ´Ù¸é È­»êÆø¹ßÀ» ÀÏÀ¸ÄÑ¼­ ¿¤³ª½º »ê¸Æ ÀüÃ¼¸¦ Áö¿ÁÀ¸·Î ¸¸µé¾î ¹ö¸±°Å¾ß.\r\n#r(ÀÌÁö, ³ë¸Ö ÀÚÄñÀÇ Á¦´Ü¿¡´Â µÎ ¸ğµå ÇÕÃÄ #eÇÏ·ç¿¡ 1È¸ ÀÔÀå#nÇÒ ¼ö ÀÖÀ¸¸ç, ÀÔÀå ±â·ÏÀº #e¸ÅÀÏ ÀÚÁ¤¿¡ ÃÊ±âÈ­#n µË´Ï´Ù.)\r\n#b\r\n#L0# ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.(ÆÄÆ¼¿øÀÌ µ¿½Ã¿¡ ÀÌµ¿µË´Ï´Ù.)#l");
-            }
-        }
-        else { //Áø¼­¹ö 
-        	if (target.getMapId() == 211042401) {
-                fieldSet = fieldSet("ChaosZakumEnter");
-                boolean isSingle = false;
-            	if (getPlayer().getParty() == null || //ÆÄÆ¼°¡ ¾ø°Å³ª
-    				getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { //ÆÄÆ¼¿øÀÌ 1¸íÀÎ°æ¿ì
-    				isSingle = true;
-    			}
-                String askString = "#e<ÀÚÄñ : Ä«¿À½º¸ğµå>#n\r\n"
-                		+ "ÀÚÄñÀÌ ºÎÈ°Çß´Ù³×. ÀÌ´ë·Î µĞ´Ù¸é È­»êÆø¹ßÀ» ÀÏÀ¸ÄÑ¼­ ¿¤³ª½º »ê¸Æ ÀüÃ¼¸¦ Áö¿ÁÀ¸·Î ¸¸µé¾î ¹ö¸±°Å¾ß.\r\n"
-                		+ "#b#e(ÆÄÆ¼¿øÀÌ µ¿½Ã¿¡ ÀÌµ¿µË´Ï´Ù.)#n#k\r\n"
-                		+ "#r(Ä«¿À½º ÀÚÄñÀº #e1ÁÖÀÏ¿¡ 1È¸ Å¬¸®¾î#nÇÒ ¼ö ÀÖÀ¸¸ç, Å¬¸®¾î ±â·ÏÀº #e¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÃÊ±âÈ­#n µË´Ï´Ù.)\r\n";
-                if (!isSingle) { //¸ÖÆ¼¸ğµå
-					askString += "¸ÖÆ¼¸ğµå ¿¡¼­´Â º¸½ºÀÇ Ã¼·ÂÀÌ 3¹è Áõ°¡ÇÏ¸ç, \r\n"
-						+ "ÃÖÁ¾ µ¥¹ÌÁö°¡ 50% °¨¼Ò,\r\n"
-						+ "ÆÄÆ¼¿øÀÇ µ¥½ºÄ«¿îÆ®°¡ °øÀ¯µË´Ï´Ù.";
+	public void zakum_accept() {
+		FieldSet fieldSet = fieldSet("ZakumEnter");
+		if (fieldSet == null) {
+			self.sayOk("à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Zakum Raid à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
+			return;
+		}
+		int v0 = -1;
+		if (DBConfig.isGanglim) {
+			if (target.getMapId() == 211042401) {
+				fieldSet = fieldSet("ChaosZakumEnter");
+				v0 = self.askMenu(
+						"#e<Zakum: Chaos Mode>#n\r\nZakum à¸Ÿà¸·à¹‰à¸™à¸„à¸·à¸™à¸Šà¸µà¸à¹à¸¥à¹‰à¸§ à¸«à¸²à¸à¸›à¸¥à¹ˆà¸­à¸¢à¹„à¸§à¹‰ à¸ à¸¹à¹€à¸‚à¸²à¹„à¸Ÿà¸ˆà¸°à¸£à¸°à¹€à¸šà¸´à¸”à¹à¸¥à¸°à¸—à¸³à¹ƒà¸«à¹‰ El Nath à¸à¸¥à¸²à¸¢à¹€à¸›à¹‡à¸™à¸™à¸£à¸\r\n#b#e(à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸°à¸–à¸¹à¸à¸¢à¹‰à¸²à¸¢à¸à¸£à¹‰à¸­à¸¡à¸à¸±à¸™)#n#k\r\n#r(Chaos Zakum à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰ #e1 à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œ#n à¹à¸¥à¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸ #eà¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ#n)\r\n#b\r\n#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Chaos Zakum#l");
+			} else {
+				v0 = self.askMenu(
+						"#e<Zakum: Normal Mode>#n\r\nZakum à¸Ÿà¸·à¹‰à¸™à¸„à¸·à¸™à¸Šà¸µà¸à¹à¸¥à¹‰à¸§ à¸«à¸²à¸à¸›à¸¥à¹ˆà¸­à¸¢à¹„à¸§à¹‰ à¸ à¸¹à¹€à¸‚à¸²à¹„à¸Ÿà¸ˆà¸°à¸£à¸°à¹€à¸šà¸´à¸”à¹à¸¥à¸°à¸—à¸³à¹ƒà¸«à¹‰ El Nath à¸à¸¥à¸²à¸¢à¹€à¸›à¹‡à¸™à¸™à¸£à¸\r\n#r(Easy, Normal Zakum à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸£à¸§à¸¡à¸à¸±à¸™ #e1 à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¸§à¸±à¸™#n à¹à¸¥à¸°à¸£à¸µà¹€à¸‹à¹‡à¸• #eà¸—à¸¸à¸à¹€à¸—à¸µà¹ˆà¸¢à¸‡à¸„à¸·à¸™#n)\r\n#b\r\n#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Zakum (à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸°à¸–à¸¹à¸à¸¢à¹‰à¸²à¸¢à¸à¸£à¹‰à¸­à¸¡à¸à¸±à¸™)#l");
+			}
+		} else { // ì§„ì„œë²„
+			if (target.getMapId() == 211042401) {
+				fieldSet = fieldSet("ChaosZakumEnter");
+				boolean isSingle = false;
+				if (getPlayer().getParty() == null || // íŒŒí‹°ê°€ ì—†ê±°ë‚˜
+						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // íŒŒí‹°ì›ì´
+																												// 1ëª…ì¸ê²½ìš°
+					isSingle = true;
 				}
-                askString += "#b\r\n";
-                if (isSingle) {
-					askString += "#L0# Ä«¿À½º ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.(½Ì±Û¸ğµå)#l\r\n";
-				}
-				else {
-					askString += "#L0# Ä«¿À½º ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.(¸ÖÆ¼¸ğµå)#l\r\n";
-				}
-                boolean canReset = false;
-				int reset = 0;
-				if (isSingle) {
-					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumSingle");
-					int count = getPlayer().getOneInfoQuestInteger(15166, "mobDeadSingle");
-					if (count > 0) canReset = true;
-				}
-				else {
-					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumMulti");
-					int count = getPlayer().getOneInfoQuestInteger(15166, "mobDeadMulti");
-					if (count > 0) canReset = true;
-				}
-				if (canReset) {
-					askString += " #L1#ÀÔÀåÈ½¼ö ÃÊ±âÈ­ " + (1 - reset) + "È¸ Ãß°¡ÀÔÀå °¡´É";
-				}
-                v0 = self.askMenu(askString);
-            } else {
-            	boolean isSingle = false;
-            	if (getPlayer().getParty() == null || //ÆÄÆ¼°¡ ¾ø°Å³ª
-    				getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { //ÆÄÆ¼¿øÀÌ 1¸íÀÎ°æ¿ì
-    				isSingle = true;
-    			}
-				String askString = "#e<ÀÚÄñ : ³ë¸Ö¸ğµå>#n\r\n"
-						+ "ÀÚÄñÀÌ ºÎÈ°Çß´Ù³×. ÀÌ´ë·Î µĞ´Ù¸é È­»êÆø¹ßÀ» ÀÏÀ¸ÄÑ¼­ ¿¤³ª½º »ê¸Æ ÀüÃ¼¸¦ Áö¿ÁÀ¸·Î ¸¸µé¾î ¹ö¸±°Å¾ß.\r\n"
-						+ "#r(ÀÌÁö, ³ë¸Ö ÀÚÄñÀÇ Á¦´Ü¿¡´Â µÎ ¸ğµå ÇÕÃÄ #eÇÏ·ç¿¡ 1È¸ ÀÔÀå#n"
-						+ "ÇÒ ¼ö ÀÖÀ¸¸ç, ÀÔÀå ±â·ÏÀº #e¸ÅÀÏ ÀÚÁ¤¿¡ ÃÊ±âÈ­#n µË´Ï´Ù.)\r\n";
-				if (!isSingle) { //¸ÖÆ¼¸ğµå
-					askString += "¸ÖÆ¼¸ğµå ¿¡¼­´Â º¸½ºÀÇ Ã¼·ÂÀÌ 3¹è Áõ°¡ÇÏ¸ç, \r\n"
-						+ "ÃÖÁ¾ µ¥¹ÌÁö°¡ 50% °¨¼Ò,\r\n"
-						+ "ÆÄÆ¼¿øÀÇ µ¥½ºÄ«¿îÆ®°¡ °øÀ¯µË´Ï´Ù.";
+				String askString = "#e<Zakum: Chaos Mode>#n\r\n"
+						+ "Zakum à¸Ÿà¸·à¹‰à¸™à¸„à¸·à¸™à¸Šà¸µà¸à¹à¸¥à¹‰à¸§ à¸«à¸²à¸à¸›à¸¥à¹ˆà¸­à¸¢à¹„à¸§à¹‰ à¸ à¸¹à¹€à¸‚à¸²à¹„à¸Ÿà¸ˆà¸°à¸£à¸°à¹€à¸šà¸´à¸”à¹à¸¥à¸°à¸—à¸³à¹ƒà¸«à¹‰ El Nath à¸à¸¥à¸²à¸¢à¹€à¸›à¹‡à¸™à¸™à¸£à¸\r\n"
+						+ "#b#e(à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸°à¸–à¸¹à¸à¸¢à¹‰à¸²à¸¢à¸à¸£à¹‰à¸­à¸¡à¸à¸±à¸™)#n#k\r\n"
+						+ "#r(Chaos Zakum à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰ #e1 à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œ#n à¹à¸¥à¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸ #eà¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ#n)\r\n";
+				if (!isSingle) { // ë©€í‹°ëª¨ë“œ
+					askString += "à¹ƒà¸™à¹‚à¸«à¸¡à¸” Multi à¹€à¸¥à¸·à¸­à¸”à¸šà¸­à¸ªà¸ˆà¸°à¹€à¸à¸´à¹ˆà¸¡à¸‚à¸¶à¹‰à¸™ 3 à¹€à¸—à¹ˆà¸², \r\n"
+							+ "à¸¥à¸” Final Damage 50%,\r\n"
+							+ "à¹à¸¥à¸°à¹à¸Šà¸£à¹Œ Death Count à¸à¸±à¸šà¸›à¸²à¸£à¹Œà¸•à¸µà¹‰";
 				}
 				askString += "#b\r\n";
 				if (isSingle) {
-					askString += "#L0# ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.(½Ì±Û¸ğµå)#l\r\n";
-				}
-				else {
-					askString += "#L0# ÀÚÄñ ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.(¸ÖÆ¼¸ğµå)#l\r\n";
+					askString += "#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Chaos Zakum (Single)#l\r\n";
+				} else {
+					askString += "#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Chaos Zakum (Multi)#l\r\n";
 				}
 				boolean canReset = false;
 				int reset = 0;
 				if (isSingle) {
-					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumSingle");
+					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+							"ChaosZakumSingle");
+					int count = getPlayer().getOneInfoQuestInteger(15166, "mobDeadSingle");
+					if (count > 0)
+						canReset = true;
+				} else {
+					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+							"ChaosZakumMulti");
+					int count = getPlayer().getOneInfoQuestInteger(15166, "mobDeadMulti");
+					if (count > 0)
+						canReset = true;
+				}
+				if (canReset) {
+					askString += " #L1#à¸£à¸µà¹€à¸‹à¹‡à¸•à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ à¹€à¸à¸´à¹ˆà¸¡à¹„à¸”à¹‰à¸­à¸µà¸ " + (1 - reset) + " à¸„à¸£à¸±à¹‰à¸‡";
+				}
+				v0 = self.askMenu(askString);
+			} else {
+				boolean isSingle = false;
+				if (getPlayer().getParty() == null || // íŒŒí‹°ê°€ ì—†ê±°ë‚˜
+						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // íŒŒí‹°ì›ì´
+																												// 1ëª…ì¸ê²½ìš°
+					isSingle = true;
+				}
+				String askString = "#e<Zakum: Normal Mode>#n\r\n"
+						+ "Zakum à¸Ÿà¸·à¹‰à¸™à¸„à¸·à¸™à¸Šà¸µà¸à¹à¸¥à¹‰à¸§ à¸«à¸²à¸à¸›à¸¥à¹ˆà¸­à¸¢à¹„à¸§à¹‰ à¸ à¸¹à¹€à¸‚à¸²à¹„à¸Ÿà¸ˆà¸°à¸£à¸°à¹€à¸šà¸´à¸”à¹à¸¥à¸°à¸—à¸³à¹ƒà¸«à¹‰ El Nath à¸à¸¥à¸²à¸¢à¹€à¸›à¹‡à¸™à¸™à¸£à¸\r\n"
+						+ "#r(Easy, Normal Zakum à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸£à¸§à¸¡à¸à¸±à¸™ #e1 à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­à¸§à¸±à¸™#n"
+						+ "à¹à¸¥à¸°à¸£à¸µà¹€à¸‹à¹‡à¸• #eà¸—à¸¸à¸à¹€à¸—à¸µà¹ˆà¸¢à¸‡à¸„à¸·à¸™#n)\r\n";
+				if (!isSingle) { // ë©€í‹°ëª¨ë“œ
+					askString += "à¹ƒà¸™à¹‚à¸«à¸¡à¸” Multi à¹€à¸¥à¸·à¸­à¸”à¸šà¸­à¸ªà¸ˆà¸°à¹€à¸à¸´à¹ˆà¸¡à¸‚à¸¶à¹‰à¸™ 3 à¹€à¸—à¹ˆà¸², \r\n"
+							+ "à¸¥à¸” Final Damage 50%,\r\n"
+							+ "à¹à¸¥à¸°à¹à¸Šà¸£à¹Œ Death Count à¸à¸±à¸šà¸›à¸²à¸£à¹Œà¸•à¸µà¹‰";
+				}
+				askString += "#b\r\n";
+				if (isSingle) {
+					askString += "#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Zakum (Single)#l\r\n";
+				} else {
+					askString += "#L0# à¸‚à¸­à¹€à¸‚à¹‰à¸²à¸£à¹ˆà¸§à¸¡ Zakum (Multi)#l\r\n";
+				}
+				boolean canReset = false;
+				int reset = 0;
+				if (isSingle) {
+					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+							"NormalZakumSingle");
 					int count = getPlayer().getOneInfoQuestInteger(7003, "Single");
-					if (count > 0) canReset = true;
-				}
-				else {
-					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumMulti");
+					if (count > 0)
+						canReset = true;
+				} else {
+					reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+							"NormalZakumMulti");
 					int count = getPlayer().getOneInfoQuestInteger(7003, "Multi");
-					if (count > 1) canReset = true;
+					if (count > 1)
+						canReset = true;
 				}
-					
+
 				if (canReset) {
 					if (isSingle) {
-						askString += " #L1#ÀÔÀåÈ½¼ö ÃÊ±âÈ­ " + (2 - reset) + "È¸ Ãß°¡ÀÔÀå °¡´É";
-					}
-					else {
-						askString += " #L1#ÀÔÀåÈ½¼ö ÃÊ±âÈ­ " + (1 - reset) + "È¸ Ãß°¡ÀÔÀå °¡´É";
+						askString += " #L1#à¸£à¸µà¹€à¸‹à¹‡à¸•à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ à¹€à¸à¸´à¹ˆà¸¡à¹„à¸”à¹‰à¸­à¸µà¸ " + (2 - reset) + " à¸„à¸£à¸±à¹‰à¸‡";
+					} else {
+						askString += " #L1#à¸£à¸µà¹€à¸‹à¹‡à¸•à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ à¹€à¸à¸´à¹ˆà¸¡à¹„à¸”à¹‰à¸­à¸µà¸ " + (1 - reset) + " à¸„à¸£à¸±à¹‰à¸‡";
 					}
 				}
-                v0 = self.askMenu(askString);
-            }
-        }
+				v0 = self.askMenu(askString);
+			}
+		}
 
-        if (v0 == 0) { //ÀÔÀå½Ãµµ
-            if (getPlayer().getItemQuantity(4001017, false) < 1) {
-                if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
-                    self.say("±âÅ¸ ÀÎº¥Åä¸® °ø°£ÀÌ ºÎÁ·ÇÑ°Í °°Àº°É? ±âÅ¸ ÀÎº¥Åä¸® °ø°£À» ÃæºĞÈ÷ È®º¸ÇØÁÖ°Ô³ª.");
-                    return;
-                }
-                target.exchange(4001017, 1);
-                self.say("ºÒÀÇ ´«ÀÌ ¾ø¾îº¸ÀÌ´Â±º. ÀÚÄñÀ» ¸¸³ª±â À§ÇØ¼­ ²À ÇÊ¿äÇÏ´Ù³×. ³»°¡ °®°í ÀÖ´ø °ÍÀ» µå¸±Å×´Ï, ÀÚÄñÀ» ²À Ã³Ä¡ÇØÁÖ±æ ¹Ù¶ó³×.");
-            }
-            int enter = fieldSet.enter(target.getId(), 0);
-            if (enter == -1) self.say("¾Ë ¼ö ¾ø´Â ÀÌÀ¯·Î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù. Àá½Ã ÈÄ¿¡ ´Ù½Ã ½ÃµµÇØ ÁÖ½Ê½Ã¿À.");
-            else if (enter == 1) self.say("ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ µµÀüÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 2) self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
-            else if (enter == 3) self.say( "ÃÖ¼Ò " + fieldSet.minMember + "ÀÎ ÀÌ»óÀÇ ÆÄÆ¼°¡ Äù½ºÆ®¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 4) self.say( "ÆÄÆ¼¿øÀÇ ·¹º§Àº ÃÖ¼Ò " + fieldSet.minLv + " ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù.");
-            else if (enter == 5) self.say("ÆÄÆ¼¿øÀÌ ¸ğµÎ ¸ğ¿© ÀÖ¾î¾ß ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 6) self.say( "ÀÌ¹Ì ´Ù¸¥ ¿øÁ¤´ë°¡ ¾ÈÀ¸·Î µé¾î°¡ Äù½ºÆ® Å¬¸®¾î¿¡ µµÀüÇÏ°í ÀÖ´Â ÁßÀÔ´Ï´Ù.");
-            else if (enter == 7) { //30ºĞ ´ë±â½Ã°£ÀÌ ¹ß»ıÇÑ°æ¿ì (Ä«¿À½º ÀÚÄñ¸¸ ÇØ´çµÈ´Ù.
-                self.say("30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-            }
-            else if (enter < -1) {
-                MapleCharacter user = getClient().getChannelServer().getPlayerStorage().getCharacterById(enter * -1);
-                String name = "";
-                if (user != null) {
-                    name = user.getName();
-                }
-                if (target.getMapId() == 211042401) {
-                    self.sayOk("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» <º¸½º:ÀÚÄñ> Ä«¿À½º ¸ğµå¸¦ Å¬¸®¾îÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. <º¸½º:ÀÚÄñ> Ä«¿À½º ¸ğµå´Â ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù.\r\n#r#e<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­ µË´Ï´Ù.>");
-                } else {
-                    self.say("ÆÄÆ¼¿ø Áß #b#e" + name + "#k#n ´ÔÀÌ ¿À´Ã ÀÚÄñÀÇ Á¦´Ü¿¡ ÀÔÀåÇÏ¼Å¼­ µé¾î°¥ ¼ö ¾ø½À´Ï´Ù.");
-                }
-            }
-        }
-        else if (v0 == 1) { //Áø ÀÔÀåÈ½¼ö ÃÊ±âÈ­
-        	if (!DBConfig.isGanglim) {
-        		int togetherPoint = getPlayer().getTogetherPoint();
-        		if (togetherPoint < 150) {
-        			self.sayOk("Çùµ¿Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. ÇöÀç Çùµ¿Æ÷ÀÎÆ® : " + togetherPoint);
-        			return;
-        		}
-        		if (target.getMapId() == 211042401) {
-        			boolean isSingle = false;
-	            	if (getPlayer().getParty() == null || //ÆÄÆ¼°¡ ¾ø°Å³ª
-	    				getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { //ÆÄÆ¼¿øÀÌ 1¸íÀÎ°æ¿ì
-	    				isSingle = true;
-	    			}
-	            	int resetCount = 0;
-	            	if (isSingle) {
-	            		resetCount = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumSingle");
-	            		if (resetCount > 0) {
-							self.sayOk("ÀÌ¹øÁÖ´Â ´õÀÌ»ó ÃÊ±âÈ­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-							return;
-						}
-	            		getPlayer().updateOneInfo(15166, "mobDeadSingle", "0");
-	            		getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumSingle", String.valueOf(resetCount + 1));
-	            	}
-	            	else {
-	            		resetCount = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumMulti");
-	            		if (resetCount > 0) {
-							self.sayOk("ÀÌ¹øÁÖ´Â ´õÀÌ»ó ÃÊ±âÈ­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-							return;
-						}
-	            		getPlayer().updateOneInfo(15166, "mobDeadMulti", "0"); 
-						getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumMulti", String.valueOf(resetCount + 1));
-	            	}
-					getPlayer().gainTogetherPoint(-150);
-					self.sayOk("Ä«¿À½ºÀÚÄñ ÀÔÀåÈ½¼ö°¡ ÃÊ±âÈ­µÇ¾ú½À´Ï´Ù.");
-        		}
-				else {
-					boolean isSingle = false;
-	            	if (getPlayer().getParty() == null || //ÆÄÆ¼°¡ ¾ø°Å³ª
-	    				getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { //ÆÄÆ¼¿øÀÌ 1¸íÀÎ°æ¿ì
-	    				isSingle = true;
-	    			}
-	            	int resetCount = 0;
-	            	if (isSingle) {
-	            		resetCount = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumSingle");
-	            		if (resetCount > 1) {
-							self.sayOk("¿À´ÃÀº ´õÀÌ»ó ÃÊ±âÈ­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-							return;
-						}
-	            	}
-	            	else {
-	            		resetCount = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumMulti");
-	            		if (resetCount > 0) {
-							self.sayOk("¿À´ÃÀº ´õÀÌ»ó ÃÊ±âÈ­°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-							return;
-						}
-	            	}
-	            	if (isSingle) {
-	            		getPlayer().updateOneInfo(7003, "Single", "");
-	            		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumSingle", String.valueOf(resetCount + 1));
-					}
-					else {
-						getPlayer().updateOneInfo(7003, "Multi", "1"); // ¸ÖÆ¼´Â 1È¸Ãß°¡ÀÔÀåÀ¸·Î ±âº» 1È¸·Î ³»¸²
-						getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumMulti", String.valueOf(resetCount + 1));
-					}
-	            	getPlayer().gainTogetherPoint(-150);
-					self.sayOk("³ë¸»ÀÚÄñ ÀÔÀåÈ½¼ö°¡ ÃÊ±âÈ­µÇ¾ú½À´Ï´Ù.");
+		if (v0 == 0) { // ì…ì¥ì‹œë„
+			if (getPlayer().getItemQuantity(4001017, false) < 1) {
+				if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
+					self.say("à¸”à¸¹à¹€à¸«à¸¡à¸·à¸­à¸™à¸Šà¹ˆà¸­à¸‡à¹€à¸à¹‡à¸šà¸‚à¸­à¸‡ ETC à¸ˆà¸°à¹„à¸¡à¹ˆà¸à¸­ à¸à¸£à¸¸à¸“à¸²à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¸Šà¹ˆà¸­à¸‡à¸§à¹ˆà¸²à¸‡à¹ƒà¸«à¹‰à¹€à¸à¸µà¸¢à¸‡à¸à¸­");
+					return;
 				}
-        	}
-        }
-    }
+				target.exchange(4001017, 1);
+				self.say("à¸”à¸¹à¹€à¸«à¸¡à¸·à¸­à¸™à¹€à¸ˆà¹‰à¸²à¸ˆà¸°à¹„à¸¡à¹ˆà¸¡à¸µ Eye of Fire à¸‹à¸¶à¹ˆà¸‡à¸ˆà¸³à¹€à¸›à¹‡à¸™à¹ƒà¸™à¸à¸²à¸£à¸à¸š Zakum à¸‚à¹‰à¸²à¸ˆà¸°à¸¡à¸­à¸šà¹ƒà¸«à¹‰à¹€à¸ˆà¹‰à¸² à¸‚à¸­à¹ƒà¸«à¹‰à¹€à¸ˆà¹‰à¸²à¹‚à¸Šà¸„à¸”à¸µ");
+			}
+			int enter = fieldSet.enter(target.getId(), 0);
+			if (enter == -1)
+				self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸”à¹‰à¸§à¸¢à¹€à¸«à¸•à¸¸à¸œà¸¥à¸šà¸²à¸‡à¸›à¸£à¸°à¸à¸²à¸£ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¸ à¸²à¸¢à¸«à¸¥à¸±à¸‡");
+			else if (enter == 1)
+				self.say("à¸•à¹‰à¸­à¸‡à¸¡à¸µà¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸¶à¸‡à¸ˆà¸°à¸—à¹‰à¸²à¸—à¸²à¸¢à¹„à¸”à¹‰");
+			else if (enter == 2)
+				self.say("à¸à¸£à¸¸à¸“à¸²à¹ƒà¸«à¹‰à¸«à¸±à¸§à¸«à¸™à¹‰à¸²à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¹€à¸›à¹‡à¸™à¸œà¸¹à¹‰à¸”à¸³à¹€à¸™à¸´à¸™à¸à¸²à¸£");
+			else if (enter == 3)
+				self.say("à¸•à¸µà¹‰à¸•à¹‰à¸­à¸‡à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¸­à¸¢à¹ˆà¸²à¸‡à¸™à¹‰à¸­à¸¢ " + fieldSet.minMember + " à¸„à¸™");
+			else if (enter == 4)
+				self.say("à¹€à¸¥à¹€à¸§à¸¥à¸‚à¸­à¸‡à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸•à¹‰à¸­à¸‡à¸¡à¸µà¸­à¸¢à¹ˆà¸²à¸‡à¸™à¹‰à¸­à¸¢ " + fieldSet.minLv + " à¸‚à¸¶à¹‰à¸™à¹„à¸›");
+			else if (enter == 5)
+				self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸¡à¸²à¸£à¸§à¸¡à¸•à¸±à¸§à¸à¸±à¸™");
+			else if (enter == 6)
+				self.say("à¸¡à¸µà¸à¸­à¸‡à¸à¸³à¸¥à¸±à¸‡à¸­à¸·à¹ˆà¸™à¸à¸³à¸¥à¸±à¸‡à¸—à¹‰à¸²à¸—à¸²à¸¢à¸­à¸¢à¸¹à¹ˆ");
+			else if (enter == 7) { // 30ë¶„ ëŒ€ê¸°ì‹œê°„ì´ ë°œìƒí•œê²½ìš° (ì¹´ì˜¤ìŠ¤ ìì¿°ë§Œ í•´ë‹¹ëœë‹¤.
+				self.say("à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¹€à¸à¸´à¹ˆà¸‡à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™à¸ à¸²à¸¢à¹ƒà¸™ 30 à¸™à¸²à¸—à¸µ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸‹à¹‰à¸³à¹„à¸”à¹‰à¸ à¸²à¸¢à¹ƒà¸™ 30 à¸™à¸²à¸—à¸µ");
+			} else if (enter < -1) {
+				MapleCharacter user = getClient().getChannelServer().getPlayerStorage().getCharacterById(enter * -1);
+				String name = "";
+				if (user != null) {
+					name = user.getName();
+				}
+				if (target.getMapId() == 211042401) {
+					self.sayOk(
+							"à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œ <Boss: Zakum> Chaos Mode à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰\r\n#r#e<à¸›à¸£à¸°à¸§à¸±à¸•à¸´à¸à¸²à¸£à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¸ˆà¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸à¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ>");
+				} else {
+					self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰ #b#e" + name
+							+ "#k#n à¹„à¸”à¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¹à¸—à¹ˆà¸™à¸šà¸¹à¸Šà¸² Zakum à¹„à¸›à¹à¸¥à¹‰à¸§à¸§à¸±à¸™à¸™à¸µà¹‰ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸‹à¹‰à¸³à¹„à¸”à¹‰");
+				}
+			}
+		} else if (v0 == 1) { // ì§„ ì…ì¥íšŸìˆ˜ ì´ˆê¸°í™”
+			if (!DBConfig.isGanglim) {
+				int togetherPoint = getPlayer().getTogetherPoint();
+				if (togetherPoint < 150) {
+					self.sayOk("à¸„à¸°à¹à¸™à¸™à¸„à¸§à¸²à¸¡à¸£à¹ˆà¸§à¸¡à¸¡à¸·à¸­à¹„à¸¡à¹ˆà¹€à¸à¸µà¸¢à¸‡à¸à¸­ à¸„à¸°à¹à¸™à¸™à¸›à¸±à¸ˆà¸ˆà¸¸à¸šà¸±à¸™ : " + togetherPoint);
+					return;
+				}
+				if (target.getMapId() == 211042401) {
+					boolean isSingle = false;
+					if (getPlayer().getParty() == null || // íŒŒí‹°ê°€ ì—†ê±°ë‚˜
+							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // íŒŒí‹°ì›ì´
+																													// 1ëª…ì¸ê²½ìš°
+						isSingle = true;
+					}
+					int resetCount = 0;
+					if (isSingle) {
+						resetCount = getPlayer().getOneInfoQuestInteger(
+								QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumSingle");
+						if (resetCount > 0) {
+							self.sayOk("à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸£à¸µà¹€à¸‹à¹‡à¸•à¹„à¸”à¹‰à¸­à¸µà¸à¹à¸¥à¹‰à¸§");
+							return;
+						}
+						getPlayer().updateOneInfo(15166, "mobDeadSingle", "0");
+						getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+								"ChaosZakumSingle", String.valueOf(resetCount + 1));
+					} else {
+						resetCount = getPlayer().getOneInfoQuestInteger(
+								QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosZakumMulti");
+						if (resetCount > 0) {
+							self.sayOk("à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸£à¸µà¹€à¸‹à¹‡à¸•à¹„à¸”à¹‰à¸­à¸µà¸à¹à¸¥à¹‰à¸§");
+							return;
+						}
+						getPlayer().updateOneInfo(15166, "mobDeadMulti", "0");
+						getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+								"ChaosZakumMulti", String.valueOf(resetCount + 1));
+					}
+					getPlayer().gainTogetherPoint(-150);
+					self.sayOk("à¸£à¸µà¹€à¸‹à¹‡à¸•à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡ Chaos Zakum à¹€à¸£à¸µà¸¢à¸šà¸£à¹‰à¸­à¸¢à¹à¸¥à¹‰à¸§");
+				} else {
+					boolean isSingle = false;
+					if (getPlayer().getParty() == null || // íŒŒí‹°ê°€ ì—†ê±°ë‚˜
+							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // íŒŒí‹°ì›ì´
+																													// 1ëª…ì¸ê²½ìš°
+						isSingle = true;
+					}
+					int resetCount = 0;
+					if (isSingle) {
+						resetCount = getPlayer().getOneInfoQuestInteger(
+								QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumSingle");
+						if (resetCount > 1) {
+							self.sayOk("à¸§à¸±à¸™à¸™à¸µà¹‰à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸£à¸µà¹€à¸‹à¹‡à¸•à¹„à¸”à¹‰à¸­à¸µà¸à¹à¸¥à¹‰à¸§");
+							return;
+						}
+					} else {
+						resetCount = getPlayer().getOneInfoQuestInteger(
+								QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalZakumMulti");
+						if (resetCount > 0) {
+							self.sayOk("à¸§à¸±à¸™à¸™à¸µà¹‰à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¸£à¸µà¹€à¸‹à¹‡à¸•à¹„à¸”à¹‰à¸­à¸µà¸à¹à¸¥à¹‰à¸§");
+							return;
+						}
+					}
+					if (isSingle) {
+						getPlayer().updateOneInfo(7003, "Single", "");
+						getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+								"NormalZakumSingle", String.valueOf(resetCount + 1));
+					} else {
+						getPlayer().updateOneInfo(7003, "Multi", "1"); // ë©€í‹°ëŠ” 1íšŒì¶”ê°€ì…ì¥ìœ¼ë¡œ ê¸°ë³¸ 1íšŒë¡œ ë‚´ë¦¼
+						getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+								"NormalZakumMulti", String.valueOf(resetCount + 1));
+					}
+					getPlayer().gainTogetherPoint(-150);
+					self.sayOk("à¸£à¸µà¹€à¸‹à¹‡à¸•à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡ Normal Zakum à¹€à¸£à¸µà¸¢à¸šà¸£à¹‰à¸­à¸¢à¹à¸¥à¹‰à¸§");
+				}
+			}
+		}
+	}
 }

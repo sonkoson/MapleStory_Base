@@ -27,12 +27,18 @@ public class Magnus extends ScriptEngineNPC {
     public void magnus_easy() {
         initNPC(MapleLifeFactory.getNPC(3001000));
         if (DBConfig.isGanglim) {
-            self.say("ÇöÀç´Â ¸Å±×³Ê½º ¸ğÀÇÀüÀ» ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Simulation Battle à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
         }
-        self.say("±× Æ÷Å»À» ÅëÇØ ¸Å±×³Ê½º¿ÍÀÇ ¸ğÀÇÀüÀ» Ã¼ÇèÇØ º¸½Ç ¼ö ÀÖ¾î¿ä. ¹°·Ğ ¸Å±×³Ê½ºÀÇ º»·¡ Èû¿£ ÅÎ¾øÀÌ ¸ø¹ÌÄ¡°ÚÁö¸¸ ³ë¹ÙÀÇ ÇöÀç ±â¼ú·Î´Â ±×°Ô ÇÑ°è±º¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
-        if (self.askYesNo("¸Å±×³Ê½º¿ÍÀÇ ¸ğÀÇÀü(ÀÌÁö ¸ğµå)À» À§ÇØ ÀÌµ¿ÇÏ½Ç°Ç°¡¿ä?\r\n#b<< ¸Å±×³Ê½º ¸ğÀÇÀüÀº 1ÀÏ¿¡ 1È¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù. >>\r\n<<115 ·¹º§ ÀÌ»ó À¯Àú °£ ÆÄÆ¼·Î ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.>>", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
-            self.say("ÃÖ´ëÇÑ ºñ½ÁÇÑ È¯°æÀ» Á¶¼ºÇÏ±â À§ÇØ Æø±ºÀÇ ¼ºÃ¤¸¦ ÀçÇöÇØ µÎ¾ú¾î¿ä. ±× °÷¿¡¼­ ¿ÕÁÂ¿¡ ÁøÀÔÇÒ ¼ö ÀÖ¾î¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
-            target.registerTransferField(401060399); //sayÀÌÈÄ¿¡ ³Ñ¾î°¡¾ßÇÒ¶§´Â targetÀ» ºÙÀÎ´Ù!
+        self.say(
+                "à¸ªà¸²à¸¡à¸²à¸£à¸–à¸¥à¸­à¸‡à¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸à¸±à¸š Magnus à¸œà¹ˆà¸²à¸™à¸à¸­à¸£à¹Œà¸—à¸±à¸¥à¸™à¸±à¹‰à¸™à¹„à¸”à¹‰ à¹à¸™à¹ˆà¸™à¸­à¸™à¸§à¹ˆà¸²à¸à¸¥à¸±à¸‡à¸­à¸²à¸ˆà¹€à¸—à¸µà¸¢à¸šà¹„à¸¡à¹ˆà¹„à¸”à¹‰à¸à¸±à¸š Magnus à¸•à¸±à¸§à¸ˆà¸£à¸´à¸‡ à¹à¸•à¹ˆà¸™à¸µà¹ˆà¹€à¸›à¹‡à¸™à¸‚à¸µà¸”à¸ˆà¸³à¸à¸±à¸”à¸‚à¸­à¸‡à¹€à¸—à¸„à¹‚à¸™à¹‚à¸¥à¸¢à¸µ Nova à¹ƒà¸™à¸›à¸±à¸ˆà¸ˆà¸¸à¸šà¸±à¸™",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        if (self.askYesNo(
+                "à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Simulation Battle (Easy Mode) à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?\r\n#b<< Magnus Simulation Battle à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰à¸§à¸±à¸™à¸¥à¸° 1 à¸„à¸£à¸±à¹‰à¸‡ >>\r\n<< à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¹€à¸‰à¸à¸²à¸°à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¡à¸µà¹€à¸¥à¹€à¸§à¸¥ 115 à¸‚à¸¶à¹‰à¸™à¹„à¸› >>",
+                ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+            self.say(
+                    "à¹€à¸£à¸²à¹„à¸”à¹‰à¸ˆà¸³à¸¥à¸­à¸‡à¸›à¸£à¸²à¸ªà¸²à¸—à¸‚à¸­à¸‡à¸—à¸£à¸£à¸²à¸Šà¹€à¸à¸·à¹ˆà¸­à¹ƒà¸«à¹‰à¸ªà¸ à¸²à¸à¹à¸§à¸”à¸¥à¹‰à¸­à¸¡à¹ƒà¸à¸¥à¹‰à¹€à¸„à¸µà¸¢à¸‡à¸—à¸µà¹ˆà¸ªà¸¸à¸” à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¸«à¹‰à¸­à¸‡à¸šà¸±à¸¥à¸¥à¸±à¸‡à¸à¹Œà¹„à¸”à¹‰à¸ˆà¸²à¸à¸—à¸µà¹ˆà¸™à¸±à¹ˆà¸™",
+                    ScriptMessageFlag.NpcReplacedByNpc);
+            target.registerTransferField(401060399); // Use target when moving after say
         }
     }
 
@@ -40,20 +46,21 @@ public class Magnus extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(3001020));
         EventManager em = getEventManager("Magnus");
         if (em == null) {
-            self.say("ÇöÀç´Â ¸Å±×³Ê½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Raid à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
         } else {
             if (target.getParty() == null) {
-                self.say("1ÀÎ ÀÌ»óÀÇ ÆÄÆ¼¿¡ ¼ÓÇØ¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                self.say("à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸­à¸¢à¹ˆà¸²à¸‡à¸™à¹‰à¸­à¸¢ 1 à¸„à¸™à¸ˆà¸¶à¸‡à¸ˆà¸°à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId() && DBConfig.isGanglim) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("à¸à¸£à¸¸à¸“à¸²à¹ƒà¸«à¹‰à¸«à¸±à¸§à¸«à¸™à¹‰à¸²à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¹€à¸›à¹‡à¸™à¸œà¸¹à¹‰à¸”à¸³à¹€à¸™à¸´à¸™à¸à¸²à¸£");
                 } else {
-                    if (target.getMapId() == 401060399) { //ÀÌÁö¸Å±× ÀÔÀå¸Ê
+                    if (target.getMapId() == 401060399) { // Easy Magnus entry map
                         if (DBConfig.isGanglim) {
-                            self.say("ÇöÀç´Â ¸Å±×³Ê½º ¸ğÀÇÀüÀ» ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+                            self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Simulation Battle à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
                         }
-                        if (self.askYesNo("¸Å±×³Ê½º ÅğÄ¡¸¦ À§ÇØ Æø±ºÀÇ ¿ÕÁÂ·Î ÀÌµ¿ ÇÏ½Ã°Ú½À´Ï±î??\r\n#b<< ¸Å±×³Ê½º ¸ğÀÇÀüÀº 1ÀÏ¿¡ 1È¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù. >>\r\n<<115 ·¹º§ ÀÌ»ó À¯Àú °£ÀÇ ÆÄÆ¼·Î ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.>>") == 1) {
-                            //401060200 ~ 401060209
+                        if (self.askYesNo(
+                                "à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸”à¸´à¸™à¸—à¸²à¸‡à¹„à¸›à¸¢à¸±à¸‡ Tyrant's Throne à¹€à¸à¸·à¹ˆà¸­à¸à¸³à¸ˆà¸±à¸” Magnus à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?\r\n#b<< Magnus Simulation Battle à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰à¸§à¸±à¸™à¸¥à¸° 1 à¸„à¸£à¸±à¹‰à¸‡ >>\r\n<< à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¹€à¸‰à¸à¸²à¸°à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¡à¸µà¹€à¸¥à¹€à¸§à¸¥ 115 à¸‚à¸¶à¹‰à¸™à¹„à¸› >>") == 1) {
+                            // 401060200 ~ 401060209
                             if (target.getParty().isPartySameMap()) {
                                 boolean canEnter = false;
                                 String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID());
@@ -66,82 +73,115 @@ public class Magnus extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 401060300);
                                         eim.setProperty("mode", "easy");
-                                        getClient().getChannelServer().getMapFactory().getMap(401060300).resetFully(false);
-                                        updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID()); //ÀÌÁö¸Å±×¿Í ³ë¸»¸Å±×´Â ½Ã°£À» °øÀ¯ÇÔ
+                                        getClient().getChannelServer().getMapFactory().getMap(401060300)
+                                                .resetFully(false);
+                                        updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID()); // Easy and
+                                                                                                           // Normal
+                                                                                                           // Magnus
+                                                                                                           // share time
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        self.sayOk("ÀÌ¹Ì ÇØ´çÃ¤³Î¿¡¼­ ¸Å±×³Ê½º ·¹ÀÌµå°¡ ÁøÇàÁßÀÔ´Ï´Ù.");
+                                        self.sayOk("à¸¡à¸µà¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸à¸±à¸š Magnus à¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸™à¸µà¹‰à¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§");
                                     }
                                 } else {
-                                    self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÌ¹Ì ÀÔÀå ÇÏ¿© ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                    self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰ #b#e" + overLap
+                                            + "#n#k à¹„à¸”à¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¸”à¸±à¸™à¹€à¸ˆà¸µà¹‰à¸¢à¸™à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸§à¸±à¸™à¸™à¸µà¹‰ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸");
                                 }
                             } else {
-                                self.say("ÆÄÆ¼¿ø ¸ğµÎ °°Àº¸Ê¿¡ ÀÖÀ¸¼Å¾ßÇÕ´Ï´Ù.");
+                                self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™");
                             }
                         }
                     } else {
-                    	boolean single = false;
-                    	if (!DBConfig.isGanglim) {
-                    		single = getPlayer().getParty().getMembers().size() == 1;
-                    	}
-                    	String text = text = "¸Å±×³Ê½º ÅğÄ¡¸¦ À§ÇØ Æø±ºÀÇ ¿ÕÁÂ·Î ÀÌµ¿ ÇÏ½Ã°Ú½À´Ï±î??#b\r\n";
-                    	if (DBConfig.isGanglim) {
-                            text += "#L0#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå)·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 175ÀÌ»ó)";
-                            text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ÇÏµå ¸Å±×³Ê½º] ¿À´Ã ÇØ´ç º¸½º¸¦ "+chr.getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum")+"¹ø ÀÔÀå ÇÏ¼Ì½À´Ï´Ù. ÃÑ "+(chr.getBossTier() + 1)+"¹ø ÀÔÀå ÇÏ½Ç ¼öÀÖ½À´Ï´Ù."));
-                            text += "\r\n#L1#Æø±ºÀÇ ¿ÕÁÂ(³ë¸Ö)·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 155ÀÌ»ó)";
-                            text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[³ë¸» ¸Å±×³Ê½º] ¿À´Ã ÇØ´ç º¸½º¸¦ "+chr.getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")+"¹ø ÀÔÀå ÇÏ¼Ì½À´Ï´Ù. ÃÑ "+(chr.getBossTier() + 1)+"¹ø ÀÔÀå ÇÏ½Ç ¼öÀÖ½À´Ï´Ù."));
-                            text +="\r\n#L3#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå) ¿¬½À ¸ğµå·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 175ÀÌ»ó)#l\r\n#L2#ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù.#l";
-                    	} else {
-                            text += "#L0#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "·Î ÀÌµ¿.(·¹º§ 175ÀÌ»ó)";
-                            text += "\r\n#L1#Æø±ºÀÇ ¿ÕÁÂ(³ë¸Ö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "·Î ÀÌµ¿.(·¹º§ 155ÀÌ»ó)";
-                            //text +="\r\n#L3#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå) ¿¬½À ¸ğµå·Î ÀÌµ¿.(·¹º§ 175ÀÌ»ó)#l\r\n#L2#ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù.#l";
-                            /* int hreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "HardMagnus" + (single ? "Single" : "Multi"));
-                            text += "\r\n#L5#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "ÀÔÀåÈ½¼ö 1 Áõ°¡(" + ((single ? 2 : 1) - hreset) + "È¸ °¡´É)#l";
-                            */
-                            int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalMagnus" + (single ? "Single" : "Multi"));
-                            text += "\r\n#L6#Æø±ºÀÇ ¿ÕÁÂ(³ë¸Ö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + "ÀÔÀåÈ½¼ö 1 Áõ°¡(" + ((single ? 2 : 1) - nreset) + "È¸ °¡´É)#l"; 
-                    	}
+                        boolean single = false;
+                        if (!DBConfig.isGanglim) {
+                            single = getPlayer().getParty().getMembers().size() == 1;
+                        }
+                        String text = "à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸”à¸´à¸™à¸—à¸²à¸‡à¹„à¸›à¸¢à¸±à¸‡ Tyrant's Throne à¹€à¸à¸·à¹ˆà¸­à¸à¸³à¸ˆà¸±à¸” Magnus à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?#b\r\n";
+                        if (DBConfig.isGanglim) {
+                            text += "#L0#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard) (à¹€à¸¥à¹€à¸§à¸¥ 175 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
+                            text += " #r[" + getPlayer()
+                                    .getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum") + "/"
+                                    + (getPlayer().getBossTier() + 1) + "]#b";
+                            getPlayer().getPartyMembers()
+                                    .forEach(chr -> chr.dropMessage(5, "[Hard Magnus] à¸§à¸±à¸™à¸™à¸µà¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹‰à¸šà¸­à¸ªà¹„à¸›à¹à¸¥à¹‰à¸§ "
+                                            + chr.getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(),
+                                                    "eNum")
+                                            + " à¸„à¸£à¸±à¹‰à¸‡ à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸” " + (chr.getBossTier() + 1) + " à¸„à¸£à¸±à¹‰à¸‡"));
+                            text += "\r\n#L1#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Normal) (à¹€à¸¥à¹€à¸§à¸¥ 155 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
+                            text += " #r["
+                                    + getPlayer().getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")
+                                    + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5,
+                                    "[Normal Magnus] à¸§à¸±à¸™à¸™à¸µà¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹‰à¸šà¸­à¸ªà¹„à¸›à¹à¸¥à¹‰à¸§ "
+                                            + chr.getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")
+                                            + " à¸„à¸£à¸±à¹‰à¸‡ à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸” " + (chr.getBossTier() + 1) + " à¸„à¸£à¸±à¹‰à¸‡"));
+                            text += "\r\n#L3#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard) Practice Mode (à¹€à¸¥à¹€à¸§à¸¥ 175 à¸‚à¸¶à¹‰à¸™à¹„à¸›)#l\r\n#L2#à¸¢à¸à¹€à¸¥à¸´à¸#l";
+                        } else {
+                            text += "#L0#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard)" + (single ? "(Single)" : "(Multi)")
+                                    + " (à¹€à¸¥à¹€à¸§à¸¥ 175 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
+                            text += "\r\n#L1#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Normal)" + (single ? "(Single)" : "(Multi)")
+                                    + " (à¹€à¸¥à¹€à¸§à¸¥ 155 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
+                            // text +="\r\n#L3#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard) Practice Mode (à¹€à¸¥à¹€à¸§à¸¥ 175
+                            // à¸‚à¸¶à¹‰à¸™à¹„à¸›)#l\r\n#L2#à¸¢à¸à¹€à¸¥à¸´à¸#l";
+                            /*
+                             * int hreset =
+                             * getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.
+                             * getQuestID(), "HardMagnus" + (single ? "Single" : "Multi"));
+                             * text += "\r\n#L5#à¹€à¸à¸´à¹ˆà¸¡à¸£à¸­à¸šà¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ Tyrant's Throne (Hard)" + (single ?
+                             * "(Single)" : "(Multi)") + " (" + ((single ? 2 : 1) - hreset) + " à¸„à¸£à¸±à¹‰à¸‡)#l";
+                             */
+                            int nreset = getPlayer().getOneInfoQuestInteger(
+                                    QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                    "NormalMagnus" + (single ? "Single" : "Multi"));
+                            text += "\r\n#L6#à¹€à¸à¸´à¹ˆà¸¡à¸£à¸­à¸šà¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ Tyrant's Throne (Normal)"
+                                    + (single ? "(Single)" : "(Multi)") + " (" + ((single ? 2 : 1) - nreset)
+                                    + " à¸„à¸£à¸±à¹‰à¸‡)#l";
+                        }
 
                         int v0 = self.askMenu(text);
                         if (!DBConfig.isGanglim) {
-                        	if (v0 == 6) { //(v0 == 5 || v0 == 6) {
-                        		int togetherPoint = getPlayer().getTogetherPoint();
-                        		if (togetherPoint < 150) {
-                        			self.sayOk("Çùµ¿Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. ÇöÀç Çùµ¿Æ÷ÀÎÆ® : " + togetherPoint);
-                        			return;
-                        		}
-                        		if (v0 == 5) { //ÇÏµå ¸Å±×³Ê½º ¸®¼Â
-                            		int hreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "HardMagnus" + (single ? "Single" : "Multi"));
-                                    if (hreset > (single ? 1 : 0)) { //½Ì±ÛÀº 2È¸ ±¸¸Å °¡´É
-                                    	self.sayOk("ÀÌ¹øÁÖ´Â ´õÀÌ»ó ÀÔÀå°¡´ÉÈ½¼ö Áõ°¡°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-                                    	return;
+                            if (v0 == 6) { // (v0 == 5 || v0 == 6) {
+                                int togetherPoint = getPlayer().getTogetherPoint();
+                                if (togetherPoint < 150) {
+                                    self.sayOk("à¸„à¸°à¹à¸™à¸™à¸„à¸§à¸²à¸¡à¸£à¹ˆà¸§à¸¡à¸¡à¸·à¸­à¹„à¸¡à¹ˆà¹€à¸à¸µà¸¢à¸‡à¸à¸­ à¸„à¸°à¹à¸™à¸™à¸›à¸±à¸ˆà¸ˆà¸¸à¸šà¸±à¸™ : " + togetherPoint);
+                                    return;
+                                }
+                                if (v0 == 5) { // Hard Magnus reset
+                                    int hreset = getPlayer().getOneInfoQuestInteger(
+                                            QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                                            "HardMagnus" + (single ? "Single" : "Multi"));
+                                    if (hreset > (single ? 1 : 0)) { // Single can buy 2 times
+                                        self.sayOk("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸à¸´à¹ˆà¸¡à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¸—à¸µà¹ˆà¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸à¹ƒà¸™à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰");
+                                        return;
                                     }
                                     getPlayer().gainTogetherPoint(-150);
-                                    getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "HardMagnus"  + (single ? "Single" : "Multi"), String.valueOf(hreset + 1));
-                                    self.sayOk("ÀÔÀå°¡´ÉÈ½¼ö Áõ°¡°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                                    getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                                            "HardMagnus" + (single ? "Single" : "Multi"), String.valueOf(hreset + 1));
+                                    self.sayOk("à¹€à¸à¸´à¹ˆà¸¡à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¸—à¸µà¹ˆà¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™à¹€à¸£à¸µà¸¢à¸šà¸£à¹‰à¸­à¸¢à¹à¸¥à¹‰à¸§");
                                     return;
-                            	}
-                            	if (v0 == 6) { //³ë¸» ¸Å±×³Ê½º ¸®¼Â
-                            		int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalMagnus" + (single ? "Single" : "Multi"));
-                                    if (nreset > (single ? 1 : 0)) { //½Ì±ÛÀº 2È¸ ±¸¸Å °¡´É
-                                    	self.sayOk("ÀÌ¹øÁÖ´Â ´õÀÌ»ó ÀÔÀå°¡´ÉÈ½¼ö Áõ°¡°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-                                    	return;
+                                }
+                                if (v0 == 6) { // Normal Magnus reset
+                                    int nreset = getPlayer().getOneInfoQuestInteger(
+                                            QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                            "NormalMagnus" + (single ? "Single" : "Multi"));
+                                    if (nreset > (single ? 1 : 0)) { // Single can buy 2 times
+                                        self.sayOk("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸à¸´à¹ˆà¸¡à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¸—à¸µà¹ˆà¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸à¹ƒà¸™à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰");
+                                        return;
                                     }
                                     getPlayer().gainTogetherPoint(-150);
-                                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalMagnus"  + (single ? "Single" : "Multi"), String.valueOf(nreset + 1));
-                                    self.sayOk("ÀÔÀå°¡´ÉÈ½¼ö Áõ°¡°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                            "NormalMagnus" + (single ? "Single" : "Multi"), String.valueOf(nreset + 1));
+                                    self.sayOk("à¹€à¸à¸´à¹ˆà¸¡à¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¸—à¸µà¹ˆà¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™à¹€à¸£à¸µà¸¢à¸šà¸£à¹‰à¸­à¸¢à¹à¸¥à¹‰à¸§");
                                     return;
-                            	}
-                        	}
-                        } 
-                        
-                        if (!DBConfig.isGanglim && target.getParty().getLeader().getId() != target.getId()) {
-                        	self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
-                        	return;
+                                }
+                            }
                         }
-                        
+
+                        if (!DBConfig.isGanglim && target.getParty().getLeader().getId() != target.getId()) {
+                            self.say("à¸à¸£à¸¸à¸“à¸²à¹ƒà¸«à¹‰à¸«à¸±à¸§à¸«à¸™à¹‰à¸²à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¹€à¸›à¹‡à¸™à¸œà¸¹à¹‰à¸”à¸³à¹€à¸™à¸´à¸™à¸à¸²à¸£");
+                            return;
+                        }
+
                         if (target.getParty().isPartySameMap()) {
                             boolean canEnter = false;
                             if (v0 != 3) {
@@ -149,35 +189,44 @@ public class Magnus extends ScriptEngineNPC {
                                 if (v0 == 0) {
                                     if (getPlayer().getQuestStatus(2000021) == 1) {
                                         if (GameConstants.isZero(getPlayer().getJob())) {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ÃÖÁ¾ µ¥¹ÌÁö 50% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu(
+                                                    "#e<Genesis Weapon>#n\r\nà¸ªà¸²à¸¡à¸²à¸£à¸–à¸—à¸³à¸ à¸²à¸£à¸à¸´à¸ˆà¹€à¸à¸·à¹ˆà¸­à¸›à¸¥à¸”à¸¥à¹‡à¸­à¸„à¸„à¸§à¸²à¸¡à¸¥à¸±à¸šà¸‚à¸­à¸‡ #bGenesis Weapon#k à¸—à¸µà¹ˆà¸¡à¸µà¸à¸¥à¸±à¸‡à¸‚à¸­à¸‡ Black Mage à¹„à¸”à¹‰ à¸ˆà¸°à¸—à¸³à¸­à¸¢à¹ˆà¸²à¸‡à¹„à¸£?\r\n\r\n#e#r<à¹€à¸‡à¸·à¹ˆà¸­à¸™à¹„à¸‚à¸ à¸²à¸£à¸à¸´à¸ˆ>#n#k\r\n#b -à¸à¸³à¸ˆà¸±à¸”à¸šà¸­à¸ªà¸„à¸™à¹€à¸”à¸µà¸¢à¸§\r\n -Final Damage à¸¥à¸”à¸¥à¸‡ 50%\r\n -à¹ƒà¸Šà¹‰à¹€à¸‰à¸à¸²à¸°à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸°à¸šà¸£à¸´à¸ªà¸¸à¸—à¸˜à¸´à¹Œà¸‚à¸­à¸‡à¸­à¸¸à¸›à¸à¸£à¸“à¹Œà¸—à¸µà¹ˆà¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n#k#L0#à¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l\r\n#L1#à¹„à¸¡à¹ˆà¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l",
+                                                    ScriptMessageFlag.Self);
                                         } else {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n -ÃÖÁ¾ µ¥¹ÌÁö 50% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu(
+                                                    "#e<Genesis Weapon>#n\r\nà¸ªà¸²à¸¡à¸²à¸£à¸–à¸—à¸³à¸ à¸²à¸£à¸à¸´à¸ˆà¹€à¸à¸·à¹ˆà¸­à¸›à¸¥à¸”à¸¥à¹‡à¸­à¸„à¸„à¸§à¸²à¸¡à¸¥à¸±à¸šà¸‚à¸­à¸‡ #bGenesis Weapon#k à¸—à¸µà¹ˆà¸¡à¸µà¸à¸¥à¸±à¸‡à¸‚à¸­à¸‡ Black Mage à¹„à¸”à¹‰ à¸ˆà¸°à¸—à¸³à¸­à¸¢à¹ˆà¸²à¸‡à¹„à¸£?\r\n\r\n#e#r<à¹€à¸‡à¸·à¹ˆà¸­à¸™à¹„à¸‚à¸ à¸²à¸£à¸à¸´à¸ˆ>#n#k\r\n#b -à¸à¸³à¸ˆà¸±à¸”à¸šà¸­à¸ªà¸„à¸™à¹€à¸”à¸µà¸¢à¸§\r\n -à¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹„à¸”à¹‰à¹€à¸‰à¸à¸²à¸° Genesis Weapon à¸—à¸µà¹ˆà¸–à¸¹à¸à¸œà¸™à¸¶à¸à¹à¸¥à¸°à¸­à¸²à¸§à¸¸à¸˜à¸£à¸­à¸‡à¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n -Final Damage à¸¥à¸”à¸¥à¸‡ 50%\r\n -à¹ƒà¸Šà¹‰à¹€à¸‰à¸à¸²à¸°à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸°à¸šà¸£à¸´à¸ªà¸¸à¸—à¸˜à¸´à¹Œà¸‚à¸­à¸‡à¸­à¸¸à¸›à¸à¸£à¸“à¹Œà¸—à¸µà¹ˆà¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n#k#L0#à¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l\r\n#L1#à¹„à¸¡à¹ˆà¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l",
+                                                    ScriptMessageFlag.Self);
                                         }
                                         if (v2 == 0) {
-                                        	if (!getPlayer().haveItem(4036460)) {
-                                        		self.say("#b#i4036460# #z4036460# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
-                                        		return;
-                                        	}
+                                            if (!getPlayer().haveItem(4036460)) {
+                                                self.say(
+                                                        "à¸ˆà¸³à¹€à¸›à¹‡à¸™à¸•à¹‰à¸­à¸‡à¸¡à¸µ #b#i4036460# #z4036460# 1 à¸Šà¸´à¹‰à¸™#k à¸ªà¸²à¸¡à¸²à¸£à¸–à¸«à¸²à¹„à¸”à¹‰à¸ˆà¸²à¸à¸à¸²à¸£à¸à¸³à¸ˆà¸±à¸” Black Mage",
+                                                        ScriptMessageFlag.Self);
+                                                return;
+                                            }
                                             if (!checkBMQuestEquip()) {
                                                 return;
                                             }
                                             if (getPlayer().getParty().getPartyMemberList().size() > 1) {
-                                                self.say("ÇØ´ç Äù½ºÆ®´Â È¥ÀÚ ÁøÇàÇØ¾ß ÇÑ´Ù.", ScriptMessageFlag.Self);
+                                                self.say("à¸ à¸²à¸£à¸à¸´à¸ˆà¸™à¸µà¹‰à¸•à¹‰à¸­à¸‡à¸—à¸³à¸„à¸™à¹€à¸”à¸µà¸¢à¸§à¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™", ScriptMessageFlag.Self);
                                                 return;
                                             }
                                         }
                                     }
                                 }
 
-                                String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID(), DBConfig.isGanglim);
-                                if (v0 == 0) { //ÇÏµå¸Å±×
-                                    overLap = checkEventNumber(getPlayer(), QuestExConstants.HardMagnus.getQuestID(), DBConfig.isGanglim);
+                                String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID(),
+                                        DBConfig.isGanglim);
+                                if (v0 == 0) { // Hard Magnus
+                                    overLap = checkEventNumber(getPlayer(), QuestExConstants.HardMagnus.getQuestID(),
+                                            DBConfig.isGanglim);
                                 }
-                                //getPlayer().dropMessage(5, (overLap == null ? "Null" : overLap));
+                                // getPlayer().dropMessage(5, (overLap == null ? "Null" : overLap));
                                 if (overLap == null) {
-                                    if (v0 == 0) { //ÇÏµå¸Å±×³Ê½º
-                                        String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
-                                        if (lastDate == null || DBConfig.isGanglim) { // °­¸²Àº 30ºĞ ÀçÀÔÀå »èÁ¦
+                                    if (v0 == 0) { // Hard Magnus
+                                        String lastDate = checkEventLastDate(getPlayer(),
+                                                QuestExConstants.HardMagnus.getQuestID());
+                                        if (lastDate == null || DBConfig.isGanglim) { // Ganglim removed 30min re-entry
                                             if (em.getProperty("Hstatus0").equals("0")) {
                                                 canEnter = true;
                                             }
@@ -186,30 +235,34 @@ public class Magnus extends ScriptEngineNPC {
                                                 EventInstanceManager eim = em.readyInstance();
                                                 eim.setProperty("map", 401060100);
                                                 eim.setProperty("mode", "hard");
-                                                getClient().getChannelServer().getMapFactory().getMap(401060100).resetFully(false);
+                                                getClient().getChannelServer().getMapFactory().getMap(401060100)
+                                                        .resetFully(false);
                                                 updateLastDate(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
-                                                if (DBConfig.isGanglim) { 
-                                                    updateQuestEx(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
+                                                if (DBConfig.isGanglim) {
+                                                    updateQuestEx(getPlayer(),
+                                                            QuestExConstants.HardMagnus.getQuestID());
                                                 }
                                                 if (v2 == 0) {
                                                     getPlayer().applyBMCurse1(3);
                                                 }
                                                 if (!DBConfig.isGanglim && !single) {
-                                                	for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                                		if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                                			partyMember.setMultiMode(true);
-                                                			partyMember.applyBMCurseJinMulti();
-                                                		}
-                                                	}
+                                                    for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
+                                                        if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                            partyMember.setMultiMode(true);
+                                                            partyMember.applyBMCurseJinMulti();
+                                                        }
+                                                    }
                                                 }
                                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                                             } else {
-                                                self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                                self.sayOk("à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸•à¹‡à¸¡ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹ƒà¸Šà¹‰à¸šà¸£à¸´à¸à¸²à¸£à¹„à¸”à¹‰ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸­à¸·à¹ˆà¸™");
                                             }
                                         } else {
-                                            self.say("ÆÄÆ¼¿ø Áß #b#e" + lastDate + " #n#kµÚ Àç ÀÔÀå °¡´ÉÇÕ´Ï´Ù.");//º»¸Ş : 30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÌÁö ¹× ³ë¸Ö ¸ğµå¸¦ ÅëÇÕÇÏ¿© ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.
+                                            self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸°à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸à¸„à¸£à¸±à¹‰à¸‡à¹ƒà¸™à¸­à¸µà¸ #b#e" + lastDate
+                                                    + " #n#k"); // Official: Party member entered within 30 mins. Cannot
+                                                                // re-enter within 30 mins after entry.
                                         }
-                                    } else if (v0 == 1) { //³ë¸»¸Å±×³Ê½º
+                                    } else if (v0 == 1) { // Normal Magnus
                                         if (em.getProperty("Nstatus0").equals("0")) {
                                             canEnter = true;
                                         }
@@ -218,36 +271,38 @@ public class Magnus extends ScriptEngineNPC {
                                             EventInstanceManager eim = em.readyInstance();
                                             eim.setProperty("map", 401060200);
                                             eim.setProperty("mode", "normal");
-                                            getClient().getChannelServer().getMapFactory().getMap(401060200).resetFully(false);
+                                            getClient().getChannelServer().getMapFactory().getMap(401060200)
+                                                    .resetFully(false);
                                             updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID());
-                                            if (DBConfig.isGanglim) { 
+                                            if (DBConfig.isGanglim) {
                                                 updateQuestEx(getPlayer(), QuestExConstants.Magnus.getQuestID());
                                             }
                                             if (!DBConfig.isGanglim && !single) {
-                                            	for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            		if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                            			partyMember.setMultiMode(true);
-                                            			partyMember.applyBMCurseJinMulti();
-                                            		}
-                                            	}
+                                                for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
+                                                    if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                        partyMember.setMultiMode(true);
+                                                        partyMember.applyBMCurseJinMulti();
+                                                    }
+                                                }
                                             }
                                             eim.registerParty(target.getParty(), getPlayer().getMap());
                                         } else {
-                                            self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                            self.sayOk("à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸•à¹‡à¸¡ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹ƒà¸Šà¹‰à¸šà¸£à¸´à¸à¸²à¸£à¹„à¸”à¹‰ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸­à¸·à¹ˆà¸™");
                                         }
                                     }
                                 } else {
-                                    String text_ = "ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÌ¹Ì ÀÔÀå ÇÏ¿© ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.";
+                                    String text_ = "à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰ #b#e" + overLap
+                                            + "#n#k à¹„à¸”à¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¸”à¸±à¸™à¹€à¸ˆà¸µà¹‰à¸¢à¸™à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸§à¸±à¸™à¸™à¸µà¹‰ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸";
                                     if (!DBConfig.isGanglim) {
-                                        text_ += "\r\n(ÇÏµå¸Å±×³Ê½ºÀÇ °æ¿ì ¸ÅÁÖ ¸ñ¿äÀÏ ¸¶´Ù ¸®¼Â µË´Ï´Ù.)";
+                                        text_ += "\r\n(Hard Magnus à¸ˆà¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸à¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ)";
                                     }
                                     self.say(text_);
                                 }
                             } else {
-                                self.say("ÇöÀç ¿¬½À¸ğµå´Â ÁØºñÁßÀÔ´Ï´Ù.");
+                                self.say("à¹‚à¸«à¸¡à¸”à¸à¸¶à¸à¸‹à¹‰à¸­à¸¡à¸à¸³à¸¥à¸±à¸‡à¸­à¸¢à¸¹à¹ˆà¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸²à¸£à¹€à¸•à¸£à¸µà¸¢à¸¡à¸à¸²à¸£");
                             }
                         } else {
-                            self.say("ÆÄÆ¼¿ø ¸ğµÎ °°Àº¸Ê¿¡ ÀÖÀ¸¼Å¾ßÇÕ´Ï´Ù.");
+                            self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™");
                         }
                     }
                 }
@@ -255,8 +310,8 @@ public class Magnus extends ScriptEngineNPC {
         }
     }
 
-
     int[] bmWeapons = GameConstants.bmWeapons;
+
     public boolean checkBMQuestEquip() {
         MapleInventory inv = getPlayer().getInventory(MapleInventoryType.EQUIPPED);
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -267,7 +322,8 @@ public class Magnus extends ScriptEngineNPC {
                 continue;
             }
             if (!ii.isCash(item.getItemId())) {
-                if (next == -11 || next == -10 || next <= -1600 && next >= -1700 || next == -117 || next == -122 || next == -131) {
+                if (next == -11 || next == -10 || next <= -1600 && next >= -1700 || next == -117 || next == -122
+                        || next == -131) {
                     if (next == -11) {
                         boolean find = false;
                         for (int i = 0; i < bmWeapons.length; ++i) {
@@ -289,7 +345,7 @@ public class Magnus extends ScriptEngineNPC {
             }
         }
         if (!blockedList.isEmpty()) {
-            String v0 = "#r¹«±â#k¿Í #bº¸Á¶¹«±â#k¸¸ Âø¿ëÇÏ°í µµÀüÇØ¾ß ÇÑ´Ù.\r\n\r\n#r<Âø¿ë ÇØÁ¦ÇØ¾ß ÇÏ´Â ¾ÆÀÌÅÛ>#k\r\n";
+            String v0 = "#r#e<Genesis Weapon>#n#k\r\nà¸•à¹‰à¸­à¸‡à¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹€à¸à¸µà¸¢à¸‡ #rà¸­à¸²à¸§à¸¸à¸˜#k à¹à¸¥à¸° #bà¸­à¸²à¸§à¸¸à¸˜à¸£à¸­à¸‡#k à¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n\r\n#r<à¹„à¸­à¹€à¸—à¸¡à¸—à¸µà¹ˆà¸•à¹‰à¸­à¸‡à¸–à¸­à¸”à¸­à¸­à¸>#k\r\n";
             for (int i = 0; i < blockedList.size(); ++i) {
                 int bid = blockedList.get(i);
                 v0 += "#i" + bid + "# #z" + bid + "#\r\n";
@@ -300,29 +356,29 @@ public class Magnus extends ScriptEngineNPC {
         return true;
     }
 
-
     public void magnus_boss() {
-    	if (!DBConfig.isGanglim) {
-    		enter_magnusDoor();
-    		return;
-    	}
+        if (!DBConfig.isGanglim) {
+            enter_magnusDoor();
+            return;
+        }
         initNPC(MapleLifeFactory.getNPC(3001020));
         EventManager em = getEventManager("Magnus");
         if (em == null) {
-            self.say("ÇöÀç´Â ¸Å±×³Ê½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Raid à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
         } else {
             if (target.getParty() == null) {
-                self.say("1ÀÎ ÀÌ»óÀÇ ÆÄÆ¼¿¡ ¼ÓÇØ¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                self.say("à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸­à¸¢à¹ˆà¸²à¸‡à¸™à¹‰à¸­à¸¢ 1 à¸„à¸™à¸ˆà¸¶à¸‡à¸ˆà¸°à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId()) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("à¸à¸£à¸¸à¸“à¸²à¹ƒà¸«à¹‰à¸«à¸±à¸§à¸«à¸™à¹‰à¸²à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¹€à¸›à¹‡à¸™à¸œà¸¹à¹‰à¸”à¸³à¹€à¸™à¸´à¸™à¸à¸²à¸£");
                 } else {
-                    if (target.getMapId() == 401060399) { //ÀÌÁö¸Å±× ÀÔÀå¸Ê
+                    if (target.getMapId() == 401060399) { // Easy Magnus entry map
                         if (DBConfig.isGanglim) {
-                            self.say("ÇöÀç´Â ¸Å±×³Ê½º ¸ğÀÇÀüÀ» ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+                            self.say("à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Magnus Simulation Battle à¹„à¸”à¹‰à¹ƒà¸™à¸‚à¸“à¸°à¸™à¸µà¹‰");
                         }
-                        if (self.askYesNo("¸Å±×³Ê½º ÅğÄ¡¸¦ À§ÇØ Æø±ºÀÇ ¿ÕÁÂ·Î ÀÌµ¿ ÇÏ½Ã°Ú½À´Ï±î??\r\n#b<< ¸Å±×³Ê½º ¸ğÀÇÀüÀº 1ÀÏ¿¡ 1È¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù. >>\r\n<<115 ·¹º§ ÀÌ»ó À¯Àú °£ÀÇ ÆÄÆ¼·Î ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.>>") == 1) {
-                            //401060200 ~ 401060209
+                        if (self.askYesNo(
+                                "à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸”à¸´à¸™à¸—à¸²à¸‡à¹„à¸›à¸¢à¸±à¸‡ Tyrant's Throne à¹€à¸à¸·à¹ˆà¸­à¸à¸³à¸ˆà¸±à¸” Magnus à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?\r\n#b<< Magnus Simulation Battle à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰à¸§à¸±à¸™à¸¥à¸° 1 à¸„à¸£à¸±à¹‰à¸‡ >>\r\n<< à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¹€à¸‰à¸à¸²à¸°à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¡à¸µà¹€à¸¥à¹€à¸§à¸¥ 115 à¸‚à¸¶à¹‰à¸™à¹„à¸› >>") == 1) {
+                            // 401060200 ~ 401060209
                             if (target.getParty().isPartySameMap()) {
                                 boolean canEnter = false;
                                 String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID());
@@ -335,33 +391,49 @@ public class Magnus extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 401060300);
                                         eim.setProperty("mode", "easy");
-                                        getClient().getChannelServer().getMapFactory().getMap(401060300).resetFully(false);
-                                        updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID()); //ÀÌÁö¸Å±×¿Í ³ë¸»¸Å±×´Â ½Ã°£À» °øÀ¯ÇÔ
+                                        getClient().getChannelServer().getMapFactory().getMap(401060300)
+                                                .resetFully(false);
+                                        updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID()); // Easy and
+                                                                                                           // Normal
+                                                                                                           // Magnus
+                                                                                                           // share time
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        self.sayOk("ÀÌ¹Ì ÇØ´çÃ¤³Î¿¡¼­ ¸Å±×³Ê½º ·¹ÀÌµå°¡ ÁøÇàÁßÀÔ´Ï´Ù.");
+                                        self.sayOk("à¸¡à¸µà¸à¸²à¸£à¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸à¸±à¸š Magnus à¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸™à¸µà¹‰à¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§");
                                     }
                                 } else {
-                                    self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÌ¹Ì ÀÔÀå ÇÏ¿© ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                    self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰ #b#e" + overLap
+                                            + "#n#k à¹„à¸”à¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¸”à¸±à¸™à¹€à¸ˆà¸µà¹‰à¸¢à¸™à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸§à¸±à¸™à¸™à¸µà¹‰ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸");
                                 }
                             } else {
-                                self.say("ÆÄÆ¼¿ø ¸ğµÎ °°Àº¸Ê¿¡ ÀÖÀ¸¼Å¾ßÇÕ´Ï´Ù.");
+                                self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™");
                             }
                         }
                     } else {
-                        String text = "¸Å±×³Ê½º ÅğÄ¡¸¦ À§ÇØ Æø±ºÀÇ ¿ÕÁÂ·Î ÀÌµ¿ ÇÏ½Ã°Ú½À´Ï±î??#b\r\n";
-                        text += "#L0#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå)·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 175ÀÌ»ó)";
+                        String text = "à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸”à¸´à¸™à¸—à¸²à¸‡à¹„à¸›à¸¢à¸±à¸‡ Tyrant's Throne à¹€à¸à¸·à¹ˆà¸­à¸à¸³à¸ˆà¸±à¸” Magnus à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?#b\r\n";
+                        text += "#L0#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard) (à¹€à¸¥à¹€à¸§à¸¥ 175 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
                         if (DBConfig.isGanglim) {
-                            text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                            text += " #r[" + getPlayer()
+                                    .getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum") + "/"
+                                    + (getPlayer().getBossTier() + 1) + "]#b";
 
-                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ÇÏµå ¸Å±×³Ê½º] ¿À´Ã ÇØ´ç º¸½º¸¦ "+chr.getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(), "eNum")+"¹ø ÀÔÀå ÇÏ¼Ì½À´Ï´Ù. ÃÑ "+(chr.getBossTier() + 1)+"¹ø ÀÔÀå ÇÏ½Ç ¼öÀÖ½À´Ï´Ù."));
+                            getPlayer().getPartyMembers()
+                                    .forEach(chr -> chr.dropMessage(5, "[Hard Magnus] à¸§à¸±à¸™à¸™à¸µà¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹‰à¸šà¸­à¸ªà¹„à¸›à¹à¸¥à¹‰à¸§ "
+                                            + chr.getOneInfoQuestInteger(QuestExConstants.HardMagnus.getQuestID(),
+                                                    "eNum")
+                                            + " à¸„à¸£à¸±à¹‰à¸‡ à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸” " + (chr.getBossTier() + 1) + " à¸„à¸£à¸±à¹‰à¸‡"));
                         }
-                        text += "\r\n#L1#Æø±ºÀÇ ¿ÕÁÂ(³ë¸Ö)·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 155ÀÌ»ó)";
+                        text += "\r\n#L1#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Normal) (à¹€à¸¥à¹€à¸§à¸¥ 155 à¸‚à¸¶à¹‰à¸™à¹„à¸›)";
                         if (DBConfig.isGanglim) {
-                            text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[³ë¸» ¸Å±×³Ê½º] ¿À´Ã ÇØ´ç º¸½º¸¦ "+chr.getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")+"¹ø ÀÔÀå ÇÏ¼Ì½À´Ï´Ù. ÃÑ "+(chr.getBossTier() + 1)+"¹ø ÀÔÀå ÇÏ½Ç ¼öÀÖ½À´Ï´Ù."));
+                            text += " #r["
+                                    + getPlayer().getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")
+                                    + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                            getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5,
+                                    "[Normal Magnus] à¸§à¸±à¸™à¸™à¸µà¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹‰à¸šà¸­à¸ªà¹„à¸›à¹à¸¥à¹‰à¸§ "
+                                            + chr.getOneInfoQuestInteger(QuestExConstants.Magnus.getQuestID(), "eNum")
+                                            + " à¸„à¸£à¸±à¹‰à¸‡ à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸—à¸±à¹‰à¸‡à¸«à¸¡à¸” " + (chr.getBossTier() + 1) + " à¸„à¸£à¸±à¹‰à¸‡"));
                         }
-                        text +="\r\n#L3#Æø±ºÀÇ ¿ÕÁÂ(ÇÏµå) ¿¬½À ¸ğµå·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 175ÀÌ»ó)#l\r\n#L2#ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù.#l";
+                        text += "\r\n#L3#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ Tyrant's Throne (Hard) Practice Mode (à¹€à¸¥à¹€à¸§à¸¥ 175 à¸‚à¸¶à¹‰à¸™à¹„à¸›)#l\r\n#L2#à¸¢à¸à¹€à¸¥à¸´à¸#l";
 
                         int v0 = self.askMenu(text);
                         if (target.getParty().isPartySameMap()) {
@@ -371,30 +443,37 @@ public class Magnus extends ScriptEngineNPC {
                                 if (v0 == 0) {
                                     if (getPlayer().getQuestStatus(2000021) == 1) {
                                         if (GameConstants.isZero(getPlayer().getJob())) {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ÃÖÁ¾ µ¥¹ÌÁö 50% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu(
+                                                    "#e<Genesis Weapon>#n\r\nà¸ªà¸²à¸¡à¸²à¸£à¸–à¸—à¸³à¸ à¸²à¸£à¸à¸´à¸ˆà¹€à¸à¸·à¹ˆà¸­à¸›à¸¥à¸”à¸¥à¹‡à¸­à¸„à¸„à¸§à¸²à¸¡à¸¥à¸±à¸šà¸‚à¸­à¸‡ #bGenesis Weapon#k à¸—à¸µà¹ˆà¸¡à¸µà¸à¸¥à¸±à¸‡à¸‚à¸­à¸‡ Black Mage à¹„à¸”à¹‰ à¸ˆà¸°à¸—à¸³à¸­à¸¢à¹ˆà¸²à¸‡à¹„à¸£?\r\n\r\n#e#r<à¹€à¸‡à¸·à¹ˆà¸­à¸™à¹„à¸‚à¸ à¸²à¸£à¸à¸´à¸ˆ>#n#k\r\n#b -à¸à¸³à¸ˆà¸±à¸”à¸šà¸­à¸ªà¸„à¸™à¹€à¸”à¸µà¸¢à¸§\r\n -Final Damage à¸¥à¸”à¸¥à¸‡ 50%\r\n -à¹ƒà¸Šà¹‰à¹€à¸‰à¸à¸²à¸°à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸°à¸šà¸£à¸´à¸ªà¸¸à¸—à¸˜à¸´à¹Œà¸‚à¸­à¸‡à¸­à¸¸à¸›à¸à¸£à¸“à¹Œà¸—à¸µà¹ˆà¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n#k#L0#à¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l\r\n#L1#à¹„à¸¡à¹ˆà¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l",
+                                                    ScriptMessageFlag.Self);
                                         } else {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n -ÃÖÁ¾ µ¥¹ÌÁö 50% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu(
+                                                    "#e<Genesis Weapon>#n\r\nà¸ªà¸²à¸¡à¸²à¸£à¸–à¸—à¸³à¸ à¸²à¸£à¸à¸´à¸ˆà¹€à¸à¸·à¹ˆà¸­à¸›à¸¥à¸”à¸¥à¹‡à¸­à¸„à¸„à¸§à¸²à¸¡à¸¥à¸±à¸šà¸‚à¸­à¸‡ #bGenesis Weapon#k à¸—à¸µà¹ˆà¸¡à¸µà¸à¸¥à¸±à¸‡à¸‚à¸­à¸‡ Black Mage à¹„à¸”à¹‰ à¸ˆà¸°à¸—à¸³à¸­à¸¢à¹ˆà¸²à¸‡à¹„à¸£?\r\n\r\n#e#r<à¹€à¸‡à¸·à¹ˆà¸­à¸™à¹„à¸‚à¸ à¸²à¸£à¸à¸´à¸ˆ>#n#k\r\n#b -à¸à¸³à¸ˆà¸±à¸”à¸šà¸­à¸ªà¸„à¸™à¹€à¸”à¸µà¸¢à¸§\r\n -à¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹„à¸”à¹‰à¹€à¸‰à¸à¸²à¸° Genesis Weapon à¸—à¸µà¹ˆà¸–à¸¹à¸à¸œà¸™à¸¶à¸à¹à¸¥à¸°à¸­à¸²à¸§à¸¸à¸˜à¸£à¸­à¸‡à¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n -Final Damage à¸¥à¸”à¸¥à¸‡ 50%\r\n -à¹ƒà¸Šà¹‰à¹€à¸‰à¸à¸²à¸°à¸„à¹ˆà¸²à¸ªà¸–à¸²à¸™à¸°à¸šà¸£à¸´à¸ªà¸¸à¸—à¸˜à¸´à¹Œà¸‚à¸­à¸‡à¸­à¸¸à¸›à¸à¸£à¸“à¹Œà¸—à¸µà¹ˆà¸ªà¸§à¸¡à¹ƒà¸ªà¹ˆà¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™\r\n#k#L0#à¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l\r\n#L1#à¹„à¸¡à¹ˆà¸£à¸±à¸šà¸ à¸²à¸£à¸à¸´à¸ˆ#l",
+                                                    ScriptMessageFlag.Self);
                                         }
                                         if (v2 == 0) {
                                             if (!checkBMQuestEquip()) {
                                                 return;
                                             }
                                             if (getPlayer().getParty().getPartyMemberList().size() > 1) {
-                                                self.say("ÇØ´ç Äù½ºÆ®´Â È¥ÀÚ ÁøÇàÇØ¾ß ÇÑ´Ù.", ScriptMessageFlag.Self);
+                                                self.say("à¸ à¸²à¸£à¸à¸´à¸ˆà¸™à¸µà¹‰à¸•à¹‰à¸­à¸‡à¸—à¸³à¸„à¸™à¹€à¸”à¸µà¸¢à¸§à¹€à¸—à¹ˆà¸²à¸™à¸±à¹‰à¸™", ScriptMessageFlag.Self);
                                                 return;
                                             }
                                         }
                                     }
                                 }
 
-                                String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID(), DBConfig.isGanglim);
-                                if (v0 == 0) { //ÇÏµå¸Å±×
-                                    overLap = checkEventNumber(getPlayer(), QuestExConstants.HardMagnus.getQuestID(), DBConfig.isGanglim);
+                                String overLap = checkEventNumber(getPlayer(), QuestExConstants.Magnus.getQuestID(),
+                                        DBConfig.isGanglim);
+                                if (v0 == 0) { // Hard Magnus
+                                    overLap = checkEventNumber(getPlayer(), QuestExConstants.HardMagnus.getQuestID(),
+                                            DBConfig.isGanglim);
                                 }
                                 if (overLap == null) {
-                                    if (v0 == 0) { //ÇÏµå¸Å±×³Ê½º
-                                        String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
-                                        if (lastDate == null || DBConfig.isGanglim) { // °­¸²Àº 30ºĞ ÀçÀÔÀå »èÁ¦
+                                    if (v0 == 0) { // Hard Magnus
+                                        String lastDate = checkEventLastDate(getPlayer(),
+                                                QuestExConstants.HardMagnus.getQuestID());
+                                        if (lastDate == null || DBConfig.isGanglim) { // Ganglim removed 30min re-entry
                                             if (em.getProperty("Hstatus0").equals("0")) {
                                                 canEnter = true;
                                             }
@@ -403,22 +482,26 @@ public class Magnus extends ScriptEngineNPC {
                                                 EventInstanceManager eim = em.readyInstance();
                                                 eim.setProperty("map", 401060100);
                                                 eim.setProperty("mode", "hard");
-                                                getClient().getChannelServer().getMapFactory().getMap(401060100).resetFully(false);
+                                                getClient().getChannelServer().getMapFactory().getMap(401060100)
+                                                        .resetFully(false);
                                                 updateLastDate(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
                                                 if (DBConfig.isGanglim) {
-                                                    updateQuestEx(getPlayer(), QuestExConstants.HardMagnus.getQuestID());
+                                                    updateQuestEx(getPlayer(),
+                                                            QuestExConstants.HardMagnus.getQuestID());
                                                 }
                                                 if (v2 == 0) {
                                                     getPlayer().applyBMCurse1(3);
                                                 }
                                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                                             } else {
-                                                self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                                self.sayOk("à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸•à¹‡à¸¡ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹ƒà¸Šà¹‰à¸šà¸£à¸´à¸à¸²à¸£à¹„à¸”à¹‰ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸­à¸·à¹ˆà¸™");
                                             }
                                         } else {
-                                            self.say("ÆÄÆ¼¿ø Áß #b#e" + lastDate + " #n#kµÚ Àç ÀÔÀå °¡´ÉÇÕ´Ï´Ù.");//º»¸Ş : 30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÌÁö ¹× ³ë¸Ö ¸ğµå¸¦ ÅëÇÕÇÏ¿© ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.
+                                            self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸°à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸à¸„à¸£à¸±à¹‰à¸‡à¹ƒà¸™à¸­à¸µà¸ #b#e" + lastDate
+                                                    + " #n#k"); // Official: Party member entered within 30 mins. Cannot
+                                                                // re-enter within 30 mins after entry.
                                         }
-                                    } else if (v0 == 1) { //³ë¸»¸Å±×³Ê½º
+                                    } else if (v0 == 1) { // Normal Magnus
                                         if (em.getProperty("Nstatus0").equals("0")) {
                                             canEnter = true;
                                         }
@@ -427,28 +510,30 @@ public class Magnus extends ScriptEngineNPC {
                                             EventInstanceManager eim = em.readyInstance();
                                             eim.setProperty("map", 401060200);
                                             eim.setProperty("mode", "normal");
-                                            getClient().getChannelServer().getMapFactory().getMap(401060200).resetFully(false);
+                                            getClient().getChannelServer().getMapFactory().getMap(401060200)
+                                                    .resetFully(false);
                                             updateLastDate(getPlayer(), QuestExConstants.Magnus.getQuestID());
                                             if (DBConfig.isGanglim) {
                                                 updateQuestEx(getPlayer(), QuestExConstants.Magnus.getQuestID());
                                             }
                                             eim.registerParty(target.getParty(), getPlayer().getMap());
                                         } else {
-                                            self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                            self.sayOk("à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸•à¹‡à¸¡ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹ƒà¸Šà¹‰à¸šà¸£à¸´à¸à¸²à¸£à¹„à¸”à¹‰ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸­à¸·à¹ˆà¸™");
                                         }
                                     }
                                 } else {
-                                    String text_ = "ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÌ¹Ì ÀÔÀå ÇÏ¿© ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.";
+                                    String text_ = "à¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰ #b#e" + overLap
+                                            + "#n#k à¹„à¸”à¹‰à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆà¸”à¸±à¸™à¹€à¸ˆà¸µà¹‰à¸¢à¸™à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸§à¸±à¸™à¸™à¸µà¹‰ à¹„à¸¡à¹ˆà¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸­à¸µà¸";
                                     if (!DBConfig.isGanglim) {
-                                        text_ += "\r\n(ÇÏµå¸Å±×³Ê½ºÀÇ °æ¿ì ¸ÅÁÖ ¸ñ¿äÀÏ ¸¶´Ù ¸®¼Â µË´Ï´Ù.)";
+                                        text_ += "\r\n(Hard Magnus à¸ˆà¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸à¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ)";
                                     }
                                     self.say(text_);
                                 }
                             } else {
-                                self.say("ÇöÀç ¿¬½À¸ğµå´Â ÁØºñÁßÀÔ´Ï´Ù.");
+                                self.say("à¹‚à¸«à¸¡à¸”à¸à¸¶à¸à¸‹à¹‰à¸­à¸¡à¸à¸³à¸¥à¸±à¸‡à¸­à¸¢à¸¹à¹ˆà¸£à¸°à¸«à¸§à¹ˆà¸²à¸‡à¸à¸²à¸£à¹€à¸•à¸£à¸µà¸¢à¸¡à¸à¸²à¸£");
                             }
                         } else {
-                            self.say("ÆÄÆ¼¿ø ¸ğµÎ °°Àº¸Ê¿¡ ÀÖÀ¸¼Å¾ßÇÕ´Ï´Ù.");
+                            self.say("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™");
                         }
                     }
                 }
@@ -456,72 +541,70 @@ public class Magnus extends ScriptEngineNPC {
         }
     }
 
-    public void magnus_summon() { //ÇÏµå¸Å±×³Ê½º ¼ÒÈ¯
+    public void magnus_summon() { // Hard Magnus Summon
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summonMOB") == null) {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
                 if (DBConfig.isGanglim) {
-                	field.spawnMonster(MapleLifeFactory.getMonster(8880000), new Point(1860, -1450), 32);
-                }
-                else {
-                	if (getPlayer().getPartyMembers().size() == 1)  {
-                		field.spawnMonster(MapleLifeFactory.getMonster(8880000), new Point(1860, -1450), 32);
-                    }
-                	else {
-                		final MapleMonster magnus = MapleLifeFactory.getMonster(8880000);
-                		magnus.setPosition(new Point(1860, -1450));
-                		final long hp = magnus.getMobMaxHp();
+                    field.spawnMonster(MapleLifeFactory.getMonster(8880000), new Point(1860, -1450), 32);
+                } else {
+                    if (getPlayer().getPartyMembers().size() == 1) {
+                        field.spawnMonster(MapleLifeFactory.getMonster(8880000), new Point(1860, -1450), 32);
+                    } else {
+                        final MapleMonster magnus = MapleLifeFactory.getMonster(8880000);
+                        magnus.setPosition(new Point(1860, -1450));
+                        final long hp = magnus.getMobMaxHp();
                         ChangeableStats cs = new ChangeableStats(magnus.getStats());
                         cs.hp = hp * 3L;
                         if (cs.hp < 0) {
-                        	cs.hp = Long.MAX_VALUE;
+                            cs.hp = Long.MAX_VALUE;
                         }
                         magnus.getStats().setHp(cs.hp);
                         magnus.getStats().setMaxHp(cs.hp);
                         magnus.setOverrideStats(cs);
 
                         field.spawnMonster(magnus, 32);
-                	}
+                    }
                 }
             }
         }
     }
 
-    public void magnus_summon_N() { //³ë¸»¸Å±×³Ê½º ¼ÒÈ¯
+    public void magnus_summon_N() { // Normal Magnus Summon
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summonMOB") == null) {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
                 if (DBConfig.isGanglim) {
-                	field.spawnMonster(MapleLifeFactory.getMonster(8880002), new Point(1860, -1450), 32);
+                    field.spawnMonster(MapleLifeFactory.getMonster(8880002), new Point(1860, -1450), 32);
                 } else {
-                	if (getPlayer().getPartyMembers().size() == 1)  {
-                		field.spawnMonster(MapleLifeFactory.getMonster(8880002), new Point(1860, -1450), 32);
-                    }
-                	else {
-                		final MapleMonster magnus = MapleLifeFactory.getMonster(8880002);
-                		magnus.setPosition(new Point(1860, -1450));
-                		final long hp = magnus.getMobMaxHp();
+                    if (getPlayer().getPartyMembers().size() == 1) {
+                        field.spawnMonster(MapleLifeFactory.getMonster(8880002), new Point(1860, -1450), 32);
+                    } else {
+                        final MapleMonster magnus = MapleLifeFactory.getMonster(8880002);
+                        magnus.setPosition(new Point(1860, -1450));
+                        final long hp = magnus.getMobMaxHp();
                         ChangeableStats cs = new ChangeableStats(magnus.getStats());
-                        cs.hp = hp * 3L;;
+                        cs.hp = hp * 3L;
+                        ;
                         if (cs.hp < 0) {
-                        	cs.hp = Long.MAX_VALUE;
+                            cs.hp = Long.MAX_VALUE;
                         }
                         magnus.getStats().setHp(cs.hp);
                         magnus.getStats().setMaxHp(cs.hp);
                         magnus.setOverrideStats(cs);
 
                         field.spawnMonster(magnus, 32);
-                	}
+                    }
                 }
             }
         }
     }
 
-    public void magnus_summon_E() { //ÀÌÁö¸Å±×³Ê½º ¼ÒÈ¯
+    public void magnus_summon_E() { // Easy Magnus Summon
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summonMOB") == null) {
@@ -534,12 +617,13 @@ public class Magnus extends ScriptEngineNPC {
 
     public void out_magnusDoor() {
         initNPC(MapleLifeFactory.getNPC(3001020));
-        if (self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ÀÌµ¿ ÇÕ´Ï´Ù.") == 1) {
+        if (self.askYesNo("à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¸­à¸­à¸à¸ˆà¸²à¸à¸à¸·à¹‰à¸™à¸—à¸µà¹ˆà¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?") == 1) {
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
-            List<Integer> normalMap = new ArrayList(Arrays.asList(401060200, 401060201, 401060202, 401060203, 401060204, 401060205, 401060206, 401060207, 401060208, 401060209));
+            List<Integer> normalMap = new ArrayList(Arrays.asList(401060200, 401060201, 401060202, 401060203, 401060204,
+                    401060205, 401060206, 401060207, 401060208, 401060209));
             if (normalMap.contains(target.getMapId())) {
-                registerTransferField(401060399); //ÀÌÁö¸Å±×
+                registerTransferField(401060399); // Easy Magnus
             } else {
                 registerTransferField(401060000);
             }
@@ -551,12 +635,13 @@ public class Magnus extends ScriptEngineNPC {
     }
 
     public void magnus_out() {
-        if (self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ÀÌµ¿ ÇÕ´Ï´Ù.") == 1) {
+        if (self.askYesNo("à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¸­à¸­à¸à¸ˆà¸²à¸à¸à¸·à¹‰à¸™à¸—à¸µà¹ˆà¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?") == 1) {
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
-            List<Integer> normalMap = Arrays.asList(401060200, 401060201, 401060202, 401060203, 401060204, 401060205, 401060206, 401060207, 401060208, 401060209);
+            List<Integer> normalMap = Arrays.asList(401060200, 401060201, 401060202, 401060203, 401060204, 401060205,
+                    401060206, 401060207, 401060208, 401060209);
             if (!DBConfig.isGanglim && normalMap.contains(target.getMapId())) {
-                registerTransferField(401060399); //ÀÌÁö¸Å±×
+                registerTransferField(401060399); // Easy Magnus
             } else {
                 registerTransferField(401060000);
             }
@@ -567,48 +652,55 @@ public class Magnus extends ScriptEngineNPC {
         }
     }
 
-
     /*
-        FieldSet fieldSet = fieldSet("EasyMagnusEnter");
-        if (target.getMapId() != 401060399) {
-            fieldSet = fieldSet("MagnusEnter");
-        }
-        if (fieldSet == null) {
-            self.sayOk("Áö±İÀº ¸Å±×³Ê½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-            return;
-        }
-        boolean enterField = false;
-        if (target.getMapId() == 401060399) { //ÀÌÁö¸Å±×ÀÔÀå¸Ê
-            if (self.askYesNo("¸Å±×³Ê½º ÅğÄ¡¸¦ À§ÇØ Æø±ºÀÇ ¿ÕÁÂ·Î ÀÌµ¿ ÇÏ½Ã°Ú½À´Ï±î??\r\n#b<< ¸Å±×³Ê½º ¸ğÀÇÀüÀº 1ÀÏ¿¡ 1È¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù. >>\r\n<<115 ·¹º§ ÀÌ»ó À¯Àú °£ÀÇ ÆÄÆ¼·Î ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.>>") == 1) {
-                enterField = true;
-            }
-        } else { //³ë¸», ÇÏµå¸Å±×
-             //TODO
-        }
-        if (enterField) {
-            int enter = fieldSet.enter(target.getId());
-            if (enter == -1) self.say("¾Ë ¼ö ¾ø´Â ÀÌÀ¯·Î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù. Àá½Ã ÈÄ¿¡ ´Ù½Ã ½ÃµµÇØ ÁÖ½Ê½Ã¿À.");
-            else if (enter == 1) self.say("ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ µµÀüÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 2) self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
-            else if (enter == 3) self.say("ÃÖ¼Ò " + fieldSet.minMember + "ÀÎ ÀÌ»óÀÇ ÆÄÆ¼°¡ Äù½ºÆ®¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 4) self.say("ÆÄÆ¼¿øÀÇ ·¹º§Àº ÃÖ¼Ò " + fieldSet.minLv + " ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù.");
-            else if (enter == 5) self.say("ÆÄÆ¼¿øÀÌ ¸ğµÎ ¸ğ¿© ÀÖ¾î¾ß ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-            else if (enter == 6) self.say("ÀÌ¹Ì ´Ù¸¥ ¿øÁ¤´ë°¡ ¾ÈÀ¸·Î µé¾î°¡ Äù½ºÆ® Å¬¸®¾î¿¡ µµÀüÇÏ°í ÀÖ´Â ÁßÀÔ´Ï´Ù.");
-            else if (enter == 7) { //30ºĞ ´ë±â½Ã°£ÀÌ ¹ß»ıÇÑ°æ¿ì
-                self.say("30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-            } else if (enter < -1) {
-                MapleCharacter user = getClient().getChannelServer().getPlayerStorage().getCharacterById(enter * -1);
-                String name = "";
-                if (user != null) {
-                    name = user.getName();
-                }
-                if (target.getMapId() != 401060399) {
-                    self.sayOk("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» <º¸½º:¸Å±×³Ê½º> ÇÏµå ¸ğµå¸¦ Å¬¸®¾îÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. <º¸½º:¸Å±×³Ê½º> ÇÏµå ¸ğµå´Â ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù.\r\n#r#e<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­ µË´Ï´Ù.>");
-                } else {
-                    self.say("ÆÄÆ¼¿ø Áß #b#e" + name + "#k#n ´ÔÀÌ ¿À´Ã ¸Å±×³Ê½º¿¡ ÀÔÀåÇÏ¼Å¼­ µé¾î°¥ ¼ö ¾ø½À´Ï´Ù.");
-                }
-            }
-        }
-        */
-    //TODO mag_GateWayOut(ÀÌÁö¸Å±×ÅğÀå), BPReturn_Magnus2(³ë¸»¸Å±×,ÇÏµå¸Å±×ÅğÀå)
+     * FieldSet fieldSet = fieldSet("EasyMagnusEnter");
+     * if (target.getMapId() != 401060399) {
+     * fieldSet = fieldSet("MagnusEnter");
+     * }
+     * if (fieldSet == null) {
+     * self.sayOk("ì§€ê¸ˆì€ ë§¤ê·¸ë„ˆìŠ¤ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+     * return;
+     * }
+     * boolean enterField = false;
+     * if (target.getMapId() == 401060399) { //ì´ì§€ë§¤ê·¸ì…ì¥ë§µ
+     * if (self.
+     * askYesNo("ë§¤ê·¸ë„ˆìŠ¤ í‡´ì¹˜ë¥¼ ìœ„í•´ í­êµ°ì˜ ì™•ì¢Œë¡œ ì´ë™ í•˜ì‹œê² ìŠµë‹ˆê¹Œ??\r\n#b<< ë§¤ê·¸ë„ˆìŠ¤ ëª¨ì˜ì „ì€ 1ì¼ì— 1íšŒ í´ë¦¬ì–´ ê°€ëŠ¥í•©ë‹ˆë‹¤. >>\r\n<<115 ë ˆë²¨ ì´ìƒ ìœ ì € ê°„ì˜ íŒŒí‹°ë¡œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.>>"
+     * ) == 1) {
+     * enterField = true;
+     * }
+     * } else { //ë…¸ë§, í•˜ë“œë§¤ê·¸
+     * //TODO
+     * }
+     * if (enterField) {
+     * int enter = fieldSet.enter(target.getId());
+     * if (enter == -1) self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì´ìœ ë¡œ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì ì‹œ í›„ì— ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì‹­ì‹œì˜¤.");
+     * else if (enter == 1) self.say("íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ë„ì „í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+     * else if (enter == 2) self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
+     * else if (enter == 3) self.say("ìµœì†Œ " + fieldSet.minMember +
+     * "ì¸ ì´ìƒì˜ íŒŒí‹°ê°€ í€˜ìŠ¤íŠ¸ë¥¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+     * else if (enter == 4) self.say("íŒŒí‹°ì›ì˜ ë ˆë²¨ì€ ìµœì†Œ " + fieldSet.minLv +
+     * " ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
+     * else if (enter == 5) self.say("íŒŒí‹°ì›ì´ ëª¨ë‘ ëª¨ì—¬ ìˆì–´ì•¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+     * else if (enter == 6) self.say("ì´ë¯¸ ë‹¤ë¥¸ ì›ì •ëŒ€ê°€ ì•ˆìœ¼ë¡œ ë“¤ì–´ê°€ í€˜ìŠ¤íŠ¸ í´ë¦¬ì–´ì— ë„ì „í•˜ê³  ìˆëŠ” ì¤‘ì…ë‹ˆë‹¤.");
+     * else if (enter == 7) { //30ë¶„ ëŒ€ê¸°ì‹œê°„ì´ ë°œìƒí•œê²½ìš°
+     * self.say("30ë¶„ ì´ë‚´ì— ì…ì¥í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì…ì¥ í›„ 30ë¶„ ì´ë‚´ì— ì¬ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+     * } else if (enter < -1) {
+     * MapleCharacter user =
+     * getClient().getChannelServer().getPlayerStorage().getCharacterById(enter *
+     * -1);
+     * String name = "";
+     * if (user != null) {
+     * name = user.getName();
+     * }
+     * if (target.getMapId() != 401060399) {
+     * self.
+     * sayOk("ìµœê·¼ ì¼ì£¼ì¼ ì´ë‚´ <ë³´ìŠ¤:ë§¤ê·¸ë„ˆìŠ¤> í•˜ë“œ ëª¨ë“œë¥¼ í´ë¦¬ì–´í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. <ë³´ìŠ¤:ë§¤ê·¸ë„ˆìŠ¤> í•˜ë“œ ëª¨ë“œëŠ” ì¼ì£¼ì¼ì— 1íšŒë§Œ í´ë¦¬ì–´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n#r#e<í´ë¦¬ì–´ ê¸°ë¡ì€ ë§¤ì£¼ ëª©ìš”ì¼ì— ì¼ê´„ ì´ˆê¸°í™” ë©ë‹ˆë‹¤.>"
+     * );
+     * } else {
+     * self.say("íŒŒí‹°ì› ì¤‘ #b#e" + name + "#k#n ë‹˜ì´ ì˜¤ëŠ˜ ë§¤ê·¸ë„ˆìŠ¤ì— ì…ì¥í•˜ì…”ì„œ ë“¤ì–´ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+     * }
+     * }
+     * }
+     */
+    // TODO mag_GateWayOut(ì´ì§€ë§¤ê·¸í‡´ì¥), BPReturn_Magnus2(ë…¸ë§ë§¤ê·¸,í•˜ë“œë§¤ê·¸í‡´ì¥)
 }

@@ -8,655 +8,655 @@ import java.util.*;
 
 public class SoulPiece extends ScriptEngineNPC {
 
-    public void consume_2431655() { //¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431655() { //ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591010, 15.0d); //±â¿îÂù ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591011, 15.0d); //³¯·ÆÇÑ ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591012, 15.0d); //ÃÑ¸íÇÑ ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591013, 15.0d); //³î¶ó¿î ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591014, 15.0d); //°­ÀÎÇÑ ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591015, 15.0d); //Ç³ºÎÇÑ ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591016, 10.0d); //È­·ÁÇÑ ¶ô ½ºÇÇ¸´ÀÇ ¼Ò¿ï
+        percentageInfo.put(2591010, 15.0d); //ê¸°ìš´ì°¬ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591011, 15.0d); //ë‚ ë µí•œ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591012, 15.0d); //ì´ëª…í•œ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591013, 15.0d); //ë†€ë¼ìš´ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591014, 15.0d); //ê°•ì¸í•œ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591015, 15.0d); //í’ë¶€í•œ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
+        percentageInfo.put(2591016, 10.0d); //í™”ë ¤í•œ ë½ ìŠ¤í”¼ë¦¿ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431656() { //±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431656() { //êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591017, 15.0d); //±â¿îÂù ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591018, 15.0d); //³¯·ÆÇÑ ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591019, 15.0d); //ÃÑ¸íÇÑ ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591020, 15.0d); //³î¶ó¿î ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591021, 15.0d); //°­ÀÎÇÑ ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591022, 15.0d); //Ç³ºÎÇÑ ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591023, 10.0d); //È­·ÁÇÑ ±³µµ°ü ¾Æ´ÏÀÇ ¼Ò¿ï
+        percentageInfo.put(2591017, 15.0d); //ê¸°ìš´ì°¬ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591018, 15.0d); //ë‚ ë µí•œ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591019, 15.0d); //ì´ëª…í•œ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591020, 15.0d); //ë†€ë¼ìš´ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591021, 15.0d); //ê°•ì¸í•œ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591022, 15.0d); //í’ë¶€í•œ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591023, 10.0d); //í™”ë ¤í•œ êµë„ê´€ ì•„ë‹ˆì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431657() { //µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431657() { //ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591024, 15.0d); //±â¿îÂù µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591025, 15.0d); //³¯·ÆÇÑ µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591026, 15.0d); //ÃÑ¸íÇÑ µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591027, 15.0d); //³î¶ó¿î µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591028, 15.0d); //°­ÀÎÇÑ µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591029, 15.0d); //Ç³ºÎÇÑ µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
-        percentageInfo.put(2591030, 10.0d); //È­·ÁÇÑ µå·¡°ï ¶óÀÌ´õÀÇ ¼Ò¿ï
+        percentageInfo.put(2591024, 15.0d); //ê¸°ìš´ì°¬ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591025, 15.0d); //ë‚ ë µí•œ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591026, 15.0d); //ì´ëª…í•œ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591027, 15.0d); //ë†€ë¼ìš´ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591028, 15.0d); //ê°•ì¸í•œ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591029, 15.0d); //í’ë¶€í•œ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
+        percentageInfo.put(2591030, 10.0d); //í™”ë ¤í•œ ë“œë˜ê³¤ ë¼ì´ë”ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431658() { //·º½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431658() { //ë ‰ìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591031, 15.0d); //±â¿îÂù ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591032, 15.0d); //³¯·ÆÇÑ ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591033, 15.0d); //ÃÑ¸íÇÑ ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591034, 15.0d); //³î¶ó¿î ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591035, 15.0d); //°­ÀÎÇÑ ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591036, 15.0d); //Ç³ºÎÇÑ ·º½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591037, 10.0d); //È­·ÁÇÑ ·º½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591031, 15.0d); //ê¸°ìš´ì°¬ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591032, 15.0d); //ë‚ ë µí•œ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591033, 15.0d); //ì´ëª…í•œ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591034, 15.0d); //ë†€ë¼ìš´ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591035, 15.0d); //ê°•ì¸í•œ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591036, 15.0d); //í’ë¶€í•œ ë ‰ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591037, 10.0d); //í™”ë ¤í•œ ë ‰ìŠ¤ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431659() { //¹«°øÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431659() { //ë¬´ê³µì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591038, 15.0d); //±â¿îÂù ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591039, 15.0d); //³¯·ÆÇÑ ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591040, 15.0d); //ÃÑ¸íÇÑ ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591041, 15.0d); //³î¶ó¿î ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591042, 15.0d); //°­ÀÎÇÑ ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591043, 15.0d); //Ç³ºÎÇÑ ¹«°øÀÇ ¼Ò¿ï
-        percentageInfo.put(2591044, 10.0d); //È­·ÁÇÑ ¹«°øÀÇ ¼Ò¿ï
+        percentageInfo.put(2591038, 15.0d); //ê¸°ìš´ì°¬ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591039, 15.0d); //ë‚ ë µí•œ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591040, 15.0d); //ì´ëª…í•œ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591041, 15.0d); //ë†€ë¼ìš´ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591042, 15.0d); //ê°•ì¸í•œ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591043, 15.0d); //í’ë¶€í•œ ë¬´ê³µì˜ ì†Œìš¸
+        percentageInfo.put(2591044, 10.0d); //í™”ë ¤í•œ ë¬´ê³µì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431660() { //¹ß·ÏÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431660() { //ë°œë¡ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591045, 15.0d); //±â¿îÂù ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591046, 15.0d); //³¯·ÆÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591047, 15.0d); //ÃÑ¸íÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591048, 15.0d); //³î¶ó¿î ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591049, 15.0d); //È­·ÁÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591050, 8.0d); //°­·ÂÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591051, 8.0d); //ºû³ª´Â ¹ß·ÏÀÇ ¼Ò¿ï
-        percentageInfo.put(2591052, 8.0d); //°­ÀÎÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591053, 1.5d); //³¯Ä«·Î¿î ¹ß·ÏÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591054, 1.5d); //ÆÄ±«ÇÏ´Â ¹ß·ÏÀÇ ¼Ò¿ï
+        percentageInfo.put(2591045, 15.0d); //ê¸°ìš´ì°¬ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591046, 15.0d); //ë‚ ë µí•œ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591047, 15.0d); //ì´ëª…í•œ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591048, 15.0d); //ë†€ë¼ìš´ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591049, 15.0d); //í™”ë ¤í•œ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591050, 8.0d); //ê°•ë ¥í•œ ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591051, 8.0d); //ë¹›ë‚˜ëŠ” ë°œë¡ì˜ ì†Œìš¸
+        percentageInfo.put(2591052, 8.0d); //ê°•ì¸í•œ ë°œë¡ì˜ ì†Œìš¸
+        //percentageInfo.put(2591053, 1.5d); //ë‚ ì¹´ë¡œìš´ ë°œë¡ì˜ ì†Œìš¸
+        //percentageInfo.put(2591054, 1.5d); //íŒŒê´´í•˜ëŠ” ë°œë¡ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591085, 5.0d); //À§´ëÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
+            percentageInfo.put(2591085, 5.0d); //ìœ„ëŒ€í•œ ë°œë¡ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591085, 1.0d); //À§´ëÇÑ ¹ß·ÏÀÇ ¼Ò¿ï
+            percentageInfo.put(2591085, 1.0d); //ìœ„ëŒ€í•œ ë°œë¡ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431661() { //ÇÎÅ©ºóÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431661() { //í•‘í¬ë¹ˆì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591055, 15.0d); //±â¿îÂù ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591056, 15.0d); //³¯·ÆÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591057, 15.0d); //ÃÑ¸íÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591058, 15.0d); //³î¶ó¿î ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591059, 15.0d); //È­·ÁÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591060, 8.0d); //°­·ÂÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591061, 8.0d); //ºû³ª´Â ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        percentageInfo.put(2591062, 8.0d); //°­ÀÎÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591063, 1.5d); //³¯Ä«·Î¿î ÇÎÅ©ºóÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591064, 1.5d); //ÆÄ±«ÇÏ´Â ÇÎÅ©ºóÀÇ ¼Ò¿ï
+        percentageInfo.put(2591055, 15.0d); //ê¸°ìš´ì°¬ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591056, 15.0d); //ë‚ ë µí•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591057, 15.0d); //ì´ëª…í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591058, 15.0d); //ë†€ë¼ìš´ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591059, 15.0d); //í™”ë ¤í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591060, 8.0d); //ê°•ë ¥í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591061, 8.0d); //ë¹›ë‚˜ëŠ” í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591062, 8.0d); //ê°•ì¸í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        //percentageInfo.put(2591063, 1.5d); //ë‚ ì¹´ë¡œìš´ í•‘í¬ë¹ˆì˜ ì†Œìš¸
+        //percentageInfo.put(2591064, 1.5d); //íŒŒê´´í•˜ëŠ” í•‘í¬ë¹ˆì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591087, 5.0d); //À§´ëÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
+            percentageInfo.put(2591087, 5.0d); //ìœ„ëŒ€í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591087, 1.0d); //À§´ëÇÑ ÇÎÅ©ºóÀÇ ¼Ò¿ï
+            percentageInfo.put(2591087, 1.0d); //ìœ„ëŒ€í•œ í•‘í¬ë¹ˆì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431662() { //¹İ ·¹¿ÂÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431662() { //ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591065, 15.0d); //±â¿îÂù ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591066, 15.0d); //³¯·ÆÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591067, 15.0d); //ÃÑ¸íÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591068, 15.0d); //³î¶ó¿î ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591069, 15.0d); //È­·ÁÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591070, 8.0d); //°­·ÂÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591071, 8.0d); //ºû³ª´Â ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        percentageInfo.put(2591072, 8.0d); //°­ÀÎÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591073, 1.5d); //³¯Ä«·Î¿î ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
-        //percentageInfo.put(2591074, 1.5d); //ÆÄ±«ÇÏ´Â ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
+        percentageInfo.put(2591065, 15.0d); //ê¸°ìš´ì°¬ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591066, 15.0d); //ë‚ ë µí•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591067, 15.0d); //ì´ëª…í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591068, 15.0d); //ë†€ë¼ìš´ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591069, 15.0d); //í™”ë ¤í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591070, 8.0d); //ê°•ë ¥í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591071, 8.0d); //ë¹›ë‚˜ëŠ” ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        percentageInfo.put(2591072, 8.0d); //ê°•ì¸í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        //percentageInfo.put(2591073, 1.5d); //ë‚ ì¹´ë¡œìš´ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
+        //percentageInfo.put(2591074, 1.5d); //íŒŒê´´í•˜ëŠ” ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591086, 5.0d); //À§´ëÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
+            percentageInfo.put(2591086, 5.0d); //ìœ„ëŒ€í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591086, 1.0d); //À§´ëÇÑ ¹İ ·¹¿ÂÀÇ ¼Ò¿ï
+            percentageInfo.put(2591086, 1.0d); //ìœ„ëŒ€í•œ ë°˜ ë ˆì˜¨ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431709() { //Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431709() { //í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591148, 15.0d); //±â¿îÂù Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591149, 15.0d); //³¯·ÆÇÑ Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591150, 15.0d); //ÃÑ¸íÇÑ Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591151, 15.0d); //³î¶ó¿î Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591152, 15.0d); //°­ÀÎÇÑ Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591153, 15.0d); //Ç³ºÎÇÑ Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591154, 10.0d); //È­·ÁÇÑ Å©¼¼¸£Å©¼¼½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591148, 15.0d); //ê¸°ìš´ì°¬ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591149, 15.0d); //ë‚ ë µí•œ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591150, 15.0d); //ì´ëª…í•œ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591151, 15.0d); //ë†€ë¼ìš´ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591152, 15.0d); //ê°•ì¸í•œ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591153, 15.0d); //í’ë¶€í•œ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591154, 10.0d); //í™”ë ¤í•œ í¬ì„¸ë¥´í¬ì„¸ìŠ¤ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431710() { //ÀÚÄñÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431710() { //ìì¿°ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591155, 15.0d); //±â¿îÂù ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591156, 15.0d); //³¯·ÆÇÑ ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591157, 15.0d); //ÃÑ¸íÇÑ ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591158, 15.0d); //³î¶ó¿î ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591159, 15.0d); //È­·ÁÇÑ ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591160, 8.0d); //°­·ÂÇÑ ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591161, 8.0d); //ºû³ª´Â ÀÚÄñÀÇ ¼Ò¿ï
-        percentageInfo.put(2591162, 8.0d); //°­ÀÎÇÑ ÀÚÄñÀÇ ¼Ò¿ï
+        percentageInfo.put(2591155, 15.0d); //ê¸°ìš´ì°¬ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591156, 15.0d); //ë‚ ë µí•œ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591157, 15.0d); //ì´ëª…í•œ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591158, 15.0d); //ë†€ë¼ìš´ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591159, 15.0d); //í™”ë ¤í•œ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591160, 8.0d); //ê°•ë ¥í•œ ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591161, 8.0d); //ë¹›ë‚˜ëŠ” ìì¿°ì˜ ì†Œìš¸
+        percentageInfo.put(2591162, 8.0d); //ê°•ì¸í•œ ìì¿°ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591163, 5.0d); //À§´ëÇÑ ÀÚÄñÀÇ ¼Ò¿ï
+            percentageInfo.put(2591163, 5.0d); //ìœ„ëŒ€í•œ ìì¿°ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591163, 1.0d); //À§´ëÇÑ ÀÚÄñÀÇ ¼Ò¿ï
+            percentageInfo.put(2591163, 1.0d); //ìœ„ëŒ€í•œ ìì¿°ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431711() { //½Ã±×³Ê½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431711() { //ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591075, 15.0d); //±â¿îÂù ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591076, 15.0d); //³¯·ÆÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591077, 15.0d); //ÃÑ¸íÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591078, 15.0d); //³î¶ó¿î ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591079, 15.0d); //È­·ÁÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591080, 8.0d); //°­·ÂÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591081, 8.0d); //ºû³ª´Â ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591082, 8.0d); //°­ÀÎÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591075, 15.0d); //ê¸°ìš´ì°¬ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591076, 15.0d); //ë‚ ë µí•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591077, 15.0d); //ì´ëª…í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591078, 15.0d); //ë†€ë¼ìš´ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591079, 15.0d); //í™”ë ¤í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591080, 8.0d); //ê°•ë ¥í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591081, 8.0d); //ë¹›ë‚˜ëŠ” ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591082, 8.0d); //ê°•ì¸í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591088, 5.0d); //À§´ëÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591088, 5.0d); //ìœ„ëŒ€í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591088, 1.0d); //À§´ëÇÑ ½Ã±×³Ê½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591088, 1.0d); //ìœ„ëŒ€í•œ ì‹œê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431752() { //¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431752() { //ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591187, 15.0d); //±â¿îÂù ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591188, 15.0d); //³¯·ÆÇÑ ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591189, 15.0d); //ÃÑ¸íÇÑ ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591190, 15.0d); //³î¶ó¿î ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591191, 15.0d); //°­ÀÎÇÑ ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591192, 15.0d); //Ç³ºÎÇÑ ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
-        percentageInfo.put(2591193, 10.0d); //È­·ÁÇÑ ¿¡ÇÇ³×¾ÆÀÇ ¼Ò¿ï
+        percentageInfo.put(2591187, 15.0d); //ê¸°ìš´ì°¬ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591188, 15.0d); //ë‚ ë µí•œ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591189, 15.0d); //ì´ëª…í•œ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591190, 15.0d); //ë†€ë¼ìš´ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591191, 15.0d); //ê°•ì¸í•œ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591192, 15.0d); //í’ë¶€í•œ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
+        percentageInfo.put(2591193, 10.0d); //í™”ë ¤í•œ ì—í”¼ë„¤ì•„ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431753() { //¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431753() { //ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591194, 15.0d); //±â¿îÂù ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591195, 15.0d); //³¯·ÆÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591196, 15.0d); //ÃÑ¸íÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591197, 15.0d); //³î¶ó¿î ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591198, 15.0d); //È­·ÁÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591199, 8.0d); //°­·ÂÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591200, 8.0d); //ºû³ª´Â ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591201, 8.0d); //°­ÀÎÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
+        percentageInfo.put(2591194, 15.0d); //ê¸°ìš´ì°¬ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591195, 15.0d); //ë‚ ë µí•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591196, 15.0d); //ì´ëª…í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591197, 15.0d); //ë†€ë¼ìš´ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591198, 15.0d); //í™”ë ¤í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591199, 8.0d); //ê°•ë ¥í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591200, 8.0d); //ë¹›ë‚˜ëŠ” ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591201, 8.0d); //ê°•ì¸í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591202, 5.0d); //À§´ëÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591202, 5.0d); //ìœ„ëŒ€í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591202, 1.0d); //À§´ëÇÑ ¾ÆÄ«ÀÌ·³ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591202, 1.0d); //ìœ„ëŒ€í•œ ì•„ì¹´ì´ëŸ¼ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431895() { //ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431895() { //í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591218, 15.0d); //±â¿îÂù ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591219, 15.0d); //³¯·ÆÇÑ ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591220, 15.0d); //ÃÑ¸íÇÑ ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591221, 15.0d); //³î¶ó¿î ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591222, 15.0d); //°­ÀÎÇÑ ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591223, 15.0d); //Ç³ºÎÇÑ ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591224, 10.0d); //È­·ÁÇÑ ÇÇ¾Æ´©½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591218, 15.0d); //ê¸°ìš´ì°¬ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591219, 15.0d); //ë‚ ë µí•œ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591220, 15.0d); //ì´ëª…í•œ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591221, 15.0d); //ë†€ë¼ìš´ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591222, 15.0d); //ê°•ì¸í•œ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591223, 15.0d); //í’ë¶€í•œ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591224, 10.0d); //í™”ë ¤í•œ í”¼ì•„ëˆ„ìŠ¤ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431896() { //Èú¶óÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431896() { //íë¼ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591225, 15.0d); //±â¿îÂù Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591226, 15.0d); //³¯·ÆÇÑ Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591227, 15.0d); //ÃÑ¸íÇÑ Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591228, 15.0d); //³î¶ó¿î Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591229, 15.0d); //È­·ÁÇÑ Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591230, 8.0d); //°­·ÂÇÑ Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591231, 8.0d); //ºû³ª´Â Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591232, 8.0d); //°­ÀÎÇÑ Èú¶óÀÇ ¼Ò¿ï
+        percentageInfo.put(2591225, 15.0d); //ê¸°ìš´ì°¬ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591226, 15.0d); //ë‚ ë µí•œ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591227, 15.0d); //ì´ëª…í•œ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591228, 15.0d); //ë†€ë¼ìš´ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591229, 15.0d); //í™”ë ¤í•œ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591230, 8.0d); //ê°•ë ¥í•œ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591231, 8.0d); //ë¹›ë‚˜ëŠ” íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591232, 8.0d); //ê°•ì¸í•œ íë¼ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591233, 5.0d); //À§´ëÇÑ Èú¶óÀÇ ¼Ò¿ï
+            percentageInfo.put(2591233, 5.0d); //ìœ„ëŒ€í•œ íë¼ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591233, 1.0d); //À§´ëÇÑ Èú¶óÀÇ ¼Ò¿ï
+            percentageInfo.put(2591233, 1.0d); //ìœ„ëŒ€í•œ íë¼ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431963() { //ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431963() { //ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591249, 15.0d); //±â¿îÂù ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591250, 15.0d); //³¯·ÆÇÑ ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591251, 15.0d); //ÃÑ¸íÇÑ ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591252, 15.0d); //³î¶ó¿î ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591253, 15.0d); //°­ÀÎÇÑ ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591254, 15.0d); //Ç³ºÎÇÑ ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
-        percentageInfo.put(2591255, 10.0d); //È­·ÁÇÑ ºí·¢ ½½¶óÀÓÀÇ ¼Ò¿ï
+        percentageInfo.put(2591249, 15.0d); //ê¸°ìš´ì°¬ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591250, 15.0d); //ë‚ ë µí•œ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591251, 15.0d); //ì´ëª…í•œ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591252, 15.0d); //ë†€ë¼ìš´ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591253, 15.0d); //ê°•ì¸í•œ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591254, 15.0d); //í’ë¶€í•œ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
+        percentageInfo.put(2591255, 10.0d); //í™”ë ¤í•œ ë¸”ë™ ìŠ¬ë¼ì„ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431964() { //¸Å±×³Ê½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2431964() { //ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591256, 15.0d); //±â¿îÂù ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591257, 15.0d); //³¯·ÆÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591258, 15.0d); //ÃÑ¸íÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591259, 15.0d); //³î¶ó¿î ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591260, 15.0d); //È­·ÁÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591261, 8.0d); //°­·ÂÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591262, 8.0d); //ºû³ª´Â ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591263, 8.0d); //°­ÀÎÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591256, 15.0d); //ê¸°ìš´ì°¬ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591257, 15.0d); //ë‚ ë µí•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591258, 15.0d); //ì´ëª…í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591259, 15.0d); //ë†€ë¼ìš´ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591260, 15.0d); //í™”ë ¤í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591261, 8.0d); //ê°•ë ¥í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591262, 8.0d); //ë¹›ë‚˜ëŠ” ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591263, 8.0d); //ê°•ì¸í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591264, 5.0d); //À§´ëÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591264, 5.0d); //ìœ„ëŒ€í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591264, 1.0d); //À§´ëÇÑ ¸Å±×³Ê½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591264, 1.0d); //ìœ„ëŒ€í•œ ë§¤ê·¸ë„ˆìŠ¤ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2432138() { //¹«¸£¹«¸£ÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432138() { //ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591288, 15.0d); //±â¿îÂù ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591289, 15.0d); //³¯·ÆÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591290, 15.0d); //ÃÑ¸íÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591291, 15.0d); //³î¶ó¿î ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591292, 15.0d); //È­·ÁÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591293, 8.0d); //°­·ÂÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591294, 8.0d); //ºû³ª´Â ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591295, 8.0d); //°­ÀÎÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
+        percentageInfo.put(2591288, 15.0d); //ê¸°ìš´ì°¬ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591289, 15.0d); //ë‚ ë µí•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591290, 15.0d); //ì´ëª…í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591291, 15.0d); //ë†€ë¼ìš´ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591292, 15.0d); //í™”ë ¤í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591293, 8.0d); //ê°•ë ¥í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591294, 8.0d); //ë¹›ë‚˜ëŠ” ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591295, 8.0d); //ê°•ì¸í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591296, 5.0d); //À§´ëÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591296, 5.0d); //ìœ„ëŒ€í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591296, 1.0d); //À§´ëÇÑ ¹«¸£¹«¸£ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591296, 1.0d); //ìœ„ëŒ€í•œ ë¬´ë¥´ë¬´ë¥´ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2432575() { //¸ğÄ«µòÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432575() { //ëª¨ì¹´ë”˜ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591297, 15.0d); //±â¿îÂù ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591298, 15.0d); //³¯·ÆÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591299, 15.0d); //ÃÑ¸íÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591300, 15.0d); //³î¶ó¿î ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591301, 15.0d); //È­·ÁÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591302, 8.0d); //°­·ÂÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591303, 8.0d); //ºû³ª´Â ¸ğÄ«µòÀÇ ¼Ò¿ï
-        percentageInfo.put(2591304, 8.0d); //°­ÀÎÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
+        percentageInfo.put(2591297, 15.0d); //ê¸°ìš´ì°¬ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591298, 15.0d); //ë‚ ë µí•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591299, 15.0d); //ì´ëª…í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591300, 15.0d); //ë†€ë¼ìš´ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591301, 15.0d); //í™”ë ¤í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591302, 8.0d); //ê°•ë ¥í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591303, 8.0d); //ë¹›ë‚˜ëŠ” ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591304, 8.0d); //ê°•ì¸í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591305, 5.0d); //À§´ëÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
+            percentageInfo.put(2591305, 5.0d); //ìœ„ëŒ€í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591305, 1.0d); //À§´ëÇÑ ¸ğÄ«µòÀÇ ¼Ò¿ï
+            percentageInfo.put(2591305, 1.0d); //ìœ„ëŒ€í•œ ëª¨ì¹´ë”˜ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2432576() { //Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432576() { //ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591306, 15.0d); //±â¿îÂù Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591307, 15.0d); //³¯·ÆÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591308, 15.0d); //ÃÑ¸íÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591309, 15.0d); //³î¶ó¿î Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591310, 15.0d); //È­·ÁÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591311, 8.0d); //°­·ÂÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591312, 8.0d); //ºû³ª´Â Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
-        percentageInfo.put(2591313, 8.0d); //°­ÀÎÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
+        percentageInfo.put(2591306, 15.0d); //ê¸°ìš´ì°¬ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591307, 15.0d); //ë‚ ë µí•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591308, 15.0d); //ì´ëª…í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591309, 15.0d); //ë†€ë¼ìš´ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591310, 15.0d); //í™”ë ¤í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591311, 8.0d); //ê°•ë ¥í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591312, 8.0d); //ë¹›ë‚˜ëŠ” ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591313, 8.0d); //ê°•ì¸í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591314, 5.0d); //À§´ëÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
+            percentageInfo.put(2591314, 5.0d); //ìœ„ëŒ€í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591314, 1.0d); //À§´ëÇÑ Ä«¸®¾ÆÀÎÀÇ ¼Ò¿ï
+            percentageInfo.put(2591314, 1.0d); //ìœ„ëŒ€í•œ ì¹´ë¦¬ì•„ì¸ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2432577() { //CQ57ÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432577() { //CQ57ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591315, 15.0d); //±â¿îÂù CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591316, 15.0d); //³¯·ÆÇÑ CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591317, 15.0d); //ÃÑ¸íÇÑ CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591318, 15.0d); //³î¶ó¿î CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591319, 15.0d); //È­·ÁÇÑ CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591320, 8.0d); //°­·ÂÇÑ CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591321, 8.0d); //ºû³ª´Â CQ57ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591322, 8.0d); //°­ÀÎÇÑ CQ57ÀÇ ¼Ò¿ï
+        percentageInfo.put(2591315, 15.0d); //ê¸°ìš´ì°¬ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591316, 15.0d); //ë‚ ë µí•œ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591317, 15.0d); //ì´ëª…í•œ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591318, 15.0d); //ë†€ë¼ìš´ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591319, 15.0d); //í™”ë ¤í•œ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591320, 8.0d); //ê°•ë ¥í•œ CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591321, 8.0d); //ë¹›ë‚˜ëŠ” CQ57ì˜ ì†Œìš¸
+        percentageInfo.put(2591322, 8.0d); //ê°•ì¸í•œ CQ57ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591323, 5.0d); //À§´ëÇÑ CQ57ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591323, 5.0d); //ìœ„ëŒ€í•œ CQ57ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591323, 1.0d); //À§´ëÇÑ CQ57ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591323, 1.0d); //ìœ„ëŒ€í•œ CQ57ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
 
     }
 
-    public void consume_2432578() { //ÁÙ¶óÀÌÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432578() { //ì¤„ë¼ì´ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591324, 15.0d); //±â¿îÂù ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591325, 15.0d); //³¯·ÆÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591326, 15.0d); //ÃÑ¸íÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591327, 15.0d); //³î¶ó¿î ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591328, 15.0d); //È­·ÁÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591329, 8.0d); //°­·ÂÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591330, 8.0d); //ºû³ª´Â ÁÙ¶óÀÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591331, 8.0d); //°­ÀÎÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
+        percentageInfo.put(2591324, 15.0d); //ê¸°ìš´ì°¬ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591325, 15.0d); //ë‚ ë µí•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591326, 15.0d); //ì´ëª…í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591327, 15.0d); //ë†€ë¼ìš´ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591328, 15.0d); //í™”ë ¤í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591329, 8.0d); //ê°•ë ¥í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591330, 8.0d); //ë¹›ë‚˜ëŠ” ì¤„ë¼ì´ì˜ ì†Œìš¸
+        percentageInfo.put(2591331, 8.0d); //ê°•ì¸í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591332, 5.0d); //À§´ëÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
+            percentageInfo.put(2591332, 5.0d); //ìœ„ëŒ€í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591332, 1.0d); //À§´ëÇÑ ÁÙ¶óÀÌÀÇ ¼Ò¿ï
+            percentageInfo.put(2591332, 1.0d); //ìœ„ëŒ€í•œ ì¤„ë¼ì´ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2432579() { //ÇÃ·¹µåÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2432579() { //í”Œë ˆë“œì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591333, 15.0d); //±â¿îÂù ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591334, 15.0d); //³¯·ÆÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591335, 15.0d); //ÃÑ¸íÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591336, 15.0d); //³î¶ó¿î ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591337, 15.0d); //È­·ÁÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591338, 8.0d); //°­·ÂÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591339, 8.0d); //ºû³ª´Â ÇÃ·¹µåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591340, 8.0d); //°­ÀÎÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
+        percentageInfo.put(2591333, 15.0d); //ê¸°ìš´ì°¬ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591334, 15.0d); //ë‚ ë µí•œ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591335, 15.0d); //ì´ëª…í•œ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591336, 15.0d); //ë†€ë¼ìš´ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591337, 15.0d); //í™”ë ¤í•œ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591338, 8.0d); //ê°•ë ¥í•œ í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591339, 8.0d); //ë¹›ë‚˜ëŠ” í”Œë ˆë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591340, 8.0d); //ê°•ì¸í•œ í”Œë ˆë“œì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591341, 5.0d); //À§´ëÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
+            percentageInfo.put(2591341, 5.0d); //ìœ„ëŒ€í•œ í”Œë ˆë“œì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591341, 1.0d); //À§´ëÇÑ ÇÃ·¹µåÀÇ ¼Ò¿ï
+            percentageInfo.put(2591341, 1.0d); //ìœ„ëŒ€í•œ í”Œë ˆë“œì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2433446() { //ÇÇ¿¡¸£ÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2433446() { //í”¼ì—ë¥´ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591383, 15.0d); //±â¿îÂù ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591384, 15.0d); //³¯·ÆÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591385, 15.0d); //ÃÑ¸íÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591386, 15.0d); //³î¶ó¿î ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591387, 15.0d); //È­·ÁÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591388, 8.0d); //°­·ÂÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591389, 8.0d); //ºû³ª´Â ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
-        percentageInfo.put(2591390, 8.0d); //°­ÀÎÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
+        percentageInfo.put(2591383, 15.0d); //ê¸°ìš´ì°¬ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591384, 15.0d); //ë‚ ë µí•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591385, 15.0d); //ì´ëª…í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591386, 15.0d); //ë†€ë¼ìš´ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591387, 15.0d); //í™”ë ¤í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591388, 8.0d); //ê°•ë ¥í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591389, 8.0d); //ë¹›ë‚˜ëŠ” í”¼ì—ë¥´ì˜ ì†Œìš¸
+        percentageInfo.put(2591390, 8.0d); //ê°•ì¸í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591391, 5.0d); //À§´ëÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591391, 5.0d); //ìœ„ëŒ€í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591391, 1.0d); //À§´ëÇÑ ÇÇ¿¡¸£ÀÇ ¼Ò¿ï
+            percentageInfo.put(2591391, 1.0d); //ìœ„ëŒ€í•œ í”¼ì—ë¥´ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2433515() { //¹İ¹İÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2433515() { //ë°˜ë°˜ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591392, 15.0d); //±â¿îÂù ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591393, 15.0d); //³¯·ÆÇÑ ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591394, 15.0d); //ÃÑ¸íÇÑ ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591395, 15.0d); //³î¶ó¿î ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591396, 15.0d); //È­·ÁÇÑ ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591397, 8.0d); //°­·ÂÇÑ ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591398, 8.0d); //ºû³ª´Â ¹İ¹İÀÇ ¼Ò¿ï
-        percentageInfo.put(2591399, 8.0d); //°­ÀÎÇÑ ¹İ¹İÀÇ ¼Ò¿ï
+        percentageInfo.put(2591392, 15.0d); //ê¸°ìš´ì°¬ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591393, 15.0d); //ë‚ ë µí•œ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591394, 15.0d); //ì´ëª…í•œ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591395, 15.0d); //ë†€ë¼ìš´ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591396, 15.0d); //í™”ë ¤í•œ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591397, 8.0d); //ê°•ë ¥í•œ ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591398, 8.0d); //ë¹›ë‚˜ëŠ” ë°˜ë°˜ì˜ ì†Œìš¸
+        percentageInfo.put(2591399, 8.0d); //ê°•ì¸í•œ ë°˜ë°˜ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591400, 5.0d); //À§´ëÇÑ ¹İ¹İÀÇ ¼Ò¿ï
+            percentageInfo.put(2591400, 5.0d); //ìœ„ëŒ€í•œ ë°˜ë°˜ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591400, 1.0d); //À§´ëÇÑ ¹İ¹İÀÇ ¼Ò¿ï
+            percentageInfo.put(2591400, 1.0d); //ìœ„ëŒ€í•œ ë°˜ë°˜ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2433591() { //ºí·¯µğÄıÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2433591() { //ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591401, 15.0d); //±â¿îÂù ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591402, 15.0d); //³¯·ÆÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591403, 15.0d); //ÃÑ¸íÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591404, 15.0d); //³î¶ó¿î ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591405, 15.0d); //È­·ÁÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591406, 8.0d); //°­·ÂÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591407, 8.0d); //ºû³ª´Â ºí·¯µğÄıÀÇ ¼Ò¿ï
-        percentageInfo.put(2591408, 8.0d); //°­ÀÎÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
+        percentageInfo.put(2591401, 15.0d); //ê¸°ìš´ì°¬ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591402, 15.0d); //ë‚ ë µí•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591403, 15.0d); //ì´ëª…í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591404, 15.0d); //ë†€ë¼ìš´ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591405, 15.0d); //í™”ë ¤í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591406, 8.0d); //ê°•ë ¥í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591407, 8.0d); //ë¹›ë‚˜ëŠ” ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591408, 8.0d); //ê°•ì¸í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591409, 5.0d); //À§´ëÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
+            percentageInfo.put(2591409, 5.0d); //ìœ„ëŒ€í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591409, 1.0d); //À§´ëÇÑ ºí·¯µğÄıÀÇ ¼Ò¿ï
+            percentageInfo.put(2591409, 1.0d); //ìœ„ëŒ€í•œ ë¸”ëŸ¬ë””í€¸ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2433592() { //º§·ëÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2433592() { //ë²¨ë£¸ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591410, 15.0d); //±â¿îÂù º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591411, 15.0d); //³¯·ÆÇÑ º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591412, 15.0d); //ÃÑ¸íÇÑ º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591413, 15.0d); //³î¶ó¿î º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591414, 15.0d); //È­·ÁÇÑ º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591415, 8.0d); //°­·ÂÇÑ º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591416, 8.0d); //ºû³ª´Â º§·ëÀÇ ¼Ò¿ï
-        percentageInfo.put(2591417, 8.0d); //°­ÀÎÇÑ º§·ëÀÇ ¼Ò¿ï
+        percentageInfo.put(2591410, 15.0d); //ê¸°ìš´ì°¬ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591411, 15.0d); //ë‚ ë µí•œ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591412, 15.0d); //ì´ëª…í•œ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591413, 15.0d); //ë†€ë¼ìš´ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591414, 15.0d); //í™”ë ¤í•œ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591415, 8.0d); //ê°•ë ¥í•œ ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591416, 8.0d); //ë¹›ë‚˜ëŠ” ë²¨ë£¸ì˜ ì†Œìš¸
+        percentageInfo.put(2591417, 8.0d); //ê°•ì¸í•œ ë²¨ë£¸ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591418, 5.0d); //À§´ëÇÑ º§·ëÀÇ ¼Ò¿ï
+            percentageInfo.put(2591418, 5.0d); //ìœ„ëŒ€í•œ ë²¨ë£¸ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591418, 1.0d); //À§´ëÇÑ º§·ëÀÇ ¼Ò¿ï
+            percentageInfo.put(2591418, 1.0d); //ìœ„ëŒ€í•œ ë²¨ë£¸ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2433593() { //½º¿ìÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2433593() { //ìŠ¤ìš°ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591419, 15.0d); //±â¿îÂù ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591420, 15.0d); //³¯·ÆÇÑ ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591421, 15.0d); //ÃÑ¸íÇÑ ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591422, 15.0d); //³î¶ó¿î ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591423, 15.0d); //È­·ÁÇÑ ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591424, 8.0d); //°­·ÂÇÑ ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591425, 8.0d); //ºû³ª´Â ½º¿ìÀÇ ¼Ò¿ï
-        percentageInfo.put(2591426, 8.0d); //°­ÀÎÇÑ ½º¿ìÀÇ ¼Ò¿ï
+        percentageInfo.put(2591419, 15.0d); //ê¸°ìš´ì°¬ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591420, 15.0d); //ë‚ ë µí•œ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591421, 15.0d); //ì´ëª…í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591422, 15.0d); //ë†€ë¼ìš´ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591423, 15.0d); //í™”ë ¤í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591424, 8.0d); //ê°•ë ¥í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591425, 8.0d); //ë¹›ë‚˜ëŠ” ìŠ¤ìš°ì˜ ì†Œìš¸
+        percentageInfo.put(2591426, 8.0d); //ê°•ì¸í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591427, 5.0d); //À§´ëÇÑ ½º¿ìÀÇ ¼Ò¿ï
+            percentageInfo.put(2591427, 5.0d); //ìœ„ëŒ€í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591427, 1.0d); //À§´ëÇÑ ½º¿ìÀÇ ¼Ò¿ï
+            percentageInfo.put(2591427, 1.0d); //ìœ„ëŒ€í•œ ìŠ¤ìš°ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2434035() { //µÅÁö¹Ù ¼Ò¿ï Á¶°¢
+    public void consume_2434035() { //ë¼ì§€ë°” ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591487, 15.0d); //±â¿îÂù µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591488, 15.0d); //³¯·ÆÇÑ µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591489, 15.0d); //ÃÑ¸íÇÑ µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591490, 15.0d); //³î¶ó¿î µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591491, 15.0d); //È­·ÁÇÑ µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591492, 8.0d); //°­·ÂÇÑ µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591493, 8.0d); //ºû³ª´Â µÅÁö¹Ù ¼Ò¿ï
-        percentageInfo.put(2591494, 8.0d); //°­ÀÎÇÑ µÅÁö¹Ù ¼Ò¿ï
+        percentageInfo.put(2591487, 15.0d); //ê¸°ìš´ì°¬ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591488, 15.0d); //ë‚ ë µí•œ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591489, 15.0d); //ì´ëª…í•œ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591490, 15.0d); //ë†€ë¼ìš´ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591491, 15.0d); //í™”ë ¤í•œ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591492, 8.0d); //ê°•ë ¥í•œ ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591493, 8.0d); //ë¹›ë‚˜ëŠ” ë¼ì§€ë°” ì†Œìš¸
+        percentageInfo.put(2591494, 8.0d); //ê°•ì¸í•œ ë¼ì§€ë°” ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591495, 5.0d); //À§´ëÇÑ µÅÁö¹Ù ¼Ò¿ï
+            percentageInfo.put(2591495, 5.0d); //ìœ„ëŒ€í•œ ë¼ì§€ë°” ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591495, 1.0d); //À§´ëÇÑ µÅÁö¹Ù ¼Ò¿ï
+            percentageInfo.put(2591495, 1.0d); //ìœ„ëŒ€í•œ ë¼ì§€ë°” ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2434210() { //ÇÁ¸®¹Ì¾ö PC¹æ ¼Ò¿ï Á¶°¢
+    public void consume_2434210() { //í”„ë¦¬ë¯¸ì—„ PCë°© ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591500, 12.5d); //±â¿îÂù ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591501, 12.5d); //³¯·ÆÇÑ ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591502, 12.5d); //ÃÑ¸íÇÑ ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591503, 12.5d); //³î¶ó¿î ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591504, 12.5d); //È­·ÁÇÑ ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591505, 12.5d); //°­·ÂÇÑ ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591506, 12.5d); //ºû³ª´Â ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
-        percentageInfo.put(2591507, 12.5d); //°­ÀÎÇÑ ÇÁ¸®¹Ì¾öPC¹æ ¼Ò¿ï
+        percentageInfo.put(2591500, 12.5d); //ê¸°ìš´ì°¬ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591501, 12.5d); //ë‚ ë µí•œ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591502, 12.5d); //ì´ëª…í•œ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591503, 12.5d); //ë†€ë¼ìš´ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591504, 12.5d); //í™”ë ¤í•œ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591505, 12.5d); //ê°•ë ¥í•œ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591506, 12.5d); //ë¹›ë‚˜ëŠ” í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
+        percentageInfo.put(2591507, 12.5d); //ê°•ì¸í•œ í”„ë¦¬ë¯¸ì—„PCë°© ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2434470() { //¿ì¸£½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2434470() { //ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591509, 15.0d); //±â¿îÂù ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591510, 15.0d); //³¯·ÆÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591511, 15.0d); //ÃÑ¸íÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591512, 15.0d); //³î¶ó¿î ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591513, 15.0d); //È­·ÁÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591514, 8.0d); //°­·ÂÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591515, 8.0d); //ºû³ª´Â ¿ì¸£½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591516, 8.0d); //°­ÀÎÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591509, 15.0d); //ê¸°ìš´ì°¬ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591510, 15.0d); //ë‚ ë µí•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591511, 15.0d); //ì´ëª…í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591512, 15.0d); //ë†€ë¼ìš´ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591513, 15.0d); //í™”ë ¤í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591514, 8.0d); //ê°•ë ¥í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591515, 8.0d); //ë¹›ë‚˜ëŠ” ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591516, 8.0d); //ê°•ì¸í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591517, 5.0d); //À§´ëÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591517, 5.0d); //ìœ„ëŒ€í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591517, 1.0d); //À§´ëÇÑ ¿ì¸£½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591517, 1.0d); //ìœ„ëŒ€í•œ ìš°ë¥´ìŠ¤ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2435031() { //ÇÎÅ©¸ùÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2435031() { //í•‘í¬ëª½ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591528, 14.0d); //±â¿îÂù ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591529, 14.0d); //³¯·ÆÇÑ ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591530, 14.0d); //ÃÑ¸íÇÑ ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591531, 14.0d); //³î¶ó¿î ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591532, 14.0d); //°­ÀÎÇÑ ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591533, 14.0d); //Ç³ºÎÇÑ ÇÎÅ©¸ùÀÇ ¼Ò¿ï
-        percentageInfo.put(2591534, 14.0d); //È­·ÁÇÑ ÇÎÅ©¸ùÀÇ ¼Ò¿ï
+        percentageInfo.put(2591528, 14.0d); //ê¸°ìš´ì°¬ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591529, 14.0d); //ë‚ ë µí•œ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591530, 14.0d); //ì´ëª…í•œ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591531, 14.0d); //ë†€ë¼ìš´ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591532, 14.0d); //ê°•ì¸í•œ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591533, 14.0d); //í’ë¶€í•œ í•‘í¬ëª½ì˜ ì†Œìš¸
+        percentageInfo.put(2591534, 14.0d); //í™”ë ¤í•œ í•‘í¬ëª½ì˜ ì†Œìš¸
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2435369() { //µ¥¹Ì¾ÈÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2435369() { //ë°ë¯¸ì•ˆì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591564, 15.0d); //±â¿îÂù µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591565, 15.0d); //³¯·ÆÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591566, 15.0d); //ÃÑ¸íÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591567, 15.0d); //³î¶ó¿î µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591568, 15.0d); //È­·ÁÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591569, 8.0d); //°­·ÂÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591570, 8.0d); //ºû³ª´Â µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
-        percentageInfo.put(2591571, 8.0d); //°­ÀÎÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
+        percentageInfo.put(2591564, 15.0d); //ê¸°ìš´ì°¬ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591565, 15.0d); //ë‚ ë µí•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591566, 15.0d); //ì´ëª…í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591567, 15.0d); //ë†€ë¼ìš´ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591568, 15.0d); //í™”ë ¤í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591569, 8.0d); //ê°•ë ¥í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591570, 8.0d); //ë¹›ë‚˜ëŠ” ë°ë¯¸ì•ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591571, 8.0d); //ê°•ì¸í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591572, 5.0d); //À§´ëÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
+            percentageInfo.put(2591572, 5.0d); //ìœ„ëŒ€í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591572, 1.0d); //À§´ëÇÑ µ¥¹Ì¾ÈÀÇ ¼Ò¿ï
+            percentageInfo.put(2591572, 1.0d); //ìœ„ëŒ€í•œ ë°ë¯¸ì•ˆì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2436039() { //·ç½ÃµåÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2436039() { //ë£¨ì‹œë“œì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591582, 15.0d); //±â¿îÂù ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591583, 15.0d); //³¯·ÆÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591584, 15.0d); //ÃÑ¸íÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591585, 15.0d); //³î¶ó¿î ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591586, 15.0d); //È­·ÁÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591587, 8.0d); //°­·ÂÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591588, 8.0d); //ºû³ª´Â ·ç½ÃµåÀÇ ¼Ò¿ï
-        percentageInfo.put(2591589, 8.0d); //°­ÀÎÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
+        percentageInfo.put(2591582, 15.0d); //ê¸°ìš´ì°¬ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591583, 15.0d); //ë‚ ë µí•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591584, 15.0d); //ì´ëª…í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591585, 15.0d); //ë†€ë¼ìš´ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591586, 15.0d); //í™”ë ¤í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591587, 8.0d); //ê°•ë ¥í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591588, 8.0d); //ë¹›ë‚˜ëŠ” ë£¨ì‹œë“œì˜ ì†Œìš¸
+        percentageInfo.put(2591589, 8.0d); //ê°•ì¸í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591590, 5.0d); //À§´ëÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
+            percentageInfo.put(2591590, 5.0d); //ìœ„ëŒ€í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591590, 1.0d); //À§´ëÇÑ ·ç½ÃµåÀÇ ¼Ò¿ï
+            percentageInfo.put(2591590, 1.0d); //ìœ„ëŒ€í•œ ë£¨ì‹œë“œì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2437478() { //ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2437478() { //íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591611, 15.0d); //±â¿îÂù ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591612, 15.0d); //³¯·ÆÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591613, 15.0d); //ÃÑ¸íÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591614, 15.0d); //³î¶ó¿î ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591615, 15.0d); //È­·ÁÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591616, 8.0d); //°­·ÂÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591617, 8.0d); //ºû³ª´Â ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
-        percentageInfo.put(2591618, 8.0d); //°­ÀÎÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
+        percentageInfo.put(2591611, 15.0d); //ê¸°ìš´ì°¬ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591612, 15.0d); //ë‚ ë µí•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591613, 15.0d); //ì´ëª…í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591614, 15.0d); //ë†€ë¼ìš´ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591615, 15.0d); //í™”ë ¤í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591616, 8.0d); //ê°•ë ¥í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591617, 8.0d); //ë¹›ë‚˜ëŠ” íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
+        percentageInfo.put(2591618, 8.0d); //ê°•ì¸í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591619, 5.0d); //À§´ëÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591619, 5.0d); //ìœ„ëŒ€í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591619, 1.0d); //À§´ëÇÑ ÆÄÇ®¶óÅõ½ºÀÇ ¼Ò¿ï
+            percentageInfo.put(2591619, 1.0d); //ìœ„ëŒ€í•œ íŒŒí’€ë¼íˆ¬ìŠ¤ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2438396() { //ÀªÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2438396() { //ìœŒì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591632, 15.0d); //±â¿îÂù ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591633, 15.0d); //³¯·ÆÇÑ ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591634, 15.0d); //ÃÑ¸íÇÑ ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591635, 15.0d); //³î¶ó¿î ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591636, 15.0d); //È­·ÁÇÑ ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591637, 8.0d); //°­·ÂÇÑ ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591638, 8.0d); //ºû³ª´Â ÀªÀÇ ¼Ò¿ï
-        percentageInfo.put(2591639, 8.0d); //°­ÀÎÇÑ ÀªÀÇ ¼Ò¿ï
+        percentageInfo.put(2591632, 15.0d); //ê¸°ìš´ì°¬ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591633, 15.0d); //ë‚ ë µí•œ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591634, 15.0d); //ì´ëª…í•œ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591635, 15.0d); //ë†€ë¼ìš´ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591636, 15.0d); //í™”ë ¤í•œ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591637, 8.0d); //ê°•ë ¥í•œ ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591638, 8.0d); //ë¹›ë‚˜ëŠ” ìœŒì˜ ì†Œìš¸
+        percentageInfo.put(2591639, 8.0d); //ê°•ì¸í•œ ìœŒì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591640, 5.0d); //À§´ëÇÑ ÀªÀÇ ¼Ò¿ï
+            percentageInfo.put(2591640, 5.0d); //ìœ„ëŒ€í•œ ìœŒì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591640, 1.0d); //À§´ëÇÑ ÀªÀÇ ¼Ò¿ï
+            percentageInfo.put(2591640, 1.0d); //ìœ„ëŒ€í•œ ìœŒì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2439567() { //Áø Èú¶óÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2439567() { //ì§„ íë¼ì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591651, 15.0d); //±â¿îÂù Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591652, 15.0d); //³¯·ÆÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591653, 15.0d); //ÃÑ¸íÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591654, 15.0d); //³î¶ó¿î Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591655, 15.0d); //È­·ÁÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591656, 8.0d); //°­·ÂÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591657, 8.0d); //ºû³ª´Â Áø Èú¶óÀÇ ¼Ò¿ï
-        percentageInfo.put(2591658, 8.0d); //°­ÀÎÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
+        percentageInfo.put(2591651, 15.0d); //ê¸°ìš´ì°¬ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591652, 15.0d); //ë‚ ë µí•œ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591653, 15.0d); //ì´ëª…í•œ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591654, 15.0d); //ë†€ë¼ìš´ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591655, 15.0d); //í™”ë ¤í•œ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591656, 8.0d); //ê°•ë ¥í•œ ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591657, 8.0d); //ë¹›ë‚˜ëŠ” ì§„ íë¼ì˜ ì†Œìš¸
+        percentageInfo.put(2591658, 8.0d); //ê°•ì¸í•œ ì§„ íë¼ì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591659, 5.0d); //À§´ëÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
+            percentageInfo.put(2591659, 5.0d); //ìœ„ëŒ€í•œ ì§„ íë¼ì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591659, 1.0d); //À§´ëÇÑ Áø Èú¶óÀÇ ¼Ò¿ï
+            percentageInfo.put(2591659, 1.0d); //ìœ„ëŒ€í•œ ì§„ íë¼ì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2439568() { //µáÄÌÀÇ ¼Ò¿ï Á¶°¢
+    public void consume_2439568() { //ë“„ì¼ˆì˜ ì†Œìš¸ ì¡°ê°
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591668, 15.0d); //±â¿îÂù µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591669, 15.0d); //³¯·ÆÇÑ µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591670, 15.0d); //ÃÑ¸íÇÑ µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591671, 15.0d); //³î¶ó¿î µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591672, 15.0d); //È­·ÁÇÑ µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591673, 8.0d); //°­·ÂÇÑ µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591674, 8.0d); //ºû³ª´Â µáÄÌÀÇ ¼Ò¿ï
-        percentageInfo.put(2591675, 8.0d); //°­ÀÎÇÑ µáÄÌÀÇ ¼Ò¿ï
+        percentageInfo.put(2591668, 15.0d); //ê¸°ìš´ì°¬ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591669, 15.0d); //ë‚ ë µí•œ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591670, 15.0d); //ì´ëª…í•œ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591671, 15.0d); //ë†€ë¼ìš´ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591672, 15.0d); //í™”ë ¤í•œ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591673, 8.0d); //ê°•ë ¥í•œ ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591674, 8.0d); //ë¹›ë‚˜ëŠ” ë“„ì¼ˆì˜ ì†Œìš¸
+        percentageInfo.put(2591675, 8.0d); //ê°•ì¸í•œ ë“„ì¼ˆì˜ ì†Œìš¸
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591676, 5.0d); //À§´ëÇÑ µáÄÌÀÇ ¼Ò¿ï
+            percentageInfo.put(2591676, 5.0d); //ìœ„ëŒ€í•œ ë“„ì¼ˆì˜ ì†Œìš¸
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591676, 1.0d); //À§´ëÇÑ µáÄÌÀÇ ¼Ò¿ï
+            percentageInfo.put(2591676, 1.0d); //ìœ„ëŒ€í•œ ë“„ì¼ˆì˜ ì†Œìš¸
             change_soul_piece(percentageInfo);
         }
     }
@@ -667,10 +667,10 @@ public class SoulPiece extends ScriptEngineNPC {
             sb.append("\r\n#i").append(pKey).append(":# #t").append(pKey).append("#(").append(Math.round(pInfo.get(pKey))).append("%)");
         }
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10°³#k¸¦ ¸ğÀ¸¸é ¾Æ·¡ÀÇ ¾ÆÀÌÅÛ Áß 1Á¾À¸·Î ±³È¯ÇÒ ¼ö ÀÖ´Ù³×.\r\n\r\n#b#e<°¢ ¼Ò¿ïÀÇ µîÀå È®·ü>#n#k#b" + sb.toString());
+            self.say("#b#t" + itemID + "##k \r\n#r10ê°œ#kë¥¼ ëª¨ìœ¼ë©´ ì•„ë˜ì˜ ì•„ì´í…œ ì¤‘ 1ì¢…ìœ¼ë¡œ êµí™˜í•  ìˆ˜ ìˆë‹¤ë„¤.\r\n\r\n#b#e<ê° ì†Œìš¸ì˜ ë“±ì¥ í™•ë¥ >#n#k#b" + sb.toString());
             return;
         }
-        if (1 == self.askAccept("#b#t" + itemID + "##k 10°³¸¦ ¼ÒºñÇÏ¿© ¼Ò¿ï ¾ÆÀÌÅÛÀ¸·Î ±³È¯ÇÒÅÙ°¡?\r\n\r\n#b#e<°¢ ¼Ò¿ïÀÇ µîÀå È®·ü>#n#k#b" + sb.toString())) {
+        if (1 == self.askAccept("#b#t" + itemID + "##k 10ê°œë¥¼ ì†Œë¹„í•˜ì—¬ ì†Œìš¸ ì•„ì´í…œìœ¼ë¡œ êµí™˜í• í…ê°€?\r\n\r\n#b#e<ê° ì†Œìš¸ì˜ ë“±ì¥ í™•ë¥ >#n#k#b" + sb.toString())) {
             List<Integer> rKeys = new ArrayList<>(pInfo.keySet());
             Collections.shuffle(rKeys);
             double percent = 0.0;
@@ -691,24 +691,24 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("¿ÀÈ£~ #b#t" + vou + "##kÀÌ ³ª¿Ô±º.\r\n¿ä±äÇÏ°Ô ¾²°Ô³ª. Å©Å©Å©...");
+                    self.sayOk("ì˜¤í˜¸~ #b#t" + vou + "##kì´ ë‚˜ì™”êµ°.\r\nìš”ê¸´í•˜ê²Œ ì“°ê²Œë‚˜. í¬í¬í¬...");
                 } else {
-                    self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÏ±º. È®ÀÎÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ°Ô³Ä.");
+                    self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•˜êµ°. í™•ì¸í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ê²Œëƒ.");
                 }
             } else {
-                self.sayOk("Àá½Ã ¿À·ù°¡ ¹ß»ıÇß±º ³ªÁß¿¡ ´Ù½Ã ½ÃµµÇØÁÖ°Ô³ª...");
+                self.sayOk("ì ì‹œ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆêµ° ë‚˜ì¤‘ì— ë‹¤ì‹œ ì‹œë„í•´ì£¼ê²Œë‚˜...");
             }
         } else {
-            self.sayOk("½ÅÁßÇÑ °Íµµ ³ª»ÚÁø ¾ÊÁö.\r\nÇÏÁö¸¸ ¼Ò¿ïÀº °­·ÂÇÑ ¾ÆÀÌÅÛÀÌ´Ï Àß »ı°¢ÇØ º¸°Ô...");
+            self.sayOk("ì‹ ì¤‘í•œ ê²ƒë„ ë‚˜ì˜ì§„ ì•Šì§€.\r\ní•˜ì§€ë§Œ ì†Œìš¸ì€ ê°•ë ¥í•œ ì•„ì´í…œì´ë‹ˆ ì˜ ìƒê°í•´ ë³´ê²Œ...");
         }
     }
 
     public void change_soul_piece_sunday(HashMap<Integer, Double> pInfo) {
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10°³#k¸¦ ¸ğÀ¸¸é ¾Æ·¡ÀÇ ¾ÆÀÌÅÛ Áß 1Á¾À¸·Î ±³È¯ÇÒ ¼ö ÀÖ´Ù³×.");
+            self.say("#b#t" + itemID + "##k \r\n#r10ê°œ#kë¥¼ ëª¨ìœ¼ë©´ ì•„ë˜ì˜ ì•„ì´í…œ ì¤‘ 1ì¢…ìœ¼ë¡œ êµí™˜í•  ìˆ˜ ìˆë‹¤ë„¤.");
             return;
         }
-        if (1 == self.askAccept("#r<¼±µ¥ÀÌ ¸ŞÀÌÇÃ> À§´ëÇÑ ¼Ò¿ï µîÀåÈ®·ü 5¹è!#k\r\n#b#t" + itemID + "##k 10°³¸¦ ¼ÒºñÇÏ¿© ¼Ò¿ï ¾ÆÀÌÅÛÀ¸·Î ±³È¯ÇÒÅÙ°¡?")) {
+        if (1 == self.askAccept("#r<ì„ ë°ì´ ë©”ì´í”Œ> ìœ„ëŒ€í•œ ì†Œìš¸ ë“±ì¥í™•ë¥  5ë°°!#k\r\n#b#t" + itemID + "##k 10ê°œë¥¼ ì†Œë¹„í•˜ì—¬ ì†Œìš¸ ì•„ì´í…œìœ¼ë¡œ êµí™˜í• í…ê°€?")) {
             List<Integer> rKeys = new ArrayList<>(pInfo.keySet());
             Collections.shuffle(rKeys);
             double percent = 0.0;
@@ -729,15 +729,15 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("¿ÀÈ£~ #b#t" + vou + "##kÀÌ ³ª¿Ô±º.\r\n¿ä±äÇÏ°Ô ¾²°Ô³ª. Å©Å©Å©...");
+                    self.sayOk("ì˜¤í˜¸~ #b#t" + vou + "##kì´ ë‚˜ì™”êµ°.\r\nìš”ê¸´í•˜ê²Œ ì“°ê²Œë‚˜. í¬í¬í¬...");
                 } else {
-                    self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯ °ø°£ÀÌ ºÎÁ·ÇÏ±º. È®ÀÎÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ°Ô³Ä.");
+                    self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ  ê³µê°„ì´ ë¶€ì¡±í•˜êµ°. í™•ì¸í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ê²Œëƒ.");
                 }
             } else {
-                self.sayOk("Àá½Ã ¿À·ù°¡ ¹ß»ıÇß±º ³ªÁß¿¡ ´Ù½Ã ½ÃµµÇØÁÖ°Ô³ª...");
+                self.sayOk("ì ì‹œ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆêµ° ë‚˜ì¤‘ì— ë‹¤ì‹œ ì‹œë„í•´ì£¼ê²Œë‚˜...");
             }
         } else {
-            self.sayOk("½ÅÁßÇÑ °Íµµ ³ª»ÚÁø ¾ÊÁö.\r\nÇÏÁö¸¸ ¼Ò¿ïÀº °­·ÂÇÑ ¾ÆÀÌÅÛÀÌ´Ï Àß »ı°¢ÇØ º¸°Ô...");
+            self.sayOk("ì‹ ì¤‘í•œ ê²ƒë„ ë‚˜ì˜ì§„ ì•Šì§€.\r\ní•˜ì§€ë§Œ ì†Œìš¸ì€ ê°•ë ¥í•œ ì•„ì´í…œì´ë‹ˆ ì˜ ìƒê°í•´ ë³´ê²Œ...");
         }
     }
 

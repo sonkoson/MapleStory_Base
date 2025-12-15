@@ -12,7 +12,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003150, 1);
         } else {
-            getPlayer().dropMessage(5, "270·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "270ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -22,7 +22,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003000, 2);
         } else {
-            getPlayer().dropMessage(5, "270·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "270ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 }

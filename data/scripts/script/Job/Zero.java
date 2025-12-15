@@ -31,58 +31,58 @@ public class Zero extends ScriptEngineNPC {
         }
 
         if (curLv != 10) {
-            self.sayReplacedNpc("ÀÌÁ¦ºÎÅÍ ¿ì¸®¸¦ ´õ ¼ºÀå ½ÃÅ°±â À§ÇØ¼­´Â Æ¯º°ÇÑ Àç·á°¡ ÇÊ¿äÇØ.", 2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#ºñ½Ñ ¸öÀÌ±¸³ª¡¦¡¦ ¿ì¸®¡¦¡¦", 2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì´ì œë¶€í„° ìš°ë¦¬ë¥¼ ë” ì„±ì¥ ì‹œí‚¤ê¸° ìœ„í•´ì„œëŠ” íŠ¹ë³„í•œ ì¬ë£Œê°€ í•„ìš”í•´.", 2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face1#ë¹„ì‹¼ ëª¸ì´êµ¬ë‚˜â€¦â€¦ ìš°ë¦¬â€¦â€¦", 2400010, 0, ScriptMessageFlag.Scenario);
         }
 
         int v0 = -1;
         if (getPlayer().getOneInfoQuestInteger(40981, "save_genesis") == 1) {
             if (curLv != 10) {
-                v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L3# Á¦³×½Ã½º ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ ¾ò´Â´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
+                v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L3# ì œë„¤ì‹œìŠ¤ ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ ì–»ëŠ”ë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
             } else {
-                v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L3# ÀÌÀü ´Ü°èÀÇ ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ ÀåÂøÇÑ´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
+                v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L3# ì´ì „ ë‹¨ê³„ì˜ ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ ì¥ì°©í•œë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
             }
         } else if (curLv == 7) {
             if (level >= 200) {
-                v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L0# ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ 8ÇüÀ¸·Î ¼ºÀå½ÃÅ²´Ù.#l\r\n#L1# ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ 9ÇüÀ¸·Î ¼ºÀå½ÃÅ²´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
+                v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L0# ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ 8í˜•ìœ¼ë¡œ ì„±ì¥ì‹œí‚¨ë‹¤.#l\r\n#L1# ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ 9í˜•ìœ¼ë¡œ ì„±ì¥ì‹œí‚¨ë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
             } else {
-                v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L0# ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ 8ÇüÀ¸·Î ¼ºÀå½ÃÅ²´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
+                v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L0# ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ 8í˜•ìœ¼ë¡œ ì„±ì¥ì‹œí‚¨ë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
             }
         } else if (curLv == 8) {
-            v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L1# ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ 9ÇüÀ¸·Î ¼ºÀå½ÃÅ²´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
+            v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L1# ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ 9í˜•ìœ¼ë¡œ ì„±ì¥ì‹œí‚¨ë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
         } else if (curLv == 9) {
-            v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L2# ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ 10ÇüÀ¸·Î ¼ºÀå½ÃÅ²´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
+            v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L2# ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ 10í˜•ìœ¼ë¡œ ì„±ì¥ì‹œí‚¨ë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
         } else if (curLv == 10) {
-            v0 = self.askMenuReplacedNpc("ÀÚ, #h0#. ¾î¶»°Ô ÇÏ°Ú¾î?\r\n\r\n#b#L3# ÀÌÀü ´Ü°èÀÇ ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ ÀåÂøÇÑ´Ù.#l\r\n#L999# ±×¸¸µĞ´Ù.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
+            v0 = self.askMenuReplacedNpc("ì, #h0#. ì–´ë–»ê²Œ í•˜ê² ì–´?\r\n\r\n#b#L3# ì´ì „ ë‹¨ê³„ì˜ ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ ì¥ì°©í•œë‹¤.#l\r\n#L999# ê·¸ë§Œë‘”ë‹¤.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
         }
 
         if (v0 == 0) {
-            self.sayReplacedNpc("¼ºÀåÇÏ±â À§ÇØ¼­´Â #t4310216#°¡ 1°³ ÇÊ¿äÇØ.", 2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì„±ì¥í•˜ê¸° ìœ„í•´ì„œëŠ” #t4310216#ê°€ 1ê°œ í•„ìš”í•´.", 2400009, 0, ScriptMessageFlag.Scenario);
             getPlayer().openInheritanceUpgrade(8, 4310216, 1);
         } else if (v0 == 1) {
-            self.sayReplacedNpc("¼ºÀåÇÏ±â À§ÇØ¼­´Â #t4310217#°¡ 1°³ ÇÊ¿äÇØ.", 2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì„±ì¥í•˜ê¸° ìœ„í•´ì„œëŠ” #t4310217#ê°€ 1ê°œ í•„ìš”í•´.", 2400009, 0, ScriptMessageFlag.Scenario);
             getPlayer().openInheritanceUpgrade(9, 4310217, 1);
         } else if (v0 == 2) {
-            self.sayReplacedNpc("Á¦³×½Ã½º ¹«±â¸¦ ¾ò±â À§ÇØ¼­´Â #t4310260#°¡ 1°³ ÇÊ¿äÇØ.", 2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì–»ê¸° ìœ„í•´ì„œëŠ” #t4310260#ê°€ 1ê°œ í•„ìš”í•´.", 2400009, 0, ScriptMessageFlag.Scenario);
             if (!getPlayer().haveItem(4310260)) {
-                self.sayReplacedNpc("°ËÀº ¸¶¹ı»ç°¡ ³²±ä ÈçÀûÀ» µû¶ó°¡¸é #b#t4310260##k¸¦ ½ÀµæÇÒ ¼ö ÀÖÀ»°Å¾ß.", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("Âü°í·Î #t4310260#¸¦ »ç¿ëÇÑ ¼ºÀåÀº Áö±İ±îÁö¿Í´Â ´Ù¸¥ Á¡ÀÌ ¸¹¾Æ!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#bÁ¦³×½Ã½º ¹«±â#k´Â ÀÌÀü ´Ü°èÀÇ ¹«±â¿¡¼­ ÀáÀç´É·Â, ¿¡µğ¼Å³Î ÀáÀç´É·Â, Ãß°¡¿É¼ÇÀ» Á¦¿ÜÇÏ°í´Â Àü¼öµÇÁö ¾Ê°í Æ¯º°ÇÑ ¿É¼ÇÀ» °¡Áö°í ÀÖ¾î.\r\n#r- ÁÖ¹®ÀÇ ÈçÀû 15% °ø°İ·Â(Èû) ÁÖ¹®¼­·Î ¾÷±×·¹ÀÌµå °¡´É È½¼ö ¸ğµÎ ¼Ò¸ğ\r\n- ½ºÅ¸Æ÷½º 22¼º\r\n- À¯´ÏÅ© ÀáÀç´É·Â ¹× ¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·Â º¸À¯(Àü¼öÇÏÁö ¾ÊÀ» °æ¿ì)\r\n-ÀåÂø ½Ã <ÆÄ±«ÀÇ ¾â´Ù¹Ù¿ÀÆ®>, <Ã¢Á¶ÀÇ ¾ÆÀÌ¿Â> ½ºÅ³ È¹µæ\r\n- ÁÖ¹®¼­ ¹× ½ºÅ¸Æ÷½º °­È­ ºÒ°¡", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("¶Ç Á¦³×½Ã½º ¹«±â¸¦ ¿Ï¼ºÇÑ ÈÄ¿¡´Â ¹«±â ¼ºÀå ¹öÆ°À¸·Î ÀÌÀü ´Ü°è¿Í Á¦³×½Ã½º ¹«±â¸¦ ¿À°¥ ¼ö ÀÖÀ¸´Ï Á¦³×½Ã½º ¹«±â·Î °­È­ÇÏ´Â °ÍÀ» °í¹ÎÇÏÁö ¾Ê¾Æµµ µÉ°Å¾ß.\r\n´Ü, ±³Ã¼ÇÏ´Âµ¥ ÈûÀÌ ¸¹ÀÌ ÇÊ¿äÇØ¼­ ÇÑ¹ø ±³Ã¼ÇÑ ÈÄ 10ºĞ µ¿¾ÈÀº ±³Ã¼ÇÒ ¼ö ¾ø¾î.", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("¿­½ÉÈ÷ ³ë·ÂÇØ¼­ #b#t4310260##k¸¦ ¾ò±â¸¦ ¹Ù¶ö°Ô.", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("ê²€ì€ ë§ˆë²•ì‚¬ê°€ ë‚¨ê¸´ í”ì ì„ ë”°ë¼ê°€ë©´ #b#t4310260##kë¥¼ ìŠµë“í•  ìˆ˜ ìˆì„ê±°ì•¼.", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("ì°¸ê³ ë¡œ #t4310260#ë¥¼ ì‚¬ìš©í•œ ì„±ì¥ì€ ì§€ê¸ˆê¹Œì§€ì™€ëŠ” ë‹¤ë¥¸ ì ì´ ë§ì•„!", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("#bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#këŠ” ì´ì „ ë‹¨ê³„ì˜ ë¬´ê¸°ì—ì„œ ì ì¬ëŠ¥ë ¥, ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥, ì¶”ê°€ì˜µì…˜ì„ ì œì™¸í•˜ê³ ëŠ” ì „ìˆ˜ë˜ì§€ ì•Šê³  íŠ¹ë³„í•œ ì˜µì…˜ì„ ê°€ì§€ê³  ìˆì–´.\r\n#r- ì£¼ë¬¸ì˜ í”ì  15% ê³µê²©ë ¥(í˜) ì£¼ë¬¸ì„œë¡œ ì—…ê·¸ë ˆì´ë“œ ê°€ëŠ¥ íšŸìˆ˜ ëª¨ë‘ ì†Œëª¨\r\n- ìŠ¤íƒ€í¬ìŠ¤ 22ì„±\r\n- ìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥ ë° ì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ ë³´ìœ (ì „ìˆ˜í•˜ì§€ ì•Šì„ ê²½ìš°)\r\n-ì¥ì°© ì‹œ <íŒŒê´´ì˜ ì–„ë‹¤ë°”ì˜¤íŠ¸>, <ì°½ì¡°ì˜ ì•„ì´ì˜¨> ìŠ¤í‚¬ íšë“\r\n- ì£¼ë¬¸ì„œ ë° ìŠ¤íƒ€í¬ìŠ¤ ê°•í™” ë¶ˆê°€", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("ë˜ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì™„ì„±í•œ í›„ì—ëŠ” ë¬´ê¸° ì„±ì¥ ë²„íŠ¼ìœ¼ë¡œ ì´ì „ ë‹¨ê³„ì™€ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì˜¤ê°ˆ ìˆ˜ ìˆìœ¼ë‹ˆ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¡œ ê°•í™”í•˜ëŠ” ê²ƒì„ ê³ ë¯¼í•˜ì§€ ì•Šì•„ë„ ë ê±°ì•¼.\r\në‹¨, êµì²´í•˜ëŠ”ë° í˜ì´ ë§ì´ í•„ìš”í•´ì„œ í•œë²ˆ êµì²´í•œ í›„ 10ë¶„ ë™ì•ˆì€ êµì²´í•  ìˆ˜ ì—†ì–´.", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("ì—´ì‹¬íˆ ë…¸ë ¥í•´ì„œ #b#t4310260##kë¥¼ ì–»ê¸°ë¥¼ ë°”ë„ê²Œ.", 2400009, 0, ScriptMessageFlag.Scenario);
                 //getPlayer().openInheritanceUpgrade(10, 4310260, 1);
             } else {
-                self.sayReplacedNpc("°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #b#t4310260##k¸¦ ±¸ÇÏ´Ù´Ï!\r\n´ë´ÜÇÏ±¸³ª ³Ê!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#b#t4310260##k¸¦ ÀÌ¿ëÇÏ¸é ¿ì¸®¸¦ #bÁ¦³×½Ã½º ¹«±â#k·Î °­È­ÇÒ ¼ö ÀÖ¾î!\r\nÇÏÁö¸¸ Áö±İ±îÁöÀÇ °­È­¿Í´Â ´Ù¸¥ Á¡ÀÌ ¸¹¾Æ!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#bÁ¦³×½Ã½º ¹«±â#k´Â ÀÌÀü ´Ü°èÀÇ ¹«±â¿¡¼­ ÀáÀç´É·Â, ¿¡µğ¼Å³Î ÀáÀç´É·Â, Ãß°¡¿É¼ÇÀ» Á¦¿ÜÇÏ°í´Â Àü¼öµÇÁö ¾Ê°í Æ¯º°ÇÑ ¿É¼ÇÀ» °¡Áö°í ÀÖ¾î.\r\n#r- ÁÖ¹®ÀÇ ÈçÀû 15% °ø°İ·Â(Èû) ÁÖ¹®¼­·Î ¾÷±×·¹ÀÌµå °¡´É È½¼ö ¸ğµÎ ¼Ò¸ğ\r\n- ½ºÅ¸Æ÷½º 22¼º\r\n- À¯´ÏÅ© ÀáÀç´É·Â ¹× ¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·Â º¸À¯(Àü¼öÇÏÁö ¾ÊÀ» °æ¿ì)\r\n-ÀåÂø ½Ã <ÆÄ±«ÀÇ ¾â´Ù¹Ù¿ÀÆ®>, <Ã¢Á¶ÀÇ ¾ÆÀÌ¿Â> ½ºÅ³ È¹µæ\r\n- ÁÖ¹®¼­ ¹× ½ºÅ¸Æ÷½º °­È­ ºÒ°¡", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("¶Ç Á¦³×½Ã½º ¹«±â¸¦ ¿Ï¼ºÇÑ ÈÄ¿¡´Â ¹«±â ¼ºÀå ¹öÆ°À¸·Î ÀÌÀü ´Ü°è¿Í Á¦³×½Ã½º ¹«±â¸¦ ¿À°¥ ¼ö ÀÖÀ¸´Ï Á¦³×½Ã½º ¹«±â·Î °­È­ÇÏ´Â °ÍÀ» °í¹ÎÇÏÁö ¾Ê¾Æµµ µÉ°Å¾ß.\r\n´Ü, ±³Ã¼ÇÏ´Âµ¥ ÈûÀÌ ¸¹ÀÌ ÇÊ¿äÇØ¼­ ÇÑ¹ø ±³Ã¼ÇÑ ÈÄ 10ºĞ µ¿¾ÈÀº ±³Ã¼ÇÒ ¼ö ¾ø¾î.", 2400009, 0, ScriptMessageFlag.Scenario);
-                int v1 = self.askMenuReplacedNpc("#rÀáÀç´É·Â#kÀÇ °æ¿ì ³×°¡ ¿øÇÑ´Ù¸é ·£´ıÇÑ #bÀ¯´ÏÅ© ÀáÀç´É·Â#kÀ¸·Î º¯È­ÇÒ°Å¾ß. #bÀ¯´ÏÅ© ÀáÀç´É·Â#kÀ¸·Î º¯È­ÇÏ°Ú¾î?\r\n\r\n#b#L0#À¯´ÏÅ© ÀáÀç´É·ÂÀ¸·Î º¯°æÇÑ´Ù.#l\r\n#L1#±âÁ¸ ÀáÀç´É·ÂÀ» ±×´ë·Î À¯ÁöÇÑ´Ù.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                int v2 = self.askMenuReplacedNpc("#r¿¡µğ¼Å³Î ÀáÀç´É·Â#kÀÇ °æ¿ì ³×°¡ ¿øÇÑ´Ù¸é ·£´ıÇÑ #b¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç ¿É¼Ç#kÀ¸·Î º¯È­ÇÒ°Å¾ß. #b¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·Â#kÀ¸·Î º¯È­ÇÏ°Ú¾î?\r\n\r\n#b#L0#¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·ÂÀ¸·Î º¯°æÇÑ´Ù.#l\r\n#L1#±âÁ¸ ¿¡µğ¼Å³Î ÀáÀç´É·ÂÀ» ±×´ë·Î À¯ÁöÇÑ´Ù.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                self.sayReplacedNpc("#bÃß°¡¿É¼Ç#kÀº ±×´ë·Î Àü¼öµÇ´Ï °ÆÁ¤ÇÏÁö¸¶!", 2400009, 0, ScriptMessageFlag.Scenario);
-                String v4 = "ÀÚ! ÀÌÁ¦ Á¤¸» ¸¶Áö¸·ÀÌ¾ß!\r\n#t4310260#¸¦ ¼ÒºñÇØ #bÁ¦³×½Ã½º ¶óÇÇ½º¿Í ¶óÁñ¸®#k¸¦ ¾ò°Ú¾î?\r\n";
-                v4 += "\r\n#rÀáÀç´É·Â ¿É¼Ç À¯´ÏÅ©·Î Àç¼³Á¤ ¿©ºÎ : #e" + (v1 == 0 ? "Àç¼³Á¤" : "Àç¼³Á¤ÇÏÁö ¾ÊÀ½") + "#n\r\n";
-                v4 += "#r¿¡µğ¼Å³Î ÀáÀç´É·Â ¿É¼Ç ¿¡ÇÈÀ¸·Î Àç¼³Á¤ ¿©ºÎ : #e" + (v2 == 0 ? "Àç¼³Á¤" : "Àç¼³Á¤ÇÏÁö ¾ÊÀ½") + "#n\r\n";
-                v4 += "\r\n#b#L0#Á¦³×½Ã½º ¶óÇÇ½º¿Í ¶óÁñ¸®¸¦ ¾ò´Â´Ù.#l\r\n#L1#±×¸¸µĞ´Ù.#l";
+                self.sayReplacedNpc("ê²€ì€ ë§ˆë²•ì‚¬ì˜ í˜ì´ ë‹´ê¸´ #b#t4310260##kë¥¼ êµ¬í•˜ë‹¤ë‹ˆ!\r\nëŒ€ë‹¨í•˜êµ¬ë‚˜ ë„ˆ!", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("#b#t4310260##kë¥¼ ì´ìš©í•˜ë©´ ìš°ë¦¬ë¥¼ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¡œ ê°•í™”í•  ìˆ˜ ìˆì–´!\r\ní•˜ì§€ë§Œ ì§€ê¸ˆê¹Œì§€ì˜ ê°•í™”ì™€ëŠ” ë‹¤ë¥¸ ì ì´ ë§ì•„!", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("#bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#këŠ” ì´ì „ ë‹¨ê³„ì˜ ë¬´ê¸°ì—ì„œ ì ì¬ëŠ¥ë ¥, ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥, ì¶”ê°€ì˜µì…˜ì„ ì œì™¸í•˜ê³ ëŠ” ì „ìˆ˜ë˜ì§€ ì•Šê³  íŠ¹ë³„í•œ ì˜µì…˜ì„ ê°€ì§€ê³  ìˆì–´.\r\n#r- ì£¼ë¬¸ì˜ í”ì  15% ê³µê²©ë ¥(í˜) ì£¼ë¬¸ì„œë¡œ ì—…ê·¸ë ˆì´ë“œ ê°€ëŠ¥ íšŸìˆ˜ ëª¨ë‘ ì†Œëª¨\r\n- ìŠ¤íƒ€í¬ìŠ¤ 22ì„±\r\n- ìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥ ë° ì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ ë³´ìœ (ì „ìˆ˜í•˜ì§€ ì•Šì„ ê²½ìš°)\r\n-ì¥ì°© ì‹œ <íŒŒê´´ì˜ ì–„ë‹¤ë°”ì˜¤íŠ¸>, <ì°½ì¡°ì˜ ì•„ì´ì˜¨> ìŠ¤í‚¬ íšë“\r\n- ì£¼ë¬¸ì„œ ë° ìŠ¤íƒ€í¬ìŠ¤ ê°•í™” ë¶ˆê°€", 2400009, 0, ScriptMessageFlag.Scenario);
+                self.sayReplacedNpc("ë˜ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì™„ì„±í•œ í›„ì—ëŠ” ë¬´ê¸° ì„±ì¥ ë²„íŠ¼ìœ¼ë¡œ ì´ì „ ë‹¨ê³„ì™€ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¥¼ ì˜¤ê°ˆ ìˆ˜ ìˆìœ¼ë‹ˆ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ë¡œ ê°•í™”í•˜ëŠ” ê²ƒì„ ê³ ë¯¼í•˜ì§€ ì•Šì•„ë„ ë ê±°ì•¼.\r\në‹¨, êµì²´í•˜ëŠ”ë° í˜ì´ ë§ì´ í•„ìš”í•´ì„œ í•œë²ˆ êµì²´í•œ í›„ 10ë¶„ ë™ì•ˆì€ êµì²´í•  ìˆ˜ ì—†ì–´.", 2400009, 0, ScriptMessageFlag.Scenario);
+                int v1 = self.askMenuReplacedNpc("#rì ì¬ëŠ¥ë ¥#kì˜ ê²½ìš° ë„¤ê°€ ì›í•œë‹¤ë©´ ëœë¤í•œ #bìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥#kìœ¼ë¡œ ë³€í™”í• ê±°ì•¼. #bìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥#kìœ¼ë¡œ ë³€í™”í•˜ê² ì–´?\r\n\r\n#b#L0#ìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥ìœ¼ë¡œ ë³€ê²½í•œë‹¤.#l\r\n#L1#ê¸°ì¡´ ì ì¬ëŠ¥ë ¥ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•œë‹¤.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                int v2 = self.askMenuReplacedNpc("#rì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥#kì˜ ê²½ìš° ë„¤ê°€ ì›í•œë‹¤ë©´ ëœë¤í•œ #bì—í”½ ì—ë””ì…”ë„ ì ì¬ ì˜µì…˜#kìœ¼ë¡œ ë³€í™”í• ê±°ì•¼. #bì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥#kìœ¼ë¡œ ë³€í™”í•˜ê² ì–´?\r\n\r\n#b#L0#ì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ìœ¼ë¡œ ë³€ê²½í•œë‹¤.#l\r\n#L1#ê¸°ì¡´ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ì„ ê·¸ëŒ€ë¡œ ìœ ì§€í•œë‹¤.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayReplacedNpc("#bì¶”ê°€ì˜µì…˜#kì€ ê·¸ëŒ€ë¡œ ì „ìˆ˜ë˜ë‹ˆ ê±±ì •í•˜ì§€ë§ˆ!", 2400009, 0, ScriptMessageFlag.Scenario);
+                String v4 = "ì! ì´ì œ ì •ë§ ë§ˆì§€ë§‰ì´ì•¼!\r\n#t4310260#ë¥¼ ì†Œë¹„í•´ #bì œë„¤ì‹œìŠ¤ ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬#kë¥¼ ì–»ê² ì–´?\r\n";
+                v4 += "\r\n#rì ì¬ëŠ¥ë ¥ ì˜µì…˜ ìœ ë‹ˆí¬ë¡œ ì¬ì„¤ì • ì—¬ë¶€ : #e" + (v1 == 0 ? "ì¬ì„¤ì •" : "ì¬ì„¤ì •í•˜ì§€ ì•ŠìŒ") + "#n\r\n";
+                v4 += "#rì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ ì˜µì…˜ ì—í”½ìœ¼ë¡œ ì¬ì„¤ì • ì—¬ë¶€ : #e" + (v2 == 0 ? "ì¬ì„¤ì •" : "ì¬ì„¤ì •í•˜ì§€ ì•ŠìŒ") + "#n\r\n";
+                v4 += "\r\n#b#L0#ì œë„¤ì‹œìŠ¤ ë¼í”¼ìŠ¤ì™€ ë¼ì¦ë¦¬ë¥¼ ì–»ëŠ”ë‹¤.#l\r\n#L1#ê·¸ë§Œë‘”ë‹¤.#l";
                 int v3 = self.askMenuReplacedNpc(v4, 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
                 if (v3 == 0) {
                     if (v1 == 0) {
@@ -98,18 +98,18 @@ public class Zero extends ScriptEngineNPC {
             boolean check = false;
             long time = getPlayer().getOneInfoQuestLong(40981, "last_change_time");
             if (time == 0 || System.currentTimeMillis() - time >= (1000 * 60 * 10)) {
-                // 10ºĞ
+                // 10ë¶„
                 check = true;
             }
             if (check) {
                 Item alphaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -20000);
                 Item betaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -20001);
                 if (alphaBefore == null || betaBefore == null) {
-                    self.sayReplacedNpc("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß¾î. °í°´¼¾ÅÍ¿¡ ¹®ÀÇÇØÁÖ°Ú¾î?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayReplacedNpc("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆì–´. ê³ ê°ì„¼í„°ì— ë¬¸ì˜í•´ì£¼ê² ì–´?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
 
-                // ÇöÀç ¹«±â ÀúÀå
+                // í˜„ì¬ ë¬´ê¸° ì €ì¥
                 Equip alpha_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11).copy();
                 Equip beta_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).copy();
 
@@ -143,7 +143,7 @@ public class Zero extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(40981, "save_genesis", "1");
                 getPlayer().updateOneInfo(40981, "last_change_time", String.valueOf(System.currentTimeMillis()));
             } else {
-                self.sayReplacedNpc("ÀÌÀü ¹«±â·Î µ¹¾Æ°¡´Âµ¥ ¸¹Àº ÈûÀÌ ÇÊ¿äÇØ. ¾ÆÁ÷ ½Ã°£ÀÌ ´õ ÇÊ¿äÇÏ´Ï ³ªÁß¿¡ ´Ù½Ã ½ÃµµÇØÁÙ·¡?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayReplacedNpc("ì´ì „ ë¬´ê¸°ë¡œ ëŒì•„ê°€ëŠ”ë° ë§ì€ í˜ì´ í•„ìš”í•´. ì•„ì§ ì‹œê°„ì´ ë” í•„ìš”í•˜ë‹ˆ ë‚˜ì¤‘ì— ë‹¤ì‹œ ì‹œë„í•´ì¤„ë˜?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
             }
         }
     }
@@ -151,9 +151,9 @@ public class Zero extends ScriptEngineNPC {
     public void zero_reinvoke_weapon() {
         int curLv = getPlayer().getOneInfoQuestInteger(40981, "lv");
 
-        self.sayReplacedNpc("#face2#¿ì¿Ó, ÀÌ°Å ¿ÏÀüÈ÷ °¡·ç°¡ µÇ¾î¹ö·ÈÀİ¾Æ? ³Ê, ´ëÃ¼ ³ªÇÑÅ× ¹«½¼ ÁşÀ» ÇÑ °Å¾ß? ÀÌÁ¦ ¾î¶±ÇÏ³Ä°í? ¾î¶±ÇÏ±ä ¹» ¾î¶±ÇØ? ¹«±â°¡ ±úÁ³À¸´Ï ¸ğµç °Ô ³¡, GAME OVERÁö! ±×µ¿¾È Áñ°Å¿ü¾î. ±×·³ ¾È³ç¡¦¡¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("¡¦¶ó°í ÇÏ¸é ¼­¿îÇÏ°ÚÁö? ÇÏÇÏ, ³î¶ú¾î? ÇÏÁö¸¸ ³ªµµ ÀÌ¹ø¿£ ¸¹ÀÌ ³î¶ú´Ù°í. ³ª, ¾Ë°í º¸¸é ¿¹¹ÎÇÑ ³²ÀÚ¾ß. ¼ÒÁßÇÏ°Ô ´Ù·ïÁà~", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("¾îÂ÷ÇÇ ¹«±â´Â ¿ì¸®¸¦ ´ã°í ÀÖ´Â ±×¸©ÀÏ »Ó, ¿ì¸®°¡ ±×´ë·Î ³²¾ÆÀÖ´Ù¸é ¹«±â´Â ¾ğÁ¦µçÁö µÇ»ì¸± ¼ö ÀÖ¾î. ÀÚÀÚ, ±×·³ ½Ã°£ÀÇ ÈûÀ» ¸ğ¾Æ¼­ ÀÌ·¸°Ô¡¦¡¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("#face2#ìš°ì™“, ì´ê±° ì™„ì „íˆ ê°€ë£¨ê°€ ë˜ì–´ë²„ë ¸ì–ì•„? ë„ˆ, ëŒ€ì²´ ë‚˜í•œí…Œ ë¬´ìŠ¨ ì§“ì„ í•œ ê±°ì•¼? ì´ì œ ì–´ë–¡í•˜ëƒê³ ? ì–´ë–¡í•˜ê¸´ ë­˜ ì–´ë–¡í•´? ë¬´ê¸°ê°€ ê¹¨ì¡Œìœ¼ë‹ˆ ëª¨ë“  ê²Œ ë, GAME OVERì§€! ê·¸ë™ì•ˆ ì¦ê±°ì› ì–´. ê·¸ëŸ¼ ì•ˆë…•â€¦â€¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("â€¦ë¼ê³  í•˜ë©´ ì„œìš´í•˜ê² ì§€? í•˜í•˜, ë†€ëì–´? í•˜ì§€ë§Œ ë‚˜ë„ ì´ë²ˆì—” ë§ì´ ë†€ëë‹¤ê³ . ë‚˜, ì•Œê³  ë³´ë©´ ì˜ˆë¯¼í•œ ë‚¨ìì•¼. ì†Œì¤‘í•˜ê²Œ ë‹¤ë¤„ì¤˜~", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("ì–´ì°¨í”¼ ë¬´ê¸°ëŠ” ìš°ë¦¬ë¥¼ ë‹´ê³  ìˆëŠ” ê·¸ë¦‡ì¼ ë¿, ìš°ë¦¬ê°€ ê·¸ëŒ€ë¡œ ë‚¨ì•„ìˆë‹¤ë©´ ë¬´ê¸°ëŠ” ì–¸ì œë“ ì§€ ë˜ì‚´ë¦´ ìˆ˜ ìˆì–´. ìì, ê·¸ëŸ¼ ì‹œê°„ì˜ í˜ì„ ëª¨ì•„ì„œ ì´ë ‡ê²Œâ€¦â€¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
 
         getSc().flushSay();
 
@@ -173,131 +173,131 @@ public class Zero extends ScriptEngineNPC {
         getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(alpha_new));
         getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(beta_new));
 
-        self.sayReplacedNpc("Âº! ¾î¶§. °¨ÂÊ°°Áö? ÀÀ? ¾ğÁ¦µçÁö Àç»ıÀÌ °¡´ÉÇÏ´Ï±î ¸¶À½³õ°í °­È­¸¦ ÇØµµ µÇ°Ú´Ù°í? ±×°Ç¡¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("#face2#¡¦¾î¶»°Ô ±×·± »ı°¢À» ÇÒ ¼ö ÀÖ¾î?! ¹«±â°¡ ±úÁú ¶§ ¿ì¸®µµ ¸¸¸¸Âú°Ô Ãæ°İÀ» ¹Ş´Â´Ü ¸»¾ß! ¹«±â°¡ ±úÁö´Â ¹Ù¶÷¿¡ ¾ó¸¶³ª ³î¶ú´Âµ¥¡¦¡¦", 2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("±×°Ç ¶óÁñ¸® ¸»ÀÌ ¸Â¾Æ. °Ô´Ù°¡ ³Ê¹« °­·ÂÇÑ ¾ÆÀÌÅÛÀº ½Ã°£ÀÇ ÈûÀ¸·Îµµ µÇ»ì¸®´Âµ¥¿¡ ÇÑ°è°¡ ÀÖ¾î. ¾ÕÀ¸·Î´Â Á¶½ÉÇØ!", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("ì¨˜! ì–´ë•Œ. ê°ìª½ê°™ì§€? ì‘? ì–¸ì œë“ ì§€ ì¬ìƒì´ ê°€ëŠ¥í•˜ë‹ˆê¹Œ ë§ˆìŒë†“ê³  ê°•í™”ë¥¼ í•´ë„ ë˜ê² ë‹¤ê³ ? ê·¸ê±´â€¦", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("#face2#â€¦ì–´ë–»ê²Œ ê·¸ëŸ° ìƒê°ì„ í•  ìˆ˜ ìˆì–´?! ë¬´ê¸°ê°€ ê¹¨ì§ˆ ë•Œ ìš°ë¦¬ë„ ë§Œë§Œì°®ê²Œ ì¶©ê²©ì„ ë°›ëŠ”ë‹¨ ë§ì•¼! ë¬´ê¸°ê°€ ê¹¨ì§€ëŠ” ë°”ëŒì— ì–¼ë§ˆë‚˜ ë†€ëëŠ”ë°â€¦â€¦", 2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+        self.sayReplacedNpc("ê·¸ê±´ ë¼ì¦ë¦¬ ë§ì´ ë§ì•„. ê²Œë‹¤ê°€ ë„ˆë¬´ ê°•ë ¥í•œ ì•„ì´í…œì€ ì‹œê°„ì˜ í˜ìœ¼ë¡œë„ ë˜ì‚´ë¦¬ëŠ”ë°ì— í•œê³„ê°€ ìˆì–´. ì•ìœ¼ë¡œëŠ” ì¡°ì‹¬í•´!", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
     }
 
     public void zero_egoequiptalk() {
         int r = Randomizer.rand(1, 34);
         if (r == 1) {
-            self.sayReplacedNpc("³»°¡ Á¦ÀÏ ÁÁ¾ÆÇÏ´Â °Å¡¦? À¸ÀÀ¡¦ ³ª´Â µş±â ÄÉÀÌÅ©°¡ Á¦ÀÏ ÁÁ¾Æ. ³ª¶û °°ÀÌ ¸Ô°í ½Í´Ù¸é... ÀÀ, ³Ê¶ó¸é °°ÀÌ ¸Ô¾îµµ ÁÁ¾Æ.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("³ªµµ, ³ªµµ! µş±â ÄÉÀÌÅ© ³ªµµ ÁÁ¾ÆÇØ!",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#½È¾î! ³ª´Â ¾ËÆÄ¶û µÑÀÌ¡¦ ¾Æ, ¾Æ´Ï ±×·³ ³­ ¾È °¥·¡.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚´ê°€ ì œì¼ ì¢‹ì•„í•˜ëŠ” ê±°â€¦? ìœ¼ì‘â€¦ ë‚˜ëŠ” ë”¸ê¸° ì¼€ì´í¬ê°€ ì œì¼ ì¢‹ì•„. ë‚˜ë‘ ê°™ì´ ë¨¹ê³  ì‹¶ë‹¤ë©´... ì‘, ë„ˆë¼ë©´ ê°™ì´ ë¨¹ì–´ë„ ì¢‹ì•„.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚˜ë„, ë‚˜ë„! ë”¸ê¸° ì¼€ì´í¬ ë‚˜ë„ ì¢‹ì•„í•´!",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face0#ì‹«ì–´! ë‚˜ëŠ” ì•ŒíŒŒë‘ ë‘˜ì´â€¦ ì•„, ì•„ë‹ˆ ê·¸ëŸ¼ ë‚œ ì•ˆ ê°ˆë˜.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 2) {
-            self.sayReplacedNpc("¶óÇÇ½º¿¡ ´ëÇØ¼­ ¾î¶»°Ô »ı°¢ÇÏ³Ä°í? À½¡¦ µ¢Ä¡¸¸ Ä¿´Ù¶õ ¹Ùº¸?",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face2#³Ê¹«ÇØ, ¶óÁñ¸®. ³ª »óÃ³¹Ş¾Ò´Ù°í.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("¾Ñ, Àú±â¿¡ ¾öÃ» ¸ÀÀÖ¾îº¸ÀÌ´Â °í±â°¡!",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("°í±â?! ¾îµğ? ¾îµğ?",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("Èï, ¿ª½Ã ¹Ùº¸¶ó´Ï±î.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë¼í”¼ìŠ¤ì— ëŒ€í•´ì„œ ì–´ë–»ê²Œ ìƒê°í•˜ëƒê³ ? ìŒâ€¦ ë©ì¹˜ë§Œ ì»¤ë‹¤ë€ ë°”ë³´?",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face2#ë„ˆë¬´í•´, ë¼ì¦ë¦¬. ë‚˜ ìƒì²˜ë°›ì•˜ë‹¤ê³ .",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ì•—, ì €ê¸°ì— ì—„ì²­ ë§›ìˆì–´ë³´ì´ëŠ” ê³ ê¸°ê°€!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê³ ê¸°?! ì–´ë””? ì–´ë””?",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("í¥, ì—­ì‹œ ë°”ë³´ë¼ë‹ˆê¹Œ.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 3) {
-            self.sayReplacedNpc("#face1#±×, ±×·¸°Ô ºşÈ÷ ÃÄ´Ùº¸¸é ¾îÂ¾Áö Ã¢ÇÇÇÏ´Ü ¸»¾ß.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face1#ê·¸, ê·¸ë ‡ê²Œ ë¹¤íˆ ì³ë‹¤ë³´ë©´ ì–´ì©ì§€ ì°½í”¼í•˜ë‹¨ ë§ì•¼.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 4) {
-            self.sayReplacedNpc("¾ËÆÄ¸¦ ¼±ÅÃÇÑ ÀÌÀ¯? ±×°Ç¡¦ º­, º°´Ù¸¥ ÀÌÀ¯ ¾ø¾î. ±×³É ¾Æ¹«³ª °ñ¶úÀ» »ÓÀÌ¶ó±¸. È¤½Ã ³×°¡ ¸¶À½¿¡ µé¾î¼­ ±×·¸´Ù´Â Âø°¢Àº ÇÏÁö ¸»¾ÆÁáÀ¸¸é ÁÁ°Ú¾î!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì•ŒíŒŒë¥¼ ì„ íƒí•œ ì´ìœ ? ê·¸ê±´â€¦ ë²¼, ë³„ë‹¤ë¥¸ ì´ìœ  ì—†ì–´. ê·¸ëƒ¥ ì•„ë¬´ë‚˜ ê³¨ëì„ ë¿ì´ë¼êµ¬. í˜¹ì‹œ ë„¤ê°€ ë§ˆìŒì— ë“¤ì–´ì„œ ê·¸ë ‡ë‹¤ëŠ” ì°©ê°ì€ í•˜ì§€ ë§ì•„ì¤¬ìœ¼ë©´ ì¢‹ê² ì–´!",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 5) {
-            self.sayReplacedNpc("#face1#³ª´Â ¹ãÀÌ ½È¾î. È¥ÀÚ ÀÖ´Â °Í¸¸ °°Àº ±âºĞÀÌ µç´Ü ¸»¾ß. ±×·¡µµ ÀÌÁ¨ È¥ÀÚ°¡ ¾Æ´Ï´Ï±î ±¦Âú¾Æ.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("±×·¡±×·¡, ³»°¡ ÀÖÀ¸´Ï±î °ÆÁ¤ÇÏÁö ¸»¶ó±¸.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#³ÊÇÑÅ× ÇÑ ¸» ¾Æ´Ï°Åµç!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face1#ë‚˜ëŠ” ë°¤ì´ ì‹«ì–´. í˜¼ì ìˆëŠ” ê²ƒë§Œ ê°™ì€ ê¸°ë¶„ì´ ë“ ë‹¨ ë§ì•¼. ê·¸ë˜ë„ ì´ì   í˜¼ìê°€ ì•„ë‹ˆë‹ˆê¹Œ ê´œì°®ì•„.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê·¸ë˜ê·¸ë˜, ë‚´ê°€ ìˆìœ¼ë‹ˆê¹Œ ê±±ì •í•˜ì§€ ë§ë¼êµ¬.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face0#ë„ˆí•œí…Œ í•œ ë§ ì•„ë‹ˆê±°ë“ !",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 6) {
-            self.sayReplacedNpc("#face0#µüÈ÷ ³×°¡ ÁÁ¾Æ¼­ °°ÀÌ ÀÖ¾îÁÖ´Â °Ç ¾Æ´Ï¾ß. ±×³É ³ª´Â ³» ÀÇ¹«¸¦ ´ÙÇÏ°í ÀÖ´Â °Í »ÓÀÌ´Ï±î ½Å°æ¾²Áö ¸»¾ÆÁáÀ½ ÁÁ°Ú¾î.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face0#ë”±íˆ ë„¤ê°€ ì¢‹ì•„ì„œ ê°™ì´ ìˆì–´ì£¼ëŠ” ê±´ ì•„ë‹ˆì•¼. ê·¸ëƒ¥ ë‚˜ëŠ” ë‚´ ì˜ë¬´ë¥¼ ë‹¤í•˜ê³  ìˆëŠ” ê²ƒ ë¿ì´ë‹ˆê¹Œ ì‹ ê²½ì“°ì§€ ë§ì•„ì¤¬ìŒ ì¢‹ê² ì–´.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 7) {
-            self.sayReplacedNpc("¾ËÆÄ¿¡ ´ëÇØ¼­ ¾î¶»°Ô »ı°¢ÇÏ³Ä°í? ¾î, ¾î¶»°Ô »ı°¢ÇÏ±ä ¹» ¾î¶»°Ô »ı°¢ÇØ? ¾Æ, ¾ËÆÄ °°Àº °Ç Á¶±İµµ ÁÁ¾ÆÇÏÁö ¾Ê´Â´Ù±¸!",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("ÈåÀ½?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face1#±×, ±×·¸´Ù°í ½È¾îÇÑ´Ù´Â ¶æÀº ¾Æ´Ï´Ï±î¡¦¡¦",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì•ŒíŒŒì— ëŒ€í•´ì„œ ì–´ë–»ê²Œ ìƒê°í•˜ëƒê³ ? ì–´, ì–´ë–»ê²Œ ìƒê°í•˜ê¸´ ë­˜ ì–´ë–»ê²Œ ìƒê°í•´? ì•„, ì•ŒíŒŒ ê°™ì€ ê±´ ì¡°ê¸ˆë„ ì¢‹ì•„í•˜ì§€ ì•ŠëŠ”ë‹¤êµ¬!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("íìŒ?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face1#ê·¸, ê·¸ë ‡ë‹¤ê³  ì‹«ì–´í•œë‹¤ëŠ” ëœ»ì€ ì•„ë‹ˆë‹ˆê¹Œâ€¦â€¦",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 8) {
-            self.sayReplacedNpc("#face0#³»°¡ È­³­ °Í °°´Ù°í? ±×³É ³¯¾¾°¡ º°·Î¶ó¼­ ±×·¡. ±»ÀÌ ³×°¡ ³ª¿¡°Ô ¿À·§µ¿¾È ¸»À» °É¾îÁÖÁö ¾Ê¾Æ¼­ ±×·± °Ô ¾Æ´Ï¶ó±¸!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face0#ë‚´ê°€ í™”ë‚œ ê²ƒ ê°™ë‹¤ê³ ? ê·¸ëƒ¥ ë‚ ì”¨ê°€ ë³„ë¡œë¼ì„œ ê·¸ë˜. êµ³ì´ ë„¤ê°€ ë‚˜ì—ê²Œ ì˜¤ë«ë™ì•ˆ ë§ì„ ê±¸ì–´ì£¼ì§€ ì•Šì•„ì„œ ê·¸ëŸ° ê²Œ ì•„ë‹ˆë¼êµ¬!",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 9) {
-            self.sayReplacedNpc("³»°¡ Á¦ÀÏ ÁÁ¾ÆÇÏ´Â °Ç¡¦ ´ç¿¬È÷ °í±âÁö! ¸ö¿¡ ÁÁ°í ¸Àµµ ÁÁÀº °í±â!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("³ªµµ °í±â ÁÁ¾ÆÇØ. ¸ÀÀÖ¾î.",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("±×·³ ³ª¶û °í±â ¸ÔÀ¸·¯ °¡ÀÚ! ³»°¡ ¿ÏÀü ¸ÀÀÖ°Ô ±¸¿öÁÙ°Ô!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚´ê°€ ì œì¼ ì¢‹ì•„í•˜ëŠ” ê±´â€¦ ë‹¹ì—°íˆ ê³ ê¸°ì§€! ëª¸ì— ì¢‹ê³  ë§›ë„ ì¢‹ì€ ê³ ê¸°!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚˜ë„ ê³ ê¸° ì¢‹ì•„í•´. ë§›ìˆì–´.",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ê·¸ëŸ¼ ë‚˜ë‘ ê³ ê¸° ë¨¹ìœ¼ëŸ¬ ê°€ì! ë‚´ê°€ ì™„ì „ ë§›ìˆê²Œ êµ¬ì›Œì¤„ê²Œ!",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 10) {
-            self.sayReplacedNpc("¶óÁñ¸®¿¡ ´ëÇØ¼­ ¾î¶»°Ô »ı°¢ÇÏ³Ä°í? ¶óÁñ¸®´Â¡¦ Á¤¸» ¹«¼­¿ö. È­³»¸é ¸¶³à°°´Ù°í. ºÁ, Áö±İµµ¡¦ È÷ÀÍ!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë¼ì¦ë¦¬ì— ëŒ€í•´ì„œ ì–´ë–»ê²Œ ìƒê°í•˜ëƒê³ ? ë¼ì¦ë¦¬ëŠ”â€¦ ì •ë§ ë¬´ì„œì›Œ. í™”ë‚´ë©´ ë§ˆë…€ê°™ë‹¤ê³ . ë´, ì§€ê¸ˆë„â€¦ íˆìµ!",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 11) {
-            self.sayReplacedNpc("º£Å¸¸¦ ¼±ÅÃÇÑ ÀÌÀ¯? ±×¾ß ´ç¿¬È÷¡¦ ¿¹»Ú´Ï±î! ÀÌ¿Õ ÁÖÀÎÀ¸·Î ¸ğ½Ç °Å¸é ¿¹»Û ¿©ÀÚ°¡ ÁÁÀİ¾Æ? ÇÏÇÏ.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("³»°¡ ¿¹»µ?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("´ç¿¬ÇÏÁö! ¶óÁñ¸®µµ ¾ËÆÄ°¡ Àß»ı°Ü¼­ ¼±ÅÃÇÑ °ÅÀİ¾Æ.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#±×, ±×·± °Å ¾Æ´Ï°Åµç!",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ë² íƒ€ë¥¼ ì„ íƒí•œ ì´ìœ ? ê·¸ì•¼ ë‹¹ì—°íˆâ€¦ ì˜ˆì˜ë‹ˆê¹Œ! ì´ì™• ì£¼ì¸ìœ¼ë¡œ ëª¨ì‹¤ ê±°ë©´ ì˜ˆìœ ì—¬ìê°€ ì¢‹ì–ì•„? í•˜í•˜.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚´ê°€ ì˜ˆë»?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ë‹¹ì—°í•˜ì§€! ë¼ì¦ë¦¬ë„ ì•ŒíŒŒê°€ ì˜ìƒê²¨ì„œ ì„ íƒí•œ ê±°ì–ì•„.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face1#ê·¸, ê·¸ëŸ° ê±° ì•„ë‹ˆê±°ë“ !",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 12) {
-            self.sayReplacedNpc("¶óÁñ¸® ³à¼®, »ç½Ç ³Ê¸¦ ²Ï³ª ÁÁ¾ÆÇÏ´Â °Å °°¾Æ. ¾î¶»°Ô ¾Æ´À³Ä°í? ¿ø·¡ ¿ì¸®´Â ÇÏ³ª¿´À¸´Ï±î ¸»ÇÏÁö ¾Ê¾Æµµ ´Ù ¾ËÁö.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#¾µµ¥¾ø´Â ¼Ò¸® ÇÏÁö¸¶. ±×·± °Å ¾Æ´Ï¾ß!",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ë¼ì¦ë¦¬ ë…€ì„, ì‚¬ì‹¤ ë„ˆë¥¼ ê½¤ë‚˜ ì¢‹ì•„í•˜ëŠ” ê±° ê°™ì•„. ì–´ë–»ê²Œ ì•„ëŠëƒê³ ? ì›ë˜ ìš°ë¦¬ëŠ” í•˜ë‚˜ì˜€ìœ¼ë‹ˆê¹Œ ë§í•˜ì§€ ì•Šì•„ë„ ë‹¤ ì•Œì§€.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face1#ì“¸ë°ì—†ëŠ” ì†Œë¦¬ í•˜ì§€ë§ˆ. ê·¸ëŸ° ê±° ì•„ë‹ˆì•¼!",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 13) {
-            self.sayReplacedNpc("³ª Á¦¹ı ¾µ¸¸ÇÑ °Í °°Áö ¾Ê¾Æ? ¡¦¾Æ´Ï¶ó°í »ı°¢ÇÏ¸é ¾îÂ¿ ¼ö ¾ø°í.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("¶óÇÇ½º, Èû³»¡¦",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#¾î, ¾îÂ¾Áö ±× ¸»ÀÌ ´õ ±â¿îºüÁö°Ô ¸¸µå´Â °Í °°Àºµ¥.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚˜ ì œë²• ì“¸ë§Œí•œ ê²ƒ ê°™ì§€ ì•Šì•„? â€¦ì•„ë‹ˆë¼ê³  ìƒê°í•˜ë©´ ì–´ì©” ìˆ˜ ì—†ê³ .",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë¼í”¼ìŠ¤, í˜ë‚´â€¦",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face2#ì–´, ì–´ì©ì§€ ê·¸ ë§ì´ ë” ê¸°ìš´ë¹ ì§€ê²Œ ë§Œë“œëŠ” ê²ƒ ê°™ì€ë°.",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 14) {
-            self.sayReplacedNpc("¿ì¿ïÇÑ ¶© ¸Ô´Â °Ô ÃÖ°íÁö. ¿Í±¸¿Í±¸!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("±×·³ ±âºĞÀÌ ÁÁÀ» ¶©?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("±âºĞ ÁÁÀ» ¶§µµ ¸Ô´Â °Ô ÃÖ°íÁö. ¿Í±¸¿Í±¸!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("±×·³ ½½ÇÂ ¶©?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("½½ÇÃ ¶§µµ ¸Ô´Â °Ô¡¦¡¦",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("°á±¹ °è¼Ó ¸Ô´Â´Ù´Â °ÅÀİ¾Æ!",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ìš°ìš¸í•œ ë• ë¨¹ëŠ” ê²Œ ìµœê³ ì§€. ì™€êµ¬ì™€êµ¬!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê·¸ëŸ¼ ê¸°ë¶„ì´ ì¢‹ì„ ë•?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ê¸°ë¶„ ì¢‹ì„ ë•Œë„ ë¨¹ëŠ” ê²Œ ìµœê³ ì§€. ì™€êµ¬ì™€êµ¬!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê·¸ëŸ¼ ìŠ¬í”ˆ ë•?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ìŠ¬í”Œ ë•Œë„ ë¨¹ëŠ” ê²Œâ€¦â€¦",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê²°êµ­ ê³„ì† ë¨¹ëŠ”ë‹¤ëŠ” ê±°ì–ì•„!",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 15) {
-            self.sayReplacedNpc("¹«½¼ »ı°¢À» ÇÏ°í ÀÖ³Ä°í? »ç½Ç ³ª´Â Áö±İ ¾ÆÁÖ ½É°¢ÇÏ°Ô¡¦ ¡¦¾Æ¹« »ı°¢µµ ¾ø´Âµ¥?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë¬´ìŠ¨ ìƒê°ì„ í•˜ê³  ìˆëƒê³ ? ì‚¬ì‹¤ ë‚˜ëŠ” ì§€ê¸ˆ ì•„ì£¼ ì‹¬ê°í•˜ê²Œâ€¦ â€¦ì•„ë¬´ ìƒê°ë„ ì—†ëŠ”ë°?",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 16) {
-            self.sayReplacedNpc("´Ùµé Á¶¿ëÇÏ´Ï±î ³ª¶óµµ ºĞÀ§±â¸¦ »ì·Á¾ßÁö. ³ª´Â ºĞÀ§±â ¸ŞÀÌÄ¿·Î½á ³ª¸§ÀÇ »ç¸í°¨À» °¡Áö°í ÀÖ´Ù°í! ´Ü¼øÈ÷ ½É½ÉÇØ¼­ Àå³­Ä¡´Â °Ô ¾Æ´Ï¾ß. ¡¦Á¤¸»·Î!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‹¤ë“¤ ì¡°ìš©í•˜ë‹ˆê¹Œ ë‚˜ë¼ë„ ë¶„ìœ„ê¸°ë¥¼ ì‚´ë ¤ì•¼ì§€. ë‚˜ëŠ” ë¶„ìœ„ê¸° ë©”ì´ì»¤ë¡œì¨ ë‚˜ë¦„ì˜ ì‚¬ëª…ê°ì„ ê°€ì§€ê³  ìˆë‹¤ê³ ! ë‹¨ìˆœíˆ ì‹¬ì‹¬í•´ì„œ ì¥ë‚œì¹˜ëŠ” ê²Œ ì•„ë‹ˆì•¼. â€¦ì •ë§ë¡œ!",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 17) {
-            self.sayReplacedNpc("º¸½º ¸ó½ºÅÍ¸¦ ÀâÀ¸¸é ´õ ¸¹Àº wp¸¦ È¹µæÇÒ ¼ö ÀÖ¾î. ¹°·Ğ Àâ¾Æ¾ß È¹µæÇÒ ¼ö ÀÖÁö, Àâ¾Æ¾ß¡¦",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face0#1Àı¸¸ ÇÏ¶ó°í, 1Àı¸¸! ",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ë³´ìŠ¤ ëª¬ìŠ¤í„°ë¥¼ ì¡ìœ¼ë©´ ë” ë§ì€ wpë¥¼ íšë“í•  ìˆ˜ ìˆì–´. ë¬¼ë¡  ì¡ì•„ì•¼ íšë“í•  ìˆ˜ ìˆì§€, ì¡ì•„ì•¼â€¦",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face0#1ì ˆë§Œ í•˜ë¼ê³ , 1ì ˆë§Œ! ",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 18) {
-            self.sayReplacedNpc("³×°¡ ¼ºÀåÇØ¾ß ¿ì¸®µµ ÁøÈ­ÇÒ ¼ö ÀÖ¾î. ±×·¯´Ï±î ¸ö¿¡ ÁÁ°í ¸Àµµ ÁÁÀº °í±â¸¦ ¸¹ÀÌ ¸Ô¾î¾ß¡¦ ¾Æ, ÀÌ°Ô ¾Æ´Ñ°¡?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë„¤ê°€ ì„±ì¥í•´ì•¼ ìš°ë¦¬ë„ ì§„í™”í•  ìˆ˜ ìˆì–´. ê·¸ëŸ¬ë‹ˆê¹Œ ëª¸ì— ì¢‹ê³  ë§›ë„ ì¢‹ì€ ê³ ê¸°ë¥¼ ë§ì´ ë¨¹ì–´ì•¼â€¦ ì•„, ì´ê²Œ ì•„ë‹Œê°€?",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 19) {
-            self.sayReplacedNpc("ÁÖ¹®¼­³ª Å¥ºê¸¦ »ç¿ëÇÏ¸é ´ë°Ë°ú ÅÂµµ¿¡ µ¿½Ã¿¡ Àû¿ëµÈ´Ù°í. ÀÌ°Ô ¹Ù·Î 1+1!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face5#¿À, ±×°Å ±¦ÂúÀºµ¥?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("´ë½Å ÆÄ±«µµ 1+1ÀÌÁö!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face6#¡¦¡¦!!!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ì£¼ë¬¸ì„œë‚˜ íë¸Œë¥¼ ì‚¬ìš©í•˜ë©´ ëŒ€ê²€ê³¼ íƒœë„ì— ë™ì‹œì— ì ìš©ëœë‹¤ê³ . ì´ê²Œ ë°”ë¡œ 1+1!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face5#ì˜¤, ê·¸ê±° ê´œì°®ì€ë°?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ëŒ€ì‹  íŒŒê´´ë„ 1+1ì´ì§€!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face6#â€¦â€¦!!!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 20) {
-            self.sayReplacedNpc("Ã¥ ÀĞ´Â °Å ÁÁ¾ÆÇØ? ³ª´Â Ã¥¸¸ ÆîÄ¡¸é ÀáÀÌ ¿À´øµ¥¡¦ È¤½Ã ½ÅÀü Ã¥Àå¿¡ ¸¸È­Ã¥Àº ¾øÀ»±î?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì±… ì½ëŠ” ê±° ì¢‹ì•„í•´? ë‚˜ëŠ” ì±…ë§Œ í¼ì¹˜ë©´ ì ì´ ì˜¤ë˜ë°â€¦ í˜¹ì‹œ ì‹ ì „ ì±…ì¥ì— ë§Œí™”ì±…ì€ ì—†ì„ê¹Œ?",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 21) {
-            self.sayReplacedNpc("110, 120, 130, 140, 150, 170, 180·¹º§ÀÌ µÇ¸é ¹«±â µî±ŞÀ» »ó½Â½ÃÅ³ ¼ö ÀÖ¾î. ¹°·Ğ ³×°¡ ¿øÇÏÁö ¾Ê´Â´Ù¸é ³ªÁß¿¡ ¼±ÅÃÇØµµ ÁÁ¾Æ.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("¹º°¡ ¿¹Àü°ú ¹Ì¹¦ÇÏ°Ô ´Ù¸¥ °Í °°Àºµ¥?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("³Ê¾ß¸»·Î ¾È³»¸¦ À¯µµÇÏ´Â ¸»ÅõÀÎ °Í °°Àºµ¥?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("110, 120, 130, 140, 150, 170, 180ë ˆë²¨ì´ ë˜ë©´ ë¬´ê¸° ë“±ê¸‰ì„ ìƒìŠ¹ì‹œí‚¬ ìˆ˜ ìˆì–´. ë¬¼ë¡  ë„¤ê°€ ì›í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ ë‚˜ì¤‘ì— ì„ íƒí•´ë„ ì¢‹ì•„.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë­”ê°€ ì˜ˆì „ê³¼ ë¯¸ë¬˜í•˜ê²Œ ë‹¤ë¥¸ ê²ƒ ê°™ì€ë°?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ë„ˆì•¼ë§ë¡œ ì•ˆë‚´ë¥¼ ìœ ë„í•˜ëŠ” ë§íˆ¬ì¸ ê²ƒ ê°™ì€ë°?",  2400009, 0, ScriptMessageFlag.Scenario);
             self.sayReplacedNpc("...",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 22) {
-            self.sayReplacedNpc("ÀáÀç´É·Âº¯°æ ¹öÆ°À» ´­·¯ºÃ¾î? ¾î¶² ÀáÀç´É·ÂÀÌ Àû¿ëµÉ Áö ³» ½ÉÀåÀÌ µÎ±Ù°Å¸°´Ù°í!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("±×·¯´Ù°¡ ¾È ÁÁÀº ÀáÀç´É·ÂÀÌ ³ª¿À¸é ¾î¶±ÇØ?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("±¦Âú¾Æ, ³ª´Â ¸Å»ç¿¡ ±àÁ¤ÀûÀÎ ³²ÀÚ´Ï±î! ÁÁÀº °Ô ³ª¿Ã ¶§±îÁö µ¹¸®¸é µÇÁö!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#°á±¹ µÉ´ë·Î µÇ¶ó´Â °ÅÀİ¾Æ¡¦",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ì ì¬ëŠ¥ë ¥ë³€ê²½ ë²„íŠ¼ì„ ëˆŒëŸ¬ë´¤ì–´? ì–´ë–¤ ì ì¬ëŠ¥ë ¥ì´ ì ìš©ë  ì§€ ë‚´ ì‹¬ì¥ì´ ë‘ê·¼ê±°ë¦°ë‹¤ê³ !",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê·¸ëŸ¬ë‹¤ê°€ ì•ˆ ì¢‹ì€ ì ì¬ëŠ¥ë ¥ì´ ë‚˜ì˜¤ë©´ ì–´ë–¡í•´?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ê´œì°®ì•„, ë‚˜ëŠ” ë§¤ì‚¬ì— ê¸ì •ì ì¸ ë‚¨ìë‹ˆê¹Œ! ì¢‹ì€ ê²Œ ë‚˜ì˜¬ ë•Œê¹Œì§€ ëŒë¦¬ë©´ ë˜ì§€!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face7#ê²°êµ­ ë ëŒ€ë¡œ ë˜ë¼ëŠ” ê±°ì–ì•„â€¦",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 23) {
-            self.sayReplacedNpc("½Å°ü Áß¿¡ µ¨·Î¶ó´Â ³à¼®, ¾î¸°µ¥ Á¦¹ı ¶È¶ÈÇÏ´ø°É? Àü¹®±â¼ú¿¡ °üÇØ¼­ ²Ï³ª ÇØ¹ÚÇÑ Áö½ÄÀ» °®°í ÀÖ´õ¶ó°í.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì‹ ê´€ ì¤‘ì— ë¸ë¡œë¼ëŠ” ë…€ì„, ì–´ë¦°ë° ì œë²• ë˜‘ë˜‘í•˜ë˜ê±¸? ì „ë¬¸ê¸°ìˆ ì— ê´€í•´ì„œ ê½¤ë‚˜ í•´ë°•í•œ ì§€ì‹ì„ ê°–ê³  ìˆë”ë¼ê³ .",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 24) {
-            self.sayReplacedNpc("WEAPON UI¿¡¼­´Â ¹«±â¸¸ °­È­ÇÒ ¼ö ÀÖ¾î. ¿©±ä ¿ì¸®¸¸ÀÇ °ø°£ÀÌ´Ï±î. ³ª¸ÓÁö ¹æ¾î±¸³ª ¾×¼¼¼­¸®´Â ¿ø·¡Ã³·³ ÀåºñÃ¢¿¡¼­ °­È­ÇÏ¶ó±¸. ",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("WEAPON UIì—ì„œëŠ” ë¬´ê¸°ë§Œ ê°•í™”í•  ìˆ˜ ìˆì–´. ì—¬ê¸´ ìš°ë¦¬ë§Œì˜ ê³µê°„ì´ë‹ˆê¹Œ. ë‚˜ë¨¸ì§€ ë°©ì–´êµ¬ë‚˜ ì•¡ì„¸ì„œë¦¬ëŠ” ì›ë˜ì²˜ëŸ¼ ì¥ë¹„ì°½ì—ì„œ ê°•í™”í•˜ë¼êµ¬. ",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 25) {
-            self.sayReplacedNpc("ÅÂ±×¸¦ ÀÌ¿ëÇÏ¸é Á» ´õ È¿À²ÀûÀÎ ÀüÅõ°¡ °¡´ÉÇØ. ±¸, ±»ÀÌ ³ªµµ ³ÊÈñ¿Í ÇÔ²² ½Î¿ì°í ½Í¾î¼­ ±×·¯´Â °Ç ¾Æ´Ï´Ï±î ¿ÀÇØÇÏÁø ¸»¾ÆÁà.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("íƒœê·¸ë¥¼ ì´ìš©í•˜ë©´ ì¢€ ë” íš¨ìœ¨ì ì¸ ì „íˆ¬ê°€ ê°€ëŠ¥í•´. êµ¬, êµ³ì´ ë‚˜ë„ ë„ˆí¬ì™€ í•¨ê»˜ ì‹¸ìš°ê³  ì‹¶ì–´ì„œ ê·¸ëŸ¬ëŠ” ê±´ ì•„ë‹ˆë‹ˆê¹Œ ì˜¤í•´í•˜ì§„ ë§ì•„ì¤˜.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 26) {
-            self.sayReplacedNpc("·°Å°¾ÆÀÌÅÛ ÁÖ¹®¼­¸¦ »ç¿ëÇÏ¸é ¼¼Æ®¾ÆÀÌÅÛ È¿°ú¸¦ ³¾ ¼ö ÀÖ´Ù´øµ¥. »ç½Ç ³­ ¾îµğ¿¡ ¼Ò¼ÓµÇ´Â °É ±×¸® ÁÁ¾ÆÇÏÁø ¾ÊÁö¸¸ ¸»¾ß.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ëŸ­í‚¤ì•„ì´í…œ ì£¼ë¬¸ì„œë¥¼ ì‚¬ìš©í•˜ë©´ ì„¸íŠ¸ì•„ì´í…œ íš¨ê³¼ë¥¼ ë‚¼ ìˆ˜ ìˆë‹¤ë˜ë°. ì‚¬ì‹¤ ë‚œ ì–´ë””ì— ì†Œì†ë˜ëŠ” ê±¸ ê·¸ë¦¬ ì¢‹ì•„í•˜ì§„ ì•Šì§€ë§Œ ë§ì•¼.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 27) {
-            self.sayReplacedNpc("ÄÚÀÎÀ» ¸ğ¾Æ¼­ ½Å°üµé¿¡°Ô °¡Á®°¡¸é ÁÁ¾ÆÇÒ °Å¾ß. °¡³­¹ğÀÌµé¿¡°Ô´Â ²Ï °¡Ä¡°¡ ÀÖÀ» Å×´Ï±î.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face11#³Ê ¸»ÀÌ ³Ê¹« ½ÉÇÏ´Ù?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#³ª, ³­ ±×·± °Ô ¾Æ´Ï¶ó¡¦¡¦ ",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face10#ÇÏ±ä, ³× ¸»µµ Æ²¸° °Ç ¾Æ´ÏÁö. ³»°¡ °¡³­¹ğÀÌÀÎ °Ç »ç½ÇÀÌ´Ï±î.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#¾Æ³Ä, ±×·± °Ô ¾Æ´Ï¶ó¡¦¡¦ ¸ô¶ó, ¹Ùº¸!",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì½”ì¸ì„ ëª¨ì•„ì„œ ì‹ ê´€ë“¤ì—ê²Œ ê°€ì ¸ê°€ë©´ ì¢‹ì•„í•  ê±°ì•¼. ê°€ë‚œë±…ì´ë“¤ì—ê²ŒëŠ” ê½¤ ê°€ì¹˜ê°€ ìˆì„ í…Œë‹ˆê¹Œ.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face11#ë„ˆ ë§ì´ ë„ˆë¬´ ì‹¬í•˜ë‹¤?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face2#ë‚˜, ë‚œ ê·¸ëŸ° ê²Œ ì•„ë‹ˆë¼â€¦â€¦ ",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face10#í•˜ê¸´, ë„¤ ë§ë„ í‹€ë¦° ê±´ ì•„ë‹ˆì§€. ë‚´ê°€ ê°€ë‚œë±…ì´ì¸ ê±´ ì‚¬ì‹¤ì´ë‹ˆê¹Œ.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face2#ì•„ëƒ, ê·¸ëŸ° ê²Œ ì•„ë‹ˆë¼â€¦â€¦ ëª°ë¼, ë°”ë³´!",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 28) {
-            self.sayReplacedNpc("°ñµå¶óº§ ³ªÀÌÆ® ¹æ¾î±¸ ¼¼Æ®¶ó°í ¾Ë¾Æ? °Å¿ï¼¼°è º¸½ºµéÀÌ ·¹½ÃÇÇ¸¦ °¡Áö°í ÀÖ´Ù´øµ¥ ±¸ÇØ¼­ ¸¸µé¾î º¸´Â °Ô ¾î¶§? ±×·² ¸®´Â ¾øÁö¸¸ ÀÇ¿Ü·Î ³ÊÇÑÅ× ¾î¿ï¸±Áöµµ ¸ğ¸£´Ï±î, Èï.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê³¨ë“œë¼ë²¨ ë‚˜ì´íŠ¸ ë°©ì–´êµ¬ ì„¸íŠ¸ë¼ê³  ì•Œì•„? ê±°ìš¸ì„¸ê³„ ë³´ìŠ¤ë“¤ì´ ë ˆì‹œí”¼ë¥¼ ê°€ì§€ê³  ìˆë‹¤ë˜ë° êµ¬í•´ì„œ ë§Œë“¤ì–´ ë³´ëŠ” ê²Œ ì–´ë•Œ? ê·¸ëŸ´ ë¦¬ëŠ” ì—†ì§€ë§Œ ì˜ì™¸ë¡œ ë„ˆí•œí…Œ ì–´ìš¸ë¦´ì§€ë„ ëª¨ë¥´ë‹ˆê¹Œ, í¥.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 29) {
-            self.sayReplacedNpc("MPÆ÷¼ÇÀº ¸À¾ø¾î. MPÆ÷¼ÇÀ» ¸ÔÁö ¾Ê¾Æµµ µÇ´Â °Ç Á¤¸» ´ÙÇàÀÌ¾ß. ",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("¼¼»ó¿¡ ³×°¡ ½È¾îÇÏ´Â À½½Äµµ ÀÖ¾ú¾î?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#´ç¿¬ÇÏÁö! ³¯ ´ëÃ¼ ¹»·Î »ı°¢ÇÏ°í ÀÖ´Â °Å¾ß?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("¸ÔÀ» °Å ÁÁ¾ÆÇÏ´Â ¹Ùº¸.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#³Ê, ³Ê¹« ¼ÖÁ÷ÇÏÀİ¾Æ!",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("MPí¬ì…˜ì€ ë§›ì—†ì–´. MPí¬ì…˜ì„ ë¨¹ì§€ ì•Šì•„ë„ ë˜ëŠ” ê±´ ì •ë§ ë‹¤í–‰ì´ì•¼. ",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì„¸ìƒì— ë„¤ê°€ ì‹«ì–´í•˜ëŠ” ìŒì‹ë„ ìˆì—ˆì–´?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face2#ë‹¹ì—°í•˜ì§€! ë‚  ëŒ€ì²´ ë­˜ë¡œ ìƒê°í•˜ê³  ìˆëŠ” ê±°ì•¼?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë¨¹ì„ ê±° ì¢‹ì•„í•˜ëŠ” ë°”ë³´.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face2#ë„ˆ, ë„ˆë¬´ ì†”ì§í•˜ì–ì•„!",  2400009, 0, ScriptMessageFlag.Scenario);
         } else if (r == 30) {
-            self.sayReplacedNpc("¿ì¸®´Â ´ç¿¬È÷ µÎ¼Õ¹«±âÁö. µÎ¼ÕÀ¸·Î °ø¼ÕÈ÷ ¸ğ½Ã¶ó´Â ¶æÀÌ¾ß.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#µÎ¼Õ¹«±â°¡ ±×·± ÀÇ¹Ì¿´¾î?!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ìš°ë¦¬ëŠ” ë‹¹ì—°íˆ ë‘ì†ë¬´ê¸°ì§€. ë‘ì†ìœ¼ë¡œ ê³µì†íˆ ëª¨ì‹œë¼ëŠ” ëœ»ì´ì•¼.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face7#ë‘ì†ë¬´ê¸°ê°€ ê·¸ëŸ° ì˜ë¯¸ì˜€ì–´?!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 31) {
-            self.sayReplacedNpc("¿©½ÅÀÇ ´«¹°À» ¸ğÀ¸¸é »õ·Î¿î ½ºÅ³À» ¹è¿ï ¼ö ÀÖ¾î. ¡¦ÇÏÁö¸¸ ³­ °Â³×¶û º°·Î °°ÀÌ ´Ù´Ï°í ½ÍÁø ¾Ê´Ü ¸»¾ß.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ì—¬ì‹ ì˜ ëˆˆë¬¼ì„ ëª¨ìœ¼ë©´ ìƒˆë¡œìš´ ìŠ¤í‚¬ì„ ë°°ìš¸ ìˆ˜ ìˆì–´. â€¦í•˜ì§€ë§Œ ë‚œ ê±”ë„¤ë‘ ë³„ë¡œ ê°™ì´ ë‹¤ë‹ˆê³  ì‹¶ì§„ ì•Šë‹¨ ë§ì•¼.",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 32) {
-            self.sayReplacedNpc("³ÊÈñ, ´à±ä ÇßÁö¸¸ ±×·¡µµ ¸¹ÀÌ ´Ù¸¥°É. Çì¾î³ª ¼ºÇüÀº °°ÀÌ ¾µ ¼öµµ ÀÖÁö¸¸ ÇÑ ¸í¾¿µµ »ç¿ë °¡´ÉÇÏ´Ï±î Á» ´õ °³¼ºÀ» Ãß±¸ÇÏ´Â °Íµµ ³ª»ÚÁö ¾ÊÀ»Áöµµ?",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë„ˆí¬, ë‹®ê¸´ í–ˆì§€ë§Œ ê·¸ë˜ë„ ë§ì´ ë‹¤ë¥¸ê±¸. í—¤ì–´ë‚˜ ì„±í˜•ì€ ê°™ì´ ì“¸ ìˆ˜ë„ ìˆì§€ë§Œ í•œ ëª…ì”©ë„ ì‚¬ìš© ê°€ëŠ¥í•˜ë‹ˆê¹Œ ì¢€ ë” ê°œì„±ì„ ì¶”êµ¬í•˜ëŠ” ê²ƒë„ ë‚˜ì˜ì§€ ì•Šì„ì§€ë„?",  2400010, 0, ScriptMessageFlag.Scenario);
         } else if (r == 33) {
-            self.sayReplacedNpc("#face1#¿¨? ¶óÁñ¸®¶û »çÀÌ°¡ ³ª»Ú³Ä°í? ¾Æ´Ï, ¿ì¸® Á¦¹ı Ä£ÇÑ »çÀÌ¶ó°í »ı°¢ÇÏ´Âµ¥. ¾È ±×·¡?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("³­ ¹Ùº¸¶ûÀº ¾È ³î¾Æ.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#ºÁ, ³ª¶û Ä£ÇÏ´ÙÀİ¾Æ.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#ÀüÇô ±×·± ¸»ÀÌ ¾Æ´ÏÀİ¾Æ.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face1#ì—¥? ë¼ì¦ë¦¬ë‘ ì‚¬ì´ê°€ ë‚˜ì˜ëƒê³ ? ì•„ë‹ˆ, ìš°ë¦¬ ì œë²• ì¹œí•œ ì‚¬ì´ë¼ê³  ìƒê°í•˜ëŠ”ë°. ì•ˆ ê·¸ë˜?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ë‚œ ë°”ë³´ë‘ì€ ì•ˆ ë†€ì•„.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face0#ë´, ë‚˜ë‘ ì¹œí•˜ë‹¤ì–ì•„.",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face7#ì „í˜€ ê·¸ëŸ° ë§ì´ ì•„ë‹ˆì–ì•„.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         } else if (r == 34) {
-            self.sayReplacedNpc("#face1#±Ùµ¥, wp´Â °Å¿ï¼¼°è¿¡¼­¸¸ ¾òÀ» ¼ö ÀÖ´Ù°í ³»°¡ ¸»Çß¾ú³ª?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#¹¹? °Å¿ï¼¼°è¿¡¼­ ÀÚÀ¯·Î¿öÁ®µµ ¾òÀ» ¼ö ¾ø´Â°Å¾ß?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("wp´Â °Å¿ï¼¼°è¿¡ Èğ¾îÁø ½Ã°£ÀÇ Èû. °Å¿ï¼¼°è¿¡¼­¸¸ ¾òÀ» ¼ö ÀÖ´Â°Ô ´ç¿¬ÇÑ °Å ¾Æ´Ï¾ß? ¸ŞÀÌÇÃ ¿ùµå¿¡¼­´Â ±º´ÜÀå±ŞÀÇ º¸½ºµé¸¸ wp¸¦ °¡Áö°í ÀÖ¾î.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("±×¸®°í ¾Æ½±°Ôµµ °í±â¿¡´Â wp°¡ ÇÔÀ¯(?)µÇ¾î ÀÖÁö ¾Ê¾Æ.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("¾Æ½±´Ù...",  2400006, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#¹¹°¡ ¾Æ½±´Ù´Â °Å¾ß?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("#face1#ê·¼ë°, wpëŠ” ê±°ìš¸ì„¸ê³„ì—ì„œë§Œ ì–»ì„ ìˆ˜ ìˆë‹¤ê³  ë‚´ê°€ ë§í–ˆì—ˆë‚˜?",  2400009, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face7#ë­? ê±°ìš¸ì„¸ê³„ì—ì„œ ììœ ë¡œì›Œì ¸ë„ ì–»ì„ ìˆ˜ ì—†ëŠ”ê±°ì•¼?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("wpëŠ” ê±°ìš¸ì„¸ê³„ì— í©ì–´ì§„ ì‹œê°„ì˜ í˜. ê±°ìš¸ì„¸ê³„ì—ì„œë§Œ ì–»ì„ ìˆ˜ ìˆëŠ”ê²Œ ë‹¹ì—°í•œ ê±° ì•„ë‹ˆì•¼? ë©”ì´í”Œ ì›”ë“œì—ì„œëŠ” êµ°ë‹¨ì¥ê¸‰ì˜ ë³´ìŠ¤ë“¤ë§Œ wpë¥¼ ê°€ì§€ê³  ìˆì–´.",  2400010, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("ê·¸ë¦¬ê³  ì•„ì‰½ê²Œë„ ê³ ê¸°ì—ëŠ” wpê°€ í•¨ìœ (?)ë˜ì–´ ìˆì§€ ì•Šì•„.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+            self.sayReplacedNpc("ì•„ì‰½ë‹¤...",  2400006, 0, ScriptMessageFlag.Scenario);
+            self.sayReplacedNpc("#face7#ë­ê°€ ì•„ì‰½ë‹¤ëŠ” ê±°ì•¼?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
         }
     }
 }

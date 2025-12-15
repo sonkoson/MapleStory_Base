@@ -19,204 +19,251 @@ import java.awt.*;
 
 public class RootAbyss extends ScriptEngineNPC {
 
-    public void rootafirstDoor() { //««ø°∏£
-        //30∫– ¿Á¿‘¿Â∞°¥…«‘
-        //105200200 º≠¬ ¡§ø¯(≥Î∏ª)
-        //105200210 ªﬂø°∏£ ∫∏Ω∫∏ 
-        //105200600 º≠¬ ¡§ø¯<ƒ´ø¿Ω∫>
-        //105200610 ªﬂø°∏£ ∫∏Ω∫∏ <ƒ´ø¿Ω∫>
+    public void rootafirstDoor() { // Pierre
+        // 30 min re-entry
+        // 105200200 West Garden (Normal)
+        // 105200210 Pierre Boss Map
+        // 105200600 West Garden <Chaos>
+        // 105200610 Pierre Boss Map <Chaos>
         initNPC(MapleLifeFactory.getNPC(1064012));
         EventManager em = getEventManager("RootAbyssPierre");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-        	String text = "";
-        	if (DBConfig.isGanglim) {
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ º≠¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ º≠¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r««ø°∏£#k∞° ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. ≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ.";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ««ø°∏£] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-                text += "\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ««ø°∏£] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-                text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-        	}
-        	else {
-        		boolean single = getPlayer().getPartyMemberSize() == 1;
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ º≠¬  ¡§ø¯ ¿‘±∏>#n#k\r\n";
-        		text += "∑Á≈∏∫ÒΩ∫ º≠¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r««ø°∏£#k∞° ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. #r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + "∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += "\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + "∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPierre" + (single ? "Single" : "Multi"));
-                text += "\r\n#L4#≥Î∏÷ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ¿‘¿Â »Ωºˆ ¡ı∞°" + ((single ? 2 : 1) - reset) + "»∏ ∞°¥… #l";
-        	}
-            
-        	int v0 = self.askMenu(text);
-            if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
-                return;
+            String text = "";
+            if (DBConfig.isGanglim) {
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss West Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rPierre#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏ï‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà ‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Pierre] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Pierre] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
             } else {
-            	if (v0 == 4 && !DBConfig.isGanglim) {
-            		if (getPlayer().getTogetherPoint() < 150) {
-            			self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. «ˆ¿Á ∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint());
-            			return;
-            		}
-            		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPierre" + (single ? "Single" : "Multi"));
-            		if ((reset > 0 && !single) || reset > 1 && single) { //√ ±‚»≠ ∫“∞°¥…
-                    	self.sayOk("¿œ¿œ √ﬂ∞°¿‘¿Â »Ωºˆ ¡ı∞°∏¶ ∏µŒ ªÁøÎ«œø¥Ω¿¥œ¥Ÿ.");
-                    	return;
-                    }
-            		getPlayer().gainTogetherPoint(-150);
-            		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPierre" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-            		self.sayOk("¿‘¿Â »Ωºˆ∞° ¡ı∞°µ«æ˙Ω¿¥œ¥Ÿ.");
-            		return;
-            	}
-                if (v0 == 0) { //≥Î∏ª∏µÂ
-                    if (target.getParty().isPartySameMap()) {
-                        if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Pierre.getQuestID(), DBConfig.isGanglim);
-                            if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
-                                if (lastDate == null || DBConfig.isGanglim) {
-                                    String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
-
-                                        em.setProperty("status0", "1");
-                                        EventInstanceManager eim = em.readyInstance();
-                                        eim.setProperty("map", 105200200);
-                                        eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200210).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).setLastRespawnTime(Long.MAX_VALUE);
-
-                                        updateLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
-                                        if (DBConfig.isGanglim) { 
-                                            updateQuestEx(getPlayer(), QuestExConstants.Pierre.getQuestID());
-                                        }
-                                        if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
-                                           	for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                           		if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                           			partyMember.setMultiMode(true);
-                                           			partyMember.applyBMCurseJinMulti();
-                                          		}
-                                          	}
-                                        }
-                                        eim.registerParty(target.getParty(), getPlayer().getMap());
-                                    } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
-                                    }
-                                } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
-                                }
-                            } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
-                            }
-                        } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
-                        }
-                    } else {
-                        self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
-                    }
-                } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
-                    if (target.getParty().isPartySameMap()) {
-                        if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosPierre.getQuestID(), DBConfig.isGanglim);
-                            if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
-                                if (lastDate == null || DBConfig.isGanglim) {
-                                    String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
-                                        em.setProperty("Cstatus0", "1");
-                                        EventInstanceManager eim = em.readyInstance();
-                                        eim.setProperty("map", 105200600);
-                                        eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200610).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).setLastRespawnTime(Long.MAX_VALUE);
-                                        updateLastDate(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
-                                        if (DBConfig.isGanglim) {
-                                            updateQuestEx(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
-                                        }
-                                        if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
-                                           	for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                           		if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                           			partyMember.setMultiMode(true);
-                                           			partyMember.applyBMCurseJinMulti();
-                                          		}
-                                          	}
-                                        }
-                                        eim.registerParty(target.getParty(), getPlayer().getMap());
-                                    } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
-                                    }
-                                } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
-                                }
-                            } else {
-                                if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
-                                } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
-                                }
-                            }
-                        } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
-                        }
-                    } else {
-                        self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
-                    }
-                } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                    self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
-                }
+                boolean single = getPlayer().getPartyMemberSize() == 1;
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss West Garden>#n#k\r\n";
+                text += "‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rPierre#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏ï‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà \r\n#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode " + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += "\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode " + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                        "NormalPierre" + (single ? "Single" : "Multi"));
+                text += "\r\n#L4#‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏£‡∏≠‡∏ö‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô Normal Mode " + (single ? "(Single)" : "(Multi)") + " (‡πÄ‡∏´‡∏•‡∏∑‡∏≠ "
+                        + ((single ? 2 : 1) - reset) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á) #l";
             }
-        }
-    }
 
-    public void pierreEnter() { //««ø°∏£
-    	if (!DBConfig.isGanglim) {
-    		rootafirstDoor();
-    		return;
-    	}
-        EventManager em = getEventManager("RootAbyssPierre");
-        if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
-        } else {
-            String text = "#r#e<∑Á≈∏∫ÒΩ∫ º≠¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ º≠¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r««ø°∏£#k∞° ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b");
-            text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-            if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ««ø°∏£] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            }
-            text += "\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-            if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ««ø°∏£] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            }
-            text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
+                return;
             } else {
-                if (v0 == 0) { //≥Î∏ª∏µÂ
+                if (v0 == 4 && !DBConfig.isGanglim) {
+                    if (getPlayer().getTogetherPoint() < 150) {
+                        self.sayOk("‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡πà‡∏ß‡∏°‡∏°‡∏∑‡∏≠‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô : " + getPlayer().getTogetherPoint());
+                        return;
+                    }
+                    boolean single = getPlayer().getPartyMemberSize() == 1;
+                    int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalPierre" + (single ? "Single" : "Multi"));
+                    if ((reset > 0 && !single) || reset > 1 && single) { // Cannot reset
+                        self.sayOk("‡∏Ñ‡∏∏‡∏ì‡πÉ‡∏ä‡πâ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡∏´‡∏°‡∏î‡πÅ‡∏•‡πâ‡∏ß");
+                        return;
+                    }
+                    getPlayer().gainTogetherPoint(-150);
+                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalPierre" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+                    self.sayOk("‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß");
+                    return;
+                }
+                if (v0 == 0) { // Normal Mode
                     if (target.getParty().isPartySameMap()) {
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Pierre.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Pierre.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200200);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200210).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200200).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200210)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
+
+                                        updateLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
+                                        if (DBConfig.isGanglim) {
+                                            updateQuestEx(getPlayer(), QuestExConstants.Pierre.getQuestID());
+                                        }
+                                        if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
+                                            for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
+                                            }
+                                        }
+                                        eim.registerParty(target.getParty(), getPlayer().getMap());
+                                    } else {
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
+                                    }
+                                } else {
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
+                                }
+                            } else {
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
+                            }
+                        } else {
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
+                        }
+                    } else {
+                        self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
+                    }
+                } else if (v0 == 1) { // Chaos Mode
+                    if (target.getParty().isPartySameMap()) {
+                        if (em.getProperty("Cstatus0").equals("0")) {
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosPierre.getQuestID(),
+                                    DBConfig.isGanglim);
+                            if (overLap == null) {
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosPierre.getQuestID());
+                                if (lastDate == null || DBConfig.isGanglim) {
+                                    String exMember = target.exchangeParty(4033611, -1);
+                                    if (exMember == null) { // Try entry
+                                        em.setProperty("Cstatus0", "1");
+                                        EventInstanceManager eim = em.readyInstance();
+                                        eim.setProperty("map", 105200600);
+                                        eim.setProperty("mode", "chaos");
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200610)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
+                                        updateLastDate(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
+                                        if (DBConfig.isGanglim) {
+                                            updateQuestEx(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
+                                        }
+                                        if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
+                                            for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
+                                            }
+                                        }
+                                        eim.registerParty(target.getParty(), getPlayer().getMap());
+                                    } else {
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
+                                    }
+                                } else {
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
+                                }
+                            } else {
+                                if (DBConfig.isGanglim) {
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
+                                } else {
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
+                                }
+                            }
+                        } else {
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
+                        }
+                    } else {
+                        self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
+                    }
+                } else if (v0 == 2) { // Practice Mode
+                    self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
+                }
+            }
+        }
+    }
+
+    public void pierreEnter() { // Pierre
+        if (!DBConfig.isGanglim) {
+            rootafirstDoor();
+            return;
+        }
+        EventManager em = getEventManager("RootAbyssPierre");
+        if (em == null) {
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
+        } else {
+            String text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss West Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rPierre#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏ï‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                    + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                            : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b");
+            text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+            if (DBConfig.isGanglim) {
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Pierre] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.Pierre.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (getPlayer().getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+            }
+            text += "\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+            if (DBConfig.isGanglim) {
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Pierre] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosPierre.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (getPlayer().getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+            }
+            text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+            int v0 = self.askMenu(text);
+            if (target.getParty() == null) {
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
+            } else {
+                if (v0 == 0) { // Normal Mode
+                    if (target.getParty().isPartySameMap()) {
+                        if (em.getProperty("status0").equals("0")) {
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Pierre.getQuestID(),
+                                    DBConfig.isGanglim);
+                            if (overLap == null) {
+                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
+                                if (lastDate == null || DBConfig.isGanglim) {
+                                    String exMember = target.exchangeParty(4033611, -1);
+                                    if (exMember == null) { // Try entry
+                                        em.setProperty("status0", "1");
+                                        EventInstanceManager eim = em.readyInstance();
+                                        eim.setProperty("map", 105200200);
+                                        eim.setProperty("mode", "normal");
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200210)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200200)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
 
                                         updateLastDate(getPlayer(), QuestExConstants.Pierre.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -224,100 +271,109 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
                     } else {
-                        self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                        self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                     }
-                } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                } else if (v0 == 1) { // Chaos Mode
                     if (target.getParty().isPartySameMap()) {
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosPierre.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosPierre.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosPierre.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200600);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200610).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200600).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200610)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200600)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
                                         if (DBConfig.isGanglim) {
                                             updateQuestEx(getPlayer(), QuestExConstants.ChaosPierre.getQuestID());
                                         }
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
                     } else {
-                        self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                        self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                     }
-                } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                    self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                } else if (v0 == 2) { // Practice Mode
+                    self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                 }
             }
         }
     }
 
-    //««ø°∏£¿« ∆º∆ƒ∆ºø°ø°
+    // ÌîºÏóêÎ•¥Ïùò Ìã∞ÌååÌã∞ÏóêÏóê
 
-    public void pierre_Summon() { //≥Î∏ª ««ø°∏£ 
+    public void pierre_Summon() { // Normal Pierre
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summonMOB") == null) {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
                 field.broadcastMessage(CField.environmentChange("rootabyss/firework", 19));
-                field.startMapEffect("««ø°∏£¿« ∆º∆ƒ∆ºø° ø¬ ∞Õ¿ª ¡¯Ω…¿∏∑Œ »Øøµ«—¥Ÿ≥◊!", 5120098, 3000);
+                field.startMapEffect("‡∏¢‡∏¥‡∏ô‡∏î‡∏µ‡∏ï‡πâ‡∏≠‡∏ô‡∏£‡∏±‡∏ö‡∏™‡∏π‡πà‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ô‡πâ‡∏≥‡∏ä‡∏≤‡∏Ç‡∏≠‡∏á Pierre!", 5120098, 3000);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Field.img/rootabyss/firework");
                 field.broadcastMessage(e.encodeForLocal());
                 if (DBConfig.isGanglim) {
-                	field.spawnMonster(MapleLifeFactory.getMonster(8900100), new Point(1000, 551), 1);
-                }
-                else {
-                	if (!getPlayer().isMultiMode()) {
-                		field.spawnMonster(MapleLifeFactory.getMonster(8900100), new Point(1000, 551), 1);
-                	}
-                	else {
-                		final MapleMonster pierre = MapleLifeFactory.getMonster(8900100);
-                		pierre.setPosition(new Point(1000, 551));
-                		final long hp = pierre.getMobMaxHp();
-                		long fixedhp = hp * 3L;
+                    field.spawnMonster(MapleLifeFactory.getMonster(8900100), new Point(1000, 551), 1);
+                } else {
+                    if (!getPlayer().isMultiMode()) {
+                        field.spawnMonster(MapleLifeFactory.getMonster(8900100), new Point(1000, 551), 1);
+                    } else {
+                        final MapleMonster pierre = MapleLifeFactory.getMonster(8900100);
+                        pierre.setPosition(new Point(1000, 551));
+                        final long hp = pierre.getMobMaxHp();
+                        long fixedhp = hp * 3L;
                         if (fixedhp < 0) {
-                        	fixedhp = Long.MAX_VALUE;
+                            fixedhp = Long.MAX_VALUE;
                         }
                         pierre.setHp(fixedhp);
                         pierre.setMaxHp(fixedhp);
 
                         field.spawnMonster(pierre, 1);
-                	}
+                    }
                 }
             }
         }
@@ -330,7 +386,7 @@ public class RootAbyss extends ScriptEngineNPC {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
                 field.broadcastMessage(CField.environmentChange("rootabyss/firework", 19));
-                field.startMapEffect("««ø°∏£¿« ∆º∆ƒ∆ºø° ø¬ ∞Õ¿ª ¡¯Ω…¿∏∑Œ »Øøµ«—¥Ÿ≥◊!", 5120098, 3000);
+                field.startMapEffect("‡∏¢‡∏¥‡∏ô‡∏î‡∏µ‡∏ï‡πâ‡∏≠‡∏ô‡∏£‡∏±‡∏ö‡∏™‡∏π‡πà‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ô‡πâ‡∏≥‡∏ä‡∏≤‡∏Ç‡∏≠‡∏á Pierre!", 5120098, 3000);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Field.img/rootabyss/firework");
                 field.broadcastMessage(e.encodeForLocal());
                 field.spawnMonster(MapleLifeFactory.getMonster(8900000), new Point(1000, 551), 1);
@@ -338,66 +394,89 @@ public class RootAbyss extends ScriptEngineNPC {
         }
     }
 
-    public void rootasecondDoor() { //π›π›
-        //µø¬ ¡§ø¯ 105200100
-        //ƒ´ø¿Ω∫µø¬ ¡§ø¯ 105200500
-        //¬˜ø¯¿« ∆¥ø°º≠ π›π›¿ª º“»Ø«œ¿⁄
-        //π›π›¿∫ µ⁄¡ˆ∏È πŸ∑Œ≈€¡‹
+    public void rootasecondDoor() { // Von Bon
+        // East Garden 105200100
+        // Chaos East Garden 105200500
+        // Summon Von Bon in the rift
         initNPC(MapleLifeFactory.getNPC(1064013));
         EventManager em = getEventManager("RootAbyssVonbon");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-        	String text = "";
-        	if (DBConfig.isGanglim) {
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ µø¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ µø¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #rπ›π›#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n'";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª π›π›] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-                text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ π›π›] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-                text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-        	}
-        	else {
-        		boolean single = getPlayer().getPartyMemberSize() == 1;
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ µø¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ µø¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #rπ›π›#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n'";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") +  "∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + "∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                //text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVonBon" + (single ? "Single" : "Multi"));
-                text += "\r\n#L4#≥Î∏÷ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ¿‘¿Â »Ωºˆ ¡ı∞°" + ((single ? 2 : 1) - reset) + "»∏ ∞°¥… #l";
-        	}
+            String text = "";
+            if (DBConfig.isGanglim) {
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss East Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVon Bon#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏≠‡∏≠‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Von Bon] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Von Bon] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+            } else {
+                boolean single = getPlayer().getPartyMemberSize() == 1;
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss East Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVon Bon#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏≠‡∏≠‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode " + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode "
+                        + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                // text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                        "NormalVonBon" + (single ? "Single" : "Multi"));
+                text += "\r\n#L4#‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏£‡∏≠‡∏ö‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô Normal Mode " + (single ? "(Single)" : "(Multi)") + " (‡πÄ‡∏´‡∏•‡∏∑‡∏≠ "
+                        + ((single ? 2 : 1) - reset)
+                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á) #l";
+            }
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
                 return;
             } else {
-            	if (v0 == 4 && !DBConfig.isGanglim) {
-            		if (getPlayer().getTogetherPoint() < 150) {
-            			self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. «ˆ¿Á ∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint());
-            			return;
-            		}
-            		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVonBon" + (single ? "Single" : "Multi"));
-            		if ((reset > 0 && !single) || reset > 1 && single) { //√ ±‚»≠ ∫“∞°¥…
-                    	self.sayOk("¿œ¿œ √ﬂ∞°¿‘¿Â »Ωºˆ ¡ı∞°∏¶ ∏µŒ ªÁøÎ«œø¥Ω¿¥œ¥Ÿ.");
-                    	return;
+                if (v0 == 4 && !DBConfig.isGanglim) {
+                    if (getPlayer().getTogetherPoint() < 150) {
+                        self.sayOk("‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡πà‡∏ß‡∏°‡∏°‡∏∑‡∏≠‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô : " + getPlayer().getTogetherPoint());
+                        return;
                     }
-            		getPlayer().gainTogetherPoint(-150);
-            		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVonBon" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-            		self.sayOk("¿‘¿Â »Ωºˆ∞° ¡ı∞°µ«æ˙Ω¿¥œ¥Ÿ.");
-            		return;
-            	}
+                    boolean single = getPlayer().getPartyMemberSize() == 1;
+                    int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalVonBon" + (single ? "Single" : "Multi"));
+                    if ((reset > 0 && !single) || reset > 1 && single) { // Cannot reset
+                        self.sayOk("‡∏Ñ‡∏∏‡∏ì‡πÉ‡∏ä‡πâ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡∏´‡∏°‡∏î‡πÅ‡∏•‡πâ‡∏ß");
+                        return;
+                    }
+                    getPlayer().gainTogetherPoint(-150);
+                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalVonBon" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+                    self.sayOk("‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß");
+                    return;
+                }
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.VonBon.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.VonBon.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.VonBon.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.VonBon.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -405,40 +484,48 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200100);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200110).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200110)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosVonBon.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -446,80 +533,101 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200500);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200510).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200510)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
     }
 
-    public void banbanEnter() { //π›π›
-    	if (!DBConfig.isGanglim) {
-    		rootasecondDoor();
-    		return;
-    	}
+    public void banbanEnter() { // Von Bon
+        if (!DBConfig.isGanglim) {
+            rootasecondDoor();
+            return;
+        }
         EventManager em = getEventManager("RootAbyssVonbon");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-            String text = "#r#e<∑Á≈∏∫ÒΩ∫ µø¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ µø¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #rπ›π›#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n'";
-            text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
+            String text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss East Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVon Bon#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡∏ï‡∏∞‡∏ß‡∏±‡∏ô‡∏≠‡∏≠‡∏Å‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                    + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                            : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                    + "\r\n'";
+            text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª π›π›] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Von Bon] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.VonBon.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
+            text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ π›π›] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Von Bon] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosVonBon.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
+            text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
             } else {
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.VonBon.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.VonBon.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.VonBon.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.VonBon.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -528,31 +636,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200100);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200110).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200100).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200110)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200100)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosVonBon.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosVonBon.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -561,32 +677,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200500);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200510).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200500).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200510)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200500)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
@@ -600,7 +723,7 @@ public class RootAbyss extends ScriptEngineNPC {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
                 field.broadcastMessage(CField.environmentChange("Bgm29.img/banbantime", 19));
-                field.startMapEffect("¬˜ø¯¿« ∆¥ø°º≠ π›π›¿ª º“»Ø«œ¿⁄.", 5120025, 3000);
+                field.startMapEffect("‡∏à‡∏á‡∏≠‡∏≠‡∏Å‡∏°‡∏≤‡∏à‡∏≤‡∏Å‡∏£‡∏≠‡∏¢‡πÅ‡∏¢‡∏Å‡∏°‡∏¥‡∏ï‡∏¥ Von Bon!", 5120025, 3000);
             }
         }
     }
@@ -663,113 +786,146 @@ public class RootAbyss extends ScriptEngineNPC {
         }
     }
 
-    public void rootathirdDoor() { //∫Ì∑Øµ ƒ˝
-        //≥≤¬ ¡§ø¯, ø©ø’¿« º∫ ≥Î∏ª, ƒ´ø¿Ω∫
-        //105200300, 105200310
-        //105200700, 105200710
-        //¿·µÁ ∫Ì∑Øµ ƒ˝ø°∞‘ ∏ª¿ª ∞…æÓ∫∏¿⁄
-        //æÓ∏”, ±Õø©øÓ
-        //π´æˆ«œ¥Ÿ!
-        //≈±≈±, ø©±‚∞°
-        //»Ê»Ê, ¥ÁΩ≈¿« ¡◊¿Ω¿ª
-        //ªÛ¿⁄ ∫ŒΩ§æﬂ ≥™ø»
+    public void rootathirdDoor() { // Crimson Queen
+        // South Garden, Queen's Castle Normal, Chaos
+        // 105200300, 105200310
+        // 105200700, 105200710
+        // Let's talk to the sleeping Crimson Queen
+        // Oh, cute
+        // Insolent!
+        // Giggle, here is
+        // Sob, your death
+        // Must break box to appear
         initNPC(MapleLifeFactory.getNPC(1064014));
         EventManager em = getEventManager("RootAbyssCrimsonQueen");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-        	String text = "";
-        	if (DBConfig.isGanglim) {
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ ≥≤¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ≥≤¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫Ì∑Øµ ƒ˝#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ∫Ì∑Øµ ƒ˝] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            	text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ∫Ì∑Øµ ƒ˝] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            	text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-        	}
-        	else {
-        		boolean single = getPlayer().getPartyMemberSize() == 1;
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ ≥≤¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ≥≤¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫Ì∑Øµ ƒ˝#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") +  "∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-            	text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") +  "∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-            	//text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-            	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalCrimsonQueen" + (single ? "Single" : "Multi"));
-                text += "\r\n#L4#≥Î∏÷ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ¿‘¿Â »Ωºˆ ¡ı∞°" + ((single ? 2 : 1) - reset) + "»∏ ∞°¥… #l";
-        	}
-            
+            String text = "";
+            if (DBConfig.isGanglim) {
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss South Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rCrimson Queen#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÉ‡∏ï‡πâ‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Crimson Queen] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r["
+                        + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5,
+                        "[Chaos Crimson Queen] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                + chr.getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")
+                                + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+            } else {
+                boolean single = getPlayer().getPartyMemberSize() == 1;
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss South Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rCrimson Queen#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÉ‡∏ï‡πâ‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode " + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode "
+                        + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                // text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                        "NormalCrimsonQueen" + (single ? "Single" : "Multi"));
+                text += "\r\n#L4#‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏£‡∏≠‡∏ö‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô Normal Mode " + (single ? "(Single)" : "(Multi)") + " (‡πÄ‡∏´‡∏•‡∏∑‡∏≠ "
+                        + ((single ? 2 : 1) - reset)
+                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á) #l";
+            }
+
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
                 return;
             } else {
-            	if (v0 == 4 && !DBConfig.isGanglim) {
-            		if (getPlayer().getTogetherPoint() < 150) {
-            			self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. «ˆ¿Á ∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint());
-            			return;
-            		}
-            		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalCrimsonQueen" + (single ? "Single" : "Multi"));
-            		if ((reset > 0 && !single) || reset > 1 && single) { //√ ±‚»≠ ∫“∞°¥…
-                    	self.sayOk("¿œ¿œ √ﬂ∞°¿‘¿Â »Ωºˆ ¡ı∞°∏¶ ∏µŒ ªÁøÎ«œø¥Ω¿¥œ¥Ÿ.");
-                    	return;
+                if (v0 == 4 && !DBConfig.isGanglim) {
+                    if (getPlayer().getTogetherPoint() < 150) {
+                        self.sayOk("‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡πà‡∏ß‡∏°‡∏°‡∏∑‡∏≠‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô : " + getPlayer().getTogetherPoint());
+                        return;
                     }
-            		getPlayer().gainTogetherPoint(-150);
-            		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalCrimsonQueen" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-            		self.sayOk("¿‘¿Â »Ωºˆ∞° ¡ı∞°µ«æ˙Ω¿¥œ¥Ÿ.");
-            		return;
-            	}
+                    boolean single = getPlayer().getPartyMemberSize() == 1;
+                    int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalCrimsonQueen" + (single ? "Single" : "Multi"));
+                    if ((reset > 0 && !single) || reset > 1 && single) { // Cannot reset
+                        self.sayOk("‡∏Ñ‡∏∏‡∏ì‡πÉ‡∏ä‡πâ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡∏´‡∏°‡∏î‡πÅ‡∏•‡πâ‡∏ß");
+                        return;
+                    }
+                    getPlayer().gainTogetherPoint(-150);
+                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalCrimsonQueen" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+                    self.sayOk("‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß");
+                    return;
+                }
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.CrimsonQueen.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID());
-                                        if (DBConfig.isGanglim) { 
+                                        if (DBConfig.isGanglim) {
                                             updateQuestEx(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID());
                                         }
-                                    	if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
+                                        if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200300);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200310).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200310)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(),
+                                    QuestExConstants.ChaosCrimsonQueen.getQuestID(), DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosCrimsonQueen.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -777,80 +933,102 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200700);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200710).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200710)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
     }
 
-    public void bloodyqueenEnter() { //∫Ì∑Øµ ƒ˝
-    	if (!DBConfig.isGanglim) {
-    		rootathirdDoor();
-    		return;
-    	}
+    public void bloodyqueenEnter() { // Crimson Queen
+        if (!DBConfig.isGanglim) {
+            rootathirdDoor();
+            return;
+        }
         EventManager em = getEventManager("RootAbyssCrimsonQueen");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-            String text = "#r#e<∑Á≈∏∫ÒΩ∫ ≥≤¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ≥≤¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫Ì∑Øµ ƒ˝#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-            text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
+            String text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss South Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rCrimson Queen#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÉ‡∏ï‡πâ‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                    + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                            : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                    + "\r\n";
+            text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ∫Ì∑Øµ ƒ˝] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Crimson Queen] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.CrimsonQueen.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
+            text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ∫Ì∑Øµ ƒ˝] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r["
+                        + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5,
+                        "[Chaos Crimson Queen] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                + chr.getOneInfoQuestInteger(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "eNum")
+                                + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
+            text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
             } else {
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.CrimsonQueen.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.CrimsonQueen.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -859,31 +1037,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200300);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200310).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200300).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200310)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200300)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(),
+                                    QuestExConstants.ChaosCrimsonQueen.getQuestID(), DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosCrimsonQueen.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosCrimsonQueen.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -892,32 +1078,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200700);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200710).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200700).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200710)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200700)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
@@ -929,72 +1122,96 @@ public class RootAbyss extends ScriptEngineNPC {
             if (eim.getProperty("summonMOB") == null) {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("¿·µÁ ∫Ì∑Øµ ƒ˝ø°∞‘ ∏ª¿ª ∞…æÓ∫∏¿⁄.", 5120025, 3000);
+                field.startMapEffect("‡∏•‡∏≠‡∏á‡πÑ‡∏õ‡∏Ñ‡∏∏‡∏¢‡∏Å‡∏±‡∏ö Crimson Queen ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏´‡∏•‡∏±‡∏ö‡πÉ‡∏´‡∏•‡∏î‡∏π‡∏™‡∏¥", 5120025, 3000);
             }
         }
     }
 
-    public void rootaforthDoor() { //∫ß∑Î
-        //∫œ¬ ¡§ø¯
-        //105200400, 105200800
-        //∫ß∑Î¿Ã ∫∏¿Ã¡ˆ æ ¥¬¥Ÿ
-        // ≥ª ∞Ê∞Ì∏¶
+    public void rootaforthDoor() { // Vellum
+        // North Garden
+        // 105200400, 105200800
+        // Cannot see Vellum
+        // My warning
         initNPC(MapleLifeFactory.getNPC(1064014));
         EventManager em = getEventManager("RootAbyssVellum");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-        	String text = "";
-        	if (DBConfig.isGanglim) {
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ ∫œ¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ∫œ¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫ß∑Î#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ∫ß∑Î] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            	text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ∫ß∑Î] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
-            	text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";      
-        	}
-        	else {
-        		boolean single = getPlayer().getPartyMemberSize() == 1;
-        		text = "#r#e<∑Á≈∏∫ÒΩ∫ ∫œ¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ∫œ¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫ß∑Î#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-                text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") +  "∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
-            	text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ"  + (single ? "(ΩÃ±€)" : "(∏÷∆º)") +  "∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
-            	//text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
-            	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVellum" + (single ? "Single" : "Multi"));
-                text += "\r\n#L4#≥Î∏÷ ∏µÂ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ¿‘¿Â »Ωºˆ ¡ı∞°" + ((single ? 2 : 1) - reset) + "»∏ ∞°¥… #l";
-        	}
-                
+            String text = "";
+            if (DBConfig.isGanglim) {
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss North Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVellum#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÄ‡∏´‡∏ô‡∏∑‡∏≠‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Vellum] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Vellum] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
+                text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+            } else {
+                boolean single = getPlayer().getPartyMemberSize() == 1;
+                text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss North Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVellum#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÄ‡∏´‡∏ô‡∏∑‡∏≠‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                        + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                                : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                        + "\r\n";
+                text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode " + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode "
+                        + (single ? "(Single)" : "(Multi)")
+                        + " (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
+                // text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
+                int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                        "NormalVellum" + (single ? "Single" : "Multi"));
+                text += "\r\n#L4#‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏£‡∏≠‡∏ö‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô Normal Mode " + (single ? "(Single)" : "(Multi)") + " (‡πÄ‡∏´‡∏•‡∏∑‡∏≠ "
+                        + ((single ? 2 : 1) - reset)
+                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á) #l";
+            }
+
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
                 return;
             } else {
-            	if (v0 == 4 && !DBConfig.isGanglim) {
-            		if (getPlayer().getTogetherPoint() < 150) {
-            			self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. «ˆ¿Á ∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint());
-            			return;
-            		}
-            		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVellum" + (single ? "Single" : "Multi"));
-            		if ((reset > 0 && !single) || reset > 1 && single) { //√ ±‚»≠ ∫“∞°¥…
-                    	self.sayOk("¿œ¿œ √ﬂ∞°¿‘¿Â »Ωºˆ ¡ı∞°∏¶ ∏µŒ ªÁøÎ«œø¥Ω¿¥œ¥Ÿ.");
-                    	return;
+                if (v0 == 4 && !DBConfig.isGanglim) {
+                    if (getPlayer().getTogetherPoint() < 150) {
+                        self.sayOk("‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡πà‡∏ß‡∏°‡∏°‡∏∑‡∏≠‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô : " + getPlayer().getTogetherPoint());
+                        return;
                     }
-            		getPlayer().gainTogetherPoint(-150);
-            		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalVellum" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-            		self.sayOk("¿‘¿Â »Ωºˆ∞° ¡ı∞°µ«æ˙Ω¿¥œ¥Ÿ.");
-            		return;
-            	}
+                    boolean single = getPlayer().getPartyMemberSize() == 1;
+                    int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalVellum" + (single ? "Single" : "Multi"));
+                    if ((reset > 0 && !single) || reset > 1 && single) { // Cannot reset
+                        self.sayOk("‡∏Ñ‡∏∏‡∏ì‡πÉ‡∏ä‡πâ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡∏´‡∏°‡∏î‡πÅ‡∏•‡πâ‡∏ß");
+                        return;
+                    }
+                    getPlayer().gainTogetherPoint(-150);
+                    getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                            "NormalVellum" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+                    self.sayOk("‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß");
+                    return;
+                }
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Vellum.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Vellum.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Vellum.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.Vellum.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -1002,40 +1219,48 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200400);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200410).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200410)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVellum.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVellum.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosVellum.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosVellum.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosVellum.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -1043,80 +1268,101 @@ public class RootAbyss extends ScriptEngineNPC {
                                         }
                                         if (!DBConfig.isGanglim && getPlayer().getPartyMemberSize() > 1) {
                                             for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                            	if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                               		partyMember.setMultiMode(true);
-                                               		partyMember.applyBMCurseJinMulti();
-                                              	}
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
                                             }
                                         }
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200800);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200810).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200810)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("Ïù¥ÎØ∏ Î™®Îì† Ïù∏Ïä§ÌÑ¥Ïä§Í∞Ä Í∞ÄÎìùÏ∞® Ïù¥Ïö©ÌïòÏã§ Ïàò ÏóÜÏäµÎãàÎã§. Îã§Î•∏ Ï±ÑÎÑêÏùÑ Ïù¥Ïö©Ìï¥ Ï£ºÏÑ∏Ïöî.");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
     }
 
-    public void bellumEnter() { //∫ß∑Î
-    	if (!DBConfig.isGanglim) {
-    		rootaforthDoor();
-    		return;
-    	}
+    public void bellumEnter() { // Vellum
+        if (!DBConfig.isGanglim) {
+            rootaforthDoor();
+            return;
+        }
         EventManager em = getEventManager("RootAbyssVellum");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-            String text = "#r#e<∑Á≈∏∫ÒΩ∫ ∫œ¬  ¡§ø¯ ¿‘±∏>#n#k\r\n∑Á≈∏∫ÒΩ∫ ∫œ¬  ∫¿¿Œ¿« ºˆ»£¿⁄¿Œ #r∫ß∑Î#k¿Ã ¡ˆ≈∞∞Ì ¿÷¥¬ ¡§ø¯¿∏∑Œ ∞°¥¬ πÆ¿Ã¥Ÿ. " + (DBConfig.isGanglim ? "≈¨∏ÆæÓ ±‚∑œ¿∫ ¥Á¿œ ¿⁄¡§ø° √ ±‚»≠ µÀ¥œ¥Ÿ." : "#r≈¨∏ÆæÓ ±‚∑œ¿∫ ≥Î∏÷¿« ∞ÊøÏ ¥Á¿œ ¿⁄¡§, ƒ´ø¿Ω∫¿« ∞ÊøÏ ∏≈¡÷ ∏Òø‰¿œ ¿⁄¡§¿ª ±‚¡ÿ¿∏∑Œ √ ±‚»≠ µÀ¥œ¥Ÿ.#b") + "\r\n";
-            text += "#L0##i4033611##t4033611#∏¶ ªÁøÎ«œø© ≥Î∏÷ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(125∑π∫ß ¿ÃªÛ)";
+            String text = "#r#e<‡∏ó‡∏≤‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ Root Abyss North Garden>#n#k\r\n‡∏õ‡∏£‡∏∞‡∏ï‡∏π‡∏™‡∏π‡πà‡∏™‡∏ß‡∏ô‡∏ó‡∏µ‡πà #rVellum#k ‡∏ú‡∏π‡πâ‡∏û‡∏¥‡∏ó‡∏±‡∏Å‡∏©‡πå‡πÅ‡∏´‡πà‡∏á‡∏ó‡∏¥‡∏®‡πÄ‡∏´‡∏ô‡∏∑‡∏≠‡πÄ‡∏ù‡πâ‡∏≤‡∏£‡∏±‡∏Å‡∏©‡∏≤‡∏≠‡∏¢‡∏π‡πà "
+                    + (DBConfig.isGanglim ? "‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô"
+                            : "#r‡∏õ‡∏£‡∏∞‡∏ß‡∏±‡∏ï‡∏¥‡∏Å‡∏≤‡∏£‡πÄ‡∏Ñ‡∏•‡∏µ‡∏¢‡∏£‡πå Normal ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡πÄ‡∏ó‡∏µ‡πà‡∏¢‡∏á‡∏Ñ‡∏∑‡∏ô, Chaos ‡∏à‡∏∞‡∏£‡∏µ‡πÄ‡∏ã‡πá‡∏ï‡∏ó‡∏∏‡∏Å‡∏ß‡∏±‡∏ô‡∏û‡∏§‡∏´‡∏±‡∏™‡∏ö‡∏î‡∏µ#b")
+                    + "\r\n";
+            text += "#L0#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Normal Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#k";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[≥Î∏ª ∫ß∑Î] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum") + "/"
+                        + (getPlayer().getBossTier() + 1) + "]#k";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Normal Vellum] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.Vellum.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L1##i4033611##t4033611#∏¶ ªÁøÎ«œø© ƒ´ø¿Ω∫ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)";
+            text += "#l\r\n#L1#‡πÉ‡∏ä‡πâ #i4033611##t4033611# ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)";
             if (DBConfig.isGanglim) {
-                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum") + "/" + (getPlayer().getBossTier() + 1) + "]#b";
-                getPlayer().getPartyMembers().forEach(chr -> chr.dropMessage(5, "[ƒ´ø¿Ω∫ ∫ß∑Î] ø¿¥√ «ÿ¥Á ∫∏Ω∫∏¶ "+chr.getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")+"π¯ ¿‘¿Â «œºÃΩ¿¥œ¥Ÿ. √— "+(chr.getBossTier() + 1)+"π¯ ¿‘¿Â «œΩ« ºˆ¿÷Ω¿¥œ¥Ÿ."));
+                text += " #r[" + getPlayer().getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")
+                        + "/" + (getPlayer().getBossTier() + 1) + "]#b";
+                getPlayer().getPartyMembers()
+                        .forEach(chr -> chr.dropMessage(5,
+                                "[Chaos Vellum] ‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß "
+                                        + chr.getOneInfoQuestInteger(QuestExConstants.ChaosVellum.getQuestID(), "eNum")
+                                        + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î " + (chr.getBossTier() + 1) + " ‡∏Ñ‡∏£‡∏±‡πâ‡∏á"));
             }
-            text += "#l\r\n#L3#ƒ´ø¿Ω∫ ø¨Ω¿ ∏µÂ∑Œ ¿Ãµø«—¥Ÿ.(180∑π∫ß ¿ÃªÛ)#l";
+            text += "#l\r\n#L3#‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà Chaos Practice Mode (‡πÄ‡∏•‡πÄ‡∏ß‡∏• 180 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ)#l";
             int v0 = self.askMenu(text);
             if (target.getParty() == null) {
-                target.say("∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷¥¬ ∞Õ ∞∞±∫. ∆ƒ∆º∏¶ √£æ∆∫∏¿⁄.");
+                target.say("‡∏î‡∏π‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏ô‡∏∞ ‡πÑ‡∏õ‡∏´‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏Å‡∏±‡∏ô‡πÄ‡∏ñ‡∏≠‡∏∞");
             } else {
                 if (target.getParty().isPartySameMap()) {
-                    if (v0 == 0) { //≥Î∏ª∏µÂ
+                    if (v0 == 0) { // Normal Mode
                         if (em.getProperty("status0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Vellum.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Vellum.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Vellum.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("status0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.Vellum.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -1125,31 +1371,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200400);
                                         eim.setProperty("mode", "normal");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200410).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200400).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200410)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200400)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
-                                target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ø¿¥√ ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                        + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                         }
-                    } else if (v0 == 1) { //ƒ´ø¿Ω∫∏µÂ
+                    } else if (v0 == 1) { // Chaos Mode
                         if (em.getProperty("Cstatus0").equals("0")) {
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVellum.getQuestID(), DBConfig.isGanglim);
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.ChaosVellum.getQuestID(),
+                                    DBConfig.isGanglim);
                             if (overLap == null) {
-                                String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.ChaosVellum.getQuestID());
+                                String lastDate = checkEventLastDate(getPlayer(),
+                                        QuestExConstants.ChaosVellum.getQuestID());
                                 if (lastDate == null || DBConfig.isGanglim) {
                                     String exMember = target.exchangeParty(4033611, -1);
-                                    if (exMember == null) { //¿‘¿ÂΩ√µµ
+                                    if (exMember == null) { // Try entry
                                         em.setProperty("Cstatus0", "1");
                                         updateLastDate(getPlayer(), QuestExConstants.ChaosVellum.getQuestID());
                                         if (DBConfig.isGanglim) {
@@ -1158,32 +1412,39 @@ public class RootAbyss extends ScriptEngineNPC {
                                         EventInstanceManager eim = em.readyInstance();
                                         eim.setProperty("map", 105200800);
                                         eim.setProperty("mode", "chaos");
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).setLastRespawnTime(0);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200810).resetFully(true);
-                                        getClient().getChannelServer().getMapFactory().getMap(105200800).setLastRespawnTime(Long.MAX_VALUE);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .setLastRespawnTime(0);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200810)
+                                                .resetFully(true);
+                                        getClient().getChannelServer().getMapFactory().getMap(105200800)
+                                                .setLastRespawnTime(Long.MAX_VALUE);
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        target.say("∆ƒ∆ºø¯ ¡ﬂ #b" + exMember + "#k¥‘¿∫ #i4033611##t4033611#¿ª ∞°¡ˆ∞Ì ¿÷¡ˆ æ æ∆ ¿‘¿Â¿Ã ∫“∞°¥…«œ±∫.");
+                                        target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b" + exMember
+                                                + "#k ‡πÑ‡∏°‡πà‡∏°‡∏µ #i4033611##t4033611# ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                     }
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + lastDate + " #n#kµ⁄ ¿Á ¿‘¿Â ∞°¥…«’¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏à‡∏∞‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÉ‡∏ô‡∏≠‡∏µ‡∏Å #b#e" + lastDate + " #n#k");
                                 }
                             } else {
                                 if (DBConfig.isGanglim) {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ±›¿œø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 } else {
-                                    target.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + overLap + "#n#k¥‘¿∫ ¿Ãπ¯¡÷ø° ¿ÃπÃ µµ¿¸«œø© µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    target.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏™‡∏±‡∏õ‡∏î‡∏≤‡∏´‡πå‡∏ô‡∏µ‡πâ ‡∏à‡∏∂‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                                 }
                             }
                         } else {
-                            self.say("¿ÃπÃ ∏µÁ ¿ŒΩ∫≈œΩ∫∞° ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ ¡÷ººø‰.");
+                            self.say("Ïù¥ÎØ∏ Î™®Îì† Ïù∏Ïä§ÌÑ¥Ïä§Í∞Ä Í∞ÄÎìùÏ∞® Ïù¥Ïö©ÌïòÏã§ Ïàò ÏóÜÏäµÎãàÎã§. Îã§Î•∏ Ï±ÑÎÑêÏùÑ Ïù¥Ïö©Ìï¥ Ï£ºÏÑ∏Ïöî.");
                         }
-                    } else if (v0 == 2) { //ø¨Ω¿∏µÂ
-                        self.say("ø¨Ω¿∏µÂ¥¬ «ˆ¿Á ¡ÿ∫Ò¡ﬂ¿‘¥œ¥Ÿ.");
+                    } else if (v0 == 2) { // Practice Mode
+                        self.say("‡πÇ‡∏´‡∏°‡∏î‡∏ù‡∏∂‡∏Å‡∏ã‡πâ‡∏≠‡∏°‡∏Å‡∏≥‡∏•‡∏±‡∏á‡∏≠‡∏¢‡∏π‡πà‡∏£‡∏∞‡∏´‡∏ß‡πà‡∏≤‡∏á‡∏Å‡∏≤‡∏£‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏Å‡∏≤‡∏£");
                     }
                 } else {
-                    self.say("∆ƒ∆ºø¯ ∏µŒ ∞∞¿∫∏ ø° ¿÷¿∏º≈æﬂ «’¥œ¥Ÿ.");
+                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏ó‡∏∏‡∏Å‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                 }
             }
         }
@@ -1195,27 +1456,28 @@ public class RootAbyss extends ScriptEngineNPC {
             if (eim.getProperty("summonMOB") == null) {
                 eim.setProperty("summonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("∫ß∑Î¿Ã ∫∏¿Ã¡ˆ æ ¥¬¥Ÿ. ¡¶¥‹ ±Ÿ√≥∏¶ ¡∂ªÁ«ÿ∫∏¿⁄.", 5120025, 3000);
+                field.startMapEffect("‡πÑ‡∏°‡πà‡πÄ‡∏´‡πá‡∏ô‡∏ï‡∏±‡∏ß Vellum ‡πÄ‡∏•‡∏¢ ‡∏•‡∏≠‡∏á‡∏™‡∏≥‡∏£‡∏ß‡∏à‡πÅ‡∏ñ‡∏ß‡πÜ ‡πÅ‡∏ó‡πà‡∏ô‡∏ö‡∏π‡∏ä‡∏≤‡∏î‡∏π‡∏™‡∏¥", 5120025, 3000);
             }
         }
     }
 
     public void rootabyssOut() {
         initNPC(MapleLifeFactory.getNPC(1064012));
-        if (target.askYesNo("¿ÃπÃ ø≠ºË∏¶ Ω·πˆ∑»¥Ÿ. º“∏µ» ø≠ºË∞° æ∆±ÓøÏ¥œ ¿Ã¥Î∑Œ ≥™∞°¥¬ ∞Õ∫∏¥Ÿ ∫∏Ω∫∏¶ √≥ƒ°«œ¥¬ ∞Õ¿Ã ¥ı ¡¡¿ª ∞Õ ∞∞¿∫µ•.. ±◊∑°µµ ±◊≥… ≥™∞•±Ó?") == 1) {
+        if (target.askYesNo(
+                "‡πÉ‡∏ä‡πâ‡∏Å‡∏∏‡∏ç‡πÅ‡∏à‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß ‡∏ñ‡πâ‡∏≤‡∏≠‡∏≠‡∏Å‡πÑ‡∏õ‡∏ï‡∏≠‡∏ô‡∏ô‡∏µ‡πâ‡∏à‡∏∞‡πÄ‡∏™‡∏µ‡∏¢‡∏Å‡∏∏‡∏ç‡πÅ‡∏à‡πÑ‡∏õ‡πÄ‡∏õ‡∏•‡πà‡∏≤‡πÜ ‡∏™‡∏π‡πâ‡∏ö‡∏≠‡∏™‡πÉ‡∏´‡πâ‡∏ä‡∏ô‡∏∞‡∏Å‡πà‡∏≠‡∏ô‡∏î‡∏µ‡∏Å‡∏ß‡πà‡∏≤‡∏°‡∏±‡πâ‡∏¢... ‡πÅ‡∏ï‡πà‡∏Å‡πá‡∏à‡∏∞‡∏≠‡∏≠‡∏Å‡πÄ‡∏•‡∏¢‡πÄ‡∏´‡∏£‡∏≠?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().setRegisterTransferFieldTime(0);
                 getPlayer().setRegisterTransferField(0);
             }
             registerTransferField(105200000);
         } else {
-            target.sayOk("±‚ø’ ø≠ºË∏¶ ªÁøÎ«œ∞Ì µÈæÓø‘¥¬µ• ∫∏Ω∫±Ó¡ˆ ≈¨∏ÆæÓ«œµµ∑œ «œ¿⁄.");
+            target.sayOk("‡πÑ‡∏´‡∏ô‡πÜ ‡∏Å‡πá‡πÉ‡∏ä‡πâ‡∏Å‡∏∏‡∏ç‡πÅ‡∏à‡πÄ‡∏Ç‡πâ‡∏≤‡∏°‡∏≤‡πÅ‡∏•‡πâ‡∏ß ‡∏à‡∏±‡∏î‡∏Å‡∏≤‡∏£‡∏ö‡∏≠‡∏™‡πÉ‡∏´‡πâ‡πÑ‡∏î‡πâ‡∏Å‡πà‡∏≠‡∏ô‡∏•‡∏∞‡∏Å‡∏±‡∏ô");
         }
     }
 
     public void outrootaBoss() {
         initNPC(MapleLifeFactory.getNPC(1064012));
-        if (target.askYesNo("¿¸≈ı∏¶ ∏∂ƒ°∞Ì π€¿∏∑Œ ≥™∞•±Ó??") == 1) {
+        if (target.askYesNo("‡∏à‡∏ö‡∏Å‡∏≤‡∏£‡∏ï‡πà‡∏≠‡∏™‡∏π‡πâ‡πÅ‡∏•‡πâ‡∏ß ‡∏à‡∏∞‡∏≠‡∏≠‡∏Å‡πÑ‡∏õ‡∏Ç‡πâ‡∏≤‡∏á‡∏ô‡∏≠‡∏Å‡πÑ‡∏´‡∏°?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().setRegisterTransferFieldTime(0);
                 getPlayer().setRegisterTransferField(0);
@@ -1226,7 +1488,7 @@ public class RootAbyss extends ScriptEngineNPC {
 
     public void rootaBossOut() {
         initNPC(MapleLifeFactory.getNPC(1064012));
-        if (target.askYesNo("¿¸≈ı∏¶ ∏∂ƒ°∞Ì π€¿∏∑Œ ≥™∞•±Ó??") == 1) {
+        if (target.askYesNo("‡∏à‡∏ö‡∏Å‡∏≤‡∏£‡∏ï‡πà‡∏≠‡∏™‡∏π‡πâ‡πÅ‡∏•‡πâ‡∏ß ‡∏à‡∏∞‡∏≠‡∏≠‡∏Å‡πÑ‡∏õ‡∏Ç‡πâ‡∏≤‡∏á‡∏ô‡∏≠‡∏Å‡πÑ‡∏´‡∏°?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().setRegisterTransferFieldTime(0);
                 getPlayer().setRegisterTransferField(0);
@@ -1240,17 +1502,18 @@ public class RootAbyss extends ScriptEngineNPC {
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (getPlayer().getMap().getAllMonster().size() == 0) {
-                if (target.askYesNo("±◊∑≥ ¿Ãµø«ÿ∫º±Ó?") == 1) {
+                if (target.askYesNo("‡∏á‡∏±‡πâ‡∏ô‡πÑ‡∏õ‡∏Å‡∏±‡∏ô‡πÄ‡∏•‡∏¢‡∏°‡∏±‡πâ‡∏¢?") == 1) {
                     if (eim.getProperty("stage1") == null) {
                         eim.setProperty("stage1", "clear");
                         target.getParty().registerTransferField(target.getMapId() + 10);
                     }
                 } else {
-                    target.sayOk("¡∂±› ¥ı ¡ÿ∫Ò∏¶ «œ∞Ì ¿Ãµø«œ¿⁄.");
+                    target.sayOk("‡∏Ç‡∏≠‡πÄ‡∏ï‡∏£‡∏µ‡∏¢‡∏°‡∏ï‡∏±‡∏ß‡∏≠‡∏µ‡∏Å‡∏´‡∏ô‡πà‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß‡∏Ñ‡πà‡∏≠‡∏¢‡πÑ‡∏õ‡∏ô‡∏∞");
                 }
             } else {
-                getPlayer().getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("∏’¿˙ ¡§ø¯ ≥ª¿« ¿”«¡∏¶ ¡¶∞≈«œººø‰."));
-                getPlayer().getMap().broadcastMessage(CWvsContext.serverNotice(5, "∏’¿˙ ¡§ø¯ ≥ª¿« ¿”«¡∏¶ ¡¶∞≈«œººø‰."));
+                getPlayer().getMap()
+                        .broadcastMessage(CWvsContext.getScriptProgressMessage("‡∏Å‡∏≥‡∏à‡∏±‡∏î Imp ‡πÉ‡∏ô‡∏™‡∏ß‡∏ô‡πÉ‡∏´‡πâ‡∏´‡∏°‡∏î‡∏Å‡πà‡∏≠‡∏ô"));
+                getPlayer().getMap().broadcastMessage(CWvsContext.serverNotice(5, "‡∏Å‡∏≥‡∏à‡∏±‡∏î Imp ‡πÉ‡∏ô‡∏™‡∏ß‡∏ô‡πÉ‡∏´‡πâ‡∏´‡∏°‡∏î‡∏Å‡πà‡∏≠‡∏ô"));
             }
         }
     }

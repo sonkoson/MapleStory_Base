@@ -17,69 +17,69 @@ import java.awt.*;
 public class Cygnus extends ScriptEngineNPC {
 
     public void in_cygnus() {
-        //ÀÎ½ºÅÏ½º¸Ê 271040300, 271041300(º¼Ç°¾ø´ÂÁ¤¿ø)
+        //ì¸ìŠ¤í„´ìŠ¤ë§µ 271040300, 271041300(ë³¼í’ˆì—†ëŠ”ì •ì›)
         initNPC(MapleLifeFactory.getNPC(2143004));
         if (DBConfig.isGanglim) {
-            getPlayer().dropMessage(5, "ÇöÀç Å¸¶ôÇÑ ½Ã±×³Ê½º¿¡ Âü¿©ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "í˜„ì¬ íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤ì— ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         EventManager em = getEventManager("Cygnus");
         if (em == null) {
-            self.say("ÇöÀç ½Ã±×³Ê½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("í˜„ì¬ ì‹œê·¸ë„ˆìŠ¤ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         } else {
-            if (target.getMapId() >= 271040100 && target.getMapId() <= 271040199) { //³ë¸»½Ã±× ÀüÅõ¸Ê
-                int v0 = self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ½Ã±×³Ê½ºÀÇ ÈÄ¿øÀ¸·Î ÅğÀåÇÏ½Ã°Ú½À´Ï±î?");
+            if (target.getMapId() >= 271040100 && target.getMapId() <= 271040199) { //ë…¸ë§ì‹œê·¸ ì „íˆ¬ë§µ
+                int v0 = self.askYesNo("ì „íˆ¬ë¥¼ ë§ˆì¹˜ê³  ì‹œê·¸ë„ˆìŠ¤ì˜ í›„ì›ìœ¼ë¡œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
                 if (v0 == 1) {
-                    registerTransferField(271040200); //³ë¸»½Ã±×³Ê½º ÅğÀå¸Ê
+                    registerTransferField(271040200); //ë…¸ë§ì‹œê·¸ë„ˆìŠ¤ í‡´ì¥ë§µ
                 }
-            } else if (target.getMapId() >= 271041100 && target.getMapId() <= 271041109) { //ÀÌÁö½Ã±×
-                int v0 = self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ½Ã±×³Ê½ºÀÇ ÈÄ¿øÀ¸·Î ÅğÀåÇÏ½Ã°Ú½À´Ï±î?");
+            } else if (target.getMapId() >= 271041100 && target.getMapId() <= 271041109) { //ì´ì§€ì‹œê·¸
+                int v0 = self.askYesNo("ì „íˆ¬ë¥¼ ë§ˆì¹˜ê³  ì‹œê·¸ë„ˆìŠ¤ì˜ í›„ì›ìœ¼ë¡œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
                 if (v0 == 1) {
-                    registerTransferField(271041200); //ÀÌÁö½Ã±×³Ê½º ÅğÀå¸Ê
+                    registerTransferField(271041200); //ì´ì§€ì‹œê·¸ë„ˆìŠ¤ í‡´ì¥ë§µ
                 }
-            } else if (target.getMapId() == 271040000 || target.getMapId() == 271041000) { //³ë¸»½Ã±×, ÀÌÁö½Ã±×³Ê½º ÀÔÀå¸Ê
+            } else if (target.getMapId() == 271040000 || target.getMapId() == 271041000) { //ë…¸ë§ì‹œê·¸, ì´ì§€ì‹œê·¸ë„ˆìŠ¤ ì…ì¥ë§µ
                 if (target.getParty() == null) {
-                    self.say("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                 } else {
                     if (DBConfig.isGanglim && getPlayer().getParty().getLeader().getId() != target.getId()) {
-                        self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                        self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                     } else {
                         boolean normalCygnus = target.getMapId() == 271040000;
                         if (!normalCygnus && DBConfig.isGanglim) {
-                            getPlayer().dropMessage(5, "ÇöÀç Å¸¶ôÇÑ ½Ã±×³Ê½º(ÀÌÁö)¿¡ Âü¿©ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                            getPlayer().dropMessage(5, "í˜„ì¬ íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)ì— ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                             return;
                         }
                         String v = "";
                         if (DBConfig.isGanglim) {
-                        	v = "Å¸¶ôÇÑ ½Ã±×³Ê½º(ÀÌÁö)¿¡ Âü°¡ÇÒ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n#L0# ½Ã±×³Ê½º(ÀÌÁö) ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n#L1# ½Ã±×³Ê½º(ÀÌÁö) ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l";
+                        	v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)ì— ì°¸ê°€í•  ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€) ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n#L1# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€) ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l";
                             if (normalCygnus) {
-                                v = "Å¸¶ôÇÑ ½Ã±×³Ê½º¿¡°Ô ¸Â¼³ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n#L0# ½Ã±×³Ê½º(³ë¸Ö) ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n#L1# ½Ã±×³Ê½º(³ë¸Ö) ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l";
+                                v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤ì—ê²Œ ë§ì„¤ ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€) ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n#L1# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€) ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l";
                             }
                         }
                         else {
                         	boolean single = getPlayer().getPartyMemberSize() == 1;
                         	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Cygnus" + (single ? "Single" : "Multi"));
-                        	v = "Å¸¶ôÇÑ ½Ã±×³Ê½º(ÀÌÁö)¿¡ Âü°¡ÇÒ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n"
-                        			+ "#L0# ½Ã±×³Ê½º(ÀÌÁö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n"
-                        			+ "#L1# ½Ã±×³Ê½º(ÀÌÁö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n";
+                        	v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)ì— ì°¸ê°€í•  ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n"
+                        			+ "#L0# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)" + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n"
+                        			+ "#L1# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)" + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n";
                             if (normalCygnus) {
-                                v = "Å¸¶ôÇÑ ½Ã±×³Ê½º¿¡°Ô ¸Â¼³ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n"
-                                	+ "#L0# ½Ã±×³Ê½º(³ë¸Ö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n"
-                                	+ "#L1# ½Ã±×³Ê½º(³ë¸Ö)" + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n";
+                                v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤ì—ê²Œ ë§ì„¤ ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n"
+                                	+ "#L0# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€)" + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n"
+                                	+ "#L1# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€)" + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n";
                             }
                         }
                         int v0 = self.askMenu(v);
                         if (target.getParty().isPartySameMap()) {
                             boolean canEnter = false;
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Cygnus.getQuestID()); //½Ã±×³Ê½º´Â °İÆÄ½Ã Å¬¸®¾îÃ³¸®µÊ!!
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Cygnus.getQuestID()); //ì‹œê·¸ë„ˆìŠ¤ëŠ” ê²©íŒŒì‹œ í´ë¦¬ì–´ì²˜ë¦¬ë¨!!
                             if (overLap == null && v0 != 1) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Cygnus.getQuestID());
                                 if (lastDate == null) {
                                     if (v0 == 0) {
-                                        //271040000 ~ 271040199 (¹«½¼ ¸ÊÀ» 199°³³ª¾²³Ä;;)
-                                        //271041100 ~ 271041109 (³ë¸»½Ã±× ¸Ê)
-                                        int instanceMapID = 271041100; //ÀÌÁö½Ã±× ÀüÅõ¸Ê
-                                        if (target.getMapId() == 271040000) { //³ë¸»½Ã±×¸Ê
+                                        //271040000 ~ 271040199 (ë¬´ìŠ¨ ë§µì„ 199ê°œë‚˜ì“°ëƒ;;)
+                                        //271041100 ~ 271041109 (ë…¸ë§ì‹œê·¸ ë§µ)
+                                        int instanceMapID = 271041100; //ì´ì§€ì‹œê·¸ ì „íˆ¬ë§µ
+                                        if (target.getMapId() == 271040000) { //ë…¸ë§ì‹œê·¸ë§µ
                                             instanceMapID = 271040100;
                                         }
                                         String mode = "easy";
@@ -93,7 +93,7 @@ public class Cygnus extends ScriptEngineNPC {
                                                 canEnter = true;
                                             }
                                         }
-                                        if (!canEnter) { //ÀÔÀåÀÌ ºÒ°¡´ÉÇÑ °æ¿ì ¸Ê¿¡ À¯Àú°¡ ¾ø´ÂÁö Ã¼Å© ÈÄ ÀÎ½ºÅÏ½º ÃÊ±âÈ­
+                                        if (!canEnter) { //ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•œ ê²½ìš° ë§µì— ìœ ì €ê°€ ì—†ëŠ”ì§€ ì²´í¬ í›„ ì¸ìŠ¤í„´ìŠ¤ ì´ˆê¸°í™”
                                         	if (getClient().getChannelServer().getMapFactory().getMap(instanceMapID).getCharacters().size() == 0) {
                                         		String rt = em.getProperty("ResetTime");
                                         		long curTime = System.currentTimeMillis();
@@ -101,7 +101,7 @@ public class Cygnus extends ScriptEngineNPC {
                                         		if (time == 0) {
                                         			em.setProperty("ResetTime", String.valueOf(curTime));
                                         		}
-												else if (time - curTime >= 10000) { // 10ÃÊÀÌ»ó ¸ÊÀÌ ºó°æ¿ì ÀÔÀå°¡´ÉÇÏ°Ô º¯°æ
+												else if (time - curTime >= 10000) { // 10ì´ˆì´ìƒ ë§µì´ ë¹ˆê²½ìš° ì…ì¥ê°€ëŠ¥í•˜ê²Œ ë³€ê²½
 													canEnter = true;
 													em.setProperty("ResetTime", "0");
 												}
@@ -129,21 +129,21 @@ public class Cygnus extends ScriptEngineNPC {
                                             updateLastDate(getPlayer(), QuestExConstants.Cygnus.getQuestID());
                                             eim.registerParty(target.getParty(), getPlayer().getMap());
                                         } else {
-                                            self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                            self.sayOk("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                         }
                                     }
                                 } else {
-                                    self.say("ÆÄÆ¼¿ø Áß #b#e" + lastDate + " #n#kµÚ Àç ÀÔÀå °¡´ÉÇÕ´Ï´Ù.");//º»¸Ş : 30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÌÁö ¹× ³ë¸Ö ¸ğµå¸¦ ÅëÇÕÇÏ¿© ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.
+                                    self.say("íŒŒí‹°ì› ì¤‘ #b#e" + lastDate + " #n#kë’¤ ì¬ ì…ì¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");//ë³¸ë©” : 30ë¶„ ì´ë‚´ì— ì…ì¥í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì´ì§€ ë° ë…¸ë©€ ëª¨ë“œë¥¼ í†µí•©í•˜ì—¬ ì…ì¥ í›„ 30ë¶„ ì´ë‚´ì— ì¬ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.
                                 }
                             } else {
                                 if (v0 == 1) {
-                                    self.say("ÇöÀç ¿¬½À¸ğµå´Â ÁØºñ Áß ÀÔ´Ï´Ù.");
+                                    self.say("í˜„ì¬ ì—°ìŠµëª¨ë“œëŠ” ì¤€ë¹„ ì¤‘ ì…ë‹ˆë‹¤.");
                                 } else {
-                                    self.say("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» ½Ã±×³Ê½º¸¦ Å¬¸®¾îÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ½Ã±×³Ê½º(ÀÌÁö), ½Ã±×³Ê½º(³ë¸Ö)Àº ¸ğµÎ ÇÕÃÄ ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù.\r\n#r#e<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­µË´Ï´Ù.>#k#n");
+                                    self.say("ìµœê·¼ ì¼ì£¼ì¼ ì´ë‚´ ì‹œê·¸ë„ˆìŠ¤ë¥¼ í´ë¦¬ì–´í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì‹œê·¸ë„ˆìŠ¤(ì´ì§€), ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€)ì€ ëª¨ë‘ í•©ì³ ì¼ì£¼ì¼ì— 1íšŒë§Œ í´ë¦¬ì–´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n#r#e<í´ë¦¬ì–´ ê¸°ë¡ì€ ë§¤ì£¼ ëª©ìš”ì¼ì— ì¼ê´„ ì´ˆê¸°í™”ë©ë‹ˆë‹¤.>#k#n");
                                 }
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                            self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                         }
                     }
                 }
@@ -156,53 +156,53 @@ public class Cygnus extends ScriptEngineNPC {
     		in_cygnus();
     		return;
     	}
-        //ÀÎ½ºÅÏ½º¸Ê 271040300, 271041300(º¼Ç°¾ø´ÂÁ¤¿ø)
+        //ì¸ìŠ¤í„´ìŠ¤ë§µ 271040300, 271041300(ë³¼í’ˆì—†ëŠ”ì •ì›)
         if (DBConfig.isGanglim) {
-            getPlayer().dropMessage(5, "ÇöÀç Å¸¶ôÇÑ ½Ã±×³Ê½º¿¡ Âü¿©ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "í˜„ì¬ íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤ì— ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         EventManager em = getEventManager("Cygnus");
         if (em == null) {
-            self.say("ÇöÀç ½Ã±×³Ê½º ·¹ÀÌµå¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+            self.say("í˜„ì¬ ì‹œê·¸ë„ˆìŠ¤ ë ˆì´ë“œë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         } else {
-            if (target.getMapId() >= 271040100 && target.getMapId() <= 271040199) { //³ë¸»½Ã±× ÀüÅõ¸Ê
-                int v0 = self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ½Ã±×³Ê½ºÀÇ ÈÄ¿øÀ¸·Î ÅğÀåÇÏ½Ã°Ú½À´Ï±î?");
+            if (target.getMapId() >= 271040100 && target.getMapId() <= 271040199) { //ë…¸ë§ì‹œê·¸ ì „íˆ¬ë§µ
+                int v0 = self.askYesNo("ì „íˆ¬ë¥¼ ë§ˆì¹˜ê³  ì‹œê·¸ë„ˆìŠ¤ì˜ í›„ì›ìœ¼ë¡œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
                 if (v0 == 1) {
-                    registerTransferField(271040200); //³ë¸»½Ã±×³Ê½º ÅğÀå¸Ê
+                    registerTransferField(271040200); //ë…¸ë§ì‹œê·¸ë„ˆìŠ¤ í‡´ì¥ë§µ
                 }
-            } else if (target.getMapId() >= 271041100 && target.getMapId() <= 271041109) { //ÀÌÁö½Ã±×
-                int v0 = self.askYesNo("ÀüÅõ¸¦ ¸¶Ä¡°í ½Ã±×³Ê½ºÀÇ ÈÄ¿øÀ¸·Î ÅğÀåÇÏ½Ã°Ú½À´Ï±î?");
+            } else if (target.getMapId() >= 271041100 && target.getMapId() <= 271041109) { //ì´ì§€ì‹œê·¸
+                int v0 = self.askYesNo("ì „íˆ¬ë¥¼ ë§ˆì¹˜ê³  ì‹œê·¸ë„ˆìŠ¤ì˜ í›„ì›ìœ¼ë¡œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
                 if (v0 == 1) {
-                    registerTransferField(271041200); //ÀÌÁö½Ã±×³Ê½º ÅğÀå¸Ê
+                    registerTransferField(271041200); //ì´ì§€ì‹œê·¸ë„ˆìŠ¤ í‡´ì¥ë§µ
                 }
-            } else if (target.getMapId() == 271040000 || target.getMapId() == 271041000) { //³ë¸»½Ã±×, ÀÌÁö½Ã±×³Ê½º ÀÔÀå¸Ê
+            } else if (target.getMapId() == 271040000 || target.getMapId() == 271041000) { //ë…¸ë§ì‹œê·¸, ì´ì§€ì‹œê·¸ë„ˆìŠ¤ ì…ì¥ë§µ
                 if (target.getParty() == null) {
-                    self.say("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                    self.say("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                 } else {
                     if (target.getParty().getLeader().getId() != target.getId()) {
-                        self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                        self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                     } else {
                         boolean normalCygnus = target.getMapId() == 271040000;
                         if (!normalCygnus && DBConfig.isGanglim) {
-                            getPlayer().dropMessage(5, "ÇöÀç Å¸¶ôÇÑ ½Ã±×³Ê½º(ÀÌÁö)¿¡ Âü¿©ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                            getPlayer().dropMessage(5, "í˜„ì¬ íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)ì— ì°¸ì—¬í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                             return;
                         }
-                        String v = "Å¸¶ôÇÑ ½Ã±×³Ê½º(ÀÌÁö)¿¡ Âü°¡ÇÒ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n#L0# ½Ã±×³Ê½º(ÀÌÁö) ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n#L1# ½Ã±×³Ê½º(ÀÌÁö) ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l";
+                        String v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤(ì´ì§€)ì— ì°¸ê°€í•  ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€) ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n#L1# ì‹œê·¸ë„ˆìŠ¤(ì´ì§€) ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l";
                         if (normalCygnus) {
-                            v = "Å¸¶ôÇÑ ½Ã±×³Ê½º¿¡°Ô ¸Â¼³ ÁØºñ´Â µÇ¼Ì½À´Ï±î?\r\n#b\r\n#L0# ½Ã±×³Ê½º(³ë¸Ö) ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l\r\n#L1# ½Ã±×³Ê½º(³ë¸Ö) ¿¬½À ¸ğµå ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l";
+                            v = "íƒ€ë½í•œ ì‹œê·¸ë„ˆìŠ¤ì—ê²Œ ë§ì„¤ ì¤€ë¹„ëŠ” ë˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€) ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l\r\n#L1# ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€) ì—°ìŠµ ëª¨ë“œ ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l";
                         }
                         int v0 = self.askMenu(v);
                         if (target.getParty().isPartySameMap()) {
                             boolean canEnter = false;
-                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Cygnus.getQuestID()); //½Ã±×³Ê½º´Â °İÆÄ½Ã Å¬¸®¾îÃ³¸®µÊ!!
+                            String overLap = checkEventNumber(getPlayer(), QuestExConstants.Cygnus.getQuestID()); //ì‹œê·¸ë„ˆìŠ¤ëŠ” ê²©íŒŒì‹œ í´ë¦¬ì–´ì²˜ë¦¬ë¨!!
                             if (overLap == null && v0 != 1) {
                                 String lastDate = checkEventLastDate(getPlayer(), QuestExConstants.Cygnus.getQuestID());
                                 if (lastDate == null) {
                                     if (v0 == 0) {
-                                        //271040000 ~ 271040199 (¹«½¼ ¸ÊÀ» 199°³³ª¾²³Ä;;)
-                                        //271041100 ~ 271041109 (³ë¸»½Ã±× ¸Ê)
-                                        int instanceMapID = 271041100; //ÀÌÁö½Ã±× ÀüÅõ¸Ê
-                                        if (target.getMapId() == 271040000) { //³ë¸»½Ã±×¸Ê
+                                        //271040000 ~ 271040199 (ë¬´ìŠ¨ ë§µì„ 199ê°œë‚˜ì“°ëƒ;;)
+                                        //271041100 ~ 271041109 (ë…¸ë§ì‹œê·¸ ë§µ)
+                                        int instanceMapID = 271041100; //ì´ì§€ì‹œê·¸ ì „íˆ¬ë§µ
+                                        if (target.getMapId() == 271040000) { //ë…¸ë§ì‹œê·¸ë§µ
                                             instanceMapID = 271040100;
                                         }
                                         String mode = "easy";
@@ -216,7 +216,7 @@ public class Cygnus extends ScriptEngineNPC {
                                                 canEnter = true;
                                             }
                                         }
-                                        if (!canEnter) { //ÀÔÀåÀÌ ºÒ°¡´ÉÇÑ °æ¿ì ¸Ê¿¡ À¯Àú°¡ ¾ø´ÂÁö Ã¼Å© ÈÄ ÀÎ½ºÅÏ½º ÃÊ±âÈ­
+                                        if (!canEnter) { //ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•œ ê²½ìš° ë§µì— ìœ ì €ê°€ ì—†ëŠ”ì§€ ì²´í¬ í›„ ì¸ìŠ¤í„´ìŠ¤ ì´ˆê¸°í™”
                                         	if (getClient().getChannelServer().getMapFactory().getMap(instanceMapID).getCharacters().size() == 0) {
                                         		String rt = em.getProperty("ResetTime");
                                         		long curTime = System.currentTimeMillis();
@@ -224,7 +224,7 @@ public class Cygnus extends ScriptEngineNPC {
                                         		if (time == 0) {
                                         			em.setProperty("ResetTime", String.valueOf(curTime));
                                         		}
-												else if (time - curTime >= 10000) { // 10ÃÊÀÌ»ó ¸ÊÀÌ ºó°æ¿ì ÀÔÀå°¡´ÉÇÏ°Ô º¯°æ
+												else if (time - curTime >= 10000) { // 10ì´ˆì´ìƒ ë§µì´ ë¹ˆê²½ìš° ì…ì¥ê°€ëŠ¥í•˜ê²Œ ë³€ê²½
 													canEnter = true;
 													em.setProperty("ResetTime", "0");
 												}
@@ -243,21 +243,21 @@ public class Cygnus extends ScriptEngineNPC {
                                             updateLastDate(getPlayer(), QuestExConstants.Cygnus.getQuestID());
                                             eim.registerParty(target.getParty(), getPlayer().getMap());
                                         } else {
-                                            self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                            self.sayOk("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                         }
                                     }
                                 } else {
-                                    self.say("ÆÄÆ¼¿ø Áß #b#e" + lastDate + " #n#kµÚ Àç ÀÔÀå °¡´ÉÇÕ´Ï´Ù.");//º»¸Ş : 30ºĞ ÀÌ³»¿¡ ÀÔÀåÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ÀÌÁö ¹× ³ë¸Ö ¸ğµå¸¦ ÅëÇÕÇÏ¿© ÀÔÀå ÈÄ 30ºĞ ÀÌ³»¿¡ ÀçÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.
+                                    self.say("íŒŒí‹°ì› ì¤‘ #b#e" + lastDate + " #n#kë’¤ ì¬ ì…ì¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");//ë³¸ë©” : 30ë¶„ ì´ë‚´ì— ì…ì¥í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì´ì§€ ë° ë…¸ë©€ ëª¨ë“œë¥¼ í†µí•©í•˜ì—¬ ì…ì¥ í›„ 30ë¶„ ì´ë‚´ì— ì¬ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.
                                 }
                             } else {
                                 if (v0 == 1) {
-                                    self.say("ÇöÀç ¿¬½À¸ğµå´Â ÁØºñ Áß ÀÔ´Ï´Ù.");
+                                    self.say("í˜„ì¬ ì—°ìŠµëª¨ë“œëŠ” ì¤€ë¹„ ì¤‘ ì…ë‹ˆë‹¤.");
                                 } else {
-                                    self.say("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» ½Ã±×³Ê½º¸¦ Å¬¸®¾îÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. ½Ã±×³Ê½º(ÀÌÁö), ½Ã±×³Ê½º(³ë¸Ö)Àº ¸ğµÎ ÇÕÃÄ ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù.\r\n#r#e<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­µË´Ï´Ù.>#k#n");
+                                    self.say("ìµœê·¼ ì¼ì£¼ì¼ ì´ë‚´ ì‹œê·¸ë„ˆìŠ¤ë¥¼ í´ë¦¬ì–´í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì‹œê·¸ë„ˆìŠ¤(ì´ì§€), ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€)ì€ ëª¨ë‘ í•©ì³ ì¼ì£¼ì¼ì— 1íšŒë§Œ í´ë¦¬ì–´ ê°€ëŠ¥í•©ë‹ˆë‹¤.\r\n#r#e<í´ë¦¬ì–´ ê¸°ë¡ì€ ë§¤ì£¼ ëª©ìš”ì¼ì— ì¼ê´„ ì´ˆê¸°í™”ë©ë‹ˆë‹¤.>#k#n");
                                 }
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                            self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                         }
                     }
                 }
@@ -267,16 +267,16 @@ public class Cygnus extends ScriptEngineNPC {
 
     public void in_cygnusGarden() {
         initNPC(MapleLifeFactory.getNPC(2143004));
-        int v0 = target.askMenu("#r#e½Ã±×³Ê½ºÀÇ Á¤¿ø¿¡ ÀÔÀåÇÒ±î?#b\r\n#L0#½Ã±×³Ê½º(³ë¸Ö)À» ¹°¸®Ä¡±â À§ÇØ ÀÌµ¿ÇÑ´Ù.#l", ScriptMessageFlag.Self);
-        if (v0 == 0) { //TODO ½Ã±×³Ê½º Á¤¿øÀÇ ¿­¼è Ã¼Å©
-            getPlayer().dropMessage(5, "½Ã±×³Ê½ºÀÇ Á¤¿øÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+        int v0 = target.askMenu("#r#eì‹œê·¸ë„ˆìŠ¤ì˜ ì •ì›ì— ì…ì¥í• ê¹Œ?#b\r\n#L0#ì‹œê·¸ë„ˆìŠ¤(ë…¸ë©€)ì„ ë¬¼ë¦¬ì¹˜ê¸° ìœ„í•´ ì´ë™í•œë‹¤.#l", ScriptMessageFlag.Self);
+        if (v0 == 0) { //TODO ì‹œê·¸ë„ˆìŠ¤ ì •ì›ì˜ ì—´ì‡  ì²´í¬
+            getPlayer().dropMessage(5, "ì‹œê·¸ë„ˆìŠ¤ì˜ ì •ì›ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
             registerTransferField(271040000);
         }
     }
 
     public void cygnus_Summon_Easy() {
-        //8850011 - ³ë¸»½Ã±× (8850012) ¼ÒÈ¯¿ë ´õ¹Ì
-        //8850111 - ÀÌÁö½Ã±× (8850112) ¼ÒÈ¯¿ë ´õ¹Ì
+        //8850011 - ë…¸ë§ì‹œê·¸ (8850012) ì†Œí™˜ìš© ë”ë¯¸
+        //8850111 - ì´ì§€ì‹œê·¸ (8850112) ì†Œí™˜ìš© ë”ë¯¸
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summonMOB") == null) {
@@ -297,7 +297,7 @@ public class Cygnus extends ScriptEngineNPC {
                     cygnus.setMaxHp(fixedhp);
                 	field.spawnMonster(cygnus, new Point(-160, -65), 1);
                 }
-                eim.getMapInstance(getPlayer().getMapId()).startMapEffect("ÀÌ°÷À» Ã£¾Æ ¿Â »ç¶÷À» º¸´Â °ÍÀº Á¤¸» ¿À·£¸¸ÀÌ¿¡¿ä. ÇÏÁö¸¸ ¹«»çÈ÷ µ¹¾Æ°£ ºĞµµ ¾ø¾ú´ä´Ï´Ù.", 5120043);
+                eim.getMapInstance(getPlayer().getMapId()).startMapEffect("ì´ê³³ì„ ì°¾ì•„ ì˜¨ ì‚¬ëŒì„ ë³´ëŠ” ê²ƒì€ ì •ë§ ì˜¤ëœë§Œì´ì—ìš”. í•˜ì§€ë§Œ ë¬´ì‚¬íˆ ëŒì•„ê°„ ë¶„ë„ ì—†ì—ˆë‹µë‹ˆë‹¤.", 5120043);
             }
         }
     }
@@ -323,7 +323,7 @@ public class Cygnus extends ScriptEngineNPC {
                 	cygnus.setMaxHp(fixedhp);
                     field.spawnMonster(cygnus, new Point(-160, -65), 1);
                 }
-                eim.getMapInstance(getPlayer().getMapId()).startMapEffect("ÀÌ°÷À» Ã£¾Æ ¿Â »ç¶÷À» º¸´Â °ÍÀº Á¤¸» ¿À·£¸¸ÀÌ¿¡¿ä. ÇÏÁö¸¸ ¹«»çÈ÷ µ¹¾Æ°£ ºĞµµ ¾ø¾ú´ä´Ï´Ù.", 5120043);
+                eim.getMapInstance(getPlayer().getMapId()).startMapEffect("ì´ê³³ì„ ì°¾ì•„ ì˜¨ ì‚¬ëŒì„ ë³´ëŠ” ê²ƒì€ ì •ë§ ì˜¤ëœë§Œì´ì—ìš”. í•˜ì§€ë§Œ ë¬´ì‚¬íˆ ëŒì•„ê°„ ë¶„ë„ ì—†ì—ˆë‹µë‹ˆë‹¤.", 5120043);
             }
         }
     }
@@ -385,36 +385,36 @@ public class Cygnus extends ScriptEngineNPC {
     }
 
     public void back_cygnus_Easy() {
-        //ÀÌº¥Æ® ÀÎ½ºÅÏ½º È®ÀÎÇØ¼­ »óÈ²¿¡ ¸Â°Ô²û ¸ÊÀÌµ¿½ÃÅ³ °Í
+        //ì´ë²¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ í™•ì¸í•´ì„œ ìƒí™©ì— ë§ê²Œë” ë§µì´ë™ì‹œí‚¬ ê²ƒ
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (getPlayer().getMap().getAllMonster().size() == 0) {
                 registerTransferField(Integer.parseInt(eim.getProperty("map")));
             } else {
-                getPlayer().dropMessage(5, "½Ã±×³Ê½ºÀÇ Á¤¿øÀ¸·Î µÇµ¹¾Æ°¡±â Àü¿¡ ¸ÕÀú ±â»ç´ÜÀ» ¸ğµÎ Ã³Ä¡ÇØ¾ß ÇÕ´Ï´Ù.");
+                getPlayer().dropMessage(5, "ì‹œê·¸ë„ˆìŠ¤ì˜ ì •ì›ìœ¼ë¡œ ë˜ëŒì•„ê°€ê¸° ì „ì— ë¨¼ì € ê¸°ì‚¬ë‹¨ì„ ëª¨ë‘ ì²˜ì¹˜í•´ì•¼ í•©ë‹ˆë‹¤.");
             }
         }
     }
 
     public void back_cygnus() {
-        //ÀÌº¥Æ® ÀÎ½ºÅÏ½º È®ÀÎÇØ¼­ »óÈ²¿¡ ¸Â°Ô²û ¸ÊÀÌµ¿½ÃÅ³ °Í
+        //ì´ë²¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ í™•ì¸í•´ì„œ ìƒí™©ì— ë§ê²Œë” ë§µì´ë™ì‹œí‚¬ ê²ƒ
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (getPlayer().getMap().getAllMonster().size() == 0) {
                 registerTransferField(Integer.parseInt(eim.getProperty("map")));
             } else {
-                getPlayer().dropMessage(5, "½Ã±×³Ê½ºÀÇ Á¤¿øÀ¸·Î µÇµ¹¾Æ°¡±â Àü¿¡ ¸ÕÀú ±â»ç´ÜÀ» ¸ğµÎ Ã³Ä¡ÇØ¾ß ÇÕ´Ï´Ù.");
+                getPlayer().dropMessage(5, "ì‹œê·¸ë„ˆìŠ¤ì˜ ì •ì›ìœ¼ë¡œ ë˜ëŒì•„ê°€ê¸° ì „ì— ë¨¼ì € ê¸°ì‚¬ë‹¨ì„ ëª¨ë‘ ì²˜ì¹˜í•´ì•¼ í•©ë‹ˆë‹¤.");
             }
         }
     }
 
     public void out_cygnusBackGarden() {
-        //ÀÌº¥Æ® ÀÎ½ºÅÏ½º È®ÀÎÇØ¼­ »óÈ²¿¡ ¸Â°Ô²û ¸ÊÀÌµ¿½ÃÅ³ °Í
+        //ì´ë²¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ í™•ì¸í•´ì„œ ìƒí™©ì— ë§ê²Œë” ë§µì´ë™ì‹œí‚¬ ê²ƒ
         registerTransferField(100000000);
     }
 
     public void out_cygnusBackGardenEasy() {
-        //ÀÌº¥Æ® ÀÎ½ºÅÏ½º È®ÀÎÇØ¼­ »óÈ²¿¡ ¸Â°Ô²û ¸ÊÀÌµ¿½ÃÅ³ °Í(ÀÌÁö¸ğµå)
+        //ì´ë²¤íŠ¸ ì¸ìŠ¤í„´ìŠ¤ í™•ì¸í•´ì„œ ìƒí™©ì— ë§ê²Œë” ë§µì´ë™ì‹œí‚¬ ê²ƒ(ì´ì§€ëª¨ë“œ)
         registerTransferField(100000000);
     }
 }

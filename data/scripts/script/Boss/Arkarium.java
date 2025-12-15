@@ -30,10 +30,10 @@ public class Arkarium extends ScriptEngineNPC {
 
     public void timeCrack() {
         initNPC(MapleLifeFactory.getNPC(2144017));
-        String v = "#e<½Ã°£ÀÇ ±Õ¿­>#n\r\n°ú°Å¿Í ¹Ì·¡, ±×¸®°í ±× »çÀÌÀÇ ¾îµò°¡... °¡°íÀÚ ÇÏ´Â °÷Àº ¾îµğÀÎ°¡?\r\n#b#L0# °ú°ÅÀÇ ¸®ÇÁ·¹#l\r\n#L1# Â÷¿øÀÇ Æ´#l";
+        String v = "#e<ì‹œê°„ì˜ ê· ì—´>#n\r\nê³¼ê±°ì™€ ë¯¸ë˜, ê·¸ë¦¬ê³  ê·¸ ì‚¬ì´ì˜ ì–´ë”˜ê°€... ê°€ê³ ì í•˜ëŠ” ê³³ì€ ì–´ë””ì¸ê°€?\r\n#b#L0# ê³¼ê±°ì˜ ë¦¬í”„ë ˆ#l\r\n#L1# ì°¨ì›ì˜ í‹ˆ#l";
         int v0 = self.askMenu(v, ScriptMessageFlag.NpcReplacedByNpc);
         if (v0 == 0) {
-            self.say("ÇöÀç ÁØºñÁßÀÔ´Ï´Ù.");
+            self.say("í˜„ì¬ ì¤€ë¹„ì¤‘ì…ë‹ˆë‹¤.");
         } else if (v0 == 1) {
             registerTransferField(272020000);
         }
@@ -47,8 +47,8 @@ public class Arkarium extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2144017));
         EventManager em = getEventManager("Arkarium");
         List<Integer> arkMap = new ArrayList(Arrays.asList(272020200, 272020201, 272020202, 272020203, 272020204, 272020205, 272020206, 272020207, 272020208, 272020209, 272020210, 272020211, 272020212, 272020213, 272020214, 272020215, 272020216, 272020217, 272020218, 272020219));
-        if (arkMap.contains(target.getMapId())) { //ÀüÅõ¸ÊÀÎ»óÅÂ
-            if (self.askYesNo("ÀüÅõÀ» ¸¶Ä¡°í ¾ÆÄ«ÀÌ·³ÀÇ Á¦´Ü¿¡¼­ ÅğÀåÇÏ½Ã°Ú½À´Ï±î?") == 1) {
+        if (arkMap.contains(target.getMapId())) { //ì „íˆ¬ë§µì¸ìƒíƒœ
+            if (self.askYesNo("ì „íˆ¬ì„ ë§ˆì¹˜ê³  ì•„ì¹´ì´ëŸ¼ì˜ ì œë‹¨ì—ì„œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
                 registerTransferField(272020110);
                 if (getPlayer().getEventInstance() != null) {
                     getPlayer().getEventInstance().unregisterPlayer(getPlayer());
@@ -59,25 +59,25 @@ public class Arkarium extends ScriptEngineNPC {
             }
         } else {
             if (target.getParty() == null) {
-                self.say("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                self.say("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId() && DBConfig.isGanglim) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                 } else {
-                    int v0 = self.askMenu("#e<º¸½º: ¾ÆÄ«ÀÌ·³>#n\r\nÀ§´ëÇÑ ¿ë»ç¿©. °ËÀº ¸¶¹ı»çÀÇ »ç¾ÇÇÑ ±º´ÜÀå¿¡°Ô ¸Â¼³ ÁØºñ¸¦ ¸¶Ä¡¼Ì½À´Ï±î?\r\n#b\r\n#L0# <º¸½º: ¾ÆÄ«ÀÌ·³> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
+                    int v0 = self.askMenu("#e<ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼>#n\r\nìœ„ëŒ€í•œ ìš©ì‚¬ì—¬. ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì‚¬ì•…í•œ êµ°ë‹¨ì¥ì—ê²Œ ë§ì„¤ ì¤€ë¹„ë¥¼ ë§ˆì¹˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# <ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l");
                     if (v0 == 0) {
                     	String menu = "";
                     	if (DBConfig.isGanglim) {
-                    		menu = "#e<º¸½º: ¾ÆÄ«ÀÌ·³>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#L0# ÀÌÁö ¸ğµå ( ·¹º§ 140 ÀÌ»ó )#l\r\n#L1# ³ë¸Ö ¸ğµå ( ·¹º§ 140 ÀÌ»ó )#l";
+                    		menu = "#e<ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#L0# ì´ì§€ ëª¨ë“œ ( ë ˆë²¨ 140 ì´ìƒ )#l\r\n#L1# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 140 ì´ìƒ )#l";
                     	}
                     	else {
                     		boolean single = getPlayer().getPartyMemberSize() == 1;
                     		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"));
-                    		menu = "#e<º¸½º: ¾ÆÄ«ÀÌ·³>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n" 
-                    				+ "#L0# ÀÌÁö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 140 ÀÌ»ó )#l\r\n"
-                    				+ "#L1# ³ë¸Ö ¸ğµå " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + " ( ·¹º§ 140 ÀÌ»ó )#l\r\n";
+                    		menu = "#e<ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n" 
+                    				+ "#L0# ì´ì§€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 140 ì´ìƒ )#l\r\n"
+                    				+ "#L1# ë…¸ë©€ ëª¨ë“œ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + " ( ë ˆë²¨ 140 ì´ìƒ )#l\r\n";
                     				if (((single ? 2 : 1) - reset) >= 0) { 
-                    					menu += "#L2# ÀÔÀåÈ½¼ö Áõ°¡ " + (single ? "(½Ì±Û)" : "(¸ÖÆ¼)") + ((single ? 2 : 1) - reset)+ "È¸ °¡´É)#l";
+                    					menu += "#L2# ì…ì¥íšŸìˆ˜ ì¦ê°€ " + (single ? "(ì‹±ê¸€)" : "(ë©€í‹°)") + ((single ? 2 : 1) - reset)+ "íšŒ ê°€ëŠ¥)#l";
                     				}
                     	}
                     	int v1 = self.askMenu(menu);
@@ -86,21 +86,21 @@ public class Arkarium extends ScriptEngineNPC {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("Çùµ¿ Æ÷ÀÎÆ®°¡ ºÎÁ·ÇÕ´Ï´Ù. º¸À¯ Æ÷ÀÎÆ® : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("í˜‘ë™ í¬ì¸íŠ¸ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ë³´ìœ  í¬ì¸íŠ¸ : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if ((single ? 1 : 0) < reset) {
-                        			self.sayOk("¿À´ÃÀº ´õ ÀÌ»ó ÀÔÀåÈ½¼ö Áõ°¡°¡ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+                        			self.sayOk("ì˜¤ëŠ˜ì€ ë” ì´ìƒ ì…ì¥íšŸìˆ˜ ì¦ê°€ê°€ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-                        		self.sayOk("ÀÔÀå°¡´ÉÈ½¼ö°¡ Áõ°¡µÇ¾ú½À´Ï´Ù.");
+                        		self.sayOk("ì…ì¥ê°€ëŠ¥íšŸìˆ˜ê°€ ì¦ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
                         		return;
                         	}
                         	if (!DBConfig.isGanglim) {
                         		if (target.getParty().getLeader().getId() != target.getId()) {
-                        			self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                        			self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                         			return;
                         		}
                         	}
@@ -111,11 +111,11 @@ public class Arkarium extends ScriptEngineNPC {
                             if (overLap == null) {
                                 boolean canEnter = false;
                                 String mode = "easy";
-                                if (v1 == 0) { //ÀÌÁö¸ğµå
+                                if (v1 == 0) { //ì´ì§€ëª¨ë“œ
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (v1 == 1) { //³ë¸»¸ğµå
+                                } else if (v1 == 1) { //ë…¸ë§ëª¨ë“œ
                                     if (em.getProperty("Nstatus0").equals("0")) {
                                         mode = "normal";
                                         canEnter = true;
@@ -126,16 +126,16 @@ public class Arkarium extends ScriptEngineNPC {
                                 if (v1 == 1) {
                                     if (getPlayer().getQuestStatus(2000020) == 1) {
                                         if (GameConstants.isZero(getPlayer().getJob())) {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ÃÖÁ¾ µ¥¹ÌÁö 70% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu("#e<ì œë„¤ì‹œìŠ¤ ë¬´ê¸°>#n\r\nê²€ì€ ë§ˆë²•ì‚¬ì˜ í˜ì´ ë‹´ê¸´ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kì˜ ë¹„ë°€ì„ í’€ê¸° ìœ„í•œ ì„ë¬´ë¥¼ ìˆ˜í–‰ í•  ìˆ˜ ìˆë‹¤. ì–´ë–»ê²Œ í• ê¹Œ?\r\n\r\n#e#r<ì„ë¬´ ìˆ˜í–‰ ì¡°ê±´>#n#k\r\n#b -í˜¼ìì„œ ê²©íŒŒ\r\n -ìµœì¢… ë°ë¯¸ì§€ 70% ê°ì†Œ\r\n -ì°©ìš© ì¤‘ì¸ ì¥ë¹„ì˜ ìˆœìˆ˜ ëŠ¥ë ¥ì¹˜ë§Œ ì ìš©\r\n#k#L0#ë¯¸ì…˜ì„ ìˆ˜í–‰í•œë‹¤.#l\r\n#L1#ë¯¸ì…˜ì„ ìˆ˜í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.#l", ScriptMessageFlag.Self);
                                         } else {
-                                            v2 = self.askMenu("#e<Á¦³×½Ã½º ¹«±â>#n\r\n°ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä #bÁ¦³×½Ã½º ¹«±â#kÀÇ ºñ¹ĞÀ» Ç®±â À§ÇÑ ÀÓ¹«¸¦ ¼öÇà ÇÒ ¼ö ÀÖ´Ù. ¾î¶»°Ô ÇÒ±î?\r\n\r\n#e#r<ÀÓ¹« ¼öÇà Á¶°Ç>#n#k\r\n#b -È¥ÀÚ¼­ °İÆÄ\r\n -ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n -ÃÖÁ¾ µ¥¹ÌÁö 70% °¨¼Ò\r\n -Âø¿ë ÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n#k#L0#¹Ì¼ÇÀ» ¼öÇàÇÑ´Ù.#l\r\n#L1#¹Ì¼ÇÀ» ¼öÇàÇÏÁö ¾Ê´Â´Ù.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu("#e<ì œë„¤ì‹œìŠ¤ ë¬´ê¸°>#n\r\nê²€ì€ ë§ˆë²•ì‚¬ì˜ í˜ì´ ë‹´ê¸´ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kì˜ ë¹„ë°€ì„ í’€ê¸° ìœ„í•œ ì„ë¬´ë¥¼ ìˆ˜í–‰ í•  ìˆ˜ ìˆë‹¤. ì–´ë–»ê²Œ í• ê¹Œ?\r\n\r\n#e#r<ì„ë¬´ ìˆ˜í–‰ ì¡°ê±´>#n#k\r\n#b -í˜¼ìì„œ ê²©íŒŒ\r\n -ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì™€ ë³´ì¡°ë¬´ê¸°ë§Œ ì¥ì°©\r\n -ìµœì¢… ë°ë¯¸ì§€ 70% ê°ì†Œ\r\n -ì°©ìš© ì¤‘ì¸ ì¥ë¹„ì˜ ìˆœìˆ˜ ëŠ¥ë ¥ì¹˜ë§Œ ì ìš©\r\n#k#L0#ë¯¸ì…˜ì„ ìˆ˜í–‰í•œë‹¤.#l\r\n#L1#ë¯¸ì…˜ì„ ìˆ˜í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.#l", ScriptMessageFlag.Self);
                                         }
                                         if (v2 == 0) {
                                             if (!checkBMQuestEquip()) {
                                                 return;
                                             }
                                             if (getPlayer().getParty().getPartyMemberList().size() > 1) {
-                                                self.say("ÇØ´ç Äù½ºÆ®´Â È¥ÀÚ ÁøÇàÇØ¾ß ÇÑ´Ù.", ScriptMessageFlag.Self);
+                                                self.say("í•´ë‹¹ í€˜ìŠ¤íŠ¸ëŠ” í˜¼ì ì§„í–‰í•´ì•¼ í•œë‹¤.", ScriptMessageFlag.Self);
                                                 return;
                                             }
                                         }
@@ -150,7 +150,7 @@ public class Arkarium extends ScriptEngineNPC {
                                             if (p != null) {
                                                 int count = p.getOneInfoQuestInteger(key, "akairum_clear");
                                                 if (count >= (1 + p.getBossTier())) {
-                                                    self.say("ÆÄÆ¼¿ø Áß #b#e" + p.getName() + "#n#k°¡ ¿À´Ã ´õ ÀÌ»ó µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                                                    self.say("íŒŒí‹°ì› ì¤‘ #b#e" + p.getName() + "#n#kê°€ ì˜¤ëŠ˜ ë” ì´ìƒ ë„ì „í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                                                     return;
                                                 }
                                                 p.updateOneInfo(key, "akairum_clear", String.valueOf(count + 1));
@@ -179,20 +179,20 @@ public class Arkarium extends ScriptEngineNPC {
                                     eim.setProperty("map", map);
                                     eim.setProperty("mode", mode);
                                     getClient().getChannelServer().getMapFactory().getMap(map).resetFully(false);
-                                    getClient().getChannelServer().getMapFactory().getMap(map + 100).resetFully(false); //»ç¾ÇÇÑ ³»¸éÀÇ °øÅÍ
+                                    getClient().getChannelServer().getMapFactory().getMap(map + 100).resetFully(false); //ì‚¬ì•…í•œ ë‚´ë©´ì˜ ê³µí„°
                                     if (v2 == 0) {
                                         getPlayer().applyBMCurse1(2);
                                     }
                                     updateEventNumber(getPlayer(), QuestExConstants.Arkarium.getQuestID());
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.sayOk("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 }
                             } else {
-                                self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÔÀåÇß±º. ±×·¸´Ù¸é ¿À´ÃÀº ´õ ÀÌ»ó µé¾î°¥ ¼ö ¾ø´Ù.");
+                                self.say("íŒŒí‹°ì› ì¤‘#b#e" + overLap + "ê°€#n#k ì˜¤ëŠ˜ ì…ì¥í–ˆêµ°. ê·¸ë ‡ë‹¤ë©´ ì˜¤ëŠ˜ì€ ë” ì´ìƒ ë“¤ì–´ê°ˆ ìˆ˜ ì—†ë‹¤.");
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                            self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                         }
                     }
                 }
@@ -233,7 +233,7 @@ public class Arkarium extends ScriptEngineNPC {
             }
         }
         if (!blockedList.isEmpty()) {
-            String v0 = "#r¹«±â#k¿Í #bº¸Á¶¹«±â#k¸¸ Âø¿ëÇÏ°í µµÀüÇØ¾ß ÇÑ´Ù.\r\n\r\n#r<Âø¿ë ÇØÁ¦ÇØ¾ß ÇÏ´Â ¾ÆÀÌÅÛ>#k\r\n";
+            String v0 = "#rë¬´ê¸°#kì™€ #bë³´ì¡°ë¬´ê¸°#kë§Œ ì°©ìš©í•˜ê³  ë„ì „í•´ì•¼ í•œë‹¤.\r\n\r\n#r<ì°©ìš© í•´ì œí•´ì•¼ í•˜ëŠ” ì•„ì´í…œ>#k\r\n";
             for (int i = 0; i < blockedList.size(); ++i) {
                 int bid = blockedList.get(i);
                 v0 += "#i" + bid + "# #z" + bid + "#\r\n";
@@ -251,36 +251,36 @@ public class Arkarium extends ScriptEngineNPC {
     	}
         EventManager em = getEventManager("Arkarium");
         List<Integer> arkMap = new ArrayList(Arrays.asList(272020200, 272020201, 272020202, 272020203, 272020204, 272020205, 272020206, 272020207, 272020208, 272020209, 272020210, 272020211, 272020212, 272020213, 272020214, 272020215, 272020216, 272020217, 272020218, 272020219));
-        if (arkMap.contains(target.getMapId())) { //ÀüÅõ¸ÊÀÎ»óÅÂ
-            if (self.askYesNo("ÀüÅõÀ» ¸¶Ä¡°í ¾ÆÄ«ÀÌ·³ÀÇ Á¦´Ü¿¡¼­ ÅğÀåÇÏ½Ã°Ú½À´Ï±î?") == 1) {
+        if (arkMap.contains(target.getMapId())) { //ì „íˆ¬ë§µì¸ìƒíƒœ
+            if (self.askYesNo("ì „íˆ¬ì„ ë§ˆì¹˜ê³  ì•„ì¹´ì´ëŸ¼ì˜ ì œë‹¨ì—ì„œ í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?") == 1) {
                 registerTransferField(272020110);
             }
         } else {
             if (target.getParty() == null) {
-                self.say("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+                self.say("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId()) {
-                    self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
+                    self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
                 } else {
-                    int v0 = self.askMenu("#e<º¸½º: ¾ÆÄ«ÀÌ·³>#n\r\nÀ§´ëÇÑ ¿ë»ç¿©. °ËÀº ¸¶¹ı»çÀÇ »ç¾ÇÇÑ ±º´ÜÀå¿¡°Ô ¸Â¼³ ÁØºñ¸¦ ¸¶Ä¡¼Ì½À´Ï±î?\r\n#b\r\n#L0# <º¸½º: ¾ÆÄ«ÀÌ·³> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l");
+                    int v0 = self.askMenu("#e<ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼>#n\r\nìœ„ëŒ€í•œ ìš©ì‚¬ì—¬. ê²€ì€ ë§ˆë²•ì‚¬ì˜ ì‚¬ì•…í•œ êµ°ë‹¨ì¥ì—ê²Œ ë§ì„¤ ì¤€ë¹„ë¥¼ ë§ˆì¹˜ì…¨ìŠµë‹ˆê¹Œ?\r\n#b\r\n#L0# <ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l");
                     if (v0 == 0) {
-                        int v1 = self.askMenu("#e<º¸½º: ¾ÆÄ«ÀÌ·³>#n\r\n¿øÇÏ½Ã´Â ¸ğµå¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#L0# ÀÌÁö ¸ğµå ( ·¹º§ 140 ÀÌ»ó )#l\r\n#L1# ³ë¸Ö ¸ğµå ( ·¹º§ 140 ÀÌ»ó )#l");
+                        int v1 = self.askMenu("#e<ë³´ìŠ¤: ì•„ì¹´ì´ëŸ¼>#n\r\nì›í•˜ì‹œëŠ” ëª¨ë“œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#L0# ì´ì§€ ëª¨ë“œ ( ë ˆë²¨ 140 ì´ìƒ )#l\r\n#L1# ë…¸ë©€ ëª¨ë“œ ( ë ˆë²¨ 140 ì´ìƒ )#l");
                         if (target.getParty().isPartySameMap()) {
                             String overLap = checkEventNumber(getPlayer(), QuestExConstants.Arkarium.getQuestID());
                             if (overLap == null) {
                                 boolean canEnter = false;
                                 String mode = "easy";
-                                if (v1 == 0) { //ÀÌÁö¸ğµå
+                                if (v1 == 0) { //ì´ì§€ëª¨ë“œ
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (v1 == 1) { //³ë¸»¸ğµå
+                                } else if (v1 == 1) { //ë…¸ë§ëª¨ë“œ
                                     if (em.getProperty("Nstatus0").equals("0")) {
                                         mode = "normal";
                                         canEnter = true;
                                     }
                                 }
-                                if (!canEnter) { //ÀÔÀåÀÌ ºÒ°¡´ÉÇÑ °æ¿ì ¸Ê¿¡ À¯Àú°¡ ¾ø´ÂÁö Ã¼Å© ÈÄ ÀÎ½ºÅÏ½º ÃÊ±âÈ­
+                                if (!canEnter) { //ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•œ ê²½ìš° ë§µì— ìœ ì €ê°€ ì—†ëŠ”ì§€ ì²´í¬ í›„ ì¸ìŠ¤í„´ìŠ¤ ì´ˆê¸°í™”
                                 	int map = 272020210;
                                     if (v1 == 1) {
                                         map = 272020200;
@@ -292,7 +292,7 @@ public class Arkarium extends ScriptEngineNPC {
                                 		if (time == 0) {
                                 			em.setProperty("ResetTime", String.valueOf(curTime));
                                 		}
-										else if (time - curTime >= 10000) { // 10ÃÊÀÌ»ó ¸ÊÀÌ ºó°æ¿ì ÀÔÀå°¡´ÉÇÏ°Ô º¯°æ
+										else if (time - curTime >= 10000) { // 10ì´ˆì´ìƒ ë§µì´ ë¹ˆê²½ìš° ì…ì¥ê°€ëŠ¥í•˜ê²Œ ë³€ê²½
 											canEnter = true;
 											em.setProperty("ResetTime", "0");
 										}
@@ -313,16 +313,16 @@ public class Arkarium extends ScriptEngineNPC {
                                     eim.setProperty("map", map);
                                     eim.setProperty("mode", mode);
                                     getClient().getChannelServer().getMapFactory().getMap(map).resetFully(false);
-                                    getClient().getChannelServer().getMapFactory().getMap(map + 100).resetFully(false); //»ç¾ÇÇÑ ³»¸éÀÇ °øÅÍ
+                                    getClient().getChannelServer().getMapFactory().getMap(map + 100).resetFully(false); //ì‚¬ì•…í•œ ë‚´ë©´ì˜ ê³µí„°
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.sayOk("ÇöÀç ¸ğµç¸ÊÀÌ °¡µæÂ÷ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.");
+                                    self.sayOk("í˜„ì¬ ëª¨ë“ ë§µì´ ê°€ë“ì°¨ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.");
                                 }
                             } else {
-                                self.say("ÆÄÆ¼¿ø Áß#b#e" + overLap + "°¡#n#k ¿À´Ã ÀÔÀåÇß±º. ±×·¸´Ù¸é ¿À´ÃÀº ´õ ÀÌ»ó µé¾î°¥ ¼ö ¾ø´Ù.");
+                                self.say("íŒŒí‹°ì› ì¤‘#b#e" + overLap + "ê°€#n#k ì˜¤ëŠ˜ ì…ì¥í–ˆêµ°. ê·¸ë ‡ë‹¤ë©´ ì˜¤ëŠ˜ì€ ë” ì´ìƒ ë“¤ì–´ê°ˆ ìˆ˜ ì—†ë‹¤.");
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "¸í ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.");
+                            self.say(target.getParty().getPartyMemberList().size() + "ëª… ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.");
                         }
                     }
                 }
@@ -336,36 +336,36 @@ public class Arkarium extends ScriptEngineNPC {
             if (eim.getProperty("summmonMOB") == null) {
                 eim.setProperty("summmonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("¿ë±â¿Í ¸¸¿ëÀ» ±¸ºĞÇÏÁö ¸øÇÏ´Â ÀÚµéÀÌ¿©. ¸ñ¼ûÀÌ ¾Æ±õÁö ¾Ê´Ù¸é ³»°Ô ´ıºñµµ·Ï. ÈÄÈÄ.", 5120056);
+                field.startMapEffect("ìš©ê¸°ì™€ ë§Œìš©ì„ êµ¬ë¶„í•˜ì§€ ëª»í•˜ëŠ” ìë“¤ì´ì—¬. ëª©ìˆ¨ì´ ì•„ê¹ì§€ ì•Šë‹¤ë©´ ë‚´ê²Œ ë¤ë¹„ë„ë¡. í›„í›„.", 5120056);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Voice.img/akayrum/2");
                 field.broadcastMessage(e.encodeForLocal());
-                field.removeNpc(2144016); //·ô´À ²¨Á®!
+                field.removeNpc(2144016); //ë¥€ëŠ êº¼ì ¸!
                 field.spawnNpc(2144010, new Point(320, -190));
             }
         }
     }
 
-    public void Akayrum_Before2() { //ÀÌÁö¾ÆÄ«ÀÌ·³
+    public void Akayrum_Before2() { //ì´ì§€ì•„ì¹´ì´ëŸ¼
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (eim.getProperty("summmonMOB") == null) {
                 eim.setProperty("summmonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("¿ë±â¿Í ¸¸¿ëÀ» ±¸ºĞÇÏÁö ¸øÇÏ´Â ÀÚµéÀÌ¿©. ¸ñ¼ûÀÌ ¾Æ±õÁö ¾Ê´Ù¸é ³»°Ô ´ıºñµµ·Ï. ÈÄÈÄ.", 5120056);
+                field.startMapEffect("ìš©ê¸°ì™€ ë§Œìš©ì„ êµ¬ë¶„í•˜ì§€ ëª»í•˜ëŠ” ìë“¤ì´ì—¬. ëª©ìˆ¨ì´ ì•„ê¹ì§€ ì•Šë‹¤ë©´ ë‚´ê²Œ ë¤ë¹„ë„ë¡. í›„í›„.", 5120056);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Voice.img/akayrum/2");
                 field.broadcastMessage(e.encodeForLocal());
-                field.removeNpc(2144016); //·ô´À ²¨Á®!
+                field.removeNpc(2144016); //ë¥€ëŠ êº¼ì ¸!
                 field.spawnNpc(2144021, new Point(320, -190));
             }
         }
     }
 
-    public void Akayrum_Summon() { //¾ÆÄ«ÀÌ·³ ¼ÒÈ¯¼ú!!!!!!!!(NPC ID : 2144010)
+    public void Akayrum_Summon() { //ì•„ì¹´ì´ëŸ¼ ì†Œí™˜ìˆ !!!!!!!!(NPC ID : 2144010)
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //ÆÄÆ¼Àå¸¸ ¼ÒÈ¯°¡´É(Áßº¹¼ÒÈ¯ ¹æÁö)
-                if (self.askAccept("³» ¿À·£ °èÈ¹À» ¹°°ÅÇ°À¸·Î ¸¸µç ³à¼®µéÀÌ ÀÌ·¸°Ô Á¦ ¹ß·Î Ã£¾Æ¿ÍÁÖ´Ï Á¤¸» ±â»Ú±â ±×Áö ¾ø±º.\r\n\r\n#r±× ´ñ°¡·Î ¼¼»ó¿¡¼­ Á¦ÀÏ °íÅë½º·¯¿î Á×À½À» ¼±»çÇØÁÖ¸¶.#k") == 1) {
-                    //¼ö¶ô½Ã ¾ÆÄ«ÀÌ·³ »ç¶óÁö°í ¸ó½ºÅÍ ¼ÒÈ¯µÊ!
+            if (target.getParty().getLeader().getId() == target.getId()) { //íŒŒí‹°ì¥ë§Œ ì†Œí™˜ê°€ëŠ¥(ì¤‘ë³µì†Œí™˜ ë°©ì§€)
+                if (self.askAccept("ë‚´ ì˜¤ëœ ê³„íšì„ ë¬¼ê±°í’ˆìœ¼ë¡œ ë§Œë“  ë…€ì„ë“¤ì´ ì´ë ‡ê²Œ ì œ ë°œë¡œ ì°¾ì•„ì™€ì£¼ë‹ˆ ì •ë§ ê¸°ì˜ê¸° ê·¸ì§€ ì—†êµ°.\r\n\r\n#rê·¸ ëŒ“ê°€ë¡œ ì„¸ìƒì—ì„œ ì œì¼ ê³ í†µìŠ¤ëŸ¬ìš´ ì£½ìŒì„ ì„ ì‚¬í•´ì£¼ë§ˆ.#k") == 1) {
+                    //ìˆ˜ë½ì‹œ ì•„ì¹´ì´ëŸ¼ ì‚¬ë¼ì§€ê³  ëª¬ìŠ¤í„° ì†Œí™˜ë¨!
                     Field field = getPlayer().getMap();
                     field.removeNpc(2144010);
                     if (DBConfig.isGanglim) {
@@ -395,12 +395,12 @@ public class Arkarium extends ScriptEngineNPC {
         }
     }
 
-    public void Akayrum_Summon2() { //ÀÌÁö ¾ÆÄ«ÀÌ·³ ¼ÒÈ¯¼ú!!!!!!!!(NPC ID : 2144021)
+    public void Akayrum_Summon2() { //ì´ì§€ ì•„ì¹´ì´ëŸ¼ ì†Œí™˜ìˆ !!!!!!!!(NPC ID : 2144021)
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //ÆÄÆ¼Àå¸¸ ¼ÒÈ¯°¡´É(Áßº¹¼ÒÈ¯ ¹æÁö)
-                if (self.askAccept("³» ¿À·£ °èÈ¹À» ¹°°ÅÇ°À¸·Î ¸¸µç ³à¼®µéÀÌ ÀÌ·¸°Ô Á¦ ¹ß·Î Ã£¾Æ¿ÍÁÖ´Ï Á¤¸» ±â»Ú±â ±×Áö ¾ø±º.\r\n\r\n#r±× ´ñ°¡·Î ¼¼»ó¿¡¼­ Á¦ÀÏ °íÅë½º·¯¿î Á×À½À» ¼±»çÇØÁÖ¸¶.#k") == 1) {
-                    //¼ö¶ô½Ã ¾ÆÄ«ÀÌ·³ »ç¶óÁö°í ¸ó½ºÅÍ ¼ÒÈ¯µÊ!
+            if (target.getParty().getLeader().getId() == target.getId()) { //íŒŒí‹°ì¥ë§Œ ì†Œí™˜ê°€ëŠ¥(ì¤‘ë³µì†Œí™˜ ë°©ì§€)
+                if (self.askAccept("ë‚´ ì˜¤ëœ ê³„íšì„ ë¬¼ê±°í’ˆìœ¼ë¡œ ë§Œë“  ë…€ì„ë“¤ì´ ì´ë ‡ê²Œ ì œ ë°œë¡œ ì°¾ì•„ì™€ì£¼ë‹ˆ ì •ë§ ê¸°ì˜ê¸° ê·¸ì§€ ì—†êµ°.\r\n\r\n#rê·¸ ëŒ“ê°€ë¡œ ì„¸ìƒì—ì„œ ì œì¼ ê³ í†µìŠ¤ëŸ¬ìš´ ì£½ìŒì„ ì„ ì‚¬í•´ì£¼ë§ˆ.#k") == 1) {
+                    //ìˆ˜ë½ì‹œ ì•„ì¹´ì´ëŸ¼ ì‚¬ë¼ì§€ê³  ëª¬ìŠ¤í„° ì†Œí™˜ë¨!
                     Field field = getPlayer().getMap();
                     field.removeNpc(2144021);
                     if (DBConfig.isGanglim) {
@@ -438,27 +438,27 @@ public class Arkarium extends ScriptEngineNPC {
 
     public void akayrum_saveTheGoddess() {
         getPlayer().getMap().hideNpc(2144020);
-        self.say("¾ÇÀÇ ±º´ÜÀå #p2144010#À» µåµğ¾î ¹°¸®ÃÆ±º¿ä.");
-        self.say("¿À·§µ¿¾È °¤ÇôÀÖ´ø ºÀÀÎ¿¡¼­ µåµğ¾î ³ª¿À°Ô µÇ¾ú¾î¿ä. °¨»çÇÕ´Ï´Ù #h0#´Ô.");
+        self.say("ì•…ì˜ êµ°ë‹¨ì¥ #p2144010#ì„ ë“œë””ì–´ ë¬¼ë¦¬ì³¤êµ°ìš”.");
+        self.say("ì˜¤ë«ë™ì•ˆ ê°‡í˜€ìˆë˜ ë´‰ì¸ì—ì„œ ë“œë””ì–´ ë‚˜ì˜¤ê²Œ ë˜ì—ˆì–´ìš”. ê°ì‚¬í•©ë‹ˆë‹¤ #h0#ë‹˜.");
     }
 
-    // ³ë¸Ö
+    // ë…¸ë©€
     public void inAkayrumPrison() {
         for (MapleMonster mob : getPlayer().getMap().getAllMonstersThreadsafe()) {
             getPlayer().getMap().removeMonster(mob, 1);
         }
-        getPlayer().getMap().startMapEffect("ÀÚ½Å ¼ÓÀÇ Ãß¾ÇÇÑ ¸ğ½ÀÀ» ¸¶ÁÖÇÑ ±âºĞÀÌ ¾î¶°½ÅÁö¿ä?", 5120057, false, 5);
+        getPlayer().getMap().startMapEffect("ìì‹  ì†ì˜ ì¶”ì•…í•œ ëª¨ìŠµì„ ë§ˆì£¼í•œ ê¸°ë¶„ì´ ì–´ë– ì‹ ì§€ìš”?", 5120057, false, 5);
 
         MapleMonster mob = MapleLifeFactory.getMonster(8860003);
         getPlayer().getMap().spawnMonsterOnGroundBelow(mob, new Point(88, 95));
     }
 
-    // ÀÌÁö
+    // ì´ì§€
     public void inAkayrumPrison2() {
         for (MapleMonster mob : getPlayer().getMap().getAllMonstersThreadsafe()) {
             getPlayer().getMap().removeMonster(mob, 1);
         }
-        getPlayer().getMap().startMapEffect("ÀÚ½Å ¼ÓÀÇ Ãß¾ÇÇÑ ¸ğ½ÀÀ» ¸¶ÁÖÇÑ ±âºĞÀÌ ¾î¶°½ÅÁö¿ä?", 5120057, false, 5);
+        getPlayer().getMap().startMapEffect("ìì‹  ì†ì˜ ì¶”ì•…í•œ ëª¨ìŠµì„ ë§ˆì£¼í•œ ê¸°ë¶„ì´ ì–´ë– ì‹ ì§€ìš”?", 5120057, false, 5);
 
         MapleMonster mob = MapleLifeFactory.getMonster(8860003);
         getPlayer().getMap().spawnMonsterOnGroundBelow(mob, new Point(88, 95));
@@ -469,7 +469,7 @@ public class Arkarium extends ScriptEngineNPC {
             getPlayer().setRegisterTransferField(272020200);
             getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis());
         } else {
-            getPlayer().dropMessage(5, "µÚÆ²¸° ÀÚ½ÅÀÇ ºĞ½ÅÀ» ¸ÕÀú ÅğÄ¡ÇØ¾ß »ç¾ÇÇÑ ³»¸é¿¡¼­ Å»ÃâÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "ë’¤í‹€ë¦° ìì‹ ì˜ ë¶„ì‹ ì„ ë¨¼ì € í‡´ì¹˜í•´ì•¼ ì‚¬ì•…í•œ ë‚´ë©´ì—ì„œ íƒˆì¶œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -478,11 +478,11 @@ public class Arkarium extends ScriptEngineNPC {
             getPlayer().setRegisterTransferField(272020210);
             getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis());
         } else {
-            getPlayer().dropMessage(5, "µÚÆ²¸° ÀÚ½ÅÀÇ ºĞ½ÅÀ» ¸ÕÀú ÅğÄ¡ÇØ¾ß »ç¾ÇÇÑ ³»¸é¿¡¼­ Å»ÃâÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "ë’¤í‹€ë¦° ìì‹ ì˜ ë¶„ì‹ ì„ ë¨¼ì € í‡´ì¹˜í•´ì•¼ ì‚¬ì•…í•œ ë‚´ë©´ì—ì„œ íƒˆì¶œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
-    // ¾ÆÄ«ÀÌ·³ ¸ğ´ÏÅÍ ºê·¹ÀÌÅ© lua ½ºÅ©¸³Æ®
+    // ì•„ì¹´ì´ëŸ¼ ëª¨ë‹ˆí„° ë¸Œë ˆì´í¬ lua ìŠ¤í¬ë¦½íŠ¸
     public void Akayrum_lastHit1() {
         Reactor reactor = getPlayer().getMap().getReactorByName("marble1");
         if (reactor != null) {
@@ -508,7 +508,7 @@ public class Arkarium extends ScriptEngineNPC {
         Reactor reactor = getPlayer().getMap().getReactorByName("marble4");
         if (reactor != null) {
             reactor.forceHitReactor((byte) 1);
-            getPlayer().getMap().startMapEffect("°¨È÷ ³ª¸¦ ¿©±â±îÁö ¹Ğ¾îºÙÀÌ´Ù´Ï...ÀÌÁ¦ Á¦´ë·Î »ó´ëÇØÁÖÁö.", 5120057, false, 5);
+            getPlayer().getMap().startMapEffect("ê°íˆ ë‚˜ë¥¼ ì—¬ê¸°ê¹Œì§€ ë°€ì–´ë¶™ì´ë‹¤ë‹ˆ...ì´ì œ ì œëŒ€ë¡œ ìƒëŒ€í•´ì£¼ì§€.", 5120057, false, 5);
         }
     }
 }

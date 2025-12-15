@@ -26,19 +26,19 @@ public class SpawnObjectCommands implements Command {
             c.getPlayer().getMap().broadcastMessage(CField.spawnRune(rune, false));
             c.getPlayer().getMap().broadcastMessage(CField.spawnRune(rune, true));
          } else {
-            c.getPlayer().dropMessage(5, "Values 0-9 are possible, and only one rune can spawn at a time.");
+            c.getPlayer().dropMessage(5, "ใส่ค่าได้เพียง 0-9 และสามารถสร้างรูนได้ครั้งละ 1 อันเท่านั้น");
          }
       } else if (splitted[0].equals("!objectcount")) {
          c.getPlayer().dropMessage(5,
-               "There are " + c.getPlayer().getMap().getMapObjectSize() + " objects in the current map.");
+               "มีออบเจกต์จำนวน " + c.getPlayer().getMap().getMapObjectSize() + " ชิ้นในแผนที่ปัจจุบัน");
       }
    }
 
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!rune", "<type>", "Spawns a rune at your position.", 6),
-            new CommandDefinition("!objectcount", "", "Displays the number of objects in the current map.", 6)
+            new CommandDefinition("!rune", "<type>", "เรียกรูนออกมาที่ตำแหน่งของคุณ", 6),
+            new CommandDefinition("!objectcount", "", "แสดงจำนวนออบเจกต์ในแผนที่ปัจจุบัน", 6)
       };
    }
 }

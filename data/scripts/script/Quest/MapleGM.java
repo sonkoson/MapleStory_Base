@@ -29,29 +29,29 @@ import java.util.*;
 public class MapleGM extends ScriptEngineNPC {
 
     public void q12396s() {
-        self.say("¾È³çÇÏ¼¼¿ä, #b#h0##k´Ô.¹ú½á ·¹º§ 50À» ´Ş¼ºÇÏ¼Ì±º¿ä! #b·¹º§ 50#kÀ» ´Ş¼ºÇÏ°Ô µÇ¸é Æ¯º°ÇÑ Èû, #b¾îºô¸®Æ¼#k¸¦ ¾òÀ» ¼ö ÀÖ°Ô µÈ´ä´Ï´Ù. Áö±İ Á¦°¡ ±× ÈûÀ» °³¹æ½ÃÄÑ µå¸±°Ô¿ä.");
-        self.say("ÀÚ~! ´ç½ÅÀÇ »õ·Î¿î Èû, ¾îºô¸®Æ¼¸¦ °³¹æÇØ µå·È½À´Ï´Ù. Ä³¸¯ÅÍ ½ºÅÈÃ¢À» ÅëÇØ¼­ È®ÀÎÇØº¸¼¼¿ä~!");
+        self.say("ì•ˆë…•í•˜ì„¸ìš”, #b#h0##kë‹˜.ë²Œì¨ ë ˆë²¨ 50ì„ ë‹¬ì„±í•˜ì…¨êµ°ìš”! #bë ˆë²¨ 50#kì„ ë‹¬ì„±í•˜ê²Œ ë˜ë©´ íŠ¹ë³„í•œ í˜, #bì–´ë¹Œë¦¬í‹°#kë¥¼ ì–»ì„ ìˆ˜ ìˆê²Œ ëœë‹µë‹ˆë‹¤. ì§€ê¸ˆ ì œê°€ ê·¸ í˜ì„ ê°œë°©ì‹œì¼œ ë“œë¦´ê²Œìš”.");
+        self.say("ì~! ë‹¹ì‹ ì˜ ìƒˆë¡œìš´ í˜, ì–´ë¹Œë¦¬í‹°ë¥¼ ê°œë°©í•´ ë“œë ¸ìŠµë‹ˆë‹¤. ìºë¦­í„° ìŠ¤íƒ¯ì°½ì„ í†µí•´ì„œ í™•ì¸í•´ë³´ì„¸ìš”~!");
         getPlayer().innerLevelUp();
         getPlayer().innerLevelUp();
         getPlayer().innerLevelUp();
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
-    //¿©·¯°¡Áö Å×½ºÆ®¸¦ ÇÏ±âÀ§ÇÑ ¿£ÇÇ½Ã ¸Ê : 180000001 ¿¡ ÀÖ´Â ´Ù¹Ì
+    //ì—¬ëŸ¬ê°€ì§€ í…ŒìŠ¤íŠ¸ë¥¼ í•˜ê¸°ìœ„í•œ ì—”í”¼ì‹œ ë§µ : 180000001 ì— ìˆëŠ” ë‹¤ë¯¸
     public void npc_9010057() {
         if (getPlayer().isGM()) {
-            String testMenu = "\r\n#L2#ÀÌ³Ê¾îºô¸®Æ¼ ¿É¼ÇÅ×½ºÆ®#l\r\n#L3#·£´ı ÀÌ³Ê ¾îºô¸®Æ¼ Å×½ºÆ®ÇÏ±â#l\r\n#L4#ÇÎÅ©ºóÅ×½ºÆ®#l\r\n#L5#ºí¶ó½æÅ×½ºÆ®#l\r\n#L6#ÆĞÅ¶Å×½ºÆ®#l\r\n\r\n#L7#±şµğ ÇÇÇØÀÚ#l";
-            int v0 = self.askMenu("¾È³çÇÏ¼¼¿ä Àú´Â ¿î¿µÀÚ´Ôµé¿¡°Ô µµ¿òÀ» µå¸®´Â ´Ù¹Ì¶ó°í ÇÕ´Ï´Ù~! ¹«¾ùÀ» µµ¿Íµå¸±±î¿ä?\r\n#b#L0#Á÷¾÷¿¡ ¸Â´Â ½ºÅ³ÄÚ¾î Áö±Ş¹Ş±â#l\r\n#L1#¸Û¸ÛÀÌ ·¹ÀÌ½Ì Å×½ºÆ®#l" + testMenu);
+            String testMenu = "\r\n#L2#ì´ë„ˆì–´ë¹Œë¦¬í‹° ì˜µì…˜í…ŒìŠ¤íŠ¸#l\r\n#L3#ëœë¤ ì´ë„ˆ ì–´ë¹Œë¦¬í‹° í…ŒìŠ¤íŠ¸í•˜ê¸°#l\r\n#L4#í•‘í¬ë¹ˆí…ŒìŠ¤íŠ¸#l\r\n#L5#ë¸”ë¼ì¸í…ŒìŠ¤íŠ¸#l\r\n#L6#íŒ¨í‚·í…ŒìŠ¤íŠ¸#l\r\n\r\n#L7#ê¹¸ë”” í”¼í•´ì#l";
+            int v0 = self.askMenu("ì•ˆë…•í•˜ì„¸ìš” ì €ëŠ” ìš´ì˜ìë‹˜ë“¤ì—ê²Œ ë„ì›€ì„ ë“œë¦¬ëŠ” ë‹¤ë¯¸ë¼ê³  í•©ë‹ˆë‹¤~! ë¬´ì—‡ì„ ë„ì™€ë“œë¦´ê¹Œìš”?\r\n#b#L0#ì§ì—…ì— ë§ëŠ” ìŠ¤í‚¬ì½”ì–´ ì§€ê¸‰ë°›ê¸°#l\r\n#L1#ë©ë©ì´ ë ˆì´ì‹± í…ŒìŠ¤íŠ¸#l" + testMenu);
             switch (v0) {
                 case 0:
                     getPlayer().giveDefaultVMatrixSkill();
-                    self.sayOk("Áö±Ş ¿Ï·áµÇ¾ú½À´Ï´Ù. V¸ÅÆ®¸¯½º UI¸¦ È®ÀÎÇØº¸¼¼¿ä~!");
+                    self.sayOk("ì§€ê¸‰ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. Vë§¤íŠ¸ë¦­ìŠ¤ UIë¥¼ í™•ì¸í•´ë³´ì„¸ìš”~!");
                     break;
                 case 1:
                     registerTransferField(926010100);
                     break;
                 case 2:
-                    String abs = "Å×½ºÆ®ÀÔ´Ï´Ù...\r\n#b";
+                    String abs = "í…ŒìŠ¤íŠ¸ì…ë‹ˆë‹¤...\r\n#b";
                     int innerSize = InnerAbility.innerAbilityInfos.size();
                     SortedSet<Integer> keys = new TreeSet<>(InnerAbility.innerAbilityInfos.keySet());
                     for (Integer key : keys) {
@@ -63,11 +63,11 @@ public class MapleGM extends ScriptEngineNPC {
                     for (String tt : InnerAbility.innerAbilityInfos.get(test).getOptions()) {
                         options += tt + "\r\n";
                     }
-                    self.sayOk(InnerAbility.innerAbilityInfos.get(test).getMaxLevel() + " ¼±ÅÃÇÑ°Å ¸Æ½º·¹º§ÀÓ");
+                    self.sayOk(InnerAbility.innerAbilityInfos.get(test).getMaxLevel() + " ì„ íƒí•œê±° ë§¥ìŠ¤ë ˆë²¨ì„");
                     //self.sayOk(options + "");
                     break;
                 case 3: {
-                    self.sayOk(("Å×½ºÆ®³¡³­±â´ÉÀÓÀÓ"));
+                    self.sayOk(("í…ŒìŠ¤íŠ¸ëë‚œê¸°ëŠ¥ì„ì„"));
                     break;
                 }
                 case 4: {
@@ -90,11 +90,11 @@ public class MapleGM extends ScriptEngineNPC {
                         getPlayer().send(pr.getPacket());
                     }
                      */
-                    //Ä«¿À½º¸ğµåÀÇ°æ¿ì 6C 61 73 74 44 61 74 65 43 3D 32 31 2F 30 34 2F 32 35 3B lastDateC=21/04/25;
+                    //ì¹´ì˜¤ìŠ¤ëª¨ë“œì˜ê²½ìš° 6C 61 73 74 44 61 74 65 43 3D 32 31 2F 30 34 2F 32 35 3B lastDateC=21/04/25;
                     break;
                 }
                 case 5: {
-                    switch (self.askMenu("#L0#»¡°£»ö#l\r\n#L1#ÆÄ¶õ»ö#l\r\n#L2#³ë¶õ»ö#l")) {
+                    switch (self.askMenu("#L0#ë¹¨ê°„ìƒ‰#l\r\n#L1#íŒŒë€ìƒ‰#l\r\n#L2#ë…¸ë€ìƒ‰#l")) {
                         case 0: {
                             MapleNPC npc = getPlayer().getMap().getNPCById(9062530);
                             final Field map = getPlayer().getMap();
@@ -144,11 +144,11 @@ public class MapleGM extends ScriptEngineNPC {
                     break;
                 }
 
-                case 7: { //½Ç½Ã°£ Äõ¸®¼öÁ¤
+                case 7: { //ì‹¤ì‹œê°„ ì¿¼ë¦¬ìˆ˜ì •
                     HashMap<Integer, Integer> originalCoin = new HashMap<>();
                     int line = 1;
                     try {
-                        //¿ø·¡ÀÖ´ø ÄÚÀÎ Á¤º¸´ãÀ½
+                        //ì›ë˜ìˆë˜ ì½”ì¸ ì •ë³´ë‹´ìŒ
                         for (String ori : Files.readAllLines(Paths.get("questinfo_account.sql"), Charset.forName("UTF-8"))) {
                             if (ori.isEmpty()) continue;
                             String[] oriQEX = ori.split(",");
@@ -169,7 +169,7 @@ public class MapleGM extends ScriptEngineNPC {
                     ResultSet rs = null;
                     HashMap<Integer, Long> ggamdee = new HashMap<>();
                     try (Connection con = DBConnection.getConnection()) {
-                        //±şµğ ÇÇÇØÀÚµé Á¤º¸½Ï´Ù±ÜÀ½
+                        //ê¹¸ë”” í”¼í•´ìë“¤ ì •ë³´ì‹¹ë‹¤ê¸ìŒ
                         ps = con.prepareStatement("SELECT * FROM `questinfo_account` WHERE `customData` = ?");
                         ps.setString(1, "point=function String() { [native code] }");
                         rs = ps.executeQuery();
@@ -192,7 +192,7 @@ public class MapleGM extends ScriptEngineNPC {
                             e.printStackTrace();
                         }
                     }
-                    //Á¢¼ÓÁßÀÎ »ç¶÷ ¿ø»óº¹±¸
+                    //ì ‘ì†ì¤‘ì¸ ì‚¬ëŒ ì›ìƒë³µêµ¬
                     for (GameServer cs : GameServer.getAllInstances()) {
                         for (Field map : cs.getMapFactory().getAllMaps()) {
                             Iterator<MapleCharacter> iterator = map.getCharacters().listIterator();
@@ -200,12 +200,12 @@ public class MapleGM extends ScriptEngineNPC {
                                 MapleCharacter chr = iterator.next();
                                 if (chr != null) {
                                     if (ggamdee.remove(chr.getAccountID()) != null) {
-                                        //¿Â¶óÀÎ ÀÌ¿ëÀÚ updateOneOnfo
+                                        //ì˜¨ë¼ì¸ ì´ìš©ì updateOneOnfo
                                         Integer oriCoin = originalCoin.remove(chr.getAccountID());
                                         if (oriCoin != null) {
                                             chr.updateOneInfo(500629, "point", String.valueOf(oriCoin));
                                         } else {
-                                            //Á¤º¸¾ø´Â»ç¶÷µéÀº 0°³ÀÓ
+                                            //ì •ë³´ì—†ëŠ”ì‚¬ëŒë“¤ì€ 0ê°œì„
                                             chr.updateOneInfo(500629, "point", "0");
                                         }
                                     }
@@ -213,7 +213,7 @@ public class MapleGM extends ScriptEngineNPC {
                             }
                         }
                     }
-                    //¿ÀÇÁ¶óÀÎ»ç¶÷µé Äõ¸® ¾÷µ«
+                    //ì˜¤í”„ë¼ì¸ì‚¬ëŒë“¤ ì¿¼ë¦¬ ì—…ëƒ
                     for (Integer a : ggamdee.keySet()) {
                         try (Connection con = DBConnection.getConnection()) {
                             ps = con.prepareStatement("UPDATE questinfo_account SET customData = ? WHERE `id` = ? AND `quest` = ?");
@@ -224,7 +224,7 @@ public class MapleGM extends ScriptEngineNPC {
                                 ps.setString(1, "point=0");
                             }
                             ps.setLong(2, ggamdee.get(a));
-                            ps.setInt(3, 500629); //Äù½ºÆ®¾ÆÀÌµğ°¡ 500629ÀÏ°æ¿ì¸¸ Ã³¸®ÇØÁÜ
+                            ps.setInt(3, 500629); //í€˜ìŠ¤íŠ¸ì•„ì´ë””ê°€ 500629ì¼ê²½ìš°ë§Œ ì²˜ë¦¬í•´ì¤Œ
                             ps.executeUpdate();
                         } catch (Throwable t) {
                             t.printStackTrace();
@@ -241,24 +241,24 @@ public class MapleGM extends ScriptEngineNPC {
                             }
                         }
                     }
-                    self.sayOk("¿Ï·áµÇ¾ú½À´Ï´Ù.");
+                    self.sayOk("ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
                     break;
                 }
             }
         } else {
-            self.say("¾Æ ¿î¿µÀÚ µ¥·Á¿À¶ó°í ¤»¤»");
+            self.say("ì•„ ìš´ì˜ì ë°ë ¤ì˜¤ë¼ê³  ã…‹ã…‹");
         }
     }
 
     public void npc_9062508() {
-        String gmMenu = "#L1#[GM¸Ş´º] µû»ç·Î¿î ÇŞ»ì µå·Ó·ü ¼öÁ¤#l\r\n#L2#[GM¸Ş´º] ºí¶ó½æ ¼öµ¿ Ãß°¡#l\r\n#L3#[GM¸Ş´º] ²ÉÇÇ¿ì±â ²ô°í ÄÑ±â#l";
-        int v = self.askMenu("#e<°­¸² : ºí¶ó½æ>#n\r\nÇöÀç ºí¶ó½æ °ÔÀÌÁö°¡ ¾Æ·¡ ¸¸Å­ ¸ğ¿´½À´Ï´Ù!\r\n\r\n#B" + (int) ((((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100) + "# " + (((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100 + "%\r\n\r\n#b#L0#ºí¶ó½æ °ÔÀÌÁö¿¡ ´ëÇØ ¾Ë°í ½Í¾î¿ä.#l\r\n" + (getPlayer().isGM() ? gmMenu : ""));
+        String gmMenu = "#L1#[GMë©”ë‰´] ë”°ì‚¬ë¡œìš´ í–‡ì‚´ ë“œë¡­ë¥  ìˆ˜ì •#l\r\n#L2#[GMë©”ë‰´] ë¸”ë¼ì¸ ìˆ˜ë™ ì¶”ê°€#l\r\n#L3#[GMë©”ë‰´] ê½ƒí”¼ìš°ê¸° ë„ê³  ì¼œê¸°#l";
+        int v = self.askMenu("#e<ê°•ë¦¼ : ë¸”ë¼ì¸>#n\r\ní˜„ì¬ ë¸”ë¼ì¸ ê²Œì´ì§€ê°€ ì•„ë˜ ë§Œí¼ ëª¨ì˜€ìŠµë‹ˆë‹¤!\r\n\r\n#B" + (int) ((((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100) + "# " + (((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100 + "%\r\n\r\n#b#L0#ë¸”ë¼ì¸ ê²Œì´ì§€ì— ëŒ€í•´ ì•Œê³  ì‹¶ì–´ìš”.#l\r\n" + (getPlayer().isGM() ? gmMenu : ""));
         switch (v) {
-            case 0: //ºí¶ó½æ °ÔÀÌÁö¿¡ ´ëÇØ ¾Ë°í ½Í¾î¿ä
-                self.say("#bºí¶ó½æ °ÔÀÌÁö#k´Â ²ÉÀ» ÇÇ¿ì±â À§ÇÑ °ÔÀÌÁö¿¡¿ä.\r\n°ÔÀÌÁö¸¦ ¿Ã¸®±â À§ÇØ¼± »ç³ÉÀ» ÅëÇØ È¹µæÇÒ ¼ö ÀÖ´Â #r#i2633343# #z2633343##kÀ» ÅëÇØ #e1Æ÷ÀÎÆ®#n¾¿ ¿Ã¸®´Â ¹æ¹ı°ú\r\n#b°­¸² Æ÷ÀÎÆ®#k¸¦ ÃæÀüÇÏ°Ô µÇ¸é #eÃæÀü ±İ¾×¿¡ 20%#n¾¿ ÀÚµ¿À¸·Î °ÔÀÌÁö°¡ ÃæÀüµÈ´ä´Ï´Ù.");
-                self.say("²ÉÀÌ ÇÑ °³¾¿ ÇÊ ¶§ ¸¶´Ù ¸ğµç ¸Ê¿¡ #bº½ ÇŞ»ì, º½ ¹Ù¶÷ ¹öÇÁ#k°¡ ½ÃÀÛ µÇ¸ç, ²ÉÀÌ ´Ù ÇÇ°Ô µÉ °æ¿ì #r#e°æÇèÄ¡ 1.5¹è, µå¶ø·ü 1.5¹è, ¸Ş¼Ò È¹µæ·® 1.5¹è, ½Éº¼ µå¶ø·ü 2¹è Áß ·£´ı ¹öÇÁ#n#k ÀÌº¥Æ®°¡ ¼­¹ö ÀüÃ¼¿¡ Àû¿ë µÇ´Ï Âü°íÇÏ¸é ÁÁ°ÚÁö¿ä?");
+            case 0: //ë¸”ë¼ì¸ ê²Œì´ì§€ì— ëŒ€í•´ ì•Œê³  ì‹¶ì–´ìš”
+                self.say("#bë¸”ë¼ì¸ ê²Œì´ì§€#këŠ” ê½ƒì„ í”¼ìš°ê¸° ìœ„í•œ ê²Œì´ì§€ì—ìš”.\r\nê²Œì´ì§€ë¥¼ ì˜¬ë¦¬ê¸° ìœ„í•´ì„  ì‚¬ëƒ¥ì„ í†µí•´ íšë“í•  ìˆ˜ ìˆëŠ” #r#i2633343# #z2633343##kì„ í†µí•´ #e1í¬ì¸íŠ¸#nì”© ì˜¬ë¦¬ëŠ” ë°©ë²•ê³¼\r\n#bê°•ë¦¼ í¬ì¸íŠ¸#kë¥¼ ì¶©ì „í•˜ê²Œ ë˜ë©´ #eì¶©ì „ ê¸ˆì•¡ì— 20%#nì”© ìë™ìœ¼ë¡œ ê²Œì´ì§€ê°€ ì¶©ì „ëœë‹µë‹ˆë‹¤.");
+                self.say("ê½ƒì´ í•œ ê°œì”© í•„ ë•Œ ë§ˆë‹¤ ëª¨ë“  ë§µì— #bë´„ í–‡ì‚´, ë´„ ë°”ëŒ ë²„í”„#kê°€ ì‹œì‘ ë˜ë©°, ê½ƒì´ ë‹¤ í”¼ê²Œ ë  ê²½ìš° #r#eê²½í—˜ì¹˜ 1.5ë°°, ë“œëë¥  1.5ë°°, ë©”ì†Œ íšë“ëŸ‰ 1.5ë°°, ì‹¬ë³¼ ë“œëë¥  2ë°° ì¤‘ ëœë¤ ë²„í”„#n#k ì´ë²¤íŠ¸ê°€ ì„œë²„ ì „ì²´ì— ì ìš© ë˜ë‹ˆ ì°¸ê³ í•˜ë©´ ì¢‹ê² ì§€ìš”?");
                 break;
-            case 1: //µû»ç·Î¿î ÇŞ»ì µå·Ó·ü ¼öÁ¤
+            case 1: //ë”°ì‚¬ë¡œìš´ í–‡ì‚´ ë“œë¡­ë¥  ìˆ˜ì •
                 if (getPlayer().isGM()) {
                     MonsterGlobalDropEntry d = null;
                     for (MonsterGlobalDropEntry de : MapleMonsterInformationProvider.getInstance().getGlobalDrop()) {
@@ -267,7 +267,7 @@ public class MapleGM extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    int dropRate = self.askNumber("ÇöÀç µû»ç·Î¿î ÇŞ»ì µå·Ó·üÀº " + ((double) (d.chance / 10000.0d)) + "%ÀÔ´Ï´Ù. ¾ó¸¶·Î ¼öÁ¤ÇÒ±î¿ä?\r\n 1000 = 0.1%", 0, 0, 1000000);
+                    int dropRate = self.askNumber("í˜„ì¬ ë”°ì‚¬ë¡œìš´ í–‡ì‚´ ë“œë¡­ë¥ ì€ " + ((double) (d.chance / 10000.0d)) + "%ì…ë‹ˆë‹¤. ì–¼ë§ˆë¡œ ìˆ˜ì •í• ê¹Œìš”?\r\n 1000 = 0.1%", 0, 0, 1000000);
                     if (dropRate > 0) {
                         for (MonsterGlobalDropEntry de : MapleMonsterInformationProvider.getInstance().getGlobalDrop()) {
                             if (de.itemId == 2633343) {
@@ -279,24 +279,24 @@ public class MapleGM extends ScriptEngineNPC {
 
                 }
                 break;
-            case 2: //ºí¶ó½æ °ÔÀÌÁö ¼öµ¿ Á¶ÀÛ
+            case 2: //ë¸”ë¼ì¸ ê²Œì´ì§€ ìˆ˜ë™ ì¡°ì‘
                 if (getPlayer().isGM()) {
-                    int blossom = self.askNumber("¾ó¸¶³ª ÃæÀüÇÒ±î¿ä? ÇöÀç : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000", 0, 0, 1000000);
+                    int blossom = self.askNumber("ì–¼ë§ˆë‚˜ ì¶©ì „í• ê¹Œìš”? í˜„ì¬ : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000", 0, 0, 1000000);
                     if (blossom > 0) {
                         Center.sunShineStorage.addSunShineGuage(blossom);
-                        self.sayOk("ºí¶ó½æÀÌ " + blossom + "¸¸Å­ ÃæÀüµÇ¾ú½À´Ï´Ù.\r\nÇöÀç : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
+                        self.sayOk("ë¸”ë¼ì¸ì´ " + blossom + "ë§Œí¼ ì¶©ì „ë˜ì—ˆìŠµë‹ˆë‹¤.\r\ní˜„ì¬ : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
                     }
                 }
                 break;
             case 3:
                 if (getPlayer().isGM()) {
-                    int vv = self.askMenu("#b#L0#ÄÑ±â#l\r\n#L1#²ô±â#l");
+                    int vv = self.askMenu("#b#L0#ì¼œê¸°#l\r\n#L1#ë„ê¸°#l");
                     if (vv == 0) {
                         Center.sunShineStorage.setBloomFlower(true);
-                        self.sayOk("ÄÑ±â¿Ï·á");
+                        self.sayOk("ì¼œê¸°ì™„ë£Œ");
                     } else if (vv == 1) {
                         Center.sunShineStorage.setBloomFlower(false);
-                        self.sayOk("²ô±â¿Ï·á");
+                        self.sayOk("ë„ê¸°ì™„ë£Œ");
                     }
                 }
                 break;
@@ -304,24 +304,24 @@ public class MapleGM extends ScriptEngineNPC {
     }
 
 
-    //¸Û¸Û·¹ÀÌ½º Å×½ºÆ®¿ë
+    //ë©ë©ë ˆì´ìŠ¤ í…ŒìŠ¤íŠ¸ìš©
     public void dooat() {
         if (getPlayer().getMap() instanceof Field_MMRace) {
-            int v0 = self.askMenu("#e<¸Ş¼Ò ·¹ÀÌ½º>\r\n#n¸Ş¼Ò¸¦ °É°íÇÏ´Â ·¹ÀÌ½Ì °ÔÀÓ\r\n#b#L0#¸Ş¼Ò ·¹ÀÌ½º¿¡ Âü¿©ÇÑ´Ù(¹è´çÈ®ÀÎ)#l\r\n#L1#´©Àû ±İ¾×À» Á¤»ê¹Ş°í ½Í¾î¿ä.#l\r\n#L2#¸Ş¼Ò ·¹ÀÌ½º¿¡ ´ëÇØ ¼³¸íÀ» µè´Â´Ù.#l\r\n#L3#¸ó½ºÅÍº° ´É·ÂÄ¡¸¦ È®ÀÎÇÏ°í ½Í¾î¿ä.#l\r\n#L4#³ª°¡°í ½Í¾î¿ä#l");
+            int v0 = self.askMenu("#e<ë©”ì†Œ ë ˆì´ìŠ¤>\r\n#në©”ì†Œë¥¼ ê±¸ê³ í•˜ëŠ” ë ˆì´ì‹± ê²Œì„\r\n#b#L0#ë©”ì†Œ ë ˆì´ìŠ¤ì— ì°¸ì—¬í•œë‹¤(ë°°ë‹¹í™•ì¸)#l\r\n#L1#ëˆ„ì  ê¸ˆì•¡ì„ ì •ì‚°ë°›ê³  ì‹¶ì–´ìš”.#l\r\n#L2#ë©”ì†Œ ë ˆì´ìŠ¤ì— ëŒ€í•´ ì„¤ëª…ì„ ë“£ëŠ”ë‹¤.#l\r\n#L3#ëª¬ìŠ¤í„°ë³„ ëŠ¥ë ¥ì¹˜ë¥¼ í™•ì¸í•˜ê³  ì‹¶ì–´ìš”.#l\r\n#L4#ë‚˜ê°€ê³  ì‹¶ì–´ìš”#l");
             Field_MMRace field = (Field_MMRace) getPlayer().getMap();
             if (v0 == 0) {
                 if (field.getParticipateUsers().get(getPlayer().getId()) != null) {
-                    self.sayOk("ÀÚ³×´Â ÀÌ¹Ì °ÔÀÓ¿¡ Âü¿©ÇÑ »óÅÂ·Î±¸¸Õ... ÀÌ¹Ì ÇÑ¹ø °É¸° ¹èÆÃÀº ¹«¸¦ ¼ö ¾øÁö ÇÏÇÏ");
+                    self.sayOk("ìë„¤ëŠ” ì´ë¯¸ ê²Œì„ì— ì°¸ì—¬í•œ ìƒíƒœë¡œêµ¬ë¨¼... ì´ë¯¸ í•œë²ˆ ê±¸ë¦° ë°°íŒ…ì€ ë¬´ë¥¼ ìˆ˜ ì—†ì§€ í•˜í•˜");
                     return;
                 }
                 if (field.eventRace != null) {
-                    self.sayOk("ÀÌ¹Ì °ÔÀÓÀÌ ÁøÇà Áß ÀÏ¶§´Â ¹èÆÃ¿¡ Âü¿©ÇÒ ¼ö ¾ø´Ù³×.");
+                    self.sayOk("ì´ë¯¸ ê²Œì„ì´ ì§„í–‰ ì¤‘ ì¼ë•ŒëŠ” ë°°íŒ…ì— ì°¸ì—¬í•  ìˆ˜ ì—†ë‹¤ë„¤.");
                     return;
                 }
-                Integer a = field.winningRate.get("ÄïµÎ¶ó");
-                Integer b = field.winningRate.get("±×·Îµ·");
-                Integer c = field.winningRate.get("¾ó·ç");
-                Integer d = field.winningRate.get("¹ö±â");
+                Integer a = field.winningRate.get("ì¿¤ë‘ë¼");
+                Integer b = field.winningRate.get("ê·¸ë¡œëˆ");
+                Integer c = field.winningRate.get("ì–¼ë£¨");
+                Integer d = field.winningRate.get("ë²„ê¸°");
                 if (a == null) a = 0;
                 if (b == null) b = 0;
                 if (c == null) c = 0;
@@ -331,45 +331,45 @@ public class MapleGM extends ScriptEngineNPC {
                     e = 1;
                 }
                 String text = "";
-                text += "#b#L0#ÄïµÎ¶ó( " + (a / e) * 100 + "% ) ¹è´ç·ü : 3.0#l\r\n";
-                text += "#b#L1#±×·Îµ·( " + (b / e) * 100 + "% ) ¹è´ç·ü : 3.0#l\r\n";
-                text += "#b#L2#¾ó·ç( " + (c / e) * 100 + "% ) ¹è´ç·ü : 3.0#l\r\n";
-                text += "#b#L3#¹ö±â( " + (d / e) * 100 + "% ) ¹è´ç·ü : 3.0#l\r\n";
-                int mungMung = self.askMenu("´©±¸ÇÑÅ× ¹èÆÃÇÒÅÙ°¡?\r\n" + text);
-                long mesos = self.askNumber("¾ó¸¶¸¦ ¹èÆÃÇÒÅÙ°¡? ÃÖ´ë 200,000,000 ¸Ş¼Ò±îÁö ¹èÆÃÇÒ ¼ö ÀÖ´Ù³×.", 0, 1, 200000000);
+                text += "#b#L0#ì¿¤ë‘ë¼( " + (a / e) * 100 + "% ) ë°°ë‹¹ë¥  : 3.0#l\r\n";
+                text += "#b#L1#ê·¸ë¡œëˆ( " + (b / e) * 100 + "% ) ë°°ë‹¹ë¥  : 3.0#l\r\n";
+                text += "#b#L2#ì–¼ë£¨( " + (c / e) * 100 + "% ) ë°°ë‹¹ë¥  : 3.0#l\r\n";
+                text += "#b#L3#ë²„ê¸°( " + (d / e) * 100 + "% ) ë°°ë‹¹ë¥  : 3.0#l\r\n";
+                int mungMung = self.askMenu("ëˆ„êµ¬í•œí…Œ ë°°íŒ…í• í…ê°€?\r\n" + text);
+                long mesos = self.askNumber("ì–¼ë§ˆë¥¼ ë°°íŒ…í• í…ê°€? ìµœëŒ€ 200,000,000 ë©”ì†Œê¹Œì§€ ë°°íŒ…í•  ìˆ˜ ìˆë‹¤ë„¤.", 0, 1, 200000000);
                 if (getPlayer().getMeso() >= mesos) {
                     String btMonster = "";
                     switch (mungMung) {
                         case 0:
-                            btMonster = "ÄïµÎ¶ó";
+                            btMonster = "ì¿¤ë‘ë¼";
                             break;
                         case 1:
-                            btMonster = "±×·Îµ·";
+                            btMonster = "ê·¸ë¡œëˆ";
                             break;
                         case 2:
-                            btMonster = "¾ó·ç";
+                            btMonster = "ì–¼ë£¨";
                             break;
                         case 3:
-                            btMonster = "¹ö±â";
+                            btMonster = "ë²„ê¸°";
                             break;
                     }
                     if (field.eventRace != null) {
-                        self.sayOk("ÀÌ¹Ì °ÔÀÓÀÌ ÁøÇà Áß ÀÏ¶§´Â ¹èÆÃ¿¡ Âü¿©ÇÒ ¼ö ¾ø´Ù³×.");
+                        self.sayOk("ì´ë¯¸ ê²Œì„ì´ ì§„í–‰ ì¤‘ ì¼ë•ŒëŠ” ë°°íŒ…ì— ì°¸ì—¬í•  ìˆ˜ ì—†ë‹¤ë„¤.");
                         return;
                     }
                     field.participateUsers.put(getPlayer().getId(), new Pair(btMonster, mesos));
                     getPlayer().gainMeso(-mesos, true);
-                    self.sayOk("Âü°¡½ÅÃ»ÀÌ ¿Ï·áµÇ¾ú³×.\r\n< Âü°¡ Á¤º¸ >\r\n¹èÆÃ ¸ó½ºÅÍ : " + btMonster + "\r\n" + "¹èÆÃ ±İ¾× :" + String.format("%,d", mesos));
+                    self.sayOk("ì°¸ê°€ì‹ ì²­ì´ ì™„ë£Œë˜ì—ˆë„¤.\r\n< ì°¸ê°€ ì •ë³´ >\r\në°°íŒ… ëª¬ìŠ¤í„° : " + btMonster + "\r\n" + "ë°°íŒ… ê¸ˆì•¡ :" + String.format("%,d", mesos));
                 } else {
-                    self.sayOk("ÀÚ³×°¡ ÀÔ·ÂÇÑ ±İ¾×ÀÌ ÀÚ³×°¡ °®°íÀÖ´Â ¸Ş¼Òº¸´Ù Å« °Í °°±¸·Á...?");
+                    self.sayOk("ìë„¤ê°€ ì…ë ¥í•œ ê¸ˆì•¡ì´ ìë„¤ê°€ ê°–ê³ ìˆëŠ” ë©”ì†Œë³´ë‹¤ í° ê²ƒ ê°™êµ¬ë ¤...?");
                 }
             } else if (v0 == 1) {
-                //´©Àû±İ¾× Á¤»ê
+                //ëˆ„ì ê¸ˆì•¡ ì •ì‚°
                 if (field.accReward.get(getPlayer().getId()) == null || field.accReward.get(getPlayer().getId()) == 0) {
-                    self.sayOk("Á¤»ê¹ŞÀ» ¸Ş¼Ò°¡ ¾ø½À´Ï´Ù.");
+                    self.sayOk("ì •ì‚°ë°›ì„ ë©”ì†Œê°€ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
-                if (1 == self.askYesNo("ÇöÀç Á¤»ê¹ŞÀ» ¼ö ÀÖ´Â ¸Ş¼Ò´Â\r\n" + String.format("%,d", field.accReward.get(getPlayer().getId())) + "¸Ş¼Ò ÀÔ´Ï´Ù. Á¤»ê ¹ŞÀ¸½Ã°Ú½À´Ï±î?")) {
+                if (1 == self.askYesNo("í˜„ì¬ ì •ì‚°ë°›ì„ ìˆ˜ ìˆëŠ” ë©”ì†ŒëŠ”\r\n" + String.format("%,d", field.accReward.get(getPlayer().getId())) + "ë©”ì†Œ ì…ë‹ˆë‹¤. ì •ì‚° ë°›ìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                     long rewardMeso = 0;
                     if (30000000000L - (getPlayer().getMeso() + field.accReward.get(getPlayer().getId())) < 0) {
                         rewardMeso = 30000000000L - getPlayer().getMeso();
@@ -381,17 +381,17 @@ public class MapleGM extends ScriptEngineNPC {
                         field.accReward.remove(getPlayer().getId());
                     }
                     getPlayer().gainMeso(rewardMeso, true);
-                    self.sayOk(String.format("%,d", rewardMeso) + "¸Ş¼Ò°¡ Áö±ŞµÇ¾ú½À´Ï´Ù.\r\n¸Ş¼Ò Áö±Ş·®ÀÌ 0ÀÎ°æ¿ì ÀÎº¥Åä¸®ÀÇ ¸Ş¼Ò¸¦ ºñ¿î µÚ Á¤»ê¹Ş¾Æ ÁÖ¼¼¿ä.");
+                    self.sayOk(String.format("%,d", rewardMeso) + "ë©”ì†Œê°€ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.\r\në©”ì†Œ ì§€ê¸‰ëŸ‰ì´ 0ì¸ê²½ìš° ì¸ë²¤í† ë¦¬ì˜ ë©”ì†Œë¥¼ ë¹„ìš´ ë’¤ ì •ì‚°ë°›ì•„ ì£¼ì„¸ìš”.");
 
                 }
             } else if (v0 == 2) {
-                self.sayOk("¸Ş¼Ò ·¹ÀÌ½º´Â ¸Ş¼Ò¸¦ °É°íÇÏ´Â ¸ó½ºÅÍ ·¹ÀÌ½Ì °ÔÀÓÀÌ¶ó³×. °¢ ¸ó½ºÅÍµéÀº ¼­·Î ´Ù¸¥ ´É·ÂÄ¡¸¦ °®°í ÀÖ°í °ÔÀÓÀÌ ÇÏ³ªÇÏ³ª ´©ÀûµÊ¿¡ µû¶ó ±×³¯±×³¯ Á¤ÇØÁö´Â ½Â·ü·Î ¹è´ç±İ¾×ÀÌ ´Ù¸£Áö ¿øÇÏ´Â ¸ó½ºÅÍ¿¡°Ô °É±â¸¸ÇÏ°í ±â´Ù¸®¸é µÇ´Â°É¼¼");
+                self.sayOk("ë©”ì†Œ ë ˆì´ìŠ¤ëŠ” ë©”ì†Œë¥¼ ê±¸ê³ í•˜ëŠ” ëª¬ìŠ¤í„° ë ˆì´ì‹± ê²Œì„ì´ë¼ë„¤. ê° ëª¬ìŠ¤í„°ë“¤ì€ ì„œë¡œ ë‹¤ë¥¸ ëŠ¥ë ¥ì¹˜ë¥¼ ê°–ê³  ìˆê³  ê²Œì„ì´ í•˜ë‚˜í•˜ë‚˜ ëˆ„ì ë¨ì— ë”°ë¼ ê·¸ë‚ ê·¸ë‚  ì •í•´ì§€ëŠ” ìŠ¹ë¥ ë¡œ ë°°ë‹¹ê¸ˆì•¡ì´ ë‹¤ë¥´ì§€ ì›í•˜ëŠ” ëª¬ìŠ¤í„°ì—ê²Œ ê±¸ê¸°ë§Œí•˜ê³  ê¸°ë‹¤ë¦¬ë©´ ë˜ëŠ”ê±¸ì„¸");
             } else if (v0 == 3) {
-                //¸ó½ºÅÍº° ´É·ÂÄ¡ È®ÀÎ
-                self.sayOk("-------------------------------\r\n#e< ÄïµÎ¶ó >#n\r\n- ½ºÇÇµå : 2.5 / 5\r\n- #r½½·Î¿ì ÀúÇ× : 5 / 5#k\r\n- ½ºÅÏ ÀúÇ× 3 / 5\r\n#b¼Óµµ´Â ´À¸®Áö¸¸ µğ¹öÇÁ ÀúÇ×ÀÌ ¹«³­ÇÑ Æí\r\n\r\n#k#e< ±×·Îµ· >#n\r\n- ½ºÇÇµå : 1 / 5\r\n- #r½½·Î¿ì ÀúÇ× : 5 / 5#k" +
-                        "\r\n- #r½ºÅÏ ÀúÇ× : 5 / 5#k\r\n#b¼Óµµ´Â ³× ¸¶¸® ¸ó½ºÅÍ Áß Á¦ÀÏ ´À¸®Áö¸¸ µğ¹öÇÁ ÀúÇ× ´É·ÂÀÌ Á¦ÀÏ ÁÁ´Ù\r\n" +
-                        "\r\n#k#e< ¾ó·ç >#n\r\n- ½ºÇÇµå : 3 / 5\r\n- ½½·Î¿ì ÀúÇ× : 3 / 5\r\n- ½ºÅÏ ÀúÇ× : 1 / 5\r\n#b½ºÇÇµå¿Í ½½·Î¿ì ÀúÇ×ÀÌ ¹ë·±½ºÇü ÀÌÁö¸¸ ½ºÅÏ ÀúÇ×ÀÌ ¾Æ½¬¿î ¹ë·±½ºÇü ¸ó½ºÅÍ\r\n" +
-                        "\r\n#k#e< ¹ö±â >#n\r\n- #r½ºÇÇµå : 5 / 5#k\r\n- ½½·Î¿ì ÀúÇ× : 1 / 5\r\n- ½ºÅÏ ÀúÇ× : 1 / 5\r\n#b½ºÇÇµå°¡ Á¦ÀÏ ºü¸¥ ¸ó½ºÅÍÁö¸¸ µğ¹öÇÁ ÀúÇ×ÀÌ ¾àÇÑ ¸ó½ºÅÍ\r\n#k-------------------------------");
+                //ëª¬ìŠ¤í„°ë³„ ëŠ¥ë ¥ì¹˜ í™•ì¸
+                self.sayOk("-------------------------------\r\n#e< ì¿¤ë‘ë¼ >#n\r\n- ìŠ¤í”¼ë“œ : 2.5 / 5\r\n- #rìŠ¬ë¡œìš° ì €í•­ : 5 / 5#k\r\n- ìŠ¤í„´ ì €í•­ 3 / 5\r\n#bì†ë„ëŠ” ëŠë¦¬ì§€ë§Œ ë””ë²„í”„ ì €í•­ì´ ë¬´ë‚œí•œ í¸\r\n\r\n#k#e< ê·¸ë¡œëˆ >#n\r\n- ìŠ¤í”¼ë“œ : 1 / 5\r\n- #rìŠ¬ë¡œìš° ì €í•­ : 5 / 5#k" +
+                        "\r\n- #rìŠ¤í„´ ì €í•­ : 5 / 5#k\r\n#bì†ë„ëŠ” ë„¤ ë§ˆë¦¬ ëª¬ìŠ¤í„° ì¤‘ ì œì¼ ëŠë¦¬ì§€ë§Œ ë””ë²„í”„ ì €í•­ ëŠ¥ë ¥ì´ ì œì¼ ì¢‹ë‹¤\r\n" +
+                        "\r\n#k#e< ì–¼ë£¨ >#n\r\n- ìŠ¤í”¼ë“œ : 3 / 5\r\n- ìŠ¬ë¡œìš° ì €í•­ : 3 / 5\r\n- ìŠ¤í„´ ì €í•­ : 1 / 5\r\n#bìŠ¤í”¼ë“œì™€ ìŠ¬ë¡œìš° ì €í•­ì´ ë°¸ëŸ°ìŠ¤í˜• ì´ì§€ë§Œ ìŠ¤í„´ ì €í•­ì´ ì•„ì‰¬ìš´ ë°¸ëŸ°ìŠ¤í˜• ëª¬ìŠ¤í„°\r\n" +
+                        "\r\n#k#e< ë²„ê¸° >#n\r\n- #rìŠ¤í”¼ë“œ : 5 / 5#k\r\n- ìŠ¬ë¡œìš° ì €í•­ : 1 / 5\r\n- ìŠ¤í„´ ì €í•­ : 1 / 5\r\n#bìŠ¤í”¼ë“œê°€ ì œì¼ ë¹ ë¥¸ ëª¬ìŠ¤í„°ì§€ë§Œ ë””ë²„í”„ ì €í•­ì´ ì•½í•œ ëª¬ìŠ¤í„°\r\n#k-------------------------------");
             } else if (v0 == 4) {
                 registerTransferField(100000000);
             }
@@ -405,7 +405,7 @@ public class MapleGM extends ScriptEngineNPC {
     public void credit_rewards() {
         initNPC(MapleLifeFactory.getNPC(9001000));
 
-        String v0 = "¾È³çÇÏ¼¼¿ä? #e°­¸² Å©·¹µ÷ ´©Àû º¸»ó Áö±Ş#nÀ» ´ã´çÇÏ°í ÀÖ´Â #bÄÚ-Å©º£¾î ¿î¿µÀÚ#kÀÔ´Ï´Ù.\r\n\r\n¹ŞÀ¸ ½Ç º¸»óÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n";
+        String v0 = "ì•ˆë…•í•˜ì„¸ìš”? #eê°•ë¦¼ í¬ë ˆë”§ ëˆ„ì  ë³´ìƒ ì§€ê¸‰#nì„ ë‹´ë‹¹í•˜ê³  ìˆëŠ” #bì½”-í¬ë² ì–´ ìš´ì˜ì#kì…ë‹ˆë‹¤.\r\n\r\në°›ìœ¼ ì‹¤ ë³´ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n";
         boolean find = false;
 
         PreparedStatement ps = null;
@@ -417,19 +417,19 @@ public class MapleGM extends ScriptEngineNPC {
 
             while (rs.next()) {
                 String type = rs.getString("type");
-                v0 += "#L" + type + "##e" + type + "¸¸¿ø#n ´©Àû º¸»óÀ» ¹Ş°Ú½À´Ï´Ù.#l\r\n";
+                v0 += "#L" + type + "##e" + type + "ë§Œì›#n ëˆ„ì  ë³´ìƒì„ ë°›ê² ìŠµë‹ˆë‹¤.#l\r\n";
                 if (!find) find = true;
             }
 
             if (!find) {
-                v0 += "#b¹ŞÀ» ¼ö ÀÖ´Â º¸»óÀÌ ¾ø½À´Ï´Ù.";
+                v0 += "#bë°›ì„ ìˆ˜ ìˆëŠ” ë³´ìƒì´ ì—†ìŠµë‹ˆë‹¤.";
                 self.say(v0);
                 return;
             }
 
             int v1 = self.askMenu(v0);
 
-            // ¹ŞÀ» ¼ö ÀÖ´Â »óÅÂÀÎÁö ÇÑ ¹ø ´õ Ã¼Å© Ã¼Å©
+            // ë°›ì„ ìˆ˜ ìˆëŠ” ìƒíƒœì¸ì§€ í•œ ë²ˆ ë” ì²´í¬ ì²´í¬
             rs.close();
             ps.close();
 
@@ -448,15 +448,15 @@ public class MapleGM extends ScriptEngineNPC {
             }
 
             if (!check) {
-                self.say("Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.");
+                self.say("ì˜ëª»ëœ ì ‘ê·¼ì…ë‹ˆë‹¤.");
                 return;
             }
 
-            // Áö±Ş
+            // ì§€ê¸‰
             switch (v1) {
                 case 10: {
                     if (exchange(1142085, 1, 2450042, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -464,13 +464,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 30: {
                     if (exchange(1142086, 1, 2450042, 5, 2439604, 3) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -478,13 +478,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 50: {
                     if (exchange(1142087, 1, 2450042, 5, 2439604, 3, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -492,13 +492,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 75: {
                     if (exchange(2450042, 5, 2049360, 3, 2439604, 3, 2436018, 2) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -506,13 +506,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 100: {
                     if (exchange(1142088, 1, 2450163, 5, 2049360, 3, 2439604, 3, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -520,13 +520,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 150: {
                     if (exchange(2450163, 10, 2049360, 5, 2434558, 3) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -534,13 +534,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 200: {
                     if (exchange(1142089, 1, 2450163, 10, 2049360, 5, 2434558, 3, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -548,13 +548,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 250: {
                     if (exchange(2450163, 10, 2049360, 5, 2434558, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -562,13 +562,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 300: {
                     if (exchange(1142090, 1, 2434558, 5, 2436018, 2, 5060048, 10) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -576,13 +576,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 350: {
                     if (exchange(2434558, 5, 5680159, 10, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -590,13 +590,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 400: {
                     if (exchange(1142091, 1, 2434558, 5, 5060048, 10) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -604,13 +604,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 450: {
                     if (exchange(2434558, 5, 5680159, 15, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -618,13 +618,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 500: {
                     if (exchange(1142092, 1, 2434558, 5, 5680159, 15, 5060048, 5) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -632,15 +632,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 600: {
                     if (exchange(2450163, 10, 5680159, 15) > 0) {
                         getPlayer().gainRealCash(200000, true);
-                        getPlayer().dropMessage(5, "200,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "200,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -648,15 +648,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 750: {
                     if (exchange(1142093, 1, 2434558, 5, 5060048, 10) > 0) {
                         getPlayer().gainRealCash(200000, true);
-                        getPlayer().dropMessage(5, "200,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "200,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -664,15 +664,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 900: {
                     if (exchange(5680159, 15) > 0) {
                         getPlayer().gainRealCash(400000, true);
-                        getPlayer().dropMessage(5, "400,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "400,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -680,15 +680,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1000: {
                     if (exchange(1142094, 1, 2434558, 5, 5060048, 20) > 0) {
                         getPlayer().gainRealCash(200000, true);
-                        getPlayer().dropMessage(5, "200,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "200,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -696,15 +696,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1100: {
                     if (exchange(5062503, 500) > 0) {
                         getPlayer().gainRealCash(400000, true);
-                        getPlayer().dropMessage(5, "400,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "400,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -712,15 +712,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1250: {
                     if (exchange(1142095, 1, 5060048, 20) > 0) {
                         getPlayer().gainRealCash(500000, true);
-                        getPlayer().dropMessage(5, "500,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "500,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -728,15 +728,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1400: {
                     if (exchange(2049376, 1) > 0) {
                         getPlayer().gainRealCash(500000, true);
-                        getPlayer().dropMessage(5, "500,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "500,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -744,13 +744,13 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1500: {
                     if (exchange(1142096, 1, 2434558, 10, 5060048, 20) > 0) {
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -758,15 +758,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1600: {
                     if (exchange(2434558, 10, 2049376, 1) > 0) {
                         getPlayer().gainRealCash(200000, true);
-                        getPlayer().dropMessage(5, "200,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "200,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -774,15 +774,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1750: {
                     if (exchange(1142097, 1, 5060048, 20) > 0) {
                         getPlayer().gainRealCash(600000, true);
-                        getPlayer().dropMessage(5, "600,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "600,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -790,15 +790,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 1900: {
                     if (exchange(5680159, 30) > 0) {
                         getPlayer().gainRealCash(800000, true);
-                        getPlayer().dropMessage(5, "800,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "800,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -806,15 +806,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 2000: {
                     if (exchange(1142098, 1, 5060048, 30) > 0) {
                         getPlayer().gainRealCash(1000000, true);
-                        getPlayer().dropMessage(5, "1,000,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "1,000,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -822,15 +822,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 2100: {
                     if (exchange(2434558, 10) > 0) {
                         getPlayer().gainRealCash(1000000, true);
-                        getPlayer().dropMessage(5, "1,000,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "1,000,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -838,7 +838,7 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
@@ -847,8 +847,8 @@ public class MapleGM extends ScriptEngineNPC {
                 case 2400: {
                     if (exchange(2434558, 10, 2049376, 1) > 0) {
                         getPlayer().gainRealCash(1000000, true);
-                        getPlayer().dropMessage(5, "1,000,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "1,000,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -856,15 +856,15 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }
                 case 2500: {
                     if (exchange(1142099, 1, 2049376, 3, 5060048, 50) > 0) {
                         getPlayer().gainRealCash(1000000, true);
-                        getPlayer().dropMessage(5, "1,000,000°­¸² Å©·¹µ÷À» È¹µæÇß½À´Ï´Ù.");
-                        self.say("Áö±ŞÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. °¨»çÇÕ´Ï´Ù.");
+                        getPlayer().dropMessage(5, "1,000,000ê°•ë¦¼ í¬ë ˆë”§ì„ íšë“í–ˆìŠµë‹ˆë‹¤.");
+                        self.say("ì§€ê¸‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.");
                         PreparedStatement ps2 = con.prepareStatement("UPDATE `extreme_point_log` SET `status` = ? WHERE `accountid` = ? AND `type` = ?");
                         ps2.setInt(1, 1);
                         ps2.setInt(2, getClient().getAccID());
@@ -872,7 +872,7 @@ public class MapleGM extends ScriptEngineNPC {
                         ps2.executeUpdate();
                         ps2.close();
                     } else {
-                        self.say("ÀÎº¥Åä¸® ½½·ÔÀ» È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
+                        self.say("ì¸ë²¤í† ë¦¬ ìŠ¬ë¡¯ì„ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
                     }
                     break;
                 }

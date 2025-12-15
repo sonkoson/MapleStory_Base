@@ -17,7 +17,7 @@ public class DarkWorldTree extends ScriptEngineNPC {
 
     @SuppressWarnings("deprecation")
     public void q39002s() {
-        //¼±ÅÃÇÏ´Â Äù½ºÆ®
+        //ì„ íƒí•˜ëŠ” í€˜ìŠ¤íŠ¸
         List<Integer> quests = new ArrayList<>();
         int[] questArray = {39003, 39004, 39005, 39006, 39007, 39008, 39009, 39010, 39011, 39012};
         MapleQuestStatus quest = getPlayer().getQuestIfNullAdd(MapleQuest.getInstance(39002));
@@ -25,7 +25,7 @@ public class DarkWorldTree extends ScriptEngineNPC {
             quest.setCustomData("0-0");
         }
         if (quest.getCustomData().split("-")[0].equals("0")) {
-            //ÃÊ±â Äù½ºÆ® ¼±Á¤ÇØÁà¾ßÇÔ
+            //ì´ˆê¸° í€˜ìŠ¤íŠ¸ ì„ ì •í•´ì¤˜ì•¼í•¨
             while (quests.size() < 5) {
                 int selectedQuest = questArray[Randomizer.nextInt(questArray.length)];
                 while (quests.contains(selectedQuest)) {
@@ -65,16 +65,16 @@ public class DarkWorldTree extends ScriptEngineNPC {
                 .append(resetDay);
         quest.setCustomData(customData.toString());
         StringBuilder askText = new StringBuilder();
-        askText.append("ÀÌ°÷ ¼¼°è #bÃÖ°­ÀÇ Àü»ç#k¿©. ÀÌ¹ø ÁÖ¿¡ µµ¿ï ÀÏÀº ¾Æ·¡¿Í °°´Ù.\r\n\r\n");
+        askText.append("ì´ê³³ ì„¸ê³„ #bìµœê°•ì˜ ì „ì‚¬#kì—¬. ì´ë²ˆ ì£¼ì— ë„ìš¸ ì¼ì€ ì•„ë˜ì™€ ê°™ë‹¤.\r\n\r\n");
         for (Integer q : quests) {
             askText.append("#b#e#y")
                     .append(q)
                     .append("##k#n\r\n");
         }
-        askText.append("\r\n#eÁö±İ ¹Ù·Î Å¸¶ôÇÑ ¼¼°è¼öÀÇ Á¤È­¸¦ µ½Áö ¾Ê°Ú³ª?#n\r\n(¸¶À½¿¡ µéÁö ¾Ê´Â´Ù¸é ±³Ã¼ÇÏ±â ¹öÆ°À» ´­·¯ ´Ù¸¥ ÀÓ¹«·Î ±³Ã¼ÇÒ ¼ö ÀÖ´Ù.)");
+        askText.append("\r\n#eì§€ê¸ˆ ë°”ë¡œ íƒ€ë½í•œ ì„¸ê³„ìˆ˜ì˜ ì •í™”ë¥¼ ë•ì§€ ì•Šê² ë‚˜?#n\r\n(ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ë‹¤ë©´ êµì²´í•˜ê¸° ë²„íŠ¼ì„ ëˆŒëŸ¬ ë‹¤ë¥¸ ì„ë¬´ë¡œ êµì²´í•  ìˆ˜ ìˆë‹¤.)");
         if (1 == self.askYesNo(askText.toString(), ScriptMessageFlag.Change)) {
             askText = new StringBuilder();
-            askText.append("¸ñ·Ï¿¡ ÀÖ´Â ÀÓ¹«°¡ ¸¶À½¿¡ µéÁö ¾Ê´Â´Ù¸é ´Ù¸¥ ÀÓ¹«¸¦ Ã£¾Æº¼ ¼öµµ ÀÖÁö. ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«¸¦ ¼±ÅÃÇØ¶ó.\r\n\r\n");
+            askText.append("ëª©ë¡ì— ìˆëŠ” ì„ë¬´ê°€ ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ë‹¤ë©´ ë‹¤ë¥¸ ì„ë¬´ë¥¼ ì°¾ì•„ë³¼ ìˆ˜ë„ ìˆì§€. êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ë¥¼ ì„ íƒí•´ë¼.\r\n\r\n");
             int index = 0;
             for (Integer q : quests) {
                 askText.append("#b#e")
@@ -86,13 +86,13 @@ public class DarkWorldTree extends ScriptEngineNPC {
                         .append("##l#k#n\r\n");
                 index++;
             }
-            askText.append("#L5# #r#e´õ ÀÌ»ó ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«´Â ¾ø´Ù.#k#n#l");
+            askText.append("#L5# #r#eë” ì´ìƒ êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ëŠ” ì—†ë‹¤.#k#n#l");
             int selection = self.askMenu(askText.toString());
             List<Integer> changeQuest = new ArrayList<>();
             while (selection != 5) {
                 if (!changeQuest.contains(selection)) changeQuest.add(selection);
                 askText = new StringBuilder();
-                askText.append("¸ñ·Ï¿¡ ÀÖ´Â ÀÓ¹«°¡ ¸¶À½¿¡ µéÁö ¾Ê´Â´Ù¸é ´Ù¸¥ ÀÓ¹«¸¦ Ã£¾Æº¼ ¼öµµ ÀÖÁö. ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«¸¦ ¼±ÅÃÇØ¶ó.\r\n\r\n");
+                askText.append("ëª©ë¡ì— ìˆëŠ” ì„ë¬´ê°€ ë§ˆìŒì— ë“¤ì§€ ì•ŠëŠ”ë‹¤ë©´ ë‹¤ë¥¸ ì„ë¬´ë¥¼ ì°¾ì•„ë³¼ ìˆ˜ë„ ìˆì§€. êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ë¥¼ ì„ íƒí•´ë¼.\r\n\r\n");
                 for (int i = 0; i < 5; i++) {
                     if (changeQuest.contains(i)) {
                         askText.append("#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
@@ -100,12 +100,12 @@ public class DarkWorldTree extends ScriptEngineNPC {
                         askText.append("#b#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
                     }
                 }
-                askText.append("#L5# #r#e´õ ÀÌ»ó ±³Ã¼ÇÏ°í ½ÍÀº ÀÓ¹«´Â ¾ø´Ù.#k#n#l");
+                askText.append("#L5# #r#eë” ì´ìƒ êµì²´í•˜ê³  ì‹¶ì€ ì„ë¬´ëŠ” ì—†ë‹¤.#k#n#l");
                 if (changeQuest.size() == 5) break;
                 if (getSc().isStop()) break;
                 selection = self.askMenu(askText.toString());
             }
-            String scriptText = "Á¦¿ÜµÈ ÀÓ¹« ´ë½Å »õ·Î¿î ÀÓ¹«¸¦ Ã£¾Ò´Ù.\r\n\r\n";
+            String scriptText = "ì œì™¸ëœ ì„ë¬´ ëŒ€ì‹  ìƒˆë¡œìš´ ì„ë¬´ë¥¼ ì°¾ì•˜ë‹¤.\r\n\r\n";
             List<Integer> tempQuests = quests;
             for (Integer c : changeQuest) {
                 int selectedQuest = questArray[Randomizer.nextInt(questArray.length)];
@@ -132,15 +132,15 @@ public class DarkWorldTree extends ScriptEngineNPC {
             for (Integer q : quests) {
                 MapleQuest.getInstance(q).forceStart(getPlayer(), getNpc().getId(), "");
             }
-            self.sayOk("ÀÓ¹«°¡ ¸ğµÎ ³¡³ª¸é ³»°Ô µ¹¾Æ¿Í ¿Ï·áÇÏ¸é µÈ´Ù. \r\n¸ğµç ÀÓ¹«´Â #e#rÀÏ¿äÀÏ ÀÚÁ¤#k#n±îÁö À¯È¿ÇÏ´Ï ³»°Ô¼­ º¸»óÀ» ¹Ş¾Æ °¡·Á¸é ±×Àü¿¡ µ¹¾Æ¿Àµµ·Ï ÇØ¶ó.");
+            self.sayOk("ì„ë¬´ê°€ ëª¨ë‘ ëë‚˜ë©´ ë‚´ê²Œ ëŒì•„ì™€ ì™„ë£Œí•˜ë©´ ëœë‹¤. \r\nëª¨ë“  ì„ë¬´ëŠ” #e#rì¼ìš”ì¼ ìì •#k#nê¹Œì§€ ìœ íš¨í•˜ë‹ˆ ë‚´ê²Œì„œ ë³´ìƒì„ ë°›ì•„ ê°€ë ¤ë©´ ê·¸ì „ì— ëŒì•„ì˜¤ë„ë¡ í•´ë¼.");
         }
     }
 
     @SuppressWarnings("deprecation")
     public void q15708s() {
-        self.say("È¤½Ã ÀÏÁÖÀÏ ¾È¿¡ ¼¼°è¼ö¸¦ #b5È¸ ÀÌ»ó Á¤È­#k ÇØÁØ´Ù¸é, ÀÚ³×ÀÇ ´É·ÂÀ» ÀÎÁ¤ÇÏ°í #rº¸´ä#kÀ¸·Î #i4001868:# #b#t4001868##kÀ» ´õ ÁÖ°Ú³×.", ScriptMessageFlag.NpcReplacedByNpc);
-        if (self.askYesNo("³ªÀÇ ºÎÇÏµéÀÌ ÀúÁö¸£°í ÀÖ´Â ¸¸ÇàÀ» ¸ØÃß°í ¼¼°è¼öÀÇ Å¸¶ôÀ» ¸·´Â µ¥¿¡ Èû½áÁÖ°Ú³ª?", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
-            //¿ù¿äÀÏ³¯ ¸®¼ÂµÈ´Ù.
+        self.say("í˜¹ì‹œ ì¼ì£¼ì¼ ì•ˆì— ì„¸ê³„ìˆ˜ë¥¼ #b5íšŒ ì´ìƒ ì •í™”#k í•´ì¤€ë‹¤ë©´, ìë„¤ì˜ ëŠ¥ë ¥ì„ ì¸ì •í•˜ê³  #rë³´ë‹µ#kìœ¼ë¡œ #i4001868:# #b#t4001868##kì„ ë” ì£¼ê² ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
+        if (self.askYesNo("ë‚˜ì˜ ë¶€í•˜ë“¤ì´ ì €ì§€ë¥´ê³  ìˆëŠ” ë§Œí–‰ì„ ë©ˆì¶”ê³  ì„¸ê³„ìˆ˜ì˜ íƒ€ë½ì„ ë§‰ëŠ” ë°ì— í˜ì¨ì£¼ê² ë‚˜?", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+            //ì›”ìš”ì¼ë‚  ë¦¬ì…‹ëœë‹¤.
             Date time = new Date();
             if (time.getDay() == 1) {
                 time.setDate(time.getDate() + 7);
@@ -152,21 +152,21 @@ public class DarkWorldTree extends ScriptEngineNPC {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String resetDay = sdf.format(time);
             getQuest().forceStart(getPlayer(), getNpc().getId(), resetDay);
-            self.say("±×·³ ºÎÅ¹ÇÏ°Ú³×.", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.say("ê·¸ëŸ¼ ë¶€íƒí•˜ê² ë„¤.", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         } else {
-            self.say("³»°¡ »ç¶÷À» Àß¸ø ºÃ³ª º¸±º...\r\nÈ¤½Ã¶óµµ ¸¶À½ÀÌ ¹Ù²î¸é ´Ù½Ã ¸»ÇÏ°Ô³ª.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.say("ë‚´ê°€ ì‚¬ëŒì„ ì˜ëª» ë´¤ë‚˜ ë³´êµ°...\r\ní˜¹ì‹œë¼ë„ ë§ˆìŒì´ ë°”ë€Œë©´ ë‹¤ì‹œ ë§í•˜ê²Œë‚˜.", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 
     public void q15708e() {
-        self.say("ÀÚ³×´Â ³» ¿¹»óº¸´Ù ÈÎ¾À ´õ ÈÇ¸¢ÇÏ°Ô ÀÓ¹«¸¦ ¼öÇàÇØÁÖ¾ú±º.", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("°¨»çÀÇ Ç¥½Ã¶ó°í ÇÏ±â¿¡´Â ¾à¼ÒÇÏÁö¸¸ #rº¸´ä#kÀ¸·Î ¼±¹°À» Á¶±İ ´õ ÁÖ°Ú³×.", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ìë„¤ëŠ” ë‚´ ì˜ˆìƒë³´ë‹¤ í›¨ì”¬ ë” í›Œë¥­í•˜ê²Œ ì„ë¬´ë¥¼ ìˆ˜í–‰í•´ì£¼ì—ˆêµ°.", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ê°ì‚¬ì˜ í‘œì‹œë¼ê³  í•˜ê¸°ì—ëŠ” ì•½ì†Œí•˜ì§€ë§Œ #rë³´ë‹µ#kìœ¼ë¡œ ì„ ë¬¼ì„ ì¡°ê¸ˆ ë” ì£¼ê² ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
 
         if (target.exchange(4001868, (2 * 2)) > 0) {
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.say("¿©±â #i4001868:# #b#t4001868##kÀ» ¹Ş°Ô. ´öºĞ¿¡ ³» ºÎÇÏµéÀÌ ¾Ç¿¡¼­ Çì¾î³ª¿Ã ¼ö ÀÖ¾ú´Ù. Á¤¸» °í¸¿´Ù...", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.say("ì—¬ê¸° #i4001868:# #b#t4001868##kì„ ë°›ê²Œ. ë•ë¶„ì— ë‚´ ë¶€í•˜ë“¤ì´ ì•…ì—ì„œ í—¤ì–´ë‚˜ì˜¬ ìˆ˜ ìˆì—ˆë‹¤. ì •ë§ ê³ ë§™ë‹¤...", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         } else {
-            self.say("ÀÚ³× °¡¹æÀÌ °¡µæÂù°Å °°±¸¸¸. ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã¿ÍÁÖ°Ô.");
+            self.say("ìë„¤ ê°€ë°©ì´ ê°€ë“ì°¬ê±° ê°™êµ¬ë§Œ. ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œì™€ì£¼ê²Œ.");
         }
     }
 
@@ -214,37 +214,37 @@ public class DarkWorldTree extends ScriptEngineNPC {
     int eventRate = 2;
 
     public void slimeQuestEnd() {
-        self.say("#rÅ¸¶ôÇÑ ¼ö¾×#kµéÀ» ¹°¸®Ä¡°í µ¹¾Æ¿Ô±º...\r\n#r¸¶°ËÀÇ Èû#k¿¡ ¿µÇâÀ» ¹ŞÀº ³à¼®µéÀ» Ã³Ä¡ÇÏ´Â °ÍÀº ½±Áö ¾Ê¾ÒÀ» ÅÙµ¥...", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#ríƒ€ë½í•œ ìˆ˜ì•¡#kë“¤ì„ ë¬¼ë¦¬ì¹˜ê³  ëŒì•„ì™”êµ°...\r\n#rë§ˆê²€ì˜ í˜#kì— ì˜í–¥ì„ ë°›ì€ ë…€ì„ë“¤ì„ ì²˜ì¹˜í•˜ëŠ” ê²ƒì€ ì‰½ì§€ ì•Šì•˜ì„ í…ë°...", ScriptMessageFlag.NpcReplacedByNpc);
         if (target.exchange(4001868, (2 * eventRate)) > 0) {
             int cq = getPlayer().getOneInfoQuestInteger(15708, "cq");
             cq = cq + 1;
             getPlayer().updateOneInfo(15708, "cq", String.valueOf(cq));
             getPlayer().gainExp(40000000, true, true, false);
-            bigScriptProgressMessage("°æÇèÄ¡¸¦ 40000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+            bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 40000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.sayOk("ÀÚ, ÀÌ°Ç #b¾à¼ÓÇÑ ¼±¹°#kÀÌ³×.\r\n#i4001868:# #b#t4001868##k\r\n¿ì¸® Á¾Á·ÀÌ »Ñ¸° #r¾ÇÀÇ ¾¾¾Ñ#kÀ» °ÅµÎ´Â ÀÏÀ» µµ¿ÍÁà¼­ °í¸¿´Ù..", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì, ì´ê±´ #bì•½ì†í•œ ì„ ë¬¼#kì´ë„¤.\r\n#i4001868:# #b#t4001868##k\r\nìš°ë¦¬ ì¢…ì¡±ì´ ë¿Œë¦° #rì•…ì˜ ì”¨ì•—#kì„ ê±°ë‘ëŠ” ì¼ì„ ë„ì™€ì¤˜ì„œ ê³ ë§™ë‹¤..", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            self.sayOk("ÀÚ³× °¡¹æÀÌ °¡µæÂù°Å °°±¸¸¸. ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã¿ÍÁÖ°Ô.");
+            self.sayOk("ìë„¤ ê°€ë°©ì´ ê°€ë“ì°¬ê±° ê°™êµ¬ë§Œ. ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œì™€ì£¼ê²Œ.");
         }
     }
 
     public void normalQuestEnd() {
-        self.say("ÀÚ³× ´öºĞ¿¡ ³» ºÎÇÏµéÀÇ ¿µÈ¥Àº ÀÌÁ¦¾ß #b¿µ¿øÇÑ ÆòÈ­#k¸¦ ¾ò¾ú´Ù...", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ìë„¤ ë•ë¶„ì— ë‚´ ë¶€í•˜ë“¤ì˜ ì˜í˜¼ì€ ì´ì œì•¼ #bì˜ì›í•œ í‰í™”#kë¥¼ ì–»ì—ˆë‹¤...", ScriptMessageFlag.NpcReplacedByNpc);
         if (target.exchange(4001868, (2 * eventRate)) > 0) {
             int cq = getPlayer().getOneInfoQuestInteger(15708, "cq");
             cq = cq + 1;
             getPlayer().updateOneInfo(15708, "cq", String.valueOf(cq));
             getPlayer().gainExp(40000000, true, true, false);
-            bigScriptProgressMessage("°æÇèÄ¡¸¦ 40000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+            bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 40000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.sayOk("ÀÚ, ÀÌ°Ç #b¾à¼ÓÇÑ ¼±¹°#kÀÌ³×.\r\n#i4001868:# #b#t4001868##k\r\n¿ì¸® Á¾Á·ÀÌ »Ñ¸° #r¾ÇÀÇ ¾¾¾Ñ#kÀ» °ÅµÎ´Â ÀÏÀ» µµ¿ÍÁà¼­ °í¸¿´Ù..", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì, ì´ê±´ #bì•½ì†í•œ ì„ ë¬¼#kì´ë„¤.\r\n#i4001868:# #b#t4001868##k\r\nìš°ë¦¬ ì¢…ì¡±ì´ ë¿Œë¦° #rì•…ì˜ ì”¨ì•—#kì„ ê±°ë‘ëŠ” ì¼ì„ ë„ì™€ì¤˜ì„œ ê³ ë§™ë‹¤..", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            self.sayOk("ÀÚ³× °¡¹æÀÌ °¡µæÂù°Å °°±¸¸¸. ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã¿ÍÁÖ°Ô.");
+            self.sayOk("ìë„¤ ê°€ë°©ì´ ê°€ë“ì°¬ê±° ê°™êµ¬ë§Œ. ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œì™€ì£¼ê²Œ.");
         }
     }
 
     public void itemQuestEnd(int needItem, int needItemQty) {
-        self.say("ÀÚ³× ´öºĞ¿¡ ³» ºÎÇÏµéÀÇ ¿µÈ¥Àº ÀÌÁ¦¾ß #b¿µ¿øÇÑ ÆòÈ­#k¸¦ ¾ò¾ú´Ù...", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ìë„¤ ë•ë¶„ì— ë‚´ ë¶€í•˜ë“¤ì˜ ì˜í˜¼ì€ ì´ì œì•¼ #bì˜ì›í•œ í‰í™”#kë¥¼ ì–»ì—ˆë‹¤...", ScriptMessageFlag.NpcReplacedByNpc);
         if (target.exchange(needItem, -needItemQty, 4001868, (2 * eventRate)) > 0) {
             if (getPlayer().getItemQuantity(needItem, false) > 0) {
                 target.exchange(needItem, -getPlayer().getItemQuantity(needItem, false));
@@ -253,11 +253,11 @@ public class DarkWorldTree extends ScriptEngineNPC {
             cq = cq + 1;
             getPlayer().updateOneInfo(15708, "cq", String.valueOf(cq));
             getPlayer().gainExp(40000000, true, true, false);
-            bigScriptProgressMessage("°æÇèÄ¡¸¦ 40000000 È¹µæÇß½À´Ï´Ù", FontType.NanumGothicBold, FontColorType.Green);
+            bigScriptProgressMessage("ê²½í—˜ì¹˜ë¥¼ 40000000 íšë“í–ˆìŠµë‹ˆë‹¤", FontType.NanumGothicBold, FontColorType.Green);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.sayOk("ÀÚ, ÀÌ°Ç #b¾à¼ÓÇÑ ¼±¹°#kÀÌ³×.\r\n#i4001868:# #b#t4001868##k\r\n¿ì¸® Á¾Á·ÀÌ »Ñ¸° #r¾ÇÀÇ ¾¾¾Ñ#kÀ» °ÅµÎ´Â ÀÏÀ» µµ¿ÍÁà¼­ °í¸¿´Ù..", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì, ì´ê±´ #bì•½ì†í•œ ì„ ë¬¼#kì´ë„¤.\r\n#i4001868:# #b#t4001868##k\r\nìš°ë¦¬ ì¢…ì¡±ì´ ë¿Œë¦° #rì•…ì˜ ì”¨ì•—#kì„ ê±°ë‘ëŠ” ì¼ì„ ë„ì™€ì¤˜ì„œ ê³ ë§™ë‹¤..", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            self.sayOk("ÀÚ³× °¡¹æÀÌ °¡µæÂù°Å °°±¸¸¸. ±âÅ¸Ã¢À» 1Ä­ÀÌ»ó ºñ¿ì°í ´Ù½Ã¿ÍÁÖ°Ô.");
+            self.sayOk("ìë„¤ ê°€ë°©ì´ ê°€ë“ì°¬ê±° ê°™êµ¬ë§Œ. ê¸°íƒ€ì°½ì„ 1ì¹¸ì´ìƒ ë¹„ìš°ê³  ë‹¤ì‹œì™€ì£¼ê²Œ.");
         }
     }
 }

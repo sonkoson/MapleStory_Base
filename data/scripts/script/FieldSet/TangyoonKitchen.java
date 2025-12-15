@@ -30,12 +30,12 @@ public class TangyoonKitchen extends ScriptEngineNPC {
 
     public void npc_9062550() {
         /**
-         * µµÀü°¡´ÉÇÑ È½¼öÁ¦ÇÑÀº ¾øÀ¸³ª °æÇèÄ¡´Â ÇÏ·ç¿¡ 2¹ø±îÁö ¾òÀ» ¼ö ÀÖÀ½
-         * ÀÔÀå½Ã DispelItemOptionByField ¹öÇÁ°¡ °É¸²
+         * ë„ì „ê°€ëŠ¥í•œ íšŸìˆ˜ì œí•œì€ ì—†ìœ¼ë‚˜ ê²½í—˜ì¹˜ëŠ” í•˜ë£¨ì— 2ë²ˆê¹Œì§€ ì–»ì„ ìˆ˜ ìˆìŒ
+         * ì…ì¥ì‹œ DispelItemOptionByField ë²„í”„ê°€ ê±¸ë¦¼
          * */
         FieldSet fieldSet = fieldSet("TangyoonKitchenEnter");
         if (fieldSet == null) {
-            self.sayOk("Áö±İÀº ÅÁÀ± ½Ä´çÀ» ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù~! ´ÙÀ½¿¡ Ã£¾Æ¿ÍÁÖ¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ì§€ê¸ˆì€ íƒ•ìœ¤ ì‹ë‹¹ì„ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤~! ë‹¤ìŒì— ì°¾ì•„ì™€ì£¼ì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
@@ -69,97 +69,97 @@ public class TangyoonKitchen extends ScriptEngineNPC {
         }
         getPlayer().updateOneInfo(501555, "complete", "0");
         getPlayer().updateOneInfo(501600, "complete", "0");
-        int v = self.askMenu("#b#e¸ŞÀÌÇÃ ¹ö¶óÀÌ¾îÆ¼#n#k Á¦ 1Åº~! #r#eÅÁ.À±.½Ä.´ç!#l#k\r\n#L2# #b#e<ÅÁÀ± ½Ä´ç>#n ÆÄÆ¼ÇÃ·¹ÀÌ(1~3ÀÎÀ¸·Î µµÀü)#l\r\n#L5# #b#e<ÆÛÁñ ¸¶½ºÅÍ>#n ÆÄÆ¼ ÇÃ·¹ÀÌ(1~3ÀÎÀ¸·Î µµÀü)#l#k\r\n\r\n#L3# #b#e<ÅÁÀ± ½Ä´ç>#n ¼³¸í µè±â#l\r\n#L6# #b#e<ÆÛÁñ ¸¶½ºÅÍ>#n ¼³¸í µè±â#l#k\r\n#L4# ¿À´Ã ³²Àº °æÇèÄ¡ º¸»ó È¹µæ °¡´É È½¼ö È®ÀÎ<ÅÁÀ±½Ä´ç>#l\r\n#L7# ¿À´Ã ³²Àº °æÇèÄ¡ º¸»ó È¹µæ °¡´É È½¼ö È®ÀÎ<ÆÛÁñ>\r\n\r\n#L100# ´õ ÀÌ»ó ±Ã±İÇÑ °ÍÀÌ ¾ø¾î.#l", ScriptMessageFlag.NpcReplacedByNpc);
+        int v = self.askMenu("#b#eë©”ì´í”Œ ë²„ë¼ì´ì–´í‹°#n#k ì œ 1íƒ„~! #r#eíƒ•.ìœ¤.ì‹.ë‹¹!#l#k\r\n#L2# #b#e<íƒ•ìœ¤ ì‹ë‹¹>#n íŒŒí‹°í”Œë ˆì´(1~3ì¸ìœ¼ë¡œ ë„ì „)#l\r\n#L5# #b#e<í¼ì¦ ë§ˆìŠ¤í„°>#n íŒŒí‹° í”Œë ˆì´(1~3ì¸ìœ¼ë¡œ ë„ì „)#l#k\r\n\r\n#L3# #b#e<íƒ•ìœ¤ ì‹ë‹¹>#n ì„¤ëª… ë“£ê¸°#l\r\n#L6# #b#e<í¼ì¦ ë§ˆìŠ¤í„°>#n ì„¤ëª… ë“£ê¸°#l#k\r\n#L4# ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ ë³´ìƒ íšë“ ê°€ëŠ¥ íšŸìˆ˜ í™•ì¸<íƒ•ìœ¤ì‹ë‹¹>#l\r\n#L7# ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ ë³´ìƒ íšë“ ê°€ëŠ¥ íšŸìˆ˜ í™•ì¸<í¼ì¦>\r\n\r\n#L100# ë” ì´ìƒ ê¶ê¸ˆí•œ ê²ƒì´ ì—†ì–´.#l", ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
-            case 2: { //ÆÄÆ¼·ÎµµÀü(ÅÁÀ±½Ä´ç)
-                if (1 == self.askYesNo("\r\nÁö±İ #b#e<ÅÁÀ± ½Ä´ç>#n#k¿¡ Âü¿©ÇÏ½Ã°Ú½À´Ï±î~?#k\r\n\r\n(°ÔÀÓ Áß¿¡´Â ÇØ»óµµ°¡ 1366x768·Î º¯°æµË´Ï´Ù.)", ScriptMessageFlag.NpcReplacedByNpc)) {
-                    if (1 == self.askYesNo("\r\n#b#e<ÅÁÀ± ½Ä´ç>#n#k¿¡ Âü¿©ÇÏ½Ã¸é Àû¿ëµÇ¾î ÀÖ´Â\r\n#fs16##r#e¸ğµç ¹öÇÁ È¿°ú°¡ ÇØÁ¦#n#k#fs12#µÈ´ä´Ï´Ù.\r\n\r\nÁ¤¸» Âü¿©ÇÏ½Ã°Ú¾î¿ä?", ScriptMessageFlag.NpcReplacedByNpc)) {
+            case 2: { //íŒŒí‹°ë¡œë„ì „(íƒ•ìœ¤ì‹ë‹¹)
+                if (1 == self.askYesNo("\r\nì§€ê¸ˆ #b#e<íƒ•ìœ¤ ì‹ë‹¹>#n#kì— ì°¸ì—¬í•˜ì‹œê² ìŠµë‹ˆê¹Œ~?#k\r\n\r\n(ê²Œì„ ì¤‘ì—ëŠ” í•´ìƒë„ê°€ 1366x768ë¡œ ë³€ê²½ë©ë‹ˆë‹¤.)", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("\r\n#b#e<íƒ•ìœ¤ ì‹ë‹¹>#n#kì— ì°¸ì—¬í•˜ì‹œë©´ ì ìš©ë˜ì–´ ìˆëŠ”\r\n#fs16##r#eëª¨ë“  ë²„í”„ íš¨ê³¼ê°€ í•´ì œ#n#k#fs12#ëœë‹µë‹ˆë‹¤.\r\n\r\nì •ë§ ì°¸ì—¬í•˜ì‹œê² ì–´ìš”?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         int enter = fieldSet.enter(target.getId(), 0);
                         if (enter == -1)
-                            self.say("¾Ë ¼ö ¾ø´Â ÀÌÀ¯·Î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù. Àá½Ã ÈÄ¿¡ ´Ù½Ã ½ÃµµÇØ ÁÖ½Ê½Ã¿À.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì´ìœ ë¡œ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì ì‹œ í›„ì— ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì‹­ì‹œì˜¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 1)
-                            self.say("1~3ÀÎ ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ #b#eÆÄÆ¼ ÇÃ·¹ÀÌ#n#k¸¦ ÇÒ ¼ö ÀÖ´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("1~3ì¸ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ #b#eíŒŒí‹° í”Œë ˆì´#n#kë¥¼ í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 2)
-                            self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ¼­¸¸ ÀÔÀåÇÒ ¼ö ÀÖ´ä´Ï´Ù! ÆÄÆ¼ÀåÀ» ÅëÇØ ÀÔÀåÇØÁÖ¼¼¿ä~!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("íŒŒí‹°ì¥ì„ í†µí•´ì„œë§Œ ì…ì¥í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤! íŒŒí‹°ì¥ì„ í†µí•´ ì…ì¥í•´ì£¼ì„¸ìš”~!", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 3)
-                            self.say("ÃÖ¼Ò " + fieldSet.minMember + "ÀÎ ÀÌ»óÀÇ ÆÄÆ¼°¡ Äù½ºÆ®¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ìµœì†Œ " + fieldSet.minMember + "ì¸ ì´ìƒì˜ íŒŒí‹°ê°€ í€˜ìŠ¤íŠ¸ë¥¼ ì‹œì‘í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 4)
-                            self.say("ÆÄÆ¼¿øÀÇ ·¹º§Àº ÃÖ¼Ò " + fieldSet.minLv + " ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
-                        else if (enter == 5) self.say("ÆÄÆ¼¿øÀÌ ¸ğµÎ ¸ğ¿© ÀÖ¾î¾ß ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("íŒŒí‹°ì›ì˜ ë ˆë²¨ì€ ìµœì†Œ " + fieldSet.minLv + " ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
+                        else if (enter == 5) self.say("íŒŒí‹°ì›ì´ ëª¨ë‘ ëª¨ì—¬ ìˆì–´ì•¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 6)
-                            self.say("ÀÌ¹Ì ´Ù¸¥ ÆÄÆ¼°¡ ¾ÈÀ¸·Î µé¾î°¡ Äù½ºÆ® Å¬¸®¾î¿¡ µµÀüÇÏ°í ÀÖ´Â ÁßÀÌ¶ø´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ì´ë¯¸ ë‹¤ë¥¸ íŒŒí‹°ê°€ ì•ˆìœ¼ë¡œ ë“¤ì–´ê°€ í€˜ìŠ¤íŠ¸ í´ë¦¬ì–´ì— ë„ì „í•˜ê³  ìˆëŠ” ì¤‘ì´ëë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                     } else {
-                        self.say("\r\n±×·¯¸é ¹æ¼Û¿¡ Âü¿©ÇÏ°í ½ÍÀ» ¶§ ´Ù½Ã Ã£¾Æ¿ÍÁÖ¼¼¿ä~", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nê·¸ëŸ¬ë©´ ë°©ì†¡ì— ì°¸ì—¬í•˜ê³  ì‹¶ì„ ë•Œ ë‹¤ì‹œ ì°¾ì•„ì™€ì£¼ì„¸ìš”~", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 } else {
-                    self.say("\r\n±×·¯¸é ¹æ¼Û¿¡ Âü¿©ÇÏ°í ½ÍÀ» ¶§ ´Ù½Ã Ã£¾Æ¿ÍÁÖ¼¼¿ä~", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("\r\nê·¸ëŸ¬ë©´ ë°©ì†¡ì— ì°¸ì—¬í•˜ê³  ì‹¶ì„ ë•Œ ë‹¤ì‹œ ì°¾ì•„ì™€ì£¼ì„¸ìš”~", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 5: { //ÆÄÆ¼·ÎµµÀü(ÆÛÁñ¸¶½ºÅÍ)
-                if (1 == self.askYesNo("\r\nÁö±İ #b#e<ÆÛÁñ ¸¶½ºÅÍ>#n#k¿¡ Âü¿©ÇÏ½Ã°Ú½À´Ï±î~?#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-                    if (1 == self.askYesNo("\r\n#b#e<ÆÛÁñ ¸¶½ºÅÍ>#n#k¿¡ Âü¿©ÇÏ½Ã¸é Àû¿ëµÇ¾î ÀÖ´Â\r\n#fs16##r#e¸ğµç ¹öÇÁ È¿°ú°¡ ÇØÁ¦#n#k#fs12#µÈ´ä´Ï´Ù.\r\n\r\nÁ¤¸» Âü¿©ÇÏ½Ã°Ú¾î¿ä?", ScriptMessageFlag.NpcReplacedByNpc)) {
+            case 5: { //íŒŒí‹°ë¡œë„ì „(í¼ì¦ë§ˆìŠ¤í„°)
+                if (1 == self.askYesNo("\r\nì§€ê¸ˆ #b#e<í¼ì¦ ë§ˆìŠ¤í„°>#n#kì— ì°¸ì—¬í•˜ì‹œê² ìŠµë‹ˆê¹Œ~?#k", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("\r\n#b#e<í¼ì¦ ë§ˆìŠ¤í„°>#n#kì— ì°¸ì—¬í•˜ì‹œë©´ ì ìš©ë˜ì–´ ìˆëŠ”\r\n#fs16##r#eëª¨ë“  ë²„í”„ íš¨ê³¼ê°€ í•´ì œ#n#k#fs12#ëœë‹µë‹ˆë‹¤.\r\n\r\nì •ë§ ì°¸ì—¬í•˜ì‹œê² ì–´ìš”?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         FieldSet puzzleMaster = fieldSet("PuzzleMasterEnter");
                         if (puzzleMaster == null) {
-                            self.sayOk("Áö±İÀº ÆÛÁñ ¸¶½ºÅÍ¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù~! ´ÙÀ½¿¡ Ã£¾Æ¿ÍÁÖ¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.sayOk("ì§€ê¸ˆì€ í¼ì¦ ë§ˆìŠ¤í„°ë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤~! ë‹¤ìŒì— ì°¾ì•„ì™€ì£¼ì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         int enter = puzzleMaster.enter(target.getId(), 0);
                         if (enter == -1)
-                            self.say("¾Ë ¼ö ¾ø´Â ÀÌÀ¯·Î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù. Àá½Ã ÈÄ¿¡ ´Ù½Ã ½ÃµµÇØ ÁÖ½Ê½Ã¿À.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì´ìœ ë¡œ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì ì‹œ í›„ì— ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì‹­ì‹œì˜¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 1)
-                            self.say("1~3ÀÎ ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ #b#eÆÄÆ¼ ÇÃ·¹ÀÌ#n#k¸¦ ÇÒ ¼ö ÀÖ´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("1~3ì¸ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ #b#eíŒŒí‹° í”Œë ˆì´#n#kë¥¼ í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 2)
-                            self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ¼­¸¸ ÀÔÀåÇÒ ¼ö ÀÖ´ä´Ï´Ù! ÆÄÆ¼ÀåÀ» ÅëÇØ ÀÔÀåÇØÁÖ¼¼¿ä~!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("íŒŒí‹°ì¥ì„ í†µí•´ì„œë§Œ ì…ì¥í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤! íŒŒí‹°ì¥ì„ í†µí•´ ì…ì¥í•´ì£¼ì„¸ìš”~!", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 3)
-                            self.say("ÃÖ¼Ò " + fieldSet.minMember + "ÀÎ ÀÌ»óÀÇ ÆÄÆ¼°¡ Äù½ºÆ®¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ìµœì†Œ " + fieldSet.minMember + "ì¸ ì´ìƒì˜ íŒŒí‹°ê°€ í€˜ìŠ¤íŠ¸ë¥¼ ì‹œì‘í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 4)
-                            self.say("ÆÄÆ¼¿øÀÇ ·¹º§Àº ÃÖ¼Ò " + fieldSet.minLv + " ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
-                        else if (enter == 5) self.say("ÆÄÆ¼¿øÀÌ ¸ğµÎ ¸ğ¿© ÀÖ¾î¾ß ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("íŒŒí‹°ì›ì˜ ë ˆë²¨ì€ ìµœì†Œ " + fieldSet.minLv + " ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
+                        else if (enter == 5) self.say("íŒŒí‹°ì›ì´ ëª¨ë‘ ëª¨ì—¬ ìˆì–´ì•¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 6)
-                            self.say("ÀÌ¹Ì ´Ù¸¥ ÆÄÆ¼°¡ ¾ÈÀ¸·Î µé¾î°¡ Äù½ºÆ® Å¬¸®¾î¿¡ µµÀüÇÏ°í ÀÖ´Â ÁßÀÌ¶ø´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ì´ë¯¸ ë‹¤ë¥¸ íŒŒí‹°ê°€ ì•ˆìœ¼ë¡œ ë“¤ì–´ê°€ í€˜ìŠ¤íŠ¸ í´ë¦¬ì–´ì— ë„ì „í•˜ê³  ìˆëŠ” ì¤‘ì´ëë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                     } else {
-                        self.say("\r\n±×·¯¸é ¹æ¼Û¿¡ Âü¿©ÇÏ°í ½ÍÀ» ¶§ ´Ù½Ã Ã£¾Æ¿ÍÁÖ¼¼¿ä~", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nê·¸ëŸ¬ë©´ ë°©ì†¡ì— ì°¸ì—¬í•˜ê³  ì‹¶ì„ ë•Œ ë‹¤ì‹œ ì°¾ì•„ì™€ì£¼ì„¸ìš”~", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 } else {
-                    self.say("\r\n±×·¯¸é ¹æ¼Û¿¡ Âü¿©ÇÏ°í ½ÍÀ» ¶§ ´Ù½Ã Ã£¾Æ¿ÍÁÖ¼¼¿ä~", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("\r\nê·¸ëŸ¬ë©´ ë°©ì†¡ì— ì°¸ì—¬í•˜ê³  ì‹¶ì„ ë•Œ ë‹¤ì‹œ ì°¾ì•„ì™€ì£¼ì„¸ìš”~", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 3: { //¼³¸í µè±â
-                self.say("#e[ÀÌº¥Æ® ±â°£]\r\n\r\n2021³â 07¿ù 05ÀÏ (¿ù) Á¡°Ë ÈÄ ~ \r\n¹ÌÁ¤", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e<ÅÁÀ± ½Ä´ç>#n#kÀº ÃÖ¼Ò 1¸í ~ ÃÖ´ë 3¸íÀÇ ÀÎ¿øÀÌ ¿ä¸®¸¦ ¸¸µé°í ¹è´Ş±îÁö ¿Ï·áÇØ¼­ Á¦ÇÑ ½Ã°£ #e30ºĞ#n µ¿¾È #b#e50,000#n#k Æ÷ÀÎÆ®¸¦ È¹µæÇÏ´Â °ÍÀÌ ¸ñÇ¥¶ø´Ï´Ù!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\nÁÂÃø¿¡ À§Ä¡ÇÑ #b#e<ÁÖ¹®ÆÇ>#n#k¿¡ µé¾î¿À´Â ÁÖ¹®À» È®ÀÎÇÏ°í\r\n·¹½ÃÇÇ´ë·Î À½½ÄÀ» ¸¸µé¾î¼­ ¹è´ŞÇØº¸¼¼¿ä~!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[Àç·á ¼öÁı]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ ÁÂÃø#n#k¿¡ À§Ä¡ÇÑ #e5Á¾#nÀÇ Àç·á ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n\r\nÅ°´Ù¿îÀ¸·Î ÇØ´çÇÏ´Â Àç·á¸¦ È¹µæÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[Àç·á ³õ±â]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ Áß¾Ó#n#k¿¡ À§Ä¡ÇÑ #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n\r\nÅ°´Ù¿îÀ¸·Î ÇöÀç È¹µæÇÑ Àç·á¸¦ ³õÀ» ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#e°¢ ÁÖ¹® ¹øÈ£¿¡ ÇØ´çÇÏ´Â Á¶¸®´ë#n¿¡¼­¸¸ ÇØ´ç À½½ÄÀ»\r\nÁ¶¸®ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[°¡°ø µµ±¸ µé±â]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ ¿ìÃø#n#k¿¡ À§Ä¡ÇÑ #e3Á¾#nÀÇ °¡°ø µµ±¸ ¾Õ¿¡¼­\r\n#r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î µµ±¸¸¦ È¹µæÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#b#e°¡°ø µµ±¸#n#k¸¦ È¹µæÇÑ »óÅÂ¿¡¼­¸¸ Àç·á °¡°øÀ» ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[Àç·á °¡°ø]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ Áß¾Ó#n#k¿¡ À§Ä¡ÇÑ #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#n#k\r\nÅ°´Ù¿îÀ¸·Î ÇØ´ç Á¶¸®´ë¿¡ ³õÀÎ Àç·á¸¦ °¡°øÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#e°¢ ÁÖ¹® ¹øÈ£¿¡ ÇØ´çÇÏ´Â Á¶¸®´ë#n¿¡¼­¸¸ ÇØ´ç À½½ÄÀ»\r\nÁ¶¸®ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[À½½Ä ¹è´Ş]#n\r\n\r\n#b#eÀ½½ÄÀÌ ¿Ï¼ºµÈ Á¶¸®´ë#n#k´Â À½½ÄÀ» µé ¼ö ÀÖ´Â »óÅÂ°¡ µÇ¸ç\r\nÇØ´ç #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î ¹è´ŞÀ» ÁøÇàÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n¿ìÃø ¹è´Ş °ø°£¿¡¼­ #e¸ó½ºÅÍ#nµéÀÇ ¹æÇØ¸¦ ÇÇÇØ ÁÖ¹®ÇÑ ¼Õ´Ô\r\n¾Õ¿¡¼­ #r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î ¹è´Ş ¿Ï·á!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#eÁøÁ¤ÇÑ Å©¸®¿¡ÀÌÅÍ#n#k¶ó¸é ¿ª½Ã ½ÇÀüÀÌÁÒ!\r\n\r\n¾î¼­ Á÷Á¢ Ã¼ÇèÇØº¸½Ã´Â °ÍÀº ¾î¶°½Å°¡¿ä?", ScriptMessageFlag.NpcReplacedByNpc);
+            case 3: { //ì„¤ëª… ë“£ê¸°
+                self.say("#e[ì´ë²¤íŠ¸ ê¸°ê°„]\r\n\r\n2021ë…„ 07ì›” 05ì¼ (ì›”) ì ê²€ í›„ ~ \r\në¯¸ì •", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#b#e<íƒ•ìœ¤ ì‹ë‹¹>#n#kì€ ìµœì†Œ 1ëª… ~ ìµœëŒ€ 3ëª…ì˜ ì¸ì›ì´ ìš”ë¦¬ë¥¼ ë§Œë“¤ê³  ë°°ë‹¬ê¹Œì§€ ì™„ë£Œí•´ì„œ ì œí•œ ì‹œê°„ #e30ë¶„#n ë™ì•ˆ #b#e50,000#n#k í¬ì¸íŠ¸ë¥¼ íšë“í•˜ëŠ” ê²ƒì´ ëª©í‘œëë‹ˆë‹¤!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\nì¢Œì¸¡ì— ìœ„ì¹˜í•œ #b#e<ì£¼ë¬¸íŒ>#n#kì— ë“¤ì–´ì˜¤ëŠ” ì£¼ë¬¸ì„ í™•ì¸í•˜ê³ \r\në ˆì‹œí”¼ëŒ€ë¡œ ìŒì‹ì„ ë§Œë“¤ì–´ì„œ ë°°ë‹¬í•´ë³´ì„¸ìš”~!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e[ì¬ë£Œ ìˆ˜ì§‘]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¢Œì¸¡#n#kì— ìœ„ì¹˜í•œ #e5ì¢…#nì˜ ì¬ë£Œ ì•ì—ì„œ #r#eSpaceí‚¤#k#n\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í•´ë‹¹í•˜ëŠ” ì¬ë£Œë¥¼ íšë“í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e[ì¬ë£Œ ë†“ê¸°]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¤‘ì•™#n#kì— ìœ„ì¹˜í•œ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#k#n\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í˜„ì¬ íšë“í•œ ì¬ë£Œë¥¼ ë†“ì„ ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#eê° ì£¼ë¬¸ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¡°ë¦¬ëŒ€#nì—ì„œë§Œ í•´ë‹¹ ìŒì‹ì„\r\nì¡°ë¦¬í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e[ê°€ê³µ ë„êµ¬ ë“¤ê¸°]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ìš°ì¸¡#n#kì— ìœ„ì¹˜í•œ #e3ì¢…#nì˜ ê°€ê³µ ë„êµ¬ ì•ì—ì„œ\r\n#r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë„êµ¬ë¥¼ íšë“í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#b#eê°€ê³µ ë„êµ¬#n#kë¥¼ íšë“í•œ ìƒíƒœì—ì„œë§Œ ì¬ë£Œ ê°€ê³µì„ í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e[ì¬ë£Œ ê°€ê³µ]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¤‘ì•™#n#kì— ìœ„ì¹˜í•œ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#n#k\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í•´ë‹¹ ì¡°ë¦¬ëŒ€ì— ë†“ì¸ ì¬ë£Œë¥¼ ê°€ê³µí•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#eê° ì£¼ë¬¸ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¡°ë¦¬ëŒ€#nì—ì„œë§Œ í•´ë‹¹ ìŒì‹ì„\r\nì¡°ë¦¬í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e[ìŒì‹ ë°°ë‹¬]#n\r\n\r\n#b#eìŒì‹ì´ ì™„ì„±ëœ ì¡°ë¦¬ëŒ€#n#këŠ” ìŒì‹ì„ ë“¤ ìˆ˜ ìˆëŠ” ìƒíƒœê°€ ë˜ë©°\r\ní•´ë‹¹ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë°°ë‹¬ì„ ì§„í–‰í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\nìš°ì¸¡ ë°°ë‹¬ ê³µê°„ì—ì„œ #eëª¬ìŠ¤í„°#në“¤ì˜ ë°©í•´ë¥¼ í”¼í•´ ì£¼ë¬¸í•œ ì†ë‹˜\r\nì•ì—ì„œ #r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë°°ë‹¬ ì™„ë£Œ!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#b#eì§„ì •í•œ í¬ë¦¬ì—ì´í„°#n#kë¼ë©´ ì—­ì‹œ ì‹¤ì „ì´ì£ !\r\n\r\nì–´ì„œ ì§ì ‘ ì²´í—˜í•´ë³´ì‹œëŠ” ê²ƒì€ ì–´ë– ì‹ ê°€ìš”?", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
-            case 6: { //ÆÛÁñ¸¶½ºÅÍ ¼³¸í µè±â
-                self.say("#e[ÀÌº¥Æ® ±â°£]\r\n\r\n2021³â 07¿ù ~ \r\n¹ÌÁ¤", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e#b<ÆÛÁñ ¸¶½ºÅÍ>#k#n´Â ÃÖ¼Ò 1¸í ~ ÃÖ´ë 3¸íÀÇ ÀÎ¿øÀÌ #e#bÃÑ 3°¡ÁöÀÇ ÆÛÁñ#n#kÀ» Á¦ÇÑ ½Ã°£ #b#e30ºĞ#n#k ³»¿¡ ¿Ï¼ºÇÏ´Â °ÍÀ» ¸ñÇ¥·Î ÇÏ´Â ÄÁÅÙÃ÷¶ø´Ï´Ù!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#eÈ­¸é Áß¾Ó¿¡ ¹èÄ¡µÈ ¾×ÀÚ ¼Ó¿¡#n#k ¸Ê ÀÌ°÷Àú°÷¿¡¼­ µîÀåÇÏ´Â #b#eÆÛÁñ Á¶°¢À» Á¤È®ÇÑ À§Ä¡¿¡ ¹èÄ¡ÇÏ¸é µË´Ï´Ù!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n¾Ñ! ³Ê¹« ¾î·Á¿ì½Ç °Í °°³ª¿ä? °ÆÁ¤ÇÏÁö ¸¶¼¼¿ä!\r\n#b#eÇÔ²²ÇÏ´Â Å©¸®¿¡ÀÌÅÍµé°ú ÈûÀ» ÇÕÄ£´Ù¸é ÃæºĞÈ÷ °¡´ÉÇÒ °Å¿¹¿ä!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+            case 6: { //í¼ì¦ë§ˆìŠ¤í„° ì„¤ëª… ë“£ê¸°
+                self.say("#e[ì´ë²¤íŠ¸ ê¸°ê°„]\r\n\r\n2021ë…„ 07ì›” ~ \r\në¯¸ì •", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#e#b<í¼ì¦ ë§ˆìŠ¤í„°>#k#nëŠ” ìµœì†Œ 1ëª… ~ ìµœëŒ€ 3ëª…ì˜ ì¸ì›ì´ #e#bì´ 3ê°€ì§€ì˜ í¼ì¦#n#kì„ ì œí•œ ì‹œê°„ #b#e30ë¶„#n#k ë‚´ì— ì™„ì„±í•˜ëŠ” ê²ƒì„ ëª©í‘œë¡œ í•˜ëŠ” ì»¨í…ì¸ ëë‹ˆë‹¤!", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#b#eí™”ë©´ ì¤‘ì•™ì— ë°°ì¹˜ëœ ì•¡ì ì†ì—#n#k ë§µ ì´ê³³ì €ê³³ì—ì„œ ë“±ì¥í•˜ëŠ” #b#eí¼ì¦ ì¡°ê°ì„ ì •í™•í•œ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ë©´ ë©ë‹ˆë‹¤!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\nì•—! ë„ˆë¬´ ì–´ë ¤ìš°ì‹¤ ê²ƒ ê°™ë‚˜ìš”? ê±±ì •í•˜ì§€ ë§ˆì„¸ìš”!\r\n#b#eí•¨ê»˜í•˜ëŠ” í¬ë¦¬ì—ì´í„°ë“¤ê³¼ í˜ì„ í•©ì¹œë‹¤ë©´ ì¶©ë¶„íˆ ê°€ëŠ¥í•  ê±°ì˜ˆìš”!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
-            case 4: { //¿À´Ã ³²Àº °æÇèÄ¡ È¹µæ È½¼ö
+            case 4: { //ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ íšë“ íšŸìˆ˜
                 int today = getPlayer().getOneInfoQuestInteger(501555, "today");
                 if (2 - today > 0) {
-                    self.say("¿À´Ã ³²Àº °æÇèÄ¡ º¸»ó È¹µæ °¡´É È½¼ö´Â #b#e" + (2 - today) + "È¸#n#k ÀÔ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ ë³´ìƒ íšë“ ê°€ëŠ¥ íšŸìˆ˜ëŠ” #b#e" + (2 - today) + "íšŒ#n#k ì…ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    self.say("¿À´ÃÀº ´õ ÀÌ»ó °æÇèÄ¡ º¸»óÀ» È¹µæÇÏ½Ç ¼ö ¾ø´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("ì˜¤ëŠ˜ì€ ë” ì´ìƒ ê²½í—˜ì¹˜ ë³´ìƒì„ íšë“í•˜ì‹¤ ìˆ˜ ì—†ë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 7: { //¿À´Ã ³²Àº °æÇèÄ¡ È¹µæ È½¼ö(ÆÛÁñ¸¶½ºÅÍ)
+            case 7: { //ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ íšë“ íšŸìˆ˜(í¼ì¦ë§ˆìŠ¤í„°)
                 int today = getPlayer().getOneInfoQuestInteger(501600, "today");
                 if (2 - today > 0) {
-                    self.say("¿À´Ã ³²Àº °æÇèÄ¡ º¸»ó È¹µæ °¡´É È½¼ö´Â #b#e" + (2 - today) + "È¸#n#k ÀÔ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ ë³´ìƒ íšë“ ê°€ëŠ¥ íšŸìˆ˜ëŠ” #b#e" + (2 - today) + "íšŒ#n#k ì…ë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    self.say("¿À´ÃÀº ´õ ÀÌ»ó °æÇèÄ¡ º¸»óÀ» È¹µæÇÏ½Ç ¼ö ¾ø´ä´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("ì˜¤ëŠ˜ì€ ë” ì´ìƒ ê²½í—˜ì¹˜ ë³´ìƒì„ íšë“í•˜ì‹¤ ìˆ˜ ì—†ë‹µë‹ˆë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
@@ -169,14 +169,14 @@ public class TangyoonKitchen extends ScriptEngineNPC {
     public void TyoonKitchen_npc1() {
         if (getPlayer().getMap().getId() == 993194401) {
             if (getPlayer().getOneInfoQuestInteger(501555, "today") >= 2) {
-                self.say("¿À´Ã ³²Àº °æÇèÄ¡ È¹µæ È½¼ö°¡ ¾ø¾î¼­ °æÇèÄ¡¸¦ µå¸± ¼ö°¡ ¾ø¾î¿ä ¿ø·¡ ÀÖ´ø °÷À¸·Î µ¹·Á º¸³»µå¸±°Ô¿ä!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say("ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ íšë“ íšŸìˆ˜ê°€ ì—†ì–´ì„œ ê²½í—˜ì¹˜ë¥¼ ë“œë¦´ ìˆ˜ê°€ ì—†ì–´ìš” ì›ë˜ ìˆë˜ ê³³ìœ¼ë¡œ ëŒë ¤ ë³´ë‚´ë“œë¦´ê²Œìš”!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                 target.registerTransferField(ServerConstants.TownMap);
             } else if (getPlayer().getOneInfoQuestInteger(501555, "complete") >= 1) {
                 Calendar CAL = new GregorianCalendar(Locale.KOREA);
                 int day = CAL.getTime().getDay();
                 boolean doubleEXP = false;
-                if (day == 6 || day == 0) { //ÁÖ¸»
+                if (day == 6 || day == 0) { //ì£¼ë§
                     doubleEXP = true;
                 }
                 long exp = GameConstants.tangyoonExp[getPlayer().getLevel() - 200];
@@ -205,16 +205,16 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 String expString = String.format("%,d", exp);
                 if (DBConfig.isGanglim) {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + "#k#n¿Í #r100 °­¸²Æ÷ÀÎÆ®#k#n ¸¦µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + "#k#nì™€ #r100 ê°•ë¦¼í¬ì¸íŠ¸#k#n ë¥¼ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + " * 2 (ÁÖ¸» ÅÁÀ± ½Ä´ç °æÇèÄ¡ 2¹è ÀÌº¥Æ®!)#k#n¿Í #r100 °­¸²Æ÷ÀÎÆ®#k#n¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + " * 2 (ì£¼ë§ íƒ•ìœ¤ ì‹ë‹¹ ê²½í—˜ì¹˜ 2ë°° ì´ë²¤íŠ¸!)#k#nì™€ #r100 ê°•ë¦¼í¬ì¸íŠ¸#k#në¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                     getPlayer().gainHongboPoint(100);
                 } else {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + "#k#n ¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + "#k#n ë¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + " * 2 (ÁÖ¸» ÅÁÀ± ½Ä´ç °æÇèÄ¡ 2¹è ÀÌº¥Æ®!)#k#n ¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + " * 2 (ì£¼ë§ íƒ•ìœ¤ ì‹ë‹¹ ê²½í—˜ì¹˜ 2ë°° ì´ë²¤íŠ¸!)#k#n ë¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                 }
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
@@ -228,7 +228,7 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                     getPlayer().gainExpLong(exp * 2);
                 }
             } else {
-                self.say("\r\n\r\n#e#r50,000 Æ÷ÀÎÆ®#n#kÀ» ¹úÁö ¸øÇÏ°í ³ª¿À¼Ì´Ù¸é\r\nº¸»óÀ» Áö±ŞÇØµå¸± ¼ö ¾ø´ä´Ï´Ù.\r\n\r\n´ÙÀ½¿£ ´õ ³ë·ÂÇØÁÖ¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say("\r\n\r\n#e#r50,000 í¬ì¸íŠ¸#n#kì„ ë²Œì§€ ëª»í•˜ê³  ë‚˜ì˜¤ì…¨ë‹¤ë©´\r\në³´ìƒì„ ì§€ê¸‰í•´ë“œë¦´ ìˆ˜ ì—†ë‹µë‹ˆë‹¤.\r\n\r\në‹¤ìŒì—” ë” ë…¸ë ¥í•´ì£¼ì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                 target.registerTransferField(ServerConstants.TownMap);
             }
@@ -236,31 +236,31 @@ public class TangyoonKitchen extends ScriptEngineNPC {
             int v = -2;
             boolean exit = false;
             while (v != -1 && v != 0 && !exit && !getSc().isStop()) {
-                v = self.askMenu("±Ã±İÇÑ °Ô ÀÖÀ¸½Å°¡¿ä?\r\n\r\n#L1# #b#e<ÅÁÀ± ½Ä´ç>#b#e¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L2# #b#e<ÅÁÀ± ½Ä´ç ÁøÇà¹æ¹ı>#n#k¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L3# #b#e<°ÔÀÓ º¸»ó>#n#k¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L4# ¿ø·¡ ÀÖ´ø Àå¼Ò·Î µ¹¾Æ°¡°í ½Í´Ù.#l\r\n\r\n#L0# ±Ã±İÇÑ °ÍÀÌ ¾ø´Ù.#l", ScriptMessageFlag.NpcReplacedByNpc);
+                v = self.askMenu("ê¶ê¸ˆí•œ ê²Œ ìˆìœ¼ì‹ ê°€ìš”?\r\n\r\n#L1# #b#e<íƒ•ìœ¤ ì‹ë‹¹>#b#eì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L2# #b#e<íƒ•ìœ¤ ì‹ë‹¹ ì§„í–‰ë°©ë²•>#n#kì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L3# #b#e<ê²Œì„ ë³´ìƒ>#n#kì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L4# ì›ë˜ ìˆë˜ ì¥ì†Œë¡œ ëŒì•„ê°€ê³  ì‹¶ë‹¤.#l\r\n\r\n#L0# ê¶ê¸ˆí•œ ê²ƒì´ ì—†ë‹¤.#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (v) {
-                    case 1: { //ÅÁÀ± ½Ä´ç¿¡ ´ëÇØ ¹°¾îº»´Ù.
-                        self.say("\r\n#b#e¸ŞÀÌÇÃ ¹ö¶óÀÌ¾îÆ¼#n#k Ã¹ ¹øÂ° Æ¯Áı! #r#eÅÁ.À±.½Ä.´ç!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\nÀü¼³ÀÇ ¼ÎÇÁ #b#e'ÅÁÀ±'#n#k´Ô°ú ½Ä´ç °æ¿µÀ» Ã¼ÇèÇÒ ¼ö ÀÖ´Â ±âÈ¸!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#eÁøÁ¤ÇÑ Å©¸®¿¡ÀÌÅÍ#n#k¶ó¸é ÀÌ ±âÈ¸¸¦ ³õÄ¥ ¼ö ¾ø°ÚÁÒ?!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 1: { //íƒ•ìœ¤ ì‹ë‹¹ì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.
+                        self.say("\r\n#b#eë©”ì´í”Œ ë²„ë¼ì´ì–´í‹°#n#k ì²« ë²ˆì§¸ íŠ¹ì§‘! #r#eíƒ•.ìœ¤.ì‹.ë‹¹!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nì „ì„¤ì˜ ì…°í”„ #b#e'íƒ•ìœ¤'#n#kë‹˜ê³¼ ì‹ë‹¹ ê²½ì˜ì„ ì²´í—˜í•  ìˆ˜ ìˆëŠ” ê¸°íšŒ!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#b#eì§„ì •í•œ í¬ë¦¬ì—ì´í„°#n#kë¼ë©´ ì´ ê¸°íšŒë¥¼ ë†“ì¹  ìˆ˜ ì—†ê² ì£ ?!", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 2: { //ÅÁÀ± ½Ä´ç ÁøÇà¹æ¹ı¿¡ ´ëÇØ ¹°¾îº»´Ù.
-                        self.say("\r\n#b#e<ÅÁÀ± ½Ä´ç>#n#kÀº ÃÖ¼Ò 1¸í ~ ÃÖ´ë 3¸íÀÇ ÀÎ¿øÀÌ ¿ä¸®¸¦ ¸¸µé°í ¹è´Ş±îÁö ¿Ï·áÇØ¼­ Á¦ÇÑ ½Ã°£ #e30ºĞ#n µ¿¾È #b#e50,000#n#k Æ÷ÀÎÆ®¸¦ È¹µæÇÏ´Â °ÍÀÌ ¸ñÇ¥¶ø´Ï´Ù!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\nÁÂÃø¿¡ À§Ä¡ÇÑ #b#e<ÁÖ¹®ÆÇ>#n#k¿¡ µé¾î¿À´Â ÁÖ¹®À» È®ÀÎÇÏ°í\r\n·¹½ÃÇÇ´ë·Î À½½ÄÀ» ¸¸µé¾î¼­ ¹è´ŞÇØº¸¼¼¿ä~!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[Àç·á ¼öÁı]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ ÁÂÃø#n#k¿¡ À§Ä¡ÇÑ #e5Á¾#nÀÇ Àç·á ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n\r\nÅ°´Ù¿îÀ¸·Î ÇØ´çÇÏ´Â Àç·á¸¦ È¹µæÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[Àç·á ³õ±â]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ Áß¾Ó#n#k¿¡ À§Ä¡ÇÑ #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n\r\nÅ°´Ù¿îÀ¸·Î ÇöÀç È¹µæÇÑ Àç·á¸¦ ³õÀ» ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#e°¢ ÁÖ¹® ¹øÈ£¿¡ ÇØ´çÇÏ´Â Á¶¸®´ë#n¿¡¼­¸¸ ÇØ´ç À½½ÄÀ»\r\nÁ¶¸®ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[°¡°ø µµ±¸ µé±â]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ ¿ìÃø#n#k¿¡ À§Ä¡ÇÑ #e3Á¾#nÀÇ °¡°ø µµ±¸ ¾Õ¿¡¼­\r\n#r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î µµ±¸¸¦ È¹µæÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#b#e°¡°ø µµ±¸#n#k¸¦ È¹µæÇÑ »óÅÂ¿¡¼­¸¸ Àç·á °¡°øÀ» ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[Àç·á °¡°ø]#n\r\n\r\n#b#eÁÖ¹æ °ø°£ Áß¾Ó#n#k¿¡ À§Ä¡ÇÑ #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#n#k\r\nÅ°´Ù¿îÀ¸·Î ÇØ´ç Á¶¸®´ë¿¡ ³õÀÎ Àç·á¸¦ °¡°øÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n#e°¢ ÁÖ¹® ¹øÈ£¿¡ ÇØ´çÇÏ´Â Á¶¸®´ë#n¿¡¼­¸¸ ÇØ´ç À½½ÄÀ»\r\nÁ¶¸®ÇÒ ¼ö ÀÖ´Ù´Â Á¡À» ÀØÁö ¸¶¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[À½½Ä ¹è´Ş]#n\r\n\r\n#b#eÀ½½ÄÀÌ ¿Ï¼ºµÈ Á¶¸®´ë#n#k´Â À½½ÄÀ» µé ¼ö ÀÖ´Â »óÅÂ°¡ µÇ¸ç\r\nÇØ´ç #eÁ¶¸®´ë#n ¾Õ¿¡¼­ #r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î ¹è´ŞÀ» ÁøÇàÇÒ ¼ö ÀÖ´ä´Ï´Ù.\r\n\r\n¿ìÃø ¹è´Ş °ø°£¿¡¼­ #e¸ó½ºÅÍ#nµéÀÇ ¹æÇØ¸¦ ÇÇÇØ ÁÖ¹®ÇÑ ¼Õ´Ô\r\n¾Õ¿¡¼­ #r#eSpaceÅ°#k#n Å°´Ù¿îÀ¸·Î ¹è´Ş ¿Ï·á!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 2: { //íƒ•ìœ¤ ì‹ë‹¹ ì§„í–‰ë°©ë²•ì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.
+                        self.say("\r\n#b#e<íƒ•ìœ¤ ì‹ë‹¹>#n#kì€ ìµœì†Œ 1ëª… ~ ìµœëŒ€ 3ëª…ì˜ ì¸ì›ì´ ìš”ë¦¬ë¥¼ ë§Œë“¤ê³  ë°°ë‹¬ê¹Œì§€ ì™„ë£Œí•´ì„œ ì œí•œ ì‹œê°„ #e30ë¶„#n ë™ì•ˆ #b#e50,000#n#k í¬ì¸íŠ¸ë¥¼ íšë“í•˜ëŠ” ê²ƒì´ ëª©í‘œëë‹ˆë‹¤!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nì¢Œì¸¡ì— ìœ„ì¹˜í•œ #b#e<ì£¼ë¬¸íŒ>#n#kì— ë“¤ì–´ì˜¤ëŠ” ì£¼ë¬¸ì„ í™•ì¸í•˜ê³ \r\në ˆì‹œí”¼ëŒ€ë¡œ ìŒì‹ì„ ë§Œë“¤ì–´ì„œ ë°°ë‹¬í•´ë³´ì„¸ìš”~!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#e[ì¬ë£Œ ìˆ˜ì§‘]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¢Œì¸¡#n#kì— ìœ„ì¹˜í•œ #e5ì¢…#nì˜ ì¬ë£Œ ì•ì—ì„œ #r#eSpaceí‚¤#k#n\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í•´ë‹¹í•˜ëŠ” ì¬ë£Œë¥¼ íšë“í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#e[ì¬ë£Œ ë†“ê¸°]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¤‘ì•™#n#kì— ìœ„ì¹˜í•œ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#k#n\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í˜„ì¬ íšë“í•œ ì¬ë£Œë¥¼ ë†“ì„ ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#eê° ì£¼ë¬¸ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¡°ë¦¬ëŒ€#nì—ì„œë§Œ í•´ë‹¹ ìŒì‹ì„\r\nì¡°ë¦¬í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#e[ê°€ê³µ ë„êµ¬ ë“¤ê¸°]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ìš°ì¸¡#n#kì— ìœ„ì¹˜í•œ #e3ì¢…#nì˜ ê°€ê³µ ë„êµ¬ ì•ì—ì„œ\r\n#r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë„êµ¬ë¥¼ íšë“í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#b#eê°€ê³µ ë„êµ¬#n#kë¥¼ íšë“í•œ ìƒíƒœì—ì„œë§Œ ì¬ë£Œ ê°€ê³µì„ í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#e[ì¬ë£Œ ê°€ê³µ]#n\r\n\r\n#b#eì£¼ë°© ê³µê°„ ì¤‘ì•™#n#kì— ìœ„ì¹˜í•œ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#n#k\r\ní‚¤ë‹¤ìš´ìœ¼ë¡œ í•´ë‹¹ ì¡°ë¦¬ëŒ€ì— ë†“ì¸ ì¬ë£Œë¥¼ ê°€ê³µí•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\n#eê° ì£¼ë¬¸ ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ì¡°ë¦¬ëŒ€#nì—ì„œë§Œ í•´ë‹¹ ìŒì‹ì„\r\nì¡°ë¦¬í•  ìˆ˜ ìˆë‹¤ëŠ” ì ì„ ìŠì§€ ë§ˆì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#e[ìŒì‹ ë°°ë‹¬]#n\r\n\r\n#b#eìŒì‹ì´ ì™„ì„±ëœ ì¡°ë¦¬ëŒ€#n#këŠ” ìŒì‹ì„ ë“¤ ìˆ˜ ìˆëŠ” ìƒíƒœê°€ ë˜ë©°\r\ní•´ë‹¹ #eì¡°ë¦¬ëŒ€#n ì•ì—ì„œ #r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë°°ë‹¬ì„ ì§„í–‰í•  ìˆ˜ ìˆë‹µë‹ˆë‹¤.\r\n\r\nìš°ì¸¡ ë°°ë‹¬ ê³µê°„ì—ì„œ #eëª¬ìŠ¤í„°#në“¤ì˜ ë°©í•´ë¥¼ í”¼í•´ ì£¼ë¬¸í•œ ì†ë‹˜\r\nì•ì—ì„œ #r#eSpaceí‚¤#k#n í‚¤ë‹¤ìš´ìœ¼ë¡œ ë°°ë‹¬ ì™„ë£Œ!", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 3: { //°ÔÀÓ º¸»ó¿¡ ´ëÇØ ¹°¾îº»´Ù.
-                        self.say("\r\n#b#e50,000#n#k Æ÷ÀÎÆ®¸¦ È¹µæÇÏ½Ã¸é #eÀÏÁ¤·®ÀÇ °æÇèÄ¡#n¸¦\r\nº¸»óÀ¸·Î µå¸°´ä´Ï´Ù!\r\n\r\nÀÌ·± #r#e¾öÃ»³­ ±âÈ¸#n#k¸¦ ³õÄ¥ ¼ö´Â ¾ø°ÚÁÒ?", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 3: { //ê²Œì„ ë³´ìƒì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.
+                        self.say("\r\n#b#e50,000#n#k í¬ì¸íŠ¸ë¥¼ íšë“í•˜ì‹œë©´ #eì¼ì •ëŸ‰ì˜ ê²½í—˜ì¹˜#në¥¼\r\në³´ìƒìœ¼ë¡œ ë“œë¦°ë‹µë‹ˆë‹¤!\r\n\r\nì´ëŸ° #r#eì—„ì²­ë‚œ ê¸°íšŒ#n#kë¥¼ ë†“ì¹  ìˆ˜ëŠ” ì—†ê² ì£ ?", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
                     case 4: {
                         getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
-                        if (1 == self.askYesNo("\r\n#e#b<±¤Àå>#n#kÀ¸·Î µ¹¾Æ°¡½Ã°Ú½À´Ï±î?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                        if (1 == self.askYesNo("\r\n#e#b<ê´‘ì¥>#n#kìœ¼ë¡œ ëŒì•„ê°€ì‹œê² ìŠµë‹ˆê¹Œ?", ScriptMessageFlag.NpcReplacedByNpc)) {
                             target.registerTransferField(ServerConstants.TownMap);
                             exit = true;
                         }
@@ -272,9 +272,9 @@ public class TangyoonKitchen extends ScriptEngineNPC {
     }
 
     public void npc_9062573() {
-        if (getPlayer().getMap().getId() == 993194801) { //ÅğÀå¸Ê
+        if (getPlayer().getMap().getId() == 993194801) { //í‡´ì¥ë§µ
             if (getPlayer().getOneInfoQuestInteger(501600, "today") >= 2) {
-                self.say("¿À´Ã ³²Àº °æÇèÄ¡ È¹µæ È½¼ö°¡ ¾ø¾î¼­ °æÇèÄ¡¸¦ µå¸± ¼ö°¡ ¾ø¾î¿ä ¿ø·¡ ÀÖ´ø °÷À¸·Î µ¹·Á º¸³»µå¸±°Ô¿ä!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say("ì˜¤ëŠ˜ ë‚¨ì€ ê²½í—˜ì¹˜ íšë“ íšŸìˆ˜ê°€ ì—†ì–´ì„œ ê²½í—˜ì¹˜ë¥¼ ë“œë¦´ ìˆ˜ê°€ ì—†ì–´ìš” ì›ë˜ ìˆë˜ ê³³ìœ¼ë¡œ ëŒë ¤ ë³´ë‚´ë“œë¦´ê²Œìš”!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 if (DBConfig.isHosting) {
                     target.registerTransferField(ServerConstants.TownMap);
                 } else {
@@ -284,7 +284,7 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 Calendar CAL = new GregorianCalendar(Locale.KOREA);
                 int day = CAL.getTime().getDay();
                 boolean doubleEXP = false;
-                if (day == 6 || day == 0) { //ÁÖ¸»
+                if (day == 6 || day == 0) { //ì£¼ë§
                     doubleEXP = true;
                 }
                 long exp = GameConstants.tangyoonExp[getPlayer().getLevel() - 200];
@@ -312,16 +312,16 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 String expString = String.format("%,d", exp);
                 if (DBConfig.isGanglim) {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + "#k#n¿Í #r100 °­¸²Æ÷ÀÎÆ®#k#n ¸¦µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + "#k#nì™€ #r100 ê°•ë¦¼í¬ì¸íŠ¸#k#n ë¥¼ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + " * 2 (ÁÖ¸» ÅÁÀ± ½Ä´ç °æÇèÄ¡ 2¹è ÀÌº¥Æ®!)#k#n¿Í #r100 °­¸²Æ÷ÀÎÆ®#k#n¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + " * 2 (ì£¼ë§ íƒ•ìœ¤ ì‹ë‹¹ ê²½í—˜ì¹˜ 2ë°° ì´ë²¤íŠ¸!)#k#nì™€ #r100 ê°•ë¦¼í¬ì¸íŠ¸#k#në¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                     getPlayer().gainHongboPoint(100);
                 } else {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + "#k#n ¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + "#k#n ë¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#b°æÇèÄ¡#k #r" + expString + " * 2 (ÁÖ¸» ÆÛÁñ ¸¶½ºÅÍ °æÇèÄ¡ 2¹è ÀÌº¥Æ®!)#k#n ¸¦ µå¸±°Ô¿ä!\r\n(º¸»óÀº ÅğÀå ½Ã Áö±ŞµË´Ï´Ù)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bê²½í—˜ì¹˜#k #r" + expString + " * 2 (ì£¼ë§ í¼ì¦ ë§ˆìŠ¤í„° ê²½í—˜ì¹˜ 2ë°° ì´ë²¤íŠ¸!)#k#n ë¥¼ ë“œë¦´ê²Œìš”!\r\n(ë³´ìƒì€ í‡´ì¥ ì‹œ ì§€ê¸‰ë©ë‹ˆë‹¤)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                 }
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
@@ -340,7 +340,7 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 }
             } else {
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
-                self.say("\r\n#e#r3°³ÀÇ ÆÛÁñÀ» ¿Ï¼ºÇÏÁö ¸øÇÏ°í ³ª¿À¼Ì´Ù¸é\r\nº¸»óÀ» Áö±ŞÇØµå¸± ¼ö ¾ø´ä´Ï´Ù.#k\r\n\r\n´ÙÀ½¿£ ´õ ³ë·ÂÇØ ÁÖ¼¼¿ä!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say("\r\n#e#r3ê°œì˜ í¼ì¦ì„ ì™„ì„±í•˜ì§€ ëª»í•˜ê³  ë‚˜ì˜¤ì…¨ë‹¤ë©´\r\në³´ìƒì„ ì§€ê¸‰í•´ë“œë¦´ ìˆ˜ ì—†ë‹µë‹ˆë‹¤.#k\r\n\r\në‹¤ìŒì—” ë” ë…¸ë ¥í•´ ì£¼ì„¸ìš”!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 if (DBConfig.isHosting) {
                     target.registerTransferField(ServerConstants.TownMap);
                 } else {
@@ -351,25 +351,25 @@ public class TangyoonKitchen extends ScriptEngineNPC {
             int v = -2;
             boolean exit = false;
             while (v != -1 && v != 0 && !exit && !getSc().isStop()) {
-                v = self.askMenu("±Ã±İÇÑ °Ô ÀÖÀ¸½Å°¡¿ä?\r\n\r\n#L1# #b#e<ÆÛÁñ ¸¶½ºÅÍ>#b#e¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L2# #b#e<ÆÛÁñ ¸¶½ºÅÍ ÁøÇà ¹æ¹ı>#n#k¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L3# #b#e<°ÔÀÓ º¸»ó>#n#k¿¡ ´ëÇØ ¹°¾îº»´Ù.#l\r\n#L4# ¿ø·¡ ÀÖ´ø Àå¼Ò·Î µ¹¾Æ°¡°í ½Í´Ù.#l\r\n\r\n#L0# ±Ã±İÇÑ °ÍÀÌ ¾ø´Ù.#l", ScriptMessageFlag.NpcReplacedByNpc);
+                v = self.askMenu("ê¶ê¸ˆí•œ ê²Œ ìˆìœ¼ì‹ ê°€ìš”?\r\n\r\n#L1# #b#e<í¼ì¦ ë§ˆìŠ¤í„°>#b#eì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L2# #b#e<í¼ì¦ ë§ˆìŠ¤í„° ì§„í–‰ ë°©ë²•>#n#kì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L3# #b#e<ê²Œì„ ë³´ìƒ>#n#kì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.#l\r\n#L4# ì›ë˜ ìˆë˜ ì¥ì†Œë¡œ ëŒì•„ê°€ê³  ì‹¶ë‹¤.#l\r\n\r\n#L0# ê¶ê¸ˆí•œ ê²ƒì´ ì—†ë‹¤.#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (v) {
-                    case 1: { //ÆÛÁñ ¸¶½ºÅÍ¿¡ ´ëÇØ ¹°¾îº»´Ù.
-                        self.say("\r\n#b#e¸ŞÀÌÇÃ ¹ö¶óÀÌ¾îÆ¼#n#k µÎ ¹øÂ° Æ¯Áı! #r#eÆÛÁñ ¸¶½ºÅÍ!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#eÁøÁ¤ÇÑ Å©¸®¿¡ÀÌÅÍ#n#k¶ó¸é ÀÌ ±âÈ¸¸¦ ³õÄ¥ ¼ö ¾ø°ÚÁÒ?!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 1: { //í¼ì¦ ë§ˆìŠ¤í„°ì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.
+                        self.say("\r\n#b#eë©”ì´í”Œ ë²„ë¼ì´ì–´í‹°#n#k ë‘ ë²ˆì§¸ íŠ¹ì§‘! #r#eí¼ì¦ ë§ˆìŠ¤í„°!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#b#eì§„ì •í•œ í¬ë¦¬ì—ì´í„°#n#kë¼ë©´ ì´ ê¸°íšŒë¥¼ ë†“ì¹  ìˆ˜ ì—†ê² ì£ ?!", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 2: { //ÁøÇà¹æ¹ı
-                        self.say("\r\n#e#b<ÆÛÁñ ¸¶½ºÅÍ>#k#n´Â ÃÖ¼Ò 1¸í ~ ÃÖ´ë 3¸íÀÇ ÀÎ¿øÀÌ #e#bÃÑ 3°¡ÁöÀÇ ÆÛÁñ#n#kÀ» Á¦ÇÑ ½Ã°£ #b#e30ºĞ#n#k ³»¿¡ ¿Ï¼ºÇÏ´Â °ÍÀ» ¸ñÇ¥·Î ÇÏ´Â ÄÁÅÙÃ÷¶ø´Ï´Ù!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#eÈ­¸é Áß¾Ó¿¡ ¹èÄ¡µÈ ¾×ÀÚ ¼Ó¿¡#n#k ¸Ê ÀÌ°÷Àú°÷¿¡¼­ µîÀåÇÏ´Â #b#eÆÛÁñ Á¶°¢À» Á¤È®ÇÑ À§Ä¡¿¡ ¹èÄ¡ÇÏ¸é µË´Ï´Ù!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n¾Ñ! ³Ê¹« ¾î·Á¿ì½Ç °Í °°³ª¿ä? °ÆÁ¤ÇÏÁö ¸¶¼¼¿ä!\r\n#b#eÇÔ²²ÇÏ´Â Å©¸®¿¡ÀÌÅÍµé°ú ÈûÀ» ÇÕÄ£´Ù¸é ÃæºĞÈ÷ °¡´ÉÇÒ °Å¿¹¿ä!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 2: { //ì§„í–‰ë°©ë²•
+                        self.say("\r\n#e#b<í¼ì¦ ë§ˆìŠ¤í„°>#k#nëŠ” ìµœì†Œ 1ëª… ~ ìµœëŒ€ 3ëª…ì˜ ì¸ì›ì´ #e#bì´ 3ê°€ì§€ì˜ í¼ì¦#n#kì„ ì œí•œ ì‹œê°„ #b#e30ë¶„#n#k ë‚´ì— ì™„ì„±í•˜ëŠ” ê²ƒì„ ëª©í‘œë¡œ í•˜ëŠ” ì»¨í…ì¸ ëë‹ˆë‹¤!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\n#b#eí™”ë©´ ì¤‘ì•™ì— ë°°ì¹˜ëœ ì•¡ì ì†ì—#n#k ë§µ ì´ê³³ì €ê³³ì—ì„œ ë“±ì¥í•˜ëŠ” #b#eí¼ì¦ ì¡°ê°ì„ ì •í™•í•œ ìœ„ì¹˜ì— ë°°ì¹˜í•˜ë©´ ë©ë‹ˆë‹¤!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nì•—! ë„ˆë¬´ ì–´ë ¤ìš°ì‹¤ ê²ƒ ê°™ë‚˜ìš”? ê±±ì •í•˜ì§€ ë§ˆì„¸ìš”!\r\n#b#eí•¨ê»˜í•˜ëŠ” í¬ë¦¬ì—ì´í„°ë“¤ê³¼ í˜ì„ í•©ì¹œë‹¤ë©´ ì¶©ë¶„íˆ ê°€ëŠ¥í•  ê±°ì˜ˆìš”!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 3: { //°ÔÀÓ º¸»ó¿¡ ´ëÇØ ¹°¾îº»´Ù.
-                        self.say("\r\n#b#eÃÑ 3°¡ÁöÀÇ ÆÛÁñ#n#kÀ» ¿Ï¼ºÇÏ¸é ·¹º§¿¡ µû¶ó #eÀÏÁ¤·®ÀÇ °æÇèÄ¡#n¸¦\r\nº¸»óÀ¸·Î µå¸®°í ÀÖ¾î¿ä!\r\n\r\nÀÌ·± #r#e¾öÃ»³­ ±âÈ¸#n#k¸¦ ³õÄ¥ ¼ö´Â ¾ø°ÚÁÒ?", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 3: { //ê²Œì„ ë³´ìƒì— ëŒ€í•´ ë¬¼ì–´ë³¸ë‹¤.
+                        self.say("\r\n#b#eì´ 3ê°€ì§€ì˜ í¼ì¦#n#kì„ ì™„ì„±í•˜ë©´ ë ˆë²¨ì— ë”°ë¼ #eì¼ì •ëŸ‰ì˜ ê²½í—˜ì¹˜#në¥¼\r\në³´ìƒìœ¼ë¡œ ë“œë¦¬ê³  ìˆì–´ìš”!\r\n\r\nì´ëŸ° #r#eì—„ì²­ë‚œ ê¸°íšŒ#n#kë¥¼ ë†“ì¹  ìˆ˜ëŠ” ì—†ê² ì£ ?", ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
                     case 4: {
-                        if (1 == self.askYesNo("\r\n#e#b<±¤Àå>#n#kÀ¸·Î µ¹¾Æ°¡½Ã°Ú½À´Ï±î?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                        if (1 == self.askYesNo("\r\n#e#b<ê´‘ì¥>#n#kìœ¼ë¡œ ëŒì•„ê°€ì‹œê² ìŠµë‹ˆê¹Œ?", ScriptMessageFlag.NpcReplacedByNpc)) {
                             getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                             if (DBConfig.isHosting) {
                                 target.registerTransferField(ServerConstants.TownMap);
@@ -387,13 +387,13 @@ public class TangyoonKitchen extends ScriptEngineNPC {
 
     public void TyoonKitchen_npc2() {
         if (getPlayer().getMap().getId() != 993194500)
-            self.sayOk("\r\n¿ä¸®´Â ´Ü¼øÇÑ ÀÏÀÌ ¾Æ´Ï¶ó ¿­Á¤ÀÌ³×.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("\r\nìš”ë¦¬ëŠ” ë‹¨ìˆœí•œ ì¼ì´ ì•„ë‹ˆë¼ ì—´ì •ì´ë„¤.", ScriptMessageFlag.NpcReplacedByNpc);
     }
 
     public void enter_993194400() {
-        getPlayer().send(CField.addPopupSay(9062561, 5000, "ÅÁÀ± ½Ä´ç¿¡ ¿À½Å °ÍÀ»\r\nÈ¯¿µÇÕ´Ï´Ù~!", ""));
-        getPlayer().send(CField.addPopupSay(9062563, 4000, "Àü¼³ÀÇ ¼ÎÇÁÀÇ ½Ä´ç¿¡¼­ ÆîÃÄÁö´Â ¼û¸·È÷´Â »îÀÇ Ã¼Çè!", ""));
-        getPlayer().send(CField.addPopupSay(9062561, 5000, "½ÃÀÛ~! ÇÏ°Ú½À´Ï´Ù~!", ""));
+        getPlayer().send(CField.addPopupSay(9062561, 5000, "íƒ•ìœ¤ ì‹ë‹¹ì— ì˜¤ì‹  ê²ƒì„\r\ní™˜ì˜í•©ë‹ˆë‹¤~!", ""));
+        getPlayer().send(CField.addPopupSay(9062563, 4000, "ì „ì„¤ì˜ ì…°í”„ì˜ ì‹ë‹¹ì—ì„œ í¼ì³ì§€ëŠ” ìˆ¨ë§‰íˆëŠ” ì‚¶ì˜ ì²´í—˜!", ""));
+        getPlayer().send(CField.addPopupSay(9062561, 5000, "ì‹œì‘~! í•˜ê² ìŠµë‹ˆë‹¤~!", ""));
     }
 
     public void enter_993194900() {
@@ -406,7 +406,7 @@ public class TangyoonKitchen extends ScriptEngineNPC {
             objects.fields.fieldset.instance.TangyoonKitchen f = (objects.fields.fieldset.instance.TangyoonKitchen) field.getFieldSetInstance();
             getPlayer().send(objects.fields.fieldset.instance.TangyoonKitchen.TangyoonOrder(1));
             getPlayer().temporaryStatSet(993194500, Integer.MAX_VALUE, SecondaryStatFlag.DispelItemOptionByField, 1);
-            getPlayer().send(CWvsContext.InfoPacket.brownMessage("ÇöÀç ¸Ê¿¡¼­´Â ÀáÀç ´É·Â°ú ¿¡µğ¼Å³Î ÀáÀç´É·ÂÀÌ Àû¿ëµÇÁö ¾Ê½À´Ï´Ù."));
+            getPlayer().send(CWvsContext.InfoPacket.brownMessage("í˜„ì¬ ë§µì—ì„œëŠ” ì ì¬ ëŠ¥ë ¥ê³¼ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ì´ ì ìš©ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤."));
             final MapleCharacter user = getPlayer();
             Timer.EventTimer.getInstance().schedule(new Runnable() {
                 @Override

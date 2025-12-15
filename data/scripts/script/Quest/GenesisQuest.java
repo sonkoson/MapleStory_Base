@@ -21,61 +21,61 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GenesisQuest extends ScriptEngineNPC {
     public void q2000019s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.2#k\r\n\r\n#e<»çÀÚ¿Õ ¹İ ·¹¿ÂÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ÇÏµå ¹İ ·¹¿Â 1ÀÎ °İÆÄ\r\n#b  - ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n  - Âø¿ëÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n  - ÃÖÁ¾ µ¥¹ÌÁö 90% °¨¼Ò\r\n\r\n#kµµÀüÇÒ±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå ¹İ ·¹¿ÂÀ» 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.2#k\r\n\r\n#e<ì‚¬ìì™• ë°˜ ë ˆì˜¨ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ í•˜ë“œ ë°˜ ë ˆì˜¨ 1ì¸ ê²©íŒŒ\r\n#b  - ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì™€ ë³´ì¡°ë¬´ê¸°ë§Œ ì¥ì°©\r\n  - ì°©ìš©ì¤‘ì¸ ì¥ë¹„ì˜ ìˆœìˆ˜ ëŠ¥ë ¥ì¹˜ë§Œ ì ìš©\r\n  - ìµœì¢… ë°ë¯¸ì§€ 90% ê°ì†Œ\r\n\r\n#kë„ì „í• ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ë°˜ ë ˆì˜¨ì„ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000019e() {
-        self.say("¹İ ·¹¿ÂÀ» 1ÀÎ °İÆÄÇÏ¿´´Ù. ÇÏÁö¸¸ ¾ÆÁ÷ #bÁ¦³×½Ã½º ¹«±â#k¸¦ ÇØ¹æÇÏ±â¿£ ¾îµÎ¿î Èû¿¡ Àá°ÜÀÖ´Â °Í °°´Ù.", ScriptMessageFlag.Self);
+        self.say("ë°˜ ë ˆì˜¨ì„ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. í•˜ì§€ë§Œ ì•„ì§ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¥¼ í•´ë°©í•˜ê¸°ì—” ì–´ë‘ìš´ í˜ì— ì ê²¨ìˆëŠ” ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void q2000020s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.3#k\r\n\r\n#e<½Ã°£ÀÇ ´ë½Å°ü ¾ÆÄ«ÀÌ·³ÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ³ë¸Ö ¾ÆÄ«ÀÌ·³ 1ÀÎ °İÆÄ\r\n#b  - ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n  - Âø¿ëÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n  - ÃÖÁ¾ µ¥¹ÌÁö 75% °¨¼Ò\r\n\r\n#kµµÀüÇÒ±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("³ë¸Ö ¾ÆÄ«ÀÌ·³À» 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.3#k\r\n\r\n#e<ì‹œê°„ì˜ ëŒ€ì‹ ê´€ ì•„ì¹´ì´ëŸ¼ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ ë…¸ë©€ ì•„ì¹´ì´ëŸ¼ 1ì¸ ê²©íŒŒ\r\n#b  - ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì™€ ë³´ì¡°ë¬´ê¸°ë§Œ ì¥ì°©\r\n  - ì°©ìš©ì¤‘ì¸ ì¥ë¹„ì˜ ìˆœìˆ˜ ëŠ¥ë ¥ì¹˜ë§Œ ì ìš©\r\n  - ìµœì¢… ë°ë¯¸ì§€ 75% ê°ì†Œ\r\n\r\n#kë„ì „í• ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("ë…¸ë©€ ì•„ì¹´ì´ëŸ¼ì„ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000020e() {
-        self.say("¾ÆÄ«ÀÌ·³À» 1ÀÎ °İÆÄÇÏ¿´´Ù. ÇÏÁö¸¸ ¾ÆÁ÷ #bÁ¦³×½Ã½º ¹«±â#k¸¦ ÇØ¹æÇÏ±â¿£ ¾îµÎ¿î Èû¿¡ Àá°ÜÀÖ´Â °Í °°´Ù.", ScriptMessageFlag.Self);
+        self.say("ì•„ì¹´ì´ëŸ¼ì„ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. í•˜ì§€ë§Œ ì•„ì§ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¥¼ í•´ë°©í•˜ê¸°ì—” ì–´ë‘ìš´ í˜ì— ì ê²¨ìˆëŠ” ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void q2000021s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.4#k\r\n\r\n#e<Æø±º ¸Å±×³Ê½ºÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ÇÏµå ¸Å±×³Ê½º 1ÀÎ °İÆÄ\r\n#b  - ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â¿Í º¸Á¶¹«±â¸¸ ÀåÂø\r\n  - Âø¿ëÁßÀÎ ÀåºñÀÇ ¼ø¼ö ´É·ÂÄ¡¸¸ Àû¿ë\r\n  - ÃÖÁ¾ µ¥¹ÌÁö 50% °¨¼Ò\r\n\r\n#b#i4036460##z4036460# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½#k\r\n\r\n#kµµÀüÇÒ±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå ¸Å±×³Ê½º 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.4#k\r\n\r\n#e<í­êµ° ë§¤ê·¸ë„ˆìŠ¤ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ í•˜ë“œ ë§¤ê·¸ë„ˆìŠ¤ 1ì¸ ê²©íŒŒ\r\n#b  - ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì™€ ë³´ì¡°ë¬´ê¸°ë§Œ ì¥ì°©\r\n  - ì°©ìš©ì¤‘ì¸ ì¥ë¹„ì˜ ìˆœìˆ˜ ëŠ¥ë ¥ì¹˜ë§Œ ì ìš©\r\n  - ìµœì¢… ë°ë¯¸ì§€ 50% ê°ì†Œ\r\n\r\n#b#i4036460##z4036460# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ#k\r\n\r\n#kë„ì „í• ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ë§¤ê·¸ë„ˆìŠ¤ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000021e() {
         if (!getPlayer().haveItem(4036460, 1)) {
-            self.say("#b#i4036460# #z4036460# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036460# #z4036460# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036460, -1) > 0) {
-            self.say("¸Å±×³Ê½º¸¦ 1ÀÎ °İÆÄÇÏ¿´´Ù. ÇÏÁö¸¸ ¾ÆÁ÷ #bÁ¦³×½Ã½º ¹«±â#k¸¦ ÇØ¹æÇÏ±â¿£ ¾îµÎ¿î Èû¿¡ Àá°ÜÀÖ´Â °Í °°´Ù.", ScriptMessageFlag.Self);
+            self.say("ë§¤ê·¸ë„ˆìŠ¤ë¥¼ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. í•˜ì§€ë§Œ ì•„ì§ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¥¼ í•´ë°©í•˜ê¸°ì—” ì–´ë‘ìš´ í˜ì— ì ê²¨ìˆëŠ” ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000022s() {
-        String v0 = "#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.5#k\r\n\r\n#e<À® ¸¶½ºÅÍ ½º¿ìÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ½º¿ì 1ÀÎ °İÆÄ\r\n#b  - ÃÖÁ¾ µ¥¹ÌÁö 20% °¨¼Ò\r\n\r\n#b#i4036461##z4036461# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½\r\n\r\nÅ¬¸®¾î ½Ã [ÆÄ±«ÀÇ ¾â´Ù¹Ù¿ÀÆ®] ½ºÅ³ È¹µæ\r\nÁ¦³×½Ã½º ¹«±â Ã¹ ¹øÂ° Èû °³¹æ\r\n\r\n#kµµÀüÇÒ±î?";
+        String v0 = "#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.5#k\r\n\r\n#e<ìœ™ ë§ˆìŠ¤í„° ìŠ¤ìš°ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ ìŠ¤ìš° 1ì¸ ê²©íŒŒ\r\n#b  - ìµœì¢… ë°ë¯¸ì§€ 20% ê°ì†Œ\r\n\r\n#b#i4036461##z4036461# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ\r\n\r\ní´ë¦¬ì–´ ì‹œ [íŒŒê´´ì˜ ì–„ë‹¤ë°”ì˜¤íŠ¸] ìŠ¤í‚¬ íšë“\r\nì œë„¤ì‹œìŠ¤ ë¬´ê¸° ì²« ë²ˆì§¸ í˜ ê°œë°©\r\n\r\n#kë„ì „í• ê¹Œ?";
         if (GameConstants.isZero(getPlayer().getJob())) {
-            v0 = "#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.5#k\r\n\r\n#e<À® ¸¶½ºÅÍ ½º¿ìÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ½º¿ì 1ÀÎ °İÆÄ\r\n#b  - ÃÖÁ¾ µ¥¹ÌÁö 20% °¨¼Ò\r\n\r\n#b#i4036461##z4036461# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½\r\n\r\n#kµµÀüÇÒ±î?";
+            v0 = "#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.5#k\r\n\r\n#e<ìœ™ ë§ˆìŠ¤í„° ìŠ¤ìš°ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ ìŠ¤ìš° 1ì¸ ê²©íŒŒ\r\n#b  - ìµœì¢… ë°ë¯¸ì§€ 20% ê°ì†Œ\r\n\r\n#b#i4036461##z4036461# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ\r\n\r\n#kë„ì „í• ê¹Œ?";
         }
         if (self.askAccept(v0, ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå ½º¿ì 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+            self.say("í•˜ë“œ ìŠ¤ìš° 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000022e() {
         if (!getPlayer().haveItem(4036461, 1)) {
-            self.say("#b#i4036461# #z4036461# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036461# #z4036461# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036461, -1) > 0) {
@@ -84,80 +84,80 @@ public class GenesisQuest extends ScriptEngineNPC {
                 if (result == -1) {
                     return;
                 }
-                self.say("#bÁ¦³×½Ã½º ¹«±â#k¿¡ ÀáÀçµÈ Ã¹ ¹øÂ° ÈûÀÌ ±ú¾î³µ´Ù.\r\n\r\n#r- <ÆÄ±«ÀÇ ¾â´Ù¹Ù¿ÀÆ®> ½ºÅ³ È¹µæ\r\n- ÁÖ¹®¼­/½ºÅ¸Æ÷½º °­È­ ºÒ°¡\r\n- Ãß°¡¿É¼Ç/¼Ò¿ïÀº ¿ÏÀü ÇØ¹æ ½Ã ÃÊ±âÈ­\r\n\r\n#k#i" + result + "# #z" + result + "#", ScriptMessageFlag.Self);
+                self.say("#bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kì— ì ì¬ëœ ì²« ë²ˆì§¸ í˜ì´ ê¹¨ì–´ë‚¬ë‹¤.\r\n\r\n#r- <íŒŒê´´ì˜ ì–„ë‹¤ë°”ì˜¤íŠ¸> ìŠ¤í‚¬ íšë“\r\n- ì£¼ë¬¸ì„œ/ìŠ¤íƒ€í¬ìŠ¤ ê°•í™” ë¶ˆê°€\r\n- ì¶”ê°€ì˜µì…˜/ì†Œìš¸ì€ ì™„ì „ í•´ë°© ì‹œ ì´ˆê¸°í™”\r\n\r\n#k#i" + result + "# #z" + result + "#", ScriptMessageFlag.Self);
             }
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000023s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.6#k\r\n\r\n#e<ÆÄ¸êÀÇ °Ë µ¥¹Ì¾ÈÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ÇÏµå µ¥¹Ì¾È 1ÀÎ °İÆÄ\r\n#b  - µ¥½ºÄ«¿îÆ® 5°³·Î °¨¼Ò\r\n\r\n#b#i4036462##z4036462# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½#k\r\n\r\n#kµµÀüÇØº¼±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå µ¥¹Ì¾È 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.6#k\r\n\r\n#e<íŒŒë©¸ì˜ ê²€ ë°ë¯¸ì•ˆì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ í•˜ë“œ ë°ë¯¸ì•ˆ 1ì¸ ê²©íŒŒ\r\n#b  - ë°ìŠ¤ì¹´ìš´íŠ¸ 5ê°œë¡œ ê°ì†Œ\r\n\r\n#b#i4036462##z4036462# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ#k\r\n\r\n#kë„ì „í•´ë³¼ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ë°ë¯¸ì•ˆ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000023e() {
         if (!getPlayer().haveItem(4036462, 1)) {
-            self.say("#b#i4036462# #z4036462# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036462# #z4036462# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036462, -1) > 0) {
-            self.say("µ¥¹Ì¾ÈÀ» 1ÀÎ °İÆÄÇÏ¿´´Ù. ÇÏÁö¸¸ ¾ÆÁ÷ #bÁ¦³×½Ã½º ¹«±â#k¸¦ ÇØ¹æÇÏ±â¿£ ¾îµÎ¿î Èû¿¡ Àá°ÜÀÖ´Â °Í °°´Ù.", ScriptMessageFlag.Self);
+            self.say("ë°ë¯¸ì•ˆì„ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. í•˜ì§€ë§Œ ì•„ì§ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¥¼ í•´ë°©í•˜ê¸°ì—” ì–´ë‘ìš´ í˜ì— ì ê²¨ìˆëŠ” ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000024s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.7#k\r\n\r\n#e<°Å¹ÌÀÇ ¿Õ ÀªÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ÇÏµå Àª 1ÀÎ °İÆÄ\r\n#b  - È¥ÀÚ¼­ °İÆÄ\r\n\r\n#b#i4036463##z4036463# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½#k\r\n\r\n#kµµÀüÇØº¼±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå Àª 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.7#k\r\n\r\n#e<ê±°ë¯¸ì˜ ì™• ìœŒì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ í•˜ë“œ ìœŒ 1ì¸ ê²©íŒŒ\r\n#b  - í˜¼ìì„œ ê²©íŒŒ\r\n\r\n#b#i4036463##z4036463# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ#k\r\n\r\n#kë„ì „í•´ë³¼ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ìœŒ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000024e() {
         if (!getPlayer().haveItem(4036463, 1)) {
-            self.say("#b#i4036463# #z4036463# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036463# #z4036463# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036463, -1) > 0) {
-            self.say("ÀªÀ» 1ÀÎ °İÆÄÇÏ¿´´Ù. ÇÏÁö¸¸ ¾ÆÁ÷ #bÁ¦³×½Ã½º ¹«±â#k¸¦ ÇØ¹æÇÏ±â¿£ ¾îµÎ¿î Èû¿¡ Àá°ÜÀÖ´Â °Í °°´Ù.", ScriptMessageFlag.Self);
+            self.say("ìœŒì„ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. í•˜ì§€ë§Œ ì•„ì§ #bì œë„¤ì‹œìŠ¤ ë¬´ê¸°#kë¥¼ í•´ë°©í•˜ê¸°ì—” ì–´ë‘ìš´ í˜ì— ì ê²¨ìˆëŠ” ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000025s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.8#k\r\n\r\n#e<¾Ç¸ùÀÇ ÁÖÀÎ ·ç½ÃµåÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î ·ç½Ãµå 1ÀÎ °İÆÄ\r\n#b  - #i2000047# #z2000047# 50°³ Áö±Ş\r\n  - #z2000047#¸¦ Á¦¿ÜÇÑ #e¸ğµç ¼Òºñ ¾ÆÀÌÅÛ »ç¿ë ºÒ°¡#n\r\n\r\n#b#i4036464##z4036464# 1°³#k ÇÊ¿ä\r\n  #b- ÇØ´ç Äù½ºÆ®¸¦ ¼ö¶ô ÈÄ °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½#k\r\n\r\n#kµµÀüÇØº¼±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå ·ç½Ãµå 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.8#k\r\n\r\n#e<ì•…ëª½ì˜ ì£¼ì¸ ë£¨ì‹œë“œì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ ë£¨ì‹œë“œ 1ì¸ ê²©íŒŒ\r\n#b  - #i2000047# #z2000047# 50ê°œ ì§€ê¸‰\r\n  - #z2000047#ë¥¼ ì œì™¸í•œ #eëª¨ë“  ì†Œë¹„ ì•„ì´í…œ ì‚¬ìš© ë¶ˆê°€#n\r\n\r\n#b#i4036464##z4036464# 1ê°œ#k í•„ìš”\r\n  #b- í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ìˆ˜ë½ í›„ ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ#k\r\n\r\n#kë„ì „í•´ë³¼ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ë£¨ì‹œë“œ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000025e() {
         if (!getPlayer().haveItem(4036464, 1)) {
-            self.say("#b#i4036464# #z4036464# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036464# #z4036464# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036464, -1) > 0) {
-            self.say("·ç½Ãµå¸¦ 1ÀÎ °İÆÄÇÏ¿´´Ù. °ğ ¾îµÎ¿î Èû¿¡¼­ ÇØ¹æÇÒ ¼ö ÀÖÀ» °Í °°´Ù.", ScriptMessageFlag.Self);
+            self.say("ë£¨ì‹œë“œë¥¼ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. ê³§ ì–´ë‘ìš´ í˜ì—ì„œ í•´ë°©í•  ìˆ˜ ìˆì„ ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000026s() {
-        if (self.askAccept("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.9#k\r\n\r\n#e<ºÓÀº ¸¶³à Áø Èú¶óÀÇ ÈçÀû>#n\r\n´ÙÀ½ÀÇ Á¶°ÇÀ¸·Î Áø Èú¶ó 1ÀÎ °İÆÄ\r\n#b  - Áø Èú¶óÀÇ HP 25% °¨¼Ò#n\r\n\r\n#b#i4036465##z4036465# 1°³#k ÇÊ¿ä\r\n  #b- °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© ¾òÀ» ¼ö ÀÖÀ½\r\n\r\nÃ¢Á¶ÀÇ ¾ÆÀÌ¿Â ½ºÅ³ È¹µæ °¡´É#k\r\n\r\n#kµµÀüÇØº¼±î?", ScriptMessageFlag.Self) == 1) {
-            self.say("ÇÏµå Áø Èú¶ó 1ÀÎ °İÆÄÇØº¸·¯ °¡º¼±î!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.9#k\r\n\r\n#e<ë¶‰ì€ ë§ˆë…€ ì§„ íë¼ì˜ í”ì >#n\r\në‹¤ìŒì˜ ì¡°ê±´ìœ¼ë¡œ ì§„ íë¼ 1ì¸ ê²©íŒŒ\r\n#b  - ì§„ íë¼ì˜ HP 25% ê°ì†Œ#n\r\n\r\n#b#i4036465##z4036465# 1ê°œ#k í•„ìš”\r\n  #b- ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ ì–»ì„ ìˆ˜ ìˆìŒ\r\n\r\nì°½ì¡°ì˜ ì•„ì´ì˜¨ ìŠ¤í‚¬ íšë“ ê°€ëŠ¥#k\r\n\r\n#kë„ì „í•´ë³¼ê¹Œ?", ScriptMessageFlag.Self) == 1) {
+            self.say("í•˜ë“œ ì§„ íë¼ 1ì¸ ê²©íŒŒí•´ë³´ëŸ¬ ê°€ë³¼ê¹Œ!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000026e() {
         if (!getPlayer().haveItem(4036465, 1)) {
-            self.say("#b#i4036465# #z4036465# 1°³#k°¡ ÇÊ¿äÇÏ´Ù. °ËÀº ¸¶¹ı»ç¸¦ Ã³Ä¡ÇÏ¿© È¹µæÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+            self.say("#b#i4036465# #z4036465# 1ê°œ#kê°€ í•„ìš”í•˜ë‹¤. ê²€ì€ ë§ˆë²•ì‚¬ë¥¼ ì²˜ì¹˜í•˜ì—¬ íšë“í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036465, -1) > 0) {
-            self.say("Áø Èú¶ó¸¦ 1ÀÎ °İÆÄÇÏ¿´´Ù. µåµğ¾î ¾îµÎ¿î Èû¿¡¼­ ¿ÏÀüÈ÷ ÇØ¹æÇÒ ¼ö ÀÖÀ» °Í °°´Ù.\r\n\r\n#e<½ºÅ³ »ç¿ë °¡´É>#n\r\n#b - Ã¢Á¶ÀÇ ¾ÆÀÌ¿Â ½ºÅ³ »ç¿ë °¡´É (Á¦³×½Ã½º ¹«±â ÀåÂøÁßÀÌ¶ó¸é ´Ù½Ã Âø¿ëÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.)", ScriptMessageFlag.Self);
+            self.say("ì§„ íë¼ë¥¼ 1ì¸ ê²©íŒŒí•˜ì˜€ë‹¤. ë“œë””ì–´ ì–´ë‘ìš´ í˜ì—ì„œ ì™„ì „íˆ í•´ë°©í•  ìˆ˜ ìˆì„ ê²ƒ ê°™ë‹¤.\r\n\r\n#e<ìŠ¤í‚¬ ì‚¬ìš© ê°€ëŠ¥>#n\r\n#b - ì°½ì¡°ì˜ ì•„ì´ì˜¨ ìŠ¤í‚¬ ì‚¬ìš© ê°€ëŠ¥ (ì œë„¤ì‹œìŠ¤ ë¬´ê¸° ì¥ì°©ì¤‘ì´ë¼ë©´ ë‹¤ì‹œ ì°©ìš©í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.)", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
@@ -185,19 +185,19 @@ public class GenesisQuest extends ScriptEngineNPC {
         if (weapon.get() == 0) {
             if (GameConstants.isZero(getPlayer().getJob())) {
                 if (target.exchange(4310260, 1) > 0) {
-                    self.say("#b#i4310260# #z4310260##kÀ» È¹µæÇß´Ù. #e¹«±â ¼ºÀå#nÀ» ÅëÇØ 10ÇüÀ¸·Î ¼ºÀåÇÒ ¼ö ÀÖ´Ù.", ScriptMessageFlag.Self);
+                    self.say("#b#i4310260# #z4310260##kì„ íšë“í–ˆë‹¤. #eë¬´ê¸° ì„±ì¥#nì„ í†µí•´ 10í˜•ìœ¼ë¡œ ì„±ì¥í•  ìˆ˜ ìˆë‹¤.", ScriptMessageFlag.Self);
                     getQuest().forceComplete(getPlayer(), getNpc().getId());
                 } else {
-                    self.say("#b±âÅ¸ ÀÎº¥Åä¸®#k ½½·ÔÀ» 1Ä­ È®º¸ÇÏ°í ´Ù½Ã ½ÃµµÇÏÀÚ.", ScriptMessageFlag.Self);
+                    self.say("#bê¸°íƒ€ ì¸ë²¤í† ë¦¬#k ìŠ¬ë¡¯ì„ 1ì¹¸ í™•ë³´í•˜ê³  ë‹¤ì‹œ ì‹œë„í•˜ì.", ScriptMessageFlag.Self);
                 }
                 return;
             }
-            self.say("Á¦³×½Ã½º ¹«±â°¡ ¾øÀ¸¸é ÇØ´ç Äù½ºÆ®¸¦ ÁøÇàÇÒ ¼ö ¾ø´Ù.", ScriptMessageFlag.Self);
+            self.say("ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ê°€ ì—†ìœ¼ë©´ í•´ë‹¹ í€˜ìŠ¤íŠ¸ë¥¼ ì§„í–‰í•  ìˆ˜ ì—†ë‹¤.", ScriptMessageFlag.Self);
             return;
         }
-        if (self.askMenu("#e#r[Áø:òØ]#k#n Á¦³×½Ã½º ¹«±â ÇØ¹æ #bChapter.X#k\r\n\r\n#e<Á¦³×½Ã½º ¹«±â>#n\r\nÁ¦³×½Ã½º ¹«±â°¡ °­·ÂÇÑ ÈûÀ¸·Î °¡µæ Ã¡´Ù.\r\nÁ¦³×½Ã½º ¹«±â¿¡ ÀáÀçµÈ ÈûÀ» ¿ÏÀüÈ÷ ±ú¿ï ¼ö ÀÖÀ» °Í °°Àºµ¥, ÇØ¹æÀ» ½ÃÀÛÇØ º¼±î?\r\n\r\n#r- 15% ÁÖ¹®¼­·Î ¸ğµç °­È­ ¿Ï·á\r\n- ½ºÅ¸Æ÷½º 22¼º\r\n- À¯´ÏÅ© ÀáÀç´É·Â º¸À¯\r\n- ¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·Â º¸À¯\r\n- ÁÖ¹®¼­/½ºÅ¸Æ÷½º °­È­ ºÒ°¡\r\n- Ãß°¡¿É¼Ç/¼Ò¿ïÀº ¿ÏÀü ÇØ¹æ ½Ã ÃÊ±âÈ­\r\n#b#L0##i" + (weapon.get() + 1) + "# #z" + (weapon.get() + 1) +"##l", ScriptMessageFlag.Self) == 0) {
+        if (self.askMenu("#e#r[ì§„:çœ]#k#n ì œë„¤ì‹œìŠ¤ ë¬´ê¸° í•´ë°© #bChapter.X#k\r\n\r\n#e<ì œë„¤ì‹œìŠ¤ ë¬´ê¸°>#n\r\nì œë„¤ì‹œìŠ¤ ë¬´ê¸°ê°€ ê°•ë ¥í•œ í˜ìœ¼ë¡œ ê°€ë“ ì°¼ë‹¤.\r\nì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì— ì ì¬ëœ í˜ì„ ì™„ì „íˆ ê¹¨ìš¸ ìˆ˜ ìˆì„ ê²ƒ ê°™ì€ë°, í•´ë°©ì„ ì‹œì‘í•´ ë³¼ê¹Œ?\r\n\r\n#r- 15% ì£¼ë¬¸ì„œë¡œ ëª¨ë“  ê°•í™” ì™„ë£Œ\r\n- ìŠ¤íƒ€í¬ìŠ¤ 22ì„±\r\n- ìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥ ë³´ìœ \r\n- ì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ ë³´ìœ \r\n- ì£¼ë¬¸ì„œ/ìŠ¤íƒ€í¬ìŠ¤ ê°•í™” ë¶ˆê°€\r\n- ì¶”ê°€ì˜µì…˜/ì†Œìš¸ì€ ì™„ì „ í•´ë°© ì‹œ ì´ˆê¸°í™”\r\n#b#L0##i" + (weapon.get() + 1) + "# #z" + (weapon.get() + 1) +"##l", ScriptMessageFlag.Self) == 0) {
             doGenesisWeaponUpgrade();
-            self.say("ÈûÀÌ ¿ÏÀüÈ÷ ±ú¾î³ª Á¦³×½Ã½º ¹«±â°¡ ´õ °­·ÂÇØÁ³´Ù.\r\n¹«±â¸¦ Âø¿ëÇÏ°í ±× ÈûÀ» ½ÃÇèÇØº¸ÀÚ.", ScriptMessageFlag.Self);
+            self.say("í˜ì´ ì™„ì „íˆ ê¹¨ì–´ë‚˜ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ê°€ ë” ê°•ë ¥í•´ì¡Œë‹¤.\r\në¬´ê¸°ë¥¼ ì°©ìš©í•˜ê³  ê·¸ í˜ì„ ì‹œí—˜í•´ë³´ì.", ScriptMessageFlag.Self);
 
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
@@ -207,12 +207,12 @@ public class GenesisQuest extends ScriptEngineNPC {
     int[] bmWeapons = new int[]{
             1212128, 1213021, 1222121, 1232121, 1242138, 1242140, 1262050, 1272039, 1282039, 1292021, 1302354, 1312212, 1322263, 1332288, 1362148, 1372236, 1382273, 1402267, 1412188, 1422196, 1432226, 1442284, 1452265, 1462251, 1472274, 1482231, 1492244, 1522151, 1532156, 1582043, 1592021, 1562010, 1214021
     };
-    // ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â 1Â÷ ÇØ¹æ
+    // ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸° 1ì°¨ í•´ë°©
     public int doGenesisWeaponFirstUpgrade() {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
 
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNextFreeSlot() < 0) {
-            self.say("Àåºñ Ã¢À» 1Ä­ ÀÌ»ó ºñ¿ìÀÚ.", ScriptMessageFlag.Self);
+            self.say("ì¥ë¹„ ì°½ì„ 1ì¹¸ ì´ìƒ ë¹„ìš°ì.", ScriptMessageFlag.Self);
             return -1;
         }
 
@@ -236,18 +236,18 @@ public class GenesisQuest extends ScriptEngineNPC {
             }
         }
         if (equip == null) {
-            self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß´Ù.", ScriptMessageFlag.Self);
+            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆë‹¤.", ScriptMessageFlag.Self);
             return -1;
         }
         int weaponID = equip.getItemId() + 1;
         Equip genesis = (Equip) ii.getEquipById(weaponID);
 
         if (genesis == null) {
-            self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß´Ù.", ScriptMessageFlag.Self);
+            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆë‹¤.", ScriptMessageFlag.Self);
             return -1;
         }
 
-        // Ãß¿É ºÎ¿©
+        // ì¶”ì˜µ ë¶€ì—¬
         if (BonusStat.resetBonusStat(genesis, BonusStatPlaceType.LevelledRebirthFlame)) {
         }
 
@@ -262,13 +262,13 @@ public class GenesisQuest extends ScriptEngineNPC {
         return genesis.getItemId();
     }
 
-    // ºÀÀÎµÈ Á¦³×½Ã½º ¹«±â ÃÖÁ¾ ÇØ¹æ
+    // ë´‰ì¸ëœ ì œë„¤ì‹œìŠ¤ ë¬´ê¸° ìµœì¢… í•´ë°©
     public void doGenesisWeaponUpgrade() {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
         Equip equip = null;
 
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNextFreeSlot() < 0) {
-            self.say("Àåºñ Ã¢À» 1Ä­ ÀÌ»ó ºñ¿ìÀÚ.", ScriptMessageFlag.Self);
+            self.say("ì¥ë¹„ ì°½ì„ 1ì¹¸ ì´ìƒ ë¹„ìš°ì.", ScriptMessageFlag.Self);
             return;
         }
 
@@ -291,21 +291,21 @@ public class GenesisQuest extends ScriptEngineNPC {
             }
         }
         if (equip == null) {
-            self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.", ScriptMessageFlag.Self);
+            self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
         /*int weaponID = equip.getItemId() + 1;
         Equip genesis = (Equip) ii.getEquipById(weaponID);
 
         if (genesis == null) {
-            sendNext("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+            sendNext("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
             dispose();
             return;
         }*/
         int weaponID = equip.getItemId();
         Equip genesis = (Equip) ii.getEquipById(weaponID);
 
-        if (genesis == null) {self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.", ScriptMessageFlag.Self);
+        if (genesis == null) {self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
 
@@ -338,8 +338,8 @@ public class GenesisQuest extends ScriptEngineNPC {
             }
         }
 
-        // ¿¹¿Ü Ã³¸®
-        if (equip.getItemId() == 1242140) { // Á¦³í DEX, LUK
+        // ì˜ˆì™¸ ì²˜ë¦¬
+        if (equip.getItemId() == 1242140) { // ì œë…¼ DEX, LUK
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
             option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
@@ -347,7 +347,7 @@ public class GenesisQuest extends ScriptEngineNPC {
 
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
-        if (equip.getItemId() == 1232121) { // µ¥º¥Á®
+        if (equip.getItemId() == 1232121) { // ë°ë²¤ì ¸
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
             option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
@@ -355,7 +355,7 @@ public class GenesisQuest extends ScriptEngineNPC {
 
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
-        if (equip.getItemId() == 1292021) { // È£¿µ
+        if (equip.getItemId() == 1292021) { // í˜¸ì˜
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
             option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
@@ -363,7 +363,7 @@ public class GenesisQuest extends ScriptEngineNPC {
 
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
-        if (equip.getItemId() == 1362148) { // ÆÒÅÒ
+        if (equip.getItemId() == 1362148) { // íŒ¬í…€
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
             option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
@@ -371,7 +371,7 @@ public class GenesisQuest extends ScriptEngineNPC {
 
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
-        if (equip.getItemId() == 1362148) { // Ç¥µµ
+        if (equip.getItemId() == 1362148) { // í‘œë„
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
             option.setOption(ItemUpgradeFlag.INC_PAD.getValue(), EquipEnchantMan.getIncATTWeapon(ii.getReqLevel(weaponID), 3));
@@ -379,14 +379,14 @@ public class GenesisQuest extends ScriptEngineNPC {
 
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
-        if (source.size() <= 0) {self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.", ScriptMessageFlag.Self);
+        if (source.size() <= 0) {self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
-        EquipEnchantScroll scroll = source.get(0); // Ã¹¹øÂ°°¡ Á÷¾÷¿¡ ¸Â´Â ÁÖ¹®¼­
-        if (scroll == null) {self.say("¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.", ScriptMessageFlag.Self);
+        EquipEnchantScroll scroll = source.get(0); // ì²«ë²ˆì§¸ê°€ ì§ì—…ì— ë§ëŠ” ì£¼ë¬¸ì„œ
+        if (scroll == null) {self.say("ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Self);
             return;
         }
-        // 8¹ø ¼º°ø½ÃÅ´
+        // 8ë²ˆ ì„±ê³µì‹œí‚´
 
         Equip zeroEquip = null;
         if (GameConstants.isZero(getPlayer().getJob())) {
@@ -396,7 +396,7 @@ public class GenesisQuest extends ScriptEngineNPC {
             scroll.upgrade(genesis, 0, true, zeroEquip);
         }
 
-        // 22¼º ºÎ¿©
+        // 22ì„± ë¶€ì—¬
         genesis.setCHUC(22);
         genesis.setItemState(equip.getItemState() | ItemStateFlag.AMAZING_HYPER_UPGRADE_CHECKED.getValue());
 
@@ -405,23 +405,23 @@ public class GenesisQuest extends ScriptEngineNPC {
             grade = 1;
         }
 
-        // À¯´ÏÅ© ÀáÀç´É·Â 3ÁÙ
-        genesis.setLines((byte) 3); // 3ÁÙ
-        genesis.setState((byte) 19); // À¯´ÏÅ©
+        // ìœ ë‹ˆí¬ ì ì¬ëŠ¥ë ¥ 3ì¤„
+        genesis.setLines((byte) 3); // 3ì¤„
+        genesis.setState((byte) 19); // ìœ ë‹ˆí¬
         for (int i = 0; i < 3; ++i) {
-            int optionGrade = 3; // À¯´ÏÅ©
+            int optionGrade = 3; // ìœ ë‹ˆí¬
             int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(false, i), GradeRandomOption.Black);
             genesis.setPotentialOption(i, option);
         }
 
-        // ¿¡ÇÈ ¿¡µğ¼Å³Î ÀáÀç´É·Â 3ÁÙ
+        // ì—í”½ ì—ë””ì…”ë„ ì ì¬ëŠ¥ë ¥ 3ì¤„
         for (int i = 0; i < 3; ++i) {
-            int optionGrade = 2; // ¿¡ÇÈ
+            int optionGrade = 2; // ì—í”½
             int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(true, i), GradeRandomOption.Additional);
             genesis.setPotentialOption(i + 3, option);
         }
 
-        // Ãß¿É ºÎ¿©
+        // ì¶”ì˜µ ë¶€ì—¬
         if (BonusStat.resetBonusStat(genesis, BonusStatPlaceType.LevelledRebirthFlame)) {
         }
 
@@ -448,6 +448,6 @@ public class GenesisQuest extends ScriptEngineNPC {
         MapleInventoryManipulator.addbyItem(getClient(), genesis);
 
 
-        Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, getPlayer().getName() + "´ÔÀÌ ºÀÀÎµÈ ÈûÀ» ÇØ¹æÇÏ°í °ËÀº ¸¶¹ı»çÀÇ ÈûÀÌ ´ã±ä Á¦³×½Ã½º ¹«±âÀÇ ÁÖÀÎÀÌ µÇ¾ú½À´Ï´Ù."));
+        Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, getPlayer().getName() + "ë‹˜ì´ ë´‰ì¸ëœ í˜ì„ í•´ë°©í•˜ê³  ê²€ì€ ë§ˆë²•ì‚¬ì˜ í˜ì´ ë‹´ê¸´ ì œë„¤ì‹œìŠ¤ ë¬´ê¸°ì˜ ì£¼ì¸ì´ ë˜ì—ˆìŠµë‹ˆë‹¤."));
     }
 }

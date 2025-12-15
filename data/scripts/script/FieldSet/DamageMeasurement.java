@@ -21,7 +21,7 @@ public class DamageMeasurement extends ScriptEngineNPC {
 
     public void Npc_9062025() {
         if (getPlayer().getMapId() != 993026900) {
-            self.sayOk("Á¶±İ¸¸ ´õ ÈûÀ» ³»¼¼¿ä!!");
+            self.sayOk("ì¡°ê¸ˆë§Œ ë” í˜ì„ ë‚´ì„¸ìš”!!");
             return;
         }
         int v = 0;
@@ -29,49 +29,49 @@ public class DamageMeasurement extends ScriptEngineNPC {
             return;
         }*/
         if (DBConfig.isGanglim) {
-            v = self.askMenu("#fs11#ÀüÅõ·Â ÃøÁ¤À» ´ã´çÇÏ°í ÀÖ´Â #bMr.º¸Ã¼#k ÀÔ´Ï´Ù.\r\n#b#h ##k ´ÔÀÇ ÃÖ°í ÀüÅõ·ÂÀº : #r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k ÀÔ´Ï´Ù.\r\nÀüÅõ·ÂÀº ¿øÇÏ½Ã´Â ¸Ş´º¸¦ ¼±ÅÃÇØº¸½Ã°Ú¾î¿ä?\r\n#L0#ÀüÅõ·Â ÃøÁ¤ ¼³¸íÀ» µè´Â´Ù.\r\n#L2#ÀüÅõ·Â ÃøÁ¤ º¸»ó ¼³¸íÀ» µè´Â´Ù.\r\n\r\n#r#L1#ÀüÅõ·ÂÀ» ÃøÁ¤ÇÒ°Ô¿ä.");
+            v = self.askMenu("#fs11#ì „íˆ¬ë ¥ ì¸¡ì •ì„ ë‹´ë‹¹í•˜ê³  ìˆëŠ” #bMr.ë³´ì²´#k ì…ë‹ˆë‹¤.\r\n#b#h ##k ë‹˜ì˜ ìµœê³  ì „íˆ¬ë ¥ì€ : #r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k ì…ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ì€ ì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•´ë³´ì‹œê² ì–´ìš”?\r\n#L0#ì „íˆ¬ë ¥ ì¸¡ì • ì„¤ëª…ì„ ë“£ëŠ”ë‹¤.\r\n#L2#ì „íˆ¬ë ¥ ì¸¡ì • ë³´ìƒ ì„¤ëª…ì„ ë“£ëŠ”ë‹¤.\r\n\r\n#r#L1#ì „íˆ¬ë ¥ì„ ì¸¡ì •í• ê²Œìš”.");
         } else {
-            v = self.askMenu("ÀüÅõ·Â ÃøÁ¤À» ´ã´çÇÏ°í ÀÖ´Â #bMr.º¸Ã¼#k ÀÔ´Ï´Ù.\r\n#b#h ##k ´ÔÀÇ ÃÖ°í ÀüÅõ·ÂÀº : #fs11##r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k#fs12# ÀÔ´Ï´Ù.\r\nÀüÅõ·ÂÀº ¿øÇÏ½Ã´Â ¸Ş´º¸¦ ¼±ÅÃÇØº¸½Ã°Ú¾î¿ä?\r\n#L0#ÀüÅõ·Â ÃøÁ¤ ¼³¸íÀ» µè´Â´Ù.\r\n#r#L1#ÀüÅõ·ÂÀ» ÃøÁ¤ÇÒ°Ô¿ä.");
+            v = self.askMenu("ì „íˆ¬ë ¥ ì¸¡ì •ì„ ë‹´ë‹¹í•˜ê³  ìˆëŠ” #bMr.ë³´ì²´#k ì…ë‹ˆë‹¤.\r\n#b#h ##k ë‹˜ì˜ ìµœê³  ì „íˆ¬ë ¥ì€ : #fs11##r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k#fs12# ì…ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ì€ ì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•´ë³´ì‹œê² ì–´ìš”?\r\n#L0#ì „íˆ¬ë ¥ ì¸¡ì • ì„¤ëª…ì„ ë“£ëŠ”ë‹¤.\r\n#r#L1#ì „íˆ¬ë ¥ì„ ì¸¡ì •í• ê²Œìš”.");
         }
         switch (v) {
             case 0: {
                 if (DBConfig.isGanglim) {
-                    self.sayOk("#fs11#ÀüÅõ·Â ÃøÁ¤Àº 2ºĞ°£ ÁøÇàµÇ¸ç ÃÖ°í µ¥¹ÌÁö¸¦ ´Ş¼ºÇÏ¸é ÀÚµ¿À¸·Î ·©Å·¿¡ ¹İ¿µµË´Ï´Ù.\r\nÀüÅõ·Â ÃøÁ¤À» µµ¿ÍÁÙ Çã¼ö¾Æºñ´Â º¸½º ¸ó½ºÅÍ·Î Ãë±ŞµÇ¾î º¸½º Ãß°¡ µ¥¹ÌÁö ¿É¼Çµµ Àû¿ëµË´Ï´Ù.\r\nÀüÅõ·Â ·©Å·Àº ÆíÀÇ½Ã½ºÅÛ ¡æ À¯Àú·©Å·¿¡¼­ È®ÀÎÇØÁÖ¼¼¿ä.");
+                    self.sayOk("#fs11#ì „íˆ¬ë ¥ ì¸¡ì •ì€ 2ë¶„ê°„ ì§„í–‰ë˜ë©° ìµœê³  ë°ë¯¸ì§€ë¥¼ ë‹¬ì„±í•˜ë©´ ìë™ìœ¼ë¡œ ë­í‚¹ì— ë°˜ì˜ë©ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ ì¸¡ì •ì„ ë„ì™€ì¤„ í—ˆìˆ˜ì•„ë¹„ëŠ” ë³´ìŠ¤ ëª¬ìŠ¤í„°ë¡œ ì·¨ê¸‰ë˜ì–´ ë³´ìŠ¤ ì¶”ê°€ ë°ë¯¸ì§€ ì˜µì…˜ë„ ì ìš©ë©ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ ë­í‚¹ì€ í¸ì˜ì‹œìŠ¤í…œ â†’ ìœ ì €ë­í‚¹ì—ì„œ í™•ì¸í•´ì£¼ì„¸ìš”.");
                 } else {
-                    self.sayOk("ÀüÅõ·Â ÃøÁ¤Àº 1ºĞ°£ ÁøÇàµÇ¸ç ÃÖ°í µ¥¹ÌÁö¸¦ ´Ş¼ºÇÏ¸é ÀÚµ¿À¸·Î ·©Å·¿¡ ¹İ¿µµË´Ï´Ù.\r\nÀüÅõ·Â ÃøÁ¤À» µµ¿ÍÁÙ Çã¼ö¾Æºñ´Â º¸½º ¸ó½ºÅÍ·Î Ãë±ŞµÇ¾î º¸½º Ãß°¡ µ¥¹ÌÁö ¿É¼Çµµ Àû¿ëµË´Ï´Ù.\r\nÀüÅõ·Â ·©Å·Àº ÆíÀÇ½Ã½ºÅÛ ¡æ À¯Àú·©Å·¿¡¼­ È®ÀÎÇØÁÖ¼¼¿ä.");
+                    self.sayOk("ì „íˆ¬ë ¥ ì¸¡ì •ì€ 1ë¶„ê°„ ì§„í–‰ë˜ë©° ìµœê³  ë°ë¯¸ì§€ë¥¼ ë‹¬ì„±í•˜ë©´ ìë™ìœ¼ë¡œ ë­í‚¹ì— ë°˜ì˜ë©ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ ì¸¡ì •ì„ ë„ì™€ì¤„ í—ˆìˆ˜ì•„ë¹„ëŠ” ë³´ìŠ¤ ëª¬ìŠ¤í„°ë¡œ ì·¨ê¸‰ë˜ì–´ ë³´ìŠ¤ ì¶”ê°€ ë°ë¯¸ì§€ ì˜µì…˜ë„ ì ìš©ë©ë‹ˆë‹¤.\r\nì „íˆ¬ë ¥ ë­í‚¹ì€ í¸ì˜ì‹œìŠ¤í…œ â†’ ìœ ì €ë­í‚¹ì—ì„œ í™•ì¸í•´ì£¼ì„¸ìš”.");
                 }
                 break;
             }
             case 1: {
                 Date date = new Date();
                 if ((date.getDay() == 0 && date.getHours() == 23 && date.getMinutes() >= 50) || (date.getDay() == 1 && date.getHours() == 0 && date.getMinutes() <= 10)) {
-                    self.sayOk("ÀÏ¿äÀÏ 23½Ã 50ºĞ ~ ¿ù¿äÀÏ 00½Ã 10ºĞ±îÁö´Â ·©Å· Áı°è½Ã°£ÀÌ¹Ç·Î µµÀüÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.sayOk("ì¼ìš”ì¼ 23ì‹œ 50ë¶„ ~ ì›”ìš”ì¼ 00ì‹œ 10ë¶„ê¹Œì§€ëŠ” ë­í‚¹ ì§‘ê³„ì‹œê°„ì´ë¯€ë¡œ ë„ì „í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
                 if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                    self.sayOk("ÀÌ¹Ì ´©±º°¡°¡ µµÀüÁßÀÔ´Ï´Ù.\r\n#b´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØ ÁÖ¼¼¿ä.#k");
+                    self.sayOk("ì´ë¯¸ ëˆ„êµ°ê°€ê°€ ë„ì „ì¤‘ì…ë‹ˆë‹¤.\r\n#bë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ ì£¼ì„¸ìš”.#k");
                     return;
                 }
 
                 int vv = 0;
                 if (DBConfig.isGanglim) {
-                    vv = self.askMenu("#fs11#ÀüÅõ·ÂÀ» ÃøÁ¤ÇÒ Çã¼ö¾Æºñ À§Ä¡¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#e#r¡Ø Áö³­ÁÖ ÃøÁ¤±â·ÏÀÌ ÀÖÀ» ½Ã ÀÌ¹øÁÖ´Â ·©Å·¿¡ ±â·ÏµÇÁö ¾Ê½À´Ï´Ù. Ãß°¡·Î °èÁ¤ ³» ´Ù¸¥ Ä³¸¯ÅÍÀÇ ±â·ÏÀº »èÁ¦µË´Ï´Ù.#b#n\r\n#b #L0#ÁÂÃø#l\r\n #L1#Áß¾Ó#l\r\n #L2#¿ìÃø#l");
+                    vv = self.askMenu("#fs11#ì „íˆ¬ë ¥ì„ ì¸¡ì •í•  í—ˆìˆ˜ì•„ë¹„ ìœ„ì¹˜ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#e#râ€» ì§€ë‚œì£¼ ì¸¡ì •ê¸°ë¡ì´ ìˆì„ ì‹œ ì´ë²ˆì£¼ëŠ” ë­í‚¹ì— ê¸°ë¡ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ì¶”ê°€ë¡œ ê³„ì • ë‚´ ë‹¤ë¥¸ ìºë¦­í„°ì˜ ê¸°ë¡ì€ ì‚­ì œë©ë‹ˆë‹¤.#b#n\r\n#b #L0#ì¢Œì¸¡#l\r\n #L1#ì¤‘ì•™#l\r\n #L2#ìš°ì¸¡#l");
                 } else {
-                    vv = self.askMenu("ÀüÅõ·ÂÀ» ÃøÁ¤ÇÒ Çã¼ö¾Æºñ À§Ä¡¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#e#r¡Ø Áö³­ÁÖ ÃøÁ¤±â·ÏÀÌ ÀÖÀ» ½Ã ÀÌ¹øÁÖ´Â ·©Å·¿¡ ±â·ÏµÇÁö ¾Ê½À´Ï´Ù. Ãß°¡·Î °èÁ¤ ³» ´Ù¸¥ Ä³¸¯ÅÍÀÇ ±â·ÏÀº »èÁ¦µË´Ï´Ù.#b#n\r\n#b #L0#ÁÂÃø#l\r\n #L1#Áß¾Ó#l\r\n #L2#¿ìÃø#l");
+                    vv = self.askMenu("ì „íˆ¬ë ¥ì„ ì¸¡ì •í•  í—ˆìˆ˜ì•„ë¹„ ìœ„ì¹˜ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#e#râ€» ì§€ë‚œì£¼ ì¸¡ì •ê¸°ë¡ì´ ìˆì„ ì‹œ ì´ë²ˆì£¼ëŠ” ë­í‚¹ì— ê¸°ë¡ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ì¶”ê°€ë¡œ ê³„ì • ë‚´ ë‹¤ë¥¸ ìºë¦­í„°ì˜ ê¸°ë¡ì€ ì‚­ì œë©ë‹ˆë‹¤.#b#n\r\n#b #L0#ì¢Œì¸¡#l\r\n #L1#ì¤‘ì•™#l\r\n #L2#ìš°ì¸¡#l");
                 }
                 if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                    self.sayOk("ÀÌ¹Ì ´©±º°¡°¡ µµÀüÁßÀÔ´Ï´Ù.\r\n#b´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØ ÁÖ¼¼¿ä.#k");
+                    self.sayOk("ì´ë¯¸ ëˆ„êµ°ê°€ê°€ ë„ì „ì¤‘ì…ë‹ˆë‹¤.\r\n#bë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ ì£¼ì„¸ìš”.#k");
                     return;
                 }
-                if (1 == self.askYesNo("#fs11#ÀüÅõ·Â ÃøÁ¤À» °øÁ¤ÇÏ°Ô ÁøÇàÇÏ±â À§ÇØ\r\n\r\n#fs16#ÀÔÀå ½Ã #r#e¸ğµç ¹öÇÁ°¡ ÇØÁ¦#n#kµË´Ï´Ù.#n#fs11#\r\n\r\nÁøÇàÇÏ½Ã°Ú½À´Ï±î?")) {
+                if (1 == self.askYesNo("#fs11#ì „íˆ¬ë ¥ ì¸¡ì •ì„ ê³µì •í•˜ê²Œ ì§„í–‰í•˜ê¸° ìœ„í•´\r\n\r\n#fs16#ì…ì¥ ì‹œ #r#eëª¨ë“  ë²„í”„ê°€ í•´ì œ#n#kë©ë‹ˆë‹¤.#n#fs11#\r\n\r\nì§„í–‰í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                     Field_DamageMeasurement map = (Field_DamageMeasurement) getClient().getChannelServer().getMapFactory().getMap(993026800);
                     map.spawnPoint = vv;
                     if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                        self.sayOk("ÀÌ¹Ì ´©±º°¡°¡ µµÀüÁßÀÔ´Ï´Ù.\r\n#b´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØ ÁÖ¼¼¿ä.#k");
+                        self.sayOk("ì´ë¯¸ ëˆ„êµ°ê°€ê°€ ë„ì „ì¤‘ì…ë‹ˆë‹¤.\r\n#bë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ ì£¼ì„¸ìš”.#k");
                         return;
                     } else {
                         int duration = 0;
-                        if(getPlayer().getCooldownLimit(80002282) != 0L){ // ºÀÀÎµÈ ·éÀÇ Èû ÇØÁ¦ ¾Ç¿ë ¹æÁö
+                        if(getPlayer().getCooldownLimit(80002282) != 0L){ // ë´‰ì¸ëœ ë£¬ì˜ í˜ í•´ì œ ì•…ìš© ë°©ì§€
                             duration = (int) getPlayer().getRemainCooltime(80002282);
                         }
                         getPlayer().cancelAllBuffs();
@@ -85,7 +85,7 @@ public class DamageMeasurement extends ScriptEngineNPC {
             }
             case 2: {
                 if (DBConfig.isGanglim) {
-                    self.sayOk("#fs11#¸ÅÁÖ ¿ù¿äÀÏ ÀÚÁ¤¿¡ ·©Å·ÀÌ ÃÊ±âÈ­µÇ¸ç ÃÊ±âÈ­ÀÌÀüÀÇ ·©Å· ±âÁØÀ¸·Î º¸»óÀÌ Áö±ŞµË´Ï´Ù\r\n\r\n#r·©Å· 1~3À§#k : ¿Ã½ºÅÈ 1000, °ø°İ·Â/¸¶·Â 500\r\n#r·©Å· »óÀ§ 30%#k : ¿Ã½ºÅÈ 500, °ø°İ·Â/¸¶·Â 200\r\n#r·©Å· »óÀ§ 70%#k : ¿Ã½ºÅÈ 300, °ø°İ·Â/¸¶·Â 100\r\n#r±× ¿Ü#k : ¿Ã½ºÅÈ 150, °ø°İ·Â/¸¶·Â 50");
+                    self.sayOk("#fs11#ë§¤ì£¼ ì›”ìš”ì¼ ìì •ì— ë­í‚¹ì´ ì´ˆê¸°í™”ë˜ë©° ì´ˆê¸°í™”ì´ì „ì˜ ë­í‚¹ ê¸°ì¤€ìœ¼ë¡œ ë³´ìƒì´ ì§€ê¸‰ë©ë‹ˆë‹¤\r\n\r\n#rë­í‚¹ 1~3ìœ„#k : ì˜¬ìŠ¤íƒ¯ 1000, ê³µê²©ë ¥/ë§ˆë ¥ 500\r\n#rë­í‚¹ ìƒìœ„ 30%#k : ì˜¬ìŠ¤íƒ¯ 500, ê³µê²©ë ¥/ë§ˆë ¥ 200\r\n#rë­í‚¹ ìƒìœ„ 70%#k : ì˜¬ìŠ¤íƒ¯ 300, ê³µê²©ë ¥/ë§ˆë ¥ 100\r\n#rê·¸ ì™¸#k : ì˜¬ìŠ¤íƒ¯ 150, ê³µê²©ë ¥/ë§ˆë ¥ 50");
                 }
                 break;
             }
@@ -94,14 +94,14 @@ public class DamageMeasurement extends ScriptEngineNPC {
 
     public void DamageRanking() {
         initNPC(MapleLifeFactory.getNPC(9076004));
-        String menu = "¿øÇÏ½Ã´Â ¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n#b#L0#¸ğµç ·©Å·º¸±â#l\r\n";
-        menu += "#L1#º¸»ó ·©Å·º¸±â#l";
+        String menu = "ì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n#b#L0#ëª¨ë“  ë­í‚¹ë³´ê¸°#l\r\n";
+        menu += "#L1#ë³´ìƒ ë­í‚¹ë³´ê¸°#l";
         int v = self.askMenu(menu);
         switch (v) {
-            case 0: //¸ğµç·©Å·º¸±â
+            case 0: //ëª¨ë“ ë­í‚¹ë³´ê¸°
                 self.sayOk(DamageMeasurementRank.getRanks(50));
                 break;
-            case 1: //º¸»ó·©Å·º¸±â
+            case 1: //ë³´ìƒë­í‚¹ë³´ê¸°
                 self.sayOk(DamageMeasurementRank.getRewardRanks(50));
                 break;
         }
@@ -128,32 +128,32 @@ public class DamageMeasurement extends ScriptEngineNPC {
         }
         int remainCount = 5 - getPlayer().getOneInfoQuestInteger(100936, "count");
 
-        int menu = self.askMenu(String.format("¹«¸ª ±í¼÷ÇÑ °÷¿£ ¿ì¸® ¼±ÀÎµé¸¸ÀÇ ºñ¹Ğ ¼ö·ÃÀåÀÌ ÀÖÁö.\r\n\r\n (¿À´Ã ³²Àº ÀÔÀå È½¼ö : #r#e%dÈ¸#k#n)\r\n#b#L0# ¾È°³ ½£ ¼ö·ÃÀå¿¡ ÀÔÀåÇÏ°í ½Í¾î.#l\r\n#L1# ¾È°³ ½£ ¼ö·ÃÀå¿¡ ´ëÇØ ¾Ë°í ½Í¾î.#l\r\n", remainCount));
+        int menu = self.askMenu(String.format("ë¬´ë¦‰ ê¹Šìˆ™í•œ ê³³ì—” ìš°ë¦¬ ì„ ì¸ë“¤ë§Œì˜ ë¹„ë°€ ìˆ˜ë ¨ì¥ì´ ìˆì§€.\r\n\r\n (ì˜¤ëŠ˜ ë‚¨ì€ ì…ì¥ íšŸìˆ˜ : #r#e%díšŒ#k#n)\r\n#b#L0# ì•ˆê°œ ìˆ² ìˆ˜ë ¨ì¥ì— ì…ì¥í•˜ê³  ì‹¶ì–´.#l\r\n#L1# ì•ˆê°œ ìˆ² ìˆ˜ë ¨ì¥ì— ëŒ€í•´ ì•Œê³  ì‹¶ì–´.#l\r\n", remainCount));
         switch (menu) {
-            case 0: { //ÀÔÀå
+            case 0: { //ì…ì¥
                 MulungForestEnter fieldSet = (MulungForestEnter) fieldSet("MulungForestEnter");
                 if (fieldSet == null) {
-                    self.sayOk("Áö±İÀº ¾È°³½£ ¼ö·ÃÀåÀ» ÀÌ¿ëÇÒ ¼ö ¾ø¾î!");
+                    self.sayOk("ì§€ê¸ˆì€ ì•ˆê°œìˆ² ìˆ˜ë ¨ì¥ì„ ì´ìš©í•  ìˆ˜ ì—†ì–´!");
                     return;
                 }
                 int enter = fieldSet.enter(target.getId(), 0);
-                if (enter == -1) self.say("ÀÏÀÏ µµÀüÈ½¼ö°¡ ºÎÁ·ÇÑ ÆÄÆ¼¿øÀÌ Á¸ÀçÇÕ´Ï´Ù.");
-                else if (enter == 1) self.say("ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ µµÀüÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-                else if (enter == 2) self.say("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.");
-                else if (enter == 3) self.say( "ÃÖ¼Ò " + fieldSet.minMember + "ÀÎ ÀÌ»óÀÇ ÆÄÆ¼°¡ Äù½ºÆ®¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-                else if (enter == 4) self.say( "ÆÄÆ¼¿øÀÇ ·¹º§Àº ÃÖ¼Ò " + fieldSet.minLv + " ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù.");
-                else if (enter == 5) self.say("ÆÄÆ¼¿øÀÌ ¸ğµÎ ¸ğ¿© ÀÖ¾î¾ß ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-                else if (enter == 6) self.say( "ÀÌ¹Ì ´Ù¸¥ ÆÄÆ¼°¡ ¾ÈÀ¸·Î µé¾î°¡ Äù½ºÆ® Å¬¸®¾î¿¡ µµÀüÇÏ°í ÀÖ´Â ÁßÀÔ´Ï´Ù.");
+                if (enter == -1) self.say("ì¼ì¼ ë„ì „íšŸìˆ˜ê°€ ë¶€ì¡±í•œ íŒŒí‹°ì›ì´ ì¡´ì¬í•©ë‹ˆë‹¤.");
+                else if (enter == 1) self.say("íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ë„ì „í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+                else if (enter == 2) self.say("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.");
+                else if (enter == 3) self.say( "ìµœì†Œ " + fieldSet.minMember + "ì¸ ì´ìƒì˜ íŒŒí‹°ê°€ í€˜ìŠ¤íŠ¸ë¥¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+                else if (enter == 4) self.say( "íŒŒí‹°ì›ì˜ ë ˆë²¨ì€ ìµœì†Œ " + fieldSet.minLv + " ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
+                else if (enter == 5) self.say("íŒŒí‹°ì›ì´ ëª¨ë‘ ëª¨ì—¬ ìˆì–´ì•¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+                else if (enter == 6) self.say( "ì´ë¯¸ ë‹¤ë¥¸ íŒŒí‹°ê°€ ì•ˆìœ¼ë¡œ ë“¤ì–´ê°€ í€˜ìŠ¤íŠ¸ í´ë¦¬ì–´ì— ë„ì „í•˜ê³  ìˆëŠ” ì¤‘ì…ë‹ˆë‹¤.");
 
                 break;
             }
-            case 1: { //¼³¸íµè±â
-                self.say("\r\n#b#e<¾È°³ ½£ ¼ö·ÃÀå>#n#kÀº ÀÚ½ÅÀÇ ÇÑ°è¸¦ ³Ñ¾î¼­°í ½ÍÀº \r\n#b¼±ÀÎµé¸¸ÀÇ ºñ¹Ğ ¼ö·ÃÀå#kÀÌÁö.\r\n\r\n ¿ì¸® ¼±ÀÎµé¸¸ ¾²´Â ºñ¹Ğ °ø°£ÀÎµ¥ #r#eÆ¯º°È÷#k#n °ø°³ÇÒ Å×´Ï \r\n°¨»çÇÏ¶ó°í.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e<¾È°³ ½£ ¼ö·ÃÀå>#n#k¿¡¼­´Â ¿øÇÏ´Â ÀüÅõ »óÈ²À» ¸¸µé ¼ö ÀÖ¾î.\r\n Ã¼·Â, ¹æ¾îÀ² µîÀÇ #b´É·ÂÄ¡¸¦ Á¶Àı#kÇØ¼­ #b¼±ÀÎ ¹ÙÀ§ ¸ó½ºÅÍ#k¸¦ \r\n¼ÒÈ¯ÇÒ ¼ö ÀÖ¾î.\r\n\r\n ÇÊµåÀÇ #bÆ÷½º Á¾·ù¸¦ º¯°æ#kÇÏ°í #bÆ÷½º ¼öÄ¡#k¸¦ ¿øÇÏ´Â ´ë·Î \r\n¹Ù²Ü ¼öµµ ÀÖÁö.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n´Ü, ¸ó½ºÅÍ ¼³Á¤°ú ÇÊµå ¼³Á¤ ±ÇÇÑÀº #r#eÆÄÆ¼Àå¿¡°Ô¸¸#k#n ÀÖ¾î.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n ¸ğµç ÆÄÆ¼¿øµéÀÌ ¿øÇÒ ¶§¸¶´Ù #bHP¿Í MP¸¦ ¸ğµÎ ÃÖ´ëÄ¡·Î \r\n1È¸ È¸º¹#kÇÒ ¼öµµ ÀÖ¾î.\r\n\r\n #b#e¾È°³ ½£ ¼ö·ÃÀåÀÌ´Ï±î#n#k °¡´ÉÇÑ °Å¶ó°í?", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n´Ü, Æ¯º°ÇÑ °ø°£ÀÎ ¸¸Å­ ¾Æ¹«³ª µé¿©º¸³¾ ¼ö´Â ¾øÁö.\r\n#r#e200 ·¹º§#k#n°ú #r#e¹«¸ª 30Ãş#k#n¿¡ µµ´ŞÇØ¾ß ÀÔÀåÇÒ ¼ö ÀÖ¾î.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n¼ö·ÃÀå¿¡´Â #r#eÆÄÆ¼ »óÅÂ·Î¸¸#k#n ÀÔÀåÀÌ °¡´ÉÇØ.\r\n±×¸®°í #r#e60ºĞ¸¸#k#n ÀÌ¿ëÇÒ ¼ö ÀÖÀ¸´Ï±î ÀÌ Á¡ À¯ÀÇÇÏµµ·Ï.", ScriptMessageFlag.NpcReplacedByNpc);
+            case 1: { //ì„¤ëª…ë“£ê¸°
+                self.say("\r\n#b#e<ì•ˆê°œ ìˆ² ìˆ˜ë ¨ì¥>#n#kì€ ìì‹ ì˜ í•œê³„ë¥¼ ë„˜ì–´ì„œê³  ì‹¶ì€ \r\n#bì„ ì¸ë“¤ë§Œì˜ ë¹„ë°€ ìˆ˜ë ¨ì¥#kì´ì§€.\r\n\r\n ìš°ë¦¬ ì„ ì¸ë“¤ë§Œ ì“°ëŠ” ë¹„ë°€ ê³µê°„ì¸ë° #r#eíŠ¹ë³„íˆ#k#n ê³µê°œí•  í…Œë‹ˆ \r\nê°ì‚¬í•˜ë¼ê³ .", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n#b#e<ì•ˆê°œ ìˆ² ìˆ˜ë ¨ì¥>#n#kì—ì„œëŠ” ì›í•˜ëŠ” ì „íˆ¬ ìƒí™©ì„ ë§Œë“¤ ìˆ˜ ìˆì–´.\r\n ì²´ë ¥, ë°©ì–´ìœ¨ ë“±ì˜ #bëŠ¥ë ¥ì¹˜ë¥¼ ì¡°ì ˆ#kí•´ì„œ #bì„ ì¸ ë°”ìœ„ ëª¬ìŠ¤í„°#kë¥¼ \r\nì†Œí™˜í•  ìˆ˜ ìˆì–´.\r\n\r\n í•„ë“œì˜ #bí¬ìŠ¤ ì¢…ë¥˜ë¥¼ ë³€ê²½#kí•˜ê³  #bí¬ìŠ¤ ìˆ˜ì¹˜#kë¥¼ ì›í•˜ëŠ” ëŒ€ë¡œ \r\në°”ê¿€ ìˆ˜ë„ ìˆì§€.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\në‹¨, ëª¬ìŠ¤í„° ì„¤ì •ê³¼ í•„ë“œ ì„¤ì • ê¶Œí•œì€ #r#eíŒŒí‹°ì¥ì—ê²Œë§Œ#k#n ìˆì–´.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\n ëª¨ë“  íŒŒí‹°ì›ë“¤ì´ ì›í•  ë•Œë§ˆë‹¤ #bHPì™€ MPë¥¼ ëª¨ë‘ ìµœëŒ€ì¹˜ë¡œ \r\n1íšŒ íšŒë³µ#kí•  ìˆ˜ë„ ìˆì–´.\r\n\r\n #b#eì•ˆê°œ ìˆ² ìˆ˜ë ¨ì¥ì´ë‹ˆê¹Œ#n#k ê°€ëŠ¥í•œ ê±°ë¼ê³ ?", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\në‹¨, íŠ¹ë³„í•œ ê³µê°„ì¸ ë§Œí¼ ì•„ë¬´ë‚˜ ë“¤ì—¬ë³´ë‚¼ ìˆ˜ëŠ” ì—†ì§€.\r\n#r#e200 ë ˆë²¨#k#nê³¼ #r#eë¬´ë¦‰ 30ì¸µ#k#nì— ë„ë‹¬í•´ì•¼ ì…ì¥í•  ìˆ˜ ìˆì–´.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\nìˆ˜ë ¨ì¥ì—ëŠ” #r#eíŒŒí‹° ìƒíƒœë¡œë§Œ#k#n ì…ì¥ì´ ê°€ëŠ¥í•´.\r\nê·¸ë¦¬ê³  #r#e60ë¶„ë§Œ#k#n ì´ìš©í•  ìˆ˜ ìˆìœ¼ë‹ˆê¹Œ ì´ ì  ìœ ì˜í•˜ë„ë¡.", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
         }
@@ -161,7 +161,7 @@ public class DamageMeasurement extends ScriptEngineNPC {
 
     public void Training_exit() {
         initNPC(MapleLifeFactory.getNPC(2091011));
-        if (self.askYesNo("¼ö·ÃÀ» ±×¸¸µÎ°í ³ª°¥²¨¾ß?") == 1) {
+        if (self.askYesNo("ìˆ˜ë ¨ì„ ê·¸ë§Œë‘ê³  ë‚˜ê°ˆêº¼ì•¼?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
             }

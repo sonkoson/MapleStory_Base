@@ -10,90 +10,108 @@ import scripting.ScriptMessageFlag;
 import scripting.newscripting.ScriptEngineNPC;
 
 public class Kalos extends ScriptEngineNPC {
-	public void kalos_enterGate() {
-		/*
-		if (!(getPlayer().getClient().isGm() || getPlayer().isGM())) {
-			target.say("Áö±İÀº ÀÔÀåÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
-			return;
-		}
-		*/
-		String Message = "[3ÀÎÀÔÀå°¡´É] °¨½ÃÀÚ Ä®·Î½º¿ÍÀÇ ÀüÅõ¸¦ À§ÇØ ÀÌµ¿ÇÒ±î? (#r·¹º§ 500ÀÌ»ó#k ÀÔÀå °¡´É)\r\n\r\n";
-		Message += "#L1#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÄ«¿À½º#k> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù. #g[" + getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-		Message += "#L5#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÄ«¿À½º ¿¬½À ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-		/*  380 ÀÌÈÄ¿¡ »ç¿ëÇÒ ÀÔÀå½ºÅ©¸³Æ®
-		Message += "#L0#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÀÌÁö#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù. #g[" + getPlayer().getOneInfoQuestInteger(1234570, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-        Message += "#L1#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#b³ë¸Ö#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù. #g[" + getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-        Message += "#L2#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÄ«¿À½º#k> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù. #g[" + getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-        Message += "#L3#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÀÍ½ºÆ®¸²#k> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù. #g[" + getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-        Message += "#L4#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÀÌÁö ¿¬½À ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-        Message += "#L5#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#b³ë¸Ö ¿¬½À ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-        Message += "#L6#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÄ«¿À½º ¿¬½À ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-        Message += "#L7#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#bÀÍ½ºÆ®¸² ¿¬½À ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-        */
-        //Message += "#L8#<º¸½º: °¨½ÃÀÚ Ä®·Î½º(#rÇï ¸ğµå#k)> ÀÔÀåÀ» ½ÅÃ»ÇÑ´Ù.#l#k\r\n";
-        Message += "#L9#ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù.#l";
+    public void kalos_enterGate() {
+        /*
+         * if (!(getPlayer().getClient().isGm() || getPlayer().isGM())) {
+         * target.say("ì§€ê¸ˆì€ ì…ì¥ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+         * return;
+         * }
+         */
+        String Message = "[à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸ªà¸¹à¸‡à¸ªà¸¸à¸” 3 à¸„à¸™] à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¹€à¸”à¸´à¸™à¸—à¸²à¸‡à¹„à¸›à¸•à¹ˆà¸­à¸ªà¸¹à¹‰à¸à¸±à¸š Kalos the Guardian à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ? (#rà¹€à¸¥à¹€à¸§à¸¥ 500 à¸‚à¸¶à¹‰à¸™à¹„à¸›#k à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰)\r\n\r\n";
+        Message += "#L1#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ <Boss: Kalos the Guardian (#bChaos#k)> #g["
+                + getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" + (getPlayer().getBossTier() + 1)
+                + "]#k#l\r\n";
+        Message += "#L5#à¹€à¸‚à¹‰à¸²à¸ªà¸¹à¹ˆ <Boss: Kalos the Guardian (#bChaos Practice Mode#k)>#l#k\r\n";
+        /*
+         * 380 ì´í›„ì— ì‚¬ìš©í•  ì…ì¥ìŠ¤í¬ë¦½íŠ¸
+         * Message += "#L0#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bì´ì§€#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤. #g[" +
+         * getPlayer().getOneInfoQuestInteger(1234570, "kalos_clear") + "/" +
+         * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+         * Message += "#L1#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bë…¸ë©€#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤. #g[" +
+         * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
+         * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+         * Message += "#L2#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bì¹´ì˜¤ìŠ¤#k> ì…ì¥ì„ ì‹ ì²­í•œë‹¤. #g[" +
+         * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
+         * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+         * Message += "#L3#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bìµìŠ¤íŠ¸ë¦¼#k> ì…ì¥ì„ ì‹ ì²­í•œë‹¤. #g[" +
+         * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
+         * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+         * Message += "#L4#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bì´ì§€ ì—°ìŠµ ëª¨ë“œ#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l#k\r\n";
+         * Message += "#L5#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bë…¸ë©€ ì—°ìŠµ ëª¨ë“œ#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l#k\r\n";
+         * Message += "#L6#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bì¹´ì˜¤ìŠ¤ ì—°ìŠµ ëª¨ë“œ#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l#k\r\n";
+         * Message += "#L7#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#bìµìŠ¤íŠ¸ë¦¼ ì—°ìŠµ ëª¨ë“œ#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l#k\r\n";
+         */
+        // Message += "#L8#<ë³´ìŠ¤: ê°ì‹œì ì¹¼ë¡œìŠ¤(#rí—¬ ëª¨ë“œ#k)> ì…ì¥ì„ ì‹ ì²­í•œë‹¤.#l#k\r\n";
+        Message += "#L9#à¸¢à¸à¹€à¸¥à¸´à¸#l";
         int Menu = target.askMenu(Message, ScriptMessageFlag.BigScenario);
         if (Menu < 0 || Menu >= 9) {
-        	return;
+            return;
         }
         if (target.getParty() == null) {
-        	int partyReq = target.askYesNo("ÆÄÆ¼°¡ ÀÖ¾î¾ß ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù. ÆÄÆ¼¸¦ »ı¼ºÇÏ½Ã°Ú½À´Ï±î?");
-        	if (partyReq != 1) {
-        		return;
-        	}
-        	else {
-        		getPlayer().createParty();
-        	}
+            int partyReq = target.askYesNo("à¸•à¹‰à¸­à¸‡à¸¡à¸µà¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸ˆà¸¶à¸‡à¸ˆà¸°à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰ à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¸ªà¸£à¹‰à¸²à¸‡à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ?");
+            if (partyReq != 1) {
+                return;
+            } else {
+                getPlayer().createParty();
+            }
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("à¸à¸£à¸¸à¸“à¸²à¹ƒà¸«à¹‰à¸«à¸±à¸§à¸«à¸™à¹‰à¸²à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¹€à¸›à¹‡à¸™à¸œà¸¹à¹‰à¸”à¸³à¹€à¸™à¸´à¸™à¸à¸²à¸£", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("ÆÄÆ¼¿øÀÌ ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("à¸ªà¸¡à¸²à¸Šà¸´à¸à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸¸à¸à¸„à¸™à¸•à¹‰à¸­à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹à¸œà¸™à¸—à¸µà¹ˆà¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (target.getParty().getPartyMemberList().size() > 3) {
-            self.sayOk("ÃÖ´ë 3ÀÎ±îÁö °°Àº ÆÄÆ¼·Î ÀÔÀå °¡´ÉÇÕ´Ï´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸‚à¹‰à¸²à¹„à¸”à¹‰à¸ªà¸¹à¸‡à¸ªà¸¸à¸” 3 à¸„à¸™à¸•à¹ˆà¸­à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰", ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
-        
-        //ÇöÀç´Â Ä«¿À½ºÀÓ. 380¶§ Ä«¿À½º -> ³ë¸»·Î ¹Ù²ñ
+
+        // í˜„ì¬ëŠ” ì¹´ì˜¤ìŠ¤ì„. 380ë•Œ ì¹´ì˜¤ìŠ¤ -> ë…¸ë§ë¡œ ë°”ë€œ
         if (Menu == 1 || Menu == 5) {
-        	NormalKalosEnter fieldSet = (NormalKalosEnter) fieldSet("NormalKalosEnter");
+            NormalKalosEnter fieldSet = (NormalKalosEnter) fieldSet("NormalKalosEnter");
             int enter = fieldSet.enter(target.getId(), Menu == 5, 7);
             if (enter == 6) {
-                self.sayOk("ÀÌ¿ë °¡´ÉÇÑ ÀÎ½ºÅÏ½º°¡ ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayOk("à¹„à¸¡à¹ˆà¸¡à¸µ Instance à¸§à¹ˆà¸²à¸‡ à¸à¸£à¸¸à¸“à¸²à¸¥à¸­à¸‡à¹ƒà¸«à¸¡à¹ˆà¹ƒà¸™à¹à¸Šà¸™à¹à¸™à¸¥à¸­à¸·à¹ˆà¸™", ScriptMessageFlag.Scenario,
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 return;
             }
             if (enter == -5) {
-                self.sayOk("º¸½º Æ¼¾î°¡ ºÎÁ·ÇÑ ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayOk("à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¡à¸µà¸£à¸°à¸”à¸±à¸š Boss Tier à¹„à¸¡à¹ˆà¸–à¸¶à¸‡à¹€à¸à¸“à¸‘à¹Œ", ScriptMessageFlag.Scenario,
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 return;
             }
             if (enter == -3) {
-            	self.sayOk("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» Ä®·Î½º¸¦ ¾²·¯¶ß¸° ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. Ä®·Î½º´Â ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù\r\n#r<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­µË´Ï´Ù.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-            	/*
-                if (DBConfig.isGanglim) {
-                    self.sayOk("±İÀÏ ÀÔÀå È½¼ö¸¦ ¸ğµÎ ¼Ò¸ğÇÑ ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-                } else {
-                    self.sayOk("ÃÖ±Ù ÀÏÁÖÀÏ ÀÌ³» Ä®·Î½º¸¦ ¾²·¯¶ß¸° ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. Ä®·Î½º´Â ÀÏÁÖÀÏ¿¡ 1È¸¸¸ Å¬¸®¾î °¡´ÉÇÕ´Ï´Ù\r\n#r<Å¬¸®¾î ±â·ÏÀº ¸ÅÁÖ ¸ñ¿äÀÏ¿¡ ÀÏ°ı ÃÊ±âÈ­µË´Ï´Ù.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-                }
-                */
+                self.sayOk(
+                        "à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸à¸³à¸ˆà¸±à¸” Kalos à¹„à¸›à¹à¸¥à¹‰à¸§à¹ƒà¸™à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸™à¸µà¹‰ Kalos à¸ªà¸²à¸¡à¸²à¸£à¸–à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¹„à¸”à¹‰à¸ªà¸±à¸›à¸”à¸²à¸«à¹Œà¸¥à¸° 1 à¸„à¸£à¸±à¹‰à¸‡\r\n#r<à¸›à¸£à¸°à¸§à¸±à¸•à¸´à¸à¸²à¸£à¹€à¸„à¸¥à¸µà¸¢à¸£à¹Œà¸ˆà¸°à¸£à¸µà¹€à¸‹à¹‡à¸•à¸—à¸¸à¸à¸§à¸±à¸™à¸à¸¤à¸«à¸±à¸ªà¸šà¸”à¸µ>",
+                        ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                /*
+                 * if (DBConfig.isGanglim) {
+                 * self.sayOk("ê¸ˆì¼ ì…ì¥ íšŸìˆ˜ë¥¼ ëª¨ë‘ ì†Œëª¨í•œ íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Scenario,
+                 * ScriptMessageFlag.NpcReplacedByNpc);
+                 * } else {
+                 * self.
+                 * sayOk("ìµœê·¼ ì¼ì£¼ì¼ ì´ë‚´ ì¹¼ë¡œìŠ¤ë¥¼ ì“°ëŸ¬ëœ¨ë¦° íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. ì¹¼ë¡œìŠ¤ëŠ” ì¼ì£¼ì¼ì— 1íšŒë§Œ í´ë¦¬ì–´ ê°€ëŠ¥í•©ë‹ˆë‹¤\r\n#r<í´ë¦¬ì–´ ê¸°ë¡ì€ ë§¤ì£¼ ëª©ìš”ì¼ì— ì¼ê´„ ì´ˆê¸°í™”ë©ë‹ˆë‹¤.>"
+                 * , ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                 * }
+                 */
                 return;
             }
             if ((enter == -1 || enter == 4)) {
-                self.sayOk("ÀÔÀå Á¦ÇÑÈ½¼ö°¡ ºÎÁ·ÇÏ°Å³ª ·¹º§ Á¦ÇÑÀÌ ¸ÂÁö ¾Ê´Â ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayOk("à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¡à¸µà¸ˆà¸³à¸™à¸§à¸™à¸„à¸£à¸±à¹‰à¸‡à¸à¸²à¸£à¹€à¸‚à¹‰à¸²à¹„à¸¡à¹ˆà¹€à¸à¸µà¸¢à¸‡à¸à¸­à¸«à¸£à¸·à¸­à¹€à¸¥à¹€à¸§à¸¥à¹„à¸¡à¹ˆà¸–à¸¶à¸‡à¹€à¸à¸“à¸‘à¹Œ",
+                        ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                 return;
             }
             if (enter == -2) {
-                self.sayOk("ÀÔÀå Á¦ÇÑ½Ã°£ÀÌ ³²Àº ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayOk("à¸¡à¸µà¸ªà¸¡à¸²à¸Šà¸´à¸à¹ƒà¸™à¸›à¸²à¸£à¹Œà¸•à¸µà¹‰à¸—à¸µà¹ˆà¸¢à¸±à¸‡à¸•à¸´à¸”à¹€à¸§à¸¥à¸²à¸£à¸­à¹€à¸‚à¹‰à¸²à¸”à¸±à¸™à¹€à¸ˆà¸µà¹‰à¸¢à¸™", ScriptMessageFlag.Scenario,
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 return;
             }
-            //break;
+            // break;
         }
-	}
+    }
 
-    
     public void kalos_direction1() {
         setIngameDirectionMode(false, false, false);
         blind(1, 255, 0, 0, 0, 0, 0);
@@ -105,19 +123,19 @@ public class Kalos extends ScriptEngineNPC {
         environmentChange(31, "intro", 100);
         getOnOffFade(100, "BlackOPut", 0);
     }
-    
+
     public void kalos_direction1_easy() {
-    	kalos_direction1();
+        kalos_direction1();
     }
-    
+
     public void kalos_direction1_chaos() {
-    	kalos_direction1();
+        kalos_direction1();
     }
-    
+
     public void kalos_direction1_ex() {
-    	kalos_direction1();
+        kalos_direction1();
     }
-    
+
     public void kalos_direction2() {
         setIngameDirectionMode(false, false, false);
         blind(1, 255, 0, 0, 0, 0, 0);
@@ -129,39 +147,37 @@ public class Kalos extends ScriptEngineNPC {
         environmentChange(31, "intro", 100);
         getOnOffFade(100, "BlackOPut", 0);
     }
-    
-    public void kalos_direction2_easy() {
-    	kalos_direction2();
-    }
-    
-    public void kalos_direction2_chaos() {
-    	kalos_direction2();
-    }
-    
-    public void kalos_direction2_ex() {
-    	kalos_direction2();
-    }
-    
-    
-    /*
-    public void ptKalosOut() {
-    	if (getPlayer().getMap() instanceof Field_BossKalos) {
-    		Field_BossKalos kalosmap = (Field_BossKalos) getPlayer().getMap();
-    		if (kalosmap.findBoss() != null) {
-    			getPlayer().dropMessage(5, "ÀüÅõ°¡ ÁøÇàÁß¿¡´Â Æ÷Å»À» Å¬¸¯ÇÏ¿© ÅğÀå °¡´ÉÇÕ´Ï´Ù.");
-    			return;
-    		}
-    	}
-    	kalosOut();
-    }
-    
-    public void kalosOut() {
-    	initNPC(MapleLifeFactory.getNPC(9091028));
-    	if (1 == target.askYesNo("ÀüÅõ¸¦ Áß´ÜÇÏ°í ÅğÀåÇÏ½Ã°Ú½À´Ï±î?")) {
-    		getPlayer().warp(410005005);    		
-    	}
-    }
-    */
 
+    public void kalos_direction2_easy() {
+        kalos_direction2();
+    }
+
+    public void kalos_direction2_chaos() {
+        kalos_direction2();
+    }
+
+    public void kalos_direction2_ex() {
+        kalos_direction2();
+    }
+
+    /*
+     * public void ptKalosOut() {
+     * if (getPlayer().getMap() instanceof Field_BossKalos) {
+     * Field_BossKalos kalosmap = (Field_BossKalos) getPlayer().getMap();
+     * if (kalosmap.findBoss() != null) {
+     * getPlayer().dropMessage(5, "ì „íˆ¬ê°€ ì§„í–‰ì¤‘ì—ëŠ” í¬íƒˆì„ í´ë¦­í•˜ì—¬ í‡´ì¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+     * return;
+     * }
+     * }
+     * kalosOut();
+     * }
+     * 
+     * public void kalosOut() {
+     * initNPC(MapleLifeFactory.getNPC(9091028));
+     * if (1 == target.askYesNo("ì „íˆ¬ë¥¼ ì¤‘ë‹¨í•˜ê³  í‡´ì¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
+     * getPlayer().warp(410005005);
+     * }
+     * }
+     */
 
 }

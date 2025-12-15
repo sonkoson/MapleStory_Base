@@ -10,86 +10,86 @@ public class Phantom extends ScriptEngineNPC {
     public void phantomskill() {
         if (getPlayer().getLevel() >= 100) {
             //getClient().removeClickedNPC();
-            //NPCScriptManager.getInstance().start(getClient(), 1052206, "º¸½ºÀÌµ¿", true);
+            //NPCScriptManager.getInstance().start(getClient(), 1052206, "ë³´ìŠ¤ì´ë™", true);
             //return;
-            self.sayOk("#fs11#ÇöÀç´Â »ç¿ëÇÒ ¼ö ¾ø´Â ¸í·É¾î¾ß");
+            self.sayOk("#fs11#í˜„ì¬ëŠ” ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ëª…ë ¹ì–´ì•¼");
             return;
         }
 
         if (!GameConstants.isPhantom(getPlayer().getJob())) {
-            self.sayOk("#fs11#³Ê´Â ÆÒÅÒÀÌ ¾Æ´Ï¶ó¼­ »ç¿ëÇÒ ¼ö ¾ø´Â ±â´ÉÀÌ¾ß");
+            self.sayOk("#fs11#ë„ˆëŠ” íŒ¬í…€ì´ ì•„ë‹ˆë¼ì„œ ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ê¸°ëŠ¥ì´ì•¼");
             return;
         }
-        String steal = "#fs11##e[1Â÷ ½ºÅ³]#n\r\n";
+        String steal = "#fs11##e[1ì°¨ ìŠ¤í‚¬]#n\r\n";
         if (getPlayer().getLevel() >= 10) {
-            //1Â÷¸¸
-            steal += "#L1# #s4001003# ´ÙÅ©»çÀÌÆ®#l\r\n";
-            steal += "#L2# #s3011004# Ä«µğ³Î µğ½ºÂ÷Áö#l\r\n";
-            steal += "#L3# #s2001002# ¸ÅÁ÷ °¡µå#l\r\n";
+            //1ì°¨ë§Œ
+            steal += "#L1# #s4001003# ë‹¤í¬ì‚¬ì´íŠ¸#l\r\n";
+            steal += "#L2# #s3011004# ì¹´ë””ë„ ë””ìŠ¤ì°¨ì§€#l\r\n";
+            steal += "#L3# #s2001002# ë§¤ì§ ê°€ë“œ#l\r\n";
         }
         if (getPlayer().getLevel() >= 30) {
 
-            steal += "\r\n\r\n#e[2Â÷ ½ºÅ³]#n\r\n";
-            steal += "#L4# #s3301003# Ä«µğ³Î ºí·¡½ºÆ®#l\r\n";
-            steal += "#L5# #s2301002# Èú#l\r\n";
-            steal += "#L6# #s1101006# ½ºÇÇ¸´ ºí·¹ÀÌµå#l\r\n";
-            //2Â÷±îÁö
+            steal += "\r\n\r\n#e[2ì°¨ ìŠ¤í‚¬]#n\r\n";
+            steal += "#L4# #s3301003# ì¹´ë””ë„ ë¸”ë˜ìŠ¤íŠ¸#l\r\n";
+            steal += "#L5# #s2301002# í#l\r\n";
+            steal += "#L6# #s1101006# ìŠ¤í”¼ë¦¿ ë¸”ë ˆì´ë“œ#l\r\n";
+            //2ì°¨ê¹Œì§€
         }
         if (getPlayer().getLevel() >= 60) {
-            steal += "\r\n\r\n#e[3Â÷ ½ºÅ³]#n\r\n";
-            steal += "#L8# #s3111013# ¾Ö·Î¿ì ÇÃ·¡ÅÍ#l\r\n";
-            steal += "#L9# #s1311015# Å©·Î½º ¿À¹ö Ã¼ÀÎ#l\r\n";
-            steal += "#L10# #s4331011# ºí·¹ÀÌµå ¾î¼¾¼Ç#l\r\n";
-            steal += "#L11# #s4331006# »ç½½Áö¿Á#l\r\n";
-            steal += "#L12# #s2311009# È¦¸® ¸ÅÁ÷½©#l\r\n";
-            steal += "#L13# #s2311003# È¦¸® ½Éº¼#l\r\n";
-            steal += "#L14# #s2311011# È¦¸® ÆÄ¿îÆ¾#l\r\n";
-            //3Â÷±îÁö
+            steal += "\r\n\r\n#e[3ì°¨ ìŠ¤í‚¬]#n\r\n";
+            steal += "#L8# #s3111013# ì• ë¡œìš° í”Œë˜í„°#l\r\n";
+            steal += "#L9# #s1311015# í¬ë¡œìŠ¤ ì˜¤ë²„ ì²´ì¸#l\r\n";
+            steal += "#L10# #s4331011# ë¸”ë ˆì´ë“œ ì–´ì„¼ì…˜#l\r\n";
+            steal += "#L11# #s4331006# ì‚¬ìŠ¬ì§€ì˜¥#l\r\n";
+            steal += "#L12# #s2311009# í™€ë¦¬ ë§¤ì§ì‰˜#l\r\n";
+            steal += "#L13# #s2311003# í™€ë¦¬ ì‹¬ë³¼#l\r\n";
+            steal += "#L14# #s2311011# í™€ë¦¬ íŒŒìš´í‹´#l\r\n";
+            //3ì°¨ê¹Œì§€
         }
         if (getPlayer().getLevel() >= 100){
-            //4Â÷±îÁö
-            steal += "\r\n\r\n#e[4Â÷ ½ºÅ³]#n\r\n";
-            steal += "#L15# #s4341002# ÆÄÀÌ³Î ÄÆ#l\r\n";
-            steal += "#L16# #s1221011# »ıÃò¾î¸®#l\r\n";
-            steal += "#L17# #s2221012# ÇÁ·ÎÁğ ¿Àºê#l\r\n";
-            steal += "#L18# #s2221011# ÇÁ¸®Â¡ ºê·¹½º#l\r\n";
-            steal += "#L19# #s5321000# Ä³³í ¹ÙÁÖÄ«#l\r\n";
-            steal += "#L20# #s5121010# Å¸ÀÓ ¸®ÇÁ#l\r\n";
+            //4ì°¨ê¹Œì§€
+            steal += "\r\n\r\n#e[4ì°¨ ìŠ¤í‚¬]#n\r\n";
+            steal += "#L15# #s4341002# íŒŒì´ë„ ì»·#l\r\n";
+            steal += "#L16# #s1221011# ìƒì¸„ì–´ë¦¬#l\r\n";
+            steal += "#L17# #s2221012# í”„ë¡œì¦Œ ì˜¤ë¸Œ#l\r\n";
+            steal += "#L18# #s2221011# í”„ë¦¬ì§• ë¸Œë ˆìŠ¤#l\r\n";
+            steal += "#L19# #s5321000# ìºë…¼ ë°”ì£¼ì¹´#l\r\n";
+            steal += "#L20# #s5121010# íƒ€ì„ ë¦¬í”„#l\r\n";
         }
 
         if (getPlayer().getLevel() >= 140){
-            steal += "\r\n#e[ÇÏÀÌÆÛ ½ºÅ³]#n\r\n";
-            steal += "#L21# #s3221054# ºÒ½º¾ÆÀÌ#l\r\n";
-            steal += "#L22# #s1221054# »õÅ©·Î»ıÆ¼Æ¼#l\r\n";
-            steal += "#L23# #s3121054# ÇÁ¸®ÆÛ·¹ÀÌ¼Ç#l\r\n";
+            steal += "\r\n#e[í•˜ì´í¼ ìŠ¤í‚¬]#n\r\n";
+            steal += "#L21# #s3221054# ë¶ˆìŠ¤ì•„ì´#l\r\n";
+            steal += "#L22# #s1221054# ìƒˆí¬ë¡œìƒí‹°í‹°#l\r\n";
+            steal += "#L23# #s3121054# í”„ë¦¬í¼ë ˆì´ì…˜#l\r\n";
         }
         int v = self.askMenu(steal);
-        if (getPlayer().getJob() == 2400) { //ÆÒÅÒ1Â÷
+        if (getPlayer().getJob() == 2400) { //íŒ¬í…€1ì°¨
             if (v > 3) {
-                self.sayOk("#fs11#Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                self.sayOk("#fs11#ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2410) { //ÆÒÅÒ2Â÷
+        } else if (getPlayer().getJob() == 2410) { //íŒ¬í…€2ì°¨
             if (v > 7) {
-                self.sayOk("#fs11#Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                self.sayOk("#fs11#ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2411) { //ÆÒÅÒ3Â÷
+        } else if (getPlayer().getJob() == 2411) { //íŒ¬í…€3ì°¨
             if (v > 14) {
-                self.sayOk("#fs11#Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                self.sayOk("#fs11#ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2412) { //ÆÒÅÒ4Â÷
+        } else if (getPlayer().getJob() == 2412) { //íŒ¬í…€4ì°¨
             if (getPlayer().getLevel() < 140) {
                 if (v > 21) {
-                    self.sayOk("#fs11#Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                    self.sayOk("#fs11#ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                     return;
                 }
             }
         }
         int skillId = 0;
         switch (v) {
-            case 1: //´ÙÅ©»çÀÌÆ®
+            case 1: //ë‹¤í¬ì‚¬ì´íŠ¸
                 skillId = 4001003;
                 break;
             case 2:
@@ -158,10 +158,10 @@ public class Phantom extends ScriptEngineNPC {
         }
         int maxLevel = SkillFactory.getSkill(skillId).getMaxLevel();
         if (maxLevel < 1) {
-            self.sayOk("#fs11#¿äÃ»ÇÏ´Âµ¿¾È ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.");
+            self.sayOk("#fs11#ìš”ì²­í•˜ëŠ”ë™ì•ˆ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
             return;
         }
         getPlayer().addStolenSkill(skillId, maxLevel);
-        //self.sayOk("¼º°øÇß½À´Ï´Ù. ½ºÅ³ ¸Å´ÏÀú¸ÕÆ®¸¦ È®ÀÎÇØº¸¼¼¿ä.");
+        //self.sayOk("ì„±ê³µí–ˆìŠµë‹ˆë‹¤. ìŠ¤í‚¬ ë§¤ë‹ˆì €ë¨¼íŠ¸ë¥¼ í™•ì¸í•´ë³´ì„¸ìš”.");
     }
 }

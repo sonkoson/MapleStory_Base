@@ -40,12 +40,12 @@ public class Util extends ScriptEngineNPC {
 
     public void searchHairAndFace() {
         initNPC(MapleLifeFactory.getNPC(9000172));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/1#\r\n#e<°Ë»ö ÄÚµğ>#n\r\n#b#h0##k ´Ô, #r°Ë»ö#kÀ» ÅëÇØ Çì¾î¿Í ¼ºÇüÀ» ¹Ù²ãº¸¼¼¿ä.\r\n#b#L0#Çì¾î °Ë»ö#l\r\n#L1#¼ºÇü °Ë»ö#l");
+        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/1#\r\n#e<ê²€ìƒ‰ ì½”ë””>#n\r\n#b#h0##k ë‹˜, #rê²€ìƒ‰#kì„ í†µí•´ í—¤ì–´ì™€ ì„±í˜•ì„ ë°”ê¿”ë³´ì„¸ìš”.\r\n#b#L0#í—¤ì–´ ê²€ìƒ‰#l\r\n#L1#ì„±í˜• ê²€ìƒ‰#l");
         String v = "";
         if (vv == 0) {
-            v = self.askText("¿øÇÏ½Ã´Â Çì¾îÀÇ ÀÌ¸§ ÀÏºÎ¸¦ °Ë»öÇØÁÖ¼¼¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
+            v = self.askText("ì›í•˜ì‹œëŠ” í—¤ì–´ì˜ ì´ë¦„ ì¼ë¶€ë¥¼ ê²€ìƒ‰í•´ì£¼ì„¸ìš”.", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            v = self.askText("¿øÇÏ½Ã´Â ¼ºÇüÀÇ ÀÌ¸§ ÀÏºÎ¸¦ °Ë»öÇØÁÖ¼¼¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
+            v = self.askText("ì›í•˜ì‹œëŠ” ì„±í˜•ì˜ ì´ë¦„ ì¼ë¶€ë¥¼ ê²€ìƒ‰í•´ì£¼ì„¸ìš”.", ScriptMessageFlag.NpcReplacedByNpc);
         }
         if (v.equals("")) {
             return;
@@ -53,7 +53,7 @@ public class Util extends ScriptEngineNPC {
         List<Integer> items = new ArrayList<>();
         MapleItemInformationProvider mii = MapleItemInformationProvider.getInstance();
         switch (vv) {
-            case 0: { //Çì¾î°Ë»ö
+            case 0: { //í—¤ì–´ê²€ìƒ‰
 
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
@@ -72,7 +72,7 @@ public class Util extends ScriptEngineNPC {
                 break;
             }
 
-            case 1: { //¼ºÇü°Ë»ö
+            case 1: { //ì„±í˜•ê²€ìƒ‰
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
                     int itemid = item.getLeft();
@@ -90,9 +90,9 @@ public class Util extends ScriptEngineNPC {
             }
         }
         if (items.size() > 60) {
-            self.sayOk("Ã£À¸½Ã·Á´Â °Ë»ö¾î¿¡ µ¥ÀÌÅÍ·®ÀÌ ³Ê¹« ¸¹¾Æ Ç¥½ÃÇÏÁö ¸øÇß½À´Ï´Ù. Á» ´õ Á¤È®ÇÑ °Ë»öÀ» ÇØÁÖ¼¼¿ä.\r\n[¿¹ : (¶ó¸®¿¤ Çì¾î) ¶ó¸®x ¶ó¸®¿¤o]");
+            self.sayOk("ì°¾ìœ¼ì‹œë ¤ëŠ” ê²€ìƒ‰ì–´ì— ë°ì´í„°ëŸ‰ì´ ë„ˆë¬´ ë§ì•„ í‘œì‹œí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. ì¢€ ë” ì •í™•í•œ ê²€ìƒ‰ì„ í•´ì£¼ì„¸ìš”.\r\n[ì˜ˆ : (ë¼ë¦¬ì—˜ í—¤ì–´) ë¼ë¦¬x ë¼ë¦¬ì—˜o]");
         } else if (items.size() > 0) {
-            String list = "¾Æ·¡´Â °Ë»ö °á°úÀÔ´Ï´Ù. ¿øÇÏ½Ã´Â ÄÚµğ°¡ ÀÖ´Ù¸é ¼±ÅÃÇØÁÖ¼¼¿ä.#b\r\n";
+            String list = "ì•„ë˜ëŠ” ê²€ìƒ‰ ê²°ê³¼ì…ë‹ˆë‹¤. ì›í•˜ì‹œëŠ” ì½”ë””ê°€ ìˆë‹¤ë©´ ì„ íƒí•´ì£¼ì„¸ìš”.#b\r\n";
             /*for (int i = 0; i < items.size(); i++) {
                 list += "#L" + i + "#" + "#z" + items.get(i) + "#\r\n";
             }*/
@@ -109,18 +109,18 @@ public class Util extends ScriptEngineNPC {
             if (vvv > -1) {
                 int az = 0;
                 if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
-                    if (1 == self.askYesNo("µå·¹½º¾÷ ¸ğµå·Î Àû¿ë ÇÏ½Ã°Ú½À´Ï±î?")) {
+                    if (1 == self.askYesNo("ë“œë ˆìŠ¤ì—… ëª¨ë“œë¡œ ì ìš© í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                         az = 1;
                     }
                 }
                 if (GameConstants.isZero(getPlayer().getJob())) {
-                    if (1 == self.askYesNo("º£Å¸¿¡ Àû¿ëÇÏ½Ã°Ú½À´Ï±î? (#r#e¾Æ´Ï¿À#n#k¸¦ ´©¸¦ °æ¿ì ¾ËÆÄ¿¡ Àû¿ëµË´Ï´Ù.)")) {
+                    if (1 == self.askYesNo("ë² íƒ€ì— ì ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (#r#eì•„ë‹ˆì˜¤#n#kë¥¼ ëˆ„ë¥¼ ê²½ìš° ì•ŒíŒŒì— ì ìš©ë©ë‹ˆë‹¤.)")) {
                         az = 1;
                     }
                 }
-                String v0 = "Á¤¸» #r#z" + items.get(vvv) + "##k·Î º¯°æÇÏ½Ã°Ú½À´Ï±î?\r\n#e";
+                String v0 = "ì •ë§ #r#z" + items.get(vvv) + "##kë¡œ ë³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#e";
                 if (vv == 0) {
-                    v0 += "\r\n¾Õ ¸ğ½À -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\nµŞ ¸ğ½À -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
+                    v0 += "\r\nì• ëª¨ìŠµ -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\në’· ëª¨ìŠµ -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
                 } else {
                     v0 += "\r\n#fCharacter/Face/000" + items.get(vvv) + ".img/default/face#";
                 }
@@ -138,7 +138,7 @@ public class Util extends ScriptEngineNPC {
                             getPlayer().updateSingleStat(MapleStat.FACE, items.get(vvv));
                         }
                     } else {
-                        // ¹Í¿° ÃÊ±âÈ­
+                        // ë¯¹ì—¼ ì´ˆê¸°í™”
                         getPlayer().setBaseColor(-1);
                         getPlayer().setAddColor(0);
                         getPlayer().setBaseProb(0);
@@ -156,7 +156,7 @@ public class Util extends ScriptEngineNPC {
                     getPlayer().equipChanged();
                 }
             } else {
-                self.sayOk("°Ë»ö°á°ú°¡ ¾ø½À´Ï´Ù.");
+                self.sayOk("ê²€ìƒ‰ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
             }
         }
     }
@@ -165,117 +165,117 @@ public class Util extends ScriptEngineNPC {
         long time = (ContentsManager.SpeedLadderGame.getCurrentGameStartTime() + 300000) - System.currentTimeMillis();
         long minute = TimeUnit.MILLISECONDS.toMinutes(time);
         long second = TimeUnit.MILLISECONDS.toSeconds(time % 60000);
-        String recordToString = minute + "ºĞ " + second + "ÃÊ";
+        String recordToString = minute + "ë¶„ " + second + "ì´ˆ";
         int selection = -1;
 
         if (true) {
-            self.say("#h0#´Ô ¹İ°©½À´Ï´Ù.\r\nÀú´Â " + ServerConstants.serverName + "¼­¹öÀÇ »ç´Ù¸®¸¦ ´ã´çÇÏ°íÀÖ´Â ÄÄÇ»ÅÍÀÔ´Ï´Ù.\r\n\r\nÇöÀç´Â ÇØ´ç ±â´ÉÀ» ÀÌ¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            self.say("#h0#ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.\r\nì €ëŠ” " + ServerConstants.serverName + "ì„œë²„ì˜ ì‚¬ë‹¤ë¦¬ë¥¼ ë‹´ë‹¹í•˜ê³ ìˆëŠ” ì»´í“¨í„°ì…ë‹ˆë‹¤.\r\n\r\ní˜„ì¬ëŠ” í•´ë‹¹ ê¸°ëŠ¥ì„ ì´ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (!canGame()) {
-            String text = "#h0#´Ô ¹İ°©½À´Ï´Ù.\r\nÀú´Â " + ServerConstants.serverName + "¼­¹öÀÇ »ç´Ù¸®¸¦ ´ã´çÇÏ°íÀÖ´Â ÄÄÇ»ÅÍÀÔ´Ï´Ù.\r\n\r\n#r#e»ç´Ù¸®" + ContentsManager.SpeedLadderGame.getCurrentRound() + "È¸Â÷ °á°ú ±îÁö " + recordToString + "#n#k" +
+            String text = "#h0#ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.\r\nì €ëŠ” " + ServerConstants.serverName + "ì„œë²„ì˜ ì‚¬ë‹¤ë¦¬ë¥¼ ë‹´ë‹¹í•˜ê³ ìˆëŠ” ì»´í“¨í„°ì…ë‹ˆë‹¤.\r\n\r\n#r#eì‚¬ë‹¤ë¦¬" + ContentsManager.SpeedLadderGame.getCurrentRound() + "íšŒì°¨ ê²°ê³¼ ê¹Œì§€ " + recordToString + "#n#k" +
                     "\r\n\r\n";
             if (getPlayer().getOneInfoQuestInteger(777777, "round") == 0) {
-                text += "#b#L0#»ç´Ù¸® °ÔÀÓ¿¡ ¹èÆÃÀ» ÇÏ°í ½Í½À´Ï´Ù.#r(³²Àº½Ã°£ 30ÃÊ ¹Ì¸¸ ¹èÆÃ ºÒ°¡)#b#l\r\n";
+                text += "#b#L0#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ë°°íŒ…ì„ í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#r(ë‚¨ì€ì‹œê°„ 30ì´ˆ ë¯¸ë§Œ ë°°íŒ… ë¶ˆê°€)#b#l\r\n";
             } else {
                 int type = getPlayer().getOneInfoQuestInteger(777777, "type");
                 int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-                text += "#b#h0#´ÔÀÇ ÇöÀç ¹èÆÃ »óÅÂ : " + getBetString(type, flag) + "#k\r\n";
+                text += "#b#h0#ë‹˜ì˜ í˜„ì¬ ë°°íŒ… ìƒíƒœ : " + getBetString(type, flag) + "#k\r\n";
             }
-            text += "#L10#¹èÆÃ º¸»óÀ» ¼ö·ÉÇÏ°í ½Í½À´Ï´Ù.#l\r\n" +
-                    "#L11#»ç´Ù¸® °ÔÀÓ¿¡ ´ëÇØ¼­ ¼³¸íÀ» µè°í ½Í½À´Ï´Ù.#l";
+            text += "#L10#ë°°íŒ… ë³´ìƒì„ ìˆ˜ë ¹í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n" +
+                    "#L11#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ëŒ€í•´ì„œ ì„¤ëª…ì„ ë“£ê³  ì‹¶ìŠµë‹ˆë‹¤.#l";
             selection = self.askMenu(text);
 
         } else if (checkReward()) {
-            selection = self.askMenu("#h0#´Ô ¹İ°©½À´Ï´Ù\r\nÀú´Â " + ServerConstants.serverName + "¼­¹öÀÇ »ç´Ù¸®¸¦ ´ã´çÇÏ°íÀÖ´Â ÄÄÇ»ÅÍÀÔ´Ï´Ù.\r\n\r\n#r#e»ç´Ù¸®" + ContentsManager.SpeedLadderGame.getCurrentRound() + "È¸Â÷ °á°ú ±îÁö " + recordToString + "#n#k" +
+            selection = self.askMenu("#h0#ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤\r\nì €ëŠ” " + ServerConstants.serverName + "ì„œë²„ì˜ ì‚¬ë‹¤ë¦¬ë¥¼ ë‹´ë‹¹í•˜ê³ ìˆëŠ” ì»´í“¨í„°ì…ë‹ˆë‹¤.\r\n\r\n#r#eì‚¬ë‹¤ë¦¬" + ContentsManager.SpeedLadderGame.getCurrentRound() + "íšŒì°¨ ê²°ê³¼ ê¹Œì§€ " + recordToString + "#n#k" +
                     "\r\n\r\n" +
-                    "#L10##b#e¹èÆÃ º¸»óÀ» ¼ö·ÉÇÏ°í ½Í½À´Ï´Ù.#k#n#l\r\n" +
-                    "#L11#»ç´Ù¸® °ÔÀÓ¿¡ ´ëÇØ¼­ ¼³¸íÀ» µè°í ½Í½À´Ï´Ù.#l");
+                    "#L10##b#eë°°íŒ… ë³´ìƒì„ ìˆ˜ë ¹í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#k#n#l\r\n" +
+                    "#L11#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ëŒ€í•´ì„œ ì„¤ëª…ì„ ë“£ê³  ì‹¶ìŠµë‹ˆë‹¤.#l");
         } else {
-            String text = "#h0#´Ô ¹İ°©½À´Ï´Ù.\r\nÀú´Â " + ServerConstants.serverName + "¼­¹öÀÇ »ç´Ù¸®¸¦ ´ã´çÇÏ°íÀÖ´Â ÄÄÇ»ÅÍÀÔ´Ï´Ù.\r\n\r\n#r#e»ç´Ù¸®" + ContentsManager.SpeedLadderGame.getCurrentRound() + "È¸Â÷ °á°ú ±îÁö " + recordToString + "#n#k" +
+            String text = "#h0#ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.\r\nì €ëŠ” " + ServerConstants.serverName + "ì„œë²„ì˜ ì‚¬ë‹¤ë¦¬ë¥¼ ë‹´ë‹¹í•˜ê³ ìˆëŠ” ì»´í“¨í„°ì…ë‹ˆë‹¤.\r\n\r\n#r#eì‚¬ë‹¤ë¦¬" + ContentsManager.SpeedLadderGame.getCurrentRound() + "íšŒì°¨ ê²°ê³¼ ê¹Œì§€ " + recordToString + "#n#k" +
                     "\r\n\r\n";
             if (getPlayer().getOneInfoQuestInteger(777777, "round") == 0) {
-                text += "#b#L0#»ç´Ù¸® °ÔÀÓ¿¡ ¹èÆÃÀ» ÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
+                text += "#b#L0#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ë°°íŒ…ì„ í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
             } else {
                 if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame.getCurrentRound()) {
                     int type = getPlayer().getOneInfoQuestInteger(777777, "type");
                     int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-                    text += "#b#h0#´ÔÀÇ ÇöÀç ¹èÆÃ »óÅÂ : " + getBetString(type, flag) + "#k\r\n";
+                    text += "#b#h0#ë‹˜ì˜ í˜„ì¬ ë°°íŒ… ìƒíƒœ : " + getBetString(type, flag) + "#k\r\n";
                 } else {
-                    text += "#b#L0#»ç´Ù¸® °ÔÀÓ¿¡ ¹èÆÃÀ» ÇÏ°í ½Í½À´Ï´Ù.#l\r\n";
+                    text += "#b#L0#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ë°°íŒ…ì„ í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n";
                 }
             }
-            text += "#L10#¹èÆÃ º¸»óÀ» ¼ö·ÉÇÏ°í ½Í½À´Ï´Ù.#l\r\n" +
-                    "#L11#»ç´Ù¸® °ÔÀÓ¿¡ ´ëÇØ¼­ ¼³¸íÀ» µè°í ½Í½À´Ï´Ù.#l";
+            text += "#L10#ë°°íŒ… ë³´ìƒì„ ìˆ˜ë ¹í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤.#l\r\n" +
+                    "#L11#ì‚¬ë‹¤ë¦¬ ê²Œì„ì— ëŒ€í•´ì„œ ì„¤ëª…ì„ ë“£ê³  ì‹¶ìŠµë‹ˆë‹¤.#l";
             selection = self.askMenu(text);
         }
-        String canBet = "\r\nÇöÀç º¸À¯ ¸Ş¼Ò : " + decFormat.format(getPlayer().getMeso()) + "¸Ş¼Ò";
+        String canBet = "\r\ní˜„ì¬ ë³´ìœ  ë©”ì†Œ : " + decFormat.format(getPlayer().getMeso()) + "ë©”ì†Œ";
         switch (selection) {
-            case 0: //Ãâ¹ß ÁÂ
+            case 0: //ì¶œë°œ ì¢Œ
                 if (checkReward()) {
-                    self.sayOk("¼ö·ÉÇÏÁö ¾ÊÀº º¸»óÀÌ ÀÖ½À´Ï´Ù. ¸ÕÀú º¸»óÀ» ¼ö·ÉÇØÁÖ¼¼¿ä.");
+                    self.sayOk("ìˆ˜ë ¹í•˜ì§€ ì•Šì€ ë³´ìƒì´ ìˆìŠµë‹ˆë‹¤. ë¨¼ì € ë³´ìƒì„ ìˆ˜ë ¹í•´ì£¼ì„¸ìš”.");
                     return;
                 }
                 if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame.getCurrentRound()) {
-                    self.sayOk("ÀÌ¹Ì ¹èÆÃÀÌ ÁøÇàµÈ»óÅÂÀÔ´Ï´Ù.");
+                    self.sayOk("ì´ë¯¸ ë°°íŒ…ì´ ì§„í–‰ëœìƒíƒœì…ë‹ˆë‹¤.");
                     return;
                 }
                 if (!canGame()) {
-                    self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                    self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
-                int v = self.askMenu("<¹èÆÃ¸Ş´º>#k#n\r\n\r\n#r#e»ç´Ù¸®" + ContentsManager.SpeedLadderGame.getCurrentRound() + "È¸Â÷ °á°ú ±îÁö " + recordToString + "#n#k" +
+                int v = self.askMenu("<ë°°íŒ…ë©”ë‰´>#k#n\r\n\r\n#r#eì‚¬ë‹¤ë¦¬" + ContentsManager.SpeedLadderGame.getCurrentRound() + "íšŒì°¨ ê²°ê³¼ ê¹Œì§€ " + recordToString + "#n#k" +
                         "\r\n\r\n" +
-                        "#b#L0#»ç´Ù¸® (Ãâ¹ß [ÁÂ] x1.85)#l\r\n" +
-                        "#L1#»ç´Ù¸® (Ãâ¹ß [¿ì] x1.85)#l\r\n" +
-                        "#L2#»ç´Ù¸® (ÁÙ¼ö [4ÁÙ] x1.85)#l\r\n" +
-                        "#L3#»ç´Ù¸® (ÁÙ¼ö [3ÁÙ] x1.85)#l\r\n" +
-                        "#L4#»ç´Ù¸® (°á°ú [È¦] x1.85)#l\r\n" +
-                        "#L5#»ç´Ù¸® (°á°ú [Â¦] x1.85)#l\r\n" +
-                        "#L6#»ç´Ù¸® (Ãâ¹ß+ÁÙ¼ö [ÁÂÃâ4ÁÙ] x3.6)#l\r\n" +
-                        "#L7#»ç´Ù¸® (Ãâ¹ß+ÁÙ¼ö [ÁÂÃâ3ÁÙ] x3.6)#l\r\n" +
-                        "#L8#»ç´Ù¸® (Ãâ¹ß+ÁÙ¼ö [¿ìÃâ4ÁÙ] x3.6)#l\r\n" +
-                        "#L9#»ç´Ù¸® (Ãâ¹ß+ÁÙ¼ö [¿ìÃâ3ÁÙ] x3.6)#l");
+                        "#b#L0#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ [ì¢Œ] x1.85)#l\r\n" +
+                        "#L1#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ [ìš°] x1.85)#l\r\n" +
+                        "#L2#ì‚¬ë‹¤ë¦¬ (ì¤„ìˆ˜ [4ì¤„] x1.85)#l\r\n" +
+                        "#L3#ì‚¬ë‹¤ë¦¬ (ì¤„ìˆ˜ [3ì¤„] x1.85)#l\r\n" +
+                        "#L4#ì‚¬ë‹¤ë¦¬ (ê²°ê³¼ [í™€] x1.85)#l\r\n" +
+                        "#L5#ì‚¬ë‹¤ë¦¬ (ê²°ê³¼ [ì§] x1.85)#l\r\n" +
+                        "#L6#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ+ì¤„ìˆ˜ [ì¢Œì¶œ4ì¤„] x3.6)#l\r\n" +
+                        "#L7#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ+ì¤„ìˆ˜ [ì¢Œì¶œ3ì¤„] x3.6)#l\r\n" +
+                        "#L8#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ+ì¤„ìˆ˜ [ìš°ì¶œ4ì¤„] x3.6)#l\r\n" +
+                        "#L9#ì‚¬ë‹¤ë¦¬ (ì¶œë°œ+ì¤„ìˆ˜ [ìš°ì¶œ3ì¤„] x3.6)#l");
                 if (v == 0 || v == 1) {
                     String reward;
                     if (v == 0) {
-                        reward = self.askText("#e#bÃâ¹ß [ÁÂ] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#bì¶œë°œ [ì¢Œ] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     } else {
-                        reward = self.askText("#e#bÃâ¹ß [¿ì] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#bì¶œë°œ [ìš°] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //¼ıÀÚ¸¸
+                    String pattern = "^[0-9]*$"; //ìˆ«ìë§Œ
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "¼ıÀÚ¸¸ ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                        getPlayer().dropMessage(1, "ìˆ«ìë§Œ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                        self.sayOk("ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1ÀÌ»ó ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+                            self.sayOk("1ì´ìƒ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         }
                         return;
                     }
-                    //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-                    //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-                    //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-                    //flag : 4 : ÁÂ4
-                    //flag : 8 : ÁÂ3
-                    //flag : 16 : ¿ì4
-                    //flag : 32 : ¿ì3
+                    //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+                    //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+                    //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+                    //flag : 4 : ì¢Œ4
+                    //flag : 8 : ì¢Œ3
+                    //flag : 16 : ìš°4
+                    //flag : 32 : ìš°3
                     if (!canGame()) {
-                        self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "1");
-                    if (v == 0) { //ÁÂÃâ
+                    if (v == 0) { //ì¢Œì¶œ
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 2, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { //¿ìÃâ
+                    } else { //ìš°ì¶œ
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 1, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
                     }
@@ -284,43 +284,43 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 2 || v == 3) {
                     String reward;
                     if (v == 2) {
-                        reward = self.askText("#e#bÁÙ¼ö [4] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#bì¤„ìˆ˜ [4] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     } else {
-                        reward = self.askText("#e#bÁÙ¼ö [3] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#bì¤„ìˆ˜ [3] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //¼ıÀÚ¸¸
+                    String pattern = "^[0-9]*$"; //ìˆ«ìë§Œ
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "¼ıÀÚ¸¸ ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                        getPlayer().dropMessage(1, "ìˆ«ìë§Œ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                        self.sayOk("ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1ÀÌ»ó ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+                            self.sayOk("1ì´ìƒ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         }
                         return;
                     }
-                    //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-                    //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-                    //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-                    //flag : 4 : ÁÂ4
-                    //flag : 8 : ÁÂ3
-                    //flag : 16 : ¿ì4
-                    //flag : 32 : ¿ì3
+                    //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+                    //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+                    //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+                    //flag : 4 : ì¢Œ4
+                    //flag : 8 : ì¢Œ3
+                    //flag : 16 : ìš°4
+                    //flag : 32 : ìš°3
                     if (!canGame()) {
-                        self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "2");
-                    if (v == 2) { // 4ÁÙ
+                    if (v == 2) { // 4ì¤„
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 2, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { //3ÁÙ
+                    } else { //3ì¤„
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 1, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
                     }
@@ -329,43 +329,43 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 4 || v == 5) {
                     String reward;
                     if (v == 4) {
-                        reward = self.askText("#e#b[°á°ú : È¦] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ê²°ê³¼ : í™€] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     } else {
-                        reward = self.askText("#e#b[°á°ú : Â¦] x1.85#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ê²°ê³¼ : ì§] x1.85#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //¼ıÀÚ¸¸
+                    String pattern = "^[0-9]*$"; //ìˆ«ìë§Œ
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "¼ıÀÚ¸¸ ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                        getPlayer().dropMessage(1, "ìˆ«ìë§Œ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                        self.sayOk("ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1ÀÌ»ó ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+                            self.sayOk("1ì´ìƒ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         }
                         return;
                     }
-                    //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-                    //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-                    //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-                    //flag : 4 : ÁÂ4
-                    //flag : 8 : ÁÂ3
-                    //flag : 16 : ¿ì4
-                    //flag : 32 : ¿ì3
+                    //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+                    //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+                    //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+                    //flag : 4 : ì¢Œ4
+                    //flag : 8 : ì¢Œ3
+                    //flag : 16 : ìš°4
+                    //flag : 32 : ìš°3
                     if (!canGame()) {
-                        self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "3");
-                    if (v == 4) { // È¦
+                    if (v == 4) { // í™€
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 1, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
-                    } else { //3ÁÙ
+                    } else { //3ì¤„
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 2, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
                     }
@@ -374,43 +374,43 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 6 || v == 7) {
                     String reward = "";
                     if (v == 6) {
-                        reward = self.askText("#e#b[Ãâ¹ß+ÁÙ¼ö ÁÂ4] x3.6#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ì¶œë°œ+ì¤„ìˆ˜ ì¢Œ4] x3.6#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     } else {
-                        reward = self.askText("#e#b[Ãâ¹ß+ÁÙ¼ö ÁÂ3] x3.6#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ì¶œë°œ+ì¤„ìˆ˜ ì¢Œ3] x3.6#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //¼ıÀÚ¸¸
+                    String pattern = "^[0-9]*$"; //ìˆ«ìë§Œ
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "¼ıÀÚ¸¸ ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                        getPlayer().dropMessage(1, "ìˆ«ìë§Œ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                        self.sayOk("ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1ÀÌ»ó ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+                            self.sayOk("1ì´ìƒ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         }
                         return;
                     }
-                    //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-                    //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-                    //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-                    //flag : 4 : ÁÂ4
-                    //flag : 8 : ÁÂ3
-                    //flag : 16 : ¿ì4
-                    //flag : 32 : ¿ì3
+                    //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+                    //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+                    //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+                    //flag : 4 : ì¢Œ4
+                    //flag : 8 : ì¢Œ3
+                    //flag : 16 : ìš°4
+                    //flag : 32 : ìš°3
                     if (!canGame()) {
-                        self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
-                    if (v == 6) { // ÁÂ4
+                    if (v == 6) { // ì¢Œ4
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 4, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "4");
-                    } else { //ÁÂ3
+                    } else { //ì¢Œ3
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 8, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "8");
                     }
@@ -419,50 +419,50 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 8 || v == 9) {
                     String reward;
                     if (v == 8) {
-                        reward = self.askText("#e#b[Ãâ¹ß+ÁÙ¼ö ¿ì4] x3.6#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ì¶œë°œ+ì¤„ìˆ˜ ìš°4] x3.6#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     } else {
-                        reward = self.askText("#e#b[Ãâ¹ß+ÁÙ¼ö ¿ì3] x3.6#n#kÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\r\n¾ó¸¶¸¦ ¹èÆÃÇÏ½Ã°Ú½À´Ï±î. [ÇöÀç´Â ¸Ş¼Ò¸¸ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.]" + canBet);
+                        reward = self.askText("#e#b[ì¶œë°œ+ì¤„ìˆ˜ ìš°3] x3.6#n#kì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.\r\nì–¼ë§ˆë¥¼ ë°°íŒ…í•˜ì‹œê² ìŠµë‹ˆê¹Œ. [í˜„ì¬ëŠ” ë©”ì†Œë§Œ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.]" + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //¼ıÀÚ¸¸
+                    String pattern = "^[0-9]*$"; //ìˆ«ìë§Œ
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "¼ıÀÚ¸¸ ÀÔ·ÂÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+                        getPlayer().dropMessage(1, "ìˆ«ìë§Œ ì…ë ¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("Àß¸øµÈ ¿äÃ»ÀÔ´Ï´Ù.");
+                        self.sayOk("ì˜ëª»ëœ ìš”ì²­ì…ë‹ˆë‹¤.");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1ÀÌ»ó ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+                            self.sayOk("1ì´ìƒ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                         }
                         return;
                     }
-                    //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-                    //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-                    //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-                    //flag : 4 : ÁÂ4
-                    //flag : 8 : ÁÂ3
-                    //flag : 16 : ¿ì4
-                    //flag : 32 : ¿ì3
+                    //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+                    //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+                    //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+                    //flag : 4 : ì¢Œ4
+                    //flag : 8 : ì¢Œ3
+                    //flag : 16 : ìš°4
+                    //flag : 32 : ìš°3
                     if (!canGame()) {
-                        self.sayOk("³²Àº½Ã°£ÀÌ 30ÃÊ ¹Ì¸¸ÀÌ¶ó ¹èÆÃÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ë‚¨ì€ì‹œê°„ì´ 30ì´ˆ ë¯¸ë§Œì´ë¼ ë°°íŒ…í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
-                    if (v == 8) { // ¿ì4
+                    if (v == 8) { // ìš°4
                         getPlayer().updateOneInfo(777777, "flag", "16");
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 16, Long.parseLong(reward));
-                    } else { //¿ì3
+                    } else { //ìš°3
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 32, Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "32");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
                     getPlayer().gainMeso(-Long.parseLong(reward), false);
                 }
-                self.sayOk("¼º°øÀûÀ¸·Î ¹èÆÃµÇ¾ú½À´Ï´Ù.");
+                self.sayOk("ì„±ê³µì ìœ¼ë¡œ ë°°íŒ…ë˜ì—ˆìŠµë‹ˆë‹¤.");
                 break;
             case 10:
                 if (checkReward()) {
@@ -473,19 +473,19 @@ public class Util extends ScriptEngineNPC {
                     getPlayer().updateOneInfo(777777, "flag", "0");
                     if (type < 4) {
                         getPlayer().gainMeso((long) (reward * 1.85), false);
-                        self.sayOk(decFormat.format((long) (reward * 1.85)) + "¸Ş¼Ò°¡ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+                        self.sayOk(decFormat.format((long) (reward * 1.85)) + "ë©”ì†Œê°€ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
                     } else {
                         getPlayer().gainMeso((long) (reward * 3.6), false);
-                        self.sayOk(decFormat.format((long) (reward * 3.6)) + "¸Ş¼Ò°¡ Áö±ŞµÇ¾ú½À´Ï´Ù.");
+                        self.sayOk(decFormat.format((long) (reward * 3.6)) + "ë©”ì†Œê°€ ì§€ê¸‰ë˜ì—ˆìŠµë‹ˆë‹¤.");
                     }
                     getPlayer().updateOneInfo(777777, "reward", "0");
                 } else {
-                    self.sayOk("¼ö·ÉÇÒ ¼ö ÀÖ´Â º¸»óÀÌ ¾ø½À´Ï´Ù.");
+                    self.sayOk("ìˆ˜ë ¹í•  ìˆ˜ ìˆëŠ” ë³´ìƒì´ ì—†ìŠµë‹ˆë‹¤.");
                 }
                 break;
             case 11:
-                self.sayOk("#e#b<¹è´ç·ü>#n#k\r\nÃâ¹ß - ÁÂÃâ¹ß, ¿ìÃâ¹ß (1.85¹è)\r\nÁÙ¼ö - 3ÁÙ, 4ÁÙ (1.85¹è)\r\n°á°ú - È¦, Â¦ (1.85¹è)\r\nÃâ¹ß + ÁÙ¼ö - ÁÂ4, ÁÂ3, ¿ì4, ¿ì3 (3.6¹è)\r\n\r\n#r#e<»ç´Ù¸® ¿ë¾î>#k#n\r\nÁÂÃâ : ¿ŞÂÊ¿¡¼­ Ãâ¹ß\r\n" +
-                        "¿ìÃâ : ¿À¸¥ÂÊ¿¡¼­ Ãâ¹ß\r\n3ÁÙ : »ç´Ù¸® ¼¼ÁÙ\r\n4ÁÙ : »ç´Ù¸® ³×ÁÙ\r\nÁÂ4 : ¿ŞÂÊ¿¡¼­ Ãâ¹ß + »ç´Ù¸® ³×ÁÙ\r\nÁÂ3 : ¿ŞÂÊ¿¡¼­ Ãâ¹ß + »ç´Ù¸® ¼¼ÁÙ\r\n¿ì4 : ¿À¸¥ÂÊ¿¡¼­ Ãâ¹ß + »ç´Ù¸® ³×ÁÙ\r\n¿ì3 : ¿À¸¥ÂÊ¿¡¼­ Ãâ¹ß + »ç´Ù¸® ¼¼ÁÙ");
+                self.sayOk("#e#b<ë°°ë‹¹ë¥ >#n#k\r\nì¶œë°œ - ì¢Œì¶œë°œ, ìš°ì¶œë°œ (1.85ë°°)\r\nì¤„ìˆ˜ - 3ì¤„, 4ì¤„ (1.85ë°°)\r\nê²°ê³¼ - í™€, ì§ (1.85ë°°)\r\nì¶œë°œ + ì¤„ìˆ˜ - ì¢Œ4, ì¢Œ3, ìš°4, ìš°3 (3.6ë°°)\r\n\r\n#r#e<ì‚¬ë‹¤ë¦¬ ìš©ì–´>#k#n\r\nì¢Œì¶œ : ì™¼ìª½ì—ì„œ ì¶œë°œ\r\n" +
+                        "ìš°ì¶œ : ì˜¤ë¥¸ìª½ì—ì„œ ì¶œë°œ\r\n3ì¤„ : ì‚¬ë‹¤ë¦¬ ì„¸ì¤„\r\n4ì¤„ : ì‚¬ë‹¤ë¦¬ ë„¤ì¤„\r\nì¢Œ4 : ì™¼ìª½ì—ì„œ ì¶œë°œ + ì‚¬ë‹¤ë¦¬ ë„¤ì¤„\r\nì¢Œ3 : ì™¼ìª½ì—ì„œ ì¶œë°œ + ì‚¬ë‹¤ë¦¬ ì„¸ì¤„\r\nìš°4 : ì˜¤ë¥¸ìª½ì—ì„œ ì¶œë°œ + ì‚¬ë‹¤ë¦¬ ë„¤ì¤„\r\nìš°3 : ì˜¤ë¥¸ìª½ì—ì„œ ì¶œë°œ + ì‚¬ë‹¤ë¦¬ ì„¸ì¤„");
                 break;
         }
     }
@@ -504,23 +504,23 @@ public class Util extends ScriptEngineNPC {
             if (ladder == null) {
                 return false;
             }
-            //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-            //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-            //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-            //flag : 4 : ÁÂ4
-            //flag : 8 : ÁÂ3
-            //flag : 16 : ¿ì4
-            //flag : 32 : ¿ì3
+            //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+            //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+            //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+            //flag : 4 : ì¢Œ4
+            //flag : 8 : ì¢Œ3
+            //flag : 16 : ìš°4
+            //flag : 32 : ìš°3
             int type = getPlayer().getOneInfoQuestInteger(777777, "type");
             int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-            if (type == 1) { //Ãâ¹ß¸¸
+            if (type == 1) { //ì¶œë°œë§Œ
                 int right = ladder.getRight();
                 if ((right == 1 && flag == 1) || (right == 0 && flag == 2)) {
                     reward = true;
                 } else {
                     reward = false;
                 }
-            } else if (type == 2) { //ÁÙ¼ö
+            } else if (type == 2) { //ì¤„ìˆ˜
                 int line = ladder.getLine();
                 if ((line == 3 && flag == 1) || (line == 4 && flag == 2)) {
                     reward = true;
@@ -534,7 +534,7 @@ public class Util extends ScriptEngineNPC {
                 } else {
                     reward = false;
                 }
-            } else if (type == 4) { //Ãâ¹ß + ÁÙ¼ö
+            } else if (type == 4) { //ì¶œë°œ + ì¤„ìˆ˜
                 int right = ladder.getRight();
                 int line = ladder.getLine();
                 if ((right == 0 && line == 4 && flag == 4) || (right == 0 && line == 3 && flag == 8)
@@ -561,55 +561,55 @@ public class Util extends ScriptEngineNPC {
     }
 
     public String getBetString(int type, int flag) {
-        //type : 1 : Ãâ¹ß¸¸, 2 : ÁÙ¼ö , 3 : °á°ú , 4 : Ãâ¹ß + ÁÙ¼ö
-        //flag : 1 : ¿ìÃâ, 3ÁÙ, È¦
-        //flag : 2 : ÁÂÃâ, 4ÁÙ, Â¦
-        //flag : 4 : ÁÂ4
-        //flag : 8 : ÁÂ3
-        //flag : 16 : ¿ì4
-        //flag : 32 : ¿ì3
+        //type : 1 : ì¶œë°œë§Œ, 2 : ì¤„ìˆ˜ , 3 : ê²°ê³¼ , 4 : ì¶œë°œ + ì¤„ìˆ˜
+        //flag : 1 : ìš°ì¶œ, 3ì¤„, í™€
+        //flag : 2 : ì¢Œì¶œ, 4ì¤„, ì§
+        //flag : 4 : ì¢Œ4
+        //flag : 8 : ì¢Œ3
+        //flag : 16 : ìš°4
+        //flag : 32 : ìš°3
         switch (type) {
-            case 1: //Ãâ¹ß
-                //Ãâ¹ß [ÁÂ]
-                //Ãâ¹ß [¿ì]
+            case 1: //ì¶œë°œ
+                //ì¶œë°œ [ì¢Œ]
+                //ì¶œë°œ [ìš°]
                 if (flag == 1) {
-                    return "Ãâ¹ß [¿ì]";
+                    return "ì¶œë°œ [ìš°]";
                 } else {
-                    return "Ãâ¹ß [ÁÂ]";
+                    return "ì¶œë°œ [ì¢Œ]";
                 }
-            case 2: //ÁÙ¼ö
-                //ÁÙ¼ö [4]
-                //ÁÙ¼ö [3]
+            case 2: //ì¤„ìˆ˜
+                //ì¤„ìˆ˜ [4]
+                //ì¤„ìˆ˜ [3]
                 if (flag == 1) {
-                    return "ÁÙ¼ö [3]";
+                    return "ì¤„ìˆ˜ [3]";
                 } else {
-                    return "ÁÙ¼ö [4]";
+                    return "ì¤„ìˆ˜ [4]";
                 }
-            case 3: //°á°ú
-                //°á°ú [È¦]
-                //°á°ú [Â¦]
+            case 3: //ê²°ê³¼
+                //ê²°ê³¼ [í™€]
+                //ê²°ê³¼ [ì§]
                 if (flag == 1) {
-                    return "°á°ú [È¦]";
+                    return "ê²°ê³¼ [í™€]";
                 } else {
-                    return "°á°ú [Â¦]";
+                    return "ê²°ê³¼ [ì§]";
                 }
-            case 4: //Ãâ¹ß+ÁÙ¼ö
-                //[Ãâ¹ß+ÁÙ¼ö ÁÂ4]
-                //[Ãâ¹ß+ÁÙ¼ö ÁÂ3]
-                //[Ãâ¹ß+ÁÙ¼ö ¿ì4]
-                //[Ãâ¹ß+ÁÙ¼ö ¿ì3]
-                //flag : 4 : ÁÂ4
-                //flag : 8 : ÁÂ3
-                //flag : 16 : ¿ì4
-                //flag : 32 : ¿ì3
+            case 4: //ì¶œë°œ+ì¤„ìˆ˜
+                //[ì¶œë°œ+ì¤„ìˆ˜ ì¢Œ4]
+                //[ì¶œë°œ+ì¤„ìˆ˜ ì¢Œ3]
+                //[ì¶œë°œ+ì¤„ìˆ˜ ìš°4]
+                //[ì¶œë°œ+ì¤„ìˆ˜ ìš°3]
+                //flag : 4 : ì¢Œ4
+                //flag : 8 : ì¢Œ3
+                //flag : 16 : ìš°4
+                //flag : 32 : ìš°3
                 if (flag == 4) {
-                    return "Ãâ¹ß+ÁÙ¼ö [ÁÂ4]";
+                    return "ì¶œë°œ+ì¤„ìˆ˜ [ì¢Œ4]";
                 } else if (flag == 8) {
-                    return "Ãâ¹ß+ÁÙ¼ö [ÁÂ3]";
+                    return "ì¶œë°œ+ì¤„ìˆ˜ [ì¢Œ3]";
                 } else if (flag == 16) {
-                    return "Ãâ¹ß+ÁÙ¼ö [¿ì4]";
+                    return "ì¶œë°œ+ì¤„ìˆ˜ [ìš°4]";
                 } else if (flag == 32) {
-                    return "Ãâ¹ß+ÁÙ¼ö [¿ì3]";
+                    return "ì¶œë°œ+ì¤„ìˆ˜ [ìš°3]";
                 }
         }
         return "";
@@ -617,7 +617,7 @@ public class Util extends ScriptEngineNPC {
     
     public void characterNameChange() {
         initNPC(MapleLifeFactory.getNPC(9062010));
-        int v = self.askMenu("¾È³çÇÏ¼¼¿ä! ´ç½ÅÀÇ ÀÌ¸§À» ¹Ù²ãµå¸± ¼ö ÀÖ´Â #b¹Ì½ºÅÍ ´º³×ÀÓ#kÀÔ´Ï´Ù. ¹«¾ùÀ» µµ¿Íµå¸±±î¿ä?\r\n\r\n#b#L0#Ä³¸¯ÅÍ ÀÌ¸§ º¯°æÇÏ±â (Ä³¸¯ÅÍ ÀÌ¸§ º¯°æ ÄíÆùÇÊ¿ä)#l\r\n#L1#´ëÈ­¸¦ Á¾·áÇÑ´Ù.#l");
+        int v = self.askMenu("ì•ˆë…•í•˜ì„¸ìš”! ë‹¹ì‹ ì˜ ì´ë¦„ì„ ë°”ê¿”ë“œë¦´ ìˆ˜ ìˆëŠ” #bë¯¸ìŠ¤í„° ë‰´ë„¤ì„#kì…ë‹ˆë‹¤. ë¬´ì—‡ì„ ë„ì™€ë“œë¦´ê¹Œìš”?\r\n\r\n#b#L0#ìºë¦­í„° ì´ë¦„ ë³€ê²½í•˜ê¸° (ìºë¦­í„° ì´ë¦„ ë³€ê²½ ì¿ í°í•„ìš”)#l\r\n#L1#ëŒ€í™”ë¥¼ ì¢…ë£Œí•œë‹¤.#l");
         if (v != 0) {
             return;
         }
@@ -647,9 +647,9 @@ public class Util extends ScriptEngineNPC {
             getPlayer().updateOneInfo(18098, "coin", "0");
             getPlayer().updateOneInfo(18790, "coin", "0");
 
-            self.say("#b#i4310229:##t4310229##kÀ» #b" + coin + "°³#kÀÇ ÄÚÀÎÀ» Áö±Ş¹Ş¾Ò½À´Ï´Ù.");
+            self.say("#b#i4310229:##t4310229##kì„ #b" + coin + "ê°œ#kì˜ ì½”ì¸ì„ ì§€ê¸‰ë°›ì•˜ìŠµë‹ˆë‹¤.");
         } else {
-            self.say("¼ö·É ÇÒ ¼ö ÀÖ´Â ÄÚÀÎÀÌ ¾ø½À´Ï´Ù.");
+            self.say("ìˆ˜ë ¹ í•  ìˆ˜ ìˆëŠ” ì½”ì¸ì´ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 }

@@ -42,17 +42,17 @@ public class OneClickSet extends ScriptEngineNPC {
 
     public void levelUP() {
         initNPC(MapleLifeFactory.getNPC(1530055));
-        int vv = self.askMenu("#fs11#¿øÇÏ´Â ±â´ÉÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#b#L0#¿øÅ¬¸¯ Å¥ºê#l\r\n#L1#¿øÅ¬¸¯ È¯»ıÀÇºÒ²É#l");
+        int vv = self.askMenu("#fs11#ì›í•˜ëŠ” ê¸°ëŠ¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#b#L0#ì›í´ë¦­ íë¸Œ#l\r\n#L1#ì›í´ë¦­ í™˜ìƒì˜ë¶ˆê½ƒ#l");
         if (vv == 0) {
-            int vvv = self.askMenu("#fs11#Å¥ºê¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n#b#L100##i2711006:# #z2711006:#\r\n#L0##i5062009:# #z5062009:#\r\n#L1##i5062010:# #z5062010:##l\r\n#L2##i5062500:# #z5062500:##l");
+            int vvv = self.askMenu("#fs11#íë¸Œë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n#b#L100##i2711006:# #z2711006:#\r\n#L0##i5062009:# #z5062009:#\r\n#L1##i5062010:# #z5062010:##l\r\n#L2##i5062500:# #z5062500:##l");
             switch (vvv) {
-                case 0: //·¹µåÅ¥ºê
+                case 0: //ë ˆë“œíë¸Œ
                     oneClickCubeZenia(5062009, GradeRandomOption.Red);
                     break;
-                case 1: //ºí·¢Å¥ºê
+                case 1: //ë¸”ë™íë¸Œ
                     oneClickCubeZenia(5062010, GradeRandomOption.Black);
                     break;
-                case 2: //¿¡µğ¼Å³ÎÅ¥ºê
+                case 2: //ì—ë””ì…”ë„íë¸Œ
                     oneClickCubeZenia(5062500, GradeRandomOption.Additional);
                     break;
                 case 100:
@@ -65,7 +65,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     } else if (getPlayer().getItemQuantity(2711017, false) > 0) {
                         oneClickCubeZenia(2711017, GradeRandomOption.Meister);
                     } else {
-                        self.sayOk("¸íÀåÀÇ Å¥ºê°¡ ¾øÀ¸¸é »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("ëª…ì¥ì˜ íë¸Œê°€ ì—†ìœ¼ë©´ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     }
                     break;
             }
@@ -86,9 +86,9 @@ public class OneClickSet extends ScriptEngineNPC {
                 }
             }
 
-            rebirthFlame += "\r\n#r#L0#¼±ÅÃÇÏÁö ¾Ê°í ±×¸¸µÎ±â#l";
+            rebirthFlame += "\r\n#r#L0#ì„ íƒí•˜ì§€ ì•Šê³  ê·¸ë§Œë‘ê¸°#l";
 
-            int vvv = self.askMenu("#fs11#È¯»ıÀÇºÒ²É ¼±ÅÃÇÏ¼¼¿ä. °®°í ÀÖ´Â °Í¸¸ Ç¥½ÃµË´Ï´Ù. (È¯»ıÀÇ ºÒ²É, ¿µ¿øÇÑ È¯»ıÀÇ ºÒ²É¸¸ »ç¿ëµË´Ï´Ù. °ËÈ¯ºÒÀº Áö¿øÇÏÁö ¾Ê½À´Ï´Ù.)" + rebirthFlame);
+            int vvv = self.askMenu("#fs11#í™˜ìƒì˜ë¶ˆê½ƒ ì„ íƒí•˜ì„¸ìš”. ê°–ê³  ìˆëŠ” ê²ƒë§Œ í‘œì‹œë©ë‹ˆë‹¤. (í™˜ìƒì˜ ë¶ˆê½ƒ, ì˜ì›í•œ í™˜ìƒì˜ ë¶ˆê½ƒë§Œ ì‚¬ìš©ë©ë‹ˆë‹¤. ê²€í™˜ë¶ˆì€ ì§€ì›í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)" + rebirthFlame);
             if (vvv > 0) {
                 BonusStatPlaceType placeType = BonusStatPlaceType.PowerfulRebirthFlame;
                 if (GameConstants.IsPowerfulRebirthFlame(vvv)) {
@@ -106,7 +106,7 @@ public class OneClickSet extends ScriptEngineNPC {
         for (Item item : getPlayer().getInventory(MapleInventoryType.EQUIPPED).list()) {
             if (item instanceof Equip) {
                 if (((Equip) item).getExGradeOption() > 0) {
-                    // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                    // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                     if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                         items.add((short) ((item.getPosition() * -1) + 10000));
                     }
@@ -116,7 +116,7 @@ public class OneClickSet extends ScriptEngineNPC {
         for (Item item : getPlayer().getInventory(MapleInventoryType.EQUIP).list()) {
             if (item instanceof Equip) {
                 if (((Equip) item).getExGradeOption() > 0) {
-                    // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                    // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                     if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                         items.add(item.getPosition());
                     }
@@ -124,10 +124,10 @@ public class OneClickSet extends ScriptEngineNPC {
             }
         }
         if (items.isEmpty()) {
-            self.say("Àåºñ, ÀåÂø ½½·Ô¿¡ È¯»ıÀÇ ºÒ²ÉÀÌ Àû¿ëµÈ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù.\r\n#e#r[¼³Á¤°¡´É Àåºñ¿É¼Ç : È¯»ıÀÇ ºÒ²É Àû¿ëµÈ ¾ÆÀÌÅÛ]");
+            self.say("ì¥ë¹„, ì¥ì°© ìŠ¬ë¡¯ì— í™˜ìƒì˜ ë¶ˆê½ƒì´ ì ìš©ëœ ì•„ì´í…œì´ ì—†ìŠµë‹ˆë‹¤.\r\n#e#r[ì„¤ì •ê°€ëŠ¥ ì¥ë¹„ì˜µì…˜ : í™˜ìƒì˜ ë¶ˆê½ƒ ì ìš©ëœ ì•„ì´í…œ]");
             return;
         }
-        String menu = "#fs11#Ãß°¡¿É¼ÇÀ» Àç¼³Á¤ÇÏ½Ç ¾ÆÀÌÅÛÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#r#e¡Ø ÁÖÀÇ»çÇ× ¡Ø\r\nÀåÂøµÈ ¾ÆÀÌÅÛ - Àåºñ ¾ÆÀÌÅÛºÎÅÍ ¼øÀ¸·Î Ç¥±âµË´Ï´Ù.\r\nÀá±İµÇ¾îÀÖ´Â Àåºñ´Â Ç¥½ÃµÇÁö¾Ê½À´Ï´Ù.#n#b\r\n";
+        String menu = "#fs11#ì¶”ê°€ì˜µì…˜ì„ ì¬ì„¤ì •í•˜ì‹¤ ì•„ì´í…œì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#r#eâ€» ì£¼ì˜ì‚¬í•­ â€»\r\nì¥ì°©ëœ ì•„ì´í…œ - ì¥ë¹„ ì•„ì´í…œë¶€í„° ìˆœìœ¼ë¡œ í‘œê¸°ë©ë‹ˆë‹¤.\r\nì ê¸ˆë˜ì–´ìˆëŠ” ì¥ë¹„ëŠ” í‘œì‹œë˜ì§€ì•ŠìŠµë‹ˆë‹¤.#n#b\r\n";
         for (short i : items) {
             Item toItem;
 	 var a = i;
@@ -139,9 +139,9 @@ public class OneClickSet extends ScriptEngineNPC {
             }
             int itemid = toItem.getItemId();
             if (a == 0) {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ÀåÂøÁß]#n#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ì¥ì°©ì¤‘]#n#b";
             } else {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"½½·Ô]#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"ìŠ¬ë¡¯]#b";
             }
         }
         int selection = self.askMenu(menu);
@@ -152,7 +152,7 @@ public class OneClickSet extends ScriptEngineNPC {
             } else {
                 selectedItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) selection);
             }
-            if (self.askYesNo("#fs11#¼±ÅÃÇÏ½Å ¾ÆÀÌÅÛÀÌ #i" + selectedItem.getItemId() + ":# #z" + selectedItem.getItemId() + ":# ÀÌ ¸Â½À´Ï±î?") != 1) {
+            if (self.askYesNo("#fs11#ì„ íƒí•˜ì‹  ì•„ì´í…œì´ #i" + selectedItem.getItemId() + ":# #z" + selectedItem.getItemId() + ":# ì´ ë§ìŠµë‹ˆê¹Œ?") != 1) {
                 return;
             }
             Equip nZeroEquip = null;
@@ -168,7 +168,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     useCount++;
                     if (Randomizer.isSuccess(ii.getSuccess(flameID, getPlayer(), selectedItem))) {
                         if (BonusStat.resetBonusStat(selectedItem, placeType)) {
-                            // ¼º°ø
+                            // ì„±ê³µ
                             if (selection > 1000) {
                                 getPlayer().forceReAddItem(selectedItem, MapleInventoryType.EQUIPPED);
                             } else {
@@ -181,7 +181,7 @@ public class OneClickSet extends ScriptEngineNPC {
 
                             Map<ExItemType, Integer> bonusStat = BonusStat.getExItemOptions(selectedItem);
                             String t = "";
-                            TreeMap<ExItemType, Integer> bs = new TreeMap<>(); //½Ã¹ß°Í!!!!!!!!!!!!!!!!!!!!!
+                            TreeMap<ExItemType, Integer> bs = new TreeMap<>(); //ì‹œë°œê²ƒ!!!!!!!!!!!!!!!!!!!!!
                             for (Map.Entry<ExItemType, Integer> entry : bonusStat.entrySet()) {
                                 int bonusStatValue = BonusStat.getBonusStat(selectedItem, entry.getKey(), entry.getValue());
                                 if (bonusStatValue == 0) continue;
@@ -232,29 +232,29 @@ public class OneClickSet extends ScriptEngineNPC {
                             int line = 0;
                             for (ExItemType entry : bs.keySet()) {
                                 if (entry == ExItemType.ReqLevel) {
-                                    t += "Âø¿ë ·¹º§ °¨¼Ò : " + "-" + bs.get(entry) + "\r\n";
+                                    t += "ì°©ìš© ë ˆë²¨ ê°ì†Œ : " + "-" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Pad) {
-                                    t += "°ø°İ·Â : " + "+" + bs.get(entry) + "\r\n";
+                                    t += "ê³µê²©ë ¥ : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Mad) {
-                                    t += "¸¶·Â : " + "+" + bs.get(entry) + "\r\n";
+                                    t += "ë§ˆë ¥ : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Pdd || entry == ExItemType.Mdd) {
-                                    t += "¹æ¾î·Â : " + "+" + bs.get(entry) + "\r\n";
-                                } else if (entry == ExItemType.Acc) { //¾ø¾îÁø¿É¼Ç¾Æ´Ñ°¡
-                                    t += "¸íÁß·ü : " + "+" + bs.get(entry) + "\r\n";
-                                } else if (entry == ExItemType.Eva) { //¾ø¾îÁø¿É¼Ç¾Æ´Ñ°¡
-                                    t += "È¸ÇÇÀ² : " + "+" + bs.get(entry) + "\r\n";
+                                    t += "ë°©ì–´ë ¥ : " + "+" + bs.get(entry) + "\r\n";
+                                } else if (entry == ExItemType.Acc) { //ì—†ì–´ì§„ì˜µì…˜ì•„ë‹Œê°€
+                                    t += "ëª…ì¤‘ë¥  : " + "+" + bs.get(entry) + "\r\n";
+                                } else if (entry == ExItemType.Eva) { //ì—†ì–´ì§„ì˜µì…˜ì•„ë‹Œê°€
+                                    t += "íšŒí”¼ìœ¨ : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Speed) {
-                                    t += "ÀÌµ¿¼Óµµ : " + "+" + bs.get(entry) + "\r\n";
+                                    t += "ì´ë™ì†ë„ : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Jump) {
-                                    t += "Á¡ÇÁ·Â : " + "+" + bs.get(entry) + "\r\n";
+                                    t += "ì í”„ë ¥ : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.BdR) {
-                                    t += "º¸½º ¸ó½ºÅÍ °ø°İ½Ã µ¥¹ÌÁö : " + "+" + bs.get(entry) + "%\r\n";
+                                    t += "ë³´ìŠ¤ ëª¬ìŠ¤í„° ê³µê²©ì‹œ ë°ë¯¸ì§€ : " + "+" + bs.get(entry) + "%\r\n";
                                 } else if (entry == ExItemType.IMdR) {
-                                    t += "¸ó½ºÅÍ ¹æ¾îÀ² ¹«½Ã : " + "+" + bs.get(entry) + "%\r\n";
+                                    t += "ëª¬ìŠ¤í„° ë°©ì–´ìœ¨ ë¬´ì‹œ : " + "+" + bs.get(entry) + "%\r\n";
                                 } else if (entry == ExItemType.DamR) {
-                                    t += "µ¥¹ÌÁö : " + "+" + bs.get(entry) + "%\r\n";
+                                    t += "ë°ë¯¸ì§€ : " + "+" + bs.get(entry) + "%\r\n";
                                 } else if (entry == ExItemType.StatR) {
-                                    t += "¿Ã½ºÅÈ : " + "+" + bs.get(entry) + "%\r\n";
+                                    t += "ì˜¬ìŠ¤íƒ¯ : " + "+" + bs.get(entry) + "%\r\n";
                                 } else if (entry == ExItemType.Str) {
                                     t += "STR : " + "+" + bs.get(entry) + "\r\n";
                                 } else if (entry == ExItemType.Dex) {
@@ -269,29 +269,29 @@ public class OneClickSet extends ScriptEngineNPC {
                                 ++line;
                             }
                             if (line == 5) {
-                                if (1 != self.askMenu(String.format("#e³²¾ÆÀÖ´Â È¯»ıÀÇ ºÒ²É : #r%d°³#k\r\nÁö±İ±îÁö »ç¿ëÇÑ È¯»ıÀÇ ºÒ²É : #r%d°³#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n#L1##rÇÑ ¹ø ´õ µ¹¸®±â#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#eë‚¨ì•„ìˆëŠ” í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k\r\nì§€ê¸ˆê¹Œì§€ ì‚¬ìš©í•œ í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n#L1##rí•œ ë²ˆ ë” ëŒë¦¬ê¸°#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             } else if (line == 4) {
-                                if (1 != self.askMenu(String.format("#e³²¾ÆÀÖ´Â È¯»ıÀÇ ºÒ²É : #r%d°³#k\r\nÁö±İ±îÁö »ç¿ëÇÑ È¯»ıÀÇ ºÒ²É : #r%d°³#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n#L1##rÇÑ ¹ø ´õ µ¹¸®±â#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#eë‚¨ì•„ìˆëŠ” í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k\r\nì§€ê¸ˆê¹Œì§€ ì‚¬ìš©í•œ í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n#L1##rí•œ ë²ˆ ë” ëŒë¦¬ê¸°#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             } else if (line == 3) {
-                                if (1 != self.askMenu(String.format("#e³²¾ÆÀÖ´Â È¯»ıÀÇ ºÒ²É : #r%d°³#k\r\nÁö±İ±îÁö »ç¿ëÇÑ È¯»ıÀÇ ºÒ²É : #r%d°³#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n\r\n#L1##rÇÑ ¹ø ´õ µ¹¸®±â#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#eë‚¨ì•„ìˆëŠ” í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k\r\nì§€ê¸ˆê¹Œì§€ ì‚¬ìš©í•œ í™˜ìƒì˜ ë¶ˆê½ƒ : #r%dê°œ#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n\r\n#L1##rí•œ ë²ˆ ë” ëŒë¦¬ê¸°#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             }
                             if (useCount > 500) {
-                                StringBuilder sb = new StringBuilder("¿øÅ¬¸¯ È¯»ıÀÇ ºÒ²É »ç¿ë : " + useCount);
+                                StringBuilder sb = new StringBuilder("ì›í´ë¦­ í™˜ìƒì˜ ë¶ˆê½ƒ ì‚¬ìš© : " + useCount);
                                 LoggingManager.putLog(new EnchantLog(getPlayer(), flameID, selectedItem.getItemId(), selectedItem.getSerialNumberEquip(), 99, 0, sb));
                             }
                         } else {
-                            self.sayOk("Ãß°¡¿É¼Ç Àç¼³Á¤ ½ÇÆĞ(¿¡·¯)");
+                            self.sayOk("ì¶”ê°€ì˜µì…˜ ì¬ì„¤ì • ì‹¤íŒ¨(ì—ëŸ¬)");
                             break;
                         }
                     }
                 } else {
-                    self.sayOk("³²¾ÆÀÖ´Â È¯»ıÀÇ ºÒ²ÉÀÌ ¾ø¾î¼­ Àç¼³Á¤¿¡ ½ÇÆĞÇß±á");
+                    self.sayOk("ë‚¨ì•„ìˆëŠ” í™˜ìƒì˜ ë¶ˆê½ƒì´ ì—†ì–´ì„œ ì¬ì„¤ì •ì— ì‹¤íŒ¨í–ˆê¸”");
                     break;
                 }
             }
@@ -301,18 +301,18 @@ public class OneClickSet extends ScriptEngineNPC {
     public void oneClickSet() {
         int vv = -1;
         if (!DBConfig.isGanglim) {
-            vv = self.askMenu("#b#h0##k ´Ô ¾È³çÇÏ¼¼¿ä.\r\n\r\nÀú´Â ¿©·¯ºĞµéÀÇ Ä³¸¯ÅÍ ¼ÂÆÃÀ» µµ¿Íµå¸®´Â\r\n#b½Å¿ëÇùµ¿Á¶ÇÕ#kÀÔ´Ï´Ù. ¿øÇÏ½Ã´Â ¸Ş´º¸¦ Å¬¸¯ÇÏ¼¼¿ä.#b\r\n#L0#°Ë»öÇì¾î#l\r\n#L1#°Ë»ö¼ºÇü#l");
+            vv = self.askMenu("#b#h0##k ë‹˜ ì•ˆë…•í•˜ì„¸ìš”.\r\n\r\nì €ëŠ” ì—¬ëŸ¬ë¶„ë“¤ì˜ ìºë¦­í„° ì…‹íŒ…ì„ ë„ì™€ë“œë¦¬ëŠ”\r\n#bì‹ ìš©í˜‘ë™ì¡°í•©#kì…ë‹ˆë‹¤. ì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ í´ë¦­í•˜ì„¸ìš”.#b\r\n#L0#ê²€ìƒ‰í—¤ì–´#l\r\n#L1#ê²€ìƒ‰ì„±í˜•#l");
         } else {
-            vv = self.askMenu("#b#h0##k ´Ô ¾È³çÇÏ¼¼¿ä.\r\n\r\nÀú´Â ¿©·¯ºĞµéÀÇ Ä³¸¯ÅÍ ¼ÂÆÃÀ» µµ¿Íµå¸®´Â\r\n#b¸±¸®#kÀÔ´Ï´Ù. ¿øÇÏ½Ã´Â ¸Ş´º¸¦ Å¬¸¯ÇÏ¼¼¿ä.#b\r\n#L0#°Ë»öÇì¾î#l\r\n#L1#°Ë»ö¼ºÇü#l");
+            vv = self.askMenu("#b#h0##k ë‹˜ ì•ˆë…•í•˜ì„¸ìš”.\r\n\r\nì €ëŠ” ì—¬ëŸ¬ë¶„ë“¤ì˜ ìºë¦­í„° ì…‹íŒ…ì„ ë„ì™€ë“œë¦¬ëŠ”\r\n#bë¦´ë¦¬#kì…ë‹ˆë‹¤. ì›í•˜ì‹œëŠ” ë©”ë‰´ë¥¼ í´ë¦­í•˜ì„¸ìš”.#b\r\n#L0#ê²€ìƒ‰í—¤ì–´#l\r\n#L1#ê²€ìƒ‰ì„±í˜•#l");
         }
         switch (vv) {
             case 0:
             case 1: {
                 String v = "";
                 if (vv == 0) {
-                    v = self.askText("¿øÇÏ½Ã´Â Çì¾îÀÇ ÀÌ¸§ ÀÏºÎ¸¦ °Ë»öÇØÁÖ¼¼¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
+                    v = self.askText("ì›í•˜ì‹œëŠ” í—¤ì–´ì˜ ì´ë¦„ ì¼ë¶€ë¥¼ ê²€ìƒ‰í•´ì£¼ì„¸ìš”.", ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    v = self.askText("¿øÇÏ½Ã´Â ¼ºÇüÀÇ ÀÌ¸§ ÀÏºÎ¸¦ °Ë»öÇØÁÖ¼¼¿ä.", ScriptMessageFlag.NpcReplacedByNpc);
+                    v = self.askText("ì›í•˜ì‹œëŠ” ì„±í˜•ì˜ ì´ë¦„ ì¼ë¶€ë¥¼ ê²€ìƒ‰í•´ì£¼ì„¸ìš”.", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 if (v.equals("")) {
                     return;
@@ -320,7 +320,7 @@ public class OneClickSet extends ScriptEngineNPC {
                 List<Integer> items = new ArrayList<>();
                 MapleItemInformationProvider mii = MapleItemInformationProvider.getInstance();
                 switch (vv) {
-                    case 0: { //Çì¾î°Ë»ö
+                    case 0: { //í—¤ì–´ê²€ìƒ‰
 
                         String itemName = null;
                         for (Pair<Integer, String> item : mii.getAllEquips()) {
@@ -339,7 +339,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         break;
                     }
 
-                    case 1: { //¼ºÇü°Ë»ö
+                    case 1: { //ì„±í˜•ê²€ìƒ‰
                         String itemName = null;
                         for (Pair<Integer, String> item : mii.getAllEquips()) {
                             int itemid = item.getLeft();
@@ -357,9 +357,9 @@ public class OneClickSet extends ScriptEngineNPC {
                     }
                 }
                 if (items.size() > 60) {
-                    self.sayOk("Ã£À¸½Ã·Á´Â °Ë»ö¾î¿¡ µ¥ÀÌÅÍ·®ÀÌ ³Ê¹« ¸¹¾Æ Ç¥½ÃÇÏÁö ¸øÇß½À´Ï´Ù. Á» ´õ Á¤È®ÇÑ °Ë»öÀ» ÇØÁÖ¼¼¿ä.\r\n[¿¹ : (¶ó¸®¿¤ Çì¾î) ¶ó¸®x ¶ó¸®¿¤o]");
+                    self.sayOk("ì°¾ìœ¼ì‹œë ¤ëŠ” ê²€ìƒ‰ì–´ì— ë°ì´í„°ëŸ‰ì´ ë„ˆë¬´ ë§ì•„ í‘œì‹œí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. ì¢€ ë” ì •í™•í•œ ê²€ìƒ‰ì„ í•´ì£¼ì„¸ìš”.\r\n[ì˜ˆ : (ë¼ë¦¬ì—˜ í—¤ì–´) ë¼ë¦¬x ë¼ë¦¬ì—˜o]");
                 } else if (items.size() > 0) {
-                    String list = "¾Æ·¡´Â °Ë»ö °á°úÀÔ´Ï´Ù. ¿øÇÏ½Ã´Â ÄÚµğ°¡ ÀÖ´Ù¸é ¼±ÅÃÇØÁÖ¼¼¿ä.#b\r\n";
+                    String list = "ì•„ë˜ëŠ” ê²€ìƒ‰ ê²°ê³¼ì…ë‹ˆë‹¤. ì›í•˜ì‹œëŠ” ì½”ë””ê°€ ìˆë‹¤ë©´ ì„ íƒí•´ì£¼ì„¸ìš”.#b\r\n";
             /*for (int i = 0; i < items.size(); i++) {
                 list += "#L" + i + "#" + "#z" + items.get(i) + "#\r\n";
             }*/
@@ -376,18 +376,18 @@ public class OneClickSet extends ScriptEngineNPC {
                     if (vvv > -1) {
                         int az = 0;
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
-                            if (1 == self.askYesNo("µå·¹½º¾÷ ¸ğµå·Î Àû¿ë ÇÏ½Ã°Ú½À´Ï±î?")) {
+                            if (1 == self.askYesNo("ë“œë ˆìŠ¤ì—… ëª¨ë“œë¡œ ì ìš© í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
                                 az = 1;
                             }
                         }
                         if (GameConstants.isZero(getPlayer().getJob())) {
-                            if (1 == self.askYesNo("º£Å¸¿¡ Àû¿ëÇÏ½Ã°Ú½À´Ï±î? (#r#e¾Æ´Ï¿À#n#k¸¦ ´©¸¦ °æ¿ì ¾ËÆÄ¿¡ Àû¿ëµË´Ï´Ù.)")) {
+                            if (1 == self.askYesNo("ë² íƒ€ì— ì ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ? (#r#eì•„ë‹ˆì˜¤#n#kë¥¼ ëˆ„ë¥¼ ê²½ìš° ì•ŒíŒŒì— ì ìš©ë©ë‹ˆë‹¤.)")) {
                                 az = 1;
                             }
                         }
-                        String v0 = "Á¤¸» #r#z" + items.get(vvv) + "##k·Î º¯°æÇÏ½Ã°Ú½À´Ï±î?\r\n#e";
+                        String v0 = "ì •ë§ #r#z" + items.get(vvv) + "##kë¡œ ë³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#e";
                         if (vv == 0) {
-                            v0 += "\r\n¾Õ ¸ğ½À -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\nµŞ ¸ğ½À -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
+                            v0 += "\r\nì• ëª¨ìŠµ -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\në’· ëª¨ìŠµ -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
                         } else {
                             v0 += "\r\n#fCharacter/Face/000" + items.get(vvv) + ".img/default/face#";
                         }
@@ -405,7 +405,7 @@ public class OneClickSet extends ScriptEngineNPC {
                                     getPlayer().updateSingleStat(MapleStat.FACE, items.get(vvv));
                                 }
                             } else {
-                                // ¹Í¿° ÃÊ±âÈ­
+                                // ë¯¹ì—¼ ì´ˆê¸°í™”
                                 getPlayer().setBaseColor(-1);
                                 getPlayer().setAddColor(0);
                                 getPlayer().setBaseProb(0);
@@ -423,7 +423,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             getPlayer().equipChanged();
                         }
                     } else {
-                        self.sayOk("°Ë»ö°á°ú°¡ ¾ø½À´Ï´Ù.");
+                        self.sayOk("ê²€ìƒ‰ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
                     }
                 }
                 break;
@@ -449,11 +449,11 @@ public class OneClickSet extends ScriptEngineNPC {
     private void oneClickCubeZenia(int cubeId, GradeRandomOption option) {
         boolean additional = option == GradeRandomOption.Additional || option == GradeRandomOption.OccultAdditional;
         if (getPlayer().getItemQuantity(cubeId, false) < 1) {
-            self.sayOk("º¸À¯ÁßÀÎ #b#z" + cubeId + "##k °¡ ¾ø½À´Ï´Ù.");
+            self.sayOk("ë³´ìœ ì¤‘ì¸ #b#z" + cubeId + "##k ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 2) {
-            self.sayOk("¼Òºñ½½·ÔÀ» 2Ä­ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ìŠ¬ë¡¯ì„ 2ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
             return;
         }
         List<Short> items = new ArrayList<>();
@@ -461,14 +461,14 @@ public class OneClickSet extends ScriptEngineNPC {
             if (item instanceof Equip) {
                 if (!additional) {
                     if (((Equip) item).getPotential1() > 0 && ((Equip) item).getPotential2() > 0 && ((Equip) item).getPotential3() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add((short) ((item.getPosition() * -1) + 10000));
                         }
                     }
                 } else {
                     if (((Equip) item).getPotential4() > 0 && ((Equip) item).getPotential5() > 0 && ((Equip) item).getPotential6() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add((short) ((item.getPosition() * -1) + 10000));
                         }
@@ -480,14 +480,14 @@ public class OneClickSet extends ScriptEngineNPC {
             if (item instanceof Equip) {
                 if (!additional) {
                     if (((Equip) item).getPotential1() > 0 && ((Equip) item).getPotential2() > 0 && ((Equip) item).getPotential3() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add(item.getPosition());
                         }
                     }
                 } else {
                     if (((Equip) item).getPotential4() > 0 && ((Equip) item).getPotential5() > 0 && ((Equip) item).getPotential6() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add(item.getPosition());
                         }
@@ -496,10 +496,10 @@ public class OneClickSet extends ScriptEngineNPC {
             }
         }
         if (items.isEmpty()) {
-            self.say("Àåºñ½½·Ô¿¡ ÀáÀç´É·ÂÀÌ ºÎ¿©µÈ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù. \r\n#e#r[¼³Á¤°¡´É Àåºñ¿É¼Ç : ÀáÀç´É·Â 3ÁÙ ¾ÆÀÌÅÛ]");
+            self.say("ì¥ë¹„ìŠ¬ë¡¯ì— ì ì¬ëŠ¥ë ¥ì´ ë¶€ì—¬ëœ ì•„ì´í…œì´ ì—†ìŠµë‹ˆë‹¤. \r\n#e#r[ì„¤ì •ê°€ëŠ¥ ì¥ë¹„ì˜µì…˜ : ì ì¬ëŠ¥ë ¥ 3ì¤„ ì•„ì´í…œ]");
             return;
         }
-        String menu = "#fs11#ÀáÀç´É·ÂÀ» Àç¼³Á¤ÇÏ½Ç ¾ÆÀÌÅÛÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#r#e¡Ø ÁÖÀÇ»çÇ× ¡Ø\r\nÀåÂøµÈ ¾ÆÀÌÅÛ - Àåºñ ¾ÆÀÌÅÛºÎÅÍ ¼øÀ¸·Î Ç¥±âµË´Ï´Ù.\r\nÀá±İµÇ¾îÀÖ´Â Àåºñ´Â Ç¥½ÃµÇÁö¾Ê½À´Ï´Ù.#n#b\r\n";
+        String menu = "#fs11#ì ì¬ëŠ¥ë ¥ì„ ì¬ì„¤ì •í•˜ì‹¤ ì•„ì´í…œì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#r#eâ€» ì£¼ì˜ì‚¬í•­ â€»\r\nì¥ì°©ëœ ì•„ì´í…œ - ì¥ë¹„ ì•„ì´í…œë¶€í„° ìˆœìœ¼ë¡œ í‘œê¸°ë©ë‹ˆë‹¤.\r\nì ê¸ˆë˜ì–´ìˆëŠ” ì¥ë¹„ëŠ” í‘œì‹œë˜ì§€ì•ŠìŠµë‹ˆë‹¤.#n#b\r\n";
         for (short i : items) {
             Item CubetoItem;
 	var a = i;
@@ -511,9 +511,9 @@ public class OneClickSet extends ScriptEngineNPC {
             }
             int itemid = CubetoItem.getItemId();
             if (a == 0) {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ÀåÂøÁß]#n#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ì¥ì°©ì¤‘]#n#b";
             } else {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"½½·Ô]#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"ìŠ¬ë¡¯]#b";
             }
         }
         int selection = self.askMenu(menu);
@@ -524,7 +524,7 @@ public class OneClickSet extends ScriptEngineNPC {
             } else {
                 selectedItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) selection);
             }
-            if (self.askYesNo("#fs11#¼±ÅÃÇÏ½Å ¾ÆÀÌÅÛÀÌ #i" + selectedItem.getItemId() + ":# #z" + selectedItem.getItemId() + ":# ÀÌ ¸Â½À´Ï±î?") != 1) {
+            if (self.askYesNo("#fs11#ì„ íƒí•˜ì‹  ì•„ì´í…œì´ #i" + selectedItem.getItemId() + ":# #z" + selectedItem.getItemId() + ":# ì´ ë§ìŠµë‹ˆê¹Œ?") != 1) {
                 return;
             }
 
@@ -533,10 +533,10 @@ public class OneClickSet extends ScriptEngineNPC {
             final long price = GameConstants.getItemReleaseCost(selectedItem.getItemId());
             /*
             if (getPlayer().getMeso() < price) {
-                self.sayOk("¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© ÀáÀç´É·Â Àç¼³Á¤À» ÇÒ ¼ö ¾ø½À´Ï´Ù.\r\n" + "[ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "]");
+                self.sayOk("ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ ì ì¬ëŠ¥ë ¥ ì¬ì„¤ì •ì„ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\r\n" + "[í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "]");
                 return;
             }*/
-            if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºê¸é ¸Ş¸ğ¸®¾óÅ¥ºê¿¡ µî·Ï
+            if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œë©´ ë©”ëª¨ë¦¬ì–¼íë¸Œì— ë“±ë¡
                 Equip neq = (Equip) selectedItem.copy();
                 getPlayer().memorialCube = neq;
             }
@@ -546,7 +546,7 @@ public class OneClickSet extends ScriptEngineNPC {
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
             int itemCount = 0;
             while (getSc() != null) {
-                if (cubePiece > 0 ? (target.exchange(cubeId, -1, cubePiece, 1) > 0) : (target.exchange(cubeId, -1) > 0)) { //ÃÖÃÊ¿¡ ÇÑ°³ µ¹¸²
+                if (cubePiece > 0 ? (target.exchange(cubeId, -1, cubePiece, 1) > 0) : (target.exchange(cubeId, -1) > 0)) { //ìµœì´ˆì— í•œê°œ ëŒë¦¼
                     //getPlayer().gainMeso(-price, true);
                     //stackMeso += price;
                     stackCube++;
@@ -579,12 +579,12 @@ public class OneClickSet extends ScriptEngineNPC {
                     itemCount = getPlayer().getItemQuantity(cubeId, false);
 
                     if (stackCube > 500) {
-                        StringBuilder sb = new StringBuilder("¿øÅ¬¸¯ Å¥ºê »ç¿ë : " + stackCube);
+                        StringBuilder sb = new StringBuilder("ì›í´ë¦­ íë¸Œ ì‚¬ìš© : " + stackCube);
                         LoggingManager.putLog(new EnchantLog(getPlayer(), cubeId, selectedItem.getItemId(), selectedItem.getSerialNumberEquip(), 98, 0, sb));
                     }
 
 
-                    String text = String.format("#e³²¾ÆÀÖ´Â Å¥ºê ¼ö : #r%d°³#k\r\nÁö±İ±îÁö »ç¿ëÇÑ Å¥ºê ¼ö : #r%d°³#k#n#k\r\n\r\n", itemCount, stackCube, decFormat.format(stackMeso));
+                    String text = String.format("#eë‚¨ì•„ìˆëŠ” íë¸Œ ìˆ˜ : #r%dê°œ#k\r\nì§€ê¸ˆê¹Œì§€ ì‚¬ìš©í•œ íë¸Œ ìˆ˜ : #r%dê°œ#k#n#k\r\n\r\n", itemCount, stackCube, decFormat.format(stackMeso));
                     String text2 = "";
                     if (additional) {
                         if (reItem.getPotential4() > 0) {
@@ -596,7 +596,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         if (reItem.getPotential6() > 0) {
                             text += "\r\n#n#k#b#e" + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
-                        text += "#l\r\n\r\n#L4#ÇÑ ¹ø ´õ µ¹¸®±â#l";
+                        text += "#l\r\n\r\n#L4#í•œ ë²ˆ ë” ëŒë¦¬ê¸°#l";
                     } else {
                         if (option == GradeRandomOption.Black) {
                             text = "#L0#Before\r\n#b#e";
@@ -624,11 +624,11 @@ public class OneClickSet extends ScriptEngineNPC {
                             if (reItem.getPotential3() > 0) {
                                 text += "\r\n#n#k#b#e" + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, (ii.getReqLevel(selectedItem.getItemId()) / 10))));
                             }
-                            text += "#l\r\n\r\n#L4#ÇÑ ¹ø ´õ µ¹¸®±â#l";
+                            text += "#l\r\n\r\n#L4#í•œ ë²ˆ ë” ëŒë¦¬ê¸°#l";
                         }
                     }
                     if (option == GradeRandomOption.Black) {
-                        text += "\r\n\r\n#l#n#r#L0#ÇÑ ¹ø ´õ µ¹¸®±â#l\r\n#L3#³¡³»±â#l";
+                        text += "\r\n\r\n#l#n#r#L0#í•œ ë²ˆ ë” ëŒë¦¬ê¸°#l\r\n#L3#ëë‚´ê¸°#l";
                         int res = self.askMenu(text, ScriptMessageFlag.NoEsc);
                         if (res == 0) continue;
                         else if (res == 1 || res == 3) {
@@ -659,7 +659,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         continue;
                     }
                 } else {
-                    self.sayOk("Å¥ºê°¡ ¾ø°Å³ª ¼ÒºñÄ­¿¡ °ø°£ÀÌ ºÎÁ·ÇØ ¿É¼Ç Àç¼³Á¤¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+                    self.sayOk("íë¸Œê°€ ì—†ê±°ë‚˜ ì†Œë¹„ì¹¸ì— ê³µê°„ì´ ë¶€ì¡±í•´ ì˜µì…˜ ì¬ì„¤ì •ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
                     break;
                 }
             }
@@ -669,11 +669,11 @@ public class OneClickSet extends ScriptEngineNPC {
     private void oneClickCube(int cubeId, GradeRandomOption option) {
         boolean additional = option == GradeRandomOption.Additional || option == GradeRandomOption.OccultAdditional;
         if (getPlayer().getItemQuantity(cubeId, false) < 1) {
-            self.sayOk("º¸À¯ÁßÀÎ #b#z" + cubeId + "##k °¡ ¾ø½À´Ï´Ù.");
+            self.sayOk("ë³´ìœ ì¤‘ì¸ #b#z" + cubeId + "##k ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 2) {
-            self.sayOk("¼Òºñ½½·ÔÀ» 2Ä­ÀÌ»ó ºñ¿öÁÖ¼¼¿ä.");
+            self.sayOk("ì†Œë¹„ìŠ¬ë¡¯ì„ 2ì¹¸ì´ìƒ ë¹„ì›Œì£¼ì„¸ìš”.");
             return;
         }
 
@@ -682,14 +682,14 @@ public class OneClickSet extends ScriptEngineNPC {
             if (item instanceof Equip) {
                 if (!additional) {
                     if (((Equip) item).getPotential1() > 0 && ((Equip) item).getPotential2() > 0 && ((Equip) item).getPotential3() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add((short) ((item.getPosition() * -1) + 10000));
                         }
                     }
                 } else {
                     if (((Equip) item).getPotential4() > 0 && ((Equip) item).getPotential5() > 0 && ((Equip) item).getPotential6() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add((short) ((item.getPosition() * -1) + 10000));
                         }
@@ -701,14 +701,14 @@ public class OneClickSet extends ScriptEngineNPC {
             if (item instanceof Equip) {
                 if (!additional) {
                     if (((Equip) item).getPotential1() > 0 && ((Equip) item).getPotential2() > 0 && ((Equip) item).getPotential3() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add(item.getPosition());
                         }
                     }
                 } else {
                     if (((Equip) item).getPotential4() > 0 && ((Equip) item).getPotential5() > 0 && ((Equip) item).getPotential6() > 0) {
-                        // Àá°ÜÀÖÁö ¾ÊÀ»°æ¿ì¸¸
+                        // ì ê²¨ìˆì§€ ì•Šì„ê²½ìš°ë§Œ
                         if ((((Equip) item).getItemState() & ItemStateFlag.LOCK.getValue()) == 0) {
                             items.add(item.getPosition());
                         }
@@ -717,10 +717,10 @@ public class OneClickSet extends ScriptEngineNPC {
             }
         }
         if (items.isEmpty()) {
-            self.say("Àåºñ½½·Ô¿¡ ÀáÀç´É·ÂÀÌ ºÎ¿©µÈ ¾ÆÀÌÅÛÀÌ ¾ø½À´Ï´Ù. [¼³Á¤°¡´É Àåºñ¿É¼Ç : ÀáÀç´É·Â 3ÁÙ ¾ÆÀÌÅÛ]");
+            self.say("ì¥ë¹„ìŠ¬ë¡¯ì— ì ì¬ëŠ¥ë ¥ì´ ë¶€ì—¬ëœ ì•„ì´í…œì´ ì—†ìŠµë‹ˆë‹¤. [ì„¤ì •ê°€ëŠ¥ ì¥ë¹„ì˜µì…˜ : ì ì¬ëŠ¥ë ¥ 3ì¤„ ì•„ì´í…œ]");
             return;
         }
-        String menu = "#fs11#ÀáÀç´É·ÂÀ» Àç¼³Á¤ÇÏ½Ç ¾ÆÀÌÅÛÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\n\r\n#r#e¡Ø ÁÖÀÇ»çÇ× ¡Ø\r\nÀåÂøµÈ ¾ÆÀÌÅÛ - Àåºñ ¾ÆÀÌÅÛºÎÅÍ ¼øÀ¸·Î Ç¥±âµË´Ï´Ù.\r\nÀá±İµÇ¾îÀÖ´Â Àåºñ´Â Ç¥½ÃµÇÁö¾Ê½À´Ï´Ù.#n#b\r\n";
+        String menu = "#fs11#ì ì¬ëŠ¥ë ¥ì„ ì¬ì„¤ì •í•˜ì‹¤ ì•„ì´í…œì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\n\r\n#r#eâ€» ì£¼ì˜ì‚¬í•­ â€»\r\nì¥ì°©ëœ ì•„ì´í…œ - ì¥ë¹„ ì•„ì´í…œë¶€í„° ìˆœìœ¼ë¡œ í‘œê¸°ë©ë‹ˆë‹¤.\r\nì ê¸ˆë˜ì–´ìˆëŠ” ì¥ë¹„ëŠ” í‘œì‹œë˜ì§€ì•ŠìŠµë‹ˆë‹¤.#n#b\r\n";
         for (short i : items) {
             Item CubetoItem;
 	var a = i;
@@ -732,9 +732,9 @@ public class OneClickSet extends ScriptEngineNPC {
             }
             int itemid = CubetoItem.getItemId();
             if (a == 0) {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ÀåÂøÁß]#n#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[ì¥ì°©ì¤‘]#n#b";
             } else {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"½½·Ô]#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r["+a+"ìŠ¬ë¡¯]#b";
             }
         }
         int selection = self.askMenu(menu);
@@ -746,7 +746,7 @@ public class OneClickSet extends ScriptEngineNPC {
                 selectedItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) selection);
             }
             List<ItemOption> allPoptions = getItemOption(selectedItem, option);
-            String see = "Ã¹¹øÂ° ÁÙ ¿øÇÏ´Â ¿É¼ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.\r\n#r#e¡Ø ÁÖÀÇ»çÇ× ¡Ø\r\n¿øÇÏ´Â Ã¹¹øÂ° ÁÙÀÌ ¶ã¶§±îÁö °è¼Óµ¹·ÁÁö´Â ¹æ½ÄÀÌ¸ç Å¥ºê´Â 1°³~x°³°¡ ¼Ò¸ğµË´Ï´Ù.(»¡¸®¶ß¸é ¶ã¼ö·Ï Å¥ºê¼Ò¸ğÀûÀ½)#n#b\r\n\r\n";
+            String see = "ì²«ë²ˆì§¸ ì¤„ ì›í•˜ëŠ” ì˜µì…˜ì„ ì„ íƒí•˜ì„¸ìš”.\r\n#r#eâ€» ì£¼ì˜ì‚¬í•­ â€»\r\nì›í•˜ëŠ” ì²«ë²ˆì§¸ ì¤„ì´ ëœ°ë•Œê¹Œì§€ ê³„ì†ëŒë ¤ì§€ëŠ” ë°©ì‹ì´ë©° íë¸ŒëŠ” 1ê°œ~xê°œê°€ ì†Œëª¨ë©ë‹ˆë‹¤.(ë¹¨ë¦¬ëœ¨ë©´ ëœ°ìˆ˜ë¡ íë¸Œì†Œëª¨ì ìŒ)#n#b\r\n\r\n";
             int L = 0;
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
             for (ItemOption opt : allPoptions) {
@@ -762,54 +762,54 @@ public class OneClickSet extends ScriptEngineNPC {
             final long price = GameConstants.getItemReleaseCost(selectedItem.getItemId());
             long stackMeso = price;
             if (getPlayer().getMeso() < price) {
-                self.sayOk("¸Ş¼Ò°¡ ºÎÁ·ÇÏ¿© ÀáÀç´É·Â Àç¼³Á¤À» ÇÒ ¼ö ¾ø½À´Ï´Ù.\r\n" + "[ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "]");
+                self.sayOk("ë©”ì†Œê°€ ë¶€ì¡±í•˜ì—¬ ì ì¬ëŠ¥ë ¥ ì¬ì„¤ì •ì„ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\r\n" + "[í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "]");
                 return;
             }
-            if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºê¸é ¸Ş¸ğ¸®¾óÅ¥ºê¿¡ µî·Ï
+            if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œë©´ ë©”ëª¨ë¦¬ì–¼íë¸Œì— ë“±ë¡
                 Equip neq = (Equip) selectedItem.copy();
                 getPlayer().memorialCube = neq;
             }
             if (cubePiece > 0) {
-                if (target.exchange(cubeId, -1, cubePiece, 1) > 0) { //ÃÖÃÊ¿¡ ÇÑ°³ µ¹¸²
+                if (target.exchange(cubeId, -1, cubePiece, 1) > 0) { //ìµœì´ˆì— í•œê°œ ëŒë¦¼
                     stackMeso += price;
                     totalCube += 1;
                     totalMeso += price;
                 } else {
-                    self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø½À´Ï´Ù.");
+                    self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
             } else {
-                if (target.exchange(cubeId, -1) > 0) { //ÃÖÃÊ¿¡ ÇÑ°³ µ¹¸²
+                if (target.exchange(cubeId, -1) > 0) { //ìµœì´ˆì— í•œê°œ ëŒë¦¼
                     stackMeso += price;
                     totalCube += 1;
                     totalMeso += price;
                 } else {
-                    self.sayOk("¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø½À´Ï´Ù.");
+                    self.sayOk("ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ìŠµë‹ˆë‹¤.");
                     return;
                 }
             }
-            //String check = "[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) +"¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n";
+            //String check = "[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) +"ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n";
             int canCubeNumber = getPlayer().getItemQuantity(cubeId, false);
             int potentialLineOne = InventoryHandler.setPotentialReturnInt(option, true, selectedItem);
-            while (allPoptions.get(cubeOption).id != potentialLineOne) { //¿øÇÏ´Â Ã¹Â°ÁÙ ¶ã¶§±îÁö µ¹¸²
-                if (getSc().isStop()) { //½ºÅ©¸³Æ® ²¨Á³´Âµ¥ while¹®µµ´Â°Å ¹æÁö ÇÊ¼ö
+            while (allPoptions.get(cubeOption).id != potentialLineOne) { //ì›í•˜ëŠ” ì²«ì§¸ì¤„ ëœ°ë•Œê¹Œì§€ ëŒë¦¼
+                if (getSc().isStop()) { //ìŠ¤í¬ë¦½íŠ¸ êº¼ì¡ŒëŠ”ë° whileë¬¸ë„ëŠ”ê±° ë°©ì§€ í•„ìˆ˜
                     break;
                 }
                 boolean canMeso = getPlayer().getMeso() >= (stackMeso + price);
-                if (canCubeNumber > 0 && canMeso) { //Å¥ºêÀÖ°í ¸Ş¼Ò¿©À¯ÀÖÀ¸¸é ¶Çµ¹¸²
+                if (canCubeNumber > 0 && canMeso) { //íë¸Œìˆê³  ë©”ì†Œì—¬ìœ ìˆìœ¼ë©´ ë˜ëŒë¦¼
                     potentialLineOne = InventoryHandler.setPotentialReturnInt(option, true, selectedItem);
                     stackMeso += price;
                     stackCube += 1;
                     totalCube += 1;
                     totalMeso += price;
                     canCubeNumber--;
-                } else { //¸Ş¼Ò¿©À¯¾ø¾î
-                    if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºêÀÏ°æ¿ì
+                } else { //ë©”ì†Œì—¬ìœ ì—†ì–´
+                    if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œì¼ê²½ìš°
                         exchange(cubeId, -stackCube, cubePiece, stackCube);
                         getPlayer().gainMeso(-stackMeso, true);
                         Equip zeroEquip = null;
-                        int after = self.askYesNo("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //¾Æ´Ï¿À ´©¸£¸é before·Î º¯°æ
-                        if (0 == after) { //¾Æ´Ï¿À
+                        int after = self.askYesNo("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //ì•„ë‹ˆì˜¤ ëˆ„ë¥´ë©´ beforeë¡œ ë³€ê²½
+                        if (0 == after) { //ì•„ë‹ˆì˜¤
                             if (selection > 1000) {
                                 ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
                             } else {
@@ -849,7 +849,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             exchange(cubeId, -stackCube);
                         }
                         getPlayer().gainMeso(-stackMeso, true);
-                        self.sayOk("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "´õÀÌ»ó Å¥ºê, ¸Ş¼Ò°¡ ¾ø°Å³ª ¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø¾î Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ë”ì´ìƒ íë¸Œ, ë©”ì†Œê°€ ì—†ê±°ë‚˜ ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ì–´ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     }
                     return;
                 }
@@ -859,7 +859,7 @@ public class OneClickSet extends ScriptEngineNPC {
             } else {
                 exchange(cubeId, -stackCube);
             }
-            getPlayer().gainMeso(-stackMeso, true); //1Â÷ ¸Ş¼Ò»©±â
+            getPlayer().gainMeso(-stackMeso, true); //1ì°¨ ë©”ì†Œë¹¼ê¸°
             stackMeso = 0;
             stackCube = 0;
             if (selection > 1000) {
@@ -893,29 +893,29 @@ public class OneClickSet extends ScriptEngineNPC {
             if (option == GradeRandomOption.Black) {
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential1() > 0) {
-                        text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential4() > 0) {
-                        text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential2() > 0) {
-                        text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential5() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential3() > 0) {
-                        text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential6() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (selection > 1000) {
@@ -923,63 +923,63 @@ public class OneClickSet extends ScriptEngineNPC {
                 } else {
                     reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition());
                 }
-                text += "\r\n\r\n#k[After ¿É¼Ç]#b\r\n";
+                text += "\r\n\r\n#k[After ì˜µì…˜]#b\r\n";
                 if (!additional) {
                     if (reItem.getPotential1() > 0) {
-                        text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential4() > 0) {
-                        text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (reItem.getPotential2() > 0) {
-                        text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential5() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (reItem.getPotential3() > 0) {
-                        text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential6() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
             } else {
                 if (additional) {
                     if (reItem.getPotential4() > 0) {
-                        text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential5() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential6() > 0) {
-                        text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential1() > 0) {
-                        text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential2() > 0) {
-                        text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential3() > 0) {
-                        text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
             }
 
 
             int yesNo = -1;
-            if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºêÀÏ¶§
-                yesNo = self.askMenu("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "Ã¹¹øÂ° ÁÙ ¿É¼Ç È¹µæ¿¡ ¼º°øÇß½À´Ï´Ù.\r\n\r\n [Before ¿É¼Ç] \r\n#b" + text + "\r\n\r\n#e#r[³²Àº Å¥ºê : " + getPlayer().getItemQuantity(cubeId, false) + "°³]" + "\r\n[³²Àº ¸Ş¼Ò : " + decFormat.format(getPlayer().getMeso()) + "¸Ş¼Ò]" + "\r\n#n#b#L0#[Before ¿É¼Ç] ¼±ÅÃÇÏ±â#l\r\n#L1#[After ¿É¼Ç] ¼±ÅÃÇÏ±â#l\r\n#L2#[´Ù½Ã µ¹¸®±â] ¼±ÅÃÇÏ±â");
-                if (yesNo == 0) { //before¼±ÅÃ
+            if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œì¼ë•Œ
+                yesNo = self.askMenu("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ íšë“ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.\r\n\r\n [Before ì˜µì…˜] \r\n#b" + text + "\r\n\r\n#e#r[ë‚¨ì€ íë¸Œ : " + getPlayer().getItemQuantity(cubeId, false) + "ê°œ]" + "\r\n[ë‚¨ì€ ë©”ì†Œ : " + decFormat.format(getPlayer().getMeso()) + "ë©”ì†Œ]" + "\r\n#n#b#L0#[Before ì˜µì…˜] ì„ íƒí•˜ê¸°#l\r\n#L1#[After ì˜µì…˜] ì„ íƒí•˜ê¸°#l\r\n#L2#[ë‹¤ì‹œ ëŒë¦¬ê¸°] ì„ íƒí•˜ê¸°");
+                if (yesNo == 0) { //beforeì„ íƒ
                     if (selection > 1000) {
                         ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
                     } else {
@@ -1007,7 +1007,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     }
                     getPlayer().memorialCube = null;
                     return;
-                } else if (yesNo == 1) { //after¼±ÅÃ
+                } else if (yesNo == 1) { //afterì„ íƒ
                     if (selection > 1000) {
                         reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition());
                     } else {
@@ -1036,13 +1036,13 @@ public class OneClickSet extends ScriptEngineNPC {
                     getPlayer().memorialCube = null;
                     return;
                 }
-            } else { //ºíÅ¥¾Æ´Ò¶§
+            } else { //ë¸”íì•„ë‹ë•Œ
                 if (selection > 1000) {
                     getPlayer().forceReAddItem(getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition()), MapleInventoryType.EQUIPPED);
                 } else {
                     getPlayer().forceReAddItem(getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition()), MapleInventoryType.EQUIP);
                 }
-                yesNo = self.askYesNo("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "Ã¹¹øÂ° ÁÙ ¿É¼Ç È¹µæ¿¡ ¼º°øÇß½À´Ï´Ù.\r\n\r\n [Å¥ºê ¿É¼Ç] \r\n#b" + text + "\r\n\r\n#e#r´Ù½Ã µ¹¸®½Ã°Ú½À´Ï±î?\r\n#b[³²Àº Å¥ºê : " + getPlayer().getItemQuantity(cubeId, false) + "°³]\r\n[³²Àº ¸Ş¼Ò : " + decFormat.format(getPlayer().getMeso()) + "¸Ş¼Ò]");
+                yesNo = self.askYesNo("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ íšë“ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.\r\n\r\n [íë¸Œ ì˜µì…˜] \r\n#b" + text + "\r\n\r\n#e#rë‹¤ì‹œ ëŒë¦¬ì‹œê² ìŠµë‹ˆê¹Œ?\r\n#b[ë‚¨ì€ íë¸Œ : " + getPlayer().getItemQuantity(cubeId, false) + "ê°œ]\r\n[ë‚¨ì€ ë©”ì†Œ : " + decFormat.format(getPlayer().getMeso()) + "ë©”ì†Œ]");
             }
             while (yesNo != 0) {
                 if (getSc().isStop()) {
@@ -1057,12 +1057,12 @@ public class OneClickSet extends ScriptEngineNPC {
                     stackCube += 1;
                     totalCube += 1;
                     totalMeso += price;
-                } else { //¸Ş¼Ò¿©À¯¾ø¾î
-                    if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºêÀÏ°æ¿ì
+                } else { //ë©”ì†Œì—¬ìœ ì—†ì–´
+                    if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œì¼ê²½ìš°
                         exchange(cubeId, -stackCube, cubePiece, stackCube);
                         getPlayer().gainMeso(-stackMeso, true);
-                        int after = self.askYesNo("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //¾Æ´Ï¿À ´©¸£¸é before·Î º¯°æ
-                        if (0 == after) { //¾Æ´Ï¿À
+                        int after = self.askYesNo("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //ì•„ë‹ˆì˜¤ ëˆ„ë¥´ë©´ beforeë¡œ ë³€ê²½
+                        if (0 == after) { //ì•„ë‹ˆì˜¤
                             if (selection > 1000) {
                                 ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
                             } else {
@@ -1102,7 +1102,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             exchange(cubeId, -stackCube);
                         }
                         getPlayer().gainMeso(-stackMeso, true);
-                        self.sayOk("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "´õÀÌ»ó Å¥ºê, ¸Ş¼Ò°¡ ¾ø°Å³ª ¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø¾î Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                        self.sayOk("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ë”ì´ìƒ íë¸Œ, ë©”ì†Œê°€ ì—†ê±°ë‚˜ ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ì–´ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     }
                     return;
                 }
@@ -1119,11 +1119,11 @@ public class OneClickSet extends ScriptEngineNPC {
                         totalCube += 1;
                         totalMeso += price;
                     } else {
-                        if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºêÀÏ°æ¿ì
+                        if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œì¼ê²½ìš°
                             exchange(cubeId, -stackCube, cubePiece, stackCube);
                             getPlayer().gainMeso(-stackMeso, true);
-                            int after = self.askYesNo("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //¾Æ´Ï¿À ´©¸£¸é before·Î º¯°æ
-                            if (0 == after) { //¾Æ´Ï¿À
+                            int after = self.askYesNo("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); //ì•„ë‹ˆì˜¤ ëˆ„ë¥´ë©´ beforeë¡œ ë³€ê²½
+                            if (0 == after) { //ì•„ë‹ˆì˜¤
                                 if (selection > 1000) {
                                     ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
                                 } else {
@@ -1163,7 +1163,7 @@ public class OneClickSet extends ScriptEngineNPC {
                                 exchange(cubeId, -stackCube);
                             }
                             getPlayer().gainMeso(-stackMeso, true);
-                            self.sayOk("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "´õÀÌ»ó Å¥ºê, ¸Ş¼Ò°¡ ¾ø°Å³ª ¼ÒºñÃ¢¿¡ ¿©À¯°ø°£ÀÌ ¾ø¾î Àç¼³Á¤ ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                            self.sayOk("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ë”ì´ìƒ íë¸Œ, ë©”ì†Œê°€ ì—†ê±°ë‚˜ ì†Œë¹„ì°½ì— ì—¬ìœ ê³µê°„ì´ ì—†ì–´ ì¬ì„¤ì • í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                         }
                         return;
                     }
@@ -1185,29 +1185,29 @@ public class OneClickSet extends ScriptEngineNPC {
                 if (option == GradeRandomOption.Black) {
                     if (!additional) {
                         if (getPlayer().memorialCube.getPotential1() > 0) {
-                            text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (getPlayer().memorialCube.getPotential4() > 0) {
-                            text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                     if (!additional) {
                         if (getPlayer().memorialCube.getPotential2() > 0) {
-                            text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (getPlayer().memorialCube.getPotential5() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                     if (!additional) {
                         if (getPlayer().memorialCube.getPotential3() > 0) {
-                            text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (getPlayer().memorialCube.getPotential6() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                     if (selection > 1000) {
@@ -1215,65 +1215,65 @@ public class OneClickSet extends ScriptEngineNPC {
                     } else {
                         reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition());
                     }
-                    text += "\r\n\r\n#k[After ¿É¼Ç]#b\r\n";
+                    text += "\r\n\r\n#k[After ì˜µì…˜]#b\r\n";
                     if (!additional) {
                         if (reItem.getPotential1() > 0) {
-                            text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (reItem.getPotential4() > 0) {
-                            text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                     if (!additional) {
                         if (reItem.getPotential2() > 0) {
-                            text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (reItem.getPotential5() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                     if (!additional) {
                         if (reItem.getPotential3() > 0) {
-                            text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (reItem.getPotential6() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                 } else {
                     if (additional) {
                         if (reItem.getPotential4() > 0) {
-                            text += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                         if (reItem.getPotential5() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                         if (reItem.getPotential6() > 0) {
-                            text += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     } else {
                         if (reItem.getPotential1() > 0) {
-                            text += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                         if (reItem.getPotential2() > 0) {
-                            text += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                         if (reItem.getPotential3() > 0) {
-                            text += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                            text += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                         }
                     }
                 }
-                if (option == GradeRandomOption.Black) { //ºí·¢Å¥ºêÀÏ¶§
+                if (option == GradeRandomOption.Black) { //ë¸”ë™íë¸Œì¼ë•Œ
                     if (selection > 1000) {
                         getPlayer().forceReAddItem(getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition()), MapleInventoryType.EQUIPPED);
                     } else {
                         getPlayer().forceReAddItem(getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition()), MapleInventoryType.EQUIP);
                     }
-                    yesNo = self.askMenu("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "Ã¹¹øÂ° ÁÙ ¿É¼Ç È¹µæ¿¡ ¼º°øÇß½À´Ï´Ù.\r\n\r\n [Before ¿É¼Ç] \r\n#b" + text + "\r\n\r\n#e#r\r\n[³²Àº Å¥ºê : " + getPlayer().getItemQuantity(cubeId, false) + "°³]" + "\r\n[³²Àº ¸Ş¼Ò : " + decFormat.format(getPlayer().getMeso()) + "¸Ş¼Ò]" + "\r\n#n#b#L0#[Before ¿É¼Ç] ¼±ÅÃÇÏ±â#l\r\n#L1#[After ¿É¼Ç] ¼±ÅÃÇÏ±â#l\r\n#L2#[´Ù½Ã µ¹¸®±â] ¼±ÅÃÇÏ±â");
-                    if (yesNo == 0) { //before¼±ÅÃ
+                    yesNo = self.askMenu("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ íšë“ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.\r\n\r\n [Before ì˜µì…˜] \r\n#b" + text + "\r\n\r\n#e#r\r\n[ë‚¨ì€ íë¸Œ : " + getPlayer().getItemQuantity(cubeId, false) + "ê°œ]" + "\r\n[ë‚¨ì€ ë©”ì†Œ : " + decFormat.format(getPlayer().getMeso()) + "ë©”ì†Œ]" + "\r\n#n#b#L0#[Before ì˜µì…˜] ì„ íƒí•˜ê¸°#l\r\n#L1#[After ì˜µì…˜] ì„ íƒí•˜ê¸°#l\r\n#L2#[ë‹¤ì‹œ ëŒë¦¬ê¸°] ì„ íƒí•˜ê¸°");
+                    if (yesNo == 0) { //beforeì„ íƒ
                         if (selection > 1000) {
                             ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
                         } else {
@@ -1301,7 +1301,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         }
                         getPlayer().memorialCube = null;
                         return;
-                    } else if (yesNo == 1) { //after¼±ÅÃ
+                    } else if (yesNo == 1) { //afterì„ íƒ
                         if (selection > 1000) {
                             reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(selectedItem.getPosition());
                         } else {
@@ -1330,7 +1330,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         getPlayer().memorialCube = null;
                         return;
                     }
-                } else { //ºíÅ¥¾Æ´Ò¶§
+                } else { //ë¸”íì•„ë‹ë•Œ
                     if (GameConstants.isZeroWeapon(reItem.getItemId())) {
                         zeroEquip = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(reItem.getPosition() == -11 ? (short) -10 : -11);
                         zeroEquip.setState(reItem.getState());
@@ -1351,7 +1351,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     } else {
                         getPlayer().forceReAddItem(reItem, MapleInventoryType.EQUIP);
                     }
-                    yesNo = self.askYesNo("[Å¥ºê 1È¸´ç ÇÊ¿ä ¸Ş¼Ò : " + decFormat.format(price) + "¸Ş¼Ò]\r\n" + "[´©Àû »ç¿ë Å¥ºê : " + totalCube + "°³]\r\n" + "[´©Àû »ç¿ë ¸Ş¼Ò : " + decFormat.format(totalMeso) + "]\r\n" + "Ã¹¹øÂ° ÁÙ ¿É¼Ç È¹µæ¿¡ ¼º°øÇß½À´Ï´Ù.\r\n\r\n [Å¥ºê ¿É¼Ç] \r\n#b" + text + "\r\n\r\n#e#r´Ù½Ã µ¹¸®½Ã°Ú½À´Ï±î?\r\n[³²Àº Å¥ºê : " + getPlayer().getItemQuantity(cubeId, false) + "°³]" + "\r\n[³²Àº ¸Ş¼Ò : " + decFormat.format(getPlayer().getMeso()) + "¸Ş¼Ò]");
+                    yesNo = self.askYesNo("[íë¸Œ 1íšŒë‹¹ í•„ìš” ë©”ì†Œ : " + decFormat.format(price) + "ë©”ì†Œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© íë¸Œ : " + totalCube + "ê°œ]\r\n" + "[ëˆ„ì  ì‚¬ìš© ë©”ì†Œ : " + decFormat.format(totalMeso) + "]\r\n" + "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ íšë“ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤.\r\n\r\n [íë¸Œ ì˜µì…˜] \r\n#b" + text + "\r\n\r\n#e#rë‹¤ì‹œ ëŒë¦¬ì‹œê² ìŠµë‹ˆê¹Œ?\r\n[ë‚¨ì€ íë¸Œ : " + getPlayer().getItemQuantity(cubeId, false) + "ê°œ]" + "\r\n[ë‚¨ì€ ë©”ì†Œ : " + decFormat.format(getPlayer().getMeso()) + "ë©”ì†Œ]");
                 }
             }
         }
@@ -1391,32 +1391,32 @@ public class OneClickSet extends ScriptEngineNPC {
 
     private String getMemorialCubeString(boolean additional, short selection, Item selectedItem) {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-        String memorialText = "Å¥ºê°¡ ºÎÁ·ÇÏ°Å³ª ¸Ş¼Ò°¡ ºÎÁ·ÇÕ´Ï´Ù. #r[After ¿É¼Ç]#kÀ¸·Î º¯°æÇÏ½Ã°Ú½À´Ï±î?\r\n\r\n#b[Before ¿É¼Ç]#k\r\n";
+        String memorialText = "íë¸Œê°€ ë¶€ì¡±í•˜ê±°ë‚˜ ë©”ì†Œê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. #r[After ì˜µì…˜]#kìœ¼ë¡œ ë³€ê²½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\r\n\r\n#b[Before ì˜µì…˜]#k\r\n";
         if (!additional) {
             if (getPlayer().memorialCube.getPotential1() > 0) {
-                memorialText += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential4() > 0) {
-                memorialText += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (getPlayer().memorialCube.getPotential2() > 0) {
-                memorialText += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential5() > 0) {
-                memorialText += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (getPlayer().memorialCube.getPotential3() > 0) {
-                memorialText += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential6() > 0) {
-                memorialText += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         Equip reItem = null;
@@ -1425,35 +1425,35 @@ public class OneClickSet extends ScriptEngineNPC {
         } else {
             reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition());
         }
-        memorialText += "\r\n#k[After ¿É¼Ç]#b\r\n";
+        memorialText += "\r\n#k[After ì˜µì…˜]#b\r\n";
         if (!additional) {
             if (reItem.getPotential1() > 0) {
-                memorialText += "Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential4() > 0) {
-                memorialText += "¿¡µğ¼Å³Î Ã¹¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "ì—ë””ì…”ë„ ì²«ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential4()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (reItem.getPotential2() > 0) {
-                memorialText += "\r\nµÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\në‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential2()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential5() > 0) {
-                memorialText += "\r\n¿¡µğ¼Å³Î µÎ¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì—ë””ì…”ë„ ë‘ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential5()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (reItem.getPotential3() > 0) {
-                memorialText += "\r\n¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential3()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential6() > 0) {
-                memorialText += "\r\n¿¡µğ¼Å³Î ¼¼¹øÂ° ÁÙ ¿É¼Ç : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                memorialText += "\r\nì—ë””ì…”ë„ ì„¸ë²ˆì§¸ ì¤„ ì˜µì…˜ : " + ii.getPotentialString().get(reItem.getPotential6()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
-        memorialText += "\r\n #r#e¿¹#k¸¦ ´©¸£¸é [After ¿É¼Ç]À¸·Î º¯°æµË´Ï´Ù.";
+        memorialText += "\r\n #r#eì˜ˆ#kë¥¼ ëˆ„ë¥´ë©´ [After ì˜µì…˜]ìœ¼ë¡œ ë³€ê²½ë©ë‹ˆë‹¤.";
         return memorialText;
     }
 }

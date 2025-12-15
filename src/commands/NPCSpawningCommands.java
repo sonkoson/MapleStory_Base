@@ -1,6 +1,5 @@
 ﻿package commands;
 
-import database.DBConfig;
 import database.DBConnection;
 import java.awt.Point;
 import java.sql.Connection;
@@ -33,7 +32,7 @@ public class NPCSpawningCommands implements Command {
             c.getPlayer().getMap().addMapObject(npc);
             c.getPlayer().getMap().broadcastMessage(CField.NPCPacket.spawnNPC(npc, true));
          } else {
-            c.getPlayer().dropMessage(6, "Cannot find NPC with that ID.");
+            c.getPlayer().dropMessage(6, "ไม่พบ NPC ที่ใช้ ID นี้");
          }
       } else if (splitted[0].equals("!shop")) {
          if (DBConfig.isGanglim) {
@@ -58,7 +57,7 @@ public class NPCSpawningCommands implements Command {
                            + c.getPlayer().getMap().getFootholds().findBelow(pos).getId());
       } else if (splitted[0].equals("!ranknpc")) {
          try {
-            c.getPlayer().dropMessage(6, "Reloading Dream Breaker Rank NPCs...");
+            c.getPlayer().dropMessage(6, "กำลังรีโหลด NPC อันดับ Dream Breaker...");
             List<String> rankers = new ArrayList<>();
 
             for (int i = 1; i <= 5; i++) {
@@ -70,32 +69,32 @@ public class NPCSpawningCommands implements Command {
                rankers.add(name);
             }
 
-            c.getPlayer().dropMessage(6, "Done!");
+            c.getPlayer().dropMessage(6, "เสร็จสิ้น!");
          } catch (Exception var18) {
-            c.getPlayer().dropMessage(6, "Error reloading Dream Breaker Rank NPCs: " + var18.getMessage());
+            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการรีโหลด NPC อันดับ Dream Breaker: " + var18.getMessage());
             var18.printStackTrace();
          }
       } else if (splitted[0].equals("!playernpc")) {
          try {
-            c.getPlayer().dropMessage(6, "Creating Player NPC...");
+            c.getPlayer().dropMessage(6, "กำลังสร้าง NPC ผู้เล่น...");
             MapleCharacter chhr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
             if (chhr == null) {
-               c.getPlayer().dropMessage(6, splitted[1] + " is not online or doesn't exist.");
+               c.getPlayer().dropMessage(6, splitted[1] + " ไม่ได้ออนไลน์หรือไม่มีอยู่จริง");
             } else {
                PlayerNPC npc = new PlayerNPC(chhr, Integer.parseInt(splitted[2]), c.getPlayer().getMap(),
                      c.getPlayer());
                npc.addToServer();
-               c.getPlayer().dropMessage(6, "Done!");
+               c.getPlayer().dropMessage(6, "เสร็จสิ้น!");
             }
          } catch (Exception var12) {
-            c.getPlayer().dropMessage(6, "Error creating Player NPC: " + var12.getMessage());
+            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการสร้าง NPC ผู้เล่น: " + var12.getMessage());
             var12.printStackTrace();
          }
       } else if (splitted[0].equals("!pnpc")) {
          int npcId = Integer.parseInt(splitted[1]);
          MapleNPC npc = MapleLifeFactory.getNPC(npcId);
          if (npc == null || npc.getName().equals("MISSINGNO")) {
-            c.getPlayer().dropMessage(6, "NPC not found in WZ data.");
+            c.getPlayer().dropMessage(6, "ไม่พบ NPC ในข้อมูล WZ");
             return;
          }
 
@@ -154,14 +153,14 @@ public class NPCSpawningCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!shop", "", "Opens the shop for GM.", 5),
-            new CommandDefinition("!npc", "<npc id>", "Spawns an NPC at your location.", 5),
-            new CommandDefinition("!clearnpc", "", "Removes all NPCs from the map.", 5),
-            new CommandDefinition("!playernpc", "<player name> <script id>", "Creates a Player NPC.", 5),
-            new CommandDefinition("!ranknpc", "", "Reloads Dream Breaker rank NPCs.", 5),
-            new CommandDefinition("!pnpc", "<npc id>", "Spawns a permanent NPC and saves to DB.", 5),
-            new CommandDefinition("!pmob", "<mob id>", "Spawns a permanent Mob and saves to DB.", 5),
-            new CommandDefinition("!pos", "", "Shows your current coordinates info.", 2)
+            new CommandDefinition("!shop", "", "เปิดร้านค้าสำหรับ GM", 5),
+            new CommandDefinition("!npc", "<npc id>", "เรียก NPC ออกมาที่ตำแหน่งของคุณ", 5),
+            new CommandDefinition("!clearnpc", "", "ลบ NPC ทั้งหมดออกจากแผนที่", 5),
+            new CommandDefinition("!playernpc", "<player name> <script id>", "สร้าง NPC เลียนแบบผู้เล่น", 5),
+            new CommandDefinition("!ranknpc", "", "รีโหลด NPC อันดับ Dream Breaker", 5),
+            new CommandDefinition("!pnpc", "<npc id>", "เรียก NPC ถาวรและบันทึกลงฐานข้อมูล", 5),
+            new CommandDefinition("!pmob", "<mob id>", "เรียกมอนสเตอร์ถาวรและบันทึกลงฐานข้อมูล", 5),
+            new CommandDefinition("!pos", "", "แสดงข้อมูลพิกัดปัจจุบันของคุณ", 2)
       };
    }
 }

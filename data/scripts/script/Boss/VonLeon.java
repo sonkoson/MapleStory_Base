@@ -24,61 +24,70 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class VonLeon extends ScriptEngineNPC {
 
     public void portalNPC() {
-        initNPC(MapleLifeFactory.getNPC(2161005)); //∆˜≈ªΩ∫≈©∏≥∆Æ ø£««Ω√
+        initNPC(MapleLifeFactory.getNPC(2161005)); // Ìè¨ÌÉàÏä§ÌÅ¨Î¶ΩÌä∏ ÏóîÌîºÏãú
         EventManager em = getEventManager("VonLeon");
         if (em == null) {
-            self.say("¡ˆ±›¿∫ π› ∑πø¬ ∑π¿ÃµÂ∏¶ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ.");
+            self.say("‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏Ç‡πâ‡∏≤‡∏£‡πà‡∏ß‡∏° Von Leon Raid ‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ");
         } else {
-            if (target.getMapId() == 211070000) { //¿‘¿Â∏ (æÀ«ˆΩ« æ’ ∫πµµ)
+            if (target.getMapId() == 211070000) { // ÏûÖÏû•Îßµ(ÏïåÌòÑÏã§ Ïïû Î≥µÎèÑ)
                 if (target.getParty() == null) {
-                    self.say("1¿Œ ¿ÃªÛ ∆ƒ∆º∏¶ ∏ŒæÓæﬂ∏∏ ¿‘¿Â«“ ºˆ ¿÷Ω¿¥œ¥Ÿ.");
+                    self.say("‡∏ï‡πâ‡∏≠‡∏á‡∏°‡∏µ‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡∏≠‡∏¢‡πà‡∏≤‡∏á‡∏ô‡πâ‡∏≠‡∏¢ 1 ‡∏Ñ‡∏ô‡∏à‡∏∂‡∏á‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤‡πÑ‡∏î‡πâ");
                 } else {
                     if (target.getParty().getLeader().getId() != target.getId() && DBConfig.isGanglim) {
-                        self.say("∆ƒ∆º¿Â¿ª ≈Î«ÿ ¡¯«‡«ÿ ¡÷Ω Ω√ø¿.");
+                        self.say("‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡πÉ‡∏´‡πâ‡∏´‡∏±‡∏ß‡∏´‡∏ô‡πâ‡∏≤‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ‡πÄ‡∏õ‡πá‡∏ô‡∏ú‡∏π‡πâ‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£");
                     } else {
-                    	boolean single = getPlayer().getPartyMemberSize() == 1;
-                        int v0 = self.askMenu("#e<∫∏Ω∫: π› ∑πø¬>#n\r\n¿ß¥Î«— øÎªÁø©. ≈∏∂Ù«— ªÁ¿⁄ø’ø°∞‘ ∏¬º≥ ¡ÿ∫Ò∏¶ ∏∂ƒ°ºÃΩ¿¥œ±Ó?\r\n#b\r\n#L0# π› ∑πø¬ ø¯¡§¥Î ¿‘¿Â¿ª Ω≈√ª«—¥Ÿ.#l");
+                        boolean single = getPlayer().getPartyMemberSize() == 1;
+                        int v0 = self.askMenu(
+                                "#e<Boss: Von Leon>#n\r\n‡∏ú‡∏π‡πâ‡∏Å‡∏•‡πâ‡∏≤‡∏ú‡∏π‡πâ‡∏¢‡∏¥‡πà‡∏á‡πÉ‡∏´‡∏ç‡πà ‡∏ó‡πà‡∏≤‡∏ô‡∏û‡∏£‡πâ‡∏≠‡∏°‡∏ó‡∏µ‡πà‡∏à‡∏∞‡πÄ‡∏ú‡∏ä‡∏¥‡∏ç‡∏´‡∏ô‡πâ‡∏≤‡∏Å‡∏±‡∏ö‡∏£‡∏≤‡∏ä‡∏™‡∏µ‡∏´‡πå‡∏ú‡∏π‡πâ‡∏•‡πà‡∏ß‡∏á‡∏•‡∏±‡∏ö‡πÅ‡∏•‡πâ‡∏ß‡∏´‡∏£‡∏∑‡∏≠‡∏¢‡∏±‡∏á?\r\n#b\r\n#L0# ‡∏Ç‡∏≠‡πÄ‡∏Ç‡πâ‡∏≤‡∏£‡πà‡∏ß‡∏°‡∏Å‡∏≠‡∏á‡∏Å‡∏≥‡∏•‡∏±‡∏á Von Leon#l");
                         if (v0 == 0) {
-                        	String menu = "";
-                        	if (DBConfig.isGanglim) {
-                        		menu = "#e<∫∏Ω∫: π› ∑πø¬>#n\r\nø¯«œΩ√¥¬ ∏µÂ∏¶ º±≈√«ÿ¡÷ººø‰.\r\n\r\n"
-                            			+ "#L0# ¿Ã¡ˆ ∏µÂ ( ∑π∫ß 125 ¿ÃªÛ )#l\r\n"
-                            			+ "#L1# ≥Î∏÷ ∏µÂ ( ∑π∫ß 125 ¿ÃªÛ )#l\r\n"
-                            			+ "#L2# «œµÂ ∏µÂ ( ∑π∫ß 125 ¿ÃªÛ )#l";
-                        	}
-                        	else {
-                        		menu = "#e<∫∏Ω∫: π› ∑πø¬>#n\r\nø¯«œΩ√¥¬ ∏µÂ∏¶ º±≈√«ÿ¡÷ººø‰.\r\n\r\n"
-                            			+ "#L0# ¿Ã¡ˆ ∏µÂ " + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ( ∑π∫ß 125 ¿ÃªÛ )#l\r\n"
-                            			+ "#L1# ≥Î∏÷ ∏µÂ " + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ( ∑π∫ß 125 ¿ÃªÛ )#l\r\n"
-                            			+ "#L2# «œµÂ ∏µÂ " + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ( ∑π∫ß 125 ¿ÃªÛ )#l\r\n";
-                        		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "VonLeon" + (single ? "Single" : "Multi"));
-                        		menu += "#L3# ¿‘¿Â»Ωºˆ" + (single ? "(ΩÃ±€)" : "(∏÷∆º)") + " ¡ı∞° " + ((single ? 2 : 1) - reset) + "»∏ ¡ı∞° ∞°¥…";
-                        	}
+                            String menu = "";
+                            if (DBConfig.isGanglim) {
+                                menu = "#e<Boss: Von Leon>#n\r\n‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡πÇ‡∏´‡∏°‡∏î‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£\r\n\r\n"
+                                        + "#L0# ‡πÇ‡∏´‡∏°‡∏î Easy ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l\r\n"
+                                        + "#L1# ‡πÇ‡∏´‡∏°‡∏î Normal ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l\r\n"
+                                        + "#L2# ‡πÇ‡∏´‡∏°‡∏î Hard ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l";
+                            } else {
+                                menu = "#e<Boss: Von Leon>#n\r\n‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡πÇ‡∏´‡∏°‡∏î‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£\r\n\r\n"
+                                        + "#L0# ‡πÇ‡∏´‡∏°‡∏î Easy " + (single ? "(Single)" : "(Multi)")
+                                        + " ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l\r\n"
+                                        + "#L1# ‡πÇ‡∏´‡∏°‡∏î Normal " + (single ? "(Single)" : "(Multi)")
+                                        + " ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l\r\n"
+                                        + "#L2# ‡πÇ‡∏´‡∏°‡∏î Hard " + (single ? "(Single)" : "(Multi)")
+                                        + " ( ‡πÄ‡∏•‡πÄ‡∏ß‡∏• 125 ‡∏Ç‡∏∂‡πâ‡∏ô‡πÑ‡∏õ )#l\r\n";
+                                int reset = getPlayer().getOneInfoQuestInteger(
+                                        QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                        "VonLeon" + (single ? "Single" : "Multi"));
+                                menu += "#L3# ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô" + (single ? "(Single)" : "(Multi)") + " ‡πÄ‡∏û‡∏¥‡πà‡∏° "
+                                        + ((single ? 2 : 1) - reset) + "‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ";
+                            }
                             int v1 = self.askMenu(menu);
                             if (v1 == 3 && !DBConfig.isGanglim) {
-                            	if (getPlayer().getTogetherPoint() < 150) {
-                            		self.sayOk("«˘µø ∆˜¿Œ∆Æ∞° ∫Œ¡∑«’¥œ¥Ÿ. «ˆ¿Á ∆˜¿Œ∆Æ : " + getPlayer().getTogetherPoint());
-                            		return;
-                            	}
-                            	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "VonLeon" + (single ? "Single" : "Multi"));
-                            	if ((reset > 0 && !single) || (reset > 1 && single)) {
-                            		self.sayOk("±›¿œ √ﬂ∞° ∞°¥…«— »Ωºˆ∏¶ ∏µŒ ªÁøÎ«œø¥Ω¿¥œ¥Ÿ.");
-                            		return;
-                            	}
-                            	getPlayer().gainTogetherPoint(-150);
-                            	getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "VonLeon" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-                            	self.sayOk("¿‘¿Â ∞°¥… »Ωºˆ∞° ¡ı∞°«œø¥Ω¿¥œ¥Ÿ.");
-                            	return;
+                                if (getPlayer().getTogetherPoint() < 150) {
+                                    self.sayOk("‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡πà‡∏ß‡∏°‡∏°‡∏∑‡∏≠‡πÑ‡∏°‡πà‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏û‡∏≠ ‡∏Ñ‡∏∞‡πÅ‡∏ô‡∏ô‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô : "
+                                            + getPlayer().getTogetherPoint());
+                                    return;
+                                }
+                                int reset = getPlayer().getOneInfoQuestInteger(
+                                        QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                        "VonLeon" + (single ? "Single" : "Multi"));
+                                if ((reset > 0 && !single) || (reset > 1 && single)) {
+                                    self.sayOk("‡∏Ñ‡∏∏‡∏ì‡πÉ‡∏ä‡πâ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÑ‡∏î‡πâ‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ‡∏´‡∏°‡∏î‡πÅ‡∏•‡πâ‡∏ß");
+                                    return;
+                                }
+                                getPlayer().gainTogetherPoint(-150);
+                                getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
+                                        "VonLeon" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+                                self.sayOk("‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÑ‡∏î‡πâ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏Ç‡∏∂‡πâ‡∏ô‡πÅ‡∏•‡πâ‡∏ß");
+                                return;
                             }
                             if (!DBConfig.isGanglim) {
-                            	if (target.getParty().getLeader().getId() != target.getId()) {
-                            		self.say("∆ƒ∆º¿Â¿ª ≈Î«ÿ ¡¯«‡«ÿ ¡÷Ω Ω√ø¿.");
-                            		return;
-                            	}
+                                if (target.getParty().getLeader().getId() != target.getId()) {
+                                    self.say("ÌååÌã∞Ïû•ÏùÑ ÌÜµÌï¥ ÏßÑÌñâÌï¥ Ï£ºÏã≠ÏãúÏò§.");
+                                    return;
+                                }
                             }
                             if (target.getParty().isPartySameMap()) {
                                 boolean canEnter = false;
@@ -95,36 +104,42 @@ public class VonLeon extends ScriptEngineNPC {
                                     if (v1 == 2) {
                                         if (getPlayer().getQuestStatus(2000019) == 1) {
                                             if (GameConstants.isZero(getPlayer().getJob())) {
-                                                v2 = self.askMenu("#e<¡¶≥◊Ω√Ω∫ π´±‚>#n\r\n∞À¿∫ ∏∂π˝ªÁ¿« »˚¿Ã ¥„±‰ #b¡¶≥◊Ω√Ω∫ π´±‚#k¿« ∫Òπ–¿ª «Æ±‚ ¿ß«— ¿”π´∏¶ ºˆ«‡ «“ ºˆ ¿÷¥Ÿ. æÓ∂ª∞‘ «“±Ó?\r\n\r\n#e#r<¿”π´ ºˆ«‡ ¡∂∞«>#n#k\r\n#b -»•¿⁄º≠ ∞›∆ƒ\r\n -√÷¡æ µ•πÃ¡ˆ 90% ∞®º“\r\n -¬¯øÎ ¡ﬂ¿Œ ¿Â∫Ò¿« º¯ºˆ ¥…∑¬ƒ°∏∏ ¿˚øÎ\r\n#k#L0#πÃº«¿ª ºˆ«‡«—¥Ÿ.#l\r\n#L1#πÃº«¿ª ºˆ«‡«œ¡ˆ æ ¥¬¥Ÿ.#l", ScriptMessageFlag.Self);
+                                                v2 = self.askMenu(
+                                                        "#e<‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò Genesis>#n\r\n‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏õ‡∏•‡∏î‡∏õ‡∏•‡πà‡∏≠‡∏¢‡∏Ñ‡∏ß‡∏≤‡∏°‡∏•‡∏±‡∏ö‡∏Ç‡∏≠‡∏á #b‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò Genesis#k ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏û‡∏•‡∏±‡∏á‡∏Ç‡∏≠‡∏á‡∏à‡∏≠‡∏°‡πÄ‡∏ß‡∏ó‡∏î‡∏≥‡πÑ‡∏î‡πâ ‡∏à‡∏∞‡∏ó‡∏≥‡∏≠‡∏¢‡πà‡∏≤‡∏á‡πÑ‡∏£?\r\n\r\n#e#r<‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à>#n#k\r\n#b -‡∏Å‡∏≥‡∏à‡∏±‡∏î‡∏Ñ‡∏ô‡πÄ‡∏î‡∏µ‡∏¢‡∏ß\r\n -‡∏•‡∏î Final Damage 90%\r\n -‡πÉ‡∏ä‡πâ‡∏Ñ‡πà‡∏≤‡∏û‡∏•‡∏±‡∏á‡∏à‡∏≤‡∏Å‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏ó‡∏µ‡πà‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô\r\n#k#L0#‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l\r\n#L1#‡πÑ‡∏°‡πà‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l",
+                                                        ScriptMessageFlag.Self);
                                             } else {
-                                                v2 = self.askMenu("#e<¡¶≥◊Ω√Ω∫ π´±‚>#n\r\n∞À¿∫ ∏∂π˝ªÁ¿« »˚¿Ã ¥„±‰ #b¡¶≥◊Ω√Ω∫ π´±‚#k¿« ∫Òπ–¿ª «Æ±‚ ¿ß«— ¿”π´∏¶ ºˆ«‡ «“ ºˆ ¿÷¥Ÿ. æÓ∂ª∞‘ «“±Ó?\r\n\r\n#e#r<¿”π´ ºˆ«‡ ¡∂∞«>#n#k\r\n#b -»•¿⁄º≠ ∞›∆ƒ\r\n -∫¿¿Œµ» ¡¶≥◊Ω√Ω∫ π´±‚øÕ ∫∏¡∂π´±‚∏∏ ¿Â¬¯\r\n -√÷¡æ µ•πÃ¡ˆ 90% ∞®º“\r\n -¬¯øÎ ¡ﬂ¿Œ ¿Â∫Ò¿« º¯ºˆ ¥…∑¬ƒ°∏∏ ¿˚øÎ\r\n#k#L0#πÃº«¿ª ºˆ«‡«—¥Ÿ.#l\r\n#L1#πÃº«¿ª ºˆ«‡«œ¡ˆ æ ¥¬¥Ÿ.#l", ScriptMessageFlag.Self);
+                                                v2 = self.askMenu(
+                                                        "#e<‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò Genesis>#n\r\n‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏õ‡∏•‡∏î‡∏õ‡∏•‡πà‡∏≠‡∏¢‡∏Ñ‡∏ß‡∏≤‡∏°‡∏•‡∏±‡∏ö‡∏Ç‡∏≠‡∏á #b‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò Genesis#k ‡∏ó‡∏µ‡πà‡∏°‡∏µ‡∏û‡∏•‡∏±‡∏á‡∏Ç‡∏≠‡∏á‡∏à‡∏≠‡∏°‡πÄ‡∏ß‡∏ó‡∏î‡∏≥‡πÑ‡∏î‡πâ ‡∏à‡∏∞‡∏ó‡∏≥‡∏≠‡∏¢‡πà‡∏≤‡∏á‡πÑ‡∏£?\r\n\r\n#e#r<‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à>#n#k\r\n#b -‡∏Å‡∏≥‡∏à‡∏±‡∏î‡∏Ñ‡∏ô‡πÄ‡∏î‡∏µ‡∏¢‡∏ß\r\n -‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÄ‡∏â‡∏û‡∏≤‡∏∞‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò Genesis ‡∏ó‡∏µ‡πà‡∏ñ‡∏π‡∏Å‡∏ú‡∏ô‡∏∂‡∏Å‡πÅ‡∏•‡∏∞‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò‡∏£‡∏≠‡∏á‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô\r\n -‡∏•‡∏î Final Damage 90%\r\n -‡πÉ‡∏ä‡πâ‡∏Ñ‡πà‡∏≤‡∏û‡∏•‡∏±‡∏á‡∏à‡∏≤‡∏Å‡∏≠‡∏∏‡∏õ‡∏Å‡∏£‡∏ì‡πå‡∏ó‡∏µ‡πà‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô\r\n#k#L0#‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l\r\n#L1#‡πÑ‡∏°‡πà‡∏ó‡∏≥‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à#l",
+                                                        ScriptMessageFlag.Self);
                                             }
                                             if (v2 == 0) {
                                                 if (!checkBMQuestEquip()) {
                                                     return;
                                                 }
                                                 if (getPlayer().getParty().getPartyMemberList().size() > 1) {
-                                                    self.say("«ÿ¥Á ƒ˘Ω∫∆Æ¥¬ »•¿⁄ ¡¯«‡«ÿæﬂ «—¥Ÿ.", ScriptMessageFlag.Self);
+                                                    self.say("‡∏†‡∏≤‡∏£‡∏Å‡∏¥‡∏à‡∏ô‡∏µ‡πâ‡∏ï‡πâ‡∏≠‡∏á‡∏î‡∏≥‡πÄ‡∏ô‡∏¥‡∏ô‡∏Å‡∏≤‡∏£‡πÄ‡∏û‡∏µ‡∏¢‡∏á‡∏Ñ‡∏ô‡πÄ‡∏î‡∏µ‡∏¢‡∏ß",
+                                                            ScriptMessageFlag.Self);
                                                     return;
                                                 }
                                             }
                                         }
                                     }
-                                    
-									if (!canEnter) { // ¿‘¿Â¿Ã ∫“∞°¥…«— ∞ÊøÏ ∏ ø° ¿Ø¿˙∞° æ¯¥¬¡ˆ √º≈© »ƒ ¿ŒΩ∫≈œΩ∫ √ ±‚»≠
-										if (getClient().getChannelServer().getMapFactory().getMap(211070100).getCharactersSize() == 0) {
-											String rt = em.getProperty("ResetTime");
-											long curTime = System.currentTimeMillis();
-											long time = rt == null ? 0 : Long.parseLong(rt);
-											if (time == 0) {
-												em.setProperty("ResetTime", String.valueOf(curTime));
-											} else if (time - curTime >= 10000) { // 10√ ¿ÃªÛ ∏ ¿Ã ∫Û∞ÊøÏ ¿‘¿Â∞°¥…«œ∞‘ ∫Ø∞Ê
-												canEnter = true;
-												em.setProperty("ResetTime", "0");
-											}
-										}
-									}
-                                    
+
+                                    if (!canEnter) { // ÏûÖÏû•Ïù¥ Î∂àÍ∞ÄÎä•Ìïú Í≤ΩÏö∞ ÎßµÏóê Ïú†Ï†ÄÍ∞Ä ÏóÜÎäîÏßÄ Ï≤¥ÌÅ¨ ÌõÑ Ïù∏Ïä§ÌÑ¥Ïä§ Ï¥àÍ∏∞Ìôî
+                                        if (getClient().getChannelServer().getMapFactory().getMap(211070100)
+                                                .getCharactersSize() == 0) {
+                                            String rt = em.getProperty("ResetTime");
+                                            long curTime = System.currentTimeMillis();
+                                            long time = rt == null ? 0 : Long.parseLong(rt);
+                                            if (time == 0) {
+                                                em.setProperty("ResetTime", String.valueOf(curTime));
+                                            } else if (time - curTime >= 10000) { // 10Ï¥àÏù¥ÏÉÅ ÎßµÏù¥ ÎπàÍ≤ΩÏö∞ ÏûÖÏû•Í∞ÄÎä•ÌïòÍ≤å Î≥ÄÍ≤Ω
+                                                canEnter = true;
+                                                em.setProperty("ResetTime", "0");
+                                            }
+                                        }
+                                    }
+
                                     if (canEnter) {
                                         if (DBConfig.isGanglim) {
                                             Party party = getPlayer().getParty();
@@ -134,7 +149,8 @@ public class VonLeon extends ScriptEngineNPC {
                                                 if (p != null) {
                                                     int count = p.getOneInfoQuestInteger(key, "vonleon_clear");
                                                     if (count >= (1 + p.getBossTier())) {
-                                                        self.say("∆ƒ∆ºø¯ ¡ﬂ #b#e" + p.getName() + "#n#k∞° ø¿¥√ ¥ı ¿ÃªÛ µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                                        self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + p.getName()
+                                                                + "#n#k ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ");
                                                         return;
                                                     }
                                                     p.updateOneInfo(key, "vonleon_clear", String.valueOf(count + 1));
@@ -152,35 +168,38 @@ public class VonLeon extends ScriptEngineNPC {
                                         } else if (v1 == 2) {
                                             eim.setProperty("mode", "hard");
                                         }
-                                        getClient().getChannelServer().getMapFactory().getMap(211070100).resetFully(false);
+                                        getClient().getChannelServer().getMapFactory().getMap(211070100)
+                                                .resetFully(false);
                                         if (v2 == 0) {
                                             getPlayer().applyBMCurse1(1);
                                         }
                                         if (!DBConfig.isGanglim && !single) {
-                                        	for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
-                                        		if (partyMember.getMapId() == getPlayer().getMapId()) {
-                                        			partyMember.setMultiMode(true);
-                                        			partyMember.applyBMCurseJinMulti();
-                                        		}
-                                        	}
+                                            for (MapleCharacter partyMember : getPlayer().getPartyMembers()) {
+                                                if (partyMember.getMapId() == getPlayer().getMapId()) {
+                                                    partyMember.setMultiMode(true);
+                                                    partyMember.applyBMCurseJinMulti();
+                                                }
+                                            }
                                         }
                                         updateEventNumber(getPlayer(), QuestExConstants.VonLeon.getQuestID());
                                         eim.registerParty(target.getParty(), getPlayer().getMap());
                                     } else {
-                                        self.sayOk("«ˆ¿Á ∏µÁ∏ ¿Ã ∞°µÊ¬˜ ¿ÃøÎ«œΩ« ºˆ æ¯Ω¿¥œ¥Ÿ. ¥Ÿ∏• √§≥Œ¿ª ¿ÃøÎ«ÿ¡÷ººø‰.");
+                                        self.sayOk("‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏ï‡πá‡∏° ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡πÉ‡∏ä‡πâ‡∏ö‡∏£‡∏¥‡∏Å‡∏≤‡∏£‡πÑ‡∏î‡πâ ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà‡πÉ‡∏ô‡πÅ‡∏ä‡∏ô‡πÅ‡∏ô‡∏•‡∏≠‡∏∑‡πà‡∏ô");
                                     }
                                 } else {
-                                    self.say("∆ƒ∆ºø¯ ¡ﬂ#b#e" + overLap + "∞°#n#k ø¿¥√ ¿ÃπÃ ¿‘¿Â «œø© ¥ı ¿ÃªÛ µµ¿¸«“ ºˆ æ¯Ω¿¥œ¥Ÿ.");
+                                    self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡πÉ‡∏ô‡∏õ‡∏≤‡∏£‡πå‡∏ï‡∏µ‡πâ #b#e" + overLap
+                                            + "#n#k ‡πÑ‡∏î‡πâ‡πÄ‡∏Ç‡πâ‡∏≤‡πÄ‡∏•‡πà‡∏ô‡πÅ‡∏•‡πâ‡∏ß‡πÉ‡∏ô‡∏ß‡∏±‡∏ô‡∏ô‡∏µ‡πâ ‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏î‡πâ‡∏≠‡∏µ‡∏Å");
                                 }
                             } else {
-                                self.say(target.getParty().getPartyMemberList().size() + "∏Ì ∏µŒ ∞∞¿∫∏ ø° ¿÷æÓæﬂ «’¥œ¥Ÿ.");
+                                self.say("‡∏™‡∏°‡∏≤‡∏ä‡∏¥‡∏Å‡∏ó‡∏±‡πâ‡∏á " + target.getParty().getPartyMemberList().size()
+                                        + " ‡∏Ñ‡∏ô‡∏ï‡πâ‡∏≠‡∏á‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô‡πÅ‡∏ú‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô");
                             }
                         }
                     }
                 }
             } else {
-                if (self.askYesNo("µµ¿¸¿ª ∏∂ƒ°∞Ì æÀ«ˆΩ«ø°º≠ ≈¿Â«œΩ√∞⁄Ω¿¥œ±Ó?") == 1) {
-                    //ºˆ∂ÙΩ√ ≈¿Â (≥◊ π¯¬∞ ≈æ∑Á∑Œ ∞°¡¸)
+                if (self.askYesNo("‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏à‡∏ö‡∏Å‡∏≤‡∏£‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÅ‡∏•‡∏∞‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏´‡πâ‡∏≠‡∏á‡πÇ‡∏ñ‡∏á‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?") == 1) {
+                    // ÏàòÎùΩÏãú Ìá¥Ïû• (ÎÑ§ Î≤àÏß∏ ÌÉëÎ£®Î°ú Í∞ÄÏßê)
                     getPlayer().setRegisterTransferFieldTime(0);
                     getPlayer().setRegisterTransferField(0);
                     registerTransferField(211060801);
@@ -190,12 +209,13 @@ public class VonLeon extends ScriptEngineNPC {
                         getPlayer().setEventInstance(null);
                     }
                 }
-                //∞≈¿˝Ω√ æ∆π´∞Õµµæ¯¥Ÿ
+                // Í±∞Ï†àÏãú ÏïÑÎ¨¥Í≤ÉÎèÑÏóÜÎã§
             }
         }
     }
 
     int[] bmWeapons = GameConstants.bmWeapons;
+
     public boolean checkBMQuestEquip() {
         MapleInventory inv = getPlayer().getInventory(MapleInventoryType.EQUIPPED);
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -206,7 +226,8 @@ public class VonLeon extends ScriptEngineNPC {
                 continue;
             }
             if (!ii.isCash(item.getItemId())) {
-                if (next == -11 || next == -10 || next <= -1600 && next >= -1700 || next == -117 || next == -122 || next == -131) {
+                if (next == -11 || next == -10 || next <= -1600 && next >= -1700 || next == -117 || next == -122
+                        || next == -131) {
                     if (next == -11) {
                         boolean find = false;
                         for (int i = 0; i < bmWeapons.length; ++i) {
@@ -228,7 +249,7 @@ public class VonLeon extends ScriptEngineNPC {
             }
         }
         if (!blockedList.isEmpty()) {
-            String v0 = "#rπ´±‚#køÕ #b∫∏¡∂π´±‚#k∏∏ ¬¯øÎ«œ∞Ì µµ¿¸«ÿæﬂ «—¥Ÿ.\r\n\r\n#r<¬¯øÎ «ÿ¡¶«ÿæﬂ «œ¥¬ æ∆¿Ã≈€>#k\r\n";
+            String v0 = "#r‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò#k ‡πÅ‡∏•‡∏∞ #b‡∏≠‡∏≤‡∏ß‡∏∏‡∏ò‡∏£‡∏≠‡∏á#k ‡∏ï‡πâ‡∏≠‡∏á‡∏™‡∏ß‡∏°‡πÉ‡∏™‡πà‡πÄ‡∏ó‡πà‡∏≤‡∏ô‡∏±‡πâ‡∏ô‡∏à‡∏∂‡∏á‡∏à‡∏∞‡∏ó‡πâ‡∏≤‡∏ó‡∏≤‡∏¢‡πÑ‡∏î‡πâ\r\n\r\n#r<‡πÑ‡∏≠‡πÄ‡∏ó‡∏°‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏ñ‡∏≠‡∏î‡∏≠‡∏≠‡∏Å>#k\r\n";
             for (int i = 0; i < blockedList.size(); ++i) {
                 int bid = blockedList.get(i);
                 v0 += "#i" + bid + "# #z" + bid + "#\r\n";
@@ -246,115 +267,113 @@ public class VonLeon extends ScriptEngineNPC {
                 eim.setProperty("summonNPC", "1");
                 Field field = getPlayer().getMap();
                 field.spawnNpc(2161000, new Point(-6, -188));
-                field.broadcastMessage(CField.NPCPacket.npcSpecialAction(field.getNPCById(2161000).getObjectId(), "summon", 0, 0));
+                field.broadcastMessage(
+                        CField.NPCPacket.npcSpecialAction(field.getNPCById(2161000).getObjectId(), "summon", 0, 0));
             }
         }
     }
 
     public void VanLeon_Summon() {
         /*
-8840013 - ¿Ã¡ˆº“»Ø
-8840010 - ≥Î∏ªº“»Ø
-8840018 - «œµÂº“»Ø
+         * 8840013 - Ïù¥ÏßÄÏÜåÌôò
+         * 8840010 - ÎÖ∏ÎßêÏÜåÌôò
+         * 8840018 - ÌïòÎìúÏÜåÌôò
          */
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //∆ƒ∆º¿Â∏∏ º“»Ø∞°¥…(¡ﬂ∫πº“»Ø πÊ¡ˆ)
-                if (self.askAccept("≥™∏¶ π∞∏Æƒ°∑Ø ø¬ øÎªÁµÈ¿Œ∞°... ∞À¿∫ ∏∂π˝ªÁ∏¶ ¿˚¥Î«œ¥¬ ¿⁄µÈ¿Œ∞°... æÓ¥¿ ¬ ¿Ã∞« ªÛ∞¸ æ¯∞⁄¡ˆ. º≠∑Œ¿« ∏Ò¿˚¿Ã ∏Ì»Æ«œ¥Ÿ∏È ¥ı ¿Ãæﬂ±‚ «“ « ø‰¥¬ æ¯¿ª ≈◊¥œ...  \r\n¥˝∫≠∂Û. æÓ∏ÆºÆ¿∫ ¿⁄µÈæ∆...#k", ScriptMessageFlag.NoEsc) == 1) {
-                    //ºˆ∂Ù«œ∏È π›∑πø¬¿Ã º“»Øµ»¥Ÿ
+            if (target.getParty().getLeader().getId() == target.getId()) { // ÌååÌã∞Ïû•Îßå ÏÜåÌôòÍ∞ÄÎä•(Ï§ëÎ≥µÏÜåÌôò Î∞©ÏßÄ)
+                if (self.askAccept(
+                        "‡∏ú‡∏π‡πâ‡∏Å‡∏•‡πâ‡∏≤‡∏ó‡∏µ‡πà‡∏°‡∏≤‡∏õ‡∏£‡∏≤‡∏ö‡∏Ç‡πâ‡∏≤... ‡∏´‡∏£‡∏∑‡∏≠‡∏à‡∏∞‡πÄ‡∏õ‡πá‡∏ô‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Ç‡∏≠‡∏á‡∏à‡∏≠‡∏°‡πÄ‡∏ß‡∏ó‡∏î‡∏≥... ‡∏à‡∏∞‡∏ù‡πà‡∏≤‡∏¢‡πÑ‡∏´‡∏ô‡∏Å‡πá‡πÑ‡∏°‡πà‡∏™‡∏≥‡∏Ñ‡∏±‡∏ç ‡∏´‡∏≤‡∏Å‡πÄ‡∏õ‡πâ‡∏≤‡∏´‡∏°‡∏≤‡∏¢‡∏ä‡∏±‡∏î‡πÄ‡∏à‡∏ô‡∏Å‡πá‡πÑ‡∏°‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏û‡∏π‡∏î‡∏û‡∏£‡πà‡∏≥‡∏ó‡∏≥‡πÄ‡∏û‡∏•‡∏á...  \r\n‡πÄ‡∏Ç‡πâ‡∏≤‡∏°‡∏≤‡πÄ‡∏•‡∏¢ ‡πÄ‡∏à‡πâ‡∏≤‡∏û‡∏ß‡∏Å‡πÇ‡∏á‡πà‡πÄ‡∏Ç‡∏•‡∏≤...#k",
+                        ScriptMessageFlag.NoEsc) == 1) {
+                    // ÏàòÎùΩÌïòÎ©¥ Î∞òÎ†àÏò®Ïù¥ ÏÜåÌôòÎêúÎã§
                     if (eim.getProperty("summonMOB") == null) {
                         eim.setProperty("summonMOB", "1");
                         Field field = getPlayer().getMap();
                         field.removeNpc(2161000);
                         if (eim.getProperty("mode").equals("hard")) {
-                        	if (DBConfig.isGanglim) {
-                        		field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
-                        	}
-                        	else {
-                        		if (!getPlayer().isMultiMode()) { //ΩÃ±€∏µÂ
-                        			field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
-                        			if (getPlayer().getQuestStatus(2000019) == 1) {
-                        				getPlayer().applyBMCurse1(2);
-                        			}
-                        		}
-                        		else {
-                        			final MapleMonster vonleon = MapleLifeFactory.getMonster(8840018);
-                        			vonleon.setPosition(new Point(-6, -188));
-                        			
-                        			final long hp = vonleon.getMobMaxHp();
-                        			long fixedhp = hp * 3L;
-                        			if (fixedhp < 0) {
-                        				fixedhp = Long.MAX_VALUE;
-                        			}
-                        			vonleon.setHp(fixedhp);
-                        			vonleon.setMaxHp(fixedhp);
+                            if (DBConfig.isGanglim) {
+                                field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
+                            } else {
+                                if (!getPlayer().isMultiMode()) { // Ïã±Í∏ÄÎ™®Îìú
+                                    field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
+                                    if (getPlayer().getQuestStatus(2000019) == 1) {
+                                        getPlayer().applyBMCurse1(2);
+                                    }
+                                } else {
+                                    final MapleMonster vonleon = MapleLifeFactory.getMonster(8840018);
+                                    vonleon.setPosition(new Point(-6, -188));
 
-        							field.spawnMonster(vonleon, 32);
-                        		}
-                        	}
+                                    final long hp = vonleon.getMobMaxHp();
+                                    long fixedhp = hp * 3L;
+                                    if (fixedhp < 0) {
+                                        fixedhp = Long.MAX_VALUE;
+                                    }
+                                    vonleon.setHp(fixedhp);
+                                    vonleon.setMaxHp(fixedhp);
+
+                                    field.spawnMonster(vonleon, 32);
+                                }
+                            }
                         } else if (eim.getProperty("mode").equals("normal")) {
-                        	if (DBConfig.isGanglim) {
-                        		field.spawnMonster(MapleLifeFactory.getMonster(8840010), new Point(-6, -188), 32);
-                        	}
-                        	else {
-                        		if (getPlayer().getPartyMemberSize() == 1) {
-                        			field.spawnMonster(MapleLifeFactory.getMonster(8840010), new Point(-6, -188), 32);
-                        		}
-                        		else {
-                        			final MapleMonster vonleon = MapleLifeFactory.getMonster(8840010);
-                        			vonleon.setPosition(new Point(-6, -188));
-        							final long hp = vonleon.getMobMaxHp();
-                        			long fixedhp = hp * 3L;
-                        			if (fixedhp < 0) {
-                        				fixedhp = Long.MAX_VALUE;
-                        			}
-                        			vonleon.setHp(fixedhp);
-                        			vonleon.setMaxHp(fixedhp);
+                            if (DBConfig.isGanglim) {
+                                field.spawnMonster(MapleLifeFactory.getMonster(8840010), new Point(-6, -188), 32);
+                            } else {
+                                if (getPlayer().getPartyMemberSize() == 1) {
+                                    field.spawnMonster(MapleLifeFactory.getMonster(8840010), new Point(-6, -188), 32);
+                                } else {
+                                    final MapleMonster vonleon = MapleLifeFactory.getMonster(8840010);
+                                    vonleon.setPosition(new Point(-6, -188));
+                                    final long hp = vonleon.getMobMaxHp();
+                                    long fixedhp = hp * 3L;
+                                    if (fixedhp < 0) {
+                                        fixedhp = Long.MAX_VALUE;
+                                    }
+                                    vonleon.setHp(fixedhp);
+                                    vonleon.setMaxHp(fixedhp);
 
-        							field.spawnMonster(vonleon, 32);
-                        		}
-                        	}
+                                    field.spawnMonster(vonleon, 32);
+                                }
+                            }
                         } else if (eim.getProperty("mode").equals("easy")) {
-                        	if (DBConfig.isGanglim) {
-                        		field.spawnMonster(MapleLifeFactory.getMonster(8840013), new Point(-6, -188), 32);
-                        	}
-                        	else {
-                        		if (getPlayer().getPartyMemberSize() == 1) {
-                        			field.spawnMonster(MapleLifeFactory.getMonster(8840013), new Point(-6, -188), 32);
-                        		}
-                        		else {
-                        			final MapleMonster vonleon = MapleLifeFactory.getMonster(8840013);
-                        			vonleon.setPosition(new Point(-6, -188));
-                        			final long hp = vonleon.getMobMaxHp();
-                        			long fixedhp = hp * 3L;
-                        			if (fixedhp < 0) {
-                        				fixedhp = Long.MAX_VALUE;
-                        			}
-                        			vonleon.setHp(fixedhp);
-                        			vonleon.setMaxHp(fixedhp);
+                            if (DBConfig.isGanglim) {
+                                field.spawnMonster(MapleLifeFactory.getMonster(8840013), new Point(-6, -188), 32);
+                            } else {
+                                if (getPlayer().getPartyMemberSize() == 1) {
+                                    field.spawnMonster(MapleLifeFactory.getMonster(8840013), new Point(-6, -188), 32);
+                                } else {
+                                    final MapleMonster vonleon = MapleLifeFactory.getMonster(8840013);
+                                    vonleon.setPosition(new Point(-6, -188));
+                                    final long hp = vonleon.getMobMaxHp();
+                                    long fixedhp = hp * 3L;
+                                    if (fixedhp < 0) {
+                                        fixedhp = Long.MAX_VALUE;
+                                    }
+                                    vonleon.setHp(fixedhp);
+                                    vonleon.setMaxHp(fixedhp);
 
-        							field.spawnMonster(vonleon, 32);
-                        		}
-                        	}
+                                    field.spawnMonster(vonleon, 32);
+                                }
+                            }
                         }
                     }
                 }
             } else {
-                self.say("≥™∏¶ π∞∏Æƒ°∑Ø ø¬ øÎªÁµÈ¿Œ∞°... ∞À¿∫ ∏∂π˝ªÁ∏¶ ¿˚¥Î«œ¥¬ ¿⁄µÈ¿Œ∞°... æÓ¥¿ ¬ ¿Ã∞« ªÛ∞¸ æ¯∞⁄¡ˆ. º≠∑Œ¿« ∏Ò¿˚¿Ã ∏Ì»Æ«œ¥Ÿ∏È ¥ı ¿Ãæﬂ±‚ «“ « ø‰¥¬ æ¯¿ª ≈◊¥œ...");
+                self.say(
+                        "‡∏ú‡∏π‡πâ‡∏Å‡∏•‡πâ‡∏≤‡∏ó‡∏µ‡πà‡∏°‡∏≤‡∏õ‡∏£‡∏≤‡∏ö‡∏Ç‡πâ‡∏≤... ‡∏´‡∏£‡∏∑‡∏≠‡∏à‡∏∞‡πÄ‡∏õ‡πá‡∏ô‡∏®‡∏±‡∏ï‡∏£‡∏π‡∏Ç‡∏≠‡∏á‡∏à‡∏≠‡∏°‡πÄ‡∏ß‡∏ó‡∏î‡∏≥... ‡∏à‡∏∞‡∏ù‡πà‡∏≤‡∏¢‡πÑ‡∏´‡∏ô‡∏Å‡πá‡πÑ‡∏°‡πà‡∏™‡∏≥‡∏Ñ‡∏±‡∏ç ‡∏´‡∏≤‡∏Å‡πÄ‡∏õ‡πâ‡∏≤‡∏´‡∏°‡∏≤‡∏¢‡∏ä‡∏±‡∏î‡πÄ‡∏à‡∏ô‡∏Å‡πá‡πÑ‡∏°‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏û‡∏π‡∏î‡∏û‡∏£‡πà‡∏≥‡∏ó‡∏≥‡πÄ‡∏û‡∏•‡∏á...");
             }
         }
-        //∞≈¿˝Ω√ æ∆π´∞Õµµæ¯¥Ÿ
+        // Í±∞Ï†àÏãú ÏïÑÎ¨¥Í≤ÉÎèÑÏóÜÎã§
     }
 
     public void outVanLeonPrison() {
-        // ∞®ø¡ø≠ºË ¿÷æÓæﬂ ≈ª√‚∞°¥…
+        // Í∞êÏò•Ïó¥Ïá† ÏûàÏñ¥Ïïº ÌÉàÏ∂úÍ∞ÄÎä•
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (getPlayer().haveItem(4032860, 1, false, true)) {
                 registerTransferField(Integer.parseInt(eim.getProperty("map")));
                 getPlayer().removeItem(4032860, -1);
             } else {
-                getPlayer().dropMessage(5, "ø≠ºË∞° æ¯¿Ã¥¬ ∞®ø¡ø°º≠ ≈ª√‚«“ ºˆ æ¯Ω¿¥œ¥Ÿ. ªÛ¿⁄∏¶ µ⁄¡Æ ø≠ºË∏¶ √£æ∆¡÷ººø‰.");
+                getPlayer().dropMessage(5, "‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏Ñ‡∏∏‡∏Å‡πÑ‡∏î‡πâ‡∏´‡∏≤‡∏Å‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏Å‡∏∏‡∏ç‡πÅ‡∏à ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏Ñ‡πâ‡∏ô‡∏´‡∏≤‡∏Å‡∏∏‡∏ç‡πÅ‡∏à‡∏à‡∏≤‡∏Å‡∏Å‡∏•‡πà‡∏≠‡∏á");
             }
         }
     }

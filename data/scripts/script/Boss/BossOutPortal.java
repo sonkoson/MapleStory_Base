@@ -8,65 +8,65 @@ import scripting.ScriptMessageFlag;
 import scripting.newscripting.ScriptEngineNPC;
 
 public class BossOutPortal extends ScriptEngineNPC {
-    public void pt_hillah() { // Èú¶ó
+    public void pt_hillah() { // íë¼
         allBossOut();
     }
 
-    public void pt_outrootaBoss() { // ·çÅ¸ºñ½º
+    public void pt_outrootaBoss() { // ë£¨íƒ€ë¹„ìŠ¤
         allBossOut();
     }
 
-    public void pt_portalNPC1() { // ¾ÆÄ«ÀÌ·³
+    public void pt_portalNPC1() { // ì•„ì¹´ì´ëŸ¼
         allBossOut();
     }
 
-    public void will_out() { // Àª
+    public void will_out() { // ìœŒ
         allBossOut();
     }
 
-    public void pt_bh_bossOutN() { // ³ë¸»½º¿ì Æ÷Å»
+    public void pt_bh_bossOutN() { // ë…¸ë§ìŠ¤ìš° í¬íƒˆ
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOut() { // ÇÏµå½º¿ì Æ÷Å»
+    public void pt_bh_bossOut() { // í•˜ë“œìŠ¤ìš° í¬íƒˆ
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOutN_R() { // ³ë¸Ö½º¿ì º¸»ó¸ÊÆ÷Å»
+    public void pt_bh_bossOutN_R() { // ë…¸ë©€ìŠ¤ìš° ë³´ìƒë§µí¬íƒˆ
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOut_R() { // ÇÏµå½º¿ì º¸»ó¸ÊÆ÷Å»
+    public void pt_bh_bossOut_R() { // í•˜ë“œìŠ¤ìš° ë³´ìƒë§µí¬íƒˆ
         allBossOutPosition(350060300, 1);
     }
 
-    public void ptDemianOut() { // µ¥¹Ì¾È Æ÷Å»
+    public void ptDemianOut() { // ë°ë¯¸ì•ˆ í¬íƒˆ
         allBossOutPosition(105300303, 1);
     }
 
-    public void ptDemianOut_R() { // µ¥¹Ì¾È º¸»ó¸ÊÆ÷Å»
+    public void ptDemianOut_R() { // ë°ë¯¸ì•ˆ ë³´ìƒë§µí¬íƒˆ
         allBossOutPosition(105300303, 1);
     }
 
-    public void pt_GC_out() { // µáÄÌ Æ÷Å» & º¸»ó¸Ê Æ÷Å»
+    public void pt_GC_out() { // ë“„ì¼ˆ í¬íƒˆ & ë³´ìƒë§µ í¬íƒˆ
         allBossOutPosition(450012200, 2);
     }
 
-    public void pt_BM1_bossOut() { // ´õ½ºÅ© Æ÷Å» & º¸»ó¸Ê Æ÷Å»
+    public void pt_BM1_bossOut() { // ë”ìŠ¤í¬ í¬íƒˆ & ë³´ìƒë§µ í¬íƒˆ
         allBossOutPosition(450009301, 1);
     }
 
-    public void pt_jinHillah_out() { // ÁøÈú¶ó Æ÷Å» & º¸»ó¸Ê Æ÷Å»
+    public void pt_jinHillah_out() { // ì§„íë¼ í¬íƒˆ & ë³´ìƒë§µ í¬íƒˆ
         allBossOutPosition(450011990, 2);
     }
 
-    public void serenOut() { // ¼¼·» °ÔÀÌÆ® & º¸»ó¸ÊÆ÷Å»
+    public void serenOut() { // ì„¸ë Œ ê²Œì´íŠ¸ & ë³´ìƒë§µí¬íƒˆ
         allBossOutPosition(410000670, 4);
     }
 
     public void allBossOut() {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#ÀüÅõ¸¦ ÁßÁöÇÏ°í ³ª°¥±î?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#ì „íˆ¬ë¥¼ ì¤‘ì§€í•˜ê³  ë‚˜ê°ˆê¹Œ?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);
@@ -82,7 +82,7 @@ public class BossOutPortal extends ScriptEngineNPC {
 
     public void allBossOutPosition(int Map, int Portal) {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#ÀüÅõ¸¦ ÁßÁöÇÏ°í ³ª°¥±î?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#ì „íˆ¬ë¥¼ ì¤‘ì§€í•˜ê³  ë‚˜ê°ˆê¹Œ?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);

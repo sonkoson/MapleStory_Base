@@ -10,9 +10,9 @@ public class ProfilingCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!startprofiling", "", "Starts CPU profiling for the server.", 6),
+            new CommandDefinition("!startprofiling", "", "เริ่มการวิเคราะห์ CPU ของเซิร์ฟเวอร์", 6),
             new CommandDefinition("!stopprofiling", "<filename>",
-                  "Stops CPU profiling and saves it to the specified file.", 6)
+                  "หยุดการวิเคราะห์ CPU และบันทึกลงไฟล์ที่กำหนด", 6)
       };
    }
 
@@ -29,7 +29,7 @@ public class ProfilingCommands implements Command {
          sampler.addIncluded("scripting");
          sampler.addIncluded("security");
          sampler.start();
-         c.getPlayer().dropMessage(6, "Profiling started.");
+         c.getPlayer().dropMessage(6, "เริ่มการวิเคราะห์แล้ว");
       } else if (splitted[0].equals("!stopprofiling")) {
          CPUSampler sampler = CPUSampler.getInstance();
 
@@ -41,7 +41,7 @@ public class ProfilingCommands implements Command {
 
             File file = new File(filename);
             if (file.exists()) {
-               c.getPlayer().dropMessage(6, "The file already exists. Please choose a different filename.");
+               c.getPlayer().dropMessage(6, "ไฟล์นี้มีอยู่แล้ว โปรดเลือกชื่อไฟล์อื่น");
                return;
             }
 
@@ -49,10 +49,10 @@ public class ProfilingCommands implements Command {
             FileWriter fw = new FileWriter(file);
             sampler.save(fw, 1, 10);
             fw.close();
-            c.getPlayer().dropMessage(6, "Profiling stopped and saved to " + filename);
+            c.getPlayer().dropMessage(6, "หยุดการวิเคราะห์และบันทึกไปยัง " + filename);
          } catch (IOException var7) {
             System.err.println("Error saving profile" + var7);
-            c.getPlayer().dropMessage(6, "Error saving profile: " + var7.getMessage());
+            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการบันทึกโปรไฟล์: " + var7.getMessage());
          }
 
          sampler.reset();

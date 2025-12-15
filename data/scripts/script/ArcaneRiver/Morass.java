@@ -12,7 +12,7 @@ public class Morass extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 230) {
             registerTransferField(450006400, 1);
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -21,7 +21,7 @@ public class Morass extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 230) {
             registerTransferField(450006410, 1);
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -38,20 +38,20 @@ public class Morass extends ScriptEngineNPC {
                  */
                 registerTransferField(940204309, 1);
             } else {
-                getPlayer().dropMessage(5, "ÀÌ°÷Àº ¾ÆÁ÷ ¿¡¸£´Ù°¡ ¾ÈÁ¤ÀûÀÎ °Í °°´Ù.");
+                getPlayer().dropMessage(5, "ì´ê³³ì€ ì•„ì§ ì—ë¥´ë‹¤ê°€ ì•ˆì •ì ì¸ ê²ƒ ê°™ë‹¤.");
             }
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     @Script
     public void morassDQ_MP() {
         if (getPlayer().getLevel() >= 230) {
-            getPlayer().dropMessage(5, "ÀÌ°÷¿£ º°´Ù¸¥ ¹®Á¦°¡ ¾ø¾îº¸ÀÎ´Ù.");
-            //ÀÌ°÷Àº ¾ÆÁ÷ ¿¡¸£´Ù°¡ ¾ÈÁ¤ÀûÀÎ °Í °°´Ù.
+            getPlayer().dropMessage(5, "ì´ê³³ì—” ë³„ë‹¤ë¥¸ ë¬¸ì œê°€ ì—†ì–´ë³´ì¸ë‹¤.");
+            //ì´ê³³ì€ ì•„ì§ ì—ë¥´ë‹¤ê°€ ì•ˆì •ì ì¸ ê²ƒ ê°™ë‹¤.
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -59,14 +59,14 @@ public class Morass extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2007));
         if (getPlayer().getLevel() >= 230) {
             if (getPlayer().getItemQuantity(4036328, false) >= 50) {
-                int v0 = target.askMenu("ÀÌ Á¤µµ¸é ÃæºĞÈ÷ #i4036328# #b#t4036328##kÀ» ¸ğÀº °Í °°´Ù.\r\nÆ®·ò¿¡Æä ±¤Àå¿¡ ÀÖ´Â Àö¿¡°Ô °¡Á®´Ù ÁÖÀÚ\r\n#L0#Æ®·ò¿¡Æä ±¤ÀåÀ¸·Î#l\r\n#L1#¿¬±¸½Ç·Î#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
+                int v0 = target.askMenu("ì´ ì •ë„ë©´ ì¶©ë¶„íˆ #i4036328# #b#t4036328##kì„ ëª¨ì€ ê²ƒ ê°™ë‹¤.\r\níŠ¸ë¤¼ì—í˜ ê´‘ì¥ì— ìˆëŠ” ìŸì—ê²Œ ê°€ì ¸ë‹¤ ì£¼ì\r\n#L0#íŠ¸ë¤¼ì—í˜ ê´‘ì¥ìœ¼ë¡œ#l\r\n#L1#ì—°êµ¬ì‹¤ë¡œ#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
                 if (v0 == 0) {
                     registerTransferField(450006130);
                 } else if (v0 == 1) {
                     registerTransferField(450006240);
                 }
             } else {
-                int v0 = target.askMenu("¾ÆÁ÷ ÃæºĞÈ÷ #i4036328# #b#t4036328##kÀ» ¸ğÀ¸Áö ¸øÇß´Ù.\r\n¾î¶»°Ô ÇÒ±î?\r\n#L0#Æ®·ò¿¡Æä ±¤ÀåÀ¸·Î#l\r\n#L1#¿¬±¸½Ç·Î#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
+                int v0 = target.askMenu("ì•„ì§ ì¶©ë¶„íˆ #i4036328# #b#t4036328##kì„ ëª¨ìœ¼ì§€ ëª»í–ˆë‹¤.\r\nì–´ë–»ê²Œ í• ê¹Œ?\r\n#L0#íŠ¸ë¤¼ì—í˜ ê´‘ì¥ìœ¼ë¡œ#l\r\n#L1#ì—°êµ¬ì‹¤ë¡œ#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
                 if (v0 == 0) {
                     registerTransferField(450006130);
                 } else if (v0 == 1) {
@@ -74,7 +74,7 @@ public class Morass extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -83,7 +83,7 @@ public class Morass extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 230) {
             registerTransferField(450006130, 4);
         } else {
-            getPlayer().dropMessage(5, "230·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "230ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -92,7 +92,7 @@ public class Morass extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450006330, 3);
         } else {
-            getPlayer().dropMessage(5, "235·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "235ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 

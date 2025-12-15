@@ -14,45 +14,45 @@ public class Tengu extends ScriptEngineNPC {
 
     public void tengu_enter() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        String v0 = "ÅÙ±¸¸¦ ¾²·¯¶ß¸®±â À§ÇØ ÀÌµ¿ÇÒ±î?\r\n\r\n";
-        v0 += "#L0#ÅÙ±¸ ¸Ê(#b³ë¸Ö ¸ğµå#k)À¸·Î ÀÌµ¿ ÇÑ´Ù.(·¹º§ 250ÀÌ»ó)#l\r\n\r\n\r\n";
-        v0 += "#L5#ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù.#l\r\n\r\n";
+        String v0 = "í…êµ¬ë¥¼ ì“°ëŸ¬ëœ¨ë¦¬ê¸° ìœ„í•´ ì´ë™í• ê¹Œ?\r\n\r\n";
+        v0 += "#L0#í…êµ¬ ë§µ(#bë…¸ë©€ ëª¨ë“œ#k)ìœ¼ë¡œ ì´ë™ í•œë‹¤.(ë ˆë²¨ 250ì´ìƒ)#l\r\n\r\n\r\n";
+        v0 += "#L5#ì´ë™í•˜ì§€ ì•ŠëŠ”ë‹¤.#l\r\n\r\n";
         int Menu = target.askMenu(v0, ScriptMessageFlag.BigScenario);
-        if (Menu == 5) return; //ÀÌµ¿ÇÏÁö ¾Ê´Â´Ù
+        if (Menu == 5) return; //ì´ë™í•˜ì§€ ì•ŠëŠ”ë‹¤
         if (target.getParty() == null) {
-            self.sayOk("1ÀÎ ÀÌ»ó ÆÄÆ¼¸¦ ¸Î¾î¾ß¸¸ ÀÔÀåÇÒ ¼ö ÀÖ½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("1ì¸ ì´ìƒ íŒŒí‹°ë¥¼ ë§ºì–´ì•¼ë§Œ ì…ì¥í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ÆÄÆ¼ÀåÀ» ÅëÇØ ÁøÇàÇØ ÁÖ½Ê½Ã¿À.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("íŒŒí‹°ì¥ì„ í†µí•´ ì§„í–‰í•´ ì£¼ì‹­ì‹œì˜¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("ÆÄÆ¼¿øÀÌ ¸ğµÎ °°Àº¸Ê¿¡ ÀÖ¾î¾ß ÇÕ´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("íŒŒí‹°ì›ì´ ëª¨ë‘ ê°™ì€ë§µì— ìˆì–´ì•¼ í•©ë‹ˆë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
-        switch (Menu) { //µû·Î Á¦ÇÑµÇ´Â°Å ¾øÀ¸¸é ¹Ù·Î ÀÔÀå°¡´ÉÇÔ
-            case 0: { //³ë¸Ö¸ğµå
+        switch (Menu) { //ë”°ë¡œ ì œí•œë˜ëŠ”ê±° ì—†ìœ¼ë©´ ë°”ë¡œ ì…ì¥ê°€ëŠ¥í•¨
+            case 0: { //ë…¸ë©€ëª¨ë“œ
                 TenguEnter fieldSet = (TenguEnter) fieldSet("TenguEnter");
                 int enter = fieldSet.enter(target.getId(), 2);
                 if (enter == 6) {
-                    self.sayOk("ÀÌ¿ë °¡´ÉÇÑ ÀÎ½ºÅÏ½º°¡ ¾ø½À´Ï´Ù. ´Ù¸¥ Ã¤³ÎÀ» ÀÌ¿ëÇØÁÖ¼¼¿ä.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ì´ìš© ê°€ëŠ¥í•œ ì¸ìŠ¤í„´ìŠ¤ê°€ ì—†ìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì±„ë„ì„ ì´ìš©í•´ì£¼ì„¸ìš”.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("º¸½º Æ¼¾î°¡ ºÎÁ·ÇÑ ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ë³´ìŠ¤ í‹°ì–´ê°€ ë¶€ì¡±í•œ íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("¿À´Ã ÅÙ±¸¸¦ ¾²·¯¶ß¸° ÆÄÆ¼¿øÀÌ ÀÖ½À´Ï´Ù. \r\n#r<Å¬¸®¾î ±â·ÏÀº ¸ÅÀÏ ÀÚÁ¤¿¡ ÀÏ°ı ÃÊ±âÈ­µË´Ï´Ù.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ì˜¤ëŠ˜ í…êµ¬ë¥¼ ì“°ëŸ¬ëœ¨ë¦° íŒŒí‹°ì›ì´ ìˆìŠµë‹ˆë‹¤. \r\n#r<í´ë¦¬ì–´ ê¸°ë¡ì€ ë§¤ì¼ ìì •ì— ì¼ê´„ ì´ˆê¸°í™”ë©ë‹ˆë‹¤.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("ÀÔÀå Á¦ÇÑÈ½¼ö°¡ ºÎÁ·ÇÏ°Å³ª ·¹º§ Á¦ÇÑÀÌ ¸ÂÁö ¾Ê´Â ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ì…ì¥ ì œí•œíšŸìˆ˜ê°€ ë¶€ì¡±í•˜ê±°ë‚˜ ë ˆë²¨ ì œí•œì´ ë§ì§€ ì•ŠëŠ” íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("ÀÔÀå Á¦ÇÑ½Ã°£ÀÌ ³²Àº ÆÄÆ¼¿øÀÌ ÀÖ¾î ÀÔÀåÇÒ ¼ö ¾ø½À´Ï´Ù.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ì…ì¥ ì œí•œì‹œê°„ì´ ë‚¨ì€ íŒŒí‹°ì›ì´ ìˆì–´ ì…ì¥í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;

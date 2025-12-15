@@ -11,7 +11,7 @@ public class ChewChewIsland extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 215) {
             registerTransferField(450015020, 7);
         } else {
-            getPlayer().dropMessage(5, "215·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "215ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -20,7 +20,7 @@ public class ChewChewIsland extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 215) {
             registerTransferField(450015180, 1);
         } else {
-            getPlayer().dropMessage(5, "215·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "215ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -29,22 +29,22 @@ public class ChewChewIsland extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 210) {
             registerTransferField(450001250, 1);
         } else {
-            getPlayer().dropMessage(5, "210·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "210ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
     @Script
     public void go_deepForest() {
-        getPlayer().dropMessage(5, "ÀÌ¿ëÇÏ½Ç ¼ö ¾ø´Â Æ÷Å»ÀÔ´Ï´Ù.");
+        getPlayer().dropMessage(5, "ì´ìš©í•˜ì‹¤ ìˆ˜ ì—†ëŠ” í¬íƒˆì…ë‹ˆë‹¤.");
     }
 
     public void goToLehel() {
         if (getPlayer().getLevel() >= 220) {
-            if (1 == self.askYesNo("#b¹«Åä#k...ÀÌÁ¦ ¹è ºÎ¸£´Ù... #b¿òÁ÷¿© ÁÙ±î#k...?\r\n\r\n(¹«Åä°¡ ºñÄÑÁÖ¸é ¾ÆÄÉÀÎ¸®¹ö¸¦ µû¶ó ´ÙÀ½ Áö¿ªÀ¸·Î °¥ ¼ö ÀÖ½À´Ï´Ù.)", ScriptMessageFlag.NpcReplacedByNpc)) {
+            if (1 == self.askYesNo("#bë¬´í† #k...ì´ì œ ë°° ë¶€ë¥´ë‹¤... #bì›€ì§ì—¬ ì¤„ê¹Œ#k...?\r\n\r\n(ë¬´í† ê°€ ë¹„ì¼œì£¼ë©´ ì•„ì¼€ì¸ë¦¬ë²„ë¥¼ ë”°ë¼ ë‹¤ìŒ ì§€ì—­ìœ¼ë¡œ ê°ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤.)", ScriptMessageFlag.NpcReplacedByNpc)) {
                 registerTransferField(450003000, 0);
             }
         } else {
-            self.sayOk("¹«Åä ¾ÆÁ÷ ¹è°¡ °íÇÁ´Ù.. Áö³ª°¡°í ½ÍÀ¸¸é ·¹º§ 220À» ³Ñ±â°í ¿Í¶ó", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ë¬´í†  ì•„ì§ ë°°ê°€ ê³ í”„ë‹¤.. ì§€ë‚˜ê°€ê³  ì‹¶ìœ¼ë©´ ë ˆë²¨ 220ì„ ë„˜ê¸°ê³  ì™€ë¼", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 

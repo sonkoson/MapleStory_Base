@@ -7,6 +7,6 @@ public class YutaFarm extends ScriptEngineNPC {
 
     @Script
     public void out_yFarm_field() {
-        getPlayer().dropMessage(5, "@±¤Àå ¸í·É¾î¸¦ ÅëÇØ ÀÌµ¿ÇØÁÖ¼¼¿ä.");
+        getPlayer().dropMessage(5, "@ê´‘ì¥ ëª…ë ¹ì–´ë¥¼ í†µí•´ ì´ë™í•´ì£¼ì„¸ìš”.");
     }
 }

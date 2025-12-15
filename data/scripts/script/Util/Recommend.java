@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class Recommend extends ScriptEngineNPC {
 
-    //´ã¿¡ ÃßÃµÀÎ ±¸Á¶ ²À ¹Ù²ÙÀÚ.. Á¦¹ß..
+    //ë‹´ì— ì¶”ì²œì¸ êµ¬ì¡° ê¼­ ë°”ê¾¸ì.. ì œë°œ..
 
     Pair<Integer, Integer> etcReward = new Pair<>(4001715, 10);
 
@@ -94,8 +94,8 @@ public class Recommend extends ScriptEngineNPC {
                                     : rank == 1 ? "#b "//#fUI/UIWindow2.img/ProductionSkill/productPage/craftman#
                                     : "#k ")//#fUI/UIWindow2.img/ProductionSkill/productPage/hidden#
 
-                            .append("ÃßÃµÀÎ ÄÚµå #k: ").append(con.getString("recom")).append(" | ")
-                            .append("ÃßÃµ ¼ö #k: #e").append(con.getString("player")).append("#n\r\n");
+                            .append("ì¶”ì²œì¸ ì½”ë“œ #k: ").append(con.getString("recom")).append(" | ")
+                            .append("ì¶”ì²œ ìˆ˜ #k: #e").append(con.getString("player")).append("#n\r\n");
                     rank++;
                 }
             }
@@ -161,11 +161,11 @@ public class Recommend extends ScriptEngineNPC {
                     String recom_per = idcon.getString("recom");
 
                     var con = c.prepareStatement("SELECT * FROM recom_log WHERE recom = '" + recom_per + "'").executeQuery();
-                    txt.append(recom_per).append("´ÔÀ» ÃßÃµÇÏ½Å ÇÃ·¹ÀÌ¾îµé ÀÔ´Ï´Ù.\r\n\r\n");
+                    txt.append(recom_per).append("ë‹˜ì„ ì¶”ì²œí•˜ì‹  í”Œë ˆì´ì–´ë“¤ ì…ë‹ˆë‹¤.\r\n\r\n");
                     while (con.next()) {
                         var con_name = con.getString("name").split("%");
-                        txt.append("´Ğ³×ÀÓ : #e").append(con_name[1]).append("#n | ")
-                                .append("³¯Â¥ : ").append(con.getDate("date") + " " + con.getTimestamp("date")).append("\r\n");
+                        txt.append("ë‹‰ë„¤ì„ : #e").append(con_name[1]).append("#n | ")
+                                .append("ë‚ ì§œ : ").append(con.getDate("date") + " " + con.getTimestamp("date")).append("\r\n");
                     }
                 }
             }
@@ -178,54 +178,54 @@ public class Recommend extends ScriptEngineNPC {
 
     public void recommend() {
         initNPC(MapleLifeFactory.getNPC(9062454));
-        StringBuilder str = new StringBuilder("#fs11##b #h 0##fc0xFF000000#´Ô, #fc0xFF990033#[°­¸²]#fc0xFF000000#¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù.\r\n\r\n")
-                .append("#r(ÃßÃµÀº 1ÀÎ 1°èÁ¤ ·¹º§ 200ÀÌ»ó °¡´ÉÇÕ´Ï´Ù.)#k\r\n")
+        StringBuilder str = new StringBuilder("#fs11##b #h 0##fc0xFF000000#ë‹˜, #fc0xFF990033#[ê°•ë¦¼]#fc0xFF000000#ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.\r\n\r\n")
+                .append("#r(ì¶”ì²œì€ 1ì¸ 1ê³„ì • ë ˆë²¨ 200ì´ìƒ ê°€ëŠ¥í•©ë‹ˆë‹¤.)#k\r\n")
                 .append("#fUI/UIWindow.img/UtilDlgEx/list1#\r\n")
-                .append("#L0##bÃßÃµÀÎ#fc0xFF000000# µî·ÏÇÏ±â\r\n")
-                .append("#L1##bÃßÃµÀÎ#fc0xFF000000# ·©Å·º¸±â#l\r\n\r\n")
+                .append("#L0##bì¶”ì²œì¸#fc0xFF000000# ë“±ë¡í•˜ê¸°\r\n")
+                .append("#L1##bì¶”ì²œì¸#fc0xFF000000# ë­í‚¹ë³´ê¸°#l\r\n\r\n")
                 .append("#fUI/UIWindow.img/UtilDlgEx/list0#\r\n")
-                .append("#L2##bÃßÃµÀÎ#fc0xFF000000# È®ÀÎÇÏ±â\r\n");
+                .append("#L2##bì¶”ì²œì¸#fc0xFF000000# í™•ì¸í•˜ê¸°\r\n");
 
         int menu = self.askMenu(str.toString());
         switch (menu) {
             case 0: {
                 if (!overlab_recom(getPlayer().getClient().getAccID(), getPlayer().getName())) {
                     if (getPlayer().getLevel() >= 200) {
-                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#´Ô, ´ç½ÅÀ» #fc0xFF990033#[°­¸²¿ùµå]#fc0xFF000000#·Î ÀÌ²ö ÀÌÀÇ #b´Ğ³×ÀÓ#fc0xFF000000#À» ¸»¾¸ÇØÁÖ¼¼¿ä.\r\n");
-                        str.append("ÇÏÁö¸¸ #rÇÑ ¹ø µî·ÏÇÏ¸é µÇµ¹¸± ¼ö ¾øÀ¸´Ï#fc0xFF000000# ½ÅÁßÇÏ°Ô µî·ÏÇÏ¼Å¾ß ÇØ¿ä.");
+                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#ë‹˜, ë‹¹ì‹ ì„ #fc0xFF990033#[ê°•ë¦¼ì›”ë“œ]#fc0xFF000000#ë¡œ ì´ëˆ ì´ì˜ #bë‹‰ë„¤ì„#fc0xFF000000#ì„ ë§ì”€í•´ì£¼ì„¸ìš”.\r\n");
+                        str.append("í•˜ì§€ë§Œ #rí•œ ë²ˆ ë“±ë¡í•˜ë©´ ë˜ëŒë¦´ ìˆ˜ ì—†ìœ¼ë‹ˆ#fc0xFF000000# ì‹ ì¤‘í•˜ê²Œ ë“±ë¡í•˜ì…”ì•¼ í•´ìš”.");
                         String text = self.askText(str.toString());
 
                         if (!existChar(text)) {
-                            self.sayOk("¾ø´Â À¯ÀúÀÔ´Ï´Ù.");
+                            self.sayOk("ì—†ëŠ” ìœ ì €ì…ë‹ˆë‹¤.");
                             return;
                         }
                         if (text.equals("") || text.equals(getPlayer().getName()) || getAccIdFromDB(text) == getAccIdFromDB(getPlayer().getName())) {
-                            self.sayOk(text.equals("") ? "ÀÔ·ÂÀ» Àß¸ø ÇÏ¼Ì½À´Ï´Ù." : "ÀÚ±â ÀÚ½ÅÀ» µî·Ï ÇÒ ¼ö´Â ¾ø½À´Ï´Ù.");
+                            self.sayOk(text.equals("") ? "ì…ë ¥ì„ ì˜ëª» í•˜ì…¨ìŠµë‹ˆë‹¤." : "ìê¸° ìì‹ ì„ ë“±ë¡ í•  ìˆ˜ëŠ” ì—†ìŠµë‹ˆë‹¤.");
                         } else {
                             join_recom(getClient().getAccID(), getPlayer().getName(), text);
                             getPlayer().gainItem(etcReward.left, etcReward.right);
 
-                            str = new StringBuilder("#fs11#ÀÌ°Ç #b#h 0##k´Ô¿¡°Ô µå¸®´Â ÀúÀÇ ÀÛÀº ¼±¹°ÀÔ´Ï´Ù. ¾ÕÀ¸·ÎÀÇ ¿©Çà¿¡ Å« µµ¿òÀÌ µÉ °Å¿¹¿ä.#b\r\n");
+                            str = new StringBuilder("#fs11#ì´ê±´ #b#h 0##kë‹˜ì—ê²Œ ë“œë¦¬ëŠ” ì €ì˜ ì‘ì€ ì„ ë¬¼ì…ë‹ˆë‹¤. ì•ìœ¼ë¡œì˜ ì—¬í–‰ì— í° ë„ì›€ì´ ë  ê±°ì˜ˆìš”.#b\r\n");
 
                             for (Pair<Integer, Integer> reward : selfReward) {
                                 getPlayer().gainItem(reward.left, reward.right);
-                                str.append(String.format("#i%d##z%d# %d°³\r\n", reward.left, reward.left, reward.right));
+                                str.append(String.format("#i%d##z%d# %dê°œ\r\n", reward.left, reward.left, reward.right));
                             }
 
                             self.sayOk(str.toString());
-                            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(11, getClient().getChannel(), "[ÃßÃµÀÎ] " + getPlayer().getName() + " ´ÔÀÌ " + text + " ´ÔÀ» ÃßÃµÀÎÀ¸·Î µî·ÏÇÏ¼Ì½À´Ï´Ù."));
+                            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(11, getClient().getChannel(), "[ì¶”ì²œì¸] " + getPlayer().getName() + " ë‹˜ì´ " + text + " ë‹˜ì„ ì¶”ì²œì¸ìœ¼ë¡œ ë“±ë¡í•˜ì…¨ìŠµë‹ˆë‹¤."));
                         }
                     } else {
-                        self.sayOk("#fs11##r200·¹º§ ¹Ì¸¸#kÀº ÃßÃµÀÎÀ» µî·ÏÇÒ ¼ö ¾ø¾î¿ä.");
+                        self.sayOk("#fs11##r200ë ˆë²¨ ë¯¸ë§Œ#kì€ ì¶”ì²œì¸ì„ ë“±ë¡í•  ìˆ˜ ì—†ì–´ìš”.");
                     }
                 } else {
-                    self.sayOk("#fs11##fc0xFF000000#ÃßÃµÀÎÀº ÇÑ¹ø¸¸ ÀÛ¼º°¡´ÉÇÕ´Ï´Ù.");
+                    self.sayOk("#fs11##fc0xFF000000#ì¶”ì²œì¸ì€ í•œë²ˆë§Œ ì‘ì„±ê°€ëŠ¥í•©ë‹ˆë‹¤.");
                 }
                 break;
             }
             case 1: {
-                str = new StringBuilder("#fs11##fc0xFF000000#ÀÌ°÷Àº ¸¹ÀºÃßÃµÀ» ¹ŞÀººĞµéÀÇ ¸ñ·ÏÀÌ¿¡¿ä.\r\n");
-                str.append("#b#h 0##fc0xFF000000#´Ô²²¼­µµ Á¶±İ¸¸ ³ë·ÂÇÑ´Ù¸é ÀÌ°÷¿¡ ¿À¸£½Ç ¼ö ÀÖ¾î¿ä.\r\n");
+                str = new StringBuilder("#fs11##fc0xFF000000#ì´ê³³ì€ ë§ì€ì¶”ì²œì„ ë°›ì€ë¶„ë“¤ì˜ ëª©ë¡ì´ì—ìš”.\r\n");
+                str.append("#b#h 0##fc0xFF000000#ë‹˜ê»˜ì„œë„ ì¡°ê¸ˆë§Œ ë…¸ë ¥í•œë‹¤ë©´ ì´ê³³ì— ì˜¤ë¥´ì‹¤ ìˆ˜ ìˆì–´ìš”.\r\n");
                 str.append(recom_log());
                 self.sayOk(recom_list(self.askMenu(str.toString())));
                 break;
@@ -233,13 +233,13 @@ public class Recommend extends ScriptEngineNPC {
             case 2: {
                 int recoms_num = recom_num(getPlayer().getName());
                 if (recoms_num == 0) {
-                    str = new StringBuilder("#fs11##fc0xFF000000#¾ÆÁ÷ #b#h 0##fc0xFF000000#´ÔÀ» ÃßÃµÇÏ½Å ºĞÀÌ ¾ø³×¿ä.\r\n");
-                    str.append("¿­½ÉÈ÷ #fc0xFF990033#[°­¸²]#fc0xFF000000#¸¦ ¾Ë¸°´Ù¸é, º¸»óÀÌ µû¸¦ °Í ÀÔ´Ï´Ù.");
+                    str = new StringBuilder("#fs11##fc0xFF000000#ì•„ì§ #b#h 0##fc0xFF000000#ë‹˜ì„ ì¶”ì²œí•˜ì‹  ë¶„ì´ ì—†ë„¤ìš”.\r\n");
+                    str.append("ì—´ì‹¬íˆ #fc0xFF990033#[ê°•ë¦¼]#fc0xFF000000#ë¥¼ ì•Œë¦°ë‹¤ë©´, ë³´ìƒì´ ë”°ë¥¼ ê²ƒ ì…ë‹ˆë‹¤.");
                     self.sayOk(str.toString());
                 } else {
-                    self.sayOk("#b #h 0##fc0xFF000000#´ÔÀ» ÃßÃµÇÑ ºĞµé ÀÔ´Ï´Ù. " + recoms_num + "¸í " + recom_person(getPlayer().getName()) + "#fc0xFF000000#ÀÇ ÃßÃµÀ» ¹ŞÀ¸¼Ì¾î¿ä.");
+                    self.sayOk("#b #h 0##fc0xFF000000#ë‹˜ì„ ì¶”ì²œí•œ ë¶„ë“¤ ì…ë‹ˆë‹¤. " + recoms_num + "ëª… " + recom_person(getPlayer().getName()) + "#fc0xFF000000#ì˜ ì¶”ì²œì„ ë°›ìœ¼ì…¨ì–´ìš”.");
                     getPlayer().gainHPoint(100000 * recoms_num);
-                    getPlayer().dropMessage(1, 100000 * recoms_num + " È«º¸ Æ÷ÀÎÆ®¸¦ Áö±Ş ¹Ş¾Ò½À´Ï´Ù.");
+                    getPlayer().dropMessage(1, 100000 * recoms_num + " í™ë³´ í¬ì¸íŠ¸ë¥¼ ì§€ê¸‰ ë°›ì•˜ìŠµë‹ˆë‹¤.");
                     try (var c = DBConnection.getConnection()) {
                         var ps = c.prepareStatement("UPDATE recom_log SET state = 1 WHERE recom = '" + getPlayer().getName() + "'");
                         ps.executeUpdate();
@@ -253,26 +253,26 @@ public class Recommend extends ScriptEngineNPC {
             case 3: {
                 int a = recoms_count(getPlayer().getName());
 
-                StringBuilder msg = new StringBuilder("#fs11#¹ŞÀ¸½Ç º¸»óÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\r\nÇöÀç #b#h ##k´ÔÀÇ ÃßÃµ ¼ö´Â °³ ÀÔ´Ï´Ù.#fs11#\r\n");
+                StringBuilder msg = new StringBuilder("#fs11#ë°›ìœ¼ì‹¤ ë³´ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš”.\r\ní˜„ì¬ #b#h ##kë‹˜ì˜ ì¶”ì²œ ìˆ˜ëŠ” ê°œ ì…ë‹ˆë‹¤.#fs11#\r\n");
 
                 int i = 0;
                 for (Integer entry : reward.keySet()) {
                     if (entry <= a && getClient().getKeyValue("recom_" + entry) == null) {
-                        msg.append("#L").append(entry).append("##b").append(entry).append("¸í º¸»ó (¼ö·É °¡´É)\r\n");
+                        msg.append("#L").append(entry).append("##b").append(entry).append("ëª… ë³´ìƒ (ìˆ˜ë ¹ ê°€ëŠ¥)\r\n");
                     } else {
-                        msg.append("#L").append(entry).append("##r").append(entry).append("¸í º¸»ó (¼ö·É ºÒ°¡)\r\n");
+                        msg.append("#L").append(entry).append("##r").append(entry).append("ëª… ë³´ìƒ (ìˆ˜ë ¹ ë¶ˆê°€)\r\n");
                     }
                     i++;
                 }
 
                 int select = self.askMenu(msg.toString());
 
-                msg = new StringBuilder("´ÙÀ½Àº ´©Àû " + reward.get(select) + "¸í º¸»óÀÔ´Ï´Ù.#b#fs11#\r\n");
+                msg = new StringBuilder("ë‹¤ìŒì€ ëˆ„ì  " + reward.get(select) + "ëª… ë³´ìƒì…ë‹ˆë‹¤.#b#fs11#\r\n");
 
                 for (Map.Entry<Integer, List<Pair<Integer, Integer>>> entry : reward.entrySet()) {
                     var itemList = reward.get(select);
                     for (Pair<Integer, Integer> item : itemList) {
-                        msg.append("#i").append(item.left).append("##z").append(item.left).append("# ").append(item.right).append("°³\r\n");
+                        msg.append("#i").append(item.left).append("##z").append(item.left).append("# ").append(item.right).append("ê°œ\r\n");
                     }
                 }
 

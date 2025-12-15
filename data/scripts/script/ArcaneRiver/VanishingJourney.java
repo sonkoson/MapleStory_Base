@@ -21,7 +21,7 @@ public class VanishingJourney extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 205) {
             registerTransferField(450001002, 1);
         } else {
-            getPlayer().dropMessage(5, "205·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "205ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -47,20 +47,20 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     @Script
     public void east_450014240() {
-        getPlayer().dropMessage(5, "Áö±İÀº º¼ÀÏÀÌ ¾ø´Ù.");
+        getPlayer().dropMessage(5, "ì§€ê¸ˆì€ ë³¼ì¼ì´ ì—†ë‹¤.");
     }
 
     public void _450001005_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003110));
-        if (1 == self.askYesNo("...¼Ò¸êÀÇ È­¿°Áö´ë·Î °¡·Á´Â ÂüÀÌ¾ß... ¿øÇÑ´Ù¸é ³Êµµ ÅÂ¿öÁÖÁö...\r\n\r\n#b(¼ö¶ô ½Ã ¹è¸¦ Å¸°í ¸Á°¢ÀÇ È£¼ö·Î ÀÌµ¿ÇÕ´Ï´Ù.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-            self.say("...±×·³, Ãâ¹ßÇÒ°Ô...", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo("...ì†Œë©¸ì˜ í™”ì—¼ì§€ëŒ€ë¡œ ê°€ë ¤ëŠ” ì°¸ì´ì•¼... ì›í•œë‹¤ë©´ ë„ˆë„ íƒœì›Œì£¼ì§€...\r\n\r\n#b(ìˆ˜ë½ ì‹œ ë°°ë¥¼ íƒ€ê³  ë§ê°ì˜ í˜¸ìˆ˜ë¡œ ì´ë™í•©ë‹ˆë‹¤.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
+            self.say("...ê·¸ëŸ¼, ì¶œë°œí• ê²Œ...", ScriptMessageFlag.NpcReplacedByNpc);
             target.registerTransferField(450001007);
         }
     }
 
     @Script
     public void enter_450001007() {
-        bigScriptProgressMessage("¹æÇâÅ°¸¦ Á¶ÀÛÇÏ¿© ¹è¸¦ ¿òÁ÷ÀÏ ¼ö ÀÖ½À´Ï´Ù.", FontType.NanumGothicBold, FontColorType.LightGreen);
+        bigScriptProgressMessage("ë°©í–¥í‚¤ë¥¼ ì¡°ì‘í•˜ì—¬ ë°°ë¥¼ ì›€ì§ì¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", FontType.NanumGothicBold, FontColorType.LightGreen);
         SecondaryStatEffect effect = SkillFactory.getSkill(80002201).getEffect(1);
         effect.applyTo(getPlayer());
     }
@@ -85,8 +85,8 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     public void _450001105_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003110));
-        if (1 == self.askYesNo("...ÀÌ¸§ ¾ø´Â ¸¶À» ÂÊÀ¸·Î µ¹¾Æ°¡·Á´Â ÂüÀÌ¾ß... È¤½Ã ³Êµµ µ¹¾Æ°¡°í ½ÍÀº °Å¾ß?\r\n\r\n#b(¼ö¶ô ½Ã ¹è¸¦ Å¸°í ¸Á°¢ÀÇ È£¼ö·Î ÀÌµ¿ÇÕ´Ï´Ù.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-            self.say("...±×·³, ÀÌ¸§ ¾ø´Â ¸¶À»·Î µ¥·Á´Ù ÁÙ°Ô...", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo("...ì´ë¦„ ì—†ëŠ” ë§ˆì„ ìª½ìœ¼ë¡œ ëŒì•„ê°€ë ¤ëŠ” ì°¸ì´ì•¼... í˜¹ì‹œ ë„ˆë„ ëŒì•„ê°€ê³  ì‹¶ì€ ê±°ì•¼?\r\n\r\n#b(ìˆ˜ë½ ì‹œ ë°°ë¥¼ íƒ€ê³  ë§ê°ì˜ í˜¸ìˆ˜ë¡œ ì´ë™í•©ë‹ˆë‹¤.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
+            self.say("...ê·¸ëŸ¼, ì´ë¦„ ì—†ëŠ” ë§ˆì„ë¡œ ë°ë ¤ë‹¤ ì¤„ê²Œ...", ScriptMessageFlag.NpcReplacedByNpc);
             getSc().flushSay();
             registerTransferField(450001007, 2);
         }
@@ -95,7 +95,7 @@ public class VanishingJourney extends ScriptEngineNPC {
     @Script
     public void _450001105_PS01() {
         registerTransferField(450001107, 1);
-        bigScriptProgressMessage("¾Ïº®À» Å¸°í À§·Î ÀÌµ¿ÇÏ¸é ½Å±â·ç Àıº®¿¡ °¥ ¼ö ÀÖ½À´Ï´Ù.", FontType.NanumGothicBold, FontColorType.LightGreen);
+        bigScriptProgressMessage("ì•”ë²½ì„ íƒ€ê³  ìœ„ë¡œ ì´ë™í•˜ë©´ ì‹ ê¸°ë£¨ ì ˆë²½ì— ê°ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", FontType.NanumGothicBold, FontColorType.LightGreen);
     }
 
     @Script
@@ -116,7 +116,7 @@ public class VanishingJourney extends ScriptEngineNPC {
     @Script
     public void enter_450001107() {
         if (getPlayer().getTruePosition().y < -1500) {
-            bigScriptProgressMessage("¾Ïº®À» Å¸°í ¾Æ·¡·Î ÀÌµ¿ÇÏ¸é È£¼ı°¡¿¡ °¥ ¼ö ÀÖ½À´Ï´Ù.", FontType.NanumGothicBold, FontColorType.LightGreen);
+            bigScriptProgressMessage("ì•”ë²½ì„ íƒ€ê³  ì•„ë˜ë¡œ ì´ë™í•˜ë©´ í˜¸ìˆ«ê°€ì— ê°ˆ ìˆ˜ ìˆìŠµë‹ˆë‹¤.", FontType.NanumGothicBold, FontColorType.LightGreen);
             getPlayer().send(CField.UIPacket.setIngameDirectionMode(false, false, false));
             getPlayer().send(CField.DirectionPacket.getDirectionInfo(15, 0));
             getPlayer().send(CField.DirectionPacket.getDirectionInfo(3, 7));
@@ -155,8 +155,8 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     public void _450001100_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003136));
-        self.say("¾îÂ¾Áö ±âºĞÀÌ ÁÁ¾Æº¸ÀÎ´Ù. ¾È½ÄÀÇ µ¿±¼·Î µ¥·Á°¡ ÁÙ ¼ö ÀÖÀ» °Í °°´Ù.", ScriptMessageFlag.NpcReplacedByNpc);
-        if (1 == self.askYesNo("#b(¼ö¶ô ½Ã È­¿°»õ¸¦ Å¸°í ¾È½ÄÀÇ µ¿±¼·Î ÀÌµ¿ÇÕ´Ï´Ù.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
+        self.say("ì–´ì©ì§€ ê¸°ë¶„ì´ ì¢‹ì•„ë³´ì¸ë‹¤. ì•ˆì‹ì˜ ë™êµ´ë¡œ ë°ë ¤ê°€ ì¤„ ìˆ˜ ìˆì„ ê²ƒ ê°™ë‹¤.", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo("#b(ìˆ˜ë½ ì‹œ í™”ì—¼ìƒˆë¥¼ íƒ€ê³  ì•ˆì‹ì˜ ë™êµ´ë¡œ ì´ë™í•©ë‹ˆë‹¤.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
             getPlayer().send(CField.environmentChange("Sound/SoundEff.img/ArcaneRiver/fireBird3", 5, 100));
             registerTransferField(450001200, 2);
         }
@@ -198,7 +198,7 @@ public class VanishingJourney extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(450001250, 1);
         } else {
-            getPlayer().dropMessage(5, "210·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "210ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -208,7 +208,7 @@ public class VanishingJourney extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(450002015, 0);
         } else {
-            getPlayer().dropMessage(5, "210·¹º§ ÀÌ»ó¸¸ ÀÔÀåÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+            getPlayer().dropMessage(5, "210ë ˆë²¨ ì´ìƒë§Œ ì…ì¥í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
         }
     }
 }
