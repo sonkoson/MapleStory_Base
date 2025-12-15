@@ -59,7 +59,7 @@ function action(M, T, S) {
 		S2 = S;
 
 		switch (S1) {
-			case 1: //설정 변경
+			case 1: //Change Settings
 				switch (S2) {
 					case 10:
 						if (SET_GIV == -1)
@@ -256,8 +256,8 @@ function action(M, T, S) {
 		switch (S1) {
 			case 0:
 				if (chr == null) {
-					cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
-					//log("fail", "조회 실패	"+name+"	인벤토리 조회 중 접속 종료\r\n");
+					cm.sendOk("The character has disconnected or logged off during lookup.");
+					//log("fail", "Lookup Fail	"+name+"	Disconnected during lookup\r\n");
 					cm.dispose();
 					return;
 				}
@@ -430,8 +430,8 @@ function action(M, T, S) {
 			case 0:
 
 				if (chr == null) {
-					cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
-					//log("fail", "조회 실패	"+name+"	인벤토리 수정 중 접속 종료\r\n");
+					cm.sendOk("The character has disconnected or logged off during modification.");
+					//log("fail", "Lookup Fail	"+name+"	Disconnected during modification\r\n");
 					cm.dispose();
 					return;
 				}
@@ -524,25 +524,25 @@ function checkOnOff(i, type) {
 	}
 }
 
-//내용 부분 입력
+//Input Content Part
 function log(type, i) {
 	switch (type) {
-		//추가 내용 필요 없음
-		case "access": //접속 시
+		//No additional content needed
+		case "access": //On Access
 			fn = "1_Access.txt";
 			break;
 
-		//추가 내용 : interaction, fail reason
-		case "fail": //실패 시
+		//Additional content: interaction, fail reason
+		case "fail": //On Failure
 			fn = "2_Failure.txt";
 			break;
 
-		//추가 내용 : interaction, 공지 여부
-		case "success": //성공 시
+		//Additional content: interaction, notice status
+		case "success": //On Success
 			fn = "3_Success.txt";
 			break;
 
-		case "notice": //공지사항
+		case "notice": //Notice
 			fn = "4_notice.txt";
 			break;
 	}

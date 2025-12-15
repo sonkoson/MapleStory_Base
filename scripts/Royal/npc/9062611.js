@@ -36,13 +36,13 @@ function action(mode, type, sel) {
         return;
     }
 
-    // GM만 가능하게 임시로 막기
-    /*
-    if (cm.getPlayer().getGMLevel() < 5) {
-    cm.dispose();
-    cm.sendOkS("현재 이용하실수 없습니다", 0x24);
+    // Temporarily disabled for non-GMs
+    if (!cm.getPlayer().isGM()) {
+        cm.dispose();
+        //cm.sendOk("Coming Soon.");
+        cm.sendOkS("Currently unavailable.", 0x24);
+        return;
     }
-    */
     if (status == 0) {
         var msg = "#fs11##fUI/Basic.img/Zenia/SC/1#\r\n";
         msg += "#Cgray#――――――――――――――――――――――――――――――――――――――――\r\n";
@@ -71,13 +71,14 @@ function action(mode, type, sel) {
         case 122:
               cm.dispose();
              cm.getClient().setKeyValue("PCount", "1");
-                  cm.getClient().removeKeyValue("unionevent");
-        cm.getPlayer().dropMessage(6, "초기화 했다~");
-            return;
+                  cm.getPlayer().addOneInfoQuest(100711, "item", "0");
+        cm.getPlayer().dropMessage(6, "Reset complete~");
+        cm.dispose();
+    return;
 */
             case 10:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "강림사냥페스티벌");
+                cm.openNpcCustom(cm.getClient(), 9000213, "Advent Hunting Festival");
                 return;
 
             case 11:
@@ -124,27 +125,27 @@ function action(mode, type, sel) {
 
             case 12:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "수박");
+                cm.openNpcCustom(cm.getClient(), 9000213, "Watermelon");
                 return;
 
             case 13:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "뽑기");
+                cm.openNpcCustom(cm.getClient(), 9000213, "Gachapon");
                 return;
 
             case 14:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "핫타임일퀘");
+                cm.openNpcCustom(cm.getClient(), 9000213, "HotTimeDailyQuest");
                 return;
 
             case 15:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "우편함");
+                cm.openNpcCustom(cm.getClient(), 9000213, "Mailbox");
                 return;
 
             case 16:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "쿠폰");
+                cm.openNpcCustom(cm.getClient(), 9000213, "Coupon");
                 return;
 
 

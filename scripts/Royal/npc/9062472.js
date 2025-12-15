@@ -21,7 +21,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0 && type == 3 && selection == -1) {
-            //cm.sayNpc("그러면 게임에 참여하고 싶을 때 다시 찾아와줘~", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
+            //cm.sayNpc("If you want to join the game, come back anytime~", GameObjectType.Npc, false, false, ScriptMessageFlag.NpcReplacedByNpc);
             cm.dispose();
             return;
         }

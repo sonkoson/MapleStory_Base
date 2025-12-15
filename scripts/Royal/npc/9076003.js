@@ -1,4 +1,4 @@
-var 별 = "#fUI/GuildMark.img/Mark/Pattern/00004001/14#";
+var star = "#fUI/GuildMark.img/Mark/Pattern/00004001/14#";
 
 var sel = 0
 
@@ -117,7 +117,7 @@ var ringList = [{
 }
 ]
 
-var coin = 4001679; // 필요한 아이템 코드
+var coin = 4001679; // Required Item Code
 
 var status = -1;
 
@@ -133,7 +133,7 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-        var text = "                       #fs11##fc0xFF000000##fs17#" + 별 + " Royal Maple Friendship Ring Shop " + 별 + "\r\n#fs12##Cgray#                Gift a ring to verify your friendship!#k\r\n\r\n#fs12#";
+        var text = "                       #fs11##fc0xFF000000##fs17#" + star + " Royal Maple Friendship Ring Shop " + star + "\r\n#fs12##Cgray#                Gift a ring to verify your friendship!#k\r\n\r\n#fs12#";
         text += "#fs12#Please select the ring you want to gift.\r\nYou must be in a #bparty#k with the person you will equip it with.\r\n#r(Note: Both sender and receiver must change channels for it to apply.)#k\r\n#fs11##fc0xFF000000#You need #i4001679# to gift a couple ring#b\r\n";
         for (var i = 0; i < ringList.length; ++i) {
             var itemID = ringList[i]['item'];

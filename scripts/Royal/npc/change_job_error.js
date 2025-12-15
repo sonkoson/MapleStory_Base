@@ -153,9 +153,9 @@ function action(mode, type, sel) {
                                             return;
                                         }
                     
-                                        var 주무기 = cm.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(-11);
-                                        var 보조무기 = cm.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(-10);
-                                        if (주무기 || 보조무기) {
+                                        var mainWeapon = cm.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(-11);
+                                        var subWeapon = cm.getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem(-10);
+                                        if (mainWeapon || subWeapon) {
                                             cm.sendOk("#fs11#กรุณาถอดอาวุธหลักและอาวุธรองออกก่อนลองใหม่อีกครั้ง");
                                             cm.dispose();
                                             return;

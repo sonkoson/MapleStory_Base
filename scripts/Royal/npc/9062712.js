@@ -80,21 +80,17 @@ function action(mode, type, selection) {
             }
             cm.sendSimple(musicask);
         }
-        /*
-        if (seld == 2) {
+
+        if (seld == 2) { // GM menu: Register BGM Queue (All Channels)
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() > 8) {
-                cm.sendOk("#fs11#대기열은 최대 8개 까지 등록 가능합니다.");
+                cm.sendOk("#fs11#You can register up to 8 songs in the queue.");
                 cm.dispose();
                 return;
             }
-            if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11##i4001715# #z4001715# 20개가 부족합니다.");
-                cm.dispose();
-                return;
-            }
+            // No item check for GM option
             var musiclist = cm.getAllSound();
-            var musicask = "#fs11#원하는 BGM을 선택해주세요.\r\n\r\n";
+            var musicask = "#fs11#Please select the BGM you want.\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
                 if (musiclist.get(i) == "[테일즈위버] Reminiscence")
@@ -103,29 +99,29 @@ function action(mode, type, selection) {
             }
             cm.sendSimple(musicask);
         }
-        if (seld == 3) {
-            cm.askYesNo("#fs11#정말 BGM 현재맵(전체채널) 대기열을 초기화 하시겠습니까?", GameObjectType.Npc, ScriptMessageFlag.None);
+        if (seld == 3) { // GM menu: Reset BGM Queue (All Channels)
+            cm.askYesNo("#fs11#Are you sure you want to reset the BGM queue for the current map (all channels)?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
         }
-        */
+
     }
     if (status == 2) {
         if (seld == 1) {
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?\r\n\r\nIt requires 20 #r#i4001715# #z4001715##b. Do you want to proceed?", GameObjectType.Npc, ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?\r\n\r\nIt requires 20 #r#i4001715# #z4001715##b. Do you want to proceed?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
             }
         }
-        if (seld == 2) {
+        if (seld == 2) { // GM menu: Register BGM Queue (All Channels) - confirmation
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?", GameObjectType.Npc, ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
             }
         }
-        if (seld == 3) {
-            for (i = 0; i < GameServer.getAllInstances().size(); i++) {
-                channel = GameServer.getAllInstances().get(i)
+        if (seld == 3) { // GM menu: Reset BGM Queue (All Channels) - confirmation
+            for (i = 0; i < Packages.server.GameServer.getAllInstances().size(); i++) {
+                channel = Packages.server.GameServer.getAllInstances().get(i)
                 channel.getMapFactory().getMap(cm.getPlayer().getMapId()).clearMusicList();
             }
             cm.dispose();
