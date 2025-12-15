@@ -140,7 +140,7 @@ public abstract class Field_LucidBattle extends Field {
                      if (hpCount < 8) {
                         this.setStatueStack(Math.min(3, this.statueStack + 1), false);
                         if (this.lastHPCount == -1) {
-                           this.sendLucidNotice("나팔동상 근처에서 '채집'키를 눌러  사용하면 루시드의 힘을 억제할 수 있습니다!", 0);
+                           this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
                         }
                      }
 
@@ -151,7 +151,7 @@ public abstract class Field_LucidBattle extends Field {
                   if (hpCount < 9) {
                      this.setStatueStack(Math.min(3, this.statueStack + 1), false);
                      if (this.lastHPCount == -1) {
-                        this.sendLucidNotice("나팔동상 근처에서 '채집'키를 눌러  사용하면 루시드의 힘을 억제할 수 있습니다!", 0);
+                        this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
                      }
                   }
 
@@ -519,7 +519,7 @@ public abstract class Field_LucidBattle extends Field {
          this.butterflies.add(newButterfly);
          this.sendLucidAddButterfly(newButterfly);
          if (this.butterflies.size() == 33) {
-            this.sendLucidNotice("꿈이 강해지고 있습니다. 조심하세요!", -1);
+            this.sendLucidNotice("ความฝันกำลังรุนแรงขึ้น ระวังตัวด้วย!", -1);
          }
       }
    }

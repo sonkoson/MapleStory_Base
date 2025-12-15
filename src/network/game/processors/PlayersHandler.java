@@ -72,7 +72,7 @@ public class PlayersHandler {
             try {
                chr.sendNote(name, msg, fame ? 1 : 0);
             } catch (Exception var20) {
-               System.out.println("쪽지 오류 발생");
+               System.out.println("Note error");
                var20.printStackTrace();
             }
             break;
@@ -132,7 +132,7 @@ public class PlayersHandler {
             if (type < 0) {
                try {
                   chr.getClient().getSession().close();
-                  System.out.println("팅겼다고인마");
+                  System.out.println("Disconnected dude");
                   return;
                } catch (Exception var18) {
                   return;
@@ -252,7 +252,7 @@ public class PlayersHandler {
          } else {
             Party party = chr.getParty();
             if (party != null) {
-               chr.dropMessage(5, "파티를 해제하고 다시 시도해 주세요.");
+               chr.dropMessage(5, "กรุณายุบปาร์ตี้แล้วลองใหม่อีกครั้ง");
                chr.send(CWvsContext.enableActions(chr));
             } else {
                chr.getClient().removeClickedNPC();
@@ -336,10 +336,10 @@ public class PlayersHandler {
                         MapleInventoryManipulator.removeById(c, GameConstants.getInventoryType(itemid), itemid, reactor.getReactItem().getRight(), true, false);
                         reactor.hitReactor(c);
                      } else {
-                        c.getPlayer().dropMessage(5, "너무 멀리 있습니다.");
+                        c.getPlayer().dropMessage(5, "อยู่ไกลเกินไป");
                      }
                   } else {
-                     c.getPlayer().dropMessage(5, "You don't have the item required.");
+                     c.getPlayer().dropMessage(5, "ไม่มีไอเทมที่ต้องใช้");
                   }
                } else {
                   reactor.hitReactor(c);
@@ -446,7 +446,7 @@ public class PlayersHandler {
                c.getPlayer().setFollowId(0);
             }
 
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "너무 멀리 있습니다."));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อยู่ไกลเกินไป"));
          }
       } else {
          c.getPlayer().setFollowId(0);
@@ -575,7 +575,7 @@ public class PlayersHandler {
          long theTime = Long.parseLong(stat.getCustomData());
          if (theTime + 7200000L > currentTime && !c.getPlayer().isIntern()) {
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-            c.getPlayer().dropMessage(5, "You may only report every 2 hours.");
+            c.getPlayer().dropMessage(5, "รายงานได้ทุกๆ 2 ชั่วโมงเท่านั้น");
          } else {
             stat.setCustomData(String.valueOf(currentTime));
             other.addReport(type);
@@ -597,7 +597,7 @@ public class PlayersHandler {
             if (other != null && other.getId() != chr.getId() && other.getTotalSkillLevel(skill) > 0) {
                chr.addStolenSkill(skill, other.getTotalSkillLevel(skill));
             } else {
-               chr.dropMessage(1, "상대방이 해당 스킬을 보유하고 있지 않습니다.");
+               chr.dropMessage(1, "ฝ่ายตรงข้ามไม่มีสกิลดังกล่าว");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
             }
          } else if (action == 1) {
@@ -629,7 +629,7 @@ public class PlayersHandler {
       if (!c.getChannelServer().getPlayerStorage().getCharacterById(victim).getSkills().isEmpty() && GameConstants.isAdventurer(jobid)) {
          c.getSession().writeAndFlush(CField.viewSkills(c.getChannelServer().getPlayerStorage().getCharacterById(victim)));
       } else {
-         c.getPlayer().dropMessage(6, "훔칠 수 있는 스킬이 없습니다.");
+         c.getPlayer().dropMessage(6, "ไม่มีสกิลให้ขโมย");
       }
    }
 

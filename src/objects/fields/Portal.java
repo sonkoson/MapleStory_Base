@@ -103,7 +103,7 @@ public class Portal {
             }
 
             if (!c.getPlayer().isGM() && to.getLevelLimit() > 0 && to.getLevelLimit() > c.getPlayer().getLevel()) {
-               c.getPlayer().dropMessage(-1, "You are too low of a level to enter this place.");
+               c.getPlayer().dropMessage(-1, "เลเวลของคุณต่ำเกินไปที่จะเข้าที่นี่");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }

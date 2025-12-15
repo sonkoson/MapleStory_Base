@@ -43,7 +43,7 @@ public class DamageMeasurementRank {
       try (Connection con = DBConnection.getConnection()) {
          ps = con.prepareStatement("DELETE FROM `damage_measurement_rank`");
          ps.executeQuery();
-         System.out.println("전투력 측정 랭킹이 초기화되었습니다.");
+         System.out.println("Damage measurement ranking reset.");
       } catch (SQLException var17) {
       } finally {
          try {
@@ -92,7 +92,7 @@ public class DamageMeasurementRank {
 
          rank = sortByValue(rank);
          rewardRank = sortByValue(rewardRank);
-         System.out.println("전투력 측정 랭킹이 로드되었습니다.");
+         System.out.println("Damage measurement ranking loaded.");
       } catch (SQLException var21) {
       } finally {
          try {

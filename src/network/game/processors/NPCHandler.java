@@ -281,7 +281,7 @@ public class NPCHandler {
                      case 2000031:
                         if (chr.getLevel() >= 210) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
                               return;
                            }
 
@@ -349,14 +349,14 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000032:
                         if (chr.getLevel() >= 220) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
                               return;
                            }
 
@@ -424,14 +424,14 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000033:
                         if (chr.getLevel() >= 225) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
                               return;
                            }
 
@@ -499,14 +499,14 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000034:
                         if (chr.getLevel() >= 230) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
                               return;
                            }
 
@@ -574,14 +574,14 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000035:
                         if (chr.getLevel() >= 235) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "장비 인벤토리 슬롯이 부족합니다.");
+                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
                               return;
                            }
 
@@ -649,7 +649,7 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "아이템이 지급되었습니다.");
+                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
                            chr.forceCompleteQuest(quest);
                         }
                   }
@@ -708,7 +708,7 @@ public class NPCHandler {
                      slea.readInt();
                      if (c.getPlayer().isGM()) {
                         c.getPlayer().dropMessage(5,
-                              "완료퀘스트ID : " + quest + " 엔피시 : " + npc + " 스크립트 : " + q.getEndscript());
+                              "QuestID ที่สำเร็จ : " + quest + " 엔피시 : " + npc + " 스크립트 : " + q.getEndscript());
                      }
 
                      if (ScriptManager.get()._scripts.get(q.getEndscript()) != null) {
@@ -791,7 +791,7 @@ public class NPCHandler {
                   MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                   if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), item.getQuantity(), item.getOwner())) {
                      storage.store(item);
-                     chr.dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                     chr.dropMessage(1, "ช่องเก็บของเต็ม");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   } else {
                      int flag = item.getFlag();
@@ -863,7 +863,7 @@ public class NPCHandler {
                   }
 
                   if (itemId == 1112405) {
-                     c.getPlayer().dropMessage(1, "해당 아이템은 창고에 넣을 수 없습니다.");
+                     c.getPlayer().dropMessage(1, "ไอเทมนี้ฝากคลังไม่ได้");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   }
 
@@ -878,7 +878,7 @@ public class NPCHandler {
                   }
 
                   if (chr.getMeso() < 100L) {
-                     chr.dropMessage(1, "메소가 부족하여 창고에 아이템을 넣을 수 없습니다.");
+                     chr.dropMessage(1, "Meso ไม่เพียงพอสำหรับฝากไอ템ในคลัง");
                      storage.update(c);
                      return;
                   }
@@ -1527,7 +1527,7 @@ public class NPCHandler {
                linesx = linesx + streamx.collect(Collectors.joining(System.lineSeparator()));
                engine.eval(linesx);
             } catch (IOException | ScriptException var13) {
-               System.out.println("스크립트 핸들 오류 발생");
+               System.out.println("Script Handle error");
                var13.printStackTrace();
                return null;
             }

@@ -67,7 +67,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (user.getInventory(GameConstants.getInventoryType(rewardID)).getNumFreeSlot() < rewardCount) {
-                     user.dropMessage(1, "인벤토리 공간이 부족합니다.");
+                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -107,7 +107,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (user.getInventory(GameConstants.getInventoryType(rewardID)).getNumFreeSlot() < rewardCount) {
-                     user.dropMessage(1, "인벤토리 공간이 부족합니다.");
+                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -149,7 +149,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (mc.getInfo() == null) {
-                     user.dropMessage(1, "알 수 없는 오류가 발생했습니다.");
+                     user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -168,7 +168,7 @@ public class MonsterCollectionHandler {
                      }
 
                      if (cc == null) {
-                        user.dropMessage(1, "알 수 없는 오류가 발생했습니다.");
+                        user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                         return;
                      }
@@ -179,7 +179,7 @@ public class MonsterCollectionHandler {
                      int clearCount = cc.getClearCount();
                      int count = MonsterCollection.getTotalCollectionByRegion(user, region);
                      if (count < clearCount) {
-                        user.dropMessage(1, "알 수 없는 오류가 발생했습니다.");
+                        user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                         return;
                      }
@@ -245,7 +245,7 @@ public class MonsterCollectionHandler {
                   if (user.getInventory(MapleInventoryType.USE).getNumFreeSlot() < 5
                      || user.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 3
                      || user.getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                     user.dropMessage(1, "인벤토리 공간이 부족합니다. 소비슬롯 5칸 기타슬롯 3칸 캐시슬롯2칸 이상을 비워주세요.");
+                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ 소비슬롯 5칸 기타슬롯 3칸 캐시슬롯2칸 이상을 비워주세요.");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -421,7 +421,7 @@ public class MonsterCollectionHandler {
       MonsterCollection.MobCollection mc = MonsterCollection.mobCollections.getOrDefault(region, null);
       if (mc == null) {
          if (user.isGM()) {
-            user.dropMessage(6, "mc == null 입니다.");
+            user.dropMessage(6, "mc is null.");
          }
 
          c.getSession().writeAndFlush(CWvsContext.enableActions(user));
@@ -430,7 +430,7 @@ public class MonsterCollectionHandler {
          MonsterCollection.CollectionSubIndex si = mc.getSubIndexList().get(session);
          if (si == null) {
             if (user.isGM()) {
-               user.dropMessage(6, "si == null 입니다.");
+               user.dropMessage(6, "si is null.");
             }
 
             c.getSession().writeAndFlush(CWvsContext.enableActions(user));
@@ -439,7 +439,7 @@ public class MonsterCollectionHandler {
             MonsterCollection.MobCollectionGroup cGroup = si.getGroup().get(group);
             if (cGroup == null) {
                if (user.isGM()) {
-                  user.dropMessage(6, "cGroup == null 입니다.");
+                  user.dropMessage(6, "cGroup is null.");
                }
 
                c.getSession().writeAndFlush(CWvsContext.enableActions(user));

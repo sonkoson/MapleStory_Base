@@ -4623,7 +4623,7 @@ public class PlayerStats implements Serializable {
                               Skill skil = SkillFactory.getSkill(zzz);
                               if (skil != null && skil.canBeLearnedBy(chr.getJob())) {
                                  eq.setIncSkill(skil.getId());
-                                 chr.dropMessage(5, "Your skill has gained a levelup: " + skil.getName() + " +1");
+                                 chr.dropMessage(5, "สกิลเลเวลอัพ: " + skil.getName() + " +1");
                               }
                            }
                         }

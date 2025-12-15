@@ -270,10 +270,10 @@ public class GameServer {
             .childOption(ChannelOption.SO_SNDBUF, 4194304)
             .childOption(ChannelOption.SO_KEEPALIVE, true);
          ChannelFuture f = bootstrap.bind(this.port).sync();
-         System.out.println("채널 " + this.getChannel() + " 서버가 " + this.port + " 포트를 성공적으로 개방했습니다.");
+         System.out.println("Channel " + this.getChannel() + " 서버가 " + this.port + " 포트를 성공적으로 개방했습니다.");
          this.eventSM.init();
       } catch (Exception var4) {
-         System.out.println("[오류] 채널서버가 " + this.port + " 포트를 개방하는데 실패했습니다.");
+         System.out.println("[Error] Channel server " + this.port + " Failed to open port.");
          var4.printStackTrace();
       }
 
@@ -284,7 +284,7 @@ public class GameServer {
       if (!this.finishedShutdown) {
          this.broadcastPacket(CWvsContext.serverNotice(0, "현재 채널이 잠시 후 종료됩니다."));
          this.shutdown = true;
-         System.out.println(this.channel + "채널 캐릭터를 저장합니다.");
+         System.out.println(this.channel + "Channel 캐릭터를 저장합니다.");
          this.getPlayerStorage().disconnectAll();
          instances.remove(this.channel);
          this.setFinishShutdown();
@@ -713,7 +713,7 @@ public class GameServer {
 
    public final void setFinishShutdown() {
       this.finishedShutdown = true;
-      System.out.println(this.channel + "채널이 종료되었습니다.");
+      System.out.println(this.channel + "Channel shut down.");
    }
 
    public final boolean isAdminOnly() {

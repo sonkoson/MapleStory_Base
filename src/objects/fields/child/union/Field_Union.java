@@ -39,7 +39,7 @@ public class Field_Union {
       if (this.player == null) {
          MapleUnion union = player.getMapleUnion();
          if (union == null) {
-            player.dropMessage(5, "유니온 정보를 불러오는데 실패하였습니다.");
+            player.dropMessage(5, "โหลดข้อมูล Union ล้มเหลว");
             player.warp(15);
             return;
          }

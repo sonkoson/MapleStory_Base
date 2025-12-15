@@ -76,6 +76,6 @@ public class FuckingPetUniqueID {
          }
       }
 
-      System.out.println("완료됐당께");
+      System.out.println("Completed");
    }
 }

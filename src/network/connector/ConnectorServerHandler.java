@@ -49,7 +49,7 @@ public class ConnectorServerHandler {
                      }
                   }
                } catch (Exception var11) {
-                  System.out.println("커넥터 서버 오류 발생");
+                  System.out.println("Connector Server error");
                   var11.printStackTrace();
                }
 

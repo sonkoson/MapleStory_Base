@@ -47,7 +47,7 @@ public class PraiseRankTest {
             ResultSet rs2 = ps2.executeQuery();
             if (rs2.next()) {
                int accountID = rs2.getInt("accountid");
-               System.out.println(rank++ + "위 " + name + "(accountID : " + accountID + ") " + meso);
+               System.out.println(rank++ + "Top " + name + "(accountID : " + accountID + ") " + meso);
             }
          }
       } catch (SQLException var17) {

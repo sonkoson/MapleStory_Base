@@ -23,7 +23,7 @@ public class MultiYutGameDlg {
    public void init(List<MapleCharacter> players) {
       if (players.size() < 2) {
          for (MapleCharacter player : this.field.getCharactersThreadsafe()) {
-            player.dropMessage(5, "게임에 필요한 인원수가 부족하여 마을로 이동됩니다.");
+            player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
             player.setRegisterTransferField(ServerConstants.TownMap);
             player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }
@@ -58,7 +58,7 @@ public class MultiYutGameDlg {
    public void firstSetSuperItem() {
       if (this.field.getCharactersSize() < 2) {
          for (MapleCharacter player : this.field.getCharactersThreadsafe()) {
-            player.dropMessage(5, "게임에 필요한 인원수가 부족하여 마을로 이동됩니다.");
+            player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
             player.setRegisterTransferField(ServerConstants.TownMap);
             player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }

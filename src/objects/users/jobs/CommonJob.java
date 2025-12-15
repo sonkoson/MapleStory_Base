@@ -246,7 +246,7 @@ public class CommonJob implements BasicJob {
                   if (count >= 5) {
                      this.getPlayer().warp(ServerConstants.TownMap);
                      this.getPlayer().dropMessage(5,
-                           "You are being moved to the village for using the Bee Yeon skill more than 5 times in the same spot.");
+                           "คุณถูกย้ายกลับเมืองเนื่องจากใช้สกิล Bee Yeon เกิน 5 ครั้งในจุดเดิม");
                      this.getPlayer().updateOneInfo(19771, "lastcount", String.valueOf(0));
                   }
                } else {
@@ -464,7 +464,7 @@ public class CommonJob implements BasicJob {
                this.player.setBulletItemID(projectile);
                if (!MapleInventoryManipulator.removeById(this.player.getClient(), MapleInventoryType.USE, projectile,
                      bulletConsume, false, true)) {
-                  this.player.dropMessage(5, "You do not have enough consumable items.");
+                  this.player.dropMessage(5, "ไอเทมไม่เพียงพอ");
                   return false;
                }
             }

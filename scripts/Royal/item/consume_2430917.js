@@ -99,7 +99,7 @@ function action(M, T, S)
 			+ "  #i"+S+":# #t"+S+":# #e#k#n\r\n", false, true, 1, 9062294, ScriptMessageFlag.NpcReplacedByNpc);
 
 			if (wList.indexOf(S) == -1) {
-				cm.sendOk("비정상적인 접근");
+				cm.sendOk("การเข้าถึงผิดปกติ");
 				cm.dispose();
 				return;
 			}
@@ -158,12 +158,12 @@ function getWeapon(i)
 {
 	switch(Math.floor(cm.getPlayer().getJob()))
 	{
-		/* 전사 */
+		/* Warrior */
 		case 100:
 		wList.push(1302334); // 한손검
 		wList.push(1312200); // 한손도끼
 		wList.push(1322251); // 한손둔기
-		wList.push(1402252); // 두손검
+		wList.push(1402252); // Two-Handed Sword
 		wList.push(1412178); // 두손도끼
 		wList.push(1422185); // 두손둔기
 		wList.push(1432215); // 창
@@ -174,7 +174,7 @@ function getWeapon(i)
 		case 111:
 		case 112:
 		wList.push(1302334); // 한손검
-		wList.push(1402252); // 두손검
+		wList.push(1402252); // Two-Handed Sword
 		break;
 
 		case 120: //팔라딘
@@ -183,7 +183,7 @@ function getWeapon(i)
 		wList.push(1302334); // 한손검
 		wList.push(1312200); // 한손도끼
 		wList.push(1322251); // 한손둔기
-		wList.push(1402252); // 두손검
+		wList.push(1402252); // Two-Handed Sword
 
 		wList.push(1412178); // 두손도끼
 		wList.push(1422185); // 두손둔기
@@ -200,7 +200,7 @@ function getWeapon(i)
 		case 1110:
 		case 1111:
 		case 1112:
-		wList.push(1402252); // 두손검
+		wList.push(1402252); // Two-Handed Sword
 		break;
 
 		case 2100:
@@ -241,7 +241,7 @@ function getWeapon(i)
 		case 6110:
 		case 6111:
 		case 6112:
-		wList.push(1402252); // 두손검
+		wList.push(1402252); // Two-Handed Sword
 		break;
 
 		case 15002:
@@ -252,7 +252,7 @@ function getWeapon(i)
 		wList.push(1213020); // 튜너
 		break;
 
-		/* 마법사 */
+		/* Magician */
 		case 200:
 		case 210:
 		case 211:

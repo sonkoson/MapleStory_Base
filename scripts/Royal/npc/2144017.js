@@ -41,7 +41,7 @@ function action(mode, type, selection) {
     } else if (status == 2) {
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("1인 이상의 파티에 속해야만 입장할 수 있습니다.");
+            cm.sendOk("ต้องอยู่ในปาร์ตี้ที่มีสมาชิก 1 คนขึ้นไปจึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {

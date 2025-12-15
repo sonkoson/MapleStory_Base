@@ -61,19 +61,19 @@ public abstract class MapleEvent {
       if (reward == 0) {
          int mes = Randomizer.nextInt(9000000) + 1000000;
          chr.gainMeso(mes, true, false, true);
-         chr.dropMessage(5, "축하합니다! " + mes + " 메소를 얻으셨습니다!");
+         chr.dropMessage(5, "ยินดีด้วย! " + mes + " ได้รับ Meso!");
       } else if (reward == 1) {
          int cs = Randomizer.nextInt(4000) + 1000;
          chr.modifyCSPoints(1, cs, true);
-         chr.dropMessage(5, "축하합니다! " + cs + " 캐시를 얻으셨습니다!");
+         chr.dropMessage(5, "ยินดีด้วย! " + cs + " ได้รับ Cash!");
       } else if (reward == 2) {
          chr.setRealCash(chr.getRealCash() + 1);
-         chr.dropMessage(5, "축하합니다! V포인트 1을 획득하셨습니다.");
+         chr.dropMessage(5, "ยินดีด้วย! V포인트 1을 획득하셨습니다.");
       } else if (reward == 3) {
          chr.addFame(10);
-         chr.dropMessage(5, "축하합니다! 인기도 10을 얻으셨습니다.");
+         chr.dropMessage(5, "ยินดีด้วย! 인기도 10을 얻으셨습니다.");
       } else if (reward == 4) {
-         chr.dropMessage(5, "아쉽지만, 보상을 획득하지 못하였습니다. 다음 기회에 ~ ^^");
+         chr.dropMessage(5, "น่าเสียดาย ไม่ได้รับรางวัล ไว้โอกาสหน้านะ ~ ^^");
       } else {
          int max_quantity = 1;
          switch (reward) {
@@ -188,7 +188,7 @@ public abstract class MapleEvent {
                if (chr.getMapId() == i) {
                   e.startEvent();
                   setEvent(chr.getClient().getChannelServer(), false);
-                  chr.dropMessage(5, t + " 이벤트가 시작되었습니다.");
+                  chr.dropMessage(5, t + " กิจกรรมเริ่มขึ้นแล้ว");
                }
             }
          }

@@ -31,10 +31,10 @@ var seld = -1;
 위장색 = "#fUI/Basic.img/RoyalBtn/theblackcoin/43#";
 정령 = "#fUI/UIWindow4.img/pointShop/100712/iconShop#";
 후원 = "#fUI/UIWindow4.img/pointShop/501053/iconShop#";
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
 핑크색 = "#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
+Pink = "#fc0xFFF781D8#"
 파란색 = "#fc0xFF479AEF#"
 
 function start() {

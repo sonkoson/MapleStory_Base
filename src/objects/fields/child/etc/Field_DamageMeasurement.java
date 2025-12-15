@@ -147,7 +147,7 @@ public class Field_DamageMeasurement extends Field {
                      this.removeMonster(m, 1);
                   }
 
-                  this.broadcastMessage(CField.chatMsg(6, "[측정 완료] 시간 내에 허수아비에 가한 데미지 : " + this.getUnit(damage)));
+                  this.broadcastMessage(CField.chatMsg(6, "[Measurement Complete] ความเสียหายต่อหุ่นฟางในเวลาที่กำหนด : " + this.getUnit(damage)));
                   this.broadcastMessage(
                      CField.addPopupSay(
                         9062025,
@@ -195,7 +195,7 @@ public class Field_DamageMeasurement extends Field {
                            DamageMeasurementRank.editRecord(chrid, damage);
                         }
                      } catch (Exception var29) {
-                        System.out.println("데미지 기록중 오류 발생 Log_MapUpdate_Except 에 기록됨. " + var29.toString());
+                        System.out.println("Error recording damage. Recorded in Log_MapUpdate_Except. " + var29.toString());
                         FileoutputUtil.outputFileError("Log_MapUpdate_Except.rtf", var29);
                      }
                   }, 100L);

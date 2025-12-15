@@ -1,4 +1,4 @@
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 importPackage(Packages.tools.packet);
 importPackage(java.lang);
 importPackage(Packages.network.game);

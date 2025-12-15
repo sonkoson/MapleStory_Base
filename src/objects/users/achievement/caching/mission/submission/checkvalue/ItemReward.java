@@ -12,7 +12,7 @@ public class ItemReward {
    public ItemReward(MapleData root) {
       this.condition = AchievementConditionType.getType(MapleDataTool.getString("condition", root, "or"));
       if (this.condition != AchievementConditionType.or) {
-         System.out.println("ItemReward and발견");
+         System.out.println("ItemReward and found");
          System.out.println(root.getParent().getParent().getParent().getParent().getParent().getParent().getName());
       }
 

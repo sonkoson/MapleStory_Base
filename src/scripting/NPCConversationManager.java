@@ -1866,7 +1866,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             for (MapleCharacter chr : cserv.getPlayerStorage().getAllCharacters()) {
                if (chr.getGuildId() == this.getPlayer().getGuildId()) {
                   mse.applyTo(chr, chr, true, null, duration, (byte) 0, true, false);
-                  chr.dropMessage(5, "Your guild has gotten a " + msg + " buff.");
+                  chr.dropMessage(5, "กิลด์ของคุณได้รับ " + msg + " buff.");
                }
             }
          }
@@ -2195,7 +2195,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             MapleCharacter cPlayer = GameServer.getInstance(chz).getPlayerStorage()
                   .getCharacterById(this.getPlayer().getMarriageId());
             if (cPlayer != null) {
-               cPlayer.dropMessage(1, "Your partner has divorced you.");
+               cPlayer.dropMessage(1, "คู่รักหย่าร้างกับคุณ");
                cPlayer.setMarriageId(0);
                this.setQuestRecord(cPlayer, 160001, "0");
                this.setQuestRecord(this.getPlayer(), 160001, "0");
@@ -2953,7 +2953,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   .getPlayer()
                   .dropMessage(
                         5,
-                        "Weapon Appraisal Result : Grade("
+                        "ผลการประเมินอาวุธ : Grade("
                               + gradeString[var14 - 1]
                               + ") / AllStats : "
                               + allStat_
@@ -3290,7 +3290,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          if (GameConstants.isAuthenticSymbol(target.getItemId())) {
             if (target.getArcLevel() >= 11) {
-               this.c.getPlayer().dropMessage(1, "You cannot upgrade this any further.");
+               this.c.getPlayer().dropMessage(1, "ไม่สามารถอัพเกรดได้อีก");
                this.c.getSession().writeAndFlush(CWvsContext.enableActions(this.c.getPlayer()));
                return;
             }
@@ -3362,7 +3362,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                "Storage slots increased. Current storage slots: " + this.getPlayer().getStorage().getSlots() + ".");
          return true;
       } else {
-         this.getPlayer().dropMessage(1, "You cannot increase slots any further.");
+         this.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มช่องได้อีก");
          return false;
       }
    }
@@ -3485,7 +3485,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (test2 == null) {
             this.c.getPlayer().send(CField.UIPacket.openUI(164));
          } else {
-            this.c.getPlayer().dropMessage(1, "Thieves must unequip secondary weapons/shields/blades.");
+            this.c.getPlayer().dropMessage(1, "Thief ต้องถอดอาวุธรอง/โล่/ใบมีดออกก่อน");
          }
       }
    }
@@ -3667,7 +3667,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   + ")");
       LoggingManager.putLog(new ConsumeLog(this.c.getPlayer(), 1, sb));
       String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
-      this.getPlayer().dropMessage(5, "You have lost 4,000 " + cashName + ".");
+      this.getPlayer().dropMessage(5, "เสีย 4,000 " + cashName + ".");
       if (itemID == 0) {
          this.sendSimple(
                "Unfortunately, you didn't get anything from the #bFairy Bro's Golden Box#k... Better luck next time!\r\n\r\n#L0#Open again.#l");
@@ -3835,7 +3835,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             this.c.getPlayer().updateOneInfo(1234590, "dojang_point_get", "1");
-            this.c.getPlayer().dropMessage(5, "You have gained " + point + " points.");
+            this.c.getPlayer().dropMessage(5, "ได้รับ " + point + " points.");
             this.c
                   .getPlayer()
                   .updateOneInfo(42003, "point", String
@@ -4496,7 +4496,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else {
          this.c.getPlayer().updateOneInfo(1235858, "praise", "1");
-         this.sendNext("You praised #b" + toName + "#k. You have gained #e500 Praise Points#n.");
+         this.sendNext("You praised #b" + toName + "#k. ได้รับ #e500 Praise Points#n.");
          this.dispose();
          return true;
       }
@@ -5681,7 +5681,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
+      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
    }
 
    public void enterMission2Space() {
@@ -5693,7 +5693,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
+      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
    }
 
    public void enterExtremeRail() {
@@ -5705,7 +5705,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "Too many users are currently participating. Please try again later.");
+      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
    }
 
    public int getRecoveryExtremePointWeek() {
@@ -5771,7 +5771,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                this.getPlayer().setGetExtremeRealCash(canCount);
                this.getPlayer().gainRealCash(p);
                String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
-               this.getPlayer().dropMessage(5, "You have obtained " + p + " " + cashName + ".");
+               this.getPlayer().dropMessage(5, "ได้รับ " + p + " " + cashName + ".");
                return p;
             }
 

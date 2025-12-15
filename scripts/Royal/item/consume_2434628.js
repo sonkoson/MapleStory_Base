@@ -31,7 +31,7 @@ function action(mode, type, sel) {
 	if (status == 0) {
 
 if (!cm.canHold(1662141)) {
-cm.sendOk("#fs11#장비칸에 빈 공간이 없습니다.");
+cm.sendOk("#fs11#ไม่มีช่องว่างในกระเป๋าอุปกรณ์");
 cm.dispose();
 return;
 }

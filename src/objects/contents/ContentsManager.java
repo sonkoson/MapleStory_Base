@@ -70,7 +70,7 @@ public class ContentsManager {
             }
 
             Collections.shuffle(jaums);
-            System.out.println("[자음퀴즈] DB가 로딩되었습니다. " + jaums.size() + "개");
+            System.out.println("[ConsonantQuiz] DB Loaded. " + jaums.size() + "개");
             startGameSchedule();
          }
       }
@@ -82,7 +82,7 @@ public class ContentsManager {
                   @Override
                   public void run() {
                      if (ContentsManager.JaumQuizGame.currentJaumQuiz != null) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(7, "정답은 : " + ContentsManager.JaumQuizGame.currentJaumQuiz + " 였습니다!"));
+                        Center.Broadcast.broadcastMessage(CField.chatMsg(7, "คำตอบคือ : " + ContentsManager.JaumQuizGame.currentJaumQuiz + " ครับ!"));
                      }
 
                      int round = ContentsManager.JaumQuizGame.currentRound;
@@ -91,7 +91,7 @@ public class ContentsManager {
                      Center.Broadcast.broadcastMessage(
                         CField.chatMsg(
                            6,
-                           "상식퀴즈!(유니온 코인지급) 문제 : "
+                           "Quiz ความรู้ทั่วไป! (แจก Union Coin) คำถาม : "
                               + ContentsManager.JaumQuizGame.jaums.get(random).type
                               + " ["
                               + ContentsManager.JaumQuizGame.convertName(ContentsManager.JaumQuizGame.jaums.get(random).Answer)
@@ -111,11 +111,11 @@ public class ContentsManager {
             return false;
          } else if (chat.equals(currentJaumQuiz)) {
             if (System.currentTimeMillis() - chr.getOneInfoQuestLong(1234567, "CheckJaumTime") < 900000L) {
-               chr.dropMessage(5, "마지막 정답 이후 15분이 흐르지 않았습니다. 조금 더 기다려 주세요!");
+               chr.dropMessage(5, "ยังไม่ครบ 15 นาทีหลังจากตอบถูกครั้งล่าสุด กรุณารอสักครู่!");
                return false;
             } else {
                Center.Broadcast.broadcastMessage(CField.chatMsg(7, chr.getName() + "님 정답! 유니온 코인 30개가 지급됩니다."));
-               Center.Broadcast.broadcastMessage(CField.chatMsg(7, "정답 : " + currentJaumQuiz));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(7, "คำตอบ : " + currentJaumQuiz));
                chr.updateOneInfo(1234567, "CheckJaumTime", String.valueOf(System.currentTimeMillis()));
                currentJaumQuiz = null;
                chr.send(CField.MapEff("Map/Effect.img/killing/clear"));
@@ -266,7 +266,7 @@ public class ContentsManager {
                            8,
                            "["
                               + round
-                              + "회차 사다리 결과] : "
+                              + "ผลลัพธ์ Ladder รอบที่] : "
                               + (right > 0 ? "우출발 /" : "좌출발 / ")
                               + " "
                               + line
@@ -351,7 +351,7 @@ public class ContentsManager {
                            }
 
                            Center.Broadcast.broadcastMessageLadderGame(
-                              CField.chatMsg(6, "당첨금액 Top." + (index + 1) + " " + key + "님 " + decFormat.format(winner.get(key)) + "메소 ")
+                              CField.chatMsg(6, "ยอดเงินรางวัล Top." + (index + 1) + " " + key + "님 " + decFormat.format(winner.get(key)) + "메소 ")
                            );
                            index++;
                         }
@@ -361,7 +361,7 @@ public class ContentsManager {
                         List<String> looserKeySetList = new ArrayList<>(looser.keySet());
                         Collections.sort(looserKeySetList, (o1, o2) -> looser.get(o2).compareTo(looser.get(o1)));
                         Center.Broadcast.broadcastMessageLadderGame(
-                           CField.chatMsg(6, "손실금액 Top.1 " + looserKeySetList.get(0) + "님 " + decFormat.format(looser.get(looserKeySetList.get(0))) + "메소 ")
+                           CField.chatMsg(6, "ยอดขาดทุน Top.1 " + looserKeySetList.get(0) + "님 " + decFormat.format(looser.get(looserKeySetList.get(0))) + "메소 ")
                         );
                      }
 

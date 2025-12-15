@@ -49,7 +49,7 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("창세의 알을 파괴하여 기나긴 싸움을 마무리 하자.", 30000);
+         this.sendBlackMageNotice("ทำลายไข่แห่งการสร้างและจบการต่อสู้อันยาวนานนี้กันเถอะ", 30000);
          boolean set = false;
          MapleCharacter p = null;
 
@@ -161,7 +161,7 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
          }
 
          if (this.nextCreateWeldingCreationTime != 0L && this.nextCreateWeldingCreationTime <= System.currentTimeMillis()) {
-            this.sendBlackMageNotice("신에 가까운 자의 권능이 발현된다. 창조와 파괴, 어떤 힘을 품을지 선택해야 한다.", 3000);
+            this.sendBlackMageNotice("อำนาจของผู้ใกล้เคียงพระเจ้าปรากฏขึ้น ต้องเลือกว่าจะรับพลังแห่งการสร้างหรือทำลายล้าง", 3000);
             this.sendWeldingCreation(Field_BlackMage.FieldSkill.WeldingCreation);
             this.nextCreateWeldingCreationTime = System.currentTimeMillis() + 30000L;
             this.createBarrierTime = System.currentTimeMillis() + 3000L;

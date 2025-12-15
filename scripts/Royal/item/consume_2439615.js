@@ -34,13 +34,13 @@ function action(mode, type, sel) {
 	} else if (status == 1) {
 		seld = sel;
 		if (!cm.haveItem(need, qty)) {
-			cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+			cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 			cm.dispose();
 			return;
 		}
 		selected = ItemList[Packages.objects.utils.Randomizer.nextInt(ItemList.length)];
 		if (!cm.canHold(selected)) {
-			cm.sendOk("장비창에 공간이 부족합니다.");
+			cm.sendOk("พื้นที่ในช่อง Equip ไม่เพียงพอ");
 			cm.dispose();
 			return;
 		}

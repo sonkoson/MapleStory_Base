@@ -28,7 +28,7 @@ public class Field_BossKaringPhase3 extends Field_BossKaring {
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
       player.send(CField.setTemporarySkill(32, new TemporarySkill[]{new TemporarySkill((byte)0, 80003261, (byte)1, 0, 0, 0)}));
-      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "괴물의 악기가 흘러넘쳐 폭주한 것 같다. 도원경이 붕괴되지 않도록 저지해야 한다."));
+      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "ดูเหมือนว่าเครื่องดนตรีของสัตว์ประหลาดจะล้นทะลักและอาละวาด ต้องหยุดยั้งไม่ให้ Shangri-La พังทลาย"));
    }
 
    @Override

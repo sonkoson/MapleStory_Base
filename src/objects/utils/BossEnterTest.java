@@ -8,7 +8,7 @@ public class BossEnterTest {
       int delta = (int)(can - now);
       if (can > 0L && delta > 0) {
          int minute = delta / 1000 / 60;
-         System.out.println(minute + "분 후에 입장할 수 있습니다.");
+         System.out.println(minute + "minutes until entry allowed.");
       }
    }
 }

@@ -37,12 +37,12 @@ public class DateInfo {
          this.date_mmddhhmmss_start_t = MapleDataTool.getInt("start_t", date_mmddhhmmss, -1);
          this.date_mmddhhmmss_end_t = MapleDataTool.getInt("end_t", date_mmddhhmmss, -1);
          if (this.date_mmddhhmmss_start == -1 || this.date_mmddhhmmss_end == -1 || this.date_mmddhhmmss_start_t == -1 || this.date_mmddhhmmss_end_t == -1) {
-            System.out.println("버그발생 버그발생");
+            System.out.println("Bug Occurred Bug Occurred");
          }
       }
 
       if (this.condition == AchievementConditionType.and) {
-         System.out.println("AND가 있다고!? Date");
+         System.out.println("AND exists!? Date");
          System.out.println(root.getParent().getParent().getParent().getParent().getParent().getParent().getName());
       }
    }

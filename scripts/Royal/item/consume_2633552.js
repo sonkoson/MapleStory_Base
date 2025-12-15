@@ -96,7 +96,7 @@ function action(M, T, S)
 			+ "  #i2430732:# #t2430732:# (특수 보조장비(소비칸))\r\n"
 			+ "  #i"+S+":# #t"+S+":# #e#k#n\r\n", 4, 9062294);
 			if (wList.indexOf(S) == -1) {
-				cm.sendOk("비정상적인 접근");
+				cm.sendOk("การเข้าถึงผิดปกติ");
 				cm.dispose();
 				return;
 			}
@@ -156,7 +156,7 @@ function getWeapon(i)
 {
 	switch(Math.floor(cm.getPlayer().getJob()))
 	{
-		/* 전사 */
+		/* Warrior */
 		case 100:
 		wList.push(1302344); // 한손검
 		wList.push(1312204); // 한손도끼
@@ -249,7 +249,7 @@ function getWeapon(i)
 		wList.push(1213028); // 튜너
 		break;
 
-		/* 마법사 */
+		/* Magician */
 		case 200:
 		case 210:
 		case 211:

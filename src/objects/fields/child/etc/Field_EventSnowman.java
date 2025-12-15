@@ -38,7 +38,7 @@ public class Field_EventSnowman extends Field {
 
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && playerx.getMapId() == this.getId()) {
-               playerx.dropMessage(5, "제한 시간 내에 거대 눈사람을 처치하지 못하여 보상을 획득하지 못했습니다.");
+               playerx.dropMessage(5, "กำจัด Giant Snowman ไม่ทันเวลา ไม่ได้รับรางวัล");
                playerx.warp(ServerConstants.TownMap);
             }
          }
@@ -74,7 +74,7 @@ public class Field_EventSnowman extends Field {
 
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && !this.rewardGetUsers.contains(playerx.getId()) && playerx.getMapId() == this.getId()) {
-               playerx.dropMessage(5, "거대 눈사람을 처치하여 메리 크리스마스 선물상자 1개를 획득했습니다.");
+               playerx.dropMessage(5, "กำจัด Giant Snowman และได้รับ Merry Christmas Gift Box 1 กล่อง");
                playerx.gainItem(2430033, 1, false, 0L, "크리스마스 이벤트로 획득");
                playerx.setRegisterTransferField(ServerConstants.TownMap);
                playerx.setRegisterTransferFieldTime(System.currentTimeMillis() + 2000L);

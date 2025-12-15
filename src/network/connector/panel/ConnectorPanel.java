@@ -638,7 +638,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       try {
          Center.Broadcast.broadcastMessage(CWvsContext.yellowChat("GM전체메세지 : " + this.jTextField1.getText()));
       } catch (Exception var3) {
-         System.out.println("전체 메시지 전송 오류 발생");
+         System.out.println("Error sending global message");
          var3.printStackTrace();
       }
    }
@@ -1084,7 +1084,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             }
          }
       } catch (Exception var4) {
-         System.out.println("폰트 저장 오류 발생");
+         System.out.println("Font save error");
          var4.printStackTrace();
       }
    }

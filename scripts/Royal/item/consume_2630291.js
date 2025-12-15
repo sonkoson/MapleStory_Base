@@ -23,7 +23,7 @@ function action(mode, type, selection) {
 		for (var i = 0; i < book.length; i++) {
 		    text+="#i"+book[i]+":# #z"+book[i]+":##l\r\n";
 		}
-		text += "상자를 개봉하시겠습니까?";
+		text += "คุณต้องการเปิดกล่องหรือไม่?";
 		cm.sendYesNo(text);
 	} else if (status == 1) {
 		item = book[Math.floor(Math.random() * book.length)];

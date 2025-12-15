@@ -41,7 +41,7 @@ public class BossParty {
          cachedBossParty.put(infoKey, bossParties);
       }
 
-      System.out.println("[보스파티] " + cachedBossParty.size() + "개 캐싱완료");
+      System.out.println("[BossParty] " + cachedBossParty.size() + "개 캐싱완료");
    }
 
    public BossParty(String info, int levelMin, int difficulty, int enterFieldID) {

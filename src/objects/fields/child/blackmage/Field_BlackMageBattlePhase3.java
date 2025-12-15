@@ -67,7 +67,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("압도적인 기운에 의해 주변의 모든 것이 순식간에 소멸해간다.", 7000);
+         this.sendBlackMageNotice("ทุกสิ่งรอบข้างกำลังสูญสลายไปในพริบตาด้วยพลังอันท่วมท้น", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -165,7 +165,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
 
          if (this.nextNoticeWeldingCreationTime != 0L && this.nextNoticeWeldingCreationTime <= System.currentTimeMillis()) {
             this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), this.weldingCreationType.getType(), true));
-            this.sendBlackMageNotice("검은 마법사가 창조와 파괴의 권능을 사용한다. 위와 아래, 어느 쪽으로 피할지 선택해야 한다.", 4000);
+            this.sendBlackMageNotice("Black Mage ใช้พลังแห่งการสร้างและทำลายล้าง ต้องเลือกหลบหลีกไปทางบนหรือล่าง", 4000);
             if (this.weldingCreationType == Field_BlackMageBattlePhase3.WeldingCreationType.Creation) {
                this.nextWeldingCreationTime = System.currentTimeMillis() + 3000L;
             } else if (this.weldingCreationType == Field_BlackMageBattlePhase3.WeldingCreationType.Destruction) {
@@ -502,7 +502,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
       }
 
       if (count < 8) {
-         this.sendBlackMageNotice("파괴의 천사가 무에서 창조된다.", 3000);
+         this.sendBlackMageNotice("ทูตสวรรค์แห่งการทำลายล้างกำเนิดขึ้นจากความว่างเปล่า", 3000);
          int size = Randomizer.rand(1, 3);
 
          for (int i = 0; i < size; i++) {

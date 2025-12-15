@@ -45,7 +45,7 @@ function action(mode, type, selection) {
    }
    cm.dispose();
   } else {
-   cm.sendOk("장비창에 공간이 부족해");
+   cm.sendOk("พื้นที่ในช่อง Equip ไม่เพียงพอ");
    cm.dispose();
   }
  }

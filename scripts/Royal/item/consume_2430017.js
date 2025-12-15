@@ -11,7 +11,7 @@ var enter = "\r\n";
 var item1 = [2430017, "#z2430017#", "1"];
 var ac1 = [0, "강림 포인트", 10000];
 var ac2 = [1712002, "아케인 심볼 : 츄츄 아일랜드", "5"];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, selection) {
 	if (mode == -1) {
@@ -57,10 +57,10 @@ function action(mode, type, selection) {
 						cm.sendOk("#fn나눔고딕#교환 완료되었습니다.\r\n");
 						cm.dispose();
 
-						//로그작성
+						//Log
 						Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/포인트.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : [R] 강림 포인트 교환권 (2430017)\r\n획득 포인트 : " + ac1[2]*cost + "\r\n보유 포인트 : " + cm.getPlayer().getDonationPoint() + "\r\n\r\n", true);
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {

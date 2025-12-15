@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 public class AutoHottimeEntry {
    private AutoHottimeEntry.EventType eventType = null;

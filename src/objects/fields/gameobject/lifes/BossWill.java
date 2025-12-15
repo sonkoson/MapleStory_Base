@@ -13,7 +13,7 @@ public class BossWill {
    public static void load() {
       MapleData data = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz")).getData("BossWill.img");
       beholder = new BossWill.BeholderData(data.getChildByPath("Beholder"));
-      System.out.println("보스 윌 데이터가 캐싱되었습니다.");
+      System.out.println("Boss Will data cached.");
    }
 
    public static class BeholderData {

@@ -52,7 +52,7 @@ public class CharacterPotentialTest {
             }
 
             if (count > 1) {
-               System.out.println("중복 " + holder.getSkillId());
+               System.out.println("Duplicate " + holder.getSkillId());
             }
          }
       }

@@ -56,7 +56,7 @@ public class PraiseDonationMeso {
          }
       }
 
-      System.out.println("칭찬 뉴비 기부함 데이터를 로드하였습니다.");
+      System.out.println("Praise Newbie Donation box data loaded.");
    }
 
    public static void doDonationMeso(MapleCharacter player, int accountID, long meso) {
@@ -135,7 +135,7 @@ public class PraiseDonationMeso {
          }
       }
 
-      System.out.println("칭찬 뉴비 기부함 모든 기록이 저장되었습니다.");
+      System.out.println("All Praise Newbie Donation box records saved.");
    }
 
    public static long getTotalMeso() {

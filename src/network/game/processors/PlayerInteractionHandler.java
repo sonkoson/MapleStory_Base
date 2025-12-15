@@ -60,7 +60,7 @@ public class PlayerInteractionHandler {
                               .size()
                            != 0
                         || chr.getMap().getPortalsInRange(chr.getTruePosition(), 20000.0).size() != 0) {
-                        chr.dropMessage(1, "이곳에 상점을 세울 수 없습니다.");
+                        chr.dropMessage(1, "ไม่สามารถตั้งร้านค้าที่นี่ได้");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -68,7 +68,7 @@ public class PlayerInteractionHandler {
                      if ((createType == 1 || createType == 2)
                         && (FieldLimitType.Minigames.check(chr.getMap().getFieldLimit()) || chr.getMap().allowPersonalShop())
                         && chr.getMap().getId() != ServerConstants.TownMap) {
-                        chr.dropMessage(1, "이곳에 미니게임을 개설할 수 없습니다.");
+                        chr.dropMessage(1, "ไม่สามารถเปิดมินิเกมที่นี่ได้");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -158,7 +158,7 @@ public class PlayerInteractionHandler {
                   }
 
                   if (chr.getTrade() == null && chr.getPlayerShop() != null) {
-                     chr.dropMessage(1, "이미 닫힌 방입니다.");
+                     chr.dropMessage(1, "ห้องปิดไปแล้ว");
                      return;
                   }
 
@@ -177,20 +177,20 @@ public class PlayerInteractionHandler {
                            HiredMerchant merchantxxxxx = (HiredMerchant)ipsxxxxxxxxxxxxx;
                            if (merchantxxxxx.isOpen() && merchantxxxxx.isAvailable()) {
                               if (ipsxxxxxxxxxxxxx.getFreeSlot() == -1) {
-                                 chr.dropMessage(1, "해당 상점을 이미 수용가능한 최대 인원이 보고 있습니다. 잠시 후 다시 시도해 주세요.");
+                                 chr.dropMessage(1, "มีผู้เข้าชมร้านค้านี้เต็มจำนวนแล้ว กรุณาลองใหม่อีกครั้งในภายหลัง");
                               } else if (merchantxxxxx.isInBlackList(chr.getName())) {
-                                 chr.dropMessage(1, "블랙리스트에 등록되어 해당 상점을 이용하실 수 없습니다.");
+                                 chr.dropMessage(1, "คุณติด Blacklist ไม่สามารถใช้ร้านค้านี้ได้");
                               } else {
                                  chr.setPlayerShop(ipsxxxxxxxxxxxxx);
                                  merchantxxxxx.addVisitor(chr);
                                  c.getSession().writeAndFlush(PlayerShopPacket.getHiredMerch(chr, merchantxxxxx, false));
                               }
                            } else {
-                              chr.dropMessage(1, "현재 고용상점이 준비중에 있습니다. 잠시 후에 다시 와주세요.");
+                              chr.dropMessage(1, "ขณะนี้ Hired Merchant กำลังเตรียมการ กรุณามาใหม่ในภายหลัง");
                            }
                         } else {
                            if (ipsxxxxxxxxxxxxx instanceof MaplePlayerShop && ((MaplePlayerShop)ipsxxxxxxxxxxxxx).isBanned(chr.getName())) {
-                              chr.dropMessage(1, "상점에서 강퇴당했습니다.");
+                              chr.dropMessage(1, "ถูกไล่ออกจากร้านค้า");
                               return;
                            }
 
@@ -201,11 +201,11 @@ public class PlayerInteractionHandler {
                               if (slea.available() > 0L && slea.readByte() > 0) {
                                  String pass = slea.readMapleAsciiString();
                                  if (!pass.equals(ipsxxxxxxxxxxxxx.getPassword())) {
-                                    c.getPlayer().dropMessage(1, "비밀번호가 일치하지 않습니다. 다시 확인하시고 시도해주시기 바랍니다.");
+                                    c.getPlayer().dropMessage(1, "รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
                                     return;
                                  }
                               } else if (ipsxxxxxxxxxxxxx.getPassword().length() > 0) {
-                                 c.getPlayer().dropMessage(1, "비밀번호가 일치하지 않습니다. 다시 확인하시고 시도해주시기 바랍니다.");
+                                 c.getPlayer().dropMessage(1, "รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
                                  return;
                               }
 
@@ -301,7 +301,7 @@ public class PlayerInteractionHandler {
                   IMaplePlayerShop shopx = chr.getPlayerShop();
                   if (shopx != null && shopx.isOwner(chr) && shopx.getShopType() < 3 && !shopx.isAvailable() && chr.getMap().allowPersonalShop()) {
                      if (c.getChannelServer().isShutdown()) {
-                        chr.dropMessage(1, "서버가 곧 종료되기때문에, 상점을 세울수 없습니다.");
+                        chr.dropMessage(1, "ไม่สามารถตั้งร้านค้าได้เนื่องจากเซิร์ฟเวอร์กำลังจะปิด");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         shopx.closeShop(shopx.getShopType() == 1, false);
                         return;
@@ -326,7 +326,7 @@ public class PlayerInteractionHandler {
                   if (item.getItemId() / 1000000 == 1) {
                      Equip e = (Equip)item;
                      if (e.getCashEnchantCount() > 0) {
-                        c.getPlayer().dropMessage(1, "치장 옵션 부여가 적용된 아이템은 등록할 수 없습니다.");
+                        c.getPlayer().dropMessage(1, "ไอเทมที่มี Decorative Option ไม่สามารถลงทะเบียนได้");
                         return;
                      }
                   }
@@ -378,7 +378,7 @@ public class PlayerInteractionHandler {
                      if (ivItem.getItemId() / 1000000 == 1) {
                         Equip e = (Equip)ivItem;
                         if (e.getCashEnchantCount() > 0) {
-                           c.getPlayer().dropMessage(1, "치장 옵션 부여가 적용된 아이템은 등록할 수 없습니다.");
+                           c.getPlayer().dropMessage(1, "ไอเทมที่มี Decorative Option ไม่สามารถลงทะเบียนได้");
                            return;
                         }
                      }
@@ -390,7 +390,7 @@ public class PlayerInteractionHandler {
 
                      short bundles_perbundle = (short)(bundles * perBundle);
                      if (ivItem.getQuantity() < bundles_perbundle) {
-                        chr.dropMessage(1, "물품을 판매하려면 적어도 1개이상 있어야 합니다.");
+                        chr.dropMessage(1, "ต้องมีไอเทมอย่างน้อย 1 ชิ้นจึงจะขายได้");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -507,14 +507,14 @@ public class PlayerInteractionHandler {
                            MapleTrade.startCashTrade(chr);
                            MapleTrade.inviteCashTrade(chr, chrrx);
                         } else {
-                           c.getPlayer().dropMessage(1, "2차비밀번호가 일치하지 않습니다. \r\n확인후 다시시도 해주세요.");
+                           c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
                         }
                      } else if (subpacket == 19 && typexx == 7) {
                         String secondPassword = slea.readMapleAsciiString();
                         if (c.CheckSecondPassword(secondPassword)) {
                            MapleTrade.visitCashTrade(chr, chr.getTrade().getPartner().getChr());
                         } else {
-                           c.getPlayer().dropMessage(1, "2차비밀번호가 일치하지 않습니다. \r\n확인후 다시시도 해주세요.");
+                           c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
                         }
                      }
                   } else {
@@ -538,7 +538,7 @@ public class PlayerInteractionHandler {
                            }
                         }
                      } else {
-                        c.getPlayer().dropMessage(1, "2차비밀번호가 일치하지 않습니다. \r\n확인후 다시시도 해주세요.");
+                        c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
                      }
                   }
                   break;
@@ -631,7 +631,7 @@ public class PlayerInteractionHandler {
                      }
 
                      if (save) {
-                        c.getPlayer().dropMessage(1, "프레드릭 에게서 아이템을 찾아가 주십시오.");
+                        c.getPlayer().dropMessage(1, "กรุณารับไอเทมจาก Frederick");
                         c.getSession().writeAndFlush(PlayerShopPacket.shopErrorMessage(20, 0));
                      }
 
@@ -821,10 +821,10 @@ public class PlayerInteractionHandler {
                         public void run() {
                            byte result = PlayerInteractionHandler.getResult(chr.getTrade().getPRS(), chr.getTrade().getPartner().getPRS());
                            if (result == 2) {
-                              chr.dropMessage(1, "아쉽지만, 가위바위보에서 지셨습니다!");
+                              chr.dropMessage(1, "น่าเสียดาย แพ้เป่ายิ้งฉุบแล้ว!");
                               chr.addFame(-1);
                            } else if (result == 0) {
-                              chr.dropMessage(1, "축하합니다! 가위바위보에서 이기셨습니다!");
+                              chr.dropMessage(1, "ยินดีด้วย! ชนะเป่ายิ้งฉุบ!");
                               chr.addFame(1);
                            }
 
@@ -922,7 +922,7 @@ public class PlayerInteractionHandler {
                         gameInfo.incWarnCount(team);
                         int warncount = gameInfo.getWarnCount(team);
                         if (warncount >= 5) {
-                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("시간 초과 5회로 게임에서 패배합니다.", FontType.NanumGothic, FontColorType.Yellow));
+                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("หมดเวลา 5 ครั้ง แพ้เกม", FontType.NanumGothic, FontColorType.Yellow));
                            fbr.setWinTeam(team == 0 ? 1 : 0);
                            fbr.setEndGame(true);
                            return;
@@ -930,7 +930,7 @@ public class PlayerInteractionHandler {
 
                         chr.send(
                            CField.UIPacket.sendBigScriptProgressMessage(
-                              "시간이 초과되어 턴이 넘어갑니다. 경고 " + warncount + "회. 5회 초과시 게임에서 패배합니다.", FontType.NanumGothic, FontColorType.Yellow
+                              "หมดเวลา เทิร์นผ่าน คำเตือน " + warncount + "ครั้ง หากเกิน 5 ครั้งจะแพ้เกม", FontType.NanumGothic, FontColorType.Yellow
                            )
                         );
                         List<Point> putlists = gameInfo.getPuttableList(team);
@@ -992,8 +992,8 @@ public class PlayerInteractionHandler {
                               return;
                            }
 
-                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("상대방이 놓을수 있는 곳이 없어 턴이 넘어옵니다.", FontType.NanumGothic, FontColorType.Yellow));
-                           otherplayer.send(CField.UIPacket.sendBigScriptProgressMessage("놓을수 있는 곳이 없어 턴이 종료됩니다.", FontType.NanumGothic, FontColorType.Yellow));
+                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("ฝ่ายตรงข้ามไม่มีที่วางหมาก เทิร์นกลับมาหาคุณ", FontType.NanumGothic, FontColorType.Yellow));
+                           otherplayer.send(CField.UIPacket.sendBigScriptProgressMessage("ไม่มีที่ให้วางหมาก จบเทิร์น", FontType.NanumGothic, FontColorType.Yellow));
                            chr.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), chr));
                            otherplayer.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), otherplayer));
                         }

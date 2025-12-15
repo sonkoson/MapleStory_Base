@@ -16,12 +16,12 @@ public class Field_BossKaringMatch extends Field_BossKaring {
    public void doMatching(PacketDecoder packet, MapleCharacter player) {
       int type = packet.readInt();
       KaringMatchType.Recv actionType = KaringMatchType.Recv.getType(type);
-      player.dropMessage(-5, "첫 타입 : " + actionType);
+      player.dropMessage(-5, "Type แรก : " + actionType);
       switch (actionType) {
          case BossSelect:
             int types = packet.readInt();
             this.position = 0;
-            player.dropMessage(-5, " 두번쨰 : " + types);
+            player.dropMessage(-5, " ครั้งที่สอง : " + types);
             switch (types) {
                case 0:
                   this.addGoongiParty(player);
@@ -74,7 +74,7 @@ public class Field_BossKaringMatch extends Field_BossKaring {
             }
             break;
          default:
-            System.err.println("[Karing] 처리 되지 않은 리시브가 있습니다. type : " + type);
+            System.err.println("[Karing] Unhandled receive. type : " + type);
       }
    }
 }

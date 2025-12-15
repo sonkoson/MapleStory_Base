@@ -35,7 +35,7 @@ public class WeeklyItemManager {
 
          rs.close();
          ps.close();
-         System.out.println("페어리 브로의 황금상자 정보를 로드하였습니다.");
+         System.out.println("Fairy Bros Golden Box info loaded.");
       } catch (SQLException var5) {
       }
    }

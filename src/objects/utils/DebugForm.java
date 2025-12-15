@@ -158,13 +158,13 @@ public class DebugForm extends JFrame {
       for (GameServer cserv : GameServer.getAllInstances()) {
          for (MapleCharacter chr : cserv.getPlayerStorage().getAllCharacters()) {
             chr.getClient().getSession().close();
-            System.out.println("팅겼다고인마");
+            System.out.println("Disconnected dude");
          }
       }
 
       for (MapleCharacter chr : AuctionServer.getPlayerStorage().getAllCharacters()) {
          chr.getClient().getSession().close();
-         System.out.println("팅겼다고인마");
+         System.out.println("Disconnected dude");
       }
    }
 

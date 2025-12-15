@@ -66,7 +66,7 @@ public class MapleShop {
       long currentTime = System.currentTimeMillis();
       if (currentTime - shopTime >= 1000L) {
          if (c.isGm()) {
-            System.out.println("상점 ID : " + this.getId());
+            System.out.println("Shop ID : " + this.getId());
          }
 
          c.getPlayer().setShop(this);
@@ -128,7 +128,7 @@ public class MapleShop {
 
    public void buy(MapleClient c, int slot, int itemId, short bundle) {
       if (itemId / 10000 == 190 && !GameConstants.isMountItemAvailable(itemId, c.getPlayer().getJob())) {
-         c.getPlayer().dropMessage(1, "You may not buy this item.");
+         c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ได้");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -188,7 +188,7 @@ public class MapleShop {
                      )
                   );
                } else {
-                  c.getPlayer().dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                  c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                   c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
                }
             }
@@ -201,13 +201,13 @@ public class MapleShop {
 
             if (item.getItemId() == itemId) {
                if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), quantity, "")) {
-                  c.getPlayer().dropMessage(1, "인벤토리 슬롯이 부족합니다.");
+                  c.getPlayer().dropMessage(1, "ช่องในช่องเก็บของไม่เพียงพอ");
                   c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
                } else {
                   if (item.getBuyLimit() > 0) {
                      for (objects.users.BuyLimitEntry entry : new ArrayList<>(c.getPlayer().getBuyLimit().getBuyLimits())) {
                         if (entry.getShopID() == this.getId() && entry.getItemIndex() == slot && entry.getBuyCount() >= item.getBuyLimit()) {
-                           c.getPlayer().dropMessage(1, "더 이상 구매할 수 없습니다.");
+                           c.getPlayer().dropMessage(1, "ไม่สามารถซื้อได้อีก");
                            return;
                         }
                      }
@@ -220,7 +220,7 @@ public class MapleShop {
                   if (item.getWorldBuyLimit() > 0) {
                      for (objects.users.BuyLimitEntry entryx : new ArrayList<>(c.getPlayer().getWorldBuyLimit().getBuyLimits())) {
                         if (entryx.getShopID() == this.getId() && entryx.getItemIndex() == slot && entryx.getBuyCount() >= item.getWorldBuyLimit()) {
-                           c.getPlayer().dropMessage(1, "더 이상 구매할 수 없습니다.");
+                           c.getPlayer().dropMessage(1, "ไม่สามารถซื้อได้อีก");
                            return;
                         }
                      }
@@ -365,7 +365,7 @@ public class MapleShop {
                               c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag());
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                           c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                         }
 
                         c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
@@ -386,7 +386,7 @@ public class MapleShop {
                            }
 
                            if (!passed) {
-                              c.getPlayer().dropMessage(1, "You need a higher rank.");
+                              c.getPlayer().dropMessage(1, "ต้องการยศที่สูงกว่านี้");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -425,7 +425,7 @@ public class MapleShop {
                                  );
                               }
                            } else {
-                              c.getPlayer().dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                              c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                            }
 
                            c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
@@ -466,7 +466,7 @@ public class MapleShop {
                               );
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "인벤토리가 꽉 찼습니다.");
+                           c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                         }
 
                         c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));

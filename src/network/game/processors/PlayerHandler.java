@@ -479,7 +479,7 @@ public class PlayerHandler {
             if (!FieldLimitType.VipRock.check(chr.getMap().getFieldLimit())) {
                chr.addRegRockMap();
             } else {
-               chr.dropMessage(1, "This map is not available to enter for the list.");
+               chr.dropMessage(1, "แผนที่นี้ไม่สามารถเข้าได้จากรายการ");
             }
          }
       } else if (vip == 2) {
@@ -489,7 +489,7 @@ public class PlayerHandler {
             if (!FieldLimitType.VipRock.check(chr.getMap().getFieldLimit())) {
                chr.addRockMap();
             } else {
-               chr.dropMessage(1, "This map is not available to enter for the list.");
+               chr.dropMessage(1, "แผนที่นี้ไม่สามารถเข้าได้จากรายการ");
             }
          }
       } else if (vip == 3) {
@@ -499,7 +499,7 @@ public class PlayerHandler {
             if (!FieldLimitType.VipRock.check(chr.getMap().getFieldLimit())) {
                chr.addHyperRockMap();
             } else {
-               chr.dropMessage(1, "This map is not available to enter for the list.");
+               chr.dropMessage(1, "แผนที่นี้ไม่สามารถเข้าได้จากรายการ");
             }
          }
       }
@@ -1895,7 +1895,7 @@ public class PlayerHandler {
             chr.send(
                   CField.chatMsg(
                         16,
-                        "스킬 사용 : "
+                        "ใช้สกิล : "
                               + skillID
                               + " ("
                               + SkillFactory.getSkillName(skillID)
@@ -2497,7 +2497,7 @@ public class PlayerHandler {
                         CField.movePlayer(chr.getId(), res, startPos, ovPos, encodedGatherDuration), false);
                }
             } catch (Exception var15) {
-               System.out.println("movePlayer 함수 실행중 오류 발생 broadcastMessage 오류 : " + var15.toString());
+               System.out.println("Error executing movePlayer, broadcastMessage error : " + var15.toString());
                var15.printStackTrace();
             }
 
@@ -5960,7 +5960,7 @@ public class PlayerHandler {
             info.setActiveDamageSkinData(
                   new DamageSkinSaveData(damageSkinIDx, itemID, false, DamageSkinSaveInfo.getDefaultDesc()));
             c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
-            c.getPlayer().dropMessage(1, "데미지 스킨이 변경되었습니다.");
+            c.getPlayer().dropMessage(1, "เปลี่ยน Damage Skin เรียบร้อยแล้ว");
          }
       }
    }
@@ -6072,7 +6072,7 @@ public class PlayerHandler {
                      chrs.temporaryStatReset(SecondaryStatFlag.DebuffIncHP);
                   }
 
-                  ((Field_Demian) c.getPlayer().getMap()).sendDemianNotice(216, "낙인이 해제되어 5초간 물약 사용이 가능해집니다.", -1,
+                  ((Field_Demian) c.getPlayer().getMap()).sendDemianNotice(216, "ตราประทับถูกยกเลิก สามารถใช้ยาได้ 5 วินาที", -1,
                         5000);
                   ((Field_Demian) c.getPlayer().getMap()).setPotionTime(System.currentTimeMillis() + 5000L);
                }
@@ -6765,13 +6765,13 @@ public class PlayerHandler {
             case 532:
                int quantity = 1;
                if (!player.haveItem(4310086, quantity)) {
-                  player.dropMessage(1, "자유전직 코인이 부족합니다. " + quantity + "개 필요합니다.");
+                  player.dropMessage(1, "Job Advancement Coin ไม่เพียงพอ " + quantity + "ชิ้นที่ต้องการ");
                   return;
                } else {
                   if (beforeJob / 100 == afterJob / 100 && beforeJob / 1000 == 0 && afterJob / 1000 == 0) {
                      for (VCore core : player.getVCoreSkillsNoLock()) {
                         if (core.getState() == 2) {
-                           player.dropMessage(1, "V스킬 코어를 전부 장착해제 후 시도해주시기 바랍니다.");
+                           player.dropMessage(1, "กรุณาถอด V Skill Core ทั้งหมดออกแล้วลองใหม่อีกครั้ง");
                            return;
                         }
                      }
@@ -6854,11 +6854,11 @@ public class PlayerHandler {
                      player.checkSkills();
                      player.fakeRelog();
                      LinkSkill.linkSkillUpdate(player);
-                     player.dropMessage(1, "자유전직이 완료되었습니다.");
+                     player.dropMessage(1, "เปลี่ยนอาชีพอิสระเรียบร้อยแล้ว");
                      return;
                   }
 
-                  player.dropMessage(1, "알 수 없는 오류가 발생하였습니다.");
+                  player.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
                   return;
                }
          }
@@ -6901,7 +6901,7 @@ public class PlayerHandler {
             MapleCabinetItem item = cabinet.getCabinetItem(index);
             if (item != null) {
                if (item.getExpiredTime() < System.currentTimeMillis()) {
-                  player.dropMessage(1, "받을 수 있는 유효 기간이 지나 수령할 수 없습니다.");
+                  player.dropMessage(1, "หมดเวลาการรับรางวัล ไม่สามารถรับได้");
                   cabinet.removeCabinetItem(index);
                   player.send(CWvsContext.enableActions(player));
                   return;
@@ -7237,14 +7237,14 @@ public class PlayerHandler {
             f.sendJinHillahUpdateAltarStatus();
          }
       } else if (c.isGm()) {
-         c.getPlayer().dropMessage(5, "다른 타입 : " + type);
+         c.getPlayer().dropMessage(5, "Type อื่น : " + type);
       }
    }
 
    public static void setAndroidEar(PacketDecoder slea, MapleClient c) {
       Android android = c.getPlayer().getAndroid();
       if (android == null) {
-         c.getPlayer().dropMessage(1, "알 수 없는 오류가 발생 하였습니다.");
+         c.getPlayer().dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
          short slot = slea.readShort();
@@ -7255,7 +7255,7 @@ public class PlayerHandler {
             MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, true);
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
-            c.getPlayer().dropMessage(1, "알 수 없는 오류가 발생했습니다.");
+            c.getPlayer().dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          }
       }
@@ -7420,7 +7420,7 @@ public class PlayerHandler {
          if (map != null) {
             MapleCharacter p = map.getCharacterByName(target);
             if (p == null) {
-               c.getPlayer().dropMessage(1, "해당 유저를 찾을 수 없습니다.");
+               c.getPlayer().dropMessage(1, "ไม่พบผู้เล่นดังกล่าว");
             }
 
             p.tryAntiMacro(AntiMacroType.FromUser, c.getPlayer());
@@ -8132,7 +8132,7 @@ public class PlayerHandler {
             SecondaryStatEffect effect = player.getSkillLevelData(skillID);
             if (effect != null) {
                if (skillID != 101120206 && skillID != 101141011) {
-                  System.out.println("[ERROR] 지역 스킬 시전에 오류가 발생하였습니다. (skillID: " + skillID + ")");
+                  System.out.println("[ERROR] Error casting region skill. (skillID: " + skillID + ")");
                } else {
                   Rect rect = new Rect(point, effect.getLt(), effect.getRb(), false);
                   AffectedArea area = new AffectedArea(rect, player, effect, point,
@@ -8367,7 +8367,7 @@ public class PlayerHandler {
                               CreateCharLogType.ChangeCharName.getType(), sb));
                }
             } catch (SQLException var29) {
-               System.out.println("[ERROR] 닉네임 변경 중 DB오류가 발생하였습니다.");
+               System.out.println("[ERROR] DB error occurred while changing nickname.");
                var29.printStackTrace();
             } finally {
                try {
@@ -8758,7 +8758,7 @@ public class PlayerHandler {
                case Expend:
                   if (itemID == 5680222) {
                      if (mannequin.getSlotMax() <= mannequin.getSaveCount()) {
-                        player.dropMessage(1, "슬롯이 부족하여 마네킹을 보관할 수 없습니다.");
+                        player.dropMessage(1, "ช่องไม่เพียงพอ ไม่สามารถเก็บ Mannequin ได้");
                         return;
                      }
 
@@ -9250,7 +9250,7 @@ public class PlayerHandler {
                   switch (command) {
                      case 1:
                         if (chr.getMap().getAllMonster().size() >= 10) {
-                           chr.dropMessage(5, "10마리를 넘게 소환할 수 없습니다.");
+                           chr.dropMessage(5, "ไม่สามารถเรียกได้เกิน 10 ตัว");
                            return;
                         }
 
@@ -9413,7 +9413,7 @@ public class PlayerHandler {
                   CWvsContext.InfoPacket.getShowItemGain(itemList[rand][0], (byte) itemList[rand][1], true));
             c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
          } else {
-            chr.dropMessage(5, "소비창과 기타창을 1칸 비워주세요.");
+            chr.dropMessage(5, "กรุณาทำช่องว่างในช่อง Use และ Etc อย่างละ 1 ช่อง");
          }
       }
    }
@@ -9576,12 +9576,12 @@ public class PlayerHandler {
                   ps.setBlob(3, blob);
                   ps.execute();
                } catch (Exception var20) {
-                  System.out.println("채팅 단축키 삽입 오류 발생");
+                  System.out.println("Error inserting chat shortcuts");
                   var20.printStackTrace();
                }
             }
          } catch (Exception var25) {
-            System.out.println("채팅 단축키 저장 오류 발생");
+            System.out.println("Error saving chat shortcuts");
             var25.printStackTrace();
          }
       }
@@ -9605,7 +9605,7 @@ public class PlayerHandler {
                }
             }
          } catch (Exception var13) {
-            System.out.println("채팅 단축키 불러오기 오류 발생");
+            System.out.println("Error loading chat shortcuts");
             var13.printStackTrace();
          }
 
@@ -9670,7 +9670,7 @@ public class PlayerHandler {
          } else if (src == 0 && dst < 0 && qty == -1) {
             MapleInventoryManipulator.equipCashCodyPreset0(c, dst);
          } else {
-            chr.dropMessage(5, "알수없는 액션입니다. " + src + " / " + dst + " / " + qty);
+            chr.dropMessage(5, "การกระทำที่ไม่รู้จัก " + src + " / " + dst + " / " + qty);
          }
       }
    }
@@ -9682,7 +9682,7 @@ public class PlayerHandler {
          switch (opcode) {
             case 0:
                if (chr.getMeso() < 10000L) {
-                  chr.dropMessage(1, "메소가 부족합니다.");
+                  chr.dropMessage(1, "Meso ไม่เพียงพอ");
                   return;
                } else {
                   String targetName = p.readMapleAsciiString();
@@ -9701,7 +9701,7 @@ public class PlayerHandler {
                      }
 
                      if (mySentBox >= 30) {
-                        chr.dropMessage(1, "보낸 메시지함이 가득찼습니다.");
+                        chr.dropMessage(1, "กล่องข้อความขาออกเต็มแล้ว");
                         return;
                      } else if (MapleCharacterUtil.canCreateChar(targetName, false, true)) {
                         chr.send(CSPacket.OnMemoResult((byte) 9, (byte) 1));
@@ -9889,22 +9889,22 @@ public class PlayerHandler {
                int coreType = coreIdxx / 10000000;
                int job = chr.getJob();
                if (coreType == 1 && !HexaMatrixConstants.sixthJobSkillCore.get(job).contains(coreIdxx)) {
-                  chr.dropMessage(1, "해당 직업에서는 개방할 수 없는 스킬입니다.");
+                  chr.dropMessage(1, "สกิลนี้ไม่สามารถเปิดใช้งานได้ในอาชีพนี้");
                   return;
                }
 
                if (coreType == 2 && !HexaMatrixConstants.sixthJobMasteryCore.get(job).contains(coreIdxx)) {
-                  chr.dropMessage(1, "해당 직업에서는 개방할 수 없는 스킬입니다.");
+                  chr.dropMessage(1, "สกิลนี้ไม่สามารถเปิดใช้งานได้ในอาชีพนี้");
                   return;
                }
 
                if (coreType == 3 && !HexaMatrixConstants.sixthJobEnforceCore.get(job).contains(coreIdxx)) {
-                  chr.dropMessage(1, "해당 직업에서는 개방할 수 없는 스킬입니다.");
+                  chr.dropMessage(1, "สกิลนี้ไม่สามารถเปิดใช้งานได้ในอาชีพนี้");
                   return;
                }
 
                if (coreType == 4 && !HexaMatrixConstants.sixthJobCommonCore.get(job).contains(coreIdxx)) {
-                  chr.dropMessage(1, "해당 직업에서는 개방할 수 없는 스킬입니다.");
+                  chr.dropMessage(1, "สกิลนี้ไม่สามารถเปิดใช้งานได้ในอาชีพนี้");
                   return;
                }
 
@@ -9959,7 +9959,7 @@ public class PlayerHandler {
                }
 
                if (needPiecex > havePiecexx) {
-                  chr.dropMessage(1, "솔 에르다 조각이 부족합니다.");
+                  chr.dropMessage(1, "Sol Erda Fragment ไม่เพียงพอ");
                   return;
                }
 
@@ -10026,7 +10026,7 @@ public class PlayerHandler {
                            .getNeedSolErdaToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
                   } else {
                      if (coreType != 4) {
-                        chr.dropMessage(1, "오류가 발생했습니다.");
+                        chr.dropMessage(1, "เกิดข้อผิดพลาด");
                         return;
                      }
 
@@ -10045,7 +10045,7 @@ public class PlayerHandler {
                            .getNeedSolErdaPieceToUpgradeHexaSkill(HexaMatrixConstants.HexaMatrixFlag.ENFORCE_CORE, i);
                   } else {
                      if (coreType != 4) {
-                        chr.dropMessage(1, "오류가 발생했습니다.");
+                        chr.dropMessage(1, "เกิดข้อผิดพลาด");
                         return;
                      }
 
@@ -10069,7 +10069,7 @@ public class PlayerHandler {
                }
 
                if (needPiecex > havePiecex) {
-                  chr.dropMessage(1, "솔 에르다 조각이 부족합니다.");
+                  chr.dropMessage(1, "Sol Erda Fragment ไม่เพียงพอ");
                   return;
                }
 
@@ -10109,7 +10109,7 @@ public class PlayerHandler {
                }
 
                if (needPiece > havePiece) {
-                  chr.dropMessage(1, "솔 에르다 조각이 부족합니다.");
+                  chr.dropMessage(1, "Sol Erda Fragment ไม่เพียงพอ");
                   return;
                }
 
@@ -10158,7 +10158,7 @@ public class PlayerHandler {
                int needPiecexx = HexaMatrixConstants
                      .getNeedSolErdaPieceToUpgradeMainHexaStat(data.getStats().get(0).level);
                if (havePiecexxx < needPiecexx) {
-                  chr.dropMessage(1, "솔 에르다 조각이 부족합니다.");
+                  chr.dropMessage(1, "Sol Erda Fragment ไม่เพียงพอ");
                   return;
                }
 
@@ -10253,7 +10253,7 @@ public class PlayerHandler {
                int index = HexaMatrixConstants.getHexaStatIndexByCoreId(coreid);
                HexaCore.HexaStatData stat = chr.getHexaCore().getStat(index);
                if (chr.getMeso() < 10000000L) {
-                  chr.dropMessage(1, "메소가 부족합니다.");
+                  chr.dropMessage(1, "Meso ไม่เพียงพอ");
                   return;
                }
 
@@ -10270,7 +10270,7 @@ public class PlayerHandler {
                long meso = slea.readLong();
                int changed = slea.readInt();
                if (chr.getMeso() < meso) {
-                  chr.dropMessage(1, "메소가 부족합니다.");
+                  chr.dropMessage(1, "Meso ไม่เพียงพอ");
                   return;
                }
 

@@ -4,7 +4,7 @@ importPackage(Packages.database);
 importPackage(Packages.launch.world);
 importPackage(Packages.packet.creators);
 
-// 세팅
+// Setting
 var status = -1;
 var own = 1355
 var need = 2432085
@@ -26,7 +26,7 @@ function action(mode, type, selection) {
 	cm.teachSkill(80000000+own, 1, 0)
 	cm.gainItem(need, -1);
 
-	cm.showInfo("[스킬] "+name+" 라이딩 획득!!");
+	cm.showInfo("[Skill] "+name+" Riding Acquired!!");
 			cm.updateChar();
 			cm.dispose();
 	}

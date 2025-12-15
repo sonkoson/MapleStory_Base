@@ -7,8 +7,8 @@ importPackage(java.io);
 importPackage(Packages.database);
 
 색 = "#fc0xFF0FA400#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
 
 function start() {
     var i = 0;

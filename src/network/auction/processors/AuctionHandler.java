@@ -169,7 +169,7 @@ public class AuctionHandler {
                Item itemxxxxxxxx = c.getPlayer().getInventory(MapleInventoryType.getByType(inv)).getItem(slot);
                if (GameConstants.isEquip(itemxxxxxxxx.getItemId())
                      && (((Equip) itemxxxxxxxx).getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be listed for sale.");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถลงขายได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -197,7 +197,7 @@ public class AuctionHandler {
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxx.getItemId())) {
-                  c.getPlayer().dropMessage(1, "This item cannot be listed.");
+                  c.getPlayer().dropMessage(1, "ไอเทมนี้ลงขายไม่ได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -296,14 +296,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be re-listed.");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถลงขายใหม่ได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "This item cannot be listed.");
+                  c.getPlayer().dropMessage(1, "ไอเทมนี้ลงขายไม่ได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -491,14 +491,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be purchased.");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถซื้อได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "This item cannot be purchased.");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -667,7 +667,7 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Traces of Equipment cannot be purchased.");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถซื้อได้");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;

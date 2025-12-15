@@ -15,7 +15,7 @@ public class SendOpcodeTool {
       if (!file.exists()) {
          file = new File("Send.txt");
          if (!file.exists()) {
-            System.out.println("지정된 경로에 파일이 없습니다.");
+            System.out.println("File not found at specified path.");
             return;
          }
       }

@@ -27,7 +27,7 @@ public class SkillEffect implements Effect {
          this.canSend = false;
          if (!decodeList.containsKey(skillID)) {
             decodeList.put(skillID, -1);
-            System.out.print(skillID + " 스킬의 이펙트가 클라이언트 데이터와 맞지 않아 패킷 출력을 중단했습니다.\n");
+            System.out.print(skillID + " Packet output stopped because skill effect does not match client data.\n");
          }
       }
    }

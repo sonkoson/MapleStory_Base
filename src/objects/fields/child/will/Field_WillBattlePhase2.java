@@ -39,7 +39,7 @@ public class Field_WillBattlePhase2 extends Field_WillBattle {
       }
 
       if (boss == null) {
-         this.sendWillNotice("윌이 여유가 없어졌군요. 거울 세계의 가장 깊은 곳이 드러날 것 같아요.", 245, 7000);
+         this.sendWillNotice("Will หมดความอดทนแล้ว ส่วนที่ลึกที่สุดของโลกกระจกกำลังจะเปิดเผย", 245, 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -58,7 +58,7 @@ public class Field_WillBattlePhase2 extends Field_WillBattle {
             return;
          }
 
-         this.sendWillNotice("윌이 여유가 없어졌군요. 거울 세계의 가장 깊은 곳이 드러날 것 같아요.", 245, 7000);
+         this.sendWillNotice("Will หมดความอดทนแล้ว ส่วนที่ลึกที่สุดของโลกกระจกกำลังจะเปิดเผย", 245, 7000);
 
          for (PartyMemberEntry entry : party.getPartyMember().getPartyMemberList()) {
             MapleCharacter character = GameServer.getInstance(p.getClient().getChannel()).getPlayerStorage().getCharacterById(entry.getId());

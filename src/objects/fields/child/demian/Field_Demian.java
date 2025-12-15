@@ -769,7 +769,7 @@ public class Field_Demian extends Field {
       this.removeFlyingSwordAll();
       this.clearObstacleAtom();
       this.sendDemianCorruptionStack(true, 0);
-      this.sendDemianNotice(216, "데미안이 완전한 어둠의 힘을 손에 넣었습니다.", -1, 31250);
+      this.sendDemianNotice(216, "Damien ได้ครอบครองพลังแห่งความมืดที่สมบูรณ์แล้ว", -1, 31250);
       Timer.MapTimer.getInstance().schedule(new Runnable() {
          @Override
          public void run() {
@@ -786,7 +786,7 @@ public class Field_Demian extends Field {
    public void onStigmaStackChanged(MapleCharacter player, int userStack) {
       if (this.phase == 1 && userStack >= 7) {
          player.send(CField.makeEffectScreen("Effect/OnUserEff.img/demian/screen"));
-         this.sendDemianNotice(216, "낙인이 완성되어 데미안이 점점 어둠의 힘에 물들어 갑니다.", -1, 10000);
+         this.sendDemianNotice(216, "ตราประทับสมบูรณ์ Damien กำลังถูกความมืดเข้าครอบงำ", -1, 10000);
          player.resetStigma();
          this.onDemianCorruptionStackInc();
          player.addHP(-999999L);

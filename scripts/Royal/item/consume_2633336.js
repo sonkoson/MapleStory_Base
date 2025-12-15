@@ -17,7 +17,7 @@ var ac = [
 [1713003, "어센틱 심볼 : 도원경", "5"],
 [1713004, "어센틱 심볼 : 아르테리아", "5"]
 ];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, sel) {
     if (mode == -1) {

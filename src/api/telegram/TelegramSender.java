@@ -1,4 +1,4 @@
-﻿package api.telegram;
+package api.telegram;
 
 import database.DBConfig;
 import java.io.BufferedReader;

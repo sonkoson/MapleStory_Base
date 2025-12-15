@@ -21,7 +21,7 @@ function action(mode, type, selection) {
  } else if (status == 1) {
 cm.gainItem(2430149,-1);//아이템 사라지게
 cm.teachSkill(80001020,1,1); // 스킬 주기
-cm.sendOk("라이딩스킬이 성공적으로 적용 되었습니다.");
+cm.sendOk("สกิล Riding ถูกใช้งานเรียบร้อยแล้ว");
 cm.dispose();
 }
 }

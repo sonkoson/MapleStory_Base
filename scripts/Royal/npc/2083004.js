@@ -22,12 +22,12 @@ function action(mode, type, selection) {
 
     if (status == 0) {
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("파티를 맺어야만 입장할 수 있다.");
+            cm.sendOk("ต้องมีปาร์ตี้จึงจะเข้าได้");
             cm.dispose();
             return;
         }
         if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있다.");
+            cm.sendOk("หัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้");
             cm.dispose();
             return;
         }
@@ -37,12 +37,12 @@ function action(mode, type, selection) {
         cm.sendSimple(talk);
     } else if (status == 1) {
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("파티를 맺어야만 입장할 수 있다.");
+            cm.sendOk("ต้องมีปาร์ตี้จึงจะเข้าได้");
             cm.dispose();
             return;
         }
         if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있다.");
+            cm.sendOk("หัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้");
             cm.dispose();
             return;
         }
@@ -54,11 +54,11 @@ function action(mode, type, selection) {
     } else if (status == 2) {
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("파티를 맺어야만 입장할 수 있다.");
+            cm.sendOk("ต้องมีปาร์ตี้จึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있다.");
+            cm.sendOk("หัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้");
             cm.dispose();
             return;
 	} else if (!cm.allMembersHere()) {

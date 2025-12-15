@@ -18,7 +18,7 @@ var ac = [
 [1712005, "아케인 심볼 : 모라스", "5"],
 [1712006, "아케인 심볼 : 에스페라", "5"]
 ];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, sel) {
     if (mode == -1) {

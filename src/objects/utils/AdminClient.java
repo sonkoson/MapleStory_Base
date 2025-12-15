@@ -1162,11 +1162,11 @@ public class AdminClient extends JFrame {
                AdminClient.this.addLoadedThread();
                ServerConstants.currentSaveCount.addAndGet(1);
                long endTime = System.currentTimeMillis();
-               System.out.println("옥션 저장 완료 (완료 시간 : " + (endTime - startTime) + " m/s)");
+               System.out.println("Auction saved (Time : " + (endTime - startTime) + " m/s)");
                int total = ServerConstants.totalSaveCount.get();
                int current = ServerConstants.currentSaveCount.get();
                if (current == total) {
-                  System.out.println("모든 저장이 완료되었습니다.");
+                  System.out.println("All data saved.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                   ServerConstants.workingSave = false;
@@ -1200,11 +1200,11 @@ public class AdminClient extends JFrame {
                }
 
                ServerConstants.currentSaveCount.addAndGet(1);
-               System.out.println("캐릭터 저장 완료");
+               System.out.println("Character saved");
                int total = ServerConstants.totalSaveCount.get();
                int current = ServerConstants.currentSaveCount.get();
                if (current == total) {
-                  System.out.println("모든 저장이 완료되었습니다.");
+                  System.out.println("All data saved.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                   ServerConstants.workingSave = false;
@@ -1217,12 +1217,12 @@ public class AdminClient extends JFrame {
                public void run() {
                   ServerConstants.totalSaveCount.addAndGet(1);
                   WeeklyItemManager.saveWeeklyItems();
-                  System.out.println("주간 아이템 저장완료");
+                  System.out.println("Weekly items saved");
                   ServerConstants.currentSaveCount.addAndGet(1);
                   int total = ServerConstants.totalSaveCount.get();
                   int current = ServerConstants.currentSaveCount.get();
                   if (current == total) {
-                     System.out.println("모든 저장이 완료되었습니다.");
+                     System.out.println("All data saved.");
                      ServerConstants.totalSaveCount.set(0);
                      ServerConstants.currentSaveCount.set(0);
                      ServerConstants.workingSave = false;
@@ -1236,12 +1236,12 @@ public class AdminClient extends JFrame {
             public void run() {
                ServerConstants.totalSaveCount.addAndGet(1);
                Center.Guild.save();
-               System.out.println("길드 저장 완료");
+               System.out.println("Guild saved");
                ServerConstants.currentSaveCount.addAndGet(1);
                int total = ServerConstants.totalSaveCount.get();
                int current = ServerConstants.currentSaveCount.get();
                if (current == total) {
-                  System.out.println("모든 저장이 완료되었습니다.");
+                  System.out.println("All data saved.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                   ServerConstants.workingSave = false;
@@ -1253,12 +1253,12 @@ public class AdminClient extends JFrame {
             public void run() {
                ServerConstants.totalSaveCount.addAndGet(1);
                Center.Alliance.save();
-               System.out.println("연합 저장 완료");
+               System.out.println("Alliance saved");
                ServerConstants.currentSaveCount.addAndGet(1);
                int total = ServerConstants.totalSaveCount.get();
                int current = ServerConstants.currentSaveCount.get();
                if (current == total) {
-                  System.out.println("모든 저장이 완료되었습니다.");
+                  System.out.println("All data saved.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                   ServerConstants.workingSave = false;
@@ -1270,12 +1270,12 @@ public class AdminClient extends JFrame {
             public void run() {
                ServerConstants.totalSaveCount.addAndGet(1);
                DojangRanking.saveRanks();
-               System.out.println("무릉도장랭킹 저장완료");
+               System.out.println("Mulung Dojo ranking saved");
                ServerConstants.currentSaveCount.addAndGet(1);
                int total = ServerConstants.totalSaveCount.get();
                int current = ServerConstants.currentSaveCount.get();
                if (current == total) {
-                  System.out.println("모든 저장이 완료되었습니다.");
+                  System.out.println("All data saved.");
                   ServerConstants.totalSaveCount.set(0);
                   ServerConstants.currentSaveCount.set(0);
                   ServerConstants.workingSave = false;
@@ -1288,13 +1288,13 @@ public class AdminClient extends JFrame {
                public void run() {
                   ServerConstants.totalSaveCount.addAndGet(1);
                   PraisePointRank.loadRanks();
-                  System.out.println("칭찬포인트저장완료");
+                  System.out.println("PraisePointSaved");
                   ServerConstants.currentSaveCount.addAndGet(1);
                   ServerConstants.currentSaveCount.addAndGet(1);
                   int total = ServerConstants.totalSaveCount.get();
                   int current = ServerConstants.currentSaveCount.get();
                   if (current == total) {
-                     System.out.println("모든 저장이 완료되었습니다.");
+                     System.out.println("All data saved.");
                      ServerConstants.totalSaveCount.set(0);
                      ServerConstants.currentSaveCount.set(0);
                      ServerConstants.workingSave = false;
@@ -1327,7 +1327,7 @@ public class AdminClient extends JFrame {
             Field map = chr.getClient().getChannelServer().getMapFactory().getMap(ServerConstants.TownMap);
             if (map != null) {
                chr.changeMap(map, map.getPortal("sp"));
-               chr.dropMessage(6, "운영자에 의해 광장으로 이동되었습니다.");
+               chr.dropMessage(6, "ถูกย้ายไปที่จัตุรัสโดย GM");
             }
          }
       }
@@ -1550,7 +1550,7 @@ public class AdminClient extends JFrame {
                      if (chr != null && chr.getName().equals(charname)) {
                         chr.getClient().disconnect(false);
                         chr.getClient().getSession().close();
-                        System.out.println("팅겼다고인마");
+                        System.out.println("Disconnected dude");
                         found = true;
                         target = charname;
                      }
@@ -1563,7 +1563,7 @@ public class AdminClient extends JFrame {
                   p.getClient().setPlayer(p);
                   p.getClient().disconnect(false);
                   p.getClient().getSession().close();
-                  System.out.println("팅겼다고인마");
+                  System.out.println("Disconnected dude");
                   found = true;
                   target = charname;
                }
@@ -1574,7 +1574,7 @@ public class AdminClient extends JFrame {
                   px.getClient().setPlayer(px);
                   px.getClient().disconnect(false);
                   px.getClient().getSession().close();
-                  System.out.println("팅겼다고인마");
+                  System.out.println("Disconnected dude");
                   found = true;
                   target = charname;
                }
@@ -1646,21 +1646,21 @@ public class AdminClient extends JFrame {
          for (MapleCharacter p : new ArrayList<>(AuctionServer.getPlayerStorage().getAllCharacters())) {
             if (p != null) {
                p.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("Disconnected dude");
             }
          }
 
          for (MapleCharacter px : new ArrayList<>(CashShopServer.getPlayerStorage().getAllCharacters())) {
             if (px != null) {
                px.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("Disconnected dude");
             }
          }
 
          for (GameServer cs : GameServer.getAllInstances()) {
             for (MapleCharacter chr : cs.getPlayerStorage().getAllCharacters()) {
                chr.getClient().getSession().close();
-               System.out.println("팅겼다고인마");
+               System.out.println("Disconnected dude");
             }
          }
 
@@ -1707,43 +1707,43 @@ public class AdminClient extends JFrame {
                   ps.setInt(2, charid);
                   ps.executeUpdate();
                } catch (Exception var21) {
-                  System.out.println("캐릭터 메소 실패 " + charid);
+                  System.out.println("Character Meso failure " + charid);
                   var21.printStackTrace();
                }
             }
          } catch (Exception var23) {
-            System.out.println("캐릭터 메소 저장 실패");
+            System.out.println("Character Meso save failed");
             var23.printStackTrace();
          }
 
-         System.out.println("메소 저장완료");
-         System.out.println("캐릭터 저장 완료");
+         System.out.println("Meso saved");
+         System.out.println("Character saved");
          WeeklyItemManager.saveWeeklyItems();
-         System.out.println("주간 아이템 저장완료");
+         System.out.println("Weekly items saved");
          Center.Guild.save();
-         System.out.println("길드 저장 완료");
+         System.out.println("Guild saved");
          Center.Alliance.save();
-         System.out.println("연합 저장 완료");
+         System.out.println("Alliance saved");
          DojangRanking.saveRanks();
-         System.out.println("무릉도장랭킹 저장완료");
+         System.out.println("Mulung Dojo ranking saved");
          if (!DBConfig.isGanglim) {
             PraisePointRank.loadRanks();
-            System.out.println("칭찬포인트저장완료");
+            System.out.println("PraisePointSaved");
          }
 
-         System.out.println("옥션 저장이 시작됩니다.");
+         System.out.println("Auction save started.");
          long startTime = System.currentTimeMillis();
          Center.Auction.save();
          long endTime = System.currentTimeMillis();
-         System.out.println("옥션 저장 완료 (완료 시간 : " + (endTime - startTime) + " m/s)");
+         System.out.println("Auction saved (Time : " + (endTime - startTime) + " m/s)");
          if (ServerConstants.timeScheduleEntry.isChange()) {
             ServerConstants.timeScheduleEntry.save();
             ServerConstants.timeScheduleEntry.setChange(false);
          }
 
          long endSaveTime = System.currentTimeMillis();
-         System.out.println("모든 저장이 완료되었습니다. (완료 시간 : " + (endSaveTime - startSaveTime) + " m/s)");
-         System.out.println("이제 서버를 종료해도 좋습니다.");
+         System.out.println("All data saved. (완료 시간 : " + (endSaveTime - startSaveTime) + " m/s)");
+         System.out.println("Server can now be shut down.");
       }
    }
 
@@ -2098,7 +2098,7 @@ public class AdminClient extends JFrame {
                                     "[GM 선물]", fDate + "에 운영자가 보낸 아이템입니다.", item));
                         p.send(CField.maplecabinetResult(8));
                         p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                        p.dropMessage(5, "[알림] 운영자로부터 아이템 도착하였습니다. 메이플 보관함을 통해 수령해주시기 바랍니다.");
+                        p.dropMessage(5, "[Notice] ไอเทมจาก GM มาถึงแล้ว กรุณารับที่ Maple Cabinet");
                         find = true;
                         JOptionPane.showMessageDialog(this, "해당 플레이어와 동일한 계정 내에 캐릭터에게 전송되었습니다.", "Jihyeon 1.2.354", 1);
                      } else {
@@ -2283,7 +2283,7 @@ public class AdminClient extends JFrame {
                            fDate + "에 운영자가 보낸 아이템입니다.", item));
                p.send(CField.maplecabinetResult(8));
                p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               p.dropMessage(5, "[알림] 운영자로부터 아이템이 도착하였습니다. 메이플 보관함을 통해 수령해주시기 바랍니다.");
+               p.dropMessage(5, "[Notice] ไอเทมจาก GM มาถึงแล้ว กรุณารับที่ Maple Cabinet");
                find = true;
                JOptionPane.showMessageDialog(this, "아이템을 지급하였습니다.", "Jihyeon 1.2.354", 1);
             }
@@ -2558,7 +2558,7 @@ public class AdminClient extends JFrame {
          Center.registerAutoExpBuff();
       } else {
          Center.cancelExpHottimeTask(false);
-         System.out.println("[핫타임] 경험치 핫타임 기능을 종료합니다.");
+         System.out.println("[HotTime] Ending EXP Hot Time function.");
       }
    }
 
@@ -2754,7 +2754,7 @@ public class AdminClient extends JFrame {
                   if (!showCommandHelp) {
                      chr.getClient().disconnect(false);
                      chr.getClient().getSession().close();
-                     System.out.println("팅겼다고인마");
+                     System.out.println("Disconnected dude");
                   }
 
                   found = true;
@@ -2852,7 +2852,7 @@ public class AdminClient extends JFrame {
       if (ServerConstants.blockedEnterAuction) {
          for (MapleCharacter player : AuctionServer.getPlayerStorage().getAllCharacters()) {
             player.getClient().getSession().close();
-            System.out.println("팅겼다고인마");
+            System.out.println("Disconnected dude");
             player.getClient().disconnect(false);
          }
 
@@ -3065,7 +3065,7 @@ public class AdminClient extends JFrame {
             dongsi.setText("동시접속자 : " + count + "명");
          }
       } catch (Exception var7) {
-         System.out.println("updatePlayerList 함수 실행중 오류발생" + var7.toString());
+         System.out.println("Error executing updatePlayerList" + var7.toString());
          var7.printStackTrace();
       }
    }

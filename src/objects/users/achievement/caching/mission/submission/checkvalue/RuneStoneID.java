@@ -13,7 +13,7 @@ public class RuneStoneID {
    public RuneStoneID(MapleData root) {
       this.condition = AchievementConditionType.getType(MapleDataTool.getString("condition", root, "or"));
       if (this.condition != AchievementConditionType.or) {
-         System.out.println("룬스톤ID에서 and발견");
+         System.out.println("RunestoneID and found");
          System.out.println(root.getParent().getParent().getParent().getParent().getParent().getParent().getName());
       }
 

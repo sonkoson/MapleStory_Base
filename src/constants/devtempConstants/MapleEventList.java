@@ -1,4 +1,4 @@
-﻿package constants.devtempConstants;
+package constants.devtempConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;

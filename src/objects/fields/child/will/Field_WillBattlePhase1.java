@@ -41,7 +41,7 @@ public class Field_WillBattlePhase1 extends Field_WillBattle {
       }
 
       if (count < 2) {
-         this.sendWillNotice("윌이 진지해졌네요. 거울 속 깊은 곳에 윌의 진심이 비춰질 것 같아요.", 245, 7000);
+         this.sendWillNotice("Will เริ่มจริงจังแล้ว ความจริงใจของ Will อาจสะท้อนในส่วนลึกของกระจก", 245, 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {

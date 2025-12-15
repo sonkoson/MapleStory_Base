@@ -70,7 +70,7 @@ public class DonationRanker {
             al.set(al.get() + a.getValue().intValue());
             ai.set(ai.get() + 1);
          });
-         System.out.println("총 금액 : " + al.get());
+         System.out.println("Total Amount : " + al.get());
       } catch (SQLException var21) {
       } finally {
          try {

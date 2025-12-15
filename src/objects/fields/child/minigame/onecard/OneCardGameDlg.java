@@ -34,7 +34,7 @@ public class OneCardGameDlg {
       if (players.size() < 4) {
          for (MapleCharacter player : players) {
             if (player.getRegisterTransferFieldTime() == 0L) {
-               player.dropMessage(5, "게임에 필요한 인원수가 부족하여 마을로 이동됩니다.");
+               player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
                player.setRegisterTransferField(ServerConstants.TownMap);
                player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
             }

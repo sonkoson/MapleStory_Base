@@ -56,10 +56,10 @@ public class PartyHandler {
                      }
                   }
                } else {
-                  c.getPlayer().dropMessage(5, "가입하려는 파티가 존재하지 않습니다.");
+                  c.getPlayer().dropMessage(5, "ปาร์ตี้ที่ต้องการเข้าร่วมไม่มีอยู่จริง");
                }
             } else {
-               c.getPlayer().dropMessage(5, "이미 파티에 가입되어 있어 파티에 가입할 수 없습니다.");
+               c.getPlayer().dropMessage(5, "มีปาร์ตี้อยู่แล้ว ไม่สามารถร่วใปาร์ตี้ได้");
             }
          }
       }

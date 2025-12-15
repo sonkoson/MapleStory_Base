@@ -41,7 +41,7 @@ function action(mode, type, sel) {
         }
     if (status == 0) {
         if (cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot() < 5 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot() < 5 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.ETC).getNumFreeSlot() < 5) {
-           cm.sendOk("#fs11#장비,소비,기타 칸을 5칸 이상 비워주세요");
+           cm.sendOk("#fs11#กรุณาเว้นช่องว่างอย่างน้อย 5 ช่องใน Equip, Use, Etc");
            cm.dispose();
            return;
         }
@@ -67,12 +67,12 @@ function action(mode, type, sel) {
             cm.getPlayer().gainDonationPoint(후원포인트);
             cm.sendOkS("#fs11##b#e감사합니다~!", 2);
 
-            //로그작성
+            //Log
             Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/" + 패키지명 + ".log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : " + 패키지명 + " (" + 패키지코드 + ")" + "\r\n\r\n", true);
 
         } else if (sel == 2) {
             cm.dispose();
-            cm.sendOk("#fs11#네");
+            cm.sendOk("#fs11#ครับ/ค่ะ");
         }
     }
     

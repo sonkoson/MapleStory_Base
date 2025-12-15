@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import objects.utils.StringUtil;
 

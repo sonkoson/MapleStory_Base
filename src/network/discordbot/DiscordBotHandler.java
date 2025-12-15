@@ -25,7 +25,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
 
    public void channelActive(ChannelHandlerContext ctx) throws Exception {
       String IP = ctx.channel().remoteAddress().toString().split(":")[0];
-      System.out.println("디스코드 봇 체킹 : " + IP + " " + session + " " + ctx.channel().toString());
+      System.out.println("Discord Bot checking : " + IP + " " + session + " " + ctx.channel().toString());
       long time = System.currentTimeMillis();
       if (session == null) {
          session = ctx.channel();
@@ -198,7 +198,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
             TelegramSender.sendMessage(String.valueOf(chatid), message);
             return true;
          } catch (Exception var4) {
-            System.out.println("텔레그램 메시지 전송 발생");
+            System.out.println("Telegram message sent");
             var4.printStackTrace();
             return false;
          }
@@ -258,7 +258,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
             TelegramSender.sendMessage(String.valueOf(chatid), message);
             return true;
          } catch (Exception var4) {
-            System.out.println("텔레그램 메시지 전송 오류 발생");
+            System.out.println("Error sending Telegram message");
             var4.printStackTrace();
             return false;
          }
@@ -280,7 +280,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
             TelegramSender.sendMessage("CCU", message);
             return true;
          } catch (Exception var2) {
-            System.out.println("텔레그램 메시지 전송 오류 발생");
+            System.out.println("Error sending Telegram message");
             var2.printStackTrace();
             return false;
          }
@@ -295,7 +295,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
             TelegramSender.sendMessage("Donation", message);
             return true;
          } catch (Exception var2) {
-            System.out.println("텔레그램 메시지 전송 오류 발생");
+            System.out.println("Error sending Telegram message");
             var2.printStackTrace();
             return false;
          }

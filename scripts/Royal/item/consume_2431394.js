@@ -1,25 +1,25 @@
 importPackage(Packages.scripting);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-보라색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+Color = "#fc0xFF6600CC#"
+보라Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
+Pink = "#fc0xFFF781D8#"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 enter = "\r\n";
 
 var status = -1;
@@ -90,7 +90,7 @@ function action(mode, type, selection) {
         var ii =Packages.objects.item.MapleItemInformationProvider.getInstance();
 
         if (!Packages.objects.item.MapleItemInformationProvider.getInstance().isCash(sel)) {
-            cm.sendOk("#fs11#오류가 발생 했어요.");
+            cm.sendOk("#fs11#เกิดข้อผิดพลาด");
             cm.dispose();
             return;
         }

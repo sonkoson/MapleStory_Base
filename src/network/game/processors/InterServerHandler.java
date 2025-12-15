@@ -94,7 +94,7 @@ public class InterServerHandler {
 
          if (npc) {
             if (DBConfig.isGanglim && chr.getMapId() == ServerConstants.StartMap) {
-               c.getPlayer().dropMessage(5, "해당 맵에선 이용할 수 없습니다.");
+               c.getPlayer().dropMessage(5, "ไม่สามารถใช้ได้ในแผนที่นี้");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return;
             }
@@ -290,7 +290,7 @@ public class InterServerHandler {
                                                             - chr.getLastHeartBeatTime() > 120000L) {
                                                    chr.getClient().disconnect(false);
                                                    chr.getClient().getSession().close();
-                                                   System.out.println("팅겼다고인마");
+                                                   System.out.println("Disconnected dude");
                                                 }
 
                                                 find = true;
@@ -321,7 +321,7 @@ public class InterServerHandler {
                                        p.getClient().setPlayer(p);
                                        p.getClient().disconnect(false);
                                        p.getClient().getSession().close();
-                                       System.out.println("팅겼다고인마");
+                                       System.out.println("Disconnected dude");
                                     }
 
                                     find = true;
@@ -345,7 +345,7 @@ public class InterServerHandler {
                                        p.getClient().setPlayer(p);
                                        p.getClient().disconnect(false);
                                        p.getClient().getSession().close();
-                                       System.out.println("팅겼다고인마");
+                                       System.out.println("Disconnected dude");
                                     }
 
                                     find = true;
@@ -783,7 +783,7 @@ public class InterServerHandler {
                               if (reset == 0) {
                                  player.updateOneInfo(QuestExConstants.JinQuestEx.getQuestID(), "APReset", "1");
                                  player.resetStats(4, 4, 4, 4);
-                                 player.dropMessage(1, "전직시 캐릭터 스탯 분배 오류로 인해 AP가 초기화되었습니다. 불편을 드려서 죄송합니다.");
+                                 player.dropMessage(1, "AP ถูกรีเซ็ตเนื่องจากข้อผิดพลาดในการกระจายค่าสถานะตอนเปลี่ยนคลาส ขออภัยในความไม่สะดวก");
                               }
                            } else {
                               player.resetStats(4, 4, 4, 4);
@@ -1606,14 +1606,14 @@ public class InterServerHandler {
                         if (DBConfig.isGanglim && MailBox.isItemOff(player)) {
                            if (c.isOverseasUser()) {
                               player.dropMessage(-22,
-                                    "[LetterBox] The Letter has arrived. Please pick it up in Event NPC - LetterBox");
+                                    "[LetterBox] จดหมายมาถึงแล้ว กรุณารับที่ NPC กิจกรรม - LetterBox");
                            } else {
                               player.dropMessage(-22,
                                     "[Mailbox] ไอเทมมาถึงตู้จดหมายแล้ว กรุณารับได้ที่ NPC กิจกรรม - ตู้จดหมาย !");
                            }
                         }
                      } catch (Exception var54) {
-                        System.out.println("Loggedin 함수 실행중 오류발생_2 : " + var54.toString());
+                        System.out.println("Error executing Loggedin function_2 : " + var54.toString());
                         var54.printStackTrace();
                      }
                   },

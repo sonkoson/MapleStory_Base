@@ -207,12 +207,12 @@ public class Field_Dojang extends Field {
 
       if (this.stage >= 80 && this.player.getOneInfoQuestInteger(1234590, "open_challenge") <= 0) {
          this.player.updateOneInfo(1234590, "open_challenge", "1");
-         this.player.dropMessage(5, "무릉도장 챌린지 모드가 해방되었습니다.");
+         this.player.dropMessage(5, "ปลดล็อค Mulung Dojo Challenge Mode แล้ว");
       }
 
       int score = this.stage * 1000 + (999 - this.playTimeTick);
       if (DojangRanking.addAndCalcRank(score, this.player, this.challengeMode)) {
-         this.player.dropMessage(5, "금주 최고 기록을 달성하였습니다.");
+         this.player.dropMessage(5, "ทำลายสถิติสูงสุดของสัปดาห์นี้เรียบร้อยแล้ว");
       }
    }
 

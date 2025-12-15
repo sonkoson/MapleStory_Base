@@ -57,7 +57,7 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if (!cm.canHold(itemlist[0][0])) {
-            cm.sendOk("장비창을 1칸 이상 비운 뒤 다시 사용해 주세요.");
+            cm.sendOk("กรุณาเว้นช่องว่างในช่อง Equip อย่างน้อย 1 ช่องแล้วลองใหม่อีกครั้ง");
             cm.dispose();
             return;
         }
@@ -106,7 +106,7 @@ function action(mode, type, selection) {
         cm.sendSimple(talk);
     } else if (status == 3) {
         if (selection == 1) {
-            cm.sendOk("다시 조각을 사용해주세요.");
+            cm.sendOk("กรุณาใช้ชิ้นส่วนอีกครั้ง");
             cm.dispose();
             return;
         }

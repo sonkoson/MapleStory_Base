@@ -1,24 +1,24 @@
 importPackage(Packages.objects.item);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
+Pink = "#fc0xFFF781D8#"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 
 var enter = "\r\n";
 var seld = -1;
@@ -40,7 +40,7 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         var msg = "#fs11##b#i" + itemcode +"##z" + itemcode + "##k를 사용하시겠습니까?  \r\n#b" + enter;
-        msg += "#L1##b사용하기" + enter;
+        msg += "#L1##bUse" + enter;
 
         cm.sendSimple(msg);
     } else if (status == 1) {
@@ -56,7 +56,7 @@ function action(mode, type, sel) {
         cm.sendYesNo("#fs11#지급받으실 펫을 확인하세요\r\n #i" + pets[seld] + "##b#z" + pets[seld] + "# - " + count * 90 + "일#k\r\n\r\n" + 핑크색 + "해당 펫을 지급받으시겠습니까?");
     } else if (status == 4) {
         if (!cm.haveItem(itemcode, count)) {
-            cm.sendOk("#fs11#상자가 부족합니다");
+            cm.sendOk("#fs11#กล่องไม่เพียงพอ");
             cm.dispose();
             return;
         }
@@ -67,7 +67,7 @@ function action(mode, type, sel) {
         item.setPet(pet);
         item.setUniqueId(pet.getUniqueId());
         Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), item, false);
-        cm.sendOk("#fs11#교환이 완료되었습니다.");
+        cm.sendOk("#fs11#แลกเปลี่ยนเรียบร้อยแล้ว");
         cm.gainItem(itemcode, -count);
         cm.dispose();
     }

@@ -215,7 +215,7 @@ public class MapleClient implements Serializable {
          ps.close();
       } catch (SQLException var10) {
          System.err.println("error loading characters internal");
-         System.out.println("loadCharactersInternal 함수 실행중 오류발생" + var10.toString());
+         System.out.println("Error executing loadCharactersInternal" + var10.toString());
          var10.printStackTrace();
       }
 
@@ -239,7 +239,7 @@ public class MapleClient implements Serializable {
          rs.close();
          ps.close();
       } catch (SQLException var9) {
-         System.out.println("loadCharactersSize 함수 실행중 오류발생" + var9.toString());
+         System.out.println("Error executing loadCharactersSize" + var9.toString());
          var9.printStackTrace();
       }
 
@@ -812,7 +812,7 @@ public class MapleClient implements Serializable {
          var20 = 0;
       } catch (SQLException var15) {
          this.loggedIn = false;
-         System.out.println("authAccountInfo 함수 실행중 오류발생" + var15.toString());
+         System.out.println("Error executing authAccountInfo" + var15.toString());
          var15.printStackTrace();
          return 3;
       } finally {
@@ -957,7 +957,7 @@ public class MapleClient implements Serializable {
          }
       } catch (Throwable var7) {
          System.out.println(
-               "[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") " + var7.toString());
+               "[Error] Error in removalTask during disconnect! (Name : " + this.player.getName() + ") " + var7.toString());
          var7.printStackTrace();
          FileoutputUtil.outputFileError("Log_AccountStuck.rtf", var7);
       } finally {
@@ -1134,7 +1134,7 @@ public class MapleClient implements Serializable {
                   this.removalTask(shutdown);
                }
             } catch (Exception var66) {
-               System.out.println("[오류] disconnect 함수 실행 중 removalTask에서 오류 발생! (이름 : " + this.player.getName() + ") "
+               System.out.println("[Error] Error in removalTask during disconnect! (Name : " + this.player.getName() + ") "
                      + var66.toString());
                var66.printStackTrace();
             }
@@ -1152,7 +1152,7 @@ public class MapleClient implements Serializable {
             try {
                this.player.cancelAllTask(true, false);
             } catch (Exception var64) {
-               System.out.println("[오류] disconnect 함수 실행 중 cancelAllTask에서 오류 발생! (이름 : " + this.player.getName() + ") "
+               System.out.println("[Error] Error in cancelAllTask during disconnect! (Name : " + this.player.getName() + ") "
                      + var64.toString());
                var64.printStackTrace();
             }
@@ -1198,7 +1198,7 @@ public class MapleClient implements Serializable {
                }
             } catch (Exception var76) {
                System.out.println(
-                     "[오류] disconnect 함수 실행 중 오류 발생! (이름 : " + this.player.getName() + ") " + var76.toString());
+                     "[Error] Error during disconnect! (Name : " + this.player.getName() + ") " + var76.toString());
                var76.printStackTrace();
             } finally {
                if (gs != null) {
@@ -1266,7 +1266,7 @@ public class MapleClient implements Serializable {
             try {
                MapleTrade.cancelTrade(this.player.getTrade(), this, this.player);
             } catch (Exception var61) {
-               System.err.println("교환 취소중 오류 발생");
+               System.err.println("Error cancelling trade");
                var61.printStackTrace();
             }
          }

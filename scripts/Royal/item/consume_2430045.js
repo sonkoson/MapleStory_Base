@@ -13,13 +13,13 @@ var 공마 = 375;
 
 function ConvertNumber(number) { //모 블로그 참조함, 이 부분에 대해서는 키네시스(kinesis8@nate.com), 라피스#2519 에게 저작권이 없음
     var inputNumber  = number < 0 ? false : number;
-    var unitWords    = ['', '만 ', '억 ', '조 ', '경 '];
+    var unitWords    = ['', 'Ten Thousand ', 'Hundred Million ', 'Trillion ', 'Quadrillion '];
     var splitUnit    = 10000;
     var splitCount   = unitWords.length;
     var resultArray  = [];
     var resultString = '';
     if (inputNumber == false) {
-        cm.sendOk("오류가 발생하였습니다. 다시 시도해 주세요.\r\n(파싱오류)");
+        cm.sendOk("เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง\r\n(Parsing Error)");
         cm.dispose();
         return;
     }
@@ -129,7 +129,7 @@ function action (mode, type, selection) {
         }
 
         if (count <= 0) {
-            cm.sendOk("강화할 장비를 소지하고 있는지 확인해 주세요.");
+            cm.sendOk("กรุณาตรวจสอบว่าคุณมีอุปกรณ์ที่จะตีบวกหรือไม่");
             cm.dispose();
             return;
         }
@@ -149,17 +149,17 @@ function action (mode, type, selection) {
         }
 
         if (item.getOwner().equals("20강")) {
-            cm.sendOk("#fs11#이미 20강까지 강화가 완료된 아이템 입니다.");
+            cm.sendOk("#fs11#ไอเทมนี้ตีบวก +20 เรียบร้อยแล้ว");
             cm.dispose();
             return;
         }
         if (cantowner.indexOf(item.getOwner()) != -1) {
-            cm.sendOk("#fs11#이미 초월 강화가 진행된 아이템 입니다.");
+            cm.sendOk("#fs11#ไอเทมนี้ได้รับการตีบวก Transcendence แล้ว");
             cm.dispose();
             return;
         }
         if (getAddEnhance(item) >= 1) {
-            cm.sendOk("#fs11#이미 한 번 이상 강화가 된 아이템에는 사용할 수 없습니다.");
+            cm.sendOk("#fs11#ไม่สามารถใช้กับไอเทมที่ตีบวกไปแล้วได้");
             cm.dispose();
             return;
         }
@@ -167,7 +167,7 @@ function action (mode, type, selection) {
         itemid = item.getItemId();
 
         if (banitem.indexOf(itemid) != -1) {
-            cm.sendOk("#fs11#심볼 아이템은 강화할 수 없습니다.");
+            cm.sendOk("#fs11#ไอเทม Symbol ไม่สามารถตีบวกได้");
             cm.dispose();
             return;
         }
@@ -195,7 +195,7 @@ function action (mode, type, selection) {
         } else if (selection == 2 || choice == 2) {
             say += "";
         }   
-        say += "#r<아이템 정보>\r\n";
+        say += "#r<Item Information>\r\n";
         say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -220,7 +220,7 @@ function action (mode, type, selection) {
             if (cm.getPlayer().getMeso() >= items[getAddEnhance(item) + 1][2]) {
                 //cm.gainMeso(-items[getAddEnhance(item) + 1][2]);
             } else {
-                cm.sendOk("수수료가 부족하여 강화가 불가능합니다.");
+                cm.sendOk("ค่าธรรมเนียมไม่พอ ไม่สามารถตีบวกได้");
                 cm.dispose();
                 return;
             }
@@ -241,24 +241,24 @@ function action (mode, type, selection) {
                 cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                 cm.gainItem(아이템코드, -1);
                 say = "";     
-                say += "#fs11##r<아이템 정보>\r\n";
+                say += "#fs11##r<Item Information>\r\n";
                 say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                 say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                 say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
                 say += "올 스탯 : " + item.getAllStat() + "%  |  총 데미지 : " + item.getTotalDamage() + "%  |  보스 공격력 : " + item.getBossDamage() + "%\r\n";
                 say += "아이템 강화 횟수 : " + getAddEnhance(item) + "강#k\r\n\r\n\r\n";
 
-                //로그작성
+                //Log
                 //ackages.scripting.NPCConversationManager.writeLog("TextLog/zenia/주문서/메소강화18강.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : 메소강화 18강 주문서 (2430045)" + "\r\n\r\n", true);
                 cm.addEnchantLog(1, item.getItemId(), item.getSerialNumberEquip(), 10, 0, "메소 강화 주문서 " + getAddEnhance(item) + "강 (계정 : " + cm.getClient().getAccountName() + ", 캐릭터 : " + cm.getPlayer().getName() + ", 장비 정보 [" + item.toString() + "])");
 
-                cm.sendOk("#fs11#강화가 성공하였습니다.");
+                cm.sendOk("#fs11#ตีบวกสำเร็จ!");
             cm.dispose();
             return;
             } else {
                 if (choice == 1 || getAddEnhance(item) == 0) {
                     say = "";
-                    say += "#fs11##r<아이템 정보>\r\n";
+                    say += "#fs11##r<Item Information>\r\n";
                     say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -281,7 +281,7 @@ function action (mode, type, selection) {
                     }                    
                     cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                     say = "";     
-                    say += "#r<아이템 정보>\r\n";
+                    say += "#r<Item Information>\r\n";
                     say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";

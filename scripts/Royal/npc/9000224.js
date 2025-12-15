@@ -2,7 +2,7 @@ importPackage(Packages.server);
 importPackage(Packages.objects.item);
 
 var MapleInventoryType = Java.type("objects.item.MapleInventoryType");
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
 
 var finalList = [];
 var collectItems = [

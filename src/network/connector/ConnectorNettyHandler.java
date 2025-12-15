@@ -63,14 +63,14 @@ public class ConnectorNettyHandler extends SimpleChannelInboundHandler<PacketDec
                }
             }
          } catch (Exception var5) {
-            System.out.println("jTable1에서 클라삭제하다 오류 발생\r\n");
+            System.out.println("Error deleting client from jTable1\r\n");
             var5.printStackTrace();
          }
       }
 
       ctx.channel().attr(ConnectorClient.CLIENTKEY).set(null);
       ctx.channel().close();
-      System.out.println("팅겼다고인마");
+      System.out.println("Disconnected dude");
       ctx.close();
    }
 

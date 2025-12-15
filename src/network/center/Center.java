@@ -722,7 +722,7 @@ public class Center {
                      }
                   }
                }, 0L);
-               System.out.println("자동저장 쓰레드가 실행됩니다");
+               System.out.println("Auto-save thread running");
                Center.lastAutoSaveTime = System.currentTimeMillis();
             }
          }, 600000L);
@@ -754,10 +754,10 @@ public class Center {
                      chr.setSaveFlag(chr.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                      if (DBConfig.isGanglim) {
                         chr.send(CField.chatMsg(1,
-                              "[Ganglim Hottime] Hottime reward distributed.\r\nClaim from [Maple Cabinet]."));
+                              "[Ganglim Hottime] แจกรางวัล Hottime แล้ว\r\nรับได้ที่ [Maple Cabinet]"));
                         chr.dropMessage(1, "Hottime reward distributed. Claim from [Maple Cabinet].");
                      } else {
-                        chr.dropMessage(5, "[Notice] Hottime reward distributed. Please check [Maple Cabinet].");
+                        chr.dropMessage(5, "[Notice] แจกรางวัล Hottime แล้ว กรุณาตรวจสอบ [Maple Cabinet]");
                         chr.dropMessage(1, "Hottime reward distributed.\r\nPlease check [Maple Cabinet].");
                      }
                   }
@@ -910,7 +910,7 @@ public class Center {
             }
          }
       } catch (Exception var99) {
-         System.out.println("충전 합계 계산 중 오류 발생");
+         System.out.println("Error calculating recharge total");
          var99.printStackTrace();
          return false;
       }
@@ -1466,37 +1466,37 @@ public class Center {
                            if (chrx.getName().equals(name)) {
                               player_name = name;
                               if (type.equals("초심자 패키지")) {
-                                 chrx.dropMessage(5, "초심자 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Beginner Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                               } else if (type.equals("설날A")) {
-                                 chrx.dropMessage(5, "설날 강화 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Enhancement Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "nyd_package1", "1");
                               } else if (type.equals("설날B")) {
-                                 chrx.dropMessage(5, "설날 마스터베리 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Master Berry Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "nyd_package2", "1");
                               } else if (type.equals("설날C")) {
-                                 chrx.dropMessage(5, "설날 대놓고 가성비 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Value Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "nyd_package3", "1");
                               } else if (type.equals("어린이날")) {
-                                 chrx.dropMessage(5, "어린이 날 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Children's Day Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1235999, "cd_package",
                                        String.valueOf(chrx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
                               } else if (type.equals("가정의달C")) {
-                                 chrx.dropMessage(5, "가정의 달 C 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package C เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_1", "1");
                               } else if (type.equals("가정의달B")) {
-                                 chrx.dropMessage(5, "가정의 달 B 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package B เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_2", "1");
                               } else if (type.equals("가정의달A")) {
-                                 chrx.dropMessage(5, "가정의 달 A 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package A เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_3", "1");
                               } else if (type.equals("가정의달S")) {
-                                 chrx.dropMessage(5, "가정의 달 S 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package S เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_4", "1");
                               } else if (type.equals("가정의달SS")) {
-                                 chrx.dropMessage(5, "가정의 달 SS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package SS เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_5", "1");
                               } else if (type.equals("가정의달SSS")) {
-                                 chrx.dropMessage(5, "가정의 달 SSS 패키지 지급이 완료되었습니다. 상점 시스템에서 수령해주시기 바랍니다.");
+                                 chrx.dropMessage(5, "ได้รับ Family Month Package SSS เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
                                  chrx.updateOneInfo(1234579, "may_package_6", "1");
                               } else if (type.equals("상시패키지1")) {
                                  chrx.dropMessage(5,
@@ -1560,7 +1560,7 @@ public class Center {
                                  chrx.updateOneInfo(1234579, "2023_package_2", "1");
                               } else if (type.equals("2023패키지3")) {
                                  chrx.dropMessage(5,
-                                       "What Do Rabbits Wear? Package has been distributed. Please claim it from the Cash Shop.");
+                                       "ได้รับ What Do Rabbits Wear? Package แล้ว กรุณารับที่ Cash Shop");
                                  chrx.updateOneInfo(1234579, "2023_package_3", "1");
                               } else if (type.equals("2023패키지4")) {
                                  chrx.dropMessage(5,
@@ -1756,7 +1756,7 @@ public class Center {
                                  chrxx.updateOneInfo(1234579, "2023_package_2", "1");
                               } else if (type.equals("2023패키지3")) {
                                  chrxx.dropMessage(5,
-                                       "What Do Rabbits Wear? Package has been distributed. Please claim it from the Cash Shop.");
+                                       "ได้รับ What Do Rabbits Wear? Package แล้ว กรุณารับที่ Cash Shop");
                                  chrxx.updateOneInfo(1234579, "2023_package_3", "1");
                               } else if (type.equals("2023패키지4")) {
                                  chrxx.dropMessage(5,
@@ -2039,11 +2039,11 @@ public class Center {
                }
 
                System.out
-                     .println("[ERROR] 계정을 찾을 수 없어 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+                     .println("[ERROR] Account not found, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
                return false;
             } catch (SQLException var90) {
                System.out.println(
-                     "[ERROR] DB 처리 도중 오류가 발생하여 자동 충전 처리 되지 않았습니다. (계정 : " + accountName + ", 금액 : " + point + ")");
+                     "[ERROR] DB error occurred, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
                return true;
             } finally {
                try {
@@ -2148,9 +2148,9 @@ public class Center {
                            }
                         } else {
                            chrxxx.gainRealCash(pricex);
-                           chrxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
+                           chrxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
                            chrxxx.send(CField.addPopupSay(9062000, 3000,
-                                 "You have received #b" + nf.format((long) pricex) + "#k Advent Points.", ""));
+                                 "ได้รับ #b" + nf.format((long) pricex) + "#k Advent Points.", ""));
                         }
 
                         found = true;
@@ -2178,7 +2178,7 @@ public class Center {
                         }
                      } else {
                         chrxxxx.gainRealCash(pricex);
-                        chrxxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
+                        chrxxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -2205,7 +2205,7 @@ public class Center {
                         }
                      } else {
                         chrxxxxx.gainRealCash(pricex);
-                        chrxxxxx.dropMessage(1, "You have received " + nf.format((long) pricex) + " Advent Points.");
+                        chrxxxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -2464,7 +2464,7 @@ public class Center {
                }
 
                if (type.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] Hot Time Event has started."));
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] กิจกรรม Hot Time เริ่มต้นแล้ว"));
                   System.out.println("Hot Time Auto Item Distribution Started!");
                } else {
                   Center.Broadcast.broadcastMessage(
@@ -2492,7 +2492,7 @@ public class Center {
                }
 
                if (typex.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] Hot Time Event has ended."));
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] กิจกรรม Hot Time จบลงแล้ว"));
                   System.out.println("Hot Time Auto Item Distribution Ended!");
                } else {
                   Center.Broadcast.broadcastMessage(
@@ -3879,7 +3879,7 @@ public class Center {
          expHottimeTask.cancel(true);
          expHottimeTask = null;
          if (!forced && ServerConstants.currentHottimeRate > 1.0) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[ExpFever] Exp Event has ended."));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[ExpFever] กิจกรรม Exp จบลงแล้ว"));
          }
 
          ServerConstants.currentHottimeRate = 1.0;
@@ -3891,7 +3891,7 @@ public class Center {
          juhunHottimeTask.cancel(true);
          juhunHottimeTask = null;
          if (!forced && ServerConstants.JuhunFever == 1) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time has ended."));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time จบลงแล้ว"));
          }
 
          ServerConstants.JuhunFever = 0;
@@ -4010,7 +4010,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(
-                                          CField.chatMsg(3, "[Weekend Daily] 20% Extra Exp event is active."));
+                                          CField.chatMsg(3, "[Weekend Daily] กิจกรรม EXP +20% กำลังดำเนินอยู่"));
                            } else if (dayOfWeek == 2) {
                               ServerConstants.dailyEventType = DailyEventType.MesoRateFever;
                               TextEffect e = new TextEffect(-1,
@@ -4020,7 +4020,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(
-                                          CField.chatMsg(3, "[Monday Daily] 20% Extra Meso event is active."));
+                                          CField.chatMsg(3, "[Monday Daily] กิจกรรม Meso +20% กำลังดำเนินอยู่"));
                            } else if (dayOfWeek == 3) {
                               ServerConstants.dailyEventType = DailyEventType.DropRateFever;
                               TextEffect e = new TextEffect(-1,
@@ -4030,7 +4030,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Tuesday Daily] 20% Item Drop Rate Increase event is active."));
+                                          "[Tuesday Daily] กิจกรรมเพิ่มอัตราดรอป 20% กำลังดำเนินอยู่"));
                            } else if (dayOfWeek == 4) {
                               ServerConstants.dailyEventType = DailyEventType.MobGenFever;
                               TextEffect e = new TextEffect(-1,
@@ -4041,7 +4041,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Wednesday Daily] Monster Spawn Rate Increase event is active."));
+                                          "[Wednesday Daily] กิจกรรมเพิ่มอัตราการเกิดมอนสเตอร์กำลังดำเนินอยู่"));
                            } else if (dayOfWeek == 5) {
                               ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
                               TextEffect e = new TextEffect(-1,
@@ -4051,7 +4051,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Thursday Daily] Star Force Cost Discount event is active."));
+                                          "[Thursday Daily] กิจกรรมส่วนลด Star Force กำลังดำเนินอยู่"));
                            } else if (dayOfWeek == 6) {
                               ServerConstants.dailyEventType = DailyEventType.CubeFever;
                               TextEffect e = new TextEffect(-1,
@@ -4061,7 +4061,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast.broadcastMessage(
                                     CField.chatMsg(3,
-                                          "[Friday Daily] Monster Collection Registration Rate Increase event is active."));
+                                          "[Friday Daily] กิจกรรมเพิ่มอัตราการลงทะเบียน Monster Collection กำลังดำเนินอยู่"));
                            }
 
                            timeScheduleEntry.setDailyEventCheck1(day);
@@ -4077,11 +4077,11 @@ public class Center {
                               Center.Broadcast
                                     .broadcastMessage(
                                           CField.chatMsg(5,
-                                                "[Spell Trace Fever Time] Spell Trace Fever Time will run until 10 PM."));
+                                                "[FeverTime] Spell Trace Fever Time จะมีจนถึง 22:00 น."));
                            } else {
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[FeverTime] Spell Trace Fever Time will run until 10 PM."));
+                                          "[FeverTime] Spell Trace Fever Time จะมีจนถึง 22:00 น."));
                            }
 
                            Center.Broadcast.broadcastMessage(CWvsContext.scrollUpgradeFeverTime(2));
@@ -4093,10 +4093,10 @@ public class Center {
                            if (DBConfig.isGanglim) {
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(5,
-                                          "[Spell Trace Fever Time] Spell Trace Fever Time is ending."));
+                                          "[FeverTime] Spell Trace Fever Time กำลังจะจบลง"));
                            } else {
                               Center.Broadcast.broadcastMessage(
-                                    CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time is ending."));
+                                    CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time กำลังจะจบลง"));
                            }
 
                            ServerConstants.JuhunFever = 0;
@@ -4199,7 +4199,7 @@ public class Center {
             }
 
             if (hours == Integer.parseInt(endTime[0]) && minutes == Integer.parseInt(endTime[1]) && seconds == 1) {
-               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Event] Exp Event has ended."));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Event] กิจกรรม Exp จบลงแล้ว"));
                ServerConstants.currentHottimeRate = 1.0;
                Center.expHottimeTask.cancel(true);
                Center.expHottimeTask = null;
@@ -7243,7 +7243,7 @@ public class Center {
                   }
                } catch (Exception var10) {
                   FileoutputUtil.outputFileError("Log_FieldSetUpdate_Except.rtf", var10);
-                  System.out.println("필드셋 업데이트 오류 발생");
+                  System.out.println("FieldSet update error");
                   var10.printStackTrace();
                }
             }
@@ -7256,7 +7256,7 @@ public class Center {
                this.lastUpdateCheckRecruimentTime = System.currentTimeMillis() + 10000L;
             } catch (Exception var8) {
                FileoutputUtil.outputFileError("Log_FieldSetUpdate_Except.rtf", var8);
-               System.out.println("필드셋 업데이트 오류 발생");
+               System.out.println("FieldSet update error");
                var8.printStackTrace();
             }
          }

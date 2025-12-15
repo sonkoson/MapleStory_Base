@@ -22,22 +22,22 @@ function MakeItem(itemid) {
 
 var enter = "\r\n";
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
+Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
+Pink = "#fc0xFFF781D8#"
 
 function start() {
 	St = -1;
@@ -70,7 +70,7 @@ function action(M, T, S) {
 		if(!cm.haveItem(boxcode, 1)){
 			cm.gainItem(boxcode, -1);
 			cm.addCustomLog(99, boxcode+" / "+cm.getPlayer().getNamte()+"");
-			cm.sendOk("오류 오류 박스 없음");
+			cm.sendOk("ข้อผิดพลาด: ไม่พบกล่อง");
 			cm.dispose();
 			return;
 		}

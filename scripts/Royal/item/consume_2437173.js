@@ -95,7 +95,7 @@ importPackage(Packages.server);
 importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 
-one = Math.floor(Math.random() * 5) + 1 // 최소 10 최대 35 , 혼테일
+one = Math.floor(Math.random() * 5) + 1 // Min 10 Max 35 , Horntail
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -125,7 +125,7 @@ function action(mode, type, selection) {
 		cm.gainItem(2437173, -1);
 		cm.dispose();
     } else {
-     cm.sendOk("#r조건이 일치하지 않습니다.#k");
+     cm.sendOk("#rเงื่อนไขไม่ตรงกัน#k");
      cm.dispose();
 }
 	}

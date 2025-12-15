@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import constants.ServerConstants;
 import java.util.ArrayList;

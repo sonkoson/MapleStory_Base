@@ -46,6 +46,6 @@ public class SmartMobNoticeData {
          count++;
       }
 
-      System.out.println("총 " + count + "개의 SmartMobNoticeData를 불러왔습니다.");
+      System.out.println("Total " + count + " SmartMobNoticeData loaded.");
    }
 }

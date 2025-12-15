@@ -61,13 +61,13 @@ public class JinHillahPoisonMist {
    public void encode(PacketEncoder mplew, int phase) {
       mplew.writeInt(0);
       mplew.writeInt(this.radius);
-      System.out.println("진힐라1 " + this.radius);
+      System.out.println("JinHilla1 " + this.radius);
       mplew.writeInt(this.getDuration(phase));
       mplew.writeInt(this.scale);
-      System.out.println("진힐라2 " + this.scale);
+      System.out.println("JinHilla2 " + this.scale);
       mplew.writeInt(this.scale);
       mplew.writeInt(this.poisonInfoMap.get(phase).size());
-      System.out.println("진힐라3 " + this.poisonInfoMap.get(phase).size());
+      System.out.println("JinHilla3 " + this.poisonInfoMap.get(phase).size());
       this.poisonInfoMap.get(phase).forEach(poisonInfo -> poisonInfo.encode(mplew));
    }
 
@@ -84,11 +84,11 @@ public class JinHillahPoisonMist {
 
       public void encode(PacketEncoder mplew) {
          mplew.writeInt(this.time);
-         System.out.println("진힐라4 " + this.time);
+         System.out.println("JinHilla4 " + this.time);
          mplew.writeInt(this.scale);
-         System.out.println("진힐라5 " + this.scale);
+         System.out.println("JinHilla5 " + this.scale);
          mplew.writeMapleAsciiString(this.tile);
-         System.out.println("진힐라6 " + this.tile);
+         System.out.println("JinHilla6 " + this.tile);
       }
    }
 }

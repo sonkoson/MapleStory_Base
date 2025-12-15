@@ -78,7 +78,7 @@ public class SundayEventList {
          sEventList.add(eL);
       }
 
-      System.out.println("[선데이리스트] " + sEventList.size() + "개 캐싱완료");
+      System.out.println("[SundayList] " + sEventList.size() + "개 캐싱완료");
    }
 
    public SundayEventList(

@@ -26,16 +26,16 @@ function action(mode, type, selection) {
 	} else if (status == 2) {
 	    if (cm.haveItem(2432341, 1)) {
 		if (cm.canHold(1003797)) {
-		    cm.sendOk("인벤토리를 확인하세요");
+		    cm.sendOk("กรุณาตรวจสอบช่องเก็บของ");
 		    cm.gainItem(2432341, -1);
 		    cm.gainItem(book[select], 1);
 		    cm.dispose();
 		} else {
-		    cm.sendOk("장비칸에 빈 공간이 없습니다.");
+		    cm.sendOk("ไม่มีช่องว่างในกระเป๋าอุปกรณ์");
 		    cm.dispose();
 		}
             } else {
-		cm.sendOk("부족합니다.");
+		cm.sendOk("ไม่เพียงพอ");
 		cm.dispose();
 
 }

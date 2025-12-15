@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 import constants.devtempConstants.MapleDimensionalMirror;
 import database.DBConfig;

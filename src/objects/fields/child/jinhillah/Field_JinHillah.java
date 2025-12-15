@@ -572,7 +572,7 @@ public class Field_JinHillah extends Field {
       if (this.activeCandle >= this.candleSize) {
          int x = Randomizer.rand(-700, 700);
          int y = 268;
-         this.sendJinHillahNotice("힐라가 접근하여 사라지기 전에 제단에서 채집키를 연타하여 영혼을 회수해야 한다.", 6000);
+         this.sendJinHillahNotice("ก่อนที่ Hilla จะเข้ามาและหายไป ต้องรัวปุ่ม Harvest ที่แท่นบูชาเพื่อกู้คืนวิญญาณ", 6000);
          int count = Math.min(30, 5 + Math.min(5, this.getCharactersThreadsafe().size()) * 5);
          this.createJinHillahAltar(x, y, count);
       }

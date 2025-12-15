@@ -64,7 +64,7 @@ public class PraiseDonationMesoRank {
          }
       }
 
-      System.out.println("칭찬 뉴비 기부 랭킹이 업데이트 되었습니다.");
+      System.out.println("Praise Newbie Donation ranking updated.");
    }
 
    public static void saveRank() {
@@ -96,7 +96,7 @@ public class PraiseDonationMesoRank {
          }
       }
 
-      System.out.println("칭찬 뉴비 기부 랭킹이 저장되었습니다.");
+      System.out.println("Praise Newbie Donation ranking saved.");
    }
 
    public static List<PraiseDonationMesoRankEntry> getTopRanker() {
@@ -162,7 +162,7 @@ public class PraiseDonationMesoRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward", String.valueOf(rank));
                playerx.updateOneInfo(1234599, "praise_reward_get", "");
-               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "위 보상을 수령해주시기 바랍니다.");
+               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรุณารับรางวัลด้านบน");
             } else {
                PreparedStatement ps3 = con.prepareStatement("INSERT INTO `questinfo_account` (`account_id`, `quest`, `customData`, `date`) VALUES (?, ?, ?, ?)");
                ps3.setInt(1, toAccountID);
@@ -210,7 +210,7 @@ public class PraiseDonationMesoRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward2", String.valueOf(meso));
                playerx.updateOneInfo(1234599, "praise_reward2_get", "");
-               playerx.dropMessage(5, "[알림] 칭찬 포인트 정산 이벤트에 당첨되었습니다. 기부함 NPC를 통해 메소를 수령해주시기 바랍니다.");
+               playerx.dropMessage(5, "[Notice] ชนะกิจกรรม Praise Point Settlement รับ Meso ได้ที่ NPC Donation Box");
                LoggingManager.putLog(
                   new CustomLog(
                      playerx.getName(),

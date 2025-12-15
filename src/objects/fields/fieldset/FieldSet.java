@@ -224,7 +224,7 @@ public abstract class FieldSet {
                                  QuestExConstants.WeeklyQuestResetCount.getQuestID(), checkBoss + (single ? "Single" : "Multi")
                               );
                            if (!DBConfig.isHosting) {
-                              partyCharacter.dropMessage(1, "현재 입장횟수 : " + currentClearCount + " / 제한횟수 : " + totalEnterLimit);
+                              partyCharacter.dropMessage(1, "จำนวนเข้าปัจจุบัน : " + currentClearCount + " / 제한횟수 : " + totalEnterLimit);
                            }
 
                            if (totalEnterLimit <= currentClearCount) {

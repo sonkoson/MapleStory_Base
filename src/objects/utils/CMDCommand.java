@@ -54,25 +54,25 @@ public class CMDCommand {
                break;
             case "전투력리셋":
                DamageMeasurementRank.resetRank();
-               System.out.println("전투력 랭킹이 초기화되었습니다.");
+               System.out.println("Combat power ranking reset.");
                break;
-            case "전투력로드":
+            case "LoadCombatPower":
                DamageMeasurementRank.loadRank();
-               System.out.println("전투력 랭킹을 로드했습니다.");
+               System.out.println("Combat power ranking loaded.");
                break;
-            case "노블강제정산":
+            case "ForceNobleSettlement":
                for (Guild g : Center.Guild.getGuilds()) {
                   g.nobleSPAdjustmentF();
                }
                break;
             case "블라썸저장":
                if (Center.sunShineStorage.save()) {
-                  System.out.println("성공적으로 저장되었습니다.");
+                  System.out.println("Saved successfully.");
                } else {
-                  System.out.println("저장 실패 error");
+                  System.out.println("Save failed error");
                }
                break;
-            case "스크립트리셋":
+            case "ScriptReset":
                ScriptManager.resetScript(null);
                break;
             case "봇테스트":
@@ -81,20 +81,20 @@ public class CMDCommand {
                DiscordBotHandler.requestSendTelegramWithChatID("봇에서 보내는 테스트입니다. 3", -1001603835720L);
                break;
             case "도움말":
-               System.out.println("<  CMD커맨드 도움말 >");
-               System.out.println("[명령어 목록] :: \r\n");
-               System.out.println("<공지> - 공지사항을 보냅니다.");
-               System.out.println("<모두종료> - 서버에 있는 유저들을 모두 종료시킵니다.");
-               System.out.println("<고상저장> - 서버에 열려있는 고용상인을 모두 저장합니다.");
-               System.out.println("<임명> - 플레이어에게 GM권한 레벨을 부여합니다.");
-               System.out.println("<패킷> - 서버에 센드 패킷 스트링을 보냅니다.");
-               System.out.println("<OR> - 옵코드를 리로딩합니다.");
-               System.out.println("<서버종료> - 서버를 안전하게 저장후 종료합니다.");
+               System.out.println("< CMD Command Help >");
+               System.out.println("[Command List] :: \r\n");
+               System.out.println("<Notice> - Sends a notice.");
+               System.out.println("<ShutdownAll> - Disconnects all users.");
+               System.out.println("<SaveShop> - Saves all open Hired Merchants.");
+               System.out.println("<Appoint> - Grants GM level to player.");
+               System.out.println("<Packet> - Sends a packet string to server.");
+               System.out.println("<OR> - Reloads opcodes.");
+               System.out.println("<ShutdownServer> - Safely saves and shuts down the server.");
                break;
-            case "공지":
+            case "Notice":
                for (GameServer ch : GameServer.getAllInstances()) {
                   for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-                     chr.dropMessage(1, "[공지사항]\r\n" + StringUtil.joinStringFrom(command, 1));
+                     chr.dropMessage(1, "[Notice사항]\r\n" + StringUtil.joinStringFrom(command, 1));
                   }
                }
                break;
@@ -103,16 +103,16 @@ public class CMDCommand {
                   ch.getPlayerStorage().disconnectAll();
                }
 
-               System.out.println("서버에 있는 유저들을 종료시켰습니다.");
+               System.out.println("Disconnected all users on server.");
                break;
-            case "고상저장":
+            case "SaveShop":
                for (GameServer ch : GameServer.getAllInstances()) {
                   ch.closeAllMerchant();
                }
 
-               System.out.println("고용상인 저장 완료");
+               System.out.println("Hired Merchant saved");
                break;
-            case "임명":
+            case "Appoint":
                a = 0;
 
                for (GameServer cserv : GameServer.getAllInstances()) {
@@ -121,16 +121,16 @@ public class CMDCommand {
                   if (player != null) {
                      byte number = Byte.parseByte(command[2]);
                      player.getClient().getSession().writeAndFlush(CWvsContext.getScriptProgressMessage("해당 플레이어가 GM " + command[2] + "레벨이 되었습니다."));
-                     System.out.println(command[1] + " 플레이어를 GM레벨 " + command[2] + "(으)로 설정하였습니다.");
+                     System.out.println(command[1] + " Player GM level " + command[2] + " set to.");
                      player.setGMLevel(number);
                      a = 1;
                   } else if (player == null && a == 0) {
-                     System.out.println(command[1] + " 플레이어를 찾지 못하였습니다.");
+                     System.out.println(command[1] + " Player not found.");
                      a = 1;
                   }
                }
                break;
-            case "패킷":
+            case "Packet":
                PacketEncoder mplew = new PacketEncoder();
                mplew.encodeBuffer(HexTool.getByteArrayFromHexString(StringUtil.joinStringFrom(command, 1)));
 
@@ -152,7 +152,7 @@ public class CMDCommand {
             case "or":
                RecvPacketOpcode.reloadValues();
                SendPacketOpcode.reloadValues();
-               System.out.print("옵코드 재설정이 완료되었습니다.");
+               System.out.print("Opcode reload completed.");
                break;
             case "enddir":
                for (GameServer cserv : GameServer.getAllInstances()) {

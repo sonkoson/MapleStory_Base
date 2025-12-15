@@ -29,7 +29,7 @@ public class ConnectorNettyDecoder extends ByteToMessageDecoder {
                      return;
                   }
                } catch (Exception var7) {
-                  System.out.println("커넥터 오류 발생");
+                  System.out.println("Connector error");
                   var7.printStackTrace();
                }
             }

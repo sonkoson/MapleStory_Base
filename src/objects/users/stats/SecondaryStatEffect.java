@@ -3059,7 +3059,7 @@ public class SecondaryStatEffect implements Serializable {
             i++;
          }
       } catch (Exception var21) {
-         System.out.println("SecondaryStatEffect.loadFromData 함수 실행중 오류발생" + var21.toString());
+         System.out.println("Error executing SecondaryStatEffect.loadFromData function" + var21.toString());
          var21.printStackTrace();
       }
 
@@ -3147,7 +3147,7 @@ public class SecondaryStatEffect implements Serializable {
                applyfrom.getClient().getSession().writeAndFlush(CWvsContext.enableActions(applyfrom, exclusive));
                return false;
             } else if (this.sourceid == 33101004 && applyfrom.getMap().isTown()) {
-               applyfrom.dropMessage(5, "You may not use this skill in towns.");
+               applyfrom.dropMessage(5, "ไม่สามารถใช้สกิลนี้ในเมืองได้");
                applyfrom.getClient().getSession().writeAndFlush(CWvsContext.enableActions(applyfrom, exclusive));
                return false;
             } else if ((this.sourceid < 33001007 || this.sourceid > 33001015)
@@ -3782,7 +3782,7 @@ public class SecondaryStatEffect implements Serializable {
                         applyto.silentPartyUpdate();
                      }
                   } else {
-                     applyto.dropMessage(5, "You may not spawn a door because all doors in the town are taken.");
+                     applyto.dropMessage(5, "ไม่สามารถเปิดประตูได้เนื่องจากประตูในเมืองเต็มแล้ว");
                   }
                } else if (this.isMist()) {
                   Rectangle bounds = this.calculateBoundingBox(pos != null ? pos : applyfrom.getPosition(),

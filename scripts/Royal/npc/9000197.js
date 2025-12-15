@@ -4,13 +4,13 @@ importPackage(java.lang);
 
 function ConvertNumber(number) { //모 블로그 참조함, 이 부분에 대해서는 호크아이(hawkeye888@nate.com) 에게 저작권이 없음
     var inputNumber  = number < 0 ? false : number;
-    var unitWords    = ['', '만 ', '억 ', '조 ', '경 '];
+    var unitWords    = ['', 'Ten Thousand ', 'Hundred Million ', 'Trillion ', 'Quadrillion '];
     var splitUnit    = 10000;
     var splitCount   = unitWords.length;
     var resultArray  = [];
     var resultString = '';
     if (inputNumber == false) {
-        cm.sendOk("오류가 발생하였습니다. 다시 시도해 주세요.\r\n(파싱오류)");
+        cm.sendOk("เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง\r\n(Parsing Error)");
         cm.dispose();
         return;
     }

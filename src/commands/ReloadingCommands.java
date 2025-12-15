@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import constants.devtempConstants.MapleClientCRC;
 import constants.devtempConstants.MapleDailyGift;
@@ -26,7 +26,7 @@ public class ReloadingCommands implements Command {
       if (splitted[0].equals("!reloadops")) {
          SendPacketOpcode.reloadValues();
          RecvPacketOpcode.reloadValues();
-         c.getPlayer().dropMessage(5, "[System] Ops reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Ops ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!setop")) {
          for (SendPacketOpcode send : SendPacketOpcode.values()) {
             if (send.name().equals(splitted[1])) {
@@ -38,54 +38,54 @@ public class ReloadingCommands implements Command {
       } else if (splitted[0].equals("!reloaddrops")) {
          MapleMonsterInformationProvider.getInstance().clearDrops();
          ReactorScriptManager.getInstance().clearDrops();
-         c.getPlayer().dropMessage(5, "[System] Drops reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Drop ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadportals")) {
          PortalScriptManager.getInstance().clearScripts();
-         c.getPlayer().dropMessage(5, "[System] Portal scripts reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลด Portal Script ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadshops")) {
          MapleShopFactory.getInstance().clear();
-         c.getPlayer().dropMessage(5, "[System] Shops reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Shop ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadevents")) {
          for (GameServer instance : GameServer.getAllInstances()) {
             instance.reloadEvents();
          }
-         c.getPlayer().dropMessage(5, "[System] Events reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Event ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadskills")) {
          SkillFactory.load();
-         c.getPlayer().dropMessage(5, "[System] Skills reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Skill ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadweekly")) {
          WeeklyItemManager.loadWeeklyItems();
-         c.getPlayer().dropMessage(5, "[System] Weekly items reloading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Weekly Item ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!saveweekly")) {
          WeeklyItemManager.saveWeeklyItems();
-         c.getPlayer().dropMessage(5, "[System] Weekly items saved to DB.");
+         c.getPlayer().dropMessage(5, "[System] บันทึก Weekly Item ลง DB แล้ว");
       } else if (splitted[0].equals("!resetgoldapple")) {
          RoyalStyle.resetGoldApple();
-         c.getPlayer().dropMessage(5, "[System] Gold Apple reset completed.");
+         c.getPlayer().dropMessage(5, "[System] รีเซ็ต Gold Apple เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadmobhp")) {
          MapleMonsterCustomHP.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Custom Mob HP loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Custom Mob HP ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloaddailygift")) {
          MapleDailyGift.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Daily Gift loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Daily Gift ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloaddimen")) {
          MapleDimensionalMirror.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Dimensional Mirror loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Dimensional Mirror ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadeventlist")) {
          MapleEventList.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Event List loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Event List ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadfishing")) {
          MapleFishing.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Fishing loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Fishing ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadgoldenchariot")) {
          MapleGoldenChariot.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel Golden Chariot loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล Golden Chariot ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadcrc")) {
          MapleClientCRC.Load();
-         c.getPlayer().dropMessage(5, "[System] Excel WZ CRC loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูล WZ CRC ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadrank")) {
          DamageMeasurementRank.loadRank();
-         c.getPlayer().dropMessage(5, "[System] Damage Measurement Rank loading completed.");
+         c.getPlayer().dropMessage(5, "[System] โหลดอันดับวัดความเสียหายเสร็จสิ้น");
       }
    }
 

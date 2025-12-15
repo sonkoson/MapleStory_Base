@@ -1324,7 +1324,7 @@ public class CharLoginHandler {
             c.getSession().writeAndFlush(CField.createUltimate(0));
          }
       } else {
-         c.getPlayer().dropMessage(1, "You have no character slots.");
+         c.getPlayer().dropMessage(1, "ไม่มีช่องตัวละคร");
          c.getSession().writeAndFlush(CField.createUltimate(0));
       }
    }

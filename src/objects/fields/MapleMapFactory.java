@@ -595,7 +595,7 @@ public class MapleMapFactory {
                      int npcid = rs.getInt("lifeid");
                      MapleNPC npc = MapleLifeFactory.getNPC(npcid);
                      if (npc == null) {
-                        System.err.println("[오류] 존재하지 않는 NPCID : " + npcid);
+                        System.err.println("[Error] Non-existent NPCID : " + npcid);
                      } else {
                         npc.setRx0(rs.getInt("rx0"));
                         npc.setRx1(rs.getInt("rx1"));
@@ -612,7 +612,7 @@ public class MapleMapFactory {
                   ps.close();
                   rs.close();
                } catch (Exception var47) {
-                  System.err.println("[오류] 엔피시를 DB로부터 불러오는데 오류가 발생했습니다.");
+                  System.err.println("[Error] Error loading NPC from DB.");
                   var47.printStackTrace();
                }
 
@@ -662,7 +662,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -677,7 +677,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -692,7 +692,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -707,7 +707,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -722,7 +722,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -737,7 +737,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -752,7 +752,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -767,7 +767,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -782,7 +782,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -794,7 +794,7 @@ public class MapleMapFactory {
                         if (npc != null) {
                            map.addMapObject(npc);
                         } else {
-                           System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                           System.err.println("[Error] NullPointer error creating NPC data.");
                         }
                      } catch (Exception var43) {
                      }
@@ -811,7 +811,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
 
@@ -826,7 +826,7 @@ public class MapleMapFactory {
                      if (npc != null) {
                         map.addMapObject(npc);
                      } else {
-                        System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                        System.err.println("[Error] NullPointer error creating NPC data.");
                      }
                   }
                } else {
@@ -838,7 +838,7 @@ public class MapleMapFactory {
                         if (npc != null) {
                            map.addMapObject(npc);
                         } else {
-                           System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                           System.err.println("[Error] NullPointer error creating NPC data.");
                         }
                      }
                   }
@@ -852,7 +852,7 @@ public class MapleMapFactory {
                         if (npc != null) {
                            map.addMapObject(npc);
                         } else {
-                           System.err.println("[오류] 엔피시 데이터를 만드는중 널 포인터 오류가 발생했습니다.");
+                           System.err.println("[Error] NullPointer error creating NPC data.");
                         }
                      }
                   }

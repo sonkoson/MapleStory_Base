@@ -13,7 +13,7 @@ var enter = "\r\n";
 var item1 = [2430018, "#z2430018#", "1"];
 var ac1 = [0, "강림 캐시", 10000];
 var ac2 = [1712002, "아케인 심볼 : 츄츄 아일랜드", "5"];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, selection) {
     if (mode == -1) {
@@ -57,13 +57,13 @@ function action(mode, type, selection) {
                     if (cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot() >= 1) {
                         cm.gainItem(item1[0], -item1[2] * cost);
                         cm.getPlayer().gainCashPointEvent(0, ac1[2]*cost);
-                        cm.sendOk("#fn나눔고딕#교환완료\r\n");
+                        cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์\r\n");
                         cm.dispose();
 
-                        //로그작성
+                        //Log
                         Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/캐시.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : [Z] 강림 캐시 교환권 (2430018)\r\n획득 캐시 : " + ac1[2]*cost + "\r\n\r\n", true);
                     } else {
-                        cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+                        cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
                         cm.dispose();
                     }
                 } else {

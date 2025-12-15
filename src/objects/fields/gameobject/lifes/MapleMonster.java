@@ -1296,7 +1296,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                   } catch (Exception var32) {
                      System.out
                            .println(
-                                 "몬스터 컬렉션 예외 발생 "
+                                 "Monster Collection Exception "
                                        + var32.toString()
                                        + " / 몹 : "
                                        + (this.getStats() != null ? this.getId() + "(" + this.getStats().getName() + ")"
@@ -1425,7 +1425,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                      if (timediff >= 10000L) {
                         attacker.setAlertTime(currenttime);
                         attacker.send(
-                              CField.UIPacket.sendBigScriptProgressMessage("300레벨 이상 구간에서 파티 사냥 시 경험치 획득량이 크게 감소합니다.",
+                              CField.UIPacket.sendBigScriptProgressMessage("การได้รับ EXP จะลดลงอย่างมากเมื่อปาร์ตี้ล่าในมอนสเตอร์เลเวล 300 ขึ้นไป",
                                     FontType.NanumGothic, FontColorType.Yellow));
                      }
                   }
@@ -3808,7 +3808,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
          this.setCastingCancelDamage(damage);
          Field_Demian map = (Field_Demian) this.getMap();
-         map.sendDemianNotice(216, "데미안이 타락한 세계수의 힘을 폭주시키기 전에 큰 피해를 입혀 저지해야 합니다.", -1, 2500);
+         map.sendDemianNotice(216, "ต้องสร้างความเสียหายรุนแรงเพื่อหยุด Damien ก่อนที่เขาจะทำให้พลังของ World Tree ที่แปดเปื้อนอาละวาด", -1, 2500);
       }
    }
 
@@ -4965,7 +4965,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                   MapleMonster.this.giveExpToCharacter(chr, (long) baseExp, mostDamage, 1, (byte) 0, (byte) 0,
                         lastSkill, 0);
                } catch (Exception var11) {
-                  System.out.println("giveExpToCharacter 예외 발생");
+                  System.out.println("Exception in giveExpToCharacter");
                   var11.printStackTrace();
                }
 
@@ -4992,10 +4992,10 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                   AchievementFactory.checkMobKill(MapleMonster.this, Collections.singletonList(chr), chr, chr,
                         lastSkill);
                } catch (Exception var10) {
-                  System.out.println("Achievement CheckMobKill 예외 발생");
+                  System.out.println("Achievement CheckMobKill Exception occurred");
                }
             } catch (Exception var12) {
-               System.out.println("killedMob 예외 발생");
+               System.out.println("Exception in killedMob");
                var12.printStackTrace();
             }
          }

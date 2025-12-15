@@ -16,7 +16,7 @@ function action(mode, type, selection) {
             status--;
         if (status == 0) {
 	    if (!cm.canHold(2290285)) {
-                cm.sendOk("인벤토리 공간이 부족합니다.");
+                cm.sendOk("พื้นที่ในช่องเก็บของไม่เพียงพอ");
 		cm.dispose();
 		return;
 	    }

@@ -3,7 +3,7 @@ importPackage(Packages.server);
 importPackage(Packages.client.inventory);
 importPackage(Packages.server);
 importPackage(Packages.server.items);
-one = Math.floor(Math.random() * 5) + 1 // 최소 10 최대 35 , 혼테일
+one = Math.floor(Math.random() * 5) + 1 // Min 10 Max 35 , Horntail
 function start() {
     status = -1;
     action(1, 1, 0);
@@ -39,7 +39,7 @@ function action(mode, type, sel) {
     }
         if (status == 0) {
 		if (cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot() < 5 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot() < 5 || cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.ETC).getNumFreeSlot() < 5) {
-		   cm.sendOk("#fs11#장비,소비,기타 칸을 5칸 이상 비워주세요");
+		   cm.sendOk("#fs11#กรุณาเว้นช่องว่างอย่างน้อย 5 ช่องใน Equip, Use, Etc");
 		   cm.dispose();
 		   return;
 		}
@@ -64,7 +64,7 @@ function action(mode, type, sel) {
 			//cm.getPlayer().AddStarDustPoint(100, cm.getPlayer().getTruePosition());
 			cm.sendOkS("#b#e접속 보상 지급이 완료되었습니다.", 2);
 
-			//로그작성
+			//Log
 			Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[HOTTIME]" + 패키지명 + ".log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : " + 패키지명 + " (" + 패키지코드 + ")" + "\r\n\r\n", true);
 
 		} else if (sel == 2) {

@@ -1336,7 +1336,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          ps.close();
          rs.close();
       } catch (Exception var6) {
-         System.err.println("[오류] 커스텀 값들을 불러오는데 실패했습니다.");
+         System.err.println("[Error] Failed to load custom values.");
          var6.printStackTrace();
       }
    }
@@ -1777,7 +1777,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   rs.close();
                   ps.close();
                   ret.getClient().getSession().close();
-                  System.out.println("팅겼다고인마");
+                  System.out.println("Disconnected dude");
                   throw new RuntimeException("Loading a banned character");
                }
 
@@ -2469,7 +2469,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } catch (SQLException var46) {
          var46.printStackTrace();
-         System.out.println("[오류] DB에서 캐릭터 정보를 불러오는 도중 오류가 발생하였습니다.");
+         System.out.println("[Error] Error loading character info from DB.");
          FileoutputUtil.outputFileError("Log_Packet_Except.rtf", var46);
       } finally {
          try {
@@ -2625,7 +2625,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } catch (SQLException var22) {
          var22.printStackTrace();
-         System.out.println("[오류] DB에서 캐릭터 정보를 불러오는 도중 오류가 발생하였습니다.");
+         System.out.println("[Error] Error loading character info from DB.");
          FileoutputUtil.outputFileError("Log_Packet_Except.rtf", var22);
       } finally {
          try {
@@ -2748,7 +2748,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } catch (SQLException var22) {
          var22.printStackTrace();
-         System.out.println("[오류] DB에서 캐릭터 정보를 불러오는 도중 오류가 발생하였습니다.");
+         System.out.println("[Error] Error loading character info from DB.");
          FileoutputUtil.outputFileError("Log_Packet_Except.rtf", var22);
       } finally {
          try {
@@ -3165,7 +3165,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             throw new Exception();
          } catch (Exception var6) {
-            System.out.println("QuestInfo에 =mobDead 삽입됨 위치 출력");
+            System.out.println("Inserted =mobDead into QuestInfo. Position output");
             var6.printStackTrace();
             fixData = data.replace("=mobDead=", "=;mobDead=");
          }
@@ -6027,8 +6027,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          this.invokeJobMethod("cleanUpHashMap");
       } catch (Exception var13) {
          System.out.println(
-               "[오류] 캐릭터 changeMapInternal 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var13.toString());
-         System.out.println("이동 대상 맵 ID : " + to.getId());
+               "[Error] Error executing changeMapInternal (Name: " + this.getName() + " ) : " + var13.toString());
+         System.out.println("Target Map ID : " + to.getId());
          var13.printStackTrace();
       }
    }
@@ -6520,7 +6520,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
 
             AchievementFactory.checkMakingskillLvup(this, id, ret + 1);
-            this.dropMessage(-5, name + "의 레벨이 올랐습니다.");
+            this.dropMessage(-5, name + " เลเวลเพิ่มขึ้นแล้ว");
             return true;
          } else {
             return false;
@@ -7988,17 +7988,17 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                point.setPoint(point.getPoint() + 100);
                this.updateOneInfo(3887, "point", String.valueOf(point.getPoint()));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag());
-               this.dropMessage(5, "[칭찬 포인트 일일 퀘스트] 레벨 범위 몬스터 15,000마리를 처치하여 100 칭찬 포인트가 지급됩니다.");
+               this.dropMessage(5, "[Praise Point Daily Quest] กำจัดมอนสเตอร์ในระดับเลเวล 15,000 ตัว เพื่อรับ 100 Praise Point");
                this.dropMessage(5,
-                     "[칭찬 포인트 일일 퀘스트] 오늘 " + clearCount + "번 클리어 하셨습니다. " + (20 - clearCount) + "번 더 클리어 하실 수 있습니다.");
+                     "[Praise Point Daily Quest] วันนี้ " + clearCount + "เคลียร์ไปแล้ว ครั้ง " + (20 - clearCount) + "번 더 클리어 하실 수 있습니다.");
             }
 
             this.updateOneInfo(questId, "praise_dailyQuest_ClearCount", String.valueOf(clearCount), false);
             this.updateOneInfo(questId, "praise_dailyQuest_MobCount", String.valueOf(mobCount), false);
             if (clearCount >= 20) {
-               this.dropMessage(-7, "오늘의 칭찬 포인트 일일 퀘스트가 모두 완료되었습니다.");
+               this.dropMessage(-7, "Praise Point Daily Quest ของวันนี้เสร็จสิ้นทั้งหมดแล้ว");
             } else {
-               this.dropMessage(-7, "[칭찬 포인트 일일 퀘스트 (" + clearCount + "/20)] 레벨 범위 몬스터 " + mobCount + "/15000");
+               this.dropMessage(-7, "[Praise Point Daily Quest (" + clearCount + "/20)] 레벨 범위 몬스터 " + mobCount + "/15000");
             }
          }
       }
@@ -8408,7 +8408,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   MapleCabinet cabinet = this.getCabinet();
                   if (cabinet == null) {
                      this.dropMessage(5,
-                           "보관함을 열람하는 과정에서 오류가 발생하여 300레벨 보상을 수령하지 못했습니다. 해당 화면을 운영자에게 문의하시면 아이템이 지급됩니다.");
+                           "เกิดข้อผิดพลาดในการเปิดกล่องของขวัญ ทำให้ไม่ได้รับรางวัลเลเวล 300 กรุณาแจ้ง GM เพื่อรับไอเทม");
                   } else {
                      SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                      String fDate = sdf.format(System.currentTimeMillis());
@@ -8419,10 +8419,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                  "[GM 선물]", fDate + "에 레벨보상으로 지급된 아이템입니다.", item));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                     this.dropMessage(5, "[알림] 300레벨 달성 선물이 도착하였습니다. 메이플 보관함을 통해 수령해주시기 바랍니다.");
+                     this.dropMessage(5, "[Notice] ของขวัญเลเวล 300 มาถึงแล้ว กรุณารับที่ Maple Cabinet");
                   }
                } catch (Exception var34) {
-                  this.dropMessage(5, "보관함을 열람하는 과정에서 오류가 발생하여 300레벨 보상을 수령하지 못했습니다. 해당 화면을 운영자에게 문의하시면 아이템이 지급됩니다.");
+                  this.dropMessage(5, "เกิดข้อผิดพลาดในการเปิดกล่องของขวัญ ทำให้ไม่ได้รับรางวัลเลเวล 300 กรุณาแจ้ง GM เพื่อรับไอเทม");
                   var34.printStackTrace();
                }
             }
@@ -8439,7 +8439,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
                   Date resultdate = new Date(System.currentTimeMillis());
                   System.err
-                        .println("레벨업 타임스탬프 업데이트 오류 발생 캐릭터명 : " + this.getName() + " 시간 : " + sdf.format(resultdate));
+                        .println("Error updating levelup timestamp. Name : " + this.getName() + " 시간 : " + sdf.format(resultdate));
                   var38.printStackTrace();
                }
             } catch (SQLException var40) {
@@ -8508,7 +8508,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          if (this.level == 10 & !DBConfig.isGanglim) {
-            this.dropMessage(5, "[알림] 적정레벨 장비지원상자가 지급되었습니다. 소비창을 확인해주세요.");
+            this.dropMessage(5, "[Notice] ได้รับ Level-Appropriate Equipment Support Box ตรวจสอบช่อง Use");
             this.gainItem(2430443, 1, false, -1L, "적정레벨 장비상자 아이템");
          }
 
@@ -8550,7 +8550,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (this.level >= 200) {
             if (this.getMap() instanceof Field_YutaGolden) {
                this.changeMap(ServerConstants.TownMap);
-               this.dropMessage(5, "[알림] 200레벨이 달성되어 황금논밭에서 퇴장됩니다.");
+               this.dropMessage(5, "[Notice] เลเวล 200 แล้ว ออกจาก Golden Fields");
             }
 
             if (!DBConfig.isGanglim && this.getOneInfoQuestInteger(1234566, "get_symbol") == 0
@@ -8567,8 +8567,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               "[200레벨 보상]", fDate + "에 지급된 보상입니다.", item));
                   this.send(CField.maplecabinetResult(8));
                   this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                  this.dropMessage(5, "[알림] 200레벨 보상 선택 아케인심볼 교환권 100개가 지급되었습니다. [메이플 보관함]을 확인해주세요.");
-                  this.dropMessage(1, "200레벨 보상 선택 아케인심볼 교환권 100개가 지급되었습니다.\r\n[메이플 보관함]을 확인해주세요.");
+                  this.dropMessage(5, "[Notice] ได้รับ Select Arcane Symbol Coupon 100 ใบ (รางวัลเลเวล 200) ตรวจสอบ [Maple Cabinet]");
+                  this.dropMessage(1, "ได้รับ Select Arcane Symbol Coupon 100 ใบ (รางวัลเลเวล 200)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
                   this.updateOneInfo(1234566, "get_symbol", "1");
                   this.updateOneInfo(1234567, "get_symbol", "1");
                }
@@ -8614,11 +8614,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   this.send(CField.maplecabinetResult(8));
                   this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                   if (DBConfig.isGanglim) {
-                     this.send(CField.chatMsg(1, "찬란한 명예의 상징이 지급되었습니다. [메이플 보관함]을 통해 수령 가능합니다."));
-                     this.dropMessage(1, "찬란한 명예의 상징이 지급되었습니다.\r\n[메이플 보관함]을 통해 수령 가능합니다.");
+                     this.send(CField.chatMsg(1, "ได้รับ Symbol of Brilliant Honor แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
+                     this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
                   } else {
-                     this.dropMessage(5, "[알림] 275레벨 보상 찬란한 명예의 상징이 지급되었습니다. [메이플 보관함]을 확인해주세요.");
-                     this.dropMessage(1, "275레벨 보상 찬란한 명예의 상징이 지급되었습니다.\r\n[메이플 보관함]을 확인해주세요.");
+                     this.dropMessage(5, "[Notice] ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275) ตรวจสอบ [Maple Cabinet]");
+                     this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
                   }
 
                   this.updateOneInfo(1234566, "check_honor_chair", "1");
@@ -10417,7 +10417,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          ps.execute();
          ps.close();
          this.client.getSession().close();
-         System.out.println("팅겼다고인마");
+         System.out.println("Disconnected dude");
       } catch (SQLException var10) {
          System.err.println("Error while tempbanning" + var10);
       }
@@ -10442,7 +10442,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          this.client.getSession().close();
-         System.out.println("팅겼다고인마");
+         System.out.println("Disconnected dude");
          return true;
       }
    }
@@ -11038,10 +11038,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public void setSmega() {
       if (this.smega) {
          this.smega = false;
-         this.dropMessage(5, "You have set megaphone to disabled mode");
+         this.dropMessage(5, "ปิดใช้งาน Megaphone");
       } else {
          this.smega = true;
-         this.dropMessage(5, "You have set megaphone to enabled mode");
+         this.dropMessage(5, "เปิดใช้งาน Megaphone");
       }
    }
 
@@ -11231,7 +11231,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         || bossID == 8880614
                         || bossID == 8880644)) {
                this.gainTogetherPoint(10);
-               this.dropMessage(5, "협동포인트를 10 얻었습니다. 누적 : " + this.getTogetherPoint());
+               this.dropMessage(5, "ได้รับ Co-op Point 10 แต้ม สะสม : " + this.getTogetherPoint());
                this.setMultiMode(false);
             }
          }
@@ -11265,7 +11265,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(20, 25);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8500012) {
          point = 500;
@@ -11287,7 +11287,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8910000) {
          point = 150;
@@ -11299,7 +11299,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8930000) {
          point = 150;
@@ -11311,7 +11311,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(20, 25);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8840000) {
          point = 500;
@@ -11353,7 +11353,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8500022) {
          point = 1000;
@@ -11365,7 +11365,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(30, 35);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID == 8920000) {
          point = 1000;
@@ -11377,7 +11377,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+            this.dropMessage(5, point_ + " ได้รับ Boss Point");
          }
       } else if (bossID != 8950002 && bossID != 8950102) {
          if (bossID != 8880111 && bossID != 8880101) {
@@ -11392,13 +11392,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(60, 65);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
                   }
                } else if (DBConfig.isGanglim) {
                   int point_ = Randomizer.rand(40, 45);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
                }
             } else if (bossID != 8880302 && bossID != 8880342 && bossID != 8880362) {
                if (bossID == 8644655 || bossID == 8644650 || bossID == 8880700 || bossID == 8880711) {
@@ -11412,13 +11412,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         int point_ = Randomizer.rand(40, 45);
                         int value = this.getOneInfoQuestInteger(100779, "point");
                         this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                        this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                        this.dropMessage(5, point_ + " ได้รับ Boss Point");
                      }
                   } else if (DBConfig.isGanglim) {
                      int point_ = Randomizer.rand(70, 75);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
                   }
                } else if (bossID == 8645066 || bossID == 8645009 || bossID == 8880602 || bossID == 8880632) {
                   point = 1500;
@@ -11431,13 +11431,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         int point_ = Randomizer.rand(40, 45);
                         int value = this.getOneInfoQuestInteger(100779, "point");
                         this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                        this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                        this.dropMessage(5, point_ + " ได้รับ Boss Point");
                      }
                   } else if (DBConfig.isGanglim) {
                      int point_ = Randomizer.rand(70, 75);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
                   }
                } else if (bossID == 8880504) {
                   point = 2000;
@@ -11449,7 +11449,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(200, 250);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
                   }
                }
             } else {
@@ -11458,13 +11458,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(60, 65);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
                   }
                } else if (DBConfig.isGanglim) {
                   int point_ = Randomizer.rand(40, 45);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
                }
 
                point = 1500;
@@ -11478,13 +11478,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   int point_ = Randomizer.rand(60, 65);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
                }
             } else if (DBConfig.isGanglim) {
                int point_ = Randomizer.rand(30, 35);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+               this.dropMessage(5, point_ + " ได้รับ Boss Point");
             }
 
             point = 1500;
@@ -11500,7 +11500,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                int point_ = Randomizer.rand(30, 35);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+               this.dropMessage(5, point_ + " ได้รับ Boss Point");
             }
          } else {
             this.updateOneInfo(100813, "bossPoint",
@@ -11509,7 +11509,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                int point_ = Randomizer.rand(60, 65);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " 보스 포인트를 획득했습니다.");
+               this.dropMessage(5, point_ + " ได้รับ Boss Point");
             }
          }
 
@@ -11706,7 +11706,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 1:
             if (this.nxcredit + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "You have gained the max cash. No cash will be awarded.");
+                  this.dropMessage(-1, "Cash เต็มแล้ว ไม่ได้รับ Cash เพิ่ม");
                }
 
                return;
@@ -11717,7 +11717,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 2:
             if (this.maplepoints + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "You have gained the max maple points. No cash will be awarded.");
+                  this.dropMessage(-1, "Maple Point เต็มแล้ว ไม่ได้รับเพิ่ม");
                }
 
                return;
@@ -11731,7 +11731,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 4:
             if (this.acash + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "You have gained the max cash. No cash will be awarded.");
+                  this.dropMessage(-1, "Cash เต็มแล้ว ไม่ได้รับ Cash เพิ่ม");
                }
 
                return;
@@ -13455,7 +13455,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             throw new Exception();
          } catch (Exception var2) {
-            System.out.println("GM 디버그 트레이싱");
+            System.out.println("GM Debug Tracing");
             var2.printStackTrace();
          }
       }
@@ -13967,11 +13967,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       if (equipped && this.getRoadRingExpBoost() < 30) {
          this.setRoadRingExpBoost(this.getRoadRingExpBoost() + 10);
          if (this.getRoadRingExpBoost() > 10) {
-            this.dropMessage(5, "무르무르의 로드 링을 착용한지 " + this.getRoadRingExpBoost() / 10 + "시간이 지났습니다. "
+            this.dropMessage(5, "สวมใส่ Murmur's Lord Ring มา " + this.getRoadRingExpBoost() / 10 + "시간이 지났습니다. "
                   + this.getRoadRingExpBoost() + "%의 보너스 경험치를 얻습니다.");
          } else {
             this.dropMessage(5,
-                  "무르무르의 로드 링 착용으로 인해 몬스터 사냥 시 보너스 경험치 " + this.getRoadRingExpBoost() + "%를 추가로 획득하게 됩니다.");
+                  "ได้รับโบนัส EXP จากการล่ามอนสเตอร์เมื่อสวมใส่ Murmur's Lord Ring " + this.getRoadRingExpBoost() + "%를 추가로 획득하게 됩니다.");
          }
 
          this.getStat().recalcLocalStats(this);
@@ -14252,7 +14252,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          this.client.getSession()
                .writeAndFlush(CField.getChannelChange(this.client, Integer.parseInt(toch.getIP().split(":")[1])));
       } catch (Exception var5) {
-         System.out.println("[오류] 캐릭터 changeChannel 함수 실행 중 오류 발생! (Name : " + this.getName() + ") " + var5.toString());
+         System.out.println("[Error] Error executing changeChannel! (Name : " + this.getName() + ") " + var5.toString());
          var5.printStackTrace();
       }
    }
@@ -14306,7 +14306,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          MapleCharacter tt = this.map.getCharacterById(this.followid);
          if (tt != null) {
             tt.setFollowId(0);
-            tt.getClient().getSession().writeAndFlush(CField.chatMsg(11, "따라가기가 해제되었습니다."));
+            tt.getClient().getSession().writeAndFlush(CField.chatMsg(11, "ยกเลิกการติดตามแล้ว"));
          }
 
          this.setFollowId(0);
@@ -15742,7 +15742,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public void gainHonor(int honor, boolean show) {
       this.addHonorExp(honor);
       if (show && this.getKeyValue("show_honor") != null && this.getKeyValue("show_honor").equals("1")) {
-         this.dropMessage(5, "명성치 " + honor + "을 얻었습니다.");
+         this.dropMessage(5, "Honor EXP " + honor + " ได้รับแล้ว");
       }
    }
 
@@ -15991,7 +15991,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       if (skill != null) {
          SecondaryStatEffect effect = skill.getEffect(1);
          if (effect == null) {
-            System.out.println("[오류] 소울 게이지 핸들링 중 소울 스킬 데이터 불러오기 실패.");
+            System.out.println("[Error] Failed to load Soul Skill data during Soul Gauge handling.");
          } else {
             int soulCount = this.getSoulCount();
             if (useSkill) {
@@ -16338,7 +16338,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             count = Integer.parseInt(v);
          } catch (Exception var6) {
-            System.out.println("QuestID : " + questid + " / Key : " + key + " 퀘스트인포 불러오기 오류 정보 : " + v);
+            System.out.println("QuestID : " + questid + " / Key : " + key + " QuestInfo load error info : " + v);
             var6.printStackTrace();
          }
 
@@ -16394,7 +16394,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             count = Integer.parseInt(v);
          } catch (Exception var6) {
-            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " 커스텀인포 불러오기 오류 정보 : " + v);
+            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
             var6.printStackTrace();
          }
 
@@ -16412,7 +16412,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             count = Long.parseLong(v);
          } catch (Exception var7) {
-            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " 커스텀인포 불러오기 오류 정보 : " + v);
+            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
             var7.printStackTrace();
          }
 
@@ -17621,7 +17621,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               if (MapleCharacter.this.lastFishingTime != 0L
                                     && System.currentTimeMillis() - MapleCharacter.this.lastFishingTime >= 60000L) {
                                  if (MapleCharacter.this.getMapId() != ServerConstants.chairFishingMapID) {
-                                    MapleCharacter.this.dropMessage(5, "맵이 변경되어 휴식 포인트를 얻을 수 없습니다.");
+                                    MapleCharacter.this.dropMessage(5, "แผนที่เปลี่ยนไป ไม่สามารถรับ Rest Point ได้");
                                     MapleCharacter.this.cancelFishingTask();
                                  } else {
                                     Integer chairRiding = MapleCharacter.this
@@ -17659,9 +17659,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         },
                         1000L);
             if (DBConfig.isGanglim) {
-               this.send(CField.chatMsg(1, "지금부터 1분마다 휴식 포인트를 1점씩 획득할 수 있습니다."));
+               this.send(CField.chatMsg(1, "จากนี้ไปจะได้รับ Rest Point 1 แต้มทุกๆ 1 นาที"));
             } else {
-               this.dropMessage(6, "1분마다 휴식 포인트 1점을 획득합니다.");
+               this.dropMessage(6, "ได้รับ Rest Point 1 แต้มทุกๆ 1 นาที");
             }
          }
       }
@@ -17701,7 +17701,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               if (MapleCharacter.this.lastChairTime != 0L
                                     && System.currentTimeMillis() - MapleCharacter.this.lastChairTime >= 60000L) {
                                  if (!ServerConstants.isRoyalFishingMap(MapleCharacter.this.getMapId())) {
-                                    MapleCharacter.this.dropMessage(5, "맵이 변경되어 휴식 포인트를 얻을 수 없습니다.");
+                                    MapleCharacter.this.dropMessage(5, "แผนที่เปลี่ยนไป ไม่สามารถรับ Rest Point ได้");
                                     MapleCharacter.this.cancelChairTask();
                                  } else {
                                     MapleCharacter.this.lastChairTime = System.currentTimeMillis();
@@ -17714,7 +17714,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                        for (Triple<Integer, Integer, Integer> item : list) {
                                           if (Randomizer.isSuccess(item.right)) {
                                              MapleCharacter.this.gainItem(item.left, item.mid);
-                                             MapleCharacter.this.dropMessage(6, "[낚시 알림] 낚시를통해 ["
+                                             MapleCharacter.this.dropMessage(6, "[Fishing Notice] ผ่านการตกปลา ["
                                                    + ii.getName(item.left) + "] 을(를) " + item.mid + "개 얻었습니다!");
                                              break;
                                           }
@@ -17736,8 +17736,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         },
                         1000L);
             if (DBConfig.isGanglim) {
-               this.dropMessage(5, "[휴식 안내] 휴식을 통해 1분마다 네오 젬을 얻으실 수 있습니다.");
-               this.dropMessage(5, "[낚시 안내] 낚시를 시작합니다.");
+               this.dropMessage(5, "[Rest Guide] รับ Neo Gem ทุก 1 นาทีจากการพักผ่อน");
+               this.dropMessage(5, "[Fishing Guide] เริ่มตกปลา");
             }
          }
       }
@@ -18658,7 +18658,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          if (this.getMapId() == 910001000 || this.getMapId() == 993050600) {
-            this.dropMessage(5, "댄스타임 시작!");
+            this.dropMessage(5, "Dance Time เริ่มได้!");
             this.dancePointTask = objects.utils.Timer.MapTimer.getInstance().register(new Runnable() {
                @Override
                public void run() {
@@ -18677,7 +18677,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         MapleCharacter.this.gainDancePoint(1);
                         MapleCharacter.this.CountAdd("today_dance_point");
                         MapleCharacter.this.dropMessage(5,
-                              "댄스 포인트를 1획득하여 " + MapleCharacter.this.getDancePoint() + "포인트가 되었습니다.");
+                              "ได้รับ Dance Point 1 แต้ม " + MapleCharacter.this.getDancePoint() + "포인트가 되었습니다.");
                      } else {
                         MapleCharacter.this.cancelDancePointTask();
                      }
@@ -18730,7 +18730,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (equip != null) {
             for (int medalID : ServerConstants.guildMedalItemID) {
                if (equip.getItemId() == medalID) {
-                  this.dropMessage(5, "길드 훈장 착용 효과로 인하여 경험치를 20% 보너스 획득합니다.");
+                  this.dropMessage(5, "ได้รับ EXP โบนัส 20% จากผลของการสวมใส่เหรียญกิลด์");
                   this.guildBonusExpBoost = 20;
                   find = true;
                }
@@ -18738,7 +18738,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
             for (int medalIDx : ServerConstants.singleMedalItemID) {
                if (equip.getItemId() == medalIDx) {
-                  this.dropMessage(5, "훈장 착용 효과로 인하여 경험치를 20% 보너스 획득합니다.");
+                  this.dropMessage(5, "ได้รับ EXP โบนัส 20% จากผลของการสวมใส่เหรียญตรา");
                   this.guildBonusExpBoost = 20;
                   find = true;
                }
@@ -19534,7 +19534,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          statList.put(SecondaryStatFlag.indieMadR, atkBoost);
          if (expBoost > 0) {
             this.dropMessage(5,
-                  "훈장 착용 효과로 인하여 경험치 " + this.donatorBonusExpBoost + "%와 공/마 " + atkBoost + "% 증가 버프가 적용됩니다.");
+                  "EXP จากผลการสวมใส่เหรียญตรา " + this.donatorBonusExpBoost + "%와 공/마 " + atkBoost + "% 증가 버프가 적용됩니다.");
          }
 
          this.temporaryStatSet(72000047, 1, Integer.MAX_VALUE, statList);
@@ -19565,7 +19565,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   partyMember.setTransferFieldOverlap(false);
                   partyMember.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
                   partyMember.setRegisterTransferField(ServerConstants.TownMap);
-                  partyMember.dropMessage(5, "공유된 데스 카운트가 0이 되어 마을로 이동됩니다.");
+                  partyMember.dropMessage(5, "Death Count รวมเหลือ 0 จึงถูกย้ายกลับเมือง");
                } else {
                   partyMember.setDeathCountJinMulti(deathCount);
                }
@@ -19578,7 +19578,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.setTransferFieldOverlap(false);
             this.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
             this.setRegisterTransferField(ServerConstants.TownMap);
-            this.dropMessage(5, "공유된 데스 카운트가 0이 되어 마을로 이동됩니다.");
+            this.dropMessage(5, "Death Count รวมเหลือ 0 จึงถูกย้ายกลับเมือง");
             if (this.getEventInstance() != null && this.getEventInstance().hasEventTimer()) {
                this.getEventInstance().stopEventTimer();
                this.getEventInstance().dispose();
@@ -20604,7 +20604,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
                return true;
             } catch (SQLException var13) {
-               System.err.println("메이플 유니온 캐릭터 로드를 실패하였습니다.");
+               System.err.println("Failed to load Maple Union character.");
                var13.printStackTrace();
                return false;
             }
@@ -20734,7 +20734,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             rs.close();
             ps.close();
          } catch (SQLException var12) {
-            System.out.println("[오류] 메이플 유니온 프리셋 로드에 실패하였습니다. " + var12);
+            System.out.println("[Error] Failed to load Maple Union preset. " + var12);
          }
       }
    }
@@ -21467,7 +21467,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
          if (this.level >= 100 && (shieldID >= 1352500 && shieldID <= 1352502 || shieldID == 1352504)) {
             this.removeAndChangeEquip(1352503, (short) -10);
-            this.dropMessage(5, "카이저 보조무기가 자동 변경되었습니다.");
+            this.dropMessage(5, "อาวุธรอง Kaiser ถูกเปลี่ยนอัตโนมัติ");
          }
       }
 
@@ -21476,11 +21476,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
             if (this.level >= 100 && shieldID >= 1352600 && shieldID <= 1352603) {
                this.removeAndChangeEquip(1352604, (short) -10);
-               this.dropMessage(5, "엔젤릭버스터 보조무기가 자동 변경되었습니다.");
+               this.dropMessage(5, "อาวุธรอง Angelic Buster ถูกเปลี่ยนอัตโนมัติ");
             }
          } else if (this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10) == null && this.level < 100) {
             this.removeAndChangeEquip(1352600, (short) -10);
-            this.dropMessage(5, "엔젤릭버스터 보조무기가 자동 변경되었습니다.");
+            this.dropMessage(5, "อาวุธรอง Angelic Buster ถูกเปลี่ยนอัตโนมัติ");
          }
       }
 
@@ -21489,7 +21489,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
          if (this.level >= 100 && shieldID >= 1098000 && shieldID <= 1098002) {
             this.removeAndChangeEquip(1098003, (short) -10);
-            this.dropMessage(5, "미하일 보조무기가 자동 변경되었습니다.");
+            this.dropMessage(5, "อาวุธรอง Mihile ถูกเปลี่ยนอัตโนมัติ");
          }
       }
 
@@ -21503,7 +21503,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.removeAndChangeEquip(1099000, (short) -10);
             }
 
-            this.dropMessage(5, "데몬슬레이어 보조무기가 자동 변경되었습니다.");
+            this.dropMessage(5, "อาวุธรอง Demon Slayer ถูกเปลี่ยนอัตโนมัติ");
          }
       }
 
@@ -22085,7 +22085,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   sb.append(test).append("|").append(test).append("|0|0|0");
                   this.fairyExp = 0;
                   this.updateInfoQuest(questID, itemUniequeID + "=" + sb.toString());
-                  this.dropMessage(5, "자정이 지나 정령의 펜던트가 초기화 되었습니다.");
+                  this.dropMessage(5, "ผ่านเที่ยงคืนแล้ว Pendant of the Spirit ถูกรีเซ็ต");
                }
             } catch (Exception var14) {
             }
@@ -22801,7 +22801,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                try {
                   this.checkExtraAbility();
                } catch (Exception var3) {
-                  System.out.println("맵이동 엑어빌 체크 오류");
+                  System.out.println("Map move Ability check error");
                   var3.printStackTrace();
                }
             }
@@ -23808,7 +23808,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                serialNumber.trim();
             } catch (NullPointerException var10) {
                var10.printStackTrace();
-               System.out.println("MAC 주소 정보가 존재하지 않음");
+               System.out.println("MAC address info does not exist");
                return;
             }
          }
@@ -24342,7 +24342,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public boolean tryAntiMacro(AntiMacroType type, MapleCharacter from) {
       if (this.getClient().isOverseasUser()) {
          if (from != null) {
-            from.dropMessage(1, "최근에 거짓말탐지기를 통과하여 사용할 수 없습니다.");
+            from.dropMessage(1, "พึ่งผ่าน Lie Detector มา ไม่สามารถใช้งานได้");
          }
 
          return false;
@@ -24397,7 +24397,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } else {
          if (from != null) {
-            from.dropMessage(1, "알 수 없는 오류가 발생하여 사용할 수 없습니다.");
+            from.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ ไม่สามารถใช้งานได้");
          }
 
          return false;
@@ -24770,7 +24770,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            String.valueOf(this.getOneInfoQuestInteger(100001 + ix, "equip")));
                   }
 
-                  this.dropMessage(5, "각인석 데이터 이전 완료");
+                  this.dropMessage(5, "ย้ายข้อมูล Stone เรียบร้อยแล้ว");
                }
 
                this.updateOneInfo(454599, "first_check", "1");
@@ -24972,8 +24972,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            var75 + "에 지급된 핫타임 보상입니다.", item));
                this.send(CField.maplecabinetResult(8));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               this.send(CField.chatMsg(1, "오픈 기념 지원 상자가 지급되었습니다. [메이플 보관함]을 통해 수령 가능합니다."));
-               this.dropMessage(1, "오픈 기념 지원 상자가 지급되었습니다.\r\n[메이플 보관함]을 통해 수령 가능합니다.");
+               this.send(CField.chatMsg(1, "ได้รับ Opening Celebration Support Box แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
+               this.dropMessage(1, "ได้รับ Opening Celebration Support Box แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
             }
          }
 
@@ -25003,8 +25003,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         fDate + "에 지급된 이벤트 보상입니다.", item));
             this.send(CField.maplecabinetResult(8));
             this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-            this.send(CField.chatMsg(1, "강림 11월 마음을 담은 상자가 지급되었습니다. [메이플 보관함]을 통해 수령 가능합니다."));
-            this.dropMessage(1, "강림 11월 마음을 담은 상자가 지급되었습니다.\r\n[메이플 보관함]을 통해 수령 가능합니다.");
+            this.send(CField.chatMsg(1, "ได้รับ Ganglim November Heart Box แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
+            this.dropMessage(1, "ได้รับ Ganglim November Heart Box แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
          }
 
          this.updateOneInfo(1234567, "get_november_reward", "1");
@@ -25043,11 +25043,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.send(CField.maplecabinetResult(8));
             this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
             if (DBConfig.isGanglim) {
-               this.send(CField.chatMsg(1, "찬란한 명예의 상징이 지급되었습니다. [메이플 보관함]을 통해 수령 가능합니다."));
-               this.dropMessage(1, "찬란한 명예의 상징이 지급되었습니다.\r\n[메이플 보관함]을 통해 수령 가능합니다.");
+               this.send(CField.chatMsg(1, "ได้รับ Symbol of Brilliant Honor แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
+               this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
             } else {
-               this.dropMessage(5, "[알림] 275레벨 보상 찬란한 명예의 상징이 지급되었습니다. [메이플 보관함]을 확인해주세요.");
-               this.dropMessage(1, "275레벨 보상 찬란한 명예의 상징이 지급되었습니다.\r\n[메이플 보관함]을 확인해주세요.");
+               this.dropMessage(5, "[Notice] ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275) ตรวจสอบ [Maple Cabinet]");
+               this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
             }
          }
 
@@ -25294,7 +25294,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
       this.updateOneInfo(42003, "point",
             String.valueOf(Math.min(500000, this.getOneInfoQuestInteger(42003, "point") + point)));
-      this.dropMessage(5, point + "포인트를 획득하였습니다.");
+      this.dropMessage(5, point + "ได้รับแต้ม");
    }
 
    public void applyBMCurse(int curseDamR) {
@@ -25495,7 +25495,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                MapleInventoryManipulator.removeById(this.getClient(), MapleInventoryType.getByType(equip.getType()),
                      equip.getItemId(), 1, false, false);
                MapleInventoryManipulator.addbyItem(this.getClient(), genesis);
-               this.dropMessage(5, "제네시스 무기에 잠재된 첫 번째 힘이 깨어났습니다. 무기를 확인해보세요.");
+               this.dropMessage(5, "พลังแรกที่ซ่อนอยู่ในอาวุธ Genesis ตื่นขึ้นแล้ว กรุณาตรวจสอบอาวุธ");
                this.updateOneInfo(1234588, "bm_quest_check", "1");
             }
          }
@@ -25877,7 +25877,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
          });
       } catch (Exception var7) {
-         System.out.println("스킬 정보 Copy중 오류발생");
+         System.out.println("Error copying skill info");
          var7.printStackTrace();
       }
 
@@ -25901,7 +25901,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
          }
       } catch (Exception var8) {
-         System.out.println("기존 소울스킬 체크 후 삭제중 오류 발생");
+         System.out.println("Error checking/deleting existing Soul Skill");
          var8.printStackTrace();
       }
 
@@ -26202,7 +26202,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             System.out.println("accountName: " + this.getClient().getAccountName() + ", 총 익스트림 포인트 복구 포인트: "
                   + totalPoint + ", 총 누적 금액 : " + originalMoney);
             this.dropMessage(
-                  5, "익스트림 포인트 복구 대상 금액 " + totalPoint
+                  5, "จำนวน Extreme Point ที่กู้คืน " + totalPoint
                         + " 만큼 강림 포인트로 전환 대상입니다. 3월 27일부터 토요일 자정기준 1주일 마다 20%씩 지급받을 수 있습니다. 상점 시스템 > 포인트 상점에서 지급받으시기 바랍니다.");
             this.extremeRealCash = totalPoint;
             this.updateOneInfo(1234567, "check_e_donation", "1");
@@ -26894,7 +26894,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       this.updateOneInfo(501045, "sp", String.valueOf(sp + 1));
       this.send(
             CField.addPopupSay(9062000, 3000, "#b강림 리버스 멤버십 스킬 포인트(SP) 1개#k를 획득하였습니다.\r\n왼쪽 별모양 아이콘을 통해 확인해보세요.", ""));
-      this.dropMessage(5, "강림 리버스 멤버십 스킬 포인트(SP) 1개를 획득하였습니다. 왼쪽 별모양 아이콘을 통해 확인해보세요.");
+      this.dropMessage(5, "ได้รับ Ganglim Reverse Membership SP 1 แต้ม ตรวจสอบได้ที่ไอคอนดาวด้านซ้าย");
    }
 
    public void tryApplyAbnormal(MobSkillInfo mobSkillInfo) {
@@ -27090,28 +27090,28 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          this.doRegisterTransferField();
       } catch (Exception var15) {
          System.out
-               .println("[오류] 캐릭터 doRegisterTransferField 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var15);
+               .println("[Error] Error executing doRegisterTransferField (Name: " + this.getName() + " ) : " + var15);
          var15.printStackTrace();
       }
 
       try {
          this.checkAntiMacroTime();
       } catch (Exception var14) {
-         System.out.println("[오류] 캐릭터 checkAntiMacroTime 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var14);
+         System.out.println("[Error] Error executing checkAntiMacroTime (Name: " + this.getName() + " ) : " + var14);
          var14.printStackTrace();
       }
 
       try {
          this.checkRandomPortal();
       } catch (Exception var13) {
-         System.out.println("[오류] 캐릭터 checkRandomPortal 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var13);
+         System.out.println("[Error] Error executing checkRandomPortal (Name: " + this.getName() + " ) : " + var13);
          var13.printStackTrace();
       }
 
       try {
          this.handleSecondaryStat();
       } catch (IndexOutOfBoundsException | NullPointerException var12) {
-         System.out.println("[오류] 캐릭터 handleSecondaryStat 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var12);
+         System.out.println("[Error] Error executing handleSecondaryStat (Name: " + this.getName() + " ) : " + var12);
          var12.printStackTrace();
       }
 
@@ -27122,49 +27122,49 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } catch (Exception var11) {
          System.out
-               .println("[오류] 캐릭터 basicJob.updatePerSecond 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var11);
+               .println("[Error] Error executing basicJob.updatePerSecond (Name: " + this.getName() + " ) : " + var11);
          var11.printStackTrace();
       }
 
       try {
          this.checkConsumeItemLimit();
       } catch (Exception var10) {
-         System.out.println("[오류] 캐릭터 checkRandomPortal 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var10);
+         System.out.println("[Error] Error executing checkRandomPortal (Name: " + this.getName() + " ) : " + var10);
          var10.printStackTrace();
       }
 
       try {
          this.updateFrozenLink();
       } catch (Exception var9) {
-         System.out.println("[오류] 캐릭터 updateFrozenLink 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var9);
+         System.out.println("[Error] Error executing updateFrozenLink (Name: " + this.getName() + " ) : " + var9);
          var9.printStackTrace();
       }
 
       try {
          this.summonAffectedToMob();
       } catch (Exception var8) {
-         System.out.println("[오류] 캐릭터 summonAffectedToMob 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var8);
+         System.out.println("[Error] Error executing summonAffectedToMob (Name: " + this.getName() + " ) : " + var8);
          var8.printStackTrace();
       }
 
       try {
          this.mistAffectedToPlayer();
       } catch (Exception var7) {
-         System.out.println("[오류] 캐릭터 mistAffectedToPlayer 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var7);
+         System.out.println("[Error] Error executing mistAffectedToPlayer (Name: " + this.getName() + " ) : " + var7);
          var7.printStackTrace();
       }
 
       try {
          this.updateUnion();
       } catch (Exception var6) {
-         System.out.println("[오류] 캐릭터 updateUnion 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var6);
+         System.out.println("[Error] Error executing updateUnion (Name: " + this.getName() + " ) : " + var6);
          var6.printStackTrace();
       }
 
       try {
          this.updateEliteBossCurse();
       } catch (Exception var5) {
-         System.out.println("[오류] 캐릭터 updateEliteBossCurse 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var5);
+         System.out.println("[Error] Error executing updateEliteBossCurse (Name: " + this.getName() + " ) : " + var5);
          var5.printStackTrace();
       }
 
@@ -27173,21 +27173,21 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.updateDarkLightning();
          }
       } catch (Exception var4) {
-         System.out.println("[오류] 캐릭터 updateDarkLightning 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var4);
+         System.out.println("[Error] Error executing updateDarkLightning (Name: " + this.getName() + " ) : " + var4);
          var4.printStackTrace();
       }
 
       try {
          this.updateMusic();
       } catch (Exception var3) {
-         System.out.println("[오류] 캐릭터 updateMusic 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var3);
+         System.out.println("[Error] Error executing updateMusic (Name: " + this.getName() + " ) : " + var3);
          var3.printStackTrace();
       }
 
       try {
          this.updateChannelChange();
       } catch (Exception var2) {
-         System.out.println("[오류] 캐릭터 updateChannelChange 함수 실행중 오류 발생 (캐릭터 이름: " + this.getName() + " ) : " + var2);
+         System.out.println("[Error] Error executing updateChannelChange (Name: " + this.getName() + " ) : " + var2);
          var2.printStackTrace();
       }
 
@@ -27365,7 +27365,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                  fDate + "에 지급된 핫타임 보상입니다.", item));
                this.send(CField.maplecabinetResult(8));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               this.dropMessage(1, "핫타임 보상이 지급되었습니다. 메이플 보관함을 통해 수령하실 수 있습니다.");
+               this.dropMessage(1, "ได้รับรางวัล Hot Time แล้ว สามารถรับได้ที่ Maple Cabinet");
             }
          }
       }
@@ -27377,13 +27377,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.setKeyValue(124, "ppp", String.valueOf(this.getKeyValue(124, "ppp") + 1000));
             if (this.getParty() != null && this.getParty().getPartyMember().getPartyMemberList().size() > 2) {
                this.warp(ServerConstants.TownMap);
-               this.dropMessage(5, "피로도 사냥터는 3인이상 파티를 맺을 수 없습니다");
+               this.dropMessage(5, "พื้นที่ล่า Fatigue ไม่สามารถเข้าปาร์ตี้เกิน 3 คนได้");
                return;
             }
 
             if (this.getKeyValue(123, "pp") <= 0) {
                this.warp(ServerConstants.TownMap);
-               this.dropMessage(5, "피로도가 없어 마을로 돌아갑니다.");
+               this.dropMessage(5, "หมดความเหนื่อยล้า จึงกลับเมือง");
             } else if (this.getKeyValue(124, "ppp") > 60000) {
                long fatiguetime = this.getKeyValueLong(124, "ppptime");
                long currenttime = System.currentTimeMillis();
@@ -27395,7 +27395,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      this.setKeyValue(123, "pp", String.valueOf(0));
                   }
 
-                  this.dropMessage(5, "피로도가 감소합니다. 남은 피로도 : " + this.getKeyValue(123, "pp"));
+                  this.dropMessage(5, "ความเหนื่อยล้าลดลง ความเหนื่อยล้าที่เหลือ : " + this.getKeyValue(123, "pp"));
                }
             }
          }
@@ -28036,7 +28036,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       }
 
       if (this.isLockNeoCore()) {
-         this.dropMessage(-8, "하루동안 획득 가능한 네오 코어량을 초과하여 네오 코어를 획득하지 않습니다.");
+         this.dropMessage(-8, "ได้รับ Neo Core เกินจำนวนที่กำหนดต่อวัน จึงไม่ได้รับเพิ่ม");
       } else {
          int a = this.getKeyValue(QuestExConstants.NeoCoreEvent.getQuestID(), "today");
          int todaycore = a + core;
@@ -28059,7 +28059,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      + this.getKeyValue(QuestExConstants.NeoCoreEvent.getQuestID(), "today")
                      + ";lock="
                      + lock);
-         this.dropMessage(-8, "[알림] " + core + " 개의 네오 코어를 획득하였습니다.");
+         this.dropMessage(-8, "[알림] " + core + " ได้รับ Neo Core ");
       }
    }
 
@@ -28240,7 +28240,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          });
          this.updateOneInfo(1334567, "check_symbol", "1");
          if (check.get()) {
-            this.dropMessage(5, "강화된 심볼의 옵션 수치가 상향 조정 적용되었습니다. [올스탯 +1500, 공/마 +750]");
+            this.dropMessage(5, "ปรับเพิ่มค่าสถานะของ Symbol ที่เสริมพลังแล้ว [All Stat +1500, ATT/MATT +750]");
          }
       }
    }
@@ -28380,7 +28380,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
             }
 
-            this.dropMessage(5, "강화 아케인심볼 수치 정상화가 완료되었습니다.");
+            this.dropMessage(5, "ปรับค่า Arcane Symbol ให้เป็นปกติเรียบร้อยแล้ว");
          }
       }
    }

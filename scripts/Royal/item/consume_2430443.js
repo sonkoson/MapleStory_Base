@@ -28,7 +28,7 @@ function action(mode, type, selection) {
         if (status == 0) {
                    var leftslot = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot();
             if (leftslot < 9) {
-                cm.sendOk("인벤토리 공간이 최소한 9칸은 필요합니다. 장비 탭의 공간을 9칸이상 비워주신 후 다시 열어주세요.");
+                cm.sendOk("ต้องการช่องว่างอย่างน้อย 9 ช่อง กรุณาเคลียร์ช่อง Equip แล้วลองใหม่");
                 cm.dispose();
                 return;
             }
@@ -258,7 +258,7 @@ function action(mode, type, selection) {
                     cm.gainItem(1212001, 1);
 		    break;
                 default:
-                    cm.sendOk("장비를 지급받을 수 있는 직업단계가 아닙니다. 전직이 가능한 레벨인 경우, 전직을 하신 후 장비를 받을 수 있습니다.");
+                    cm.sendOk("ระดับอาชีพยังไม่สามารถรับอุปกรณ์ได้ หากเลเวลถึงกำหนด กรุณาเปลี่ยนคลาสก่อนรับอุปกรณ์");
                     cm.dispose();
                     return;
                     

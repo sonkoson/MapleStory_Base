@@ -1,4 +1,4 @@
-﻿package database.loader;
+package database.loader;
 
 public enum CharacterSaveFlag2 {
    INTENSE_POWER_CRYSTAL(1),

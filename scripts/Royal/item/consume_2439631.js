@@ -34,7 +34,7 @@ function action(mode, type, selection) {
 			}
 			cm.getPlayer().updateDamageSkin();
 		} else {
-			cm.sendOk("데미지 스킨 저장 슬롯이 이미 최대입니다.");
+			cm.sendOk("ช่องเก็บ Damage Skin เต็มแล้ว");
 		}
 		cm.dispose();
     }

@@ -27,7 +27,7 @@ var ac15 = [1712003, "아케인 심볼 : 레헬른", "1"];
 var ac16 = [1712004, "아케인 심볼 : 아르카나", "1"];
 var ac17 = [1712005, "아케인 심볼 : 모라스", "1"];
 var ac18 = [1712006, "아케인 심볼 : 에스페라", "1"];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, selection) {
 	if (mode == -1) {
@@ -126,7 +126,7 @@ function action(mode, type, selection) {
 						cm.sendOk("#fn나눔고딕#교환완료\r\n#Cgray#(현재 가지고계신 " + stigma[1] + "의 갯수 : " + stig + "개");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -139,10 +139,10 @@ function action(mode, type, selection) {
 					if (cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.USE).getNumFreeSlot() >= 1) {
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac1[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료\r\n");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์\r\n");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -156,10 +156,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac2[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -173,10 +173,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac3[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -190,10 +190,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac4[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -208,10 +208,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac5[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -225,10 +225,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac6[0], cost*5);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -242,10 +242,10 @@ function action(mode, type, selection) {
 						var pan = cm.itemQuantity(4310218) + cost;
 						cm.gainItem(item8[0], -item8[2] * cost);
 						cm.gainItem(ac2[0], cost);
-						cm.sendOk("#fn나눔고딕#교환완료");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {
@@ -263,7 +263,7 @@ function action(mode, type, selection) {
 						cm.sendOk("#fn나눔고딕#교환완료\r\n#Cgray#(현재 가지고계신 " + ac3[1] + "의 갯수 : " + ara + "개");
 						cm.dispose();
 					} else {
-						cm.sendOk("#fn나눔고딕##r장비창을 확인해주세요");
+						cm.sendOk("#fnArial##rกรุณาตรวจสอบช่องเก็บอุปกรณ์");
 						cm.dispose();
 					}
 				} else {

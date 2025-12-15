@@ -318,7 +318,7 @@ public class Culvert extends FieldSetInstance {
                      }
                   }
                } catch (Exception var5) {
-                  System.out.println("수로 정보 업데이트 오류 발생");
+                  System.out.println("Error updating culvert info");
                   var5.printStackTrace();
                }
             }

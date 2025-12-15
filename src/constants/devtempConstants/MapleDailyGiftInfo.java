@@ -1,4 +1,4 @@
-﻿package constants.devtempConstants;
+package constants.devtempConstants;
 
 import database.DBConnection;
 import java.sql.Connection;

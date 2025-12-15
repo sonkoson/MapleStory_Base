@@ -13,7 +13,7 @@ public class SkillCheck {
    public SkillCheck(MapleData root) {
       this.condition = AchievementConditionType.getType(MapleDataTool.getString("condition", root, "or"));
       if (this.condition != AchievementConditionType.or) {
-         System.out.println("SkillCheck and발견");
+         System.out.println("SkillCheck and found");
          System.out.println(root.getParent().getParent().getParent().getParent().getParent().getParent().getName());
       }
 

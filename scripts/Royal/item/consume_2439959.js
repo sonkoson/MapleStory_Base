@@ -57,7 +57,7 @@ function action(mode, type, selection) {
                 //cm.gainSponserItem3(book[select], "", 1000, 1100, 0,  100,  100, 100, 0)
                 cm.dispose();
             } else {
-                cm.sendOk("장비칸에 빈 공간이 없습니다.");
+                cm.sendOk("ไม่มีช่องว่างในกระเป๋าอุปกรณ์");
                 cm.dispose();
             }
         } else {

@@ -1105,7 +1105,7 @@ public class MapScriptMethods {
                   Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
-                        f.sendWillNotice("전혀 다른 2개의 공간에 있는 윌을 동시에 공격해야 해요. 달빛을 모아서 사용하면 다른 쪽으로 이동이 가능할 것 같아요.", 245, 7000);
+                        f.sendWillNotice("ต้องโจมตี Will ใน 2 มิติที่แตกต่างกันพร้อมๆ กัน! หากรวบรวมแสงจันทร์และใช้มัน อาจย้ายไปอีกฝั่งได้", 245, 7000);
                      }
                   }, 1000L);
                }
@@ -1195,7 +1195,7 @@ public class MapScriptMethods {
                   public void run() {
                      if (c.getPlayer().getMap() instanceof Field_WillBattle) {
                         Field_WillBattle f = (Field_WillBattle)c.getPlayer().getMap();
-                        f.sendWillNotice("거울에 비친 진짜 모습을 조심하세요. 달빛을 모아서 사용하면 치유 불가 저주를 잠시 멈출 수 있을 것 같아요.", 245, 7000);
+                        f.sendWillNotice("ระวังร่างจริงที่สะท้อนในกระจก หากรวบรวมแสงจันทร์และใช้มัน อาจช่วยหยุดคำสาปที่รักษาไม่ได้ชั่วคราว", 245, 7000);
                      }
                   }
                }, 1000L);
@@ -1308,7 +1308,7 @@ public class MapScriptMethods {
                         f.addSpiderWeb(new SpiderWeb(2, 558, -58));
                         f.addSpiderWeb(new SpiderWeb(2, 164, -308));
                         f.addSpiderWeb(new SpiderWeb(1, -61, -275));
-                        f.sendWillNotice("윌이 진심이 된 것 같군요. 달빛을 모아서 사용하면 거미줄을 태워버릴 수 있을 것 같아요.", 245, 7000);
+                        f.sendWillNotice("Will เอาจริงแล้ว! หากรวบรวมแสงจันทร์มาใช้ อาจเผาใยแมงมุมได้", 245, 7000);
                      }
                   }
                }, 2000L);
@@ -1345,7 +1345,7 @@ public class MapScriptMethods {
                   public void run() {
                      if (c.getPlayer().getMap() instanceof Field_JinHillah) {
                         Field_JinHillah f = (Field_JinHillah)c.getPlayer().getMap();
-                        f.sendJinHillahNotice("영혼이 타오르는 양초를 힐라가 일정 시간마다 베어 없앨 것이다. 영혼을 빼앗기지 않게 조심하자.", 8000);
+                        f.sendJinHillahNotice("Hilla จะตัดเทียนแห่งวิญญาณที่ลุกโชนทุกช่วงเวลา ระวังอย่าให้วิญญาณถูกขโมย", 8000);
                      }
                   }
                }, 1000L);
@@ -1369,7 +1369,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("검은 마법사와 대적하기 위해서는 그를 호위하는 창조와 파괴의 기사들을 물리쳐야 한다.", 8000);
+                           f.sendBlackMageNotice("เพื่อต่อกรกับ Black Mage ต้องกำจัดอัศวินแห่งการสร้างและทำลายล้างที่ปกป้องเขา", 8000);
                         }
                      }
                   }, 1000L);
@@ -1391,7 +1391,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("드디어 검은 마법사의 앞에 바로 섰다. 모든 힘을 다해 그를 물리치자.", 8000);
+                           f.sendBlackMageNotice("ในที่สุดก็มายืนต่อหน้า Black Mage ทุ่มสุดตัวเพื่อกำจัดเขาเถอะ", 8000);
                         }
                      }
                   }, 1000L);
@@ -1411,7 +1411,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("저 모습은 마치 신의 권능이라도 얻은 것 같다. 설사 상대가 신이라고 할지라도 모두를 위해 여기서 저지해야 한다.", 8000);
+                           f.sendBlackMageNotice("รูปลักษณ์นั่นราวกับได้รับพลังของพระเจ้ามา แม้ 상대จะเป็นพระเจ้า ก็ต้องหยุดยั้งเขาที่นี่เพื่อทุกคน", 8000);
                         }
                      }
                   }, 1000L);
@@ -2019,11 +2019,11 @@ public class MapScriptMethods {
                }
                break;
             case dusk_timeRecord:
-               c.getPlayer().send(CField.sendWeatherEffectNotice(250, 3000, false, "점차 공포가 차올라 있을 수 없는 것이 보이게 됩니다! 견디지 못하면 공포가 전이되니 주의하세요!"));
+               c.getPlayer().send(CField.sendWeatherEffectNotice(250, 3000, false, "ความกลัวค่อยๆ เพิ่มขึ้นจนมองเห็นสิ่งที่ไม่ควรมี! ถ้ารับไม่ไหว ความกลัวจะแพร่กระจาย ระวังด้วย!"));
                c.getSession().writeAndFlush(CField.addPopupSay(0, 3000, "촉수가 눈을 방어하고 있어 제대로 된 피해를 주기 힘들겠군.", ""));
                break;
             case dunkel_enter:
-               c.getPlayer().send(CField.sendWeatherEffectNotice(272, 5000, false, "친위대장 듄켈 : 나와 나의 군단이 있는 이상 위대하신 분께는 손끝 하나 대지 못한다!"));
+               c.getPlayer().send(CField.sendWeatherEffectNotice(272, 5000, false, "Captain Dunkel : ตราบใดที่มีข้าและกองทัพอยู่ แกจะไม่มีวันแตะต้องท่านผู้นั้นได้แม้แต่ปลายเล็บ!"));
                break;
             case slime_direction1:
                if (DBConfig.isGanglim && c.getPlayer().getParty() != null && c.getPlayer().getParty().getLeader().isSkipIntro()) {
@@ -2232,7 +2232,7 @@ public class MapScriptMethods {
                if (c.getPlayer().getOneInfoQuestInteger(1234567, "see_intro") == 1) {
                   Field map = c.getChannelServer().getMapFactory().getMap(ServerConstants.TownMap);
                   c.getPlayer().changeMap(map, map.getPortal("sp"));
-                  c.getPlayer().dropMessage(6, "해당 계정은 이미 인트로를 시청하여 진 캐슬로 이동됩니다.");
+                  c.getPlayer().dropMessage(6, "บัญชีนี้ดู Intro ไปแล้ว จะถูกย้ายไป True Castle");
                   return;
                }
 
@@ -2598,7 +2598,7 @@ public class MapScriptMethods {
                break;
             case mPark_stageEff:
                c.getPlayer().getMap().setMobGen(false);
-               c.getPlayer().dropMessage(-1, "필드 내의 모든 몬스터를 제거해야 다음 스테이지로 이동하실 수 있습니다.");
+               c.getPlayer().dropMessage(-1, "ต้องกำจัดมอนสเตอร์ทั้งหมดในแผนที่ก่อนถึงจะไปด่านถัดไปได้");
                switch (c.getPlayer().getMapId() % 1000 / 100) {
                   case 0:
                   case 1:
@@ -2723,9 +2723,9 @@ public class MapScriptMethods {
                      number++;
                      c.getPlayer().updateInfoQuest(m.questid - 2005, sb.toString());
                      MapleQuest.getInstance(m.questid - 1995).forceStart(c.getPlayer(), 0, String.valueOf(number));
-                     c.getPlayer().dropMessage(-1, number + "/" + m.maps.length + "개 탐험");
-                     c.getPlayer().dropMessage(-1, "칭호 - " + m.questname + " 탐험가 도전 중");
-                     c.getSession().writeAndFlush(CWvsContext.showQuestMsg("칭호 - " + m.questname + " 탐험가 도전 중. " + number + "/" + m.maps.length + "개 지역 완료"));
+                     c.getPlayer().dropMessage(-1, number + "/" + m.maps.length + "การสำรวจ");
+                     c.getPlayer().dropMessage(-1, "Title - " + m.questname + " Adventurer Challenge in progress");
+                     c.getSession().writeAndFlush(CWvsContext.showQuestMsg("Title - " + m.questname + " Adventurer Challenge in progress. " + number + "/" + m.maps.length + "개 지역 완료"));
                   }
                }
                break;

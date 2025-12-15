@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 public class IllegalCommandSyntaxException extends Exception {
    public IllegalCommandSyntaxException() {

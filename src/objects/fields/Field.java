@@ -1610,14 +1610,14 @@ public class Field {
                         }
 
                         if (partyMember.getInventory(GameConstants.getInventoryType(blueball)).getNumFreeSlot() < 1) {
-                           partyMember.dropMessage(-22, "인벤토리 빈공간이 부족하여 헬 보스 보상 푸른 구슬을 얻지 못하였습니다.");
+                           partyMember.dropMessage(-22, "ไม่ได้รับ Hell Boss Blue Bead เนื่องจากช่องเก็บของเต็ม");
                         } else {
                            MapleInventoryManipulator.addById(partyMember.getClient(), blueball, (short) qty,
                                  "헬모드 보상으로 획득한 아이템");
-                           partyMember.dropMessage(-22, "헬 보스 보상으로 푸른 구슬을 " + qty + "개 획득하였습니다.");
+                           partyMember.dropMessage(-22, "ได้รับ Hell Boss Blue Bead " + qty + "ชิ้นที่ได้รับ");
                         }
                      } else {
-                        partyMember.dropMessage(-22, "헬 보스 보상으로 푸른 구슬을 획득하는데 실패하였습니다.");
+                        partyMember.dropMessage(-22, "ได้รับ Hell Boss Blue Bead 획득하는데 실패하였습니다.");
                      }
                   }
                }
@@ -2837,7 +2837,7 @@ public class Field {
                FlameWizard fw = (FlameWizard) chr.getPlayerJob();
                fw.increaseDischarge();
             } else if (chr.getClient().isGm()) {
-               chr.dropMessage(5, "플레임위자드가 아닌 JobField??");
+               chr.dropMessage(5, "JobField ไม่ใช่ Flame Wizard??");
             }
          }
 
@@ -3034,7 +3034,7 @@ public class Field {
                            || System.currentTimeMillis() - chr.getMobPenaltyAnnounceTime() >= 7000L) {
                         chr.send(
                               CField.UIPacket.sendBigScriptProgressMessage(
-                                    "레벨 범위를 벗어난 몬스터를 사냥 시 경험치와 메소 획득량이 크게 감소합니다.", FontType.NanumGothic,
+                                    "การได้รับ EXP และ Meso จะลดลงอย่างมากเมื่อล่ามอนสเตอร์ที่ระดับเลเวลห่างเกินไป", FontType.NanumGothic,
                                     FontColorType.Yellow));
                         chr.setMobPenaltyAnnounceTime(System.currentTimeMillis());
                      }
@@ -5205,7 +5205,7 @@ public class Field {
                         }
 
                         if (!DBConfig.isHosting && player.isGM()) {
-                           player.dropMessage(5, "소환수 지속 시간 : " + t + "m/s");
+                           player.dropMessage(5, "ระยะเวลาซัมมอน : " + t + "m/s");
                         }
 
                         summon.setSummonRemoveTime(System.currentTimeMillis() + t);
@@ -6536,7 +6536,7 @@ public class Field {
                   chr.refreshGiftShowX3();
             }
          } catch (Exception var29) {
-            System.out.println("[오류] 필드 addPlayer 함수 실행중 오류 발생 (캐릭터 이름: " + chr.getName() + " ) : " + var29.toString());
+            System.out.println("[Error] Error executing field addPlayer (Name: " + chr.getName() + " ) : " + var29.toString());
             var29.printStackTrace();
          }
       }
@@ -6910,7 +6910,7 @@ public class Field {
             this.onLeave(chr);
          } catch (Exception var11) {
             System.out.println(
-                  "[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 1 (캐릭터 이름: " + chr.getName() + " ) : " + var11.toString());
+                  "[Error] Error executing field removePlayer Point 1 (Name: " + chr.getName() + " ) : " + var11.toString());
             var11.printStackTrace();
          }
 
@@ -6923,7 +6923,7 @@ public class Field {
                         }
                      });
             } catch (Exception var10) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 2 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 2 (Name: " + chr.getName() + " ) : "
                      + var10.toString());
                var10.printStackTrace();
             }
@@ -6943,7 +6943,7 @@ public class Field {
                   }
                }
             } catch (Exception var16) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 3 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 3 (Name: " + chr.getName() + " ) : "
                      + var16.toString());
                var16.printStackTrace();
             }
@@ -6969,7 +6969,7 @@ public class Field {
                         holyWaterValue + holyWaterCount / 2);
                }
             } catch (Exception var15) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 4 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 4 (Name: " + chr.getName() + " ) : "
                      + var15.toString());
                var15.printStackTrace();
             }
@@ -6981,7 +6981,7 @@ public class Field {
                this.broadcastMessage(CField.removePlayerFromMap(chr.getId()));
             } catch (Exception var9) {
                System.out.println(
-                     "[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 5 (캐릭터 이름: " + chr.getName() + " ) : " + var9.toString());
+                     "[Error] Error executing field removePlayer Point 5 (Name: " + chr.getName() + " ) : " + var9.toString());
                var9.printStackTrace();
             }
 
@@ -6995,7 +6995,7 @@ public class Field {
                }
             } catch (Exception var8) {
                System.out.println(
-                     "[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 6 (캐릭터 이름: " + chr.getName() + " ) : " + var8.toString());
+                     "[Error] Error executing field removePlayer Point 6 (Name: " + chr.getName() + " ) : " + var8.toString());
                var8.printStackTrace();
             }
 
@@ -7008,7 +7008,7 @@ public class Field {
                }
             } catch (Exception var7) {
                System.out.println(
-                     "[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 7 (캐릭터 이름: " + chr.getName() + " ) : " + var7.toString());
+                     "[Error] Error executing field removePlayer Point 7 (Name: " + chr.getName() + " ) : " + var7.toString());
                var7.printStackTrace();
             }
 
@@ -7030,7 +7030,7 @@ public class Field {
                   }
                }
             } catch (Exception var14) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 7 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 7 (Name: " + chr.getName() + " ) : "
                      + var14.toString());
                var14.printStackTrace();
             }
@@ -7063,7 +7063,7 @@ public class Field {
                   }
                }
             } catch (Exception var13) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 8 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 8 (Name: " + chr.getName() + " ) : "
                      + var13.toString());
                var13.printStackTrace();
             }
@@ -7077,7 +7077,7 @@ public class Field {
                   }
                }
             } catch (Exception var12) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 9 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 9 (Name: " + chr.getName() + " ) : "
                      + var12.toString());
                var12.printStackTrace();
             }
@@ -7097,7 +7097,7 @@ public class Field {
                   chr.leaveMap(this);
                }
             } catch (Exception var5) {
-               System.out.println("[오류] 필드 removePlayer 함수 실행중 오류 발생 Point 10 (캐릭터 이름: " + chr.getName() + " ) : "
+               System.out.println("[Error] Error executing field removePlayer Point 10 (Name: " + chr.getName() + " ) : "
                      + var5.toString());
                var5.printStackTrace();
             }
@@ -8047,7 +8047,7 @@ public class Field {
                         this.setLastRespawnTime(System.currentTimeMillis());
                      }
                   } catch (Exception var16) {
-                     System.out.println("[오류] 몬스터 리젠중 오류가 발생함 : " + var16.toString() + " FieldId : " + this.getId()
+                     System.out.println("[Error] Error during monster respawn : " + var16.toString() + " FieldId : " + this.getId()
                            + " DebugStep : " + debugValue);
                      var16.printStackTrace();
                   }
@@ -8156,7 +8156,7 @@ public class Field {
          if (!chr.isGM()) {
             chr.getClient().disconnect(false);
             chr.getClient().getSession().close();
-            System.out.println("팅겼다고인마");
+            System.out.println("Disconnected dude");
          }
       }
    }
@@ -10172,9 +10172,9 @@ public class Field {
    public void startHasteBooster(MapleCharacter target) {
       target.send(CField.UIPacket.closeUI(1251));
       if (this.hasteBoosterTarget != null) {
-         target.dropMessage(5, "이미 누군가가 헤이스트 부스터를 사용 중입니다.");
+         target.dropMessage(5, "มีคนใช้ Haste Booster อยู่แล้ว");
       } else if (this.eliteState != EliteState.Normal) {
-         target.dropMessage(5, "엘리트 보스가 소환되어 있습니다.");
+         target.dropMessage(5, "Elite Boss ถูกเรียกออกมาแล้ว");
       } else if (!this.isTown() && this.getMonsterSpawn().size() > 0) {
          this.hasteBoosterTarget = target;
          this.useHasteBoosterTime = System.currentTimeMillis() + 3000L;
@@ -10184,7 +10184,7 @@ public class Field {
          int count = Integer.parseInt(target.getOneInfo(QuestExConstants.HasteEvent.getQuestID(), "booster")) - 1;
          target.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "booster", count + "");
       } else {
-         target.dropMessage(5, "헤이스트 부스터를 사용할 수 없는 맵입니다.");
+         target.dropMessage(5, "แผนที่นี้ใช้ Haste Booster ไม่ได้");
       }
    }
 

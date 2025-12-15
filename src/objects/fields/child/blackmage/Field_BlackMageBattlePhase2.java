@@ -89,7 +89,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("검은 마법사로부터 알 수 없는 기운이 뿜어져 나와 어둠의 왕좌를 삼킨다.", 7000);
+         this.sendBlackMageNotice("พลังลึกลับแผ่ออกมาจาก Black Mage และกลืนกินบัลลังก์แห่งความมืด", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -123,7 +123,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
 
          if (this.nextCreatePiercingGazeTime != 0L && this.nextCreatePiercingGazeTime <= System.currentTimeMillis()) {
             if (boss != null) {
-               this.sendBlackMageNotice("파멸의 눈이 적을 쫓는다.", 3000);
+               this.sendBlackMageNotice("Eye of Ruin ไล่ตามศัตรู", 3000);
                this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), 5, false));
                this.sendPiercingGaze();
             }
@@ -171,7 +171,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
             if (boss != null) {
                this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), this.flamingSpikesType.getType(), true));
                this.lightningColumns();
-               this.sendBlackMageNotice("검은 마법사의 붉은 번개가 모든 곳을 뒤덮는다. 피할 곳을 찾아야 한다.", 3000);
+               this.sendBlackMageNotice("สายฟ้าสีแดงของ Black Mage ปกคลุมไปทั่ว ต้องหาที่หลบภัย", 3000);
             }
 
             this.nextCreateLightningColumnsTime = System.currentTimeMillis() + 72000L;

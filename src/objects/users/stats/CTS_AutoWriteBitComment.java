@@ -12,7 +12,7 @@ public class CTS_AutoWriteBitComment {
       BufferedReader br = null;
       String line = null;
       if (!file.exists()) {
-         System.out.println("지정된 경로에 파일이 없습니다.");
+         System.out.println("File not found at specified path.");
       } else {
          try {
             br = new BufferedReader(new FileReader(file));

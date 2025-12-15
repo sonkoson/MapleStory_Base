@@ -136,7 +136,7 @@ function action(mode, t, selection, dressUp_) {
                 v0 += "#L1#헤어 염색#l\r\n";
                 v0 += "#L2#믹스 염색#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
-            } else if (sel == 1) { // 성형 관련
+            } else if (sel == 1) { // Face Surgery
                 var v0 = "#fs11#                             #e<성형 관련>#n\r\n#b";
                 if (zero) {
                     v0 += "- 아래 기능은 현재 제로의 태그 상태에 따라갑니다. (현재 : #e#r" + (cm.getPlayer().getZeroInfo().isBeta() ? "베타(여자)" : "알파(남자)") + "#b#n)\r\n\r\n";
@@ -145,7 +145,7 @@ function action(mode, t, selection, dressUp_) {
                 v0 += "#L2#렌즈 변경#l\r\n";
                 //v0 += "#L3#믹스 렌즈를 사용해보자.#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
-            } else if (sel == 2) { // 안드로이드
+            } else if (sel == 2) { // Android
                 if (cm.getPlayer().getAndroid() == null) {
                     cm.sayNpc("보유중인 안드로이드가 없습니다.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                     cm.dispose();
@@ -219,7 +219,7 @@ function action(mode, t, selection, dressUp_) {
                     var zeroBeta = zero && cm.getPlayer().getZeroInfo().isBeta();
                     cm.askCustomMixHairAndProb("2가지 색깔을 믹스해 머리색깔을 변경할 수 있어요. 베이스 컬러와 믹스 컬러를 선택하고 스크롤을 움직여 자신만의 색을 만들어 보세요.", dressUp, zeroBeta);
                 }
-            } else if (sel == 1) { // 성형 관련
+            } else if (sel == 1) { // Face Surgery
                 if (sel2 == 0) { // 얼굴 성형
                     generateFaceList();
 
@@ -270,7 +270,7 @@ function action(mode, t, selection, dressUp_) {
                         return;
                     }
                 }
-            } else if (sel == 2) { // 안드로이드
+            } else if (sel == 2) { // Android
                 sel2 = selection;
                 if (sel2 == 0) { // 헤어 스타일
                     generateHairList();
@@ -384,7 +384,7 @@ function action(mode, t, selection, dressUp_) {
                     }
                     cm.dispose();
                 }
-            } else if (sel == 1) { // 성형 관련
+            } else if (sel == 1) { // Face Surgery
                 if (sel2 == 0) { // 얼굴 성형
                     page = selection;
                     var face = dressUp == 1 ? cm.getPlayer().getSecondFace() : cm.getPlayer().getFace();
@@ -437,7 +437,7 @@ function action(mode, t, selection, dressUp_) {
                     }
                     cm.dispose();
                 }
-            } else if (sel == 2) { // 안드로이드
+            } else if (sel == 2) { // Android
                 if (sel2 == 0) { // 헤어 스타일 변경
                     page = selection;
                     listingHairs(cm.getPlayer().getAndroid().getHair(), cm.getAndroidGender());
@@ -528,7 +528,7 @@ function action(mode, t, selection, dressUp_) {
                         cm.dispose();
                     }
                 }
-            } else if (sel == 1) { // 성형 관련
+            } else if (sel == 1) { // Face Surgery
                 if (sel2 == 0) { // 얼굴 성형
                     if (zero) {
                         if (cm.getPlayer().getZeroInfo().isBeta()) {
@@ -548,7 +548,7 @@ function action(mode, t, selection, dressUp_) {
                     }
                     cm.dispose();
                 }
-            } else if (sel == 2) { // 안드로이드
+            } else if (sel == 2) { // Android
                 if (sel2 == 0) { // 헤어 스타일 변경
                     cm.setHairAndroid(hairList[selection]);
                 } else if (sel2 == 2) { // 얼굴 성형

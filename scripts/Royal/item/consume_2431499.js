@@ -4,7 +4,7 @@ importPackage(Packages.database);
 importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 
-// 세팅
+// Setting
 var status = -1;
 var own = 1009
 var need = 2431499

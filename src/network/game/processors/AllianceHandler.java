@@ -73,7 +73,7 @@ public class AllianceHandler {
                                  && Center.Alliance.disbandAlliance(gs.getAllianceId())) {
                            }
                         } catch (Exception var12) {
-                           System.out.println("disbandAlliance 함수 실행중 오류발생" + var12.toString());
+                           System.out.println("Error executing disbandAlliance" + var12.toString());
                            var12.printStackTrace();
                         }
                         break;
@@ -84,9 +84,9 @@ public class AllianceHandler {
                            int inviteCheck = chr.getGuild().getAllianceId();
                            if (inviteCheck > 0) {
                               if (inviteCheck == gs.getAllianceId()) {
-                                 c.getPlayer().dropMessage(1, "해당 길드는 같은 연합에 이미 소속되어 있습니다.");
+                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรเดียวกันอยู่แล้ว");
                               } else {
-                                 c.getPlayer().dropMessage(1, "해당 길드는 다른 연합에 소속되어 있습니다.");
+                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรอื่น");
                               }
 
                               return;
@@ -100,10 +100,10 @@ public class AllianceHandler {
                                  );
                               Center.Guild.setInvitedId(chr.getGuildId(), gs.getAllianceId());
                            } else {
-                              c.getPlayer().dropMessage(1, "해당 길드의 길드장이 같은 채널에 있는 지 확인해주세요.");
+                              c.getPlayer().dropMessage(1, "กรุณาตรวจสอบว่าหัวหน้ากิลด์อยู่ในแชนแนลเดียวกันหรือไม่");
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "길드를 찾지 못하였습니다. 올바른 길드 이름을 입력해 주세요.");
+                           c.getPlayer().dropMessage(1, "ไม่พบกิลด์ กรุณาใส่ชื่อกิลด์ที่ถูกต้อง");
                         }
                         break;
                      case 4:

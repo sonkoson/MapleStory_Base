@@ -138,7 +138,7 @@ public class CraftHandler {
 
          long lastTime = Long.parseLong(marr.getCustomData());
          if (lastTime + 5000L > System.currentTimeMillis()) {
-            c.getPlayer().dropMessage(5, "아직 채집을 할 수 없습니다.");
+            c.getPlayer().dropMessage(5, "ยังไม่สามารถเก็บเกี่ยวได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             marr.setCustomData(String.valueOf(System.currentTimeMillis()));
@@ -146,7 +146,7 @@ public class CraftHandler {
             c.getSession().writeAndFlush(CField.harvestMessage(reactor.getObjectId(), 15));
          }
       } else {
-         c.getPlayer().dropMessage(1, "아직 채집을 할 수 없습니다.");
+         c.getPlayer().dropMessage(1, "ยังไม่สามารถเก็บเกี่ยวได้");
          c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
       }
    }
@@ -322,7 +322,7 @@ public class CraftHandler {
                      s = "장신구제작";
                }
 
-               chr.dropMessage(5, s + "의 숙련도가 올랐습니다. (+" + expGain + ")");
+               chr.dropMessage(5, s + " ความชำนาญเพิ่มขึ้น (+" + expGain + ")");
                chr.addProfessionExp(craftID / 10000 * 10000, expGain);
             } else {
                expGain = 0;

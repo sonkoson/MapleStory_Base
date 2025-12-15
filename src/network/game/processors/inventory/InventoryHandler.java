@@ -880,7 +880,7 @@ public class InventoryHandler {
 
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } catch (Exception var12) {
-         System.out.println("인벤토리 핸들러 오류 발생");
+         System.out.println("Inventory Handler error");
          var12.printStackTrace();
       }
    }
@@ -1595,12 +1595,12 @@ public class InventoryHandler {
          }
 
          if (scroll.getItemId() == 2041200 && toScroll.getUpgradeSlots() < 3) {
-            c.getPlayer().dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return false;
          } else if (DBConfig.isGanglim && GameConstants.isZeniaScroll(scroll.getItemId())
                && toScroll.getUpgradeSlots() <= 0) {
-            c.getPlayer().dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return false;
          } else {
@@ -1668,7 +1668,7 @@ public class InventoryHandler {
                if (!GameConstants.IsExNewScroll(scroll.getItemId())
                      && !GameConstants.IsBlackRebirthFlame(scroll.getItemId())
                      && toScroll.getUpgradeSlots() == 0) {
-                  chr.dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+                  chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return false;
                }
@@ -1680,7 +1680,7 @@ public class InventoryHandler {
                      && toScroll.getUpgradeSlots() < ii.getUpgradeScrollUseSlot(scroll.getItemId())
                      && toScroll.getItemId() / 100 != 1099
                      && toScroll.getItemId() / 100 != 1098) {
-                  chr.dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+                  chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                   return false;
                }
@@ -1705,15 +1705,15 @@ public class InventoryHandler {
             if (GameConstants.isCleanSlate(scroll.getItemId())
                   && toScroll.getLevel() + toScroll.getUpgradeSlots() >= ii.getEquipStats(toScroll.getItemId())
                         .get("tuc") + (toScroll.getViciousHammer() > 0 ? 1 : 0)) {
-               chr.dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if ((scroll.getItemId() == 2049731 || scroll.getItemId() == 2049762) && toScroll.getState() == 0) {
-               chr.dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if (GameConstants.isProstyScroll(scroll.getItemId()) && toScroll.getUpgradeSlots() <= 0) {
-               chr.dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if (!GameConstants.canScroll(toScroll.getItemId())
@@ -1846,7 +1846,7 @@ public class InventoryHandler {
                         }
 
                         if (recovery && scroll.getItemId() != 2049762) {
-                           chr.dropMessage(5, "주문서의 효과로 사용된 주문서가 차감되지 않았습니다.");
+                           chr.dropMessage(5, "Scroll ไม่ถูกหักออกเนื่องจากผลของ Scroll");
                         } else {
                            chr.removeItem(scroll.getItemId(), -1);
                         }
@@ -2194,7 +2194,7 @@ public class InventoryHandler {
 
          Equip eq = (Equip) item;
          if (eq.getState() == 0 || eq.getState() == 1 && eq.getPotential1() == 0) {
-            c.getPlayer().dropMessage(1, "먼저 잠재능력을 열어주세요.");
+            c.getPlayer().dropMessage(1, "กรุณาปลดล็อค Potential ก่อน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -2212,7 +2212,7 @@ public class InventoryHandler {
                return;
             }
          } else if (eq.getPotential4() > 0) {
-            c.getPlayer().dropMessage(1, "주문서를 사용할 수 없는 아이템입니다.");
+            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -2445,12 +2445,12 @@ public class InventoryHandler {
       int mountid = 0;
       long time = System.currentTimeMillis();
       if (time - c.getPlayer().lastItemUsedTime <= 300L) {
-         c.getPlayer().dropMessage(5, "지금은 사용자가 많아 아이템을 사용할 수 없습니다. 잠시 후 다시 시도해 주세요.");
+         c.getPlayer().dropMessage(5, "ขณะนี้มีผู้ใช้งานจำนวนมาก ไม่สามารถใช้ไอเทมได้ กรุณาลองใหม่อีกครั้งในภายหลัง");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
          c.getPlayer().lastItemUsedTime = time;
          if (toUse.getExpiration() > 0L && toUse.getExpiration() < time) {
-            c.getPlayer().dropMessage(5, "이미 기간이 만료된 아이템입니다.");
+            c.getPlayer().dropMessage(5, "ไอเทมหมดอายุแล้ว");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             if (toUse != null && toUse.getQuantity() >= 1 && toUse.getItemId() == itemId && !chr.inPVP()) {
@@ -2603,7 +2603,7 @@ public class InventoryHandler {
 
                         long point = c.getPlayer().getKeyValue(123, "pp") + 10;
                         if (c.getPlayer().getKeyValue(123, "pp") >= pirodo) {
-                           c.getPlayer().dropMessage(5, "이미 모든 피로도가 충전되있습니다.");
+                           c.getPlayer().dropMessage(5, "ค่าความเหนื่อยล้าเต็มอยู่แล้ว");
                            c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                            return;
                         }
@@ -2787,7 +2787,7 @@ public class InventoryHandler {
                            }
                         } else {
                            c.getPlayer().dropMessage(5,
-                                 "There needs to be 10 Fragments for a Potential Scroll, 25 for Advanced Potential Scroll.");
+                                 "ต้องมี Fragment 10 ชิ้นสำหรับ Potential Scroll, 25 ชิ้นสำหรับ Advanced");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2817,7 +2817,7 @@ public class InventoryHandler {
                               20000.0 + c.getPlayer().getLevel() * 50 * c.getChannelServer().getExpRate(), true, true,
                               false);
                      } else {
-                        c.getPlayer().dropMessage(5, "You may not use this item.");
+                        c.getPlayer().dropMessage(5, "ไม่สามารถใช้ไอเทมนี้ได้");
                      }
                      break;
                   case 2430132:
@@ -2843,7 +2843,7 @@ public class InventoryHandler {
                               && c.getPlayer().getJob() != 3510
                               && c.getPlayer().getJob() != 3511
                               && c.getPlayer().getJob() != 3512) {
-                           c.getPlayer().dropMessage(5, "You may not use this item.");
+                           c.getPlayer().dropMessage(5, "ไม่สามารถใช้ไอเทมนี้ได้");
                         } else {
                            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                            MapleInventoryManipulator.addById(c, 1492080, (short) 1,
@@ -2892,7 +2892,7 @@ public class InventoryHandler {
                            }
                         } else {
                            c.getPlayer().dropMessage(5,
-                                 "There needs to be 50 Purification Totems for a Noble Lion King Medal, 100 for Royal Lion King Medal.");
+                                 "ต้องมี Purification Totem 50 ชิ้นสำหรับ Noble Lion King Medal, 100 ชิ้นสำหรับ Royal");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2908,7 +2908,7 @@ public class InventoryHandler {
                      break;
                   case 2430200:
                      if (c.getPlayer().getQuestStatus(31152) != 2) {
-                        c.getPlayer().dropMessage(5, "You have no idea how to use it.");
+                        c.getPlayer().dropMessage(5, "ไม่รู้วิธีใช้มัน");
                      } else if (c.getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() >= 1) {
                         if (c.getPlayer().getInventory(MapleInventoryType.ETC).countById(4000660) >= 1
                               && c.getPlayer().getInventory(MapleInventoryType.ETC).countById(4000661) >= 1
@@ -2932,7 +2932,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "There needs to be 1 of each Stone for a Dream Key.");
+                           c.getPlayer().dropMessage(5, "ต้องมี Stone อย่างละ 1 ชิ้นสำหรับ Dream Key");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2954,7 +2954,7 @@ public class InventoryHandler {
 
                      long lastTime = Long.parseLong(marrxx.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "You can only use one energy drink per 10 minutes.");
+                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 5);
@@ -2968,7 +2968,7 @@ public class InventoryHandler {
 
                      lastTime = Long.parseLong(marrx.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "You can only use one energy drink per 10 minutes.");
+                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 10);
@@ -2999,7 +2999,7 @@ public class InventoryHandler {
 
                      lastTime = Long.parseLong(marr.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "You can only use one energy drink per 10 minutes.");
+                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 40);
@@ -3330,7 +3330,7 @@ public class InventoryHandler {
                         } else {
                            c.getPlayer()
                                  .dropMessage(5,
-                                       "There needs to be 20 Fragments for a Advanced Equip Enhancement Scroll, 30 for Epic Potential Scroll 80%.");
+                                       "ต้องมี Fragment 20 ชิ้นสำหรับ AEE, 30 ชิ้นสำหรับ Epic Pot 80%");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3369,7 +3369,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "There needs to be 10 Fragments for a Nebulite Diffuser.");
+                           c.getPlayer().dropMessage(5, "ต้องมี Fragment 10 ชิ้นสำหรับ Nebulite Diffuser");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3392,7 +3392,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "There needs to be 20 Fragments for a Premium Fusion Ticket.");
+                           c.getPlayer().dropMessage(5, "ต้องมี Fragment 20 ชิ้นสำหรับ Premium Fusion Ticket");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3765,7 +3765,7 @@ public class InventoryHandler {
                                  DamageSkinSaveInfo.getDefaultDesc()));
                      c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
                      chr.setSaveFlag(chr.getSaveFlag() | CharacterSaveFlag.DAMAGE_SKIN_SAVE.getFlag());
-                     chr.dropMessage(5, "데미지 스킨이 변경되었습니다.");
+                     chr.dropMessage(5, "เปลี่ยน Damage Skin เรียบร้อยแล้ว");
                      chr.getMap().broadcastMessage(chr, CField.showForeignDamageSkin(chr, damageSkinID), false);
                      MapleInventoryManipulator.removeFromSlot(c,
                            MapleInventoryType.getByType((byte) (itemId / 1000000)), slot, (short) 1, false);
@@ -3789,13 +3789,13 @@ public class InventoryHandler {
                   case 2435902:
                   case 2436078:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "5차 전직 퀘스트를 완료하지 않아 사용하실 수 없습니다.");
+                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "스킬 코어를 더 이상 소지할 수 없습니다. 코어를 분해하거나 강화하여 공간을 확보해주시기 바랍니다.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3854,13 +3854,13 @@ public class InventoryHandler {
                   case 2438411:
                   case 2438412:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "5차 전직 퀘스트를 완료하지 않아 사용하실 수 없습니다.");
+                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "스킬 코어를 더 이상 소지할 수 없습니다. 코어를 분해하거나 강화하여 공간을 확보해주시기 바랍니다.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3873,19 +3873,19 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "코어 젬스톤을 사용하여 V 코어를 획득했습니다.");
+                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
                      break;
                   case 2439279:
                   case 2630402:
                   case 2631527:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "5차 전직 퀘스트를 완료하지 않아 사용하실 수 없습니다.");
+                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "스킬 코어를 더 이상 소지할 수 없습니다. 코어를 분해하거나 강화하여 공간을 확보해주시기 바랍니다.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3898,17 +3898,17 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "코어 젬스톤을 사용하여 V 코어를 획득했습니다.");
+                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
                      break;
                   case 2632972:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "5차 전직 퀘스트를 완료하지 않아 사용하실 수 없습니다.");
+                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "스킬 코어를 더 이상 소지할 수 없습니다. 코어를 분해하거나 강화하여 공간을 확보해주시기 바랍니다.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3921,7 +3921,7 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "코어 젬스톤을 사용하여 V 코어를 획득했습니다.");
+                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
                      break;
                   case 3994225:
                      c.getPlayer().dropMessage(5, "Please bring this item to the NPC.");
@@ -3970,7 +3970,7 @@ public class InventoryHandler {
                      if (DBConfig.isGanglim && (data = GameConstants.getRidingData(itemId)) != null) {
                         int skillId = data.getLeft() + 80000000;
                         if (c.getPlayer().getSkillLevel(skillId) > 0) {
-                           c.getPlayer().dropMessage(6, "[라이딩] 이미 해당 라이딩 스킬을 보유하고 있습니다.");
+                           c.getPlayer().dropMessage(6, "[Riding] มีสกิลขี่สัตว์นี้แล้ว");
                         } else {
                            MapleInventoryManipulator.removeFromSlot(c, GameConstants.getInventoryType(itemId), slot,
                                  (short) 1, true, false);
@@ -3989,8 +3989,8 @@ public class InventoryHandler {
                      }
 
                      if (chr.isGM()) {
-                        chr.dropMessage(6, "스크립트 : " + script + ", 아이템ID : " + itemId);
-                        System.out.println("스크립트 : " + script + ", 아이템ID : " + itemId);
+                        chr.dropMessage(6, "Script : " + script + ", ItemID : " + itemId);
+                        System.out.println("Script : " + script + ", ItemID : " + itemId);
                      }
 
                      if (DBConfig.isGanglim
@@ -4028,9 +4028,9 @@ public class InventoryHandler {
                }
 
                if (c.getPlayer().getSkillLevel(mountid) > 0) {
-                  c.getPlayer().dropMessage(5, "이미 해당 라이딩스킬이 있습니다.");
+                  c.getPlayer().dropMessage(5, "มีสกิลขี่สัตว์นี้อยู่แล้ว");
                } else if (SkillFactory.getSkill(mountid) == null) {
-                  c.getPlayer().dropMessage(5, "해당스킬은 얻으실 수 없습니다.");
+                  c.getPlayer().dropMessage(5, "ไม่สามารถรับสกิลนี้ได้");
                } else if (expiration_days > 0L) {
                   MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                   c.getPlayer()
@@ -4105,7 +4105,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "존재하지 않는 얼굴로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 얼굴을 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   return;
                }
 
@@ -4120,7 +4120,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "존재하지 않는 얼굴로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 얼굴을 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   return;
                }
 
@@ -4135,7 +4135,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "존재하지 않는 얼굴로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 얼굴을 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   return;
                }
 
@@ -4156,7 +4156,7 @@ public class InventoryHandler {
                boolean checkfhx = ServerConstants.cacheFaceHair.contains(String.valueOf(hairx));
                if (!checkfhx) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "존재하지 않는 얼굴로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 얼굴을 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   return;
                }
 
@@ -4250,7 +4250,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "존재하지 않는 헤어로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 헤어를 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4265,7 +4265,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "존재하지 않는 헤어로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 헤어를 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4280,7 +4280,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "존재하지 않는 헤어로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 헤어를 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4300,7 +4300,7 @@ public class InventoryHandler {
                int facex = codies[select];
                boolean checkfhx = ServerConstants.cacheFaceHair.contains(String.valueOf(facex));
                if (!checkfhx) {
-                  c.getPlayer().dropMessage(5, "존재하지 않는 헤어로 변경에 실패하였습니다. 동일한 오류가 발생하는 경우 해당 헤어를 고객센터로 문의해주세요.");
+                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4459,14 +4459,14 @@ public class InventoryHandler {
                                     if (c.getPlayer().getHpApUsed() <= 0 || c.getPlayer().getHpApUsed() >= 10000) {
                                        used = false;
                                        c.getPlayer().dropMessage(1,
-                                             "You need points in HP or MP in order to take points out.");
+                                             "ต้องมีแต้มใน HP หรือ MP เพื่อดึงแต้มออก");
                                     }
                                     break;
                                  case 8192:
                                     if (c.getPlayer().getHpApUsed() <= 0 || c.getPlayer().getHpApUsed() >= 10000) {
                                        used = false;
                                        c.getPlayer().dropMessage(1,
-                                             "You need points in HP or MP in order to take points out.");
+                                             "ต้องมีแต้มใน HP หรือ MP เพื่อดึงแต้มออก");
                                     }
                               }
 
@@ -4705,16 +4705,16 @@ public class InventoryHandler {
                         case 5050008:
                         case 5050009:
                            if (itemId >= 5050005 && !GameConstants.isEvan(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(1, "This reset is only for Evans.");
+                              c.getPlayer().dropMessage(1, "การรีเซ็ตนี้สำหรับ Evan เท่านั้น");
                            } else if (itemId < 5050005 && GameConstants.isEvan(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(1, "This reset is only for non-Evans.");
+                              c.getPlayer().dropMessage(1, "การรีเซ็ตนี้สำหรับอาชีพที่ไม่ใช่ Evan เท่านั้น");
                            } else {
                               int skill1 = slea.readInt();
                               int skill2 = slea.readInt();
 
                               for (int ixxxxxx : GameConstants.blockedSkills) {
                                  if (skill1 == ixxxxxx) {
-                                    c.getPlayer().dropMessage(1, "You may not add this skill.");
+                                    c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิลนี้ได้");
                                     return;
                                  }
                               }
@@ -4724,20 +4724,20 @@ public class InventoryHandler {
                               if (!skillSPTo.isBeginnerSkill() && !skillSPFrom.isBeginnerSkill()) {
                                  if (GameConstants.getSkillBookForSkill(skill1) != GameConstants
                                        .getSkillBookForSkill(skill2)) {
-                                    c.getPlayer().dropMessage(1, "You may not add different job skills.");
+                                    c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิลต่างอาชีพได้");
                                  } else if (c.getPlayer().getSkillLevel(skillSPTo) + 1 <= skillSPTo.getMaxLevel()
                                        && c.getPlayer().getSkillLevel(skillSPFrom) > 0
                                        && skillSPTo.canBeLearnedBy(c.getPlayer().getJob())) {
                                     if (skillSPTo.isFourthJob() && c.getPlayer().getSkillLevel(skillSPTo) + 1 > c
                                           .getPlayer().getMasterLevel(skillSPTo)) {
-                                       c.getPlayer().dropMessage(1, "You will exceed the master level.");
+                                       c.getPlayer().dropMessage(1, "จะเกินระดับ Master Level");
                                     } else {
                                        if (itemId >= 5050005) {
                                           if (GameConstants.getSkillBookForSkill(skill1) != (itemId - 5050005) * 2
                                                 && GameConstants.getSkillBookForSkill(skill1) != (itemId - 5050005) * 2
                                                       + 1) {
                                              c.getPlayer().dropMessage(1,
-                                                   "You may not add this job SP using this reset.");
+                                                   "ไม่สามารถเพิ่ม SP อาชีพนี้โดยใช้การรีเซ็ตนี้ได้");
                                              break;
                                           }
                                        } else {
@@ -4759,7 +4759,7 @@ public class InventoryHandler {
 
                                           if (theJob != itemId - 5050000) {
                                              c.getPlayer().dropMessage(1,
-                                                   "You may not subtract from this skill. Use the appropriate SP reset.");
+                                                   "ไม่สามารถลดสกิลนี้ได้ กรุณาใช้ SP Reset ที่ถูกต้อง");
                                              break;
                                           }
                                        }
@@ -4782,7 +4782,7 @@ public class InventoryHandler {
                                     }
                                  }
                               } else {
-                                 c.getPlayer().dropMessage(1, "You may not add beginner skills.");
+                                 c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิล Beginner ได้");
                               }
                            }
                            break;
@@ -4791,7 +4791,7 @@ public class InventoryHandler {
                            int total = stats.getStr() + stats.getDex() + stats.getLuk() + stats.getInt()
                                  + c.getPlayer().getRemainingAp();
                            if (total > 32767) {
-                              c.getPlayer().dropMessage(1, "스탯이 과도하게 높아 AP 초기화 주문서를 사용하실 수 없습니다.");
+                              c.getPlayer().dropMessage(1, "Stat สูงเกินไป ไม่สามารถใช้ใบรีเซ็ต AP ได้");
                            } else {
                               c.getPlayer().resetStats(4, 4, 4, 4);
                               used = true;
@@ -5016,7 +5016,7 @@ public class InventoryHandler {
 
                            if (c.getPlayer().getInventory(MapleInventoryType.CASH).isFull(2)
                                  || c.getPlayer().getInventory(MapleInventoryType.USE).isFull(2)) {
-                              c.getPlayer().dropMessage(1, "캐시, 소비창을 2칸 이상 비워주시기 바랍니다.");
+                              c.getPlayer().dropMessage(1, "กรุณาทำช่องว่างใน Cash และ Use อย่างน้อย 2 ช่อง");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -5137,7 +5137,7 @@ public class InventoryHandler {
                               Equip eq = (Equip) itemxxxxxxxxxxx;
                               long price = GameConstants.getItemReleaseCost(eq.getItemId());
                               if (price > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "메소가 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
                                  return;
                               }
 
@@ -5187,7 +5187,7 @@ public class InventoryHandler {
                               Equip eqxx = (Equip) itemxxxxxxxxxxxxxxxxxxxxxxxx;
                               long pricexx = GameConstants.getItemReleaseCost(eqxx.getItemId());
                               if (pricexx > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "메소가 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
                                  return;
                               }
 
@@ -5258,7 +5258,7 @@ public class InventoryHandler {
                                                 levelUpCountx));
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "소비 인벤토리의 공간이 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถรีเซ็ต Potential ได้");
                            }
                            break;
                         case 5062010:
@@ -5275,7 +5275,7 @@ public class InventoryHandler {
                               c.getPlayer().memorialCubeItemID = 5062010;
                               long pricex = GameConstants.getItemReleaseCost(eqx.getItemId());
                               if (pricex > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "메소가 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
                                  return;
                               }
 
@@ -5318,7 +5318,7 @@ public class InventoryHandler {
                                     FileoutputUtil.CurrentReadable_Date() + "에 블랙 큐브에 의해 생성된 아이템");
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "소비 인벤토리의 공간이 부족하여 잠재 설정을 할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถตั้งค่า Potential ได้");
                            }
                            break;
                         case 5062400:
@@ -5354,7 +5354,7 @@ public class InventoryHandler {
 
                               long pricexxx = GameConstants.getItemReleaseCost(eqxxx.getItemId());
                               if (pricexxx > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "메소가 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
                                  return;
                               }
 
@@ -5423,7 +5423,7 @@ public class InventoryHandler {
 
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "소비 인벤토리의 공간이 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถรีเซ็ต Potential ได้");
                            }
                            break;
                         case 5062503:
@@ -5439,11 +5439,11 @@ public class InventoryHandler {
 
                            if (itemxxxxxxxxxxxxxxxxxxxxxx == null
                                  || c.getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-                              c.getPlayer().dropMessage(5, "소비 인벤토리의 공간이 부족하여 잠재 설정을 할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถตั้งค่า Potential ได้");
                            } else if (GameConstants.isAndroid(itemxxxxxxxxxxxxxxxxxxxxxx.getItemId())
                                  && (itemxxxxxxxxxxxxxxxxxxxxxx.getFlag()
                                        & ItemFlag.ANDROID_ACTIVATED.getValue()) == 0) {
-                              c.getPlayer().dropMessage(5, "활성화 되지 않은 안드로이드는 잠재능력을 재설정을 할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "Android ที่ยังไม่เปิดใช้งานไม่สามารถรีเซ็ต Potential ได้");
                            } else {
                               Equip eqx = (Equip) itemxxxxxxxxxxxxxxxxxxxxxx;
                               Equip neq = (Equip) eqx.copy();
@@ -5452,7 +5452,7 @@ public class InventoryHandler {
                               if (eqx.getState() >= 17) {
                                  long pricex = GameConstants.getItemReleaseCost(eqx.getItemId());
                                  if (pricex > c.getPlayer().getMeso()) {
-                                    c.getPlayer().dropMessage(5, "메소가 부족하여 잠재능력 재설정을 할 수 없습니다.");
+                                    c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
                                  } else {
                                     int beforeGradex = neq.getAdditionalGrade();
                                     if (DBConfig.isGanglim) {
@@ -5506,7 +5506,7 @@ public class InventoryHandler {
                                     used = true;
                                  }
                               } else {
-                                 c.getPlayer().dropMessage(5, "잠재 능력을 먼저 개방해야 사용할 수 있습니다.");
+                                 c.getPlayer().dropMessage(5, "ต้องเปิดใช้งาน Potential ก่อนจึงจะใช้ได้");
                               }
                            }
                            break;
@@ -5848,7 +5848,7 @@ public class InventoryHandler {
                               Equip m = (Equip) materialItem;
                               if (!b.isSpecialRoyal() || !m.isSpecialRoyal()) {
                                  c.getPlayer().dropMessage(5,
-                                       "합성 재료 및 베이스 아이템이 메이플 강림 쿠폰 및 마스터피스에 의해 제작된 아이템만 합성이 가능합니다.");
+                                       "การผสมทำได้เฉพาะกับไอเทมที่สร้างจาก Maple Ganglim Coupon และ Masterpiece เท่านั้น");
                                  c.getPlayer().send(CField.getMasterPieceFailed(2));
                                  c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                                  return;
@@ -5950,7 +5950,7 @@ public class InventoryHandler {
                            }
 
                            if (basePet.getWonderGrade() == -1 || materialPet.getWonderGrade() == -1) {
-                              c.getPlayer().dropMessage(1, "위습의 원더베리로 얻은 펫이 아니므로 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(1, "ไม่ใช่สัตว์เลี้ยงที่ได้จาก Wisp's Wonder Berry จึงไม่สามารถใช้ได้");
                               c.getPlayer().send(CField.getMasterPieceFailed(2));
                               c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                               return;
@@ -6013,11 +6013,11 @@ public class InventoryHandler {
                         }
                         case 5070000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6035,11 +6035,11 @@ public class InventoryHandler {
                            break;
                         case 5071000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6057,11 +6057,11 @@ public class InventoryHandler {
                            break;
                         case 5072000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6083,11 +6083,11 @@ public class InventoryHandler {
                            break;
                         case 5073000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6112,11 +6112,11 @@ public class InventoryHandler {
                            break;
                         case 5074000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6143,11 +6143,11 @@ public class InventoryHandler {
                         case 5075004:
                         case 5075005:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else {
                               int tvType = itemId % 10;
                               if (tvType == 3) {
@@ -6182,11 +6182,11 @@ public class InventoryHandler {
                         case 5076000: {
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6227,18 +6227,18 @@ public class InventoryHandler {
                         }
                         case 5076100:
                            if (c.getPlayer().getLevel() < 200) {
-                              c.getPlayer().dropMessage(5, "레벨 200 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 200 ไม่สามารถใช้งานได้");
                            } else {
                               String vx = c.getPlayer().getOneInfoQuest(1234677, "last_time");
                               if (vx != null && !vx.isEmpty()) {
                                  time = Long.parseLong(vx);
                                  if (!DBConfig.isGanglim) {
                                     if (System.currentTimeMillis() - time <= 60000L) {
-                                       c.getPlayer().dropMessage(5, "1분 마다 사용할 수 있습니다.");
+                                       c.getPlayer().dropMessage(5, "สามารถใช้ได้ทุกๆ 1 นาที");
                                        break;
                                     }
                                  } else if (System.currentTimeMillis() - time <= 10000L) {
-                                    c.getPlayer().dropMessage(5, "10초 마다 사용할 수 있습니다.");
+                                    c.getPlayer().dropMessage(5, "สามารถใช้ได้ทุกๆ 10 วินาที");
                                     break;
                                  }
                               }
@@ -6274,11 +6274,11 @@ public class InventoryHandler {
                            break;
                         case 5077000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               byte numLines = slea.readByte();
                               if (numLines > 3) {
@@ -6341,11 +6341,11 @@ public class InventoryHandler {
                         case 5390028:
                         case 5390029:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10 레벨 이상이어야합니다.");
+                              c.getPlayer().dropMessage(5, "ต้องมีเลเวล 10 ขึ้นไป");
                            } else if (c.getPlayer().getMapId() == 180000002) {
-                              c.getPlayer().dropMessage(5, "여기에서는 사용하실 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "ไม่สามารถใช้ได้ที่นี่");
                            } else if (!c.getPlayer().getCheatTracker().canAvatarSmega()) {
-                              c.getPlayer().dropMessage(5, "5분후에 다시 사용하실 수 있습니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้อีกครั้งใน 5 นาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               List<String> lines = new LinkedList<>();
                               StringBuilder sbx = new StringBuilder();
@@ -6368,11 +6368,11 @@ public class InventoryHandler {
                            break;
                         case 5079004:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "10레벨 미만은 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "10초에 한번만 사용이 가능합니다.");
+                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6684,7 +6684,7 @@ public class InventoryHandler {
                            }
 
                            if (petx == null) {
-                              c.getPlayer().dropMessage(1, "펫을 찾는데 실패하였습니다!");
+                              c.getPlayer().dropMessage(1, "ค้นหาสัตว์เลี้ยงล้มเหลว!");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -6726,7 +6726,7 @@ public class InventoryHandler {
                            }
 
                            if (pet == null) {
-                              c.getPlayer().dropMessage(1, "펫을 찾는데 실패하였습니다!");
+                              c.getPlayer().dropMessage(1, "ค้นหาสัตว์เลี้ยงล้มเหลว!");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -6752,7 +6752,7 @@ public class InventoryHandler {
                               c.getSession().writeAndFlush(CWvsContext.getOwlSearched(itemSearch, hms));
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(1, "아이템을 찾을 수 없습니다.");
+                              c.getPlayer().dropMessage(1, "ไม่พบไอเทม");
                            }
                            break;
                         case 5240000:
@@ -6858,7 +6858,7 @@ public class InventoryHandler {
                               if (e2.isRunning()) {
                                  for (int ixxxxx : e2.getType().mapids) {
                                     if (c.getPlayer().getMapId() == ixxxxx) {
-                                       c.getPlayer().dropMessage(5, "You may not use that here.");
+                                       c.getPlayer().dropMessage(5, "ไม่สามารถใช้ที่นี่ได้");
                                        c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                                        return;
                                     }
@@ -6873,14 +6873,14 @@ public class InventoryHandler {
                         case 5452001:
                            for (int ixxxx : GameConstants.blockedMaps) {
                               if (c.getPlayer().getMapId() == ixxxx) {
-                                 c.getPlayer().dropMessage(5, "You may not use this command here.");
+                                 c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
                                  c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                                  return;
                               }
                            }
 
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "You must be over level 10 to use this command.");
+                              c.getPlayer().dropMessage(5, "ต้องมีเลเวล 10 ขึ้นไปเพื่อใช้คำสั่งนี้");
                            } else if (c.getPlayer().getMap().getSquadByMap() == null
                                  && c.getPlayer().getEventInstance() == null
                                  && c.getPlayer().getMap().getEMByMap() == null
@@ -6893,10 +6893,10 @@ public class InventoryHandler {
                                     && c.getPlayer().getMapId() / 10 != 13003000) {
                                  MapleShopFactory.getInstance().getShop(61).sendShop(c);
                               } else {
-                                 c.getPlayer().dropMessage(5, "You may not use this command here.");
+                                 c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
                               }
                            } else {
-                              c.getPlayer().dropMessage(5, "You may not use this command here.");
+                              c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
                            }
                            break;
                         case 5450005:
@@ -7076,7 +7076,7 @@ public class InventoryHandler {
                         case 5520000:
                         case 5520001:
                            if (GameConstants.isYetiPinkBean(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(5, "핑크빈과 예티는 카르마의 가위를 사용할 수 없습니다.");
+                              c.getPlayer().dropMessage(5, "Pink Bean และ Yeti ไม่สามารถใช้ Scissors of Karma ได้");
                               c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -7147,7 +7147,7 @@ public class InventoryHandler {
                         case 5700000:
                            slea.skip(8);
                            if (c.getPlayer().getAndroid() == null) {
-                              c.getPlayer().dropMessage(1, "장착중인 안드로이드가 없어 작명 할 수 없습니다.");
+                              c.getPlayer().dropMessage(1, "ไม่มี Android ที่สวมใส่อยู่ ไม่สามารถตั้งชื่อได้");
                            } else {
                               String nName = slea.readMapleAsciiString();
 
@@ -7457,7 +7457,7 @@ public class InventoryHandler {
                   if (mapitem.getItemId() == 2633343) {
                      if (Center.sunShineStorage.addSunShineGuage(1)) {
                         c.getPlayer().dropMessage(5,
-                              "블라썸 게이지 : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
+                              "Blossom Gauge : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
                      }
 
                      removeItem(chr, mapitem, ob, false);
@@ -7600,7 +7600,7 @@ public class InventoryHandler {
                   return;
                } else if (MapleItemInformationProvider.getInstance().isPickupBlocked(mapitem.getItemId())) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "This item cannot be picked up.");
+                  c.getPlayer().dropMessage(5, "ไอเทมนี้เก็บไม่ได้");
                } else if (c.getPlayer().inPVP() && Integer
                      .parseInt(c.getPlayer().getEventInstance().getProperty("ice")) == c.getPlayer().getId()) {
                   c.getSession().writeAndFlush(CWvsContext.InventoryPacket.getInventoryFull());
@@ -7847,7 +7847,7 @@ public class InventoryHandler {
                      if (mapitem.getItemId() == 2633343) {
                         if (Center.sunShineStorage.addSunShineGuage(1)) {
                            c.getPlayer().dropMessage(5,
-                                 "블라썸 게이지 : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
+                                 "Blossom Gauge : " + Center.sunShineStorage.getSunShineGuage() + " / 1000000");
                         }
 
                         removeItem(chr, mapitem, ob, true);
@@ -7989,7 +7989,7 @@ public class InventoryHandler {
          if (!DBConfig.isGanglim && id == 2432970) {
             int rand = ThreadLocalRandom.current().nextInt(500) + 500;
             c.getPlayer().addHonorExp(rand);
-            c.getPlayer().dropMessage(5, rand + " 명성치를 획득했습니다.");
+            c.getPlayer().dropMessage(5, rand + " ได้รับ Honor EXP");
             return true;
          }
 
@@ -8160,7 +8160,7 @@ public class InventoryHandler {
             c.getSession().writeAndFlush(CWvsContext.getOwlSearched(itemSearch, hms));
             MapleInventoryManipulator.removeById(c, MapleInventoryType.USE, itemid, 1, true, false);
          } else {
-            c.getPlayer().dropMessage(1, "아이템을 찾을 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไม่พบไอเทม");
          }
       }
 
@@ -8235,9 +8235,9 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(PlayerShopPacket.getHiredMerch(c.getPlayer(), merchant, false));
                   } else if (merchant.isOpen() && merchant.isAvailable()) {
                      if (merchant.getFreeSlot() == -1) {
-                        c.getPlayer().dropMessage(1, "You can't enter the room due to full capacity.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถเข้าห้องได้เนื่องจากเต็มแล้ว");
                      } else if (merchant.isInBlackList(c.getPlayer().getName())) {
-                        c.getPlayer().dropMessage(1, "You may not enter this store.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถเข้าร้านค้านี้ได้");
                      } else {
                         c.getPlayer().setPlayerShop(merchant);
                         merchant.addVisitor(c.getPlayer());
@@ -8291,10 +8291,10 @@ public class InventoryHandler {
                c.getPlayer().changeMap(target, target.getPortal(0));
                used = true;
             } else {
-               c.getPlayer().dropMessage(1, "You cannot go to that place.");
+               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
             }
          } else {
-            c.getPlayer().dropMessage(1, "You cannot go to that place.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
          }
       } else {
          String name = slea.readMapleAsciiString();
@@ -8306,10 +8306,10 @@ public class InventoryHandler {
                         .check(c.getChannelServer().getMapFactory().getMap(victim.getMapId()).getFieldLimit())
                   || victim.isInBlockedMap()
                   || c.getPlayer().isInBlockedMap()) {
-               c.getPlayer().dropMessage(1, "You cannot go to that place.");
+               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
             } else if (itemId != 5041000 && itemId != 5040004 && itemId != 5041001
                   && victim.getMapId() / 100000000 != c.getPlayer().getMapId() / 100000000) {
-               c.getPlayer().dropMessage(1, "You cannot go to that place.");
+               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
             } else {
                c.getPlayer().changeMap(victim.getMap(), victim.getMap().findClosestPortal(victim.getTruePosition()));
                used = true;
@@ -8354,7 +8354,7 @@ public class InventoryHandler {
          chr.updateOneInfo(12334, "preventAutoBuff", String.valueOf((int) use));
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
-         chr.dropMessage(5, "지금은 사용하지 않는 기능입니다.");
+         chr.dropMessage(5, "ฟังก์ชั่นนี้ยังไม่เปิดใช้งานในขณะนี้");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          c.getSession().writeAndFlush(PetPacket.updatePetAutoPetFood());
       }
@@ -8416,7 +8416,7 @@ public class InventoryHandler {
             .getSession()
             .writeAndFlush(CWvsContext.InventoryPacket
                   .updateEquipSlot(chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10)));
-      chr.dropMessage(5, "제로의 장비는 파괴되는대신 처음 상태로 되돌아갑니다");
+      chr.dropMessage(5, "อุปกรณ์ของ Zero จะกลับสู่สภาพเริ่มต้นแทนที่จะถูกทำลาย");
    }
 
    public static void UseNameChangeCoupon(PacketDecoder slea, MapleClient c) {
@@ -8476,7 +8476,7 @@ public class InventoryHandler {
          if (equip != null) {
             objects.users.enchant.skilloption.SkillEntry entry = SkillOption.getSkillOption(skillID);
             if (entry == null) {
-               System.out.println("[오류] 소울 옵션 데이터를 불러오는데 실패했습니다. (사용된 소울 ID : " + soulItemID + ")");
+               System.out.println("[Error] Failed to load Soul Option data. (Used Soul ID : " + soulItemID + ")");
             } else {
                if (chr.isEquippedSoulWeapon()) {
                   chr.changeSkillLevel(chr.getEquippedSoulSkill(), -1, 0);
@@ -8485,7 +8485,7 @@ public class InventoryHandler {
                Equip eq = (Equip) equip;
                MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                if (ii.getReqLevel(eq.getItemId()) < entry.getReqLevel()) {
-                  System.out.println("[오류] 소울 옵션을 부여하려는 장비에 장착 제한 레벨보다 소울 옵션 제한 레벨이 더 높습니다.");
+                  System.out.println("[Error] Soul Option level requirement is higher than equip level requirement.");
                } else {
                   TempOptionEntry tempOptionEntry = entry.getOnePickTempOptionEntry();
                   eq.setSoulName(GameConstants.getSoulName(soulItemID));
@@ -8634,11 +8634,11 @@ public class InventoryHandler {
       if (item != null) {
          if (item.getItemId() == useItemID) {
             if (c.gainCharacterSlot()) {
-               c.getPlayer().dropMessage(5, "캐릭터 슬롯이 증가되었습니다.");
+               c.getPlayer().dropMessage(5, "เพิ่มช่องตัวละครเรียบร้อยแล้ว");
                c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (byte) useItemSlot, (short) 1, true);
             } else {
-               c.getPlayer().dropMessage(1, "캐릭터 슬롯을 더 이상 늘릴 수 없습니다.");
+               c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มช่องตัวละครได้อีก");
                c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             }
          }
@@ -8669,7 +8669,7 @@ public class InventoryHandler {
                   if (chr.getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1
                         || chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                         || chr.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
-                     c.getPlayer().dropMessage(1, "장비, 소비, 기타 아이템 슬롯을 1칸 이상 비워주세요.");
+                     c.getPlayer().dropMessage(1, "กรุณาทำช่องว่างใน Equip, Use, Etc อย่างน้อย 1 ช่อง");
                      chr.send(CWvsContext.enableActions(chr));
                      return;
                   }
@@ -8764,7 +8764,7 @@ public class InventoryHandler {
                      }
                   }
                } else {
-                  chr.dropMessage(5, "소비창과 기타창을 1칸 비워주세요.");
+                  chr.dropMessage(5, "กรุณาทำช่องว่างในช่อง Use และ Etc อย่างละ 1 ช่อง");
                }
                break;
             case 1:
@@ -8779,7 +8779,7 @@ public class InventoryHandler {
                      chr.updateOneInfo(500081, "clear", "1");
                      chr.forceCompleteQuest(500082);
                   } else {
-                     chr.dropMessage(5, "장비창과 소비창을 1칸 비워주세요.");
+                     chr.dropMessage(5, "กรุณาทำช่องว่างใน Equip และ Use อย่างละ 1 ช่อง");
                   }
                }
          }
@@ -8955,9 +8955,9 @@ public class InventoryHandler {
                      || option == GradeRandomOption.Black;
                if (DBConfig.isJin) {
                   c.getPlayer().dropMessage(5,
-                        "[등급 천장] " + cubeString + " 등급 천장 목표 개수를 달성하여 " + upgradeGrade + " 등급으로 확정 상승되었습니다.");
+                        "[Grade Ceiling] " + cubeString + " บรรลุจำนวนเป้าหมายการการันตีระดับ " + upgradeGrade + " ระดับเพิ่มขึ้นอย่างแน่นอน");
                   if (isMemorialCube) {
-                     c.getPlayer().dropMessage(5, "[등급 천장] 해당 큐브는 등급이 상승되어 Before 옵션을 선택해도 천장 목표 개수는 초기화됩니다.");
+                     c.getPlayer().dropMessage(5, "[Grade Ceiling] 해당 큐브는 등급이 상승되어 Before 옵션을 선택해도 천장 목표 개수는 초기화됩니다.");
                   }
                }
             } else {
@@ -8965,7 +8965,7 @@ public class InventoryHandler {
                      String.valueOf(tryCount + 1));
                c.getPlayer().updateOneInfo(questId, linkedType, String.valueOf(tryCount + 1));
                if (DBConfig.isJin) {
-                  c.getPlayer().dropMessage(5, "[등급 천장] " + cubeString + " 사용으로 " + infoString + "까지 남은 목표 개수 ("
+                  c.getPlayer().dropMessage(5, "[Grade Ceiling] " + cubeString + " โดยการใช้ " + infoString + "จำนวนเป้าหมายที่เหลือ ("
                         + (tryCount + 1) + "/" + levelUpCount + ")");
                   if (levelUpCount == tryCount + 1) {
                      String upgradeGrade = "";
@@ -8981,8 +8981,8 @@ public class InventoryHandler {
                      }
 
                      c.getPlayer()
-                           .dropMessage(5, "[등급 천장] " + cubeString + " 등급 천장 목표 개수를 달성하여 다음 " + infoString
-                                 + " 등급업 시도 시 " + upgradeGrade + " 등급으로 확정 상승됩니다.");
+                           .dropMessage(5, "[Grade Ceiling] " + cubeString + " บรรลุจำนวนเป้าหมายการการันตีระดับ 다음 " + infoString
+                                 + " เมื่อพยายามอัพเกรดระดับ " + upgradeGrade + " ระดับจะเพิ่มขึ้นอย่างแน่นอน");
                   }
                }
             }

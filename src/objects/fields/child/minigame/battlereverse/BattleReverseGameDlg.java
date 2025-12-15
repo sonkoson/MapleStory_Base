@@ -31,7 +31,7 @@ public class BattleReverseGameDlg {
          }
       } else {
          for (MapleCharacter playerx : this.field.getCharactersThreadsafe()) {
-            playerx.dropMessage(5, "게임에 필요한 인원수가 부족하여 마을로 이동됩니다.");
+            playerx.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
             playerx.setRegisterTransferField(ServerConstants.TownMap);
             playerx.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }
@@ -47,7 +47,7 @@ public class BattleReverseGameDlg {
          FileoutputUtil.log("Log_MiniGame_Except.rtf", "캐릭터가 null인 상태로 게임시작 시도");
 
          for (MapleCharacter chr : this.field.getCharacters()) {
-            chr.dropMessage(5, "오류가 발생하여 게임이 시작되지 않았습니다. 마을로 이동됩니다.");
+            chr.dropMessage(5, "เกิดข้อผิดพลาด เกมไม่เริ่ม จึงถูกย้ายกลับเมือง");
             chr.setRegisterTransferField(ServerConstants.TownMap);
             chr.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }

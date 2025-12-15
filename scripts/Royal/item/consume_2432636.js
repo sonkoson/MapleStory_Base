@@ -33,21 +33,21 @@ function action(mode, type, selection) {
 			cm.sendYesNo("#fs11#현재 데미지 스킨을 저장하려 하시는군요!\r\n" + (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") != -1 ? "현재 저장된 #b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k 대신\r\n" : "") + "#b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k을 저장시키시겠습니까?");
 		} else if (selsave == 2) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#저장된 데미지 스킨이 없습니다.");
+				cm.sendOk("#fs11#ไม่มี Damage Skin ที่บันทึกไว้");
 				cm.dispose();
 			} else {
 				cm.sendYesNo("#fs11#저장된 데미지 스킨을 적용하려 하시는군요!\r\n현재 적용된 #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k 대신\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7294, "save_damage_skin") + "##k을 적용시키시겠습니까?");
 			}
 		} else if (selsave == 22) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#저장된 데미지 스킨이 없습니다.");
+				cm.sendOk("#fs11#ไม่มี Damage Skin ที่บันทึกไว้");
 				cm.dispose();
 			} else {
 				cm.sendYesNo("#fs11#저장된 데미지 스킨을 적용하려 하시는군요!\r\n현재 적용된 #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k 대신\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7295, "save_damage_skin") + "##k을 적용시키시겠습니까?");
 			}
 		} else if (selsave == 222) {
 			if (cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") == -1) {
-				cm.sendOk("#fs11#저장된 데미지 스킨이 없습니다.");
+				cm.sendOk("#fs11#ไม่มี Damage Skin ที่บันทึกไว้");
 				cm.dispose();
 			} else {
 				cm.sendYesNo("#fs11#저장된 데미지 스킨을 적용하려 하시는군요!\r\n현재 적용된 #b#t" + cm.getPlayer().getOneInfoQuestInteger(7293, "damage_skin") + "##k 대신\r\n#b#t" + cm.getPlayer().getOneInfoQuestInteger(7296, "save_damage_skin") + "##k을 적용시키시겠습니까?");

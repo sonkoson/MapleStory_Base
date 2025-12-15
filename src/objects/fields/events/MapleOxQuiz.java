@@ -137,10 +137,10 @@ public class MapleOxQuiz extends MapleEvent {
       double x = chr.getTruePosition().getX();
       double y = chr.getTruePosition().getY();
       if ((!(x > -234.0) || !(y > -26.0) || answer != 0) && (!(x < -234.0) || !(y > -26.0) || answer != 1)) {
-         chr.dropMessage(6, "[Ox Quiz] Incorrect!");
+         chr.dropMessage(6, "[Ox Quiz] ผิด!");
          return false;
       } else {
-         chr.dropMessage(6, "[Ox Quiz] Correct!");
+         chr.dropMessage(6, "[Ox Quiz] ถูกต้อง!");
          return true;
       }
    }

@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 public class undefinedIDA {
    public static boolean sub_140A90650(int a1) {

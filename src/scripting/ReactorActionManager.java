@@ -222,7 +222,7 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             AchievementFactory.checkMakingskillGather(this.getPlayer(), succ, pID);
          }
       } else {
-         this.c.getPlayer().dropMessage(5, "You do not have enough fatigue to perform " + pName + ".");
+         this.c.getPlayer().dropMessage(5, "Fatigue ไม่พอที่จะทำ " + pName + ".");
       }
    }
 }

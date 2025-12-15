@@ -1,6 +1,3 @@
-//importPackage(java.util);
-//importPackage(java.lang);
-
 var status = -1;
 
 var data;
@@ -64,14 +61,14 @@ function action(mode, type, selection) {
 			cm.getClient().setKeyValue(201820, "mc_" + data, "0");
 		}
 
-		var text = "#e<Today is #b" + String(Packages.tools.CurrentTime.요일()) + "#k.>\r\n<Today's Clears: #b" + cm.getClient().getKeyValue(201820, "mc_" + data) + " / 7#k (Per World Account)>\r\n#eFree Clears Remaining: #b" + (7 - cm.getClient().getKeyValue(201820, "mc_" + data)) + "#k#n#b\r\n";
+		var text = "#e<Today is #b" + String(Packages.tools.CurrentTime.getDayOfWeek()) + "#k.>\r\n<Today's Clears: #b" + cm.getClient().getKeyValue(201820, "mc_" + data) + " / 7#k (Per World Account)>\r\n#eFree Clears Remaining: #b" + (7 - cm.getClient().getKeyValue(201820, "mc_" + data)) + "#k#n#b\r\n";
 		for (i = 0; i < map.length; i++) {
 			text += "#L" + i + "#" + mapname[i] + "\r\n";
 		}
 		cm.sendSimple(text);
 	} else if (status == 1) {
 		select = selection;
-		cm.sendYesNo("#e<Today is #b" + String(Packages.tools.CurrentTime.요일()) + "#k.>\r\n\r\nSelected Dungeon : #b" + mapname[select] + "#k\r\n\r\n#kDo you want to enter the dungeon?#n");
+		cm.sendYesNo("#e<Today is #b" + String(Packages.objects.utils.CurrentTime.getDayOfWeek()) + "#k.>\r\n\r\nSelected Dungeon : #b" + mapname[select] + "#k\r\n\r\n#kDo you want to enter the dungeon?#n");
 	} else if (status == 2) {
 		cm.dispose();
 		if (cm.getClient().getKeyValue(201820, "mc_" + data) >= 7) {
@@ -86,7 +83,7 @@ function action(mode, type, selection) {
 			cm.warp(map[select], 0);
 			cm.resetMap(map[select]);
 			cm.getPlayer().setMparkexp(exp[select]);
-			//cm.writeLog("Log/몬파입장.log", cm.getPlayer().getName()+"가 몬스터파크 입장함.\r\n", true);
+			//cm.writeLog("Log/MonsterParkEntry.log", cm.getPlayer().getName()+" entered Monster Park.\r\n", true);
 		}
 	}
 }

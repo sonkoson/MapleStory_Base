@@ -59,6 +59,6 @@ function action(mode, type, selection) {
 	cm.dispose();
 	cm.gainItem(inz[select], 1);
 	cm.gainItem(2431550, -1);
-	cm.sendOk("아이템이 지급되었습니다.");
+	cm.sendOk("ได้รับไอเทมแล้ว");
     }
 }

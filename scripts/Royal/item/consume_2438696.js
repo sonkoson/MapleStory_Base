@@ -39,7 +39,7 @@ function action(mode, type, sel) {
 	if (status == 0) {
 		var msg = "#rMVP 전용 스페셜 캐시 선택박스#k"+enter;
 		msg += "#r#i"+need +"##z"+need +"##k를 가지고 있다면 원하는 아이템 1종으로 바꿔줄게요. #r어메이징하게 예쁜#k 스페셜 캐시 의상에 옵션까지 추가! 어때요? 지금 바로 쿠폰을 사용하시겠어요?#b\r\n#rMVP 스페셜 캐시#k - 올스탯 1 ~ 300/공,마 1 ~ 100\r\n#rMVP 스페셜 캐시무기#k - 올스탯 1 ~ 1000/공,마 1 ~ 300"+enter;
-		msg += "#L1#아이템 리스트보기 (남)"+enter;
+		msg += "#L1#View Item List (Male)"+enter;
 		msg += "#L2#아이템 리스트보기 (여)"+enter;
 		msg += "#L5#아이템 리스트보기 (이 달의 스페셜 무기)"+enter;
 		msg += "#L3#MVP 아이템 캐시 뽑기"+enter;
@@ -59,19 +59,19 @@ function action(mode, type, sel) {
 			cm.dispose();
 		} else if (sel == 3) {
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
 			var msg = "어떤 성별의 의상을 보겠어?#fs11##b"+enter;
-			msg += "#L1#남성"+enter;
-			msg += "#L2#여성"+enter;
+			msg += "#L1#Male"+enter;
+			msg += "#L2#Female"+enter;
 
 			cm.sendSimple(msg);
 		} else if (sel == 4) {
 			qty = special;
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
@@ -86,7 +86,7 @@ function action(mode, type, sel) {
 		}
 	} else if (status == 2) {
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
@@ -101,7 +101,7 @@ function action(mode, type, sel) {
 				cm.sendSimple(msg);
 			} else if (seld == 4) {
 				if (!cm.haveItem(need, qty)) {
-					cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+					cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 					cm.dispose();
 					return;
 				}
@@ -111,7 +111,7 @@ function action(mode, type, sel) {
 	} else if (status == 3) {
 			if (seld == 3) {
 				if (!cm.haveItem(need, qty)) {
-					cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+					cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 					cm.dispose();
 					return;
 				}
@@ -119,12 +119,12 @@ function action(mode, type, sel) {
 				cm.sendYesNo("정말 #b#i"+selected+"##z"+selected+"##k 아이템을 받겠어?");
 			} else if (seld == 4) {
 				if (!cm.haveItem(need, qty)) {
-					cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+					cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 					cm.dispose();
 					return;
 				}
 				if (!cm.canHold(selected)) {
-					cm.sendOk("장비창에 공간이 부족합니다.");
+					cm.sendOk("พื้นที่ในช่อง Equip ไม่เพียงพอ");
 					cm.dispose();
 					return;
 				}
@@ -148,12 +148,12 @@ function action(mode, type, sel) {
 			}
 	} else if (status == 4) {
 			if (!cm.haveItem(need, qty)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
 			if (!cm.canHold(selected)) {
-				cm.sendOk("장비창에 공간이 부족합니다.");
+				cm.sendOk("พื้นที่ในช่อง Equip ไม่เพียงพอ");
 				cm.dispose();
 				return;
 			}

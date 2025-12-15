@@ -1,4 +1,4 @@
-﻿package logging.entry;
+package logging.entry;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

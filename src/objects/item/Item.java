@@ -122,7 +122,7 @@ public class Item implements Comparable<Item>, Serializable {
          try {
             throw new Exception();
          } catch (Exception var3) {
-            System.out.println("안드로이드 교불 위치 디버그!!");
+            System.out.println("Android untradable location debug!!");
             var3.printStackTrace();
          }
       }

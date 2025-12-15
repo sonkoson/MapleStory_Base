@@ -27,8 +27,8 @@ function action(mode, type, sel) {
 	if (status == 0) {
 		var msg = "#e#rDEEZ 스페셜 캐시박스 D#n#k"+enter;
 		msg += "#r#i"+need +"##z"+need +"##k를 가지고 있다면 제가 DEEZ 스페셜 캐시박스 D 에서 1종을 랜덤으로 바꿔줄게요. 운이 좋다면 #r어메이징하게 예쁜#k 스페셜 캐시 의상 아이템도 받을 수가 있죠! 어때요? 지금 바로 쿠폰을 사용하시겠어요?#b"+enter;
-		msg += "#L1#아이템 리스트보기 (남)"+enter;
-		msg += "#L2#아이템 리스트보기 (여)"+enter+enter;
+		msg += "#L1#View Item List (Male)"+enter;
+		msg += "#L2#View Item List (Female)"+enter+enter;
 		msg += "#L3#아이템 사용 (랜덤)";
 		cm.sendSimple(msg);
 	} else if (status == 1) {
@@ -45,19 +45,19 @@ function action(mode, type, sel) {
 			cm.dispose();
 		} else {
 			if (!cm.haveItem(need, 1)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
 			var msg = "어떤 성별의 의상을 보시겠어요?#fs11##b"+enter;
-			msg += "#L1#남성"+enter;
-			msg += "#L2#여성"+enter;
+			msg += "#L1#Male"+enter;
+			msg += "#L2#Female"+enter;
 
 			cm.sendSimple(msg);
 		}
 	} else if (status == 2) {
 			if (!cm.haveItem(need, 1)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
@@ -65,7 +65,7 @@ function action(mode, type, sel) {
 			cm.sendYesNo("정말 #b#i"+need+"##z"+need+"##k 아이템을 사용하겠어요?");
 	} else if (status == 3) {
 			if (!cm.haveItem(need, 1)) {
-				cm.sendOk("#b#i"+need+"##z"+need+"##k가 없는 것 같은데요?");
+				cm.sendOk("#b#i"+need+"##z"+need+"##k ดูเหมือนจะไม่มีนะครับ?");
 				cm.dispose();
 				return;
 			}
@@ -79,7 +79,7 @@ function action(mode, type, sel) {
 			}
 
 			if (!cm.canHold(item)) {
-				cm.sendOk("장비창에 공간이 부족합니다.");
+				cm.sendOk("พื้นที่ในช่อง Equip ไม่เพียงพอ");
 				cm.dispose();
 				return;
 			}

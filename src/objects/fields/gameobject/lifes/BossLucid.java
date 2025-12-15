@@ -14,7 +14,7 @@ public class BossLucid {
    public static void load() {
       MapleData data = MapleDataProviderFactory.getDataProvider(new File(System.getProperty("net.sf.odinms.wzpath") + "/Etc.wz")).getData("BossLucid.img");
       butterfly = new BossLucid.ButterflyData(data.getChildByPath("Butterfly"));
-      System.out.println("보스 루시드 데이터가 캐싱되었습니다.");
+      System.out.println("Boss Lucid data cached.");
    }
 
    public static class ButterflyData {

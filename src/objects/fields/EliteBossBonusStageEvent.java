@@ -142,7 +142,7 @@ public class EliteBossBonusStageEvent extends FieldEvent {
             this.expireTime = System.currentTimeMillis() + 22000L;
             this.started = true;
             this.sendEliteBossTime(null);
-            this.map.broadcastMessage(CField.sendWeatherEffectNotice(1, 4000, false, "일반 공격으로 공격하면 아이템을 얻을 수 있을것 같아요!"));
+            this.map.broadcastMessage(CField.sendWeatherEffectNotice(1, 4000, false, "ถ้าโจมตีปกติอาจจะได้รับไอเทมนะ!"));
             return;
          }
       }

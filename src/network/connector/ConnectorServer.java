@@ -59,9 +59,9 @@ public class ConnectorServer {
          }
 
          this.clients = new ConnectorClientStorage();
-         System.out.println("커넥터 서버가 오픈되었습니다.");
+         System.out.println("Connector Server opened.");
       } catch (InterruptedException var4) {
-         System.err.println("커넥터 서버 오픈에 실패했습니다.\r\n" + var4);
+         System.err.println("Failed to open Connector Server.\r\n" + var4);
       }
    }
 }

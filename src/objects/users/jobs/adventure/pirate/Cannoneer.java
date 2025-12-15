@@ -373,11 +373,11 @@ public class Cannoneer extends Pirate {
             p.write(1);
             this.getPlayer().setPoolMakerRemain(effect.getW());
             p.writeInt(this.getActiveSkillID());
-            System.out.println("스킬아이디 " + this.getActiveSkillID());
+            System.out.println("SkillID " + this.getActiveSkillID());
             p.writeInt(this.getPlayer().getPoolMakerRemain());
-            System.out.println("포격가능한? " + this.getPlayer().getPoolMakerRemain());
+            System.out.println("Can fire? " + this.getPlayer().getPoolMakerRemain());
             p.writeInt(effect.getCoolTime());
-            System.out.println("쿨 " + effect.getCoolTime());
+            System.out.println("Cool " + effect.getCoolTime());
             this.getPlayer().send(p.getPacket());
             effect.applyTo(this.getPlayer());
             break;

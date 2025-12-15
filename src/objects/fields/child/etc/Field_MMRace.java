@@ -94,7 +94,7 @@ public class Field_MMRace extends Field {
    @Override
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
-      player.dropMessage(5, "멍멍 레이스에 참여하고 싶다면 나 두아트에게 말을 걸어보라고~!");
+      player.dropMessage(5, "ถ้าอยากร่วม Doggy Race ก็มาคุยกับฉัน Doart สิ~!");
    }
 
    @Override

@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import constants.AutoHottimeManager;
 import constants.GameConstants;
@@ -198,7 +198,7 @@ public class DebugCommands implements Command {
                c.getChannelServer().setExpRate(rate);
                c.getPlayer().dropMessage(6, "Exp Rate has been changed to " + rate + "x.");
             } else {
-               c.getPlayer().dropMessage(6, "Usage: !exprate <rate>");
+               c.getPlayer().dropMessage(6, "วิธีใช้: !exprate <rate>");
             }
          } else if (splitted[0].equals("!mesorate")) {
             if (splitted.length > 1) {
@@ -206,7 +206,7 @@ public class DebugCommands implements Command {
                c.getChannelServer().setMesoRate(rate);
                c.getPlayer().dropMessage(6, "Meso Rate has been changed to " + rate + "x.");
             } else {
-               c.getPlayer().dropMessage(6, "Usage: !mesorate <rate>");
+               c.getPlayer().dropMessage(6, "วิธีใช้: !mesorate <rate>");
             }
          } else if (splitted[0].equals("!dcall")) {
             for (GameServer cs : GameServer.getAllInstances()) {
@@ -399,10 +399,10 @@ public class DebugCommands implements Command {
             c.getPlayer().dropMessage(5, "Daily Event stopped.");
             TextEffect e = new TextEffect(-1, "[Daily Event] Daily event has stopped.\r\nThe event takes place 8-10 PM.", 50, 5000, 4, 0);
             Center.Broadcast.broadcastMessage(e.encodeForLocal());
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Daily Event] Daily event has stopped. The event takes place 8-10 PM."));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Daily Event] กิจกรรมรายวันหยุดแล้ว กิจกรรมมีช่วง 20:00-22:00 น."));
          } else if (splitted[0].equals("!skilllevel")) {
             if (splitted.length < 2) {
-               c.getPlayer().dropMessage(5, "Usage: !skilllevel <skillID>");
+               c.getPlayer().dropMessage(5, "วิธีใช้: !skilllevel <skillID>");
                return;
             }
 
@@ -482,7 +482,7 @@ public class DebugCommands implements Command {
             try {
                int townMap = Integer.parseInt(splitted[1]);
                ServerConstants.TownMap = townMap;
-               c.getPlayer().dropMessage(5, "Town map set to " + townMap + ".");
+               c.getPlayer().dropMessage(5, "ตั้งค่าแผนที่เมืองเป็น " + townMap + ".");
             } catch (Exception var135) {
                c.getPlayer().dropMessage(5, "Error. check map id.");
             }
@@ -607,7 +607,7 @@ public class DebugCommands implements Command {
                            );
                            p.send(CField.maplecabinetResult(8));
                            p.setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                           p.dropMessage(5, "[System] You have received a gift from GM " + c.getPlayer().getName() + ". Please check your cabinet.");
+                           p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". Please check your cabinet.");
                            c.getPlayer().dropMessage(5, "Item sent to online player " + p.getName() + ".");
                         } else {
                            ps = con.prepareStatement("SELECT `cabinet_index` FROM `cabinet_items` WHERE `accountid` = ? ORDER BY `cabinet_index` DESC");
@@ -801,13 +801,13 @@ public class DebugCommands implements Command {
                   );
                   p.send(CField.maplecabinetResult(8));
                   p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                  p.dropMessage(5, "[System] You have received a gift from GM " + c.getPlayer().getName() + ". Please check your cabinet.");
+                  p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". Please check your cabinet.");
                   MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.getByType((byte)TI), (short)slot, (short)quantity, false, false);
                   c.getPlayer().dropMessage(5, "Item sent to online player " + p.getName() + ".");
                }
             }
          } catch (NumberFormatException var157) {
-            c.getPlayer().dropMessage(5, "Usage: !giveitems <type 1-5> <slot> <quantity> <target name>");
+            c.getPlayer().dropMessage(5, "วิธีใช้: !giveitems <type 1-5> <slot> <quantity> <name>");
          }
       } else if (splitted[0].equals("!goto")) {
          Field targetx = c.getChannelServer().getMapFactory().getMap(180000100);
@@ -835,7 +835,7 @@ public class DebugCommands implements Command {
 
             c.getPlayer().changeMap(targetx, targetPortal);
          } else {
-            c.getPlayer().dropMessage(5, "[System] You cannot move maps while dead or busy.");
+            c.getPlayer().dropMessage(5, "[System] ไม่สามารถย้ายแผนที่ขณะตายหรือติดภารกิจได้");
          }
       } else if (splitted[0].equals("!track")) {
          int channel = Integer.parseInt(splitted[1]);
@@ -1136,7 +1136,7 @@ public class DebugCommands implements Command {
          c.getPlayer().dropMessage(5, "Auto Notice has been reloaded.");
       } else if (splitted[0].equals("!resetdamagerank")) {
          DamageMeasurementRank.resetRank();
-         c.getPlayer().dropMessage(5, "[System] Damage Measurement Rank has been reset.");
+         c.getPlayer().dropMessage(5, "[System] รีเซ็ตอันดับวัดความเสียหายแล้ว");
 
          for (GameServer cs : GameServer.getAllInstances()) {
             for (Field map : cs.getMapFactory().getAllMaps()) {

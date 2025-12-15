@@ -138,6 +138,6 @@ function action(mode, type, selection) {
 	item.setEnhance(item.getEnhance() + 15);
 	Packages.objects.item.MapleInventoryManipulator.addbyItem(cm.getClient(), item, false);
 	cm.gainItem(2630117, -1);
-	cm.sendOk("아이템이 지급되었습니다.");
+	cm.sendOk("ได้รับไอเทมแล้ว");
     }
 }

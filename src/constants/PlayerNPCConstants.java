@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 import database.DBConfig;
 import java.io.FileInputStream;

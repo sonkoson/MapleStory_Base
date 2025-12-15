@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import java.io.File;

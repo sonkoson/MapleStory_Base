@@ -1,4 +1,4 @@
-﻿package logging.entry;
+package logging.entry;
 
 public enum AuctionLogType {
    RegisterItem(0),

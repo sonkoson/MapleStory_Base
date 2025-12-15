@@ -409,7 +409,7 @@ public class Field_WillBattle extends Field {
 
       if (monster != null) {
          this.sendWillFreeze();
-         this.sendWillNotice("지금이에요. 윌이 무방비 상태일 때 피해를 입혀야 해요.", 245, 12000);
+         this.sendWillNotice("ตอนนี้แหละ! ต้องโจมตีตอนที่ Will ไร้การป้องกัน!", 245, 12000);
          if (monster.getId() != 8880300 && monster.getId() != 8880340 && monster.getId() != 8880360) {
             this.broadcastMessage(MobPacket.mobForcedSkillAction(monster.getObjectId(), 2, false));
          } else {
@@ -1044,7 +1044,7 @@ public class Field_WillBattle extends Field {
 
    public void setTakeDown() {
       this.sendWillUnk();
-      this.sendWillNotice("거짓의 거울은 공격을 반전시켜요. 균열이 나타나면 공격을 마주하세요.", 245, 26000);
+      this.sendWillNotice("Mirror of Lies สะท้อนการโจมตีกลับ หากรอยแยกปรากฏขึ้น ให้เผชิญหน้ากับการโจมตี", 245, 26000);
       this.setTakeDownCount(0);
       this.setStartTakeDownTime(System.currentTimeMillis() + 3000L);
       this.setNextStartMirrorOfLiesTime(System.currentTimeMillis() + 120000L);

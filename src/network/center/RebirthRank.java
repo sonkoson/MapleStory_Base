@@ -143,11 +143,11 @@ public class RebirthRank {
                }
             }
          } catch (Exception var39) {
-            System.out.println("환생 랭킹 저장 오류 발생");
+            System.out.println("Rebirth ranking save error");
             var39.printStackTrace();
          }
 
-         System.out.println("환생 랭킹 집계가 진행되었습니다.");
+         System.out.println("Rebirth ranking tally completed.");
       } catch (SQLException var41) {
          var41.printStackTrace();
       } finally {

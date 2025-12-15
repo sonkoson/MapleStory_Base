@@ -146,7 +146,7 @@ public class EquipEnchantScroll {
 
    public static void innocent(Equip equip, int flag, boolean force, Equip zeroEquip) {
       if ((InnocentFlag.HYPER.getType() & flag) == 0 && equip.isAmazingHyperUpgradeUsed() && !force) {
-         System.out.println("[오류] 놀장강 아이템에 하이퍼 업그레이드 플래그 없이 이노센트 사용 시도.");
+         System.out.println("[Error] Attempted to use Innocent Scroll on Tyrant item without Hyper Upgrade Flag.");
       } else {
          if (!DBConfig.isGanglim) {
             if (equip.getItemId() == 1032216 || equip.getItemId() == 1032219) {

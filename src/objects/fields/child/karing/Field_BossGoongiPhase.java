@@ -66,7 +66,7 @@ public class Field_BossGoongiPhase extends Field_BossKaring {
    @Override
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
-      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "카링을 쫓기 위해서는 도원경의 각 계절을 침공한 사흉을 물리쳐야 한다."));
+      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "เพื่อไล่ตาม Karing ต้องกำจัด 4 สัตว์ร้ายที่บุกรุกแต่ละฤดูกาลของ Shangri-La"));
    }
 
    @Override
@@ -113,7 +113,7 @@ public class Field_BossGoongiPhase extends Field_BossKaring {
       MapleMonster mob = c.getPlayer().getMap().getMonsterByOid(objectID);
       KaringUnkPacket(mob, mob.getPosition());
       new PacketEncoder();
-      c.getPlayer().dropMessage(-8, "타입 3번의 패킷을 전송했습니다." + mob.getId());
+      c.getPlayer().dropMessage(-8, "ส่งแพ็กเก็ต Type 3 แล้ว" + mob.getId());
    }
 
    public static void GoongiTestHandler(PacketDecoder slea, MapleClient c) {

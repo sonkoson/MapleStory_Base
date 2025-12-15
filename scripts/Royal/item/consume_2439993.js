@@ -3,69 +3,69 @@ importPackage(Packages.handling.world);
 importPackage(Packages.tools.packet);
 importPackage(Packages.objects.item);
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-핑크색 ="#fc0xFFFF3366#"
-분홍색 = "#fc0xFFF781D8#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Pink = "#fc0xFFFF3366#"
+Pink = "#fc0xFFF781D8#"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 enter = "\r\n";
-끝 = "#fc0xFF000000#"
+End = "#fc0xFF000000#"
 
 var status = -1;
 var enter = "\r\n";
 var boxmsg = enter;
 var pluscount = 1;
 var items = [
-  //[[아이템코드, 갯수], 확률]
+  //[[ItemCode, Qty], Probability]
   [[1119501,1], 0.8], // Limited Ring II 0.8%
   [[1122501,1], 0.8], // Limited Pendant II 0.8%
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
-  [[2439962,1], 1], // 초케인 무기
-  [[2439961,1], 1], // 초케인 장비
+  [[2439962,1], 1], // Arcane Umbra Weapon
+  [[2439961,1], 1], // Arcane Umbra Equipment
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
   [[2046076,1], 4], // 후한공
   [[2046150,1], 4], // 후두공
   [[2046077,1], 4], // 후한마
   [[2046251,1], 4], // 후방줌
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
   [[2439932,1], 5], // 루나 쁘띠 5
   [[2439944,1], 5], // 루나 쁘띠 4
   [[2439943,1], 5], // 루나 쁘띠 3
   [[2439942,1], 5], // 루나 쁘띠 2
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
   [[2430045,1], 1], // 메강 18
   [[2430044,1], 5], // 메강 17
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
   [[2049377,1], 5], // 스타포스 22
   [[2049376,1], 8], // 스타포스 20
   [[2049372,1], 10], // 스타포스 15
 
 
-  [[0, 0], 0], // 옌터
+  [[0, 0], 0], // Enter
 
   [[2633336,1], 15.7], // 선택 어센틱심볼 5개
   [[2437760,1], 15.7], // 선택 아케인심볼 5개
@@ -177,41 +177,41 @@ function reload() {
     check2 = cm.getClient().getKeyValue("1122501");
     if (check1 != null) {
         items = [
-          //[[아이템코드, 갯수], 확률]
+          //[[ItemCode, Qty], Probability]
           [[1122501,1], 1.6], // Limited Pendant II
           
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
-          [[2439962,1], 1], // 초케인 무기
-          [[2439961,1], 1], // 초케인 장비
+          [[2439962,1], 1], // Arcane Umbra Weapon
+          [[2439961,1], 1], // Arcane Umbra Equipment
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2046076,1], 4], // 후한공
           [[2046150,1], 4], // 후두공
           [[2046077,1], 4], // 후한마
           [[2046251,1], 4], // 후방줌
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2439932,1], 5], // 루나 쁘띠 5
           [[2439944,1], 5], // 루나 쁘띠 4
           [[2439943,1], 5], // 루나 쁘띠 3
           [[2439942,1], 5], // 루나 쁘띠 2
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2430045,1], 1], // 메강 18
           [[2430044,1], 5], // 메강 17
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2049377,1], 5], // 스타포스 22
           [[2049376,1], 8], // 스타포스 20
           [[2049372,1], 10], // 스타포스 15
 
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2633336,1], 15.7], // 선택 어센틱심볼 5개
           [[2437760,1], 15.7], // 선택 아케인심볼 5개
@@ -219,41 +219,41 @@ function reload() {
     }
     if (check2 != null) {
         items = [
-          //[[아이템코드, 갯수], 확률]
+          //[[ItemCode, Qty], Probability]
           [[1119501,1], 1.6], // Limited Ring II
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
-          [[2439962,1], 1], // 초케인 무기
-          [[2439961,1], 1], // 초케인 장비
+          [[2439962,1], 1], // Arcane Umbra Weapon
+          [[2439961,1], 1], // Arcane Umbra Equipment
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2046076,1], 4], // 후한공
           [[2046150,1], 4], // 후두공
           [[2046077,1], 4], // 후한마
           [[2046251,1], 4], // 후방줌
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2439932,1], 5], // 루나 쁘띠 5
           [[2439944,1], 5], // 루나 쁘띠 4
           [[2439943,1], 5], // 루나 쁘띠 3
           [[2439942,1], 5], // 루나 쁘띠 2
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2430045,1], 1], // 메강 18
           [[2430044,1], 5], // 메강 17
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2049377,1], 5], // 스타포스 22
           [[2049376,1], 8], // 스타포스 20
           [[2049372,1], 10], // 스타포스 15
 
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2633336,1], 15.7], // 선택 어센틱심볼 5개
           [[2437760,1], 15.7], // 선택 아케인심볼 5개
@@ -263,42 +263,42 @@ function reload() {
         cm.getClient().removeKeyValue("1119501");
         cm.getClient().removeKeyValue("1122501");
         items = [
-          //[[아이템코드, 갯수], 확률]
+          //[[ItemCode, Qty], Probability]
           [[1119501,1], 0.8], // Limited Ring II 0.8%
           [[1122501,1], 0.8], // Limited Pendant II 0.8%
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
-          [[2439962,1], 1], // 초케인 무기
-          [[2439961,1], 1], // 초케인 장비
+          [[2439962,1], 1], // Arcane Umbra Weapon
+          [[2439961,1], 1], // Arcane Umbra Equipment
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2046076,1], 4], // 후한공
           [[2046150,1], 4], // 후두공
           [[2046077,1], 4], // 후한마
           [[2046251,1], 4], // 후방줌
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2439932,1], 5], // 루나 쁘띠 5
           [[2439944,1], 5], // 루나 쁘띠 4
           [[2439943,1], 5], // 루나 쁘띠 3
           [[2439942,1], 5], // 루나 쁘띠 2
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2430045,1], 1], // 메강 18
           [[2430044,1], 5], // 메강 17
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2049377,1], 5], // 스타포스 22
           [[2049376,1], 8], // 스타포스 20
           [[2049372,1], 10], // 스타포스 15
 
 
-          [[0, 0], 0], // 옌터
+          [[0, 0], 0], // Enter
 
           [[2633336,1], 15.7], // 선택 어센틱심볼 5개
           [[2437760,1], 15.7], // 선택 아케인심볼 5개

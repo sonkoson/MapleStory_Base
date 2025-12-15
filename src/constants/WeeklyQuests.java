@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;

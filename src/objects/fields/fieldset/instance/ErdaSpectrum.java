@@ -538,7 +538,7 @@ public class ErdaSpectrum extends FieldSetInstance {
                                           ErdaSpectrum.this.Var.setProperty("CrackMapPhase", "1");
                                           map.broadcastMessage(
                                              CField.UIPacket.sendBigScriptProgressMessage(
-                                                "균열이 커져 더 많은 몬스터가 소환됩니다.", FontType.NanumGothicBold, FontColorType.White
+                                                "รอยแยกขยายใหญ่ขึ้น มอนสเตอร์ถูกเรียกออกมามากขึ้น", FontType.NanumGothicBold, FontColorType.White
                                              )
                                           );
                                        }
@@ -548,7 +548,7 @@ public class ErdaSpectrum extends FieldSetInstance {
                                           ErdaSpectrum.this.Var.setProperty("CrackMapPhase", "2");
                                           map.broadcastMessage(
                                              CField.UIPacket.sendBigScriptProgressMessage(
-                                                "균열이 커져 더 많은 몬스터가 소환됩니다.", FontType.NanumGothicBold, FontColorType.White
+                                                "รอยแยกขยายใหญ่ขึ้น มอนสเตอร์ถูกเรียกออกมามากขึ้น", FontType.NanumGothicBold, FontColorType.White
                                              )
                                           );
                                        }
@@ -687,7 +687,7 @@ public class ErdaSpectrum extends FieldSetInstance {
       this.Var.setProperty("elim", String.valueOf(elim));
       int Erda = Integer.parseInt(this.Var.getProperty("Erda"));
       map.broadcastMessage(ErdaSpectrumWormInfo(Erda, this.Var.getProperty("elim")));
-      map.broadcastMessage(CField.UIPacket.sendBigScriptProgressMessage("아르마 주니어가 동굴 뒤로 숨어 들어갑니다.", FontType.NanumGothicBold, FontColorType.White));
+      map.broadcastMessage(CField.UIPacket.sendBigScriptProgressMessage("Arma Junior ซ่อนตัวอยู่หลังถ้ำ", FontType.NanumGothicBold, FontColorType.White));
       if (elim == 5) {
          this.clearSpectrum(0);
       }

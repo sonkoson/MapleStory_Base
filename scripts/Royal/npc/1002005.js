@@ -15,8 +15,8 @@ var Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
 var Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
 var Color = "#fc0xFF6600CC#"
 var Black = "#fc0xFF000000#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 
 var enter = "\r\n";
 var seld = -1;

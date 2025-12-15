@@ -28,60 +28,60 @@ function action(mode, type, selection) {
         ran = Packages.objects.utils.Randomizer.rand(300, 300);
         if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
             cm.gainItem(1302198, 1);
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1312104, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1322144, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1332175, 1); // C급 끝
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1342057, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1372124, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1382150, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1402136, 1); // B급 끝
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1412092, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1422095, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1432124, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1442162, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1452154, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1462144, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1472166, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1482127, 1); // S급 끝
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1522061, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1482127, 1);
         } else if (Packages.objects.utils.Randomizer.nextInt(300) <= 30) {
-            cm.sendOk("아이템이 나왔습니다.");
+            cm.sendOk("ได้รับไอเทมแล้ว");
             cm.gainItem(1532065, 1);
         }
     }

@@ -1,4 +1,4 @@
-﻿package api;
+package api;
 
 public class DonationCheckResult {
    private int totalPrice = 0;

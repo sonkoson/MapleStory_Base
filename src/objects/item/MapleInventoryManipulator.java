@@ -940,13 +940,13 @@ public class MapleInventoryManipulator {
          if (before == 0) {
             switch (item.getItemId()) {
                case 4001128:
-                  c.getPlayer().dropMessage(5, "You have gained a Powder Keg, you can give this in to Aramia of Henesys.");
+                  c.getPlayer().dropMessage(5, "ได้รับ Powder Keg สามารถนำไปให้ Aramia ที่ Henesys");
                   break;
                case 4001246:
-                  c.getPlayer().dropMessage(5, "You have gained a Warm Sun, you can give this in to Maple Tree Hill through @joyce.");
+                  c.getPlayer().dropMessage(5, "ได้รับ Warm Sun, สามารถนำไปให้ Joyce ที่ Maple Tree Hill");
                   break;
                case 4001473:
-                  c.getPlayer().dropMessage(5, "You have gained a Tree Decoration, you can give this in to White Christmas Hill through @joyce.");
+                  c.getPlayer().dropMessage(5, "ได้รับ Tree Decoration, สามารถนำไปให้ Joyce ที่ White Christmas Hill");
             }
          }
 
@@ -1187,24 +1187,24 @@ public class MapleInventoryManipulator {
          }
 
          if (count >= 7) {
-            c.getPlayer().dropMessage(1, "치장 옵션 강화가 적용된 아이템은 총 7개 이상 장착할 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ไอเทมที่มี Decorative Option Enhancement เกิน 7 ชิ้น");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else if (source != null && source.getItemId() == 1112917 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1112917) != null) {
-            c.getPlayer().dropMessage(1, "해당 아이템은 중복해서 착용할 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else if (source != null && source.getItemId() == 1114401 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1114401) != null) {
-            c.getPlayer().dropMessage(1, "해당 아이템은 중복해서 착용할 수 없습니다.");
+            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             if (!DBConfig.isGanglim) {
                if (source != null && source.getItemId() == 1114402 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1114402) != null) {
-                  c.getPlayer().dropMessage(1, "해당 아이템은 중복해서 착용할 수 없습니다.");
+                  c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
 
                if (source != null && source.getItemId() == 1112921 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1112921) != null) {
-                  c.getPlayer().dropMessage(1, "해당 아이템은 중복해서 착용할 수 없습니다.");
+                  c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
@@ -1523,7 +1523,7 @@ public class MapleInventoryManipulator {
                                              c.getPlayer()
                                                 .dropMessage(
                                                    1,
-                                                   "You may not equip this item because you already have a "
+                                                   "ไม่สามารถสวมใส่ได้เนื่องจากมี ... อยู่แล้ว"
                                                       + StringUtil.makeEnumHumanReadable(s.name())
                                                       + " equipped."
                                                 );
@@ -1559,7 +1559,7 @@ public class MapleInventoryManipulator {
                                        }
 
                                        if (chr.getInventory(MapleInventoryType.CASH_EQUIP).getNextFreeSlot() == -1) {
-                                          chr.dropMessage(1, "치장 인벤토리 공간을 최소 1칸 남기고 시도해주세요.");
+                                          chr.dropMessage(1, "กรุณาเหลือช่องว่างใน Cash Inventory อย่างน้อย 1 ช่อง");
                                           return;
                                        }
 
@@ -1679,7 +1679,7 @@ public class MapleInventoryManipulator {
                                        }
 
                                        if (source.getAndroid() == null) {
-                                          chr.dropMessage(1, "안드로이드 오류가 발생하였습니다.");
+                                          chr.dropMessage(1, "เกิดข้อผิดพลาดกับ Android");
                                           return;
                                        }
 
@@ -2105,19 +2105,19 @@ public class MapleInventoryManipulator {
                return false;
             } else if (!ItemFlag.PROTECTED.check(flag) && (quantity == 1 || type != MapleInventoryType.EQUIP)) {
                if (GameConstants.isEquip(source.getItemId()) && (((Equip)source).getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "장비의 흔적은 버리기 불가능합니다.");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถทิ้ง Trace of Equipment ได้");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return false;
                } else {
                   if (DBConfig.isGanglim) {
                      if (GameConstants.isRoyalBanMesoItem(source.getItemId())) {
-                        c.getPlayer().dropMessage(1, "메소 주머니는 버릴 수 없습니다.");
+                        c.getPlayer().dropMessage(1, "ไม่สามารถทิ้งถุง Meso ได้");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return false;
                      }
 
                      if (GameConstants.isRoyalBanDropItem(source.getItemId())) {
-                        c.getPlayer().dropMessage(1, "해당 아이템은 버릴 수 없습니다.");
+                        c.getPlayer().dropMessage(1, "ไอเทมนี้ทิ้งไม่ได้");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return false;
                      }
@@ -2204,7 +2204,7 @@ public class MapleInventoryManipulator {
                               c.getPlayer().updateOneInfo(i, "clear", "0");
                               MapleQuestStatus newStatus = new MapleQuestStatus(MapleQuest.getInstance(i), (byte)0, 2003);
                               c.getPlayer().updateQuest(newStatus);
-                              c.getPlayer().dropMessage(1, "제네시스 해방 퀘스트가 초기화되었습니다. 재접속 시 다시 수행 가능합니다.");
+                              c.getPlayer().dropMessage(1, "เควสปลดปล่อย Genesis ถูกรีเซ็ต สามารถทำได้ใหม่เมื่อเข้าเกมอีกครั้ง");
                            }
                         }
                      }

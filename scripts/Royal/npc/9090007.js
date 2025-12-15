@@ -466,7 +466,7 @@ function action(M, T, S) {
 							chr.dropMessage(5, "[Notice] " + cm.getItemName(inv.getItem(S4).getItemId()) + " item has been deleted due to '" + REASON() + "'.");
 							chr.dropMessage(5, " ");
 
-							//log("success", "삭제	"+chr.getId()+"	"+name+"	"+invType+"	"+inv.getItem(S4).getItemId()+"	1개	"+REASON()+"\r\n");
+							//log("success", "Delete	"+chr.getId()+"	"+name+"	"+invType+"	"+inv.getItem(S4).getItemId()+"	1qty	"+REASON()+"\r\n");
 							MapleInventoryManipulator.removeFromSlot(chr.getClient(), TYPES, S4, 1, false);
 							cm.sendOk("Item deletion complete.");
 

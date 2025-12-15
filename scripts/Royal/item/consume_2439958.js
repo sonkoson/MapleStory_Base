@@ -136,7 +136,7 @@ function action(mode, type, selection) {
                         cm.gainItem(2439958, -1);
                         cm.gainZeniaItemA(item1[i], "", 0, 0, 15, 15, 15, 0);
                     }
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
                     cm.dispose();
                     return;
                 break;
@@ -146,7 +146,7 @@ function action(mode, type, selection) {
                         cm.gainItem(2439958, -1);
                         cm.gainZeniaItemA(item2[i], "", 0, 0, 15, 15, 15, 0);
                     }
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
                     cm.dispose();
                     return;
                 break;
@@ -156,7 +156,7 @@ function action(mode, type, selection) {
                         cm.gainItem(2439958, -1);
                         cm.gainZeniaItemA(item3[i], "", 0, 0, 15, 15, 15, 0);
                     }
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
                     cm.dispose();
                     return;
                 break;
@@ -166,7 +166,7 @@ function action(mode, type, selection) {
                         cm.gainItem(2439958, -1);
                         cm.gainZeniaItemA(item4[i], "", 0, 0, 15, 15, 15, 0);
                     }
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
                     cm.dispose();
                     return;
                 break;
@@ -176,7 +176,7 @@ function action(mode, type, selection) {
                         cm.gainItem(2439958, -1);
                         cm.gainZeniaItemA(item5[i], "", 0, 0, 15, 15, 15, 0);
                     }
-                    cm.sendOk("#fs11#지급이 완료되었습니다.");
+                    cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
                     cm.dispose();
                     return;
                 break;
@@ -194,12 +194,12 @@ function action(mode, type, selection) {
         }
 
         if (!cm.canHold(selitem)) {
-            cm.sendOk("#fs11#장비칸에 빈 공간이 없습니다.");
+            cm.sendOk("#fs11#ไม่มีช่องว่างในกระเป๋าอุปกรณ์");
             cm.dispose();
             return;
         }
 
-        cm.sendOk("#fs11#지급이 완료되었습니다.");
+        cm.sendOk("#fs11#ได้รับของเรียบร้อยแล้ว");
         cm.gainItem(2439958, -1);
         cm.gainZeniaItemA(selitem, "", 0, 0, 15, 15, 15, 0);//올, 공, 올%, 뎀%, 보공%, 방무%
         cm.dispose();

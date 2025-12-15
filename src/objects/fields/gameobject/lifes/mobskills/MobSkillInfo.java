@@ -299,9 +299,9 @@ public class MobSkillInfo {
                if (from.getMap() instanceof Field_JinHillah) {
                   Field_JinHillah f = (Field_JinHillah)from.getMap();
                   if (this.skillLevel == 261) {
-                     f.sendJinHillahNotice("힐라가 죽음의 밑바닥에서 스우의 사령을 끌어올리는 소리가 들린다.", 5000);
+                     f.sendJinHillahNotice("ได้ยินเสียง Hilla ดึงวิญญาณ Lotus ขึ้นมาจากก้นบึ้งแห่งความตาย", 5000);
                   } else if (this.skillLevel == 262) {
-                     f.sendJinHillahNotice("힐라가 죽음의 밑바닥에서 데미안의 사령을 끌어올리는 소리가 들린다.", 5000);
+                     f.sendJinHillahNotice("ได้ยินเสียง Hilla ดึงวิญญาณ Damien ขึ้นมาจากก้นบึ้งแห่งความตาย", 5000);
                   }
                }
             } else if (fhs.size() < summonIDs.length) {
@@ -907,7 +907,7 @@ public class MobSkillInfo {
             }
 
             if (msi == null) {
-               System.out.println("msi가 Null 해당 몹스킬 : " + this.skillId);
+               System.out.println("msi is Null. Mob Skill : " + this.skillId);
             } else {
                player.giveDebuff(SecondaryStatFlag.StopPortion, this.x, this.y, this.getDuration(), msi.getVal(), skillLevel);
             }
@@ -1159,7 +1159,7 @@ public class MobSkillInfo {
                   break label1171;
                case 16:
                   if (this.skillLevel == 77) {
-                     System.out.println("!무적");
+                     System.out.println("!invincible");
                      monster.getMap()
                         .broadcastMessage(
                            MobPacket.mobSkillDelay(
@@ -1363,7 +1363,7 @@ public class MobSkillInfo {
                   case 4:
                   case 10:
                      lucidField.doFairyDust(monster, this.skillLevel, this);
-                     lucidField.sendLucidNotice("저 바람을 맞으면 꿈이 강해질 겁니다!", 4);
+                     lucidField.sendLucidNotice("ถ้าโดนลมนั้น ความฝันจะรุนแรงขึ้น!", 4);
                      return;
                   case 5:
                      List<Integer> rains = new ArrayList<>();
@@ -1373,7 +1373,7 @@ public class MobSkillInfo {
                      }
 
                      lucidField.sendLucidSkill_LaserRain(this.getMobSkillStatsInt(MobSkillStat.s), rains);
-                     lucidField.sendLucidNotice("루시드가 강력한 공격을 사용하려 합니다!", -1);
+                     lucidField.sendLucidNotice("Lucid กำลังจะใช้การโจมตีที่รุนแรง!", -1);
                      return;
                   case 6:
                   case 11:
@@ -1384,7 +1384,7 @@ public class MobSkillInfo {
 
                      return;
                   case 7:
-                     lucidField.sendLucidNotice("루시드가 강력한 소환수를 소환했습니다!", -1);
+                     lucidField.sendLucidNotice("Lucid ได้เรียกมอนสเตอร์ที่แข็งแกร่งออกมา!", -1);
                      boolean left = (Randomizer.nextInt() & 1) != 0;
                      if (lucidField.getPhase() == 1) {
                         lucidField.sendLucidCreateDragon(new Point(0, 0), new Point(0, 0), left);
@@ -1398,7 +1398,7 @@ public class MobSkillInfo {
                      return;
                   case 8:
                      lucidField.sendLucidSkill_Rush(0);
-                     lucidField.sendLucidNotice("루시드가 강력한 공격을 사용하려 합니다!", -1);
+                     lucidField.sendLucidNotice("Lucid กำลังจะใช้การโจมตีที่รุนแรง!", -1);
                      return;
                   case 9:
                      if (lucidField instanceof Field_LucidBattlePhase2) {
@@ -1494,7 +1494,7 @@ public class MobSkillInfo {
                case 4:
                   if (monster.getMap() instanceof Field_WillBattle) {
                      Field_WillBattle fx = (Field_WillBattle)monster.getMap();
-                     fx.sendWillNotice("눈동자를 공격해서 다른 공간에 달빛을 흘려보내세요. 어서 달빛 보호막을 생성해야 해요", 245, 28000);
+                     fx.sendWillNotice("โจมตีดวงตาเพื่อส่งแสงจันทร์ไปยังอีกมิติ รีบสร้างเกราะแสงจันทร์เร็วเข้า!", 245, 28000);
                      fx.sendWillUnk();
                      MapleMonster mob = MapleLifeFactory.getMonster(8880305);
                      mob.setMaxHp(Long.MAX_VALUE);
@@ -1545,7 +1545,7 @@ public class MobSkillInfo {
                         monster.getMap().broadcastMessage(MobPacket.showBossHP(will1));
                         monster.getMap().broadcastMessage(MobPacket.showBossHP(will2));
                         int typex = Randomizer.nextInt(2);
-                        fx.sendWillNotice("윌이 힘을 개방하려 해요. 거짓된 공간이 붕괴할 테니 진실한 공간을 찾아 대피하세요.", 245, 3000);
+                        fx.sendWillNotice("Will กำลังจะปลดปล่อยพลัง พื้นที่จอมปลอมจะพังทลาย จงหาพื้นที่จริงและหลบภัย", 245, 3000);
                         fx.setMonitorBreakType(typex);
                         fx.setStartMonitorBreakTime(System.currentTimeMillis() + 3000L);
                         player.getMap().broadcastMessage(MobPacket.showBossHP(monster));

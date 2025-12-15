@@ -91,7 +91,7 @@ public class CustomItem {
             }
          }
 
-         System.out.println("총 " + oldList.size() + "개의 과거 커스텀 아이템을 불러왔습니다. ");
+         System.out.println("Total " + oldList.size() + "개의 과거 커스텀 아이템을 불러왔습니다. ");
       }
    }
 

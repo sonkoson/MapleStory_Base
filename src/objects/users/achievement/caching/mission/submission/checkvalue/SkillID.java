@@ -13,7 +13,7 @@ public class SkillID {
    public SkillID(MapleData root) {
       this.condition = AchievementConditionType.getType(MapleDataTool.getString("condition", root, "or"));
       if (this.condition != AchievementConditionType.or) {
-         System.out.println("AND가 있다고!?");
+         System.out.println("AND exists!?");
          System.out.println(root.getParent().getParent().getParent().getParent().getParent().getParent().getName());
       }
 

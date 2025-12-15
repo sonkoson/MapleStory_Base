@@ -87,7 +87,7 @@ public class PetHandler {
          if (toUse != null && toUse.getQuantity() >= 1 && toUse.getItemId() == slea.readInt()) {
             long time = System.currentTimeMillis();
             if (chr.getNextConsume() > time) {
-               chr.dropMessage(5, "You may not use this item yet.");
+               chr.dropMessage(5, "ยังใช้ไอเทมนี้ไม่ได้");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer(), true));
             } else {
                if (!FieldLimitType.PotionUse.check(chr.getMap().getFieldLimit())) {
@@ -271,20 +271,20 @@ public class PetHandler {
       int questId = 101080 + petIndex;
       String questKey = String.valueOf(petIndex * 10 + skillIndex);
       if (pet == null) {
-         chr.dropMessage(1, "펫 정보가 없습니다.");
+         chr.dropMessage(1, "ไม่มีข้อมูลสัตว์เลี้ยง");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else if (skillIndex >= 2) {
-         chr.dropMessage(1, "인덱스 정보에 오류가 발생하였습니다.");
+         chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูล Index");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else if (skillId != 0 && SkillFactory.getSkill(skillId) == null) {
-         chr.dropMessage(1, "스킬 정보에 오류가 발생하였습니다.");
+         chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูลสกิล");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else {
          if (skillId != 0) {
             Skill skill = SkillFactory.getSkill(skillId);
             SecondaryStatEffect eff = skill.getEffect(chr.getSkillLevel(skillId));
             if (eff != null && eff.getCooldown(chr) > 0 && !skill.isPetAutoBuff()) {
-               chr.dropMessage(1, "스킬 하위 정보에 오류가 발생하였습니다.");
+               chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูลย่อยของสกิล");
                chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return;
             }

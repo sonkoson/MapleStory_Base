@@ -170,7 +170,7 @@ public class Field_BossKalosPhase2 extends Field_BossKalos {
                         }
                      }
                   } catch (Exception var18) {
-                     System.out.println("칼로스 클리어 처리 오류");
+                     System.out.println("Kalos Clear processing error");
                      var18.printStackTrace();
                   }
 

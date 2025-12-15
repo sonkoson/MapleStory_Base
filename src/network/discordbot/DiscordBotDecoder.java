@@ -22,7 +22,7 @@ public class DiscordBotDecoder extends ByteToMessageDecoder {
                return;
             }
          } catch (Exception var6) {
-            System.out.println("디스코드 봇 오류 발생");
+            System.out.println("Discord Bot error occurred");
             var6.printStackTrace();
          }
       }

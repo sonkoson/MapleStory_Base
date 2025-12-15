@@ -439,7 +439,7 @@ public class Field_GuardianAngelSlime extends Field {
       encode = new GuardianAngelSlime.InitCrystal(1, 7, 0);
       packet = this.encode(encode);
       this.broadcastMessage(packet);
-      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "성공했어!! 하단 공간이 닫히기 전에 10초 안에 위로 올라가자!!"));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "สำเร็จแล้ว!! รีบขึ้นไปข้างบนภายใน 10 วินาทีก่อนที่พื้นที่ด้านล่างจะปิดลง!!"));
       encode = new GuardianAngelSlime.InitGuardianWave(5);
       packet = this.encode(encode);
       this.broadcastMessage(packet);
@@ -497,7 +497,7 @@ public class Field_GuardianAngelSlime extends Field {
       this.broadcastMessage(MobPacket.blackMageSkillAction(this.boss.getObjectId(), 5, true));
       MobSkillInfo info = MobSkillFactory.getMobSkill(266, 3);
       info.setCasting(this.boss, 0);
-      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "가디언 웨이브가 떨어질 거야!! 크리스탈 방울을 설치해 웨이브의 흐름을 제어해줘. 이번에도 내가 도와줄게!"));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "Guardian Wave กำลังจะตกลงมา!! ติดตั้ง Crystal Droplet เพื่อควบคุมการไหลของคลื่น ฉันจะช่วยเธอเอง!"));
       this.broadcastMessage(this.encode(new GuardianAngelSlime.InitState(3)));
    }
 

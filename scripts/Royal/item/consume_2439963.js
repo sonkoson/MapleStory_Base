@@ -27,17 +27,17 @@ function action(mode, type, selection) {
 	} else if (status == 2) {
 	    if (cm.haveItem(2439963, 1)) {
 		if (cm.canHold(book[select])) {
-		    cm.sendOk("인벤토리를 확인하세요");
+		    cm.sendOk("กรุณาตรวจสอบช่องเก็บของ");
 		    cm.gainItem(2439963, -1);
 			cm.gainZeniaItem(book[select], "[홍보]", 400, 250, 10, 0, 30, 20, 0, 9, 40070);
 		    //cm.gainItem(book[select], 1, 1);
 		    cm.dispose();
 		} else {
-		    cm.sendOk("장비칸에 빈 공간이 없습니다.");
+		    cm.sendOk("ไม่มีช่องว่างในกระเป๋าอุปกรณ์");
 		    cm.dispose();
 		}
             } else {
-		cm.sendOk("부족합니다.");
+		cm.sendOk("ไม่เพียงพอ");
 		cm.dispose();
 
 }

@@ -198,7 +198,7 @@ public class Field_Arkaium extends Field {
                for (int i = baseID; i <= baseID + 9; i++) {
                   Field field = GameServer.getInstance(player.getClient().getChannel()).getMapFactory().getMap(i);
                   if (field != null && field.getCharactersSize() == 0 && !mapList.contains(i)) {
-                     player.dropMessage(5, "아카이럼이 시공간을 비틀어 어디론가 추방합니다.");
+                     player.dropMessage(5, "Arkarium บิดเบือนกาลเวลาและเนรเทศคุณไปที่ไหนสักแห่ง");
                      player.setRegisterTransferField(i);
                      player.setRegisterTransferFieldTime(System.currentTimeMillis());
                      mapList.add(i);

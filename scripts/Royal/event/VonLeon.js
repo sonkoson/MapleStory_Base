@@ -2,7 +2,7 @@ importPackage(Packages.objects.utils);
 
 // 이벤트매니저 초기화할 내용(채널별로 적용됨)
 function init() {
-    //입장 가능한 맵 갯수 총8개씩(이지와 노말은 통합)
+    //Total 8 clickable maps (Easy and Normal are combined)
     em.setProperty("status0", "0");
 
 }

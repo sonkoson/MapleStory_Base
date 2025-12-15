@@ -12,7 +12,7 @@ var enter = "\r\n";
 var item1 = [2430783, "#z2430783#", "1"];
 var ac1 = [4036660, "[R] 아이스 박스", "2"];
 var ac2 = [4032036, "[R] 캐시 추첨 티켓", "1"];
-var 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+var Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 
 function action(mode, type, selection) {
 	if (mode == -1) {
@@ -62,10 +62,10 @@ return;;
 						cm.gainItem(item1[0], -item1[2] * cost);
 						cm.gainItem(ac1[0], ac1[2] * cost);
 						cm.gainItem(ac2[0], ac2[2] * cost);
-						cm.sendOk("#fn나눔고딕#교환완료\r\n");
+						cm.sendOk("#fnArial#การแลกเปลี่ยนเสร็จสมบูรณ์\r\n");
 						cm.dispose();
 
-						//로그작성
+						//Log
 						Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/여름이벤트.log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n사용한 아이템 : [R] 아이스 박스 (2430783)\r\n사용 개수 : " + cost + "\r\n\r\n", true);
 					} else {
 						cm.sendOk("#fn나눔고딕##r기타칸을 확인해주세요");

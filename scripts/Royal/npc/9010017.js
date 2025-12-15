@@ -140,7 +140,7 @@ if(cm.getPlayer().getName() == "이카로스") {
 			case 0:
 			if(chr == null)
 			{
-				cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
+				cm.sendOk("ตัวละครดังกล่าวออกจากเกมหรือขาดการเชื่อมต่อ");
 				//log("fail", "조회 실패	"+name+"	조회 중 접속 종료\r\n");
 				cm.dispose();
 				return;
@@ -171,7 +171,7 @@ if(cm.getPlayer().getName() == "이카로스") {
 			{
 				if(chr == null)
 				{
-					cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
+					cm.sendOk("ตัวละครดังกล่าวออกจากเกมหรือขาดการเชื่อมต่อ");
 					//log("fail", "조회 실패	"+name+"	조회 중 접속 종료\r\n");
 					cm.dispose();
 					return;
@@ -284,13 +284,13 @@ if(cm.getPlayer().getName() == "이카로스") {
 			case 0:
 			if(chr == null)
 			{
-				cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
+				cm.sendOk("ตัวละครดังกล่าวออกจากเกมหรือขาดการเชื่อมต่อ");
 				//log("fail", "조회 실패	"+name+"	인벤토리 조회 중 접속 종료\r\n");
 				cm.dispose();
 				return;
 			}
 
-			if(S3 < 10) // 인벤토리
+			if(S3 < 10) // Inventory
 			{
 				//log("access", ""+name+"("+chr.getId()+") 캐릭터의 "+invType+" 인벤토리의 "+inv.getItem(S4).getItemId()+" 아이템에 접속\r\n");
 
@@ -398,13 +398,13 @@ if(cm.getPlayer().getName() == "이카로스") {
 			case 0:
 			if(chr == null)
 			{
-				cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
+				cm.sendOk("ตัวละครดังกล่าวออกจากเกมหรือขาดการเชื่อมต่อ");
 				//log("fail", "조회 실패	"+name+"	인벤토리 조회 중 접속 종료\r\n");
 				cm.dispose();
 				return;
 			}
 
-			if(S3 < 10) // 인벤토리
+			if(S3 < 10) // Inventory
 			{
 				if(S5 != 20010) // 복사가 아니라면,
 				{
@@ -472,13 +472,13 @@ if(cm.getPlayer().getName() == "이카로스") {
 
 			if(chr == null)
 			{
-				cm.sendOk("해당 캐릭터가 접속 등을 종료하여 연결이 끊어졌습니다.");
+				cm.sendOk("ตัวละครดังกล่าวออกจากเกมหรือขาดการเชื่อมต่อ");
 				//log("fail", "조회 실패	"+name+"	인벤토리 수정 중 접속 종료\r\n");
 				cm.dispose();
 				return;
 			}
 
-			if(S3 < 10) // 인벤토리
+			if(S3 < 10) // Inventory
 			{
 				REASON = function() {
 						switch(cm.getText())

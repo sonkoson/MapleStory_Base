@@ -8,7 +8,7 @@ var canowner = ["△", "★", "★△", "★★", "★★△", "★★★"];
 
 function ConvertNumber(number) { //모 블로그 참조함, 이 부분에 대해서는 키네시스(kinesis8@nate.com), 라피스#2519 에게 저작권이 없음
     var inputNumber  = number < 0 ? false : number;
-    var unitWords    = ['', '만 ', '억 ', '조 ', '경 '];
+    var unitWords    = ['', 'Ten Thousand ', 'Hundred Million ', 'Trillion ', 'Quadrillion '];
     var splitUnit    = 10000;
     var splitCount   = unitWords.length;
     var resultArray  = [];
@@ -89,7 +89,7 @@ function action (mode, type, selection) {
         for (i = 0; i <= 50; i++) { // 장착중
             item = cm.getInventory(-1).getItem(i*-1)
             if (item != null) {
-                // 강화 가능한 아이템만 출력
+                // Output only upgradeable items
                 if (canowner.indexOf(item.getOwner()) != -1) {
                     if (!cm.isCash(item.getItemId())) {
                         say += "#L" + (i + 100000) + "##e#b#i" + item.getItemId() + "# #z" + item.getItemId() + "# #r#e[장착중]#n#k#l\r\n";
@@ -102,7 +102,7 @@ function action (mode, type, selection) {
         for (i = 0; i <= cm.getInventory(1).getSlotLimit(); i++) {
             item = cm.getInventory(1).getItem(i)
             if (item != null) {
-                // 강화 가능한 아이템만 출력
+                // Output only upgradeable items
                 if (canowner.indexOf(item.getOwner()) != -1) {
                     if (!cm.isCash(item.getItemId())) {
                         say += "#L" + i + "##e#b#i" + item.getItemId() + "# #z" + item.getItemId() + "# #r["+i+"슬롯]#k#l\r\n";
@@ -138,7 +138,7 @@ function action (mode, type, selection) {
         }
         itemid = item1.getItemId();
         if (banitem.indexOf(itemid) != -1) {
-            cm.sendOk("#fs11#심볼 아이템은 강화할 수 없습니다.");
+            cm.sendOk("#fs11#ไอเทม Symbol ไม่สามารถตีบวกได้");
             cm.dispose();
             return;
         }
@@ -147,7 +147,7 @@ function action (mode, type, selection) {
         for (i = 0; i <= 50; i++) { // 장착중
             item = cm.getInventory(-1).getItem(i*-1)
             if (item != null) {
-                // 강화 가능한 아이템만 출력
+                // Output only upgradeable items
                 if (item.getOwner() == "") {
                     if (!cm.isCash(item.getItemId())) {
                         say += "#L" + (i + 100000) + "##e#b#i" + item.getItemId() + "# #z" + item.getItemId() + "# #r#e[장착중]#n#k#l\r\n";
@@ -160,7 +160,7 @@ function action (mode, type, selection) {
         for (i = 0; i <= cm.getInventory(1).getSlotLimit(); i++) {
             item = cm.getInventory(1).getItem(i)
             if (item != null) {
-                // 강화 가능한 아이템만 출력
+                // Output only upgradeable items
                  if (item.getOwner() == "") {
                     if (!cm.isCash(item.getItemId())) {
                         say += "#L" + i + "##e#b#i" + item.getItemId() + "# #z" + item.getItemId() + "# #r["+i+"슬롯]#k#l\r\n";
@@ -198,7 +198,7 @@ function action (mode, type, selection) {
         
         itemid2 = item2.getItemId();
         if (banitem.indexOf(itemid2) != -1) {
-            cm.sendOk("#fs11#심볼 아이템은 강화할 수 없습니다.");
+            cm.sendOk("#fs11#ไอเทม Symbol ไม่สามารถตีบวกได้");
             cm.dispose();
             return;
         }

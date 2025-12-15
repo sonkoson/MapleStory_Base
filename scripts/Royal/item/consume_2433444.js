@@ -15,23 +15,23 @@ importPackage(Packages.constants);
 importPackage(Packages.objects.item);
 importPackage(Packages.objects.users.enchant)
 
-보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#"
+Purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+Blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#"
-색 = "#fc0xFF6600CC#"
-검은색 = "#fc0xFF000000#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+Color = "#fc0xFF6600CC#"
+Black = "#fc0xFF000000#"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 
 var 보조무기 = "";
 var 전사1 = "1004422"; // 모자
@@ -160,7 +160,7 @@ function action(M, T, S) {
                 "  #i1132161:# #t1132161:#\r\n", false, true, 1, 1052206, ScriptMessageFlag.NpcReplacedByNpc);
 
             if (wList.indexOf(S) == -1) {
-                cm.sendOk("비정상적인 접근");
+                cm.sendOk("การเข้าถึงผิดปกติ");
                 cm.dispose();
                 return;
             }
@@ -186,7 +186,7 @@ function action(M, T, S) {
 
 
             if (wList.indexOf(S) == -1) {
-                cm.sendOk("비정상적인 접근");
+                cm.sendOk("การเข้าถึงผิดปกติ");
                 cm.dispose();
                 return;
             }
@@ -214,7 +214,7 @@ function action(M, T, S) {
 
 
             if (wList.indexOf(S) == -1) {
-                cm.sendOk("비정상적인 접근");
+                cm.sendOk("การเข้าถึงผิดปกติ");
                 cm.dispose();
                 return;
             }
@@ -240,7 +240,7 @@ function action(M, T, S) {
 
 
             if (wList.indexOf(S) == -1) {
-                cm.sendOk("비정상적인 접근");
+                cm.sendOk("การเข้าถึงผิดปกติ");
                 cm.dispose();
                 return;
             }
@@ -267,7 +267,7 @@ function action(M, T, S) {
 
 
             if (wList.indexOf(S) == -1) {
-                cm.sendOk("비정상적인 접근");
+                cm.sendOk("การเข้าถึงผิดปกติ");
                 cm.dispose();
                 return;
             }
@@ -339,7 +339,7 @@ function isMagician(i) {
 
 function getWeapon(i) {
     switch (Math.floor(cm.getPlayer().getJob())) {
-        /* 전사 */
+        /* Warrior */
         case 100:
             wList.push(1302333); // 한손검
             wList.push(1312199); // 한손도끼
@@ -446,7 +446,7 @@ function getWeapon(i) {
             보조무기 = "1354006"; // 이볼빙 노블 브레이슬릿
             break;
 
-            /* 마법사 */
+            /* Magician */
         case 200: // 불독
         case 210:
         case 211:

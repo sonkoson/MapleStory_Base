@@ -185,7 +185,7 @@ public class CalcDamageUtil {
             case 213:
                return calcBaseDamage(player.getStat().getTotalStr(), player.getStat().getTotalDex(), 0, pad, jobconst + 1.3);
             default:
-               System.out.println("[Error] 처리되지 않은 무기 발생 WeaponType : " + wt);
+               System.out.println("[Error] Unhandled WeaponType : " + wt);
                return 0L;
          }
       }
@@ -565,24 +565,24 @@ public class CalcDamageUtil {
                            && (h.indexOf("공격력 #x") == -1 || skeff.getX() == 0)) {
                            if (name != null && name.getData().toString().equals("영웅의 메아리")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 영웅의 메아리 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Echo of Hero : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("익스클루시브 스펠")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 익스클루시브 스펠 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Exclusive Spell : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("인탠시브 타임")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 인탠시브 타임 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Intensive Time : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블레스")) {
                               if (skeff.getX() == 0 || skeff.getZ() == 0 || skeff.getIndieMHp() == 0) {
-                                 System.out.println("[Error] 쓸만한 어드밴스드 블레스 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Decent Advanced Bless : " + skillid + " / " + h);
                               }
                            } else if (name != null) {
-                              System.out.println("[Info] 처리되지 않은 마력 증가 스킬 발생 : " + skillid + "(" + name.getData().toString() + ") / " + h);
+                              System.out.println("[Info] Unhandled Magic Attack Increase skill : " + skillid + "(" + name.getData().toString() + ") / " + h);
                            } else {
-                              System.out.println("[Info] 처리되지 않은 마력 증가 스킬 발생 : " + skillid + " / " + h);
+                              System.out.println("[Info] Unhandled Magic Attack Increase skill : " + skillid + " / " + h);
                            }
                         }
                      }
@@ -664,24 +664,24 @@ public class CalcDamageUtil {
                            && (h.indexOf("마력이 #indieMadR%") == -1 || skeff.getIndieMadR() == 0)) {
                            if (name != null && name.getData().toString().equals("영웅의 메아리")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 영웅의 메아리 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Echo of Hero : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("익스클루시브 스펠")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 익스클루시브 스펠 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Exclusive Spell : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("인탠시브 타임")) {
                               if (skeff.getX() == 0) {
-                                 System.out.println("[Error] 인탠시브 타임 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Intensive Time : " + skillid + " / " + h);
                               }
                            } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블레스")) {
                               if (skeff.getX() == 0 || skeff.getZ() == 0 || skeff.getIndieMHp() == 0) {
-                                 System.out.println("[Error] 쓸만한 어드밴스드 블레스 : " + skillid + " / " + h);
+                                 System.out.println("[Error] Decent Advanced Bless : " + skillid + " / " + h);
                               }
                            } else if (name != null) {
-                              System.out.println("[Info] 처리되지 않은 마력 증가 스킬 발생 : " + skillid + "(" + name.getData().toString() + ") / " + h);
+                              System.out.println("[Info] Unhandled Magic Attack Increase skill : " + skillid + "(" + name.getData().toString() + ") / " + h);
                            } else {
-                              System.out.println("[Info] 처리되지 않은 마력 증가 스킬 발생 : " + skillid + " / " + h);
+                              System.out.println("[Info] Unhandled Magic Attack Increase skill : " + skillid + " / " + h);
                            }
                         }
                      }

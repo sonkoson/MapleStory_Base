@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import java.util.Arrays;
 import objects.fields.Field;

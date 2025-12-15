@@ -19,7 +19,7 @@ public class BossPapulatus {
       healMissionData = new BossPapulatus.HealMissionData(data.getChildByPath("heal_Mission"));
       tickTockCraneData = new BossPapulatus.TickTockCraneData(data.getChildByPath("ticktockCrane"));
       tickTockLaserData = new BossPapulatus.TickTockLaserData(data.getChildByPath("ticktockLaser"));
-      System.out.println("보스 파풀라투스 데이터가 캐싱되었습니다.");
+      System.out.println("Boss Papulatus data cached.");
    }
 
    public static class HealMissionData {

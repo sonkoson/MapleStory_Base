@@ -1,6 +1,6 @@
 var status;
 importPackage(Packages.server);
-one = Math.floor(Math.random() * 5) + 1 // 최소 10 최대 35 , 혼테일
+one = Math.floor(Math.random() * 5) + 1 // Min 10 Max 35 , Horntail
 function start() {
     status = -1;
     action(1, 1, 0);

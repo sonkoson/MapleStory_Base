@@ -1,4 +1,4 @@
-﻿package database;
+package database;
 
 public class DBEventManager {
    static DBProcessor[] processors;

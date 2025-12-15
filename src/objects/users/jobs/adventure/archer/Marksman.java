@@ -167,7 +167,7 @@ public class Marksman extends DefaultArcher {
                System.out.println("dlrjs?");
                int value = this.getPlayer().getBuffedValueDefault(SecondaryStatFlag.EnhanceArrow, 0) + 1;
                value = Math.min(3, value);
-               System.out.println("인핸스 :" + value);
+               System.out.println("Enhance :" + value);
                if (targets > 0) {
                   this.getPlayer().temporaryStatSet(SecondaryStatFlag.EnhanceArrow, enhanceArrowEff.getSourceId(), Integer.MAX_VALUE, value);
                }

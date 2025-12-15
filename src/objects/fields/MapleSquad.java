@@ -84,7 +84,7 @@ public class MapleSquad {
             }
 
             if (lead != null) {
-               lead.dropMessage(6, "Your squad has been skipped due to you not being in the right channel and map.");
+               lead.dropMessage(6, "Squad ถูกข้ามเนื่องจากคุณไม่ได้อยู่ในแชนแนลและแผนที่ที่ถูกต้อง");
             }
 
             this.getBeginMap()

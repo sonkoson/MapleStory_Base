@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import database.DBConnection;
 import java.sql.Connection;

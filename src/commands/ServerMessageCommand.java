@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import java.util.Collection;
 import network.game.GameServer;

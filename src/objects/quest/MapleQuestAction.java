@@ -356,12 +356,12 @@ public class MapleQuestAction implements Serializable {
                      short count = (short)itemx.count;
                      if (count < 0) {
                         if (!c.haveItem(id, count, false, true)) {
-                           c.dropMessage(1, "You are short of some item to complete quest.");
+                           c.dropMessage(1, "คุณขาดไอเทมบางอย่างสำหรับเควส");
                            return false;
                         }
                      } else {
                         if (MapleItemInformationProvider.getInstance().isPickupRestricted(id) && c.haveItem(id, 1, true, false)) {
-                           c.dropMessage(1, "You have this item already: " + MapleItemInformationProvider.getInstance().getName(id));
+                           c.dropMessage(1, "มีไอเทมนี้อยู่แล้ว: " + MapleItemInformationProvider.getInstance().getName(id));
                            return false;
                         }
 
@@ -387,20 +387,20 @@ public class MapleQuestAction implements Serializable {
             }
 
             if (c.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < eq) {
-               c.dropMessage(1, "장비 인벤토리 공간을 " + eq + "칸 이상 비운 후 다시 시도해주시기 바랍니다.");
+               c.dropMessage(1, "ช่องเก็บของ Equip " + eq + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.USE).getNumFreeSlot() < use) {
-               c.dropMessage(1, "소비 인벤토리 공간을 " + use + "칸 이상 비운 후 다시 시도해주시기 바랍니다.");
+               c.dropMessage(1, "ช่องเก็บของ Use " + use + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < setup) {
-               c.dropMessage(1, "설치 인벤토리 공간을 " + setup + "칸 이상 비운 후 다시 시도해주시기 바랍니다.");
+               c.dropMessage(1, "ช่องเก็บของ Setup " + setup + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < etc) {
-               c.dropMessage(1, "기타 인벤토리 공간을 " + etc + "칸 이상 비운 후 다시 시도해주시기 바랍니다.");
+               c.dropMessage(1, "ช่องเก็บของ Etc " + etc + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else {
                if (c.getInventory(MapleInventoryType.CASH).getNumFreeSlot() < cash) {
-                  c.dropMessage(1, "캐시 인벤토리 공간을 " + cash + "칸 이상 비운 후 다시 시도해주시기 바랍니다.");
+                  c.dropMessage(1, "ช่องเก็บของ Cash " + cash + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                   return false;
                }
 

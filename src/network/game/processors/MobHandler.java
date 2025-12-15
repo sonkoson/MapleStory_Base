@@ -940,7 +940,7 @@ public class MobHandler {
                chr.giveDebuff(SecondaryStatFlag.Stun, 1, 0, duration, 123, 1, false);
             }
          } else if (!DBConfig.isHosting) {
-            System.out.println("처리되지 않은 돌덩이 맵 발견 : " + chr.getMapId());
+            System.out.println("Unhandled Stone map found : " + chr.getMapId());
          }
       }
    }
@@ -1226,7 +1226,7 @@ public class MobHandler {
                         packet4.writeInt(mobSkillLevel);
                         packet4.writeInt(monster.getId());
                         packet4.writeInt(mobSkill.getSkillStatIntValue(MobSkillStat.v2));
-                        System.out.println("@마을" + mobSkill.getSkillStatIntValue(MobSkillStat.v2));
+                        System.out.println("@town" + mobSkill.getSkillStatIntValue(MobSkillStat.v2));
                         packet4.write(monster.isFacingLeft() ? 1 : 0);
                         packet4.writeInt(newX);
                         packet4.writeInt(newY);
@@ -1434,7 +1434,7 @@ public class MobHandler {
 
                   System.out
                      .println(
-                        "[ERROR] 알 수 없는 CreateFireWalk 몹 스킬. CallSkill=" + callSkill + ", CallSkillLevel=" + callSkillLevel + ", TemplateID=" + mob.getId()
+                        "[ERROR] Unknown CreateFireWalk mob skill. CallSkill=" + callSkill + ", CallSkillLevel=" + callSkillLevel + ", TemplateID=" + mob.getId()
                      );
                }
             }

@@ -14,7 +14,7 @@ public class CurrentTime {
 
    public static String getAllCurrentTime1(long times) {
       Calendar calz = Calendar.getInstance(TimeZone.getTimeZone("KST"), Locale.KOREAN);
-      SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("MM월dd일");
+      SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("MM-dd");
       return simpleTimeFormat.format(times);
    }
 
@@ -51,5 +51,10 @@ public class CurrentTime {
    public static int second() {
       Calendar calz = Calendar.getInstance(TimeZone.getTimeZone("KST"), Locale.KOREAN);
       return calz.getTime().getSeconds();
+   }
+
+   public static int getDayOfWeek() {
+      Calendar calz = Calendar.getInstance(TimeZone.getTimeZone("KST"), Locale.KOREAN);
+      return calz.get(Calendar.DAY_OF_WEEK) - 1;
    }
 }

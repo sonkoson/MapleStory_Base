@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 public class CommandDefinition {
    private String command;

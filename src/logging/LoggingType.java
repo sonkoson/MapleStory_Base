@@ -1,4 +1,4 @@
-﻿package logging;
+package logging;
 
 public enum LoggingType {
    Chatting(0, "log_chatting"),

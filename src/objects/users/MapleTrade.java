@@ -556,7 +556,7 @@ public class MapleTrade {
                         TradeLogType.TradeDenied.getType(), 0L, sb));
          }
       } catch (Exception var7) {
-         System.err.println("로그 저장중 오류 발생");
+         System.err.println("Error saving log");
          var7.printStackTrace();
       }
 

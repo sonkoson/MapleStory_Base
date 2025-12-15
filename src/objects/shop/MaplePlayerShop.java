@@ -47,10 +47,10 @@ public class MaplePlayerShop extends AbstractPlayerStore {
                   }
                }
             } else {
-               c.getPlayer().dropMessage(1, "Your inventory is full.");
+               c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
             }
          } else {
-            c.getPlayer().dropMessage(1, "You do not have enough mesos.");
+            c.getPlayer().dropMessage(1, "Meso ไม่เพียงพอ");
          }
 
          this.getMCOwner().getClient().getSession().writeAndFlush(PlayerShopPacket.shopItemUpdate(this));

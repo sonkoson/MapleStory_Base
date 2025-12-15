@@ -78,7 +78,7 @@ public class DojangRanking {
             list.add(entry);
          }
 
-         System.out.println("총 " + count + "개의 지난주 무릉 도장 랭킹 데이터를 불러왔습니다.");
+         System.out.println("Total " + count + " Last week's Mulung Dojo ranking data loaded.");
          rs.close();
          ps.close();
          ps = con.prepareStatement(
@@ -125,7 +125,7 @@ public class DojangRanking {
             }
          }
 
-         System.out.println("총 " + count + "개의 금주 무릉 도장 랭킹 데이터를 불러왔습니다.");
+         System.out.println("Total " + count + " This week's Mulung Dojo ranking data loaded.");
          rs.close();
          ps.close();
       } catch (SQLException var29) {
@@ -191,7 +191,7 @@ public class DojangRanking {
             }
          }
 
-         System.out.println("금주 무릉도장 랭킹이 DB에 업데이트 되었습니다.");
+         System.out.println("This week's Mulung Dojo ranking updated in DB.");
       } catch (SQLException var23) {
          var23.printStackTrace();
       } finally {
@@ -388,7 +388,7 @@ public class DojangRanking {
             ps.setInt(1, lastWeek);
             ps.setInt(2, lastYear);
             ps.executeUpdate();
-            System.out.println("무릉 도장 상위 랭커 정산이 수행되었습니다.");
+            System.out.println("Mulung Dojo high ranker settlement completed.");
          }
       } catch (SQLException var34) {
          var34.printStackTrace();

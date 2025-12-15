@@ -31,7 +31,7 @@ function action(mode, type, selection) {
 				cm.gainItem(5680222, -1);
 				cm.dispose();
 			} else {
-				cm.sendOk("헤어룸에 빈공간이 없습니다.");
+				cm.sendOk("ไม่มีพื้นที่ว่างใน Hair Room");
 				cm.dispose();
 			}
 		} else {
@@ -42,7 +42,7 @@ function action(mode, type, selection) {
 				cm.gainItem(5680222, -1);
 				cm.dispose();
 			} else {
-				cm.sendOk("헤어룸에 빈공간이 없습니다.");
+				cm.sendOk("ไม่มีพื้นที่ว่างใน Hair Room");
 				cm.dispose();
 			}
 		}

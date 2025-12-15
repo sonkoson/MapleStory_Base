@@ -256,7 +256,7 @@ public class ExtraAbilityFactory {
          }
       }
 
-      System.out.println("총 1000번 시뮬레이션 결과 토탈 " + totalCount + "번 소요, 평균 " + totalCount / 1000 + "회 필요");
+      System.out.println("Total result of 1000 simulations " + totalCount + "times taken, average " + totalCount / 1000 + " times needed");
    }
 
    public static void test2() {
@@ -289,11 +289,11 @@ public class ExtraAbilityFactory {
             count++;
          } while (grade != ExtraAbilityGrade.Legendary);
 
-         System.out.println("레전드리 까지 가는 데 총 " + count + "회 소요됨.");
+         System.out.println("Total to Legendary: " + count + " times taken.");
          totalCount += count;
       }
 
-      System.out.println("총 1000번 시뮬레이션 결과 토탈 " + totalCount + "번 소요, 평균 " + totalCount / 1000 + "회 필요");
+      System.out.println("Total result of 1000 simulations " + totalCount + "times taken, average " + totalCount / 1000 + " times needed");
    }
 
    public static int checkAllMaxValue(ExtraAbilityStatEntry[] entry) {
@@ -387,7 +387,7 @@ public class ExtraAbilityFactory {
                }
 
                totalCount += count;
-               System.out.println("총 " + count + "번 만에 올이탈 + 최상옵으로 BossDamageR 뽑힘");
+               System.out.println("Total " + count + "times until All Stat% + Top Tier BossDamageR pulled");
                break;
             }
 
@@ -397,7 +397,7 @@ public class ExtraAbilityFactory {
          }
       }
 
-      System.out.println("총 1000번 시뮬레이션 결과 토탈 " + totalCount + "번 소요, 평균 " + totalCount / 1000 + "회 필요");
+      System.out.println("Total result of 1000 simulations " + totalCount + "times taken, average " + totalCount / 1000 + " times needed");
    }
 
    public static ExtraAbilityStatEntry[] pickMeUpRoyal(ExtraAbilityGrade grade, int luckyPoint, int mvpGrade, boolean enableExtra) {
@@ -427,7 +427,7 @@ public class ExtraAbilityFactory {
             int gradeID = -1;
             gradeID = grade.getGradeID();
             if (gradeID == -1) {
-               System.out.println("엑스트라 어빌리티 설정 중 어떻게 gradeID가 -1?");
+               System.out.println("How is gradeID -1 during Extra Ability setup?");
                return null;
             }
 
@@ -453,7 +453,7 @@ public class ExtraAbilityFactory {
             }
 
             if (list == null) {
-               System.out.println("엑스트라 어빌리티 설정 중 어떻게 list가 null?");
+               System.out.println("How is list null during Extra Ability setup?");
                return null;
             }
 
@@ -476,7 +476,7 @@ public class ExtraAbilityFactory {
             }
 
             if (entry == null) {
-               System.out.println("엑스트라 어빌리티 설정 중 어떻게 entry가 null?");
+               System.out.println("How is entry null during Extra Ability setup?");
                return null;
             }
 
@@ -518,7 +518,7 @@ public class ExtraAbilityFactory {
          }
 
          if (gradeID == -1) {
-            System.out.println("엑스트라 어빌리티 설정 중 어떻게 gradeID가 -1?");
+            System.out.println("How is gradeID -1 during Extra Ability setup?");
             return null;
          }
 
@@ -540,7 +540,7 @@ public class ExtraAbilityFactory {
          }
 
          if (list == null) {
-            System.out.println("엑스트라 어빌리티 설정 중 어떻게 list가 null?");
+            System.out.println("How is list null during Extra Ability setup?");
             return null;
          }
 
@@ -563,7 +563,7 @@ public class ExtraAbilityFactory {
          }
 
          if (entry == null) {
-            System.out.println("엑스트라 어빌리티 설정 중 어떻게 entry가 null?");
+            System.out.println("How is entry null during Extra Ability setup?");
             return null;
          }
 

@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import constants.DBConfig;
 import constants.GameConstants;

@@ -300,7 +300,7 @@ public class MapleItemInformationProvider {
          String name = StringUtil.getLeftPaddedStr(android + "", '0', 4) + ".img";
          MapleData root = this.etcData.getData(name);
          if (root == null) {
-            System.err.println("[오류] 서버의 Etc.wz에서 안드로이드 기본 셋팅이 저장된 " + name + " 파일을 발견하지 못했습니다.");
+            System.err.println("[Error] Android default settings from Server Etc.wz saved " + name + " File not found.");
             return null;
          } else {
             MapleData costume = root.getChildByPath("costume");
@@ -1745,7 +1745,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2006,7 +2006,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2087,7 +2087,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2183,7 +2183,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2209,7 +2209,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2242,7 +2242,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2328,7 +2328,7 @@ public class MapleItemInformationProvider {
                            return null;
                         }
 
-                        chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                        chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                      }
 
                      failed = true;
@@ -2401,7 +2401,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2417,7 +2417,7 @@ public class MapleItemInformationProvider {
                                           return null;
                                        }
 
-                                       chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                                       chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                                     }
 
                                     failed = true;
@@ -2569,7 +2569,7 @@ public class MapleItemInformationProvider {
                                     return null;
                                  }
 
-                                 chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                                 chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                               }
 
                               failed = true;
@@ -2677,7 +2677,7 @@ public class MapleItemInformationProvider {
                         MapleData info = IData.getChildByPath("info");
                         int levelx = MapleDataTool.getInt("reqLevel", info, 0);
                         if (levelx > 200) {
-                           chr.dropMessage(6, "150레벨 이하의 장비 아이템에만 사용하실 수 있습니다.");
+                           chr.dropMessage(6, "สามารถใช้ได้กับอุปกรณ์เลเวล 150 หรือต่ำกว่าเท่านั้น");
                         } else {
                            int chane;
                            switch (nEquip.getCHUC()) {
@@ -2730,7 +2730,7 @@ public class MapleItemInformationProvider {
                                  return null;
                               }
 
-                              chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                              chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                            } else {
                               int ordinary;
                               if (GameConstants.isMagicWeapon(nEquip.getItemId())) {
@@ -2951,7 +2951,7 @@ public class MapleItemInformationProvider {
                                  return null;
                               }
 
-                              chr.dropMessage(5, "주문서의 효과로 아이템이 파괴되지 않았습니다.");
+                              chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                            }
 
                            failed = true;
@@ -2998,7 +2998,7 @@ public class MapleItemInformationProvider {
             || scrollId.getItemId() == 2643133
             || scrollId.getItemId() == 2643131) {
             if ((ItemFlag.SAFETY_SCROLLED.check(nEquip.getFlag()) || ItemFlag.RETURN_SCROLLED.check(nEquip.getFlag())) && failed) {
-               chr.dropMessage(5, "주문서의 효과로 업그레이드 가능 횟수가 차감되지 않았습니다.");
+               chr.dropMessage(5, "จำนวนอัพเกรดไม่ถูกหักออกเนื่องจากผลของ Scroll");
             } else {
                nEquip.setUpgradeSlots((byte)(nEquip.getUpgradeSlots() - this.getUpgradeScrollUseSlot(scrollId.getItemId())));
                if (nZeroEquip != null) {
@@ -3261,8 +3261,8 @@ public class MapleItemInformationProvider {
                return 20;
             default:
                if (equip == null) {
-                  System.err.println("[오류] 주문서의 성공확률을 구하던 중, 장비 아이템 값에 널 값이 입력되었습니다." + itemId);
-                  player.dropMessage(5, "[오류] 현재 주문서의 성공확률을 구하는데 실패하였습니다.");
+                  System.err.println("[Error] Null equipment item value while calculating scroll success rate." + itemId);
+                  player.dropMessage(5, "[Error] คำนวณโอกาสสำเร็จของ Scroll ล้มเหลว");
                   player.gainItem(itemId, 1, false, -1L, "주문서 성공확률 얻기 실패로 얻은 주문서");
                   player.getClient().getSession().writeAndFlush(CWvsContext.enableActions(player));
                   return 0;
@@ -3271,8 +3271,8 @@ public class MapleItemInformationProvider {
                } else {
                   MapleData item = this.getItemData(itemId);
                   if (item == null) {
-                     System.err.println("[오류] 주문서의 성공확률을 구하던 중, 주문서 데이터 값에 널 값이 입력되었습니다." + itemId);
-                     player.dropMessage(5, "[오류] 현재 주문서의 성공확률을 구하는데 실패하였습니다.");
+                     System.err.println("[Error] Null scroll data value while calculating scroll success rate." + itemId);
+                     player.dropMessage(5, "[Error] คำนวณโอกาสสำเร็จของ Scroll ล้มเหลว");
                      player.gainItem(itemId, 1, false, -1L, "주문서 성공확률 얻기 실패로 얻은 주문서");
                      player.getClient().getSession().writeAndFlush(CWvsContext.enableActions(player));
                      return 0;

@@ -1,4 +1,4 @@
-﻿package commands;
+package commands;
 
 import network.models.CField;
 import objects.fields.Field;

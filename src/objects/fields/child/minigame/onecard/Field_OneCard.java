@@ -101,7 +101,7 @@ public class Field_OneCard extends Field {
                cardList.add(card);
                player.addCard(card);
             } else {
-               System.out.println("CARD 찾는 중 오류 발생.");
+               System.out.println("Error occurred while finding CARD.");
             }
          }
 
@@ -118,7 +118,7 @@ public class Field_OneCard extends Field {
       if (this.currentCard != null) {
          this.broadcastMessage(OneCardPacket.onPutCardResult(null, this.currentCard));
       } else {
-         System.out.println("CARD 세팅 중 오류 발생.");
+         System.out.println("Error occurred while setting CARD.");
       }
    }
 
@@ -164,11 +164,11 @@ public class Field_OneCard extends Field {
          winner.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowScreenEffect("Effect/screeneff/victory"));
          this.broadcastMessage(winner.getPlayer(), OneCardPacket.onShowScreenEffect("Effect/screeneff/gameover"), false);
          String winnerName = winner.getPlayer().getName();
-         this.broadcastMessage(OneCardPacket.onShowText(winnerName + "님의 승리! 게임이 종료됩니다."));
+         this.broadcastMessage(OneCardPacket.onShowText(winnerName + "คุณชนะ! จบเกม"));
 
          for (OneCardPlayer playerx : this.gameDlg.getIntactPlayerList()) {
             if (playerx.getPlayer() != null) {
-               playerx.getPlayer().dropMessage(6, winnerName + "님의 승리! 게임이 종료됩니다.");
+               playerx.getPlayer().dropMessage(6, winnerName + "คุณชนะ! จบเกม");
             }
          }
 
@@ -181,14 +181,14 @@ public class Field_OneCard extends Field {
    public void setAction(MapleCharacter chr, PacketDecoder o) {
       byte type = o.readByte();
       if (this.currentPlayer.getPlayer().getId() != chr.getId()) {
-         System.out.println("현재 유저가 아닌 대상이 행동을 시도함.");
+         System.out.println("Non-user target attempted action.");
       } else if (!this.endGame) {
          switch (type) {
             case 0:
                int objectID = o.readInt();
                OneCardGameCardInfo card = this.gameDlg.getCard(objectID);
                if (card == null || card.getOwner() != chr.getId()) {
-                  System.out.println("존재하지 않는 카드를 놓으려고 시도함.");
+                  System.out.println("Attempted to place non-existent card.");
                   return;
                }
 

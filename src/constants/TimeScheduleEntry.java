@@ -1,4 +1,4 @@
-﻿package constants;
+package constants;
 
 import database.DBConnection;
 import java.sql.Connection;

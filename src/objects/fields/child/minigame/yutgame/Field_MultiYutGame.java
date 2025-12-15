@@ -71,7 +71,7 @@ public class Field_MultiYutGame extends Field {
                   gameInfo.setFoulCount(gameInfo.getFoulCount() + 1);
                   player.send(
                      CField.UIPacket.sendBigScriptProgressMessage(
-                        "제한 시간 초과 " + gameInfo.getFoulCount() + "회. 5회 이상 시 퇴장 처리됩니다.", FontType.NanumGothic, FontColorType.Green
+                        "หมดเวลา " + gameInfo.getFoulCount() + "회. 5회 이상 시 퇴장 처리됩니다.", FontType.NanumGothic, FontColorType.Green
                      )
                   );
                   this.setAuto(true);

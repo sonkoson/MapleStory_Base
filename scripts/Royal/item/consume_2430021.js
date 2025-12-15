@@ -19,7 +19,7 @@ function action (mode, type, selection) {
             }
         }
         if (count <= 0) {
-            cm.sendOk("강화할 장비를 소지하고 있는지 확인해 주세요.");
+            cm.sendOk("กรุณาตรวจสอบว่าคุณมีอุปกรณ์ที่จะตีบวกหรือไม่");
             cm.dispose();
             return;
         }
@@ -44,7 +44,7 @@ function action (mode, type, selection) {
         say += "기본강화에 필요한 메소 :#b " + items[getAddEnhance(item) + 1][2] + " 메소#k\r\n";
         say += "#b성공확률 " + items[getAddEnhance(item) + 1][1] + "%#k, 실패 시 아이템 옵션 하락\r\n";
         say += "단, #b" + ConvertNumber(keep) + "메소#k를 소모하여 아이템 옵션 보호 가능\r\n\r\n\r\n";        
-        say += "#r<아이템 정보>\r\n";
+        say += "#r<Item Information>\r\n";
         say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -74,7 +74,7 @@ function action (mode, type, selection) {
         } else if (selection == 2 || choice == 2) {
             say += ", 실패 시 아이템 옵션 하락\r\n\r\n";
         }   
-        say += "#r<아이템 정보>\r\n";
+        say += "#r<Item Information>\r\n";
         say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
         say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
         say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -120,7 +120,7 @@ function action (mode, type, selection) {
                 item.setOwner(""+(getAddEnhance(item)+1)+"강");
                 cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                 say = "";     
-                say += "#fs11##r<아이템 정보>\r\n";
+                say += "#fs11##r<Item Information>\r\n";
                 say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                 say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                 say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -133,7 +133,7 @@ function action (mode, type, selection) {
             } else {
                 if (choice == 1 || getAddEnhance(item) == 0) {
                     say = "";
-                    say += "#fs11##r<아이템 정보>\r\n";
+                    say += "#fs11##r<Item Information>\r\n";
                     say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";
@@ -156,7 +156,7 @@ function action (mode, type, selection) {
                     }                    
                     cm.getPlayer().forceReAddItem(item, Packages.objects.item.MapleInventoryType.EQUIP);
                     say = "";     
-                    say += "#r<아이템 정보>\r\n";
+                    say += "#r<Item Information>\r\n";
                     say += "강화할 아이템 : #i" + itemid + "# #z" + itemid + "#\r\n";
                     say += "STR : " + item.getStr() + "  |  DEX : " + item.getDex() + "  |  INT : " + item.getInt() + "  |  LUK " + item.getLuk() + "\r\n";
                     say += "공격력 : " + item.getWatk() + "  |  마력 : " + item.getMatk() + "  | 스타포스 : " + item.getEnhance() + "성\r\n";

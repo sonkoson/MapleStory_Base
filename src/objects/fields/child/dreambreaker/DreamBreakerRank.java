@@ -29,7 +29,7 @@ public class DreamBreakerRank {
          }
 
          rank = sortByValue(rank);
-         System.out.println("드림브레이커 랭킹이 로드되었습니다.");
+         System.out.println("Dream Breaker ranking loaded.");
       } catch (SQLException var17) {
       } finally {
          try {

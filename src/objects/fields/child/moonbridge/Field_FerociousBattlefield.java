@@ -548,7 +548,7 @@ public class Field_FerociousBattlefield extends Field {
          duration = this.doFieldSkill(100020, 1, Randomizer.rand(0, 3));
       }
 
-      this.sendDuskNotice("방어하던 촉수로 강력한 공격을 할거예요! 버텨낸다면 드러난 공허의 눈을 공격할 수 있어요!", 3000);
+      this.sendDuskNotice("หนวดที่ป้องกันอยู่จะโจมตีอย่างรุนแรง! ถ้าทนได้ จะสามารถโจมตีดวงตาแห่งความว่างเปล่าที่เปิดออกได้!", 3000);
       this.changeMobZone(0);
       this.nextLaserAttackTime = System.currentTimeMillis() + duration + 1000L;
    }

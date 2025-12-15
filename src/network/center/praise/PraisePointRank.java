@@ -65,7 +65,7 @@ public class PraisePointRank {
          }
       }
 
-      System.out.println("칭찬 포인트 랭킹 총 " + (rank - 1) + "개가 업데이트 되었습니다.");
+      System.out.println("Praise Point Ranking Total " + (rank - 1) + "개가 업데이트 되었습니다.");
    }
 
    public static boolean doPraise(MapleCharacter from, String toName, NPCConversationManager cm) {
@@ -140,7 +140,7 @@ public class PraisePointRank {
             }
 
             from.updateOneInfo(3887, "point", String.valueOf(from.getOneInfoQuestInteger(3887, "point") + 500));
-            from.dropMessage(5, toName + "님을 칭찬했습니다. 500 칭찬포인트를 획득했습니다.");
+            from.dropMessage(5, toName + "ชื่นชมคุณ ได้รับ 500 Praise Point");
             PraisePoint p = from.getPraisePoint();
             if (p != null) {
                p.setPoint(p.getPoint() + 500);
@@ -233,7 +233,7 @@ public class PraisePointRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward", String.valueOf(rank));
                playerx.updateOneInfo(1234599, "praise_reward_get", "");
-               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "위 보상을 수령해주시기 바랍니다.");
+               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรุณารับรางวัลด้านบน");
             } else {
                PreparedStatement ps3 = con.prepareStatement("INSERT INTO `questinfo` (`characterid`, `quest`, `customData`, `date`) VALUES (?, ?, ?, ?)");
                ps3.setInt(1, toPlayerID);
@@ -246,7 +246,7 @@ public class PraisePointRank {
                ps3.close();
             }
 
-            System.out.println(name + " 캐릭터가 칭찬 포인트 랭킹 " + rank + "위로 보상이 정산되었습니다.");
+            System.out.println(name + " character is in Praise Point Ranking " + rank + "Rank reward settled.");
             if (rank++ >= 10) {
                break;
             }

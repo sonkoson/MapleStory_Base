@@ -298,7 +298,7 @@ public class Field_MultiSoccer extends Field {
    }
 
    public void showMsg() {
-      this.broadcastMessage(CField.sendWeatherEffectNotice(0, 10000, true, "   방향키로 이동하고 CTRL 또는 ALT키로 스킬을 사용할 수 있습니다.   "));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(0, 10000, true, "   ใช้ปุ่มลูกศรเพื่อเคลื่อนที่ และใช้ปุ่ม CTRL หรือ ALT เพื่อใช้สกิล   "));
       this.broadcastMessage(CField.addPopupSay(9062546, 4000, "경기~~ 시작합니다~~~!!!", ""));
    }
 

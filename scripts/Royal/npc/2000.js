@@ -1,19 +1,19 @@
 /*후라이 까지말라 (kms_word@naver.com)*/
 
 
-별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
-별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+StarYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+StarWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+StarBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+StarRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+StarBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+StarPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+Star = "#fUI/FarmUI.img/objectStatus/star/whole#";
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-색 = "#fc0xFF6600CC#"
-엔터 = "\r\n"
-엔터2 = "\r\n\r\n"
+Reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+Color = "#fc0xFF6600CC#"
+Enter = "\r\n"
+Enter2 = "\r\n\r\n"
 
 var status = -1;
 

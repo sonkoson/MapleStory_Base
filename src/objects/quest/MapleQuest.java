@@ -160,7 +160,7 @@ public class MapleQuest implements Serializable {
          }
       }
 
-      System.out.println("총 " + count + "개의 ModifiedQuestTime 데이터를 불러왔습니다.");
+      System.out.println("Total " + count + " ModifiedQuestTime data loaded.");
    }
 
    public static void sendModifiedQuestTime(MapleCharacter player) {
