@@ -1,4 +1,4 @@
-package objects.users.achievement.caching.mission.submission.score;
+﻿package objects.users.achievement.caching.mission.submission.score;
 
 public enum SetValueType {
    honor_exp_dec,

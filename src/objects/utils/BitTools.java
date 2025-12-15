@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 public class BitTools {
    public static final int getShort(byte[] array, int index) {

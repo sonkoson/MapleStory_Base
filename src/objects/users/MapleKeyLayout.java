@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import database.DBConnection;
 import java.io.Serializable;

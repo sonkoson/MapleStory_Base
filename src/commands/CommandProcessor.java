@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import constants.ServerConstants;
 import java.util.ArrayList;
@@ -128,7 +128,7 @@ public class CommandProcessor {
    public void dropHelp(MapleCharacter chr, int page) {
       List<DefinitionCommandPair> allCommands = new ArrayList<>(this.commands.values());
       int startEntry = (page - 1) * 20;
-      chr.dropMessage(6, "ช่วยเหลือคำสั่ง: --------" + page + "---------");
+      chr.dropMessage(6, "เธเนเธงเธขเน€เธซเธฅเธทเธญเธเธณเธชเธฑเนเธ: --------" + page + "---------");
 
       for (int i = startEntry; i < startEntry + 20 && i < allCommands.size(); i++) {
          CommandDefinition commandDefinition = allCommands.get(i).getDefinition();
@@ -180,7 +180,7 @@ public class CommandProcessor {
                return true;
             }
 
-            c.getPlayer().dropMessage(6, "ไม่พบคำสั่ง " + splitted[0] + " หรือคุณไม่มีสิทธิ์ใช้งาน");
+            c.getPlayer().dropMessage(6, "เนเธกเนเธเธเธเธณเธชเธฑเนเธ " + splitted[0] + " เธซเธฃเธทเธญเธเธธเธ“เนเธกเนเธกเธตเธชเธดเธ—เธเธดเนเนเธเนเธเธฒเธ");
             return true;
          }
       }

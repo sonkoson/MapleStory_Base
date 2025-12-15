@@ -1,4 +1,4 @@
-package network.auction.processors;
+﻿package network.auction.processors;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

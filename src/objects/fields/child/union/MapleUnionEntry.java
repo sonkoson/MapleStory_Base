@@ -1,4 +1,4 @@
-package objects.fields.child.union;
+﻿package objects.fields.child.union;
 
 import network.encode.PacketEncoder;
 

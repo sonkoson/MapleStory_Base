@@ -1,4 +1,4 @@
-package objects.users.achievement.caching.mission.submission.score;
+﻿package objects.users.achievement.caching.mission.submission.score;
 
 import objects.users.achievement.AchievementCompareType;
 import objects.users.achievement.AchievementCountingType;

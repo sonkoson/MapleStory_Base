@@ -1,4 +1,4 @@
-package network.game.processors.inventory;
+﻿package network.game.processors.inventory;
 
 import constants.GameConstants;
 import java.awt.Point;
@@ -87,7 +87,7 @@ public class PetHandler {
          if (toUse != null && toUse.getQuantity() >= 1 && toUse.getItemId() == slea.readInt()) {
             long time = System.currentTimeMillis();
             if (chr.getNextConsume() > time) {
-               chr.dropMessage(5, "ยังใช้ไอเทมนี้ไม่ได้");
+               chr.dropMessage(5, "เธขเธฑเธเนเธเนเนเธญเน€เธ—เธกเธเธตเนเนเธกเนเนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer(), true));
             } else {
                if (!FieldLimitType.PotionUse.check(chr.getMap().getFieldLimit())) {
@@ -271,20 +271,20 @@ public class PetHandler {
       int questId = 101080 + petIndex;
       String questKey = String.valueOf(petIndex * 10 + skillIndex);
       if (pet == null) {
-         chr.dropMessage(1, "ไม่มีข้อมูลสัตว์เลี้ยง");
+         chr.dropMessage(1, "เนเธกเนเธกเธตเธเนเธญเธกเธนเธฅเธชเธฑเธ•เธงเนเน€เธฅเธตเนเธขเธ");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else if (skillIndex >= 2) {
-         chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูล Index");
+         chr.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเนเธญเธกเธนเธฅ Index");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else if (skillId != 0 && SkillFactory.getSkill(skillId) == null) {
-         chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูลสกิล");
+         chr.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเนเธญเธกเธนเธฅเธชเธเธดเธฅ");
          chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
       } else {
          if (skillId != 0) {
             Skill skill = SkillFactory.getSkill(skillId);
             SecondaryStatEffect eff = skill.getEffect(chr.getSkillLevel(skillId));
             if (eff != null && eff.getCooldown(chr) > 0 && !skill.isPetAutoBuff()) {
-               chr.dropMessage(1, "เกิดข้อผิดพลาดในข้อมูลย่อยของสกิล");
+               chr.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเนเธญเธกเธนเธฅเธขเนเธญเธขเธเธญเธเธชเธเธดเธฅ");
                chr.getClient().getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return;
             }
@@ -298,7 +298,7 @@ public class PetHandler {
                chr.updateOneInfo(questId, questKey, String.valueOf(skillId));
                chr.getClient().getSession().writeAndFlush(PetPacket.updatePet(chr, pet, item, false, chr.getPetLoot()));
             } else {
-               chr.send(CWvsContext.serverNotice(1, "등록된 펫정보를 불러오는데 실패했습니다."));
+               chr.send(CWvsContext.serverNotice(1, "๋“ฑ๋ก๋ ํซ์ •๋ณด๋ฅผ ๋ถ๋ฌ์ค๋”๋ฐ ์คํจํ–์ต๋๋ค."));
             }
          }
       }

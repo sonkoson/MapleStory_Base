@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import database.DBConnection;
 import java.lang.reflect.Method;

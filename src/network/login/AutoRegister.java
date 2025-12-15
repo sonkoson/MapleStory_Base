@@ -1,4 +1,4 @@
-package network.login;
+﻿package network.login;
 
 import database.DBConnection;
 import java.sql.Connection;

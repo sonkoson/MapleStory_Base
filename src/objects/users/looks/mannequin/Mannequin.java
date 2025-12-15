@@ -1,4 +1,4 @@
-package objects.users.looks.mannequin;
+﻿package objects.users.looks.mannequin;
 
 import database.DBConnection;
 import java.sql.Connection;

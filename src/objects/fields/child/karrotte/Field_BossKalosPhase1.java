@@ -1,4 +1,4 @@
-package objects.fields.child.karrotte;
+﻿package objects.fields.child.karrotte;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class Field_BossKalosPhase1 extends Field_BossKalos {
 
                for (MapleCharacter chrx : player.getPartyMembers()) {
                   if (chrx.getMapId() == this.getId() - 20 || chrx.getMapId() == this.getId() && chrx.getRegisterTransferFieldTime() == 0L) {
-                     TextEffect e = new TextEffect("#fn나눔고딕 ExtraBold##fs32##r#e아직 심판은 끝나지 않았다.", 100, 2500, 4, 0, 0, 1, 0);
+                     TextEffect e = new TextEffect("#fn๋๋”๊ณ ๋”• ExtraBold##fs32##r#e์•์ง ์ฌํ์€ ๋๋์ง€ ์•์•๋ค.", 100, 2500, 4, 0, 0, 1, 0);
                      chrx.send(e.encodeForLocal());
                      chrx.setRegisterTransferField(warpTo);
                      chrx.setRegisterTransferFieldTime(System.currentTimeMillis() + 3000L);

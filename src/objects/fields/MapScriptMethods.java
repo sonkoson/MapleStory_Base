@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import constants.ServerConstants;
 import database.DBConfig;
@@ -60,7 +60,7 @@ import scripting.newscripting.ScriptManager;
 public class MapScriptMethods {
    private static final Point witchTowerPos = new Point(-60, 184);
    private static final String[] mulungEffects = new String[]{
-      "무릉도장에 도전한 것을 후회하게 해주겠다! 어서 들어와봐!", "기다리고 있었다! 용기가 남았다면 들어와 보시지!", "배짱 하나는 두둑하군! 현명함과 무모함을 혼동하지말라고!", "무릉도장에 도전하다니 용기가 가상하군!", "패배의 길을 걷고싶다면 들어오라고!"
+      "๋ฌด๋ฆ๋์ฅ์— ๋์ ํ• ๊ฒ์ ํํํ•๊ฒ ํ•ด์ฃผ๊ฒ ๋ค! ์–ด์ ๋“ค์–ด์€๋ด!", "๊ธฐ๋ค๋ฆฌ๊ณ  ์์—๋ค! ์ฉ๊ธฐ๊ฐ€ ๋จ์•๋ค๋ฉด ๋“ค์–ด์€ ๋ณด์์ง€!", "๋ฐฐ์งฑ ํ•๋๋” ๋‘๋‘‘ํ•๊ตฐ! ํ๋ช…ํ•จ๊ณผ ๋ฌด๋ชจํ•จ์ ํผ๋ํ•์ง€๋ง๋ผ๊ณ !", "๋ฌด๋ฆ๋์ฅ์— ๋์ ํ•๋ค๋ ์ฉ๊ธฐ๊ฐ€ ๊ฐ€์ํ•๊ตฐ!", "ํจ๋ฐฐ์ ๊ธธ์ ๊ฑท๊ณ ์ถ๋ค๋ฉด ๋“ค์–ด์ค๋ผ๊ณ !"
    };
 
    public static void startScript_FirstUser(final MapleClient c, String scriptName) {
@@ -1105,7 +1105,7 @@ public class MapScriptMethods {
                   Timer.MapTimer.getInstance().schedule(new Runnable() {
                      @Override
                      public void run() {
-                        f.sendWillNotice("ต้องโจมตี Will ใน 2 มิติที่แตกต่างกันพร้อมๆ กัน! หากรวบรวมแสงจันทร์และใช้มัน อาจย้ายไปอีกฝั่งได้", 245, 7000);
+                        f.sendWillNotice("เธ•เนเธญเธเนเธเธกเธ•เธต Will เนเธ 2 เธกเธดเธ•เธดเธ—เธตเนเนเธ•เธเธ•เนเธฒเธเธเธฑเธเธเธฃเนเธญเธกเน เธเธฑเธ! เธซเธฒเธเธฃเธงเธเธฃเธงเธกเนเธชเธเธเธฑเธเธ—เธฃเนเนเธฅเธฐเนเธเนเธกเธฑเธ เธญเธฒเธเธขเนเธฒเธขเนเธเธญเธตเธเธเธฑเนเธเนเธ”เน", 245, 7000);
                      }
                   }, 1000L);
                }
@@ -1195,7 +1195,7 @@ public class MapScriptMethods {
                   public void run() {
                      if (c.getPlayer().getMap() instanceof Field_WillBattle) {
                         Field_WillBattle f = (Field_WillBattle)c.getPlayer().getMap();
-                        f.sendWillNotice("ระวังร่างจริงที่สะท้อนในกระจก หากรวบรวมแสงจันทร์และใช้มัน อาจช่วยหยุดคำสาปที่รักษาไม่ได้ชั่วคราว", 245, 7000);
+                        f.sendWillNotice("เธฃเธฐเธงเธฑเธเธฃเนเธฒเธเธเธฃเธดเธเธ—เธตเนเธชเธฐเธ—เนเธญเธเนเธเธเธฃเธฐเธเธ เธซเธฒเธเธฃเธงเธเธฃเธงเธกเนเธชเธเธเธฑเธเธ—เธฃเนเนเธฅเธฐเนเธเนเธกเธฑเธ เธญเธฒเธเธเนเธงเธขเธซเธขเธธเธ”เธเธณเธชเธฒเธเธ—เธตเนเธฃเธฑเธเธฉเธฒเนเธกเนเนเธ”เนเธเธฑเนเธงเธเธฃเธฒเธง", 245, 7000);
                      }
                   }
                }, 1000L);
@@ -1308,7 +1308,7 @@ public class MapScriptMethods {
                         f.addSpiderWeb(new SpiderWeb(2, 558, -58));
                         f.addSpiderWeb(new SpiderWeb(2, 164, -308));
                         f.addSpiderWeb(new SpiderWeb(1, -61, -275));
-                        f.sendWillNotice("Will เอาจริงแล้ว! หากรวบรวมแสงจันทร์มาใช้ อาจเผาใยแมงมุมได้", 245, 7000);
+                        f.sendWillNotice("Will เน€เธญเธฒเธเธฃเธดเธเนเธฅเนเธง! เธซเธฒเธเธฃเธงเธเธฃเธงเธกเนเธชเธเธเธฑเธเธ—เธฃเนเธกเธฒเนเธเน เธญเธฒเธเน€เธเธฒเนเธขเนเธกเธเธกเธธเธกเนเธ”เน", 245, 7000);
                      }
                   }
                }, 2000L);
@@ -1345,7 +1345,7 @@ public class MapScriptMethods {
                   public void run() {
                      if (c.getPlayer().getMap() instanceof Field_JinHillah) {
                         Field_JinHillah f = (Field_JinHillah)c.getPlayer().getMap();
-                        f.sendJinHillahNotice("Hilla จะตัดเทียนแห่งวิญญาณที่ลุกโชนทุกช่วงเวลา ระวังอย่าให้วิญญาณถูกขโมย", 8000);
+                        f.sendJinHillahNotice("Hilla เธเธฐเธ•เธฑเธ”เน€เธ—เธตเธขเธเนเธซเนเธเธงเธดเธเธเธฒเธ“เธ—เธตเนเธฅเธธเธเนเธเธเธ—เธธเธเธเนเธงเธเน€เธงเธฅเธฒ เธฃเธฐเธงเธฑเธเธญเธขเนเธฒเนเธซเนเธงเธดเธเธเธฒเธ“เธ–เธนเธเธเนเธกเธข", 8000);
                      }
                   }
                }, 1000L);
@@ -1369,7 +1369,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("เพื่อต่อกรกับ Black Mage ต้องกำจัดอัศวินแห่งการสร้างและทำลายล้างที่ปกป้องเขา", 8000);
+                           f.sendBlackMageNotice("เน€เธเธทเนเธญเธ•เนเธญเธเธฃเธเธฑเธ Black Mage เธ•เนเธญเธเธเธณเธเธฑเธ”เธญเธฑเธจเธงเธดเธเนเธซเนเธเธเธฒเธฃเธชเธฃเนเธฒเธเนเธฅเธฐเธ—เธณเธฅเธฒเธขเธฅเนเธฒเธเธ—เธตเนเธเธเธเนเธญเธเน€เธเธฒ", 8000);
                         }
                      }
                   }, 1000L);
@@ -1391,7 +1391,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("ในที่สุดก็มายืนต่อหน้า Black Mage ทุ่มสุดตัวเพื่อกำจัดเขาเถอะ", 8000);
+                           f.sendBlackMageNotice("เนเธเธ—เธตเนเธชเธธเธ”เธเนเธกเธฒเธขเธทเธเธ•เนเธญเธซเธเนเธฒ Black Mage เธ—เธธเนเธกเธชเธธเธ”เธ•เธฑเธงเน€เธเธทเนเธญเธเธณเธเธฑเธ”เน€เธเธฒเน€เธ–เธญเธฐ", 8000);
                         }
                      }
                   }, 1000L);
@@ -1411,7 +1411,7 @@ public class MapScriptMethods {
                      public void run() {
                         if (c.getPlayer().getMap() instanceof Field_BlackMage) {
                            Field_BlackMage f = (Field_BlackMage)c.getPlayer().getMap();
-                           f.sendBlackMageNotice("รูปลักษณ์นั่นราวกับได้รับพลังของพระเจ้ามา แม้ 상대จะเป็นพระเจ้า ก็ต้องหยุดยั้งเขาที่นี่เพื่อทุกคน", 8000);
+                           f.sendBlackMageNotice("เธฃเธนเธเธฅเธฑเธเธฉเธ“เนเธเธฑเนเธเธฃเธฒเธงเธเธฑเธเนเธ”เนเธฃเธฑเธเธเธฅเธฑเธเธเธญเธเธเธฃเธฐเน€เธเนเธฒเธกเธฒ เนเธกเน ์๋€เธเธฐเน€เธเนเธเธเธฃเธฐเน€เธเนเธฒ เธเนเธ•เนเธญเธเธซเธขเธธเธ”เธขเธฑเนเธเน€เธเธฒเธ—เธตเนเธเธตเนเน€เธเธทเนเธญเธ—เธธเธเธเธ", 8000);
                         }
                      }
                   }, 1000L);
@@ -1450,7 +1450,7 @@ public class MapScriptMethods {
                reloadWitchTower(c);
                break;
             case moonrabbit_mapEnter:
-               c.getPlayer().getMap().startMapEffect("월묘가 나타났습니다. 제한시간 내에 힘을 합쳐 월묘를 잡으면 달맞이 보상을 획득할 수 있습니다.", 5120016);
+               c.getPlayer().getMap().startMapEffect("์”๋ฌ๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค. ์ ํ•์๊ฐ ๋ด์— ํ์ ํ•ฉ์ณ ์”๋ฌ๋ฅผ ์ก์ผ๋ฉด ๋ฌ๋ง์ด ๋ณด์์ ํ๋“ํ•  ์ ์์ต๋๋ค.", 5120016);
                break;
             case StageMsg_goddess:
                switch (c.getPlayer().getMapId()) {
@@ -1777,25 +1777,25 @@ public class MapScriptMethods {
             case PRaid_D_Fenter:
                switch (c.getPlayer().getMapId() % 10) {
                   case 0:
-                     c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치해라!", 5120033);
+                     c.getPlayer().getMap().startMapEffect("๋ชฌ์คํฐ๋ฅผ ๋ชจ๋‘ ํด์นํ•ด๋ผ!", 5120033);
                      return;
                   case 1:
-                     c.getPlayer().getMap().startMapEffect("상자를 부수고, 나오는 몬스터를 모두 퇴치해라!", 5120033);
+                     c.getPlayer().getMap().startMapEffect("์์๋ฅผ ๋ถ€์๊ณ , ๋์ค๋” ๋ชฌ์คํฐ๋ฅผ ๋ชจ๋‘ ํด์นํ•ด๋ผ!", 5120033);
                      return;
                   case 2:
-                     c.getPlayer().getMap().startMapEffect("일등항해사를 퇴치해라!", 5120033);
+                     c.getPlayer().getMap().startMapEffect("์ผ๋“ฑํ•ญํ•ด์ฌ๋ฅผ ํด์นํ•ด๋ผ!", 5120033);
                      return;
                   case 3:
-                     c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치해라!", 5120033);
+                     c.getPlayer().getMap().startMapEffect("๋ชฌ์คํฐ๋ฅผ ๋ชจ๋‘ ํด์นํ•ด๋ผ!", 5120033);
                      return;
                   case 4:
-                     c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치하고, 점프대를 작동시켜서 건너편으로 건너가라!", 5120033);
+                     c.getPlayer().getMap().startMapEffect("๋ชฌ์คํฐ๋ฅผ ๋ชจ๋‘ ํด์นํ•๊ณ , ์ ํ”๋€๋ฅผ ์‘๋์์ผ์ ๊ฑด๋ํธ์ผ๋ก ๊ฑด๋๊ฐ€๋ผ!", 5120033);
                      return;
                   default:
                      return;
                }
             case PRaid_B_Fenter:
-               c.getPlayer().getMap().startMapEffect("상대편보다 먼저 몬스터를 퇴치하라!", 5120033);
+               c.getPlayer().getMap().startMapEffect("์๋€ํธ๋ณด๋ค ๋จผ์ € ๋ชฌ์คํฐ๋ฅผ ํด์นํ•๋ผ!", 5120033);
                break;
             case summon_pepeking:
                c.getPlayer().getMap().resetFully();
@@ -2019,11 +2019,11 @@ public class MapScriptMethods {
                }
                break;
             case dusk_timeRecord:
-               c.getPlayer().send(CField.sendWeatherEffectNotice(250, 3000, false, "ความกลัวค่อยๆ เพิ่มขึ้นจนมองเห็นสิ่งที่ไม่ควรมี! ถ้ารับไม่ไหว ความกลัวจะแพร่กระจาย ระวังด้วย!"));
-               c.getSession().writeAndFlush(CField.addPopupSay(0, 3000, "촉수가 눈을 방어하고 있어 제대로 된 피해를 주기 힘들겠군.", ""));
+               c.getPlayer().send(CField.sendWeatherEffectNotice(250, 3000, false, "เธเธงเธฒเธกเธเธฅเธฑเธงเธเนเธญเธขเน เน€เธเธดเนเธกเธเธถเนเธเธเธเธกเธญเธเน€เธซเนเธเธชเธดเนเธเธ—เธตเนเนเธกเนเธเธงเธฃเธกเธต! เธ–เนเธฒเธฃเธฑเธเนเธกเนเนเธซเธง เธเธงเธฒเธกเธเธฅเธฑเธงเธเธฐเนเธเธฃเนเธเธฃเธฐเธเธฒเธข เธฃเธฐเธงเธฑเธเธ”เนเธงเธข!"));
+               c.getSession().writeAndFlush(CField.addPopupSay(0, 3000, "์ด์๊ฐ€ ๋์ ๋ฐฉ์–ดํ•๊ณ  ์์–ด ์ ๋€๋ก ๋ ํ”ผํ•ด๋ฅผ ์ฃผ๊ธฐ ํ๋“ค๊ฒ ๊ตฐ.", ""));
                break;
             case dunkel_enter:
-               c.getPlayer().send(CField.sendWeatherEffectNotice(272, 5000, false, "Captain Dunkel : ตราบใดที่มีข้าและกองทัพอยู่ แกจะไม่มีวันแตะต้องท่านผู้นั้นได้แม้แต่ปลายเล็บ!"));
+               c.getPlayer().send(CField.sendWeatherEffectNotice(272, 5000, false, "Captain Dunkel : เธ•เธฃเธฒเธเนเธ”เธ—เธตเนเธกเธตเธเนเธฒเนเธฅเธฐเธเธญเธเธ—เธฑเธเธญเธขเธนเน เนเธเธเธฐเนเธกเนเธกเธตเธงเธฑเธเนเธ•เธฐเธ•เนเธญเธเธ—เนเธฒเธเธเธนเนเธเธฑเนเธเนเธ”เนเนเธกเนเนเธ•เนเธเธฅเธฒเธขเน€เธฅเนเธ!"));
                break;
             case slime_direction1:
                if (DBConfig.isGanglim && c.getPlayer().getParty() != null && c.getPlayer().getParty().getLeader().isSkipIntro()) {
@@ -2145,11 +2145,11 @@ public class MapScriptMethods {
                   c.getSession().writeAndFlush(CField.UIPacket.endInGameDirectionMode(1));
                   if (f.getPhase() < 3) {
                      c.getSession()
-                        .writeAndFlush(CField.addPopupSay(0, 4000, "이 지역에서 발생되는 공격은 창조나 파괴의 저주를 거는 것 같다...만약 두 저주가 동시에 걸린다면 #b큰 피해#k를 입으니 조심하자", ""));
+                        .writeAndFlush(CField.addPopupSay(0, 4000, "์ด ์ง€์—ญ์—์ ๋ฐ์๋๋” ๊ณต๊ฒฉ์€ ์ฐฝ์กฐ๋ ํ๊ดด์ ์ €์ฃผ๋ฅผ ๊ฑฐ๋” ๊ฒ ๊ฐ๋ค...๋ง์•ฝ ๋‘ ์ €์ฃผ๊ฐ€ ๋์์— ๊ฑธ๋ฆฐ๋ค๋ฉด #bํฐ ํ”ผํ•ด#k๋ฅผ ์…์ผ๋ ์กฐ์ฌํ•์", ""));
                   } else if (f.getPhase() == 3) {
-                     c.getSession().writeAndFlush(CField.addPopupSay(3003902, 4000, "#face1#가자. 나는 복수를, 너는 세계를 지키는 거야.", ""));
+                     c.getSession().writeAndFlush(CField.addPopupSay(3003902, 4000, "#face1#๊ฐ€์. ๋๋” ๋ณต์๋ฅผ, ๋๋” ์ธ๊ณ๋ฅผ ์ง€ํค๋” ๊ฑฐ์•ผ.", ""));
                   } else {
-                     c.getSession().writeAndFlush(CField.addPopupSay(0, 4000, "아무 것도 없는 공간…… 세계가 이런 모습이 되게 할 순 없어…", ""));
+                     c.getSession().writeAndFlush(CField.addPopupSay(0, 4000, "์•๋ฌด ๊ฒ๋ ์—๋” ๊ณต๊ฐโ€ฆโ€ฆ ์ธ๊ณ๊ฐ€ ์ด๋ฐ ๋ชจ์ต์ด ๋๊ฒ ํ•  ์ ์—์–ดโ€ฆ", ""));
                   }
                }
                break;
@@ -2232,7 +2232,7 @@ public class MapScriptMethods {
                if (c.getPlayer().getOneInfoQuestInteger(1234567, "see_intro") == 1) {
                   Field map = c.getChannelServer().getMapFactory().getMap(ServerConstants.TownMap);
                   c.getPlayer().changeMap(map, map.getPortal("sp"));
-                  c.getPlayer().dropMessage(6, "บัญชีนี้ดู Intro ไปแล้ว จะถูกย้ายไป True Castle");
+                  c.getPlayer().dropMessage(6, "เธเธฑเธเธเธตเธเธตเนเธ”เธน Intro เนเธเนเธฅเนเธง เธเธฐเธ–เธนเธเธขเนเธฒเธขเนเธ True Castle");
                   return;
                }
 
@@ -2598,7 +2598,7 @@ public class MapScriptMethods {
                break;
             case mPark_stageEff:
                c.getPlayer().getMap().setMobGen(false);
-               c.getPlayer().dropMessage(-1, "ต้องกำจัดมอนสเตอร์ทั้งหมดในแผนที่ก่อนถึงจะไปด่านถัดไปได้");
+               c.getPlayer().dropMessage(-1, "เธ•เนเธญเธเธเธณเธเธฑเธ”เธกเธญเธเธชเน€เธ•เธญเธฃเนเธ—เธฑเนเธเธซเธกเธ”เนเธเนเธเธเธ—เธตเนเธเนเธญเธเธ–เธถเธเธเธฐเนเธเธ”เนเธฒเธเธ–เธฑเธ”เนเธเนเธ”เน");
                switch (c.getPlayer().getMapId() % 1000 / 100) {
                   case 0:
                   case 1:
@@ -2723,9 +2723,9 @@ public class MapScriptMethods {
                      number++;
                      c.getPlayer().updateInfoQuest(m.questid - 2005, sb.toString());
                      MapleQuest.getInstance(m.questid - 1995).forceStart(c.getPlayer(), 0, String.valueOf(number));
-                     c.getPlayer().dropMessage(-1, number + "/" + m.maps.length + "การสำรวจ");
+                     c.getPlayer().dropMessage(-1, number + "/" + m.maps.length + "เธเธฒเธฃเธชเธณเธฃเธงเธ");
                      c.getPlayer().dropMessage(-1, "Title - " + m.questname + " Adventurer Challenge in progress");
-                     c.getSession().writeAndFlush(CWvsContext.showQuestMsg("Title - " + m.questname + " Adventurer Challenge in progress. " + number + "/" + m.maps.length + "개 지역 완료"));
+                     c.getSession().writeAndFlush(CWvsContext.showQuestMsg("Title - " + m.questname + " Adventurer Challenge in progress. " + number + "/" + m.maps.length + "๊ฐ ์ง€์—ญ ์๋ฃ"));
                   }
                }
                break;

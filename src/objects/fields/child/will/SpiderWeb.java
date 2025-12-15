@@ -1,4 +1,4 @@
-package objects.fields.child.will;
+﻿package objects.fields.child.will;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import network.encode.PacketEncoder;

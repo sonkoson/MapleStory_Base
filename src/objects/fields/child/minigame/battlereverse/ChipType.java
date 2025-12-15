@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.battlereverse;
+﻿package objects.fields.child.minigame.battlereverse;
 
 public class ChipType {
    public static final byte None = -1;

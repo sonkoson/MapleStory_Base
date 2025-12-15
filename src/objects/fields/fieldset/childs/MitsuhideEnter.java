@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class MitsuhideEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "mitsuhide_clear";
       this.canTimeKey = "mitsuhide_can_time";
-      this.bossName = "미츠히데";
-      this.difficulty = "하드";
+      this.bossName = "๋ฏธ์ธ ํ๋ฐ";
+      this.difficulty = "ํ•๋“";
       this.dailyLimit = 1;
    }
 
@@ -104,10 +104,10 @@ public class MitsuhideEnter extends FieldSet {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

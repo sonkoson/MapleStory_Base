@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class HardKaringEnter extends FieldSet {
       this.qexKey = 1234589;
       this.keyValue = "karing_clear";
       this.canTimeKey = "karing_can_time";
-      this.bossName = "카링";
-      this.difficulty = "이지";
+      this.bossName = "์นด๋ง";
+      this.difficulty = "์ด์ง€";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -117,10 +117,10 @@ public class HardKaringEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

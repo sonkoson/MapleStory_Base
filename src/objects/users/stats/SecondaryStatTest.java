@@ -1,4 +1,4 @@
-package objects.users.stats;
+﻿package objects.users.stats;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

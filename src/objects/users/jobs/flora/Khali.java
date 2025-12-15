@@ -1,4 +1,4 @@
-package objects.users.jobs.flora;
+﻿package objects.users.jobs.flora;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import java.awt.Point;

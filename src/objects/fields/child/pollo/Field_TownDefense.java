@@ -1,4 +1,4 @@
-package objects.fields.child.pollo;
+﻿package objects.fields.child.pollo;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -139,7 +139,7 @@ public class Field_TownDefense extends Field {
          this.spawnIndex = 0;
          this.sendWave();
          if (this.wave > 1) {
-            this.player.send(CWvsContext.getScriptProgressMessage("WAVE를 막아냈습니다. 다음 WAVE를 준비해주세요."));
+            this.player.send(CWvsContext.getScriptProgressMessage("WAVE๋ฅผ ๋ง์•๋์ต๋๋ค. ๋ค์ WAVE๋ฅผ ์ค€๋นํ•ด์ฃผ์ธ์”."));
          }
 
          this.player.send(CField.environmentChange("defense/wave/" + this.wave, 19));
@@ -167,7 +167,7 @@ public class Field_TownDefense extends Field {
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
       this.player = player;
-      player.send(CField.startMapEffect("놈들이 겁도 없이 성벽 안의 마을을 습격하는군! 모조리 해치워라!", 5120159, true, 10));
+      player.send(CField.startMapEffect("๋๋“ค์ด ๊ฒ๋ ์—์ด ์ฑ๋ฒฝ ์•์ ๋ง์์ ์ต๊ฒฉํ•๋”๊ตฐ! ๋ชจ์กฐ๋ฆฌ ํ•ด์น์๋ผ!", 5120159, true, 10));
       this.sendLife();
       this.sendWave();
       RandomPortal portal = player.getRandomPortal();
@@ -204,7 +204,7 @@ public class Field_TownDefense extends Field {
    public void decLife() {
       if (this.life > 0) {
          this.life--;
-         this.player.send(CField.addPopupSay(9001059, 3000, this.player.getName() + ", 너의 사냥 실력이 이정도밖에 안됐나?", ""));
+         this.player.send(CField.addPopupSay(9001059, 3000, this.player.getName() + ", ๋์ ์ฌ๋ฅ ์ค๋ ฅ์ด ์ด์ •๋๋ฐ–์— ์•๋๋?", ""));
          this.sendLife();
       }
 

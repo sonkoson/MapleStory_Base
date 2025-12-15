@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-311, 201));
             spawner.addSpawnPosition(new Point(-903, 197));
             spawner.addSpawnPosition(new Point(-568, 196));
-            spawner.setSpawnDesc("어디선가 커다란 버섯이 나타났습니다.");
+            spawner.setSpawnDesc("์–ด๋””์ ๊ฐ€ ์ปค๋ค๋€ ๋ฒ์ฏ์ด ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 100020301: {
@@ -28,7 +28,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-188, -657));
             spawner.addSpawnPosition(new Point(625, -660));
             spawner.addSpawnPosition(new Point(508, -648));
-            spawner.setSpawnDesc("어디선가 커다란 파란 버섯이 나타났습니다.");
+            spawner.setSpawnDesc("์–ด๋””์ ๊ฐ€ ์ปค๋ค๋€ ํ๋€ ๋ฒ์ฏ์ด ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 100020401: {
@@ -37,7 +37,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-130, -773));
             spawner.addSpawnPosition(new Point(504, -760));
             spawner.addSpawnPosition(new Point(608, -641));
-            spawner.setSpawnDesc("어디선가 음산한 기운을 풍기는 커다란 버섯이 나타났습니다.");
+            spawner.setSpawnDesc("์–ด๋””์ ๊ฐ€ ์์ฐํ• ๊ธฐ์ด์ ํ’๊ธฐ๋” ์ปค๋ค๋€ ๋ฒ์ฏ์ด ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 102020500: {
@@ -46,7 +46,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(1121, 2130));
             spawner.addSpawnPosition(new Point(483, 2171));
             spawner.addSpawnPosition(new Point(1474, 1706));
-            spawner.setSpawnDesc("바위산을 울리는 발걸음 소리와 함께 스텀피가 나타났습니다.");
+            spawner.setSpawnDesc("๋ฐ”์์ฐ์ ์ธ๋ฆฌ๋” ๋ฐ๊ฑธ์ ์๋ฆฌ์€ ํ•จ๊ป ์คํ…€ํ”ผ๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 103030400: {
@@ -55,28 +55,28 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-831, 109));
             spawner.addSpawnPosition(new Point(1525, -75));
             spawner.addSpawnPosition(new Point(-511, 107));
-            spawner.setSpawnDesc("늪 속에서 거대한 악어 다일이 올라왔습니다.");
+            spawner.setSpawnDesc("๋ช ์์—์ ๊ฑฐ๋€ํ• ์•…์–ด ๋ค์ผ์ด ์ฌ๋ผ์”์ต๋๋ค.");
             return spawner;
          }
          case 106030102: {
             FieldMonsterSpawner spawner = new FieldMonsterSpawner(3300109);
             spawner.setCycleTime(60000L);
             spawner.addSpawnPosition(new Point(479, 156));
-            spawner.setSpawnDesc("바이킹 군단이 나타났습니다.");
+            spawner.setSpawnDesc("๋ฐ”์ดํน ๊ตฐ๋จ์ด ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 106030800: {
             FieldMonsterSpawner spawner = new FieldMonsterSpawner(3300110);
             spawner.setCycleTime(1800000L);
             spawner.addSpawnPosition(new Point(360, 290));
-            spawner.setSpawnDesc("검은 바이킹이 모습을 드러냈습니다.");
+            spawner.setSpawnDesc("๊ฒ€์€ ๋ฐ”์ดํน์ด ๋ชจ์ต์ ๋“๋ฌ๋์ต๋๋ค.");
             return spawner;
          }
          case 250010300: {
             FieldMonsterSpawner spawner = new FieldMonsterSpawner(5120507);
             spawner.setCycleTime(600000L);
             spawner.addSpawnPosition(new Point(-536, -422));
-            spawner.setSpawnDesc("약초밭 사이로 거대 도라지가 나타났습니다.");
+            spawner.setSpawnDesc("์•ฝ์ด๋ฐญ ์ฌ์ด๋ก ๊ฑฐ๋€ ๋๋ผ์ง€๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 250010504: {
@@ -85,14 +85,14 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-303, 543));
             spawner.addSpawnPosition(new Point(227, 543));
             spawner.addSpawnPosition(new Point(719, 543));
-            spawner.setSpawnDesc("주변을 흐르는 요기가 강해졌습니다. 기분나쁜 고양이 울음소리가 들립니다.");
+            spawner.setSpawnDesc("์ฃผ๋ณ€์ ํ๋ฅด๋” ์”๊ธฐ๊ฐ€ ๊ฐ•ํ•ด์ก์ต๋๋ค. ๊ธฐ๋ถ๋์ ๊ณ ์–‘์ด ์ธ์์๋ฆฌ๊ฐ€ ๋“ค๋ฆฝ๋๋ค.");
             return spawner;
          }
          case 251010101: {
             FieldMonsterSpawner spawner = new FieldMonsterSpawner(6090002);
             spawner.setCycleTime(600000L);
             spawner.addSpawnPosition(new Point(660, 124));
-            spawner.setSpawnDesc("두루마기에 몸을 숨겼던 대나무 무사가 모습을 드러냈습니다.");
+            spawner.setSpawnDesc("๋‘๋ฃจ๋ง๊ธฐ์— ๋ชธ์ ์จ๊ฒผ๋ ๋€๋๋ฌด ๋ฌด์ฌ๊ฐ€ ๋ชจ์ต์ ๋“๋ฌ๋์ต๋๋ค.");
             return spawner;
          }
          case 251010102: {
@@ -101,7 +101,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(-41, 124));
             spawner.addSpawnPosition(new Point(-173, 126));
             spawner.addSpawnPosition(new Point(79, 118));
-            spawner.setSpawnDesc("물밑에서 스멀스멀 대왕지네가 나타났습니다.");
+            spawner.setSpawnDesc("๋ฌผ๋ฐ‘์—์ ์ค๋ฉ€์ค๋ฉ€ ๋€์•์ง€๋ค๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 270010500: {
@@ -110,7 +110,7 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(70, -876));
             spawner.addSpawnPosition(new Point(-124, -876));
             spawner.addSpawnPosition(new Point(-333, -876));
-            spawner.setSpawnDesc("추억의 길에 도도가 나타났습니다.");
+            spawner.setSpawnDesc("์ถ”์–ต์ ๊ธธ์— ๋๋๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 270020500: {
@@ -119,14 +119,14 @@ public class FieldMonsterSpawner {
             spawner.addSpawnPosition(new Point(64, -528));
             spawner.addSpawnPosition(new Point(100, -528));
             spawner.addSpawnPosition(new Point(0, -528));
-            spawner.setSpawnDesc("후회의 길에 릴리노흐가 나타났습니다.");
+            spawner.setSpawnDesc("ํํ์ ๊ธธ์— ๋ฆด๋ฆฌ๋…ธํ๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          case 270030500: {
             FieldMonsterSpawner spawner = new FieldMonsterSpawner(8220006);
             spawner.setCycleTime(600000L);
             spawner.addSpawnPosition(new Point(423, -569));
-            spawner.setSpawnDesc("망각의 길에 라이카가 나타났습니다.");
+            spawner.setSpawnDesc("๋ง๊ฐ์ ๊ธธ์— ๋ผ์ด์นด๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.");
             return spawner;
          }
          default:

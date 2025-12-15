@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.train;
+﻿package objects.fields.child.minigame.train;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,7 +184,7 @@ public class Field_TrainMaster extends Field {
 
    public void showEffect() {
       this.broadcastMessage(CWvsContext.showNewEffect("TrainVLog_1", "TrainVLog_", false));
-      this.broadcastMessage(CField.addPopupSay(9062575, 5000, "#b#e크리에이터들의\r\n기차 운행 도전!#n#k\r\n#r지금 바로 시작하겠네!#k", ""));
+      this.broadcastMessage(CField.addPopupSay(9062575, 5000, "#b#eํฌ๋ฆฌ์—์ดํฐ๋“ค์\r\n๊ธฐ์ฐจ ์ดํ– ๋์ !#n#k\r\n#r์ง€๊ธ ๋ฐ”๋ก ์์‘ํ•๊ฒ ๋ค!#k", ""));
    }
 
    public void showMsg() {

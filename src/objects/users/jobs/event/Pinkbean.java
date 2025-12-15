@@ -1,4 +1,4 @@
-package objects.users.jobs.event;
+﻿package objects.users.jobs.event;
 
 import java.awt.Point;
 import java.util.ArrayList;

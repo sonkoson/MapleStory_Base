@@ -1,4 +1,4 @@
-package network.auction;
+﻿package network.auction;
 
 public class AuctionInfo {
    private int cid;

@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import database.DBConfig;
 import database.DBConnection;
@@ -75,7 +75,7 @@ public class GuildHandler {
                      }
 
                      if (leader != null) {
-                        leader.dropMessage(5, guildName + " หัวหน้ากิลด์ปฏิเสธคำเชิญเข้าร่วมพันธมิตร");
+                        leader.dropMessage(5, guildName + " เธซเธฑเธงเธซเธเนเธฒเธเธดเธฅเธ”เนเธเธเธดเน€เธชเธเธเธณเน€เธเธดเธเน€เธเนเธฒเธฃเนเธงเธกเธเธฑเธเธเธกเธดเธ•เธฃ");
                      }
                   }
                }
@@ -206,7 +206,7 @@ public class GuildHandler {
             int s = Center.Guild.addGuildMember(mgc);
             guild.removeJoinRequester(playerId, true);
             if (s == 0 && target != null) {
-               target.dropMessage(1, "กิลด์ที่ท่านต้องการเข้าร่วมมีสมาชิกเต็มแล้ว");
+               target.dropMessage(1, "เธเธดเธฅเธ”เนเธ—เธตเนเธ—เนเธฒเธเธ•เนเธญเธเธเธฒเธฃเน€เธเนเธฒเธฃเนเธงเธกเธกเธตเธชเธกเธฒเธเธดเธเน€เธ•เนเธกเนเธฅเนเธง");
                target.setGuildId(0);
                return;
             }
@@ -285,13 +285,13 @@ public class GuildHandler {
             case CreateGuild_CheckName:
                if (player.getGuildId() <= 0 && player.getMapId() == 200000301) {
                   if (player.getMeso() < 10000000L) {
-                     player.dropMessage(1, "มี Meso ไม่เพียงพอสำหรับการสร้างกิลด์ [10,000,000 Meso]");
+                     player.dropMessage(1, "เธกเธต Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเธชเธฃเนเธฒเธเธเธดเธฅเธ”เน [10,000,000 Meso]");
                      return;
                   }
 
                   String guildNamex = packet.readMapleAsciiString();
                   if (!isGuildNameAcceptable(guildNamex)) {
-                     player.dropMessage(1, "ชื่อกิลด์นี้ไม่สามารถใช้งานได้");
+                     player.dropMessage(1, "เธเธทเนเธญเธเธดเธฅเธ”เนเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                      return;
                   }
 
@@ -311,12 +311,12 @@ public class GuildHandler {
                   break;
                }
 
-               player.dropMessage(1, "ไม่สามารถสร้างกิลด์ได้เนื่องจากคุณมีกิลด์อยู่แล้ว");
+               player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธฃเนเธฒเธเธเธดเธฅเธ”เนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธเธธเธ“เธกเธตเธเธดเธฅเธ”เนเธญเธขเธนเนเนเธฅเนเธง");
                return;
             case CreateGuild_DoCreate: {
                String guildName = player.getCreateGuildName();
                if (!isGuildNameAcceptable(guildName)) {
-                  player.dropMessage(1, "ไม่สามารถสร้างกิลด์ด้วยชื่อนี้ได้");
+                  player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธฃเนเธฒเธเธเธดเธฅเธ”เนเธ”เนเธงเธขเธเธทเนเธญเธเธตเนเนเธ”เน");
                   return;
                }
 
@@ -386,7 +386,7 @@ public class GuildHandler {
                         }
                      });
                      if (guilds.isEmpty()) {
-                        player.dropMessage(1, "ไม่พบกิลด์ กรุณาตรวจสอบชื่อกิลด์ให้ถูกต้อง");
+                        player.dropMessage(1, "เนเธกเนเธเธเธเธดเธฅเธ”เน เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธเธทเนเธญเธเธดเธฅเธ”เนเนเธซเนเธ–เธนเธเธ•เนเธญเธ");
                         return;
                      }
 
@@ -402,12 +402,12 @@ public class GuildHandler {
                      return;
                   }
 
-                  player.dropMessage(1, "ไม่พบกิลด์ กรุณาตรวจสอบชื่อกิลด์ให้ถูกต้อง");
+                  player.dropMessage(1, "เนเธกเนเธเธเธเธดเธฅเธ”เน เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธเธทเนเธญเธเธดเธฅเธ”เนเนเธซเนเธ–เธนเธเธ•เนเธญเธ");
                   return;
                }
 
                if (searchType2 == 2) {
-                  player.dropMessage(5, "ระบบ Blacklist กิลด์ยังไม่เปิดให้บริการ");
+                  player.dropMessage(5, "เธฃเธฐเธเธ Blacklist เธเธดเธฅเธ”เนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธซเนเธเธฃเธดเธเธฒเธฃ");
                   player.send(CWvsContext.enableActions(player));
                   return;
                }
@@ -442,7 +442,7 @@ public class GuildHandler {
                   int allianceId = player.getGuild().getAllianceId();
                   if (!Center.Alliance.canInvite(allianceId)) {
                      player.dropMessage(1,
-                           "ไม่สามารถเชิญกิลด์เข้าร่วมพันธมิตรเพิ่มได้ พันธมิตรสามารถมีได้สูงสุด 5 กิลด์ หากต้องการเพิ่มจำนวน กรุณาติดต่อ NPC ผู้ดูแลกิลด์");
+                           "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเธเธเธดเธฅเธ”เนเน€เธเนเธฒเธฃเนเธงเธกเธเธฑเธเธเธกเธดเธ•เธฃเน€เธเธดเนเธกเนเธ”เน เธเธฑเธเธเธกเธดเธ•เธฃเธชเธฒเธกเธฒเธฃเธ–เธกเธตเนเธ”เนเธชเธนเธเธชเธธเธ” 5 เธเธดเธฅเธ”เน เธซเธฒเธเธ•เนเธญเธเธเธฒเธฃเน€เธเธดเนเธกเธเธณเธเธงเธ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญ NPC เธเธนเนเธ”เธนเนเธฅเธเธดเธฅเธ”เน");
                      return;
                   }
 
@@ -450,7 +450,7 @@ public class GuildHandler {
                   if (Center.Alliance.inviteList.containsKey(targetGuildId)) {
                      long time = Center.Alliance.inviteTime.get(targetGuildId);
                      if (System.currentTimeMillis() - time <= 60000L && !player.getClient().isGm()) {
-                        player.dropMessage(1, "กิลด์ดังกล่าวอยู่ระหว่างการดำเนินการคำเชิญจากพันธมิตรอื่น");
+                        player.dropMessage(1, "เธเธดเธฅเธ”เนเธ”เธฑเธเธเธฅเนเธฒเธงเธญเธขเธนเนเธฃเธฐเธซเธงเนเธฒเธเธเธฒเธฃเธ”เธณเน€เธเธดเธเธเธฒเธฃเธเธณเน€เธเธดเธเธเธฒเธเธเธฑเธเธเธกเธดเธ•เธฃเธญเธทเนเธ");
                         return;
                      }
 
@@ -462,7 +462,7 @@ public class GuildHandler {
                   if (leaderId > 0) {
                      int ch = Center.Find.findChannel(leaderId);
                      if (ch <= 0) {
-                        player.dropMessage(5, "หัวหน้ากิลด์ดังกล่าวออฟไลน์อยู่");
+                        player.dropMessage(5, "เธซเธฑเธงเธซเธเนเธฒเธเธดเธฅเธ”เนเธ”เธฑเธเธเธฅเนเธฒเธงเธญเธญเธเนเธฅเธเนเธญเธขเธนเน");
                         return;
                      }
 
@@ -476,7 +476,7 @@ public class GuildHandler {
                      }
 
                      if (leader == null) {
-                        player.dropMessage(5, "หัวหน้ากิลด์ดังกล่าวออฟไลน์อยู่");
+                        player.dropMessage(5, "เธซเธฑเธงเธซเธเนเธฒเธเธดเธฅเธ”เนเธ”เธฑเธเธเธฅเนเธฒเธงเธญเธญเธเนเธฅเธเนเธญเธขเธนเน");
                         return;
                      }
 
@@ -681,7 +681,7 @@ public class GuildHandler {
                      int s = Center.Guild.addGuildMember(mgc);
                      Center.Guild.removeAllJoinRequester(playerID);
                      if (s == 0 && target != null) {
-                        target.dropMessage(1, "กิลด์ที่ท่านต้องการเข้าร่วมมีสมาชิกเต็มแล้ว");
+                        target.dropMessage(1, "เธเธดเธฅเธ”เนเธ—เธตเนเธ—เนเธฒเธเธ•เนเธญเธเธเธฒเธฃเน€เธเนเธฒเธฃเนเธงเธกเธกเธตเธชเธกเธฒเธเธดเธเน€เธ•เนเธกเนเธฅเนเธง");
                         target.setGuildId(0);
                         return;
                      }
@@ -800,7 +800,7 @@ public class GuildHandler {
                      byte logocolor = packet.readByte();
                      if (!Center.Guild.setGuildEmblem(player.getGuildId(), bg, bgcolor, logo, logocolor,
                            Guild.BCOp.EMBELMCHANGE, null)) {
-                        player.dropMessage(1, "GP ไม่เพียงพอสำหรับการสร้างตรากิลด์");
+                        player.dropMessage(1, "GP เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเธชเธฃเนเธฒเธเธ•เธฃเธฒเธเธดเธฅเธ”เน");
                         return;
                      }
                   } else {
@@ -814,7 +814,7 @@ public class GuildHandler {
 
                      if (!Center.Guild.setGuildEmblem(player.getGuildId(), (short) 0, (byte) 0, (short) 0, (byte) 0,
                            Guild.BCOp.CUSTOMEMBLEMCHANGE, imageData)) {
-                        player.dropMessage(1, "GP ไม่เพียงพอสำหรับการสร้างตรากิลด์");
+                        player.dropMessage(1, "GP เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเธชเธฃเนเธฒเธเธ•เธฃเธฒเธเธดเธฅเธ”เน");
                         return;
                      }
                   }
@@ -823,7 +823,7 @@ public class GuildHandler {
                   break;
                }
 
-               player.dropMessage(1, "การสร้างตรากิลด์สามารถทำได้ที่ Hall of Heroes เท่านั้น");
+               player.dropMessage(1, "เธเธฒเธฃเธชเธฃเนเธฒเธเธ•เธฃเธฒเธเธดเธฅเธ”เนเธชเธฒเธกเธฒเธฃเธ–เธ—เธณเนเธ”เนเธ—เธตเน Hall of Heroes เน€เธ—เนเธฒเธเธฑเนเธ");
                return;
             case ChangeNotice:
                String notice = packet.readMapleAsciiString();
@@ -927,7 +927,7 @@ public class GuildHandler {
             case ChangeAllianceRank:
                if (player.getAllianceRank() <= 2 && !Center.Alliance
                      .changeAllianceRank(player.getGuild().getAllianceId(), packet.readInt(), packet.readByte())) {
-                  player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุขณะเปลี่ยนระดับพันธมิตร");
+                  player.dropMessage(5, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธเธเธ“เธฐเน€เธเธฅเธตเนเธขเธเธฃเธฐเธ”เธฑเธเธเธฑเธเธเธกเธดเธ•เธฃ");
                }
                break;
             case ChangeAllianceRankRole:
@@ -979,7 +979,7 @@ public class GuildHandler {
                                  alliance.getId(), guildxxxxx.getId(),
                                  request == GuildRequestResultType.Request.KickGuildInAlliance
                                        && player.getAllianceRank() == 1)) {
-                        player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+                        player.dropMessage(5, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
                         return;
                      }
                   } else if (guildxxxxx != null
@@ -989,7 +989,7 @@ public class GuildHandler {
                               || request == GuildRequestResultType.Request.KickGuildInAlliance
                                     && player.getAllianceRank() == 1)
                         && !Center.Alliance.disbandAlliance(alliance.getId())) {
-                     player.dropMessage(5, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+                     player.dropMessage(5, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
                      return;
                   }
                } catch (Exception var35) {
@@ -1014,20 +1014,20 @@ public class GuildHandler {
 
             MapleCharacter warpCharacter = client.getChannelServer().getPlayerStorage().getCharacterById(playerID);
             if (warpCharacter == null) {
-               client.getPlayer().dropMessage(6, "ไม่พบผู้ใช้ในแชนแนลปัจจุบัน");
+               client.getPlayer().dropMessage(6, "เนเธกเนเธเธเธเธนเนเนเธเนเนเธเนเธเธเนเธเธฅเธเธฑเธเธเธธเธเธฑเธ");
                return;
             }
 
             if (level.getSourceId() == 91001016) {
                if (FieldLimitType.RegularExpLoss.check(warpCharacter.getMap().getFieldLimit())
                      || FieldLimitType.SpecificPortalScrollLimit.check(warpCharacter.getMap().getFieldLimit())) {
-                  client.getPlayer().dropMessage(1, "เป้าหมายอยู่ในตำแหน่งที่ไม่สามารถใช้สกิลนี้ได้");
+                  client.getPlayer().dropMessage(1, "เน€เธเนเธฒเธซเธกเธฒเธขเธญเธขเธนเนเนเธเธ•เธณเนเธซเธเนเธเธ—เธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธชเธเธดเธฅเธเธตเนเนเธ”เน");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
 
                if (warpCharacter.getMap().getLevelLimit() > client.getPlayer().getLevel()) {
-                  client.getPlayer().dropMessage(1, "เลเวลไม่เพียงพอที่จะเคลื่อนย้าย");
+                  client.getPlayer().dropMessage(1, "เน€เธฅเน€เธงเธฅเนเธกเนเน€เธเธตเธขเธเธเธญเธ—เธตเนเธเธฐเน€เธเธฅเธทเนเธญเธเธขเนเธฒเธข");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
@@ -1036,13 +1036,13 @@ public class GuildHandler {
             } else {
                if (FieldLimitType.RegularExpLoss.check(client.getPlayer().getMap().getFieldLimit())
                      || FieldLimitType.SpecificPortalScrollLimit.check(client.getPlayer().getMap().getFieldLimit())) {
-                  client.getPlayer().dropMessage(1, "ไม่สามารถใช้สกิลในตำแหน่งนี้ได้");
+                  client.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธชเธเธดเธฅเนเธเธ•เธณเนเธซเธเนเธเธเธตเนเนเธ”เน");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }
 
                if (client.getPlayer().getMap().getLevelLimit() > warpCharacter.getLevel()) {
-                  client.getPlayer().dropMessage(1, "สมาชิกกิลด์ที่เลือกมีเลเวลต่ำเกินไปที่จะถูกเคลื่อนย้าย");
+                  client.getPlayer().dropMessage(1, "เธชเธกเธฒเธเธดเธเธเธดเธฅเธ”เนเธ—เธตเนเน€เธฅเธทเธญเธเธกเธตเน€เธฅเน€เธงเธฅเธ•เนเธณเน€เธเธดเธเนเธเธ—เธตเนเธเธฐเธ–เธนเธเน€เธเธฅเธทเนเธญเธเธขเนเธฒเธข");
                   client.getPlayer().send(CWvsContext.enableActions(client.getPlayer()));
                   return;
                }

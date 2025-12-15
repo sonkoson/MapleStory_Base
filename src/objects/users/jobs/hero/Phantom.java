@@ -1,4 +1,4 @@
-package objects.users.jobs.hero;
+﻿package objects.users.jobs.hero;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -795,7 +795,7 @@ public class Phantom extends Thief {
          AtomicInteger slot = new AtomicInteger(0);
          stolenSkills.forEach(stSkill -> {
             if (stSkill.getLeft() == skillId) {
-               this.getPlayer().dropMessage(-6, "คุณขโมยสกิลนี้ไปแล้ว กรุณาลบออกแล้วลองใหม่");
+               this.getPlayer().dropMessage(-6, "เธเธธเธ“เธเนเธกเธขเธชเธเธดเธฅเธเธตเนเนเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฅเธเธญเธญเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเน");
                if (this.getPlayer().isGM()) {
                   this.getPlayer().dropMessage(5, "Skill ID: " + skillId);
                }
@@ -940,7 +940,7 @@ public class Phantom extends Thief {
          });
          this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.STOLEN_SKILLS.getFlag());
          this.getPlayer().dropMessage(-8,
-               "คุณเปลี่ยนสกิลผ่านการจัดการสกิล มีคูลดาวน์ 30 วินาทีสำหรับสกิลนี้");
+               "เธเธธเธ“เน€เธเธฅเธตเนเธขเธเธชเธเธดเธฅเธเนเธฒเธเธเธฒเธฃเธเธฑเธ”เธเธฒเธฃเธชเธเธดเธฅ เธกเธตเธเธนเธฅเธ”เธฒเธงเธเน 30 เธงเธดเธเธฒเธ—เธตเธชเธณเธซเธฃเธฑเธเธชเธเธดเธฅเธเธตเน");
          this.getPlayer().addCooldown(baseSkill, System.currentTimeMillis(), 30000L);
       } else {
          this.getPlayer().dropMessage(-6, "Please try again in a moment.");

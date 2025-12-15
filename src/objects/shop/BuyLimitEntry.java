@@ -1,4 +1,4 @@
-package objects.shop;
+﻿package objects.shop;
 
 import network.encode.PacketEncoder;
 import network.models.PacketHelper;

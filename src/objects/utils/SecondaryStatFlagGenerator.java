@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import objects.users.stats.SecondaryStat;
 import objects.users.stats.SecondaryStatFlag;

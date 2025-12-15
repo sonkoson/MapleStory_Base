@@ -1,4 +1,4 @@
-package network.connector;
+﻿package network.connector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +21,11 @@ public class ConnectorThread implements Runnable {
                         if (cli != null) {
                            if (cli.getAccountId() != chr.getClient().getAccID()) {
                               System.out
-                                 .println("[Connector Error] " + chr.getName() + " 캐릭터의 AccountID가 다름 : " + cli.getAccountId() + " / " + chr.getClient().getAccID());
+                                 .println("[Connector Error] " + chr.getName() + " ์บ๋ฆญํฐ์ AccountID๊ฐ€ ๋ค๋ฆ : " + cli.getAccountId() + " / " + chr.getClient().getAccID());
                               removeChars.add(chr);
                            }
                         } else {
-                           System.out.println("[Connector Error] " + chr.getName() + " 캐릭터의 저장된 커넥터 클라이언트 정보가 Null");
+                           System.out.println("[Connector Error] " + chr.getName() + " ์บ๋ฆญํฐ์ ์ €์ฅ๋ ์ปค๋ฅํฐ ํด๋ผ์ด์–ธํธ ์ •๋ณด๊ฐ€ Null");
                            removeChars.add(chr);
                         }
                      } else {
@@ -33,7 +33,7 @@ public class ConnectorThread implements Runnable {
                         if (cli != null) {
                            chr.getClient().setConnectorClient(cli);
                         } else {
-                           System.out.println("[Connector Error] " + chr.getName() + " 캐릭터의 계정 커넥터 클라이언트 정보가 Null");
+                           System.out.println("[Connector Error] " + chr.getName() + " ์บ๋ฆญํฐ์ ๊ณ์ • ์ปค๋ฅํฐ ํด๋ผ์ด์–ธํธ ์ •๋ณด๊ฐ€ Null");
                            removeChars.add(chr);
                         }
                      }

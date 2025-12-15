@@ -1,4 +1,4 @@
-package objects.context.party.boss;
+﻿package objects.context.party.boss;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class BossParty {
          cachedBossParty.put(infoKey, bossParties);
       }
 
-      System.out.println("[BossParty] " + cachedBossParty.size() + "개 캐싱완료");
+      System.out.println("[BossParty] " + cachedBossParty.size() + "๊ฐ ์บ์ฑ์๋ฃ");
    }
 
    public BossParty(String info, int levelMin, int difficulty, int enterFieldID) {

@@ -1,4 +1,4 @@
-package objects.context.guild.alliance;
+﻿package objects.context.guild.alliance;
 
 import database.DBConnection;
 import java.io.Serializable;
@@ -121,11 +121,11 @@ public class Alliance implements Serializable {
                   ps.setInt(2, guild1);
                   ps.setInt(3, guild2);
                   ps.setInt(4, leaderId);
-                  ps.setString(5, "마스터");
-                  ps.setString(6, "부마스터");
-                  ps.setString(7, "연합원");
-                  ps.setString(8, "연합원");
-                  ps.setString(9, "연합원");
+                  ps.setString(5, "๋ง์คํฐ");
+                  ps.setString(6, "๋ถ€๋ง์คํฐ");
+                  ps.setString(7, "์—ฐํ•ฉ์");
+                  ps.setString(8, "์—ฐํ•ฉ์");
+                  ps.setString(9, "์—ฐํ•ฉ์");
                   ps.execute();
                   rs = ps.getGeneratedKeys();
                   if (rs.next()) {

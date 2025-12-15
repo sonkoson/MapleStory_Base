@@ -1,4 +1,4 @@
-package network.decode;
+﻿package network.decode;
 
 public interface ByteInputStream {
    int readByte();

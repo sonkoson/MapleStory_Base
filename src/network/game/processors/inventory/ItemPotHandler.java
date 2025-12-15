@@ -1,4 +1,4 @@
-package network.game.processors.inventory;
+﻿package network.game.processors.inventory;
 
 import constants.GameConstants;
 import network.SendPacketOpcode;

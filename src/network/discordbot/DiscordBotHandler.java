@@ -1,4 +1,4 @@
-package network.discordbot;
+﻿package network.discordbot;
 
 import api.telegram.TelegramSender;
 import constants.ServerConstants;
@@ -84,7 +84,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
 
                   auctionCount = (int) (auctionCount * rate);
                   count += auctionCount;
-                  encoder.writeMapleAsciiString("강림 총 인원은 현재 " + count + "명 입니다.\r\n" + pick);
+                  encoder.writeMapleAsciiString("๊ฐ•๋ฆผ ์ด ์ธ์์€ ํ์ฌ " + count + "๋ช… ์…๋๋ค.\r\n" + pick);
                   session.writeAndFlush(encoder.getPacket());
                }
                case 1:
@@ -102,7 +102,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
                      try {
                         name = MapleItemInformationProvider.getInstance().getName(itemid);
                      } catch (NullPointerException var15) {
-                        name = "이름없음";
+                        name = "์ด๋ฆ์—์";
                      }
 
                      sb.append(name).append("\r\n");
@@ -125,7 +125,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
                      try {
                         name = MapleItemInformationProvider.getInstance().getName(itemid);
                      } catch (NullPointerException var14) {
-                        name = "이름없음";
+                        name = "์ด๋ฆ์—์";
                      }
 
                      sb.append(name).append("\r\n");
@@ -147,7 +147,7 @@ public class DiscordBotHandler extends SimpleChannelInboundHandler<PacketDecoder
                      try {
                         name = MapleItemInformationProvider.getInstance().getName(itemid);
                      } catch (NullPointerException var13) {
-                        name = "이름없음";
+                        name = "์ด๋ฆ์—์";
                      }
 
                      sb.append(name).append("\r\n");

@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class HellBlackHeavenBossEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "hell_swoo_clear";
       this.canTimeKey = "swoo_can_time";
-      this.bossName = "스우";
-      this.difficulty = "헬";
+      this.bossName = "์ค์ฐ";
+      this.difficulty = "ํ—ฌ";
       this.dailyLimit = 3;
    }
 
@@ -115,10 +115,10 @@ public class HellBlackHeavenBossEnter extends FieldSet {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   this.AC(chrx, key, isPracticeMode);
                   chrx.setCurrentBossPhase(1);

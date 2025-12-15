@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 public enum Element {
    Physical(0),

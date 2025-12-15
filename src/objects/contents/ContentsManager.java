@@ -1,4 +1,4 @@
-package objects.contents;
+﻿package objects.contents;
 
 import database.DBConfig;
 import database.DBConnection;
@@ -55,11 +55,11 @@ public class ContentsManager {
          if (!DBConfig.isGanglim) {
             try {
                for (String line : Files.readAllLines(Paths.get("garo.txt"), Charset.forName("UTF-8"))) {
-                  if (!line.contains("다음 중") && line.contains("(")) {
+                  if (!line.contains("๋ค์ ์ค‘") && line.contains("(")) {
                      String q = line.substring(line.lastIndexOf("("));
                      q = q.replace("(", "");
                      q = q.replace(")", "");
-                     if (Pattern.matches("^[ㄱ-ㅎ가-힣]*$", q)) {
+                     if (Pattern.matches("^[ใฑ-ใ…๊ฐ€-ํฃ]*$", q)) {
                         String ans = line.substring(0, line.lastIndexOf("("));
                         jaums.add(new ContentsManager.JaumQuizGame(ans, q));
                      }
@@ -70,7 +70,7 @@ public class ContentsManager {
             }
 
             Collections.shuffle(jaums);
-            System.out.println("[ConsonantQuiz] DB Loaded. " + jaums.size() + "개");
+            System.out.println("[ConsonantQuiz] DB Loaded. " + jaums.size() + "๊ฐ");
             startGameSchedule();
          }
       }
@@ -82,7 +82,7 @@ public class ContentsManager {
                   @Override
                   public void run() {
                      if (ContentsManager.JaumQuizGame.currentJaumQuiz != null) {
-                        Center.Broadcast.broadcastMessage(CField.chatMsg(7, "คำตอบคือ : " + ContentsManager.JaumQuizGame.currentJaumQuiz + " ครับ!"));
+                        Center.Broadcast.broadcastMessage(CField.chatMsg(7, "เธเธณเธ•เธญเธเธเธทเธญ : " + ContentsManager.JaumQuizGame.currentJaumQuiz + " เธเธฃเธฑเธ!"));
                      }
 
                      int round = ContentsManager.JaumQuizGame.currentRound;
@@ -91,7 +91,7 @@ public class ContentsManager {
                      Center.Broadcast.broadcastMessage(
                         CField.chatMsg(
                            6,
-                           "Quiz ความรู้ทั่วไป! (แจก Union Coin) คำถาม : "
+                           "Quiz เธเธงเธฒเธกเธฃเธนเนเธ—เธฑเนเธงเนเธ! (เนเธเธ Union Coin) เธเธณเธ–เธฒเธก : "
                               + ContentsManager.JaumQuizGame.jaums.get(random).type
                               + " ["
                               + ContentsManager.JaumQuizGame.convertName(ContentsManager.JaumQuizGame.jaums.get(random).Answer)
@@ -111,11 +111,11 @@ public class ContentsManager {
             return false;
          } else if (chat.equals(currentJaumQuiz)) {
             if (System.currentTimeMillis() - chr.getOneInfoQuestLong(1234567, "CheckJaumTime") < 900000L) {
-               chr.dropMessage(5, "ยังไม่ครบ 15 นาทีหลังจากตอบถูกครั้งล่าสุด กรุณารอสักครู่!");
+               chr.dropMessage(5, "เธขเธฑเธเนเธกเนเธเธฃเธ 15 เธเธฒเธ—เธตเธซเธฅเธฑเธเธเธฒเธเธ•เธญเธเธ–เธนเธเธเธฃเธฑเนเธเธฅเนเธฒเธชเธธเธ” เธเธฃเธธเธ“เธฒเธฃเธญเธชเธฑเธเธเธฃเธนเน!");
                return false;
             } else {
-               Center.Broadcast.broadcastMessage(CField.chatMsg(7, chr.getName() + "님 정답! 유니온 코인 30개가 지급됩니다."));
-               Center.Broadcast.broadcastMessage(CField.chatMsg(7, "คำตอบ : " + currentJaumQuiz));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(7, chr.getName() + "๋ ์ •๋ต! ์ ๋์จ ์ฝ”์ธ 30๊ฐ๊ฐ€ ์ง€๊ธ๋ฉ๋๋ค."));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(7, "เธเธณเธ•เธญเธ : " + currentJaumQuiz));
                chr.updateOneInfo(1234567, "CheckJaumTime", String.valueOf(System.currentTimeMillis()));
                currentJaumQuiz = null;
                chr.send(CField.MapEff("Map/Effect.img/killing/clear"));
@@ -142,64 +142,64 @@ public class ContentsManager {
 
       public static String Direct(char b) {
          String chosung = null;
-         int first = (b - '가') / 588;
+         int first = (b - '๊ฐ€') / 588;
          switch (first) {
             case 0:
-               chosung = "ㄱ";
+               chosung = "ใฑ";
                break;
             case 1:
-               chosung = "ㄲ";
+               chosung = "ใฒ";
                break;
             case 2:
-               chosung = "ㄴ";
+               chosung = "ใด";
                break;
             case 3:
-               chosung = "ㄷ";
+               chosung = "ใท";
                break;
             case 4:
-               chosung = "ㄸ";
+               chosung = "ใธ";
                break;
             case 5:
-               chosung = "ㄹ";
+               chosung = "ใน";
                break;
             case 6:
-               chosung = "ㅁ";
+               chosung = "ใ…";
                break;
             case 7:
-               chosung = "ㅂ";
+               chosung = "ใ…";
                break;
             case 8:
-               chosung = "ㅃ";
+               chosung = "ใ…";
                break;
             case 9:
-               chosung = "ㅅ";
+               chosung = "ใ……";
                break;
             case 10:
-               chosung = "ㅆ";
+               chosung = "ใ…";
                break;
             case 11:
-               chosung = "ㅇ";
+               chosung = "ใ…";
                break;
             case 12:
-               chosung = "ㅈ";
+               chosung = "ใ…";
                break;
             case 13:
-               chosung = "ㅉ";
+               chosung = "ใ…";
                break;
             case 14:
-               chosung = "ㅊ";
+               chosung = "ใ…";
                break;
             case 15:
-               chosung = "ㅋ";
+               chosung = "ใ…";
                break;
             case 16:
-               chosung = "ㅌ";
+               chosung = "ใ…";
                break;
             case 17:
-               chosung = "ㅍ";
+               chosung = "ใ…";
                break;
             case 18:
-               chosung = "ㅎ";
+               chosung = "ใ…";
                break;
             default:
                chosung = String.valueOf(b);
@@ -266,13 +266,13 @@ public class ContentsManager {
                            8,
                            "["
                               + round
-                              + "ผลลัพธ์ Ladder รอบที่] : "
-                              + (right > 0 ? "우출발 /" : "좌출발 / ")
+                              + "เธเธฅเธฅเธฑเธเธเน Ladder เธฃเธญเธเธ—เธตเน] : "
+                              + (right > 0 ? "์ฐ์ถ๋ฐ /" : "์ข์ถ๋ฐ / ")
                               + " "
                               + line
                               + " / "
-                              + (odd > 0 ? "홀 /" : "짝 /")
-                              + " 당첨되신 분들의 당첨을 축하합니다. (알림을 원하시지 않는다면 @사다리 명령어를 이용해주세요.)"
+                              + (odd > 0 ? "ํ€ /" : "์ง /")
+                              + " ๋น์ฒจ๋์  ๋ถ๋“ค์ ๋น์ฒจ์ ์ถ•ํ•ํ•ฉ๋๋ค. (์•๋ฆผ์ ์ํ•์์ง€ ์•๋”๋ค๋ฉด @์ฌ๋ค๋ฆฌ ๋ช…๋ น์–ด๋ฅผ ์ด์ฉํ•ด์ฃผ์ธ์”.)"
                         )
                      );
 
@@ -351,7 +351,7 @@ public class ContentsManager {
                            }
 
                            Center.Broadcast.broadcastMessageLadderGame(
-                              CField.chatMsg(6, "ยอดเงินรางวัล Top." + (index + 1) + " " + key + "님 " + decFormat.format(winner.get(key)) + "메소 ")
+                              CField.chatMsg(6, "เธขเธญเธ”เน€เธเธดเธเธฃเธฒเธเธงเธฑเธฅ Top." + (index + 1) + " " + key + "๋ " + decFormat.format(winner.get(key)) + "๋ฉ”์ ")
                            );
                            index++;
                         }
@@ -361,7 +361,7 @@ public class ContentsManager {
                         List<String> looserKeySetList = new ArrayList<>(looser.keySet());
                         Collections.sort(looserKeySetList, (o1, o2) -> looser.get(o2).compareTo(looser.get(o1)));
                         Center.Broadcast.broadcastMessageLadderGame(
-                           CField.chatMsg(6, "ยอดขาดทุน Top.1 " + looserKeySetList.get(0) + "님 " + decFormat.format(looser.get(looserKeySetList.get(0))) + "메소 ")
+                           CField.chatMsg(6, "เธขเธญเธ”เธเธฒเธ”เธ—เธธเธ Top.1 " + looserKeySetList.get(0) + "๋ " + decFormat.format(looser.get(looserKeySetList.get(0))) + "๋ฉ”์ ")
                         );
                      }
 
@@ -369,13 +369,13 @@ public class ContentsManager {
                      ContentsManager.SpeedLadderGame.currentRound++;
                      ContentsManager.SpeedLadderGame.currentGameStartTime = System.currentTimeMillis();
                      if (ContentsManager.SpeedLadderGame.todayRound % 10 == 0) {
-                        String dealer = "[현재 사다리 메소 현황]\r\n";
-                        dealer = dealer + "오늘의 전체 베팅 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
-                        dealer = dealer + "오늘의 전체 유저 수령 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
+                        String dealer = "[ํ์ฌ ์ฌ๋ค๋ฆฌ ๋ฉ”์ ํํฉ]\r\n";
+                        dealer = dealer + "์ค๋์ ์ ์ฒด ๋ฒ ํ… ๊ธ์•ก : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
+                        dealer = dealer + "์ค๋์ ์ ์ฒด ์ ์ € ์๋ น ๊ธ์•ก : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
                         dealer = dealer
-                           + "서버입장 순메소수익 : "
+                           + "์๋ฒ์…์ฅ ์๋ฉ”์์์ต : "
                            + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet - ContentsManager.SpeedLadderGame.todayTotalBetWinning)
-                           + "메소";
+                           + "๋ฉ”์";
                         if (DBConfig.isGanglim) {
                            DiscordBotHandler.requestSendTelegram(dealer);
                         } else {
@@ -385,13 +385,13 @@ public class ContentsManager {
 
                      ContentsManager.SpeedLadderGame.todayRound++;
                      if (ContentsManager.SpeedLadderGame.todayDay != new Date().getDay()) {
-                        String dealer = "[★★오늘의 사다리 메소 정산★★]\r\n";
-                        dealer = dealer + "오늘의 전체 베팅 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
-                        dealer = dealer + "오늘의 전체 유저 수령 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
+                        String dealer = "[โ…โ…์ค๋์ ์ฌ๋ค๋ฆฌ ๋ฉ”์ ์ •์ฐโ…โ…]\r\n";
+                        dealer = dealer + "์ค๋์ ์ ์ฒด ๋ฒ ํ… ๊ธ์•ก : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
+                        dealer = dealer + "์ค๋์ ์ ์ฒด ์ ์ € ์๋ น ๊ธ์•ก : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
                         dealer = dealer
-                           + "서버입장 순메소수익 : "
+                           + "์๋ฒ์…์ฅ ์๋ฉ”์์์ต : "
                            + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet - ContentsManager.SpeedLadderGame.todayTotalBetWinning)
-                           + "메소";
+                           + "๋ฉ”์";
                         ContentsManager.SpeedLadderGame.todayDay = new Date().getDay();
                         ContentsManager.SpeedLadderGame.todayRound = 1;
                         ContentsManager.SpeedLadderGame.todayTotalBet = 0L;
@@ -399,7 +399,7 @@ public class ContentsManager {
                         if (DBConfig.isGanglim) {
                            DiscordBotHandler.requestSendTelegram(dealer);
                         } else {
-                           DiscordBotHandler.requestSendTelegram("날짜가 지나 사다리 현황이 초기화 되었습니다.", -460561418L);
+                           DiscordBotHandler.requestSendTelegram("๋ ์ง๊ฐ€ ์ง€๋ ์ฌ๋ค๋ฆฌ ํํฉ์ด ์ด๊ธฐํ” ๋์—์ต๋๋ค.", -460561418L);
                         }
                      }
                   }
@@ -416,11 +416,11 @@ public class ContentsManager {
 
       public static String currentLadderGameScore() {
          DecimalFormat decFormat = new DecimalFormat("###,###");
-         String dealer = "[현재 사다리 메소 정산]\r\n";
-         dealer = dealer + "오늘의 라운드 수 : " + todayRound + "\r\n";
-         dealer = dealer + "오늘의 전체 베팅 금액 : " + decFormat.format(todayTotalBet) + "\r\n";
-         dealer = dealer + "오늘의 전체 유저 수령 금액 : " + decFormat.format(todayTotalBetWinning) + "\r\n";
-         return dealer + "서버입장 순메소수익 : " + decFormat.format(todayTotalBet - todayTotalBetWinning) + "메소";
+         String dealer = "[ํ์ฌ ์ฌ๋ค๋ฆฌ ๋ฉ”์ ์ •์ฐ]\r\n";
+         dealer = dealer + "์ค๋์ ๋ผ์ด๋“ ์ : " + todayRound + "\r\n";
+         dealer = dealer + "์ค๋์ ์ ์ฒด ๋ฒ ํ… ๊ธ์•ก : " + decFormat.format(todayTotalBet) + "\r\n";
+         dealer = dealer + "์ค๋์ ์ ์ฒด ์ ์ € ์๋ น ๊ธ์•ก : " + decFormat.format(todayTotalBetWinning) + "\r\n";
+         return dealer + "์๋ฒ์…์ฅ ์๋ฉ”์์์ต : " + decFormat.format(todayTotalBet - todayTotalBetWinning) + "๋ฉ”์";
       }
 
       public static int getCurrentRound() {

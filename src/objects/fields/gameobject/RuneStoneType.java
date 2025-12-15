@@ -1,4 +1,4 @@
-package objects.fields.gameobject;
+﻿package objects.fields.gameobject;
 
 public enum RuneStoneType {
    DefenceUp(0),

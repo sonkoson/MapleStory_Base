@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 public interface ScriptThreadManagerMBean {
    boolean isTerminated();

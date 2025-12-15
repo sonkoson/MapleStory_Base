@@ -1,4 +1,4 @@
-package objects.users.jobs.zero;
+﻿package objects.users.jobs.zero;
 
 public class EgoEquipUpgradeCost {
    private int meso;

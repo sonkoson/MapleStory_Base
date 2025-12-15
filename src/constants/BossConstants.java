@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 public class BossConstants {
    public static final int LOTUS_OBSTACLE_ATOM_VELOCITY = 15;

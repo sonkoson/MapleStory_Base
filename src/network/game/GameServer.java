@@ -1,4 +1,4 @@
-package network.game;
+﻿package network.game;
 
 import constants.ServerConstants;
 import database.DBConfig;
@@ -270,7 +270,7 @@ public class GameServer {
             .childOption(ChannelOption.SO_SNDBUF, 4194304)
             .childOption(ChannelOption.SO_KEEPALIVE, true);
          ChannelFuture f = bootstrap.bind(this.port).sync();
-         System.out.println("Channel " + this.getChannel() + " 서버가 " + this.port + " 포트를 성공적으로 개방했습니다.");
+         System.out.println("Channel " + this.getChannel() + " ์๋ฒ๊ฐ€ " + this.port + " ํฌํธ๋ฅผ ์ฑ๊ณต์ ์ผ๋ก ๊ฐ๋ฐฉํ–์ต๋๋ค.");
          this.eventSM.init();
       } catch (Exception var4) {
          System.out.println("[Error] Channel server " + this.port + " Failed to open port.");
@@ -282,9 +282,9 @@ public class GameServer {
 
    public final void shutdown() {
       if (!this.finishedShutdown) {
-         this.broadcastPacket(CWvsContext.serverNotice(0, "현재 채널이 잠시 후 종료됩니다."));
+         this.broadcastPacket(CWvsContext.serverNotice(0, "ํ์ฌ ์ฑ๋์ด ์ ์ ํ ์ข…๋ฃ๋ฉ๋๋ค."));
          this.shutdown = true;
-         System.out.println(this.channel + "Channel 캐릭터를 저장합니다.");
+         System.out.println(this.channel + "Channel ์บ๋ฆญํฐ๋ฅผ ์ €์ฅํ•ฉ๋๋ค.");
          this.getPlayerStorage().disconnectAll();
          instances.remove(this.channel);
          this.setFinishShutdown();

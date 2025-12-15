@@ -1,4 +1,4 @@
-package network.shop;
+﻿package network.shop;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

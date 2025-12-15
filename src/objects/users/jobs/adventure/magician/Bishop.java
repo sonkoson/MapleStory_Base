@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.magician;
+﻿package objects.users.jobs.adventure.magician;
 
 import java.awt.Point;
 import java.awt.Rectangle;

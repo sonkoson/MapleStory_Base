@@ -1,4 +1,4 @@
-package network.game;
+﻿package network.game;
 
 import database.DBConnection;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import network.encode.PacketEncoder;
 import objects.users.stats.SecondaryStat;

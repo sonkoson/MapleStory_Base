@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 public class LarknessInfo {
    private int larknessReason;

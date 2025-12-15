@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,9 +10,9 @@ public class ProfilingCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!startprofiling", "", "เริ่มการวิเคราะห์ CPU ของเซิร์ฟเวอร์", 6),
+            new CommandDefinition("!startprofiling", "", "เน€เธฃเธดเนเธกเธเธฒเธฃเธงเธดเน€เธเธฃเธฒเธฐเธซเน CPU เธเธญเธเน€เธเธดเธฃเนเธเน€เธงเธญเธฃเน", 6),
             new CommandDefinition("!stopprofiling", "<filename>",
-                  "หยุดการวิเคราะห์ CPU และบันทึกลงไฟล์ที่กำหนด", 6)
+                  "เธซเธขเธธเธ”เธเธฒเธฃเธงเธดเน€เธเธฃเธฒเธฐเธซเน CPU เนเธฅเธฐเธเธฑเธเธ—เธถเธเธฅเธเนเธเธฅเนเธ—เธตเนเธเธณเธซเธเธ”", 6)
       };
    }
 
@@ -29,7 +29,7 @@ public class ProfilingCommands implements Command {
          sampler.addIncluded("scripting");
          sampler.addIncluded("security");
          sampler.start();
-         c.getPlayer().dropMessage(6, "เริ่มการวิเคราะห์แล้ว");
+         c.getPlayer().dropMessage(6, "เน€เธฃเธดเนเธกเธเธฒเธฃเธงเธดเน€เธเธฃเธฒเธฐเธซเนเนเธฅเนเธง");
       } else if (splitted[0].equals("!stopprofiling")) {
          CPUSampler sampler = CPUSampler.getInstance();
 
@@ -41,7 +41,7 @@ public class ProfilingCommands implements Command {
 
             File file = new File(filename);
             if (file.exists()) {
-               c.getPlayer().dropMessage(6, "ไฟล์นี้มีอยู่แล้ว โปรดเลือกชื่อไฟล์อื่น");
+               c.getPlayer().dropMessage(6, "เนเธเธฅเนเธเธตเนเธกเธตเธญเธขเธนเนเนเธฅเนเธง เนเธเธฃเธ”เน€เธฅเธทเธญเธเธเธทเนเธญเนเธเธฅเนเธญเธทเนเธ");
                return;
             }
 
@@ -49,10 +49,10 @@ public class ProfilingCommands implements Command {
             FileWriter fw = new FileWriter(file);
             sampler.save(fw, 1, 10);
             fw.close();
-            c.getPlayer().dropMessage(6, "หยุดการวิเคราะห์และบันทึกไปยัง " + filename);
+            c.getPlayer().dropMessage(6, "เธซเธขเธธเธ”เธเธฒเธฃเธงเธดเน€เธเธฃเธฒเธฐเธซเนเนเธฅเธฐเธเธฑเธเธ—เธถเธเนเธเธขเธฑเธ " + filename);
          } catch (IOException var7) {
             System.err.println("Error saving profile" + var7);
-            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการบันทึกโปรไฟล์: " + var7.getMessage());
+            c.getPlayer().dropMessage(6, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเธเธฑเธเธ—เธถเธเนเธเธฃเนเธเธฅเน: " + var7.getMessage());
          }
 
          sampler.reset();

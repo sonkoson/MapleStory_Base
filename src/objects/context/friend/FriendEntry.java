@@ -1,4 +1,4 @@
-package objects.context.friend;
+﻿package objects.context.friend;
 
 public class FriendEntry {
    private String name;
@@ -60,7 +60,7 @@ public class FriendEntry {
    }
 
    public String getGroupName() {
-      return this.group == null ? "그룹 미지정" : this.group;
+      return this.group == null ? "๊ทธ๋ฃน ๋ฏธ์ง€์ •" : this.group;
    }
 
    public void setGroupName(String groupName) {

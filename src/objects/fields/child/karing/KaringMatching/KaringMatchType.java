@@ -1,4 +1,4 @@
-package objects.fields.child.karing.KaringMatching;
+﻿package objects.fields.child.karing.KaringMatching;
 
 public class KaringMatchType {
    public static enum Recv {

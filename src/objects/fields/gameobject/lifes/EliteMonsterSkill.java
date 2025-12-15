@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 public class EliteMonsterSkill {
    private final int skill;

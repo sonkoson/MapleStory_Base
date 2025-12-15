@@ -1,4 +1,4 @@
-package database;
+﻿package database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -86,7 +86,7 @@ public class ZeniaDBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdate ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var14.getSQLState());
+         System.out.println("DB InsertOrUpdate เนยโ€เนโ€”โ€ฆเนเธโ€ เนยเธเนเธ…ยเนเธโฌ เนเธยเนยยเนโ€ขยเนยโฌเนยเธ•เนยยเนยเธ. : " + var14.getSQLState());
          var14.printStackTrace();
       } finally {
          try {
@@ -122,7 +122,7 @@ public class ZeniaDBConnection {
             con.commit();
          }
       } catch (SQLException var14) {
-         System.out.println("DB InsertOrUpdateBatch ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var14.getSQLState());
+         System.out.println("DB InsertOrUpdateBatch เนยโ€เนโ€”โ€ฆเนเธโ€ เนยเธเนเธ…ยเนเธโฌ เนเธยเนยยเนโ€ขยเนยโฌเนยเธ•เนยยเนยเธ. : " + var14.getSQLState());
          var14.printStackTrace();
       } finally {
          try {
@@ -161,7 +161,7 @@ public class ZeniaDBConnection {
             con.commit();
          }
       } catch (SQLException var15) {
-         System.out.println("DB InsertOrUpdate ์‘์—…์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค. : " + var15.getSQLState());
+         System.out.println("DB InsertOrUpdate เนยโ€เนโ€”โ€ฆเนเธโ€ เนยเธเนเธ…ยเนเธโฌ เนเธยเนยยเนโ€ขยเนยโฌเนยเธ•เนยยเนยเธ. : " + var15.getSQLState());
          var15.printStackTrace();
       } finally {
          try {

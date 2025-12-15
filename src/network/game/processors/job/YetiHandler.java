@@ -1,4 +1,4 @@
-package network.game.processors.job;
+﻿package network.game.processors.job;
 
 import network.decode.PacketDecoder;
 import objects.users.MapleCharacter;

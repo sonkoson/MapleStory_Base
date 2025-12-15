@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import constants.GameConstants;
 import java.lang.reflect.Method;

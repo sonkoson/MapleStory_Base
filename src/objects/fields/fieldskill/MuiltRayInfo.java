@@ -1,4 +1,4 @@
-package objects.fields.fieldskill;
+﻿package objects.fields.fieldskill;
 
 import objects.wz.provider.MapleData;
 import objects.wz.provider.MapleDataTool;

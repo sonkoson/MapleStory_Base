@@ -1,4 +1,4 @@
-package objects.wz.provider;
+﻿package objects.wz.provider;
 
 public interface MapleDataEntity {
    String getName();

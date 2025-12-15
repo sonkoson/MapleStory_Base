@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import database.DBConnection;
 import database.DBEventManager;

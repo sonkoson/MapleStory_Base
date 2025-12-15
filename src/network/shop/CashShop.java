@@ -1,4 +1,4 @@
-package network.shop;
+﻿package network.shop;
 
 import constants.GameConstants;
 import database.DBConnection;

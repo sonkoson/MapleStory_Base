@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.io.PrintStream;
 import java.text.MessageFormat;

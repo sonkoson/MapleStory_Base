@@ -1,4 +1,4 @@
-package objects.quest;
+﻿package objects.quest;
 
 import constants.GameConstants;
 import java.io.Serializable;

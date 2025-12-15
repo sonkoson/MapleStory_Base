@@ -1,4 +1,4 @@
-package objects.fields.child.karing.Gauge;
+﻿package objects.fields.child.karing.Gauge;
 
 public class KaringGaugeEntry {
    public int goongiGauge;

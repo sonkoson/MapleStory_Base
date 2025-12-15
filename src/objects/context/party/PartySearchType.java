@@ -1,4 +1,4 @@
-package objects.context.party;
+﻿package objects.context.party;
 
 public enum PartySearchType {
    Kerning(20, 200, 1000, false),

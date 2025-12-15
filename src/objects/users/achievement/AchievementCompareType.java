@@ -1,4 +1,4 @@
-package objects.users.achievement;
+﻿package objects.users.achievement;
 
 public enum AchievementCompareType {
    greater_than_or_equal_to;

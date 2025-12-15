@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.onecard;
+﻿package objects.fields.child.minigame.onecard;
 
 public class OneCardGameCardInfo {
    private int objectID;

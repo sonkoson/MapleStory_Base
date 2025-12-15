@@ -1,4 +1,4 @@
-package network.connector;
+﻿package network.connector;
 
 public enum SendPacketOpcode {
    LOGIN(0),

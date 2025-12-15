@@ -1,4 +1,4 @@
-package network.connector;
+﻿package network.connector;
 
 import constants.ServerConstants;
 import database.DBConnection;
@@ -472,14 +472,14 @@ public class ConnectorServerHandler {
             ps.execute();
             ps.close();
             ps = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ? WHERE connecterKey = ? or SessionIP = ?");
-            ps.setString(1, "영구 정지 당하셨습니다.");
+            ps.setString(1, "์๊ตฌ ์ •์ง€ ๋นํ•์…จ์ต๋๋ค.");
             ps.setString(2, key);
             ps.setString(3, c.getIP());
             ps.executeUpdate();
             ps.close();
             if (c.getSecondId() != null) {
                ps = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ? WHERE connecterKey = ? or SessionIP = ?");
-               ps.setString(1, "영구 정지 당하셨습니다.");
+               ps.setString(1, "์๊ตฌ ์ •์ง€ ๋นํ•์…จ์ต๋๋ค.");
                ps.setString(2, key);
                ps.setString(3, c.getIP());
                ps.executeUpdate();

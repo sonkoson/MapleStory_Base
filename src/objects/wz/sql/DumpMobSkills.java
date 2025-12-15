@@ -1,4 +1,4 @@
-package objects.wz.sql;
+﻿package objects.wz.sql;
 
 import database.DBConnection;
 import java.awt.Point;

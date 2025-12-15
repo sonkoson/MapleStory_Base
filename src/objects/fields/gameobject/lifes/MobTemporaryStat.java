@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

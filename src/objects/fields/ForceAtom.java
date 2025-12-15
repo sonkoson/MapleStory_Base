@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import constants.ForceAtomConstants;
 import io.netty.util.internal.ThreadLocalRandom;

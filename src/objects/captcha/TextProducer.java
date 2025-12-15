@@ -1,4 +1,4 @@
-package objects.captcha;
+﻿package objects.captcha;
 
 public interface TextProducer {
    String getText();

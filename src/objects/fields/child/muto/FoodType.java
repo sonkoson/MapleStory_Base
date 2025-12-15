@@ -1,4 +1,4 @@
-package objects.fields.child.muto;
+﻿package objects.fields.child.muto;
 
 public enum FoodType {
    AWK_FRIES(0, 4034959),

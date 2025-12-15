@@ -1,4 +1,4 @@
-package objects.item.rewards;
+﻿package objects.item.rewards;
 
 public class RandomRewards {
    private int itemID;

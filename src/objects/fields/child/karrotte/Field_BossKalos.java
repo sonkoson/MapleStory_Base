@@ -1,4 +1,4 @@
-package objects.fields.child.karrotte;
+﻿package objects.fields.child.karrotte;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import java.awt.Point;
@@ -432,7 +432,7 @@ public class Field_BossKalos extends Field {
                eyeOfRedemption.setDeactiveHitCount(deactiveHitCount);
                KalosAction.AssaultAction.EyeOfRedemption eor = new KalosAction.AssaultAction.EyeOfRedemption(eyeOfRedemption);
                eor.broadcastPacket(this);
-               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 구속의 눈이 잠에서 깨어납니다."));
+               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy์ ๊ฐ์ญ์ผ๋ก ๊ตฌ์์ ๋์ด ์ ์—์ ๊นจ์–ด๋ฉ๋๋ค."));
                KalosAction.GuardianAction.AssaultGuardian assaultGuardian = new KalosAction.GuardianAction.AssaultGuardian(GuardianType.EyeOfRedemption, 60000);
                assaultGuardian.broadcastPacket(this);
                break;
@@ -461,7 +461,7 @@ public class Field_BossKalos extends Field {
                fighterPlane.setTime(time);
                KalosAction.AssaultAction.FighterPlane fp = new KalosAction.AssaultAction.FighterPlane(actionSN, unk4, fighterPlane);
                fp.broadcastPacket(this);
-               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 포격 전투기가 활성화됩니다."));
+               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy์ ๊ฐ์ญ์ผ๋ก ํฌ๊ฒฉ ์ ํฌ๊ธฐ๊ฐ€ ํ์ฑํ”๋ฉ๋๋ค."));
                KalosAction.GuardianAction.AssaultGuardian assaultGuardian = new KalosAction.GuardianAction.AssaultGuardian(GuardianType.FighterPlane, 60000);
                assaultGuardian.broadcastPacket(this);
                break;
@@ -482,7 +482,7 @@ public class Field_BossKalos extends Field {
                sphereOfOdium.setDeactiveHitCount(deactiveHitCount);
                KalosAction.AssaultAction.SphereOfOdium soo = new KalosAction.AssaultAction.SphereOfOdium(sphereOfOdium);
                soo.broadcastPacket(this);
-               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 오디움의 구체가 적을 감지합니다."));
+               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy์ ๊ฐ์ญ์ผ๋ก ์ค๋””์€์ ๊ตฌ์ฒด๊ฐ€ ์ ์ ๊ฐ์ง€ํ•ฉ๋๋ค."));
                KalosAction.GuardianAction.AssaultGuardian assaultGuardian = new KalosAction.GuardianAction.AssaultGuardian(GuardianType.SphereOfOdium, 60000);
                assaultGuardian.broadcastPacket(this);
                break;
@@ -505,7 +505,7 @@ public class Field_BossKalos extends Field {
                eyeOfAbyss.setBullets(bullets);
                KalosAction.AssaultAction.EyeOfAbyss eoa = new KalosAction.AssaultAction.EyeOfAbyss(eyeOfAbyss);
                eoa.broadcastPacket(this);
-               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 심연의 눈이 잠에서 깨어납니다."));
+               this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy์ ๊ฐ์ญ์ผ๋ก ์ฌ์—ฐ์ ๋์ด ์ ์—์ ๊นจ์–ด๋ฉ๋๋ค."));
                KalosAction.GuardianAction.AssaultGuardian assaultGuardian = new KalosAction.GuardianAction.AssaultGuardian(GuardianType.EyeOfTheAbyss, 60000);
                assaultGuardian.broadcastPacket(this);
             }
@@ -514,8 +514,8 @@ public class Field_BossKalos extends Field {
          pick.setAssault(true);
       } else {
          this.broadcastMessage(CField.MapEff("Map/Effect.img/hillah/fail2"));
-         this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("자격을 확인 받지 못해 다음 관문으로 넘어가지 못하고 추방당했습니다."));
-         TextEffect e = new TextEffect("#r#fn나눔고딕 ExtraBold##fs26#자격이 없는 자에게 문은 열리지 않는다...", 100, 2500, 4, 0, 0, 1, 0);
+         this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("์๊ฒฉ์ ํ•์ธ ๋ฐ์ง€ ๋ชปํ•ด ๋ค์ ๊ด€๋ฌธ์ผ๋ก ๋์–ด๊ฐ€์ง€ ๋ชปํ•๊ณ  ์ถ”๋ฐฉ๋นํ–์ต๋๋ค."));
+         TextEffect e = new TextEffect("#r#fn๋๋”๊ณ ๋”• ExtraBold##fs26#์๊ฒฉ์ด ์—๋” ์์—๊ฒ ๋ฌธ์€ ์—ด๋ฆฌ์ง€ ์•๋”๋ค...", 100, 2500, 4, 0, 0, 1, 0);
          this.broadcastMessage(e.encodeForLocal());
          this.canClear = false;
 

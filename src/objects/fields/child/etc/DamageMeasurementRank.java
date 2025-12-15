@@ -1,4 +1,4 @@
-package objects.fields.child.etc;
+﻿package objects.fields.child.etc;
 
 import constants.JobConstants;
 import database.DBConfig;
@@ -334,15 +334,15 @@ public class DamageMeasurementRank {
 
       StringBuilder unit = new StringBuilder();
       if (p > 0) {
-         unit.append(p).append("경 ");
+         unit.append(p).append("๊ฒฝ ");
       }
 
       if (t > 0) {
-         unit.append(t).append("조 ");
+         unit.append(t).append("์กฐ ");
       }
 
       if (g > 0) {
-         unit.append(g).append("억 ");
+         unit.append(g).append("์–ต ");
       }
 
       return unit.toString();
@@ -354,11 +354,11 @@ public class DamageMeasurementRank {
 
       for (Entry<Integer, Long> info : rank.entrySet()) {
          if (i < 10) {
-            ret.append("#Cgray#00#b#e").append(i).append("위#n#k");
+            ret.append("#Cgray#00#b#e").append(i).append("์#n#k");
          } else if (i >= 10 && i < 100) {
-            ret.append("#Cgray#0#b#e").append(i).append("위#n#k");
+            ret.append("#Cgray#0#b#e").append(i).append("์#n#k");
          } else {
-            ret.append("#Cgray##b#e").append(i).append("위#n#k");
+            ret.append("#Cgray##b#e").append(i).append("์#n#k");
          }
 
          try (Connection con = DBConnection.getConnection()) {
@@ -373,7 +373,7 @@ public class DamageMeasurementRank {
                   ret.append(JobConstants.getPlayerJobs(rs.getInt("job")));
                   ret.append("#k #e");
                } else {
-                  ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b전투력#k : #e");
+                  ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ ํฌ๋ ฅ#k : #e");
                }
 
                ret.append(getUnit(info.getValue()));
@@ -381,7 +381,7 @@ public class DamageMeasurementRank {
             }
 
             if (!find) {
-               ret.append(" 삭제된 캐릭터\r\n");
+               ret.append(" ์ญ์ ๋ ์บ๋ฆญํฐ\r\n");
             }
 
             rs.close();
@@ -403,11 +403,11 @@ public class DamageMeasurementRank {
 
       for (Entry<Integer, Long> info : rewardRank.entrySet()) {
          if (i < 10) {
-            ret.append("#Cgray#00#b#e").append(i).append("위#n#k");
+            ret.append("#Cgray#00#b#e").append(i).append("์#n#k");
          } else if (i >= 10 && i < 100) {
-            ret.append("#Cgray#0#b#e").append(i).append("위#n#k");
+            ret.append("#Cgray#0#b#e").append(i).append("์#n#k");
          } else {
-            ret.append("#Cgray##b#e").append(i).append("위#n#k");
+            ret.append("#Cgray##b#e").append(i).append("์#n#k");
          }
 
          try (Connection con = DBConnection.getConnection()) {
@@ -422,7 +422,7 @@ public class DamageMeasurementRank {
                   ret.append(JobConstants.getPlayerJobs(rs.getInt("job")));
                   ret.append("#k #e");
                } else {
-                  ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b전투력#k : #e");
+                  ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ ํฌ๋ ฅ#k : #e");
                }
 
                ret.append(JobConstants.getPlayerJobs(rs.getInt("job"))).append(" ");
@@ -431,7 +431,7 @@ public class DamageMeasurementRank {
             }
 
             if (!find) {
-               ret.append(" 삭제된 캐릭터\r\n");
+               ret.append(" ์ญ์ ๋ ์บ๋ฆญํฐ\r\n");
             }
 
             rs.close();

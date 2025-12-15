@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import objects.context.party.Party;
 import scripting.ScriptMessageFlag;

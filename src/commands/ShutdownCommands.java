@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import network.game.GameServer;
 import network.shop.CashShopServer;

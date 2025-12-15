@@ -1,4 +1,4 @@
-package objects.fields.obstacle;
+﻿package objects.fields.obstacle;
 
 import network.encode.PacketEncoder;
 import objects.utils.Randomizer;

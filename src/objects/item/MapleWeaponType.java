@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public enum MapleWeaponType {
    NOT_A_WEAPON(1.43F, 20),

@@ -1,4 +1,4 @@
-package network.center;
+﻿package network.center;
 
 import api.DonationRequest;
 import com.google.common.collect.UnmodifiableIterator;
@@ -744,7 +744,7 @@ public class Center {
 
                   MapleCabinet cabinet = chr.getCabinet();
                   if (cabinet != null) {
-                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
                      Calendar CAL = new GregorianCalendar(Locale.KOREA);
                      String fDate = sdf.format(CAL.getTime());
                      cabinet.addCabinetItem(
@@ -754,10 +754,10 @@ public class Center {
                      chr.setSaveFlag(chr.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                      if (DBConfig.isGanglim) {
                         chr.send(CField.chatMsg(1,
-                              "[Ganglim Hottime] แจกรางวัล Hottime แล้ว\r\nรับได้ที่ [Maple Cabinet]"));
+                              "[Ganglim Hottime] เนเธเธเธฃเธฒเธเธงเธฑเธฅ Hottime เนเธฅเนเธง\r\nเธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]"));
                         chr.dropMessage(1, "Hottime reward distributed. Claim from [Maple Cabinet].");
                      } else {
-                        chr.dropMessage(5, "[Notice] แจกรางวัล Hottime แล้ว กรุณาตรวจสอบ [Maple Cabinet]");
+                        chr.dropMessage(5, "[Notice] เนเธเธเธฃเธฒเธเธงเธฑเธฅ Hottime เนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
                         chr.dropMessage(1, "Hottime reward distributed.\r\nPlease check [Maple Cabinet].");
                      }
                   }
@@ -766,7 +766,7 @@ public class Center {
          }
       }
 
-      System.out.println(MapleItemInformationProvider.getInstance().getName(itemID) + "이(가) 핫타임으로 지급되었습니다.");
+      System.out.println(MapleItemInformationProvider.getInstance().getName(itemID) + "์ด(๊ฐ€) ํ•ซํ€์์ผ๋ก ์ง€๊ธ๋์—์ต๋๋ค.");
    }
 
    public static List<Integer> getStackRewards(long beforeTotalPoint, int point) {
@@ -919,18 +919,18 @@ public class Center {
       int account_id = 0;
       String player_name = "";
       int player_id = 0;
-      if (!type.equals("일반") && !type.equals("이벤트 참여") && !type.equals("신년 이벤트") && !type.equals("클스마스 이벤트")
-            && !type.equals("보너스이벤트")) {
-         if (type.equals("초심자 패키지")
-               || type.contains("설날")
-               || type.contains("어린이날")
-               || type.contains("추석")
-               || type.contains("가정의달")
-               || type.contains("3주년")
-               || type.contains("상시패키지")
-               || type.contains("크리스마스")
+      if (!type.equals("์ผ๋ฐ") && !type.equals("์ด๋ฒคํธ ์ฐธ์—ฌ") && !type.equals("์ ๋… ์ด๋ฒคํธ") && !type.equals("ํด์ค๋ง์ค ์ด๋ฒคํธ")
+            && !type.equals("๋ณด๋์ค์ด๋ฒคํธ")) {
+         if (type.equals("์ด์ฌ์ ํจํค์ง€")
+               || type.contains("์ค๋ ")
+               || type.contains("์–ด๋ฆฐ์ด๋ ")
+               || type.contains("์ถ”์")
+               || type.contains("๊ฐ€์ •์๋ฌ")
+               || type.contains("3์ฃผ๋…")
+               || type.contains("์์ํจํค์ง€")
+               || type.contains("ํฌ๋ฆฌ์ค๋ง์ค")
                || type.contains("2023")
-               || type.contains("5월")) {
+               || type.contains("5์”")) {
             PreparedStatement ps = null;
             ResultSet rs = null;
             int id = 0;
@@ -954,7 +954,7 @@ public class Center {
                      return false;
                   }
 
-                  if (type.equals("초심자 패키지")) {
+                  if (type.equals("์ด์ฌ์ ํจํค์ง€")) {
                      PreparedStatement ps2 = con
                            .prepareStatement("INSERT INTO `beginner_package` (`accountid`, `name`) VALUES (?, ?)");
                      ps2.setInt(1, id);
@@ -964,13 +964,13 @@ public class Center {
                      ps.close();
                   }
 
-                  if (type.contains("가정의달")
-                        || type.contains("추석")
-                        || type.contains("3주년")
-                        || type.contains("상시패키지")
-                        || type.contains("크리스마스")
+                  if (type.contains("๊ฐ€์ •์๋ฌ")
+                        || type.contains("์ถ”์")
+                        || type.contains("3์ฃผ๋…")
+                        || type.contains("์์ํจํค์ง€")
+                        || type.contains("ํฌ๋ฆฌ์ค๋ง์ค")
                         || type.contains("2023")
-                        || type.contains("5월")) {
+                        || type.contains("5์”")) {
                      if (!DBConfig.isGanglim) {
                         Center.sunShineStorage.addSunShineGuage((int) (point * 0.2));
                         Center.sunShineStorage.save();
@@ -988,118 +988,118 @@ public class Center {
                      }
                   }
 
-                  String typeName = "초심자패키지";
+                  String typeName = "์ด์ฌ์ํจํค์ง€";
                   String price = "10,000";
-                  if (type.contains("설날")) {
+                  if (type.contains("์ค๋ ")) {
                      typeName = type;
-                     if (type.equals("설날C")) {
+                     if (type.equals("์ค๋ C")) {
                         price = "50,000";
                      } else {
                         price = "100,000";
                      }
-                  } else if (type.contains("어린이날")) {
+                  } else if (type.contains("์–ด๋ฆฐ์ด๋ ")) {
                      typeName = type;
                      price = "55,000";
-                  } else if (type.contains("가정의달")) {
+                  } else if (type.contains("๊ฐ€์ •์๋ฌ")) {
                      typeName = type;
-                     if (type.equals("가정의달C")) {
+                     if (type.equals("๊ฐ€์ •์๋ฌC")) {
                         price = "50,000";
-                     } else if (type.equals("가정의달B")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌB")) {
                         price = "100,000";
-                     } else if (type.equals("가정의달A")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌA")) {
                         price = "300,000";
-                     } else if (type.equals("가정의달S")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌS")) {
                         price = "500,000";
-                     } else if (type.equals("가정의달SS")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌSS")) {
                         price = "1,000,000";
-                     } else if (type.equals("가정의달SSS")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
                         price = "1,500,000";
                      }
-                  } else if (type.contains("추석")) {
+                  } else if (type.contains("์ถ”์")) {
                      typeName = type;
-                     if (type.equals("추석패키지I")) {
+                     if (type.equals("์ถ”์ํจํค์ง€I")) {
                         price = "10,000";
-                     } else if (type.equals("추석패키지II")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€II")) {
                         price = "25,000";
-                     } else if (type.equals("추석패키지III")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€III")) {
                         price = "75,000";
-                     } else if (type.equals("추석패키지IV")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                         price = "110,000";
                      }
-                  } else if (type.contains("3주년")) {
+                  } else if (type.contains("3์ฃผ๋…")) {
                      typeName = type;
-                     if (type.equals("3주년패키지I")) {
+                     if (type.equals("3์ฃผ๋…ํจํค์ง€I")) {
                         price = "55,000";
-                     } else if (type.equals("3주년패키지II")) {
+                     } else if (type.equals("3์ฃผ๋…ํจํค์ง€II")) {
                         price = "55,000";
-                     } else if (type.equals("3주년패키지III")) {
+                     } else if (type.equals("3์ฃผ๋…ํจํค์ง€III")) {
                         price = "110,000";
                      }
-                  } else if (type.contains("크리스마스")) {
+                  } else if (type.contains("ํฌ๋ฆฌ์ค๋ง์ค")) {
                      typeName = type;
-                     if (type.equals("크리스마스패키지1")) {
+                     if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1")) {
                         price = "30,000";
-                     } else if (type.equals("크리스마스패키지2")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2")) {
                         price = "50,000";
-                     } else if (type.equals("크리스마스패키지3")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3")) {
                         price = "50,000";
-                     } else if (type.equals("크리스마스패키지4")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4")) {
                         price = "110,000";
                      }
                   } else if (type.contains("2023")) {
                      typeName = type;
-                     if (type.equals("2023패키지1")) {
+                     if (type.equals("2023ํจํค์ง€1")) {
                         price = "30,000";
-                     } else if (type.equals("2023패키지2")) {
+                     } else if (type.equals("2023ํจํค์ง€2")) {
                         price = "50,000";
-                     } else if (type.equals("2023패키지3")) {
+                     } else if (type.equals("2023ํจํค์ง€3")) {
                         price = "50,000";
-                     } else if (type.equals("2023패키지4")) {
+                     } else if (type.equals("2023ํจํค์ง€4")) {
                         price = "50,000";
-                     } else if (type.equals("2023패키지5")) {
+                     } else if (type.equals("2023ํจํค์ง€5")) {
                         price = "110,000";
-                     } else if (type.equals("2023패키지6")) {
+                     } else if (type.equals("2023ํจํค์ง€6")) {
                         price = "50,000";
-                     } else if (type.equals("2023패키지7")) {
+                     } else if (type.equals("2023ํจํค์ง€7")) {
                         price = "100,000";
-                     } else if (type.equals("2023패키지8")) {
+                     } else if (type.equals("2023ํจํค์ง€8")) {
                         price = "300,000";
-                     } else if (type.equals("2023패키지9")) {
+                     } else if (type.equals("2023ํจํค์ง€9")) {
                         price = "500,000";
-                     } else if (type.equals("2023패키지10")) {
+                     } else if (type.equals("2023ํจํค์ง€10")) {
                         price = "1,000,000";
-                     } else if (type.equals("2023패키지11")) {
+                     } else if (type.equals("2023ํจํค์ง€11")) {
                         price = "1,500,000";
                      }
-                  } else if (type.contains("5월")) {
+                  } else if (type.contains("5์”")) {
                      typeName = type;
-                     if (type.equals("5월패키지1")) {
+                     if (type.equals("5์”ํจํค์ง€1")) {
                         price = "30,000";
-                     } else if (type.equals("5월패키지2")) {
+                     } else if (type.equals("5์”ํจํค์ง€2")) {
                         price = "50,000";
-                     } else if (type.equals("5월패키지3")) {
+                     } else if (type.equals("5์”ํจํค์ง€3")) {
                         price = "50,000";
-                     } else if (type.equals("5월패키지4")) {
+                     } else if (type.equals("5์”ํจํค์ง€4")) {
                         price = "50,000";
-                     } else if (type.equals("5월패키지5")) {
+                     } else if (type.equals("5์”ํจํค์ง€5")) {
                         price = "110,000";
-                     } else if (type.equals("5월패키지6")) {
+                     } else if (type.equals("5์”ํจํค์ง€6")) {
                         price = "50,000";
-                     } else if (type.equals("5월패키지7")) {
+                     } else if (type.equals("5์”ํจํค์ง€7")) {
                         price = "100,000";
-                     } else if (type.equals("5월패키지8")) {
+                     } else if (type.equals("5์”ํจํค์ง€8")) {
                         price = "300,000";
-                     } else if (type.equals("5월패키지9")) {
+                     } else if (type.equals("5์”ํจํค์ง€9")) {
                         price = "500,000";
-                     } else if (type.equals("5월패키지10")) {
+                     } else if (type.equals("5์”ํจํค์ง€10")) {
                         price = "1,000,000";
-                     } else if (type.equals("5월패키지11")) {
+                     } else if (type.equals("5์”ํจํค์ง€11")) {
                         price = "1,500,000";
                      }
-                  } else if (type.contains("상시패키지")) {
+                  } else if (type.contains("์์ํจํค์ง€")) {
                      typeName = type;
                      price = "500,000";
-                     if (type.equals("상시패키지2")) {
+                     if (type.equals("์์ํจํค์ง€2")) {
                         price = "1,000,000";
                      }
                   }
@@ -1126,34 +1126,34 @@ public class Center {
                      for (GameServer cs : GameServer.getAllInstances()) {
                         for (MapleCharacter chr : cs.getPlayerStorage().getAllCharacters()) {
                            if (chr.getName().equals(name)) {
-                              if (type.equals("초심자 패키지")) {
+                              if (type.equals("์ด์ฌ์ ํจํค์ง€")) {
                                  chr.dropMessage(5,
                                        "Beginner Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Beginner Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
-                              } else if (type.equals("설날A")) {
+                              } else if (type.equals("์ค๋ A")) {
                                  chr.dropMessage(5,
                                        "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "nyd_package1", "1");
-                              } else if (type.equals("설날B")) {
+                              } else if (type.equals("์ค๋ B")) {
                                  chr.dropMessage(5,
                                        "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "nyd_package2", "1");
-                              } else if (type.equals("설날C")) {
+                              } else if (type.equals("์ค๋ C")) {
                                  chr.dropMessage(5,
                                        "Lunar New Year Value Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Lunar New Year Value Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "nyd_package3", "1");
-                              } else if (type.equals("어린이날")) {
+                              } else if (type.equals("์–ด๋ฆฐ์ด๋ ")) {
                                  chr.dropMessage(5,
                                        "Children's Day Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
@@ -1161,292 +1161,292 @@ public class Center {
                                        ""));
                                  chr.updateOneInfo(1235999, "cd_package",
                                        String.valueOf(chr.getOneInfoQuestInteger(1235999, "cd_package") + 1));
-                              } else if (type.equals("가정의달C")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌC")) {
                                  chr.dropMessage(5,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_1", "1");
-                              } else if (type.equals("가정의달B")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌB")) {
                                  chr.dropMessage(5,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_2", "1");
-                              } else if (type.equals("가정의달A")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌA")) {
                                  chr.dropMessage(5,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_3", "1");
-                              } else if (type.equals("가정의달S")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌS")) {
                                  chr.dropMessage(5,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_4", "1");
-                              } else if (type.equals("가정의달SS")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSS")) {
                                  chr.dropMessage(5,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_5", "1");
-                              } else if (type.equals("가정의달SSS")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
                                  chr.dropMessage(5,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "may_package_6", "1");
-                              } else if (type.equals("상시패키지1")) {
+                              } else if (type.equals("์์ํจํค์ง€1")) {
                                  chr.dropMessage(5,
                                        "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1236001, "a_package_1", "1");
-                              } else if (type.equals("상시패키지2")) {
+                              } else if (type.equals("์์ํจํค์ง€2")) {
                                  chr.dropMessage(5,
                                        "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1236001, "a_package_2", "1");
-                              } else if (type.equals("추석패키지I")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€I")) {
                                  chr.dropMessage(5,
                                        "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chuseok Package I has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_1", "1");
-                              } else if (type.equals("추석패키지II")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€II")) {
                                  chr.dropMessage(5,
                                        "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chuseok Package II has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_2", "1");
-                              } else if (type.equals("추석패키지III")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€III")) {
                                  chr.dropMessage(5,
                                        "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chuseok Package III has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_3", "1");
-                              } else if (type.equals("추석패키지IV")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                                  chr.dropMessage(5,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_4", "1");
-                              } else if (type.equals("추석패키지IV")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                                  chr.dropMessage(5,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "chuseok_package_4", "1");
-                              } else if (type.equals("3주년패키지I")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€I")) {
                                  chr.dropMessage(5,
                                        "Ganglim Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Ganglim Amazing Label Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_1", "1");
-                              } else if (type.equals("3주년패키지II")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€II")) {
                                  chr.dropMessage(5,
                                        "Ganglim Wisp Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Ganglim Wisp Enhancement Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_2", "1");
-                              } else if (type.equals("3주년패키지III")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€III")) {
                                  chr.dropMessage(5,
                                        "Ganglim Remaster Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Ganglim Remaster Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "3aniv_package_3", "1");
-                              } else if (type.equals("크리스마스패키지1")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1")) {
                                  chr.dropMessage(5,
                                        "Merry Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Merry Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "xmas_package_1", "1");
-                              } else if (type.equals("크리스마스패키지2")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2")) {
                                  chr.dropMessage(5,
                                        "Chris Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Chris Package has been distributed. Please claim it from the Cash Shop.", ""));
                                  chr.updateOneInfo(1234579, "xmas_package_2", "1");
-                              } else if (type.equals("크리스마스패키지3")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3")) {
                                  chr.dropMessage(5,
                                        "Mas Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Mas Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "xmas_package_3", "1");
-                              } else if (type.equals("크리스마스패키지4")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4")) {
                                  chr.dropMessage(5,
                                        "Ganglim Christmas Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Ganglim Christmas Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "xmas_package_4", "1");
-                              } else if (type.equals("2023패키지1")) {
+                              } else if (type.equals("2023ํจํค์ง€1")) {
                                  chr.dropMessage(5,
                                        "Hop hop to 300 Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Hop hop to 300 Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_1", "1");
-                              } else if (type.equals("2023패키지2")) {
+                              } else if (type.equals("2023ํจํค์ง€2")) {
                                  chr.dropMessage(5,
                                        "Strong Rabbit Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Strong Rabbit Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_2", "1");
-                              } else if (type.equals("2023패키지3")) {
+                              } else if (type.equals("2023ํจํค์ง€3")) {
                                  chr.dropMessage(5,
                                        "Rabbit Outfit Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Rabbit Outfit Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_3", "1");
-                              } else if (type.equals("2023패키지4")) {
+                              } else if (type.equals("2023ํจํค์ง€4")) {
                                  chr.dropMessage(5,
                                        "Cute Rabbit Pet Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Cute Rabbit Pet Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_4", "1");
-                              } else if (type.equals("2023패키지5")) {
+                              } else if (type.equals("2023ํจํค์ง€5")) {
                                  chr.dropMessage(5,
                                        "Savior Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Savior Package has been distributed. Please claim it from the Cash Shop.", ""));
                                  chr.updateOneInfo(1234579, "2023_package_5", "1");
-                              } else if (type.equals("2023패키지6")) {
+                              } else if (type.equals("2023ํจํค์ง€6")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_6", "1");
-                              } else if (type.equals("2023패키지7")) {
+                              } else if (type.equals("2023ํจํค์ง€7")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_7", "1");
-                              } else if (type.equals("2023패키지8")) {
+                              } else if (type.equals("2023ํจํค์ง€8")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_8", "1");
-                              } else if (type.equals("2023패키지9")) {
+                              } else if (type.equals("2023ํจํค์ง€9")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_9", "1");
-                              } else if (type.equals("2023패키지10")) {
+                              } else if (type.equals("2023ํจํค์ง€10")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_10", "1");
-                              } else if (type.equals("2023패키지11")) {
+                              } else if (type.equals("2023ํจํค์ง€11")) {
                                  chr.dropMessage(5,
                                        "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_package_11", "1");
-                              } else if (type.equals("5월패키지1")) {
+                              } else if (type.equals("5์”ํจํค์ง€1")) {
                                  chr.dropMessage(5,
                                        "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_1", "1");
-                              } else if (type.equals("5월패키지2")) {
+                              } else if (type.equals("5์”ํจํค์ง€2")) {
                                  chr.dropMessage(5,
                                        "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_2", "1");
-                              } else if (type.equals("5월패키지3")) {
+                              } else if (type.equals("5์”ํจํค์ง€3")) {
                                  chr.dropMessage(5,
                                        "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_3", "1");
-                              } else if (type.equals("5월패키지4")) {
+                              } else if (type.equals("5์”ํจํค์ง€4")) {
                                  chr.dropMessage(5,
                                        "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_4", "1");
-                              } else if (type.equals("5월패키지5")) {
+                              } else if (type.equals("5์”ํจํค์ง€5")) {
                                  chr.dropMessage(5,
                                        "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_5", "1");
-                              } else if (type.equals("5월패키지6")) {
+                              } else if (type.equals("5์”ํจํค์ง€6")) {
                                  chr.dropMessage(5,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_6", "1");
-                              } else if (type.equals("5월패키지7")) {
+                              } else if (type.equals("5์”ํจํค์ง€7")) {
                                  chr.dropMessage(5,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_7", "1");
-                              } else if (type.equals("5월패키지8")) {
+                              } else if (type.equals("5์”ํจํค์ง€8")) {
                                  chr.dropMessage(5,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_8", "1");
-                              } else if (type.equals("5월패키지9")) {
+                              } else if (type.equals("5์”ํจํค์ง€9")) {
                                  chr.dropMessage(5,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_9", "1");
-                              } else if (type.equals("5월패키지10")) {
+                              } else if (type.equals("5์”ํจํค์ง€10")) {
                                  chr.dropMessage(5,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.",
                                        ""));
                                  chr.updateOneInfo(1234579, "2023_may_package_10", "1");
-                              } else if (type.equals("5월패키지11")) {
+                              } else if (type.equals("5์”ํจํค์ง€11")) {
                                  chr.dropMessage(5,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chr.send(CField.addPopupSay(9062000, 3000,
@@ -1465,176 +1465,176 @@ public class Center {
                         for (MapleCharacter chrx : CashShopServer.getPlayerStorage().getAllCharacters()) {
                            if (chrx.getName().equals(name)) {
                               player_name = name;
-                              if (type.equals("초심자 패키지")) {
-                                 chrx.dropMessage(5, "ได้รับ Beginner Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
-                              } else if (type.equals("설날A")) {
-                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Enhancement Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              if (type.equals("์ด์ฌ์ ํจํค์ง€")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Beginner Package เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
+                              } else if (type.equals("์ค๋ A")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Lunar New Year Enhancement Package เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "nyd_package1", "1");
-                              } else if (type.equals("설날B")) {
-                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Master Berry Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("์ค๋ B")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Lunar New Year Master Berry Package เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "nyd_package2", "1");
-                              } else if (type.equals("설날C")) {
-                                 chrx.dropMessage(5, "ได้รับ Lunar New Year Value Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("์ค๋ C")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Lunar New Year Value Package เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "nyd_package3", "1");
-                              } else if (type.equals("어린이날")) {
-                                 chrx.dropMessage(5, "ได้รับ Children's Day Package เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("์–ด๋ฆฐ์ด๋ ")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Children's Day Package เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1235999, "cd_package",
                                        String.valueOf(chrx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
-                              } else if (type.equals("가정의달C")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package C เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌC")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package C เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_1", "1");
-                              } else if (type.equals("가정의달B")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package B เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌB")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package B เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_2", "1");
-                              } else if (type.equals("가정의달A")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package A เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌA")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package A เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_3", "1");
-                              } else if (type.equals("가정의달S")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package S เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌS")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package S เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_4", "1");
-                              } else if (type.equals("가정의달SS")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package SS เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSS")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package SS เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_5", "1");
-                              } else if (type.equals("가정의달SSS")) {
-                                 chrx.dropMessage(5, "ได้รับ Family Month Package SSS เรียบร้อยแล้ว กรุณารับที่ระบบร้านค้า");
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
+                                 chrx.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Family Month Package SSS เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                                  chrx.updateOneInfo(1234579, "may_package_6", "1");
-                              } else if (type.equals("상시패키지1")) {
+                              } else if (type.equals("์์ํจํค์ง€1")) {
                                  chrx.dropMessage(5,
                                        "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1236001, "a_package_1", "1");
-                              } else if (type.equals("상시패키지2")) {
+                              } else if (type.equals("์์ํจํค์ง€2")) {
                                  chrx.dropMessage(5,
                                        "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1236001, "a_package_2", "1");
-                              } else if (type.equals("추석패키지I")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€I")) {
                                  chrx.dropMessage(5,
                                        "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_1", "1");
-                              } else if (type.equals("추석패키지II")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€II")) {
                                  chrx.dropMessage(5,
                                        "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_2", "1");
-                              } else if (type.equals("추석패키지III")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€III")) {
                                  chrx.dropMessage(5,
                                        "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_3", "1");
-                              } else if (type.equals("추석패키지IV")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                                  chrx.dropMessage(5,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "chuseok_package_4", "1");
-                              } else if (type.equals("3주년패키지I")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€I")) {
                                  chrx.dropMessage(5,
                                        "Advent Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_1", "1");
-                              } else if (type.equals("3주년패키지II")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€II")) {
                                  chrx.dropMessage(5,
                                        "Advent Wisp's Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_2", "1");
-                              } else if (type.equals("3주년패키지III")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€III")) {
                                  chrx.dropMessage(5,
                                        "Advent Remaster Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "3aniv_package_3", "1");
-                              } else if (type.equals("크리스마스패키지1")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1")) {
                                  chrx.dropMessage(5,
                                        "Merry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_1", "1");
-                              } else if (type.equals("크리스마스패키지2")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2")) {
                                  chrx.dropMessage(5,
                                        "Chris Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_2", "1");
-                              } else if (type.equals("크리스마스패키지3")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3")) {
                                  chrx.dropMessage(5,
                                        "Mas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_3", "1");
-                              } else if (type.equals("크리스마스패키지4")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4")) {
                                  chrx.dropMessage(5,
                                        "Advent Christmas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "xmas_package_4", "1");
-                              } else if (type.equals("2023패키지1")) {
+                              } else if (type.equals("2023ํจํค์ง€1")) {
                                  chrx.dropMessage(5,
                                        "Hopping to 300? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_1", "1");
-                              } else if (type.equals("2023패키지2")) {
+                              } else if (type.equals("2023ํจํค์ง€2")) {
                                  chrx.dropMessage(5,
                                        "Even Rabbits Need Strength to Catch! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_2", "1");
-                              } else if (type.equals("2023패키지3")) {
+                              } else if (type.equals("2023ํจํค์ง€3")) {
                                  chrx.dropMessage(5,
-                                       "ได้รับ What Do Rabbits Wear? Package แล้ว กรุณารับที่ Cash Shop");
+                                       "เนเธ”เนเธฃเธฑเธ What Do Rabbits Wear? Package เนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน Cash Shop");
                                  chrx.updateOneInfo(1234579, "2023_package_3", "1");
-                              } else if (type.equals("2023패키지4")) {
+                              } else if (type.equals("2023ํจํค์ง€4")) {
                                  chrx.dropMessage(5,
                                        "Come Out! Cute Rabbit-like Pet! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_4", "1");
-                              } else if (type.equals("2023패키지5")) {
+                              } else if (type.equals("2023ํจํค์ง€5")) {
                                  chrx.dropMessage(5,
                                        "Savior Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_5", "1");
-                              } else if (type.equals("2023패키지6")) {
+                              } else if (type.equals("2023ํจํค์ง€6")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_6", "1");
-                              } else if (type.equals("2023패키지7")) {
+                              } else if (type.equals("2023ํจํค์ง€7")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_7", "1");
-                              } else if (type.equals("2023패키지8")) {
+                              } else if (type.equals("2023ํจํค์ง€8")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_8", "1");
-                              } else if (type.equals("2023패키지9")) {
+                              } else if (type.equals("2023ํจํค์ง€9")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_9", "1");
-                              } else if (type.equals("2023패키지10")) {
+                              } else if (type.equals("2023ํจํค์ง€10")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_10", "1");
-                              } else if (type.equals("2023패키지11")) {
+                              } else if (type.equals("2023ํจํค์ง€11")) {
                                  chrx.dropMessage(5,
                                        "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_package_11", "1");
-                              } else if (type.equals("5월패키지1")) {
+                              } else if (type.equals("5์”ํจํค์ง€1")) {
                                  chrx.dropMessage(5,
                                        "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_1", "1");
-                              } else if (type.equals("5월패키지2")) {
+                              } else if (type.equals("5์”ํจํค์ง€2")) {
                                  chrx.dropMessage(5,
                                        "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_2", "1");
-                              } else if (type.equals("5월패키지3")) {
+                              } else if (type.equals("5์”ํจํค์ง€3")) {
                                  chrx.dropMessage(5,
                                        "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_3", "1");
-                              } else if (type.equals("5월패키지4")) {
+                              } else if (type.equals("5์”ํจํค์ง€4")) {
                                  chrx.dropMessage(5,
                                        "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_4", "1");
-                              } else if (type.equals("5월패키지5")) {
+                              } else if (type.equals("5์”ํจํค์ง€5")) {
                                  chrx.dropMessage(5,
                                        "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_5", "1");
-                              } else if (type.equals("5월패키지6")) {
+                              } else if (type.equals("5์”ํจํค์ง€6")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_6", "1");
-                              } else if (type.equals("5월패키지7")) {
+                              } else if (type.equals("5์”ํจํค์ง€7")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_7", "1");
-                              } else if (type.equals("5월패키지8")) {
+                              } else if (type.equals("5์”ํจํค์ง€8")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_8", "1");
-                              } else if (type.equals("5월패키지9")) {
+                              } else if (type.equals("5์”ํจํค์ง€9")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_9", "1");
-                              } else if (type.equals("5월패키지10")) {
+                              } else if (type.equals("5์”ํจํค์ง€10")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_10", "1");
-                              } else if (type.equals("5월패키지11")) {
+                              } else if (type.equals("5์”ํจํค์ง€11")) {
                                  chrx.dropMessage(5,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrx.updateOneInfo(1234579, "2023_may_package_11", "1");
@@ -1650,187 +1650,187 @@ public class Center {
                         for (MapleCharacter chrxx : AuctionServer.getPlayerStorage().getAllCharacters()) {
                            if (chrxx.getName().equals(name)) {
                               player_name = name;
-                              if (type.equals("초심자 패키지")) {
+                              if (type.equals("์ด์ฌ์ ํจํค์ง€")) {
                                  chrxx.dropMessage(5,
                                        "Beginner Package has been distributed. Please claim it from the Cash Shop.");
-                              } else if (type.equals("설날A")) {
+                              } else if (type.equals("์ค๋ A")) {
                                  chrxx.dropMessage(5,
                                        "Lunar New Year Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package1", "1");
-                              } else if (type.equals("설날B")) {
+                              } else if (type.equals("์ค๋ B")) {
                                  chrxx.dropMessage(5,
                                        "Lunar New Year Master Berry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package2", "1");
-                              } else if (type.equals("설날C")) {
+                              } else if (type.equals("์ค๋ C")) {
                                  chrxx.dropMessage(5,
                                        "Lunar New Year Great Value Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "nyd_package3", "1");
-                              } else if (type.equals("어린이날")) {
+                              } else if (type.equals("์–ด๋ฆฐ์ด๋ ")) {
                                  chrxx.dropMessage(5,
                                        "Children's Day Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1235999, "cd_package",
                                        String.valueOf(chrxx.getOneInfoQuestInteger(1235999, "cd_package") + 1));
-                              } else if (type.equals("가정의달C")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌC")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_1", "1");
-                              } else if (type.equals("가정의달B")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌB")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_2", "1");
-                              } else if (type.equals("가정의달A")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌA")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_3", "1");
-                              } else if (type.equals("가정의달S")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌS")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_4", "1");
-                              } else if (type.equals("가정의달SS")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSS")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_5", "1");
-                              } else if (type.equals("가정의달SSS")) {
+                              } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "may_package_6", "1");
-                              } else if (type.equals("상시패키지1")) {
+                              } else if (type.equals("์์ํจํค์ง€1")) {
                                  chrxx.dropMessage(5,
                                        "Sealed Stat Box Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1236001, "a_package_1", "1");
-                              } else if (type.equals("상시패키지2")) {
+                              } else if (type.equals("์์ํจํค์ง€2")) {
                                  chrxx.dropMessage(5,
                                        "Medal Option Enhancement Ticket Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1236001, "a_package_2", "1");
-                              } else if (type.equals("추석패키지I")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€I")) {
                                  chrxx.dropMessage(5,
                                        "Chuseok Package I has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_1", "1");
-                              } else if (type.equals("추석패키지II")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€II")) {
                                  chrxx.dropMessage(5,
                                        "Chuseok Package II has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_2", "1");
-                              } else if (type.equals("추석패키지III")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€III")) {
                                  chrxx.dropMessage(5,
                                        "Chuseok Package III has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_3", "1");
-                              } else if (type.equals("추석패키지IV")) {
+                              } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                                  chrxx.dropMessage(5,
                                        "Chuseok Package IV has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "chuseok_package_4", "1");
-                              } else if (type.equals("3주년패키지I")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€I")) {
                                  chrxx.dropMessage(5,
                                        "Advent Amazing Label Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_1", "1");
-                              } else if (type.equals("3주년패키지II")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€II")) {
                                  chrxx.dropMessage(5,
                                        "Advent Wisp's Enhancement Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_2", "1");
-                              } else if (type.equals("3주년패키지III")) {
+                              } else if (type.equals("3์ฃผ๋…ํจํค์ง€III")) {
                                  chrxx.dropMessage(5,
                                        "Advent Remaster Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "3aniv_package_3", "1");
-                              } else if (type.equals("크리스마스패키지1")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1")) {
                                  chrxx.dropMessage(5,
                                        "Merry Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_1", "1");
-                              } else if (type.equals("크리스마스패키지2")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2")) {
                                  chrxx.dropMessage(5,
                                        "Chris Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_2", "1");
-                              } else if (type.equals("크리스마스패키지3")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3")) {
                                  chrxx.dropMessage(5,
                                        "Mas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_3", "1");
-                              } else if (type.equals("크리스마스패키지4")) {
+                              } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4")) {
                                  chrxx.dropMessage(5,
                                        "Advent Christmas Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "xmas_package_4", "1");
-                              } else if (type.equals("2023패키지1")) {
+                              } else if (type.equals("2023ํจํค์ง€1")) {
                                  chrxx.dropMessage(5,
                                        "Hopping to 300? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_1", "1");
-                              } else if (type.equals("2023패키지2")) {
+                              } else if (type.equals("2023ํจํค์ง€2")) {
                                  chrxx.dropMessage(5,
                                        "Even Rabbits Need Strength to Catch! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_2", "1");
-                              } else if (type.equals("2023패키지3")) {
+                              } else if (type.equals("2023ํจํค์ง€3")) {
                                  chrxx.dropMessage(5,
-                                       "ได้รับ What Do Rabbits Wear? Package แล้ว กรุณารับที่ Cash Shop");
+                                       "เนเธ”เนเธฃเธฑเธ What Do Rabbits Wear? Package เนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน Cash Shop");
                                  chrxx.updateOneInfo(1234579, "2023_package_3", "1");
-                              } else if (type.equals("2023패키지4")) {
+                              } else if (type.equals("2023ํจํค์ง€4")) {
                                  chrxx.dropMessage(5,
                                        "Come Out! Cute Rabbit-like Pet! Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_4", "1");
-                              } else if (type.equals("2023패키지5")) {
+                              } else if (type.equals("2023ํจํค์ง€5")) {
                                  chrxx.dropMessage(5,
                                        "Savior Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_5", "1");
-                              } else if (type.equals("2023패키지6")) {
+                              } else if (type.equals("2023ํจํค์ง€6")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_6", "1");
-                              } else if (type.equals("2023패키지7")) {
+                              } else if (type.equals("2023ํจํค์ง€7")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_7", "1");
-                              } else if (type.equals("2023패키지8")) {
+                              } else if (type.equals("2023ํจํค์ง€8")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_8", "1");
-                              } else if (type.equals("2023패키지9")) {
+                              } else if (type.equals("2023ํจํค์ง€9")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_9", "1");
-                              } else if (type.equals("2023패키지10")) {
+                              } else if (type.equals("2023ํจํค์ง€10")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_10", "1");
-                              } else if (type.equals("2023패키지11")) {
+                              } else if (type.equals("2023ํจํค์ง€11")) {
                                  chrxx.dropMessage(5,
                                        "Year of the Rabbit Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_package_11", "1");
-                              } else if (type.equals("5월패키지1")) {
+                              } else if (type.equals("5์”ํจํค์ง€1")) {
                                  chrxx.dropMessage(5,
                                        "Love You 3000 Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_1", "1");
-                              } else if (type.equals("5월패키지2")) {
+                              } else if (type.equals("5์”ํจํค์ง€2")) {
                                  chrxx.dropMessage(5,
                                        "Power Overwhelming Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_2", "1");
-                              } else if (type.equals("5월패키지3")) {
+                              } else if (type.equals("5์”ํจํค์ง€3")) {
                                  chrxx.dropMessage(5,
                                        "M@STERPIECE Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_3", "1");
-                              } else if (type.equals("5월패키지4")) {
+                              } else if (type.equals("5์”ํจํค์ง€4")) {
                                  chrxx.dropMessage(5,
                                        "Life Turnaround? Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_4", "1");
-                              } else if (type.equals("5월패키지5")) {
+                              } else if (type.equals("5์”ํจํค์ง€5")) {
                                  chrxx.dropMessage(5,
                                        "Eris's Golden Apple Package has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_5", "1");
-                              } else if (type.equals("5월패키지6")) {
+                              } else if (type.equals("5์”ํจํค์ง€6")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package C has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_6", "1");
-                              } else if (type.equals("5월패키지7")) {
+                              } else if (type.equals("5์”ํจํค์ง€7")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package B has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_7", "1");
-                              } else if (type.equals("5월패키지8")) {
+                              } else if (type.equals("5์”ํจํค์ง€8")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package A has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_8", "1");
-                              } else if (type.equals("5월패키지9")) {
+                              } else if (type.equals("5์”ํจํค์ง€9")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package S has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_9", "1");
-                              } else if (type.equals("5월패키지10")) {
+                              } else if (type.equals("5์”ํจํค์ง€10")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package SS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_10", "1");
-                              } else if (type.equals("5월패키지11")) {
+                              } else if (type.equals("5์”ํจํค์ง€11")) {
                                  chrxx.dropMessage(5,
                                        "Family Month Package SSS has been distributed. Please claim it from the Cash Shop.");
                                  chrxx.updateOneInfo(1234579, "2023_may_package_11", "1");
@@ -1849,19 +1849,19 @@ public class Center {
                      ps = con.prepareStatement(
                            "INSERT INTO `questinfo_account` (`account_id`, `quest`, `customData`, `date`) VALUES(?, ?, ?, ?)");
                      ps.setInt(1, id);
-                     if (type.equals("초심자 패키지")) {
+                     if (type.equals("์ด์ฌ์ ํจํค์ง€")) {
                         ps.setInt(2, 1234555);
                         ps.setString(3, "beginner_package=1");
-                     } else if (type.equals("설날A")) {
+                     } else if (type.equals("์ค๋ A")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "nyd_package1=1");
-                     } else if (type.equals("설날B")) {
+                     } else if (type.equals("์ค๋ B")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "nyd_package2=1");
-                     } else if (type.equals("설날C")) {
+                     } else if (type.equals("์ค๋ C")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "nyd_package3=1");
-                     } else if (type.equals("어린이날")) {
+                     } else if (type.equals("์–ด๋ฆฐ์ด๋ ")) {
                         PreparedStatement ps2 = con.prepareStatement(
                               "SELECT `customData` FROM `questinfo_account` WHERE `account_id` = ? and `quest` = ?");
                         ps2.setInt(1, id);
@@ -1882,130 +1882,130 @@ public class Center {
                         ps2.close();
                         ps.setInt(2, 1235999);
                         ps.setString(3, "cd_package=" + (check ? 1 : 2));
-                     } else if (type.equals("가정의달C")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌC")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_1=1");
-                     } else if (type.equals("가정의달B")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌB")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_2=1");
-                     } else if (type.equals("가정의달A")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌA")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_3=1");
-                     } else if (type.equals("가정의달S")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌS")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_4=1");
-                     } else if (type.equals("가정의달SS")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌSS")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_5=1");
-                     } else if (type.equals("가정의달SSS")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_6=1");
-                     } else if (type.equals("상시패키지1")) {
+                     } else if (type.equals("์์ํจํค์ง€1")) {
                         ps.setInt(2, 1236001);
                         ps.setString(3, "a_package_1=1");
-                     } else if (type.equals("상시패키지2")) {
+                     } else if (type.equals("์์ํจํค์ง€2")) {
                         ps.setInt(2, 1236001);
                         ps.setString(3, "a_package_2=1");
-                     } else if (type.equals("가정의달SSS")) {
+                     } else if (type.equals("๊ฐ€์ •์๋ฌSSS")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "may_package_6=1");
-                     } else if (type.equals("추석패키지I")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€I")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "chuseok_package_1=1");
-                     } else if (type.equals("추석패키지II")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€II")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "chuseok_package_2=1");
-                     } else if (type.equals("추석패키지III")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€III")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "chuseok_package_3=1");
-                     } else if (type.equals("추석패키지IV")) {
+                     } else if (type.equals("์ถ”์ํจํค์ง€IV")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "chuseok_package_4=1");
-                     } else if (type.equals("3주년패키지I")) {
+                     } else if (type.equals("3์ฃผ๋…ํจํค์ง€I")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "3aniv_package_1=1");
-                     } else if (type.equals("3주년패키지II")) {
+                     } else if (type.equals("3์ฃผ๋…ํจํค์ง€II")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "3aniv_package_2=1");
-                     } else if (type.equals("3주년패키지III")) {
+                     } else if (type.equals("3์ฃผ๋…ํจํค์ง€III")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "3aniv_package_3=1");
-                     } else if (type.equals("크리스마스패키지1")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "xmas_package_1=1");
-                     } else if (type.equals("크리스마스패키지2")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "xmas_package_2=1");
-                     } else if (type.equals("크리스마스패키지3")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "xmas_package_3=1");
-                     } else if (type.equals("크리스마스패키지4")) {
+                     } else if (type.equals("ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "xmas_package_4=1");
-                     } else if (type.equals("2023패키지1")) {
+                     } else if (type.equals("2023ํจํค์ง€1")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_1=1");
-                     } else if (type.equals("2023패키지2")) {
+                     } else if (type.equals("2023ํจํค์ง€2")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_2=1");
-                     } else if (type.equals("2023패키지3")) {
+                     } else if (type.equals("2023ํจํค์ง€3")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_3=1");
-                     } else if (type.equals("2023패키지4")) {
+                     } else if (type.equals("2023ํจํค์ง€4")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_4=1");
-                     } else if (type.equals("2023패키지5")) {
+                     } else if (type.equals("2023ํจํค์ง€5")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_5=1");
-                     } else if (type.equals("2023패키지6")) {
+                     } else if (type.equals("2023ํจํค์ง€6")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_6=1");
-                     } else if (type.equals("2023패키지7")) {
+                     } else if (type.equals("2023ํจํค์ง€7")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_7=1");
-                     } else if (type.equals("2023패키지8")) {
+                     } else if (type.equals("2023ํจํค์ง€8")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_8=1");
-                     } else if (type.equals("2023패키지9")) {
+                     } else if (type.equals("2023ํจํค์ง€9")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_9=1");
-                     } else if (type.equals("2023패키지10")) {
+                     } else if (type.equals("2023ํจํค์ง€10")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_10=1");
-                     } else if (type.equals("2023패키지11")) {
+                     } else if (type.equals("2023ํจํค์ง€11")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_package_11=1");
-                     } else if (type.equals("5월패키지1")) {
+                     } else if (type.equals("5์”ํจํค์ง€1")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_1=1");
-                     } else if (type.equals("5월패키지2")) {
+                     } else if (type.equals("5์”ํจํค์ง€2")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_2=1");
-                     } else if (type.equals("5월패키지3")) {
+                     } else if (type.equals("5์”ํจํค์ง€3")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_3=1");
-                     } else if (type.equals("5월패키지4")) {
+                     } else if (type.equals("5์”ํจํค์ง€4")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_4=1");
-                     } else if (type.equals("5월패키지5")) {
+                     } else if (type.equals("5์”ํจํค์ง€5")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_5=1");
-                     } else if (type.equals("5월패키지6")) {
+                     } else if (type.equals("5์”ํจํค์ง€6")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_6=1");
-                     } else if (type.equals("5월패키지7")) {
+                     } else if (type.equals("5์”ํจํค์ง€7")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_7=1");
-                     } else if (type.equals("5월패키지8")) {
+                     } else if (type.equals("5์”ํจํค์ง€8")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_8=1");
-                     } else if (type.equals("5월패키지9")) {
+                     } else if (type.equals("5์”ํจํค์ง€9")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_9=1");
-                     } else if (type.equals("5월패키지10")) {
+                     } else if (type.equals("5์”ํจํค์ง€10")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_10=1");
-                     } else if (type.equals("5월패키지11")) {
+                     } else if (type.equals("5์”ํจํค์ง€11")) {
                         ps.setInt(2, 1234579);
                         ps.setString(3, "2023_may_package_11=1");
                      }
@@ -2030,8 +2030,8 @@ public class Center {
                   }
 
                   StringBuilder sb = new StringBuilder();
-                  sb.append(type + " 지급");
-                  sb.append(" (계정ID : ");
+                  sb.append(type + " ์ง€๊ธ");
+                  sb.append(" (๊ณ์ •ID : ");
                   sb.append(accountName);
                   sb.append(") ");
                   LoggingManager.putLog(new DonationLog(accountName, type, sb, player_name, player_id, account_id));
@@ -2039,11 +2039,11 @@ public class Center {
                }
 
                System.out
-                     .println("[ERROR] Account not found, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
+                     .println("[ERROR] Account not found, auto-recharge failed. (Account : " + accountName + ", ๊ธ์•ก : " + point + ")");
                return false;
             } catch (SQLException var90) {
                System.out.println(
-                     "[ERROR] DB error occurred, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
+                     "[ERROR] DB error occurred, auto-recharge failed. (Account : " + accountName + ", ๊ธ์•ก : " + point + ")");
                return true;
             } finally {
                try {
@@ -2148,9 +2148,9 @@ public class Center {
                            }
                         } else {
                            chrxxx.gainRealCash(pricex);
-                           chrxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
+                           chrxxx.dropMessage(1, "เนเธ”เนเธฃเธฑเธ " + nf.format((long) pricex) + " Advent Points.");
                            chrxxx.send(CField.addPopupSay(9062000, 3000,
-                                 "ได้รับ #b" + nf.format((long) pricex) + "#k Advent Points.", ""));
+                                 "เนเธ”เนเธฃเธฑเธ #b" + nf.format((long) pricex) + "#k Advent Points.", ""));
                         }
 
                         found = true;
@@ -2178,7 +2178,7 @@ public class Center {
                         }
                      } else {
                         chrxxxx.gainRealCash(pricex);
-                        chrxxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
+                        chrxxxx.dropMessage(1, "เนเธ”เนเธฃเธฑเธ " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -2205,7 +2205,7 @@ public class Center {
                         }
                      } else {
                         chrxxxxx.gainRealCash(pricex);
-                        chrxxxxx.dropMessage(1, "ได้รับ " + nf.format((long) pricex) + " Advent Points.");
+                        chrxxxxx.dropMessage(1, "เนเธ”เนเธฃเธฑเธ " + nf.format((long) pricex) + " Advent Points.");
                      }
 
                      targetName = name;
@@ -2352,13 +2352,13 @@ public class Center {
             String fDate = sdf.format(System.currentTimeMillis());
             ps.setString(1, fDate);
             ps.setString(2, accountName);
-            if (type.equals("이벤트 참여")) {
+            if (type.equals("์ด๋ฒคํธ ์ฐธ์—ฌ")) {
                targetName = "EventParticipation";
-            } else if (type.equals("신년 이벤트")) {
+            } else if (type.equals("์ ๋… ์ด๋ฒคํธ")) {
                targetName = "NewYearEvent";
-            } else if (type.equals("클스마스 이벤트")) {
+            } else if (type.equals("ํด์ค๋ง์ค ์ด๋ฒคํธ")) {
                targetName = "ChristmasEvent";
-            } else if (type.equals("보너스이벤트")) {
+            } else if (type.equals("๋ณด๋์ค์ด๋ฒคํธ")) {
                targetName = "BonusEvent";
             }
 
@@ -2388,7 +2388,7 @@ public class Center {
 
          StringBuilder sb = new StringBuilder();
          sb.append("Donation Point Distribution");
-         sb.append(" (계정ID : ");
+         sb.append(" (๊ณ์ •ID : ");
          sb.append(accountName);
          sb.append(") ");
          if (ServerConstants.cashPlusRate > 0) {
@@ -2463,8 +2463,8 @@ public class Center {
                   type = "Distribution";
                }
 
-               if (type.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] กิจกรรม Hot Time เริ่มต้นแล้ว"));
+               if (type.equals("์ง€๊ธ")) {
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] เธเธดเธเธเธฃเธฃเธก Hot Time เน€เธฃเธดเนเธกเธ•เนเธเนเธฅเนเธง"));
                   System.out.println("Hot Time Auto Item Distribution Started!");
                } else {
                   Center.Broadcast.broadcastMessage(
@@ -2491,8 +2491,8 @@ public class Center {
                   typex = "Distribution";
                }
 
-               if (typex.equals("지급")) {
-                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] กิจกรรม Hot Time จบลงแล้ว"));
+               if (typex.equals("์ง€๊ธ")) {
+                  Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverEvent] เธเธดเธเธเธฃเธฃเธก Hot Time เธเธเธฅเธเนเธฅเนเธง"));
                   System.out.println("Hot Time Auto Item Distribution Ended!");
                } else {
                   Center.Broadcast.broadcastMessage(
@@ -2567,106 +2567,106 @@ public class Center {
 
                                     while (rs2.next()) {
                                        int type = rs2.getInt("type");
-                                       String t = "일반";
+                                       String t = "์ผ๋ฐ";
                                        if (type == 1) {
-                                          t = "이벤트 참여";
+                                          t = "์ด๋ฒคํธ ์ฐธ์—ฌ";
                                        } else if (type == 2) {
-                                          t = "초심자 패키지";
+                                          t = "์ด์ฌ์ ํจํค์ง€";
                                        } else if (type == 3) {
-                                          t = "보너스이벤트";
+                                          t = "๋ณด๋์ค์ด๋ฒคํธ";
                                        } else if (type == 5) {
-                                          t = "설날A";
+                                          t = "์ค๋ A";
                                        } else if (type == 6) {
-                                          t = "설날B";
+                                          t = "์ค๋ B";
                                        } else if (type == 7) {
-                                          t = "설날C";
+                                          t = "์ค๋ C";
                                        } else if (type == 8) {
-                                          t = "어린이날";
+                                          t = "์–ด๋ฆฐ์ด๋ ";
                                        } else if (type == 9) {
-                                          t = "가정의달C";
+                                          t = "๊ฐ€์ •์๋ฌC";
                                        } else if (type == 10) {
-                                          t = "가정의달B";
+                                          t = "๊ฐ€์ •์๋ฌB";
                                        } else if (type == 11) {
-                                          t = "가정의달A";
+                                          t = "๊ฐ€์ •์๋ฌA";
                                        } else if (type == 12) {
-                                          t = "가정의달S";
+                                          t = "๊ฐ€์ •์๋ฌS";
                                        } else if (type == 13) {
-                                          t = "가정의달SS";
+                                          t = "๊ฐ€์ •์๋ฌSS";
                                        } else if (type == 14) {
-                                          t = "가정의달SSS";
+                                          t = "๊ฐ€์ •์๋ฌSSS";
                                        } else if (type == 15) {
-                                          t = "상시패키지1";
+                                          t = "์์ํจํค์ง€1";
                                        } else if (type == 16) {
-                                          t = "상시패키지2";
+                                          t = "์์ํจํค์ง€2";
                                        } else if (type == 17) {
-                                          t = "추석패키지I";
+                                          t = "์ถ”์ํจํค์ง€I";
                                        } else if (type == 18) {
-                                          t = "추석패키지II";
+                                          t = "์ถ”์ํจํค์ง€II";
                                        } else if (type == 19) {
-                                          t = "추석패키지III";
+                                          t = "์ถ”์ํจํค์ง€III";
                                        } else if (type == 20) {
-                                          t = "추석패키지IV";
+                                          t = "์ถ”์ํจํค์ง€IV";
                                        } else if (type == 21) {
-                                          t = "3주년패키지I";
+                                          t = "3์ฃผ๋…ํจํค์ง€I";
                                        } else if (type == 22) {
-                                          t = "3주년패키지II";
+                                          t = "3์ฃผ๋…ํจํค์ง€II";
                                        } else if (type == 23) {
-                                          t = "3주년패키지III";
+                                          t = "3์ฃผ๋…ํจํค์ง€III";
                                        } else if (type == 24) {
-                                          t = "크리스마스패키지1";
+                                          t = "ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€1";
                                        } else if (type == 25) {
-                                          t = "크리스마스패키지2";
+                                          t = "ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€2";
                                        } else if (type == 26) {
-                                          t = "크리스마스패키지3";
+                                          t = "ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€3";
                                        } else if (type == 27) {
-                                          t = "크리스마스패키지4";
+                                          t = "ํฌ๋ฆฌ์ค๋ง์คํจํค์ง€4";
                                        } else if (type == 28) {
-                                          t = "2023패키지1";
+                                          t = "2023ํจํค์ง€1";
                                        } else if (type == 29) {
-                                          t = "2023패키지2";
+                                          t = "2023ํจํค์ง€2";
                                        } else if (type == 30) {
-                                          t = "2023패키지3";
+                                          t = "2023ํจํค์ง€3";
                                        } else if (type == 31) {
-                                          t = "2023패키지4";
+                                          t = "2023ํจํค์ง€4";
                                        } else if (type == 32) {
-                                          t = "2023패키지5";
+                                          t = "2023ํจํค์ง€5";
                                        } else if (type == 33) {
-                                          t = "2023패키지6";
+                                          t = "2023ํจํค์ง€6";
                                        } else if (type == 34) {
-                                          t = "2023패키지7";
+                                          t = "2023ํจํค์ง€7";
                                        } else if (type == 35) {
-                                          t = "2023패키지8";
+                                          t = "2023ํจํค์ง€8";
                                        } else if (type == 36) {
-                                          t = "2023패키지9";
+                                          t = "2023ํจํค์ง€9";
                                        } else if (type == 37) {
-                                          t = "2023패키지10";
+                                          t = "2023ํจํค์ง€10";
                                        } else if (type == 38) {
-                                          t = "2023패키지11";
+                                          t = "2023ํจํค์ง€11";
                                        } else if (type == 39) {
-                                          t = "5월패키지1";
+                                          t = "5์”ํจํค์ง€1";
                                        } else if (type == 40) {
-                                          t = "5월패키지2";
+                                          t = "5์”ํจํค์ง€2";
                                        } else if (type == 41) {
-                                          t = "5월패키지3";
+                                          t = "5์”ํจํค์ง€3";
                                        } else if (type == 42) {
-                                          t = "5월패키지4";
+                                          t = "5์”ํจํค์ง€4";
                                        } else if (type == 43) {
-                                          t = "5월패키지5";
+                                          t = "5์”ํจํค์ง€5";
                                        } else if (type == 44) {
-                                          t = "5월패키지6";
+                                          t = "5์”ํจํค์ง€6";
                                        } else if (type == 45) {
-                                          t = "5월패키지7";
+                                          t = "5์”ํจํค์ง€7";
                                        } else if (type == 46) {
-                                          t = "5월패키지8";
+                                          t = "5์”ํจํค์ง€8";
                                        } else if (type == 47) {
-                                          t = "5월패키지9";
+                                          t = "5์”ํจํค์ง€9";
                                        } else if (type == 48) {
-                                          t = "5월패키지10";
+                                          t = "5์”ํจํค์ง€10";
                                        } else if (type == 49) {
-                                          t = "5월패키지11";
+                                          t = "5์”ํจํค์ง€11";
                                        }
 
-                                       if (DBConfig.isGanglim && !t.equals("일반")) {
+                                       if (DBConfig.isGanglim && !t.equals("์ผ๋ฐ")) {
                                           return;
                                        }
 
@@ -3879,7 +3879,7 @@ public class Center {
          expHottimeTask.cancel(true);
          expHottimeTask = null;
          if (!forced && ServerConstants.currentHottimeRate > 1.0) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[ExpFever] กิจกรรม Exp จบลงแล้ว"));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[ExpFever] เธเธดเธเธเธฃเธฃเธก Exp เธเธเธฅเธเนเธฅเนเธง"));
          }
 
          ServerConstants.currentHottimeRate = 1.0;
@@ -3891,7 +3891,7 @@ public class Center {
          juhunHottimeTask.cancel(true);
          juhunHottimeTask = null;
          if (!forced && ServerConstants.JuhunFever == 1) {
-            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time จบลงแล้ว"));
+            Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time เธเธเธฅเธเนเธฅเนเธง"));
          }
 
          ServerConstants.JuhunFever = 0;
@@ -4010,7 +4010,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(
-                                          CField.chatMsg(3, "[Weekend Daily] กิจกรรม EXP +20% กำลังดำเนินอยู่"));
+                                          CField.chatMsg(3, "[Weekend Daily] เธเธดเธเธเธฃเธฃเธก EXP +20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            } else if (dayOfWeek == 2) {
                               ServerConstants.dailyEventType = DailyEventType.MesoRateFever;
                               TextEffect e = new TextEffect(-1,
@@ -4020,7 +4020,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(
-                                          CField.chatMsg(3, "[Monday Daily] กิจกรรม Meso +20% กำลังดำเนินอยู่"));
+                                          CField.chatMsg(3, "[Monday Daily] เธเธดเธเธเธฃเธฃเธก Meso +20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            } else if (dayOfWeek == 3) {
                               ServerConstants.dailyEventType = DailyEventType.DropRateFever;
                               TextEffect e = new TextEffect(-1,
@@ -4030,7 +4030,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Tuesday Daily] กิจกรรมเพิ่มอัตราดรอป 20% กำลังดำเนินอยู่"));
+                                          "[Tuesday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธ”เธฃเธญเธ 20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            } else if (dayOfWeek == 4) {
                               ServerConstants.dailyEventType = DailyEventType.MobGenFever;
                               TextEffect e = new TextEffect(-1,
@@ -4041,7 +4041,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Wednesday Daily] กิจกรรมเพิ่มอัตราการเกิดมอนสเตอร์กำลังดำเนินอยู่"));
+                                          "[Wednesday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเน€เธเธดเธ”เธกเธญเธเธชเน€เธ•เธญเธฃเนเธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            } else if (dayOfWeek == 5) {
                               ServerConstants.dailyEventType = DailyEventType.StarForceDiscount;
                               TextEffect e = new TextEffect(-1,
@@ -4051,7 +4051,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[Thursday Daily] กิจกรรมส่วนลด Star Force กำลังดำเนินอยู่"));
+                                          "[Thursday Daily] เธเธดเธเธเธฃเธฃเธกเธชเนเธงเธเธฅเธ” Star Force เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            } else if (dayOfWeek == 6) {
                               ServerConstants.dailyEventType = DailyEventType.CubeFever;
                               TextEffect e = new TextEffect(-1,
@@ -4061,7 +4061,7 @@ public class Center {
                               Center.Broadcast.broadcastMessage(e.encodeForLocal());
                               Center.Broadcast.broadcastMessage(
                                     CField.chatMsg(3,
-                                          "[Friday Daily] กิจกรรมเพิ่มอัตราการลงทะเบียน Monster Collection กำลังดำเนินอยู่"));
+                                          "[Friday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธฅเธเธ—เธฐเน€เธเธตเธขเธ Monster Collection เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                            }
 
                            timeScheduleEntry.setDailyEventCheck1(day);
@@ -4077,11 +4077,11 @@ public class Center {
                               Center.Broadcast
                                     .broadcastMessage(
                                           CField.chatMsg(5,
-                                                "[FeverTime] Spell Trace Fever Time จะมีจนถึง 22:00 น."));
+                                                "[FeverTime] Spell Trace Fever Time เธเธฐเธกเธตเธเธเธ–เธถเธ 22:00 เธ."));
                            } else {
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(3,
-                                          "[FeverTime] Spell Trace Fever Time จะมีจนถึง 22:00 น."));
+                                          "[FeverTime] Spell Trace Fever Time เธเธฐเธกเธตเธเธเธ–เธถเธ 22:00 เธ."));
                            }
 
                            Center.Broadcast.broadcastMessage(CWvsContext.scrollUpgradeFeverTime(2));
@@ -4093,10 +4093,10 @@ public class Center {
                            if (DBConfig.isGanglim) {
                               Center.Broadcast
                                     .broadcastMessage(CField.chatMsg(5,
-                                          "[FeverTime] Spell Trace Fever Time กำลังจะจบลง"));
+                                          "[FeverTime] Spell Trace Fever Time เธเธณเธฅเธฑเธเธเธฐเธเธเธฅเธ"));
                            } else {
                               Center.Broadcast.broadcastMessage(
-                                    CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time กำลังจะจบลง"));
+                                    CField.chatMsg(3, "[FeverTime] Spell Trace Fever Time เธเธณเธฅเธฑเธเธเธฐเธเธเธฅเธ"));
                            }
 
                            ServerConstants.JuhunFever = 0;
@@ -4199,7 +4199,7 @@ public class Center {
             }
 
             if (hours == Integer.parseInt(endTime[0]) && minutes == Integer.parseInt(endTime[1]) && seconds == 1) {
-               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Event] กิจกรรม Exp จบลงแล้ว"));
+               Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Event] เธเธดเธเธเธฃเธฃเธก Exp เธเธเธฅเธเนเธฅเนเธง"));
                ServerConstants.currentHottimeRate = 1.0;
                Center.expHottimeTask.cancel(true);
                Center.expHottimeTask = null;

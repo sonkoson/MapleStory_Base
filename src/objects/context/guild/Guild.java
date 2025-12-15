@@ -1,4 +1,4 @@
-package objects.context.guild;
+﻿package objects.context.guild;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -1368,7 +1368,7 @@ public class Guild implements Serializable {
          }
       }
 
-      return "메이플스토리";
+      return "๋ฉ”์ดํ”์คํ ๋ฆฌ";
    }
 
    public void addRequest(GuildCharacter mgc) {
@@ -1382,7 +1382,7 @@ public class Guild implements Serializable {
    public void insertJoinRequester(MapleCharacter p, String introduce) {
       Guild.JoinRequester r = new Guild.JoinRequester(p.getId(), p.getJob(), p.getLevel(), p.getName(), introduce);
       if (p == null) {
-         throw new RuntimeException("없는 유저가 가입 신청하려고 했습니다.");
+         throw new RuntimeException("์—๋” ์ ์ €๊ฐ€ ๊ฐ€์… ์ ์ฒญํ•๋ ค๊ณ  ํ–์ต๋๋ค.");
       } else {
          r.insert();
          this.requesters.put(p.getId(), r);
@@ -1729,7 +1729,7 @@ public class Guild implements Serializable {
                   Guild.this.setNoblessSkillPoint(rewardNoblePoint);
                   Guild.this.change_guildLog = true;
                   Guild.this.broadcast(GuildContents.loadGuildLog(Guild.this));
-                  Guild.this.broadcast(CWvsContext.serverNotice(5, "길드 컨텐츠 참여 현황 및 노블 포인트가 정산되었습니다."));
+                  Guild.this.broadcast(CWvsContext.serverNotice(5, "๊ธธ๋“ ์ปจํ…์ธ  ์ฐธ์—ฌ ํํฉ ๋ฐ ๋…ธ๋ธ” ํฌ์ธํธ๊ฐ€ ์ •์ฐ๋์—์ต๋๋ค."));
                   Guild.this.nobleA = null;
                }
             }, 2400000L);
@@ -1778,7 +1778,7 @@ public class Guild implements Serializable {
       this.setNoblessSkillPoint(rewardNoblePoint);
       this.change_guildLog = true;
       this.broadcast(GuildContents.loadGuildLog(this));
-      this.broadcast(CWvsContext.serverNotice(5, "길드 컨텐츠 참여 현황 및 노블 포인트가 정산되었습니다."));
+      this.broadcast(CWvsContext.serverNotice(5, "๊ธธ๋“ ์ปจํ…์ธ  ์ฐธ์—ฌ ํํฉ ๋ฐ ๋…ธ๋ธ” ํฌ์ธํธ๊ฐ€ ์ •์ฐ๋์—์ต๋๋ค."));
    }
 
    public void encode(PacketEncoder packet, boolean visit) {

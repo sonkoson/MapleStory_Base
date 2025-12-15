@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import constants.GameConstants;
 import java.awt.Point;
@@ -222,7 +222,7 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             AchievementFactory.checkMakingskillGather(this.getPlayer(), succ, pID);
          }
       } else {
-         this.c.getPlayer().dropMessage(5, "Fatigue ไม่พอที่จะทำ " + pName + ".");
+         this.c.getPlayer().dropMessage(5, "Fatigue เนเธกเนเธเธญเธ—เธตเนเธเธฐเธ—เธณ " + pName + ".");
       }
    }
 }

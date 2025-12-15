@@ -1,4 +1,4 @@
-package objects.quest;
+﻿package objects.quest;
 
 import network.encode.PacketEncoder;
 import network.models.PacketHelper;

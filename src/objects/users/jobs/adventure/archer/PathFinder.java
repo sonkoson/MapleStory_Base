@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.archer;
+﻿package objects.users.jobs.adventure.archer;
 
 import constants.GameConstants;
 import io.netty.util.internal.ThreadLocalRandom;

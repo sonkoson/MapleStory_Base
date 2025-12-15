@@ -1,4 +1,4 @@
-package objects.fields.child.will;
+﻿package objects.fields.child.will;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -107,8 +107,8 @@ public class Field_WillBattleReward extends Field_WillBattle {
                }
 
                if (quantity > 0) {
-                  p.gainItem(4001890, (short)quantity, false, -1L, "윌 격파로 얻은 아이템");
-                  p.gainItem(2438412, 1, false, -1L, "윌 격파로 얻은 아이템");
+                  p.gainItem(4001890, (short)quantity, false, -1L, "์ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
+                  p.gainItem(2438412, 1, false, -1L, "์ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
                }
 
                this.sendWillRemovePoison(p);
@@ -123,7 +123,7 @@ public class Field_WillBattleReward extends Field_WillBattle {
 
                   for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
                      names.add(mpc.getName());
-                     StringBuilder sb = new StringBuilder("보스 노말 윌 격파");
+                     StringBuilder sb = new StringBuilder("๋ณด์ค ๋…ธ๋ง ์ ๊ฒฉํ");
                      MapleCharacter player = this.getCharacterById(mpc.getId());
                      if (player != null) {
                         if (!DBConfig.isGanglim && !multiMode) {
@@ -137,7 +137,7 @@ public class Field_WillBattleReward extends Field_WillBattle {
                   list = String.join(",", names);
                   if (!DBConfig.isGanglim) {
                      Center.Broadcast.broadcastMessage(
-                        CField.chatMsg(DBConfig.isGanglim ? 8 : 4, "[보스격파] '" + p.getParty().getLeader().getName() + "' 파티(" + list + ")가 [노말 윌]을 격파하였습니다.")
+                        CField.chatMsg(DBConfig.isGanglim ? 8 : 4, "[๋ณด์ค๊ฒฉํ] '" + p.getParty().getLeader().getName() + "' ํํฐ(" + list + ")๊ฐ€ [๋…ธ๋ง ์]์ ๊ฒฉํํ•์€์ต๋๋ค.")
                      );
                   }
                } else if (mob.getId() != 8950115) {
@@ -181,7 +181,7 @@ public class Field_WillBattleReward extends Field_WillBattle {
                   list = String.join(",", names);
                   if (this.getFieldSetInstance() instanceof HardWillBoss || this.getFieldSetInstance() instanceof HellWillBoss) {
                      for (PartyMemberEntry mpcxx : new ArrayList<>(p.getParty().getPartyMemberList())) {
-                        StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 윌 격파 (" + list + ")");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค " + (hell ? "ํ—ฌ" : "ํ•๋“") + " ์ ๊ฒฉํ (" + list + ")");
                         MapleCharacter player = this.getCharacterById(mpcxx.getId());
                         if (player != null) {
                            LoggingManager.putLog(new BossLog(player, BossLogType.ClearLog.getType(), sb));
@@ -193,26 +193,26 @@ public class Field_WillBattleReward extends Field_WillBattle {
                      Center.Broadcast.broadcastMessage(
                         CField.chatMsg(
                            22,
-                           "[보스격파] [CH."
-                              + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                           "[๋ณด์ค๊ฒฉํ] [CH."
+                              + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                               + "] '"
                               + p.getParty().getLeader().getName()
-                              + "' 파티("
+                              + "' ํํฐ("
                               + list
-                              + ")가 [헬 윌]를 격파하였습니다."
+                              + ")๊ฐ€ [ํ—ฌ ์]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                         )
                      );
                   } else if (!DBConfig.isGanglim) {
                      Center.Broadcast.broadcastMessage(
                         CField.chatMsg(
                            4,
-                           "[보스격파] [CH."
-                              + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                           "[๋ณด์ค๊ฒฉํ] [CH."
+                              + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                               + "] '"
                               + p.getParty().getLeader().getName()
-                              + "' 파티("
+                              + "' ํํฐ("
                               + list
-                              + ")가 [하드 윌]를 격파하였습니다."
+                              + ")๊ฐ€ [ํ•๋“ ์]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                         )
                      );
                   }

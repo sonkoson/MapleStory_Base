@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import java.util.EnumMap;
 import objects.users.stats.SecondaryStatFlag;

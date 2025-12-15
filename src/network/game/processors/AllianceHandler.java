@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import network.center.Center;
 import network.decode.PacketDecoder;
@@ -84,9 +84,9 @@ public class AllianceHandler {
                            int inviteCheck = chr.getGuild().getAllianceId();
                            if (inviteCheck > 0) {
                               if (inviteCheck == gs.getAllianceId()) {
-                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรเดียวกันอยู่แล้ว");
+                                 c.getPlayer().dropMessage(1, "เธเธดเธฅเธ”เนเธเธตเนเธญเธขเธนเนเนเธเธเธฑเธเธเธกเธดเธ•เธฃเน€เธ”เธตเธขเธงเธเธฑเธเธญเธขเธนเนเนเธฅเนเธง");
                               } else {
-                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรอื่น");
+                                 c.getPlayer().dropMessage(1, "เธเธดเธฅเธ”เนเธเธตเนเธญเธขเธนเนเนเธเธเธฑเธเธเธกเธดเธ•เธฃเธญเธทเนเธ");
                               }
 
                               return;
@@ -100,10 +100,10 @@ public class AllianceHandler {
                                  );
                               Center.Guild.setInvitedId(chr.getGuildId(), gs.getAllianceId());
                            } else {
-                              c.getPlayer().dropMessage(1, "กรุณาตรวจสอบว่าหัวหน้ากิลด์อยู่ในแชนแนลเดียวกันหรือไม่");
+                              c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธงเนเธฒเธซเธฑเธงเธซเธเนเธฒเธเธดเธฅเธ”เนเธญเธขเธนเนเนเธเนเธเธเนเธเธฅเน€เธ”เธตเธขเธงเธเธฑเธเธซเธฃเธทเธญเนเธกเน");
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "ไม่พบกิลด์ กรุณาใส่ชื่อกิลด์ที่ถูกต้อง");
+                           c.getPlayer().dropMessage(1, "เนเธกเนเธเธเธเธดเธฅเธ”เน เธเธฃเธธเธ“เธฒเนเธชเนเธเธทเนเธญเธเธดเธฅเธ”เนเธ—เธตเนเธ–เธนเธเธ•เนเธญเธ");
                         }
                         break;
                      case 4:

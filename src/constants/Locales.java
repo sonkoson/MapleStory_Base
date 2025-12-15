@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 public class Locales {
    public static String getKoreanJosa(String text, JosaType type) {

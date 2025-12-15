@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import constants.GameConstants;
 import database.DBConfig;

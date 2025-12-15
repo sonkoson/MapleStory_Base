@@ -1,4 +1,4 @@
-package objects.fields.child.karing;
+﻿package objects.fields.child.karing;
 
 import java.awt.Point;
 import network.SendPacketOpcode;

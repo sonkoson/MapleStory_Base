@@ -1,4 +1,4 @@
-package objects.fields.gameobject;
+﻿package objects.fields.gameobject;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

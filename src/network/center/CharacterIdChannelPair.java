@@ -1,4 +1,4 @@
-package network.center;
+﻿package network.center;
 
 import java.io.Externalizable;
 import java.io.IOException;

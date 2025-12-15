@@ -1,4 +1,4 @@
-package objects.fields.events;
+﻿package objects.fields.events;
 
 import constants.GameConstants;
 import network.RandomRewards;
@@ -61,19 +61,19 @@ public abstract class MapleEvent {
       if (reward == 0) {
          int mes = Randomizer.nextInt(9000000) + 1000000;
          chr.gainMeso(mes, true, false, true);
-         chr.dropMessage(5, "ยินดีด้วย! " + mes + " ได้รับ Meso!");
+         chr.dropMessage(5, "เธขเธดเธเธ”เธตเธ”เนเธงเธข! " + mes + " เนเธ”เนเธฃเธฑเธ Meso!");
       } else if (reward == 1) {
          int cs = Randomizer.nextInt(4000) + 1000;
          chr.modifyCSPoints(1, cs, true);
-         chr.dropMessage(5, "ยินดีด้วย! " + cs + " ได้รับ Cash!");
+         chr.dropMessage(5, "เธขเธดเธเธ”เธตเธ”เนเธงเธข! " + cs + " เนเธ”เนเธฃเธฑเธ Cash!");
       } else if (reward == 2) {
          chr.setRealCash(chr.getRealCash() + 1);
-         chr.dropMessage(5, "ยินดีด้วย! V포인트 1을 획득하셨습니다.");
+         chr.dropMessage(5, "เธขเธดเธเธ”เธตเธ”เนเธงเธข! Vํฌ์ธํธ 1์ ํ๋“ํ•์…จ์ต๋๋ค.");
       } else if (reward == 3) {
          chr.addFame(10);
-         chr.dropMessage(5, "ยินดีด้วย! 인기도 10을 얻으셨습니다.");
+         chr.dropMessage(5, "เธขเธดเธเธ”เธตเธ”เนเธงเธข! ์ธ๊ธฐ๋ 10์ ์–ป์ผ์…จ์ต๋๋ค.");
       } else if (reward == 4) {
-         chr.dropMessage(5, "น่าเสียดาย ไม่ได้รับรางวัล ไว้โอกาสหน้านะ ~ ^^");
+         chr.dropMessage(5, "เธเนเธฒเน€เธชเธตเธขเธ”เธฒเธข เนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ เนเธงเนเนเธญเธเธฒเธชเธซเธเนเธฒเธเธฐ ~ ^^");
       } else {
          int max_quantity = 1;
          switch (reward) {
@@ -188,7 +188,7 @@ public abstract class MapleEvent {
                if (chr.getMapId() == i) {
                   e.startEvent();
                   setEvent(chr.getClient().getChannelServer(), false);
-                  chr.dropMessage(5, t + " กิจกรรมเริ่มขึ้นแล้ว");
+                  chr.dropMessage(5, t + " เธเธดเธเธเธฃเธฃเธกเน€เธฃเธดเนเธกเธเธถเนเธเนเธฅเนเธง");
                }
             }
          }

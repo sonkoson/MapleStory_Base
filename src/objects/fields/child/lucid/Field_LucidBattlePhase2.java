@@ -1,4 +1,4 @@
-package objects.fields.child.lucid;
+﻿package objects.fields.child.lucid;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -450,7 +450,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                         p.setCanAttackLucidRewardMob(true);
                         p.addGuildContributionByBoss(mob.getId());
-                        p.gainItem(4001879, (short) quantity, false, -1L, "ไอเทมที่ได้รับจากการกำจัด Lucid");
+                        p.gainItem(4001879, (short) quantity, false, -1L, "เนเธญเน€เธ—เธกเธ—เธตเนเนเธ”เนเธฃเธฑเธเธเธฒเธเธเธฒเธฃเธเธณเธเธฑเธ” Lucid");
                      }
 
                      if (!set) {
@@ -461,7 +461,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
 
                            for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
                               names.add(mpc.getName());
-                              StringBuilder sb = new StringBuilder("กำจัด Boss Normal Lucid");
+                              StringBuilder sb = new StringBuilder("เธเธณเธเธฑเธ” Boss Normal Lucid");
                               MapleCharacter playerxxxx = this.getCharacterById(mpc.getId());
                               if (playerxxxx != null) {
                                  LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
@@ -473,8 +473,8 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                               Center.Broadcast.broadcastMessage(
                                     CField.chatMsg(
                                           DBConfig.isGanglim ? 8 : 22,
-                                          "[보스격파] [CH."
-                                                + (this.getChannel() == 2 ? "20세 이상"
+                                          "[๋ณด์ค๊ฒฉํ] [CH."
+                                                + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                       : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                                 + "] '"
                                                 + p.getParty().getLeader().getName()
@@ -514,7 +514,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                  }
 
                                  StringBuilder sb = new StringBuilder(
-                                       "กำจัด Boss " + (hell ? "Hell" : "Hard") + " Lucid (" + list + ")");
+                                       "เธเธณเธเธฑเธ” Boss " + (hell ? "Hell" : "Hard") + " Lucid (" + list + ")");
                                  MapleCharacter playerxxxx = this.getCharacterById(mpcx.getId());
                                  if (playerxxxx != null) {
                                     LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
@@ -527,19 +527,19 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                        CField.chatMsg(
                                              22,
                                              "[Boss Defeated] [CH."
-                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                                   + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                          : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                                   + "] ปาร์ตี้ '"
+                                                   + "] เธเธฒเธฃเนเธ•เธตเน '"
                                                    + p.getParty().getLeader().getName()
                                                    + "' ("
                                                    + list
-                                                   + ") ได้กำจัด [Hell Lucid] แล้ว"));
+                                                   + ") เนเธ”เนเธเธณเธเธฑเธ” [Hell Lucid] เนเธฅเนเธง"));
                               } else if (!DBConfig.isGanglim) {
                                  Center.Broadcast.broadcastMessage(
                                        CField.chatMsg(
                                              22,
-                                             "[보스격파] [CH."
-                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                             "[๋ณด์ค๊ฒฉํ] [CH."
+                                                   + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                          : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                                    + "] '"
                                                    + p.getParty().getLeader().getName()
@@ -574,7 +574,7 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                  }
 
                                  StringBuilder sb = new StringBuilder(
-                                       "กำจัด Boss " + (hellx ? "Hell" : "Hard") + " Lucid (" + list + ")");
+                                       "เธเธณเธเธฑเธ” Boss " + (hellx ? "Hell" : "Hard") + " Lucid (" + list + ")");
                                  MapleCharacter playerxxxx = this.getCharacterById(mpcx.getId());
                                  if (playerxxxx != null) {
                                     LoggingManager.putLog(new BossLog(playerxxxx, BossLogType.ClearLog.getType(), sb));
@@ -587,13 +587,13 @@ public class Field_LucidBattlePhase2 extends Field_LucidBattle {
                                        CField.chatMsg(
                                              22,
                                              "[Boss Defeated] [CH."
-                                                   + (this.getChannel() == 2 ? "20세 이상"
+                                                   + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                          : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
-                                                   + "] ปาร์ตี้ '"
+                                                   + "] เธเธฒเธฃเนเธ•เธตเน '"
                                                    + p.getParty().getLeader().getName()
                                                    + "' ("
                                                    + list
-                                                   + ") ได้กำจัด [Hell Lucid] แล้ว"));
+                                                   + ") เนเธ”เนเธเธณเธเธฑเธ” [Hell Lucid] เนเธฅเนเธง"));
                               }
                            }
                         }

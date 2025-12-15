@@ -1,4 +1,4 @@
-package objects.fields.child.karrotte;
+﻿package objects.fields.child.karrotte;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -82,7 +82,7 @@ public class Field_BossKalosPhase2 extends Field_BossKalos {
 
             for (MapleCharacter chr : player.getPartyMembers()) {
                if (chr.getMapId() == this.getId() - 20 || chr.getMapId() == this.getId() && chr.getRegisterTransferFieldTime() == 0L) {
-                  TextEffect e = new TextEffect("#fn나눔고딕 ExtraBold##fs32##r#e여기까진가... 죄송합니다. 아버지...", 100, 2500, 4, 0, 0, 1, 0);
+                  TextEffect e = new TextEffect("#fn๋๋”๊ณ ๋”• ExtraBold##fs32##r#e์—ฌ๊ธฐ๊น์ง๊ฐ€... ์ฃ์กํ•ฉ๋๋ค. ์•๋ฒ์ง€...", 100, 2500, 4, 0, 0, 1, 0);
                   chr.send(e.encodeForLocal());
                   chr.setRegisterTransferField(warpTo);
                   chr.setRegisterTransferFieldTime(System.currentTimeMillis() + 3000L);
@@ -106,20 +106,20 @@ public class Field_BossKalosPhase2 extends Field_BossKalos {
                   String difficulty = "";
                   String mode = this.getMode();
                   if (mode.equals("easy")) {
-                     difficulty = "이지";
+                     difficulty = "์ด์ง€";
                   } else if (mode.equals("normal")) {
-                     difficulty = "노말";
+                     difficulty = "๋…ธ๋ง";
                   } else if (mode.equals("chaos")) {
-                     difficulty = "카오스";
+                     difficulty = "์นด์ค์ค";
                   } else {
-                     difficulty = "익스트림";
+                     difficulty = "์ต์คํธ๋ฆผ";
                   }
 
-                  difficulty = "노말";
+                  difficulty = "๋…ธ๋ง";
                   list = String.join(",", names);
 
                   for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
-                     StringBuilder sb = new StringBuilder("보스 " + difficulty + " 칼로스 격파 (" + list + ")");
+                     StringBuilder sb = new StringBuilder("๋ณด์ค " + difficulty + " ์นผ๋ก์ค ๊ฒฉํ (" + list + ")");
                      MapleCharacter pm = this.getCharacterById(mpc.getId());
                      if (pm != null) {
                         LoggingManager.putLog(new BossLog(pm, BossLogType.ClearLog.getType(), sb));
@@ -129,15 +129,15 @@ public class Field_BossKalosPhase2 extends Field_BossKalos {
                   Center.Broadcast.broadcastMessageCheckQuest(
                      CField.chatMsg(
                         8,
-                        "[보스격파] [CH."
-                           + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                        "[๋ณด์ค๊ฒฉํ] [CH."
+                           + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                            + "] '"
                            + p.getParty().getPartyMember().getLeader().getName()
-                           + "' 파티("
+                           + "' ํํฐ("
                            + list
-                           + ")가 ["
+                           + ")๊ฐ€ ["
                            + difficulty
-                           + " 칼로스]를 격파하였습니다."
+                           + " ์นผ๋ก์ค]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                      ),
                      "BossMessage"
                   );
@@ -405,7 +405,7 @@ public class Field_BossKalosPhase2 extends Field_BossKalos {
                   fakeMob.getObjectId(), fakeMob.getId()
                );
                furyStart.broadcastPacket(this);
-               TextEffect e = new TextEffect("#fn나눔고딕 ExtraBold##fs26##fc0xff71ffff#폭주에 휘말리지 않도록 수호 지대를 찾아라...", 100, 2500, 4, 0, 0, 1, 0);
+               TextEffect e = new TextEffect("#fn๋๋”๊ณ ๋”• ExtraBold##fs26##fc0xff71ffff#ํญ์ฃผ์— ํ๋ง๋ฆฌ์ง€ ์•๋๋ก ์ํธ ์ง€๋€๋ฅผ ์ฐพ์•๋ผ...", 100, 2500, 4, 0, 0, 1, 0);
                this.broadcastMessage(e.encodeForLocal());
                KalosAction.Phase2KalosAction.FuryOfTheGuardianSafetyZoneSet furySet = new KalosAction.Phase2KalosAction.FuryOfTheGuardianSafetyZoneSet(
                   this.skillMob, 9

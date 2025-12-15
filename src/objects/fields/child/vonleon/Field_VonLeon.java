@@ -1,4 +1,4 @@
-package objects.fields.child.vonleon;
+﻿package objects.fields.child.vonleon;
 
 import constants.QuestExConstants;
 import java.text.SimpleDateFormat;
@@ -51,7 +51,7 @@ public class Field_VonLeon extends Field {
                   EventInstanceManager eim = p.getEventInstance();
                   if (eim != null) {
                      eim.restartEventTimer(300000L);
-                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("반 레온을 물리치셨습니다. 왼쪽 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("๋ฐ ๋ ์จ์ ๋ฌผ๋ฆฌ์น์…จ์ต๋๋ค. ์ผ์ชฝ ํฌํ์ ํตํ•ด ์ด๋ํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.", 5120026);
                      List<Integer> partyPlayerList = eim.getPartyPlayerList();
                      if (partyPlayerList != null && !partyPlayerList.isEmpty()) {
                         for (Integer playerID : partyPlayerList) {

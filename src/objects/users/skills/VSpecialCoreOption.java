@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 public class VSpecialCoreOption {
    private String condType;

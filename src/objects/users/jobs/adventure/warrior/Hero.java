@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.warrior;
+﻿package objects.users.jobs.adventure.warrior;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import java.util.Collections;

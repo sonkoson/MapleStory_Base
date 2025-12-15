@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import java.lang.management.ManagementFactory;
 import java.util.concurrent.Executor;

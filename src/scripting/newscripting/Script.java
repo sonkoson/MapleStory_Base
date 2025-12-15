@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

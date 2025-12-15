@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 public class ItemOptionLevelData {
    public byte incSTR;

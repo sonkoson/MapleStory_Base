@@ -1,4 +1,4 @@
-package network.auction;
+﻿package network.auction;
 
 import database.DBConnection;
 import java.sql.Connection;

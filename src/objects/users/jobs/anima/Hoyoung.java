@@ -1,4 +1,4 @@
-package objects.users.jobs.anima;
+﻿package objects.users.jobs.anima;
 
 import constants.GameConstants;
 import java.awt.Point;

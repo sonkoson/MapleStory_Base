@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 public enum AntiMacroType {
    FromUser(0),

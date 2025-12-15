@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -142,7 +142,7 @@ public class EliteBossBonusStageEvent extends FieldEvent {
             this.expireTime = System.currentTimeMillis() + 22000L;
             this.started = true;
             this.sendEliteBossTime(null);
-            this.map.broadcastMessage(CField.sendWeatherEffectNotice(1, 4000, false, "ถ้าโจมตีปกติอาจจะได้รับไอเทมนะ!"));
+            this.map.broadcastMessage(CField.sendWeatherEffectNotice(1, 4000, false, "เธ–เนเธฒเนเธเธกเธ•เธตเธเธเธ•เธดเธญเธฒเธเธเธฐเนเธ”เนเธฃเธฑเธเนเธญเน€เธ—เธกเธเธฐ!"));
             return;
          }
       }

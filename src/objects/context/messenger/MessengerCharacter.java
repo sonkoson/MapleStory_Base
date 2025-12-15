@@ -1,4 +1,4 @@
-package objects.context.messenger;
+﻿package objects.context.messenger;
 
 import java.io.Serializable;
 import objects.users.MapleCharacter;

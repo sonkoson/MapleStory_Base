@@ -1,4 +1,4 @@
-package objects.fields.fieldskill;
+﻿package objects.fields.fieldskill;
 
 import java.util.HashMap;
 import java.util.Map;

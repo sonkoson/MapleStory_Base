@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.nio.charset.Charset;
 import java.nio.file.Files;

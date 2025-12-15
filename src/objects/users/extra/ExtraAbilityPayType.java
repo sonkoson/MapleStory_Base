@@ -1,4 +1,4 @@
-package objects.users.extra;
+﻿package objects.users.extra;
 
 public enum ExtraAbilityPayType {
    Meso(0),

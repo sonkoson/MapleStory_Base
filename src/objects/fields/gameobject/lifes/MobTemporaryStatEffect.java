@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 import java.lang.ref.WeakReference;
 import objects.fields.gameobject.lifes.mobskills.MobSkillInfo;

@@ -1,4 +1,4 @@
-package objects.users.jobs.koc;
+﻿package objects.users.jobs.koc;
 
 import constants.GameConstants;
 import java.awt.Point;

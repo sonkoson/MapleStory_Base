@@ -1,4 +1,4 @@
-package objects.fields.child.sernium;
+﻿package objects.fields.child.sernium;
 
 import database.DBConfig;
 import java.util.function.Consumer;
@@ -117,7 +117,7 @@ public class Field_SerenPhase1 extends Field_Seren {
       }
 
       if (mob.getId() == 8880600 || mob.getId() == 8880630) {
-         TextEffect e = new TextEffect(-1, "#fn나눔고딕 Extrabold##fs25##r태양의 불꽃은 복수를 잊지 않는다.", 100, 2000, 4, 0, 0, 0);
+         TextEffect e = new TextEffect(-1, "#fn๋๋”๊ณ ๋”• Extrabold##fs25##rํ์–‘์ ๋ถ๊ฝ์€ ๋ณต์๋ฅผ ์์ง€ ์•๋”๋ค.", 100, 2000, 4, 0, 0, 0);
          this.broadcastMessage(e.encodeForLocal());
          MapleCharacter p = null;
 

@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import java.util.Collections;

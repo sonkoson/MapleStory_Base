@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 import com.google.common.collect.UnmodifiableIterator;
 import constants.GameConstants;
@@ -564,7 +564,7 @@ public class CWvsContext {
    }
 
    public static byte[] Mulung_Pts(int recv, int total) {
-      return showQuestMsg("คุณได้รับคะแนนฝึกฝน " + recv + " คะแนน รวมทั้งหมด " + total + " คะแนน");
+      return showQuestMsg("เธเธธเธ“เนเธ”เนเธฃเธฑเธเธเธฐเนเธเธเธเธถเธเธเธ " + recv + " เธเธฐเนเธเธ เธฃเธงเธกเธ—เธฑเนเธเธซเธกเธ” " + total + " เธเธฐเนเธเธ");
    }
 
    public static byte[] serverMessage(String message) {
@@ -1621,7 +1621,7 @@ public class CWvsContext {
          Calendar c = Calendar.getInstance();
          c.set(7, 1);
          if (SpecialSunday.activeRuneEXP) {
-            mplew.writeMapleAsciiString("ผลของรูนเพิ่ม EXP +100%");
+            mplew.writeMapleAsciiString("เธเธฅเธเธญเธเธฃเธนเธเน€เธเธดเนเธก EXP +100%");
             mplew.writeInt(0);
             mplew.writeInt(17);
             mplew.writeInt(200);
@@ -1643,7 +1643,7 @@ public class CWvsContext {
          }
 
          if (SpecialSunday.activeCombokillEXP) {
-            mplew.writeMapleAsciiString("ได้รับ EXP จากลูกแก้ว Combo Kill +300%");
+            mplew.writeMapleAsciiString("เนเธ”เนเธฃเธฑเธ EXP เธเธฒเธเธฅเธนเธเนเธเนเธง Combo Kill +300%");
             mplew.writeInt(0);
             mplew.writeInt(37);
             mplew.writeInt(300);
@@ -1665,7 +1665,7 @@ public class CWvsContext {
          }
 
          if (SpecialSunday.activeSpellTrace) {
-            mplew.writeMapleAsciiString("ค่าอัพเกรด Spell Trace ลดลง 50%");
+            mplew.writeMapleAsciiString("เธเนเธฒเธญเธฑเธเน€เธเธฃเธ” Spell Trace เธฅเธ”เธฅเธ 50%");
             mplew.writeInt(3);
             mplew.writeInt(4);
             mplew.writeInt(50);
@@ -1683,12 +1683,12 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\nค่าอัพเกรด Spell Trace\r\n#fc0xFFFFCC00#ลดราคา 50%!#k");
+                  "#eเธงเธฑเธเธญเธฒเธ—เธดเธ•เธขเนเธเธทเธญ Maple! เธเธดเธเธเธฃเธฃเธก <Sunday Maple>!\r\n\r\nเธเนเธฒเธญเธฑเธเน€เธเธฃเธ” Spell Trace\r\n#fc0xFFFFCC00#เธฅเธ”เธฃเธฒเธเธฒ 50%!#k");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeAbility) {
-            mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability ลดลง 50%");
+            mplew.writeMapleAsciiString("เธเนเธฒเธฃเธตเน€เธเนเธ• Ability เธฅเธ”เธฅเธ 50%");
             mplew.writeInt(6);
             mplew.writeInt(4);
             mplew.writeInt(50);
@@ -1704,13 +1704,13 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(0);
             mplew.writeInt(0);
-            mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability ลดลง 50%!");
+            mplew.writeMapleAsciiString("เธเนเธฒเธฃเธตเน€เธเนเธ• Ability เธฅเธ”เธฅเธ 50%!");
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForceOpO) {
-            mplew.writeMapleAsciiString("Star Force 10 ดาวลงมา อัพเกรด 1+1");
+            mplew.writeMapleAsciiString("Star Force 10 เธ”เธฒเธงเธฅเธเธกเธฒ เธญเธฑเธเน€เธเธฃเธ” 1+1");
             mplew.writeInt(4);
             mplew.writeInt(40);
             mplew.writeInt(1);
@@ -1728,12 +1728,12 @@ public class CWvsContext {
             mplew.writeInt(12);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#เมื่ออัพเกรด Star Force 10 ดาวลงมาสำเร็จ รับ 1+1 ทันที!#k#n\r\n(ไม่รวมอุปกรณ์ Superior)");
+                  "#eเธงเธฑเธเธญเธฒเธ—เธดเธ•เธขเนเธเธทเธญ Maple! เธเธดเธเธเธฃเธฃเธก <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#เน€เธกเธทเนเธญเธญเธฑเธเน€เธเธฃเธ” Star Force 10 เธ”เธฒเธงเธฅเธเธกเธฒเธชเธณเน€เธฃเนเธ เธฃเธฑเธ 1+1 เธ—เธฑเธเธ—เธต!#k#n\r\n(เนเธกเนเธฃเธงเธกเธญเธธเธเธเธฃเธ“เน Superior)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForce100) {
-            mplew.writeMapleAsciiString("Star Force 5, 10, 15 ดาว อัพเกรดติด 100%");
+            mplew.writeMapleAsciiString("Star Force 5, 10, 15 เธ”เธฒเธง เธญเธฑเธเน€เธเธฃเธ”เธ•เธดเธ” 100%");
             mplew.writeInt(4);
             mplew.writeInt(5);
             mplew.writeInt(0);
@@ -1757,12 +1757,12 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#โอกาสสำเร็จ 100% เมื่อตีบวกที่ 5, 10, 15 ดาว!#n\r\n(ไม่รวมอุปกรณ์ Superior)");
+                  "#eเธงเธฑเธเธญเธฒเธ—เธดเธ•เธขเนเธเธทเธญ Maple! เธเธดเธเธเธฃเธฃเธก <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#เนเธญเธเธฒเธชเธชเธณเน€เธฃเนเธ 100% เน€เธกเธทเนเธญเธ•เธตเธเธงเธเธ—เธตเน 5, 10, 15 เธ”เธฒเธง!#n\r\n(เนเธกเนเธฃเธงเธกเธญเธธเธเธเธฃเธ“เน Superior)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeStarForceDiscount) {
-            mplew.writeMapleAsciiString("ค่าอัพเกรด Star Force#k ลดลง 30%");
+            mplew.writeMapleAsciiString("เธเนเธฒเธญเธฑเธเน€เธเธฃเธ” Star Force#k เธฅเธ”เธฅเธ 30%");
             mplew.writeInt(4);
             mplew.writeInt(4);
             mplew.writeInt(0);
@@ -1780,12 +1780,12 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString(
-                  "#eวันอาทิตย์คือ Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#ค่าอัพเกรด Star Force#k ลดลง 30%#n\r\n(ไม่รวมค่ากันแตกและอุปกรณ์ Superior, ส่วนลด MVP/PC Cafe จะคำนวณจากราคาที่ลดแล้ว)");
+                  "#eเธงเธฑเธเธญเธฒเธ—เธดเธ•เธขเนเธเธทเธญ Maple! เธเธดเธเธเธฃเธฃเธก <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#เธเนเธฒเธญเธฑเธเน€เธเธฃเธ” Star Force#k เธฅเธ”เธฅเธ 30%#n\r\n(เนเธกเนเธฃเธงเธกเธเนเธฒเธเธฑเธเนเธ•เธเนเธฅเธฐเธญเธธเธเธเธฃเธ“เน Superior, เธชเนเธงเธเธฅเธ” MVP/PC Cafe เธเธฐเธเธณเธเธงเธ“เธเธฒเธเธฃเธฒเธเธฒเธ—เธตเนเธฅเธ”เนเธฅเนเธง)");
             mplew.writeMapleAsciiString("");
          }
 
          if (SpecialSunday.activeSoulGacha) {
-            mplew.writeMapleAsciiString("โอกาสได้รับ Magnificent Soul เพิ่มขึ้น 5 เท่า");
+            mplew.writeMapleAsciiString("เนเธญเธเธฒเธชเนเธ”เนเธฃเธฑเธ Magnificent Soul เน€เธเธดเนเธกเธเธถเนเธ 5 เน€เธ—เนเธฒ");
             mplew.writeInt(20);
             mplew.writeInt(32);
             mplew.writeInt(5);
@@ -1801,7 +1801,7 @@ public class CWvsContext {
             mplew.writeInt(0);
             mplew.writeInt(0);
             mplew.writeInt(0);
-            mplew.writeMapleAsciiString("โอกาสได้รับ Magnificent Soul เพิ่มขึ้น 5 เท่า!");
+            mplew.writeMapleAsciiString("เนเธญเธเธฒเธชเนเธ”เนเธฃเธฑเธ Magnificent Soul เน€เธเธดเนเธกเธเธถเนเธ 5 เน€เธ—เนเธฒ!");
             mplew.writeMapleAsciiString("");
             mplew.writeMapleAsciiString("");
          }

@@ -1,4 +1,4 @@
-package objects.context.guild;
+﻿package objects.context.guild;
 
 public enum GuildMemberPermissionFlag {
    Invite(1),

@@ -1,4 +1,4 @@
-package network.connector.panel;
+﻿package network.connector.panel;
 
 import constants.ServerConstants;
 import database.DBConnection;
@@ -289,7 +289,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       this.jLabel24 = new JLabel();
       jFrame2.setName("jFrame2");
       jFrame2.setResizable(false);
-      this.jButton5.setText("강제종료");
+      this.jButton5.setText("๊ฐ•์ ์ข…๋ฃ");
       this.jButton5.setName("jButton5");
       this.jButton5.addActionListener(new ActionListener() {
          @Override
@@ -323,13 +323,13 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       );
       this.setDefaultCloseOperation(3);
       this.setName("Form");
-      this.jTabbedPane1.setName("서버관련");
+      this.jTabbedPane1.setName("์๋ฒ๊ด€๋ จ");
       this.jPanel1.setAlignmentX(0.0F);
       this.jPanel1.setAlignmentY(0.0F);
       this.jPanel1.setName("jPanel1");
       this.jScrollPane1.setBorder(null);
       this.jScrollPane1.setName("jScrollPane1");
-      jTable1.setModel(new DefaultTableModel(new Object[0][], new String[]{"아이디", "비밀번호", "아이피", "접속중인캐릭터", "클라이언트", "대표캐릭터"}) {
+      jTable1.setModel(new DefaultTableModel(new Object[0][], new String[]{"์•์ด๋””", "๋น๋ฐ€๋ฒํธ", "์•์ดํ”ผ", "์ ‘์์ค‘์ธ์บ๋ฆญํฐ", "ํด๋ผ์ด์–ธํธ", "๋€ํ‘์บ๋ฆญํฐ"}) {
          Class[] types = new Class[]{String.class, String.class, String.class, String.class, Object.class, Object.class};
 
          @Override
@@ -350,7 +350,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
          jTable1.getColumnModel().getColumn(4).setMaxWidth(0);
       }
 
-      this.jButton1.setText("영구퇴장");
+      this.jButton1.setText("์๊ตฌํด์ฅ");
       this.jButton1.setToolTipText("");
       this.jButton1.setName("jButton1");
       this.jButton1.addActionListener(new ActionListener() {
@@ -359,7 +359,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             ConnectorPanel.this.jButton1ActionPerformed(evt);
          }
       });
-      this.jButton2.setText("강제퇴장");
+      this.jButton2.setText("๊ฐ•์ ํด์ฅ");
       this.jButton2.setName("jButton2");
       this.jButton2.addActionListener(new ActionListener() {
          @Override
@@ -367,7 +367,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             ConnectorPanel.this.jButton2ActionPerformed(evt);
          }
       });
-      this.jButton3.setText("리스트");
+      this.jButton3.setText("๋ฆฌ์คํธ");
       this.jButton3.setName("jButton3");
       this.jButton3.addActionListener(new ActionListener() {
          @Override
@@ -377,7 +377,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       });
       this.jTextField1.setText("jTextField1");
       this.jTextField1.setName("jTextField1");
-      this.jButton6.setText("전체 공지");
+      this.jButton6.setText("์ ์ฒด ๊ณต์ง€");
       this.jButton6.setName("jButton6");
       this.jButton6.addActionListener(new ActionListener() {
          @Override
@@ -385,7 +385,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             ConnectorPanel.this.jButton6ActionPerformed(evt);
          }
       });
-      this.jButton7.setText("선택 공지");
+      this.jButton7.setText("์ ํ ๊ณต์ง€");
       this.jButton7.setName("jButton7");
       this.jButton7.addActionListener(new ActionListener() {
          @Override
@@ -422,7 +422,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
                   .add(0, 131, 32767)
             )
       );
-      this.jTabbedPane1.addTab("접속자", this.jPanel1);
+      this.jTabbedPane1.addTab("์ ‘์์", this.jPanel1);
       this.jPanel2.setName("jPanel2");
       this.jScrollPane2.setName("jScrollPane2");
       jTable2.setModel(new DefaultTableModel(new Object[0][], new String[]{"IP"}) {
@@ -437,7 +437,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       this.jScrollPane2.setViewportView(jTable2);
       this.jTextField4.setText("127.0.0.1");
       this.jTextField4.setName("jTextField4");
-      this.jButton14.setText("추가");
+      this.jButton14.setText("์ถ”๊ฐ€");
       this.jButton14.setName("jButton14");
       this.jButton14.addActionListener(new ActionListener() {
          @Override
@@ -445,7 +445,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             ConnectorPanel.this.jButton14ActionPerformed(evt);
          }
       });
-      this.jButton13.setText("삭제");
+      this.jButton13.setText("์ญ์ ");
       this.jButton13.setToolTipText("");
       this.jButton13.setName("jButton13");
       this.jButton13.addActionListener(new ActionListener() {
@@ -481,14 +481,14 @@ public class ConnectorPanel extends JFrame implements ActionListener {
                   .add(0, 133, 32767)
             )
       );
-      this.jTabbedPane1.addTab("아이피 차단", this.jPanel2);
+      this.jTabbedPane1.addTab("์•์ดํ”ผ ์ฐจ๋จ", this.jPanel2);
       this.jPanel3.setName("jPanel3");
       this.jScrollPane4.setName("jScrollPane4");
       jTextArea2.setColumns(20);
       jTextArea2.setRows(5);
       jTextArea2.setName("jTextArea2");
       this.jScrollPane4.setViewportView(jTextArea2);
-      this.jButton4.setText("청소");
+      this.jButton4.setText("์ฒญ์");
       this.jButton4.setName("jButton4");
       this.jButton4.addActionListener(new ActionListener() {
          @Override
@@ -497,7 +497,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
          }
       });
       this.jCheckBox1.setSelected(false);
-      this.jCheckBox1.setText("로그기록");
+      this.jCheckBox1.setText("๋ก๊ทธ๊ธฐ๋ก");
       this.jCheckBox1.setName("jCheckBox1");
       this.jCheckBox1.addActionListener(new ActionListener() {
          @Override
@@ -529,7 +529,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
                   .addContainerGap(-1, 32767)
             )
       );
-      this.jTabbedPane1.addTab("로그", this.jPanel3);
+      this.jTabbedPane1.addTab("๋ก๊ทธ", this.jPanel3);
       GroupLayout layout = new GroupLayout(this.getContentPane());
       this.getContentPane().setLayout(layout);
       layout.setHorizontalGroup(layout.createParallelGroup(1).add(layout.createSequentialGroup().add(this.jTabbedPane1, -2, 543, -2).add(0, 0, 32767)));
@@ -558,8 +558,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
 
    private void jButton13ActionPerformed(ActionEvent evt) {
       if (jTable2.getSelectedRow() <= -1) {
-         txtMsg = "선택하지 않았습니다.";
-         txtOpt = "오류";
+         txtMsg = "์ ํํ•์ง€ ์•์•์ต๋๋ค.";
+         txtOpt = "์ค๋ฅ";
          intOpt = 0;
          ConnectorPanel.Alert al = new ConnectorPanel.Alert();
          al.start();
@@ -610,8 +610,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
 
    private void jButton7ActionPerformed(ActionEvent evt) {
       if (jTable1.getSelectedRow() < 0) {
-         txtMsg = "선택하지 않았습니다.";
-         txtOpt = "오류";
+         txtMsg = "์ ํํ•์ง€ ์•์•์ต๋๋ค.";
+         txtOpt = "์ค๋ฅ";
          intOpt = 0;
          ConnectorPanel.Alert al = new ConnectorPanel.Alert();
          al.start();
@@ -627,7 +627,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
             if (Center.Find.findChannel(sp) >= 0) {
                MapleCharacter chr = GameServer.getInstance(Center.Find.findChannel(sp)).getPlayerStorage().getCharacterByName(sp);
                if (chr != null) {
-                  chr.getMap().broadcastMessage(CWvsContext.yellowChat("GM개인메세지 : " + this.jTextField1.getText()));
+                  chr.getMap().broadcastMessage(CWvsContext.yellowChat("GM๊ฐ์ธ๋ฉ”์ธ์ง€ : " + this.jTextField1.getText()));
                }
             }
          }
@@ -636,7 +636,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
 
    private void jButton6ActionPerformed(ActionEvent evt) {
       try {
-         Center.Broadcast.broadcastMessage(CWvsContext.yellowChat("GM전체메세지 : " + this.jTextField1.getText()));
+         Center.Broadcast.broadcastMessage(CWvsContext.yellowChat("GM์ ์ฒด๋ฉ”์ธ์ง€ : " + this.jTextField1.getText()));
       } catch (Exception var3) {
          System.out.println("Error sending global message");
          var3.printStackTrace();
@@ -647,8 +647,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
       jFrame2.setVisible(true);
       jFrame2.setSize(480, 440);
       if (jTable1.getSelectedRow() < 0) {
-         txtMsg = "선택하지 않았습니다.";
-         txtOpt = "오류";
+         txtMsg = "์ ํํ•์ง€ ์•์•์ต๋๋ค.";
+         txtOpt = "์ค๋ฅ";
          intOpt = 0;
          ConnectorPanel.Alert al = new ConnectorPanel.Alert();
          al.start();
@@ -666,8 +666,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
 
    private void jButton1ActionPerformed(ActionEvent evt) {
       if (jTable1.getSelectedRow() <= -1) {
-         txtMsg = "선택하지 않았습니다.";
-         txtOpt = "오류";
+         txtMsg = "์ ํํ•์ง€ ์•์•์ต๋๋ค.";
+         txtOpt = "์ค๋ฅ";
          intOpt = 0;
          ConnectorPanel.Alert al = new ConnectorPanel.Alert();
          al.start();
@@ -726,8 +726,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
                   ps1.setString(2, rs.getString("SessionIP"));
                   ps1.execute();
                   ps1.close();
-                  ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '운영자' WHERE name = ?");
-                  ps1.setString(1, "영구 퇴장 당하셨습니다.");
+                  ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '์ด์์' WHERE name = ?");
+                  ps1.setString(1, "์๊ตฌ ํด์ฅ ๋นํ•์…จ์ต๋๋ค.");
                   ps1.setString(2, rs.getString("name"));
                   ps1.executeUpdate();
                   ps1.close();
@@ -741,8 +741,8 @@ public class ConnectorPanel extends JFrame implements ActionListener {
                ps.setString(1, jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
                rs = ps.executeQuery();
                if (rs.next()) {
-                  ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '운영자' WHERE name = ?");
-                  ps1.setString(1, "영구 퇴장 당하셨습니다.");
+                  ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '์ด์์' WHERE name = ?");
+                  ps1.setString(1, "์๊ตฌ ํด์ฅ ๋นํ•์…จ์ต๋๋ค.");
                   ps1.setString(2, rs.getString("name"));
                   ps1.executeUpdate();
                   ps1.close();
@@ -1079,7 +1079,7 @@ public class ConnectorPanel extends JFrame implements ActionListener {
          while (allDefaultKey.hasMoreElements()) {
             String defaultKey = allDefaultKey.nextElement().toString();
             if (defaultKey.indexOf("font") != -1) {
-               Font newDefaultFont = new Font("맑은 고딕", 1, 12);
+               Font newDefaultFont = new Font("๋ง‘์€ ๊ณ ๋”•", 1, 12);
                UIManager.put(defaultKey, newDefaultFont);
             }
          }

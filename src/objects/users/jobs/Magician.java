@@ -1,4 +1,4 @@
-package objects.users.jobs;
+﻿package objects.users.jobs;
 
 import network.RecvPacketOpcode;
 import network.decode.PacketDecoder;

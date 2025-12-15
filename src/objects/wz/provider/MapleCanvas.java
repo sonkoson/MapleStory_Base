@@ -1,4 +1,4 @@
-package objects.wz.provider;
+﻿package objects.wz.provider;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

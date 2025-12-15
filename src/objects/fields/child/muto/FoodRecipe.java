@@ -1,4 +1,4 @@
-package objects.fields.child.muto;
+﻿package objects.fields.child.muto;
 
 public enum FoodRecipe {
    AWK_FIRES(0, new int[][]{{2435856, 5}, {2435860, 10}}),

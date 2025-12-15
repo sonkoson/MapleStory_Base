@@ -1,4 +1,4 @@
-package objects.fields.child.yutagolden;
+﻿package objects.fields.child.yutagolden;
 
 import java.util.ArrayList;
 import java.util.Collections;

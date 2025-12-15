@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import constants.GameConstants;
 import java.io.Serializable;

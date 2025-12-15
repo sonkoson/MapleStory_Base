@@ -1,4 +1,4 @@
-package objects.fields.obstacle;
+﻿package objects.fields.obstacle;
 
 import java.util.ArrayList;
 import java.util.List;

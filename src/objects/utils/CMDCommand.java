@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import constants.AutoHottimeManager;
 import constants.HottimeItemManager;
@@ -35,15 +35,15 @@ public class CMDCommand {
          String[] command = target.split(" ");
          String var2 = command[0];
          switch (var2) {
-            case "낚시리셋":
+            case "๋์๋ฆฌ์…":
             case "fr":
                MapleFishing.Load();
                break;
-            case "핫타임아이템리셋":
+            case "ํ•ซํ€์์•์ดํ…๋ฆฌ์…":
             case "hir":
                HottimeItemManager.loadHottimeItem();
                break;
-            case "피버리셋":
+            case "ํ”ผ๋ฒ๋ฆฌ์…":
             case "feverreset":
                ServerConstants.expFeverRate = 1.0;
                ServerConstants.dropFeverRate = 1.0;
@@ -52,7 +52,7 @@ public class CMDCommand {
                AutoHottimeManager.loadAutoHottime();
                Center.registerAutoFever();
                break;
-            case "전투력리셋":
+            case "์ ํฌ๋ ฅ๋ฆฌ์…":
                DamageMeasurementRank.resetRank();
                System.out.println("Combat power ranking reset.");
                break;
@@ -65,7 +65,7 @@ public class CMDCommand {
                   g.nobleSPAdjustmentF();
                }
                break;
-            case "블라썸저장":
+            case "๋ธ”๋ผ์ธ์ €์ฅ":
                if (Center.sunShineStorage.save()) {
                   System.out.println("Saved successfully.");
                } else {
@@ -75,12 +75,12 @@ public class CMDCommand {
             case "ScriptReset":
                ScriptManager.resetScript(null);
                break;
-            case "봇테스트":
-               DiscordBotHandler.requestSendTelegramWithChatID("봇에서 보내는 테스트입니다. 1", -671926475L);
-               DiscordBotHandler.requestSendTelegramWithChatID("봇에서 보내는 테스트입니다. 2", -627738806L);
-               DiscordBotHandler.requestSendTelegramWithChatID("봇에서 보내는 테스트입니다. 3", -1001603835720L);
+            case "๋ดํ…์คํธ":
+               DiscordBotHandler.requestSendTelegramWithChatID("๋ด์—์ ๋ณด๋ด๋” ํ…์คํธ์…๋๋ค. 1", -671926475L);
+               DiscordBotHandler.requestSendTelegramWithChatID("๋ด์—์ ๋ณด๋ด๋” ํ…์คํธ์…๋๋ค. 2", -627738806L);
+               DiscordBotHandler.requestSendTelegramWithChatID("๋ด์—์ ๋ณด๋ด๋” ํ…์คํธ์…๋๋ค. 3", -1001603835720L);
                break;
-            case "도움말":
+            case "๋์€๋ง":
                System.out.println("< CMD Command Help >");
                System.out.println("[Command List] :: \r\n");
                System.out.println("<Notice> - Sends a notice.");
@@ -94,11 +94,11 @@ public class CMDCommand {
             case "Notice":
                for (GameServer ch : GameServer.getAllInstances()) {
                   for (MapleCharacter chr : ch.getPlayerStorage().getAllCharacters()) {
-                     chr.dropMessage(1, "[Notice사항]\r\n" + StringUtil.joinStringFrom(command, 1));
+                     chr.dropMessage(1, "[Notice์ฌํ•ญ]\r\n" + StringUtil.joinStringFrom(command, 1));
                   }
                }
                break;
-            case "모두종료":
+            case "๋ชจ๋‘์ข…๋ฃ":
                for (GameServer ch : GameServer.getAllInstances()) {
                   ch.getPlayerStorage().disconnectAll();
                }
@@ -120,7 +120,7 @@ public class CMDCommand {
                   player = cserv.getPlayerStorage().getCharacterByName(command[1]);
                   if (player != null) {
                      byte number = Byte.parseByte(command[2]);
-                     player.getClient().getSession().writeAndFlush(CWvsContext.getScriptProgressMessage("해당 플레이어가 GM " + command[2] + "레벨이 되었습니다."));
+                     player.getClient().getSession().writeAndFlush(CWvsContext.getScriptProgressMessage("ํ•ด๋น ํ”๋ ์ด์–ด๊ฐ€ GM " + command[2] + "๋ ๋ฒจ์ด ๋์—์ต๋๋ค."));
                      System.out.println(command[1] + " Player GM level " + command[2] + " set to.");
                      player.setGMLevel(number);
                      a = 1;
@@ -142,7 +142,7 @@ public class CMDCommand {
 
                System.out.println(StringUtil.joinStringFrom(command, 1));
                break;
-            case "서버종료":
+            case "์๋ฒ์ข…๋ฃ":
                ShutdownServer.getInstance().run();
                ShutdownServer.getInstance().run();
                break;
@@ -164,7 +164,7 @@ public class CMDCommand {
                   cserv.broadcastPacket(CField.DirectionPacket.IntroEnableUI(1));
                }
                break;
-            case "드롭리셋":
+            case "๋“๋กญ๋ฆฌ์…":
             case "dr":
                MapleMonsterInformationProvider.getInstance().clearDrops();
          }

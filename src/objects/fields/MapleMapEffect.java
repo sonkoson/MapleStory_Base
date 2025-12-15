@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import network.models.CField;
 import network.models.CSPacket;

@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import api.DonationRequest;
 import constants.GameConstants;
@@ -1471,10 +1471,10 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   this.gainGP(-25000);
                }
             } else if (!trueMax) {
-               this.sendNext("You cannot increase your guild capacity any further.");
+               this.sendNext("คุณไม่สามารถเพิ่มจำนวนสมาชิกกิลด์ได้อีกแล้ว");
             } else {
                this.sendNext(
-                     "Please check if your guild capacity is full, if you have the GP needed or if subtracting GP would decrease a guild level. (Limit: 200)");
+                     "โปรดตรวจสอบว่ากิลด์ของคุณเต็มหรือไม่ หรือ GP ไม่เพียงพอ (สูงสุด: 200)");
             }
          }
       }
@@ -1866,7 +1866,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             for (MapleCharacter chr : cserv.getPlayerStorage().getAllCharacters()) {
                if (chr.getGuildId() == this.getPlayer().getGuildId()) {
                   mse.applyTo(chr, chr, true, null, duration, (byte) 0, true, false);
-                  chr.dropMessage(5, "กิลด์ของคุณได้รับ " + msg + " buff.");
+                  chr.dropMessage(5, "เธเธดเธฅเธ”เนเธเธญเธเธเธธเธ“เนเธ”เนเธฃเธฑเธ " + msg + " buff.");
                }
             }
          }
@@ -2160,7 +2160,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
    public void handleDivorce() {
       if (this.getPlayer().getMarriageId() <= 0) {
-         this.sendNext("Please make sure you have a marriage.");
+         this.sendNext("กรุณาตรวจสอบว่าคุณได้แต่งงานแล้ว");
       } else {
          int chz = Center.Find.findChannel(this.getPlayer().getMarriageId());
          if (chz == -1) {
@@ -2188,23 +2188,23 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.setQuestRecord(this.getPlayer(), 160001, "0");
             this.setQuestRecord(this.getPlayer(), 160002, "0");
             this.getPlayer().setMarriageId(0);
-            this.sendNext("You have been successfully divorced...");
+            this.sendNext("คุณได้หย่าร้างเรียบร้อยแล้ว...");
          } else if (chz < -1) {
-            this.sendNext("Please make sure your partner is logged on.");
+            this.sendNext("กรุณาตรวจสอบว่าคู่รักของคุณออนไลน์อยู่");
          } else {
             MapleCharacter cPlayer = GameServer.getInstance(chz).getPlayerStorage()
                   .getCharacterById(this.getPlayer().getMarriageId());
             if (cPlayer != null) {
-               cPlayer.dropMessage(1, "คู่รักหย่าร้างกับคุณ");
+               cPlayer.dropMessage(1, "เธเธนเนเธฃเธฑเธเธซเธขเนเธฒเธฃเนเธฒเธเธเธฑเธเธเธธเธ“");
                cPlayer.setMarriageId(0);
                this.setQuestRecord(cPlayer, 160001, "0");
                this.setQuestRecord(this.getPlayer(), 160001, "0");
                this.setQuestRecord(cPlayer, 160002, "0");
                this.setQuestRecord(this.getPlayer(), 160002, "0");
                this.getPlayer().setMarriageId(0);
-               this.sendNext("You have been successfully divorced...");
+               this.sendNext("คุณได้หย่าร้างเรียบร้อยแล้ว...");
             } else {
-               this.sendNext("An error occurred...");
+               this.sendNext("เกิดข้อผิดพลาด...");
             }
          }
       }
@@ -2953,7 +2953,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   .getPlayer()
                   .dropMessage(
                         5,
-                        "ผลการประเมินอาวุธ : Grade("
+                        "เธเธฅเธเธฒเธฃเธเธฃเธฐเน€เธกเธดเธเธญเธฒเธงเธธเธ : Grade("
                               + gradeString[var14 - 1]
                               + ") / AllStats : "
                               + allStat_
@@ -3011,7 +3011,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          this.sendNext(msg);
          this.dispose();
       } else {
-         this.sendNext("There are no overseas cash items available right now. Please come back later!");
+         this.sendNext("ขณะนี้ไม่มีไอเทม Cash จากต่างประเทศ กรุณากลับมาใหม่ภายหลัง!");
          this.dispose();
       }
    }
@@ -3290,7 +3290,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          if (GameConstants.isAuthenticSymbol(target.getItemId())) {
             if (target.getArcLevel() >= 11) {
-               this.c.getPlayer().dropMessage(1, "ไม่สามารถอัพเกรดได้อีก");
+               this.c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธฑเธเน€เธเธฃเธ”เนเธ”เนเธญเธตเธ");
                this.c.getSession().writeAndFlush(CWvsContext.enableActions(this.c.getPlayer()));
                return;
             }
@@ -3362,7 +3362,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                "Storage slots increased. Current storage slots: " + this.getPlayer().getStorage().getSlots() + ".");
          return true;
       } else {
-         this.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มช่องได้อีก");
+         this.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธเนเธญเธเนเธ”เนเธญเธตเธ");
          return false;
       }
    }
@@ -3485,7 +3485,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (test2 == null) {
             this.c.getPlayer().send(CField.UIPacket.openUI(164));
          } else {
-            this.c.getPlayer().dropMessage(1, "Thief ต้องถอดอาวุธรอง/โล่/ใบมีดออกก่อน");
+            this.c.getPlayer().dropMessage(1,
+                  "Thief เธ•เนเธญเธเธ–เธญเธ”เธญเธฒเธงเธธเธเธฃเธญเธ/เนเธฅเน/เนเธเธกเธตเธ”เธญเธญเธเธเนเธญเธ");
          }
       }
    }
@@ -3667,7 +3668,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                   + ")");
       LoggingManager.putLog(new ConsumeLog(this.c.getPlayer(), 1, sb));
       String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
-      this.getPlayer().dropMessage(5, "เสีย 4,000 " + cashName + ".");
+      this.getPlayer().dropMessage(5, "เน€เธชเธตเธข 4,000 " + cashName + ".");
       if (itemID == 0) {
          this.sendSimple(
                "Unfortunately, you didn't get anything from the #bFairy Bro's Golden Box#k... Better luck next time!\r\n\r\n#L0#Open again.#l");
@@ -3835,7 +3836,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             }
 
             this.c.getPlayer().updateOneInfo(1234590, "dojang_point_get", "1");
-            this.c.getPlayer().dropMessage(5, "ได้รับ " + point + " points.");
+            this.c.getPlayer().dropMessage(5, "เนเธ”เนเธฃเธฑเธ " + point + " points.");
             this.c
                   .getPlayer()
                   .updateOneInfo(42003, "point", String
@@ -3873,7 +3874,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             this.dispose();
          }
       } else {
-         this.sendNext("You have already received your Mulung Dojo points.\r\nYou can only receive them once.");
+         this.sendNext("คุณได้รับแต้ม Mu Lung Dojo ไปแล้ว\\r\\nสามารถรับได้เพียงครั้งเดียวเท่านั้น");
          this.dispose();
       }
    }
@@ -3926,7 +3927,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          if (rank <= 0) {
             DojangMyRanking ranking = DojangRanking.getLastWeekMyRank(0, this.c.getPlayer().getName());
             if (ranking != null && ranking.getRank() != 0) {
-               this.sendNext("Unfortunately, you were ranked " + ranking.getRank()
+               this.sendNext("น่าเสียดาย คุณได้อันดับที่ " + ranking.getRank()
                      + " last week, so you are not eligible for a reward.\r\nI hope you work harder and get better results.");
                this.dispose();
                return;
@@ -3966,7 +3967,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          if (!this.canHold(3700525, 1)) {
-            this.sendNext("Please make some space in your inventory and try again.");
+            this.sendNext("โปรดทำช่องว่างในกระเป๋าให้ว่างแล้วลองใหม่อีกครั้ง");
             this.dispose();
             return;
          }
@@ -3977,7 +3978,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700525;
          } else {
             if (rank < 2 || rank > 5) {
-               this.sendNext("You don't seem to be eligible for a reward.");
+               this.sendNext("ดูเหมือนว่าคุณจะไม่มีสิทธิ์รับรางวัล");
                this.dispose();
                return;
             }
@@ -3986,14 +3987,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          this.c.getPlayer().gainItem(itemID, 1, false, 0L, "Item obtained from Mulung Dojo Ranker Reward");
-         this.sendNext("Reward distributed. This item can be used until #bSaturday 23:59#k. Use it well.");
+         this.sendNext("แจกรางวัลแล้ว ไอเทมนี้ใช้ได้ถึง #bวันเสาร์ 23:59 น.#k ขอให้ใช้ให้คุ้มค่า");
          this.dispose();
       } else {
          int rankx = this.c.getPlayer().getOneInfoQuestInteger(1234590, "dojang_reward");
          if (rankx <= 0) {
             DojangMyRanking rankingx = DojangRanking.getLastWeekMyRank(2, this.c.getPlayer().getName());
             if (rankingx != null && rankingx.getRank() != 0) {
-               this.sendNext("Unfortunately, you were ranked " + rankingx.getRank()
+               this.sendNext("น่าเสียดาย คุณได้อันดับที่ " + rankingx.getRank()
                      + " last week, so you are not eligible for a reward.\r\nI hope you work harder and get better results.");
                this.dispose();
                return;
@@ -4026,14 +4027,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          int vx = this.c.getPlayer().getOneInfoQuestInteger(1234590, "dojang_reward_get");
          if (vx > 0) {
-            this.sendNext("You already received the rank " + rankx
+            this.sendNext("คุณได้รับรางวัลอันดับ " + rankx
                   + " reward.\r\nYou can only receive the ranker reward once.");
             this.dispose();
             return;
          }
 
          if (!this.canHold(3700525, 1)) {
-            this.sendNext("Please make some space in your inventory and try again.");
+            this.sendNext("โปรดทำช่องว่างในกระเป๋าให้ว่างแล้วลองใหม่อีกครั้ง");
             this.dispose();
             return;
          }
@@ -4044,7 +4045,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
             itemID = 3700526;
          } else {
             if (rankx < 2 || rankx > 5) {
-               this.sendNext("You don't seem to be eligible for a reward.");
+               this.sendNext("ดูเหมือนว่าคุณจะไม่มีสิทธิ์รับรางวัล");
                this.dispose();
                return;
             }
@@ -4053,7 +4054,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
 
          this.c.getPlayer().gainItem(itemID, 1, false, 0L, "Item obtained from Mulung Dojo Ranker Reward");
-         this.sendNext("Reward distributed. This item can be used until #bSaturday 23:59#k. Use it well.");
+         this.sendNext("แจกรางวัลแล้ว ไอเทมนี้ใช้ได้ถึง #bวันเสาร์ 23:59 น.#k ขอให้ใช้ให้คุ้มค่า");
          this.dispose();
       }
    }
@@ -4157,14 +4158,14 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (equip == null) {
-         this.sendNext("An unknown error has occurred.");
+         this.sendNext("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
          this.dispose();
          return -1;
       } else {
          int weaponID = equip.getItemId() + 1;
          Equip genesis = (Equip) ii.getEquipById(weaponID);
          if (genesis == null) {
-            this.sendNext("An unknown error has occurred.");
+            this.sendNext("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
             this.dispose();
             return -1;
          } else {
@@ -4204,7 +4205,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       }
 
       if (equip == null) {
-         this.sendNext("An unknown error has occurred.");
+         this.sendNext("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
          this.dispose();
       } else {
          int weaponID = equip.getItemId();
@@ -4496,7 +4497,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          return false;
       } else {
          this.c.getPlayer().updateOneInfo(1235858, "praise", "1");
-         this.sendNext("You praised #b" + toName + "#k. ได้รับ #e500 Praise Points#n.");
+         this.sendNext("You praised #b" + toName + "#k. เนเธ”เนเธฃเธฑเธ #e500 Praise Points#n.");
          this.dispose();
          return true;
       }
@@ -4994,7 +4995,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
 
          var25 = false;
       } catch (SQLException var21) {
-         this.sendNext("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+         this.sendNext("เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
          this.dispose();
          return false;
       } finally {
@@ -5681,7 +5682,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+      this.c.getPlayer().dropMessage(5,
+            "เธกเธตเธเธนเนเน€เธเนเธฒเธฃเนเธงเธกเธกเธฒเธเน€เธเธดเธเนเธเนเธเธเธ“เธฐเธเธตเน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
    }
 
    public void enterMission2Space() {
@@ -5693,7 +5695,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+      this.c.getPlayer().dropMessage(5,
+            "เธกเธตเธเธนเนเน€เธเนเธฒเธฃเนเธงเธกเธกเธฒเธเน€เธเธดเธเนเธเนเธเธเธ“เธฐเธเธตเน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
    }
 
    public void enterExtremeRail() {
@@ -5705,7 +5708,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
          }
       }
 
-      this.c.getPlayer().dropMessage(5, "มีผู้เข้าร่วมมากเกินไปในขณะนี้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+      this.c.getPlayer().dropMessage(5,
+            "เธกเธตเธเธนเนเน€เธเนเธฒเธฃเนเธงเธกเธกเธฒเธเน€เธเธดเธเนเธเนเธเธเธ“เธฐเธเธตเน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
    }
 
    public int getRecoveryExtremePointWeek() {
@@ -5771,7 +5775,7 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                this.getPlayer().setGetExtremeRealCash(canCount);
                this.getPlayer().gainRealCash(p);
                String cashName = DBConfig.isGanglim ? "Donation Cash" : "Ganglim Point";
-               this.getPlayer().dropMessage(5, "ได้รับ " + p + " " + cashName + ".");
+               this.getPlayer().dropMessage(5, "เนเธ”เนเธฃเธฑเธ " + p + " " + cashName + ".");
                return p;
             }
 

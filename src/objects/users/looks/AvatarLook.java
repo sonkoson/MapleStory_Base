@@ -1,4 +1,4 @@
-package objects.users.looks;
+﻿package objects.users.looks;
 
 import constants.GameConstants;
 import database.DBConnection;

@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.awt.Color;
 import java.nio.charset.Charset;
@@ -221,7 +221,7 @@ public class StringUtil {
 
       for (int i = 0; i < in.length(); i++) {
          char c = in.charAt(i);
-         if ('가' <= c && c <= '힣') {
+         if ('๊ฐ€' <= c && c <= 'ํฃ') {
             sb.append(c);
          }
       }

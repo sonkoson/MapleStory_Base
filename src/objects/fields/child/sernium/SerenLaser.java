@@ -1,4 +1,4 @@
-package objects.fields.child.sernium;
+﻿package objects.fields.child.sernium;
 
 import network.encode.PacketEncoder;
 

@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +15,7 @@ public class MD5Tool {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             byte[] digest = md5.digest(text.getBytes(StandardCharsets.UTF_8));
 
-            // convert each byte to two‑digit hex
+            // convert each byte to twoโ€‘digit hex
             StringBuilder sb = new StringBuilder(digest.length * 2);
             for (byte b : digest) {
                 sb.append(String.format("%02x", b & 0xff));

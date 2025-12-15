@@ -1,4 +1,4 @@
-package objects.users.potential;
+﻿package objects.users.potential;
 
 import database.DBConnection;
 import database.DBEventManager;

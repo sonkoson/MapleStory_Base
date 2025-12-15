@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -263,7 +263,7 @@ public class MapleInventory implements Iterable<Item>, Serializable {
             } catch (Exception var8) {
                FileoutputUtil.log(
                   "./TextLog/GiveItemLog.txt",
-                  "removeItem 중 아이템 추가지급 발생 : (itemId : "
+                  "removeItem ์ค‘ ์•์ดํ… ์ถ”๊ฐ€์ง€๊ธ ๋ฐ์ : (itemId : "
                      + item.getItemId()
                      + ", quantity : "
                      + quantity

@@ -1,4 +1,4 @@
-package objects.context.friend;
+﻿package objects.context.friend;
 
 import constants.devtempConstants.DummyCharacterName;
 import database.DBConnection;
@@ -143,7 +143,7 @@ public class Friend implements Serializable {
                }
 
                if (!buddyname.isEmpty()) {
-                  this.pendingRequests.push(new CharacterNameAndId(playerID, buddyid, buddyname, 200, 6512, "그룹 미지정", ""));
+                  this.pendingRequests.push(new CharacterNameAndId(playerID, buddyid, buddyname, 200, 6512, "๊ทธ๋ฃน ๋ฏธ์ง€์ •", ""));
                }
             } else {
                String buddyname = rs.getString("buddyname");
@@ -185,7 +185,7 @@ public class Friend implements Serializable {
                }
 
                if (!buddyname.isEmpty()) {
-                  this.put(new FriendEntry(buddyname, buddyid, buddyid, "그룹 미지정", -1, true, 200, 6512, ""));
+                  this.put(new FriendEntry(buddyname, buddyid, buddyid, "๊ทธ๋ฃน ๋ฏธ์ง€์ •", -1, true, 200, 6512, ""));
                }
             }
          }

@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

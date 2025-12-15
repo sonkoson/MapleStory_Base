@@ -1,4 +1,4 @@
-package network.discordbot.processor;
+﻿package network.discordbot.processor;
 
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
@@ -13,7 +13,7 @@ public class DiscordBotProcessor {
    public static void sendGlobalNotice(PacketDecoder slea) {
       String name = slea.readMapleAsciiString();
       String msg = slea.readMapleAsciiString();
-      Center.Broadcast.broadcastMessage(CField.chatMsg(28, "[디스코드] " + name + " : " + msg));
+      Center.Broadcast.broadcastMessage(CField.chatMsg(28, "[๋””์ค์ฝ”๋“] " + name + " : " + msg));
    }
 
    public static void registerAccount(PacketDecoder slea) {
@@ -67,10 +67,10 @@ public class DiscordBotProcessor {
       encoder.writeShort(101);
       if (AutoRegister.getAccountExists(id)) {
          encoder.write(1);
-         encoder.writeMapleAsciiString("가입하려는 ID가 이미 존재하는 ID입니다. 다시 시도해주세요.");
+         encoder.writeMapleAsciiString("๊ฐ€์…ํ•๋ ค๋” ID๊ฐ€ ์ด๋ฏธ ์กด์ฌํ•๋” ID์…๋๋ค. ๋ค์ ์๋ํ•ด์ฃผ์ธ์”.");
       } else if (AutoRegister.createAccount(id, pw, Long.parseLong(discordid), phoneNumber)) {
          encoder.write(0);
-         encoder.writeMapleAsciiString("가입에 성공했습니다.\r\n ID : " + id);
+         encoder.writeMapleAsciiString("๊ฐ€์…์— ์ฑ๊ณตํ–์ต๋๋ค.\r\n ID : " + id);
       }
 
       encoder.writeMapleAsciiString(discordid);
@@ -122,10 +122,10 @@ public class DiscordBotProcessor {
       encoder.writeShort(105);
       if (AutoRegister.updateAccount(id, pw, Long.parseLong(discordid), phoneNumber)) {
          encoder.write(0);
-         encoder.writeMapleAsciiString("계정 연결에 성공했습니다.\r\n ID : " + id);
+         encoder.writeMapleAsciiString("๊ณ์ • ์—ฐ๊ฒฐ์— ์ฑ๊ณตํ–์ต๋๋ค.\r\n ID : " + id);
       } else {
          encoder.write(1);
-         encoder.writeMapleAsciiString("알 수 없는 오류로 계정 연결에 실패했습니다.");
+         encoder.writeMapleAsciiString("์• ์ ์—๋” ์ค๋ฅ๋ก ๊ณ์ • ์—ฐ๊ฒฐ์— ์คํจํ–์ต๋๋ค.");
       }
 
       encoder.writeMapleAsciiString(discordid);

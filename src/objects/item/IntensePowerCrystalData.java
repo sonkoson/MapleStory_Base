@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public class IntensePowerCrystalData {
    private int realMonster;

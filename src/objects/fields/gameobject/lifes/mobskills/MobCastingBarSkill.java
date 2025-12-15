@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes.mobskills;
+﻿package objects.fields.gameobject.lifes.mobskills;
 
 public enum MobCastingBarSkill {
    Start(0),

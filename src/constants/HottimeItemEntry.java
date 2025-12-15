@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 public class HottimeItemEntry {
    private long time = 0L;

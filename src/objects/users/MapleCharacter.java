@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import com.google.common.collect.UnmodifiableIterator;
 import constants.ArcaneStoryQuests;
@@ -824,9 +824,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    boolean dominant = false;
    int[] equipList = new int[] { 1012643, 1022289, 1132311, 1162079, 1113307, 1122431, 1032314, 1182282, 1190544,
          1022282, 1022286, 1132399 };
-   String[] questType = new String[] { "수집", "처치" };
-   String[] questType2 = new String[] { "개", "마리" };
-   String[] grades = new String[] { "스카웃", "서전트", "가디언", "마스터", "커맨더", "슈프림" };
+   String[] questType = new String[] { "์์ง‘", "์ฒ์น" };
+   String[] questType2 = new String[] { "๊ฐ", "๋ง๋ฆฌ" };
+   String[] grades = new String[] { "์ค์นด์", "์์ ํธ", "๊ฐ€๋””์–ธ", "๋ง์คํฐ", "์ปค๋งจ๋”", "์ํ”๋ฆผ" };
    public long lastUpdateUnionRaid = 0L;
    private int autoChargeSkillID = 0;
    private int autoChargeMaxStack = 0;
@@ -1416,7 +1416,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                ret.meso = Center.ServerSave.characterMesoMap.get(charid);
             }
          } catch (Exception var44) {
-            FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf", "서버 메모리 로드 실패", var44);
+            FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf", "์๋ฒ ๋ฉ”๋ชจ๋ฆฌ ๋ก๋“ ์คํจ",
+                  var44);
          }
 
          ret.skinColor = rs.getInt("skincolor");
@@ -2310,7 +2311,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         Integer.parseInt(skinNum),
                         GameConstants.getDamageSkinItemID(Integer.parseInt(skinNum)),
                         false,
-                        ServerConstants.serverName + " 데미지 스킨 정보이다.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n");
+                        ServerConstants.serverName + " ๋ฐ๋ฏธ์ง€ ์คํจ ์ •๋ณด์ด๋ค.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n");
                   damageSkinInfo.putDamageSkinData(d);
                }
             }
@@ -3107,8 +3108,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         this.getId(),
                         this.getAccountID(),
                         10,
-                        new StringBuilder(this.getName() + " 캐릭터 DB저장 실패 flag1 : " + flag1 + " , flag2 : " + flag2
-                              + " 시간차이 : " + delta)));
+                        new StringBuilder(
+                              this.getName() + " ์บ๋ฆญํฐ DB์ €์ฅ ์คํจ flag1 : " + flag1 + " , flag2 : " + flag2
+                                    + " ์๊ฐ์ฐจ์ด : " + delta)));
          }
       }
    }
@@ -5709,7 +5711,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
          Center.GameWaitQueue.deleteQueue(this);
          if (!this.getClient().isGm() && to.getId() >= 180000000 && to.getId() <= 180009999) {
-            this.ban("맵 이동핵", true, true, true);
+            this.ban("๋งต ์ด๋ํ•ต", true, true, true);
             this.serialBan(false);
             this.getClient().disconnect(true);
             return;
@@ -6037,11 +6039,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       if (this.challenge != 0 && this.client.getChannelServer() != null) {
          MapleCharacter chr = this.client.getChannelServer().getPlayerStorage().getCharacterById(this.challenge);
          if (chr != null) {
-            chr.dropMessage(6, this.getName() + " has denied your request.");
+            chr.dropMessage(6, this.getName() + " ปฏิเสธคำขอท้าดวล");
             chr.setChallenge(0);
          }
 
-         this.dropMessage(6, "Denied the challenge.");
+         this.dropMessage(6, "ปฏิเสธคำขอท้าดวล");
          this.challenge = 0;
       }
    }
@@ -6496,31 +6498,31 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case 92000000:
                   this.changeProfessionLevelExp(id, ret + 1, 0, (byte) 10);
                   this.traits.get(MapleTrait.MapleTraitType.sense).addExp(traitGain, this);
-                  name = "약초채집";
+                  name = "์•ฝ์ด์ฑ์ง‘";
                   break;
                case 92010000:
                   this.changeProfessionLevelExp(id, ret + 1, 0, (byte) 10);
                   this.traits.get(MapleTrait.MapleTraitType.will).addExp(traitGain, this);
-                  name = "채광";
+                  name = "์ฑ๊ด‘";
                   break;
                case 92020000:
                   this.changeProfessionLevelExp(id, ret + 1, 0, (byte) 12);
                   this.traits.get(MapleTrait.MapleTraitType.craft).addExp(traitGain, this);
-                  name = "장비제작";
+                  name = "์ฅ๋น์ ์‘";
                   break;
                case 92030000:
                   this.changeProfessionLevelExp(id, ret + 1, 0, (byte) 12);
                   this.traits.get(MapleTrait.MapleTraitType.craft).addExp(traitGain, this);
-                  name = "장신구제작";
+                  name = "์ฅ์ ๊ตฌ์ ์‘";
                   break;
                case 92040000:
                   this.changeProfessionLevelExp(id, ret + 1, 0, (byte) 12);
                   this.traits.get(MapleTrait.MapleTraitType.craft).addExp(traitGain, this);
-                  name = "연금술";
+                  name = "์—ฐ๊ธ์ ";
             }
 
             AchievementFactory.checkMakingskillLvup(this, id, ret + 1);
-            this.dropMessage(-5, name + " เลเวลเพิ่มขึ้นแล้ว");
+            this.dropMessage(-5, name + " เน€เธฅเน€เธงเธฅเน€เธเธดเนเธกเธเธถเนเธเนเธฅเนเธง");
             return true;
          } else {
             return false;
@@ -7053,7 +7055,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          if (!this.stats.checkEquipDurabilitys(this, -100)) {
-            this.dropMessage(5, "An item has run out of durability but has no inventory room to go to.");
+            this.dropMessage(5, "ความทนทานของไอเทมหมดลง แต่ไม่มีพื้นที่ว่างในช่องเก็บของ");
          }
 
          if (this.pyramidSubway != null) {
@@ -7385,7 +7387,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
          if (quantity < 0 && this.getChangeEmotionTime() != 0L
                && System.currentTimeMillis() - this.getChangeEmotionTime() <= 2000L) {
-            this.ban("아이템 복사 시도로 인한 영구 정지", true, true, true);
+            this.ban("์•์ดํ… ๋ณต์ฌ ์๋๋ก ์ธํ• ์๊ตฌ ์ •์ง€", true, true, true);
             return;
          }
 
@@ -7410,7 +7412,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                item.setUniqueId(MapleInventoryIdentifier.getInstance());
             }
 
-            item.setGMLog(StringUtil.getAllCurrentTime() + "에 " + gm_log);
+            item.setGMLog(StringUtil.getAllCurrentTime() + "์— " + gm_log);
             MapleInventoryManipulator.addbyItem(this.client, item);
          } else {
             MapleInventoryManipulator.addById(
@@ -7423,7 +7425,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   StringUtil.getAllCurrentTime()
                         + "?????? "
                         + this.getName()
-                        + "???????????? ?멨????????占? gainItem ???????у???????멨?????? ???????????? ??????????????????.");
+                        + "???????????? ?๋ฉจ????????ๅ ? gainItem ???????ั???????๋ฉจ?????? ???????????? ??????????????????.");
          }
       } else {
          MapleInventoryManipulator.removeById(this.client, GameConstants.getInventoryType(id), id, -quantity, true,
@@ -7463,7 +7465,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
             for (Skill zx : this.pendingSkills.keySet()) {
                this.client.getSession().writeAndFlush(CWvsContext.serverNotice(5,
-                     "[" + SkillFactory.getSkillName(zx.getId()) + "] 스킬이 유효기간이 만료되어 사라졌습니다."));
+                     "[" + SkillFactory.getSkillName(zx.getId())
+                           + "] ์คํฌ์ด ์ ํจ๊ธฐ๊ฐ์ด ๋ง๋ฃ๋์–ด ์ฌ๋ผ์ก์ต๋๋ค."));
             }
          }
 
@@ -7487,8 +7490,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      Item eqp = shield.copy();
                      cabinet.addCabinetItem(
                            new MapleCabinetItem(
-                                 cabinet.getNextIndex(), System.currentTimeMillis() + 2678400000L, "[두손무기 방패 착용]",
-                                 "두손무기에 방패 착용 오류로 인하여 장착 해제된 아이템입니다.", eqp));
+                                 cabinet.getNextIndex(), System.currentTimeMillis() + 2678400000L,
+                                 "[๋‘์๋ฌด๊ธฐ ๋ฐฉํจ ์ฐฉ์ฉ]",
+                                 "๋‘์๋ฌด๊ธฐ์— ๋ฐฉํจ ์ฐฉ์ฉ ์ค๋ฅ๋ก ์ธํ•์—ฌ ์ฅ์ฐฉ ํ•ด์ ๋ ์•์ดํ…์…๋๋ค.",
+                                 eqp));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                      this.setUnequipShield(true);
@@ -7509,8 +7514,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            new MapleCabinetItem(
                                  cabinet.getNextIndex(),
                                  System.currentTimeMillis() + 2678400000L,
-                                 "[한벌옷 하의 캐시장비 장착 오류]",
-                                 "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해제된 아이템입니다.",
+                                 "[ํ•๋ฒ์ท ํ•์ ์บ์์ฅ๋น ์ฅ์ฐฉ ์ค๋ฅ]",
+                                 "ํ•๋ฒ์ท์— ํ•์ ์บ์์ฅ๋น ์ค‘๋ณต ์ฅ์ฐฉ ์ค๋ฅ๋ก ์ธํ•์—ฌ ์ฅ์ฐฉ ํ•ด์ ๋ ์•์ดํ…์…๋๋ค.",
                                  eqp));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
@@ -7532,8 +7537,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            new MapleCabinetItem(
                                  cabinet.getNextIndex(),
                                  System.currentTimeMillis() + 2678400000L,
-                                 "[한벌옷 하의 캐시장비 장착 오류]",
-                                 "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해제된 아이템입니다.",
+                                 "[ํ•๋ฒ์ท ํ•์ ์บ์์ฅ๋น ์ฅ์ฐฉ ์ค๋ฅ]",
+                                 "ํ•๋ฒ์ท์— ํ•์ ์บ์์ฅ๋น ์ค‘๋ณต ์ฅ์ฐฉ ์ค๋ฅ๋ก ์ธํ•์—ฌ ์ฅ์ฐฉ ํ•ด์ ๋ ์•์ดํ…์…๋๋ค.",
                                  eqp));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
@@ -7555,8 +7560,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            new MapleCabinetItem(
                                  cabinet.getNextIndex(),
                                  System.currentTimeMillis() + 2678400000L,
-                                 "[한벌옷 하의 캐시장비 장착 오류]",
-                                 "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해제된 아이템입니다.",
+                                 "[ํ•๋ฒ์ท ํ•์ ์บ์์ฅ๋น ์ฅ์ฐฉ ์ค๋ฅ]",
+                                 "ํ•๋ฒ์ท์— ํ•์ ์บ์์ฅ๋น ์ค‘๋ณต ์ฅ์ฐฉ ์ค๋ฅ๋ก ์ธํ•์—ฌ ์ฅ์ฐฉ ํ•ด์ ๋ ์•์ดํ…์…๋๋ค.",
                                  eqp));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
@@ -7848,9 +7853,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
             String str;
             if (count == 6) {
-               str = "오늘의 미션을 전부 클리어 하셨습니다.";
+               str = "์ค๋์ ๋ฏธ์…์ ์ ๋ถ€ ํด๋ฆฌ์–ด ํ•์…จ์ต๋๋ค.";
             } else {
-               str = "일일 미션 " + (count + 1) + "개 완료! " + (count + 1) + "번째 상자를 클릭하세요!";
+               str = "์ผ์ผ ๋ฏธ์… " + (count + 1) + "๊ฐ ์๋ฃ! " + (count + 1)
+                     + "๋ฒ์งธ ์์๋ฅผ ํด๋ฆญํ•์ธ์”!";
             }
 
             this.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "M" + index, "1");
@@ -7949,7 +7955,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                if (this.getOneInfoQuestInteger(questID, "Clear") == 1 && maxCount > kCount) {
                   int newCount = kCount + count;
                   this.updateOneInfo(questID, "Count", String.valueOf(newCount));
-                  this.send(CWvsContext.getScriptProgressMessage("레벨 범위 몬스터 " + newCount + " / " + maxCount));
+                  this.send(
+                        CWvsContext.getScriptProgressMessage("๋ ๋ฒจ ๋ฒ”์ ๋ชฌ์คํฐ " + newCount + " / " + maxCount));
                }
             }
          }
@@ -7989,16 +7996,21 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.updateOneInfo(3887, "point", String.valueOf(point.getPoint()));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag());
                this.dropMessage(5, "[Praise Point Daily Quest] กำจัดมอนสเตอร์ในระดับเลเวล 15,000 ตัว เพื่อรับ 100 Praise Point");
-               this.dropMessage(5,
-                     "[Praise Point Daily Quest] วันนี้ " + clearCount + "เคลียร์ไปแล้ว ครั้ง " + (20 - clearCount) + "번 더 클리어 하실 수 있습니다.");
+               this.dropMessage(5, "[Praise Point Daily Quest] วันนี้ " + clearCount + " เคลียร์ไปแล้ว " + (20 - clearCount) + " ครั้ง สามารถเคลียร์เพิ่มได้");
+
+
+
+
             }
 
             this.updateOneInfo(questId, "praise_dailyQuest_ClearCount", String.valueOf(clearCount), false);
             this.updateOneInfo(questId, "praise_dailyQuest_MobCount", String.valueOf(mobCount), false);
             if (clearCount >= 20) {
+            if (clearCount >= 20) {
                this.dropMessage(-7, "Praise Point Daily Quest ของวันนี้เสร็จสิ้นทั้งหมดแล้ว");
             } else {
-               this.dropMessage(-7, "[Praise Point Daily Quest (" + clearCount + "/20)] 레벨 범위 몬스터 " + mobCount + "/15000");
+               this.dropMessage(-7, "[Praise Point Daily Quest (" + clearCount + "/20)] กำจัดมอนสเตอร์ระดับที่กำหนด " + mobCount + "/15000");
+            }
             }
          }
       }
@@ -8408,21 +8420,24 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   MapleCabinet cabinet = this.getCabinet();
                   if (cabinet == null) {
                      this.dropMessage(5,
-                           "เกิดข้อผิดพลาดในการเปิดกล่องของขวัญ ทำให้ไม่ได้รับรางวัลเลเวล 300 กรุณาแจ้ง GM เพื่อรับไอเทม");
+                           "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเน€เธเธดเธ”เธเธฅเนเธญเธเธเธญเธเธเธงเธฑเธ เธ—เธณเนเธซเนเนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 300 เธเธฃเธธเธ“เธฒเนเธเนเธ GM เน€เธเธทเนเธญเธฃเธฑเธเนเธญเน€เธ—เธก");
                   } else {
                      SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                      String fDate = sdf.format(System.currentTimeMillis());
                      Item item = new Item(3014042, (short) 0, (short) 1, 0);
-                     item.setGMLog(CurrentTime.getAllCurrentTime() + "에 300레벨 달성 보상으로 지급된 아이템.");
+                     item.setGMLog(
+                           CurrentTime.getAllCurrentTime() + "์— 300๋ ๋ฒจ ๋ฌ์ฑ ๋ณด์์ผ๋ก ์ง€๊ธ๋ ์•์ดํ….");
                      cabinet.addCabinetItem(
                            new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L,
-                                 "[GM 선물]", fDate + "에 레벨보상으로 지급된 아이템입니다.", item));
+                                 "[GM ์ ๋ฌผ]", fDate + "์— ๋ ๋ฒจ๋ณด์์ผ๋ก ์ง€๊ธ๋ ์•์ดํ…์…๋๋ค.", item));
                      this.send(CField.maplecabinetResult(8));
                      this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                     this.dropMessage(5, "[Notice] ของขวัญเลเวล 300 มาถึงแล้ว กรุณารับที่ Maple Cabinet");
+                     this.dropMessage(5,
+                           "[Notice] เธเธญเธเธเธงเธฑเธเน€เธฅเน€เธงเธฅ 300 เธกเธฒเธ–เธถเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน Maple Cabinet");
                   }
                } catch (Exception var34) {
-                  this.dropMessage(5, "เกิดข้อผิดพลาดในการเปิดกล่องของขวัญ ทำให้ไม่ได้รับรางวัลเลเวล 300 กรุณาแจ้ง GM เพื่อรับไอเทม");
+                  this.dropMessage(5,
+                        "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเน€เธเธดเธ”เธเธฅเนเธญเธเธเธญเธเธเธงเธฑเธ เธ—เธณเนเธซเนเนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 300 เธเธฃเธธเธ“เธฒเนเธเนเธ GM เน€เธเธทเนเธญเธฃเธฑเธเนเธญเน€เธ—เธก");
                   var34.printStackTrace();
                }
             }
@@ -8439,7 +8454,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
                   Date resultdate = new Date(System.currentTimeMillis());
                   System.err
-                        .println("Error updating levelup timestamp. Name : " + this.getName() + " 시간 : " + sdf.format(resultdate));
+                        .println("Error updating levelup timestamp. Name : " + this.getName() + " ์๊ฐ : "
+                              + sdf.format(resultdate));
                   var38.printStackTrace();
                }
             } catch (SQLException var40) {
@@ -8451,13 +8467,15 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (this.accountTotalLevel >= 500 && !DBConfig.isGanglim) {
             if (this.getGuild() != null && this.getGuildId() == 9999) {
                Center.Guild.leaveGuild(this.getMGC());
-               this.send(CField.addPopupSay(9062000, 5000, "계정 내 통합레벨이 500을 넘어 계정 내 모든 캐릭터가 #b초보자A#k길드에서 자동으로 탈퇴되었습니다.",
+               this.send(CField.addPopupSay(9062000, 5000,
+                     "๊ณ์ • ๋ด ํตํ•ฉ๋ ๋ฒจ์ด 500์ ๋์–ด ๊ณ์ • ๋ด ๋ชจ๋“  ์บ๋ฆญํฐ๊ฐ€ #b์ด๋ณด์A#k๊ธธ๋“์—์ ์๋์ผ๋ก ํํด๋์—์ต๋๋ค.",
                      ""));
             }
 
             if (this.getGuild() != null && this.getGuildId() == 10000) {
                Center.Guild.leaveGuild(this.getMGC());
-               this.send(CField.addPopupSay(9062000, 5000, "계정 내 통합레벨이 500을 넘어 계정 내 모든 캐릭터가 #b초보자B#k길드에서 자동으로 탈퇴되었습니다.",
+               this.send(CField.addPopupSay(9062000, 5000,
+                     "๊ณ์ • ๋ด ํตํ•ฉ๋ ๋ฒจ์ด 500์ ๋์–ด ๊ณ์ • ๋ด ๋ชจ๋“  ์บ๋ฆญํฐ๊ฐ€ #b์ด๋ณด์B#k๊ธธ๋“์—์ ์๋์ผ๋ก ํํด๋์—์ต๋๋ค.",
                      ""));
             }
 
@@ -8489,12 +8507,16 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (this.level >= 220 && !DBConfig.isGanglim) {
             if (this.getGuild() != null && this.getGuildId() == 9999) {
                Center.Guild.leaveGuild(this.getMGC());
-               this.send(CField.addPopupSay(9062000, 5000, "캐릭터의 레벨이 220을 넘어 #b초보자A#k길드에서 자동으로 탈퇴되었습니다.", ""));
+               this.send(CField.addPopupSay(9062000, 5000,
+                     "์บ๋ฆญํฐ์ ๋ ๋ฒจ์ด 220์ ๋์–ด #b์ด๋ณด์A#k๊ธธ๋“์—์ ์๋์ผ๋ก ํํด๋์—์ต๋๋ค.",
+                     ""));
             }
 
             if (this.getGuild() != null && this.getGuildId() == 10000) {
                Center.Guild.leaveGuild(this.getMGC());
-               this.send(CField.addPopupSay(9062000, 5000, "캐릭터의 레벨이 220을 넘어 #b초보자B#k길드에서 자동으로 탈퇴되었습니다.", ""));
+               this.send(CField.addPopupSay(9062000, 5000,
+                     "์บ๋ฆญํฐ์ ๋ ๋ฒจ์ด 220์ ๋์–ด #b์ด๋ณด์B#k๊ธธ๋“์—์ ์๋์ผ๋ก ํํด๋์—์ต๋๋ค.",
+                     ""));
             }
          }
 
@@ -8508,8 +8530,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          if (this.level == 10 & !DBConfig.isGanglim) {
-            this.dropMessage(5, "[Notice] ได้รับ Level-Appropriate Equipment Support Box ตรวจสอบช่อง Use");
-            this.gainItem(2430443, 1, false, -1L, "적정레벨 장비상자 아이템");
+            this.dropMessage(5,
+                  "[Notice] เนเธ”เนเธฃเธฑเธ Level-Appropriate Equipment Support Box เธ•เธฃเธงเธเธชเธญเธเธเนเธญเธ Use");
+            this.gainItem(2430443, 1, false, -1L, "์ ์ •๋ ๋ฒจ ์ฅ๋น์์ ์•์ดํ…");
          }
 
          if (this.level >= 30 && GameConstants.isYetiPinkBean(this.getJob())) {
@@ -8550,7 +8573,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (this.level >= 200) {
             if (this.getMap() instanceof Field_YutaGolden) {
                this.changeMap(ServerConstants.TownMap);
-               this.dropMessage(5, "[Notice] เลเวล 200 แล้ว ออกจาก Golden Fields");
+               this.dropMessage(5, "[Notice] เน€เธฅเน€เธงเธฅ 200 เนเธฅเนเธง เธญเธญเธเธเธฒเธ Golden Fields");
             }
 
             if (!DBConfig.isGanglim && this.getOneInfoQuestInteger(1234566, "get_symbol") == 0
@@ -8559,16 +8582,18 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                Item item = new Item(2630437, (short) 0, (short) 100, 0, MapleInventoryIdentifier.getInstance());
                MapleCabinet cabinet = this.getCabinet();
                if (cabinet != null) {
-                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
                   Calendar CAL = new GregorianCalendar(Locale.KOREA);
                   String fDate = sdf.format(CAL.getTime());
                   cabinet.addCabinetItem(
                         new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
-                              "[200레벨 보상]", fDate + "에 지급된 보상입니다.", item));
+                              "[200๋ ๋ฒจ ๋ณด์]", fDate + "์— ์ง€๊ธ๋ ๋ณด์์…๋๋ค.", item));
                   this.send(CField.maplecabinetResult(8));
                   this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                  this.dropMessage(5, "[Notice] ได้รับ Select Arcane Symbol Coupon 100 ใบ (รางวัลเลเวล 200) ตรวจสอบ [Maple Cabinet]");
-                  this.dropMessage(1, "ได้รับ Select Arcane Symbol Coupon 100 ใบ (รางวัลเลเวล 200)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
+                  this.dropMessage(5,
+                        "[Notice] เนเธ”เนเธฃเธฑเธ Select Arcane Symbol Coupon 100 เนเธ (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 200) เธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
+                  this.dropMessage(1,
+                        "เนเธ”เนเธฃเธฑเธ Select Arcane Symbol Coupon 100 เนเธ (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 200)\r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
                   this.updateOneInfo(1234566, "get_symbol", "1");
                   this.updateOneInfo(1234567, "get_symbol", "1");
                }
@@ -8587,7 +8612,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
          if (this.level == 275 && !this.isGM()) {
             if (!DBConfig.isGanglim) {
-               StringBuilder sb = new StringBuilder("[축하] ");
+               StringBuilder sb = new StringBuilder("[์ถ•ํ•] ");
                Item medal = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -46);
                if (medal != null) {
                   sb.append("<");
@@ -8596,7 +8621,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
 
                sb.append(this.getName());
-               sb.append(" 님이 레벨 " + this.level + "을(를) 달성했습니다! 모두 축하해 주세요.");
+               sb.append(" ๋์ด ๋ ๋ฒจ " + this.level + "์(๋ฅผ) ๋ฌ์ฑํ–์ต๋๋ค! ๋ชจ๋‘ ์ถ•ํ•ํ•ด ์ฃผ์ธ์”.");
                Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, sb.toString()));
             }
 
@@ -8605,27 +8630,31 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                Item item = new Item(3014028, (short) 0, (short) 1, 0, MapleInventoryIdentifier.getInstance());
                MapleCabinet cabinet = this.getCabinet();
                if (cabinet != null) {
-                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
                   Calendar CAL = new GregorianCalendar(Locale.KOREA);
                   String fDate = sdf.format(CAL.getTime());
                   cabinet.addCabinetItem(
                         new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
-                              "[275레벨 보상]", fDate + "에 지급된 보상입니다.", item));
+                              "[275๋ ๋ฒจ ๋ณด์]", fDate + "์— ์ง€๊ธ๋ ๋ณด์์…๋๋ค.", item));
                   this.send(CField.maplecabinetResult(8));
                   this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                   if (DBConfig.isGanglim) {
-                     this.send(CField.chatMsg(1, "ได้รับ Symbol of Brilliant Honor แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
-                     this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
+                     this.send(CField.chatMsg(1,
+                           "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]"));
+                     this.dropMessage(1,
+                           "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor เนเธฅเนเธง\r\nเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
                   } else {
-                     this.dropMessage(5, "[Notice] ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275) ตรวจสอบ [Maple Cabinet]");
-                     this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
+                     this.dropMessage(5,
+                           "[Notice] เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 275) เธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
+                     this.dropMessage(1,
+                           "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 275)\r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
                   }
 
                   this.updateOneInfo(1234566, "check_honor_chair", "1");
                }
             }
          } else if (this.level == 300 && !this.isGM() && !DBConfig.isGanglim) {
-            StringBuilder sb = new StringBuilder("[축하] ");
+            StringBuilder sb = new StringBuilder("[์ถ•ํ•] ");
             Item medal = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -46);
             if (medal != null) {
                sb.append("<");
@@ -8634,7 +8663,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
 
             sb.append(this.getName());
-            sb.append(" 님이 레벨 " + this.level + "을(를) 달성했습니다! 모두 축하해 주세요.");
+            sb.append(" ๋์ด ๋ ๋ฒจ " + this.level + "์(๋ฅผ) ๋ฌ์ฑํ–์ต๋๋ค! ๋ชจ๋‘ ์ถ•ํ•ํ•ด ์ฃผ์ธ์”.");
             Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, sb.toString()));
          }
 
@@ -8742,7 +8771,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                qs = this.getQuest(quest);
                if (quest != null && qs.getStatus() != 2) {
                   MapleQuest.getInstance(1542).forceComplete(this, 2003);
-                  this.send(CWvsContext.getScriptProgressMessage("[정령결속 극대화]를 통해 그리운 랑의 모습을 구현할 수 있게 되었습니다."));
+                  this.send(CWvsContext.getScriptProgressMessage(
+                        "[์ •๋ น๊ฒฐ์ ๊ทน๋€ํ”]๋ฅผ ํตํ•ด ๊ทธ๋ฆฌ์ด ๋‘์ ๋ชจ์ต์ ๊ตฌํํ•  ์ ์๊ฒ ๋์—์ต๋๋ค."));
                }
             }
          }
@@ -9226,7 +9256,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      case 0:
                         if (this.getJob() < 430) {
                            this.getClient().getSession()
-                                 .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑을 기억하는자] 세미듀어러로 전직하였습니다."));
+                                 .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                       "[์•”ํ‘์ ๊ธฐ์–ตํ•๋”์] ์ธ๋ฏธ๋“€์–ด๋ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                            this.changeJob(430);
                            return true;
                         }
@@ -9240,7 +9271,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15410":
                   if (this.getJob() < 15410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[칼리] 칼리로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[์นผ๋ฆฌ] ์นผ๋ฆฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15410);
                      return true;
                   }
@@ -9248,7 +9280,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "110":
                   if (this.getJob() < 110) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[양손검술의 기사] 파이터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์–‘์๊ฒ€์ ์ ๊ธฐ์ฌ] ํ์ดํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(110);
                      return true;
                   }
@@ -9256,7 +9289,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "120":
                   if (this.getJob() < 120) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[한손검술의 기사] 페이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ•์๊ฒ€์ ์ ๊ธฐ์ฌ] ํ์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(120);
                      return true;
                   }
@@ -9264,7 +9298,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "130":
                   if (this.getJob() < 130) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[창술의 기사] 스피어맨로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ฐฝ์ ์ ๊ธฐ์ฌ] ์คํ”ผ์–ด๋งจ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(130);
                      return true;
                   }
@@ -9272,7 +9307,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "210":
                   if (this.getJob() < 210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[불*독] 위자드로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[๋ถ*๋…] ์์๋“๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(210);
                      return true;
                   }
@@ -9280,7 +9316,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "220":
                   if (this.getJob() < 220) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[얼음*번개] 위자드로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์–ผ์*๋ฒ๊ฐ] ์์๋“๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(220);
                      return true;
                   }
@@ -9288,7 +9325,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "230":
                   if (this.getJob() < 230) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[힐*버프] 클레릭으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[ํ*๋ฒํ”] ํด๋ ๋ฆญ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(230);
                      return true;
                   }
@@ -9296,7 +9334,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "310":
                   if (this.getJob() < 310) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[사격수] 헌터로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[์ฌ๊ฒฉ์] ํ—ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(310);
                      return true;
                   }
@@ -9304,7 +9343,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "320":
                   if (this.getJob() < 320) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[명사수] 사수로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[๋ช…์ฌ์] ์ฌ์๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(320);
                      return true;
                   }
@@ -9312,7 +9352,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "330":
                   if (this.getJob() < 330) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[저주와 고대의 힘] 에인션트 아처로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ €์ฃผ์€ ๊ณ ๋€์ ํ] ์—์ธ์…ํธ ์•์ฒ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(330);
                      return true;
                   }
@@ -9320,7 +9361,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "410":
                   if (this.getJob() < 410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[표창 암살 입문기] 어쌔신로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ‘์ฐฝ ์•”์ด ์…๋ฌธ๊ธฐ] ์–ด์”์ ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(410);
                      return true;
                   }
@@ -9328,7 +9370,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "420":
                   if (this.getJob() < 420) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[단도 암살 입문기] 시프로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋จ๋ ์•”์ด ์…๋ฌธ๊ธฐ] ์ํ”๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(420);
                      return true;
                   }
@@ -9336,7 +9379,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "510":
                   if (this.getJob() < 510) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[너클 입문기] 인파이터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ํด ์…๋ฌธ๊ธฐ] ์ธํ์ดํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(510);
                      return true;
                   }
@@ -9344,7 +9388,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "520":
                   if (this.getJob() < 520) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[건 입문기] 건슬링거로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๊ฑด ์…๋ฌธ๊ธฐ] ๊ฑด์ฌ๋ง๊ฑฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(520);
                      return true;
                   }
@@ -9352,7 +9397,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "430":
                   if (this.getJob() < 431) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑 속의 과거] 듀어러로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•”ํ‘ ์์ ๊ณผ๊ฑฐ] ๋“€์–ด๋ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(431);
                      return true;
                   }
@@ -9360,7 +9406,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "530":
                   if (this.getJob() < 530) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[캐논 입문기] 캐논슈터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์บ๋…ผ ์…๋ฌธ๊ธฐ] ์บ๋…ผ์ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(530);
                      return true;
                   }
@@ -9368,7 +9415,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1110":
                   if (this.getJob() < 1110) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 입문기] 빛의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์…๋ฌธ๊ธฐ] ๋น์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1110);
                      return true;
                   }
@@ -9376,7 +9424,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1210":
                   if (this.getJob() < 1210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 입문기] 불의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์…๋ฌธ๊ธฐ] ๋ถ์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1210);
                      return true;
                   }
@@ -9384,7 +9433,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1310":
                   if (this.getJob() < 1310) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 입문기] 바람의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์…๋ฌธ๊ธฐ] ๋ฐ”๋์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1310);
                      return true;
                   }
@@ -9392,7 +9442,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1410":
                   if (this.getJob() < 1410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 입문기] 어둠의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์…๋ฌธ๊ธฐ] ์–ด๋‘ ์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1410);
                      return true;
                   }
@@ -9400,7 +9451,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1510":
                   if (this.getJob() < 1510) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 입문기] 번개의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์…๋ฌธ๊ธฐ] ๋ฒ๊ฐ์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1510);
                      return true;
                   }
@@ -9408,7 +9460,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2110":
                   if (this.getJob() < 2110) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 본능] 아란으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ณธ๋ฅ] ์•๋€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2110);
                      return true;
                   }
@@ -9416,7 +9469,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2210":
                   if (this.getJob() < 2211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[두번째 걸음] 에반으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋‘๋ฒ์งธ ๊ฑธ์] ์—๋ฐ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2211);
                      return true;
                   }
@@ -9424,7 +9478,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2310":
                   if (this.getJob() < 2310) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 본능] 메르세데스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๋ณธ๋ฅ] ๋ฉ”๋ฅด์ธ๋ฐ์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2310);
                      return true;
                   }
@@ -9432,7 +9487,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2410":
                   if (this.getJob() < 2410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 본능] 팬텀으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ณธ๋ฅ] ํฌํ…€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2410);
                      return true;
                   }
@@ -9440,7 +9496,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2510":
                   if (this.getJob() < 2510) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 본능] 은월으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ณธ๋ฅ] ์€์”์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2510);
                      return true;
                   }
@@ -9448,7 +9505,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2710":
                   if (this.getJob() < 2710) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 본능] 루미너스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๋ณธ๋ฅ] ๋ฃจ๋ฏธ๋์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2710);
                      return true;
                   }
@@ -9456,7 +9514,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3110":
                   if (this.getJob() < 3110) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 데몬슬레이어로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ๋ฐ๋ชฌ์ฌ๋ ์ด์–ด๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3110);
                      return true;
                   }
@@ -9464,7 +9523,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3120":
                   if (this.getJob() < 3120) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 데몬어벤져로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ๋ฐ๋ชฌ์–ด๋ฒค์ ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3120);
                      return true;
                   }
@@ -9472,7 +9532,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3210":
                   if (this.getJob() < 3210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 배틀메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ๋ฐฐํ€๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3210);
                      return true;
                   }
@@ -9480,7 +9541,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3310":
                   if (this.getJob() < 3310) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 와일드헌터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ์€์ผ๋“ํ—ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3310);
                      return true;
                   }
@@ -9488,7 +9550,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3510":
                   if (this.getJob() < 3510) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 메카닉으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ๋ฉ”์นด๋์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3510);
                      return true;
                   }
@@ -9496,7 +9559,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3610":
                   if (this.getJob() < 3610) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 제논으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ์ ๋…ผ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3610);
                      return true;
                   }
@@ -9504,7 +9568,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3710":
                   if (this.getJob() < 3710) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 입문기] 블래스터으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์…๋ฌธ๊ธฐ] ๋ธ”๋์คํฐ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3710);
                      return true;
                   }
@@ -9513,7 +9578,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 5110) {
                      this.removeAndChangeEquip(1098001, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 단장] 빛의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ๋จ์ฅ] ๋น์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(5110);
                      return true;
                   }
@@ -9522,7 +9588,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6110) {
                      this.removeAndChangeEquip(1352501, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바 수련생] 카이저로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋…ธ๋ฐ” ์๋ จ์] ์นด์ด์ €๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6110);
                      return true;
                   }
@@ -9530,7 +9597,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "6410":
                   if (this.getJob() < 6410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바 수련생] 카데나로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋…ธ๋ฐ” ์๋ จ์] ์นด๋ฐ๋๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6410);
                      return true;
                   }
@@ -9538,7 +9606,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15210":
                   if (this.getJob() < 15210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프 수련생] 일리움으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ํ” ์๋ จ์] ์ผ๋ฆฌ์€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15210);
                      return true;
                   }
@@ -9546,7 +9615,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15510":
                   if (this.getJob() < 15510) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프 수련생] 아크로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ” ์๋ จ์] ์•ํฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15510);
                      return true;
                   }
@@ -9555,7 +9625,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6510) {
                      this.removeAndChangeEquip(1352602, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바 수련생] 엔젤릭버스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋…ธ๋ฐ” ์๋ จ์] ์—”์ ค๋ฆญ๋ฒ์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6510);
                      return true;
                   }
@@ -9563,7 +9634,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "14210":
                   if (this.getJob() < 14210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[초능력의 깨달음] 키네시스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ด๋ฅ๋ ฅ์ ๊นจ๋ฌ์] ํค๋ค์์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(14210);
                      return true;
                   }
@@ -9571,7 +9643,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16410":
                   if (this.getJob() < 16410) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 수련생] 호영으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•๋๋ง ์๋ จ์] ํธ์์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16410);
                      return true;
                   }
@@ -9579,14 +9652,16 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15110":
                   if (this.getJob() < 15110) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프 수련생] 아델로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ” ์๋ จ์] ์•๋ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15110);
                      return true;
                   }
                case "6310":
                   if (this.getJob() < 6310) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바 수련생] 카인으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋…ธ๋ฐ” ์๋ จ์] ์นด์ธ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6310);
                      return true;
                   }
@@ -9594,7 +9669,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16210":
                   if (this.getJob() < 16210) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 수련생] 라라로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•๋๋ง ์๋ จ์] ๋ผ๋ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16210);
                      return true;
                   }
@@ -9614,7 +9690,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      case 0:
                         if (this.getJob() < 432) {
                            this.getClient().getSession()
-                                 .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑의 정체성] 듀얼마스터로 전직하였습니다."));
+                                 .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                       "[์•”ํ‘์ ์ •์ฒด์ฑ] ๋“€์–ผ๋ง์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                            this.changeJob(432);
                            return true;
                         }
@@ -9628,7 +9705,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15410":
                   if (this.getJob() < 15411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[칼리] 칼리로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[์นผ๋ฆฌ] ์นผ๋ฆฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15411);
                      return true;
                   }
@@ -9636,7 +9714,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "110":
                   if (this.getJob() < 111) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영혼 검술의 기사] 크루세이더로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ํผ ๊ฒ€์ ์ ๊ธฐ์ฌ] ํฌ๋ฃจ์ธ์ด๋”๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(111);
                      return true;
                   }
@@ -9644,7 +9723,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "120":
                   if (this.getJob() < 121) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[속성 검술의 기사] 나이트로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์ฑ ๊ฒ€์ ์ ๊ธฐ์ฌ] ๋์ดํธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(121);
                      return true;
                   }
@@ -9652,7 +9732,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "130":
                   if (this.getJob() < 131) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[드래곤 창술의 기사] 드래곤 나이트로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋“๋๊ณค ์ฐฝ์ ์ ๊ธฐ์ฌ] ๋“๋๊ณค ๋์ดํธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(131);
                      return true;
                   }
@@ -9660,7 +9741,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "210":
                   if (this.getJob() < 211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[불*독] 메이지로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[๋ถ*๋…] ๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(211);
                      return true;
                   }
@@ -9668,7 +9750,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "220":
                   if (this.getJob() < 221) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[얼음*번개] 메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์–ผ์*๋ฒ๊ฐ] ๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(221);
                      return true;
                   }
@@ -9676,7 +9759,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "230":
                   if (this.getJob() < 231) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[힐*버프] 프리스트로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[ํ*๋ฒํ”] ํ”๋ฆฌ์คํธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(231);
                      return true;
                   }
@@ -9684,7 +9768,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "310":
                   if (this.getJob() < 311) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[연쇄 사격수] 레인저로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์—ฐ์ ์ฌ๊ฒฉ์] ๋ ์ธ์ €๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(311);
                      return true;
                   }
@@ -9692,7 +9777,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "320":
                   if (this.getJob() < 321) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[백발백중 명사수] 저격수로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ฐฑ๋ฐ๋ฐฑ์ค‘ ๋ช…์ฌ์] ์ €๊ฒฉ์๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(321);
                      return true;
                   }
@@ -9700,7 +9786,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "330":
                   if (this.getJob() < 331) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[체이서의 길] 체이서로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์ฒด์ด์์ ๊ธธ] ์ฒด์ด์๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(331);
                      return true;
                   }
@@ -9708,7 +9795,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "410":
                   if (this.getJob() < 411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암살 전문가] 허밋로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•”์ด ์ ๋ฌธ๊ฐ€] ํ—๋ฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(411);
                      return true;
                   }
@@ -9716,7 +9804,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "420":
                   if (this.getJob() < 421) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑자] 시프 마스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•”ํ‘์] ์ํ” ๋ง์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(421);
                      return true;
                   }
@@ -9724,7 +9813,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "510":
                   if (this.getJob() < 511) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[드래곤 너클 파이터] 버커니어로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋“๋๊ณค ๋ํด ํ์ดํฐ] ๋ฒ์ปค๋์–ด๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(511);
                      return true;
                   }
@@ -9732,7 +9822,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "520":
                   if (this.getJob() < 521) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[건 마스터리] 발키리로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๊ฑด ๋ง์คํฐ๋ฆฌ] ๋ฐํค๋ฆฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(521);
                      return true;
                   }
@@ -9740,7 +9831,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "430":
                   if (this.getJob() < 433) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑을 알아버린자] 슬래셔로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•”ํ‘์ ์•์•๋ฒ๋ฆฐ์] ์ฌ๋์…”๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(433);
                      return true;
                   }
@@ -9748,7 +9840,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "530":
                   if (this.getJob() < 531) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[캐논 마스터리] 캐논슈터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์บ๋…ผ ๋ง์คํฐ๋ฆฌ] ์บ๋…ผ์ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(531);
                      return true;
                   }
@@ -9756,7 +9849,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2110":
                   if (this.getJob() < 2111) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 깨달음] 아란으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๊นจ๋ฌ์] ์•๋€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2111);
                      return true;
                   }
@@ -9764,7 +9858,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2210":
                   if (this.getJob() < 2214) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[진화의 드래곤] 에반으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์งํ”์ ๋“๋๊ณค] ์—๋ฐ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2214);
                      return true;
                   }
@@ -9772,7 +9867,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2310":
                   if (this.getJob() < 2311) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 깨달음] 메르세데스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๊นจ๋ฌ์] ๋ฉ”๋ฅด์ธ๋ฐ์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2311);
                      return true;
                   }
@@ -9780,7 +9876,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2410":
                   if (this.getJob() < 2411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 깨달음] 팬텀으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๊นจ๋ฌ์] ํฌํ…€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2411);
                      return true;
                   }
@@ -9788,7 +9885,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2510":
                   if (this.getJob() < 2511) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 깨달음] 은월으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๊นจ๋ฌ์] ์€์”์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2511);
                      return true;
                   }
@@ -9796,7 +9894,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2710":
                   if (this.getJob() < 2711) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 깨달음] 루미너스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๊นจ๋ฌ์] ๋ฃจ๋ฏธ๋์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2711);
                      return true;
                   }
@@ -9804,7 +9903,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3110":
                   if (this.getJob() < 3111) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 데몬슬레이어로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ๋ฐ๋ชฌ์ฌ๋ ์ด์–ด๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3111);
                      return true;
                   }
@@ -9812,7 +9912,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3120":
                   if (this.getJob() < 3121) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 데몬어벤져로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ๋ฐ๋ชฌ์–ด๋ฒค์ ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3121);
                      return true;
                   }
@@ -9820,7 +9921,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3210":
                   if (this.getJob() < 3211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 배틀메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ๋ฐฐํ€๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3211);
                      return true;
                   }
@@ -9828,7 +9930,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3310":
                   if (this.getJob() < 3311) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 와일드헌터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ์€์ผ๋“ํ—ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3311);
                      return true;
                   }
@@ -9836,7 +9939,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3510":
                   if (this.getJob() < 3511) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 메카닉으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ๋ฉ”์นด๋์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3511);
                      return true;
                   }
@@ -9844,7 +9948,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3610":
                   if (this.getJob() < 3611) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 제논으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ์ ๋…ผ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3611);
                      return true;
                   }
@@ -9852,7 +9957,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3710":
                   if (this.getJob() < 3711) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 요원] 블래스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์”์] ๋ธ”๋์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3711);
                      return true;
                   }
@@ -9861,7 +9967,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 5111) {
                      this.removeAndChangeEquip(1098002, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 단장] 빛의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ๋จ์ฅ] ๋น์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(5111);
                      return true;
                   }
@@ -9870,7 +9977,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6111) {
                      this.removeAndChangeEquip(1352502, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바의 수호자] 카이저로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋…ธ๋ฐ”์ ์ํธ์] ์นด์ด์ €๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6111);
                      return true;
                   }
@@ -9878,7 +9986,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "6410":
                   if (this.getJob() < 6411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바의 수호자] 카데나로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋…ธ๋ฐ”์ ์ํธ์] ์นด๋ฐ๋๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6411);
                      return true;
                   }
@@ -9887,7 +9996,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6511) {
                      this.removeAndChangeEquip(1352603, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바의 수호자] 엔젤릭버스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋…ธ๋ฐ”์ ์ํธ์] ์—”์ ค๋ฆญ๋ฒ์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6511);
                      return true;
                   }
@@ -9895,7 +10005,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1110":
                   if (this.getJob() < 1111) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 정식 기사] 소울 마스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์ •์ ๊ธฐ์ฌ] ์์ธ ๋ง์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1111);
                      return true;
                   }
@@ -9903,7 +10014,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1210":
                   if (this.getJob() < 1211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 정식 기사] 플레임 위자드로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์ •์ ๊ธฐ์ฌ] ํ”๋ ์ ์์๋“๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1211);
                      return true;
                   }
@@ -9911,7 +10023,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1310":
                   if (this.getJob() < 1311) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 정식 기사] 윈드 브레이커로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์ •์ ๊ธฐ์ฌ] ์๋“ ๋ธ๋ ์ด์ปค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1311);
                      return true;
                   }
@@ -9919,7 +10032,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1410":
                   if (this.getJob() < 1411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 정식 기사] 나이트 워커로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์ •์ ๊ธฐ์ฌ] ๋์ดํธ ์์ปค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1411);
                      return true;
                   }
@@ -9927,7 +10041,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1510":
                   if (this.getJob() < 1511) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 정식 기사] 스트라이커로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์ •์ ๊ธฐ์ฌ] ์คํธ๋ผ์ด์ปค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1511);
                      return true;
                   }
@@ -9935,7 +10050,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "14210":
                   if (this.getJob() < 14211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[초능력의 깨달음] 키네시스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ด๋ฅ๋ ฅ์ ๊นจ๋ฌ์] ํค๋ค์์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(14211);
                      return true;
                   }
@@ -9943,7 +10059,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15210":
                   if (this.getJob() < 15211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프의 수호자] 일리움으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ํ”์ ์ํธ์] ์ผ๋ฆฌ์€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15211);
                      return true;
                   }
@@ -9951,7 +10068,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15510":
                   if (this.getJob() < 15511) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프의 수호자] 아크로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ”์ ์ํธ์] ์•ํฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15511);
                      return true;
                   }
@@ -9959,7 +10077,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16410":
                   if (this.getJob() < 16411) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 수호자] 호영으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•๋๋ง ์ํธ์] ํธ์์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16411);
                      return true;
                   }
@@ -9967,7 +10086,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15110":
                   if (this.getJob() < 15111) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프 수호자] 아델로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ” ์ํธ์] ์•๋ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15111);
                      return true;
                   }
@@ -9975,7 +10095,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "6310":
                   if (this.getJob() < 6311) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바 수호자] 카인으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋…ธ๋ฐ” ์ํธ์] ์นด์ธ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6311);
                      return true;
                   }
@@ -9983,7 +10104,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16210":
                   if (this.getJob() < 16211) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 수호자] 라라로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•๋๋ง ์ํธ์] ๋ผ๋ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16211);
                      return true;
                   }
@@ -9996,7 +10118,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15410":
                   if (this.getJob() < 15412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[칼리] 칼리로 전직하였습니다."));
+                           .writeAndFlush(
+                                 CWvsContext.getScriptProgressMessage("[์นผ๋ฆฌ] ์นผ๋ฆฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15412);
                      return true;
                   }
@@ -10004,7 +10127,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "110":
                   if (this.getJob() < 112) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[연쇄 검술의 마스터] 히어로로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์—ฐ์ ๊ฒ€์ ์ ๋ง์คํฐ] ํ์–ด๋ก๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(112);
                      return true;
                   }
@@ -10012,7 +10136,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "120":
                   if (this.getJob() < 122) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[환상 검술의 마스터] 팔라딘로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ์ ๊ฒ€์ ์ ๋ง์คํฐ] ํ”๋ผ๋”๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(122);
                      return true;
                   }
@@ -10020,7 +10145,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "130":
                   if (this.getJob() < 132) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[다크 드래곤 창술의 마스터] 다크 나이트로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋คํฌ ๋“๋๊ณค ์ฐฝ์ ์ ๋ง์คํฐ] ๋คํฌ ๋์ดํธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(132);
                      return true;
                   }
@@ -10028,7 +10154,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "210":
                   if (this.getJob() < 212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[불*독 마스터] 아크메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ถ*๋… ๋ง์คํฐ] ์•ํฌ๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(212);
                      return true;
                   }
@@ -10036,7 +10163,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "220":
                   if (this.getJob() < 222) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[얼음*번개 마스터] 아크메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์–ผ์*๋ฒ๊ฐ ๋ง์คํฐ] ์•ํฌ๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(222);
                      return true;
                   }
@@ -10044,7 +10172,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "230":
                   if (this.getJob() < 232) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[힐*버프 마스터] 비숍으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ*๋ฒํ” ๋ง์คํฐ] ๋น์์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(232);
                      return true;
                   }
@@ -10052,7 +10181,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "310":
                   if (this.getJob() < 312) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[화살 연사의 마스터] 보우 마스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ”์ด ์—ฐ์ฌ์ ๋ง์คํฐ] ๋ณด์ฐ ๋ง์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(312);
                      return true;
                   }
@@ -10060,7 +10190,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "320":
                   if (this.getJob() < 322) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[화살 파워의 마스터] 신궁로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ”์ด ํ์์ ๋ง์คํฐ] ์ ๊ถ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(322);
                      return true;
                   }
@@ -10068,7 +10199,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "330":
                   if (this.getJob() < 332) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[에인션트 보우의 달인] 패스파인더로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์—์ธ์…ํธ ๋ณด์ฐ์ ๋ฌ์ธ] ํจ์คํ์ธ๋”๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(332);
                      return true;
                   }
@@ -10076,7 +10208,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "410":
                   if (this.getJob() < 412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[연쇄 암살의 마스터] 나이트 로드로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์—ฐ์ ์•”์ด์ ๋ง์คํฐ] ๋์ดํธ ๋ก๋“๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(412);
                      return true;
                   }
@@ -10084,7 +10217,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "420":
                   if (this.getJob() < 422) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑의 암살 마스터] 섀도우로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•”ํ‘์ ์•”์ด ๋ง์คํฐ] ์€๋์ฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(422);
                      return true;
                   }
@@ -10092,7 +10226,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "510":
                   if (this.getJob() < 512) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[정령의 너클 파이터] 바이퍼로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ •๋ น์ ๋ํด ํ์ดํฐ] ๋ฐ”์ดํผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(512);
                      return true;
                   }
@@ -10100,7 +10235,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "520":
                   if (this.getJob() < 522) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[배틀 건 마스터리] 캡틴으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ฐฐํ€ ๊ฑด ๋ง์คํฐ๋ฆฌ] ์บกํด์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(522);
                      return true;
                   }
@@ -10108,7 +10244,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "430":
                   if (this.getJob() < 434) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[암흑을 조정하는자] 듀얼블레이드로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์•”ํ‘์ ์กฐ์ •ํ•๋”์] ๋“€์–ผ๋ธ”๋ ์ด๋“๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(434);
                      return true;
                   }
@@ -10116,7 +10253,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "530":
                   if (this.getJob() < 532) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[파괴의 캐논 마스터리] 캐논슈터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํ๊ดด์ ์บ๋…ผ ๋ง์คํฐ๋ฆฌ] ์บ๋…ผ์ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(532);
                      return true;
                   }
@@ -10124,7 +10262,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2110":
                   if (this.getJob() < 2112) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 부활] 아란으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ถ€ํ] ์•๋€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2112);
                      return true;
                   }
@@ -10132,7 +10271,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2210":
                   if (this.getJob() < 2217) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[전설의 드래곤] 에반으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ ์ค์ ๋“๋๊ณค] ์—๋ฐ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2217);
                      return true;
                   }
@@ -10140,7 +10280,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2310":
                   if (this.getJob() < 2312) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 부활] 메르세데스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๋ถ€ํ] ๋ฉ”๋ฅด์ธ๋ฐ์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2312);
                      return true;
                   }
@@ -10148,7 +10289,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2410":
                   if (this.getJob() < 2412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 부활] 팬텀으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ถ€ํ] ํฌํ…€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2412);
                      this.changeSkillLevel(20031210, 1, 1);
                      this.changeSkillLevel(20031209, 0, 0);
@@ -10158,7 +10300,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2510":
                   if (this.getJob() < 2512) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 부활] 은월으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์์…์ ๋ถ€ํ] ์€์”์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2512);
                      return true;
                   }
@@ -10166,7 +10309,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "2710":
                   if (this.getJob() < 2712) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[영웅의 부활] 루미너스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์์…์ ๋ถ€ํ] ๋ฃจ๋ฏธ๋์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(2712);
                      return true;
                   }
@@ -10174,7 +10318,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3110":
                   if (this.getJob() < 3112) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 데몬슬레이어로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ๋ฐ๋ชฌ์ฌ๋ ์ด์–ด๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3112);
                      return true;
                   }
@@ -10182,7 +10327,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3120":
                   if (this.getJob() < 3122) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스 영웅] 데몬어벤져로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค ์์…] ๋ฐ๋ชฌ์–ด๋ฒค์ ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3122);
                      return true;
                   }
@@ -10190,7 +10336,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3210":
                   if (this.getJob() < 3212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 배틀메이지로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ๋ฐฐํ€๋ฉ”์ด์ง€๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3212);
                      return true;
                   }
@@ -10198,7 +10345,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3310":
                   if (this.getJob() < 3312) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 와일드헌터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ์€์ผ๋“ํ—ํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3312);
                      return true;
                   }
@@ -10206,7 +10354,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3510":
                   if (this.getJob() < 3512) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 메카닉으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ๋ฉ”์นด๋์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3512);
                      return true;
                   }
@@ -10214,7 +10363,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3610":
                   if (this.getJob() < 3612) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 제논으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ์ ๋…ผ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3612);
                      return true;
                   }
@@ -10222,7 +10372,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "3710":
                   if (this.getJob() < 3712) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레지스탕스의 영웅] 블래스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[๋ ์ง€์คํ•์ค์ ์์…] ๋ธ”๋์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(3712);
                      return true;
                   }
@@ -10231,7 +10382,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 5112) {
                      this.removeAndChangeEquip(1098003, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 단장] 빛의 기사로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ๋จ์ฅ] ๋น์ ๊ธฐ์ฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(5112);
                      return true;
                   }
@@ -10240,7 +10392,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6112) {
                      this.removeAndChangeEquip(1352503, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[용의 기사] 카이저로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์ฉ์ ๊ธฐ์ฌ] ์นด์ด์ €๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6112);
                      return true;
                   }
@@ -10248,7 +10401,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "6410":
                   if (this.getJob() < 6412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[체인 마스터] 카데나로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์ฒด์ธ ๋ง์คํฐ] ์นด๋ฐ๋๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6412);
                      return true;
                   }
@@ -10257,7 +10411,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   if (this.getJob() < 6512) {
                      this.removeAndChangeEquip(1352604, (short) -10);
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[전장의 아이돌] 엔젤릭버스터로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ ์ฅ์ ์•์ด๋] ์—”์ ค๋ฆญ๋ฒ์คํฐ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6512);
                      return true;
                   }
@@ -10265,7 +10420,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1110":
                   if (this.getJob() < 1112) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 영웅] 빛의 대정령으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์์…] ๋น์ ๋€์ •๋ น์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1112);
                      this.changeSkillLevel(11121000, 30, 30);
                      return true;
@@ -10274,7 +10430,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1210":
                   if (this.getJob() < 1212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 영웅] 불의 대정령으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์์…] ๋ถ์ ๋€์ •๋ น์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1212);
                      this.changeSkillLevel(12121000, 30, 30);
                      return true;
@@ -10283,7 +10440,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1310":
                   if (this.getJob() < 1312) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 영웅] 바람의 대정령으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์์…] ๋ฐ”๋์ ๋€์ •๋ น์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1312);
                      this.changeSkillLevel(13121000, 30, 30);
                      return true;
@@ -10292,7 +10450,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1410":
                   if (this.getJob() < 1412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 영웅] 어둠의 대정령으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์์…] ์–ด๋‘ ์ ๋€์ •๋ น์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1412);
                      this.changeSkillLevel(14121000, 30, 30);
                      return true;
@@ -10301,7 +10460,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "1510":
                   if (this.getJob() < 1512) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[시그너스 영웅] 번개의 대정령으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์๊ทธ๋์ค ์์…] ๋ฒ๊ฐ์ ๋€์ •๋ น์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(1512);
                      this.changeSkillLevel(15121000, 30, 30);
                      return true;
@@ -10310,7 +10470,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "14210":
                   if (this.getJob() < 14212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[초능력의 영웅] 키네시스로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[์ด๋ฅ๋ ฅ์ ์์…] ํค๋ค์์ค๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(14212);
                      return true;
                   }
@@ -10318,7 +10479,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15210":
                   if (this.getJob() < 15212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[크리스탈 마스터] 일리움으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext.getScriptProgressMessage(
+                                 "[ํฌ๋ฆฌ์คํ ๋ง์คํฐ] ์ผ๋ฆฌ์€์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15212);
                      return true;
                   }
@@ -10326,7 +10488,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15510":
                   if (this.getJob() < 15512) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프의 영웅] 아크로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ”์ ์์…] ์•ํฌ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15512);
                      return true;
                   }
@@ -10334,7 +10497,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16410":
                   if (this.getJob() < 16412) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 영웅] 호영으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•๋๋ง ์์…] ํธ์์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16412);
                      return true;
                   }
@@ -10342,7 +10506,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "15110":
                   if (this.getJob() < 15112) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[레프의 영웅] 아델로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋ ํ”์ ์์…] ์•๋ธ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(15112);
                      return true;
                   }
@@ -10350,7 +10515,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "6310":
                   if (this.getJob() < 6312) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[노바의 영웅] 카인으로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[๋…ธ๋ฐ”์ ์์…] ์นด์ธ์ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(6312);
                      return true;
                   }
@@ -10358,7 +10524,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                case "16210":
                   if (this.getJob() < 16212) {
                      this.getClient().getSession()
-                           .writeAndFlush(CWvsContext.getScriptProgressMessage("[아니마 영웅] 라라로 전직하였습니다."));
+                           .writeAndFlush(CWvsContext
+                                 .getScriptProgressMessage("[์•๋๋ง ์์…] ๋ผ๋ผ๋ก ์ ์งํ•์€์ต๋๋ค."));
                      this.changeJob(16212);
                      return true;
                   }
@@ -10590,14 +10757,14 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                client.getSession().writeAndFlush(CField.spawnPlayerMapobject(this));
             } catch (Exception var25) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 spawnPlayerMapObject", var25);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ spawnPlayerMapObject", var25);
             }
 
             try {
                client.getPlayer().receivePartyMemberHP();
             } catch (Exception var24) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 패킷전송 PartyMemberHP", var24);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ํจํท์ ์ก PartyMemberHP", var24);
             }
 
             try {
@@ -10609,7 +10776,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             } catch (Exception var30) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 디버그 SecondAtom 오류", var30);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ๋””๋ฒ๊ทธ SecondAtom ์ค๋ฅ",
+                     var30);
             }
 
             try {
@@ -10620,7 +10788,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             } catch (Exception var29) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 디버그 펫소환 실패", var29);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ๋””๋ฒ๊ทธ ํซ์ํ ์คํจ", var29);
             }
 
             try {
@@ -10633,7 +10801,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             } catch (Exception var23) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 드래곤 또는 안드로이드", var23);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ๋“๋๊ณค ๋๋” ์•๋“๋ก์ด๋“",
+                     var23);
             }
 
             try {
@@ -10655,7 +10824,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               summon.setPosition(this.getTruePosition());
                            } catch (Exception var22) {
                               FileoutputUtil.log("Log_Player_Except.rtf",
-                                    "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수 좌표 설정");
+                                    "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ์ํ์ ์ขํ‘ ์ค์ •");
                               FileoutputUtil.log("Log_Player_Except.rtf", var22.toString());
                            }
 
@@ -10682,7 +10851,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            } catch (Exception var26) {
                               FileoutputUtil.outputFileErrorReason(
                                     "Log_Player_Except.rtf",
-                                    "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수 좌표 패킷 전송", var26);
+                                    "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ์ํ์ ์ขํ‘ ํจํท ์ ์ก",
+                                    var26);
                            }
                         }
                      }
@@ -10692,7 +10862,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             } catch (Exception var28) {
                FileoutputUtil.outputFileErrorReason("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수", var28);
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ์ํ์", var28);
             }
 
             try {
@@ -10711,7 +10881,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             } catch (Exception var21) {
                FileoutputUtil.log("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 버프 패킷 전송 실패 2");
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ๋ฒํ” ํจํท ์ ์ก ์คํจ 2");
                FileoutputUtil.log("Log_Player_Except.rtf", var21.toString());
             }
 
@@ -10736,7 +10906,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.getMap().broadcastMessage(CField.setSoulEffect(this, (byte) (souleffect.equals("0") ? 0 : 1)));
             } catch (Exception var20) {
                FileoutputUtil.log("Log_Player_Except.rtf",
-                     "sendObjectPlacement 중 Character sendSpawnData 오류 발생 웨폰모션, 메달, 아이템이펙트");
+                     "sendObjectPlacement ์ค‘ Character sendSpawnData ์ค๋ฅ ๋ฐ์ ์จํฐ๋ชจ์…, ๋ฉ”๋ฌ, ์•์ดํ…์ดํํธ");
                FileoutputUtil.log("Log_Player_Except.rtf", var20.toString());
             }
          }
@@ -10970,7 +11140,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          Party party = Center.Party.createParty(memberEntry);
          party.setPrivateParty(true);
          party.setOnlyLeaderPickUp(true);
-         party.setPartyTitle(this.getName() + "님의 파티");
+         party.setPartyTitle(this.getName() + "๋์ ํํฐ");
          this.setParty(party);
          PacketEncoder packet = new PacketEncoder();
          Party.PartyPacket.CreateParty createParty = new Party.PartyPacket.CreateParty(party);
@@ -11038,10 +11208,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public void setSmega() {
       if (this.smega) {
          this.smega = false;
-         this.dropMessage(5, "ปิดใช้งาน Megaphone");
+         this.dropMessage(5, "เธเธดเธ”เนเธเนเธเธฒเธ Megaphone");
       } else {
          this.smega = true;
-         this.dropMessage(5, "เปิดใช้งาน Megaphone");
+         this.dropMessage(5, "เน€เธเธดเธ”เนเธเนเธเธฒเธ Megaphone");
       }
    }
 
@@ -11231,7 +11401,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         || bossID == 8880614
                         || bossID == 8880644)) {
                this.gainTogetherPoint(10);
-               this.dropMessage(5, "ได้รับ Co-op Point 10 แต้ม สะสม : " + this.getTogetherPoint());
+               this.dropMessage(5,
+                     "เนเธ”เนเธฃเธฑเธ Co-op Point 10 เนเธ•เนเธก เธชเธฐเธชเธก : " + this.getTogetherPoint());
                this.setMultiMode(false);
             }
          }
@@ -11265,7 +11436,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(20, 25);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8500012) {
          point = 500;
@@ -11287,7 +11458,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8910000) {
          point = 150;
@@ -11299,7 +11470,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8930000) {
          point = 150;
@@ -11311,7 +11482,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(20, 25);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8840000) {
          point = 500;
@@ -11353,7 +11524,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8500022) {
          point = 1000;
@@ -11365,7 +11536,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(30, 35);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID == 8920000) {
          point = 1000;
@@ -11377,7 +11548,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int point_ = Randomizer.rand(10, 15);
             int value = this.getOneInfoQuestInteger(100779, "point");
             this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-            this.dropMessage(5, point_ + " ได้รับ Boss Point");
+            this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
          }
       } else if (bossID != 8950002 && bossID != 8950102) {
          if (bossID != 8880111 && bossID != 8880101) {
@@ -11392,13 +11563,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(60, 65);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                     this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                   }
                } else if (DBConfig.isGanglim) {
                   int point_ = Randomizer.rand(40, 45);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                  this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                }
             } else if (bossID != 8880302 && bossID != 8880342 && bossID != 8880362) {
                if (bossID == 8644655 || bossID == 8644650 || bossID == 8880700 || bossID == 8880711) {
@@ -11412,13 +11583,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         int point_ = Randomizer.rand(40, 45);
                         int value = this.getOneInfoQuestInteger(100779, "point");
                         this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                        this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                        this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                      }
                   } else if (DBConfig.isGanglim) {
                      int point_ = Randomizer.rand(70, 75);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                     this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                   }
                } else if (bossID == 8645066 || bossID == 8645009 || bossID == 8880602 || bossID == 8880632) {
                   point = 1500;
@@ -11431,13 +11602,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         int point_ = Randomizer.rand(40, 45);
                         int value = this.getOneInfoQuestInteger(100779, "point");
                         this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                        this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                        this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                      }
                   } else if (DBConfig.isGanglim) {
                      int point_ = Randomizer.rand(70, 75);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                     this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                   }
                } else if (bossID == 8880504) {
                   point = 2000;
@@ -11449,7 +11620,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(200, 250);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                     this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                   }
                }
             } else {
@@ -11458,13 +11629,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      int point_ = Randomizer.rand(60, 65);
                      int value = this.getOneInfoQuestInteger(100779, "point");
                      this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                     this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                     this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                   }
                } else if (DBConfig.isGanglim) {
                   int point_ = Randomizer.rand(40, 45);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                  this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                }
 
                point = 1500;
@@ -11478,13 +11649,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   int point_ = Randomizer.rand(60, 65);
                   int value = this.getOneInfoQuestInteger(100779, "point");
                   this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-                  this.dropMessage(5, point_ + " ได้รับ Boss Point");
+                  this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
                }
             } else if (DBConfig.isGanglim) {
                int point_ = Randomizer.rand(30, 35);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " ได้รับ Boss Point");
+               this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
             }
 
             point = 1500;
@@ -11500,7 +11671,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                int point_ = Randomizer.rand(30, 35);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " ได้รับ Boss Point");
+               this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
             }
          } else {
             this.updateOneInfo(100813, "bossPoint",
@@ -11509,7 +11680,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                int point_ = Randomizer.rand(60, 65);
                int value = this.getOneInfoQuestInteger(100779, "point");
                this.updateOneInfo(100779, "point", String.valueOf(value + point_));
-               this.dropMessage(5, point_ + " ได้รับ Boss Point");
+               this.dropMessage(5, point_ + " เนเธ”เนเธฃเธฑเธ Boss Point");
             }
          }
 
@@ -11706,7 +11877,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 1:
             if (this.nxcredit + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "Cash เต็มแล้ว ไม่ได้รับ Cash เพิ่ม");
+                  this.dropMessage(-1,
+                        "Cash เน€เธ•เนเธกเนเธฅเนเธง เนเธกเนเนเธ”เนเธฃเธฑเธ Cash เน€เธเธดเนเธก");
                }
 
                return;
@@ -11717,7 +11889,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 2:
             if (this.maplepoints + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "Maple Point เต็มแล้ว ไม่ได้รับเพิ่ม");
+                  this.dropMessage(-1,
+                        "Maple Point เน€เธ•เนเธกเนเธฅเนเธง เนเธกเนเนเธ”เนเธฃเธฑเธเน€เธเธดเนเธก");
                }
 
                return;
@@ -11731,7 +11904,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 4:
             if (this.acash + quantity < 0) {
                if (show) {
-                  this.dropMessage(-1, "Cash เต็มแล้ว ไม่ได้รับ Cash เพิ่ม");
+                  this.dropMessage(-1,
+                        "Cash เน€เธ•เนเธกเนเธฅเนเธง เนเธกเนเนเธ”เนเธฃเธฑเธ Cash เน€เธเธดเนเธก");
                }
 
                return;
@@ -11741,8 +11915,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       }
 
       if (show && quantity != 0) {
-         this.dropMessage(-1, quantity + (type == 1 ? " 캐시를 " : " 메이플포인트를 ") + (quantity > 0 ? "얻었습니다." : "잃었습니다."));
+         this.dropMessage(-1, (quantity > 0 ? "ได้รับ " : "เสีย ") + Math.abs(quantity) + (type == 1 ? " Cash" : " Maple Point"));
       }
+
    }
 
    public int getCSPoints(int type) {
@@ -13967,11 +14142,14 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       if (equipped && this.getRoadRingExpBoost() < 30) {
          this.setRoadRingExpBoost(this.getRoadRingExpBoost() + 10);
          if (this.getRoadRingExpBoost() > 10) {
-            this.dropMessage(5, "สวมใส่ Murmur's Lord Ring มา " + this.getRoadRingExpBoost() / 10 + "시간이 지났습니다. "
-                  + this.getRoadRingExpBoost() + "%의 보너스 경험치를 얻습니다.");
+            this.dropMessage(5,
+                  "เธชเธงเธกเนเธชเน Murmur's Lord Ring เธกเธฒ " + this.getRoadRingExpBoost() / 10
+                        + "์๊ฐ์ด ์ง€๋ฌ์ต๋๋ค. "
+                        + this.getRoadRingExpBoost() + "%์ ๋ณด๋์ค ๊ฒฝํ—์น๋ฅผ ์–ป์ต๋๋ค.");
          } else {
             this.dropMessage(5,
-                  "ได้รับโบนัส EXP จากการล่ามอนสเตอร์เมื่อสวมใส่ Murmur's Lord Ring " + this.getRoadRingExpBoost() + "%를 추가로 획득하게 됩니다.");
+                  "เนเธ”เนเธฃเธฑเธเนเธเธเธฑเธช EXP เธเธฒเธเธเธฒเธฃเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเนเน€เธกเธทเนเธญเธชเธงเธกเนเธชเน Murmur's Lord Ring "
+                        + this.getRoadRingExpBoost() + "%๋ฅผ ์ถ”๊ฐ€๋ก ํ๋“ํ•๊ฒ ๋ฉ๋๋ค.");
          }
 
          this.getStat().recalcLocalStats(this);
@@ -14252,7 +14430,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          this.client.getSession()
                .writeAndFlush(CField.getChannelChange(this.client, Integer.parseInt(toch.getIP().split(":")[1])));
       } catch (Exception var5) {
-         System.out.println("[Error] Error executing changeChannel! (Name : " + this.getName() + ") " + var5.toString());
+         System.out
+               .println("[Error] Error executing changeChannel! (Name : " + this.getName() + ") " + var5.toString());
          var5.printStackTrace();
       }
    }
@@ -14306,7 +14485,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          MapleCharacter tt = this.map.getCharacterById(this.followid);
          if (tt != null) {
             tt.setFollowId(0);
-            tt.getClient().getSession().writeAndFlush(CField.chatMsg(11, "ยกเลิกการติดตามแล้ว"));
+            tt.getClient().getSession()
+                  .writeAndFlush(CField.chatMsg(11, "เธขเธเน€เธฅเธดเธเธเธฒเธฃเธ•เธดเธ”เธ•เธฒเธกเนเธฅเนเธง"));
          }
 
          this.setFollowId(0);
@@ -15742,7 +15922,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public void gainHonor(int honor, boolean show) {
       this.addHonorExp(honor);
       if (show && this.getKeyValue("show_honor") != null && this.getKeyValue("show_honor").equals("1")) {
-         this.dropMessage(5, "Honor EXP " + honor + " ได้รับแล้ว");
+         this.dropMessage(5, "Honor EXP " + honor + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง");
       }
    }
 
@@ -16394,7 +16574,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             count = Integer.parseInt(v);
          } catch (Exception var6) {
-            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
+            System.out
+                  .println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
             var6.printStackTrace();
          }
 
@@ -16412,7 +16593,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          try {
             count = Long.parseLong(v);
          } catch (Exception var7) {
-            System.out.println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
+            System.out
+                  .println("customKey : " + customKey + " / subKey : " + subKey + " CustomInfo load error info : " + v);
             var7.printStackTrace();
          }
 
@@ -16590,7 +16772,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public final void warp(int map) {
       Field field = this.getWarpMap(map);
       if (field == null) {
-         System.out.println(this.getName() + "이(가) 맵 코드 : " + map + "으로 이동 중 field가 null");
+         System.out.println(this.getName() + "์ด(๊ฐ€) ๋งต ์ฝ”๋“ : " + map + "์ผ๋ก ์ด๋ ์ค‘ field๊ฐ€ null");
 
          try {
             throw new Exception();
@@ -16606,7 +16788,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public final void warp(int map, int portalNum) {
       Field field = this.getWarpMap(map);
       if (field == null) {
-         System.out.println(this.getName() + "이(가) 맵 코드 : " + map + "으로 이동 중 field가 null");
+         System.out.println(this.getName() + "์ด(๊ฐ€) ๋งต ์ฝ”๋“ : " + map + "์ผ๋ก ์ด๋ ์ค‘ field๊ฐ€ null");
 
          try {
             throw new Exception();
@@ -17016,7 +17198,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public void clearCount(int qexKey, String keyValue, String bossName) {
       int clearCheck = this.getOneInfoQuestInteger(qexKey, keyValue) + 1;
       int checkValue = 1 + this.getBossTier();
-      this.dropMessage(5, String.format("금일 %s 입장횟수 %d / %d", bossName, clearCheck, checkValue));
+      this.dropMessage(5, String.format("๊ธ์ผ %s ์…์ฅํ์ %d / %d", bossName, clearCheck, checkValue));
    }
 
    public boolean CountCheck(String key, int value) {
@@ -17260,7 +17442,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       this.battleRecordOnCalc = battleRecordOnCalc;
    }
 
-   public void 혁신의룰렛() {
+   public void ํ   ์  ์   ๋ ฃฐ๋ ()
+
+   {
       objects.utils.Timer.EtcTimer timer = objects.utils.Timer.EtcTimer.getInstance();
       final AtomicInteger jobType = new AtomicInteger(Randomizer.nextInt(4));
       final AtomicInteger itemID = new AtomicInteger(Randomizer.rand(1, 4));
@@ -17276,13 +17460,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             new Runnable() {
                @Override
                public void run() {
-                  MapleCharacter.this.아이템지급(jobType.get(), job.get(), itemID.get());
+                  MapleCharacter.this.์•์ดํ…์ง€๊ธ(jobType.get(), job.get(), itemID.get());
                   MapleCharacter.this.send(
                         CField.NPCPacket.getNPCTalk(
                               9000134,
                               (byte) 0,
-                              "#fn나눔고딕 Extrabold#아래에서 당신의 내면의 결과를 확인해보세요.\r\n\r\n#b혁신의 룰렛#k 에서 [#i" + itemID.get()
-                                    + "# #d#t" + itemID.get() + "##k](이)가 소환 되었습니다.",
+                              "#fn๋๋”๊ณ ๋”• Extrabold#์•๋์—์ ๋น์ ์ ๋ด๋ฉด์ ๊ฒฐ๊ณผ๋ฅผ ํ•์ธํ•ด๋ณด์ธ์”.\r\n\r\n#bํ์ ์ ๋ฃฐ๋ #k ์—์ [#i" + itemID.get()
+                                    + "# #d#t" + itemID.get() + "##k](์ด)๊ฐ€ ์ํ ๋์—์ต๋๋ค.",
                               "00 00",
                               (byte) 0));
                }
@@ -17290,7 +17474,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             6000L);
    }
 
-   public void 아이템지급(int jobType, int job, int itemID) {
+   public void ์•์ดํ…์ง€๊ธ(int jobType, int job, int itemID) {
       Equip equip = (Equip) MapleItemInformationProvider.getInstance().getEquipById(itemID);
       short str = 0;
       short dex = 0;
@@ -17532,8 +17716,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public final void showRecvGift(int itemID, String from) {
       this.send(
             CField.addPopupSay(
-                  9062000, 3000, "#b" + from + "#k 님에게 #b(" + MapleItemInformationProvider.getInstance().getName(itemID)
-                        + ")#k을(를) 선물받으셨습니다. 인벤토리를 확인해보세요.",
+                  9062000, 3000,
+                  "#b" + from + "#k ๋์—๊ฒ #b(" + MapleItemInformationProvider.getInstance().getName(itemID)
+                        + ")#k์(๋ฅผ) ์ ๋ฌผ๋ฐ์ผ์…จ์ต๋๋ค. ์ธ๋ฒคํ ๋ฆฌ๋ฅผ ํ•์ธํ•ด๋ณด์ธ์”.",
                   ""));
    }
 
@@ -17621,7 +17806,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               if (MapleCharacter.this.lastFishingTime != 0L
                                     && System.currentTimeMillis() - MapleCharacter.this.lastFishingTime >= 60000L) {
                                  if (MapleCharacter.this.getMapId() != ServerConstants.chairFishingMapID) {
-                                    MapleCharacter.this.dropMessage(5, "แผนที่เปลี่ยนไป ไม่สามารถรับ Rest Point ได้");
+                                    MapleCharacter.this.dropMessage(5,
+                                          "เนเธเธเธ—เธตเนเน€เธเธฅเธตเนเธขเธเนเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธ Rest Point เนเธ”เน");
                                     MapleCharacter.this.cancelFishingTask();
                                  } else {
                                     Integer chairRiding = MapleCharacter.this
@@ -17650,8 +17836,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                        MapleCharacter.this.send(CField.fishingInfo(6));
                                        MapleCharacter.this.gainDancePoint(1);
                                        MapleCharacter.this.send(
-                                             CWvsContext.getStaticScreenMessage("휴식 포인트를 1포인트 획득하여 총 "
-                                                   + MapleCharacter.this.getDancePoint() + "포인트를 보유중입니다.", false, 1));
+                                             CWvsContext.getStaticScreenMessage(
+                                                   "ํด์ ํฌ์ธํธ๋ฅผ 1ํฌ์ธํธ ํ๋“ํ•์—ฌ ์ด "
+                                                         + MapleCharacter.this.getDancePoint()
+                                                         + "ํฌ์ธํธ๋ฅผ ๋ณด์ ์ค‘์…๋๋ค.",
+                                                   false, 1));
                                     }
                                  }
                               }
@@ -17659,9 +17848,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         },
                         1000L);
             if (DBConfig.isGanglim) {
-               this.send(CField.chatMsg(1, "จากนี้ไปจะได้รับ Rest Point 1 แต้มทุกๆ 1 นาที"));
+               this.send(CField.chatMsg(1,
+                     "เธเธฒเธเธเธตเนเนเธเธเธฐเนเธ”เนเธฃเธฑเธ Rest Point 1 เนเธ•เนเธกเธ—เธธเธเน 1 เธเธฒเธ—เธต"));
             } else {
-               this.dropMessage(6, "ได้รับ Rest Point 1 แต้มทุกๆ 1 นาที");
+               this.dropMessage(6, "เนเธ”เนเธฃเธฑเธ Rest Point 1 เนเธ•เนเธกเธ—เธธเธเน 1 เธเธฒเธ—เธต");
             }
          }
       }
@@ -17701,7 +17891,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               if (MapleCharacter.this.lastChairTime != 0L
                                     && System.currentTimeMillis() - MapleCharacter.this.lastChairTime >= 60000L) {
                                  if (!ServerConstants.isRoyalFishingMap(MapleCharacter.this.getMapId())) {
-                                    MapleCharacter.this.dropMessage(5, "แผนที่เปลี่ยนไป ไม่สามารถรับ Rest Point ได้");
+                                    MapleCharacter.this.dropMessage(5,
+                                          "เนเธเธเธ—เธตเนเน€เธเธฅเธตเนเธขเธเนเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธ Rest Point เนเธ”เน");
                                     MapleCharacter.this.cancelChairTask();
                                  } else {
                                     MapleCharacter.this.lastChairTime = System.currentTimeMillis();
@@ -17714,8 +17905,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                        for (Triple<Integer, Integer, Integer> item : list) {
                                           if (Randomizer.isSuccess(item.right)) {
                                              MapleCharacter.this.gainItem(item.left, item.mid);
-                                             MapleCharacter.this.dropMessage(6, "[Fishing Notice] ผ่านการตกปลา ["
-                                                   + ii.getName(item.left) + "] 을(를) " + item.mid + "개 얻었습니다!");
+                                             MapleCharacter.this.dropMessage(6,
+                                                   "[Fishing Notice] เธเนเธฒเธเธเธฒเธฃเธ•เธเธเธฅเธฒ ["
+                                                         + ii.getName(item.left) + "] ์(๋ฅผ) " + item.mid
+                                                         + "๊ฐ ์–ป์—์ต๋๋ค!");
                                              break;
                                           }
                                        }
@@ -17736,8 +17929,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         },
                         1000L);
             if (DBConfig.isGanglim) {
-               this.dropMessage(5, "[Rest Guide] รับ Neo Gem ทุก 1 นาทีจากการพักผ่อน");
-               this.dropMessage(5, "[Fishing Guide] เริ่มตกปลา");
+               this.dropMessage(5,
+                     "[Rest Guide] เธฃเธฑเธ Neo Gem เธ—เธธเธ 1 เธเธฒเธ—เธตเธเธฒเธเธเธฒเธฃเธเธฑเธเธเนเธญเธ");
+               this.dropMessage(5, "[Fishing Guide] เน€เธฃเธดเนเธกเธ•เธเธเธฅเธฒ");
             }
          }
       }
@@ -18658,7 +18852,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
 
          if (this.getMapId() == 910001000 || this.getMapId() == 993050600) {
-            this.dropMessage(5, "Dance Time เริ่มได้!");
+            this.dropMessage(5, "Dance Time เน€เธฃเธดเนเธกเนเธ”เน!");
             this.dancePointTask = objects.utils.Timer.MapTimer.getInstance().register(new Runnable() {
                @Override
                public void run() {
@@ -18677,7 +18871,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         MapleCharacter.this.gainDancePoint(1);
                         MapleCharacter.this.CountAdd("today_dance_point");
                         MapleCharacter.this.dropMessage(5,
-                              "ได้รับ Dance Point 1 แต้ม " + MapleCharacter.this.getDancePoint() + "포인트가 되었습니다.");
+                              "เนเธ”เนเธฃเธฑเธ Dance Point 1 เนเธ•เนเธก " + MapleCharacter.this.getDancePoint()
+                                    + "ํฌ์ธํธ๊ฐ€ ๋์—์ต๋๋ค.");
                      } else {
                         MapleCharacter.this.cancelDancePointTask();
                      }
@@ -18730,7 +18925,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          if (equip != null) {
             for (int medalID : ServerConstants.guildMedalItemID) {
                if (equip.getItemId() == medalID) {
-                  this.dropMessage(5, "ได้รับ EXP โบนัส 20% จากผลของการสวมใส่เหรียญกิลด์");
+                  this.dropMessage(5,
+                        "เนเธ”เนเธฃเธฑเธ EXP เนเธเธเธฑเธช 20% เธเธฒเธเธเธฅเธเธญเธเธเธฒเธฃเธชเธงเธกเนเธชเนเน€เธซเธฃเธตเธขเธเธเธดเธฅเธ”เน");
                   this.guildBonusExpBoost = 20;
                   find = true;
                }
@@ -18738,7 +18934,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
             for (int medalIDx : ServerConstants.singleMedalItemID) {
                if (equip.getItemId() == medalIDx) {
-                  this.dropMessage(5, "ได้รับ EXP โบนัส 20% จากผลของการสวมใส่เหรียญตรา");
+                  this.dropMessage(5,
+                        "เนเธ”เนเธฃเธฑเธ EXP เนเธเธเธฑเธช 20% เธเธฒเธเธเธฅเธเธญเธเธเธฒเธฃเธชเธงเธกเนเธชเนเน€เธซเธฃเธตเธขเธเธ•เธฃเธฒ");
                   this.guildBonusExpBoost = 20;
                   find = true;
                }
@@ -19534,7 +19731,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          statList.put(SecondaryStatFlag.indieMadR, atkBoost);
          if (expBoost > 0) {
             this.dropMessage(5,
-                  "EXP จากผลการสวมใส่เหรียญตรา " + this.donatorBonusExpBoost + "%와 공/마 " + atkBoost + "% 증가 버프가 적용됩니다.");
+                  "EXP เธเธฒเธเธเธฅเธเธฒเธฃเธชเธงเธกเนเธชเนเน€เธซเธฃเธตเธขเธเธ•เธฃเธฒ "
+                        + this.donatorBonusExpBoost + "%์€ ๊ณต/๋ง " + atkBoost
+                        + "% ์ฆ๊ฐ€ ๋ฒํ”๊ฐ€ ์ ์ฉ๋ฉ๋๋ค.");
          }
 
          this.temporaryStatSet(72000047, 1, Integer.MAX_VALUE, statList);
@@ -19565,7 +19764,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   partyMember.setTransferFieldOverlap(false);
                   partyMember.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
                   partyMember.setRegisterTransferField(ServerConstants.TownMap);
-                  partyMember.dropMessage(5, "Death Count รวมเหลือ 0 จึงถูกย้ายกลับเมือง");
+                  partyMember.dropMessage(5,
+                        "Death Count เธฃเธงเธกเน€เธซเธฅเธทเธญ 0 เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
                } else {
                   partyMember.setDeathCountJinMulti(deathCount);
                }
@@ -19578,7 +19778,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.setTransferFieldOverlap(false);
             this.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
             this.setRegisterTransferField(ServerConstants.TownMap);
-            this.dropMessage(5, "Death Count รวมเหลือ 0 จึงถูกย้ายกลับเมือง");
+            this.dropMessage(5,
+                  "Death Count เธฃเธงเธกเน€เธซเธฅเธทเธญ 0 เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
             if (this.getEventInstance() != null && this.getEventInstance().hasEventTimer()) {
                this.getEventInstance().stopEventTimer();
                this.getEventInstance().dispose();
@@ -19756,7 +19957,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          msg.append(this.questType2[q.getType()]);
          msg.append("#k ");
          msg.append(this.questType[q.getType()]);
-         msg.append(" 하기 #e(");
+         msg.append(" ํ•๊ธฐ #e(");
          msg.append(q.getNeedQuantity());
          msg.append(" / ");
          msg.append(q.getQuantity());
@@ -19792,7 +19993,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                               name + " (" + q.getQuantity() + " / " + q.getNeedQuantity() + ")", false));
                         if (this.canCompleteWeeklyQuest(q.getQuestID())) {
                            this.send(CField.addPopupSay(9062000, 3000,
-                                 "#b[" + WeeklyQuest.QuestName.getQuestName(q.getQuestID()) + "]#k 퀘스트를 클리어 할 수 있습니다.",
+                                 "#b[" + WeeklyQuest.QuestName.getQuestName(q.getQuestID())
+                                       + "]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.",
                                  ""));
                         } else if (q.getQuantity() >= q.getNeedQuantity()) {
                            this.send(
@@ -19827,7 +20029,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                                              9062000,
                                              3000,
                                              "#b[" + MobQuest.QuestName.getQuestName(q.getQuestID())
-                                                   + "]#k 퀘스트를 클리어 할 수 있습니다.\r\n#e컨텐츠 시스템 > 익스트림 퀘스트#n를 통해 클리어해주시기 바랍니다.",
+                                                   + "]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.\r\n#e์ปจํ…์ธ  ์์คํ… > ์ต์คํธ๋ฆผ ํ€์คํธ#n๋ฅผ ํตํ•ด ํด๋ฆฌ์–ดํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.",
                                              ""));
                               }
                            }
@@ -20167,8 +20369,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   }
                }
 
-               if (enchant.contains("성")) {
-                  String a = enchant.split("성")[0];
+               if (enchant.contains("์ฑ")) {
+                  String a = enchant.split("์ฑ")[0];
                   int lv = Integer.parseInt(a);
                   int[] allStats = new int[] { 5, 5, 10, 10, 20, 20, 30, 50, 75, 100 };
                   int[] attacks = new int[] { 0, 0, 5, 5, 10, 10, 15, 25, 35, 50 };
@@ -20180,7 +20382,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      equip.setLuk((short) (equip.getLuk() + allStats[i]));
                      equip.setWatk((short) (equip.getWatk() + attacks[i]));
                      equip.setMatk((short) (equip.getMatk() + attacks[i]));
-                     equip.setOwner(lv + "성");
+                     equip.setOwner(lv + "์ฑ");
                   }
                }
 
@@ -20193,7 +20395,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      5,
                      "["
                            + ii.getName(equip.getItemId())
-                           + "] 아이템이 2019년 9월 25일 점검 시점 이전 아이템 옵션 초기화 대상 아이템으로 놀라운 장비 강화 주문서, 스타포스, 인챈트, 잠재능력, 추가옵션을 제외한 옵션이 초기화되었습니다.");
+                           + "] ์•์ดํ…์ด 2019๋… 9์” 25์ผ ์ ๊ฒ€ ์์  ์ด์  ์•์ดํ… ์ต์… ์ด๊ธฐํ” ๋€์ ์•์ดํ…์ผ๋ก ๋€๋ผ์ด ์ฅ๋น ๊ฐ•ํ” ์ฃผ๋ฌธ์, ์คํ€ํฌ์ค, ์ธ์ฑํธ, ์ ์ฌ๋ฅ๋ ฅ, ์ถ”๊ฐ€์ต์…์ ์ ์ธํ• ์ต์…์ด ์ด๊ธฐํ”๋์—์ต๋๋ค.");
             }
          default:
             equip.setClearCheck(0);
@@ -20294,7 +20496,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   CField.addPopupSay(
                         9062000,
                         10000,
-                        "#e#b[초보자B]#k#n 길드에 자동으로 가입되었습니다.\r\n계정 내 #r통합레벨이 500#k을 넘으면 계정 내 모든 캐릭터가 길드에서 자동으로 탈퇴되며,\r\n#r캐릭터 레벨이 220#k을 넘으면 해당 캐릭터는 자동으로 탈퇴됩니다.\r\n\r\n#b강림#k에서 행복한 하루 되세요.",
+                        "#e#b[์ด๋ณด์B]#k#n ๊ธธ๋“์— ์๋์ผ๋ก ๊ฐ€์…๋์—์ต๋๋ค.\r\n๊ณ์ • ๋ด #rํตํ•ฉ๋ ๋ฒจ์ด 500#k์ ๋์ผ๋ฉด ๊ณ์ • ๋ด ๋ชจ๋“  ์บ๋ฆญํฐ๊ฐ€ ๊ธธ๋“์—์ ์๋์ผ๋ก ํํด๋๋ฉฐ,\r\n#r์บ๋ฆญํฐ ๋ ๋ฒจ์ด 220#k์ ๋์ผ๋ฉด ํ•ด๋น ์บ๋ฆญํฐ๋” ์๋์ผ๋ก ํํด๋ฉ๋๋ค.\r\n\r\n#b๊ฐ•๋ฆผ#k์—์ ํ–๋ณตํ• ํ•๋ฃจ ๋์ธ์”.",
                         ""));
             this.updateOneInfo(1234677, "join_newbie", "1");
          }
@@ -20970,12 +21172,12 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    }
 
    public String getUnionLevelName() {
-      return this.currentUnion == null ? "언랭크" : MapleUnionData.getRankFullName(this.currentUnion.rank);
+      return this.currentUnion == null ? "์–ธ๋ญํฌ" : MapleUnionData.getRankFullName(this.currentUnion.rank);
    }
 
    public String getNextUnionLevelName() {
       if (this.currentUnion == null) {
-         return "언랭크";
+         return "์–ธ๋ญํฌ";
       } else {
          int rank = this.currentUnion.rank;
          int next = MapleUnionConstants.getNextRank(rank);
@@ -21467,7 +21669,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
          if (this.level >= 100 && (shieldID >= 1352500 && shieldID <= 1352502 || shieldID == 1352504)) {
             this.removeAndChangeEquip(1352503, (short) -10);
-            this.dropMessage(5, "อาวุธรอง Kaiser ถูกเปลี่ยนอัตโนมัติ");
+            this.dropMessage(5,
+                  "เธญเธฒเธงเธธเธเธฃเธญเธ Kaiser เธ–เธนเธเน€เธเธฅเธตเนเธขเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด");
          }
       }
 
@@ -21476,11 +21679,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
             if (this.level >= 100 && shieldID >= 1352600 && shieldID <= 1352603) {
                this.removeAndChangeEquip(1352604, (short) -10);
-               this.dropMessage(5, "อาวุธรอง Angelic Buster ถูกเปลี่ยนอัตโนมัติ");
+               this.dropMessage(5,
+                     "เธญเธฒเธงเธธเธเธฃเธญเธ Angelic Buster เธ–เธนเธเน€เธเธฅเธตเนเธขเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด");
             }
          } else if (this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10) == null && this.level < 100) {
             this.removeAndChangeEquip(1352600, (short) -10);
-            this.dropMessage(5, "อาวุธรอง Angelic Buster ถูกเปลี่ยนอัตโนมัติ");
+            this.dropMessage(5,
+                  "เธญเธฒเธงเธธเธเธฃเธญเธ Angelic Buster เธ–เธนเธเน€เธเธฅเธตเนเธขเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด");
          }
       }
 
@@ -21489,7 +21694,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          int shieldID = this.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
          if (this.level >= 100 && shieldID >= 1098000 && shieldID <= 1098002) {
             this.removeAndChangeEquip(1098003, (short) -10);
-            this.dropMessage(5, "อาวุธรอง Mihile ถูกเปลี่ยนอัตโนมัติ");
+            this.dropMessage(5,
+                  "เธญเธฒเธงเธธเธเธฃเธญเธ Mihile เธ–เธนเธเน€เธเธฅเธตเนเธขเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด");
          }
       }
 
@@ -21503,7 +21709,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.removeAndChangeEquip(1099000, (short) -10);
             }
 
-            this.dropMessage(5, "อาวุธรอง Demon Slayer ถูกเปลี่ยนอัตโนมัติ");
+            this.dropMessage(5,
+                  "เธญเธฒเธงเธธเธเธฃเธญเธ Demon Slayer เธ–เธนเธเน€เธเธฅเธตเนเธขเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด");
          }
       }
 
@@ -21569,7 +21776,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             qs = this.getQuest(quest);
             if (quest != null && qs.getStatus() != 2) {
                MapleQuest.getInstance(1542).forceComplete(this, 2003);
-               this.send(CWvsContext.getScriptProgressMessage("[정령결속 극대화]를 통해 그리운 랑의 모습을 구현할 수 있게 되었습니다."));
+               this.send(CWvsContext.getScriptProgressMessage(
+                     "[์ •๋ น๊ฒฐ์ ๊ทน๋€ํ”]๋ฅผ ํตํ•ด ๊ทธ๋ฆฌ์ด ๋‘์ ๋ชจ์ต์ ๊ตฌํํ•  ์ ์๊ฒ ๋์—์ต๋๋ค."));
             }
          }
       }
@@ -22085,7 +22293,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   sb.append(test).append("|").append(test).append("|0|0|0");
                   this.fairyExp = 0;
                   this.updateInfoQuest(questID, itemUniequeID + "=" + sb.toString());
-                  this.dropMessage(5, "ผ่านเที่ยงคืนแล้ว Pendant of the Spirit ถูกรีเซ็ต");
+                  this.dropMessage(5,
+                        "เธเนเธฒเธเน€เธ—เธตเนเธขเธเธเธทเธเนเธฅเนเธง Pendant of the Spirit เธ–เธนเธเธฃเธตเน€เธเนเธ•");
                }
             } catch (Exception var14) {
             }
@@ -23687,8 +23896,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       for (MapleCabinetItem item : new ArrayList<>(this.getCabinet().getItems())) {
          if (item.getExpiredTime() < System.currentTimeMillis()) {
             this.getCabinet().removeCabinetItem(item.getIndex());
-            this.dropMessage(5, "[" + ii.getName(item.getItem().getItemId()) + "]이(가) 유효기간이 만료되어 메이플 보관함에서 삭제됩니다.");
-            StringBuilder sb = new StringBuilder("캐비넷 아이템 기간 만료");
+            this.dropMessage(5, "[" + ii.getName(item.getItem().getItemId())
+                  + "]์ด(๊ฐ€) ์ ํจ๊ธฐ๊ฐ์ด ๋ง๋ฃ๋์–ด ๋ฉ”์ดํ” ๋ณด๊ด€ํ•จ์—์ ์ญ์ ๋ฉ๋๋ค.");
+            StringBuilder sb = new StringBuilder("์บ๋น๋ท ์•์ดํ… ๊ธฐ๊ฐ ๋ง๋ฃ");
             LoggingManager.putLog(
                   new CabinetLog(this, item.getItem().getItemId(), item.getItem().getQuantity(),
                         CabinetLogType.ExpiredCabinetItem.getType(), sb));
@@ -24342,7 +24552,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
    public boolean tryAntiMacro(AntiMacroType type, MapleCharacter from) {
       if (this.getClient().isOverseasUser()) {
          if (from != null) {
-            from.dropMessage(1, "พึ่งผ่าน Lie Detector มา ไม่สามารถใช้งานได้");
+            from.dropMessage(1,
+                  "เธเธถเนเธเธเนเธฒเธ Lie Detector เธกเธฒ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
          }
 
          return false;
@@ -24362,7 +24573,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          macro.getTrying().set(1);
          if (from != null) {
             macro.setFromID(from.getId());
-            this.dropMessage(5, from.getName() + "님이 거짓말 탐지기를 요청하였습니다.");
+            this.dropMessage(5, from.getName() + "๋์ด ๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ๋ฅผ ์”์ฒญํ•์€์ต๋๋ค.");
          }
 
          this.setStartActiveMacroTime(System.currentTimeMillis());
@@ -24397,7 +24608,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          }
       } else {
          if (from != null) {
-            from.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ ไม่สามารถใช้งานได้");
+            from.dropMessage(1,
+                  "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
          }
 
          return false;
@@ -24415,16 +24627,19 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          String reason = "";
          switch (type) {
             case Disconnection:
-               this.updateOneInfo(19770, "reason", "[" + this.getName() + "] 캐릭터가 거짓말 탐지기 진행중에 채널을 변경하셨거나 게임을 종료하셨네요.");
-               reason = "채널 변경 혹은 게임 종료";
+               this.updateOneInfo(19770, "reason", "[" + this.getName()
+                     + "] ์บ๋ฆญํฐ๊ฐ€ ๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ ์งํ–์ค‘์— ์ฑ๋์ ๋ณ€๊ฒฝํ•์…จ๊ฑฐ๋ ๊ฒ์์ ์ข…๋ฃํ•์…จ๋ค์”.");
+               reason = "์ฑ๋ ๋ณ€๊ฒฝ ํน์€ ๊ฒ์ ์ข…๋ฃ";
                break;
             case InputFailed:
-               this.updateOneInfo(19770, "reason", "[" + this.getName() + "] 캐릭터가 거짓말 탐지기에 오답을 입력하셨네요.");
-               reason = "오답 입력";
+               this.updateOneInfo(19770, "reason",
+                     "[" + this.getName() + "] ์บ๋ฆญํฐ๊ฐ€ ๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ์— ์ค๋ต์ ์…๋ ฅํ•์…จ๋ค์”.");
+               reason = "์ค๋ต ์…๋ ฅ";
                break;
             case Timeout:
-               this.updateOneInfo(19770, "reason", "[" + this.getName() + "] 캐릭터가 거짓말 탐지기 입력에 너무 오랜 시간이 걸리셨네요.");
-               reason = "시간 초과";
+               this.updateOneInfo(19770, "reason", "[" + this.getName()
+                     + "] ์บ๋ฆญํฐ๊ฐ€ ๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ ์…๋ ฅ์— ๋๋ฌด ์ค๋ ์๊ฐ์ด ๊ฑธ๋ฆฌ์…จ๋ค์”.");
+               reason = "์๊ฐ ์ด๊ณผ";
          }
 
          int r = this.getMap().getReturnMapId();
@@ -24440,19 +24655,20 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          this.updateOneInfo(19770, "elapsed", "0");
          this.updateOneInfo(19770, "active", "1");
          StringBuilder sb = new StringBuilder();
-         sb.append("매크로 결과 : 실패");
-         sb.append(" (계정ID : ");
+         sb.append("๋งคํฌ๋ก ๊ฒฐ๊ณผ : ์คํจ");
+         sb.append(" (๊ณ์ •ID : ");
          sb.append(this.getClient().getAccountName());
-         sb.append(", 캐릭터 이름 : ");
+         sb.append(", ์บ๋ฆญํฐ ์ด๋ฆ : ");
          sb.append(this.getName());
-         sb.append(", 실패 사유 : ");
+         sb.append(", ์คํจ ์ฌ์  : ");
          sb.append(this.getOneInfo(19770, "reason"));
          sb.append(")");
          LoggingManager.putLog(new MacroLog(this, 2, type.getType(), sb));
          this.setStartActiveMacroTime(0L);
          Center.Broadcast.broadcastGMMessage(
                CWvsContext.serverNotice(5,
-                     this.getClient().getChannel() + "채널에서 " + this.getName() + "이(가) 매크로로 판명되었습니다. 사유 : " + reason));
+                     this.getClient().getChannel() + "์ฑ๋์—์ " + this.getName()
+                           + "์ด(๊ฐ€) ๋งคํฌ๋ก๋ก ํ๋ช…๋์—์ต๋๋ค. ์ฌ์  : " + reason));
          this.antiMacro.setCaptcha(null);
          this.antiMacro.setFromID(0);
          this.antiMacro.getTrying().set(0);
@@ -24485,19 +24701,19 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             player.dropMessage(
                   5,
                   this.getName()
-                        + "님이 거짓말 탐지기 테스트를 "
+                        + "๋์ด ๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ ํ…์คํธ๋ฅผ "
                         + (System.currentTimeMillis() - this.getStartActiveMacroTime()) / 1000L
-                        + "초동안 "
+                        + "์ด๋์• "
                         + macro.getTrying().get()
-                        + "회 시도하여 통과하였습니다.");
+                        + "ํ ์๋ํ•์—ฌ ํต๊ณผํ•์€์ต๋๋ค.");
          }
       }
 
       StringBuilder sb = new StringBuilder();
-      sb.append("매크로 결과 : 통과");
-      sb.append(" (계정ID : ");
+      sb.append("๋งคํฌ๋ก ๊ฒฐ๊ณผ : ํต๊ณผ");
+      sb.append(" (๊ณ์ •ID : ");
       sb.append(this.getClient().getAccountName());
-      sb.append(", 캐릭터 이름 : ");
+      sb.append(", ์บ๋ฆญํฐ ์ด๋ฆ : ");
       sb.append(this.getName());
       sb.append(")");
       LoggingManager.putLog(new MacroLog(this, 1, 0, sb));
@@ -24543,40 +24759,40 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
             while (rs.next()) {
                String bossName = rs.getString("bossname");
-               if (!bossName.contains("연습")) {
-                  if (bossName.contains("스우")) {
+               if (!bossName.contains("์—ฐ์ต")) {
+                  if (bossName.contains("์ค์ฐ")) {
                      check1 = true;
                   }
 
-                  if (bossName.contains("데미안")) {
+                  if (bossName.contains("๋ฐ๋ฏธ์•")) {
                      check2 = true;
                   }
 
-                  if (bossName.contains("루시드")) {
+                  if (bossName.contains("๋ฃจ์๋“")) {
                      check3 = true;
                   }
 
-                  if (bossName.contains("진힐라")) {
+                  if (bossName.contains("์งํ๋ผ")) {
                      check4 = true;
                   }
 
-                  if (bossName.contains("파풀라투스")) {
+                  if (bossName.contains("ํํ’€๋ผํฌ์ค")) {
                      check5 = true;
                   }
 
-                  if (bossName.contains("자쿰")) {
+                  if (bossName.contains("์์ฟฐ")) {
                      check6 = true;
                   }
 
-                  if (bossName.contains("듄켈")) {
+                  if (bossName.contains("๋“์ผ")) {
                      check10 = true;
                   }
 
-                  if (bossName.contains("더스크")) {
+                  if (bossName.contains("๋”์คํฌ")) {
                      check11 = true;
                   }
 
-                  if (bossName.contains("윌")) {
+                  if (bossName.contains("์")) {
                      check16 = true;
                   }
                }
@@ -24770,7 +24986,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            String.valueOf(this.getOneInfoQuestInteger(100001 + ix, "equip")));
                   }
 
-                  this.dropMessage(5, "ย้ายข้อมูล Stone เรียบร้อยแล้ว");
+                  this.dropMessage(5, "เธขเนเธฒเธขเธเนเธญเธกเธนเธฅ Stone เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                }
 
                this.updateOneInfo(454599, "first_check", "1");
@@ -24965,15 +25181,18 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             Item item = new Item(itemID, (short) 0, (short) quantity, 0, MapleInventoryIdentifier.getInstance());
             MapleCabinet cabinet = this.getCabinet();
             if (cabinet != null) {
-               SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+               SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
                String var75 = sdf.format(CAL.getTime());
                cabinet.addCabinetItem(
-                     new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L, "[핫타임 보상]",
-                           var75 + "에 지급된 핫타임 보상입니다.", item));
+                     new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
+                           "[ํ•ซํ€์ ๋ณด์]",
+                           var75 + "์— ์ง€๊ธ๋ ํ•ซํ€์ ๋ณด์์…๋๋ค.", item));
                this.send(CField.maplecabinetResult(8));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               this.send(CField.chatMsg(1, "ได้รับ Opening Celebration Support Box แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
-               this.dropMessage(1, "ได้รับ Opening Celebration Support Box แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
+               this.send(CField.chatMsg(1,
+                     "เนเธ”เนเธฃเธฑเธ Opening Celebration Support Box เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]"));
+               this.dropMessage(1,
+                     "เนเธ”เนเธฃเธฑเธ Opening Celebration Support Box เนเธฅเนเธง\r\nเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
             }
          }
 
@@ -24996,15 +25215,18 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          item = new Item(itemID, (short) 0, (short) quantity, 0, MapleInventoryIdentifier.getInstance());
          MapleCabinet cabinet = this.getCabinet();
          if (cabinet != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
             fDate = sdf.format(CAL.getTime());
             cabinet.addCabinetItem(
-                  new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L, "[이벤트 지급]",
-                        fDate + "에 지급된 이벤트 보상입니다.", item));
+                  new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
+                        "[์ด๋ฒคํธ ์ง€๊ธ]",
+                        fDate + "์— ์ง€๊ธ๋ ์ด๋ฒคํธ ๋ณด์์…๋๋ค.", item));
             this.send(CField.maplecabinetResult(8));
             this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-            this.send(CField.chatMsg(1, "ได้รับ Ganglim November Heart Box แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
-            this.dropMessage(1, "ได้รับ Ganglim November Heart Box แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
+            this.send(CField.chatMsg(1,
+                  "เนเธ”เนเธฃเธฑเธ Ganglim November Heart Box เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]"));
+            this.dropMessage(1,
+                  "เนเธ”เนเธฃเธฑเธ Ganglim November Heart Box เนเธฅเนเธง\r\nเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
          }
 
          this.updateOneInfo(1234567, "get_november_reward", "1");
@@ -25036,18 +25258,23 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          Item item = new Item(3014028, (short) 0, (short) 1, 0, MapleInventoryIdentifier.getInstance());
          MapleCabinet cabinet = this.getCabinet();
          if (cabinet != null) {
-            new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+            new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
             cabinet.addCabinetItem(
-                  new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L, "[275레벨 보상]",
-                        fDate + "에 지급된 보상입니다.", item));
+                  new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 259200000L,
+                        "[275๋ ๋ฒจ ๋ณด์]",
+                        fDate + "์— ์ง€๊ธ๋ ๋ณด์์…๋๋ค.", item));
             this.send(CField.maplecabinetResult(8));
             this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
             if (DBConfig.isGanglim) {
-               this.send(CField.chatMsg(1, "ได้รับ Symbol of Brilliant Honor แล้ว สามารถรับได้ที่ [Maple Cabinet]"));
-               this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor แล้ว\r\nสามารถรับได้ที่ [Maple Cabinet]");
+               this.send(CField.chatMsg(1,
+                     "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]"));
+               this.dropMessage(1,
+                     "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor เนเธฅเนเธง\r\nเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
             } else {
-               this.dropMessage(5, "[Notice] ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275) ตรวจสอบ [Maple Cabinet]");
-               this.dropMessage(1, "ได้รับ Symbol of Brilliant Honor (รางวัลเลเวล 275)\r\nกรุณาตรวจสอบ [Maple Cabinet]");
+               this.dropMessage(5,
+                     "[Notice] เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 275) เธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
+               this.dropMessage(1,
+                     "เนเธ”เนเธฃเธฑเธ Symbol of Brilliant Honor (เธฃเธฒเธเธงเธฑเธฅเน€เธฅเน€เธงเธฅ 275)\r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธ [Maple Cabinet]");
             }
          }
 
@@ -25199,11 +25426,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.setRegisterTransferField(993073000);
             this.setRegisterTransferFieldTime(System.currentTimeMillis());
             StringBuilder sb = new StringBuilder();
-            sb.append("거짓말 탐지기 통과 실패 : ");
+            sb.append("๊ฑฐ์ง“๋ง ํ์ง€๊ธฐ ํต๊ณผ ์คํจ : ");
             sb.append(this.getName());
-            sb.append(" / 계정 : ");
+            sb.append(" / ๊ณ์ • : ");
             sb.append(this.getClient().getAccountName());
-            sb.append(" / 실패사유 : ");
+            sb.append(" / ์คํจ์ฌ์  : ");
             sb.append(this.getOneInfoQuest(19770, "reason"));
             return;
          }
@@ -25294,7 +25521,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
       this.updateOneInfo(42003, "point",
             String.valueOf(Math.min(500000, this.getOneInfoQuestInteger(42003, "point") + point)));
-      this.dropMessage(5, point + "ได้รับแต้ม");
+      this.dropMessage(5, point + "เนเธ”เนเธฃเธฑเธเนเธ•เนเธก");
    }
 
    public void applyBMCurse(int curseDamR) {
@@ -25495,7 +25722,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                MapleInventoryManipulator.removeById(this.getClient(), MapleInventoryType.getByType(equip.getType()),
                      equip.getItemId(), 1, false, false);
                MapleInventoryManipulator.addbyItem(this.getClient(), genesis);
-               this.dropMessage(5, "พลังแรกที่ซ่อนอยู่ในอาวุธ Genesis ตื่นขึ้นแล้ว กรุณาตรวจสอบอาวุธ");
+               this.dropMessage(5,
+                     "เธเธฅเธฑเธเนเธฃเธเธ—เธตเนเธเนเธญเธเธญเธขเธนเนเนเธเธญเธฒเธงเธธเธ Genesis เธ•เธทเนเธเธเธถเนเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธญเธฒเธงเธธเธ");
                this.updateOneInfo(1234588, "bm_quest_check", "1");
             }
          }
@@ -25545,8 +25773,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             IntensePowerCrystalData data = GameConstants.getIntensePowerCrystalData(dropper.getId());
             if (data != null) {
                Item item = new Item(4001886, (short) 0, (short) 1, 0);
-               item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + this.getName() + "이 " + dropper.getId()
-                     + "를 처치하고 얻은 아이템.");
+               item.setGMLog(CurrentTime.getAllCurrentTime() + "์— " + this.getName() + "์ด " + dropper.getId()
+                     + "๋ฅผ ์ฒ์นํ•๊ณ  ์–ป์€ ์•์ดํ….");
                item.setUniqueId(MapleInventoryIdentifier.getInstance());
                int memberCount = 1;
                if (this.getParty() != null) {
@@ -26132,11 +26360,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   String note = rs.getString("note");
                   originalMoney += price;
                   int point = 0;
-                  if (name != null && name.contains("이벤트")) {
+                  if (name != null && name.contains("์ด๋ฒคํธ")) {
                      point += Math.min(500000, (int) (price * 0.5));
                   }
 
-                  if (note != null && note.contains("패키지")) {
+                  if (note != null && note.contains("ํจํค์ง€")) {
                      point += Math.min(500000, (int) (price * 0.5));
                   }
 
@@ -26199,11 +26427,12 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             }
 
-            System.out.println("accountName: " + this.getClient().getAccountName() + ", 총 익스트림 포인트 복구 포인트: "
-                  + totalPoint + ", 총 누적 금액 : " + originalMoney);
+            System.out.println("accountName: " + this.getClient().getAccountName()
+                  + ", ์ด ์ต์คํธ๋ฆผ ํฌ์ธํธ ๋ณต๊ตฌ ํฌ์ธํธ: "
+                  + totalPoint + ", ์ด ๋์  ๊ธ์•ก : " + originalMoney);
             this.dropMessage(
-                  5, "จำนวน Extreme Point ที่กู้คืน " + totalPoint
-                        + " 만큼 강림 포인트로 전환 대상입니다. 3월 27일부터 토요일 자정기준 1주일 마다 20%씩 지급받을 수 있습니다. 상점 시스템 > 포인트 상점에서 지급받으시기 바랍니다.");
+                  5, "เธเธณเธเธงเธ Extreme Point เธ—เธตเนเธเธนเนเธเธทเธ " + totalPoint
+                        + " ๋งํผ ๊ฐ•๋ฆผ ํฌ์ธํธ๋ก ์ ํ ๋€์์…๋๋ค. 3์” 27์ผ๋ถ€ํฐ ํ ์”์ผ ์์ •๊ธฐ์ค€ 1์ฃผ์ผ ๋ง๋ค 20%์”ฉ ์ง€๊ธ๋ฐ์ ์ ์์ต๋๋ค. ์์  ์์คํ… > ํฌ์ธํธ ์์ ์—์ ์ง€๊ธ๋ฐ์ผ์๊ธฐ ๋ฐ”๋๋๋ค.");
             this.extremeRealCash = totalPoint;
             this.updateOneInfo(1234567, "check_e_donation", "1");
          }
@@ -26752,11 +26981,11 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   this.getName()
                         + " : "
                         + this.getName()
-                        + "님이 초월 환생을 하여 누적 환생 횟수 "
+                        + "๋์ด ์ด์” ํ์์ ํ•์—ฌ ๋์  ํ์ ํ์ "
                         + this.getRebirthCount()
-                        + "회(각성: "
+                        + "ํ(๊ฐ์ฑ: "
                         + this.getSuperRebirthCount()
-                        + "회)를 달성하였습니다."));
+                        + "ํ)๋ฅผ ๋ฌ์ฑํ•์€์ต๋๋ค."));
    }
 
    public void doRebirth() {
@@ -26836,8 +27065,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       Center.Broadcast.broadcastMessage(
             CField.chatMsg(
                   19,
-                  this.getName() + " : " + this.getName() + "님이 환생을 하여 누적 환생 횟수 " + this.getRebirthCount() + "회(각성: "
-                        + this.getSuperRebirthCount() + "회)를 달성하였습니다."));
+                  this.getName() + " : " + this.getName() + "๋์ด ํ์์ ํ•์—ฌ ๋์  ํ์ ํ์ "
+                        + this.getRebirthCount() + "ํ(๊ฐ์ฑ: "
+                        + this.getSuperRebirthCount() + "ํ)๋ฅผ ๋ฌ์ฑํ•์€์ต๋๋ค."));
    }
 
    public void doSuperRebirth() {
@@ -26888,13 +27118,17 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       Center.Broadcast.broadcastMessage(
             CField.chatMsg(
                   19,
-                  this.getName() + " : " + this.getName() + "님이 각성을 하여 누적 환생 횟수 " + this.getRebirthCount() + "회(각성: "
-                        + this.getSuperRebirthCount() + "회)를 달성하였습니다."));
+                  this.getName() + " : " + this.getName() + "๋์ด ๊ฐ์ฑ์ ํ•์—ฌ ๋์  ํ์ ํ์ "
+                        + this.getRebirthCount() + "ํ(๊ฐ์ฑ: "
+                        + this.getSuperRebirthCount() + "ํ)๋ฅผ ๋ฌ์ฑํ•์€์ต๋๋ค."));
       int sp = this.getOneInfoQuestInteger(501045, "sp");
       this.updateOneInfo(501045, "sp", String.valueOf(sp + 1));
       this.send(
-            CField.addPopupSay(9062000, 3000, "#b강림 리버스 멤버십 스킬 포인트(SP) 1개#k를 획득하였습니다.\r\n왼쪽 별모양 아이콘을 통해 확인해보세요.", ""));
-      this.dropMessage(5, "ได้รับ Ganglim Reverse Membership SP 1 แต้ม ตรวจสอบได้ที่ไอคอนดาวด้านซ้าย");
+            CField.addPopupSay(9062000, 3000,
+                  "#b๊ฐ•๋ฆผ ๋ฆฌ๋ฒ์ค ๋ฉค๋ฒ์ญ ์คํฌ ํฌ์ธํธ(SP) 1๊ฐ#k๋ฅผ ํ๋“ํ•์€์ต๋๋ค.\r\n์ผ์ชฝ ๋ณ๋ชจ์–‘ ์•์ด์ฝ์ ํตํ•ด ํ•์ธํ•ด๋ณด์ธ์”.",
+                  ""));
+      this.dropMessage(5,
+            "เนเธ”เนเธฃเธฑเธ Ganglim Reverse Membership SP 1 เนเธ•เนเธก เธ•เธฃเธงเธเธชเธญเธเนเธ”เนเธ—เธตเนเนเธญเธเธญเธเธ”เธฒเธงเธ”เนเธฒเธเธเนเธฒเธข");
    }
 
    public void tryApplyAbnormal(MobSkillInfo mobSkillInfo) {
@@ -27253,7 +27487,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                }
             }
          } catch (Exception var11) {
-            FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf", "updateChannelChange 함수 실행중 오류발생 길드",
+            FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf",
+                  "updateChannelChange ํ•จ์ ์คํ–์ค‘ ์ค๋ฅ๋ฐ์ ๊ธธ๋“",
                   var11);
          }
       } else if (this.getClient().getPlayer() == null) {
@@ -27261,7 +27496,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.getMap().removePlayer(this);
          } catch (Exception var9) {
             FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf",
-                  "updateChannelChange 함수 실행중 오류발생 removePlayer", var9);
+                  "updateChannelChange ํ•จ์ ์คํ–์ค‘ ์ค๋ฅ๋ฐ์ removePlayer", var9);
          }
       } else {
          if (this.updateChannelTryCount > 10) {
@@ -27312,7 +27547,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             }
          } catch (Exception var10) {
             FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf",
-                  "updateChannelChange 함수 실행중 오류발생 removePlayer", var10);
+                  "updateChannelChange ํ•จ์ ์คํ–์ค‘ ์ค๋ฅ๋ฐ์ removePlayer", var10);
          }
       }
    }
@@ -27348,7 +27583,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                && this.client != null
                && this.client.getKeyValue(event.getStartTime() + "=" + event.getItemID()) == null) {
             this.client.setKeyValue(event.getStartTime() + "=" + event.getItemID(), "true");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
             Calendar CAL = new GregorianCalendar(Locale.KOREA);
             String fDate = sdf.format(CAL.getTime());
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -27361,11 +27596,13 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.cabinetItem
                      .addCabinetItem(
                            new MapleCabinetItem(
-                                 this.cabinetItem.getNextIndex(), System.currentTimeMillis() + 604800000L, "[핫타임 보상]",
-                                 fDate + "에 지급된 핫타임 보상입니다.", item));
+                                 this.cabinetItem.getNextIndex(), System.currentTimeMillis() + 604800000L,
+                                 "[ํ•ซํ€์ ๋ณด์]",
+                                 fDate + "์— ์ง€๊ธ๋ ํ•ซํ€์ ๋ณด์์…๋๋ค.", item));
                this.send(CField.maplecabinetResult(8));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               this.dropMessage(1, "ได้รับรางวัล Hot Time แล้ว สามารถรับได้ที่ Maple Cabinet");
+               this.dropMessage(1,
+                     "เนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ Hot Time เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน Maple Cabinet");
             }
          }
       }
@@ -27377,13 +27614,15 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             this.setKeyValue(124, "ppp", String.valueOf(this.getKeyValue(124, "ppp") + 1000));
             if (this.getParty() != null && this.getParty().getPartyMember().getPartyMemberList().size() > 2) {
                this.warp(ServerConstants.TownMap);
-               this.dropMessage(5, "พื้นที่ล่า Fatigue ไม่สามารถเข้าปาร์ตี้เกิน 3 คนได้");
+               this.dropMessage(5,
+                     "เธเธทเนเธเธ—เธตเนเธฅเนเธฒ Fatigue เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเธเธฒเธฃเนเธ•เธตเนเน€เธเธดเธ 3 เธเธเนเธ”เน");
                return;
             }
 
             if (this.getKeyValue(123, "pp") <= 0) {
                this.warp(ServerConstants.TownMap);
-               this.dropMessage(5, "หมดความเหนื่อยล้า จึงกลับเมือง");
+               this.dropMessage(5,
+                     "เธซเธกเธ”เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒ เธเธถเธเธเธฅเธฑเธเน€เธกเธทเธญเธ");
             } else if (this.getKeyValue(124, "ppp") > 60000) {
                long fatiguetime = this.getKeyValueLong(124, "ppptime");
                long currenttime = System.currentTimeMillis();
@@ -27395,7 +27634,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      this.setKeyValue(123, "pp", String.valueOf(0));
                   }
 
-                  this.dropMessage(5, "ความเหนื่อยล้าลดลง ความเหนื่อยล้าที่เหลือ : " + this.getKeyValue(123, "pp"));
+                  this.dropMessage(5,
+                        "เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเธฅเธ”เธฅเธ เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเธ—เธตเนเน€เธซเธฅเธทเธญ : "
+                              + this.getKeyValue(123, "pp"));
                }
             }
          }
@@ -27513,7 +27754,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          case 15:
             return "MVP Black";
          default:
-            return "일반";
+            return "์ผ๋ฐ";
       }
    }
 
@@ -27569,19 +27810,19 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       String var1 = this.client.getKeyValue("pGrade");
       switch (var1) {
          case "1":
-            return "비기닝";
+            return "๋น๊ธฐ๋";
          case "2":
-            return "라이징";
+            return "๋ผ์ด์ง•";
          case "3":
-            return "플라잉";
+            return "ํ”๋ผ์";
          case "4":
-            return "샤이닝";
+            return "์ค์ด๋";
          case "5":
-            return "아이돌";
+            return "์•์ด๋";
          case "6":
-            return "슈퍼스타";
+            return "์ํผ์คํ€";
          default:
-            return "일반";
+            return "์ผ๋ฐ";
       }
    }
 
@@ -28036,7 +28277,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       }
 
       if (this.isLockNeoCore()) {
-         this.dropMessage(-8, "ได้รับ Neo Core เกินจำนวนที่กำหนดต่อวัน จึงไม่ได้รับเพิ่ม");
+         this.dropMessage(-8,
+               "เนเธ”เนเธฃเธฑเธ Neo Core เน€เธเธดเธเธเธณเธเธงเธเธ—เธตเนเธเธณเธซเธเธ”เธ•เนเธญเธงเธฑเธ เธเธถเธเนเธกเนเนเธ”เนเธฃเธฑเธเน€เธเธดเนเธก");
       } else {
          int a = this.getKeyValue(QuestExConstants.NeoCoreEvent.getQuestID(), "today");
          int todaycore = a + core;
@@ -28059,7 +28301,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      + this.getKeyValue(QuestExConstants.NeoCoreEvent.getQuestID(), "today")
                      + ";lock="
                      + lock);
-         this.dropMessage(-8, "[알림] " + core + " ได้รับ Neo Core ");
+         this.dropMessage(-8, "[์•๋ฆผ] " + core + " เนเธ”เนเธฃเธฑเธ Neo Core ");
       }
    }
 
@@ -28240,7 +28482,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
          });
          this.updateOneInfo(1334567, "check_symbol", "1");
          if (check.get()) {
-            this.dropMessage(5, "ปรับเพิ่มค่าสถานะของ Symbol ที่เสริมพลังแล้ว [All Stat +1500, ATT/MATT +750]");
+            this.dropMessage(5,
+                  "เธเธฃเธฑเธเน€เธเธดเนเธกเธเนเธฒเธชเธ–เธฒเธเธฐเธเธญเธ Symbol เธ—เธตเนเน€เธชเธฃเธดเธกเธเธฅเธฑเธเนเธฅเนเธง [All Stat +1500, ATT/MATT +750]");
          }
       }
    }
@@ -28266,7 +28509,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                            String owner = item.getOwner();
                            if (owner != null && !owner.isEmpty() && item.getItemId() / 1000 != 1342) {
                               try {
-                                 if (owner.contains("성")) {
+                                 if (owner.contains("์ฑ")) {
                                     int upgrade = Integer.parseInt(owner.replaceAll("[^0-9]", ""));
                                     if (GameConstants.isLongcoat(item.getItemId())) {
                                        upgrade *= 2;
@@ -28380,7 +28623,8 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                this.send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
             }
 
-            this.dropMessage(5, "ปรับค่า Arcane Symbol ให้เป็นปกติเรียบร้อยแล้ว");
+            this.dropMessage(5,
+                  "เธเธฃเธฑเธเธเนเธฒ Arcane Symbol เนเธซเนเน€เธเนเธเธเธเธ•เธดเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
          }
       }
    }

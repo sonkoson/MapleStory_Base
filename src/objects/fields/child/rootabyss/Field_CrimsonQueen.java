@@ -1,4 +1,4 @@
-package objects.fields.child.rootabyss;
+﻿package objects.fields.child.rootabyss;
 
 import constants.QuestExConstants;
 import database.DBConfig;
@@ -152,22 +152,22 @@ public class Field_CrimsonQueen extends Field {
          switch (skillLevel) {
             case 51:
             case 55:
-               msg = "내가 상대해주겠어요.";
+               msg = "๋ด๊ฐ€ ์๋€ํ•ด์ฃผ๊ฒ ์–ด์”.";
                itemID = 5120099;
                break;
             case 52:
             case 56:
-               msg = "킥킥, 다 없애주지";
+               msg = "ํฅํฅ, ๋ค ์—์• ์ฃผ์ง€";
                itemID = 5120101;
                break;
             case 53:
             case 57:
-               msg = "모두 불태워주마!";
+               msg = "๋ชจ๋‘ ๋ถํ์์ฃผ๋ง!";
                itemID = 5120100;
                break;
             case 54:
             case 58:
-               msg = "내 고통을 느끼게 해줄게요.";
+               msg = "๋ด ๊ณ ํต์ ๋๋ผ๊ฒ ํ•ด์ค๊ฒ์”.";
                itemID = 5120102;
          }
 

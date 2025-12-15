@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes.mobskills;
+﻿package objects.fields.gameobject.lifes.mobskills;
 
 import java.awt.Point;
 import java.io.File;

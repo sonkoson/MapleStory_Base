@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 public class WaitNotifyTest {
    public static Object a = new Object();

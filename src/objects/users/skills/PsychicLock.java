@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import java.util.List;
 import network.encode.PacketEncoder;

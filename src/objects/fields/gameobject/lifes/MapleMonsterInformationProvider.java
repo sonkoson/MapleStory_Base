@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 import constants.GameConstants;
 import database.DBConfig;

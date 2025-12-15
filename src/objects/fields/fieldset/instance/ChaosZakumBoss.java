@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import com.google.common.collect.UnmodifiableIterator;
 import constants.QuestExConstants;

@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class HellJinHillahEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "jinhillah_clear";
       this.canTimeKey = "jinhillah_can_time";
-      this.bossName = "진힐라";
-      this.difficulty = "헬";
+      this.bossName = "์งํ๋ผ";
+      this.difficulty = "ํ—ฌ";
       this.dailyLimit = 1;
    }
 
@@ -88,7 +88,7 @@ public class HellJinHillahEnter extends FieldSet {
          if (enterInteger > 6 && nCharacter != null) {
             for (MapleCharacter chrx : nCharacter.getMap().getCharacters()) {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
-                  StringBuilder sb = new StringBuilder("보스 " + bn + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   this.AC(chrx, key, false);
                   chrx.setCurrentBossPhase(1);

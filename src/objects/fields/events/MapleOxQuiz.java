@@ -1,4 +1,4 @@
-package objects.fields.events;
+﻿package objects.fields.events;
 
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledFuture;
@@ -137,10 +137,10 @@ public class MapleOxQuiz extends MapleEvent {
       double x = chr.getTruePosition().getX();
       double y = chr.getTruePosition().getY();
       if ((!(x > -234.0) || !(y > -26.0) || answer != 0) && (!(x < -234.0) || !(y > -26.0) || answer != 1)) {
-         chr.dropMessage(6, "[Ox Quiz] ผิด!");
+         chr.dropMessage(6, "[Ox Quiz] เธเธดเธ”!");
          return false;
       } else {
-         chr.dropMessage(6, "[Ox Quiz] ถูกต้อง!");
+         chr.dropMessage(6, "[Ox Quiz] เธ–เธนเธเธ•เนเธญเธ!");
          return true;
       }
    }

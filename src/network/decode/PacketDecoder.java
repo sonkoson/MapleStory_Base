@@ -1,4 +1,4 @@
-package network.decode;
+﻿package network.decode;
 
 import java.awt.Point;
 import java.io.ByteArrayOutputStream;

@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.yutgame;
+﻿package objects.fields.child.minigame.yutgame;
 
 import network.encode.PacketEncoder;
 

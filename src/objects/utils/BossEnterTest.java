@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 public class BossEnterTest {
    public static void main(String[] args) {

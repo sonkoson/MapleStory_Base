@@ -1,4 +1,4 @@
-package objects.context.party;
+﻿package objects.context.party;
 
 public enum BossPartyRecruimentMessageType {
    CompleteJoinRequest(0),

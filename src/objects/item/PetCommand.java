@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public class PetCommand {
    private int petId;

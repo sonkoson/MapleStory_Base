@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 import constants.GameConstants;
 import constants.JobConstants;

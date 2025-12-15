@@ -1,4 +1,4 @@
-package objects.fields.child.arkarium;
+﻿package objects.fields.child.arkarium;
 
 import constants.QuestExConstants;
 import constants.ServerConstants;
@@ -89,8 +89,8 @@ public class Field_Arkaium extends Field {
                      }
 
                      eim.getMapInstance(Integer.parseInt(eim.getProperty("map")))
-                        .broadcastMessage(CWvsContext.getScriptProgressMessage("시간의 여신 륀느가 봉인에서 풀려났습니다."));
-                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("아카이럼을 퇴치하였습니다. 제단의 좌측 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+                        .broadcastMessage(CWvsContext.getScriptProgressMessage("์๊ฐ์ ์—ฌ์  ๋ฅ€๋๊ฐ€ ๋ด์ธ์—์ ํ’€๋ ค๋ฌ์ต๋๋ค."));
+                     eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("์•์นด์ด๋ผ์ ํด์นํ•์€์ต๋๋ค. ์ ๋จ์ ์ข์ธก ํฌํ์ ํตํ•ด ์ด๋ํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.", 5120026);
                      List<Integer> partyPlayerList = eim.getPartyPlayerList();
                      if (partyPlayerList != null && !partyPlayerList.isEmpty()) {
                         boolean multiMode = false;
@@ -198,7 +198,7 @@ public class Field_Arkaium extends Field {
                for (int i = baseID; i <= baseID + 9; i++) {
                   Field field = GameServer.getInstance(player.getClient().getChannel()).getMapFactory().getMap(i);
                   if (field != null && field.getCharactersSize() == 0 && !mapList.contains(i)) {
-                     player.dropMessage(5, "Arkarium บิดเบือนกาลเวลาและเนรเทศคุณไปที่ไหนสักแห่ง");
+                     player.dropMessage(5, "Arkarium เธเธดเธ”เน€เธเธทเธญเธเธเธฒเธฅเน€เธงเธฅเธฒเนเธฅเธฐเน€เธเธฃเน€เธ—เธจเธเธธเธ“เนเธเธ—เธตเนเนเธซเธเธชเธฑเธเนเธซเนเธ");
                      player.setRegisterTransferField(i);
                      player.setRegisterTransferFieldTime(System.currentTimeMillis());
                      mapList.add(i);

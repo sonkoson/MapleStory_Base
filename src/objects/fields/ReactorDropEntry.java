@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 public class ReactorDropEntry {
    public int itemId;

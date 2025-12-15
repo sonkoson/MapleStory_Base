@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.battlereverse;
+﻿package objects.fields.child.minigame.battlereverse;
 
 import java.awt.Point;
 import java.util.ArrayList;

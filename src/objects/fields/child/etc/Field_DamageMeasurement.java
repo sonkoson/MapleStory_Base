@@ -1,4 +1,4 @@
-package objects.fields.child.etc;
+﻿package objects.fields.child.etc;
 
 import constants.ServerConstants;
 import database.DBConfig;
@@ -70,19 +70,19 @@ public class Field_DamageMeasurement extends Field {
 
       StringBuilder unit = new StringBuilder();
       if (p > 0) {
-         unit.append(p).append("경 ");
+         unit.append(p).append("๊ฒฝ ");
       }
 
       if (t > 0) {
-         unit.append(t).append("조 ");
+         unit.append(t).append("์กฐ ");
       }
 
       if (g > 0) {
-         unit.append(g).append("억 ");
+         unit.append(g).append("์–ต ");
       }
 
       if (m > 0) {
-         unit.append(m).append("만 ");
+         unit.append(m).append("๋ง ");
       }
 
       unit.append(d);
@@ -131,14 +131,14 @@ public class Field_DamageMeasurement extends Field {
                }
 
                this.startedGame = true;
-               this.broadcastMessage(CField.addPopupSay(9062025, 3000, "#b[전투력 측정]#k\r\n측정이 시작되었습니다. 용사님의 진가를 발휘해볼까요?", ""));
+               this.broadcastMessage(CField.addPopupSay(9062025, 3000, "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n์ธก์ •์ด ์์‘๋์—์ต๋๋ค. ์ฉ์ฌ๋์ ์ง๊ฐ€๋ฅผ ๋ฐํํ•ด๋ณผ๊น์”?", ""));
             }
          } else {
             MapleMonster mob = this.getMonsterById(9020107);
             if (mob != null) {
                long damage = Long.MAX_VALUE - mob.getHp();
                if (damage > 0L && (this.lastDisplayDamageTime == 0L || this.lastDisplayDamageTime + 5000L <= System.currentTimeMillis())) {
-                  this.broadcastMessage(CField.addPopupSay(9062025, 1000, "#b[전투력 측정]#k\r\n\r\n현재까지 용사님의 전투력은 #b" + this.getUnit(damage) + "#k 입니다.", ""));
+                  this.broadcastMessage(CField.addPopupSay(9062025, 1000, "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n\r\nํ์ฌ๊น์ง€ ์ฉ์ฌ๋์ ์ ํฌ๋ ฅ์€ #b" + this.getUnit(damage) + "#k ์…๋๋ค.", ""));
                   this.lastDisplayDamageTime = System.currentTimeMillis();
                }
 
@@ -147,12 +147,12 @@ public class Field_DamageMeasurement extends Field {
                      this.removeMonster(m, 1);
                   }
 
-                  this.broadcastMessage(CField.chatMsg(6, "[Measurement Complete] ความเสียหายต่อหุ่นฟางในเวลาที่กำหนด : " + this.getUnit(damage)));
+                  this.broadcastMessage(CField.chatMsg(6, "[Measurement Complete] เธเธงเธฒเธกเน€เธชเธตเธขเธซเธฒเธขเธ•เนเธญเธซเธธเนเธเธเธฒเธเนเธเน€เธงเธฅเธฒเธ—เธตเนเธเธณเธซเธเธ” : " + this.getUnit(damage)));
                   this.broadcastMessage(
                      CField.addPopupSay(
                         9062025,
                         10000,
-                        "#b[전투력 측정]#k\r\n측정이 완료되었습니다.\r\n\r\n총 데미지 : #b" + this.getUnit(damage) + "#k\r\n\r\n전투력이 기록되었습니다. 기록은 랭킹에서 확인할 수 있습니다.",
+                        "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n์ธก์ •์ด ์๋ฃ๋์—์ต๋๋ค.\r\n\r\n์ด ๋ฐ๋ฏธ์ง€ : #b" + this.getUnit(damage) + "#k\r\n\r\n์ ํฌ๋ ฅ์ด ๊ธฐ๋ก๋์—์ต๋๋ค. ๊ธฐ๋ก์€ ๋ญํน์—์ ํ•์ธํ•  ์ ์์ต๋๋ค.",
                         ""
                      )
                   );
@@ -218,7 +218,7 @@ public class Field_DamageMeasurement extends Field {
                CField.addPopupSay(
                   9062025,
                   7000,
-                  "#b[전투력 측정]#k\r\n잠시 후 전투력 측정이 시작됩니다.\n맵 좌측에 #b허수아비#k가 소환되며, 측정은 #b2분#k간 진행됩니다.\r\n측정된 전투력은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 전투력을 마음껏 발휘해보시기 바랍니다.",
+                  "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n์ ์ ํ ์ ํฌ๋ ฅ ์ธก์ •์ด ์์‘๋ฉ๋๋ค.\n๋งต ์ข์ธก์— #bํ—์์•๋น#k๊ฐ€ ์ํ๋๋ฉฐ, ์ธก์ •์€ #b2๋ถ#k๊ฐ ์งํ–๋ฉ๋๋ค.\r\n์ธก์ •๋ ์ ํฌ๋ ฅ์€ ์๋์ผ๋ก ๊ธฐ๋ก๋๋ฉฐ ๋ญํน์— ๋“ฑ๋ก๋๊ฒ ๋ฉ๋๋ค.\r\n\r\n์๊ฐ๋ด์— ์ฉ์ฌ๋๊ป์ ๊ฐ€์ง ์ ํฌ๋ ฅ์ ๋ง์๊ป ๋ฐํํ•ด๋ณด์๊ธฐ ๋ฐ”๋๋๋ค.",
                   ""
                )
             );
@@ -228,7 +228,7 @@ public class Field_DamageMeasurement extends Field {
                CField.addPopupSay(
                   9062025,
                   7000,
-                  "#b[전투력 측정]#k\r\n잠시 후 전투력 측정이 시작됩니다.\n맵 우측에 #b허수아비#k가 소환되며, 측정은 #b2분#k간 진행됩니다.\r\n측정된 전투력은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 전투력을 마음껏 발휘해보시기 바랍니다.",
+                  "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n์ ์ ํ ์ ํฌ๋ ฅ ์ธก์ •์ด ์์‘๋ฉ๋๋ค.\n๋งต ์ฐ์ธก์— #bํ—์์•๋น#k๊ฐ€ ์ํ๋๋ฉฐ, ์ธก์ •์€ #b2๋ถ#k๊ฐ ์งํ–๋ฉ๋๋ค.\r\n์ธก์ •๋ ์ ํฌ๋ ฅ์€ ์๋์ผ๋ก ๊ธฐ๋ก๋๋ฉฐ ๋ญํน์— ๋“ฑ๋ก๋๊ฒ ๋ฉ๋๋ค.\r\n\r\n์๊ฐ๋ด์— ์ฉ์ฌ๋๊ป์ ๊ฐ€์ง ์ ํฌ๋ ฅ์ ๋ง์๊ป ๋ฐํํ•ด๋ณด์๊ธฐ ๋ฐ”๋๋๋ค.",
                   ""
                )
             );
@@ -238,7 +238,7 @@ public class Field_DamageMeasurement extends Field {
                CField.addPopupSay(
                   9062025,
                   7000,
-                  "#b[전투력 측정]#k\r\n잠시 후 전투력 측정이 시작됩니다.\n맵 가운데에 #b허수아비#k가 소환되며, 측정은 #b2분#k간 진행됩니다.\r\n측정된 전투력은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 전투력을 마음껏 발휘해보시기 바랍니다.",
+                  "#b[์ ํฌ๋ ฅ ์ธก์ •]#k\r\n์ ์ ํ ์ ํฌ๋ ฅ ์ธก์ •์ด ์์‘๋ฉ๋๋ค.\n๋งต ๊ฐ€์ด๋ฐ์— #bํ—์์•๋น#k๊ฐ€ ์ํ๋๋ฉฐ, ์ธก์ •์€ #b2๋ถ#k๊ฐ ์งํ–๋ฉ๋๋ค.\r\n์ธก์ •๋ ์ ํฌ๋ ฅ์€ ์๋์ผ๋ก ๊ธฐ๋ก๋๋ฉฐ ๋ญํน์— ๋“ฑ๋ก๋๊ฒ ๋ฉ๋๋ค.\r\n\r\n์๊ฐ๋ด์— ์ฉ์ฌ๋๊ป์ ๊ฐ€์ง ์ ํฌ๋ ฅ์ ๋ง์๊ป ๋ฐํํ•ด๋ณด์๊ธฐ ๋ฐ”๋๋๋ค.",
                   ""
                )
             );

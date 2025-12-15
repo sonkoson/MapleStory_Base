@@ -1,4 +1,4 @@
-package objects.users.jobs.zero;
+﻿package objects.users.jobs.zero;
 
 import constants.GameConstants;
 import io.netty.util.internal.ThreadLocalRandom;

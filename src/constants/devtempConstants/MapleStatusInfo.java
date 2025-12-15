@@ -1,4 +1,4 @@
-package constants.devtempConstants;
+﻿package constants.devtempConstants;
 
 public enum MapleStatusInfo {
    GAINMESO(0),

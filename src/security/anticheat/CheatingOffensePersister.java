@@ -1,4 +1,4 @@
-package security.anticheat;
+﻿package security.anticheat;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

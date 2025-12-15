@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.topgame;
+﻿package objects.fields.child.minigame.topgame;
 
 import network.game.GameServer;
 import network.models.CField;

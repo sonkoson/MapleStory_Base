@@ -1,4 +1,4 @@
-package network.encode;
+﻿package network.encode;
 
 import java.awt.Point;
 import java.nio.charset.Charset;

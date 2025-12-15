@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import java.util.Map;
 import objects.item.MapleItemInformationProvider;

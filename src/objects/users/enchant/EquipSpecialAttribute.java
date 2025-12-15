@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 public enum EquipSpecialAttribute {
    NOT_DESTROY(1),

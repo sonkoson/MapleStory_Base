@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ public class ExtremeKalosEnter extends FieldSet {
       this.maxLv = 1000;
       this.qexKey = 1234569;
       this.keyValue = "kalos_clear";
-      this.bossName = "칼로스";
-      this.difficulty = "익스트림";
+      this.bossName = "์นผ๋ก์ค";
+      this.difficulty = "์ต์คํธ๋ฆผ";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 

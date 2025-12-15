@@ -1,4 +1,4 @@
-package objects.fields.child.will;
+﻿package objects.fields.child.will;
 
 import java.awt.Point;
 import network.game.GameServer;
@@ -39,7 +39,7 @@ public class Field_WillBattlePhase2 extends Field_WillBattle {
       }
 
       if (boss == null) {
-         this.sendWillNotice("Will หมดความอดทนแล้ว ส่วนที่ลึกที่สุดของโลกกระจกกำลังจะเปิดเผย", 245, 7000);
+         this.sendWillNotice("Will เธซเธกเธ”เธเธงเธฒเธกเธญเธ”เธ—เธเนเธฅเนเธง เธชเนเธงเธเธ—เธตเนเธฅเธถเธเธ—เธตเนเธชเธธเธ”เธเธญเธเนเธฅเธเธเธฃเธฐเธเธเธเธณเธฅเธฑเธเธเธฐเน€เธเธดเธ”เน€เธเธข", 245, 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -58,7 +58,7 @@ public class Field_WillBattlePhase2 extends Field_WillBattle {
             return;
          }
 
-         this.sendWillNotice("Will หมดความอดทนแล้ว ส่วนที่ลึกที่สุดของโลกกระจกกำลังจะเปิดเผย", 245, 7000);
+         this.sendWillNotice("Will เธซเธกเธ”เธเธงเธฒเธกเธญเธ”เธ—เธเนเธฅเนเธง เธชเนเธงเธเธ—เธตเนเธฅเธถเธเธ—เธตเนเธชเธธเธ”เธเธญเธเนเธฅเธเธเธฃเธฐเธเธเธเธณเธฅเธฑเธเธเธฐเน€เธเธดเธ”เน€เธเธข", 245, 7000);
 
          for (PartyMemberEntry entry : party.getPartyMember().getPartyMemberList()) {
             MapleCharacter character = GameServer.getInstance(p.getClient().getChannel()).getPlayerStorage().getCharacterById(entry.getId());

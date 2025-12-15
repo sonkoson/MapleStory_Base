@@ -1,4 +1,4 @@
-package network.login;
+﻿package network.login;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,7 +14,7 @@ public class LoginWorker {
    public static void registerClient(MapleClient c, String id, String mac, String volume) {
       if (LoginServer.isAdminOnly() && !c.isGm() && !c.isLocalhost()) {
          c.getSession().writeAndFlush(
-               CWvsContext.serverNotice(1, "เซิร์ฟเวอร์กำลังปิดปรับปรุง กรุณาตรวจสอบรายละเอียดที่หน้าเว็บไซต์"));
+               CWvsContext.serverNotice(1, "เน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธณเธฅเธฑเธเธเธดเธ”เธเธฃเธฑเธเธเธฃเธธเธ เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”เธ—เธตเนเธซเธเนเธฒเน€เธงเนเธเนเธเธ•เน"));
          c.getSession().writeAndFlush(LoginPacket.getLoginFailed(7));
       } else {
          if (System.currentTimeMillis() - lastUpdate > 600000L) {

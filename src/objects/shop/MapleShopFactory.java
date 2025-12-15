@@ -1,4 +1,4 @@
-package objects.shop;
+﻿package objects.shop;
 
 import database.DBConfig;
 import java.util.HashMap;

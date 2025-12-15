@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 import java.util.Arrays;
 import java.util.List;

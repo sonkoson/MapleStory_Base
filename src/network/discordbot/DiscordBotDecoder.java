@@ -1,4 +1,4 @@
-package network.discordbot;
+﻿package network.discordbot;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

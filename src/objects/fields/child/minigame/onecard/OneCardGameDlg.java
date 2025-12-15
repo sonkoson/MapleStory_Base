@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.onecard;
+﻿package objects.fields.child.minigame.onecard;
 
 import constants.ServerConstants;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class OneCardGameDlg {
       if (players.size() < 4) {
          for (MapleCharacter player : players) {
             if (player.getRegisterTransferFieldTime() == 0L) {
-               player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+               player.dropMessage(5, "เธเธณเธเธงเธเธเธนเนเน€เธฅเนเธเนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเน€เธเธก เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
                player.setRegisterTransferField(ServerConstants.TownMap);
                player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
             }

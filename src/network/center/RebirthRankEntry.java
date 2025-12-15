@@ -1,4 +1,4 @@
-package network.center;
+﻿package network.center;
 
 import constants.JobConstants;
 import network.encode.PacketEncoder;
@@ -71,10 +71,10 @@ public class RebirthRankEntry {
 
    public void encode(PacketEncoder packet) {
       packet.writeMapleAsciiString(this.playerName);
-      packet.writeMapleAsciiString("직업 : " + this.jobName);
-      packet.writeMapleAsciiString("환생포인트 : " + this.rebirthCount);
-      packet.writeMapleAsciiString("레벨 : " + this.playerLevel);
-      packet.writeMapleAsciiString("유니온 : " + this.totalUnion);
-      packet.writeMapleAsciiString("각성 : " + this.superRebirthCount + "회");
+      packet.writeMapleAsciiString("์ง์—… : " + this.jobName);
+      packet.writeMapleAsciiString("ํ์ํฌ์ธํธ : " + this.rebirthCount);
+      packet.writeMapleAsciiString("๋ ๋ฒจ : " + this.playerLevel);
+      packet.writeMapleAsciiString("์ ๋์จ : " + this.totalUnion);
+      packet.writeMapleAsciiString("๊ฐ์ฑ : " + this.superRebirthCount + "ํ");
    }
 }

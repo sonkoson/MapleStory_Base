@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -84,7 +84,7 @@ public class MapleSquad {
             }
 
             if (lead != null) {
-               lead.dropMessage(6, "Squad ถูกข้ามเนื่องจากคุณไม่ได้อยู่ในแชนแนลและแผนที่ที่ถูกต้อง");
+               lead.dropMessage(6, "Squad เธ–เธนเธเธเนเธฒเธกเน€เธเธทเนเธญเธเธเธฒเธเธเธธเธ“เนเธกเนเนเธ”เนเธญเธขเธนเนเนเธเนเธเธเนเธเธฅเนเธฅเธฐเนเธเธเธ—เธตเนเธ—เธตเนเธ–เธนเธเธ•เนเธญเธ");
             }
 
             this.getBeginMap()

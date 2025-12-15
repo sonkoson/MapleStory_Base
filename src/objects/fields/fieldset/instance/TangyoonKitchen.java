@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -161,7 +161,7 @@ public class TangyoonKitchen extends FieldSetInstance {
          this.gameRecipe.get(oven + 1).addCheckPoint();
          if (this.gameRecipe.get(oven + 1).getCheckPoint() == this.gameRecipe.get(oven + 1).getRecipe().getRecipes().size()) {
             this.Var.setProperty(String.valueOf(oven + 1), "2");
-            user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(oven + 1 + "번 주문 음식이 완성되었습니다."));
+            user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(oven + 1 + "๋ฒ ์ฃผ๋ฌธ ์์์ด ์์ฑ๋์—์ต๋๋ค."));
             user.getMap().broadcastMessage(setObjectState("cookPlate" + (oven + 1), 2));
             user.getMap().broadcastMessage(CField.environmentChange("Sound/MiniGame.img/14thTerra/reward", 5, 100));
             user.getMap().broadcastMessage(TangyoonBadOrCool(user.getId(), "Effect/OnUserEff.img/urus/great"));
@@ -177,13 +177,13 @@ public class TangyoonKitchen extends FieldSetInstance {
          int random = Randomizer.rand(0, 2);
          switch (random) {
             case 0:
-               user.send(CField.addPopupSay(9062552, 3000, "레시피를 제대로 보란 말일세!", ""));
+               user.send(CField.addPopupSay(9062552, 3000, "๋ ์ํ”ผ๋ฅผ ์ ๋€๋ก ๋ณด๋€ ๋ง์ผ์ธ!", ""));
                break;
             case 1:
-               user.send(CField.addPopupSay(9062552, 3000, "빠르다고 다가 아니네!\r\n제대로 하게!", ""));
+               user.send(CField.addPopupSay(9062552, 3000, "๋น ๋ฅด๋ค๊ณ  ๋ค๊ฐ€ ์•๋๋ค!\r\n์ ๋€๋ก ํ•๊ฒ!", ""));
                break;
             case 2:
-               user.send(CField.addPopupSay(9062552, 3000, "지금 뭐 하는 건가!", ""));
+               user.send(CField.addPopupSay(9062552, 3000, "์ง€๊ธ ๋ญ ํ•๋” ๊ฑด๊ฐ€!", ""));
          }
 
          user.temporaryStatSet(7798907, 1000, SecondaryStatFlag.Stun, 1);
@@ -191,7 +191,7 @@ public class TangyoonKitchen extends FieldSetInstance {
          user.getMap().broadcastMessage(user, CField.facialExpressionWithDuration(user, 7, 1000), false);
          user.getMap().broadcastMessage(CField.environmentChange("Sound/MiniGame.img/ironBoxEvent/failLight", 5, 100));
          user.getMap().broadcastMessage(TangyoonBadOrCool(user.getId(), "Effect/OnUserEff.img/urus/bad"));
-         user.send(CWvsContext.InfoPacket.brownMessage("조리에 실패했습니다. 레시피와 동일한 재료를 놓거나 알맞은 가공을 시도해주세요."));
+         user.send(CWvsContext.InfoPacket.brownMessage("์กฐ๋ฆฌ์— ์คํจํ–์ต๋๋ค. ๋ ์ํ”ผ์€ ๋์ผํ• ์ฌ๋ฃ๋ฅผ ๋“๊ฑฐ๋ ์•๋ง์€ ๊ฐ€๊ณต์ ์๋ํ•ด์ฃผ์ธ์”."));
       }
 
       this.Var.setProperty(String.valueOf(user.getId()), "0");
@@ -229,23 +229,23 @@ public class TangyoonKitchen extends FieldSetInstance {
          this.orderMobs.remove(Integer.valueOf(this.gameRecipe.get(table).getOrder()));
          this.Var.setProperty(String.valueOf(user.getId()), "0");
          this.Var.setProperty(String.valueOf(table), "0");
-         user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(table + "번 주문 배달에 성공했습니다. " + plus + "메소를 획득했습니다."));
+         user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(table + "๋ฒ ์ฃผ๋ฌธ ๋ฐฐ๋ฌ์— ์ฑ๊ณตํ–์ต๋๋ค. " + plus + "๋ฉ”์๋ฅผ ํ๋“ํ–์ต๋๋ค."));
          user.getMap().broadcastMessage(setObjectState("cookPlate" + table, 0));
          user.getMap().broadcastMessage(this.TangyoonObjectPacket_2());
          user.getMap().broadcastMessage(CField.environmentChange("Sound/Item.img/03015651/Appear", 5, 100));
          user.getMap().broadcastMessage(TangyoonBadOrCool(user.getId(), "Effect/OnUserEff.img/aquarisTower/success"));
-         String message = "아주 훌륭하군!";
+         String message = "์•์ฃผ ํ๋ฅญํ•๊ตฐ!";
          switch (Randomizer.rand(0, 2)) {
             case 1:
-               message = "자네, 나와 함께 일해보지 않겠나?";
+               message = "์๋ค, ๋์€ ํ•จ๊ป ์ผํ•ด๋ณด์ง€ ์•๊ฒ ๋?";
                break;
             case 2:
-               message = "신속하군! 아주 좋네!";
+               message = "์ ์ํ•๊ตฐ! ์•์ฃผ ์ข๋ค!";
          }
 
          user.getMap().startMapEffect(message, 5120216, 4000);
          if (score + plus >= 50000) {
-            user.getMap().startMapEffect("고생 많았네, 음식의 소중함을 깨달았기를 바라네.", 5120216, 4000);
+            user.getMap().startMapEffect("๊ณ ์ ๋ง์•๋ค, ์์์ ์์ค‘ํ•จ์ ๊นจ๋ฌ์•๊ธฐ๋ฅผ ๋ฐ”๋ผ๋ค.", 5120216, 4000);
             user.getMap().broadcastMessage(CField.environmentChange("Effect/EventEffect.img/2021BloomingRace/success", 16));
             user.getMap().broadcastMessage(CField.environmentChange("Sound/MiniGame.img/autopvp/result", 5, 100));
             user.getMap().broadcastMessage(TangyoonOrder(4));
@@ -333,7 +333,7 @@ public class TangyoonKitchen extends FieldSetInstance {
                                           }
                                        }
 
-                                       map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+                                       map.startMapEffect("์ฃผ๋ฌธ์ด ์ทจ์๋์—๋ค!", 5120216, 4000);
                                        map.broadcastMessage(TangyoonKitchen.this.TangyoonObjectPacket_2());
                                     }
                                  }
@@ -396,7 +396,7 @@ public class TangyoonKitchen extends FieldSetInstance {
                                           }
                                        }
 
-                                       map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+                                       map.startMapEffect("์ฃผ๋ฌธ์ด ์ทจ์๋์—๋ค!", 5120216, 4000);
                                        map.broadcastMessage(TangyoonKitchen.this.TangyoonObjectPacket_2());
                                     }
                                  }
@@ -459,7 +459,7 @@ public class TangyoonKitchen extends FieldSetInstance {
                                           }
                                        }
 
-                                       map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+                                       map.startMapEffect("์ฃผ๋ฌธ์ด ์ทจ์๋์—๋ค!", 5120216, 4000);
                                        map.broadcastMessage(TangyoonKitchen.this.TangyoonObjectPacket_2());
                                     }
                                  }
@@ -679,7 +679,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("E8 FE FF FF 81 FF FF FF 42 FF FF FF DB FF FF FF"));
       p.writeInt(2024020);
       p.writeInt(289);
-      p.writeMapleAsciiString("빵");
+      p.writeMapleAsciiString("๋นต");
       p.writeInt(1);
       p.writeInt(1);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -689,7 +689,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("E8 FE FF FF F6 FF FF FF 42 FF FF FF 50 00 00 00"));
       p.writeInt(2024021);
       p.writeInt(289);
-      p.writeMapleAsciiString("고기");
+      p.writeMapleAsciiString("๊ณ ๊ธฐ");
       p.writeInt(2);
       p.writeInt(2);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -699,7 +699,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("E8 FE FF FF 11 FF FF FF 42 FF FF FF 6B FF FF FF"));
       p.writeInt(2024022);
       p.writeInt(289);
-      p.writeMapleAsciiString("계란");
+      p.writeMapleAsciiString("๊ณ๋€");
       p.writeInt(3);
       p.writeInt(3);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -709,7 +709,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("E8 FE FF FF A3 FE FF FF 42 FF FF FF FD FE FF FF"));
       p.writeInt(2024023);
       p.writeInt(289);
-      p.writeMapleAsciiString("채소");
+      p.writeMapleAsciiString("์ฑ์");
       p.writeInt(4);
       p.writeInt(4);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -719,7 +719,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("E8 FE FF FF 5F 00 00 00 42 FF FF FF B9 00 00 00"));
       p.writeInt(2024024);
       p.writeInt(289);
-      p.writeMapleAsciiString("생선");
+      p.writeMapleAsciiString("์์ ");
       p.writeInt(5);
       p.writeInt(5);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -729,7 +729,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("32 00 00 00 E0 FE FF FF A0 00 00 00 4E FF FF FF"));
       p.writeInt(2024025);
       p.writeInt(289);
-      p.writeMapleAsciiString("굽기");
+      p.writeMapleAsciiString("๊ตฝ๊ธฐ");
       p.writeInt(6);
       p.writeInt(6);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -739,7 +739,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("35 00 00 00 7E FF FF FF A3 00 00 00 EC FF FF FF"));
       p.writeInt(2024026);
       p.writeInt(289);
-      p.writeMapleAsciiString("끓이기");
+      p.writeMapleAsciiString("๋“์ด๊ธฐ");
       p.writeInt(7);
       p.writeInt(7);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("00 00 00 00"));
@@ -749,7 +749,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("33 00 00 00 19 00 00 00 A1 00 00 00 87 00 00 00"));
       p.writeInt(2024027);
       p.writeInt(289);
-      p.writeMapleAsciiString("썰기");
+      p.writeMapleAsciiString("์ฐ๊ธฐ");
       p.writeInt(3);
       p.writeInt(0);
       p.writeInt(0);
@@ -791,7 +791,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("C0 03 00 00 29 FE FF FF 24 04 00 00 8D FE FF FF"));
       p.writeInt(2120000);
       p.writeInt(289);
-      p.writeMapleAsciiString("1번 손님");
+      p.writeMapleAsciiString("1๋ฒ ์๋");
       p.writeInt(1);
       p.writeInt(1);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("02 00 00 00"));
@@ -801,7 +801,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("C0 03 00 00 C0 FE FF FF 24 04 00 00 24 FF FF FF"));
       p.writeInt(2120000);
       p.writeInt(289);
-      p.writeMapleAsciiString("2번 손님");
+      p.writeMapleAsciiString("2๋ฒ ์๋");
       p.writeInt(2);
       p.writeInt(2);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("02 00 00 00"));
@@ -811,7 +811,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("C0 03 00 00 59 FF FF FF 24 04 00 00 BD FF FF FF"));
       p.writeInt(2120000);
       p.writeInt(289);
-      p.writeMapleAsciiString("3번 손님");
+      p.writeMapleAsciiString("3๋ฒ ์๋");
       p.writeInt(3);
       p.writeInt(3);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("02 00 00 00"));
@@ -821,7 +821,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("C0 03 00 00 ED FF FF FF 24 04 00 00 51 00 00 00"));
       p.writeInt(2120000);
       p.writeInt(289);
-      p.writeMapleAsciiString("4번 손님");
+      p.writeMapleAsciiString("4๋ฒ ์๋");
       p.writeInt(4);
       p.writeInt(4);
       p.encodeBuffer(HexTool.getByteArrayFromHexString("02 00 00 00"));
@@ -831,7 +831,7 @@ public class TangyoonKitchen extends FieldSetInstance {
       p.encodeBuffer(HexTool.getByteArrayFromHexString("C0 03 00 00 82 00 00 00 24 04 00 00 E6 00 00 00"));
       p.writeInt(2120000);
       p.writeInt(289);
-      p.writeMapleAsciiString("5번 손님");
+      p.writeMapleAsciiString("5๋ฒ ์๋");
       int userCount = this.fs.fInstance.get(this).size();
       p.writeInt(userCount);
 

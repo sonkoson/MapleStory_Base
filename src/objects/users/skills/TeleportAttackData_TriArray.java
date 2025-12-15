@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import network.decode.PacketDecoder;
 import network.encode.PacketEncoder;
@@ -15,7 +15,7 @@ public class TeleportAttackData_TriArray extends TeleportAttackData {
    public void decode(PacketDecoder packet) {
       int size = packet.readInt();
       if (size > 1000) {
-         String msg = "TeleportAttackData_TriArray 오류 (데미지 파싱 잘못됨)\r\n" + packet.toString(true) + "\r\n";
+         String msg = "TeleportAttackData_TriArray ์ค๋ฅ (๋ฐ๋ฏธ์ง€ ํ์ฑ ์๋ชป๋จ)\r\n" + packet.toString(true) + "\r\n";
          FileoutputUtil.log("./ErrorLog/Log_DamageParseError.rtf", msg);
       } else {
          this.data = new TeleportAttackData_TriArray_Elem[size];

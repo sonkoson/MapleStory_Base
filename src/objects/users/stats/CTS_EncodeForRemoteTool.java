@@ -1,4 +1,4 @@
-package objects.users.stats;
+﻿package objects.users.stats;
 
 import java.io.BufferedReader;
 import java.io.File;

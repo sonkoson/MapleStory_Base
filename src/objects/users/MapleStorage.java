@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import constants.GameConstants;
 import database.DBConfig;

@@ -1,4 +1,4 @@
-package objects.users.stats;
+﻿package objects.users.stats;
 
 import java.util.Arrays;
 import network.encode.PacketEncoder;

@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.pirate;
+﻿package objects.users.jobs.adventure.pirate;
 
 import constants.GameConstants;
 import java.awt.Point;

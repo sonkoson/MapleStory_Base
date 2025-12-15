@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.GameConstants;
 import constants.PlayerNPCConstants;
@@ -206,14 +206,14 @@ public class NPCHandler {
                      case 2000030:
                         if (chr.getLevel() >= 200) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่องเก็บอุปกรณ์ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธญเธธเธเธเธฃเธ“เนเนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712001));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -274,21 +274,21 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "ได้รับไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เนเธ”เนเธฃเธฑเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000031:
                         if (chr.getLevel() >= 210) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธ Equip เนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712002));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -349,21 +349,21 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เธกเธญเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000032:
                         if (chr.getLevel() >= 220) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธ Equip เนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712003));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -424,21 +424,21 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เธกเธญเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000033:
                         if (chr.getLevel() >= 225) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธ Equip เนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712004));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -499,21 +499,21 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เธกเธญเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000034:
                         if (chr.getLevel() >= 230) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธ Equip เนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712005));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -574,21 +574,21 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เธกเธญเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                         break;
                      case 2000035:
                         if (chr.getLevel() >= 235) {
                            if (chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                              chr.dropMessage(1, "ช่อง Equip ไม่เพียงพอ");
+                              chr.dropMessage(1, "เธเนเธญเธ Equip เนเธกเนเน€เธเธตเธขเธเธเธญ");
                               return;
                            }
 
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            Item item = ii.randomizeStats((Equip) ii.getEquipById(1712006));
                            item.setGMLog(
-                                 CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 레벨 달성 퀘스트 보상");
+                                 CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ ๋ ๋ฒจ ๋ฌ์ฑ ํ€์คํธ ๋ณด์");
                            short jobId = chr.getJob();
                            ((Equip) item).setArcLevel(5);
                            ((Equip) item).setArc(70);
@@ -649,7 +649,7 @@ public class NPCHandler {
                            }
 
                            MapleInventoryManipulator.addbyItem(c, item);
-                           chr.dropMessage(5, "มอบไอเทมเรียบร้อยแล้ว");
+                           chr.dropMessage(5, "เธกเธญเธเนเธญเน€เธ—เธกเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                            chr.forceCompleteQuest(quest);
                         }
                   }
@@ -689,7 +689,7 @@ public class NPCHandler {
                      if (GameConstants.canForfeit(q.getId())) {
                         q.forfeit(chr);
                      } else {
-                        chr.dropMessage(1, "เควสนี้ไม่สามารถยกเลิกได้");
+                        chr.dropMessage(1, "เน€เธเธงเธชเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธขเธเน€เธฅเธดเธเนเธ”เน");
                      }
                      break;
                   case 4:
@@ -708,7 +708,7 @@ public class NPCHandler {
                      slea.readInt();
                      if (c.getPlayer().isGM()) {
                         c.getPlayer().dropMessage(5,
-                              "QuestID ที่สำเร็จ : " + quest + " 엔피시 : " + npc + " 스크립트 : " + q.getEndscript());
+                              "QuestID เธ—เธตเนเธชเธณเน€เธฃเนเธ : " + quest + " ์—”ํ”ผ์ : " + npc + " ์คํฌ๋ฆฝํธ : " + q.getEndscript());
                      }
 
                      if (ScriptManager.get()._scripts.get(q.getEndscript()) != null) {
@@ -777,7 +777,7 @@ public class NPCHandler {
                         && item.getQuantity() > quantity) {
                      if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), quantity, item.getOwner())) {
                         storage.store(item);
-                        chr.dropMessage(1, "ช่องเก็บของเต็ม");
+                        chr.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
                         return;
                      }
 
@@ -791,7 +791,7 @@ public class NPCHandler {
                   MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                   if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), item.getQuantity(), item.getOwner())) {
                      storage.store(item);
-                     chr.dropMessage(1, "ช่องเก็บของเต็ม");
+                     chr.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   } else {
                      int flag = item.getFlag();
@@ -820,20 +820,20 @@ public class NPCHandler {
                      }
 
                      StringBuilder sb = new StringBuilder();
-                     sb.append("창고 아이템 꺼냄 (캐릭터 : ");
+                     sb.append("์ฐฝ๊ณ  ์•์ดํ… ๊บผ๋ (์บ๋ฆญํฐ : ");
                      sb.append(c.getPlayer().getName());
-                     sb.append(", 계정 : ");
+                     sb.append(", ๊ณ์ • : ");
                      sb.append(c.getAccountName());
                      sb.append("(");
                      sb.append(c.getAccID());
                      sb.append(")");
-                     sb.append(", 아이템 : ");
+                     sb.append(", ์•์ดํ… : ");
                      sb.append(item.getItemId());
                      sb.append(" ");
                      sb.append((int) quantity);
-                     sb.append("개");
+                     sb.append("๊ฐ");
                      if (item instanceof Equip) {
-                        sb.append(", 장비옵션[");
+                        sb.append(", ์ฅ๋น์ต์…[");
                         sb.append(((Equip) item).toString());
                         sb.append("]");
                      }
@@ -863,7 +863,7 @@ public class NPCHandler {
                   }
 
                   if (itemId == 1112405) {
-                     c.getPlayer().dropMessage(1, "ไอเทมนี้ฝากคลังไม่ได้");
+                     c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเธเธฒเธเธเธฅเธฑเธเนเธกเนเนเธ”เน");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   }
 
@@ -878,7 +878,7 @@ public class NPCHandler {
                   }
 
                   if (chr.getMeso() < 100L) {
-                     chr.dropMessage(1, "Meso ไม่เพียงพอสำหรับฝากไอ템ในคลัง");
+                     chr.dropMessage(1, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธเนเธญํ…เนเธเธเธฅเธฑเธ");
                      storage.update(c);
                      return;
                   }
@@ -944,26 +944,26 @@ public class NPCHandler {
                   itemx.setQuantity(quantityx);
                   chr.gainMeso(-100L, false, false, false);
                   StringBuilder sbx = new StringBuilder();
-                  sbx.append("창고 아이템 보관 (캐릭터 : ");
+                  sbx.append("์ฐฝ๊ณ  ์•์ดํ… ๋ณด๊ด€ (์บ๋ฆญํฐ : ");
                   sbx.append(c.getPlayer().getName());
-                  sbx.append(", 계정 : ");
+                  sbx.append(", ๊ณ์ • : ");
                   sbx.append(c.getAccountName());
                   sbx.append("(");
                   sbx.append(c.getAccID());
                   sbx.append(")");
-                  sbx.append(", 아이템 : ");
+                  sbx.append(", ์•์ดํ… : ");
                   sbx.append(itemx.getItemId());
                   sbx.append(" ");
                   sbx.append((int) quantityx);
-                  sbx.append("개");
+                  sbx.append("๊ฐ");
                   if (merge) {
-                     sbx.append(") (창고 아이템과 병합 총 ");
+                     sbx.append(") (์ฐฝ๊ณ  ์•์ดํ…๊ณผ ๋ณ‘ํ•ฉ ์ด ");
                      sbx.append(mergeqty);
-                     sbx.append("개");
+                     sbx.append("๊ฐ");
                   }
 
                   if (itemx instanceof Equip) {
-                     sbx.append(", 장비옵션[");
+                     sbx.append(", ์ฅ๋น์ต์…[");
                      sbx.append(((Equip) itemx).toString());
                      sbx.append("]");
                   }
@@ -1025,14 +1025,14 @@ public class NPCHandler {
                   storage.setMeso(storageMesos - meso);
                   chr.gainMeso(meso, false, false, false);
                   StringBuilder sbxx = new StringBuilder();
-                  sbxx.append("창고 메소 " + (meso < 0L ? "보관" : "찾음") + " (캐릭터 : ");
+                  sbxx.append("์ฐฝ๊ณ  ๋ฉ”์ " + (meso < 0L ? "๋ณด๊ด€" : "์ฐพ์") + " (์บ๋ฆญํฐ : ");
                   sbxx.append(c.getPlayer().getName());
-                  sbxx.append(", 계정 : ");
+                  sbxx.append(", ๊ณ์ • : ");
                   sbxx.append(c.getAccountName());
                   sbxx.append("(");
                   sbxx.append(c.getAccID());
                   sbxx.append(")");
-                  sbxx.append(", 메소 : ");
+                  sbxx.append(", ๋ฉ”์ : ");
                   sbxx.append(Math.abs(meso));
                   sbxx.append(")");
                   LoggingManager.putLog(new ItemLog(chr, c.getChannel(), 0, 0, chr.getMapId(),

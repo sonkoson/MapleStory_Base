@@ -1,4 +1,4 @@
-package objects.fields.child.blackmage;
+﻿package objects.fields.child.blackmage;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import network.encode.PacketEncoder;

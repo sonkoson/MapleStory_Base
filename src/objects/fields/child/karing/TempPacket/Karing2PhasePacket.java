@@ -1,4 +1,4 @@
-package objects.fields.child.karing.TempPacket;
+﻿package objects.fields.child.karing.TempPacket;
 
 import network.encode.PacketEncoder;
 import objects.fields.gameobject.lifes.MapleMonster;
@@ -20,7 +20,7 @@ public class Karing2PhasePacket {
             packet.writeInt(mob.getId());
             packet.writeInt(0);
             packet.encodePos4Byte(mob.getPosition());
-            packet.writeMapleAsciiString("사흉을 모시깽이 합니다.");
+            packet.writeMapleAsciiString("์ฌํ์ ๋ชจ์๊นฝ์ด ํ•ฉ๋๋ค.");
             break;
          case 3:
             packet.writeInt(3);

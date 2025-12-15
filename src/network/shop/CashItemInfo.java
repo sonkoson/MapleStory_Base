@@ -1,4 +1,4 @@
-package network.shop;
+﻿package network.shop;
 
 public class CashItemInfo {
    private int itemId;

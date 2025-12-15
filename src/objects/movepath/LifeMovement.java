@@ -1,4 +1,4 @@
-package objects.movepath;
+﻿package objects.movepath;
 
 import java.awt.Point;
 

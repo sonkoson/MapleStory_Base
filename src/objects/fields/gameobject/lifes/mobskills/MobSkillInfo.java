@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes.mobskills;
+﻿package objects.fields.gameobject.lifes.mobskills;
 
 import constants.GameConstants;
 import constants.JosaType;
@@ -284,7 +284,7 @@ public class MobSkillInfo {
             String info = this.getMobSkillStats(MobSkillStat.info);
             if (info != null
                && info.isEmpty()
-               && (this.getMobSkillStats(MobSkillStat.info).contains("악몽의골렘") || this.getMobSkillStats(MobSkillStat.info).contains("독버섯"))) {
+               && (this.getMobSkillStats(MobSkillStat.info).contains("์•…๋ชฝ์๊ณจ๋ ") || this.getMobSkillStats(MobSkillStat.info).contains("๋…๋ฒ์ฏ"))) {
                fhs = from.getMap().getRandomPositions(summonIDs.length, from.getMap().getFootholds().getFootholds());
             }
 
@@ -299,9 +299,9 @@ public class MobSkillInfo {
                if (from.getMap() instanceof Field_JinHillah) {
                   Field_JinHillah f = (Field_JinHillah)from.getMap();
                   if (this.skillLevel == 261) {
-                     f.sendJinHillahNotice("ได้ยินเสียง Hilla ดึงวิญญาณ Lotus ขึ้นมาจากก้นบึ้งแห่งความตาย", 5000);
+                     f.sendJinHillahNotice("เนเธ”เนเธขเธดเธเน€เธชเธตเธขเธ Hilla เธ”เธถเธเธงเธดเธเธเธฒเธ“ Lotus เธเธถเนเธเธกเธฒเธเธฒเธเธเนเธเธเธถเนเธเนเธซเนเธเธเธงเธฒเธกเธ•เธฒเธข", 5000);
                   } else if (this.skillLevel == 262) {
-                     f.sendJinHillahNotice("ได้ยินเสียง Hilla ดึงวิญญาณ Damien ขึ้นมาจากก้นบึ้งแห่งความตาย", 5000);
+                     f.sendJinHillahNotice("เนเธ”เนเธขเธดเธเน€เธชเธตเธขเธ Hilla เธ”เธถเธเธงเธดเธเธเธฒเธ“ Damien เธเธถเนเธเธกเธฒเธเธฒเธเธเนเธเธเธถเนเธเนเธซเนเธเธเธงเธฒเธกเธ•เธฒเธข", 5000);
                   }
                }
             } else if (fhs.size() < summonIDs.length) {
@@ -550,7 +550,7 @@ public class MobSkillInfo {
          monster.getMap()
             .broadcastMessage(
                CWvsContext.getScriptProgressMessage(
-                  monster.getStats().getName() + "가 [" + controller.getName() + "]" + Locales.getKoreanJosa(controller.getName(), JosaType.을를) + " 추격합니다."
+                  monster.getStats().getName() + "๊ฐ€ [" + controller.getName() + "]" + Locales.getKoreanJosa(controller.getName(), JosaType.์๋ฅผ) + " ์ถ”๊ฒฉํ•ฉ๋๋ค."
                )
             );
          this.sendChaseEffectSet(monster.getMap(), controller.getId(), monster.getObjectId(), true);
@@ -807,15 +807,15 @@ public class MobSkillInfo {
                   if (monster.getHPPercent() <= 30) {
                      monster.getMap()
                         .sendSmartMobNotice(
-                           SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "위협을 느낀 반 레온이 몬스터를 소환하여 체력을 흡수하려 합니다."
+                           SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "์ํ‘์ ๋๋€ ๋ฐ ๋ ์จ์ด ๋ชฌ์คํฐ๋ฅผ ์ํํ•์—ฌ ์ฒด๋ ฅ์ ํก์ํ•๋ ค ํ•ฉ๋๋ค."
                         );
-                     monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "위협을 느낀 반 레온이 몬스터를 소환하여 체력을 흡수하려 합니다."));
+                     monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "์ํ‘์ ๋๋€ ๋ฐ ๋ ์จ์ด ๋ชฌ์คํฐ๋ฅผ ์ํํ•์—ฌ ์ฒด๋ ฅ์ ํก์ํ•๋ ค ํ•ฉ๋๋ค."));
                   } else if (monster.getHPPercent() <= 50) {
                      monster.getMap()
                         .sendSmartMobNotice(
-                           SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "반 레온이 주변에 체력을 흡수할 몬스터가 없어 새롭게 소환을 시도합니다."
+                           SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "๋ฐ ๋ ์จ์ด ์ฃผ๋ณ€์— ์ฒด๋ ฅ์ ํก์ํ•  ๋ชฌ์คํฐ๊ฐ€ ์—์–ด ์๋กญ๊ฒ ์ํ์ ์๋ํ•ฉ๋๋ค."
                         );
-                     monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "반 레온이 주변에 체력을 흡수할 몬스터가 없어 새롭게 소환을 시도합니다."));
+                     monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "๋ฐ ๋ ์จ์ด ์ฃผ๋ณ€์— ์ฒด๋ ฅ์ ํก์ํ•  ๋ชฌ์คํฐ๊ฐ€ ์—์–ด ์๋กญ๊ฒ ์ํ์ ์๋ํ•ฉ๋๋ค."));
                   }
                }
 
@@ -844,7 +844,7 @@ public class MobSkillInfo {
                   monster.getMap()
                      .broadcastMessage(
                         CWvsContext.serverNotice(
-                           5, monster.getStats().getName() + "가 " + MapleLifeFactory.getMonsterStats(this.summonIDs.get(0)).getName() + "를 흡수하여 HP를 회복합니다."
+                           5, monster.getStats().getName() + "๊ฐ€ " + MapleLifeFactory.getMonsterStats(this.summonIDs.get(0)).getName() + "๋ฅผ ํก์ํ•์—ฌ HP๋ฅผ ํ๋ณตํ•ฉ๋๋ค."
                         )
                      );
                   long hp = monster.getHp();
@@ -954,7 +954,7 @@ public class MobSkillInfo {
             break;
          case AREA_TIMEZONE:
             this.doSkill_AffectedArea(monster, null);
-            monster.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("시간의 틈새에 '균열'이 발생하였습니다."));
+            monster.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("์๊ฐ์ ํ์์— '๊ท ์—ด'์ด ๋ฐ์ํ•์€์ต๋๋ค."));
             break;
          case BOUNCE_ATTACK: {
             monster.clearAreaWarnings();
@@ -1363,7 +1363,7 @@ public class MobSkillInfo {
                   case 4:
                   case 10:
                      lucidField.doFairyDust(monster, this.skillLevel, this);
-                     lucidField.sendLucidNotice("ถ้าโดนลมนั้น ความฝันจะรุนแรงขึ้น!", 4);
+                     lucidField.sendLucidNotice("เธ–เนเธฒเนเธ”เธเธฅเธกเธเธฑเนเธ เธเธงเธฒเธกเธเธฑเธเธเธฐเธฃเธธเธเนเธฃเธเธเธถเนเธ!", 4);
                      return;
                   case 5:
                      List<Integer> rains = new ArrayList<>();
@@ -1373,7 +1373,7 @@ public class MobSkillInfo {
                      }
 
                      lucidField.sendLucidSkill_LaserRain(this.getMobSkillStatsInt(MobSkillStat.s), rains);
-                     lucidField.sendLucidNotice("Lucid กำลังจะใช้การโจมตีที่รุนแรง!", -1);
+                     lucidField.sendLucidNotice("Lucid เธเธณเธฅเธฑเธเธเธฐเนเธเนเธเธฒเธฃเนเธเธกเธ•เธตเธ—เธตเนเธฃเธธเธเนเธฃเธ!", -1);
                      return;
                   case 6:
                   case 11:
@@ -1384,7 +1384,7 @@ public class MobSkillInfo {
 
                      return;
                   case 7:
-                     lucidField.sendLucidNotice("Lucid ได้เรียกมอนสเตอร์ที่แข็งแกร่งออกมา!", -1);
+                     lucidField.sendLucidNotice("Lucid เนเธ”เนเน€เธฃเธตเธขเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเธ—เธตเนเนเธเนเธเนเธเธฃเนเธเธญเธญเธเธกเธฒ!", -1);
                      boolean left = (Randomizer.nextInt() & 1) != 0;
                      if (lucidField.getPhase() == 1) {
                         lucidField.sendLucidCreateDragon(new Point(0, 0), new Point(0, 0), left);
@@ -1398,7 +1398,7 @@ public class MobSkillInfo {
                      return;
                   case 8:
                      lucidField.sendLucidSkill_Rush(0);
-                     lucidField.sendLucidNotice("Lucid กำลังจะใช้การโจมตีที่รุนแรง!", -1);
+                     lucidField.sendLucidNotice("Lucid เธเธณเธฅเธฑเธเธเธฐเนเธเนเธเธฒเธฃเนเธเธกเธ•เธตเธ—เธตเนเธฃเธธเธเนเธฃเธ!", -1);
                      return;
                   case 9:
                      if (lucidField instanceof Field_LucidBattlePhase2) {
@@ -1494,7 +1494,7 @@ public class MobSkillInfo {
                case 4:
                   if (monster.getMap() instanceof Field_WillBattle) {
                      Field_WillBattle fx = (Field_WillBattle)monster.getMap();
-                     fx.sendWillNotice("โจมตีดวงตาเพื่อส่งแสงจันทร์ไปยังอีกมิติ รีบสร้างเกราะแสงจันทร์เร็วเข้า!", 245, 28000);
+                     fx.sendWillNotice("เนเธเธกเธ•เธตเธ”เธงเธเธ•เธฒเน€เธเธทเนเธญเธชเนเธเนเธชเธเธเธฑเธเธ—เธฃเนเนเธเธขเธฑเธเธญเธตเธเธกเธดเธ•เธด เธฃเธตเธเธชเธฃเนเธฒเธเน€เธเธฃเธฒเธฐเนเธชเธเธเธฑเธเธ—เธฃเนเน€เธฃเนเธงเน€เธเนเธฒ!", 245, 28000);
                      fx.sendWillUnk();
                      MapleMonster mob = MapleLifeFactory.getMonster(8880305);
                      mob.setMaxHp(Long.MAX_VALUE);
@@ -1545,7 +1545,7 @@ public class MobSkillInfo {
                         monster.getMap().broadcastMessage(MobPacket.showBossHP(will1));
                         monster.getMap().broadcastMessage(MobPacket.showBossHP(will2));
                         int typex = Randomizer.nextInt(2);
-                        fx.sendWillNotice("Will กำลังจะปลดปล่อยพลัง พื้นที่จอมปลอมจะพังทลาย จงหาพื้นที่จริงและหลบภัย", 245, 3000);
+                        fx.sendWillNotice("Will เธเธณเธฅเธฑเธเธเธฐเธเธฅเธ”เธเธฅเนเธญเธขเธเธฅเธฑเธ เธเธทเนเธเธ—เธตเนเธเธญเธกเธเธฅเธญเธกเธเธฐเธเธฑเธเธ—เธฅเธฒเธข เธเธเธซเธฒเธเธทเนเธเธ—เธตเนเธเธฃเธดเธเนเธฅเธฐเธซเธฅเธเธ เธฑเธข", 245, 3000);
                         fx.setMonitorBreakType(typex);
                         fx.setStartMonitorBreakTime(System.currentTimeMillis() + 3000L);
                         player.getMap().broadcastMessage(MobPacket.showBossHP(monster));
@@ -1881,7 +1881,7 @@ public class MobSkillInfo {
             if (monster.getMap() instanceof Field_Zakum) {
                Field_Zakum f = (Field_Zakum)monster.getMap();
                if (f.isZakum(monster.getId())) {
-                  f.sendSmartMobNotice(SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "자쿰이 팔을 내려칠 준비를 합니다.");
+                  f.sendSmartMobNotice(SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "์์ฟฐ์ด ํ”์ ๋ด๋ ค์น  ์ค€๋น๋ฅผ ํ•ฉ๋๋ค.");
                }
             }
             break;

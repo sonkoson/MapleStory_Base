@@ -1,4 +1,4 @@
-package objects.fields.events;
+﻿package objects.fields.events;
 
 import objects.users.MapleCharacter;
 import objects.utils.Randomizer;

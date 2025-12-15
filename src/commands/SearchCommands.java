@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -180,7 +180,7 @@ public class SearchCommands implements Command {
                c.getPlayer().dropMessage(6, "No Quest found.");
             }
          } else {
-            c.getPlayer().dropMessage(6, "ไม่พบ Type");
+            c.getPlayer().dropMessage(6, "เนเธกเนเธเธ Type");
          }
       }
    }

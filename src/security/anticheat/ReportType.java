@@ -1,4 +1,4 @@
-package security.anticheat;
+﻿package security.anticheat;
 
 public enum ReportType {
    Hacking(0, "hack"),

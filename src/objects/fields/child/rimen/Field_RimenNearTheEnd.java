@@ -1,4 +1,4 @@
-package objects.fields.child.rimen;
+﻿package objects.fields.child.rimen;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -186,7 +186,7 @@ public class Field_RimenNearTheEnd extends Field {
                      quantity = 16;
                   }
 
-                  p.gainItem(4001893, (short)quantity, false, -1L, "듄켈 격파로 얻은 아이템");
+                  p.gainItem(4001893, (short)quantity, false, -1L, "๋“์ผ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
                }
 
                if (!set) {
@@ -220,7 +220,7 @@ public class Field_RimenNearTheEnd extends Field {
                            hell = true;
                         }
 
-                        StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 듄켈 격파 (" + list + ")");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค " + (hell ? "ํ—ฌ" : "ํ•๋“") + " ๋“์ผ ๊ฒฉํ (" + list + ")");
                         MapleCharacter playerxx = this.getCharacterById(mpc.getId());
                         if (playerxx != null) {
                            LoggingManager.putLog(new BossLog(playerxx, BossLogType.ClearLog.getType(), sb));
@@ -231,32 +231,32 @@ public class Field_RimenNearTheEnd extends Field {
                         Center.Broadcast.broadcastMessage(
                            CField.chatMsg(
                               DBConfig.isGanglim ? 8 : 22,
-                              "[보스격파] [CH."
-                                 + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                              "[๋ณด์ค๊ฒฉํ] [CH."
+                                 + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                  + "] '"
                                  + p.getParty().getLeader().getName()
-                                 + "' 파티("
+                                 + "' ํํฐ("
                                  + list
-                                 + ")가 [하드 듄켈]을 격파하였습니다."
+                                 + ")๊ฐ€ [ํ•๋“ ๋“์ผ]์ ๊ฒฉํํ•์€์ต๋๋ค."
                            )
                         );
                      } else if (this.getFieldSetInstance() != null && this.getFieldSetInstance() instanceof HellDunkelBoss) {
                         Center.Broadcast.broadcastMessage(
                            CField.chatMsg(
                               22,
-                              "[보스격파] [CH."
-                                 + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                              "[๋ณด์ค๊ฒฉํ] [CH."
+                                 + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                  + "] '"
                                  + p.getParty().getLeader().getName()
-                                 + "' 파티("
+                                 + "' ํํฐ("
                                  + list
-                                 + ")가 [헬 듄켈]을 격파하였습니다."
+                                 + ")๊ฐ€ [ํ—ฌ ๋“์ผ]์ ๊ฒฉํํ•์€์ต๋๋ค."
                            )
                         );
                      }
                   } else {
                      for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMember().getPartyMemberList())) {
-                        StringBuilder sb = new StringBuilder("보스 노말 듄켈 격파");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค ๋…ธ๋ง ๋“์ผ ๊ฒฉํ");
                         MapleCharacter playerxx = this.getCharacterById(mpc.getId());
                         if (playerxx != null) {
                            LoggingManager.putLog(new BossLog(playerxx, BossLogType.ClearLog.getType(), sb));

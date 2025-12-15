@@ -1,4 +1,4 @@
-package objects.wz.provider;
+﻿package objects.wz.provider;
 
 public class MapleDataEntry implements MapleDataEntity {
    private String name;

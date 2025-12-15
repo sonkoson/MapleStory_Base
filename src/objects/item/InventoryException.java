@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public class InventoryException extends RuntimeException {
    private static final long serialVersionUID = 1L;

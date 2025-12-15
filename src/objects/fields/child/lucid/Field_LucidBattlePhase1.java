@@ -1,4 +1,4 @@
-package objects.fields.child.lucid;
+﻿package objects.fields.child.lucid;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -61,7 +61,7 @@ public class Field_LucidBattlePhase1 extends Field_LucidBattle {
          int hpPercent = mob.getHPPercent();
          if (mob.getId() != 8880190) {
             if (hpPercent < 25) {
-               this.sendLucidNotice("ดูเหมือน Lucid จะโกรธจัด!", 3);
+               this.sendLucidNotice("เธ”เธนเน€เธซเธกเธทเธญเธ Lucid เธเธฐเนเธเธฃเธเธเธฑเธ”!", 3);
                mob.removeAllowedFsmSkill(9);
                mob.removeAllowedFsmSkill(10);
                mob.removeAllowedFsmSkill(11);
@@ -69,27 +69,27 @@ public class Field_LucidBattlePhase1 extends Field_LucidBattle {
                mob.addAllowedFsmSkill(13);
                mob.addAllowedFsmSkill(14);
             } else if (hpPercent < 50) {
-               this.sendLucidNotice("Lucid จะแสดงพลังที่แข็งแกร่งยิ่งขึ้น!", 2);
+               this.sendLucidNotice("Lucid เธเธฐเนเธชเธ”เธเธเธฅเธฑเธเธ—เธตเนเนเธเนเธเนเธเธฃเนเธเธขเธดเนเธเธเธถเนเธ!", 2);
                mob.removeAllowedFsmSkill(7);
                mob.removeAllowedFsmSkill(8);
                mob.addAllowedFsmSkill(9);
                mob.addAllowedFsmSkill(10);
                mob.addAllowedFsmSkill(11);
             } else if (hpPercent < 70) {
-               this.sendLucidNotice("Lucid กำลังดึงพลังออกมา!", 1);
+               this.sendLucidNotice("Lucid เธเธณเธฅเธฑเธเธ”เธถเธเธเธฅเธฑเธเธญเธญเธเธกเธฒ!", 1);
                mob.removeAllowedFsmSkill(5);
                mob.removeAllowedFsmSkill(6);
                mob.addAllowedFsmSkill(7);
                mob.addAllowedFsmSkill(8);
             }
          } else if (hpPercent < 25) {
-            this.sendLucidNotice("ดูเหมือน Lucid จะโกรธจัด!", 3);
+            this.sendLucidNotice("เธ”เธนเน€เธซเธกเธทเธญเธ Lucid เธเธฐเนเธเธฃเธเธเธฑเธ”!", 3);
             mob.addAllowedFsmSkill(8);
          } else if (hpPercent < 50) {
-            this.sendLucidNotice("Lucid จะแสดงพลังที่แข็งแกร่งยิ่งขึ้น!", 2);
+            this.sendLucidNotice("Lucid เธเธฐเนเธชเธ”เธเธเธฅเธฑเธเธ—เธตเนเนเธเนเธเนเธเธฃเนเธเธขเธดเนเธเธเธถเนเธ!", 2);
             mob.addAllowedFsmSkill(7);
          } else if (hpPercent < 70) {
-            this.sendLucidNotice("Lucid กำลังดึงพลังออกมา!", 1);
+            this.sendLucidNotice("Lucid เธเธณเธฅเธฑเธเธ”เธถเธเธเธฅเธฑเธเธญเธญเธเธกเธฒ!", 1);
             mob.addAllowedFsmSkill(6);
          }
       }

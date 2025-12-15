@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 public class FieldCommandContext {
    public long nextPickTime = 0L;

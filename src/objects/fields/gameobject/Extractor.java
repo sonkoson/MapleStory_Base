@@ -1,4 +1,4 @@
-package objects.fields.gameobject;
+﻿package objects.fields.gameobject;
 
 import network.models.CField;
 import objects.fields.MapleMapObject;

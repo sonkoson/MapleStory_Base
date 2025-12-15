@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import constants.GameConstants;
 import constants.QuestExConstants;
@@ -113,19 +113,19 @@ public class MapleInventoryManipulator {
       }
 
       if (item.getQuantity() < 0 && c.getPlayer().getChangeEmotionTime() != 0L && System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 2000L) {
-         c.getPlayer().ban("아이템 복사 시도로 인한 영구 정지", true, true, true);
+         c.getPlayer().ban("์•์ดํ… ๋ณต์ฌ ์๋๋ก ์ธํ• ์๊ตฌ ์ •์ง€", true, true, true);
          return -1;
       } else {
          if (GameConstants.isNeedToWriteLogItem(item.getItemId())) {
             FileoutputUtil.log(
                "./TextLog/GiveItemLog.txt",
-               "addByItem 아이템 지급 : (itemId : "
+               "addByItem ์•์ดํ… ์ง€๊ธ : (itemId : "
                   + item.getItemId()
                   + ", quantity : "
                   + item.getQuantity()
-                  + ") 유저 닉네임 : "
+                  + ") ์ ์ € ๋๋ค์ : "
                   + c.getPlayer().getName()
-                  + ", 계정 이름 : "
+                  + ", ๊ณ์ • ์ด๋ฆ : "
                   + c.getAccountName()
                   + ", Script : "
                   + c.getLastUsedScriptName()
@@ -323,19 +323,19 @@ public class MapleInventoryManipulator {
          }
 
          if (quantity < 0 && c.getPlayer().getChangeEmotionTime() != 0L && System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 2000L) {
-            c.getPlayer().ban("아이템 복사 시도로 인한 영구 정지", true, true, true);
+            c.getPlayer().ban("์•์ดํ… ๋ณต์ฌ ์๋๋ก ์ธํ• ์๊ตฌ ์ •์ง€", true, true, true);
             return -1;
          } else {
             if (GameConstants.isNeedToWriteLogItem(itemId)) {
                FileoutputUtil.log(
                   "./TextLog/GiveItemLog.txt",
-                  "addId 아이템 지급 : (itemId : "
+                  "addId ์•์ดํ… ์ง€๊ธ : (itemId : "
                      + itemId
                      + ", quantity : "
                      + quantity
-                     + ") 유저 닉네임 : "
+                     + ") ์ ์ € ๋๋ค์ : "
                      + c.getPlayer().getName()
-                     + ", 계정 이름 : "
+                     + ", ๊ณ์ • ์ด๋ฆ : "
                      + c.getAccountName()
                      + ", Script : "
                      + c.getLastUsedScriptName()
@@ -483,7 +483,7 @@ public class MapleInventoryManipulator {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
          if ((!ii.isPickupRestricted(itemId) || !c.getPlayer().haveItem(itemId, 1, true, false)) && ii.itemExists(itemId)) {
             if (quantity < 0 && c.getPlayer().getChangeEmotionTime() != 0L && System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 2000L) {
-               c.getPlayer().ban("아이템 복사 시도로 인한 영구 정지", true, true, true);
+               c.getPlayer().ban("์•์ดํ… ๋ณต์ฌ ์๋๋ก ์ธํ• ์๊ตฌ ์ •์ง€", true, true, true);
                return null;
             } else {
                MapleInventoryType type = GameConstants.getInventoryType(itemId);
@@ -669,19 +669,19 @@ public class MapleInventoryManipulator {
       } else if (item.getQuantity() < 0
          && c.getPlayer().getChangeEmotionTime() != 0L
          && System.currentTimeMillis() - c.getPlayer().getChangeEmotionTime() <= 2000L) {
-         c.getPlayer().ban("아이템 복사 시도로 인한 영구 정지", true, true, true);
+         c.getPlayer().ban("์•์ดํ… ๋ณต์ฌ ์๋๋ก ์ธํ• ์๊ตฌ ์ •์ง€", true, true, true);
          return false;
       } else {
          if (GameConstants.isNeedToWriteLogItem(item.getItemId())) {
             FileoutputUtil.log(
                "./TextLog/GiveItemLog.txt",
-               "addFromDrop 아이템 지급 : (itemId : "
+               "addFromDrop ์•์ดํ… ์ง€๊ธ : (itemId : "
                   + item.getItemId()
                   + ", quantity : "
                   + item.getQuantity()
-                  + ") 유저 닉네임 : "
+                  + ") ์ ์ € ๋๋ค์ : "
                   + c.getPlayer().getName()
-                  + ", 계정 이름 : "
+                  + ", ๊ณ์ • ์ด๋ฆ : "
                   + c.getAccountName()
                   + ", Script : "
                   + c.getLastUsedScriptName()
@@ -940,13 +940,13 @@ public class MapleInventoryManipulator {
          if (before == 0) {
             switch (item.getItemId()) {
                case 4001128:
-                  c.getPlayer().dropMessage(5, "ได้รับ Powder Keg สามารถนำไปให้ Aramia ที่ Henesys");
+                  c.getPlayer().dropMessage(5, "เนเธ”เนเธฃเธฑเธ Powder Keg เธชเธฒเธกเธฒเธฃเธ–เธเธณเนเธเนเธซเน Aramia เธ—เธตเน Henesys");
                   break;
                case 4001246:
-                  c.getPlayer().dropMessage(5, "ได้รับ Warm Sun, สามารถนำไปให้ Joyce ที่ Maple Tree Hill");
+                  c.getPlayer().dropMessage(5, "เนเธ”เนเธฃเธฑเธ Warm Sun, เธชเธฒเธกเธฒเธฃเธ–เธเธณเนเธเนเธซเน Joyce เธ—เธตเน Maple Tree Hill");
                   break;
                case 4001473:
-                  c.getPlayer().dropMessage(5, "ได้รับ Tree Decoration, สามารถนำไปให้ Joyce ที่ White Christmas Hill");
+                  c.getPlayer().dropMessage(5, "เนเธ”เนเธฃเธฑเธ Tree Decoration, เธชเธฒเธกเธฒเธฃเธ–เธเธณเนเธเนเธซเน Joyce เธ—เธตเน White Christmas Hill");
             }
          }
 
@@ -1187,24 +1187,24 @@ public class MapleInventoryManipulator {
          }
 
          if (count >= 7) {
-            c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ไอเทมที่มี Decorative Option Enhancement เกิน 7 ชิ้น");
+            c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเนเธญเน€เธ—เธกเธ—เธตเนเธกเธต Decorative Option Enhancement เน€เธเธดเธ 7 เธเธดเนเธ");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else if (source != null && source.getItemId() == 1112917 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1112917) != null) {
-            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
+            c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเธเนเธณเนเธ”เน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else if (source != null && source.getItemId() == 1114401 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1114401) != null) {
-            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
+            c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเธเนเธณเนเธ”เน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             if (!DBConfig.isGanglim) {
                if (source != null && source.getItemId() == 1114402 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1114402) != null) {
-                  c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
+                  c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเธเนเธณเนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
 
                if (source != null && source.getItemId() == 1112921 && chr.getInventory(MapleInventoryType.EQUIPPED).findById(1112921) != null) {
-                  c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถสวมใส่ซ้ำได้");
+                  c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเธเนเธณเนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return;
                }
@@ -1523,7 +1523,7 @@ public class MapleInventoryManipulator {
                                              c.getPlayer()
                                                 .dropMessage(
                                                    1,
-                                                   "ไม่สามารถสวมใส่ได้เนื่องจากมี ... อยู่แล้ว"
+                                                   "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธกเธต ... เธญเธขเธนเนเนเธฅเนเธง"
                                                       + StringUtil.makeEnumHumanReadable(s.name())
                                                       + " equipped."
                                                 );
@@ -1559,7 +1559,7 @@ public class MapleInventoryManipulator {
                                        }
 
                                        if (chr.getInventory(MapleInventoryType.CASH_EQUIP).getNextFreeSlot() == -1) {
-                                          chr.dropMessage(1, "กรุณาเหลือช่องว่างใน Cash Inventory อย่างน้อย 1 ช่อง");
+                                          chr.dropMessage(1, "เธเธฃเธธเธ“เธฒเน€เธซเธฅเธทเธญเธเนเธญเธเธงเนเธฒเธเนเธ Cash Inventory เธญเธขเนเธฒเธเธเนเธญเธข 1 เธเนเธญเธ");
                                           return;
                                        }
 
@@ -1679,7 +1679,7 @@ public class MapleInventoryManipulator {
                                        }
 
                                        if (source.getAndroid() == null) {
-                                          chr.dropMessage(1, "เกิดข้อผิดพลาดกับ Android");
+                                          chr.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเธฑเธ Android");
                                           return;
                                        }
 
@@ -2105,28 +2105,28 @@ public class MapleInventoryManipulator {
                return false;
             } else if (!ItemFlag.PROTECTED.check(flag) && (quantity == 1 || type != MapleInventoryType.EQUIP)) {
                if (GameConstants.isEquip(source.getItemId()) && (((Equip)source).getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "ไม่สามารถทิ้ง Trace of Equipment ได้");
+                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ—เธดเนเธ Trace of Equipment เนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return false;
                } else {
                   if (DBConfig.isGanglim) {
                      if (GameConstants.isRoyalBanMesoItem(source.getItemId())) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถทิ้งถุง Meso ได้");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ—เธดเนเธเธ–เธธเธ Meso เนเธ”เน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return false;
                      }
 
                      if (GameConstants.isRoyalBanDropItem(source.getItemId())) {
-                        c.getPlayer().dropMessage(1, "ไอเทมนี้ทิ้งไม่ได้");
+                        c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเธ—เธดเนเธเนเธกเนเนเธ”เน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return false;
                      }
                   }
 
                   StringBuilder sb = new StringBuilder();
-                  sb.append("플레이어가 필드에 아이템 드롭함");
+                  sb.append("ํ”๋ ์ด์–ด๊ฐ€ ํ•๋“์— ์•์ดํ… ๋“๋กญํ•จ");
                   if (source instanceof Equip) {
-                     sb.append(" (장비 정보[");
+                     sb.append(" (์ฅ๋น ์ •๋ณด[");
                      sb.append(((Equip)source).toString());
                      sb.append("])");
                   }
@@ -2136,7 +2136,7 @@ public class MapleInventoryManipulator {
                   );
                   Point dropPos = new Point(c.getPlayer().getPosition());
                   c.getPlayer().getCheatTracker().checkDrop();
-                  source.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "이(가) 필드 드랍한 아이템.");
+                  source.setGMLog(CurrentTime.getAllCurrentTime() + "์— " + c.getPlayer().getName() + "์ด(๊ฐ€) ํ•๋“ ๋“๋ํ• ์•์ดํ….");
                   if (quantity < source.getQuantity() && !GameConstants.isRechargable(source.getItemId())) {
                      Item target = source.copy();
                      target.setQuantity(quantity);
@@ -2204,7 +2204,7 @@ public class MapleInventoryManipulator {
                               c.getPlayer().updateOneInfo(i, "clear", "0");
                               MapleQuestStatus newStatus = new MapleQuestStatus(MapleQuest.getInstance(i), (byte)0, 2003);
                               c.getPlayer().updateQuest(newStatus);
-                              c.getPlayer().dropMessage(1, "เควสปลดปล่อย Genesis ถูกรีเซ็ต สามารถทำได้ใหม่เมื่อเข้าเกมอีกครั้ง");
+                              c.getPlayer().dropMessage(1, "เน€เธเธงเธชเธเธฅเธ”เธเธฅเนเธญเธข Genesis เธ–เธนเธเธฃเธตเน€เธเนเธ• เธชเธฒเธกเธฒเธฃเธ–เธ—เธณเนเธ”เนเนเธซเธกเนเน€เธกเธทเนเธญเน€เธเนเธฒเน€เธเธกเธญเธตเธเธเธฃเธฑเนเธ");
                            }
                         }
                      }

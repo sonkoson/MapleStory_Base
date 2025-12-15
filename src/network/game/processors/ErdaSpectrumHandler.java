@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import java.awt.Point;
 import network.decode.PacketDecoder;
@@ -71,7 +71,7 @@ public class ErdaSpectrumHandler {
                chr.getMap().spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8641018), new Point(483, 47));
                chr.getMap().broadcastMessage(ErdaSpectrum.ErdaSpectrumPhase(3));
             } else {
-               chr.dropMessage(5, "Erda ไม่เพียงพอสำหรับการใช้ Erda Collector");
+               chr.dropMessage(5, "Erda เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเนเธเน Erda Collector");
             }
          }
       }

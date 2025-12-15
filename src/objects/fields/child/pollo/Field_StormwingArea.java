@@ -1,4 +1,4 @@
-package objects.fields.child.pollo;
+﻿package objects.fields.child.pollo;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -79,7 +79,7 @@ public class Field_StormwingArea extends Field {
       super.onEnter(player);
       this.player = player;
       player.send(CField.getClock(30));
-      player.send(CField.startMapEffect("재빠른 황금빛 녀석이 스톰윙일세. 그 녀석을 잡으면 머물 수 있는 시간이 늘어나지!", 5120159, true, 5));
+      player.send(CField.startMapEffect("์ฌ๋น ๋ฅธ ํฉ๊ธ๋น ๋…€์์ด ์คํฐ์์ผ์ธ. ๊ทธ ๋…€์์ ์ก์ผ๋ฉด ๋จธ๋ฌผ ์ ์๋” ์๊ฐ์ด ๋์–ด๋์ง€!", 5120159, true, 5));
       RandomPortal portal = player.getRandomPortal();
       if (portal != null) {
          MapleMonster mob = MapleLifeFactory.getMonster(9832010);

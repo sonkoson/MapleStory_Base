@@ -1,4 +1,4 @@
-package objects.effect.child;
+﻿package objects.effect.child;
 
 import java.awt.Point;
 import network.SendPacketOpcode;

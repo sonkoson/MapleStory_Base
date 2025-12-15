@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes.mobskills;
+﻿package objects.fields.gameobject.lifes.mobskills;
 
 import objects.wz.provider.MapleData;
 import objects.wz.provider.MapleDataTool;

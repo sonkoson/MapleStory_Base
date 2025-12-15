@@ -1,4 +1,4 @@
-package objects.fields.child.fritto;
+﻿package objects.fields.child.fritto;
 
 import constants.QuestExConstants;
 import network.models.CField;
@@ -56,7 +56,7 @@ public class Field_StealDragonsEgg extends Field {
    public void gameStart() {
       this.player.send(CField.getStopwatch(30000));
       this.player.send(CField.environmentChange("PoloFritto/msg2", 20, 263));
-      this.player.send(CField.startMapEffect("쉿! 이 둥지의 꼭대기에는 드래곤의 알이 숨겨져 있어. 꼭대기로 가는 길을 잘 찾아보라구!", 5120160, true, 10));
+      this.player.send(CField.startMapEffect("์ฟ! ์ด ๋‘ฅ์ง€์ ๊ผญ๋€๊ธฐ์—๋” ๋“๋๊ณค์ ์•์ด ์จ๊ฒจ์ ธ ์์–ด. ๊ผญ๋€๊ธฐ๋ก ๊ฐ€๋” ๊ธธ์ ์ ์ฐพ์•๋ณด๋ผ๊ตฌ!", 5120160, true, 10));
       this.endGameTime = System.currentTimeMillis() + 30000L;
    }
 }

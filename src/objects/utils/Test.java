@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import database.DBConfig;
 import database.DBConnection;
@@ -140,6 +140,6 @@ public class Test {
 
       List<SecondaryStatValueHolder> aa = holders.get(flag);
       aa.add(h);
-      System.out.println("ㅋㅋ");
+      System.out.println("ใ…ใ…");
    }
 }

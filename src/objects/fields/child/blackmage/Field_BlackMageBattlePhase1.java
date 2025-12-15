@@ -1,4 +1,4 @@
-package objects.fields.child.blackmage;
+﻿package objects.fields.child.blackmage;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("Knight of Creation and Destruction พ่ายแพ้แล้ว เส้นทางสู่ Black Mage เปิดออก", 7000);
+         this.sendBlackMageNotice("Knight of Creation and Destruction เธเนเธฒเธขเนเธเนเนเธฅเนเธง เน€เธชเนเธเธ—เธฒเธเธชเธนเน Black Mage เน€เธเธดเธ”เธญเธญเธ", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -89,7 +89,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
 
          if (this.nextSpawnShriekingWallTime != 0L && this.nextSpawnShriekingWallTime <= System.currentTimeMillis()) {
             this.prepareSpawnShriekingWalls();
-            this.sendBlackMageNotice("Wailing Wall ปรากฏขึ้นและเข้าครอบงำพื้นที่", 3000);
+            this.sendBlackMageNotice("Wailing Wall เธเธฃเธฒเธเธเธเธถเนเธเนเธฅเธฐเน€เธเนเธฒเธเธฃเธญเธเธเธณเธเธทเนเธเธ—เธตเน", 3000);
             this.shriekingWallCreateTime = System.currentTimeMillis() + 2000L;
             if (this.spawnedShriekingWallsSize >= 10) {
                this.nextSpawnShriekingWallTime = 0L;
@@ -137,7 +137,7 @@ public class Field_BlackMageBattlePhase1 extends Field_BlackMage {
          }
 
          if (this.nextSpawnRedLightningTime <= System.currentTimeMillis()) {
-            this.sendBlackMageNotice("สายฟ้าสีแดงที่น่ากลัวฟาดลงมา จำกัดการเคลื่อนไหว", 3000);
+            this.sendBlackMageNotice("เธชเธฒเธขเธเนเธฒเธชเธตเนเธ”เธเธ—เธตเนเธเนเธฒเธเธฅเธฑเธงเธเธฒเธ”เธฅเธเธกเธฒ เธเธณเธเธฑเธ”เธเธฒเธฃเน€เธเธฅเธทเนเธญเธเนเธซเธง", 3000);
             MapleMonster mob = MapleLifeFactory.getMonster(8880506);
             this.spawnMonsterOnGroundBelow(mob, new Point(400, 85));
             mob = MapleLifeFactory.getMonster(8880506);

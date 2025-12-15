@@ -1,4 +1,4 @@
-package objects.utils.royalMove;
+﻿package objects.utils.royalMove;
 
 public class ZeniaAuctionHistory {
    private int auctionId;

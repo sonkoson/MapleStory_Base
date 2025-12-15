@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -125,7 +125,7 @@ public class SpiritSavior extends FieldSetInstance {
          switch (chaser) {
             case 0:
                map.broadcastMessage(CField.removeMapEffect());
-               map.broadcastMessage(CField.startMapEffect("맹독의 정령이 눈치챈 모양이야! 어서 도망가람!", 5120175, true, 3));
+               map.broadcastMessage(CField.startMapEffect("๋งน๋…์ ์ •๋ น์ด ๋์น์ฑ ๋ชจ์–‘์ด์•ผ! ์–ด์ ๋๋ง๊ฐ€๋!", 5120175, true, 3));
                map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8644301), new Point(-180, -1440), (byte)85, true, true);
                break;
             case 1:
@@ -141,7 +141,7 @@ public class SpiritSavior extends FieldSetInstance {
                }
 
                map.broadcastMessage(CField.removeMapEffect());
-               map.broadcastMessage(CField.startMapEffect("맹독의 정령이 더 강해지고 있담..!", 5120175, true, 3));
+               map.broadcastMessage(CField.startMapEffect("๋งน๋…์ ์ •๋ น์ด ๋” ๊ฐ•ํ•ด์ง€๊ณ  ์๋ด..!", 5120175, true, 3));
                map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8644302), spawnPos, (byte)86, true, true);
                break;
             case 2:
@@ -154,7 +154,7 @@ public class SpiritSavior extends FieldSetInstance {
                   }
 
                   map.broadcastMessage(CField.removeMapEffect());
-                  map.broadcastMessage(CField.startMapEffect("맹독의 정령이 더 강해지고 있담..!", 5120175, true, 3));
+                  map.broadcastMessage(CField.startMapEffect("๋งน๋…์ ์ •๋ น์ด ๋” ๊ฐ•ํ•ด์ง€๊ณ  ์๋ด..!", 5120175, true, 3));
                   map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8644303), spawnPos, (byte)87, true, true);
                   break;
                }
@@ -168,7 +168,7 @@ public class SpiritSavior extends FieldSetInstance {
                   }
 
                   map.broadcastMessage(CField.removeMapEffect());
-                  map.broadcastMessage(CField.startMapEffect("맹독의 정령이 더 강해지고 있담..!", 5120175, true, 3));
+                  map.broadcastMessage(CField.startMapEffect("๋งน๋…์ ์ •๋ น์ด ๋” ๊ฐ•ํ•ด์ง€๊ณ  ์๋ด..!", 5120175, true, 3));
                   map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8644304), spawnPos, (byte)88, true, true);
                   break;
                }
@@ -182,7 +182,7 @@ public class SpiritSavior extends FieldSetInstance {
                   }
 
                   map.broadcastMessage(CField.removeMapEffect());
-                  map.broadcastMessage(CField.startMapEffect("맹독의 정령이 완전체가 되었담! 조심해람!", 5120175, true, 3));
+                  map.broadcastMessage(CField.startMapEffect("๋งน๋…์ ์ •๋ น์ด ์์ ์ฒด๊ฐ€ ๋์—๋ด! ์กฐ์ฌํ•ด๋!", 5120175, true, 3));
                   map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8644305), spawnPos, (byte)89, true, true);
                }
          }
@@ -280,7 +280,7 @@ public class SpiritSavior extends FieldSetInstance {
             user.updateOneInfo(16215, "life", String.valueOf(life - 10));
             user.send(CField.environmentChange("Map/Effect3.img/savingSpirit/failed", 4, 0));
             map.broadcastMessage(CField.removeMapEffect());
-            map.broadcastMessage(CField.startMapEffect("친구들이... 맹독의 정령에게 당하고 말았담!", 5120175, true, 3));
+            map.broadcastMessage(CField.startMapEffect("์น๊ตฌ๋“ค์ด... ๋งน๋…์ ์ •๋ น์—๊ฒ ๋นํ•๊ณ  ๋ง์•๋ด!", 5120175, true, 3));
             int[] ids = new int[]{3003381, 3003481, 3003581, 3003681, 3003781};
 
             for (int i = 0; i < saved; i++) {

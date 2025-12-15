@@ -1,4 +1,4 @@
-package objects.fields.child.slime;
+﻿package objects.fields.child.slime;
 
 import java.awt.Point;
 import java.awt.Rectangle;

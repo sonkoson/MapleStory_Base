@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import network.models.CField;
@@ -55,9 +55,9 @@ public class EliteMobEvent extends FieldEvent {
       }
 
       if (spawnRed) {
-         this.map.startMapEffect("어둠을 흩뿌리며 어둠의 전령이 나타납니다.", 5120124, false, 5);
+         this.map.startMapEffect("์–ด๋‘ ์ ํฉ๋ฟ๋ฆฌ๋ฉฐ ์–ด๋‘ ์ ์ ๋ น์ด ๋ํ€๋ฉ๋๋ค.", 5120124, false, 5);
       } else {
-         this.map.startMapEffect("어두운 기운과 함께 강력한 몬스터가 출현합니다.", 5120124, false, 5);
+         this.map.startMapEffect("์–ด๋‘์ด ๊ธฐ์ด๊ณผ ํ•จ๊ป ๊ฐ•๋ ฅํ• ๋ชฌ์คํฐ๊ฐ€ ์ถํํ•ฉ๋๋ค.", 5120124, false, 5);
       }
 
       this.map.broadcastMessage(CField.getSpecialMapSound("Field.img/eliteMonster/Regen"));
@@ -68,9 +68,9 @@ public class EliteMobEvent extends FieldEvent {
       map.setEliteState(EliteState.Normal);
       map.setEliteLevel(map.getEliteLevel() + 1);
       if (map.getEliteLevel() < 14) {
-         map.startMapEffect("어두운 기운이 사라지지 않아 이곳을 음산하게 만들고 있습니다.", 5120124, false, 5);
+         map.startMapEffect("์–ด๋‘์ด ๊ธฐ์ด์ด ์ฌ๋ผ์ง€์ง€ ์•์• ์ด๊ณณ์ ์์ฐํ•๊ฒ ๋ง๋“ค๊ณ  ์์ต๋๋ค.", 5120124, false, 5);
       } else {
-         map.startMapEffect("이곳이 어두운 기운으로 가득 차 곧 무슨 일이 일어날 듯 합니다.", 5120124, false, 5);
+         map.startMapEffect("์ด๊ณณ์ด ์–ด๋‘์ด ๊ธฐ์ด์ผ๋ก ๊ฐ€๋“ ์ฐจ ๊ณง ๋ฌด์จ ์ผ์ด ์ผ์–ด๋  ๋“ฏ ํ•ฉ๋๋ค.", 5120124, false, 5);
       }
 
       map.setFieldEvent(null);

@@ -1,4 +1,4 @@
-package network.auction;
+﻿package network.auction;
 
 public enum AuctionMessage {
    SUCCESS(0),

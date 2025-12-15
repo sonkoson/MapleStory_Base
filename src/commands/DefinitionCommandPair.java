@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 class DefinitionCommandPair {
    private Command command;

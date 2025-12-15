@@ -1,4 +1,4 @@
-package objects.users.achievement.caching.mission.submission.checkvalue;
+﻿package objects.users.achievement.caching.mission.submission.checkvalue;
 
 import objects.item.MapleItemInformationProvider;
 import objects.wz.provider.MapleData;
@@ -17,11 +17,11 @@ public class SpelltraceEnchant {
       MapleItemInformationProvider info = MapleItemInformationProvider.getInstance();
       String name = info.getName(scroll);
       if (name != null) {
-         if (name.contains("이노센트") && this.innocentScroll) {
+         if (name.contains("์ด๋…ธ์ผํธ") && this.innocentScroll) {
             return true;
          }
 
-         if (name.contains("백의") && this.whiteScroll) {
+         if (name.contains("๋ฐฑ์") && this.whiteScroll) {
             return true;
          }
       }

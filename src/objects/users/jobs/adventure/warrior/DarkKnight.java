@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.warrior;
+﻿package objects.users.jobs.adventure.warrior;
 
 import java.util.ArrayList;
 import java.util.Collections;

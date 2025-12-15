@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import constants.GameConstants;
 import constants.JosaType;
@@ -1150,7 +1150,7 @@ public class AdminClient extends JFrame {
 
    private void jButton2ActionPerformed(ActionEvent evt) {
       if (ServerConstants.workingSave) {
-         JOptionPane.showMessageDialog(this, "이미 자동 저장이 실행중입니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "์ด๋ฏธ ์๋ ์ €์ฅ์ด ์คํ–์ค‘์…๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
          ServerConstants.workingSave = true;
          Timer.EtcTimer.getInstance().schedule(new Runnable() {
@@ -1315,7 +1315,7 @@ public class AdminClient extends JFrame {
          }
 
          LoggingManager.insert();
-         JOptionPane.showMessageDialog(this, "서버 저장 쓰레드가 실행됩니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "์๋ฒ ์ €์ฅ ์“ฐ๋ ๋“๊ฐ€ ์คํ–๋ฉ๋๋ค.", "Jihyeon 1.2.331", 1);
          this.setCount(0);
          this.setNotSaveCount(0);
       }
@@ -1327,19 +1327,19 @@ public class AdminClient extends JFrame {
             Field map = chr.getClient().getChannelServer().getMapFactory().getMap(ServerConstants.TownMap);
             if (map != null) {
                chr.changeMap(map, map.getPortal("sp"));
-               chr.dropMessage(6, "ถูกย้ายไปที่จัตุรัสโดย GM");
+               chr.dropMessage(6, "เธ–เธนเธเธขเนเธฒเธขเนเธเธ—เธตเนเธเธฑเธ•เธธเธฃเธฑเธชเนเธ”เธข GM");
             }
          }
       }
 
-      JOptionPane.showMessageDialog(this, "1채널에 있는 모든 플레이어를 광장으로 이동시켰습니다.", "Jihyeon 1.2.331", 1);
+      JOptionPane.showMessageDialog(this, "1์ฑ๋์— ์๋” ๋ชจ๋“  ํ”๋ ์ด์–ด๋ฅผ ๊ด‘์ฅ์ผ๋ก ์ด๋์์ผฐ์ต๋๋ค.", "Jihyeon 1.2.331", 1);
    }
 
    private void realCashActionPerformed(ActionEvent evt) {
    }
 
    private void jButton4ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -1348,12 +1348,12 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.realCash.getText());
                      chr.gainRealCash(rc);
-                     String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                     String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                      chr.dropMessage(
                            5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                 + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var17) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1369,12 +1369,12 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.realCash.getText());
                      chrx.gainRealCash(rc);
-                     String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                     String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                      chrx.dropMessage(
                            5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                 + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var16) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1390,12 +1390,12 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.realCash.getText());
                      chrxx.gainRealCash(rc);
-                     String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                     String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                      chrxx.dropMessage(
                            5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                 + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                 + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var15) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1421,12 +1421,12 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.realCash.getText());
                               chrxxx.gainRealCash(rc);
-                              String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                              String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                               chrxxx.dropMessage(
                                     5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                          + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var20) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -1443,12 +1443,12 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.realCash.getText());
                               chrxxxx.gainRealCash(rc);
-                              String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                              String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                               chrxxxx.dropMessage(
                                     5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                          + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var19) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -1465,12 +1465,12 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.realCash.getText());
                               chrxxxxx.gainRealCash(rc);
-                              String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                              String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                               chrxxxxx.dropMessage(
                                     5, Integer.parseInt(this.realCash.getText()) + " " + cashName
-                                          + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+                                          + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var18) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -1508,26 +1508,26 @@ public class AdminClient extends JFrame {
          }
 
          StringBuilder sb = new StringBuilder();
-         sb.append("후원 포인트 지급 : ");
+         sb.append("ํ์ ํฌ์ธํธ ์ง€๊ธ : ");
          sb.append(" (");
          sb.append(this.Receiver.getText());
          sb.append(") ");
-         sb.append(this.realCash.getText() + " 포인트");
+         sb.append(this.realCash.getText() + " ํฌ์ธํธ");
          sb.append("\r\n");
          FileoutputUtil.log("./TextLog/DonatorPointLog.txt", sb.toString());
          if (!found) {
             if (f) {
-               JOptionPane.showMessageDialog(this, "오프라인 지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "์คํ”๋ผ์ธ ์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             } else {
-               JOptionPane.showMessageDialog(this, "오프라인 지급 중 오류가 발생하였습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "์คํ”๋ผ์ธ ์ง€๊ธ ์ค‘ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             }
          } else {
-            JOptionPane.showMessageDialog(this, "지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+            JOptionPane.showMessageDialog(this, "์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
          }
       } else {
-         String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+         String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
          JOptionPane.showMessageDialog(this,
-               cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.351",
+               cashName + Locales.getKoreanJosa(cashName, JosaType.์๋ฅผ) + " ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.351",
                2);
       }
    }
@@ -1583,14 +1583,14 @@ public class AdminClient extends JFrame {
       }
 
       if (found) {
-         JOptionPane.showMessageDialog(this, target + "(을)를 접속해제 하였습니다", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, target + "(์)๋ฅผ ์ ‘์ํ•ด์  ํ•์€์ต๋๋ค", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "해당 유저를 찾을 수 없습니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "ํ•ด๋น ์ ์ €๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton8ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          String username = this.Receiver.getText();
          List<String> charnameList = new ArrayList<>();
          DBConnection db = new DBConnection();
@@ -1622,7 +1622,7 @@ public class AdminClient extends JFrame {
 
          this.disconnectByAdmin(charnameList);
       } else {
-         JOptionPane.showMessageDialog(this, "접속해제할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์ ‘์ํ•ด์ ํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
@@ -1630,15 +1630,15 @@ public class AdminClient extends JFrame {
    }
 
    private void jButton3ActionPerformed(ActionEvent evt) {
-      int flag = JOptionPane.showConfirmDialog(this, "서버 저장 및 리붓을 진행하시겠습니까?", "Jihyeon 1.2.351", 0);
+      int flag = JOptionPane.showConfirmDialog(this, "์๋ฒ ์ €์ฅ ๋ฐ ๋ฆฌ๋ถ“์ ์งํ–ํ•์๊ฒ ์ต๋๊น?", "Jihyeon 1.2.351", 0);
       if (flag == 0) {
          if (ServerConstants.workingSave) {
-            JOptionPane.showMessageDialog(this, "서버 저장이 진행중입니다. 저장이 완료된 후 다시 시도해주세요.", "Jihyeon 1.2.351", 1);
+            JOptionPane.showMessageDialog(this, "์๋ฒ ์ €์ฅ์ด ์งํ–์ค‘์…๋๋ค. ์ €์ฅ์ด ์๋ฃ๋ ํ ๋ค์ ์๋ํ•ด์ฃผ์ธ์”.", "Jihyeon 1.2.351", 1);
             return;
          }
 
          Center.unregisterAutoSave();
-         JOptionPane.showMessageDialog(this, "서버 저장 및 리붓이 진행됩니다.", "Jihyeon 1.2.351", 1);
+         JOptionPane.showMessageDialog(this, "์๋ฒ ์ €์ฅ ๋ฐ ๋ฆฌ๋ถ“์ด ์งํ–๋ฉ๋๋ค.", "Jihyeon 1.2.351", 1);
          ServerConstants.workingSave = true;
          ServerConstants.blockedEnterAuction = true;
          ServerConstants.workingReboot = true;
@@ -1742,7 +1742,7 @@ public class AdminClient extends JFrame {
          }
 
          long endSaveTime = System.currentTimeMillis();
-         System.out.println("All data saved. (완료 시간 : " + (endSaveTime - startSaveTime) + " m/s)");
+         System.out.println("All data saved. (์๋ฃ ์๊ฐ : " + (endSaveTime - startSaveTime) + " m/s)");
          System.out.println("Server can now be shut down.");
       }
    }
@@ -1760,12 +1760,12 @@ public class AdminClient extends JFrame {
    private void FreezeChatActionPerformed(ActionEvent evt) {
       if (freezeChat) {
          freezeChat = false;
-         this.FreezeChat.setText("채팅창 얼리기");
-         JOptionPane.showMessageDialog(this, "채팅창을 녹였습니다.", "Jihyeon 1.2.331", 1);
+         this.FreezeChat.setText("์ฑํ…์ฐฝ ์–ผ๋ฆฌ๊ธฐ");
+         JOptionPane.showMessageDialog(this, "์ฑํ…์ฐฝ์ ๋…น์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
          freezeChat = true;
-         this.FreezeChat.setText("채팅창 녹이기");
-         JOptionPane.showMessageDialog(this, "채팅창을 얼렸습니다.", "Jihyeon 1.2.331", 1);
+         this.FreezeChat.setText("์ฑํ…์ฐฝ ๋…น์ด๊ธฐ");
+         JOptionPane.showMessageDialog(this, "์ฑํ…์ฐฝ์ ์–ผ๋ ธ์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       }
    }
 
@@ -1773,49 +1773,49 @@ public class AdminClient extends JFrame {
    }
 
    private void realCashMouseReleased(MouseEvent evt) {
-      if (this.realCash.getText().equals("지급할 포인트")) {
+      if (this.realCash.getText().equals("์ง€๊ธํ•  ํฌ์ธํธ")) {
          this.realCash.setText("");
       }
    }
 
    private void hongboPointMouseReleased(MouseEvent evt) {
-      if (this.hongboPoint.getText().equals("지급할 포인트")) {
+      if (this.hongboPoint.getText().equals("์ง€๊ธํ•  ํฌ์ธํธ")) {
          this.hongboPoint.setText("");
       }
    }
 
    private void itemCodeMousePressed(MouseEvent evt) {
-      if (this.itemCode.getText().equals("아이템 코드,갯수")) {
+      if (this.itemCode.getText().equals("์•์ดํ… ์ฝ”๋“,๊ฐฏ์")) {
          this.itemCode.setText("");
       }
    }
 
    private void mesoMouseReleased(MouseEvent evt) {
-      if (this.meso.getText().equals("지급할 메소")) {
+      if (this.meso.getText().equals("์ง€๊ธํ•  ๋ฉ”์")) {
          this.meso.setText("");
       }
    }
 
    private void hottimeItemIDMouseReleased(MouseEvent evt) {
-      if (this.hottimeItemID.getText().equals("아이템 코드,갯수")) {
+      if (this.hottimeItemID.getText().equals("์•์ดํ… ์ฝ”๋“,๊ฐฏ์")) {
          this.hottimeItemID.setText("");
       }
    }
 
    private void hottimeRecvCountMouseReleased(MouseEvent evt) {
-      if (this.hottimeRecvCount.getText().equals("지급 받을 회원수")) {
+      if (this.hottimeRecvCount.getText().equals("์ง€๊ธ ๋ฐ์ ํ์์")) {
          this.hottimeRecvCount.setText("");
       }
    }
 
    private void ReceiverMouseReleased(MouseEvent evt) {
-      if (this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          this.Receiver.setText("");
       }
    }
 
    private void jButton7ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -1823,9 +1823,9 @@ public class AdminClient extends JFrame {
                if (chr.getName().equals(this.Receiver.getText())) {
                   try {
                      chr.gainMeso(Integer.parseInt(this.meso.getText()), true);
-                     chr.dropMessage(5, Integer.parseInt(this.meso.getText()) + "메소를 지급 받았습니다.");
+                     chr.dropMessage(5, Integer.parseInt(this.meso.getText()) + "๋ฉ”์๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var8) {
-                     JOptionPane.showMessageDialog(this, "메소를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "๋ฉ”์๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1836,17 +1836,17 @@ public class AdminClient extends JFrame {
          }
 
          if (!found) {
-            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(을)를 찾을 수 없습니다!", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(์)๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.331", 0);
          } else {
-            JOptionPane.showMessageDialog(this, "지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+            JOptionPane.showMessageDialog(this, "์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
          }
       } else {
-         JOptionPane.showMessageDialog(this, "메소를 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "๋ฉ”์๋ฅผ ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
    private void jButton5ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -1855,9 +1855,9 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.hongboPoint.getText());
                      chr.gainHongboPoint(rc);
-                     chr.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                     chr.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var17) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1873,9 +1873,9 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.hongboPoint.getText());
                      chrx.gainHongboPoint(rc);
-                     chrx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                     chrx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var16) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1891,9 +1891,9 @@ public class AdminClient extends JFrame {
                   try {
                      int rc = Integer.parseInt(this.hongboPoint.getText());
                      chrxx.gainHongboPoint(rc);
-                     chrxx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                     chrxx.dropMessage(5, Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                   } catch (NumberFormatException var15) {
-                     JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                     JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                      return;
                   }
 
@@ -1919,11 +1919,11 @@ public class AdminClient extends JFrame {
                            try {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxx.gainHongboPoint(rc);
-                              String cashName = DBConfig.isGanglim ? "후원 캐시" : "강림 포인트";
+                              String cashName = DBConfig.isGanglim ? "ํ์ ์บ์" : "๊ฐ•๋ฆผ ํฌ์ธํธ";
                               chrxxx.dropMessage(5,
-                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                                    Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var20) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -1941,9 +1941,9 @@ public class AdminClient extends JFrame {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxxx.gainHongboPoint(rc);
                               chrxxxx.dropMessage(5,
-                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                                    Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var19) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -1961,9 +1961,9 @@ public class AdminClient extends JFrame {
                               int rc = Integer.parseInt(this.hongboPoint.getText());
                               chrxxxxx.gainHongboPoint(rc);
                               chrxxxxx.dropMessage(5,
-                                    Integer.parseInt(this.hongboPoint.getText()) + " 홍보 포인트를 지급 받았습니다.");
+                                    Integer.parseInt(this.hongboPoint.getText()) + " ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค.");
                            } catch (NumberFormatException var18) {
-                              JOptionPane.showMessageDialog(this, "포인트를 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+                              JOptionPane.showMessageDialog(this, "ํฌ์ธํธ๋ฅผ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
                               return;
                            }
 
@@ -2003,16 +2003,16 @@ public class AdminClient extends JFrame {
          }
 
          StringBuilder sb = new StringBuilder();
-         sb.append("홍보 포인트 지급 : ");
+         sb.append("ํ๋ณด ํฌ์ธํธ ์ง€๊ธ : ");
          sb.append(" (");
          sb.append(this.Receiver.getText());
          sb.append(") ");
-         sb.append(this.hongboPoint.getText() + " 포인트");
+         sb.append(this.hongboPoint.getText() + " ํฌ์ธํธ");
          sb.append("\r\n");
          FileoutputUtil.log("./TextLog/PromotionPointLog.txt", sb.toString());
-         JOptionPane.showMessageDialog(this, "지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "홍보 포인트를 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "ํ๋ณด ํฌ์ธํธ๋ฅผ ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
@@ -2020,7 +2020,7 @@ public class AdminClient extends JFrame {
    }
 
    private void jButton6ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          String[] parse = this.itemCode.getText().trim().split(",");
          int itemID = Integer.parseInt(parse[0]);
          int quantity = Integer.parseInt(parse[1]);
@@ -2032,12 +2032,12 @@ public class AdminClient extends JFrame {
             item = new Item(itemID, (short) 0, (short) quantity, 0);
          }
 
-         item.setGMLog(CurrentTime.getAllCurrentTime() + "에 서버 관리기 아이템 지급을 통해 만들어진 아이템");
+         item.setGMLog(CurrentTime.getAllCurrentTime() + "์— ์๋ฒ ๊ด€๋ฆฌ๊ธฐ ์•์ดํ… ์ง€๊ธ์ ํตํ•ด ๋ง๋“ค์–ด์ง ์•์ดํ…");
          boolean find = false;
          if (!ii.itemExists(itemID)) {
-            JOptionPane.showMessageDialog(this, "존재하지 않는 아이템입니다.", "Jihyeon 1.2.354", 0);
+            JOptionPane.showMessageDialog(this, "์กด์ฌํ•์ง€ ์•๋” ์•์ดํ…์…๋๋ค.", "Jihyeon 1.2.354", 0);
          } else {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
             Calendar CAL = new GregorianCalendar(Locale.KOREA);
             String fDate = sdf.format(CAL.getTime());
             MapleCharacter p = null;
@@ -2072,7 +2072,7 @@ public class AdminClient extends JFrame {
                   rs.close();
                   ps.close();
                   if (accountID <= 0) {
-                     JOptionPane.showMessageDialog(this, "존재하지 않는 유저입니다.", "Jihyeon 1.2.354", 1);
+                     JOptionPane.showMessageDialog(this, "์กด์ฌํ•์ง€ ์•๋” ์ ์ €์…๋๋ค.", "Jihyeon 1.2.354", 1);
                   } else {
                      for (GameServer gs : GameServer.getAllInstances()) {
                         for (Field map : gs.getMapFactory().getAllMaps()) {
@@ -2088,19 +2088,19 @@ public class AdminClient extends JFrame {
                      if (p != null) {
                         MapleCabinet cabinet = p.getCabinet();
                         if (cabinet == null) {
-                           JOptionPane.showMessageDialog(this, "해당 유저의 보관함을 열람하는 과정에서 오류가 발생하였습니다.", "Jihyeon 1.2.354",
+                           JOptionPane.showMessageDialog(this, "ํ•ด๋น ์ ์ €์ ๋ณด๊ด€ํ•จ์ ์—ด๋ํ•๋” ๊ณผ์ •์—์ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค.", "Jihyeon 1.2.354",
                                  1);
                            return;
                         }
 
                         cabinet.addCabinetItem(
                               new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L,
-                                    "[GM 선물]", fDate + "에 운영자가 보낸 아이템입니다.", item));
+                                    "[GM ์ ๋ฌผ]", fDate + "์— ์ด์์๊ฐ€ ๋ณด๋ธ ์•์ดํ…์…๋๋ค.", item));
                         p.send(CField.maplecabinetResult(8));
                         p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                        p.dropMessage(5, "[Notice] ไอเทมจาก GM มาถึงแล้ว กรุณารับที่ Maple Cabinet");
+                        p.dropMessage(5, "[Notice] เนเธญเน€เธ—เธกเธเธฒเธ GM เธกเธฒเธ–เธถเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน Maple Cabinet");
                         find = true;
-                        JOptionPane.showMessageDialog(this, "해당 플레이어와 동일한 계정 내에 캐릭터에게 전송되었습니다.", "Jihyeon 1.2.354", 1);
+                        JOptionPane.showMessageDialog(this, "ํ•ด๋น ํ”๋ ์ด์–ด์€ ๋์ผํ• ๊ณ์ • ๋ด์— ์บ๋ฆญํฐ์—๊ฒ ์ ์ก๋์—์ต๋๋ค.", "Jihyeon 1.2.354", 1);
                      } else {
                         ps = con.prepareStatement(
                               "SELECT `cabinet_index` FROM `cabinet_items` WHERE `accountid` = ? ORDER BY `cabinet_index` DESC");
@@ -2145,8 +2145,8 @@ public class AdminClient extends JFrame {
                         ps.setInt(idx.getAndIncrement(), item.getOnceTrade());
                         ps.setInt(idx.getAndIncrement(), lastIndex + 1);
                         ps.setLong(idx.getAndIncrement(), System.currentTimeMillis() + 604800000L);
-                        ps.setString(idx.getAndIncrement(), "[GM 선물]");
-                        ps.setString(idx.getAndIncrement(), fDate + "에 운영자가 보낸 아이템입니다.");
+                        ps.setString(idx.getAndIncrement(), "[GM ์ ๋ฌผ]");
+                        ps.setString(idx.getAndIncrement(), fDate + "์— ์ด์์๊ฐ€ ๋ณด๋ธ ์•์ดํ…์…๋๋ค.");
                         ps.executeUpdate();
                         rs = ps.getGeneratedKeys();
                         if (!rs.next()) {
@@ -2248,7 +2248,7 @@ public class AdminClient extends JFrame {
                      }
 
                      find = true;
-                     JOptionPane.showMessageDialog(this, "오프라인 지급되었습니다.", "Jihyeon 1.2.354", 1);
+                     JOptionPane.showMessageDialog(this, "์คํ”๋ผ์ธ ์ง€๊ธ๋์—์ต๋๋ค.", "Jihyeon 1.2.354", 1);
                   }
                } catch (SQLException var39) {
                   new RuntimeException(var39);
@@ -2274,34 +2274,34 @@ public class AdminClient extends JFrame {
             } else {
                MapleCabinet cabinet = p.getCabinet();
                if (cabinet == null) {
-                  JOptionPane.showMessageDialog(this, "해당 유저의 보관함을 열람하는 과정에서 오류가 발생하였습니다.", "Jihyeon 1.2.354", 0);
+                  JOptionPane.showMessageDialog(this, "ํ•ด๋น ์ ์ €์ ๋ณด๊ด€ํ•จ์ ์—ด๋ํ•๋” ๊ณผ์ •์—์ ์ค๋ฅ๊ฐ€ ๋ฐ์ํ•์€์ต๋๋ค.", "Jihyeon 1.2.354", 0);
                   return;
                }
 
                cabinet.addCabinetItem(
-                     new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM 선물]",
-                           fDate + "에 운영자가 보낸 아이템입니다.", item));
+                     new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM ์ ๋ฌผ]",
+                           fDate + "์— ์ด์์๊ฐ€ ๋ณด๋ธ ์•์ดํ…์…๋๋ค.", item));
                p.send(CField.maplecabinetResult(8));
                p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-               p.dropMessage(5, "[Notice] ไอเทมจาก GM มาถึงแล้ว กรุณารับที่ Maple Cabinet");
+               p.dropMessage(5, "[Notice] เนเธญเน€เธ—เธกเธเธฒเธ GM เธกเธฒเธ–เธถเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน Maple Cabinet");
                find = true;
-               JOptionPane.showMessageDialog(this, "아이템을 지급하였습니다.", "Jihyeon 1.2.354", 1);
+               JOptionPane.showMessageDialog(this, "์•์ดํ…์ ์ง€๊ธํ•์€์ต๋๋ค.", "Jihyeon 1.2.354", 1);
             }
 
             if (!find) {
-               JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(을)를 찾을 수 없습니다!", "Jihyeon 1.2.354", 0);
+               JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(์)๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.354", 0);
             }
          }
       } else {
-         JOptionPane.showMessageDialog(this, "아이템을 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์•์ดํ…์ ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
    private void jButton9ActionPerformed(ActionEvent evt) {
       if (!this.hottimeItemID.getText().isEmpty()
-            && !this.hottimeItemID.getText().equals("아이템 코드, 갯수")
+            && !this.hottimeItemID.getText().equals("์•์ดํ… ์ฝ”๋“, ๊ฐฏ์")
             && !this.hottimeRecvCount.getText().isEmpty()
-            && !this.hottimeRecvCount.getText().equals("지급 받을 회원수")) {
+            && !this.hottimeRecvCount.getText().equals("์ง€๊ธ ๋ฐ์ ํ์์")) {
          List<MapleCharacter> player = new LinkedList<>();
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -2335,20 +2335,20 @@ public class AdminClient extends JFrame {
             quantity = Integer.parseInt(args[1]);
             if (!this.hottimeRecvCount.getText().equals("ALL")
                   && !this.hottimeRecvCount.getText().equals("all")
-                  && !this.hottimeRecvCount.getText().equals("전체")
-                  && !this.hottimeRecvCount.getText().equals("모두")) {
+                  && !this.hottimeRecvCount.getText().equals("์ ์ฒด")
+                  && !this.hottimeRecvCount.getText().equals("๋ชจ๋‘")) {
                userCount = Math.min(Integer.parseInt(this.hottimeRecvCount.getText()), player.size());
             } else {
                userCount = player.size();
                all = true;
             }
          } catch (NumberFormatException var18) {
-            JOptionPane.showMessageDialog(this, "지급될 아이템 ID나 갯수를 숫자로 정확하게 입력해주세요.", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, "์ง€๊ธ๋  ์•์ดํ… ID๋ ๊ฐฏ์๋ฅผ ์ซ์๋ก ์ •ํ•ํ•๊ฒ ์…๋ ฅํ•ด์ฃผ์ธ์”.", "Jihyeon 1.2.331", 0);
             return;
          }
 
          if (!ii.itemExists(itemID)) {
-            JOptionPane.showMessageDialog(this, itemID + "번 아이템은 존재하지 않는 아이템입니다.", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, itemID + "๋ฒ ์•์ดํ…์€ ์กด์ฌํ•์ง€ ์•๋” ์•์ดํ…์…๋๋ค.", "Jihyeon 1.2.331", 0);
          } else {
             List<MapleCharacter> recipient = new LinkedList<>();
             int requestCount = 0;
@@ -2357,7 +2357,7 @@ public class AdminClient extends JFrame {
                int side = Randomizer.rand(0, player.size() - 1);
                MapleCharacter g = player.get(side);
                if (requestCount++ >= userCount * 10 || recipient.size() >= userCount) {
-                  JOptionPane.showMessageDialog(this, "지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+                  JOptionPane.showMessageDialog(this, "์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
                   return;
                }
 
@@ -2373,32 +2373,32 @@ public class AdminClient extends JFrame {
                   if (!alreadyRecv) {
                      MapleCabinet cabinet = g.getCabinet();
                      if (cabinet != null) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy๋… MM์” dd์ผ HH์ mm๋ถ");
                         Calendar CAL = new GregorianCalendar(Locale.KOREA);
                         String fDate = sdf.format(CAL.getTime());
                         cabinet.addCabinetItem(
                               new MapleCabinetItem(
                                     cabinet.getNextIndex(),
                                     System.currentTimeMillis() + 604800000L,
-                                    "[핫타임 보상]",
-                                    fDate + "에 지급된 핫타임 보상입니다.",
+                                    "[ํ•ซํ€์ ๋ณด์]",
+                                    fDate + "์— ์ง€๊ธ๋ ํ•ซํ€์ ๋ณด์์…๋๋ค.",
                                     new Item(itemID, (short) 0, (short) quantity, 0,
                                           MapleInventoryIdentifier.getInstance())));
                         g.send(CField.maplecabinetResult(8));
                         g.setSaveFlag(g.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                         String message = "";
                         if (!all) {
-                           message = message + "축하드립니다! ";
+                           message = message + "์ถ•ํ•๋“๋ฆฝ๋๋ค! ";
                         }
 
                         if (!all && userCount < 5) {
                            Center.Broadcast.broadcastMessage(
-                                 CField.chatMsg(21, "[" + g.getName() + "] 님이 핫타임 이벤트 보상으로 " + ii.getName(itemID) + " "
-                                       + quantity + "개를 지급 받았습니다. 모두 축하해주세요!"));
+                                 CField.chatMsg(21, "[" + g.getName() + "] ๋์ด ํ•ซํ€์ ์ด๋ฒคํธ ๋ณด์์ผ๋ก " + ii.getName(itemID) + " "
+                                       + quantity + "๊ฐ๋ฅผ ์ง€๊ธ ๋ฐ์•์ต๋๋ค. ๋ชจ๋‘ ์ถ•ํ•ํ•ด์ฃผ์ธ์”!"));
                         }
 
                         message = message + "[" + ii.getName(itemID) + "] " + quantity
-                              + "개를 핫타임 보상으로 지급 받았습니다.\r\n[메이플 보관함]을 확인해주세요.";
+                              + "๊ฐ๋ฅผ ํ•ซํ€์ ๋ณด์์ผ๋ก ์ง€๊ธ ๋ฐ์•์ต๋๋ค.\r\n[๋ฉ”์ดํ” ๋ณด๊ด€ํ•จ]์ ํ•์ธํ•ด์ฃผ์ธ์”.";
                         g.dropMessage(1, message);
                         g.dropMessage(5, message);
                         recipient.add(g);
@@ -2408,7 +2408,7 @@ public class AdminClient extends JFrame {
             }
          }
       } else {
-         JOptionPane.showMessageDialog(this, "지급할 핫타임 아이템 코드나 회원수를 정확히 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์ง€๊ธํ•  ํ•ซํ€์ ์•์ดํ… ์ฝ”๋“๋ ํ์์๋ฅผ ์ •ํ•ํ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
@@ -2416,73 +2416,73 @@ public class AdminClient extends JFrame {
    }
 
    private void noticeMsgMouseReleased(MouseEvent evt) {
-      if (this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          this.noticeMsg.setText("");
       }
    }
 
    private void jButton10ActionPerformed(ActionEvent evt) {
-      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(1, this.noticeMsg.getText()));
-         JOptionPane.showMessageDialog(this, "공지사항을 송출하였습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ์ ์ก์ถํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "공지사항 메세지를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ ๋ฉ”์ธ์ง€๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton11ActionPerformed(ActionEvent evt) {
-      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          for (GameServer cserv : GameServer.getAllInstances()) {
             cserv.setServerMessage(this.noticeMsg.getText());
          }
 
-         JOptionPane.showMessageDialog(this, "공지사항을 송출하였습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ์ ์ก์ถํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "공지사항 메세지를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ ๋ฉ”์ธ์ง€๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton12ActionPerformed(ActionEvent evt) {
-      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0, this.noticeMsg.getText()));
-         JOptionPane.showMessageDialog(this, "공지사항을 송출하였습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ์ ์ก์ถํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "공지사항 메세지를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ ๋ฉ”์ธ์ง€๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton13ActionPerformed(ActionEvent evt) {
-      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          Center.Broadcast.broadcastMessage(CWvsContext.getStaticScreenMessage(this.noticeMsg.getText(), false, 1));
-         JOptionPane.showMessageDialog(this, "공지사항을 송출하였습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ์ ์ก์ถํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "공지사항 메세지를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ ๋ฉ”์ธ์ง€๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton14ActionPerformed(ActionEvent evt) {
-      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("공지사항 입력")) {
+      if (!this.noticeMsg.getText().isEmpty() && !this.noticeMsg.getText().equals("๊ณต์ง€์ฌํ•ญ ์…๋ ฅ")) {
          Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0, this.noticeMsg.getText()));
          Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(1, this.noticeMsg.getText()));
          Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(4, this.noticeMsg.getText()));
          Center.Broadcast.broadcastMessage(CWvsContext.getStaticScreenMessage(this.noticeMsg.getText(), false, 1));
          Center.Broadcast.broadcastMessage(CWvsContext.getStaticScreenMessage(this.noticeMsg.getText(), false, 1));
-         JOptionPane.showMessageDialog(this, "공지사항을 송출하였습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ์ ์ก์ถํ•์€์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         JOptionPane.showMessageDialog(this, "공지사항 메세지를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "๊ณต์ง€์ฌํ•ญ ๋ฉ”์ธ์ง€๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void killPointMouseReleased(MouseEvent evt) {
-      if (this.killPoint.getText().equals("지급할 포인트")) {
+      if (this.killPoint.getText().equals("์ง€๊ธํ•  ํฌ์ธํธ")) {
          this.killPoint.setText("");
       }
    }
 
    private void jButton15ActionPerformed(ActionEvent evt) {
       if (!ServerConstants.useAdminClientUpgrade) {
-         JOptionPane.showMessageDialog(this, "추가 의뢰 기능입니다. 문의 주시기 바랍니다.", "Jihyeon 1.2.331", 1);
-      } else if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+         JOptionPane.showMessageDialog(this, "์ถ”๊ฐ€ ์๋ขฐ ๊ธฐ๋ฅ์…๋๋ค. ๋ฌธ์ ์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.", "Jihyeon 1.2.331", 1);
+      } else if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
 
          for (GameServer cs : GameServer.getAllInstances()) {
@@ -2511,18 +2511,18 @@ public class AdminClient extends JFrame {
          }
 
          if (!found) {
-            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(을)를 찾을 수 없습니다!", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(์)๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.331", 0);
          } else {
-            JOptionPane.showMessageDialog(this, "해당 갯수 만큼 회수가 완료되었습니다.", "Jihyeon 1.2.331", 1);
+            JOptionPane.showMessageDialog(this, "ํ•ด๋น ๊ฐฏ์ ๋งํผ ํ์๊ฐ€ ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
          }
       } else {
-         JOptionPane.showMessageDialog(this, "사냥 포인트를 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์ฌ๋ฅ ํฌ์ธํธ๋ฅผ ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
    private void jButton16ActionPerformed(ActionEvent evt) {
       if (!ServerConstants.useAdminClientUpgrade) {
-         JOptionPane.showMessageDialog(this, "추가 의뢰 기능입니다. 문의 주시기 바랍니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "์ถ”๊ฐ€ ์๋ขฐ ๊ธฐ๋ฅ์…๋๋ค. ๋ฌธ์ ์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
          double expRate_ = 1.0;
          double mesoRate_ = 1.0;
@@ -2533,7 +2533,7 @@ public class AdminClient extends JFrame {
             mesoRate_ = Double.parseDouble(mesoRate.getText());
             dropRate_ = Double.parseDouble(dropRate.getText());
          } catch (NumberFormatException var10) {
-            JOptionPane.showMessageDialog(this, "배율을 숫자로 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, "๋ฐฐ์จ์ ์ซ์๋ก ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 0);
             return;
          }
 
@@ -2543,7 +2543,7 @@ public class AdminClient extends JFrame {
             cs.setDropRate(dropRate_);
          }
 
-         JOptionPane.showMessageDialog(this, "배율 설정이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+         JOptionPane.showMessageDialog(this, "๋ฐฐ์จ ์ค์ •์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       }
    }
 
@@ -2569,14 +2569,14 @@ public class AdminClient extends JFrame {
          ServerConstants.expHottimeRate = Double.parseDouble(this.hottimeRate.getText());
          Center.registerAutoExpBuff();
       } catch (NumberFormatException var3) {
-         JOptionPane.showMessageDialog(this, "핫타임 경험치 배율을 정확히 입력해주시기 바랍니다.", "Jihyeon 1.2.331", 0);
+         JOptionPane.showMessageDialog(this, "ํ•ซํ€์ ๊ฒฝํ—์น ๋ฐฐ์จ์ ์ •ํ•ํ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.", "Jihyeon 1.2.331", 0);
       }
    }
 
    private void jButton19ActionPerformed(ActionEvent evt) {
       String d = (String) this.jComboBox1.getSelectedItem();
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
-         if (d.equals("초심자패키지")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
+         if (d.equals("์ด์ฌ์ํจํค์ง€")) {
             try (Connection con = DBConnection.getConnection()) {
                PreparedStatement ps = con.prepareStatement("SELECT `accountid` FROM characters WHERE `name` = ?");
                ps.setString(1, this.Receiver.getText());
@@ -2594,33 +2594,33 @@ public class AdminClient extends JFrame {
                rs.close();
                ps.close();
                StringBuilder sb = new StringBuilder();
-               sb.append("초심자 패키지 지급 : ");
+               sb.append("์ด์ฌ์ ํจํค์ง€ ์ง€๊ธ : ");
                sb.append(" (");
                sb.append(this.Receiver.getText());
                sb.append(") ");
                sb.append("\r\n");
                FileoutputUtil.log("./TextLog/DonatorLog.txt", sb.toString());
-               JOptionPane.showMessageDialog(this, "초심자 패키지 지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "์ด์ฌ์ ํจํค์ง€ ์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             } catch (SQLException var17) {
             }
-         } else if (d.equals("주간패키지")) {
+         } else if (d.equals("์ฃผ๊ฐํจํค์ง€")) {
             try (Connection con = DBConnection.getConnection()) {
                PreparedStatement ps2 = con.prepareStatement("INSERT INTO `weekly_package` (`USER_ID`) VALUES (?)");
                ps2.setString(1, this.Receiver.getText());
                ps2.executeUpdate();
                ps2.close();
                StringBuilder sb = new StringBuilder();
-               sb.append("주간 패키지 지급 : ");
+               sb.append("์ฃผ๊ฐ ํจํค์ง€ ์ง€๊ธ : ");
                sb.append(" (");
                sb.append(this.Receiver.getText());
                sb.append(") ");
                sb.append("\r\n");
                FileoutputUtil.log("./TextLog/DonatorLog.txt", sb.toString());
-               JOptionPane.showMessageDialog(this, "주간 패키지 지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "์ฃผ๊ฐ ํจํค์ง€ ์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             } catch (SQLException var15) {
             }
          } else {
-            String tier = d.split("\\(")[1].split("만")[0];
+            String tier = d.split("\\(")[1].split("๋ง")[0];
 
             try (Connection con = DBConnection.getConnection()) {
                PreparedStatement ps_ = con.prepareStatement("SELECT `accountid` FROM characters WHERE `name` = ?");
@@ -2634,7 +2634,7 @@ public class AdminClient extends JFrame {
                   ps.setInt(1, accountID);
                   ResultSet rs = ps.executeQuery();
                   if (rs.next()) {
-                     JOptionPane.showMessageDialog(this, "이미 훈장을 지급 받은 유저입니다.", "Jihyeon 1.2.331", 1);
+                     JOptionPane.showMessageDialog(this, "์ด๋ฏธ ํ์ฅ์ ์ง€๊ธ ๋ฐ์€ ์ ์ €์…๋๋ค.", "Jihyeon 1.2.331", 1);
                      rs.close();
                      ps.close();
                      return;
@@ -2648,19 +2648,19 @@ public class AdminClient extends JFrame {
                   ps.executeUpdate();
                   ps.close();
                   StringBuilder sb = new StringBuilder();
-                  sb.append("Tier." + tier + " 지급 : ");
+                  sb.append("Tier." + tier + " ์ง€๊ธ : ");
                   sb.append(" (");
                   sb.append(this.Receiver.getText());
                   sb.append(") ");
                   sb.append("\r\n");
                   FileoutputUtil.log("./TextLog/DonatorLog.txt", sb.toString());
-                  JOptionPane.showMessageDialog(this, tier + "만 누적 보상 지급이 완료되었습니다.", "Jihyeon 1.2.331", 1);
+                  JOptionPane.showMessageDialog(this, tier + "๋ง ๋์  ๋ณด์ ์ง€๊ธ์ด ์๋ฃ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
                }
             } catch (SQLException var19) {
             }
          }
       } else {
-         JOptionPane.showMessageDialog(this, "초심자패키지를 지급할 캐릭터를 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์ด์ฌ์ํจํค์ง€๋ฅผ ์ง€๊ธํ•  ์บ๋ฆญํฐ๋ฅผ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
@@ -2702,13 +2702,13 @@ public class AdminClient extends JFrame {
             if (TS != null) {
                ps = con.prepareStatement("UPDATE accounts SET banned = 0, tempban = ?, banreason = ? WHERE id = ?");
                ps.setTimestamp(1, TS);
-               ps.setString(2, "밴 사유: " + banReason);
+               ps.setString(2, "๋ฐด ์ฌ์ : " + banReason);
                ps.setInt(3, accid);
                ps.execute();
                ps.close();
             } else {
                ps = con.prepareStatement("UPDATE accounts SET banreason = ? WHERE id = ?");
-               ps.setString(1, "밴 사유: " + banReason);
+               ps.setString(1, "๋ฐด ์ฌ์ : " + banReason);
                ps.setInt(2, accid);
                ps.execute();
                ps.close();
@@ -2722,7 +2722,7 @@ public class AdminClient extends JFrame {
    }
 
    private void jButton18ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
          boolean byAdminClient = true;
          boolean isTempban = false;
@@ -2786,25 +2786,25 @@ public class AdminClient extends JFrame {
          }
 
          if (!found) {
-            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(을)를 찾을 수 없습니다!", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(์)๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.331", 0);
          } else {
             if (isTempban && !showCommandHelp) {
-               JOptionPane.showMessageDialog(this, "기간 밴 처리 되었습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "๊ธฐ๊ฐ ๋ฐด ์ฒ๋ฆฌ ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             } else if (!isTempban) {
-               JOptionPane.showMessageDialog(this, "시리얼 밴 처리 되었습니다.", "Jihyeon 1.2.331", 1);
+               JOptionPane.showMessageDialog(this, "์๋ฆฌ์–ผ ๋ฐด ์ฒ๋ฆฌ ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
             } else if (showCommandHelp) {
                JOptionPane.showMessageDialog(this,
-                     "입력값을 확인해 주세요. \n*** 올바른 커맨드 사용법 ***\n-시리얼 밴: 캐릭이름, 사유\n-기간 밴: 캐릭이름, 사유, 일수(숫자)",
+                     "์…๋ ฅ๊ฐ’์ ํ•์ธํ•ด ์ฃผ์ธ์”. \n*** ์ฌ๋ฐ”๋ฅธ ์ปค๋งจ๋“ ์ฌ์ฉ๋ฒ• ***\n-์๋ฆฌ์–ผ ๋ฐด: ์บ๋ฆญ์ด๋ฆ, ์ฌ์ \n-๊ธฐ๊ฐ ๋ฐด: ์บ๋ฆญ์ด๋ฆ, ์ฌ์ , ์ผ์(์ซ์)",
                      "Jihyeon 1.2.331", 1);
             }
          }
       } else {
-         JOptionPane.showMessageDialog(this, "시리얼 밴 할 캐릭터 이름을 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์๋ฆฌ์–ผ ๋ฐด ํ•  ์บ๋ฆญํฐ ์ด๋ฆ์ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
    private void jButton20ActionPerformed(ActionEvent evt) {
-      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("지급할 캐릭터 이름")) {
+      if (!this.Receiver.getText().isEmpty() && !this.Receiver.getText().equals("์ง€๊ธํ•  ์บ๋ฆญํฐ ์ด๋ฆ")) {
          boolean found = false;
 
          try (Connection con = DBConnection.getConnection()) {
@@ -2838,12 +2838,12 @@ public class AdminClient extends JFrame {
          }
 
          if (!found) {
-            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(을)를 찾을 수 없습니다!", "Jihyeon 1.2.331", 0);
+            JOptionPane.showMessageDialog(this, this.Receiver.getText() + "(์)๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค!", "Jihyeon 1.2.331", 0);
          } else {
-            JOptionPane.showMessageDialog(this, "모든 밴이 해제 처리 되었습니다.", "Jihyeon 1.2.331", 1);
+            JOptionPane.showMessageDialog(this, "๋ชจ๋“  ๋ฐด์ด ํ•ด์  ์ฒ๋ฆฌ ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
          }
       } else {
-         JOptionPane.showMessageDialog(this, "시리얼 밴 해제 할 캐릭터 이름을 입력해주시기 바랍니다!", "Jihyeon 1.2.331", 2);
+         JOptionPane.showMessageDialog(this, "์๋ฆฌ์–ผ ๋ฐด ํ•ด์  ํ•  ์บ๋ฆญํฐ ์ด๋ฆ์ ์…๋ ฅํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค!", "Jihyeon 1.2.331", 2);
       }
    }
 
@@ -2856,11 +2856,11 @@ public class AdminClient extends JFrame {
             player.getClient().disconnect(false);
          }
 
-         this.jButton21.setText("경매장 녹이기");
-         JOptionPane.showMessageDialog(this, "경매장 입장이 제한되었습니다.", "Jihyeon 1.2.331", 1);
+         this.jButton21.setText("๊ฒฝ๋งค์ฅ ๋…น์ด๊ธฐ");
+         JOptionPane.showMessageDialog(this, "๊ฒฝ๋งค์ฅ ์…์ฅ์ด ์ ํ•๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       } else {
-         this.jButton21.setText("경매장 얼리기");
-         JOptionPane.showMessageDialog(this, "경매장 입장 제한이 해제되었습니다.", "Jihyeon 1.2.331", 1);
+         this.jButton21.setText("๊ฒฝ๋งค์ฅ ์–ผ๋ฆฌ๊ธฐ");
+         JOptionPane.showMessageDialog(this, "๊ฒฝ๋งค์ฅ ์…์ฅ ์ ํ•์ด ํ•ด์ ๋์—์ต๋๋ค.", "Jihyeon 1.2.331", 1);
       }
    }
 
@@ -2879,7 +2879,7 @@ public class AdminClient extends JFrame {
          if (channel == 1) {
             ch = "1";
          } else if (channel == 2) {
-            ch = "20세 이상";
+            ch = "20์ธ ์ด์";
          } else if (channel > 2) {
             ch = Integer.toString(channel - 1);
          }
@@ -2887,12 +2887,12 @@ public class AdminClient extends JFrame {
          StringBuilder sb = new StringBuilder();
          switch (type) {
             case 0:
-               sb.append("[일반 Ch.");
+               sb.append("[์ผ๋ฐ Ch.");
                sb.append(ch);
                sb.append("] ");
                break;
             case 1:
-               sb.append("[친구에게 Ch.");
+               sb.append("[์น๊ตฌ์—๊ฒ Ch.");
                sb.append(ch);
                sb.append("] ");
                break;
@@ -2909,7 +2909,7 @@ public class AdminClient extends JFrame {
                   }
 
                   list = String.join(",", names);
-                  sb.append("[파티에게 Ch.");
+                  sb.append("[ํํฐ์—๊ฒ Ch.");
                   sb.append(ch);
                   sb.append("] (");
                   sb.append(list);
@@ -2917,22 +2917,22 @@ public class AdminClient extends JFrame {
                }
                break;
             case 3:
-               sb.append("[길드에게 Ch.");
+               sb.append("[๊ธธ๋“์—๊ฒ Ch.");
                sb.append(ch);
                sb.append("] ");
                break;
             case 4:
-               sb.append("[연합에게 Ch.");
+               sb.append("[์—ฐํ•ฉ์—๊ฒ Ch.");
                sb.append(ch);
                sb.append("] ");
                break;
             case 5:
-               sb.append("[원정대에게 Ch.");
+               sb.append("[์์ •๋€์—๊ฒ Ch.");
                sb.append(ch);
                sb.append("] ");
                break;
             case 6:
-               sb.append("[귓속말 : ");
+               sb.append("[๊ท“์๋ง : ");
                sb.append(sender);
                sb.append(" -> ");
                sb.append(reciver);
@@ -2941,7 +2941,7 @@ public class AdminClient extends JFrame {
                sb.append("] ");
                break;
             case 7:
-               sb.append("[전체 채팅 Ch.");
+               sb.append("[์ ์ฒด ์ฑํ… Ch.");
                sb.append(ch);
                sb.append("] ");
          }
@@ -3062,7 +3062,7 @@ public class AdminClient extends JFrame {
 
          if (connectList != null) {
             connectList.setListData(names.toArray(new String[0]));
-            dongsi.setText("동시접속자 : " + count + "명");
+            dongsi.setText("๋์์ ‘์์ : " + count + "๋ช…");
          }
       } catch (Exception var7) {
          System.out.println("Error executing updatePlayerList" + var7.toString());
@@ -3085,7 +3085,7 @@ public class AdminClient extends JFrame {
             long hour = runtime_l % 24L;
             runtime_l /= 24L;
             long day = runtime_l % 365L;
-            AdminClient.runtime.setText("서버 런타임 : " + day + "일 " + hour + "시간 " + minute + "분 " + second + "초");
+            AdminClient.runtime.setText("์๋ฒ ๋ฐํ€์ : " + day + "์ผ " + hour + "์๊ฐ " + minute + "๋ถ " + second + "์ด");
          }
       }, 1000L);
    }

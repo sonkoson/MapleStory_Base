@@ -1,4 +1,4 @@
-package objects.effect;
+﻿package objects.effect;
 
 import java.util.HashMap;
 import java.util.Map;

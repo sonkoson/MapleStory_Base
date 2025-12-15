@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public class BlackRebirthFlame {
    private int blackRebirthItemID;

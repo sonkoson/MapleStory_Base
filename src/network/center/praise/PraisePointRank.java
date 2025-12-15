@@ -1,4 +1,4 @@
-package network.center.praise;
+﻿package network.center.praise;
 
 import database.DBConnection;
 import database.loader.CharacterSaveFlag;
@@ -65,7 +65,7 @@ public class PraisePointRank {
          }
       }
 
-      System.out.println("Praise Point Ranking Total " + (rank - 1) + "개가 업데이트 되었습니다.");
+      System.out.println("Praise Point Ranking Total " + (rank - 1) + "๊ฐ๊ฐ€ ์—…๋ฐ์ดํธ ๋์—์ต๋๋ค.");
    }
 
    public static boolean doPraise(MapleCharacter from, String toName, NPCConversationManager cm) {
@@ -83,13 +83,13 @@ public class PraisePointRank {
          }
 
          if (toAccountID == 0) {
-            cm.sendNext("해당 캐릭터를 찾을 수 없습니다.");
+            cm.sendNext("ํ•ด๋น ์บ๋ฆญํฐ๋ฅผ ์ฐพ์ ์ ์—์ต๋๋ค.");
             return false;
          } else if (toAccountID == from.getAccountID()) {
-            cm.sendNext("자신의 캐릭터는 칭찬할 수 없습니다. #e어뷰징 행위#n는 경고 없이 제재될 수 있습니다. 주의해주시기 바랍니다.");
+            cm.sendNext("์์ ์ ์บ๋ฆญํฐ๋” ์นญ์ฐฌํ•  ์ ์—์ต๋๋ค. #e์–ด๋ทฐ์ง• ํ–์#n๋” ๊ฒฝ๊ณ  ์—์ด ์ ์ฌ๋  ์ ์์ต๋๋ค. ์ฃผ์ํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.");
             return false;
          } else if (toAccountID == 106) {
-            cm.sendNext("해당 캐릭터는 칭찬할 수 없습니다.");
+            cm.sendNext("ํ•ด๋น ์บ๋ฆญํฐ๋” ์นญ์ฐฌํ•  ์ ์—์ต๋๋ค.");
             return false;
          } else {
             MapleCharacter player = null;
@@ -108,9 +108,9 @@ public class PraisePointRank {
                p.setTotalPoint(p.getTotalPoint() + 1000);
                p.setPoint(p.getPoint() + 1000);
                player.setSaveFlag(player.getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag());
-               player.dropMessage(5, from.getName() + "님이 " + player.getName() + "님을 칭찬했습니다. 1,000 칭찬 포인트를 획득했습니다.");
+               player.dropMessage(5, from.getName() + "๋์ด " + player.getName() + "๋์ ์นญ์ฐฌํ–์ต๋๋ค. 1,000 ์นญ์ฐฌ ํฌ์ธํธ๋ฅผ ํ๋“ํ–์ต๋๋ค.");
                player.send(
-                  CField.addPopupSay(9062000, 5000, "#b" + from.getName() + "#k님이 #b" + player.getName() + "#k님을 칭찬했습니다. #r1,000 칭찬 포인트#k를 획득했습니다.", "")
+                  CField.addPopupSay(9062000, 5000, "#b" + from.getName() + "#k๋์ด #b" + player.getName() + "#k๋์ ์นญ์ฐฌํ–์ต๋๋ค. #r1,000 ์นญ์ฐฌ ํฌ์ธํธ#k๋ฅผ ํ๋“ํ–์ต๋๋ค.", "")
                );
             } else {
                PreparedStatement ps2 = con.prepareStatement("SELECT `total_point`, `point` FROM `praise_point` WHERE `account_id` = ?");
@@ -140,7 +140,7 @@ public class PraisePointRank {
             }
 
             from.updateOneInfo(3887, "point", String.valueOf(from.getOneInfoQuestInteger(3887, "point") + 500));
-            from.dropMessage(5, toName + "ชื่นชมคุณ ได้รับ 500 Praise Point");
+            from.dropMessage(5, toName + "เธเธทเนเธเธเธกเธเธธเธ“ เนเธ”เนเธฃเธฑเธ 500 Praise Point");
             PraisePoint p = from.getPraisePoint();
             if (p != null) {
                p.setPoint(p.getPoint() + 500);
@@ -233,7 +233,7 @@ public class PraisePointRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward", String.valueOf(rank));
                playerx.updateOneInfo(1234599, "praise_reward_get", "");
-               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรุณารับรางวัลด้านบน");
+               playerx.dropMessage(5, "[์•๋ฆผ] ์นญ์ฐฌ ํฌ์ธํธ ๋ญํน " + rank + "เธเธฃเธธเธ“เธฒเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเธ”เนเธฒเธเธเธ");
             } else {
                PreparedStatement ps3 = con.prepareStatement("INSERT INTO `questinfo` (`characterid`, `quest`, `customData`, `date`) VALUES (?, ?, ?, ?)");
                ps3.setInt(1, toPlayerID);

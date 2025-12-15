@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import java.util.List;
 import scripting.ScriptMessageFlag;

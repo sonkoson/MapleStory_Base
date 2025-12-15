@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.soccer;
+﻿package objects.fields.child.minigame.soccer;
 
 import objects.users.MapleCharacter;
 

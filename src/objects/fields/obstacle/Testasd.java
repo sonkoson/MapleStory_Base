@@ -1,4 +1,4 @@
-package objects.fields.obstacle;
+﻿package objects.fields.obstacle;
 
 public class Testasd {
    public static void main(String[] args) {

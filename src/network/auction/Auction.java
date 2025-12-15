@@ -1,4 +1,4 @@
-package network.auction;
+﻿package network.auction;
 
 import constants.GameConstants;
 import database.DBConfig;

@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -15,7 +15,7 @@ public class DamageSkinSaveInfo {
    private int slotCount;
 
    public static String getDefaultDesc() {
-      return ServerConstants.serverName + " ข้อมูล Damage Skin.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n";
+      return ServerConstants.serverName + " เธเนเธญเธกเธนเธฅ Damage Skin.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n";
    }
 
    public DamageSkinSaveInfo(MapleCharacter player) {

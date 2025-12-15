@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import database.DBConnection;
 import java.sql.Connection;

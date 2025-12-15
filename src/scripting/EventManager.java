@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import java.util.ArrayList;
 import java.util.Collection;

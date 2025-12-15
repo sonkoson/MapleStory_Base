@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 public class ChangeableStats extends OverrideMonsterStats {
    public int watk;

@@ -1,4 +1,4 @@
-package security.anticheat;
+﻿package security.anticheat;
 
 public enum CheatingOffense {
    FAST_SUMMON_ATTACK((byte)5, 6000L, 50, (byte)2),

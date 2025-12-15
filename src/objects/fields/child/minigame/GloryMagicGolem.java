@@ -1,4 +1,4 @@
-package objects.fields.child.minigame;
+﻿package objects.fields.child.minigame;
 
 import objects.fields.Field;
 import objects.fields.gameobject.lifes.MapleMonster;

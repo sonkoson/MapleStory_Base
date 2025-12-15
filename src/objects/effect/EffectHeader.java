@@ -1,4 +1,4 @@
-package objects.effect;
+﻿package objects.effect;
 
 public enum EffectHeader {
    LevelUp(0),

@@ -1,4 +1,4 @@
-package objects.summoned;
+﻿package objects.summoned;
 
 import constants.GameConstants;
 import java.awt.Point;

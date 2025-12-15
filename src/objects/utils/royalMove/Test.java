@@ -1,4 +1,4 @@
-package objects.utils.royalMove;
+﻿package objects.utils.royalMove;
 
 import database.DBConnection;
 import database.DBEventManager;

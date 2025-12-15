@@ -1,10 +1,10 @@
-package objects.users.extra;
+﻿package objects.users.extra;
 
 public enum ExtraAbilityGrade {
-   Rare(0, "레어"),
-   Epic(1, "에픽"),
-   Unique(2, "유니크"),
-   Legendary(3, "레전드리");
+   Rare(0, "๋ ์–ด"),
+   Epic(1, "์—ํ”ฝ"),
+   Unique(2, "์ ๋ํฌ"),
+   Legendary(3, "๋ ์ ๋“๋ฆฌ");
 
    private int grade;
    private String desc;

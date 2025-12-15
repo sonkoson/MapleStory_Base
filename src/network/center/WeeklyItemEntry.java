@@ -1,4 +1,4 @@
-package network.center;
+﻿package network.center;
 
 public class WeeklyItemEntry {
    private WeeklyItemEntry.ItemType itemType;

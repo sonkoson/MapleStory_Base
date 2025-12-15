@@ -1,4 +1,4 @@
-package security.anticheat;
+﻿package security.anticheat;
 
 import constants.GameConstants;
 import java.awt.Point;

@@ -1,4 +1,4 @@
-package objects.users.extra;
+﻿package objects.users.extra;
 
 public class ExtraAbilityStatEntry {
    private ExtraAbilityOption option;

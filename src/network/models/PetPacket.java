@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 import java.awt.Point;
 import java.util.List;

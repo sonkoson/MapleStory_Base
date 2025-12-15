@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import network.SendPacketOpcode;
 import network.decode.PacketDecoder;

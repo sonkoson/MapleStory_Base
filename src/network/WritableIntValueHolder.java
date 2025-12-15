@@ -1,4 +1,4 @@
-package network;
+﻿package network;
 
 public interface WritableIntValueHolder {
    short getValue();

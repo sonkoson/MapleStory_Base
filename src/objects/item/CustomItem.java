@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class CustomItem {
             }
 
             chr.updateInfoQuest(454545, data);
-            chr.dropMessage(5, "นำเข้าข้อมูลหินทรานเซนเดนซ์จากเซเนียสำเร็จ (ข้อมูลเดิมยังคงอยู่)");
+            chr.dropMessage(5, "เธเธณเน€เธเนเธฒเธเนเธญเธกเธนเธฅเธซเธดเธเธ—เธฃเธฒเธเน€เธเธเน€เธ”เธเธเนเธเธฒเธเน€เธเน€เธเธตเธขเธชเธณเน€เธฃเนเธ (เธเนเธญเธกเธนเธฅเน€เธ”เธดเธกเธขเธฑเธเธเธเธญเธขเธนเน)");
          }
       }
    }
@@ -91,7 +91,7 @@ public class CustomItem {
             }
          }
 
-         System.out.println("Total " + oldList.size() + "개의 과거 커스텀 아이템을 불러왔습니다. ");
+         System.out.println("Total " + oldList.size() + "๊ฐ์ ๊ณผ๊ฑฐ ์ปค์คํ…€ ์•์ดํ…์ ๋ถ๋ฌ์”์ต๋๋ค. ");
       }
    }
 
@@ -106,7 +106,7 @@ public class CustomItem {
 
    public static enum CustomItemType {
       None,
-      보조장비,
-      각인석;
+      ๋ณด์กฐ์ฅ๋น,
+      ๊ฐ์ธ์;
    }
 }

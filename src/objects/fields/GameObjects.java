@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.util.concurrent.ConcurrentHashMap;
 import objects.fields.gameobject.lifes.MapleNPC;

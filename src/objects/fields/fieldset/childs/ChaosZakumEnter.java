@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import constants.QuestExConstants;
 import database.DBConfig;
@@ -130,7 +130,7 @@ public class ChaosZakumEnter extends FieldSet {
                if (chr.getParty() != null && chr.getParty().getId() == nCharacter.getParty().getId()) {
                   int clear = chr.getOneInfoQuestInteger(QuestExConstants.ChaosZakum.getQuestID(), "eNum");
                   int max = 1 + chr.getBossTier();
-                  chr.dropMessage(5, String.format("금일 %s 입장횟수 %d / %d", "자쿰", clear, max));
+                  chr.dropMessage(5, String.format("๊ธ์ผ %s ์…์ฅํ์ %d / %d", "์์ฟฐ", clear, max));
                }
             }
          }
@@ -191,17 +191,17 @@ public class ChaosZakumEnter extends FieldSet {
                   if (mobDead.equals("0")) {
                      lastDate.setMinutes(lastDate.getMinutes() + 30);
                      if (today.before(lastDate)) {
-                        return c.getName() + "(" + (lastDate.getMinutes() - today.getMinutes()) + "분)";
+                        return c.getName() + "(" + (lastDate.getMinutes() - today.getMinutes()) + "๋ถ)";
                      }
                   }
                } catch (ParseException var11) {
-                  return "알 수 없음";
+                  return "์• ์ ์—์";
                }
             }
          }
       }
 
-      return "알 수 없음";
+      return "์• ์ ์—์";
    }
 
    @Override

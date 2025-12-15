@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import constants.GameConstants;
 import database.DBConnection;
@@ -174,7 +174,7 @@ public class CharCommands implements Command {
       } else if (splitted[0].equals("!fullskill")) {
          // Grant all skills
       } else if (splitted[0].equals("!whereami")) {
-         c.getPlayer().dropMessage(5, "แผนที่: " + c.getPlayer().getMapId() + " x: " + c.getPlayer().getPosition().x
+         c.getPlayer().dropMessage(5, "เนเธเธเธ—เธตเน: " + c.getPlayer().getMapId() + " x: " + c.getPlayer().getPosition().x
                + " y: " + c.getPlayer().getPosition().y);
       }
       // Re-implementing logic found in the original file (specifically the ones at
@@ -182,7 +182,7 @@ public class CharCommands implements Command {
 
       else if (splitted[0].equals("!givecash")) {
          if (splitted.length < 3) {
-            c.getPlayer().dropMessage(5, "วิธีใช้: !givecash <ชื่อตัวละคร> <จำนวน>");
+            c.getPlayer().dropMessage(5, "เธงเธดเธเธตเนเธเน: !givecash <เธเธทเนเธญเธ•เธฑเธงเธฅเธฐเธเธฃ> <เธเธณเธเธงเธ>");
             return;
          }
 
@@ -193,8 +193,8 @@ public class CharCommands implements Command {
          for (GameServer cs : GameServer.getAllInstances()) {
             for (MapleCharacter chrxxxxxxxx : cs.getPlayerStorage().getAllCharacters()) {
                if (chrxxxxxxxx.getName().equals(targetName)) {
-                  chrxxxxxxxx.dropMessage(5, "คุณได้รับ " + rc + " แคช");
-                  c.getPlayer().dropMessage(5, targetName + " ได้รับ " + rc + " แคช");
+                  chrxxxxxxxx.dropMessage(5, "เธเธธเธ“เนเธ”เนเธฃเธฑเธ " + rc + " เนเธเธ");
+                  c.getPlayer().dropMessage(5, targetName + " เนเธ”เนเธฃเธฑเธ " + rc + " เนเธเธ");
                   chrxxxxxxxx.gainRealCash(rc);
                   find = true;
                   break;
@@ -214,7 +214,7 @@ public class CharCommands implements Command {
                ps2.setString(1, targetName);
                rs = ps2.executeQuery();
                if (!rs.next()) {
-                  c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น " + targetName);
+                  c.getPlayer().dropMessage(5, "เนเธกเนเธเธเธเธนเนเน€เธฅเนเธ " + targetName);
                   return;
                }
 
@@ -224,7 +224,7 @@ public class CharCommands implements Command {
                ps2.setInt(1, accountid);
                rs2 = ps2.executeQuery();
                if (!rs2.next()) {
-                  c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น " + targetName);
+                  c.getPlayer().dropMessage(5, "เนเธกเนเธเธเธเธนเนเน€เธฅเนเธ " + targetName);
                   return;
                }
 
@@ -245,11 +245,11 @@ public class CharCommands implements Command {
                // cleanup
             }
 
-            c.getPlayer().dropMessage(5, targetName + " ได้รับ " + rc + " แคช (ขณะออฟไลน์)");
+            c.getPlayer().dropMessage(5, targetName + " เนเธ”เนเธฃเธฑเธ " + rc + " เนเธเธ (เธเธ“เธฐเธญเธญเธเนเธฅเธเน)");
          }
       } else if (splitted[0].equals("!reloadscripts")) {
          ScriptManager.resetScript(c.getPlayer());
-         c.getPlayer().dropMessage(5, "โหลดสคริปต์ใหม่เรียบร้อยแล้ว");
+         c.getPlayer().dropMessage(5, "เนเธซเธฅเธ”เธชเธเธฃเธดเธเธ•เนเนเธซเธกเนเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
       } else if (splitted[0].equals("!skillinfo")) {
          if (splitted.length < 2) {
             SkillFactory.printAllSkillInfos();
@@ -292,27 +292,27 @@ public class CharCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!heal", "", "ฟื้นฟูเลือดและมานาของคุณ", 1),
-            new CommandDefinition("!job", "<job id>", "เปลี่ยนอาชีพของคุณ", 5),
-            new CommandDefinition("!level", "<quantity>", "เพิ่มเลเวล", 5),
-            new CommandDefinition("!levelupto", "<target level>", "เพิ่มเลเวลจนถึงเป้าหมาย", 5),
-            new CommandDefinition("!item", "<item id> <quantity>", "เสกไอเทม", 5),
-            new CommandDefinition("!drop", "<item id> <quantity>", "ดรอปไอเทม", 5),
-            new CommandDefinition("!meso", "<amount>", "เสกเงิน Meso", 5),
-            new CommandDefinition("!setstr", "<amount>", "ตั้งค่า STR", 5),
-            new CommandDefinition("!setdex", "<amount>", "ตั้งค่า DEX", 5),
-            new CommandDefinition("!setint", "<amount>", "ตั้งค่า INT", 5),
-            new CommandDefinition("!setluk", "<amount>", "ตั้งค่า LUK", 5),
-            new CommandDefinition("!sethp", "<amount>", "ตั้งค่า HP", 5),
-            new CommandDefinition("!setmp", "<amount>", "ตั้งค่า MP", 5),
-            new CommandDefinition("!setap", "<amount>", "ตั้งค่า AP", 5),
-            new CommandDefinition("!setsp", "<amount>", "ตั้งค่า SP", 5),
-            new CommandDefinition("!skill", "<skill id> <level> <master level>", "อัปสกิล", 5),
-            new CommandDefinition("!fame", "<amount>", "ตั้งค่าชื่อเสียง", 5),
-            new CommandDefinition("!shop", "<shop id>", "เปิดร้านค้า", 5),
-            new CommandDefinition("!givecash", "<player> <amount>", "ให้แคชกับผู้เล่น", 6),
-            new CommandDefinition("!reloadscripts", "", "โหลดสคริปต์ใหม่จากดิสก์", 6),
-            new CommandDefinition("!maxlevel", "", "เลเวลสูงสุดและรับของเริ่มต้น", 6)
+            new CommandDefinition("!heal", "", "เธเธทเนเธเธเธนเน€เธฅเธทเธญเธ”เนเธฅเธฐเธกเธฒเธเธฒเธเธญเธเธเธธเธ“", 1),
+            new CommandDefinition("!job", "<job id>", "เน€เธเธฅเธตเนเธขเธเธญเธฒเธเธตเธเธเธญเธเธเธธเธ“", 5),
+            new CommandDefinition("!level", "<quantity>", "เน€เธเธดเนเธกเน€เธฅเน€เธงเธฅ", 5),
+            new CommandDefinition("!levelupto", "<target level>", "เน€เธเธดเนเธกเน€เธฅเน€เธงเธฅเธเธเธ–เธถเธเน€เธเนเธฒเธซเธกเธฒเธข", 5),
+            new CommandDefinition("!item", "<item id> <quantity>", "เน€เธชเธเนเธญเน€เธ—เธก", 5),
+            new CommandDefinition("!drop", "<item id> <quantity>", "เธ”เธฃเธญเธเนเธญเน€เธ—เธก", 5),
+            new CommandDefinition("!meso", "<amount>", "เน€เธชเธเน€เธเธดเธ Meso", 5),
+            new CommandDefinition("!setstr", "<amount>", "เธ•เธฑเนเธเธเนเธฒ STR", 5),
+            new CommandDefinition("!setdex", "<amount>", "เธ•เธฑเนเธเธเนเธฒ DEX", 5),
+            new CommandDefinition("!setint", "<amount>", "เธ•เธฑเนเธเธเนเธฒ INT", 5),
+            new CommandDefinition("!setluk", "<amount>", "เธ•เธฑเนเธเธเนเธฒ LUK", 5),
+            new CommandDefinition("!sethp", "<amount>", "เธ•เธฑเนเธเธเนเธฒ HP", 5),
+            new CommandDefinition("!setmp", "<amount>", "เธ•เธฑเนเธเธเนเธฒ MP", 5),
+            new CommandDefinition("!setap", "<amount>", "เธ•เธฑเนเธเธเนเธฒ AP", 5),
+            new CommandDefinition("!setsp", "<amount>", "เธ•เธฑเนเธเธเนเธฒ SP", 5),
+            new CommandDefinition("!skill", "<skill id> <level> <master level>", "เธญเธฑเธเธชเธเธดเธฅ", 5),
+            new CommandDefinition("!fame", "<amount>", "เธ•เธฑเนเธเธเนเธฒเธเธทเนเธญเน€เธชเธตเธขเธ", 5),
+            new CommandDefinition("!shop", "<shop id>", "เน€เธเธดเธ”เธฃเนเธฒเธเธเนเธฒ", 5),
+            new CommandDefinition("!givecash", "<player> <amount>", "เนเธซเนเนเธเธเธเธฑเธเธเธนเนเน€เธฅเนเธ", 6),
+            new CommandDefinition("!reloadscripts", "", "เนเธซเธฅเธ”เธชเธเธฃเธดเธเธ•เนเนเธซเธกเนเธเธฒเธเธ”เธดเธชเธเน", 6),
+            new CommandDefinition("!maxlevel", "", "เน€เธฅเน€เธงเธฅเธชเธนเธเธชเธธเธ”เนเธฅเธฐเธฃเธฑเธเธเธญเธเน€เธฃเธดเนเธกเธ•เนเธ", 6)
       };
    }
 }

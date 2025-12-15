@@ -1,4 +1,4 @@
-package objects.fields.child.blackheaven;
+﻿package objects.fields.child.blackheaven;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -643,7 +643,7 @@ public class Field_BlackHeavenBoss extends Field {
             mob.removeAllowedFsmSkill(3);
          }
       } else if (skillID == 223) {
-         this.broadcastMessage(CWvsContext.getScriptProgressMessage("블랙헤븐의 코어가 침입자를 향해 공격을 시작합니다."));
+         this.broadcastMessage(CWvsContext.getScriptProgressMessage("๋ธ”๋ํ—ค๋ธ์ ์ฝ”์–ด๊ฐ€ ์นจ์…์๋ฅผ ํ–ฅํ•ด ๊ณต๊ฒฉ์ ์์‘ํ•ฉ๋๋ค."));
          this.broadcastMessage(CField.playSound("BlackHeavenBoss/CoreStart", 100));
       }
    }

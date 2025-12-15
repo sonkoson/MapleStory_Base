@@ -1,4 +1,4 @@
-package objects.users.jobs.anima;
+﻿package objects.users.jobs.anima;
 
 import java.awt.Point;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package objects.fields.child.dojang;
+﻿package objects.fields.child.dojang;
 
 import database.DBConnection;
 import java.sql.Connection;
@@ -292,8 +292,8 @@ public class DojangRanking {
                   }
 
                   if (playerx != null) {
-                     System.out.println(e.getName() + " 캐릭터가 무릉 도장 랭킹 " + e.getRank() + "위로 보상이 정산되었습니다.");
-                     playerx.dropMessage(5, "[알림] 무릉도장 랭킹 " + e.getRank() + "위 보상을 수령해주시기 바랍니다.");
+                     System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
+                     playerx.dropMessage(5, "[์•๋ฆผ] ๋ฌด๋ฆ๋์ฅ ๋ญํน " + e.getRank() + "์ ๋ณด์์ ์๋ นํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.");
                      playerx.updateOneInfo(1234590, "dojang_reward", String.valueOf(e.getRank()));
                   } else {
                      PreparedStatement ps2 = con.prepareStatement("SELECT `id` FROM `characters` WHERE `name` = ?");
@@ -313,7 +313,7 @@ public class DojangRanking {
                         ps3.setString(4, time);
                         ps3.executeUpdate();
                         ps3.close();
-                        System.out.println(e.getName() + " 캐릭터가 무릉 도장 랭킹 " + e.getRank() + "위로 보상이 정산되었습니다.");
+                        System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
                      }
 
                      rs2.close();
@@ -345,8 +345,8 @@ public class DojangRanking {
                   }
 
                   if (playerx != null) {
-                     System.out.println(e.getName() + " 캐릭터가 무릉 도장(챌린지) 랭킹 " + e.getRank() + "위로 보상이 정산되었습니다.");
-                     playerx.dropMessage(5, "[알림] 무릉도장(챌린지) 랭킹 " + e.getRank() + "위 보상을 수령해주시기 바랍니다.");
+                     System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
+                     playerx.dropMessage(5, "[์•๋ฆผ] ๋ฌด๋ฆ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์ ๋ณด์์ ์๋ นํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.");
                      playerx.updateOneInfo(1234590, "dojang_reward_c", String.valueOf(e.getRank()));
                   } else {
                      PreparedStatement ps2 = con.prepareStatement("SELECT `id` FROM `characters` WHERE `name` = ?");
@@ -366,7 +366,7 @@ public class DojangRanking {
                         ps3.setString(4, time);
                         ps3.executeUpdate();
                         ps3.close();
-                        System.out.println(e.getName() + " 캐릭터가 무릉 도장(챌린지) 랭킹 " + e.getRank() + "위로 보상이 정산되었습니다.");
+                        System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
                      }
 
                      rs2.close();

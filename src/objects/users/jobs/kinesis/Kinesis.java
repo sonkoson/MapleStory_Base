@@ -1,4 +1,4 @@
-package objects.users.jobs.kinesis;
+﻿package objects.users.jobs.kinesis;
 
 import java.util.ArrayList;
 import java.util.Collections;

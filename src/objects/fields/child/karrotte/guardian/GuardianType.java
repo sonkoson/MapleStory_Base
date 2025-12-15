@@ -1,4 +1,4 @@
-package objects.fields.child.karrotte.guardian;
+﻿package objects.fields.child.karrotte.guardian;
 
 public enum GuardianType {
    EyeOfRedemption(2),

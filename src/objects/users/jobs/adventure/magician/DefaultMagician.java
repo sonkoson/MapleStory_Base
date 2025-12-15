@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.magician;
+﻿package objects.users.jobs.adventure.magician;
 
 import constants.GameConstants;
 import network.RecvPacketOpcode;

@@ -1,4 +1,4 @@
-package objects.context.waitqueue;
+﻿package objects.context.waitqueue;
 
 public enum WaitQueueError {
    None(0),

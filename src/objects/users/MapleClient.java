@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -472,7 +472,7 @@ public class MapleClient implements Serializable {
             if (ServerConstants.ConnectorSetting1 && !this.gm) {
                if (allowed != 1) {
                   this.session.write(
-                        CWvsContext.serverNotice(1, "กรุณาเข้าเกมผ่านตัวเข้าเกมที่กำหนดเท่านั้น (Error Code: 0x01)"));
+                        CWvsContext.serverNotice(1, "เธเธฃเธธเธ“เธฒเน€เธเนเธฒเน€เธเธกเธเนเธฒเธเธ•เธฑเธงเน€เธเนเธฒเน€เธเธกเธ—เธตเนเธเธณเธซเธเธ”เน€เธ—เนเธฒเธเธฑเนเธ (Error Code: 0x01)"));
                   rs.close();
                   ps.close();
                   return 21;
@@ -480,7 +480,7 @@ public class MapleClient implements Serializable {
 
                if (connecterIP == null) {
                   this.session.write(
-                        CWvsContext.serverNotice(1, "กรุณาเข้าเกมผ่านตัวเข้าเกมที่กำหนดเท่านั้น (Error Code: 0x03)"));
+                        CWvsContext.serverNotice(1, "เธเธฃเธธเธ“เธฒเน€เธเนเธฒเน€เธเธกเธเนเธฒเธเธ•เธฑเธงเน€เธเนเธฒเน€เธเธกเธ—เธตเนเธเธณเธซเธเธ”เน€เธ—เนเธฒเธเธฑเนเธ (Error Code: 0x03)"));
                   rs.close();
                   ps.close();
                   return 21;
@@ -843,7 +843,7 @@ public class MapleClient implements Serializable {
                ps.close();
                rs.close();
                this.session.close();
-               throw new RuntimeException("[오류] 존재하지 않는 계정이 로그인 성공되었습니다.");
+               throw new RuntimeException("[์ค๋ฅ] ์กด์ฌํ•์ง€ ์•๋” ๊ณ์ •์ด ๋ก๊ทธ์ธ ์ฑ๊ณต๋์—์ต๋๋ค.");
             }
 
             this.birthday = rs.getInt("bday");
@@ -1062,7 +1062,7 @@ public class MapleClient implements Serializable {
          try {
             List<String> macString = this.getMacs();
             StringBuilder sb = new StringBuilder();
-            sb.append("접속 해제 (아이피 : ");
+            sb.append("์ ‘์ ํ•ด์  (์•์ดํ”ผ : ");
             sb.append(this.player.getClient().getSessionIPAddress());
             sb.append(")");
             String getMac = "";
@@ -1090,7 +1090,7 @@ public class MapleClient implements Serializable {
          try {
             List<String> macString = this.getMacs();
             StringBuilder sb = new StringBuilder();
-            sb.append("접속 해제 (아이피 : ");
+            sb.append("์ ‘์ ํ•ด์  (์•์ดํ”ผ : ");
             sb.append(this.getSessionIPAddress());
             sb.append(")");
             String getMac = "";
@@ -1115,7 +1115,7 @@ public class MapleClient implements Serializable {
                   Center.RemainBuffStorage.processSaveBuff(this.player);
                }
             } catch (Exception var68) {
-               FileoutputUtil.log("Log_Disconnect_Except.rtf", "버프저장중 오류 발생");
+               FileoutputUtil.log("Log_Disconnect_Except.rtf", "๋ฒํ”์ €์ฅ์ค‘ ์ค๋ฅ ๋ฐ์");
                FileoutputUtil.outputFileError("Log_Disconnect_Except.rtf", var68);
             }
 
@@ -1125,7 +1125,7 @@ public class MapleClient implements Serializable {
                   this.player.onFailedAntiMacro(this.player.getAntiMacro(), AntiMacroFailedType.Disconnection);
                }
             } catch (Exception var67) {
-               FileoutputUtil.log("Log_Disconnect_Except.rtf", "거짓말탐지기 저장중 오류발생");
+               FileoutputUtil.log("Log_Disconnect_Except.rtf", "๊ฑฐ์ง“๋งํ์ง€๊ธฐ ์ €์ฅ์ค‘ ์ค๋ฅ๋ฐ์");
                FileoutputUtil.outputFileError("Log_Disconnect_Except.rtf", var67);
             }
 
@@ -1144,7 +1144,7 @@ public class MapleClient implements Serializable {
                   map.removePlayer(this.player);
                   map.onDisconnected(this.player);
                } catch (Exception var65) {
-                  FileoutputUtil.log("Log_Disconnect_Except.rtf", "removePlayer중 오류발생");
+                  FileoutputUtil.log("Log_Disconnect_Except.rtf", "removePlayer์ค‘ ์ค๋ฅ๋ฐ์");
                   FileoutputUtil.outputFileError("Log_Disconnect_Except.rtf", var65);
                }
             }
@@ -1212,7 +1212,7 @@ public class MapleClient implements Serializable {
                this.engines.clear();
             }
          } catch (Exception var63) {
-            FileoutputUtil.log("Log_Disconnect_Except.rtf", "스크립트 엔진 초기화중 오류 발생");
+            FileoutputUtil.log("Log_Disconnect_Except.rtf", "์คํฌ๋ฆฝํธ ์—”์ง ์ด๊ธฐํ”์ค‘ ์ค๋ฅ ๋ฐ์");
             FileoutputUtil.outputFileError("Log_Disconnect_Except.rtf", var63);
          }
 
@@ -1220,7 +1220,7 @@ public class MapleClient implements Serializable {
             try {
                AdminClient.updatePlayerList();
             } catch (Exception var62) {
-               FileoutputUtil.log("Log_Disconnect_Except.rtf", "관리기 동접자 출력중 오류 발생");
+               FileoutputUtil.log("Log_Disconnect_Except.rtf", "๊ด€๋ฆฌ๊ธฐ ๋์ ‘์ ์ถ๋ ฅ์ค‘ ์ค๋ฅ ๋ฐ์");
                FileoutputUtil.outputFileError("Log_Disconnect_Except.rtf", var62);
             }
          }
@@ -2155,7 +2155,7 @@ public class MapleClient implements Serializable {
 
       if (this.accountChatBan >= System.currentTimeMillis()) {
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-         String info = sdf.format(this.accountChatBan) + " 까지 채팅 이용이 정지된 계정입니다.";
+         String info = sdf.format(this.accountChatBan) + " ๊น์ง€ ์ฑํ… ์ด์ฉ์ด ์ •์ง€๋ ๊ณ์ •์…๋๋ค.";
          if (this.getPlayer() != null) {
             this.getPlayer().dropMessage(6, info);
          }

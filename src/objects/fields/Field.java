@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import constants.DailyEventType;
 import constants.GameConstants;
@@ -1325,8 +1325,8 @@ public class Field {
                         }
 
                         idrop.setGMLog(
-                              CurrentTime.getAllCurrentTime() + "에 " + cchrx.getName() + "이(가) " + mob.getId()
-                                    + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ")");
+                              CurrentTime.getAllCurrentTime() + "์— " + cchrx.getName() + "์ด(๊ฐ€) " + mob.getId()
+                                    + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : " + this.mapid + ")");
                         this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrx, droptype,
                               dex.questid, dex.individual);
                      }
@@ -1494,13 +1494,13 @@ public class Field {
 
                         idrop.setGMLog(
                               CurrentTime.getAllCurrentTime()
-                                    + "에 "
+                                    + "์— "
                                     + cchrx.getName()
-                                    + "이(가) "
+                                    + "์ด(๊ฐ€) "
                                     + mob.getId()
-                                    + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                    + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                     + this.mapid
-                                    + ") (글로벌 드롭)");
+                                    + ") (๊ธ€๋ก๋ฒ ๋“๋กญ)");
                         this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrx, droptype,
                               dex.questid, dex.individual);
                         d++;
@@ -1552,13 +1552,13 @@ public class Field {
 
                      idrop.setGMLog(
                            CurrentTime.getAllCurrentTime()
-                                 + "에 "
+                                 + "์— "
                                  + cchrxx.getName()
-                                 + "이(가) "
+                                 + "์ด(๊ฐ€) "
                                  + mob.getId()
-                                 + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                 + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                  + this.mapid
-                                 + ") (보스 개인 드롭)");
+                                 + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                      this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                            true);
                   }
@@ -1610,14 +1610,14 @@ public class Field {
                         }
 
                         if (partyMember.getInventory(GameConstants.getInventoryType(blueball)).getNumFreeSlot() < 1) {
-                           partyMember.dropMessage(-22, "ไม่ได้รับ Hell Boss Blue Bead เนื่องจากช่องเก็บของเต็ม");
+                           partyMember.dropMessage(-22, "เนเธกเนเนเธ”เนเธฃเธฑเธ Hell Boss Blue Bead เน€เธเธทเนเธญเธเธเธฒเธเธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
                         } else {
                            MapleInventoryManipulator.addById(partyMember.getClient(), blueball, (short) qty,
-                                 "헬모드 보상으로 획득한 아이템");
-                           partyMember.dropMessage(-22, "ได้รับ Hell Boss Blue Bead " + qty + "ชิ้นที่ได้รับ");
+                                 "ํ—ฌ๋ชจ๋“ ๋ณด์์ผ๋ก ํ๋“ํ• ์•์ดํ…");
+                           partyMember.dropMessage(-22, "เนเธ”เนเธฃเธฑเธ Hell Boss Blue Bead " + qty + "เธเธดเนเธเธ—เธตเนเนเธ”เนเธฃเธฑเธ");
                         }
                      } else {
-                        partyMember.dropMessage(-22, "ได้รับ Hell Boss Blue Bead 획득하는데 실패하였습니다.");
+                        partyMember.dropMessage(-22, "เนเธ”เนเธฃเธฑเธ Hell Boss Blue Bead ํ๋“ํ•๋”๋ฐ ์คํจํ•์€์ต๋๋ค.");
                      }
                   }
                }
@@ -1650,13 +1650,13 @@ public class Field {
 
                      idrop.setGMLog(
                            CurrentTime.getAllCurrentTime()
-                                 + "에 "
+                                 + "์— "
                                  + cchrxx.getName()
-                                 + "이(가) "
+                                 + "์ด(๊ฐ€) "
                                  + mob.getId()
-                                 + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                 + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                  + this.mapid
-                                 + ") (보스 개인 드롭)");
+                                 + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                      this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                            true);
                   }
@@ -1689,8 +1689,8 @@ public class Field {
                   }
 
                   idrop.setGMLog(
-                        CurrentTime.getAllCurrentTime() + "에 " + cchrxx.getName() + "이(가) " + mob.getId()
-                              + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ") (보스 개인 드롭)");
+                        CurrentTime.getAllCurrentTime() + "์— " + cchrxx.getName() + "์ด(๊ฐ€) " + mob.getId()
+                              + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : " + this.mapid + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                   this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                         true);
                   dropitemidxx = 2439259;
@@ -1701,8 +1701,8 @@ public class Field {
                   }
 
                   idrop.setGMLog(
-                        CurrentTime.getAllCurrentTime() + "에 " + cchrxx.getName() + "이(가) " + mob.getId()
-                              + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ") (보스 개인 드롭)");
+                        CurrentTime.getAllCurrentTime() + "์— " + cchrxx.getName() + "์ด(๊ฐ€) " + mob.getId()
+                              + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : " + this.mapid + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                   this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                         true);
                }
@@ -1727,13 +1727,13 @@ public class Field {
 
                         idrop.setGMLog(
                               CurrentTime.getAllCurrentTime()
-                                    + "에 "
+                                    + "์— "
                                     + cchrxx.getName()
-                                    + "이(가) "
+                                    + "์ด(๊ฐ€) "
                                     + mob.getId()
-                                    + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                    + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                     + this.mapid
-                                    + ") (보스 개인 드롭)");
+                                    + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                         this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                               true);
                      }
@@ -1753,13 +1753,13 @@ public class Field {
 
                      idrop.setGMLog(
                            CurrentTime.getAllCurrentTime()
-                                 + "에 "
+                                 + "์— "
                                  + cchrxx.getName()
-                                 + "이(가) "
+                                 + "์ด(๊ฐ€) "
                                  + mob.getId()
-                                 + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                 + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                  + this.mapid
-                                 + ") (보스 개인 드롭)");
+                                 + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                      this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                            true);
                   }
@@ -1795,13 +1795,13 @@ public class Field {
 
                      idrop.setGMLog(
                            CurrentTime.getAllCurrentTime()
-                                 + "에 "
+                                 + "์— "
                                  + cchrxx.getName()
-                                 + "이(가) "
+                                 + "์ด(๊ฐ€) "
                                  + mob.getId()
-                                 + " 몬스터로부터 얻은 아이템 (맵ID : "
+                                 + " ๋ชฌ์คํฐ๋ก๋ถ€ํฐ ์–ป์€ ์•์ดํ… (๋งตID : "
                                  + this.mapid
-                                 + ") (보스 개인 드롭)");
+                                 + ") (๋ณด์ค ๊ฐ์ธ ๋“๋กญ)");
                      this.spawnMobDrop(idrop, this.calcDropPos(pos, mob.getTruePosition()), mob, cchrxx, droptype, 0,
                            true);
                   }
@@ -2837,7 +2837,7 @@ public class Field {
                FlameWizard fw = (FlameWizard) chr.getPlayerJob();
                fw.increaseDischarge();
             } else if (chr.getClient().isGm()) {
-               chr.dropMessage(5, "JobField ไม่ใช่ Flame Wizard??");
+               chr.dropMessage(5, "JobField เนเธกเนเนเธเน Flame Wizard??");
             }
          }
 
@@ -2949,7 +2949,7 @@ public class Field {
                   && chr.getBossMode() == 0
                   && chr.getOneInfoQuestInteger(2000019, "clear") != 1) {
                chr.updateOneInfo(2000019, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[사자왕 반 레온의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[์ฌ์์• ๋ฐ ๋ ์จ์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
          } else if (monster.getId() == 8860000) {
             if (chr.getBossMode() == 0
@@ -2957,7 +2957,7 @@ public class Field {
                   && chr.getQuestStatus(2000020) == 1
                   && chr.getOneInfoQuestInteger(2000020, "clear") != 1) {
                chr.updateOneInfo(2000020, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[시간의 대신관 아카이럼의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[์๊ฐ์ ๋€์ ๊ด€ ์•์นด์ด๋ผ์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
 
             chr.addGuildContributionByBoss(monster.getId());
@@ -2968,10 +2968,10 @@ public class Field {
                   && chr.getOneInfoQuestInteger(2000021, "clear") != 1) {
                if (DBConfig.isGanglim) {
                   chr.updateOneInfo(2000021, "clear", "1");
-                  chr.send(CField.addPopupSay(9062000, 3000, "#b[폭군 매그너스의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+                  chr.send(CField.addPopupSay(9062000, 3000, "#b[ํญ๊ตฐ ๋งค๊ทธ๋์ค์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
                } else if (chr.haveItem(4036460) && !chr.isMultiMode()) {
                   chr.updateOneInfo(2000021, "clear", "1");
-                  chr.send(CField.addPopupSay(9062000, 3000, "#b[폭군 매그너스의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+                  chr.send(CField.addPopupSay(9062000, 3000, "#b[ํญ๊ตฐ ๋งค๊ทธ๋์ค์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
                }
             }
 
@@ -2982,25 +2982,25 @@ public class Field {
                   && chr.getQuestStatus(2000022) == 1
                   && chr.getOneInfoQuestInteger(2000022, "clear") != 1) {
                chr.updateOneInfo(2000022, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[윙 마스터 스우의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[์ ๋ง์คํฐ ์ค์ฐ์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
          } else if (monster.getId() == 8880101) {
             if (chr.getBossMode() == 0 && chr.getQuestStatus(2000023) == 1 && chr.isStartBMQuest6()
                   && chr.getOneInfoQuestInteger(2000023, "clear") != 1) {
                chr.updateOneInfo(2000023, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[파멸의 검 데미안의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[ํ๋ฉธ์ ๊ฒ€ ๋ฐ๋ฏธ์•์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
          } else if (monster.getId() == 8880302) {
             if (chr.getBossMode() == 0 && chr.getQuestStatus(2000024) == 1 && chr.isStartBMQuest7()
                   && chr.getOneInfoQuestInteger(2000024, "clear") != 1) {
                chr.updateOneInfo(2000024, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[거미의 왕 윌의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[๊ฑฐ๋ฏธ์ ์• ์์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
          } else if (monster.getId() == 8880153) {
             if (chr.getBossMode() == 0 && chr.getQuestStatus(2000025) == 1
                   && chr.getOneInfoQuestInteger(2000025, "clear") != 1) {
                chr.updateOneInfo(2000025, "clear", "1");
-               chr.send(CField.addPopupSay(9062000, 3000, "#b[악몽의 주인 루시드의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+               chr.send(CField.addPopupSay(9062000, 3000, "#b[์•…๋ชฝ์ ์ฃผ์ธ ๋ฃจ์๋“์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
             }
          } else if (monster.getId() == 8880410
                && chr.getBossMode() == 0
@@ -3008,7 +3008,7 @@ public class Field {
                && chr.isStartBMQuest9()
                && chr.getOneInfoQuestInteger(2000026, "clear") != 1) {
             chr.updateOneInfo(2000026, "clear", "1");
-            chr.send(CField.addPopupSay(9062000, 3000, "#b[붉은 마녀 진 힐라의 흔적]#k 퀘스트를 클리어 할 수 있습니다.", ""));
+            chr.send(CField.addPopupSay(9062000, 3000, "#b[๋ถ์€ ๋ง๋…€ ์ง ํ๋ผ์ ํ”์ ]#k ํ€์คํธ๋ฅผ ํด๋ฆฌ์–ด ํ•  ์ ์์ต๋๋ค.", ""));
          }
 
          if (monster.getId() == 8910001) {
@@ -3034,7 +3034,7 @@ public class Field {
                            || System.currentTimeMillis() - chr.getMobPenaltyAnnounceTime() >= 7000L) {
                         chr.send(
                               CField.UIPacket.sendBigScriptProgressMessage(
-                                    "การได้รับ EXP และ Meso จะลดลงอย่างมากเมื่อล่ามอนสเตอร์ที่ระดับเลเวลห่างเกินไป", FontType.NanumGothic,
+                                    "เธเธฒเธฃเนเธ”เนเธฃเธฑเธ EXP เนเธฅเธฐ Meso เธเธฐเธฅเธ”เธฅเธเธญเธขเนเธฒเธเธกเธฒเธเน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเนเธ—เธตเนเธฃเธฐเธ”เธฑเธเน€เธฅเน€เธงเธฅเธซเนเธฒเธเน€เธเธดเธเนเธ", FontType.NanumGothic,
                                     FontColorType.Yellow));
                         chr.setMobPenaltyAnnounceTime(System.currentTimeMillis());
                      }
@@ -3077,9 +3077,9 @@ public class Field {
                            chr.updateOneInfo(26022, "exp", String.valueOf(totalExp));
                            chr.updateOneInfo(26022, "map", String.valueOf(chr.getMapId()));
                            if (type == 2) {
-                              chr.send(CWvsContext.getScriptProgressMessage("현상금 사냥꾼의 포탈이 등장했습니다!"));
+                              chr.send(CWvsContext.getScriptProgressMessage("ํ์๊ธ ์ฌ๋ฅ๊พผ์ ํฌํ์ด ๋“ฑ์ฅํ–์ต๋๋ค!"));
                            } else {
-                              chr.send(CWvsContext.getScriptProgressMessage("불꽃늑대의 소굴로 향하는 포탈이 등장했습니다!"));
+                              chr.send(CWvsContext.getScriptProgressMessage("๋ถ๊ฝ๋‘๋€์ ์๊ตด๋ก ํ–ฅํ•๋” ํฌํ์ด ๋“ฑ์ฅํ–์ต๋๋ค!"));
                            }
 
                            chr.setRandomPortal(portal);
@@ -3158,15 +3158,15 @@ public class Field {
                packet.writeInt(9833905);
                chr.send(packet.getPacket());
                chr.gainStackEventGauge(0, 20, false);
-               chr.send(CField.addPopupSay(9062474, 2000, "마법의 종이 울리는 소리를 듣고\r\n눈꽃 순록들이 달려오고 있어.", ""));
-               chr.send(CField.addPopupSay(9062474, 2000, "고마워.\r\n네 덕분에 눈꽃 순록들이 바깥세상을 달릴 수 있었어.", ""));
+               chr.send(CField.addPopupSay(9062474, 2000, "๋ง๋ฒ•์ ์ข…์ด ์ธ๋ฆฌ๋” ์๋ฆฌ๋ฅผ ๋“ฃ๊ณ \r\n๋๊ฝ ์๋ก๋“ค์ด ๋ฌ๋ ค์ค๊ณ  ์์–ด.", ""));
+               chr.send(CField.addPopupSay(9062474, 2000, "๊ณ ๋ง์.\r\n๋ค ๋•๋ถ์— ๋๊ฝ ์๋ก๋“ค์ด ๋ฐ”๊นฅ์ธ์์ ๋ฌ๋ฆด ์ ์์—์–ด.", ""));
             }
          }
 
          if (GameConstants.getMParkMonsterExp(monster.getId()) > 0) {
             chr.setmParkExp(chr.getmParkExp() + (int) (GameConstants.getMParkMonsterExp(monster.getId()) * 1.5));
             NumberFormat nf = NumberFormat.getInstance();
-            chr.send(CField.startMapEffect("경험치 보상 " + nf.format(chr.getmParkExp()) + " 누적!", 5120162, true));
+            chr.send(CField.startMapEffect("๊ฒฝํ—์น ๋ณด์ " + nf.format(chr.getmParkExp()) + " ๋์ !", 5120162, true));
          }
 
          if (this instanceof Field_BountyHunting) {
@@ -3184,9 +3184,9 @@ public class Field {
                f.setStormWingCount(f.getStormWingCount() + 1);
                f.addBonusTime();
                if (f.getStormWingCount() >= 5) {
-                  chr.send(CField.startMapEffect("스톰윙을 모두 처치하였네! 이제 몰려든 몬스터들을 최대한 잡아보자고!", 5120159, true, 5));
+                  chr.send(CField.startMapEffect("์คํฐ์์ ๋ชจ๋‘ ์ฒ์นํ•์€๋ค! ์ด์  ๋ชฐ๋ ค๋“  ๋ชฌ์คํฐ๋“ค์ ์ต๋€ํ• ์ก์•๋ณด์๊ณ !", 5120159, true, 5));
                } else {
-                  chr.send(CField.startMapEffect("스톰윙을 처치하였군. 조금 더 오래 머물 수 있겠어!", 5120159, true, 5));
+                  chr.send(CField.startMapEffect("์คํฐ์์ ์ฒ์นํ•์€๊ตฐ. ์กฐ๊ธ ๋” ์ค๋ ๋จธ๋ฌผ ์ ์๊ฒ ์–ด!", 5120159, true, 5));
                }
             }
          }
@@ -3196,7 +3196,7 @@ public class Field {
             if (!f.isClearGame()) {
                f.setRemainCount(f.getRemainCount() - 1);
                if (f.getRemainCount() <= 0) {
-                  chr.send(CWvsContext.getScriptProgressMessage("축하드립니다! 최대 사냥 가능 마리 수를 달성하였습니다. 잠시 후 퇴장맵으로 이동합니다."));
+                  chr.send(CWvsContext.getScriptProgressMessage("์ถ•ํ•๋“๋ฆฝ๋๋ค! ์ต๋€ ์ฌ๋ฅ ๊ฐ€๋ฅ ๋ง๋ฆฌ ์๋ฅผ ๋ฌ์ฑํ•์€์ต๋๋ค. ์ ์ ํ ํด์ฅ๋งต์ผ๋ก ์ด๋ํ•ฉ๋๋ค."));
                   f.setClearGame(true);
                }
             }
@@ -3354,7 +3354,7 @@ public class Field {
                            var6x = 3;
                         }
 
-                        cx.gainItem(4001843, var6x, false, -1L, "스우 격파로 얻은 아이템");
+                        cx.gainItem(4001843, var6x, false, -1L, "์ค์ฐ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
                      }
                   });
                }
@@ -3374,7 +3374,7 @@ public class Field {
                   this.bossClearQex(chr, 1234569, "normal_swoo_clear");
 
                   for (PartyMemberEntry mpc : new ArrayList<>(chr.getParty().getPartyMember().getPartyMemberList())) {
-                     StringBuilder sb = new StringBuilder("보스 노말 스우 격파");
+                     StringBuilder sb = new StringBuilder("๋ณด์ค ๋…ธ๋ง ์ค์ฐ ๊ฒฉํ");
                      MapleCharacter playerxx = this.getCharacterById(mpc.getId());
                      if (playerxx != null) {
                         LoggingManager.putLog(new BossLog(playerxx, BossLogType.ClearLog.getType(), sb));
@@ -3410,7 +3410,7 @@ public class Field {
                         hell = true;
                      }
 
-                     StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 스우 격파 (" + list + ")");
+                     StringBuilder sb = new StringBuilder("๋ณด์ค " + (hell ? "ํ—ฌ" : "ํ•๋“") + " ์ค์ฐ ๊ฒฉํ (" + list + ")");
                      MapleCharacter playerxx = this.getCharacterById(mpcx.getId());
                      if (playerxx != null) {
                         LoggingManager.putLog(new BossLog(playerxx, BossLogType.ClearLog.getType(), sb));
@@ -3423,26 +3423,26 @@ public class Field {
                         Center.Broadcast.broadcastMessage(
                               CField.chatMsg(
                                     DBConfig.isGanglim ? 8 : 22,
-                                    "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상"
+                                    "[๋ณด์ค๊ฒฉํ] [CH."
+                                          + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                 : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + chr.getParty().getPartyMember().getLeader().getName()
-                                          + "' 파티("
+                                          + "' ํํฐ("
                                           + list
-                                          + ")가 [헬 스우]를 격파하였습니다."));
+                                          + ")๊ฐ€ [ํ—ฌ ์ค์ฐ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."));
                      } else {
                         Center.Broadcast.broadcastMessage(
                               CField.chatMsg(
                                     DBConfig.isGanglim ? 8 : 22,
-                                    "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상"
+                                    "[๋ณด์ค๊ฒฉํ] [CH."
+                                          + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                                 : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + chr.getParty().getPartyMember().getLeader().getName()
-                                          + "' 파티("
+                                          + "' ํํฐ("
                                           + list
-                                          + ")가 [하드 스우]를 격파하였습니다."));
+                                          + ")๊ฐ€ [ํ•๋“ ์ค์ฐ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."));
                      }
                   }
                }
@@ -3473,14 +3473,14 @@ public class Field {
                   Center.Broadcast.broadcastMessage(
                         CField.chatMsg(
                               22,
-                              "[보스격파] [CH."
-                                    + (this.getChannel() == 2 ? "20세 이상"
+                              "[๋ณด์ค๊ฒฉํ] [CH."
+                                    + (this.getChannel() == 2 ? "20์ธ ์ด์"
                                           : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                     + "] '"
                                     + chr.getParty().getPartyMember().getLeader().getName()
-                                    + "' 파티("
+                                    + "' ํํฐ("
                                     + list
-                                    + ")가 [헬 스우]를 격파하였습니다."));
+                                    + ")๊ฐ€ [ํ—ฌ ์ค์ฐ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."));
                }
             }
          } else if (mobid >= 8800003 && mobid <= 8800010) {
@@ -5205,7 +5205,7 @@ public class Field {
                         }
 
                         if (!DBConfig.isHosting && player.isGM()) {
-                           player.dropMessage(5, "ระยะเวลาซัมมอน : " + t + "m/s");
+                           player.dropMessage(5, "เธฃเธฐเธขเธฐเน€เธงเธฅเธฒเธเธฑเธกเธกเธญเธ : " + t + "m/s");
                         }
 
                         summon.setSummonRemoveTime(System.currentTimeMillis() + t);
@@ -6256,7 +6256,7 @@ public class Field {
                   this.sendObjectPlacement(chr);
                } catch (Exception var23) {
                   FileoutputUtil.log("Log_Player_Except.rtf",
-                        "[오류] 필드 addPlayer 함수 실행 중 sendObjectPlacement 오류 발생 : " + var23.toString());
+                        "[์ค๋ฅ] ํ•๋“ addPlayer ํ•จ์ ์คํ– ์ค‘ sendObjectPlacement ์ค๋ฅ ๋ฐ์ : " + var23.toString());
                   System.out.println("AddPlayer Err");
                   var23.printStackTrace();
                }
@@ -6397,8 +6397,8 @@ public class Field {
                chr.send(CField.breakTimeFieldEnter());
                if (breakTimeFieldLevel > 0) {
                   TextEffect e = new TextEffect(
-                        chr.getId(), "#fn나눔고딕 ExtraBold##fs26#    버닝 " + breakTimeFieldLevel + "단계 : 경험치 "
-                              + breakTimeFieldLevel * 10 + "% 추가지급!!    ");
+                        chr.getId(), "#fn๋๋”๊ณ ๋”• ExtraBold##fs26#    ๋ฒ๋ " + breakTimeFieldLevel + "๋จ๊ณ : ๊ฒฝํ—์น "
+                              + breakTimeFieldLevel * 10 + "% ์ถ”๊ฐ€์ง€๊ธ!!    ");
                   chr.send(e.encodeForLocal());
                }
             }
@@ -7176,7 +7176,7 @@ public class Field {
                               break;
                            }
                         } catch (Exception var14) {
-                           FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 리엑터");
+                           FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค๋ฅ ๋ฐ์ ๋ฆฌ์—‘ํฐ");
                            break;
                         }
                      }
@@ -7187,7 +7187,7 @@ public class Field {
                            break;
                         }
                      } catch (Exception var15) {
-                        FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 몬스터");
+                        FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค๋ฅ ๋ฐ์ ๋ชฌ์คํฐ");
                         break;
                      }
                   }
@@ -7207,17 +7207,17 @@ public class Field {
                      o.sendSpawnData(c.getClient());
                   } catch (Exception var13) {
                      FileoutputUtil.log("Log_Player_Except.rtf",
-                           "sendObjectPlacement 오류 발생 sendSpawnData OBJType : " + o.getType().toString());
+                           "sendObjectPlacement ์ค๋ฅ ๋ฐ์ sendSpawnData OBJType : " + o.getType().toString());
                   }
 
                   try {
                      c.addVisibleMapObject(o);
                   } catch (Exception var12) {
-                     FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 addVisibleMapObject");
+                     FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค๋ฅ ๋ฐ์ addVisibleMapObject");
                   }
                }
             } catch (Exception var16) {
-               FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생");
+               FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค๋ฅ ๋ฐ์");
             }
          }
       }
@@ -8681,7 +8681,7 @@ public class Field {
                         @Override
                         public void run() {
                            Field.this.broadcastMessage(CWvsContext.serverNotice(1,
-                                 "[술래잡기 알림]\r\n제한시간 2분이 지나 양이 승리하였습니다!\r\n모든 분들은 게임 보상맵으로 이동됩니다."));
+                                 "[์ ๋์ก๊ธฐ ์•๋ฆผ]\r\n์ ํ•์๊ฐ 2๋ถ์ด ์ง€๋ ์–‘์ด ์น๋ฆฌํ•์€์ต๋๋ค!\r\n๋ชจ๋“  ๋ถ๋“ค์€ ๊ฒ์ ๋ณด์๋งต์ผ๋ก ์ด๋๋ฉ๋๋ค."));
 
                            for (MapleCharacter chr : Field.this.getCharacters()) {
                               chr.getStat().setHp(chr.getStat().getCurrentMaxHp(chr), chr);
@@ -9040,7 +9040,7 @@ public class Field {
                                  if (Field.this.breakTimeFieldLevel == 1) {
                                     Field.this.breakTimeFieldLevel = 0;
                                     Field.this.breakTimeFieldExpRate = 0;
-                                    TextEffect e = new TextEffect(-1, "#fn나눔고딕 ExtraBold##fs26#    버닝 소멸!!    ");
+                                    TextEffect e = new TextEffect(-1, "#fn๋๋”๊ณ ๋”• ExtraBold##fs26#    ๋ฒ๋ ์๋ฉธ!!    ");
                                     Field.this.broadcastMessage(e.encodeForLocal());
                                     Field.this.cancelBreakTimeFieldTask();
                                  } else {
@@ -9048,11 +9048,11 @@ public class Field {
                                     Field.this.breakTimeFieldExpRate = Field.this.breakTimeFieldLevel * 10;
                                     TextEffect e = new TextEffect(
                                           -1,
-                                          "#fn나눔고딕 ExtraBold##fs26#    버닝 "
+                                          "#fn๋๋”๊ณ ๋”• ExtraBold##fs26#    ๋ฒ๋ "
                                                 + Field.this.breakTimeFieldLevel
-                                                + "단계 : 경험치 "
+                                                + "๋จ๊ณ : ๊ฒฝํ—์น "
                                                 + Field.this.breakTimeFieldLevel * 10
-                                                + "%로 감소!!    ");
+                                                + "%๋ก ๊ฐ์!!    ");
                                     Field.this.broadcastMessage(e.encodeForLocal());
                                  }
 
@@ -10172,9 +10172,9 @@ public class Field {
    public void startHasteBooster(MapleCharacter target) {
       target.send(CField.UIPacket.closeUI(1251));
       if (this.hasteBoosterTarget != null) {
-         target.dropMessage(5, "มีคนใช้ Haste Booster อยู่แล้ว");
+         target.dropMessage(5, "เธกเธตเธเธเนเธเน Haste Booster เธญเธขเธนเนเนเธฅเนเธง");
       } else if (this.eliteState != EliteState.Normal) {
-         target.dropMessage(5, "Elite Boss ถูกเรียกออกมาแล้ว");
+         target.dropMessage(5, "Elite Boss เธ–เธนเธเน€เธฃเธตเธขเธเธญเธญเธเธกเธฒเนเธฅเนเธง");
       } else if (!this.isTown() && this.getMonsterSpawn().size() > 0) {
          this.hasteBoosterTarget = target;
          this.useHasteBoosterTime = System.currentTimeMillis() + 3000L;
@@ -10184,7 +10184,7 @@ public class Field {
          int count = Integer.parseInt(target.getOneInfo(QuestExConstants.HasteEvent.getQuestID(), "booster")) - 1;
          target.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "booster", count + "");
       } else {
-         target.dropMessage(5, "แผนที่นี้ใช้ Haste Booster ไม่ได้");
+         target.dropMessage(5, "เนเธเธเธ—เธตเนเธเธตเนเนเธเน Haste Booster เนเธกเนเนเธ”เน");
       }
    }
 

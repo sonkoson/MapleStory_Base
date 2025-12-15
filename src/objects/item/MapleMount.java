@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import database.DBConnection;
 import java.io.Serializable;

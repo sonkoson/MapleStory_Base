@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import database.loader.CharacterSaveFlag;
 import java.text.SimpleDateFormat;

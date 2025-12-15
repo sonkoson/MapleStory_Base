@@ -1,4 +1,4 @@
-package network.center.praise;
+﻿package network.center.praise;
 
 import database.DBConnection;
 import java.sql.Connection;
@@ -162,7 +162,7 @@ public class PraiseDonationMesoRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward", String.valueOf(rank));
                playerx.updateOneInfo(1234599, "praise_reward_get", "");
-               playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรุณารับรางวัลด้านบน");
+               playerx.dropMessage(5, "[์•๋ฆผ] ์นญ์ฐฌ ํฌ์ธํธ ๋ญํน " + rank + "เธเธฃเธธเธ“เธฒเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเธ”เนเธฒเธเธเธ");
             } else {
                PreparedStatement ps3 = con.prepareStatement("INSERT INTO `questinfo_account` (`account_id`, `quest`, `customData`, `date`) VALUES (?, ?, ?, ?)");
                ps3.setInt(1, toAccountID);
@@ -175,7 +175,7 @@ public class PraiseDonationMesoRank {
                ps3.close();
             }
 
-            System.out.println(entry.getPlayerName() + " 캐릭터가 칭찬 포인트 랭킹 " + rank + "위로 보상이 정산되었습니다.");
+            System.out.println(entry.getPlayerName() + " ์บ๋ฆญํฐ๊ฐ€ ์นญ์ฐฌ ํฌ์ธํธ ๋ญํน " + rank + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
             LoggingManager.putLog(
                new CustomLog(
                   entry.getPlayerName(),
@@ -183,7 +183,7 @@ public class PraiseDonationMesoRank {
                   playerx != null ? playerx.getId() : 0,
                   toAccountID,
                   1,
-                  new StringBuilder("칭찬 포인트 랭킹 " + rank + "위 보상 대상자 (name : " + entry.getPlayerName() + ", accountID : " + toAccountID + ")")
+                  new StringBuilder("์นญ์ฐฌ ํฌ์ธํธ ๋ญํน " + rank + "์ ๋ณด์ ๋€์์ (name : " + entry.getPlayerName() + ", accountID : " + toAccountID + ")")
                )
             );
             if (rank++ >= 10) {
@@ -210,7 +210,7 @@ public class PraiseDonationMesoRank {
             if (playerx != null) {
                playerx.updateOneInfo(1234599, "praise_reward2", String.valueOf(meso));
                playerx.updateOneInfo(1234599, "praise_reward2_get", "");
-               playerx.dropMessage(5, "[Notice] ชนะกิจกรรม Praise Point Settlement รับ Meso ได้ที่ NPC Donation Box");
+               playerx.dropMessage(5, "[Notice] เธเธเธฐเธเธดเธเธเธฃเธฃเธก Praise Point Settlement เธฃเธฑเธ Meso เนเธ”เนเธ—เธตเน NPC Donation Box");
                LoggingManager.putLog(
                   new CustomLog(
                      playerx.getName(),
@@ -218,7 +218,7 @@ public class PraiseDonationMesoRank {
                      playerx.getId(),
                      playerx.getAccountID(),
                      2,
-                     new StringBuilder(playerx.getName() + ", 슈퍼볼 당첨자")
+                     new StringBuilder(playerx.getName() + ", ์ํผ๋ณผ ๋น์ฒจ์")
                   )
                );
             } else {
@@ -231,7 +231,7 @@ public class PraiseDonationMesoRank {
                ps3.setString(4, time);
                ps3.executeUpdate();
                ps3.close();
-               LoggingManager.putLog(new CustomLog("", "", 0, id, 2, new StringBuilder("슈퍼볼 당첨자 (accountID : " + id + ")")));
+               LoggingManager.putLog(new CustomLog("", "", 0, id, 2, new StringBuilder("์ํผ๋ณผ ๋น์ฒจ์ (accountID : " + id + ")")));
             }
 
             if (++count >= 3) {

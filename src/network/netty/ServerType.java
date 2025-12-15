@@ -1,4 +1,4 @@
-package network.netty;
+﻿package network.netty;
 
 public enum ServerType {
    LOGIN,

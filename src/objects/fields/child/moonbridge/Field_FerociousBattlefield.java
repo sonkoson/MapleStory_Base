@@ -1,4 +1,4 @@
-package objects.fields.child.moonbridge;
+﻿package objects.fields.child.moonbridge;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -342,7 +342,7 @@ public class Field_FerociousBattlefield extends Field {
             if (p.getParty() != null) {
                if (p.getMapId() == this.getId()) {
                   int quantity = 14;
-                  p.gainItem(4001893, (short)quantity, false, -1L, "더스크 격파로 얻은 아이템");
+                  p.gainItem(4001893, (short)quantity, false, -1L, "๋”์คํฌ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
                }
 
                p.addGuildContributionByBoss(8644650);
@@ -354,7 +354,7 @@ public class Field_FerociousBattlefield extends Field {
 
                      for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
                         names.add(mpc.getName());
-                        StringBuilder sb = new StringBuilder("보스 카오스 더스크 격파");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค ์นด์ค์ค ๋”์คํฌ ๊ฒฉํ");
                         MapleCharacter playerxx = this.getCharacterById(mpc.getId());
                         if (playerxx != null) {
                            if (!DBConfig.isGanglim && !multiMode) {
@@ -370,13 +370,13 @@ public class Field_FerociousBattlefield extends Field {
                         Center.Broadcast.broadcastMessage(
                            CField.chatMsg(
                               DBConfig.isGanglim ? 8 : 22,
-                              "[보스격파] [CH."
-                                 + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                              "[๋ณด์ค๊ฒฉํ] [CH."
+                                 + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                  + "] '"
                                  + p.getParty().getLeader().getName()
-                                 + "' 파티("
+                                 + "' ํํฐ("
                                  + list
-                                 + ")가 [카오스 더스크]를 격파하였습니다."
+                                 + ")๊ฐ€ [์นด์ค์ค ๋”์คํฌ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                            )
                         );
                      }
@@ -384,7 +384,7 @@ public class Field_FerociousBattlefield extends Field {
                      this.bossClearQex(p, 1234569, "chaos_dusk_clear");
                   } else {
                      for (PartyMemberEntry mpcx : new ArrayList<>(p.getParty().getPartyMember().getPartyMemberList())) {
-                        StringBuilder sb = new StringBuilder("보스 노말 더스크 격파");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค ๋…ธ๋ง ๋”์คํฌ ๊ฒฉํ");
                         MapleCharacter playerxx = this.getCharacterById(mpcx.getId());
                         if (playerxx != null) {
                            if (!DBConfig.isGanglim && !multiMode) {
@@ -548,7 +548,7 @@ public class Field_FerociousBattlefield extends Field {
          duration = this.doFieldSkill(100020, 1, Randomizer.rand(0, 3));
       }
 
-      this.sendDuskNotice("หนวดที่ป้องกันอยู่จะโจมตีอย่างรุนแรง! ถ้าทนได้ จะสามารถโจมตีดวงตาแห่งความว่างเปล่าที่เปิดออกได้!", 3000);
+      this.sendDuskNotice("เธซเธเธงเธ”เธ—เธตเนเธเนเธญเธเธเธฑเธเธญเธขเธนเนเธเธฐเนเธเธกเธ•เธตเธญเธขเนเธฒเธเธฃเธธเธเนเธฃเธ! เธ–เนเธฒเธ—เธเนเธ”เน เธเธฐเธชเธฒเธกเธฒเธฃเธ–เนเธเธกเธ•เธตเธ”เธงเธเธ•เธฒเนเธซเนเธเธเธงเธฒเธกเธงเนเธฒเธเน€เธเธฅเนเธฒเธ—เธตเนเน€เธเธดเธ”เธญเธญเธเนเธ”เน!", 3000);
       this.changeMobZone(0);
       this.nextLaserAttackTime = System.currentTimeMillis() + duration + 1000L;
    }

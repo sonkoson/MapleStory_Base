@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -358,7 +358,7 @@ public class MobHandler {
 
    private static void doAdditionalAttackAction(MapleMonster mob, MobMoveAction action) {
       if (mob.getId() == 8930000 && action == MobMoveAction.Attack9) {
-         mob.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("벨룸이 깊은 숨을 들이쉽니다."));
+         mob.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("๋ฒจ๋ฃธ์ด ๊น์€ ์จ์ ๋“ค์ด์ฝ๋๋ค."));
       }
 
       if (mob.getId() == 8870100 && action == MobMoveAction.Attack6) {

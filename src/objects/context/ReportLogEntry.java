@@ -1,4 +1,4 @@
-package objects.context;
+﻿package objects.context;
 
 import network.encode.PacketEncoder;
 

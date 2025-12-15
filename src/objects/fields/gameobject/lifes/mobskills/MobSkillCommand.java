@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes.mobskills;
+﻿package objects.fields.gameobject.lifes.mobskills;
 
 public class MobSkillCommand {
    private int skillCommand;

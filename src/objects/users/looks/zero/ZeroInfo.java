@@ -1,4 +1,4 @@
-package objects.users.looks.zero;
+﻿package objects.users.looks.zero;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

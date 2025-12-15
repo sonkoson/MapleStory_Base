@@ -1,4 +1,4 @@
-package objects.fields.child.fritto;
+﻿package objects.fields.child.fritto;
 
 import objects.wz.provider.MapleData;
 import objects.wz.provider.MapleDataTool;

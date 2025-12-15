@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 import java.awt.Point;
 import java.util.concurrent.atomic.AtomicBoolean;

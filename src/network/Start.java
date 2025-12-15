@@ -1,4 +1,4 @@
-package network;
+﻿package network;
 
 import api.DonationRequest;
 import constants.AutoHottimeManager;

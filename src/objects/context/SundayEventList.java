@@ -1,4 +1,4 @@
-package objects.context;
+﻿package objects.context;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -78,7 +78,7 @@ public class SundayEventList {
          sEventList.add(eL);
       }
 
-      System.out.println("[SundayList] " + sEventList.size() + "개 캐싱완료");
+      System.out.println("[SundayList] " + sEventList.size() + "๊ฐ ์บ์ฑ์๋ฃ");
    }
 
    public SundayEventList(

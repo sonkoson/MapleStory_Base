@@ -1,4 +1,4 @@
-package objects.fields.child.union;
+﻿package objects.fields.child.union;
 
 import constants.GameConstants;
 import java.awt.Point;
@@ -134,11 +134,11 @@ public class MapleUnionData {
    public static String getRankFullName(int r) {
       int num = r / 100;
       int tier = r % 100;
-      return getRankName(num - 1) + " " + tier + "단계";
+      return getRankName(num - 1) + " " + tier + "๋จ๊ณ";
    }
 
    public static String getRankName(int r) {
-      return rankName.isEmpty() ? "노비스 유니온" : rankName.get(r);
+      return rankName.isEmpty() ? "๋…ธ๋น์ค ์ ๋์จ" : rankName.get(r);
    }
 
    public static int getRankByJobLevel(int job, int level) {

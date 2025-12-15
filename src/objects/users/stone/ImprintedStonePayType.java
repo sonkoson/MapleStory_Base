@@ -1,4 +1,4 @@
-package objects.users.stone;
+﻿package objects.users.stone;
 
 public enum ImprintedStonePayType {
    Donation(0),

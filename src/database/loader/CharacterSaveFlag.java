@@ -1,4 +1,4 @@
-package database.loader;
+﻿package database.loader;
 
 public enum CharacterSaveFlag {
    WISH_LIST(1),

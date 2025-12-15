@@ -1,4 +1,4 @@
-package scripting.newscripting;
+﻿package scripting.newscripting;
 
 import java.io.File;
 import java.io.IOException;
@@ -225,7 +225,7 @@ public class ScriptManager {
          lock.unlock();
       }
 
-      System.out.println("[Script] รวม " + holder._scripts.size() + " scripts have been parsed.");
+      System.out.println("[Script] เธฃเธงเธก " + holder._scripts.size() + " scripts have been parsed.");
       return holder._scripts.size();
    }
 
@@ -248,7 +248,7 @@ public class ScriptManager {
                try {
                   parseScripts();
                   if (chr != null) {
-                     chr.dropMessage(5, "[Script] รวม " + holder._scripts.size() + " scripts have been parsed.");
+                     chr.dropMessage(5, "[Script] เธฃเธงเธก " + holder._scripts.size() + " scripts have been parsed.");
                   }
                } catch (IOException var2x) {
                   new RuntimeException(var2x);

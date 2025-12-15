@@ -1,4 +1,4 @@
-package objects.fields.obstacle;
+﻿package objects.fields.obstacle;
 
 public class ObstacleAtomAction {
    private Runnable runnable;

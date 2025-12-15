@@ -1,4 +1,4 @@
-package objects.quest;
+﻿package objects.quest;
 
 public enum MapleQuestActionType {
    UNDEFINED(-1),

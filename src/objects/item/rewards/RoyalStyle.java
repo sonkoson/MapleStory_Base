@@ -1,4 +1,4 @@
-package objects.item.rewards;
+﻿package objects.item.rewards;
 
 import database.DBConfig;
 import database.DBConnection;

@@ -1,4 +1,4 @@
-package objects.context.waitqueue;
+﻿package objects.context.waitqueue;
 
 import network.encode.PacketEncoder;
 

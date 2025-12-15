@@ -1,4 +1,4 @@
-package objects.fields.gameobject;
+﻿package objects.fields.gameobject;
 
 public enum RuneStoneResultType {
    DataMissMatch(0),

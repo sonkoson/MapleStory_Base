@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ public class NormalWillEnter extends FieldSet {
 
       this.keyValue = "will_clear";
       this.canTimeKey = "will_can_time";
-      this.bossName = "윌";
-      this.difficulty = "노말";
+      this.bossName = "์";
+      this.difficulty = "๋…ธ๋ง";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -123,10 +123,10 @@ public class NormalWillEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

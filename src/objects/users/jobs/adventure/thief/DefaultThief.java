@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.thief;
+﻿package objects.users.jobs.adventure.thief;
 
 import network.RecvPacketOpcode;
 import network.game.processors.AttackInfo;

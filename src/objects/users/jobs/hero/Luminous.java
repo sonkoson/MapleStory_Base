@@ -1,4 +1,4 @@
-package objects.users.jobs.hero;
+﻿package objects.users.jobs.hero;
 
 import constants.GameConstants;
 import java.awt.Point;

@@ -1,4 +1,4 @@
-package network.connector;
+﻿package network.connector;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;

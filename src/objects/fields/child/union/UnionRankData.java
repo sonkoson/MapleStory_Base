@@ -1,4 +1,4 @@
-package objects.fields.child.union;
+﻿package objects.fields.child.union;
 
 public class UnionRankData {
    private int attackerCount;

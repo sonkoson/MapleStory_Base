@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 public enum FontType {
    Dotum0(0),

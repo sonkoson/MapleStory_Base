@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import objects.wz.provider.MapleData;
 import objects.wz.provider.MapleDataTool;

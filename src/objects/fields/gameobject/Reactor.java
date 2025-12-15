@@ -1,4 +1,4 @@
-package objects.fields.gameobject;
+﻿package objects.fields.gameobject;
 
 import java.awt.Rectangle;
 import network.models.CField;

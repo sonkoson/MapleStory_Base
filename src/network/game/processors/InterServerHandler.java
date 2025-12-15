@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.ArcaneStoryQuests;
 import constants.DailyEventType;
@@ -94,7 +94,7 @@ public class InterServerHandler {
 
          if (npc) {
             if (DBConfig.isGanglim && chr.getMapId() == ServerConstants.StartMap) {
-               c.getPlayer().dropMessage(5, "ไม่สามารถใช้ได้ในแผนที่นี้");
+               c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเนเธเนเธเธเธ—เธตเนเธเธตเน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return;
             }
@@ -165,7 +165,7 @@ public class InterServerHandler {
       MapleCharacter chr = c.getPlayer();
       c.loadMacsIfNescessary();
       if (ServerConstants.blockedEnterAuction) {
-         chr.dropMessage(5, "ตอนนี้ไม่สามารถเข้า Auction House ได้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+         chr.dropMessage(5, "เธ•เธญเธเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒ Auction House เนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
          chr.send(CWvsContext.enableActions(chr));
       } else if (chr == null
             || c.getChannelServer().getPlayerStorage().getCharacterById(chr.getId()) == null
@@ -401,7 +401,7 @@ public class InterServerHandler {
 
                         if (ServerConstants.workingReboot) {
                            c.getSession().writeAndFlush(
-                                 CWvsContext.serverNotice(1, "เซิร์ฟเวอร์กำลังปิดปรับปรุง กรุณาตรวจสอบประกาศ"));
+                                 CWvsContext.serverNotice(1, "เน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธณเธฅเธฑเธเธเธดเธ”เธเธฃเธฑเธเธเธฃเธธเธ เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธเธฃเธฐเธเธฒเธจ"));
                            return;
                         }
 
@@ -546,7 +546,7 @@ public class InterServerHandler {
                               if (questxx != null && qsxx.getStatus() != 2) {
                                  MapleQuest.getInstance(1542).forceComplete(player, 2003);
                                  player.send(CWvsContext.getScriptProgressMessage(
-                                       "[การรวมพลังจิตวิญญาณสูงสุด] ทำให้สามารถจำลองภาพของรังที่คิดถึงได้แล้ว"));
+                                       "[เธเธฒเธฃเธฃเธงเธกเธเธฅเธฑเธเธเธดเธ•เธงเธดเธเธเธฒเธ“เธชเธนเธเธชเธธเธ”] เธ—เธณเนเธซเนเธชเธฒเธกเธฒเธฃเธ–เธเธณเธฅเธญเธเธ เธฒเธเธเธญเธเธฃเธฑเธเธ—เธตเนเธเธดเธ”เธ–เธถเธเนเธ”เนเนเธฅเนเธง"));
                               }
                            }
 
@@ -608,9 +608,9 @@ public class InterServerHandler {
                            }
 
                            StringBuilder sb = new StringBuilder();
-                           sb.append("접속 로그 (아이피 : ");
+                           sb.append("์ ‘์ ๋ก๊ทธ (์•์ดํ”ผ : ");
                            sb.append(c.getSessionIPAddress());
-                           sb.append(", 접속 서버 : 인게임)");
+                           sb.append(", ์ ‘์ ์๋ฒ : ์ธ๊ฒ์)");
                            String getMac = "";
                            String getVolume = "";
                            if (macString.size() == 2) {
@@ -783,7 +783,7 @@ public class InterServerHandler {
                               if (reset == 0) {
                                  player.updateOneInfo(QuestExConstants.JinQuestEx.getQuestID(), "APReset", "1");
                                  player.resetStats(4, 4, 4, 4);
-                                 player.dropMessage(1, "AP ถูกรีเซ็ตเนื่องจากข้อผิดพลาดในการกระจายค่าสถานะตอนเปลี่ยนคลาส ขออภัยในความไม่สะดวก");
+                                 player.dropMessage(1, "AP เธ–เธนเธเธฃเธตเน€เธเนเธ•เน€เธเธทเนเธญเธเธเธฒเธเธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเธเธฃเธฐเธเธฒเธขเธเนเธฒเธชเธ–เธฒเธเธฐเธ•เธญเธเน€เธเธฅเธตเนเธขเธเธเธฅเธฒเธช เธเธญเธญเธ เธฑเธขเนเธเธเธงเธฒเธกเนเธกเนเธชเธฐเธ”เธงเธ");
                               }
                            } else {
                               player.resetStats(4, 4, 4, 4);
@@ -843,18 +843,18 @@ public class InterServerHandler {
                            player.invokeJobMethod("setMemoryChoice", 0, false);
                            if (player.getOneInfoQuestInteger(1234590, "dojang_reward") > 0
                                  && player.getOneInfoQuestInteger(1234590, "dojang_reward_get") <= 0) {
-                              player.dropMessage(5, "[แจ้งเตือน] กรุณารับรางวัลอันดับ Mulung Dojo");
+                              player.dropMessage(5, "[เนเธเนเธเน€เธ•เธทเธญเธ] เธเธฃเธธเธ“เธฒเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเธญเธฑเธเธ”เธฑเธ Mulung Dojo");
                            }
 
                            if (player.getOneInfoQuestInteger(1234590, "dojang_reward_c") > 0
                                  && player.getOneInfoQuestInteger(1234590, "dojang_reward_get_c") <= 0) {
-                              player.dropMessage(5, "[แจ้งเตือน] กรุณารับรางวัลอันดับ Mulung Dojo (Challenge)");
+                              player.dropMessage(5, "[เนเธเนเธเน€เธ•เธทเธญเธ] เธเธฃเธธเธ“เธฒเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅเธญเธฑเธเธ”เธฑเธ Mulung Dojo (Challenge)");
                            }
 
                            if (player.getOneInfoQuestLong(1234599, "praise_reward2") > 0L
                                  && player.getOneInfoQuestInteger(1234599, "praise_reward2_get") > 0) {
                               player.dropMessage(5,
-                                    "[แจ้งเตือน] คุณชนะกิจกรรมคะแนนคำชม กรุณารับ Meso ผ่าน NPC กล่องบริจาค");
+                                    "[เนเธเนเธเน€เธ•เธทเธญเธ] เธเธธเธ“เธเธเธฐเธเธดเธเธเธฃเธฃเธกเธเธฐเนเธเธเธเธณเธเธก เธเธฃเธธเธ“เธฒเธฃเธฑเธ Meso เธเนเธฒเธ NPC เธเธฅเนเธญเธเธเธฃเธดเธเธฒเธ");
                            }
 
                            try {
@@ -922,30 +922,30 @@ public class InterServerHandler {
 
                            if (channelServer.getPlayerStorage().getCharacterById(player.getId()) == null) {
                               c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
-                                    "เกิดข้อผิดพลาดไม่ทราบสาเหตุ\r\nการซื้อขายและเคลื่อนย้ายไอเทมถูกระงับ รวมถึงไม่สามารถใช้งาน Auction House\r\nกรุณาเข้าสู่ระบบใหม่"));
+                                    "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ\r\nเธเธฒเธฃเธเธทเนเธญเธเธฒเธขเนเธฅเธฐเน€เธเธฅเธทเนเธญเธเธขเนเธฒเธขเนเธญเน€เธ—เธกเธ–เธนเธเธฃเธฐเธเธฑเธ เธฃเธงเธกเธ–เธถเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธ Auction House\r\nเธเธฃเธธเธ“เธฒเน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธเนเธซเธกเน"));
                               return;
                            }
 
                            if (player.getOneInfoQuestInteger(1234555, "beginner_package") == 1) {
-                              player.dropMessage(5, "ได้รับแพ็คเกจผู้เริ่มต้นแล้ว กรุณารับได้ที่ระบบร้านค้า");
+                              player.dropMessage(5, "เนเธ”เนเธฃเธฑเธเนเธเนเธเน€เธเธเธเธนเนเน€เธฃเธดเนเธกเธ•เนเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเนเธ”เนเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ");
                               player.send(CField.addPopupSay(9062000, 3000,
-                                    "ได้รับแพ็คเกจผู้เริ่มต้นแล้ว กรุณารับได้ที่ระบบร้านค้า", ""));
+                                    "เนเธ”เนเธฃเธฑเธเนเธเนเธเน€เธเธเธเธนเนเน€เธฃเธดเนเธกเธ•เนเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเนเธ”เนเธ—เธตเนเธฃเธฐเธเธเธฃเนเธฒเธเธเนเธฒ", ""));
                               player.updateOneInfo(1234555, "beginner_package", "0");
                            }
 
                            if (ServerConstants.expFeverRate != 1.0) {
-                              player.send(CField.chatMsg(3, "[Fever Event] กิจกรรม EXP " + ServerConstants.expFeverRate
-                                    + " เท่า กำลังดำเนินการ"));
+                              player.send(CField.chatMsg(3, "[Fever Event] เธเธดเธเธเธฃเธฃเธก EXP " + ServerConstants.expFeverRate
+                                    + " เน€เธ—เนเธฒ เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธเธฒเธฃ"));
                            }
 
                            if (ServerConstants.dropFeverRate != 1.0) {
-                              player.send(CField.chatMsg(3, "[Fever Event] กิจกรรม Drop "
-                                    + ServerConstants.dropFeverRate + " เท่า กำลังดำเนินการ"));
+                              player.send(CField.chatMsg(3, "[Fever Event] เธเธดเธเธเธฃเธฃเธก Drop "
+                                    + ServerConstants.dropFeverRate + " เน€เธ—เนเธฒ เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธเธฒเธฃ"));
                            }
 
                            if (ServerConstants.mesoFeverRate != 1.0) {
-                              player.send(CField.chatMsg(3, "[Fever Event] กิจกรรม Meso "
-                                    + ServerConstants.mesoFeverRate + " เท่า กำลังดำเนินการ"));
+                              player.send(CField.chatMsg(3, "[Fever Event] เธเธดเธเธเธฃเธฃเธก Meso "
+                                    + ServerConstants.mesoFeverRate + " เน€เธ—เนเธฒ เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธเธฒเธฃ"));
                            }
 
                            if (ServerConstants.dailyEventType != null) {
@@ -955,36 +955,36 @@ public class InterServerHandler {
                                  switch (ServerConstants.dailyEventType) {
                                     case ExpRateFever_:
                                        e = new TextEffect(-1,
-                                             "[Weekend Burning] ได้รับ EXP เพิ่มเติม\r\nได้รับ EXP เพิ่มขึ้น 100% เมื่อล่ามอนสเตอร์ในช่วงเลเวล!!",
+                                             "[Weekend Burning] เนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก\r\nเนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเธเธถเนเธ 100% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเนเนเธเธเนเธงเธเน€เธฅเน€เธงเธฅ!!",
                                              50, 5000, 4,
                                              0);
-                                       str = "[Weekend Burning] กิจกรรม 'ได้รับ EXP เพิ่มเติม 100%' กำลังดำเนินอยู่ แม้จะไม่แสดงในบันทึกการได้รับ EXP ด้านขวา แต่มีผลใช้งานอยู่";
+                                       str = "[Weekend Burning] เธเธดเธเธเธฃเธฃเธก 'เนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก 100%' เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน เนเธกเนเธเธฐเนเธกเนเนเธชเธ”เธเนเธเธเธฑเธเธ—เธถเธเธเธฒเธฃเนเธ”เนเธฃเธฑเธ EXP เธ”เนเธฒเธเธเธงเธฒ เนเธ•เนเธกเธตเธเธฅเนเธเนเธเธฒเธเธญเธขเธนเน";
                                        break;
                                     case DropRateFever:
                                        e = new TextEffect(-1,
-                                             "[Monday Burning] เพิ่มอัตราการดรอปไอเทม\r\nเพิ่มอัตราการดรอป 50% เมื่อล่ามอนสเตอร์!!",
+                                             "[Monday Burning] เน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธเนเธญเน€เธ—เธก\r\nเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธ 50% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเน!!",
                                              50, 5000, 4, 0);
-                                       str = "[Monday Burning] กิจกรรม 'เพิ่มอัตราการดรอป 50%' กำลังดำเนินอยู่";
+                                       str = "[Monday Burning] เธเธดเธเธเธฃเธฃเธก 'เน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธ 50%' เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน";
                                        break;
                                     case StarForceDiscount:
                                        e = new TextEffect(-1,
-                                             "[Tue/Thu Burning] ส่วนลดค่าใช้จ่าย Star Force\r\nส่วนลดค่าใช้จ่าย Star Force 30%!!",
+                                             "[Tue/Thu Burning] เธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force\r\nเธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force 30%!!",
                                              50, 5000, 4, 0);
-                                       str = "[Tue/Thu Burning] กิจกรรม 'ส่วนลดค่าใช้จ่าย Star Force' กำลังดำเนินอยู่";
+                                       str = "[Tue/Thu Burning] เธเธดเธเธเธฃเธฃเธก 'เธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force' เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน";
                                        break;
                                     case ExpRateFever:
                                        e = new TextEffect(-1,
-                                             "[Wednesday Burning] ได้รับ EXP เพิ่มเติม\r\nได้รับ EXP เพิ่มขึ้น 50% เมื่อล่ามอนสเตอร์ในช่วงเลเวล!!",
+                                             "[Wednesday Burning] เนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก\r\nเนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเธเธถเนเธ 50% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเนเนเธเธเนเธงเธเน€เธฅเน€เธงเธฅ!!",
                                              50, 5000, 4,
                                              0);
-                                       str = "[Wednesday Burning] กิจกรรม 'ได้รับ EXP เพิ่มเติม 50%' กำลังดำเนินอยู่";
+                                       str = "[Wednesday Burning] เธเธดเธเธเธฃเธฃเธก 'เนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก 50%' เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน";
                                        break;
                                     case MesoRateFever:
                                        e = new TextEffect(-1,
-                                             "[Friday Burning] ได้รับ Meso เพิ่มเติม\r\nได้รับ Meso เพิ่มขึ้น 100% เมื่อล่ามอนสเตอร์!!",
+                                             "[Friday Burning] เนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเน€เธ•เธดเธก\r\nเนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเธเธถเนเธ 100% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเน!!",
                                              50, 5000,
                                              4, 0);
-                                       str = "[Friday Burning] กิจกรรม 'ได้รับ Meso เพิ่มเติม 100%' กำลังดำเนินอยู่";
+                                       str = "[Friday Burning] เธเธดเธเธเธฃเธฃเธก 'เนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเน€เธ•เธดเธก 100%' เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน";
                                  }
 
                                  if (e != null) {
@@ -995,59 +995,59 @@ public class InterServerHandler {
                               } else {
                                  if (ServerConstants.dailyEventType == DailyEventType.ExpRateFever) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Weekend Daily] ได้รับ EXP เพิ่มเติม\r\nได้รับ EXP เพิ่มขึ้น 20% เมื่อล่ามอนสเตอร์ในช่วงเลเวล!",
+                                          "[Weekend Daily] เนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก\r\nเนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเธเธถเนเธ 20% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเนเนเธเธเนเธงเธเน€เธฅเน€เธงเธฅ!",
                                           50, 5000, 4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Weekend Daily] กิจกรรมได้รับ EXP เพิ่มเติม 20% กำลังดำเนินอยู่"));
+                                          "[Weekend Daily] เธเธดเธเธเธฃเธฃเธกเนเธ”เนเธฃเธฑเธ EXP เน€เธเธดเนเธกเน€เธ•เธดเธก 20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
 
                                  if (ServerConstants.dailyEventType == DailyEventType.MesoRateFever) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Monday Daily] ได้รับ Meso เพิ่มเติม\r\nได้รับ Meso เพิ่มขึ้น 20% เมื่อล่ามอนสเตอร์!",
+                                          "[Monday Daily] เนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเน€เธ•เธดเธก\r\nเนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเธเธถเนเธ 20% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเน!",
                                           50,
                                           5000, 4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Monday Daily] กิจกรรมได้รับ Meso เพิ่มเติม 20% กำลังดำเนินอยู่"));
+                                          "[Monday Daily] เธเธดเธเธเธฃเธฃเธกเนเธ”เนเธฃเธฑเธ Meso เน€เธเธดเนเธกเน€เธ•เธดเธก 20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
 
                                  if (ServerConstants.dailyEventType == DailyEventType.DropRateFever) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Tuesday Daily] เพิ่มอัตราการดรอปไอเทม\r\nเพิ่มอัตราการดรอป 20% เมื่อล่ามอนสเตอร์!",
+                                          "[Tuesday Daily] เน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธเนเธญเน€เธ—เธก\r\nเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธ 20% เน€เธกเธทเนเธญเธฅเนเธฒเธกเธญเธเธชเน€เธ•เธญเธฃเน!",
                                           50, 5000, 4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Tuesday Daily] กิจกรรมเพิ่มอัตราการดรอป 20% กำลังดำเนินอยู่"));
+                                          "[Tuesday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเธ”เธฃเธญเธ 20% เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
 
                                  if (ServerConstants.dailyEventType == DailyEventType.MobGenFever) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Wednesday Daily] เพิ่มการเกิดของมอนสเตอร์\r\nอัตราการเกิดของมอนสเตอร์เพิ่มขึ้น 20%!",
+                                          "[Wednesday Daily] เน€เธเธดเนเธกเธเธฒเธฃเน€เธเธดเธ”เธเธญเธเธกเธญเธเธชเน€เธ•เธญเธฃเน\r\nเธญเธฑเธ•เธฃเธฒเธเธฒเธฃเน€เธเธดเธ”เธเธญเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเน€เธเธดเนเธกเธเธถเนเธ 20%!",
                                           50, 5000,
                                           4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Wednesday Daily] กิจกรรมเพิ่มการเกิดของมอนสเตอร์กำลังดำเนินอยู่"));
+                                          "[Wednesday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเธเธฒเธฃเน€เธเธดเธ”เธเธญเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
 
                                  if (ServerConstants.dailyEventType == DailyEventType.StarForceDiscount) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Thursday Daily] ส่วนลดค่าใช้จ่าย Star Force\r\nส่วนลดค่าใช้จ่าย Star Force 30%!",
+                                          "[Thursday Daily] เธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force\r\nเธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force 30%!",
                                           50, 5000, 4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Thursday Daily] กิจกรรมส่วนลดค่าใช้จ่าย Star Force กำลังดำเนินอยู่"));
+                                          "[Thursday Daily] เธเธดเธเธเธฃเธฃเธกเธชเนเธงเธเธฅเธ”เธเนเธฒเนเธเนเธเนเธฒเธข Star Force เธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
 
                                  if (ServerConstants.dailyEventType == DailyEventType.CubeFever) {
                                     TextEffect e = new TextEffect(-1,
-                                          "[Friday Daily] เพิ่มโอกาสลงทะเบียน Monster Collection 20%\r\nเพิ่มโอกาสลงทะเบียน Monster Collection ใหม่!",
+                                          "[Friday Daily] เน€เธเธดเนเธกเนเธญเธเธฒเธชเธฅเธเธ—เธฐเน€เธเธตเธขเธ Monster Collection 20%\r\nเน€เธเธดเนเธกเนเธญเธเธฒเธชเธฅเธเธ—เธฐเน€เธเธตเธขเธ Monster Collection เนเธซเธกเน!",
                                           50, 5000,
                                           4, 0);
                                     player.send(e.encodeForLocal());
                                     player.send(CField.chatMsg(3,
-                                          "[Friday Daily] กิจกรรมเพิ่มโอกาสลงทะเบียน Monster Collection ใหม่กำลังดำเนินอยู่"));
+                                          "[Friday Daily] เธเธดเธเธเธฃเธฃเธกเน€เธเธดเนเธกเนเธญเธเธฒเธชเธฅเธเธ—เธฐเน€เธเธตเธขเธ Monster Collection เนเธซเธกเนเธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน"));
                                  }
                               }
                            }
@@ -1074,26 +1074,26 @@ public class InterServerHandler {
                            if (Center.sunShineStorage.bloomFlower) {
                               sdf = new SimpleDateFormat("dd MMM HH:mm");
                               String endTime = sdf.format(Center.sunShineStorage.endTime);
-                              TextEffect e = new TextEffect(-1, "กิจกรรมดอกไม้บานที่ลานกว้างกำลังดำเนินอยู่", 100, 1000,
+                              TextEffect e = new TextEffect(-1, "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธเธเธณเธฅเธฑเธเธ”เธณเน€เธเธดเธเธญเธขเธนเน", 100, 1000,
                                     4, 0);
                               player.send(e.encodeForLocal());
                               if (Center.sunShineStorage.randomBuff == 1) {
                                  player.dropMessage(5,
-                                       "กิจกรรมดอกไม้บานที่ลานกว้าง [EXP 1.5x][Arcane Symbol Drop 1.5x] มีผลถึง "
+                                       "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธ [EXP 1.5x][Arcane Symbol Drop 1.5x] เธกเธตเธเธฅเธ–เธถเธ "
                                              + endTime + "!");
                               } else if (Center.sunShineStorage.randomBuff == 2) {
                                  player.dropMessage(5,
-                                       "กิจกรรมดอกไม้บานที่ลานกว้าง [EXP 1.5x][Drop 1.5x] มีผลถึง " + endTime + "!");
+                                       "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธ [EXP 1.5x][Drop 1.5x] เธกเธตเธเธฅเธ–เธถเธ " + endTime + "!");
                               } else if (Center.sunShineStorage.randomBuff == 3) {
                                  player.dropMessage(5,
-                                       "กิจกรรมดอกไม้บานที่ลานกว้าง [EXP 1.5x][Meso 1.5x] มีผลถึง " + endTime + "!");
+                                       "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธ [EXP 1.5x][Meso 1.5x] เธกเธตเธเธฅเธ–เธถเธ " + endTime + "!");
                               } else if (Center.sunShineStorage.randomBuff == 4) {
                                  player.dropMessage(5,
-                                       "กิจกรรมดอกไม้บานที่ลานกว้าง [Arcane Symbol Drop 1.5x][Meso 1.5x] มีผลถึง "
+                                       "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธ [Arcane Symbol Drop 1.5x][Meso 1.5x] เธกเธตเธเธฅเธ–เธถเธ "
                                              + endTime + "!");
                               } else if (Center.sunShineStorage.randomBuff == 5) {
                                  player.dropMessage(5,
-                                       "กิจกรรมดอกไม้บานที่ลานกว้าง [Drop 1.5x][Meso 1.5x] มีผลถึง " + endTime + "!");
+                                       "เธเธดเธเธเธฃเธฃเธกเธ”เธญเธเนเธกเนเธเธฒเธเธ—เธตเนเธฅเธฒเธเธเธงเนเธฒเธ [Drop 1.5x][Meso 1.5x] เธกเธตเธเธฅเธ–เธถเธ " + endTime + "!");
                               }
                            }
                         } catch (Exception var41) {
@@ -1186,12 +1186,12 @@ public class InterServerHandler {
 
                               if (player.isUnequipShield()) {
                                  player.dropMessage(5,
-                                       "[แจ้งเตือน] โล่ถูกถอดออกเนื่องจากมีการสวมใส่อาวุธสองมือ กรุณารับคืนได้ที่ [Maple Cabinet]");
+                                       "[เนเธเนเธเน€เธ•เธทเธญเธ] เนเธฅเนเธ–เธนเธเธ–เธญเธ”เธญเธญเธเน€เธเธทเนเธญเธเธเธฒเธเธกเธตเธเธฒเธฃเธชเธงเธกเนเธชเนเธญเธฒเธงเธธเธเธชเธญเธเธกเธทเธญ เธเธฃเธธเธ“เธฒเธฃเธฑเธเธเธทเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
                               }
 
                               if (player.isUnequipPants()) {
                                  player.dropMessage(5,
-                                       "[แจ้งเตือน] กางเกงถูกถอดออกเนื่องจากมีการสวมใส่ชุดคลุม กรุณารับคืนได้ที่ [Maple Cabinet]");
+                                       "[เนเธเนเธเน€เธ•เธทเธญเธ] เธเธฒเธเน€เธเธเธ–เธนเธเธ–เธญเธ”เธญเธญเธเน€เธเธทเนเธญเธเธเธฒเธเธกเธตเธเธฒเธฃเธชเธงเธกเนเธชเนเธเธธเธ”เธเธฅเธธเธก เธเธฃเธธเธ“เธฒเธฃเธฑเธเธเธทเธเนเธ”เนเธ—เธตเน [Maple Cabinet]");
                               }
                            }
 
@@ -1525,7 +1525,7 @@ public class InterServerHandler {
                                  player.gainHonor(100000, true);
                                  if (!DBConfig.isGanglim) {
                                     player.dropMessage(5,
-                                          "[แจ้งเตือน] พบออปชั่น Ability ซ้ำกัน ออปชั่นอื่นนอกจากบรรทัดแรกจะถูกรีเซ็ต");
+                                          "[เนเธเนเธเน€เธ•เธทเธญเธ] เธเธเธญเธญเธเธเธฑเนเธ Ability เธเนเธณเธเธฑเธ เธญเธญเธเธเธฑเนเธเธญเธทเนเธเธเธญเธเธเธฒเธเธเธฃเธฃเธ—เธฑเธ”เนเธฃเธเธเธฐเธ–เธนเธเธฃเธตเน€เธเนเธ•");
                                  }
                               }
                            }
@@ -1563,7 +1563,7 @@ public class InterServerHandler {
                                  player.getStat().recalcLocalStats(player);
                                  player.gainHonor(100000, true);
                                  player.dropMessage(5,
-                                       "[ประกาศ] เนื่องจากมีการแก้ไขบั๊ก Ability ออปชั่นอื่นนอกจากบรรทัดแรกจะถูกรีเซ็ต");
+                                       "[เธเธฃเธฐเธเธฒเธจ] เน€เธเธทเนเธญเธเธเธฒเธเธกเธตเธเธฒเธฃเนเธเนเนเธเธเธฑเนเธ Ability เธญเธญเธเธเธฑเนเธเธญเธทเนเธเธเธญเธเธเธฒเธเธเธฃเธฃเธ—เธฑเธ”เนเธฃเธเธเธฐเธ–เธนเธเธฃเธตเน€เธเนเธ•");
                               }
 
                               player.setKeyValue2("check_inner", 1);
@@ -1583,15 +1583,15 @@ public class InterServerHandler {
                                  && player.haveItem(medalID)) {
                               player.removeAll(medalID, false);
                               player.dropMessage(5, MapleItemInformationProvider.getInstance().getName(medalID)
-                                    + " หมดสิทธิ์ใช้งาน ฉายาถูกเรียกคืนแล้ว");
+                                    + " เธซเธกเธ”เธชเธดเธ—เธเธดเนเนเธเนเธเธฒเธ เธเธฒเธขเธฒเธ–เธนเธเน€เธฃเธตเธขเธเธเธทเธเนเธฅเนเธง");
                            }
 
                            if (player.getGuild() != null && player.getGuild().getName().equals(gName)
                                  && !player.haveItem(medalID, 1, true, true)) {
                               player.gainItemAllStat(medalID, (short) 1, (short) 200, (short) 100);
                               player.dropMessage(5,
-                                    "ได้รับเหรียญ " + MapleItemInformationProvider.getInstance().getName(medalID)
-                                          + " แล้ว");
+                                    "เนเธ”เนเธฃเธฑเธเน€เธซเธฃเธตเธขเธ " + MapleItemInformationProvider.getInstance().getName(medalID)
+                                          + " เนเธฅเนเธง");
                            }
                         }
 
@@ -1606,10 +1606,10 @@ public class InterServerHandler {
                         if (DBConfig.isGanglim && MailBox.isItemOff(player)) {
                            if (c.isOverseasUser()) {
                               player.dropMessage(-22,
-                                    "[LetterBox] จดหมายมาถึงแล้ว กรุณารับที่ NPC กิจกรรม - LetterBox");
+                                    "[LetterBox] เธเธ”เธซเธกเธฒเธขเธกเธฒเธ–เธถเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเธ—เธตเน NPC เธเธดเธเธเธฃเธฃเธก - LetterBox");
                            } else {
                               player.dropMessage(-22,
-                                    "[Mailbox] ไอเทมมาถึงตู้จดหมายแล้ว กรุณารับได้ที่ NPC กิจกรรม - ตู้จดหมาย !");
+                                    "[Mailbox] เนเธญเน€เธ—เธกเธกเธฒเธ–เธถเธเธ•เธนเนเธเธ”เธซเธกเธฒเธขเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฃเธฑเธเนเธ”เนเธ—เธตเน NPC เธเธดเธเธเธฃเธฃเธก - เธ•เธนเนเธเธ”เธซเธกเธฒเธข !");
                            }
                         }
                      } catch (Exception var54) {
@@ -1640,9 +1640,9 @@ public class InterServerHandler {
 
          if (!chr.isGM() && System.currentTimeMillis() - chr.getLastChangedChannelTime() < 5000L) {
             if (DBConfig.isGanglim) {
-               chr.dropMessage(5, "สามารถเปลี่ยนแชนแนลได้ทุกๆ 5 วินาที");
+               chr.dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เน€เธเธฅเธตเนเธขเธเนเธเธเนเธเธฅเนเธ”เนเธ—เธธเธเน 5 เธงเธดเธเธฒเธ—เธต");
             } else {
-               chr.dropMessage(5, "ตอนนี้ไม่สามารถเปลี่ยนแชนแนลได้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+               chr.dropMessage(5, "เธ•เธญเธเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธฅเธตเนเธขเธเนเธเธเนเธเธฅเนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
             }
 
             c.getSession().writeAndFlush(CWvsContext.enableActions(chr));

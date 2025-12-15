@@ -1,4 +1,4 @@
-package network.auction;
+﻿package network.auction;
 
 import java.io.File;
 import java.util.ArrayList;

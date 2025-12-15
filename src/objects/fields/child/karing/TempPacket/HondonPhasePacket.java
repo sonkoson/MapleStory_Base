@@ -1,4 +1,4 @@
-package objects.fields.child.karing.TempPacket;
+﻿package objects.fields.child.karing.TempPacket;
 
 import java.awt.Point;
 import network.encode.PacketEncoder;

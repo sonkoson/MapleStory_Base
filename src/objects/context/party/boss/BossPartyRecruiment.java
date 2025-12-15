@@ -1,4 +1,4 @@
-package objects.context.party.boss;
+﻿package objects.context.party.boss;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import network.encode.PacketEncoder;

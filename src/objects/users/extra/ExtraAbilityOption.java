@@ -1,32 +1,32 @@
-package objects.users.extra;
+﻿package objects.users.extra;
 
 import objects.users.stats.SecondaryStatFlag;
 
 public enum ExtraAbilityOption {
-   None(-1, "없음", false),
-   DamageReduceR(0, "아케인 포스 +%d 증가", false, SecondaryStatFlag.indieArc),
-   Str(1, "STR +%d 증가", false, SecondaryStatFlag.indieSTR),
-   Dex(2, "DEX +%d 증가", false, SecondaryStatFlag.indieDEX),
-   Int(3, "INT +%d 증가", false, SecondaryStatFlag.indieINT),
-   Luk(4, "LUK +%d 증가", false, SecondaryStatFlag.indieLUK),
-   AllStat(5, "올스탯 +%d 증가", false, SecondaryStatFlag.indieAllStat),
-   MaxHp(6, "최대 HP +%d 증가", false, SecondaryStatFlag.indieMHP),
-   Attack(7, "공격력/마력 +%d 증가", false, SecondaryStatFlag.indieMAD, SecondaryStatFlag.indiePAD),
-   MaxHpR(8, "최대 HP +%d%s 증가", false, SecondaryStatFlag.indieMHPR),
-   AllStatR(9, "올스탯 +%d%s 증가 (직접 투자한 스탯)", false, SecondaryStatFlag.indieStatRBasic),
-   AttackR(10, "공격력/마력 +%d%s 증가", false, SecondaryStatFlag.indieMadR, SecondaryStatFlag.indiePadR),
-   CriticalRate(11, "크리티컬 확률 +%d%s 증가", false, SecondaryStatFlag.indieCR),
-   IgnoreMobPdpR(12, "몬스터 방어력 무시 +%d%s", false, SecondaryStatFlag.indieIgnoreMobPdpR),
-   BossDamageR(13, "보스 공격 시 데미지 +%d%s 증가", false, SecondaryStatFlag.indieBDR),
-   ReduceCooltime(14, "재사용 대기시간 %d초 감소", true, SecondaryStatFlag.indieCooltimeReduce),
-   MesoRateR(15, "메소 획득량 +%d%s 증가", true, SecondaryStatFlag.indieMesoAmountRate),
-   DropRateR(16, "아이템 드롭률 +%d%s 증가", true, SecondaryStatFlag.indieDropPer),
-   ExpRateR(17, "경험치 획득량 +%d%s 증가", true, SecondaryStatFlag.indieEXP),
-   CriticalDamage(18, "크리티컬 데미지 +%d%s 증가", false, SecondaryStatFlag.indieCD),
-   IncMobGen(19, "몬스터 리젠 개체수 1.5배 증가", true, null),
-   ReviveInvincible(20, "부활 시 무적 시간 %d초 증가", true, null),
-   TerR(21, "상태 이상 내성 +%d%s 증가", true, SecondaryStatFlag.indieTerR, SecondaryStatFlag.indieAsrR),
-   PMDR(22, "최종 데미지 +%d%s 증가", true, SecondaryStatFlag.indiePMDR);
+   None(-1, "์—์", false),
+   DamageReduceR(0, "์•์ผ€์ธ ํฌ์ค +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieArc),
+   Str(1, "STR +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieSTR),
+   Dex(2, "DEX +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieDEX),
+   Int(3, "INT +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieINT),
+   Luk(4, "LUK +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieLUK),
+   AllStat(5, "์ฌ์คํฏ +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieAllStat),
+   MaxHp(6, "์ต๋€ HP +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieMHP),
+   Attack(7, "๊ณต๊ฒฉ๋ ฅ/๋ง๋ ฅ +%d ์ฆ๊ฐ€", false, SecondaryStatFlag.indieMAD, SecondaryStatFlag.indiePAD),
+   MaxHpR(8, "์ต๋€ HP +%d%s ์ฆ๊ฐ€", false, SecondaryStatFlag.indieMHPR),
+   AllStatR(9, "์ฌ์คํฏ +%d%s ์ฆ๊ฐ€ (์ง์ ‘ ํฌ์ํ• ์คํฏ)", false, SecondaryStatFlag.indieStatRBasic),
+   AttackR(10, "๊ณต๊ฒฉ๋ ฅ/๋ง๋ ฅ +%d%s ์ฆ๊ฐ€", false, SecondaryStatFlag.indieMadR, SecondaryStatFlag.indiePadR),
+   CriticalRate(11, "ํฌ๋ฆฌํฐ์ปฌ ํ•๋ฅ  +%d%s ์ฆ๊ฐ€", false, SecondaryStatFlag.indieCR),
+   IgnoreMobPdpR(12, "๋ชฌ์คํฐ ๋ฐฉ์–ด๋ ฅ ๋ฌด์ +%d%s", false, SecondaryStatFlag.indieIgnoreMobPdpR),
+   BossDamageR(13, "๋ณด์ค ๊ณต๊ฒฉ ์ ๋ฐ๋ฏธ์ง€ +%d%s ์ฆ๊ฐ€", false, SecondaryStatFlag.indieBDR),
+   ReduceCooltime(14, "์ฌ์ฌ์ฉ ๋€๊ธฐ์๊ฐ %d์ด ๊ฐ์", true, SecondaryStatFlag.indieCooltimeReduce),
+   MesoRateR(15, "๋ฉ”์ ํ๋“๋ +%d%s ์ฆ๊ฐ€", true, SecondaryStatFlag.indieMesoAmountRate),
+   DropRateR(16, "์•์ดํ… ๋“๋กญ๋ฅ  +%d%s ์ฆ๊ฐ€", true, SecondaryStatFlag.indieDropPer),
+   ExpRateR(17, "๊ฒฝํ—์น ํ๋“๋ +%d%s ์ฆ๊ฐ€", true, SecondaryStatFlag.indieEXP),
+   CriticalDamage(18, "ํฌ๋ฆฌํฐ์ปฌ ๋ฐ๋ฏธ์ง€ +%d%s ์ฆ๊ฐ€", false, SecondaryStatFlag.indieCD),
+   IncMobGen(19, "๋ชฌ์คํฐ ๋ฆฌ์   ๊ฐ์ฒด์ 1.5๋ฐฐ ์ฆ๊ฐ€", true, null),
+   ReviveInvincible(20, "๋ถ€ํ ์ ๋ฌด์  ์๊ฐ %d์ด ์ฆ๊ฐ€", true, null),
+   TerR(21, "์ํ ์ด์ ๋ด์ฑ +%d%s ์ฆ๊ฐ€", true, SecondaryStatFlag.indieTerR, SecondaryStatFlag.indieAsrR),
+   PMDR(22, "์ต์ข… ๋ฐ๋ฏธ์ง€ +%d%s ์ฆ๊ฐ€", true, SecondaryStatFlag.indiePMDR);
 
    private int option;
    private String desc;

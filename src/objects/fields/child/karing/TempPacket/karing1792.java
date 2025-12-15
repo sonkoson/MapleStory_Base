@@ -1,4 +1,4 @@
-package objects.fields.child.karing.TempPacket;
+﻿package objects.fields.child.karing.TempPacket;
 
 import java.awt.Rectangle;
 import network.encode.PacketEncoder;

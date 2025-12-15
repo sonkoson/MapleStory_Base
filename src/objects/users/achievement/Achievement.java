@@ -1,4 +1,4 @@
-package objects.users.achievement;
+﻿package objects.users.achievement;
 
 import database.loader.CharacterSaveFlag2;
 import java.util.ArrayList;

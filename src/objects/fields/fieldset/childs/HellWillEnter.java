@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ public class HellWillEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "will_clear";
       this.canTimeKey = "will_can_time";
-      this.bossName = "윌";
-      this.difficulty = "헬";
+      this.bossName = "์";
+      this.difficulty = "ํ—ฌ";
       this.dailyLimit = 3;
    }
 
@@ -101,7 +101,7 @@ public class HellWillEnter extends FieldSet {
          if (enterInteger > 6 && nCharacter != null) {
             for (MapleCharacter chrx : nCharacter.getMap().getCharacters()) {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
-                  StringBuilder sb = new StringBuilder("보스 " + bn + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   this.AC(chrx, key, false);
                   chrx.setCurrentBossPhase(1);

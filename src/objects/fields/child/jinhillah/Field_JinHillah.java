@@ -1,4 +1,4 @@
-package objects.fields.child.jinhillah;
+﻿package objects.fields.child.jinhillah;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -320,7 +320,7 @@ public class Field_JinHillah extends Field {
             if (p.getParty() != null) {
                if (p.getMapId() == this.getId()) {
                   int quantity = 3;
-                  p.gainItem(4001894, (short)quantity, false, -1L, "진 힐라 격파로 얻은 아이템");
+                  p.gainItem(4001894, (short)quantity, false, -1L, "์ง ํ๋ผ ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
                }
 
                if (!set) {
@@ -335,7 +335,7 @@ public class Field_JinHillah extends Field {
                      list = String.join(",", names);
 
                      for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
-                        StringBuilder sb = new StringBuilder("보스 하드 진 힐라 격파 (" + list + ")");
+                        StringBuilder sb = new StringBuilder("๋ณด์ค ํ•๋“ ์ง ํ๋ผ ๊ฒฉํ (" + list + ")");
                         MapleCharacter playerx = this.getCharacterById(mpc.getId());
                         if (playerx != null) {
                            LoggingManager.putLog(new BossLog(playerx, BossLogType.ClearLog.getType(), sb));
@@ -345,13 +345,13 @@ public class Field_JinHillah extends Field {
                      Center.Broadcast.broadcastMessageCheckQuest(
                         CField.chatMsg(
                            DBConfig.isGanglim ? 8 : 22,
-                           "[보스격파] [CH."
-                              + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                           "[๋ณด์ค๊ฒฉํ] [CH."
+                              + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                               + "] '"
                               + p.getParty().getPartyMember().getLeader().getName()
-                              + "' 파티("
+                              + "' ํํฐ("
                               + list
-                              + ")가 [하드 진 힐라]를 격파하였습니다."
+                              + ")๊ฐ€ [ํ•๋“ ์ง ํ๋ผ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                         ),
                         "BossMessage"
                      );
@@ -572,7 +572,7 @@ public class Field_JinHillah extends Field {
       if (this.activeCandle >= this.candleSize) {
          int x = Randomizer.rand(-700, 700);
          int y = 268;
-         this.sendJinHillahNotice("ก่อนที่ Hilla จะเข้ามาและหายไป ต้องรัวปุ่ม Harvest ที่แท่นบูชาเพื่อกู้คืนวิญญาณ", 6000);
+         this.sendJinHillahNotice("เธเนเธญเธเธ—เธตเน Hilla เธเธฐเน€เธเนเธฒเธกเธฒเนเธฅเธฐเธซเธฒเธขเนเธ เธ•เนเธญเธเธฃเธฑเธงเธเธธเนเธก Harvest เธ—เธตเนเนเธ—เนเธเธเธนเธเธฒเน€เธเธทเนเธญเธเธนเนเธเธทเธเธงเธดเธเธเธฒเธ“", 6000);
          int count = Math.min(30, 5 + Math.min(5, this.getCharactersThreadsafe().size()) * 5);
          this.createJinHillahAltar(x, y, count);
       }

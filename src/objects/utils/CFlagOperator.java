@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.util.EnumMap;
 import java.util.HashMap;

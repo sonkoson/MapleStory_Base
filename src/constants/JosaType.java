@@ -1,4 +1,4 @@
-package constants;
+﻿package constants;
 
 public enum JosaType {
    Type_0(0),

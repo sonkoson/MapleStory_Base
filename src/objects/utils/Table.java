@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.awt.Point;
 import java.io.BufferedWriter;

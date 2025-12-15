@@ -1,4 +1,4 @@
-package objects.users.potential;
+﻿package objects.users.potential;
 
 import constants.GameConstants;
 import database.DBConnection;

@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import database.DBConfig;
 import objects.item.Equip;
@@ -18,7 +18,7 @@ public class EquipEnchantScroll {
       if (index <= 3) {
          this.cost = EquipEnchantMan.GetScrollVestigeCost(equipItemID, index);
          this.success = EquipEnchantMan.getSuccessByIndex(index, fever);
-         this.name = this.success + "% " + EquipEnchantMan.getNameByFlag(option.flag) + " 주문서";
+         this.name = this.success + "% " + EquipEnchantMan.getNameByFlag(option.flag) + " ์ฃผ๋ฌธ์";
       }
 
       this.option = option;
@@ -28,18 +28,18 @@ public class EquipEnchantScroll {
       switch (scrollType) {
          case INNOCENT:
             if (scrollOption == 1) {
-               this.name = "이노센트 주문서 100%";
+               this.name = "์ด๋…ธ์ผํธ ์ฃผ๋ฌธ์ 100%";
                this.success = 100;
                this.cost = 12000;
             } else if (scrollOption == 4) {
-               this.name = "아크 이노센트 주문서 100%";
+               this.name = "์•ํฌ ์ด๋…ธ์ผํธ ์ฃผ๋ฌธ์ 100%";
                this.success = 100;
                this.cost = 2400;
             }
             break;
          case WHITE:
             if (scrollOption == 1) {
-               this.name = "순백의 주문서 100%";
+               this.name = "์๋ฐฑ์ ์ฃผ๋ฌธ์ 100%";
                this.success = 100;
                this.cost = 20000;
             }
@@ -204,7 +204,7 @@ public class EquipEnchantScroll {
                if (zeroEquip != null) {
                   zeroEquip.setOwner("");
                }
-            } else if (enchant.contains("성") || enchantLevel > 0 || specialPotential > 0) {
+            } else if (enchant.contains("์ฑ") || enchantLevel > 0 || specialPotential > 0) {
                int lv = enchantLevel;
                int[] allStats = new int[]{5, 5, 10, 10, 20, 20, 30, 50, 75, 100};
                int[] attacks = new int[]{0, 0, 5, 5, 10, 10, 15, 25, 35, 50};
@@ -231,7 +231,7 @@ public class EquipEnchantScroll {
                }
 
                equip.setSpecialPotential(1);
-               equip.setOwner(lv + "성");
+               equip.setOwner(lv + "์ฑ");
                equip.setSPGrade(lv);
                if (zeroEquip != null) {
                   zeroEquip.setSpecialPotential(1);

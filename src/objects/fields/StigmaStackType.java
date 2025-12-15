@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import objects.wz.provider.MapleData;
 import objects.wz.provider.MapleDataTool;

@@ -1,4 +1,4 @@
-package objects.fields.child.blackmage;
+﻿package objects.fields.child.blackmage;
 
 import database.DBConfig;
 import java.awt.Point;

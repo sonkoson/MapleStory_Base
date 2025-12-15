@@ -1,4 +1,4 @@
-package commands;
+﻿package commands;
 
 import database.DBConnection;
 import java.awt.Point;
@@ -32,7 +32,7 @@ public class NPCSpawningCommands implements Command {
             c.getPlayer().getMap().addMapObject(npc);
             c.getPlayer().getMap().broadcastMessage(CField.NPCPacket.spawnNPC(npc, true));
          } else {
-            c.getPlayer().dropMessage(6, "ไม่พบ NPC ที่ใช้ ID นี้");
+            c.getPlayer().dropMessage(6, "เนเธกเนเธเธ NPC เธ—เธตเนเนเธเน ID เธเธตเน");
          }
       } else if (splitted[0].equals("!shop")) {
          if (DBConfig.isGanglim) {
@@ -57,7 +57,7 @@ public class NPCSpawningCommands implements Command {
                            + c.getPlayer().getMap().getFootholds().findBelow(pos).getId());
       } else if (splitted[0].equals("!ranknpc")) {
          try {
-            c.getPlayer().dropMessage(6, "กำลังรีโหลด NPC อันดับ Dream Breaker...");
+            c.getPlayer().dropMessage(6, "เธเธณเธฅเธฑเธเธฃเธตเนเธซเธฅเธ” NPC เธญเธฑเธเธ”เธฑเธ Dream Breaker...");
             List<String> rankers = new ArrayList<>();
 
             for (int i = 1; i <= 5; i++) {
@@ -69,32 +69,32 @@ public class NPCSpawningCommands implements Command {
                rankers.add(name);
             }
 
-            c.getPlayer().dropMessage(6, "เสร็จสิ้น!");
+            c.getPlayer().dropMessage(6, "เน€เธชเธฃเนเธเธชเธดเนเธ!");
          } catch (Exception var18) {
-            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการรีโหลด NPC อันดับ Dream Breaker: " + var18.getMessage());
+            c.getPlayer().dropMessage(6, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเธฃเธตเนเธซเธฅเธ” NPC เธญเธฑเธเธ”เธฑเธ Dream Breaker: " + var18.getMessage());
             var18.printStackTrace();
          }
       } else if (splitted[0].equals("!playernpc")) {
          try {
-            c.getPlayer().dropMessage(6, "กำลังสร้าง NPC ผู้เล่น...");
+            c.getPlayer().dropMessage(6, "เธเธณเธฅเธฑเธเธชเธฃเนเธฒเธ NPC เธเธนเนเน€เธฅเนเธ...");
             MapleCharacter chhr = c.getChannelServer().getPlayerStorage().getCharacterByName(splitted[1]);
             if (chhr == null) {
-               c.getPlayer().dropMessage(6, splitted[1] + " ไม่ได้ออนไลน์หรือไม่มีอยู่จริง");
+               c.getPlayer().dropMessage(6, splitted[1] + " เนเธกเนเนเธ”เนเธญเธญเธเนเธฅเธเนเธซเธฃเธทเธญเนเธกเนเธกเธตเธญเธขเธนเนเธเธฃเธดเธ");
             } else {
                PlayerNPC npc = new PlayerNPC(chhr, Integer.parseInt(splitted[2]), c.getPlayer().getMap(),
                      c.getPlayer());
                npc.addToServer();
-               c.getPlayer().dropMessage(6, "เสร็จสิ้น!");
+               c.getPlayer().dropMessage(6, "เน€เธชเธฃเนเธเธชเธดเนเธ!");
             }
          } catch (Exception var12) {
-            c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดในการสร้าง NPC ผู้เล่น: " + var12.getMessage());
+            c.getPlayer().dropMessage(6, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเธชเธฃเนเธฒเธ NPC เธเธนเนเน€เธฅเนเธ: " + var12.getMessage());
             var12.printStackTrace();
          }
       } else if (splitted[0].equals("!pnpc")) {
          int npcId = Integer.parseInt(splitted[1]);
          MapleNPC npc = MapleLifeFactory.getNPC(npcId);
          if (npc == null || npc.getName().equals("MISSINGNO")) {
-            c.getPlayer().dropMessage(6, "ไม่พบ NPC ในข้อมูล WZ");
+            c.getPlayer().dropMessage(6, "เนเธกเนเธเธ NPC เนเธเธเนเธญเธกเธนเธฅ WZ");
             return;
          }
 
@@ -153,14 +153,14 @@ public class NPCSpawningCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!shop", "", "เปิดร้านค้าสำหรับ GM", 5),
-            new CommandDefinition("!npc", "<npc id>", "เรียก NPC ออกมาที่ตำแหน่งของคุณ", 5),
-            new CommandDefinition("!clearnpc", "", "ลบ NPC ทั้งหมดออกจากแผนที่", 5),
-            new CommandDefinition("!playernpc", "<player name> <script id>", "สร้าง NPC เลียนแบบผู้เล่น", 5),
-            new CommandDefinition("!ranknpc", "", "รีโหลด NPC อันดับ Dream Breaker", 5),
-            new CommandDefinition("!pnpc", "<npc id>", "เรียก NPC ถาวรและบันทึกลงฐานข้อมูล", 5),
-            new CommandDefinition("!pmob", "<mob id>", "เรียกมอนสเตอร์ถาวรและบันทึกลงฐานข้อมูล", 5),
-            new CommandDefinition("!pos", "", "แสดงข้อมูลพิกัดปัจจุบันของคุณ", 2)
+            new CommandDefinition("!shop", "", "เน€เธเธดเธ”เธฃเนเธฒเธเธเนเธฒเธชเธณเธซเธฃเธฑเธ GM", 5),
+            new CommandDefinition("!npc", "<npc id>", "เน€เธฃเธตเธขเธ NPC เธญเธญเธเธกเธฒเธ—เธตเนเธ•เธณเนเธซเธเนเธเธเธญเธเธเธธเธ“", 5),
+            new CommandDefinition("!clearnpc", "", "เธฅเธ NPC เธ—เธฑเนเธเธซเธกเธ”เธญเธญเธเธเธฒเธเนเธเธเธ—เธตเน", 5),
+            new CommandDefinition("!playernpc", "<player name> <script id>", "เธชเธฃเนเธฒเธ NPC เน€เธฅเธตเธขเธเนเธเธเธเธนเนเน€เธฅเนเธ", 5),
+            new CommandDefinition("!ranknpc", "", "เธฃเธตเนเธซเธฅเธ” NPC เธญเธฑเธเธ”เธฑเธ Dream Breaker", 5),
+            new CommandDefinition("!pnpc", "<npc id>", "เน€เธฃเธตเธขเธ NPC เธ–เธฒเธงเธฃเนเธฅเธฐเธเธฑเธเธ—เธถเธเธฅเธเธเธฒเธเธเนเธญเธกเธนเธฅ", 5),
+            new CommandDefinition("!pmob", "<mob id>", "เน€เธฃเธตเธขเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเธ–เธฒเธงเธฃเนเธฅเธฐเธเธฑเธเธ—เธถเธเธฅเธเธเธฒเธเธเนเธญเธกเธนเธฅ", 5),
+            new CommandDefinition("!pos", "", "เนเธชเธ”เธเธเนเธญเธกเธนเธฅเธเธดเธเธฑเธ”เธเธฑเธเธเธธเธเธฑเธเธเธญเธเธเธธเธ“", 2)
       };
    }
 }

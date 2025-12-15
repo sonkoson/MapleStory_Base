@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import network.encode.PacketEncoder;
 import objects.item.Equip;

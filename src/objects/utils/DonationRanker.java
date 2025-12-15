@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import database.DBConnection;
 import database.DBEventManager;
@@ -66,7 +66,7 @@ public class DonationRanker {
             } catch (SQLException var12) {
             }
 
-            System.out.println(ai.get() + "위, " + a.getKey() + "(" + accID + ") : " + a.getValue() + " 대표 캐릭터 : " + name);
+            System.out.println(ai.get() + "์, " + a.getKey() + "(" + accID + ") : " + a.getValue() + " ๋€ํ‘ ์บ๋ฆญํฐ : " + name);
             al.set(al.get() + a.getValue().intValue());
             ai.set(ai.get() + 1);
          });

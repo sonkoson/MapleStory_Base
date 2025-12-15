@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import constants.GameConstants;
 import java.awt.Point;

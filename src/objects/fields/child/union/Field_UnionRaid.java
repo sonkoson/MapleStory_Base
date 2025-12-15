@@ -1,4 +1,4 @@
-package objects.fields.child.union;
+﻿package objects.fields.child.union;
 
 import java.awt.Point;
 import objects.fields.Field;

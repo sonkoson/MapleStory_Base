@@ -1,4 +1,4 @@
-package objects.fields.child.karing.TempPacket;
+﻿package objects.fields.child.karing.TempPacket;
 
 import network.encode.PacketEncoder;
 import network.models.PacketHelper;

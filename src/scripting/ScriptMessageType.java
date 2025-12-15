@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 public enum ScriptMessageType {
    Say(0),

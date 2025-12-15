@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import constants.GameConstants;
 import java.io.File;
@@ -524,11 +524,11 @@ public class CalcDamageUtil {
                h = test.getChildByPath("h").getData().toString();
             }
 
-            if (h == null && desc != null && desc.indexOf("마력") != -1 && test.getChildByPath("h1") != null) {
+            if (h == null && desc != null && desc.indexOf("๋ง๋ ฅ") != -1 && test.getChildByPath("h1") != null) {
                h = test.getChildByPath("h1").getData().toString();
             }
 
-            if (h != null && h.indexOf("공격력") != -1) {
+            if (h != null && h.indexOf("๊ณต๊ฒฉ๋ ฅ") != -1) {
                switch (skillid) {
                   case 9001003:
                   case 51111008:
@@ -559,23 +559,23 @@ public class CalcDamageUtil {
                   default:
                      if (SkillFactory.getSkill(skillid) != null) {
                         SecondaryStatEffect skeff = SkillFactory.getSkill(skillid).getEffect(SkillFactory.getSkill(skillid).getMaxLevel());
-                        if ((h.indexOf("공격력 #padX%") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("공격력 #padX") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("공격력 #x%") == -1 || skeff.getX() == 0)
-                           && (h.indexOf("공격력 #x") == -1 || skeff.getX() == 0)) {
-                           if (name != null && name.getData().toString().equals("영웅의 메아리")) {
+                        if ((h.indexOf("๊ณต๊ฒฉ๋ ฅ #padX%") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๊ณต๊ฒฉ๋ ฅ #padX") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๊ณต๊ฒฉ๋ ฅ #x%") == -1 || skeff.getX() == 0)
+                           && (h.indexOf("๊ณต๊ฒฉ๋ ฅ #x") == -1 || skeff.getX() == 0)) {
+                           if (name != null && name.getData().toString().equals("์์…์ ๋ฉ”์•๋ฆฌ")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Echo of Hero : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("익스클루시브 스펠")) {
+                           } else if (name != null && name.getData().toString().equals("์ต์คํด๋ฃจ์๋ธ ์คํ ")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Exclusive Spell : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("인탠시브 타임")) {
+                           } else if (name != null && name.getData().toString().equals("์ธํ ์๋ธ ํ€์")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Intensive Time : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블레스")) {
+                           } else if (name != null && name.getData().toString().equals("์“ธ๋งํ• ์–ด๋“๋ฐด์ค๋“ ๋ธ”๋ ์ค")) {
                               if (skeff.getX() == 0 || skeff.getZ() == 0 || skeff.getIndieMHp() == 0) {
                                  System.out.println("[Error] Decent Advanced Bless : " + skillid + " / " + h);
                               }
@@ -587,7 +587,7 @@ public class CalcDamageUtil {
                         }
                      }
                }
-            } else if (h != null && h.indexOf("마력") != -1) {
+            } else if (h != null && h.indexOf("๋ง๋ ฅ") != -1) {
                switch (skillid) {
                   case 9001003:
                   case 51111008:
@@ -626,55 +626,55 @@ public class CalcDamageUtil {
                   default:
                      if (SkillFactory.getSkill(skillid) != null) {
                         SecondaryStatEffect skeff = SkillFactory.getSkill(skillid).getEffect(SkillFactory.getSkill(skillid).getMaxLevel());
-                        if ((h.indexOf("마력 #madX%") == -1 || skeff.getMagicX() == 0)
-                           && (h.indexOf("마력 #madX") == -1 || skeff.getMagicX() == 0)
-                           && (h.indexOf("마력 #padX%") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("마력 #padX") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("마력#c #padX%") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("마력#c #padX") == -1 || skeff.getAttackX() == 0)
-                           && (h.indexOf("마력 #mad%") == -1 || skeff.getMatk() == 0)
-                           && (h.indexOf("마력 #mad") == -1 || skeff.getMatk() == 0)
-                           && (h.indexOf("마력#indieMad%") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력#indieMad") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력 #indiePad%") == -1 || skeff.getIndiePad() == 0)
-                           && (h.indexOf("마력 #indiePad") == -1 || skeff.getIndiePad() == 0)
-                           && (h.indexOf("마력 #indiePAD%") == -1 || skeff.getIndiePad() == 0)
-                           && (h.indexOf("마력 #indiePAD") == -1 || skeff.getIndiePad() == 0)
-                           && (h.indexOf("마력 #indieMad%") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력 #indieMad") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력 #c#indieMad#%") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력 #c#indieMad#") == -1 || skeff.getIndieMad() == 0)
-                           && (h.indexOf("마력 #damage%") == -1 || skeff.getDamage() == 0)
-                           && (h.indexOf("마력 #x%") == -1 || skeff.getX() == 0)
-                           && (h.indexOf("마력 #x") == -1 || skeff.getX() == 0)
-                           && (h.indexOf("마력 #y%") == -1 || skeff.getY() == 0)
-                           && (h.indexOf("마력 #y") == -1 || skeff.getY() == 0)
-                           && (h.indexOf("마력+#y%") == -1 || skeff.getY() == 0)
-                           && (h.indexOf("마력+#y") == -1 || skeff.getY() == 0)
-                           && (h.indexOf("마력 #v%") == -1 || skeff.getV() == 0)
-                           && (h.indexOf("마력 #v") == -1 || skeff.getV() == 0)
-                           && (h.indexOf("마력 #w%") == -1 || skeff.getW() == 0)
-                           && (h.indexOf("마력 #w") == -1 || skeff.getW() == 0)
-                           && (h.indexOf("마력 #epad%") == -1 || skeff.getEnhancedWatk() == 0)
-                           && (h.indexOf("마력 #epad") == -1 || skeff.getEnhancedWatk() == 0)
-                           && (h.indexOf("마력 #emad%") == -1 || skeff.getEnhancedMatk() == 0)
-                           && (h.indexOf("마력 #emad") == -1 || skeff.getEnhancedMatk() == 0)
-                           && (h.indexOf("마력 #indiePadR%") == -1 || skeff.getIndiePadR() == 0)
-                           && (h.indexOf("마력 #indieMadR%") == -1 || skeff.getIndieMadR() == 0)
-                           && (h.indexOf("마력이 #indieMadR%") == -1 || skeff.getIndieMadR() == 0)) {
-                           if (name != null && name.getData().toString().equals("영웅의 메아리")) {
+                        if ((h.indexOf("๋ง๋ ฅ #madX%") == -1 || skeff.getMagicX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #madX") == -1 || skeff.getMagicX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #padX%") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #padX") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ#c #padX%") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ#c #padX") == -1 || skeff.getAttackX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #mad%") == -1 || skeff.getMatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #mad") == -1 || skeff.getMatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ#indieMad%") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ#indieMad") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indiePad%") == -1 || skeff.getIndiePad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indiePad") == -1 || skeff.getIndiePad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indiePAD%") == -1 || skeff.getIndiePad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indiePAD") == -1 || skeff.getIndiePad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indieMad%") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indieMad") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #c#indieMad#%") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #c#indieMad#") == -1 || skeff.getIndieMad() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #damage%") == -1 || skeff.getDamage() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #x%") == -1 || skeff.getX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #x") == -1 || skeff.getX() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #y%") == -1 || skeff.getY() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #y") == -1 || skeff.getY() == 0)
+                           && (h.indexOf("๋ง๋ ฅ+#y%") == -1 || skeff.getY() == 0)
+                           && (h.indexOf("๋ง๋ ฅ+#y") == -1 || skeff.getY() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #v%") == -1 || skeff.getV() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #v") == -1 || skeff.getV() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #w%") == -1 || skeff.getW() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #w") == -1 || skeff.getW() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #epad%") == -1 || skeff.getEnhancedWatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #epad") == -1 || skeff.getEnhancedWatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #emad%") == -1 || skeff.getEnhancedMatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #emad") == -1 || skeff.getEnhancedMatk() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indiePadR%") == -1 || skeff.getIndiePadR() == 0)
+                           && (h.indexOf("๋ง๋ ฅ #indieMadR%") == -1 || skeff.getIndieMadR() == 0)
+                           && (h.indexOf("๋ง๋ ฅ์ด #indieMadR%") == -1 || skeff.getIndieMadR() == 0)) {
+                           if (name != null && name.getData().toString().equals("์์…์ ๋ฉ”์•๋ฆฌ")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Echo of Hero : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("익스클루시브 스펠")) {
+                           } else if (name != null && name.getData().toString().equals("์ต์คํด๋ฃจ์๋ธ ์คํ ")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Exclusive Spell : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("인탠시브 타임")) {
+                           } else if (name != null && name.getData().toString().equals("์ธํ ์๋ธ ํ€์")) {
                               if (skeff.getX() == 0) {
                                  System.out.println("[Error] Intensive Time : " + skillid + " / " + h);
                               }
-                           } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블레스")) {
+                           } else if (name != null && name.getData().toString().equals("์“ธ๋งํ• ์–ด๋“๋ฐด์ค๋“ ๋ธ”๋ ์ค")) {
                               if (skeff.getX() == 0 || skeff.getZ() == 0 || skeff.getIndieMHp() == 0) {
                                  System.out.println("[Error] Decent Advanced Bless : " + skillid + " / " + h);
                               }

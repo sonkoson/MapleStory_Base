@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -11,7 +11,7 @@ import objects.utils.Pair;
 public class StarForceHyperUpgrade {
    static int[] mesoEnchants = new int[]{5, 10, 15, 20, 25, 30, 36, 45, 55, 70, 90, 110, 135, 165, 195, 225, 275, 375, 525, 775};
    static List<Pair<String, Integer>> mesoEnchantsH = List.of(
-      new Pair<>("△", 975), new Pair<>("★", 1175), new Pair<>("★△", 1425), new Pair<>("★★", 1675), new Pair<>("★★△", 1975), new Pair<>("★★★", 2275)
+      new Pair<>("โ–ณ", 975), new Pair<>("โ…", 1175), new Pair<>("โ…โ–ณ", 1425), new Pair<>("โ…โ…", 1675), new Pair<>("โ…โ…โ–ณ", 1975), new Pair<>("โ…โ…โ…", 2275)
    );
 
    public static short getHUStat(Equip equip, EquipStat f, short value) {
@@ -405,7 +405,7 @@ public class StarForceHyperUpgrade {
                                  if (DBConfig.isGanglim) {
                                     String owner = equip.getOwner();
                                     if (owner != null && !owner.isEmpty()) {
-                                       if (!owner.contains("강")) {
+                                       if (!owner.contains("๊ฐ•")) {
                                           for (Pair<String, Integer> pair : mesoEnchantsH) {
                                              if (owner.equals(pair.left)) {
                                                 t = pair.right;
@@ -413,7 +413,7 @@ public class StarForceHyperUpgrade {
                                              }
                                           }
                                        } else {
-                                          int enchant = Integer.parseInt(owner.split("강")[0]);
+                                          int enchant = Integer.parseInt(owner.split("๊ฐ•")[0]);
                                           t = mesoEnchants[enchant - 1];
                                        }
                                     }

@@ -1,4 +1,4 @@
-package objects.shop;
+﻿package objects.shop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +47,10 @@ public class MaplePlayerShop extends AbstractPlayerStore {
                   }
                }
             } else {
-               c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
+               c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
             }
          } else {
-            c.getPlayer().dropMessage(1, "Meso ไม่เพียงพอ");
+            c.getPlayer().dropMessage(1, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญ");
          }
 
          this.getMCOwner().getClient().getSession().writeAndFlush(PlayerShopPacket.shopItemUpdate(this));

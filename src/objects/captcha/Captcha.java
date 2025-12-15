@@ -1,4 +1,4 @@
-package objects.captcha;
+﻿package objects.captcha;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import objects.fields.gameobject.lifes.MapleMonster;
 import objects.users.MapleCharacter;

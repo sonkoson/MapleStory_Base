@@ -1,4 +1,4 @@
-package objects.users.achievement;
+﻿package objects.users.achievement;
 
 public enum AchievementGrade {
    none(0),

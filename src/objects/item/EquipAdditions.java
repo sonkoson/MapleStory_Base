@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import java.util.Arrays;
 import java.util.List;

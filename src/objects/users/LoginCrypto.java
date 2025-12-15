@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import java.io.UnsupportedEncodingException;
 import java.security.KeyFactory;

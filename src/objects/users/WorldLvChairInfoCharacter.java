@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import network.decode.PacketDecoder;
 import network.encode.PacketEncoder;

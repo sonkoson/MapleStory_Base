@@ -1,4 +1,4 @@
-package objects.fields.child.slime;
+﻿package objects.fields.child.slime;
 
 import constants.ServerConstants;
 import database.DBConfig;
@@ -112,7 +112,7 @@ public class Field_GuardianAngelSlime extends Field {
          this.boss = mob;
          this.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(mob.getId() + 2), mob.getTruePosition());
          this.init(mob.getId() == 8880700);
-         this.broadcastMessage(CField.addPopupSay(0, 3000, "왕관의 수호로 제대로 된 피해를 입힐 수 없겠군. 마스코트 슬라임에게 도움을 받아 마그마 슬라임을 날려버리자.", ""));
+         this.broadcastMessage(CField.addPopupSay(0, 3000, "์•๊ด€์ ์ํธ๋ก ์ ๋€๋ก ๋ ํ”ผํ•ด๋ฅผ ์…ํ ์ ์—๊ฒ ๊ตฐ. ๋ง์ค์ฝ”ํธ ์ฌ๋ผ์์—๊ฒ ๋์€์ ๋ฐ์• ๋ง๊ทธ๋ง ์ฌ๋ผ์์ ๋ ๋ ค๋ฒ๋ฆฌ์.", ""));
       }
    }
 
@@ -174,16 +174,16 @@ public class Field_GuardianAngelSlime extends Field {
    }
 
    private void writeLog(MapleCharacter p, boolean isChaos) {
-      String bossName = isChaos ? "카오스 가디언 엔젤 슬라임" : "노말 가디언 엔젤 슬라임";
+      String bossName = isChaos ? "์นด์ค์ค ๊ฐ€๋””์–ธ ์—”์ ค ์ฌ๋ผ์" : "๋…ธ๋ง ๊ฐ€๋””์–ธ ์—”์ ค ์ฌ๋ผ์";
       String list = "";
       List<String> names = new ArrayList<>();
 
       for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
          names.add(mpc.getName());
          StringBuilder sb = new StringBuilder();
-         sb.append("보스 ");
+         sb.append("๋ณด์ค ");
          sb.append(bossName);
-         sb.append(" 격파");
+         sb.append(" ๊ฒฉํ");
          MapleCharacter player = this.getCharacterById(mpc.getId());
          if (player != null) {
             LoggingManager.putLog(new BossLog(player, BossLogType.ClearLog.getType(), sb));
@@ -195,15 +195,15 @@ public class Field_GuardianAngelSlime extends Field {
          Center.Broadcast.broadcastMessageCheckQuest(
             CField.chatMsg(
                DBConfig.isGanglim ? 8 : 22,
-               "[보스격파] [CH."
-                  + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+               "[๋ณด์ค๊ฒฉํ] [CH."
+                  + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                   + "] '"
                   + p.getParty().getLeader().getName()
-                  + "' 파티("
+                  + "' ํํฐ("
                   + list
-                  + ")가 ["
+                  + ")๊ฐ€ ["
                   + bossName
-                  + "] 을 격파하였습니다."
+                  + "] ์ ๊ฒฉํํ•์€์ต๋๋ค."
             ),
             "BossMessage"
          );
@@ -439,7 +439,7 @@ public class Field_GuardianAngelSlime extends Field {
       encode = new GuardianAngelSlime.InitCrystal(1, 7, 0);
       packet = this.encode(encode);
       this.broadcastMessage(packet);
-      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "สำเร็จแล้ว!! รีบขึ้นไปข้างบนภายใน 10 วินาทีก่อนที่พื้นที่ด้านล่างจะปิดลง!!"));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "เธชเธณเน€เธฃเนเธเนเธฅเนเธง!! เธฃเธตเธเธเธถเนเธเนเธเธเนเธฒเธเธเธเธ เธฒเธขเนเธ 10 เธงเธดเธเธฒเธ—เธตเธเนเธญเธเธ—เธตเนเธเธทเนเธเธ—เธตเนเธ”เนเธฒเธเธฅเนเธฒเธเธเธฐเธเธดเธ”เธฅเธ!!"));
       encode = new GuardianAngelSlime.InitGuardianWave(5);
       packet = this.encode(encode);
       this.broadcastMessage(packet);
@@ -497,7 +497,7 @@ public class Field_GuardianAngelSlime extends Field {
       this.broadcastMessage(MobPacket.blackMageSkillAction(this.boss.getObjectId(), 5, true));
       MobSkillInfo info = MobSkillFactory.getMobSkill(266, 3);
       info.setCasting(this.boss, 0);
-      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "Guardian Wave กำลังจะตกลงมา!! ติดตั้ง Crystal Droplet เพื่อควบคุมการไหลของคลื่น ฉันจะช่วยเธอเอง!"));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "Guardian Wave เธเธณเธฅเธฑเธเธเธฐเธ•เธเธฅเธเธกเธฒ!! เธ•เธดเธ”เธ•เธฑเนเธ Crystal Droplet เน€เธเธทเนเธญเธเธงเธเธเธธเธกเธเธฒเธฃเนเธซเธฅเธเธญเธเธเธฅเธทเนเธ เธเธฑเธเธเธฐเธเนเธงเธขเน€เธเธญเน€เธญเธ!"));
       this.broadcastMessage(this.encode(new GuardianAngelSlime.InitState(3)));
    }
 

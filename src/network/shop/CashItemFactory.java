@@ -1,4 +1,4 @@
-package network.shop;
+﻿package network.shop;
 
 import database.DBConnection;
 import java.io.File;

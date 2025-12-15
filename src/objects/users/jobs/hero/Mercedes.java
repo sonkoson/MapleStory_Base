@@ -1,4 +1,4 @@
-package objects.users.jobs.hero;
+﻿package objects.users.jobs.hero;
 
 import java.awt.Point;
 import java.util.ArrayList;

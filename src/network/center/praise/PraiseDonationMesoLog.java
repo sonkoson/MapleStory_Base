@@ -1,4 +1,4 @@
-package network.center.praise;
+﻿package network.center.praise;
 
 public class PraiseDonationMesoLog {
    private String name = "";

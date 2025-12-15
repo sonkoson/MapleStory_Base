@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;

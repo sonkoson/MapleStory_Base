@@ -1,4 +1,4 @@
-package network.discordbot;
+﻿package network.discordbot;
 
 import database.DBConfig;
 import io.netty.bootstrap.ServerBootstrap;
@@ -51,9 +51,9 @@ public class BotServer {
             this.bootstrap.bind(3125).sync();
          }
 
-         this.df.log(Level.INFO, "디스코드 봇서버가 오픈 되었습니다.");
+         this.df.log(Level.INFO, "๋””์ค์ฝ”๋“ ๋ด์๋ฒ๊ฐ€ ์คํ” ๋์—์ต๋๋ค.");
       } catch (InterruptedException var4) {
-         this.df.log(Level.INFO, "디스코드 봇서버 오픈이 실패하였습니다.");
+         this.df.log(Level.INFO, "๋””์ค์ฝ”๋“ ๋ด์๋ฒ ์คํ”์ด ์คํจํ•์€์ต๋๋ค.");
       }
    }
 }

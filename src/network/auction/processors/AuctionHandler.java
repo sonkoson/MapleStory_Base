@@ -1,4 +1,4 @@
-package network.auction.processors;
+﻿package network.auction.processors;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -169,7 +169,7 @@ public class AuctionHandler {
                Item itemxxxxxxxx = c.getPlayer().getInventory(MapleInventoryType.getByType(inv)).getItem(slot);
                if (GameConstants.isEquip(itemxxxxxxxx.getItemId())
                      && (((Equip) itemxxxxxxxx).getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถลงขายได้");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธเธเธฒเธขเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -197,7 +197,7 @@ public class AuctionHandler {
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxx.getItemId())) {
-                  c.getPlayer().dropMessage(1, "ไอเทมนี้ลงขายไม่ได้");
+                  c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเธฅเธเธเธฒเธขเนเธกเนเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -246,7 +246,7 @@ public class AuctionHandler {
                if (itemxxxxxxxx.getQuantity() <= 0) {
                   c.getSession().writeAndFlush(
                         new Auction.RegisterItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0).encode());
-                  c.getPlayer().ban("ถูกแบนถาวรเนื่องจากการใช้โปรแกรมช่วยเล่นปั๊มไอเทม", true, true, true);
+                  c.getPlayer().ban("เธ–เธนเธเนเธเธเธ–เธฒเธงเธฃเน€เธเธทเนเธญเธเธเธฒเธเธเธฒเธฃเนเธเนเนเธเธฃเนเธเธฃเธกเธเนเธงเธขเน€เธฅเนเธเธเธฑเนเธกเนเธญเน€เธ—เธก", true, true, true);
                   return;
                }
 
@@ -296,14 +296,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถลงขายใหม่ได้");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธเธเธฒเธขเนเธซเธกเนเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "ไอเทมนี้ลงขายไม่ได้");
+                  c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเธฅเธเธเธฒเธขเนเธกเนเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -320,7 +320,7 @@ public class AuctionHandler {
                if (itemxxxxxxxxx.getItem().getQuantity() <= 0) {
                   c.getSession().writeAndFlush(
                         new Auction.RegisterItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0).encode());
-                  c.getPlayer().ban("ถูกแบนถาวรเนื่องจากการใช้โปรแกรมช่วยเล่นปั๊มไอเทม", true, true, true);
+                  c.getPlayer().ban("เธ–เธนเธเนเธเธเธ–เธฒเธงเธฃเน€เธเธทเนเธญเธเธเธฒเธเธเธฒเธฃเนเธเนเนเธเธฃเนเธเธฃเธกเธเนเธงเธขเน€เธฅเนเธเธเธฑเนเธกเนเธญเน€เธ—เธก", true, true, true);
                   return;
                }
 
@@ -491,14 +491,14 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถซื้อได้");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
                }
 
                if (GameConstants.isForbiddenListAuctionItem(itemxxxxxxxxxxx.getItem().getItemId())) {
-                  c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ได้");
+                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -667,7 +667,7 @@ public class AuctionHandler {
                if (GameConstants.isEquip(itemxxxxxxxxxxxx.getItem().getItemId())
                      && (((Equip) itemxxxxxxxxxxxx.getItem()).getSpecialAttribute()
                            & EquipSpecialAttribute.VESTIGE.getType()) > 0) {
-                  c.getPlayer().dropMessage(1, "Trace of Equipment ไม่สามารถซื้อได้");
+                  c.getPlayer().dropMessage(1, "Trace of Equipment เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธ”เน");
                   c.getSession()
                         .writeAndFlush(new Auction.BuyItemDone(AuctionMessage.UNKNOWN_ERROR.getValue(), 0L).encode());
                   return;
@@ -886,7 +886,7 @@ public class AuctionHandler {
                         || itemxxxxxxxxxxxxxx.getType(isOwnerx, true) == 15) {
                      StringBuilder sbxxxx = new StringBuilder();
                      sbxxxx.append(
-                           "이미 수령한 대금을 다시 수령 시도 : 아이템 (" + itemIDxxx + ") [이름 : " + c.getPlayer().getName() + "]");
+                           "์ด๋ฏธ ์๋ นํ• ๋€๊ธ์ ๋ค์ ์๋ น ์๋ : ์•์ดํ… (" + itemIDxxx + ") [์ด๋ฆ : " + c.getPlayer().getName() + "]");
                      sbxxxx.append(c.getAccountName());
                      sbxxxx.append(", Item : ");
                      sbxxxx.append(itemxxxxxxxxxxxxxx.getItem().getItemId());
@@ -1022,13 +1022,13 @@ public class AuctionHandler {
                }
 
                itemxxxxxxxxxxxxx.getItem()
-                     .setGMLog(CurrentTime.getAllCurrentTime() + " ไอเทมที่ได้รับจาก Auction House");
+                     .setGMLog(CurrentTime.getAllCurrentTime() + " เนเธญเน€เธ—เธกเธ—เธตเนเนเธ”เนเธฃเธฑเธเธเธฒเธ Auction House");
                int typexxx = 0;
                if (statusx == 2) {
                   if (itemxxxxxxxxxxxxx.getType(isOwner, true) == 14) {
                      StringBuilder sbxxx = new StringBuilder();
                      sbxxx.append(
-                           "이미 수령한 아이템을 다시 수령 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+                           "์ด๋ฏธ ์๋ นํ• ์•์ดํ…์ ๋ค์ ์๋ น ์๋ : ์•์ดํ… (" + itemIDxx + ") [์ด๋ฆ : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
                      sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
@@ -1061,7 +1061,7 @@ public class AuctionHandler {
                   if (itemxxxxxxxxxxxxx.getType(isOwner, true) == 15) {
                      StringBuilder sbxxx = new StringBuilder();
                      sbxxx.append(
-                           "이미 수령한 아이템을 다시 수령 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+                           "์ด๋ฏธ ์๋ นํ• ์•์ดํ…์ ๋ค์ ์๋ น ์๋ : ์•์ดํ… (" + itemIDxx + ") [์ด๋ฆ : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
                      sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
@@ -1100,7 +1100,7 @@ public class AuctionHandler {
                   if (itemxxxxxxxxxxxxx.getType(isOwner, true) == 9) {
                      StringBuilder sbxxx = new StringBuilder();
                      sbxxx.append(
-                           "이미 반환한 아이템을 다시 반환 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+                           "์ด๋ฏธ ๋ฐํํ• ์•์ดํ…์ ๋ค์ ๋ฐํ ์๋ : ์•์ดํ… (" + itemIDxx + ") [์ด๋ฆ : " + c.getPlayer().getName() + "]");
                      sbxxx.append(c.getAccountName());
                      sbxxx.append(", Item : ");
                      sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
@@ -1144,18 +1144,18 @@ public class AuctionHandler {
                }
 
                StringBuilder sbxxx = new StringBuilder();
-               sbxxx.append("경매장 아이템 수령 (캐릭터 : ");
+               sbxxx.append("๊ฒฝ๋งค์ฅ ์•์ดํ… ์๋ น (์บ๋ฆญํฐ : ");
                sbxxx.append(c.getPlayer().getName());
-               sbxxx.append(", 계정 : ");
+               sbxxx.append(", ๊ณ์ • : ");
                sbxxx.append(c.getAccountName());
                sbxxx.append("(");
                sbxxx.append(c.getAccID());
                sbxxx.append(")");
-               sbxxx.append(", 아이템 : ");
+               sbxxx.append(", ์•์ดํ… : ");
                sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
                sbxxx.append(" ");
                sbxxx.append(itemxxxxxxxxxxxxx.getItem().getQuantity());
-               sbxxx.append("개, 판매자 : ");
+               sbxxx.append("๊ฐ, ํ๋งค์ : ");
                sbxxx.append(itemxxxxxxxxxxxxx.getOwnerName());
                sbxxx.append(")");
                long serialNumberxxx = 0L;
@@ -1164,21 +1164,21 @@ public class AuctionHandler {
                }
 
                sbxxx = new StringBuilder();
-               sbxxx.append("경매장 아이템 수령 (계정 : ");
+               sbxxx.append("๊ฒฝ๋งค์ฅ ์•์ดํ… ์๋ น (๊ณ์ • : ");
                sbxxx.append(c.getAccountName());
-               sbxxx.append(", 캐릭터 : ");
+               sbxxx.append(", ์บ๋ฆญํฐ : ");
                sbxxx.append(c.getPlayer().getName());
-               sbxxx.append(", 아이템 : ");
+               sbxxx.append(", ์•์ดํ… : ");
                sbxxx.append(itemxxxxxxxxxxxxx.getItem().getItemId());
                sbxxx.append(" ");
                sbxxx.append(itemxxxxxxxxxxxxx.getItem().getQuantity());
-               sbxxx.append("개");
+               sbxxx.append("๊ฐ");
                if (itemxxxxxxxxxxxxx.getItem() instanceof Equip) {
-                  sbxxx.append(" (정보 : ");
+                  sbxxx.append(" (์ •๋ณด : ");
                   sbxxx.append(((Equip) itemxxxxxxxxxxxxx.getItem()).toString());
                }
 
-               sbxxx.append("), 판매자 : ");
+               sbxxx.append("), ํ๋งค์ : ");
                sbxxx.append(itemxxxxxxxxxxxxx.getOwnerName());
                sbxxx.append(")");
                LoggingManager.putLog(

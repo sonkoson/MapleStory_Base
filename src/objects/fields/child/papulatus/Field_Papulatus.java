@@ -1,4 +1,4 @@
-package objects.fields.child.papulatus;
+﻿package objects.fields.child.papulatus;
 
 import constants.QuestExConstants;
 import database.DBConfig;
@@ -222,14 +222,14 @@ public class Field_Papulatus extends Field {
                                  player.updateOneInfo(questId, "mobDead", "1");
                                  String difficulty = "";
                                  if (mob.getId() == 8500002) {
-                                    difficulty = "이지";
+                                    difficulty = "์ด์ง€";
                                  } else if (mob.getId() == 8500012) {
-                                    difficulty = "노말";
+                                    difficulty = "๋…ธ๋ง";
                                  } else if (mob.getId() == 8500022) {
-                                    difficulty = "카오스";
+                                    difficulty = "์นด์ค์ค";
                                  }
 
-                                 StringBuilder sb = new StringBuilder("보스 " + difficulty + " 파풀라투스 격파");
+                                 StringBuilder sb = new StringBuilder("๋ณด์ค " + difficulty + " ํํ’€๋ผํฌ์ค ๊ฒฉํ");
                                  LoggingManager.putLog(new BossLog(player, BossLogType.ClearLog.getType(), sb));
                                  find = true;
                                  break;
@@ -636,7 +636,7 @@ public class Field_Papulatus extends Field {
             .forEach(part -> totalPercent.set(totalPercent.get() + BossPapulatus.HealMissionData.hp.get(part.type)));
          MapleMonster boss = this.getBoss();
          if (boss != null) {
-            this.broadcastMessage(CField.startMapEffect("파풀라투스가 차원 이동을 통해서 HP를 회복하려고 시도합니다.", 5120177, true, 4));
+            this.broadcastMessage(CField.startMapEffect("ํํ’€๋ผํฌ์ค๊ฐ€ ์ฐจ์ ์ด๋์ ํตํ•ด์ HP๋ฅผ ํ๋ณตํ•๋ ค๊ณ  ์๋ํ•ฉ๋๋ค.", 5120177, true, 4));
             long hp = boss.getHp();
             long heal = boss.getMobMaxHp() * (Math.min(100, totalPercent.get()) / 100);
             long after = Math.min(boss.getMobMaxHp(), heal + hp);
@@ -693,7 +693,7 @@ public class Field_Papulatus extends Field {
          this.sendPapulatusCrack_Start();
          this.setMobGen(true, 8500003);
          this.setMobGen(true, 8500004);
-         this.broadcastMessage(CField.startMapEffect("파풀라투스가 시간 이동을 할 수 없도록 차원의 균열을 봉인해야 합니다.", 5120177, true, 4));
+         this.broadcastMessage(CField.startMapEffect("ํํ’€๋ผํฌ์ค๊ฐ€ ์๊ฐ ์ด๋์ ํ•  ์ ์—๋๋ก ์ฐจ์์ ๊ท ์—ด์ ๋ด์ธํ•ด์•ผ ํ•ฉ๋๋ค.", 5120177, true, 4));
          this.setCrackReactorState(0);
          this.setPortalReactorState(1);
       }
@@ -710,7 +710,7 @@ public class Field_Papulatus extends Field {
             packet.write(2);
             this.hpWheel.encode(packet);
             this.broadcastMessage(packet.getPacket());
-            this.broadcastMessage(CField.startMapEffect("차원의 균열을 봉인했습니다.", 5120177, true, 4));
+            this.broadcastMessage(CField.startMapEffect("์ฐจ์์ ๊ท ์—ด์ ๋ด์ธํ–์ต๋๋ค.", 5120177, true, 4));
             this.setReactorState("crack" + idx, (byte)1);
          }
       }
@@ -732,8 +732,8 @@ public class Field_Papulatus extends Field {
          packet.writeInt(hour);
          packet.writeInt(minute);
          this.broadcastMessage(packet.getPacket());
-         this.broadcastMessage(CWvsContext.serverNotice(5, "파풀라투스의 시계가 움직입니다."));
-         this.broadcastMessage(CField.startMapEffect("파풀라투스의 시계가 움직입니다. 차원의 포탈을 통해 시간을 봉인하세요.", 5120177, true, 4));
+         this.broadcastMessage(CWvsContext.serverNotice(5, "ํํ’€๋ผํฌ์ค์ ์๊ณ๊ฐ€ ์€์ง์…๋๋ค."));
+         this.broadcastMessage(CField.startMapEffect("ํํ’€๋ผํฌ์ค์ ์๊ณ๊ฐ€ ์€์ง์…๋๋ค. ์ฐจ์์ ํฌํ์ ํตํ•ด ์๊ฐ์ ๋ด์ธํ•์ธ์”.", 5120177, true, 4));
       }
    }
 

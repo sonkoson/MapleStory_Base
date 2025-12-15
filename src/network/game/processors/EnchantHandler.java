@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.DailyEventType;
 import constants.GameConstants;
@@ -297,8 +297,8 @@ public class EnchantHandler {
                            int v = num5 / 101;
                            int destroy = v % 101;
                            int success2 = v / 101;
-                           player.dropMessage(5, "โอกาส Star Force ถูกแก้ไขโดยคำสั่ง : สำเร็จ=" + success2 + ", ทำลาย="
-                                 + destroy + ", ลดระดับ=" + downGrade);
+                           player.dropMessage(5, "เนเธญเธเธฒเธช Star Force เธ–เธนเธเนเธเนเนเธเนเธ”เธขเธเธณเธชเธฑเนเธ : เธชเธณเน€เธฃเนเธ=" + success2 + ", เธ—เธณเธฅเธฒเธข="
+                                 + destroy + ", เธฅเธ”เธฃเธฐเธ”เธฑเธ=" + downGrade);
                            successRatex = success2;
                            curseRatex = destroy;
                            downGradablex = downGrade <= 0 ? 0 : 1;
@@ -496,7 +496,7 @@ public class EnchantHandler {
                   }
                }
             } else {
-               player.dropMessage(1, "กรุณาลองใหม่อีกครั้งหลังจากทำช่องว่างในช่องเก็บอุปกรณ์อย่างน้อย 1 ช่อง");
+               player.dropMessage(1, "เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเธซเธฅเธฑเธเธเธฒเธเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธเธเนเธญเธเน€เธเนเธเธญเธธเธเธเธฃเธ“เนเธญเธขเนเธฒเธเธเนเธญเธข 1 เธเนเธญเธ");
             }
             break;
          case DISPLAY_HYPER_UPGRADE:

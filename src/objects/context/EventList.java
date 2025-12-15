@@ -1,4 +1,4 @@
-package objects.context;
+﻿package objects.context;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class EventList {
          cEventList.put(eventKey, eL);
       }
 
-      System.out.println("[EventList] " + cEventList.size() + "개 캐싱완료");
+      System.out.println("[EventList] " + cEventList.size() + "๊ฐ ์บ์ฑ์๋ฃ");
    }
 
    public EventList(String eventName, String eventDesc, int eventEndHour, int eventStartTime, int eventEndTime, List<Integer> items) {

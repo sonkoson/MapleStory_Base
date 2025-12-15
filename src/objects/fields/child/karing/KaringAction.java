@@ -1,4 +1,4 @@
-package objects.fields.child.karing;
+﻿package objects.fields.child.karing;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

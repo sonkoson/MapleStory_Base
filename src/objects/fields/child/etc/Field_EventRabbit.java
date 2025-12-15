@@ -1,4 +1,4 @@
-package objects.fields.child.etc;
+﻿package objects.fields.child.etc;
 
 import constants.ServerConstants;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class Field_EventRabbit extends Field {
 
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && playerx.getMapId() == this.getId()) {
-               playerx.dropMessage(5, "กำจัด Moon Bunny ไม่ทันเวลา ไม่ได้รับรางวัล");
+               playerx.dropMessage(5, "เธเธณเธเธฑเธ” Moon Bunny เนเธกเนเธ—เธฑเธเน€เธงเธฅเธฒ เนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ");
                playerx.warp(ServerConstants.TownMap);
             }
          }
@@ -75,10 +75,10 @@ public class Field_EventRabbit extends Field {
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && !this.rewardGetUsers.contains(playerx.getId()) && playerx.getMapId() == this.getId()) {
                int quantity = 40;
-               playerx.dropMessage(5, "กำจัด Moon Bunny และได้รับ Persimmon Coin " + quantity + "ชิ้นที่ได้รับ");
-               playerx.gainItem(4310221, quantity, false, 0L, "추석 이벤트로 획득");
+               playerx.dropMessage(5, "เธเธณเธเธฑเธ” Moon Bunny เนเธฅเธฐเนเธ”เนเธฃเธฑเธ Persimmon Coin " + quantity + "เธเธดเนเธเธ—เธตเนเนเธ”เนเธฃเธฑเธ");
+               playerx.gainItem(4310221, quantity, false, 0L, "์ถ”์ ์ด๋ฒคํธ๋ก ํ๋“");
                playerx.warp(ServerConstants.TownMap);
-               playerx.send(CField.addPopupSay(9062000, 5000, "월묘를 처치하여 #b단감 코인 " + quantity + "개#k를 획득했습니다.", ""));
+               playerx.send(CField.addPopupSay(9062000, 5000, "์”๋ฌ๋ฅผ ์ฒ์นํ•์—ฌ #b๋จ๊ฐ ์ฝ”์ธ " + quantity + "๊ฐ#k๋ฅผ ํ๋“ํ–์ต๋๋ค.", ""));
                this.rewardGetUsers.add(playerx.getId());
             }
          }

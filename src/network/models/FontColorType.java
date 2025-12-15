@@ -1,4 +1,4 @@
-package network.models;
+﻿package network.models;
 
 public enum FontColorType {
    White(0),

@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 public enum FieldLimitType {
    Jump(1),

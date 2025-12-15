@@ -1,4 +1,4 @@
-package objects.shop;
+﻿package objects.shop;
 
 import constants.GameConstants;
 import java.util.LinkedList;
@@ -28,7 +28,8 @@ public class HiredMerchant extends AbstractPlayerStore {
       this.schedule = Timer.EtcTimer.getInstance().schedule(new Runnable() {
          @Override
          public void run() {
-            if (HiredMerchant.this.getMCOwner() != null && HiredMerchant.this.getMCOwner().getPlayerShop() == HiredMerchant.this) {
+            if (HiredMerchant.this.getMCOwner() != null
+                  && HiredMerchant.this.getMCOwner().getPlayerShop() == HiredMerchant.this) {
                HiredMerchant.this.getMCOwner().setPlayerShop(null);
             }
 
@@ -66,12 +67,12 @@ public class HiredMerchant extends AbstractPlayerStore {
       Item newItem = shopItem.copy();
       short perbundle = newItem.getQuantity();
       int theQuantity = pItem.price * quantity;
-      newItem.setQuantity((short)(quantity * perbundle));
+      newItem.setQuantity((short) (quantity * perbundle));
       int flag = newItem.getFlag();
       if (ItemFlag.KARMA_EQ.check(flag)) {
-         newItem.setFlag((short)(flag - ItemFlag.KARMA_EQ.getValue()));
+         newItem.setFlag((short) (flag - ItemFlag.KARMA_EQ.getValue()));
       } else if (ItemFlag.KARMA_USE.check(flag)) {
-         newItem.setFlag((short)(flag - ItemFlag.KARMA_USE.getValue()));
+         newItem.setFlag((short) (flag - ItemFlag.KARMA_USE.getValue()));
       }
 
       if (MapleInventoryManipulator.checkSpace(c, newItem.getItemId(), newItem.getQuantity(), newItem.getOwner())) {
@@ -80,29 +81,29 @@ public class HiredMerchant extends AbstractPlayerStore {
             this.setMeso(gainmeso);
             pItem.bundles -= quantity;
             MapleInventoryManipulator.addFromDrop(c, newItem, false);
-            this.bought.add(new AbstractPlayerStore.BoughtItem(newItem.getItemId(), quantity, theQuantity, c.getPlayer().getName()));
+            this.bought.add(new AbstractPlayerStore.BoughtItem(newItem.getItemId(), quantity, theQuantity,
+                  c.getPlayer().getName()));
             c.getPlayer().gainMeso(-theQuantity, false);
             this.saveItems();
             MapleCharacter chr = this.getMCOwnerWorld();
             if (chr != null) {
                chr.dropMessage(
-                  -5,
-                  "Item "
-                     + MapleItemInformationProvider.getInstance().getName(newItem.getItemId())
-                     + " ("
-                     + perbundle
-                     + ") x "
-                     + quantity
-                     + " has sold in the Hired Merchant. Quantity left: "
-                     + pItem.bundles
-               );
+                     -5,
+                     "Item "
+                           + MapleItemInformationProvider.getInstance().getName(newItem.getItemId())
+                           + " ("
+                           + perbundle
+                           + ") x "
+                           + quantity
+                           + " has sold in the Hired Merchant. Quantity left: "
+                           + pItem.bundles);
             }
          } else {
-            c.getPlayer().dropMessage(1, "The seller has too many mesos.");
+            c.getPlayer().dropMessage(1, "ผู้ขายมี Meso มากเกินไป");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          }
       } else {
-         c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
+         c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       }
    }
@@ -128,7 +129,7 @@ public class HiredMerchant extends AbstractPlayerStore {
    }
 
    public int getTimeLeft() {
-      return (int)((System.currentTimeMillis() - this.start) / 1000L);
+      return (int) ((System.currentTimeMillis() - this.start) / 1000L);
    }
 
    public final int getStoreId() {

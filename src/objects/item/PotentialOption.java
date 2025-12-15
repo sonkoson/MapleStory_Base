@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 import java.util.HashMap;
 import java.util.List;

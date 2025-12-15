@@ -1,4 +1,4 @@
-package objects.fields.child.blackmage;
+﻿package objects.fields.child.blackmage;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -49,7 +49,7 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("ทำลายไข่แห่งการสร้างและจบการต่อสู้อันยาวนานนี้กันเถอะ", 30000);
+         this.sendBlackMageNotice("เธ—เธณเธฅเธฒเธขเนเธเนเนเธซเนเธเธเธฒเธฃเธชเธฃเนเธฒเธเนเธฅเธฐเธเธเธเธฒเธฃเธ•เนเธญเธชเธนเนเธญเธฑเธเธขเธฒเธงเธเธฒเธเธเธตเนเธเธฑเธเน€เธ–เธญเธฐ", 30000);
          boolean set = false;
          MapleCharacter p = null;
 
@@ -115,7 +115,7 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
                         list = String.join(",", names);
 
                         for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMember().getPartyMemberList())) {
-                           StringBuilder sb = new StringBuilder("보스 검은 마법사 격파 (" + list + ")");
+                           StringBuilder sb = new StringBuilder("๋ณด์ค ๊ฒ€์€ ๋ง๋ฒ•์ฌ ๊ฒฉํ (" + list + ")");
                            MapleCharacter playerx = this.getCharacterById(mpc.getId());
                            if (playerx != null) {
                               LoggingManager.putLog(new BossLog(playerx, BossLogType.ClearLog.getType(), sb));
@@ -125,13 +125,13 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
                         Center.Broadcast.broadcastMessageCheckQuest(
                            CField.chatMsg(
                               DBConfig.isGanglim ? 8 : 22,
-                              "[보스격파] [CH."
-                                 + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                              "[๋ณด์ค๊ฒฉํ] [CH."
+                                 + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                  + "] '"
                                  + p.getParty().getPartyMember().getLeader().getName()
-                                 + "' 파티("
+                                 + "' ํํฐ("
                                  + list
-                                 + ")가 [검은 마법사]를 격파하였습니다."
+                                 + ")๊ฐ€ [๊ฒ€์€ ๋ง๋ฒ•์ฌ]๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค."
                            ),
                            "BossMessage",
                            set
@@ -161,7 +161,7 @@ public class Field_BlackMageBattlePhase4 extends Field_BlackMage {
          }
 
          if (this.nextCreateWeldingCreationTime != 0L && this.nextCreateWeldingCreationTime <= System.currentTimeMillis()) {
-            this.sendBlackMageNotice("อำนาจของผู้ใกล้เคียงพระเจ้าปรากฏขึ้น ต้องเลือกว่าจะรับพลังแห่งการสร้างหรือทำลายล้าง", 3000);
+            this.sendBlackMageNotice("เธญเธณเธเธฒเธเธเธญเธเธเธนเนเนเธเธฅเนเน€เธเธตเธขเธเธเธฃเธฐเน€เธเนเธฒเธเธฃเธฒเธเธเธเธถเนเธ เธ•เนเธญเธเน€เธฅเธทเธญเธเธงเนเธฒเธเธฐเธฃเธฑเธเธเธฅเธฑเธเนเธซเนเธเธเธฒเธฃเธชเธฃเนเธฒเธเธซเธฃเธทเธญเธ—เธณเธฅเธฒเธขเธฅเนเธฒเธ", 3000);
             this.sendWeldingCreation(Field_BlackMage.FieldSkill.WeldingCreation);
             this.nextCreateWeldingCreationTime = System.currentTimeMillis() + 30000L;
             this.createBarrierTime = System.currentTimeMillis() + 3000L;

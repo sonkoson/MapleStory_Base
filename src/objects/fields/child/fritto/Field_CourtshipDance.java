@@ -1,4 +1,4 @@
-package objects.fields.child.fritto;
+﻿package objects.fields.child.fritto;
 
 import constants.QuestExConstants;
 import network.SendPacketOpcode;
@@ -44,7 +44,7 @@ public class Field_CourtshipDance extends Field {
             } else {
                if (!this.startGame) {
                   if (this.startGameTime == 0L) {
-                     this.player.send(CField.startMapEffect("달걀을 훔치려면 먼저 닭들은 속여야 해! 자, 나를 따라 구애의 춤을 춰!", 5120160, true, 10));
+                     this.player.send(CField.startMapEffect("๋ฌ๊ฑ€์ ํ”์น๋ ค๋ฉด ๋จผ์ € ๋ญ๋“ค์€ ์์—ฌ์•ผ ํ•ด! ์, ๋๋ฅผ ๋”ฐ๋ผ ๊ตฌ์• ์ ์ถค์ ์ถฐ!", 5120160, true, 10));
                      this.player.send(CField.environmentChange("PoloFritto/msg3", 20, 263));
                      this.startGameTime = System.currentTimeMillis() + 6000L;
                   }

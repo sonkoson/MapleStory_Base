@@ -1,4 +1,4 @@
-package objects.context;
+﻿package objects.context;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class GoldenChariot {
          goldenChariotList.add(eL);
       }
 
-      System.out.println("[GoldenChariot] " + goldenChariotList.size() + "개 캐싱완료");
+      System.out.println("[GoldenChariot] " + goldenChariotList.size() + "๊ฐ ์บ์ฑ์๋ฃ");
    }
 
    public GoldenChariot(int day, int itemID, int itemQty) {

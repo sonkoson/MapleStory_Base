@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import constants.GameConstants;
 import database.DBConnection;

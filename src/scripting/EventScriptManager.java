@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import database.DBConfig;
 import java.util.LinkedHashMap;

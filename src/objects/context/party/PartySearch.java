@@ -1,4 +1,4 @@
-package objects.context.party;
+﻿package objects.context.party;
 
 import java.util.concurrent.ScheduledFuture;
 import network.center.Center;

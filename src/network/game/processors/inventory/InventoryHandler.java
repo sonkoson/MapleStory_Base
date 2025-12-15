@@ -1,4 +1,4 @@
-package network.game.processors.inventory;
+﻿package network.game.processors.inventory;
 
 import constants.GameConstants;
 import constants.QuestExConstants;
@@ -516,11 +516,11 @@ public class InventoryHandler {
                int rewardx = RandomRewards.getTheSeedReward();
                if (rewardx == 0) {
                   c.getSession().writeAndFlush(CField.NPCPacket.getNPCTalk(9000155, (byte) 0,
-                        "น่าเสียดาย ไม่ได้รับรางวัล กรุณาลองใหม่โอกาสหน้า!", "00 00", (byte) 0));
+                        "เธเนเธฒเน€เธชเธตเธขเธ”เธฒเธข เนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเนเธญเธเธฒเธชเธซเธเนเธฒ!", "00 00", (byte) 0));
                } else if (rewardx == 1) {
                   chr.gainMeso(10000000L, true);
                   c.getSession().writeAndFlush(
-                        CField.NPCPacket.getNPCTalk(9000155, (byte) 0, "ได้รับ 10 ล้าน Meso!", "00 00", (byte) 0));
+                        CField.NPCPacket.getNPCTalk(9000155, (byte) 0, "เนเธ”เนเธฃเธฑเธ 10 เธฅเนเธฒเธ Meso!", "00 00", (byte) 0));
                } else {
                   int max_quantity = 1;
                   switch (rewardx) {
@@ -548,7 +548,7 @@ public class InventoryHandler {
                   c.getSession()
                         .writeAndFlush(
                               CField.NPCPacket.getNPCTalk(9000155, (byte) 0,
-                                    "ยินดีด้วย!!\r\nได้รับ [#b#i" + rewardx + "##z" + rewardx + "#](이) จากวงล้อ",
+                                    "เธขเธดเธเธ”เธตเธ”เนเธงเธข!!\r\nเนเธ”เนเธฃเธฑเธ [#b#i" + rewardx + "##z" + rewardx + "#](์ด) เธเธฒเธเธงเธเธฅเนเธญ",
                                     "00 00",
                                     (byte) 0));
                   c.getPlayer().gainItem(rewardx, max_quantity);
@@ -557,7 +557,7 @@ public class InventoryHandler {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                }
             } else {
-               chr.dropMessage(6, "ไม่สามารถหาข้อมูลรางวัลไอเทมได้");
+               chr.dropMessage(6, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธซเธฒเธเนเธญเธกเธนเธฅเธฃเธฒเธเธงเธฑเธฅเนเธญเน€เธ—เธกเนเธ”เน");
             }
          } else {
             chr.dropMessage(6, "Insufficient inventory slot.");
@@ -572,7 +572,7 @@ public class InventoryHandler {
             && !chr.hasDisease(SecondaryStatFlag.StopPortion) && !chr.inPVP()) {
          long time = System.currentTimeMillis();
          if (chr.getNextConsume() > time) {
-            chr.dropMessage(5, "รู้สึกถึงพลังบางอย่าง ทำให้ไม่สามารถใช้ไอเทมได้ชั่วคราว");
+            chr.dropMessage(5, "เธฃเธนเนเธชเธถเธเธ–เธถเธเธเธฅเธฑเธเธเธฒเธเธญเธขเนเธฒเธ เธ—เธณเนเธซเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเนเธ”เนเธเธฑเนเธงเธเธฃเธฒเธง");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             slea.skip(4);
@@ -638,7 +638,7 @@ public class InventoryHandler {
          GradeRandomOption option = GradeRandomOption.OccultAdditional;
          long cost = GameConstants.getItemReleaseCost(eq.getItemId());
          if (cost > player.getMeso()) {
-            c.getPlayer().dropMessage(1, "มี Meso ไม่เพียงพอ");
+            c.getPlayer().dropMessage(1, "เธกเธต Meso เนเธกเนเน€เธเธตเธขเธเธเธญ");
          } else {
             c.getPlayer().gainMeso(-cost, true);
             int beforeGrade = eq.getState();
@@ -689,7 +689,7 @@ public class InventoryHandler {
       if (toUse != null && target != null) {
          long time = System.currentTimeMillis();
          if (time - c.getPlayer().lastItemUsedTime <= 300L) {
-            c.getPlayer().dropMessage(5, "มีผู้ใช้งานจำนวนมาก ไม่สามารถใช้ไอเทมได้ในขณะนี้ กรุณาลองใหม่ในภายหลัง");
+            c.getPlayer().dropMessage(5, "เธกเธตเธเธนเนเนเธเนเธเธฒเธเธเธณเธเธงเธเธกเธฒเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเนเธ”เนเนเธเธเธ“เธฐเธเธตเน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             c.getPlayer().lastItemUsedTime = time;
@@ -711,7 +711,7 @@ public class InventoryHandler {
 
             long cost = GameConstants.getItemReleaseCost(eq.getItemId());
             if (cost > player.getMeso()) {
-               c.getPlayer().dropMessage(1, "มี Meso ไม่เพียงพอ");
+               c.getPlayer().dropMessage(1, "เธกเธต Meso เนเธกเนเน€เธเธตเธขเธเธเธญ");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             } else {
                c.getPlayer().gainMeso(-cost, true);
@@ -727,12 +727,12 @@ public class InventoryHandler {
                   zeroEquip.setPotential3(eq.getPotential3());
                }
 
-               StringBuilder sb = new StringBuilder("무료 큐브 사용 결과 (");
-               sb.append("계정 : ");
+               StringBuilder sb = new StringBuilder("๋ฌด๋ฃ ํ๋ธ ์ฌ์ฉ ๊ฒฐ๊ณผ (");
+               sb.append("๊ณ์ • : ");
                sb.append(c.getAccountName());
-               sb.append(", 캐릭터 : ");
+               sb.append(", ์บ๋ฆญํฐ : ");
                sb.append(c.getPlayer().getName());
-               sb.append(" (정보 : ");
+               sb.append(" (์ •๋ณด : ");
                sb.append(eq.toString());
                sb.append("))");
                LoggingManager.putLog(
@@ -1207,15 +1207,15 @@ public class InventoryHandler {
 
                equip.set(c.getPlayer().memorialCube);
             } else if (type != 2 && type != 7) {
-               c.getPlayer().dropMessage(5, "เกิดข้อผิดพลาด type : " + type);
+               c.getPlayer().dropMessage(5, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ” type : " + type);
             }
 
             StringBuilder sb = new StringBuilder();
-            sb.append("큐브 옵션 선택 (계정 : ");
+            sb.append("ํ๋ธ ์ต์… ์ ํ (๊ณ์ • : ");
             sb.append(c.getAccountName());
-            sb.append(", 캐릭터 : ");
+            sb.append(", ์บ๋ฆญํฐ : ");
             sb.append(c.getPlayer().getName());
-            sb.append(", 선택옵션 : ");
+            sb.append(", ์ ํ์ต์… : ");
             if (type != 7 && type != 2) {
                sb.append("After");
             } else {
@@ -1223,7 +1223,7 @@ public class InventoryHandler {
             }
 
             long serialNumber = 0L;
-            sb.append(" (정보 : ");
+            sb.append(" (์ •๋ณด : ");
             serialNumber = equip.getSerialNumberEquip();
             sb.append(equip.toString());
             sb.append(")");
@@ -1320,11 +1320,11 @@ public class InventoryHandler {
                         chr.send(CWvsContext.InventoryPacket.updateEquipSlot(eq));
                         chr.setBlackRebirthFlame(null);
                         StringBuilder sb = new StringBuilder();
-                        sb.append("검환불 옵션 선택 (계정 : ");
+                        sb.append("๊ฒ€ํ๋ถ ์ต์… ์ ํ (๊ณ์ • : ");
                         sb.append(c.getAccountName());
-                        sb.append(", 캐릭터 : ");
+                        sb.append(", ์บ๋ฆญํฐ : ");
                         sb.append(c.getPlayer().getName());
-                        sb.append(", 선택옵션 : ");
+                        sb.append(", ์ ํ์ต์… : ");
                         if (command == 1) {
                            sb.append("Before");
                         } else {
@@ -1332,7 +1332,7 @@ public class InventoryHandler {
                         }
 
                         long serialNumber = 0L;
-                        sb.append(" (정보 : ");
+                        sb.append(" (์ •๋ณด : ");
                         serialNumber = eq.getSerialNumberEquip();
                         sb.append(eq.toString());
                         sb.append(")");
@@ -1595,12 +1595,12 @@ public class InventoryHandler {
          }
 
          if (scroll.getItemId() == 2041200 && toScroll.getUpgradeSlots() < 3) {
-            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+            c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return false;
          } else if (DBConfig.isGanglim && GameConstants.isZeniaScroll(scroll.getItemId())
                && toScroll.getUpgradeSlots() <= 0) {
-            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+            c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return false;
          } else {
@@ -1660,7 +1660,7 @@ public class InventoryHandler {
                         c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                      }
 
-                     chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+                     chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                      return false;
                   }
                }
@@ -1668,7 +1668,7 @@ public class InventoryHandler {
                if (!GameConstants.IsExNewScroll(scroll.getItemId())
                      && !GameConstants.IsBlackRebirthFlame(scroll.getItemId())
                      && toScroll.getUpgradeSlots() == 0) {
-                  chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+                  chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return false;
                }
@@ -1680,7 +1680,7 @@ public class InventoryHandler {
                      && toScroll.getUpgradeSlots() < ii.getUpgradeScrollUseSlot(scroll.getItemId())
                      && toScroll.getItemId() / 100 != 1099
                      && toScroll.getItemId() / 100 != 1098) {
-                  chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+                  chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                   return false;
                }
@@ -1688,7 +1688,7 @@ public class InventoryHandler {
                if (scroll.getItemId() != 2049360 && toScroll.getUpgradeSlots() >= 1
                      || scroll.getItemId() == 2049360 && !toScroll.isAmazingHyperUpgradeUsed() && toScroll.getCHUC() > 0
                      || ii.isCash(toScroll.getItemId())) {
-                  c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+                  c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                   return false;
                }
@@ -1705,15 +1705,15 @@ public class InventoryHandler {
             if (GameConstants.isCleanSlate(scroll.getItemId())
                   && toScroll.getLevel() + toScroll.getUpgradeSlots() >= ii.getEquipStats(toScroll.getItemId())
                         .get("tuc") + (toScroll.getViciousHammer() > 0 ? 1 : 0)) {
-               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+               chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if ((scroll.getItemId() == 2049731 || scroll.getItemId() == 2049762) && toScroll.getState() == 0) {
-               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+               chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if (GameConstants.isProstyScroll(scroll.getItemId()) && toScroll.getUpgradeSlots() <= 0) {
-               chr.dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+               chr.dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
                return false;
             } else if (!GameConstants.canScroll(toScroll.getItemId())
@@ -1837,7 +1837,7 @@ public class InventoryHandler {
                               && origUpgradeSlots != toScroll.getUpgradeSlots()) {
                            int tucProtectR = chr.getStat().itemTUCProtectR;
                            if (tucProtectR > 0 && Randomizer.isSuccess(tucProtectR)) {
-                              chr.dropMessage(5, "จำนวนการอัพเกรดไม่ลดลงเนื่องจากผลของไอเทม");
+                              chr.dropMessage(5, "เธเธณเธเธงเธเธเธฒเธฃเธญเธฑเธเน€เธเธฃเธ”เนเธกเนเธฅเธ”เธฅเธเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธเนเธญเน€เธ—เธก");
                               toScroll.setUpgradeSlots(origUpgradeSlots);
                               if (toScrollAlpha != null) {
                                  toScrollAlpha.setUpgradeSlots((byte) (toScrollAlpha.getUpgradeSlots() + 1));
@@ -1846,7 +1846,7 @@ public class InventoryHandler {
                         }
 
                         if (recovery && scroll.getItemId() != 2049762) {
-                           chr.dropMessage(5, "Scroll ไม่ถูกหักออกเนื่องจากผลของ Scroll");
+                           chr.dropMessage(5, "Scroll เนเธกเนเธ–เธนเธเธซเธฑเธเธญเธญเธเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
                         } else {
                            chr.removeItem(scroll.getItemId(), -1);
                         }
@@ -1857,24 +1857,24 @@ public class InventoryHandler {
                         }
 
                         StringBuilder sb = new StringBuilder();
-                        sb.append("주문서 강화 결과 ");
-                        sb.append(scrollSuccess == Equip.ScrollResult.SUCCESS ? "성공"
-                              : (scrollSuccess == Equip.ScrollResult.FAIL ? "실패" : "파괴"));
-                        sb.append(" (계정 : ");
+                        sb.append("์ฃผ๋ฌธ์ ๊ฐ•ํ” ๊ฒฐ๊ณผ ");
+                        sb.append(scrollSuccess == Equip.ScrollResult.SUCCESS ? "์ฑ๊ณต"
+                              : (scrollSuccess == Equip.ScrollResult.FAIL ? "์คํจ" : "ํ๊ดด"));
+                        sb.append(" (๊ณ์ • : ");
                         sb.append(c.getAccountName());
-                        sb.append(", 캐릭터 : ");
+                        sb.append(", ์บ๋ฆญํฐ : ");
                         sb.append(c.getPlayer().getName());
                         if (scroll.getItemId() == 2049360 || scroll.getItemId() == 2049361) {
                            boolean safety = (toScroll.getFlag() & ItemFlag.SAFETY_SCROLLED.getValue()) != 0;
                            boolean protect = (toScroll.getFlag() & ItemFlag.PROTECTION_SCROLLED.getValue()) != 0;
                            boolean recovery_ = (toScroll.getFlag() & ItemFlag.RECOVERY_SCROLLED.getValue()) != 0;
-                           sb.append(", 놀라운 장비 주문서 (세이프티 사용 여부 : " + safety + ", 프로텍트 사용 여부 : " + protect
-                                 + ", 리커버리 사용 여부 : " + recovery_ + ")");
+                           sb.append(", ๋€๋ผ์ด ์ฅ๋น ์ฃผ๋ฌธ์ (์ธ์ดํ”ํฐ ์ฌ์ฉ ์—ฌ๋ถ€ : " + safety + ", ํ”๋กํ…ํธ ์ฌ์ฉ ์—ฌ๋ถ€ : " + protect
+                                 + ", ๋ฆฌ์ปค๋ฒ๋ฆฌ ์ฌ์ฉ ์—ฌ๋ถ€ : " + recovery_ + ")");
                         }
 
                         boolean return_ = (toScroll.getFlag() & ItemFlag.RETURN_SCROLLED.getValue()) != 0;
-                        sb.append(", 리턴스크롤 사용여부 : ").append(return_);
-                        sb.append(", 장비옵션 [");
+                        sb.append(", ๋ฆฌํด์คํฌ๋กค ์ฌ์ฉ์—ฌ๋ถ€ : ").append(return_);
+                        sb.append(", ์ฅ๋น์ต์… [");
                         sb.append(toScroll.toString());
                         sb.append("])");
                         EnchantLogResult result = EnchantLogResult.Success;
@@ -1945,7 +1945,7 @@ public class InventoryHandler {
                            }
 
                            if (Randomizer.isSuccess(c.getPlayer().getStat().itemCursedProtectR)) {
-                              c.getPlayer().dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของไอเทมป้องกัน");
+                              c.getPlayer().dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธเนเธญเน€เธ—เธกเธเนเธญเธเธเธฑเธ");
                               scrollSuccess = Equip.ScrollResult.FAIL;
                            }
                         }
@@ -2151,12 +2151,12 @@ public class InventoryHandler {
          player.getInventory(MapleInventoryType.USE).removeItem(scroll.getPosition(), (short) 1, false);
       }
 
-      StringBuilder sb = new StringBuilder("플래그 주문서 사용 (");
-      sb.append("계정 : ");
+      StringBuilder sb = new StringBuilder("ํ”๋๊ทธ ์ฃผ๋ฌธ์ ์ฌ์ฉ (");
+      sb.append("๊ณ์ • : ");
       sb.append(c.getAccountName());
-      sb.append(", 캐릭터 : ");
+      sb.append(", ์บ๋ฆญํฐ : ");
       sb.append(c.getPlayer().getName());
-      sb.append(" (정보 : ");
+      sb.append(" (์ •๋ณด : ");
       sb.append(toScroll.toString());
       sb.append("))");
       LoggingManager.putLog(
@@ -2194,25 +2194,25 @@ public class InventoryHandler {
 
          Equip eq = (Equip) item;
          if (eq.getState() == 0 || eq.getState() == 1 && eq.getPotential1() == 0) {
-            c.getPlayer().dropMessage(1, "กรุณาปลดล็อค Potential ก่อน");
+            c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธเธฅเธ”เธฅเนเธญเธ Potential เธเนเธญเธ");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
 
          if (toUse.getItemId() == 2049731) {
             if (eq.getAdditionalGrade() > 1) {
-               c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+               c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
          } else if (toUse.getItemId() == 2049762) {
             if (eq.getAdditionalGrade() > 2) {
-               c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+               c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
          } else if (eq.getPotential4() > 0) {
-            c.getPlayer().dropMessage(1, "ไอเทมนี้ไม่สามารถใช้ Scroll ได้");
+            c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scroll เนเธ”เน");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
             return;
          }
@@ -2250,12 +2250,12 @@ public class InventoryHandler {
             }
          }
 
-         StringBuilder sb = new StringBuilder("잠재능력 부여 주문서 사용 (");
-         sb.append("계정 : ");
+         StringBuilder sb = new StringBuilder("์ ์ฌ๋ฅ๋ ฅ ๋ถ€์—ฌ ์ฃผ๋ฌธ์ ์ฌ์ฉ (");
+         sb.append("๊ณ์ • : ");
          sb.append(c.getAccountName());
-         sb.append(", 캐릭터 : ");
+         sb.append(", ์บ๋ฆญํฐ : ");
          sb.append(c.getPlayer().getName());
-         sb.append(" (정보 : ");
+         sb.append(" (์ •๋ณด : ");
          sb.append(eq.toString());
          sb.append("))");
          LoggingManager.putLog(
@@ -2318,12 +2318,12 @@ public class InventoryHandler {
             equip.addExceptHP(dataMap.getOrDefault("incMHP", (short) 0));
             equip.addExceptMP(dataMap.getOrDefault("incMMP", (short) 0));
             StringBuilder sb = new StringBuilder();
-            sb.append("검환불 옵션 선택 (계정 : ");
+            sb.append("๊ฒ€ํ๋ถ ์ต์… ์ ํ (๊ณ์ • : ");
             sb.append(c.getAccountName());
-            sb.append(", 캐릭터 : ");
+            sb.append(", ์บ๋ฆญํฐ : ");
             sb.append(c.getPlayer().getName());
             long serialNumber = 0L;
-            sb.append(", (정보 : ");
+            sb.append(", (์ •๋ณด : ");
             serialNumber = equip.getSerialNumberEquip();
             sb.append(equip.toString());
             sb.append(")");
@@ -2445,12 +2445,12 @@ public class InventoryHandler {
       int mountid = 0;
       long time = System.currentTimeMillis();
       if (time - c.getPlayer().lastItemUsedTime <= 300L) {
-         c.getPlayer().dropMessage(5, "ขณะนี้มีผู้ใช้งานจำนวนมาก ไม่สามารถใช้ไอเทมได้ กรุณาลองใหม่อีกครั้งในภายหลัง");
+         c.getPlayer().dropMessage(5, "เธเธ“เธฐเธเธตเนเธกเธตเธเธนเนเนเธเนเธเธฒเธเธเธณเธเธงเธเธกเธฒเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
          c.getPlayer().lastItemUsedTime = time;
          if (toUse.getExpiration() > 0L && toUse.getExpiration() < time) {
-            c.getPlayer().dropMessage(5, "ไอเทมหมดอายุแล้ว");
+            c.getPlayer().dropMessage(5, "เนเธญเน€เธ—เธกเธซเธกเธ”เธญเธฒเธขเธธเนเธฅเนเธง");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             if (toUse != null && toUse.getQuantity() >= 1 && toUse.getItemId() == itemId && !chr.inPVP()) {
@@ -2461,7 +2461,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2470,7 +2470,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2479,7 +2479,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2488,7 +2488,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2497,7 +2497,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2506,7 +2506,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2515,7 +2515,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2524,7 +2524,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2533,7 +2533,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2542,7 +2542,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2551,7 +2551,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2560,7 +2560,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2569,7 +2569,7 @@ public class InventoryHandler {
                         chr.addCustomItem(id);
                         c.getPlayer().dropMessage(5,
                               GameConstants.customItems.get(id).getName()
-                                    + " ได้รับแล้ว กรุณาตรวจสอบในช่อง Special Equipment -> Inventory");
+                                    + " เนเธ”เนเธฃเธฑเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธเธเนเธญเธ Special Equipment -> Inventory");
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         break;
                      }
@@ -2603,7 +2603,7 @@ public class InventoryHandler {
 
                         long point = c.getPlayer().getKeyValue(123, "pp") + 10;
                         if (c.getPlayer().getKeyValue(123, "pp") >= pirodo) {
-                           c.getPlayer().dropMessage(5, "ค่าความเหนื่อยล้าเต็มอยู่แล้ว");
+                           c.getPlayer().dropMessage(5, "เธเนเธฒเธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเน€เธ•เนเธกเธญเธขเธนเนเนเธฅเนเธง");
                            c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                            return;
                         }
@@ -2614,7 +2614,7 @@ public class InventoryHandler {
 
                         c.getPlayer().setKeyValue(123, "pp", String.valueOf(point));
                         c.getPlayer().dropMessage(5,
-                              "ความเหนื่อยล้าเพิ่มขึ้น ความเหนื่อยล้า : " + c.getPlayer().getKeyValue(123, "pp"));
+                              "เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเน€เธเธดเนเธกเธเธถเนเธ เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒ : " + c.getPlayer().getKeyValue(123, "pp"));
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
@@ -2787,7 +2787,7 @@ public class InventoryHandler {
                            }
                         } else {
                            c.getPlayer().dropMessage(5,
-                                 "ต้องมี Fragment 10 ชิ้นสำหรับ Potential Scroll, 25 ชิ้นสำหรับ Advanced");
+                                 "เธ•เนเธญเธเธกเธต Fragment 10 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Potential Scroll, 25 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Advanced");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2817,7 +2817,7 @@ public class InventoryHandler {
                               20000.0 + c.getPlayer().getLevel() * 50 * c.getChannelServer().getExpRate(), true, true,
                               false);
                      } else {
-                        c.getPlayer().dropMessage(5, "ไม่สามารถใช้ไอเทมนี้ได้");
+                        c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
                      }
                      break;
                   case 2430132:
@@ -2843,7 +2843,7 @@ public class InventoryHandler {
                               && c.getPlayer().getJob() != 3510
                               && c.getPlayer().getJob() != 3511
                               && c.getPlayer().getJob() != 3512) {
-                           c.getPlayer().dropMessage(5, "ไม่สามารถใช้ไอเทมนี้ได้");
+                           c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
                         } else {
                            MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                            MapleInventoryManipulator.addById(c, 1492080, (short) 1,
@@ -2892,7 +2892,7 @@ public class InventoryHandler {
                            }
                         } else {
                            c.getPlayer().dropMessage(5,
-                                 "ต้องมี Purification Totem 50 ชิ้นสำหรับ Noble Lion King Medal, 100 ชิ้นสำหรับ Royal");
+                                 "เธ•เนเธญเธเธกเธต Purification Totem 50 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Noble Lion King Medal, 100 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Royal");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2908,7 +2908,7 @@ public class InventoryHandler {
                      break;
                   case 2430200:
                      if (c.getPlayer().getQuestStatus(31152) != 2) {
-                        c.getPlayer().dropMessage(5, "ไม่รู้วิธีใช้มัน");
+                        c.getPlayer().dropMessage(5, "เนเธกเนเธฃเธนเนเธงเธดเธเธตเนเธเนเธกเธฑเธ");
                      } else if (c.getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() >= 1) {
                         if (c.getPlayer().getInventory(MapleInventoryType.ETC).countById(4000660) >= 1
                               && c.getPlayer().getInventory(MapleInventoryType.ETC).countById(4000661) >= 1
@@ -2932,7 +2932,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "ต้องมี Stone อย่างละ 1 ชิ้นสำหรับ Dream Key");
+                           c.getPlayer().dropMessage(5, "เธ•เนเธญเธเธกเธต Stone เธญเธขเนเธฒเธเธฅเธฐ 1 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Dream Key");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -2954,7 +2954,7 @@ public class InventoryHandler {
 
                      long lastTime = Long.parseLong(marrxx.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
+                        c.getPlayer().dropMessage(5, "เธเธธเธ“เธชเธฒเธกเธฒเธฃเธ–เนเธเน Energy Drink เนเธ”เน 1 เธเธงเธ”เธ—เธธเธ 10 เธเธฒเธ—เธต");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 5);
@@ -2968,7 +2968,7 @@ public class InventoryHandler {
 
                      lastTime = Long.parseLong(marrx.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
+                        c.getPlayer().dropMessage(5, "เธเธธเธ“เธชเธฒเธกเธฒเธฃเธ–เนเธเน Energy Drink เนเธ”เน 1 เธเธงเธ”เธ—เธธเธ 10 เธเธฒเธ—เธต");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 10);
@@ -2999,7 +2999,7 @@ public class InventoryHandler {
 
                      lastTime = Long.parseLong(marr.getCustomData());
                      if (lastTime + 600000L > System.currentTimeMillis()) {
-                        c.getPlayer().dropMessage(5, "คุณสามารถใช้ Energy Drink ได้ 1 ขวดทุก 10 นาที");
+                        c.getPlayer().dropMessage(5, "เธเธธเธ“เธชเธฒเธกเธฒเธฃเธ–เนเธเน Energy Drink เนเธ”เน 1 เธเธงเธ”เธ—เธธเธ 10 เธเธฒเธ—เธต");
                      } else if (c.getPlayer().getFatigue() > 0) {
                         MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                         c.getPlayer().setFatigue(c.getPlayer().getFatigue() - 40);
@@ -3330,7 +3330,7 @@ public class InventoryHandler {
                         } else {
                            c.getPlayer()
                                  .dropMessage(5,
-                                       "ต้องมี Fragment 20 ชิ้นสำหรับ AEE, 30 ชิ้นสำหรับ Epic Pot 80%");
+                                       "เธ•เนเธญเธเธกเธต Fragment 20 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ AEE, 30 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Epic Pot 80%");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3369,7 +3369,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "ต้องมี Fragment 10 ชิ้นสำหรับ Nebulite Diffuser");
+                           c.getPlayer().dropMessage(5, "เธ•เนเธญเธเธกเธต Fragment 10 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Nebulite Diffuser");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3392,7 +3392,7 @@ public class InventoryHandler {
                               c.getPlayer().dropMessage(5, "Please make some space.");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "ต้องมี Fragment 20 ชิ้นสำหรับ Premium Fusion Ticket");
+                           c.getPlayer().dropMessage(5, "เธ•เนเธญเธเธกเธต Fragment 20 เธเธดเนเธเธชเธณเธซเธฃเธฑเธ Premium Fusion Ticket");
                         }
                      } else {
                         c.getPlayer().dropMessage(5, "Please make some space.");
@@ -3765,7 +3765,7 @@ public class InventoryHandler {
                                  DamageSkinSaveInfo.getDefaultDesc()));
                      c.getPlayer().send(CField.damageSkinSaveResult((byte) 0, info));
                      chr.setSaveFlag(chr.getSaveFlag() | CharacterSaveFlag.DAMAGE_SKIN_SAVE.getFlag());
-                     chr.dropMessage(5, "เปลี่ยน Damage Skin เรียบร้อยแล้ว");
+                     chr.dropMessage(5, "เน€เธเธฅเธตเนเธขเธ Damage Skin เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                      chr.getMap().broadcastMessage(chr, CField.showForeignDamageSkin(chr, damageSkinID), false);
                      MapleInventoryManipulator.removeFromSlot(c,
                            MapleInventoryType.getByType((byte) (itemId / 1000000)), slot, (short) 1, false);
@@ -3789,13 +3789,13 @@ public class InventoryHandler {
                   case 2435902:
                   case 2436078:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
+                        c.getPlayer().dropMessage(6, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธขเธฑเธเนเธกเนเธเนเธฒเธเน€เธเธงเธชเน€เธเธฅเธตเนเธขเธเธเธฅเธฒเธช 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ–เธทเธญ Skill Core เนเธ”เนเธญเธตเธ เธเธฃเธธเธ“เธฒเธขเนเธญเธขเธซเธฃเธทเธญเธญเธฑเธเน€เธเธฃเธ” Core เน€เธเธทเนเธญเน€เธเธดเนเธกเธเธทเนเธเธ—เธตเน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3854,13 +3854,13 @@ public class InventoryHandler {
                   case 2438411:
                   case 2438412:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
+                        c.getPlayer().dropMessage(6, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธขเธฑเธเนเธกเนเธเนเธฒเธเน€เธเธงเธชเน€เธเธฅเธตเนเธขเธเธเธฅเธฒเธช 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ–เธทเธญ Skill Core เนเธ”เนเธญเธตเธ เธเธฃเธธเธ“เธฒเธขเนเธญเธขเธซเธฃเธทเธญเธญเธฑเธเน€เธเธฃเธ” Core เน€เธเธทเนเธญเน€เธเธดเนเธกเธเธทเนเธเธ—เธตเน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3873,19 +3873,19 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
+                     c.getPlayer().dropMessage(6, "เนเธเน Core Gemstone เนเธฅเธฐเนเธ”เนเธฃเธฑเธ V Core");
                      break;
                   case 2439279:
                   case 2630402:
                   case 2631527:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
+                        c.getPlayer().dropMessage(6, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธขเธฑเธเนเธกเนเธเนเธฒเธเน€เธเธงเธชเน€เธเธฅเธตเนเธขเธเธเธฅเธฒเธช 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ–เธทเธญ Skill Core เนเธ”เนเธญเธตเธ เธเธฃเธธเธ“เธฒเธขเนเธญเธขเธซเธฃเธทเธญเธญเธฑเธเน€เธเธฃเธ” Core เน€เธเธทเนเธญเน€เธเธดเนเธกเธเธทเนเธเธ—เธตเน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3898,17 +3898,17 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
+                     c.getPlayer().dropMessage(6, "เนเธเน Core Gemstone เนเธฅเธฐเนเธ”เนเธฃเธฑเธ V Core");
                      break;
                   case 2632972:
                      if (c.getPlayer().getQuestStatus(1465) != 2) {
-                        c.getPlayer().dropMessage(6, "ไม่สามารถใช้ได้เนื่องจากยังไม่ผ่านเควสเปลี่ยนคลาส 5");
+                        c.getPlayer().dropMessage(6, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธขเธฑเธเนเธกเนเธเนเธฒเธเน€เธเธงเธชเน€เธเธฅเธตเนเธขเธเธเธฅเธฒเธช 5");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
 
                      if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถถือ Skill Core ได้อีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ–เธทเธญ Skill Core เนเธ”เนเธญเธตเธ เธเธฃเธธเธ“เธฒเธขเนเธญเธขเธซเธฃเธทเธญเธญเธฑเธเน€เธเธฃเธ” Core เน€เธเธทเนเธญเน€เธเธดเนเธกเธเธทเนเธเธ—เธตเน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -3921,7 +3921,7 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(CWvsContext.UpdateCore(c.getPlayer(), true, 13, 0));
                      c.getSession().writeAndFlush(CWvsContext.AddCore(core));
                      c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.V_MATRIX.getFlag());
-                     c.getPlayer().dropMessage(6, "ใช้ Core Gemstone และได้รับ V Core");
+                     c.getPlayer().dropMessage(6, "เนเธเน Core Gemstone เนเธฅเธฐเนเธ”เนเธฃเธฑเธ V Core");
                      break;
                   case 3994225:
                      c.getPlayer().dropMessage(5, "Please bring this item to the NPC.");
@@ -3970,13 +3970,13 @@ public class InventoryHandler {
                      if (DBConfig.isGanglim && (data = GameConstants.getRidingData(itemId)) != null) {
                         int skillId = data.getLeft() + 80000000;
                         if (c.getPlayer().getSkillLevel(skillId) > 0) {
-                           c.getPlayer().dropMessage(6, "[Riding] มีสกิลขี่สัตว์นี้แล้ว");
+                           c.getPlayer().dropMessage(6, "[Riding] เธกเธตเธชเธเธดเธฅเธเธตเนเธชเธฑเธ•เธงเนเธเธตเนเนเธฅเนเธง");
                         } else {
                            MapleInventoryManipulator.removeFromSlot(c, GameConstants.getInventoryType(itemId), slot,
                                  (short) 1, true, false);
                            c.getPlayer().changeSkillLevel(skillId, 1, 1);
                            c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.SKILLS.getFlag());
-                           c.getPlayer().dropMessage(6, "[라이딩] " + data.getRight() + "을 획득하셨습니다.");
+                           c.getPlayer().dropMessage(6, "[๋ผ์ด๋”ฉ] " + data.getRight() + "์ ํ๋“ํ•์…จ์ต๋๋ค.");
                         }
 
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
@@ -4028,19 +4028,19 @@ public class InventoryHandler {
                }
 
                if (c.getPlayer().getSkillLevel(mountid) > 0) {
-                  c.getPlayer().dropMessage(5, "มีสกิลขี่สัตว์นี้อยู่แล้ว");
+                  c.getPlayer().dropMessage(5, "เธกเธตเธชเธเธดเธฅเธเธตเนเธชเธฑเธ•เธงเนเธเธตเนเธญเธขเธนเนเนเธฅเนเธง");
                } else if (SkillFactory.getSkill(mountid) == null) {
-                  c.getPlayer().dropMessage(5, "ไม่สามารถรับสกิลนี้ได้");
+                  c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเธชเธเธดเธฅเธเธตเนเนเธ”เน");
                } else if (expiration_days > 0L) {
                   MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                   c.getPlayer()
                         .changeSingleSkillLevel(SkillFactory.getSkill(mountid), 1, (byte) 1,
                               System.currentTimeMillis() + expiration_days * 24L * 60L * 60L * 1000L);
-                  c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] 스킬을 얻었습니다.");
+                  c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] ์คํฌ์ ์–ป์—์ต๋๋ค.");
                } else if (expiration_days == 0L) {
                   MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, slot, (short) 1, false);
                   c.getPlayer().changeSkillLevel(SkillFactory.getSkill(mountid), 1, 1);
-                  c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] 스킬을 얻었습니다.");
+                  c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] ์คํฌ์ ์–ป์—์ต๋๋ค.");
                }
             }
 
@@ -4105,7 +4105,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธซเธเนเธฒเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธซเธเนเธฒเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   return;
                }
 
@@ -4120,7 +4120,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธซเธเนเธฒเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธซเธเนเธฒเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   return;
                }
 
@@ -4135,7 +4135,7 @@ public class InventoryHandler {
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(hair));
                if (!checkfh) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธซเธเนเธฒเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธซเธเนเธฒเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   return;
                }
 
@@ -4156,7 +4156,7 @@ public class InventoryHandler {
                boolean checkfhx = ServerConstants.cacheFaceHair.contains(String.valueOf(hairx));
                if (!checkfhx) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "เปลี่ยนหน้าไม่สำเร็จเนื่องจากไม่มีหน้านั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธซเธเนเธฒเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธซเธเนเธฒเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   return;
                }
 
@@ -4250,7 +4250,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธ—เธฃเธเธเธกเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธ—เธฃเธเธเธกเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4265,7 +4265,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธ—เธฃเธเธเธกเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธ—เธฃเธเธเธกเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4280,7 +4280,7 @@ public class InventoryHandler {
                int face = codies[select];
                boolean checkfh = ServerConstants.cacheFaceHair.contains(String.valueOf(face));
                if (!checkfh) {
-                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธ—เธฃเธเธเธกเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธ—เธฃเธเธเธกเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4300,7 +4300,7 @@ public class InventoryHandler {
                int facex = codies[select];
                boolean checkfhx = ServerConstants.cacheFaceHair.contains(String.valueOf(facex));
                if (!checkfhx) {
-                  c.getPlayer().dropMessage(5, "เปลี่ยนทรงผมไม่สำเร็จเนื่องจากไม่มีทรงผมนั้น หากเกิดข้อผิดพลาดซ้ำ กรุณาติดต่อฝ่ายบริการลูกค้า");
+                  c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธ—เธฃเธเธเธกเนเธกเนเธชเธณเน€เธฃเนเธเน€เธเธทเนเธญเธเธเธฒเธเนเธกเนเธกเธตเธ—เธฃเธเธเธกเธเธฑเนเธ เธซเธฒเธเน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเนเธณ เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒ");
                   c.getPlayer().fakeRelog();
                   return;
                }
@@ -4342,7 +4342,7 @@ public class InventoryHandler {
                long time = System.currentTimeMillis();
                if (time - c.getPlayer().lastItemUsedTime <= 300L) {
                   c.getPlayer().dropMessage(5,
-                        "ขณะนี้มีผู้ใช้งานจำนวนมาก ไม่สามารถใช้ไอเทมได้ในขณะนี้ กรุณาลองใหม่ในภายหลัง");
+                        "เธเธ“เธฐเธเธตเนเธกเธตเธเธนเนเนเธเนเธเธฒเธเธเธณเธเธงเธเธกเธฒเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเนเธ”เนเนเธเธเธ“เธฐเธเธตเน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                } else {
                   c.getPlayer().lastItemUsedTime = time;
@@ -4383,7 +4383,7 @@ public class InventoryHandler {
                                  && c.getPlayer().getMap().getLevelLimit() <= c.getPlayer().getLevel()) {
                               c.getPlayer().changeMap(mapId);
                            } else {
-                              c.getPlayer().send(CWvsContext.serverNotice(0, "레벨이 낮거나 이동이 불가능한 맵입니다."));
+                              c.getPlayer().send(CWvsContext.serverNotice(0, "๋ ๋ฒจ์ด ๋ฎ๊ฑฐ๋ ์ด๋์ด ๋ถ๊ฐ€๋ฅํ• ๋งต์…๋๋ค."));
                               c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                            }
 
@@ -4459,14 +4459,14 @@ public class InventoryHandler {
                                     if (c.getPlayer().getHpApUsed() <= 0 || c.getPlayer().getHpApUsed() >= 10000) {
                                        used = false;
                                        c.getPlayer().dropMessage(1,
-                                             "ต้องมีแต้มใน HP หรือ MP เพื่อดึงแต้มออก");
+                                             "เธ•เนเธญเธเธกเธตเนเธ•เนเธกเนเธ HP เธซเธฃเธทเธญ MP เน€เธเธทเนเธญเธ”เธถเธเนเธ•เนเธกเธญเธญเธ");
                                     }
                                     break;
                                  case 8192:
                                     if (c.getPlayer().getHpApUsed() <= 0 || c.getPlayer().getHpApUsed() >= 10000) {
                                        used = false;
                                        c.getPlayer().dropMessage(1,
-                                             "ต้องมีแต้มใน HP หรือ MP เพื่อดึงแต้มออก");
+                                             "เธ•เนเธญเธเธกเธตเนเธ•เนเธกเนเธ HP เธซเธฃเธทเธญ MP เน€เธเธทเนเธญเธ”เธถเธเนเธ•เนเธกเธญเธญเธ");
                                     }
                               }
 
@@ -4705,16 +4705,16 @@ public class InventoryHandler {
                         case 5050008:
                         case 5050009:
                            if (itemId >= 5050005 && !GameConstants.isEvan(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(1, "การรีเซ็ตนี้สำหรับ Evan เท่านั้น");
+                              c.getPlayer().dropMessage(1, "เธเธฒเธฃเธฃเธตเน€เธเนเธ•เธเธตเนเธชเธณเธซเธฃเธฑเธ Evan เน€เธ—เนเธฒเธเธฑเนเธ");
                            } else if (itemId < 5050005 && GameConstants.isEvan(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(1, "การรีเซ็ตนี้สำหรับอาชีพที่ไม่ใช่ Evan เท่านั้น");
+                              c.getPlayer().dropMessage(1, "เธเธฒเธฃเธฃเธตเน€เธเนเธ•เธเธตเนเธชเธณเธซเธฃเธฑเธเธญเธฒเธเธตเธเธ—เธตเนเนเธกเนเนเธเน Evan เน€เธ—เนเธฒเธเธฑเนเธ");
                            } else {
                               int skill1 = slea.readInt();
                               int skill2 = slea.readInt();
 
                               for (int ixxxxxx : GameConstants.blockedSkills) {
                                  if (skill1 == ixxxxxx) {
-                                    c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิลนี้ได้");
+                                    c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธชเธเธดเธฅเธเธตเนเนเธ”เน");
                                     return;
                                  }
                               }
@@ -4724,20 +4724,20 @@ public class InventoryHandler {
                               if (!skillSPTo.isBeginnerSkill() && !skillSPFrom.isBeginnerSkill()) {
                                  if (GameConstants.getSkillBookForSkill(skill1) != GameConstants
                                        .getSkillBookForSkill(skill2)) {
-                                    c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิลต่างอาชีพได้");
+                                    c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธชเธเธดเธฅเธ•เนเธฒเธเธญเธฒเธเธตเธเนเธ”เน");
                                  } else if (c.getPlayer().getSkillLevel(skillSPTo) + 1 <= skillSPTo.getMaxLevel()
                                        && c.getPlayer().getSkillLevel(skillSPFrom) > 0
                                        && skillSPTo.canBeLearnedBy(c.getPlayer().getJob())) {
                                     if (skillSPTo.isFourthJob() && c.getPlayer().getSkillLevel(skillSPTo) + 1 > c
                                           .getPlayer().getMasterLevel(skillSPTo)) {
-                                       c.getPlayer().dropMessage(1, "จะเกินระดับ Master Level");
+                                       c.getPlayer().dropMessage(1, "เธเธฐเน€เธเธดเธเธฃเธฐเธ”เธฑเธ Master Level");
                                     } else {
                                        if (itemId >= 5050005) {
                                           if (GameConstants.getSkillBookForSkill(skill1) != (itemId - 5050005) * 2
                                                 && GameConstants.getSkillBookForSkill(skill1) != (itemId - 5050005) * 2
                                                       + 1) {
                                              c.getPlayer().dropMessage(1,
-                                                   "ไม่สามารถเพิ่ม SP อาชีพนี้โดยใช้การรีเซ็ตนี้ได้");
+                                                   "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธก SP เธญเธฒเธเธตเธเธเธตเนเนเธ”เธขเนเธเนเธเธฒเธฃเธฃเธตเน€เธเนเธ•เธเธตเนเนเธ”เน");
                                              break;
                                           }
                                        } else {
@@ -4759,7 +4759,7 @@ public class InventoryHandler {
 
                                           if (theJob != itemId - 5050000) {
                                              c.getPlayer().dropMessage(1,
-                                                   "ไม่สามารถลดสกิลนี้ได้ กรุณาใช้ SP Reset ที่ถูกต้อง");
+                                                   "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธ”เธชเธเธดเธฅเธเธตเนเนเธ”เน เธเธฃเธธเธ“เธฒเนเธเน SP Reset เธ—เธตเนเธ–เธนเธเธ•เนเธญเธ");
                                              break;
                                           }
                                        }
@@ -4782,7 +4782,7 @@ public class InventoryHandler {
                                     }
                                  }
                               } else {
-                                 c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มสกิล Beginner ได้");
+                                 c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธชเธเธดเธฅ Beginner เนเธ”เน");
                               }
                            }
                            break;
@@ -4791,7 +4791,7 @@ public class InventoryHandler {
                            int total = stats.getStr() + stats.getDex() + stats.getLuk() + stats.getInt()
                                  + c.getPlayer().getRemainingAp();
                            if (total > 32767) {
-                              c.getPlayer().dropMessage(1, "Stat สูงเกินไป ไม่สามารถใช้ใบรีเซ็ต AP ได้");
+                              c.getPlayer().dropMessage(1, "Stat เธชเธนเธเน€เธเธดเธเนเธ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธเธฃเธตเน€เธเนเธ• AP เนเธ”เน");
                            } else {
                               c.getPlayer().resetStats(4, 4, 4, 4);
                               used = true;
@@ -4809,7 +4809,7 @@ public class InventoryHandler {
                                  c.getPlayer().gainSP(skill.getMaxLevel(), skillbook);
                                  if (c.getPlayer().isGM()) {
                                     c.getPlayer().dropMessage(5,
-                                          skillbook + " 차 스킬 : " + skillid + " / " + skill.getMaxLevel() + " 증가");
+                                          skillbook + " ์ฐจ ์คํฌ : " + skillid + " / " + skill.getMaxLevel() + " ์ฆ๊ฐ€");
                                  }
                               }
                            }
@@ -4830,7 +4830,7 @@ public class InventoryHandler {
                                  String owner = itemxxxxxxxxxxxxxxxxxx.getOwner();
 
                                  for (int i = 1; i <= 9; i++) {
-                                    if (owner != null && !owner.isEmpty() && owner.equals(i + "성")) {
+                                    if (owner != null && !owner.isEmpty() && owner.equals(i + "์ฑ")) {
                                        change = false;
                                        break;
                                     }
@@ -4873,7 +4873,7 @@ public class InventoryHandler {
                               String owner = itemxxxxxxxxxxxxxxxxxxx.getOwner();
 
                               for (int ix = 1; ix <= 9; ix++) {
-                                 if (owner != null && !owner.isEmpty() && owner.equals(ix + "성")) {
+                                 if (owner != null && !owner.isEmpty() && owner.equals(ix + "์ฑ")) {
                                     change = false;
                                     break;
                                  }
@@ -5016,7 +5016,7 @@ public class InventoryHandler {
 
                            if (c.getPlayer().getInventory(MapleInventoryType.CASH).isFull(2)
                                  || c.getPlayer().getInventory(MapleInventoryType.USE).isFull(2)) {
-                              c.getPlayer().dropMessage(1, "กรุณาทำช่องว่างใน Cash และ Use อย่างน้อย 2 ช่อง");
+                              c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธ Cash เนเธฅเธฐ Use เธญเธขเนเธฒเธเธเนเธญเธข 2 เธเนเธญเธ");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -5040,30 +5040,30 @@ public class InventoryHandler {
                            if (rewardx.isAnnounce()) {
                               Center.Broadcast.broadcastGachaponMessage(
                                     c.getPlayer().getName()
-                                          + "님이 "
+                                          + "๋์ด "
                                           + ii.getName(5060048)
-                                          + "에서 {"
+                                          + "์—์ {"
                                           + ii.getName(itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getItemId())
-                                          + "} 아이템을 획득하였습니다",
+                                          + "} ์•์ดํ…์ ํ๋“ํ•์€์ต๋๋ค",
                                     5060048,
                                     itemxxxxxxxxxxxxxxxxxxxxxxxxxx);
                            }
 
                            StringBuilder sbx = new StringBuilder(
-                                 "골드애플 사용 (출현 아이템 : "
+                                 "๊ณจ๋“์• ํ” ์ฌ์ฉ (์ถํ ์•์ดํ… : "
                                        + ii.getName(itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getItemId())
                                        + "("
                                        + itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getItemId()
-                                       + "), 사용자 : "
+                                       + "), ์ฌ์ฉ์ : "
                                        + c.getPlayer().getName()
                                        + ")");
                            LoggingManager.putLog(new ConsumeLog(c.getPlayer(), 5060048, sbx));
                            c.getPlayer()
                                  .gainItem(
                                        itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getItemId(),
-                                       itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getQuantity(), false, -1L, "골드 애플을 통해 획득한 아이템");
+                                       itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getQuantity(), false, -1L, "๊ณจ๋“ ์• ํ”์ ํตํ•ด ํ๋“ํ• ์•์ดํ…");
                            c.getPlayer().gainItem(item2.getItemId(), item2.getQuantity(), false, -1L,
-                                 "골드 애플을 통해 획득한 아이템");
+                                 "๊ณจ๋“ ์• ํ”์ ํตํ•ด ํ๋“ํ• ์•์ดํ…");
                            c.getSession()
                                  .writeAndFlush(
                                        CWvsContext.getIncubatorResult(
@@ -5137,13 +5137,13 @@ public class InventoryHandler {
                               Equip eq = (Equip) itemxxxxxxxxxxx;
                               long price = GameConstants.getItemReleaseCost(eq.getItemId());
                               if (price > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
+                                 c.getPlayer().dropMessage(5, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Potential");
                                  return;
                               }
 
                               MapleInventoryManipulator.addById(
                                     c, 2430759, (short) 1, null, null, 0L,
-                                    FileoutputUtil.CurrentReadable_Date() + "에 어메이징 미라클 큐브에 의해 생성된 아이템");
+                                    FileoutputUtil.CurrentReadable_Date() + "์— ์–ด๋ฉ”์ด์ง• ๋ฏธ๋ผํด ํ๋ธ์— ์ํ•ด ์์ฑ๋ ์•์ดํ…");
                               int beforeGrade = eq.getState();
                               setPotential(GradeRandomOption.Amazing, true, eq);
                               int afterGrade = eq.getState();
@@ -5187,13 +5187,13 @@ public class InventoryHandler {
                               Equip eqxx = (Equip) itemxxxxxxxxxxxxxxxxxxxxxxxx;
                               long pricexx = GameConstants.getItemReleaseCost(eqxx.getItemId());
                               if (pricexx > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
+                                 c.getPlayer().dropMessage(5, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Potential");
                                  return;
                               }
 
                               MapleInventoryManipulator.addById(
                                     c, 2431893, (short) 1, null, null, 0L,
-                                    FileoutputUtil.CurrentReadable_Date() + "에 레드 큐브에 의해 생성된 아이템");
+                                    FileoutputUtil.CurrentReadable_Date() + "์— ๋ ๋“ ํ๋ธ์— ์ํ•ด ์์ฑ๋ ์•์ดํ…");
                               int beforeGradexx = eqxx.getState();
                               int beforeItemGrade = eqxx.getItemGrade();
                               setPotential(GradeRandomOption.Red, true, eqxx);
@@ -5258,7 +5258,7 @@ public class InventoryHandler {
                                                 levelUpCountx));
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถรีเซ็ต Potential ได้");
+                              c.getPlayer().dropMessage(5, "เธเนเธญเธเน€เธเนเธเธเธญเธ Use เนเธกเนเน€เธเธตเธขเธเธเธญ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธตเน€เธเนเธ• Potential เนเธ”เน");
                            }
                            break;
                         case 5062010:
@@ -5275,7 +5275,7 @@ public class InventoryHandler {
                               c.getPlayer().memorialCubeItemID = 5062010;
                               long pricex = GameConstants.getItemReleaseCost(eqx.getItemId());
                               if (pricex > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
+                                 c.getPlayer().dropMessage(5, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Potential");
                                  return;
                               }
 
@@ -5315,10 +5315,10 @@ public class InventoryHandler {
                                     .broadcastMessage(CField.showItemMemorialEffect(c.getPlayer().getId(), itemId));
                               MapleInventoryManipulator.addById(
                                     c, 2431894, (short) 1, null, null, 0L,
-                                    FileoutputUtil.CurrentReadable_Date() + "에 블랙 큐브에 의해 생성된 아이템");
+                                    FileoutputUtil.CurrentReadable_Date() + "์— ๋ธ”๋ ํ๋ธ์— ์ํ•ด ์์ฑ๋ ์•์ดํ…");
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถตั้งค่า Potential ได้");
+                              c.getPlayer().dropMessage(5, "เธเนเธญเธเน€เธเนเธเธเธญเธ Use เนเธกเนเน€เธเธตเธขเธเธเธญ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ•เธฑเนเธเธเนเธฒ Potential เนเธ”เน");
                            }
                            break;
                         case 5062400:
@@ -5347,20 +5347,20 @@ public class InventoryHandler {
                                  && c.getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() >= 1) {
                               Equip eqxxx = (Equip) itemxxxxxxxxxxxxxxxxxxxxxxxxx;
                               if (eqxxx.getState() <= 4) {
-                                 c.getPlayer().dropMessage(1, "กรุณาปลดล็อค Potential ก่อน");
+                                 c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธเธฅเธ”เธฅเนเธญเธ Potential เธเนเธญเธ");
                                  c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                                  return;
                               }
 
                               long pricexxx = GameConstants.getItemReleaseCost(eqxxx.getItemId());
                               if (pricexxx > c.getPlayer().getMeso()) {
-                                 c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
+                                 c.getPlayer().dropMessage(5, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Potential");
                                  return;
                               }
 
                               MapleInventoryManipulator.addById(
                                     c, 2430915, (short) 1, null, null, 0L,
-                                    FileoutputUtil.CurrentReadable_Date() + "에 에디셔널 큐브에 의해 생성된 아이템");
+                                    FileoutputUtil.CurrentReadable_Date() + "์— ์—๋””์…”๋ ํ๋ธ์— ์ํ•ด ์์ฑ๋ ์•์ดํ…");
                               int beforeGradexx = eqxxx.getAdditionalGrade();
                               setPotential(GradeRandomOption.Additional, true, eqxxx);
                               int afterGradexxx = eqxxx.getAdditionalGrade();
@@ -5423,7 +5423,7 @@ public class InventoryHandler {
 
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถรีเซ็ต Potential ได้");
+                              c.getPlayer().dropMessage(5, "เธเนเธญเธเน€เธเนเธเธเธญเธ Use เนเธกเนเน€เธเธตเธขเธเธเธญ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธตเน€เธเนเธ• Potential เนเธ”เน");
                            }
                            break;
                         case 5062503:
@@ -5439,11 +5439,11 @@ public class InventoryHandler {
 
                            if (itemxxxxxxxxxxxxxxxxxxxxxx == null
                                  || c.getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-                              c.getPlayer().dropMessage(5, "ช่องเก็บของ Use ไม่เพียงพอ ไม่สามารถตั้งค่า Potential ได้");
+                              c.getPlayer().dropMessage(5, "เธเนเธญเธเน€เธเนเธเธเธญเธ Use เนเธกเนเน€เธเธตเธขเธเธเธญ เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ•เธฑเนเธเธเนเธฒ Potential เนเธ”เน");
                            } else if (GameConstants.isAndroid(itemxxxxxxxxxxxxxxxxxxxxxx.getItemId())
                                  && (itemxxxxxxxxxxxxxxxxxxxxxx.getFlag()
                                        & ItemFlag.ANDROID_ACTIVATED.getValue()) == 0) {
-                              c.getPlayer().dropMessage(5, "Android ที่ยังไม่เปิดใช้งานไม่สามารถรีเซ็ต Potential ได้");
+                              c.getPlayer().dropMessage(5, "Android เธ—เธตเนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธเนเธเธฒเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธตเน€เธเนเธ• Potential เนเธ”เน");
                            } else {
                               Equip eqx = (Equip) itemxxxxxxxxxxxxxxxxxxxxxx;
                               Equip neq = (Equip) eqx.copy();
@@ -5452,7 +5452,7 @@ public class InventoryHandler {
                               if (eqx.getState() >= 17) {
                                  long pricex = GameConstants.getItemReleaseCost(eqx.getItemId());
                                  if (pricex > c.getPlayer().getMeso()) {
-                                    c.getPlayer().dropMessage(5, "Meso ไม่เพียงพอสำหรับรีเซ็ต Potential");
+                                    c.getPlayer().dropMessage(5, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Potential");
                                  } else {
                                     int beforeGradex = neq.getAdditionalGrade();
                                     if (DBConfig.isGanglim) {
@@ -5502,11 +5502,11 @@ public class InventoryHandler {
                                           CField.showItemMemorialEffect(c.getPlayer().getId(), itemId));
                                     MapleInventoryManipulator.addById(
                                           c, 2434782, (short) 1, null, null, 0L,
-                                          FileoutputUtil.CurrentReadable_Date() + "에 화이트 에디셔널 큐브에 의해 생성된 아이템");
+                                          FileoutputUtil.CurrentReadable_Date() + "์— ํ”์ดํธ ์—๋””์…”๋ ํ๋ธ์— ์ํ•ด ์์ฑ๋ ์•์ดํ…");
                                     used = true;
                                  }
                               } else {
-                                 c.getPlayer().dropMessage(5, "ต้องเปิดใช้งาน Potential ก่อนจึงจะใช้ได้");
+                                 c.getPlayer().dropMessage(5, "เธ•เนเธญเธเน€เธเธดเธ”เนเธเนเธเธฒเธ Potential เธเนเธญเธเธเธถเธเธเธฐเนเธเนเนเธ”เน");
                               }
                            }
                            break;
@@ -5734,18 +5734,18 @@ public class InventoryHandler {
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            if (reward.isAnnounce() && !DBConfig.isGanglim) {
                               Center.Broadcast.broadcastGachaponMessage(
-                                    c.getPlayer().getName() + "님이 " + ii.getName(5068300) + "에서 {"
-                                          + ii.getName(itemxxxxxxxxxxx.getItemId()) + "} 아이템을 획득하였습니다",
+                                    c.getPlayer().getName() + "๋์ด " + ii.getName(5068300) + "์—์ {"
+                                          + ii.getName(itemxxxxxxxxxxx.getItemId()) + "} ์•์ดํ…์ ํ๋“ํ•์€์ต๋๋ค",
                                     5068300,
                                     itemxxxxxxxxxxx);
                            }
 
                            StringBuilder sbx = new StringBuilder(
-                                 "위습의 원더베리 사용 (출현 아이템 : "
+                                 "์์ต์ ์๋”๋ฒ ๋ฆฌ ์ฌ์ฉ (์ถํ ์•์ดํ… : "
                                        + ii.getName(itemxxxxxxxxxxx.getItemId())
                                        + "("
                                        + itemxxxxxxxxxxx.getItemId()
-                                       + "), 사용자 : "
+                                       + "), ์ฌ์ฉ์ : "
                                        + c.getPlayer().getName()
                                        + ")");
                            LoggingManager.putLog(new ConsumeLog(c.getPlayer(), 5068300, sbx));
@@ -5848,7 +5848,7 @@ public class InventoryHandler {
                               Equip m = (Equip) materialItem;
                               if (!b.isSpecialRoyal() || !m.isSpecialRoyal()) {
                                  c.getPlayer().dropMessage(5,
-                                       "การผสมทำได้เฉพาะกับไอเทมที่สร้างจาก Maple Ganglim Coupon และ Masterpiece เท่านั้น");
+                                       "เธเธฒเธฃเธเธชเธกเธ—เธณเนเธ”เนเน€เธเธเธฒเธฐเธเธฑเธเนเธญเน€เธ—เธกเธ—เธตเนเธชเธฃเนเธฒเธเธเธฒเธ Maple Ganglim Coupon เนเธฅเธฐ Masterpiece เน€เธ—เนเธฒเธเธฑเนเธ");
                                  c.getPlayer().send(CField.getMasterPieceFailed(2));
                                  c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                                  return;
@@ -5880,8 +5880,8 @@ public class InventoryHandler {
                                     rewardEquip.setCsOption3(10000 + Randomizer.rand(1, 4) * 1000 + stat);
                                     rewardEquip.setCsOptionExpireDate(System.currentTimeMillis() + 31536000000L);
                                     Center.Broadcast.broadcastGachaponMessage(
-                                          c.getPlayer().getName() + "님이 " + ii.getName(5069000) + "에서 {"
-                                                + ii.getName(rewardEquip.getItemId()) + "} 아이템을 획득하였습니다",
+                                          c.getPlayer().getName() + "๋์ด " + ii.getName(5069000) + "์—์ {"
+                                                + ii.getName(rewardEquip.getItemId()) + "} ์•์ดํ…์ ํ๋“ํ•์€์ต๋๋ค",
                                           5068300,
                                           rewardEquip);
                                  } else {
@@ -5916,15 +5916,15 @@ public class InventoryHandler {
                                  }
 
                                  StringBuilder sbx = new StringBuilder(
-                                       "마스터피스 사용 (출현 아이템 : "
+                                       "๋ง์คํฐํ”ผ์ค ์ฌ์ฉ (์ถํ ์•์ดํ… : "
                                              + ii.getName(rewardEquip.getItemId())
                                              + "("
                                              + rewardEquip.getItemId()
-                                             + "), 공/마 : "
+                                             + "), ๊ณต/๋ง : "
                                              + atk
-                                             + ", 스탯 : "
+                                             + ", ์คํฏ : "
                                              + stat
-                                             + ", 사용자 : "
+                                             + ", ์ฌ์ฉ์ : "
                                              + c.getPlayer().getName()
                                              + ")");
                                  LoggingManager.putLog(new ConsumeLog(c.getPlayer(), itemId, sbx));
@@ -5950,7 +5950,7 @@ public class InventoryHandler {
                            }
 
                            if (basePet.getWonderGrade() == -1 || materialPet.getWonderGrade() == -1) {
-                              c.getPlayer().dropMessage(1, "ไม่ใช่สัตว์เลี้ยงที่ได้จาก Wisp's Wonder Berry จึงไม่สามารถใช้ได้");
+                              c.getPlayer().dropMessage(1, "เนเธกเนเนเธเนเธชเธฑเธ•เธงเนเน€เธฅเธตเนเธขเธเธ—เธตเนเนเธ”เนเธเธฒเธ Wisp's Wonder Berry เธเธถเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เน");
                               c.getPlayer().send(CField.getMasterPieceFailed(2));
                               c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                               return;
@@ -5992,15 +5992,15 @@ public class InventoryHandler {
                                  .removeItem(materialItemPos, (short) 1, false);
                            if (rewardxx.isAnnounce()) {
                               Center.Broadcast.broadcastGachaponMessage(
-                                    c.getPlayer().getName() + "님이 " + ii.getName(5069100) + "에서 {"
-                                          + ii.getName(itemr.getItemId()) + "} 아이템을 획득하였습니다",
+                                    c.getPlayer().getName() + "๋์ด " + ii.getName(5069100) + "์—์ {"
+                                          + ii.getName(itemr.getItemId()) + "} ์•์ดํ…์ ํ๋“ํ•์€์ต๋๋ค",
                                     5068300,
                                     itemr);
                            }
 
                            StringBuilder sbx = new StringBuilder(
-                                 "루나 크리스탈 사용 (출현 아이템 : " + ii.getName(itemr.getItemId()) + "(" + itemr.getItemId()
-                                       + "), 사용자 : " + c.getPlayer().getName() + ")");
+                                 "๋ฃจ๋ ํฌ๋ฆฌ์คํ ์ฌ์ฉ (์ถํ ์•์ดํ… : " + ii.getName(itemr.getItemId()) + "(" + itemr.getItemId()
+                                       + "), ์ฌ์ฉ์ : " + c.getPlayer().getName() + ")");
                            LoggingManager.putLog(new ConsumeLog(c.getPlayer(), itemId, sbx));
                            short TI = MapleInventoryManipulator.addbyItem(c, itemr, false);
                            c.getSession().writeAndFlush(CWvsContext.onCharacterModified(c.getPlayer(), -1L));
@@ -6013,11 +6013,11 @@ public class InventoryHandler {
                         }
                         case 5070000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6035,11 +6035,11 @@ public class InventoryHandler {
                            break;
                         case 5071000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6057,11 +6057,11 @@ public class InventoryHandler {
                            break;
                         case 5072000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6083,11 +6083,11 @@ public class InventoryHandler {
                            break;
                         case 5073000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6112,11 +6112,11 @@ public class InventoryHandler {
                            break;
                         case 5074000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6143,11 +6143,11 @@ public class InventoryHandler {
                         case 5075004:
                         case 5075005:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else {
                               int tvType = itemId % 10;
                               if (tvType == 3) {
@@ -6182,11 +6182,11 @@ public class InventoryHandler {
                         case 5076000: {
                            MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6227,18 +6227,18 @@ public class InventoryHandler {
                         }
                         case 5076100:
                            if (c.getPlayer().getLevel() < 200) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 200 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 200 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else {
                               String vx = c.getPlayer().getOneInfoQuest(1234677, "last_time");
                               if (vx != null && !vx.isEmpty()) {
                                  time = Long.parseLong(vx);
                                  if (!DBConfig.isGanglim) {
                                     if (System.currentTimeMillis() - time <= 60000L) {
-                                       c.getPlayer().dropMessage(5, "สามารถใช้ได้ทุกๆ 1 นาที");
+                                       c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเธ—เธธเธเน 1 เธเธฒเธ—เธต");
                                        break;
                                     }
                                  } else if (System.currentTimeMillis() - time <= 10000L) {
-                                    c.getPlayer().dropMessage(5, "สามารถใช้ได้ทุกๆ 10 วินาที");
+                                    c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเธ—เธธเธเน 10 เธงเธดเธเธฒเธ—เธต");
                                     break;
                                  }
                               }
@@ -6274,11 +6274,11 @@ public class InventoryHandler {
                            break;
                         case 5077000:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               byte numLines = slea.readByte();
                               if (numLines > 3) {
@@ -6341,11 +6341,11 @@ public class InventoryHandler {
                         case 5390028:
                         case 5390029:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "ต้องมีเลเวล 10 ขึ้นไป");
+                              c.getPlayer().dropMessage(5, "เธ•เนเธญเธเธกเธตเน€เธฅเน€เธงเธฅ 10 เธเธถเนเธเนเธ");
                            } else if (c.getPlayer().getMapId() == 180000002) {
-                              c.getPlayer().dropMessage(5, "ไม่สามารถใช้ได้ที่นี่");
+                              c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเธ—เธตเนเธเธตเน");
                            } else if (!c.getPlayer().getCheatTracker().canAvatarSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้อีกครั้งใน 5 นาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเธญเธตเธเธเธฃเธฑเนเธเนเธ 5 เธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               List<String> lines = new LinkedList<>();
                               StringBuilder sbx = new StringBuilder();
@@ -6368,11 +6368,11 @@ public class InventoryHandler {
                            break;
                         case 5079004:
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "เลเวลต่ำกว่า 10 ไม่สามารถใช้งานได้");
+                              c.getPlayer().dropMessage(5, "เน€เธฅเน€เธงเธฅเธ•เนเธณเธเธงเนเธฒ 10 เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน");
                            } else if (c.getPlayer().getMapId() == 180000002) {
                               c.getPlayer().dropMessage(5, "Cannot be used here.");
                            } else if (!c.getPlayer().getCheatTracker().canSmega()) {
-                              c.getPlayer().dropMessage(5, "สามารถใช้ได้เพียงครั้งเดียวใน 10 วินาที");
+                              c.getPlayer().dropMessage(5, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเน€เธเธตเธขเธเธเธฃเธฑเนเธเน€เธ”เธตเธขเธงเนเธ 10 เธงเธดเธเธฒเธ—เธต");
                            } else if (!c.getChannelServer().getMegaphoneMuteState()) {
                               String message = slea.readMapleAsciiString();
                               if (message.length() <= 65) {
@@ -6684,7 +6684,7 @@ public class InventoryHandler {
                            }
 
                            if (petx == null) {
-                              c.getPlayer().dropMessage(1, "ค้นหาสัตว์เลี้ยงล้มเหลว!");
+                              c.getPlayer().dropMessage(1, "เธเนเธเธซเธฒเธชเธฑเธ•เธงเนเน€เธฅเธตเนเธขเธเธฅเนเธกเน€เธซเธฅเธง!");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -6726,7 +6726,7 @@ public class InventoryHandler {
                            }
 
                            if (pet == null) {
-                              c.getPlayer().dropMessage(1, "ค้นหาสัตว์เลี้ยงล้มเหลว!");
+                              c.getPlayer().dropMessage(1, "เธเนเธเธซเธฒเธชเธฑเธ•เธงเนเน€เธฅเธตเนเธขเธเธฅเนเธกเน€เธซเธฅเธง!");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -6752,7 +6752,7 @@ public class InventoryHandler {
                               c.getSession().writeAndFlush(CWvsContext.getOwlSearched(itemSearch, hms));
                               used = true;
                            } else {
-                              c.getPlayer().dropMessage(1, "ไม่พบไอเทม");
+                              c.getPlayer().dropMessage(1, "เนเธกเนเธเธเนเธญเน€เธ—เธก");
                            }
                            break;
                         case 5240000:
@@ -6858,7 +6858,7 @@ public class InventoryHandler {
                               if (e2.isRunning()) {
                                  for (int ixxxxx : e2.getType().mapids) {
                                     if (c.getPlayer().getMapId() == ixxxxx) {
-                                       c.getPlayer().dropMessage(5, "ไม่สามารถใช้ที่นี่ได้");
+                                       c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธ—เธตเนเธเธตเนเนเธ”เน");
                                        c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                                        return;
                                     }
@@ -6873,14 +6873,14 @@ public class InventoryHandler {
                         case 5452001:
                            for (int ixxxx : GameConstants.blockedMaps) {
                               if (c.getPlayer().getMapId() == ixxxx) {
-                                 c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
+                                 c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธณเธชเธฑเนเธเธเธตเนเธ—เธตเนเธเธตเนเนเธ”เน");
                                  c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                                  return;
                               }
                            }
 
                            if (c.getPlayer().getLevel() < 10) {
-                              c.getPlayer().dropMessage(5, "ต้องมีเลเวล 10 ขึ้นไปเพื่อใช้คำสั่งนี้");
+                              c.getPlayer().dropMessage(5, "เธ•เนเธญเธเธกเธตเน€เธฅเน€เธงเธฅ 10 เธเธถเนเธเนเธเน€เธเธทเนเธญเนเธเนเธเธณเธชเธฑเนเธเธเธตเน");
                            } else if (c.getPlayer().getMap().getSquadByMap() == null
                                  && c.getPlayer().getEventInstance() == null
                                  && c.getPlayer().getMap().getEMByMap() == null
@@ -6893,10 +6893,10 @@ public class InventoryHandler {
                                     && c.getPlayer().getMapId() / 10 != 13003000) {
                                  MapleShopFactory.getInstance().getShop(61).sendShop(c);
                               } else {
-                                 c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
+                                 c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธณเธชเธฑเนเธเธเธตเนเธ—เธตเนเธเธตเนเนเธ”เน");
                               }
                            } else {
-                              c.getPlayer().dropMessage(5, "ไม่สามารถใช้คำสั่งนี้ที่นี่ได้");
+                              c.getPlayer().dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธณเธชเธฑเนเธเธเธตเนเธ—เธตเนเธเธตเนเนเธ”เน");
                            }
                            break;
                         case 5450005:
@@ -7076,7 +7076,7 @@ public class InventoryHandler {
                         case 5520000:
                         case 5520001:
                            if (GameConstants.isYetiPinkBean(c.getPlayer().getJob())) {
-                              c.getPlayer().dropMessage(5, "Pink Bean และ Yeti ไม่สามารถใช้ Scissors of Karma ได้");
+                              c.getPlayer().dropMessage(5, "Pink Bean เนเธฅเธฐ Yeti เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเน Scissors of Karma เนเธ”เน");
                               c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -7147,7 +7147,7 @@ public class InventoryHandler {
                         case 5700000:
                            slea.skip(8);
                            if (c.getPlayer().getAndroid() == null) {
-                              c.getPlayer().dropMessage(1, "ไม่มี Android ที่สวมใส่อยู่ ไม่สามารถตั้งชื่อได้");
+                              c.getPlayer().dropMessage(1, "เนเธกเนเธกเธต Android เธ—เธตเนเธชเธงเธกเนเธชเนเธญเธขเธนเน เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ•เธฑเนเธเธเธทเนเธญเนเธ”เน");
                            } else {
                               String nName = slea.readMapleAsciiString();
 
@@ -7600,7 +7600,7 @@ public class InventoryHandler {
                   return;
                } else if (MapleItemInformationProvider.getInstance().isPickupBlocked(mapitem.getItemId())) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(5, "ไอเทมนี้เก็บไม่ได้");
+                  c.getPlayer().dropMessage(5, "เนเธญเน€เธ—เธกเธเธตเนเน€เธเนเธเนเธกเนเนเธ”เน");
                } else if (c.getPlayer().inPVP() && Integer
                      .parseInt(c.getPlayer().getEventInstance().getProperty("ice")) == c.getPlayer().getId()) {
                   c.getSession().writeAndFlush(CWvsContext.InventoryPacket.getInventoryFull());
@@ -7989,7 +7989,7 @@ public class InventoryHandler {
          if (!DBConfig.isGanglim && id == 2432970) {
             int rand = ThreadLocalRandom.current().nextInt(500) + 500;
             c.getPlayer().addHonorExp(rand);
-            c.getPlayer().dropMessage(5, rand + " ได้รับ Honor EXP");
+            c.getPlayer().dropMessage(5, rand + " เนเธ”เนเธฃเธฑเธ Honor EXP");
             return true;
          }
 
@@ -8068,17 +8068,17 @@ public class InventoryHandler {
 
       if (!byPet) {
          StringBuilder sb = new StringBuilder();
-         sb.append("아이템 획득 ");
-         sb.append(" (획득 방법 : ");
+         sb.append("์•์ดํ… ํ๋“ ");
+         sb.append(" (ํ๋“ ๋ฐฉ๋ฒ• : ");
          if (byPet) {
-            sb.append("펫 줍기)");
+            sb.append("ํซ ์ค๊ธฐ)");
          } else {
-            sb.append("직접 줍기)");
+            sb.append("์ง์ ‘ ์ค๊ธฐ)");
          }
 
          long serialNumber = 0L;
          if (mapitem.getItem() instanceof Equip) {
-            sb.append("(장비옵션");
+            sb.append("(์ฅ๋น์ต์…");
             sb.append(((Equip) mapitem.getItem()).toString());
             sb.append(")");
             serialNumber = ((Equip) mapitem.getItem()).getSerialNumberEquip();
@@ -8105,7 +8105,7 @@ public class InventoryHandler {
    public static final void addMedalString(MapleCharacter c, StringBuilder sb) {
       int grade = c.getKeyValue(190823, "grade");
       String[] gradeNameList = new String[] {
-            "뉴비", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grand Master", "Challenger", "Overload",
+            "๋ด๋น", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grand Master", "Challenger", "Overload",
             "Vega", "Sirius"
       };
       String gradeName = gradeNameList[grade];
@@ -8160,7 +8160,7 @@ public class InventoryHandler {
             c.getSession().writeAndFlush(CWvsContext.getOwlSearched(itemSearch, hms));
             MapleInventoryManipulator.removeById(c, MapleInventoryType.USE, itemid, 1, true, false);
          } else {
-            c.getPlayer().dropMessage(1, "ไม่พบไอเทม");
+            c.getPlayer().dropMessage(1, "เนเธกเนเธเธเนเธญเน€เธ—เธก");
          }
       }
 
@@ -8235,9 +8235,9 @@ public class InventoryHandler {
                      c.getSession().writeAndFlush(PlayerShopPacket.getHiredMerch(c.getPlayer(), merchant, false));
                   } else if (merchant.isOpen() && merchant.isAvailable()) {
                      if (merchant.getFreeSlot() == -1) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถเข้าห้องได้เนื่องจากเต็มแล้ว");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเธซเนเธญเธเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเน€เธ•เนเธกเนเธฅเนเธง");
                      } else if (merchant.isInBlackList(c.getPlayer().getName())) {
-                        c.getPlayer().dropMessage(1, "ไม่สามารถเข้าร้านค้านี้ได้");
+                        c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเธฃเนเธฒเธเธเนเธฒเธเธตเนเนเธ”เน");
                      } else {
                         c.getPlayer().setPlayerShop(merchant);
                         merchant.addVisitor(c.getPlayer());
@@ -8291,10 +8291,10 @@ public class InventoryHandler {
                c.getPlayer().changeMap(target, target.getPortal(0));
                used = true;
             } else {
-               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
+               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเธ—เธตเนเธเธฑเนเธเนเธ”เน");
             }
          } else {
-            c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
+            c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเธ—เธตเนเธเธฑเนเธเนเธ”เน");
          }
       } else {
          String name = slea.readMapleAsciiString();
@@ -8306,10 +8306,10 @@ public class InventoryHandler {
                         .check(c.getChannelServer().getMapFactory().getMap(victim.getMapId()).getFieldLimit())
                   || victim.isInBlockedMap()
                   || c.getPlayer().isInBlockedMap()) {
-               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
+               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเธ—เธตเนเธเธฑเนเธเนเธ”เน");
             } else if (itemId != 5041000 && itemId != 5040004 && itemId != 5041001
                   && victim.getMapId() / 100000000 != c.getPlayer().getMapId() / 100000000) {
-               c.getPlayer().dropMessage(1, "ไม่สามารถไปที่นั่นได้");
+               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเธ—เธตเนเธเธฑเนเธเนเธ”เน");
             } else {
                c.getPlayer().changeMap(victim.getMap(), victim.getMap().findClosestPortal(victim.getTruePosition()));
                used = true;
@@ -8354,7 +8354,7 @@ public class InventoryHandler {
          chr.updateOneInfo(12334, "preventAutoBuff", String.valueOf((int) use));
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
-         chr.dropMessage(5, "ฟังก์ชั่นนี้ยังไม่เปิดใช้งานในขณะนี้");
+         chr.dropMessage(5, "เธเธฑเธเธเนเธเธฑเนเธเธเธตเนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธเนเธเธฒเธเนเธเธเธ“เธฐเธเธตเน");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          c.getSession().writeAndFlush(PetPacket.updatePetAutoPetFood());
       }
@@ -8416,7 +8416,7 @@ public class InventoryHandler {
             .getSession()
             .writeAndFlush(CWvsContext.InventoryPacket
                   .updateEquipSlot(chr.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10)));
-      chr.dropMessage(5, "อุปกรณ์ของ Zero จะกลับสู่สภาพเริ่มต้นแทนที่จะถูกทำลาย");
+      chr.dropMessage(5, "เธญเธธเธเธเธฃเธ“เนเธเธญเธ Zero เธเธฐเธเธฅเธฑเธเธชเธนเนเธชเธ เธฒเธเน€เธฃเธดเนเธกเธ•เนเธเนเธ—เธเธ—เธตเนเธเธฐเธ–เธนเธเธ—เธณเธฅเธฒเธข");
    }
 
    public static void UseNameChangeCoupon(PacketDecoder slea, MapleClient c) {
@@ -8571,12 +8571,12 @@ public class InventoryHandler {
                         victimslot < 0 ? MapleInventoryType.EQUIPPED : MapleInventoryType.EQUIP, victim));
          }
 
-         StringBuilder sb = new StringBuilder("황금 망치 사용 (");
-         sb.append("계정 : ");
+         StringBuilder sb = new StringBuilder("ํฉ๊ธ ๋ง์น ์ฌ์ฉ (");
+         sb.append("๊ณ์ • : ");
          sb.append(c.getAccountName());
-         sb.append(", 캐릭터 : ");
+         sb.append(", ์บ๋ฆญํฐ : ");
          sb.append(c.getPlayer().getName());
-         sb.append(" (정보 : ");
+         sb.append(" (์ •๋ณด : ");
          sb.append(victim.toString());
          sb.append("))");
          LoggingManager.putLog(
@@ -8634,11 +8634,11 @@ public class InventoryHandler {
       if (item != null) {
          if (item.getItemId() == useItemID) {
             if (c.gainCharacterSlot()) {
-               c.getPlayer().dropMessage(5, "เพิ่มช่องตัวละครเรียบร้อยแล้ว");
+               c.getPlayer().dropMessage(5, "เน€เธเธดเนเธกเธเนเธญเธเธ•เธฑเธงเธฅเธฐเธเธฃเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
                c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
                MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.USE, (byte) useItemSlot, (short) 1, true);
             } else {
-               c.getPlayer().dropMessage(1, "ไม่สามารถเพิ่มช่องตัวละครได้อีก");
+               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธเนเธญเธเธ•เธฑเธงเธฅเธฐเธเธฃเนเธ”เนเธญเธตเธ");
                c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             }
          }
@@ -8669,7 +8669,7 @@ public class InventoryHandler {
                   if (chr.getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1
                         || chr.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                         || chr.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
-                     c.getPlayer().dropMessage(1, "กรุณาทำช่องว่างใน Equip, Use, Etc อย่างน้อย 1 ช่อง");
+                     c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธ Equip, Use, Etc เธญเธขเนเธฒเธเธเนเธญเธข 1 เธเนเธญเธ");
                      chr.send(CWvsContext.enableActions(chr));
                      return;
                   }
@@ -8733,13 +8733,13 @@ public class InventoryHandler {
                            Integer.parseInt(chr.getOneInfo(QuestExConstants.HasteEvent.getQuestID(), "booster")) + 1
                                  + "");
                      if (chr.getOneInfo(QuestExConstants.HasteEvent.getQuestID(), "openBox").equals("6")) {
-                        chr.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "str", "히든 미션이 열렸습니다!");
+                        chr.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "str", "ํ๋“  ๋ฏธ์…์ด ์—ด๋ ธ์ต๋๋ค!");
                         allClear = true;
                      } else {
                         int stage = Integer
                               .parseInt(chr.getOneInfo(QuestExConstants.HasteEvent.getQuestID(), "openBox")) + 1;
                         chr.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "str",
-                              stage + "단계 상자 도전 중! 일일 미션 1개를 완료하세요!");
+                              stage + "๋จ๊ณ ์์ ๋์  ์ค‘! ์ผ์ผ ๋ฏธ์… 1๊ฐ๋ฅผ ์๋ฃํ•์ธ์”!");
                      }
 
                      chr.send(CWvsContext.enableActions(chr));
@@ -8764,7 +8764,7 @@ public class InventoryHandler {
                      }
                   }
                } else {
-                  chr.dropMessage(5, "กรุณาทำช่องว่างในช่อง Use และ Etc อย่างละ 1 ช่อง");
+                  chr.dropMessage(5, "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธเธเนเธญเธ Use เนเธฅเธฐ Etc เธญเธขเนเธฒเธเธฅเธฐ 1 เธเนเธญเธ");
                }
                break;
             case 1:
@@ -8779,7 +8779,7 @@ public class InventoryHandler {
                      chr.updateOneInfo(500081, "clear", "1");
                      chr.forceCompleteQuest(500082);
                   } else {
-                     chr.dropMessage(5, "กรุณาทำช่องว่างใน Equip และ Use อย่างละ 1 ช่อง");
+                     chr.dropMessage(5, "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธ Equip เนเธฅเธฐ Use เธญเธขเนเธฒเธเธฅเธฐ 1 เธเนเธญเธ");
                   }
                }
          }
@@ -8872,16 +8872,16 @@ public class InventoryHandler {
             String cubeString = "";
             switch (option) {
                case Red:
-                  cubeString = "레드 큐브";
+                  cubeString = "๋ ๋“ ํ๋ธ";
                   break;
                case Black:
-                  cubeString = "블랙 큐브";
+                  cubeString = "๋ธ”๋ ํ๋ธ";
                   break;
                case Additional:
-                  cubeString = "에디셔널 큐브";
+                  cubeString = "์—๋””์…”๋ ํ๋ธ";
                   break;
                case AmazingAdditional:
-                  cubeString = "화이트 에디셔널 큐브";
+                  cubeString = "ํ”์ดํธ ์—๋””์…”๋ ํ๋ธ";
                   break;
                default:
                   return;
@@ -8890,13 +8890,13 @@ public class InventoryHandler {
             String infoString = "";
             switch (beforeItemGrade) {
                case 1:
-                  infoString = "레어에서 에픽";
+                  infoString = "๋ ์–ด์—์ ์—ํ”ฝ";
                   break;
                case 2:
-                  infoString = "에픽에서 유니크";
+                  infoString = "์—ํ”ฝ์—์ ์ ๋ํฌ";
                   break;
                case 3:
-                  infoString = "유니크에서 레전더리";
+                  infoString = "์ ๋ํฌ์—์ ๋ ์ ๋”๋ฆฌ";
             }
 
             int tryCount = c.getPlayer().getOneInfoQuestInteger(QuestExConstants.CubeLevelUp.getQuestID(), levelUpType);
@@ -8942,22 +8942,22 @@ public class InventoryHandler {
                String upgradeGrade = "";
                switch (beforeItemGrade) {
                   case 1:
-                     upgradeGrade = "에픽";
+                     upgradeGrade = "์—ํ”ฝ";
                      break;
                   case 2:
-                     upgradeGrade = "유니크";
+                     upgradeGrade = "์ ๋ํฌ";
                      break;
                   case 3:
-                     upgradeGrade = "레전더리";
+                     upgradeGrade = "๋ ์ ๋”๋ฆฌ";
                }
 
                boolean isMemorialCube = option == GradeRandomOption.AmazingAdditional
                      || option == GradeRandomOption.Black;
                if (DBConfig.isJin) {
                   c.getPlayer().dropMessage(5,
-                        "[Grade Ceiling] " + cubeString + " บรรลุจำนวนเป้าหมายการการันตีระดับ " + upgradeGrade + " ระดับเพิ่มขึ้นอย่างแน่นอน");
+                        "[Grade Ceiling] " + cubeString + " เธเธฃเธฃเธฅเธธเธเธณเธเธงเธเน€เธเนเธฒเธซเธกเธฒเธขเธเธฒเธฃเธเธฒเธฃเธฑเธเธ•เธตเธฃเธฐเธ”เธฑเธ " + upgradeGrade + " เธฃเธฐเธ”เธฑเธเน€เธเธดเนเธกเธเธถเนเธเธญเธขเนเธฒเธเนเธเนเธเธญเธ");
                   if (isMemorialCube) {
-                     c.getPlayer().dropMessage(5, "[Grade Ceiling] 해당 큐브는 등급이 상승되어 Before 옵션을 선택해도 천장 목표 개수는 초기화됩니다.");
+                     c.getPlayer().dropMessage(5, "[Grade Ceiling] ํ•ด๋น ํ๋ธ๋” ๋“ฑ๊ธ์ด ์์น๋์–ด Before ์ต์…์ ์ ํํ•ด๋ ์ฒ์ฅ ๋ชฉํ‘ ๊ฐ์๋” ์ด๊ธฐํ”๋ฉ๋๋ค.");
                   }
                }
             } else {
@@ -8965,24 +8965,24 @@ public class InventoryHandler {
                      String.valueOf(tryCount + 1));
                c.getPlayer().updateOneInfo(questId, linkedType, String.valueOf(tryCount + 1));
                if (DBConfig.isJin) {
-                  c.getPlayer().dropMessage(5, "[Grade Ceiling] " + cubeString + " โดยการใช้ " + infoString + "จำนวนเป้าหมายที่เหลือ ("
+                  c.getPlayer().dropMessage(5, "[Grade Ceiling] " + cubeString + " เนเธ”เธขเธเธฒเธฃเนเธเน " + infoString + "เธเธณเธเธงเธเน€เธเนเธฒเธซเธกเธฒเธขเธ—เธตเนเน€เธซเธฅเธทเธญ ("
                         + (tryCount + 1) + "/" + levelUpCount + ")");
                   if (levelUpCount == tryCount + 1) {
                      String upgradeGrade = "";
                      switch (beforeItemGrade) {
                         case 1:
-                           upgradeGrade = "에픽";
+                           upgradeGrade = "์—ํ”ฝ";
                            break;
                         case 2:
-                           upgradeGrade = "유니크";
+                           upgradeGrade = "์ ๋ํฌ";
                            break;
                         case 3:
-                           upgradeGrade = "레전더리";
+                           upgradeGrade = "๋ ์ ๋”๋ฆฌ";
                      }
 
                      c.getPlayer()
-                           .dropMessage(5, "[Grade Ceiling] " + cubeString + " บรรลุจำนวนเป้าหมายการการันตีระดับ 다음 " + infoString
-                                 + " เมื่อพยายามอัพเกรดระดับ " + upgradeGrade + " ระดับจะเพิ่มขึ้นอย่างแน่นอน");
+                           .dropMessage(5, "[Grade Ceiling] " + cubeString + " เธเธฃเธฃเธฅเธธเธเธณเธเธงเธเน€เธเนเธฒเธซเธกเธฒเธขเธเธฒเธฃเธเธฒเธฃเธฑเธเธ•เธตเธฃเธฐเธ”เธฑเธ ๋ค์ " + infoString
+                                 + " เน€เธกเธทเนเธญเธเธขเธฒเธขเธฒเธกเธญเธฑเธเน€เธเธฃเธ”เธฃเธฐเธ”เธฑเธ " + upgradeGrade + " เธฃเธฐเธ”เธฑเธเธเธฐเน€เธเธดเนเธกเธเธถเนเธเธญเธขเนเธฒเธเนเธเนเธเธญเธ");
                   }
                }
             }

@@ -1,4 +1,4 @@
-package objects.fields.child.pollo;
+﻿package objects.fields.child.pollo;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -35,7 +35,7 @@ public class Field_FlameWolf extends Field {
    public void onEnter(MapleCharacter player) {
       this.resetFully(false);
       super.onEnter(player);
-      player.send(CField.startMapEffect("불꽃늑대를 처치할 용사가 늘었군. 어서 녀석을 공격해! 머무를 수 있는 시간은 30초 뿐이야!", 5120159, true, 30));
+      player.send(CField.startMapEffect("๋ถ๊ฝ๋‘๋€๋ฅผ ์ฒ์นํ•  ์ฉ์ฌ๊ฐ€ ๋์—๊ตฐ. ์–ด์ ๋…€์์ ๊ณต๊ฒฉํ•ด! ๋จธ๋ฌด๋ฅผ ์ ์๋” ์๊ฐ์€ 30์ด ๋ฟ์ด์•ผ!", 5120159, true, 30));
       player.send(CField.getClock(30));
       player.setEnterFlameWolfTime(System.currentTimeMillis());
       if (this.getAllMonstersThreadsafe().size() <= 0) {

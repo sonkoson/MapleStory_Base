@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import objects.fields.Portal;
 import objects.users.MapleClient;

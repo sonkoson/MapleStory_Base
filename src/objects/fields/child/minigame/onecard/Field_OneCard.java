@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.onecard;
+﻿package objects.fields.child.minigame.onecard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +129,7 @@ public class Field_OneCard extends Field {
       );
       this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(CField.playSound("Sound/MiniGame.img/oneCard/myturn"));
       this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(CWvsContext.enableActions(this.currentPlayer.getPlayer()));
-      this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowText("당신의 턴입니다."));
+      this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowText("๋น์ ์ ํด์…๋๋ค."));
    }
 
    public void skipPlayer() {
@@ -164,11 +164,11 @@ public class Field_OneCard extends Field {
          winner.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowScreenEffect("Effect/screeneff/victory"));
          this.broadcastMessage(winner.getPlayer(), OneCardPacket.onShowScreenEffect("Effect/screeneff/gameover"), false);
          String winnerName = winner.getPlayer().getName();
-         this.broadcastMessage(OneCardPacket.onShowText(winnerName + "คุณชนะ! จบเกม"));
+         this.broadcastMessage(OneCardPacket.onShowText(winnerName + "เธเธธเธ“เธเธเธฐ! เธเธเน€เธเธก"));
 
          for (OneCardPlayer playerx : this.gameDlg.getIntactPlayerList()) {
             if (playerx.getPlayer() != null) {
-               playerx.getPlayer().dropMessage(6, winnerName + "คุณชนะ! จบเกม");
+               playerx.getPlayer().dropMessage(6, winnerName + "เธเธธเธ“เธเธเธฐ! เธเธเน€เธเธก");
             }
          }
 
@@ -269,16 +269,16 @@ public class Field_OneCard extends Field {
             this.broadcastMessage(OneCardPacket.onEffectResult(2, 3, this.currentPlayer.getPlayer().getId(), false));
             break;
          case 8:
-            this.broadcastMessage(OneCardPacket.onShowText("마법 : 색 바꾸기!"));
+            this.broadcastMessage(OneCardPacket.onShowText("๋ง๋ฒ• : ์ ๋ฐ”๊พธ๊ธฐ!"));
             break;
          case 9:
-            this.broadcastMessage(OneCardPacket.onShowText("마법 : 한 번 더!"));
+            this.broadcastMessage(OneCardPacket.onShowText("๋ง๋ฒ• : ํ• ๋ฒ ๋”!"));
             break;
          case 10:
-            this.broadcastMessage(OneCardPacket.onShowText("마법 : 점프!"));
+            this.broadcastMessage(OneCardPacket.onShowText("๋ง๋ฒ• : ์ ํ”!"));
             break;
          case 11:
-            this.broadcastMessage(OneCardPacket.onShowText("마법 : 거꾸로!"));
+            this.broadcastMessage(OneCardPacket.onShowText("๋ง๋ฒ• : ๊ฑฐ๊พธ๋ก!"));
             break;
          case 12:
             switch (this.currentCard.getColor()) {
@@ -287,7 +287,7 @@ public class Field_OneCard extends Field {
                   this.broadcastMessage(OneCardPacket.onShowScreenEffect("Effect/screeneff/oz"));
                   this.broadcastMessage(CField.playSound("Sound/MiniGame.img/oneCard/flame_burst"));
                   this.broadcastMessage(OneCardPacket.onEffectResult(2, 5, this.currentPlayer.getPlayer().getId(), false));
-                  this.broadcastMessage(OneCardPacket.onShowText("마법 : " + this.currentPlayer.getPlayer().getName() + "님의 공격!"));
+                  this.broadcastMessage(OneCardPacket.onShowText("๋ง๋ฒ• : " + this.currentPlayer.getPlayer().getName() + "๋์ ๊ณต๊ฒฉ!"));
                   break;
                case 1:
                   this.fireSet = 0;
@@ -398,7 +398,7 @@ public class Field_OneCard extends Field {
    public void addCardPlayer(MapleCharacter chr) {
       this.addCardPlayer(this.currentPlayer, 1 + this.fireSet);
       if (this.fireSet > 0) {
-         this.broadcastMessage(OneCardPacket.onShowText(chr.getName() + "님이 " + this.fireSet + "의 피해를 입었습니다."));
+         this.broadcastMessage(OneCardPacket.onShowText(chr.getName() + "๋์ด " + this.fireSet + "์ ํ”ผํ•ด๋ฅผ ์…์—์ต๋๋ค."));
          this.broadcastMessage(OneCardPacket.onEffectResult(4, 0, chr.getId(), false));
          this.fireSet = 0;
       }

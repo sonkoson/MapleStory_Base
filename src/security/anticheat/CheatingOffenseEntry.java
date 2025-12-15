@@ -1,4 +1,4 @@
-package security.anticheat;
+﻿package security.anticheat;
 
 public class CheatingOffenseEntry {
    private CheatingOffense offense;

@@ -1,4 +1,4 @@
-package network.game.processors.monstercollection;
+﻿package network.game.processors.monstercollection;
 
 import constants.GameConstants;
 import java.text.SimpleDateFormat;
@@ -67,7 +67,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (user.getInventory(GameConstants.getInventoryType(rewardID)).getNumFreeSlot() < rewardCount) {
-                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ");
+                     user.dropMessage(1, "เธเธทเนเธเธ—เธตเนเธเนเธญเธเน€เธเนเธเธเธญเธเนเธกเนเน€เธเธตเธขเธเธเธญ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -98,7 +98,7 @@ public class MonsterCollectionHandler {
                   }
 
                   c.getSession().writeAndFlush(mplew.getPacket());
-                  user.gainItem(rewardID, rewardCount, false, -1L, "몬스터 컬렉션 보상");
+                  user.gainItem(rewardID, rewardCount, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ๋ณด์");
                   break;
                case 1:
                   if (!MonsterCollection.checkSessionMobOnCollection(user, region, session)) {
@@ -107,7 +107,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (user.getInventory(GameConstants.getInventoryType(rewardID)).getNumFreeSlot() < rewardCount) {
-                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ");
+                     user.dropMessage(1, "เธเธทเนเธเธ—เธตเนเธเนเธญเธเน€เธเนเธเธเธญเธเนเธกเนเน€เธเธตเธขเธเธเธญ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -138,7 +138,7 @@ public class MonsterCollectionHandler {
                   }
 
                   c.getSession().writeAndFlush(mplew.getPacket());
-                  user.gainItem(specialReward, specialRewardCount, false, -1L, "몬스터 컬렉션 스페셜 보상");
+                  user.gainItem(specialReward, specialRewardCount, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ์คํ์… ๋ณด์");
                case 2:
                default:
                   break;
@@ -149,7 +149,7 @@ public class MonsterCollectionHandler {
                   }
 
                   if (mc.getInfo() == null) {
-                     user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+                     user.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -168,7 +168,7 @@ public class MonsterCollectionHandler {
                      }
 
                      if (cc == null) {
-                        user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+                        user.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                         return;
                      }
@@ -179,7 +179,7 @@ public class MonsterCollectionHandler {
                      int clearCount = cc.getClearCount();
                      int count = MonsterCollection.getTotalCollectionByRegion(user, region);
                      if (count < clearCount) {
-                        user.dropMessage(1, "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+                        user.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธ—เธตเนเนเธกเนเธ—เธฃเธฒเธเธชเธฒเน€เธซเธ•เธธ");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                         return;
                      }
@@ -217,7 +217,7 @@ public class MonsterCollectionHandler {
                      mplew.writeInt(ccRewardID);
                      mplew.writeInt(1);
                      c.getSession().writeAndFlush(mplew.getPacket());
-                     user.gainItem(ccRewardID, 1, false, -1L, "몬스터 컬렉션 훈장 보상");
+                     user.gainItem(ccRewardID, 1, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ํ์ฅ ๋ณด์");
                      break;
                   }
                case 4:
@@ -245,7 +245,7 @@ public class MonsterCollectionHandler {
                   if (user.getInventory(MapleInventoryType.USE).getNumFreeSlot() < 5
                      || user.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 3
                      || user.getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                     user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพอ 소비슬롯 5칸 기타슬롯 3칸 캐시슬롯2칸 이상을 비워주세요.");
+                     user.dropMessage(1, "เธเธทเนเธเธ—เธตเนเธเนเธญเธเน€เธเนเธเธเธญเธเนเธกเนเน€เธเธตเธขเธเธเธญ ์๋น์ฌ๋กฏ 5์นธ ๊ธฐํ€์ฌ๋กฏ 3์นธ ์บ์์ฌ๋กฏ2์นธ ์ด์์ ๋น์์ฃผ์ธ์”.");
                      c.getSession().writeAndFlush(CWvsContext.enableActions(user));
                      return;
                   }
@@ -289,9 +289,9 @@ public class MonsterCollectionHandler {
                      user.getCollectionInfo().put(defaultKey, new MobCollectionEx(defaultKey, key));
                   }
 
-                  user.gainItem(firstReward, firstQty, false, -1L, "몬스터 컬렉션 탐험보상");
-                  user.gainItem(secondReward, secondQty, false, -1L, "몬스터 컬렉션 탐험보상");
-                  user.gainItem(thirdReward, thirdQty, false, -1L, "몬스터 컬렉션 탐험보상");
+                  user.gainItem(firstReward, firstQty, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ํํ—๋ณด์");
+                  user.gainItem(secondReward, secondQty, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ํํ—๋ณด์");
+                  user.gainItem(thirdReward, thirdQty, false, -1L, "๋ชฌ์คํฐ ์ปฌ๋ ์… ํํ—๋ณด์");
             }
          }
       }

@@ -1,4 +1,4 @@
-package objects.effect.child;
+﻿package objects.effect.child;
 
 import network.SendPacketOpcode;
 import network.decode.ByteArrayByteStream;

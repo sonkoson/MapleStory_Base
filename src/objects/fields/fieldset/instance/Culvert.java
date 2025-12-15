@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -94,7 +94,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 10;
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
             map.broadcastMessage(this.CULVERT_PACKET(3, mMob.getObjectId(), 1));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 2#k\r\n아르카누스의 힘이 더욱 강해지고 있습니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 2#k\r\n์•๋ฅด์นด๋์ค์ ํ์ด ๋”์ฑ ๊ฐ•ํ•ด์ง€๊ณ  ์์ต๋๋ค!", "", 1));
             this.stage++;
             map.broadcastMessage(this.CULVERT_PACKET(1, this.stage));
             map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9500801), new Point(235, 95), true);
@@ -103,7 +103,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 30;
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
             map.broadcastMessage(this.CULVERT_PACKET(3, mMob.getObjectId(), 1));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 3#k\r\n아르카누스의 힘이 더욱 강해지고 있습니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 3#k\r\n์•๋ฅด์นด๋์ค์ ํ์ด ๋”์ฑ ๊ฐ•ํ•ด์ง€๊ณ  ์์ต๋๋ค!", "", 1));
             this.stage++;
             map.broadcastMessage(this.CULVERT_PACKET(1, this.stage));
             map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9500802), new Point(235, 95), true);
@@ -112,7 +112,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 130;
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
             map.broadcastMessage(this.CULVERT_PACKET(3, mMob.getObjectId(), 1));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 4#k\r\n아르카누스의 힘이 더욱 강해지고 있습니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 4#k\r\n์•๋ฅด์นด๋์ค์ ํ์ด ๋”์ฑ ๊ฐ•ํ•ด์ง€๊ณ  ์์ต๋๋ค!", "", 1));
             this.stage++;
             map.broadcastMessage(this.CULVERT_PACKET(1, this.stage));
             map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9500803), new Point(235, 95), true);
@@ -121,7 +121,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 630;
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
             map.broadcastMessage(this.CULVERT_PACKET(3, mMob.getObjectId(), 1));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 5#k\r\n아르카누스의 힘이 더욱 강해지고 있습니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 5#k\r\n์•๋ฅด์นด๋์ค์ ํ์ด ๋”์ฑ ๊ฐ•ํ•ด์ง€๊ณ  ์์ต๋๋ค!", "", 1));
             this.stage++;
             map.broadcastMessage(this.CULVERT_PACKET(1, this.stage));
             map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9500804), new Point(235, 95), true);
@@ -130,7 +130,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 4130;
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
             map.broadcastMessage(this.CULVERT_PACKET(3, mMob.getObjectId(), 1));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 6#k\r\n아르카누스의 힘이 더욱 강해지고 있습니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 6#k\r\n์•๋ฅด์นด๋์ค์ ํ์ด ๋”์ฑ ๊ฐ•ํ•ด์ง€๊ณ  ์์ต๋๋ค!", "", 1));
             this.stage++;
             map.broadcastMessage(this.CULVERT_PACKET(1, this.stage));
             map.spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(9500805), new Point(235, 95), true);
@@ -139,7 +139,7 @@ public class Culvert extends FieldSetInstance {
             this.score = 1000000;
             map.broadcastMessage(this.CULVERT_CLOCK(5000L));
             map.broadcastMessage(this.CULVERT_PACKET(2, this.score));
-            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#r아르카누스#k를 무찔러서 5초뒤 퇴장맵으로 이동됩니다!", "", 1));
+            map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#r์•๋ฅด์นด๋์ค#k๋ฅผ ๋ฌด์ฐ”๋ฌ์ 5์ด๋’ค ํด์ฅ๋งต์ผ๋ก ์ด๋๋ฉ๋๋ค!", "", 1));
             this.finishGame(5000L);
       }
    }

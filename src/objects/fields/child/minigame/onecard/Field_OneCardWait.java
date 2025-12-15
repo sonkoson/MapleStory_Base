@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.onecard;
+﻿package objects.fields.child.minigame.onecard;
 
 import constants.ServerConstants;
 import network.models.CField;

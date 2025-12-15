@@ -1,4 +1,4 @@
-package objects.fields.child.pollo;
+﻿package objects.fields.child.pollo;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -124,7 +124,7 @@ public class Field_MidnightMonsterHunting extends Field {
       super.onEnter(player);
       this.player = player;
       player.temporaryStatSet(80002894, Integer.MAX_VALUE, SecondaryStatFlag.RideVehicle, 1939017);
-      player.send(CField.startMapEffect("npc/채집 키로 공격을 할 수 있다. 몰려오는 놈들을 나와 함께 다 쓸어버리자고.", 5120159, true, 10));
+      player.send(CField.startMapEffect("npc/์ฑ์ง‘ ํค๋ก ๊ณต๊ฒฉ์ ํ•  ์ ์๋ค. ๋ชฐ๋ ค์ค๋” ๋๋“ค์ ๋์€ ํ•จ๊ป ๋ค ์“ธ์–ด๋ฒ๋ฆฌ์๊ณ .", 5120159, true, 10));
       RandomPortal portal = player.getRandomPortal();
       if (portal != null) {
          player.updateOneInfo(15142, "gameType", String.valueOf(portal.getGameType().getType()));

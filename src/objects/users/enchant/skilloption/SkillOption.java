@@ -1,4 +1,4 @@
-package objects.users.enchant.skilloption;
+﻿package objects.users.enchant.skilloption;
 
 import java.io.File;
 import java.util.HashMap;

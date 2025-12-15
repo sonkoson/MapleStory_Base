@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.yutgame;
+﻿package objects.fields.child.minigame.yutgame;
 
 public enum YutGameResultType {
    YutGameUnk(1),

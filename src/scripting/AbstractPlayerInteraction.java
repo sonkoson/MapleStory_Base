@@ -1,4 +1,4 @@
-package scripting;
+﻿package scripting;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -102,7 +102,7 @@ public abstract class AbstractPlayerInteraction {
       this.c.getPlayer().setRegisterTransferField(map);
       this.c.getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis() + 500L);
       if (this.c.getPlayer().getClient().getChannel() != channel) {
-         this.c.getPlayer().dropMessage(5, "กำลังย้ายไปแชนแนล " + channel + ".");
+         this.c.getPlayer().dropMessage(5, "เธเธณเธฅเธฑเธเธขเนเธฒเธขเนเธเนเธเธเนเธเธฅ " + channel + ".");
          this.c.getPlayer().changeChannel(channel);
       }
    }
@@ -565,7 +565,7 @@ public abstract class AbstractPlayerInteraction {
                         + " obtained item.");
             String name = ii.getName(id);
             if (id / 10000 == 114 && name != null && name.length() > 0) {
-               String msg = "คุณได้รับเหรียญตรา <" + name + ">!";
+               String msg = "เธเธธเธ“เนเธ”เนเธฃเธฑเธเน€เธซเธฃเธตเธขเธเธ•เธฃเธฒ <" + name + ">!";
                cg.getPlayer().dropMessage(-1, msg);
                cg.getPlayer().dropMessage(5, msg);
             }
@@ -1604,7 +1604,7 @@ public abstract class AbstractPlayerInteraction {
                            .spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642016), muto.getRandArea());
                      this.getClient().getPlayer().getMap()
                            .broadcastMessage(CWvsContext.getScriptProgressMessage(
-                                 "Gula ต่อต้านอย่างรุนแรงและมอนสเตอร์ที่แข็งแกร่งก็ปรากฏตัวขึ้น!"));
+                                 "Gula เธ•เนเธญเธ•เนเธฒเธเธญเธขเนเธฒเธเธฃเธธเธเนเธฃเธเนเธฅเธฐเธกเธญเธเธชเน€เธ•เธญเธฃเนเธ—เธตเนเนเธเนเธเนเธเธฃเนเธเธเนเธเธฃเธฒเธเธเธ•เธฑเธงเธเธถเนเธ!"));
                      muto.setEnhanceMob(true);
                   }
 

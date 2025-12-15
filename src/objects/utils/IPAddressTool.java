@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 public class IPAddressTool {
    public static final long dottedQuadToLong(String dottedQuad) throws RuntimeException {

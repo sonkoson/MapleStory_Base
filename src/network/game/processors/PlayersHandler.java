@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.GameConstants;
 import constants.QuestExConstants;
@@ -252,7 +252,7 @@ public class PlayersHandler {
          } else {
             Party party = chr.getParty();
             if (party != null) {
-               chr.dropMessage(5, "กรุณายุบปาร์ตี้แล้วลองใหม่อีกครั้ง");
+               chr.dropMessage(5, "เธเธฃเธธเธ“เธฒเธขเธธเธเธเธฒเธฃเนเธ•เธตเนเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                chr.send(CWvsContext.enableActions(chr));
             } else {
                chr.getClient().removeClickedNPC();
@@ -336,10 +336,10 @@ public class PlayersHandler {
                         MapleInventoryManipulator.removeById(c, GameConstants.getInventoryType(itemid), itemid, reactor.getReactItem().getRight(), true, false);
                         reactor.hitReactor(c);
                      } else {
-                        c.getPlayer().dropMessage(5, "อยู่ไกลเกินไป");
+                        c.getPlayer().dropMessage(5, "เธญเธขเธนเนเนเธเธฅเน€เธเธดเธเนเธ");
                      }
                   } else {
-                     c.getPlayer().dropMessage(5, "ไม่มีไอเทมที่ต้องใช้");
+                     c.getPlayer().dropMessage(5, "เนเธกเนเธกเธตเนเธญเน€เธ—เธกเธ—เธตเนเธ•เนเธญเธเนเธเน");
                   }
                } else {
                   reactor.hitReactor(c);
@@ -446,7 +446,7 @@ public class PlayersHandler {
                c.getPlayer().setFollowId(0);
             }
 
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อยู่ไกลเกินไป"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธญเธขเธนเนเนเธเธฅเน€เธเธดเธเนเธ"));
          }
       } else {
          c.getPlayer().setFollowId(0);
@@ -575,7 +575,7 @@ public class PlayersHandler {
          long theTime = Long.parseLong(stat.getCustomData());
          if (theTime + 7200000L > currentTime && !c.getPlayer().isIntern()) {
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-            c.getPlayer().dropMessage(5, "รายงานได้ทุกๆ 2 ชั่วโมงเท่านั้น");
+            c.getPlayer().dropMessage(5, "เธฃเธฒเธขเธเธฒเธเนเธ”เนเธ—เธธเธเน 2 เธเธฑเนเธงเนเธกเธเน€เธ—เนเธฒเธเธฑเนเธ");
          } else {
             stat.setCustomData(String.valueOf(currentTime));
             other.addReport(type);
@@ -597,7 +597,7 @@ public class PlayersHandler {
             if (other != null && other.getId() != chr.getId() && other.getTotalSkillLevel(skill) > 0) {
                chr.addStolenSkill(skill, other.getTotalSkillLevel(skill));
             } else {
-               chr.dropMessage(1, "ฝ่ายตรงข้ามไม่มีสกิลดังกล่าว");
+               chr.dropMessage(1, "เธเนเธฒเธขเธ•เธฃเธเธเนเธฒเธกเนเธกเนเธกเธตเธชเธเธดเธฅเธ”เธฑเธเธเธฅเนเธฒเธง");
                c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
             }
          } else if (action == 1) {
@@ -629,7 +629,7 @@ public class PlayersHandler {
       if (!c.getChannelServer().getPlayerStorage().getCharacterById(victim).getSkills().isEmpty() && GameConstants.isAdventurer(jobid)) {
          c.getSession().writeAndFlush(CField.viewSkills(c.getChannelServer().getPlayerStorage().getCharacterById(victim)));
       } else {
-         c.getPlayer().dropMessage(6, "ไม่มีสกิลให้ขโมย");
+         c.getPlayer().dropMessage(6, "เนเธกเนเธกเธตเธชเธเธดเธฅเนเธซเนเธเนเธกเธข");
       }
    }
 

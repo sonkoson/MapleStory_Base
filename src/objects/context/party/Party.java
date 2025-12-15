@@ -1,4 +1,4 @@
-package objects.context.party;
+﻿package objects.context.party;
 
 import java.awt.Point;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package objects.fields.child.karing.Gauge;
+﻿package objects.fields.child.karing.Gauge;
 
 public enum KaringGaugeType {
    Mentality(0),

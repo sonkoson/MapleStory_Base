@@ -1,4 +1,4 @@
-package objects.users.enchant;
+﻿package objects.users.enchant;
 
 import database.DBConfig;
 import database.loader.CharacterSaveFlag;
@@ -518,7 +518,7 @@ public class InnerAbility {
          }
       }
 
-      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
+      User.send(CWvsContext.showPopupMessage("เธฃเธตเน€เธเนเธ•เธเธงเธฒเธกเธชเธฒเธกเธฒเธฃเธ–เธชเธณเน€เธฃเนเธเนเธฅเนเธง"));
       User.getStat().recalcLocalStats(User);
    }
 
@@ -736,7 +736,7 @@ public class InnerAbility {
                holders.get(ix).getRank(), 0);
       }
 
-      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
+      User.send(CWvsContext.showPopupMessage("เธฃเธตเน€เธเนเธ•เธเธงเธฒเธกเธชเธฒเธกเธฒเธฃเธ–เธชเธณเน€เธฃเนเธเนเธฅเนเธง"));
       User.getStat().recalcLocalStats(User);
    }
 
@@ -806,7 +806,7 @@ public class InnerAbility {
                holders.get(i).getRank(), 0);
       }
 
-      User.send(CWvsContext.showPopupMessage("รีเซ็ตความสามารถสำเร็จแล้ว"));
+      User.send(CWvsContext.showPopupMessage("เธฃเธตเน€เธเนเธ•เธเธงเธฒเธกเธชเธฒเธกเธฒเธฃเธ–เธชเธณเน€เธฃเนเธเนเธฅเนเธง"));
       User.getStat().recalcLocalStats(User);
    }
 

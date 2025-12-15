@@ -1,4 +1,4 @@
-package objects.fields.fieldset;
+﻿package objects.fields.fieldset;
 
 import constants.QuestExConstants;
 import database.DBConfig;
@@ -168,12 +168,12 @@ public abstract class FieldSet {
                      MapleCharacter partyCharacter = gs.getPlayerStorage().getCharacterById(pc.getId());
                      int enterLimit = pc.getBossTier() + 1;
                      int currentClearCount = partyCharacter.getOneInfoQuestInteger(this.qexKey, this.keyValue);
-                     if (DBConfig.isGanglim && !Objects.equals(this.difficulty, "헬")) {
+                     if (DBConfig.isGanglim && !Objects.equals(this.difficulty, "ํ—ฌ")) {
                         if (enterLimit <= currentClearCount) {
                            return 4;
                         }
                      } else if (!DBConfig.isGanglim) {
-                        boolean isHell = this.difficulty != null && this.difficulty.equals("헬");
+                        boolean isHell = this.difficulty != null && this.difficulty.equals("ํ—ฌ");
                         if (isHell) {
                            String hellKeyValue = this.keyValue;
                            if (this.keyValue != null && !this.keyValue.contains("hell_")) {
@@ -224,7 +224,7 @@ public abstract class FieldSet {
                                  QuestExConstants.WeeklyQuestResetCount.getQuestID(), checkBoss + (single ? "Single" : "Multi")
                               );
                            if (!DBConfig.isHosting) {
-                              partyCharacter.dropMessage(1, "จำนวนเข้าปัจจุบัน : " + currentClearCount + " / 제한횟수 : " + totalEnterLimit);
+                              partyCharacter.dropMessage(1, "เธเธณเธเธงเธเน€เธเนเธฒเธเธฑเธเธเธธเธเธฑเธ : " + currentClearCount + " / ์ ํ•ํ์ : " + totalEnterLimit);
                            }
 
                            if (totalEnterLimit <= currentClearCount) {

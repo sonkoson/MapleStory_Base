@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public class PetData {
    private int autoBuff;

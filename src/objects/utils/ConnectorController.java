@@ -1,4 +1,4 @@
-package objects.utils;
+﻿package objects.utils;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -44,23 +44,23 @@ public class ConnectorController extends JFrame {
    public static void addController(String connection) {
       nowConnectionList.addElement(connection);
       connectionList.setModel(nowConnectionList);
-      onlineCheck.setText(nowConnectionList.size() + "명");
+      onlineCheck.setText(nowConnectionList.size() + "๋ช…");
    }
 
    public static void removeController(String connection) {
       nowConnectionList.removeElement(connection);
       connectionList.setModel(nowConnectionList);
-      onlineCheck.setText(nowConnectionList.size() + "명");
+      onlineCheck.setText(nowConnectionList.size() + "๋ช…");
    }
 
    public static void addThread() {
       connectThread++;
-      threadCheck.setText(connectThread + "개");
+      threadCheck.setText(connectThread + "๊ฐ");
    }
 
    public static void removeThread() {
       connectThread--;
-      threadCheck.setText(connectThread + "개");
+      threadCheck.setText(connectThread + "๊ฐ");
    }
 
    private void initComponents() {
@@ -73,24 +73,24 @@ public class ConnectorController extends JFrame {
       this.online1 = new JLabel();
       threadCheck = new JLabel();
       this.setDefaultCloseOperation(3);
-      this.banBtn.setText("시리얼 밴");
+      this.banBtn.setText("์๋ฆฌ์–ผ ๋ฐด");
       this.banBtn.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent evt) {
             ConnectorController.this.banBtnActionPerformed(evt);
          }
       });
-      this.banOffBtn.setText("시리얼 밴 해제");
-      this.online.setFont(new Font("굴림", 1, 12));
-      this.online.setText("연결자 수 :");
-      onlineCheck.setFont(new Font("굴림", 1, 12));
-      onlineCheck.setText("0명");
+      this.banOffBtn.setText("์๋ฆฌ์–ผ ๋ฐด ํ•ด์ ");
+      this.online.setFont(new Font("๊ตด๋ฆผ", 1, 12));
+      this.online.setText("์—ฐ๊ฒฐ์ ์ :");
+      onlineCheck.setFont(new Font("๊ตด๋ฆผ", 1, 12));
+      onlineCheck.setText("0๋ช…");
       connectionList.setSelectionMode(0);
       this.jScrollPane4.setViewportView(connectionList);
-      this.online1.setFont(new Font("굴림", 1, 12));
-      this.online1.setText("쓰레드 수 :");
-      threadCheck.setFont(new Font("굴림", 1, 12));
-      threadCheck.setText("0개");
+      this.online1.setFont(new Font("๊ตด๋ฆผ", 1, 12));
+      this.online1.setText("์“ฐ๋ ๋“ ์ :");
+      threadCheck.setFont(new Font("๊ตด๋ฆผ", 1, 12));
+      threadCheck.setText("0๊ฐ");
       GroupLayout layout = new GroupLayout(this.getContentPane());
       this.getContentPane().setLayout(layout);
       layout.setHorizontalGroup(

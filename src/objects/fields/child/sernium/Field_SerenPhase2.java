@@ -1,4 +1,4 @@
-package objects.fields.child.sernium;
+﻿package objects.fields.child.sernium;
 
 import constants.QuestExConstants;
 import constants.ServerConstants;
@@ -284,7 +284,7 @@ public class Field_SerenPhase2 extends Field_Seren {
       } else {
          if (this.serenClock == null) {
             this.serenClock = new Field_SerenPhase2.SerenClock(105, 110, 35, 110);
-            this.broadcastMessage(CWvsContext.serverNotice(5, "태양의 빛으로 가득찬 정오가 시작됩니다."));
+            this.broadcastMessage(CWvsContext.serverNotice(5, "ํ์–‘์ ๋น์ผ๋ก ๊ฐ€๋“์ฐฌ ์ •์ค๊ฐ€ ์์‘๋ฉ๋๋ค."));
          }
 
          this.sendSerenClock(null, Field_SerenPhase2.SerenClockType.SetClock, this.serenClock);
@@ -321,7 +321,7 @@ public class Field_SerenPhase2 extends Field_Seren {
                this.removeMonster(m, 1);
             }
 
-            TextEffect e = new TextEffect(-1, "#fn나눔고딕 Extrabold##fs25##r머지않아 태양은 다시 떠오를 것이다…", 100, 2000, 4, 0, 0, 0);
+            TextEffect e = new TextEffect(-1, "#fn๋๋”๊ณ ๋”• Extrabold##fs25##r๋จธ์ง€์•์• ํ์–‘์€ ๋ค์ ๋– ์ค๋ฅผ ๊ฒ์ด๋คโ€ฆ", 100, 2000, 4, 0, 0, 0);
             this.broadcastMessage(e.encodeForLocal());
             if (this.getFieldSetInstance() != null) {
                this.getFieldSetInstance().restartTimeOut(300000);
@@ -370,7 +370,7 @@ public class Field_SerenPhase2 extends Field_Seren {
                               list = String.join(",", names);
 
                               for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMemberList())) {
-                                 StringBuilder sb = new StringBuilder("보스 " + (normal ? "노말" : "하드") + " 세렌 격파 (" + list + ")");
+                                 StringBuilder sb = new StringBuilder("๋ณด์ค " + (normal ? "๋…ธ๋ง" : "ํ•๋“") + " ์ธ๋  ๊ฒฉํ (" + list + ")");
                                  MapleCharacter player = this.getCharacterById(mpc.getId());
                                  if (player != null) {
                                     LoggingManager.putLog(new BossLog(player, BossLogType.ClearLog.getType(), sb));
@@ -381,13 +381,13 @@ public class Field_SerenPhase2 extends Field_Seren {
                                  Center.Broadcast.broadcastMessageCheckQuest(
                                     CField.chatMsg(
                                        DBConfig.isGanglim ? 8 : 22,
-                                       "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                       "[๋ณด์ค๊ฒฉํ] [CH."
+                                          + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + p.getParty().getLeader().getName()
-                                          + "' 파티("
+                                          + "' ํํฐ("
                                           + list
-                                          + ")가 [노말 세렌]을 격파하였습니다."
+                                          + ")๊ฐ€ [๋…ธ๋ง ์ธ๋ ]์ ๊ฒฉํํ•์€์ต๋๋ค."
                                     ),
                                     "BossMessage"
                                  );
@@ -395,13 +395,13 @@ public class Field_SerenPhase2 extends Field_Seren {
                                  Center.Broadcast.broadcastMessageCheckQuest(
                                     CField.chatMsg(
                                        DBConfig.isGanglim ? 8 : 22,
-                                       "[보스격파] [CH."
-                                          + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                       "[๋ณด์ค๊ฒฉํ] [CH."
+                                          + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + p.getParty().getLeader().getName()
-                                          + "' 파티("
+                                          + "' ํํฐ("
                                           + list
-                                          + ")가 [하드 세렌]을 격파하였습니다."
+                                          + ")๊ฐ€ [ํ•๋“ ์ธ๋ ]์ ๊ฒฉํํ•์€์ต๋๋ค."
                                     ),
                                     "BossMessage"
                                  );
@@ -591,15 +591,15 @@ public class Field_SerenPhase2 extends Field_Seren {
             player.temporaryStatSet(SecondaryStatFlag.DebuffIncHP, 0, Integer.MAX_VALUE, 1, 80, false, false, false);
          }
 
-         this.broadcastMessage(CWvsContext.serverNotice(5, "황혼의 불타는 듯한 석양이 회복 효율을 낮추고 지속적으로 피해를 입힙니다."));
+         this.broadcastMessage(CWvsContext.serverNotice(5, "ํฉํผ์ ๋ถํ€๋” ๋“ฏํ• ์์–‘์ด ํ๋ณต ํจ์จ์ ๋ฎ์ถ”๊ณ  ์ง€์์ ์ผ๋ก ํ”ผํ•ด๋ฅผ ์…ํ๋๋ค."));
       } else if (this.currentPhase == 2) {
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
             player.temporaryStatReset(SecondaryStatFlag.DebuffIncHP);
          }
 
-         this.broadcastMessage(CWvsContext.serverNotice(5, "태양이 저물어 빛을 잃고 자정이 시작됩니다."));
+         this.broadcastMessage(CWvsContext.serverNotice(5, "ํ์–‘์ด ์ €๋ฌผ์–ด ๋น์ ์๊ณ  ์์ •์ด ์์‘๋ฉ๋๋ค."));
       } else if (this.currentPhase == 3) {
-         this.broadcastMessage(CWvsContext.serverNotice(5, "태양이 서서히 떠올라 빛과 희망이 시작되는 여명이 다가옵니다."));
+         this.broadcastMessage(CWvsContext.serverNotice(5, "ํ์–‘์ด ์์ํ ๋– ์ฌ๋ผ ๋น๊ณผ ํฌ๋ง์ด ์์‘๋๋” ์—ฌ๋ช…์ด ๋ค๊ฐ€์ต๋๋ค."));
          MapleMonster boss = this.findBoss();
          if (boss != null) {
             int count = 1;
@@ -632,7 +632,7 @@ public class Field_SerenPhase2 extends Field_Seren {
             serenHP.setShieldHP(0L);
             serenHP.setTotalShieldHP(0L);
             this.sendSerenShield(boss, serenHP);
-            this.broadcastMessage(CWvsContext.serverNotice(5, "정오가 시작됨과 동시에 남아있는 여명의 기운이 세렌을 회복시킵니다."));
+            this.broadcastMessage(CWvsContext.serverNotice(5, "์ •์ค๊ฐ€ ์์‘๋จ๊ณผ ๋์์— ๋จ์•์๋” ์—ฌ๋ช…์ ๊ธฐ์ด์ด ์ธ๋ ์ ํ๋ณต์ํต๋๋ค."));
          }
       }
 
@@ -758,7 +758,7 @@ public class Field_SerenPhase2 extends Field_Seren {
          this.sendMoveSerenClock(null, this.serenClock.getCurrentAngle(phase, this.nextPhaseTime));
          this.sendDelayPacket(remain, this.getDelaySN());
          if (this.serenClock.getCurrentPhaseAngle(2) <= 0) {
-            TextEffect e = new TextEffect(-1, "#fn나눔고딕 Extrabold##fs25##r태양이 지지 않는다면 누구도 나에게 대항할 수 없다.", 100, 2000, 4, 0, 0, 0);
+            TextEffect e = new TextEffect(-1, "#fn๋๋”๊ณ ๋”• Extrabold##fs25##rํ์–‘์ด ์ง€์ง€ ์•๋”๋ค๋ฉด ๋๊ตฌ๋ ๋์—๊ฒ ๋€ํ•ญํ•  ์ ์—๋ค.", 100, 2000, 4, 0, 0, 0);
             this.broadcastMessage(e.encodeForLocal());
 
             for (MapleCharacter player : this.getCharactersThreadsafe()) {

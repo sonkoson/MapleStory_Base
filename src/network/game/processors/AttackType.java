@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 public enum AttackType {
    NON_RANGED,

@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import constants.GameConstants;
 import database.DBConfig;
@@ -1241,7 +1241,7 @@ public class MapleMapFactory {
          case 4000039:
             mobtime = 1200;
             monsterid = 9300815;
-            msg = "서늘한 기운이 감돌면서 마노가 나타났습니다.";
+            msg = "์๋ํ• ๊ธฐ์ด์ด ๊ฐ๋๋ฉด์ ๋ง๋…ธ๊ฐ€ ๋ํ€๋ฌ์ต๋๋ค.";
             pos1 = new Point(-190, 150);
             pos2 = new Point(232, 150);
             pos3 = new Point(-190, 150);

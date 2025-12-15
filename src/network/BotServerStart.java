@@ -1,4 +1,4 @@
-package network;
+﻿package network;
 
 import network.discordbot.BotServer;
 

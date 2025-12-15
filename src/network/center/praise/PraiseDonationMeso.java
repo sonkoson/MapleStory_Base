@@ -1,4 +1,4 @@
-package network.center.praise;
+﻿package network.center.praise;
 
 import database.DBConnection;
 import java.sql.Connection;

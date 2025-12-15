@@ -1,4 +1,4 @@
-package objects.item;
+﻿package objects.item;
 
 public enum MapleInventoryType {
    UNDEFINED(0),

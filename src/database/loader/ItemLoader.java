@@ -1,4 +1,4 @@
-package database.loader;
+﻿package database.loader;
 
 import constants.GameConstants;
 import database.DBConfig;

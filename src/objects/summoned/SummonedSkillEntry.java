@@ -1,4 +1,4 @@
-package objects.summoned;
+﻿package objects.summoned;
 
 import java.awt.Point;
 

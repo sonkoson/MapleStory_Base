@@ -1,4 +1,4 @@
-package objects.fields.child.etc;
+﻿package objects.fields.child.etc;
 
 import constants.JosaType;
 import constants.Locales;
@@ -56,15 +56,15 @@ public class Field_MMRace extends Field {
             this.broadcastMessage(CField.makeEffectScreen("killing/first/start"));
             this.readyRace = false;
             this.startTimer = 20;
-            this.broadcastMessage(CWvsContext.serverNotice(6, "멍멍이 레이싱이 시작되었습니다."));
+            this.broadcastMessage(CWvsContext.serverNotice(6, "๋ฉ๋ฉ์ด ๋ ์ด์ฑ์ด ์์‘๋์—์ต๋๋ค."));
             MapleMonster buggy = MapleLifeFactory.getMonster(9305409);
-            buggy.setEventName("버기");
+            buggy.setEventName("๋ฒ๊ธฐ");
             MapleMonster ealroo = MapleLifeFactory.getMonster(9305410);
-            ealroo.setEventName("얼루");
+            ealroo.setEventName("์–ผ๋ฃจ");
             MapleMonster grodon = MapleLifeFactory.getMonster(9305415);
-            grodon.setEventName("그로돈");
+            grodon.setEventName("๊ทธ๋ก๋");
             MapleMonster coondoora = MapleLifeFactory.getMonster(9305417);
-            coondoora.setEventName("쿤두라");
+            coondoora.setEventName("์ฟค๋‘๋ผ");
             MapleMonster[] mobs = new MapleMonster[]{buggy, ealroo, grodon, coondoora};
             this.spawnMonsterOnGroundBelow(buggy, new Point(910, 140));
             this.spawnMonsterOnGroundBelow(ealroo, new Point(910, -40));
@@ -84,7 +84,7 @@ public class Field_MMRace extends Field {
          }
 
          if (this.startTimer % 5 == 0) {
-            this.broadcastMessage(CWvsContext.serverNotice(5, "게임 시작까지 " + this.startTimer + "초 남았습니다. 참여하지 않은 분들은 빨리 참여해 주세요!"));
+            this.broadcastMessage(CWvsContext.serverNotice(5, "๊ฒ์ ์์‘๊น์ง€ " + this.startTimer + "์ด ๋จ์•์ต๋๋ค. ์ฐธ์—ฌํ•์ง€ ์•์€ ๋ถ๋“ค์€ ๋นจ๋ฆฌ ์ฐธ์—ฌํ•ด ์ฃผ์ธ์”!"));
          }
 
          this.startTimer--;
@@ -94,7 +94,7 @@ public class Field_MMRace extends Field {
    @Override
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
-      player.dropMessage(5, "ถ้าอยากร่วม Doggy Race ก็มาคุยกับฉัน Doart สิ~!");
+      player.dropMessage(5, "เธ–เนเธฒเธญเธขเธฒเธเธฃเนเธงเธก Doggy Race เธเนเธกเธฒเธเธธเธขเธเธฑเธเธเธฑเธ Doart เธชเธด~!");
    }
 
    @Override
@@ -121,7 +121,7 @@ public class Field_MMRace extends Field {
    public void setVictoryMob(MapleMonster mob) {
       this.winningRate.putIfAbsent(mob.getEventName(), 0);
       this.winningRate.put(mob.getEventName(), this.winningRate.get(mob.getEventName()) + 1);
-      this.broadcastMessage(CWvsContext.serverNotice(6, "제 " + this.gameRound + "회 운동회의 우승자는 '#" + mob.getEventName() + "' 입니다."));
+      this.broadcastMessage(CWvsContext.serverNotice(6, "์  " + this.gameRound + "ํ ์ด๋ํ์ ์ฐ์น์๋” '#" + mob.getEventName() + "' ์…๋๋ค."));
       this.victoryMob = mob;
       this.gameRound++;
       this.killAllMonsters(true);
@@ -163,7 +163,7 @@ public class Field_MMRace extends Field {
                            eff[randomBuff].setValue(1);
                            m.applyStatus(eff[randomBuff]);
                            Field_MMRace.this.broadcastMessage(
-                              CWvsContext.serverNotice(6, m.getEventName() + Locales.getKoreanJosa(m.getEventName(), JosaType.이가) + " 슬로우에 걸렸습니다!")
+                              CWvsContext.serverNotice(6, m.getEventName() + Locales.getKoreanJosa(m.getEventName(), JosaType.์ด๊ฐ€) + " ์ฌ๋ก์ฐ์— ๊ฑธ๋ ธ์ต๋๋ค!")
                            );
                         }
                      }

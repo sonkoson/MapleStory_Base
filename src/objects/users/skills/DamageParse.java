@@ -1,4 +1,4 @@
-package objects.users.skills;
+﻿package objects.users.skills;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -891,9 +891,9 @@ public class DamageParse {
                limit = 300000000000000L;
                if (damage > limit) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("데미지 핵 사용 : ");
+                  sb.append("๋ฐ๋ฏธ์ง€ ํ•ต ์ฌ์ฉ : ");
                   sb.append(player.getName());
-                  sb.append(", 스킬ID : ");
+                  sb.append(", ์คํฌID : ");
                   sb.append(skillID);
                   sb.append(")");
                   LoggingManager.putLog(new DamageHackLog(player, damage, sb));
@@ -1161,9 +1161,9 @@ public class DamageParse {
                limit = 300000000000000L;
                if (damage > limit) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("데미지 핵 사용 : ");
+                  sb.append("๋ฐ๋ฏธ์ง€ ํ•ต ์ฌ์ฉ : ");
                   sb.append(player.getName());
-                  sb.append(", 스킬ID : ");
+                  sb.append(", ์คํฌID : ");
                   sb.append(skillID);
                   sb.append(")");
                   LoggingManager.putLog(new DamageHackLog(player, damage, sb));
@@ -1717,9 +1717,9 @@ public class DamageParse {
                limit = 300000000000000L;
                if (damage > limit) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("데미지 핵 사용 : ");
+                  sb.append("๋ฐ๋ฏธ์ง€ ํ•ต ์ฌ์ฉ : ");
                   sb.append(player.getName());
-                  sb.append(", 스킬ID : ");
+                  sb.append(", ์คํฌID : ");
                   sb.append(skillID);
                   sb.append(")");
                   LoggingManager.putLog(new DamageHackLog(player, damage, sb));
@@ -1760,9 +1760,9 @@ public class DamageParse {
                limitx = 300000000000000L;
                if (damagex > limitx) {
                   StringBuilder sb = new StringBuilder();
-                  sb.append("데미지 핵 사용 : ");
+                  sb.append("๋ฐ๋ฏธ์ง€ ํ•ต ์ฌ์ฉ : ");
                   sb.append(player.getName());
-                  sb.append(", 스킬ID : ");
+                  sb.append(", ์คํฌID : ");
                   sb.append(skillID);
                   sb.append(")");
                   LoggingManager.putLog(new DamageHackLog(player, damagex, sb));
@@ -2014,7 +2014,7 @@ public class DamageParse {
             }
          } catch (Exception var45) {
             FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf",
-                  ret.skillID + " 공격 데미지 추가 정보 파싱 오류 : " + lea.toString(true), var45);
+                  ret.skillID + " ๊ณต๊ฒฉ ๋ฐ๋ฏธ์ง€ ์ถ”๊ฐ€ ์ •๋ณด ํ์ฑ ์ค๋ฅ : " + lea.toString(true), var45);
          }
 
          return ret;
@@ -2093,7 +2093,7 @@ public class DamageParse {
    public static void CatchPlayer(MapleCharacter player, MapleCharacter catched) {
       player.getMap().broadcastMessage(CField.harvestResult(player.getId(), true));
       player.getMap().broadcastMessage(CWvsContext.serverNotice(6,
-            "[ประกาศซ่อนแอบ] หมาป่า " + player.getName() + " จับแกะ " + catched.getName() + " ได้แล้ว"));
+            "[เธเธฃเธฐเธเธฒเธจเธเนเธญเธเนเธญเธ] เธซเธกเธฒเธเนเธฒ " + player.getName() + " เธเธฑเธเนเธเธฐ " + catched.getName() + " เนเธ”เนเนเธฅเนเธง"));
       catched.getStat().setHp(0L, catched);
       catched.updateSingleStat(MapleStat.HP, 0L);
       player.addSheepScore();
@@ -2127,7 +2127,7 @@ public class DamageParse {
          }
 
          player.getMap().broadcastMessage(CWvsContext.serverNotice(1,
-               "[ประกาศซ่อนแอบ]\r\nแกะถูกจับหมดแล้ว หมาป่าเป็นฝ่ายชนะ!\r\nทุกคนจะถูกย้ายไปยังแผนที่รางวัล"));
+               "[เธเธฃเธฐเธเธฒเธจเธเนเธญเธเนเธญเธ]\r\nเนเธเธฐเธ–เธนเธเธเธฑเธเธซเธกเธ”เนเธฅเนเธง เธซเธกเธฒเธเนเธฒเน€เธเนเธเธเนเธฒเธขเธเธเธฐ!\r\nเธ—เธธเธเธเธเธเธฐเธ–เธนเธเธขเนเธฒเธขเนเธเธขเธฑเธเนเธเธเธ—เธตเนเธฃเธฒเธเธงเธฑเธฅ"));
       }
    }
 }

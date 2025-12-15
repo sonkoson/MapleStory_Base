@@ -1,4 +1,4 @@
-package objects.effect.child;
+﻿package objects.effect.child;
 
 import constants.GameConstants;
 import network.SendPacketOpcode;

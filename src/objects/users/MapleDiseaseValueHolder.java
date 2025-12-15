@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import java.io.Serializable;
 import objects.users.stats.SecondaryStatFlag;

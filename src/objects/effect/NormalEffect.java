@@ -1,4 +1,4 @@
-package objects.effect;
+﻿package objects.effect;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

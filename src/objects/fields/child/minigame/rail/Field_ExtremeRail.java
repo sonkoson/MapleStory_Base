@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.rail;
+﻿package objects.fields.child.minigame.rail;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

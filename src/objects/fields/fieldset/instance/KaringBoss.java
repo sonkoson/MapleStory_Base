@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import java.util.ArrayList;
 import network.models.CField;

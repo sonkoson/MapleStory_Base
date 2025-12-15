@@ -1,4 +1,4 @@
-package network.game.processors;
+﻿package network.game.processors;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -60,7 +60,7 @@ public class PlayerInteractionHandler {
                               .size()
                            != 0
                         || chr.getMap().getPortalsInRange(chr.getTruePosition(), 20000.0).size() != 0) {
-                        chr.dropMessage(1, "ไม่สามารถตั้งร้านค้าที่นี่ได้");
+                        chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ•เธฑเนเธเธฃเนเธฒเธเธเนเธฒเธ—เธตเนเธเธตเนเนเธ”เน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -68,7 +68,7 @@ public class PlayerInteractionHandler {
                      if ((createType == 1 || createType == 2)
                         && (FieldLimitType.Minigames.check(chr.getMap().getFieldLimit()) || chr.getMap().allowPersonalShop())
                         && chr.getMap().getId() != ServerConstants.TownMap) {
-                        chr.dropMessage(1, "ไม่สามารถเปิดมินิเกมที่นี่ได้");
+                        chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเธ”เธกเธดเธเธดเน€เธเธกเธ—เธตเนเธเธตเนเนเธ”เน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -128,7 +128,7 @@ public class PlayerInteractionHandler {
 
                   if (GameConstants.isYetiPinkBean(chrr.getJob())) {
                      c.getSession().writeAndFlush(CField.InteractionPacket.getTradeCancel((byte)0));
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "핑크빈과 예티에게는 교환신청을 할 수 없습니다."));
+                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ํ•‘ํฌ๋น๊ณผ ์ํฐ์—๊ฒ๋” ๊ตํ์ ์ฒญ์ ํ•  ์ ์—์ต๋๋ค."));
                      c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                      return;
                   }
@@ -158,7 +158,7 @@ public class PlayerInteractionHandler {
                   }
 
                   if (chr.getTrade() == null && chr.getPlayerShop() != null) {
-                     chr.dropMessage(1, "ห้องปิดไปแล้ว");
+                     chr.dropMessage(1, "เธซเนเธญเธเธเธดเธ”เนเธเนเธฅเนเธง");
                      return;
                   }
 
@@ -177,20 +177,20 @@ public class PlayerInteractionHandler {
                            HiredMerchant merchantxxxxx = (HiredMerchant)ipsxxxxxxxxxxxxx;
                            if (merchantxxxxx.isOpen() && merchantxxxxx.isAvailable()) {
                               if (ipsxxxxxxxxxxxxx.getFreeSlot() == -1) {
-                                 chr.dropMessage(1, "มีผู้เข้าชมร้านค้านี้เต็มจำนวนแล้ว กรุณาลองใหม่อีกครั้งในภายหลัง");
+                                 chr.dropMessage(1, "เธกเธตเธเธนเนเน€เธเนเธฒเธเธกเธฃเนเธฒเธเธเนเธฒเธเธตเนเน€เธ•เนเธกเธเธณเธเธงเธเนเธฅเนเธง เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
                               } else if (merchantxxxxx.isInBlackList(chr.getName())) {
-                                 chr.dropMessage(1, "คุณติด Blacklist ไม่สามารถใช้ร้านค้านี้ได้");
+                                 chr.dropMessage(1, "เธเธธเธ“เธ•เธดเธ” Blacklist เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธฃเนเธฒเธเธเนเธฒเธเธตเนเนเธ”เน");
                               } else {
                                  chr.setPlayerShop(ipsxxxxxxxxxxxxx);
                                  merchantxxxxx.addVisitor(chr);
                                  c.getSession().writeAndFlush(PlayerShopPacket.getHiredMerch(chr, merchantxxxxx, false));
                               }
                            } else {
-                              chr.dropMessage(1, "ขณะนี้ Hired Merchant กำลังเตรียมการ กรุณามาใหม่ในภายหลัง");
+                              chr.dropMessage(1, "เธเธ“เธฐเธเธตเน Hired Merchant เธเธณเธฅเธฑเธเน€เธ•เธฃเธตเธขเธกเธเธฒเธฃ เธเธฃเธธเธ“เธฒเธกเธฒเนเธซเธกเนเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
                            }
                         } else {
                            if (ipsxxxxxxxxxxxxx instanceof MaplePlayerShop && ((MaplePlayerShop)ipsxxxxxxxxxxxxx).isBanned(chr.getName())) {
-                              chr.dropMessage(1, "ถูกไล่ออกจากร้านค้า");
+                              chr.dropMessage(1, "เธ–เธนเธเนเธฅเนเธญเธญเธเธเธฒเธเธฃเนเธฒเธเธเนเธฒ");
                               return;
                            }
 
@@ -201,11 +201,11 @@ public class PlayerInteractionHandler {
                               if (slea.available() > 0L && slea.readByte() > 0) {
                                  String pass = slea.readMapleAsciiString();
                                  if (!pass.equals(ipsxxxxxxxxxxxxx.getPassword())) {
-                                    c.getPlayer().dropMessage(1, "รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                                    c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเนเธฒเธเนเธกเนเธ–เธนเธเธ•เนเธญเธ เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธฅเธฐเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                                     return;
                                  }
                               } else if (ipsxxxxxxxxxxxxx.getPassword().length() > 0) {
-                                 c.getPlayer().dropMessage(1, "รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                                 c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเนเธฒเธเนเธกเนเธ–เธนเธเธ•เนเธญเธ เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธฅเธฐเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                                  return;
                               }
 
@@ -301,7 +301,7 @@ public class PlayerInteractionHandler {
                   IMaplePlayerShop shopx = chr.getPlayerShop();
                   if (shopx != null && shopx.isOwner(chr) && shopx.getShopType() < 3 && !shopx.isAvailable() && chr.getMap().allowPersonalShop()) {
                      if (c.getChannelServer().isShutdown()) {
-                        chr.dropMessage(1, "ไม่สามารถตั้งร้านค้าได้เนื่องจากเซิร์ฟเวอร์กำลังจะปิด");
+                        chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธ•เธฑเนเธเธฃเนเธฒเธเธเนเธฒเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธณเธฅเธฑเธเธเธฐเธเธดเธ”");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         shopx.closeShop(shopx.getShopType() == 1, false);
                         return;
@@ -326,7 +326,7 @@ public class PlayerInteractionHandler {
                   if (item.getItemId() / 1000000 == 1) {
                      Equip e = (Equip)item;
                      if (e.getCashEnchantCount() > 0) {
-                        c.getPlayer().dropMessage(1, "ไอเทมที่มี Decorative Option ไม่สามารถลงทะเบียนได้");
+                        c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธ—เธตเนเธกเธต Decorative Option เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธเธ—เธฐเน€เธเธตเธขเธเนเธ”เน");
                         return;
                      }
                   }
@@ -378,7 +378,7 @@ public class PlayerInteractionHandler {
                      if (ivItem.getItemId() / 1000000 == 1) {
                         Equip e = (Equip)ivItem;
                         if (e.getCashEnchantCount() > 0) {
-                           c.getPlayer().dropMessage(1, "ไอเทมที่มี Decorative Option ไม่สามารถลงทะเบียนได้");
+                           c.getPlayer().dropMessage(1, "เนเธญเน€เธ—เธกเธ—เธตเนเธกเธต Decorative Option เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฅเธเธ—เธฐเน€เธเธตเธขเธเนเธ”เน");
                            return;
                         }
                      }
@@ -390,7 +390,7 @@ public class PlayerInteractionHandler {
 
                      short bundles_perbundle = (short)(bundles * perBundle);
                      if (ivItem.getQuantity() < bundles_perbundle) {
-                        chr.dropMessage(1, "ต้องมีไอเทมอย่างน้อย 1 ชิ้นจึงจะขายได้");
+                        chr.dropMessage(1, "เธ•เนเธญเธเธกเธตเนเธญเน€เธ—เธกเธญเธขเนเธฒเธเธเนเธญเธข 1 เธเธดเนเธเธเธถเธเธเธฐเธเธฒเธขเนเธ”เน");
                         c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                         return;
                      }
@@ -507,14 +507,14 @@ public class PlayerInteractionHandler {
                            MapleTrade.startCashTrade(chr);
                            MapleTrade.inviteCashTrade(chr, chrrx);
                         } else {
-                           c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                           c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2 เนเธกเนเธ–เธนเธเธ•เนเธญเธ \r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธฅเธฐเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                         }
                      } else if (subpacket == 19 && typexx == 7) {
                         String secondPassword = slea.readMapleAsciiString();
                         if (c.CheckSecondPassword(secondPassword)) {
                            MapleTrade.visitCashTrade(chr, chr.getTrade().getPartner().getChr());
                         } else {
-                           c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                           c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2 เนเธกเนเธ–เธนเธเธ•เนเธญเธ \r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธฅเธฐเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                         }
                      }
                   } else {
@@ -531,14 +531,14 @@ public class PlayerInteractionHandler {
                            HiredMerchant merchantxxxxx = (HiredMerchant)ipsxxxxxxxxxxxxx;
                            if (merchantxxxxx.isOwner(chr) && merchantxxxxx.isOpen() && merchantxxxxx.isAvailable()) {
                               merchantxxxxx.setOpen(false);
-                              merchantxxxxx.broadcastToVisitors(CWvsContext.serverNotice(1, "판매자가 물품을 정리하고 있습니다."));
+                              merchantxxxxx.broadcastToVisitors(CWvsContext.serverNotice(1, "ํ๋งค์๊ฐ€ ๋ฌผํ’์ ์ •๋ฆฌํ•๊ณ  ์์ต๋๋ค."));
                               merchantxxxxx.removeAllVisitors(0, 1);
                               chr.setPlayerShop(ipsxxxxxxxxxxxxx);
                               c.getSession().writeAndFlush(PlayerShopPacket.getHiredMerch(chr, merchantxxxxx, false));
                            }
                         }
                      } else {
-                        c.getPlayer().dropMessage(1, "รหัสผ่านชั้นที่ 2 ไม่ถูกต้อง \r\nกรุณาตรวจสอบและลองใหม่อีกครั้ง");
+                        c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2 เนเธกเนเธ–เธนเธเธ•เนเธญเธ \r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเนเธฅเธฐเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
                      }
                   }
                   break;
@@ -631,7 +631,7 @@ public class PlayerInteractionHandler {
                      }
 
                      if (save) {
-                        c.getPlayer().dropMessage(1, "กรุณารับไอเทมจาก Frederick");
+                        c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธฃเธฑเธเนเธญเน€เธ—เธกเธเธฒเธ Frederick");
                         c.getSession().writeAndFlush(PlayerShopPacket.shopErrorMessage(20, 0));
                      }
 
@@ -821,10 +821,10 @@ public class PlayerInteractionHandler {
                         public void run() {
                            byte result = PlayerInteractionHandler.getResult(chr.getTrade().getPRS(), chr.getTrade().getPartner().getPRS());
                            if (result == 2) {
-                              chr.dropMessage(1, "น่าเสียดาย แพ้เป่ายิ้งฉุบแล้ว!");
+                              chr.dropMessage(1, "เธเนเธฒเน€เธชเธตเธขเธ”เธฒเธข เนเธเนเน€เธเนเธฒเธขเธดเนเธเธเธธเธเนเธฅเนเธง!");
                               chr.addFame(-1);
                            } else if (result == 0) {
-                              chr.dropMessage(1, "ยินดีด้วย! ชนะเป่ายิ้งฉุบ!");
+                              chr.dropMessage(1, "เธขเธดเธเธ”เธตเธ”เนเธงเธข! เธเธเธฐเน€เธเนเธฒเธขเธดเนเธเธเธธเธ!");
                               chr.addFame(1);
                            }
 
@@ -922,7 +922,7 @@ public class PlayerInteractionHandler {
                         gameInfo.incWarnCount(team);
                         int warncount = gameInfo.getWarnCount(team);
                         if (warncount >= 5) {
-                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("หมดเวลา 5 ครั้ง แพ้เกม", FontType.NanumGothic, FontColorType.Yellow));
+                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("เธซเธกเธ”เน€เธงเธฅเธฒ 5 เธเธฃเธฑเนเธ เนเธเนเน€เธเธก", FontType.NanumGothic, FontColorType.Yellow));
                            fbr.setWinTeam(team == 0 ? 1 : 0);
                            fbr.setEndGame(true);
                            return;
@@ -930,7 +930,7 @@ public class PlayerInteractionHandler {
 
                         chr.send(
                            CField.UIPacket.sendBigScriptProgressMessage(
-                              "หมดเวลา เทิร์นผ่าน คำเตือน " + warncount + "ครั้ง หากเกิน 5 ครั้งจะแพ้เกม", FontType.NanumGothic, FontColorType.Yellow
+                              "เธซเธกเธ”เน€เธงเธฅเธฒ เน€เธ—เธดเธฃเนเธเธเนเธฒเธ เธเธณเน€เธ•เธทเธญเธ " + warncount + "เธเธฃเธฑเนเธ เธซเธฒเธเน€เธเธดเธ 5 เธเธฃเธฑเนเธเธเธฐเนเธเนเน€เธเธก", FontType.NanumGothic, FontColorType.Yellow
                            )
                         );
                         List<Point> putlists = gameInfo.getPuttableList(team);
@@ -992,8 +992,8 @@ public class PlayerInteractionHandler {
                               return;
                            }
 
-                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("ฝ่ายตรงข้ามไม่มีที่วางหมาก เทิร์นกลับมาหาคุณ", FontType.NanumGothic, FontColorType.Yellow));
-                           otherplayer.send(CField.UIPacket.sendBigScriptProgressMessage("ไม่มีที่ให้วางหมาก จบเทิร์น", FontType.NanumGothic, FontColorType.Yellow));
+                           chr.send(CField.UIPacket.sendBigScriptProgressMessage("เธเนเธฒเธขเธ•เธฃเธเธเนเธฒเธกเนเธกเนเธกเธตเธ—เธตเนเธงเธฒเธเธซเธกเธฒเธ เน€เธ—เธดเธฃเนเธเธเธฅเธฑเธเธกเธฒเธซเธฒเธเธธเธ“", FontType.NanumGothic, FontColorType.Yellow));
+                           otherplayer.send(CField.UIPacket.sendBigScriptProgressMessage("เนเธกเนเธกเธตเธ—เธตเนเนเธซเนเธงเธฒเธเธซเธกเธฒเธ เธเธเน€เธ—เธดเธฃเนเธ", FontType.NanumGothic, FontColorType.Yellow));
                            chr.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), chr));
                            otherplayer.send(BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), otherplayer));
                         }

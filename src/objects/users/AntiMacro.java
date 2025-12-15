@@ -1,4 +1,4 @@
-package objects.users;
+﻿package objects.users;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import objects.captcha.Captcha;

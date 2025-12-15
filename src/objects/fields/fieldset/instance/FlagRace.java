@@ -1,4 +1,4 @@
-package objects.fields.fieldset.instance;
+﻿package objects.fields.fieldset.instance;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -122,7 +122,7 @@ public class FlagRace extends FieldSetInstance {
             if (!FlagRace.this.dispose) {
                Field map = FlagRace.this.field(FlagRace.this.fsim.instances.get(0));
                if (map.getCharactersSize() > 0) {
-                  map.startMapEffect("사이먼의 멋--진 월드에 오신 것을 환영합니다!", 5120123, 3000);
+                  map.startMapEffect("์ฌ์ด๋จผ์ ๋ฉ--์ง ์”๋“์— ์ค์  ๊ฒ์ ํ์ํ•ฉ๋๋ค!", 5120123, 3000);
                }
             }
          }
@@ -133,7 +133,7 @@ public class FlagRace extends FieldSetInstance {
             if (!FlagRace.this.dispose) {
                Field map = FlagRace.this.field(FlagRace.this.fsim.instances.get(0));
                if (map.getCharactersSize() > 0) {
-                  map.startMapEffect("경기장을 수놓는 아름다운 플래그 스타들을 배치하고 있습니다. 잠시만 기다려주세요!", 5120123, 3000);
+                  map.startMapEffect("๊ฒฝ๊ธฐ์ฅ์ ์๋“๋” ์•๋ฆ๋ค์ด ํ”๋๊ทธ ์คํ€๋“ค์ ๋ฐฐ์นํ•๊ณ  ์์ต๋๋ค. ์ ์๋ง ๊ธฐ๋ค๋ ค์ฃผ์ธ์”!", 5120123, 3000);
                }
             }
          }
@@ -144,7 +144,7 @@ public class FlagRace extends FieldSetInstance {
             if (!FlagRace.this.dispose) {
                Field map = FlagRace.this.field(FlagRace.this.fsim.instances.get(0));
                if (map.getCharactersSize() > 0) {
-                  map.startMapEffect("곧 플래그 레이스 경기장으로 이동합니다. 이제 정말 준비해 주세요!", 5120123, 3000);
+                  map.startMapEffect("๊ณง ํ”๋๊ทธ ๋ ์ด์ค ๊ฒฝ๊ธฐ์ฅ์ผ๋ก ์ด๋ํ•ฉ๋๋ค. ์ด์  ์ •๋ง ์ค€๋นํ•ด ์ฃผ์ธ์”!", 5120123, 3000);
                }
             }
          }
@@ -155,7 +155,7 @@ public class FlagRace extends FieldSetInstance {
             if (!FlagRace.this.dispose) {
                Field map = FlagRace.this.field(FlagRace.this.fsim.instances.get(0));
                if (map.getCharactersSize() > 0) {
-                  map.startMapEffect("곧 플래그 레이스 경기장으로 이동합니다. 이제 정말 준비해 주세요!", 5120123, 3000);
+                  map.startMapEffect("๊ณง ํ”๋๊ทธ ๋ ์ด์ค ๊ฒฝ๊ธฐ์ฅ์ผ๋ก ์ด๋ํ•ฉ๋๋ค. ์ด์  ์ •๋ง ์ค€๋นํ•ด ์ฃผ์ธ์”!", 5120123, 3000);
                }
             }
          }

@@ -1,4 +1,4 @@
-package objects.users.jobs.adventure.thief;
+﻿package objects.users.jobs.adventure.thief;
 
 import constants.GameConstants;
 import java.util.ArrayList;

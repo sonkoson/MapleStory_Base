@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ public class NormalKalosEnter extends FieldSet {
       this.maxLv = 1000;
       this.qexKey = 1234569;
       this.keyValue = "kalos_clear";
-      this.bossName = "칼로스";
-      this.difficulty = "노말";
+      this.bossName = "์นผ๋ก์ค";
+      this.difficulty = "๋…ธ๋ง";
       this.dailyLimit = 3;
    }
 
@@ -82,10 +82,10 @@ public class NormalKalosEnter extends FieldSet {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   chrx.setCurrentBossPhase(1);
                }

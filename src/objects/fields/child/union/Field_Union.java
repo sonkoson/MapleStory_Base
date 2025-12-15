@@ -1,4 +1,4 @@
-package objects.fields.child.union;
+﻿package objects.fields.child.union;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -39,7 +39,7 @@ public class Field_Union {
       if (this.player == null) {
          MapleUnion union = player.getMapleUnion();
          if (union == null) {
-            player.dropMessage(5, "โหลดข้อมูล Union ล้มเหลว");
+            player.dropMessage(5, "เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Union เธฅเนเธกเน€เธซเธฅเธง");
             player.warp(15);
             return;
          }

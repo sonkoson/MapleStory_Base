@@ -1,4 +1,4 @@
-package objects.fields.gameobject.lifes;
+﻿package objects.fields.gameobject.lifes;
 
 import network.decode.PacketDecoder;
 import network.game.processors.AttackInfo;

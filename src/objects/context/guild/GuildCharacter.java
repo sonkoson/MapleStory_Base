@@ -1,4 +1,4 @@
-package objects.context.guild;
+﻿package objects.context.guild;
 
 import java.io.Serializable;
 import network.center.Center;

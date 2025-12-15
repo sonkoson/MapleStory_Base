@@ -1,4 +1,4 @@
-package objects.users.looks.mannequin;
+﻿package objects.users.looks.mannequin;
 
 public enum MannequinType {
    HairRoom(0),

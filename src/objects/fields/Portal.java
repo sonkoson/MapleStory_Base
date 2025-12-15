@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import network.game.GameServer;
@@ -103,7 +103,7 @@ public class Portal {
             }
 
             if (!c.getPlayer().isGM() && to.getLevelLimit() > 0 && to.getLevelLimit() > c.getPlayer().getLevel()) {
-               c.getPlayer().dropMessage(-1, "เลเวลของคุณต่ำเกินไปที่จะเข้าที่นี่");
+               c.getPlayer().dropMessage(-1, "เน€เธฅเน€เธงเธฅเธเธญเธเธเธธเธ“เธ•เนเธณเน€เธเธดเธเนเธเธ—เธตเนเธเธฐเน€เธเนเธฒเธ—เธตเนเธเธตเน");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }

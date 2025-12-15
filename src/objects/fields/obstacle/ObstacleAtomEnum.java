@@ -1,4 +1,4 @@
-package objects.fields.obstacle;
+﻿package objects.fields.obstacle;
 
 public enum ObstacleAtomEnum {
    GreenMeteor(5, 20),

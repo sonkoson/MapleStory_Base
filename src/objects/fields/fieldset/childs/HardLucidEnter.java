@@ -1,4 +1,4 @@
-package objects.fields.fieldset.childs;
+﻿package objects.fields.fieldset.childs;
 
 import database.DBConfig;
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class HardLucidEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "lucid_clear";
       this.canTimeKey = "lucid_can_time";
-      this.bossName = "루시드";
-      this.difficulty = "하드";
+      this.bossName = "๋ฃจ์๋“";
+      this.difficulty = "ํ•๋“";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
       this.genesisQuestMemberLimit = 2;
       this.genesisQuestId = 2000025;
@@ -140,10 +140,10 @@ public class HardLucidEnter extends FieldSet {
                if (chrxxxx.getParty() != null && chrxxxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(연습)";
+                     bn2 = bn + "(์—ฐ์ต)";
                   }
 
-                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
                   LoggingManager.putLog(new BossLog(chrxxxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxxxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxxxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -127,19 +127,19 @@ public class EliteBossEvent extends FieldEvent {
          if (!this.summonedBoss && this.startTime + 4500L <= now) {
             switch (this.bossTemplateID) {
                case 8220022:
-                  this.map.startMapEffect("검은 기사 모카딘 : 위대한 분을 위하여 너를 처단하겠다.", 5120125, false, 5);
+                  this.map.startMapEffect("๊ฒ€์€ ๊ธฐ์ฌ ๋ชจ์นด๋” : ์๋€ํ• ๋ถ์ ์ํ•์—ฌ ๋๋ฅผ ์ฒ๋จํ•๊ฒ ๋ค.", 5120125, false, 5);
                   break;
                case 8220023:
-                  this.map.startMapEffect("미친 마법사 카리아인 : 미천한 것들이 날뛰고 있구나. 크크크크...", 5120126, false, 5);
+                  this.map.startMapEffect("๋ฏธ์น ๋ง๋ฒ•์ฌ ์นด๋ฆฌ์•์ธ : ๋ฏธ์ฒํ• ๊ฒ๋“ค์ด ๋ ๋ฐ๊ณ  ์๊ตฌ๋. ํฌํฌํฌํฌ...", 5120126, false, 5);
                   break;
                case 8220024:
-                  this.map.startMapEffect("돌격형 CQ57 : 목표발견. 제거 행동을 시작한다.", 5120127, false, 5);
+                  this.map.startMapEffect("๋๊ฒฉํ• CQ57 : ๋ชฉํ‘๋ฐ๊ฒฌ. ์ ๊ฑฐ ํ–๋์ ์์‘ํ•๋ค.", 5120127, false, 5);
                   break;
                case 8220025:
-                  this.map.startMapEffect("인간사냥꾼 줄라이 : 사냥감이 나타났군.", 5120128, false, 5);
+                  this.map.startMapEffect("์ธ๊ฐ์ฌ๋ฅ๊พผ ์ค๋ผ์ด : ์ฌ๋ฅ๊ฐ์ด ๋ํ€๋ฌ๊ตฐ.", 5120128, false, 5);
                   break;
                case 8220026:
-                  this.map.startMapEffect("싸움꾼 플레드 : 재미 있겠군. 어디 한 번 놀아볼까.", 5120129, false, 5);
+                  this.map.startMapEffect("์ธ์€๊พผ ํ”๋ ๋“ : ์ฌ๋ฏธ ์๊ฒ ๊ตฐ. ์–ด๋”” ํ• ๋ฒ ๋€์•๋ณผ๊น.", 5120129, false, 5);
             }
 
             this.summonEliteBoss();

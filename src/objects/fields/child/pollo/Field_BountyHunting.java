@@ -1,4 +1,4 @@
-package objects.fields.child.pollo;
+﻿package objects.fields.child.pollo;
 
 import constants.QuestExConstants;
 import java.awt.Point;
@@ -192,7 +192,7 @@ public class Field_BountyHunting extends Field {
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
       this.player = player;
-      player.send(CField.startMapEffect("놈들이 사방에서 몰려오는군! 녀석들을 처치하면 막대한 경험치를 얻을 수 있다!", 5120159, true, 10));
+      player.send(CField.startMapEffect("๋๋“ค์ด ์ฌ๋ฐฉ์—์ ๋ชฐ๋ ค์ค๋”๊ตฐ! ๋…€์๋“ค์ ์ฒ์นํ•๋ฉด ๋ง๋€ํ• ๊ฒฝํ—์น๋ฅผ ์–ป์ ์ ์๋ค!", 5120159, true, 10));
       MapleMonster mob = MapleLifeFactory.getMonster(9833004);
       RandomPortal portal = player.getRandomPortal();
       if (portal != null) {

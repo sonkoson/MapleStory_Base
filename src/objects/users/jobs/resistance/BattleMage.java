@@ -1,4 +1,4 @@
-package objects.users.jobs.resistance;
+﻿package objects.users.jobs.resistance;
 
 import java.awt.Point;
 import java.util.ArrayList;

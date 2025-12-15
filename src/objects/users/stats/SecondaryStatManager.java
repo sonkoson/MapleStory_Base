@@ -1,4 +1,4 @@
-package objects.users.stats;
+﻿package objects.users.stats;
 
 import network.SendPacketOpcode;
 import network.encode.PacketEncoder;

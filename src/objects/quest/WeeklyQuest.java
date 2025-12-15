@@ -1,4 +1,4 @@
-package objects.quest;
+﻿package objects.quest;
 
 public class WeeklyQuest {
    private int questID;
@@ -56,8 +56,8 @@ public class WeeklyQuest {
    }
 
    public static enum QuestName {
-      QUEST_1("헤이븐 주간 퀘스트", 1234571),
-      QUEST_2("버려진야영지 주간 퀘스트", 1234572);
+      QUEST_1("ํ—ค์ด๋ธ ์ฃผ๊ฐ ํ€์คํธ", 1234571),
+      QUEST_2("๋ฒ๋ ค์ง์•ผ์์ง€ ์ฃผ๊ฐ ํ€์คํธ", 1234572);
 
       final String name;
       final int questID;

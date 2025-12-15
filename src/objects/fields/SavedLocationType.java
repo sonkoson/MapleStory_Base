@@ -1,4 +1,4 @@
-package objects.fields;
+﻿package objects.fields;
 
 public enum SavedLocationType {
    FREE_MARKET(0),

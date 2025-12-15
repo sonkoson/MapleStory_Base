@@ -1,4 +1,4 @@
-package objects.fields.events;
+﻿package objects.fields.events;
 
 public enum MapleEventType {
    Coconut(new int[]{109080000}),

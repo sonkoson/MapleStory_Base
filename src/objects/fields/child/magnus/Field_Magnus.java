@@ -1,4 +1,4 @@
-package objects.fields.child.magnus;
+﻿package objects.fields.child.magnus;
 
 import constants.QuestExConstants;
 import database.DBConfig;
@@ -83,7 +83,7 @@ public class Field_Magnus extends Field {
          this.changeMobZone(0);
          this.setActiveDebuffObjs(false);
          this.activeDecHPr = false;
-         this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 6666, "매그너스가 사망하여 방출된 에너지로 인해 더이상 구와르의 힘에 영향을 받지 않습니다.");
+         this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 6666, "๋งค๊ทธ๋์ค๊ฐ€ ์ฌ๋งํ•์—ฌ ๋ฐฉ์ถ๋ ์—๋์ง€๋ก ์ธํ•ด ๋”์ด์ ๊ตฌ์€๋ฅด์ ํ์— ์ํ–ฅ์ ๋ฐ์ง€ ์•์ต๋๋ค.");
          this.broadcastMessage(CField.clearObstacle());
 
          for (MapleCharacter p : this.getCharactersThreadsafe()) {
@@ -293,16 +293,16 @@ public class Field_Magnus extends Field {
             }
 
             this.changeMobZone(2);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 2, "매그너스가 구와르를 제어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 2, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
          } else if (mob.getHPPercent() <= 50 && mob.getMobZoneDataType() == 2) {
             this.changeMobZone(3);
             this.clearObstacleAtomCreators();
             Rect mBR = this.calculateMBR();
             this.FirstObstacleAtomHandle(mob, mBR);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 3, "매그너스가 구와르를 제어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 3, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
          } else if (mob.getHPPercent() <= 25 && mob.getMobZoneDataType() == 3) {
             this.changeMobZone(4);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 4, "매그너스가 구와르를 제어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 4, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
          }
       }
    }

@@ -1,4 +1,4 @@
-package objects.fields.child.will;
+﻿package objects.fields.child.will;
 
 import network.encode.PacketEncoder;
 import objects.utils.Rect;

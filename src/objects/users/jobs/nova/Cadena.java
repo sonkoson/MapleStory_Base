@@ -1,4 +1,4 @@
-package objects.users.jobs.nova;
+﻿package objects.users.jobs.nova;
 
 import java.awt.Point;
 import java.util.ArrayList;

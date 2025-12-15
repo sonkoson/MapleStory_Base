@@ -1,4 +1,4 @@
-package network.decode;
+﻿package network.decode;
 
 import java.io.IOException;
 import objects.utils.HexTool;

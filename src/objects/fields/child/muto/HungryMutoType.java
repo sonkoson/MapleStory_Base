@@ -1,4 +1,4 @@
-package objects.fields.child.muto;
+﻿package objects.fields.child.muto;
 
 public enum HungryMutoType {
    HungryMutoResult_TimerSet(1),

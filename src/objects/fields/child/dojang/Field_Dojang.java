@@ -1,4 +1,4 @@
-package objects.fields.child.dojang;
+﻿package objects.fields.child.dojang;
 
 import database.DBConfig;
 import java.awt.Point;
@@ -207,12 +207,12 @@ public class Field_Dojang extends Field {
 
       if (this.stage >= 80 && this.player.getOneInfoQuestInteger(1234590, "open_challenge") <= 0) {
          this.player.updateOneInfo(1234590, "open_challenge", "1");
-         this.player.dropMessage(5, "ปลดล็อค Mulung Dojo Challenge Mode แล้ว");
+         this.player.dropMessage(5, "เธเธฅเธ”เธฅเนเธญเธ Mulung Dojo Challenge Mode เนเธฅเนเธง");
       }
 
       int score = this.stage * 1000 + (999 - this.playTimeTick);
       if (DojangRanking.addAndCalcRank(score, this.player, this.challengeMode)) {
-         this.player.dropMessage(5, "ทำลายสถิติสูงสุดของสัปดาห์นี้เรียบร้อยแล้ว");
+         this.player.dropMessage(5, "เธ—เธณเธฅเธฒเธขเธชเธ–เธดเธ•เธดเธชเธนเธเธชเธธเธ”เธเธญเธเธชเธฑเธเธ”เธฒเธซเนเธเธตเนเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
       }
    }
 
@@ -257,7 +257,7 @@ public class Field_Dojang extends Field {
 
       if (stage > 0) {
          if (stage == 1) {
-            player.send(CField.startMapEffect("제한시간은 15분, 최대한 신속하게 몬스터를 쓰러트리고 다음 층으로 올라가면 돼!", 5120024, true, 10));
+            player.send(CField.startMapEffect("์ ํ•์๊ฐ์€ 15๋ถ, ์ต๋€ํ• ์ ์ํ•๊ฒ ๋ชฌ์คํฐ๋ฅผ ์“ฐ๋ฌํธ๋ฆฌ๊ณ  ๋ค์ ์ธต์ผ๋ก ์ฌ๋ผ๊ฐ€๋ฉด ๋ผ!", 5120024, true, 10));
             player.send(CField.getStartDojangClock(PLAY_TIME_SECONDS, 0));
          } else {
             this.playTimeTick = player.getOneInfoQuestInteger(1234580, "dojang_tick");
@@ -267,7 +267,7 @@ public class Field_Dojang extends Field {
       } else {
          player.send(CField.getStartDojangClock(901, 0));
          player.send(CField.getToggleDojangClock(true, 901, 30));
-         player.send(CField.startMapEffect("사부님의 특별한 도법으로 모든 버프가 해제되었어. 이래야 좀 공평하지? 30초 줄테니까 준비해서 올라가라고.", 5120024, true, 10));
+         player.send(CField.startMapEffect("์ฌ๋ถ€๋์ ํน๋ณํ• ๋๋ฒ•์ผ๋ก ๋ชจ๋“  ๋ฒํ”๊ฐ€ ํ•ด์ ๋์—์–ด. ์ด๋์•ผ ์ข€ ๊ณตํํ•์ง€? 30์ด ์คํ…๋๊น ์ค€๋นํ•ด์ ์ฌ๋ผ๊ฐ€๋ผ๊ณ .", 5120024, true, 10));
          player.send(CField.environmentChange("Map/Effect2.img/MuruengTime", 19));
          this.goNextStageTime = System.currentTimeMillis() + 30000L;
       }
@@ -295,7 +295,7 @@ public class Field_Dojang extends Field {
             this.player.send(CField.triggerReactor(reactor, 0));
          }
 
-         this.player.send(CWvsContext.getScriptProgressMessage("상대를 격파하였습니다. 10초간 타이머가 정지됩니다."));
+         this.player.send(CWvsContext.getScriptProgressMessage("์๋€๋ฅผ ๊ฒฉํํ•์€์ต๋๋ค. 10์ด๊ฐ ํ€์ด๋จธ๊ฐ€ ์ •์ง€๋ฉ๋๋ค."));
          this.resumeClockTime = System.currentTimeMillis() + 10000L;
       }
    }

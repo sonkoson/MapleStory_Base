@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.train;
+﻿package objects.fields.child.minigame.train;
 
 import constants.ServerConstants;
 import network.models.CField;

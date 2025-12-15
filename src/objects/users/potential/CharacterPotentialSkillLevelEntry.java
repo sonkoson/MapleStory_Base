@@ -1,4 +1,4 @@
-package objects.users.potential;
+﻿package objects.users.potential;
 
 public class CharacterPotentialSkillLevelEntry {
    private int grade;

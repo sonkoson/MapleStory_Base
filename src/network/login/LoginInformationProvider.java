@@ -1,4 +1,4 @@
-package network.login;
+﻿package network.login;
 
 import constants.GameConstants;
 import constants.ServerConstants;
@@ -78,34 +78,34 @@ public class LoginInformationProvider {
                for (MapleData da : d) {
                   String keyName = MapleDataTool.getString(da.getChildByPath("name"), "");
                   switch (keyName) {
-                     case "궁모":
+                     case "๊ถ๋ชจ":
                         keyName = "UltimateExplorer";
                         break;
-                     case "모자":
+                     case "๋ชจ์":
                         keyName = "Hat";
                         break;
-                     case "상의":
+                     case "์์":
                         keyName = "Top";
                         break;
-                     case "의상":
+                     case "์์":
                         keyName = "Overall";
                         break;
-                     case "하의":
+                     case "ํ•์":
                         keyName = "Bottom";
                         break;
-                     case "망토":
+                     case "๋งํ ":
                         keyName = "Cape";
                         break;
-                     case "신발":
+                     case "์ ๋ฐ":
                         keyName = "Shoes";
                         break;
-                     case "무기":
+                     case "๋ฌด๊ธฐ":
                         keyName = "Weapon";
                         break;
-                     case "얼굴":
+                     case "์–ผ๊ตด":
                         keyName = "Face";
                         break;
-                     case "헤어":
+                     case "ํ—ค์–ด":
                         keyName = "Hair";
                         break;
                   }

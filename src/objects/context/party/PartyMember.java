@@ -1,4 +1,4 @@
-package objects.context.party;
+﻿package objects.context.party;
 
 import java.util.ArrayList;
 import java.util.List;

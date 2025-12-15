@@ -1,4 +1,4 @@
-package objects.users.looks.zero;
+﻿package objects.users.looks.zero;
 
 public enum ZeroLinkCashPartFlag {
    None(0, 0),

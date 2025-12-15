@@ -1,4 +1,4 @@
-package network.encode;
+﻿package network.encode;
 
 import org.apache.mina.core.buffer.IoBuffer;
 

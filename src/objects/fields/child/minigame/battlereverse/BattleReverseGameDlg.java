@@ -1,4 +1,4 @@
-package objects.fields.child.minigame.battlereverse;
+﻿package objects.fields.child.minigame.battlereverse;
 
 import constants.ServerConstants;
 import java.util.List;
@@ -31,7 +31,7 @@ public class BattleReverseGameDlg {
          }
       } else {
          for (MapleCharacter playerx : this.field.getCharactersThreadsafe()) {
-            playerx.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+            playerx.dropMessage(5, "เธเธณเธเธงเธเธเธนเนเน€เธฅเนเธเนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเน€เธเธก เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
             playerx.setRegisterTransferField(ServerConstants.TownMap);
             playerx.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }
@@ -44,10 +44,10 @@ public class BattleReverseGameDlg {
             chr.send(BattleReversePacket.OpenBattleReverseUI(this.gameInfo, chr));
          }
       } else {
-         FileoutputUtil.log("Log_MiniGame_Except.rtf", "캐릭터가 null인 상태로 게임시작 시도");
+         FileoutputUtil.log("Log_MiniGame_Except.rtf", "์บ๋ฆญํฐ๊ฐ€ null์ธ ์ํ๋ก ๊ฒ์์์‘ ์๋");
 
          for (MapleCharacter chr : this.field.getCharacters()) {
-            chr.dropMessage(5, "เกิดข้อผิดพลาด เกมไม่เริ่ม จึงถูกย้ายกลับเมือง");
+            chr.dropMessage(5, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ” เน€เธเธกเนเธกเนเน€เธฃเธดเนเธก เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
             chr.setRegisterTransferField(ServerConstants.TownMap);
             chr.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }

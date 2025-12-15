@@ -1,4 +1,4 @@
-package objects.captcha;
+﻿package objects.captcha;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;

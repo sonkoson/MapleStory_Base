@@ -1,4 +1,4 @@
-package objects.context.expedition;
+﻿package objects.context.expedition;
 
 public enum ExpeditionType {
    Normal_Balrog(15, 2001, 50, 200),

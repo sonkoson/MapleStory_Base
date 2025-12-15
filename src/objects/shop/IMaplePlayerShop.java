@@ -1,4 +1,4 @@
-package objects.shop;
+﻿package objects.shop;
 
 import java.util.List;
 import objects.users.MapleCharacter;
