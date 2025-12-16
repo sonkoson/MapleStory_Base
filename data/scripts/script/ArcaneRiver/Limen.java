@@ -23,7 +23,7 @@ public class Limen extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -42,7 +42,7 @@ public class Limen extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -61,7 +61,7 @@ public class Limen extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -70,7 +70,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012010, 1);
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -79,7 +79,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012100, 1);
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -88,7 +88,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012110, 1);
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -97,7 +97,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012120, 1);
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -106,7 +106,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012200, 3);
         } else {
-            getPlayer().dropMessage(5, "255레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 }

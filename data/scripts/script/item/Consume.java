@@ -41,7 +41,7 @@ public class Consume extends ScriptEngineNPC {
     public void decreaseBossCount(List<Triple<Integer, String, String>> bossList, int itemID) {
 
         if (getPlayer().getMap().getFieldSetInstance() != null) {
-            getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다");
+            getPlayer().dropMessage(5, "บอส ดำเนินการ중엔 이용이 불เป็นไปได้");
             return;
         }
 
@@ -55,12 +55,12 @@ public class Consume extends ScriptEngineNPC {
             int minutes = Integer.parseInt(dates[4]);
 
             if (hours >= 23 && minutes >= 50) {
-                self.sayOk("#fs11#11시 50분부터 12시 까지는 차감권을 이용할 수 없어", ScriptMessageFlag.NpcReplacedByUser);
+                self.sayOk("#fs11#11시 50นาที부터 12시 까지는 หัก권을 이용할 수 없어", ScriptMessageFlag.NpcReplacedByUser);
                 return;
             }
 
-            StringBuilder bossComment = new StringBuilder("#fs11#어떤 보스의 #b입장 횟수#k를 1회 차감 할까?\r\n")
-                    .append("차감권은 하루에 #r20번#k만 사용가능하니 신중히 골라야겠어.\r\n\r\n");
+            StringBuilder bossComment = new StringBuilder("#fs11#어떤 บอส #bเข้า 횟수#k 1회 หัก 할까?\r\n")
+                    .append("หัก권은 하루에 #r20번#k ใช้เป็นไปได้하니 신중히 골라야겠어.\r\n\r\n");
 
             int i = 0;
             for (var triple : bossList) {
@@ -76,7 +76,7 @@ public class Consume extends ScriptEngineNPC {
 
             int usecount = self.askNumber(
                     "#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/" + triple.left + "/Icon/normal/0#\r\n#r#e"
-                            + triple.mid + " #k#n에 차감 티켓 몇개를 사용할까?\r\n사용 가능한 차감권 갯수 : " + cancount,
+                            + triple.mid + " #k#n หัก 티켓 몇개를 ใช้할까?\r\nใช้ เป็นไปได้한 หัก권 갯수 : " + cancount,
                     1, 1, cancount, ScriptMessageFlag.NpcReplacedByUser);
             if (usecount < 1)
                 return;
@@ -87,15 +87,15 @@ public class Consume extends ScriptEngineNPC {
                     "%d" +
                     "/Icon/normal/0#\r\n" +
                     "%s" +
-                    "#fs11##n#k 클리어 횟수 " + usecount + "회 차감을 진행할까?\r\n\r\n" +
-                    "#fs11##r(※ 사용시 되돌릴 수 없습니다.)", triple.left, triple.mid), ScriptMessageFlag.NpcReplacedByUser)) {
+                    "#fs11##n#k 클리어 횟수 " + usecount + "회 หัก을 ดำเนินการ할까?\r\n\r\n" +
+                    "#fs11##r(※ ใช้시 되돌릴 수 없.)", triple.left, triple.mid), ScriptMessageFlag.NpcReplacedByUser)) {
                 int count = getPlayer().getOneInfoQuestInteger(1234569, triple.right);
                 int count2 = getPlayer().getOneInfoQuestInteger(1234570, triple.right);
                 int count3 = getPlayer().getOneInfoQuestInteger(1234589, triple.right);
                 int count4 = getPlayer().getOneInfoQuestInteger(1234590, triple.right);
 
                 if (count < usecount && count2 < usecount && count3 < usecount && count4 < usecount) {
-                    self.sayOk("#fs11#입장횟수가 사용할 차감 티켓의 갯수보다 적은 보스잖아?", ScriptMessageFlag.NpcReplacedByUser);
+                    self.sayOk("#fs11#เข้า횟수가 ใช้할 หัก 티켓의 갯수보다 적은 บอส잖아?", ScriptMessageFlag.NpcReplacedByUser);
                     return;
                 }
 
@@ -120,11 +120,11 @@ public class Consume extends ScriptEngineNPC {
                     String str = "#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/" + triple.left
                             + "/Icon/normal/0#\r\n" +
                             triple.mid +
-                            "#fs11##n#k 클리어 횟수 " + usecount + "회 차감이 완료 되었습니다.\r\n" + "#fs11##n#k남은 사용 가능 횟수: "
+                            "#fs11##n#k 클리어 횟수 " + usecount + "회 หัก이 เสร็จสมบูรณ์ 되었.\r\n" + "#fs11##n#k남은 ใช้ เป็นไปได้ 횟수: "
                             + (20 - currentCount);
 
                     getPlayer().setSaveFlag(getPlayer().getSaveFlag() | CharacterSaveFlag.QUEST_INFO.getFlag()); // questinfo
-                                                                                                                 // 저장
+                                                                                                                 // บันทึก
                     getPlayer().saveToDB(false, false);
                     self.sayOk(str, ScriptMessageFlag.NpcReplacedByUser);
                 }
@@ -144,12 +144,12 @@ public class Consume extends ScriptEngineNPC {
             int minutes = Integer.parseInt(dates[4]);
 
             if (hours >= 23 && minutes >= 50) {
-                self.sayOk("11시 50분부터 12시 까지는 초기화권을 이용하실 수 없습니다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.sayOk("11시 50นาที부터 12시 까지는 วินาที기화권을 이용ไม่สามารถทำได้.", ScriptMessageFlag.NpcReplacedByUser);
                 return;
             }
 
-            StringBuilder bossComment = new StringBuilder("#fs11#어떤 보스의 #b입장 횟수#k를 초기화 할까?\r\n")
-                    .append("초기화권은 하루에 #r3번#k만 사용가능합니다.\r\n\r\n");
+            StringBuilder bossComment = new StringBuilder("#fs11#어떤 บอส #bเข้า 횟수#k วินาที기화 할까?\r\n")
+                    .append("วินาที기화권은 하루에 #r3번#k ใช้เป็นไปได้.\r\n\r\n");
 
             int i = 0;
             for (var triple : bossList) {
@@ -164,13 +164,13 @@ public class Consume extends ScriptEngineNPC {
                     "%d" +
                     "/Icon/normal/0#\r\n" +
                     "%s" +
-                    "#fs11##n#k 클리어 횟수 초기화를 진행할까?\r\n\r\n" +
-                    "#fs11##r(※ 사용시 되돌릴 수 없습니다.)", triple.left, triple.mid), ScriptMessageFlag.NpcReplacedByUser)) {
+                    "#fs11##n#k 클리어 횟수 วินาที기화를 ดำเนินการ할까?\r\n\r\n" +
+                    "#fs11##r(※ ใช้시 되돌릴 수 없.)", triple.left, triple.mid), ScriptMessageFlag.NpcReplacedByUser)) {
                 String date = String.valueOf(GameConstants.getCurrentDate_NoTime());
 
         int used = getPlayer().getOneInfoQuestInteger(1234569, "ResetBoss");
         if (used >= 3) {
-            self.sayOk("오늘은 이미 초기화권을 3번 사용했다. 내일 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+            self.sayOk("วันนี้은 이미 วินาที기화권을 3번 ใช้했다. พรุ่งนี้ 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             return;
         }
 
@@ -185,9 +185,9 @@ public class Consume extends ScriptEngineNPC {
                     String str = "#r#e#fs11##fUI/UIWindow2.img/UserList/Main/Boss/BossList/" + triple.left
                             + "/Icon/normal/0#\r\n" +
                             triple.mid +
-                            "#fs11##n#k 클리어 횟수 초기화가 완료 되었습니다.";
+                            "#fs11##n#k 클리어 횟수 วินาที기화가 เสร็จสมบูรณ์ 되었.";
 
-                self.sayOk("초기화가 완료되었습니다. 남은 횟수: " + (3 - (used + 1)) + "회",
+                self.sayOk("วินาที기화가 เสร็จสมบูรณ์. 남은 횟수: " + (3 - (used + 1)) + "회",
                             ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
@@ -234,10 +234,10 @@ public class Consume extends ScriptEngineNPC {
         decreaseBossCount(bossList, 2430033);
     }
 
-    // 진:眞 초기지원 상자
+    // 진:眞 วินาที기สนับสนุน 상자
     public void consume_2439600() {
         int[][] rewards = new int[][] {
-                { 2439602, 1 }, // 진:眞 무기 지원 상자
+                { 2439602, 1 }, // 진:眞 อาวุธ สนับสนุน 상자
                 /*
                  * {1003243, 1}, // 메이플 래티넘 베레모
                  * {1102295, 1},// 메이플 래티넘 클록
@@ -259,42 +259,42 @@ public class Consume extends ScriptEngineNPC {
         };
 
         initNPC(MapleLifeFactory.getNPC(9062474));
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
             }
         }
-        v0 += "\r\n#b자쿰의 포이즈닉 무기 중 1개 선택 획득\r\n";
+        v0 += "\r\n#b자쿰의 포이즈닉 อาวุธ 중 1개 เลือก ได้รับ\r\n";
 
         if (DBConfig.isGanglim) {
-            v0 += "  - 스타포스 10성 적용, 에픽 잠재능력 옵션 부여, 올스탯 +30, 공/마 +15 적용\r\n";
+            v0 += "  - 스타포스 10성 ใช้งาน, Epic 잠재ความสามารถ ตัวเลือก 부여, 올Stat +30, 공/마 +15 ใช้งาน\r\n";
         } else {
-            v0 += "  - 스타포스 10성 적용, 유니크 잠재능력 옵션 부여, 올스탯 30 적용\r\n";
+            v0 += "  - 스타포스 10성 ใช้งาน, Unique 잠재ความสามารถ ตัวเลือก 부여, 올Stat 30 ใช้งาน\r\n";
         }
         if (DBConfig.isGanglim) {
-            v0 += "\r\n모든 메이플 트레져 장비에 올스탯 +30, 공/마 +15 적용\r\n";
+            v0 += "\r\nทั้งหมด 메이플 트레져 อุปกรณ์에 올Stat +30, 공/마 +15 ใช้งาน\r\n";
         }
-        v0 += "\r\n#k#e[스킬 획득]#n#b\r\n";
-        v0 += "#s80001825# 일섬\r\n";
+        v0 += "\r\n#k#e[สกิล ได้รับ]#n#b\r\n";
+        v0 += "#s80001825# วัน섬\r\n";
         v0 += "#s80001829# 비연\r\n";
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 올스탯 아이템 지금 때문에 아래와 같은 방식으로 해야한다.
+            // 본래 exchange  되나, 올Stat ไอเท็ม 지금 때문에 아래와 같은 방식으로 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                     getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 8) {
 
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 boolean isZero = false;
                 int v3 = -1;
                 if (GameConstants.isZero(getPlayer().getJob())) {
                     isZero = true;
                 } else {
-                    String v2 = "다음과 같은 무기 중 1개를 선택할 수 있다. 어떤것을 고를까?#b\r\n\r\n";
+                    String v2 = "ถัดไป과 같은 อาวุธ 중 1개를 เลือก할 수 있다. 어떤것을 고를까?#b\r\n\r\n";
                     if (DBConfig.isGanglim) {
-                        v2 = "다음 무기 중 1개를 선택할 수 있다. 어떤것을 고를까?#b\r\n\r\n";
+                        v2 = "ถัดไป อาวุธ 중 1개를 เลือก할 수 있다. 어떤것을 고를까?#b\r\n\r\n";
                     }
                     for (int i = 0; i < weapons.length; ++i) {
                         int weapon = weapons[i];
@@ -304,11 +304,11 @@ public class Consume extends ScriptEngineNPC {
                 }
                 if (v3 >= 0 || isZero) {
                     int itemID = 0;
-                    String v4 = "다음과 같이 아이템을 획득할 수 있다. 이대로 진행할까?\r\n\r\n";
-                    v4 += "#e[아이템 획득]#n\r\n";
+                    String v4 = "ถัดไป과 같이 ไอเท็ม ได้รับ할 수 있다. 이대로 ดำเนินการ할까?\r\n\r\n";
+                    v4 += "#e[ไอเท็ม ได้รับ]#n\r\n";
                     if (!isZero) {
                         itemID = weapons[v3];
-                        v4 += "#e#i" + itemID + "# #z" + itemID + "# (선택)#n\r\n";
+                        v4 += "#e#i" + itemID + "# #z" + itemID + "# (เลือก)#n\r\n";
                     }
                     for (int[] reward : rewards) {
                         if (reward[1] != -1) {
@@ -330,19 +330,19 @@ public class Consume extends ScriptEngineNPC {
                                 exchangeSupportEquip(1073057, 30, 15, 100);
                                 exchangeSupportEquip(1082647, 30, 15, 100);
                                 exchangeSupportEquip(itemID, 30, 15, 100);
-                                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                                 getPlayer().updateOneInfo(1234569, "get_treasure_set", "1");
                             } else {
-                                self.say("메이플 트레져 세트는 이미 지급받아서 받지 못하였다. 나머지 아이템을 확인해보자.",
+                                self.say("메이플 트레져 세트는 이미 지급받아서 받지 못하였다. 나머지 ไอเท็ม ยืนยัน해보자.",
                                         ScriptMessageFlag.NpcReplacedByUser);
                             }
 
                         }
                     } else {
                         if (DBConfig.isGanglim) {
-                            self.say("조금 더 생각해보자.", ScriptMessageFlag.NpcReplacedByUser);
+                            self.say("นิดหน่อย 더 생แต่ละ해보자.", ScriptMessageFlag.NpcReplacedByUser);
                         } else {
-                            self.say("아무래도 조금 더 고민을 해봐야할 것 같다.", ScriptMessageFlag.NpcReplacedByUser);
+                            self.say("아무래도 นิดหน่อย 더 고민을 해봐야할 것 같다.", ScriptMessageFlag.NpcReplacedByUser);
                         }
                     }
 
@@ -356,9 +356,9 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9062474));
         if (getPlayer().getOneInfoQuestInteger(1234567, "use_first_support") == 1) {
             if (DBConfig.isGanglim) {
-                self.say("이미 보상을 받았었던 것 같다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("이미 รางวัล을 받았었던 것 같다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("이미 보상을 받았던 것 같은데?", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("이미 รางวัล을 받았던 것 같은데?", ScriptMessageFlag.NpcReplacedByUser);
             }
 
             if (target.exchange(2439601, -1) == 1) {
@@ -369,13 +369,13 @@ public class Consume extends ScriptEngineNPC {
                 { 2439605, 1 }, // 진:眞 스페셜 코디 상자 (S)
                 { 2439604, 5 }, // 진:眞 스페셜 코디 상자 (R)
                 { 2436018, 1 }, // 진:眞 스페셜 헤어 쿠폰
-                { 2439601, -1 }, // 상자 소비
+                { 2439601, -1 }, // 상자 ใช้
         };
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
         if (DBConfig.isGanglim) {
-            v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다고 한다. 지금 바로 열어볼까?\r\n\r\n";
+            v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다고 한다. 지금 바로 열어볼까?\r\n\r\n";
         }
-        v0 += "#e[아이템 획득]#n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
@@ -391,14 +391,14 @@ public class Consume extends ScriptEngineNPC {
                     getPlayer().gainStackEventGauge(0, 100, true);
                 }
                 getPlayer().updateOneInfo(1234567, "use_first_support", "1");
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
 
-    // 진:眞 무기 지원 상자
+    // 진:眞 อาวุธ สนับสนุน 상자
     public void consume_2439602() {
         int[] rewards = new int[] {
                 1212127,
@@ -441,14 +441,14 @@ public class Consume extends ScriptEngineNPC {
             initNPC(MapleLifeFactory.getNPC(9062474));
         }
         if (GameConstants.isZero(getPlayer().getJob())) {
-            self.say("제로는 이용할 수 없습니다.");
+            self.say("제로는 이용할 수 없.");
             if (target.exchange(2439602, -1) == 1) {
             }
             return;
         }
-        String v0 = "다음과 같은 #b파프니르 무기 중 1개#k를 선택하여 획득할 수 있어.\r\n선택한 무기는 #e10일간#n 사용 가능하고 #b올스탯 +200, 공/마 +200, 추가옵션#k이 적용되어 지급돼.\r\n\r\n원하는 무기를 골라봐.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #b파프니르 อาวุธ 중 1개#k เลือก ได้รับ할 수 있어.\r\nเลือก한 อาวุธ는 #e10วัน간#n ใช้ เป็นไปได้ #b올Stat +200, 공/마 +200, เพิ่มตัวเลือก#k ใช้งาน 지급돼.\r\n\r\n원하는 อาวุธ를 골라봐.#b\r\n\r\n";
         if (DBConfig.isGanglim) {
-            v0 = "다음과 같은 #b파프니르 무기 중 1개#k를 선택하여 획득할 수 있습니다.\r\n선택한 무기는 #e14일간#n 사용 가능하고 #b올스탯 +250, 공/마 +250, 추가옵션#k이 적용되어 지급됩니다.\r\n\r\n원하는 무기를 골라보세요.#b\r\n\r\n";
+            v0 = "ถัดไป과 같은 #b파프니르 อาวุธ 중 1개#k เลือก ได้รับ할 수 있.\r\nเลือก한 อาวุธ는 #e14วัน간#n ใช้ เป็นไปได้ #b올Stat +250, 공/마 +250, เพิ่มตัวเลือก#k ใช้งาน 지급.\r\n\r\n원하는 อาวุธ를 골라보세요.#b\r\n\r\n";
         }
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
@@ -460,63 +460,63 @@ public class Consume extends ScriptEngineNPC {
             return; // TODO: Hack
         }
         int itemID = rewards[v1];
-        String v2 = "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                + "##k(이)야.\r\n정말 이 무기로 선택할거니?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)";
+        String v2 = "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                + "##k()야.\r\n정말  อาวุธ로 เลือก할거니?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)";
         if (DBConfig.isGanglim) {
-            v2 = "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                    + "##k 입니다.\r\n이 무기로 선택하시겠어요?\r\n\r\n#b(#e확인#n을 누르면 아이템을 획득합니다.)";
+            v2 = "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                    + "##k .\r\n อาวุธ로 เลือกต้องการหรือไม่?\r\n\r\n#b(#eยืนยัน#n 누르면 ไอเท็ม ได้รับ.)";
         }
         if (self.askYesNo(v2, ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
                 if (DBConfig.isGanglim) {
-                    self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주세요.");
+                    self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도โปรด.");
                 } else {
-                    self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주겠니?");
+                    self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도해สัปดาห์겠니?");
                 }
             } else {
                 if (target.exchange(2439602, -1) == 1) {
                     if (DBConfig.isGanglim) {
                         exchangeSupportEquipBonusStatPeriod(itemID, 250, 250, 14);
-                        self.say("지급이 완료되었습니다. 인벤토리를 확인해보세요!");
+                        self.say("지급이 เสร็จสมบูรณ์. กระเป๋า ยืนยัน해보세요!");
                     } else {
                         exchangeSupportEquipBonusStatPeriod(itemID, 200, 200, 10);
-                        self.say("지급이 완료되었어. 인벤토리를 확인해봐!");
+                        self.say("지급이 เสร็จสมบูรณ์되었어. กระเป๋า ยืนยัน해봐!");
                     }
                 }
             }
         }
     }
 
-    // 초보자 패키지 상자
+    // วินาที보자 패키지 상자
     public void consume_2439603() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         int[][] rewards = new int[][] {
                 { 5068300, 4 }, // 위습의 원더베리 4개
                 { 5069100, 1 }, // 루나 크리스탈 1개
-                { 2049360, 3 }, // 놀라운 장비강화 주문서 3개
-                { 2450153, 10 }, // 경험치 2배 쿠폰 10개
-                { 2436605, 5 }, // 명장의 큐브 복주머니 5개
+                { 2049360, 3 }, // 놀라운 อุปกรณ์เสริมแรง สัปดาห์문서 3개
+                { 2450153, 10 }, // EXP 2배 쿠폰 10개
+                { 2436605, 5 }, // 명장의 큐브 복สัปดาห์머니 5개
                 { 2435719, 100 }, // 코어 젬스톤 100개
                 { 2439292, 3 }, // 미궁의 아케인심볼 상자 3개
-                { 5680410, 1 }, // 10만 캐시 교환권
-                { 2439603, -1 }, // 상자 소비
+                { 5680410, 1 }, // 10 แคช แลกเปลี่ยน권
+                { 2439603, -1 }, // 상자 ใช้
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
             }
         }
-        v0 += "\r\n#b1,000,000,000 메소 (10억 메소)";
+        v0 += "\r\n#b1,000,000,000 Meso (10억 Meso)";
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
             if (target.exchange(rewards) == 1) {
                 getPlayer().gainMeso(1000000000, true);
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b소비 인벤토리#k와 #b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้ กระเป๋า#k #bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
@@ -580,7 +580,7 @@ public class Consume extends ScriptEngineNPC {
                     1058077, 1058078, 1058079, 1058080, 1058081, 1058082, 1058083, 1058084 },
             // 상의
             { 1045000, 1045001, 1045002, 1045003, 1045004 },
-            // 무기
+            // อาวุธ
             { 1704000, 1704001, 1704002, 1704003, 1704004, 1704005, 1704006, 1704007, 1704008, 1704009, 1704010,
                     1704011, 1704012, 1704013, 1704014,
                     1705000, 1705001, 1705002, 1705003, 1705004, 1705005, 1705006, 1705007, 1705008, 1705009, 1705010,
@@ -650,7 +650,7 @@ public class Consume extends ScriptEngineNPC {
                     1058090, 1058091, 1058092, 1058093, 1058094, 1058095, 1058096, 1058097 },
             // 상의
             {},
-            // 무기
+            // อาวุธ
             { 1705000, 1705001, 1705002, 1705003, 1705004, 1705005, 1705006, 1705007, 1705008, 1705009, 1705010,
                     1705011, 1705012, 1705013, 1705014, 1705015, 1705016, 1705017, 1705018, 1705019, 1705020, 1705021,
                     1705022, 1705023, 1705024, 1705025, 1705026, 1705027, 1705028, 1705029, 1705030, 1705031, 1705032,
@@ -675,13 +675,13 @@ public class Consume extends ScriptEngineNPC {
             // 신발
             { 1075000, 1075001, 1075002, 1075003, 1075004, 1075005, 1075006, 1075007, 1075008, 1075009, 1075010,
                     1075011, 1075012, 1075013 },
-            // 악세서리
+            // เครื่องประดับ
             { 1022500, 1022501, 1022502, 1022503, 1022504, 1022505, 1022506, 1012900, 1012901, 1012902, 1012903,
                     1012904, 1012905, 1012906, 1012907, 1012908, 1012909, 1012910, 1012911, 1012912, 1012913, 1012914,
                     1012915, 1012916, 1012917, 1012918, 1012919, 1012920 }
     };
     static String[] label = new String[] {
-            "모자", "한벌옷", "상의", "무기", "망토", "장갑", "신발", "얼굴장식"
+            "모자", "한벌옷", "상의", "อาวุธ", "망토", "장갑", "신발", "얼굴장식"
     };
 
     public void consume_2439605() {
@@ -691,9 +691,9 @@ public class Consume extends ScriptEngineNPC {
             initNPC(MapleLifeFactory.getNPC(9062475));
         }
         if (DBConfig.isGanglim) {
-            int v0 = self.askMenu("#b#i2439605# #z2439605##k는 원하는 스페셜 코디 아이템을 선택하여 획득할 수 있습니다.#b\r\n\r\n" +
-                    "#L0#지금 바로 선택하겠습니다.#l\r\n" +
-                    "#L1#획득할 수 있는 스페셜 코디 리스트를 보여주세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            int v0 = self.askMenu("#b#i2439605# #z2439605##k 원하는 스페셜 코디 ไอเท็ม เลือก ได้รับ할 수 있.#b\r\n\r\n" +
+                    "#L0#지금 바로 เลือก하겠.#l\r\n" +
+                    "#L1#ได้รับ할 수 있는 스페셜 코디 리스트를 보여สัปดาห์세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
             switch (v0) {
                 case 0: { // 개봉
                     String v1 = "어떤 스페셜 코디를 고르시겠어요?#b\r\n\r\n";
@@ -702,7 +702,7 @@ public class Consume extends ScriptEngineNPC {
 
                     if (v2 == 0) { // 강림
                         String v3 = "스페셜 코디 부위를 고르세요.#b\r\n\r\n";
-                        v3 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        v3 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v4 = self.askMenu(v3, ScriptMessageFlag.NpcReplacedByNpc);
                         String v5 = "원하는 스페셜 코디를 골라보세요! #e(" + label[v4] + ")#n #b\r\n\r\n";
                         int index = 0;
@@ -710,25 +710,25 @@ public class Consume extends ScriptEngineNPC {
                             v5 += "#L" + index++ + "##i" + itemID + "# #z" + itemID + "##l\r\n";
                         }
                         int v6 = self.askMenu(v5, ScriptMessageFlag.NpcReplacedByNpc);
-                        if (self.askYesNo("선택하신 스페셜 코디 #b#i" + royalList[v4][v6] + "# #z" + royalList[v4][v6]
-                                + "##k(을)를 선택하시겠어요?\r\n\r\n#b#e예#n를 누르면 상자가 소비되며 교환됩니다.") > 0) {
+                        if (self.askYesNo("เลือก하신 스페셜 코디 #b#i" + royalList[v4][v6] + "# #z" + royalList[v4][v6]
+                                + "##k() เลือกต้องการหรือไม่?\r\n\r\n#b#e예#n 누르면 상자가 ใช้ แลกเปลี่ยน.") > 0) {
                             if (target.exchange(2439605, -1, royalList[v4][v6], 1) == 1) {
-                                self.say("스페셜 코디를 획득했습니다.\r\n#b치장 인벤토리#k를 확인해보세요~!");
+                                self.say("스페셜 코디를 ได้รับแล้ว.\r\n#b치장 กระเป๋า#k ยืนยัน해보세요~!");
                             } else {
-                                self.say("#b치장 인벤토리#k 슬롯을 확보하고 다시 시도해주세요!");
+                                self.say("#b치장 กระเป๋า#k ช่อง 확보 다시 시도โปรด!");
                             }
                         } else {
-                            self.say("좀 더 생각해보시고 다시 찾아주세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("좀 더 생แต่ละ해보시고 다시 찾아สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
                         }
                     }
                 }
                     break;
                 case 1: {// 리스트
-                    int v1 = self.askMenu("열람하고 싶은 스페셜 코디 리스트를 선택해주세요.#b\r\n\r\n#L0#강림 메이플 스페셜 코디 1기#l",
+                    int v1 = self.askMenu("열람 싶은 스페셜 코디 리스트를 เลือกโปรด.#b\r\n\r\n#L0#강림 메이플 스페셜 코디 1기#l",
                             ScriptMessageFlag.NpcReplacedByNpc);
                     if (v1 == 0) { // 강림 스페셜 코디 리스트
-                        String v2 = "#e<강림 메이플 스페셜 코디 1기>#n\r\n스페셜 코디 부위를 선택해주세요.\r\n\r\n#b";
-                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        String v2 = "#e<강림 메이플 스페셜 코디 1기>#n\r\n스페셜 코디 부위를 เลือกโปรด.\r\n\r\n#b";
+                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v3 = self.askMenu(v2, ScriptMessageFlag.NpcReplacedByNpc);
 
                         String v4 = "#e<강림 메이플 스페셜 코디 1기 (" + label[v3] + ")>#n#b\r\n\r\n";
@@ -741,9 +741,9 @@ public class Consume extends ScriptEngineNPC {
                     break;
             }
         } else {
-            int v0 = self.askMenu("#b#i2439605# #z2439605##k는 원하는 스페셜 코디 아이템을 선택하여 획득할 수 있습니다.#b\r\n\r\n" +
-                    "#L0#지금 바로 선택하겠습니다.#l\r\n" +
-                    "#L1#획득할 수 있는 스페셜 코디 리스트를 보여주세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            int v0 = self.askMenu("#b#i2439605# #z2439605##k 원하는 스페셜 코디 ไอเท็ม เลือก ได้รับ할 수 있.#b\r\n\r\n" +
+                    "#L0#지금 바로 เลือก하겠.#l\r\n" +
+                    "#L1#ได้รับ할 수 있는 스페셜 코디 리스트를 보여สัปดาห์세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
             switch (v0) {
                 case 0: { // 개봉
                     String v1 = "어떤 스페셜 코디를 고르시겠어요?#b\r\n\r\n";
@@ -757,19 +757,19 @@ public class Consume extends ScriptEngineNPC {
                             v3 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
                         }
                         int v4 = self.askMenu(v3, ScriptMessageFlag.NpcReplacedByNpc);
-                        if (self.askYesNo("선택하신 스페셜 코디 #b#i" + extremeList[v4] + "# #z" + extremeList[v4]
-                                + "##k(을)를 선택하시겠어요?\r\n\r\n#b#e예#n를 누르면 상자가 소비되며 교환됩니다.") > 0) {
+                        if (self.askYesNo("เลือก하신 스페셜 코디 #b#i" + extremeList[v4] + "# #z" + extremeList[v4]
+                                + "##k() เลือกต้องการหรือไม่?\r\n\r\n#b#e예#n 누르면 상자가 ใช้ แลกเปลี่ยน.") > 0) {
                             if (target.exchange(2439605, -1, extremeList[v4], 1) == 1) {
-                                self.say("스페셜 코디를 획득했습니다.\r\n#b치장 인벤토리#k를 확인해보세요~!");
+                                self.say("스페셜 코디를 ได้รับแล้ว.\r\n#b치장 กระเป๋า#k ยืนยัน해보세요~!");
                             } else {
-                                self.say("#b치장 인벤토리#k 슬롯을 확보하고 다시 시도해주세요!");
+                                self.say("#b치장 กระเป๋า#k ช่อง 확보 다시 시도โปรด!");
                             }
                         } else {
-                            self.say("좀 더 생각해보시고 다시 찾아주세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("좀 더 생แต่ละ해보시고 다시 찾아สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
                         }
                     } else if (v2 == 1) { // 진
                         String v3 = "스페셜 코디 부위를 고르세요.#b\r\n\r\n";
-                        v3 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        v3 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v4 = self.askMenu(v3, ScriptMessageFlag.NpcReplacedByNpc);
                         String v5 = "원하는 스페셜 코디를 골라보세요! #e(" + label[v4] + ")#n #b\r\n\r\n";
                         int index = 0;
@@ -777,22 +777,22 @@ public class Consume extends ScriptEngineNPC {
                             v5 += "#L" + index++ + "##i" + itemID + "# #z" + itemID + "##l\r\n";
                         }
                         int v6 = self.askMenu(v5, ScriptMessageFlag.NpcReplacedByNpc);
-                        if (self.askYesNo("선택하신 스페셜 코디 #b#i" + jinList[v4][v6] + "# #z" + jinList[v4][v6]
-                                + "##k(을)를 선택하시겠어요?\r\n\r\n#b#e예#n를 누르면 상자가 소비되며 교환됩니다.") > 0) {
+                        if (self.askYesNo("เลือก하신 스페셜 코디 #b#i" + jinList[v4][v6] + "# #z" + jinList[v4][v6]
+                                + "##k() เลือกต้องการหรือไม่?\r\n\r\n#b#e예#n 누르면 상자가 ใช้ แลกเปลี่ยน.") > 0) {
                             if (target.exchange(2439605, -1, jinList[v4][v6], 1) == 1) {
-                                self.say("스페셜 코디를 획득했습니다.\r\n#b치장 인벤토리#k를 확인해보세요~!");
+                                self.say("스페셜 코디를 ได้รับแล้ว.\r\n#b치장 กระเป๋า#k ยืนยัน해보세요~!");
                             } else {
-                                self.say("#b치장 인벤토리#k 슬롯을 확보하고 다시 시도해주세요!");
+                                self.say("#b치장 กระเป๋า#k ช่อง 확보 다시 시도โปรด!");
                             }
                         } else {
-                            self.say("좀 더 생각해보시고 다시 찾아주세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("좀 더 생แต่ละ해보시고 다시 찾아สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
                         }
                     }
                 }
                     break;
                 case 1: {// 리스트
                     int v1 = self.askMenu(
-                            "보고 싶은 스페셜 코디 리스트를 선택해주세요.#b\r\n\r\n#L0#익스트림[E] 스페셜 코디#l\r\n#L1#진[J] 스페셜 코디#l",
+                            "보고 싶은 스페셜 코디 리스트를 เลือกโปรด.#b\r\n\r\n#L0#익스트림[E] 스페셜 코디#l\r\n#L1#진[J] 스페셜 코디#l",
                             ScriptMessageFlag.NpcReplacedByNpc);
                     if (v1 == 0) { // 익스트림 스페셜 코디 리스트
                         String v2 = "#e[익스트림[E] 스페셜 코디 리스트]#n\r\n\r\n#b";
@@ -801,8 +801,8 @@ public class Consume extends ScriptEngineNPC {
                         }
                         self.say(v2, ScriptMessageFlag.NpcReplacedByNpc);
                     } else if (v1 == 1) { // 진 스페셜 코디 리스트
-                        String v2 = "#e[진[J] 스페셜 코디 리스트]#n\r\n스페셜 코디 부위를 선택해주세요.\r\n\r\n#b";
-                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        String v2 = "#e[진[J] 스페셜 코디 리스트]#n\r\n스페셜 코디 부위를 เลือกโปรด.\r\n\r\n#b";
+                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v3 = self.askMenu(v2, ScriptMessageFlag.NpcReplacedByNpc);
 
                         String v4 = "#e[진[J] 스페셜 코디 리스트 (" + label[v3] + ")]#n#b\r\n\r\n";
@@ -826,12 +826,12 @@ public class Consume extends ScriptEngineNPC {
         }
 
         if (DBConfig.isGanglim) {
-            int v0 = self.askMenu("#b#i2439604# #z2439604##k는 스페셜 코디 아이템 중 1개를 랜덤으로 획득할 수 있습니다.#b\r\n\r\n" +
-                    "#L0#지금 바로 개봉하겠습니다.#l\r\n" +
-                    "#L1#획득할 수 있는 스페셜 코디 리스트를 보여주세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            int v0 = self.askMenu("#b#i2439604# #z2439604##k 스페셜 코디 ไอเท็ม 중 1개를 สุ่ม으로 ได้รับ할 수 있.#b\r\n\r\n" +
+                    "#L0#지금 바로 개봉하겠.#l\r\n" +
+                    "#L1#ได้รับ할 수 있는 스페셜 코디 리스트를 보여สัปดาห์세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
             switch (v0) {
                 case 0: { // 개봉
-                    if (self.askYesNo("지금 바로 개봉하시겠어요?\r\n\r\n#b#e예#n를 누르면 상자가 소비되며 교환됩니다.",
+                    if (self.askYesNo("지금 바로 개봉ต้องการหรือไม่?\r\n\r\n#b#e예#n 누르면 상자가 ใช้ แลกเปลี่ยน.",
                             ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         List<Integer> list = new ArrayList<>();
                         for (int i = 0; i < jinList.length; ++i) {
@@ -840,26 +840,26 @@ public class Consume extends ScriptEngineNPC {
                         Collections.shuffle(list);
                         Integer pick = list.stream().findAny().orElse(null);
                         if (pick == null) {
-                            self.say("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도해주세요.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         if (target.exchange(2439604, -1, pick, 1) == 1) {
-                            self.say("#b#i2439604# #z2439604##k에서 다음과 같은 아이템이 나왔어요!\r\n\r\n#b#i" + pick + "# #z" + pick
-                                    + "# #k1개 획득!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("#b#i2439604# #z2439604##k ถัดไป과 같은 ไอเท็ม 나왔어요!\r\n\r\n#b#i" + pick + "# #z" + pick
+                                    + "# #k1개 ได้รับ!", ScriptMessageFlag.NpcReplacedByNpc);
                         } else {
 
                         }
                     } else {
-                        self.say("좀 더 생각해보시고 다시 찾아주세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("좀 더 생แต่ละ해보시고 다시 찾아สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 }
                     break;
                 case 1: {// 리스트
-                    int v1 = self.askMenu("보고 싶은 스페셜 코디 리스트를 선택해주세요.#b\r\n\r\n#L0#강림 메이플 스페셜 코디 1기#l",
+                    int v1 = self.askMenu("보고 싶은 스페셜 코디 리스트를 เลือกโปรด.#b\r\n\r\n#L0#강림 메이플 스페셜 코디 1기#l",
                             ScriptMessageFlag.NpcReplacedByNpc);
                     if (v1 == 0) { // 강림 스페셜 코디 리스트
-                        String v2 = "#e<강림 메이플 스페셜 코디 1기 리스트>#n\r\n스페셜 코디 부위를 선택해주세요.\r\n\r\n#b";
-                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        String v2 = "#e<강림 메이플 스페셜 코디 1기 리스트>#n\r\n스페셜 코디 부위를 เลือกโปรด.\r\n\r\n#b";
+                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v3 = self.askMenu(v2, ScriptMessageFlag.NpcReplacedByNpc);
 
                         String v4 = "#e<강림 메이플 스페셜 코디 1기 리스트 (" + label[v3] + ")>#n#b\r\n\r\n";
@@ -872,12 +872,12 @@ public class Consume extends ScriptEngineNPC {
                     break;
             }
         } else {
-            int v0 = self.askMenu("#b#i2439604# #z2439604##k는 스페셜 코디 아이템 중 1개를 랜덤으로 획득할 수 있습니다.#b\r\n\r\n" +
-                    "#L0#지금 바로 개봉하겠습니다.#l\r\n" +
-                    "#L1#획득할 수 있는 스페셜 코디 리스트를 보여주세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
+            int v0 = self.askMenu("#b#i2439604# #z2439604##k 스페셜 코디 ไอเท็ม 중 1개를 สุ่ม으로 ได้รับ할 수 있.#b\r\n\r\n" +
+                    "#L0#지금 바로 개봉하겠.#l\r\n" +
+                    "#L1#ได้รับ할 수 있는 스페셜 코디 리스트를 보여สัปดาห์세요.#k#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
             switch (v0) {
                 case 0: { // 개봉
-                    if (self.askYesNo("지금 바로 개봉하시겠어요?\r\n\r\n#b#e예#n를 누르면 상자가 소비되며 교환됩니다.",
+                    if (self.askYesNo("지금 바로 개봉ต้องการหรือไม่?\r\n\r\n#b#e예#n 누르면 상자가 ใช้ แลกเปลี่ยน.",
                             ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         List<Integer> list = new ArrayList<>();
                         Arrays.stream(extremeList).forEach(list::add);
@@ -887,23 +887,23 @@ public class Consume extends ScriptEngineNPC {
                         Collections.shuffle(list);
                         Integer pick = list.stream().findAny().orElse(null);
                         if (pick == null) {
-                            self.say("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도해주세요.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("알 수 없는 오류가 발생했어요. 잠시 후 다시 시도โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         if (target.exchange(2439604, -1, pick, 1) == 1) {
-                            self.say("#b#i2439604# #z2439604##k에서 다음과 같은 아이템이 나왔어요!\r\n\r\n#b#i" + pick + "# #z" + pick
-                                    + "# #k1개 획득!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("#b#i2439604# #z2439604##k ถัดไป과 같은 ไอเท็ม 나왔어요!\r\n\r\n#b#i" + pick + "# #z" + pick
+                                    + "# #k1개 ได้รับ!", ScriptMessageFlag.NpcReplacedByNpc);
                         } else {
 
                         }
                     } else {
-                        self.say("좀 더 생각해보시고 다시 찾아주세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("좀 더 생แต่ละ해보시고 다시 찾아สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 }
                     break;
                 case 1: {// 리스트
                     int v1 = self.askMenu(
-                            "보고 싶은 스페셜 코디 리스트를 선택해주세요.#b\r\n\r\n#L0#익스트림[E] 스페셜 코디#l\r\n#L1#진[J] 스페셜 코디#l",
+                            "보고 싶은 스페셜 코디 리스트를 เลือกโปรด.#b\r\n\r\n#L0#익스트림[E] 스페셜 코디#l\r\n#L1#진[J] 스페셜 코디#l",
                             ScriptMessageFlag.NpcReplacedByNpc);
                     if (v1 == 0) { // 익스트림 스페셜 코디 리스트
                         String v2 = "#e[익스트림[E] 스페셜 코디 리스트]#n\r\n\r\n#b";
@@ -912,8 +912,8 @@ public class Consume extends ScriptEngineNPC {
                         }
                         self.say(v2, ScriptMessageFlag.NpcReplacedByNpc);
                     } else if (v1 == 1) { // 진 스페셜 코디 리스트
-                        String v2 = "#e[진[J] 스페셜 코디 리스트]#n\r\n스페셜 코디 부위를 선택해주세요.\r\n\r\n#b";
-                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#무기#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
+                        String v2 = "#e[진[J] 스페셜 코디 리스트]#n\r\n스페셜 코디 부위를 เลือกโปรด.\r\n\r\n#b";
+                        v2 += "#L0#모자#l\r\n#L1#한벌옷#l\r\n#L2#상의#l\r\n#L3#อาวุธ#l\r\n#L4#망토#l\r\n#L5#장갑#l\r\n#L6#신발#l\r\n#L7#얼굴장식#l";
                         int v3 = self.askMenu(v2, ScriptMessageFlag.NpcReplacedByNpc);
 
                         String v4 = "#e[진[J] 스페셜 코디 리스트 (" + label[v3] + ")]#n#b\r\n\r\n";
@@ -928,27 +928,27 @@ public class Consume extends ScriptEngineNPC {
         }
     }
 
-    // 진:眞 성장 지원 상자 1
+    // 진:眞 성장 สนับสนุน 상자 1
     public void consume_2439580() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
         if (DBConfig.isGanglim) {
-            v0 += "#e[아이템 획득]#n\r\n";
-            v0 += "#b#i5002239# #z5002239# (기간제 30일)#k 1개\r\n";
+            v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+            v0 += "#b#i5002239# #z5002239# (기간제 30วัน)#k 1개\r\n";
             v0 += "#b#i2630437# #z2630437# #k 100개\r\n";
             // 2630437
         } else {
-            v0 += "#e[아이템 획득]#n\r\n";
-            v0 += "#b#i5000930# #z5000930# (기간제 5일)#k 1개\r\n";
+            v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+            v0 += "#b#i5000930# #z5000930# (기간제 5วัน)#k 1개\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 펫때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 펫때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1 ||
                     getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1)
                     : getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.say("#b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439580, -1) == 1) {
                     if (DBConfig.isGanglim) {
@@ -957,34 +957,34 @@ public class Consume extends ScriptEngineNPC {
                     } else {
                         exchangePetPeriod(5000930, 5);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 2
+    // 진:眞 성장 สนับสนุน 상자 2
     public void consume_2439581() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
         if (DBConfig.isGanglim) {
-            v0 += "#e[아이템 획득]#n\r\n";
-            v0 += "#b#i1112401# #z1112401# (기간제 7일)#k 1개\r\n";
-            v0 += "  - 올스탯 +70, 공/마 +40\r\n";
+            v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+            v0 += "#b#i1112401# #z1112401# (기간제 7วัน)#k 1개\r\n";
+            v0 += "  - 올Stat +70, 공/마 +40\r\n";
         } else {
-            v0 += "#e[아이템 획득]#n\r\n";
-            v0 += "#b#i1112405# #z1112405# (기간제 7일)#k 1개\r\n";
-            v0 += "  - 올스탯 +50, 공/마 +25\r\n";
-            v0 += "#b#i1112431# #z1112431# (기간제 7일)#k 1개\r\n";
-            v0 += "  - 올스탯 +50, 공/마 +25\r\n";
+            v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+            v0 += "#b#i1112405# #z1112405# (기간제 7วัน)#k 1개\r\n";
+            v0 += "  - 올Stat +50, 공/마 +25\r\n";
+            v0 += "#b#i1112431# #z1112431# (기간제 7วัน)#k 1개\r\n";
+            v0 += "  - 올Stat +50, 공/마 +25\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 2) {
-                self.say("#b장비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439581, -1) == 1) {
                     if (DBConfig.isGanglim) {
@@ -993,22 +993,22 @@ public class Consume extends ScriptEngineNPC {
                         exchangeSupportEquipPeriod(1112405, 50, 25, 7);
                         exchangeSupportEquipPeriod(1112431, 50, 25, 7);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 3
+    // 진:眞 성장 สนับสนุน 상자 3
     public void consume_2439582() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 2433509, 1, 0, 0, 0 }, // 진:眞 블랙 장비 상자
+                { 2433509, 1, 0, 0, 0 }, // 진:眞 블랙 อุปกรณ์ 상자
                 { 1032259, 1, 7, 50, 25 }, // 할로윈 귀고리
                 { 2432643, 5, 0, 0, 0 }, // 마스터리 북 20
-                { 2434589, 6, 0, 0, 0 } // 검은 수호의 조각
+                { 2434589, 6, 0, 0, 0 } // 검은 수호의 조แต่ละ
         };
         if (DBConfig.isGanglim) {
             if (getPlayer().getGender() == 0) {
@@ -1032,27 +1032,27 @@ public class Consume extends ScriptEngineNPC {
             }
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 5 ||
                     getPlayer().getInventory(MapleInventoryType.CASH_EQUIP).getNumFreeSlot() < 5)
                     : (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 5 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1)) {
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439582, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1066,13 +1066,13 @@ public class Consume extends ScriptEngineNPC {
                             target.exchange(reward[0], reward[1]);
                         }
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 4
+    // 진:眞 성장 สนับสนุน 상자 4
     public void consume_2439583() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
@@ -1080,7 +1080,7 @@ public class Consume extends ScriptEngineNPC {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 1122330, 1, 7, 70, 30 }, // 할로윈 펜던트
                 { 1022252, 1, 7, 70, 30 }, // 할로윈 귀고리
-                { 2436605, 1, 0, 0, 0 }, // 명장의 큐브 복주머니
+                { 2436605, 1, 0, 0, 0 }, // 명장의 큐브 복สัปดาห์머니
         };
 
         if (DBConfig.isGanglim) {
@@ -1089,26 +1089,26 @@ public class Consume extends ScriptEngineNPC {
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 2)) {
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439583, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1122,19 +1122,19 @@ public class Consume extends ScriptEngineNPC {
                             target.exchange(reward[0], reward[1]);
                         }
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 5
+    // 진:眞 성장 สนับสนุน 상자 5
     public void consume_2439584() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 1152052, 1, 7, 100, 50 }, // 월모 견장
+                { 1152052, 1, 7, 100, 50 }, // เดือน모 견장
                 { 1712001, 10, 0, 0, 0 }, // 아케인심볼 : 소멸의 여로 10개
                 { 2436078, 30, 0, 0, 0 }, // 코어 젬스톤 30개
         };
@@ -1145,28 +1145,28 @@ public class Consume extends ScriptEngineNPC {
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
-        v0 += "#b#i1113227# #z1113227# (기간제 14일) #k 1개\r\n";
-        v0 += "  - 메소 획득률 40%, 아이템 획득률 40%\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+        v0 += "#b#i1113227# #z1113227# (기간제 14วัน) #k 1개\r\n";
+        v0 += "  - Meso ได้รับ률 40%, ไอเท็ม ได้รับ률 40%\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 12) {
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439584, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1202,20 +1202,20 @@ public class Consume extends ScriptEngineNPC {
                         }
                     }
 
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 6
+    // 진:眞 성장 สนับสนุน 상자 6
     public void consume_2439585() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 2439292, 5, 0, 0, 0 }, // 미궁의 아케인심볼 상자
-                { 2436605, 3, 0, 0, 0 }, // 명장의 큐브 복주머니
+                { 2436605, 3, 0, 0, 0 }, // 명장의 큐브 복สัปดาห์머니
                 { 1114305, 1, 0, 100, 50 }, // 카오스 링
         };
 
@@ -1225,26 +1225,26 @@ public class Consume extends ScriptEngineNPC {
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 7 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439585, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1257,19 +1257,19 @@ public class Consume extends ScriptEngineNPC {
                     if (!DBConfig.isGanglim) {
                         getPlayer().gainMeso(50000000, true);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 7
+    // 진:眞 성장 สนับสนุน 상자 7
     public void consume_2439586() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 2436605, 1, 0, 0, 0 }, // 명장의 큐브 복주머니
+                { 2436605, 1, 0, 0, 0 }, // 명장의 큐브 복สัปดาห์머니
                 { 1162013, 1, 7, 50, 30 }, // ES스퀘어
         };
 
@@ -1279,27 +1279,27 @@ public class Consume extends ScriptEngineNPC {
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         v0 += "#b  - 포켓 개방";
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k와 #b소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์ กระเป๋า#k #bใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439586, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1314,50 +1314,50 @@ public class Consume extends ScriptEngineNPC {
                         getPlayer().gainMeso(50000000, true);
                         getPlayer().gainExp(15000000000L, true, true, true);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 8
+    // 진:眞 성장 สนับสนุน 상자 8
     public void consume_2439587() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 5062010, 10, 0, 0, 0 }, // 블랙 큐브
-                { 4001832, 5000, 0, 0, 0 }, // 주문의 흔적
+                { 4001832, 5000, 0, 0, 0 }, // สัปดาห์문의 흔적
                 { 1032227, 1, 0, 40, 25 }, // 이피아의 귀고리
         };
 
         if (DBConfig.isGanglim) {
             rewards = new int[][] {
-                    { 1132296, 1, 0, 100, 30 } // 분노한 자쿰의 벨트
+                    { 1132296, 1, 0, 100, 30 } // นาที노한 자쿰의 벨트
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1)) {
-                self.say("#b장비, 소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bอุปกรณ์, ใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439587, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1371,19 +1371,19 @@ public class Consume extends ScriptEngineNPC {
                         getPlayer().gainMeso(50000000, true);
                         getPlayer().gainExp(20000000000L, true, true, true);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 9
+    // 진:眞 성장 สนับสนุน 상자 9
     public void consume_2439588() {
         initNPC(MapleLifeFactory.getNPC(9062475));
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 1162025, 1, 0, 30, 20 }, // 핑크빛 성배
-                { 2436605, 3, 0, 0, 0 }, // 명장의 큐브 복주머니
+                { 2436605, 3, 0, 0, 0 }, // 명장의 큐브 복สัปดาห์머니
         };
         if (DBConfig.isGanglim) {
             rewards = new int[][] {
@@ -1393,29 +1393,29 @@ public class Consume extends ScriptEngineNPC {
             };
         }
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (DBConfig.isGanglim ? (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 3)
                     : (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1)) {
                 if (DBConfig.isGanglim) {
-                    self.say("#b장비, 캐시장비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("#bอุปกรณ์, แคชอุปกรณ์ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
                 } else {
-                    self.say("#b장비, 소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("#bอุปกรณ์, ใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             } else {
                 if (target.exchange(2439588, -1) == 1) {
@@ -1432,43 +1432,43 @@ public class Consume extends ScriptEngineNPC {
                         getPlayer().gainMeso(50000000, true);
                         getPlayer().gainExp(50000000000L, true, true, true);
                     }
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 10
+    // 진:眞 성장 สนับสนุน 상자 10
     public void consume_2439589() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 2436078, 20, 0, 0, 0 }, // 코어 젬스톤 20개
-                { 2450064, 3, 0, 0, 0 }, // 경험치 2배 쿠폰 3개 (교불)
+                { 2450064, 3, 0, 0, 0 }, // EXP 2배 쿠폰 3개 (교불)
                 { 5062010, 20, 0, 0, 0 }, // 블랙 큐브 20개
                 { 2439292, 5, 0, 0, 0 }, // 미궁의 아케인심볼 상자
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.say("#b소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439589, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1480,13 +1480,13 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(50000000, true);
                     getPlayer().gainExp(100000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 11
+    // 진:眞 성장 สนับสนุน 상자 11
     public void consume_2439590() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
@@ -1494,30 +1494,30 @@ public class Consume extends ScriptEngineNPC {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 1182200, 1, 0, 30, 20 }, // 칠요의 뱃지
                 { 5062010, 20, 0, 0, 0 }, // 블랙 큐브 20개
-                { 5680150, 1, 0, 0, 0 }, // 3만 메이플포인트 교환권
+                { 5680150, 1, 0, 0, 0 }, // 3 메이플คะแนน แลกเปลี่ยน권
                 { 2434290, 5, 0, 0, 0 }, // 무공이 보증한 명예의 훈장 5개
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 2 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 3 ||
                     getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b소비, 캐시, 장비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช, อุปกรณ์ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439590, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1529,46 +1529,46 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(100000000, true);
                     getPlayer().gainExp(100000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 12
+    // 진:眞 성장 สนับสนุน 상자 12
     public void consume_2439591() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 4001832, 5000, 0, 0, 0 }, // 주문의 흔적
+                { 4001832, 5000, 0, 0, 0 }, // สัปดาห์문의 흔적
                 { 2436078, 20, 0, 0, 0 }, // 코어 젬스톤 20개
-                { 2450064, 3, 0, 0, 0 }, // 경험치 2배 쿠폰
+                { 2450064, 3, 0, 0, 0 }, // EXP 2배 쿠폰
                 { 3014005, 1, 0, 0, 0 }, // 명예의 상징
-                { 2434891, 1, 0, 0, 0 }, // 데미지스킨 선택 박스
-                { 2439239, 1, 0, 0, 0 }, // 매지컬 주문서 교환권
+                { 2434891, 1, 0, 0, 0 }, // Damage스킨 เลือก 박스
+                { 2439239, 1, 0, 0, 0 }, // 매지컬 สัปดาห์문서 แลกเปลี่ยน권
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 6 ||
                     getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 1 ||
                     getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 2) {
-                self.say("#b소비, 기타, 설치 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, อื่นๆ, 설치 กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439591, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1580,43 +1580,43 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(100000000, true);
                     getPlayer().gainExp(300000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 13
+    // 진:眞 성장 สนับสนุน 상자 13
     public void consume_2439592() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 2439239, 2, 0, 0, 0 }, // 매지컬 주문서 교환권
-                { 5680150, 2, 0, 0, 0 }, // 3만 메이플 포인트 교환권
+                { 2439239, 2, 0, 0, 0 }, // 매지컬 สัปดาห์문서 แลกเปลี่ยน권
+                { 5680150, 2, 0, 0, 0 }, // 3 메이플 คะแนน แลกเปลี่ยน권
                 { 2439292, 5, 0, 0, 0 }, // 미궁의 아케인심볼 상자 5개
                 { 2439604, 1, 0, 0, 0 }, // 진:眞 스페셜 코디 상자 (R)
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 8 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439592, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1628,45 +1628,45 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(100000000, true);
                     getPlayer().gainExp(350000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 14
+    // 진:眞 성장 สนับสนุน 상자 14
     public void consume_2439593() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 4001832, 5000, 0, 0, 0 }, // 주문의 흔적
+                { 4001832, 5000, 0, 0, 0 }, // สัปดาห์문의 흔적
                 { 2436078, 20, 0, 0, 0 }, // 코어 젬스톤
                 { 5062010, 50, 0, 0, 0 }, // 블랙 큐브
-                { 2434891, 1, 0, 0, 0 }, // 데미지스킨 선택 상자
+                { 2434891, 1, 0, 0, 0 }, // Damage스킨 เลือก 상자
                 { 2439604, 1, 0, 0, 0 }, // 진:眞 스페셜 코디 (R)
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 2 ||
                     getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 4 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b소비, 기타, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, อื่นๆ, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439593, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1678,13 +1678,13 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(200000000, true);
                     getPlayer().gainExp(400000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 15
+    // 진:眞 성장 สนับสนุน 상자 15
     public void consume_2439594() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
@@ -1692,29 +1692,29 @@ public class Consume extends ScriptEngineNPC {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 2439292, 5, 0, 0, 0 }, // 미궁의 아케인심볼 상자
                 { 5062503, 10, 0, 0, 0 }, // 화이트 에디셔널 큐브
-                { 2436604, 2, 0, 0, 0 }, // 영원한 환생의 불꽃 복주머니
-                { 2450064, 2, 0, 0, 0 }, // 경험치 2배 쿠폰
+                { 2436604, 2, 0, 0, 0 }, // 영원한 환생의 불꽃 복สัปดาห์머니
+                { 2450064, 2, 0, 0, 0 }, // EXP 2배 쿠폰
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439594, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1726,43 +1726,43 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(500000000, true);
                     getPlayer().gainExp(450000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 16
+    // 진:眞 성장 สนับสนุน 상자 16
     public void consume_2439595() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 2434891, 1, 0, 0, 0 }, // 데미지 스킨 선택 상자 1개
+                { 2434891, 1, 0, 0, 0 }, // Damage 스킨 เลือก 상자 1개
                 { 2439605, 1, 0, 0, 0 }, // 진:眞 스페셜 코디 상자 (S)
-                { 2450064, 3, 0, 0, 0 }, // 경험치 2배 쿠폰
+                { 2450064, 3, 0, 0, 0 }, // EXP 2배 쿠폰
                 { 5062010, 50, 0, 0, 0 }, // 블랙 큐브 50개
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 5 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439595, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1774,44 +1774,44 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(1000000000, true);
                     getPlayer().gainExp(500000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 17
+    // 진:眞 성장 สนับสนุน 상자 17
     public void consume_2439596() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
-                { 5680150, 5, 0, 0, 0 }, // 3만 메이플 포인트 교환권
+                { 5680150, 5, 0, 0, 0 }, // 3 메이플 คะแนน แลกเปลี่ยน권
                 { 2439241, 3, 0, 0, 0 }, // 위습의 원더베리 3개
-                { 2450064, 3, 0, 0, 0 }, // 경험치 2배 쿠폰
-                { 2439239, 3, 0, 0, 0 }, // 매지컬 주문서 교환권 3개
-                { 2435764, 3, 0, 0, 0 }, // 골드애플 교환권
+                { 2450064, 3, 0, 0, 0 }, // EXP 2배 쿠폰
+                { 2439239, 3, 0, 0, 0 }, // 매지컬 สัปดาห์문서 แลกเปลี่ยน권 3개
+                { 2435764, 3, 0, 0, 0 }, // 골드애플 แลกเปลี่ยน권
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b소비, 캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, แคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439596, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1823,44 +1823,44 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(1000000000, true);
                     getPlayer().gainExp(500000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 성장 지원 상자 18
+    // 진:眞 성장 สนับสนุน 상자 18
     public void consume_2439597() {
         initNPC(MapleLifeFactory.getNPC(9062475));
 
         int rewards[][] = new int[][] {
                 // ItemID, Quantity, Period, AllStat, Attack
                 { 3014028, 1, 0, 0, 0 }, // 찬란한 명예의 상징
-                { 2049360, 3, 0, 0, 0 }, // 놀라운 장비강화 주문서
+                { 2049360, 3, 0, 0, 0 }, // 놀라운 อุปกรณ์เสริมแรง สัปดาห์문서
                 { 2439605, 1, 0, 0, 0 }, // 진:眞 스페셜 코디 상자 (S)
-                { 2439241, 5, 0, 0, 0 }, // 위습의 원더베리 교환권
-                { 2435764, 5, 0, 0, 0 }, // 골드애플 교환권
+                { 2439241, 5, 0, 0, 0 }, // 위습의 원더베리 แลกเปลี่ยน권
+                { 2435764, 5, 0, 0, 0 }, // 골드애플 แลกเปลี่ยน권
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "#";
             if (reward[2] > 0) {
-                v0 += " (기간제 " + reward[2] + "일) ";
+                v0 += " (기간제 " + reward[2] + "วัน) ";
             }
             v0 += "#k " + reward[1] + "개";
             if (reward[3] > 0 || reward[4] > 0) {
-                v0 += "\r\n  - 올스탯 +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
+                v0 += "\r\n  - 올Stat +" + reward[3] + ", 공/마 +" + reward[4] + "\r\n";
             }
             v0 += "\r\n";
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange로 하면 되나, 기간제 템 때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 템 때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 13 ||
                     getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 1) {
-                self.say("#b소비, 설치 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้, 설치 กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
                 if (target.exchange(2439597, -1) == 1) {
                     for (int[] reward : rewards) {
@@ -1872,13 +1872,13 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().gainMeso(5000000000L, true);
                     getPlayer().gainExp(1000000000000L, true, true, true);
-                    self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                    self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
                 }
             }
         }
     }
 
-    // 진:眞 블랙 장비 상자
+    // 진:眞 블랙 อุปกรณ์ 상자
     public void consume_2433509() {
         int[] rewards = new int[] {
                 1212116, 1213023, 1214023, 1222110, 1232110, 1242117, 1262047, 1272031, 1282036, 1292023, 1302334,
@@ -1887,7 +1887,7 @@ public class Consume extends ScriptEngineNPC {
         };
 
         initNPC(MapleLifeFactory.getNPC(9062474));
-        String v0 = "다음과 같은 #블랙 무기 중 1개#k를 선택하여 획득할 수 있어.\r\n선택한 무기는 #e14일간#n 사용 가능하고 #b올스탯 +200, 공/마 +200, 추가옵션#k이 적용되어 지급돼.\r\n\r\n원하는 무기를 골라봐.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #블랙 อาวุธ 중 1개#k เลือก ได้รับ할 수 있어.\r\nเลือก한 อาวุธ는 #e14วัน간#n ใช้ เป็นไปได้ #b올Stat +200, 공/마 +200, เพิ่มตัวเลือก#k ใช้งาน 지급돼.\r\n\r\n원하는 อาวุธ를 골라봐.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -1899,21 +1899,21 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                        + "##k(이)야.\r\n정말 이 무기로 선택할거니?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                        + "##k()야.\r\n정말  อาวุธ로 เลือก할거니?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주겠니?");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도해สัปดาห์겠니?");
             } else {
                 if (target.exchange(2433509, -1) == 1) {
                     exchangeSupportEquipBonusStatPeriod(itemID, 200, 200, 14);
-                    self.say("지급이 완료되었어. 인벤토리를 확인해봐!");
+                    self.say("지급이 เสร็จสมบูรณ์되었어. กระเป๋า ยืนยัน해봐!");
                 }
             }
         }
     }
 
-    // 진:眞 레전드리 아케인셰이드 무기 상자
+    // 진:眞 Legendary 아케인셰이드 อาวุธ 상자
     public void consume_2439609() {
         int[] rewards = new int[] {
                 1212131, 1213030, 1214030, 1222124, 1232124, 1242144, 1242145, 1262053, 1272043, 1282043, 1292030,
@@ -1923,7 +1923,7 @@ public class Consume extends ScriptEngineNPC {
         };
 
         initNPC(MapleLifeFactory.getNPC(9062474));
-        String v0 = "다음과 같은 #아케인셰이드 무기 중 1개#k를 선택하여 획득할 수 있어.\r\n선택한 무기는 #b15성과 레전드리 잠재능력 옵션, 추가옵션#k이 적용되어 지급돼.\r\n\r\n원하는 무기를 골라봐.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #아케인셰이드 อาวุธ 중 1개#k เลือก ได้รับ할 수 있어.\r\nเลือก한 อาวุธ는 #b15성과 Legendary 잠재ความสามารถ ตัวเลือก, เพิ่มตัวเลือก#k ใช้งาน 지급돼.\r\n\r\n원하는 อาวุธ를 골라봐.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -1935,21 +1935,21 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                        + "##k(이)야.\r\n정말 이 무기로 선택할거니?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                        + "##k()야.\r\n정말  อาวุธ로 เลือก할거니?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주겠니?");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도해สัปดาห์겠니?");
             } else {
                 if (target.exchange(2439609, -1) == 1) {
                     exchangeEquipCHUCWithScroll(itemID, 15, 2);
-                    self.say("지급이 완료되었어. 인벤토리를 확인해봐!");
+                    self.say("지급이 เสร็จสมบูรณ์되었어. กระเป๋า ยืนยัน해봐!");
                 }
             }
         }
     }
 
-    // 진:眞 유니크 앱솔랩스 무기 상자
+    // 진:眞 Unique 앱솔랩스 อาวุธ 상자
     public void consume_2439610() {
         int[] rewards = new int[] {
                 1212121, 1213028, 1214028, 1222114, 1232114, 1242123, 1242124, 1262040, 1272021, 1282022,
@@ -1959,7 +1959,7 @@ public class Consume extends ScriptEngineNPC {
         };
 
         initNPC(MapleLifeFactory.getNPC(9062474));
-        String v0 = "다음과 같은 #아케인셰이드 무기 중 1개#k를 선택하여 획득할 수 있어.\r\n선택한 무기는 #b15성과 레전드리 잠재능력 옵션, 추가옵션#k이 적용되어 지급돼.\r\n\r\n원하는 무기를 골라봐.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #아케인셰이드 อาวุธ 중 1개#k เลือก ได้รับ할 수 있어.\r\nเลือก한 อาวุธ는 #b15성과 Legendary 잠재ความสามารถ ตัวเลือก, เพิ่มตัวเลือก#k ใช้งาน 지급돼.\r\n\r\n원하는 อาวุธ를 골라봐.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -1971,15 +1971,15 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                        + "##k(이)야.\r\n정말 이 무기로 선택할거니?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                        + "##k()야.\r\n정말  อาวุธ로 เลือก할거니?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주겠니?");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도해สัปดาห์겠니?");
             } else {
                 if (target.exchange(2439610, -1) == 1) {
                     exchangeEquipCHUCWithScroll(itemID, 15, 2);
-                    self.say("지급이 완료되었어. 인벤토리를 확인해봐!");
+                    self.say("지급이 เสร็จสมบูรณ์되었어. กระเป๋า ยืนยัน해봐!");
                 }
             }
         }
@@ -1989,18 +1989,18 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2439611() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         int[][] rewards = new int[][] {
-                { 2630512, 100 }, // 선택 아케인심볼 교환권 100개
+                { 2630512, 100 }, // เลือก 아케인심볼 แลกเปลี่ยน권 100개
                 { 2439605, 3 }, // 진:眞 스페셜 코디 상자 (S)
                 { 2439660, 5 }, // 태풍 성장의 비약 5개
                 { 5060048, 2 }, // 골드애플 2개
                 { 5068300, 2 }, // 위습의 원더베리 2개
                 { 5062010, 50 }, // 블랙 큐브 50개
                 { 2436078, 100 }, // 코어 젬스톤 100개
-                { 2439611, -1 }, // 상자 소비
+                { 2439611, -1 }, // 상자 ใช้
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
@@ -2010,39 +2010,39 @@ public class Consume extends ScriptEngineNPC {
         if (v1 > 0) {
             if (target.exchange(rewards) == 1) {
                 getPlayer().gainMeso(1000000000, true);
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b소비 인벤토리#k와 #b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้ กระเป๋า#k #bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
 
-    // 여제 클리어횟수 초기화 티켓
+    // 여제 클리어횟수 วินาที기화 티켓
     public void consume_2431968() {
         bossResetCoupon(QuestExConstants.Cygnus.getQuestID(), "cygnus_clear", 2431968);
     }
 
-    // 하드매그너스 클리어횟수 초기화 티켓
+    // 하드매그너스 클리어횟수 วินาที기화 티켓
     public void consume_2431969() {
         bossResetCoupon(QuestExConstants.HardMagnus.getQuestID(), "hard_magnus_clear", 2431969);
     }
 
-    // 카오스반반 클리어횟수 초기화 티켓
+    // 카오스반반 클리어횟수 วินาที기화 티켓
     public void consume_2431970() {
         bossResetCoupon(QuestExConstants.ChaosVonBon.getQuestID(), "chaos_banban_clear", 2431970);
     }
 
-    // 카오스피에르 클리어횟수 초기화 티켓
+    // 카오스피에르 클리어횟수 วินาที기화 티켓
     public void consume_2431971() {
         bossResetCoupon(QuestExConstants.ChaosPierre.getQuestID(), "chaos_pierre_clear", 2431971);
     }
 
-    // 카오스블러디퀸 클리어횟수 초기화 티켓
+    // 카오스블러디퀸 클리어횟수 วินาที기화 티켓
     public void consume_2431972() {
         bossResetCoupon(QuestExConstants.ChaosCrimsonQueen.getQuestID(), "chaos_b_queen_clear", 2431972);
     }
 
-    // 카오스벨룸 클리어횟수 초기화 티켓
+    // 카오스벨룸 클리어횟수 วินาที기화 티켓
     public void consume_2431973() {
         bossResetCoupon(QuestExConstants.ChaosVellum.getQuestID(), "chaos_velum_clear", 2431973);
     }
@@ -2051,7 +2051,7 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2007));
         MapleCharacter user = getPlayer();
         if (user.getOneInfo(questID, "eNum") != null) {
-            if (1 == self.askYesNo("#e초기화 티켓을 사용하시겠습니까?")) {
+            if (1 == self.askYesNo("#eวินาที기화 티켓을 ใช้ต้องการหรือไม่?")) {
                 if (DBConfig.isGanglim) {
                     user.dropMessage(5, user.getOneInfoQuestInteger(1234569, "use_" + itemID) + "");
                 }
@@ -2061,7 +2061,7 @@ public class Consume extends ScriptEngineNPC {
                 }
                 if (DBConfig.isGanglim) {
                     if (resetCan <= user.getOneInfoQuestInteger(1234569, "use_" + itemID)) {
-                        self.sayOk("금주에 더 이상 해당 보스 입장 기록을 초기화할 수 없습니다.");
+                        self.sayOk("금สัปดาห์에 더 이상 해당 บอส เข้า 기록을 วินาที기화할 수 없.");
                         return;
                     }
                     if (user.getOneInfo(1234569, key) != null) {
@@ -2072,52 +2072,52 @@ public class Consume extends ScriptEngineNPC {
                                         String.valueOf(user.getOneInfoQuestInteger(1234569, "use_" + itemID) + 1));
                                 user.updateOneInfo(questID, "eNum", "0");
                                 user.updateOneInfo(questID, "lastDate", "2000/01/01/01/01/01");
-                                self.sayOk("성공적으로 초기화 되었습니다.");
+                                self.sayOk("สำเร็จ적으로 วินาที기화 되었.");
                             } else {
-                                self.sayOk("알 수 없는 오류로 사용에 실패하였습니다.");
+                                self.sayOk("알 수 없는 오류로 ใช้에 ล้มเหลว하였.");
                             }
                         } else {
-                            self.sayOk("이번 주에 클리어하신 기록이 확인되지 않아 정상 처리되지 않았습니다.");
+                            self.sayOk("이번 สัปดาห์에 클리어하신 기록이 ยืนยัน되지 않아 ปกติ ประมวลผล되지 않았.");
                         }
                     } else {
-                        self.sayOk("이번 주에 클리어하신 기록이 확인되지 않아 정상 처리되지 않았습니다.");
+                        self.sayOk("이번 สัปดาห์에 클리어하신 기록이 ยืนยัน되지 않아 ปกติ ประมวลผล되지 않았.");
                     }
                 } else { // 진
                     int nSingleClear = user.getOneInfoQuestInteger(questID, "eNum_single");
                     int nMultiClear = user.getOneInfoQuestInteger(questID, "eNum_multi");
-                    user.dropMessage(5, "싱글사용 : " + user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_single")
-                            + " / 멀티사용 : " + user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_multi"));
+                    user.dropMessage(5, "싱글ใช้ : " + user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_single")
+                            + " / 멀티ใช้ : " + user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_multi"));
                     if (resetCan <= user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_single")
                             && resetCan <= user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_multi")) {
-                        self.sayOk("금주에 더 이상 해당 보스 입장 기록을 초기화할 수 없습니다.");
+                        self.sayOk("금สัปดาห์에 더 이상 해당 บอส เข้า 기록을 วินาที기화할 수 없.");
                         return;
                     }
                     if (nSingleClear == 0 && nMultiClear == 0) {
-                        self.sayOk("해당 보스는 이번 주에 클리어하신 기록이 확인되지 않아 정상 처리되지 않았습니다.");
+                        self.sayOk("해당 บอส 이번 สัปดาห์에 클리어하신 기록이 ยืนยัน되지 않아 ปกติ ประมวลผล되지 않았.");
                         return;
                     }
                     if (nSingleClear < 0 || nMultiClear < 0) {
-                        self.sayOk("초기화 기록에 오류가 발생해 정상 처리 되지 않았습니다.");
+                        self.sayOk("วินาที기화 기록에 오류가 발생해 ปกติ ประมวลผล 되지 않았.");
                         return;
                     }
-                    String askClear = "입장횟수를 감소할 모드를 선택해주세요.";
+                    String askClear = "เข้า횟수를 ลด할 โหมด를 เลือกโปรด.";
                     if (nSingleClear > 0) {
-                        askClear += "\r\n#L0#싱글모드(" + nSingleClear + "회 클리어)#l";
+                        askClear += "\r\n#L0#싱글โหมด(" + nSingleClear + "회 클리어)#l";
                     }
                     if (nMultiClear > 0) {
-                        askClear += "\r\n#L1#멀티모드(" + nMultiClear + "회 클리어)#l";
+                        askClear += "\r\n#L1#멀티โหมด(" + nMultiClear + "회 클리어)#l";
                     }
                     int clearSel = self.askMenu(askClear);
                     if (clearSel != 0 && clearSel != 1)
                         return;
                     if (clearSel == 0 && (nSingleClear <= 0
                             || resetCan <= user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_single"))) {
-                        self.sayOk("금주에 더 이상 해당 보스 입장 기록을 초기화할 수 없습니다.");
+                        self.sayOk("금สัปดาห์에 더 이상 해당 บอส เข้า 기록을 วินาที기화할 수 없.");
                         return;
                     }
                     if (clearSel == 1 && (nMultiClear <= 0
                             || resetCan <= user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_multi"))) {
-                        self.sayOk("금주에 더 이상 해당 보스 입장 기록을 초기화할 수 없습니다.");
+                        self.sayOk("금สัปดาห์에 더 이상 해당 บอส เข้า 기록을 วินาที기화할 수 없.");
                         return;
                     }
                     if (target.exchange(itemID, -1) == 1) {
@@ -2128,29 +2128,29 @@ public class Consume extends ScriptEngineNPC {
                                     .valueOf(user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_single") + 1));
                             user.updateOneInfo(questID, "eNum_single", String.valueOf(nSingleClear - 1));
                             user.updateOneInfo(questID, "lastDate", "2000/01/01/01/01/01");
-                            self.sayOk("성공적으로 싱글 횟수가 1회 차감 되었습니다.");
+                            self.sayOk("สำเร็จ적으로 싱글 횟수가 1회 หัก 되었.");
                         } else { // clearSel == 1
                             user.updateOneInfo(1234569, "use_" + itemID + "_multi", String
                                     .valueOf(user.getOneInfoQuestInteger(1234569, "use_" + itemID + "_multi") + 1));
                             user.updateOneInfo(questID, "eNum_multi", String.valueOf(nMultiClear - 1));
                             user.updateOneInfo(questID, "lastDate", "2000/01/01/01/01/01");
-                            self.sayOk("성공적으로 멀티 횟수가 1회 차감 되었습니다.");
+                            self.sayOk("สำเร็จ적으로 멀티 횟수가 1회 หัก 되었.");
                         }
                     } else {
-                        self.sayOk("알 수 없는 오류로 사용에 실패하였습니다.");
+                        self.sayOk("알 수 없는 오류로 ใช้에 ล้มเหลว하였.");
                     }
                 }
             }
         } else {
-            self.sayOk("이번 주에 클리어하신 기록이 확인되지 않아 정상 처리되지 않았습니다.");
+            self.sayOk("이번 สัปดาห์에 클리어하신 기록이 ยืนยัน되지 않아 ปกติ ประมวลผล되지 않았.");
         }
     }
 
-    // 진:眞 뉴비 지원 상자
+    // 진:眞 뉴비 สนับสนุน 상자
     public void consume_2437121() {
         initNPC(MapleLifeFactory.getNPC(9062474));
         if (getPlayer().getOneInfoQuestInteger(1234567, "use_newbie_support") == 1) {
-            self.say("이미 보상을 받았던 것 같은데?", ScriptMessageFlag.NpcReplacedByUser);
+            self.say("이미 รางวัล을 받았던 것 같은데?", ScriptMessageFlag.NpcReplacedByUser);
 
             if (target.exchange(2437121, -1) == 1) {
             }
@@ -2163,11 +2163,11 @@ public class Consume extends ScriptEngineNPC {
                 { 5060048, 1 },
                 { 5680150, 1 },
                 { 2435890, 1 },
-                { 2437121, -1 }, // 상자 소비
+                { 2437121, -1 }, // 상자 ใช้
         };
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
-        // v0 += "#b#i5000931# #z5000931# (기간제 30일)#k 1개\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+        // v0 += "#b#i5000931# #z5000931# (기간제 30วัน)#k 1개\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
@@ -2176,15 +2176,15 @@ public class Consume extends ScriptEngineNPC {
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 7) {
-                self.say("#b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
                 return;
             }
             if (target.exchange(rewards) == 1) {
                 getPlayer().updateOneInfo(1234567, "use_newbie_support", "1");
                 // exchangePetPeriod(5000931, 30);
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b캐시, 소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช, ใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
@@ -2196,12 +2196,12 @@ public class Consume extends ScriptEngineNPC {
                 { 2435890, 1 },
                 { 2436078, 50 },
                 { 2439292, 20 },
-                { 2437122, -1 }, // 상자 소비
+                { 2437122, -1 }, // 상자 ใช้
         };
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
-        v0 += "#b#i5060048# #z5060048# (20% 확률로 획득)#k 1개\r\n";
-        v0 += "#b#i5068300# #z5068300# (20% 확률로 획득)#k 1개\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
+        v0 += "#b#i5060048# #z5060048# (20% โอกาส ได้รับ)#k 1개\r\n";
+        v0 += "#b#i5068300# #z5068300# (20% โอกาส ได้รับ)#k 1개\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
@@ -2210,41 +2210,41 @@ public class Consume extends ScriptEngineNPC {
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
-                self.say("#b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
                 return;
             }
             if (target.exchange(rewards) == 1) {
                 if (Randomizer.isSuccess(20)) {
-                    getPlayer().dropMessage(5, "골드애플 1개를 획득했습니다.");
+                    getPlayer().dropMessage(5, "골드애플 1개를 ได้รับแล้ว.");
                     target.exchange(5060048, 1);
                 }
                 if (Randomizer.isSuccess(20)) {
-                    getPlayer().dropMessage(5, "위습의 원더베리 1개를 획득했습니다.");
+                    getPlayer().dropMessage(5, "위습의 원더베리 1개를 ได้รับแล้ว.");
                     target.exchange(5068300, 1);
                 }
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b캐시, 소비 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช, ใช้ กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
 
-    // 랜덤 성형 성장의 비약
+    // สุ่ม 성형 성장의 비약
     public void consume_2430909() {
         randomTraitSecretPotion(2430909);
     }
 
-    // PC방 랜덤 성형 성장의 비약
+    // PC방 สุ่ม 성형 성장의 비약
     public void consume_2436786() {
         randomTraitSecretPotion(2436786);
     }
 
-    // 월드 내 교가 성성비
+    // เดือน드 내 교가 성성비
     public void consume_2433604() {
         traitSecretPotion(2433604);
     }
 
-    // 월드 내 교가 성성비
+    // เดือน드 내 교가 성성비
     public void consume_2633242() {
         traitSecretPotion(2633242);
     }
@@ -2259,19 +2259,19 @@ public class Consume extends ScriptEngineNPC {
         traitSecretPotion(2439429);
     }
 
-    // 교환 가능한 성성비
+    // แลกเปลี่ยน เป็นไปได้한 성성비
     public void consume_2436595() {
         traitSecretPotion(2436595);
     }
 
-    // 성향 성장의 물약(성향 성장의 비약보다 경험치 적게줌)
+    // 성향 성장의 물약(성향 성장의 비약보다 EXP น้อย줌)
     public void consume_2438644() {
         traitSecretPotion(2438644);
     }
 
     public void randomTraitSecretPotion(int itemId) {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        if (self.askYesNo("랜덤 성향의 비약을 사용 하시겠습니까?", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+        if (self.askYesNo("สุ่ม 성향의 비약을 ใช้ ต้องการหรือไม่?", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
             MapleTrait.MapleTraitType traitType = null;
             MapleTrait.MapleTraitType[] t = { MapleTrait.MapleTraitType.charisma,
                     MapleTrait.MapleTraitType.sense,
@@ -2287,7 +2287,7 @@ public class Consume extends ScriptEngineNPC {
                 }
             }
             if (!canUse) {
-                self.sayOk("이미 모든 성향의 레벨이 최대치입니다.");
+                self.sayOk("이미 ทั้งหมด 성향의 เลเวล สูงสุด치.");
                 return;
             }
             while (traitType == null) {
@@ -2299,7 +2299,7 @@ public class Consume extends ScriptEngineNPC {
             if (target.exchange(itemId, -1) > 0) {
                 getPlayer().getTrait(traitType).addTrueExp(11040, getPlayer());
                 getPlayer().dropMessage(5, traitType.getName() + Locales.getKoreanJosa(traitType.getName(), JosaType.이가)
-                        + " 눈에 띄게 성장 하였습니다.");
+                        + " 눈에 띄게 성장 하였.");
             }
         }
     }
@@ -2307,13 +2307,13 @@ public class Consume extends ScriptEngineNPC {
     public void traitSecretPotion(int itemId) {
         initNPC(MapleLifeFactory.getNPC(9010000));
         StringBuilder s = new StringBuilder();
-        s.append("#L0#카리스마   #k방어율 무시 증가 / 사망 패널티 지속시간 감소#l\r\n")
-                .append("#b#L1#감성   #kMP 최대치 / 버프 지속시간 증가#l\r\n")
-                .append("#b#L2#통찰력   #k속성 내성 무시 / 감정 능력 단계 증가#l\r\n")
-                .append("#b#L3#의지   #kHP 최대치 / 방어력 / 상태 이상 내성 증가#l\r\n")
-                .append("#b#L4#손재주   #k주문서 성공 확률 / 숙련도 2배 획득 확률 증가#l\r\n")
-                .append("#b#L5#매력   #k포켓 슬롯 해방 가능 / 표정 추가 습득 가능#l\r\n");
-        int v0 = self.askMenu("성장 시키고 싶은 성향을 선택해 주세요!#b\r\n" + s.toString(), ScriptMessageFlag.NpcReplacedByNpc);
+        s.append("#L0#카리스마   #kป้องกัน율 무시 เพิ่ม / 사망 패널티 지속เวลา ลด#l\r\n")
+                .append("#b#L1#감성   #kMP สูงสุด치 / Buff 지속เวลา เพิ่ม#l\r\n")
+                .append("#b#L2#통찰력   #k속성 내성 무시 / 감정 ความสามารถ 단계 เพิ่ม#l\r\n")
+                .append("#b#L3#의지   #kHP สูงสุด치 / ป้องกัน력 / สถานะ 이상 내성 เพิ่ม#l\r\n")
+                .append("#b#L4#손재สัปดาห์   #kสัปดาห์문서 สำเร็จ โอกาส / 숙련도 2배 ได้รับ โอกาส เพิ่ม#l\r\n")
+                .append("#b#L5#매력   #k포켓 ช่อง 해방 เป็นไปได้ / 표정 เพิ่ม 습득 เป็นไปได้#l\r\n");
+        int v0 = self.askMenu("성장 시키고 싶은 성향을 เลือก해 สัปดาห์세요!#b\r\n" + s.toString(), ScriptMessageFlag.NpcReplacedByNpc);
 
         MapleTrait.MapleTraitType traitType = null;
         switch (v0) {
@@ -2346,26 +2346,26 @@ public class Consume extends ScriptEngineNPC {
                     }
                     getPlayer().getTrait(traitType).addTrueExp(traitEXP, getPlayer());
                     getPlayer().dropMessage(5, traitType.getName()
-                            + Locales.getKoreanJosa(traitType.getName(), JosaType.이가) + " 눈에 띄게 성장 하였습니다.");
+                            + Locales.getKoreanJosa(traitType.getName(), JosaType.이가) + " 눈에 띄게 성장 하였.");
                 }
             } else {
-                self.sayOk("선택하신 성향은 이미 최대치 입니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.sayOk("เลือก하신 성향은 이미 สูงสุด치 .", ScriptMessageFlag.NpcReplacedByNpc);
             }
         }
     }
 
     public void consume_2633201() {
         int menu = self.askMenu(
-                "받고 싶은 #r#e아이템 성별을 선택#k#n해주세요.\r\n성별이 다른 캐릭터는 입을 수 없습니다.\r\n#b#L0#츄츄 아일랜드 세트(남)#l\r\n#L1#츄츄 아일랜드 세트(여)#l");
+                "받고 싶은 #r#eไอเท็ม 성별을 เลือก#k#nโปรด.\r\n성별이 다른 ตัวละคร 입을 수 없.\r\n#b#L0#츄츄 아วัน랜드 세트(남)#l\r\n#L1#츄츄 아วัน랜드 세트(여)#l");
         String cGender = "";
         int[] items = new int[5];
         switch (menu) {
-            case 0: // 츄츄아일랜드세트(남)
-                cGender = "츄츄 아일랜드 세트(남)";
+            case 0: // 츄츄아วัน랜드세트(남)
+                cGender = "츄츄 아วัน랜드 세트(남)";
                 items = new int[] { 1005781, 1050583, 1103332, 1073534, 1703084 };
                 break;
-            case 1: // 츄츄아일랜드세트(여)
-                cGender = "츄츄 아일랜드 세트(여)";
+            case 1: // 츄츄아วัน랜드세트(여)
+                cGender = "츄츄 아วัน랜드 세트(여)";
                 items = new int[] { 1005781, 1051656, 1103332, 1073534, 1703084 };
                 break;
         }
@@ -2384,11 +2384,11 @@ public class Consume extends ScriptEngineNPC {
                 itemString += "[신발] #i" + i + "# #z" + i + "#\r\n";
             }
             if (GameConstants.isWeapon(i)) {
-                itemString += "[무기] #i" + i + "# #z" + i + "#";
+                itemString += "[อาวุธ] #i" + i + "# #z" + i + "#";
             }
         }
         if (1 == self.askYesNo(
-                "선택하신 의상을 다시 한 번 확인해주세요.\r\n#b- 선택 성별: " + cGender + "\r\n- 수령 캐릭터: #h0##k\r\n\r\n" + itemString)) {
+                "เลือก하신 의상을 다시 한 번 ยืนยันโปรด.\r\n#b- เลือก 성별: " + cGender + "\r\n- 수령 ตัวละคร: #h0##k\r\n\r\n" + itemString)) {
             if (getPlayer().getInventory(MapleInventoryType.CASH_EQUIP).getNumFreeSlot() >= 5) {
                 if (target.exchange(2633201, -1) > 0) {
                     MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -2424,7 +2424,7 @@ public class Consume extends ScriptEngineNPC {
                     }
                 }
             } else {
-                self.say("치장 슬롯을 5칸 이상 비워주세요.");
+                self.say("치장 ช่อง 5칸 이상 비워สัปดาห์세요.");
             }
         }
     }
@@ -2437,10 +2437,10 @@ public class Consume extends ScriptEngineNPC {
                 } else {
                     exchangePetPeriod(5002197, 90);
                 }
-                self.sayOk("교환이 완료되었습니다.");
+                self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
             }
         } else {
-            self.say("캐시 슬롯을 1칸 이상 비워주세요.");
+            self.say("แคช ช่อง 1칸 이상 비워สัปดาห์세요.");
         }
     }
 
@@ -2451,7 +2451,7 @@ public class Consume extends ScriptEngineNPC {
                 1332291, 1362151, 1372239, 1382276, 1402271, 1412191, 1422199, 1432229, 1442287, 1452269, 1462254,
                 1472277, 1482234, 1492247, 1522154, 1532159, 1582046, 1592037
         };
-        String v0 = "다음과 같은 #아케인셰이드 무기 중 1개#k를 선택하여 획득할 수 있어.\r\n선택한 무기는 #b15성과 레전드리 잠재능력 옵션, 추가옵션#k이 적용되어 지급돼.\r\n\r\n원하는 무기를 골라봐.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #아케인셰이드 อาวุธ 중 1개#k เลือก ได้รับ할 수 있어.\r\nเลือก한 อาวุธ는 #b15성과 Legendary 잠재ความสามารถ ตัวเลือก, เพิ่มตัวเลือก#k ใช้งาน 지급돼.\r\n\r\n원하는 อาวุธ를 골라봐.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -2463,15 +2463,15 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                        + "##k(이)야.\r\n정말 이 무기로 선택할거니?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                        + "##k()야.\r\n정말  อาวุธ로 เลือก할거니?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주겠니?");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도해สัปดาห์겠니?");
             } else {
                 if (target.exchange(2630782, -1) == 1) {
                     exchangeEquipCHUCWithScroll(itemID, 15, 2);
-                    self.say("지급이 완료되었어. 인벤토리를 확인해봐!");
+                    self.say("지급이 เสร็จสมบูรณ์되었어. กระเป๋า ยืนยัน해봐!");
                 }
             }
         }
@@ -2486,7 +2486,7 @@ public class Consume extends ScriptEngineNPC {
                 1073158, 1073159, 1073160, 1073161, 1073162,
                 1152196, 1152197, 1152198, 1152199, 1152200
         };
-        String v0 = "다음과 같은 #b아케인셰이드 방어구 중 1개#k를 선택하여 획득할 수 있습니다.\r\n원하는 방어구를 골라보시기 바랍니다.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #b아케인셰이드 ป้องกัน구 중 1개#k เลือก ได้รับ할 수 있.\r\n원하는 ป้องกัน구를 골라보시기 바랍니다.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -2498,13 +2498,13 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 방어구는 #b#i" + itemID + "# #z" + itemID
-                        + "##k 입니다.\r\n정말 이 방어구로 선택하시겠습니까?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 ป้องกัน구는 #b#i" + itemID + "# #z" + itemID
+                        + "##k .\r\n정말  ป้องกัน구로 เลือกต้องการหรือไม่?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (target.exchange(2632861, -1, itemID, 1) == 1) {
-                self.say("지급이 완료되었습니다. 인벤토리를 확인해보시기 바랍니다!");
+                self.say("지급이 เสร็จสมบูรณ์. กระเป๋า ยืนยัน해보시기 바랍니다!");
             } else {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도โปรด.");
             }
         }
     }
@@ -2516,7 +2516,7 @@ public class Consume extends ScriptEngineNPC {
                 1412181, 1422189, 1432218, 1442274, 1452257, 1462243, 1472265, 1482221, 1492235, 1522143, 1532150,
                 1582023, 4310217
         };
-        String v0 = "다음과 같은 #b아케인셰이드 무기 중 1개#k를 랜덤으로 획득할 수 있습니다.\r\n지금 바로 상자를 열어보겠어요?#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #b아케인셰이드 อาวุธ 중 1개#k สุ่ม으로 ได้รับ할 수 있.\r\n지금 바로 상자를 열어보겠어요?#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -2529,9 +2529,9 @@ public class Consume extends ScriptEngineNPC {
             }
             int itemID = rewards[v1];
             if (target.exchange(2630133, -1, itemID, 1) == 1) {
-                self.say("상자에서 #b#i" + itemID + "# #z" + itemID + "##k을(를) 획득했습니다. 인벤토리를 확인해보시기 바랍니다.");
+                self.say("상자에서 #b#i" + itemID + "# #z" + itemID + "##k() ได้รับแล้ว. กระเป๋า ยืนยัน해보시기 바랍니다.");
             } else {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도โปรด.");
             }
         }
     }
@@ -2543,7 +2543,7 @@ public class Consume extends ScriptEngineNPC {
                 1432214, 1442268, 1452252, 1462239, 1472261, 1482216, 1492231, 1522138, 1532144, 1582017, 1592019,
                 4310216
         };
-        String v0 = "다음과 같은 #b앱솔랩스 무기 중 1개#k를 선택하여 획득할 수 있습니다.\r\n원하는 무기를 골라보시기 바랍니다.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #b앱솔랩스 อาวุธ 중 1개#k เลือก ได้รับ할 수 있.\r\n원하는 อาวุธ를 골라보시기 바랍니다.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -2555,13 +2555,13 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 무기는 #b#i" + itemID + "# #z" + itemID
-                        + "##k 입니다.\r\n정말 이 무기로 선택하시겠습니까?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 อาวุธ는 #b#i" + itemID + "# #z" + itemID
+                        + "##k .\r\n정말  อาวุธ로 เลือกต้องการหรือไม่?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (target.exchange(2630291, -1, itemID, 1) == 1) {
-                self.say("지급이 완료되었습니다. 인벤토리를 확인해보시기 바랍니다!");
+                self.say("지급이 เสร็จสมบูรณ์. กระเป๋า ยืนยัน해보시기 바랍니다!");
             } else {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도โปรด.");
             }
         }
     }
@@ -2575,7 +2575,7 @@ public class Consume extends ScriptEngineNPC {
                 1073030, 1073032, 1073033, 1073034, 1073035,
                 1152174, 1152176, 1152177, 1152178, 1152179
         };
-        String v0 = "다음과 같은 #b앱솔랩스 방어구 중 1개#k를 선택하여 획득할 수 있습니다.\r\n원하는 방어구를 골라보시기 바랍니다.#b\r\n\r\n";
+        String v0 = "ถัดไป과 같은 #b앱솔랩스 ป้องกัน구 중 1개#k เลือก ได้รับ할 수 있.\r\n원하는 ป้องกัน구를 골라보시기 바랍니다.#b\r\n\r\n";
         for (int i = 0; i < rewards.length; ++i) {
             int itemID = rewards[i];
             v0 += "#L" + i + "##i" + itemID + "# #z" + itemID + "##l\r\n";
@@ -2587,26 +2587,26 @@ public class Consume extends ScriptEngineNPC {
         }
         int itemID = rewards[v1];
         if (self.askYesNo(
-                "선택한 방어구는 #b#i" + itemID + "# #z" + itemID
-                        + "##k 입니다.\r\n정말 이 방어구로 선택하시겠습니까?\r\n\r\n#b(#e예#n를 누르면 아이템을 획득합니다.)",
+                "เลือก한 ป้องกัน구는 #b#i" + itemID + "# #z" + itemID
+                        + "##k .\r\n정말  ป้องกัน구로 เลือกต้องการหรือไม่?\r\n\r\n#b(#e예#n 누르면 ไอเท็ม ได้รับ.)",
                 ScriptMessageFlag.NpcReplacedByNpc) > 0) {
             if (target.exchange(2630704, -1, itemID, 1) == 1) {
-                self.say("지급이 완료되었습니다. 인벤토리를 확인해보시기 바랍니다!");
+                self.say("지급이 เสร็จสมบูรณ์. กระเป๋า ยืนยัน해보시기 바랍니다!");
             } else {
-                self.say("#b장비 인벤토리#k 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bอุปกรณ์ กระเป๋า#k 공간을 확보 다시 시도โปรด.");
             }
         }
     }
 
-    public void consume_2632789() { // 이터널 플레임 링 교환권
+    public void consume_2632789() { // 이터널 플레임 링 แลกเปลี่ยน권
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-            self.sayOk("장비 아이템 슬롯이 부족합니다.");
+            self.sayOk("อุปกรณ์ ไอเท็ม ช่อง ไม่พอ.");
             return;
         }
         if (target.exchange(2632789, -1) > 0) {
             exchangeUniqueItem(1114324);
-            self.sayOk("유니크 이터널 플레임 링이 지급되었습니다.");
+            self.sayOk("Unique 이터널 플레임 링이 지급되었.");
         }
     }
 
@@ -2617,7 +2617,7 @@ public class Consume extends ScriptEngineNPC {
             int point = getPlayer().getEnchantPoint();
             getPlayer().setEnchantPoint(point + addPoint);
             self.sayOk(
-                    "초월 강화 포인트 #e#r" + addPoint + "#n#k포인트가 지급되었습니다.\r\n포인트 : " + point + " → " + (point + addPoint));
+                    "วินาทีเดือน เสริมแรง คะแนน #e#r" + addPoint + "#n#kคะแนน 지급되었.\r\nคะแนน : " + point + " → " + (point + addPoint));
         }
     }
 
@@ -2626,17 +2626,17 @@ public class Consume extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() >= 1) {
             if (target.exchange(2437090, -1) > 0) {
                 exchangeSupportEquipPeriod(1122017, 0, 0, 14);
-                self.sayOk("교환이 완료되었습니다.");
+                self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
             }
         } else {
-            self.sayOk("장비아이템 슬롯이 부족합니다.");
+            self.sayOk("อุปกรณ์ไอเท็ม ช่อง ไม่พอ.");
         }
     }
 
     public void consume_2633590() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 200) {
-            self.sayOk("200레벨 이상만 사용가능합니다.");
+            self.sayOk("200เลเวล 이상만 ใช้เป็นไปได้.");
             return;
         }
         List<Item> symbols = new ArrayList<>();
@@ -2646,11 +2646,11 @@ public class Consume extends ScriptEngineNPC {
             }
         }
         if (symbols.isEmpty()) {
-            self.sayOk("장착중인 아케인 심볼이 없습니다.");
+            self.sayOk("장착중인 아케인 심볼이 없.");
             return;
         }
         Equip selected = null;
-        String string = "안녕하세요.\r\n\r\n저는 아케인심볼 퀵패스 담당 엔피시입니다.\r\n최대 레벨로 올릴 아케인 심볼을 선택해주세요!\r\n\r\n #r※ 주의사항 ※ \r\n선택한 심볼의 장착중인 심볼의 레벨이 최대치로 올라갑니다.#k#b";
+        String string = "안녕하세요.\r\n\r\n저는 아케인심볼 퀵패스 담당 엔피시.\r\nสูงสุด เลเวล 올릴 아케인 심볼을 เลือกโปรด!\r\n\r\n #r※ สัปดาห์의사항 ※ \r\nเลือก한 심볼의 장착중인 심볼의 เลเวล สูงสุด치로 올라갑니다.#k#b";
 
         for (int i = 0; i < symbols.size(); i++) {
             string += "\r\n#L" + i + "# #i" + symbols.get(i).getItemId() + ":# #z" + symbols.get(i).getItemId()
@@ -2662,7 +2662,7 @@ public class Consume extends ScriptEngineNPC {
         }
         if (selected != null) {
             if (selected.getArcLevel() >= 20) {
-                self.sayOk("선택한 심볼의 레벨이 이미 최대치입니다.");
+                self.sayOk("เลือก한 심볼의 เลเวล 이미 สูงสุด치.");
                 return;
             }
             // updateArcaneSymbol
@@ -2709,9 +2709,9 @@ public class Consume extends ScriptEngineNPC {
                     selected.setLuk((short) (selected.getLuk() + (39 * up)));
                 }
                 getPlayer().send(CWvsContext.InventoryPacket.updateArcaneSymbol(selected));
-                self.sayOk("선택하신 아케인심볼이 성공적으로 최대레벨이 되었습니다.");
+                self.sayOk("เลือก하신 아케인심볼이 สำเร็จ적으로 สูงสุดเลเวล 되었.");
             } else {
-                self.sayOk("알 수 없는 오류가 발생했습니다.");
+                self.sayOk("알 수 없는 오류가 발생แล้ว.");
             }
         }
     }
@@ -2719,7 +2719,7 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2430503() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 200) {
-            self.sayOk("200레벨 이상만 사용가능합니다.");
+            self.sayOk("200เลเวล 이상만 ใช้เป็นไปได้.");
             return;
         }
         List<Item> symbols = new ArrayList<>();
@@ -2729,13 +2729,13 @@ public class Consume extends ScriptEngineNPC {
             }
         }
         self.say(
-                "안녕하세요! 저는 여러분의 아케인 심볼 하나를 최대 레벨까지 올려주는 아케인 담당 입니다! 저와 동일한 효과의 아이템은 #e강림 크레딧, 포인트 상점#n에서 확인 가능하니 많은 이용 바랍니다.");
+                "안녕하세요! 저는 여러นาที의 아케인 심볼 하나를 สูงสุด เลเวล까지 올려สัปดาห์는 아케인 담당 ! 저와 동วัน한 เอฟเฟกต์의 ไอเท็ม #e강림 크레딧, คะแนน 상점#n ยืนยัน เป็นไปได้하니 많은 이용 바랍니다.");
         if (symbols.isEmpty()) {
-            self.sayOk("장착중인 아케인 심볼이 없습니다.");
+            self.sayOk("장착중인 아케인 심볼이 없.");
             return;
         }
         Equip selected = null;
-        String string = "최대 레벨로 올릴 아케인 심볼을 선택해주세요!\r\n\r\n #r※ 주의사항 ※ \r\n선택한 심볼의 장착중인 심볼의 레벨이 최대치로 올라갑니다.#k#b";
+        String string = "สูงสุด เลเวล 올릴 아케인 심볼을 เลือกโปรด!\r\n\r\n #r※ สัปดาห์의사항 ※ \r\nเลือก한 심볼의 장착중인 심볼의 เลเวล สูงสุด치로 올라갑니다.#k#b";
 
         for (int i = 0; i < symbols.size(); i++) {
             string += "\r\n#L" + i + "# #i" + symbols.get(i).getItemId() + ":# #z" + symbols.get(i).getItemId()
@@ -2747,7 +2747,7 @@ public class Consume extends ScriptEngineNPC {
         }
         if (selected != null) {
             if (selected.getArcLevel() >= 20) {
-                self.sayOk("선택한 심볼의 레벨이 이미 최대치입니다.");
+                self.sayOk("เลือก한 심볼의 เลเวล 이미 สูงสุด치.");
                 return;
             }
             // updateArcaneSymbol
@@ -2794,9 +2794,9 @@ public class Consume extends ScriptEngineNPC {
                     selected.setLuk((short) (selected.getLuk() + (48 * up)));
                 }
                 getPlayer().send(CWvsContext.InventoryPacket.updateArcaneSymbol(selected));
-                self.sayOk("선택하신 아케인심볼이 성공적으로 최대레벨이 되었습니다.");
+                self.sayOk("เลือก하신 아케인심볼이 สำเร็จ적으로 สูงสุดเลเวล 되었.");
             } else {
-                self.sayOk("알 수 없는 오류가 발생했습니다.");
+                self.sayOk("알 수 없는 오류가 발생แล้ว.");
             }
         }
     }
@@ -2804,14 +2804,14 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2430504() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 225) {
-            self.sayOk("225레벨 이상만 사용가능합니다.");
+            self.sayOk("225เลเวล 이상만 ใช้เป็นไปได้.");
             return;
         }
         if (target.exchange(2430504, -1, 1712004, 1, 1712005, 1, 1712006, 1) > 0) {
             getPlayer().gainMeso(50000000, false);
-            self.say("[아케인심볼 : 아르카나] [아케인심볼 : 모라스] [아케인심볼 : 에스페라] [50,000,000메소] 아이템이 지급되었습니다.");
+            self.say("[아케인심볼 : 아르카나] [아케인심볼 : 모라스] [아케인심볼 : 에스페라] [50,000,000Meso] ไอเท็ม 지급되었.");
         } else {
-            self.say("장비 아이템 슬롯이 부족합니다. 필요 여유공간 3칸");
+            self.say("อุปกรณ์ ไอเท็ม ช่อง ไม่พอ. จำเป็น 여유공간 3칸");
         }
     }
 
@@ -2825,26 +2825,26 @@ public class Consume extends ScriptEngineNPC {
                 { 1242122, 1272017, 1292018, 1332279, 1342104, 1362140, 1472265 },
                 { 1222113, 1242121, 1482221, 1492235, 1532150 } };
         int v = self.askMenu(
-                "안녕하세요~! 강림메이플 입니다.\r\n멋쟁이 용사님을 위해 더 강해질 수 있는 #r무기와 방어구를 #k준비 했습니다~!준비한 방어구 말고도 추가적인 뽀~너스 아이템들도 있으니 꼭 챙겨가세요!\r\n\r\n"
+                "안녕하세요~! 강림메이플 .\r\n멋쟁이 용사님을 위해 더 강해질 수 있는 #rอาวุธ와 ป้องกัน구를 #kเตรียม แล้ว~!เตรียม한 ป้องกัน구 말고도 เพิ่ม적인 뽀~너스 ไอเท็ม들도 있으니 꼭 챙겨가세요!\r\n\r\n"
                         +
-                        "#b#L0#전사 아이템 받기\r\n" +
-                        "#L1#마법사 아이템 받기\r\n" +
-                        "#L2#궁수 아이템 받기\r\n" +
-                        "#L3#도적 아이템 받기\r\n" +
-                        "#L4#해적 아이템 받기\r\n");
+                        "#b#L0#전사 ไอเท็ม 받기\r\n" +
+                        "#L1#마법사 ไอเท็ม 받기\r\n" +
+                        "#L2#궁수 ไอเท็ม 받기\r\n" +
+                        "#L3#도적 ไอเท็ม 받기\r\n" +
+                        "#L4#해적 ไอเท็ม 받기\r\n");
         if (v > 4) {
-            self.sayOk("잘못된 요청입니다.");
+            self.sayOk("잘못된 ขอ.");
             return;
         }
-        String test = "지급될 방어구 입니다.\r\n#b";
+        String test = "지급될 ป้องกัน구 .\r\n#b";
         for (int a : armor) {
             int itemID = (a + v);
             test += "#i" + itemID + "# #z" + itemID + "#\r\n";
         }
-        test += "#L0# #r#e무기 선택하기#l";
+        test += "#L0# #r#eอาวุธ เลือก하기#l";
         int vv = self.askMenu(test);
         if (vv == 0) {
-            String wTest = "무기 리스트#b\r\n";
+            String wTest = "อาวุธ 리스트#b\r\n";
             int index = 0;
             for (int a : weapon[v]) {
                 wTest += "#L" + index + "#" + "#i" + (a) + "# #z" + (a) + "#\r\n";
@@ -2852,17 +2852,17 @@ public class Consume extends ScriptEngineNPC {
             }
             int vvv = self.askMenu(wTest);
             if (vvv >= 0 && weapon[v].length >= vvv) {
-                String all = "선택하신 아이템을 확인해주세요!#b\r\n";
+                String all = "เลือก하신 ไอเท็ม ยืนยันโปรด!#b\r\n";
                 for (int a : armor) {
                     all += "#i" + (a + v) + "# #z" + (a + v) + "#\r\n";
                 }
                 all += "#i" + weapon[v][vvv] + "# #z" + weapon[v][vvv] + "#\r\n";
                 if (1 == self.askYesNo(all)) {
-                    if (1 == self.askYesNo("마지막으로 한번 더!\r\n" + all)) {
+                    if (1 == self.askYesNo("ครั้งสุดท้าย으로 한번 더!\r\n" + all)) {
                         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 6
                                 || getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 4
                                 || getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                            self.sayOk("장비아이템 슬롯이 부족합니다.");
+                            self.sayOk("อุปกรณ์ไอเท็ม ช่อง ไม่พอ.");
                             return;
                         }
                         if (target.exchange(2439527, -1, 2630437, 300, 2434290, 100, 2048757, 100, 2000054, 1, 5044006,
@@ -2885,20 +2885,20 @@ public class Consume extends ScriptEngineNPC {
                             }
                             getPlayer().forceCompleteQuest(6500); // 포켓 개방
                         }
-                        self.sayOk("포켓개방 및 다양한 아이템이 지급되었습니다.");
+                        self.sayOk("포켓개방 및 다양한 ไอเท็ม 지급되었.");
                     } else {
-                        self.sayOk("신중하게 생각하신 뒤 선택해주세요~!");
+                        self.sayOk("신중하게 생แต่ละ하신 뒤 เลือกโปรด~!");
                     }
                 } else {
-                    self.sayOk("신중하게 생각하신 뒤 선택해주세요~!");
+                    self.sayOk("신중하게 생แต่ละ하신 뒤 เลือกโปรด~!");
                 }
             } else {
-                self.sayOk("잘못된 요청입니다.");
+                self.sayOk("잘못된 ขอ.");
             }
         }
     }
 
-    public void consume_2430497() { // 깜찍 뉴비 지원 상자
+    public void consume_2430497() { // 깜찍 뉴비 สนับสนุน 상자
         initNPC(MapleLifeFactory.getNPC(9010000));
         int[] armor = new int[] { 1004229, 1102718, 1082608, 1052799, 1072967, 1152108 };
         int[][] weapon = new int[][] {
@@ -2908,18 +2908,18 @@ public class Consume extends ScriptEngineNPC {
                 { 1242102, 1272013, 1292014, 1332260, 1342100, 1362121, 1472247 },
                 { 1222095, 1242133, 1482202, 1492212, 1532130 } };
         int v = self.askMenu(
-                "안녕하세요~! 강림메이플 입니다.\r\n멋쟁이 용사님을 위해 더 강해질 수 있는 #r무기와 방어구를 #k준비 했습니다~!준비한 방어구 말고도 추가적인 뽀~너스 아이템들도 있으니 꼭 챙겨가세요!\r\n\r\n"
+                "안녕하세요~! 강림메이플 .\r\n멋쟁이 용사님을 위해 더 강해질 수 있는 #rอาวุธ와 ป้องกัน구를 #kเตรียม แล้ว~!เตรียม한 ป้องกัน구 말고도 เพิ่ม적인 뽀~너스 ไอเท็ม들도 있으니 꼭 챙겨가세요!\r\n\r\n"
                         +
-                        "#b#L0#전사 아이템 받기\r\n" +
-                        "#L1#마법사 아이템 받기\r\n" +
-                        "#L2#궁수 아이템 받기\r\n" +
-                        "#L3#도적 아이템 받기\r\n" +
-                        "#L4#해적 아이템 받기\r\n");
+                        "#b#L0#전사 ไอเท็ม 받기\r\n" +
+                        "#L1#마법사 ไอเท็ม 받기\r\n" +
+                        "#L2#궁수 ไอเท็ม 받기\r\n" +
+                        "#L3#도적 ไอเท็ม 받기\r\n" +
+                        "#L4#해적 ไอเท็ม 받기\r\n");
         if (v > 4) {
-            self.sayOk("잘못된 요청입니다.");
+            self.sayOk("잘못된 ขอ.");
             return;
         }
-        String test = "지급될 방어구 입니다.\r\n#b";
+        String test = "지급될 ป้องกัน구 .\r\n#b";
         for (int a : armor) {
             int itemID = (a + v);
             if (a + v > 1152108) {
@@ -2927,10 +2927,10 @@ public class Consume extends ScriptEngineNPC {
             }
             test += "#i" + itemID + "# #z" + itemID + "#\r\n";
         }
-        test += "#L0# #r#e무기 선택하기#l";
+        test += "#L0# #r#eอาวุธ เลือก하기#l";
         int vv = self.askMenu(test);
         if (vv == 0) {
-            String wTest = "무기 리스트#b\r\n";
+            String wTest = "อาวุธ 리스트#b\r\n";
             int index = 0;
             for (int a : weapon[v]) {
                 wTest += "#L" + index + "#" + "#i" + (a) + "# #z" + (a) + "#\r\n";
@@ -2938,7 +2938,7 @@ public class Consume extends ScriptEngineNPC {
             }
             int vvv = self.askMenu(wTest);
             if (vvv >= 0 && weapon[v].length >= vvv) {
-                String all = "선택하신 아이템을 확인해주세요!#b\r\n";
+                String all = "เลือก하신 ไอเท็ม ยืนยันโปรด!#b\r\n";
                 for (int a : armor) {
                     int itemID = (a + v);
                     if (a + v > 1152108) {
@@ -2948,12 +2948,12 @@ public class Consume extends ScriptEngineNPC {
                 }
                 all += "#i" + weapon[v][vvv] + "# #z" + weapon[v][vvv] + "#\r\n";
                 if (1 == self.askYesNo(all)) {
-                    if (1 == self.askYesNo("마지막으로 한번 더!\r\n" + all)) {
+                    if (1 == self.askYesNo("ครั้งสุดท้าย으로 한번 더!\r\n" + all)) {
                         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 11 ||
                                 getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 13 ||
                                 getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1 ||
                                 getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 2) {
-                            self.sayOk("장비, 소비, 설치치,캐시 아이템 슬롯의 여유 공간이 부족합니다.");
+                            self.sayOk("อุปกรณ์, ใช้, 설치치,แคช ไอเท็ม ช่อง 여유 공간이 ไม่พอ.");
                             return;
                         }
                         if (target.exchange(2430497, -1, 2630437, 100, 2048757, 50, 2000054, 1, 5044006, 1, 1712001, 1,
@@ -2986,15 +2986,15 @@ public class Consume extends ScriptEngineNPC {
                             getPlayer().changeSkillLevel(80001825, 30, 30);
                             getPlayer().changeSkillLevel(80001829, 5, 5);
                         }
-                        self.sayOk("[포켓개방] [일섬스킬지급] [비연스킬지급] [다양한 아이템] [5,000,000메소] 지급되었습니다.");
+                        self.sayOk("[포켓개방] [วัน섬สกิล지급] [비연สกิล지급] [다양한 ไอเท็ม] [5,000,000Meso] 지급되었.");
                     } else {
-                        self.sayOk("신중하게 생각하신 뒤 선택해주세요~!");
+                        self.sayOk("신중하게 생แต่ละ하신 뒤 เลือกโปรด~!");
                     }
                 } else {
-                    self.sayOk("신중하게 생각하신 뒤 선택해주세요~!");
+                    self.sayOk("신중하게 생แต่ละ하신 뒤 เลือกโปรด~!");
                 }
             } else {
-                self.sayOk("잘못된 요청입니다.");
+                self.sayOk("잘못된 ขอ.");
             }
         }
     }
@@ -3019,9 +3019,9 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (increaseDamageSkinSlotCount(1)) {
             target.exchange(itemID, -1);
-            getPlayer().dropMessage(5, "데미지 스킨 저장 슬롯이 확장되었습니다.");
+            getPlayer().dropMessage(5, "Damage 스킨 บันทึก ช่อง 확장되었.");
         } else {
-            getPlayer().dropMessage(5, "더 이상 데미지 스킨 저장 슬롯을 확장할 수 없습니다.");
+            getPlayer().dropMessage(5, "더 이상 Damage 스킨 บันทึก ช่อง 확장할 수 없.");
         }
     }
 
@@ -3040,16 +3040,16 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2633597() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (target.exchange(itemID, -1, 1662175, 1, 1672085, 1) > 0) {
-            self.sayOk("교환이 완료되었습니다. 장비창을 확인해보세요.");
+            self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์. อุปกรณ์창을 ยืนยัน해보세요.");
         } else {
-            self.sayOk("인벤토리 슬롯이 부족합니다.");
+            self.sayOk("กระเป๋า ช่อง ไม่พอ.");
         }
     }
 
     public void createRecoveryQex() {
         Table mainTable = new Table(getPlayer().getName() + "_qex");
 
-        // 복원 시점에 sql파일을 가져와 데이터 파일을 생성한다.
+        // 복원 시점에 sql파วัน을 가져와 데이터 파วัน을 생성한다.
         for (Map.Entry<Integer, QuestEx> entry : getPlayer().getQuestInfos().entrySet()) {
             Table table = new Table(String.valueOf(entry.getKey()));
             table.put("questID", String.valueOf(entry.getKey()));
@@ -3084,8 +3084,8 @@ public class Consume extends ScriptEngineNPC {
             e.printStackTrace();
         }
 
-        getPlayer().dropMessage(5, "모든 퀘스트 데이터가 복구되었습니다. 재접속 해주시기 바랍니다.");
-        getPlayer().dropMessage(1, "모든 퀘스트 데이터가 복구되었습니다. 재접속 해주시기 바랍니다.");
+        getPlayer().dropMessage(5, "ทั้งหมด เควส 데이터가 복구되었. 재접속 โปรด.");
+        getPlayer().dropMessage(1, "ทั้งหมด เควส 데이터가 복구되었. 재접속 โปรด.");
     }
 
     public void consume_2433482() {
@@ -3101,13 +3101,13 @@ public class Consume extends ScriptEngineNPC {
                  * items.add(aip);
                  * }
                  * }
-                 * getPlayer().dropMessage(5, "저장 될 경매장 데이터 갯수 : " + items.size());
+                 * getPlayer().dropMessage(5, "บันทึก 될 경매장 데이터 갯수 : " + items.size());
                  * for (AuctionItemPackage aitem : new ArrayList<>(items)) {
                  * itemlist.add(new Pair<>(aitem.getItem(),
                  * GameConstants.getInventoryType(aitem.getItem().getItemId())));
                  * }
                  * saveItems(itemlist, con, -1, items);
-                 * getPlayer().dropMessage(5, "휴.. 저장 완료");
+                 * getPlayer().dropMessage(5, "휴.. บันทึก เสร็จสมบูรณ์");
                  * } catch (SQLException e) {
                  * e.printStackTrace();
                  * }
@@ -3259,7 +3259,7 @@ public class Consume extends ScriptEngineNPC {
              * e.printStackTrace();
              * }
              * }
-             * getPlayer().dropMessage(5, "진 유저의 모든 황금 마차가 초기화되었습니다.");
+             * getPlayer().dropMessage(5, "진 유저의 ทั้งหมด 황금 마차가 วินาที기화되었.");
              * return;
              * }
              */
@@ -3279,7 +3279,7 @@ public class Consume extends ScriptEngineNPC {
         /*
          * if (target.exchange(2433482, -1, 2439614, 1, 4036460, 1, 4036461, 1, 4036462,
          * 1, 4036463, 1, 4036464, 1) > 0) {
-         * // 제네시스 무기 버릴 시 퀘스트 초기화
+         * // 제네시스 อาวุธ 버릴 시 เควส วินาที기화
          * for (int i = 2000018; i <= 2000027; ++i) {
          * getPlayer().updateOneInfo(i, "clear", "0");
          * 
@@ -3294,14 +3294,14 @@ public class Consume extends ScriptEngineNPC {
          * 
          * getPlayer().fakeRelog();
          * } else {
-         * self.say("#b소비#k 인벤토리와 #b기타#k 인벤토리 슬롯을 확보하고 다시 시도해주시기 바랍니다.");
+         * self.say("#bใช้#k กระเป๋า #bอื่นๆ#k กระเป๋า ช่อง 확보 다시 시도โปรด.");
          * }
          */
     }
 
     int[] bmWeapons = GameConstants.bmWeapons;
 
-    // 봉인된 제네시스 무기 최종 해방
+    // 봉인된 제네시스 อาวุธ สุดท้าย 해방
     public void doGenesisWeaponUpgrade() {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
         Equip equip = null;
@@ -3324,7 +3324,7 @@ public class Consume extends ScriptEngineNPC {
             }
         }
         if (equip == null) {
-            self.say("알 수 없는 오류가 발생했습니다.", ScriptMessageFlag.Self);
+            self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
         /*
@@ -3332,7 +3332,7 @@ public class Consume extends ScriptEngineNPC {
          * Equip genesis = (Equip) ii.getEquipById(weaponID);
          * 
          * if (genesis == null) {
-         * sendNext("알 수 없는 오류가 발생했습니다.");
+         * sendNext("알 수 없는 오류가 발생แล้ว.");
          * dispose();
          * return;
          * }
@@ -3341,7 +3341,7 @@ public class Consume extends ScriptEngineNPC {
         Equip genesis = (Equip) ii.getEquipById(weaponID);
 
         if (genesis == null) {
-            self.say("알 수 없는 오류가 발생했습니다.", ScriptMessageFlag.Self);
+            self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
 
@@ -3375,7 +3375,7 @@ public class Consume extends ScriptEngineNPC {
             }
         }
 
-        // 예외 처리
+        // 예외 ประมวลผล
         if (equip.getItemId() == 1242140) { // 제논 DEX, LUK
             source.clear();
             EquipEnchantOption option = new EquipEnchantOption();
@@ -3427,15 +3427,15 @@ public class Consume extends ScriptEngineNPC {
             source.add(new EquipEnchantScroll(weaponID, 3, option, ScrollType.UPGRADE, 0, false));
         }
         if (source.size() <= 0) {
-            self.say("알 수 없는 오류가 발생했습니다.", ScriptMessageFlag.Self);
+            self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
-        EquipEnchantScroll scroll = source.get(0); // 첫번째가 직업에 맞는 주문서
+        EquipEnchantScroll scroll = source.get(0); // 첫번째가 직업에 맞는 สัปดาห์문서
         if (scroll == null) {
-            self.say("알 수 없는 오류가 발생했습니다.", ScriptMessageFlag.Self);
+            self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
-        // 8번 성공시킴
+        // 8번 สำเร็จ시킴
 
         Equip zeroEquip = null;
         if (GameConstants.isZero(getPlayer().getJob())) {
@@ -3455,19 +3455,19 @@ public class Consume extends ScriptEngineNPC {
             grade = 1;
         }
 
-        // 유니크 잠재능력 3줄
+        // Unique 잠재ความสามารถ 3줄
         genesis.setLines((byte) 3); // 3줄
-        genesis.setState((byte) 19); // 유니크
+        genesis.setState((byte) 19); // Unique
         for (int i = 0; i < 3; ++i) {
-            int optionGrade = 3; // 유니크
+            int optionGrade = 3; // Unique
             int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(false, i),
                     GradeRandomOption.Black);
             genesis.setPotentialOption(i, option);
         }
 
-        // 에픽 에디셔널 잠재능력 3줄
+        // Epic 에디셔널 잠재ความสามารถ 3줄
         for (int i = 0; i < 3; ++i) {
-            int optionGrade = 2; // 에픽
+            int optionGrade = 2; // Epic
             int option = ItemOptionInfo.getItemOption(equip.getItemId(), optionGrade, genesis.getPotentials(true, i),
                     GradeRandomOption.Additional);
             genesis.setPotentialOption(i + 3, option);
@@ -3505,70 +3505,70 @@ public class Consume extends ScriptEngineNPC {
         }
 
         Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6,
-                getPlayer().getName() + "님이 봉인된 힘을 해방하고 검은 마법사의 힘이 담긴 제네시스 무기의 주인이 되었습니다."));
+                getPlayer().getName() + "님이 봉인된 힘을 해방 검은 마법사의 힘이 담긴 제네시스 อาวุธ의 สัปดาห์인이 되었."));
     }
 
     public void consume_2633927() {
         initNPC(MapleLifeFactory.getNPC(9010000));
 
-        String v0 = "받으실 아이템을 선택해 주세요.\r\n#b";
+        String v0 = "받으실 ไอเท็ม เลือก해 สัปดาห์세요.\r\n#b";
         int baseItem = 1190555;
         for (int i = 0; i < 5; ++i) {
             v0 += "#L" + i + "##i" + (baseItem + i) + "# #z" + (baseItem + i) + "#\r\n";
         }
-        v0 += "\r\n#L6#사용 취소#l";
+        v0 += "\r\n#L6#ใช้ ยกเลิก#l";
         int v1 = self.askMenu(v0);
         if (v1 >= 0 && v1 <= 4) {
             int itemID = baseItem + v1;
             if (target.exchange(2633927, -1, itemID, 1) > 0) {
-                self.say("교환이 완료되었습니다.");
+                self.say("แลกเปลี่ยน เสร็จสมบูรณ์.");
             } else {
-                self.say("장비 인벤토리 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("อุปกรณ์ กระเป๋า 공간을 확보 다시 시도โปรด.");
             }
         }
     }
 
-    // 진:眞 11월 마음을 담은 상자
+    // 진:眞 11เดือน 마음을 담은 상자
     public void consume_2439630() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         int[][] rewards = new int[][] {
-                { 2434557, 3 }, // 1만 강화 포인트 교환권 3개
-                { 5680409, 1 }, // 5만 캐시 교환권 1개
+                { 2434557, 3 }, // 1 เสริมแรง คะแนน แลกเปลี่ยน권 3개
+                { 5680409, 1 }, // 5 แคช แลกเปลี่ยน권 1개
                 { 5060048, 5 }, // 골드애플 5개
                 { 5068300, 5 }, // 위습의 원더베리 2개
-                { 5680157, 1 }, // 진:眞 강림 스타일 1개
+                { 5680157, 1 }, // 진:眞 강림 스타วัน 1개
                 { 2436018, 1 }, // 진:眞 스페셜 헤어 쿠폰 1개
                 { 2439605, 1 }, // 진:眞 스페셜 코디 상자 (S) 1개
-                { 2439630, -1 }, // 상자 소비
+                { 2439630, -1 }, // 상자 ใช้
         };
 
-        String v0 = "상자를 열면 아래와 같은 아이템을 얻을 수 있다. 열어볼까?\r\n\r\n";
-        v0 += "#e[아이템 획득]#n\r\n";
+        String v0 = "상자를 열면 아래와 같은 ไอเท็ม 얻을 수 있다. 열어볼까?\r\n\r\n";
+        v0 += "#e[ไอเท็ม ได้รับ]#n\r\n";
         for (int[] reward : rewards) {
             if (reward[1] != -1) {
                 v0 += "#b#i" + reward[0] + "# #z" + reward[0] + "##k " + reward[1] + "개\r\n";
             }
         }
 
-        v0 += "#b#i5002239# #z5002239##k (기간제 30일)\r\n";
+        v0 += "#b#i5002239# #z5002239##k (기간제 30วัน)\r\n";
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
 
-            // 본래 exchange로 하면 되나, 기간제 펫때문에 이렇게 해야한다.
+            // 본래 exchange  되나, 기간제 펫때문에 이렇게 해야한다.
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.say("#b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
                 return;
             }
             if (target.exchange(rewards) == 1) {
                 exchangePetPeriod(5002239, 30);
-                self.say("상자를 열어 아이템을 획득했다.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("상자를 열어 ไอเท็ม ได้รับ했다.", ScriptMessageFlag.NpcReplacedByUser);
             } else {
-                self.say("#b소비 인벤토리#k와 #b캐시 인벤토리#k 슬롯 여유를 확보하고 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
+                self.say("#bใช้ กระเป๋า#k #bแคช กระเป๋า#k ช่อง 여유를 확보 다시 시도하자.", ScriptMessageFlag.NpcReplacedByUser);
             }
         }
     }
 
-    // 아케인심볼 : 소멸의 여로 강화권
+    // 아케인심볼 : 소멸의 여로 เสริมแรง권
     public void consume_2431470() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
@@ -3576,19 +3576,19 @@ public class Consume extends ScriptEngineNPC {
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712001);
 
         if (item == null) {
-            self.say("#b#i1712001# #z1712001##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712001# #z1712001##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712001# #z1712001##k에 #b#z2431470##k을 사용하여 #e올스텟 +1,000, 공격력/마력 +300#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712001# #z1712001##k #b#z2431470##k ใช้ #e올스텟 +1,000, โจมตี력/마력 +300#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431470, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("초월한 심볼");
+                equip.setOwner("วินาทีเดือน한 심볼");
                 equip.setWatk((short) (equip.getWatk() + 300));
                 equip.setMatk((short) (equip.getMatk() + 300));
                 equip.setStr((short) (equip.getStr() + 1000));
@@ -3597,32 +3597,32 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1000));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
-    // 아케인심볼 : 츄츄 아일랜드 강화권
+    // 아케인심볼 : 츄츄 아วัน랜드 เสริมแรง권
     public void consume_2431471() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
-        // 아케인심볼 : 츄츄 아일랜드를 장착중인지 체크
+        // 아케인심볼 : 츄츄 아วัน랜드를 장착중인지 체크
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712002);
 
         if (item == null) {
-            self.say("#b#i1712002# #z1712002##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712002# #z1712002##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712002# #z1712002##k에 #b#z2431471##k을 사용하여 #e올스텟 +750, 공격력/마력 +250#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712002# #z1712002##k #b#z2431471##k ใช้ #e올스텟 +750, โจมตี력/마력 +250#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431471, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("강화된 심볼");
+                equip.setOwner("เสริมแรง된 심볼");
                 equip.setWatk((short) (equip.getWatk() + 750));
                 equip.setMatk((short) (equip.getMatk() + 750));
                 equip.setStr((short) (equip.getStr() + 1500));
@@ -3631,12 +3631,12 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1500));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
-    // 아케인심볼 : 레헬른 강화권
+    // 아케인심볼 : 레헬른 เสริมแรง권
     public void consume_2431472() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
@@ -3644,19 +3644,19 @@ public class Consume extends ScriptEngineNPC {
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712003);
 
         if (item == null) {
-            self.say("#b#i1712003# #z1712003##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712003# #z1712003##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712003# #z1712003##k에 #b#z2431472##k을 사용하여 #e올스텟 +750, 공격력/마력 +250#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712003# #z1712003##k #b#z2431472##k ใช้ #e올스텟 +750, โจมตี력/마력 +250#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431472, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("강화된 심볼");
+                equip.setOwner("เสริมแรง된 심볼");
                 equip.setWatk((short) (equip.getWatk() + 750));
                 equip.setMatk((short) (equip.getMatk() + 750));
                 equip.setStr((short) (equip.getStr() + 1500));
@@ -3665,12 +3665,12 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1500));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
-    // 아케인심볼 : 아르카나 강화권
+    // 아케인심볼 : 아르카나 เสริมแรง권
     public void consume_2431475() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
@@ -3678,19 +3678,19 @@ public class Consume extends ScriptEngineNPC {
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712004);
 
         if (item == null) {
-            self.say("#b#i1712004# #z1712004##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712004# #z1712004##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712004# #z1712004##k에 #b#z2431475##k을 사용하여 #e올스텟 +750, 공격력/마력 +250#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712004# #z1712004##k #b#z2431475##k ใช้ #e올스텟 +750, โจมตี력/마력 +250#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431475, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("강화된 심볼");
+                equip.setOwner("เสริมแรง된 심볼");
                 equip.setWatk((short) (equip.getWatk() + 750));
                 equip.setMatk((short) (equip.getMatk() + 750));
                 equip.setStr((short) (equip.getStr() + 1500));
@@ -3699,12 +3699,12 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1500));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
-    // 아케인심볼 : 모라스 강화권
+    // 아케인심볼 : 모라스 เสริมแรง권
     public void consume_2431483() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
@@ -3712,19 +3712,19 @@ public class Consume extends ScriptEngineNPC {
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712005);
 
         if (item == null) {
-            self.say("#b#i1712005# #z1712005##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712005# #z1712005##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712005# #z1712005##k에 #b#z2431483##k을 사용하여 #e올스텟 +750, 공격력/마력 +250#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712005# #z1712005##k #b#z2431483##k ใช้ #e올스텟 +750, โจมตี력/마력 +250#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431483, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("강화된 심볼");
+                equip.setOwner("เสริมแรง된 심볼");
                 equip.setWatk((short) (equip.getWatk() + 750));
                 equip.setMatk((short) (equip.getMatk() + 750));
                 equip.setStr((short) (equip.getStr() + 1500));
@@ -3733,12 +3733,12 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1500));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
-    // 아케인심볼 : 에스페라 강화권
+    // 아케인심볼 : 에스페라 เสริมแรง권
     public void consume_2431540() {
         initNPC(MapleLifeFactory.getNPC(9062000));
 
@@ -3746,19 +3746,19 @@ public class Consume extends ScriptEngineNPC {
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIPPED).findById(1712006);
 
         if (item == null) {
-            self.say("#b#i1712006# #z1712006##k을(를) 장착하고 사용을 시도해주시기 바랍니다.");
+            self.say("#b#i1712006# #z1712006##k() 장착 ใช้을 시도โปรด.");
             return;
         }
-        String v0 = "#b#i1712006# #z1712006##k에 #b#z2431540##k을 사용하여 #e올스텟 +750, 공격력/마력 +250#n 효과를 부여하시겠습니까?\r\n\r\n해당 아이템은 1회만 적용 가능하며, #r이미 적용된 심볼엔 사용이 불가능#k합니다.";
+        String v0 = "#b#i1712006# #z1712006##k #b#z2431540##k ใช้ #e올스텟 +750, โจมตี력/마력 +250#n เอฟเฟกต์를 부여ต้องการหรือไม่?\r\n\r\n해당 ไอเท็ม 1회만 ใช้งาน เป็นไปได้, #r이미 ใช้งาน된 심볼엔 ใช้이 불เป็นไปได้#k.";
         if (self.askYesNo(v0) == 1) {
             String owner = item.getOwner();
             if (!owner.isEmpty()) {
-                self.say("강화권이 이미 적용된 심볼에는 사용이 불가능합니다.");
+                self.say("เสริมแรง권이 이미 ใช้งาน된 심볼에는 ใช้이 불เป็นไปได้.");
                 return;
             }
             if (target.exchange(2431540, -1) > 0) {
                 Equip equip = (Equip) item;
-                equip.setOwner("강화된 심볼");
+                equip.setOwner("เสริมแรง된 심볼");
                 equip.setWatk((short) (equip.getWatk() + 750));
                 equip.setMatk((short) (equip.getMatk() + 750));
                 equip.setStr((short) (equip.getStr() + 1500));
@@ -3767,14 +3767,14 @@ public class Consume extends ScriptEngineNPC {
                 equip.setLuk((short) (equip.getLuk() + 1500));
 
                 getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(equip));
-                self.say("강화권이 적용되었습니다. 장비창을 확인해보시기 바랍니다.");
+                self.say("เสริมแรง권이 ใช้งาน되었. อุปกรณ์창을 ยืนยัน해보시기 바랍니다.");
             }
         }
     }
 
     public void consume_2434325() {
         initNPC(MapleLifeFactory.getNPC(9000159));
-        int level = self.askNumber("소환할 허수아비의 레벨을 입력해 주세요.(100레벨 ~ 250레벨)", 200, 100, 250);
+        int level = self.askNumber("소환할 허수아비의 เลเวล 입력해 สัปดาห์세요.(100เลเวล ~ 250เลเวล)", 200, 100, 250);
         if (level < 100)
             return;
         if (level > 250)
@@ -3792,7 +3792,7 @@ public class Consume extends ScriptEngineNPC {
 
     public void consume_2434330() {
         initNPC(MapleLifeFactory.getNPC(9000159));
-        int level = self.askNumber("소환할 허수아비의 레벨을 입력해 주세요.(100레벨 ~ 250레벨)", 200, 100, 250);
+        int level = self.askNumber("소환할 허수아비의 เลเวล 입력해 สัปดาห์세요.(100เลเวล ~ 250เลเวล)", 200, 100, 250);
         if (level < 100)
             return;
         if (level > 250)
@@ -3809,14 +3809,14 @@ public class Consume extends ScriptEngineNPC {
     }
 
     public void consume_2432098() {
-        if (DBConfig.isGanglim) { // 강림에서는 사용하지 않는 아이템
+        if (DBConfig.isGanglim) { // 강림에서는 ใช้하지 않는 ไอเท็ม
             return;
         }
         initNPC(MapleLifeFactory.getNPC(9062000));
-        String v0 = "#b#i2432098# #z2432098##k를 사용하여 주간 보스 입장 횟수 및 클리어 횟수를 초기화 할 수 있습니다.\r\n\r\n#r헬 모드#k는 모든 보스를 통틀어 #r하루 5회#k까지만 클리어 횟수 초기화가 가능하며, 입장 횟수는 제한 없이 초기화가능합니다.\r\n\r\n";
+        String v0 = "#b#i2432098# #z2432098##k ใช้ สัปดาห์간 บอส เข้า 횟수 및 클리어 횟수를 วินาที기화 할 수 있.\r\n\r\n#r헬 โหมด#k ทั้งหมด บอส 통틀어 #r하루 5회#k까지만 클리어 횟수 วินาที기화가 เป็นไปได้, เข้า 횟수는 จำกัด 없이 วินาที기화เป็นไปได้.\r\n\r\n";
         int count = getPlayer().getOneInfoQuestInteger(1234569, "hell_boss_count");
-        v0 += "#e금일 헬 모드 클리어 초기화 횟수 : (" + count + "/5)#n\r\n\r\n";
-        v0 += "초기화 할 보스를 선택해주시기 바랍니다.#b\r\n#L7#카오스 파풀라투스를 초기화하겠습니다.#l\r\n#L0#스우를 초기화 하겠습니다.#l\r\n#L1#데미안을 초기화하겠습니다.#l\r\n#L2#루시드를 초기화하겠습니다.#l\r\n#L3#윌을 초기화 하겠습니다.#l\r\n#L4#진 힐라를 초기화하겠습니다.#l\r\n#L5#더스크를 초기화하겠습니다.#l\r\n#L6#듄켈을 초기화 하겠습니다.#l\r\n#L9#가디언 엔젤 슬라임을 초기화하겠습니다.\r\n#L8#세렌을 초기화하겠습니다.#l\r\n#L10##r헬 스우#b를 초기화하겠습니다.#l\r\n#L11##r헬 데미안#b을 초기화하겠습니다.#l\r\n#L12##r헬 루시드#b를 초기화하겠습니다.#l\r\n#L13##r헬 윌#b을 초기화하겠습니다.#l\r\n";
+        v0 += "#eวันนี้ 헬 โหมด 클리어 วินาที기화 횟수 : (" + count + "/5)#n\r\n\r\n";
+        v0 += "วินาที기화 할 บอส เลือกโปรด.#b\r\n#L7#카오스 파풀라투스를 วินาที기화하겠.#l\r\n#L0#스우를 วินาที기화 하겠.#l\r\n#L1#데미안을 วินาที기화하겠.#l\r\n#L2#루시드를 วินาที기화하겠.#l\r\n#L3#윌을 วินาที기화 하겠.#l\r\n#L4#진 힐라를 วินาที기화하겠.#l\r\n#L5#더스크를 วินาที기화하겠.#l\r\n#L6#듄켈을 วินาที기화 하겠.#l\r\n#L9#가디언 엔젤 슬라임을 วินาที기화하겠.\r\n#L8#세렌을 วินาที기화하겠.#l\r\n#L10##r헬 스우#b วินาที기화하겠.#l\r\n#L11##r헬 데미안#b วินาที기화하겠.#l\r\n#L12##r헬 루시드#b วินาที기화하겠.#l\r\n#L13##r헬 윌#b วินาที기화하겠.#l\r\n";
         int v1 = self.askMenu(v0);
         String bossName = "";
         String clearKeyValue = "";
@@ -3945,19 +3945,19 @@ public class Consume extends ScriptEngineNPC {
              * qid = 39932;
              * boolean check = getPlayer().getOneInfoQuestInteger(qid, "clear") == 1;
              * if (!check) {
-             * self.say(bossName + "의 처치기록이 없어서 사용할 수 없습니다.");
+             * self.say(bossName + " 처치기록이 없어서 ใช้할 수 없.");
              * return;
              * }
              * } else {
              * boolean check = getPlayer().getOneInfoQuestInteger(qid, clearKeyValue) == 1;
              * if (!check) {
-             * self.say(bossName + "의 처치기록이 없어서 사용할 수 없습니다.");
+             * self.say(bossName + " 처치기록이 없어서 ใช้할 수 없.");
              * return;
              * }
              * }
              */
             if (self.askYesNo(bossName
-                    + "의 보스 입장 횟수 및 클리어 횟수를 초기화하시겠습니까?\r\n\r\n#e#r헬 모드의 입장횟수는 초기화 되나, 클리어 횟수는 초기화되지 않습니다.") == 1) {
+                    + " บอส เข้า 횟수 및 클리어 횟수를 วินาที기화ต้องการหรือไม่?\r\n\r\n#e#r헬 โหมด의 เข้า횟수는 วินาที기화 되나, 클리어 횟수는 วินาที기화되지 않.") == 1) {
                 if (target.exchange(2432098, -1) == 1) {
                     boolean downSingle = false;
                     boolean downMulti = false;
@@ -4022,11 +4022,11 @@ public class Consume extends ScriptEngineNPC {
                     }
                     String infoSingle = downSingle ? "싱글 1회 " : "";
                     String infoMulti = (downSingle ? ", " : "") + (downMulti ? "멀티 1회" : "");
-                    self.say(bossName + "의 보스 입장 횟수 및 클리어 횟수가" + infoSingle + infoMulti + " 차감되었습니다.");
+                    self.say(bossName + " บอส เข้า 횟수 및 클리어 횟수가" + infoSingle + infoMulti + " หัก되었.");
 
-                    StringBuilder sb = new StringBuilder("보스 입장 초기화 (아이템 : ");
+                    StringBuilder sb = new StringBuilder("บอส เข้า วินาที기화 (ไอเท็ม : ");
                     sb.append(2432098);
-                    sb.append(", 초기화 보스 : ");
+                    sb.append(", วินาที기화 บอส : ");
                     sb.append(bossName);
                     sb.append(")");
                     LoggingManager.putLog(new ConsumeLog(getPlayer(), 2432098, sb));
@@ -4036,18 +4036,18 @@ public class Consume extends ScriptEngineNPC {
             boolean check = getPlayer().getOneInfoQuestInteger(1234569, "hell_" + clearKeyValue) == 1;
             /*
              * if (!check) {
-             * self.say(bossName + "의 처치기록이 없어서 사용할 수 없습니다.");
+             * self.say(bossName + " 처치기록이 없어서 ใช้할 수 없.");
              * return;
              * }
              */
 
             int hbc = getPlayer().getOneInfoQuestInteger(1234569, "hell_boss_count");
             if (hbc >= 5 && !getPlayer().isGM()) {
-                self.say("금일 헬 모드 클리어 횟수를 5번 초기화하여 더 이상 초기화할 수 없습니다. 헬 모드 초기화 횟수는 매일 자정에 초기화됩니다.");
+                self.say("วันนี้ 헬 โหมด 클리어 횟수를 5번 วินาที기화 더 이상 วินาที기화할 수 없. 헬 โหมด วินาที기화 횟수는 ทุกวัน 자정에 วินาที기화.");
                 return;
             }
             if (self.askYesNo(bossName
-                    + "의 보스 입장 횟수 및 클리어 횟수를 초기화하시겠습니까?\r\n\r\n#e#r헬 모드의 입장횟수는 초기화 되나, 클리어 횟수는 초기화되지 않습니다.") == 1) {
+                    + " บอส เข้า 횟수 및 클리어 횟수를 วินาที기화ต้องการหรือไม่?\r\n\r\n#e#r헬 โหมด의 เข้า횟수는 วินาที기화 되나, 클리어 횟수는 วินาที기화되지 않.") == 1) {
                 if (target.exchange(2432098, -1) == 1) {
                     getPlayer().updateOneInfo(qid, clearKeyValue, "");
                     getPlayer().updateOneInfo(qid, "hell_" + clearKeyValue, "");
@@ -4059,11 +4059,11 @@ public class Consume extends ScriptEngineNPC {
                     for (String c : countList) {
                         getPlayer().CountClear(c);
                     }
-                    self.say(bossName + "의 보스 입장 횟수 및 클리어 횟수가 초기화되었습니다.");
+                    self.say(bossName + " บอส เข้า 횟수 및 클리어 횟수가 วินาที기화되었.");
 
-                    StringBuilder sb = new StringBuilder("보스 입장 초기화 [헬 모드] (아이템 : ");
+                    StringBuilder sb = new StringBuilder("บอส เข้า วินาที기화 [헬 โหมด] (ไอเท็ม : ");
                     sb.append(2432098);
-                    sb.append(", 초기화 보스 : ");
+                    sb.append(", วินาที기화 บอส : ");
                     sb.append(bossName);
                     sb.append(")");
                     LoggingManager.putLog(new ConsumeLog(getPlayer(), 2432098, sb));
@@ -4075,18 +4075,18 @@ public class Consume extends ScriptEngineNPC {
     public void cash_5680520() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
         if (target.exchange(5680520, -1, 2436577, 1) > 0) {
-            self.sayOk("교환이 완료되었습니다.");
+            self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
         }
     }
 
     public void consume_2436577() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
         Set keys = MonsterCollection.mobByName.keySet();
@@ -4103,7 +4103,7 @@ public class Consume extends ScriptEngineNPC {
             } else {
                 if (target.exchange(2048746, 1) > 0) {
                     self.sayOk(
-                            "#h0#님께는 조금 더 특별한 보상을 지급해 드렸어요!\r\n소비창을 확인해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048746# #t2048746#");
+                            "#h0#님께는 นิดหน่อย 더 특별한 รางวัล을 지급해 드렸어요!\r\nใช้창을 ยืนยัน해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048746# #t2048746#");
                 }
             }
         }
@@ -4112,7 +4112,7 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2434941() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
         Set keys = MonsterCollection.mobByName.keySet();
@@ -4129,7 +4129,7 @@ public class Consume extends ScriptEngineNPC {
             } else {
                 if (target.exchange(2048746, 1) > 0) {
                     self.sayOk(
-                            "#h0#님께는 조금 더 특별한 보상을 지급해 드렸어요!\r\n소비창을 확인해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048746# #t2048746#");
+                            "#h0#님께는 นิดหน่อย 더 특별한 รางวัล을 지급해 드렸어요!\r\nใช้창을 ยืนยัน해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048746# #t2048746#");
                 }
             }
         }
@@ -4138,7 +4138,7 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2434942() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
         Set keys = MonsterCollection.mobByName.keySet();
@@ -4153,7 +4153,7 @@ public class Consume extends ScriptEngineNPC {
             if (!MonsterCollection.checkIfMobOnCollection(getPlayer(), data)) {
                 MonsterCollection.setMobOnCollection(getPlayer(), data);
             } else {
-                self.sayOk(String.format("%s몬스터가 나왔지만 이미 가지고 있는 몬스터라 등록되지 않았습니다.", key));
+                self.sayOk(String.format("%sมอนสเตอร์ 나왔지만 이미 가지고 있는 มอนสเตอร์라 ลงทะเบียน되지 않았.", key));
             }
         }
     }
@@ -4161,7 +4161,7 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2434943() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
 
@@ -4182,7 +4182,7 @@ public class Consume extends ScriptEngineNPC {
             if (!MonsterCollection.checkIfMobOnCollection(getPlayer(), data)) {
                 MonsterCollection.setMobOnCollection(getPlayer(), data);
             } else {
-                self.sayOk(String.format("%s몬스터가 나왔지만 이미 가지고 있는 몬스터라 등록되지 않았습니다.", key));
+                self.sayOk(String.format("%sมอนสเตอร์ 나왔지만 이미 가지고 있는 มอนสเตอร์라 ลงทะเบียน되지 않았.", key));
             }
         }
     }
@@ -4200,11 +4200,11 @@ public class Consume extends ScriptEngineNPC {
     }
 
     public void consume_2435366() {
-        monsterMoMong("혼테일");
+        monsterMoMong("혼테วัน");
     }
 
     public void consume_2435367() {
-        monsterMoMong("카오스 혼테일");
+        monsterMoMong("카오스 혼테วัน");
     }
 
     public void consume_2435368() {
@@ -4217,18 +4217,18 @@ public class Consume extends ScriptEngineNPC {
     }
 
     public void consume_2437619() {
-        monsterMoMong("고급 앰프");
+        monsterMoMong("ระดับสูง 앰프");
     }
 
     private void monsterMoMong(String name) {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1) {
-            self.say("소비 아이템 슬롯을 1칸이상 비운뒤 다시 시도해주세요.");
+            self.say("ใช้ ไอเท็ม ช่อง 1칸이상 비운뒤 다시 시도โปรด.");
             return;
         }
         var data = MonsterCollection.mobByName.getOrDefault(name, null);
         if (data == null) {
-            self.sayOk("알 수 없는 오류로 실패했습니다.");
+            self.sayOk("알 수 없는 오류로 ล้มเหลวแล้ว.");
             return;
         }
         if (target.exchange(itemID, -1) > 0) {
@@ -4237,7 +4237,7 @@ public class Consume extends ScriptEngineNPC {
             } else {
                 if (target.exchange(2048745, 1) > 0) {
                     self.sayOk(
-                            "#h0#님께는 조금 더 특별한 보상을 지급해 드렸어요!\r\n소비창을 확인해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048745# #t2048745#");
+                            "#h0#님께는 นิดหน่อย 더 특별한 รางวัล을 지급해 드렸어요!\r\nใช้창을 ยืนยัน해 보세요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i2048745# #t2048745#");
                 }
             }
         }
@@ -4267,11 +4267,11 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9062000));
         if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1
                 || getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 3) {
-            self.say("기타 슬롯 1칸 소비 슬롯 3칸 이상을 비운뒤 다시 시도해주세요.");
+            self.say("อื่นๆ ช่อง 1칸 ใช้ ช่อง 3칸 이상을 비운뒤 다시 시도โปรด.");
             return;
         }
         if (target.exchange(itemID, -1, reward.left, reward.right) > 0) {
-            self.sayOk(String.format("보상을 지급해 드렸어요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i%d# #t%d# %d개",
+            self.sayOk(String.format("รางวัล을 지급해 드렸어요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i%d# #t%d# %d개",
                     reward.left, reward.left, reward.right));
         }
     }
@@ -4287,7 +4287,7 @@ public class Consume extends ScriptEngineNPC {
             } else {
                 getPlayer().gainStackEventGauge(0, qty, false);
             }
-            self.sayOk(String.format("보상을 지급해 드렸어요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i%d# #t%d# %d개",
+            self.sayOk(String.format("รางวัล을 지급해 드렸어요!\r\n\r\n#fUI/UIWindow2.img/QuestIcon/4/0#\r\n#e#b#i%d# #t%d# %d개",
                     2632905, 2632905, qty));
         }
     }
@@ -4295,7 +4295,7 @@ public class Consume extends ScriptEngineNPC {
     public void ep1Reset() {
         initNPC(MapleLifeFactory.getNPC(9062000));
         final StringBuilder v0 = new StringBuilder(
-                "어떤 훈장 아이템에 강화권을 사용하시겠어요?\r\n사용한 후에는 되돌릴 수 없으니 신중하게 선택해 주세요.\r\n\r\n#b※ 강화권 사용 시 #e올스탯 350, 공/마 250#n 옵션이 적용되며, 훈장마다 최대 10회까지 사용 가능합니다.\r\n\r\n");
+                "어떤 훈장 ไอเท็ม เสริมแรง권을 ใช้ต้องการหรือไม่?\r\nใช้한 후에는 되돌릴 수 없으니 신중하게 เลือก해 สัปดาห์세요.\r\n\r\n#b※ เสริมแรง권 ใช้ 시 #e올Stat 350, 공/마 250#n ตัวเลือก ใช้งาน, 훈장마다 สูงสุด 10회까지 ใช้ เป็นไปได้.\r\n\r\n");
         List<Item> itemList = new ArrayList<>();
         getPlayer().getInventory(MapleInventoryType.EQUIP).list().forEach(item -> {
             if (!DBConfig.isGanglim) {
@@ -4311,7 +4311,7 @@ public class Consume extends ScriptEngineNPC {
             }
         });
         if (itemList.isEmpty()) {
-            v0.append("장비창에 보유중인 훈장이 없습니다.");
+            v0.append("อุปกรณ์창에 มี중인 훈장이 없.");
             self.say(v0.toString());
             return;
         } else {
@@ -4322,7 +4322,7 @@ public class Consume extends ScriptEngineNPC {
         int v1 = self.askMenu(v0.toString());
         Item pick = getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) v1);
         if (pick == null) {
-            self.say("해당 아이템을 발견하지 못 했습니다.");
+            self.say("해당 ไอเท็ม 발견하지 못 แล้ว.");
             return;
         }
         String owner = pick.getOwner();
@@ -4332,11 +4332,11 @@ public class Consume extends ScriptEngineNPC {
         }
 
         String v2 = "#b#i" + pick.getItemId() + "# #z" + pick.getItemId()
-                + "##k\r\n\r\n위 아이템에 강화권을 사용하시겠어요? 사용 시 #e올스탯 350, 공/마 250#n 옵션이 적용됩니다.\r\n\r\n";
-        v2 += "#e현재 적용된 강화 : +" + level;
+                + "##k\r\n\r\n위 ไอเท็ม เสริมแรง권을 ใช้ต้องการหรือไม่? ใช้ 시 #e올Stat 350, 공/마 250#n ตัวเลือก ใช้งาน.\r\n\r\n";
+        v2 += "#eปัจจุบัน ใช้งาน된 เสริมแรง : +" + level;
         if (1 == self.askYesNo(v2)) {
-            if (level >= 10) { // 10성까지 가능
-                self.say("해당 훈장에는 더 이상 사용할 수 없습니다.");
+            if (level >= 10) { // 10성까지 เป็นไปได้
+                self.say("해당 훈장에는 더 이상 ใช้할 수 없.");
                 return;
             }
             if (exchange(2432096, -1) > 0) {
@@ -4352,9 +4352,9 @@ public class Consume extends ScriptEngineNPC {
                 getPlayer().send(CWvsContext.InventoryPacket.updateInventoryItem(MapleInventoryType.EQUIP, equip, false,
                         getPlayer()));
 
-                objects.utils.FileoutputUtil.log("./TextLog/MedalEnchant.txt", "훈장 강화 사용 (아이템ID : " + equip.getItemId()
-                        + ", 레벨 : " + level + ", 사용자 : " + getPlayer().getName() + ")\r\n");
-                self.say("강화권 적용이 완료되었습니다.");
+                objects.utils.FileoutputUtil.log("./TextLog/MedalEnchant.txt", "훈장 เสริมแรง ใช้ (ไอเท็มID : " + equip.getItemId()
+                        + ", เลเวล : " + level + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
+                self.say("เสริมแรง권 ใช้งาน이 เสร็จสมบูรณ์.");
             }
         }
     }
@@ -4365,17 +4365,17 @@ public class Consume extends ScriptEngineNPC {
             if (!getPlayer().haveItem(tradeitem))
                 return;
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.sayOk("캐시 인벤토리에 빈 공간이 없습니다.");
+                self.sayOk("แคช กระเป๋า 빈 공간이 없.");
                 return;
             } else {
                 int qty = getPlayer().getItemQuantity(tradeitem, false);
-                int tradeQty = self.askNumber("몇개나 교환할까?", 1, 1, Math.min(100, qty),
+                int tradeQty = self.askNumber("몇개나 แลกเปลี่ยน할까?", 1, 1, Math.min(100, qty),
                         ScriptMessageFlag.NpcReplacedByUser);
                 if (tradeQty > qty || tradeQty <= 0)
                     return; // 패킷핵
                 if (target.exchange(tradeitem, -tradeQty) > 0) {
                     target.exchange(5062010, tradeQty);
-                    self.sayOk("교환이 완료되었습니다.");
+                    self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
                 }
             }
         }
@@ -4387,17 +4387,17 @@ public class Consume extends ScriptEngineNPC {
             if (!getPlayer().haveItem(tradeitem))
                 return;
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.sayOk("캐시 인벤토리에 빈 공간이 없습니다.");
+                self.sayOk("แคช กระเป๋า 빈 공간이 없.");
                 return;
             } else {
                 int qty = getPlayer().getItemQuantity(tradeitem, false);
-                int tradeQty = self.askNumber("몇개나 교환할까?", 1, 1, Math.min(100, qty),
+                int tradeQty = self.askNumber("몇개나 แลกเปลี่ยน할까?", 1, 1, Math.min(100, qty),
                         ScriptMessageFlag.NpcReplacedByUser);
                 if (tradeQty > qty || tradeQty <= 0)
                     return; // 패킷핵
                 if (target.exchange(tradeitem, -tradeQty) > 0) {
                     target.exchange(5062500, tradeQty);
-                    self.sayOk("교환이 완료되었습니다.");
+                    self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
                 }
             }
         }
@@ -4409,17 +4409,17 @@ public class Consume extends ScriptEngineNPC {
             if (!getPlayer().haveItem(tradeitem))
                 return;
             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
-                self.sayOk("캐시 인벤토리에 빈 공간이 없습니다.");
+                self.sayOk("แคช กระเป๋า 빈 공간이 없.");
                 return;
             } else {
                 int qty = getPlayer().getItemQuantity(tradeitem, false);
-                int tradeQty = self.askNumber("몇개나 교환할까?", 1, 1, Math.min(100, qty),
+                int tradeQty = self.askNumber("몇개나 แลกเปลี่ยน할까?", 1, 1, Math.min(100, qty),
                         ScriptMessageFlag.NpcReplacedByUser);
                 if (tradeQty > qty || tradeQty <= 0)
                     return; // 패킷핵
                 if (target.exchange(tradeitem, -tradeQty) > 0) {
                     target.exchange(5062503, tradeQty);
-                    self.sayOk("교환이 완료되었습니다.");
+                    self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์.");
                 }
             }
         }
@@ -4461,45 +4461,45 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2500000));
 
         if (itemID >= 2432160 && itemID <= 2432163) {
-            self.say("등급에 맞는 해방 열쇠를 사용하면 봉인된 상자를 개방할 수 있을 것 같다.", ScriptMessageFlag.Self);
+            self.say("ระดับ 맞는 해방 열쇠를 ใช้ 봉인된 상자를 개방할 수 있을 것 같다.", ScriptMessageFlag.Self);
             return;
         }
         int needItem = 0;
         if (itemID == 2432122) { // Grade.1
             needItem = 2432160;
             if (0 >= getPlayer().getItemQuantity(2432160, false)) {
-                self.say("#b#i2432160# #z2432160##k이(가) 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
+                self.say("#b#i2432160# #z2432160##k() 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
                 return;
             }
         } else if (itemID == 2432123) { // Grade.2
             needItem = 2432161;
             if (0 >= getPlayer().getItemQuantity(2432161, false)) {
-                self.say("#b#i2432161# #z2432161##k이(가) 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
+                self.say("#b#i2432161# #z2432161##k() 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
                 return;
             }
         } else if (itemID == 2432124) { // Grade.3
             needItem = 2432162;
             if (0 >= getPlayer().getItemQuantity(2432162, false)) {
-                self.say("#b#i2432162# #z2432162##k이(가) 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
+                self.say("#b#i2432162# #z2432162##k() 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
                 return;
             }
         } else if (itemID == 2432125) { // Grade.4
             needItem = 2432163;
             if (0 >= getPlayer().getItemQuantity(2432163, false)) {
-                self.say("#b#i2432163# #z2432163##k이(가) 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
+                self.say("#b#i2432163# #z2432163##k() 없으면 아무짝에 쓸모가 없다.", ScriptMessageFlag.Self);
                 return;
             }
         }
         if (needItem == 0) {
             return;
         }
-        String v0 = "굳게 잠겨 있던 상자에 열쇠를 끼우자, 몸에서 이질적인 힘이 느껴지기 시작한다.\r\n지금까지 깨닫지 못한 잠재된 힘.\r\n\r\n이건……\r\n\r\n";
+        String v0 = "굳게 잠겨 있던 상자에 열쇠를 끼우자, 몸에서 이질적인 힘이 느껴지기 เริ่ม한다.\r\n지금까지 깨닫지 못한 잠재된 힘.\r\n\r\n이건……\r\n\r\n";
         if (itemID == 2432122) { // Grade.1
             v0 += "#b#L0##eSTR +2#n이다.#l\r\n";
             v0 += "#b#L1##eDEX +2#n이다.#l\r\n";
             v0 += "#b#L2##eINT +2#n이다.#l\r\n";
             v0 += "#b#L3##eLUK +2#n이다.#l\r\n";
-            v0 += "\r\n\r\n#r※ 선택한 옵션이 증가됩니다.";
+            v0 += "\r\n\r\n#r※ เลือก한 ตัวเลือก เพิ่ม.";
             int v1 = self.askMenu(v0, ScriptMessageFlag.Self);
             if (target.exchange(itemID, -1, needItem, -1) > 0) {
                 if (v1 == 0) {
@@ -4515,14 +4515,14 @@ public class Consume extends ScriptEngineNPC {
                     getPlayer().updateOneInfo(1237777, "luk",
                             String.valueOf(getPlayer().getOneInfoQuestInteger(1237777, "luk") + 2));
                 }
-                String v2 = "#e[현재까지 해방된 힘]#n\r\n\r\n#e#r";
+                String v2 = "#e[ปัจจุบัน까지 해방된 힘]#n\r\n\r\n#e#r";
                 v2 += displayLiberationStats();
                 self.say(v2, ScriptMessageFlag.Self);
                 // objects.utils.FileoutputUtil.log("./TextLog/LiberationStat.txt", "봉인 해방
-                // (Grade.1, rand : " + v1 + ", 사용자 : " + getPlayer().getName() + ")\r\n");
+                // (Grade.1, rand : " + v1 + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
                 StringBuilder sb = new StringBuilder(
-                        "봉인 해방 (Grade.1, rand : " + v1 + ", 사용자 : " + getPlayer().getName() + ")");
+                        "봉인 해방 (Grade.1, rand : " + v1 + ", ใช้자 : " + getPlayer().getName() + ")");
                 LoggingManager.putLog(new ConsumeLog(getPlayer(), itemID, sb));
             }
         } else if (itemID == 2432123) { // Grade.2
@@ -4530,7 +4530,7 @@ public class Consume extends ScriptEngineNPC {
             v0 += "#b#L1##eDEX +20#n이다.#l\r\n";
             v0 += "#b#L2##eINT +20#n이다.#l\r\n";
             v0 += "#b#L3##eLUK +20#n이다.#l\r\n";
-            v0 += "\r\n\r\n#r※ 선택한 옵션이 증가됩니다.";
+            v0 += "\r\n\r\n#r※ เลือก한 ตัวเลือก เพิ่ม.";
             int v1 = self.askMenu(v0, ScriptMessageFlag.Self);
             if (target.exchange(itemID, -1, needItem, -1) > 0) {
                 if (v1 == 0) {
@@ -4546,14 +4546,14 @@ public class Consume extends ScriptEngineNPC {
                     getPlayer().updateOneInfo(1237777, "luk",
                             String.valueOf(getPlayer().getOneInfoQuestInteger(1237777, "luk") + 20));
                 }
-                String v2 = "#e[현재까지 해방된 힘]#n\r\n\r\n#e#r";
+                String v2 = "#e[ปัจจุบัน까지 해방된 힘]#n\r\n\r\n#e#r";
                 v2 += displayLiberationStats();
                 self.say(v2, ScriptMessageFlag.Self);
                 // objects.utils.FileoutputUtil.log("./TextLog/LiberationStat.txt", "봉인 해방
-                // (Grade.2, rand : " + v1 + ", 사용자 : " + getPlayer().getName() + ")\r\n");
+                // (Grade.2, rand : " + v1 + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
                 StringBuilder sb = new StringBuilder(
-                        "봉인 해방 (Grade.2, rand : " + v1 + ", 사용자 : " + getPlayer().getName() + ")");
+                        "봉인 해방 (Grade.2, rand : " + v1 + ", ใช้자 : " + getPlayer().getName() + ")");
                 LoggingManager.putLog(new ConsumeLog(getPlayer(), itemID, sb));
             }
         } else if (itemID == 2432124) { // Grade.3
@@ -4576,13 +4576,13 @@ public class Consume extends ScriptEngineNPC {
                 String[] stats = new String[] {
                         "STR", "DEX", "INT", "LUK"
                 };
-                String v2 = String.format("그래. 이건 #b#e" + stats[rand] + "#n이다.\r\n%s만큼 증가한 게 느껴진다.", "+50");
+                String v2 = String.format("그래. 이건 #b#e" + stats[rand] + "#n이다.\r\n%s만큼 เพิ่ม한 게 느껴진다.", "+50");
                 self.say(v2, ScriptMessageFlag.Self);
                 // objects.utils.FileoutputUtil.log("./TextLog/LiberationStat.txt", "봉인 해방
-                // (Grade.3, rand : " + rand + ", 사용자 : " + getPlayer().getName() + ")\r\n");
+                // (Grade.3, rand : " + rand + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
                 StringBuilder sb = new StringBuilder(
-                        "봉인 해방 (Grade.3, rand : " + rand + ", 사용자 : " + getPlayer().getName() + ")");
+                        "봉인 해방 (Grade.3, rand : " + rand + ", ใช้자 : " + getPlayer().getName() + ")");
                 LoggingManager.putLog(new ConsumeLog(getPlayer(), itemID, sb));
             }
         } else if (itemID == 2432125) { // Grade.4
@@ -4606,16 +4606,16 @@ public class Consume extends ScriptEngineNPC {
                             String.valueOf(getPlayer().getOneInfoQuestInteger(1237777, "all_stat_r") + 5));
                 }
                 String[] stats = new String[] {
-                        "공격력", "마력", "보스 공격 시 데미지", "몬스터 방어율 무시", "올스탯"
+                        "โจมตี력", "마력", "บอส โจมตี 시 Damage", "มอนสเตอร์ ป้องกัน율 무시", "올Stat"
                 };
-                String v2 = String.format("그래. 이건 #b#e" + stats[rand] + "#n이다.\r\n%s만큼 증가한 게 느껴진다.",
+                String v2 = String.format("그래. 이건 #b#e" + stats[rand] + "#n이다.\r\n%s만큼 เพิ่ม한 게 느껴진다.",
                         (rand == 4 ? "5%" : "2%"));
                 self.say(v2, ScriptMessageFlag.Self);
                 // objects.utils.FileoutputUtil.log("./TextLog/LiberationStat.txt", "봉인 해방
-                // (Grade.4, rand : " + rand + ", 사용자 : " + getPlayer().getName() + ")\r\n");
+                // (Grade.4, rand : " + rand + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
                 StringBuilder sb = new StringBuilder(
-                        "봉인 해방 (Grade.4, rand : " + rand + ", 사용자 : " + getPlayer().getName() + ")");
+                        "봉인 해방 (Grade.4, rand : " + rand + ", ใช้자 : " + getPlayer().getName() + ")");
                 LoggingManager.putLog(new ConsumeLog(getPlayer(), itemID, sb));
             }
         }
@@ -4651,13 +4651,13 @@ public class Consume extends ScriptEngineNPC {
         ret += String.format("DEX +%d\r\n", dex);
         ret += String.format("INT +%d\r\n", int_);
         ret += String.format("LUK +%d\r\n", luk);
-        ret += String.format("올스탯 +%s\r\n", allStatR + "%");
-        ret += String.format("공격력 +%s\r\n", pad + "%");
+        ret += String.format("올Stat +%s\r\n", allStatR + "%");
+        ret += String.format("โจมตี력 +%s\r\n", pad + "%");
         ret += String.format("마력 +%s\r\n", mad + "%");
-        ret += String.format("보스 공격 시 데미지 +%s\r\n", bdr + "%");
-        ret += String.format("몬스터 방어율 무시 +%s\r\n", imdr + "%");
+        ret += String.format("บอส โจมตี 시 Damage +%s\r\n", bdr + "%");
+        ret += String.format("มอนสเตอร์ ป้องกัน율 무시 +%s\r\n", imdr + "%");
         if (scale > 1.0) {
-            ret += "\r\n#n위 옵션은 옵션의 * " + scale + "배가 적용된 옵션입니다. (초월 강화 보너스)";
+            ret += "\r\n#n위 ตัวเลือก ตัวเลือก * " + scale + "배가 ใช้งาน된 ตัวเลือก. (วินาทีเดือน เสริมแรง 보너스)";
         }
 
         return ret;
@@ -4667,23 +4667,23 @@ public class Consume extends ScriptEngineNPC {
         NumberFormat nf = NumberFormat.getInstance();
         if (hongbo) {
             if (getPlayer().getHongboPoint() < 6000) {
-                self.say("홍보 포인트가 부족한 것 같군요.");
+                self.say("คะแนนโปรโมชั่น ไม่พอ한 것 같군요.");
                 return;
             }
         } else {
             if (getPlayer().getRealCash() < 2000) {
-                self.say("진:眞 포인트가 부족한 것 같군요.");
+                self.say("진:眞 คะแนน ไม่พอ한 것 같군요.");
                 return;
             }
         }
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 3) {
-            self.say("#b소비 인벤토리#k 슬롯이 부족합니다.");
+            self.say("#bใช้ กระเป๋า#k ช่อง ไม่พอ.");
             return;
         }
 
         if (1 == self.askYesNo(String.format(
                 "정말 #b" + (hongbo ? "6,000" : "2,000")
-                        + " %s 포인트#k를 사용하여 #b'봉인된 상자' 또는 '해방의 열쇠'를 뽑으시겠어요?\r\n\r\n#e#k보유중인 포인트 : %s",
+                        + " %s คะแนน#k ใช้ #b'봉인된 상자' 또는 '해방의 열쇠' 뽑으시겠어요?\r\n\r\n#e#kมี중인 คะแนน : %s",
                 hongbo ? "홍보" : "진:眞",
                 hongbo ? nf.format(getPlayer().getHongboPoint()) : nf.format(getPlayer().getRealCash())))) {
             int rand = Randomizer.rand(0, 100);
@@ -4722,13 +4722,13 @@ public class Consume extends ScriptEngineNPC {
                         getPlayer().gainRealCash(-2000, true);
                     }
 
-                    StringBuilder sb = new StringBuilder("봉인 스탯 뽑기 결과 (뽑은 아이템ID : " + reward + ", 사용재화 : "
-                            + (hongbo ? "홍보 포인트" : "진:眞 포인트") + ", 사용자 : " + getPlayer().getName() + ")");
+                    StringBuilder sb = new StringBuilder("봉인 Stat 뽑기 ผลลัพธ์ (뽑은 ไอเท็มID : " + reward + ", ใช้재화 : "
+                            + (hongbo ? "คะแนนโปรโมชั่น" : "진:眞 คะแนน") + ", ใช้자 : " + getPlayer().getName() + ")");
                     LoggingManager.putLog(new ConsumeLog(getPlayer(), 1, sb));
 
-                    String v0 = "#b#i" + reward + "# #z" + reward + "# 1개를 획득했습니다.\r\n\r\n#k#e보유중인 포인트 : "
+                    String v0 = "#b#i" + reward + "# #z" + reward + "# 1개를 ได้รับแล้ว.\r\n\r\n#k#eมี중인 คะแนน : "
                             + (hongbo ? nf.format(getPlayer().getHongboPoint()) : nf.format(getPlayer().getRealCash()))
-                            + "\r\n#n#b#L0#한 번 더 뽑을게요.#l\r\n#L1#대화를 종료한다.#l";
+                            + "\r\n#n#b#L0#한 번 더 뽑을게요.#l\r\n#L1#สนทนา를 สิ้นสุด한다.#l";
                     int v1 = self.askMenu(v0);
                     if (v1 == 0) {
                         pickStatItem(hongbo);
@@ -4743,62 +4743,62 @@ public class Consume extends ScriptEngineNPC {
             return;
         }
         initNPC(MapleLifeFactory.getNPC(2500000));
-        String v0 = "안녕하세요 #h0#님!\r\n메이플 월드에서 이상한 기운이 느껴지는 상자가 발견되었다는 소식 들으셨나요?\r\n\r\n";
-        v0 += "소문에 의하면 어떤 방법으로도 상자는 열리지 않는다고 해요. 구멍에 맞는 열쇠를 찾아야 할 것 같은데……\r\n\r\n#b";
-        v0 += "#L0#현재까지 해방한 힘을 확인하고 싶어.#l\r\n";
-        v0 += "#L2#포인트를 사용하여 상자 또는 열쇠를 뽑고 싶어.#l\r\n";
-        v0 += "#L1#상자에 관해서 조금 더 자세히 듣고 싶어.#l";
+        String v0 = "안녕하세요 #h0#!\r\n메이플 เดือน드에서 이상한 기운이 느껴지는 상자가 발견되었다는 소식 들으셨나요?\r\n\r\n";
+        v0 += "소문에 의 어떤 방법으로도 상자는 열리지 않는다고 해요. 구멍에 맞는 열쇠를 찾아야 할 것 같은데……\r\n\r\n#b";
+        v0 += "#L0#ปัจจุบัน까지 해방한 힘을 ยืนยัน 싶어.#l\r\n";
+        v0 += "#L2#คะแนน ใช้ 상자 또는 열쇠를 뽑고 싶어.#l\r\n";
+        v0 += "#L1#상자에 관해서 นิดหน่อย 더 자세히 듣고 싶어.#l";
         int v1 = self.askMenu(v0);
         if (v1 == 0) {
-            String v2 = "#e[현재까지 해방한 힘]#n\r\n\r\n#e#r";
+            String v2 = "#e[ปัจจุบัน까지 해방한 힘]#n\r\n\r\n#e#r";
             v2 += displayLiberationStats();
-            v2 += "#n\r\n#b#L0#메뉴로 돌아간다.#l\r\n#L1#대화를 종료한다.#l";
+            v2 += "#n\r\n#b#L0#เมนู로 돌아간다.#l\r\n#L1#สนทนา를 สิ้นสุด한다.#l";
             int v3 = self.askMenu(v2);
             if (v3 == 0) {
                 rita_library();
             }
         } else if (v1 == 1) {
-            String v2 = "#bGrade 해방의 열쇠#k로 #bGrade 봉인된 상자#k를 개방하면 등급에 맞는 힘을 해방할 수 있습니다.\r\n";
-            v2 += "Grade 등급은 #e1, 2, 3, 4 총 네 가지#n로 구분되며 숫자가 높을수록 강한 힘이 봉인되어 있습니다.\r\n\r\n";
-            v2 += "#bGrade 봉인된 상자#k와 #bGrade 해방의 열쇠#k는 일정 난이도 이상의 보스를 처치하거나,\r\n";
-            v2 += "#r진:眞 포인트, 홍보 포인트#k 등의 재화를 소모하여 #e1~4 등급을 랜덤#n으로 획득할 수 있습니다.\r\n\r\n#b";
-            v2 += "#L0#드롭하는 보스와 확률을 자세히 알고 싶어.#l\r\n";
-            v2 += "#L1#소모하는 재화와 해방할 수 있는 힘을 자세히 알고 싶어.#l\r\n";
+            String v2 = "#bGrade 해방의 열쇠#k #bGrade 봉인된 상자#k 개방 ระดับ 맞는 힘을 해방할 수 있.\r\n";
+            v2 += "Grade ระดับ #e1, 2, 3, 4 총 네 가지#n 구นาที 숫자가 높을수록 강한 힘이 봉인 있.\r\n\r\n";
+            v2 += "#bGrade 봉인된 상자#k #bGrade 해방의 열쇠#k วัน정 ความยาก 이상의 บอส 처치하거나,\r\n";
+            v2 += "#r진:眞 คะแนน, คะแนนโปรโมชั่น#k 등의 재화를 ใช้ #e1~4 ระดับ สุ่ม#n ได้รับ할 수 있.\r\n\r\n#b";
+            v2 += "#L0#ดรอป하는 บอส โอกาส 자세히 알고 싶어.#l\r\n";
+            v2 += "#L1#ใช้하는 재화와 해방할 수 있는 힘을 자세히 알고 싶어.#l\r\n";
             int v3 = self.askMenu(v2);
             if (v3 == 0) {
                 String v4 = "#e- 하드 검은 마법사\r\n";
                 v4 += "- 하드 세렌\r\n";
                 v4 += "- 카오스 칼로스\r\n\r\n#n#k";
-                v4 += "이상의 보스에서 모두 드롭하며, 자세한 확률 정보는 홈페이지 확률표를 확인하시기 바랍니다.";
-                v4 += "#n\r\n#b#L0#메뉴로 돌아간다.#l\r\n#L1#대화를 종료한다.#l";
+                v4 += "이상의 บอส 모두 ดรอป, 자세한 โอกาส ข้อมูล는 홈페이지 โอกาส표를 ยืนยัน하시기 바랍니다.";
+                v4 += "#n\r\n#b#L0#เมนู로 돌아간다.#l\r\n#L1#สนทนา를 สิ้นสุด한다.#l";
                 int v5 = self.askMenu(v4);
                 if (v5 == 0) {
                     rita_library();
                 }
             } else if (v3 == 1) {
-                String v4 = "- #r진:眞 포인트 2,000#k을 소모하여 #bGrade.1~Grade.4 등급의 '봉인된 상자' 또는 '해방의 열쇠'#k를 획득할 수 있습니다.\r\n";
-                v4 += "- #r홍보 포인트 6,000#k을 소모하여 #bGrade.1~Grade.4 등급의 '봉인된 상자' 또는 '해방의 열쇠'#k를 획득할 수 있습니다.\r\n\r\n";
-                v4 += "봉인된 상자와 해방의 열쇠는 등급에 따라 획득 확률 및 해방 시 상승하는 스탯이 다릅니다.";
+                String v4 = "- #r진:眞 คะแนน 2,000#k ใช้ #bGrade.1~Grade.4 ระดับ '봉인된 상자' 또는 '해방의 열쇠'#k ได้รับ할 수 있.\r\n";
+                v4 += "- #rคะแนนโปรโมชั่น 6,000#k ใช้ #bGrade.1~Grade.4 ระดับ '봉인된 상자' 또는 '해방의 열쇠'#k ได้รับ할 수 있.\r\n\r\n";
+                v4 += "봉인된 상자와 해방의 열쇠는 ระดับ 따라 ได้รับ โอกาส 및 해방 시 ขึ้น하는 Stat이 다릅니다.";
                 self.say(v4);
                 String v5 = "#eGrade.1 (60%) - 상자 30%, 열쇠 30%#n\r\n";
-                v5 += "#bSTR, DEX, INT, LUK 중에서 선택한 스탯이 2만큼 증가합니다.#k\r\n";
+                v5 += "#bSTR, DEX, INT, LUK 중에서 เลือก한 Stat이 2만큼 เพิ่ม.#k\r\n";
                 v5 += "#eGrade.2 (30%) - 상자 15%, 열쇠 15%#n\r\n";
-                v5 += "#bSTR, DEX, INT, LUK 중에서 선택한 스탯이 20만큼 증가합니다.#k\r\n";
+                v5 += "#bSTR, DEX, INT, LUK 중에서 เลือก한 Stat이 20만큼 เพิ่ม.#k\r\n";
                 v5 += "#eGrade.3 (8%) - 상자 4%, 열쇠 4%#n\r\n";
-                v5 += "#bSTR, DEX, INT, LUK 중에서 랜덤한 스탯이 50만큼 증가합니다.#k\r\n";
+                v5 += "#bSTR, DEX, INT, LUK 중에서 สุ่ม한 Stat이 50만큼 เพิ่ม.#k\r\n";
                 v5 += "#eGrade.4 (2%) - 상자 1%, 열쇠 1%#n\r\n";
-                v5 += "#b공격력, 마력, 보스 공격 시 데미지, 몬스터 방어율 무시, 올스탯% 중에서 랜덤한 스탯이 2%만큼 증가합니다. (올스탯은 5%)\r\n";
-                v5 += "#n\r\n#b#L0#메뉴로 돌아간다.#l\r\n#L1#대화를 종료한다.#l";
+                v5 += "#bโจมตี력, 마력, บอส โจมตี 시 Damage, มอนสเตอร์ ป้องกัน율 무시, 올Stat% 중에서 สุ่ม한 Stat이 2%만큼 เพิ่ม. (올Stat은 5%)\r\n";
+                v5 += "#n\r\n#b#L0#เมนู로 돌아간다.#l\r\n#L1#สนทนา를 สิ้นสุด한다.#l";
                 int v6 = self.askMenu(v5);
                 if (v6 == 0) {
                     rita_library();
                 }
             }
         } else if (v1 == 2) {
-            String v2 = "어떤 포인트를 사용하여 #b'봉인된 상자' 또는 '해방의 열쇠'#k를 뽑아보시겠어요?\r\n\r\n#b";
-            v2 += "#L0##e진:眞 포인트#n를 사용하여 뽑겠습니다. (2,000 포인트)#l\r\n";
-            v2 += "#L1##e홍보 포인트#n를 사용하여 뽑겠습니다. (6,000 포인트)#l\r\n";
-            v2 += "#L2#대화를 종료한다.#l\r\n";
+            String v2 = "어떤 คะแนน ใช้ #b'봉인된 상자' 또는 '해방의 열쇠'#k 뽑아보시겠어요?\r\n\r\n#b";
+            v2 += "#L0##e진:眞 คะแนน#n ใช้ 뽑겠. (2,000 คะแนน)#l\r\n";
+            v2 += "#L1##eคะแนนโปรโมชั่น#n ใช้ 뽑겠. (6,000 คะแนน)#l\r\n";
+            v2 += "#L2#สนทนา를 สิ้นสุด한다.#l\r\n";
             int v3 = self.askMenu(v2);
             if (v3 == 0) {
                 pickStatItem(false);
@@ -4846,21 +4846,21 @@ public class Consume extends ScriptEngineNPC {
                 1012632, 1022278, 1132308, 1162080, 1162081, 1162082, 1162083, 1113306, 1032316, 1122430, 1182285,
                 1190555, 1190556, 1190557, 1190558, 1190559
         };
-        String v0 = "아래의 아이템 중 하나를 선택하여 획득할 수 있습니다. 어떤 아이템을 선택하시겠습니까?\r\n\r\n#b";
+        String v0 = "아래의 ไอเท็ม 중 하나를 เลือก ได้รับ할 수 있. 어떤 ไอเท็ม เลือกต้องการหรือไม่?\r\n\r\n#b";
         for (int i = 0; i < itemList.length; ++i) {
             v0 += "#L" + i + "##i" + itemList[i] + "# #z" + itemList[i] + "##l\r\n";
         }
         int v1 = self.askMenu(v0);
         if (target.exchange(2435876, -1, itemList[v1], 1) > 0) {
-            self.sayOk("#b#i" + itemList[v1] + "# #z" + itemList[v1] + "##k 1개를 획득하였습니다.");
+            self.sayOk("#b#i" + itemList[v1] + "# #z" + itemList[v1] + "##k 1개를 ได้รับ하였.");
         } else {
-            self.sayOk("장비 인벤토리 공간을 확보하고 다시 시도해주시기 바랍니다.");
+            self.sayOk("อุปกรณ์ กระเป๋า 공간을 확보 다시 시도โปรด.");
         }
     }
 
     public void unboxingItem(int consumeID, int[] itemList) {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        String v0 = "상자를 개봉하면 아래 아이템 중 하나를 랜덤으로 획득할 수 있습니다. 지금 바로 개봉해보시겠습니까?\r\n\r\n#b";
+        String v0 = "상자를 개봉 아래 ไอเท็ม 중 하나를 สุ่ม으로 ได้รับ할 수 있. 지금 바로 개봉해보시겠습니까?\r\n\r\n#b";
         for (int itemID : itemList) {
             v0 += "#i" + itemID + "# #z" + itemID + "#\r\n";
         }
@@ -4870,22 +4870,22 @@ public class Consume extends ScriptEngineNPC {
                 int pick = itemList[rand];
 
                 if (target.exchange(pick, 1) > 0) {
-                    self.sayOk("#b#i" + pick + "# #z" + pick + "##k 1개를 획득하였습니다.");
+                    self.sayOk("#b#i" + pick + "# #z" + pick + "##k 1개를 ได้รับ하였.");
                 } else {
-                    self.sayOk("장비 인벤토리 공간을 확보하고 다시 시도해주시기 바랍니다.");
+                    self.sayOk("อุปกรณ์ กระเป๋า 공간을 확보 다시 시도โปรด.");
                 }
             } else {
-                self.sayOk("알 수 없는 오류가 발생하였습니다.");
+                self.sayOk("알 수 없는 오류가 발생하였.");
             }
         }
     }
 
-    // 정밀한 각인석
+    // 정밀한 แต่ละ인석
     public void consume_2432126() {
         equipStone(2432126);
     }
 
-    // 평범한 각인석
+    // 평범한 แต่ละ인석
     public void consume_2432127() {
         equipStone(2432127);
     }
@@ -4894,9 +4894,9 @@ public class Consume extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9010000));
         String v0 = "";
         if (DBConfig.isGanglim) {
-            v0 = "#fs11#장착을 원하는 홈을 선택해주세요. #r#e선택한 홈에 장착된 각인석은 해제되며 사라지게 되니#n#k 주의하여 주시기 바랍니다.\r\n\r\n";
+            v0 = "#fs11#장착을 원하는 홈을 เลือกโปรด. #r#eเลือก한 홈에 장착된 แต่ละ인석은 ปลดล็อก 사라지게 되니#n#k สัปดาห์의 สัปดาห์시기 바랍니다.\r\n\r\n";
         } else {
-            v0 = "장착을 원하는 홈을 선택해주세요. #r#e선택한 홈에 장착된 각인석은 해제되며 사라지게 되니#n#k 주의하여 주시기 바랍니다.\r\n\r\n";
+            v0 = "장착을 원하는 홈을 เลือกโปรด. #r#eเลือก한 홈에 장착된 แต่ละ인석은 ปลดล็อก 사라지게 되니#n#k สัปดาห์의 สัปดาห์시기 바랍니다.\r\n\r\n";
         }
 
         String empty = "#fc0xFF6600CC##fUI/UIWindow.img/IconBase/0#";
@@ -4913,7 +4913,7 @@ public class Consume extends ScriptEngineNPC {
         String lock4 = getPlayer().getOneInfoQuestInteger(133333, "lock4") > 0 ? "#r(잠김)" : "#b(열림)";
         String lock5 = getPlayer().getOneInfoQuestInteger(133333, "lock5") > 0 ? "#r(잠김)" : "#b(열림)";
 
-        v0 += "#e[석판에 장착된 각인석]#n\r\n";
+        v0 += "#e[석판에 장착된 แต่ละ인석]#n\r\n";
         v0 += item1 > 0 ? (icon + item1 + "# ") : (empty + " ");
         v0 += item2 > 0 ? (icon + item2 + "# ") : (empty + " ");
         v0 += item3 > 0 ? (icon + item3 + "# ") : (empty + " ");
@@ -4925,11 +4925,11 @@ public class Consume extends ScriptEngineNPC {
         // int unlock1 = getPlayer().getOneInfoQuestInteger(133333, "unlock1");
         // int unlock2 = getPlayer().getOneInfoQuestInteger(133333, "unlock2");
 
-        v0 += "\r\n\r\n#b#L0#1번째 홈에 장착하겠습니다.#l\r\n";
-        v0 += "#b#L1#2번째 홈에 장착하겠습니다.#l\r\n";
-        v0 += "#b#L2#3번째 홈에 장착하겠습니다.#l\r\n";
-        v0 += "#b#L3#4번째 홈에 장착하겠습니다.#l\r\n";
-        v0 += "#b#L4#5번째 홈에 장착하겠습니다.#l\r\n";
+        v0 += "\r\n\r\n#b#L0#1번째 홈에 장착하겠.#l\r\n";
+        v0 += "#b#L1#2번째 홈에 장착하겠.#l\r\n";
+        v0 += "#b#L2#3번째 홈에 장착하겠.#l\r\n";
+        v0 += "#b#L3#4번째 홈에 장착하겠.#l\r\n";
+        v0 += "#b#L4#5번째 홈에 장착하겠.#l\r\n";
 
         int v1 = self.askMenu(v0);
         int itemID_ = 0;
@@ -4946,22 +4946,22 @@ public class Consume extends ScriptEngineNPC {
         }
         String v2 = "";
         if (DBConfig.isGanglim) {
-            v2 = "#fs11#정말 #e" + (v1 + 1) + "번째 홈#n에 장착하시겠습니까?\r\n\r\n";
+            v2 = "#fs11#정말 #e" + (v1 + 1) + "번째 홈#n 장착ต้องการหรือไม่?\r\n\r\n";
         } else {
-            v2 = "정말 #e" + (v1 + 1) + "번째 홈#n에 장착하시겠습니까?\r\n\r\n";
+            v2 = "정말 #e" + (v1 + 1) + "번째 홈#n 장착ต้องการหรือไม่?\r\n\r\n";
         }
 
         if (itemID_ == 0) {
-            v2 += "#b현재 해당 홈은 각인석이 장착되어있지 않습니다.";
+            v2 += "#bปัจจุบัน 해당 홈은 แต่ละ인석이 장착있지 않.";
         } else {
-            v2 += "#b#i" + itemID_ + "# #z" + itemID_ + "##k이 장착되어있습니다.\r\n#e#r장착 시 해당 각인석은 해제되며 사라지게 됩니다.";
+            v2 += "#b#i" + itemID_ + "# #z" + itemID_ + "##k 장착있.\r\n#e#r장착 시 해당 แต่ละ인석은 ปลดล็อก 사라지게 .";
         }
         if (1 == self.askYesNo(v2)) {
             if (getPlayer().getOneInfoQuestInteger(133333, "lock" + (v1 + 1)) > 0) {
                 if (DBConfig.isGanglim) {
-                    self.say("#fs11##r해당 홈은 잠금이 설정되어 있어 장착이 불가능합니다.");
+                    self.say("#fs11##r해당 홈은 ล็อก이 ตั้งค่า 있어 장착이 불เป็นไปได้.");
                 } else {
-                    self.say("#r해당 홈은 잠금이 설정되어 있어 장착이 불가능합니다.");
+                    self.say("#r해당 홈은 ล็อก이 ตั้งค่า 있어 장착이 불เป็นไปได้.");
                 }
                 return;
             }
@@ -4977,13 +4977,13 @@ public class Consume extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(133333, "minusValue" + index, "0");
                 getPlayer().checkImprintedStone();
                 if (DBConfig.isGanglim) {
-                    self.say("#fs11#장착이 완료되었습니다.");
+                    self.say("#fs11#장착이 เสร็จสมบูรณ์.");
                 } else {
-                    self.say("장착이 완료되었습니다.");
+                    self.say("장착이 เสร็จสมบูรณ์.");
                 }
 
                 StringBuilder sb = new StringBuilder(
-                        "각인석 장착 (슬롯 : " + index + ", 아이템ID : " + itemID + ", 사용자 : " + getPlayer().getName() + ")");
+                        "แต่ละ인석 장착 (ช่อง : " + index + ", ไอเท็มID : " + itemID + ", ใช้자 : " + getPlayer().getName() + ")");
                 LoggingManager.putLog(new ConsumeLog(getPlayer(), itemID, sb));
 
             }
@@ -4992,8 +4992,8 @@ public class Consume extends ScriptEngineNPC {
 
     public void HonorTransmission() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        String v0 = "#e[훈장 옵션 전승]#n\r\n";
-        v0 += "전승을 진행할 훈장을 선택해주세요. 해당 훈장에 부여된 훈장 강화 옵션이 전승됩니다. 기존 옵션은 전승되지 않습니다.\r\n\r\n#b";
+        String v0 = "#e[훈장 ตัวเลือก 전승]#n\r\n";
+        v0 += "전승을 ดำเนินการ할 훈장을 เลือกโปรด. 해당 훈장에 부여된 훈장 เสริมแรง ตัวเลือก 전승. 기존 ตัวเลือก 전승되지 않.\r\n\r\n#b";
         boolean find = false;
         for (Item item : getPlayer().getInventory(MapleInventoryType.EQUIP).list()) {
             if (item.getItemId() / 10000 == 114) {
@@ -5007,21 +5007,21 @@ public class Consume extends ScriptEngineNPC {
             }
         }
         if (!find) {
-            v0 += "소지하고 있는 훈장이 없습니다.";
+            v0 += "소지 있는 훈장이 없.";
             self.say(v0);
             return;
         }
         int v1 = self.askMenu(v0);
         Item item = getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) v1);
         if (item == null || item.getItemId() / 10000 != 114) {
-            self.say("잘못된 접근입니다.");
+            self.say("잘못된 접근.");
             return;
         }
         Equip baseEquip = (Equip) item;
 
-        String v2 = "#e[훈장 옵션 전승]#n\r\n";
-        v2 += "옵션을 전승할 훈장을 선택해주세요.\r\n\r\n";
-        v2 += "#e전승에 사용될 훈장 : #i" + baseEquip.getItemId() + "# #z" + baseEquip.getItemId() + "##n#b\r\n\r\n";
+        String v2 = "#e[훈장 ตัวเลือก 전승]#n\r\n";
+        v2 += "ตัวเลือก 전승할 훈장을 เลือกโปรด.\r\n\r\n";
+        v2 += "#e전승에 ใช้될 훈장 : #i" + baseEquip.getItemId() + "# #z" + baseEquip.getItemId() + "##n#b\r\n\r\n";
         find = false;
         for (Item it : getPlayer().getInventory(MapleInventoryType.EQUIP).list()) {
             if (it.getItemId() / 10000 == 114 && it.getPosition() != v1) {
@@ -5035,25 +5035,25 @@ public class Consume extends ScriptEngineNPC {
             }
         }
         if (!find) {
-            v2 += "소지하고 있는 훈장이 없습니다.";
+            v2 += "소지 있는 훈장이 없.";
             self.say(v2);
             return;
         }
         int v3 = self.askMenu(v2);
         Item item2 = getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) v3);
         if (item2 == null || item2.getItemId() / 10000 != 114) {
-            self.say("잘못된 접근입니다.");
+            self.say("잘못된 접근.");
             return;
         }
         Equip targetEquip = (Equip) item2;
 
         if (1 == self.askYesNo(
-                "#e[훈장 옵션 전승]#n\r\n해당 훈장에 전승을 시도하시겠습니까? 이미 훈장 옵션 강화가 진행된 훈장에는 사용할 수 없습니다.\r\n\r\n#e전승에 사용될 훈장 : #i"
+                "#e[훈장 ตัวเลือก 전승]#n\r\n해당 훈장에 전승을 시도ต้องการหรือไม่? 이미 훈장 ตัวเลือก เสริมแรง가 ดำเนินการ된 훈장에는 ใช้할 수 없.\r\n\r\n#e전승에 ใช้될 훈장 : #i"
                         + baseEquip.getItemId() + "# #z" + baseEquip.getItemId() + "#\r\n전승할 훈장 : #i"
                         + targetEquip.getItemId() + "# #z" + targetEquip.getItemId() + "#")) {
             if (baseEquip.getOwner() == null || baseEquip.getOwner().isEmpty()
                     || targetEquip.getOwner() != null && !targetEquip.getOwner().isEmpty()) {
-                self.say("전승에 사용될 훈장이 훈장 옵션 강화를 진행하지 않았거나, 전승될 훈장에 훈장 옵션 강화권이 적용되어 전승이 불가능합니다.");
+                self.say("전승에 ใช้될 훈장이 훈장 ตัวเลือก เสริมแรง를 ดำเนินการ하지 않았거나, 전승될 훈장에 훈장 ตัวเลือก เสริมแรง권이 ใช้งาน 전승이 불เป็นไปได้.");
                 return;
             }
             int baseLevel = Integer.parseInt(baseEquip.getOwner().replaceAll("[^0-9]", ""));
@@ -5077,20 +5077,20 @@ public class Consume extends ScriptEngineNPC {
                     getPlayer()));
             getPlayer().send(CWvsContext.InventoryPacket.updateInventoryItem(MapleInventoryType.EQUIP, targetEquip,
                     false, getPlayer()));
-            self.say("전승이 완료되었습니다.");
+            self.say("전승이 เสร็จสมบูรณ์.");
         }
     }
 
     public void consume_2434287() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        if (1 == self.askYesNo("명성치 10,000를 소모하여 #b#i2434290# #z2434290# 1개#k를 획득하시겠습니까?")) {
+        if (1 == self.askYesNo("명성치 10,000 ใช้ #b#i2434290# #z2434290# 1개#k ได้รับต้องการหรือไม่?")) {
             if (getPlayer().getInnerExp() < 10000) {
-                self.say("명성치가 부족하여 사용할 수 없습니다.");
+                self.say("명성치가 ไม่พอ ใช้할 수 없.");
                 return;
             }
             if (target.exchange(2434287, -1, 2434290, 1) == 1) {
                 getPlayer().addHonorExp(-10000);
-                self.say("교환이 완료되었습니다.");
+                self.say("แลกเปลี่ยน เสร็จสมบูรณ์.");
             }
 
         }
@@ -5099,29 +5099,29 @@ public class Consume extends ScriptEngineNPC {
     public void consume_2438116() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (1 == self.askYesNo(
-                "#b#i2438116# #z2438116##k을 열어 아래 아이템을 획득하시겠습니까?\r\n\r\n#b#i5060048# #z5060048# 5개\r\n#i2434558# #z2434558# 1개\r\n#i5680157# #z5680157# 3개\r\n#i5068300# #z5068300# 5개\r\n#i2028273# #z2028273# 5개\r\n#i5680409# #z5680409# 1개")) {
+                "#b#i2438116# #z2438116##k 열어 아래 ไอเท็ม ได้รับต้องการหรือไม่?\r\n\r\n#b#i5060048# #z5060048# 5개\r\n#i2434558# #z2434558# 1개\r\n#i5680157# #z5680157# 3개\r\n#i5068300# #z5068300# 5개\r\n#i2028273# #z2028273# 5개\r\n#i5680409# #z5680409# 1개")) {
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 3 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 4) {
-                self.say("#b소비 인벤토리#k 3칸과 #b캐시 인벤토리#k 4칸을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bใช้ กระเป๋า#k 3칸과 #bแคช กระเป๋า#k 4칸을 확보 다시 시도โปรด.");
                 return;
             }
             if (target.exchange(2438116, -1, 5060048, 5, 2434558, 1, 5680157, 3, 2028273, 5, 5680409, 1) == 1) {
                 Item wonderBerry = new Item(5068300, (short) 1, (short) 5, (short) ItemFlag.KARMA_USE.getValue());
                 MapleInventoryManipulator.addFromDrop(getClient(), wonderBerry, true);
-                self.say("아이템을 획득했습니다.");
+                self.say("ไอเท็ม ได้รับแล้ว.");
             }
         }
     }
 
     public void consume_2630009() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        if (1 == self.askYesNo("#b#i2630009# #z2630009##k을 열어 아래 아이템을 획득하시겠습니까?\r\n\r\n#b#i4034803# #z4034803# 1개")) {
+        if (1 == self.askYesNo("#b#i2630009# #z2630009##k 열어 아래 ไอเท็ม ได้รับต้องการหรือไม่?\r\n\r\n#b#i4034803# #z4034803# 1개")) {
             if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
-                self.say("#b기타 인벤토리#k 1칸을 확보하고 다시 시도해주시기 바랍니다.");
+                self.say("#bอื่นๆ กระเป๋า#k 1칸을 확보 다시 시도โปรด.");
                 return;
             }
             if (target.exchange(2630009, -1, 4034803, 1) == 1) {
-                self.say("아이템을 획득했습니다.");
+                self.say("ไอเท็ม ได้รับแล้ว.");
             }
         }
     }

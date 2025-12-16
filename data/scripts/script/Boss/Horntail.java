@@ -18,73 +18,73 @@ public class Horntail extends ScriptEngineNPC {
 
     public void hontale_enterToE() { //hontale 실화냐 ;;
         if (target.getParty() == null) {
-            self.say("파티장을 통해 진행해 주십시오.");
+            self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
         } else {
             if (target.getParty().getLeader().getId() != target.getId()) {
-                self.say("파티장을 통해 진행해 주십시오.");
+                self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
             } else {
-                if (self.askYesNo("석판에 쓰여진 글씨가 빛나더니 석판 뒤로 작은 문이 열렸다. 비밀통로를 이용하시겠습니까?") == 1) {
+                if (self.askYesNo("석판에 쓰여진 글씨가 빛나더니 석판 뒤로 작은 문이 열렸다. 비밀통로를 이용ต้องการหรือไม่?") == 1) {
                     if (target.getParty().isPartySameMap()) {
-                        target.getParty().registerTransferField(240050400); //파티원 전체이동!
+                        target.getParty().registerTransferField(240050400); //ปาร์ตี้원 ทั้งหมดย้าย!
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은맵에 있어야 합니다.");
+                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
                     }
                 } else {
-                    self.say("이동하시려면 다시 말을 걸어 주세요.");
+                    self.say("ย้าย하시려면 다시 말을 걸어 สัปดาห์세요.");
                 }
             }
         }
     }
 
     public void hontale_accept() {
-        //이지, 노말혼테일 첫시작맵(240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070)
-        //카오스혼테일 첫시작맵(240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071)
+        //이지, 노말혼테วัน 첫เริ่มแผนที่(240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070)
+        //카오스혼테วัน 첫เริ่มแผนที่(240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071)
         int[] normalHortailMaps = new int[]{240060000, 240060010, 240060020, 240060030, 240060040, 240060050, 240060060, 240060070};
         int[] chaosHortailMaps = new int[]{240060001, 240060011, 240060021, 240060031, 240060041, 240060051, 240060061, 240060071};
         EventManager em = getEventManager("Horntail");
         if (em == null) {
-            self.say("현재 혼테일 보스레이드를 이용할 수 없습니다.");
+            self.say("ปัจจุบัน 혼테วัน บอส레이드를 이용할 수 없.");
         } else {
-            int v = self.askMenu("#e<보스: 혼테일>#n\r\n혼테일이 부활했다. 이대로 둔다면 화산폭발을 일으켜서 미나르 일대를 지옥으로 만들어 버릴거야.\r\n#b\r\n#L0# <보스: 혼테일> 입장을 신청한다.#l");
+            int v = self.askMenu("#e<บอส: 혼테วัน>#n\r\n혼테วัน이 부활했다. 이대로 둔다면 화산폭발을 วัน으켜서 미나르 วัน대를 지옥으로 만들어 버릴거야.\r\n#b\r\n#L0# <บอส: 혼테วัน> เข้า을 สมัคร한다.#l");
             if (v == 0) {
             	String menu = "";
 
             	if (DBConfig.isGanglim) {
-            		menu = "#e<보스: 혼테일>#n\r\n원하는 모드를 선택하라.\r\n\r\n#L0# 이지 모드 ( 레벨 130 이상 )#l\r\n#L1# 노멀 모드 ( 레벨 130 이상 )#l\r\n#L2# 카오스 모드 ( 레벨 135 이상 )#l";
+            		menu = "#e<บอส: 혼테วัน>#n\r\n원하는 โหมด를 เลือก하라.\r\n\r\n#L0# 이지 โหมด ( เลเวล 130 이상 )#l\r\n#L1# 노멀 โหมด ( เลเวล 130 이상 )#l\r\n#L2# 카오스 โหมด ( เลเวล 135 이상 )#l";
             	} else {
             		boolean single = getPlayer().getPartyMemberSize() == 1;
-            		menu = "#e<보스: 혼테일>#n\r\n원하는 모드를 선택하라.\r\n\r\n"
-            				+ "#L0# 이지 모드 " + (single ? "(싱글)" : "(멀티)") + " ( 레벨 130 이상 )#l\r\n"
-            				+ "#L1# 노멀 모드 " + (single ? "(싱글)" : "(멀티)") + "( 레벨 130 이상 )#l\r\n"
-            				+ "#L2# 카오스 모드 "  + (single ? "(싱글)" : "(멀티)") + " ( 레벨 135 이상 )#l\r\n";
+            		menu = "#e<บอส: 혼테วัน>#n\r\n원하는 โหมด를 เลือก하라.\r\n\r\n"
+            				+ "#L0# 이지 โหมด " + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 130 이상 )#l\r\n"
+            				+ "#L1# 노멀 โหมด " + (single ? "(싱글)" : "(멀티)") + "( เลเวล 130 이상 )#l\r\n"
+            				+ "#L2# 카오스 โหมด "  + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 135 이상 )#l\r\n";
             		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"));
-            		menu += "#L3#입장횟수 증가 (" + ((single ? 2 : 1) - reset) + "회 가능)#l";
+            		menu += "#L3#เข้า횟수 เพิ่ม (" + ((single ? 2 : 1) - reset) + "회 เป็นไปได้)#l";
             	}
                 int v2 = self.askMenu(menu);
 
                 if (target.getParty() == null) {
-                    self.say("파티장을 통해 진행해 주십시오.");
+                    self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                     return;
                 } else {
                 	if (v2 == 3 && !DBConfig.isGanglim) {
                 		boolean single = getPlayer().getPartyMemberSize() == 1;
                 		if (getPlayer().getTogetherPoint() < 150) {
-                			self.sayOk("협동포인트가 부족합니다. 보유 포인트 : " + getPlayer().getTogetherPoint());
+                			self.sayOk("협동คะแนน ไม่พอ. มี คะแนน : " + getPlayer().getTogetherPoint());
                 			return;
                 		}
                 		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"));
                 		if (reset > (single ? 1 : 0)) {
-                			self.sayOk("오늘은 입장가능 횟수 증가가 불가능합니다.");
+                			self.sayOk("วันนี้은 เข้าเป็นไปได้ 횟수 เพิ่ม가 불เป็นไปได้.");
                 			return;
                 		}
                 		getPlayer().gainTogetherPoint(-150);
                 		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "Horntail" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-                		self.sayOk("입장 횟수가 증가되었습니다.");
+                		self.sayOk("เข้า 횟수가 เพิ่ม되었.");
                 		return;
                 	}
 
                     if (target.getParty().getLeader().getId() != target.getId()) {
-                        self.say("파티장을 통해 진행해 주십시오.");
+                        self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                     } else {
                         if (target.getParty().isPartySameMap()) {
                             // 이미 누가 안에 있는지 부터 알아보자
@@ -107,9 +107,9 @@ public class Horntail extends ScriptEngineNPC {
                             }
                             if (findUser) {
                                 if (v2 == 0 || v2 == 1) {
-                                    self.say("현재 이지,노말 맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.say("ปัจจุบัน 이지,노말 แผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 } else if (v2 == 2) {
-                                    self.say("현재 카오스 맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.say("ปัจจุบัน 카오스 แผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 }
                                 return;
                             }
@@ -121,7 +121,7 @@ public class Horntail extends ScriptEngineNPC {
                                 canEnter = -2;
                             }
                             String mode = "easy";
-                            if (v2 == 0 || v2 == 1) { //이지, 노말모드
+                            if (v2 == 0 || v2 == 1) { //이지, 노말โหมด
                                 if (em.getProperty("status0").equals("0")) {
                                     em.setProperty("status0", "1");
                                     canEnter = 0;
@@ -129,7 +129,7 @@ public class Horntail extends ScriptEngineNPC {
                                         mode = "normal";
                                     }
                                 }
-                            } else if (v2 == 2) { //카오스모드
+                            } else if (v2 == 2) { //카오스โหมด
                                 em.setProperty("Cstatus0", "0");
                                 if (em.getProperty("Cstatus0").equals("0")) {
                                     em.setProperty("Cstatus0", "1");
@@ -140,9 +140,9 @@ public class Horntail extends ScriptEngineNPC {
 
                             if (canEnter == -1 || canEnter == -2) {
                                 if (canEnter == -2) {
-                                    self.say("파티원 중#b#e" + overLap + "가#n#k 오늘 입장했군. 그렇다면 오늘은 더 이상 들어갈 수 없다.");
+                                    self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군. 그렇다면 วันนี้은 더 이상 들어갈 수 없다.");
                                 } else {
-                                    self.say("현재 모든맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 }
                             } else if (canEnter == 0){
                                 EventInstanceManager eim = em.readyInstance();
@@ -164,8 +164,8 @@ public class Horntail extends ScriptEngineNPC {
                                 updateEventNumber(getPlayer(), QuestExConstants.Horntail.getQuestID());
                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                             }
-                        } else { //파티원 모두 같은맵에 없을 때
-                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은맵에 있어야 합니다.");
+                        } else { //ปาร์ตี้원 모두 같은แผนที่ 없을 때
+                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
                         }
                     }
                 }
@@ -175,17 +175,17 @@ public class Horntail extends ScriptEngineNPC {
 
     public void hontale_out() {
         if (target.getMapId() == 240050400) {
-            if (self.askYesNo("#m240050000#로 돌아가시겠습니까?") == 1) {
+            if (self.askYesNo("#m240050000# 돌아가시겠습니까?") == 1) {
                 registerTransferField(240050000);
             } else {
-                self.say("다시 생각해 보시고 말을 걸어 주세요.");
+                self.say("다시 생แต่ละ해 보시고 말을 걸어 สัปดาห์세요.");
             }
         } else {
-            if (self.askYesNo("전투를 그만두고 밖으로 나가시겠습니까? 퇴장 시 오늘은 더 이상 입장할 수 없습니다.") == 1) {
-                //횟수 차감!
+            if (self.askYesNo("전투를 그만두고 밖으로 나가시겠습니까? ออก 시 วันนี้은 더 이상 เข้า할 수 없.") == 1) {
+                //횟수 หัก!
                 registerTransferField(240050400);
             } else {
-                self.say("다시 생각해 보시고 말을 걸어 주세요.");
+                self.say("다시 생แต่ละ해 보시고 말을 걸어 สัปดาห์세요.");
             }
         }
     }
@@ -201,7 +201,7 @@ public class Horntail extends ScriptEngineNPC {
                 		int mobId = 8810200;
                         if (eim.getProperty("mode").equals("normal")) {
                             mobId = 8810000;
-                        } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                        } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                             mobId = 8810100;
                         }
                         tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //이거 본섭화 맞음ㅋㅋ
@@ -214,7 +214,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810200;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810000;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                                 mobId = 8810100;
                             }
                             tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //이거 본섭화 맞음ㅋㅋ
@@ -226,7 +226,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810200;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810000;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                                 mobId = 8810100;
                             }
                             final MapleMonster horntail = MapleLifeFactory.getMonster(mobId);
@@ -262,7 +262,7 @@ public class Horntail extends ScriptEngineNPC {
                 		int mobId = 8810201;
                         if (eim.getProperty("mode").equals("normal")) {
                             mobId = 8810001;
-                        } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                        } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                             mobId = 8810101;
                         }
                         mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
@@ -275,7 +275,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810201;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810001;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                                 mobId = 8810101;
                             }
                             mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
@@ -287,7 +287,7 @@ public class Horntail extends ScriptEngineNPC {
                 			int mobId = 8810201;
                             if (eim.getProperty("mode").equals("normal")) {
                                 mobId = 8810001;
-                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스모드
+                            } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                                 mobId = 8810101;
                             }
                             final MapleMonster horntail = MapleLifeFactory.getMonster(mobId);
@@ -328,7 +328,7 @@ public class Horntail extends ScriptEngineNPC {
                     getPlayer().changeMap(target.getMapId() + 100);
                 }
             } else {
-                getPlayer().dropMessage(5, "아직 이 포탈을 사용할 수 없습니다.");
+                getPlayer().dropMessage(5, "아직  포탈을 ใช้할 수 없.");
             }
         }
     }

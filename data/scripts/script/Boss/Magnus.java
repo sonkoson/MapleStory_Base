@@ -658,13 +658,13 @@ public class Magnus extends ScriptEngineNPC {
      * fieldSet = fieldSet("MagnusEnter");
      * }
      * if (fieldSet == null) {
-     * self.sayOk("지금은 매그너스 레이드를 이용하실 수 없습니다.");
+     * self.sayOk("지금은 매그너스 레이드를 이용하실 수 없.");
      * return;
      * }
      * boolean enterField = false;
-     * if (target.getMapId() == 401060399) { //이지매그입장맵
+     * if (target.getMapId() == 401060399) { //이지매그เข้าแผนที่
      * if (self.
-     * askYesNo("매그너스 퇴치를 위해 폭군의 왕좌로 이동 하시겠습니까??\r\n#b<< 매그너스 모의전은 1일에 1회 클리어 가능합니다. >>\r\n<<115 레벨 이상 유저 간의 파티로 입장하실 수 있습니다.>>"
+     * askYesNo("매그너스 퇴치를 위해 폭군의 왕좌로 ย้าย ต้องการหรือไม่??\r\n#b<< 매그너스 모의전은 1วัน에 1회 클리어 เป็นไปได้. >>\r\n<<115 เลเวล 이상 유저 간의 ปาร์ตี้ เข้า하실 수 있.>>"
      * ) == 1) {
      * enterField = true;
      * }
@@ -673,17 +673,17 @@ public class Magnus extends ScriptEngineNPC {
      * }
      * if (enterField) {
      * int enter = fieldSet.enter(target.getId());
-     * if (enter == -1) self.say("알 수 없는 이유로 입장할 수 없습니다. 잠시 후에 다시 시도해 주십시오.");
-     * else if (enter == 1) self.say("파티를 맺어야만 도전할 수 있습니다.");
-     * else if (enter == 2) self.say("파티장을 통해 진행해 주십시오.");
-     * else if (enter == 3) self.say("최소 " + fieldSet.minMember +
-     * "인 이상의 파티가 퀘스트를 시작할 수 있습니다.");
-     * else if (enter == 4) self.say("파티원의 레벨은 최소 " + fieldSet.minLv +
-     * " 이상이어야 합니다.");
-     * else if (enter == 5) self.say("파티원이 모두 모여 있어야 시작할 수 있습니다.");
-     * else if (enter == 6) self.say("이미 다른 원정대가 안으로 들어가 퀘스트 클리어에 도전하고 있는 중입니다.");
-     * else if (enter == 7) { //30분 대기시간이 발생한경우
-     * self.say("30분 이내에 입장한 파티원이 있습니다. 입장 후 30분 이내에 재입장이 불가능합니다.");
+     * if (enter == -1) self.say("알 수 없는 이유로 เข้า할 수 없. 잠시 후에 다시 시도해 สัปดาห์십시오.");
+     * else if (enter == 1) self.say("ปาร์ตี้ 맺어야만 도전할 수 있.");
+     * else if (enter == 2) self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
+     * else if (enter == 3) self.say("ต่ำสุด " + fieldSet.minMember +
+     * "인 이상의 ปาร์ตี้ เควส เริ่ม할 수 있.");
+     * else if (enter == 4) self.say("ปาร์ตี้원의 เลเวล ต่ำสุด " + fieldSet.minLv +
+     * " 이상이어야 .");
+     * else if (enter == 5) self.say("ปาร์ตี้원이 모두 모여 있어야 เริ่ม할 수 있.");
+     * else if (enter == 6) self.say("이미 다른 원정대가 안으로 들어가 เควส 클리어에 도전 있는 중.");
+     * else if (enter == 7) { //30นาที รอเวลา이 발생한경우
+     * self.say("30นาที 이내에 เข้า한 ปาร์ตี้원이 있. เข้า 후 30นาที 이내에 재เข้า이 불เป็นไปได้.");
      * } else if (enter < -1) {
      * MapleCharacter user =
      * getClient().getChannelServer().getPlayerStorage().getCharacterById(enter *
@@ -694,13 +694,13 @@ public class Magnus extends ScriptEngineNPC {
      * }
      * if (target.getMapId() != 401060399) {
      * self.
-     * sayOk("최근 일주일 이내 <보스:매그너스> 하드 모드를 클리어한 파티원이 있습니다. <보스:매그너스> 하드 모드는 일주일에 1회만 클리어 가능합니다.\r\n#r#e<클리어 기록은 매주 목요일에 일괄 초기화 됩니다.>"
+     * sayOk("최근 วันสัปดาห์วัน 이내 <บอส:매그너스> 하드 โหมด를 클리어한 ปาร์ตี้원이 있. <บอส:매그너스> 하드 โหมด는 วันสัปดาห์วัน에 1회만 클리어 เป็นไปได้.\r\n#r#e<클리어 기록은 매สัปดาห์ 목요วัน에 วัน괄 วินาที기화 .>"
      * );
      * } else {
-     * self.say("파티원 중 #b#e" + name + "#k#n 님이 오늘 매그너스에 입장하셔서 들어갈 수 없습니다.");
+     * self.say("ปาร์ตี้원 중 #b#e" + name + "#k#n  วันนี้ 매그너스에 เข้า하셔서 들어갈 수 없.");
      * }
      * }
      * }
      */
-    // TODO mag_GateWayOut(이지매그퇴장), BPReturn_Magnus2(노말매그,하드매그퇴장)
+    // TODO mag_GateWayOut(이지매그ออก), BPReturn_Magnus2(노말매그,하드매그ออก)
 }

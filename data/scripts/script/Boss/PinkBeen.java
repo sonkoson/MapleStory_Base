@@ -25,37 +25,37 @@ public class PinkBeen extends ScriptEngineNPC {
         int[] normalMaps = new int[]{270050100};
         int[] chaosMaps = new int[]{270051100};
         if (em == null) {
-            self.say("현재 핑크빈 보스 레이드를 이용하실 수 없습니다.");
+            self.say("ปัจจุบัน 핑크빈 บอส 레이드를 이용하실 수 없.");
         } else {
-            String v = "#e<보스:핑크빈>#n\r\n침입자는 여신의 제단으로 향한 듯 합니다. 그를 어서 저지하지 못하면 무서운 일이 일어날 겁니다.\r\n#b\r\n#L0# <보스:핑크빈> 입장을 신청한다.#l";
+            String v = "#e<บอส:핑크빈>#n\r\n침입자는 여신의 제단으로 향한 듯 . 그를 어서 저지하지 못 무서운 วัน이 วัน어날 겁니다.\r\n#b\r\n#L0# <บอส:핑크빈> เข้า을 สมัคร한다.#l";
             int v0 = self.askMenu(v);
             if (v0 == 0) {
                 if (target.getParty() == null) {
-                    self.say("1인 이상의 파티에 속해야만 입장할 수 있습니다.");
+                    self.say("1인 이상의 ปาร์ตี้ 속해야만 เข้า할 수 있.");
                 } else if (DBConfig.isGanglim && getPlayer().getParty().getLeader().getId() != getPlayer().getId()) {
-                    self.say("파티장을 통해 진행해 주십시오.");
+                    self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                 } else {
                     if (target.getParty().isPartySameMap()) {
                     	String v2 = "";
                     	if (DBConfig.isGanglim) {
-                    		v2 = "#e<보스:핑크빈>#n\r\n원하시는 모드를 선택해주세요.\r\n\r\n#L0# 노멀 모드 ( 레벨 160 이상 )#l\r\n";
-                    		//v2 += "#L1# 카오스 모드 ( 레벨 170 이상 )#l\r\n#L2# 카오스 연습 모드 ( 레벨 170 이상 )#l";
+                    		v2 = "#e<บอส:핑크빈>#n\r\n원하시는 โหมด를 เลือกโปรด.\r\n\r\n#L0# 노멀 โหมด ( เลเวล 160 이상 )#l\r\n";
+                    		//v2 += "#L1# 카오스 โหมด ( เลเวล 170 이상 )#l\r\n#L2# 카오스 연습 โหมด ( เลเวล 170 이상 )#l";
                     	}
                     	else {
                     		boolean single = getPlayer().getPartyMemberSize() == 1;
-                    		v2 = "#e<보스:핑크빈>#n\r\n원하시는 모드를 선택해주세요.\r\n\r\n"
-                    				+ "#L0# 노멀 모드 " + (single ? "(싱글)" : "(멀티)") + " ( 레벨 160 이상 )#l\r\n"
-                    				+ "#L1# 카오스 모드 " + (single ? "(싱글)" : "(멀티)") + " ( 레벨 170 이상 )#l\r\n"
-                    				+ "#L2# 카오스 연습 모드 " + (single ? "(싱글)" : "(멀티)") + "( 레벨 170 이상 )#l\r\n";
+                    		v2 = "#e<บอส:핑크빈>#n\r\n원하시는 โหมด를 เลือกโปรด.\r\n\r\n"
+                    				+ "#L0# 노멀 โหมด " + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 160 이상 )#l\r\n"
+                    				+ "#L1# 카오스 โหมด " + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 170 이상 )#l\r\n"
+                    				+ "#L2# 카오스 연습 โหมด " + (single ? "(싱글)" : "(멀티)") + "( เลเวล 170 이상 )#l\r\n";
                     		int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"));
-                    		v2 += "#L3# 노멀 모드 " + (single ? "(싱글)" : "(멀티)") + " 입장횟수 증가 (" + ((single ? 2 : 1) - nreset) + "회 가능)\r\n";
+                    		v2 += "#L3# 노멀 โหมด " + (single ? "(싱글)" : "(멀티)") + " เข้า횟수 เพิ่ม (" + ((single ? 2 : 1) - nreset) + "회 เป็นไปได้)\r\n";
                     		int creset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"));
-                    		v2 += "#L4# 카오스 모드 " + (single ? "(싱글)" : "(멀티)") + " 입장횟수 증가 (" + (1 - creset) + "회 가능)";
+                    		v2 += "#L4# 카오스 โหมด " + (single ? "(싱글)" : "(멀티)") + " เข้า횟수 เพิ่ม (" + (1 - creset) + "회 เป็นไปได้)";
                     	}
                         boolean canEnter = false;
                         int questID = QuestExConstants.PinkBeen.getQuestID();
                         int selection = self.askMenu(v2);
-                        if (selection == 1) { //노말모드
+                        if (selection == 1) { //노말โหมด
                             questID = QuestExConstants.ChaosPinkBeen.getQuestID();
                         }
                         String overLap = null;
@@ -64,38 +64,38 @@ public class PinkBeen extends ScriptEngineNPC {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int nreset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("협동 포인트가 부족합니다. 보유 포인트 : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("협동 คะแนน ไม่พอ. มี คะแนน : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if (nreset > (single ? 1 : 0)) {
-                        			self.sayOk("금일 추가입장 증가 가능 횟수를 모두 사용하였습니다.");
+                        			self.sayOk("วันนี้ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 모두 ใช้하였.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "NormalPinkBeen" + (single ? "Single" : "Multi"), String.valueOf(nreset + 1));
-                        		self.sayOk("입장 횟수가 증가되었습니다.");
+                        		self.sayOk("เข้า 횟수가 เพิ่ม되었.");
                         		return;
                         	}
                         	if (selection == 4) {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int creset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("협동 포인트가 부족합니다. 보유 포인트 : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("협동 คะแนน ไม่พอ. มี คะแนน : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if (creset > 0) {
-                        			self.sayOk("이번주 추가입장 증가 가능 횟수를 모두 사용하였습니다.");
+                        			self.sayOk("이번สัปดาห์ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 모두 ใช้하였.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "ChaosPinkBeen" + (single ? "Single" : "Multi"), String.valueOf(creset + 1));
-                        		self.sayOk("입장 횟수가 증가되었습니다.");
+                        		self.sayOk("เข้า 횟수가 เพิ่ม되었.");
                         		return;
                         	}
                         	
-                        	if (selection == 0 || selection == 1 || selection == 2) { //진 파티원 입장시도 체크
+                        	if (selection == 0 || selection == 1 || selection == 2) { //진 ปาร์ตี้원 เข้า시도 체크
                         		if (target.getParty().getLeader().getId() != getPlayer().getId()) {
-                        			self.say("파티장을 통해 진행해 주십시오.");
+                        			self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                         			return;
                         		}
                         	}
@@ -103,11 +103,11 @@ public class PinkBeen extends ScriptEngineNPC {
                         }
                         if (selection == 0 || selection == 1) {
                             if (overLap == null) {
-                                if (selection == 0) { //노말모드
+                                if (selection == 0) { //노말โหมด
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (selection == 1) { //카오스모드
+                                } else if (selection == 1) { //카오스โหมด
                                     if (em.getProperty("Cstatus0").equals("0")) {
                                         canEnter = true;
                                     }
@@ -121,7 +121,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                             if (p != null) {
                                                 int count = p.getOneInfoQuestInteger(key, "pinkbean_clear");
                                                 if (count >= (1 + p.getBossTier())) {
-                                                    self.say("파티원 중 #b#e" + p.getName() + "#n#k가 오늘 더 이상 도전할 수 없습니다.");
+                                                    self.say("ปาร์ตี้원 중 #b#e" + p.getName() + "#n#k วันนี้ 더 이상 도전할 수 없.");
                                                     return;
                                                 }
                                                 p.updateOneInfo(key, "pinkbean_clear", String.valueOf(count + 1));
@@ -154,16 +154,16 @@ public class PinkBeen extends ScriptEngineNPC {
                                     }
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.say("현재 모든맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 }
                             } else {
-                                self.say("파티원 중#b#e" + overLap + "가#n#k 오늘 입장했군요 오늘은 더 이상 들어가실 수 없습니다.");
+                                self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군요 วันนี้은 더 이상 들어가실 수 없.");
                             }
                         } else if (selection == 2) {
-                            self.say("핑크빈 레이드 연습모드는 준비중입니다!");
+                            self.say("핑크빈 레이드 연습โหมด는 เตรียม중!");
                         }
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은맵에 모여 주세요.");
+                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 모여 สัปดาห์세요.");
                     }
                 }
             }
@@ -188,8 +188,8 @@ public class PinkBeen extends ScriptEngineNPC {
     public void PinkBeen_Summon() {
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //파티장만 소환가능(중복소환 방지)
-                if (self.askAccept("여신의 거울만 있으면... 다시 검은 마법사를 불러낼 수 있어!...\r\n이, 이상해... 왜 검은 마법사를 불러내지 않는 거지? 이 기운은 뭐지? 검은 마법사와는 전혀 다른... 크아아악!\r\n\r\n#b(키르스턴의 어깨에 손을 댄다.)#k") == 1) {
+            if (target.getParty().getLeader().getId() == target.getId()) { //ปาร์ตี้장만 소환เป็นไปได้(중복소환 방지)
+                if (self.askAccept("여신의 거울만 있으면... 다시 검은 마법사를 불러낼 수 있어!...\r\n, 이상해... 왜 검은 마법사를 불러내지 않는 거지?  기운은 뭐지? 검은 마법사와는 전혀 다른... 크아아악!\r\n\r\n#b(키르스턴의 어깨에 손을 댄다.)#k") == 1) {
                     if (eim.getProperty("summonMOB") == null) {
                         eim.setProperty("summonMOB", "1");
                         Field field = getPlayer().getMap();
@@ -280,13 +280,13 @@ public class PinkBeen extends ScriptEngineNPC {
     }
 
     public void PinkBeen_Out() {
-        if (self.askYesNo("전투를 중지하고 나가시겠습니까?\r\n#r#e※주의 : 퇴장하게 되면 오늘은 더 이상 핑크빈에 도전할 수 없습니다.#n#k") == 1) {
+        if (self.askYesNo("전투를 หยุด 나가시겠습니까?\r\n#r#e※สัปดาห์의 : ออก하게  วันนี้은 더 이상 핑크빈에 도전할 수 없.#n#k") == 1) {
             List<Integer> normalMap = new ArrayList(Arrays.asList(270050100, 270050101, 270050102, 270050103, 270050104, 270050105, 270050106, 270050107, 270050108, 270050109));
-            //270050300(노말 핑크빈맵에서 퇴장했을경우)
-            //270051300(카오스 핑크빈맵에서 퇴장했을경우)
+            //270050300(노말 핑크빈แผนที่ ออก했을경우)
+            //270051300(카오스 핑크빈แผนที่ ออก했을경우)
             getPlayer().setRegisterTransferFieldTime(0);
             getPlayer().setRegisterTransferField(0);
-            if (normalMap.contains(target.getMapId())) { //노말맵퇴장
+            if (normalMap.contains(target.getMapId())) { //노말แผนที่ออก
                 registerTransferField(270050300);
             } else {
                 registerTransferField(270051300);
@@ -296,7 +296,7 @@ public class PinkBeen extends ScriptEngineNPC {
                 getPlayer().setEventInstance(null);
             }
         } else {
-            self.say("계속해서 도전해주십시오.");
+            self.say("ต่อไป해서 도전해สัปดาห์십시오.");
         }
     }
 }

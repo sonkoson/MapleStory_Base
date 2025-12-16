@@ -13,7 +13,7 @@ public class Kalos extends ScriptEngineNPC {
     public void kalos_enterGate() {
         /*
          * if (!(getPlayer().getClient().isGm() || getPlayer().isGM())) {
-         * target.say("지금은 입장이 불가능합니다.");
+         * target.say("지금은 เข้า이 불เป็นไปได้.");
          * return;
          * }
          */
@@ -23,25 +23,25 @@ public class Kalos extends ScriptEngineNPC {
                 + "]#k#l\r\n";
         Message += "#L5#เข้าสู่ <Boss: Kalos the Guardian (#bChaos Practice Mode#k)>#l#k\r\n";
         /*
-         * 380 이후에 사용할 입장스크립트
-         * Message += "#L0#<보스: 감시자 칼로스(#b이지#k)> 입장을 신청한다. #g[" +
+         * 380 이후에 ใช้할 เข้า스크립트
+         * Message += "#L0#<บอส: 감시자 칼로스(#b이지#k)> เข้า을 สมัคร한다. #g[" +
          * getPlayer().getOneInfoQuestInteger(1234570, "kalos_clear") + "/" +
          * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-         * Message += "#L1#<보스: 감시자 칼로스(#b노멀#k)> 입장을 신청한다. #g[" +
+         * Message += "#L1#<บอส: 감시자 칼로스(#b노멀#k)> เข้า을 สมัคร한다. #g[" +
          * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
          * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-         * Message += "#L2#<보스: 감시자 칼로스(#b카오스#k> 입장을 신청한다. #g[" +
+         * Message += "#L2#<บอส: 감시자 칼로스(#b카오스#k> เข้า을 สมัคร한다. #g[" +
          * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
          * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-         * Message += "#L3#<보스: 감시자 칼로스(#b익스트림#k> 입장을 신청한다. #g[" +
+         * Message += "#L3#<บอส: 감시자 칼로스(#b익스트림#k> เข้า을 สมัคร한다. #g[" +
          * getPlayer().getOneInfoQuestInteger(1234569, "kalos_clear") + "/" +
          * (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-         * Message += "#L4#<보스: 감시자 칼로스(#b이지 연습 모드#k)> 입장을 신청한다.#l#k\r\n";
-         * Message += "#L5#<보스: 감시자 칼로스(#b노멀 연습 모드#k)> 입장을 신청한다.#l#k\r\n";
-         * Message += "#L6#<보스: 감시자 칼로스(#b카오스 연습 모드#k)> 입장을 신청한다.#l#k\r\n";
-         * Message += "#L7#<보스: 감시자 칼로스(#b익스트림 연습 모드#k)> 입장을 신청한다.#l#k\r\n";
+         * Message += "#L4#<บอส: 감시자 칼로스(#b이지 연습 โหมด#k)> เข้า을 สมัคร한다.#l#k\r\n";
+         * Message += "#L5#<บอส: 감시자 칼로스(#b노멀 연습 โหมด#k)> เข้า을 สมัคร한다.#l#k\r\n";
+         * Message += "#L6#<บอส: 감시자 칼로스(#b카오스 연습 โหมด#k)> เข้า을 สมัคร한다.#l#k\r\n";
+         * Message += "#L7#<บอส: 감시자 칼로스(#b익스트림 연습 โหมด#k)> เข้า을 สมัคร한다.#l#k\r\n";
          */
-        // Message += "#L8#<보스: 감시자 칼로스(#r헬 모드#k)> 입장을 신청한다.#l#k\r\n";
+        // Message += "#L8#<บอส: 감시자 칼로스(#r헬 โหมด#k)> เข้า을 สมัคร한다.#l#k\r\n";
         Message += "#L9#ยกเลิก#l";
         int Menu = target.askMenu(Message, ScriptMessageFlag.BigScenario);
         if (Menu < 0 || Menu >= 9) {
@@ -68,7 +68,7 @@ public class Kalos extends ScriptEngineNPC {
             return;
         }
 
-        // 현재는 카오스임. 380때 카오스 -> 노말로 바뀜
+        // ปัจจุบัน는 카오스임. 380때 카오스 -> 노말로 바뀜
         if (Menu == 1 || Menu == 5) {
             NormalKalosEnter fieldSet = (NormalKalosEnter) fieldSet("NormalKalosEnter");
             int enter = fieldSet.enter(target.getId(), Menu == 5, 7);
@@ -88,11 +88,11 @@ public class Kalos extends ScriptEngineNPC {
                         ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                 /*
                  * if (DBConfig.isGanglim) {
-                 * self.sayOk("금일 입장 횟수를 모두 소모한 파티원이 있습니다.", ScriptMessageFlag.Scenario,
+                 * self.sayOk("วันนี้ เข้า 횟수를 모두 ใช้한 ปาร์ตี้원이 있.", ScriptMessageFlag.Scenario,
                  * ScriptMessageFlag.NpcReplacedByNpc);
                  * } else {
                  * self.
-                 * sayOk("최근 일주일 이내 칼로스를 쓰러뜨린 파티원이 있습니다. 칼로스는 일주일에 1회만 클리어 가능합니다\r\n#r<클리어 기록은 매주 목요일에 일괄 초기화됩니다.>"
+                 * sayOk("최근 วันสัปดาห์วัน 이내 칼로스를 쓰러뜨린 ปาร์ตี้원이 있. 칼로스는 วันสัปดาห์วัน에 1회만 클리어 เป็นไปได้\r\n#r<클리어 기록은 매สัปดาห์ 목요วัน에 วัน괄 วินาที기화.>"
                  * , ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                  * }
                  */
@@ -165,7 +165,7 @@ public class Kalos extends ScriptEngineNPC {
      * if (getPlayer().getMap() instanceof Field_BossKalos) {
      * Field_BossKalos kalosmap = (Field_BossKalos) getPlayer().getMap();
      * if (kalosmap.findBoss() != null) {
-     * getPlayer().dropMessage(5, "전투가 진행중에는 포탈을 클릭하여 퇴장 가능합니다.");
+     * getPlayer().dropMessage(5, "전투가 ดำเนินการ중에는 포탈을 클릭 ออก เป็นไปได้.");
      * return;
      * }
      * }
@@ -174,7 +174,7 @@ public class Kalos extends ScriptEngineNPC {
      * 
      * public void kalosOut() {
      * initNPC(MapleLifeFactory.getNPC(9091028));
-     * if (1 == target.askYesNo("전투를 중단하고 퇴장하시겠습니까?")) {
+     * if (1 == target.askYesNo("전투를 중단 ออกต้องการหรือไม่?")) {
      * getPlayer().warp(410005005);
      * }
      * }

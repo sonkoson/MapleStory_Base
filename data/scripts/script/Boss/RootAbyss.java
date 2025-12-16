@@ -344,7 +344,7 @@ public class RootAbyss extends ScriptEngineNPC {
         }
     }
 
-    // 피에르의 티파티에에
+    // Pierre Tea Party
 
     public void pierre_Summon() { // Normal Pierre
         EventInstanceManager eim = getEventInstance();
@@ -1303,7 +1303,7 @@ public class RootAbyss extends ScriptEngineNPC {
                                 }
                             }
                         } else {
-                            self.say("이미 모든 인스턴스가 가득차 이용하실 수 없습니다. 다른 채널을 이용해 주세요.");
+                            self.say("แผนที่เต็ม ไม่สามารถใช้บริการได้ กรุณาลองใหม่ในแชนแนลอื่น");
                         }
                     } else if (v0 == 2) { // Practice Mode
                         self.say("โหมดฝึกซ้อมกำลังอยู่ระหว่างการเตรียมการ");
@@ -1438,7 +1438,7 @@ public class RootAbyss extends ScriptEngineNPC {
                                 }
                             }
                         } else {
-                            self.say("이미 모든 인스턴스가 가득차 이용하실 수 없습니다. 다른 채널을 이용해 주세요.");
+                            self.say("แผนที่เต็ม ไม่สามารถใช้บริการได้ กรุณาลองใหม่ในแชนแนลอื่น");
                         }
                     } else if (v0 == 2) { // Practice Mode
                         self.say("โหมดฝึกซ้อมกำลังอยู่ระหว่างการเตรียมการ");

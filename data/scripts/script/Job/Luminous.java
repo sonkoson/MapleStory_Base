@@ -74,7 +74,7 @@ public class Luminous extends ScriptEngineNPC {
             getPlayer().changeSkillsLevel(skillEntryMap);
             getPlayer().updateOneInfo(25505, "route", String.valueOf(route));
             getPlayer().updateOneInfo(25505, "skill4", String.valueOf(getPlayer().getOneInfoQuestInteger(25505, "skill4") + 1));
-            getPlayer().send(CWvsContext.InfoPacket.brownMessage("새로운 운명을 선택했습니다."));
+            getPlayer().send(CWvsContext.InfoPacket.brownMessage("새로운 운명을 เลือกแล้ว."));
         }
     }
 }

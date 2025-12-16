@@ -36,7 +36,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
 
     public void codySystem() {
         if (getPlayer().getMap().getFieldSetInstance() != null) {
-            getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다");
+            getPlayer().dropMessage(5, "บอส ดำเนินการ중엔 이용이 불เป็นไปได้");
             return;
         }
 
@@ -66,7 +66,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                     }
                 }
 
-                selStr += "#e#r[캐릭터 헤어]#n#k#b\r\n";
+                selStr += "#e#r[ตัวละคร 헤어]#n#k#b\r\n";
                 selStr += "#fs11##L998##e검색 헤어 이용#n#l#b\r\n";
                 selStr += "#L1##fs11# 헤어 리스트 A#l\r\n#L2# 헤어 리스트 B#l\r\n";
                 selStr += "#L3# 헤어 리스트 C#l\r\n#L4# 헤어 리스트 D#l \r\n#L5# 헤어 리스트 E#l#k\r\n";
@@ -123,10 +123,10 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                     }
                 }
                 if (codyList.length > 0) {
-                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 헤어를 전혀 새로운 스타일로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 헤어를 천천히 고민해 봐", codyList);
+                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 헤어를 전혀 새로운 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 헤어를 천천히 고민해 봐", codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
-                            if (1 == self.askYesNo("#fs11#드레스업 모드로 적용 하시겠습니까?")) {
+                            if (1 == self.askYesNo("#fs11#드레스업 โหมด로 ใช้งาน ต้องการหรือไม่?")) {
                                 getPlayer().setSecondHair(codyList[v]);
                                 getPlayer().fakeRelog();
                                 getPlayer().equipChanged();
@@ -161,7 +161,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                         gender = 1;
                     }
                 }
-                selStr += "#e#r[캐릭터 성형]#b#n\r\n";
+                selStr += "#e#r[ตัวละคร 성형]#b#n\r\n";
                 selStr += "#fs11##L999##e검색 성형 이용#n#l#b\r\n";
                 selStr += "#e #n#L6##fs11#성형 리스트 A#l\r\n#L7# 성형 리스트 B#l\r\n#b#L8# 성형 리스트 C#l\r\n";
 
@@ -203,10 +203,10 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                     }
                 }
                 if (codyList.length > 0) {
-                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 얼굴을 전혀 새로운 스타일로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 얼굴을 천천히 고민해 봐", codyList);
+                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 얼굴을 전혀 새로운 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 얼굴을 천천히 고민해 봐", codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
-                            if (1 == self.askYesNo("#fs11#드레스업 모드로 적용 하시겠습니까?")) {
+                            if (1 == self.askYesNo("#fs11#드레스업 โหมด로 ใช้งาน ต้องการหรือไม่?")) {
                                 getPlayer().setSecondFace(codyList[v]);
                                 getPlayer().fakeRelog();
                                 getPlayer().equipChanged();
@@ -241,20 +241,20 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
             case 4: {
                 selStr += "#fc0xFF000000##L997##e치장 상점#n 이용#l\r\n\r\n";
 
-                selStr += "#fc0xFF000000##L23##e해외캐시#n 이용#l\r\n\r\n";
+                selStr += "#fc0xFF000000##L23##e해외แคช#n 이용#l\r\n\r\n";
 
-                //원래 주석된거임
+                //원래 สัปดาห์석된거임
                 //selStr += "#L29# 스페셜 헤어#n 이용하기#l\r\n";
                 //selStr += "#L98##fMap/MapHelper.img/minimap/party# 알쏭 달쏭 믹렌#n 이용하기#l\r\n";
-                selStr += "#fc0xFF000000##L988##e캐릭터 모든 RGB#n 변경#l\r\n\r\n";
-                selStr += "#fc0xFF000000##L10##e" + gColor + "#n으로 성전환#l#b#n\r\n";
+                selStr += "#fc0xFF000000##L988##eตัวละคร ทั้งหมด RGB#n เปลี่ยน#l\r\n\r\n";
+                selStr += "#fc0xFF000000##L10##e" + gColor + "#n 성전환#l#b#n\r\n";
                 switch (self.askMenu(selStr)) {
                     case 10: {
                         if (getPlayer().getJob() == 10112) {
-                            self.sayOk("제로 직업군은 성전환을 할 수 없습니다.");
+                            self.sayOk("제로 직업군은 성전환을 할 수 없.");
                             return;
                         }
-                        if (1 == self.askYesNo("#e" + gColor + "#n#k으로 성전환을 하시겠습니까? 더 이상 해당 성별에 맞는 장비를 착용할 수 없습니다.")) {
+                        if (1 == self.askYesNo("#e" + gColor + "#n#k 성전환을 ต้องการหรือไม่? 더 이상 해당 성별에 맞는 อุปกรณ์를 착용할 수 없.")) {
                             if (getPlayer().getGender() == 0) {
                                 getPlayer().setHair(31002);
                                 getPlayer().setFace(21700);
@@ -279,19 +279,19 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                         break;
                     }
                     case 988: {
-                        int number = self.askNumber("#fs11#변경을 원하는 #r색상값#k을 입력하면 돼\r\n기존 칼라는 #d'0'#k 이야 (0 ~ 1000)", 0, 0, 1000);
+                        int number = self.askNumber("#fs11#เปลี่ยน 원하는 #r색상값#k 입력 돼\r\n기존 칼라는 #d'0'#k 이야 (0 ~ 1000)", 0, 0, 1000);
                         if (number >= 0) {
                             getPlayer().setKeyValue(100229, "hue", String.valueOf(number));
                             getPlayer().fakeRelog();
                             getPlayer().getMap().broadcastMessage(CField.updateCharLook(getPlayer()));
-                            self.sayOk("변경을 완료했어! 확인해봐");
+                            self.sayOk("เปลี่ยน เสร็จสมบูรณ์했어! ยืนยัน해봐");
                         }
                         break;
                     }
                 }
                 break;
             }
-            case 5: { //검색캐시
+            case 5: { //검색แคช
                 openNpcCustom(getClient(), 3005131, "Itemsearch");
                 break;
             }
@@ -304,7 +304,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 8: {
-                openNpcCustom(getClient(), 3005131, "색변선택");
+                openNpcCustom(getClient(), 3005131, "색변เลือก");
                 break;
             }
         }
@@ -326,8 +326,8 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
     private String 별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#";
     private String 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
     private String S = "#fUI/CashShop.img/CSEffect/today/0#";
-    private String 보상 = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#";
-    private String 획득 = "#fUI/UIWindow2.img/QuestIcon/4/0#";
+    private String รางวัล = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#";
+    private String ได้รับ = "#fUI/UIWindow2.img/QuestIcon/4/0#";
     private String 색 = "#fc0xFF6600CC#";
     private String 엔터 = "\r\n";
     private String 엔터2 = "\r\n\r\n";

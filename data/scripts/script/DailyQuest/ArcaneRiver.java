@@ -18,7 +18,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
     //슈피겔만 아케인리버 퀵패스
     @Script
     public void npc_3003146() {
-        if (getPlayer().isQuestStarted(501551)) { //<소멸의 여로>로 스텝업!
+        if (getPlayer().isQuestStarted(501551)) { //<소멸의 여로> 스텝업!
             if (getPlayer().getOneInfoQuestInteger(501551, "value") < 1) {
                 getPlayer().updateOneInfo(501551, "value", "1");
             }
@@ -156,7 +156,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             c5 = t5;
         }
         sb.append("c5=").append(c5).append(";");
-        //흑흑 퀘스트만들때 이거 고려안하고 만들었어 ㅠ
+        //흑흑 เควส만들때 이거 고려안 만들었어 ㅠ
 
         getPlayer().updateInfoQuest(39051, sb.toString());
         t0 = 3;
@@ -218,30 +218,30 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath0() {
         int t0 = 5;
-        for (int i = 34164; i <= 34167; i++) { //여기수정
+        for (int i = 34164; i <= 34167; i++) { //여기แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34130; i <= 34150; i++) { //여기수정
+        for (int i = 34130; i <= 34150; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        for (int i = 39055; i <= 39063; i++) { //여기수정
+        for (int i = 39055; i <= 39063; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; //여기수정
-        String cityName = "소멸의 여로"; //여기수정
-        String key = "c0"; //여기수정
-        int itemId = 1712001; //여기수정
+        int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; //여기แก้ไข
+        String cityName = "소멸의 여로"; //여기แก้ไข
+        String key = "c0"; //여기แก้ไข
+        int itemId = 1712001; //여기แก้ไข
         int questId = 34129;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -249,30 +249,30 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath1() {
         int t0 = 3;
-        for (int i = 34227; i <= 34228; i++) { //여기수정
+        for (int i = 34227; i <= 34228; i++) { //여기แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39017; i <= 39033; i++) { //여기수정
+        for (int i = 39017; i <= 39033; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        for (int i = 39064; i <= 39070; i++) { //여기수정
+        for (int i = 39064; i <= 39070; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; //여기수정
-        String cityName = "츄츄 아일랜드"; //여기수정
-        String key = "c1"; //여기수정
-        int itemId = 1712002; //여기수정
+        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; //여기แก้ไข
+        String cityName = "츄츄 아วัน랜드"; //여기แก้ไข
+        String key = "c1"; //여기แก้ไข
+        int itemId = 1712002; //여기แก้ไข
         int questId = 39014;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -280,24 +280,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath2() {
         int t0 = 3;
-        for (int i = 34333; i <= 34334; i++) { //여기수정
+        for (int i = 34333; i <= 34334; i++) { //여기แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34381; i <= 34394; i++) { //여기수정
+        for (int i = 34381; i <= 34394; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; //여기수정
-        String cityName = "레헬른"; //여기수정
-        String key = "c2"; //여기수정
-        int itemId = 1712003; //여기수정
+        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; //여기แก้ไข
+        String cityName = "레헬른"; //여기แก้ไข
+        String key = "c2"; //여기แก้ไข
+        int itemId = 1712003; //여기แก้ไข
         int questId = 34378;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -305,24 +305,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath3() {
         int t0 = 3;
-        for (int i = 34491; i <= 34492; i++) { //여기수정
+        for (int i = 34491; i <= 34492; i++) { //여기แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39038; i <= 39050; i++) { //여기수정
+        for (int i = 39038; i <= 39050; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //여기수정
-        String cityName = "아르카나"; //여기수정
-        String key = "c3"; //여기수정
-        int itemId = 1712004; //여기수정
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //여기แก้ไข
+        String cityName = "아르카나"; //여기แก้ไข
+        String key = "c3"; //여기แก้ไข
+        int itemId = 1712004; //여기แก้ไข
         int questId = 39035;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -335,16 +335,16 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34276; i <= 34296; i++) { //여기수정
+        for (int i = 34276; i <= 34296; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; //여기수정
-        String cityName = "모라스"; //여기수정
-        String key = "c4"; //여기수정
+        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; //여기แก้ไข
+        String cityName = "모라스"; //여기แก้ไข
+        String key = "c4"; //여기แก้ไข
         int itemId = 1712005;
         int questId = 34275;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -361,16 +361,16 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int c0 = 0; //에스페라
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34780; i <= 34799; i++) { //여기수정
+        for (int i = 34780; i <= 34799; i++) { //여기แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //여기수정
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //여기수정
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //여기แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //여기แก้ไข
         String cityName = "에스페라";
-        String key = "c5"; //여기수정
+        String key = "c5"; //여기แก้ไข
         int itemId = 1712006;
         int questId = 34773;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -380,7 +380,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
     @SuppressWarnings("deprecation")
     public void arcaneRiverQuickPath(String cityName, List<Integer> quests, String key, int t, int c, int basicPay, int totalPay, int itemId, int questID) {
         int commission = 500 * (t - c);
-        if (1 == self.askYesNo(cityName + " 일일 퀘스트를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay + "+" + totalPay + "개#k는 자네에게 주겠네.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askYesNo(cityName + " วันวัน เควส ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay + "+" + totalPay + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, (basicPay + totalPay)) > 0) {
                     MapleQuestStatus qStatus = new MapleQuestStatus(MapleQuest.getInstance(questID), 2);
@@ -397,12 +397,12 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39051, key, String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("완료되었네\r\n크크.. 또 이용해 주시게나.", ScriptMessageFlag.Scenario);
+                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. 또 이용해 สัปดาห์시게나.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("인벤토리가 부족하군\r\n인벤토리를 비운 뒤 다시 이용해주게나");
+                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 뒤 다시 이용해สัปดาห์게나");
                 }
             } else {
-                self.say("자네의 메이플 포인트가 부족한 것 같군 다시 확인해보시게나");
+                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게나");
             }
         }
     }
@@ -437,32 +437,32 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 1712001;
-        if (1 == self.askAccept("#r에르다 스펙트럼#k을 처리해주면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i1712001:# #t1712001:# " + totalItem + "개#k는 자네에게 주겠네.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#r에르다 스펙트럼#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712001:# #t1712001:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     getPlayer().updateOneInfo(34170, "count", "3");
                     getPlayer().updateOneInfo(34170, "date", sdf.format(new Date()));
                     getPlayer().updateOneInfo(39052, "c0", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("완료되었네\r\n크크.. 또 이용해 주시게나.", ScriptMessageFlag.Scenario);
+                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. 또 이용해 สัปดาห์시게나.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("인벤토리가 부족하군\r\n인벤토리를 비운 뒤 다시 이용해주게나");
+                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 뒤 다시 이용해สัปดาห์게나");
                 }
             } else {
-                self.say("자네의 메이플 포인트가 부족한 것 같군 다시 확인해보시게나");
+                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게나");
             }
         }
     }
 
     public void arcaneRiverQuickPath11() { //배고픈무토
         if (getPlayer().getMutoHighRank() == -1) {
-            self.sayOk("#r배고픈 무토#k에서 자네의 최고 성과를 찾을 수 없는 것 같네.\r\n그걸 기준으로 일을 처리해야 공평하지 않겠나? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최초 1회의 해당 컨텐츠 플레이가 필요합니다.)", ScriptMessageFlag.Scenario);
+            self.sayOk("#r배고픈 무토#k 자네의 최고 성과를 찾을 수 없는 것 같네.\r\n그걸 기준으로 วัน을 ประมวลผล해야 공평하지 않겠나? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최วินาที 1회의 해당 컨텐츠 플레이가 จำเป็น.)", ScriptMessageFlag.Scenario);
             return;
         }
 
-        //#r배고픈 무토#k를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b500 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k는 자네에게 주겠네.
+        //#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
         int t = 3;
-        for (int i = 34227; i <= 34228; i++) { //여기수정
+        for (int i = 34227; i <= 34228; i++) { //여기แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t--;
             }
@@ -472,7 +472,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int basicPay = 5;
         int highDiff = getPlayer().getMutoHighDifficultly();
         int highRank = getPlayer().getMutoHighRank();
-        if (highDiff == 2) { //어려움
+        if (highDiff == 2) { //ยาก
             if (highRank == 1) { //A랭크
                 basicPay = 4;
             } else if (highRank == 2) { //B랭크
@@ -494,8 +494,8 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
-        //#r배고픈 무토#k를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b500 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k는 자네에게 주겠네.
-        if (1 == self.askAccept("#r배고픈 무토#k를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# " + totalItem + "개#k는 자네에게 주겠네.", ScriptMessageFlag.Scenario)) {
+        //#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
+        if (1 == self.askAccept("#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(1712002, totalItem) > 0) {
                     while (getPlayer().GetCount("hungry_muto") < 3) {
@@ -503,12 +503,12 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c1", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("완료되었네\r\n크크.. 또 이용해 주시게나.", ScriptMessageFlag.Scenario);
+                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. 또 이용해 สัปดาห์시게나.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("인벤토리가 부족하군\r\n인벤토리를 비운 뒤 다시 이용해주게나");
+                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 뒤 다시 이용해สัปดาห์게나");
                 }
             } else {
-                self.say("자네의 메이플 포인트가 부족한 것 같군 다시 확인해보시게나");
+                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게나");
             }
         }
     }
@@ -516,7 +516,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
     public void arcaneRiverQuickPath12() { //드림브레이커
         int best = getPlayer().getOneInfoQuestInteger(15901, "best");
         if (best <= 0) {
-            self.sayOk("#r드림브레이커#k에서 자네의 최고 성과를 찾을 수 없는 것 같네.\r\n그걸 기준으로 일을 처리해야 공평하지 않겠나? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최초 1회의 해당 컨텐츠 플레이가 필요합니다.)", ScriptMessageFlag.Scenario);
+            self.sayOk("#r드림브레이커#k 자네의 최고 성과를 찾을 수 없는 것 같네.\r\n그걸 기준으로 วัน을 ประมวลผล해야 공평하지 않겠나? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최วินาที 1회의 해당 컨텐츠 플레이가 จำเป็น.)", ScriptMessageFlag.Scenario);
             return;
         }
         int t = 3;
@@ -534,7 +534,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310227;
-        if (1 == self.askAccept("#r드림브레이커#k를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i4310227:# #t4310227:# " + totalItem + "개#k는 자네에게 주겠네.\r\n\r\n(※ #r주의#k : 퀵패스를 통해 완료 시 힘내라! 보너스 코인 지급과 랭킹 기록은 되지 않습니다.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#r드림브레이커#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i4310227:# #t4310227:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.\r\n\r\n(※ #rสัปดาห์의#k : 퀵패스를 통해 เสร็จสมบูรณ์ 시 힘내라! 보너스 코인 지급과 랭킹 기록은 되지 않.)", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     while (getPlayer().GetCount("dream_breaker") < 3) {
@@ -542,12 +542,12 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c2", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("완료되었네\r\n크크.. 또 이용해 주시게나.", ScriptMessageFlag.Scenario);
+                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. 또 이용해 สัปดาห์시게나.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("인벤토리가 부족하군\r\n인벤토리를 비운 뒤 다시 이용해주게나");
+                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 뒤 다시 이용해สัปดาห์게나");
                 }
             } else {
-                self.say("자네의 메이플 포인트가 부족한 것 같군 다시 확인해보시게나");
+                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게나");
             }
         }
     }
@@ -582,19 +582,19 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310235;
-        if (1 == self.askAccept("#r스피릿 세이비어#k를 처리해주면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플포인트#k라네.\r\n부가적으로 얻게될 #b#i4310235:# #t4310235:# " + totalItem + "개#k는 자네에게 주겠네.\r\n자네는 오늘 #r#e30개 이상#n#k의 스피릿 코인을 받아서 이만큼이 최선이라고 하던데? 크크..\r\n\r\n\r\n(※ #r주의#k : 퀵패스를 통해 완료 시 보너스 코인 지급은 되지 않습니다.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#r스피릿 세이비어#k ประมวลผล해สัปดาห์면 되겠나?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i4310235:# #t4310235:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.\r\n자네는 วันนี้ #r#e30개 이상#n#k 스피릿 코인을 받아서 이만큼이 최선이라고 하던데? 크크..\r\n\r\n\r\n(※ #rสัปดาห์의#k : 퀵패스를 통해 เสร็จสมบูรณ์ 시 보너스 코인 지급은 되지 않.)", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     getPlayer().updateOneInfo(16214, "date", sdf.format(new Date()));
                     getPlayer().updateOneInfo(16214, "count", "3");
                     getPlayer().updateOneInfo(39052, "c3", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("완료되었네\r\n크크.. 또 이용해 주시게나.", ScriptMessageFlag.Scenario);
+                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. 또 이용해 สัปดาห์시게나.", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("인벤토리가 부족하군\r\n인벤토리를 비운 뒤 다시 이용해주게나");
+                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 뒤 다시 이용해สัปดาห์게나");
                 }
             } else {
-                self.say("자네의 메이플 포인트가 부족한 것 같군 다시 확인해보시게나");
+                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게나");
             }
         }
     }

@@ -17,11 +17,11 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
     public void q35740e() {
         target.say("앗, 시그너스님께서 연락이..?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
         initNPC(MapleLifeFactory.getNPC(3003750));
-        if (1 == self.askAccept("#face0#고통의 미궁을 정복하고 #b진 힐라#k를 물리치신 #h0#님...\r\n이 물건이 당신의 공적을 더 빛내줄 거예요.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#face0#고통의 미궁을 정복 #b진 힐라#k 물리치신 #h0#...\r\n 물건이 당신의 공적을 더 빛내줄 거예요.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
             if (target.exchange(1143136, 1) > 0) {
                 getQuest().forceComplete(getPlayer(), getNpc().getId());
             } else {
-                self.say("#face0#장비창을 1칸이상 비워 주신 뒤 다시 말을 걸어 주세요.", ScriptMessageFlag.Scenario);
+                self.say("#face0#อุปกรณ์창을 1칸이상 비워 สัปดาห์신 뒤 다시 말을 걸어 สัปดาห์세요.", ScriptMessageFlag.Scenario);
             }
         }
     }
@@ -31,7 +31,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450009300, 1);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -40,7 +40,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011600, 1);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -49,7 +49,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011530, 2);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -58,7 +58,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011500, 2);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -67,7 +67,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011510, 1);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -76,7 +76,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011120, 2);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -85,7 +85,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011590, 0);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -94,7 +94,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011320, 3);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -119,7 +119,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -128,7 +128,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             registerTransferField(450011540, 1);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -138,7 +138,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
             getPlayer().updateOneInfo(450011580, "altar", getPlayer().getMap().getId() + "");
             registerTransferField(450011580, 0);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -148,7 +148,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
             int mapid = getPlayer().getOneInfoQuestInteger(450011580, "altar");
             registerTransferField(mapid, 0);
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -167,7 +167,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "250레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "250เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 }

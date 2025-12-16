@@ -18,7 +18,7 @@ public class TheSeedRing extends ScriptEngineNPC {
     public void the_seed_ring() {
         if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 || getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1
                 || getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
-            self.sayOk("인벤토리 슬롯이 부족합니다. 장비, 소비, 기타 인벤토리 슬롯을 1칸 이상씩 비워주세요.");
+            self.sayOk("กระเป๋า ช่อง ไม่พอ. อุปกรณ์, ใช้, อื่นๆ กระเป๋า ช่อง 1칸 이상씩 비워สัปดาห์세요.");
             return;
         }
         if (getPlayer().getItemQuantity(itemID, false) <= 0) {
@@ -59,7 +59,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                 short TI = MapleInventoryManipulator.addbyItem(getClient(), rewardEquip, false);
                 TheSeedGetItemPacket(selectItem, rewardqty, getPlayer().getItemQuantity(itemID, false) > 0);
             } else {
-                MapleInventoryManipulator.addById(getClient(), selectItem, (short) rewardqty, "알리샤의 반지에서 나온 아이템");
+                MapleInventoryManipulator.addById(getClient(), selectItem, (short) rewardqty, "알리샤의 반지에서 나온 ไอเท็ม");
                 TheSeedGetItemPacket(selectItem, rewardqty, getPlayer().getItemQuantity(itemID, false) > 0);
             }
         }
@@ -74,7 +74,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 5}, //에디큐브
                         {5062010, 5, 10}, //블랙큐브
-                        {4001832, 500, 63}, //주문의 흔적
+                        {4001832, 500, 63}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -85,7 +85,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 10}, //에디큐브
                         {5062010, 5, 10}, //블랙큐브
-                        {4001832, 500, 58}, //주문의 흔적
+                        {4001832, 500, 58}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -96,7 +96,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 13}, //에디큐브
                         {5062010, 5, 13}, //블랙큐브
-                        {4001832, 500, 52}, //주문의 흔적
+                        {4001832, 500, 52}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -111,11 +111,11 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113103, 1, 2}, //듀라빌리티
                         {1113100, 1, 2}, //리밋링
                         {1113101, 1, 2}, //헬스컷링
-                        {1113102, 1, 2}, //마나컷링
+                        {1113102, 1, 2}, //MP컷링
 
                         {5062500, 10, 10}, //에디큐브
                         {5062010, 20, 10}, //블랙큐브
-                        {4001832, 500, 48}, //주문의 흔적
+                        {4001832, 500, 48}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -128,12 +128,12 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113103, 1, 2}, //듀라빌리티
                         {1113100, 1, 2}, //리밋링
                         {1113101, 1, 2}, //헬스컷링
-                        {1113102, 1, 2}, //마나컷링
+                        {1113102, 1, 2}, //MP컷링
 
                         {1113098, 1, 2}, //리스트레인트 링
                         {1113099, 1, 2}, //얼티메이덤 링
                         {1113122, 1, 2}, //리스크테이커 링
-                        {1113104, 1, 2}, //크리데미지 링
+                        {1113104, 1, 2}, //크리Damage 링
                         {1113119, 1, 2}, //실드스와프 링
 
                         {5062500, 10, 10}, //에디큐브
@@ -141,7 +141,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {5062503, 20, 10}, //화이트 에디셔널 큐브
                         {2048723, 20, 10}, //영환불
 
-                        {4001832, 500, 48}, //주문의 흔적
+                        {4001832, 500, 48}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -153,11 +153,11 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113103, 1, 3}, //듀라빌리티
                         {1113100, 1, 3}, //리밋링
                         {1113101, 1, 3}, //헬스컷링
-                        {1113102, 1, 3}, //마나컷링
+                        {1113102, 1, 3}, //MP컷링
                         {1113098, 1, 3}, //리스트레인트 링
                         {1113099, 1, 3}, //얼티메이덤 링
                         {1113122, 1, 3}, //리스크테이커 링
-                        {1113104, 1, 3}, //크리데미지 링
+                        {1113104, 1, 3}, //크리Damage 링
                         {1113119, 1, 3}, //실드스와프 링
                         {1113113, 1, 3}, //웨폰퍼프
                         {1113114, 1, 3}, //웨폰퍼프
@@ -166,10 +166,10 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113108, 1, 3}, //링오브썸
                         {1113126, 1, 3}, //리커버스탠스
                         {1113125, 1, 3}, //크라이시스HM
-                        {1113109, 1, 3}, //레벨퍼프
-                        {1113110, 1, 3}, //레벨퍼프
-                        {1113111, 1, 3}, //레벨퍼프
-                        {1113112, 1, 3}, //레벨퍼프
+                        {1113109, 1, 3}, //เลเวล퍼프
+                        {1113110, 1, 3}, //เลเวล퍼프
+                        {1113111, 1, 3}, //เลเวล퍼프
+                        {1113112, 1, 3}, //เลเวล퍼프
                         {1113121, 1, 3}, //버든리프트
                         {1113105, 1, 3}, //크리디펜스
                         {1113106, 1, 3}, //크리쉬프트
@@ -182,7 +182,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {5062010, 20, 2}, //블랙큐브
                         {5062503, 10, 2}, //화이트 에디셔널 큐브
                         {2048753, 10, 2}, //영환불
-                        {4001832, 500, 2}, //주문의 흔적
+                        {4001832, 500, 2}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -194,11 +194,11 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113103, 1, 3}, //듀라빌리티
                         {1113100, 1, 3}, //리밋링
                         {1113101, 1, 3}, //헬스컷링
-                        {1113102, 1, 3}, //마나컷링
+                        {1113102, 1, 3}, //MP컷링
                         {1113098, 1, 3}, //리스트레인트 링
                         {1113099, 1, 3}, //얼티메이덤 링
                         {1113122, 1, 3}, //리스크테이커 링
-                        {1113104, 1, 3}, //크리데미지 링
+                        {1113104, 1, 3}, //크리Damage 링
                         {1113119, 1, 3}, //실드스와프 링
                         {1113113, 1, 3}, //웨폰퍼프
                         {1113114, 1, 3}, //웨폰퍼프
@@ -207,10 +207,10 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113108, 1, 3}, //링오브썸
                         {1113126, 1, 3}, //리커버스탠스
                         {1113125, 1, 3}, //크라이시스HM
-                        {1113109, 1, 3}, //레벨퍼프
-                        {1113110, 1, 3}, //레벨퍼프
-                        {1113111, 1, 3}, //레벨퍼프
-                        {1113112, 1, 3}, //레벨퍼프
+                        {1113109, 1, 3}, //เลเวล퍼프
+                        {1113110, 1, 3}, //เลเวล퍼프
+                        {1113111, 1, 3}, //เลเวล퍼프
+                        {1113112, 1, 3}, //เลเวล퍼프
                         {1113121, 1, 3}, //버든리프트
                         {1113105, 1, 3}, //크리디펜스
                         {1113106, 1, 3}, //크리쉬프트
@@ -228,7 +228,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113120, 1, 7}, //리플렉티브
                         {5062500, 1, 5}, //에디큐브
                         {5062010, 1, 10}, //블랙큐브
-                        {4001832, 500, 69}, //주문의 흔적
+                        {4001832, 500, 69}, //สัปดาห์문의 흔적
                 };
                 return rewards;
             }
@@ -287,7 +287,7 @@ public class TheSeedRing extends ScriptEngineNPC {
         p.writeShort(SendPacketOpcode.USER_ON_EFFECT.getValue());
         p.write(53);
         p.write(0);
-        p.write(!canReUnboxing); // 1이면 다시 개봉 안 뜨고 확인창 (남은 아이템 갯수가 0개면 확인창만)
+        p.write(!canReUnboxing); // 1이면 다시 개봉 안 뜨고 ยืนยัน창 (남은 ไอเท็ม 갯수가 0개면 ยืนยัน창만)
         p.write(0);
         p.writeInt(itemID);
         p.writeInt(quantity);

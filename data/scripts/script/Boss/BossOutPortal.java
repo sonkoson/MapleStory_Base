@@ -16,7 +16,7 @@ public class BossOutPortal extends ScriptEngineNPC {
         allBossOut();
     }
 
-    public void pt_portalNPC1() { // 아카이럼
+    public void pt_portalNPC1() { // 아카럼
         allBossOut();
     }
 
@@ -32,11 +32,11 @@ public class BossOutPortal extends ScriptEngineNPC {
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOutN_R() { // 노멀스우 보상맵포탈
+    public void pt_bh_bossOutN_R() { // 노멀스우 รางวัลแผนที่포탈
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOut_R() { // 하드스우 보상맵포탈
+    public void pt_bh_bossOut_R() { // 하드스우 รางวัลแผนที่포탈
         allBossOutPosition(350060300, 1);
     }
 
@@ -44,29 +44,29 @@ public class BossOutPortal extends ScriptEngineNPC {
         allBossOutPosition(105300303, 1);
     }
 
-    public void ptDemianOut_R() { // 데미안 보상맵포탈
+    public void ptDemianOut_R() { // 데미안 รางวัลแผนที่포탈
         allBossOutPosition(105300303, 1);
     }
 
-    public void pt_GC_out() { // 듄켈 포탈 & 보상맵 포탈
+    public void pt_GC_out() { // 듄켈 포탈 & รางวัลแผนที่ 포탈
         allBossOutPosition(450012200, 2);
     }
 
-    public void pt_BM1_bossOut() { // 더스크 포탈 & 보상맵 포탈
+    public void pt_BM1_bossOut() { // 더스크 포탈 & รางวัลแผนที่ 포탈
         allBossOutPosition(450009301, 1);
     }
 
-    public void pt_jinHillah_out() { // 진힐라 포탈 & 보상맵 포탈
+    public void pt_jinHillah_out() { // 진힐라 포탈 & รางวัลแผนที่ 포탈
         allBossOutPosition(450011990, 2);
     }
 
-    public void serenOut() { // 세렌 게이트 & 보상맵포탈
+    public void serenOut() { // 세렌 게트 & รางวัลแผนที่포탈
         allBossOutPosition(410000670, 4);
     }
 
     public void allBossOut() {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투를 중지하고 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#전투 หยุด 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);
@@ -82,7 +82,7 @@ public class BossOutPortal extends ScriptEngineNPC {
 
     public void allBossOutPosition(int Map, int Portal) {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투를 중지하고 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#전투 หยุด 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);

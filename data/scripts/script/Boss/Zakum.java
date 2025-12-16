@@ -35,8 +35,8 @@ public class Zakum extends ScriptEngineNPC {
 			if (target.getMapId() == 211042401) {
 				fieldSet = fieldSet("ChaosZakumEnter");
 				boolean isSingle = false;
-				if (getPlayer().getParty() == null || // 파티가 없거나
-						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // 파티원이
+				if (getPlayer().getParty() == null || // ปาร์ตี้ 없거나
+						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // ปาร์ตี้원
 																												// 1명인경우
 					isSingle = true;
 				}
@@ -44,7 +44,7 @@ public class Zakum extends ScriptEngineNPC {
 						+ "Zakum ฟื้นคืนชีพแล้ว หากปล่อยไว้ ภูเขาไฟจะระเบิดและทำให้ El Nath กลายเป็นนรก\r\n"
 						+ "#b#e(สมาชิกปาร์ตี้จะถูกย้ายพร้อมกัน)#n#k\r\n"
 						+ "#r(Chaos Zakum สามารถเคลียร์ได้ #e1 ครั้งต่อสัปดาห์#n และรีเซ็ตทุก #eวันพฤหัสบดี#n)\r\n";
-				if (!isSingle) { // 멀티모드
+				if (!isSingle) { // 멀티โหมด
 					askString += "ในโหมด Multi เลือดบอสจะเพิ่มขึ้น 3 เท่า, \r\n"
 							+ "ลด Final Damage 50%,\r\n"
 							+ "และแชร์ Death Count กับปาร์ตี้";
@@ -76,8 +76,8 @@ public class Zakum extends ScriptEngineNPC {
 				v0 = self.askMenu(askString);
 			} else {
 				boolean isSingle = false;
-				if (getPlayer().getParty() == null || // 파티가 없거나
-						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // 파티원이
+				if (getPlayer().getParty() == null || // ปาร์ตี้ 없거나
+						getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // ปาร์ตี้원
 																												// 1명인경우
 					isSingle = true;
 				}
@@ -85,7 +85,7 @@ public class Zakum extends ScriptEngineNPC {
 						+ "Zakum ฟื้นคืนชีพแล้ว หากปล่อยไว้ ภูเขาไฟจะระเบิดและทำให้ El Nath กลายเป็นนรก\r\n"
 						+ "#r(Easy, Normal Zakum สามารถเข้าได้รวมกัน #e1 ครั้งต่อวัน#n"
 						+ "และรีเซ็ต #eทุกเที่ยงคืน#n)\r\n";
-				if (!isSingle) { // 멀티모드
+				if (!isSingle) { // 멀티โหมด
 					askString += "ในโหมด Multi เลือดบอสจะเพิ่มขึ้น 3 เท่า, \r\n"
 							+ "ลด Final Damage 50%,\r\n"
 							+ "และแชร์ Death Count กับปาร์ตี้";
@@ -123,7 +123,7 @@ public class Zakum extends ScriptEngineNPC {
 			}
 		}
 
-		if (v0 == 0) { // 입장시도
+		if (v0 == 0) { // เข้า시도
 			if (getPlayer().getItemQuantity(4001017, false) < 1) {
 				if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1) {
 					self.say("ดูเหมือนช่องเก็บของ ETC จะไม่พอ กรุณาเคลียร์ช่องว่างให้เพียงพอ");
@@ -147,7 +147,7 @@ public class Zakum extends ScriptEngineNPC {
 				self.say("สมาชิกปาร์ตี้ทุกคนต้องมารวมตัวกัน");
 			else if (enter == 6)
 				self.say("มีกองกำลังอื่นกำลังท้าทายอยู่");
-			else if (enter == 7) { // 30분 대기시간이 발생한경우 (카오스 자쿰만 해당된다.
+			else if (enter == 7) { // 30นาที รอเวลา 발생한경우 (카오스 자쿰만 해당된다.
 				self.say("มีสมาชิกปาร์ตี้ที่เพิ่งเข้าเล่นภายใน 30 นาที ไม่สามารถเข้าซ้ำได้ภายใน 30 นาที");
 			} else if (enter < -1) {
 				MapleCharacter user = getClient().getChannelServer().getPlayerStorage().getCharacterById(enter * -1);
@@ -163,7 +163,7 @@ public class Zakum extends ScriptEngineNPC {
 							+ "#k#n ได้เข้าสู่แท่นบูชา Zakum ไปแล้ววันนี้ ไม่สามารถเข้าซ้ำได้");
 				}
 			}
-		} else if (v0 == 1) { // 진 입장횟수 초기화
+		} else if (v0 == 1) { // 진 เข้า횟수 วินาที기화
 			if (!DBConfig.isGanglim) {
 				int togetherPoint = getPlayer().getTogetherPoint();
 				if (togetherPoint < 150) {
@@ -172,8 +172,8 @@ public class Zakum extends ScriptEngineNPC {
 				}
 				if (target.getMapId() == 211042401) {
 					boolean isSingle = false;
-					if (getPlayer().getParty() == null || // 파티가 없거나
-							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // 파티원이
+					if (getPlayer().getParty() == null || // ปาร์ตี้ 없거나
+							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // ปาร์ตี้원
 																													// 1명인경우
 						isSingle = true;
 					}
@@ -203,8 +203,8 @@ public class Zakum extends ScriptEngineNPC {
 					self.sayOk("รีเซ็ตจำนวนครั้ง Chaos Zakum เรียบร้อยแล้ว");
 				} else {
 					boolean isSingle = false;
-					if (getPlayer().getParty() == null || // 파티가 없거나
-							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // 파티원이
+					if (getPlayer().getParty() == null || // ปาร์ตี้ 없거나
+							getPlayer().getParty() != null && getPlayer().getParty().getMembers().size() == 1) { // ปาร์ตี้원
 																													// 1명인경우
 						isSingle = true;
 					}
@@ -229,7 +229,7 @@ public class Zakum extends ScriptEngineNPC {
 						getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
 								"NormalZakumSingle", String.valueOf(resetCount + 1));
 					} else {
-						getPlayer().updateOneInfo(7003, "Multi", "1"); // 멀티는 1회추가입장으로 기본 1회로 내림
+						getPlayer().updateOneInfo(7003, "Multi", "1"); // 멀티 1회추เข้า으 พื้นฐาน 1회 내림
 						getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(),
 								"NormalZakumMulti", String.valueOf(resetCount + 1));
 					}

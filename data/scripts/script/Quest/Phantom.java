@@ -10,17 +10,17 @@ public class Phantom extends ScriptEngineNPC {
     public void phantomskill() {
         if (getPlayer().getLevel() >= 100) {
             //getClient().removeClickedNPC();
-            //NPCScriptManager.getInstance().start(getClient(), 1052206, "보스이동", true);
+            //NPCScriptManager.getInstance().start(getClient(), 1052206, "บอสย้าย", true);
             //return;
-            self.sayOk("#fs11#현재는 사용할 수 없는 명령어야");
+            self.sayOk("#fs11#ปัจจุบัน는 ใช้할 수 없는 명령어야");
             return;
         }
 
         if (!GameConstants.isPhantom(getPlayer().getJob())) {
-            self.sayOk("#fs11#너는 팬텀이 아니라서 사용할 수 없는 기능이야");
+            self.sayOk("#fs11#너는 팬텀이 아니라서 ใช้할 수 없는 ฟังก์ชัน이야");
             return;
         }
-        String steal = "#fs11##e[1차 스킬]#n\r\n";
+        String steal = "#fs11##e[1차 สกิล]#n\r\n";
         if (getPlayer().getLevel() >= 10) {
             //1차만
             steal += "#L1# #s4001003# 다크사이트#l\r\n";
@@ -29,14 +29,14 @@ public class Phantom extends ScriptEngineNPC {
         }
         if (getPlayer().getLevel() >= 30) {
 
-            steal += "\r\n\r\n#e[2차 스킬]#n\r\n";
+            steal += "\r\n\r\n#e[2차 สกิล]#n\r\n";
             steal += "#L4# #s3301003# 카디널 블래스트#l\r\n";
             steal += "#L5# #s2301002# 힐#l\r\n";
             steal += "#L6# #s1101006# 스피릿 블레이드#l\r\n";
             //2차까지
         }
         if (getPlayer().getLevel() >= 60) {
-            steal += "\r\n\r\n#e[3차 스킬]#n\r\n";
+            steal += "\r\n\r\n#e[3차 สกิล]#n\r\n";
             steal += "#L8# #s3111013# 애로우 플래터#l\r\n";
             steal += "#L9# #s1311015# 크로스 오버 체인#l\r\n";
             steal += "#L10# #s4331011# 블레이드 어센션#l\r\n";
@@ -48,17 +48,17 @@ public class Phantom extends ScriptEngineNPC {
         }
         if (getPlayer().getLevel() >= 100){
             //4차까지
-            steal += "\r\n\r\n#e[4차 스킬]#n\r\n";
+            steal += "\r\n\r\n#e[4차 สกิล]#n\r\n";
             steal += "#L15# #s4341002# 파이널 컷#l\r\n";
             steal += "#L16# #s1221011# 생츄어리#l\r\n";
             steal += "#L17# #s2221012# 프로즌 오브#l\r\n";
             steal += "#L18# #s2221011# 프리징 브레스#l\r\n";
-            steal += "#L19# #s5321000# 캐논 바주카#l\r\n";
+            steal += "#L19# #s5321000# 캐논 바สัปดาห์카#l\r\n";
             steal += "#L20# #s5121010# 타임 리프#l\r\n";
         }
 
         if (getPlayer().getLevel() >= 140){
-            steal += "\r\n#e[하이퍼 스킬]#n\r\n";
+            steal += "\r\n#e[하이퍼 สกิล]#n\r\n";
             steal += "#L21# #s3221054# 불스아이#l\r\n";
             steal += "#L22# #s1221054# 새크로생티티#l\r\n";
             steal += "#L23# #s3121054# 프리퍼레이션#l\r\n";
@@ -66,23 +66,23 @@ public class Phantom extends ScriptEngineNPC {
         int v = self.askMenu(steal);
         if (getPlayer().getJob() == 2400) { //팬텀1차
             if (v > 3) {
-                self.sayOk("#fs11#잘못된 요청입니다.");
+                self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
         } else if (getPlayer().getJob() == 2410) { //팬텀2차
             if (v > 7) {
-                self.sayOk("#fs11#잘못된 요청입니다.");
+                self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
         } else if (getPlayer().getJob() == 2411) { //팬텀3차
             if (v > 14) {
-                self.sayOk("#fs11#잘못된 요청입니다.");
+                self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
         } else if (getPlayer().getJob() == 2412) { //팬텀4차
             if (getPlayer().getLevel() < 140) {
                 if (v > 21) {
-                    self.sayOk("#fs11#잘못된 요청입니다.");
+                    self.sayOk("#fs11#잘못된 ขอ.");
                     return;
                 }
             }
@@ -158,10 +158,10 @@ public class Phantom extends ScriptEngineNPC {
         }
         int maxLevel = SkillFactory.getSkill(skillId).getMaxLevel();
         if (maxLevel < 1) {
-            self.sayOk("#fs11#요청하는동안 오류가 발생했습니다.");
+            self.sayOk("#fs11#ขอ하는동안 오류가 발생แล้ว.");
             return;
         }
         getPlayer().addStolenSkill(skillId, maxLevel);
-        //self.sayOk("성공했습니다. 스킬 매니저먼트를 확인해보세요.");
+        //self.sayOk("สำเร็จแล้ว. สกิล 매니저먼트를 ยืนยัน해보세요.");
     }
 }

@@ -12,7 +12,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009200, 5);
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -21,7 +21,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009100, 4);
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -30,7 +30,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009300, 4);
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -39,7 +39,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009200, 4);
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -48,7 +48,7 @@ public class MoonBridge extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 245) {
             registerTransferField(450009301, 2);
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -67,7 +67,7 @@ public class MoonBridge extends ScriptEngineNPC {
                         break;
                 }
             } else if (getPlayer().getLevel() >= 245) {
-                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 있다.\r\n어디로 갈까?\r\n\r\n #b#L0#전초기지#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 있다.\r\n어디로 갈까?\r\n\r\n #b#L0#전วินาที기지#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
                 switch (v) {
                     case 0: { //추락 지점
                         registerTransferField(450009050, 5);
@@ -78,18 +78,18 @@ public class MoonBridge extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 이용하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 이용하실 수 있.");
         }
     }
 
     public void _450009050_out00() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() >= 245) {
-            if (1 == target.askYesNo("문브릿지로 이동할까?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("문브릿지로 ย้าย할까?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450009100, 1);
             }
         } else {
-            getPlayer().dropMessage(5, "245레벨 이상만 이용하실 수 있습니다.");
+            getPlayer().dropMessage(5, "245เลเวล 이상만 이용하실 수 있.");
         }
     }
 

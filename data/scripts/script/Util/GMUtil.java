@@ -22,8 +22,8 @@ public class GMUtil extends ScriptEngineNPC {
         if (!getPlayer().isGM()) {
             return;
         }
-        var type = self.askMenu("안녕하세요 #h 0#님, 유저 QuestInfo 수정용 엔피시입니다. 다음 중 수정할 타입을 선택해주세요.\r\n#L0#캐릭터 QuestInfo 수정\r\n#L1#어카운트 QuestInfo 수정");
-        var name = self.askText("수정하실 유저의 이름을 입력해주세요. 어카운트의 경우 계정의 ID를 입력하셔도 됩니다. 해당 유저의 접속 여부는 상관이 없습니다.");
+        var type = self.askMenu("안녕하세요 #h 0#, 유저 QuestInfo แก้ไข용 엔피시. ถัดไป 중 แก้ไข할 타입을 เลือกโปรด.\r\n#L0#ตัวละคร QuestInfo แก้ไข\r\n#L1#어카운트 QuestInfo แก้ไข");
+        var name = self.askText("แก้ไข하실 유저의 이름을 입력โปรด. 어카운트의 경우 บัญชี ID 입력하셔도 . 해당 유저의 접속 여부는 상관이 없.");
         int userID = findUserID(type, name);
         MapleCharacter user = null;
         if (userID >= 0) {
@@ -33,33 +33,33 @@ public class GMUtil extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.sayOk("해당 캐릭터 혹은 계정이 존재하지 않습니다. 다시 한 번 시도해 주세요.");
+            self.sayOk("해당 ตัวละคร 혹은 บัญชี 존재하지 않. 다시 한 번 시도해 สัปดาห์세요.");
             return;
         }
 
-        int questID = self.askNumber("변환하실 QuestEx의 ID를 입력해주세요.", 0, 0, Integer.MAX_VALUE);
-        String questKey = self.askText("변환하실 QuestEx의 Key를 입력해주세요.");
+        int questID = self.askNumber("변환하실 QuestEx ID 입력โปรด.", 0, 0, Integer.MAX_VALUE);
+        String questKey = self.askText("변환하실 QuestEx Key 입력โปรด.");
 
         if (user != null) {
-            //인게임 내 캐릭터가 존재한다.
+            //인게임 내 ตัวละคร 존재한다.
             String questValue = user.getOneInfo(questID, questKey);
-            String newValue = self.askText("해당 QuestEX는 현재 " + questValue + " 값입니다. 변환하실 값을 입력해주세요.");
+            String newValue = self.askText("해당 QuestEX ปัจจุบัน " + questValue + " 값. 변환하실 값을 입력โปรด.");
             if (newValue != null) {
                 user.updateOneInfo(questID, questKey, newValue);
-                self.sayOk("성공적으로 변환하였습니다.");
+                self.sayOk("สำเร็จ적으로 변환하였.");
             } else {
-                self.sayOk("변환에 문제가 발생했습니다. 다시 시도해 주세요.");
+                self.sayOk("변환에 문제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
             }
         } else {
-            String newValue = self.askText("변환하실 QuestEX의 Value 값을 입력해주세요.");
+            String newValue = self.askText("변환하실 QuestEX Value 값을 입력โปรด.");
             if (newValue != null) {
                 if (updateUserQuestInfo(userID, type, questID, questKey, newValue)) {
-                    self.sayOk("성공적으로 변환하였습니다.");
+                    self.sayOk("สำเร็จ적으로 변환하였.");
                 } else {
-                    self.sayOk("문제가 발생하여 DB를 Update하지 못했습니다.");
+                    self.sayOk("문제가 발생 DB Update하지 못แล้ว.");
                 }
             } else {
-                self.sayOk("변환에 문제가 발생했습니다. 다시 시도해 주세요.");
+                self.sayOk("변환에 문제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
             }
         }
     }

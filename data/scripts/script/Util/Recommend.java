@@ -161,7 +161,7 @@ public class Recommend extends ScriptEngineNPC {
                     String recom_per = idcon.getString("recom");
 
                     var con = c.prepareStatement("SELECT * FROM recom_log WHERE recom = '" + recom_per + "'").executeQuery();
-                    txt.append(recom_per).append("님을 추천하신 플레이어들 입니다.\r\n\r\n");
+                    txt.append(recom_per).append("님을 추천하신 플레이어들 .\r\n\r\n");
                     while (con.next()) {
                         var con_name = con.getString("name").split("%");
                         txt.append("닉네임 : #e").append(con_name[1]).append("#n | ")
@@ -178,34 +178,34 @@ public class Recommend extends ScriptEngineNPC {
 
     public void recommend() {
         initNPC(MapleLifeFactory.getNPC(9062454));
-        StringBuilder str = new StringBuilder("#fs11##b #h 0##fc0xFF000000#님, #fc0xFF990033#[강림]#fc0xFF000000#에 오신 것을 환영합니다.\r\n\r\n")
-                .append("#r(추천은 1인 1계정 레벨 200이상 가능합니다.)#k\r\n")
+        StringBuilder str = new StringBuilder("#fs11##b #h 0##fc0xFF000000#, #fc0xFF990033#[강림]#fc0xFF000000# 오신 것을 환영.\r\n\r\n")
+                .append("#r(추천은 1인 1บัญชี เลเวล 200이상 เป็นไปได้.)#k\r\n")
                 .append("#fUI/UIWindow.img/UtilDlgEx/list1#\r\n")
-                .append("#L0##b추천인#fc0xFF000000# 등록하기\r\n")
-                .append("#L1##b추천인#fc0xFF000000# 랭킹보기#l\r\n\r\n")
+                .append("#L0##b추천인#fc0xFF000000# ลงทะเบียน하기\r\n")
+                .append("#L1##b추천인#fc0xFF000000# 랭킹ดู#l\r\n\r\n")
                 .append("#fUI/UIWindow.img/UtilDlgEx/list0#\r\n")
-                .append("#L2##b추천인#fc0xFF000000# 확인하기\r\n");
+                .append("#L2##b추천인#fc0xFF000000# ยืนยัน하기\r\n");
 
         int menu = self.askMenu(str.toString());
         switch (menu) {
             case 0: {
                 if (!overlab_recom(getPlayer().getClient().getAccID(), getPlayer().getName())) {
                     if (getPlayer().getLevel() >= 200) {
-                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#님, 당신을 #fc0xFF990033#[강림월드]#fc0xFF000000#로 이끈 이의 #b닉네임#fc0xFF000000#을 말씀해주세요.\r\n");
-                        str.append("하지만 #r한 번 등록하면 되돌릴 수 없으니#fc0xFF000000# 신중하게 등록하셔야 해요.");
+                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#, 당신을 #fc0xFF990033#[강림เดือน드]#fc0xFF000000# 이끈 이의 #b닉네임#fc0xFF000000# พูดโปรด.\r\n");
+                        str.append("하지만 #r한 번 ลงทะเบียน 되돌릴 수 없으니#fc0xFF000000# 신중하게 ลงทะเบียน하셔야 해요.");
                         String text = self.askText(str.toString());
 
                         if (!existChar(text)) {
-                            self.sayOk("없는 유저입니다.");
+                            self.sayOk("없는 유저.");
                             return;
                         }
                         if (text.equals("") || text.equals(getPlayer().getName()) || getAccIdFromDB(text) == getAccIdFromDB(getPlayer().getName())) {
-                            self.sayOk(text.equals("") ? "입력을 잘못 하셨습니다." : "자기 자신을 등록 할 수는 없습니다.");
+                            self.sayOk(text.equals("") ? "입력을 잘못 하셨." : "자기 자신을 ลงทะเบียน 할 수는 없.");
                         } else {
                             join_recom(getClient().getAccID(), getPlayer().getName(), text);
                             getPlayer().gainItem(etcReward.left, etcReward.right);
 
-                            str = new StringBuilder("#fs11#이건 #b#h 0##k님에게 드리는 저의 작은 선물입니다. 앞으로의 여행에 큰 도움이 될 거예요.#b\r\n");
+                            str = new StringBuilder("#fs11#이건 #b#h 0##k님에게 드리는 저의 작은 선물. 앞으로의 여행에 큰 ช่วยเหลือ이 될 거예요.#b\r\n");
 
                             for (Pair<Integer, Integer> reward : selfReward) {
                                 getPlayer().gainItem(reward.left, reward.right);
@@ -213,19 +213,19 @@ public class Recommend extends ScriptEngineNPC {
                             }
 
                             self.sayOk(str.toString());
-                            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(11, getClient().getChannel(), "[추천인] " + getPlayer().getName() + " 님이 " + text + " 님을 추천인으로 등록하셨습니다."));
+                            Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(11, getClient().getChannel(), "[추천인] " + getPlayer().getName() + " 님이 " + text + " 님을 추천인으로 ลงทะเบียน하셨."));
                         }
                     } else {
-                        self.sayOk("#fs11##r200레벨 미만#k은 추천인을 등록할 수 없어요.");
+                        self.sayOk("#fs11##r200เลเวล 미만#k 추천인을 ลงทะเบียน할 수 없어요.");
                     }
                 } else {
-                    self.sayOk("#fs11##fc0xFF000000#추천인은 한번만 작성가능합니다.");
+                    self.sayOk("#fs11##fc0xFF000000#추천인은 한번만 작성เป็นไปได้.");
                 }
                 break;
             }
             case 1: {
-                str = new StringBuilder("#fs11##fc0xFF000000#이곳은 많은추천을 받은분들의 목록이에요.\r\n");
-                str.append("#b#h 0##fc0xFF000000#님께서도 조금만 노력한다면 이곳에 오르실 수 있어요.\r\n");
+                str = new StringBuilder("#fs11##fc0xFF000000#이곳은 많은추천을 받은นาที들의 รายการ이에요.\r\n");
+                str.append("#b#h 0##fc0xFF000000#님께서도 นิดหน่อย만 노력한다면 이곳에 오르실 수 있어요.\r\n");
                 str.append(recom_log());
                 self.sayOk(recom_list(self.askMenu(str.toString())));
                 break;
@@ -233,13 +233,13 @@ public class Recommend extends ScriptEngineNPC {
             case 2: {
                 int recoms_num = recom_num(getPlayer().getName());
                 if (recoms_num == 0) {
-                    str = new StringBuilder("#fs11##fc0xFF000000#아직 #b#h 0##fc0xFF000000#님을 추천하신 분이 없네요.\r\n");
-                    str.append("열심히 #fc0xFF990033#[강림]#fc0xFF000000#를 알린다면, 보상이 따를 것 입니다.");
+                    str = new StringBuilder("#fs11##fc0xFF000000#아직 #b#h 0##fc0xFF000000#님을 추천하신 นาที이 없네요.\r\n");
+                    str.append("열심히 #fc0xFF990033#[강림]#fc0xFF000000# 알린다면, รางวัล이 따를 것 .");
                     self.sayOk(str.toString());
                 } else {
-                    self.sayOk("#b #h 0##fc0xFF000000#님을 추천한 분들 입니다. " + recoms_num + "명 " + recom_person(getPlayer().getName()) + "#fc0xFF000000#의 추천을 받으셨어요.");
+                    self.sayOk("#b #h 0##fc0xFF000000#님을 추천한 นาที들 . " + recoms_num + "명 " + recom_person(getPlayer().getName()) + "#fc0xFF000000# 추천을 받으셨어요.");
                     getPlayer().gainHPoint(100000 * recoms_num);
-                    getPlayer().dropMessage(1, 100000 * recoms_num + " 홍보 포인트를 지급 받았습니다.");
+                    getPlayer().dropMessage(1, 100000 * recoms_num + " คะแนนโปรโมชั่น 지급 받았.");
                     try (var c = DBConnection.getConnection()) {
                         var ps = c.prepareStatement("UPDATE recom_log SET state = 1 WHERE recom = '" + getPlayer().getName() + "'");
                         ps.executeUpdate();
@@ -253,21 +253,21 @@ public class Recommend extends ScriptEngineNPC {
             case 3: {
                 int a = recoms_count(getPlayer().getName());
 
-                StringBuilder msg = new StringBuilder("#fs11#받으실 보상을 선택해주세요.\r\n현재 #b#h ##k님의 추천 수는 개 입니다.#fs11#\r\n");
+                StringBuilder msg = new StringBuilder("#fs11#받으실 รางวัล을 เลือกโปรด.\r\nปัจจุบัน #b#h ##k님의 추천 수는 개 .#fs11#\r\n");
 
                 int i = 0;
                 for (Integer entry : reward.keySet()) {
                     if (entry <= a && getClient().getKeyValue("recom_" + entry) == null) {
-                        msg.append("#L").append(entry).append("##b").append(entry).append("명 보상 (수령 가능)\r\n");
+                        msg.append("#L").append(entry).append("##b").append(entry).append("명 รางวัล (수령 เป็นไปได้)\r\n");
                     } else {
-                        msg.append("#L").append(entry).append("##r").append(entry).append("명 보상 (수령 불가)\r\n");
+                        msg.append("#L").append(entry).append("##r").append(entry).append("명 รางวัล (수령 불가)\r\n");
                     }
                     i++;
                 }
 
                 int select = self.askMenu(msg.toString());
 
-                msg = new StringBuilder("다음은 누적 " + reward.get(select) + "명 보상입니다.#b#fs11#\r\n");
+                msg = new StringBuilder("ถัดไป은 누적 " + reward.get(select) + "명 รางวัล.#b#fs11#\r\n");
 
                 for (Map.Entry<Integer, List<Pair<Integer, Integer>>> entry : reward.entrySet()) {
                     var itemList = reward.get(select);

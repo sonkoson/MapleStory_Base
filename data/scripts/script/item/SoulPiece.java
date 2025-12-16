@@ -8,7 +8,7 @@ import java.util.*;
 
 public class SoulPiece extends ScriptEngineNPC {
 
-    public void consume_2431655() { //락 스피릿의 소울 조각
+    public void consume_2431655() { //락 스피릿의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591010, 15.0d); //기운찬 락 스피릿의 소울
         percentageInfo.put(2591011, 15.0d); //날렵한 락 스피릿의 소울
@@ -20,7 +20,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431656() { //교도관 아니의 소울 조각
+    public void consume_2431656() { //교도관 아니의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591017, 15.0d); //기운찬 교도관 아니의 소울
         percentageInfo.put(2591018, 15.0d); //날렵한 교도관 아니의 소울
@@ -32,7 +32,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431657() { //드래곤 라이더의 소울 조각
+    public void consume_2431657() { //드래곤 라이더의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591024, 15.0d); //기운찬 드래곤 라이더의 소울
         percentageInfo.put(2591025, 15.0d); //날렵한 드래곤 라이더의 소울
@@ -44,7 +44,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431658() { //렉스의 소울 조각
+    public void consume_2431658() { //렉스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591031, 15.0d); //기운찬 렉스의 소울
         percentageInfo.put(2591032, 15.0d); //날렵한 렉스의 소울
@@ -56,7 +56,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431659() { //무공의 소울 조각
+    public void consume_2431659() { //무공의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591038, 15.0d); //기운찬 무공의 소울
         percentageInfo.put(2591039, 15.0d); //날렵한 무공의 소울
@@ -68,7 +68,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431660() { //발록의 소울 조각
+    public void consume_2431660() { //발록의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591045, 15.0d); //기운찬 발록의 소울
         percentageInfo.put(2591046, 15.0d); //날렵한 발록의 소울
@@ -89,7 +89,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431661() { //핑크빈의 소울 조각
+    public void consume_2431661() { //핑크빈의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591055, 15.0d); //기운찬 핑크빈의 소울
         percentageInfo.put(2591056, 15.0d); //날렵한 핑크빈의 소울
@@ -110,7 +110,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431662() { //반 레온의 소울 조각
+    public void consume_2431662() { //반 레온의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591065, 15.0d); //기운찬 반 레온의 소울
         percentageInfo.put(2591066, 15.0d); //날렵한 반 레온의 소울
@@ -131,7 +131,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431709() { //크세르크세스의 소울 조각
+    public void consume_2431709() { //크세르크세스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591148, 15.0d); //기운찬 크세르크세스의 소울
         percentageInfo.put(2591149, 15.0d); //날렵한 크세르크세스의 소울
@@ -143,7 +143,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431710() { //자쿰의 소울 조각
+    public void consume_2431710() { //자쿰의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591155, 15.0d); //기운찬 자쿰의 소울
         percentageInfo.put(2591156, 15.0d); //날렵한 자쿰의 소울
@@ -162,7 +162,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431711() { //시그너스의 소울 조각
+    public void consume_2431711() { //시그너스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591075, 15.0d); //기운찬 시그너스의 소울
         percentageInfo.put(2591076, 15.0d); //날렵한 시그너스의 소울
@@ -181,7 +181,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431752() { //에피네아의 소울 조각
+    public void consume_2431752() { //에피네아의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591187, 15.0d); //기운찬 에피네아의 소울
         percentageInfo.put(2591188, 15.0d); //날렵한 에피네아의 소울
@@ -193,7 +193,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431753() { //아카이럼의 소울 조각
+    public void consume_2431753() { //아카이럼의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591194, 15.0d); //기운찬 아카이럼의 소울
         percentageInfo.put(2591195, 15.0d); //날렵한 아카이럼의 소울
@@ -212,7 +212,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431895() { //피아누스의 소울 조각
+    public void consume_2431895() { //피아누스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591218, 15.0d); //기운찬 피아누스의 소울
         percentageInfo.put(2591219, 15.0d); //날렵한 피아누스의 소울
@@ -224,7 +224,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431896() { //힐라의 소울 조각
+    public void consume_2431896() { //힐라의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591225, 15.0d); //기운찬 힐라의 소울
         percentageInfo.put(2591226, 15.0d); //날렵한 힐라의 소울
@@ -243,7 +243,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2431963() { //블랙 슬라임의 소울 조각
+    public void consume_2431963() { //블랙 슬라임의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591249, 15.0d); //기운찬 블랙 슬라임의 소울
         percentageInfo.put(2591250, 15.0d); //날렵한 블랙 슬라임의 소울
@@ -255,7 +255,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431964() { //매그너스의 소울 조각
+    public void consume_2431964() { //매그너스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591256, 15.0d); //기운찬 매그너스의 소울
         percentageInfo.put(2591257, 15.0d); //날렵한 매그너스의 소울
@@ -274,7 +274,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2432138() { //무르무르의 소울 조각
+    public void consume_2432138() { //무르무르의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591288, 15.0d); //기운찬 무르무르의 소울
         percentageInfo.put(2591289, 15.0d); //날렵한 무르무르의 소울
@@ -293,7 +293,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2432575() { //모카딘의 소울 조각
+    public void consume_2432575() { //모카딘의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591297, 15.0d); //기운찬 모카딘의 소울
         percentageInfo.put(2591298, 15.0d); //날렵한 모카딘의 소울
@@ -312,7 +312,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2432576() { //카리아인의 소울 조각
+    public void consume_2432576() { //카리아인의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591306, 15.0d); //기운찬 카리아인의 소울
         percentageInfo.put(2591307, 15.0d); //날렵한 카리아인의 소울
@@ -331,27 +331,27 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2432577() { //CQ57의 소울 조각
+    public void consume_2432577() { //CQ57 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591315, 15.0d); //기운찬 CQ57의 소울
-        percentageInfo.put(2591316, 15.0d); //날렵한 CQ57의 소울
-        percentageInfo.put(2591317, 15.0d); //총명한 CQ57의 소울
-        percentageInfo.put(2591318, 15.0d); //놀라운 CQ57의 소울
-        percentageInfo.put(2591319, 15.0d); //화려한 CQ57의 소울
-        percentageInfo.put(2591320, 8.0d); //강력한 CQ57의 소울
-        percentageInfo.put(2591321, 8.0d); //빛나는 CQ57의 소울
-        percentageInfo.put(2591322, 8.0d); //강인한 CQ57의 소울
+        percentageInfo.put(2591315, 15.0d); //기운찬 CQ57 소울
+        percentageInfo.put(2591316, 15.0d); //날렵한 CQ57 소울
+        percentageInfo.put(2591317, 15.0d); //총명한 CQ57 소울
+        percentageInfo.put(2591318, 15.0d); //놀라운 CQ57 소울
+        percentageInfo.put(2591319, 15.0d); //화려한 CQ57 소울
+        percentageInfo.put(2591320, 8.0d); //강력한 CQ57 소울
+        percentageInfo.put(2591321, 8.0d); //빛나는 CQ57 소울
+        percentageInfo.put(2591322, 8.0d); //강인한 CQ57 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591323, 5.0d); //위대한 CQ57의 소울
+            percentageInfo.put(2591323, 5.0d); //위대한 CQ57 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591323, 1.0d); //위대한 CQ57의 소울
+            percentageInfo.put(2591323, 1.0d); //위대한 CQ57 소울
             change_soul_piece(percentageInfo);
         }
 
     }
 
-    public void consume_2432578() { //줄라이의 소울 조각
+    public void consume_2432578() { //줄라이의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591324, 15.0d); //기운찬 줄라이의 소울
         percentageInfo.put(2591325, 15.0d); //날렵한 줄라이의 소울
@@ -370,7 +370,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2432579() { //플레드의 소울 조각
+    public void consume_2432579() { //플레드의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591333, 15.0d); //기운찬 플레드의 소울
         percentageInfo.put(2591334, 15.0d); //날렵한 플레드의 소울
@@ -389,7 +389,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2433446() { //피에르의 소울 조각
+    public void consume_2433446() { //피에르의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591383, 15.0d); //기운찬 피에르의 소울
         percentageInfo.put(2591384, 15.0d); //날렵한 피에르의 소울
@@ -408,7 +408,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2433515() { //반반의 소울 조각
+    public void consume_2433515() { //반반의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591392, 15.0d); //기운찬 반반의 소울
         percentageInfo.put(2591393, 15.0d); //날렵한 반반의 소울
@@ -427,7 +427,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2433591() { //블러디퀸의 소울 조각
+    public void consume_2433591() { //블러디퀸의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591401, 15.0d); //기운찬 블러디퀸의 소울
         percentageInfo.put(2591402, 15.0d); //날렵한 블러디퀸의 소울
@@ -446,7 +446,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2433592() { //벨룸의 소울 조각
+    public void consume_2433592() { //벨룸의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591410, 15.0d); //기운찬 벨룸의 소울
         percentageInfo.put(2591411, 15.0d); //날렵한 벨룸의 소울
@@ -465,7 +465,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2433593() { //스우의 소울 조각
+    public void consume_2433593() { //스우의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591419, 15.0d); //기운찬 스우의 소울
         percentageInfo.put(2591420, 15.0d); //날렵한 스우의 소울
@@ -484,7 +484,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2434035() { //돼지바 소울 조각
+    public void consume_2434035() { //돼지바 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591487, 15.0d); //기운찬 돼지바 소울
         percentageInfo.put(2591488, 15.0d); //날렵한 돼지바 소울
@@ -503,7 +503,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2434210() { //프리미엄 PC방 소울 조각
+    public void consume_2434210() { //프리미엄 PC방 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591500, 12.5d); //기운찬 프리미엄PC방 소울
         percentageInfo.put(2591501, 12.5d); //날렵한 프리미엄PC방 소울
@@ -516,7 +516,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2434470() { //우르스의 소울 조각
+    public void consume_2434470() { //우르스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591509, 15.0d); //기운찬 우르스의 소울
         percentageInfo.put(2591510, 15.0d); //날렵한 우르스의 소울
@@ -535,7 +535,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2435031() { //핑크몽의 소울 조각
+    public void consume_2435031() { //핑크몽의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591528, 14.0d); //기운찬 핑크몽의 소울
         percentageInfo.put(2591529, 14.0d); //날렵한 핑크몽의 소울
@@ -547,7 +547,7 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2435369() { //데미안의 소울 조각
+    public void consume_2435369() { //데미안의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591564, 15.0d); //기운찬 데미안의 소울
         percentageInfo.put(2591565, 15.0d); //날렵한 데미안의 소울
@@ -566,7 +566,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2436039() { //루시드의 소울 조각
+    public void consume_2436039() { //루시드의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591582, 15.0d); //기운찬 루시드의 소울
         percentageInfo.put(2591583, 15.0d); //날렵한 루시드의 소울
@@ -585,7 +585,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2437478() { //파풀라투스의 소울 조각
+    public void consume_2437478() { //파풀라투스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591611, 15.0d); //기운찬 파풀라투스의 소울
         percentageInfo.put(2591612, 15.0d); //날렵한 파풀라투스의 소울
@@ -604,7 +604,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2438396() { //윌의 소울 조각
+    public void consume_2438396() { //윌의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591632, 15.0d); //기운찬 윌의 소울
         percentageInfo.put(2591633, 15.0d); //날렵한 윌의 소울
@@ -623,7 +623,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2439567() { //진 힐라의 소울 조각
+    public void consume_2439567() { //진 힐라의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591651, 15.0d); //기운찬 진 힐라의 소울
         percentageInfo.put(2591652, 15.0d); //날렵한 진 힐라의 소울
@@ -642,7 +642,7 @@ public class SoulPiece extends ScriptEngineNPC {
         }
     }
 
-    public void consume_2439568() { //듄켈의 소울 조각
+    public void consume_2439568() { //듄켈의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
         percentageInfo.put(2591668, 15.0d); //기운찬 듄켈의 소울
         percentageInfo.put(2591669, 15.0d); //날렵한 듄켈의 소울
@@ -667,10 +667,10 @@ public class SoulPiece extends ScriptEngineNPC {
             sb.append("\r\n#i").append(pKey).append(":# #t").append(pKey).append("#(").append(Math.round(pInfo.get(pKey))).append("%)");
         }
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10개#k를 모으면 아래의 아이템 중 1종으로 교환할 수 있다네.\r\n\r\n#b#e<각 소울의 등장 확률>#n#k#b" + sb.toString());
+            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 아래의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 있다네.\r\n\r\n#b#e<แต่ละ 소울의 등장 โอกาส>#n#k#b" + sb.toString());
             return;
         }
-        if (1 == self.askAccept("#b#t" + itemID + "##k 10개를 소비하여 소울 아이템으로 교환할텐가?\r\n\r\n#b#e<각 소울의 등장 확률>#n#k#b" + sb.toString())) {
+        if (1 == self.askAccept("#b#t" + itemID + "##k 10개를 ใช้ 소울 ไอเท็ม แลกเปลี่ยน할텐가?\r\n\r\n#b#e<แต่ละ 소울의 등장 โอกาส>#n#k#b" + sb.toString())) {
             List<Integer> rKeys = new ArrayList<>(pInfo.keySet());
             Collections.shuffle(rKeys);
             double percent = 0.0;
@@ -691,24 +691,24 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("오호~ #b#t" + vou + "##k이 나왔군.\r\n요긴하게 쓰게나. 크크크...");
+                    self.sayOk("오호~ #b#t" + vou + "##k 나왔군.\r\n요긴하게 쓰게나. 크크크...");
                 } else {
-                    self.sayOk("소비창에 여유 공간이 부족하군. 확인하고 다시 시도해주게냐.");
+                    self.sayOk("ใช้창에 여유 공간이 ไม่พอ하군. ยืนยัน 다시 시도해สัปดาห์게냐.");
                 }
             } else {
-                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해주게나...");
+                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해สัปดาห์게나...");
             }
         } else {
-            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 아이템이니 잘 생각해 보게...");
+            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
         }
     }
 
     public void change_soul_piece_sunday(HashMap<Integer, Double> pInfo) {
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10개#k를 모으면 아래의 아이템 중 1종으로 교환할 수 있다네.");
+            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 아래의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 있다네.");
             return;
         }
-        if (1 == self.askAccept("#r<선데이 메이플> 위대한 소울 등장확률 5배!#k\r\n#b#t" + itemID + "##k 10개를 소비하여 소울 아이템으로 교환할텐가?")) {
+        if (1 == self.askAccept("#r<선데이 메이플> 위대한 소울 등장โอกาส 5배!#k\r\n#b#t" + itemID + "##k 10개를 ใช้ 소울 ไอเท็ม แลกเปลี่ยน할텐가?")) {
             List<Integer> rKeys = new ArrayList<>(pInfo.keySet());
             Collections.shuffle(rKeys);
             double percent = 0.0;
@@ -729,15 +729,15 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("오호~ #b#t" + vou + "##k이 나왔군.\r\n요긴하게 쓰게나. 크크크...");
+                    self.sayOk("오호~ #b#t" + vou + "##k 나왔군.\r\n요긴하게 쓰게나. 크크크...");
                 } else {
-                    self.sayOk("소비창에 여유 공간이 부족하군. 확인하고 다시 시도해주게냐.");
+                    self.sayOk("ใช้창에 여유 공간이 ไม่พอ하군. ยืนยัน 다시 시도해สัปดาห์게냐.");
                 }
             } else {
-                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해주게나...");
+                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해สัปดาห์게나...");
             }
         } else {
-            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 아이템이니 잘 생각해 보게...");
+            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
         }
     }
 

@@ -30,10 +30,10 @@ public class Arkarium extends ScriptEngineNPC {
 
     public void timeCrack() {
         initNPC(MapleLifeFactory.getNPC(2144017));
-        String v = "#e<시간의 균열>#n\r\n과거와 미래, 그리고 그 사이의 어딘가... 가고자 하는 곳은 어디인가?\r\n#b#L0# 과거의 리프레#l\r\n#L1# 차원의 틈#l";
+        String v = "#e<เวลา의 균열>#n\r\n과거와 미래, 그리고 그 사이의 어딘가... 가고자 하는 곳은 어디인가?\r\n#b#L0# 과거의 리프레#l\r\n#L1# 차원의 틈#l";
         int v0 = self.askMenu(v, ScriptMessageFlag.NpcReplacedByNpc);
         if (v0 == 0) {
-            self.say("현재 준비중입니다.");
+            self.say("ปัจจุบัน เตรียม중.");
         } else if (v0 == 1) {
             registerTransferField(272020000);
         }
@@ -47,8 +47,8 @@ public class Arkarium extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(2144017));
         EventManager em = getEventManager("Arkarium");
         List<Integer> arkMap = new ArrayList(Arrays.asList(272020200, 272020201, 272020202, 272020203, 272020204, 272020205, 272020206, 272020207, 272020208, 272020209, 272020210, 272020211, 272020212, 272020213, 272020214, 272020215, 272020216, 272020217, 272020218, 272020219));
-        if (arkMap.contains(target.getMapId())) { //전투맵인상태
-            if (self.askYesNo("전투을 마치고 아카이럼의 제단에서 퇴장하시겠습니까?") == 1) {
+        if (arkMap.contains(target.getMapId())) { //전투แผนที่인สถานะ
+            if (self.askYesNo("전투을 마치고 아카이럼의 제단에서 ออกต้องการหรือไม่?") == 1) {
                 registerTransferField(272020110);
                 if (getPlayer().getEventInstance() != null) {
                     getPlayer().getEventInstance().unregisterPlayer(getPlayer());
@@ -59,25 +59,25 @@ public class Arkarium extends ScriptEngineNPC {
             }
         } else {
             if (target.getParty() == null) {
-                self.say("1인 이상 파티를 맺어야만 입장할 수 있습니다.");
+                self.say("1인 이상 ปาร์ตี้ 맺어야만 เข้า할 수 있.");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId() && DBConfig.isGanglim) {
-                    self.say("파티장을 통해 진행해 주십시오.");
+                    self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                 } else {
-                    int v0 = self.askMenu("#e<보스: 아카이럼>#n\r\n위대한 용사여. 검은 마법사의 사악한 군단장에게 맞설 준비를 마치셨습니까?\r\n#b\r\n#L0# <보스: 아카이럼> 입장을 신청한다.#l");
+                    int v0 = self.askMenu("#e<บอส: 아카이럼>#n\r\n위대한 용사여. 검은 마법사의 사악한 군단장에게 맞설 เตรียม를 마치셨습니까?\r\n#b\r\n#L0# <บอส: 아카이럼> เข้า을 สมัคร한다.#l");
                     if (v0 == 0) {
                     	String menu = "";
                     	if (DBConfig.isGanglim) {
-                    		menu = "#e<보스: 아카이럼>#n\r\n원하시는 모드를 선택해주세요.\r\n\r\n#L0# 이지 모드 ( 레벨 140 이상 )#l\r\n#L1# 노멀 모드 ( 레벨 140 이상 )#l";
+                    		menu = "#e<บอส: 아카이럼>#n\r\n원하시는 โหมด를 เลือกโปรด.\r\n\r\n#L0# 이지 โหมด ( เลเวล 140 이상 )#l\r\n#L1# 노멀 โหมด ( เลเวล 140 이상 )#l";
                     	}
                     	else {
                     		boolean single = getPlayer().getPartyMemberSize() == 1;
                     		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"));
-                    		menu = "#e<보스: 아카이럼>#n\r\n원하시는 모드를 선택해주세요.\r\n\r\n" 
-                    				+ "#L0# 이지 모드 " + (single ? "(싱글)" : "(멀티)") + " ( 레벨 140 이상 )#l\r\n"
-                    				+ "#L1# 노멀 모드 " + (single ? "(싱글)" : "(멀티)") + " ( 레벨 140 이상 )#l\r\n";
+                    		menu = "#e<บอส: 아카이럼>#n\r\n원하시는 โหมด를 เลือกโปรด.\r\n\r\n" 
+                    				+ "#L0# 이지 โหมด " + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 140 이상 )#l\r\n"
+                    				+ "#L1# 노멀 โหมด " + (single ? "(싱글)" : "(멀티)") + " ( เลเวล 140 이상 )#l\r\n";
                     				if (((single ? 2 : 1) - reset) >= 0) { 
-                    					menu += "#L2# 입장횟수 증가 " + (single ? "(싱글)" : "(멀티)") + ((single ? 2 : 1) - reset)+ "회 가능)#l";
+                    					menu += "#L2# เข้า횟수 เพิ่ม " + (single ? "(싱글)" : "(멀티)") + ((single ? 2 : 1) - reset)+ "회 เป็นไปได้)#l";
                     				}
                     	}
                     	int v1 = self.askMenu(menu);
@@ -86,21 +86,21 @@ public class Arkarium extends ScriptEngineNPC {
                         		boolean single = getPlayer().getPartyMemberSize() == 1;
                         		int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"));
                         		if (getPlayer().getTogetherPoint() < 150) {
-                        			self.sayOk("협동 포인트가 부족합니다. 보유 포인트 : " + getPlayer().getTogetherPoint());
+                        			self.sayOk("협동 คะแนน ไม่พอ. มี คะแนน : " + getPlayer().getTogetherPoint());
                         			return;
                         		}
                         		if ((single ? 1 : 0) < reset) {
-                        			self.sayOk("오늘은 더 이상 입장횟수 증가가 불가능합니다.");
+                        			self.sayOk("วันนี้은 더 이상 เข้า횟수 เพิ่ม가 불เป็นไปได้.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
                         		getPlayer().updateOneInfo(QuestExConstants.DailyQuestResetCount.getQuestID(), "Arkarium" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-                        		self.sayOk("입장가능횟수가 증가되었습니다.");
+                        		self.sayOk("เข้าเป็นไปได้횟수가 เพิ่ม되었.");
                         		return;
                         	}
                         	if (!DBConfig.isGanglim) {
                         		if (target.getParty().getLeader().getId() != target.getId()) {
-                        			self.say("파티장을 통해 진행해 주십시오.");
+                        			self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                         			return;
                         		}
                         	}
@@ -111,11 +111,11 @@ public class Arkarium extends ScriptEngineNPC {
                             if (overLap == null) {
                                 boolean canEnter = false;
                                 String mode = "easy";
-                                if (v1 == 0) { //이지모드
+                                if (v1 == 0) { //이지โหมด
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (v1 == 1) { //노말모드
+                                } else if (v1 == 1) { //노말โหมด
                                     if (em.getProperty("Nstatus0").equals("0")) {
                                         mode = "normal";
                                         canEnter = true;
@@ -126,16 +126,16 @@ public class Arkarium extends ScriptEngineNPC {
                                 if (v1 == 1) {
                                     if (getPlayer().getQuestStatus(2000020) == 1) {
                                         if (GameConstants.isZero(getPlayer().getJob())) {
-                                            v2 = self.askMenu("#e<제네시스 무기>#n\r\n검은 마법사의 힘이 담긴 #b제네시스 무기#k의 비밀을 풀기 위한 임무를 수행 할 수 있다. 어떻게 할까?\r\n\r\n#e#r<임무 수행 조건>#n#k\r\n#b -혼자서 격파\r\n -최종 데미지 70% 감소\r\n -착용 중인 장비의 순수 능력치만 적용\r\n#k#L0#미션을 수행한다.#l\r\n#L1#미션을 수행하지 않는다.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu("#e<제네시스 อาวุธ>#n\r\n검은 마법사의 힘이 담긴 #b제네시스 อาวุธ#k 비밀을 풀기 위한 ภารกิจ를 수행 할 수 있다. 어떻게 할까?\r\n\r\n#e#r<ภารกิจ 수행 เงื่อนไข>#n#k\r\n#b -혼자서 격파\r\n -สุดท้าย Damage 70% ลด\r\n -착용 중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n#k#L0#ภารกิจ을 수행한다.#l\r\n#L1#ภารกิจ을 수행하지 않는다.#l", ScriptMessageFlag.Self);
                                         } else {
-                                            v2 = self.askMenu("#e<제네시스 무기>#n\r\n검은 마법사의 힘이 담긴 #b제네시스 무기#k의 비밀을 풀기 위한 임무를 수행 할 수 있다. 어떻게 할까?\r\n\r\n#e#r<임무 수행 조건>#n#k\r\n#b -혼자서 격파\r\n -봉인된 제네시스 무기와 보조무기만 장착\r\n -최종 데미지 70% 감소\r\n -착용 중인 장비의 순수 능력치만 적용\r\n#k#L0#미션을 수행한다.#l\r\n#L1#미션을 수행하지 않는다.#l", ScriptMessageFlag.Self);
+                                            v2 = self.askMenu("#e<제네시스 อาวุธ>#n\r\n검은 마법사의 힘이 담긴 #b제네시스 อาวุธ#k 비밀을 풀기 위한 ภารกิจ를 수행 할 수 있다. 어떻게 할까?\r\n\r\n#e#r<ภารกิจ 수행 เงื่อนไข>#n#k\r\n#b -혼자서 격파\r\n -봉인된 제네시스 อาวุธ와 보조อาวุธ만 장착\r\n -สุดท้าย Damage 70% ลด\r\n -착용 중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n#k#L0#ภารกิจ을 수행한다.#l\r\n#L1#ภารกิจ을 수행하지 않는다.#l", ScriptMessageFlag.Self);
                                         }
                                         if (v2 == 0) {
                                             if (!checkBMQuestEquip()) {
                                                 return;
                                             }
                                             if (getPlayer().getParty().getPartyMemberList().size() > 1) {
-                                                self.say("해당 퀘스트는 혼자 진행해야 한다.", ScriptMessageFlag.Self);
+                                                self.say("해당 เควส 혼자 ดำเนินการ해야 한다.", ScriptMessageFlag.Self);
                                                 return;
                                             }
                                         }
@@ -150,7 +150,7 @@ public class Arkarium extends ScriptEngineNPC {
                                             if (p != null) {
                                                 int count = p.getOneInfoQuestInteger(key, "akairum_clear");
                                                 if (count >= (1 + p.getBossTier())) {
-                                                    self.say("파티원 중 #b#e" + p.getName() + "#n#k가 오늘 더 이상 도전할 수 없습니다.");
+                                                    self.say("ปาร์ตี้원 중 #b#e" + p.getName() + "#n#k วันนี้ 더 이상 도전할 수 없.");
                                                     return;
                                                 }
                                                 p.updateOneInfo(key, "akairum_clear", String.valueOf(count + 1));
@@ -186,13 +186,13 @@ public class Arkarium extends ScriptEngineNPC {
                                     updateEventNumber(getPlayer(), QuestExConstants.Arkarium.getQuestID());
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.sayOk("현재 모든맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.sayOk("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 }
                             } else {
-                                self.say("파티원 중#b#e" + overLap + "가#n#k 오늘 입장했군. 그렇다면 오늘은 더 이상 들어갈 수 없다.");
+                                self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군. 그렇다면 วันนี้은 더 이상 들어갈 수 없다.");
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은맵에 있어야 합니다.");
+                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
                         }
                     }
                 }
@@ -233,7 +233,7 @@ public class Arkarium extends ScriptEngineNPC {
             }
         }
         if (!blockedList.isEmpty()) {
-            String v0 = "#r무기#k와 #b보조무기#k만 착용하고 도전해야 한다.\r\n\r\n#r<착용 해제해야 하는 아이템>#k\r\n";
+            String v0 = "#rอาวุธ#k #b보조อาวุธ#k 착용 도전해야 한다.\r\n\r\n#r<착용 ปลดล็อก해야 하는 ไอเท็ม>#k\r\n";
             for (int i = 0; i < blockedList.size(); ++i) {
                 int bid = blockedList.get(i);
                 v0 += "#i" + bid + "# #z" + bid + "#\r\n";
@@ -251,36 +251,36 @@ public class Arkarium extends ScriptEngineNPC {
     	}
         EventManager em = getEventManager("Arkarium");
         List<Integer> arkMap = new ArrayList(Arrays.asList(272020200, 272020201, 272020202, 272020203, 272020204, 272020205, 272020206, 272020207, 272020208, 272020209, 272020210, 272020211, 272020212, 272020213, 272020214, 272020215, 272020216, 272020217, 272020218, 272020219));
-        if (arkMap.contains(target.getMapId())) { //전투맵인상태
-            if (self.askYesNo("전투을 마치고 아카이럼의 제단에서 퇴장하시겠습니까?") == 1) {
+        if (arkMap.contains(target.getMapId())) { //전투แผนที่인สถานะ
+            if (self.askYesNo("전투을 마치고 아카이럼의 제단에서 ออกต้องการหรือไม่?") == 1) {
                 registerTransferField(272020110);
             }
         } else {
             if (target.getParty() == null) {
-                self.say("1인 이상 파티를 맺어야만 입장할 수 있습니다.");
+                self.say("1인 이상 ปาร์ตี้ 맺어야만 เข้า할 수 있.");
             } else {
                 if (target.getParty().getLeader().getId() != target.getId()) {
-                    self.say("파티장을 통해 진행해 주십시오.");
+                    self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                 } else {
-                    int v0 = self.askMenu("#e<보스: 아카이럼>#n\r\n위대한 용사여. 검은 마법사의 사악한 군단장에게 맞설 준비를 마치셨습니까?\r\n#b\r\n#L0# <보스: 아카이럼> 입장을 신청한다.#l");
+                    int v0 = self.askMenu("#e<บอส: 아카이럼>#n\r\n위대한 용사여. 검은 마법사의 사악한 군단장에게 맞설 เตรียม를 마치셨습니까?\r\n#b\r\n#L0# <บอส: 아카이럼> เข้า을 สมัคร한다.#l");
                     if (v0 == 0) {
-                        int v1 = self.askMenu("#e<보스: 아카이럼>#n\r\n원하시는 모드를 선택해주세요.\r\n\r\n#L0# 이지 모드 ( 레벨 140 이상 )#l\r\n#L1# 노멀 모드 ( 레벨 140 이상 )#l");
+                        int v1 = self.askMenu("#e<บอส: 아카이럼>#n\r\n원하시는 โหมด를 เลือกโปรด.\r\n\r\n#L0# 이지 โหมด ( เลเวล 140 이상 )#l\r\n#L1# 노멀 โหมด ( เลเวล 140 이상 )#l");
                         if (target.getParty().isPartySameMap()) {
                             String overLap = checkEventNumber(getPlayer(), QuestExConstants.Arkarium.getQuestID());
                             if (overLap == null) {
                                 boolean canEnter = false;
                                 String mode = "easy";
-                                if (v1 == 0) { //이지모드
+                                if (v1 == 0) { //이지โหมด
                                     if (em.getProperty("status0").equals("0")) {
                                         canEnter = true;
                                     }
-                                } else if (v1 == 1) { //노말모드
+                                } else if (v1 == 1) { //노말โหมด
                                     if (em.getProperty("Nstatus0").equals("0")) {
                                         mode = "normal";
                                         canEnter = true;
                                     }
                                 }
-                                if (!canEnter) { //입장이 불가능한 경우 맵에 유저가 없는지 체크 후 인스턴스 초기화
+                                if (!canEnter) { //เข้า이 불เป็นไปได้한 경우 แผนที่ 유저가 없는지 체크 후 인스턴스 วินาที기화
                                 	int map = 272020210;
                                     if (v1 == 1) {
                                         map = 272020200;
@@ -292,7 +292,7 @@ public class Arkarium extends ScriptEngineNPC {
                                 		if (time == 0) {
                                 			em.setProperty("ResetTime", String.valueOf(curTime));
                                 		}
-										else if (time - curTime >= 10000) { // 10초이상 맵이 빈경우 입장가능하게 변경
+										else if (time - curTime >= 10000) { // 10วินาที이상 แผนที่ 빈경우 เข้าเป็นไปได้하게 เปลี่ยน
 											canEnter = true;
 											em.setProperty("ResetTime", "0");
 										}
@@ -316,13 +316,13 @@ public class Arkarium extends ScriptEngineNPC {
                                     getClient().getChannelServer().getMapFactory().getMap(map + 100).resetFully(false); //사악한 내면의 공터
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.sayOk("현재 모든맵이 가득차 이용하실 수 없습니다. 다른 채널을 이용해주세요.");
+                                    self.sayOk("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
                                 }
                             } else {
-                                self.say("파티원 중#b#e" + overLap + "가#n#k 오늘 입장했군. 그렇다면 오늘은 더 이상 들어갈 수 없다.");
+                                self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군. 그렇다면 วันนี้은 더 이상 들어갈 수 없다.");
                             }
                         } else {
-                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은맵에 있어야 합니다.");
+                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
                         }
                     }
                 }
@@ -336,7 +336,7 @@ public class Arkarium extends ScriptEngineNPC {
             if (eim.getProperty("summmonMOB") == null) {
                 eim.setProperty("summmonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("용기와 만용을 구분하지 못하는 자들이여. 목숨이 아깝지 않다면 내게 덤비도록. 후후.", 5120056);
+                field.startMapEffect("용기와 만용을 구นาที하지 못하는 자들이여. 목숨이 아깝지 않다면 내게 덤비도록. 후후.", 5120056);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Voice.img/akayrum/2");
                 field.broadcastMessage(e.encodeForLocal());
                 field.removeNpc(2144016); //륀느 꺼져!
@@ -351,7 +351,7 @@ public class Arkarium extends ScriptEngineNPC {
             if (eim.getProperty("summmonMOB") == null) {
                 eim.setProperty("summmonMOB", "1");
                 Field field = getPlayer().getMap();
-                field.startMapEffect("용기와 만용을 구분하지 못하는 자들이여. 목숨이 아깝지 않다면 내게 덤비도록. 후후.", 5120056);
+                field.startMapEffect("용기와 만용을 구นาที하지 못하는 자들이여. 목숨이 아깝지 않다면 내게 덤비도록. 후후.", 5120056);
                 PlayMusicDown e = new PlayMusicDown(getPlayer().getId(), 100, "Voice.img/akayrum/2");
                 field.broadcastMessage(e.encodeForLocal());
                 field.removeNpc(2144016); //륀느 꺼져!
@@ -363,9 +363,9 @@ public class Arkarium extends ScriptEngineNPC {
     public void Akayrum_Summon() { //아카이럼 소환술!!!!!!!!(NPC ID : 2144010)
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //파티장만 소환가능(중복소환 방지)
-                if (self.askAccept("내 오랜 계획을 물거품으로 만든 녀석들이 이렇게 제 발로 찾아와주니 정말 기쁘기 그지 없군.\r\n\r\n#r그 댓가로 세상에서 제일 고통스러운 죽음을 선사해주마.#k") == 1) {
-                    //수락시 아카이럼 사라지고 몬스터 소환됨!
+            if (target.getParty().getLeader().getId() == target.getId()) { //ปาร์ตี้장만 소환เป็นไปได้(중복소환 방지)
+                if (self.askAccept("내 오랜 계획을 물거품으로 만든 녀석들이 이렇게 제 발로 찾아와สัปดาห์니 정말 기쁘기 그지 없군.\r\n\r\n#r그 댓가로 세상에서 제วัน 고통스러운 죽음을 선사해สัปดาห์마.#k") == 1) {
+                    //수락시 아카이럼 사라지고 มอนสเตอร์ 소환됨!
                     Field field = getPlayer().getMap();
                     field.removeNpc(2144010);
                     if (DBConfig.isGanglim) {
@@ -398,9 +398,9 @@ public class Arkarium extends ScriptEngineNPC {
     public void Akayrum_Summon2() { //이지 아카이럼 소환술!!!!!!!!(NPC ID : 2144021)
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //파티장만 소환가능(중복소환 방지)
-                if (self.askAccept("내 오랜 계획을 물거품으로 만든 녀석들이 이렇게 제 발로 찾아와주니 정말 기쁘기 그지 없군.\r\n\r\n#r그 댓가로 세상에서 제일 고통스러운 죽음을 선사해주마.#k") == 1) {
-                    //수락시 아카이럼 사라지고 몬스터 소환됨!
+            if (target.getParty().getLeader().getId() == target.getId()) { //ปาร์ตี้장만 소환เป็นไปได้(중복소환 방지)
+                if (self.askAccept("내 오랜 계획을 물거품으로 만든 녀석들이 이렇게 제 발로 찾아와สัปดาห์니 정말 기쁘기 그지 없군.\r\n\r\n#r그 댓가로 세상에서 제วัน 고통스러운 죽음을 선사해สัปดาห์마.#k") == 1) {
+                    //수락시 아카이럼 사라지고 มอนสเตอร์ 소환됨!
                     Field field = getPlayer().getMap();
                     field.removeNpc(2144021);
                     if (DBConfig.isGanglim) {
@@ -438,8 +438,8 @@ public class Arkarium extends ScriptEngineNPC {
 
     public void akayrum_saveTheGoddess() {
         getPlayer().getMap().hideNpc(2144020);
-        self.say("악의 군단장 #p2144010#을 드디어 물리쳤군요.");
-        self.say("오랫동안 갇혀있던 봉인에서 드디어 나오게 되었어요. 감사합니다 #h0#님.");
+        self.say("악의 군단장 #p2144010# 드디어 물리쳤군요.");
+        self.say("오랫동안 갇혀있던 봉인에서 드디어 나오게 되었어요. 감사 #h0#.");
     }
 
     // 노멀
@@ -447,7 +447,7 @@ public class Arkarium extends ScriptEngineNPC {
         for (MapleMonster mob : getPlayer().getMap().getAllMonstersThreadsafe()) {
             getPlayer().getMap().removeMonster(mob, 1);
         }
-        getPlayer().getMap().startMapEffect("자신 속의 추악한 모습을 마주한 기분이 어떠신지요?", 5120057, false, 5);
+        getPlayer().getMap().startMapEffect("자신 속의 추악한 모습을 마สัปดาห์한 기นาที이 어떠신지요?", 5120057, false, 5);
 
         MapleMonster mob = MapleLifeFactory.getMonster(8860003);
         getPlayer().getMap().spawnMonsterOnGroundBelow(mob, new Point(88, 95));
@@ -458,7 +458,7 @@ public class Arkarium extends ScriptEngineNPC {
         for (MapleMonster mob : getPlayer().getMap().getAllMonstersThreadsafe()) {
             getPlayer().getMap().removeMonster(mob, 1);
         }
-        getPlayer().getMap().startMapEffect("자신 속의 추악한 모습을 마주한 기분이 어떠신지요?", 5120057, false, 5);
+        getPlayer().getMap().startMapEffect("자신 속의 추악한 모습을 마สัปดาห์한 기นาที이 어떠신지요?", 5120057, false, 5);
 
         MapleMonster mob = MapleLifeFactory.getMonster(8860003);
         getPlayer().getMap().spawnMonsterOnGroundBelow(mob, new Point(88, 95));
@@ -469,7 +469,7 @@ public class Arkarium extends ScriptEngineNPC {
             getPlayer().setRegisterTransferField(272020200);
             getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis());
         } else {
-            getPlayer().dropMessage(5, "뒤틀린 자신의 분신을 먼저 퇴치해야 사악한 내면에서 탈출할 수 있습니다.");
+            getPlayer().dropMessage(5, "뒤틀린 자신의 นาที신을 먼저 퇴치해야 사악한 내면에서 탈출할 수 있.");
         }
     }
 
@@ -478,7 +478,7 @@ public class Arkarium extends ScriptEngineNPC {
             getPlayer().setRegisterTransferField(272020210);
             getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis());
         } else {
-            getPlayer().dropMessage(5, "뒤틀린 자신의 분신을 먼저 퇴치해야 사악한 내면에서 탈출할 수 있습니다.");
+            getPlayer().dropMessage(5, "뒤틀린 자신의 นาที신을 먼저 퇴치해야 사악한 내면에서 탈출할 수 있.");
         }
     }
 
@@ -508,7 +508,7 @@ public class Arkarium extends ScriptEngineNPC {
         Reactor reactor = getPlayer().getMap().getReactorByName("marble4");
         if (reactor != null) {
             reactor.forceHitReactor((byte) 1);
-            getPlayer().getMap().startMapEffect("감히 나를 여기까지 밀어붙이다니...이제 제대로 상대해주지.", 5120057, false, 5);
+            getPlayer().getMap().startMapEffect("감히 나를 여기까지 밀어붙이다니...이제 제대로 상대해สัปดาห์지.", 5120057, false, 5);
         }
     }
 }

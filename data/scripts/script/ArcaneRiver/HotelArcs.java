@@ -12,7 +12,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003150, 1);
         } else {
-            getPlayer().dropMessage(5, "270레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "270เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -22,7 +22,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003000, 2);
         } else {
-            getPlayer().dropMessage(5, "270레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "270เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 }

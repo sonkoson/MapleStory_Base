@@ -11,7 +11,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007000, 2);
         } else {
-            getPlayer().dropMessage(5, "235레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -20,7 +20,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007040, 3);
         } else {
-            getPlayer().dropMessage(5, "235레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -29,7 +29,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 240) {
             registerTransferField(450007170, 1);
         } else {
-            getPlayer().dropMessage(5, "240레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "240เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -39,7 +39,7 @@ public class Esfera extends ScriptEngineNPC {
                 registerTransferField(450007200, 0);
             }
         } else {
-            getPlayer().dropMessage(5, "235레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 

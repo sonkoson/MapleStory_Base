@@ -14,7 +14,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000570, 1);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -24,7 +24,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000760, 1);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -34,7 +34,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000500, 3);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -44,7 +44,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000680, 1);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -54,7 +54,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000690, 3);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -64,7 +64,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000630, 2);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -74,7 +74,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 3);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -84,7 +84,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000770, 2);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -94,7 +94,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 2);
         } else {
-            getPlayer().dropMessage(5, "260레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -110,7 +110,7 @@ public class Cernium extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "265เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
@@ -126,7 +126,7 @@ public class Cernium extends ScriptEngineNPC {
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265레벨 이상만 입장하실 수 있습니다.");
+            getPlayer().dropMessage(5, "265เลเวล 이상만 เข้า하실 수 있.");
         }
     }
 
