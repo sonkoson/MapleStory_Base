@@ -63,8 +63,8 @@ public class MasteryBook extends ScriptEngineNPC {
             for (int skill : s) {
                 skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไป과 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //마스터리북 ใช้ยกเลิก 아니면
+            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไปและ 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { //마스터리북 ใช้ยกเลิก หรือ
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
@@ -77,7 +77,7 @@ public class MasteryBook extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.askMenu("자네는 아직 어떤 4차 สกิล 배우지 않았거나 ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게나.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu("자네는 아직 어떤 4ชา สกิล 배우지 않았거ฉัน ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게ฉัน.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 
@@ -103,8 +103,8 @@ public class MasteryBook extends ScriptEngineNPC {
             for (int skill : s) {
                 skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไป과 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //마스터리북 ใช้ยกเลิก 아니면
+            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไปและ 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { //마스터리북 ใช้ยกเลิก หรือ
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
@@ -117,7 +117,7 @@ public class MasteryBook extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.askMenu("자네는 아직 어떤 4차 สกิล 배우지 않았거나 ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게나.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu("자네는 아직 어떤 4ชา สกิล 배우지 않았거ฉัน ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게ฉัน.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 }

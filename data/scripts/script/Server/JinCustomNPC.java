@@ -827,10 +827,10 @@ public class JinCustomNPC extends ScriptEngineNPC {
             case 2: { // 어빌 대해
                 if (DBConfig.isGanglim) {
                     self.say(
-                            "#fs11##bExtra Ability ระบบ#k ตัวละคร เพิ่มเติม적인 성장 수단.\r\n\r\nExtra Ability #e#r여섯 ชิ้น สุ่ม ตัวเลือก#k#n 부여하 방식으, 재화 ใช้ 부여되 ตัวเลือก 종류 เปลี่ยนสามารถ .\r\n\r\nตัวเลือก เปลี่ยน #e#bBrilliant Light Crystal#k#n 재화 이용 เป็นไปได้.");
+                            "#fs11##bExtra Ability ระบบ#k ตัวละคร เพิ่มเติม적인 성장 수단.\r\n\r\nExtra Ability #e#r여섯 ชิ้น สุ่ม ตัวเลือก#k#n 부여하 ห้อง식으, 재화 ใช้ 부여되 ตัวเลือก 종류 เปลี่ยนสามารถ .\r\n\r\nตัวเลือก เปลี่ยน #e#bBrilliant Light Crystal#k#n 재화 이용 เป็นไปได้.");
                     self.say(
                             "#fs11#네 째 줄 ตัวเลือก #eVVIP Classic#n ระดับ 등장,\r\n다섯 째 줄 ตัวเลือก #eMVP Prime#n ระดับ 등장.\r\n여섯 째 엑스트라 ตัวเลือก #b'레ก่อน드리' ระดับ#k รีเซ็ต시\r\n#e1% โอกาส#n 등장, 한  출현 หลัง  ต่อไป해서 รีเซ็ต.");
-                    String v2 = "#fs11#보다 자세한 ข้อมูล ด้านล่าง เลือก지 통해 ยืนยัน하실 수 .\r\n\r\n#b#L0#Extra Ability Preset 관해 알고 싶.#l\r\n#b#L1#Extra Ability ระดับ별 ตัวเลือก 알고 싶.#l\r\n#b#L2#Extra Ability ระดับ별 โอกาส 알고 싶.#l\r\n#L3#Extra Ability Lucky Point 대해 알고 싶.#l";
+                    String v2 = "#fs11#ดู 자세한 ข้อมูล ด้านล่าง เลือก지 통해 ยืนยัน하실 수 .\r\n\r\n#b#L0#Extra Ability Preset 관해 알고 싶.#l\r\n#b#L1#Extra Ability ระดับ별 ตัวเลือก 알고 싶.#l\r\n#b#L2#Extra Ability ระดับ별 โอกาส 알고 싶.#l\r\n#L3#Extra Ability Lucky Point 대해 알고 싶.#l";
                     int v3 = self.askMenu(v2);
                     switch (v3) {
                         case 0: {
@@ -858,7 +858,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                             break;
                         }
                         case 3: {
-                            self.say("#fs11#Lucky Point ใช้한 재화 따라 차등 ได้รับ ด้านล่าง เหมือนกัน ได้รับสามารถ .\r\n\r\n#e#r#z" + requestItemID
+                            self.say("#fs11#Lucky Point ใช้한 재화 따라 ชา등 ได้รับ ด้านล่าง เหมือนกัน ได้รับสามารถ .\r\n\r\n#e#r#z" + requestItemID
                                     + "# ใช้ 시 3คะแนน");
                             self.say(
                                     "#fs11#เสริมแรง 시 얻 Lucky Point #e#b30 คะแนน#n#k 넘 시 อัตโนมัติ으 30คะแนน หัก, 1~5줄 해당 ตัวเลือก สูงสุด 수치 등장.\r\n\r\n#e5줄 럭키 โอกาส 10%\r\n4줄 럭키 โอกาส 10%\r\n3줄 럭키 โอกาส 15%\r\n2줄 럭키 โอกาส 25%\r\n1줄 럭키 โอกาส 40% .");
@@ -867,15 +867,15 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     }
                 } else {
                     self.say(
-                            "#fs11##bExtra Ability ระบบ#k ตัวละคร เพิ่มเติม적인 성장 수단.\r\n\r\nExtra Ability #e#r세 ชิ้น สุ่ม ตัวเลือก#k#n 부여하 방식으, 재화 ใช้ 부여되 ตัวเลือก 종류 เปลี่ยนสามารถ .\r\n\r\nตัวเลือก เปลี่ยน #e#bคะแนน, คะแนนโปรโมชั่น, Meso#k#n 등 재화 이용 เป็นไปได้, ใช้하 재화 따라 등장하 ตัวเลือก สูงสุด ระดับ 및 수치 차 발생.");
+                            "#fs11##bExtra Ability ระบบ#k ตัวละคร เพิ่มเติม적인 성장 수단.\r\n\r\nExtra Ability #e#r세 ชิ้น สุ่ม ตัวเลือก#k#n 부여하 ห้อง식으, 재화 ใช้ 부여되 ตัวเลือก 종류 เปลี่ยนสามารถ .\r\n\r\nตัวเลือก เปลี่ยน #e#bคะแนน, คะแนนโปรโมชั่น, Meso#k#n 등 재화 이용 เป็นไปได้, ใช้하 재화 따라 등장하 ตัวเลือก สูงสุด ระดับ และ 수치 ชา 발생.");
                     self.say(
                             "#fs11#แต่ละ 재화별 ตัวเลือก เปลี่ยน ใช้하 비용 ด้านล่าง เหมือนกัน.\r\n\r\n#rคะแนน : 1,000\r\nคะแนนโปรโมชั่น : 500\r\nMeso : 500,000,000");
-                    String v2 = "#fs11#보다 자세한 ข้อมูล ด้านล่าง เลือก지 통해 ยืนยัน하실 수 .\r\n\r\n#b#L0#Extra Ability Preset 관해 알고 싶.#l\r\n#b#L1#Extra Ability ระดับ별 ตัวเลือก 알고 싶.#l\r\n#b#L2#Extra Ability ระดับ별 โอกาส 알고 싶.#l\r\n#L3#Extra Ability Lucky Point 대해 알고 싶.#l";
+                    String v2 = "#fs11#ดู 자세한 ข้อมูล ด้านล่าง เลือก지 통해 ยืนยัน하실 수 .\r\n\r\n#b#L0#Extra Ability Preset 관해 알고 싶.#l\r\n#b#L1#Extra Ability ระดับ별 ตัวเลือก 알고 싶.#l\r\n#b#L2#Extra Ability ระดับ별 โอกาส 알고 싶.#l\r\n#L3#Extra Ability Lucky Point 대해 알고 싶.#l";
                     int v3 = self.askMenu(v2);
                     switch (v3) {
                         case 0: {
                             self.say(
-                                    "#fs11#Extra Ability Preset เริ่มต้น 1ชิ้น Preset พื้นฐาน으 제공, #bคะแนน#k 또 #bคะแนนโปรโมชั่น#k #e50,000#n ใช้ 1칸 추 확장สามารถ .\r\n\r\nแต่ละ Preset별 ต่างกัน ตัวเลือก ตั้งค่า 이용สามารถ , Preset เปลี่ยน할 때마다 #e30억 Meso#n ใช้.\r\n\r\n#e#r※ ตัวเลือก เปลี่ยน ปัจจุบัน ใช้ 중인 Preset 기준으 ใช้งาน되니 이용 สัปดาห์의하시기 โปรด.");
+                                    "#fs11#Extra Ability Preset เริ่มต้น 1ชิ้น Preset พื้นฐาน으 제공, #bคะแนน#k และ #bคะแนนโปรโมชั่น#k #e50,000#n ใช้ 1칸 추 확장สามารถ .\r\n\r\nแต่ละ Preset별 ต่างกัน ตัวเลือก ตั้งค่า 이용สามารถ , Preset เปลี่ยน할 때마다 #e30억 Meso#n ใช้.\r\n\r\n#e#r※ ตัวเลือก เปลี่ยน ปัจจุบัน ใช้ 중인 Preset 기준으 ใช้งาน되니 이용 สัปดาห์의하시기 โปรด.");
                             break;
                         }
                         case 1: {
@@ -888,9 +888,9 @@ public class JinCustomNPC extends ScriptEngineNPC {
                             self.say(
                                     "#fs11##e[ Rare ]#n\r\n\r\n#b- 피격 시 받 Damage 40~60%\r\n- str, dex, int, luk +50~80\r\n- 올Stat +20~50\r\n- hp +1000~2000\r\n- โจมตี력/마력 +10~30");
                             self.say(
-                                    "#fs11##b첫 째 줄#k #eระดับปัจจุบัน ตัวเลือก#n 등장, #b두 째 / 세 째 줄#k #eระดับปัจจุบัน보다 한 단계 ด้านล่าง ตัวเลือก#n 출현, ใช้ 한 재화 따라 이탈 ตัวเลือก 등장สามารถ .");
+                                    "#fs11##b첫 째 줄#k #eระดับปัจจุบัน ตัวเลือก#n 등장, #b두 째 / 세 째 줄#k #eระดับปัจจุบันดู 한 단계 ด้านล่าง ตัวเลือก#n 출현, ใช้ 한 재화 따라 이탈 ตัวเลือก 등장สามารถ .");
                             self.say(
-                                    "#fs11##b두 째 줄 ตัวเลือก#k #eคะแนน 및 คะแนนโปรโมชั่น#n ใช้ 시 #r30% โอกาส#k #eระดับปัจจุบัน ตัวเลือก#n 등장, #b세 째 줄 ตัวเลือก#k #eคะแนน#n ใช้ 시 #r10% โอกาส#k #eระดับปัจจุบัน ตัวเลือก#n 등장.");
+                                    "#fs11##b두 째 줄 ตัวเลือก#k #eคะแนน และ คะแนนโปรโมชั่น#n ใช้ 시 #r30% โอกาส#k #eระดับปัจจุบัน ตัวเลือก#n 등장, #b세 째 줄 ตัวเลือก#k #eคะแนน#n ใช้ 시 #r10% โอกาส#k #eระดับปัจจุบัน ตัวเลือก#n 등장.");
                             break;
                         }
                         case 2: {
@@ -900,7 +900,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                         }
                         case 3: {
                             self.say(
-                                    "#fs11#Lucky Point ใช้한 재화 따라 차등 ได้รับ ด้านล่าง เหมือนกัน ได้รับสามารถ .\r\n\r\n#e#rMeso ใช้ 시 : 1คะแนน\r\nคะแนนโปรโมชั่น ใช้ 시 : 2คะแนน\r\nคะแนน ใช้ 시 : 3คะแนน");
+                                    "#fs11#Lucky Point ใช้한 재화 따라 ชา등 ได้รับ ด้านล่าง เหมือนกัน ได้รับสามารถ .\r\n\r\n#e#rMeso ใช้ 시 : 1คะแนน\r\nคะแนนโปรโมชั่น ใช้ 시 : 2คะแนน\r\nคะแนน ใช้ 시 : 3คะแนน");
                             self.say(
                                     "#fs11#เสริมแรง 시 얻 Lucky Point #e#b30 คะแนน#n#k 넘 시 อัตโนมัติ으 30คะแนน หัก, 1~3줄 해당 ตัวเลือก สูงสุด 수치 등장.\r\n\r\n#e3줄 럭키 โอกาส 20%\r\n2줄 럭키 โอกาส 30%\r\n1줄 럭키 โอกาส 50% .");
                             break;
@@ -928,7 +928,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
     public void npc_2570100() {
         initNPC(MapleLifeFactory.getNPC(2570100));
         NumberFormat nf = NumberFormat.getNumberInstance();
-        String v0 = "구경해 보겠나. ขวา리 발견한 알 수 없 기운 느껴지 ไอเท็ม. …자네 가지고 있 그것에서 비슷한 기운 느껴지는군. 괜찮다면 ภายใน 가진 ไอเท็ม แลกเปลี่ยน해 สัปดาห์겠네.\r\n검 기운 느껴지 อุปกรณ์라면  기운 조합 새로운 ไอเท็ม 만들 수 있 것 เหมือนกัน군. 한  시도해 보겠나?\r\n\r\n";
+        String v0 = "구경해 보겠ฉัน. ขวา리 발견한 알 수 없 기운 느껴지 ไอเท็ม. …자네 가지고 있 เขา것에서 비슷한 기운 느껴지는군. 괜찮다면 ภายใน 가진 ไอเท็ม แลกเปลี่ยน해 สัปดาห์겠네.\r\n검 기운 느껴지 อุปกรณ์라면  기운 조합 ใหม่ ไอเท็ม 만들 수 있 것 เหมือนกัน군. 한  시도해 보겠ฉัน?\r\n\r\n";
         v0 += "#b#L0##e칠흑 기운#n #e헬 คะแนน#n แลกเปลี่ยน 싶.#l\r\n";
         v0 += "#L1##e헬 คะแนน 상점#n 이용 싶.#l\r\n";
         v0 += "#L2##eแต่ละ성한 힘 깃든 ไอเท็ม#n สร้าง 싶.#l\r\n";
@@ -938,7 +938,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
             case 0: {
                 int count = getPlayer().getItemQuantity(4036454, false);
                 int hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
-                String v2 = "자네 가지고 있 #b#i4036454# #z4036454##k 좋지 않 느낌 드는군. …그래. 헬 คะแนน라고 부르기 하지. 자네 가진 #b#z4036454##k 하나 #b3 헬 คะแนน#k 바꿔 สัปดาห์겠네. 앞으 자네 แลกเปลี่ยน ใช้하게 될 คะแนน 될 테니 จำเป็น한 만큼 건네 สัปดาห์게나.\r\n\r\n";
+                String v2 = "자네 가지고 있 #b#i4036454# #z4036454##k 좋지 않 느낌 드는군. …เขา래. 헬 คะแนน라고 부르기 하지. 자네 가진 #b#z4036454##k 하ฉัน #b3 헬 คะแนน#k 바꿔 สัปดาห์겠네. หน้า으 자네 แลกเปลี่ยน ใช้하게 될 คะแนน 될 테니 จำเป็น한 만큼 건네 สัปดาห์게ฉัน.\r\n\r\n";
                 v2 += "#b#eมี 중인 #z4036454# 갯수 : " + count + "\r\n";
                 v2 += "มี 중인 헬 คะแนน : " + nf.format(hellPoint) + "#n\r\n\r\n";
                 v2 += "#b#L0##e#z4036454##n #e헬 คะแนน#n แลกเปลี่ยน해สัปดาห์세요.#l\r\n";
@@ -947,21 +947,21 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 if (v3 == 0) {
                     count = getPlayer().getItemQuantity(4036454, false);
                     if (count <= 0) {
-                        self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았나?");
+                        self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았ฉัน?");
                         return;
                     }
-                    String v4 = "자네 #b#i4036454# #z4036454# " + count + "ชิ้น#k มี 있군. 몇 ชิ้น #b헬 คะแนน#k แลกเปลี่ยน 싶나?\r\n";
+                    String v4 = "자네 #b#i4036454# #z4036454# " + count + "ชิ้น#k มี 있군. กี่ ชิ้น #b헬 คะแนน#k แลกเปลี่ยน 싶ฉัน?\r\n";
                     int v5 = self.askNumber(v4, count, 1, count);
                     if (v5 > count) {
                         return; // Hack
                     }
                     if (1 == self
-                            .askYesNo("#b #b#i4036454# #z4036454# " + v5 + "ชิ้น#k #b" + (3 * v5) + " 헬 คะแนน#k แลกเปลี่ยน하겠나?")) {
+                            .askYesNo("#b #b#i4036454# #z4036454# " + v5 + "ชิ้น#k #b" + (3 * v5) + " 헬 คะแนน#k แลกเปลี่ยน하겠ฉัน?")) {
                         if (1 == target.exchange(4036454, -v5)) {
                             getPlayer().updateOneInfo(1234999, "hp", String.valueOf(hellPoint + (3 * v5)));
-                            self.say("#b" + (3 * v5) + " 헬 คะแนน#k แลกเปลี่ยน해줬으니 ยืนยัน해보게나.");
+                            self.say("#b" + (3 * v5) + " 헬 คะแนน#k แลกเปลี่ยน해줬으니 ยืนยัน해보게ฉัน.");
                         } else {
-                            self.say("알 수 없 이유 แลกเปลี่ยน ล้มเหลว했군. 다시 시도해보겠나?");
+                            self.say("알 수 없 이유 แลกเปลี่ยน ล้มเหลว했군. 다시 시도해보겠ฉัน?");
                         }
                     }
                 }
@@ -969,7 +969,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
             }
             case 1: {
                 int hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
-                String v2 = "탐욕스러운 자 말로 좋지 않아. 원하 ไอเท็ม 하나 골라 보게. 기사 한  ภายใน린 결정 복하지 않는다네. 자네 결정할 때 신중하게나. หลังครั้ง할 때 이미 늦었 테니.\r\n#b";
+                String v2 = "탐욕스러운 자 말로 좋지 않아. 원하 ไอเท็ม 하ฉัน 골라 보게. 기사 한  ภายใน린 결정 복하지 않는다네. 자네 결정할 때 신중하게ฉัน. หลังครั้ง할 때 이미 늦었 테니.\r\n#b";
                 v2 += "#eมี 중인 헬 คะแนน : " + nf.format(hellPoint) + "P\r\n\r\n";
                 v2 += "#k#e[ไอเท็ม 리스트]#n#b\r\n";
                 for (int i = 0; i < consumeList.length; ++i) {
@@ -979,19 +979,19 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 int v3 = self.askMenu(v2);
                 hellPoint = getPlayer().getOneInfoQuestInteger(1234999, "hp");
                 if (consumePrice[v3] > hellPoint) {
-                    self.say("#b헬 คะแนน#k ไม่พอ하군. 원하 것 얻기 ด้านบน해서 대 치러야 하지 않겠나?");
+                    self.say("#b헬 คะแนน#k ไม่พอ하군. 원하 것 얻기 ด้านบน해서 대 치러야 하지 않겠ฉัน?");
                     return;
                 }
                 if (1 == target.exchange(consumeList[v3], 1)) {
                     getPlayer().updateOneInfo(1234999, "hp", String.valueOf(hellPoint - consumePrice[v3]));
-                    self.say("여기 있네. 자네 กระเป๋า ยืนยัน해보게나.");
+                    self.say("ที่นี่ 있네. 자네 กระเป๋า ยืนยัน해보게ฉัน.");
                 } else {
                     self.say("자네 กระเป๋า 가득찬 것 เหมือนกัน군.");
                 }
                 break;
             }
             case 2: {
-                String v2 = "금방이라 사라질 듯 불안정한 기운이군. 한  สำเร็จ하지 못สามารถ 있다네. จริงๆ 시도하겠나? 두려울 때 도망치 것 방법이겠지. 하지 สำเร็จ ตอนนี้보다 강한 힘 얻 수 있 걸세.\r\n\r\n#b(สร้าง ล้มเหลว 시 재료 ใช้된 칠흑 อุปกรณ์ 제นอก한 คะแนน 사라지며, สร้าง สำเร็จ 시 재료 ใช้된 칠흑 อุปกรณ์ ตัวเลือก แต่ละ성한 칠흑 อุปกรณ์ ก่อน승.)#n#b\r\n\r\n";
+                String v2 = "금ห้อง이라 사라질 듯 불ใน정한 기운이군. 한  สำเร็จ하지 못สามารถ มี네. จริงๆ 시도하겠ฉัน? 두려울 때 도망치 것 ห้อง법이겠지. 하지 สำเร็จ ตอนนี้ดู แข็งแรง 힘 얻 수 있 걸세.\r\n\r\n#b(สร้าง ล้มเหลว 시 재료 ใช้된 칠흑 อุปกรณ์ 제นอก한 คะแนน 사라지며, สร้าง สำเร็จ 시 재료 ใช้된 칠흑 อุปกรณ์ ตัวเลือก แต่ละ성한 칠흑 อุปกรณ์ ก่อน승.)#n#b\r\n\r\n";
                 v2 += "#k#e[ไอเท็ม 리스트]#n#b\r\n";
                 for (int i = 0; i < equipList.length; ++i) {
                     if (i == 3)
@@ -1014,7 +1014,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                         break;
                     }
                     case 1: {
-                        pointName = "데미안 คะแนน";
+                        pointName = "데미ใน คะแนน";
                         pointKey = "hell_demian_point";
                         break;
                     }
@@ -1053,12 +1053,12 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     self.say("알 수 없 오류 발생하였.");
                     return;
                 }
-                String v4 = "#b#i" + equipID + "# #z" + equipID + "##k 얻고 싶나보군. 강한 힘 얻기 ด้านบน해서 #b#z" + baseEquipID
+                String v4 = "#b#i" + equipID + "# #z" + equipID + "##k 얻고 싶ฉัน보군. แข็งแรง 힘 얻기 ด้านบน해서 #b#z" + baseEquipID
                         + "# 1ชิ้น#k #b" + p + " " + pointName
-                        + "#k, #b#z4036454# 50ชิ้น#k จำเป็น하다네. สร้าง ล้มเหลว 재료 ใช้한 อุปกรณ์ 남지 คะแนน 강림 칠흑 기운 หายไป 되지. 시도해 보겠나?\r\n\r\n\n";
+                        + "#k, #b#z4036454# 50ชิ้น#k จำเป็นทำ네. สร้าง ล้มเหลว 재료 ใช้한 อุปกรณ์ 남지 คะแนน 강림 칠흑 기운 หายไป 되지. 시도해 보겠ฉัน?\r\n\r\n\n";
                 int point = getPlayer().getOneInfoQuestInteger(787777, pointKey);
                 v4 += "#b#eมี 중인 " + pointName + " : " + nf.format(point)
-                        + "P#n#k\r\n\r\n#e#r※ กระเป๋า 정렬 기준으 가장 앞 있 อุปกรณ์ 재료 ใช้.";
+                        + "P#n#k\r\n\r\n#e#r※ กระเป๋า 정렬 기준으 가장 หน้า 있 อุปกรณ์ 재료 ใช้.";
                 if (1 == self.askYesNo(v4)) {
                     Item item = null;
                     if (baseEquipID == 1162083) {
@@ -1080,7 +1080,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     }
                     int count = getPlayer().getInventory(MapleInventoryType.EQUIP).countByIdWithoutLock(baseEquipID);
                     if (count <= 0) {
-                        self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았나?");
+                        self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았ฉัน?");
                         return;
                     }
                     if (point < p) {
@@ -1098,7 +1098,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     if (Randomizer.isSuccess(50)) {
                         item = getPlayer().getInventory(MapleInventoryType.EQUIP).findByIdWithoutLock(baseEquipID);
                         if (item == null) {
-                            self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았나?");
+                            self.say("자네에게서 어떠한 기운 느껴지지 않는군. 허상이라 보았ฉัน?");
                             return;
                         }
                         if (1 == target.exchange(baseEquipID, -1, 4036454, -removeQty)) {
@@ -1136,7 +1136,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
 
                             MapleInventoryManipulator.addbyItem(getClient(), newEquip);
 
-                            self.say("สำเร็จ했군. 자네 อุปกรณ์ 알 수 없 기운 느껴지네. …마치 그 악마처럼.");
+                            self.say("สำเร็จ했군. 자네 อุปกรณ์ 알 수 없 기운 느껴지네. …마치 เขา 악마처럼.");
                         }
                     } else {
                         target.exchange(4036454, -removeQty);
@@ -1152,13 +1152,13 @@ public class JinCustomNPC extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9000041));
         long totalMeso1 = PraiseDonationMeso.getTotalMeso();
 
-        String v0 = "#fs11#안녕하세요 모험 #b#h0##k, #e강림เดือน드#n 새로온 #b신입 뉴비#k들 정착 ด้านบน한 #e#b뉴비 기부함#k#n 운영 .\r\n"
+        String v0 = "#fs11#ใน녕ทำ 모험 #b#h0##k, #e강림เดือน드#n 새로온 #b신입 뉴비#k들 정착 ด้านบน한 #e#b뉴비 기부함#k#n 운영 .\r\n"
                 + "\r\n"
                 + "#fs12##e[ ปัจจุบัน 기부된 금액 : #b"
                 + NumberFormat.getInstance().format(totalMeso1)
                 + " Meso ]#k#n#fs11#\r\n"
                 + "\r\n"
-                + "#b#L0#뉴비 기부함 무엇인지 좀 더 อธิบาย해สัปดาห์세요.#l\r\n"
+                + "#b#L0#뉴비 기부함 อะไร인지 좀 더 อธิบาย해สัปดาห์세요.#l\r\n"
                 + "#L1#Meso 기부하겠.#l\r\n"
                 + "#L2#기부 랭킹 보겠.#l\r\n"
                 + "#L3#기부 รางวัล 수령하겠.#l\r\n"
@@ -1168,7 +1168,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         switch (v1) {
             case 0: {
                 String v2 = "#fs11#อธิบาย จำเป็น한 รายการ เลือก해สัปดาห์시기 โปรด.\r\n\r\n";
-                v2 += "#b#L0#Meso 기부 어떻게 하나요?#l\r\n";
+                v2 += "#b#L0#Meso 기부 อย่างไร 하ฉัน요?#l\r\n";
                 // v2 += "#b#L1#기부 랭킹 รางวัล 대해 อธิบาย해 สัปดาห์세요.#l\r\n";
                 v2 += "#b#L2#기부 누적 รางวัล 대해 อธิบาย해 สัปดาห์세요.#l\r\n";
                 v2 += "#b#L3#뉴비 สนับสนุน금 대해 อธิบาย해 สัปดาห์세요.#l\r\n";
@@ -1182,7 +1182,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     }
                     case 1: {
                         self.say(
-                                "#fs11#기부 랭킹 #e매เดือน 1วัน#n마다 ด้านล่าง 기준으 รางวัล 지급.\r\n\r\n#b1ด้านบน : 20 คะแนน + 100 메이플 คะแนน\r\n2ด้านบน : 15 คะแนน + 70 메이플 คะแนน\r\n3ด้านบน~5ด้านบน : 10 คะแนน + 50 메이플 คะแนน\r\n6ด้านบน~10ด้านบน : 5 คะแนน + 30 메이플 คะแนน#k\r\n\r\n매เดือน 1วัน마다 뉴비 기부함 누적된 Meso #e1000억 Meso#n 넘길 경ขวา #e누적된 Meso 30%#n 기부 เข้าร่วม한 유저 중 30억 이상 기부자 #eสุ่ม 3명 1/n#n  지급.\r\n\r\n#r(단, Meso 과도하게 집중되 문제 방지하기 ด้านบน해 30% สูงสุด 금액 1500억으 จำกัด.)");
+                                "#fs11#기부 랭킹 #e매เดือน 1วัน#n마다 ด้านล่าง 기준으 รางวัล 지급.\r\n\r\n#b1ด้านบน : 20 คะแนน + 100 메이플 คะแนน\r\n2ด้านบน : 15 คะแนน + 70 메이플 คะแนน\r\n3ด้านบน~5ด้านบน : 10 คะแนน + 50 메이플 คะแนน\r\n6ด้านบน~10ด้านบน : 5 คะแนน + 30 메이플 คะแนน#k\r\n\r\n매เดือน 1วัน마다 뉴비 기부함 누적된 Meso #e1000억 Meso#n 넘ถนน 경ขวา #e누적된 Meso 30%#n 기부 เข้าร่วม한 유ฉัน 중 30억 이상 기부자 #eสุ่ม 3명 1/n#n  지급.\r\n\r\n#r(단, Meso และ도하게 บ้าน중되 ประตู제 ห้อง지하기 ด้านบน해 30% สูงสุด 금액 1500억으 จำกัด.)");
                         break;
                     }
                     case 2: {
@@ -1192,7 +1192,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                     }
                     case 3: {
                         self.say(
-                                "#fs11#신규 유저 #eบัญชี 생성 หลัง 3วัน 지나기 ก่อน#n\r\n광장 #b‘기부함’#k NPC 통해 #e뉴비 สนับสนุน금 500억 Meso#n\r\n수령สามารถ .\r\n\r\n#b└ 뉴비 สนับสนุน금으 지급된 500억 Meso 뉴비 기부함 누적 Meso หัก.\r\n\r\n└ 뉴비 สนับสนุน금 250เลเวล 이상 ตัวละคร 수령 เป็นไปได้.\r\n\r\n└ 뉴비 สนับสนุน금 유니온 8,000 이상 บัญชี 수령 เป็นไปได้.\r\n");
+                                "#fs11#신규 유ฉัน #eบัญชี 생성 หลัง 3วัน 지ฉัน기 ก่อน#n\r\n광장 #b‘기부함’#k NPC 통해 #e뉴비 สนับสนุน금 500억 Meso#n\r\n수령สามารถ .\r\n\r\n#b└ 뉴비 สนับสนุน금으 지급된 500억 Meso 뉴비 기부함 누적 Meso หัก.\r\n\r\n└ 뉴비 สนับสนุน금 250เลเวล 이상 ตัวละคร 수령 เป็นไปได้.\r\n\r\n└ 뉴비 สนับสนุน금 유니온 8,000 이상 บัญชี 수령 เป็นไปได้.\r\n");
                         break;
                     }
                 }
@@ -1213,7 +1213,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
 
                 if (day == 1 && hours == 00 && minutes >= 00 ||
                         day == 1 && hours == 00 && minutes < 5) { // 매달 1วัน 00시 00นาที 00시 04นาที 수령 불
-                    self.say("랭킹 집계 인 00시 04นาที 기부 เข้าร่วมสามารถ ไม่มี.");
+                    self.say("랭킹 บ้าน계 인 00시 04นาที 기부 เข้าร่วมสามารถ ไม่มี.");
                     return;
                 }
 
@@ -1237,19 +1237,19 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 long meso = getPlayer().getMeso();
                 int d = (int) (meso / 100000000);
                 v2 += "ปัจจุบัน 기부함 Meso : " + NumberFormat.getInstance().format(totalMeso) + " Meso#n\r\n";
-                v2 += "#e 달 나 기부 : " + NumberFormat.getInstance().format(myTotalMeso) + " Meso#n\r\n";
+                v2 += "#e 달 ฉัน 기부 : " + NumberFormat.getInstance().format(myTotalMeso) + " Meso#n\r\n";
                 v2 += "ปัจจุบัน 기부 เป็นไปได้ Meso : " + NumberFormat.getInstance().format(d * 100000000L)
                         + " Meso#n \r\n                                  #r(" + d + "ครั้ง เป็นไปได้)#k\r\n\r\n";
                 v2 += "얼MP 기부ต้องการหรือไม่? #b(입력 수치당 = 1억 Meso)#k\r\n\r\n";
                 int v3 = self.askNumber(v2, 1, 1, d);
                 if (v3 <= 0) {
-                    self.say("기부สามารถ 있 ต่ำสุด Meso 단ด้านบน보다 가진 Meso 적어 기부 ดำเนินการสามารถ ไม่มี.");
+                    self.say("기부สามารถ 있 ต่ำสุด Meso 단ด้านบนดู 가진 Meso 적어 기부 ดำเนินการสามารถ ไม่มี.");
                     return;
                 }
                 long donationMeso = v3 * 100000000L;
                 long donationMeso2 = v3;
                 if (donationMeso > getPlayer().getMeso()) {
-                    self.say("기부하려 시도한 Meso보다 가진 Meso 적어 기부 ดำเนินการสามารถ ไม่มี.");
+                    self.say("기부하려 시도한 Mesoดู 가진 Meso 적어 기부 ดำเนินการสามารถ ไม่มี.");
                     return;
                 }
                 int max = getPlayer().getOneInfoQuestInteger(1211345, "today");
@@ -1313,7 +1313,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                                 + NumberFormat.getInstance().format(totalMeso) + "\r\n";
                         v4 += "수령 เป็นไปได้ รางวัล 횟수 : " + remainCount + " ครั้ง\r\n\r\n"
                                 + "#b#n누적 Meso 10억 당 1ครั้ง#k รางวัล 수령 เป็นไปได้.\r\n\r\n";
-                        v4 += remainCount + "ครั้ง 모두 ใช้ ด้านล่าง ไอเท็ม ได้รับต้องการหรือไม่?\r\n\r\n";
+                        v4 += remainCount + "ครั้ง ทั้งหมด ใช้ ด้านล่าง ไอเท็ม ได้รับต้องการหรือไม่?\r\n\r\n";
                         v4 += "#b#i4031227# #z4031227# x" + remainCount;
                         if (1 == self.askYesNo(v4)) {
                             if (remainCount <= 0) {
@@ -1385,7 +1385,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 long delta = System.currentTimeMillis() - timestamp.getTime();
 
                 if (delta >= (1000 * 60 * 60 * 24 * 3L)) {
-                    self.say("บัญชี 생성 หลัง 3วัน ก่อน까지 뉴비 สนับสนุน금 수령สามารถ .");
+                    self.say("บัญชี 생성 หลัง 3วัน ก่อนถึง 뉴비 สนับสนุน금 수령สามารถ .");
                     return;
                 }
 
@@ -1403,7 +1403,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
 
                 if (day == 1 && hours == 00 && minutes >= 00 ||
                         day == 1 && hours == 00 && minutes < 5) { // 매달 1วัน 00시 00นาที 00시 04นาที 수령 불
-                    self.say("랭킹 집계 인 00시 04นาที 뉴비 สนับสนุน금 수령สามารถ ไม่มี.");
+                    self.say("랭킹 บ้าน계 인 00시 04นาที 뉴비 สนับสนุน금 수령สามารถ ไม่มี.");
                     return;
                 }
 
@@ -1529,27 +1529,27 @@ public class JinCustomNPC extends ScriptEngineNPC {
         if (1 == self.askYesNo(v0)) {
             if (type == 0) {
                 if (getPlayer().getRealCash() < price) {
-                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             } else if (type == 1) {
                 if (getPlayer().getHongboPoint() < price) {
-                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             } else if (type == 2) {
                 if (getPlayer().getMeso() < price) {
-                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say(payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             } else if (type == 3) {
                 if (getPlayer().getCashPoint() < price) {
-                    self.say("#fs11#" + payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say("#fs11#" + payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             } else if (type == 4) {
                 if (getPlayer().getItemQuantity(4031227, false) < price) {
-                    self.say("#fs11#" + payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say("#fs11#" + payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             }
@@ -1567,7 +1567,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 getPlayer().gainCashPoint((int) -price);
             } else if (type == 4) {
                 if (target.exchange(4031227, (int) -price) < 0) {
-                    self.say("#fs11# " + payType + " ไม่พอ한 거 เหมือนกัน은데? 아무리 너라 고용비 확실해야 하 법이지.");
+                    self.say("#fs11# " + payType + " ไม่พอ한 거 เหมือนกัน은데? ใคร리 너라 고용비 확실해야 하 법이지.");
                     return;
                 }
             }
@@ -1606,7 +1606,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
             LoggingManager.putLog(new ConsumeLog(getPlayer(), 1, sb));
 
             // objects.utils.FileoutputUtil.log("./TextLog/BuyStoneCraft.txt", "แต่ละ인석 뽑기
-            // (ไอเท็มID : " + itemID + ", 지불 방식 : หลัง원, ใช้자 : " + getPlayer().getName() +
+            // (ไอเท็มID : " + itemID + ", 지불 ห้อง식 : หลัง원, ใช้자 : " + getPlayer().getName() +
             // ")\r\n");
             String v7 = "";
             if (DBConfig.isGanglim) {
@@ -1654,7 +1654,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v0 += "#fs11#";
         }
-        v0 += "#h0#! 오랜만이야!\r\n스승님께서 검 마법사 남긴 기록 연구하시다 이상한 돌 발견하셨어.\r\n\r\n#b#i2432126# #z2432126#\r\n #i2432127#  #z2432127##k\n\r\n\r\n이게 바 그 돌이야.";
+        v0 += "#h0#! 오랜만이야!\r\n스승님께서 검 마법사 남긴 기록 연구하시다 이상한 돌 발견하셨어.\r\n\r\n#b#i2432126# #z2432126#\r\n #i2432127#  #z2432127##k\n\r\n\r\n이게 바 เขา 돌이야.";
 
         self.say(v0);
 
@@ -1662,7 +1662,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         if (DBConfig.isGanglim) {
             v1 += "#fs11#";
         }
-        v1 += "스승님께서 #b“겉 평범해 보 돌이지 미약하게 검 마법사 기운 느껴진다. 불안정한 기운 다듬으면 힘 บางส่วน ใช้สามารถ 있을지 모른다. 하지……”#k 이렇게 중얼거리시더니 갑자기 어디론 사라지셨어.\r\n\r\n어때? 관심 있어? (말 싶어 하 눈치다. 한  들어 ดู 할까.)\r\n\r\n";
+        v1 += "스승님께서 #b“겉 평범해 보 돌이지 미약하게 검 마법사 기운 느껴진다. 불ใน정한 기운 다듬으면 힘 บางส่วน ใช้สามารถ 있을지 모른다. 하지……”#k 이렇게 중얼ถนน시더니 갑자기 ที่ไหน론 사라지셨어.\r\n\r\n어때? 관심 있어? (말 싶어 하 눈치다. 한  들어 ดู 할까.)\r\n\r\n";
         v1 += "#b#L0#검 마법사 남긴 돌?#l\r\n#L1#แต่ละ인 석판 ยืนยัน 싶어.#l\r\n#L2#คะแนน ใช้ แต่ละ인석 뽑고 싶어.#l\r\n#L3#คะแนน ใช้ แต่ละ인석 세공 싶어.#l";
         int v2 = self.askMenu(v1);
         switch (v2) {
@@ -1671,24 +1671,24 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "스승님께서  돌 แต่ละ인석이라고 부르셨어.\r\n\r\n#b(엘윈 들고 있 석판 쌓인 먼지 털어ภายใน더니 ภายใน게 건넸다. แต่ละ인석 하나 겨ขวา 들어갈 크기 홈 석판 군데군데 파여 있다.)#k\r\n\r\n 돌 불안정한 기운 다듬 งาน 세공이라고 하는데, 세공 마친 แต่ละ인석 석판 홈 끼ขวา면 돌 남아 있 힘 บางส่วน ใช้สามารถ 있 거야. 나 스승님께서 하시 พูด 듣기 한 거라서 정확하게 모르지…….\r\n\r\n";
-                v3 += "#b#L0#어디서 얻 수 있지?#l\r\n#L1#세공하 방법?#l";
+                v3 += "스승님께서  돌 แต่ละ인석이라고 부르셨어.\r\n\r\n#b(엘윈 들고 있 석판 쌓인 먼지 털어ภายใน더니 ภายใน게 건넸다. แต่ละ인석 하ฉัน 겨ขวา 들어갈 크기 홈 석판 군데군데 파여 มี.)#k\r\n\r\n 돌 불ใน정한 기운 다듬 งาน 세공이라고 하는데, 세공 마친 แต่ละ인석 석판 홈 끼ขวา면 돌 남아 있 힘 บางส่วน ใช้สามารถ 있 거야. ฉัน 스승님께서 하시 พูด 듣기 한 거라서 정확하게 모르지…….\r\n\r\n";
+                v3 += "#b#L0#ที่ไหน서 얻 수 있지?#l\r\n#L1#세공하 ห้อง법?#l";
                 int v4 = self.askMenu(v3);
                 switch (v4) {
                     case 0: {
                         String v5 = "";
                         if (DBConfig.isGanglim) {
-                            v5 = "#fs11#แต่ละ인석 검 마법사 지하 서고 있 보관함 들어 있어.\r\n결계 때문 스승나 ภายใน 없으면 꺼낼 수 없으니까 จำเป็น 나 말해.\r\n\r\n#h0# 너라고 해, 결계 마법사 고용비 제대 받 거야.\r\n보관함 어떤 แต่ละ인석 꺼ภายใน질지 나 몰라. 어떤 게 나오더라 고용비 똑เหมือนกัน으니까 알아둬.\r\n\r\n";
+                            v5 = "#fs11#แต่ละ인석 검 마법사 지하 서고 있 보관함 들어 있어.\r\n결계 때ประตู 스승ฉัน ภายใน 없으면 꺼낼 수 없으니까 จำเป็น ฉัน 말해.\r\n\r\n#h0# 너라고 해, 결계 마법사 고용비 제대 받 거야.\r\n보관함 어떤 แต่ละ인석 꺼ภายใน질지 ฉัน 몰라. 어떤 게 ฉัน오더라 고용비 똑เหมือนกัน으니까 알아둬.\r\n\r\n";
                             v5 += "#e강림 แคช : 3,000 แคช\r\n#b[정밀한 แต่ละ인석 80%, 평범한 แต่ละ인석 20%]#k\r\nBrilliant Light Crystal : 500 ชิ้น\r\n#b[정밀한 แต่ละ인석 10%, 평범한 แต่ละ인석 90%]#k#k";
                         } else {
-                            v5 = "แต่ละ인석 검 마법사 지하 서고 있 보관함 들어 있어.\r\n결계 때문 스승나 ภายใน 없으면 꺼낼 수 없으니까 จำเป็น 나 말해.\r\n\r\n#h0# 너라고 해, 결계 마법사 고용비 제대 받 거야.\r\n보관함 어떤 แต่ละ인석 꺼ภายใน질지 나 몰라. 어떤 게 나오더라 고용비 똑เหมือนกัน으니까 알아둬.\r\n\r\n";
+                            v5 = "แต่ละ인석 검 마법사 지하 서고 있 보관함 들어 있어.\r\n결계 때ประตู 스승ฉัน ภายใน 없으면 꺼낼 수 없으니까 จำเป็น ฉัน 말해.\r\n\r\n#h0# 너라고 해, 결계 마법사 고용비 제대 받 거야.\r\n보관함 어떤 แต่ละ인석 꺼ภายใน질지 ฉัน 몰라. 어떤 게 ฉัน오더라 고용비 똑เหมือนกัน으니까 알아둬.\r\n\r\n";
                             v5 += "#eคะแนน : 3,000 #b(정밀한 แต่ละ인석 80%, 평범한 แต่ละ인석 20%)#k\r\nคะแนนโปรโมชั่น : 3,000 #b(정밀한 แต่ละ인석 60%, 평범한 แต่ละ인석 40%)#k\r\nMeso : 1,500,000,000 #b(정밀한 แต่ละ인석 10%, 평범한 แต่ละ인석 90%)#k";
                         }
                         self.say(v5);
 
                         /*
                          * String v6 =
-                         * "그러고 보니 검 마법사 ผลกระทบ 받 군단장 잔상 처치 แต่ละ인석 얻 수 있을지 몰라 #r(스ขวา, 데미안, 루시드, 윌, 더스크, 듄켈, 진 힐라, 검 마법사 처치 시 โอกาส적으 하급 แต่ละ인석 상자 또 중급 แต่ละ인석 상자 ดรอปสามารถ ).#k"
+                         * "เขา러고 보니 검 마법사 ผลกระทบ 받 군단장 잔상 처치 แต่ละ인석 얻 수 있을지 몰라 #r(스ขวา, 데미ใน, 루시드, 윌, 더스크, 듄켈, 진 힐라, 검 마법사 처치 시 โอกาส적으 하급 แต่ละ인석 상자 และ 중급 แต่ละ인석 상자 ดรอปสามารถ ).#k"
                          * ;
                          * v6 +=
                          * "\r\n\r\n#e30% โอกาส ‘하급 แต่ละ인석 상자’ ดรอป(ชิ้น인 ดรอป, สูงสุด 1ชิ้น)#n\r\n#b└ 정밀한 แต่ละ인석 10%, 평범한 แต่ละ인석 90%#k\r\n\r\n#e10% โอกาส ‘중급 แต่ละ인석 상자’ ดรอป(ชิ้น인 ดรอป, สูงสุด 1ชิ้น)#n\r\n#b└ 정밀한 แต่ละ인석 30%, 평범한 แต่ละ인석 70%#k"
@@ -1702,14 +1702,14 @@ public class JinCustomNPC extends ScriptEngineNPC {
                         if (DBConfig.isGanglim) {
                             v5 += "#fs11#";
                         }
-                        v5 += "스승님 허락 없 저희끼리 이래 괜찮 걸까요……?\r\n\r\nแต่ละ인석 저 가지고 오시면 불안정한 기운 다듬어 드릴게요.\r\nแต่ละ인석 남아 있 기운 불안정해서 세공 ล้มเหลวสามารถ 있어요.\r\n\r\n";
+                        v5 += "스승님 허락 없 ฉัน희끼리 이래 괜찮 걸까요……?\r\n\r\nแต่ละ인석 ฉัน 가지고 오시면 불ใน정한 기운 다듬어 드릴게요.\r\nแต่ละ인석 남아 있 기운 불ใน정해서 세공 ล้มเหลวสามารถ 있어요.\r\n\r\n";
                         self.sayReplacedNpc(v5, 1530040);
 
                         String v6 = "";
                         if (DBConfig.isGanglim) {
-                            v6 = "#fs11##h0# 이라고 해, 조작 마법사 고용비 제대 받 거예요. 세공 ล้มเหลว하더라 고용비 똑เหมือนกัน으니까 알고 계세요.\r\n\r\n#e강림 แคช : 1,000 แคช\r\nคะแนน : 3,000 คะแนน\r\nBrilliant Light Crystal : 200 ชิ้น";
+                            v6 = "#fs11##h0# 이라고 해, 조작 마법사 고용비 제대 받 거예요. 세공 ล้มเหลว하더라 고용비 똑เหมือนกัน으니까 알고 อยู่.\r\n\r\n#e강림 แคช : 1,000 แคช\r\nคะแนน : 3,000 คะแนน\r\nBrilliant Light Crystal : 200 ชิ้น";
                         } else {
-                            v6 = "#h0# 이라고 해, 조작 마법사 고용비 제대 받 거예요. 세공 ล้มเหลว하더라 고용비 똑เหมือนกัน으니까 알고 계세요.\r\n\r\n#eคะแนน : 1,000\r\nคะแนนโปรโมชั่น : 1,000\r\nMeso : 500,000,000";
+                            v6 = "#h0# 이라고 해, 조작 마법사 고용비 제대 받 거예요. 세공 ล้มเหลว하더라 고용비 똑เหมือนกัน으니까 알고 อยู่.\r\n\r\n#eคะแนน : 1,000\r\nคะแนนโปรโมชั่น : 1,000\r\nMeso : 500,000,000";
                         }
                         self.sayReplacedNpc(v6, 1530040);
 
@@ -1717,8 +1717,8 @@ public class JinCustomNPC extends ScriptEngineNPC {
                         if (DBConfig.isGanglim) {
                             v7 += "#fs11#";
                         }
-                        v7 += "#r※ 장착한 แต่ละ인석 임의 ปลดล็อกสามารถ ไม่มี, ต่างกัน แต่ละ인석 장착 기존 แต่ละ인석 파괴 그 자리 장착하게 . 파괴된 แต่ละ인석 흔적 남지 않으며 ครั้ง수 불가.";
-                        v7 += "\r\n\r\n※ แต่ละ인석 플러스 10ครั้ง, 마이너스 10ครั้ง ทั้งหมด 20ครั้ง 세공 모두 마쳐야 ตัวเลือก ใช้งาน.\r\n\r\n";
+                        v7 += "#r※ 장착한 แต่ละ인석 임의 ปลดล็อกสามารถ ไม่มี, ต่างกัน แต่ละ인석 장착 기존 แต่ละ인석 파괴 เขา 자리 장착하게 . 파괴된 แต่ละ인석 흔적 남지 않으며 ครั้ง수 불가.";
+                        v7 += "\r\n\r\n※ แต่ละ인석 플러스 10ครั้ง, 마이너스 10ครั้ง ทั้งหมด 20ครั้ง 세공 ทั้งหมด 마쳐야 ตัวเลือก ใช้งาน.\r\n\r\n";
                         self.sayReplacedNpc(v7, 1530040);
                         break;
                     }
@@ -1857,7 +1857,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                  * }
                  * v3 += "\r\n";
                  */
-                // v3 += "\r\n#b#L0#แต่ละ인 석판 กระเป๋า 집어 넣.#l";
+                // v3 += "\r\n#b#L0#แต่ละ인 석판 กระเป๋า บ้าน어 넣.#l";
                 v3 += "\r\n";
                 v3 += "\r\n#b#L1#1째 석판 홈 ล็อก ตั้งค่า เปลี่ยน하겠.#l";
                 v3 += "\r\n#b#L2#2째 석판 홈 ล็อก ตั้งค่า เปลี่ยน하겠.#l";
@@ -1898,12 +1898,12 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 String v3 = "";
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
-                    v3 += "แต่ละ인석 더 จำเป็น해? 검 마법사 지하 서고 가지고 올게.\r\n\r\n고용비 어떻게 지불할래?\r\n\r\n#b";
+                    v3 += "แต่ละ인석 더 จำเป็น해? 검 마법사 지하 서고 가지고 올게.\r\n\r\n고용비 อย่างไร 지불할래?\r\n\r\n#b";
                     v3 += "#L4#강림 3,000 แคช 지불 แต่ละ인석 ได้รับ.#l\r\n";
                     v3 += "#L5#Brilliant Light Crystal 600ชิ้น 지불 แต่ละ인석 ได้รับ.#l\r\n";
                     v3 += "#L3#นิดหน่อย 더 고민해 볼게.#l";
                 } else {
-                    v3 += "แต่ละ인석 더 จำเป็น해? 검 마법사 지하 서고 가지고 올게.\r\n\r\n고용비 어떻게 지불할래?\r\n\r\n#b";
+                    v3 += "แต่ละ인석 더 จำเป็น해? 검 마법사 지하 서고 가지고 올게.\r\n\r\n고용비 อย่างไร 지불할래?\r\n\r\n#b";
                     v3 += "#L0#คะแนน 3,000 지불 แต่ละ인석 ได้รับ.#l\r\n";
                     v3 += "#L1#คะแนนโปรโมชั่น 3,000 지불 แต่ละ인석 ได้รับ.#l\r\n";
                     v3 += "#L2#Meso 1,500,000,000 지불 แต่ละ인석 ได้รับ.#l\r\n";
@@ -1940,7 +1940,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "세공 แต่ละ인 석판 끼워져 있 แต่ละ인석 เป็นไปได้해요.\r\nแต่ละ인석 세공 시 증감하 ตัวเลือก 최วินาที 세공 시 สุ่ม으 정해지는데, 석판 끼워져 있 แต่ละ인석 무엇인지 따라 정해지 ตัวเลือก 종류 달라질 수 있어요.\r\n\r\n";
+                v3 += "세공 แต่ละ인 석판 끼워져 있 แต่ละ인석 เป็นไปได้해요.\r\nแต่ละ인석 세공 시 증감하 ตัวเลือก 최วินาที 세공 시 สุ่ม으 정해지는데, 석판 끼워져 있 แต่ละ인석 อะไร인지 따라 정해지 ตัวเลือก 종류 달라질 수 있어요.\r\n\r\n";
                 v3 += "#eด้านล่าง ตัวเลือก 중 플러스 ตัวเลือก 1종#n\r\n#b└ 정밀한 แต่ละ인석 : 올Stat 5%, โจมตี력 2%, 마력 2%, Critical Damage 2%, บอส โจมตี력 5%, มอนสเตอร์ ป้องกัน력 무시 5%, Critical โอกาส 5%, สุดท้าย Damage 2%\r\n└ 평범한 แต่ละ인석 : 올Stat 2%, บอส โจมตี력 2%, มอนสเตอร์ ป้องกัน력 무시 2%, Critical โอกาส 2%\r\n\r\n#k";
                 v3 += "#eด้านล่าง ตัวเลือก 중 마이너스 ตัวเลือก 1종#n\r\n#b└ 정밀한 แต่ละ인석 : Damage 2% ลด (플러스 ตัวเลือก สุดท้าย Damage %인 경ขวา, สุดท้าย Damage 2% ลด แน่นอน)\r\n평범한 แต่ละ인석 : Damage 1% ลด, 올Stat 1% ลด#k\r\n\r\n";
                 self.sayReplacedNpc(v3, 1530040);
@@ -1948,13 +1948,13 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 String v4 = "";
                 if (DBConfig.isGanglim) {
                     v4 += "#fs11#";
-                    v4 += "แต่ละ인석 #e플러스 10ครั้ง 마이너스 10ครั้ง ทั้งหมด 20ครั้ง#n 세공 เป็นไปได้해요. 기운 불안정해서 세공 ล้มเหลวสามารถ 있다 점 알고 계세요!\r\n\r\n#r세공 시도 สำเร็จ 여부 무관하게 세공 เป็นไปได้ 횟수 หัก 복구สามารถ 없어요.#k\r\n\r\n#b";
+                    v4 += "แต่ละ인석 #e플러스 10ครั้ง 마이너스 10ครั้ง ทั้งหมด 20ครั้ง#n 세공 เป็นไปได้해요. 기운 불ใน정해서 세공 ล้มเหลวสามารถ มี 점 알고 อยู่!\r\n\r\n#r세공 시도 สำเร็จ 여부 무관하게 세공 เป็นไปได้ 횟수 หัก 복구สามารถ 없어요.#k\r\n\r\n#b";
                     v4 += "#L4#강림 1,000 แคช 지불 แต่ละ인석 세공.#l\r\n";
                     v4 += "#L6#강림 3,000 คะแนน 지불 แต่ละ인석 세공.#l\r\n";
                     v4 += "#L5#Brilliant Light Crystal 200ชิ้น 지불 แต่ละ인석 세공.#l\r\n";
                     v4 += "#L99#นิดหน่อย 더 고민해 볼게.#l\r\n";
                 } else {
-                    v4 += "แต่ละ인석 #e플러스 10ครั้ง 마이너스 10ครั้ง ทั้งหมด 20ครั้ง#n 세공 เป็นไปได้해요. 기운 불안정해서 세공 ล้มเหลวสามารถ 있다 점 알고 계세요!\r\n\r\n#r세공 시도 สำเร็จ 여부 무관하게 세공 เป็นไปได้ 횟수 หัก 복구สามารถ 없어요.#k\r\n\r\n#b";
+                    v4 += "แต่ละ인석 #e플러스 10ครั้ง 마이너스 10ครั้ง ทั้งหมด 20ครั้ง#n 세공 เป็นไปได้해요. 기운 불ใน정해서 세공 ล้มเหลวสามารถ มี 점 알고 อยู่!\r\n\r\n#r세공 시도 สำเร็จ 여부 무관하게 세공 เป็นไปได้ 횟수 หัก 복구สามารถ 없어요.#k\r\n\r\n#b";
                     v4 += "#L0#คะแนน 1,000 지불 แต่ละ인석 세공.#l\r\n";
                     v4 += "#L1#คะแนนโปรโมชั่น 1,000 지불 แต่ละ인석 세공.#l\r\n";
                     v4 += "#L2#Meso 500,000,000 지불 แต่ละ인석 세공.#l\r\n";
@@ -2185,10 +2185,10 @@ public class JinCustomNPC extends ScriptEngineNPC {
         }
         objects.utils.FileoutputUtil.log("./TextLog/EquipStoneCraft.txt",
                 "แต่ละ인석 세공(마이너스) (ช่อง : " + index + ", ไอเท็มID : " + itemID + ", ตัวเลือก : " + minusOption.name() + ", 값 : "
-                        + minusValue + ", 지불 방식 : " + payType.name() + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
+                        + minusValue + ", 지불 ห้อง식 : " + payType.name() + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
         v10 += "\r\n#b#n#L0#한  더 세공한다.#l\r\n";
-        v10 += "#L1#세공 그만둔다.#l";
+        v10 += "#L1#세공 เขา만둔다.#l";
         int v11 = self.askMenu(v10);
         // if (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index) >= 10 &&
         // getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index) >= 10) {
@@ -2343,14 +2343,14 @@ public class JinCustomNPC extends ScriptEngineNPC {
             v10 += "#rปัจจุบัน มี Brilliant Light Crystal : " + getPlayer().getItemQuantity(4031227, false);
         }
         v10 += "\r\n#b#n#L0#한  더 세공한다.#l\r\n";
-        v10 += "#L1#세공 그만둔다.#l";
+        v10 += "#L1#세공 เขา만둔다.#l";
         // if (getPlayer().getOneInfoQuestInteger(133333, "craftMinus" + index) >= 10 &&
         // getPlayer().getOneInfoQuestInteger(133333, "craftPlus" + index) >= 10) {
         getPlayer().checkImprintedStone();
         // }
         objects.utils.FileoutputUtil.log("./TextLog/StoneCraft.txt",
                 "แต่ละ인석 세공(플러스) (ช่อง : " + index + ", ไอเท็มID : " + itemID + ", ตัวเลือก : " + plusOption.name() + ", 값 : "
-                        + plusValue + ", 지불 방식 : " + payType.name() + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
+                        + plusValue + ", 지불 ห้อง식 : " + payType.name() + ", ใช้자 : " + getPlayer().getName() + ")\r\n");
 
         int v11 = self.askMenu(v10);
         if (v11 == 0) {
@@ -2364,10 +2364,10 @@ public class JinCustomNPC extends ScriptEngineNPC {
         }
         initNPC(MapleLifeFactory.getNPC(9010032));
 
-        var v0 = "안녕하세요, 운영자님.\r\n원활한 홍보 누적 รางวัล 지급 ด้านบน해 เตรียม된 บริการ.\r\n정해진 홍보 วัน수 달성한 유저 ด้านล่าง 훈장 수령 지급해 สัปดาห์세요.\r\n\r\n";
+        var v0 = "ใน녕ทำ, 운영자님.\r\n원활한 홍보 누적 รางวัล 지급 ด้านบน해 เตรียม된 บริการ.\r\n정해진 홍보 วัน수 달성한 유ฉัน ด้านล่าง 훈장 수령 지급해 สัปดาห์세요.\r\n\r\n";
         v0 += "#e[홍보 누적 훈장 지급 기준]#n\r\n";
-        v0 += "15วัน차 - #b#z1142070##k#r(올Stat 250, 공/마 200)#k\r\n";
-        v0 += "100วัน차 - #b#z1142072##k#r(올Stat 400, 공/마 350)#k\r\n\r\n";
+        v0 += "15วันชา - #b#z1142070##k#r(올Stat 250, 공/마 200)#k\r\n";
+        v0 += "100วันชา - #b#z1142072##k#r(올Stat 400, 공/마 350)#k\r\n\r\n";
         v0 += "#b#L0#강림 서포터 훈장 생성.#l\r\n";
         v0 += "#L1#강림 서포터즈 훈장 생성.#l\r\n";
 
@@ -2639,10 +2639,10 @@ public class JinCustomNPC extends ScriptEngineNPC {
         initNPC(MapleLifeFactory.getNPC(9010033));
         int restPoint = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinRestPointReward.getQuestID(),
                 "RestPoint");
-        String text = "안녕하세요.\r\n"
+        String text = "ใน녕ทำ.\r\n"
                 + "모험가님 성장 돕기 ด้านบน해 เตรียม된 출석 ระบบ.\r\n"
-                + "잠시 앉아서 쉬고 계시면 저희 เตรียม한 선물 드릴게요!\r\n\r\n"
-                + "선물 휴식 시ระหว่าง 540นาที 누적될 때마다 하나씩!\r\n"
+                + "잠시 앉아서 쉬고 계시면 ฉัน희 เตรียม한 선น้ำ 드릴게요!\r\n\r\n"
+                + "선น้ำ 휴식 시ระหว่าง 540นาที 누적될 때마다 하ฉัน씩!\r\n"
                 + "ทั้งหมด 15ชิ้น 받으실 수 있으니까 참고해 สัปดาห์세요!\r\n\r\n"
                 + "ปัจจุบัน 누적 휴식 시ระหว่าง : " + restPoint + "นาที\r\n\r\n";
 
@@ -2672,7 +2672,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
 
         if (menu == 0) {
             text = "누적 휴식 시ระหว่าง 따라 ด้านล่าง รางวัล ได้รับสามารถ ,\r\n";
-            text += "휴식 시ระหว่าง 마을 의자 또 라이딩 앉아 있 동안 누적.\r\n";
+            text += "휴식 시ระหว่าง หมู่บ้าน 의자 และ 라이딩 앉아 있 동ใน 누적.\r\n";
             for (int[] timeReward : restTimeRewards) {
                 int time = timeReward[0];
                 int itemID = timeReward[1];
@@ -2759,7 +2759,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         String today = sdf.format(System.currentTimeMillis());
         int missionTime = getPlayer().getOneInfoQuestInteger(QuestExConstants.JinQuestExAccount.getQuestID(),
                 "DailyMissionTime");
-        if (missionTime == 0 || Integer.parseInt(today) != missionTime) { // 첫เริ่ม 또 날짜바뀜
+        if (missionTime == 0 || Integer.parseInt(today) != missionTime) { // 첫เริ่ม และ 날짜바뀜
             getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionTime", today);
             getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionClear", "0");
             getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyLevelMob", "0");
@@ -2788,7 +2788,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(QuestExConstants.JinQuestExAccount.getQuestID(), "DailyMissionClear", "1");
                 self.sayOk("วันวัน ภารกิจ เสร็จสมบูรณ์ 네오 스톤 200ชิ้น ได้รับ하였.");
             } else {
-                self.sayOk("아직 วันวัน ภารกิจ 모두 클리어하지 않았.");
+                self.sayOk("아직 วันวัน ภารกิจ ทั้งหมด 클리어하지 않았.");
                 return;
             }
         }
@@ -2797,7 +2797,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
     public void sendCubeLevelUpInfo() {
         GradeRandomOption[] options = { GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional,
                 GradeRandomOption.AmazingAdditional };
-        String cubeTotalInfo = "큐브 ระดับ ขึ้น #b남 큐브 ใช้ 횟수#k ยืนยัน해 보세요.\r\n"
+        String cubeTotalInfo = "큐브 ระดับ ขึ้น #b남 큐브 ใช้ 횟수#k ยืนยัน해 ดู.\r\n"
                 + "해당 수치 ระดับ ขึ้น 시 เริ่มต้น화, #bบัญชี ภายใน 공유#k.\r\n\r\n";
         for (GradeRandomOption option : options) {
             String cubeString = "";

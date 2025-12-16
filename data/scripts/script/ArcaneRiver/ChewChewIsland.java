@@ -44,7 +44,7 @@ public class ChewChewIsland extends ScriptEngineNPC {
                 registerTransferField(450003000, 0);
             }
         } else {
-            self.sayOk("무토 아직 배가 고프다.. 지나가고 싶으면 เลเวล 220 넘기고 와라", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("무토 아직 배가 고프다.. 지ฉัน가고 싶으면 เลเวล 220 넘기고 และ라", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 

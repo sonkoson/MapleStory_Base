@@ -40,11 +40,11 @@ public class BossOutPortal extends ScriptEngineNPC {
         allBossOutPosition(350060300, 1);
     }
 
-    public void ptDemianOut() { // 데미안 포탈
+    public void ptDemianOut() { // 데미ใน 포탈
         allBossOutPosition(105300303, 1);
     }
 
-    public void ptDemianOut_R() { // 데미안 รางวัลแผนที่포탈
+    public void ptDemianOut_R() { // 데미ใน รางวัลแผนที่포탈
         allBossOutPosition(105300303, 1);
     }
 
@@ -66,7 +66,7 @@ public class BossOutPortal extends ScriptEngineNPC {
 
     public void allBossOut() {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투 หยุด 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#전투 หยุด ฉัน갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);
@@ -82,7 +82,7 @@ public class BossOutPortal extends ScriptEngineNPC {
 
     public void allBossOutPosition(int Map, int Portal) {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투 หยุด 나갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#전투 หยุด ฉัน갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);

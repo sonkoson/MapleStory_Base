@@ -124,7 +124,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                 Date TodateDate =  dateFormat.parse(Today);
 
                 if (TodateDate.before(StartDate) || TodateDate.after(EndDate)){
-                    self.sayOk("#fs11#황금마차 이벤트 ดำเนินการ기간이 아닙니다\r\n\r\nดำเนินการ기간 : " + Start + " ~ " + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                    self.sayOk("#fs11#황금마ชา 이벤트 ดำเนินการ기간이 아닙니다\r\n\r\nดำเนินการ기간 : " + Start + " ~ " + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     return;
                 }
             } catch (ParseException ex) {
@@ -153,7 +153,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ 아래 선물을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ ล่าง 선น้ำ을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
@@ -168,7 +168,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 getPlayer().send(p.getPacket());
                                 self.sayOk("출석 เสร็จสมบูรณ์! 도장을 #b1개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 뒤 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
@@ -183,7 +183,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 getPlayer().send(p.getPacket());
                                 self.sayOk("출석 เสร็จสมบูรณ์! 도장을 #b1개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 뒤 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
@@ -217,7 +217,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ 아래 선물을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ ล่าง 선น้ำ을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
@@ -232,7 +232,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 getPlayer().send(p.getPacket());
                                 self.sayOk("출석 เสร็จสมบูรณ์! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 뒤 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
@@ -247,7 +247,7 @@ public class GoldenWagon extends ScriptEngineNPC {
                                 getPlayer().send(p.getPacket());
                                 self.sayOk("출석 เสร็จสมบูรณ์! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 뒤 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
@@ -257,20 +257,20 @@ public class GoldenWagon extends ScriptEngineNPC {
     }
 
     public void goldenchariotWIG() {
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n#b페어리 브로의 황금마차#k ทุกวัน 출석 도장을 쾅쾅! 찍고 선물을 잔뜩 받아가는 신나는 이벤트야!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n이벤트 기간 동안 게임에 접속 이벤트 알림이 버튼을 눌러 #b#e<페어리 브로의 황금마차>#k#n 출석판을 열어볼 수 있지!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n이벤트 기간 동안에는 ทุกวัน อัตโนมัติ으로 접속 เวลา이 누적 #b60นาที#k 가득 차면 출석 도장을 쾅! 찍을 수 있어!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n참고로 #bสัปดาห์말에는 한 번에 두 개#k 출석 도장이 찍히니까 절대 놓치지 말라고!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n출석 วัน차에 따른 선물은 ถัดไป과 같아!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n#b페어리 브로의 황금마ชา#k ทุกวัน 출석 도장을 쾅쾅! 찍고 선น้ำ을 잔뜩 받아가는 신ฉัน는 이벤트야!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n이벤트 기간 동ใน 게임에 접속 이벤트 알림이 버튼을 눌러 #b#e<페어리 브로의 황금마ชา>#k#n 출석판을 열어볼 수 있지!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n이벤트 기간 동ใน에는 ทุกวัน อัตโนมัติ으로 접속 เวลา이 누적 #b60นาที#k 가득 ชา면 출석 도장을 쾅! 찍을 수 있어!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n참고로 #bสัปดาห์말에는 한 번에 두 개#k 출석 도장이 찍히니까 절대 놓치지 말라고!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n출석 วันชา에 따른 선น้ำ은 ถัดไปและ 같아!", ScriptMessageFlag.NpcReplacedByNpc);
         //self.say("#e<9회 출석 เสร็จสมบูรณ์>\r\n#b#i2633063:# #t2633063:##k#n\r\n\r\n\r\n#e<18회 출석 เสร็จสมบูรณ์>\r\n#b#i2633064:# #t2633064:##k#n\r\n\r\n\r\n#e<27회 출석 เสร็จสมบูรณ์>\r\n#b#i2631708:# #t2631708:##k#n\r\n\r\n\r\n#e<36회 출석 เสร็จสมบูรณ์>\r\n#b#i2633065:# #t2633065:##k#n\r\n\r\n\r\n#e<45회 출석 เสร็จสมบูรณ์>\r\n#b#i2633066:# #t2633066:##k#n\r\n\r\n\r\n#e<54회 출석 เสร็จสมบูรณ์>\r\n#b#i2633067:# #t2633067:##k#n\r\n\r\n\r\n#e<63회 출석 เสร็จสมบูรณ์>\r\n#b#i2631139:# #t2631139:##k#n\r\n\r\n\r\n#e<72회 출석 เสร็จสมบูรณ์>\r\n#b#i2633071:# #t2633071:##k#n\r\n\r\n\r\n#e<81회 출석 เสร็จสมบูรณ์>\r\n#b#i2633069:# #t2633069:##k#n\r\n\r\n\r\n#e<90회 출석 เสร็จสมบูรณ์>\r\n#b#i2633070:# #t2633070:##k#n\r\n\r\n\r\n#e<99회 출석 เสร็จสมบูรณ์>\r\n#b#i2633068:# #t2633068:##k#n\r\n\r\n\r\n#e<108회 출석 เสร็จสมบูรณ์>\r\n#b#i2633072:# #t2633072:##k#n\r\n\r\n\r\n#e<117회 출석 เสร็จสมบูรณ์>\r\n#b#i2633073:# #t2633073:##k#n\r\n\r\n\r\n#e<126회 출석 เสร็จสมบูรณ์>\r\n#b#i2631717:# #t2631717:##k#n", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n깜빡 출석을 놓쳤을 때를 대비한 특별 찬스!\r\n#b#e<골든패스>#k#n 대해서도 알려 줄게!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n출석판의 #b#e<골든패스>#k#n ใช้ #b3천 메이플 คะแนน#k ใช้ 미처 #bเสร็จสมบูรณ์하지 못한 출석#k 도장을 한 번 찍을 수가 있어.", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n단, 골든패스의 #bใช้ เป็นไปได้ 수량#k #r하루 전 날짜 기준 เสร็จสมบูรณ์하지 못한 วัน차 수#k만큼으로 จำกัด되는 점 알아 둬!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n골든패스는 ใช้ #r요วัน과 상관없이 하나의 도장#k 찍어준다는 사실도 잊지 말고 말이야!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n아차! #e접속 เวลา 누적#n #eรางวัล ได้รับ 기록#n #r메이플ID 단위#k ดำเนินการ, #r101เลเวล 이상의 ตัวละคร#k 접속 เวลา을 쌓을 수 있다는 것도 유념해 둬!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n그리고 날짜가 เปลี่ยน될 때 다른 행동을  있다면 접속 เวลา이 ปกติ적으로 쌓이지 않을 수 있으니까, #e날짜가 바뀐 ถัดไป에는 출석판을 열어 접속 เวลา이 잘 쌓이고 있는지 한 번 ยืนยัน#n해 보도록 해!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n더 자세한 เนื้อหา은 공식 홈페이지를 참고해 봐!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마차>#k#n\r\n\r\n\r\n#e※ 이벤트 기간#n\r\n  - 2021ปี #r6เดือน 16วัน(수) 오후 11시 59นาที#k까지#k", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n깜빡 출석을 놓쳤을 때를 대비한 특별 찬스!\r\n#b#e<골든패스>#k#n 대해서도 알려 줄게!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n출석판의 #b#e<골든패스>#k#n ใช้ #b3천 메이플 คะแนน#k ใช้ 미처 #bเสร็จสมบูรณ์하지 못한 출석#k 도장을 한 번 찍을 수가 있어.", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n단, 골든패스의 #bใช้ เป็นไปได้ 수량#k #r하루 전 날짜 기준 เสร็จสมบูรณ์하지 못한 วันชา 수#k만큼으로 จำกัด되는 점 알아 둬!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n골든패스는 ใช้ #r요วันและ 상관없이 하ฉัน의 도장#k 찍어준다는 사실도 잊지 말고 말이야!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n아ชา! #e접속 เวลา 누적#n #eรางวัล ได้รับ 기록#n #r메이플ID 단บน#k ดำเนินการ, #r101เลเวล 이상의 ตัวละคร#k 접속 เวลา을 쌓을 수 มี는 것도 유념해 둬!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\nเขา리고 날짜가 เปลี่ยน될 때 อื่น 행동을  มี면 접속 เวลา이 ปกติ적으로 쌓이지 않을 수 있으니까, #e날짜가 바뀐 ถัดไป에는 출석판을 열어 접속 เวลา이 잘 쌓이고 있는지 한 번 ยืนยัน#n해 보도록 해!", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n더 자세한 เนื้อหา은 공식 홈페이지를 참고해 봐!", ScriptMessageFlag.NpcReplacedByNpc);
+        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n#e※ 이벤트 기간#n\r\n  - 2021ปี #r6เดือน 16วัน(수) 오후 11시 59นาที#kถึง#k", ScriptMessageFlag.NpcReplacedByNpc);
     }
 
     public void goldenchariotPass() {

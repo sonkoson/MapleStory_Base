@@ -57,7 +57,7 @@ public class MoonBridge extends ScriptEngineNPC {
     public void BM1_Ship() {
         if (getPlayer().getLevel() >= 245) {
             if (getPlayer().getMap().getId() == 450009300 && getPlayer().getLevel() >= 250) {
-                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 있다.\r\n어디로 갈까?\r\n\r\n #b#L0#추락 지점#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 มี.\r\nที่ไหน로 갈까?\r\n\r\n #b#L0#추락 지점#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
                 switch (v) {
                     case 0: { //추락 지점
                         registerTransferField(450011120, 3);
@@ -67,7 +67,7 @@ public class MoonBridge extends ScriptEngineNPC {
                         break;
                 }
             } else if (getPlayer().getLevel() >= 245) {
-                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 있다.\r\n어디로 갈까?\r\n\r\n #b#L0#전วินาที기지#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+                int v = target.askMenu("소형 비공정을 타고 원하는 갑판으로 갈 수 มี.\r\nที่ไหน로 갈까?\r\n\r\n #b#L0#전วินาที기지#l\r\n\r\n #k#L2#소형 비공정을 이용하지 않는다.", ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
                 switch (v) {
                     case 0: { //추락 지점
                         registerTransferField(450009050, 5);
@@ -85,7 +85,7 @@ public class MoonBridge extends ScriptEngineNPC {
     public void _450009050_out00() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() >= 245) {
-            if (1 == target.askYesNo("문브릿지로 ย้าย할까?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("ประตู브릿지로 ย้าย할까?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450009100, 1);
             }
         } else {

@@ -22,8 +22,8 @@ public class GMUtil extends ScriptEngineNPC {
         if (!getPlayer().isGM()) {
             return;
         }
-        var type = self.askMenu("안녕하세요 #h 0#, 유저 QuestInfo แก้ไข용 엔피시. ถัดไป 중 แก้ไข할 타입을 เลือกโปรด.\r\n#L0#ตัวละคร QuestInfo แก้ไข\r\n#L1#어카운트 QuestInfo แก้ไข");
-        var name = self.askText("แก้ไข하실 유저의 이름을 입력โปรด. 어카운트의 경우 บัญชี ID 입력하셔도 . 해당 유저의 접속 여부는 상관이 없.");
+        var type = self.askMenu("ใน녕ทำ #h 0#, 유ฉัน QuestInfo แก้ไข용 엔피시. ถัดไป 중 แก้ไข할 타입을 เลือกโปรด.\r\n#L0#ตัวละคร QuestInfo แก้ไข\r\n#L1#어카운트 QuestInfo แก้ไข");
+        var name = self.askText("แก้ไข하실 유ฉัน의 이름을 입력โปรด. 어카운트의 경우 บัญชี ID 입력하셔도 . 해당 유ฉัน의 접속 여부는 상관이 없.");
         int userID = findUserID(type, name);
         MapleCharacter user = null;
         if (userID >= 0) {
@@ -33,7 +33,7 @@ public class GMUtil extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.sayOk("해당 ตัวละคร 혹은 บัญชี 존재하지 않. 다시 한 번 시도해 สัปดาห์세요.");
+            self.sayOk("해당 ตัวละคร หรือ บัญชี 존재하지 않. 다시 한 번 시도해 สัปดาห์세요.");
             return;
         }
 
@@ -48,7 +48,7 @@ public class GMUtil extends ScriptEngineNPC {
                 user.updateOneInfo(questID, questKey, newValue);
                 self.sayOk("สำเร็จ적으로 변환하였.");
             } else {
-                self.sayOk("변환에 문제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
+                self.sayOk("변환에 ประตู제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
             }
         } else {
             String newValue = self.askText("변환하실 QuestEX Value 값을 입력โปรด.");
@@ -56,10 +56,10 @@ public class GMUtil extends ScriptEngineNPC {
                 if (updateUserQuestInfo(userID, type, questID, questKey, newValue)) {
                     self.sayOk("สำเร็จ적으로 변환하였.");
                 } else {
-                    self.sayOk("문제가 발생 DB Update하지 못แล้ว.");
+                    self.sayOk("ประตู제가 발생 DB Update하지 못แล้ว.");
                 }
             } else {
-                self.sayOk("변환에 문제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
+                self.sayOk("변환에 ประตู제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
             }
         }
     }

@@ -32,7 +32,7 @@ public class VonLeon extends ScriptEngineNPC {
         if (em == null) {
             self.say("ยังไม่สามารถเข้าร่วม Von Leon Raid ได้ในขณะนี้");
         } else {
-            if (target.getMapId() == 211070000) { // เข้าแผนที่(알현실 앞 복도)
+            if (target.getMapId() == 211070000) { // เข้าแผนที่(알현실 หน้า 복도)
                 if (target.getParty() == null) {
                     self.say("ต้องมีปาร์ตี้อย่างน้อย 1 คนจึงจะเข้าได้");
                 } else {
@@ -125,7 +125,7 @@ public class VonLeon extends ScriptEngineNPC {
                                         }
                                     }
 
-                                    if (!canEnter) { // เข้า 불능한 경우 แผนที่ 유저 없지 체크 후 인스턴스 วินาที기화
+                                    if (!canEnter) { // เข้า 불능한 경우 แผนที่ 유ฉัน 없지 체크 후 인스턴스 วินาที기화
                                         if (getClient().getChannelServer().getMapFactory().getMap(211070100)
                                                 .getCharactersSize() == 0) {
                                             String rt = em.getProperty("ResetTime");
@@ -209,7 +209,7 @@ public class VonLeon extends ScriptEngineNPC {
                         getPlayer().setEventInstance(null);
                     }
                 }
-                // 거절시 아무것도없다
+                // 거절시 ใคร것도ไม่มี
             }
         }
     }
@@ -281,7 +281,7 @@ public class VonLeon extends ScriptEngineNPC {
          */
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { // ปาร์ตี้장만 소환능(중복소환 방지)
+            if (target.getParty().getLeader().getId() == target.getId()) { // ปาร์ตี้장만 소환능(중복소환 ห้อง지)
                 if (self.askAccept(
                         "ผู้กล้าที่มาปราบข้า... หรือจะเป็นศัตรูของจอมเวทดำ... จะฝ่ายไหนก็ไม่สำคัญ หากเป้าหมายชัดเจนก็ไม่ต้องพูดพร่ำทำเพลง...  \r\nเข้ามาเลย เจ้าพวกโง่เขลา...#k",
                         ScriptMessageFlag.NoEsc) == 1) {
@@ -362,7 +362,7 @@ public class VonLeon extends ScriptEngineNPC {
                         "ผู้กล้าที่มาปราบข้า... หรือจะเป็นศัตรูของจอมเวทดำ... จะฝ่ายไหนก็ไม่สำคัญ หากเป้าหมายชัดเจนก็ไม่ต้องพูดพร่ำทำเพลง...");
             }
         }
-        // 거절시 아무것도없다
+        // 거절시 ใคร것도ไม่มี
     }
 
     public void outVanLeonPrison() {

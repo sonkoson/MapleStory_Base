@@ -29,23 +29,23 @@ import java.util.*;
 public class MapleGM extends ScriptEngineNPC {
 
     public void q12396s() {
-        self.say("안녕하세요, #b#h0##k.벌써 เลเวล 50 달성하셨군요! #bเลเวล 50#k 달성하게  특별한 힘, #b어빌리티#k 얻을 수 있게 된답니다. 지금 제가 그 힘을 개방시켜 드릴게요.");
-        self.say("자~! 당신의 새로운 힘, 어빌리티를 개방해 드렸. ตัวละคร Stat창을 통해서 ยืนยัน해보세요~!");
+        self.say("ใน녕ทำ, #b#h0##k.벌써 เลเวล 50 달성하셨군요! #bเลเวล 50#k 달성하게  พิเศษ 힘, #b어빌리티#k 얻을 수 있게 된답니다. 지금 제가 เขา 힘을 개ห้อง시켜 드릴게요.");
+        self.say("자~! คุณ의 ใหม่ 힘, 어빌리티를 개ห้อง해 드렸. ตัวละคร Stat창을 통해서 ยืนยัน해ดู~!");
         getPlayer().innerLevelUp();
         getPlayer().innerLevelUp();
         getPlayer().innerLevelUp();
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
-    //여러가지 테스트를 하기위한 엔피시 แผนที่ : 180000001  있는 다미
+    //여러가지 테스트를 하기บน한 엔피시 แผนที่ : 180000001  있는 다미
     public void npc_9010057() {
         if (getPlayer().isGM()) {
             String testMenu = "\r\n#L2#이너어빌리티 ตัวเลือก테스트#l\r\n#L3#สุ่ม 이너 어빌리티 테스트하기#l\r\n#L4#핑크빈테스트#l\r\n#L5#블라썸테스트#l\r\n#L6#패킷테스트#l\r\n\r\n#L7#깸디 피해자#l";
-            int v0 = self.askMenu("안녕하세요 저는 운영자님들에게 ช่วยเหลือ을 드리는 다미라고 ~! 무엇을 도와드릴까요?\r\n#b#L0#직업에 맞는 สกิล코어 지급받기#l\r\n#L1#멍멍이 레이싱 테스트#l" + testMenu);
+            int v0 = self.askMenu("ใน녕ทำ ฉัน는 운영자님들에게 ช่วยเหลือ을 드리는 다미라고 ~! อะไร을 도และ드릴까요?\r\n#b#L0#직업에 맞는 สกิล코어 지급받기#l\r\n#L1#멍멍이 레이싱 테스트#l" + testMenu);
             switch (v0) {
                 case 0:
                     getPlayer().giveDefaultVMatrixSkill();
-                    self.sayOk("지급 เสร็จสมบูรณ์. V매트릭스 UI ยืนยัน해보세요~!");
+                    self.sayOk("지급 เสร็จสมบูรณ์. V매트릭스 UI ยืนยัน해ดู~!");
                     break;
                 case 1:
                     registerTransferField(926010100);
@@ -192,7 +192,7 @@ public class MapleGM extends ScriptEngineNPC {
                             e.printStackTrace();
                         }
                     }
-                    //접속중인 사람 원상복구
+                    //접속중인 คน 원상복구
                     for (GameServer cs : GameServer.getAllInstances()) {
                         for (Field map : cs.getMapFactory().getAllMaps()) {
                             Iterator<MapleCharacter> iterator = map.getCharacters().listIterator();
@@ -205,7 +205,7 @@ public class MapleGM extends ScriptEngineNPC {
                                         if (oriCoin != null) {
                                             chr.updateOneInfo(500629, "point", String.valueOf(oriCoin));
                                         } else {
-                                            //ข้อมูล없는사람들은 0개임
+                                            //ข้อมูล없는คน들은 0개임
                                             chr.updateOneInfo(500629, "point", "0");
                                         }
                                     }
@@ -213,7 +213,7 @@ public class MapleGM extends ScriptEngineNPC {
                             }
                         }
                     }
-                    //오프라인사람들 쿼리 업뎃
+                    //오프라인คน들 쿼리 업뎃
                     for (Integer a : ggamdee.keySet()) {
                         try (Connection con = DBConnection.getConnection()) {
                             ps = con.prepareStatement("UPDATE questinfo_account SET customData = ? WHERE `id` = ? AND `quest` = ?");
@@ -252,10 +252,10 @@ public class MapleGM extends ScriptEngineNPC {
 
     public void npc_9062508() {
         String gmMenu = "#L1#[GMเมนู] 따사로운 햇살 ดรอป률 แก้ไข#l\r\n#L2#[GMเมนู] 블라썸 ด้วยตนเอง เพิ่ม#l\r\n#L3#[GMเมนู] 꽃피우기 끄고 켜기#l";
-        int v = self.askMenu("#e<강림 : 블라썸>#n\r\nปัจจุบัน 블라썸 게이지가 아래 만큼 모였!\r\n\r\n#B" + (int) ((((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100) + "# " + (((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100 + "%\r\n\r\n#b#L0#블라썸 게이지에 대해 알고 싶어요.#l\r\n" + (getPlayer().isGM() ? gmMenu : ""));
+        int v = self.askMenu("#e<강림 : 블라썸>#n\r\nปัจจุบัน 블라썸 게이지가 ล่าง 만큼 모였!\r\n\r\n#B" + (int) ((((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100) + "# " + (((double) Center.sunShineStorage.getSunShineGuage() / 1000000.0d)) * 100 + "%\r\n\r\n#b#L0#블라썸 게이지에 대해 알고 싶어요.#l\r\n" + (getPlayer().isGM() ? gmMenu : ""));
         switch (v) {
             case 0: //블라썸 게이지에 대해 알고 싶어요
-                self.say("#b블라썸 게이지#k 꽃을 피우기 위한 게이지에요.\r\n게이지를 올리기 위해선 사냥을 통해 ได้รับ할 수 있는 #r#i2633343# #z2633343##k 통해 #e1คะแนน#n씩 올리는 방법과\r\n#b강림 คะแนน#k 충전하게  #e충전 금액에 20%#n씩 อัตโนมัติ으로 게이지가 충전된답니다.");
+                self.say("#b블라썸 게이지#k 꽃을 피우기 บน한 게이지에요.\r\n게이지를 올리기 บน해선 사냥을 통해 ได้รับ할 수 있는 #r#i2633343# #z2633343##k 통해 #e1คะแนน#n씩 올리는 ห้อง법และ\r\n#b강림 คะแนน#k 충전하게  #e충전 금액에 20%#n씩 อัตโนมัติ으로 게이지가 충전된답니다.");
                 self.say("꽃이 한 개씩 필 때 마다 ทั้งหมด แผนที่ #b봄 햇살, 봄 바람 Buff#k เริ่ม , 꽃이 다 피게 될 경우 #r#eEXP 1.5배, 드랍률 1.5배, Meso ได้รับ량 1.5배, 심볼 드랍률 2배 중 สุ่ม Buff#n#k 이벤트가 서버 ทั้งหมด에 ใช้งาน 되니 참고 좋겠지요?");
                 break;
             case 1: //따사로운 햇살 ดรอป률 แก้ไข
@@ -267,7 +267,7 @@ public class MapleGM extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    int dropRate = self.askNumber("ปัจจุบัน 따사로운 햇살 ดรอป률은 " + ((double) (d.chance / 10000.0d)) + "%. 얼마로 แก้ไข할까요?\r\n 1000 = 0.1%", 0, 0, 1000000);
+                    int dropRate = self.askNumber("ปัจจุบัน 따사로운 햇살 ดรอป률은 " + ((double) (d.chance / 10000.0d)) + "%. เท่าไหร่로 แก้ไข할까요?\r\n 1000 = 0.1%", 0, 0, 1000000);
                     if (dropRate > 0) {
                         for (MonsterGlobalDropEntry de : MapleMonsterInformationProvider.getInstance().getGlobalDrop()) {
                             if (de.itemId == 2633343) {
@@ -307,7 +307,7 @@ public class MapleGM extends ScriptEngineNPC {
     //멍멍레이스 테스트용
     public void dooat() {
         if (getPlayer().getMap() instanceof Field_MMRace) {
-            int v0 = self.askMenu("#e<Meso 레이스>\r\n#nMeso 걸고하는 레이싱 게임\r\n#b#L0#Meso 레이스에 เข้าร่วม한다(배당ยืนยัน)#l\r\n#L1#누적 금액을 정산받고 싶어요.#l\r\n#L2#Meso 레이스에 대해 อธิบาย을 듣는다.#l\r\n#L3#มอนสเตอร์별 ความสามารถ치를 ยืนยัน 싶어요.#l\r\n#L4#나가고 싶어요#l");
+            int v0 = self.askMenu("#e<Meso 레이스>\r\n#nMeso 걸고하는 레이싱 게임\r\n#b#L0#Meso 레이스에 เข้าร่วม한다(배당ยืนยัน)#l\r\n#L1#누적 금액을 정산받고 싶어요.#l\r\n#L2#Meso 레이스에 대해 อธิบาย을 듣는다.#l\r\n#L3#มอนสเตอร์별 ความสามารถ치를 ยืนยัน 싶어요.#l\r\n#L4#ฉัน가고 싶어요#l");
             Field_MMRace field = (Field_MMRace) getPlayer().getMap();
             if (v0 == 0) {
                 if (field.getParticipateUsers().get(getPlayer().getId()) != null) {
@@ -315,11 +315,11 @@ public class MapleGM extends ScriptEngineNPC {
                     return;
                 }
                 if (field.eventRace != null) {
-                    self.sayOk("이미 게임이 ดำเนินการ 중 วัน때는 배팅에 เข้าร่วม할 수 없다네.");
+                    self.sayOk("이미 게임이 ดำเนินการ 중 วัน때는 배팅에 เข้าร่วม할 수 ไม่มี네.");
                     return;
                 }
                 Integer a = field.winningRate.get("쿤두라");
-                Integer b = field.winningRate.get("그로돈");
+                Integer b = field.winningRate.get("เขา로돈");
                 Integer c = field.winningRate.get("얼루");
                 Integer d = field.winningRate.get("버기");
                 if (a == null) a = 0;
@@ -332,11 +332,11 @@ public class MapleGM extends ScriptEngineNPC {
                 }
                 String text = "";
                 text += "#b#L0#쿤두라( " + (a / e) * 100 + "% ) 배당률 : 3.0#l\r\n";
-                text += "#b#L1#그로돈( " + (b / e) * 100 + "% ) 배당률 : 3.0#l\r\n";
+                text += "#b#L1#เขา로돈( " + (b / e) * 100 + "% ) 배당률 : 3.0#l\r\n";
                 text += "#b#L2#얼루( " + (c / e) * 100 + "% ) 배당률 : 3.0#l\r\n";
                 text += "#b#L3#버기( " + (d / e) * 100 + "% ) 배당률 : 3.0#l\r\n";
-                int mungMung = self.askMenu("누구한테 배팅할텐가?\r\n" + text);
-                long mesos = self.askNumber("얼마를 배팅할텐가? สูงสุด 200,000,000 Meso까지 배팅할 수 있다네.", 0, 1, 200000000);
+                int mungMung = self.askMenu("ใคร한테 배팅할텐가?\r\n" + text);
+                long mesos = self.askNumber("เท่าไหร่를 배팅할텐가? สูงสุด 200,000,000 Mesoถึง 배팅할 수 มี네.", 0, 1, 200000000);
                 if (getPlayer().getMeso() >= mesos) {
                     String btMonster = "";
                     switch (mungMung) {
@@ -344,7 +344,7 @@ public class MapleGM extends ScriptEngineNPC {
                             btMonster = "쿤두라";
                             break;
                         case 1:
-                            btMonster = "그로돈";
+                            btMonster = "เขา로돈";
                             break;
                         case 2:
                             btMonster = "얼루";
@@ -354,14 +354,14 @@ public class MapleGM extends ScriptEngineNPC {
                             break;
                     }
                     if (field.eventRace != null) {
-                        self.sayOk("이미 게임이 ดำเนินการ 중 วัน때는 배팅에 เข้าร่วม할 수 없다네.");
+                        self.sayOk("이미 게임이 ดำเนินการ 중 วัน때는 배팅에 เข้าร่วม할 수 ไม่มี네.");
                         return;
                     }
                     field.participateUsers.put(getPlayer().getId(), new Pair(btMonster, mesos));
                     getPlayer().gainMeso(-mesos, true);
                     self.sayOk("เข้าร่วมสมัคร이 เสร็จสมบูรณ์되었네.\r\n< เข้าร่วม ข้อมูล >\r\n배팅 มอนสเตอร์ : " + btMonster + "\r\n" + "배팅 금액 :" + String.format("%,d", mesos));
                 } else {
-                    self.sayOk("자네가 입력한 금액이 자네가 갖고있는 Meso보다 큰 것 같구려...?");
+                    self.sayOk("자네가 입력한 금액이 자네가 갖고있는 Mesoดู ใหญ่ 것 같구려...?");
                 }
             } else if (v0 == 1) {
                 //누적금액 정산
@@ -369,7 +369,7 @@ public class MapleGM extends ScriptEngineNPC {
                     self.sayOk("정산받을 Meso 없.");
                     return;
                 }
-                if (1 == self.askYesNo("ปัจจุบัน 정산받을 수 있는 Meso\r\n" + String.format("%,d", field.accReward.get(getPlayer().getId())) + "Meso . 정산 받으시겠습니까?")) {
+                if (1 == self.askYesNo("ปัจจุบัน 정산받을 수 있는 Meso\r\n" + String.format("%,d", field.accReward.get(getPlayer().getId())) + "Meso . 정산 받으시หรือไม่?")) {
                     long rewardMeso = 0;
                     if (30000000000L - (getPlayer().getMeso() + field.accReward.get(getPlayer().getId())) < 0) {
                         rewardMeso = 30000000000L - getPlayer().getMeso();
@@ -381,17 +381,17 @@ public class MapleGM extends ScriptEngineNPC {
                         field.accReward.remove(getPlayer().getId());
                     }
                     getPlayer().gainMeso(rewardMeso, true);
-                    self.sayOk(String.format("%,d", rewardMeso) + "Meso 지급되었.\r\nMeso 지급량이 0인경우 กระเป๋า Meso 비운 뒤 정산받아 สัปดาห์세요.");
+                    self.sayOk(String.format("%,d", rewardMeso) + "Meso 지급되었.\r\nMeso 지급량이 0인경우 กระเป๋า Meso 비운 หลัง 정산받아 สัปดาห์세요.");
 
                 }
             } else if (v0 == 2) {
-                self.sayOk("Meso 레이스는 Meso 걸고하는 มอนสเตอร์ 레이싱 게임이라네. แต่ละ มอนสเตอร์들은 서로 다른 ความสามารถ치를 갖고  게임이 하나하나 누적됨에 따라 그날그날 정해지는 승률로 배당금액이 다르지 원하는 มอนสเตอร์에게 걸기만 기다리면 되는걸세");
+                self.sayOk("Meso 레이스는 Meso 걸고하는 มอนสเตอร์ 레이싱 게임이라네. แต่ละ มอนสเตอร์들은 서로 อื่น ความสามารถ치를 갖고  게임이 하ฉัน하ฉัน 누적됨에 따라 เขา날เขา날 정해지는 승률로 배당금액이 다르지 원하는 มอนสเตอร์에게 걸기만 기다리면 되는걸세");
             } else if (v0 == 3) {
                 //มอนสเตอร์별 ความสามารถ치 ยืนยัน
-                self.sayOk("-------------------------------\r\n#e< 쿤두라 >#n\r\n- 스피드 : 2.5 / 5\r\n- #r슬로우 저항 : 5 / 5#k\r\n- 스턴 저항 3 / 5\r\n#b속도는 느리지만 디Buff 저항이 무난한 편\r\n\r\n#k#e< 그로돈 >#n\r\n- 스피드 : 1 / 5\r\n- #r슬로우 저항 : 5 / 5#k" +
-                        "\r\n- #r스턴 저항 : 5 / 5#k\r\n#b속도는 네 마리 มอนสเตอร์ 중 제วัน 느리지만 디Buff 저항 ความสามารถ이 제วัน 좋다\r\n" +
-                        "\r\n#k#e< 얼루 >#n\r\n- 스피드 : 3 / 5\r\n- 슬로우 저항 : 3 / 5\r\n- 스턴 저항 : 1 / 5\r\n#b스피드와 슬로우 저항이 밸런스형 이지만 스턴 저항이 아쉬운 밸런스형 มอนสเตอร์\r\n" +
-                        "\r\n#k#e< 버기 >#n\r\n- #r스피드 : 5 / 5#k\r\n- 슬로우 저항 : 1 / 5\r\n- 스턴 저항 : 1 / 5\r\n#b스피드가 제วัน 빠른 มอนสเตอร์지만 디Buff 저항이 약한 มอนสเตอร์\r\n#k-------------------------------");
+                self.sayOk("-------------------------------\r\n#e< 쿤두라 >#n\r\n- 스피드 : 2.5 / 5\r\n- #r슬로우 ฉัน항 : 5 / 5#k\r\n- 스턴 ฉัน항 3 / 5\r\n#b속도는 느리지만 디Buff ฉัน항이 무난한 편\r\n\r\n#k#e< เขา로돈 >#n\r\n- 스피드 : 1 / 5\r\n- #r슬로우 ฉัน항 : 5 / 5#k" +
+                        "\r\n- #r스턴 ฉัน항 : 5 / 5#k\r\n#b속도는 네 마리 มอนสเตอร์ 중 제วัน 느리지만 디Buff ฉัน항 ความสามารถ이 제วัน 좋다\r\n" +
+                        "\r\n#k#e< 얼루 >#n\r\n- 스피드 : 3 / 5\r\n- 슬로우 ฉัน항 : 3 / 5\r\n- 스턴 ฉัน항 : 1 / 5\r\n#b스피드และ 슬로우 ฉัน항이 밸런스형 이지만 스턴 ฉัน항이 아ง่าย 밸런스형 มอนสเตอร์\r\n" +
+                        "\r\n#k#e< 버기 >#n\r\n- #r스피드 : 5 / 5#k\r\n- 슬로우 ฉัน항 : 1 / 5\r\n- 스턴 ฉัน항 : 1 / 5\r\n#b스피드가 제วัน เร็ว มอนสเตอร์지만 디Buff ฉัน항이 อ่อนแอ มอนสเตอร์\r\n#k-------------------------------");
             } else if (v0 == 4) {
                 registerTransferField(100000000);
             }
@@ -405,7 +405,7 @@ public class MapleGM extends ScriptEngineNPC {
     public void credit_rewards() {
         initNPC(MapleLifeFactory.getNPC(9001000));
 
-        String v0 = "안녕하세요? #e강림 크레딧 누적 รางวัล 지급#n 담당 있는 #b코-크베어 운영자#k.\r\n\r\n받으 실 รางวัล을 เลือกโปรด.\r\n\r\n";
+        String v0 = "ใน녕ทำ? #e강림 크레딧 누적 รางวัล 지급#n 담당 있는 #b코-크베어 운영자#k.\r\n\r\n받으 실 รางวัล을 เลือกโปรด.\r\n\r\n";
         boolean find = false;
 
         PreparedStatement ps = null;

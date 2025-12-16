@@ -20,23 +20,23 @@ public class Phantom extends ScriptEngineNPC {
             self.sayOk("#fs11#너는 팬텀이 아니라서 ใช้할 수 없는 ฟังก์ชัน이야");
             return;
         }
-        String steal = "#fs11##e[1차 สกิล]#n\r\n";
+        String steal = "#fs11##e[1ชา สกิล]#n\r\n";
         if (getPlayer().getLevel() >= 10) {
-            //1차만
-            steal += "#L1# #s4001003# 다크사이트#l\r\n";
-            steal += "#L2# #s3011004# 카디널 디스차지#l\r\n";
+            //1ชา만
+            steal += "#L1# #s4001003# 다크ระหว่าง트#l\r\n";
+            steal += "#L2# #s3011004# 카디널 디스ชา지#l\r\n";
             steal += "#L3# #s2001002# 매직 가드#l\r\n";
         }
         if (getPlayer().getLevel() >= 30) {
 
-            steal += "\r\n\r\n#e[2차 สกิล]#n\r\n";
+            steal += "\r\n\r\n#e[2ชา สกิล]#n\r\n";
             steal += "#L4# #s3301003# 카디널 블래스트#l\r\n";
             steal += "#L5# #s2301002# 힐#l\r\n";
             steal += "#L6# #s1101006# 스피릿 블레이드#l\r\n";
-            //2차까지
+            //2ชาถึง
         }
         if (getPlayer().getLevel() >= 60) {
-            steal += "\r\n\r\n#e[3차 สกิล]#n\r\n";
+            steal += "\r\n\r\n#e[3ชา สกิล]#n\r\n";
             steal += "#L8# #s3111013# 애로우 플래터#l\r\n";
             steal += "#L9# #s1311015# 크로스 오버 체인#l\r\n";
             steal += "#L10# #s4331011# 블레이드 어센션#l\r\n";
@@ -44,11 +44,11 @@ public class Phantom extends ScriptEngineNPC {
             steal += "#L12# #s2311009# 홀리 매직쉘#l\r\n";
             steal += "#L13# #s2311003# 홀리 심볼#l\r\n";
             steal += "#L14# #s2311011# 홀리 파운틴#l\r\n";
-            //3차까지
+            //3ชาถึง
         }
         if (getPlayer().getLevel() >= 100){
-            //4차까지
-            steal += "\r\n\r\n#e[4차 สกิล]#n\r\n";
+            //4ชาถึง
+            steal += "\r\n\r\n#e[4ชา สกิล]#n\r\n";
             steal += "#L15# #s4341002# 파이널 컷#l\r\n";
             steal += "#L16# #s1221011# 생츄어리#l\r\n";
             steal += "#L17# #s2221012# 프로즌 오브#l\r\n";
@@ -64,22 +64,22 @@ public class Phantom extends ScriptEngineNPC {
             steal += "#L23# #s3121054# 프리퍼레이션#l\r\n";
         }
         int v = self.askMenu(steal);
-        if (getPlayer().getJob() == 2400) { //팬텀1차
+        if (getPlayer().getJob() == 2400) { //팬텀1ชา
             if (v > 3) {
                 self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2410) { //팬텀2차
+        } else if (getPlayer().getJob() == 2410) { //팬텀2ชา
             if (v > 7) {
                 self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2411) { //팬텀3차
+        } else if (getPlayer().getJob() == 2411) { //팬텀3ชา
             if (v > 14) {
                 self.sayOk("#fs11#잘못된 ขอ.");
                 return;
             }
-        } else if (getPlayer().getJob() == 2412) { //팬텀4차
+        } else if (getPlayer().getJob() == 2412) { //팬텀4ชา
             if (getPlayer().getLevel() < 140) {
                 if (v > 21) {
                     self.sayOk("#fs11#잘못된 ขอ.");
@@ -89,7 +89,7 @@ public class Phantom extends ScriptEngineNPC {
         }
         int skillId = 0;
         switch (v) {
-            case 1: //다크사이트
+            case 1: //다크ระหว่าง트
                 skillId = 4001003;
                 break;
             case 2:
@@ -158,10 +158,10 @@ public class Phantom extends ScriptEngineNPC {
         }
         int maxLevel = SkillFactory.getSkill(skillId).getMaxLevel();
         if (maxLevel < 1) {
-            self.sayOk("#fs11#ขอ하는동안 오류가 발생แล้ว.");
+            self.sayOk("#fs11#ขอ하는동ใน 오류가 발생แล้ว.");
             return;
         }
         getPlayer().addStolenSkill(skillId, maxLevel);
-        //self.sayOk("สำเร็จแล้ว. สกิล 매니저먼트를 ยืนยัน해보세요.");
+        //self.sayOk("สำเร็จแล้ว. สกิล 매니ฉัน먼트를 ยืนยัน해ดู.");
     }
 }

@@ -11,13 +11,13 @@ public class Limen extends ScriptEngineNPC {
     public void BPReturn_dunkel() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("어디로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#세계의 눈물 중단3#l");
+            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#โลก의 눈น้ำ 중단3#l");
             switch (v) {
                 case 0: { //광장
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //세계의 눈물 중단3
+                case 1: { //โลก의 눈น้ำ 중단3
                     registerTransferField(450012120, 3);
                     break;
                 }
@@ -30,13 +30,13 @@ public class Limen extends ScriptEngineNPC {
     public void BPReturn_BM() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("어디로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#세계가 끝나는 곳 1-3#l");
+            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#โลก가 끝ฉัน는 곳 1-3#l");
             switch (v) {
                 case 0: { //광장
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //세계가 끝나는 곳 1-3
+                case 1: { //โลก가 끝ฉัน는 곳 1-3
                     registerTransferField(450012320, 2);
                     break;
                 }
@@ -49,13 +49,13 @@ public class Limen extends ScriptEngineNPC {
     public void east_450012320() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("어디로 갈까?\r\n#b#L0#거인의 심장#l\r\n#L1#세계가 끝나는 곳 2-1#l");
+            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#거인의 심장#l\r\n#L1#โลก가 끝ฉัน는 곳 2-1#l");
             switch (v) {
                 case 0: { //광장
                     registerTransferField(450012500, 2);
                     break;
                 }
-                case 1: { //#세계가 끝나는 곳 2-1
+                case 1: { //#โลก가 끝ฉัน는 곳 2-1
                     registerTransferField(450012400, 3);
                     break;
                 }

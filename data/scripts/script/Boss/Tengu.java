@@ -14,7 +14,7 @@ public class Tengu extends ScriptEngineNPC {
 
     public void tengu_enter() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        String v0 = "텐구 쓰러뜨리기 위해 동할까?\r\n\r\n";
+        String v0 = "텐구 쓰러뜨리기 บน해 동할까?\r\n\r\n";
         v0 += "#L0#텐구 แผนที่(#b노멀 โหมด#k)으 동 한다.(เลเวล 250상)#l\r\n\r\n\r\n";
         v0 += "#L5#동하지 않다.#l\r\n\r\n";
         int Menu = target.askMenu(v0, ScriptMessageFlag.BigScenario);
@@ -28,7 +28,7 @@ public class Tengu extends ScriptEngineNPC {
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("ปาร์ตี้원 모두 같แผนที่ 있어야 .", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ปาร์ตี้원 ทั้งหมด 같แผนที่ 있어야 .", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         switch (Menu) { //따 จำกัด되거 없으면 바 เข้า능함
@@ -36,7 +36,7 @@ public class Tengu extends ScriptEngineNPC {
                 TenguEnter fieldSet = (TenguEnter) fieldSet("TenguEnter");
                 int enter = fieldSet.enter(target.getId(), 2);
                 if (enter == 6) {
-                    self.sayOk("용 능한 인스턴스 없. 다른 แชนแนล 용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("용 능한 인스턴스 없. อื่น แชนแนล 용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
@@ -48,7 +48,7 @@ public class Tengu extends ScriptEngineNPC {
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("เข้า จำกัด횟수 ไม่พอ하거나 เลเวล จำกัด 맞지 않 ปาร์ตี้원 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("เข้า จำกัด횟수 ไม่พอ하거ฉัน เลเวล จำกัด 맞지 않 ปาร์ตี้원 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {

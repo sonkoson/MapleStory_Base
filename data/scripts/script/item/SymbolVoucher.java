@@ -104,7 +104,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
             return;
         }
         if (target.exchange(itemID, -1, 2630437, quantity) > 0) {
-            self.sayOk("เลือก 아케인심볼 " + quantity + "개 แลกเปลี่ยน เสร็จสมบูรณ์. ใช้창을 ยืนยัน해보세요.");
+            self.sayOk("เลือก 아케인심볼 " + quantity + "개 แลกเปลี่ยน เสร็จสมบูรณ์. ใช้창을 ยืนยัน해ดู.");
         } else {
             self.sayOk("ใช้창에 여유 공간이 ไม่พอ. ยืนยัน 후 다시 ใช้โปรด.");
         }
@@ -127,7 +127,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) { //레헬른
             changeSymbol += "#L3# #b#i1712003:# #t1712003:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 225) { //아르카나
+        if (getPlayer().getLevel() >= 225) { //아르카ฉัน
             changeSymbol += "#L2# #b#i1712004:# #t1712004:# #k#l\r\n";
         }
         if (getPlayer().getLevel() >= 230) { //모라스
@@ -139,8 +139,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
 
         int v = self.askMenu("#fs11#받고 싶은 #b아케인심볼#k เลือก해 สัปดาห์세요!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[아케인심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유저 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
-        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 몇 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
+        String letter = "[아케인심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유ฉัน 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
+        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 กี่ 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1712001;
         switch (v) {
             case 0: {
@@ -167,7 +167,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
                 symbolID = 1712004;
                 if (getPlayer().getLevel() < 225) {
                     self.sayOk("#fs11#เลเวล ไม่พอ แลกเปลี่ยนไม่สามารถทำได้.");
-                    letter += "아르카나";
+                    letter += "아르카ฉัน";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -210,7 +210,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
             self.say("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시겠습니까?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시หรือไม่?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
                     self.sayOk("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
                 } else {
@@ -221,7 +221,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
     }
 
     public void consume_2630512() {
-        //เดือน드 내 나의 ตัวละคร 간 ย้าย เป็นไปได้ เลือก 아케인심볼 แลกเปลี่ยน권
+        //เดือน드 내 ฉัน의 ตัวละคร 간 ย้าย เป็นไปได้ เลือก 아케인심볼 แลกเปลี่ยน권
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (getPlayer().getLevel() < 200) {
             self.sayOk("200เลเวล 이상만 ใช้할 수 있.");
@@ -237,7 +237,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 220) { //레헬른
             changeSymbol += "#L3# #b#i1712003:# #t1712003:# #k#l\r\n";
         }
-        if (getPlayer().getLevel() >= 225) { //아르카나
+        if (getPlayer().getLevel() >= 225) { //아르카ฉัน
             changeSymbol += "#L2# #b#i1712004:# #t1712004:# #k#l\r\n";
         }
         if (getPlayer().getLevel() >= 230) { //모라스
@@ -249,8 +249,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
 
         int v = self.askMenu("#fs11#받고 싶은 #b아케인심볼#k เลือก해 สัปดาห์세요!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[아케인심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유저 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
-        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 몇 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
+        String letter = "[아케인심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유ฉัน 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
+        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 กี่ 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1712001;
         switch (v) {
             case 0: {
@@ -277,7 +277,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
                 symbolID = 1712004;
                 if (getPlayer().getLevel() < 225) {
                     self.sayOk("#fs11#เลเวล ไม่พอ แลกเปลี่ยนไม่สามารถทำได้.");
-                    letter += "아르카나";
+                    letter += "아르카ฉัน";
                     //DiscordBotHandler.requestSendTelegram(letter, -460314003);
                     return;
                 }
@@ -320,7 +320,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
             self.say("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시겠습니까?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시หรือไม่?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
                     self.sayOk("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
                 } else {
@@ -358,8 +358,8 @@ public class SymbolVoucher extends ScriptEngineNPC {
         }
         int v = self.askMenu("#fs11#받고 싶은 #b어센틱심볼#k เลือก해 สัปดาห์세요!\r\n\r\n" + changeSymbol);
         int itemQty = getPlayer().getItemQuantity(itemID, false);
-        String letter = "[어센틱심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유저 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
-        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 몇 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
+        String letter = "[어센틱심볼 แลกเปลี่ยน권 치트엔진 caseเปลี่ยน 시도]\r\n 유ฉัน 닉네임 : " + getPlayer().getName() + "\r\n เลเวล : " + getPlayer().getLevel() + "\r\n ได้รับ 시도한 심볼 : ";
+        int number = self.askNumber("\r\nกระเป๋า #b#i" + itemID + ":# #t" + itemID + ":##k ไอเท็ม #b" + itemQty + "개#k 있. #b#e한 번에 กี่ 개#n#k ใช้ต้องการหรือไม่?\r\n ", itemQty, 1, itemQty);
         int symbolID = 1713000;
         switch (v) {
             case 1: {
@@ -419,7 +419,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
         if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < number) {
             self.say("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
         } else {
-            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시겠습니까?")) {
+            if (1 == self.askYesNo("#fs11##b#i" + symbolID + ":# #t" + symbolID + ":# " + number + "개#k 받으시หรือไม่?")) {
                 if (target.exchange(itemID, -number, symbolID, number) <= 0) {
                     self.sayOk("#fs11#อุปกรณ์창을 " + number + "칸 이상 비우고 다시 ใช้해 สัปดาห์세요.");
                 } else {
@@ -436,7 +436,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
             return;
         }
         if (target.exchange(itemID, -1, 2633616, quantity) > 0) {
-            self.sayOk("เลือก 어센틱심볼 " + quantity + "개 แลกเปลี่ยน เสร็จสมบูรณ์. ใช้창을 ยืนยัน해보세요.");
+            self.sayOk("เลือก 어센틱심볼 " + quantity + "개 แลกเปลี่ยน เสร็จสมบูรณ์. ใช้창을 ยืนยัน해ดู.");
         } else {
             self.sayOk("ใช้창에 여유 공간이 ไม่พอ. ยืนยัน 후 다시 ใช้โปรด.");
         }

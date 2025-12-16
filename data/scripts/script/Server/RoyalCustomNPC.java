@@ -190,7 +190,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         int rc = getPlayer().getRebirthCount();
         int src = getPlayer().getSuperRebirthCount();
         String rGrade = getPlayer().getRebirthGrade();
-        String v0 = "#e<환생 및 แต่ละ성 ระบบ>#n#k\r\n\r\n안녕하신가? 나는 #b환생#k 및 #bแต่ละ성#k 담당 있는 #b환생 마법사#k라고 하네. 무엇을 원하는가?\r\n\r\n";
+        String v0 = "#e<환생 และ แต่ละ성 ระบบ>#n#k\r\n\r\nใน녕하신가? ฉัน는 #b환생#k และ #bแต่ละ성#k 담당 있는 #b환생 마법사#k라고 하네. อะไร을 원하는가?\r\n\r\n";
         v0 += "#e누적 환생 횟수 : #b" + nf.format(rc) + "회#k\r\n";
         v0 += "누적 แต่ละ성 횟수 : #b" + nf.format(src) + "회#k\r\n";
         v0 += "แต่ละ성 ระดับ : #b" + rGrade + "ระดับ#k#n\r\n";
@@ -204,22 +204,22 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         int v = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
             case 0: //환생อธิบาย
-                self.say("#b환생 ระบบ#k #e250 เลเวล#n 달성 시 ดำเนินการ เป็นไปได้, 환생 ดำเนินการ 시 #e235 เลเวล#n 돌아가지 크크크, ทั้งหมด Stat วินาที기화 (올Stat 4, 4, 4, 4) 후 ถัดไป과 같은 공식으로 새롭게 AP 지급된다네.\r\n\r\n#b999 + (환생 횟수 + แต่ละ성 횟수) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("#b환생 ระบบ#k #e250 เลเวล#n 달성 시 ดำเนินการ เป็นไปได้, 환생 ดำเนินการ 시 #e235 เลเวล#n 돌아가지 크크크, ทั้งหมด Stat วินาที기화 (올Stat 4, 4, 4, 4) 후 ถัดไปและ เหมือนกัน 공식으로 새롭게 AP 지급된다네.\r\n\r\n#b999 + (환생 횟수 + แต่ละ성 횟수) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
                 self.say("เพิ่ม #b누적 환생 횟수#k 1회 เพิ่ม, 환생 คะแนน เลเวล별로 상이하게 지급 된다네.", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             case 1: //แต่ละ성อธิบาย
-                self.say("#bแต่ละ성 ระบบ#k #e275 เลเวล#n 달성 시 ดำเนินการ เป็นไปได้, แต่ละ성 ดำเนินการ 시 #e235 เลเวล#n 돌아가지 크크크, ทั้งหมด Stat วินาที기화 (올Stat 4, 4, 4, 4) 후 ถัดไป과 같은 공식으로 새롭게 AP 지급된다네.\r\n\r\n#b999 + (환생 횟수 + แต่ละ성 횟수) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("เพิ่ม #b누적 แต่ละ성 횟수#k 1회 เพิ่ม, เลเวล 따른 환생 คะแนน แต่ละ성 คะแนน #b5~10 คะแนน#k 사이로 สุ่ม ได้รับ 하게 된다네.\r\n또한, แต่ละ성은 환생과 다르게, แต่ละ성 ระดับ 존재하지.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("แต่ละ성 ระดับ #b서전트 ระดับ 부터 슈프림 ระดับ#k까지 존재한다네.\r\nแต่ละ성 ระดับ ระดับ 따라 혜택이 존재하지.\r\n\r\nแต่ละ성 ระดับ 따라 이용 เป็นไปได้한 엘리트 แชนแนล 상이, 엘리트 แชนแนล 별 มอนสเตอร์ HP 및 รางวัล이 달라진다네.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("#bแต่ละ성 ระบบ#k #e275 เลเวล#n 달성 시 ดำเนินการ เป็นไปได้, แต่ละ성 ดำเนินการ 시 #e235 เลเวล#n 돌아가지 크크크, ทั้งหมด Stat วินาที기화 (올Stat 4, 4, 4, 4) 후 ถัดไปและ เหมือนกัน 공식으로 새롭게 AP 지급된다네.\r\n\r\n#b999 + (환생 횟수 + แต่ละ성 횟수) * 5 ", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("เพิ่ม #b누적 แต่ละ성 횟수#k 1회 เพิ่ม, เลเวล 따른 환생 คะแนน แต่ละ성 คะแนน #b5~10 คะแนน#k ระหว่าง로 สุ่ม ได้รับ 하게 된다네.\r\nและ한, แต่ละ성은 환생และ 다르게, แต่ละ성 ระดับ 존재하지.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("แต่ละ성 ระดับ #b서전트 ระดับ จาก 슈프림 ระดับ#kถึง 존재한다네.\r\nแต่ละ성 ระดับ ระดับ 따라 혜택이 존재하지.\r\n\r\nแต่ละ성 ระดับ 따라 이용 เป็นไปได้한 엘리트 แชนแนล 상이, 엘리트 แชนแนล 별 มอนสเตอร์ HP และ รางวัล이 달라진다네.", ScriptMessageFlag.NpcReplacedByNpc);
                 self.say("#e<엘리트 แชนแนล이란?>#n\r\n\r\n10~17 แชนแนล 엘리트 แชนแนล로써, แชนแนล별 ต้องการ แต่ละ성 ระดับ 다르지.\r\n\r\n#b10~11 แชนแนล (엘리트 '가디언 ระดับ')#k : #eแต่ละ성 가디언 ระดับ ต้องการ#n, 출현하는 ทั้งหมด วัน반 มอนสเตอร์ 크기 2배로 เพิ่ม, HP 10배 เพิ่ม, 해당 มอนสเตอร์에게서 얻는 EXP 1.2배 ใช้งาน\r\n#b12~13แชนแนล (엘리트 '마스터 ระดับ')#k #eแต่ละ성 마스터 ระดับ ต้องการ#n, 출현하는 ทั้งหมด วัน반 มอนสเตอร์ 크기 2배로 เพิ่ม, HP 17배 เพิ่ม, 해당 มอนสเตอร์에게서 얻는 EXP 1.4배 ใช้งาน\r\n#b14~15แชนแนล (엘리트 '커맨더 ระดับ') : #k#eแต่ละ성 커맨더 ระดับ ต้องการ#n, 출현하는 ทั้งหมด วัน반 มอนสเตอร์ 크기 2배로 เพิ่ม, HP 20배 เพิ่ม, 해당 มอนสเตอร์에게서 얻는 EXP 1.7배 ใช้งาน\r\n#b16~17แชนแนล (엘리트 '슈프림 ระดับ') : #k#eแต่ละ성 슈프림 ระดับ ต้องการ#n, 출현하는 ทั้งหมด วัน반 มอนสเตอร์ 크기 2배로 เพิ่ม, HP 40배 เพิ่ม, 해당 มอนสเตอร์에게서 얻는 EXP 2배 ใช้งาน", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("เพิ่ม แต่ละ성 ระดับ 따라 แต่ละ성 상점에서 ระดับ별로 ซื้อ เป็นไปได้한 품목이 다르며, ระดับ 높을 수록 더 좋은 혜택을 얻을 수 있다네.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("เพิ่ม แต่ละ성 ระดับ 따라 แต่ละ성 상점에서 ระดับ별로 ซื้อ เป็นไปได้한 품목이 다르며, ระดับ 높을 수록 더 ดี 혜택을 얻을 수 มี네.", ScriptMessageFlag.NpcReplacedByNpc);
                 self.say("#e<แต่ละ성 승급 ต้องการ เงื่อนไข>#n\r\n\r\n#b서전트 ระดับ#k : 누적 แต่ละ성 คะแนน 20점\r\n#b가디언 ระดับ#k : 누적 แต่ละ성 คะแนน 40점\r\n#b마스터ระดับ#k : 누적 แต่ละ성 คะแนน 80점\r\n#b커맨더 ระดับ#k : 누적 แต่ละ성 คะแนน 200점\r\n#b슈프림 ระดับ#k : 누적 แต่ละ성 คะแนน 350점", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("ครั้งสุดท้าย으로 แต่ละ성 ดำเนินการ 시 #b강림 리버스 멤버십#k SP 1개 ได้รับ할 수 있지. 왼쪽 별모양 아이콘을 통해 #b강림 리버스 멤버십#k 혜택을 이용할 수 있다네.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("누적 แต่ละ성 횟수에 따라 #b강림 리버스 멤버십#k ระดับ 올릴 수 , ระดับ 따라 สูงสุด 투자 เป็นไปได้한 สกิล เลเวล เพิ่ม된다네.\r\n\r\nแต่ละ성을 통해 다양한 สกิล 배우고 ตัวละคร 더욱 성장시켜보게나.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("ครั้งสุดท้าย으로 แต่ละ성 ดำเนินการ 시 #b강림 리버스 멤버십#k SP 1개 ได้รับ할 수 있지. 왼쪽 별모양 아이콘을 통해 #b강림 리버스 멤버십#k 혜택을 이용할 수 มี네.", ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("누적 แต่ละ성 횟수에 따라 #b강림 리버스 멤버십#k ระดับ 올릴 수 , ระดับ 따라 สูงสุด 투자 เป็นไปได้한 สกิล เลเวล เพิ่ม된다네.\r\n\r\nแต่ละ성을 통해 다양한 สกิล 배우고 ตัวละคร 더욱 성장시켜보게ฉัน.", ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             case 2: { //환생 싶.
                 if (getPlayer().getLevel() < 250) {
-                    self.say("250 เลเวล 이상만 환생할 수 있다네.\r\n자네는 ความสามารถ이 ไม่พอ해보이는군.");
+                    self.say("250 เลเวล 이상만 환생할 수 มี네.\r\n자네는 ความสามารถ이 ไม่พอ해보이는군.");
                     return;
                 }
                 v0 = "환생을 할 수 있는 เงื่อนไข에 달성했군. 지금 바로 환생을 해보겠는가?\r\n\r\n#e누적 환생 횟수 : #b" + nf.format(rc) + "회#k#n\r\n\r\n";
@@ -229,7 +229,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 1;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b예#k 누르면 환생, #b235 เลเวล#k 돌아가게 된다네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 환생하겠나?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#b예#k 누르면 환생, #b235 เลเวล#k 돌아ร้าน 된다네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 환생하겠ฉัน?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         try {
                             getPlayer().doRebirth();
                             short Tap = 1179;
@@ -259,9 +259,9 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 2;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b예#k 누르면 환생, #b235 เลเวล#k 돌아가게 된다네.\r\nวินาทีเดือน 환생은 #r2,000 강림크레딧#k จำเป็น 2회의 환생 เอฟเฟกต์를 얻을 수 있다네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 วินาทีเดือน 환생하겠나?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#b예#k 누르면 환생, #b235 เลเวล#k 돌아ร้าน 된다네.\r\nวินาทีเดือน 환생은 #r2,000 강림크레딧#k จำเป็น 2회의 환생 เอฟเฟกต์를 얻을 수 มี네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 วินาทีเดือน 환생하겠ฉัน?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         if (getPlayer().getRealCash() < 2000) {
-                            self.say("강림 크레딧이 ไม่พอ해 보이는군. #r2,000 강림크레딧#k จำเป็น하다 말하지 않았소?");
+                            self.say("강림 크레딧이 ไม่พอ해 보이는군. #r2,000 강림크레딧#k จำเป็นทำ 말하지 않았소?");
                             return;
                         }
                         try {
@@ -295,7 +295,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             }
             case 3: { //แต่ละ성을 하겠.
                 if (getPlayer().getLevel() < 275) {
-                    self.say("275 เลเวล 이상만 แต่ละ성할 수 있다네.\r\n자네는 ความสามารถ이 ไม่พอ해보이는군.");
+                    self.say("275 เลเวล 이상만 แต่ละ성할 수 มี네.\r\n자네는 ความสามารถ이 ไม่พอ해보이는군.");
                     return;
                 }
                 v0 = "แต่ละ성을 할 수 있는 เงื่อนไข에 달성했군. 지금 바로 แต่ละ성을 해보겠는가?\r\n\r\n#e누적 แต่ละ성 횟수 : #b" + nf.format(src) + "회#k#n\r\n\r\n";
@@ -305,7 +305,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     int ap = 1179;
                     rc = getPlayer().getRebirthCount() + getPlayer().getSuperRebirthCount() + 1;
                     ap = Math.min(32767, ap + (rc * 5));
-                    if (1 == self.askYesNo("#b예#k 누르면 แต่ละ성, #b235 เลเวล#k 돌아가게 된다네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 แต่ละ성하겠나?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo("#b예#k 누르면 แต่ละ성, #b235 เลเวล#k 돌아ร้าน 된다네.\r\n  #b- 환생 시 AP : " + ap + "#k\r\n\r\n지금 바로 แต่ละ성하겠ฉัน?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         try {
                             getPlayer().doSuperRebirth();
                             short Tap = 1179;
@@ -337,23 +337,23 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             case 4: { //แต่ละ성 승급
                 int total = getPlayer().getOneInfoQuestInteger(100712, "total");
 
-                v0 = "ปัจจุบัน #b#h0##k 자네의 แต่ละ성 ข้อมูล는 아래와 같다네.\r\n\r\n";
+                v0 = "ปัจจุบัน #b#h0##k 자네의 แต่ละ성 ข้อมูล는 ล่างและ 같다네.\r\n\r\n";
                 v0 += "#e누적 환생 횟수 : #b" + nf.format(rc) + "회#k\r\n";
                 v0 += "누적 แต่ละ성 횟수 : #b" + nf.format(src) + "회#k\r\n";
                 v0 += "누적 แต่ละ성 คะแนน : #b" + nf.format(total) + "#k\r\n";
                 v0 += "แต่ละ성 ระดับ : #b" + rGrade + "ระดับ#k#n\r\n\r\n";
                 v0 += "#b#L0#แต่ละ성 승급을 ดำเนินการ 싶.#l\r\n";
-                v0 += "#L1#그만 สนทนา하겠.#l\r\n";
+                v0 += "#L1#เขา만 สนทนา하겠.#l\r\n";
                 int vv = self.askMenu(v0, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv == 0) {
                     int grade = getPlayer().getOneInfoQuestInteger(100711, "grade");
 
                     String[] gradeName = {"스카웃", "서전트", "가디언", "마스터", "커맨더", "슈프림"};
                     v0 = "#e<แต่ละ성 승급 สมัคร>#n\r\n\r\n#eปัจจุบัน ระดับ : #b" + gradeName[grade] + "#k#n\r\n";
-                    v0 += "#eถัดไป ระดับ : #b" + gradeName[grade + 1] + "#k#n\r\n\r\nถัดไป ระดับ 승급하겠나?";
+                    v0 += "#eถัดไป ระดับ : #b" + gradeName[grade + 1] + "#k#n\r\n\r\nถัดไป ระดับ 승급하겠ฉัน?";
                     if (grade == 5) {
                         v0 = "#e<แต่ละ성 승급 สมัคร>#n\r\n\r\n#eปัจจุบัน ระดับ : #b" + gradeName[grade] + "#k#n\r\n";
-                        v0 += "\r\n자네는 더 이상 승급할 수 없다네.";
+                        v0 += "\r\n자네는 더 이상 승급할 수 ไม่มี네.";
                         self.say(v0, ScriptMessageFlag.NpcReplacedByNpc);
                         return;
                     }
@@ -371,7 +371,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             need = 350;
                         }
                         if (total < need) {
-                            self.say("승급 เงื่อนไข에 달성하지 못 승급이 불เป็นไปได้ 하다네.\r\n\r\nต้องการ คะแนน : #b" + need + "#k", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("승급 เงื่อนไข에 달성하지 못 승급이 불เป็นไปได้ ทำ네.\r\n\r\nต้องการ คะแนน : #b" + need + "#k", ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         getPlayer().updateOneInfo(100711, "grade", (grade + 1) + "");
@@ -398,7 +398,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             return;
         }
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n#b#h0##k 안녕하다냥\r\n\r\n나는 #r" + ServerConstants.serverName + "서버#k 광장 상점을 맡고있는 #b묘묘#k다냥\r\nจำเป็น한것이 있냥?\r\n#b" +
+        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n#b#h0##k ใน녕ทำ냥\r\n\r\nฉัน는 #r" + ServerConstants.serverName + "서버#k 광장 상점을 맡고있는 #b묘묘#k다냥\r\nจำเป็น한것이 있냥?\r\n#b" +
                 "#L0#อุปกรณ์ 상점을 이용 싶어요.#l\r\n" +
                 "#L1#ใช้ 상점을 이용 싶어요.#l\r\n" +
                 "#L2#스펙업 상점을 이용 싶어요.#l\r\n" +
@@ -408,13 +408,13 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 "#L6#휴식 คะแนน 상점을 이용 싶어요.#l", ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
             case 0: { //อุปกรณ์상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rอุปกรณ์ 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rอุปกรณ์ 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                         "#L0#모루 상점을 이용 싶어요.#r(지속해서 เพิ่ม예정)#b#l\r\n" +
                         "#L1#반지 상점을 이용 싶어요.#l\r\n" +
                         "#L2#보조อาวุธ 상점을 이용 싶어요.#l\r\n" +
                         "#L3#엠블렘 상점을 이용 싶어요.#l\r\n" +
                         "#L4#앱솔랩스 상점을 이용 싶어요.#r(앱솔랩스 코인)#b#l\r\n" +
-                        "#L5#앱솔랩스 상점을 이용 싶어요.#r(스티그마 코인)#b#l\r\n" +
+                        "#L5#앱솔랩스 상점을 이용 싶어요.#r(스티เขา마 코인)#b#l\r\n" +
                         "#L6#아케인 상점을 이용 싶어요.#r(판타즈마 코인)#b#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
                     case 0: //모루상점
@@ -433,7 +433,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                         openShop(777781); //앱솔랩스 코인
                         break;
                     case 5:
-                        openShop(777782); //스티그마 코인
+                        openShop(777782); //스티เขา마 코인
                         break;
                     case 6:
                         openShop(777783); //판타즈마 코인
@@ -442,15 +442,15 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 1: { //ใช้상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rใช้ 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
-                        "#L0#물약을 ซื้อ 싶어요.#l\r\n" +
-                        "#L1#도핑물약을 ซื้อ 싶어요.#l\r\n" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rใช้ 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
+                        "#L0#น้ำ약을 ซื้อ 싶어요.#l\r\n" +
+                        "#L1#도핑น้ำ약을 ซื้อ 싶어요.#l\r\n" +
                         "#L2#화살, 표창, 불릿을 ซื้อ 싶어요.#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
-                    case 0: //물약ซื้อ
+                    case 0: //น้ำ약ซื้อ
                         openShop(778777);
                         break;
-                    case 1: //도핑물약ซื้อ
+                    case 1: //도핑น้ำ약ซื้อ
                         openShop(778778);
                         break;
                     case 2: //화살 표창 불릿 ซื้อ
@@ -460,9 +460,9 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 2: { //스펙업상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r스펙업 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r스펙업 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                         "#L0#큐브를 ซื้อ 싶어요.#l\r\n" +
-                        "#L1#สัปดาห์문서를 ซื้อ 싶어요.#l\r\n" +
+                        "#L1#สัปดาห์ประตู서를 ซื้อ 싶어요.#l\r\n" +
                         "#L2#환생의 불꽃을 ซื้อ 싶어요.#l\r\n" +
                         "#L3#서큘레이터를 ซื้อ 싶어요.#l\r\n" +
                         "#L4#소울상점을 이용 싶어요.#l\r\n", ScriptMessageFlag.NpcReplacedByNpc);
@@ -470,7 +470,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     case 0: //큐브ซื้อ
                         openShop(779777);
                         break;
-                    case 1: //สัปดาห์문서 ซื้อ
+                    case 1: //สัปดาห์ประตู서 ซื้อ
                         openShop(779778);
                         break;
                     case 2: //환생의 불꽃 ซื้อ
@@ -486,7 +486,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 3: { //설치상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r설치 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r설치 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                         "#L0#의자를 ซื้อ 싶어요.#l\r\n" +
                         "#L1#라이딩을 ซื้อ 싶어요.#l\r\n" +
                         "#L2#Damage 스킨을 ซื้อ 싶어요.#l\r\n" +
@@ -512,7 +512,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 4: { //แคช상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rแคช(Meso) 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rแคช(Meso) 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                         "#L0#펫을 ซื้อ 싶어요.#l\r\n" +
                         "#L1#펫อุปกรณ์(อุปกรณ์, สกิล) ซื้อ 싶어요.#l\r\n" +
                         "#L2#แคช표창을 ซื้อ 싶어요.#l\r\n" +
@@ -548,30 +548,30 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 5: { //บอสคะแนน 상점
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rบอส คะแนน 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #rบอส คะแนน 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                         "#L0#บอส คะแนน 상점을 이용 싶어요.#l\r\n" +
-                        "#L1#บอส คะแนน 무엇인가요?#l", ScriptMessageFlag.NpcReplacedByNpc);
+                        "#L1#บอส คะแนน อะไร인가요?#l", ScriptMessageFlag.NpcReplacedByNpc);
                 switch (vv) {
                     case 0:
                         openShop(9073008);
                         break;
                     case 1:
                         self.say("บอส คะแนน란 บอส 잡으면 얻을 수 있는 คะแนน다 냥");
-                        self.say("บอส 강할수록 คะแนน มาก얻고 약 คะแนน 아예 벌 수 없는 บอส 있다 냥");
+                        self.say("บอส 강할수록 คะแนน มาก얻고 약 คะแนน 아예 벌 수 없는 บอส มี 냥");
                         self.say("บอส별로 벌 수 있는 คะแนน 이렇다 냥\r\n\r\n카오스 자쿰 : 10~15 สุ่ม\r\n" +
                                 "카오스 피에르 : 10~15 สุ่ม\r\n" +
                                 "카오스 반반 : 10~15 สุ่ม\r\n" +
                                 "카오스 블러디퀸 : 10~15 สุ่ม\r\n" +
-                                "하드 매그너스 : 20~25 สุ่ม\r\n" +
+                                "하드 매เขา너스 : 20~25 สุ่ม\r\n" +
                                 "카오스 벨룸 : 20~25 สุ่ม\r\n" +
                                 "카오스 파풀라투스 : 30~35 สุ่ม\r\n" +
                                 "노말 스우 : 30~35 สุ่ม\r\n" +
-                                "노말 데미안 : 40~45 สุ่ม\r\n" +
+                                "노말 데미ใน : 40~45 สุ่ม\r\n" +
                                 "노말 루시드 : 40~45 สุ่ม\r\n" +
                                 "노말 윌 : 40~45 สุ่ม\r\n" +
                                 "노말 더스크 : 40~45 สุ่ม\r\n" +
                                 "노말 듄켈 : 40~45 สุ่ม\r\n" +
-                                "하드 데미안 : 60~65 สุ่ม\r\n" +
+                                "하드 데미ใน : 60~65 สุ่ม\r\n" +
                                 "하드 스우 : 60~65 สุ่ม\r\n" +
                                 "하드 루시드 : 60~65 สุ่ม\r\n" +
                                 "하드 윌 : 60~65 สุ่ม\r\n" +
@@ -607,7 +607,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                         shopItems += "\r\n #L" + i + "##i" + items[i][0] + "# #z" + items[i][0] + "# (" + items[i][1] + "p)#l";
                     }
                 }
-                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r휴식 คะแนน 상점#k이다냥\r\n\r\n#e [ปัจจุบัน 나의 휴식 คะแนน : " + currentDP + "p]#n\r\n" +
+                int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r휴식 คะแนน 상점#k이다냥\r\n\r\n#e [ปัจจุบัน ฉัน의 휴식 คะแนน : " + currentDP + "p]#n\r\n" +
                         shopItems, ScriptMessageFlag.NpcReplacedByNpc);
                 if (vv >= 0) {
                     if (items[vv][1] > currentDP) {
@@ -617,12 +617,12 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     if (1 == self.askYesNo("정말로 #b#i" + items[vv][0] + "# #z" + items[vv][0] + "##k " + items[vv][1] + "point 구입할거 냥?", ScriptMessageFlag.NpcReplacedByNpc)) {
                         if (target.exchange(items[vv][0], 1) > 0) {
                             getPlayer().setDancePoint(currentDP - items[vv][1]);
-                            self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์됐다 냥 ถัดไป에 또와라 냥");
+                            self.sayOk("แลกเปลี่ยน เสร็จสมบูรณ์됐다 냥 ถัดไป에 และและ라 냥");
                         } else {
                             self.sayOk("여유ช่อง 있는지 ยืนยัน해봐라 냥", ScriptMessageFlag.NpcReplacedByNpc);
                         }
                     } else {
-                        self.sayOk("신중히 생แต่ละ해보고 다시와라 냥", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.sayOk("신중히 생แต่ละ해보고 다시และ라 냥", ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 }
                 break;
@@ -632,7 +632,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void Royal_Pet_Shop() {
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #애완 상점#k이다냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #애완 상점#k이다냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                 "#L0#펫을 ซื้อ 싶어요.#l\r\n" +
                 "#L1#펫อุปกรณ์(อุปกรณ์, สกิล) ซื้อ 싶어요.#l\r\n" +
                 "#L2#แคช표창을 ซื้อ 싶어요.#l\r\n" +
@@ -659,7 +659,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void Royal_Gacha_Shop() {
         initNPC(MapleLifeFactory.getNPC(9090000));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r가챠 상점#k이다냥 피넛 머신이나 머메이드 거울 부화기 등 다양한 ไอเท็ม เตรียม있다 냥\r\n\r\nจำเป็น한것이 무엇인지 골라라냥\r\n#b" +
+        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/2#\r\n\r\n이곳은 #r가챠 상점#k이다냥 피넛 머신이ฉัน 머메이드 거울 부화기 등 다양한 ไอเท็ม เตรียมมี 냥\r\n\r\nจำเป็น한것이 อะไร인지 골라라냥\r\n#b" +
                 "#L0#의자를 ซื้อ 싶어요.#l\r\n" +
                 "#L1#라이딩을 ซื้อ 싶어요.#l\r\n" +
                 "#L2#Damage 스킨을 ซื้อ 싶어요.#l\r\n" +
@@ -746,7 +746,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         }
         if (target.exchange(itemID, -1, needItem, -1, reward, 1) > 0) {
             getPlayer().send(CWvsContext.getIncubatorResult(reward, (short) 1, 0, (short) 0, itemID));
-        } else { //여기로 올경우 없긴함
+        } else { //ที่นี่로 올경우 없긴함
             self.sayOk("ช่อง ไม่พอ.");
         }
     }
@@ -775,37 +775,37 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             rank = "3";
 
         if (getPlayer().getName().equals(npc.getName()))
-                L1 = "\r\n#fs11##L1#랭커를 위한 특별เมนู(문구เปลี่ยน)";
+                L1 = "\r\n#fs11##L1#랭커를 บน한 특별เมนู(ประตู구เปลี่ยน)";
 
-        // 1위
+        // 1บน
         if (rank == "1") {
             if (getPlayer().getName().equals(npc.getName()))
-                L0 = "#L0#특별한 วันวัน รางวัล 받아가기(1위전용)#l";
+                L0 = "#L0#พิเศษ วันวัน รางวัล 받아가기(1บน전용)#l";
 
             if (!customText1.equals("")) {
                 v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText1 + "\r\n\r\n#b" + L0 + L1);
             } else {
-                v = self.askMenu("#fs11#안녕하세요 \r\n저는 전투력 측정 랭킹 " + rank + "위를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b" + L0 + L1);
+                v = self.askMenu("#fs11#ใน녕ทำ \r\nฉัน는 전투력 측정 랭킹 " + rank + "บน를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b" + L0 + L1);
             }
-        // 2위
+        // 2บน
         } else if (rank == "2") {
             if (!customText2.equals("")) {
-                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText2 + "\r\n\r\n#b#L3#" + rank + "위 라니 대단하세요 !#l" + L1);
+                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText2 + "\r\n\r\n#b#L3#" + rank + "บน 라니 대단ทำ !#l" + L1);
             } else {
-                v = self.askMenu("#fs11#안녕하세요 \r\n저는 전투력 측정 랭킹 " + rank + "위를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b#L3#" + rank + "위 라니 대단하세요 !#l" + L1);
+                v = self.askMenu("#fs11#ใน녕ทำ \r\nฉัน는 전투력 측정 랭킹 " + rank + "บน를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b#L3#" + rank + "บน 라니 대단ทำ !#l" + L1);
             }
-        // 3위
+        // 3บน
         } else if (rank == "3") {
             if (!customText3.equals("")) {
-                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText3 + "\r\n\r\n#b#L3#" + rank + "위 라니 대단하세요 !#l" + L1);
+                v = self.askMenu("#fs11##b" + npc.getName() + "#k : " + customText3 + "\r\n\r\n#b#L3#" + rank + "บน 라니 대단ทำ !#l" + L1);
             } else {
-               v = self.askMenu("#fs11#안녕하세요 \r\n저는 전투력 측정 랭킹 " + rank + "위를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b#L3#" + rank + "위 라니 대단하세요 !#l" + L1);
+               v = self.askMenu("#fs11#ใน녕ทำ \r\nฉัน는 전투력 측정 랭킹 " + rank + "บน를 달성중인 #b" + npc.getName() + "#k .\r\n\r\n#b#L3#" + rank + "บน 라니 대단ทำ !#l" + L1);
             }
         }
         switch (v) {
             case 0: {
                 if (getPlayer().getOneInfoQuestInteger(1234699, "dailyGiftCT") < 1) {
-                    if (rank == "1" && getPlayer().getName().equals(npc.getName())) {  // 1위 본인 รางวัล
+                    if (rank == "1" && getPlayer().getName().equals(npc.getName())) {  // 1บน 본인 รางวัล
                         if (target.exchange(5062005, 20, 5062503, 20, 2430044, 1, 4001715, 50, 4031227, 500) > 0) {
                             getPlayer().updateOneInfo(1234699, "dailyGiftCT", "1");
                             self.sayOk("#fs11#วันวัน รางวัล을 สำเร็จ적으로 수령แล้ว.\r\n\r\n\r\n#b" +
@@ -837,7 +837,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             }
             case 1: {
                 if (getPlayer().getName().equals(npc.getName())) {
-                    String text = self.askText("#fs11#커스텀 문구를 넣어สัปดาห์세요! 커스텀 문구는 리붓동안 유지.");
+                    String text = self.askText("#fs11#커스텀 ประตู구를 넣어สัปดาห์세요! 커스텀 ประตู구는 리붓동ใน 유지.");
                     if (!text.equals("") && !text.contains("#")) {
                         if (rank == "1")
                             Center.RankerCustomText = text;
@@ -845,9 +845,9 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             Center.Ranker2CustomText = text;
                         if (rank == "3")
                             Center.Ranker3CustomText = text;
-                        self.sayOk("#fs11#커스텀 문구가 สำเร็จ적으로 เปลี่ยน되었.");
+                        self.sayOk("#fs11#커스텀 ประตู구가 สำเร็จ적으로 เปลี่ยน되었.");
                     } else {
-                        self.sayOk("#fs11## 및 공백은 ใช้할 수 없.");
+                        self.sayOk("#fs11## และ 공백은 ใช้할 수 없.");
                     }
                 }
                 break;
@@ -982,7 +982,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                 {410003190, 270, 300, 200},
                 {410003200, 270, 300, 200},
         };
-        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/0#\r\n원하시는 เมนู를 เลือก하세요.\r\n#b#L0#적정 เลเวล 사냥터#l\r\n#L1#ปัจจุบัน เลเวล 이용เป็นไปได้한 ทั้งหมด 사냥터#l");
+        int v = self.askMenu("     #fUI/UIWindow2.img/Script/Title/0#\r\n원하시는 เมนู를 เลือกทำ.\r\n#b#L0#적정 เลเวล 사냥터#l\r\n#L1#ปัจจุบัน เลเวล 이용เป็นไปได้한 ทั้งหมด 사냥터#l");
         switch (v) {
             case 0: { //적정เลเวล
                 List<Integer> maps = new ArrayList<>();
@@ -1039,7 +1039,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void consume_2439178() {
         initNPC(MapleLifeFactory.getNPC(9031005));
-        if (self.askYesNo("연금술을 배우시겠습니까?\r\n\r\n※ 다른 종류의 도핑물약을 2개 ใช้ เป็นไปได้하게 . ※") == 1) {
+        if (self.askYesNo("연금술을 배우시หรือไม่?\r\n\r\n※ อื่น 종류의 도핑น้ำ약을 2개 ใช้ เป็นไปได้하게 . ※") == 1) {
             if (target.exchange(2439178, -1) > 0) {
                 getPlayer().changeSkillLevel(92040000, 1, 13);
                 self.sayOk("연금술 สกิล ได้รับ에 สำเร็จแล้ว.");
@@ -1068,7 +1068,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void bossRank() {
         if (getPlayer().getBossTier() >= 8) {
-            self.sayOk("최고단계까지 승급을  더 이상 승급을 ไม่สามารถทำได้.");
+            self.sayOk("최고단계ถึง 승급을  더 이상 승급을 ไม่สามารถทำได้.");
             return;
         }
 
@@ -1077,14 +1077,14 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         }
 
         StringBuilder str = new StringBuilder("#fs11##fc0xFF990033##eบอส 랭크 승급 ระบบ#n#fc0xFF000000#이라네.\r\n");
-        str.append("#bบอส 랭크 승급#fc0xFF000000# 통해 더욱 더 강해져보지 않겠나!?\r\n\r\n");
+        str.append("#bบอส 랭크 승급#fc0xFF000000# 통해 더욱 더 강해져보지 않겠ฉัน!?\r\n\r\n");
         str.append("#L0##bถัดไป เลเวล 승급하겠.#l\r\n");
-        str.append("#L1##bบอส 랭크란 무엇인가요?#l");
+        str.append("#L1##bบอส 랭크란 อะไร인가요?#l");
         int select = self.askMenu(str.toString());
         if (select == 1) {
             str = new StringBuilder("#fs11##fc0xFF990033#[랭크별 승급Buff]\r\n\r\n");
             str.append("[1] 랭크 당\r\n#bบอส โจมตี력 + 10%\r\n#bบอส เข้าเป็นไปได้횟수 + 1\r\n\r\n");
-            str.append("#fc0xFF990033#[บอส 랭크 2เลเวล]\r\n#b하드 스우, 데미안, 루시드 เข้า เป็นไปได้\r\n\r\n");
+            str.append("#fc0xFF990033#[บอส 랭크 2เลเวล]\r\n#b하드 스우, 데미ใน, 루시드 เข้า เป็นไปได้\r\n\r\n");
             str.append("#fc0xFF990033#[บอส 랭크 3เลเวล]\r\n#b가디언 엔젤 슬라임, 노멀 윌 เข้า เป็นไปได้\r\n\r\n");
             str.append("#fc0xFF990033#[บอส 랭크 4เลเวล]\r\n#b노멀 더스크 เข้า เป็นไปได้\r\n\r\n");
             str.append("#fc0xFF990033#[บอส 랭크 5เลเวล]\r\n#b하드 윌, 듄켈 เข้า เป็นไปได้\r\n\r\n");
@@ -1092,7 +1092,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             str.append("#fc0xFF990033#[บอส 랭크 7เลเวล]\r\n#b검은마법사, 세렌 เข้า เป็นไปได้");
             self.sayOk(str.toString());
         } else {
-            str = new StringBuilder("#fs11#ถัดไป เลเวล เลเวล업을 하기 위해선 아래와 같은 재료가 จำเป็น하다네.\r\n\r\n");
+            str = new StringBuilder("#fs11#ถัดไป เลเวล เลเวล업을 하기 บน해선 ล่างและ เหมือนกัน 재료가 จำเป็นทำ네.\r\n\r\n");
             for (var pair : bossTierUpgradeItemList.get(getPlayer().getBossTier())) {
                 str.append("#i").append(pair.left).append("# #b#z").append(pair.left).append("# #r").append(pair.right).append("개#k\r\n");
             }
@@ -1102,13 +1102,13 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             if (askType == 1) {
                 for (var pair : bossTierUpgradeItemList.get(getPlayer().getBossTier())) {
                     if (!getPlayer().haveItem(pair.left, pair.right)) {
-                        self.sayOk("승급에 จำเป็น한 #e재료#n 모자란 것 같군.");
+                        self.sayOk("승급에 จำเป็น한 #e재료#n หมวก란 것 같군.");
                         return;
                     }
                 }
 
                 if (getPlayer().getMeso() < bossTierUpgradeMesoList.get(getPlayer().getBossTier())) {
-                    self.sayOk("승급에 จำเป็น한 #eMeso#n 모자란 것 같군.");
+                    self.sayOk("승급에 จำเป็น한 #eMeso#n หมวก란 것 같군.");
                     return;
                 }
 
@@ -1133,23 +1133,23 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
     List<Pair<String, Integer>> jobs = new ArrayList<>(Arrays.asList(
             new Pair<>("히어로", 112),
             new Pair<>("팔라딘", 122),
-            new Pair<>("다크나이트", 132),
+            new Pair<>("다크ฉัน이트", 132),
             new Pair<>("아크메이지(불,독)", 212),
             new Pair<>("아크메이지(썬,콜)", 222),
             new Pair<>("비숍", 232),
             new Pair<>("보우마스터", 312),
             new Pair<>("신궁", 322),
             new Pair<>("패스파인더", 332),
-            new Pair<>("나이트로드", 412),
+            new Pair<>("ฉัน이트로드", 412),
             new Pair<>("섀도어", 422),
             new Pair<>("듀얼블레이더", 434),
             new Pair<>("바이퍼", 512),
             new Pair<>("캡틴", 522),
             new Pair<>("캐논마스터", 532),
             new Pair<>("소울마스터", 1112),
-            new Pair<>("플레임위자드", 1212),
+            new Pair<>("플레임บน자드", 1212),
             new Pair<>("윈드브레이커", 1312),
-            new Pair<>("나이트워커", 1412),
+            new Pair<>("ฉัน이트워커", 1412),
             new Pair<>("스트라이커", 1512),
             new Pair<>("미하วัน", 5112),
             new Pair<>("아란", 2112),
@@ -1161,13 +1161,13 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
             new Pair<>("데몬슬레이어", 3112),
             new Pair<>("데몬어벤져", 3122),
             new Pair<>("배틀메이지", 3212),
-            new Pair<>("와วัน드헌터", 3312),
+            new Pair<>("และวัน드헌터", 3312),
             new Pair<>("메카닉", 3512),
             new Pair<>("제논", 3612),
             new Pair<>("블래스터", 3712),
-            new Pair<>("카이저", 6112),
+            new Pair<>("카이ฉัน", 6112),
             new Pair<>("카인", 6312),
-            new Pair<>("카데나", 6412),
+            new Pair<>("카데ฉัน", 6412),
             new Pair<>("엔젤릭버스터", 6512),
             new Pair<>("키네시스", 14212),
             new Pair<>("아델", 15112),
@@ -1237,7 +1237,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                         }
 
                         if (vvv > 0 && !selectJob.equals("")) {
-                            int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직 및 เลเวล 235 วินาที기화가 이루어집니다.)");
+                            int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직 และ เลเวล 235 วินาที기화가 이루어บ้าน니다.)");
                             if (yesNo == 1) {
                                 for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                     if (core.getState() == 2) {
@@ -1250,7 +1250,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                     test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                 }
                                 if (test2 != null) {
-                                    getPlayer().dropMessage(1, "보조อาวุธ/방패/블레이드를 ปลดล็อก하셔야 .");
+                                    getPlayer().dropMessage(1, "보조อาวุธ/ห้อง패/블레이드를 ปลดล็อก하셔야 .");
                                     return;
                                 }
                                 changeFreeJob(vvv);
@@ -1302,7 +1302,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             }
 
                             if (vvv > 0 && !selectJob.equals("")) {
-                                int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직이 이루어집니다.)");
+                                int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직이 이루어บ้าน니다.)");
                                 if (yesNo == 1) {
                                     for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                         if (core.getState() == 2) {
@@ -1315,7 +1315,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                         test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                     }
                                     if (test2 != null) {
-                                        getPlayer().dropMessage(1, "보조อาวุธ/방패/블레이드를 ปลดล็อก하셔야 .");
+                                        getPlayer().dropMessage(1, "보조อาวุธ/ห้อง패/블레이드를 ปลดล็อก하셔야 .");
                                         return;
                                     }
                                     getPlayer().setRealCash(realcash - 30000);
@@ -1348,7 +1348,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                             }
 
                             if (vvv > 0 && !selectJob.equals("")) {
-                                int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직이 이루어집니다.)");
+                                int yesNo = self.askYesNo("เลือก하신 직업이 #r" + selectJob + "#k 맞습니까?\r\n\r\n(예를 누를시 자유전직이 이루어บ้าน니다.)");
                                 if (yesNo == 1) {
                                     for (VCore core : getPlayer().getVCoreSkillsNoLock()) {
                                         if (core.getState() == 2) {
@@ -1361,7 +1361,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                                         test2 = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                                     }
                                     if (test2 != null) {
-                                        getPlayer().dropMessage(1, "보조อาวุธ/방패/블레이드를 ปลดล็อก하셔야 .");
+                                        getPlayer().dropMessage(1, "보조อาวุธ/ห้อง패/블레이드를 ปลดล็อก하셔야 .");
                                         return;
                                     }
                                     getPlayer().gainMeso(-30000000000L, true);
@@ -1535,7 +1535,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
                     getPlayer().maxSkillByID(1281);
                     break;
             }
-            // อัตโนมัติ전직 방지
+            // อัตโนมัติ전직 ห้อง지
             getPlayer().updateOneInfo(122870, "AutoJob", String.valueOf(getPlayer().getJob() / 10 * 10));
             getPlayer().maxskill(getPlayer().getJob());
 
@@ -1569,7 +1569,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
         if (test2 == null) {
             getPlayer().send(CField.UIPacket.openUI(164));
         } else {
-            getPlayer().dropMessage(1, "도적 직업군은 보조อาวุธ/방패/블레이드를 ปลดล็อก하셔야 .");
+            getPlayer().dropMessage(1, "도적 직업군은 보조อาวุธ/ห้อง패/블레이드를 ปลดล็อก하셔야 .");
         }
     }
 
@@ -1631,7 +1631,7 @@ public class RoyalCustomNPC extends ScriptEngineNPC {
 
     public void sendCubeLevelUpInfo() {
         GradeRandomOption[] options = {GradeRandomOption.Red, GradeRandomOption.Black, GradeRandomOption.Additional};
-        String cubeTotalInfo = "#fs11#큐브 ระดับ ขึ้น까지 #b남은 큐브 ใช้ 횟수#k ยืนยัน해 보세요.\r\n"
+        String cubeTotalInfo = "#fs11#큐브 ระดับ ขึ้นถึง #b남은 큐브 ใช้ 횟수#k ยืนยัน해 ดู.\r\n"
                 + "해당 수치는 ระดับ ขึ้น 시 วินาที기화, #bบัญชี 내 공유#k.\r\n\r\n";
         for (GradeRandomOption option : options) {
             String cubeString = "";

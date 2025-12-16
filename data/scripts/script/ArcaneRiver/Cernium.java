@@ -101,7 +101,7 @@ public class Cernium extends ScriptEngineNPC {
     public void east01_410000500() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "어디로 갈까?\r\n\r\n#b#L0#불타는 세르니움#l";
+            String text = "ที่ไหน로 갈까?\r\n\r\n#b#L0#불타는 세르니움#l";
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
             switch (v) { //불타는 세르니움
                 case 0: {
@@ -117,7 +117,7 @@ public class Cernium extends ScriptEngineNPC {
     public void south_410000800() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "어디로 갈까?\r\n\r\n#b#L0#세르니움 광장#l";
+            String text = "ที่ไหน로 갈까?\r\n\r\n#b#L0#세르니움 광장#l";
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
             switch (v) { //세르니움
                 case 0: {

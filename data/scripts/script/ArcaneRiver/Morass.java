@@ -38,7 +38,7 @@ public class Morass extends ScriptEngineNPC {
                  */
                 registerTransferField(940204309, 1);
             } else {
-                getPlayer().dropMessage(5, "이곳은 아직 에르다가 안정적인 것 같다.");
+                getPlayer().dropMessage(5, "이곳은 아직 에르다가 ใน정적인 것 같다.");
             }
         } else {
             getPlayer().dropMessage(5, "230เลเวล 이상만 เข้า하실 수 있.");
@@ -48,8 +48,8 @@ public class Morass extends ScriptEngineNPC {
     @Script
     public void morassDQ_MP() {
         if (getPlayer().getLevel() >= 230) {
-            getPlayer().dropMessage(5, "이곳엔 별다른 문제가 없어보인다.");
-            //이곳은 아직 에르다가 안정적인 것 같다.
+            getPlayer().dropMessage(5, "이곳엔 별อื่น ประตู제가 없어보인다.");
+            //이곳은 아직 에르다가 ใน정적인 것 같다.
         } else {
             getPlayer().dropMessage(5, "230เลเวล 이상만 เข้า하실 수 있.");
         }
@@ -66,7 +66,7 @@ public class Morass extends ScriptEngineNPC {
                     registerTransferField(450006240);
                 }
             } else {
-                int v0 = target.askMenu("아직 충นาที히 #i4036328# #b#t4036328##k 모으지 못했다.\r\n어떻게 할까?\r\n#L0#트뤼에페 광장으로#l\r\n#L1#연구실로#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
+                int v0 = target.askMenu("아직 충นาที히 #i4036328# #b#t4036328##k 모으지 못했다.\r\nอย่างไร 할까?\r\n#L0#트뤼에페 광장으로#l\r\n#L1#연구실로#l", ScriptMessageFlag.FlipImage, ScriptMessageFlag.Self, ScriptMessageFlag.Scenario);
                 if (v0 == 0) {
                     registerTransferField(450006130);
                 } else if (v0 == 1) {

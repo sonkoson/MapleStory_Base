@@ -27,7 +27,7 @@ public class PinkBeen extends ScriptEngineNPC {
         if (em == null) {
             self.say("ปัจจุบัน 핑크빈 บอส 레이드를 이용하실 수 없.");
         } else {
-            String v = "#e<บอส:핑크빈>#n\r\n침입자는 여신의 제단으로 향한 듯 . 그를 어서 저지하지 못 무서운 วัน이 วัน어날 겁니다.\r\n#b\r\n#L0# <บอส:핑크빈> เข้า을 สมัคร한다.#l";
+            String v = "#e<บอส:핑크빈>#n\r\n침입자는 여신의 제단으로 향한 듯 . เขา를 어서 ฉัน지하지 못 무서운 วัน이 วัน어날 겁니다.\r\n#b\r\n#L0# <บอส:핑크빈> เข้า을 สมัคร한다.#l";
             int v0 = self.askMenu(v);
             if (v0 == 0) {
                 if (target.getParty() == null) {
@@ -68,7 +68,7 @@ public class PinkBeen extends ScriptEngineNPC {
                         			return;
                         		}
                         		if (nreset > (single ? 1 : 0)) {
-                        			self.sayOk("วันนี้ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 모두 ใช้하였.");
+                        			self.sayOk("วันนี้ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 ทั้งหมด ใช้하였.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
@@ -84,7 +84,7 @@ public class PinkBeen extends ScriptEngineNPC {
                         			return;
                         		}
                         		if (creset > 0) {
-                        			self.sayOk("이번สัปดาห์ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 모두 ใช้하였.");
+                        			self.sayOk("이번สัปดาห์ เพิ่มเข้า เพิ่ม เป็นไปได้ 횟수를 ทั้งหมด ใช้하였.");
                         			return;
                         		}
                         		getPlayer().gainTogetherPoint(-150);
@@ -136,7 +136,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                     int map = selection == 0 ? normalMaps[0] : chaosMaps[0];
                                     eim.setProperty("map", map);
                                     eim.setProperty("mode", selection == 0 ? "normal" : "chaos");
-                                    eim.getMapInstance(map).setLastRespawnTime(Long.MAX_VALUE); //리스폰방지
+                                    eim.getMapInstance(map).setLastRespawnTime(Long.MAX_VALUE); //리스폰ห้อง지
                                     eim.getMapInstance(map).resetFully(false);
                                     if (selection == 0) {
                                     	if (DBConfig.isGanglim) {
@@ -154,7 +154,7 @@ public class PinkBeen extends ScriptEngineNPC {
                                     }
                                     eim.registerParty(target.getParty(), getPlayer().getMap());
                                 } else {
-                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
+                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득ชา 이용하실 수 없. อื่น แชนแนล 이용โปรด.");
                                 }
                             } else {
                                 self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군요 วันนี้은 더 이상 들어가실 수 없.");
@@ -163,7 +163,7 @@ public class PinkBeen extends ScriptEngineNPC {
                             self.say("핑크빈 레이드 연습โหมด는 เตรียม중!");
                         }
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 모여 สัปดาห์세요.");
+                        self.say(target.getParty().getPartyMemberList().size() + "명 ทั้งหมด เหมือนกันแผนที่ 모여 สัปดาห์세요.");
                     }
                 }
             }
@@ -188,8 +188,8 @@ public class PinkBeen extends ScriptEngineNPC {
     public void PinkBeen_Summon() {
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { //ปาร์ตี้장만 소환เป็นไปได้(중복소환 방지)
-                if (self.askAccept("여신의 거울만 있으면... 다시 검은 마법사를 불러낼 수 있어!...\r\n, 이상해... 왜 검은 마법사를 불러내지 않는 거지?  기운은 뭐지? 검은 마법사와는 전혀 다른... 크아아악!\r\n\r\n#b(키르스턴의 어깨에 손을 댄다.)#k") == 1) {
+            if (target.getParty().getLeader().getId() == target.getId()) { //ปาร์ตี้장만 소환เป็นไปได้(중복소환 ห้อง지)
+                if (self.askAccept("여신의 거울만 있으면... 다시 검은 마법사를 불러낼 수 있어!...\r\n, 이상해... ทำไม 검은 마법사를 불러내지 않는 거지?  기운은 뭐지? 검은 마법사และ는 전혀 อื่น... 크아아악!\r\n\r\n#b(키르스턴의 어깨에 손을 댄다.)#k") == 1) {
                     if (eim.getProperty("summonMOB") == null) {
                         eim.setProperty("summonMOB", "1");
                         Field field = getPlayer().getMap();
@@ -280,7 +280,7 @@ public class PinkBeen extends ScriptEngineNPC {
     }
 
     public void PinkBeen_Out() {
-        if (self.askYesNo("전투를 หยุด 나가시겠습니까?\r\n#r#e※สัปดาห์의 : ออก하게  วันนี้은 더 이상 핑크빈에 도전할 수 없.#n#k") == 1) {
+        if (self.askYesNo("전투를 หยุด ฉัน가시หรือไม่?\r\n#r#e※สัปดาห์의 : ออก하게  วันนี้은 더 이상 핑크빈에 도전할 수 없.#n#k") == 1) {
             List<Integer> normalMap = new ArrayList(Arrays.asList(270050100, 270050101, 270050102, 270050103, 270050104, 270050105, 270050106, 270050107, 270050108, 270050109));
             //270050300(노말 핑크빈แผนที่ ออก했을경우)
             //270051300(카오스 핑크빈แผนที่ ออก했을경우)

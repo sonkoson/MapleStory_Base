@@ -10,18 +10,18 @@ import scripting.newscripting.ScriptEngineNPC;
 public class LabyrinthofSuffering extends ScriptEngineNPC {
 
     public void q35740s() {
-        target.say("고통의 미궁에서 환영이 아닌 #b진 힐라를 물리치자.#k", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        target.say("고통의 미궁에서 환영이 아닌 #b진 힐라를 น้ำ리치자.#k", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
         getQuest().forceStart(getPlayer(), getNpc().getId(), "");
     }
 
     public void q35740e() {
-        target.say("앗, 시그너스님께서 연락이..?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
+        target.say("앗, 시เขา너스님께서 연락이..?", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
         initNPC(MapleLifeFactory.getNPC(3003750));
-        if (1 == self.askAccept("#face0#고통의 미궁을 정복 #b진 힐라#k 물리치신 #h0#...\r\n 물건이 당신의 공적을 더 빛내줄 거예요.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#face0#고통의 미궁을 정복 #b진 힐라#k น้ำ리치신 #h0#...\r\n น้ำ건이 คุณ의 공적을 더 빛내줄 거예요.\r\n\r\n#i1143136# #r#t1143136#", ScriptMessageFlag.Scenario)) {
             if (target.exchange(1143136, 1) > 0) {
                 getQuest().forceComplete(getPlayer(), getNpc().getId());
             } else {
-                self.say("#face0#อุปกรณ์창을 1칸이상 비워 สัปดาห์신 뒤 다시 말을 걸어 สัปดาห์세요.", ScriptMessageFlag.Scenario);
+                self.say("#face0#อุปกรณ์창을 1칸이상 비워 สัปดาห์신 หลัง 다시 말을 걸어 สัปดาห์세요.", ScriptMessageFlag.Scenario);
             }
         }
     }
@@ -103,7 +103,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 250) {
             String text = "이질적인 기운이 느껴진다. 어느 곳으로 갈까?\r\n\r\n#b#L0#욕망의 제단 입구#l";
             if (getPlayer().getLevel() >= 255) {
-                text += "\r\n#L1#리멘-세계의 눈물#l";
+                text += "\r\n#L1#리멘-โลก의 눈น้ำ#l";
             }
             int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
             switch (v) {
@@ -111,7 +111,7 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
                     registerTransferField(450011990, 1);
                     break;
                 }
-                case 1: { //리멘 세계의 눈물
+                case 1: { //리멘 โลก의 눈น้ำ
                     if (getPlayer().getLevel() >= 255) {
                         registerTransferField(450012000, 0);
                     }
@@ -155,13 +155,13 @@ public class LabyrinthofSuffering extends ScriptEngineNPC {
     public void BPReturn_JinHill() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 250) {
-            int v = target.askMenu("어디로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#고통의 미궁 최심부 거점#l");
+            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#고통의 미궁 최심부 거점#l");
             switch (v) {
                 case 0: { //광장
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //세계의 눈물 중단3
+                case 1: { //โลก의 눈น้ำ 중단3
                     registerTransferField(450011320, 7);
                     break;
                 }

@@ -86,9 +86,9 @@ public class OneClickSet extends ScriptEngineNPC {
                 }
             }
 
-            rebirthFlame += "\r\n#r#L0#เลือก하지 않고 그만두기#l";
+            rebirthFlame += "\r\n#r#L0#เลือก하지 않고 เขา만두기#l";
 
-            int vvv = self.askMenu("#fs11#환생의불꽃 เลือก하세요. 갖고 있는 것만 แสดง. (환생의 불꽃, 영원한 환생의 불꽃만 ใช้. 검환불은 สนับสนุน하지 않.)" + rebirthFlame);
+            int vvv = self.askMenu("#fs11#환생의불꽃 เลือกทำ. 갖고 있는 것만 แสดง. (환생의 불꽃, 영원한 환생의 불꽃만 ใช้. 검환불은 สนับสนุน하지 않.)" + rebirthFlame);
             if (vvv > 0) {
                 BonusStatPlaceType placeType = BonusStatPlaceType.PowerfulRebirthFlame;
                 if (GameConstants.IsPowerfulRebirthFlame(vvv)) {
@@ -127,7 +127,7 @@ public class OneClickSet extends ScriptEngineNPC {
             self.say("อุปกรณ์, 장착 ช่อง 환생의 불꽃이 ใช้งาน된 ไอเท็ม 없.\r\n#e#r[ตั้งค่าเป็นไปได้ อุปกรณ์ตัวเลือก : 환생의 불꽃 ใช้งาน된 ไอเท็ม]");
             return;
         }
-        String menu = "#fs11#เพิ่มตัวเลือก รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็ม부터 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
+        String menu = "#fs11#เพิ่มตัวเลือก รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็มจาก 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
         for (short i : items) {
             Item toItem;
 	 var a = i;
@@ -269,15 +269,15 @@ public class OneClickSet extends ScriptEngineNPC {
                                 ++line;
                             }
                             if (line == 5) {
-                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금까지 ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금ถึง ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             } else if (line == 4) {
-                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금까지 ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금ถึง ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             } else if (line == 3) {
-                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금까지 ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
+                                if (1 != self.askMenu(String.format("#e남아있는 환생의 불꽃 : #r%d개#k\r\n지금ถึง ใช้한 환생의 불꽃 : #r%d개#k#n\r\n\r\n#b#e#L0#\r\n%s#l\r\n\r\n\r\n#L1##r한 번 더 돌리기#l", itemCount, useCount, t), ScriptMessageFlag.NoEsc)) {
                                     break;
                                 }
                             }
@@ -301,9 +301,9 @@ public class OneClickSet extends ScriptEngineNPC {
     public void oneClickSet() {
         int vv = -1;
         if (!DBConfig.isGanglim) {
-            vv = self.askMenu("#b#h0##k  안녕하세요.\r\n\r\n저는 여러นาที들의 ตัวละคร 셋팅을 도와드리는\r\n#b신용협동조합#k. 원하시는 เมนู를 클릭하세요.#b\r\n#L0#검색헤어#l\r\n#L1#검색성형#l");
+            vv = self.askMenu("#b#h0##k  ใน녕ทำ.\r\n\r\nฉัน는 여러นาที들의 ตัวละคร 셋팅을 도และ드리는\r\n#b신용협동조합#k. 원하시는 เมนู를 클릭ทำ.#b\r\n#L0#검색헤어#l\r\n#L1#검색성형#l");
         } else {
-            vv = self.askMenu("#b#h0##k  안녕하세요.\r\n\r\n저는 여러นาที들의 ตัวละคร 셋팅을 도와드리는\r\n#b릴리#k. 원하시는 เมนู를 클릭하세요.#b\r\n#L0#검색헤어#l\r\n#L1#검색성형#l");
+            vv = self.askMenu("#b#h0##k  ใน녕ทำ.\r\n\r\nฉัน는 여러นาที들의 ตัวละคร 셋팅을 도และ드리는\r\n#b릴리#k. 원하시는 เมนู를 클릭ทำ.#b\r\n#L0#검색헤어#l\r\n#L1#검색성형#l");
         }
         switch (vv) {
             case 0:
@@ -359,7 +359,7 @@ public class OneClickSet extends ScriptEngineNPC {
                 if (items.size() > 60) {
                     self.sayOk("찾으시려는 검색어에 데이터량이 너무 많아 แสดง하지 못แล้ว. 좀 더 정확한 검색을 โปรด.\r\n[예 : (라리엘 헤어) 라리x 라리엘o]");
                 } else if (items.size() > 0) {
-                    String list = "아래는 검색 ผลลัพธ์. 원하시는 코디가 있다면 เลือกโปรด.#b\r\n";
+                    String list = "ล่าง는 검색 ผลลัพธ์. 원하시는 코디가 มี면 เลือกโปรด.#b\r\n";
             /*for (int i = 0; i < items.size(); i++) {
                 list += "#L" + i + "#" + "#z" + items.get(i) + "#\r\n";
             }*/
@@ -387,7 +387,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         }
                         String v0 = "정말 #r#z" + items.get(vvv) + "##k เปลี่ยนต้องการหรือไม่?\r\n#e";
                         if (vv == 0) {
-                            v0 += "\r\n앞 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\n뒷 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
+                            v0 += "\r\nหน้า 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\n뒷 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
                         } else {
                             v0 += "\r\n#fCharacter/Face/000" + items.get(vvv) + ".img/default/face#";
                         }
@@ -499,7 +499,7 @@ public class OneClickSet extends ScriptEngineNPC {
             self.say("อุปกรณ์ช่อง 잠재ความสามารถ이 부여된 ไอเท็ม 없. \r\n#e#r[ตั้งค่าเป็นไปได้ อุปกรณ์ตัวเลือก : 잠재ความสามารถ 3줄 ไอเท็ม]");
             return;
         }
-        String menu = "#fs11#잠재ความสามารถ을 รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็ม부터 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
+        String menu = "#fs11#잠재ความสามารถ을 รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็มจาก 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
         for (short i : items) {
             Item CubetoItem;
 	var a = i;
@@ -584,7 +584,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     }
 
 
-                    String text = String.format("#e남아있는 큐브 수 : #r%d개#k\r\n지금까지 ใช้한 큐브 수 : #r%d개#k#n#k\r\n\r\n", itemCount, stackCube, decFormat.format(stackMeso));
+                    String text = String.format("#e남아있는 큐브 수 : #r%d개#k\r\n지금ถึง ใช้한 큐브 수 : #r%d개#k#n#k\r\n\r\n", itemCount, stackCube, decFormat.format(stackMeso));
                     String text2 = "";
                     if (additional) {
                         if (reItem.getPotential4() > 0) {
@@ -659,7 +659,7 @@ public class OneClickSet extends ScriptEngineNPC {
                         continue;
                     }
                 } else {
-                    self.sayOk("큐브가 없거나 ใช้칸에 공간이 ไม่พอ해 ตัวเลือก รีเซ็ต ล้มเหลวแล้ว.");
+                    self.sayOk("큐브가 없거ฉัน ใช้칸에 공간이 ไม่พอ해 ตัวเลือก รีเซ็ต ล้มเหลวแล้ว.");
                     break;
                 }
             }
@@ -720,7 +720,7 @@ public class OneClickSet extends ScriptEngineNPC {
             self.say("อุปกรณ์ช่อง 잠재ความสามารถ이 부여된 ไอเท็ม 없. [ตั้งค่าเป็นไปได้ อุปกรณ์ตัวเลือก : 잠재ความสามารถ 3줄 ไอเท็ม]");
             return;
         }
-        String menu = "#fs11#잠재ความสามารถ을 รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็ม부터 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
+        String menu = "#fs11#잠재ความสามารถ을 รีเซ็ต하실 ไอเท็ม เลือกโปรด.\r\n\r\n#r#e※ สัปดาห์의사항 ※\r\n장착된 ไอเท็ม - อุปกรณ์ ไอเท็มจาก 순으로 표기.\r\nล็อก있는 อุปกรณ์는 แสดง되지않.#n#b\r\n";
         for (short i : items) {
             Item CubetoItem;
 	var a = i;
@@ -746,7 +746,7 @@ public class OneClickSet extends ScriptEngineNPC {
                 selectedItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem((short) selection);
             }
             List<ItemOption> allPoptions = getItemOption(selectedItem, option);
-            String see = "첫번째 줄 원하는 ตัวเลือก เลือก하세요.\r\n#r#e※ สัปดาห์의사항 ※\r\n원하는 첫번째 줄이 뜰때까지 ต่อไป돌려지는 방식이며 큐브는 1개~x개가 ใช้.(빨리뜨면 뜰수록 큐브ใช้적음)#n#b\r\n\r\n";
+            String see = "첫번째 줄 원하는 ตัวเลือก เลือกทำ.\r\n#r#e※ สัปดาห์의사항 ※\r\n원하는 첫번째 줄이 뜰때ถึง ต่อไป돌려지는 ห้อง식이며 큐브는 1개~x개가 ใช้.(เร็ว뜨면 뜰수록 큐브ใช้적음)#n#b\r\n\r\n";
             int L = 0;
             MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
             for (ItemOption opt : allPoptions) {
@@ -791,12 +791,12 @@ public class OneClickSet extends ScriptEngineNPC {
             //String check = "[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) +"Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n";
             int canCubeNumber = getPlayer().getItemQuantity(cubeId, false);
             int potentialLineOne = InventoryHandler.setPotentialReturnInt(option, true, selectedItem);
-            while (allPoptions.get(cubeOption).id != potentialLineOne) { //원하는 첫째줄 뜰때까지 돌림
-                if (getSc().isStop()) { //스크립트 꺼졌는데 while문도는거 방지 จำเป็น
+            while (allPoptions.get(cubeOption).id != potentialLineOne) { //원하는 첫째줄 뜰때ถึง 돌림
+                if (getSc().isStop()) { //스크립트 꺼졌는데 whileประตู도는거 ห้อง지 จำเป็น
                     break;
                 }
                 boolean canMeso = getPlayer().getMeso() >= (stackMeso + price);
-                if (canCubeNumber > 0 && canMeso) { //큐브 Meso여유있으면 또돌림
+                if (canCubeNumber > 0 && canMeso) { //큐브 Meso여유있으면 และ돌림
                     potentialLineOne = InventoryHandler.setPotentialReturnInt(option, true, selectedItem);
                     stackMeso += price;
                     stackCube += 1;
@@ -849,7 +849,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             exchange(cubeId, -stackCube);
                         }
                         getPlayer().gainMeso(-stackMeso, true);
-                        self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거나 ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
+                        self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거ฉัน ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
                     }
                     return;
                 }
@@ -859,7 +859,7 @@ public class OneClickSet extends ScriptEngineNPC {
             } else {
                 exchange(cubeId, -stackCube);
             }
-            getPlayer().gainMeso(-stackMeso, true); //1차 Meso빼기
+            getPlayer().gainMeso(-stackMeso, true); //1ชา Meso빼기
             stackMeso = 0;
             stackCube = 0;
             if (selection > 1000) {
@@ -1042,7 +1042,7 @@ public class OneClickSet extends ScriptEngineNPC {
                 } else {
                     getPlayer().forceReAddItem(getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition()), MapleInventoryType.EQUIP);
                 }
-                yesNo = self.askYesNo("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [큐브 ตัวเลือก] \r\n#b" + text + "\r\n\r\n#e#r다시 돌리시겠습니까?\r\n#b[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false) + "개]\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
+                yesNo = self.askYesNo("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [큐브 ตัวเลือก] \r\n#b" + text + "\r\n\r\n#e#r다시 돌리시หรือไม่?\r\n#b[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false) + "개]\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
             }
             while (yesNo != 0) {
                 if (getSc().isStop()) {
@@ -1102,7 +1102,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             exchange(cubeId, -stackCube);
                         }
                         getPlayer().gainMeso(-stackMeso, true);
-                        self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거나 ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
+                        self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거ฉัน ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
                     }
                     return;
                 }
@@ -1163,7 +1163,7 @@ public class OneClickSet extends ScriptEngineNPC {
                                 exchange(cubeId, -stackCube);
                             }
                             getPlayer().gainMeso(-stackMeso, true);
-                            self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거나 ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
+                            self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "더이상 큐브, Meso 없거ฉัน ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
                         }
                         return;
                     }
@@ -1351,7 +1351,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     } else {
                         getPlayer().forceReAddItem(reItem, MapleInventoryType.EQUIP);
                     }
-                    yesNo = self.askYesNo("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [큐브 ตัวเลือก] \r\n#b" + text + "\r\n\r\n#e#r다시 돌리시겠습니까?\r\n[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false) + "개]" + "\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
+                    yesNo = self.askYesNo("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n" + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [큐브 ตัวเลือก] \r\n#b" + text + "\r\n\r\n#e#r다시 돌리시หรือไม่?\r\n[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false) + "개]" + "\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
                 }
             }
         }
@@ -1391,7 +1391,7 @@ public class OneClickSet extends ScriptEngineNPC {
 
     private String getMemorialCubeString(boolean additional, short selection, Item selectedItem) {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-        String memorialText = "큐브가 ไม่พอ하거나 Meso ไม่พอ. #r[After ตัวเลือก]#k เปลี่ยนต้องการหรือไม่?\r\n\r\n#b[Before ตัวเลือก]#k\r\n";
+        String memorialText = "큐브가 ไม่พอ하거ฉัน Meso ไม่พอ. #r[After ตัวเลือก]#k เปลี่ยนต้องการหรือไม่?\r\n\r\n#b[Before ตัวเลือก]#k\r\n";
         if (!additional) {
             if (getPlayer().memorialCube.getPotential1() > 0) {
                 memorialText += "첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1()).get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));

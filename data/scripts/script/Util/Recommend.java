@@ -191,12 +191,12 @@ public class Recommend extends ScriptEngineNPC {
             case 0: {
                 if (!overlab_recom(getPlayer().getClient().getAccID(), getPlayer().getName())) {
                     if (getPlayer().getLevel() >= 200) {
-                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#, 당신을 #fc0xFF990033#[강림เดือน드]#fc0xFF000000# 이끈 이의 #b닉네임#fc0xFF000000# พูดโปรด.\r\n");
-                        str.append("하지만 #r한 번 ลงทะเบียน 되돌릴 수 없으니#fc0xFF000000# 신중하게 ลงทะเบียน하셔야 해요.");
+                        str = new StringBuilder("#b#fs11# #h 0##fc0xFF000000#, คุณ을 #fc0xFF990033#[강림เดือน드]#fc0xFF000000# 이끈 이의 #b닉네임#fc0xFF000000# พูดโปรด.\r\n");
+                        str.append("แต่ #r한 번 ลงทะเบียน 되돌릴 수 없으니#fc0xFF000000# 신중하게 ลงทะเบียน하셔야 해요.");
                         String text = self.askText(str.toString());
 
                         if (!existChar(text)) {
-                            self.sayOk("없는 유저.");
+                            self.sayOk("없는 유ฉัน.");
                             return;
                         }
                         if (text.equals("") || text.equals(getPlayer().getName()) || getAccIdFromDB(text) == getAccIdFromDB(getPlayer().getName())) {
@@ -205,7 +205,7 @@ public class Recommend extends ScriptEngineNPC {
                             join_recom(getClient().getAccID(), getPlayer().getName(), text);
                             getPlayer().gainItem(etcReward.left, etcReward.right);
 
-                            str = new StringBuilder("#fs11#이건 #b#h 0##k님에게 드리는 저의 작은 선물. 앞으로의 여행에 큰 ช่วยเหลือ이 될 거예요.#b\r\n");
+                            str = new StringBuilder("#fs11#이건 #b#h 0##k님에게 드리는 ฉัน의 เล็ก 선น้ำ. หน้า으로의 여행에 ใหญ่ ช่วยเหลือ이 될 거예요.#b\r\n");
 
                             for (Pair<Integer, Integer> reward : selfReward) {
                                 getPlayer().gainItem(reward.left, reward.right);

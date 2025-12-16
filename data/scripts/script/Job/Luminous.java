@@ -37,20 +37,21 @@ public class Luminous extends ScriptEngineNPC {
          * 09 00 BE EE B5 D2 C0 C7 20 B1 E6
          */
 
-        int menu = self.askSelectMenu(List.of("빛의 길", "어둠의 길"), 0x1, ScriptMessageFlag.NoEsc);
+        int menu = self.askSelectMenu(List.of("เส้นทางแห่งแสงสว่าง", "เส้นทางแห่งความมืด"), 0x1,
+                ScriptMessageFlag.NoEsc);
 
         /*
-        cm.teachSkill(27001201, 20, 20);
-            cm.teachSkill(27000207, 5, 5);
-        } else if (type_ == 1) {
-            cm.teachSkill(27001100, 20, 20);
-            cm.teachSkill(27000106, 5, 5);
+         * cm.teachSkill(27001201, 20, 20);
+         * cm.teachSkill(27000207, 5, 5);
+         * } else if (type_ == 1) {
+         * cm.teachSkill(27001100, 20, 20);
+         * cm.teachSkill(27000106, 5, 5);
          */
 
         Map<Skill, SkillEntry> skillEntryMap = new HashMap<>();
         int route = -1;
         if (menu == 0) {
-            //어둠 -> 빛
+            // Darkness -> Light
             skillEntryMap.put(SkillFactory.getSkill(27001201), new SkillEntry(-1, (byte) 20, -1));
             skillEntryMap.put(SkillFactory.getSkill(27000207), new SkillEntry(-1, (byte) 5, -1));
 
@@ -59,7 +60,7 @@ public class Luminous extends ScriptEngineNPC {
 
             route = 1;
         } else if (menu == 1) {
-            //빛 -> 어둠
+            // Light -> Darkness
             skillEntryMap.put(SkillFactory.getSkill(27001100), new SkillEntry(-1, (byte) 20, -1));
             skillEntryMap.put(SkillFactory.getSkill(27000106), new SkillEntry(-1, (byte) 5, -1));
 
@@ -73,8 +74,9 @@ public class Luminous extends ScriptEngineNPC {
         if (!skillEntryMap.isEmpty()) {
             getPlayer().changeSkillsLevel(skillEntryMap);
             getPlayer().updateOneInfo(25505, "route", String.valueOf(route));
-            getPlayer().updateOneInfo(25505, "skill4", String.valueOf(getPlayer().getOneInfoQuestInteger(25505, "skill4") + 1));
-            getPlayer().send(CWvsContext.InfoPacket.brownMessage("새로운 운명을 เลือกแล้ว."));
+            getPlayer().updateOneInfo(25505, "skill4",
+                    String.valueOf(getPlayer().getOneInfoQuestInteger(25505, "skill4") + 1));
+            getPlayer().send(CWvsContext.InfoPacket.brownMessage("เลือกชะตากรรมใหม่แล้ว"));
         }
     }
 }

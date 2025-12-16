@@ -22,7 +22,7 @@ public class TheSeedRing extends ScriptEngineNPC {
             return;
         }
         if (getPlayer().getItemQuantity(itemID, false) <= 0) {
-            getPlayer().ban("시드반지 복사버그", true, true, true);
+            getPlayer().ban("시드반지 복사버เขา", true, true, true);
             return;
         }
         int[][] rewards = reward(itemID);
@@ -59,7 +59,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                 short TI = MapleInventoryManipulator.addbyItem(getClient(), rewardEquip, false);
                 TheSeedGetItemPacket(selectItem, rewardqty, getPlayer().getItemQuantity(itemID, false) > 0);
             } else {
-                MapleInventoryManipulator.addById(getClient(), selectItem, (short) rewardqty, "알리샤의 반지에서 나온 ไอเท็ม");
+                MapleInventoryManipulator.addById(getClient(), selectItem, (short) rewardqty, "알리샤의 반지에서 ฉัน온 ไอเท็ม");
                 TheSeedGetItemPacket(selectItem, rewardqty, getPlayer().getItemQuantity(itemID, false) > 0);
             }
         }
@@ -69,34 +69,34 @@ public class TheSeedRing extends ScriptEngineNPC {
         switch (item) {
             case 2028271: { //9급
                 int[][] rewards = {
-                        {1113117, 1, 9}, //스위프트
+                        {1113117, 1, 9}, //스บน프트
                         {1113118, 1, 9}, //오버패스
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 5}, //에디큐브
                         {5062010, 5, 10}, //블랙큐브
-                        {4001832, 500, 63}, //สัปดาห์문의 흔적
+                        {4001832, 500, 63}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
             case 2028270: { //8급
                 int[][] rewards = {
-                        {1113117, 1, 9}, //스위프트
+                        {1113117, 1, 9}, //스บน프트
                         {1113118, 1, 9}, //오버패스
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 10}, //에디큐브
                         {5062010, 5, 10}, //블랙큐브
-                        {4001832, 500, 58}, //สัปดาห์문의 흔적
+                        {4001832, 500, 58}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
             case 2028269: { //7급
                 int[][] rewards = {
-                        {1113117, 1, 9}, //스위프트
+                        {1113117, 1, 9}, //스บน프트
                         {1113118, 1, 9}, //오버패스
                         {1113120, 1, 9}, //리플렉티브
                         {5062500, 5, 13}, //에디큐브
                         {5062010, 5, 13}, //블랙큐브
-                        {4001832, 500, 52}, //สัปดาห์문의 흔적
+                        {4001832, 500, 52}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
@@ -104,7 +104,7 @@ public class TheSeedRing extends ScriptEngineNPC {
             case 2028267:
             case 2028266: { //6, 5, 4급
                 int[][] rewards = {
-                        {1113117, 1, 8}, //스위프트
+                        {1113117, 1, 8}, //스บน프트
                         {1113118, 1, 8}, //오버패스
                         {1113120, 1, 8}, //리플렉티브
 
@@ -115,14 +115,14 @@ public class TheSeedRing extends ScriptEngineNPC {
 
                         {5062500, 10, 10}, //에디큐브
                         {5062010, 20, 10}, //블랙큐브
-                        {4001832, 500, 48}, //สัปดาห์문의 흔적
+                        {4001832, 500, 48}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
             case 2028265:
             case 2028264: { //3, 2급
                 int[][] rewards = {
-                        {1113117, 1, 8}, //스위프트
+                        {1113117, 1, 8}, //스บน프트
                         {1113118, 1, 8}, //오버패스
                         {1113120, 1, 8}, //리플렉티브
                         {1113103, 1, 2}, //듀라빌리티
@@ -134,20 +134,20 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113099, 1, 2}, //얼티메이덤 링
                         {1113122, 1, 2}, //리스크테이커 링
                         {1113104, 1, 2}, //크리Damage 링
-                        {1113119, 1, 2}, //실드스와프 링
+                        {1113119, 1, 2}, //실드스และ프 링
 
                         {5062500, 10, 10}, //에디큐브
                         {5062010, 20, 10}, //블랙큐브
                         {5062503, 20, 10}, //화이트 에디셔널 큐브
                         {2048723, 20, 10}, //영환불
 
-                        {4001832, 500, 48}, //สัปดาห์문의 흔적
+                        {4001832, 500, 48}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
             case 2028263: { //1급
                 int[][] rewards = {
-                        {1113117, 1, 3}, //스위프트
+                        {1113117, 1, 3}, //스บน프트
                         {1113118, 1, 3}, //오버패스
                         {1113120, 1, 3}, //리플렉티브
                         {1113103, 1, 3}, //듀라빌리티
@@ -158,7 +158,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113099, 1, 3}, //얼티메이덤 링
                         {1113122, 1, 3}, //리스크테이커 링
                         {1113104, 1, 3}, //크리Damage 링
-                        {1113119, 1, 3}, //실드스와프 링
+                        {1113119, 1, 3}, //실드스และ프 링
                         {1113113, 1, 3}, //웨폰퍼프
                         {1113114, 1, 3}, //웨폰퍼프
                         {1113115, 1, 3}, //웨폰퍼프
@@ -182,13 +182,13 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {5062010, 20, 2}, //블랙큐브
                         {5062503, 10, 2}, //화이트 에디셔널 큐브
                         {2048753, 10, 2}, //영환불
-                        {4001832, 500, 2}, //สัปดาห์문의 흔적
+                        {4001832, 500, 2}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
             case 2028273: { //알리샤의 반지상자
                 int[][] rewards = {
-                        {1113117, 1, 3}, //스위프트
+                        {1113117, 1, 3}, //스บน프트
                         {1113118, 1, 3}, //오버패스
                         {1113120, 1, 3}, //리플렉티브
                         {1113103, 1, 3}, //듀라빌리티
@@ -199,7 +199,7 @@ public class TheSeedRing extends ScriptEngineNPC {
                         {1113099, 1, 3}, //얼티메이덤 링
                         {1113122, 1, 3}, //리스크테이커 링
                         {1113104, 1, 3}, //크리Damage 링
-                        {1113119, 1, 3}, //실드스와프 링
+                        {1113119, 1, 3}, //실드스และ프 링
                         {1113113, 1, 3}, //웨폰퍼프
                         {1113114, 1, 3}, //웨폰퍼프
                         {1113115, 1, 3}, //웨폰퍼프
@@ -223,12 +223,12 @@ public class TheSeedRing extends ScriptEngineNPC {
             }
             default: {
                 int[][] rewards = {
-                        {1113117, 1, 7}, //스위프트
+                        {1113117, 1, 7}, //스บน프트
                         {1113118, 1, 7}, //오버패스
                         {1113120, 1, 7}, //리플렉티브
                         {5062500, 1, 5}, //에디큐브
                         {5062010, 1, 10}, //블랙큐브
-                        {4001832, 500, 69}, //สัปดาห์문의 흔적
+                        {4001832, 500, 69}, //สัปดาห์ประตู의 흔적
                 };
                 return rewards;
             }
@@ -287,7 +287,7 @@ public class TheSeedRing extends ScriptEngineNPC {
         p.writeShort(SendPacketOpcode.USER_ON_EFFECT.getValue());
         p.write(53);
         p.write(0);
-        p.write(!canReUnboxing); // 1이면 다시 개봉 안 뜨고 ยืนยัน창 (남은 ไอเท็ม 갯수가 0개면 ยืนยัน창만)
+        p.write(!canReUnboxing); // 1이면 다시 개봉 ใน 뜨고 ยืนยัน창 (남은 ไอเท็ม 갯수가 0개면 ยืนยัน창만)
         p.write(0);
         p.writeInt(itemID);
         p.writeInt(quantity);

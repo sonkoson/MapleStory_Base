@@ -76,15 +76,15 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591048, 15.0d); //놀라운 발록의 소울
         percentageInfo.put(2591049, 15.0d); //화려한 발록의 소울
         percentageInfo.put(2591050, 8.0d); //강력한 발록의 소울
-        percentageInfo.put(2591051, 8.0d); //빛나는 발록의 소울
+        percentageInfo.put(2591051, 8.0d); //빛ฉัน는 발록의 소울
         percentageInfo.put(2591052, 8.0d); //강인한 발록의 소울
         //percentageInfo.put(2591053, 1.5d); //날카로운 발록의 소울
         //percentageInfo.put(2591054, 1.5d); //파괴하는 발록의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591085, 5.0d); //위대한 발록의 소울
+            percentageInfo.put(2591085, 5.0d); //บน대한 발록의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591085, 1.0d); //위대한 발록의 소울
+            percentageInfo.put(2591085, 1.0d); //บน대한 발록의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -97,15 +97,15 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591058, 15.0d); //놀라운 핑크빈의 소울
         percentageInfo.put(2591059, 15.0d); //화려한 핑크빈의 소울
         percentageInfo.put(2591060, 8.0d); //강력한 핑크빈의 소울
-        percentageInfo.put(2591061, 8.0d); //빛나는 핑크빈의 소울
+        percentageInfo.put(2591061, 8.0d); //빛ฉัน는 핑크빈의 소울
         percentageInfo.put(2591062, 8.0d); //강인한 핑크빈의 소울
         //percentageInfo.put(2591063, 1.5d); //날카로운 핑크빈의 소울
         //percentageInfo.put(2591064, 1.5d); //파괴하는 핑크빈의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591087, 5.0d); //위대한 핑크빈의 소울
+            percentageInfo.put(2591087, 5.0d); //บน대한 핑크빈의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591087, 1.0d); //위대한 핑크빈의 소울
+            percentageInfo.put(2591087, 1.0d); //บน대한 핑크빈의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -118,15 +118,15 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591068, 15.0d); //놀라운 반 레온의 소울
         percentageInfo.put(2591069, 15.0d); //화려한 반 레온의 소울
         percentageInfo.put(2591070, 8.0d); //강력한 반 레온의 소울
-        percentageInfo.put(2591071, 8.0d); //빛나는 반 레온의 소울
+        percentageInfo.put(2591071, 8.0d); //빛ฉัน는 반 레온의 소울
         percentageInfo.put(2591072, 8.0d); //강인한 반 레온의 소울
         //percentageInfo.put(2591073, 1.5d); //날카로운 반 레온의 소울
         //percentageInfo.put(2591074, 1.5d); //파괴하는 반 레온의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591086, 5.0d); //위대한 반 레온의 소울
+            percentageInfo.put(2591086, 5.0d); //บน대한 반 레온의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591086, 1.0d); //위대한 반 레온의 소울
+            percentageInfo.put(2591086, 1.0d); //บน대한 반 레온의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -151,32 +151,32 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591158, 15.0d); //놀라운 자쿰의 소울
         percentageInfo.put(2591159, 15.0d); //화려한 자쿰의 소울
         percentageInfo.put(2591160, 8.0d); //강력한 자쿰의 소울
-        percentageInfo.put(2591161, 8.0d); //빛나는 자쿰의 소울
+        percentageInfo.put(2591161, 8.0d); //빛ฉัน는 자쿰의 소울
         percentageInfo.put(2591162, 8.0d); //강인한 자쿰의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591163, 5.0d); //위대한 자쿰의 소울
+            percentageInfo.put(2591163, 5.0d); //บน대한 자쿰의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591163, 1.0d); //위대한 자쿰의 소울
+            percentageInfo.put(2591163, 1.0d); //บน대한 자쿰의 소울
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2431711() { //시그너스의 소울 조แต่ละ
+    public void consume_2431711() { //시เขา너스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591075, 15.0d); //기운찬 시그너스의 소울
-        percentageInfo.put(2591076, 15.0d); //날렵한 시그너스의 소울
-        percentageInfo.put(2591077, 15.0d); //총명한 시그너스의 소울
-        percentageInfo.put(2591078, 15.0d); //놀라운 시그너스의 소울
-        percentageInfo.put(2591079, 15.0d); //화려한 시그너스의 소울
-        percentageInfo.put(2591080, 8.0d); //강력한 시그너스의 소울
-        percentageInfo.put(2591081, 8.0d); //빛나는 시그너스의 소울
-        percentageInfo.put(2591082, 8.0d); //강인한 시그너스의 소울
+        percentageInfo.put(2591075, 15.0d); //기운찬 시เขา너스의 소울
+        percentageInfo.put(2591076, 15.0d); //날렵한 시เขา너스의 소울
+        percentageInfo.put(2591077, 15.0d); //총명한 시เขา너스의 소울
+        percentageInfo.put(2591078, 15.0d); //놀라운 시เขา너스의 소울
+        percentageInfo.put(2591079, 15.0d); //화려한 시เขา너스의 소울
+        percentageInfo.put(2591080, 8.0d); //강력한 시เขา너스의 소울
+        percentageInfo.put(2591081, 8.0d); //빛ฉัน는 시เขา너스의 소울
+        percentageInfo.put(2591082, 8.0d); //강인한 시เขา너스의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591088, 5.0d); //위대한 시그너스의 소울
+            percentageInfo.put(2591088, 5.0d); //บน대한 시เขา너스의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591088, 1.0d); //위대한 시그너스의 소울
+            percentageInfo.put(2591088, 1.0d); //บน대한 시เขา너스의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -201,13 +201,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591197, 15.0d); //놀라운 아카이럼의 소울
         percentageInfo.put(2591198, 15.0d); //화려한 아카이럼의 소울
         percentageInfo.put(2591199, 8.0d); //강력한 아카이럼의 소울
-        percentageInfo.put(2591200, 8.0d); //빛나는 아카이럼의 소울
+        percentageInfo.put(2591200, 8.0d); //빛ฉัน는 아카이럼의 소울
         percentageInfo.put(2591201, 8.0d); //강인한 아카이럼의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591202, 5.0d); //위대한 아카이럼의 소울
+            percentageInfo.put(2591202, 5.0d); //บน대한 아카이럼의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591202, 1.0d); //위대한 아카이럼의 소울
+            percentageInfo.put(2591202, 1.0d); //บน대한 아카이럼의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -232,13 +232,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591228, 15.0d); //놀라운 힐라의 소울
         percentageInfo.put(2591229, 15.0d); //화려한 힐라의 소울
         percentageInfo.put(2591230, 8.0d); //강력한 힐라의 소울
-        percentageInfo.put(2591231, 8.0d); //빛나는 힐라의 소울
+        percentageInfo.put(2591231, 8.0d); //빛ฉัน는 힐라의 소울
         percentageInfo.put(2591232, 8.0d); //강인한 힐라의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591233, 5.0d); //위대한 힐라의 소울
+            percentageInfo.put(2591233, 5.0d); //บน대한 힐라의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591233, 1.0d); //위대한 힐라의 소울
+            percentageInfo.put(2591233, 1.0d); //บน대한 힐라의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -255,21 +255,21 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2431964() { //매그너스의 소울 조แต่ละ
+    public void consume_2431964() { //매เขา너스의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591256, 15.0d); //기운찬 매그너스의 소울
-        percentageInfo.put(2591257, 15.0d); //날렵한 매그너스의 소울
-        percentageInfo.put(2591258, 15.0d); //총명한 매그너스의 소울
-        percentageInfo.put(2591259, 15.0d); //놀라운 매그너스의 소울
-        percentageInfo.put(2591260, 15.0d); //화려한 매그너스의 소울
-        percentageInfo.put(2591261, 8.0d); //강력한 매그너스의 소울
-        percentageInfo.put(2591262, 8.0d); //빛나는 매그너스의 소울
-        percentageInfo.put(2591263, 8.0d); //강인한 매그너스의 소울
+        percentageInfo.put(2591256, 15.0d); //기운찬 매เขา너스의 소울
+        percentageInfo.put(2591257, 15.0d); //날렵한 매เขา너스의 소울
+        percentageInfo.put(2591258, 15.0d); //총명한 매เขา너스의 소울
+        percentageInfo.put(2591259, 15.0d); //놀라운 매เขา너스의 소울
+        percentageInfo.put(2591260, 15.0d); //화려한 매เขา너스의 소울
+        percentageInfo.put(2591261, 8.0d); //강력한 매เขา너스의 소울
+        percentageInfo.put(2591262, 8.0d); //빛ฉัน는 매เขา너스의 소울
+        percentageInfo.put(2591263, 8.0d); //강인한 매เขา너스의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591264, 5.0d); //위대한 매그너스의 소울
+            percentageInfo.put(2591264, 5.0d); //บน대한 매เขา너스의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591264, 1.0d); //위대한 매그너스의 소울
+            percentageInfo.put(2591264, 1.0d); //บน대한 매เขา너스의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -282,13 +282,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591291, 15.0d); //놀라운 무르무르의 소울
         percentageInfo.put(2591292, 15.0d); //화려한 무르무르의 소울
         percentageInfo.put(2591293, 8.0d); //강력한 무르무르의 소울
-        percentageInfo.put(2591294, 8.0d); //빛나는 무르무르의 소울
+        percentageInfo.put(2591294, 8.0d); //빛ฉัน는 무르무르의 소울
         percentageInfo.put(2591295, 8.0d); //강인한 무르무르의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591296, 5.0d); //위대한 무르무르의 소울
+            percentageInfo.put(2591296, 5.0d); //บน대한 무르무르의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591296, 1.0d); //위대한 무르무르의 소울
+            percentageInfo.put(2591296, 1.0d); //บน대한 무르무르의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -301,13 +301,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591300, 15.0d); //놀라운 모카딘의 소울
         percentageInfo.put(2591301, 15.0d); //화려한 모카딘의 소울
         percentageInfo.put(2591302, 8.0d); //강력한 모카딘의 소울
-        percentageInfo.put(2591303, 8.0d); //빛나는 모카딘의 소울
+        percentageInfo.put(2591303, 8.0d); //빛ฉัน는 모카딘의 소울
         percentageInfo.put(2591304, 8.0d); //강인한 모카딘의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591305, 5.0d); //위대한 모카딘의 소울
+            percentageInfo.put(2591305, 5.0d); //บน대한 모카딘의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591305, 1.0d); //위대한 모카딘의 소울
+            percentageInfo.put(2591305, 1.0d); //บน대한 모카딘의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -320,13 +320,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591309, 15.0d); //놀라운 카리아인의 소울
         percentageInfo.put(2591310, 15.0d); //화려한 카리아인의 소울
         percentageInfo.put(2591311, 8.0d); //강력한 카리아인의 소울
-        percentageInfo.put(2591312, 8.0d); //빛나는 카리아인의 소울
+        percentageInfo.put(2591312, 8.0d); //빛ฉัน는 카리아인의 소울
         percentageInfo.put(2591313, 8.0d); //강인한 카리아인의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591314, 5.0d); //위대한 카리아인의 소울
+            percentageInfo.put(2591314, 5.0d); //บน대한 카리아인의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591314, 1.0d); //위대한 카리아인의 소울
+            percentageInfo.put(2591314, 1.0d); //บน대한 카리아인의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -339,13 +339,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591318, 15.0d); //놀라운 CQ57 소울
         percentageInfo.put(2591319, 15.0d); //화려한 CQ57 소울
         percentageInfo.put(2591320, 8.0d); //강력한 CQ57 소울
-        percentageInfo.put(2591321, 8.0d); //빛나는 CQ57 소울
+        percentageInfo.put(2591321, 8.0d); //빛ฉัน는 CQ57 소울
         percentageInfo.put(2591322, 8.0d); //강인한 CQ57 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591323, 5.0d); //위대한 CQ57 소울
+            percentageInfo.put(2591323, 5.0d); //บน대한 CQ57 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591323, 1.0d); //위대한 CQ57 소울
+            percentageInfo.put(2591323, 1.0d); //บน대한 CQ57 소울
             change_soul_piece(percentageInfo);
         }
 
@@ -359,13 +359,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591327, 15.0d); //놀라운 줄라이의 소울
         percentageInfo.put(2591328, 15.0d); //화려한 줄라이의 소울
         percentageInfo.put(2591329, 8.0d); //강력한 줄라이의 소울
-        percentageInfo.put(2591330, 8.0d); //빛나는 줄라이의 소울
+        percentageInfo.put(2591330, 8.0d); //빛ฉัน는 줄라이의 소울
         percentageInfo.put(2591331, 8.0d); //강인한 줄라이의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591332, 5.0d); //위대한 줄라이의 소울
+            percentageInfo.put(2591332, 5.0d); //บน대한 줄라이의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591332, 1.0d); //위대한 줄라이의 소울
+            percentageInfo.put(2591332, 1.0d); //บน대한 줄라이의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -378,13 +378,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591336, 15.0d); //놀라운 플레드의 소울
         percentageInfo.put(2591337, 15.0d); //화려한 플레드의 소울
         percentageInfo.put(2591338, 8.0d); //강력한 플레드의 소울
-        percentageInfo.put(2591339, 8.0d); //빛나는 플레드의 소울
+        percentageInfo.put(2591339, 8.0d); //빛ฉัน는 플레드의 소울
         percentageInfo.put(2591340, 8.0d); //강인한 플레드의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591341, 5.0d); //위대한 플레드의 소울
+            percentageInfo.put(2591341, 5.0d); //บน대한 플레드의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591341, 1.0d); //위대한 플레드의 소울
+            percentageInfo.put(2591341, 1.0d); //บน대한 플레드의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -397,13 +397,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591386, 15.0d); //놀라운 피에르의 소울
         percentageInfo.put(2591387, 15.0d); //화려한 피에르의 소울
         percentageInfo.put(2591388, 8.0d); //강력한 피에르의 소울
-        percentageInfo.put(2591389, 8.0d); //빛나는 피에르의 소울
+        percentageInfo.put(2591389, 8.0d); //빛ฉัน는 피에르의 소울
         percentageInfo.put(2591390, 8.0d); //강인한 피에르의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591391, 5.0d); //위대한 피에르의 소울
+            percentageInfo.put(2591391, 5.0d); //บน대한 피에르의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591391, 1.0d); //위대한 피에르의 소울
+            percentageInfo.put(2591391, 1.0d); //บน대한 피에르의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -416,13 +416,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591395, 15.0d); //놀라운 반반의 소울
         percentageInfo.put(2591396, 15.0d); //화려한 반반의 소울
         percentageInfo.put(2591397, 8.0d); //강력한 반반의 소울
-        percentageInfo.put(2591398, 8.0d); //빛나는 반반의 소울
+        percentageInfo.put(2591398, 8.0d); //빛ฉัน는 반반의 소울
         percentageInfo.put(2591399, 8.0d); //강인한 반반의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591400, 5.0d); //위대한 반반의 소울
+            percentageInfo.put(2591400, 5.0d); //บน대한 반반의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591400, 1.0d); //위대한 반반의 소울
+            percentageInfo.put(2591400, 1.0d); //บน대한 반반의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -435,13 +435,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591404, 15.0d); //놀라운 블러디퀸의 소울
         percentageInfo.put(2591405, 15.0d); //화려한 블러디퀸의 소울
         percentageInfo.put(2591406, 8.0d); //강력한 블러디퀸의 소울
-        percentageInfo.put(2591407, 8.0d); //빛나는 블러디퀸의 소울
+        percentageInfo.put(2591407, 8.0d); //빛ฉัน는 블러디퀸의 소울
         percentageInfo.put(2591408, 8.0d); //강인한 블러디퀸의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591409, 5.0d); //위대한 블러디퀸의 소울
+            percentageInfo.put(2591409, 5.0d); //บน대한 블러디퀸의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591409, 1.0d); //위대한 블러디퀸의 소울
+            percentageInfo.put(2591409, 1.0d); //บน대한 블러디퀸의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -454,13 +454,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591413, 15.0d); //놀라운 벨룸의 소울
         percentageInfo.put(2591414, 15.0d); //화려한 벨룸의 소울
         percentageInfo.put(2591415, 8.0d); //강력한 벨룸의 소울
-        percentageInfo.put(2591416, 8.0d); //빛나는 벨룸의 소울
+        percentageInfo.put(2591416, 8.0d); //빛ฉัน는 벨룸의 소울
         percentageInfo.put(2591417, 8.0d); //강인한 벨룸의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591418, 5.0d); //위대한 벨룸의 소울
+            percentageInfo.put(2591418, 5.0d); //บน대한 벨룸의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591418, 1.0d); //위대한 벨룸의 소울
+            percentageInfo.put(2591418, 1.0d); //บน대한 벨룸의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -473,13 +473,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591422, 15.0d); //놀라운 스우의 소울
         percentageInfo.put(2591423, 15.0d); //화려한 스우의 소울
         percentageInfo.put(2591424, 8.0d); //강력한 스우의 소울
-        percentageInfo.put(2591425, 8.0d); //빛나는 스우의 소울
+        percentageInfo.put(2591425, 8.0d); //빛ฉัน는 스우의 소울
         percentageInfo.put(2591426, 8.0d); //강인한 스우의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591427, 5.0d); //위대한 스우의 소울
+            percentageInfo.put(2591427, 5.0d); //บน대한 스우의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591427, 1.0d); //위대한 스우의 소울
+            percentageInfo.put(2591427, 1.0d); //บน대한 스우의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -492,27 +492,27 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591490, 15.0d); //놀라운 돼지바 소울
         percentageInfo.put(2591491, 15.0d); //화려한 돼지바 소울
         percentageInfo.put(2591492, 8.0d); //강력한 돼지바 소울
-        percentageInfo.put(2591493, 8.0d); //빛나는 돼지바 소울
+        percentageInfo.put(2591493, 8.0d); //빛ฉัน는 돼지바 소울
         percentageInfo.put(2591494, 8.0d); //강인한 돼지바 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591495, 5.0d); //위대한 돼지바 소울
+            percentageInfo.put(2591495, 5.0d); //บน대한 돼지바 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591495, 1.0d); //위대한 돼지바 소울
+            percentageInfo.put(2591495, 1.0d); //บน대한 돼지바 소울
             change_soul_piece(percentageInfo);
         }
     }
 
-    public void consume_2434210() { //프리미엄 PC방 소울 조แต่ละ
+    public void consume_2434210() { //프리미엄 PCห้อง 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591500, 12.5d); //기운찬 프리미엄PC방 소울
-        percentageInfo.put(2591501, 12.5d); //날렵한 프리미엄PC방 소울
-        percentageInfo.put(2591502, 12.5d); //총명한 프리미엄PC방 소울
-        percentageInfo.put(2591503, 12.5d); //놀라운 프리미엄PC방 소울
-        percentageInfo.put(2591504, 12.5d); //화려한 프리미엄PC방 소울
-        percentageInfo.put(2591505, 12.5d); //강력한 프리미엄PC방 소울
-        percentageInfo.put(2591506, 12.5d); //빛나는 프리미엄PC방 소울
-        percentageInfo.put(2591507, 12.5d); //강인한 프리미엄PC방 소울
+        percentageInfo.put(2591500, 12.5d); //기운찬 프리미엄PCห้อง 소울
+        percentageInfo.put(2591501, 12.5d); //날렵한 프리미엄PCห้อง 소울
+        percentageInfo.put(2591502, 12.5d); //총명한 프리미엄PCห้อง 소울
+        percentageInfo.put(2591503, 12.5d); //놀라운 프리미엄PCห้อง 소울
+        percentageInfo.put(2591504, 12.5d); //화려한 프리미엄PCห้อง 소울
+        percentageInfo.put(2591505, 12.5d); //강력한 프리미엄PCห้อง 소울
+        percentageInfo.put(2591506, 12.5d); //빛ฉัน는 프리미엄PCห้อง 소울
+        percentageInfo.put(2591507, 12.5d); //강인한 프리미엄PCห้อง 소울
         change_soul_piece(percentageInfo);
     }
 
@@ -524,13 +524,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591512, 15.0d); //놀라운 우르스의 소울
         percentageInfo.put(2591513, 15.0d); //화려한 우르스의 소울
         percentageInfo.put(2591514, 8.0d); //강력한 우르스의 소울
-        percentageInfo.put(2591515, 8.0d); //빛나는 우르스의 소울
+        percentageInfo.put(2591515, 8.0d); //빛ฉัน는 우르스의 소울
         percentageInfo.put(2591516, 8.0d); //강인한 우르스의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591517, 5.0d); //위대한 우르스의 소울
+            percentageInfo.put(2591517, 5.0d); //บน대한 우르스의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591517, 1.0d); //위대한 우르스의 소울
+            percentageInfo.put(2591517, 1.0d); //บน대한 우르스의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -547,21 +547,21 @@ public class SoulPiece extends ScriptEngineNPC {
         change_soul_piece(percentageInfo);
     }
 
-    public void consume_2435369() { //데미안의 소울 조แต่ละ
+    public void consume_2435369() { //데미ใน의 소울 조แต่ละ
         LinkedHashMap<Integer, Double> percentageInfo = new LinkedHashMap<>();
-        percentageInfo.put(2591564, 15.0d); //기운찬 데미안의 소울
-        percentageInfo.put(2591565, 15.0d); //날렵한 데미안의 소울
-        percentageInfo.put(2591566, 15.0d); //총명한 데미안의 소울
-        percentageInfo.put(2591567, 15.0d); //놀라운 데미안의 소울
-        percentageInfo.put(2591568, 15.0d); //화려한 데미안의 소울
-        percentageInfo.put(2591569, 8.0d); //강력한 데미안의 소울
-        percentageInfo.put(2591570, 8.0d); //빛나는 데미안의 소울
-        percentageInfo.put(2591571, 8.0d); //강인한 데미안의 소울
+        percentageInfo.put(2591564, 15.0d); //기운찬 데미ใน의 소울
+        percentageInfo.put(2591565, 15.0d); //날렵한 데미ใน의 소울
+        percentageInfo.put(2591566, 15.0d); //총명한 데미ใน의 소울
+        percentageInfo.put(2591567, 15.0d); //놀라운 데미ใน의 소울
+        percentageInfo.put(2591568, 15.0d); //화려한 데미ใน의 소울
+        percentageInfo.put(2591569, 8.0d); //강력한 데미ใน의 소울
+        percentageInfo.put(2591570, 8.0d); //빛ฉัน는 데미ใน의 소울
+        percentageInfo.put(2591571, 8.0d); //강인한 데미ใน의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591572, 5.0d); //위대한 데미안의 소울
+            percentageInfo.put(2591572, 5.0d); //บน대한 데미ใน의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591572, 1.0d); //위대한 데미안의 소울
+            percentageInfo.put(2591572, 1.0d); //บน대한 데미ใน의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -574,13 +574,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591585, 15.0d); //놀라운 루시드의 소울
         percentageInfo.put(2591586, 15.0d); //화려한 루시드의 소울
         percentageInfo.put(2591587, 8.0d); //강력한 루시드의 소울
-        percentageInfo.put(2591588, 8.0d); //빛나는 루시드의 소울
+        percentageInfo.put(2591588, 8.0d); //빛ฉัน는 루시드의 소울
         percentageInfo.put(2591589, 8.0d); //강인한 루시드의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591590, 5.0d); //위대한 루시드의 소울
+            percentageInfo.put(2591590, 5.0d); //บน대한 루시드의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591590, 1.0d); //위대한 루시드의 소울
+            percentageInfo.put(2591590, 1.0d); //บน대한 루시드의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -593,13 +593,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591614, 15.0d); //놀라운 파풀라투스의 소울
         percentageInfo.put(2591615, 15.0d); //화려한 파풀라투스의 소울
         percentageInfo.put(2591616, 8.0d); //강력한 파풀라투스의 소울
-        percentageInfo.put(2591617, 8.0d); //빛나는 파풀라투스의 소울
+        percentageInfo.put(2591617, 8.0d); //빛ฉัน는 파풀라투스의 소울
         percentageInfo.put(2591618, 8.0d); //강인한 파풀라투스의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591619, 5.0d); //위대한 파풀라투스의 소울
+            percentageInfo.put(2591619, 5.0d); //บน대한 파풀라투스의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591619, 1.0d); //위대한 파풀라투스의 소울
+            percentageInfo.put(2591619, 1.0d); //บน대한 파풀라투스의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -612,13 +612,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591635, 15.0d); //놀라운 윌의 소울
         percentageInfo.put(2591636, 15.0d); //화려한 윌의 소울
         percentageInfo.put(2591637, 8.0d); //강력한 윌의 소울
-        percentageInfo.put(2591638, 8.0d); //빛나는 윌의 소울
+        percentageInfo.put(2591638, 8.0d); //빛ฉัน는 윌의 소울
         percentageInfo.put(2591639, 8.0d); //강인한 윌의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591640, 5.0d); //위대한 윌의 소울
+            percentageInfo.put(2591640, 5.0d); //บน대한 윌의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591640, 1.0d); //위대한 윌의 소울
+            percentageInfo.put(2591640, 1.0d); //บน대한 윌의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -631,13 +631,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591654, 15.0d); //놀라운 진 힐라의 소울
         percentageInfo.put(2591655, 15.0d); //화려한 진 힐라의 소울
         percentageInfo.put(2591656, 8.0d); //강력한 진 힐라의 소울
-        percentageInfo.put(2591657, 8.0d); //빛나는 진 힐라의 소울
+        percentageInfo.put(2591657, 8.0d); //빛ฉัน는 진 힐라의 소울
         percentageInfo.put(2591658, 8.0d); //강인한 진 힐라의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591659, 5.0d); //위대한 진 힐라의 소울
+            percentageInfo.put(2591659, 5.0d); //บน대한 진 힐라의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591659, 1.0d); //위대한 진 힐라의 소울
+            percentageInfo.put(2591659, 1.0d); //บน대한 진 힐라의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -650,13 +650,13 @@ public class SoulPiece extends ScriptEngineNPC {
         percentageInfo.put(2591671, 15.0d); //놀라운 듄켈의 소울
         percentageInfo.put(2591672, 15.0d); //화려한 듄켈의 소울
         percentageInfo.put(2591673, 8.0d); //강력한 듄켈의 소울
-        percentageInfo.put(2591674, 8.0d); //빛나는 듄켈의 소울
+        percentageInfo.put(2591674, 8.0d); //빛ฉัน는 듄켈의 소울
         percentageInfo.put(2591675, 8.0d); //강인한 듄켈의 소울
         if (new Date().getDay() == 0 && SpecialSunday.isActive && SpecialSunday.activeSoulGacha) {
-            percentageInfo.put(2591676, 5.0d); //위대한 듄켈의 소울
+            percentageInfo.put(2591676, 5.0d); //บน대한 듄켈의 소울
             change_soul_piece_sunday(percentageInfo);
         } else {
-            percentageInfo.put(2591676, 1.0d); //위대한 듄켈의 소울
+            percentageInfo.put(2591676, 1.0d); //บน대한 듄켈의 소울
             change_soul_piece(percentageInfo);
         }
     }
@@ -667,7 +667,7 @@ public class SoulPiece extends ScriptEngineNPC {
             sb.append("\r\n#i").append(pKey).append(":# #t").append(pKey).append("#(").append(Math.round(pInfo.get(pKey))).append("%)");
         }
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 아래의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 있다네.\r\n\r\n#b#e<แต่ละ 소울의 등장 โอกาส>#n#k#b" + sb.toString());
+            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 ล่าง의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 มี네.\r\n\r\n#b#e<แต่ละ 소울의 등장 โอกาส>#n#k#b" + sb.toString());
             return;
         }
         if (1 == self.askAccept("#b#t" + itemID + "##k 10개를 ใช้ 소울 ไอเท็ม แลกเปลี่ยน할텐가?\r\n\r\n#b#e<แต่ละ 소울의 등장 โอกาส>#n#k#b" + sb.toString())) {
@@ -691,24 +691,24 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("오호~ #b#t" + vou + "##k 나왔군.\r\n요긴하게 쓰게나. 크크크...");
+                    self.sayOk("오호~ #b#t" + vou + "##k ฉัน왔군.\r\n요긴하게 쓰게ฉัน. 크크크...");
                 } else {
                     self.sayOk("ใช้창에 여유 공간이 ไม่พอ하군. ยืนยัน 다시 시도해สัปดาห์게냐.");
                 }
             } else {
-                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해สัปดาห์게나...");
+                self.sayOk("잠시 오류가 발생했군 ฉัน중에 다시 시도해สัปดาห์게ฉัน...");
             }
         } else {
-            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
+            self.sayOk("신중한 것도 ฉัน쁘진 않지.\r\nแต่ 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
         }
     }
 
     public void change_soul_piece_sunday(HashMap<Integer, Double> pInfo) {
         if (getPlayer().getItemQuantity(itemID, false) < 10) {
-            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 아래의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 있다네.");
+            self.say("#b#t" + itemID + "##k \r\n#r10개#k 모으면 ล่าง의 ไอเท็ม 중 1종으로 แลกเปลี่ยน할 수 มี네.");
             return;
         }
-        if (1 == self.askAccept("#r<선데이 메이플> 위대한 소울 등장โอกาส 5배!#k\r\n#b#t" + itemID + "##k 10개를 ใช้ 소울 ไอเท็ม แลกเปลี่ยน할텐가?")) {
+        if (1 == self.askAccept("#r<선데이 메이플> บน대한 소울 등장โอกาส 5배!#k\r\n#b#t" + itemID + "##k 10개를 ใช้ 소울 ไอเท็ม แลกเปลี่ยน할텐가?")) {
             List<Integer> rKeys = new ArrayList<>(pInfo.keySet());
             Collections.shuffle(rKeys);
             double percent = 0.0;
@@ -729,15 +729,15 @@ public class SoulPiece extends ScriptEngineNPC {
             }
             if (vou != 0) {
                 if (target.exchange(itemID, -10, vou, 1) > 0) {
-                    self.sayOk("오호~ #b#t" + vou + "##k 나왔군.\r\n요긴하게 쓰게나. 크크크...");
+                    self.sayOk("오호~ #b#t" + vou + "##k ฉัน왔군.\r\n요긴하게 쓰게ฉัน. 크크크...");
                 } else {
                     self.sayOk("ใช้창에 여유 공간이 ไม่พอ하군. ยืนยัน 다시 시도해สัปดาห์게냐.");
                 }
             } else {
-                self.sayOk("잠시 오류가 발생했군 나중에 다시 시도해สัปดาห์게나...");
+                self.sayOk("잠시 오류가 발생했군 ฉัน중에 다시 시도해สัปดาห์게ฉัน...");
             }
         } else {
-            self.sayOk("신중한 것도 나쁘진 않지.\r\n하지만 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
+            self.sayOk("신중한 것도 ฉัน쁘진 않지.\r\nแต่ 소울은 강력한 ไอเท็ม이니 잘 생แต่ละ해 보게...");
         }
     }
 

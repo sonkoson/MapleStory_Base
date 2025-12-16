@@ -88,7 +88,7 @@ public class Kalos extends ScriptEngineNPC {
                         ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                 /*
                  * if (DBConfig.isGanglim) {
-                 * self.sayOk("วันนี้ เข้า 횟수를 모두 ใช้한 ปาร์ตี้원이 있.", ScriptMessageFlag.Scenario,
+                 * self.sayOk("วันนี้ เข้า 횟수를 ทั้งหมด ใช้한 ปาร์ตี้원이 있.", ScriptMessageFlag.Scenario,
                  * ScriptMessageFlag.NpcReplacedByNpc);
                  * } else {
                  * self.

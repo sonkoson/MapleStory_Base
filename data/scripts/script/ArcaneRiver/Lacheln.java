@@ -26,11 +26,11 @@ public class Lacheln extends ScriptEngineNPC {
 
     public void arcana_fish() {
         if (getPlayer().getLevel() >= 225) {
-            if (1 == self.askYesNo("#b(지금 바로 날치를 타고 아르카나로 ย้ายต้องการหรือไม่?)", ScriptMessageFlag.NpcReplacedByNpc)) {
+            if (1 == self.askYesNo("#b(지금 바로 날치를 타고 아르카ฉัน로 ย้ายต้องการหรือไม่?)", ScriptMessageFlag.NpcReplacedByNpc)) {
                 registerTransferField(450005010, 1);
             }
         } else {
-            self.sayOk("225เลเวล 이상만 아르카나로 ย้าย하실 수 있.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("225เลเวล 이상만 아르카ฉัน로 ย้าย하실 수 있.", ScriptMessageFlag.NpcReplacedByNpc);
         }
     }
 

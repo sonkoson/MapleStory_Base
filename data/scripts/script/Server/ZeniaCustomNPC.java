@@ -72,7 +72,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                 selStr += "#L3# 헤어 리스트 C#l\r\n#L4# 헤어 리스트 D#l \r\n#L5# 헤어 리스트 E#l#k\r\n";
 
                 if (getPlayer().getAndroid() != null) {
-                    selStr += "\r\n\r\n#e#r#fs12#[안드로이드 헤어]#k#b#n\r\n";
+                    selStr += "\r\n\r\n#e#r#fs12#[ใน드로이드 헤어]#k#b#n\r\n";
                     selStr += "#fs11##L995#" + 별흰 + 색 + " 검색 헤어#l#b\r\n";
                 }
 
@@ -117,13 +117,13 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                         openNpcCustom(getClient(), 3005131, "검색헤어");
                         return;
                     }
-                    case 995: { //안드검색헤어
-                        openNpcCustom(getClient(), 3005131, "검색안드헤어");
+                    case 995: { //ใน드검색헤어
+                        openNpcCustom(getClient(), 3005131, "검색ใน드헤어");
                         return;
                     }
                 }
                 if (codyList.length > 0) {
-                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 헤어를 전혀 새로운 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 헤어를 천천히 고민해 봐", codyList);
+                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 헤어를 전혀 ใหม่ 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 헤어를 ช้าๆ 고민해 봐", codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
                             if (1 == self.askYesNo("#fs11#드레스업 โหมด로 ใช้งาน ต้องการหรือไม่?")) {
@@ -166,7 +166,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                 selStr += "#e #n#L6##fs11#성형 리스트 A#l\r\n#L7# 성형 리스트 B#l\r\n#b#L8# 성형 리스트 C#l\r\n";
 
                 if (getPlayer().getAndroid() != null) {
-                    selStr += "\r\n\r\n#e#r#fs12#[안드로이드 성형]#k#b#n\r\n#fs11#";
+                    selStr += "\r\n\r\n#e#r#fs12#[ใน드로이드 성형]#k#b#n\r\n#fs11#";
                     selStr += "#fs11##L996#" + 별흰 + 색 + " 검색 성형#l#b\r\n";
                 }
 
@@ -197,13 +197,13 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                         openNpcCustom(getClient(), 3005131, "검색성형");
                         return;
                     }
-                    case 996: { //안드검색성형
-                        openNpcCustom(getClient(), 3005131, "검색안드성형");
+                    case 996: { //ใน드검색성형
+                        openNpcCustom(getClient(), 3005131, "검색ใน드성형");
                         return;
                     }
                 }
                 if (codyList.length > 0) {
-                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 얼굴을 전혀 새로운 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 얼굴을 천천히 고민해 봐", codyList);
+                    int v = self.askAvatar("#fs11##fn돋움##fc0xFFFFFFFF#지금의 얼굴을 전혀 ใหม่ 스타วัน로 바꿔 줄 수 있지. 지금 모습이 지겨워 졌다면 바꾸고 싶은 얼굴을 ช้าๆ 고민해 봐", codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
                             if (1 == self.askYesNo("#fs11#드레스업 โหมด로 ใช้งาน ต้องการหรือไม่?")) {

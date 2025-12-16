@@ -62,7 +62,7 @@ public class Arcana extends ScriptEngineNPC {
 
     public void morass_fish() {
         if (getPlayer().getLevel() >= 230) {
-            if (1 == target.askAccept("자, 그럼 어서 날치를 타고 ถัดไป พื้นที่으로 ย้าย할까?\r\n#b(수락 시 อัตโนมัติ ย้าย.)", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askAccept("자, เขา럼 어서 날치를 타고 ถัดไป พื้นที่으로 ย้าย할까?\r\n#b(수락 시 อัตโนมัติ ย้าย.)", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450006000, 0);
             }
         } else {

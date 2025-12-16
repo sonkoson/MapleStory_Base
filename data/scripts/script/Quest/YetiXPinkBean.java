@@ -35,7 +35,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                     self.sayOk("เตรียม된 정령의 펜던트 แลกเปลี่ยน권 (14วัน) x 2 개가 재발급 เสร็จสมบูรณ์.");
                 }
             } else {
-                self.sayOk("이미 재발급을 받았거나 재발급 대상이 아닙니다.");
+                self.sayOk("이미 재발급을 받았거ฉัน 재발급 대상이 아닙니다.");
             }
         } else if (v == 3) {
             if (getPlayer().getOneInfoQuestInteger(1234699, "pReward") == 0) {
@@ -53,13 +53,13 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 if (target.exchange(3700287, -1, 2434030, 1) > 0) {
                     self.sayOk("เสร็จสมบูรณ์.");
                 } else {
-                    self.sayOk("핑아วัน체를 갖고 계시지 않거나 ใช้창에 여유공간이 없는지 ยืนยัน 바랍니다.");
+                    self.sayOk("핑아วัน체를 갖고 계시지 않거ฉัน ใช้창에 여유공간이 없는지 ยืนยัน โปรด.");
                 }
             } else if (vv == 1) {
                 if (target.exchange(3700682, -1, 2633232, 1) > 0) {
                     self.sayOk("เสร็จสมบูรณ์.");
                 } else {
-                    self.sayOk("예아วัน체를 갖고 계시지 않거나 ใช้창에 여유공간이 없는지 ยืนยัน 바랍니다.");
+                    self.sayOk("예아วัน체를 갖고 계시지 않거ฉัน ใช้창에 여유공간이 없는지 ยืนยัน โปรด.");
                 }
             }
         }
@@ -68,11 +68,11 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     public void q100565s() {
         if (getPlayer().getJob() == 13100) { //핑크빈 스크립트
             target.say("ครั้งแรก 보는 곳이야! 흥นาที되는데?!");
-            target.say("...진정하자. 예티 녀석과 다시 만나기 전까지 힘을 되찾아야해.");
+            target.say("...진정하자. 예티 녀석และ 다시 만ฉัน기 전ถึง 힘을 되찾아야해.");
             target.say("이럴 때를 대비해서 #e#b'스텝업'#k#n ภารกิจ 리스트를 เตรียม했지!");
-            target.say("새로운 세계에 왔다고 당황하지 말고 화면 왼쪽 이벤트 알림이에 있는 #e#b'예티x핑크빈 스텝업'#k#n 아이콘을 살펴보자! วัน단 거기에 적힌 เป้าหมาย들을 하나씩 충실히 달성해볼까. #e#r그러면 힘을 다시 되찾을 수 있을 거야.");
-            target.say("예티 녀석에게 질 수는 없지. 다행히 '파워 엘릭서' 이것저것 가져왔으니 한 번 열심히 해보자! 헤헤헤.");
-            target.say("좋아 จำเป็น한 물건도 챙겼어!\r\n#e#b첫 번째 เป้าหมาย는 เลเวล 30 달성이다!");
+            target.say("ใหม่ โลก에 왔다고 당황하지 말고 화면 왼쪽 이벤트 알림이에 있는 #e#b'예티x핑크빈 스텝업'#k#n 아이콘을 살펴보자! วัน단 ที่นั่น에 적힌 เป้าหมาย들을 하ฉัน씩 충실히 달성해볼까. #e#rเขา러면 힘을 다시 되찾을 수 있을 거야.");
+            target.say("예티 녀석에게 질 수는 없지. 다행히 '파워 엘릭서' นี่โน่น 가져왔으니 한 번 열심히 해보자! 헤헤헤.");
+            target.say("좋아 จำเป็น한 น้ำ건도 챙겼어!\r\n#e#b첫 번째 เป้าหมาย는 เลเวล 30 달성이다!");
             getSc().flushSay();
             getQuest().forceComplete(getPlayer(), getNpc().getId());
             MapleQuest.getInstance(100566).forceStart(getPlayer(), getNpc().getId(), null);
@@ -81,12 +81,12 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             }
             getPlayer().send(CField.UIPacket.openUI(1267));
         } else if (getPlayer().getJob() == 13500) { //예티스크립트
-            target.say("예티, 다시 힘을 되찾아야 한다.\r\n핑크빈에게 질 수 없다...");
+            target.say("예티, 다시 힘을 되찾아야 한다.\r\n핑크빈에게 질 수 ไม่มี...");
             target.say("이럴 때를 대비해서 #e#b'스텝업'#k#n ภารกิจ 리스트를 เตรียม했다.");
-            target.say("예티, 당황하지 않는다\r\n화면 왼쪽 이벤트 알림이에 있는 #e#b'예티x핑크빈 스텝업'#k#n เป้าหมาย를 ยืนยัน 하나씩 하나씩 해나간다.\r\n#e#r그리고 힘을 되찾는다.");
-            target.say("예티 녀석에게 질 수는 없지. 다행히 '파워 엘릭서' 이것저것 가져왔으니 한 번 열심히 해보자! 헤헤헤.");
-            target.say("핑크빈에게 질 수 없다.\r\n예티, 집에서 가져온 물건들도 있다. 제대로 한다.");
-            target.say("예티, จำเป็น한 물건 챙겼다.\r\n#e#b첫 번째 เป้าหมาย เลเวล 30 달성한다.");
+            target.say("예티, 당황하지 않는다\r\n화면 왼쪽 이벤트 알림이에 있는 #e#b'예티x핑크빈 스텝업'#k#n เป้าหมาย를 ยืนยัน 하ฉัน씩 하ฉัน씩 해ฉัน간다.\r\n#e#rเขา리고 힘을 되찾는다.");
+            target.say("예티 녀석에게 질 수는 없지. 다행히 '파워 엘릭서' นี่โน่น 가져왔으니 한 번 열심히 해보자! 헤헤헤.");
+            target.say("핑크빈에게 질 수 ไม่มี.\r\n예티, บ้าน에서 가져온 น้ำ건들도 มี. 제대로 한다.");
+            target.say("예티, จำเป็น한 น้ำ건 챙겼다.\r\n#e#b첫 번째 เป้าหมาย เลเวล 30 달성한다.");
             getSc().flushSay();
             getQuest().forceComplete(getPlayer(), getNpc().getId());
             MapleQuest.getInstance(100566).forceStart(getPlayer(), getNpc().getId(), null);
@@ -148,9 +148,9 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(100568, "fairy", "1");
                 int questId = 100568;
                 clearStepUp(questId);
-                sayStepUp(3, 2437095, "เลเวล 범위 มอนสเตอร์ 999마리 처치");
+                sayStepUp(3, 2437095, "เลเวล 범บน มอนสเตอร์ 999마리 처치");
             } else {
-                target.say("รางวัล을 받을 공간이 ไม่พอ한 것 같다. ใช้창 3칸의 여유가 จำเป็น하다.");
+                target.say("รางวัล을 받을 공간이 ไม่พอ한 것 같다. ใช้창 3칸의 여유가 จำเป็นทำ.");
             }
         }
     }
@@ -302,7 +302,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                     end = "ทั้งหมด ภารกิจ을 เสร็จสมบูรณ์했군! 이제 어느 정도 힘도 돌아온 것 같다!\r\n예티 녀석. 혼쭐을 내줘야지! 헤헤!";
                 } else if (getPlayer().getJob() == 13500) {
                     start = "예티! #e" + 13 + "단계 ภารกิจ#n 클리어했다!";
-                    end = "예티, ทั้งหมด ภารกิจ을 เสร็จสมบูรณ์했다!\r\n예티, 귀여움과 강력함을 모두 가졌다.\r\n이제 핑크빈을 와장창 우지끈해줄 수 있다.";
+                    end = "예티, ทั้งหมด ภารกิจ을 เสร็จสมบูรณ์했다!\r\n예티, 귀여움และ 강력함을 ทั้งหมด 가졌다.\r\n이제 핑크빈을 และ장창 우지끈해줄 수 มี.";
                 }
                 target.say(start + "\r\n\r\n\r\n#e#b<" + 13 + "단계 스텝업 ภารกิจ เสร็จสมบูรณ์ รางวัล>\r\nรางวัล");
                 target.say(end);
@@ -346,8 +346,8 @@ public class YetiXPinkBean extends ScriptEngineNPC {
             start = "좋아! #e" + d + "단계 ภารกิจ#n 클리어했다!";
             end = " 기세를 몰아서 ถัดไป 단계로 넘어가 볼까?\r\nถัดไป은 바로 이거군!\r\n\r\n";
         } else if (getPlayer().getJob() == 13500) {
-            start = "예티! #e" + d + "단계 ภารกิจ#n 클리어했다!\r\n선물 자격 있다.";
-            end = "예티, 힘을 되찾고 있다. 멈추지 않는다.\r\nถัดไป ภารกิจ도 바로 해버린다.\r\n\r\n";
+            start = "예티! #e" + d + "단계 ภารกิจ#n 클리어했다!\r\n선น้ำ 자격 มี.";
+            end = "예티, 힘을 되찾고 มี. 멈추지 않는다.\r\nถัดไป ภารกิจ도 바로 해버린다.\r\n\r\n";
         }
         target.say(start + "\r\n\r\n\r\n#e#b<" + d + "단계 스텝업 ภารกิจ เสร็จสมบูรณ์ รางวัล>\r\n\r\n" + "#i" + reward + "# #z" + reward + "#");
         target.say(end + "#b#e<" + (d + 1) + "단계 스텝업 ภารกิจ>\r\n#k- " + nextMission);
@@ -413,7 +413,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     public void consume_2633195() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         int[][] reward = new int[][]{{2633222, 20}, {2633223, 10}};
-        int v = self.askMenu("둘중 하나를 เลือกโปรด.\r\n\r\n#b#L0# #i" + reward[0][0] + "# #z" + reward[0][0] + "# " + reward[0][1] + "개\r\n#L1# #i" + reward[1][0] + "# #z" + reward[1][0] + "# " + reward[1][1] + "개");
+        int v = self.askMenu("둘중 하ฉัน를 เลือกโปรด.\r\n\r\n#b#L0# #i" + reward[0][0] + "# #z" + reward[0][0] + "# " + reward[0][1] + "개\r\n#L1# #i" + reward[1][0] + "# #z" + reward[1][0] + "# " + reward[1][1] + "개");
         if (v >= 0 && target.exchange(reward[v][0], reward[v][1], 2633195, -1) > 0) {
 
         }
@@ -436,7 +436,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     public void consume_2633349() {
         initNPC(MapleLifeFactory.getNPC(9010000));
         if (GameConstants.isYetiPinkBean(getPlayer().getJob())) {
-            self.say("핑크빈과 예티는 익스트림 성อุปกรณ์약을 ใช้할 수 없.");
+            self.say("핑크빈และ 예티는 익스트림 성อุปกรณ์약을 ใช้할 수 없.");
             return;
         }
         String percent = "";
@@ -448,7 +448,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
                 }
                 percent += "- " + i + "เลเวล ขึ้น : " + GameConstants.extreamPotion()[getPlayer().getLevel() - 141][i - 1] + "%\r\n";
             }
-            if (1 == self.askYesNo("#r#e익스트림 성장의 비약#k#n 지금 ใช้ต้องการหรือไม่?\r\n\r\n※ ใช้ 시 #e#bสุ่ม한 โอกาส#n#k 따라 #b#e1 ~ 10เลเวล ขึ้น#k#n,　 ตัวละคร เลเวล 높을수록 그 โอกาส 낮아집니다.\r\n\r\n<#b" + getPlayer().getLevel() + "เลเวล#k ใช้>\r\n" + percent)) {
+            if (1 == self.askYesNo("#r#e익스트림 성장의 비약#k#n 지금 ใช้ต้องการหรือไม่?\r\n\r\n※ ใช้ 시 #e#bสุ่ม한 โอกาส#n#k 따라 #b#e1 ~ 10เลเวล ขึ้น#k#n,　 ตัวละคร เลเวล 높을수록 เขา โอกาส 낮아บ้าน니다.\r\n\r\n<#b" + getPlayer().getLevel() + "เลเวล#k ใช้>\r\n" + percent)) {
                 Collections.shuffle(levelUp);
                 int plus = levelUp.get(Randomizer.nextInt(levelUp.size()));
                 for (int i = 0; i < plus; i++) {
@@ -511,7 +511,7 @@ public class YetiXPinkBean extends ScriptEngineNPC {
     }
 
     public void q100785s() {
-        self.say("안녕하세요! #b#e#h0##k#n.\r\n\r\n#b #i3700287# #z3700287##k #b#i3700682# #z3700682##k 칭호 2개를\r\n#r예티X핑크빈 칭호 แลกเปลี่ยน권#k แลกเปลี่ยน해드리고 있.\r\n\r\n#e [ได้รับ เป็นไปได้한 칭호]\r\n#b#n #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say("ใน녕ทำ! #b#e#h0##k#n.\r\n\r\n#b #i3700287# #z3700287##k #b#i3700682# #z3700682##k 칭호 2개를\r\n#r예티X핑크빈 칭호 แลกเปลี่ยน권#k แลกเปลี่ยน해드리고 있.\r\n\r\n#e [ได้รับ เป็นไปได้한 칭호]\r\n#b#n #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
         if (target.exchange(3700287, -1, 3700682, -1, 2633243, 1) > 0) {
             self.sayOk("칭호 แลกเปลี่ยน권을 지급해드렸. กระเป๋า ยืนยัน해 สัปดาห์세요.\r\n\r\n#fUI/UIWindow.img/Quest/reward#\r\n\r\n#b#e #i2633243# #z2633243#", ScriptMessageFlag.NpcReplacedByNpc);
         } else {

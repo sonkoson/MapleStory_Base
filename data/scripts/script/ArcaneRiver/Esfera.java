@@ -35,7 +35,7 @@ public class Esfera extends ScriptEngineNPC {
 
     public void npc_3003533() {
         if (getPlayer().getLevel() >= 235) {
-            if (1 == target.askYesNo("안으로 들어가야한다.", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("ใน으로 들어가야한다.", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450007200, 0);
             }
         } else {

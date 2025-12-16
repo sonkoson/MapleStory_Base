@@ -64,16 +64,16 @@ public class Haven extends ScriptEngineNPC {
                 .append(resetDay);
         quest.setCustomData(customData.toString());
         StringBuilder askText = new StringBuilder();
-        askText.append("이번 สัปดาห์ 자네에게 부탁할 วัน은 아래와 같다네.\r\n\r\n");
+        askText.append("이번 สัปดาห์ 자네에게 부탁할 วัน은 ล่างและ 같다네.\r\n\r\n");
         for (Integer q : quests) {
             askText.append("#b#e#y")
                     .append(q)
                     .append("##k#n\r\n");
         }
-        askText.append("\r\n#e지금 바로 수행하시겠나?#n\r\n(마음에 들지 않는다면 교체하기 버튼을 눌러 다른 ภารกิจ로 교체할 수도 있다네.)");
+        askText.append("\r\n#e지금 바로 수행하시겠ฉัน?#n\r\n(마음에 들지 않는다면 교체하기 버튼을 눌러 อื่น ภารกิจ로 교체할 수도 มี네.)");
         if (1 == self.askYesNo(askText.toString(), ScriptMessageFlag.Change)) {
             askText = new StringBuilder();
-            askText.append("รายการ에 있는 ภารกิจ가 마음에 들지 않는가 보군? 그렇다면 다른 ภารกิจ를 찾아볼 수도 있지. 교체 싶은 ภารกิจ를 골라สัปดาห์게나.\r\n\r\n");
+            askText.append("รายการ에 있는 ภารกิจ가 마음에 들지 않는가 보군? เขา렇다면 อื่น ภารกิจ를 찾아볼 수도 있지. 교체 싶은 ภารกิจ를 골라สัปดาห์게ฉัน.\r\n\r\n");
             int index = 0;
             for (Integer q : quests) {
                 askText.append("#b#e")
@@ -85,13 +85,13 @@ public class Haven extends ScriptEngineNPC {
                         .append("##l#k#n\r\n");
                 index++;
             }
-            askText.append("#L4# #r#e더 이상 교체 싶은 ภารกิจ는 없다.#k#n#l");
+            askText.append("#L4# #r#e더 이상 교체 싶은 ภารกิจ는 ไม่มี.#k#n#l");
             int selection = self.askMenu(askText.toString());
             List<Integer> changeQuest = new ArrayList<>();
             while (selection != 4) {
                 if (!changeQuest.contains(selection)) changeQuest.add(selection);
                 askText = new StringBuilder();
-                askText.append("รายการ에 있는 ภารกิจ가 마음에 들지 않는가 보군? 그렇다면 다른 ภารกิจ를 찾아볼 수도 있지. 교체 싶은 ภารกิจ를 골라สัปดาห์게나.\r\n\r\n");
+                askText.append("รายการ에 있는 ภารกิจ가 마음에 들지 않는가 보군? เขา렇다면 อื่น ภารกิจ를 찾아볼 수도 있지. 교체 싶은 ภารกิจ를 골라สัปดาห์게ฉัน.\r\n\r\n");
                 for (int i = 0; i < 4; i++) {
                     if (changeQuest.contains(i)) {
                         askText.append("#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
@@ -99,12 +99,12 @@ public class Haven extends ScriptEngineNPC {
                         askText.append("#b#e#L" + i + "# #y" + quests.get(i) + "##l#k#n\r\n");
                     }
                 }
-                askText.append("#L4# #r#e더 이상 교체 싶은 ภารกิจ는 없다.#k#n#l");
+                askText.append("#L4# #r#e더 이상 교체 싶은 ภารกิจ는 ไม่มี.#k#n#l");
                 if (changeQuest.size() == 4) break;
                 if (getSc().isStop()) break;
                 selection = self.askMenu(askText.toString());
             }
-            String scriptText = "새로운 ภารกิจ를 찾았네.\r\n부탁할 วัน은 아래와 같다네.\r\n\r\n";
+            String scriptText = "ใหม่ ภารกิจ를 찾았네.\r\n부탁할 วัน은 ล่างและ 같다네.\r\n\r\n";
             List<Integer> tempQuests = quests;
             for (Integer c : changeQuest) {
                 int selectedQuest = questArray[Randomizer.nextInt(questArray.length)];
@@ -131,7 +131,7 @@ public class Haven extends ScriptEngineNPC {
             for (Integer q : quests) {
                 MapleQuest.getInstance(q).forceStart(getPlayer(), getNpc().getId(), "");
             }
-            self.sayOk("꼭 #e#rวัน요วัน 자정#k#n까지 ภารกิจ를 완수해야 한다는 점 잊지 말게. 그럼 안녕히 다녀오게나.");
+            self.sayOk("꼭 #e#rวัน요วัน 자정#k#nถึง ภารกิจ를 완수해야 한다는 점 잊지 말게. เขา럼 ใน녕히 다녀오게ฉัน.");
         }
     }
 
@@ -149,7 +149,7 @@ public class Haven extends ScriptEngineNPC {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String resetDay = sdf.format(time);
         getQuest().forceStart(getPlayer(), getNpc().getId(), resetDay);
-        self.say("말랑이, 이번에도 왔군.\r\n자네가 도와줘서 얼MP 고마운지 모르네.\r\n#b저번에 รางวัล을 받은 뒤로 의뢰를 4번 เสร็จสมบูรณ์했다면 나에게 알려สัปดาห์게, 핫핫핫.#k", ScriptMessageFlag.NoEsc);
+        self.say("말랑이, 이번에도 왔군.\r\n자네가 도และ줘서 얼MP 고마운지 모르네.\r\n#bฉัน번에 รางวัล을 받은 หลัง로 의뢰를 4번 เสร็จสมบูรณ์했다면 ฉัน에게 알려สัปดาห์게, 핫핫핫.#k", ScriptMessageFlag.NoEsc);
     }
 
     public void q39160e() {
@@ -166,9 +166,9 @@ public class Haven extends ScriptEngineNPC {
             } else {
                 getPlayer().updateInfoQuest(39161, "start=1");
             }
-            self.say("말랑이, 자네가 꾸준히 도와줘서 정찰이 훨씬 편해졌다네.\r\n여기, 이건 그에 대한 รางวัลวัน세.\r\n#i4001842# #b#t4001842##k\r\n\r\n앞으로도 매สัปดาห์ 의뢰를 4번 เสร็จสมบูรณ์ 나에게 알려สัปดาห์게. 핫핫핫.");
+            self.say("말랑이, 자네가 꾸준히 도และ줘서 정찰이 훨씬 편해졌다네.\r\nที่นี่, 이건 เขา에 대한 รางวัลวัน세.\r\n#i4001842# #b#t4001842##k\r\n\r\nหน้า으로도 매สัปดาห์ 의뢰를 4번 เสร็จสมบูรณ์ ฉัน에게 알려สัปดาห์게. 핫핫핫.");
         } else {
-            self.say("말랑이 자네 가방에든게 많나보구만 อื่นๆ창을 1칸이상 비우고 다시 말을걸어สัปดาห์게나.");
+            self.say("말랑이 자네 가ห้อง에든게 많ฉัน보구만 อื่นๆ창을 1칸이상 비우고 다시 말을걸어สัปดาห์게ฉัน.");
         }
     }
 
@@ -217,10 +217,10 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void bonusQuestStart(int mobId, int mobCount) {
-        self.say("말랑이, 긴급 의뢰가 들어왔네.\r\n#b적 로봇 처치#k 의뢰야.\r\n무서운 로봇들을 처치해สัปดาห์면 된다네. 다행히도 그 숫자가 많지는 않은 것 같네.");
-        if (self.askAccept("처치해야 할 로봇은 아래와 같네.\r\n\r\n#r[의뢰 : 적 로봇 처치]#k\r\n처치 대상 : #b#o" + mobId + "# " + mobCount + "#k\r\n\r\n어때? 의뢰를 수락할 텐가?") == 1) {
+        self.say("말랑이, 긴급 의뢰가 들어왔네.\r\n#b적 로봇 처치#k 의뢰야.\r\n무서운 로봇들을 처치해สัปดาห์면 된다네. 다행히도 เขา 숫자가 많지는 않은 것 같네.");
+        if (self.askAccept("처치해야 할 로봇은 ล่างและ 같네.\r\n\r\n#r[의뢰 : 적 로봇 처치]#k\r\n처치 대상 : #b#o" + mobId + "# " + mobCount + "#k\r\n\r\n어때? 의뢰를 수락할 텐가?") == 1) {
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
-            self.say("고맙네. 갑자기 무서운 로봇들이 늘어나서 정찰이 힘들어...\r\n다 처치 나면 여기로 돌아오게나.", ScriptMessageFlag.NoEsc);
+            self.say("고맙네. 갑자기 무서운 로봇들이 늘어ฉัน서 정찰이 힘들어...\r\n다 처치 ฉัน면 ที่นี่로 돌아오게ฉัน.", ScriptMessageFlag.NoEsc);
         }
     }
 
@@ -228,9 +228,9 @@ public class Haven extends ScriptEngineNPC {
         if (target.exchange(4001842, (5 * 2)) > 0) {
             getPlayer().updateInfoQuest(getQuest().getId(), "start=0");
             getQuest().forceComplete(getPlayer(), getNpc().getId());
-            self.say("말랑이, #o" + mobId + "#들을 처치해줘서 고맙네.\r\n이제 정찰이 좀 수เดือน해 지겠구만..\r\n여기, 이건 그에 대한 รางวัลวัน세.\r\n#i4001842# #b#t4001842##k\r\n\r\n앞으로도 잘 부탁하네.", ScriptMessageFlag.NoEsc);
+            self.say("말랑이, #o" + mobId + "#들을 처치해줘서 고맙네.\r\n이제 정찰이 좀 수เดือน해 지겠구만..\r\nที่นี่, 이건 เขา에 대한 รางวัลวัน세.\r\n#i4001842# #b#t4001842##k\r\n\r\nหน้า으로도 잘 부탁하네.", ScriptMessageFlag.NoEsc);
         } else {
-            self.sayOk("말랑이 자네 가방에든게 많나보구만 อื่นๆ창을 1칸이상 비우고 다시 말을걸어สัปดาห์게나.");
+            self.sayOk("말랑이 자네 가ห้อง에든게 많ฉัน보구만 อื่นๆ창을 1칸이상 비우고 다시 말을걸어สัปดาห์게ฉัน.");
         }
     }
 
@@ -435,7 +435,7 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void itemQuest(int itemId, int needQty) {
-        self.say("기다리고 있었네!  물건들이 꼭 จำเป็น했거든.\r\n음...ขอ한 그대로군. #b물건은 전부 가져가도록 하지.#k\r\n앞으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
+        self.say("기다리고 있었네!  น้ำ건들이 꼭 จำเป็น했거든.\r\n음...ขอ한 เขา대로군. #bน้ำ건은 전부 가져가도록 하지.#k\r\nหน้า으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
         if (target.exchange(itemId, -needQty) > 0) {
             if (getPlayer().getItemQuantity(itemId, false) > 0) {
                 target.exchange(itemId, getPlayer().getItemQuantity(itemId, false));
@@ -450,7 +450,7 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void repairQuest(int itemId, int needQty) {
-        self.say("증거가 확실하군. 증거용 재료는 모두 가져가겠네.\r\n수고 많았군. 자네 덕นาที에 부서진 감시탑을 다시 쓸 수 있게 됐어.\r\n정말 하기 힘든 วัน인데...\r\n앞으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
+        self.say("증거가 확실하군. 증거용 재료는 ทั้งหมด 가져가겠네.\r\n수고 많았군. 자네 덕นาที에 부서진 감시탑을 다시 쓸 수 있게 됐어.\r\n정말 하기 힘든 วัน인데...\r\nหน้า으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
         if (target.exchange(itemId, -needQty) > 0) {
             if (getPlayer().getItemQuantity(itemId, false) > 0) {
                 target.exchange(itemId, getPlayer().getItemQuantity(itemId, false));
@@ -465,7 +465,7 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void liberationQuest() {
-        self.say("로봇들을 해방시켜줘서 고맙네.\r\n자네에게 인사하려는 로봇들이 너무 많아 전부 말리느라 힘들었다고. 자네니까 할 수 있는 วัน이야.\r\n앞으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
+        self.say("로봇들을 해ห้อง시켜줘서 고맙네.\r\n자네에게 인사하려는 로봇들이 너무 많아 전부 말리느라 힘들었다고. 자네니까 할 수 있는 วัน이야.\r\nหน้า으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;
@@ -477,12 +477,12 @@ public class Haven extends ScriptEngineNPC {
 
     public void NpcSpeechQuestStart(int mobId, int mobCount, int NpcSpeech) {
         getPlayer().updateInfoQuest(getQuest().getId(), "start=1;NpcSpeech=" + NpcSpeech + "1");
-        self.say("ช่วยเหลือ을 ขอ했더니, 말랑이, 자네가 오다니!\r\n자네라면 정말 큰 ช่วยเหลือ이 될걸세.\r\n저쪽에 고맙다고 말이라도 해야겠군.", ScriptMessageFlag.NoEsc);
-        self.say("자, 그럼 วัน 얘기를 해볼까.\r\n 근처의 #b#o" + mobId + "##k들이 갑자기 너무 많아졌어.\r\n도저히 정찰을 할 수가 없다네.\r\n#b#o" + mobId + "#" + mobCount + "마리#k 처치해 สัปดาห์게.\r\n다 처치한 후엔 나에게 알려สัปดาห์면 되지, 잘 부탁하네.", ScriptMessageFlag.NoEsc);
+        self.say("ช่วยเหลือ을 ขอ했더니, 말랑이, 자네가 มา니!\r\n자네라면 정말 ใหญ่ ช่วยเหลือ이 될걸세.\r\nฉัน쪽에 고맙다고 말이라도 해야겠군.", ScriptMessageFlag.NoEsc);
+        self.say("자, เขา럼 วัน 얘기를 해볼까.\r\n ใกล้의 #b#o" + mobId + "##k들이 갑자기 너무 많아졌어.\r\n도ฉัน히 정찰을 할 수가 ไม่มี네.\r\n#b#o" + mobId + "#" + mobCount + "마리#k 처치해 สัปดาห์게.\r\n다 처치한 후엔 ฉัน에게 알려สัปดาห์면 되지, 잘 부탁하네.", ScriptMessageFlag.NoEsc);
     }
 
     public void NpcSpeechQuestEnd(int mobId) {
-        self.say("#o" + mobId + "#들을 처치해줘서 고맙네.\r\n이제 정찰이 좀 수เดือน해 지겠구만.\r\n아무나 못하는 의뢰인데, 대단해!\r\n앞으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
+        self.say("#o" + mobId + "#들을 처치해줘서 고맙네.\r\n이제 정찰이 좀 수เดือน해 지겠구만.\r\nใครฉัน 못하는 의뢰인데, 대단해!\r\nหน้า으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;
@@ -494,7 +494,7 @@ public class Haven extends ScriptEngineNPC {
     }
 
     public void normalQuestEnd() {
-        self.say("ช่วยเหลือ은 잘 받았네.\r\n자네의 활약에 대해 내가 잘 전달해 두지.\r\n자네가 없었으면 큰วัน났을 거야.\r\n앞으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
+        self.say("ช่วยเหลือ은 잘 받았네.\r\n자네의 활약에 대해 내가 잘 전달해 두지.\r\n자네가 없었으면 ใหญ่วัน났을 거야.\r\nหน้า으로도 잘 부탁하네, 말랑이.", ScriptMessageFlag.NoEsc);
         getSc().flushSay();
         int FC = getPlayer().getOneInfoQuestInteger(39100, "FC");
         FC = FC + 1;

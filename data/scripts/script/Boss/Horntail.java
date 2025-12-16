@@ -23,11 +23,11 @@ public class Horntail extends ScriptEngineNPC {
             if (target.getParty().getLeader().getId() != target.getId()) {
                 self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
             } else {
-                if (self.askYesNo("석판에 쓰여진 글씨가 빛나더니 석판 뒤로 작은 문이 열렸다. 비밀통로를 이용ต้องการหรือไม่?") == 1) {
+                if (self.askYesNo("석판에 쓰여진 글씨가 빛ฉัน더니 석판 หลัง로 เล็ก ประตู이 열렸다. 비밀통로를 이용ต้องการหรือไม่?") == 1) {
                     if (target.getParty().isPartySameMap()) {
                         target.getParty().registerTransferField(240050400); //ปาร์ตี้원 ทั้งหมดย้าย!
                     } else {
-                        self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
+                        self.say(target.getParty().getPartyMemberList().size() + "명 ทั้งหมด เหมือนกันแผนที่ 있어야 .");
                     }
                 } else {
                     self.say("ย้าย하시려면 다시 말을 걸어 สัปดาห์세요.");
@@ -45,7 +45,7 @@ public class Horntail extends ScriptEngineNPC {
         if (em == null) {
             self.say("ปัจจุบัน 혼테วัน บอส레이드를 이용할 수 없.");
         } else {
-            int v = self.askMenu("#e<บอส: 혼테วัน>#n\r\n혼테วัน이 부활했다. 이대로 둔다면 화산폭발을 วัน으켜서 미나르 วัน대를 지옥으로 만들어 버릴거야.\r\n#b\r\n#L0# <บอส: 혼테วัน> เข้า을 สมัคร한다.#l");
+            int v = self.askMenu("#e<บอส: 혼테วัน>#n\r\n혼테วัน이 부활했다. 이대로 둔다면 화산폭발을 วัน으켜서 미ฉัน르 วัน대를 지옥으로 만들어 버릴거야.\r\n#b\r\n#L0# <บอส: 혼테วัน> เข้า을 สมัคร한다.#l");
             if (v == 0) {
             	String menu = "";
 
@@ -87,7 +87,7 @@ public class Horntail extends ScriptEngineNPC {
                         self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
                     } else {
                         if (target.getParty().isPartySameMap()) {
-                            // 이미 누가 안에 있는지 부터 알아보자
+                            // 이미 누가 ใน에 있는지 จาก 알아보자
                             int[] fields = new int[]{};
                             int map = normalHortailMaps[0];
                             if (v2 == 2) {
@@ -107,9 +107,9 @@ public class Horntail extends ScriptEngineNPC {
                             }
                             if (findUser) {
                                 if (v2 == 0 || v2 == 1) {
-                                    self.say("ปัจจุบัน 이지,노말 แผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
+                                    self.say("ปัจจุบัน 이지,노말 แผนที่ 가득ชา 이용하실 수 없. อื่น แชนแนล 이용โปรด.");
                                 } else if (v2 == 2) {
-                                    self.say("ปัจจุบัน 카오스 แผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
+                                    self.say("ปัจจุบัน 카오스 แผนที่ 가득ชา 이용하실 수 없. อื่น แชนแนล 이용โปรด.");
                                 }
                                 return;
                             }
@@ -140,9 +140,9 @@ public class Horntail extends ScriptEngineNPC {
 
                             if (canEnter == -1 || canEnter == -2) {
                                 if (canEnter == -2) {
-                                    self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군. 그렇다면 วันนี้은 더 이상 들어갈 수 없다.");
+                                    self.say("ปาร์ตี้원 중#b#e" + overLap + "#n#k วันนี้ เข้า했군. เขา렇다면 วันนี้은 더 이상 들어갈 수 ไม่มี.");
                                 } else {
-                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득차 이용하실 수 없. 다른 แชนแนล 이용โปรด.");
+                                    self.say("ปัจจุบัน ทั้งหมดแผนที่ 가득ชา 이용하실 수 없. อื่น แชนแนล 이용โปรด.");
                                 }
                             } else if (canEnter == 0){
                                 EventInstanceManager eim = em.readyInstance();
@@ -164,8 +164,8 @@ public class Horntail extends ScriptEngineNPC {
                                 updateEventNumber(getPlayer(), QuestExConstants.Horntail.getQuestID());
                                 eim.registerParty(target.getParty(), getPlayer().getMap());
                             }
-                        } else { //ปาร์ตี้원 모두 같은แผนที่ 없을 때
-                            self.say(target.getParty().getPartyMemberList().size() + "명 모두 같은แผนที่ 있어야 .");
+                        } else { //ปาร์ตี้원 ทั้งหมด เหมือนกันแผนที่ 없을 때
+                            self.say(target.getParty().getPartyMemberList().size() + "명 ทั้งหมด เหมือนกันแผนที่ 있어야 .");
                         }
                     }
                 }
@@ -175,13 +175,13 @@ public class Horntail extends ScriptEngineNPC {
 
     public void hontale_out() {
         if (target.getMapId() == 240050400) {
-            if (self.askYesNo("#m240050000# 돌아가시겠습니까?") == 1) {
+            if (self.askYesNo("#m240050000# 돌아가시หรือไม่?") == 1) {
                 registerTransferField(240050000);
             } else {
                 self.say("다시 생แต่ละ해 보시고 말을 걸어 สัปดาห์세요.");
             }
         } else {
-            if (self.askYesNo("전투를 그만두고 밖으로 나가시겠습니까? ออก 시 วันนี้은 더 이상 เข้า할 수 없.") == 1) {
+            if (self.askYesNo("전투를 เขา만두고 นอก으로 ฉัน가시หรือไม่? ออก 시 วันนี้은 더 이상 เข้า할 수 없.") == 1) {
                 //횟수 หัก!
                 registerTransferField(240050400);
             } else {
@@ -205,7 +205,7 @@ public class Horntail extends ScriptEngineNPC {
                             mobId = 8810100;
                         }
                         tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //이거 본섭화 맞음ㅋㅋ
-                        mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                        mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                         tremble.forceHitReactor((byte)0);
                         tremble.forceHitReactor((byte)1);
                 	}
@@ -218,7 +218,7 @@ public class Horntail extends ScriptEngineNPC {
                                 mobId = 8810100;
                             }
                             tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x - 90, tremble.getPosition().y + 5), -2); //이거 본섭화 맞음ㅋㅋ
-                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}
@@ -241,7 +241,7 @@ public class Horntail extends ScriptEngineNPC {
                             horntail.getStats().setMaxHp(cs.hp);
                             horntail.setOverrideStats(cs);
                             tremble.getMap().spawnMonster(horntail, -2);
-                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}
@@ -265,7 +265,7 @@ public class Horntail extends ScriptEngineNPC {
                         } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                             mobId = 8810101;
                         }
-                        mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                        mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                         tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x + 89, tremble.getPosition().y - 21), -2);
                         tremble.forceHitReactor((byte)0);
                         tremble.forceHitReactor((byte)1);
@@ -278,7 +278,7 @@ public class Horntail extends ScriptEngineNPC {
                             } else if (eim.getProperty("mode").equals("chaos")) { //카오스โหมด
                                 mobId = 8810101;
                             }
-                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                             tremble.getMap().spawnMonster(MapleLifeFactory.getMonster(mobId), new Point(tremble.getPosition().x + 89, tremble.getPosition().y - 21), -2);
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
@@ -302,7 +302,7 @@ public class Horntail extends ScriptEngineNPC {
                             horntail.getStats().setMaxHp(cs.hp);
                             horntail.setOverrideStats(cs);
                             tremble.getMap().spawnMonster(horntail, -2);
-                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 나타납니다.");
+                            mapMessage(6, "동굴 깊은 곳에서 무시무시한 생명체가 ฉัน타납니다.");
                             tremble.forceHitReactor((byte)0);
                             tremble.forceHitReactor((byte)1);
                 		}

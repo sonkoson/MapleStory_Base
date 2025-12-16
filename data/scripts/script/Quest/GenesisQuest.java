@@ -21,51 +21,51 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GenesisQuest extends ScriptEngineNPC {
     public void q2000019s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.2#k\r\n\r\n#e<사자왕 반 레온의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 반 레온 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธ와 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 90% ลด\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.2#k\r\n\r\n#e<사자왕 반 레온의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 반 레온 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธและ 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 90% ลด\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
             self.say("하드 반 레온을 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000019e() {
-        self.say("반 레온을 1인 격파하였다. 하지만 아직 #b제네시스 อาวุธ#k 해방하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
+        self.say("반 레온을 1인 격파하였다. แต่ 아직 #b제네시스 อาวุธ#k 해ห้อง하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void q2000020s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.3#k\r\n\r\n#e<เวลา의 대신관 아카이럼의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 노멀 아카이럼 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธ와 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 75% ลด\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.3#k\r\n\r\n#e<เวลา의 대신관 아카이럼의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 노멀 아카이럼 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธและ 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 75% ลด\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
             self.say("노멀 아카이럼을 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000020e() {
-        self.say("아카이럼을 1인 격파하였다. 하지만 아직 #b제네시스 อาวุธ#k 해방하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
+        self.say("아카이럼을 1인 격파하였다. แต่ 아직 #b제네시스 อาวุธ#k 해ห้อง하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
         getQuest().forceComplete(getPlayer(), getNpc().getId());
     }
 
     public void q2000021s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.4#k\r\n\r\n#e<폭군 매그너스의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 매그너스 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธ와 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 50% ลด\r\n\r\n#b#i4036460##z4036460# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
-            self.say("하드 매그너스 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.4#k\r\n\r\n#e<폭군 매เขา너스의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 매เขา너스 1인 격파\r\n#b  - 봉인된 제네시스 อาวุธและ 보조อาวุธ만 장착\r\n  - 착용중인 อุปกรณ์의 순수 ความสามารถ치만 ใช้งาน\r\n  - สุดท้าย Damage 50% ลด\r\n\r\n#b#i4036460##z4036460# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전할까?", ScriptMessageFlag.Self) == 1) {
+            self.say("하드 매เขา너스 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000021e() {
         if (!getPlayer().haveItem(4036460, 1)) {
-            self.say("#b#i4036460# #z4036460# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036460# #z4036460# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036460, -1) > 0) {
-            self.say("매그너스를 1인 격파하였다. 하지만 아직 #b제네시스 อาวุธ#k 해방하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
+            self.say("매เขา너스를 1인 격파하였다. แต่ 아직 #b제네시스 อาวุธ#k 해ห้อง하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000022s() {
-        String v0 = "#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.5#k\r\n\r\n#e<윙 마스터 스우의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 스우 1인 격파\r\n#b  - สุดท้าย Damage 20% ลด\r\n\r\n#b#i4036461##z4036461# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음\r\n\r\n클리어 시 [파괴의 얄다바오트] สกิล ได้รับ\r\n제네시스 อาวุธ 첫 번째 힘 개방\r\n\r\n#k도전할까?";
+        String v0 = "#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.5#k\r\n\r\n#e<윙 마스터 스우의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 스우 1인 격파\r\n#b  - สุดท้าย Damage 20% ลด\r\n\r\n#b#i4036461##z4036461# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음\r\n\r\n클리어 시 [파괴의 얄다바오트] สกิล ได้รับ\r\n제네시스 อาวุธ 첫 번째 힘 개ห้อง\r\n\r\n#k도전할까?";
         if (GameConstants.isZero(getPlayer().getJob())) {
-            v0 = "#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.5#k\r\n\r\n#e<윙 마스터 스우의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 스우 1인 격파\r\n#b  - สุดท้าย Damage 20% ลด\r\n\r\n#b#i4036461##z4036461# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음\r\n\r\n#k도전할까?";
+            v0 = "#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.5#k\r\n\r\n#e<윙 마스터 스우의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 스우 1인 격파\r\n#b  - สุดท้าย Damage 20% ลด\r\n\r\n#b#i4036461##z4036461# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음\r\n\r\n#k도전할까?";
         }
         if (self.askAccept(v0, ScriptMessageFlag.Self) == 1) {
             self.say("하드 스우 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
@@ -75,7 +75,7 @@ public class GenesisQuest extends ScriptEngineNPC {
 
     public void q2000022e() {
         if (!getPlayer().haveItem(4036461, 1)) {
-            self.say("#b#i4036461# #z4036461# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036461# #z4036461# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036461, -1) > 0) {
@@ -84,32 +84,32 @@ public class GenesisQuest extends ScriptEngineNPC {
                 if (result == -1) {
                     return;
                 }
-                self.say("#b제네시스 อาวุธ#k 잠재된 첫 번째 힘이 깨어났다.\r\n\r\n#r- <파괴의 얄다바오트> สกิล ได้รับ\r\n- สัปดาห์문서/스타포스 เสริมแรง 불가\r\n- เพิ่มตัวเลือก/소울은 완전 해방 시 วินาที기화\r\n\r\n#k#i" + result + "# #z" + result + "#", ScriptMessageFlag.Self);
+                self.say("#b제네시스 อาวุธ#k 잠재된 첫 번째 힘이 깨어났다.\r\n\r\n#r- <파괴의 얄다바오트> สกิล ได้รับ\r\n- สัปดาห์ประตู서/스타포스 เสริมแรง 불가\r\n- เพิ่มตัวเลือก/소울은 완전 해ห้อง 시 วินาที기화\r\n\r\n#k#i" + result + "# #z" + result + "#", ScriptMessageFlag.Self);
             }
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000023s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.6#k\r\n\r\n#e<파멸의 검 데미안의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 데미안 1인 격파\r\n#b  - 데스카운트 5개로 ลด\r\n\r\n#b#i4036462##z4036462# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
-            self.say("하드 데미안 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.6#k\r\n\r\n#e<파멸의 검 데미ใน의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 데미ใน 1인 격파\r\n#b  - 데스카운트 5개로 ลด\r\n\r\n#b#i4036462##z4036462# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
+            self.say("하드 데미ใน 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
     }
 
     public void q2000023e() {
         if (!getPlayer().haveItem(4036462, 1)) {
-            self.say("#b#i4036462# #z4036462# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036462# #z4036462# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036462, -1) > 0) {
-            self.say("데미안을 1인 격파하였다. 하지만 아직 #b제네시스 อาวุธ#k 해방하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
+            self.say("데미ใน을 1인 격파하였다. แต่ 아직 #b제네시스 อาวุธ#k 해ห้อง하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000024s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.7#k\r\n\r\n#e<거미의 왕 윌의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 윌 1인 격파\r\n#b  - 혼자서 격파\r\n\r\n#b#i4036463##z4036463# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.7#k\r\n\r\n#e<거미의 왕 윌의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 하드 윌 1인 격파\r\n#b  - คนเดียว서 격파\r\n\r\n#b#i4036463##z4036463# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
             self.say("하드 윌 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
@@ -117,17 +117,17 @@ public class GenesisQuest extends ScriptEngineNPC {
 
     public void q2000024e() {
         if (!getPlayer().haveItem(4036463, 1)) {
-            self.say("#b#i4036463# #z4036463# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036463# #z4036463# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036463, -1) > 0) {
-            self.say("윌을 1인 격파하였다. 하지만 아직 #b제네시스 อาวุธ#k 해방하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
+            self.say("윌을 1인 격파하였다. แต่ 아직 #b제네시스 อาวุธ#k 해ห้อง하기엔 어두운 힘에 잠겨있는 것 같다.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000025s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.8#k\r\n\r\n#e<악몽의 สัปดาห์인 루시드의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 루시드 1인 격파\r\n#b  - #i2000047# #z2000047# 50개 지급\r\n  - #z2000047# 제외한 #eทั้งหมด ใช้ ไอเท็ม ใช้ 불가#n\r\n\r\n#b#i4036464##z4036464# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.8#k\r\n\r\n#e<악몽의 สัปดาห์인 루시드의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 루시드 1인 격파\r\n#b  - #i2000047# #z2000047# 50개 지급\r\n  - #z2000047# 제외한 #eทั้งหมด ใช้ ไอเท็ม ใช้ 불가#n\r\n\r\n#b#i4036464##z4036464# 1개#k จำเป็น\r\n  #b- 해당 เควส 수락 후 검은 마법사를 처치 얻을 수 있음#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
             self.say("하드 루시드 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
@@ -135,17 +135,17 @@ public class GenesisQuest extends ScriptEngineNPC {
 
     public void q2000025e() {
         if (!getPlayer().haveItem(4036464, 1)) {
-            self.say("#b#i4036464# #z4036464# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036464# #z4036464# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036464, -1) > 0) {
-            self.say("루시드를 1인 격파하였다. 곧 어두운 힘에서 해방할 수 있을 것 같다.", ScriptMessageFlag.Self);
+            self.say("루시드를 1인 격파하였다. 곧 어두운 힘에서 해ห้อง할 수 있을 것 같다.", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
 
     public void q2000026s() {
-        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.9#k\r\n\r\n#e<붉은 마녀 진 힐라의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 진 힐라 1인 격파\r\n#b  - 진 힐라의 HP 25% ลด#n\r\n\r\n#b#i4036465##z4036465# 1개#k จำเป็น\r\n  #b- 검은 마법사를 처치 얻을 수 있음\r\n\r\n창조의 아이온 สกิล ได้รับ เป็นไปได้#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
+        if (self.askAccept("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.9#k\r\n\r\n#e<붉은 마녀 진 힐라의 흔적>#n\r\nถัดไป의 เงื่อนไข으로 진 힐라 1인 격파\r\n#b  - 진 힐라의 HP 25% ลด#n\r\n\r\n#b#i4036465##z4036465# 1개#k จำเป็น\r\n  #b- 검은 마법사를 처치 얻을 수 있음\r\n\r\n창조의 아이온 สกิล ได้รับ เป็นไปได้#k\r\n\r\n#k도전해볼까?", ScriptMessageFlag.Self) == 1) {
             self.say("하드 진 힐라 1인 격파해보러 가볼까!", ScriptMessageFlag.Self);
             getQuest().forceStart(getPlayer(), getNpc().getId(), "");
         }
@@ -153,11 +153,11 @@ public class GenesisQuest extends ScriptEngineNPC {
 
     public void q2000026e() {
         if (!getPlayer().haveItem(4036465, 1)) {
-            self.say("#b#i4036465# #z4036465# 1개#k จำเป็น하다. 검은 마법사를 처치 ได้รับ할 수 있다.", ScriptMessageFlag.Self);
+            self.say("#b#i4036465# #z4036465# 1개#k จำเป็นทำ. 검은 마법사를 처치 ได้รับ할 수 มี.", ScriptMessageFlag.Self);
             return;
         }
         if (target.exchange(4036465, -1) > 0) {
-            self.say("진 힐라를 1인 격파하였다. 드디어 어두운 힘에서 완전히 해방할 수 있을 것 같다.\r\n\r\n#e<สกิล ใช้ เป็นไปได้>#n\r\n#b - 창조의 아이온 สกิล ใช้ เป็นไปได้ (제네시스 อาวุธ 장착중이라면 다시 착용โปรด.)", ScriptMessageFlag.Self);
+            self.say("진 힐라를 1인 격파하였다. 드디어 어두운 힘에서 완전히 해ห้อง할 수 있을 것 같다.\r\n\r\n#e<สกิล ใช้ เป็นไปได้>#n\r\n#b - 창조의 아이온 สกิล ใช้ เป็นไปได้ (제네시스 อาวุธ 장착중이라면 다시 착용โปรด.)", ScriptMessageFlag.Self);
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
     }
@@ -185,19 +185,19 @@ public class GenesisQuest extends ScriptEngineNPC {
         if (weapon.get() == 0) {
             if (GameConstants.isZero(getPlayer().getJob())) {
                 if (target.exchange(4310260, 1) > 0) {
-                    self.say("#b#i4310260# #z4310260##k ได้รับ했다. #eอาวุธ 성장#n 통해 10형으로 성장할 수 있다.", ScriptMessageFlag.Self);
+                    self.say("#b#i4310260# #z4310260##k ได้รับ했다. #eอาวุธ 성장#n 통해 10형으로 성장할 수 มี.", ScriptMessageFlag.Self);
                     getQuest().forceComplete(getPlayer(), getNpc().getId());
                 } else {
                     self.say("#bอื่นๆ กระเป๋า#k ช่อง 1칸 확보 다시 시도하자.", ScriptMessageFlag.Self);
                 }
                 return;
             }
-            self.say("제네시스 อาวุธ가 없으면 해당 เควส ดำเนินการ할 수 없다.", ScriptMessageFlag.Self);
+            self.say("제네시스 อาวุธ가 없으면 해당 เควส ดำเนินการ할 수 ไม่มี.", ScriptMessageFlag.Self);
             return;
         }
-        if (self.askMenu("#e#r[진:眞]#k#n 제네시스 อาวุธ 해방 #bChapter.X#k\r\n\r\n#e<제네시스 อาวุธ>#n\r\n제네시스 อาวุธ가 강력한 힘으로 가득 찼다.\r\n제네시스 อาวุธ에 잠재된 힘을 완전히 깨울 수 있을 것 같은데, 해방을 เริ่ม해 볼까?\r\n\r\n#r- 15% สัปดาห์문서로 ทั้งหมด เสริมแรง เสร็จสมบูรณ์\r\n- 스타포스 22성\r\n- Unique 잠재ความสามารถ มี\r\n- Epic 에디셔널 잠재ความสามารถ มี\r\n- สัปดาห์문서/스타포스 เสริมแรง 불가\r\n- เพิ่มตัวเลือก/소울은 완전 해방 시 วินาที기화\r\n#b#L0##i" + (weapon.get() + 1) + "# #z" + (weapon.get() + 1) +"##l", ScriptMessageFlag.Self) == 0) {
+        if (self.askMenu("#e#r[진:眞]#k#n 제네시스 อาวุธ 해ห้อง #bChapter.X#k\r\n\r\n#e<제네시스 อาวุธ>#n\r\n제네시스 อาวุธ가 강력한 힘으로 가득 찼다.\r\n제네시스 อาวุธ에 잠재된 힘을 완전히 깨울 수 있을 것 เหมือนกัน데, 해ห้อง을 เริ่ม해 볼까?\r\n\r\n#r- 15% สัปดาห์ประตู서로 ทั้งหมด เสริมแรง เสร็จสมบูรณ์\r\n- 스타포스 22성\r\n- Unique 잠재ความสามารถ มี\r\n- Epic 에디셔널 잠재ความสามารถ มี\r\n- สัปดาห์ประตู서/스타포스 เสริมแรง 불가\r\n- เพิ่มตัวเลือก/소울은 완전 해ห้อง 시 วินาที기화\r\n#b#L0##i" + (weapon.get() + 1) + "# #z" + (weapon.get() + 1) +"##l", ScriptMessageFlag.Self) == 0) {
             doGenesisWeaponUpgrade();
-            self.say("힘이 완전히 깨어나 제네시스 อาวุธ가 더 강력해졌다.\r\nอาวุธ를 착용 그 힘을 시험해보자.", ScriptMessageFlag.Self);
+            self.say("힘이 완전히 깨어ฉัน 제네시스 อาวุธ가 더 강력해졌다.\r\nอาวุธ를 착용 เขา 힘을 시험해보자.", ScriptMessageFlag.Self);
 
             getQuest().forceComplete(getPlayer(), getNpc().getId());
         }
@@ -207,7 +207,7 @@ public class GenesisQuest extends ScriptEngineNPC {
     int[] bmWeapons = new int[]{
             1212128, 1213021, 1222121, 1232121, 1242138, 1242140, 1262050, 1272039, 1282039, 1292021, 1302354, 1312212, 1322263, 1332288, 1362148, 1372236, 1382273, 1402267, 1412188, 1422196, 1432226, 1442284, 1452265, 1462251, 1472274, 1482231, 1492244, 1522151, 1532156, 1582043, 1592021, 1562010, 1214021
     };
-    // 봉인된 제네시스 อาวุธ 1차 해방
+    // 봉인된 제네시스 อาวุธ 1ชา 해ห้อง
     public int doGenesisWeaponFirstUpgrade() {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
 
@@ -262,7 +262,7 @@ public class GenesisQuest extends ScriptEngineNPC {
         return genesis.getItemId();
     }
 
-    // 봉인된 제네시스 อาวุธ สุดท้าย 해방
+    // 봉인된 제네시스 อาวุธ สุดท้าย 해ห้อง
     public void doGenesisWeaponUpgrade() {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
         Equip equip = null;
@@ -382,7 +382,7 @@ public class GenesisQuest extends ScriptEngineNPC {
         if (source.size() <= 0) {self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
-        EquipEnchantScroll scroll = source.get(0); // 첫번째가 직업에 맞는 สัปดาห์문서
+        EquipEnchantScroll scroll = source.get(0); // 첫번째가 직업에 맞는 สัปดาห์ประตู서
         if (scroll == null) {self.say("알 수 없는 오류가 발생แล้ว.", ScriptMessageFlag.Self);
             return;
         }
@@ -448,6 +448,6 @@ public class GenesisQuest extends ScriptEngineNPC {
         MapleInventoryManipulator.addbyItem(getClient(), genesis);
 
 
-        Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, getPlayer().getName() + "님이 봉인된 힘을 해방 검은 마법사의 힘이 담긴 제네시스 อาวุธ의 สัปดาห์인이 되었."));
+        Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(6, getPlayer().getName() + "님이 봉인된 힘을 해ห้อง 검은 마법사의 힘이 담긴 제네시스 อาวุธ의 สัปดาห์인이 되었."));
     }
 }
