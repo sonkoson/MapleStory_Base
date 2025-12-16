@@ -63,7 +63,7 @@ public class Util extends ScriptEngineNPC {
         List<Integer> items = new ArrayList<>();
         MapleItemInformationProvider mii = MapleItemInformationProvider.getInstance();
         switch (vv) {
-            case 0: { // 헤어검색
+            case 0: { // Hair Search
 
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
@@ -83,7 +83,7 @@ public class Util extends ScriptEngineNPC {
                 break;
             }
 
-            case 1: { // 성형검색
+            case 1: { // Face Search
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
                     int itemid = item.getLeft();
@@ -217,28 +217,29 @@ public class Util extends ScriptEngineNPC {
                     "#L10##b#eฉันต้องการรับรางวัลเดิมพัน#k#n#l\r\n" +
                     "#L11#ฉันต้องการฟังคำอธิบายเกี่ยวกับเกมไต่บันได#l");
         } else {
-            String text = "#h0# 반갑.\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\n#r#eซื้อ리"
-                    + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
+            String text = "#h0# ยินดีต้อนรับครับ\r\nผมคือคอมพิวเตอร์ที่ดูแลระบบ #bเกมไต่บันได#k ประจำเซิร์ฟเวอร์ "
+                    + ServerConstants.serverName + "\r\n\r\n#r#eผลลัพธ์เกมไต่บันไดรอบที่ "
+                    + ContentsManager.SpeedLadderGame.getCurrentRound() + " จะออกในอีก " + recordToString + "#n#k" +
                     "\r\n\r\n";
             if (getPlayer().getOneInfoQuestInteger(777777, "round") == 0) {
-                text += "#b#L0#ซื้อ리 게임에 배팅을  싶.#l\r\n";
+                text += "#b#L0#ฉันต้องการลงเดิมพันเกมไต่บันได#l\r\n";
             } else {
                 if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame
                         .getCurrentRound()) {
                     int type = getPlayer().getOneInfoQuestInteger(777777, "type");
                     int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-                    text += "#b#h0#님의 ปัจจุบัน 배팅 สถานะ : " + getBetString(type, flag) + "#k\r\n";
+                    text += "#bสถานะการเดิมพันของ #h0# : " + getBetString(type, flag) + "#k\r\n";
                 } else {
-                    text += "#b#L0#ซื้อ리 게임에 배팅을  싶.#l\r\n";
+                    text += "#b#L0#ฉันต้องการลงเดิมพันเกมไต่บันได#l\r\n";
                 }
             }
-            text += "#L10#배팅 รางวัล을 수령 싶.#l\r\n" +
-                    "#L11#ซื้อ리 게임에 대해서 อธิบาย을 듣고 싶.#l";
+            text += "#L10#ฉันต้องการรับรางวัลเดิมพัน#l\r\n" +
+                    "#L11#ฉันต้องการฟังคำอธิบายเกี่ยวกับเกมไต่บันได#l";
             selection = self.askMenu(text);
         }
         String canBet = "\r\nเงินที่มีปัจจุบัน : " + decFormat.format(getPlayer().getMeso()) + " Meso";
         switch (selection) {
-            case 0: // 출발 좌
+            case 0: // Start Left
                 if (checkReward()) {
                     self.sayOk("ยังมีรางวัลที่ยังไม่ได้กดรับ กรุณากดรับรางวัลก่อน");
                     return;
@@ -277,7 +278,7 @@ public class Util extends ScriptEngineNPC {
                                 "#e#bเริ่ม [ขวา] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
                                         + canBet);
                     }
-                    String pattern = "^[0-9]*$"; // 숫자만
+                    String pattern = "^[0-9]*$"; // Numbers only
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
                         getPlayer().dropMessage(1, "กรุณาใส่เฉพาะตัวเลขเท่านั้น");
@@ -293,25 +294,25 @@ public class Util extends ScriptEngineNPC {
                         }
                         return;
                     }
-                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    // flag : 1 : 우출, 3줄, 홀
-                    // flag : 2 : 좌출, 4줄, 짝
-                    // flag : 4 : 좌4
-                    // flag : 8 : 좌3
-                    // flag : 16 : 우4
-                    // flag : 32 : 우3
+                    // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+                    // flag : 1 : Right, 3 lines, Odd
+                    // flag : 2 : Left, 4 lines, Even
+                    // flag : 4 : Left 4
+                    // flag : 8 : Left 3
+                    // flag : 16 : Right 4
+                    // flag : 32 : Right 3
                     if (!canGame()) {
-                        self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                        self.sayOk("เหลือเวลาไม่ถึง 30 วินาที ไม่สามารถลงเดิมพันได้");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round",
                             String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "1");
-                    if (v == 0) { // 좌출
+                    if (v == 0) { // Left Start
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 2,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { // 우출
+                    } else { // Right Start
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 1,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
@@ -329,41 +330,41 @@ public class Util extends ScriptEngineNPC {
                                 "#e#bขีด [3] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
                                         + canBet);
                     }
-                    String pattern = "^[0-9]*$"; // 숫자만
+                    String pattern = "^[0-9]*$"; // Numbers only
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
+                        getPlayer().dropMessage(1, "กรุณาระบุเฉพาะตัวเลขเท่านั้น");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("잘못된 ขอ.");
+                        self.sayOk("คำขอไม่ถูกต้อง");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1이상 입력เป็นไปได้.");
+                            self.sayOk("กรุณาระบุจำนวน 1 ขึ้นไป");
                         }
                         return;
                     }
-                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    // flag : 1 : 우출, 3줄, 홀
-                    // flag : 2 : 좌출, 4줄, 짝
-                    // flag : 4 : 좌4
-                    // flag : 8 : 좌3
-                    // flag : 16 : 우4
-                    // flag : 32 : 우3
+                    // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+                    // flag : 1 : Right, 3 lines, Odd
+                    // flag : 2 : Left, 4 lines, Even
+                    // flag : 4 : Left 4
+                    // flag : 8 : Left 3
+                    // flag : 16 : Right 4
+                    // flag : 32 : Right 3
                     if (!canGame()) {
-                        self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                        self.sayOk("เหลือเวลาไม่ถึง 30 วินาที ไม่สามารถลงเดิมพันได้");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round",
                             String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "2");
-                    if (v == 2) { // 4줄
+                    if (v == 2) { // 4 Lines
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 2,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { // 3줄
+                    } else { // 3 Lines
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 1,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
@@ -381,41 +382,41 @@ public class Util extends ScriptEngineNPC {
                                 "#e#b[ผลลัพธ์ : คู่] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
                                         + canBet);
                     }
-                    String pattern = "^[0-9]*$"; // 숫자만
+                    String pattern = "^[0-9]*$"; // Numbers only
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
+                        getPlayer().dropMessage(1, "กรุณาระบุเฉพาะตัวเลขเท่านั้น");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("잘못된 ขอ.");
+                        self.sayOk("คำขอไม่ถูกต้อง");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1이상 입력เป็นไปได้.");
+                            self.sayOk("กรุณาระบุจำนวน 1 ขึ้นไป");
                         }
                         return;
                     }
-                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    // flag : 1 : 우출, 3줄, 홀
-                    // flag : 2 : 좌출, 4줄, 짝
-                    // flag : 4 : 좌4
-                    // flag : 8 : 좌3
-                    // flag : 16 : 우4
-                    // flag : 32 : 우3
+                    // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+                    // flag : 1 : Right, 3 lines, Odd
+                    // flag : 2 : Left, 4 lines, Even
+                    // flag : 4 : Left 4
+                    // flag : 8 : Left 3
+                    // flag : 16 : Right 4
+                    // flag : 32 : Right 3
                     if (!canGame()) {
-                        self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                        self.sayOk("เหลือเวลาไม่ถึง 30 วินาที ไม่สามารถลงเดิมพันได้");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round",
                             String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "3");
-                    if (v == 4) { // 홀
+                    if (v == 4) { // Odd
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 1,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
-                    } else { // 3줄
+                    } else { // Even
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 2,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
@@ -433,41 +434,41 @@ public class Util extends ScriptEngineNPC {
                                 "#e#b[เริ่ม+ขีด ซ้าย3] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
                                         + canBet);
                     }
-                    String pattern = "^[0-9]*$"; // 숫자만
+                    String pattern = "^[0-9]*$"; // Numbers only
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
+                        getPlayer().dropMessage(1, "กรุณาระบุเฉพาะตัวเลขเท่านั้น");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("잘못된 ขอ.");
+                        self.sayOk("คำขอไม่ถูกต้อง");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1이상 입력เป็นไปได้.");
+                            self.sayOk("กรุณาระบุจำนวน 1 ขึ้นไป");
                         }
                         return;
                     }
-                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    // flag : 1 : 우출, 3줄, 홀
-                    // flag : 2 : 좌출, 4줄, 짝
-                    // flag : 4 : 좌4
-                    // flag : 8 : 좌3
-                    // flag : 16 : 우4
-                    // flag : 32 : 우3
+                    // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+                    // flag : 1 : Right, 3 lines, Odd
+                    // flag : 2 : Left, 4 lines, Even
+                    // flag : 4 : Left 4
+                    // flag : 8 : Left 3
+                    // flag : 16 : Right 4
+                    // flag : 32 : Right 3
                     if (!canGame()) {
-                        self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                        self.sayOk("เหลือเวลาไม่ถึง 30 วินาที ไม่สามารถลงเดิมพันได้");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round",
                             String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
-                    if (v == 6) { // 좌4
+                    if (v == 6) { // Left 4
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 4,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "4");
-                    } else { // 좌3
+                    } else { // Left 3
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 8,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "8");
@@ -485,41 +486,41 @@ public class Util extends ScriptEngineNPC {
                                 "#e#b[เริ่ม+ขีด ขวา3] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
                                         + canBet);
                     }
-                    String pattern = "^[0-9]*$"; // 숫자만
+                    String pattern = "^[0-9]*$"; // Numbers only
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
+                        getPlayer().dropMessage(1, "กรุณาระบุเฉพาะตัวเลขเท่านั้น");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("잘못된 ขอ.");
+                        self.sayOk("คำขอไม่ถูกต้อง");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1이상 입력เป็นไปได้.");
+                            self.sayOk("กรุณาระบุจำนวน 1 ขึ้นไป");
                         }
                         return;
                     }
-                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    // flag : 1 : 우출, 3줄, 홀
-                    // flag : 2 : 좌출, 4줄, 짝
-                    // flag : 4 : 좌4
-                    // flag : 8 : 좌3
-                    // flag : 16 : 우4
-                    // flag : 32 : 우3
+                    // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+                    // flag : 1 : Right, 3 lines, Odd
+                    // flag : 2 : Left, 4 lines, Even
+                    // flag : 4 : Left 4
+                    // flag : 8 : Left 3
+                    // flag : 16 : Right 4
+                    // flag : 32 : Right 3
                     if (!canGame()) {
-                        self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                        self.sayOk("เหลือเวลาไม่ถึง 30 วินาที ไม่สามารถลงเดิมพันได้");
                         return;
                     }
                     getPlayer().updateOneInfo(777777, "round",
                             String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
-                    if (v == 8) { // 우4
+                    if (v == 8) { // Right 4
                         getPlayer().updateOneInfo(777777, "flag", "16");
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 16,
                                 Long.parseLong(reward));
-                    } else { // 우3
+                    } else { // Right 3
                         ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 32,
                                 Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "32");
@@ -571,23 +572,23 @@ public class Util extends ScriptEngineNPC {
             if (ladder == null) {
                 return false;
             }
-            // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-            // flag : 1 : 우출, 3줄, 홀
-            // flag : 2 : 좌출, 4줄, 짝
-            // flag : 4 : 좌4
-            // flag : 8 : 좌3
-            // flag : 16 : 우4
-            // flag : 32 : 우3
+            // type : 1 : Start Only, 2 : Lines , 3 : Result , 4 : Start + Lines
+            // flag : 1 : Right, 3 lines, Odd
+            // flag : 2 : Left, 4 lines, Even
+            // flag : 4 : Left 4
+            // flag : 8 : Left 3
+            // flag : 16 : Right 4
+            // flag : 32 : Right 3
             int type = getPlayer().getOneInfoQuestInteger(777777, "type");
             int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-            if (type == 1) { // 출발만
+            if (type == 1) { // Start Only
                 int right = ladder.getRight();
                 if ((right == 1 && flag == 1) || (right == 0 && flag == 2)) {
                     reward = true;
                 } else {
                     reward = false;
                 }
-            } else if (type == 2) { // 줄수
+            } else if (type == 2) { // Lines
                 int line = ladder.getLine();
                 if ((line == 3 && flag == 1) || (line == 4 && flag == 2)) {
                     reward = true;
@@ -601,7 +602,7 @@ public class Util extends ScriptEngineNPC {
                 } else {
                     reward = false;
                 }
-            } else if (type == 4) { // 출발 + 줄수
+            } else if (type == 4) { // Start + Lines
                 int right = ladder.getRight();
                 int line = ladder.getLine();
                 if ((right == 0 && line == 4 && flag == 4) || (right == 0 && line == 3 && flag == 8)

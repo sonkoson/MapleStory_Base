@@ -12,17 +12,17 @@ import java.util.*;
 public class SymbolVoucher extends ScriptEngineNPC {
 
     public void consume_2437750() {
-        // 1개
+        // 1 item
         changeArcaneSymbolVoucher(1);
     }
 
     public void consume_2437760() {
-        // 5개
+        // 5 items
         changeArcaneSymbolVoucher(5);
     }
 
     public void consume_2437880() {
-        // 2개
+        // 2 items
         changeArcaneSymbolVoucher(2);
     }
 
@@ -32,7 +32,7 @@ public class SymbolVoucher extends ScriptEngineNPC {
     }
 
     public void consume_2439301() {
-        // 20개
+        // 20 items
         changeArcaneSymbolVoucher(20);
     }
 
@@ -42,22 +42,22 @@ public class SymbolVoucher extends ScriptEngineNPC {
     }
 
     public void consume_2631878() {
-        // 100개
+        // 100 items
         changeArcaneSymbolVoucher(100);
     }
 
     public void consume_2631906() {
-        // 10개
+        // 10 items
         changeArcaneSymbolVoucher(10);
     }
 
     public void consume_2633385() {
-        // 100개
+        // 100 items
         changeArcaneSymbolVoucher(100);
     }
 
     public void consume_2630981() {
-        // 5개
+        // 5 items
         changeArcaneSymbolVoucher(5);
     }
 

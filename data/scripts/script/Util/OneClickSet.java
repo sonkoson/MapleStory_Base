@@ -198,7 +198,7 @@ public class OneClickSet extends ScriptEngineNPC {
 
                             Map<ExItemType, Integer> bonusStat = BonusStat.getExItemOptions(selectedItem);
                             String t = "";
-                            TreeMap<ExItemType, Integer> bs = new TreeMap<>(); // 시발것!!!!!!!!!!!!!!!!!!!!!
+                            TreeMap<ExItemType, Integer> bs = new TreeMap<>(); // Damn it!!!!!!!!!!!!!!!!!!!!!
                             for (Map.Entry<ExItemType, Integer> entry : bonusStat.entrySet()) {
                                 int bonusStatValue = BonusStat.getBonusStat(selectedItem, entry.getKey(),
                                         entry.getValue());
@@ -461,7 +461,7 @@ public class OneClickSet extends ScriptEngineNPC {
                             getPlayer().equipChanged();
                         }
                     } else {
-                        self.sayOk("검색ผลลัพธ์가 없.");
+                        self.sayOk("ไม่พบผลลัพธ์ที่ค้นหา");
                     }
                 }
                 break;
@@ -554,7 +554,7 @@ public class OneClickSet extends ScriptEngineNPC {
             }
             int itemid = CubetoItem.getItemId();
             if (a == 0) {
-                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[장착중]#n#b";
+                menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r#e[สวมใส่อยู่]#n#b";
             } else {
                 menu += "\r\n#L" + i + "# #i" + itemid + "# #z" + itemid + "# #r[" + a + "ช่อง]#b";
             }
@@ -578,12 +578,13 @@ public class OneClickSet extends ScriptEngineNPC {
             final long price = GameConstants.getItemReleaseCost(selectedItem.getItemId());
             /*
              * if (getPlayer().getMeso() < price) {
-             * self.sayOk("Meso ไม่พอ 잠재ความสามารถ รีเซ็ต 할 수 없.\r\n" + "[จำเป็น Meso : " +
+             * self.sayOk("Meso ไม่เพียงพอ จึงไม่สามารถรีเซ็ตได้\r\n" +
+             * "[Meso ที่ต้องใช้ : " +
              * decFormat.format(price) + "]");
              * return;
              * }
              */
-            if (option == GradeRandomOption.Black) { // 블랙큐브면 메모리얼큐브에 ลงทะเบียน
+            if (option == GradeRandomOption.Black) { // If Black Cube, register to Memorial Cube
                 Equip neq = (Equip) selectedItem.copy();
                 getPlayer().memorialCube = neq;
             }
@@ -594,7 +595,7 @@ public class OneClickSet extends ScriptEngineNPC {
             int itemCount = 0;
             while (getSc() != null) {
                 if (cubePiece > 0 ? (target.exchange(cubeId, -1, cubePiece, 1) > 0)
-                        : (target.exchange(cubeId, -1) > 0)) { // 최วินาที에 한개 돌림
+                        : (target.exchange(cubeId, -1) > 0)) { // Use one at the last second
                     // getPlayer().gainMeso(-price, true);
                     // stackMeso += price;
                     stackCube++;
@@ -634,7 +635,7 @@ public class OneClickSet extends ScriptEngineNPC {
                     itemCount = getPlayer().getItemQuantity(cubeId, false);
 
                     if (stackCube > 500) {
-                        StringBuilder sb = new StringBuilder("원클릭 큐브 ใช้ : " + stackCube);
+                        StringBuilder sb = new StringBuilder("One Click Cube used : " + stackCube);
                         LoggingManager.putLog(new EnchantLog(getPlayer(), cubeId, selectedItem.getItemId(),
                                 selectedItem.getSerialNumberEquip(), 98, 0, sb));
                     }
@@ -1014,39 +1015,39 @@ public class OneClickSet extends ScriptEngineNPC {
             if (option == GradeRandomOption.Black) {
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential1() > 0) {
-                        text += "첫번째 줄 ตัวเลือก : "
+                        text += "ออปชั่นแถวที่ 1 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential4() > 0) {
-                        text += "에디셔널 첫번째 줄 ตัวเลือก : "
+                        text += "Additional ออปชั่นแถวที่ 1 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential2() > 0) {
-                        text += "\r\n두번째 줄 ตัวเลือก : "
+                        text += "\r\nออปชั่นแถวที่ 2 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential5() > 0) {
-                        text += "\r\n에디셔널 두번째 줄 ตัวเลือก : "
+                        text += "\r\nAdditional ออปชั่นแถวที่ 2 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (getPlayer().memorialCube.getPotential3() > 0) {
-                        text += "\r\n세번째 줄 ตัวเลือก : "
+                        text += "\r\nออปชั่นแถวที่ 3 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (getPlayer().memorialCube.getPotential6() > 0) {
-                        text += "\r\n에디셔널 세번째 줄 ตัวเลือก : "
+                        text += "\r\nAdditional ออปชั่นแถวที่ 3 : "
                                 + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6())
                                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
@@ -1058,79 +1059,84 @@ public class OneClickSet extends ScriptEngineNPC {
                     reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP)
                             .getItem(selectedItem.getPosition());
                 }
-                text += "\r\n\r\n#k[After ตัวเลือก]#b\r\n";
+                text += "\r\n\r\n#k[After Option]#b\r\n";
                 if (!additional) {
                     if (reItem.getPotential1() > 0) {
-                        text += "첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential1())
+                        text += "ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential1())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential4() > 0) {
-                        text += "에디셔널 첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential4())
+                        text += "Additional ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential4())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (reItem.getPotential2() > 0) {
-                        text += "\r\n두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential2())
+                        text += "\r\nออปชั่นแถวที่ 2 : " + ii.getPotentialString().get(reItem.getPotential2())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential5() > 0) {
-                        text += "\r\n에디셔널 두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential5())
-                                .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nAdditional ออปชั่นแถวที่ 2 : "
+                                + ii.getPotentialString().get(reItem.getPotential5())
+                                        .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
                 if (!additional) {
                     if (reItem.getPotential3() > 0) {
-                        text += "\r\n세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential3())
+                        text += "\r\nออปชั่นแถวที่ 3 : " + ii.getPotentialString().get(reItem.getPotential3())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential6() > 0) {
-                        text += "\r\n에디셔널 세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential6())
-                                .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nAdditional ออปชั่นแถวที่ 3 : "
+                                + ii.getPotentialString().get(reItem.getPotential6())
+                                        .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
             } else {
                 if (additional) {
                     if (reItem.getPotential4() > 0) {
-                        text += "에디셔널 첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential4())
+                        text += "Additional ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential4())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential5() > 0) {
-                        text += "\r\n에디셔널 두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential5())
-                                .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nAdditional ออปชั่นแถวที่ 2 : "
+                                + ii.getPotentialString().get(reItem.getPotential5())
+                                        .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential6() > 0) {
-                        text += "\r\n에디셔널 세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential6())
-                                .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
+                        text += "\r\nAdditional ออปชั่นแถวที่ 3 : "
+                                + ii.getPotentialString().get(reItem.getPotential6())
+                                        .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 } else {
                     if (reItem.getPotential1() > 0) {
-                        text += "첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential1())
+                        text += "ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential1())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential2() > 0) {
-                        text += "\r\n두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential2())
+                        text += "\r\nออปชั่นแถวที่ 2 : " + ii.getPotentialString().get(reItem.getPotential2())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                     if (reItem.getPotential3() > 0) {
-                        text += "\r\n세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential3())
+                        text += "\r\nออปชั่นแถวที่ 3 : " + ii.getPotentialString().get(reItem.getPotential3())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
                     }
                 }
             }
 
             int yesNo = -1;
-            if (option == GradeRandomOption.Black) { // 블랙큐브วัน때
-                yesNo = self.askMenu("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : "
-                        + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n"
-                        + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [Before ตัวเลือก] \r\n#b" + text
-                        + "\r\n\r\n#e#r[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false) + "개]"
-                        + "\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]"
-                        + "\r\n#n#b#L0#[Before ตัวเลือก] เลือก하기#l\r\n#L1#[After ตัวเลือก] เลือก하기#l\r\n#L2#[다시 돌리기] เลือก하기");
-                if (yesNo == 0) { // beforeเลือก
+            if (option == GradeRandomOption.Black) { // Black Cube
+                yesNo = self.askMenu("[Meso ที่ต้องใช้ต่อครั้ง : " + decFormat.format(price) + "Meso]\r\n"
+                        + "[Cube สะสมที่ใช้ : "
+                        + totalCube + " ชิ้น]\r\n" + "[Meso สะสมที่ใช้ : " + decFormat.format(totalMeso) + "]\r\n"
+                        + "ได้รับออปชั่นแถวแรกสำเร็จแล้ว.\r\n\r\n [Before Option] \r\n#b" + text
+                        + "\r\n\r\n#e#r[Cube ที่เหลือ : " + getPlayer().getItemQuantity(cubeId, false) + " ชิ้น]"
+                        + "\r\n[Meso ที่เหลือ : " + decFormat.format(getPlayer().getMeso()) + "Meso]"
+                        + "\r\n#n#b#L0#[Before Option] เลือกอันนี้#l\r\n#L1#[After Option] เลือกอันนี้#l\r\n#L2#[หมุนอีกครั้ง] เลือกอันนี้");
+                if (yesNo == 0) { // Select Before
                     if (selection > 1000) {
                         ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED)
                                 .getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
@@ -1226,18 +1232,19 @@ public class OneClickSet extends ScriptEngineNPC {
                     stackCube += 1;
                     totalCube += 1;
                     totalMeso += price;
-                } else { // Meso여유없어
-                    if (option == GradeRandomOption.Black) { // 블랙큐브วัน경우
+                } else { // Mesoไม่พอ
+                    if (option == GradeRandomOption.Black) { // If Black Cube
                         exchange(cubeId, -stackCube, cubePiece, stackCube);
                         getPlayer().gainMeso(-stackMeso, true);
                         int after = self.askYesNo(
-                                "[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : "
-                                        + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso)
-                                        + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); // 아니오
-                                                                                                                         // 누르면
+                                "[Meso ที่ต้องใช้ต่อครั้ง : " + decFormat.format(price) + "Meso]\r\n"
+                                        + "[Cube สะสมที่ใช้ : "
+                                        + totalCube + " ชิ้น]\r\n" + "[Meso สะสมที่ใช้ : " + decFormat.format(totalMeso)
+                                        + "]\r\n" + getMemorialCubeString(additional, (short) selection, selectedItem)); // If
+                                                                                                                         // No,
+                                                                                                                         // change
                                                                                                                          // before
-                                                                                                                         // เปลี่ยน
-                        if (0 == after) { // 아니오
+                        if (0 == after) { // No
                             if (selection > 1000) {
                                 ((Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED)
                                         .getItem(selectedItem.getPosition())).set(getPlayer().memorialCube);
@@ -1293,9 +1300,11 @@ public class OneClickSet extends ScriptEngineNPC {
                             exchange(cubeId, -stackCube);
                         }
                         getPlayer().gainMeso(-stackMeso, true);
-                        self.sayOk("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : "
-                                + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso) + "]\r\n"
-                                + "더이상 큐브, Meso 없거ฉัน ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
+                        self.sayOk("[Meso ที่ต้องใช้ต่อครั้ง : " + decFormat.format(price) + "Meso]\r\n"
+                                + "[Cube สะสมที่ใช้ : "
+                                + totalCube + " ชิ้น]\r\n" + "[Meso สะสมที่ใช้ : " + decFormat.format(totalMeso)
+                                + "]\r\n"
+                                + "ไม่มี Cube/Meso หรือช่องเก็บของไม่พอ ไม่สามารถรีเซ็ตต่อได้");
                     }
                     return;
                 }
@@ -1382,9 +1391,11 @@ public class OneClickSet extends ScriptEngineNPC {
                             }
                             getPlayer().gainMeso(-stackMeso, true);
                             self.sayOk(
-                                    "[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n" + "[누적 ใช้ 큐브 : "
-                                            + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso)
-                                            + "]\r\n" + "더이상 큐브, Meso 없거ฉัน ใช้창에 여유공간이 없어 รีเซ็ต 할 수 없.");
+                                    "[Meso ที่ต้องใช้ต่อครั้ง : " + decFormat.format(price) + "Meso]\r\n"
+                                            + "[Cube สะสมที่ใช้ : "
+                                            + totalCube + " ชิ้น]\r\n" + "[Meso สะสมที่ใช้ : "
+                                            + decFormat.format(totalMeso)
+                                            + "]\r\n" + "ไม่มี Cube/Meso หรือช่องเก็บของไม่พอ ไม่สามารถรีเซ็ตต่อได้");
                         }
                         return;
                     }
@@ -1621,11 +1632,13 @@ public class OneClickSet extends ScriptEngineNPC {
                     } else {
                         getPlayer().forceReAddItem(reItem, MapleInventoryType.EQUIP);
                     }
-                    yesNo = self.askYesNo("[큐브 1회당 จำเป็น Meso : " + decFormat.format(price) + "Meso]\r\n"
-                            + "[누적 ใช้ 큐브 : " + totalCube + "개]\r\n" + "[누적 ใช้ Meso : " + decFormat.format(totalMeso)
-                            + "]\r\n" + "첫번째 줄 ตัวเลือก ได้รับ에 สำเร็จแล้ว.\r\n\r\n [큐브 ตัวเลือก] \r\n#b" + text
-                            + "\r\n\r\n#e#r다시 돌리시หรือไม่?\r\n[남은 큐브 : " + getPlayer().getItemQuantity(cubeId, false)
-                            + "개]" + "\r\n[남은 Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
+                    yesNo = self.askYesNo("[Meso ที่ต้องใช้ต่อครั้ง : " + decFormat.format(price) + "Meso]\r\n"
+                            + "[Cube สะสมที่ใช้ : " + totalCube + " ชิ้น]\r\n" + "[Meso สะสมที่ใช้ : "
+                            + decFormat.format(totalMeso)
+                            + "]\r\n" + "ได้รับออปชั่นแถวแรกสำเร็จแล้ว.\r\n\r\n [Cube Option] \r\n#b" + text
+                            + "\r\n\r\n#e#rหมุนอีกครั้งหรือไม่?\r\n[Cube ที่เหลือ : "
+                            + getPlayer().getItemQuantity(cubeId, false)
+                            + " ชิ้น]" + "\r\n[Meso ที่เหลือ : " + decFormat.format(getPlayer().getMeso()) + "Meso]");
                 }
             }
         }
@@ -1665,42 +1678,42 @@ public class OneClickSet extends ScriptEngineNPC {
 
     private String getMemorialCubeString(boolean additional, short selection, Item selectedItem) {
         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-        String memorialText = "큐브가 ไม่พอ하거ฉัน Meso ไม่พอ. #r[After ตัวเลือก]#k เปลี่ยนต้องการหรือไม่?\r\n\r\n#b[Before ตัวเลือก]#k\r\n";
+        String memorialText = "Cube หรือ Meso ไม่พอ. #r[After Option]#k ต้องการเปลี่ยนหรือไม่?\r\n\r\n#b[Before Option]#k\r\n";
         if (!additional) {
             if (getPlayer().memorialCube.getPotential1() > 0) {
-                memorialText += "첫번째 줄 ตัวเลือก : "
+                memorialText += "ออปชั่นแถวที่ 1 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential1())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential4() > 0) {
-                memorialText += "에디셔널 첫번째 줄 ตัวเลือก : "
+                memorialText += "Additional ออปชั่นแถวที่ 1 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential4())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (getPlayer().memorialCube.getPotential2() > 0) {
-                memorialText += "\r\n두번째 줄 ตัวเลือก : "
+                memorialText += "\r\nออปชั่นแถวที่ 2 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential2())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential5() > 0) {
-                memorialText += "\r\n에디셔널 두번째 줄 ตัวเลือก : "
+                memorialText += "\r\nAdditional ออปชั่นแถวที่ 2 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential5())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (getPlayer().memorialCube.getPotential3() > 0) {
-                memorialText += "\r\n세번째 줄 ตัวเลือก : "
+                memorialText += "\r\nออปชั่นแถวที่ 3 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential3())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (getPlayer().memorialCube.getPotential6() > 0) {
-                memorialText += "\r\n에디셔널 세번째 줄 ตัวเลือก : "
+                memorialText += "\r\nAdditional ออปชั่นแถวที่ 3 : "
                         + ii.getPotentialString().get(getPlayer().memorialCube.getPotential6())
                                 .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
@@ -1711,41 +1724,41 @@ public class OneClickSet extends ScriptEngineNPC {
         } else {
             reItem = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIP).getItem(selectedItem.getPosition());
         }
-        memorialText += "\r\n#k[After ตัวเลือก]#b\r\n";
+        memorialText += "\r\n#k[After Option]#b\r\n";
         if (!additional) {
             if (reItem.getPotential1() > 0) {
-                memorialText += "첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential1())
+                memorialText += "ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential1())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential4() > 0) {
-                memorialText += "에디셔널 첫번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential4())
+                memorialText += "Additional ออปชั่นแถวที่ 1 : " + ii.getPotentialString().get(reItem.getPotential4())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (reItem.getPotential2() > 0) {
-                memorialText += "\r\n두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential2())
+                memorialText += "\r\nออปชั่นแถวที่ 2 : " + ii.getPotentialString().get(reItem.getPotential2())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential5() > 0) {
-                memorialText += "\r\n에디셔널 두번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential5())
+                memorialText += "Additional ออปชั่นแถวที่ 2 : " + ii.getPotentialString().get(reItem.getPotential5())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
         if (!additional) {
             if (reItem.getPotential3() > 0) {
-                memorialText += "\r\n세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential3())
+                memorialText += "\r\nออปชั่นแถวที่ 3 : " + ii.getPotentialString().get(reItem.getPotential3())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         } else {
             if (reItem.getPotential6() > 0) {
-                memorialText += "\r\n에디셔널 세번째 줄 ตัวเลือก : " + ii.getPotentialString().get(reItem.getPotential6())
+                memorialText += "Additional ออปชั่นแถวที่ 3 : " + ii.getPotentialString().get(reItem.getPotential6())
                         .get(Math.max(1, Math.min(20, ii.getReqLevel(selectedItem.getItemId()))));
             }
         }
-        memorialText += "\r\n #r#e예#k 누르면 [After ตัวเลือก] เปลี่ยน.";
+        memorialText += "\r\n #r#eกด ใช่#k เพื่อเปลี่ยนเป็น [After Option].";
         return memorialText;
     }
 }

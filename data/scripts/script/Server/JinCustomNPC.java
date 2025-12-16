@@ -533,7 +533,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         switch (v1) {
             case 0: { // รีเซ็ตตัวเลือก
                 if (DBConfig.isGanglim) {
-                    // 강림 Brilliant Light Crystal 재료임
+                    // Ganglim Brilliant Light Crystal Material
                     int quantity = 100;
                     String v2 = "#fs11#";
                     boolean skipDesc = getPlayer().getOneInfoQuestInteger(787878, "skip_desc") == 1;
@@ -1538,7 +1538,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
             payType = "Meso";
             getPrice = getPlayer().getMeso();
         } else if (type == 3) {
-            payType = "강림 แคช";
+            payType = "Ganglim Cash";
             getPrice = getPlayer().getCashPoint();
         } else if (type == 4) {
             payType = "Brilliant Light Crystal";
@@ -1765,7 +1765,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 if (DBConfig.isGanglim) {
                     v3 += "#fs11#";
                 }
-                v3 += "#e[석판 장착된 หินประทับ]#n\r\n\r\n";
+                v3 += "#e[หินประทับที่ติดตั้งบนแผ่นหิน]#n\r\n\r\n";
                 int item1 = getPlayer().getOneInfoQuestInteger(133333, "equip1");
                 int item2 = getPlayer().getOneInfoQuestInteger(133333, "equip2");
                 int item3 = getPlayer().getOneInfoQuestInteger(133333, "equip3");
@@ -1831,7 +1831,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 ImprintedCount = (plusCount2 + minusCount2) == 20 ? "#bเจียระไนเสร็จสิ้น"
                         : "#b[" + plusCount2 + "/10] #r[" + minusCount2 + "/10]#k";
                 ImprintedEnabled = (plusCount2 + minusCount2) == 20 ? "#fc0xFF9d1ffe#ใช้งาน#k"
-                        : "#fc0xFFc983ff#미ใช้งาน#k";
+                        : "#fc0xFFc983ff#ปิดการใช้งาน#k";
                 ImprintedStoneOption plusOption2 = ImprintedStoneOption
                         .getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption2"));
                 ImprintedStoneOption minusOption2 = ImprintedStoneOption
@@ -1845,7 +1845,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 ImprintedCount = (plusCount3 + minusCount3) == 20 ? "#bเจียระไนเสร็จสิ้น"
                         : "#b[" + plusCount3 + "/10] #r[" + minusCount3 + "/10]#k";
                 ImprintedEnabled = (plusCount3 + minusCount3) == 20 ? "#fc0xFF9d1ffe#ใช้งาน#k"
-                        : "#fc0xFFc983ff#미ใช้งาน#k";
+                        : "#fc0xFFc983ff#ปิดการใช้งาน#k";
                 ImprintedStoneOption plusOption3 = ImprintedStoneOption
                         .getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption3"));
                 ImprintedStoneOption minusOption3 = ImprintedStoneOption
@@ -1859,7 +1859,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 ImprintedCount = (plusCount4 + minusCount4) == 20 ? "#bเจียระไนเสร็จสิ้น"
                         : "#b[" + plusCount4 + "/10] #r[" + minusCount4 + "/10]#k";
                 ImprintedEnabled = (plusCount4 + minusCount4) == 20 ? "#fc0xFF9d1ffe#ใช้งาน#k"
-                        : "#fc0xFFc983ff#미ใช้งาน#k";
+                        : "#fc0xFFc983ff#ปิดการใช้งาน#k";
                 ImprintedStoneOption plusOption4 = ImprintedStoneOption
                         .getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption4"));
                 ImprintedStoneOption minusOption4 = ImprintedStoneOption
@@ -1871,7 +1871,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
 
                 /*
                  * if (unlock1 == 0) {
-                 * v3 += " #e(봉인됨)#n";
+                 * v3 += " #e(ถูกผนึก)#n";
                  * }
                  * v3 += "\r\n";
                  */
@@ -1879,7 +1879,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                 ImprintedCount = (plusCount5 + minusCount5) == 20 ? "#bเจียระไนเสร็จสิ้น"
                         : "#b[" + plusCount5 + "/10] #r[" + minusCount5 + "/10]#k";
                 ImprintedEnabled = (plusCount5 + minusCount5) == 20 ? "#fc0xFF9d1ffe#ใช้งาน#k"
-                        : "#fc0xFFc983ff#미ใช้งาน#k";
+                        : "#fc0xFFc983ff#ปิดการใช้งาน#k";
                 ImprintedStoneOption plusOption5 = ImprintedStoneOption
                         .getByOption(getPlayer().getOneInfoQuestInteger(133333, "plusOption5"));
                 ImprintedStoneOption minusOption5 = ImprintedStoneOption
@@ -1890,7 +1890,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
                         + ImprintedEnabled + "\r\n";
                 /*
                  * if (unlock2 == 0) {
-                 * v3 += " #e(봉인됨)#n";
+                 * v3 += " #e(ถูกผนึก)#n";
                  * }
                  * v3 += "\r\n";
                  */
@@ -2094,7 +2094,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         } else if (payType == ImprintedStonePayType.Meso) {
             payMessage = "500,000,000 Meso";
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            payMessage = "1,000 강림 แคช";
+            payMessage = "1,000 Ganglim Cash";
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
             payMessage = "3,000 คะแนน";
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
@@ -2248,7 +2248,7 @@ public class JinCustomNPC extends ScriptEngineNPC {
         } else if (payType == ImprintedStonePayType.Meso) {
             payMessage = "500,000,000 Meso";
         } else if (payType == ImprintedStonePayType.RoyalCash) {
-            payMessage = "1,000 강림 แคช";
+            payMessage = "1,000 Ganglim Cash";
         } else if (payType == ImprintedStonePayType.RoyalDPoint) {
             payMessage = "3,000 คะแนน";
         } else if (payType == ImprintedStonePayType.RoyalRedBall) {
@@ -2678,8 +2678,10 @@ public class JinCustomNPC extends ScriptEngineNPC {
         }
     }
 
-    public void RestPoint() {
-        if (DBConfig.isGanglim) {
+    // Imprinted Stone
+    public void ImprintStone() {
+        if (!DBConfig.isGanglim) {
+            self.sayOk("This feature is not available.");
             return;
         }
         initNPC(MapleLifeFactory.getNPC(9010033));

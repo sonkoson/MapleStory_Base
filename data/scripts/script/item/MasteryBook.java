@@ -61,11 +61,11 @@ public class MasteryBook extends ScriptEngineNPC {
         if (s.size() > 0) {
             String skillList = "";
             for (int skill : s) {
-                skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
+                skillList += "#L" + skill + "# " + "#s" + skill + "# #e#q" + skill + "##n#l\r\n";
             }
             int v0 = self.askMenu(
                     "รายการสกิลที่คุณสามารถอัปเกรดได้มีดังนี้\r\n\r\n" + skillList
-                            + "\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                            + "\r\n#r#L0# #eยกเลิกการใช้ Mastery Book#n#l",
                     ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             if (v0 != 0) { // Cancel Mastery Book use or
                 if (skills.contains(v0)) {
@@ -82,7 +82,7 @@ public class MasteryBook extends ScriptEngineNPC {
             }
         } else {
             self.askMenu(
-                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #eยกเลิกการใช้ Mastery Book#n#l",
                     ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
@@ -107,11 +107,11 @@ public class MasteryBook extends ScriptEngineNPC {
         if (s.size() > 0) {
             String skillList = "";
             for (int skill : s) {
-                skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
+                skillList += "#L" + skill + "# " + "#s" + skill + "# #e#q" + skill + "##n#l\r\n";
             }
             int v0 = self.askMenu(
                     "รายการสกิลที่คุณสามารถอัปเกรดได้มีดังนี้\r\n\r\n" + skillList
-                            + "\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                            + "\r\n#r#L0# #eยกเลิกการใช้ Mastery Book#n#l",
                     ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
             if (v0 != 0) { // Cancel Mastery Book use or
                 if (skills.contains(v0)) {
@@ -128,7 +128,7 @@ public class MasteryBook extends ScriptEngineNPC {
             }
         } else {
             self.askMenu(
-                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #eยกเลิกการใช้ Mastery Book#n#l",
                     ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }

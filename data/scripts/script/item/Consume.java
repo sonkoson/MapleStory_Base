@@ -32,9 +32,8 @@ import scripting.newscripting.ScriptEngineNPC;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Consume extends ScriptEngineNPC {
 
@@ -46,13 +45,9 @@ public class Consume extends ScriptEngineNPC {
         }
 
         if (DBConfig.isGanglim) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-            Calendar CAL = new GregorianCalendar(Locale.KOREA);
-            String fDate = sdf.format(CAL.getTime());
-
-            String[] dates = fDate.split("-");
-            int hours = Integer.parseInt(dates[3]);
-            int minutes = Integer.parseInt(dates[4]);
+            LocalDateTime now = LocalDateTime.now();
+            int hours = now.getHour();
+            int minutes = now.getMinute();
 
             if (hours >= 23 && minutes >= 50) {
                 self.sayOk("#fs11#ตั้งแต่เวลา 11:50 ถึง 12:00 ไม่สามารถใช้ตั๋วลบจำนวนครั้งได้ครับ",
@@ -139,13 +134,9 @@ public class Consume extends ScriptEngineNPC {
 
     public void clearBossCount(List<Triple<Integer, String, String>> bossList, int itemID) {
         if (DBConfig.isGanglim) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-            Calendar CAL = new GregorianCalendar(Locale.KOREA);
-            String fDate = sdf.format(CAL.getTime());
-
-            String[] dates = fDate.split("-");
-            int hours = Integer.parseInt(dates[3]);
-            int minutes = Integer.parseInt(dates[4]);
+            LocalDateTime now = LocalDateTime.now();
+            int hours = now.getHour();
+            int minutes = now.getMinute();
 
             if (hours >= 23 && minutes >= 50) {
                 self.sayOk("ตั้งแต่เวลา 11:50 ถึง 12:00 ไม่สามารถใช้ตั๋วรีเซ็ตได้ครับ",
@@ -246,18 +237,18 @@ public class Consume extends ScriptEngineNPC {
         int[][] rewards = new int[][] {
                 { 2439602, 1 }, // Jin: True Weapon Support Box
                 /*
-                 * {1003243, 1}, // 메이플 래티넘 베레모
-                 * {1102295, 1},// 메이플 래티넘 클록
-                 * {1052358, 1}, // 메이플 래티넘 리센느
-                 * {1072522, 1}, // 메이플 래티넘 슈즈
+                 * {1003243, 1}, // Maple Platinum Beret
+                 * {1102295, 1},// Maple Platinum Cloak
+                 * {1052358, 1}, // Maple Platinum Lisene
+                 * {1072522, 1}, // Maple Platinum Shoes
                  */
-                { 1004492, 1 }, // 메이플 트레져 캡
-                { 1102828, 1 }, // 메이플 트레져 망토
-                { 1052929, 1 }, // 메이플 트레져 슈트
-                { 1132287, 1 }, // 메이플 트레져 벨트
-                { 1152187, 1 }, // 메이플 트레져 견장
-                { 1073057, 1 }, // 메이플 트레져 슈즈
-                { 1082647, 1 }, // 메이플 트레져 장갑
+                { 1004492, 1 }, // Maple Treasure Cap
+                { 1102828, 1 }, // Maple Treasure Cape
+                { 1052929, 1 }, // Maple Treasure Suit
+                { 1132287, 1 }, // Maple Treasure Belt
+                { 1152187, 1 }, // Maple Treasure Shoulder
+                { 1073057, 1 }, // Maple Treasure Shoes
+                { 1082647, 1 }, // Maple Treasure Gloves
         };
         int[] weapons = new int[] {
                 1212098, 1213009, 1214009, 1222092, 1232092, 1242099, 1272020, 1282020, 1302312, 1312182, 1322233,
@@ -1005,7 +996,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 2) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Equip#k แล้วลองใหม่นะครับ", ScriptMessageFlag.NpcReplacedByUser);
@@ -1047,11 +1038,11 @@ public class Consume extends ScriptEngineNPC {
             } else {
                 rewards = new int[][] {
                         { 1122074, 1, 7, 100, 50 },
-                        { 1005781, 1, 7, 30, 10 }, // 츄츄세트
-                        { 1051656, 1, 7, 30, 10 }, // 츄츄세트
-                        { 1103332, 1, 7, 30, 10 }, // 츄츄세트
-                        { 1073534, 1, 7, 30, 10 }, // 츄츄세트
-                        { 1703084, 1, 7, 30, 10 }, // 츄츄세트
+                        { 1005781, 1, 7, 30, 10 }, // Chu Chu Set
+                        { 1051656, 1, 7, 30, 10 }, // Chu Chu Set
+                        { 1103332, 1, 7, 30, 10 }, // Chu Chu Set
+                        { 1073534, 1, 7, 30, 10 }, // Chu Chu Set
+                        { 1703084, 1, 7, 30, 10 }, // Chu Chu Set
                 };
             }
         }
@@ -1129,7 +1120,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 2)) {
@@ -1188,7 +1179,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 12) {
@@ -1213,7 +1204,7 @@ public class Consume extends ScriptEngineNPC {
                         item.setWatk((short) 100);
                         item.setMatk((short) 100);
                         item.setDownLevel((byte) 70);
-                        item.setExpiration((new Date()).getTime() + (1000 * 60 * 60 * 24 * 20));
+                        item.setExpiration(System.currentTimeMillis() + (1000L * 60 * 60 * 24 * 20));
                         MapleInventoryManipulator.addFromDrop(getClient(), item, false);
                     } else {
                         if (getPlayer().getOneInfoQuestInteger(1234566, "reboot_ring") <= 0) {
@@ -1223,7 +1214,7 @@ public class Consume extends ScriptEngineNPC {
                             item.setPotential2(40650);
                             item.setPotential4(40656);
                             item.setPotential5(40656);
-                            item.setExpiration((new Date()).getTime() + (1000 * 60 * 60 * 24 * 20));
+                            item.setExpiration(System.currentTimeMillis() + (1000L * 60 * 60 * 24 * 20));
                             MapleInventoryManipulator.addFromDrop(getClient(), item, false);
                             getPlayer().updateOneInfo(1234566, "reboot_ring", "1");
                         }
@@ -1267,7 +1258,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 7 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
@@ -1323,7 +1314,7 @@ public class Consume extends ScriptEngineNPC {
         v0 += "#b  - ปลดล็อคช่อง Pocket";
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
@@ -1381,7 +1372,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1
                     : (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1 ||
@@ -1438,7 +1429,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (DBConfig.isGanglim ? (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 3)
                     : (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 1 ||
                             getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1)) {
@@ -1497,7 +1488,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 1) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Cash#k แล้วลองใหม่นะครับ",
@@ -1546,7 +1537,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 2 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 3 ||
                     getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
@@ -1598,7 +1589,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 6 ||
                     getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 1 ||
                     getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 2) {
@@ -1648,7 +1639,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 8 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Cash#k แล้วลองใหม่นะครับ",
@@ -1698,7 +1689,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.ETC).getNumFreeSlot() < 2 ||
                     getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 4 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
@@ -1748,7 +1739,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Cash#k แล้วลองใหม่นะครับ",
@@ -1797,7 +1788,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 5 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Cash#k แล้วลองใหม่นะครับ",
@@ -1847,7 +1838,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 9 ||
                     getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() < 2) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Cash#k แล้วลองใหม่นะครับ",
@@ -1897,7 +1888,7 @@ public class Consume extends ScriptEngineNPC {
         }
         int v1 = self.askYesNo(v0, ScriptMessageFlag.NpcReplacedByUser);
         if (v1 > 0) {
-            // 본래 exchange 되ฉัน, 기간제 템 때ประตู에 이렇게 해야한다.
+            // Originally exchange works, but doing this due to time-limited items.
             if (getPlayer().getInventory(MapleInventoryType.USE).getNumFreeSlot() < 13 ||
                     getPlayer().getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < 1) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Use#k และ #bกระเป๋า Setup#k แล้วลองใหม่นะครับ",
@@ -2011,9 +2002,9 @@ public class Consume extends ScriptEngineNPC {
             return; // TODO: Hack
         }
         int itemID = rewards[v1];
-                "อาวุธที่เลือกคือ #b#i" + itemID + "# #z" + itemID
-                        + "##k ครับ\r\nต้องการเลือกอาวุธนี้ใช่ไหมครับ?\r\n\r\n#b(หากกด #eใช่#n จะได้รับไอเทมทันที)",
-                ScriptMessageFlag.NpcReplacedByNpc) > 0) {
+        if (self.askYesNo("อาวุธที่เลือกคือ #b#i" + itemID + "# #z" + itemID
+                + "##k ครับ\r\nต้องการเลือกอาวุธนี้ใช่ไหมครับ?\r\n\r\n#b(หากกด #eใช่#n จะได้รับไอเทมทันที)",
+                ScriptMessageFlag.NpcReplacedByNpc) == 1) {
             if (getPlayer().getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < 1) {
                 self.say("กรุณาทำช่องว่างใน #bกระเป๋า Equip#k แล้วลองใหม่นะครับ");
             } else {

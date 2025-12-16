@@ -73,12 +73,12 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
 
                 if (getPlayer().getAndroid() != null) {
                     selStr += "\r\n\r\n#e#r#fs12#[ทรงผม Android]#k#b#n\r\n";
-                    selStr += "#fs11##L995#" + 별흰 + 색 + " ค้นหาทรงผม#l#b\r\n";
+                    selStr += "#fs11##L995#" + starWhite + color + " ค้นหาทรงผม#l#b\r\n";
                 }
 
                 int[] codyList = new int[0];
                 switch (self.askMenu(selStr)) {
-                    case 1: { // 헤어 리스트 A
+                    case 1: { // Hair List A
                         if (gender == 0)
                             codyList = new int[] { 30000, 30020, 30030, 30040, 30050, 30060, 30100, 30110, 30120, 30130,
                                     30140, 30150, 30160, 30170, 30180, 30190, 30200, 30210, 30220, 30230, 30240, 30250,
@@ -99,7 +99,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     31860, 31880, 31890 };
                         break;
                     }
-                    case 2: { // 헤어 리스트 B
+                    case 2: { // Hair List B
                         if (gender == 0)
                             codyList = new int[] { 33380, 33390, 33400, 33410, 33430, 33440, 33450, 33460, 33480, 33500,
                                     33510, 33520, 33530, 33550, 33580, 33590, 33600, 33610, 33620, 33630, 33640, 33660,
@@ -120,7 +120,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     34850, 34860, 34870, 34880, 34900, 34910, 34940, 34950, 34960, 34970 };
                         break;
                     }
-                    case 3: { // 헤어리스트C
+                    case 3: { // Hair List C
                         if (gender == 0)
                             codyList = new int[] { 36010, 36020, 36030, 36040, 36050, 36070, 36080, 36090, 36100, 36130,
                                     36140, 36150, 36160, 36170, 36180, 36190, 36200, 36210, 36220, 36230, 36240, 36250,
@@ -142,7 +142,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     38570, 38580, 38590, 38600, 38610, 38620, 38630, 38640, 38650 };
                         break;
                     }
-                    case 4: { // 헤어리스트D
+                    case 4: { // Hair List D
                         if (gender == 0)
                             codyList = new int[] { 40000, 40010, 40020, 40050, 40060, 40090, 40100, 40120, 40250, 40260,
                                     40270, 40280, 40290, 40300, 40310, 40320, 40330, 40390, 40400, 40410, 40420, 40440,
@@ -168,7 +168,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     48740, 48770, 48780, 48790, 48810 };
                         break;
                     }
-                    case 5: { // 헤어 리스트E
+                    case 5: { // Hair List E
                         if (gender == 0)
                             codyList = new int[] { 46870, 46880, 46890, 46900, 46940, 46970, 46980, 47260, 60100, 60120,
                                     60200, 60300, 60310 };
@@ -185,18 +185,18 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     61300, 61310, 61320, 61330, 61340, 61350, 61360, 61370, 61380 };
                         break;
                     }
-                    case 998: { // 검색헤어
-                        openNpcCustom(getClient(), 3005131, "검색헤어");
+                    case 998: { // Search Hair
+                        openNpcCustom(getClient(), 3005131, "SearchHair");
                         return;
                     }
-                    case 995: { // ใน드검색헤어
-                        openNpcCustom(getClient(), 3005131, "검색ใน드헤어");
+                    case 995: { // Android Search Hair
+                        openNpcCustom(getClient(), 3005131, "SearchAndroidHair");
                         return;
                     }
                 }
                 if (codyList.length > 0) {
                     int v = self.askAvatar(
-                            "#fs11##fn돋움##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนทรงผมปัจจุบันของคุณให้เป็นสไตล์ใหม่ได้นะ ถ้าเบื่อลุคเดิมๆ แล้ว ลองเลือกทรงผมที่ต้องการดูสิ",
+                            "#fs11##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนทรงผมปัจจุบันของคุณให้เป็นสไตล์ใหม่ได้นะ ถ้าเบื่อลุคเดิมๆ แล้ว ลองเลือกทรงผมที่ต้องการดูสิ",
                             codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
@@ -241,12 +241,12 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
 
                 if (getPlayer().getAndroid() != null) {
                     selStr += "\r\n\r\n#e#r#fs12#[ใบหน้า Android]#k#b#n\r\n#fs11#";
-                    selStr += "#fs11##L996#" + 별흰 + 색 + " ค้นหาใบหน้า#l#b\r\n";
+                    selStr += "#fs11##L996#" + starWhite + color + " ค้นหาใบหน้า#l#b\r\n";
                 }
 
                 int[] codyList = new int[0];
                 switch (self.askMenu(selStr)) {
-                    case 6: { // 성형 리스트 A
+                    case 6: { // Face List A
                         if (gender == 0)
                             codyList = new int[] { 20000, 20001, 20002, 20003, 20004, 20005, 20006, 20007, 20008, 20009,
                                     20011, 20012, 20013, 20014, 20015, 20016, 20017, 20018, 20020, 20021, 20022, 20025,
@@ -266,7 +266,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     24004 };
                         break;
                     }
-                    case 7: { // 성형 리스트 B
+                    case 7: { // Face List B
                         if (gender == 0)
                             codyList = new int[] { 23015, 23016, 23017, 23018, 23019, 23020, 23023, 23024, 23025, 23026,
                                     23027, 23028, 23029, 23031, 23032, 23033, 23035, 23038, 23039, 23040, 23041, 23042,
@@ -293,7 +293,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     28123 };
                         break;
                     }
-                    case 8: { // 성형리스트C
+                    case 8: { // Face List C
                         if (gender == 0)
                             codyList = new int[] { 27106, 27107, 27108, 27109, 27110, 27111, 27117, 27118, 27119, 27120,
                                     27122, 27125, 27135, 27137, 27138, 27139, 27144, 27145, 27152, 27164, 27165, 27166,
@@ -309,18 +309,18 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                                     28290, 28291 };
                         break;
                     }
-                    case 999: { // 검색성형
-                        openNpcCustom(getClient(), 3005131, "검색성형");
+                    case 999: { // Search Face
+                        openNpcCustom(getClient(), 3005131, "SearchFace");
                         return;
                     }
-                    case 996: { // ใน드검색성형
-                        openNpcCustom(getClient(), 3005131, "검색ใน드성형");
+                    case 996: { // Android Search Face
+                        openNpcCustom(getClient(), 3005131, "SearchAndroidFace");
                         return;
                     }
                 }
                 if (codyList.length > 0) {
                     int v = self.askAvatar(
-                            "#fs11##fn돋움##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนใบหน้าปัจจุบันของคุณให้เป็นสไตล์ใหม่ได้นะ ถ้าเบื่อลุคเดิมๆ แล้ว ลองเลือกใบหน้าที่ต้องการดูสิ",
+                            "#fs11##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนใบหน้าปัจจุบันของคุณให้เป็นสไตล์ใหม่ได้นะ ถ้าเบื่อลุคเดิมๆ แล้ว ลองเลือกใบหน้าที่ต้องการดูสิ",
                             codyList);
                     if (v <= codyList.length && v >= 0) {
                         if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
@@ -361,9 +361,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
 
                 selStr += "#fc0xFF000000##L23##eใช้งาน Overseas Cash#n#l\r\n\r\n";
 
-                // 원래 สัปดาห์석된거임
-                // selStr += "#L29# 스페셜 헤어#n 이용하기#l\r\n";
-                // selStr += "#L98##fMap/MapHelper.img/minimap/party# 알쏭 달쏭 믹렌#n 이용하기#l\r\n";
+                // Originally commented out
                 selStr += "#fc0xFF000000##L988##eเปลี่ยนสี RGB ตัวละครทั้งหมด#n#l\r\n\r\n";
                 selStr += "#fc0xFF000000##L10##e" + gColor + "#n แปลงเพศ#l#b#n\r\n";
                 switch (self.askMenu(selStr)) {
@@ -411,7 +409,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                 }
                 break;
             }
-            case 5: { // 검색แคช
+            case 5: {
                 openNpcCustom(getClient(), 3005131, "Itemsearch");
                 break;
             }
@@ -424,7 +422,7 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
                 break;
             }
             case 8: {
-                openNpcCustom(getClient(), 3005131, "색변เลือก");
+                openNpcCustom(getClient(), 3005131, "ColorChangeSelect");
                 break;
             }
         }
@@ -435,20 +433,20 @@ public class ZeniaCustomNPC extends ScriptEngineNPC {
         NPCScriptManager.getInstance().start(client, id, name, true);
     }
 
-    private String 보라 = "#fMap/MapHelper.img/weather/starPlanet/7#";
-    private String 파랑 = "#fMap/MapHelper.img/weather/starPlanet/8#";
-    private String 별파 = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#";
-    private String 별노 = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#";
-    private String 별흰 = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#";
-    private String 별갈 = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#";
-    private String 별빨 = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#";
-    private String 별검 = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#";
-    private String 별보 = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#";
-    private String 별 = "#fUI/FarmUI.img/objectStatus/star/whole#";
+    private String purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
+    private String blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
+    private String starBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#";
+    private String starYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#";
+    private String starWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#";
+    private String starBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#";
+    private String starRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#";
+    private String starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#";
+    private String starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#";
+    private String star = "#fUI/FarmUI.img/objectStatus/star/whole#";
     private String S = "#fUI/CashShop.img/CSEffect/today/0#";
-    private String รางวัล = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#";
-    private String ได้รับ = "#fUI/UIWindow2.img/QuestIcon/4/0#";
-    private String 색 = "#fc0xFF6600CC#";
-    private String 엔터 = "\r\n";
-    private String 엔터2 = "\r\n\r\n";
+    private String reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#";
+    private String get = "#fUI/UIWindow2.img/QuestIcon/4/0#";
+    private String color = "#fc0xFF6600CC#";
+    private String enter = "\r\n";
+    private String enter2 = "\r\n\r\n";
 }

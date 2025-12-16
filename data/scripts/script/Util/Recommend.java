@@ -14,7 +14,6 @@ import java.util.Map;
 
 public class Recommend extends ScriptEngineNPC {
 
-    // 담에 추천인 구조 꼭 바꾸자.. 제발..
     // Next time, I must change the recommender structure... Please...
 
     Pair<Integer, Integer> etcReward = new Pair<>(4001715, 10);

@@ -307,6 +307,18 @@
 - **Status:** 100% Complete
 - **Translation:** Full translation of Spirit Savior daily quest logic, rules, and instant completion menus.
 - **Tone:** Adopted "Rock Spirit" cute tone ("งับ").
+|- [x] `data/scripts/script/Server/ZeniaCustomNPC.java` (Korean variable names renamed, comments translated)
+- [x] `data/scripts/script/Util/OneClickSet.java` (Completed)
+- [x] `data/scripts/script/Util/Recommend.java` (Completed)
+- [x] `data/scripts/script/item/Consume.java` (Translated Korean comments/strings, Refactored Date to java.time)
+- [x] `data/scripts/script/Server/JinCustomNPC.java` (Translated Korean strings/comments)
+- [x] `data/scripts/script/item/SymbolVoucher.java` (Translated comments)
+- [x] `data/scripts/script/item/MasteryBook.java` (Removed Korean font tags)s | Yes | Removed Korean comments. |
+| `data/scripts/script/Util/OneClickSet.java` | Yes | Yes | Translated mixed Korean/Thai strings in Cube logic. |
+| `data/scripts/script/Util/Recommend.java` | Yes | Yes | Removed Korean comments. |
+| `data/scripts/script/Server/ZeniaCustomNPC.java` | Yes | Yes | Translated Korean strings (SearchHair etc), renamed variables, fixed duplicate case logic. |
+| `data/scripts/script/Server/RoyalCustomNPC.java` | Yes | Yes | Removed commented-out Korean code (soulWeapon), translated comments. |
+| ... | | | |
 - **Features:** Fixed mixed Korean/Thai logic and updated explanation text.
 
 ### 53. ErdaSpectrum.java ✅
@@ -634,7 +646,16 @@ Given the scope (60 files total, large ones remaining), I recommend:
 
 ---
 
-**Last Updated:** 2025-12-16 10:40:00 +07:00  
+**Last Updated:** 2025-12-17 01:25:00 +07:00  
 **Method:** File-by-File with Context  
 **Quality Focus:** High  
-**Estimated Completion:** 40-80 hours of focused work
+**Estimated Completion:** 85% Complete
+
+### Recent Refactoring & Verification (2025-12-17)
+- **Consume.java:** Refactored `java.util.Date`/`SimpleDateFormat` to `java.time` API. Translated remaining mixed Korean/Thai/English comments and strings (e.g., Chu Chu Set, Maple Platinum items). Fixed syntax errors.
+- **JinCustomNPC.java:** Translated remaining Korean strings regarding "Imprinted Stone" system and Ganglim Cash. Fixed logic syntax errors.
+- **SymbolVoucher.java:** Translated item quantity comments.
+- **MasteryBook.java:** Removed Korean font tags (`#fnDotum#`) and translated cancel menu options.
+- **ZeniaCustomNPC.java:** Verified translation and fixed duplicate case logic.
+- **OneClickSet.java:** Verified translation.
+- **Recommend.java:** Verified translation.
