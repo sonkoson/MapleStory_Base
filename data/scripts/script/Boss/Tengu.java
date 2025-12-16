@@ -11,48 +11,57 @@ import scripting.newscripting.ScriptEngineNPC;
 
 public class Tengu extends ScriptEngineNPC {
 
-
     public void tengu_enter() {
         initNPC(MapleLifeFactory.getNPC(9010000));
-        String v0 = "텐구 쓰러뜨리기 บน해 동할까?\r\n\r\n";
-        v0 += "#L0#텐구 แผนที่(#b노멀 โหมด#k)으 동 한다.(เลเวล 250상)#l\r\n\r\n\r\n";
-        v0 += "#L5#동하지 않다.#l\r\n\r\n";
+        String v0 = "ต้องการย้ายเพื่อไปจัดการ Tengu หรือไม่?\r\n\r\n";
+        v0 += "#L0#ย้ายไปยังแผนที่ Tengu (#bโหมด Normal#k) (เลเวล 250 ขึ้นไป)#l\r\n\r\n\r\n";
+        v0 += "#L5#ไม่ย้าย#l\r\n\r\n";
         int Menu = target.askMenu(v0, ScriptMessageFlag.BigScenario);
-        if (Menu == 5) return; //동하지 않다
+        if (Menu == 5)
+            return; // 동하지 않다
         if (target.getParty() == null) {
-            self.sayOk("1인 상 ปาร์ตี้ 맺어야만 เข้า할 수 있.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ต้องสร้างปาร์ตี้ 1 คนขึ้นไปจึงจะเข้าได้", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ปาร์ตี้장 통해 ดำเนินการ해 สัปดาห์십시오.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("กรุณาให้หัวหน้าปาร์ตี้เป็นผู้ดำเนินการ", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("ปาร์ตี้원 ทั้งหมด 같แผนที่ 있어야 .", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("สมาชิกปาร์ตี้ทั้งหมดต้องอยู่ในแผนที่เดียวกัน", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
-        switch (Menu) { //따 จำกัด되거 없으면 바 เข้า능함
-            case 0: { //노멀โหมด
+        switch (Menu) { // 따 จำกัด되거 없으면 바 เข้า능함
+            case 0: { // 노멀โหมด
                 TenguEnter fieldSet = (TenguEnter) fieldSet("TenguEnter");
                 int enter = fieldSet.enter(target.getId(), 2);
                 if (enter == 6) {
-                    self.sayOk("용 능한 인스턴스 없. อื่น แชนแนล 용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ไม่มี Instance ที่ว่าง กรุณาใช้แชนแนลอื่น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("บอส 티어 ไม่พอ한 ปาร์ตี้원 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกปาร์ตี้ที่มีระดับ Boss Tier ไม่เพียงพอ จึงไม่สามารถเข้าได้",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("วันนี้ 텐구 쓰러뜨린 ปาร์ตี้원 있. \r\n#r<클리어 기록 ทุกวัน 자정 วัน괄 วินาที기화.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "มีสมาชิกปาร์ตี้ที่กำจัด Tengu ไปแล้วในวันนี้ \r\n#r<ประวัติการเคลียร์จะรีเซ็ตทุกวันเวลาเที่ยงคืน>",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("เข้า จำกัด횟수 ไม่พอ하거ฉัน เลเวล จำกัด 맞지 않 ปาร์ตี้원 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกปาร์ตี้ที่จำนวนครั้งการเข้าไม่เพียงพอหรือเลเวลไม่ถึงกำหนด จึงไม่สามารถเข้าได้",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("เข้า จำกัดเวลา 남 ปาร์ตี้원 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกปาร์ตี้ที่ยังติดเวลารอเข้าดันเจี้ยนอยู่ จึงไม่สามารถเข้าได้",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;

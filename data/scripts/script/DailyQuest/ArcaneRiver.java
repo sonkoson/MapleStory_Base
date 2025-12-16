@@ -8,17 +8,17 @@ import scripting.ScriptMessageFlag;
 import scripting.newscripting.Script;
 import scripting.newscripting.ScriptEngineNPC;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ArcaneRiver extends ScriptEngineNPC {
 
-    //슈피겔만 아케인리버 퀵패스
+    // Spiegelmann Arcane River Quick Pass
     @Script
     public void npc_3003146() {
-        if (getPlayer().isQuestStarted(501551)) { //<소멸의 여로> 스텝업!
+        if (getPlayer().isQuestStarted(501551)) { // <Vanishing Journey> Step Up!
             if (getPlayer().getOneInfoQuestInteger(501551, "value") < 1) {
                 getPlayer().updateOneInfo(501551, "value", "1");
             }
@@ -26,18 +26,20 @@ public class ArcaneRiver extends ScriptEngineNPC {
                 getPlayer().updateOneInfo(501524, "state", "2");
             }
         }
-        //getPlayer().send(HexTool.getByteArrayFromHexString("64 00 0D 8B 98 00 00 00 00"));
-        //getPlayer().send(HexTool.getByteArrayFromHexString("64 00 0D 8C 98 00 00 00 00"));
+        // getPlayer().send(HexTool.getByteArrayFromHexString("64 00 0D 8B 98 00 00 00
+        // 00"));
+        // getPlayer().send(HexTool.getByteArrayFromHexString("64 00 0D 8C 98 00 00 00
+        // 00"));
         int level = getPlayer().getLevel();
         StringBuilder sb = new StringBuilder();
-        int t0 = 5; //여로
+        int t0 = 5; // Vanishing Journey
         for (int i = 34164; i <= 34167; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         sb.append("t0=").append(t0).append(";");
-        int t1 = 0; //츄츄
+        int t1 = 0; // Chu Chu
         if (level >= 210) {
             t1 = 3;
         }
@@ -47,7 +49,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t1=").append(t1).append(";");
-        int t2 = 0; //레헬
+        int t2 = 0; // Lachelein
         if (level >= 220) {
             t2 = 3;
         }
@@ -57,7 +59,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t2=").append(t2).append(";");
-        int t3 = 0; //아르카ฉัน
+        int t3 = 0; // Arcana
         if (level >= 225) {
             t3 = 3;
         }
@@ -67,7 +69,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             }
         }
         sb.append("t3=").append(t3).append(";");
-        int t4 = 0; //모라스
+        int t4 = 0; // Morass
         if (level >= 230) {
             t4 = 3;
         }
@@ -75,7 +77,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t4--;
         }
         sb.append("t4=").append(t4).append(";");
-        int t5 = 0; //에스페라
+        int t5 = 0; // Esfera
         if (level >= 235) {
             t5 = 3;
         }
@@ -86,7 +88,7 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t5--;
         }
         sb.append("t5=").append(t5).append(";");
-        int c0 = 0; //여로
+        int c0 = 0; // Vanishing Journey
         for (int i = 34130; i <= 34150; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
@@ -97,11 +99,11 @@ public class ArcaneRiver extends ScriptEngineNPC {
                 c0++;
             }
         }
-        if (getPlayer().getQuestStatus(34129) == 2) { //소멸의 여로 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(34129) == 2) { // If Vanishing Journey main quest is cleared
             c0 = t0;
         }
         sb.append("c0=").append(c0).append(";");
-        int c1 = 0; //츄츄
+        int c1 = 0; // Chu Chu
         for (int i = 39017; i <= 39033; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c1++;
@@ -112,51 +114,51 @@ public class ArcaneRiver extends ScriptEngineNPC {
                 c1++;
             }
         }
-        if (getPlayer().getQuestStatus(39014) == 2) { //츄츄 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(39014) == 2) { // If Chu Chu main quest is cleared
             c1 = t1;
         }
         sb.append("c1=").append(c1).append(";");
-        int c2 = 0; //레헬
+        int c2 = 0; // Lachelein
         for (int i = 34381; i <= 34394; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c2++;
             }
         }
-        if (getPlayer().getQuestStatus(34378) == 2) { //레헬른 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(34378) == 2) { // If Lachelein main quest is cleared
             c2 = t2;
         }
         sb.append("c2=").append(c2).append(";");
-        int c3 = 0; //아르카ฉัน
+        int c3 = 0; // Arcana
         for (int i = 39038; i <= 39050; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c3++;
             }
         }
-        if (getPlayer().getQuestStatus(39035) == 2) { //아르카ฉัน 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(39035) == 2) { // If Arcana main quest is cleared
             c3 = t3;
         }
         sb.append("c3=").append(c3).append(";");
-        int c4 = 0; //모라스
+        int c4 = 0; // Morass
         for (int i = 34276; i <= 34296; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c4++;
             }
         }
-        if (getPlayer().getQuestStatus(34275) == 2) { //모라스 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(34275) == 2) { // If Morass main quest is cleared
             c4 = t4;
         }
         sb.append("c4=").append(c4).append(";");
-        int c5 = 0; //에스페라
+        int c5 = 0; // Esfera
         for (int i = 34780; i <= 34799; i++) {
             if (getPlayer().getQuestStatus(i) == 2) {
                 c5++;
             }
         }
-        if (getPlayer().getQuestStatus(34773) == 2) { //에스페라 메인퀘가 깨져있으면
+        if (getPlayer().getQuestStatus(34773) == 2) { // If Esfera main quest is cleared
             c5 = t5;
         }
         sb.append("c5=").append(c5).append(";");
-        //흑흑 เควส만들때 이거 고려ใน 만들었어 ㅠ
+        // TODO: Check this logic
 
         getPlayer().updateInfoQuest(39051, sb.toString());
         t0 = 3;
@@ -164,12 +166,12 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t0--;
         if (getPlayer().getLevel() >= 220)
             t0--;
-        t1 = 3; //배고픈무토
+        t1 = 3; // Hungry Muto
         if (getPlayer().getLevel() >= 220)
             t1--;
         if (getPlayer().getLevel() >= 225)
             t1--;
-        t2 = 3; //드림브레이커
+        t2 = 3; // Dream Breaker
         if (getPlayer().getLevel() >= 225)
             t2--;
         if (getPlayer().getLevel() >= 230)
@@ -183,96 +185,97 @@ public class ArcaneRiver extends ScriptEngineNPC {
         c1 = getPlayer().GetCount("hungry_muto");
         c2 = getPlayer().GetCount("dream_breaker");
         c3 = getPlayer().getOneInfoQuestInteger(16214, "count");
-        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-        Date lastTimeSpectrum = null;
-        Date lastTimeSavior = null;
-        Date now = null;
+        c3 = getPlayer().getOneInfoQuestInteger(16214, "count");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+        LocalDate lastTimeSpectrum = null;
+        LocalDate lastTimeSavior = null;
+        LocalDate now = LocalDate.now();
         try {
-            now = sdf.parse(sdf.format(new Date()));
+            lastTimeSpectrum = LocalDate.parse(getPlayer().getOneInfo(34170, "date"), formatter);
         } catch (Exception e) {
         }
         try {
-            lastTimeSpectrum = sdf.parse(getPlayer().getOneInfo(34170, "date"));
-        } catch (Exception e) {
-        }
-        try {
-            lastTimeSavior = sdf.parse(getPlayer().getOneInfo(16214, "date"));
+            lastTimeSavior = LocalDate.parse(getPlayer().getOneInfo(16214, "date"), formatter);
         } catch (Exception e) {
         }
         if (lastTimeSpectrum != null) {
-            if (!lastTimeSpectrum.equals(now)) {
+            if (!lastTimeSpectrum.isEqual(now)) {
                 c0 = 0;
             }
         }
         if (lastTimeSavior != null) {
-            if (!lastTimeSavior.equals(now)) {
+            if (!lastTimeSavior.isEqual(now)) {
                 c3 = 0;
             }
         }
         StringBuilder sb2 = new StringBuilder();
-        sb2.append("t0=").append(t0).append(";").append("t1=").append(t1).append(";").append("t2=").append(t2).append(";").append("t3=").append(t3).append(";")
-                .append("c0=").append(c0).append(";").append("c1=").append(c1).append(";").append("c2=").append(c2).append(";").append("c3=").append(c3).append(";");
+        sb2.append("t0=").append(t0).append(";").append("t1=").append(t1).append(";").append("t2=").append(t2)
+                .append(";").append("t3=").append(t3).append(";")
+                .append("c0=").append(c0).append(";").append("c1=").append(c1).append(";").append("c2=").append(c2)
+                .append(";").append("c3=").append(c3).append(";");
         getPlayer().updateInfoQuest(39052, sb2.toString());
         getPlayer().send(arcaneRiverQuickPath(level >= 200 ? true : false));
     }
 
     public void arcaneRiverQuickPath0() {
         int t0 = 5;
-        for (int i = 34164; i <= 34167; i++) { //ที่นี่แก้ไข
-            if (getPlayer().getQuestStatus(i) == 2) {
-                t0--;
-            }
+        // Edit here
+        if (getPlayer().getQuestStatus(i) == 2) {
+            t0--;
         }
-        int c0 = 0;
-        List<Integer> quests = new ArrayList<>();
-        for (int i = 34130; i <= 34150; i++) { //ที่นี่แก้ไข
-            quests.add(i);
-            if (getPlayer().getQuestStatus(i) == 2) {
-                c0++;
-            }
+    }
+
+    int c0 = 0;
+    List<Integer> quests = new ArrayList<>();for(
+    int i = 34130;i<=34150;i++)
+    { // ที่นี่แก้ไข
+        quests.add(i);
+        if (getPlayer().getQuestStatus(i) == 2) {
+            c0++;
         }
-        for (int i = 39055; i <= 39063; i++) { //ที่นี่แก้ไข
-            quests.add(i);
-            if (getPlayer().getQuestStatus(i) == 2) {
-                c0++;
-            }
+    }for(
+    int i = 39055;i<=39063;i++)
+    { // ที่นี่แก้ไข
+        quests.add(i);
+        if (getPlayer().getQuestStatus(i) == 2) {
+            c0++;
         }
-        int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "소멸의 여로"; //ที่นี่แก้ไข
-        String key = "c0"; //ที่นี่แก้ไข
-        int itemId = 1712001; //ที่นี่แก้ไข
-        int questId = 34129;
-        totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
+    }
+    int basicPay = 1 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate(); // ที่นี่แก้ไข
+    int totalPay = (8 * getClient().getChannelServer().getVanishingJourneySymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+    String cityName = "Vanishing Journey"; // ที่นี่แก้ไข
+    String key = "c0"; // ที่นี่แก้ไข
+    int itemId = 1712001; // ที่นี่แก้ไข
+    int questId = 34129;totalPay-=basicPay*Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
     }
 
     public void arcaneRiverQuickPath1() {
         int t0 = 3;
-        for (int i = 34227; i <= 34228; i++) { //ที่นี่แก้ไข
+        for (int i = 34227; i <= 34228; i++) { // ที่นี่แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39017; i <= 39033; i++) { //ที่นี่แก้ไข
+        for (int i = 39017; i <= 39033; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        for (int i = 39064; i <= 39070; i++) { //ที่นี่แก้ไข
+        for (int i = 39064; i <= 39070; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "츄츄 아วัน랜드"; //ที่นี่แก้ไข
-        String key = "c1"; //ที่นี่แก้ไข
-        int itemId = 1712002; //ที่นี่แก้ไข
+        int basicPay = 2 * getClient().getChannelServer().getChewChewSymbolBonusRate(); // ที่นี่แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getChewChewSymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+        String cityName = "Chu Chu Island"; // ที่นี่แก้ไข
+        String key = "c1"; // ที่นี่แก้ไข
+        int itemId = 1712002; // ที่นี่แก้ไข
         int questId = 39014;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -280,24 +283,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath2() {
         int t0 = 3;
-        for (int i = 34333; i <= 34334; i++) { //ที่นี่แก้ไข
+        for (int i = 34333; i <= 34334; i++) { // ที่นี่แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34381; i <= 34394; i++) { //ที่นี่แก้ไข
+        for (int i = 34381; i <= 34394; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "레헬른"; //ที่นี่แก้ไข
-        String key = "c2"; //ที่นี่แก้ไข
-        int itemId = 1712003; //ที่นี่แก้ไข
+        int basicPay = 2 * getClient().getChannelServer().getLachelnSymbolBonusRate(); // ที่นี่แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getLachelnSymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+        String cityName = "Lachelein"; // ที่นี่แก้ไข
+        String key = "c2"; // ที่นี่แก้ไข
+        int itemId = 1712003; // ที่นี่แก้ไข
         int questId = 34378;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -305,24 +308,24 @@ public class ArcaneRiver extends ScriptEngineNPC {
 
     public void arcaneRiverQuickPath3() {
         int t0 = 3;
-        for (int i = 34491; i <= 34492; i++) { //ที่นี่แก้ไข
+        for (int i = 34491; i <= 34492; i++) { // ที่นี่แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t0--;
             }
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 39038; i <= 39050; i++) { //ที่นี่แก้ไข
+        for (int i = 39038; i <= 39050; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "아르카ฉัน"; //ที่นี่แก้ไข
-        String key = "c3"; //ที่นี่แก้ไข
-        int itemId = 1712004; //ที่นี่แก้ไข
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); // ที่นี่แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+        String cityName = "Arcana"; // ที่นี่แก้ไข
+        String key = "c3"; // ที่นี่แก้ไข
+        int itemId = 1712004; // ที่นี่แก้ไข
         int questId = 39035;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
         arcaneRiverQuickPath(cityName, quests, key, t0, c0, basicPay, totalPay, itemId, questId);
@@ -335,16 +338,16 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int c0 = 0;
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34276; i <= 34296; i++) { //ที่นี่แก้ไข
+        for (int i = 34276; i <= 34296; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "모라스"; //ที่นี่แก้ไข
-        String key = "c4"; //ที่นี่แก้ไข
+        int basicPay = 2 * getClient().getChannelServer().getMorassSymbolBonusRate(); // ที่นี่แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getMorassSymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+        String cityName = "Morass"; // ที่นี่แก้ไข
+        String key = "c4"; // ที่นี่แก้ไข
         int itemId = 1712005;
         int questId = 34275;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -352,25 +355,25 @@ public class ArcaneRiver extends ScriptEngineNPC {
     }
 
     public void arcaneRiverQuickPath5() {
-        int t0 = 3; //에스페라
+        int t0 = 3; // Esfera
         if (getPlayer().getLevel() >= 245) {
             t0--;
         }
         if (getPlayer().getLevel() >= 250) {
             t0--;
         }
-        int c0 = 0; //에스페라
+        int c0 = 0; // Esfera
         List<Integer> quests = new ArrayList<>();
-        for (int i = 34780; i <= 34799; i++) { //ที่นี่แก้ไข
+        for (int i = 34780; i <= 34799; i++) { // ที่นี่แก้ไข
             quests.add(i);
             if (getPlayer().getQuestStatus(i) == 2) {
                 c0++;
             }
         }
-        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); //ที่นี่แก้ไข
-        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; //ที่นี่แก้ไข
-        String cityName = "에스페라";
-        String key = "c5"; //ที่นี่แก้ไข
+        int basicPay = 2 * getClient().getChannelServer().getArcanaSymbolBonusRate(); // ที่นี่แก้ไข
+        int totalPay = (8 * getClient().getChannelServer().getArcanaSymbolBonusRate()) - basicPay; // ที่นี่แก้ไข
+        String cityName = "Esfera";
+        String key = "c5"; // ที่นี่แก้ไข
         int itemId = 1712006;
         int questId = 34773;
         totalPay -= basicPay * Integer.parseInt(getPlayer().getOneInfo(39051, key));
@@ -378,16 +381,16 @@ public class ArcaneRiver extends ScriptEngineNPC {
     }
 
     @SuppressWarnings("deprecation")
-    public void arcaneRiverQuickPath(String cityName, List<Integer> quests, String key, int t, int c, int basicPay, int totalPay, int itemId, int questID) {
+    public void arcaneRiverQuickPath(String cityName, List<Integer> quests, String key, int t, int c, int basicPay,
+            int totalPay, int itemId, int questID) {
         int commission = 500 * (t - c);
-        if (1 == self.askYesNo(cityName + " วันวัน เควส ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay + "+" + totalPay + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askYesNo("ให้ฉันช่วยจัดการเควสรายวันของ #b" + cityName + "#k ให้เอาไหม?\r\n\r\nค่าจ้างคือ #b"
+                + commission + " Maple Point#k นะ\r\nแถมฉันจะให้ #b#i" + itemId + ":# #t" + itemId + ":# " + basicPay
+                + "+" + totalPay + " ชิ้น#k กับเจ้าด้วยเป็นไง?", ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, (basicPay + totalPay)) > 0) {
                     MapleQuestStatus qStatus = new MapleQuestStatus(MapleQuest.getInstance(questID), 2);
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date date = new Date();
-                    date.setDate(date.getDate() + 1);
-                    String saveDate = sdf.format(date);
+                    String saveDate = LocalDate.now().plusDays(1).toString(); // default ISO-8601 yyyy-MM-dd
                     qStatus.setCustomData("0-0-0-0-0-n-n-n-n-n-" + saveDate);
                     getPlayer().updateQuest(qStatus);
                     for (Integer quest : quests) {
@@ -397,17 +400,17 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39051, key, String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. และ 이용해 สัปดาห์시게ฉัน.", ScriptMessageFlag.Scenario);
+                    self.say("เรียบร้อยแล้วล่ะ\r\nคิคิ.. ไว้มาใช้บริการใหม่นะ", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 หลัง 다시 이용해สัปดาห์게ฉัน");
+                    self.say("ช่องเก็บของไม่พอนี่นา\r\nไปเคลียร์ช่องเก็บของแล้วค่อยกลับมาใหม่นะ");
                 }
             } else {
-                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게ฉัน");
+                self.say("ดูเหมือน Maple Point ของเจ้าจะไม่พอนะ ลองตรวจสอบดูใหม่สิ");
             }
         }
     }
 
-    public void arcaneRiverQuickPath10() { //에르다스펙트럼
+    public void arcaneRiverQuickPath10() { // Erda Spectrum
 
         int t = 3;
         if (getPlayer().getLevel() >= 210)
@@ -416,16 +419,15 @@ public class ArcaneRiver extends ScriptEngineNPC {
             t--;
         int c = getPlayer().getOneInfoQuestInteger(34170, "count");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-        Date lastTime = null;
-        Date now = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+        LocalDate lastTime = null;
+        LocalDate now = LocalDate.now();
         try {
-            lastTime = sdf.parse(getPlayer().getOneInfo(34170, "date"));
-            now = sdf.parse(sdf.format(new Date()));
+            lastTime = LocalDate.parse(getPlayer().getOneInfo(34170, "date"), formatter);
         } catch (Exception e) {
         }
         if (lastTime != null) {
-            if (!lastTime.equals(now)) {
+            if (!lastTime.isEqual(now)) {
                 c = 0;
             }
         }
@@ -437,32 +439,37 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 1712001;
-        if (1 == self.askAccept("#r에르다 스펙트럼#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712001:# #t1712001:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("ให้ฉันช่วยจัดการ #rErda Spectrum#k ให้เอาไหม?\r\n\r\nค่าจ้างคือ #b" + commission
+                + " Maple Point#k นะ\r\nแถมฉันจะให้ #b#i1712001:# #t1712001:# " + totalItem + " ชิ้น#k กับเจ้าด้วย",
+                ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     getPlayer().updateOneInfo(34170, "count", "3");
-                    getPlayer().updateOneInfo(34170, "date", sdf.format(new Date()));
+                    getPlayer().updateOneInfo(34170, "date", LocalDate.now().format(formatter));
                     getPlayer().updateOneInfo(39052, "c0", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. และ 이용해 สัปดาห์시게ฉัน.", ScriptMessageFlag.Scenario);
+                    self.say("เรียบร้อยแล้วล่ะ\r\nคิคิ.. ไว้มาใช้บริการใหม่นะ", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 หลัง 다시 이용해สัปดาห์게ฉัน");
+                    self.say("ช่องเก็บของไม่พอนี่นา\r\nไปเคลียร์ช่องเก็บของแล้วค่อยกลับมาใหม่นะ");
                 }
             } else {
-                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게ฉัน");
+                self.say("ดูเหมือน Maple Point ของเจ้าจะไม่พอนะ ลองตรวจสอบดูใหม่สิ");
             }
         }
     }
 
-    public void arcaneRiverQuickPath11() { //배고픈무토
+    public void arcaneRiverQuickPath11() { // Hungry Muto
         if (getPlayer().getMutoHighRank() == -1) {
-            self.sayOk("#r배고픈 무토#k 자네의 최고 성และ를 찾을 수 없는 것 같네.\r\nเขา걸 기준으로 วัน을 ประมวลผล해야 공평하지 않겠ฉัน? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최วินาที 1회의 해당 컨텐츠 플레이가 จำเป็น.)", ScriptMessageFlag.Scenario);
+            self.sayOk(
+                    "#rHungry Muto#k ดูเหมือนจะไม่พบคะแนนสูงสุดของเจ้านะ\r\nฉันต้องใช้คะแนนนั้นเป็นเกณฑ์ในการจัดการ ถึงจะยุติธรรมจริงไหมล่ะ? คิคิ...\r\n\r\n(#bArcane River Quick Pass#k จำเป็นต้องเคยเล่นคอนเทนต์นั้นๆ มาก่อนอย่างน้อย 1 ครั้ง)",
+                    ScriptMessageFlag.Scenario);
             return;
         }
 
-        //#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
+        // #r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로
+        // 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
         int t = 3;
-        for (int i = 34227; i <= 34228; i++) { //ที่นี่แก้ไข
+        for (int i = 34227; i <= 34228; i++) { // ที่นี่แก้ไข
             if (getPlayer().getQuestStatus(i) == 2) {
                 t--;
             }
@@ -472,10 +479,10 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int basicPay = 5;
         int highDiff = getPlayer().getMutoHighDifficultly();
         int highRank = getPlayer().getMutoHighRank();
-        if (highDiff == 2) { //ยาก
-            if (highRank == 1) { //A랭크
+        if (highDiff == 2) { // Hard
+            if (highRank == 1) { // Rank A
                 basicPay = 4;
-            } else if (highRank == 2) { //B랭크
+            } else if (highRank == 2) { // Rank B
                 basicPay = 3;
             }
         } else if (highDiff == 1) {
@@ -494,8 +501,11 @@ public class ArcaneRiver extends ScriptEngineNPC {
         }
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
-        //#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
-        if (1 == self.askAccept("#r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i1712002:# #t1712002:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.", ScriptMessageFlag.Scenario)) {
+        // #r배고픈 무토#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b500 메이플คะแนน#k라네.\r\n부가적으로
+        // 얻게될 #b#i1712002:# #t1712002:# 15개#k 자네에게 สัปดาห์겠네.
+        if (1 == self.askAccept("ให้ฉันช่วยจัดการ #rHungry Muto#k ให้เอาไหม?\r\n\r\nค่าจ้างคือ #b" + commission
+                + " Maple Point#k นะ\r\nแถมฉันจะให้ #b#i1712002:# #t1712002:# " + totalItem + " ชิ้น#k กับเจ้าด้วย",
+                ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(1712002, totalItem) > 0) {
                     while (getPlayer().GetCount("hungry_muto") < 3) {
@@ -503,20 +513,22 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c1", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. และ 이용해 สัปดาห์시게ฉัน.", ScriptMessageFlag.Scenario);
+                    self.say("เรียบร้อยแล้วล่ะ\r\nคิคิ.. ไว้มาใช้บริการใหม่นะ", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 หลัง 다시 이용해สัปดาห์게ฉัน");
+                    self.say("ช่องเก็บของไม่พอนี่นา\r\nไปเคลียร์ช่องเก็บของแล้วค่อยกลับมาใหม่นะ");
                 }
             } else {
-                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게ฉัน");
+                self.say("ดูเหมือน Maple Point ของเจ้าจะไม่พอนะ ลองตรวจสอบดูใหม่สิ");
             }
         }
     }
 
-    public void arcaneRiverQuickPath12() { //드림브레이커
+    public void arcaneRiverQuickPath12() { // Dream Breaker
         int best = getPlayer().getOneInfoQuestInteger(15901, "best");
         if (best <= 0) {
-            self.sayOk("#r드림브레이커#k 자네의 최고 성และ를 찾을 수 없는 것 같네.\r\nเขา걸 기준으로 วัน을 ประมวลผล해야 공평하지 않겠ฉัน? 크크...\r\n\r\n(#b아케인리버 퀵패스#k 이용 전 최วินาที 1회의 해당 컨텐츠 플레이가 จำเป็น.)", ScriptMessageFlag.Scenario);
+            self.sayOk(
+                    "#rDream Breaker#k ดูเหมือนจะไม่พบคะแนนสูงสุดของเจ้านะ\r\nฉันต้องใช้คะแนนนั้นเป็นเกณฑ์ในการจัดการ ถึงจะยุติธรรมจริงไหมล่ะ? คิคิ...\r\n\r\n(#bArcane River Quick Pass#k จำเป็นต้องเคยเล่นคอนเทนต์นั้นๆ มาก่อนอย่างน้อย 1 ครั้ง)",
+                    ScriptMessageFlag.Scenario);
             return;
         }
         int t = 3;
@@ -534,7 +546,10 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310227;
-        if (1 == self.askAccept("#r드림브레이커#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i4310227:# #t4310227:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.\r\n\r\n(※ #rสัปดาห์의#k : 퀵패스를 통해 เสร็จสมบูรณ์ 시 힘내라! 보너스 코인 지급และ 랭킹 기록은 되지 않.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#rDream Breaker#k ให้ฉันช่วยจัดการให้เอาไหม?\r\n\r\nค่าจ้างคือ #b" + commission
+                + " Maple Point#k นะ\r\nแถมฉันจะให้ #b#i4310227:# #t4310227:# " + totalItem
+                + " ชิ้น#k กับเจ้าด้วย\r\n\r\n(※ #rหมายเหตุ#k : หากสำเร็จผ่าน Quick Pass จะไม่ได้รับเหรียญโบนัส 'สู้เขานะ!' และไม่ถูกบันทึกในอันดับ)",
+                ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
                     while (getPlayer().GetCount("dream_breaker") < 3) {
@@ -542,17 +557,17 @@ public class ArcaneRiver extends ScriptEngineNPC {
                     }
                     getPlayer().updateOneInfo(39052, "c2", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. และ 이용해 สัปดาห์시게ฉัน.", ScriptMessageFlag.Scenario);
+                    self.say("เรียบร้อยแล้วล่ะ\r\nคิคิ.. ไว้มาใช้บริการใหม่นะ", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 หลัง 다시 이용해สัปดาห์게ฉัน");
+                    self.say("ช่องเก็บของไม่พอนี่นา\r\nไปเคลียร์ช่องเก็บของแล้วค่อยกลับมาใหม่นะ");
                 }
             } else {
-                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게ฉัน");
+                self.say("ดูเหมือน Maple Point ของเจ้าจะไม่พอนะ ลองตรวจสอบดูใหม่สิ");
             }
         }
     }
 
-    public void arcaneRiverQuickPath13() { //스피릿세이비어
+    public void arcaneRiverQuickPath13() { // Spirit Savior
 
         int t = 3;
         if (getPlayer().getLevel() >= 230)
@@ -562,15 +577,15 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int c = getPlayer().getOneInfoQuestInteger(16214, "count");
 
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-        Date lastTime = null;
-        Date now = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+        LocalDate lastTime = null;
+        LocalDate now = LocalDate.now();
         try {
-            lastTime = sdf.parse(getPlayer().getOneInfo(16214, "date"));
-            now = sdf.parse(sdf.format(new Date()));
+            lastTime = LocalDate.parse(getPlayer().getOneInfo(16214, "date"), formatter);
         } catch (Exception e) {
         }
         if (lastTime != null) {
-            if (!lastTime.equals(now)) {
+            if (!lastTime.isEqual(now)) {
                 c = 0;
             }
         }
@@ -582,19 +597,22 @@ public class ArcaneRiver extends ScriptEngineNPC {
         int commission = 500 * (t - c);
         int totalItem = (basicPay * 3) - (c * basicPay);
         int itemId = 4310235;
-        if (1 == self.askAccept("#r스피릿 세이비어#k ประมวลผล해สัปดาห์면 되겠ฉัน?\r\n\r\n의뢰금은 #b" + commission + " 메이플คะแนน#k라네.\r\n부가적으로 얻게될 #b#i4310235:# #t4310235:# " + totalItem + "개#k 자네에게 สัปดาห์겠네.\r\n자네는 วันนี้ #r#e30개 이상#n#k 스피릿 코인을 받아서 이만큼이 최선이라고 하던데? 크크..\r\n\r\n\r\n(※ #rสัปดาห์의#k : 퀵패스를 통해 เสร็จสมบูรณ์ 시 보너스 코인 지급은 되지 않.)", ScriptMessageFlag.Scenario)) {
+        if (1 == self.askAccept("#rSpirit Savior#k ให้ฉันช่วยจัดการให้เอาไหม?\r\n\r\nค่าจ้างคือ #b" + commission
+                + " Maple Point#k นะ\r\nแถมฉันจะให้ #b#i4310235:# #t4310235:# " + totalItem
+                + " ชิ้น#k กับเจ้าด้วย\r\nได้ข่าวว่าวันนี้เจ้าได้รับ Spirit Coin มา #r#e30 เหรียญขึ้นไป#n#k แล้วนี่? เท่านี้ก็ดีที่สุดแล้วล่ะมั้ง? คิคิ..\r\n\r\n\r\n(※ #rหมายเหตุ#k : หากสำเร็จผ่าน Quick Pass จะไม่ได้รับเหรียญโบนัส)",
+                ScriptMessageFlag.Scenario)) {
             if (getPlayer().getMaplePoints() >= commission) {
                 if (target.exchange(itemId, totalItem) > 0) {
-                    getPlayer().updateOneInfo(16214, "date", sdf.format(new Date()));
+                    getPlayer().updateOneInfo(16214, "date", LocalDate.now().format(formatter));
                     getPlayer().updateOneInfo(16214, "count", "3");
                     getPlayer().updateOneInfo(39052, "c3", String.valueOf(t));
                     getPlayer().setMaplePoint(getPlayer().getMaplePoints() - commission);
-                    self.say("เสร็จสมบูรณ์되었네\r\n크크.. และ 이용해 สัปดาห์시게ฉัน.", ScriptMessageFlag.Scenario);
+                    self.say("เรียบร้อยแล้วล่ะ\r\nคิคิ.. ไว้มาใช้บริการใหม่นะ", ScriptMessageFlag.Scenario);
                 } else {
-                    self.say("กระเป๋า ไม่พอ하군\r\nกระเป๋า 비운 หลัง 다시 이용해สัปดาห์게ฉัน");
+                    self.say("ช่องเก็บของไม่พอนี่นา\r\nไปเคลียร์ช่องเก็บของแล้วค่อยกลับมาใหม่นะ");
                 }
             } else {
-                self.say("자네의 메이플 คะแนน ไม่พอ한 것 같군 다시 ยืนยัน해보시게ฉัน");
+                self.say("ดูเหมือน Maple Point ของเจ้าจะไม่พอนะ ลองตรวจสอบดูใหม่สิ");
             }
         }
     }

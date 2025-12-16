@@ -7,41 +7,48 @@ import scripting.newscripting.ScriptEngineNPC;
 
 public class HasteEvent extends ScriptEngineNPC {
 
-    public static String[] customData = {"", "", "", "", "count=0", "count=0", "RunAct=0", "suddenMK=0"};
+    public static String[] customData = { "", "", "", "", "count=0", "count=0", "RunAct=0", "suddenMK=0" };
 
     public void q16401s() {
         if (getPlayer().getQuestStatus(QuestExConstants.HasteEventInit.getQuestID()) < 1) {
-            self.say("ใน녕! #b#h0##k!\\r\\n#e사냥 가속 #b<헤이스트>#k 이벤트#n 돌아왔어!");
-            self.say("#b#e<헤이스트>#n#k #b2021ปี 11เดือน 4วัน 오전 0시#kจาก #b12เดือน 5วัน 오후 11시 59นาที#kถึง #b여러 가지 변화#k 생겨ฉัน 말 เขา대로 #b사냥을 가속#k시킬 수 있는 이벤트야!");
-            self.say("어떤 변화가 생기냐면~!");
-            self.say("#b- #e엘리트 มอนสเตอร์#n #e더#n 자สัปดาห์ ฉันและ!\\r\\n- #e룬#n #e더#n 자สัปดาห์ ฉัน오고 #e더#n 자สัปดาห์ 쓸 수 있어!\\r\\n- #e룬#n EXP เอฟเฟกต์가 두 배로 #e더#n 강력해져!\\r\\n- #e돌발ภารกิจ#n 하루에 두 배로 #e더#n 클리어할 수 있어!\\r\\n- #e폴로 & 프리토#n #e더#n 자สัปดาห์ ฉันและ!\\r\\n- #e불꽃늑대#n EXP 1.5배로 #e더#n 강력해져!");
-            self.say("어때? 듣기만 해도 사냥이 팍팍 가속될 것 같지 않아?\\r\\n\\r\\n이뿐만이 아니야!\\r\\n이벤트 기간 동ใน #b#e6가지 วันวัน ภารกิจ#n#k 수행할 수 ,\\r\\nภารกิจ을 달성할 때 마다 #b#e<헤이스트 상자>#n#k 받을 수 있어!");
-            self.say("6개의 #b<헤이스트 상자>#k에서는 푸짐한 #bรางวัล#k #b헤이스트 부스터#k 얻을 수 있으니까 ทุกวันทุกวัน 놓치지 말라구~!\\r\\n#b헤이스트 부스터#k ใช้ 100วินาที동ใน #bมอนสเตอร์#k #bเพิ่ม#k #b소환#k되니 사냥도 성장도 더 빠르게 가속시킬 수 있지!");
-            self.say("하ฉัน 더!\\r\\n\\r\\n하루에 #e#b6가지 <헤이스트 วันวัน ภารกิจ>#n#k 전부 달성...\\r\\n흐흐... เขา건 네가 โดยตรง ยืนยัน해 봐!");
+            self.say("สวัสดี! #b#h0##k!\\r\\nกิจกรรม #eเร่งการล่า #b<Haste>#k#n กลับมาแล้ว!");
+            self.say(
+                    "กิจกรรม #b#e<Haste>#n#k เริ่มตั้งแต่ #b4 พฤศจิกายน 2021 เวลา 00:00 น.#k ถึง #b5 ธันวาคม เวลา 23:59 น.#k ตามชื่อเลย เป็นกิจกรรมที่ช่วย #bเร่งการล่า#k ให้เร็วขึ้น พร้อม #bการเปลี่ยนแปลงหลากหลายอย่าง#k!");
+            self.say("มีการเปลี่ยนแปลงอะไรบ้างน่ะเหรอ~!");
+            self.say(
+                    "#b- #eElite Monster#n ปรากฏตัว #eบ่อยขึ้น#n!\\r\\n- #eRune#n ปรากฏตัว #eบ่อยขึ้น#n และใช้ได้ #eบ่อยขึ้น#n!\\r\\n- #eRune#n เพิ่มเอฟเฟกต์ EXP #eมากยิ่งขึ้น#n เป็น 2 เท่า!\\r\\n- #eSurprise Mission#n สามารถเคลียร์ได้ #eมากขึ้น#n 2 เท่าต่อวัน!\\r\\n- #ePollo & Fritto#n ปรากฏตัว #eบ่อยขึ้น#n!\\r\\n- #eFlame Wolf#n ให้ EXP #eมากขึ้น#n 1.5 เท่า!");
+            self.say(
+                    "เป็นไงล่ะ? แค่ฟังก็รู้สึกว่าการล่าจะเร็วขึ้นทันตาเห็นเลยใช่มั้ยล่ะ?\\r\\n\\r\\nไม่ใช่แค่นั้นนะ!\\r\\nระหว่างระยะเวลากิจกรรม สามารถทำ #b#e6 ภารกิจรายวัน#n#k ได้,\\r\\nทุกครั้งที่ทำภารกิจสำเร็จ จะได้รับ #b#e<Haste Box>#n#k ด้วย!");
+            self.say(
+                    "ใน #b<Haste Box>#k ทั้ง 6 กล่อง มี #bของรางวัล#k มากมายและ #bHaste Booster#k รออยู่ ดังนั้นห้ามพลาดเด็ดขาดในทุกๆ วัน~!\\r\\nเมื่อใช้ #bHaste Booster#k จะทำให้ #bMonster#k #bถูกอัญเชิญ#k #bเพิ่มขึ้น#k เป็นเวลา 100 วินาที ช่วยเร่งทั้งการล่าและการเติบโตให้เร็วยิ่งขึ้นไปอีก!");
+            self.say(
+                    "อีกอย่างหนึ่ง!\\r\\n\\r\\nหากทำ #e#b<ภารกิจรายวัน Haste> ทั้ง 6 อย่าง#n#k สำเร็จทั้งหมดในหนึ่งวัน...\\r\\nหึหึ... อันนั้นลองไปตรวจสอบด้วยตัวเองดูสิ!");
 
-
-            for (int i = QuestExConstants.HasteEventInit.getQuestID(); i <= QuestExConstants.HasteEventSuddenMK.getQuestID(); i++) {
+            for (int i = QuestExConstants.HasteEventInit.getQuestID(); i <= QuestExConstants.HasteEventSuddenMK
+                    .getQuestID(); i++) {
                 if (i != QuestExConstants.HasteEventEliteBoss.getQuestID()) {
                     MapleQuest.getInstance(i).forceStart(getPlayer(), 9010010, "");
                     getPlayer().updateInfoQuest(i, customData[i - QuestExConstants.HasteEventInit.getQuestID()]);
                 }
             }
 
-
             getPlayer().updateInfoQuest(QuestExConstants.HasteEvent.getQuestID(),
-                    "M1=0;M2=0;M3=0;M4=0;M5=0;M6=0;date=21/11/03;booster=0;openBox=0;unlockBox=0;str=1단계 상자 도전 중! วันวัน ภารกิจ 1개를 เสร็จสมบูรณ์ทำ!");
+                    "M1=0;M2=0;M3=0;M4=0;M5=0;M6=0;date=21/11/03;booster=0;openBox=0;unlockBox=0;str=กำลังท้าทายกล่องขั้นที่ 1! ทำภารกิจรายวันสำเร็จ 1 อย่าง!");
         } else {
             getPlayer().send(CField.UIPacket.openUI(1251));
         }
     }
 
     public void weekHQuest() {
-        self.say("#b#e자, 드디어! <헤이스트 히든 ภารกิจ>#n#k 열렸어!\r\n\r\n#b2021ปี 12เดือน 5วัน 오후 11시 59นาที#kถึง\r\n#b#eเลเวล 범บน มอนสเตอร์ 44,444마리#n#k... 아니라..#b#e88,888마리#n#k 사냥 된다구!");
-        self.say("#b#e<헤이스트 히든 ภารกิจ 상자>#n#k에서는..\r\n#b#e#i2631097:# #t2631097:#,\r\n#i1114317:# #t1114317:##n#k 받을 수 있으니 힘을 내!");
+        self.say(
+                "#b#eเอาล่ะ ในที่สุด! <Haste Hidden Mission>#n#k ก็เปิดแล้ว!\r\n\r\nตั้งแต่นี้จนถึง #b5 ธันวาคม 2021 เวลา 23:59 น.#k\r\nต้องล่า #b#eมอนสเตอร์ระดับเลเวล 44,444 ตัว#n#k... ไม่สิ.. #b#e88,888 ตัว#n#k ถึงจะเสร็จนะ!");
+        self.say(
+                "ใน #b#e<Haste Hidden Mission Box>#n#k นั้น..\r\nสามารถรับ #b#e#i2631097:# #t2631097:#,\r\n#i1114317:# #t1114317:##n#k ได้ พยายามเข้านะ!");
     }
 
     public void useHasteBooster() {
-        if (1 == self.askYesNo("#r#e헤이스트 부스터#n#k ใช้할꺼야?\r\n#b#e100วินาที동ใน มอนสเตอร์ เพิ่ม 소환된다구!#n#k\r\n진정한 사냥 가속을 할 수 있지!\r\n\r\n#e<ใช้ 할 수 없는 경우>#n\r\n 1. เลเวล 범บน มอนสเตอร์ 없는 필드 หรือ หมู่บ้าน.\r\n 2. 엘리트 บอส 소환 된 경우.\r\n 3. ปัจจุบัน 자신이 헤이스트 부스터를 ใช้ 중인 경우.\r\n 4. ปัจจุบัน อื่น 플레이어가 헤이스트 부스터를 ใช้ 중인 경우.")) {
+        if (1 == self.askYesNo(
+                "#r#eHaste Booster#n#k จะใช้งานมั้ย?\r\n#b#eมอนสเตอร์จะถูกอัญเชิญเพิ่มขึ้นเป็นเวลา 100 วินาที!#n#k\r\nช่วยเร่งการล่าได้อย่างแท้จริงเลยล่ะ!\r\n\r\n#e<กรณีที่ไม่สามารถใช้งานได้>#n\r\n 1. ในฟิลด์ที่ไม่มีมอนสเตอร์ระดับเลเวล หรือในหมู่บ้าน\r\n 2. กรณีที่ Elite Boss ถูกอัญเชิญออกมา\r\n 3. กรณีที่ตนเองกำลังใช้งาน Haste Booster อยู่\r\n 4. กรณีที่ผู้เล่นคนอื่นกำลังใช้งาน Haste Booster อยู่")) {
             getPlayer().getMap().startHasteBooster(getPlayer());
         }
     }

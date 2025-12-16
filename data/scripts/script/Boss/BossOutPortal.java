@@ -8,65 +8,65 @@ import scripting.ScriptMessageFlag;
 import scripting.newscripting.ScriptEngineNPC;
 
 public class BossOutPortal extends ScriptEngineNPC {
-    public void pt_hillah() { // 힐라
+    public void pt_hillah() { // Hilla
         allBossOut();
     }
 
-    public void pt_outrootaBoss() { // 루타비스
+    public void pt_outrootaBoss() { // Root Abyss
         allBossOut();
     }
 
-    public void pt_portalNPC1() { // 아카럼
+    public void pt_portalNPC1() { // Arkarium
         allBossOut();
     }
 
-    public void will_out() { // 윌
+    public void will_out() { // Will
         allBossOut();
     }
 
-    public void pt_bh_bossOutN() { // 노말스우 포탈
+    public void pt_bh_bossOutN() { // Normal Lotus Portal
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOut() { // 하드스우 포탈
+    public void pt_bh_bossOut() { // Hard Lotus Portal
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOutN_R() { // 노멀스우 รางวัลแผนที่포탈
+    public void pt_bh_bossOutN_R() { // Normal Lotus Reward Portal
         allBossOutPosition(350060300, 1);
     }
 
-    public void pt_bh_bossOut_R() { // 하드스우 รางวัลแผนที่포탈
+    public void pt_bh_bossOut_R() { // Hard Lotus Reward Portal
         allBossOutPosition(350060300, 1);
     }
 
-    public void ptDemianOut() { // 데미ใน 포탈
+    public void ptDemianOut() { // Damien Portal
         allBossOutPosition(105300303, 1);
     }
 
-    public void ptDemianOut_R() { // 데미ใน รางวัลแผนที่포탈
+    public void ptDemianOut_R() { // Damien Reward Portal
         allBossOutPosition(105300303, 1);
     }
 
-    public void pt_GC_out() { // 듄켈 포탈 & รางวัลแผนที่ 포탈
+    public void pt_GC_out() { // Dunkel Portal & Reward Portal
         allBossOutPosition(450012200, 2);
     }
 
-    public void pt_BM1_bossOut() { // 더스크 포탈 & รางวัลแผนที่ 포탈
+    public void pt_BM1_bossOut() { // Dusk Portal & Reward Portal
         allBossOutPosition(450009301, 1);
     }
 
-    public void pt_jinHillah_out() { // 진힐라 포탈 & รางวัลแผนที่ 포탈
+    public void pt_jinHillah_out() { // Jin Hilla Portal & Reward Portal
         allBossOutPosition(450011990, 2);
     }
 
-    public void serenOut() { // 세렌 게트 & รางวัลแผนที่포탈
+    public void serenOut() { // Seren Check & Reward Portal
         allBossOutPosition(410000670, 4);
     }
 
     public void allBossOut() {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투 หยุด ฉัน갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#ต้องการออกจากพื้นที่ต่อสู้หรือไม่?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);
@@ -82,7 +82,7 @@ public class BossOutPortal extends ScriptEngineNPC {
 
     public void allBossOutPosition(int Map, int Portal) {
         initNPC(MapleLifeFactory.getNPC(1530723));
-        if (self.askYesNo("#fs11#전투 หยุด ฉัน갈까?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
+        if (self.askYesNo("#fs11#ต้องการออกจากพื้นที่ต่อสู้หรือไม่?", ScriptMessageFlag.NpcReplacedByUser) == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
                 getPlayer().setEventInstance(null);

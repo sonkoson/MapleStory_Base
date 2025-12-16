@@ -1,6 +1,5 @@
 package script.ArcaneRiver;
 
-
 import constants.ServerConstants;
 import objects.fields.gameobject.lifes.MapleLifeFactory;
 import scripting.newscripting.Script;
@@ -11,57 +10,57 @@ public class Limen extends ScriptEngineNPC {
     public void BPReturn_dunkel() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#โลก의 눈น้ำ 중단3#l");
+            int v = target.askMenu("จะไปที่ไหนดี?\r\n#b#L0#กลับไปที่จัตุรัส#l\r\n#L1#ใจกลางน้ำตาแห่งโลก 3#l");
             switch (v) {
-                case 0: { //광장
+                case 0: { // Square
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //โลก의 눈น้ำ 중단3
+                case 1: { // Tears of the World Middle 3
                     registerTransferField(450012120, 3);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
     public void BPReturn_BM() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#광장으로#l\r\n#L1#โลก가 끝ฉัน는 곳 1-3#l");
+            int v = target.askMenu("จะไปที่ไหนดี?\r\n#b#L0#กลับไปที่จัตุรัส#l\r\n#L1#สุดขอบโลก 1-3#l");
             switch (v) {
-                case 0: { //광장
+                case 0: { // Square
                     registerTransferField(ServerConstants.TownMap);
                     break;
                 }
-                case 1: { //โลก가 끝ฉัน는 곳 1-3
+                case 1: { // End of the World 1-3
                     registerTransferField(450012320, 2);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
     public void east_450012320() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 255) {
-            int v = target.askMenu("ที่ไหน로 갈까?\r\n#b#L0#거인의 심장#l\r\n#L1#โลก가 끝ฉัน는 곳 2-1#l");
+            int v = target.askMenu("จะไปที่ไหนดี?\r\n#b#L0#หัวใจยักษ์#l\r\n#L1#สุดขอบโลก 2-1#l");
             switch (v) {
-                case 0: { //광장
+                case 0: { // Giant's Heart
                     registerTransferField(450012500, 2);
                     break;
                 }
-                case 1: { //#โลก가 끝ฉัน는 곳 2-1
+                case 1: { // End of the World 2-1
                     registerTransferField(450012400, 3);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -70,7 +69,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012010, 1);
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -79,7 +78,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012100, 1);
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -88,7 +87,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012110, 1);
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -97,7 +96,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012120, 1);
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -106,7 +105,7 @@ public class Limen extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 255) {
             registerTransferField(450012200, 3);
         } else {
-            getPlayer().dropMessage(5, "255เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 255 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 }

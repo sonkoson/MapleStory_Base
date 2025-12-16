@@ -63,21 +63,27 @@ public class MasteryBook extends ScriptEngineNPC {
             for (int skill : s) {
                 skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไปและ 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //마스터리북 ใช้ยกเลิก หรือ
+            int v0 = self.askMenu(
+                    "รายการสกิลที่คุณสามารถอัปเกรดได้มีดังนี้\r\n\r\n" + skillList
+                            + "\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { // Cancel Mastery Book use or
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
-                        list.put(SkillFactory.getSkill(v0), new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 20, -1));
+                        list.put(SkillFactory.getSkill(v0),
+                                new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 20, -1));
                         getPlayer().changeSkillsLevel(list);
-                        //마스터리북 이펙트뜨게
-                        getPlayer().dropMessage(5, "마스터리 북이 สำเร็จ적으로 ใช้되었.");
+                        // Show Mastery Book effect
+                        getPlayer().dropMessage(5, "ใช้ Mastery Book สำเร็จ");
                         getPlayer().send(CField.environmentChange("masteryBook/EnchantSuccess", 5, 100));
                     }
                 }
             }
         } else {
-            self.askMenu("자네는 아직 어떤 4ชา สกิล 배우지 않았거ฉัน ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게ฉัน.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu(
+                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 
@@ -103,21 +109,27 @@ public class MasteryBook extends ScriptEngineNPC {
             for (int skill : s) {
                 skillList += "#L" + skill + "# " + "#s" + skill + "# #fn돋움##fs14##e#q" + skill + "##n#fs##fn##l\r\n";
             }
-            int v0 = self.askMenu("자네가 올릴 수 있는 สกิล รายการ은 ถัดไปและ 같네.\r\n\r\n" + skillList + "\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-            if (v0 != 0) { //마스터리북 ใช้ยกเลิก หรือ
+            int v0 = self.askMenu(
+                    "รายการสกิลที่คุณสามารถอัปเกรดได้มีดังนี้\r\n\r\n" + skillList
+                            + "\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            if (v0 != 0) { // Cancel Mastery Book use or
                 if (skills.contains(v0)) {
                     if (target.exchange(itemId, -1) > 0) {
                         Map<Skill, SkillEntry> list = new HashMap<>();
-                        list.put(SkillFactory.getSkill(v0), new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 30, -1));
+                        list.put(SkillFactory.getSkill(v0),
+                                new SkillEntry((byte) getPlayer().getSkillLevel(v0), (byte) 30, -1));
                         getPlayer().changeSkillsLevel(list);
-                        //마스터리북 이펙트뜨게
-                        getPlayer().dropMessage(5, "마스터리 북이 สำเร็จ적으로 ใช้되었.");
+                        // Show Mastery Book effect
+                        getPlayer().dropMessage(5, "ใช้ Mastery Book สำเร็จ");
                         getPlayer().send(CField.environmentChange("masteryBook/EnchantSuccess", 5, 100));
                     }
                 }
             }
         } else {
-            self.askMenu("자네는 아직 어떤 4ชา สกิล 배우지 않았거ฉัน ปัจจุบัน  마스터리 북이 ใช้งาน될 สกิล 없는 모양วัน세. ยืนยัน해보고 ถัดไป에 다시 ใช้하게ฉัน.\r\n\r\n#r#L0# #fn돋움##fs14##e마스터리 북 ใช้을 ยกเลิก한다.#n#fs##fn##l", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+            self.askMenu(
+                    "ดูเหมือนว่าคุณยังไม่ได้เรียนสกิลคลาส 4 หรือไม่มีสกิลที่สามารถใช้ Mastery Book ได้ในขณะนี้ กรุณาตรวจสอบและลองใหม่อีกครั้งภายหลัง\r\n\r\n#r#L0# #fn돋움##fs14##eยกเลิกการใช้ Mastery Book#n#fs##fn##l",
+                    ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         }
     }
 }

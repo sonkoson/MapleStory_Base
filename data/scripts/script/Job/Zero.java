@@ -8,296 +8,487 @@ import scripting.newscripting.ScriptEngineNPC;
 
 public class Zero extends ScriptEngineNPC {
 
-    public void zero_inheritance() {
-        int level = getPlayer().getLevel();
-        int curLv = 0;
-        int itemID = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
+        public void zero_inheritance() {
+                int level = getPlayer().getLevel();
+                int curLv = 0;
+                int itemID = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).getItemId();
 
-        if (itemID == 1562007) {
-            curLv = 7;
-        } else if (itemID == 1562008) {
-            curLv = 8;
-        } else if (itemID == 1562009) {
-            curLv = 9;
-        } else if (itemID == 1562010) {
-            curLv = 10;
-        }
-
-        if (curLv == 7 && level < 180) {
-            return;
-        }
-        if (curLv == 8 && level < 200) {
-            return;
-        }
-
-        if (curLv != 10) {
-            self.sayReplacedNpc("이제จาก เรา를 더 성장 시키기 บน해서는 พิเศษ 재료가 จำเป็น해.", 2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#비싼 몸이구ฉัน…… เรา……", 2400010, 0, ScriptMessageFlag.Scenario);
-        }
-
-        int v0 = -1;
-        if (getPlayer().getOneInfoQuestInteger(40981, "save_genesis") == 1) {
-            if (curLv != 10) {
-                v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L3# 제네시스 라피스และ 라즐리를 얻는다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
-            } else {
-                v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L3# ก่อนหน้า 단계의 라피스และ 라즐리를 장착한다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
-            }
-        } else if (curLv == 7) {
-            if (level >= 200) {
-                v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L0# 라피스และ 라즐리를 8형으로 성장시킨다.#l\r\n#L1# 라피스และ 라즐리를 9형으로 성장시킨다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
-            } else {
-                v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L0# 라피스และ 라즐리를 8형으로 성장시킨다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
-            }
-        } else if (curLv == 8) {
-            v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L1# 라피스และ 라즐리를 9형으로 성장시킨다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
-        } else if (curLv == 9) {
-            v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L2# 라피스และ 라즐리를 10형으로 성장시킨다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.Scenario);
-        } else if (curLv == 10) {
-            v0 = self.askMenuReplacedNpc("자, #h0#. อย่างไร 하겠어?\r\n\r\n#b#L3# ก่อนหน้า 단계의 라피스และ 라즐리를 장착한다.#l\r\n#L999# เขา만둔다.#l", 2400009, 0,  ScriptMessageFlag.NpcReplacedByNpc);
-        }
-
-        if (v0 == 0) {
-            self.sayReplacedNpc("성장하기 บน해서는 #t4310216# 1개 จำเป็น해.", 2400009, 0, ScriptMessageFlag.Scenario);
-            getPlayer().openInheritanceUpgrade(8, 4310216, 1);
-        } else if (v0 == 1) {
-            self.sayReplacedNpc("성장하기 บน해서는 #t4310217# 1개 จำเป็น해.", 2400009, 0, ScriptMessageFlag.Scenario);
-            getPlayer().openInheritanceUpgrade(9, 4310217, 1);
-        } else if (v0 == 2) {
-            self.sayReplacedNpc("제네시스 อาวุธ를 얻기 บน해서는 #t4310260# 1개 จำเป็น해.", 2400009, 0, ScriptMessageFlag.Scenario);
-            if (!getPlayer().haveItem(4310260)) {
-                self.sayReplacedNpc("검은 마법사가 남긴 흔적을 따라가면 #b#t4310260##k 습득할 수 있을거야.", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("참고로 #t4310260# ใช้한 성장은 지금ถึงและ는 อื่น 점이 많아!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#b제네시스 อาวุธ#k ก่อนหน้า 단계의 อาวุธ에서 잠재ความสามารถ, 에디셔널 잠재ความสามารถ, เพิ่มตัวเลือก 제외는 전수되지 않고 พิเศษ ตัวเลือก 가지고 있어.\r\n#r- สัปดาห์ประตู의 흔적 15% โจมตี력(힘) สัปดาห์ประตู서로 อัพเกรด เป็นไปได้ 횟수 ทั้งหมด ใช้\r\n- 스타포스 22성\r\n- Unique 잠재ความสามารถ และ Epic 에디셔널 잠재ความสามารถ มี(전수하지 않을 경우)\r\n-장착 시 <파괴의 얄다바오트>, <창조의 아이온> สกิล ได้รับ\r\n- สัปดาห์ประตู서 และ 스타포스 เสริมแรง 불가", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("และ 제네시스 อาวุธ를 완성한 후에는 อาวุธ 성장 버튼으로 ก่อนหน้า 단계และ 제네시스 อาวุธ를 오갈 수 있으니 제네시스 อาวุธ로 เสริมแรง하는 것을 고민하지 않아도 될거야.\r\n단, 교체하는데 힘이 มาก จำเป็น해서 한번 교체한 후 10นาที 동ใน은 교체할 수 없어.", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("열심히 노력해서 #b#t4310260##k 얻기를 바랄게.", 2400009, 0, ScriptMessageFlag.Scenario);
-                //getPlayer().openInheritanceUpgrade(10, 4310260, 1);
-            } else {
-                self.sayReplacedNpc("검은 마법사의 힘이 담긴 #b#t4310260##k 구ทำ니!\r\n대단하구ฉัน 너!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#b#t4310260##k 이용 เรา를 #b제네시스 อาวุธ#k เสริมแรง할 수 있어!\r\nแต่ 지금ถึง의 เสริมแรงและ는 อื่น 점이 많아!", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("#b제네시스 อาวุธ#k ก่อนหน้า 단계의 อาวุธ에서 잠재ความสามารถ, 에디셔널 잠재ความสามารถ, เพิ่มตัวเลือก 제외는 전수되지 않고 พิเศษ ตัวเลือก 가지고 있어.\r\n#r- สัปดาห์ประตู의 흔적 15% โจมตี력(힘) สัปดาห์ประตู서로 อัพเกรด เป็นไปได้ 횟수 ทั้งหมด ใช้\r\n- 스타포스 22성\r\n- Unique 잠재ความสามารถ และ Epic 에디셔널 잠재ความสามารถ มี(전수하지 않을 경우)\r\n-장착 시 <파괴의 얄다바오트>, <창조의 아이온> สกิล ได้รับ\r\n- สัปดาห์ประตู서 และ 스타포스 เสริมแรง 불가", 2400009, 0, ScriptMessageFlag.Scenario);
-                self.sayReplacedNpc("และ 제네시스 อาวุธ를 완성한 후에는 อาวุธ 성장 버튼으로 ก่อนหน้า 단계และ 제네시스 อาวุธ를 오갈 수 있으니 제네시스 อาวุธ로 เสริมแรง하는 것을 고민하지 않아도 될거야.\r\n단, 교체하는데 힘이 มาก จำเป็น해서 한번 교체한 후 10นาที 동ใน은 교체할 수 없어.", 2400009, 0, ScriptMessageFlag.Scenario);
-                int v1 = self.askMenuReplacedNpc("#r잠재ความสามารถ#k 경우 네가 원한다면 สุ่ม한 #bUnique 잠재ความสามารถ#k 변화할거야. #bUnique 잠재ความสามารถ#k 변화하겠어?\r\n\r\n#b#L0#Unique 잠재ความสามารถ으로 เปลี่ยน한다.#l\r\n#L1#기존 잠재ความสามารถ을 เขา대로 유지한다.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                int v2 = self.askMenuReplacedNpc("#r에디셔널 잠재ความสามารถ#k 경우 네가 원한다면 สุ่ม한 #bEpic 에디셔널 잠재 ตัวเลือก#k 변화할거야. #bEpic 에디셔널 잠재ความสามารถ#k 변화하겠어?\r\n\r\n#b#L0#Epic 에디셔널 잠재ความสามารถ으로 เปลี่ยน한다.#l\r\n#L1#기존 에디셔널 잠재ความสามารถ을 เขา대로 유지한다.#l", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                self.sayReplacedNpc("#bเพิ่มตัวเลือก#k เขา대로 전수되니 걱정하지마!", 2400009, 0, ScriptMessageFlag.Scenario);
-                String v4 = "자! 이제 정말 ครั้งสุดท้าย이야!\r\n#t4310260# ใช้해 #b제네시스 라피스และ 라즐리#k 얻겠어?\r\n";
-                v4 += "\r\n#r잠재ความสามารถ ตัวเลือก Unique รีเซ็ต 여부 : #e" + (v1 == 0 ? "รีเซ็ต" : "รีเซ็ต하지 않음") + "#n\r\n";
-                v4 += "#r에디셔널 잠재ความสามารถ ตัวเลือก Epic รีเซ็ต 여부 : #e" + (v2 == 0 ? "รีเซ็ต" : "รีเซ็ต하지 않음") + "#n\r\n";
-                v4 += "\r\n#b#L0#제네시스 라피스และ 라즐리를 얻는다.#l\r\n#L1#เขา만둔다.#l";
-                int v3 = self.askMenuReplacedNpc(v4, 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                if (v3 == 0) {
-                    if (v1 == 0) {
-                        getPlayer().updateOneInfo(40981, "reset_potential", "1");
-                    }
-                    if (v2 == 0) {
-                        getPlayer().updateOneInfo(40981, "reset_e_potential", "1");
-                    }
-                    getPlayer().openInheritanceUpgrade(10, 4310260, 1);
-                }
-            }
-        } else if (v0 == 3) {
-            boolean check = false;
-            long time = getPlayer().getOneInfoQuestLong(40981, "last_change_time");
-            if (time == 0 || System.currentTimeMillis() - time >= (1000 * 60 * 10)) {
-                // 10นาที
-                check = true;
-            }
-            if (check) {
-                Item alphaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -20000);
-                Item betaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -20001);
-                if (alphaBefore == null || betaBefore == null) {
-                    self.sayReplacedNpc("알 수 없는 오류가 발생했어. 고객센터에 ประตู의해สัปดาห์겠어?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-                    return;
+                if (itemID == 1562007) {
+                        curLv = 7;
+                } else if (itemID == 1562008) {
+                        curLv = 8;
+                } else if (itemID == 1562009) {
+                        curLv = 9;
+                } else if (itemID == 1562010) {
+                        curLv = 10;
                 }
 
-                // ปัจจุบัน อาวุธ บันทึก
-                Equip alpha_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11).copy();
-                Equip beta_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10).copy();
-
-
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).removeItem((short ) -11);
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).removeItem((short ) -10);
-
-                alphaBefore.setPosition((short) -11);
-                betaBefore.setPosition((short) -10);
-
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alphaBefore);
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(betaBefore);
-
-                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(alphaBefore));
-                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(betaBefore));
-
-
-                alpha_copy.setPosition((short) -20000);
-                beta_copy.setPosition((short) -20001);
-
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alpha_copy);
-                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(beta_copy);
-
-                if (curLv == 10) {
-                    getPlayer().changeSkillLevel(80002632, -1, -1);
-                    getPlayer().changeSkillLevel(80002633, -1, -1);
-                } else {
-                    getPlayer().changeSkillLevel(80002632, 1, 1);
-                    getPlayer().changeSkillLevel(80002633, 1, 1);
+                if (curLv == 7 && level < 180) {
+                        return;
                 }
-                getPlayer().updateOneInfo(40981, "save_genesis", "1");
-                getPlayer().updateOneInfo(40981, "last_change_time", String.valueOf(System.currentTimeMillis()));
-            } else {
-                self.sayReplacedNpc("ก่อนหน้า อาวุธ로 돌아가는데 많은 힘이 จำเป็น해. 아직 เวลา이 더 จำเป็น하니 ฉัน중에 다시 시도해줄래?", 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
-            }
+                if (curLv == 8 && level < 200) {
+                        return;
+                }
+
+                if (curLv != 10) {
+                        self.sayReplacedNpc("จากนี้ไป เพื่อทำให้พวกเราเติบโตขึ้น จำเป็นต้องใช้วัตถุดิบพิเศษนะ", 2400009,
+                                        0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face1#ค่าตัวแพงจังนะ... พวกเราเนี่ย...", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                }
+
+                int v0 = -1;
+                if (getPlayer().getOneInfoQuestInteger(40981, "save_genesis") == 1) {
+                        if (curLv != 10) {
+                                v0 = self.askMenuReplacedNpc(
+                                                "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L3# รับ Genesis Lapis และ Lazuli#l\r\n#L999# ไว้ก่อน#l",
+                                                2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                        } else {
+                                v0 = self.askMenuReplacedNpc(
+                                                "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L3# สวมใส่ Lapis และ Lazuli ระดับก่อนหน้า#l\r\n#L999# ไว้ก่อน#l",
+                                                2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                        }
+                } else if (curLv == 7) {
+                        if (level >= 200) {
+                                v0 = self.askMenuReplacedNpc(
+                                                "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L0# พัฒนา Lapis และ Lazuli เป็นระดับ 8#l\r\n#L1# พัฒนา Lapis และ Lazuli เป็นระดับ 9#l\r\n#L999# ไว้ก่อน#l",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                        } else {
+                                v0 = self.askMenuReplacedNpc(
+                                                "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L0# พัฒนา Lapis และ Lazuli เป็นระดับ 8#l\r\n#L999# ไว้ก่อน#l",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                        }
+                } else if (curLv == 8) {
+                        v0 = self.askMenuReplacedNpc(
+                                        "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L1# พัฒนา Lapis และ Lazuli เป็นระดับ 9#l\r\n#L999# ไว้ก่อน#l",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (curLv == 9) {
+                        v0 = self.askMenuReplacedNpc(
+                                        "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L2# พัฒนา Lapis และ Lazuli เป็นระดับ 10#l\r\n#L999# ไว้ก่อน#l",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (curLv == 10) {
+                        v0 = self.askMenuReplacedNpc(
+                                        "เอาล่ะ #h0# จะเอายังไงดี?\r\n\r\n#b#L3# สวมใส่ Lapis และ Lazuli ระดับก่อนหน้า#l\r\n#L999# ไว้ก่อน#l",
+                                        2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                }
+
+                if (v0 == 0) {
+                        self.sayReplacedNpc("เพื่อที่จะเติบโต จำเป็นต้องมี #t4310216# 1 ชิ้น", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        getPlayer().openInheritanceUpgrade(8, 4310216, 1);
+                } else if (v0 == 1) {
+                        self.sayReplacedNpc("เพื่อที่จะเติบโต จำเป็นต้องมี #t4310217# 1 ชิ้น", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        getPlayer().openInheritanceUpgrade(9, 4310217, 1);
+                } else if (v0 == 2) {
+                        self.sayReplacedNpc("เพื่อที่จะได้รับอาวุธ Genesis จำเป็นต้องมี #t4310260# 1 ชิ้น", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        if (!getPlayer().haveItem(4310260)) {
+                                self.sayReplacedNpc("ถ้าตามรอยที่ Black Mage ทิ้งไว้ ก็จะได้รับ #b#t4310260##k ไงล่ะ",
+                                                2400009, 0,
+                                                ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc("อีกอย่าง การเติบโตโดยใช้ #t4310260# มันต่างจากที่ผ่านมามากนะ!",
+                                                2400009, 0,
+                                                ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc(
+                                                "#bอาวุธ Genesis#k นั้น ศักยภาพ, ศักยภาพเพิ่มเติม, และออปชั่นเพิ่มเติมจากระดับก่อนหน้านั้นจะไม่ถูกสืบทอดมา และจะมีออปชั่นพิเศษติดมาด้วย\r\n#r- ใช้ใบอัปเกรด Spell Trace 15% พลังโจมตี(STR) จนครบจำนวนอัปเกรดทั้งหมด\r\n- Star Force 22 ดาว\r\n- มีศักยภาพระดับ Unique และศักยภาพเพิ่มเติมระดับ Epic (กรณีที่ไม่สืบทอด)\r\n- เมื่อสวมใส่จะได้รับสกิล <Yaldabaoth of Destruction>, <Aeon of Creation>\r\n- ไม่สามารถใช้ใบอัปเกรดและเสริมแกร่ง Star Force ได้",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc(
+                                                "และหลังจากทำอาวุธ Genesis สำเร็จแล้ว ก็สามารถใช้ปุ่มพัฒนาอาวุธเพื่อสลับไปมาระหว่างระดับก่อนหน้าและอาวุธ Genesis ได้ ดังนั้นไม่ต้องกังวลเรื่องการเสริมแกร่งอาวุธ Genesis หรอกนะ\r\nแต่ว่า การสลับอาวุธต้องใช้พลังมาก ดังนั้นหลังจากสลับครั้งนึงแล้ว จะไม่สามารถสลับได้อีกเป็นเวลา 10 นาที",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc("พยายามเข้าล่ะ หวังว่าจะได้ #b#t4310260##k มานะ", 2400009, 0,
+                                                ScriptMessageFlag.Scenario);
+                                // getPlayer().openInheritanceUpgrade(10, 4310260, 1);
+                        } else {
+                                self.sayReplacedNpc(
+                                                "#b#t4310260##k ที่มีพลังของ Black Mage อยู่ งั้นเหรอ!\r\nสุดยอดไปเลยนะ นายเนี่ย!",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc(
+                                                "ใช้ #b#t4310260##k เสริมแกร่งพวกเราให้เป็น #bอาวุธ Genesis#k ได้สินะ!\r\nแต่ว่า การเสริมแกร่งตอนนี้มันต่างจากที่ผ่านมามากนะ!",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc(
+                                                "#bอาวุธ Genesis#k นั้น ศักยภาพ, ศักยภาพเพิ่มเติม, และออปชั่นเพิ่มเติมจากระดับก่อนหน้านั้นจะไม่ถูกสืบทอดมา และจะมีออปชั่นพิเศษติดมาด้วย\r\n#r- ใช้ใบอัปเกรด Spell Trace 15% พลังโจมตี(STR) จนครบจำนวนอัปเกรดทั้งหมด\r\n- Star Force 22 ดาว\r\n- มีศักยภาพระดับ Unique และศักยภาพเพิ่มเติมระดับ Epic (กรณีที่ไม่สืบทอด)\r\n- เมื่อสวมใส่จะได้รับสกิล <Yaldabaoth of Destruction>, <Aeon of Creation>\r\n- ไม่สามารถใช้ใบอัปเกรดและเสริมแกร่ง Star Force ได้",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                self.sayReplacedNpc(
+                                                "และหลังจากทำอาวุธ Genesis สำเร็จแล้ว ก็สามารถใช้ปุ่มพัฒนาอาวุธเพื่อสลับไปมาระหว่างระดับก่อนหน้าและอาวุธ Genesis ได้ ดังนั้นไม่ต้องกังวลเรื่องการเสริมแกร่งอาวุธ Genesis หรอกนะ\r\nแต่ว่า การสลับอาวุธต้องใช้พลังมาก ดังนั้นหลังจากสลับครั้งนึงแล้ว จะไม่สามารถสลับได้อีกเป็นเวลา 10 นาที",
+                                                2400009, 0, ScriptMessageFlag.Scenario);
+                                int v1 = self.askMenuReplacedNpc(
+                                                "ในส่วนของ #rศักยภาพ#k ถ้าเจ้าต้องการ มันจะถูกเปลี่ยนเป็น #bศักยภาพระดับ Unique#k แบบสุ่ม จะเปลี่ยนเป็น #bศักยภาพระดับ Unique#k หรือไม่?\r\n\r\n#b#L0#เปลี่ยนเป็นศักยภาพระดับ Unique#l\r\n#L1#คงศักยภาพเดิมไว้ตามเดิม#l",
+                                                2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                                int v2 = self.askMenuReplacedNpc(
+                                                "ในส่วนของ #rศักยภาพเพิ่มเติม#k ถ้าเจ้าต้องการ มันจะถูกเปลี่ยนเป็น #bออปชั่นศักยภาพเพิ่มเติมระดับ Epic#k แบบสุ่ม จะเปลี่ยนเป็น #bศักยภาพเพิ่มเติมระดับ Epic#k หรือไม่?\r\n\r\n#b#L0#เปลี่ยนเป็นศักยภาพเพิ่มเติมระดับ Epic#l\r\n#L1#คงศักยภาพเพิ่มเติมเดิมไว้ตามเดิม#l",
+                                                2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                                self.sayReplacedNpc("#bออปชั่นเพิ่มเติม#k จะถูกสืบทอดมาตามเดิม ไม่ต้องกังวลนะ!",
+                                                2400009, 0,
+                                                ScriptMessageFlag.Scenario);
+                                String v4 = "เอาล่ะ! นี่เป็นครั้งสุดท้ายจริงๆ แล้ว!\r\nใช้ #t4310260# เพื่อรับ #bGenesis Lapis และ Lazuli#k ไหม?\r\n";
+                                v4 += "\r\n#rสถานะการรีเซ็ตออปชั่นศักยภาพ Unique : #e"
+                                                + (v1 == 0 ? "รีเซ็ต" : "ไม่รีเซ็ต") + "#n\r\n";
+                                v4 += "#rสถานะการรีเซ็ตออปชั่นศักยภาพเพิ่มเติม Epic : #e"
+                                                + (v2 == 0 ? "รีเซ็ต" : "ไม่รีเซ็ต")
+                                                + "#n\r\n";
+                                v4 += "\r\n#b#L0#รับ Genesis Lapis และ Lazuli#l\r\n#L1#ไว้ก่อน#l";
+                                int v3 = self.askMenuReplacedNpc(v4, 2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                                if (v3 == 0) {
+                                        if (v1 == 0) {
+                                                getPlayer().updateOneInfo(40981, "reset_potential", "1");
+                                        }
+                                        if (v2 == 0) {
+                                                getPlayer().updateOneInfo(40981, "reset_e_potential", "1");
+                                        }
+                                        getPlayer().openInheritanceUpgrade(10, 4310260, 1);
+                                }
+                        }
+                } else if (v0 == 3) {
+                        boolean check = false;
+                        long time = getPlayer().getOneInfoQuestLong(40981, "last_change_time");
+                        if (time == 0 || System.currentTimeMillis() - time >= (1000 * 60 * 10)) {
+                                // 10นาที
+                                check = true;
+                        }
+                        if (check) {
+                                Item alphaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                                                .getItem((short) -20000);
+                                Item betaBefore = getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                                                .getItem((short) -20001);
+                                if (alphaBefore == null || betaBefore == null) {
+                                        self.sayReplacedNpc(
+                                                        "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ ลองติดต่อ Customer Center ดูไหม?",
+                                                        2400009, 0,
+                                                        ScriptMessageFlag.NpcReplacedByNpc);
+                                        return;
+                                }
+
+                                // ปัจจุบัน อาวุธ บันทึก
+                                Equip alpha_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                                                .getItem((short) -11)
+                                                .copy();
+                                Equip beta_copy = (Equip) getPlayer().getInventory(MapleInventoryType.EQUIPPED)
+                                                .getItem((short) -10)
+                                                .copy();
+
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).removeItem((short) -11);
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).removeItem((short) -10);
+
+                                alphaBefore.setPosition((short) -11);
+                                betaBefore.setPosition((short) -10);
+
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alphaBefore);
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(betaBefore);
+
+                                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(alphaBefore));
+                                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(betaBefore));
+
+                                alpha_copy.setPosition((short) -20000);
+                                beta_copy.setPosition((short) -20001);
+
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alpha_copy);
+                                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(beta_copy);
+
+                                if (curLv == 10) {
+                                        getPlayer().changeSkillLevel(80002632, -1, -1);
+                                        getPlayer().changeSkillLevel(80002633, -1, -1);
+                                } else {
+                                        getPlayer().changeSkillLevel(80002632, 1, 1);
+                                        getPlayer().changeSkillLevel(80002633, 1, 1);
+                                }
+                                getPlayer().updateOneInfo(40981, "save_genesis", "1");
+                                getPlayer().updateOneInfo(40981, "last_change_time",
+                                                String.valueOf(System.currentTimeMillis()));
+                        } else {
+                                self.sayReplacedNpc(
+                                                "การกลับไปเป็นอาวุธก่อนหน้าต้องใช้พลังมหาศาล ยังต้องการเวลาอีกหน่อย ไว้ลองใหม่ทีหลังนะ?",
+                                                2400009, 0, ScriptMessageFlag.NpcReplacedByNpc);
+                        }
+                }
         }
-    }
 
-    public void zero_reinvoke_weapon() {
-        int curLv = getPlayer().getOneInfoQuestInteger(40981, "lv");
+        public void zero_reinvoke_weapon() {
+                int curLv = getPlayer().getOneInfoQuestInteger(40981, "lv");
 
-        self.sayReplacedNpc("#face2#우왓, 이거 완전히 가루가 버렸잖아? 너, 대체 ฉัน한테 무슨 짓을 한 거야? 이제 어떡하냐고? 어떡하긴 뭘 어떡해? อาวุธ가 깨졌으니 ทั้งหมด 게 끝, GAME OVER지! เขา동ใน 즐거웠어. เขา럼 ใน녕……", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("…라고  서운하겠지? 하하, 놀랐어? แต่ ฉัน도 이번엔 มาก 놀랐다고. ฉัน, 알고 보면 예민한 남자야. 소중하게 다뤄줘~", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("어ชา피 อาวุธ는 เรา를 담고 있는 เขา릇วัน 뿐, เรา가 เขา대로 남아มี면 อาวุธ는 เมื่อไหร่든지 되살릴 수 있어. 자자, เขา럼 เวลา의 힘을 모아서 이렇게……", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+                self.sayReplacedNpc(
+                                "#face2#เหวอ, นี่มันกลายเป็นผงไปหมดแล้วไม่ใช่เหรอ? นายทำอะไรกับฉันเนี่ย? แล้วจะทำยังไงดียังงั้นเหรอ? ก็ไม่เห็นต้องทำยังไงเลย! อาวุธพังไปแล้ว ทุกอย่างก็จบ GAME OVER ไงล่ะ! ที่ผ่านมาสนุกมากนะ งั้นก็ ลาก่อน...",
+                                2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+                self.sayReplacedNpc(
+                                "...ถ้าพูดแบบนั้นคงเสียใจแย่สินะ? ฮ่าๆ ตกใจไหมล่ะ? แต่ครั้งนี้ฉันเองก็ตกใจมากเหมือนกันนะ เห็นแบบนี้ฉันเป็นผู้ชายที่อ่อนไหวนะ ช่วยดูแลกันดีๆ หน่อยสิ~",
+                                2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+                self.sayReplacedNpc(
+                                "ยังไงซะ อาวุธก็เป็นแค่ภาชนะที่บรรจุพวกเราไว้ ตราบใดที่พวกเรายังอยู่ ก็สามารถชุบชีวิตอาวุธขึ้นมาใหม่ได้ทุกเมื่อ เอาล่ะ งั้นรวบรวมพลังแห่งเวลาแบบนี้...",
+                                2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
 
-        getSc().flushSay();
+                getSc().flushSay();
 
-        int alphaID = 1572000 + Math.min(7, curLv);
-        int betaID = 1562000 + Math.min(7, curLv);
+                int alphaID = 1572000 + Math.min(7, curLv);
+                int betaID = 1562000 + Math.min(7, curLv);
 
-        MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-        Equip alpha_new = (Equip) ii.getEquipById(alphaID);
-        Equip beta_new = (Equip) ii.getEquipById(betaID);
+                MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
+                Equip alpha_new = (Equip) ii.getEquipById(alphaID);
+                Equip beta_new = (Equip) ii.getEquipById(betaID);
 
-        alpha_new.setPosition((short) -11);
-        beta_new.setPosition((short) -10);
+                alpha_new.setPosition((short) -11);
+                beta_new.setPosition((short) -10);
 
-        getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alpha_new);
-        getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(beta_new);
+                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(alpha_new);
+                getPlayer().getInventory(MapleInventoryType.EQUIPPED).addFromDB(beta_new);
 
-        getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(alpha_new));
-        getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(beta_new));
+                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(alpha_new));
+                getPlayer().send(CWvsContext.InventoryPacket.updateEquipSlot(beta_new));
 
-        self.sayReplacedNpc("쨘! 어때. 감쪽같지? 응? เมื่อไหร่든지 재생이 เป็นไปได้하니까 마음놓고 เสริมแรง를 해도 되겠다고? เขา건…", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("#face2#…อย่างไร เขา런 생แต่ละ을 할 수 있어?! อาวุธ가 깨질 때 เรา도 만만찮게 충격을 받는단 말야! อาวุธ가 깨지는 바람에 얼MP 놀랐는데……", 2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-        self.sayReplacedNpc("เขา건 라즐리 말이 맞아. 게다가 너무 강력한 ไอเท็ม เวลา의 힘으로도 되살리는데에 한계가 있어. หน้า으로는 조심해!", 2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
-    }
-
-    public void zero_egoequiptalk() {
-        int r = Randomizer.rand(1, 34);
-        if (r == 1) {
-            self.sayReplacedNpc("내가 제วัน 좋아하는 거…? 으응… ฉัน는 딸기 케이크가 제วัน 좋아. ฉัน랑 ด้วยกัน 먹고 싶다면... 응, 너라면 ด้วยกัน 먹어도 좋아.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("ฉัน도, ฉัน도! 딸기 케이크 ฉัน도 좋아해!",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#싫어! ฉัน는 알파랑 둘이… 아, 아니 เขา럼 난 ใน 갈래.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 2) {
-            self.sayReplacedNpc("라피스에 대해서 อย่างไร 생แต่ละ하냐고? 음… 덩치만 커다란 바보?",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face2#너무해, 라즐리. ฉัน 상처받았다고.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("앗, ฉัน기에 엄청 맛있어보이는 เนื้อ가!",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เนื้อ?! ที่ไหน? ที่ไหน?",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("흥, 역시 바보라니까.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 3) {
-            self.sayReplacedNpc("#face1#เขา, เขา렇게 빤히 쳐다보면 어쩐지 창피하단 말야.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 4) {
-            self.sayReplacedNpc("알파를 เลือก한 이유? เขา건… 벼, 별อื่น 이유 없어. เขา냥 ใครฉัน 골랐을 뿐이라구. 혹시 네가 마음에 들어서 เขา렇다는 착แต่ละ은 하지 말아줬으면 좋겠어!",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 5) {
-            self.sayReplacedNpc("#face1#ฉัน는 밤이 싫어. คนเดียว 있는 것만 เหมือนกัน 기นาที이 든단 말야. เขา래도 이젠 คนเดียว가 아니니까 괜찮아.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เขา래เขา래, 내가 있으니까 걱정하지 말라구.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#너한테 한 말 아니거든!",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 6) {
-            self.sayReplacedNpc("#face0#딱히 네가 좋아서 ด้วยกัน 있어สัปดาห์는 건 아니야. เขา냥 ฉัน는 내 의무를 다 있는 것 뿐이니까 신경쓰지 말아줬음 좋겠어.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 7) {
-            self.sayReplacedNpc("알파에 대해서 อย่างไร 생แต่ละ하냐고? 어, อย่างไร 생แต่ละ하긴 뭘 อย่างไร 생แต่ละ해? 아, 알파 เหมือนกัน 건 นิดหน่อย도 좋아하지 않는다구!",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("흐음?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face1#เขา, เขา렇다고 싫어한다는 뜻은 아니니까……",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 8) {
-            self.sayReplacedNpc("#face0#내가 화난 것 같다고? เขา냥 날씨가 별로라서 เขา래. 굳이 네가 ฉัน에게 오랫동ใน 말을 걸어สัปดาห์지 않아서 เขา런 게 아니라구!",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 9) {
-            self.sayReplacedNpc("내가 제วัน 좋아하는 건… 당연히 เนื้อ지! 몸에 좋고 맛도 ดี เนื้อ!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("ฉัน도 เนื้อ 좋아해. 맛있어.",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("เขา럼 ฉัน랑 เนื้อ 먹으러 가자! 내가 완전 맛있게 구워줄게!",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 10) {
-            self.sayReplacedNpc("라즐리에 대해서 อย่างไร 생แต่ละ하냐고? 라즐리는… 정말 무서워. 화내면 마녀같다고. 봐, 지금도… 히익!",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 11) {
-            self.sayReplacedNpc("베타를 เลือก한 이유? เขา야 당연히… 예쁘니까! 이왕 สัปดาห์인으로 모실 거면 예쁜 여자가 좋잖아? 하하.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("내가 예뻐?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("당연하지! 라즐리도 알파가 잘생겨서 เลือก한 거잖아.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#เขา, เขา런 거 아니거든!",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 12) {
-            self.sayReplacedNpc("라즐리 녀석, 사실 너를 꽤ฉัน 좋아하는 거 같아. อย่างไร 아느냐고? 원래 เรา는 하ฉัน였으니까 말하지 않아도 다 알지.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face1#쓸데없는 소리 하지마. เขา런 거 아니야!",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 13) {
-            self.sayReplacedNpc("ฉัน 제법 쓸만한 것 같지 않아? …아니라고 생แต่ละ 어쩔 수 ไม่มี.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("라피스, 힘내…",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#어, 어쩐지 เขา 말이 더 기운빠지게 만드는 것 เหมือนกัน데.",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 14) {
-            self.sayReplacedNpc("우울한 땐 먹는 게 최고지. และ구และ구!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เขา럼 기นาที이 좋을 땐?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("기นาที 좋을 때도 먹는 게 최고지. และ구และ구!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เขา럼 슬픈 땐?",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("슬플 때도 먹는 게……",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("결국 ต่อไป 먹는다는 거잖아!",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 15) {
-            self.sayReplacedNpc("무슨 생แต่ละ을  있냐고? 사실 ฉัน는 지금 아สัปดาห์ 심แต่ละ하게… …ใคร 생แต่ละ도 없는데?",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 16) {
-            self.sayReplacedNpc("다들 조용하니까 ฉัน라도 นาทีบน기를 살려야지. ฉัน는 นาทีบน기 메이커로써 ฉัน름의 사명감을 가지고 มี고! 단순히 심심해서 장난치는 게 아니야. …정말로!",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 17) {
-            self.sayReplacedNpc("บอส มอนสเตอร์ 잡으면 더 많은 wp ได้รับ할 수 있어. น้ำ론 잡아야 ได้รับ할 수 있지, 잡아야…",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face0#1절만 하라고, 1절만! ",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 18) {
-            self.sayReplacedNpc("네가 성장해야 เรา도 진화할 수 있어. เขา러니까 몸에 좋고 맛도 ดี เนื้อ를 มาก 먹어야… 아, 이게 아닌가?",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 19) {
-            self.sayReplacedNpc("สัปดาห์ประตู서ฉัน 큐브를 ใช้ 대검และ 태도에 동시에 ใช้งาน된다고. 이게 바로 1+1!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face5#오, เขา거 괜찮은데?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("대신 파괴도 1+1이지!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face6#……!!!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 20) {
-            self.sayReplacedNpc("หนังสือ 읽는 거 좋아해? ฉัน는 หนังสือ만 펼치면 잠이 오던데… 혹시 신전 หนังสือ장에 만화หนังสือ은 없을까?",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 21) {
-            self.sayReplacedNpc("110, 120, 130, 140, 150, 170, 180เลเวล  อาวุธ ระดับ ขึ้น시킬 수 있어. น้ำ론 네가 원하지 않는다면 ฉัน중에 เลือก해도 좋아.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("뭔가 예전และ 미묘하게 อื่น 것 เหมือนกัน데?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("너야말로 แนะนำ를 유도하는 말투인 것 เหมือนกัน데?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("...",  2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 22) {
-            self.sayReplacedNpc("잠재ความสามารถเปลี่ยน 버튼을 눌러봤어? 어떤 잠재ความสามารถ이 ใช้งาน될 지 내 심장이 두근거린다고!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เขา러다가 ใน ดี 잠재ความสามารถ이 ฉัน오면 어떡해?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("괜찮아, ฉัน는 매사에 긍정적인 남자니까! ดี 게 ฉัน올 때ถึง 돌리면 되지!",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#결국 될대로 되라는 거잖아…",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 23) {
-            self.sayReplacedNpc("신관 중에 델로라는 녀석, 어린데 제법 똑똑하던걸? 전ประตู기술에 관해서 꽤ฉัน 해박한 지식을 갖고 있더라고.",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 24) {
-            self.sayReplacedNpc("WEAPON UI에서는 อาวุธ만 เสริมแรง할 수 있어. 여긴 เรา만의 공간이니까. ฉัน머지 ป้องกัน구ฉัน 액세서리는 원래처럼 อุปกรณ์창에서 เสริมแรง하라구. ",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 25) {
-            self.sayReplacedNpc("태เขา를 이용 좀 더 효율적인 전투가 เป็นไปได้해. 구, 굳이 ฉัน도 너희และ ด้วยกัน 싸우고 싶어서 เขา러는 건 아니니까 오해하진 말아줘.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 26) {
-            self.sayReplacedNpc("럭키ไอเท็ม สัปดาห์ประตู서를 ใช้ 세트ไอเท็ม เอฟเฟกต์를 낼 수 มี던데. 사실 난 ที่ไหน에 소속되는 걸 เขา리 좋아하진 않지만 말야.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 27) {
-            self.sayReplacedNpc("코인을 모아서 신관들에게 가져가면 좋아할 거야. 가난뱅이들에게는 꽤 가치가 있을 테니까.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face11#너 말이 너무 심ทำ?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#ฉัน, 난 เขา런 게 아니라…… ",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face10#하긴, 네 말도 틀린 건 아니지. 내가 가난뱅이인 건 사실이니까.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#아냐, เขา런 게 아니라…… 몰라, 바보!",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 28) {
-            self.sayReplacedNpc("골드라벨 ฉัน이트 ป้องกัน구 세트라고 알아? 거울โลก บอส들이 레시피를 가지고 มี던데 구해서 만들어 보는 게 어때? เขา럴 리는 없지만 의외로 너한테 어울릴지도 모르니까, 흥.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 29) {
-            self.sayReplacedNpc("MP포션은 맛없어. MP포션을 먹지 않아도 되는 건 정말 다행이야. ",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("세상에 네가 싫어하는 อาหาร도 있었어?",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#당연하지! 날 대체 뭘로 생แต่ละ 있는 거야?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("먹을 거 좋아하는 바보.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face2#너, 너무 솔직하잖아!",  2400009, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 30) {
-            self.sayReplacedNpc("เรา는 당연히 두손อาวุธ지. 두손으로 공손히 모시라는 뜻이야.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#두손อาวุธ가 เขา런 의미였어?!",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 31) {
-            self.sayReplacedNpc("여신의 눈น้ำ을 모으면 ใหม่ สกิล 배울 수 있어. …แต่ 난 걔네랑 별로 ด้วยกัน 다니고 싶진 않단 말야.",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 32) {
-            self.sayReplacedNpc("너희, 닮긴 했지만 เขา래도 มาก อื่น걸. 헤어ฉัน 성형은 ด้วยกัน 쓸 수도 있지만 한 명씩도 ใช้ เป็นไปได้하니까 좀 더 개성을 추구하는 것도 ฉัน쁘지 않을지도?",  2400010, 0, ScriptMessageFlag.Scenario);
-        } else if (r == 33) {
-            self.sayReplacedNpc("#face1#엥? 라즐리랑 ระหว่าง가 ฉัน쁘냐고? 아니, เรา 제법 친한 ระหว่าง라고 생แต่ละ하는데. ใน เขา래?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("난 바보랑은 ใน 놀아.",  2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("#face0#봐, ฉัน랑 친ทำ잖아.",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#전혀 เขา런 말이 아니잖아.",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-        } else if (r == 34) {
-            self.sayReplacedNpc("#face1#근데, wp 거울โลก에서만 얻을 수 มี고 내가 말했었ฉัน?",  2400009, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#뭐? 거울โลก에서 자유로워져도 얻을 수 없는거야?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("wp 거울โลก에 흩어진 เวลา의 힘. 거울โลก에서만 얻을 수 있는게 당연한 거 아니야? 메이플 เดือน드에서는 군단장급의 บอส들만 wp 가지고 있어.",  2400010, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("เขา리고 아쉽게도 เนื้อ에는 wp 함유(?) 있지 않아.",  2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
-            self.sayReplacedNpc("아쉽다...",  2400006, 0, ScriptMessageFlag.Scenario);
-            self.sayReplacedNpc("#face7#뭐가 아쉽다는 거야?",  2400005, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                self.sayReplacedNpc(
+                                "แท่นแท๊น! เป็นไงล่ะ? เหมือนใหม่เลยใช่มั้ย? หืม? บอกว่าในเมื่อชุบชีวิตได้ทุกเมื่อ ก็ตีบวกได้ไม่ต้องกังวลแล้วงั้นเหรอ? นั่นมัน...",
+                                2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+                self.sayReplacedNpc(
+                                "#face2#...คิดแบบนั้นได้ยังไงกัน?! ตอนที่อาวุธพัง พวกเราเองก็ได้รับแรงกระแทกไม่น้อยเลยนะ! ตอนอาวุธแตกน่ะตกใจแทบแย่......",
+                                2400010, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
+                self.sayReplacedNpc(
+                                "ที่ Lazuli พูดก็ถูกนะ แถมไอเทมที่ทรงพลังมากๆ แม้แต่พลังแห่งเวลาก็มีขีดจำกัดในการชุบชีวิตนะ ต่อไปก็ระวังหน่อยล่ะ!",
+                                2400009, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.NoEsc);
         }
-    }
+
+        public void zero_egoequiptalk() {
+                int r = Randomizer.rand(1, 34);
+                if (r == 1) {
+                        self.sayReplacedNpc(
+                                        "สิ่งที่ฉันชอบที่สุดเหรอ...? อื้ม... ฉันชอบเค้กสตรอว์เบอร์รี่ที่สุดเลย ถ้าอยากกินด้วยกันล่ะก็... อืม ถ้านายเป็นคนกินด้วยกันก็โอนะ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("ฉันด้วย! ฉันด้วย! ฉันก็ชอบเค้กสตรอว์เบอร์รี่เหมือนกัน!", 2400009, 0,
+                                        ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face0#ไม่เอา! ฉันจะกินกับ Alpha สองคน... อ๊ะ ไม่สิ งั้นฉันไปดีกว่า",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 2) {
+                        self.sayReplacedNpc("คิดยังไงกับ Lapis งั้นเหรอ? อืม... เจ้าบ้าตัวใหญ่แต่ตัว?", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face2#ใจร้ายจัง Lazuli ฉันเสียใจนะเนี่ย", 2400009, 0,
+                                        ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("อ๊ะ ตรงนั้นมีเนื้อที่ดูน่ากินสุดๆ อยู่ด้วย!", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("เนื้อ?! ที่ไหน? ที่ไหน?", 2400009, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("หึ ก็เป็นเจ้าบ้าจริงๆ นั่นแหละ", 2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 3) {
+                        self.sayReplacedNpc("#face1#จะ, จ้องมองกันแบบนั้นมันน่าอายนะ", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 4) {
+                        self.sayReplacedNpc(
+                                        "ทำไมถึงเลือก Alpha งั้นเหรอ? เรื่องนั้น... ม, ไม่ได้มีเหตุผลอะไรเป็นพิเศษหรอก ก็แค่เลือกใครก็ได้เท่านั้นแหละ ห้ามคิดเข้าข้างตัวเองว่าฉันถูกใจนายเด็ดขาดเลยนะ!",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 5) {
+                        self.sayReplacedNpc(
+                                        "#face1#ฉันเกลียดตอนกลางคืน มันให้ความรู้สึกเหมือนอยู่คนเดียวยังไงไม่รู้ แต่ว่าตอนนี้ไม่ได้อยู่คนเดียวแล้ว ก็ไม่เป็นไรหรอก",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("ใช่แล้วๆ มีฉันอยู่ทั้งคน ไม่ต้องห่วงนะ", 2400009, 0,
+                                        ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face0#ไม่ได้พูดกับนายย่ะ!", 2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 6) {
+                        self.sayReplacedNpc(
+                                        "#face0#ไม่ได้อยากอยู่ด้วยเพราะชอบนายหรอกนะ ฉันก็แค่ทำตามหน้าที่ของฉันเท่านั้นแหละ อย่าใส่ใจเลย",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 7) {
+                        self.sayReplacedNpc(
+                                        "คิดยังไงกับ Alpha งั้นเหรอ? เอ๋ คิดยังไงอะไรกันเล่า? อ๊ะ ฉันไม่ได้ชอบคนอย่าง Alpha สักหน่อยนะ!",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("หืม?", 2400005, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face1#ตะ, แต่ก็ไม่ได้หมายความว่าเกลียดหรอกนะ......", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 8) {
+                        self.sayReplacedNpc(
+                                        "#face0#คิดว่าฉันโกรธอยู่เหรอ? ก็แค่อากาศมันไม่ค่อยดีเท่านั้นแหละ ไม่ใช่เพราะนายไม่ยอมชวนคุยตั้งนานหรอกนะ!",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 9) {
+                        self.sayReplacedNpc(
+                                        "สิ่งที่ฉันชอบที่สุด... แน่นอนว่าต้องเป็นเนื้อ! เนื้อที่ทั้งดีต่อสุขภาพและอร่อย!",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("ฉันก็ชอบเนื้อเหมือนกัน อร่อยดีนะ", 2400006, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("งั้นไปกินเนื้อกับฉันเถอะ! เดี๋ยวฉันย่างให้กินอร่อยๆ เลย!", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 10) {
+                        self.sayReplacedNpc(
+                                        "คิดยังไงกับ Lazuli งั้นเหรอ? Lazuli น่ะ... น่ากลัวจริงๆ นะ เวลาโกรธเหมือนแม่มดเลย ดูสิ ตอนนี้ก็... ฮึ้ย!",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 11) {
+                        self.sayReplacedNpc(
+                                        "ทำไมถึงเลือก Beta งั้นเหรอ? นั่นสินะ ก็เพราะ... เธอน่ารักไง! ไหนๆ จะได้รับใช้นายท่านทั้งที ผู้หญิงน่ารักๆ ก็ดีกว่าใช่มั้ยล่ะ? ฮ่าๆ",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("ฉันน่ารักเหรอ?", 2400006, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("แน่นอนสิ! Lazuli เองก็เลือก Alpha เพราะเขาหล่อเหมือนกันไม่ใช่เหรอ",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face1#ม, ไม่ใช่ซะหน่อย!", 2400010, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 12) {
+                        self.sayReplacedNpc(
+                                        "ยัย Lazuli น่ะ จริงๆ แล้วเหมือนจะชอบเธอพอสมควรเลยนะ รู้ได้ยังไงงั้นเหรอ? เดิมทีพวกเราเคยเป็นหนึ่งเดียวกันมาก่อน ถึงไม่พูดก็รู้หมดแหละ",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face1#อย่าพูดเรื่องไร้สาระนะ ไม่ใช่แบบนั้นสักหน่อย!", 2400006, 0,
+                                        ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                } else if (r == 13) {
+                        self.sayReplacedNpc("ฉันก็ดูมีประโยชน์พอตัวไม่ใช่เหรอ? ...ถ้าคิดว่าไม่ใช่ก็ช่วยไม่ได้ล่ะนะ",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("Lapis สู้ๆ นะ...", 2400006, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face2#อะ, อ่านะ คำพูดนั้นมันทำให้รู้สึกหมดแรงกว่าเดิมอีกแฮะ", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 14) {
+                        self.sayReplacedNpc("เวลาซึมเศร้า การกินนี่แหละสุดยอดที่สุด ง่ำๆ!", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("แล้วเวลาอารมณ์ดีล่ะ?", 2400006, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("เวลาอารมณ์ดี การกินก็สุดยอดที่สุดเหมือนกัน ง่ำๆ!", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("แล้วเวลาเศร้าล่ะ?", 2400006, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("เวลาเศร้า การกินก็......", 2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("สรุปก็คือกินตลอดเลยไม่ใช่รึไง!", 2400010, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 15) {
+                        self.sayReplacedNpc(
+                                        "กำลังคิดอะไรอยู่งั้นเหรอ? จริงๆ แล้วตอนนี้ฉันกำลังซีเรียส... ...ไม่ได้คิดอะไรอยู่เลยต่างหาก?",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 16) {
+                        self.sayReplacedNpc(
+                                        "เห็นทุกคนเงียบกันหมด ฉันเลยต้องทำลายบรรยากาศเงียบเหงาหน่อย ฉันมีภารกิจในฐานะผู้สร้างบรรยากาศอยู่ด้วยนะ! ไม่ใช่แค่เบื่อเลยแกล้งเล่นหรอกนะ ...จริงๆ นะ!",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 17) {
+                        self.sayReplacedNpc(
+                                        "ถ้ากำจัดบอสมอนสเตอร์ได้ จะได้รับ WP มากขึ้นนะ แน่นอนว่าต้องกำจัดให้ได้ก่อนถึงจะได้ ต้องกำจัดให้ได้นะ...",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face0#พูดรอบเดียวก็พอแล้ว รอบเดียว! ", 2400005, 0,
+                                        ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                } else if (r == 18) {
+                        self.sayReplacedNpc(
+                                        "นายต้องเติบโต พวกเราถึงจะวิวัฒนาการได้ เพราะงั้นต้องกินเนื้อที่ดีต่อสุขภาพและอร่อยเยอะๆ... อ๊ะ ไม่ใช่เหรอ?",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 19) {
+                        self.sayReplacedNpc(
+                                        "ถ้าใช้ใบอัปเกรดหรือ Cube จะมีผลกับดาบใหญ่และดาบยาวพร้อมกันเลย นี่แหละคือ 1+1!",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face5#โอ้ ก็เข้าท่าดีนี่?", 2400005, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("แต่ตอนพังก็ 1+1 เหมือนกันนะ!", 2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face6#……!!!", 2400005, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 20) {
+                        self.sayReplacedNpc(
+                                        "ชอบอ่านหนังสือเหรอ? ฉันแค่เปิดหนังสือก็จะหลับแล้ว... ในชั้นหนังสือของวิหารจะมีหนังสือการ์ตูนบ้างมั้ยนะ?",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 21) {
+                        self.sayReplacedNpc(
+                                        "สามารถเพิ่มระดับอาวุธได้ตอนเลเวล 110, 120, 130, 140, 150, 170, 180 แน่นอนว่าถ้ายังไม่อยากทำ จะเลือกทำทีหลังก็ได้นะ",
+                                        2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("รู้สึกเหมือนมีอะไรต่างจากเมื่อก่อนนิดหน่อยแฮะ?", 2400010, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("นายเองก็พูดเหมือนกำลังแนะนำอะไรอยู่เลยไม่ใช่เหรอ?", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("...", 2400006, 0, ScriptMessageFlag.Scenario, ScriptMessageFlag.FlipImage);
+                } else if (r == 22) {
+                        self.sayReplacedNpc(
+                                        "ลองกดปุ่มเปลี่ยนศักยภาพดูรึยัง? หัวใจฉันเต้นตึกตักเลยว่าจะได้ศักยภาพแบบไหนออกมา!",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("แล้วถ้าได้ศักยภาพที่ไม่ดีออกมาจะทำไงล่ะ?", 2400010, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("ไม่เป็นไร ฉันเป็นผู้ชายที่มองโลกในแง่ดี! ก็สุ่มไปจนกว่าจะได้ของดีไง!",
+                                        2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face7#สรุปก็คือปล่อยไปตามยถากรรมสินะ...", 2400005, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 23) {
+                        self.sayReplacedNpc(
+                                        "ในบรรดาพวกนักบวช คนที่ชื่อ Dello ถึงจะยังเด็กแต่ก็ฉลาดเอาเรื่องเลยนะ? เหมือนจะมีความรู้กว้างขวางเกี่ยวกับทักษะวิชาชีพพอสมควรเลยนี่นา",
+                                        2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 24) {
+                        self.sayReplacedNpc(
+                                        "ใน WEAPON UI จะเสริมแกร่งได้แค่อาวุธเท่านั้นนะ เพราะที่นี่เป็นพื้นที่ของพวกเรา ส่วนเครื่องป้องกันหรือเครื่องประดับอื่นๆ ก็ไปเสริมแกร่งที่หน้าต่างอุปกรณ์ตามปกติเถอะ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 25) {
+                        self.sayReplacedNpc(
+                                        "การใช้ Tag จะทำให้การต่อสู้มีประสิทธิภาพมากขึ้น ก, ก็ไม่ได้อยากจะร่วมสู้ไปกับพวกนายหรอกนะ อย่าเข้าใจผิดล่ะ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 26) {
+                        self.sayReplacedNpc(
+                                        "เห็นว่าถ้าใช้คัมภีร์ Lucky Item จะได้รับเอฟเฟกต์เซ็ตไอเทมด้วยนี่นา แต่จริงๆ แล้วฉันไม่ค่อยชอบสังกัดอยู่ที่ไหนเท่าไหร่หรอกนะ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 27) {
+                        self.sayReplacedNpc(
+                                        "ถ้าสะสม Coin แล้วเอาไปให้นักบวช พวกนั้นคงจะชอบน่าดู สำหรับพวกไส้แห้งแล้วคงมีค่ามากเลยล่ะมั้ง",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face11#นายพูดแรงไปมั้ย?", 2400005, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face2#มะ, ไม่ใช่แบบนั้นซะหน่อย...... ", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face10#ก็นะ ที่นายพูดก็ไม่ผิดหรอก ความจริงคือฉันก็ไส้แห้งจริงๆ นั่นแหละ",
+                                        2400005, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face2#ไม่ใช่ ไม่ใช่แบบนั้น...... ไม่รู้ด้วยแล้ว เจ้าบ้า!", 2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 28) {
+                        self.sayReplacedNpc(
+                                        "รู้จักเซ็ตเครื่องป้องกัน Gold Label Knight รึเปล่า? เห็นว่าบอสใน Mirror World มี Recipe อยู่นะ ลองไปหามาสร้างดูมั้ยล่ะ? ถึงจะไม่มีทางก็เถอะ แต่ไม่แน่อาจจะเหมาะกับนายก็ได้นะ เชอะ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 29) {
+                        self.sayReplacedNpc("MP Potion น่ะไม่อร่อยเลย โชคดีจริงๆ ที่ไม่ต้องกิน MP Potion", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("บนโลกนี้มีของกินที่นายเกลียดด้วยเหรอ?", 2400010, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face2#แน่นอนสิ! นายเห็นฉันเป็นตัวอะไรกันเนี่ย?", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("เจ้าบ้าจอมตะกละ", 2400010, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face2#เธอ, ตรงไปตรงมาเกินไปแล้ว!", 2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                } else if (r == 30) {
+                        self.sayReplacedNpc(
+                                        "แน่นอนว่าพวกเราเป็นอาวุธสองมือ หมายความว่าจะต้องดูแลเทิดทูนด้วยสองมือไงล่ะ",
+                                        2400010, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face7#อาวุธสองมือมีความหมายแบบนั้นเองเหรอ?!", 2400005, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 31) {
+                        self.sayReplacedNpc(
+                                        "ถ้ารวบรวมน้ำตาของเทพธิดาได้ จะเรียนสกิลใหม่ได้ ...แต่ฉันไม่อยากจะไปไหนมาไหนกับพวกนั้นเท่าไหร่น่ะสิ",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 32) {
+                        self.sayReplacedNpc(
+                                        "พวกเธอน่ะ ถึงจะเหมือนกันแต่ก็ต่างกันมากนะ ทรงผมหรือหน้าตาจะใช้ร่วมกันก็ได้ แต่ก็สามารถแยกใช้ทีละคนได้เหมือนกัน ลองหาความเป็นตัวเองดูหน่อยก็น่าจะไม่เลวนะ?",
+                                        2400010, 0, ScriptMessageFlag.Scenario);
+                } else if (r == 33) {
+                        self.sayReplacedNpc(
+                                        "#face1#เอ๋? ความสัมพันธ์กับ Lazuli ไม่ดีเหรอ? ไม่นะ ฉันคิดว่าพวกเราสนิทกันดีออก ทำไมเหรอ?",
+                                        2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("ฉันไม่เล่นกับคนบ้าหรอกนะ", 2400010, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("#face0#เห็นมั้ย สนิทกันจะตาย", 2400009, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face7#ไม่ได้หมายความแบบนั้นเลยสักนิด", 2400005, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                } else if (r == 34) {
+                        self.sayReplacedNpc("#face1#จริงสิ ฉันเคยบอกหรือยังว่า WP หาได้จาก Mirror World เท่านั้นน่ะ?",
+                                        2400009, 0,
+                                        ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face7#อะไรนะ? ถึงจะเป็นอิสระจาก Mirror World แล้วก็หาไม่ได้งั้นเหรอ?",
+                                        2400005, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc(
+                                        "WP คือพลังแห่งเวลาที่กระจายอยู่ใน Mirror World แน่นอนว่าต้องหาได้แค่ใน Mirror World สิ? ใน Maple World มีแค่บอสระดับผู้บัญชาการกองพันเท่านั้นที่มี WP",
+                                        2400010,
+                                        0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("และน่าเสียดายที่ในเนื้อไม่มีส่วนผสม(?)ของ WP หรอกนะ", 2400009, 0,
+                                        ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                        self.sayReplacedNpc("เสียดายจัง...", 2400006, 0, ScriptMessageFlag.Scenario);
+                        self.sayReplacedNpc("#face7#เสียดายอะไรของนายเนี่ย?", 2400005, 0, ScriptMessageFlag.Scenario,
+                                        ScriptMessageFlag.FlipImage);
+                }
+        }
 }

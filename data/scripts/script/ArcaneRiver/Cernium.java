@@ -1,6 +1,5 @@
 package script.ArcaneRiver;
 
-
 import objects.fields.gameobject.lifes.MapleLifeFactory;
 import scripting.ScriptMessageFlag;
 import scripting.newscripting.Script;
@@ -14,7 +13,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000570, 1);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -24,7 +23,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000760, 1);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -34,7 +33,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000500, 3);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -44,7 +43,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000680, 1);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -54,7 +53,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000690, 3);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -64,7 +63,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000630, 2);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -74,7 +73,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 3);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -84,7 +83,7 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000770, 2);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -94,39 +93,41 @@ public class Cernium extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410000620, 2);
         } else {
-            getPlayer().dropMessage(5, "260เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 260 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
     public void east01_410000500() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "ที่ไหน로 갈까?\r\n\r\n#b#L0#불타는 세르니움#l";
-            int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
-            switch (v) { //불타는 세르니움
+            String text = "จะไปที่ไหนดี?\r\n\r\n#b#L0#Burning Cernium#l";
+            int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self,
+                    ScriptMessageFlag.FlipImage);
+            switch (v) { // Burning Cernium
                 case 0: {
                     registerTransferField(410000800, 4);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 265 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
     public void south_410000800() {
         initNPC(MapleLifeFactory.getNPC(9001000));
         if (getPlayer().getLevel() >= 265) {
-            String text = "ที่ไหน로 갈까?\r\n\r\n#b#L0#세르니움 광장#l";
-            int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage);
-            switch (v) { //세르니움
+            String text = "จะไปที่ไหนดี?\r\n\r\n#b#L0#Cernium Square#l";
+            int v = target.askMenu(text, ScriptMessageFlag.Scenario, ScriptMessageFlag.Self,
+                    ScriptMessageFlag.FlipImage);
+            switch (v) { // Cernium
                 case 0: {
                     registerTransferField(410000500, 5);
                     break;
                 }
             }
         } else {
-            getPlayer().dropMessage(5, "265เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 265 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 

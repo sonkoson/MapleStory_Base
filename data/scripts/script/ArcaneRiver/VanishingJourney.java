@@ -21,7 +21,7 @@ public class VanishingJourney extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 205) {
             registerTransferField(450001002, 1);
         } else {
-            getPlayer().dropMessage(5, "205เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "เลเวล 205 ขึ้นไปเท่านั้นที่สามารถเข้าได้");
         }
     }
 
@@ -47,20 +47,23 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     @Script
     public void east_450014240() {
-        getPlayer().dropMessage(5, "지금은 볼วัน이 ไม่มี.");
+        getPlayer().dropMessage(5, "ตอนนี้ไม่มีธุระอะไร");
     }
 
     public void _450001005_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003110));
-        if (1 == self.askYesNo("...소멸의 화염지대로 가려는 참이야... 원한다면 너도 태워สัปดาห์지...\r\n\r\n#b(수락 시 배를 타고 망แต่ละ의 호수로 ย้าย.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-            self.say("...เขา럼, 출발할게...", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo(
+                "...ฉันกำลังจะไปเขตเพลิงแห่งการสูญสลายพอดี... ถ้าอยากไปฉันไปส่งให้ได้นะ...\r\n\r\n#b(หากยอมรับ จะนั่งเรือไปยังทะเลสาบแห่งการลืมเลือน)#k",
+                ScriptMessageFlag.NpcReplacedByNpc)) {
+            self.say("...งั้น ออกเดินทางกันเลย...", ScriptMessageFlag.NpcReplacedByNpc);
             target.registerTransferField(450001007);
         }
     }
 
     @Script
     public void enter_450001007() {
-        bigScriptProgressMessage("ห้อง향키를 조작 배를 움직วัน 수 있.", FontType.NanumGothicBold, FontColorType.LightGreen);
+        bigScriptProgressMessage("สามารถบังคับเรือได้ด้วยปุ่มลูกศร", FontType.NanumGothicBold,
+                FontColorType.LightGreen);
         SecondaryStatEffect effect = SkillFactory.getSkill(80002201).getEffect(1);
         effect.applyTo(getPlayer());
     }
@@ -85,8 +88,10 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     public void _450001105_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003110));
-        if (1 == self.askYesNo("...이름 없는 หมู่บ้าน 쪽으로 돌아가려는 참이야... 혹시 너도 돌아가고 싶은 거야?\r\n\r\n#b(수락 시 배를 타고 망แต่ละ의 호수로 ย้าย.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-            self.say("...เขา럼, 이름 없는 หมู่บ้าน로 데려다 줄게...", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo(
+                "...ฉันกำลังจะกลับไปที่หมู่บ้านไร้นามพอดี... เจ้าอยากกลับไปเหมือนกันรึเปล่า?\r\n\r\n#b(หากยอมรับ จะนั่งเรือไปยังทะเลสาบแห่งการลืมเลือน)#k",
+                ScriptMessageFlag.NpcReplacedByNpc)) {
+            self.say("...งั้น ฉันจะไปส่งที่หมู่บ้านไร้นามให้เอง...", ScriptMessageFlag.NpcReplacedByNpc);
             getSc().flushSay();
             registerTransferField(450001007, 2);
         }
@@ -95,7 +100,8 @@ public class VanishingJourney extends ScriptEngineNPC {
     @Script
     public void _450001105_PS01() {
         registerTransferField(450001107, 1);
-        bigScriptProgressMessage("암벽을 타고 บน로 ย้าย 신기루 절벽에 갈 수 있.", FontType.NanumGothicBold, FontColorType.LightGreen);
+        bigScriptProgressMessage("สามารถปีนหน้าผาขึ้นไปเพื่อไปยังหน้าผาภาพลวงตาได้", FontType.NanumGothicBold,
+                FontColorType.LightGreen);
     }
 
     @Script
@@ -116,7 +122,8 @@ public class VanishingJourney extends ScriptEngineNPC {
     @Script
     public void enter_450001107() {
         if (getPlayer().getTruePosition().y < -1500) {
-            bigScriptProgressMessage("암벽을 타고 ล่าง로 ย้าย 호숫가에 갈 수 있.", FontType.NanumGothicBold, FontColorType.LightGreen);
+            bigScriptProgressMessage("สามารถปีนหน้าผาลงไปเพื่อไปยังริมทะเลสาบได้", FontType.NanumGothicBold,
+                    FontColorType.LightGreen);
             getPlayer().send(CField.UIPacket.setIngameDirectionMode(false, false, false));
             getPlayer().send(CField.DirectionPacket.getDirectionInfo(15, 0));
             getPlayer().send(CField.DirectionPacket.getDirectionInfo(3, 7));
@@ -155,8 +162,9 @@ public class VanishingJourney extends ScriptEngineNPC {
 
     public void _450001100_PS00() {
         initNPC(MapleLifeFactory.getNPC(3003136));
-        self.say("어쩐지 기นาที이 좋아보인다. ใน식의 동굴로 데려가 줄 수 있을 것 같다.", ScriptMessageFlag.NpcReplacedByNpc);
-        if (1 == self.askYesNo("#b(수락 시 화염새를 타고 ใน식의 동굴로 ย้าย.)#k", ScriptMessageFlag.NpcReplacedByNpc)) {
+        self.say("ดูเหมือนอารมณ์ดีนะ ฉันพาไปถ้ำแห่งการพักผ่อนได้", ScriptMessageFlag.NpcReplacedByNpc);
+        if (1 == self.askYesNo("#b(หากยอมรับ จะขี่นกเพลิงไปยังถ้ำแห่งการพักผ่อน)#k",
+                ScriptMessageFlag.NpcReplacedByNpc)) {
             getPlayer().send(CField.environmentChange("Sound/SoundEff.img/ArcaneRiver/fireBird3", 5, 100));
             registerTransferField(450001200, 2);
         }
@@ -198,7 +206,7 @@ public class VanishingJourney extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(450001250, 1);
         } else {
-            getPlayer().dropMessage(5, "210เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "เลเวล 210 ขึ้นไปเท่านั้นที่สามารถเข้าได้");
         }
     }
 
@@ -208,7 +216,7 @@ public class VanishingJourney extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(450002015, 0);
         } else {
-            getPlayer().dropMessage(5, "210เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "เลเวล 210 ขึ้นไปเท่านั้นที่สามารถเข้าได้");
         }
     }
 }

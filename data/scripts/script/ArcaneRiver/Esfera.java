@@ -11,7 +11,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007000, 2);
         } else {
-            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 235 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -20,7 +20,7 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 235) {
             registerTransferField(450007040, 3);
         } else {
-            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 235 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -29,19 +29,19 @@ public class Esfera extends ScriptEngineNPC {
         if (getPlayer().getLevel() >= 240) {
             registerTransferField(450007170, 1);
         } else {
-            getPlayer().dropMessage(5, "240เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 240 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
     public void npc_3003533() {
         if (getPlayer().getLevel() >= 235) {
-            if (1 == target.askYesNo("ใน으로 들어가야한다.", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self, ScriptMessageFlag.FlipImage)) {
+            if (1 == target.askYesNo("ต้องเข้าไปข้างใน", ScriptMessageFlag.Scenario, ScriptMessageFlag.Self,
+                    ScriptMessageFlag.FlipImage)) {
                 registerTransferField(450007200, 0);
             }
         } else {
-            getPlayer().dropMessage(5, "235เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 235 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
-
 
 }

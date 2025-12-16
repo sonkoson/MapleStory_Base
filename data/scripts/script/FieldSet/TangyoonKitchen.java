@@ -21,7 +21,6 @@ import java.util.Locale;
 
 public class TangyoonKitchen extends ScriptEngineNPC {
 
-
     /**
      * qexID : 501555
      * start=1;date=21/07/04;today=0;dodge=1
@@ -32,10 +31,11 @@ public class TangyoonKitchen extends ScriptEngineNPC {
         /**
          * 도전เป็นไปได้한 횟수จำกัด은 없으ฉัน EXP 하루에 2번ถึง 얻을 수 있음
          * เข้า시 DispelItemOptionByField Buff 걸림
-         * */
+         */
         FieldSet fieldSet = fieldSet("TangyoonKitchenEnter");
         if (fieldSet == null) {
-            self.sayOk("지금은 탕윤 식당을 이용ไม่สามารถทำได้~! ถัดไป에 찾아และสัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ขณะนี้ไม่สามารถเข้าใช้งานร้านอาหารทังยุนได้ครับ~! กรุณากลับมาใหม่ภายหลังนะครับ!",
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
@@ -69,97 +69,156 @@ public class TangyoonKitchen extends ScriptEngineNPC {
         }
         getPlayer().updateOneInfo(501555, "complete", "0");
         getPlayer().updateOneInfo(501600, "complete", "0");
-        int v = self.askMenu("#b#e메이플 버라이어티#n#k 제 1탄~! #r#e탕.윤.식.당!#l#k\r\n#L2# #b#e<탕윤 식당>#n ปาร์ตี้플레이(1~3인으로 도전)#l\r\n#L5# #b#e<퍼즐 마스터>#n ปาร์ตี้ 플레이(1~3인으로 도전)#l#k\r\n\r\n#L3# #b#e<탕윤 식당>#n อธิบาย 듣기#l\r\n#L6# #b#e<퍼즐 마스터>#n อธิบาย 듣기#l#k\r\n#L4# วันนี้ 남은 EXP รางวัล ได้รับ เป็นไปได้ 횟수 ยืนยัน<탕윤식당>#l\r\n#L7# วันนี้ 남은 EXP รางวัล ได้รับ เป็นไปได้ 횟수 ยืนยัน<퍼즐>\r\n\r\n#L100# 더 이상 궁금한 것이 없어.#l", ScriptMessageFlag.NpcReplacedByNpc);
+        int v = self.askMenu(
+                "#b#eMaple Variety#n#k เอพิโซด 1~! #r#eร้าน.อาหาร.ทัง.ยุน!#l#k\r\n#L2# #b#e<ร้านอาหารทังยุน>#n ปาร์ตี้เพลย์ (ท้าทาย 1~3 คน)#l\r\n#L5# #b#e<Puzzle Master>#n ปาร์ตี้เพลย์ (ท้าทาย 1~3 คน)#l#k\r\n\r\n#L3# #b#e<ร้านอาหารทังยุน>#n ฟังคำอธิบาย#l\r\n#L6# #b#e<Puzzle Master>#n ฟังคำอธิบาย#l#k\r\n#L4# ตรวจสอบจำนวนครั้งที่รับรางวัล EXP ได้วันนี้ <ร้านอาหารทังยุน>#l\r\n#L7# ตรวจสอบจำนวนครั้งที่รับรางวัล EXP ได้วันนี้ <Puzzle>\r\n\r\n#L100# ไม่มีข้อสงสัยแล้ว#l",
+                ScriptMessageFlag.NpcReplacedByNpc);
         switch (v) {
-            case 2: { //ปาร์ตี้로도전(탕윤식당)
-                if (1 == self.askYesNo("\r\n지금 #b#e<탕윤 식당>#n#k เข้าร่วมต้องการหรือไม่~?#k\r\n\r\n(게임 중에는 해상도가 1366x768 เปลี่ยน.)", ScriptMessageFlag.NpcReplacedByNpc)) {
-                    if (1 == self.askYesNo("\r\n#b#e<탕윤 식당>#n#k เข้าร่วม하시면 ใช้งาน 있는\r\n#fs16##r#eทั้งหมด Buff เอฟเฟกต์가 ปลดล็อก#n#k#fs12#된답니다.\r\n\r\n정말 เข้าร่วมต้องการหรือไม่?", ScriptMessageFlag.NpcReplacedByNpc)) {
+            case 2: { // ท้าทายแบบปาร์ตี้ (ร้านอาหารทังยุน)
+                if (1 == self.askYesNo(
+                        "\r\nต้องการเข้าร่วม #b#e<ร้านอาหารทังยุน>#n#k ตอนนี้เลยไหมครับ~?\r\n\r\n(ระหว่างเล่นเกม ความละเอียดจะเปลี่ยนเป็น 1366x768)",
+                        ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo(
+                            "\r\nหากเข้าร่วม #b#e<ร้านอาหารทังยุน>#n#k \r\n#fs16##r#eBuff Effect ทั้งหมดที่ใช้งานอยู่จะถูกลบล้าง#n#k#fs12# นะครับ\r\n\r\nต้องการเข้าร่วมจริงๆ หรือไม่ครับ?",
+                            ScriptMessageFlag.NpcReplacedByNpc)) {
                         int enter = fieldSet.enter(target.getId(), 0);
                         if (enter == -1)
-                            self.say("알 수 없는 이유로 เข้า할 수 없. 잠시 후에 다시 시도해 สัปดาห์십시오.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say(
+                                    "ไม่สามารถเข้าได้เนื่องจากข้อผิดพลาดที่ไม่ทราบสาเหตุ กรุณาลองใหม่อีกครั้งในภายหลังครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 1)
-                            self.say("1~3인 ปาร์ตี้ 맺어야만 #b#eปาร์ตี้ 플레이#n#k 할 수 있답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ต้องสร้างปาร์ตี้ 1~3 คน จึงจะสามารถทำ #b#eปาร์ตี้เพลย์#n#k ได้ครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 2)
-                            self.say("ปาร์ตี้장을 통해서만 เข้า할 수 있답니다! ปาร์ตี้장을 통해 เข้าโปรด~!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("สามารถเข้าได้ผ่านหัวหน้าปาร์ตี้เท่านั้นครับ! กรุณาเข้าผ่านหัวหน้าปาร์ตี้นะครับ~!",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 3)
-                            self.say("ต่ำสุด " + fieldSet.minMember + "인 이상의 ปาร์ตี้ เควส เริ่ม할 수 있답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ปาร์ตี้เควสต์เริ่มได้เมื่อมีสมาชิกอย่างน้อย " + fieldSet.minMember + " คนครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 4)
-                            self.say("ปาร์ตี้원의 เลเวล ต่ำสุด " + fieldSet.minLv + " 이상이어야 .", ScriptMessageFlag.NpcReplacedByNpc);
-                        else if (enter == 5) self.say("ปาร์ตี้원이 ทั้งหมด 모여 있어야 เริ่ม할 수 있.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("สมาชิกปาร์ตี้ต้องมีเลเวล " + fieldSet.minLv + " ขึ้นไปครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
+                        else if (enter == 5)
+                            self.say("สมาชิกปาร์ตี้ต้องอยู่รวมกันครบทุกคนจึงจะเริ่มได้ครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 6)
-                            self.say("이미 อื่น ปาร์ตี้ ใน으로 들어가 เควส 클리어에 도전 있는 중이랍니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("มีปาร์ตี้อื่นเข้าไปท้าทายในเควสต์อยู่แล้วครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                     } else {
-                        self.say("\r\nเขา러면 ห้อง송에 เข้าร่วม 싶을 때 다시 찾아และสัปดาห์세요~", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nถ้าอย่างนั้น ไว้ต้องการเข้าร่วมเมื่อไหร่ก็กลับมาใหม่นะครับ~",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 } else {
-                    self.say("\r\nเขา러면 ห้อง송에 เข้าร่วม 싶을 때 다시 찾아และสัปดาห์세요~", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("\r\nถ้าอย่างนั้น ไว้ต้องการเข้าร่วมเมื่อไหร่ก็กลับมาใหม่นะครับ~",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 5: { //ปาร์ตี้로도전(퍼즐마스터)
-                if (1 == self.askYesNo("\r\n지금 #b#e<퍼즐 마스터>#n#k เข้าร่วมต้องการหรือไม่~?#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-                    if (1 == self.askYesNo("\r\n#b#e<퍼즐 마스터>#n#k เข้าร่วม하시면 ใช้งาน 있는\r\n#fs16##r#eทั้งหมด Buff เอฟเฟกต์가 ปลดล็อก#n#k#fs12#된답니다.\r\n\r\n정말 เข้าร่วมต้องการหรือไม่?", ScriptMessageFlag.NpcReplacedByNpc)) {
+            case 5: { // ท้าทายแบบปาร์ตี้ (Puzzle Master)
+                if (1 == self.askYesNo("\r\nต้องการเข้าร่วม #b#e<Puzzle Master>#n#k ตอนนี้เลยไหมครับ~?#k",
+                        ScriptMessageFlag.NpcReplacedByNpc)) {
+                    if (1 == self.askYesNo(
+                            "\r\nหากเข้าร่วม #b#e<Puzzle Master>#n#k \r\n#fs16##r#eBuff Effect ทั้งหมดที่ใช้งานอยู่จะถูกลบล้าง#n#k#fs12# นะครับ\r\n\r\nต้องการเข้าร่วมจริงๆ หรือไม่ครับ?",
+                            ScriptMessageFlag.NpcReplacedByNpc)) {
                         FieldSet puzzleMaster = fieldSet("PuzzleMasterEnter");
                         if (puzzleMaster == null) {
-                            self.sayOk("지금은 퍼즐 마스터를 이용ไม่สามารถทำได้~! ถัดไป에 찾아และสัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.sayOk(
+                                    "ขณะนี้ไม่สามารถเข้าใช้งาน Puzzle Master ได้ครับ~! กรุณากลับมาใหม่ภายหลังนะครับ!",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                             return;
                         }
                         int enter = puzzleMaster.enter(target.getId(), 0);
                         if (enter == -1)
-                            self.say("알 수 없는 이유로 เข้า할 수 없. 잠시 후에 다시 시도해 สัปดาห์십시오.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say(
+                                    "ไม่สามารถเข้าได้เนื่องจากข้อผิดพลาดที่ไม่ทราบสาเหตุ กรุณาลองใหม่อีกครั้งในภายหลังครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 1)
-                            self.say("1~3인 ปาร์ตี้ 맺어야만 #b#eปาร์ตี้ 플레이#n#k 할 수 있답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("1~3인 ปาร์ตี้ 맺어야만 #b#eปาร์ตี้ 플레이#n#k 할 수 있답니다.",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 2)
-                            self.say("ปาร์ตี้장을 통해서만 เข้า할 수 있답니다! ปาร์ตี้장을 통해 เข้าโปรด~!", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("สามารถเข้าได้ผ่านหัวหน้าปาร์ตี้เท่านั้นครับ! กรุณาเข้าผ่านหัวหน้าปาร์ตี้นะครับ~!",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 3)
-                            self.say("ต่ำสุด " + fieldSet.minMember + "인 이상의 ปาร์ตี้ เควส เริ่ม할 수 있답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("ปาร์ตี้เควสต์เริ่มได้เมื่อมีสมาชิกอย่างน้อย " + fieldSet.minMember + " คนครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 4)
-                            self.say("ปาร์ตี้원의 เลเวล ต่ำสุด " + fieldSet.minLv + " 이상이어야 .", ScriptMessageFlag.NpcReplacedByNpc);
-                        else if (enter == 5) self.say("ปาร์ตี้원이 ทั้งหมด 모여 있어야 เริ่ม할 수 있.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("สมาชิกปาร์ตี้ต้องมีเลเวล " + fieldSet.minLv + " ขึ้นไปครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
+                        else if (enter == 5)
+                            self.say("สมาชิกปาร์ตี้ต้องอยู่รวมกันครบทุกคนจึงจะเริ่มได้ครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                         else if (enter == 6)
-                            self.say("이미 อื่น ปาร์ตี้ ใน으로 들어가 เควส 클리어에 도전 있는 중이랍니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                            self.say("มีปาร์ตี้อื่นเข้าไปท้าทายในเควสต์อยู่แล้วครับ",
+                                    ScriptMessageFlag.NpcReplacedByNpc);
                     } else {
-                        self.say("\r\nเขา러면 ห้อง송에 เข้าร่วม 싶을 때 다시 찾아และสัปดาห์세요~", ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nถ้าอย่างนั้น ไว้ต้องการเข้าร่วมเมื่อไหร่ก็กลับมาใหม่นะครับ~",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                     }
                 } else {
-                    self.say("\r\nเขา러면 ห้อง송에 เข้าร่วม 싶을 때 다시 찾아และสัปดาห์세요~", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("\r\nถ้าอย่างนั้น ไว้ต้องการเข้าร่วมเมื่อไหร่ก็กลับมาใหม่นะครับ~",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 3: { //อธิบาย 듣기
-                self.say("#e[이벤트 기간]\r\n\r\n2021ปี 07เดือน 05วัน (เดือน) 점검 후 ~ \r\n미정", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e<탕윤 식당>#n#k ต่ำสุด 1명 ~ สูงสุด 3명의 인원이 요리를 만들고 배달ถึง เสร็จสมบูรณ์해서 จำกัด เวลา #e30นาที#n 동ใน #b#e50,000#n#k คะแนน ได้รับ하는 것이 เป้าหมาย랍니다!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n좌측에 ตำแหน่ง한 #b#e<สัปดาห์ประตู판>#n#k 들어오는 สัปดาห์ประตู을 ยืนยัน\r\n레시피대로 อาหาร을 만들어서 배달해ดู~!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[재료 수บ้าน]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 좌측#n#k ตำแหน่ง한 #e5종#n 재료 หน้า에서 #r#eSpace키#k#n\r\n키다운으로 해당하는 재료를 ได้รับ할 수 있답니다.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[재료 놓기]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 중앙#n#k ตำแหน่ง한 #e조리대#n หน้า에서 #r#eSpace키#k#n\r\n키다운으로 ปัจจุบัน ได้รับ한 재료를 놓을 수 있답니다.\r\n\r\n#eแต่ละ สัปดาห์ประตู 번호에 해당하는 조리대#n에서만 해당 อาหาร을\r\n조리할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[가공 도구 들기]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 우측#n#k ตำแหน่ง한 #e3종#n 가공 도구 หน้า에서\r\n#r#eSpace키#k#n 키다운으로 도구를 ได้รับ할 수 있답니다.\r\n\r\n#b#e가공 도구#n#k ได้รับ한 สถานะ에서만 재료 가공을 할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[재료 가공]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 중앙#n#k ตำแหน่ง한 #e조리대#n หน้า에서 #r#eSpace키#n#k\r\n키다운으로 해당 조리대에 놓인 재료를 가공할 수 있답니다.\r\n\r\n#eแต่ละ สัปดาห์ประตู 번호에 해당하는 조리대#n에서만 해당 อาหาร을\r\n조리할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e[อาหาร 배달]#n\r\n\r\n#b#eอาหาร이 완성된 조리대#n#k อาหาร을 들 수 있는 สถานะ가 \r\n해당 #e조리대#n หน้า에서 #r#eSpace키#k#n 키다운으로 배달을 ดำเนินการ할 수 있답니다.\r\n\r\n우측 배달 공간에서 #eมอนสเตอร์#n들의 ห้อง해를 피해 สัปดาห์ประตู한 ลูกค้า\r\nหน้า에서 #r#eSpace키#k#n 키다운으로 배달 เสร็จสมบูรณ์!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e진정한 크리에이터#n#k라면 역시 실전이죠!\r\n\r\n어서 โดยตรง 체험해보시는 것은 어떠신가요?", ScriptMessageFlag.NpcReplacedByNpc);
+            case 3: { // ฟังคำอธิบาย
+                self.say("#e[ระยะเวลากิจกรรม]\r\n\r\n5 กรกฎาคม 2021 (จันทร์) หลังปิดปรับปรุง ~ \r\nยังไม่กำหนด",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#b#e<ร้านอาหารทังยุน>#n#k เป็นคอนเทนต์ที่ให้สมาชิกอย่างน้อย 1 คน ~ สูงสุด 3 คน ช่วยกันทำอาหารและส่งให้เสร็จสมบูรณ์\r\nเป้าหมายคือการทำคะแนนให้ได้ #b#e50,000#n#k คะแนน ภายในเวลาจำกัด #e30 นาที#n ครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nตรวจสอบเมนูที่เข้ามาได้ที่ #b#e<กระดานเมนู>#n#k ทางด้านซ้าย\r\nแล้วลองทำอาหารตามสูตรและนำไปส่งดูนะครับ~!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e[การรวบรวมวัตถุดิบ]#n\r\n\r\nสามารถรับวัตถุดิบที่ต้องการได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้าวัตถุดิบ #e5 ชนิด#n ซึ่งตั้งอยู่ทาง #b#eด้านซ้ายของห้องครัว#n#k ครับ\r\n\r\n",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e[การวางวัตถุดิบ]#n\r\n\r\nสามารถวางวัตถุดิบที่ถืออยู่ได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้า #eโต๊ะทำครัว#n ซึ่งตั้งอยู่ทาง #b#eตรงกลางของห้องครัว#n#k ครับ\r\n\r\nอย่าลืมนะครับว่าต้องทำอาหารให้ตรงกับ #eโต๊ะทำครัวที่มีหมายเลขเมนู#n\r\nที่ตรงกันเท่านั้น!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e[การถือเครื่องมือแปรรูป]#n\r\n\r\nสามารถรับเครื่องมือได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้าเครื่องมือแปรรูป #e3 ชนิด#n ซึ่งตั้งอยู่ทาง #b#eด้านขวาของห้องครัว#n#k ครับ\r\n\r\nจำไว้ว่าต้องอยู่ในสถานะที่ถือ #b#eเครื่องมือแปรรูป#n#k อยู่เท่านั้น\r\nถึงจะสามารถแปรรูปวัตถุดิบได้นะครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e[การแปรรูปวัตถุดิบ]#n\r\n\r\nสามารถแปรรูปวัตถุดิบที่วางอยู่บนโต๊ะทำครัวได้โดยการกดค้างที่ #r#eปุ่ม Space#n#k\r\nที่หน้า #eโต๊ะทำครัว#n ซึ่งตั้งอยู่ทาง #b#eตรงกลางของห้องครัว#n#k ครับ\r\n\r\nอย่าลืมนะครับว่าต้องทำอาหารให้ตรงกับ #eโต๊ะทำครัวที่มีหมายเลขเมนู#n\r\nที่ตรงกันเท่านั้น!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e[การส่งอาหาร]#n\r\n\r\nในสถานะที่สามารถถืออาหารได้ จาก #b#eโต๊ะทำครัวที่ทำอาหารเสร็จแล้ว#n#k \r\nสามารถดำเนินการส่งอาหารได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n ที่หน้า #eโต๊ะทำครัว#n นั้นครับ\r\n\r\nหลบหลีกการขัดขวางของเหล่า #eมอนสเตอร์#n ในพื้นที่ส่งอาหารทางด้านขวา\r\nและกดค้างที่ #r#eปุ่ม Space#k#n ต่อหน้าลูกค้าที่สั่งอาหาร ก็จะส่งอาหารเสร็จสมบูรณ์!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nถ้าเป็น #b#eCreator ตัวจริง#n#k ก็ต้องลงมือทำจริงสินะครับ!\r\n\r\nลองไปสัมผัสประสบการณ์ด้วยตัวเองดูไหมครับ?",
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
-            case 6: { //퍼즐마스터 อธิบาย 듣기
-                self.say("#e[이벤트 기간]\r\n\r\n2021ปี 07เดือน ~ \r\n미정", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#e#b<퍼즐 마스터>#k#n ต่ำสุด 1명 ~ สูงสุด 3명의 인원이 #e#b총 3가지의 퍼즐#n#k จำกัด เวลา #b#e30นาที#n#k 내에 완성하는 것을 เป้าหมาย로 하는 컨텐츠랍니다!", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e화면 중앙에 배치된 액자 속에#n#k แผนที่ 이곳ฉัน곳에서 등장하는 #b#e퍼즐 조แต่ละ을 정확한 ตำแหน่ง에 배치 !#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n앗! 너무 어려우실 것 같ฉัน요? 걱정하지 마세요!\r\n#b#eด้วยกัน하는 크리에이터들และ 힘을 합친다면 충นาที히 เป็นไปได้할 거예요!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+            case 6: { // ฟังคำอธิบาย Puzzle Master
+                self.say("#e[ระยะเวลากิจกรรม]\r\n\r\nกรกฎาคม 2021 ~ \r\nยังไม่กำหนด",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\n#e#b<Puzzle Master>#k#n เป็นคอนเทนต์ที่ให้สมาชิกอย่างน้อย 1 คน ~ สูงสุด 3 คน\r\nช่วยกันต่อ #e#bจิ๊กซอว์ทั้งหมด 3 ภาพ#n#k ให้เสร็จสมบูรณ์ภายในเวลาจำกัด #b#e30 นาที#n#k ครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nนำ #b#eชิ้นส่วนจิ๊กซอว์#n#k ที่ปรากฏขึ้นทั่วแผนที่\r\nมาวางให้ตรงตำแหน่งใน #b#eกรอบรูปที่อยู่กลางหน้าจอ!#n#k",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nอ๊ะ! คิดว่ายากเกินไปงั้นเหรอครับ? ไม่ต้องกังวลไปนะครับ!\r\n#b#eถ้าช่วยกันกับเหล่า Creator ที่มาร่วมด้วยช่วยกันล่ะก็ ทำได้แน่นอนครับ!#n#k",
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
-            case 4: { //วันนี้ 남은 EXP ได้รับ 횟수
+            case 4: { // จำนวนครั้งรับ EXP วันนี้
                 int today = getPlayer().getOneInfoQuestInteger(501555, "today");
                 if (2 - today > 0) {
-                    self.say("วันนี้ 남은 EXP รางวัล ได้รับ เป็นไปได้ 횟수는 #b#e" + (2 - today) + "회#n#k .", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("จำนวนครั้งที่รับรางวัล EXP ได้วันนี้คือ #b#e" + (2 - today) + " ครั้ง#n#k ครับ",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    self.say("วันนี้은 더 이상 EXP รางวัล을 ได้รับ하실 수 없답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("วันนี้ไม่สามารถรับรางวัล EXP ได้อีกแล้วครับ", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
-            case 7: { //วันนี้ 남은 EXP ได้รับ 횟수(퍼즐마스터)
+            case 7: { // จำนวนครั้งรับ EXP วันนี้ (Puzzle Master)
                 int today = getPlayer().getOneInfoQuestInteger(501600, "today");
                 if (2 - today > 0) {
-                    self.say("วันนี้ 남은 EXP รางวัล ได้รับ เป็นไปได้ 횟수는 #b#e" + (2 - today) + "회#n#k .", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("จำนวนครั้งที่รับรางวัล EXP ได้วันนี้คือ #b#e" + (2 - today) + " ครั้ง#n#k ครับ",
+                            ScriptMessageFlag.NpcReplacedByNpc);
                 } else {
-                    self.say("วันนี้은 더 이상 EXP รางวัล을 ได้รับ하실 수 없답니다.", ScriptMessageFlag.NpcReplacedByNpc);
+                    self.say("วันนี้ไม่สามารถรับรางวัล EXP ได้อีกแล้วครับ", ScriptMessageFlag.NpcReplacedByNpc);
                 }
                 break;
             }
@@ -169,14 +228,16 @@ public class TangyoonKitchen extends ScriptEngineNPC {
     public void TyoonKitchen_npc1() {
         if (getPlayer().getMap().getId() == 993194401) {
             if (getPlayer().getOneInfoQuestInteger(501555, "today") >= 2) {
-                self.say("วันนี้ 남은 EXP ได้รับ 횟수가 없어서 EXP 드릴 수가 없어요 원래 있던 곳으로 돌려 보내드릴게요!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say(
+                        "วันนี้ไม่สามารถรับรางวัล EXP ได้อีกแล้วครับ จึงไม่สามารถมอบ EXP ให้ได้ จะส่งกลับไปยังที่เดิมนะครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                 target.registerTransferField(ServerConstants.TownMap);
             } else if (getPlayer().getOneInfoQuestInteger(501555, "complete") >= 1) {
                 Calendar CAL = new GregorianCalendar(Locale.KOREA);
                 int day = CAL.getTime().getDay();
                 boolean doubleEXP = false;
-                if (day == 6 || day == 0) { //สัปดาห์말
+                if (day == 6 || day == 0) { // สุดสัปดาห์
                     doubleEXP = true;
                 }
                 long exp = GameConstants.tangyoonExp[getPlayer().getLevel() - 200];
@@ -205,22 +266,34 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 String expString = String.format("%,d", exp);
                 if (DBConfig.isGanglim) {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#bEXP#k #r" + expString + "#k#n #r100 강림คะแนน#k#n 를드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\n#e#bEXP#k #r" + expString
+                                        + "#k#n และ #r100 Ganglim Point#k#n ครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#bEXP#k #r" + expString + " * 2 (สัปดาห์말 탕윤 식당 EXP 2배 이벤트!)#k#n #r100 강림คะแนน#k#n 드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bEXP#k #r" + expString
+                                + " * 2 (กิจกรรม EXP 2 เท่า ร้านอาหารทังยุนสุดสัปดาห์!)#k#n และ #r100 Ganglim Point#k#n ครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                     getPlayer().gainHongboPoint(100);
                 } else {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#bEXP#k #r" + expString + "#k#n  드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\nมอบ #e#bEXP#k #r" + expString
+                                        + "#k#n ให้เรียบร้อยครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#bEXP#k #r" + expString + " * 2 (สัปดาห์말 탕윤 식당 EXP 2배 이벤트!)#k#n  드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\nมอบ #e#bEXP#k #r" + expString
+                                        + " * 2 (กิจกรรม EXP 2 เท่า ร้านอาหารทังยุนสุดสัปดาห์!)#k#n ให้เรียบร้อยครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                 }
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                 target.registerTransferField(ServerConstants.TownMap);
                 getPlayer().updateOneInfo(501555, "start", "0");
-                getPlayer().updateOneInfo(501555, "today", String.valueOf(getPlayer().getOneInfoQuestInteger(501555, "today") + 1));
+                getPlayer().updateOneInfo(501555, "today",
+                        String.valueOf(getPlayer().getOneInfoQuestInteger(501555, "today") + 1));
                 getPlayer().updateOneInfo(501555, "complete", "0");
                 if (!doubleEXP) {
                     getPlayer().gainExpLong(exp);
@@ -228,7 +301,9 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                     getPlayer().gainExpLong(exp * 2);
                 }
             } else {
-                self.say("\r\n\r\n#e#r50,000 คะแนน#n#k 벌지 못 ฉัน오셨다면\r\nรางวัล을 지급해드릴 수 없답니다.\r\n\r\nถัดไป엔 더 노력โปรด!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say(
+                        "\r\n\r\nถ้าทำคะแนนไม่ถึง #e#r50,000 คะแนน#n#k\r\nจะไม่สามารถมอบรางวัลให้ได้นะครับ\r\n\r\nครั้งหน้าพยายามเข้านะครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                 target.registerTransferField(ServerConstants.TownMap);
             }
@@ -236,31 +311,54 @@ public class TangyoonKitchen extends ScriptEngineNPC {
             int v = -2;
             boolean exit = false;
             while (v != -1 && v != 0 && !exit && !getSc().isStop()) {
-                v = self.askMenu("궁금한 게 있으신가요?\r\n\r\n#L1# #b#e<탕윤 식당>#b#e 대해 น้ำ어본다.#l\r\n#L2# #b#e<탕윤 식당 ดำเนินการห้อง법>#n#k 대해 น้ำ어본다.#l\r\n#L3# #b#e<게임 รางวัล>#n#k 대해 น้ำ어본다.#l\r\n#L4# 원래 있던 สถานที่로 돌아가고 싶다.#l\r\n\r\n#L0# 궁금한 것이 ไม่มี.#l", ScriptMessageFlag.NpcReplacedByNpc);
+                v = self.askMenu(
+                        "มีอะไรสงสัยไหมครับ?\r\n\r\n#L1# สอบถามเกี่ยวกับ #b#e<ร้านอาหารทังยุน>#b#e#l\r\n#L2# สอบถามเกี่ยวกับ #b#e<วิธีเล่นร้านอาหารทังยุน>#n#k#l\r\n#L3# สอบถามเกี่ยวกับ #b#e<รางวัลเกม>#n#k#l\r\n#L4# อยากกลับไปยังที่เดิม#l\r\n\r\n#L0# ไม่มีข้อสงสัยแล้ว#l",
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 switch (v) {
-                    case 1: { //탕윤 식당에 대해 น้ำ어본다.
-                        self.say("\r\n#b#e메이플 버라이어티#n#k 첫 번째 특บ้าน! #r#e탕.윤.식.당!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n전설의 셰프 #b#e'탕윤'#n#k님และ 식당 경영을 체험할 수 있는 기회!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#e진정한 크리에이터#n#k라면  기회를 놓칠 수 없겠죠?!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 1: { // เกี่ยวกับร้านอาหารทังยุน
+                        self.say("\r\n#b#eMaple Variety#n#k เอพิโซด 1~! #r#eร้าน.อาหาร.ทัง.ยุน!#n#k",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\nโอกาสที่จะได้สัมผัสประสบการณ์การบริหารร้านอาหารของสุดยอดเชฟในตำนาน #b#e'Tangyoon'#n#k!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nถ้าเป็น #b#eCreator ตัวจริง#n#k ก็ห้ามพลาดโอกาสนี้เชียวนะครับ?!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 2: { //탕윤 식당 ดำเนินการห้อง법에 대해 น้ำ어본다.
-                        self.say("\r\n#b#e<탕윤 식당>#n#k ต่ำสุด 1명 ~ สูงสุด 3명의 인원이 요리를 만들고 배달ถึง เสร็จสมบูรณ์해서 จำกัด เวลา #e30นาที#n 동ใน #b#e50,000#n#k คะแนน ได้รับ하는 것이 เป้าหมาย랍니다!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n좌측에 ตำแหน่ง한 #b#e<สัปดาห์ประตู판>#n#k 들어오는 สัปดาห์ประตู을 ยืนยัน\r\n레시피대로 อาหาร을 만들어서 배달해ดู~!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[재료 수บ้าน]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 좌측#n#k ตำแหน่ง한 #e5종#n 재료 หน้า에서 #r#eSpace키#k#n\r\n키다운으로 해당하는 재료를 ได้รับ할 수 있답니다.\r\n\r\n", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[재료 놓기]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 중앙#n#k ตำแหน่ง한 #e조리대#n หน้า에서 #r#eSpace키#k#n\r\n키다운으로 ปัจจุบัน ได้รับ한 재료를 놓을 수 있답니다.\r\n\r\n#eแต่ละ สัปดาห์ประตู 번호에 해당하는 조리대#n에서만 해당 อาหาร을\r\n조리할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[가공 도구 들기]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 우측#n#k ตำแหน่ง한 #e3종#n 가공 도구 หน้า에서\r\n#r#eSpace키#k#n 키다운으로 도구를 ได้รับ할 수 있답니다.\r\n\r\n#b#e가공 도구#n#k ได้รับ한 สถานะ에서만 재료 가공을 할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[재료 가공]#n\r\n\r\n#b#eสัปดาห์ห้อง 공간 중앙#n#k ตำแหน่ง한 #e조리대#n หน้า에서 #r#eSpace키#n#k\r\n키다운으로 해당 조리대에 놓인 재료를 가공할 수 있답니다.\r\n\r\n#eแต่ละ สัปดาห์ประตู 번호에 해당하는 조리대#n에서만 해당 อาหาร을\r\n조리할 수 มี는 점을 잊지 마세요!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#e[อาหาร 배달]#n\r\n\r\n#b#eอาหาร이 완성된 조리대#n#k อาหาร을 들 수 있는 สถานะ가 \r\n해당 #e조리대#n หน้า에서 #r#eSpace키#k#n 키다운으로 배달을 ดำเนินการ할 수 있답니다.\r\n\r\n우측 배달 공간에서 #eมอนสเตอร์#n들의 ห้อง해를 피해 สัปดาห์ประตู한 ลูกค้า\r\nหน้า에서 #r#eSpace키#k#n 키다운으로 배달 เสร็จสมบูรณ์!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 2: { // วิธีเล่นร้านอาหารทังยุน
+                        self.say(
+                                "\r\n#b#e<ร้านอาหารทังยุน>#n#k เป็นคอนเทนต์ที่ให้สมาชิกอย่างน้อย 1 คน ~ สูงสุด 3 คน ช่วยกันทำอาหารและส่งให้เสร็จสมบูรณ์\r\nเป้าหมายคือการทำคะแนนให้ได้ #b#e50,000#n#k คะแนน ภายในเวลาจำกัด #e30 นาที#n ครับ!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\nตรวจสอบเมนูที่เข้ามาได้ที่ #b#e<กระดานเมนู>#n#k ทางด้านซ้าย\r\nแล้วลองทำอาหารตามสูตรและนำไปส่งดูนะครับ~!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\n#e[การรวบรวมวัตถุดิบ]#n\r\n\r\nสามารถรับวัตถุดิบที่ต้องการได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้าวัตถุดิบ #e5 ชนิด#n ซึ่งตั้งอยู่ทาง #b#eด้านซ้ายของห้องครัว#n#k ครับ\r\n\r\n",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\n#e[การวางวัตถุดิบ]#n\r\n\r\nสามารถวางวัตถุดิบที่ถืออยู่ได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้า #eโต๊ะทำครัว#n ซึ่งตั้งอยู่ทาง #b#eตรงกลางของห้องครัว#n#k ครับ\r\n\r\nอย่าลืมนะครับว่าต้องทำอาหารให้ตรงกับ #eโต๊ะทำครัวที่มีหมายเลขเมนู#n\r\nที่ตรงกันเท่านั้น!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\n#e[การถือเครื่องมือแปรรูป]#n\r\n\r\nสามารถรับเครื่องมือได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n\r\nที่หน้าเครื่องมือแปรรูป #e3 ชนิด#n ซึ่งตั้งอยู่ทาง #b#eด้านขวาของห้องครัว#n#k ครับ\r\n\r\nจำไว้ว่าต้องอยู่ในสถานะที่ถือ #b#eเครื่องมือแปรรูป#n#k อยู่เท่านั้น\r\nถึงจะสามารถแปรรูปวัตถุดิบได้นะครับ!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\n#e[การแปรรูปวัตถุดิบ]#n\r\n\r\nสามารถแปรรูปวัตถุดิบที่วางอยู่บนโต๊ะทำครัวได้โดยการกดค้างที่ #r#eปุ่ม Space#n#k\r\nที่หน้า #eโต๊ะทำครัว#n ซึ่งตั้งอยู่ทาง #b#eตรงกลางของห้องครัว#n#k ครับ\r\n\r\nอย่าลืมนะครับว่าต้องทำอาหารให้ตรงกับ #eโต๊ะทำครัวที่มีหมายเลขเมนู#n\r\nที่ตรงกันเท่านั้น!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\n#e[การส่งอาหาร]#n\r\n\r\nในสถานะที่สามารถถืออาหารได้ จาก #b#eโต๊ะทำครัวที่ทำอาหารเสร็จแล้ว#n#k \r\nสามารถดำเนินการส่งอาหารได้โดยการกดค้างที่ #r#eปุ่ม Space#k#n ที่หน้า #eโต๊ะทำครัว#n นั้นครับ\r\n\r\nหลบหลีกการขัดขวางของเหล่า #eมอนสเตอร์#n ในพื้นที่ส่งอาหารทางด้านขวา\r\nและกดค้างที่ #r#eปุ่ม Space#k#n ต่อหน้าลูกค้าที่สั่งอาหาร ก็จะส่งอาหารเสร็จสมบูรณ์!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 3: { //게임 รางวัล에 대해 น้ำ어본다.
-                        self.say("\r\n#b#e50,000#n#k คะแนน ได้รับ하시면 #eวัน정량의 EXP#n\r\nรางวัล으로 드린답니다!\r\n\r\n이런 #r#e엄청난 기회#n#k 놓칠 수는 없겠죠?", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 3: { // รางวัลเกม
+                        self.say(
+                                "\r\nหากทำได้ #b#e50,000#n#k คะแนน จะได้รับ #eEXP ตามที่กำหนด#n\r\nเป็นรางวัลครับ!\r\n\r\n#r#eโอกาสดีๆ แบบนี้#n#k พลาดไม่ได้แล้วใช่ไหมล่ะครับ?",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
                     case 4: {
                         getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
-                        if (1 == self.askYesNo("\r\n#e#b<광장>#n#k 돌아가시หรือไม่?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                        if (1 == self.askYesNo("\r\nต้องการกลับไปที่ #e#b<จัตุรัส>#n#k หรือไม่ครับ?",
+                                ScriptMessageFlag.NpcReplacedByNpc)) {
                             target.registerTransferField(ServerConstants.TownMap);
                             exit = true;
                         }
@@ -272,9 +370,11 @@ public class TangyoonKitchen extends ScriptEngineNPC {
     }
 
     public void npc_9062573() {
-        if (getPlayer().getMap().getId() == 993194801) { //ออกแผนที่
+        if (getPlayer().getMap().getId() == 993194801) { // ออกจากแผนที่
             if (getPlayer().getOneInfoQuestInteger(501600, "today") >= 2) {
-                self.say("วันนี้ 남은 EXP ได้รับ 횟수가 없어서 EXP 드릴 수가 없어요 원래 있던 곳으로 돌려 보내드릴게요!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say(
+                        "วันนี้ไม่สามารถรับรางวัล EXP ได้อีกแล้วครับ จึงไม่สามารถมอบ EXP ให้ได้ จะส่งกลับไปยังที่เดิมนะครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 if (DBConfig.isHosting) {
                     target.registerTransferField(ServerConstants.TownMap);
                 } else {
@@ -284,7 +384,7 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 Calendar CAL = new GregorianCalendar(Locale.KOREA);
                 int day = CAL.getTime().getDay();
                 boolean doubleEXP = false;
-                if (day == 6 || day == 0) { //สัปดาห์말
+                if (day == 6 || day == 0) { // สุดสัปดาห์
                     doubleEXP = true;
                 }
                 long exp = GameConstants.tangyoonExp[getPlayer().getLevel() - 200];
@@ -312,16 +412,27 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 String expString = String.format("%,d", exp);
                 if (DBConfig.isGanglim) {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#bEXP#k #r" + expString + "#k#n #r100 강림คะแนน#k#n 를드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\n#e#bEXP#k #r" + expString
+                                        + "#k#n และ #r100 Ganglim Point#k#n ครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#bEXP#k #r" + expString + " * 2 (สัปดาห์말 탕윤 식당 EXP 2배 이벤트!)#k#n #r100 강림คะแนน#k#n 드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say("\r\n#e#bEXP#k #r" + expString
+                                + " * 2 (กิจกรรม EXP 2 เท่า Puzzle Master สุดสัปดาห์!)#k#n และ #r100 Ganglim Point#k#n ครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                     getPlayer().gainHongboPoint(100);
                 } else {
                     if (!doubleEXP) {
-                        self.say("\r\n#e#bEXP#k #r" + expString + "#k#n  드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\nมอบ #e#bEXP#k #r" + expString
+                                        + "#k#n ให้เรียบร้อยครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     } else {
-                        self.say("\r\n#e#bEXP#k #r" + expString + " * 2 (สัปดาห์말 퍼즐 마스터 EXP 2배 이벤트!)#k#n  드릴게요!\r\n(รางวัล은 ออก 시 지급)", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                        self.say(
+                                "\r\nมอบ #e#bEXP#k #r" + expString
+                                        + " * 2 (กิจกรรม EXP 2 เท่า Puzzle Master สุดสัปดาห์!)#k#n ให้เรียบร้อยครับ!\r\n(มอบรางวัลเมื่อออกจากแผนที่)",
+                                ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     }
                 }
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
@@ -331,7 +442,8 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                     target.registerTransferField(100000000);
                 }
                 getPlayer().updateOneInfo(501600, "start", "0");
-                getPlayer().updateOneInfo(501600, "today", String.valueOf(getPlayer().getOneInfoQuestInteger(501600, "today") + 1));
+                getPlayer().updateOneInfo(501600, "today",
+                        String.valueOf(getPlayer().getOneInfoQuestInteger(501600, "today") + 1));
                 getPlayer().updateOneInfo(501600, "complete", "0");
                 if (!doubleEXP) {
                     getPlayer().gainExpLong(exp);
@@ -340,7 +452,9 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 }
             } else {
                 getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
-                self.say("\r\n#e#r3개의 퍼즐을 완성하지 못 ฉัน오셨다면\r\nรางวัล을 지급해드릴 수 없답니다.#k\r\n\r\nถัดไป엔 더 노력해 สัปดาห์세요!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                self.say(
+                        "\r\n#e#rถ้าต่อจิ๊กซอว์ 3 ภาพไม่ครบ\r\nจะไม่สามารถมอบรางวัลให้ได้นะครับ#k\r\n\r\nครั้งหน้าพยายามเข้านะครับ!",
+                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                 if (DBConfig.isHosting) {
                     target.registerTransferField(ServerConstants.TownMap);
                 } else {
@@ -351,25 +465,38 @@ public class TangyoonKitchen extends ScriptEngineNPC {
             int v = -2;
             boolean exit = false;
             while (v != -1 && v != 0 && !exit && !getSc().isStop()) {
-                v = self.askMenu("궁금한 게 있으신가요?\r\n\r\n#L1# #b#e<퍼즐 마스터>#b#e 대해 น้ำ어본다.#l\r\n#L2# #b#e<퍼즐 마스터 ดำเนินการ ห้อง법>#n#k 대해 น้ำ어본다.#l\r\n#L3# #b#e<게임 รางวัล>#n#k 대해 น้ำ어본다.#l\r\n#L4# 원래 있던 สถานที่로 돌아가고 싶다.#l\r\n\r\n#L0# 궁금한 것이 ไม่มี.#l", ScriptMessageFlag.NpcReplacedByNpc);
+                v = self.askMenu(
+                        "มีอะไรสงสัยไหมครับ?\r\n\r\n#L1# สอบถามเกี่ยวกับ #b#e<Puzzle Master>#b#e#l\r\n#L2# สอบถามเกี่ยวกับ #b#e<วิธีเล่น Puzzle Master>#n#k#l\r\n#L3# สอบถามเกี่ยวกับ #b#e<รางวัลเกม>#n#k#l\r\n#L4# อยากกลับไปยังที่เดิม#l\r\n\r\n#L0# ไม่มีข้อสงสัยแล้ว#l",
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 switch (v) {
-                    case 1: { //퍼즐 마스터에 대해 น้ำ어본다.
-                        self.say("\r\n#b#e메이플 버라이어티#n#k 두 번째 특บ้าน! #r#e퍼즐 마스터!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#e진정한 크리에이터#n#k라면  기회를 놓칠 수 없겠죠?!", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 1: { // เกี่ยวกับ Puzzle Master
+                        self.say("\r\n#b#eMaple Variety#n#k เอพิโซด 2! #r#ePuzzle Master!#n#k",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say("\r\nถ้าเป็น #b#eCreator ตัวจริง#n#k ก็ห้ามพลาดโอกาสนี้เชียวนะครับ?!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 2: { //ดำเนินการห้อง법
-                        self.say("\r\n#e#b<퍼즐 마스터>#k#n ต่ำสุด 1명 ~ สูงสุด 3명의 인원이 #e#b총 3가지의 퍼즐#n#k จำกัด เวลา #b#e30นาที#n#k 내에 완성하는 것을 เป้าหมาย로 하는 컨텐츠랍니다!", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n#b#e화면 중앙에 배치된 액자 속에#n#k แผนที่ 이곳ฉัน곳에서 등장하는 #b#e퍼즐 조แต่ละ을 정확한 ตำแหน่ง에 배치 !#n#k", ScriptMessageFlag.NpcReplacedByNpc);
-                        self.say("\r\n앗! 너무 어려우실 것 같ฉัน요? 걱정하지 마세요!\r\n#b#eด้วยกัน하는 크리에이터들และ 힘을 합친다면 충นาที히 เป็นไปได้할 거예요!#n#k", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 2: { // วิธีเล่น
+                        self.say(
+                                "\r\n#e#b<Puzzle Master>#k#n เป็นคอนเทนต์ที่ให้สมาชิกอย่างน้อย 1 คน ~ สูงสุด 3 คน\r\nช่วยกันต่อ #e#bจิ๊กซอว์ทั้งหมด 3 ภาพ#n#k ให้เสร็จสมบูรณ์ภายในเวลาจำกัด #b#e30 นาที#n#k ครับ!",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\nนำ #b#eชิ้นส่วนจิ๊กซอว์#n#k ที่ปรากฏขึ้นทั่วแผนที่\r\nมาวางให้ตรงตำแหน่งใน #b#eกรอบรูปที่อยู่กลางหน้าจอ!#n#k",
+                                ScriptMessageFlag.NpcReplacedByNpc);
+                        self.say(
+                                "\r\nอ๊ะ! คิดว่ายากเกินไปงั้นเหรอครับ? ไม่ต้องกังวลไปนะครับ!\r\n#b#eถ้าช่วยกันกับเหล่า Creator ที่มาร่วมด้วยช่วยกันล่ะก็ ทำได้แน่นอนครับ!#n#k",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
-                    case 3: { //게임 รางวัล에 대해 น้ำ어본다.
-                        self.say("\r\n#b#e총 3가지의 퍼즐#n#k 완성 เลเวล 따라 #eวัน정량의 EXP#n\r\nรางวัล으로 드리고 있어요!\r\n\r\n이런 #r#e엄청난 기회#n#k 놓칠 수는 없겠죠?", ScriptMessageFlag.NpcReplacedByNpc);
+                    case 3: { // รางวัลเกม
+                        self.say(
+                                "\r\nจะได้รับ #eEXP ตามที่กำหนด#n ตามเลเวลที่ต่อ #b#eจิ๊กซอว์ 3 ภาพ#n#k สำเร็จ\r\nเป็นรางวัลครับ!\r\n\r\n#r#eโอกาสดีๆ แบบนี้#n#k พลาดไม่ได้แล้วใช่ไหมล่ะครับ?",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                         break;
                     }
                     case 4: {
-                        if (1 == self.askYesNo("\r\n#e#b<광장>#n#k 돌아가시หรือไม่?", ScriptMessageFlag.NpcReplacedByNpc)) {
+                        if (1 == self.askYesNo("\r\nต้องการกลับไปที่ #e#b<จัตุรัส>#n#k หรือไม่ครับ?",
+                                ScriptMessageFlag.NpcReplacedByNpc)) {
                             getPlayer().temporaryStatReset(SecondaryStatFlag.DispelItemOptionByField);
                             if (DBConfig.isHosting) {
                                 target.registerTransferField(ServerConstants.TownMap);
@@ -387,13 +514,14 @@ public class TangyoonKitchen extends ScriptEngineNPC {
 
     public void TyoonKitchen_npc2() {
         if (getPlayer().getMap().getId() != 993194500)
-            self.sayOk("\r\n요리는 단순한 วัน이 아니라 열정이네.", ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("\r\nการทำอาหารไม่ใช่แค่งานหรอก แต่คือความหลงใหลตังหากล่ะ", ScriptMessageFlag.NpcReplacedByNpc);
     }
 
     public void enter_993194400() {
-        getPlayer().send(CField.addPopupSay(9062561, 5000, "탕윤 식당에 오신 것을\r\n환영~!", ""));
-        getPlayer().send(CField.addPopupSay(9062563, 4000, "전설의 셰프의 식당에서 펼쳐지는 숨막히는 삶의 체험!", ""));
-        getPlayer().send(CField.addPopupSay(9062561, 5000, "เริ่ม~! 하겠~!", ""));
+        getPlayer().send(CField.addPopupSay(9062561, 5000, "ยินดีต้อนรับสู่\r\nร้านอาหารทังยุน~!", ""));
+        getPlayer().send(
+                CField.addPopupSay(9062563, 4000, "ประสบการณ์ชีวิตอันน่าทึ่งที่เปิดเผยในร้านอาหารของเชฟในตำนาน!", ""));
+        getPlayer().send(CField.addPopupSay(9062561, 5000, "เริ่มกันเลย~! ดีกว่า~!", ""));
     }
 
     public void enter_993194900() {
@@ -403,10 +531,13 @@ public class TangyoonKitchen extends ScriptEngineNPC {
     public void TyoonKitchen_setting() {
         Field field = getPlayer().getMap();
         if (field.getFieldSetInstance() != null) {
-            objects.fields.fieldset.instance.TangyoonKitchen f = (objects.fields.fieldset.instance.TangyoonKitchen) field.getFieldSetInstance();
+            objects.fields.fieldset.instance.TangyoonKitchen f = (objects.fields.fieldset.instance.TangyoonKitchen) field
+                    .getFieldSetInstance();
             getPlayer().send(objects.fields.fieldset.instance.TangyoonKitchen.TangyoonOrder(1));
             getPlayer().temporaryStatSet(993194500, Integer.MAX_VALUE, SecondaryStatFlag.DispelItemOptionByField, 1);
-            getPlayer().send(CWvsContext.InfoPacket.brownMessage("ปัจจุบัน แผนที่에서는 잠재 ความสามารถและ 에디셔널 잠재ความสามารถ이 ใช้งาน되지 않."));
+            getPlayer().send(CWvsContext.InfoPacket
+                    .brownMessage(
+                            "ในแผนที่ปัจจุบัน ความสามารถแฝง (Potential) และความสามารถแฝงเพิ่มเติม (Additional Potential) จะไม่ถูกนำมาใช้"));
             final MapleCharacter user = getPlayer();
             Timer.EventTimer.getInstance().schedule(new Runnable() {
                 @Override
@@ -414,7 +545,8 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                     if (user.getMap().getId() == 993194500) {
                         user.send(objects.fields.fieldset.instance.TangyoonKitchen.TangyoonOrder(2));
                         user.send(objects.fields.fieldset.instance.TangyoonKitchen.TangyoonObjectPacket_1());
-                        user.send(CField.environmentChange("UI/TyoonKitchen_UI.img/TyoonKitchen_UI/effect/countdown", 16));
+                        user.send(CField.environmentChange("UI/TyoonKitchen_UI.img/TyoonKitchen_UI/effect/countdown",
+                                16));
                     }
                 }
             }, 3000);
@@ -433,7 +565,8 @@ public class TangyoonKitchen extends ScriptEngineNPC {
                 @Override
                 public void run() {
                     if (user.getMap().getId() == 993194500) {
-                        user.send(CField.environmentChange("UI/UIMiniGame.img/mapleOneCard/Effect/screeneff/start", 16));
+                        user.send(
+                                CField.environmentChange("UI/UIMiniGame.img/mapleOneCard/Effect/screeneff/start", 16));
                         user.send(CField.environmentChange("Sound/MiniGame.img/oneCard/start", 5, 100));
                     }
                 }

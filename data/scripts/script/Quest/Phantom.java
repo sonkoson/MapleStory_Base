@@ -9,87 +9,87 @@ public class Phantom extends ScriptEngineNPC {
 
     public void phantomskill() {
         if (getPlayer().getLevel() >= 100) {
-            //getClient().removeClickedNPC();
-            //NPCScriptManager.getInstance().start(getClient(), 1052206, "บอสย้าย", true);
-            //return;
-            self.sayOk("#fs11#ปัจจุบัน는 ใช้할 수 없는 명령어야");
+            // getClient().removeClickedNPC();
+            // NPCScriptManager.getInstance().start(getClient(), 1052206, "บอสย้าย", true);
+            // return;
+            self.sayOk("#fs11#คำสั่งนี้ไม่สามารถใช้งานได้ในขณะนี้ครับ");
             return;
         }
 
         if (!GameConstants.isPhantom(getPlayer().getJob())) {
-            self.sayOk("#fs11#너는 팬텀이 아니라서 ใช้할 수 없는 ฟังก์ชัน이야");
+            self.sayOk("#fs11#คุณไม่ใช่ Phantom จึงไม่สามารถใช้งานฟังก์ชันนี้ได้ครับ");
             return;
         }
-        String steal = "#fs11##e[1ชา สกิล]#n\r\n";
+        String steal = "#fs11##e[สกิลคลาส 1]#n\r\n";
         if (getPlayer().getLevel() >= 10) {
-            //1ชา만
-            steal += "#L1# #s4001003# 다크ระหว่าง트#l\r\n";
-            steal += "#L2# #s3011004# 카디널 디스ชา지#l\r\n";
-            steal += "#L3# #s2001002# 매직 가드#l\r\n";
+            // Class 1 only
+            steal += "#L1# #s4001003# Dark Sight#l\r\n";
+            steal += "#L2# #s3011004# Cardinal Discharge#l\r\n";
+            steal += "#L3# #s2001002# Magic Guard#l\r\n";
         }
         if (getPlayer().getLevel() >= 30) {
 
-            steal += "\r\n\r\n#e[2ชา สกิล]#n\r\n";
-            steal += "#L4# #s3301003# 카디널 블래스트#l\r\n";
-            steal += "#L5# #s2301002# 힐#l\r\n";
-            steal += "#L6# #s1101006# 스피릿 블레이드#l\r\n";
-            //2ชาถึง
+            steal += "\r\n\r\n#e[สกิลคลาส 2]#n\r\n";
+            steal += "#L4# #s3301003# Cardinal Blast#l\r\n";
+            steal += "#L5# #s2301002# Heal#l\r\n";
+            steal += "#L6# #s1101006# Spirit Blade#l\r\n";
+            // Class 2 limit
         }
         if (getPlayer().getLevel() >= 60) {
-            steal += "\r\n\r\n#e[3ชา สกิล]#n\r\n";
-            steal += "#L8# #s3111013# 애로우 플래터#l\r\n";
-            steal += "#L9# #s1311015# 크로스 오버 체인#l\r\n";
-            steal += "#L10# #s4331011# 블레이드 어센션#l\r\n";
-            steal += "#L11# #s4331006# 사슬지옥#l\r\n";
-            steal += "#L12# #s2311009# 홀리 매직쉘#l\r\n";
-            steal += "#L13# #s2311003# 홀리 심볼#l\r\n";
-            steal += "#L14# #s2311011# 홀리 파운틴#l\r\n";
-            //3ชาถึง
+            steal += "\r\n\r\n#e[สกิลคลาส 3]#n\r\n";
+            steal += "#L8# #s3111013# Arrow Platter#l\r\n";
+            steal += "#L9# #s1311015# Cross Over Chain#l\r\n";
+            steal += "#L10# #s4331011# Blade Ascension#l\r\n";
+            steal += "#L11# #s4331006# Chains of Hell#l\r\n";
+            steal += "#L12# #s2311009# Holy Magic Shell#l\r\n";
+            steal += "#L13# #s2311003# Holy Symbol#l\r\n";
+            steal += "#L14# #s2311011# Holy Fountain#l\r\n";
+            // Class 3 limit
         }
-        if (getPlayer().getLevel() >= 100){
-            //4ชาถึง
-            steal += "\r\n\r\n#e[4ชา สกิล]#n\r\n";
-            steal += "#L15# #s4341002# 파이널 컷#l\r\n";
-            steal += "#L16# #s1221011# 생츄어리#l\r\n";
-            steal += "#L17# #s2221012# 프로즌 오브#l\r\n";
-            steal += "#L18# #s2221011# 프리징 브레스#l\r\n";
-            steal += "#L19# #s5321000# 캐논 바สัปดาห์카#l\r\n";
-            steal += "#L20# #s5121010# 타임 리프#l\r\n";
+        if (getPlayer().getLevel() >= 100) {
+            // Class 4 limit
+            steal += "\r\n\r\n#e[สกิลคลาส 4]#n\r\n";
+            steal += "#L15# #s4341002# Final Cut#l\r\n";
+            steal += "#L16# #s1221011# Sanctuary#l\r\n";
+            steal += "#L17# #s2221012# Frozen Orb#l\r\n";
+            steal += "#L18# #s2221011# Freezing Breath#l\r\n";
+            steal += "#L19# #s5321000# Cannon Bazooka#l\r\n";
+            steal += "#L20# #s5121010# Time Leap#l\r\n";
         }
 
-        if (getPlayer().getLevel() >= 140){
-            steal += "\r\n#e[하이퍼 สกิล]#n\r\n";
-            steal += "#L21# #s3221054# 불스아이#l\r\n";
-            steal += "#L22# #s1221054# 새크로생티티#l\r\n";
-            steal += "#L23# #s3121054# 프리퍼레이션#l\r\n";
+        if (getPlayer().getLevel() >= 140) {
+            steal += "\r\n#e[Hyper Skill]#n\r\n";
+            steal += "#L21# #s3221054# Bullseye#l\r\n";
+            steal += "#L22# #s1221054# Sacrosanctity#l\r\n";
+            steal += "#L23# #s3121054# Preparation#l\r\n";
         }
         int v = self.askMenu(steal);
-        if (getPlayer().getJob() == 2400) { //팬텀1ชา
+        if (getPlayer().getJob() == 2400) { // Phantom 1st Job
             if (v > 3) {
-                self.sayOk("#fs11#잘못된 ขอ.");
+                self.sayOk("#fs11#คำขอไม่ถูกต้อง");
                 return;
             }
-        } else if (getPlayer().getJob() == 2410) { //팬텀2ชา
+        } else if (getPlayer().getJob() == 2410) { // Phantom 2nd Job
             if (v > 7) {
-                self.sayOk("#fs11#잘못된 ขอ.");
+                self.sayOk("#fs11#คำขอไม่ถูกต้อง");
                 return;
             }
-        } else if (getPlayer().getJob() == 2411) { //팬텀3ชา
+        } else if (getPlayer().getJob() == 2411) { // Phantom 3rd Job
             if (v > 14) {
-                self.sayOk("#fs11#잘못된 ขอ.");
+                self.sayOk("#fs11#คำขอไม่ถูกต้อง");
                 return;
             }
-        } else if (getPlayer().getJob() == 2412) { //팬텀4ชา
+        } else if (getPlayer().getJob() == 2412) { // Phantom 4th Job
             if (getPlayer().getLevel() < 140) {
                 if (v > 21) {
-                    self.sayOk("#fs11#잘못된 ขอ.");
+                    self.sayOk("#fs11#คำขอไม่ถูกต้อง");
                     return;
                 }
             }
         }
         int skillId = 0;
         switch (v) {
-            case 1: //다크ระหว่าง트
+            case 1: // Dark Sight
                 skillId = 4001003;
                 break;
             case 2:
@@ -158,10 +158,10 @@ public class Phantom extends ScriptEngineNPC {
         }
         int maxLevel = SkillFactory.getSkill(skillId).getMaxLevel();
         if (maxLevel < 1) {
-            self.sayOk("#fs11#ขอ하는동ใน 오류가 발생แล้ว.");
+            self.sayOk("#fs11#เกิดข้อผิดพลาดในการดำเนินการคำขอ");
             return;
         }
         getPlayer().addStolenSkill(skillId, maxLevel);
-        //self.sayOk("สำเร็จแล้ว. สกิล 매니ฉัน먼트를 ยืนยัน해ดู.");
+        // self.sayOk("Success. Check your skill management.");
     }
 }

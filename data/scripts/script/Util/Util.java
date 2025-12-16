@@ -25,27 +25,37 @@ import java.util.regex.Pattern;
 public class Util extends ScriptEngineNPC {
 
     List<Integer> specialHair = new ArrayList<>(Arrays.asList(
-            32700, 32710, 32720, 32730, 32740, 32750, 32760, 32770, 32780, 32790, 32800, 32810, 32820, 32830, 32860, 32870, 32880, 32890, 32890, 32900, 32910,
-            32920, 32930, 32940, 32950, 32960, 32970, 32980, 32990, 39100, 39110, 39120, 39130, 39140, 39150, 39160, 39170, 45320, 45330, 45340, 45350, 45360,
-            45370, 45380, 45390, 45400, 45410, 45420, 45430, 45440, 45450, 45460, 45470, 45480, 45490, 45500, 45510, 45520, 45530, 45540, 45550, 45560, 45570,
-            45580, 45590, 45600, 45610, 45620, 45630, 45640, 45650, 45660, 45670, 45680, 45690, 45700, 45710, 45720, 45730, 45740, 45750, 45760, 45770, 45780,
-            45790, 45800, 45810, 45820, 45830, 45840, 45850, 45860, 45870, 45880, 45890, 45900, 45910, 45920, 45930, 45940, 45950, 45960, 45970, 45980, 45990,
-            39180, 39270, 39280, 39290, 39470, 39480, 39490, 39790, 39800, 39810, 39820, 39830, 39840, 39850, 39860, 39870, 39880, 39890, 39910, 47810, 47820,
-            39000, 39010, 39020, 39030, 39450, 39460, 39300, 39310, 39320, 39330, 39340, 39350, 39360, 39370, 39380, 39390, 39400, 39410, 39420, 39430, 39440,
-            39500, 39510, 39520, 39530, 39540, 39550, 39560, 39570, 39580, 39590, 39600, 39610, 39620, 39630, 39640, 39650, 39660, 39670, 39680, 39690, 39700,
-            39710, 39720, 39730, 39740, 39750, 39760, 39770, 39780, 39900, 39000, 39010, 39020, 39030, 39040, 39050, 39060, 39070, 39080, 39100, 39110, 39120, 39130, 39140, 39150, 39160, 39170, 39180, 39190, 39200, 39210,
+            32700, 32710, 32720, 32730, 32740, 32750, 32760, 32770, 32780, 32790, 32800, 32810, 32820, 32830, 32860,
+            32870, 32880, 32890, 32890, 32900, 32910,
+            32920, 32930, 32940, 32950, 32960, 32970, 32980, 32990, 39100, 39110, 39120, 39130, 39140, 39150, 39160,
+            39170, 45320, 45330, 45340, 45350, 45360,
+            45370, 45380, 45390, 45400, 45410, 45420, 45430, 45440, 45450, 45460, 45470, 45480, 45490, 45500, 45510,
+            45520, 45530, 45540, 45550, 45560, 45570,
+            45580, 45590, 45600, 45610, 45620, 45630, 45640, 45650, 45660, 45670, 45680, 45690, 45700, 45710, 45720,
+            45730, 45740, 45750, 45760, 45770, 45780,
+            45790, 45800, 45810, 45820, 45830, 45840, 45850, 45860, 45870, 45880, 45890, 45900, 45910, 45920, 45930,
+            45940, 45950, 45960, 45970, 45980, 45990,
+            39180, 39270, 39280, 39290, 39470, 39480, 39490, 39790, 39800, 39810, 39820, 39830, 39840, 39850, 39860,
+            39870, 39880, 39890, 39910, 47810, 47820,
+            39000, 39010, 39020, 39030, 39450, 39460, 39300, 39310, 39320, 39330, 39340, 39350, 39360, 39370, 39380,
+            39390, 39400, 39410, 39420, 39430, 39440,
+            39500, 39510, 39520, 39530, 39540, 39550, 39560, 39570, 39580, 39590, 39600, 39610, 39620, 39630, 39640,
+            39650, 39660, 39670, 39680, 39690, 39700,
+            39710, 39720, 39730, 39740, 39750, 39760, 39770, 39780, 39900, 39000, 39010, 39020, 39030, 39040, 39050,
+            39060, 39070, 39080, 39100, 39110, 39120, 39130, 39140, 39150, 39160, 39170, 39180, 39190, 39200, 39210,
             39500, 39510, 39520, 39530, 39540, 39550, 39560, 39570, 39580, 39590));
 
     DecimalFormat decFormat = new DecimalFormat("###,###");
 
     public void searchHairAndFace() {
         initNPC(MapleLifeFactory.getNPC(9000172));
-        int vv = self.askMenu("     #fUI/UIWindow2.img/Script/Title/1#\r\n#e<검색 코디>#n\r\n#b#h0##k , #r검색#k 통해 헤어และ 성형을 바꿔ดู.\r\n#b#L0#헤어 검색#l\r\n#L1#성형 검색#l");
+        int vv = self.askMenu(
+                "     #fUI/UIWindow2.img/Script/Title/1#\r\n#e<ค้นหาแฟชั่น>#n\r\n#b#h0##k ลองเปลี่ยนทรงผมและหน้าตาผ่านการ #rค้นหา#k ดูสิ\r\n#b#L0#ค้นหาทรงผม#l\r\n#L1#ค้นหาหน้าตา#l");
         String v = "";
         if (vv == 0) {
-            v = self.askText("원하시는 헤어의 이름 บางส่วน를 검색โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
+            v = self.askText("กรุณาใส่ชื่อทรงผมที่ต้องการค้นหา (ใส่บางส่วนก็ได้)", ScriptMessageFlag.NpcReplacedByNpc);
         } else {
-            v = self.askText("원하시는 성형의 이름 บางส่วน를 검색โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
+            v = self.askText("กรุณาใส่ชื่อหน้าตาที่ต้องการค้นหา (ใส่บางส่วนก็ได้)", ScriptMessageFlag.NpcReplacedByNpc);
         }
         if (v.equals("")) {
             return;
@@ -53,7 +63,7 @@ public class Util extends ScriptEngineNPC {
         List<Integer> items = new ArrayList<>();
         MapleItemInformationProvider mii = MapleItemInformationProvider.getInstance();
         switch (vv) {
-            case 0: { //헤어검색
+            case 0: { // 헤어검색
 
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
@@ -63,7 +73,8 @@ public class Util extends ScriptEngineNPC {
                             continue;
                         }
                         itemName = item.getRight();
-                        if (itemName.replace(" ", "").contains(v) || itemName.contains(v) || itemName.contains(v.replace(" ", "")) ||
+                        if (itemName.replace(" ", "").contains(v) || itemName.contains(v)
+                                || itemName.contains(v.replace(" ", "")) ||
                                 itemName.replace(" ", "").contains(v.replace(" ", ""))) {
                             items.add(itemid);
                         }
@@ -72,14 +83,15 @@ public class Util extends ScriptEngineNPC {
                 break;
             }
 
-            case 1: { //성형검색
+            case 1: { // 성형검색
                 String itemName = null;
                 for (Pair<Integer, String> item : mii.getAllEquips()) {
                     int itemid = item.getLeft();
                     if (itemid / 10000 == 2 || itemid / 10000 == 5) {
                         itemName = item.getRight();
                         if (String.valueOf(itemid).charAt(2) == '0') {
-                            if (itemName.replace(" ", "").contains(v) || itemName.contains(v) || itemName.contains(v.replace(" ", "")) ||
+                            if (itemName.replace(" ", "").contains(v) || itemName.contains(v)
+                                    || itemName.contains(v.replace(" ", "")) ||
                                     itemName.replace(" ", "").contains(v.replace(" ", ""))) {
                                 items.add(itemid);
                             }
@@ -90,12 +102,15 @@ public class Util extends ScriptEngineNPC {
             }
         }
         if (items.size() > 60) {
-            self.sayOk("찾으시려는 검색어에 데이터량이 너무 많아 แสดง하지 못แล้ว. 좀 더 정확한 검색을 โปรด.\r\n[예 : (라리엘 헤어) 라리x 라리엘o]");
+            self.sayOk(
+                    "ข้อมูลการค้นหาเยอะเกินไปไม่สามารถแสดงได้ครบ กรุณาระบุคำค้นหาให้ชัดเจนกว่านี้\r\n[ตัวอย่าง : (Rariel Hair) Rari x Rariel o]");
         } else if (items.size() > 0) {
-            String list = "ล่าง는 검색 ผลลัพธ์. 원하시는 코디가 มี면 เลือกโปรด.#b\r\n";
-            /*for (int i = 0; i < items.size(); i++) {
-                list += "#L" + i + "#" + "#z" + items.get(i) + "#\r\n";
-            }*/
+            String list = "ด้านล่างคือผลการค้นหา กรุณาเลือกรายการที่ต้องการ#b\r\n";
+            /*
+             * for (int i = 0; i < items.size(); i++) {
+             * list += "#L" + i + "#" + "#z" + items.get(i) + "#\r\n";
+             * }
+             */
             for (int i = 0; i < items.size(); i++) {
                 String type = "Hair";
                 String type2 = "hair";
@@ -103,24 +118,27 @@ public class Util extends ScriptEngineNPC {
                     type = "Face";
                     type2 = "face";
                 }
-                list += "#L" + i + "#" + "#fCharacter/" + type + "/000" + items.get(i) + ".img/default/" + type2 + "# #e#z" + items.get(i) + "##n#l\r\n";
+                list += "#L" + i + "#" + "#fCharacter/" + type + "/000" + items.get(i) + ".img/default/" + type2
+                        + "# #e#z" + items.get(i) + "##n#l\r\n";
             }
             int vvv = self.askMenu(list);
             if (vvv > -1) {
                 int az = 0;
                 if (GameConstants.isAngelicBuster(getPlayer().getJob())) {
-                    if (1 == self.askYesNo("드레스업 โหมด로 ใช้งาน ต้องการหรือไม่?")) {
+                    if (1 == self.askYesNo("ต้องการใช้งานกับโหมด Dress-up หรือไม่?")) {
                         az = 1;
                     }
                 }
                 if (GameConstants.isZero(getPlayer().getJob())) {
-                    if (1 == self.askYesNo("베타에 ใช้งานต้องการหรือไม่? (#r#e아니오#n#k 누를 경우 알파에 ใช้งาน.)")) {
+                    if (1 == self.askYesNo("ต้องการใช้งานกับ Beta หรือไม่? (#r#eไม่ใช่#n#k เพื่อใช้งานกับ Alpha)")) {
                         az = 1;
                     }
                 }
-                String v0 = "정말 #r#z" + items.get(vvv) + "##k เปลี่ยนต้องการหรือไม่?\r\n#e";
+                String v0 = "ต้องการเปลี่ยนเป็น #r#z" + items.get(vvv) + "##k จริงหรือไม่?\r\n#e";
                 if (vv == 0) {
-                    v0 += "\r\nหน้า 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/default/hair#\r\n뒷 모습 -\r\n#fCharacter/Hair/000" + items.get(vvv) + ".img/backDefault/backHair#";
+                    v0 += "\r\nด้านหน้า -\r\n#fCharacter/Hair/000" + items.get(vvv)
+                            + ".img/default/hair#\r\nด้านหลัง -\r\n#fCharacter/Hair/000" + items.get(vvv)
+                            + ".img/backDefault/backHair#";
                 } else {
                     v0 += "\r\n#fCharacter/Face/000" + items.get(vvv) + ".img/default/face#";
                 }
@@ -138,7 +156,7 @@ public class Util extends ScriptEngineNPC {
                             getPlayer().updateSingleStat(MapleStat.FACE, items.get(vvv));
                         }
                     } else {
-                        // 믹염 วินาที기화
+                        // Reset Mix Dye
                         getPlayer().setBaseColor(-1);
                         getPlayer().setAddColor(0);
                         getPlayer().setBaseProb(0);
@@ -156,7 +174,7 @@ public class Util extends ScriptEngineNPC {
                     getPlayer().equipChanged();
                 }
             } else {
-                self.sayOk("검색ผลลัพธ์가 없.");
+                self.sayOk("ไม่พบผลการค้นหา");
             }
         }
     }
@@ -169,35 +187,44 @@ public class Util extends ScriptEngineNPC {
         int selection = -1;
 
         if (true) {
-            self.say("#h0# 반갑.\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\nปัจจุบัน는 해당 ฟังก์ชัน을 이용할 수 없.");
+            self.say("#h0# สวัสดีจ้ะ\r\nฉันคือคอมพิวเตอร์ที่ดูแลระบบ #bเกมไต่บันได#k ในเซิร์ฟเวอร์ "
+                    + ServerConstants.serverName
+                    + "\r\n\r\nขณะนี้ไม่สามารถใช้งานฟังก์ชันดังกล่าวได้");
             return;
         }
         if (!canGame()) {
-            String text = "#h0# 반갑.\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\n#r#eซื้อ리" + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
+            String text = "#h0# สวัสดีจ้ะ\r\nฉันคือคอมพิวเตอร์ที่ดูแลระบบ #bเกมไต่บันได#k ในเซิร์ฟเวอร์ "
+                    + ServerConstants.serverName + "\r\n\r\n#r#eผลลัพธ์รอบที่ "
+                    + ContentsManager.SpeedLadderGame.getCurrentRound() + " จะออกในอีก " + recordToString + "#n#k" +
                     "\r\n\r\n";
             if (getPlayer().getOneInfoQuestInteger(777777, "round") == 0) {
-                text += "#b#L0#ซื้อ리 게임에 배팅을  싶.#r(남은เวลา 30วินาที 미만 배팅 불가)#b#l\r\n";
+                text += "#b#L0#ฉันต้องการลงเดิมพันเกมไต่บันได #r(เวลาน้อยกว่า 30 วินาที ไม่สามารถเดิมพันได้)#b#l\r\n";
             } else {
                 int type = getPlayer().getOneInfoQuestInteger(777777, "type");
                 int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-                text += "#b#h0#님의 ปัจจุบัน 배팅 สถานะ : " + getBetString(type, flag) + "#k\r\n";
+                text += "#bสถานะการเดิมพันของ #h0# : " + getBetString(type, flag) + "#k\r\n";
             }
-            text += "#L10#배팅 รางวัล을 수령 싶.#l\r\n" +
-                    "#L11#ซื้อ리 게임에 대해서 อธิบาย을 듣고 싶.#l";
+            text += "#L10#ฉันต้องการรับรางวัลเดิมพัน#l\r\n" +
+                    "#L11#ฉันต้องการฟังคำอธิบายเกี่ยวกับเกมไต่บันได#l";
             selection = self.askMenu(text);
 
         } else if (checkReward()) {
-            selection = self.askMenu("#h0# 반갑\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\n#r#eซื้อ리" + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
+            selection = self.askMenu("#h0# สวัสดีจ้ะ\r\nฉันคือคอมพิวเตอร์ที่ดูแลระบบ #bเกมไต่บันได#k ในเซิร์ฟเวอร์ "
+                    + ServerConstants.serverName
+                    + "\r\n\r\n#r#eผลลัพธ์รอบที่ " + ContentsManager.SpeedLadderGame.getCurrentRound()
+                    + " จะออกในอีก " + recordToString + "#n#k" +
                     "\r\n\r\n" +
-                    "#L10##b#e배팅 รางวัล을 수령 싶.#k#n#l\r\n" +
-                    "#L11#ซื้อ리 게임에 대해서 อธิบาย을 듣고 싶.#l");
+                    "#L10##b#eฉันต้องการรับรางวัลเดิมพัน#k#n#l\r\n" +
+                    "#L11#ฉันต้องการฟังคำอธิบายเกี่ยวกับเกมไต่บันได#l");
         } else {
-            String text = "#h0# 반갑.\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\n#r#eซื้อ리" + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
+            String text = "#h0# 반갑.\r\nฉัน는 " + ServerConstants.serverName + "서버의 ซื้อ리를 담당있는 컴퓨터.\r\n\r\n#r#eซื้อ리"
+                    + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
                     "\r\n\r\n";
             if (getPlayer().getOneInfoQuestInteger(777777, "round") == 0) {
                 text += "#b#L0#ซื้อ리 게임에 배팅을  싶.#l\r\n";
             } else {
-                if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame.getCurrentRound()) {
+                if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame
+                        .getCurrentRound()) {
                     int type = getPlayer().getOneInfoQuestInteger(777777, "type");
                     int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
                     text += "#b#h0#님의 ปัจจุบัน 배팅 สถานะ : " + getBetString(type, flag) + "#k\r\n";
@@ -209,74 +236,84 @@ public class Util extends ScriptEngineNPC {
                     "#L11#ซื้อ리 게임에 대해서 อธิบาย을 듣고 싶.#l";
             selection = self.askMenu(text);
         }
-        String canBet = "\r\nปัจจุบัน มี Meso : " + decFormat.format(getPlayer().getMeso()) + "Meso";
+        String canBet = "\r\nเงินที่มีปัจจุบัน : " + decFormat.format(getPlayer().getMeso()) + " Meso";
         switch (selection) {
-            case 0: //출발 좌
+            case 0: // 출발 좌
                 if (checkReward()) {
-                    self.sayOk("수령하지 않은 รางวัล이 있. 먼ฉัน รางวัล을 수령โปรด.");
+                    self.sayOk("ยังมีรางวัลที่ยังไม่ได้กดรับ กรุณากดรับรางวัลก่อน");
                     return;
                 }
-                if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame.getCurrentRound()) {
-                    self.sayOk("이미 배팅이 ดำเนินการ된สถานะ.");
+                if (getPlayer().getOneInfoQuestInteger(777777, "round") == ContentsManager.SpeedLadderGame
+                        .getCurrentRound()) {
+                    self.sayOk("คุณได้ลงเดิมพันในรอบนี้ไปแล้ว");
                     return;
                 }
                 if (!canGame()) {
-                    self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
+                    self.sayOk("เหลือเวลาน้อยกว่า 30 วินาที ไม่สามารถลงเดิมพันได้");
                     return;
                 }
-                int v = self.askMenu("<배팅เมนู>#k#n\r\n\r\n#r#eซื้อ리" + ContentsManager.SpeedLadderGame.getCurrentRound() + "회ชา ผลลัพธ์ ถึง " + recordToString + "#n#k" +
+                int v = self.askMenu("<เมนูการเดิมพัน>#k#n\r\n\r\n#r#eผลลัพธ์รอบที่ "
+                        + ContentsManager.SpeedLadderGame.getCurrentRound()
+                        + " จะออกในอีก " + recordToString + "#n#k" +
                         "\r\n\r\n" +
-                        "#b#L0#ซื้อ리 (출발 [좌] x1.85)#l\r\n" +
-                        "#L1#ซื้อ리 (출발 [우] x1.85)#l\r\n" +
-                        "#L2#ซื้อ리 (줄수 [4줄] x1.85)#l\r\n" +
-                        "#L3#ซื้อ리 (줄수 [3줄] x1.85)#l\r\n" +
-                        "#L4#ซื้อ리 (ผลลัพธ์ [홀] x1.85)#l\r\n" +
-                        "#L5#ซื้อ리 (ผลลัพธ์ [짝] x1.85)#l\r\n" +
-                        "#L6#ซื้อ리 (출발+줄수 [좌출4줄] x3.6)#l\r\n" +
-                        "#L7#ซื้อ리 (출발+줄수 [좌출3줄] x3.6)#l\r\n" +
-                        "#L8#ซื้อ리 (출발+줄수 [우출4줄] x3.6)#l\r\n" +
-                        "#L9#ซื้อ리 (출발+줄수 [우출3줄] x3.6)#l");
+                        "#b#L0#บันได (เริ่ม [ซ้าย] x1.85)#l\r\n" +
+                        "#L1#บันได (เริ่ม [ขวา] x1.85)#l\r\n" +
+                        "#L2#บันได (ขีด [4 ขีด] x1.85)#l\r\n" +
+                        "#L3#บันได (ขีด [3 ขีด] x1.85)#l\r\n" +
+                        "#L4#บันได (ผลลัพธ์ [คี่] x1.85)#l\r\n" +
+                        "#L5#บันได (ผลลัพธ์ [คู่] x1.85)#l\r\n" +
+                        "#L6#บันได (เริ่ม+ขีด [ซ้าย 4 ขีด] x3.6)#l\r\n" +
+                        "#L7#บันได (เริ่ม+ขีด [ซ้าย 3 ขีด] x3.6)#l\r\n" +
+                        "#L8#บันได (เริ่ม+ขีด [ขวา 4 ขีด] x3.6)#l\r\n" +
+                        "#L9#บันได (เริ่ม+ขีด [ขวา 3 ขีด] x3.6)#l");
                 if (v == 0 || v == 1) {
                     String reward;
                     if (v == 0) {
-                        reward = self.askText("#e#b출발 [좌] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#bเริ่ม [ซ้าย] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     } else {
-                        reward = self.askText("#e#b출발 [우] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#bเริ่ม [ขวา] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //숫자만
+                    String pattern = "^[0-9]*$"; // 숫자만
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
-                        getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
+                        getPlayer().dropMessage(1, "กรุณาใส่เฉพาะตัวเลขเท่านั้น");
                         return;
                     }
                     if (Long.parseLong(reward) > getPlayer().getMeso()) {
-                        self.sayOk("잘못된 ขอ.");
+                        self.sayOk("คำขอไม่ถูกต้อง");
                         return;
                     }
                     if (Long.parseLong(reward) <= 0) {
                         if (Long.parseLong(reward) == 0) {
-                            self.sayOk("1이상 입력เป็นไปได้.");
+                            self.sayOk("กรุณาใส่จำนวน 1 ขึ้นไป");
                         }
                         return;
                     }
-                    //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    //flag : 1 : 우출, 3줄, 홀
-                    //flag : 2 : 좌출, 4줄, 짝
-                    //flag : 4 : 좌4
-                    //flag : 8 : 좌3
-                    //flag : 16 : 우4
-                    //flag : 32 : 우3
+                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+                    // flag : 1 : 우출, 3줄, 홀
+                    // flag : 2 : 좌출, 4줄, 짝
+                    // flag : 4 : 좌4
+                    // flag : 8 : 좌3
+                    // flag : 16 : 우4
+                    // flag : 32 : 우3
                     if (!canGame()) {
                         self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
                         return;
                     }
-                    getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
+                    getPlayer().updateOneInfo(777777, "round",
+                            String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "1");
-                    if (v == 0) { //좌출
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 2, Long.parseLong(reward));
+                    if (v == 0) { // 좌출
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 2,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { //우출
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 1, Long.parseLong(reward));
+                    } else { // 우출
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 1, (byte) 1,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
@@ -284,11 +321,15 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 2 || v == 3) {
                     String reward;
                     if (v == 2) {
-                        reward = self.askText("#e#b줄수 [4] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#bขีด [4] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     } else {
-                        reward = self.askText("#e#b줄수 [3] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#bขีด [3] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //숫자만
+                    String pattern = "^[0-9]*$"; // 숫자만
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
                         getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
@@ -304,24 +345,27 @@ public class Util extends ScriptEngineNPC {
                         }
                         return;
                     }
-                    //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    //flag : 1 : 우출, 3줄, 홀
-                    //flag : 2 : 좌출, 4줄, 짝
-                    //flag : 4 : 좌4
-                    //flag : 8 : 좌3
-                    //flag : 16 : 우4
-                    //flag : 32 : 우3
+                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+                    // flag : 1 : 우출, 3줄, 홀
+                    // flag : 2 : 좌출, 4줄, 짝
+                    // flag : 4 : 좌4
+                    // flag : 8 : 좌3
+                    // flag : 16 : 우4
+                    // flag : 32 : 우3
                     if (!canGame()) {
                         self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
                         return;
                     }
-                    getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
+                    getPlayer().updateOneInfo(777777, "round",
+                            String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "2");
                     if (v == 2) { // 4줄
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 2, Long.parseLong(reward));
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 2,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
-                    } else { //3줄
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 1, Long.parseLong(reward));
+                    } else { // 3줄
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 2, (byte) 1,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
@@ -329,11 +373,15 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 4 || v == 5) {
                     String reward;
                     if (v == 4) {
-                        reward = self.askText("#e#b[ผลลัพธ์ : 홀] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[ผลลัพธ์ : คี่] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     } else {
-                        reward = self.askText("#e#b[ผลลัพธ์ : 짝] x1.85#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[ผลลัพธ์ : คู่] x1.85#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //숫자만
+                    String pattern = "^[0-9]*$"; // 숫자만
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
                         getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
@@ -349,24 +397,27 @@ public class Util extends ScriptEngineNPC {
                         }
                         return;
                     }
-                    //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    //flag : 1 : 우출, 3줄, 홀
-                    //flag : 2 : 좌출, 4줄, 짝
-                    //flag : 4 : 좌4
-                    //flag : 8 : 좌3
-                    //flag : 16 : 우4
-                    //flag : 32 : 우3
+                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+                    // flag : 1 : 우출, 3줄, 홀
+                    // flag : 2 : 좌출, 4줄, 짝
+                    // flag : 4 : 좌4
+                    // flag : 8 : 좌3
+                    // flag : 16 : 우4
+                    // flag : 32 : 우3
                     if (!canGame()) {
                         self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
                         return;
                     }
-                    getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
+                    getPlayer().updateOneInfo(777777, "round",
+                            String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "3");
                     if (v == 4) { // 홀
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 1, Long.parseLong(reward));
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 1,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "1");
-                    } else { //3줄
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 2, Long.parseLong(reward));
+                    } else { // 3줄
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 3, (byte) 2,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "2");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
@@ -374,11 +425,15 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 6 || v == 7) {
                     String reward = "";
                     if (v == 6) {
-                        reward = self.askText("#e#b[출발+줄수 좌4] x3.6#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[เริ่ม+ขีด ซ้าย4] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     } else {
-                        reward = self.askText("#e#b[출발+줄수 좌3] x3.6#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[เริ่ม+ขีด ซ้าย3] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //숫자만
+                    String pattern = "^[0-9]*$"; // 숫자만
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
                         getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
@@ -394,24 +449,27 @@ public class Util extends ScriptEngineNPC {
                         }
                         return;
                     }
-                    //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    //flag : 1 : 우출, 3줄, 홀
-                    //flag : 2 : 좌출, 4줄, 짝
-                    //flag : 4 : 좌4
-                    //flag : 8 : 좌3
-                    //flag : 16 : 우4
-                    //flag : 32 : 우3
+                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+                    // flag : 1 : 우출, 3줄, 홀
+                    // flag : 2 : 좌출, 4줄, 짝
+                    // flag : 4 : 좌4
+                    // flag : 8 : 좌3
+                    // flag : 16 : 우4
+                    // flag : 32 : 우3
                     if (!canGame()) {
                         self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
                         return;
                     }
-                    getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
+                    getPlayer().updateOneInfo(777777, "round",
+                            String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
                     if (v == 6) { // 좌4
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 4, Long.parseLong(reward));
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 4,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "4");
-                    } else { //좌3
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 8, Long.parseLong(reward));
+                    } else { // 좌3
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 8,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "8");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
@@ -419,11 +477,15 @@ public class Util extends ScriptEngineNPC {
                 } else if (v == 8 || v == 9) {
                     String reward;
                     if (v == 8) {
-                        reward = self.askText("#e#b[출발+줄수 우4] x3.6#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[เริ่ม+ขีด ขวา4] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     } else {
-                        reward = self.askText("#e#b[출발+줄수 우3] x3.6#n#k เลือก하셨.\r\nเท่าไหร่를 배팅ต้องการหรือไม่. [ปัจจุบัน는 Meso 이용เป็นไปได้.]" + canBet);
+                        reward = self.askText(
+                                "#e#b[เริ่ม+ขีด ขวา3] x3.6#n#k ที่ท่านเลือก\r\nต้องการลงเดิมพันเท่าไหร่? [ปัจจุบันสามารถใช้ Meso ได้เท่านั้น]"
+                                        + canBet);
                     }
-                    String pattern = "^[0-9]*$"; //숫자만
+                    String pattern = "^[0-9]*$"; // 숫자만
                     boolean regex = Pattern.matches(pattern, reward);
                     if (!regex) {
                         getPlayer().dropMessage(1, "숫자만 입력하실 수 있.");
@@ -439,30 +501,33 @@ public class Util extends ScriptEngineNPC {
                         }
                         return;
                     }
-                    //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-                    //flag : 1 : 우출, 3줄, 홀
-                    //flag : 2 : 좌출, 4줄, 짝
-                    //flag : 4 : 좌4
-                    //flag : 8 : 좌3
-                    //flag : 16 : 우4
-                    //flag : 32 : 우3
+                    // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+                    // flag : 1 : 우출, 3줄, 홀
+                    // flag : 2 : 좌출, 4줄, 짝
+                    // flag : 4 : 좌4
+                    // flag : 8 : 좌3
+                    // flag : 16 : 우4
+                    // flag : 32 : 우3
                     if (!canGame()) {
                         self.sayOk("남은เวลา이 30วินาที 미만이라 배팅할 수 없.");
                         return;
                     }
-                    getPlayer().updateOneInfo(777777, "round", String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
+                    getPlayer().updateOneInfo(777777, "round",
+                            String.valueOf(ContentsManager.SpeedLadderGame.getCurrentRound()));
                     getPlayer().updateOneInfo(777777, "type", "4");
                     if (v == 8) { // 우4
                         getPlayer().updateOneInfo(777777, "flag", "16");
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 16, Long.parseLong(reward));
-                    } else { //우3
-                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 32, Long.parseLong(reward));
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 16,
+                                Long.parseLong(reward));
+                    } else { // 우3
+                        ContentsManager.SpeedLadderGame.addBetMan(getPlayer(), (byte) 4, (byte) 32,
+                                Long.parseLong(reward));
                         getPlayer().updateOneInfo(777777, "flag", "32");
                     }
                     getPlayer().updateOneInfo(777777, "reward", reward);
                     getPlayer().gainMeso(-Long.parseLong(reward), false);
                 }
-                self.sayOk("สำเร็จ적으로 배팅되었.");
+                self.sayOk("ลงเดิมพันเรียบร้อยแล้ว");
                 break;
             case 10:
                 if (checkReward()) {
@@ -473,19 +538,21 @@ public class Util extends ScriptEngineNPC {
                     getPlayer().updateOneInfo(777777, "flag", "0");
                     if (type < 4) {
                         getPlayer().gainMeso((long) (reward * 1.85), false);
-                        self.sayOk(decFormat.format((long) (reward * 1.85)) + "Meso 지급되었.");
+                        self.sayOk(decFormat.format((long) (reward * 1.85)) + " Meso ได้รับเรียบร้อยแล้ว");
                     } else {
                         getPlayer().gainMeso((long) (reward * 3.6), false);
-                        self.sayOk(decFormat.format((long) (reward * 3.6)) + "Meso 지급되었.");
+                        self.sayOk(decFormat.format((long) (reward * 3.6)) + " Meso ได้รับเรียบร้อยแล้ว");
                     }
                     getPlayer().updateOneInfo(777777, "reward", "0");
                 } else {
-                    self.sayOk("수령할 수 있는 รางวัล이 없.");
+                    self.sayOk("ไม่มีรางวัลที่สามารถรับได้");
                 }
                 break;
             case 11:
-                self.sayOk("#e#b<배당률>#n#k\r\n출발 - 좌출발, 우출발 (1.85배)\r\n줄수 - 3줄, 4줄 (1.85배)\r\nผลลัพธ์ - 홀, 짝 (1.85배)\r\n출발 + 줄수 - 좌4, 좌3, 우4, 우3 (3.6배)\r\n\r\n#r#e<ซื้อ리 용어>#k#n\r\n좌출 : 왼쪽에서 출발\r\n" +
-                        "우출 : 오른쪽에서 출발\r\n3줄 : ซื้อ리 세줄\r\n4줄 : ซื้อ리 네줄\r\n좌4 : 왼쪽에서 출발 + ซื้อ리 네줄\r\n좌3 : 왼쪽에서 출발 + ซื้อ리 세줄\r\n우4 : 오른쪽에서 출발 + ซื้อ리 네줄\r\n우3 : 오른쪽에서 출발 + ซื้อ리 세줄");
+                self.sayOk(
+                        "#e#b<อัตราจ่าย>#n#k\r\nเริ่ม - เริ่มซ้าย, เริ่มขวา (1.85 เท่า)\r\nขีด - 3 ขีด, 4 ขีด (1.85 เท่า)\r\nผล - คี่, คู่ (1.85 เท่า)\r\nเริ่ม + ขีด - ซ้าย4, ซ้าย3, ขวา4, ขวา3 (3.6 เท่า)\r\n\r\n#r#e<ศัพท์เกมไต่บันได>#k#n\r\nเริ่มซ้าย : เริ่มจากทางซ้าย\r\n"
+                                +
+                                "เริ่มขวา : เริ่มจากทางขวา\r\n3 ขีด : บันไดมี 3 ขีด\r\n4 ขีด : บันไดมี 4 ขีด\r\nซ้าย4 : เริ่มซ้าย + 4 ขีด\r\nซ้าย3 : เริ่มซ้าย + 3 ขีด\r\nขวา4 : เริ่มขวา + 4 ขีด\r\nขวา3 : เริ่มขวา + 3 ขีด");
                 break;
         }
     }
@@ -504,23 +571,23 @@ public class Util extends ScriptEngineNPC {
             if (ladder == null) {
                 return false;
             }
-            //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-            //flag : 1 : 우출, 3줄, 홀
-            //flag : 2 : 좌출, 4줄, 짝
-            //flag : 4 : 좌4
-            //flag : 8 : 좌3
-            //flag : 16 : 우4
-            //flag : 32 : 우3
+            // type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
+            // flag : 1 : 우출, 3줄, 홀
+            // flag : 2 : 좌출, 4줄, 짝
+            // flag : 4 : 좌4
+            // flag : 8 : 좌3
+            // flag : 16 : 우4
+            // flag : 32 : 우3
             int type = getPlayer().getOneInfoQuestInteger(777777, "type");
             int flag = getPlayer().getOneInfoQuestInteger(777777, "flag");
-            if (type == 1) { //출발만
+            if (type == 1) { // 출발만
                 int right = ladder.getRight();
                 if ((right == 1 && flag == 1) || (right == 0 && flag == 2)) {
                     reward = true;
                 } else {
                     reward = false;
                 }
-            } else if (type == 2) { //줄수
+            } else if (type == 2) { // 줄수
                 int line = ladder.getLine();
                 if ((line == 3 && flag == 1) || (line == 4 && flag == 2)) {
                     reward = true;
@@ -534,7 +601,7 @@ public class Util extends ScriptEngineNPC {
                 } else {
                     reward = false;
                 }
-            } else if (type == 4) { //출발 + 줄수
+            } else if (type == 4) { // 출발 + 줄수
                 int right = ladder.getRight();
                 int line = ladder.getLine();
                 if ((right == 0 && line == 4 && flag == 4) || (right == 0 && line == 3 && flag == 8)
@@ -561,67 +628,68 @@ public class Util extends ScriptEngineNPC {
     }
 
     public String getBetString(int type, int flag) {
-        //type : 1 : 출발만, 2 : 줄수 , 3 : ผลลัพธ์ , 4 : 출발 + 줄수
-        //flag : 1 : 우출, 3줄, 홀
-        //flag : 2 : 좌출, 4줄, 짝
-        //flag : 4 : 좌4
-        //flag : 8 : 좌3
-        //flag : 16 : 우4
-        //flag : 32 : 우3
+        // type : 1 : Start only, 2 : Lines, 3 : Result, 4 : Start + Lines
+        // flag : 1 : Right, 3 lines, Odd
+        // flag : 2 : Left, 4 lines, Even
+        // flag : 4 : Left 4 lines
+        // flag : 8 : Left 3 lines
+        // flag : 16 : Right 4 lines
+        // flag : 32 : Right 3 lines
         switch (type) {
-            case 1: //출발
-                //출발 [좌]
-                //출발 [우]
+            case 1: // Start
+                // Start [Left]
+                // Start [Right]
                 if (flag == 1) {
-                    return "출발 [우]";
+                    return "จุดเริ่ม [ขวา]";
                 } else {
-                    return "출발 [좌]";
+                    return "จุดเริ่ม [ซ้าย]";
                 }
-            case 2: //줄수
-                //줄수 [4]
-                //줄수 [3]
+            case 2: // Lines
+                // Lines [4]
+                // Lines [3]
                 if (flag == 1) {
-                    return "줄수 [3]";
+                    return "จำนวนขีด [3]";
                 } else {
-                    return "줄수 [4]";
+                    return "จำนวนขีด [4]";
                 }
-            case 3: //ผลลัพธ์
-                //ผลลัพธ์ [홀]
-                //ผลลัพธ์ [짝]
+            case 3: // Result
+                // Result [Odd]
+                // Result [Even]
                 if (flag == 1) {
-                    return "ผลลัพธ์ [홀]";
+                    return "ผลลัพธ์ [คี่]";
                 } else {
-                    return "ผลลัพธ์ [짝]";
+                    return "ผลลัพธ์ [คู่]";
                 }
-            case 4: //출발+줄수
-                //[출발+줄수 좌4]
-                //[출발+줄수 좌3]
-                //[출발+줄수 우4]
-                //[출발+줄수 우3]
-                //flag : 4 : 좌4
-                //flag : 8 : 좌3
-                //flag : 16 : 우4
-                //flag : 32 : 우3
+            case 4: // Start + Lines
+                // [Start+Lines Left4]
+                // [Start+Lines Left3]
+                // [Start+Lines Right4]
+                // [Start+Lines Right3]
+                // flag : 4 : Left4
+                // flag : 8 : Left3
+                // flag : 16 : Right4
+                // flag : 32 : Right3
                 if (flag == 4) {
-                    return "출발+줄수 [좌4]";
+                    return "เริ่ม+ขีด [ซ้าย 4 ขีด]";
                 } else if (flag == 8) {
-                    return "출발+줄수 [좌3]";
+                    return "เริ่ม+ขีด [ซ้าย 3 ขีด]";
                 } else if (flag == 16) {
-                    return "출발+줄수 [우4]";
+                    return "เริ่ม+ขีด [ขวา 4 ขีด]";
                 } else if (flag == 32) {
-                    return "출발+줄수 [우3]";
+                    return "เริ่ม+ขีด [ขวา 3 ขีด]";
                 }
         }
         return "";
     }
-    
+
     public void characterNameChange() {
         initNPC(MapleLifeFactory.getNPC(9062010));
-        int v = self.askMenu("ใน녕ทำ! คุณ의 이름을 바꿔드릴 수 있는 #b미스터 뉴네임#k. อะไร을 도และ드릴까요?\r\n\r\n#b#L0#ตัวละคร 이름 เปลี่ยน하기 (ตัวละคร 이름 เปลี่ยน 쿠폰จำเป็น)#l\r\n#L1#สนทนา를 สิ้นสุด한다.#l");
+        int v = self.askMenu(
+                "สวัสดี! ฉันคือ #bMr. New Name#k ผู้สามารถเปลี่ยนชื่อตัวละครให้คุณได้ มีอะไรให้ฉันช่วยไหม?\r\n\r\n#b#L0#เปลี่ยนชื่อตัวละคร (ต้องใช้คูปองเปลี่ยนชื่อตัวละคร)#l\r\n#L1#จบการสนทนา#l");
         if (v != 0) {
             return;
         }
-        getPlayer().send(NameChanger((byte)9, 4034803));
+        getPlayer().send(NameChanger((byte) 9, 4034803));
     }
 
     public static byte[] NameChanger(byte status, int itemid) {
@@ -647,9 +715,9 @@ public class Util extends ScriptEngineNPC {
             getPlayer().updateOneInfo(18098, "coin", "0");
             getPlayer().updateOneInfo(18790, "coin", "0");
 
-            self.say("#b#i4310229:##t4310229##k #b" + coin + "개#k 코인을 지급받았.");
+            self.say("#b#i4310229:##t4310229##k #b" + coin + " เหรียญ#k ได้รับเรียบร้อยแล้ว");
         } else {
-            self.say("수령 할 수 있는 코인이 없.");
+            self.say("ไม่มีเหรียญที่สามารถรับได้");
         }
     }
 }

@@ -652,55 +652,5 @@ public class Magnus extends ScriptEngineNPC {
         }
     }
 
-    /*
-     * FieldSet fieldSet = fieldSet("EasyMagnusEnter");
-     * if (target.getMapId() != 401060399) {
-     * fieldSet = fieldSet("MagnusEnter");
-     * }
-     * if (fieldSet == null) {
-     * self.sayOk("지금은 매เขา너스 레이드를 이용하실 수 없.");
-     * return;
-     * }
-     * boolean enterField = false;
-     * if (target.getMapId() == 401060399) { //이지매เขาเข้าแผนที่
-     * if (self.
-     * askYesNo("매เขา너스 퇴치를 บน해 폭군의 왕좌로 ย้าย ต้องการหรือไม่??\r\n#b<< 매เขา너스 모의전은 1วัน에 1회 클리어 เป็นไปได้. >>\r\n<<115 เลเวล 이상 유ฉัน 간의 ปาร์ตี้ เข้า하실 수 있.>>"
-     * ) == 1) {
-     * enterField = true;
-     * }
-     * } else { //노말, 하드매เขา
-     * //TODO
-     * }
-     * if (enterField) {
-     * int enter = fieldSet.enter(target.getId());
-     * if (enter == -1) self.say("알 수 없는 이유로 เข้า할 수 없. 잠시 후에 다시 시도해 สัปดาห์십시오.");
-     * else if (enter == 1) self.say("ปาร์ตี้ 맺어야만 도전할 수 있.");
-     * else if (enter == 2) self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
-     * else if (enter == 3) self.say("ต่ำสุด " + fieldSet.minMember +
-     * "인 이상의 ปาร์ตี้ เควส เริ่ม할 수 있.");
-     * else if (enter == 4) self.say("ปาร์ตี้원의 เลเวล ต่ำสุด " + fieldSet.minLv +
-     * " 이상이어야 .");
-     * else if (enter == 5) self.say("ปาร์ตี้원이 ทั้งหมด 모여 있어야 เริ่ม할 수 있.");
-     * else if (enter == 6) self.say("이미 อื่น 원정대가 ใน으로 들어가 เควส 클리어에 도전 있는 중.");
-     * else if (enter == 7) { //30นาที รอเวลา이 발생한경우
-     * self.say("30นาที 이내에 เข้า한 ปาร์ตี้원이 있. เข้า 후 30นาที 이내에 재เข้า이 불เป็นไปได้.");
-     * } else if (enter < -1) {
-     * MapleCharacter user =
-     * getClient().getChannelServer().getPlayerStorage().getCharacterById(enter *
-     * -1);
-     * String name = "";
-     * if (user != null) {
-     * name = user.getName();
-     * }
-     * if (target.getMapId() != 401060399) {
-     * self.
-     * sayOk("최근 วันสัปดาห์วัน 이내 <บอส:매เขา너스> 하드 โหมด를 클리어한 ปาร์ตี้원이 있. <บอส:매เขา너스> 하드 โหมด는 วันสัปดาห์วัน에 1회만 클리어 เป็นไปได้.\r\n#r#e<클리어 기록은 매สัปดาห์ 목요วัน에 วัน괄 วินาที기화 .>"
-     * );
-     * } else {
-     * self.say("ปาร์ตี้원 중 #b#e" + name + "#k#n  วันนี้ 매เขา너스에 เข้า하셔서 들어갈 수 없.");
-     * }
-     * }
-     * }
-     */
     // TODO mag_GateWayOut(이지매เขาออก), BPReturn_Magnus2(노말매เขา,하드매เขาออก)
 }

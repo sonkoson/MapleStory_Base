@@ -1,6 +1,5 @@
 package script.ArcaneRiver;
 
-
 import scripting.newscripting.Script;
 import scripting.newscripting.ScriptEngineNPC;
 
@@ -12,7 +11,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003150, 1);
         } else {
-            getPlayer().dropMessage(5, "270เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 270 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 
@@ -22,7 +21,7 @@ public class HotelArcs extends ScriptEngineNPC {
             playPortalSE();
             registerTransferField(410003000, 2);
         } else {
-            getPlayer().dropMessage(5, "270เลเวล 이상만 เข้า하실 수 있.");
+            getPlayer().dropMessage(5, "ต้องมีเลเวล 270 ขึ้นไปเท่านั้นจึงจะเข้าได้");
         }
     }
 }

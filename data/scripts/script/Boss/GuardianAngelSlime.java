@@ -11,169 +11,208 @@ import scripting.newscripting.ScriptEngineNPC;
 
 public class GuardianAngelSlime extends ScriptEngineNPC {
 
-
     public void slime_enterGate() {
-        String Message = "알 수 없는 기운이 느껴진다. 가디언 엔젤 슬라임และ의 전투를 บน해 ย้าย할까?\r\n\r\n";
+        String Message = "สัมผัสได้ถึงพลังงานที่ไม่รู้จัก ต้องการย้ายไปต่อสู้กับ Guardian Angel Slime หรือไม่?\r\n\r\n";
         if (DBConfig.isGanglim) {
-        	Message += "#L0#가디언 엔젤 슬라임(#b노말 โหมด#k) เข้า을 สมัคร한다. #r(เลเวล 210이상) #g[" + getPlayer().getOneInfoQuestInteger(1234570, "guardian_angel_slime_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-            Message += "#L1#가디언 엔젤 슬라임(#b카오스 โหมด#k) เข้า을 สมัคร한다. #r(เลเวล 210이상) #g[" + getPlayer().getOneInfoQuestInteger(1234569, "guardian_angel_slime_clear") + "/" + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
-            Message += "#L2#가디언 엔젤 슬라임(#b노말 연습 โหมด#k) เข้า을 สมัคร한다. #r(เลเวล 210이상)#k#l\r\n";
-            Message += "#L3#가디언 엔젤 슬라임(#b카오스 연습 โหมด#k) เข้า을 สมัคร한다. #r(เลเวล 210이상)#k#l\r\n\r\n";
-            Message += "#L4#ย้าย하지 않는다.#l";
-        }
-        else {
-        	boolean single = getPlayer().getPartyMemberSize() == 1;
-        	Message += "#L0##b가디언 엔젤 슬라임และ의 전투(노멀 โหมด)" + (single ? "(싱글)" : "(멀티)") + " บน해 ย้าย한다.#r(เลเวล 210이상)#k#l\r\n";
-            Message += "#L1##b가디언 엔젤 슬라임และ의 전투(카오스 โหมด)" + (single ? "(싱글)" : "(멀티)") + " บน해 ย้าย한다.#r(เลเวล 210이상)#k#l\r\n";
-            Message += "#L2##b가디언 엔젤 슬라임และ의 전투(노멀 연습 โหมด)" + (single ? "(싱글)" : "(멀티)") + " บน해 ย้าย한다.#r(เลเวล 210이상)#k#l\r\n";
-            Message += "#L3##b가디언 엔젤 슬라임และ의 전투(카오스 연습 โหมด)" + (single ? "(싱글)" : "(멀티)") + " บน해 ย้าย한다.#r(เลเวล 210이상)#k#l\r\n";
-            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "GuardianSlime" + (single ? "Single" : "Multi"));
-            Message += "#L5#เข้า횟수 เพิ่ม " + (single ? "(싱글)" : "(멀티)") + "(" + (1-reset) + "회 เป็นไปได้)#l\r\n\r\n";
-            Message += "#L4#ย้าย하지 않는다.#l";
+            Message += "#L0#ขอเข้าสู่ Guardian Angel Slime (#bNormal Mode#k) #r(เลเวล 210 ขึ้นไป) #g["
+                    + getPlayer().getOneInfoQuestInteger(1234570, "guardian_angel_slime_clear") + "/"
+                    + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+            Message += "#L1#ขอเข้าสู่ Guardian Angel Slime (#bChaos Mode#k) #r(เลเวล 210 ขึ้นไป) #g["
+                    + getPlayer().getOneInfoQuestInteger(1234569, "guardian_angel_slime_clear") + "/"
+                    + (getPlayer().getBossTier() + 1) + "]#k#l\r\n";
+            Message += "#L2#ขอเข้าสู่ Guardian Angel Slime (#bNormal Practice Mode#k) #r(เลเวล 210 ขึ้นไป)#k#l\r\n";
+            Message += "#L3#ขอเข้าสู่ Guardian Angel Slime (#bChaos Practice Mode#k) #r(เลเวล 210 ขึ้นไป)#k#l\r\n\r\n";
+            Message += "#L4#ไม่ย้ายไป#l";
+        } else {
+            boolean single = getPlayer().getPartyMemberSize() == 1;
+            Message += "#L0##bGuardian Angel Slime (Normal Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(เลเวล 210 ขึ้นไป)#k#l\r\n";
+            Message += "#L1##bGuardian Angel Slime (Chaos Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(เลเวล 210 ขึ้นไป)#k#l\r\n";
+            Message += "#L2##bGuardian Angel Slime (Normal Practice Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(เลเวล 210 ขึ้นไป)#k#l\r\n";
+            Message += "#L3##bGuardian Angel Slime (Chaos Practice Mode)" + (single ? "(Single)" : "(Multi)")
+                    + " #r(เลเวล 210 ขึ้นไป)#k#l\r\n";
+            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "GuardianSlime" + (single ? "Single" : "Multi"));
+            Message += "#L5#เพิ่มจำนวนครั้งที่เข้าได้ " + (single ? "(Single)" : "(Multi)") + "(" + (1 - reset)
+                    + " ครั้ง)#l\r\n\r\n";
+            Message += "#L4#ไม่ย้ายไป#l";
         }
         int Menu = target.askMenu(Message, ScriptMessageFlag.BigScenario);
-        if (Menu == 4) return; //ย้าย하지 않는다
+        if (Menu == 4)
+            return; // ไม่ย้ายไป
         if (Menu == 5 && !DBConfig.isGanglim) {
-        	if (getPlayer().getTogetherPoint() < 150) {
-        		self.sayOk("협동 คะแนน ไม่พอ. มี 협동คะแนน : " + getPlayer().getTogetherPoint(), ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        		return;
-        	}
-        	boolean single = getPlayer().getPartyMemberSize() == 1;
-        	int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "GuardianSlime" + (single ? "Single" : "Multi"));
-        	if (reset > 0) {
-        		self.sayOk("이번 สัปดาห์에는 이미 เข้าเป็นไปได้ 횟수를 เพิ่ม시켰.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        		return;
-        	}
-        	getPlayer().gainTogetherPoint(-150);
-        	getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(), "GuardianSlime" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
-        	self.sayOk("เข้าเป็นไปได้ 횟수가 เพิ่ม되었.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-        	return;
+            if (getPlayer().getTogetherPoint() < 150) {
+                self.sayOk("Together Point ไม่เพียงพอ คะแนนที่มี : " + getPlayer().getTogetherPoint(),
+                        ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                return;
+            }
+            boolean single = getPlayer().getPartyMemberSize() == 1;
+            int reset = getPlayer().getOneInfoQuestInteger(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "GuardianSlime" + (single ? "Single" : "Multi"));
+            if (reset > 0) {
+                self.sayOk("สัปดาห์นี้ได้เพิ่มจำนวนครั้งที่เข้าได้ไปแล้ว", ScriptMessageFlag.Scenario,
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                return;
+            }
+            getPlayer().gainTogetherPoint(-150);
+            getPlayer().updateOneInfo(QuestExConstants.WeeklyQuestResetCount.getQuestID(),
+                    "GuardianSlime" + (single ? "Single" : "Multi"), String.valueOf(reset + 1));
+            self.sayOk("เพิ่มจำนวนครั้งที่เข้าได้เรียบร้อยแล้ว", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
+            return;
         }
-//        if (DBConfig.isGanglim) {
-//            self.sayOk("ปัจจุบัน 점검중인 บอส.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
-//            return;
-//        }
+        // if (DBConfig.isGanglim) {
+        // self.sayOk("บอสที่กำลังปิดปรับปรุงอยู่ในปัจจุบัน",
+        // ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+        // return;
+        // }
         if (target.getParty() == null) {
-            self.sayOk("1인 이상 ปาร์ตี้ 맺어야만 เข้า할 수 있.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนจึงจะเข้าได้", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (target.getParty().getLeader().getId() != target.getId()) {
-            self.sayOk("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("กรุณาให้หัวหน้าปาร์ตี้เป็นผู้ดำเนินการ", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
         if (!target.getParty().isPartySameMap()) {
-            self.sayOk("ปาร์ตี้원이 ทั้งหมด เหมือนกันแผนที่ 있어야 .", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+            self.sayOk("สมาชิกปาร์ตี้ทุกคนต้องอยู่ในแผนที่เดียวกัน", ScriptMessageFlag.Scenario,
+                    ScriptMessageFlag.NpcReplacedByNpc);
             return;
         }
-        switch (Menu) { //따로 จำกัด되는거 없으면 바로 เข้าเป็นไปได้함
-            case 0: { //노멀โหมด
+        switch (Menu) { // ถ้าไม่มีข้อจำกัดอื่นๆ ก็เข้าได้เลย
+            case 0: { // Normal Mode
                 NormalGuardianSlimeEnter fieldSet = (NormalGuardianSlimeEnter) fieldSet("NormalGuardianSlimeEnter");
                 int enter = fieldSet.enter(target.getId(), false, 3);
                 if (enter == 6) {
-                    self.sayOk("이용 เป็นไปได้한 인스턴스가 없. อื่น แชนแนล 이용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ไม่มี Instance ว่าง กรุณาลองใหม่ในแชนแนลอื่น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("บอส 티어가 ไม่พอ한 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีระดับ Boss Tier ไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("최근 วันสัปดาห์วัน 이내 가디언 엔젤 슬라임을 쓰러뜨린 ปาร์ตี้원이 있. 가디언 엔젤 슬라임은 노멀 โหมด, 카오스 โหมด를 합쳐 วันสัปดาห์วัน에 1회만 클리어 เป็นไปได้\r\n#r<클리어 기록은 매สัปดาห์ 목요วัน에 วัน괄 วินาที기화.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "มีสมาชิกในปาร์ตี้ที่กำจัด Guardian Angel Slime ไปแล้วในสัปดาห์นี้ Guardian Angel Slime สามารถเคลียร์ได้สัปดาห์ละ 1 ครั้ง (Normal/Chaos รวมกัน)\r\n#r<ประวัติการเคลียร์จะรีเซ็ตทุกวันพฤหัสบดี>",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("เข้า จำกัด횟수가 ไม่พอ하거ฉัน เลเวล จำกัด이 맞지 않는 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีจำนวนครั้งการเข้าไม่เพียงพอหรือเลเวลไม่ถึงเกณฑ์",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("เข้า จำกัดเวลา이 남은 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่ยังติดเวลารอเข้าดันเจี้ยน", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
-            case 2: { //노멀 연습 โหมด
-                int practiceMode = self.askYesNo("연습 โหมด에 เข้า을 เลือก하였. 연습 โหมด에서는 #b#eEXP รางวัล을 얻을 수 ไม่มี#n#k บอส มอนสเตอร์ 종류และ 상관없이 #b#e하루 20회#n#k 이용할 수 있. เข้าต้องการหรือไม่?");
+            case 2: { // Normal Practice Mode
+                int practiceMode = self.askYesNo(
+                        "คุณได้เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eจะไม่ได้รับ EXP และรางวัล#n#k และสามารถเข้าได้ #b#eวันละ 20 ครั้ง#n#k เท่านั้น (รวมทุกบอส) ต้องการเข้าสู่โหมดฝึกซ้อมหรือไม่?");
                 if (practiceMode == 0) {
                     return;
                 }
                 NormalGuardianSlimeEnter fieldSet = (NormalGuardianSlimeEnter) fieldSet("NormalGuardianSlimeEnter");
                 int enter = fieldSet.enter(target.getId(), true, 3);
                 if (enter == 6) {
-                    self.sayOk("이용 เป็นไปได้한 인스턴스가 없. อื่น แชนแนล 이용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ไม่มี Instance ว่าง กรุณาลองใหม่ในแชนแนลอื่น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("บอส 티어가 ไม่พอ한 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีระดับ Boss Tier ไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == 4) {
-                    self.sayOk("เลเวล จำกัด이 맞지 않는 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีเลเวลไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -1) {
-                    self.sayOk("연습 โหมด는 하루 20회만 เป็นไปได้.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("โหมดฝึกซ้อมเข้าได้วันละ 20 ครั้งเท่านั้น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
-            case 1: { //하드โหมด
+            case 1: { // Hard Mode
 
                 HardGuardianSlimeEnter fieldSet = (HardGuardianSlimeEnter) fieldSet("HardGuardianSlimeEnter");
                 int enter = fieldSet.enter(target.getId(), false, 5);
                 if (enter == 6) {
-                    self.sayOk("이용 เป็นไปได้한 인스턴스가 없. อื่น แชนแนล 이용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ไม่มี Instance ว่าง กรุณาลองใหม่ในแชนแนลอื่น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("บอส 티어가 ไม่พอ한 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีระดับ Boss Tier ไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -3) {
-                    self.sayOk("최근 วันสัปดาห์วัน 이내 가디언 엔젤 슬라임을 쓰러뜨린 ปาร์ตี้원이 있. 가디언 엔젤 슬라임은 노멀 โหมด, 카오스 โหมด를 합쳐 วันสัปดาห์วัน에 1회만 클리어 เป็นไปได้\r\n#r<클리어 기록은 매สัปดาห์ 목요วัน에 วัน괄 วินาที기화.>", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk(
+                            "มีสมาชิกในปาร์ตี้ที่กำจัด Guardian Angel Slime ไปแล้วในสัปดาห์นี้ Guardian Angel Slime สามารถเคลียร์ได้สัปดาห์ละ 1 ครั้ง (Normal/Chaos รวมกัน)\r\n#r<ประวัติการเคลียร์จะรีเซ็ตทุกวันพฤหัสบดี>",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == -1 || enter == 4)) {
-                    self.sayOk("เข้า จำกัด횟수가 ไม่พอ하거ฉัน เลเวล จำกัด이 맞지 않는 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีจำนวนครั้งการเข้าไม่เพียงพอหรือเลเวลไม่ถึงเกณฑ์",
+                            ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -2) {
-                    self.sayOk("เข้า จำกัดเวลา이 남은 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่ยังติดเวลารอเข้าดันเจี้ยน", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 break;
             }
-            case 3: { //하드 연습 โหมด
-                int practiceMode = self.askYesNo("연습 โหมด에 เข้า을 เลือก하였. 연습 โหมด에서는 #b#eEXP รางวัล을 얻을 수 ไม่มี#n#k บอส มอนสเตอร์ 종류และ 상관없이 #b#e하루 20회#n#k 이용할 수 있. เข้าต้องการหรือไม่?");
+            case 3: { // Hard Practice Mode
+                int practiceMode = self.askYesNo(
+                        "คุณได้เลือกเข้าสู่โหมดฝึกซ้อม ในโหมดฝึกซ้อม #b#eจะไม่ได้รับ EXP และรางวัล#n#k และสามารถเข้าได้ #b#eวันละ 20 ครั้ง#n#k เท่านั้น (รวมทุกบอส) ต้องการเข้าสู่โหมดฝึกซ้อมหรือไม่?");
                 if (practiceMode == 0) {
                     return;
                 }
                 HardGuardianSlimeEnter fieldSet = (HardGuardianSlimeEnter) fieldSet("HardGuardianSlimeEnter");
                 int enter = fieldSet.enter(target.getId(), true, 5);
                 if (enter == 6) {
-                    self.sayOk("이용 เป็นไปได้한 인스턴스가 없. อื่น แชนแนล 이용โปรด.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("ไม่มี Instance ว่าง กรุณาลองใหม่ในแชนแนลอื่น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -5) {
-                    self.sayOk("บอส 티어가 ไม่พอ한 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีระดับ Boss Tier ไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if ((enter == 4)) {
-                    self.sayOk("เลเวล จำกัด이 맞지 않는 ปาร์ตี้원이 있어 เข้า할 수 없.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("มีสมาชิกในปาร์ตี้ที่มีเลเวลไม่ถึงเกณฑ์", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
                 if (enter == -1) {
-                    self.sayOk("연습 โหมด는 하루 20회만 เป็นไปได้.", ScriptMessageFlag.Scenario, ScriptMessageFlag.NpcReplacedByNpc);
+                    self.sayOk("โหมดฝึกซ้อมเข้าได้วันละ 20 ครั้งเท่านั้น", ScriptMessageFlag.Scenario,
+                            ScriptMessageFlag.NpcReplacedByNpc);
                     return;
                 }
             }
-            break;
+                break;
         }
     }
 
-
     public void slimeOut() {
         initNPC(MapleLifeFactory.getNPC(9091025));
-        if (self.askYesNo("전투를 หยุด ฉัน가시หรือไม่?") == 1) {
+        if (self.askYesNo("ต้องการหยุดการต่อสู้และออกไปหรือไม่?") == 1) {
             registerTransferField(getPlayer().getMap().getReturnMap().getId());
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());

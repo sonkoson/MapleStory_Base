@@ -71,20 +71,20 @@ public class GoldenWagon extends ScriptEngineNPC {
         PacketEncoder s = new PacketEncoder();
         s.writeShort(SendPacketOpcode.UI_EVENT_INFO.getValue());
 
-        s.writeInt(100748); //qID
+        s.writeInt(100748); // qID
         s.write(1);
         s.write(0);
-        s.encodeBuffer(HexTool.getByteArrayFromHexString("00 C0 ED 28 09 0B D7 01")); //2021-02-25
-        s.encodeBuffer(HexTool.getByteArrayFromHexString("80 29 99 B6 0B 63 D7 01")); //2021-06-16
+        s.encodeBuffer(HexTool.getByteArrayFromHexString("00 C0 ED 28 09 0B D7 01")); // 2021-02-25
+        s.encodeBuffer(HexTool.getByteArrayFromHexString("80 29 99 B6 0B 63 D7 01")); // 2021-06-16
         s.writeInt(126);
         s.writeInt(100748);
         s.writeInt(0);
         s.write(0);
         s.writeInt(0);
-        s.writeInt(252); //WorldShareQID 1
-        s.writeInt(253); //WorldShareQID 2
-        s.writeInt(254); //WorldShareQID 3
-        s.writeInt(3600); //총 채워야하는 วินาที
+        s.writeInt(252); // WorldShareQID 1
+        s.writeInt(253); // WorldShareQID 2
+        s.writeInt(254); // WorldShareQID 3
+        s.writeInt(3600); // Total seconds to fill
         s.writeMapleAsciiString("chariotInfo4");
         s.writeMapleAsciiString("");
         s.writeMapleAsciiString("chariotPass4");
@@ -115,16 +115,17 @@ public class GoldenWagon extends ScriptEngineNPC {
     public void goldenchariot() {
         if (DBConfig.isGanglim) {
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date StartDate = dateFormat.parse("2025-05-31");
                 Date EndDate = dateFormat.parse("2025-12-31");
                 String Today = dateFormat.format(new Date());
                 String Start = dateFormat.format(StartDate);
                 String End = dateFormat.format(EndDate);
-                Date TodateDate =  dateFormat.parse(Today);
+                Date TodateDate = dateFormat.parse(Today);
 
-                if (TodateDate.before(StartDate) || TodateDate.after(EndDate)){
-                    self.sayOk("#fs11#황금마ชา 이벤트 ดำเนินการ기간이 아닙니다\r\n\r\nดำเนินการ기간 : " + Start + " ~ " + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                if (TodateDate.before(StartDate) || TodateDate.after(EndDate)) {
+                    self.sayOk("#fs11#ไม่อยู่ในระยะเวลากิจกรรม Golden Chariot\r\n\r\nระยะเวลากิจกรรม : " + Start + " ~ "
+                            + End, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                     return;
                 }
             } catch (ParseException ex) {
@@ -136,16 +137,20 @@ public class GoldenWagon extends ScriptEngineNPC {
             if (!isWeekend) {
                 if ((getPlayer().getOneInfoQuestInteger(1234699, "day") + 1) % 7 != 0) {
                     getPlayer().updateOneInfo(1234699, "complete", "1");
-                    getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
+                    getPlayer().updateOneInfo(1234699, "day",
+                            "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
                     PacketEncoder p = new PacketEncoder();
                     p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                     p.write(14);
                     p.writeInt(253);
-                    String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                    String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                            + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate")
+                            + ";cMaxDay=91";
                     p.writeMapleAsciiString(qex);
                     getPlayer().send(p.getPacket());
-                    self.sayOk("출석 เสร็จสมบูรณ์! 도장을 #b1개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-                } else { //상품받는날짜
+                    self.sayOk("เช็คชื่อเรียบร้อย! ประทับตราให้ #b1 อัน#k แล้วนะ!", ScriptMessageFlag.NpcReplacedByNpc,
+                            ScriptMessageFlag.NoEsc);
+                } else { // Gift receiving date
                     GoldenChariot gc = null;
                     for (GoldenChariot g : GoldenChariot.goldenChariotList) {
                         if (g.getDay() == getPlayer().getOneInfoQuestInteger(1234699, "day") + 1) {
@@ -153,45 +158,60 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ ล่าง 선น้ำ을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo(
+                            "จะรับของรางวัลหลังจากเช็คชื่อเสร็จเลยไหม?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z"
+                                    + gc.getItemID() + "#",
+                            ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
                                 getPlayer().updateOneInfo(1234699, "complete", "1");
-                                getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
+                                getPlayer().updateOneInfo(1234699, "day",
+                                        "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
                                 PacketEncoder p = new PacketEncoder();
                                 p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                                 p.write(14);
                                 p.writeInt(253);
-                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                                        + "passCount=0;bMaxDay=91;lastDate="
+                                        + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("출석 เสร็จสมบูรณ์! 도장을 #b1개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("เช็คชื่อเรียบร้อย! ประทับตราให้ #b1 อัน#k แล้วนะ!",
+                                        ScriptMessageFlag.NpcReplacedByNpc,
+                                        ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ช่องเก็บของไม่พอ! กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
                                 getPlayer().updateOneInfo(1234699, "complete", "1");
-                                getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
+                                getPlayer().updateOneInfo(1234699, "day",
+                                        "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 1));
                                 PacketEncoder p = new PacketEncoder();
                                 p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                                 p.write(14);
                                 p.writeInt(253);
-                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                                        + "passCount=0;bMaxDay=91;lastDate="
+                                        + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("출석 เสร็จสมบูรณ์! 도장을 #b1개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("เช็คชื่อเรียบร้อย! ประทับตราให้ #b1 อัน#k แล้วนะ!",
+                                        ScriptMessageFlag.NpcReplacedByNpc,
+                                        ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ช่องเก็บของไม่พอ! กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
                 }
-            } else { //สัปดาห์말
+            } else { // Weekend
                 boolean isGiftDay = false;
                 int gcDay = 0;
-                for (int i=1; i<=2; i++) {
+                for (int i = 1; i <= 2; i++) {
                     if ((getPlayer().getOneInfoQuestInteger(1234699, "day") + i) % 7 == 0) {
                         gcDay = getPlayer().getOneInfoQuestInteger(1234699, "day") + i;
                         isGiftDay = true;
@@ -200,16 +220,20 @@ public class GoldenWagon extends ScriptEngineNPC {
                 }
                 if (!isGiftDay) {
                     getPlayer().updateOneInfo(1234699, "complete", "1");
-                    getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
+                    getPlayer().updateOneInfo(1234699, "day",
+                            "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
                     PacketEncoder p = new PacketEncoder();
                     p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                     p.write(14);
                     p.writeInt(253);
-                    String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                    String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                            + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate")
+                            + ";cMaxDay=91";
                     p.writeMapleAsciiString(qex);
                     getPlayer().send(p.getPacket());
-                    self.sayOk("출석 เสร็จสมบูรณ์! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
-                } else { //상품받는날짜
+                    self.sayOk("เช็คชื่อเรียบร้อย! เพราะเป็นวันหยุดสุดสัปดาห์เลยประทับตราให้ #b2 อัน#k เลยนะ!",
+                            ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                } else { // Gift receiving date
                     GoldenChariot gc = null;
                     for (GoldenChariot g : GoldenChariot.goldenChariotList) {
                         if (g.getDay() == gcDay) {
@@ -217,37 +241,49 @@ public class GoldenWagon extends ScriptEngineNPC {
                             break;
                         }
                     }
-                    if (self.askYesNo("지금 바로 출석을 เสร็จสมบูรณ์ ล่าง 선น้ำ을 받아 갈래?\r\n\r\n#e#b#i" + gc.getItemID() + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
+                    if (self.askYesNo("จะรับของรางวัลหลังจากเช็คชื่อเสร็จเลยไหม?\r\n\r\n#e#b#i" + gc.getItemID()
+                            + "# #z" + gc.getItemID() + "#", ScriptMessageFlag.NpcReplacedByNpc) == 1) {
                         if (GameConstants.isPet(gc.getItemID())) {
                             if (getPlayer().getInventory(MapleInventoryType.CASH).getNumFreeSlot() >= 1) {
                                 exchangePetPeriod(gc.getItemID(), 90);
                                 getPlayer().updateOneInfo(1234699, "complete", "1");
-                                getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
+                                getPlayer().updateOneInfo(1234699, "day",
+                                        "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
                                 PacketEncoder p = new PacketEncoder();
                                 p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                                 p.write(14);
                                 p.writeInt(253);
-                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                                        + "passCount=0;bMaxDay=91;lastDate="
+                                        + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("출석 เสร็จสมบูรณ์! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk(
+                                        "เช็คชื่อเรียบร้อย! เพราะเป็นวันหยุดสุดสัปดาห์เลยประทับตราให้ #b2 อัน#k เลยนะ!",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ช่องเก็บของไม่พอ! กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         } else {
                             if (target.exchange(gc.getItemID(), gc.getItemQty()) > 0) {
                                 getPlayer().updateOneInfo(1234699, "complete", "1");
-                                getPlayer().updateOneInfo(1234699, "day", "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
+                                getPlayer().updateOneInfo(1234699, "day",
+                                        "" + (getPlayer().getOneInfoQuestInteger(1234699, "day") + 2));
                                 PacketEncoder p = new PacketEncoder();
                                 p.writeShort(SendPacketOpcode.SHOW_STATUS_INFO.getValue());
                                 p.write(14);
                                 p.writeInt(253);
-                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";" + "passCount=0;bMaxDay=91;lastDate=" + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
+                                String qex = "complete=1;day=" + getPlayer().getOneInfo(1234699, "day") + ";"
+                                        + "passCount=0;bMaxDay=91;lastDate="
+                                        + getPlayer().getOneInfo(1234699, "lastDate") + ";cMaxDay=91";
                                 p.writeMapleAsciiString(qex);
                                 getPlayer().send(p.getPacket());
-                                self.sayOk("출석 เสร็จสมบูรณ์! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("เช็คชื่อเรียบร้อย! สัปดาห์말이라서 도장을 #b2개#k 찍어 줬어!",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             } else {
-                                self.sayOk("ไอเท็ม 받을 공간이 ไม่พอ해! 공간을 비운 หลัง 다시 시도 해줘", ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
+                                self.sayOk("ช่องเก็บของไม่พอ! กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง",
+                                        ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
                             }
                         }
                     }
@@ -257,24 +293,66 @@ public class GoldenWagon extends ScriptEngineNPC {
     }
 
     public void goldenchariotWIG() {
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n#b페어리 브로의 황금마ชา#k ทุกวัน 출석 도장을 쾅쾅! 찍고 선น้ำ을 잔뜩 받아가는 신ฉัน는 이벤트야!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n이벤트 기간 동ใน 게임에 접속 이벤트 알림이 버튼을 눌러 #b#e<페어리 브로의 황금마ชา>#k#n 출석판을 열어볼 수 있지!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n이벤트 기간 동ใน에는 ทุกวัน อัตโนมัติ으로 접속 เวลา이 누적 #b60นาที#k 가득 ชา면 출석 도장을 쾅! 찍을 수 있어!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n참고로 #bสัปดาห์말에는 한 번에 두 개#k 출석 도장이 찍히니까 절대 놓치지 말라고!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n출석 วันชา에 따른 선น้ำ은 ถัดไปและ 같아!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e<9회 출석 เสร็จสมบูรณ์>\r\n#b#i2633063:# #t2633063:##k#n\r\n\r\n\r\n#e<18회 출석 เสร็จสมบูรณ์>\r\n#b#i2633064:# #t2633064:##k#n\r\n\r\n\r\n#e<27회 출석 เสร็จสมบูรณ์>\r\n#b#i2631708:# #t2631708:##k#n\r\n\r\n\r\n#e<36회 출석 เสร็จสมบูรณ์>\r\n#b#i2633065:# #t2633065:##k#n\r\n\r\n\r\n#e<45회 출석 เสร็จสมบูรณ์>\r\n#b#i2633066:# #t2633066:##k#n\r\n\r\n\r\n#e<54회 출석 เสร็จสมบูรณ์>\r\n#b#i2633067:# #t2633067:##k#n\r\n\r\n\r\n#e<63회 출석 เสร็จสมบูรณ์>\r\n#b#i2631139:# #t2631139:##k#n\r\n\r\n\r\n#e<72회 출석 เสร็จสมบูรณ์>\r\n#b#i2633071:# #t2633071:##k#n\r\n\r\n\r\n#e<81회 출석 เสร็จสมบูรณ์>\r\n#b#i2633069:# #t2633069:##k#n\r\n\r\n\r\n#e<90회 출석 เสร็จสมบูรณ์>\r\n#b#i2633070:# #t2633070:##k#n\r\n\r\n\r\n#e<99회 출석 เสร็จสมบูรณ์>\r\n#b#i2633068:# #t2633068:##k#n\r\n\r\n\r\n#e<108회 출석 เสร็จสมบูรณ์>\r\n#b#i2633072:# #t2633072:##k#n\r\n\r\n\r\n#e<117회 출석 เสร็จสมบูรณ์>\r\n#b#i2633073:# #t2633073:##k#n\r\n\r\n\r\n#e<126회 출석 เสร็จสมบูรณ์>\r\n#b#i2631717:# #t2631717:##k#n", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n깜빡 출석을 놓쳤을 때를 대비한 특별 찬스!\r\n#b#e<골든패스>#k#n 대해서도 알려 줄게!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n출석판의 #b#e<골든패스>#k#n ใช้ #b3천 메이플 คะแนน#k ใช้ 미처 #bเสร็จสมบูรณ์하지 못한 출석#k 도장을 한 번 찍을 수가 있어.", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n단, 골든패스의 #bใช้ เป็นไปได้ 수량#k #r하루 전 날짜 기준 เสร็จสมบูรณ์하지 못한 วันชา 수#k만큼으로 จำกัด되는 점 알아 둬!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n골든패스는 ใช้ #r요วันและ 상관없이 하ฉัน의 도장#k 찍어준다는 사실도 잊지 말고 말이야!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n아ชา! #e접속 เวลา 누적#n #eรางวัล ได้รับ 기록#n #r메이플ID 단บน#k ดำเนินการ, #r101เลเวล 이상의 ตัวละคร#k 접속 เวลา을 쌓을 수 มี는 것도 유념해 둬!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\nเขา리고 날짜가 เปลี่ยน될 때 อื่น 행동을  มี면 접속 เวลา이 ปกติ적으로 쌓이지 않을 수 있으니까, #e날짜가 바뀐 ถัดไป에는 출석판을 열어 접속 เวลา이 잘 쌓이고 있는지 한 번 ยืนยัน#n해 보도록 해!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n더 자세한 เนื้อหา은 공식 홈페이지를 참고해 봐!", ScriptMessageFlag.NpcReplacedByNpc);
-        //self.say("#e#b<페어리 브로의 황금마ชา>#k#n\r\n\r\n\r\n#e※ 이벤트 기간#n\r\n  - 2021ปี #r6เดือน 16วัน(수) 오후 11시 59นาที#kถึง#k", ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\n#bFairy Bros' Golden Chariot#k คือกิจกรรมที่ให้คุณเช็คชื่อทุกวันเพื่อรับของรางวัลมากมาย!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nในระยะเวลากิจกรรม สามารถกดปุ่มแจ้งเตือนกิจกรรมในเกมเพื่อเปิดกระดานเช็คชื่อ #b#e<Fairy Bros' Golden Chariot>#k#n ได้เลย!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nในระยะเวลากิจกรรม เมื่อสะสมเวลาออนไลน์ครบ #b60 นาที#k ในแต่ละวัน จะสามารถประทับตราเช็คชื่อได้!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nและที่สำคัญ #bในวันหยุดสุดสัปดาห์จะได้รับตราประทับทีเดียว 2 อัน#k อย่าพลาดเชียวนะ!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nRewards based on
+        // attendance days are as follows!", ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e<9 Attendances Completed>\r\n#b#i2633063:#
+        // #t2633063:##k#n\r\n\r\n\r\n#e<18 Attendances Completed>\r\n#b#i2633064:#
+        // #t2633064:##k#n\r\n\r\n\r\n#e<27 Attendances Completed>\r\n#b#i2631708:#
+        // #t2631708:##k#n\r\n\r\n\r\n#e<36 Attendances Completed>\r\n#b#i2633065:#
+        // #t2633065:##k#n\r\n\r\n\r\n#e<45 Attendances Completed>\r\n#b#i2633066:#
+        // #t2633066:##k#n\r\n\r\n\r\n#e<54 Attendances Completed>\r\n#b#i2633067:#
+        // #t2633067:##k#n\r\n\r\n\r\n#e<63 Attendances Completed>\r\n#b#i2631139:#
+        // #t2631139:##k#n\r\n\r\n\r\n#e<72 Attendances Completed>\r\n#b#i2633071:#
+        // #t2633071:##k#n\r\n\r\n\r\n#e<81 Attendances Completed>\r\n#b#i2633069:#
+        // #t2633069:##k#n\r\n\r\n\r\n#e<90 Attendances Completed>\r\n#b#i2633070:#
+        // #t2633070:##k#n\r\n\r\n\r\n#e<99 Attendances Completed>\r\n#b#i2633068:#
+        // #t2633068:##k#n\r\n\r\n\r\n#e<108 Attendances Completed>\r\n#b#i2633072:#
+        // #t2633072:##k#n\r\n\r\n\r\n#e<117 Attendances Completed>\r\n#b#i2633073:#
+        // #t2633073:##k#n\r\n\r\n\r\n#e<126 Attendances Completed>\r\n#b#i2631717:#
+        // #t2631717:##k#n", ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nSpecial chance just
+        // in case you missed counting attendance!\r\nLet me tell you about #b#e<Golden
+        // Pass>#k#n!", ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nYou can use
+        // #b#e<Golden Pass>#k#n on the attendance board with #b3000 Maple Points#k to
+        // stamp a missied attendance.",
+        // ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nHowever, note that
+        // #bAvailable Golden Pass Usage#k is limited to the number of #rmissed
+        // attendance days as of yesterday#k!",
+        // ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nDon't forget that
+        // Golden Pass stamps #rone stamp#k regardless of the day used!",
+        // ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nจำไว้ว่า #eการสะสมเวลาออนไลน์#n และ #eประวัติการรับรางวัล#n จะนับรวม #rต่อ Maple ID#k และ #rตัวละครเลเวล 101 ขึ้นไป#k เท่านั้นที่จะสะสมเวลาออนไลน์ได้!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nและถ้าทำกิจกรรมอื่นในช่วงที่วันเปลี่ยน เวลาออนไลน์อาจจะไม่สะสมตามปกติ ดังนั้น #eหลังจากเปลี่ยนวันแล้ว ให้เปิดกระดานเช็คชื่อเพื่อตรวจสอบว่าเวลาออนไลน์สะสมหรือไม่#n ด้วยนะ!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        self.say(
+                "#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\nสำหรับรายละเอียดเพิ่มเติม สามารถดูได้ที่เว็บไซต์หลัก!",
+                ScriptMessageFlag.NpcReplacedByNpc);
+        // self.say("#e#b<Fairy Bros' Golden Chariot>#k#n\r\n\r\n\r\n#e※ Event
+        // Period#n\r\n - Until 2021\r\n#rJune 16th (Wed) 11:59 PM#k#k",
+        // ScriptMessageFlag.NpcReplacedByNpc);
     }
 
     public void goldenchariotPass() {
-        //self.sayOk("#b골든패스#k ใช้하려면 #r3천 메이플คะแนน#k จำเป็น해!", ScriptMessageFlag.NpcReplacedByNpc);
-        self.sayOk("#fs11#지금은 패스 ฟังก์ชัน을 ใช้할 수 없.", ScriptMessageFlag.NpcReplacedByNpc);
+        // self.sayOk("หากต้องการใช้ #bGolden Pass#k ต้องใช้ #r3,000 Maple Points#k!",
+        // ScriptMessageFlag.NpcReplacedByNpc);
+        self.sayOk("#fs11#ตอนนี้ไม่สามารถใช้งานฟังก์ชัน Pass ได้", ScriptMessageFlag.NpcReplacedByNpc);
     }
 }

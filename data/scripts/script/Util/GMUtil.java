@@ -22,8 +22,10 @@ public class GMUtil extends ScriptEngineNPC {
         if (!getPlayer().isGM()) {
             return;
         }
-        var type = self.askMenu("ใน녕ทำ #h 0#, 유ฉัน QuestInfo แก้ไข용 엔피시. ถัดไป 중 แก้ไข할 타입을 เลือกโปรด.\r\n#L0#ตัวละคร QuestInfo แก้ไข\r\n#L1#어카운트 QuestInfo แก้ไข");
-        var name = self.askText("แก้ไข하실 유ฉัน의 이름을 입력โปรด. 어카운트의 경우 บัญชี ID 입력하셔도 . 해당 유ฉัน의 접속 여부는 상관이 없.");
+        var type = self.askMenu(
+                "สวัสดี #h 0# นี่คือ NPC สำหรับแก้ไข QuestInfo ผู้เล่น\r\nกรุณาเลือกประเภทที่ต้องการแก้ไข\r\n#L0#แก้ไข QuestInfo ตัวละคร\r\n#L1#แก้ไข QuestInfo บัญชี");
+        var name = self.askText(
+                "กรุณากรอกชื่อผู้เล่นที่ต้องการแก้ไข\r\nกรณีบัญชี สามารถกรอก Account ID ได้\r\n(ไม่จำเป็นต้องอออนไลน์)");
         int userID = findUserID(type, name);
         MapleCharacter user = null;
         if (userID >= 0) {
@@ -33,33 +35,34 @@ public class GMUtil extends ScriptEngineNPC {
                 }
             }
         } else {
-            self.sayOk("해당 ตัวละคร หรือ บัญชี 존재하지 않. 다시 한 번 시도해 สัปดาห์세요.");
+            self.sayOk("ไม่พบตัวละครหรือบัญชีดังกล่าว กรุณาลองใหม่อีกครั้ง");
             return;
         }
 
-        int questID = self.askNumber("변환하실 QuestEx ID 입력โปรด.", 0, 0, Integer.MAX_VALUE);
-        String questKey = self.askText("변환하실 QuestEx Key 입력โปรด.");
+        int questID = self.askNumber("กรุณากรอก QuestEx ID ที่ต้องการเปลี่ยน", 0, 0, Integer.MAX_VALUE);
+        String questKey = self.askText("กรุณากรอก QuestEx Key ที่ต้องการเปลี่ยน");
 
         if (user != null) {
-            //인게임 내 ตัวละคร 존재한다.
+            // In-game character exists
             String questValue = user.getOneInfo(questID, questKey);
-            String newValue = self.askText("해당 QuestEX ปัจจุบัน " + questValue + " 값. 변환하실 값을 입력โปรด.");
+            String newValue = self
+                    .askText("ค่าปัจจุบันของ QuestEx คือ " + questValue + "\r\nกรุณากรอกค่าใหม่ที่ต้องการ");
             if (newValue != null) {
                 user.updateOneInfo(questID, questKey, newValue);
-                self.sayOk("สำเร็จ적으로 변환하였.");
+                self.sayOk("เปลี่ยนแปลงเรียบร้อยแล้ว");
             } else {
-                self.sayOk("변환에 ประตู제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
+                self.sayOk("เกิดปัญหาในการเปลี่ยนแปลง กรุณาลองใหม่อีกครั้ง");
             }
         } else {
-            String newValue = self.askText("변환하실 QuestEX Value 값을 입력โปรด.");
+            String newValue = self.askText("กรุณากรอกค่า QuestEx Value ที่ต้องการ");
             if (newValue != null) {
                 if (updateUserQuestInfo(userID, type, questID, questKey, newValue)) {
-                    self.sayOk("สำเร็จ적으로 변환하였.");
+                    self.sayOk("เปลี่ยนแปลงเรียบร้อยแล้ว");
                 } else {
-                    self.sayOk("ประตู제가 발생 DB Update하지 못แล้ว.");
+                    self.sayOk("เกิดปัญหา ไม่สามารถอัปเดตฐานข้อมูลได้");
                 }
             } else {
-                self.sayOk("변환에 ประตู제가 발생แล้ว. 다시 시도해 สัปดาห์세요.");
+                self.sayOk("เกิดปัญหาในการเปลี่ยนแปลง กรุณาลองใหม่อีกครั้ง");
             }
         }
     }
@@ -71,12 +74,14 @@ public class GMUtil extends ScriptEngineNPC {
         String dbName = type == 1 ? "questinfo_account" : "questinfo";
         String idType = type == 1 ? "account_id" : "characterid";
         try (Connection con = DBConnection.getConnection()) {
-            ps = con.prepareStatement("SELECT `quest`, `customData`, `date` FROM " + dbName + " WHERE " +  idType + " = ?");
+            ps = con.prepareStatement(
+                    "SELECT `quest`, `customData`, `date` FROM " + dbName + " WHERE " + idType + " = ?");
             ps.setInt(1, userID);
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                questInfo.put(rs.getInt("quest"), new QuestEx(rs.getInt("quest"), rs.getString("customData"), rs.getString("date")));
+                questInfo.put(rs.getInt("quest"),
+                        new QuestEx(rs.getInt("quest"), rs.getString("customData"), rs.getString("date")));
             }
 
             if (key == null) {
@@ -102,7 +107,7 @@ public class GMUtil extends ScriptEngineNPC {
             final String[] split = ex.getData().split(";");
             String oldData = null;
             for (String x : split) {
-                final String[] split2 = x.split("="); //should be only 2
+                final String[] split2 = x.split("="); // should be only 2
                 if (split2.length == 2 && split2[0].equals(key)) {
                     oldData = split2[1];
                     break;
@@ -116,7 +121,8 @@ public class GMUtil extends ScriptEngineNPC {
                 String newData = ex.getData().replaceAll(oldData, value);
                 ex.setData(newData);
 
-                ps = con.prepareStatement("UPDATE " + dbName + " SET customData = ? WHERE " + idType+ " = ? AND quest = ?");
+                ps = con.prepareStatement(
+                        "UPDATE " + dbName + " SET customData = ? WHERE " + idType + " = ? AND quest = ?");
                 ps.setString(1, newData);
                 ps.setInt(2, userID);
                 ps.setInt(3, questID);

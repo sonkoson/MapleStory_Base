@@ -1,82 +1,95 @@
 package script.FieldSet;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import database.DBConfig;
 import objects.fields.child.etc.DamageMeasurementRank;
 import objects.fields.child.etc.Field_DamageMeasurement;
 import objects.fields.fieldset.childs.MulungForestEnter;
-import objects.fields.fieldset.childs.NormalDemianEnter;
 import objects.fields.gameobject.lifes.MapleLifeFactory;
 import objects.users.stats.SecondaryStatFlag;
 import scripting.ScriptMessageFlag;
 import scripting.newscripting.ScriptEngineNPC;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class DamageMeasurement extends ScriptEngineNPC {
-
 
     public void Npc_9062025() {
         if (getPlayer().getMapId() != 993026900) {
-            self.sayOk("นิดหน่อย만 더 힘을 내세요!!");
+            self.sayOk("พยายามอีกนิดนะครับ!!");
             return;
         }
         int v = 0;
-        /*if(!getPlayer().checkCharacterUse(1, 300, 7)) {
-            return;
-        }*/
+        /*
+         * if(!getPlayer().checkCharacterUse(1, 300, 7)) {
+         * return;
+         * }
+         */
         if (DBConfig.isGanglim) {
-            v = self.askMenu("#fs11#전투력 측정을 담당 있는 #bMr.보체#k .\r\n#b#h ##k 님의 최고 전투력은 : #r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k .\r\n전투력은 원하시는 เมนู를 เลือก해보시겠어요?\r\n#L0#전투력 측정 อธิบาย을 듣는다.\r\n#L2#전투력 측정 รางวัล อธิบาย을 듣는다.\r\n\r\n#r#L1#전투력을 측정할게요.");
+            v = self.askMenu(
+                    "#fs11#ผมคือ #bMr. Boche#k ผู้รับผิดชอบการวัดพลังต่อสู้ครับ\r\n#bพลังต่อสู้สูงสุดของท่าน #h ##k คือ : #r"
+                            + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId()))
+                            + "#k ครับ\r\nกรุณาเลือกเมนูที่ต้องการเกี่ยวกับพลังต่อสู้\r\n#L0#ฟังคำอธิบายเกี่ยวกับการวัดพลังต่อสู้\r\n#L2#ฟังคำอธิบายเกี่ยวกับรางวัลการวัดพลังต่อสู้\r\n\r\n#r#L1#ต้องการวัดพลังต่อสู้");
         } else {
-            v = self.askMenu("전투력 측정을 담당 있는 #bMr.보체#k .\r\n#b#h ##k 님의 최고 전투력은 : #fs11##r" + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId())) + "#k#fs12# .\r\n전투력은 원하시는 เมนู를 เลือก해보시겠어요?\r\n#L0#전투력 측정 อธิบาย을 듣는다.\r\n#r#L1#전투력을 측정할게요.");
+            v = self.askMenu(
+                    "ผมคือ #bMr. Boche#k ผู้รับผิดชอบการวัดพลังต่อสู้ครับ\r\n#bพลังต่อสู้สูงสุดของท่าน #h ##k คือ : #fs11##r"
+                            + DamageMeasurementRank.getUnit(DamageMeasurementRank.getDamage(getPlayer().getId()))
+                            + "#k#fs12# ครับ\r\nกรุณาเลือกเมนูที่ต้องการเกี่ยวกับพลังต่อสู้\r\n#L0#ฟังคำอธิบายเกี่ยวกับการวัดพลังต่อสู้\r\n#r#L1#ต้องการวัดพลังต่อสู้");
         }
         switch (v) {
             case 0: {
                 if (DBConfig.isGanglim) {
-                    self.sayOk("#fs11#전투력 측정은 2นาที간 ดำเนินการ 최고 Damage를 달성 อัตโนมัติ으로 랭킹에 반영.\r\n전투력 측정을 도และ줄 허수아비는 บอส มอนสเตอร์ 취급 บอส เพิ่ม Damage ตัวเลือก ใช้งาน.\r\n전투력 랭킹은 편의ระบบ → 유ฉัน랭킹에서 ยืนยันโปรด.");
+                    self.sayOk(
+                            "#fs11#การวัดพลังต่อสู้จะดำเนินไปเป็นเวลา 2 นาที ความเสียหายสูงสุดที่ทำได้จะถูกบันทึกลงในอันดับโดยอัตโนมัติ\r\nหุ่นฟางที่ช่วยวัดพลังจะถือว่าเป็นบอส และสามารถใช้ออปชั่นเพิ่มดาเมจบอสได้\r\nสามารถตรวจสอบอันดับพลังต่อสู้ได้ที่ ระบบอำนวยความสะดวก -> อันดับผู้เล่น");
                 } else {
-                    self.sayOk("전투력 측정은 1นาที간 ดำเนินการ 최고 Damage를 달성 อัตโนมัติ으로 랭킹에 반영.\r\n전투력 측정을 도และ줄 허수아비는 บอส มอนสเตอร์ 취급 บอส เพิ่ม Damage ตัวเลือก ใช้งาน.\r\n전투력 랭킹은 편의ระบบ → 유ฉัน랭킹에서 ยืนยันโปรด.");
+                    self.sayOk(
+                            "การวัดพลังต่อสู้จะดำเนินไปเป็นเวลา 1 นาที ความเสียหายสูงสุดที่ทำได้จะถูกบันทึกลงในอันดับโดยอัตโนมัติ\r\nหุ่นฟางที่ช่วยวัดพลังจะถือว่าเป็นบอส และสามารถใช้ออปชั่นเพิ่มดาเมจบอสได้\r\nสามารถตรวจสอบอันดับพลังต่อสู้ได้ที่ ระบบอำนวยความสะดวก -> อันดับผู้เล่น");
                 }
                 break;
             }
             case 1: {
-                Date date = new Date();
-                if ((date.getDay() == 0 && date.getHours() == 23 && date.getMinutes() >= 50) || (date.getDay() == 1 && date.getHours() == 0 && date.getMinutes() <= 10)) {
-                    self.sayOk("วัน요วัน 23시 50นาที ~ เดือน요วัน 00시 10นาทีถึง는 랭킹 บ้าน계เวลา이므로 도전할 수 없.");
+                LocalDateTime now = LocalDateTime.now();
+                if ((now.getDayOfWeek() == DayOfWeek.SUNDAY && now.getHour() == 23 && now.getMinute() >= 50)
+                        || (now.getDayOfWeek() == DayOfWeek.MONDAY && now.getHour() == 0 && now.getMinute() <= 10)) {
+                    self.sayOk(
+                            "วันอาทิตย์ เวลา 23:50 น. ~ วันจันทร์ เวลา 00:10 น. เป็นเวลาประมวลผลอันดับ ไม่สามารถท้าทายได้");
                     return;
                 }
                 if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                    self.sayOk("이미 누군가가 도전중.\r\n#bอื่น แชนแนล 이용해 สัปดาห์세요.#k");
+                    self.sayOk("มีคนกำลังท้าทายอยู่\r\n#bกรุณาใช้แชนแนลอื่น#k");
                     return;
                 }
 
                 int vv = 0;
                 if (DBConfig.isGanglim) {
-                    vv = self.askMenu("#fs11#전투력을 측정할 허수아비 ตำแหน่ง를 เลือกโปรด.\r\n\r\n#e#r※ 지난สัปดาห์ 측정기록이 있을 시 이번สัปดาห์는 랭킹에 기록되지 않. เพิ่ม บัญชี 내 อื่น ตัวละคร 기록은 ลบ.#b#n\r\n#b #L0#좌측#l\r\n #L1#중앙#l\r\n #L2#우측#l");
+                    vv = self.askMenu(
+                            "#fs11#เลือกตำแหน่งหุ่นฟางที่จะวัดพลัง\r\n\r\n#e#r※ หากมีบันทึกของสัปดาห์ที่แล้ว บันทึกของสัปดาห์นี้จะไม่ถูกนับ และหากวัดพลังด้วยตัวละครอื่นในบัญชีเดียวกัน บันทึกเก่าจะถูกลบ#b#n\r\n#b #L0#ซ้าย#l\r\n #L1#กลาง#l\r\n #L2#ขวา#l");
                 } else {
-                    vv = self.askMenu("전투력을 측정할 허수아비 ตำแหน่ง를 เลือกโปรด.\r\n\r\n#e#r※ 지난สัปดาห์ 측정기록이 있을 시 이번สัปดาห์는 랭킹에 기록되지 않. เพิ่ม บัญชี 내 อื่น ตัวละคร 기록은 ลบ.#b#n\r\n#b #L0#좌측#l\r\n #L1#중앙#l\r\n #L2#우측#l");
+                    vv = self.askMenu(
+                            "เลือกตำแหน่งหุ่นฟางที่จะวัดพลัง\r\n\r\n#e#r※ หากมีบันทึกของสัปดาห์ที่แล้ว บันทึกของสัปดาห์นี้จะไม่ถูกนับ และหากวัดพลังด้วยตัวละครอื่นในบัญชีเดียวกัน บันทึกเก่าจะถูกลบ#b#n\r\n#b #L0#ซ้าย#l\r\n #L1#กลาง#l\r\n #L2#ขวา#l");
                 }
                 if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                    self.sayOk("이미 누군가가 도전중.\r\n#bอื่น แชนแนล 이용해 สัปดาห์세요.#k");
+                    self.sayOk("มีคนกำลังท้าทายอยู่\r\n#bกรุณาใช้แชนแนลอื่น#k");
                     return;
                 }
-                if (1 == self.askYesNo("#fs11#전투력 측정을 공정하게 ดำเนินการ하기 บน해\r\n\r\n#fs16#เข้า 시 #r#eทั้งหมด Buff ปลดล็อก#n#k.#n#fs11#\r\n\r\nดำเนินการต้องการหรือไม่?")) {
-                    Field_DamageMeasurement map = (Field_DamageMeasurement) getClient().getChannelServer().getMapFactory().getMap(993026800);
+                if (1 == self.askYesNo(
+                        "#fs11#เพื่อความยุติธรรมในการวัดพลังต่อสู้\r\n\r\n#fs16#เมื่อเข้าสู่ลานประลอง #r#eบัฟทั้งหมดจะถูกยกเลิก#n#k#fs11#\r\n\r\nต้องการดำเนินการต่อหรือไม่?")) {
+                    Field_DamageMeasurement map = (Field_DamageMeasurement) getClient().getChannelServer()
+                            .getMapFactory().getMap(993026800);
                     map.spawnPoint = vv;
                     if (getClient().getChannelServer().getMapFactory().getMap(993026800).getCharacters().size() > 0) {
-                        self.sayOk("이미 누군가가 도전중.\r\n#bอื่น แชนแนล 이용해 สัปดาห์세요.#k");
+                        self.sayOk("มีคนกำลังท้าทายอยู่\r\n#bกรุณาใช้แชนแนลอื่น#k");
                         return;
                     } else {
                         int duration = 0;
-                        if(getPlayer().getCooldownLimit(80002282) != 0L){ // 봉인된 룬의 힘 ปลดล็อก 악용 ห้อง지
+                        if (getPlayer().getCooldownLimit(80002282) != 0L) { // 봉인된 룬의 힘 ปลดล็อก 악용 ห้อง지
                             duration = (int) getPlayer().getRemainCooltime(80002282);
                         }
                         getPlayer().cancelAllBuffs();
                         target.registerTransferField(993026800);
-                        if(duration != 0){
+                        if (duration != 0) {
                             getPlayer().temporaryStatSet(80002282, duration, SecondaryStatFlag.RuneBlocked, 1);
                         }
                     }
@@ -85,7 +98,8 @@ public class DamageMeasurement extends ScriptEngineNPC {
             }
             case 2: {
                 if (DBConfig.isGanglim) {
-                    self.sayOk("#fs11#매สัปดาห์ เดือน요วัน 자정에 랭킹이 วินาที기화 วินาที기화ก่อนหน้า의 랭킹 기준으로 รางวัล이 지급\r\n\r\n#r랭킹 1~3บน#k : 올Stat 1000, โจมตี력/마력 500\r\n#r랭킹 상บน 30%#k : 올Stat 500, โจมตี력/마력 200\r\n#r랭킹 상บน 70%#k : 올Stat 300, โจมตี력/마력 100\r\n#rเขา 외#k : 올Stat 150, โจมตี력/마력 50");
+                    self.sayOk(
+                            "#fs11#ทุกวันจันทร์ เวลาเที่ยงคืน อันดับจะถูกรีเซ็ตและแจกรางวัลตามอันดับก่อนรีเซ็ต\r\n\r\n#rอันดับ 1~3#k : All Stat 1000, Attack/Magic 500\r\n#rอันดับสูงสุด 30%#k : All Stat 500, Attack/Magic 200\r\n#rอันดับสูงสุด 70%#k : All Stat 300, Attack/Magic 100\r\n#rอื่นๆ#k : All Stat 150, Attack/Magic 50");
                 }
                 break;
             }
@@ -94,66 +108,82 @@ public class DamageMeasurement extends ScriptEngineNPC {
 
     public void DamageRanking() {
         initNPC(MapleLifeFactory.getNPC(9076004));
-        String menu = "원하시는 เมนู를 เลือกโปรด.\r\n#b#L0#ทั้งหมด 랭킹ดู#l\r\n";
-        menu += "#L1#รางวัล 랭킹ดู#l";
+        String menu = "กรุณาเลือกเมนูที่ต้องการ\r\n#b#L0#ดูอันดับทั้งหมด#l\r\n";
+        menu += "#L1#ดูอันดับรางวัล#l";
         int v = self.askMenu(menu);
         switch (v) {
-            case 0: //ทั้งหมด랭킹ดู
+            case 0: // Ranking Check
                 self.sayOk(DamageMeasurementRank.getRanks(50));
                 break;
-            case 1: //รางวัล랭킹ดู
+            case 1: // Reward Ranking Check
                 self.sayOk(DamageMeasurementRank.getRewardRanks(50));
                 break;
         }
     }
 
     public void mulung_forest() {
-        //100936 count, date
+        // 100936 count, date
         initNPC(MapleLifeFactory.getNPC(2091011));
-        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-        Date lastTime = null;
-        Date now = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+        LocalDate lastDate = null;
+        LocalDate nowDate = LocalDate.now();
         try {
-            lastTime = sdf.parse(getPlayer().getOneInfo(100936, "date"));
+            lastDate = LocalDate.parse(getPlayer().getOneInfo(100936, "date"), formatter);
         } catch (Exception e) {
-            lastTime = null;
+            lastDate = null;
         }
-        try {
-            now = sdf.parse(sdf.format(new Date()));
-        } catch (Exception e) {
-            lastTime = null;
-        }
-        if ((lastTime != null && !lastTime.equals(now)) || lastTime == null) {
+
+        if ((lastDate != null && !lastDate.isEqual(nowDate)) || lastDate == null) {
             getPlayer().updateOneInfo(100936, "count", "0");
         }
         int remainCount = 5 - getPlayer().getOneInfoQuestInteger(100936, "count");
 
-        int menu = self.askMenu(String.format("무릉 깊숙한 곳엔 เรา 선인들만의 비밀 수련장이 있지.\r\n\r\n (วันนี้ 남은 เข้า 횟수 : #r#e%d회#k#n)\r\n#b#L0# ใน개 숲 수련장에 เข้า 싶어.#l\r\n#L1# ใน개 숲 수련장에 대해 알고 싶어.#l\r\n", remainCount));
+        int menu = self.askMenu(String.format(
+                "ลึกเข้าไปในเมือง Mu Lung มีโรงฝึกลับของเหล่าเซียนอยู่\r\n\r\n (จำนวนครั้งที่เข้าได้วันนี้ : #r#e%d ครั้ง#k#n)\r\n#b#L0# ต้องการเข้าสู่โรงฝึกป่าหมอก#l\r\n#L1# อยากรู้เกี่ยวกับโรงฝึกป่าหมอก#l\r\n",
+                remainCount));
         switch (menu) {
-            case 0: { //เข้า
+            case 0: { // Enter
                 MulungForestEnter fieldSet = (MulungForestEnter) fieldSet("MulungForestEnter");
                 if (fieldSet == null) {
-                    self.sayOk("지금은 ใน개숲 수련장을 이용할 수 없어!");
+                    self.sayOk("ตอนนี้ยังไม่สามารถใช้โรงฝึกป่าหมอกได้!");
                     return;
                 }
                 int enter = fieldSet.enter(target.getId(), 0);
-                if (enter == -1) self.say("วันวัน 도전횟수가 ไม่พอ한 ปาร์ตี้원이 존재.");
-                else if (enter == 1) self.say("ปาร์ตี้ 맺어야만 도전할 수 있.");
-                else if (enter == 2) self.say("ปาร์ตี้장을 통해 ดำเนินการ해 สัปดาห์십시오.");
-                else if (enter == 3) self.say( "ต่ำสุด " + fieldSet.minMember + "인 이상의 ปาร์ตี้ เควส เริ่ม할 수 있.");
-                else if (enter == 4) self.say( "ปาร์ตี้원의 เลเวล ต่ำสุด " + fieldSet.minLv + " 이상이어야 .");
-                else if (enter == 5) self.say("ปาร์ตี้원이 ทั้งหมด 모여 있어야 เริ่ม할 수 있.");
-                else if (enter == 6) self.say( "이미 อื่น ปาร์ตี้ ใน으로 들어가 เควส 클리어에 도전 있는 중.");
+                if (enter == -1)
+                    self.say("มีสมาชิกปาร์ตี้ที่จำนวนครั้งท้าทายไม่เพียงพอ");
+                else if (enter == 1)
+                    self.say("ต้องสร้างปาร์ตี้ก่อนเพื่อเข้าท้าทาย");
+                else if (enter == 2)
+                    self.say("กรุณาให้หัวหน้าปาร์ตี้เป็นคนดำเนินการ");
+                else if (enter == 3)
+                    self.say("จำนวนสมาชิกปาร์ตี้ต้องมีอย่างน้อย " + fieldSet.minMember + " คน ขึ้นไป");
+                else if (enter == 4)
+                    self.say("เลเวลของสมาชิกปาร์ตี้ต้อง " + fieldSet.minLv + " ขึ้นไป");
+                else if (enter == 5)
+                    self.say("สมาชิกปาร์ตี้ต้องอยู่ที่นี่ครบทุกคน");
+                else if (enter == 6)
+                    self.say("มีปาร์ตี้อื่นกำลังท้าทายอยู่ข้างใน");
 
                 break;
             }
-            case 1: { //อธิบาย듣기
-                self.say("\r\n#b#e<ใน개 숲 수련장>#n#k 자신의 한계를 넘어서고 싶은 \r\n#b선인들만의 비밀 수련장#k이지.\r\n\r\n เรา 선인들만 쓰는 비밀 공간인데 #r#e특별히#k#n 공개할 테니 \r\n감사하라고.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n#b#e<ใน개 숲 수련장>#n#k에서는 원하는 전투 สถานการณ์을 만들 수 있어.\r\n HP, ป้องกัน율 등의 #bความสามารถ치를 조절#k해서 #b선인 바บน มอนสเตอร์#k \r\n소환할 수 있어.\r\n\r\n 필드의 #b포스 종류를 เปลี่ยน#k #b포스 수치#k 원하는 대로 \r\n바꿀 수도 있지.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n단, มอนสเตอร์ ตั้งค่า 필드 ตั้งค่า 권한은 #r#eปาร์ตี้장에게만#k#n 있어.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n ทั้งหมด ปาร์ตี้원들이 원할 때마다 #bHP MP ทั้งหมด สูงสุด치로 \r\n1회 회복#k할 수도 있어.\r\n\r\n #b#eใน개 숲 수련장이니까#n#k เป็นไปได้한 거라고?", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n단, พิเศษ 공간인 만큼 ใครฉัน 들여보낼 수는 없지.\r\n#r#e200 เลเวล#k#n #r#e무릉 30층#k#n 도달해야 เข้า할 수 있어.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("\r\n수련장에는 #r#eปาร์ตี้ สถานะ로만#k#n เข้า이 เป็นไปได้해.\r\nเขา리고 #r#e60นาที만#k#n 이용할 수 있으니까  점 유의하도록.", ScriptMessageFlag.NpcReplacedByNpc);
+            case 1: { // Explanation
+                self.say(
+                        "\r\n#b#e<โรงฝึกป่าหมอก>#n#k คือสถานที่ฝึกลับของเหล่าเซียน\r\nสำหรับผู้ที่ต้องการก้าวข้ามขีดจำกัดของตนเอง\r\n\r\nเป็นพื้นที่ลับที่ใช้เฉพาะเราเหล่าเซียนเท่านั้น #r#eแต่จะเปิดเผยให้เป็นพิเศษ#k#n \r\nจงขอบคุณซะล่ะ",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nใน #b#e<โรงฝึกป่าหมอก>#n#k คุณสามารถจำลองสถานการณ์การต่อสู้ได้ตามต้องการ\r\nสามารถปรับค่า #bHP, ป้องกัน#k และเรียก #bมอนสเตอร์ระดับเซียน#k \r\nออกมาได้\r\n\r\nนอกจากนี้ยังสามารถ #bเปลี่ยนชนิดและค่า Force#k ของแผนที่ได้ตามต้องการอีกด้วย",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say("\r\nแต่สิทธิ์ในการตั้งค่ามอนสเตอร์และแผนที่ #r#eอยู่ที่หัวหน้าปาร์ตี้เท่านั้น#k#n",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nสมาชิกปาร์ตี้ทุกคนสามารถ #bฟื้นฟู HP MP ทั้งหมดได้ 1 ครั้ง#k เมื่อต้องการ\r\n\r\nก็เพราะว่าเป็น #b#eโรงฝึกป่าหมอก#n#k ยังไงล่ะ ถึงทำได้",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nแต่เนื่องจากเป็นพื้นที่พิเศษ จะให้ใครเข้าก็ได้ไม่ได้หรอกนะ\r\nต้องมีเลเวล #r#e200#k#n และผ่าน #r#eMu Lung ชั้น 30#k#n ถึงจะเข้าได้",
+                        ScriptMessageFlag.NpcReplacedByNpc);
+                self.say(
+                        "\r\nสามารถเข้าได้เฉพาะ #r#eสถานะปาร์ตี้#k#n เท่านั้น\r\nและสามารถใช้งานได้ #r#e60 นาที#k#n เท่านั้น โปรดระวังดว้ย",
+                        ScriptMessageFlag.NpcReplacedByNpc);
                 break;
             }
         }
@@ -161,7 +191,7 @@ public class DamageMeasurement extends ScriptEngineNPC {
 
     public void Training_exit() {
         initNPC(MapleLifeFactory.getNPC(2091011));
-        if (self.askYesNo("수련을 เขา만두고 ฉัน갈꺼야?") == 1) {
+        if (self.askYesNo("จะเลิกฝึกแล้วออกไปเหรอ?") == 1) {
             if (getPlayer().getEventInstance() != null) {
                 getPlayer().getEventInstance().unregisterPlayer(getPlayer());
             }

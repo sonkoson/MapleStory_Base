@@ -27,12 +27,12 @@ import java.util.List;
 public class VonLeon extends ScriptEngineNPC {
 
     public void portalNPC() {
-        initNPC(MapleLifeFactory.getNPC(2161005)); // 포탈스크립트 엔피시
+        initNPC(MapleLifeFactory.getNPC(2161005)); // Portal Script NPC
         EventManager em = getEventManager("VonLeon");
         if (em == null) {
             self.say("ยังไม่สามารถเข้าร่วม Von Leon Raid ได้ในขณะนี้");
         } else {
-            if (target.getMapId() == 211070000) { // เข้าแผนที่(알현실 หน้า 복도)
+            if (target.getMapId() == 211070000) { // Enter Map (Hallway before Audience Room)
                 if (target.getParty() == null) {
                     self.say("ต้องมีปาร์ตี้อย่างน้อย 1 คนจึงจะเข้าได้");
                 } else {
@@ -85,7 +85,7 @@ public class VonLeon extends ScriptEngineNPC {
                             }
                             if (!DBConfig.isGanglim) {
                                 if (target.getParty().getLeader().getId() != target.getId()) {
-                                    self.say("ปาร์ตี้장 통해 ดำเนินการ해 สัปดาห์십시오.");
+                                    self.say("กรุณาให้หัวหน้าปาร์ตี้เป็นผู้ดำเนินการ");
                                     return;
                                 }
                             }
@@ -125,7 +125,7 @@ public class VonLeon extends ScriptEngineNPC {
                                         }
                                     }
 
-                                    if (!canEnter) { // เข้า 불능한 경우 แผนที่ 유ฉัน 없지 체크 후 인스턴스 วินาที기화
+                                    if (!canEnter) { // If unable to enter, check if map is empty then reset instance
                                         if (getClient().getChannelServer().getMapFactory().getMap(211070100)
                                                 .getCharactersSize() == 0) {
                                             String rt = em.getProperty("ResetTime");
@@ -133,7 +133,8 @@ public class VonLeon extends ScriptEngineNPC {
                                             long time = rt == null ? 0 : Long.parseLong(rt);
                                             if (time == 0) {
                                                 em.setProperty("ResetTime", String.valueOf(curTime));
-                                            } else if (time - curTime >= 10000) { // 10วินาที상 แผนที่ 빈경우 เข้า능하게 เปลี่ยน
+                                            } else if (time - curTime >= 10000) { // If map empty for > 10s, change to
+                                                                                  // enterable
                                                 canEnter = true;
                                                 em.setProperty("ResetTime", "0");
                                             }
@@ -199,7 +200,7 @@ public class VonLeon extends ScriptEngineNPC {
                 }
             } else {
                 if (self.askYesNo("ต้องการจบการท้าทายและออกจากห้องโถงหรือไม่?") == 1) {
-                    // 수락시 ออก (네 번째 탑루 짐)
+                    // If accepted, leave (4th tower lost)
                     getPlayer().setRegisterTransferFieldTime(0);
                     getPlayer().setRegisterTransferField(0);
                     registerTransferField(211060801);
@@ -209,7 +210,7 @@ public class VonLeon extends ScriptEngineNPC {
                         getPlayer().setEventInstance(null);
                     }
                 }
-                // 거절시 ใคร것도ไม่มี
+                // If rejected, do nothing
             }
         }
     }
@@ -281,7 +282,8 @@ public class VonLeon extends ScriptEngineNPC {
          */
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
-            if (target.getParty().getLeader().getId() == target.getId()) { // ปาร์ตี้장만 소환능(중복소환 ห้อง지)
+            if (target.getParty().getLeader().getId() == target.getId()) { // Only Leader can summon (prevent duplicate
+                                                                           // summon)
                 if (self.askAccept(
                         "ผู้กล้าที่มาปราบข้า... หรือจะเป็นศัตรูของจอมเวทดำ... จะฝ่ายไหนก็ไม่สำคัญ หากเป้าหมายชัดเจนก็ไม่ต้องพูดพร่ำทำเพลง...  \r\nเข้ามาเลย เจ้าพวกโง่เขลา...#k",
                         ScriptMessageFlag.NoEsc) == 1) {
@@ -294,7 +296,7 @@ public class VonLeon extends ScriptEngineNPC {
                             if (DBConfig.isGanglim) {
                                 field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
                             } else {
-                                if (!getPlayer().isMultiMode()) { // 싱글โหมด
+                                if (!getPlayer().isMultiMode()) { // Single Mode
                                     field.spawnMonster(MapleLifeFactory.getMonster(8840018), new Point(-6, -188), 32);
                                     if (getPlayer().getQuestStatus(2000019) == 1) {
                                         getPlayer().applyBMCurse1(2);
@@ -362,11 +364,11 @@ public class VonLeon extends ScriptEngineNPC {
                         "ผู้กล้าที่มาปราบข้า... หรือจะเป็นศัตรูของจอมเวทดำ... จะฝ่ายไหนก็ไม่สำคัญ หากเป้าหมายชัดเจนก็ไม่ต้องพูดพร่ำทำเพลง...");
             }
         }
-        // 거절시 ใคร것도ไม่มี
+        // If rejected, do nothing
     }
 
     public void outVanLeonPrison() {
-        // 감옥열쇠 있어야 탈출능
+        // Must have prison key to escape
         EventInstanceManager eim = getEventInstance();
         if (eim != null) {
             if (getPlayer().haveItem(4032860, 1, false, true)) {

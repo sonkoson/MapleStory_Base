@@ -15,161 +15,254 @@ import java.util.Date;
 
 public class SharenianUndergroundCulvert extends ScriptEngineNPC {
 
-
-    public void Culvert_NPC() {
-        int v = self.askMenu("#fs11#샤레니ใน의 악마, 아르카누스에게 도전ต้องการหรือไม่?\r\n\r\n#L1# #b샤레니ใน의 지하 수로에 เข้า한다.#k#l\r\n#L2# #b샤레니ใน의 지하 수로는 어떤 공간인가요?#k#l", ScriptMessageFlag.NpcReplacedByNpc);
-        switch (v) {
-            case 1: //샤레니ใน의 지하 수로에 เข้า한다.
-
-                registerTransferField(941000000);
-                break;
-            case 2: //샤레니ใน의 지하 수로는 어떤 공간인가요?
-                self.say("#fs11##r#e샤레니ใน의 지하 수로#k#n 대해 궁금하신가요?", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#아สัปดาห์ 먼 옛날... 샤레니ใน이라는 고대의 왕국이 있었. 비록 끔찍한 사건으로 인해 왕국이 통째로 멸망 말았지만요.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#샤레니ใน의 유적지를 탐험하려는 시도는 여러 번 있었지만 쉽지 않았고, 결국 เขา곳으로 향하는 ถนน은 잊히고 말았.\r\n\r\n#r#eเท่าไหร่ 전ถึง만 해도 말이지요...", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#전 ก่อนหน้าจาก 샤레니ใน의 유적지를 조사 중이었는데 사고로 인해 ใคร도 가지 않았던 곳에서 #b샤레니ใน의 지하 수로로 통하는 ถนน을 발견แล้ว.#k", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#มาก 많은 입구들이 미로처럼 얽혀있지만 어느 ถนน로 가도 불ถนน한 기운이 잠들어 있는 제단이 있는 곳으로 갈 수 있었지요.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#กิลด์ 본부는 지하 수로 조사를 결정แล้ว. 지하 수로 입구에서 ฉัน에게 말을 걸어서 샤레니ใน의 지하 수로로 통하는 ประตู을 열면, 불ถนน한 기운의 제단으로 향하는 통로로 갈 수 있.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#조사는 คนเดียว서만 ดำเนินการ할 수  중간에 กิลด์ 탈퇴하거ฉัน 추ห้อง 던전 คะแนน ได้รับ할 수 없. และ한, กิลด์ 탈퇴하거ฉัน 추ห้อง당 해당 กิลด์ 총 คะแนน หัก되니 สัปดาห์의하시ถนน โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#조사는 จำกัด 없이 ดำเนินการ할 수 있. 단, 지하 수로의 불ถนน한 기운으로 인해 เข้า 시 ทั้งหมด Buff เอฟเฟกต์가 ปลดล็อก되므로 신중하게 결정하시ถนน โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#제단으로 향하는 통로에서는 잠시 동ใน Buff สกิล ใช้ ไอเท็ม ใช้할 수 있으니 이후 올 시련에 대비하실 수 있.\r\n단, วัน정 เวลา 내 제단으로 เข้า하지 못 지하 수로에서 ออก하게 되니 สัปดาห์의ทำ.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#수로의 가장 깊은 곳에 자리한 불ถนน한 기운의 제단에서 숨죽인 채 때를 기다리던 존재가 곧 깨어날 겁니다. 바로 \r\n\r\n                   #r샤레니ใน의 악마, 아르카누스#k\r\n\r\n.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#เขา는 불멸의 존재... โจมตี을 받을수록 점점 더 แข็งแรง 존재가  태어ฉัน니 조심해야 . 가장 강력한 สถานะ로 재탄생 ใคร리 แข็งแรง โจมตี을 받더라도 เขา는 결코 쓰러지는 모습을 보이지 않을 것이니 สัปดาห์의를 기울이는 것이 좋.\r\nและ한 아르카누스의 โจมตี에 의해 사망한다면 곧바로 제단 นอก으로 ย้าย되니 สัปดาห์의하시ถนน โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#지하 수로의 존재들에게 입힌 피해에 비례해 던전 คะแนน 얻을 수  เดือน요วัน 0시마다 เป้าหมาย 달성에 따라 กิลด์ 본부에서 포상으로 노블레스 SP 지급하니 힘내서 도전해ดู. 다만 กิลด์ 총 던전 คะแนน วัน정 점수 이상이 야 받을 수 있을 겁니다.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#และ, คะแนน 순บน에 따라 เพิ่ม 노블레스 SP 얻을 수도  지하 수로에서 ออก วัน정 เวลา이 지ฉัน야 던전 คะแนน 정산되니 참고ทำ.\r\n#rแต่ละ กิลด์원의 던전 คะแนน 합산에 วัน정 เวลา이 소요 랭킹에 ทั้งหมด 반영 되기ถึง 어느정도 เวลา이 จำเป็น하오니 คะแนน น้อย 기록도 당황하지 말고 잠시 후 다시 ยืนยัน해 ดู.", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11##b#e1บน : 25개의 SP\r\n2บน : 23개의 SP\r\n3บน : 21개의 SP\r\n4บน ~ 10บน : 20개의 SP\r\n상บน 10% : 19개의 SP\r\n상บน 30% : 17개의 SP\r\n상บน 60% : 15개의 SP\r\n상บน 80% : 10개의 SP\r\n500คะแนน 이상 : 5개의 SP\r\n\r\n#r#e※ 단, 500คะแนน 이상 ได้รับ하지 못 순บน ใน에 들었더라도 รางวัล을 받을 수 없.#k#n", ScriptMessageFlag.NpcReplacedByNpc);
-                self.say("#fs11#제가 ด้วยกัน 수로 속으로 갈 테니 ถนน을 잃을 염려는 하지 않으셔도 . 어서 도전하시지요.", ScriptMessageFlag.NpcReplacedByNpc);
-                break;
-        }
-    }
-
-    public void npc_2012041() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd/HH/mm");
-        Date lastTime = null;
-        try {
-            lastTime = sdf.parse(getPlayer().getOneInfo(100811, "date"));
-        } catch (Exception e) {
-            //e.printStackTrace();
-            lastTime = null;
-        }
-        if (lastTime != null) {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(lastTime);
-            cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            cal.set(Calendar.HOUR, 0);
-            cal.set(Calendar.MINUTE, 0);
-            cal.set(Calendar.SECOND, 0);
-            cal.set(Calendar.MILLISECOND, 0);
-            cal.set(Calendar.HOUR_OF_DAY, 0);
-            cal.set(Calendar.DATE, cal.getTime().getDate() + 7);
-            if (cal.getTime().getTime() <= new Date().getTime()) {
-                getPlayer().updateOneInfo(100811, "point", "0");
-                getPlayer().updateOneInfo(100811, "complete", "0");
-                getPlayer().updateOneInfo(100811, "date", sdf.format(new Date()));
-                getPlayer().updateOneInfo(100811, "guildPoint", "0");
-                getPlayer().updateOneInfo(100811, "weeklyRecord", "0");
-            }
-        }
-
-        switch (getPlayer().getMapId()) {
-            case 941000100: {
-                if (1 == self.askYesNo("#fs11#เตรียม가 เสร็จสมบูรณ์되셨다면 แนะนำ해드리겠.\r\n\r\n#b#e지금 제단으로 ย้ายต้องการหรือไม่?#n#k", ScriptMessageFlag.NpcReplacedByNpc)) {
-                    registerTransferField(941000200);
-                } else {
-                    self.sayOk("#fs11#เขา렇다면 정비를 마친 후 다시 시도โปรด.", ScriptMessageFlag.NpcReplacedByNpc);
-                }
-                break;
-            }
-            case 941000001: {
-                if (getPlayer().getOneInfoQuestInteger(100811, "complete") > 0) {
-                    int point = getPlayer().getOneInfoQuestInteger(100811, "point");
-                    int weeklyRecord = getPlayer().getOneInfoQuestInteger(100811, "weeklyRecord");
-                    int v = -1;
-                    if (point > weeklyRecord) {
-                        v = self.askMenu("#fs11#제의 불ถนน한 기운이 นิดหน่อย은 줄어든 것 같.\r\n다시 지하 수로 입구로 แนะนำ해드리겠.\r\n\r\n#e- ได้รับ 점수: #n#b#e" + point + "점#n#k#e#b (이번 สัปดาห์ 신기록!)#n#k\r\n#e- 이번 สัปดาห์ 최고 점수: #n#r#e" + point + "점#n#k\r\n#b#L1# 지하 수로 입구로 돌아간다.#k#l\r\n#b#L2# สนทนา를 สิ้นสุด한다.#k#l", ScriptMessageFlag.NpcReplacedByNpc);
-                    } else {
-                        v = self.askMenu("#fs11#제의 불ถนน한 기운이 นิดหน่อย은 줄어든 것 같.\r\n다시 지하 수로 입구로 แนะนำ해드리겠.\r\n\r\n#e- ได้รับ 점수: #n#b#e" + point + "점#n#k\r\n#e- 이번 สัปดาห์ 최고 점수: #n#r#e" + weeklyRecord + "점#n#k\r\n#b#L1# 지하 수로 입구로 돌아간다.#k#l\r\n#b#L2# สนทนา를 สิ้นสุด한다.#k#l", ScriptMessageFlag.NpcReplacedByNpc);
-                    }
-                    switch (v) {
-                        case 1:
-                            if (point > weeklyRecord) {
-                                getPlayer().updateOneInfo(100811, "weeklyRecord", String.valueOf(point));
-                            }
-                            registerTransferField(941000000);
-                            break;
-                    }
-                } else {
-                    int v = self.askMenu("#fs11#\r\n아르카누스의 힘이 전혀 줄어들지 않았군요. 다시 지하 수로 입구로 แนะนำ해드리겠.\r\n\r\n#b#L1# 지하 수로 입구로 돌아간다.#k#l\r\n#b#L2# สนทนา를 สิ้นสุด한다.#k#l", ScriptMessageFlag.NpcReplacedByNpc);
-                    switch (v) {
-                        case 1:
-                            registerTransferField(941000000);
-                            break;
-                    }
-                }
-                break;
-            }
-            default: {
-                int weeklyRecord = getPlayer().getOneInfoQuestInteger(100811, "weeklyRecord");
-                int v = self.askMenu("#fs11#\r\n유적지가 불ถนน한 기운을 내뿜고 있. 지금 지하 수로를 조사ต้องการหรือไม่?\r\n\r\n#e- 이번 สัปดาห์ 최고 점수: #n#r#e" + weeklyRecord + "점#n#k\r\n#L1# #b샤레니ใน의 지하 수로에 เข้า한다.#k#l\r\n#L2# #b샤레니ใน의 지하 수로는 어떤 공간인가요?#k#l", ScriptMessageFlag.NpcReplacedByNpc);
+        public void Culvert_NPC() {
+                int v = self.askMenu(
+                                "#fs11#ต้องการท้าทาย #rArcanus#k ปีศาจแห่ง Sharenian หรือไม่?\r\n\r\n#L1# #bเข้าสู่ Sharenian Underground Culvert#k#l\r\n#L2# #bSharenian Underground Culvert คืออะไร?#k#l",
+                                ScriptMessageFlag.NpcReplacedByNpc);
                 switch (v) {
-                    case 1: {
-                        if (1 == self.askAccept("지하 수로에 เข้า 시 지금 ใช้งาน 있는\r\n#fs16##b#eทั้งหมด Buff เอฟเฟกต์가 ปลดล็อก#k#fs12##n.\r\n\r\n지금 도전ต้องการหรือไม่?")) {
-                            CulvertEnter fieldSet = (CulvertEnter) fieldSet("CulvertEnter");
-                            int enter = fieldSet.enter(target.getId(), 0);
-                            if (enter == -1) self.say("#fs11#알 수 없는 이유로 เข้า할 수 없. 잠시 후에 다시 시도해 สัปดาห์십시오.");
-                            else if (enter == 1) self.sayOk("#fs11#<샤레니ใน의 지하수로> คนเดียว서만 도전할 수 있.\r\nปาร์ตี้ ปลดล็อก 다시 찾아และ สัปดาห์ถนน โปรด.");
-                            else if (enter == 2) self.say("#fs11#เลเวล ต่ำสุด " + fieldSet.minLv + " 이상이어야 .");
-                            else if (enter == 3) self.say("#fs11#ปัจจุบัน ทั้งหมด 인스턴스가 가득ชา 도전할 수 없. แชนแนล ย้ายโปรด.");
-                            else if (enter == -2) self.say("#fs11#วัน요วัน 오후 23시 ~ เดือน요วัน 오전 01시 ระหว่าง에는 노블레스 คะแนน 정산เวลา으로 이용ไม่สามารถทำได้.");
-                        } else {
-                            self.sayOk("#fs11#알겠. 조사할 เตรียม가 되시면 다시 시도โปรด.",   ScriptMessageFlag.NpcReplacedByNpc);
-                        }
-                        break;
-                    }
-                    case 2: { //샤레니ใน의 지하 수로는 어떤 공간인가요?
-                        self.say("#fs11##r#e샤레니ใน의 지하 수로#k#n 대해 궁금하신가요?");
-                        self.say("#fs11#아สัปดาห์ 먼 옛날... 샤레니ใน이라는 고대의 왕국이 있었. 비록 끔찍한 사건으로 인해 왕국이 통째로 멸망 말았지만요.");
-                        self.say("#fs11#샤레니ใน의 유적지를 탐험하려는 시도는 여러 번 있었지만 쉽지 않았고, 결국 เขา곳으로 향하는 ถนน은 잊히고 말았.\r\n\r\n#r#eเท่าไหร่ 전ถึง만 해도 말이지요...");
-                        self.say("#fs11#전 ก่อนหน้าจาก 샤레니ใน의 유적지를 조사 중이었는데 사고로 인해 ใคร도 가지 않았던 곳에서 #b샤레니ใน의 지하 수로로 통하는 ถนน을 발견แล้ว.#k");
-                        self.say("#fs11#มาก 많은 입구들이 미로처럼 얽혀있지만 어느 ถนน로 가도 불ถนน한 기운이 잠들어 있는 제단이 있는 곳으로 갈 수 있었지요.");
-                        self.say("#fs11#กิลด์ 본부는 지하 수로 조사를 결정แล้ว. 지하 수로 입구에서 ฉัน에게 말을 걸어서 샤레니ใน의 지하 수로로 통하는 ประตู을 열면, 불ถนน한 기운의 제단으로 향하는 통로로 갈 수 있.");
-                        self.say("#fs11#조사는 คนเดียว서만 ดำเนินการ할 수  중간에 กิลด์ 탈퇴하거ฉัน 추ห้อง 던전 คะแนน ได้รับ할 수 없. และ한, กิลด์ 탈퇴하거ฉัน 추ห้อง당 해당 กิลด์ 총 คะแนน หัก되니 สัปดาห์의하시ถนน โปรด.");
-                        self.say("#fs11#조사는 จำกัด 없이 ดำเนินการ할 수 있. 단, 지하 수로의 불ถนน한 기운으로 인해 เข้า 시 ทั้งหมด Buff เอฟเฟกต์가 ปลดล็อก되므로 신중하게 결정하시ถนน โปรด.");
-                        self.say("#fs11#제단으로 향하는 통로에서는 잠시 동ใน Buff สกิล ใช้ ไอเท็ม ใช้할 수 있으니 이후 올 시련에 대비하실 수 있.\r\n단, วัน정 เวลา 내 제단으로 เข้า하지 못 지하 수로에서 ออก하게 되니 สัปดาห์의ทำ.");
-                        self.say("#fs11#수로의 가장 깊은 곳에 자리한 불ถนน한 기운의 제단에서 숨죽인 채 때를 기다리던 존재가 곧 깨어날 겁니다. 바로 \r\n\r\n                   #r샤레니ใน의 악마, 아르카누스#k\r\n\r\n.");
-                        self.say("#fs11#เขา는 불멸의 존재... โจมตี을 받을수록 점점 더 แข็งแรง 존재가  태어ฉัน니 조심해야 . 가장 강력한 สถานะ로 재탄생 ใคร리 แข็งแรง โจมตี을 받더라도 เขา는 결코 쓰러지는 모습을 보이지 않을 것이니 สัปดาห์의를 기울이는 것이 좋.\r\nและ한 아르카누스의 โจมตี에 의해 사망한다면 곧바로 제단 นอก으로 ย้าย되니 สัปดาห์의하시ถนน โปรด.");
-                        self.say("#fs11#지하 수로의 존재들에게 입힌 피해에 비례해 던전 คะแนน 얻을 수  เดือน요วัน 0시마다 เป้าหมาย 달성에 따라 กิลด์ 본부에서 포상으로 노블레스 SP 지급하니 힘내서 도전해ดู. 다만 กิลด์ 총 던전 คะแนน วัน정 점수 이상이 야 받을 수 있을 겁니다.");
-                        self.say("#fs11#และ, คะแนน 순บน에 따라 เพิ่ม 노블레스 SP 얻을 수도  지하 수로에서 ออก วัน정 เวลา이 지ฉัน야 던전 คะแนน 정산되니 참고ทำ.\r\n#rแต่ละ กิลด์원의 던전 คะแนน 합산에 วัน정 เวลา이 소요 랭킹에 ทั้งหมด 반영 되기ถึง 어느정도 เวลา이 จำเป็น하오니 คะแนน น้อย 기록도 당황하지 말고 잠시 후 다시 ยืนยัน해 ดู.");
-                        self.say("#fs11##b#e1บน : 25개의 SP\r\n2บน : 23개의 SP\r\n3บน : 21개의 SP\r\n4บน ~ 10บน : 20개의 SP\r\n상บน 10% : 19개의 SP\r\n상บน 30% : 17개의 SP\r\n상บน 60% : 15개의 SP\r\n상บน 80% : 10개의 SP\r\n500คะแนน 이상 : 5개의 SP\r\n\r\n#r#e※ 단, 500คะแนน 이상 ได้รับ하지 못 순บน ใน에 들었더라도 รางวัล을 받을 수 없.#k#n");
-                        self.say("#fs11#제가 ด้วยกัน 수로 속으로 갈 테니 ถนน을 잃을 염려는 하지 않으셔도 . 어서 도전하시지요.");
-                        break;
-                    }
+                        case 1: // เข้าสู่ Sharenian Underground Culvert
+
+                                registerTransferField(941000000);
+                                break;
+                        case 2: // Sharenian Underground Culvert คืออะไร?
+                                self.say("#fs11#สงสัยเกี่ยวกับ #r#eSharenian Underground Culvert#k#n งั้นหรือครับ?",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#นานมาแล้ว... มีอาณาจักรโบราณที่ชื่อว่า #bSharenian#k อยู่ครับ แม้ว่าอาณาจักรนั้นจะล่มสลายไปทั้งเมืองจากเหตุการณ์อันน่าสยดสยองก็ตาม",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#มีความพยายามที่จะสำรวจซากปรักหักพังของ Sharenian อยู่หลายครั้ง แต่ก็ไม่ง่ายเลย และในที่สุดเส้นทางที่มุ่งไปสู่ที่นั่นก็ถูกลืมเลือนไป\r\n\r\n#r#eจนกระทั่งเมื่อไม่นานมานี้นี่เอง...#n",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#ก่อนหน้านี้ ผมกำลังสำรวจโบราณสถาน Sharenian อยู่ และด้วยอุบัติเหตุบางอย่าง ทำให้ผมค้นพบ #bเส้นทางสู่ Sharenian Underground Culvert#k ในที่ที่ไม่มีใครเคยไปถึงครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#ทางเข้ามากมายพันกันยุ่งเหยิงเหมือนเขาวงกต แต่ไม่ว่าจะไปทางไหน ก็สามารถไปถึงแท่นบูชาที่มีพลังงานชั่วร้ายหลับใหลอยู่ได้ครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#ทางกองบัญชาการ Guild ตัดสินใจที่จะสำรวจท่อระบายน้ำใต้ดินนี้ครับ หากคุยกับผมที่หน้าทางเข้าเพื่อเปิดประตูสู่ Sharenian Underground Culvert คุณก็จะสามารถเข้าไปยังทางเดินที่มุ่งสู่แท่นบูชาแห่งความชั่วร้ายได้",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#การสำรวจสามารถทำได้ #bเพียงคนเดียว#k เท่านั้น หากออกจาก Guild หรือถูกไล่ออกกลางคัน จะไม่ได้รับคะแนนดันเจี้ยน นอกจากนี้ คะแนนสะสมของ Guild นั้นจะถูกหักออกด้วย โปรดระวังด้วยนะครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#การสำรวจสามารถทำได้โดยไม่มีข้อจำกัด แต่เนื่องจากพลังงานชั่วร้ายในท่อระบายน้ำ เมื่อเข้าไปแล้ว #bBuff ทั้งหมดจะถูกลบล้าง#k โปรดตัดสินใจให้ดีนะครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#ในทางเดินสู่แท่นบูชา คุณสามารถใช้ Buff สกิลร่วมกันและไอเท็มต่างๆ ได้ชั่วคราว เพื่อเตรียมรับมือกับบททดสอบที่จะมาถึง\r\nแต่ว่า ถ้าไม่เข้าไปยังแท่นบูชาภายในเวลาที่กำหนด คุณจะถูกส่งออกจากท่อระบายน้ำ โปรดระวังด้วยครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#ณ ส่วนลึกที่สุดของท่อระบายน้ำ ที่แท่นบูชาแห่งพลังงานชั่วร้าย มีบางสิ่งที่ซ่อนตัวรอเวลาตื่นขึ้นมา นั่นก็คือ... \r\n\r\n                   #rArcanus ปีศาจแห่ง Sharenian#k\r\n\r\n.",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#มันคือตัวตนที่เป็นอมตะ... ยิ่งถูกโจมตี มันก็จะยิ่งแข็งแกร่งขึ้นและกำเนิดใหม่เรื่อยๆ แม้จะถูกโจมตีรุนแรงแค่ไหน มันก็จะไม่แสดงท่าทีว่าจะล้มลงเลย ดังนั้นควรระวังตัวไว้นะครับ\r\nและถ้าหากเสียชีวิตจากการโจมตีของ Arcanus คุณจะถูกย้ายออกมานอกแท่นบูชาทันที ระวังด้วยนะครับ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#คุณจะได้รับคะแนนดันเจี้ยนตามความเสียหายที่ทำต่อสิ่งมีชีวิตในท่อระบายน้ำ ทุกวันจันทร์เวลา 00:00 น. ทางกองบัญชาการ Guild จะมอบรางวัลเป็น #bNoblesse SP#k ให้ตามเป้าหมายที่ทำได้ครับ แต่ Guild จะต้องมีคะแนนดันเจี้ยนรวมถึงเกณฑ์ที่กำหนดก่อนนะครับ ถึงจะได้รับรางวัล",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11#นอกจากนี้ ยังสามารถรับ Noblesse SP เพิ่มเติมได้ตามอันดับคะแนนด้วย หลังจากออกจากท่อระบายน้ำ ต้องรอสักพักคะแนนถึงจะคำนวณเสร็จครับ\r\n#rต้องใช้เวลาสักพักในการรวมคะแนนของสมาชิก Guild แต่ละคนและแสดงผลในอันดับ หากคะแนนยังไม่ขึ้นทันทีก็ไม่ต้องตกใจนะครับ ลองตรวจสอบใหม่อีกครั้งในภายหลัง",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say(
+                                                "#fs11##b#eอันดับ 1 : 25 SP\r\nอันดับ 2 : 23 SP\r\nอันดับ 3 : 21 SP\r\nอันดับ 4 ~ 10 : 20 SP\r\nTop 10% : 19 SP\r\nTop 30% : 17 SP\r\nTop 60% : 15 SP\r\nTop 80% : 10 SP\r\n500 คะแนนขึ้นไป : 5 SP\r\n\r\n#r#e※ แต่ถ้าได้คะแนนต่ำกว่า 500 คะแนน แม้จะติดอันดับ ก็จะไม่ได้รับรางวัลนะครับ#k#n",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                self.say("#fs11#ผมจะเข้าไปในท่อระบายน้ำด้วย ไม่ต้องห่วงว่าจะหลงทางนะครับ รีบไปท้าทายกันเถอะ",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                break;
                 }
-                break;
-            }
         }
-    }
 
-    @Script
-    public void gb_reset() {
-        int duration = 0;
-        if(getPlayer().getCooldownLimit(80002282) != 0L){ // 봉인된 룬의 힘 ปลดล็อก 악용 ห้อง지
-            duration = (int) getPlayer().getRemainCooltime(80002282);
-        }
-        getPlayer().cancelAllBuffs();
-        getPlayer().send(CField.addPopupSay(2012041, 1300, "제단의 불ถนน한 기운으로 인해\r\n#rทั้งหมด Buff ปลดล็อก#k되었.", ""));
-        getPlayer().send(CField.addPopupSay(2012041, 1300, "#r샤레니ใน의 악마#kและ의 결전을 บน해 정비ทำ!", ""));
-        if(duration != 0){
-            getPlayer().temporaryStatSet(80002282, duration, SecondaryStatFlag.RuneBlocked, 1);
-        }
-    }
+        public void npc_2012041() {
+                SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd/HH/mm");
+                Date lastTime = null;
+                try {
+                        lastTime = sdf.parse(getPlayer().getOneInfo(100811, "date"));
+                } catch (Exception e) {
+                        // e.printStackTrace();
+                        lastTime = null;
+                }
+                if (lastTime != null) {
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(lastTime);
+                        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                        cal.set(Calendar.HOUR, 0);
+                        cal.set(Calendar.MINUTE, 0);
+                        cal.set(Calendar.SECOND, 0);
+                        cal.set(Calendar.MILLISECOND, 0);
+                        cal.set(Calendar.HOUR_OF_DAY, 0);
+                        cal.set(Calendar.DATE, cal.getTime().getDate() + 7);
+                        if (cal.getTime().getTime() <= new Date().getTime()) {
+                                getPlayer().updateOneInfo(100811, "point", "0");
+                                getPlayer().updateOneInfo(100811, "complete", "0");
+                                getPlayer().updateOneInfo(100811, "date", sdf.format(new Date()));
+                                getPlayer().updateOneInfo(100811, "guildPoint", "0");
+                                getPlayer().updateOneInfo(100811, "weeklyRecord", "0");
+                        }
+                }
 
-    public void gb_out() {
-        initNPC(MapleLifeFactory.getNPC(2012041));
-        if (1 == self.askYesNo("#fs11#도전을 포기 지하 수로 입구로 돌아가시หรือไม่?", ScriptMessageFlag.NpcReplacedByNpc)) {
-            registerTransferField(941000001);
+                switch (getPlayer().getMapId()) {
+                        case 941000100: {
+                                if (1 == self.askYesNo(
+                                                "#fs11#ถ้าเตรียมตัวพร้อมแล้ว ผมจะนำทางไปครับ\r\n\r\n#b#eต้องการไปยังแท่นบูชาตอนนี้เลยไหมครับ?#n#k",
+                                                ScriptMessageFlag.NpcReplacedByNpc)) {
+                                        registerTransferField(941000200);
+                                } else {
+                                        self.sayOk("#fs11#เข้าใจแล้วครับ ถ้าเตรียมตัวเสร็จแล้วค่อยลองใหม่นะครับ",
+                                                        ScriptMessageFlag.NpcReplacedByNpc);
+                                }
+                                break;
+                        }
+                        case 941000001: {
+                                if (getPlayer().getOneInfoQuestInteger(100811, "complete") > 0) {
+                                        int point = getPlayer().getOneInfoQuestInteger(100811, "point");
+                                        int weeklyRecord = getPlayer().getOneInfoQuestInteger(100811, "weeklyRecord");
+                                        int v = -1;
+                                        if (point > weeklyRecord) {
+                                                v = self.askMenu(
+                                                                "#fs11#ดูเหมือนพลังงานชั่วร้ายจะลดลงนิดหน่อยนะครับ\r\nผมจะนำทางกลับไปยังปากทางเข้าท่อระบายน้ำครับ\r\n\r\n#e- คะแนนที่ได้รับ: #n#b#e"
+                                                                                + point
+                                                                                + " คะแนน#n#k#e#b (สถิติใหม่ประจำสัปดาห์นี้!)#n#k\r\n#e- คะแนนสูงสุดประจำสัปดาห์นี้: #n#r#e"
+                                                                                + point
+                                                                                + " คะแนน#n#k\r\n#b#L1# กลับไปยังปากทางเข้าท่อระบายน้ำ#k#l\r\n#b#L2# จบการสนทนา#k#l",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                        } else {
+                                                v = self.askMenu(
+                                                                "#fs11#ดูเหมือนพลังงานชั่วร้ายจะลดลงนิดหน่อยนะครับ\r\nผมจะนำทางกลับไปยังปากทางเข้าท่อระบายน้ำครับ\r\n\r\n#e- คะแนนที่ได้รับ: #n#b#e"
+                                                                                + point
+                                                                                + " คะแนน#n#k\r\n#e- คะแนนสูงสุดประจำสัปดาห์นี้: #n#r#e"
+                                                                                + weeklyRecord
+                                                                                + " คะแนน#n#k\r\n#b#L1# กลับไปยังปากทางเข้าท่อระบายน้ำ#k#l\r\n#b#L2# จบการสนทนา#k#l",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                        }
+                                        switch (v) {
+                                                case 1:
+                                                        if (point > weeklyRecord) {
+                                                                getPlayer().updateOneInfo(100811, "weeklyRecord",
+                                                                                String.valueOf(point));
+                                                        }
+                                                        registerTransferField(941000000);
+                                                        break;
+                                        }
+                                } else {
+                                        int v = self.askMenu(
+                                                        "#fs11#\r\nพลังของ Arcanus ไม่ลดลงเลยสินะครับ ผมจะนำทางกลับไปยังปากทางเข้าท่อระบายน้ำครับ\r\n\r\n#b#L1# กลับไปยังปากทางเข้าท่อระบายน้ำ#k#l\r\n#b#L2# จบการสนทนา#k#l",
+                                                        ScriptMessageFlag.NpcReplacedByNpc);
+                                        switch (v) {
+                                                case 1:
+                                                        registerTransferField(941000000);
+                                                        break;
+                                        }
+                                }
+                                break;
+                        }
+                        default: {
+                                int weeklyRecord = getPlayer().getOneInfoQuestInteger(100811, "weeklyRecord");
+                                int v = self.askMenu(
+                                                "#fs11#\r\nโบราณสถานกำลังแผ่พลังงานชั่วร้ายออกมาครับ ต้องการสำรวจท่อระบายน้ำใต้ดินตอนนี้เลยไหมครับ?\r\n\r\n#e- คะแนนสูงสุดประจำสัปดาห์นี้: #n#r#e"
+                                                                + weeklyRecord
+                                                                + " คะแนน#n#k\r\n#L1# #bเข้าสู่ Sharenian Underground Culvert#k#l\r\n#L2# #bSharenian Underground Culvert คืออะไร?#k#l",
+                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                switch (v) {
+                                        case 1: {
+                                                if (1 == self.askAccept(
+                                                                "เมื่อเข้าสู่ท่อระบายน้ำใต้ดิน #fs16##b#eBuff Effect ทั้งหมดจะถูกลบล้าง#k#fs12##n ครับ\r\n\r\nต้องการท้าทายตอนนี้เลยไหมครับ?")) {
+                                                        CulvertEnter fieldSet = (CulvertEnter) fieldSet("CulvertEnter");
+                                                        int enter = fieldSet.enter(target.getId(), 0);
+                                                        if (enter == -1)
+                                                                self.say(
+                                                                                "#fs11#ไม่สามารถเข้าได้เนื่องจากข้อผิดพลาดที่ไม่ทราบสาเหตุ กรุณาลองใหม่อีกครั้งในภายหลังครับ");
+                                                        else if (enter == 1)
+                                                                self.sayOk(
+                                                                                "#fs11#<Sharenian Underground Culvert> สามารถเข้าได้ #bเพียงคนเดียว#k เท่านั้นครับ\r\nกรุณาออกจากปาร์ตี้แล้วลองใหม่อีกครั้งนะครับ");
+                                                        else if (enter == 2)
+                                                                self.say("#fs11#ต้องมีเลเวล " + fieldSet.minLv
+                                                                                + " ขึ้นไปจึงจะเข้าได้ครับ");
+                                                        else if (enter == 3)
+                                                                self.say(
+                                                                                "#fs11#ขณะนี้ดันเจี้ยนเต็มทุกห้อง ไม่สามารถเข้าได้ กรุณาลองย้ายแชนแนลดูนะครับ");
+                                                        else if (enter == -2)
+                                                                self.say(
+                                                                                "#fs11#ช่วงเวลาวันอาทิตย์ 23:00 น. ~ วันจันทร์ 01:00 น. เป็นช่วงเวลาคำนวณคะแนน Noblesse ไม่สามารถเข้าใช้งานได้ครับ");
+                                                } else {
+                                                        self.sayOk("#fs11#เข้าใจแล้วครับ ถ้าเตรียมตัวเสร็จแล้วค่อยมาลองใหม่นะครับ",
+                                                                        ScriptMessageFlag.NpcReplacedByNpc);
+                                                }
+                                                break;
+                                        }
+                                        case 2: // Sharenian Underground Culvert คืออะไร?
+                                                self.say("#fs11#สงสัยเกี่ยวกับ #r#eSharenian Underground Culvert#k#n งั้นหรือครับ?",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#นานมาแล้ว... มีอาณาจักรโบราณที่ชื่อว่า #bSharenian#k อยู่ครับ แม้ว่าอาณาจักรนั้นจะล่มสลายไปทั้งเมืองจากเหตุการณ์อันน่าสยดสยองก็ตาม",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#มีความพยายามที่จะสำรวจซากปรักหักพังของ Sharenian อยู่หลายครั้ง แต่ก็ไม่ง่ายเลย และในที่สุดเส้นทางที่มุ่งไปสู่ที่นั่นก็ถูกลืมเลือนไป\r\n\r\n#r#eจนกระทั่งเมื่อไม่นานมานี้นี่เอง...#n",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#ก่อนหน้านี้ ผมกำลังสำรวจโบราณสถาน Sharenian อยู่ และด้วยอุบัติเหตุบางอย่าง ทำให้ผมค้นพบ #bเส้นทางสู่ Sharenian Underground Culvert#k ในที่ที่ไม่มีใครเคยไปถึงครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#ทางเข้ามากมายพันกันยุ่งเหยิงเหมือนเขาวงกต แต่ไม่ว่าจะไปทางไหน ก็สามารถไปถึงแท่นบูชาที่มีพลังงานชั่วร้ายหลับใหลอยู่ได้ครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#ทางกองบัญชาการ Guild ตัดสินใจที่จะสำรวจท่อระบายน้ำใต้ดินนี้ครับ หากคุยกับผมที่หน้าทางเข้าเพื่อเปิดประตูสู่ Sharenian Underground Culvert คุณก็จะสามารถเข้าไปยังทางเดินที่มุ่งสู่แท่นบูชาแห่งความชั่วร้ายได้",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#การสำรวจสามารถทำได้ #bเพียงคนเดียว#k เท่านั้น หากออกจาก Guild หรือถูกไล่ออกกลางคัน จะไม่ได้รับคะแนนดันเจี้ยน นอกจากนี้ คะแนนสะสมของ Guild นั้นจะถูกหักออกด้วย โปรดระวังด้วยนะครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#การสำรวจสามารถทำได้โดยไม่มีข้อจำกัด แต่เนื่องจากพลังงานชั่วร้ายในท่อระบายน้ำ เมื่อเข้าไปแล้ว #bBuff ทั้งหมดจะถูกลบล้าง#k โปรดตัดสินใจให้ดีนะครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#ในทางเดินสู่แท่นบูชา คุณสามารถใช้ Buff สกิลร่วมกันและไอเท็มต่างๆ ได้ชั่วคราว เพื่อเตรียมรับมือกับบททดสอบที่จะมาถึง\r\nแต่ว่า ถ้าไม่เข้าไปยังแท่นบูชาภายในเวลาที่กำหนด คุณจะถูกส่งออกจากท่อระบายน้ำ โปรดระวังด้วยครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#ณ ส่วนลึกที่สุดของท่อระบายน้ำ ที่แท่นบูชาแห่งพลังงานชั่วร้าย มีบางสิ่งที่ซ่อนตัวรอเวลาตื่นขึ้นมา นั่นก็คือ... \r\n\r\n                   #rArcanus ปีศาจแห่ง Sharenian#k\r\n\r\n.",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#มันคือตัวตนที่เป็นอมตะ... ยิ่งถูกโจมตี มันก็จะยิ่งแข็งแกร่งขึ้นและกำเนิดใหม่เรื่อยๆ แม้จะถูกโจมตีรุนแรงแค่ไหน มันก็จะไม่แสดงท่าทีว่าจะล้มลงเลย ดังนั้นควรระวังตัวไว้นะครับ\r\nและถ้าหากเสียชีวิตจากการโจมตีของ Arcanus คุณจะถูกย้ายออกมานอกแท่นบูชาทันที ระวังด้วยนะครับ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#คุณจะได้รับคะแนนดันเจี้ยนตามความเสียหายที่ทำต่อสิ่งมีชีวิตในท่อระบายน้ำ ทุกวันจันทร์เวลา 00:00 น. ทางกองบัญชาการ Guild จะมอบรางวัลเป็น #bNoblesse SP#k ให้ตามเป้าหมายที่ทำได้ครับ แต่ Guild จะต้องมีคะแนนดันเจี้ยนรวมถึงเกณฑ์ที่กำหนดก่อนนะครับ ถึงจะได้รับรางวัล",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11#นอกจากนี้ ยังสามารถรับ Noblesse SP เพิ่มเติมได้ตามอันดับคะแนนด้วย หลังจากออกจากท่อระบายน้ำ ต้องรอสักพักคะแนนถึงจะคำนวณเสร็จครับ\r\n#rต้องใช้เวลาสักพักในการรวมคะแนนของสมาชิก Guild แต่ละคนและแสดงผลในอันดับ หากคะแนนยังไม่ขึ้นทันทีก็ไม่ต้องตกใจนะครับ ลองตรวจสอบใหม่อีกครั้งในภายหลัง",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say(
+                                                                "#fs11##b#eอันดับ 1 : 25 SP\r\nอันดับ 2 : 23 SP\r\nอันดับ 3 : 21 SP\r\nอันดับ 4 ~ 10 : 20 SP\r\nTop 10% : 19 SP\r\nTop 30% : 17 SP\r\nTop 60% : 15 SP\r\nTop 80% : 10 SP\r\n500 คะแนนขึ้นไป : 5 SP\r\n\r\n#r#e※ แต่ถ้าได้คะแนนต่ำกว่า 500 คะแนน แม้จะติดอันดับ ก็จะไม่ได้รับรางวัลนะครับ#k#n",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                self.say("#fs11#ผมจะเข้าไปในท่อระบายน้ำด้วย ไม่ต้องห่วงว่าจะหลงทางนะครับ รีบไปท้าทายกันเถอะ",
+                                                                ScriptMessageFlag.NpcReplacedByNpc);
+                                                break;
+                                }
+                        }
+                                break;
+                }
         }
-    }
 
+        @Script
+        public void gb_reset() {
+                int duration = 0;
+                if (getPlayer().getCooldownLimit(80002282) != 0L) { // ป้องกันการใช้ประโยชน์จากการปลดล็อก Rune of Might
+                                                                    // ที่ถูกผนึก
+                        duration = (int) getPlayer().getRemainCooltime(80002282);
+                }
+                getPlayer().cancelAllBuffs();
+                getPlayer().send(CField.addPopupSay(2012041, 1300,
+                                "เนื่องจากพลังงานชั่วร้ายของแท่นบูชา\r\n#rBuff ทั้งหมดจึงถูกลบล้าง#kครับ", ""));
+                getPlayer().send(CField.addPopupSay(2012041, 1300,
+                                "กรุณาเตรียมตัวให้พร้อมสำหรับการตัดสินกับ #rปีศาจแห่ง Sharenian#k ครับ!", ""));
+                if (duration != 0) {
+                        getPlayer().temporaryStatSet(80002282, duration, SecondaryStatFlag.RuneBlocked, 1);
+                }
+        }
+
+        public void gb_out() {
+                initNPC(MapleLifeFactory.getNPC(2012041));
+                if (1 == self.askYesNo("#fs11#ต้องการล้มเลิกการท้าทายและกลับไปยังปากทางเข้าท่อระบายน้ำไหมครับ?",
+                                ScriptMessageFlag.NpcReplacedByNpc)) {
+                        registerTransferField(941000001);
+                }
+        }
 
 }
