@@ -56,8 +56,8 @@ public class WeeklyQuest {
    }
 
    public static enum QuestName {
-      QUEST_1("ํ—ค์ด๋ธ ์ฃผ๊ฐ ํ€์คํธ", 1234571),
-      QUEST_2("๋ฒ๋ ค์ง์•ผ์์ง€ ์ฃผ๊ฐ ํ€์คํธ", 1234572);
+      QUEST_1("เควสรายสัปดาห์ Haven", 1234571),
+      QUEST_2("เควสรายสัปดาห์ Dark World Tree", 1234572);
 
       final String name;
       final int questID;

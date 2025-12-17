@@ -16,12 +16,12 @@ public class Field_BossKaringMatch extends Field_BossKaring {
    public void doMatching(PacketDecoder packet, MapleCharacter player) {
       int type = packet.readInt();
       KaringMatchType.Recv actionType = KaringMatchType.Recv.getType(type);
-      player.dropMessage(-5, "Type เนเธฃเธ : " + actionType);
+      player.dropMessage(-5, "First Type : " + actionType);
       switch (actionType) {
          case BossSelect:
             int types = packet.readInt();
             this.position = 0;
-            player.dropMessage(-5, " เธเธฃเธฑเนเธเธ—เธตเนเธชเธญเธ : " + types);
+            player.dropMessage(-5, " Second Type : " + types);
             switch (types) {
                case 0:
                   this.addGoongiParty(player);

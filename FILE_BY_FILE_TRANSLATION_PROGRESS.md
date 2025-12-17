@@ -659,3 +659,38 @@ Given the scope (60 files total, large ones remaining), I recommend:
 - **ZeniaCustomNPC.java:** Verified translation and fixed duplicate case logic.
 - **OneClickSet.java:** Verified translation.
 - **Recommend.java:** Verified translation.
+- **Global Encoding Fix (src):** Restored readable Thai/Korean text in over 100 files (including `MapleCharacter.java`, `MapleInventoryManipulator.java`, `NPCConversationManager.java`) by fixing TIS-620/CP1252 corruption.
+- **NPCConversationManager.java:** Refactored `SimpleDateFormat`/`Date` to `java.time.LocalDateTime` (700+ occurrences). Fixed Thai Mojibake artifacts (e.g., `ö` -> `ถ`). Translated Mulung Dojo, Genesis Weapon, and Fairy Wonky dialogues to Thai.
+- **CMDCommand.java:** Rewrote file to remove corrupted Korean aliases and translate commands to English.
+- **Magnus.java:** Translated comments and verified dialogues.
+- **MapleInventoryManipulator.java:** Fixed log encoding artifacts.
+
+### 77. NPCConversationManager.java ✅
+- **Status:** 100% Complete
+- **Refactoring:** Replaced deprecated Date API with `java.time`.
+- **Encoding:** Fixed widespread Thai artifact corruption (`ö`->`ถ`, `ô`->`ด`, etc.).
+- **Translation:** Translated English/Korean strings (Mulung, Genesis, Fairy Wonky) to Thai.
+
+### 78. CMDCommand.java ✅
+- **Status:** 100% Complete
+- **Refactoring:** Removed corrupted Korean aliases.
+- **Translation:** Standardized commands to English.
+
+### 79. Magnus.java ✅
+- **Status:** 100% Complete
+- **Translation:** Translated comments and verified existing Thai dialogues.
+
+### 80. AdminClient.java ✅
+- **Status:** 100% Complete
+- **Refactoring:** Replaced `java.util.Date`, `Calendar`, `SimpleDateFormat` with `java.time` API.
+- **Translation:** Translated Korean strings to English/Thai (Server messages, Ban reasons, Item delivery logs).
+- **Encoding:** Fixed Thai Mojibake artifacts.
+
+### 81. MapleQuest.java ✅
+- **Status:** 100% Complete
+- **Refactoring:** Replaced `SimpleDateFormat` with `java.time` for quest time parsing.
+- **Translation:** Translated Korean region names (Enum `MedalQuest`) to English.
+
+### 82. CustomItem.java ✅
+- **Status:** 100% Complete
+- **Translation:** Translated Korean strings and Enums.

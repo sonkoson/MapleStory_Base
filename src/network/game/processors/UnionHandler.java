@@ -43,7 +43,7 @@ public class UnionHandler {
       MapleUnion union = c.getPlayer().getMapleUnion();
       if (union == null) {
          c.getPlayer().dropMessage(1,
-               "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Maple Union เนเธ”เน เธซเธฃเธทเธญเน€เธฅเน€เธงเธฅเธฃเธงเธกเธเธญเธเธ•เธฑเธงเธฅเธฐเธเธฃเนเธเธเธฑเธเธเธตเธขเธฑเธเนเธกเนเธ–เธถเธ 500\r\n\r\nเธซเธฒเธเน€เธฅเน€เธงเธฅเธฃเธงเธกเน€เธเธดเธ 500 เนเธฅเนเธง เธเธฃเธธเธ“เธฒเนเธเธซเธฒ NPC Union เนเธเน€เธกเธทเธญเธ");
+               "ไม่สามารถโหลดข้อมูลMaple Union ได้ หรือเลเวลรวมของตัวละครในบัญชียังไม่ถึง 500\r\n\r\nหากเลเวลรวมเกิน 500 แล้วกรุณาไปหҁNPC Union ในเมือง");
          c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
       } else {
          c.getPlayer().vaildateMapleUnion(c.getPlayer().getMapleUnion(), true);
@@ -74,7 +74,7 @@ public class UnionHandler {
 
          int activeRaidersCount = slea.readInt();
          if (activeRaidersCount > MapleUnionData.getRankData(union.rank).getAttackerCount()) {
-            c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธฑเธ”เธชเธกเธฒเธเธดเธเธเธญเธเธเธณเธฅเธฑเธเน€เธเธดเธเธเธณเธเธงเธเธชเธนเธเธชเธธเธ”เนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+            c.getPlayer().dropMessage(1, "ไม่สามารถจѴสมาชิกกองกำลังเกินจำนวนสูงสุดได้ กรุณาลองใหม่อีกครั้ง");
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             c.getPlayer().send(CField.UIPacket.closeUI(1148));
          } else {
@@ -143,7 +143,7 @@ public class UnionHandler {
          c.getPlayer().updateInfoQuest(18790 + presetID + 1, matrix.toString());
          int activeRaidersCount = slea.readInt();
          if (activeRaidersCount > MapleUnionData.getRankData(union.rank).getAttackerCount()) {
-            c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธฑเธ”เธชเธกเธฒเธเธดเธเธเธญเธเธเธณเธฅเธฑเธเน€เธเธดเธเธเธณเธเธงเธเธชเธนเธเธชเธธเธ”เนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+            c.getPlayer().dropMessage(1, "ไม่สามารถจѴสมาชิกกองกำลังเกินจำนวนสูงสุดได้ กรุณาลองใหม่อีกครั้ง");
             c.getPlayer().send(CWvsContext.enableActions(c.getPlayer()));
             c.getPlayer().send(CField.UIPacket.closeUI(1148));
          } else {

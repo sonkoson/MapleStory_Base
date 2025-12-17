@@ -139,7 +139,7 @@ public class Field_TownDefense extends Field {
          this.spawnIndex = 0;
          this.sendWave();
          if (this.wave > 1) {
-            this.player.send(CWvsContext.getScriptProgressMessage("WAVE๋ฅผ ๋ง์•๋์ต๋๋ค. ๋ค์ WAVE๋ฅผ ์ค€๋นํ•ด์ฃผ์ธ์”."));
+            this.player.send(CWvsContext.getScriptProgressMessage("Wave Defended. Please prepare for the next Wave."));
          }
 
          this.player.send(CField.environmentChange("defense/wave/" + this.wave, 19));
@@ -167,7 +167,7 @@ public class Field_TownDefense extends Field {
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
       this.player = player;
-      player.send(CField.startMapEffect("๋๋“ค์ด ๊ฒ๋ ์—์ด ์ฑ๋ฒฝ ์•์ ๋ง์์ ์ต๊ฒฉํ•๋”๊ตฐ! ๋ชจ์กฐ๋ฆฌ ํ•ด์น์๋ผ!", 5120159, true, 10));
+      player.send(CField.startMapEffect("They dare attack the town inside the walls! Wipe them all out!", 5120159, true, 10));
       this.sendLife();
       this.sendWave();
       RandomPortal portal = player.getRandomPortal();
@@ -204,7 +204,7 @@ public class Field_TownDefense extends Field {
    public void decLife() {
       if (this.life > 0) {
          this.life--;
-         this.player.send(CField.addPopupSay(9001059, 3000, this.player.getName() + ", ๋์ ์ฌ๋ฅ ์ค๋ ฅ์ด ์ด์ •๋๋ฐ–์— ์•๋๋?", ""));
+         this.player.send(CField.addPopupSay(9001059, 3000, this.player.getName() + ", Is this all your hunting skill amounts to?", ""));
          this.sendLife();
       }
 

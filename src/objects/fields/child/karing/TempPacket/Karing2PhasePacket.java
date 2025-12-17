@@ -20,7 +20,7 @@ public class Karing2PhasePacket {
             packet.writeInt(mob.getId());
             packet.writeInt(0);
             packet.encodePos4Byte(mob.getPosition());
-            packet.writeMapleAsciiString("์ฌํ์ ๋ชจ์๊นฝ์ด ํ•ฉ๋๋ค.");
+            packet.writeMapleAsciiString("사흉을 모시깽이 합니다.");
             break;
          case 3:
             packet.writeInt(3);

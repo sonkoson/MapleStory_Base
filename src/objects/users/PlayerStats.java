@@ -409,7 +409,7 @@ public class PlayerStats implements Serializable {
                this.mp = (int) (this.localmaxmp * 0.1);
                chra.updateSingleStat(MapleStat.HP, this.hp);
                chra.updateSingleStat(MapleStat.MP, this.mp);
-               chra.dropMessage(5, "เธเธธเธ“เธฃเธญเธ”เธเนเธเธเธฒเธเธเธงเธฒเธกเธ•เธฒเธขเธ”เนเธงเธขเธเธฅเธเธญเธเธชเธเธดเธฅ");
+               chra.dropMessage(5, "คุณรʹพ้นจากความตา´้วยผลของสกิล");
                chra.temporaryStatReset(SecondaryStatFlag.PreReviveOnce);
             } else {
                chra.playerDead(bmDecrementDC);
@@ -4623,7 +4623,7 @@ public class PlayerStats implements Serializable {
                               Skill skil = SkillFactory.getSkill(zzz);
                               if (skil != null && skil.canBeLearnedBy(chr.getJob())) {
                                  eq.setIncSkill(skil.getId());
-                                 chr.dropMessage(5, "เธชเธเธดเธฅเน€เธฅเน€เธงเธฅเธญเธฑเธ: " + skil.getName() + " +1");
+                                 chr.dropMessage(5, "สกิลเลเวลอัพ: " + skil.getName() + " +1");
                               }
                            }
                         }

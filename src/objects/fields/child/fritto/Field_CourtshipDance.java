@@ -44,7 +44,7 @@ public class Field_CourtshipDance extends Field {
             } else {
                if (!this.startGame) {
                   if (this.startGameTime == 0L) {
-                     this.player.send(CField.startMapEffect("๋ฌ๊ฑ€์ ํ”์น๋ ค๋ฉด ๋จผ์ € ๋ญ๋“ค์€ ์์—ฌ์•ผ ํ•ด! ์, ๋๋ฅผ ๋”ฐ๋ผ ๊ตฌ์• ์ ์ถค์ ์ถฐ!", 5120160, true, 10));
+                     this.player.send(CField.startMapEffect("To steal eggs, you must trick the chickens first! Come, dance the courtship dance with me!", 5120160, true, 10));
                      this.player.send(CField.environmentChange("PoloFritto/msg3", 20, 263));
                      this.startGameTime = System.currentTimeMillis() + 6000L;
                   }

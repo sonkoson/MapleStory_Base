@@ -1568,9 +1568,9 @@ public class CashShopHandler {
 
             c.getSession().writeAndFlush(CSPacket.showCouponRedeemedItem(itemz, mesos, maplePoints, c));
          } else if (info == null) {
-            c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเธนเธเธญเธเนเธกเนเธ–เธนเธเธ•เนเธญเธ");
+            c.getPlayer().dropMessage(1, "รหัสคูปองไม่ถูกต้อง");
          } else {
-            c.getPlayer().dropMessage(1, "เธฃเธซเธฑเธชเธเธนเธเธญเธเธเธตเนเธ–เธนเธเนเธเนเธเธฒเธเนเธเนเธฅเนเธง");
+            c.getPlayer().dropMessage(1, "รหัสคูปองนี้ถูกใช้งานไปแล้ว");
          }
       }
    }
@@ -1732,7 +1732,7 @@ public class CashShopHandler {
                   || itemID == 5190000
                   || itemID == 5190002
                   || itemID == 5062010) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
@@ -1765,21 +1765,21 @@ public class CashShopHandler {
             }
 
             if (!check) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
 
             for (int i : GameConstants.cashBlock) {
                if (item.getId() == i) {
-                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                   doCSPackets(c);
                   return;
                }
             }
 
             if (item.getId() >= 1009000 && item.getId() <= 1009016 || item.getId() == 1114000) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
@@ -1876,7 +1876,7 @@ public class CashShopHandler {
                   chr.getInventory(t).addSlot((byte) incCount);
                   chr.send(CSPacket.incSlotCountDone((byte) type, chr.getInventory(t).getSlotLimit()));
                } else {
-                  chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธเนเธญเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+                  chr.dropMessage(1, "ไม่สามารถเพิ่มช่องได้อีกต่อไป");
                }
             }
          } else if (action == 7) {
@@ -1895,11 +1895,11 @@ public class CashShopHandler {
                   chr.getStorage().increaseSlots((byte) incSlot);
                   chr.send(CSPacket.incTrunkSlotCountDone((short) chr.getStorage().getSlots()));
                } else {
-                  chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธเนเธญเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+                  chr.dropMessage(1, "ไม่สามารถเพิ่มช่องได้อีกต่อไป");
                }
             }
          } else if (action == 8) {
-            chr.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเธเนเธญเธเธ•เธฑเธงเธฅเธฐเธเธฃเน€เธเธดเนเธกเนเธ Cash Shop เนเธ”เน");
+            chr.dropMessage(1, "ไม่สามารถซื้อช่องตัวละครเพิ่มใน Cash Shop ได้");
          } else if (action == 9) {
             int toCharge = slea.readByte() + 1;
             int sn = slea.readInt();
@@ -1913,7 +1913,7 @@ public class CashShopHandler {
             MapleQuestStatus marr = c.getPlayer().getQuestNoAdd(MapleQuest.getInstance(122700));
             if (marr != null && marr.getCustomData() != null
                   && Long.parseLong(marr.getCustomData()) >= System.currentTimeMillis()) {
-               chr.dropMessage(1, "เธเธขเธฒเธขเธเนเธญเธเธชเธฃเนเธญเธขเธเธญเธญเธขเธนเนเนเธฅเนเธง");
+               chr.dropMessage(1, "ขยายช่องสร้อยคออยู่แล้ว");
                doCSPackets(c);
             } else {
                long days = 0L;
@@ -1968,13 +1968,13 @@ public class CashShopHandler {
                if (itemx.getPet() != null) {
                   if (itemx.getPet().getWonderGrade() > 0
                         && itemx.getExpiration() - System.currentTimeMillis() < 864000000L) {
-                     c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธขเนเธฒเธขเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
+                     c.getPlayer().dropMessage(1, "ไม่สามารถย้ายไอเทมนี้ได้");
                      doCSPackets(c);
                      return;
                   }
 
                   if (itemx.getItemId() == 5002239) {
-                     c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธขเนเธฒเธขเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
+                     c.getPlayer().dropMessage(1, "ไม่สามารถย้ายไอเทมนี้ได้");
                      doCSPackets(c);
                      return;
                   }
@@ -2085,7 +2085,7 @@ public class CashShopHandler {
             CashShop csinv = chr.getCashInventory();
             Item itemxx = csinv.findByCashId((int) uniqueid);
             if (itemxx == null) {
-               c.getPlayer().dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”! เนเธกเนเธเธเนเธญเน€เธ—เธก Cash เธเธตเน เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญ GM");
+               c.getPlayer().dropMessage(1, "เกิดข้อผิดพลาด! ไม่พบไอเทม Cash นี้ กรุณาติดต่อ GM");
                c.getSession().writeAndFlush(CSPacket.showNXMapleTokens(chr));
                return;
             }
@@ -2111,18 +2111,18 @@ public class CashShopHandler {
                }
 
                if (chr.getCashInventory() == null || itemxx == null) {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเธ“เธฐเธเธทเนเธญ Cash Item!"));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เกิดข้อผิดพลาดขณะซื้́Cash Item!"));
                   return;
                }
 
                if (tem == null) {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เธเธ“เธฐเธเธทเนเธญ Cash Item!"));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เกิดข้อผิดพลาดขณะซื้́Cash Item!"));
                   return;
                }
 
                short pos = MapleInventoryManipulator.addbyItem(c, tem, true);
                if (pos == -1) {
-                  c.getPlayer().dropMessage(1, "เธเนเธญเธเนเธเธเนเธญเธเน€เธเนเธเธเธญเธเนเธกเนเน€เธเธตเธขเธเธเธญ");
+                  c.getPlayer().dropMessage(1, "ช่องในช่องเก็บของไม่เพียงพอ");
                   c.getSession().writeAndFlush(CSPacket.showNXMapleTokens(chr));
                   return;
                }
@@ -2130,7 +2130,7 @@ public class CashShopHandler {
                c.getPlayer().getCashInventory().removeFromInventory(itemxx);
                c.getSession().writeAndFlush(CSPacket.sendRandomBox(uniqueid, tem, pos));
             } else {
-               c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฅเนเธญเธเธ—เธตเนเนเธกเนเธฃเธนเนเธเธฑเธ"));
+               c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "กล่องที่ไม่รู้จัก"));
             }
          } else {
             System.out.println("New Action: " + action + " Remaining: " + slea.toString());
@@ -2284,7 +2284,7 @@ public class CashShopHandler {
                   || itemIDx == 5191004
                   || itemIDx == 5190000
                   || itemIDx == 5190002) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
@@ -2317,21 +2317,21 @@ public class CashShopHandler {
             }
 
             if (!check) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
 
             for (int ixx : GameConstants.cashBlock) {
                if (itemxxx.getId() == ixx) {
-                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                   doCSPackets(c);
                   return;
                }
             }
 
             if (itemxxx.getId() >= 1009000 && itemxxx.getId() <= 1009016 || itemxxx.getId() == 1114000) {
-               c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ Cash Shop เนเธ”เน");
+               c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ใน Cash Shop ได้");
                doCSPackets(c);
                return;
             }
@@ -2391,9 +2391,9 @@ public class CashShopHandler {
    public static void NxCharge(MapleClient c) {
       if (DBConfig.isGanglim) {
          c.getSession().writeAndFlush(
-               CWvsContext.serverNotice(1, "เธชเธณเธซเธฃเธฑเธเธเธฒเธฃเน€เธ•เธดเธกเธเธญเธขเธ—เน\r\nเธเธฃเธธเธ“เธฒเนเธเน [เธฃเนเธฒเธเธเนเธฒ] - [เธฃเนเธฒเธเธเธญเธเนเธเน] Maple Point"));
+               CWvsContext.serverNotice(1, "สำหรับการเติมพอ·์\r\nกรุณาใช้ [ร้านค้า] - [ร้านของใช้] Maple Point"));
       } else {
-         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฑเธเธเนเธเธฑเนเธเธเธตเนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธซเนเธเธฃเธดเธเธฒเธฃ"));
+         c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ฟังก์ชั่นนี้ยังไม่เปิดให้บริการ"));
       }
 
       c.getSession().writeAndFlush(CSPacket.sendCSFail(0));

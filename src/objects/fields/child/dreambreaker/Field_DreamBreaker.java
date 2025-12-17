@@ -207,7 +207,7 @@ public class Field_DreamBreaker extends Field {
                      gainPoint = this.stage - this.stage % 10;
                   }
 
-                  this.player.send(dreamBreakerMsg("๋“๋ฆผํฌ์ธํธ " + gainPoint + " ํ๋“!"));
+                  this.player.send(dreamBreakerMsg("드림포인트 " + gainPoint + " 획득!"));
                   this.setDreamPoint(this.getDreamPoint() + gainPoint);
                   this.player.updateOneInfo(15901, "dream", String.valueOf(this.getDreamPoint()));
                   this.player.updateOneInfo(15901, "clearTime", String.valueOf(time));
@@ -366,7 +366,7 @@ public class Field_DreamBreaker extends Field {
 
       player.send(CField.MapEff(clear ? "Map/Effect3.img/hungryMuto/Clear" : "Map/Effect2.img/event/gameover"));
       if (clear) {
-         player.send(dreamBreakerMsg(this.stage - 1 + "์คํ…์ด์ง€ ํด๋ฆฌ์–ด!"));
+         player.send(dreamBreakerMsg(this.stage - 1 + "스테이지 클리어!"));
       }
 
       this.resetFully(false);

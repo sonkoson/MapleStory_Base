@@ -1745,7 +1745,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2006,7 +2006,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2087,7 +2087,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2183,7 +2183,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2209,7 +2209,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2242,7 +2242,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2328,15 +2328,15 @@ public class MapleItemInformationProvider {
                            return null;
                         }
 
-                        chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                        chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                      }
 
                      failed = true;
                   } else {
                      int[] flags = new int[]{1, 2, 4, 8, 16, 32, 64, 256, 512, 4096, 8192};
                      String itemName = getInstance().getName(scrollId.getItemId());
-                     boolean incredible = itemName.contains("๋€๋ผ์ด");
-                     boolean goodness = itemName.contains("๊ธ์ •์");
+                     boolean incredible = itemName.contains("Incredible") || itemName.contains("Incredible");
+                     boolean goodness = itemName.contains("Chaos of Goodness") || itemName.contains("Chaos of Goodness") || itemName.contains("Goodness");
                      boolean incredibleGoodnessScroll = incredible && goodness;
                      boolean goodnessScroll = !incredible && goodness;
                      boolean incredibleScroll = incredible && !goodness;
@@ -2401,7 +2401,7 @@ public class MapleItemInformationProvider {
                               return null;
                            }
 
-                           chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                           chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                         }
 
                         failed = true;
@@ -2417,7 +2417,7 @@ public class MapleItemInformationProvider {
                                           return null;
                                        }
 
-                                       chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                                       chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                                     }
 
                                     failed = true;
@@ -2569,7 +2569,7 @@ public class MapleItemInformationProvider {
                                     return null;
                                  }
 
-                                 chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                                 chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                               }
 
                               failed = true;
@@ -2677,7 +2677,7 @@ public class MapleItemInformationProvider {
                         MapleData info = IData.getChildByPath("info");
                         int levelx = MapleDataTool.getInt("reqLevel", info, 0);
                         if (levelx > 200) {
-                           chr.dropMessage(6, "เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธ”เนเธเธฑเธเธญเธธเธเธเธฃเธ“เนเน€เธฅเน€เธงเธฅ 150 เธซเธฃเธทเธญเธ•เนเธณเธเธงเนเธฒเน€เธ—เนเธฒเธเธฑเนเธ");
+                           chr.dropMessage(6, "สามารถใช้ได้กับอุปกรณ์เลเวล 150 หรือต่ำกว่าเท่านั้น");
                         } else {
                            int chane;
                            switch (nEquip.getCHUC()) {
@@ -2730,7 +2730,7 @@ public class MapleItemInformationProvider {
                                  return null;
                               }
 
-                              chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                              chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                            } else {
                               int ordinary;
                               if (GameConstants.isMagicWeapon(nEquip.getItemId())) {
@@ -2951,7 +2951,7 @@ public class MapleItemInformationProvider {
                                  return null;
                               }
 
-                              chr.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเธ–เธนเธเธ—เธณเธฅเธฒเธขเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+                              chr.dropMessage(5, "ไอเทมไม่ถูกทำลายเนื่องจากผลของ Scroll");
                            }
 
                            failed = true;
@@ -2998,7 +2998,7 @@ public class MapleItemInformationProvider {
             || scrollId.getItemId() == 2643133
             || scrollId.getItemId() == 2643131) {
             if ((ItemFlag.SAFETY_SCROLLED.check(nEquip.getFlag()) || ItemFlag.RETURN_SCROLLED.check(nEquip.getFlag())) && failed) {
-               chr.dropMessage(5, "เธเธณเธเธงเธเธญเธฑเธเน€เธเธฃเธ”เนเธกเนเธ–เธนเธเธซเธฑเธเธญเธญเธเน€เธเธทเนเธญเธเธเธฒเธเธเธฅเธเธญเธ Scroll");
+               chr.dropMessage(5, "จำนวนอัพเกรดไม่ถูกหักออกเนื่องจากผลของ Scroll");
             } else {
                nEquip.setUpgradeSlots((byte)(nEquip.getUpgradeSlots() - this.getUpgradeScrollUseSlot(scrollId.getItemId())));
                if (nZeroEquip != null) {
@@ -3179,7 +3179,7 @@ public class MapleItemInformationProvider {
       if (player.getStat().itemUpgradeBonusR > 0 && !GameConstants.isEquipScroll(itemId)) {
          success = Math.min(100, success + player.getStat().itemUpgradeBonusR);
          if (player.isGM()) {
-            System.out.println(player.getStat().itemUpgradeBonusR + " ๋งํผ ์ฆ๊ฐ€ํ•์—ฌ " + success + "%๋ก ์ ์ฉ");
+            System.out.println(player.getStat().itemUpgradeBonusR + " increased by " + success + "%로 ์ 용");
          }
       }
 
@@ -3262,8 +3262,8 @@ public class MapleItemInformationProvider {
             default:
                if (equip == null) {
                   System.err.println("[Error] Null equipment item value while calculating scroll success rate." + itemId);
-                  player.dropMessage(5, "[Error] เธเธณเธเธงเธ“เนเธญเธเธฒเธชเธชเธณเน€เธฃเนเธเธเธญเธ Scroll เธฅเนเธกเน€เธซเธฅเธง");
-                  player.gainItem(itemId, 1, false, -1L, "์ฃผ๋ฌธ์ ์ฑ๊ณตํ•๋ฅ  ์–ป๊ธฐ ์คํจ๋ก ์–ป์€ ์ฃผ๋ฌธ์");
+                  player.dropMessage(5, "[Error] คำนวณโอกาสสำเร็จของ Scroll ล้มเหลว");
+                  player.gainItem(itemId, 1, false, -1L, "Scroll returned due to calculation error");
                   player.getClient().getSession().writeAndFlush(CWvsContext.enableActions(player));
                   return 0;
                } else if (this.successCache.containsKey(itemId)) {
@@ -3272,8 +3272,8 @@ public class MapleItemInformationProvider {
                   MapleData item = this.getItemData(itemId);
                   if (item == null) {
                      System.err.println("[Error] Null scroll data value while calculating scroll success rate." + itemId);
-                     player.dropMessage(5, "[Error] เธเธณเธเธงเธ“เนเธญเธเธฒเธชเธชเธณเน€เธฃเนเธเธเธญเธ Scroll เธฅเนเธกเน€เธซเธฅเธง");
-                     player.gainItem(itemId, 1, false, -1L, "์ฃผ๋ฌธ์ ์ฑ๊ณตํ•๋ฅ  ์–ป๊ธฐ ์คํจ๋ก ์–ป์€ ์ฃผ๋ฌธ์");
+                     player.dropMessage(5, "[Error] คำนวณโอกาสสำเร็จของ Scroll ล้มเหลว");
+                     player.gainItem(itemId, 1, false, -1L, "Scroll returned due to calculation error");
                      player.getClient().getSession().writeAndFlush(CWvsContext.enableActions(player));
                      return 0;
                   } else {

@@ -17,7 +17,7 @@ public class MapleCaptchaWordRenderer implements WordRenderer {
    private static final Color[] colors = new Color[]{
       Color.BLACK, Color.BLUE, Color.MAGENTA, Color.RED, new Color(97, 23, 73), new Color(127, 45, 25), new Color(75, 138, 8)
    };
-   private static final Font font = new Font("๊ถ์์ฒด", 1, 30);
+   private static final Font font = new Font("궁서체", 1, 30);
    private static final Random rand = new Random();
 
    @Override

@@ -1,5 +1,9 @@
 package objects.quest;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import constants.GameConstants;
 import database.DBConfig;
 import database.DBConnection;
@@ -8,7 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -61,8 +65,8 @@ public class MapleQuest implements Serializable {
    }
 
    private static MapleQuest loadQuest(
-      ResultSet rs, PreparedStatement psr, PreparedStatement psa, PreparedStatement pss, PreparedStatement psq, PreparedStatement psi, PreparedStatement psp
-   ) throws SQLException {
+         ResultSet rs, PreparedStatement psr, PreparedStatement psa, PreparedStatement pss, PreparedStatement psq,
+         PreparedStatement psi, PreparedStatement psp) throws SQLException {
       MapleQuest ret = new MapleQuest(rs.getInt("questid"));
       ret.name = rs.getString("name");
       ret.autoStart = rs.getInt("autoStart") > 0;
@@ -99,7 +103,8 @@ public class MapleQuest implements Serializable {
             String intstoreSecond = rse.getString("intStoresSecond").replace(" ", "");
 
             for (int i = 0; i < intstoreFirst.split(",").length; i++) {
-               ret.requireItems.add(new Pair<>(Integer.parseInt(intstoreFirst.split(",")[i]), Integer.parseInt(intstoreSecond.split(",")[i])));
+               ret.requireItems.add(new Pair<>(Integer.parseInt(intstoreFirst.split(",")[i]),
+                     Integer.parseInt(intstoreSecond.split(",")[i])));
             }
          }
 
@@ -128,10 +133,8 @@ public class MapleQuest implements Serializable {
       rse.close();
       psp.setInt(1, ret.id);
 
-      for (rse = psp.executeQuery();
-         rse.next();
-         ret.partyQuestInfo.get(rse.getString("rank")).add(new Pair<>(rse.getString("mode"), new Pair<>(rse.getString("property"), rse.getInt("value"))))
-      ) {
+      for (rse = psp.executeQuery(); rse.next(); ret.partyQuestInfo.get(rse.getString("rank"))
+            .add(new Pair<>(rse.getString("mode"), new Pair<>(rse.getString("property"), rse.getInt("value"))))) {
          if (!ret.partyQuestInfo.containsKey(rse.getString("rank"))) {
             ret.partyQuestInfo.put(rse.getString("rank"), new ArrayList<>());
          }
@@ -142,18 +145,19 @@ public class MapleQuest implements Serializable {
    }
 
    public static void loadModifiedQuestTime() {
-      Table table = Properties.loadTable(DBConfig.isGanglim ? "data/Ganglim/quest" : "data/Jin/quest", "ModifiedQuestTime.data");
+      Table table = Properties.loadTable(DBConfig.isGanglim ? "data/Ganglim/quest" : "data/Jin/quest",
+            "ModifiedQuestTime.data");
       int count = 0;
       modifiedQuestTimes.clear();
 
       for (Table children : table.list()) {
          String start = children.getProperty("Start");
          String end = children.getProperty("End");
-         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd/HH/mm");
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd/HH/mm");
 
          try {
-            long startTime = sdf.parse(start).getTime();
-            long endTime = sdf.parse(end).getTime();
+            long startTime = LocalDateTime.parse(start, formatter).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+            long endTime = LocalDateTime.parse(end, formatter).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
             modifiedQuestTimes.add(new ModifiedQuestTime(Integer.parseInt(children.getName()), startTime, endTime));
             count++;
          } catch (Exception var11) {
@@ -327,7 +331,8 @@ public class MapleQuest implements Serializable {
    }
 
    public void complete(MapleCharacter c, int npc, Integer selection) {
-      if (c.getMap() != null && (this.autoPreComplete || this.checkNPCOnMap(c, npc) || this.autoComplete) && this.canComplete(c, npc)) {
+      if (c.getMap() != null && (this.autoPreComplete || this.checkNPCOnMap(c, npc) || this.autoComplete)
+            && this.canComplete(c, npc)) {
          for (MapleQuestAction a : this.completeActs) {
             if (!a.checkEnd(c, selection)) {
                return;
@@ -361,7 +366,7 @@ public class MapleQuest implements Serializable {
    }
 
    public void forceStart(MapleCharacter c, int npc, String customData) {
-      MapleQuestStatus newStatus = new MapleQuestStatus(this, (byte)1, npc);
+      MapleQuestStatus newStatus = new MapleQuestStatus(this, (byte) 1, npc);
       newStatus.setForfeited(c.getQuest(this).getForfeited());
       newStatus.setCompletionTime(c.getQuest(this).getCompletionTime());
       newStatus.setCustomData(customData);
@@ -456,7 +461,7 @@ public class MapleQuest implements Serializable {
          AchievementFactory.checkQuest(c, this.getId(), 2);
       }
 
-      MapleQuestStatus newStatus = new MapleQuestStatus(this, (byte)2, npc);
+      MapleQuestStatus newStatus = new MapleQuestStatus(this, (byte) 2, npc);
       newStatus.setForfeited(c.getQuest(this).getForfeited());
       NormalEffect eff = new NormalEffect(c.getId(), EffectHeader.QuestClear);
       c.getClient().getSession().writeAndFlush(eff.encodeForLocal());
@@ -488,10 +493,10 @@ public class MapleQuest implements Serializable {
 
    private boolean checkNPCOnMap(MapleCharacter player, int npcid) {
       return GameConstants.isEvan(player.getJob()) && npcid == 1013000
-         || npcid == 9000040
-         || npcid == 9000066
-         || player.getMap() != null && player.getMap().containsNPC(npcid)
-         || npcid == 0;
+            || npcid == 9000040
+            || npcid == 9000066
+            || player.getMap() != null && player.getMap().containsNPC(npcid)
+            || npcid == 0;
    }
 
    public int getMedalItem() {
@@ -524,52 +529,65 @@ public class MapleQuest implements Serializable {
 
    public static enum MedalQuest {
       Beginner(
-         29005,
-         29015,
-         15,
-         new int[]{
-            104000000,
-            104010001,
-            100000006,
-            104020000,
-            100000000,
-            100010000,
-            100040000,
-            100040100,
-            101010103,
-            101020000,
-            101000000,
-            102000000,
-            101030104,
-            101030406,
-            102020300,
-            103000000,
-            102050000,
-            103010001,
-            103030200,
-            110000000
-         },
-         "์ด๋ณด"
-      ),
+            29005,
+            29015,
+            15,
+            new int[] {
+                  104000000,
+                  104010001,
+                  100000006,
+                  104020000,
+                  100000000,
+                  100010000,
+                  100040000,
+                  100040100,
+                  101010103,
+                  101020000,
+                  101000000,
+                  102000000,
+                  101030104,
+                  101030406,
+                  102020300,
+                  103000000,
+                  102050000,
+                  103010001,
+                  103030200,
+                  110000000
+            },
+            "Beginner"),
       ElNath(
-         29006, 29012, 50, new int[]{200000000, 200010100, 200010300, 200080000, 200080100, 211000000, 211030000, 211040300, 211041200, 211041800}, "์—๋์ค ์ฐ๋งฅ"
-      ),
+            29006, 29012, 50,
+            new int[] { 200000000, 200010100, 200010300, 200080000, 200080100, 211000000, 211030000, 211040300,
+                  211041200, 211041800 },
+            "El Nath Mountains"),
       LudusLake(
-         29007, 29012, 40, new int[]{222000000, 222010400, 222020000, 220000000, 220020300, 220040200, 221020701, 221000000, 221030600, 221040400}, "๋ฃจ๋”์ค ํธ์"
-      ),
+            29007, 29012, 40,
+            new int[] { 222000000, 222010400, 222020000, 220000000, 220020300, 220040200, 221020701, 221000000,
+                  221030600, 221040400 },
+            "Ludus Lake"),
       Underwater(
-         29008, 29012, 40, new int[]{230000000, 230010400, 230010200, 230010201, 230020000, 230020201, 230030100, 230040000, 230040200, 230040400}, "ํ•ด์ €"
-      ),
-      MuLung(29009, 29012, 50, new int[]{251000000, 251010200, 251010402, 251010500, 250010500, 250010504, 250000000, 250010300, 250010304, 250020300}, "๋ฌด๋ฆ๋์"),
+            29008, 29012, 40,
+            new int[] { 230000000, 230010400, 230010200, 230010201, 230020000, 230020201, 230030100, 230040000,
+                  230040200, 230040400 },
+            "Aquaroad"),
+      MuLung(29009, 29012, 50,
+            new int[] { 251000000, 251010200, 251010402, 251010500, 250010500, 250010504, 250000000, 250010300,
+                  250010304, 250020300 },
+            "Mu Lung Garden"),
       NihalDesert(
-         29010, 29012, 70, new int[]{261030000, 261020401, 261020000, 261010100, 261000000, 260020700, 260020300, 260000000, 260010600, 260010300}, "๋ํ• ์ฌ๋ง"
-      ),
+            29010, 29012, 70,
+            new int[] { 261030000, 261020401, 261020000, 261010100, 261000000, 260020700, 260020300, 260000000,
+                  260010600, 260010300 },
+            "Nihal Desert"),
       MinarForest(
-         29011, 29012, 70, new int[]{240000000, 240010200, 240010800, 240020401, 240020101, 240030000, 240040400, 240040511, 240040521, 240050000}, "๋ฏธ๋๋ฅด์ฒ"
-      ),
+            29011, 29012, 70,
+            new int[] { 240000000, 240010200, 240010800, 240020401, 240020101, 240030000, 240040400, 240040511,
+                  240040521, 240050000 },
+            "Minar Forest"),
       Sleepywood(
-         29014, 29015, 50, new int[]{105040300, 105070001, 105040305, 105090200, 105090300, 105090301, 105090312, 105090500, 105090900, 105080000}, "์ฌ๋ฆฌํ”ผ์ฐ๋“"
-      );
+            29014, 29015, 50, new int[] { 105040300, 105070001, 105040305, 105090200, 105090300, 105090301, 105090312,
+                  105090500, 105090900, 105080000 },
+            "Sleepywood");
 
       public int questid;
       public int level;

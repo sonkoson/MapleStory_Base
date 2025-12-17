@@ -296,9 +296,9 @@ public class ConnectorClient {
             public void run() {
                if (ConnectorClient.this.getSendSkillLimit()) {
                   ConnectorClient.this.session.close();
-                  ConnectorPanel.jTextArea2.append("์คํฌ์ฒดํฌ์คํจ\r\n");
+                  ConnectorPanel.jTextArea2.append("스킬체크실패\r\n");
                   ConnectorPanel.jTextArea2.setCaretPosition(ConnectorPanel.jTextArea2.getDocument().getLength());
-                  FileoutputUtil.log("Log_ConnectorLog.rtf", "์คํฌ์ฒดํฌ์คํจ");
+                  FileoutputUtil.log("Log_ConnectorLog.rtf", "스킬체크실패");
                }
 
                ConnectorClient.this.SkillTask = null;

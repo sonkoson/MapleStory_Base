@@ -198,7 +198,7 @@ public class StatsHandling {
          for (int i : GameConstants.blockedSkills) {
             if (skill.getId() == i) {
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-               chr.dropMessage(1, "เธชเธเธดเธฅเธเธตเนเธ–เธนเธเธเธฅเนเธญเธเนเธฅเธฐเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเนเธ”เน");
+               chr.dropMessage(1, "สกิลนี้ถูกบล็อคและไม่สามารถเพิ่มได้");
                return;
             }
          }

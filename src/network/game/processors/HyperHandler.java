@@ -22,16 +22,16 @@ public class HyperHandler {
       Skill skill = SkillFactory.getSkill(skillID);
       c.getSession().writeAndFlush(CWvsContext.enableActions(player));
       if (skill == null) {
-         player.dropMessage(1, "เธเนเธญเธกเธนเธฅเธชเธเธดเธฅเนเธกเนเธ–เธนเธเธ•เนเธญเธ");
+         player.dropMessage(1, "ข้อมูลสกิลไม่ถูกต้อง");
       } else if (player.getLevel() < 140) {
-         player.dropMessage(1, "เน€เธฅเน€เธงเธฅเธขเธฑเธเนเธกเนเธ–เธถเธเธเธณเธซเธเธ”เนเธเธเธฒเธฃเธ•เธฑเนเธเธเนเธฒ Hyper Stat");
+         player.dropMessage(1, "เลเวลยังไม่ถึงกำหนดในกาõั้งค่ҁHyper Stat");
       } else if (hStat != null && hStat.currentIndex == index && hStat.getStat() != null) {
          int skillLV = hStat.getStat().getSkillLevel(skillID);
          if (skillLV >= HyperStat.getMaxHyperStatLevel(skillID)) {
-            player.dropMessage(1, "เธชเน€เธ•เธ•เธฑเธชเธเธตเนเธ–เธถเธเน€เธฅเน€เธงเธฅเธชเธนเธเธชเธธเธ”เนเธฅเนเธง");
+            player.dropMessage(1, "ส൵ัสนี้ถึงเลเวลสูงสุดแล้ว");
          } else if (hStat.getStat().getRemainStatPoint() < HyperStat.getNeedHyperStatPoint(skillLV + 1)) {
             updateSkills(player, 0);
-            player.dropMessage(1, "Hyper Stat Points เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฑเนเธเธ–เธฑเธ”เนเธ");
+            player.dropMessage(1, "Hyper Stat Points ไม่เพียงพอสำหรับขั้นถѴไป");
          } else {
             hStat.getStat().setSkillLevel(skillID, skillLV + 1);
             updateSkills(player, skillID);
@@ -39,7 +39,7 @@ public class HyperHandler {
             player.getStat().recalcLocalStats(player);
          }
       } else {
-         player.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Hyper Stat");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูลHyper Stat");
       }
    }
 
@@ -50,14 +50,14 @@ public class HyperHandler {
       HyperStat hStat = player.getHyperStat();
       c.getSession().writeAndFlush(CWvsContext.enableActions(player));
       if (player.getMeso() < 2000000L) {
-         player.dropMessage(1, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญ");
+         player.dropMessage(1, "Meso ไม่เพียงพอ");
       } else if (hStat != null && hStat.currentIndex != index && hStat.getStat() != null) {
          player.gainMeso(-2000000L, true);
          hStat.currentIndex = index;
          updateSkills(player, 0);
          player.getStat().recalcLocalStats(player);
       } else {
-         player.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Hyper Stat");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูลHyper Stat");
       }
    }
 
@@ -68,18 +68,18 @@ public class HyperHandler {
       HyperStat hStat = player.getHyperStat();
       c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       if (player.getMeso() < 10000000L) {
-         player.dropMessage(1, "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธฃเธตเน€เธเนเธ• Hyper Stat");
+         player.dropMessage(1, "Meso ไม่เพียงพอสำหรับรีเซ็ต Hyper Stat");
       } else if (player.getLevel() < 140) {
-         player.dropMessage(1, "เน€เธฅเน€เธงเธฅเธขเธฑเธเนเธกเนเธ–เธถเธเธเธณเธซเธเธ”เนเธเธเธฒเธฃเธ•เธฑเนเธเธเนเธฒ Hyper Stat");
+         player.dropMessage(1, "เลเวลยังไม่ถึงกำหนดในกาõั้งค่ҁHyper Stat");
       } else if (hStat != null && hStat.currentIndex == index && hStat.getStat() != null) {
          player.gainMeso(-10000000L, true);
          hStat.getStat().resetHyperStats();
          updateSkills(player, 0);
-         player.dropMessage(1, "เธฃเธตเน€เธเนเธ• Hyper Stat เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
+         player.dropMessage(1, "รีเซ็ต Hyper Stat เรียบร้อยแล้ว");
          player.setChangedSkills();
          player.getStat().recalcLocalStats(player);
       } else {
-         player.dropMessage(1, "เน€เธเธดเธ”เธเนเธญเธเธดเธ”เธเธฅเธฒเธ”เนเธเธเธฒเธฃเนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Hyper Stat");
+         player.dropMessage(1, "เกิดข้อผิดพลาดในการโหลดข้อมูลHyper Stat");
       }
    }
 

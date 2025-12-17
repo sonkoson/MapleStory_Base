@@ -79,7 +79,7 @@ public class Field_StormwingArea extends Field {
       super.onEnter(player);
       this.player = player;
       player.send(CField.getClock(30));
-      player.send(CField.startMapEffect("์ฌ๋น ๋ฅธ ํฉ๊ธ๋น ๋…€์์ด ์คํฐ์์ผ์ธ. ๊ทธ ๋…€์์ ์ก์ผ๋ฉด ๋จธ๋ฌผ ์ ์๋” ์๊ฐ์ด ๋์–ด๋์ง€!", 5120159, true, 5));
+      player.send(CField.startMapEffect("That quick golden one is Stormwing. Catching him extends your stay!", 5120159, true, 5));
       RandomPortal portal = player.getRandomPortal();
       if (portal != null) {
          MapleMonster mob = MapleLifeFactory.getMonster(9832010);

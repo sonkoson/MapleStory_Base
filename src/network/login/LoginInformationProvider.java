@@ -78,34 +78,34 @@ public class LoginInformationProvider {
                for (MapleData da : d) {
                   String keyName = MapleDataTool.getString(da.getChildByPath("name"), "");
                   switch (keyName) {
-                     case "๊ถ๋ชจ":
+                     case "궁모":
                         keyName = "UltimateExplorer";
                         break;
-                     case "๋ชจ์":
+                     case "모자":
                         keyName = "Hat";
                         break;
-                     case "์์":
+                     case "상의":
                         keyName = "Top";
                         break;
-                     case "์์":
+                     case "의상":
                         keyName = "Overall";
                         break;
-                     case "ํ•์":
+                     case "하의":
                         keyName = "Bottom";
                         break;
-                     case "๋งํ ":
+                     case "망토":
                         keyName = "Cape";
                         break;
-                     case "์ ๋ฐ":
+                     case "신발":
                         keyName = "Shoes";
                         break;
-                     case "๋ฌด๊ธฐ":
+                     case "무기":
                         keyName = "Weapon";
                         break;
-                     case "์–ผ๊ตด":
+                     case "얼굴":
                         keyName = "Face";
                         break;
-                     case "ํ—ค์–ด":
+                     case "헤어":
                         keyName = "Hair";
                         break;
                   }

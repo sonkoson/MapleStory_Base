@@ -67,7 +67,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("เธ—เธธเธเธชเธดเนเธเธฃเธญเธเธเนเธฒเธเธเธณเธฅเธฑเธเธชเธนเธเธชเธฅเธฒเธขเนเธเนเธเธเธฃเธดเธเธ•เธฒเธ”เนเธงเธขเธเธฅเธฑเธเธญเธฑเธเธ—เนเธงเธกเธ—เนเธ", 7000);
+         this.sendBlackMageNotice("ทุกสิ่งรอบข้างกำลังสูญสลายไปในพริบตาด้วยพลังอันท่วมท้น", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -165,7 +165,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
 
          if (this.nextNoticeWeldingCreationTime != 0L && this.nextNoticeWeldingCreationTime <= System.currentTimeMillis()) {
             this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), this.weldingCreationType.getType(), true));
-            this.sendBlackMageNotice("Black Mage เนเธเนเธเธฅเธฑเธเนเธซเนเธเธเธฒเธฃเธชเธฃเนเธฒเธเนเธฅเธฐเธ—เธณเธฅเธฒเธขเธฅเนเธฒเธ เธ•เนเธญเธเน€เธฅเธทเธญเธเธซเธฅเธเธซเธฅเธตเธเนเธเธ—เธฒเธเธเธเธซเธฃเธทเธญเธฅเนเธฒเธ", 4000);
+            this.sendBlackMageNotice("Black Mage ใช้พลังแห่งการสร้างและทำลายล้าง ต้องเลือกหลบหลีกไปทางบนหรือล่าง", 4000);
             if (this.weldingCreationType == Field_BlackMageBattlePhase3.WeldingCreationType.Creation) {
                this.nextWeldingCreationTime = System.currentTimeMillis() + 3000L;
             } else if (this.weldingCreationType == Field_BlackMageBattlePhase3.WeldingCreationType.Destruction) {
@@ -502,7 +502,7 @@ public class Field_BlackMageBattlePhase3 extends Field_BlackMage {
       }
 
       if (count < 8) {
-         this.sendBlackMageNotice("เธ—เธนเธ•เธชเธงเธฃเธฃเธเนเนเธซเนเธเธเธฒเธฃเธ—เธณเธฅเธฒเธขเธฅเนเธฒเธเธเธณเน€เธเธดเธ”เธเธถเนเธเธเธฒเธเธเธงเธฒเธกเธงเนเธฒเธเน€เธเธฅเนเธฒ", 3000);
+         this.sendBlackMageNotice("ทูตสวรรค์แห่งการทำลายล้างกำเนิดขึ้นจากความว่างเปล่า", 3000);
          int size = Randomizer.rand(1, 3);
 
          for (int i = 0; i < size; i++) {

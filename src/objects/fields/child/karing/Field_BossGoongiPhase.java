@@ -66,7 +66,7 @@ public class Field_BossGoongiPhase extends Field_BossKaring {
    @Override
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
-      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "เน€เธเธทเนเธญเนเธฅเนเธ•เธฒเธก Karing เธ•เนเธญเธเธเธณเธเธฑเธ” 4 เธชเธฑเธ•เธงเนเธฃเนเธฒเธขเธ—เธตเนเธเธธเธเธฃเธธเธเนเธ•เนเธฅเธฐเธคเธ”เธนเธเธฒเธฅเธเธญเธ Shangri-La"));
+      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "เพื่อไล่ตาม Karing ต้องกำจัด 4 สัตว์ร้ายที่บุกรุกแต่ละฤดูกาลของ Shangri-La"));
    }
 
    @Override
@@ -113,14 +113,14 @@ public class Field_BossGoongiPhase extends Field_BossKaring {
       MapleMonster mob = c.getPlayer().getMap().getMonsterByOid(objectID);
       KaringUnkPacket(mob, mob.getPosition());
       new PacketEncoder();
-      c.getPlayer().dropMessage(-8, "เธชเนเธเนเธเนเธเน€เธเนเธ• Type 3 เนเธฅเนเธง" + mob.getId());
+      c.getPlayer().dropMessage(-8, "Sent Packet Type 3: " + mob.getId());
    }
 
    public static void GoongiTestHandler(PacketDecoder slea, MapleClient c) {
       int objectID = slea.readInt();
       MapleMonster mob = c.getPlayer().getMap().getMonsterByOid(objectID);
       int type = slea.readInt();
-      c.getPlayer().dropMessageGM(6, "ํ€์… : " + type);
+      c.getPlayer().dropMessageGM(6, "Type : " + type);
       switch (type) {
          case 0: {
             int unk2 = slea.readInt();

@@ -41,7 +41,7 @@ public class Field_WillBattlePhase1 extends Field_WillBattle {
       }
 
       if (count < 2) {
-         this.sendWillNotice("Will เน€เธฃเธดเนเธกเธเธฃเธดเธเธเธฑเธเนเธฅเนเธง เธเธงเธฒเธกเธเธฃเธดเธเนเธเธเธญเธ Will เธญเธฒเธเธชเธฐเธ—เนเธญเธเนเธเธชเนเธงเธเธฅเธถเธเธเธญเธเธเธฃเธฐเธเธ", 245, 7000);
+         this.sendWillNotice("Will เริ่มจริงจังแล้ว ความจริงใจของ Will อาจสะท้อนในส่วนลึกของกระจก", 245, 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {

@@ -61,7 +61,7 @@ public class Field_Cygnus extends Field {
                   if (eim != null) {
                      eim.restartEventTimer(300000L);
                      eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect(
-                           "เธเธธเธ“เนเธ”เนเธเธณเธเธฑเธ” Cygnus เนเธฅเนเธง เธเธฃเธธเธ“เธฒเน€เธ”เธดเธเธเนเธฒเธเธเธฃเธฐเธ•เธนเธซเธฅเธฑเธเธเธญเธ Hall of Cygnus เน€เธเธทเนเธญเธ”เธณเน€เธเธดเธเธเธฒเธฃเธ•เนเธญ",
+                           "คุณได้กำจัด Cygnus แล้ว กรุณาเดินผ่านประตูหลักของ Hall of Cygnus เพื่อดำเนินการต่อ",
                            5120026);
                      List<Integer> partyPlayerList = eim.getPartyPlayerList();
                      if (partyPlayerList != null && !partyPlayerList.isEmpty()) {

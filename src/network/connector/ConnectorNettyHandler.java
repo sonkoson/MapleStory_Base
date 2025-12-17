@@ -88,7 +88,7 @@ public class ConnectorNettyHandler extends SimpleChannelInboundHandler<PacketDec
          if (e.state() == IdleState.READER_IDLE) {
             ctx.close();
             if (client != null) {
-               ConnectorServerHandler.ConnectorLog("ํ•‘ํ€์ ์ด๊ณผ ID : " + client.getId() + " IP : " + client.getAddressIP() + " ", client);
+               ConnectorServerHandler.ConnectorLog("핑타임 초과 ID : " + client.getId() + " IP : " + client.getAddressIP() + " ", client);
             }
          } else if (e.state() == IdleState.WRITER_IDLE && client != null) {
             client.setSendSkill((int)(client.getSendSkill() + 1L));

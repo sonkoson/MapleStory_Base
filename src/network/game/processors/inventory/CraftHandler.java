@@ -138,7 +138,7 @@ public class CraftHandler {
 
          long lastTime = Long.parseLong(marr.getCustomData());
          if (lastTime + 5000L > System.currentTimeMillis()) {
-            c.getPlayer().dropMessage(5, "เธขเธฑเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธเน€เธเธตเนเธขเธงเนเธ”เน");
+            c.getPlayer().dropMessage(5, "ยังไม่สามารถเก็บเกี่ยวได้");
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          } else {
             marr.setCustomData(String.valueOf(System.currentTimeMillis()));
@@ -146,7 +146,7 @@ public class CraftHandler {
             c.getSession().writeAndFlush(CField.harvestMessage(reactor.getObjectId(), 15));
          }
       } else {
-         c.getPlayer().dropMessage(1, "เธขเธฑเธเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธเน€เธเธตเนเธขเธงเนเธ”เน");
+         c.getPlayer().dropMessage(1, "ยังไม่สามารถเก็บเกี่ยวได้");
          c.getSession().writeAndFlush(CWvsContext.enableActions(chr));
       }
    }
@@ -307,22 +307,22 @@ public class CraftHandler {
                   expGain *= 2;
                }
 
-               String s = "์—ฐ๊ธ์ ";
+               String s = "연금์ ";
                switch (craftID / 10000) {
                   case 9200:
-                     s = "์•ฝ์ด์ฑ์ง‘";
+                     s = "약초채집";
                      break;
                   case 9201:
-                     s = "์ฑ๊ด‘";
+                     s = "채광";
                      break;
                   case 9202:
-                     s = "์ฅ๋น์ ์‘";
+                     s = "장비์ 작";
                      break;
                   case 9203:
-                     s = "์ฅ์ ๊ตฌ์ ์‘";
+                     s = "장์ 구์ 작";
                }
 
-               chr.dropMessage(5, s + " เธเธงเธฒเธกเธเธณเธเธฒเธเน€เธเธดเนเธกเธเธถเนเธ (+" + expGain + ")");
+               chr.dropMessage(5, s + " ความชำนาญเพิ่มขึ้น (+" + expGain + ")");
                chr.addProfessionExp(craftID / 10000 * 10000, expGain);
             } else {
                expGain = 0;
@@ -405,7 +405,7 @@ public class CraftHandler {
                   toGet = 4021015;
                }
 
-               MapleInventoryManipulator.addById(c, toGet, quantity, FileoutputUtil.CurrentReadable_Date() + " ์๊ฐ์— " + itemId + " ์•์ดํ…์ ๋ถํ•ดํ•์—ฌ ์–ป์€ ์•์ดํ….");
+               MapleInventoryManipulator.addById(c, toGet, quantity, FileoutputUtil.CurrentReadable_Date() + " 시간에 " + itemId + " 아이템을 분해하여 얻은 아이템.");
                MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.getByType((byte)tab), (short)pos, (short)1, false);
                list.add(new CraftHandler.CraftResult(craftID, toGet, quantity));
             }

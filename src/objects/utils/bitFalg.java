@@ -65,24 +65,24 @@ public class bitFalg extends JDialog {
       StringBuilder extractedInformation = new StringBuilder();
       tableModel.addColumn("TestCal");
       new JTable(tableModel);
-      extractedInformation.append("์ด ํฌ๊ธฐ:").append(giveBuffStream.available()).append("\n");
-      extractedInformation.append("๋”๋ฏธ int * 2 ์ ๊ฑฐํฌ๊ธฐ:").append(giveBuffStream.available()).append("\n\n");
+      extractedInformation.append("Total Size:").append(giveBuffStream.available()).append("\n");
+      extractedInformation.append("더미 int * 2 ์ 거크기:").append(giveBuffStream.available()).append("\n\n");
 
       for (int i = 31; i >= 1; i--) {
          int buffMask = giveBuffStream.readInt();
          if (buffMask > 0) {
-            extractedInformation.append("ํฌ์ง€์…: ").append(i).append(" ");
-            tableModel.insertRow(0, new Object[]{"ํฌ์ง€์… :", i});
-            extractedInformation.append("๋ฒํ”๋ง์คํฌ: ").append(buffMask);
-            tableModel.insertRow(0, new Object[]{"๋ฒํ”๋ง์คํฌ: ", buffMask});
+            extractedInformation.append("Position: ").append(i).append(" ");
+            tableModel.insertRow(0, new Object[]{"Position :", i});
+            extractedInformation.append("Buff Mask: ").append(buffMask);
+            tableModel.insertRow(0, new Object[]{"Buff Mask: ", buffMask});
 
             for (int j = 0; j <= 31; j++) {
                int bitMask = 1 << j;
                if ((buffMask & bitMask) == bitMask) {
                   int bitFlag = getBitFlag(i, j);
-                  tableModel.insertRow(0, new Object[]{"์ด๋ฆ : ", SecondaryStatFlag.getByBit(bitFlag)});
-                  tableModel.insertRow(0, new Object[]{"ํ”๋๊ทธ : ", 31 - j});
-                  tableModel.insertRow(0, new Object[]{"๋นํธ ํ”๋๊ทธ : ", bitFlag});
+                  tableModel.insertRow(0, new Object[]{"Name : ", SecondaryStatFlag.getByBit(bitFlag)});
+                  tableModel.insertRow(0, new Object[]{"Flag : ", 31 - j});
+                  tableModel.insertRow(0, new Object[]{"Bit Flag : ", bitFlag});
                }
             }
 
@@ -90,7 +90,7 @@ public class bitFalg extends JDialog {
          }
       }
 
-      extractedInformation.append("๋นํธ๋ง์คํน ์ดํ ํฌ๊ธฐ: ").append(giveBuffStream.available());
+      extractedInformation.append("Size after bitmasking: ").append(giveBuffStream.available());
    }
 
    private void onCancel() {

@@ -134,7 +134,7 @@ public class Android implements Serializable {
          pse.setInt(2, hair);
          pse.setInt(3, face);
          pse.setInt(4, 0);
-         pse.setString(5, "์•๋“๋ก์ด๋“");
+         pse.setString(5, "안드로이드");
          pse.setInt(6, 0);
          pse.executeUpdate();
          pse.close();
@@ -147,7 +147,7 @@ public class Android implements Serializable {
       skin.setHair(hair);
       skin.setFace(face);
       skin.setSkin(0);
-      skin.setName("์•๋“๋ก์ด๋“");
+      skin.setName("안드로이드");
       return skin;
    }
 

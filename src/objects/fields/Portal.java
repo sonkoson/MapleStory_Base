@@ -103,7 +103,7 @@ public class Portal {
             }
 
             if (!c.getPlayer().isGM() && to.getLevelLimit() > 0 && to.getLevelLimit() > c.getPlayer().getLevel()) {
-               c.getPlayer().dropMessage(-1, "เน€เธฅเน€เธงเธฅเธเธญเธเธเธธเธ“เธ•เนเธณเน€เธเธดเธเนเธเธ—เธตเนเธเธฐเน€เธเนเธฒเธ—เธตเนเธเธตเน");
+               c.getPlayer().dropMessage(-1, "เลเวลของคุณต่ำเกินไปที่จะเข้ҷี่นี่");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }

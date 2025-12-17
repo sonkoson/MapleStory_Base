@@ -25,8 +25,8 @@ public class HellDunkelEnter extends FieldSet {
       this.qexKey = DBConfig.isGanglim ? 1234569 : 1234589;
       this.keyValue = "dunkel_clear";
       this.canTimeKey = "dunkel_can_time";
-      this.bossName = "๋“์ผ";
-      this.difficulty = "ํ—ฌ";
+      this.bossName = "Dunkel";
+      this.difficulty = "Hell";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -110,10 +110,10 @@ public class HellDunkelEnter extends FieldSet {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   this.AC(chrx, key, isPracticeMode);
                   chrx.setCurrentBossPhase(1);

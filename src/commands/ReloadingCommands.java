@@ -26,7 +26,7 @@ public class ReloadingCommands implements Command {
       if (splitted[0].equals("!reloadops")) {
          SendPacketOpcode.reloadValues();
          RecvPacketOpcode.reloadValues();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Ops เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลOps ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!setop")) {
          for (SendPacketOpcode send : SendPacketOpcode.values()) {
             if (send.name().equals(splitted[1])) {
@@ -38,54 +38,54 @@ public class ReloadingCommands implements Command {
       } else if (splitted[0].equals("!reloaddrops")) {
          MapleMonsterInformationProvider.getInstance().clearDrops();
          ReactorScriptManager.getInstance().clearDrops();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Drop เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลDrop ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadportals")) {
          PortalScriptManager.getInstance().clearScripts();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ” Portal Script เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลด Portal Script ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadshops")) {
          MapleShopFactory.getInstance().clear();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Shop เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลShop ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadevents")) {
          for (GameServer instance : GameServer.getAllInstances()) {
             instance.reloadEvents();
          }
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Event เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลEvent ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadskills")) {
          SkillFactory.load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Skill เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลSkill ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadweekly")) {
          WeeklyItemManager.loadWeeklyItems();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Weekly Item เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลWeekly Item ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!saveweekly")) {
          WeeklyItemManager.saveWeeklyItems();
-         c.getPlayer().dropMessage(5, "[System] เธเธฑเธเธ—เธถเธ Weekly Item เธฅเธ DB เนเธฅเนเธง");
+         c.getPlayer().dropMessage(5, "[System] บันทึก Weekly Item ลง DB แล้ว");
       } else if (splitted[0].equals("!resetgoldapple")) {
          RoyalStyle.resetGoldApple();
-         c.getPlayer().dropMessage(5, "[System] เธฃเธตเน€เธเนเธ• Gold Apple เน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] รีเซ็ต Gold Apple เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadmobhp")) {
          MapleMonsterCustomHP.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Custom Mob HP เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลCustom Mob HP ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloaddailygift")) {
          MapleDailyGift.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Daily Gift เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลDaily Gift ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloaddimen")) {
          MapleDimensionalMirror.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Dimensional Mirror เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลDimensional Mirror ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadeventlist")) {
          MapleEventList.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Event List เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลEvent List ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadfishing")) {
          MapleFishing.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Fishing เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลFishing ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadgoldenchariot")) {
          MapleGoldenChariot.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Golden Chariot เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลGolden Chariot ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadcrc")) {
          MapleClientCRC.Load();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ WZ CRC เนเธซเธกเนเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดข้อมูลWZ CRC ใหม่เสร็จสิ้น");
       } else if (splitted[0].equals("!reloadrank")) {
          DamageMeasurementRank.loadRank();
-         c.getPlayer().dropMessage(5, "[System] เนเธซเธฅเธ”เธญเธฑเธเธ”เธฑเธเธงเธฑเธ”เธเธงเธฒเธกเน€เธชเธตเธขเธซเธฒเธขเน€เธชเธฃเนเธเธชเธดเนเธ");
+         c.getPlayer().dropMessage(5, "[System] โหลดอันดับวѴความเสียหายเสร็จสิ้น");
       }
    }
 

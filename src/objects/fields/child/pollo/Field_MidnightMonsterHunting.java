@@ -124,7 +124,7 @@ public class Field_MidnightMonsterHunting extends Field {
       super.onEnter(player);
       this.player = player;
       player.temporaryStatSet(80002894, Integer.MAX_VALUE, SecondaryStatFlag.RideVehicle, 1939017);
-      player.send(CField.startMapEffect("npc/์ฑ์ง‘ ํค๋ก ๊ณต๊ฒฉ์ ํ•  ์ ์๋ค. ๋ชฐ๋ ค์ค๋” ๋๋“ค์ ๋์€ ํ•จ๊ป ๋ค ์“ธ์–ด๋ฒ๋ฆฌ์๊ณ .", 5120159, true, 10));
+      player.send(CField.startMapEffect("You can attack with NPC/Harvest key. Let's sweep away the swarming enemies!", 5120159, true, 10));
       RandomPortal portal = player.getRandomPortal();
       if (portal != null) {
          player.updateOneInfo(15142, "gameType", String.valueOf(portal.getGameType().getType()));

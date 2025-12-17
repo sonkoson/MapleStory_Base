@@ -1,0 +1,25 @@
+63:       "무릉도장에 도์ 한 것을 후회하게 해주๊ฒ 다! 어서 들어와봐!", "기다리๊ณ  있었다! 용기가 남았다면 들어와 보시지!", "배짱 하나는 두둑하군! 현명함과 무모함을 혼동하지말라๊ณ !", "무릉도장에 도์ 하다니 용기가 가상하군!", "패배의 길을 걷๊ณ 싶다면 들어오라๊ณ !"
+1108:                         f.sendWillNotice("ต้องโจมตՁWill ใน 2 มԵԷี่แตกต่างกันพร้อมๆ กัน! หากรวบรวมแสงจันทร์และใช้มัน อาจย้ายไปอีกฝั่งได้", 245, 7000);
+1198:                         f.sendWillNotice("ระวังร่างจริงที่สз้อนในกระจก หากรวบรวมแสงจันทร์และใช้มัน อาจช่วยหยشคำสาปที่รักษาไม่ได้ชั่วคราว", 245, 7000);
+1311:                         f.sendWillNotice("Will เอาจริงแล้ว! หากรวบรวมแสงจันทร์มาใช้ อาจเผาใยแมงมุมได้", 245, 7000);
+1348:                         f.sendJinHillahNotice("Hilla จеѴเทียนแห่งวิญญҳที่ลุกโชนทุกช่วงเวลҁระวังอย่าให้วิญญҳถูกขโมย", 8000);
+1372:                            f.sendBlackMageNotice("เพื่͵่อกรกับ Black Mage ต้องกำจѴอัศวินแห่งการสร้างแลзำลายล้างที่ปกป้องเขา", 8000);
+1394:                            f.sendBlackMageNotice("ในที่สشก็มายืนต่อหน้ҁBlack Mage ทุ่มสشตัวเพื่อกำจѴเขาเถอะ", 8000);
+1414:                            f.sendBlackMageNotice("รูปลักɳ์นั่นราวกับได้รับพลังของพระเจ้ามҁแม้ 상대จะเป็นพระเจ้ҁก็ต้องหยشยั้งเขҷี่นี่เพื่ͷุกคน", 8000);
+1453:                c.getPlayer().getMap().startMapEffect("월묘가 나타났습니다. ์ 한시간 내에 힘을 합쳐 월묘를 잡으면 달맞이 보상을 획득ํ•  수 있습니다.", 5120016);
+1780:                      c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치해라!", 5120033);
+1783:                      c.getPlayer().getMap().startMapEffect("상자를 부수๊ณ , 나오는 몬스터를 모두 퇴치해라!", 5120033);
+1786:                      c.getPlayer().getMap().startMapEffect("일등항해사를 퇴치해라!", 5120033);
+1789:                      c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치해라!", 5120033);
+1792:                      c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치하๊ณ , ์ 프대를 작동시켜서 건너편으로 건너가라!", 5120033);
+1798:                c.getPlayer().getMap().startMapEffect("상대편보다 먼์ € 몬스터를 퇴치하라!", 5120033);
+2022:                c.getPlayer().send(CField.sendWeatherEffectNotice(250, 3000, false, "ความกลัวค่อยๆ เพิ่มขึ้นจนมองเห็นสิ่งที่ไม่ควรมี! ถ้ารับไม่ไหǁความกลัวจะแพร่กระจҁระวังด้วย!"));
+2023:                c.getSession().writeAndFlush(CField.addPopupSay(0, 3000, "촉수가 눈을 방어하๊ณ  있어 ์ 대로 된 피해를 주기 힘들๊ฒ 군.", ""));
+2026:                c.getPlayer().send(CField.sendWeatherEffectNotice(272, 5000, false, "Captain Dunkel : ตราบใดที่มีข้าและกองทัพอยู่ แกจะไม่มีวันแตе้องท่านผู้นั้นได้แม้แต่ปลายเล็บ!"));
+2148:                         .writeAndFlush(CField.addPopupSay(0, 4000, "이 지역에서 발생되는 공격은 창조나 파괴의 ์ €주를 거는 것 같다...만약 두 ์ €주가 동시에 걸린다면 #b큰 피해#k를 입으니 조심하자", ""));
+2150:                      c.getSession().writeAndFlush(CField.addPopupSay(3003902, 4000, "#face1#가자. 나는 복수를, 너는 세계를 지키는 거야.", ""));
+2152:                      c.getSession().writeAndFlush(CField.addPopupSay(0, 4000, "아무 것도 없는 공간…… 세계가 이런 모습이 되게 ํ•  순 없어…", ""));
+2235:                   c.getPlayer().dropMessage(6, "บัญชีนี้ดفIntro ไปแล้ǁจжูกย้ายไป True Castle");
+2601:                c.getPlayer().dropMessage(-1, "ต้องกำจѴมอนสเตอร์ทั้งหมดในแผนที่ก่อนถึงจะไปด่านถѴไปได้");
+2726:                      c.getPlayer().dropMessage(-1, number + "/" + m.maps.length + "การสำรวจ");
+2728:                      c.getSession().writeAndFlush(CWvsContext.showQuestMsg("Title - " + m.questname + " Adventurer Challenge in progress. " + number + "/" + m.maps.length + "개 지역 완료"));

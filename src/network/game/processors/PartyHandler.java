@@ -44,22 +44,22 @@ public class PartyHandler {
                               c.getPlayer().receivePartyMemberHP();
                               c.getPlayer().updatePartyMemberHP();
                            } else {
-                              c.getPlayer().dropMessage(5, c.getPlayer().getName() + " เนเธ”เนเธ•เธญเธเธฃเธฑเธเธเธณเน€เธเธดเธเน€เธเนเธฒเธเธฒเธฃเนเธ•เธตเน");
+                              c.getPlayer().dropMessage(5, c.getPlayer().getName() + " ได้ตอบรับคำเชิญเข้าปาร์ตี้");
                            }
                            break;
                         case DeclineInvite:
                            MapleCharacter leader = c.getChannelServer().getPlayerStorage()
                                  .getCharacterById(party.getLeader().getId());
                            if (leader != null) {
-                              leader.dropMessage(5, "'" + c.getPlayer().getName() + "' เธเธเธดเน€เธชเธเธเธณเน€เธเธดเธเน€เธเนเธฒเธเธฒเธฃเนเธ•เธตเน");
+                              leader.dropMessage(5, "'" + c.getPlayer().getName() + "' ปฏิเสธคำเชิญเข้าปาร์ตี้");
                            }
                      }
                   }
                } else {
-                  c.getPlayer().dropMessage(5, "เธเธฒเธฃเนเธ•เธตเนเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃเน€เธเนเธฒเธฃเนเธงเธกเนเธกเนเธกเธตเธญเธขเธนเนเธเธฃเธดเธ");
+                  c.getPlayer().dropMessage(5, "ปาร์ตี้ที่ต้องการเข้าร่วมไม่มีอยู่จริง");
                }
             } else {
-               c.getPlayer().dropMessage(5, "เธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเนเธงเนเธเธฒเธฃเนเธ•เธตเนเนเธ”เน");
+               c.getPlayer().dropMessage(5, "มีปาร์ตี้อยู่แล้ว ไม่สามารถร่วมปาร์ตี้ได้");
             }
          }
       }
@@ -105,13 +105,13 @@ public class PartyHandler {
                         createParty.encode(packet);
                         player.send(packet.getPacket());
                      } else {
-                        player.dropMessage(5, "เธเธธเธ“เธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธฃเนเธฒเธเธเธฒเธฃเนเธ•เธตเนเนเธซเธกเนเนเธ”เน");
+                        player.dropMessage(5, "คุณมีปาร์ตี้อยู่แล้ว ไม่สามารถสร้างปาร์ตี้ใหม่ได้");
                      }
                      break;
                   case WithdrawParty:
                      if (party != null) {
                         if (player.getMap().getFieldSetInstance() != null || player.getEventInstance() != null) {
-                           player.dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธญเธเธเธฒเธเธเธฒเธฃเนเธ•เธตเนเนเธเนเธเธเธ—เธตเนเธเธตเนเนเธ”เน");
+                           player.dropMessage(5, "ไม่สามารถออกจากปาร์ตี้ในแผนที่นี้ได้");
                            return;
                         }
 
@@ -126,7 +126,7 @@ public class PartyHandler {
                         }
 
                         if (inBattle) {
-                           player.dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธญเธเธเธฒเธเธเธฒเธฃเนเธ•เธตเนเธเธ“เธฐเธ—เธตเนเธชเธกเธฒเธเธดเธเธเธณเธฅเธฑเธเธ•เนเธญเธชเธนเนเธเธฑเธเธเธญเธช");
+                           player.dropMessage(5, "ไม่สามารถออกจากปาร์ตี้ขณะที่สมาชิกกำลังต่อสู้กับบอส");
                            return;
                         }
 
@@ -177,13 +177,13 @@ public class PartyHandler {
                               c.getPlayer().receivePartyMemberHP();
                               c.getPlayer().updatePartyMemberHP();
                            } else {
-                              c.getPlayer().dropMessage(5, "เธเธฒเธฃเนเธ•เธตเนเธกเธตเธชเธกเธฒเธเธดเธเน€เธ•เนเธกเนเธฅเนเธง");
+                              c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "เนเธกเนเธเธเธเธฒเธฃเนเธ•เธตเนเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃเน€เธเนเธฒเธฃเนเธงเธก");
+                           c.getPlayer().dropMessage(5, "ไม่พบปาร์ตี้ที่ต้องการเข้าร่วม");
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "เธเธธเธ“เธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเธฃเนเธงเธกเธเธฒเธฃเนเธ•เธตเนเธญเธทเนเธเนเธ”เน");
+                        c.getPlayer().dropMessage(5, "คุณมีปาร์ตี้อยู่แล้วไม่สามารถเข้าร่วมปาร์ตี้อื่นได้");
                      }
                      break;
                   case Invite:
@@ -191,7 +191,7 @@ public class PartyHandler {
                      int channel = Center.Find.findChannel(targetName);
                      if (party == null) {
                         party = Center.Party.createParty(memberEntry);
-                        party.setPartyTitle(memberEntry.getName() + "์ ํํฐ");
+                        party.setPartyTitle(memberEntry.getName() + "'s Party");
                         c.getPlayer().setParty(party);
                         party.setPartyTitle(party.getPatryTitle());
                         PacketEncoder packet = new PacketEncoder();
@@ -204,7 +204,7 @@ public class PartyHandler {
                            if (target != null && target.getParty() == null) {
                               if (party.getPartyMember().getPartyMemberList().size() < 6) {
                                  c.getPlayer().dropMessage(1,
-                                       "เน€เธเธดเธ " + target.getName() + " เน€เธเนเธฒเธฃเนเธงเธกเธเธฒเธฃเนเธ•เธตเนเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
+                                       "เชิญ " + target.getName() + " เข้าร่วมปาร์ตี้เรียบร้อยแล้ว");
                                  packet = new PacketEncoder();
                                  Party.PartyPacket.InviteParty p = new Party.PartyPacket.InviteParty(
                                        party.getId(), player.getId(), player.getName(), player.getLevel(),
@@ -212,13 +212,13 @@ public class PartyHandler {
                                  p.encode(packet);
                                  target.send(packet.getPacket());
                               } else {
-                                 c.getPlayer().dropMessage(5, "เธเธฒเธฃเนเธ•เธตเนเธกเธตเธชเธกเธฒเธเธดเธเน€เธ•เนเธกเนเธฅเนเธง");
+                                 c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                               }
                            } else {
-                              c.getPlayer().dropMessage(5, "เธเธนเนเน€เธฅเนเธเน€เธเนเธฒเธซเธกเธฒเธขเธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง");
+                              c.getPlayer().dropMessage(5, "ผู้เล่นเป้าหมายมีปาร์ตี้อยู่แล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "เนเธกเนเธเธเธเธนเนเน€เธฅเนเธเน€เธเนเธฒเธซเธกเธฒเธข");
+                           c.getPlayer().dropMessage(5, "ไม่พบผู้เล่นเป้าหมาย");
                         }
                      } else if (channel > 0) {
                         MapleCharacter target = GameServer.getInstance(channel).getPlayerStorage()
@@ -226,7 +226,7 @@ public class PartyHandler {
                         if (target != null && target.getParty() == null) {
                            if (party.getMembers().size() < 6) {
                               c.getPlayer().dropMessage(1,
-                                    "เน€เธเธดเธ " + target.getName() + " เน€เธเนเธฒเธฃเนเธงเธกเธเธฒเธฃเนเธ•เธตเนเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
+                                    "เชิญ " + target.getName() + " เข้าร่วมปาร์ตี้เรียบร้อยแล้ว");
                               PacketEncoder packet = new PacketEncoder();
                               Party.PartyPacket.InviteParty p = new Party.PartyPacket.InviteParty(
                                     party.getId(), player.getId(), player.getName(), player.getLevel(),
@@ -234,20 +234,20 @@ public class PartyHandler {
                               p.encode(packet);
                               target.send(packet.getPacket());
                            } else {
-                              c.getPlayer().dropMessage(5, "เธเธฒเธฃเนเธ•เธตเนเธกเธตเธชเธกเธฒเธเธดเธเน€เธ•เนเธกเนเธฅเนเธง");
+                              c.getPlayer().dropMessage(5, "ปาร์ตี้มีสมาชิกเต็มแล้ว");
                            }
                         } else {
-                           c.getPlayer().dropMessage(5, "เธเธนเนเน€เธฅเนเธเน€เธเนเธฒเธซเธกเธฒเธขเธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง");
+                           c.getPlayer().dropMessage(5, "ผู้เล่นเป้าหมายมีปาร์ตี้อยู่แล้ว");
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "เนเธกเนเธเธเธเธนเนเน€เธฅเนเธเน€เธเนเธฒเธซเธกเธฒเธข");
+                        c.getPlayer().dropMessage(5, "ไม่พบผู้เล่นเป้าหมาย");
                      }
                      break;
                   case KickParty:
                      PartyMemberEntry leaderEntry = party.getLeader();
                      if (leaderEntry.getId() == player.getId()) {
                         if (player.getMap().getFieldSetInstance() != null || player.getEventInstance() != null) {
-                           player.dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธฅเนเธชเธกเธฒเธเธดเธเธญเธญเธเธเธฒเธเธเธฒเธฃเนเธ•เธตเนเนเธเนเธเธเธ—เธตเนเธเธตเนเนเธ”เน");
+                           player.dropMessage(5, "ไม่สามารถไล่สมาชิกออกจากปาร์ตี้ในแผนที่นี้ได้");
                            return;
                         }
 
@@ -279,7 +279,7 @@ public class PartyHandler {
                      privatePartyx = slea.readByte() == 1;
                      onlyLeaderPickUpx = slea.readByte() == 1;
                      if (newTitle.length() < 0) {
-                        c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเนเธชเนเธเธทเนเธญเธเธฒเธฃเนเธ•เธตเนเธญเธขเนเธฒเธเธเนเธญเธข 1 เธ•เธฑเธงเธญเธฑเธเธฉเธฃ");
+                        c.getPlayer().dropMessage(1, "กรุณาใส่ชื่อปาร์ตี้อย่างน้อย 1 ตัวอักษร");
                         return;
                      }
 
@@ -301,7 +301,7 @@ public class PartyHandler {
                      int minDojangRankx = slea.readInt();
                      int minUnionx = slea.readInt();
                      if (party != null) {
-                        player.dropMessage(5, "เธเธธเธ“เธกเธตเธเธฒเธฃเนเธ•เธตเนเธญเธขเธนเนเนเธฅเนเธง เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธฃเนเธฒเธเนเธซเธกเนเนเธ”เน");
+                        player.dropMessage(5, "คุณมีปาร์ตี้อยู่แล้ว ไม่สามารถสร้างใหม่ได้");
                         return;
                      }
 
@@ -317,7 +317,7 @@ public class PartyHandler {
                      party.setBossPartyRecruiment(recruimentx);
                      if (DBConfig.isGanglim) {
                         Center.Broadcast
-                              .broadcastMessage(CField.chatMsg(22, "[๋ณด์คํํฐ๋ชจ์ง‘] " + player.getName() + " : " + titlex));
+                              .broadcastMessage(CField.chatMsg(22, "[Boss Party Recruitment] " + player.getName() + " : " + titlex));
                      }
 
                      PacketEncoder packet = new PacketEncoder();
@@ -343,7 +343,7 @@ public class PartyHandler {
                      party.setBossPartyRecruiment(recruimentx);
                      if (DBConfig.isGanglim) {
                         Center.Broadcast
-                              .broadcastMessage(CField.chatMsg(22, "[๋ณด์คํํฐ๋ชจ์ง‘] " + player.getName() + " : " + titlex));
+                              .broadcastMessage(CField.chatMsg(22, "[Boss Party Recruitment] " + player.getName() + " : " + titlex));
                      }
 
                      PacketEncoder packet = new PacketEncoder();
@@ -432,7 +432,7 @@ public class PartyHandler {
                      switch (requestType) {
                         case AcceptRequest:
                            if (party.getPartyMember().getPartyMemberList().size() >= 6) {
-                              player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเธชเธกเธฒเธเธดเธเน€เธเธดเนเธกเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธเธฒเธฃเนเธ•เธตเนเน€เธ•เนเธก");
+                              player.dropMessage(1, "ไม่สามารถรับสมาชิกเพิ่มได้เนื่องจากปาร์ตี้เต็ม");
                               return;
                            }
 

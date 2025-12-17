@@ -738,13 +738,13 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                      && !from.isCanAttackLucidRewardMob()) {
                   rDamage = 0L;
                   String var26 = from.getName() + "(accountID : " + from.getAccountID()
-                        + ")์ด(๊ฐ€) ๋ฃจ์๋“ ๊ฒฉํ ์—์ด ๋ง์ง€๋ง ์ค๋ฅด๊ณจ์ ๊ณต๊ฒฉํ•จ";
+                        + ") attacked the final music box without defeating Lucid";
                }
 
                if (this.getId() == 8880518 && !from.isCanAttackBMRewardMob()) {
                   rDamage = 0L;
                   String var27 = from.getName() + "(accountID : " + from.getAccountID()
-                        + ")์ด(๊ฐ€) ๊ฒ€์€๋ง๋ฒ•์ฌ ๊ฒฉํ ์—์ด ์ฐฝ์ธ์ ์•์ ๊ณต๊ฒฉํ•จ";
+                        + ") attacked the Egg of Genesis without defeating the Black Mage";
                }
 
                if (from.getBuffedValue(SecondaryStatFlag.CapDebuff) != null) {
@@ -1298,10 +1298,10 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                            .println(
                                  "Monster Collection Exception "
                                        + var32.toString()
-                                       + " / ๋ชน : "
+                                       + " / Mob : "
                                        + (this.getStats() != null ? this.getId() + "(" + this.getStats().getName() + ")"
                                              : this.getId() + "")
-                                       + " / ๋งต : "
+                                       + " / Map : "
                                        + attacker.getMapId());
                      var32.printStackTrace();
                   }
@@ -1425,7 +1425,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                      if (timediff >= 10000L) {
                         attacker.setAlertTime(currenttime);
                         attacker.send(
-                              CField.UIPacket.sendBigScriptProgressMessage("เธเธฒเธฃเนเธ”เนเธฃเธฑเธ EXP เธเธฐเธฅเธ”เธฅเธเธญเธขเนเธฒเธเธกเธฒเธเน€เธกเธทเนเธญเธเธฒเธฃเนเธ•เธตเนเธฅเนเธฒเนเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเน€เธฅเน€เธงเธฅ 300 เธเธถเนเธเนเธ",
+                              CField.UIPacket.sendBigScriptProgressMessage("การได้รับ EXP จะลดลงอย่างมากเมื่อปาร์ตี้ล่ามอนสเตอร์เลเวล 300 ขึ้นไป",
                                     FontType.NanumGothic, FontColorType.Yellow));
                      }
                   }
@@ -1802,14 +1802,14 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                      .writeAndFlush(MobPacket.spawnMonster(this, this.fake && this.linkCID <= 0 ? -4 : -1, 0));
             }
          } catch (Exception var5) {
-            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค‘ Monster sendSpawnData ํจํท ์ ์ก ์คํจ");
+            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 중 Monster sendSpawnData 패킷 ์ 송 실패");
             FileoutputUtil.log("Log_Player_Except.rtf", var5.toString());
          }
 
          try {
             this.sendStatus(client);
          } catch (Exception var4) {
-            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค‘ Monster sendSpawnData sendStatus ์คํ– ์คํจ");
+            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement : Monster sendSpawnData sendStatus execution failed");
             FileoutputUtil.log("Log_Player_Except.rtf", var4.toString());
          }
 
@@ -1822,7 +1822,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                this.map.updateMonsterController(this);
             }
          } catch (Exception var3) {
-            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement ์ค‘ Monster sendSpawnData ์ปจํธ๋กค๋ฌ ์—…๋ฐ์ดํธ ์คํจ");
+            FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement : Monster sendSpawnData controller update failed");
             FileoutputUtil.outputFileError("Log_Player_Except.rtf", var3.getCause());
          }
       }
@@ -3808,7 +3808,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
 
          this.setCastingCancelDamage(damage);
          Field_Demian map = (Field_Demian) this.getMap();
-         map.sendDemianNotice(216, "เธ•เนเธญเธเธชเธฃเนเธฒเธเธเธงเธฒเธกเน€เธชเธตเธขเธซเธฒเธขเธฃเธธเธเนเธฃเธเน€เธเธทเนเธญเธซเธขเธธเธ” Damien เธเนเธญเธเธ—เธตเนเน€เธเธฒเธเธฐเธ—เธณเนเธซเนเธเธฅเธฑเธเธเธญเธ World Tree เธ—เธตเนเนเธเธ”เน€เธเธทเนเธญเธเธญเธฒเธฅเธฐเธงเธฒเธ”", -1, 2500);
+         map.sendDemianNotice(216, "ต้องสร้างความเสียหายรุนแรงเพื่อหยุด Damien ก่อนที่เขาจะทำให้พลังของ World Tree ที่แปดเปื้อนอาละวาด", -1, 2500);
       }
    }
 
@@ -4589,7 +4589,7 @@ public class MapleMonster extends AbstractLoadedMapleLife {
                      public void accept(Boolean success) {
                         MapleMonster.this.getMap().setObjectDisabled("Pt", true);
                         if (success) {
-                           eim.broadcastPacket(CWvsContext.getScriptProgressMessage("์๊ณต๊ฐ ๋ถ•๊ดด ์คํจ! ์ ์ ํ, ์๋ ์ธ๊ณ๋ก ๋์•๊ฐ‘๋๋ค."));
+                           eim.broadcastPacket(CWvsContext.getScriptProgressMessage("시공간 붕괴 실패! ์ 시 후, 원래 세계로 돌아갑니다."));
                            eim.broadcastResetTimerGuage();
 
                            for (MapleCharacter player : eim.getPlayers()) {

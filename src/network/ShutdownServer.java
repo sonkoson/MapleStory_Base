@@ -42,7 +42,7 @@ public class ShutdownServer implements ShutdownServerMBean {
    public void run() {
       if (this.mode == 0) {
          Center.Broadcast.broadcastMessage(
-               CWvsContext.serverNotice(0, "เน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธฐเธเธดเธ”เนเธซเนเธเธฃเธดเธเธฒเธฃเนเธเน€เธฃเนเธงเน เธเธตเน เธเธฃเธธเธ“เธฒเธญเธญเธเธเธฒเธเธฃเธฐเธเธเน€เธเธทเนเธญเธเธงเธฒเธกเธเธฅเธญเธ”เธ เธฑเธข"));
+               CWvsContext.serverNotice(0, "เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบเพื่อความปลอดภัย"));
 
          try {
             Thread.sleep(10000L);
@@ -53,7 +53,7 @@ public class ShutdownServer implements ShutdownServerMBean {
 
          for (GameServer cs : GameServer.getAllInstances()) {
             cs.setShutdown();
-            cs.setServerMessage("เน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธฐเธเธดเธ”เนเธซเนเธเธฃเธดเธเธฒเธฃเนเธเน€เธฃเนเธงเน เธเธตเน เธเธฃเธธเธ“เธฒเธญเธญเธเธเธฒเธเธฃเธฐเธเธเน€เธเธทเนเธญเธเธงเธฒเธกเธเธฅเธญเธ”เธ เธฑเธข");
+            cs.setServerMessage("เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบเพื่อความปลอดภัย");
 
             for (Field map : cs.getMapFactory().getAllMaps()) {
                for (MapleCharacter chr : map.getCharacters()) {
@@ -76,7 +76,7 @@ public class ShutdownServer implements ShutdownServerMBean {
 
          this.mode++;
          Center.Broadcast.broadcastMessage(
-               CWvsContext.serverNotice(0, "เน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธฐเธเธดเธ”เนเธซเนเธเธฃเธดเธเธฒเธฃเนเธเน€เธฃเนเธงเน เธเธตเน เธเธฃเธธเธ“เธฒเธญเธญเธเธเธฒเธเธฃเธฐเธเธเธ—เธธเธเธเธเธเธฃเธฑเธ"));
+               CWvsContext.serverNotice(0, "เซิร์ฟเวอร์จะปิดให้บริการในเร็วๆ นี้ กรุณาออกจากระบบทุกคนครับ"));
          Integer[] chs = GameServer.getAllInstance().toArray(new Integer[0]);
          Integer[] var15 = chs;
          int var16 = chs.length;

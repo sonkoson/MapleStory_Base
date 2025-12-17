@@ -652,5 +652,6 @@ public class Magnus extends ScriptEngineNPC {
         }
     }
 
-    // TODO mag_GateWayOut(이지매เขาออก), BPReturn_Magnus2(노말매เขา,하드매เขาออก)
+    // TODO mag_GateWayOut(Easy Magnus Exit), BPReturn_Magnus2(Normal Magnus Exit,
+    // Hard Magnus Exit)
 }

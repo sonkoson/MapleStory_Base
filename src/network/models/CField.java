@@ -2580,7 +2580,7 @@ public class CField {
       packet.writeInt(1531030);
       packet.writeInt(6);
       packet.writeInt(0);
-      packet.writeMapleAsciiString("เนเธเนเธงเธฒเธฃเนเธเธ”เนเธงเธ");
+      packet.writeMapleAsciiString("ใช้วาร์ปด่วน");
       packet.writeLong(PacketHelper.getTime(-2L));
       packet.writeLong(PacketHelper.getTime(-1L));
       return packet.getPacket();
@@ -3579,7 +3579,7 @@ public class CField {
    public static byte[] hitCoconut(boolean spawn, int id, int type) {
       PacketEncoder mplew = new PacketEncoder();
       mplew.writeShort(SendPacketOpcode.HIT_COCONUT.getValue());
-      mplew.writeInt(spawn ? '่€€' : id);
+      mplew.writeInt(spawn ? '耀' : id);
       mplew.write(spawn ? 0 : type);
       return mplew.getPacket();
    }
@@ -5128,7 +5128,7 @@ public class CField {
       packet.writeInt(0);
       packet.writeInt(delta);
       packet.writeInt(0);
-      packet.writeMapleAsciiString(DBConfig.isGanglim ? "เนเธเธเธชเธเธฑเธเธชเธเธธเธ" : "เนเธ•เนเธกเธเธฑเธเธฅเธดเธก");
+      packet.writeMapleAsciiString(DBConfig.isGanglim ? "แคชสนับสนุน" : "แต้มกังลิม");
       return packet.getPacket();
    }
 
@@ -5443,11 +5443,11 @@ public class CField {
       packet.writeShort(SendPacketOpcode.ELITE_BOSS_CURSE_STATE.getValue());
       if (level == 0 || level == -1) {
          packet.writeMapleAsciiString(
-               "เธเธธเธ“เธ•เนเธญเธเธเธฅเธ”เธเธฅเนเธญเธขเธฃเธนเธเน€เธเธทเนเธญเธฅเธเธเธณเธชเธฒเธเธเธญเธเธญเธตเธฅเธตเธ—เธเธญเธช!!\\r\\nเธเธณเธชเธฒเธเธเธญเธเธญเธตเธฅเธตเธ—เธเธญเธชเธเธฐเน€เธฃเธดเนเธกเธเธถเนเธเนเธเนเธกเนเธเนเธฒ!!");
+               "คุณต้องปŴปล่อยรูนเพื่อลบคำสาปของอีลշบอส!!\\r\\nคำสาปของอีลշบอสจะเริ่มขึ้นในไม่ช้า!!");
       } else if (level != -2) {
          packet.writeMapleAsciiString(
-               "เธเธธเธ“เธ•เนเธญเธเธเธฅเธ”เธเธฅเนเธญเธขเธฃเธนเธเน€เธเธทเนเธญเธฅเธเธเธณเธชเธฒเธเธเธญเธเธญเธตเธฅเธตเธ—เธเธญเธช!!\\r\\nเธเธณเธชเธฒเธเธเธฑเนเธ " + level
-                     + " : เธญเธฑเธ•เธฃเธฒเนเธ”เนเธฃเธฑเธเธเนเธฒเธเธฃเธฐเธชเธเธเธฒเธฃเธ“เนเนเธฅเธฐเธญเธฑเธ•เธฃเธฒเธ”เธฃเธญเธเธฅเธ”เธฅเธ "
+               "คุณต้องปŴปล่อยรูนเพื่อลบคำสาปของอีลշบอส!!\\r\\nคำสาปขั้น " + level
+                     + " : อัตราได้รับค่าประสบการณ์และอัตราดรอปลดลง "
                      + GameConstants.getCursedRunesRate(level) + "%");
       } else {
          packet.writeMapleAsciiString("");

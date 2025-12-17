@@ -36,7 +36,7 @@ public class EventList {
          cEventList.put(eventKey, eL);
       }
 
-      System.out.println("[EventList] " + cEventList.size() + "๊ฐ ์บ์ฑ์๋ฃ");
+      System.out.println("[EventList] " + cEventList.size() + "개 캐싱완료");
    }
 
    public EventList(String eventName, String eventDesc, int eventEndHour, int eventStartTime, int eventEndTime, List<Integer> items) {

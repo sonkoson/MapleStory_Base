@@ -314,14 +314,14 @@ public class Field_Demian extends Field {
                            var13 = 3;
                         }
 
-                        p.gainItem(4001869, var13, false, -1L, "๋ฐ๋ฏธ์• ๊ฒฉํ๋ก ์–ป์€ ์•์ดํ…");
+                        p.gainItem(4001869, var13, false, -1L, "Item obtained from defeating Damien");
                      }
 
                      if (p.getParty() != null && !broadcast.get()) {
                         boolean multiMode = false;
                         if (mob.getId() == 8950111) {
                            for (PartyMemberEntry mpc : new ArrayList<>(p.getParty().getPartyMember().getPartyMemberList())) {
-                              StringBuilder sb = new StringBuilder("๋ณด์ค ๋…ธ๋ง ๋ฐ๋ฏธ์• ๊ฒฉํ");
+                              StringBuilder sb = new StringBuilder("Boss Normal Damien Defeated");
                               MapleCharacter playerxx = this.getCharacterById(mpc.getId());
                               if (playerxx != null) {
                                  if (!DBConfig.isGanglim && !multiMode) {
@@ -366,7 +366,7 @@ public class Field_Demian extends Field {
                                  hell = true;
                               }
 
-                              StringBuilder sb = new StringBuilder("๋ณด์ค " + (hell ? "ํ—ฌ" : "ํ•๋“") + " ๋ฐ๋ฏธ์• ๊ฒฉํ (" + list + ")");
+                              StringBuilder sb = new StringBuilder("Boss " + (hell ? "Hell" : "Hard") + " Damien Defeated (" + list + ")");
                               MapleCharacter playerx = this.getCharacterById(mpcx.getId());
                               if (playerx != null) {
                                  if (!DBConfig.isGanglim && !multiMode) {
@@ -382,26 +382,26 @@ public class Field_Demian extends Field {
                                  Center.Broadcast.broadcastMessage(
                                     CField.chatMsg(
                                        22,
-                                       "[๋ณด์ค๊ฒฉํ] [CH."
-                                          + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                       "[Boss Defeat] [CH."
+                                          + (this.getChannel() == 2 ? "20+" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + p.getParty().getLeader().getName()
-                                          + "' ํํฐ("
+                                          + "' Party("
                                           + list
-                                          + ")๊ฐ€ [ํ—ฌ ๋ฐ๋ฏธ์•]์ ๊ฒฉํํ•์€์ต๋๋ค."
+                                          + ") has defeated [Hell Damien]."
                                     )
                                  );
                               } else {
                                  Center.Broadcast.broadcastMessage(
                                     CField.chatMsg(
                                        22,
-                                       "[๋ณด์ค๊ฒฉํ] [CH."
-                                          + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                       "[Boss Defeat] [CH."
+                                          + (this.getChannel() == 2 ? "20+" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                           + "] '"
                                           + p.getParty().getLeader().getName()
-                                          + "' ํํฐ("
+                                          + "' Party("
                                           + list
-                                          + ")๊ฐ€ [ํ•๋“ ๋ฐ๋ฏธ์•]์ ๊ฒฉํํ•์€์ต๋๋ค."
+                                          + ") has defeated [Hard Damien]."
                                     )
                                  );
                               }
@@ -409,13 +409,13 @@ public class Field_Demian extends Field {
                               Center.Broadcast.broadcastMessage(
                                  CField.chatMsg(
                                     22,
-                                    "[๋ณด์ค๊ฒฉํ] [CH."
-                                       + (this.getChannel() == 2 ? "20์ธ ์ด์" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+                                    "[Boss Defeat] [CH."
+                                       + (this.getChannel() == 2 ? "20+" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
                                        + "] '"
                                        + p.getParty().getLeader().getName()
-                                       + "' ํํฐ("
+                                       + "' Party("
                                        + list
-                                       + ")๊ฐ€ [ํ—ฌ ๋ฐ๋ฏธ์•]์ ๊ฒฉํํ•์€์ต๋๋ค."
+                                       + ") has defeated [Hell Damien]."
                                  )
                               );
                            }
@@ -769,7 +769,7 @@ public class Field_Demian extends Field {
       this.removeFlyingSwordAll();
       this.clearObstacleAtom();
       this.sendDemianCorruptionStack(true, 0);
-      this.sendDemianNotice(216, "Damien เนเธ”เนเธเธฃเธญเธเธเธฃเธญเธเธเธฅเธฑเธเนเธซเนเธเธเธงเธฒเธกเธกเธทเธ”เธ—เธตเนเธชเธกเธเธนเธฃเธ“เนเนเธฅเนเธง", -1, 31250);
+      this.sendDemianNotice(216, "Damien ได้ครอบครองพลังแห่งความมืดที่สมบูรณ์แล้ว", -1, 31250);
       Timer.MapTimer.getInstance().schedule(new Runnable() {
          @Override
          public void run() {
@@ -786,7 +786,7 @@ public class Field_Demian extends Field {
    public void onStigmaStackChanged(MapleCharacter player, int userStack) {
       if (this.phase == 1 && userStack >= 7) {
          player.send(CField.makeEffectScreen("Effect/OnUserEff.img/demian/screen"));
-         this.sendDemianNotice(216, "เธ•เธฃเธฒเธเธฃเธฐเธ—เธฑเธเธชเธกเธเธนเธฃเธ“เน Damien เธเธณเธฅเธฑเธเธ–เธนเธเธเธงเธฒเธกเธกเธทเธ”เน€เธเนเธฒเธเธฃเธญเธเธเธณ", -1, 10000);
+         this.sendDemianNotice(216, "ตราประทับสมบูรณ์ Damien กำลังถูกความมืดเข้าครอบงำ", -1, 10000);
          player.resetStigma();
          this.onDemianCorruptionStackInc();
          player.addHP(-999999L);

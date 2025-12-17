@@ -14,7 +14,7 @@ public class SpawnMonsterCommand implements Command {
          int mid = Integer.parseInt(splitted[1]);
          MapleMonster mob = MapleLifeFactory.getMonster(mid);
          mob.setElite();
-         c.getPlayer().getMap().startMapEffect("เธเธฅเธฑเธเนเธซเนเธเธเธงเธฒเธกเธกเธทเธ”เธ—เธณเนเธซเน Elite Monster เธเธฃเธฒเธเธเธ•เธฑเธงเธเธถเนเธ", 5120124, false,
+         c.getPlayer().getMap().startMapEffect("พลังแห่งความมืดทำให้ Elite Monster ปรากฏตัวขึ้น", 5120124, false,
                5);
          c.getPlayer().getMap().broadcastMessage(CField.getSpecialMapSound("Field.img/eliteMonster/Regen"));
          c.getPlayer().getMap().spawnMonsterOnGroundBelow(mob, c.getPlayer().getPosition());
@@ -64,7 +64,7 @@ public class SpawnMonsterCommand implements Command {
                      || mid == 9300282
                      || mid == 9300283
                      || mid == 9300284)) {
-            c.getPlayer().dropMessage(6, "เธกเธญเธเธชเน€เธ•เธญเธฃเนเธ•เธฑเธงเธเธตเนเธ–เธนเธเธเธณเธเธฑเธ”");
+            c.getPlayer().dropMessage(6, "มอนสเตอร์ตัวนี้ถูกจำกัด");
             return;
          }
 
@@ -86,8 +86,8 @@ public class SpawnMonsterCommand implements Command {
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
             new CommandDefinition("!mob", "<Monster ID> (hp <HP>) (exp <EXP>) (php <HP%>) (pexp <EXP%>)",
-                  "เน€เธฃเธตเธขเธเธกเธญเธเธชเน€เธ•เธญเธฃเนเธ”เนเธงเธข ID เธ—เธตเนเธเธณเธซเธเธ”", 2),
-            new CommandDefinition("!em", "<Monster ID>", "เน€เธฃเธตเธขเธ Elite Monster", 6)
+                  "เรียกมอนสเตอร์ด้วย ID ที่กำหนด", 2),
+            new CommandDefinition("!em", "<Monster ID>", "เรียก Elite Monster", 6)
       };
    }
 }

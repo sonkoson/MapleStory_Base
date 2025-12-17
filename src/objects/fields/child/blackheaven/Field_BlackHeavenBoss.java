@@ -643,7 +643,7 @@ public class Field_BlackHeavenBoss extends Field {
             mob.removeAllowedFsmSkill(3);
          }
       } else if (skillID == 223) {
-         this.broadcastMessage(CWvsContext.getScriptProgressMessage("๋ธ”๋ํ—ค๋ธ์ ์ฝ”์–ด๊ฐ€ ์นจ์…์๋ฅผ ํ–ฅํ•ด ๊ณต๊ฒฉ์ ์์‘ํ•ฉ๋๋ค."));
+         this.broadcastMessage(CWvsContext.getScriptProgressMessage("Black Heaven's Core begins attacking the intruder."));
          this.broadcastMessage(CField.playSound("BlackHeavenBoss/CoreStart", 100));
       }
    }

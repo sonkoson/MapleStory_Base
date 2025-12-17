@@ -28,7 +28,7 @@ public class AutobanManager implements Runnable {
          if (!c.getPlayer().isGM() && !c.getPlayer().isClone()) {
             this.addPoints(c, 5000, 0L, reason);
          } else {
-            c.getPlayer().dropMessage(5, "[เนเธเนเธเน€เธ•เธทเธญเธ] GM เนเธกเนเธญเธขเธนเนเนเธเน€เธเธทเนเธญเธเนเธเธเธฒเธฃเนเธเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด : " + reason);
+            c.getPlayer().dropMessage(5, "[Notice] GM is not subject to automatic ban: " + reason);
          }
       }
    }
@@ -60,19 +60,19 @@ public class AutobanManager implements Runnable {
                      .add(new AutobanManager.ExpirationEntry(System.currentTimeMillis() + expiration, acc, points));
             }
          } else if (!c.getPlayer().isGM() && !c.getPlayer().isClone()) {
-            StringBuilder sb = new StringBuilder("์คํ ๋ฐด (name : ");
+            StringBuilder sb = new StringBuilder("오ํ 밴 (name : ");
             sb.append(c.getPlayer().getName());
             sb.append(", IP : ");
             sb.append(c.getSession().remoteAddress().toString().split(":")[0]);
-            sb.append(") ์ฌ์  : ");
+            sb.append(") 사์  : ");
             String reason_ = String.join(", ", this.reasons.get(acc));
             sb.append(reason_);
             Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0,
-                  "[Autoban] " + c.getPlayer().getName() + " เธ–เธนเธเนเธเธ (เธชเธฒเน€เธซเธ•เธธ: " + reason + ")"));
+                  "[Autoban] " + c.getPlayer().getName() + " ถูกแบน (สาเหตุ: " + reason + ")"));
             c.getPlayer().ban(sb.toString(), true, true, false);
             c.disconnect(false);
          } else {
-            c.getPlayer().dropMessage(5, "[เนเธเนเธเน€เธ•เธทเธญเธ] GM เนเธกเนเธญเธขเธนเนเนเธเน€เธเธทเนเธญเธเนเธเธเธฒเธฃเนเธเธเธญเธฑเธ•เนเธเธกเธฑเธ•เธด : " + reason);
+            c.getPlayer().dropMessage(5, "[Notice] GM is not subject to automatic ban: " + reason);
          }
       } finally {
          this.lock.unlock();

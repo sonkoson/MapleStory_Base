@@ -409,7 +409,7 @@ public class Field_WillBattle extends Field {
 
       if (monster != null) {
          this.sendWillFreeze();
-         this.sendWillNotice("เธ•เธญเธเธเธตเนเนเธซเธฅเธฐ! เธ•เนเธญเธเนเธเธกเธ•เธตเธ•เธญเธเธ—เธตเน Will เนเธฃเนเธเธฒเธฃเธเนเธญเธเธเธฑเธ!", 245, 12000);
+         this.sendWillNotice("ตอนนี้แหละ! ต้องโจมตีตอนที่ Will ไร้การป้องกัน!", 245, 12000);
          if (monster.getId() != 8880300 && monster.getId() != 8880340 && monster.getId() != 8880360) {
             this.broadcastMessage(MobPacket.mobForcedSkillAction(monster.getObjectId(), 2, false));
          } else {
@@ -1044,7 +1044,7 @@ public class Field_WillBattle extends Field {
 
    public void setTakeDown() {
       this.sendWillUnk();
-      this.sendWillNotice("Mirror of Lies เธชเธฐเธ—เนเธญเธเธเธฒเธฃเนเธเธกเธ•เธตเธเธฅเธฑเธ เธซเธฒเธเธฃเธญเธขเนเธขเธเธเธฃเธฒเธเธเธเธถเนเธ เนเธซเนเน€เธเธเธดเธเธซเธเนเธฒเธเธฑเธเธเธฒเธฃเนเธเธกเธ•เธต", 245, 26000);
+      this.sendWillNotice("Mirror of Lies สะท้อนการโจมตีกลับ หากรอยแยกปรากฏขึ้น ให้เผชิญหน้ากับการโจมตี", 245, 26000);
       this.setTakeDownCount(0);
       this.setStartTakeDownTime(System.currentTimeMillis() + 3000L);
       this.setNextStartMirrorOfLiesTime(System.currentTimeMillis() + 120000L);

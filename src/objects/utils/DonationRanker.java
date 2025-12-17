@@ -66,7 +66,7 @@ public class DonationRanker {
             } catch (SQLException var12) {
             }
 
-            System.out.println(ai.get() + "์, " + a.getKey() + "(" + accID + ") : " + a.getValue() + " ๋€ํ‘ ์บ๋ฆญํฐ : " + name);
+            System.out.println(ai.get() + " Rank, " + a.getKey() + "(" + accID + ") : " + a.getValue() + " Main Character : " + name);
             al.set(al.get() + a.getValue().intValue());
             ai.set(ai.get() + 1);
          });

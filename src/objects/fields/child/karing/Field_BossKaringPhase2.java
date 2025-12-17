@@ -24,7 +24,7 @@ public class Field_BossKaringPhase2 extends Field_BossKaring {
          this.nextParadeTime = System.currentTimeMillis() + 60000L;
          KaringFieldAction.InitPacket.Parade parade = new KaringFieldAction.InitPacket.Parade(this.FieldSkill, this.FieldSkillLevel);
          parade.broadcastPacket(this);
-         this.broadcastMessage(CField.sendWeatherEffectNotice(385, 5000, false, "เธงเธดเธเธเธฒเธ“เนเธเนเธเธเธญเธเธชเธฑเธ•เธงเนเธเธฃเธฐเธซเธฅเธฒเธ”เธ—เธตเน Karing เธ”เธนเธ”เธเธฑเธเธเธณเธฅเธฑเธเธ”เธดเนเธเธฃเธ เธ•เนเธญเธเธซเธฅเธเธซเธฅเธตเธเน€เธเธทเนเธญเนเธกเนเนเธซเนเธ–เธนเธเธเธฅเธทเธเธเธดเธ"));
+         this.broadcastMessage(CField.sendWeatherEffectNotice(385, 5000, false, "วิญญาณแค้นของสัตว์ประหลาดที่ Karing ดูดซับกำลังดิ้นรน ต้องหลบหลีกเพื่อไม่ให้ถูกกลืนกิน"));
       }
 
       if (boss != null) {
@@ -40,7 +40,7 @@ public class Field_BossKaringPhase2 extends Field_BossKaring {
    @Override
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
-      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "Karing เธ—เธตเนเธ”เธนเธ”เธเธฑเธ 4 เธชเธฑเธ•เธงเนเธฃเนเธฒเธข เธ”เธนเน€เธซเธกเธทเธญเธเธเธฐเธญเธฒเธฅเธฐเธงเธฒเธ”เนเธ”เนเธ—เธธเธเน€เธกเธทเนเธญ"));
+      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "Karing ที่ดูดซับ 4 สัตว์ร้ามา ดูเหมือนจะอาละวาดได้ทุกเมื่อ"));
    }
 
    @Override

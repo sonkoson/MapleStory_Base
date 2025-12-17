@@ -15,7 +15,7 @@ public class TeleportAttackData_DoubleArray extends TeleportAttackData {
    public void decode(PacketDecoder packet) {
       int size = packet.readInt();
       if (size > 1000) {
-         String msg = "TeleportAttackData_DoubleArray ์ค๋ฅ (๋ฐ๋ฏธ์ง€ ํ์ฑ ์๋ชป๋จ)\r\n" + packet.toString(true) + "\r\n";
+         String msg = "TeleportAttackData_DoubleArray Error (Damage parsing incorrect)\r\n" + packet.toString(true) + "\r\n";
          FileoutputUtil.log("./ErrorLog/Log_DamageParseError.rtf", msg);
       } else {
          this.data = new TeleportAttackData_DoubleArray_Elem[size];

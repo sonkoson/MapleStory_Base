@@ -3147,7 +3147,7 @@ public class SecondaryStatEffect implements Serializable {
                applyfrom.getClient().getSession().writeAndFlush(CWvsContext.enableActions(applyfrom, exclusive));
                return false;
             } else if (this.sourceid == 33101004 && applyfrom.getMap().isTown()) {
-               applyfrom.dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธชเธเธดเธฅเธเธตเนเนเธเน€เธกเธทเธญเธเนเธ”เน");
+               applyfrom.dropMessage(5, "ไม่สามารถใช้สกิลนี้ในเมืองได้");
                applyfrom.getClient().getSession().writeAndFlush(CWvsContext.enableActions(applyfrom, exclusive));
                return false;
             } else if ((this.sourceid < 33001007 || this.sourceid > 33001015)
@@ -3782,7 +3782,7 @@ public class SecondaryStatEffect implements Serializable {
                         applyto.silentPartyUpdate();
                      }
                   } else {
-                     applyto.dropMessage(5, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเธ”เธเธฃเธฐเธ•เธนเนเธ”เนเน€เธเธทเนเธญเธเธเธฒเธเธเธฃเธฐเธ•เธนเนเธเน€เธกเธทเธญเธเน€เธ•เนเธกเนเธฅเนเธง");
+                     applyto.dropMessage(5, "ไม่สามารถเปิดประตูได้เนื่องจากประตูในเมืองเต็มแล้ว");
                   }
                } else if (this.isMist()) {
                   Rectangle bounds = this.calculateBoundingBox(pos != null ? pos : applyfrom.getPosition(),

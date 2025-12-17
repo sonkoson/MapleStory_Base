@@ -103,7 +103,7 @@ public class HiredMerchant extends AbstractPlayerStore {
             c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
          }
       } else {
-         c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
+         c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       }
    }

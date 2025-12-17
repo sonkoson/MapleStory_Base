@@ -385,7 +385,7 @@ public class MapleNettyHandler extends SimpleChannelInboundHandler<PacketDecoder
             }
             break;
          case U_OTP_REQUEST:
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฑเธเธเนเธเธฑเธ U-OTP เธเธฐเธญเธฑเธเน€เธ”เธ•เนเธเธ เธฒเธขเธซเธฅเธฑเธ!"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ฟังก์ชัน U-OTP จะอัปവในเธ ายหลัง!"));
             break;
          case PACKET_ERROR:
             if (slea.available() >= 6L) {

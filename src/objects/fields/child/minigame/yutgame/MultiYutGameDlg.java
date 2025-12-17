@@ -23,7 +23,7 @@ public class MultiYutGameDlg {
    public void init(List<MapleCharacter> players) {
       if (players.size() < 2) {
          for (MapleCharacter player : this.field.getCharactersThreadsafe()) {
-            player.dropMessage(5, "เธเธณเธเธงเธเธเธนเนเน€เธฅเนเธเนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเน€เธเธก เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
+            player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
             player.setRegisterTransferField(ServerConstants.TownMap);
             player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }
@@ -58,7 +58,7 @@ public class MultiYutGameDlg {
    public void firstSetSuperItem() {
       if (this.field.getCharactersSize() < 2) {
          for (MapleCharacter player : this.field.getCharactersThreadsafe()) {
-            player.dropMessage(5, "เธเธณเธเธงเธเธเธนเนเน€เธฅเนเธเนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเน€เธเธก เธเธถเธเธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธ");
+            player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
             player.setRegisterTransferField(ServerConstants.TownMap);
             player.setRegisterTransferFieldTime(System.currentTimeMillis() + 1000L);
          }

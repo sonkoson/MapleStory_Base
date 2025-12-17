@@ -292,8 +292,8 @@ public class DojangRanking {
                   }
 
                   if (playerx != null) {
-                     System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
-                     playerx.dropMessage(5, "[์•๋ฆผ] ๋ฌด๋ฆ๋์ฅ ๋ญํน " + e.getRank() + "์ ๋ณด์์ ์๋ นํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.");
+                     System.out.println(e.getName() + " character reward settled for Mu Lung Dojo Rank " + e.getRank() + ".");
+                     playerx.dropMessage(5, "[Notice] Please claim your Mu Lung Dojo Rank " + e.getRank() + " reward.");
                      playerx.updateOneInfo(1234590, "dojang_reward", String.valueOf(e.getRank()));
                   } else {
                      PreparedStatement ps2 = con.prepareStatement("SELECT `id` FROM `characters` WHERE `name` = ?");
@@ -313,7 +313,7 @@ public class DojangRanking {
                         ps3.setString(4, time);
                         ps3.executeUpdate();
                         ps3.close();
-                        System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
+                        System.out.println(e.getName() + " character reward settled for Mu Lung Dojo Rank " + e.getRank() + ".");
                      }
 
                      rs2.close();
@@ -345,8 +345,8 @@ public class DojangRanking {
                   }
 
                   if (playerx != null) {
-                     System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
-                     playerx.dropMessage(5, "[์•๋ฆผ] ๋ฌด๋ฆ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์ ๋ณด์์ ์๋ นํ•ด์ฃผ์๊ธฐ ๋ฐ”๋๋๋ค.");
+                     System.out.println(e.getName() + " character reward settled for Mu Lung Dojo (Challenge) Rank " + e.getRank() + ".");
+                     playerx.dropMessage(5, "[Notice] Please claim your Mu Lung Dojo (Challenge) Rank " + e.getRank() + " reward.");
                      playerx.updateOneInfo(1234590, "dojang_reward_c", String.valueOf(e.getRank()));
                   } else {
                      PreparedStatement ps2 = con.prepareStatement("SELECT `id` FROM `characters` WHERE `name` = ?");
@@ -366,7 +366,7 @@ public class DojangRanking {
                         ps3.setString(4, time);
                         ps3.executeUpdate();
                         ps3.close();
-                        System.out.println(e.getName() + " ์บ๋ฆญํฐ๊ฐ€ ๋ฌด๋ฆ ๋์ฅ(์ฑ๋ฆฐ์ง€) ๋ญํน " + e.getRank() + "์๋ก ๋ณด์์ด ์ •์ฐ๋์—์ต๋๋ค.");
+                        System.out.println(e.getName() + " character reward settled for Mu Lung Dojo (Challenge) Rank " + e.getRank() + ".");
                      }
 
                      rs2.close();

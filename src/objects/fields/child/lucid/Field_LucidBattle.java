@@ -140,7 +140,7 @@ public abstract class Field_LucidBattle extends Field {
                      if (hpCount < 8) {
                         this.setStatueStack(Math.min(3, this.statueStack + 1), false);
                         if (this.lastHPCount == -1) {
-                           this.sendLucidNotice("เธเธ”เธเธธเนเธก 'Harvest' เนเธเธฅเนเธฃเธนเธเธเธฑเนเธเนเธ•เธฃเน€เธเธทเนเธญเธขเธฑเธเธขเธฑเนเธเธเธฅเธฑเธเธเธญเธ Lucid!", 0);
+                           this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
                         }
                      }
 
@@ -151,7 +151,7 @@ public abstract class Field_LucidBattle extends Field {
                   if (hpCount < 9) {
                      this.setStatueStack(Math.min(3, this.statueStack + 1), false);
                      if (this.lastHPCount == -1) {
-                        this.sendLucidNotice("เธเธ”เธเธธเนเธก 'Harvest' เนเธเธฅเนเธฃเธนเธเธเธฑเนเธเนเธ•เธฃเน€เธเธทเนเธญเธขเธฑเธเธขเธฑเนเธเธเธฅเธฑเธเธเธญเธ Lucid!", 0);
+                        this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
                      }
                   }
 
@@ -519,7 +519,7 @@ public abstract class Field_LucidBattle extends Field {
          this.butterflies.add(newButterfly);
          this.sendLucidAddButterfly(newButterfly);
          if (this.butterflies.size() == 33) {
-            this.sendLucidNotice("เธเธงเธฒเธกเธเธฑเธเธเธณเธฅเธฑเธเธฃเธธเธเนเธฃเธเธเธถเนเธ เธฃเธฐเธงเธฑเธเธ•เธฑเธงเธ”เนเธงเธข!", -1);
+            this.sendLucidNotice("ความฝันกำลังรุนแรงขึ้น ระวังตัวด้วย!", -1);
          }
       }
    }

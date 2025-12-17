@@ -286,12 +286,12 @@ public class VMatrixHandler {
                }
 
                if (dest == -1) {
-                  c.getPlayer().dropMessage(1, "เนเธกเนเธกเธตเธเนเธญเธเธงเนเธฒเธเธชเธณเธซเธฃเธฑเธเธชเธงเธกเนเธชเน");
+                  c.getPlayer().dropMessage(1, "ไม่มีช่องว่างสำหรับสวมใส่");
                   return;
                }
 
                if (!checkEquippedVCore(dest, c.getPlayer())) {
-                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเนเธเธเนเธญเธเธ—เธตเนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธเนเธเธฒเธ");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ในช่องที่ยังไม่เปิดใช้งาน");
                   return;
                }
             }
@@ -343,7 +343,7 @@ public class VMatrixHandler {
                }
 
                if (!checkEquippedVCore(destPos, c.getPlayer())) {
-                  c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเธงเธกเนเธชเนเนเธเธเนเธญเธเธ—เธตเนเธขเธฑเธเนเธกเนเน€เธเธดเธ”เนเธเนเธเธฒเธ");
+                  c.getPlayer().dropMessage(1, "ไม่สามารถสวมใส่ในช่องที่ยังไม่เปิดใช้งาน");
                   return;
                }
 
@@ -619,14 +619,14 @@ public class VMatrixHandler {
 
             if (c.getPlayer().getVCoreSkillsNoLock().size() >= 500) {
                c.getPlayer().dropMessage(1,
-                     "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธ Skill Core เนเธ”เนเน€เธเธดเนเธกเธญเธตเธ เธเธฃเธธเธ“เธฒเธขเนเธญเธขเธซเธฃเธทเธญเธญเธฑเธเน€เธเธฃเธ” Core เน€เธเธทเนเธญเน€เธเธดเนเธกเธเธทเนเธเธ—เธตเน");
+                     "ไม่สามารถเก็บ Skill Core ได้เพิ่มอีก กรุณาย่อยหรืออัพเกรด Core เพื่อเพิ่มพื้นที่");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
 
             int quantity = VCoreData.getNeedMakePieceOfCore(infox.getType()) * size;
             if (c.getPlayer().getPieceOfCore() < quantity) {
-               c.getPlayer().dropMessage(1, "V-Core Piece เนเธกเนเน€เธเธตเธขเธเธเธญ!");
+               c.getPlayer().dropMessage(1, "V-Core Piece ไม่เพียงพอ!");
                c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                return;
             }
@@ -741,7 +741,7 @@ public class VMatrixHandler {
             slea.skip(4);
             slotx = c.getPlayer().getVMatrixSlot(slotIndexx);
             if (slotx.getReleased() != 0 || slotx.getIndex() < 4) {
-               c.getPlayer().dropMessage(1, "เธเนเธญเธเธเธตเนเน€เธเธดเธ”เธญเธขเธนเนเนเธฅเนเธงเธซเธฃเธทเธญเน€เธเนเธเธเนเธญเธเธ—เธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเธ”เนเธ”เน (Character Name : "
+               c.getPlayer().dropMessage(1, "ช่องนี้เปิดอยู่แล้วหรือเป็นช่องที่ไม่สามารถเปิดได้ (Character Name : "
                      + c.getPlayer().getName() + ")");
                return;
             }
@@ -769,7 +769,7 @@ public class VMatrixHandler {
 
             if (meso > c.getPlayer().getMeso()) {
                c.getPlayer().dropMessage(1,
-                     "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเน€เธเธดเธ”เธเนเธญเธ (Character Name : " + c.getPlayer().getName() + ")");
+                     "Meso ไม่เพียงพอสำหรับเปิดช่อง (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -792,7 +792,7 @@ public class VMatrixHandler {
 
             if (c.getPlayer().getMeso() < VMatrixOption.info.matrixPointResetMeso) {
                c.getPlayer().dropMessage(1,
-                     "Meso เนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเธฃเธตเน€เธเนเธ•เธเธฒเธฃเธญเธฑเธเน€เธเธฃเธ”เธเนเธญเธ (Character Name : " + c.getPlayer().getName() + ")");
+                     "Meso ไม่เพียงพอสำหรับการรีเซ็ตการอัพเกรดช่อง (Character Name : " + c.getPlayer().getName() + ")");
                return;
             }
 
@@ -830,7 +830,7 @@ public class VMatrixHandler {
             side = slea.readInt();
             String password = slea.readMapleAsciiString();
             if (!c.getSecondPassword().equals(password)) {
-               c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2");
+               c.getPlayer().dropMessage(1, "กรุณาตรวจสอบรหัสผ่านชั้นที่ 2");
                return;
             }
 

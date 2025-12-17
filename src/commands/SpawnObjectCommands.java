@@ -26,19 +26,19 @@ public class SpawnObjectCommands implements Command {
             c.getPlayer().getMap().broadcastMessage(CField.spawnRune(rune, false));
             c.getPlayer().getMap().broadcastMessage(CField.spawnRune(rune, true));
          } else {
-            c.getPlayer().dropMessage(5, "เนเธชเนเธเนเธฒเนเธ”เนเน€เธเธตเธขเธ 0-9 เนเธฅเธฐเธชเธฒเธกเธฒเธฃเธ–เธชเธฃเนเธฒเธเธฃเธนเธเนเธ”เนเธเธฃเธฑเนเธเธฅเธฐ 1 เธญเธฑเธเน€เธ—เนเธฒเธเธฑเนเธ");
+            c.getPlayer().dropMessage(5, "ใส่ค่าได้เพียง 0-9 และสามารถสร้างรูนได้ครั้งละ1 อันเท่านั้น");
          }
       } else if (splitted[0].equals("!objectcount")) {
          c.getPlayer().dropMessage(5,
-               "เธกเธตเธญเธญเธเน€เธเธเธ•เนเธเธณเธเธงเธ " + c.getPlayer().getMap().getMapObjectSize() + " เธเธดเนเธเนเธเนเธเธเธ—เธตเนเธเธฑเธเธเธธเธเธฑเธ");
+               "มีออบเจกต์จำนวน " + c.getPlayer().getMap().getMapObjectSize() + " ชิ้นในแผนที่ปัจจุบัน");
       }
    }
 
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!rune", "<type>", "เน€เธฃเธตเธขเธเธฃเธนเธเธญเธญเธเธกเธฒเธ—เธตเนเธ•เธณเนเธซเธเนเธเธเธญเธเธเธธเธ“", 6),
-            new CommandDefinition("!objectcount", "", "เนเธชเธ”เธเธเธณเธเธงเธเธญเธญเธเน€เธเธเธ•เนเนเธเนเธเธเธ—เธตเนเธเธฑเธเธเธธเธเธฑเธ", 6)
+            new CommandDefinition("!rune", "<type>", "เรียกรูนออกมҷี่ตำแหน่งของคุณ", 6),
+            new CommandDefinition("!objectcount", "", "แแสดงงจำนวนออบเจกต์ในแผนที่ปัจจุบัน", 6)
       };
    }
 }

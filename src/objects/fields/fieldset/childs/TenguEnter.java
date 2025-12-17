@@ -24,8 +24,8 @@ public class TenguEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "tengu_clear";
       this.canTimeKey = "tengu_can_time";
-      this.bossName = "ํ…๊ตฌ";
-      this.difficulty = "ํ•๋“";
+      this.bossName = "텐구";
+      this.difficulty = "Hard";
       this.dailyLimit = 1;
    }
 
@@ -114,10 +114,10 @@ public class TenguEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

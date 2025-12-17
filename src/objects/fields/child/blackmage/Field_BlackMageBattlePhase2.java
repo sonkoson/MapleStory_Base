@@ -89,7 +89,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
             this.removeMonster(mob, 1);
          }
 
-         this.sendBlackMageNotice("เธเธฅเธฑเธเธฅเธถเธเธฅเธฑเธเนเธเนเธญเธญเธเธกเธฒเธเธฒเธ Black Mage เนเธฅเธฐเธเธฅเธทเธเธเธดเธเธเธฑเธฅเธฅเธฑเธเธเนเนเธซเนเธเธเธงเธฒเธกเธกเธทเธ”", 7000);
+         this.sendBlackMageNotice("พลังลึกลับแผ่ออกมาจาก Black Mage และกลืนกินบัลลังก์แห่งความมืด", 7000);
          MapleCharacter p = null;
 
          for (MapleCharacter player : this.getCharactersThreadsafe()) {
@@ -123,7 +123,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
 
          if (this.nextCreatePiercingGazeTime != 0L && this.nextCreatePiercingGazeTime <= System.currentTimeMillis()) {
             if (boss != null) {
-               this.sendBlackMageNotice("Eye of Ruin เนเธฅเนเธ•เธฒเธกเธจเธฑเธ•เธฃเธน", 3000);
+               this.sendBlackMageNotice("Eye of Ruin ไล่ตามศัตรู", 3000);
                this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), 5, false));
                this.sendPiercingGaze();
             }
@@ -171,7 +171,7 @@ public class Field_BlackMageBattlePhase2 extends Field_BlackMage {
             if (boss != null) {
                this.broadcastMessage(MobPacket.blackMageSkillAction(boss.getObjectId(), this.flamingSpikesType.getType(), true));
                this.lightningColumns();
-               this.sendBlackMageNotice("เธชเธฒเธขเธเนเธฒเธชเธตเนเธ”เธเธเธญเธ Black Mage เธเธเธเธฅเธธเธกเนเธเธ—เธฑเนเธง เธ•เนเธญเธเธซเธฒเธ—เธตเนเธซเธฅเธเธ เธฑเธข", 3000);
+               this.sendBlackMageNotice("สายฟ้าสีแดงของ Black Mage ปกคลุมไปทั่ว ต้องหาที่หลบภัย", 3000);
             }
 
             this.nextCreateLightningColumnsTime = System.currentTimeMillis() + 72000L;

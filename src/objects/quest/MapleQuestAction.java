@@ -186,7 +186,7 @@ public class MapleQuestAction implements Serializable {
                         int period = itemx.period / 1440;
                         String name = MapleItemInformationProvider.getInstance().getName(id);
                         if (id / 10000 == 114 && name != null && name.length() > 0) {
-                           String msg = "<" + name + "> ํ์ฅ์ ํ๋“ํ•์…จ์ต๋๋ค!";
+                           String msg = "You obtained <" + name + "> Medal!";
                            c.dropMessage(-1, msg);
                            c.dropMessage(5, msg);
                         }
@@ -356,12 +356,12 @@ public class MapleQuestAction implements Serializable {
                      short count = (short)itemx.count;
                      if (count < 0) {
                         if (!c.haveItem(id, count, false, true)) {
-                           c.dropMessage(1, "เธเธธเธ“เธเธฒเธ”เนเธญเน€เธ—เธกเธเธฒเธเธญเธขเนเธฒเธเธชเธณเธซเธฃเธฑเธเน€เธเธงเธช");
+                           c.dropMessage(1, "คุณขาดไอเทมบางอย่างสำหรับเควส");
                            return false;
                         }
                      } else {
                         if (MapleItemInformationProvider.getInstance().isPickupRestricted(id) && c.haveItem(id, 1, true, false)) {
-                           c.dropMessage(1, "เธกเธตเนเธญเน€เธ—เธกเธเธตเนเธญเธขเธนเนเนเธฅเนเธง: " + MapleItemInformationProvider.getInstance().getName(id));
+                           c.dropMessage(1, "มีไอเทมนี้อยู่แล้ว: " + MapleItemInformationProvider.getInstance().getName(id));
                            return false;
                         }
 
@@ -387,20 +387,20 @@ public class MapleQuestAction implements Serializable {
             }
 
             if (c.getInventory(MapleInventoryType.EQUIP).getNumFreeSlot() < eq) {
-               c.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธ Equip " + eq + "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+               c.dropMessage(1, "ช่องเก็บของ Equip " + eq + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.USE).getNumFreeSlot() < use) {
-               c.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธ Use " + use + "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+               c.dropMessage(1, "ช่องเก็บของ Use " + use + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.SETUP).getNumFreeSlot() < setup) {
-               c.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธ Setup " + setup + "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+               c.dropMessage(1, "ช่องเก็บของ Setup " + setup + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else if (c.getInventory(MapleInventoryType.ETC).getNumFreeSlot() < etc) {
-               c.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธ Etc " + etc + "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+               c.dropMessage(1, "ช่องเก็บของ Etc " + etc + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                return false;
             } else {
                if (c.getInventory(MapleInventoryType.CASH).getNumFreeSlot() < cash) {
-                  c.dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธ Cash " + cash + "เธเธฃเธธเธ“เธฒเธ—เธณเธเนเธญเธเธงเนเธฒเธเนเธฅเนเธงเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธ");
+                  c.dropMessage(1, "ช่องเก็บของ Cash " + cash + "กรุณาทำช่องว่างแล้วลองใหม่อีกครั้ง");
                   return false;
                }
 
@@ -455,7 +455,7 @@ public class MapleQuestAction implements Serializable {
                         int period = itemx.period / 1440;
                         String name = MapleItemInformationProvider.getInstance().getName(id);
                         if (id / 10000 == 114 && name != null && name.length() > 0) {
-                           String msg = "<" + name + "> ํ์ฅ์ ํ๋“ํ•์…จ์ต๋๋ค!";
+                           String msg = "You obtained <" + name + "> Medal!";
                            c.dropMessage(-1, msg);
                            c.dropMessage(5, msg);
                         }

@@ -133,7 +133,7 @@ public class PuzzleMaster extends FieldSetInstance {
          user.send(PuzzleMasterStartTimer(1, System.currentTimeMillis() + 8000L));
          user.send(this.PuzzleMasterSetInfo(this.randomPuzzle, this.stage));
          user.send(CField.tangyoonClock(1800));
-         user.send(CField.addPopupSay(9062572, 5000, "#b#eํฌ๋ฆฌ์—์ดํฐ๋“ค์\r\nํผ์ฆ ๋ง์ถ”๊ธฐ ๋์ !#n#k\r\n#r์ง€๊ธ ๋ฐ”๋ก ์์‘ํ•ฉ๋๋ค!#k", ""));
+         user.send(CField.addPopupSay(9062572, 5000, "#b#e크리에이터들의\r\n퍼즐 맞추기 도์ !#n#k\r\n#r지금 바로 시작합니다!#k", ""));
       }
    }
 

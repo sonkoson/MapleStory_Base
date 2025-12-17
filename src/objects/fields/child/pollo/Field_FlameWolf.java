@@ -35,7 +35,7 @@ public class Field_FlameWolf extends Field {
    public void onEnter(MapleCharacter player) {
       this.resetFully(false);
       super.onEnter(player);
-      player.send(CField.startMapEffect("๋ถ๊ฝ๋‘๋€๋ฅผ ์ฒ์นํ•  ์ฉ์ฌ๊ฐ€ ๋์—๊ตฐ. ์–ด์ ๋…€์์ ๊ณต๊ฒฉํ•ด! ๋จธ๋ฌด๋ฅผ ์ ์๋” ์๊ฐ์€ 30์ด ๋ฟ์ด์•ผ!", 5120159, true, 30));
+      player.send(CField.startMapEffect("More heroes to defeat the Flame Wolf. Attack him! You only have 30 seconds!", 5120159, true, 30));
       player.send(CField.getClock(30));
       player.setEnterFlameWolfTime(System.currentTimeMillis());
       if (this.getAllMonstersThreadsafe().size() <= 0) {

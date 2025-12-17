@@ -71,7 +71,7 @@ public class Field_MultiYutGame extends Field {
                   gameInfo.setFoulCount(gameInfo.getFoulCount() + 1);
                   player.send(
                      CField.UIPacket.sendBigScriptProgressMessage(
-                        "เธซเธกเธ”เน€เธงเธฅเธฒ " + gameInfo.getFoulCount() + "ํ. 5ํ ์ด์ ์ ํด์ฅ ์ฒ๋ฆฌ๋ฉ๋๋ค.", FontType.NanumGothic, FontColorType.Green
+                        "หมดเวลҁ" + gameInfo.getFoulCount() + "회. 5회 이상 시 퇴장 처리됩니다.", FontType.NanumGothic, FontColorType.Green
                      )
                   );
                   this.setAuto(true);

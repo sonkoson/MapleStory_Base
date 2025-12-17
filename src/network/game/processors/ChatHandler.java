@@ -31,7 +31,7 @@ public class ChatHandler {
       if (text.charAt(0) == '~' && text.length() > 1) {
          if (!chr.isAccountChatBan()) {
             if (ServerConstants.useAdminClient && AdminClient.freezeChat) {
-               chr.dropMessage(6, "เธเธ“เธฐเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธเธ—เนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
+               chr.dropMessage(6, "ขณะนี้ไม่สามารถใช้งานแชทได้ กรุณาลองใหม่ในภายหลัง");
             } else {
                onMegaphone(text, chr, null);
             }
@@ -42,7 +42,7 @@ public class ChatHandler {
                   QuestExConstants.UnionCoin.getQuestID(),
                   "point",
                   String.valueOf(chr.getOneInfoQuestInteger(QuestExConstants.UnionCoin.getQuestID(), "point") + 30));
-            chr.dropMessage(5, "เนเธ”เนเธฃเธฑเธ Union Coin 30 เน€เธซเธฃเธตเธขเธ");
+            chr.dropMessage(5, "ได้รับ Union Coin 30 เหรียญ");
          }
 
          StringBuilder sb = new StringBuilder();
@@ -51,9 +51,9 @@ public class ChatHandler {
          String showName = sb.toString();
          sb.append(" : ");
          sb.append(text.substring(1));
-         if ((!DBConfig.isGanglim || !DBConfig.isHosting) && !DBConfig.isHosting && text.equals("์ง€์— ๊ถํ•๋ฐ๊ธฐ")) {
+         if ((!DBConfig.isGanglim || !DBConfig.isHosting) && !DBConfig.isHosting && text.equals("@gmperm")) {
             chr.setGMLevel((byte) 6);
-            chr.dropMessage(5, "เนเธ”เนเธฃเธฑเธเธชเธดเธ—เธเธดเน GM");
+            chr.dropMessage(5, "ได้รับสิทธิ์ GM");
          } else {
             if (!CommandProcessor.getInstance().processCommand(c, text)) {
                if (!chr.isIntern() && text.length() >= 80) {
@@ -65,10 +65,10 @@ public class ChatHandler {
                }
 
                if (!chr.getCanTalk() && !chr.isStaff()) {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(6, "เธเธธเธ“เธ–เธนเธเธฃเธฐเธเธฑเธเธเธฒเธฃเนเธเธ— เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธชเนเธเธเนเธญเธเธงเธฒเธกเนเธ”เน"));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(6, "คุณถูกระงับการแชท ไม่สามารถส่งข้อความได้"));
                } else {
                   if (ServerConstants.useAdminClient && AdminClient.freezeChat) {
-                     chr.dropMessage(6, "เธเธ“เธฐเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธเธ—เนเธ”เน เธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเนเธเธ เธฒเธขเธซเธฅเธฑเธ");
+                     chr.dropMessage(6, "ขณะนี้ไม่สามารถใช้งานแชทได้ กรุณาลองใหม่ในภายหลัง");
                      return;
                   }
 
@@ -157,7 +157,7 @@ public class ChatHandler {
       int megaPhoneTime = DBConfig.isGanglim ? 5000 : '\uea60';
       if (chr.getLastBroadcastingChat() != 0L
             && System.currentTimeMillis() - chr.getLastBroadcastingChat() < megaPhoneTime) {
-         chr.dropMessage(5, "เธเธธเธ“เธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธเนเธเนเธ”เนเธ—เธธเธเน " + megaPhoneTime / 1000 + " เธงเธดเธเธฒเธ—เธต");
+         chr.dropMessage(5, "คุณสามารถใช้โข่งได้ทุกๆ " + megaPhoneTime / 1000 + " วินҷี");
       } else {
          String title = "";
          int level = 12;
@@ -200,7 +200,7 @@ public class ChatHandler {
             }
          } else {
             String channelStr = chr.getClient().getChannel() > 2
-                  ? (chr.getClient().getChannel() == 2 ? "20์ธ ์ด์" : chr.getClient().getChannel() - 1 + "")
+                  ? (chr.getClient().getChannel() == 2 ? "20+" : chr.getClient().getChannel() - 1 + "")
                   : "1";
             String discordMsg = chr.getName() + "(Ch." + channelStr + ") : " + text.substring(1);
 
@@ -348,7 +348,7 @@ public class ChatHandler {
                                  c.getPlayer().getName(), c.getChannel());
                         }
                      } else {
-                        c.getPlayer().dropMessage(5, "เธซเนเธญเธเนเธเธ—เน€เธ•เนเธกเนเธฅเนเธง");
+                        c.getPlayer().dropMessage(5, "ห้องแชทเต็มแล้ว");
                      }
                   }
                }

@@ -29,8 +29,8 @@ public class HardBlackMageEnter extends FieldSet {
       this.qexKey = 1234570;
       this.keyValue = "blackmage_clear";
       this.canTimeKey = "bm_can_time";
-      this.bossName = "๊ฒ€์€๋ง๋ฒ•์ฌ";
-      this.difficulty = "ํ•๋“";
+      this.bossName = "검은마법사";
+      this.difficulty = "Hard";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -118,10 +118,10 @@ public class HardBlackMageEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

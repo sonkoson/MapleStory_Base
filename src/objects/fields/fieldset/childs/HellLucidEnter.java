@@ -25,8 +25,8 @@ public class HellLucidEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "lucid_clear";
       this.canTimeKey = "lucid_can_time";
-      this.bossName = "๋ฃจ์๋“";
-      this.difficulty = "ํ—ฌ";
+      this.bossName = "Lucid";
+      this.difficulty = "Hell";
       this.dailyLimit = 3;
    }
 
@@ -109,10 +109,10 @@ public class HellLucidEnter extends FieldSet {
                if (chrx.getParty() != null && chrx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrx, BossLogType.EnterLog.getType(), sb));
                   this.AC(chrx, key, isPracticeMode);
                   chrx.setCurrentBossPhase(1);

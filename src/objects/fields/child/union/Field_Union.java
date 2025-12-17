@@ -39,7 +39,7 @@ public class Field_Union {
       if (this.player == null) {
          MapleUnion union = player.getMapleUnion();
          if (union == null) {
-            player.dropMessage(5, "เนเธซเธฅเธ”เธเนเธญเธกเธนเธฅ Union เธฅเนเธกเน€เธซเธฅเธง");
+            player.dropMessage(5, "Start Loading Union Failed");
             player.warp(15);
             return;
          }

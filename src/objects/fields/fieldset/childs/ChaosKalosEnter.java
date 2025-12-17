@@ -16,8 +16,8 @@ public class ChaosKalosEnter extends FieldSet {
       this.maxLv = 1000;
       this.qexKey = 1234569;
       this.keyValue = "kalos_clear";
-      this.bossName = "์นผ๋ก์ค";
-      this.difficulty = "์นด์ค์ค";
+      this.bossName = "Kalos";
+      this.difficulty = "Chaos";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 

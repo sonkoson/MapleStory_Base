@@ -28,7 +28,7 @@ public class Field_BossKaringPhase3 extends Field_BossKaring {
    public void onEnter(MapleCharacter player) {
       super.onEnter(player);
       player.send(CField.setTemporarySkill(32, new TemporarySkill[]{new TemporarySkill((byte)0, 80003261, (byte)1, 0, 0, 0)}));
-      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "เธ”เธนเน€เธซเธกเธทเธญเธเธงเนเธฒเน€เธเธฃเธทเนเธญเธเธ”เธเธ•เธฃเธตเธเธญเธเธชเธฑเธ•เธงเนเธเธฃเธฐเธซเธฅเธฒเธ”เธเธฐเธฅเนเธเธ—เธฐเธฅเธฑเธเนเธฅเธฐเธญเธฒเธฅเธฐเธงเธฒเธ” เธ•เนเธญเธเธซเธขเธธเธ”เธขเธฑเนเธเนเธกเนเนเธซเน Shangri-La เธเธฑเธเธ—เธฅเธฒเธข"));
+      player.send(CField.sendWeatherEffectNotice(382, 5000, false, "ดูเหมือนว่าเครื่องดนตรีของสัตว์ประหลาดจะล้นทะลักและอาละวาด ต้องหยุดยั้งไม่ให้ Shangri-La พังทลาย"));
    }
 
    @Override

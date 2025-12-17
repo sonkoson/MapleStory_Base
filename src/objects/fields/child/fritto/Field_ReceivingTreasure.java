@@ -51,7 +51,7 @@ public class Field_ReceivingTreasure extends Field {
             }
          } else {
             if (this.startGameTime == 0L) {
-               this.broadcastMessage(CField.startMapEffect("์ ํ”ํค์€ ๋ฐฉํ–ฅํค๋ฅผ ์ด์ฉํ•ด ๋ด๊ฐ€ ๋–จ์–ดํธ๋ฆฌ๋” ๋ณด๋ฌผ์ ์ต๋€ํ• ๋ง์ด ๋ฐ์•์ค!", 5120160, true, 10));
+               this.broadcastMessage(CField.startMapEffect("์ 프키와 방향키를 이용해 내가 떨어트리는 보물을 최대한 많이 받아줘!", 5120160, true, 10));
                this.startGameTime = System.currentTimeMillis() + 6000L;
                this.endGameTime = System.currentTimeMillis() + 66000L;
             }

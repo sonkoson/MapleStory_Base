@@ -74,7 +74,7 @@ public class CustomItem {
             }
 
             chr.updateInfoQuest(454545, data);
-            chr.dropMessage(5, "เธเธณเน€เธเนเธฒเธเนเธญเธกเธนเธฅเธซเธดเธเธ—เธฃเธฒเธเน€เธเธเน€เธ”เธเธเนเธเธฒเธเน€เธเน€เธเธตเธขเธชเธณเน€เธฃเนเธ (เธเนเธญเธกเธนเธฅเน€เธ”เธดเธกเธขเธฑเธเธเธเธญเธขเธนเน)");
+            chr.dropMessage(5, "นำเข้าข้อมูลหินทรานเซนเดนซ์จากเซเนียสำเร็จ (ข้อมูลเดิมยังคงอยู่)");
          }
       }
    }
@@ -91,7 +91,7 @@ public class CustomItem {
             }
          }
 
-         System.out.println("Total " + oldList.size() + "๊ฐ์ ๊ณผ๊ฑฐ ์ปค์คํ…€ ์•์ดํ…์ ๋ถ๋ฌ์”์ต๋๋ค. ");
+         System.out.println("Total " + oldList.size() + " old custom items loaded. ");
       }
    }
 
@@ -106,7 +106,7 @@ public class CustomItem {
 
    public static enum CustomItemType {
       None,
-      ๋ณด์กฐ์ฅ๋น,
-      ๊ฐ์ธ์;
+      SubEquipment,
+      EngravingStone;
    }
 }

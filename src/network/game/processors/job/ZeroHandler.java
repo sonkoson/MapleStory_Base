@@ -128,13 +128,13 @@ public class ZeroHandler {
             p.writeShort(SendPacketOpcode.INHERITANCE_INFO.getValue());
             Item alphaWeapon = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -11);
             if (alphaWeapon == null) {
-               player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธฑเธเน€เธเธฃเธ”เธญเธฒเธงเธธเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+               player.dropMessage(1, "ไม่สามารถอัพเกรดอาวุธได้อีกต่อไป");
                p.write(0);
                player.send(p.getPacket());
             } else {
                Item betaWeapon = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                if (betaWeapon == null) {
-                  player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธฑเธเน€เธเธฃเธ”เธญเธฒเธงเธธเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+                  player.dropMessage(1, "ไม่สามารถอัพเกรดอาวุธได้อีกต่อไป");
                   p.write(0);
                   player.send(p.getPacket());
                } else {
@@ -159,7 +159,7 @@ public class ZeroHandler {
                      } else {
                         p.write(0);
                         player.send(p.getPacket());
-                        player.dropMessage(1, "เน€เธฅเน€เธงเธฅเนเธกเนเน€เธเธตเธขเธเธเธญเธชเธณเธซเธฃเธฑเธเธเธฒเธฃเธญเธฑเธเน€เธเธฃเธ”เธญเธฒเธงเธธเธ");
+                        player.dropMessage(1, "เลเวลไม่เพียงพอสำหรับการอัพเกรดอาวุธ");
                      }
                   }
                }
@@ -188,7 +188,7 @@ public class ZeroHandler {
             if (alphaWeapon != null) {
                Item betaWeapon = player.getInventory(MapleInventoryType.EQUIPPED).getItem((short) -10);
                if (betaWeapon == null) {
-                  player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธฑเธเน€เธเธฃเธ”เธญเธฒเธงเธธเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+                  player.dropMessage(1, "ไม่สามารถอัพเกรดอาวุธได้อีกต่อไป");
                } else {
                   Equip alpha = (Equip) alphaWeapon.copy();
                   Equip beta = (Equip) betaWeapon.copy();
@@ -321,7 +321,7 @@ public class ZeroHandler {
                   }
                }
             } else {
-               player.dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธญเธฑเธเน€เธเธฃเธ”เธญเธฒเธงเธธเธเนเธ”เนเธญเธตเธเธ•เนเธญเนเธ");
+               player.dropMessage(1, "ไม่สามารถอัพเกรดอาวุธได้อีกต่อไป");
             }
          }
       }
@@ -521,7 +521,7 @@ public class ZeroHandler {
                   p.writeShort(SendPacketOpcode.EGO_EQUIP_CHECK_UPGRADE_ITEM_RESULT.getValue());
                   if (scroll.getItemId() / 10 != 20487 && scroll.getItemId() / 10 == 204936) {
                      p.write(0);
-                     p.writeMapleAsciiString("เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
+                     p.writeMapleAsciiString("ไม่สามารถใช้ไอเทมนี้ได้");
                      p.writeInt(0);
                   } else {
                      p.write(1);

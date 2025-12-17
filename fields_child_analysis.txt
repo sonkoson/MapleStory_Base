@@ -1,0 +1,266 @@
+src/objects/fields/child\arkarium\Field_Arkaium.java:92:                         .broadcastMessage(CWvsContext.getScriptProgressMessage("시간의 여์  륀느가 봉인에서 풀๋ ค났습니다."));
+src/objects/fields/child\arkarium\Field_Arkaium.java:93:                      eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("아카이럼을 퇴치하였습니다. ์ 단의 좌측 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+src/objects/fields/child\arkarium\Field_Arkaium.java:201:                      player.dropMessage(5, "Arkarium บԴเบือนกาลเวลาและเนรเทศคسไปที่ไหนสักแห่ง");
+src/objects/fields/child\blackheaven\Field_BlackHeavenBoss.java:646:          this.broadcastMessage(CWvsContext.getScriptProgressMessage("블랙헤븐의 코어가 침입자를 향해 공격을 시작합니다."));
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase1.java:48:          this.sendBlackMageNotice("Knight of Creation and Destruction พ่ายแพ้แล้ǁเส้นทางสู่ Black Mage เปԴออก", 7000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase1.java:92:             this.sendBlackMageNotice("Wailing Wall ปรากฏขึ้นและเข้าครอบงำพื้นที่", 3000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase1.java:140:             this.sendBlackMageNotice("สายฟ้าสีแดงที่น่ากลัวฟҴลงมҁจำกѴการเคลื่อนไหว", 3000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase2.java:92:          this.sendBlackMageNotice("พลังลึกลับแผ่ออกมาจาก Black Mage และกลืนกินบัลลังก์แห่งความม״", 7000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase2.java:126:                this.sendBlackMageNotice("Eye of Ruin ไล่ตามศѵรู", 3000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase2.java:174:                this.sendBlackMageNotice("สายฟ้าสีแดงของ Black Mage ปกคลุมไปทั่ǁต้องหҷี่หลบเธ ัย", 3000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase3.java:70:          this.sendBlackMageNotice("ทุกสิ่งรอบข้างกำลังสูญสลายไปในพริบตҴ้วยพลังอันท่วมท้น", 7000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase3.java:168:             this.sendBlackMageNotice("Black Mage ใช้พลังแห่งการสร้างแลзำลายล้าง ต้องเลือกหลบหลีกไปทางบนหรือล่าง", 4000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase3.java:505:          this.sendBlackMageNotice("ทٵสวรรค์แห่งกา÷ำลายล้างกำเนԴขึ้นจากความว่างเปล่า", 3000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:52:          this.sendBlackMageNotice("ทำลายไข่แห่งการสร้างและจบกาõ่อสู้อันยาวนานนี้กันเถอะ", 30000);
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:118:                            StringBuilder sb = new StringBuilder("보스 검은 마법사 격파 (" + list + ")");
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:128:                               "[보스격파] [CH."
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:129:                                  + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:132:                                  + "' 파티("
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:134:                                  + ")가 [검은 마법사]를 격파하였습니다."
+src/objects/fields/child\blackmage\Field_BlackMageBattlePhase4.java:164:             this.sendBlackMageNotice("อำนาจของผู้ใกล้เคียงพระเจ้าปรากฏขึ้น ต้องเลือกว่าจะรับพลังแห่งการสร้างหรืͷำลายล้าง", 3000);
+src/objects/fields/child\cygnus\Field_Cygnus.java:64:                            "คسได้กำจѴ Cygnus แล้ǁกรسาเดินผ่านปรеูหลักของ Hall of Cygnus เพื่ʹำเนินกาõ่อ",
+src/objects/fields/child\demian\Field_Demian.java:317:                         p.gainItem(4001869, var13, false, -1L, "데미안 격파로 얻은 아이템");
+src/objects/fields/child\demian\Field_Demian.java:324:                               StringBuilder sb = new StringBuilder("보스 노말 데미안 격파");
+src/objects/fields/child\demian\Field_Demian.java:369:                               StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 데미안 격파 (" + list + ")");
+src/objects/fields/child\demian\Field_Demian.java:385:                                        "[보스격파] [CH."
+src/objects/fields/child\demian\Field_Demian.java:386:                                           + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\demian\Field_Demian.java:389:                                           + "' 파티("
+src/objects/fields/child\demian\Field_Demian.java:391:                                           + ")가 [헬 데미안]을 격파하였습니다."
+src/objects/fields/child\demian\Field_Demian.java:398:                                        "[보스격파] [CH."
+src/objects/fields/child\demian\Field_Demian.java:399:                                           + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\demian\Field_Demian.java:402:                                           + "' 파티("
+src/objects/fields/child\demian\Field_Demian.java:404:                                           + ")가 [하드 데미안]을 격파하였습니다."
+src/objects/fields/child\demian\Field_Demian.java:412:                                     "[보스격파] [CH."
+src/objects/fields/child\demian\Field_Demian.java:413:                                        + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\demian\Field_Demian.java:416:                                        + "' 파티("
+src/objects/fields/child\demian\Field_Demian.java:418:                                        + ")가 [헬 데미안]을 격파하였습니다."
+src/objects/fields/child\demian\Field_Demian.java:772:       this.sendDemianNotice(216, "Damien ได้ครอบครองพลังแห่งความม״ที่สมบูó์แล้ว", -1, 31250);
+src/objects/fields/child\demian\Field_Demian.java:789:          this.sendDemianNotice(216, "ตราปรзับสมบูó์ Damien กำลังถูกความม״เข้าครอบงำ", -1, 10000);
+src/objects/fields/child\dojang\DojangRanking.java:295:                      System.out.println(e.getName() + " 캐릭터가 무릉 도장 랭킹 " + e.getRank() + "위로 보상이 ์ •산되었습니다.");
+src/objects/fields/child\dojang\DojangRanking.java:296:                      playerx.dropMessage(5, "[알림] 무릉도장 랭킹 " + e.getRank() + "위 보상을 수๋ น해주시기 바랍니다.");
+src/objects/fields/child\dojang\DojangRanking.java:316:                         System.out.println(e.getName() + " 캐릭터가 무릉 도장 랭킹 " + e.getRank() + "위로 보상이 ์ •산되었습니다.");
+src/objects/fields/child\dojang\DojangRanking.java:348:                      System.out.println(e.getName() + " 캐릭터가 무릉 도장(챌린지) 랭킹 " + e.getRank() + "위로 보상이 ์ •산되었습니다.");
+src/objects/fields/child\dojang\DojangRanking.java:349:                      playerx.dropMessage(5, "[알림] 무릉도장(챌린지) 랭킹 " + e.getRank() + "위 보상을 수๋ น해주시기 바랍니다.");
+src/objects/fields/child\dojang\DojangRanking.java:369:                         System.out.println(e.getName() + " 캐릭터가 무릉 도장(챌린지) 랭킹 " + e.getRank() + "위로 보상이 ์ •산되었습니다.");
+src/objects/fields/child\dojang\Field_Dojang.java:210:          this.player.dropMessage(5, "ปŴล็อค Mulung Dojo Challenge Mode แล้ว");
+src/objects/fields/child\dojang\Field_Dojang.java:215:          this.player.dropMessage(5, "ทำลายʶԵิสูงสشของสัปดาห์นี้เรียบร้อยแล้ว");
+src/objects/fields/child\dojang\Field_Dojang.java:260:             player.send(CField.startMapEffect("์ 한시간은 15분, 최대한 ์ 속하게 몬스터를 쓰러트리๊ณ  다음 층으로 올라가면 돼!", 5120024, true, 10));
+src/objects/fields/child\dojang\Field_Dojang.java:270:          player.send(CField.startMapEffect("사부님의 특별한 도법으로 모๋“  버프가 해์ 되었어. 이래야 좀 공평하지? 30초 줄테니까 준비해서 올라가라๊ณ .", 5120024, true, 10));
+src/objects/fields/child\dojang\Field_Dojang.java:298:          this.player.send(CWvsContext.getScriptProgressMessage("상대를 격파하였습니다. 10초간 타이머가 ์ •지됩니다."));
+src/objects/fields/child\dreambreaker\Field_DreamBreaker.java:210:                   this.player.send(dreamBreakerMsg("드림포인트 " + gainPoint + " 획득!"));
+src/objects/fields/child\dreambreaker\Field_DreamBreaker.java:369:          player.send(dreamBreakerMsg(this.stage - 1 + "스테이지 클리어!"));
+src/objects/fields/child\etc\DamageMeasurementRank.java:337:          unit.append(p).append("경 ");
+src/objects/fields/child\etc\DamageMeasurementRank.java:341:          unit.append(t).append("조 ");
+src/objects/fields/child\etc\DamageMeasurementRank.java:345:          unit.append(g).append("억 ");
+src/objects/fields/child\etc\DamageMeasurementRank.java:357:             ret.append("#Cgray#00#b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:359:             ret.append("#Cgray#0#b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:361:             ret.append("#Cgray##b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:376:                   ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ 투๋ ฅ#k : #e");
+src/objects/fields/child\etc\DamageMeasurementRank.java:384:                ret.append(" 삭์ 된 캐릭터\r\n");
+src/objects/fields/child\etc\DamageMeasurementRank.java:406:             ret.append("#Cgray#00#b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:408:             ret.append("#Cgray#0#b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:410:             ret.append("#Cgray##b#e").append(i).append("위#n#k");
+src/objects/fields/child\etc\DamageMeasurementRank.java:425:                   ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ 투๋ ฅ#k : #e");
+src/objects/fields/child\etc\DamageMeasurementRank.java:434:                ret.append(" 삭์ 된 캐릭터\r\n");
+src/objects/fields/child\etc\Field_DamageMeasurement.java:73:          unit.append(p).append("경 ");
+src/objects/fields/child\etc\Field_DamageMeasurement.java:77:          unit.append(t).append("조 ");
+src/objects/fields/child\etc\Field_DamageMeasurement.java:81:          unit.append(g).append("억 ");
+src/objects/fields/child\etc\Field_DamageMeasurement.java:85:          unit.append(m).append("만 ");
+src/objects/fields/child\etc\Field_DamageMeasurement.java:134:                this.broadcastMessage(CField.addPopupSay(9062025, 3000, "#b[์ 투๋ ฅ 측์ •]#k\r\n측์ •이 시작되었습니다. 용사님의 진가를 발휘해볼까요?", ""));
+src/objects/fields/child\etc\Field_DamageMeasurement.java:141:                   this.broadcastMessage(CField.addPopupSay(9062025, 1000, "#b[์ 투๋ ฅ 측์ •]#k\r\n\r\n현재까지 용사님의 ์ 투๋ ฅ은 #b" + this.getUnit(damage) + "#k 입니다.", ""));
+src/objects/fields/child\etc\Field_DamageMeasurement.java:150:                   this.broadcastMessage(CField.chatMsg(6, "[Measurement Complete] ความเสียหาµ่อหุ่นฟางในเวลҷี่กำหนด : " + this.getUnit(damage)));
+src/objects/fields/child\etc\Field_DamageMeasurement.java:155:                         "#b[์ 투๋ ฅ 측์ •]#k\r\n측์ •이 완료되었습니다.\r\n\r\n총 데미지 : #b" + this.getUnit(damage) + "#k\r\n\r\n์ 투๋ ฅ이 기록되었습니다. 기록은 랭킹에서 확인ํ•  수 있습니다.",
+src/objects/fields/child\etc\Field_DamageMeasurement.java:221:                   "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 좌측에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+src/objects/fields/child\etc\Field_DamageMeasurement.java:231:                   "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 우측에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+src/objects/fields/child\etc\Field_DamageMeasurement.java:241:                   "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 가운데에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+src/objects/fields/child\etc\Field_EventRabbit.java:41:                playerx.dropMessage(5, "กำจѴ Moon Bunny ไม่ทันเวลҁไม่ได้รับรางวัล");
+src/objects/fields/child\etc\Field_EventRabbit.java:78:                playerx.dropMessage(5, "กำจѴ Moon Bunny และได้รับ Persimmon Coin " + quantity + "ชิ้นที่ได้รับ");
+src/objects/fields/child\etc\Field_EventRabbit.java:79:                playerx.gainItem(4310221, quantity, false, 0L, "추석 이벤트로 획득");
+src/objects/fields/child\etc\Field_EventRabbit.java:81:                playerx.send(CField.addPopupSay(9062000, 5000, "월묘를 처치하여 #b단감 코인 " + quantity + "개#k를 획득했습니다.", ""));
+src/objects/fields/child\etc\Field_EventSnowman.java:41:                playerx.dropMessage(5, "กำจѴ Giant Snowman ไม่ทันเวลҁไม่ได้รับรางวัล");
+src/objects/fields/child\etc\Field_EventSnowman.java:77:                playerx.dropMessage(5, "กำจѴ Giant Snowman และได้รับ Merry Christmas Gift Box 1 กล่อง");
+src/objects/fields/child\etc\Field_EventSnowman.java:78:                playerx.gainItem(2430033, 1, false, 0L, "크리스마스 이벤트로 획득");
+src/objects/fields/child\etc\Field_EventSnowman.java:81:                playerx.send(CField.addPopupSay(9062000, 5000, "거대 눈사람을 처치하여 #b메리 크리스마스 ์ 물상자#k를 획득했습니다.", ""));
+src/objects/fields/child\etc\Field_MMRace.java:59:             this.broadcastMessage(CWvsContext.serverNotice(6, "멍멍이 ๋ 이싱이 시작되었습니다."));
+src/objects/fields/child\etc\Field_MMRace.java:61:             buggy.setEventName("버기");
+src/objects/fields/child\etc\Field_MMRace.java:63:             ealroo.setEventName("얼루");
+src/objects/fields/child\etc\Field_MMRace.java:65:             grodon.setEventName("그로돈");
+src/objects/fields/child\etc\Field_MMRace.java:67:             coondoora.setEventName("쿤두라");
+src/objects/fields/child\etc\Field_MMRace.java:87:             this.broadcastMessage(CWvsContext.serverNotice(5, "게임 시작까지 " + this.startTimer + "초 남았습니다. 참여하지 않은 분들은 빨리 참여해 주세요!"));
+src/objects/fields/child\etc\Field_MMRace.java:97:       player.dropMessage(5, "ถ้าอยากร่วม Doggy Race ก็มาคุยกับฉัน Doart สิ~!");
+src/objects/fields/child\etc\Field_MMRace.java:124:       this.broadcastMessage(CWvsContext.serverNotice(6, "์  " + this.gameRound + "회 운동회의 우승자는 '#" + mob.getEventName() + "' 입니다."));
+src/objects/fields/child\etc\Field_MMRace.java:166:                               CWvsContext.serverNotice(6, m.getEventName() + Locales.getKoreanJosa(m.getEventName(), JosaType.이가) + " 슬로우에 걸๋ ธ습니다!")
+src/objects/fields/child\fritto\Field_CourtshipDance.java:47:                      this.player.send(CField.startMapEffect("달걀을 훔치๋ ค면 먼์ € 닭들은 속여야 해! 자, 나를 따라 구์• 의 춤을 춰!", 5120160, true, 10));
+src/objects/fields/child\fritto\Field_ReceivingTreasure.java:54:                this.broadcastMessage(CField.startMapEffect("์ 프키와 방향키를 이용해 내가 떨어트리는 보물을 최대한 많이 받아줘!", 5120160, true, 10));
+src/objects/fields/child\fritto\Field_StealDragonsEgg.java:59:       this.player.send(CField.startMapEffect("쉿! 이 둥지의 꼭대기에는 드래곤의 알이 숨겨์ ธ 있어. 꼭대기로 가는 길을 잘 찾아보라구!", 5120160, true, 10));
+src/objects/fields/child\jinhillah\Field_JinHillah.java:323:                   p.gainItem(4001894, (short)quantity, false, -1L, "진 힐라 격파로 얻은 아이템");
+src/objects/fields/child\jinhillah\Field_JinHillah.java:338:                         StringBuilder sb = new StringBuilder("보스 하드 진 힐라 격파 (" + list + ")");
+src/objects/fields/child\jinhillah\Field_JinHillah.java:348:                            "[보스격파] [CH."
+src/objects/fields/child\jinhillah\Field_JinHillah.java:349:                               + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\jinhillah\Field_JinHillah.java:352:                               + "' 파티("
+src/objects/fields/child\jinhillah\Field_JinHillah.java:354:                               + ")가 [하드 진 힐라]를 격파하였습니다."
+src/objects/fields/child\jinhillah\Field_JinHillah.java:575:          this.sendJinHillahNotice("ก่อนที่ Hilla จะเข้ามาและหายไป ต้องรัวปุ่ม Harvest ที่แท่นบูชาเพื่อกู้คืนวิญญҳ", 6000);
+src/objects/fields/child\karing\Field_BossGoongiPhase.java:69:       player.send(CField.sendWeatherEffectNotice(382, 5000, false, "เพื่อไล่ตาม Karing ต้องกำจѴ 4 สѵว์ร้า·ี่บุกรุกแต่ละĴูกาลของ Shangri-La"));
+src/objects/fields/child\karing\Field_BossGoongiPhase.java:116:       c.getPlayer().dropMessage(-8, "ส่งแพ็กเก็ต Type 3 แล้ว" + mob.getId());
+src/objects/fields/child\karing\Field_BossGoongiPhase.java:123:       c.getPlayer().dropMessageGM(6, "타입 : " + type);
+src/objects/fields/child\karing\Field_BossKaringMatch.java:19:       player.dropMessage(-5, "Type แรก : " + actionType);
+src/objects/fields/child\karing\Field_BossKaringMatch.java:24:             player.dropMessage(-5, " ครั้งที่สอง : " + types);
+src/objects/fields/child\karing\Field_BossKaringPhase2.java:27:          this.broadcastMessage(CField.sendWeatherEffectNotice(385, 5000, false, "วิญญҳแค้นของสѵว์ประหลҴที่ Karing ดٴซับกำลังดิ้นรน ต้องหลบหลีกเพื่อไม่ให้ถูกกลืนกิน"));
+src/objects/fields/child\karing\Field_BossKaringPhase2.java:43:       player.send(CField.sendWeatherEffectNotice(382, 5000, false, "Karing ที่ดٴซับ 4 สѵว์ร้ҁดูเหมือนจะอาละวҴได้ทุกเมื่อ"));
+src/objects/fields/child\karing\Field_BossKaringPhase3.java:31:       player.send(CField.sendWeatherEffectNotice(382, 5000, false, "ดูเหมือนว่าเครื่องดนตรีของสѵว์ประหลҴจะล้นทะลักและอาละวҴ ต้องหยشยั้งไม่ให้ Shangri-La พังทลาย"));
+src/objects/fields/child\karing\TempPacket\Karing2PhasePacket.java:23:             packet.writeMapleAsciiString("사흉을 모시깽이 합니다.");
+src/objects/fields/child\karrotte\Field_BossKalos.java:435:                this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 구속의 눈이 ์ 에서 깨어납니다."));
+src/objects/fields/child\karrotte\Field_BossKalos.java:464:                this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 포격 ์ 투기가 활성화됩니다."));
+src/objects/fields/child\karrotte\Field_BossKalos.java:485:                this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 오디움의 구체가 ์ 을 감지합니다."));
+src/objects/fields/child\karrotte\Field_BossKalos.java:508:                this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 심연의 눈이 ์ 에서 깨어납니다."));
+src/objects/fields/child\karrotte\Field_BossKalos.java:517:          this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("자격을 확인 받지 못해 다음 관문으로 넘어가지 못하๊ณ  추방당했습니다."));
+src/objects/fields/child\karrotte\Field_BossKalos.java:518:          TextEffect e = new TextEffect("#r#fn나눔๊ณ 딕 ExtraBold##fs26#자격이 없는 자에게 문은 열리지 않는다...", 100, 2500, 4, 0, 0, 1, 0);
+src/objects/fields/child\karrotte\Field_BossKalosPhase1.java:71:                      TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs32##r#e아직 심판은 끝나지 않았다.", 100, 2500, 4, 0, 0, 1, 0);
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:85:                   TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs32##r#e여기까진가... 죄송합니다. 아버지...", 100, 2500, 4, 0, 0, 1, 0);
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:109:                      difficulty = "이지";
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:111:                      difficulty = "노말";
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:113:                      difficulty = "카오스";
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:115:                      difficulty = "익스트림";
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:118:                   difficulty = "노말";
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:122:                      StringBuilder sb = new StringBuilder("보스 " + difficulty + " 칼로스 격파 (" + list + ")");
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:132:                         "[보스격파] [CH."
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:133:                            + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:136:                            + "' 파티("
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:138:                            + ")가 ["
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:140:                            + " 칼로스]를 격파하였습니다."
+src/objects/fields/child\karrotte\Field_BossKalosPhase2.java:408:                TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs26##fc0xff71ffff#폭주에 휘말리지 않도록 수호 지대를 찾아라...", 100, 2500, 4, 0, 0, 1, 0);
+src/objects/fields/child\lucid\Field_LucidBattle.java:143:                            this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
+src/objects/fields/child\lucid\Field_LucidBattle.java:154:                         this.sendLucidNotice("กดปุ่ม 'Harvest' ใกล้รูปปั้นแตรเพื่อยับยั้งพลังของ Lucid!", 0);
+src/objects/fields/child\lucid\Field_LucidBattle.java:522:             this.sendLucidNotice("ความฝันกำลังรุนแรงขึ้น ระวังตัǴ้วย!", -1);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:64:                this.sendLucidNotice("ดูเหมือน Lucid จะโกรธจѴ!", 3);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:72:                this.sendLucidNotice("Lucid จะแʴงพลังที่แข็งแกร่งยิ่งขึ้น!", 2);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:79:                this.sendLucidNotice("Lucid กำลังดึงพลังออกมา!", 1);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:86:             this.sendLucidNotice("ดูเหมือน Lucid จะโกรธจѴ!", 3);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:89:             this.sendLucidNotice("Lucid จะแʴงพลังที่แข็งแกร่งยิ่งขึ้น!", 2);
+src/objects/fields/child\lucid\Field_LucidBattlePhase1.java:92:             this.sendLucidNotice("Lucid กำลังดึงพลังออกมา!", 1);
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:453:                         p.gainItem(4001879, (short) quantity, false, -1L, "ไอเทมที่ได้รับจากการกำจѴ Lucid");
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:464:                               StringBuilder sb = new StringBuilder("กำจѴ Boss Normal Lucid");
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:476:                                           "[보스격파] [CH."
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:477:                                                 + (this.getChannel() == 2 ? "20세 이상"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:517:                                        "กำจѴ Boss " + (hell ? "Hell" : "Hard") + " Lucid (" + list + ")");
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:530:                                                    + (this.getChannel() == 2 ? "20세 이상"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:532:                                                    + "] ปาร์ตี้ '"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:536:                                                    + ") ได้กำจѴ [Hell Lucid] แล้ว"));
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:541:                                              "[보스격파] [CH."
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:542:                                                    + (this.getChannel() == 2 ? "20세 이상"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:577:                                        "กำจѴ Boss " + (hellx ? "Hell" : "Hard") + " Lucid (" + list + ")");
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:590:                                                    + (this.getChannel() == 2 ? "20세 이상"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:592:                                                    + "] ปาร์ตี้ '"
+src/objects/fields/child\lucid\Field_LucidBattlePhase2.java:596:                                                    + ") ได้กำจѴ [Hell Lucid] แล้ว"));
+src/objects/fields/child\magnus\Field_Magnus.java:86:          this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 6666, "매그너스가 사망하여 방출된 에너지로 인해 더이상 구와르의 힘에 영향을 받지 않습니다.");
+src/objects/fields/child\magnus\Field_Magnus.java:296:             this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 2, "매그너스가 구와르를 ์ 어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+src/objects/fields/child\magnus\Field_Magnus.java:302:             this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 3, "매그너스가 구와르를 ์ 어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+src/objects/fields/child\magnus\Field_Magnus.java:305:             this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 4, "매그너스가 구와르를 ์ 어하는 힘이 약화 되었습니다. 구와르의 기운이 더욱 강해집니다.");
+src/objects/fields/child\minigame\battlereverse\BattleReverseGameDlg.java:34:             playerx.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+src/objects/fields/child\minigame\battlereverse\BattleReverseGameDlg.java:47:          FileoutputUtil.log("Log_MiniGame_Except.rtf", "캐릭터가 null인 상태로 게임시작 시도");
+src/objects/fields/child\minigame\battlereverse\BattleReverseGameDlg.java:50:             chr.dropMessage(5, "เกԴข้อผԴพลҴ เกมไม่เริ่ม จึงถูกย้ายกลับเมือง");
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:132:       this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowText("당์ 의 턴입니다."));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:167:          this.broadcastMessage(OneCardPacket.onShowText(winnerName + "คسชนะ! จบเกม"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:171:                playerx.getPlayer().dropMessage(6, winnerName + "คسชนะ! จบเกม");
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:272:             this.broadcastMessage(OneCardPacket.onShowText("마법 : 색 바꾸기!"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:275:             this.broadcastMessage(OneCardPacket.onShowText("마법 : 한 번 더!"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:278:             this.broadcastMessage(OneCardPacket.onShowText("마법 : ์ 프!"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:281:             this.broadcastMessage(OneCardPacket.onShowText("마법 : 거꾸로!"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:290:                   this.broadcastMessage(OneCardPacket.onShowText("마법 : " + this.currentPlayer.getPlayer().getName() + "님의 공격!"));
+src/objects/fields/child\minigame\onecard\Field_OneCard.java:401:          this.broadcastMessage(OneCardPacket.onShowText(chr.getName() + "님이 " + this.fireSet + "의 피해를 입었습니다."));
+src/objects/fields/child\minigame\onecard\OneCardGameDlg.java:37:                player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+src/objects/fields/child\minigame\soccer\Field_MultiSoccer.java:301:       this.broadcastMessage(CField.sendWeatherEffectNotice(0, 10000, true, "   ใช้ปุ่มลูกศรเพื่อเคลื่อนที่ และใช้ปุ่ม CTRL หรื́ALT เพื่อใช้สกิŁ  "));
+src/objects/fields/child\minigame\soccer\Field_MultiSoccer.java:302:       this.broadcastMessage(CField.addPopupSay(9062546, 4000, "경기~~ 시작합니다~~~!!!", ""));
+src/objects/fields/child\minigame\train\Field_TrainMaster.java:187:       this.broadcastMessage(CField.addPopupSay(9062575, 5000, "#b#e크리에이터들의\r\n기차 운행 도์ !#n#k\r\n#r지금 바로 시작하๊ฒ 네!#k", ""));
+src/objects/fields/child\minigame\yutgame\Field_MultiYutGame.java:74:                         "หมดเวลҁ" + gameInfo.getFoulCount() + "회. 5회 이상 시 퇴장 처리됩니다.", FontType.NanumGothic, FontColorType.Green
+src/objects/fields/child\minigame\yutgame\MultiYutGameDlg.java:26:             player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+src/objects/fields/child\minigame\yutgame\MultiYutGameDlg.java:61:             player.dropMessage(5, "จำนวนผู้เล่นไม่เพียงพอสำหรับเกม จึงถูกย้ายกลับเมือง");
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:345:                   p.gainItem(4001893, (short)quantity, false, -1L, "더스크 격파로 얻은 아이템");
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:357:                         StringBuilder sb = new StringBuilder("보스 카오스 더스크 격파");
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:373:                               "[보스격파] [CH."
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:374:                                  + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:377:                                  + "' 파티("
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:379:                                  + ")가 [카오스 더스크]를 격파하였습니다."
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:387:                         StringBuilder sb = new StringBuilder("보스 노말 더스크 격파");
+src/objects/fields/child\moonbridge\Field_FerociousBattlefield.java:551:       this.sendDuskNotice("หน้าที่ป้องกันอยู่จะโจมตีอย่างรุนแรง! ถ้านได้ จะสามารถโจมตีวงตาแห่งความว่างเปล่ҷี่เปิดออกได้!", 3000);
+src/objects/fields/child\papulatus\Field_Papulatus.java:225:                                     difficulty = "이지";
+src/objects/fields/child\papulatus\Field_Papulatus.java:227:                                     difficulty = "노말";
+src/objects/fields/child\papulatus\Field_Papulatus.java:229:                                     difficulty = "카오스";
+src/objects/fields/child\papulatus\Field_Papulatus.java:232:                                  StringBuilder sb = new StringBuilder("보스 " + difficulty + " 파풀라투스 격파");
+src/objects/fields/child\papulatus\Field_Papulatus.java:639:             this.broadcastMessage(CField.startMapEffect("파풀라투스가 차원 이동을 통해서 HP를 회복하๋ ค๊ณ  시도합니다.", 5120177, true, 4));
+src/objects/fields/child\papulatus\Field_Papulatus.java:696:          this.broadcastMessage(CField.startMapEffect("파풀라투스가 시간 이동을 ํ•  수 없도록 차원의 ๊ท 열을 봉인해야 합니다.", 5120177, true, 4));
+src/objects/fields/child\papulatus\Field_Papulatus.java:713:             this.broadcastMessage(CField.startMapEffect("차원의 ๊ท 열을 봉인했습니다.", 5120177, true, 4));
+src/objects/fields/child\papulatus\Field_Papulatus.java:735:          this.broadcastMessage(CWvsContext.serverNotice(5, "파풀라투스의 시계가 움직입니다."));
+src/objects/fields/child\papulatus\Field_Papulatus.java:736:          this.broadcastMessage(CField.startMapEffect("파풀라투스의 시계가 움직입니다. 차원의 포탈을 통해 시간을 봉인하세요.", 5120177, true, 4));
+src/objects/fields/child\pollo\Field_BountyHunting.java:195:       player.send(CField.startMapEffect("놈들이 사방에서 몰๋ ค오는군! 녀석들을 처치하면 막대한 경험치를 얻을 수 있다!", 5120159, true, 10));
+src/objects/fields/child\pollo\Field_FlameWolf.java:38:       player.send(CField.startMapEffect("불꽃늑대를 처치ํ•  용사가 늘었군. 어서 녀석을 공격해! 머무를 수 있는 시간은 30초 뿐이야!", 5120159, true, 30));
+src/objects/fields/child\pollo\Field_MidnightMonsterHunting.java:127:       player.send(CField.startMapEffect("npc/채집 키로 공격을 ํ•  수 있다. 몰๋ ค오는 놈들을 나와 함께 다 쓸어버리자๊ณ .", 5120159, true, 10));
+src/objects/fields/child\pollo\Field_StormwingArea.java:82:       player.send(CField.startMapEffect("재๋น 른 황금빛 녀석이 스톰윙일세. 그 녀석을 잡으면 머물 수 있는 시간이 늘어나지!", 5120159, true, 5));
+src/objects/fields/child\pollo\Field_TownDefense.java:142:             this.player.send(CWvsContext.getScriptProgressMessage("WAVE를 막아냈습니다. 다음 WAVE를 준비해주세요."));
+src/objects/fields/child\pollo\Field_TownDefense.java:170:       player.send(CField.startMapEffect("놈들이 겁도 없이 성벽 안의 마을을 습격하는군! 모조리 해치워라!", 5120159, true, 10));
+src/objects/fields/child\pollo\Field_TownDefense.java:207:          this.player.send(CField.addPopupSay(9001059, 3000, this.player.getName() + ", 너의 사냥 실๋ ฅ이 이์ •도밖에 안됐나?", ""));
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:189:                   p.gainItem(4001893, (short)quantity, false, -1L, "듄켈 격파로 얻은 아이템");
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:223:                         StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 듄켈 격파 (" + list + ")");
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:234:                               "[보스격파] [CH."
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:235:                                  + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:238:                                  + "' 파티("
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:240:                                  + ")가 [하드 듄켈]을 격파하였습니다."
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:247:                               "[보스격파] [CH."
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:248:                                  + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:251:                                  + "' 파티("
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:253:                                  + ")가 [헬 듄켈]을 격파하였습니다."
+src/objects/fields/child\rimen\Field_RimenNearTheEnd.java:259:                         StringBuilder sb = new StringBuilder("보스 노말 듄켈 격파");
+src/objects/fields/child\rootabyss\Field_CrimsonQueen.java:155:                msg = "내가 상대해주๊ฒ 어요.";
+src/objects/fields/child\rootabyss\Field_CrimsonQueen.java:160:                msg = "킥킥, 다 없์• 주지";
+src/objects/fields/child\rootabyss\Field_CrimsonQueen.java:165:                msg = "모두 불태워주마!";
+src/objects/fields/child\rootabyss\Field_CrimsonQueen.java:170:                msg = "내 ๊ณ 통을 느끼게 해줄게요.";
+src/objects/fields/child\sernium\Field_SerenPhase1.java:120:          TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r태양의 불꽃은 복수를 잊지 않는다.", 100, 2000, 4, 0, 0, 0);
+src/objects/fields/child\sernium\Field_SerenPhase2.java:287:             this.broadcastMessage(CWvsContext.serverNotice(5, "태양의 빛으로 가득찬 ์ •오가 시작됩니다."));
+src/objects/fields/child\sernium\Field_SerenPhase2.java:324:             TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r머지않아 태양은 다시 ๋– 오를 것이다…", 100, 2000, 4, 0, 0, 0);
+src/objects/fields/child\sernium\Field_SerenPhase2.java:373:                                  StringBuilder sb = new StringBuilder("보스 " + (normal ? "노말" : "하드") + " 세๋  격파 (" + list + ")");
+src/objects/fields/child\sernium\Field_SerenPhase2.java:384:                                        "[보스격파] [CH."
+src/objects/fields/child\sernium\Field_SerenPhase2.java:385:                                           + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\sernium\Field_SerenPhase2.java:388:                                           + "' 파티("
+src/objects/fields/child\sernium\Field_SerenPhase2.java:390:                                           + ")가 [노말 세๋ ]을 격파하였습니다."
+src/objects/fields/child\sernium\Field_SerenPhase2.java:398:                                        "[보스격파] [CH."
+src/objects/fields/child\sernium\Field_SerenPhase2.java:399:                                           + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\sernium\Field_SerenPhase2.java:402:                                           + "' 파티("
+src/objects/fields/child\sernium\Field_SerenPhase2.java:404:                                           + ")가 [하드 세๋ ]을 격파하였습니다."
+src/objects/fields/child\sernium\Field_SerenPhase2.java:594:          this.broadcastMessage(CWvsContext.serverNotice(5, "황혼의 불타는 듯한 석양이 회복 효율을 낮추๊ณ  지속์ 으로 피해를 입힙니다."));
+src/objects/fields/child\sernium\Field_SerenPhase2.java:600:          this.broadcastMessage(CWvsContext.serverNotice(5, "태양이 ์ €물어 빛을 잃๊ณ  자์ •이 시작됩니다."));
+src/objects/fields/child\sernium\Field_SerenPhase2.java:602:          this.broadcastMessage(CWvsContext.serverNotice(5, "태양이 서서히 ๋– 올라 빛과 희망이 시작되는 여명이 다가옵니다."));
+src/objects/fields/child\sernium\Field_SerenPhase2.java:635:             this.broadcastMessage(CWvsContext.serverNotice(5, "์ •오가 시작됨과 동시에 남아있는 여명의 기운이 세๋ 을 회복시킵니다."));
+src/objects/fields/child\sernium\Field_SerenPhase2.java:761:             TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r태양이 지지 않는다면 누구도 나에게 대항ํ•  수 없다.", 100, 2000, 4, 0, 0, 0);
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:115:          this.broadcastMessage(CField.addPopupSay(0, 3000, "왕관의 수호로 ์ 대로 된 피해를 입힐 수 없๊ฒ 군. 마스코트 슬라임에게 도움을 받아 마그마 슬라임을 ๋ ๋ ค버리자.", ""));
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:177:       String bossName = isChaos ? "카오스 가디언 엔์ ค 슬라임" : "노말 가디언 엔์ ค 슬라임";
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:184:          sb.append("보스 ");
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:186:          sb.append(" 격파");
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:198:                "[보스격파] [CH."
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:199:                   + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:202:                   + "' 파티("
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:204:                   + ")가 ["
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:206:                   + "] 을 격파하였습니다."
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:442:       this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "สำเร็จแล้ว!! รีบขึ้นไปข้างบนเธ ายใน 10 วินҷีก่อนที่พื้นที่ด้านล่างจะปԴลง!!"));
+src/objects/fields/child\slime\Field_GuardianAngelSlime.java:500:       this.broadcastMessage(CField.sendWeatherEffectNotice(348, 5000, true, "Guardian Wave กำลังจеกลงมา!! ตԴตั้ง Crystal Droplet เพื่อควบคุมการไหลของคลื่น ฉันจะช่วยเธอเอง!"));
+src/objects/fields/child\union\Field_Union.java:42:             player.dropMessage(5, "โหŴข้อมูŁUnion ล้มเหลว");
+src/objects/fields/child\union\MapleUnionData.java:137:       return getRankName(num - 1) + " " + tier + "단계";
+src/objects/fields/child\union\MapleUnionData.java:141:       return rankName.isEmpty() ? "노비스 ์ 니온" : rankName.get(r);
+src/objects/fields/child\vonleon\Field_VonLeon.java:54:                      eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("반 ๋ 온을 물리치셨습니다. 왼쪽 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+src/objects/fields/child\will\Field_WillBattle.java:412:          this.sendWillNotice("ตอนนี้แหละ! ต้องโจมตյอนที่ Will ไร้การป้องกัน!", 245, 12000);
+src/objects/fields/child\will\Field_WillBattle.java:1047:       this.sendWillNotice("Mirror of Lies สз้อนการโจมตีกลับ หากรอยแยกปรากฏขึ้น ให้เผชิญหน้ากับการโจมตี", 245, 26000);
+src/objects/fields/child\will\Field_WillBattlePhase1.java:44:          this.sendWillNotice("Will เริ่มจริงจังแล้ǁความจริงใจของ Will อาจสз้อนในส่วนลึกของกระจก", 245, 7000);
+src/objects/fields/child\will\Field_WillBattlePhase2.java:42:          this.sendWillNotice("Will หมดความʹทนแล้ǁส่วนที่ลึกที่สشของโลกกระจกกำลังจะเปԴเผย", 245, 7000);
+src/objects/fields/child\will\Field_WillBattlePhase2.java:61:          this.sendWillNotice("Will หมดความʹทนแล้ǁส่วนที่ลึกที่สشของโลกกระจกกำลังจะเปԴเผย", 245, 7000);
+src/objects/fields/child\will\Field_WillBattleReward.java:110:                   p.gainItem(4001890, (short)quantity, false, -1L, "윌 격파로 얻은 아이템");
+src/objects/fields/child\will\Field_WillBattleReward.java:111:                   p.gainItem(2438412, 1, false, -1L, "윌 격파로 얻은 아이템");
+src/objects/fields/child\will\Field_WillBattleReward.java:126:                      StringBuilder sb = new StringBuilder("보스 노말 윌 격파");
+src/objects/fields/child\will\Field_WillBattleReward.java:140:                         CField.chatMsg(DBConfig.isGanglim ? 8 : 4, "[보스격파] '" + p.getParty().getLeader().getName() + "' 파티(" + list + ")가 [노말 윌]을 격파하였습니다.")
+src/objects/fields/child\will\Field_WillBattleReward.java:184:                         StringBuilder sb = new StringBuilder("보스 " + (hell ? "헬" : "하드") + " 윌 격파 (" + list + ")");
+src/objects/fields/child\will\Field_WillBattleReward.java:196:                            "[보스격파] [CH."
+src/objects/fields/child\will\Field_WillBattleReward.java:197:                               + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\will\Field_WillBattleReward.java:200:                               + "' 파티("
+src/objects/fields/child\will\Field_WillBattleReward.java:202:                               + ")가 [헬 윌]를 격파하였습니다."
+src/objects/fields/child\will\Field_WillBattleReward.java:209:                            "[보스격파] [CH."
+src/objects/fields/child\will\Field_WillBattleReward.java:210:                               + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+src/objects/fields/child\will\Field_WillBattleReward.java:213:                               + "' 파티("
+src/objects/fields/child\will\Field_WillBattleReward.java:215:                               + ")가 [하드 윌]를 격파하였습니다."

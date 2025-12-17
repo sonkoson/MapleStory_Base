@@ -298,8 +298,8 @@ public class Field_MultiSoccer extends Field {
    }
 
    public void showMsg() {
-      this.broadcastMessage(CField.sendWeatherEffectNotice(0, 10000, true, "   เนเธเนเธเธธเนเธกเธฅเธนเธเธจเธฃเน€เธเธทเนเธญเน€เธเธฅเธทเนเธญเธเธ—เธตเน เนเธฅเธฐเนเธเนเธเธธเนเธก CTRL เธซเธฃเธทเธญ ALT เน€เธเธทเนเธญเนเธเนเธชเธเธดเธฅ   "));
-      this.broadcastMessage(CField.addPopupSay(9062546, 4000, "๊ฒฝ๊ธฐ~~ ์์‘ํ•ฉ๋๋ค~~~!!!", ""));
+      this.broadcastMessage(CField.sendWeatherEffectNotice(0, 10000, true, "   ใช้ปุ่มลูกศรเพื่อเคลื่อนที่ และใช้ปุ่ม CTRL หรือALT เพื่อใช้สกิล  "));
+      this.broadcastMessage(CField.addPopupSay(9062546, 4000, "Match~~ Start~~~!!!", ""));
    }
 
    public void setQuestInfoReset() {

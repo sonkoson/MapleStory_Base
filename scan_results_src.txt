@@ -1,0 +1,1425 @@
+[KOREAN] src\network\auction\processors\AuctionHandler.java:889: "이미 수๋ น한 대금을 다시 수๋ น 시도 : 아이템 (" + itemIDxxx + ") [이름 : " + c.getPlayer().getName() + "]");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1031: "이미 수๋ น한 아이템을 다시 수๋ น 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1064: "이미 수๋ น한 아이템을 다시 수๋ น 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1103: "이미 반환한 아이템을 다시 반환 시도 : 아이템 (" + itemIDxx + ") [이름 : " + c.getPlayer().getName() + "]");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1147: sbxxx.append("경매장 아이템 수๋ น (캐릭터 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1149: sbxxx.append(", 계์ • : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1154: sbxxx.append(", 아이템 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1158: sbxxx.append("개, 판매자 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1167: sbxxx.append("경매장 아이템 수๋ น (계์ • : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1169: sbxxx.append(", 캐릭터 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1171: sbxxx.append(", 아이템 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1175: sbxxx.append("개");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1177: sbxxx.append(" (์ •보 : ");
+[KOREAN] src\network\auction\processors\AuctionHandler.java:1181: sbxxx.append("), 판매자 : ");
+[KOREAN] src\network\center\Center.java:747: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\network\center\Center.java:769: System.out.println(MapleItemInformationProvider.getInstance().getName(itemID) + "이(가) 핫타임으로 지급되었습니다.");
+[KOREAN] src\network\center\Center.java:922: if (!type.equals("일반") && !type.equals("이벤트 참여") && !type.equals("์ 년 이벤트") && !type.equals("클스마스 이벤트")
+[KOREAN] src\network\center\Center.java:923: && !type.equals("보너스이벤트")) {
+[KOREAN] src\network\center\Center.java:924: if (type.equals("초심자 패키지")
+[KOREAN] src\network\center\Center.java:925: || type.contains("설๋ ")
+[KOREAN] src\network\center\Center.java:926: || type.contains("어린이๋ ")
+[KOREAN] src\network\center\Center.java:927: || type.contains("추석")
+[KOREAN] src\network\center\Center.java:928: || type.contains("가์ •의달")
+[KOREAN] src\network\center\Center.java:929: || type.contains("3주년")
+[KOREAN] src\network\center\Center.java:930: || type.contains("상시패키지")
+[KOREAN] src\network\center\Center.java:931: || type.contains("크리스마스")
+[KOREAN] src\network\center\Center.java:933: || type.contains("5월")) {
+[KOREAN] src\network\center\Center.java:957: if (type.equals("초심자 패키지")) {
+[KOREAN] src\network\center\Center.java:967: if (type.contains("가์ •의달")
+[KOREAN] src\network\center\Center.java:968: || type.contains("추석")
+[KOREAN] src\network\center\Center.java:969: || type.contains("3주년")
+[KOREAN] src\network\center\Center.java:970: || type.contains("상시패키지")
+[KOREAN] src\network\center\Center.java:971: || type.contains("크리스마스")
+[KOREAN] src\network\center\Center.java:973: || type.contains("5월")) {
+[KOREAN] src\network\center\Center.java:991: String typeName = "초심자패키지";
+[KOREAN] src\network\center\Center.java:993: if (type.contains("설๋ ")) {
+[KOREAN] src\network\center\Center.java:995: if (type.equals("설๋ C")) {
+[KOREAN] src\network\center\Center.java:1000: } else if (type.contains("어린이๋ ")) {
+[KOREAN] src\network\center\Center.java:1003: } else if (type.contains("가์ •의달")) {
+[KOREAN] src\network\center\Center.java:1005: if (type.equals("가์ •의달C")) {
+[KOREAN] src\network\center\Center.java:1007: } else if (type.equals("가์ •의달B")) {
+[KOREAN] src\network\center\Center.java:1009: } else if (type.equals("가์ •의달A")) {
+[KOREAN] src\network\center\Center.java:1011: } else if (type.equals("가์ •의달S")) {
+[KOREAN] src\network\center\Center.java:1013: } else if (type.equals("가์ •의달SS")) {
+[KOREAN] src\network\center\Center.java:1015: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1018: } else if (type.contains("추석")) {
+[KOREAN] src\network\center\Center.java:1020: if (type.equals("추석패키지I")) {
+[KOREAN] src\network\center\Center.java:1022: } else if (type.equals("추석패키지II")) {
+[KOREAN] src\network\center\Center.java:1024: } else if (type.equals("추석패키지III")) {
+[KOREAN] src\network\center\Center.java:1026: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1029: } else if (type.contains("3주년")) {
+[KOREAN] src\network\center\Center.java:1031: if (type.equals("3주년패키지I")) {
+[KOREAN] src\network\center\Center.java:1033: } else if (type.equals("3주년패키지II")) {
+[KOREAN] src\network\center\Center.java:1035: } else if (type.equals("3주년패키지III")) {
+[KOREAN] src\network\center\Center.java:1038: } else if (type.contains("크리스마스")) {
+[KOREAN] src\network\center\Center.java:1040: if (type.equals("크리스마스패키지1")) {
+[KOREAN] src\network\center\Center.java:1042: } else if (type.equals("크리스마스패키지2")) {
+[KOREAN] src\network\center\Center.java:1044: } else if (type.equals("크리스마스패키지3")) {
+[KOREAN] src\network\center\Center.java:1046: } else if (type.equals("크리스마스패키지4")) {
+[KOREAN] src\network\center\Center.java:1051: if (type.equals("2023패키지1")) {
+[KOREAN] src\network\center\Center.java:1053: } else if (type.equals("2023패키지2")) {
+[KOREAN] src\network\center\Center.java:1055: } else if (type.equals("2023패키지3")) {
+[KOREAN] src\network\center\Center.java:1057: } else if (type.equals("2023패키지4")) {
+[KOREAN] src\network\center\Center.java:1059: } else if (type.equals("2023패키지5")) {
+[KOREAN] src\network\center\Center.java:1061: } else if (type.equals("2023패키지6")) {
+[KOREAN] src\network\center\Center.java:1063: } else if (type.equals("2023패키지7")) {
+[KOREAN] src\network\center\Center.java:1065: } else if (type.equals("2023패키지8")) {
+[KOREAN] src\network\center\Center.java:1067: } else if (type.equals("2023패키지9")) {
+[KOREAN] src\network\center\Center.java:1069: } else if (type.equals("2023패키지10")) {
+[KOREAN] src\network\center\Center.java:1071: } else if (type.equals("2023패키지11")) {
+[KOREAN] src\network\center\Center.java:1074: } else if (type.contains("5월")) {
+[KOREAN] src\network\center\Center.java:1076: if (type.equals("5월패키지1")) {
+[KOREAN] src\network\center\Center.java:1078: } else if (type.equals("5월패키지2")) {
+[KOREAN] src\network\center\Center.java:1080: } else if (type.equals("5월패키지3")) {
+[KOREAN] src\network\center\Center.java:1082: } else if (type.equals("5월패키지4")) {
+[KOREAN] src\network\center\Center.java:1084: } else if (type.equals("5월패키지5")) {
+[KOREAN] src\network\center\Center.java:1086: } else if (type.equals("5월패키지6")) {
+[KOREAN] src\network\center\Center.java:1088: } else if (type.equals("5월패키지7")) {
+[KOREAN] src\network\center\Center.java:1090: } else if (type.equals("5월패키지8")) {
+[KOREAN] src\network\center\Center.java:1092: } else if (type.equals("5월패키지9")) {
+[KOREAN] src\network\center\Center.java:1094: } else if (type.equals("5월패키지10")) {
+[KOREAN] src\network\center\Center.java:1096: } else if (type.equals("5월패키지11")) {
+[KOREAN] src\network\center\Center.java:1099: } else if (type.contains("상시패키지")) {
+[KOREAN] src\network\center\Center.java:1102: if (type.equals("상시패키지2")) {
+[KOREAN] src\network\center\Center.java:1129: if (type.equals("초심자 패키지")) {
+[KOREAN] src\network\center\Center.java:1135: } else if (type.equals("설๋ A")) {
+[KOREAN] src\network\center\Center.java:1142: } else if (type.equals("설๋ B")) {
+[KOREAN] src\network\center\Center.java:1149: } else if (type.equals("설๋ C")) {
+[KOREAN] src\network\center\Center.java:1156: } else if (type.equals("어린이๋ ")) {
+[KOREAN] src\network\center\Center.java:1164: } else if (type.equals("가์ •의달C")) {
+[KOREAN] src\network\center\Center.java:1171: } else if (type.equals("가์ •의달B")) {
+[KOREAN] src\network\center\Center.java:1178: } else if (type.equals("가์ •의달A")) {
+[KOREAN] src\network\center\Center.java:1185: } else if (type.equals("가์ •의달S")) {
+[KOREAN] src\network\center\Center.java:1192: } else if (type.equals("가์ •의달SS")) {
+[KOREAN] src\network\center\Center.java:1199: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1206: } else if (type.equals("상시패키지1")) {
+[KOREAN] src\network\center\Center.java:1213: } else if (type.equals("상시패키지2")) {
+[KOREAN] src\network\center\Center.java:1220: } else if (type.equals("추석패키지I")) {
+[KOREAN] src\network\center\Center.java:1227: } else if (type.equals("추석패키지II")) {
+[KOREAN] src\network\center\Center.java:1234: } else if (type.equals("추석패키지III")) {
+[KOREAN] src\network\center\Center.java:1241: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1248: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1255: } else if (type.equals("3주년패키지I")) {
+[KOREAN] src\network\center\Center.java:1262: } else if (type.equals("3주년패키지II")) {
+[KOREAN] src\network\center\Center.java:1269: } else if (type.equals("3주년패키지III")) {
+[KOREAN] src\network\center\Center.java:1276: } else if (type.equals("크리스마스패키지1")) {
+[KOREAN] src\network\center\Center.java:1283: } else if (type.equals("크리스마스패키지2")) {
+[KOREAN] src\network\center\Center.java:1289: } else if (type.equals("크리스마스패키지3")) {
+[KOREAN] src\network\center\Center.java:1296: } else if (type.equals("크리스마스패키지4")) {
+[KOREAN] src\network\center\Center.java:1303: } else if (type.equals("2023패키지1")) {
+[KOREAN] src\network\center\Center.java:1310: } else if (type.equals("2023패키지2")) {
+[KOREAN] src\network\center\Center.java:1317: } else if (type.equals("2023패키지3")) {
+[KOREAN] src\network\center\Center.java:1324: } else if (type.equals("2023패키지4")) {
+[KOREAN] src\network\center\Center.java:1331: } else if (type.equals("2023패키지5")) {
+[KOREAN] src\network\center\Center.java:1337: } else if (type.equals("2023패키지6")) {
+[KOREAN] src\network\center\Center.java:1344: } else if (type.equals("2023패키지7")) {
+[KOREAN] src\network\center\Center.java:1351: } else if (type.equals("2023패키지8")) {
+[KOREAN] src\network\center\Center.java:1358: } else if (type.equals("2023패키지9")) {
+[KOREAN] src\network\center\Center.java:1365: } else if (type.equals("2023패키지10")) {
+[KOREAN] src\network\center\Center.java:1372: } else if (type.equals("2023패키지11")) {
+[KOREAN] src\network\center\Center.java:1379: } else if (type.equals("5월패키지1")) {
+[KOREAN] src\network\center\Center.java:1386: } else if (type.equals("5월패키지2")) {
+[KOREAN] src\network\center\Center.java:1393: } else if (type.equals("5월패키지3")) {
+[KOREAN] src\network\center\Center.java:1400: } else if (type.equals("5월패키지4")) {
+[KOREAN] src\network\center\Center.java:1407: } else if (type.equals("5월패키지5")) {
+[KOREAN] src\network\center\Center.java:1414: } else if (type.equals("5월패키지6")) {
+[KOREAN] src\network\center\Center.java:1421: } else if (type.equals("5월패키지7")) {
+[KOREAN] src\network\center\Center.java:1428: } else if (type.equals("5월패키지8")) {
+[KOREAN] src\network\center\Center.java:1435: } else if (type.equals("5월패키지9")) {
+[KOREAN] src\network\center\Center.java:1442: } else if (type.equals("5월패키지10")) {
+[KOREAN] src\network\center\Center.java:1449: } else if (type.equals("5월패키지11")) {
+[KOREAN] src\network\center\Center.java:1468: if (type.equals("초심자 패키지")) {
+[KOREAN] src\network\center\Center.java:1470: } else if (type.equals("설๋ A")) {
+[KOREAN] src\network\center\Center.java:1473: } else if (type.equals("설๋ B")) {
+[KOREAN] src\network\center\Center.java:1476: } else if (type.equals("설๋ C")) {
+[KOREAN] src\network\center\Center.java:1479: } else if (type.equals("어린이๋ ")) {
+[KOREAN] src\network\center\Center.java:1483: } else if (type.equals("가์ •의달C")) {
+[KOREAN] src\network\center\Center.java:1486: } else if (type.equals("가์ •의달B")) {
+[KOREAN] src\network\center\Center.java:1489: } else if (type.equals("가์ •의달A")) {
+[KOREAN] src\network\center\Center.java:1492: } else if (type.equals("가์ •의달S")) {
+[KOREAN] src\network\center\Center.java:1495: } else if (type.equals("가์ •의달SS")) {
+[KOREAN] src\network\center\Center.java:1498: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1501: } else if (type.equals("상시패키지1")) {
+[KOREAN] src\network\center\Center.java:1505: } else if (type.equals("상시패키지2")) {
+[KOREAN] src\network\center\Center.java:1509: } else if (type.equals("추석패키지I")) {
+[KOREAN] src\network\center\Center.java:1513: } else if (type.equals("추석패키지II")) {
+[KOREAN] src\network\center\Center.java:1517: } else if (type.equals("추석패키지III")) {
+[KOREAN] src\network\center\Center.java:1521: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1525: } else if (type.equals("3주년패키지I")) {
+[KOREAN] src\network\center\Center.java:1529: } else if (type.equals("3주년패키지II")) {
+[KOREAN] src\network\center\Center.java:1533: } else if (type.equals("3주년패키지III")) {
+[KOREAN] src\network\center\Center.java:1537: } else if (type.equals("크리스마스패키지1")) {
+[KOREAN] src\network\center\Center.java:1541: } else if (type.equals("크리스마스패키지2")) {
+[KOREAN] src\network\center\Center.java:1545: } else if (type.equals("크리스마스패키지3")) {
+[KOREAN] src\network\center\Center.java:1549: } else if (type.equals("크리스마스패키지4")) {
+[KOREAN] src\network\center\Center.java:1553: } else if (type.equals("2023패키지1")) {
+[KOREAN] src\network\center\Center.java:1557: } else if (type.equals("2023패키지2")) {
+[KOREAN] src\network\center\Center.java:1561: } else if (type.equals("2023패키지3")) {
+[KOREAN] src\network\center\Center.java:1565: } else if (type.equals("2023패키지4")) {
+[KOREAN] src\network\center\Center.java:1569: } else if (type.equals("2023패키지5")) {
+[KOREAN] src\network\center\Center.java:1573: } else if (type.equals("2023패키지6")) {
+[KOREAN] src\network\center\Center.java:1577: } else if (type.equals("2023패키지7")) {
+[KOREAN] src\network\center\Center.java:1581: } else if (type.equals("2023패키지8")) {
+[KOREAN] src\network\center\Center.java:1585: } else if (type.equals("2023패키지9")) {
+[KOREAN] src\network\center\Center.java:1589: } else if (type.equals("2023패키지10")) {
+[KOREAN] src\network\center\Center.java:1593: } else if (type.equals("2023패키지11")) {
+[KOREAN] src\network\center\Center.java:1597: } else if (type.equals("5월패키지1")) {
+[KOREAN] src\network\center\Center.java:1601: } else if (type.equals("5월패키지2")) {
+[KOREAN] src\network\center\Center.java:1605: } else if (type.equals("5월패키지3")) {
+[KOREAN] src\network\center\Center.java:1609: } else if (type.equals("5월패키지4")) {
+[KOREAN] src\network\center\Center.java:1613: } else if (type.equals("5월패키지5")) {
+[KOREAN] src\network\center\Center.java:1617: } else if (type.equals("5월패키지6")) {
+[KOREAN] src\network\center\Center.java:1621: } else if (type.equals("5월패키지7")) {
+[KOREAN] src\network\center\Center.java:1625: } else if (type.equals("5월패키지8")) {
+[KOREAN] src\network\center\Center.java:1629: } else if (type.equals("5월패키지9")) {
+[KOREAN] src\network\center\Center.java:1633: } else if (type.equals("5월패키지10")) {
+[KOREAN] src\network\center\Center.java:1637: } else if (type.equals("5월패키지11")) {
+[KOREAN] src\network\center\Center.java:1653: if (type.equals("초심자 패키지")) {
+[KOREAN] src\network\center\Center.java:1656: } else if (type.equals("설๋ A")) {
+[KOREAN] src\network\center\Center.java:1660: } else if (type.equals("설๋ B")) {
+[KOREAN] src\network\center\Center.java:1664: } else if (type.equals("설๋ C")) {
+[KOREAN] src\network\center\Center.java:1668: } else if (type.equals("어린이๋ ")) {
+[KOREAN] src\network\center\Center.java:1673: } else if (type.equals("가์ •의달C")) {
+[KOREAN] src\network\center\Center.java:1677: } else if (type.equals("가์ •의달B")) {
+[KOREAN] src\network\center\Center.java:1681: } else if (type.equals("가์ •의달A")) {
+[KOREAN] src\network\center\Center.java:1685: } else if (type.equals("가์ •의달S")) {
+[KOREAN] src\network\center\Center.java:1689: } else if (type.equals("가์ •의달SS")) {
+[KOREAN] src\network\center\Center.java:1693: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1697: } else if (type.equals("상시패키지1")) {
+[KOREAN] src\network\center\Center.java:1701: } else if (type.equals("상시패키지2")) {
+[KOREAN] src\network\center\Center.java:1705: } else if (type.equals("추석패키지I")) {
+[KOREAN] src\network\center\Center.java:1709: } else if (type.equals("추석패키지II")) {
+[KOREAN] src\network\center\Center.java:1713: } else if (type.equals("추석패키지III")) {
+[KOREAN] src\network\center\Center.java:1717: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1721: } else if (type.equals("3주년패키지I")) {
+[KOREAN] src\network\center\Center.java:1725: } else if (type.equals("3주년패키지II")) {
+[KOREAN] src\network\center\Center.java:1729: } else if (type.equals("3주년패키지III")) {
+[KOREAN] src\network\center\Center.java:1733: } else if (type.equals("크리스마스패키지1")) {
+[KOREAN] src\network\center\Center.java:1737: } else if (type.equals("크리스마스패키지2")) {
+[KOREAN] src\network\center\Center.java:1741: } else if (type.equals("크리스마스패키지3")) {
+[KOREAN] src\network\center\Center.java:1745: } else if (type.equals("크리스마스패키지4")) {
+[KOREAN] src\network\center\Center.java:1749: } else if (type.equals("2023패키지1")) {
+[KOREAN] src\network\center\Center.java:1753: } else if (type.equals("2023패키지2")) {
+[KOREAN] src\network\center\Center.java:1757: } else if (type.equals("2023패키지3")) {
+[KOREAN] src\network\center\Center.java:1761: } else if (type.equals("2023패키지4")) {
+[KOREAN] src\network\center\Center.java:1765: } else if (type.equals("2023패키지5")) {
+[KOREAN] src\network\center\Center.java:1769: } else if (type.equals("2023패키지6")) {
+[KOREAN] src\network\center\Center.java:1773: } else if (type.equals("2023패키지7")) {
+[KOREAN] src\network\center\Center.java:1777: } else if (type.equals("2023패키지8")) {
+[KOREAN] src\network\center\Center.java:1781: } else if (type.equals("2023패키지9")) {
+[KOREAN] src\network\center\Center.java:1785: } else if (type.equals("2023패키지10")) {
+[KOREAN] src\network\center\Center.java:1789: } else if (type.equals("2023패키지11")) {
+[KOREAN] src\network\center\Center.java:1793: } else if (type.equals("5월패키지1")) {
+[KOREAN] src\network\center\Center.java:1797: } else if (type.equals("5월패키지2")) {
+[KOREAN] src\network\center\Center.java:1801: } else if (type.equals("5월패키지3")) {
+[KOREAN] src\network\center\Center.java:1805: } else if (type.equals("5월패키지4")) {
+[KOREAN] src\network\center\Center.java:1809: } else if (type.equals("5월패키지5")) {
+[KOREAN] src\network\center\Center.java:1813: } else if (type.equals("5월패키지6")) {
+[KOREAN] src\network\center\Center.java:1817: } else if (type.equals("5월패키지7")) {
+[KOREAN] src\network\center\Center.java:1821: } else if (type.equals("5월패키지8")) {
+[KOREAN] src\network\center\Center.java:1825: } else if (type.equals("5월패키지9")) {
+[KOREAN] src\network\center\Center.java:1829: } else if (type.equals("5월패키지10")) {
+[KOREAN] src\network\center\Center.java:1833: } else if (type.equals("5월패키지11")) {
+[KOREAN] src\network\center\Center.java:1852: if (type.equals("초심자 패키지")) {
+[KOREAN] src\network\center\Center.java:1855: } else if (type.equals("설๋ A")) {
+[KOREAN] src\network\center\Center.java:1858: } else if (type.equals("설๋ B")) {
+[KOREAN] src\network\center\Center.java:1861: } else if (type.equals("설๋ C")) {
+[KOREAN] src\network\center\Center.java:1864: } else if (type.equals("어린이๋ ")) {
+[KOREAN] src\network\center\Center.java:1885: } else if (type.equals("가์ •의달C")) {
+[KOREAN] src\network\center\Center.java:1888: } else if (type.equals("가์ •의달B")) {
+[KOREAN] src\network\center\Center.java:1891: } else if (type.equals("가์ •의달A")) {
+[KOREAN] src\network\center\Center.java:1894: } else if (type.equals("가์ •의달S")) {
+[KOREAN] src\network\center\Center.java:1897: } else if (type.equals("가์ •의달SS")) {
+[KOREAN] src\network\center\Center.java:1900: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1903: } else if (type.equals("상시패키지1")) {
+[KOREAN] src\network\center\Center.java:1906: } else if (type.equals("상시패키지2")) {
+[KOREAN] src\network\center\Center.java:1909: } else if (type.equals("가์ •의달SSS")) {
+[KOREAN] src\network\center\Center.java:1912: } else if (type.equals("추석패키지I")) {
+[KOREAN] src\network\center\Center.java:1915: } else if (type.equals("추석패키지II")) {
+[KOREAN] src\network\center\Center.java:1918: } else if (type.equals("추석패키지III")) {
+[KOREAN] src\network\center\Center.java:1921: } else if (type.equals("추석패키지IV")) {
+[KOREAN] src\network\center\Center.java:1924: } else if (type.equals("3주년패키지I")) {
+[KOREAN] src\network\center\Center.java:1927: } else if (type.equals("3주년패키지II")) {
+[KOREAN] src\network\center\Center.java:1930: } else if (type.equals("3주년패키지III")) {
+[KOREAN] src\network\center\Center.java:1933: } else if (type.equals("크리스마스패키지1")) {
+[KOREAN] src\network\center\Center.java:1936: } else if (type.equals("크리스마스패키지2")) {
+[KOREAN] src\network\center\Center.java:1939: } else if (type.equals("크리스마스패키지3")) {
+[KOREAN] src\network\center\Center.java:1942: } else if (type.equals("크리스마스패키지4")) {
+[KOREAN] src\network\center\Center.java:1945: } else if (type.equals("2023패키지1")) {
+[KOREAN] src\network\center\Center.java:1948: } else if (type.equals("2023패키지2")) {
+[KOREAN] src\network\center\Center.java:1951: } else if (type.equals("2023패키지3")) {
+[KOREAN] src\network\center\Center.java:1954: } else if (type.equals("2023패키지4")) {
+[KOREAN] src\network\center\Center.java:1957: } else if (type.equals("2023패키지5")) {
+[KOREAN] src\network\center\Center.java:1960: } else if (type.equals("2023패키지6")) {
+[KOREAN] src\network\center\Center.java:1963: } else if (type.equals("2023패키지7")) {
+[KOREAN] src\network\center\Center.java:1966: } else if (type.equals("2023패키지8")) {
+[KOREAN] src\network\center\Center.java:1969: } else if (type.equals("2023패키지9")) {
+[KOREAN] src\network\center\Center.java:1972: } else if (type.equals("2023패키지10")) {
+[KOREAN] src\network\center\Center.java:1975: } else if (type.equals("2023패키지11")) {
+[KOREAN] src\network\center\Center.java:1978: } else if (type.equals("5월패키지1")) {
+[KOREAN] src\network\center\Center.java:1981: } else if (type.equals("5월패키지2")) {
+[KOREAN] src\network\center\Center.java:1984: } else if (type.equals("5월패키지3")) {
+[KOREAN] src\network\center\Center.java:1987: } else if (type.equals("5월패키지4")) {
+[KOREAN] src\network\center\Center.java:1990: } else if (type.equals("5월패키지5")) {
+[KOREAN] src\network\center\Center.java:1993: } else if (type.equals("5월패키지6")) {
+[KOREAN] src\network\center\Center.java:1996: } else if (type.equals("5월패키지7")) {
+[KOREAN] src\network\center\Center.java:1999: } else if (type.equals("5월패키지8")) {
+[KOREAN] src\network\center\Center.java:2002: } else if (type.equals("5월패키지9")) {
+[KOREAN] src\network\center\Center.java:2005: } else if (type.equals("5월패키지10")) {
+[KOREAN] src\network\center\Center.java:2008: } else if (type.equals("5월패키지11")) {
+[KOREAN] src\network\center\Center.java:2033: sb.append(type + " 지급");
+[KOREAN] src\network\center\Center.java:2034: sb.append(" (계์ •ID : ");
+[KOREAN] src\network\center\Center.java:2042: .println("[ERROR] Account not found, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
+[KOREAN] src\network\center\Center.java:2046: "[ERROR] DB error occurred, auto-recharge failed. (Account : " + accountName + ", 금액 : " + point + ")");
+[KOREAN] src\network\center\Center.java:2355: if (type.equals("이벤트 참여")) {
+[KOREAN] src\network\center\Center.java:2357: } else if (type.equals("์ 년 이벤트")) {
+[KOREAN] src\network\center\Center.java:2359: } else if (type.equals("클스마스 이벤트")) {
+[KOREAN] src\network\center\Center.java:2361: } else if (type.equals("보너스이벤트")) {
+[KOREAN] src\network\center\Center.java:2391: sb.append(" (계์ •ID : ");
+[KOREAN] src\network\center\Center.java:2466: if (type.equals("지급")) {
+[KOREAN] src\network\center\Center.java:2494: if (typex.equals("지급")) {
+[KOREAN] src\network\center\Center.java:2570: String t = "일반";
+[KOREAN] src\network\center\Center.java:2572: t = "이벤트 참여";
+[KOREAN] src\network\center\Center.java:2574: t = "초심자 패키지";
+[KOREAN] src\network\center\Center.java:2576: t = "보너스이벤트";
+[KOREAN] src\network\center\Center.java:2578: t = "설๋ A";
+[KOREAN] src\network\center\Center.java:2580: t = "설๋ B";
+[KOREAN] src\network\center\Center.java:2582: t = "설๋ C";
+[KOREAN] src\network\center\Center.java:2584: t = "어린이๋ ";
+[KOREAN] src\network\center\Center.java:2586: t = "가์ •의달C";
+[KOREAN] src\network\center\Center.java:2588: t = "가์ •의달B";
+[KOREAN] src\network\center\Center.java:2590: t = "가์ •의달A";
+[KOREAN] src\network\center\Center.java:2592: t = "가์ •의달S";
+[KOREAN] src\network\center\Center.java:2594: t = "가์ •의달SS";
+[KOREAN] src\network\center\Center.java:2596: t = "가์ •의달SSS";
+[KOREAN] src\network\center\Center.java:2598: t = "상시패키지1";
+[KOREAN] src\network\center\Center.java:2600: t = "상시패키지2";
+[KOREAN] src\network\center\Center.java:2602: t = "추석패키지I";
+[KOREAN] src\network\center\Center.java:2604: t = "추석패키지II";
+[KOREAN] src\network\center\Center.java:2606: t = "추석패키지III";
+[KOREAN] src\network\center\Center.java:2608: t = "추석패키지IV";
+[KOREAN] src\network\center\Center.java:2610: t = "3주년패키지I";
+[KOREAN] src\network\center\Center.java:2612: t = "3주년패키지II";
+[KOREAN] src\network\center\Center.java:2614: t = "3주년패키지III";
+[KOREAN] src\network\center\Center.java:2616: t = "크리스마스패키지1";
+[KOREAN] src\network\center\Center.java:2618: t = "크리스마스패키지2";
+[KOREAN] src\network\center\Center.java:2620: t = "크리스마스패키지3";
+[KOREAN] src\network\center\Center.java:2622: t = "크리스마스패키지4";
+[KOREAN] src\network\center\Center.java:2624: t = "2023패키지1";
+[KOREAN] src\network\center\Center.java:2626: t = "2023패키지2";
+[KOREAN] src\network\center\Center.java:2628: t = "2023패키지3";
+[KOREAN] src\network\center\Center.java:2630: t = "2023패키지4";
+[KOREAN] src\network\center\Center.java:2632: t = "2023패키지5";
+[KOREAN] src\network\center\Center.java:2634: t = "2023패키지6";
+[KOREAN] src\network\center\Center.java:2636: t = "2023패키지7";
+[KOREAN] src\network\center\Center.java:2638: t = "2023패키지8";
+[KOREAN] src\network\center\Center.java:2640: t = "2023패키지9";
+[KOREAN] src\network\center\Center.java:2642: t = "2023패키지10";
+[KOREAN] src\network\center\Center.java:2644: t = "2023패키지11";
+[KOREAN] src\network\center\Center.java:2646: t = "5월패키지1";
+[KOREAN] src\network\center\Center.java:2648: t = "5월패키지2";
+[KOREAN] src\network\center\Center.java:2650: t = "5월패키지3";
+[KOREAN] src\network\center\Center.java:2652: t = "5월패키지4";
+[KOREAN] src\network\center\Center.java:2654: t = "5월패키지5";
+[KOREAN] src\network\center\Center.java:2656: t = "5월패키지6";
+[KOREAN] src\network\center\Center.java:2658: t = "5월패키지7";
+[KOREAN] src\network\center\Center.java:2660: t = "5월패키지8";
+[KOREAN] src\network\center\Center.java:2662: t = "5월패키지9";
+[KOREAN] src\network\center\Center.java:2664: t = "5월패키지10";
+[KOREAN] src\network\center\Center.java:2666: t = "5월패키지11";
+[KOREAN] src\network\center\Center.java:2669: if (DBConfig.isGanglim && !t.equals("일반")) {
+[MOJIBAKE] src\network\center\Center.java:4054: "[Thursday Daily] กิจกรรมส่วนŴ Star Force กำลังดำเนินอยู่"));
+[KOREAN] src\network\center\RebirthRankEntry.java:74: packet.writeMapleAsciiString("직업 : " + this.jobName);
+[KOREAN] src\network\center\RebirthRankEntry.java:75: packet.writeMapleAsciiString("환생포인트 : " + this.rebirthCount);
+[KOREAN] src\network\center\RebirthRankEntry.java:76: packet.writeMapleAsciiString("๋ 벨 : " + this.playerLevel);
+[KOREAN] src\network\center\RebirthRankEntry.java:77: packet.writeMapleAsciiString("์ 니온 : " + this.totalUnion);
+[KOREAN] src\network\center\RebirthRankEntry.java:78: packet.writeMapleAsciiString("각성 : " + this.superRebirthCount + "회");
+[KOREAN] src\network\center\praise\PraiseDonationMesoRank.java:165: playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรسารับรางวัŴ้านบน");
+[KOREAN] src\network\center\praise\PraiseDonationMesoRank.java:178: System.out.println(entry.getPlayerName() + " 캐릭터가 칭찬 포인트 랭킹 " + rank + "위로 보상이 ์ •산되었습니다.");
+[KOREAN] src\network\center\praise\PraiseDonationMesoRank.java:186: new StringBuilder("칭찬 포인트 랭킹 " + rank + "위 보상 대상자 (name : " + entry.getPlayerName() + ", accountID : " + toAccountID + ")")
+[KOREAN] src\network\center\praise\PraiseDonationMesoRank.java:221: new StringBuilder(playerx.getName() + ", 슈퍼볼 당첨자")
+[KOREAN] src\network\center\praise\PraiseDonationMesoRank.java:234: LoggingManager.putLog(new CustomLog("", "", 0, id, 2, new StringBuilder("슈퍼볼 당첨자 (accountID : " + id + ")")));
+[KOREAN] src\network\center\praise\PraisePointRank.java:68: System.out.println("Praise Point Ranking Total " + (rank - 1) + "개가 업데이트 되었습니다.");
+[KOREAN] src\network\center\praise\PraisePointRank.java:86: cm.sendNext("해당 캐릭터를 찾을 수 없습니다.");
+[KOREAN] src\network\center\praise\PraisePointRank.java:89: cm.sendNext("자์ 의 캐릭터는 칭찬ํ•  수 없습니다. #e어뷰징 행위#n는 경๊ณ  없이 ์ 재๋  수 있습니다. 주의해주시기 바랍니다.");
+[KOREAN] src\network\center\praise\PraisePointRank.java:92: cm.sendNext("해당 캐릭터는 칭찬ํ•  수 없습니다.");
+[KOREAN] src\network\center\praise\PraisePointRank.java:111: player.dropMessage(5, from.getName() + "님이 " + player.getName() + "님을 칭찬했습니다. 1,000 칭찬 포인트를 획득했습니다.");
+[KOREAN] src\network\center\praise\PraisePointRank.java:113: CField.addPopupSay(9062000, 5000, "#b" + from.getName() + "#k님이 #b" + player.getName() + "#k님을 칭찬했습니다. #r1,000 칭찬 포인트#k를 획득했습니다.", "")
+[KOREAN] src\network\center\praise\PraisePointRank.java:236: playerx.dropMessage(5, "[알림] 칭찬 포인트 랭킹 " + rank + "กรسารับรางวัŴ้านบน");
+[KOREAN] src\network\connector\ConnectorClient.java:299: ConnectorPanel.jTextArea2.append("스킬체크실패\r\n");
+[KOREAN] src\network\connector\ConnectorClient.java:301: FileoutputUtil.log("Log_ConnectorLog.rtf", "스킬체크실패");
+[KOREAN] src\network\connector\ConnectorNettyHandler.java:91: ConnectorServerHandler.ConnectorLog("핑타임 초과 ID : " + client.getId() + " IP : " + client.getAddressIP() + " ", client);
+[KOREAN] src\network\connector\ConnectorServerHandler.java:475: ps.setString(1, "영구 ์ •지 당하셨습니다.");
+[KOREAN] src\network\connector\ConnectorServerHandler.java:482: ps.setString(1, "영구 ์ •지 당하셨습니다.");
+[KOREAN] src\network\connector\ConnectorThread.java:24: .println("[Connector Error] " + chr.getName() + " 캐릭터의 AccountID가 다름 : " + cli.getAccountId() + " / " + chr.getClient().getAccID());
+[KOREAN] src\network\connector\ConnectorThread.java:28: System.out.println("[Connector Error] " + chr.getName() + " 캐릭터의 ์ €장된 커넥터 클라이언트 ์ •보가 Null");
+[KOREAN] src\network\connector\ConnectorThread.java:36: System.out.println("[Connector Error] " + chr.getName() + " 캐릭터의 계์ • 커넥터 클라이언트 ์ •보가 Null");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:292: this.jButton5.setText("강์ 종료");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:326: this.jTabbedPane1.setName("서버관๋ จ");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:332: jTable1.setModel(new DefaultTableModel(new Object[0][], new String[]{"아이디", "비밀번호", "아이피", "์ ‘속중인캐릭터", "클라이언트", "대표캐릭터"}) {
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:353: this.jButton1.setText("영구퇴장");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:362: this.jButton2.setText("강์ 퇴장");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:370: this.jButton3.setText("리스트");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:380: this.jButton6.setText("์ 체 공지");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:388: this.jButton7.setText("์ 택 공지");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:425: this.jTabbedPane1.addTab("์ ‘속자", this.jPanel1);
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:440: this.jButton14.setText("추가");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:448: this.jButton13.setText("삭์ ");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:484: this.jTabbedPane1.addTab("아이피 차단", this.jPanel2);
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:491: this.jButton4.setText("청소");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:500: this.jCheckBox1.setText("로그기록");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:532: this.jTabbedPane1.addTab("로그", this.jPanel3);
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:561: txtMsg = "์ 택하지 않았습니다.";
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:613: txtMsg = "์ 택하지 않았습니다.";
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:630: chr.getMap().broadcastMessage(CWvsContext.yellowChat("GM개인메세지 : " + this.jTextField1.getText()));
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:639: Center.Broadcast.broadcastMessage(CWvsContext.yellowChat("GM์ 체메세지 : " + this.jTextField1.getText()));
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:650: txtMsg = "์ 택하지 않았습니다.";
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:669: txtMsg = "์ 택하지 않았습니다.";
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:729: ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '운영자' WHERE name = ?");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:730: ps1.setString(1, "영구 퇴장 당하셨습니다.");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:744: ps1 = con.prepareStatement("UPDATE accounts SET banned = 1, banreason = ?, banby = '운영자' WHERE name = ?");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:745: ps1.setString(1, "영구 퇴장 당하셨습니다.");
+[KOREAN] src\network\connector\panel\ConnectorPanel.java:1082: Font newDefaultFont = new Font("맑은 ๊ณ 딕", 1, 12);
+[KOREAN] src\network\discordbot\BotServer.java:54: this.df.log(Level.INFO, "디스코드 봇서버가 오픈 되었습니다.");
+[KOREAN] src\network\discordbot\BotServer.java:56: this.df.log(Level.INFO, "디스코드 봇서버 오픈이 실패하였습니다.");
+[KOREAN] src\network\discordbot\DiscordBotHandler.java:87: encoder.writeMapleAsciiString("강림 총 인원은 현재 " + count + "명 입니다.\r\n" + pick);
+[KOREAN] src\network\discordbot\DiscordBotHandler.java:105: name = "이름없음";
+[KOREAN] src\network\discordbot\DiscordBotHandler.java:128: name = "이름없음";
+[KOREAN] src\network\discordbot\DiscordBotHandler.java:150: name = "이름없음";
+[KOREAN] src\network\discordbot\processor\DiscordBotProcessor.java:16: Center.Broadcast.broadcastMessage(CField.chatMsg(28, "[디스코드] " + name + " : " + msg));
+[KOREAN] src\network\discordbot\processor\DiscordBotProcessor.java:70: encoder.writeMapleAsciiString("가입하๋ ค는 ID가 이미 존재하는 ID입니다. 다시 시도해주세요.");
+[KOREAN] src\network\discordbot\processor\DiscordBotProcessor.java:73: encoder.writeMapleAsciiString("가입에 성공했습니다.\r\n ID : " + id);
+[KOREAN] src\network\discordbot\processor\DiscordBotProcessor.java:125: encoder.writeMapleAsciiString("계์ • 연결에 성공했습니다.\r\n ID : " + id);
+[KOREAN] src\network\discordbot\processor\DiscordBotProcessor.java:128: encoder.writeMapleAsciiString("알 수 없는 오류로 계์ • 연결에 실패했습니다.");
+[KOREAN] src\network\game\GameServer.java:273: System.out.println("Channel " + this.getChannel() + " 서버가 " + this.port + " 포트를 성공์ 으로 개방했습니다.");
+[KOREAN] src\network\game\GameServer.java:285: this.broadcastPacket(CWvsContext.serverNotice(0, "현재 채널이 ์ 시 후 종료됩니다."));
+[KOREAN] src\network\game\GameServer.java:287: System.out.println(this.channel + "Channel 캐릭터를 ์ €장합니다.");
+[MOJIBAKE] src\network\game\processors\EnchantHandler.java:301: + destroy + ", Ŵรдับ=" + downGrade);
+[KOREAN] src\network\game\processors\InterServerHandler.java:611: sb.append("์ ‘속 로그 (아이피 : ");
+[KOREAN] src\network\game\processors\InterServerHandler.java:613: sb.append(", ์ ‘속 서버 : 인게임)");
+[MOJIBAKE] src\network\game\processors\InterServerHandler.java:971: "[Tue/Thu Burning] ส่วนŴค่าใช้จ่ҁStar Force\r\nส่วนŴค่าใช้จ่ҁStar Force 30%!!",
+[MOJIBAKE] src\network\game\processors\InterServerHandler.java:973: str = "[Tue/Thu Burning] กิจกรรม 'ส่วนŴค่าใช้จ่ҁStar Force' กำลังดำเนินอยู่";
+[MOJIBAKE] src\network\game\processors\InterServerHandler.java:1036: "[Thursday Daily] ส่วนŴค่าใช้จ่ҁStar Force\r\nส่วนŴค่าใช้จ่ҁStar Force 30%!",
+[MOJIBAKE] src\network\game\processors\InterServerHandler.java:1040: "[Thursday Daily] กิจกรรมส่วนŴค่าใช้จ่ҁStar Force กำลังดำเนินอยู่"));
+[KOREAN] src\network\game\processors\MobHandler.java:361: mob.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("벨룸이 깊은 숨을 들이쉽니다."));
+[KOREAN] src\network\game\processors\NPCHandler.java:216: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:291: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:366: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:441: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:516: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:591: CurrentTime.getAllCurrentTime() + "에 " + c.getPlayer().getName() + "의 ๋ 벨 달성 퀘스트 보상");
+[KOREAN] src\network\game\processors\NPCHandler.java:881: chr.dropMessage(1, "Meso ไม่เพียงพอสำหรับฝากไอ템ในคลัง");
+[KOREAN] src\network\game\processors\PlayerHandler.java:2027: FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "물리 데미지 패킷 분석 실패 : " + slea.toString(),
+[KOREAN] src\network\game\processors\PlayerHandler.java:2129: FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "원거리 데미지 패킷 분석 실패 : " + slea.toString(),
+[KOREAN] src\network\game\processors\PlayerHandler.java:2274: FileoutputUtil.outputFileErrorReason("Log_DamageParseError.rtf", "마법 데미지 패킷 분석 실패 : " + slea.toString(),
+[KOREAN] src\network\game\processors\PlayerHandler.java:6921: StringBuilder sb = new StringBuilder("캐비넷에서 아이템 출๊ณ ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:6947: player.send(Field_DreamBreaker.dreamBreakerMsg("해당 스킬은 현재 스테이지에서 이미 사용하여 사용이 불가능합니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6956: player.send(Field_DreamBreaker.dreamBreakerMsg("게이지 홀드! 5초동안 게이지의 이동이 멈춥니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6960: player.send(Field_DreamBreaker.dreamBreakerMsg("드림 포인트가 부족하여 스킬을 사용ํ•  수 없습니다."));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6965: player.send(Field_DreamBreaker.dreamBreakerMsg("드림 포인트가 부족하여 스킬을 사용ํ•  수 없습니다."));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6977: player.send(Field_DreamBreaker.dreamBreakerMsg("자각의 종소리를 울๋ ค 한 곳의 오르골이 깨어났습니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6982: player.send(Field_DreamBreaker.dreamBreakerMsg("모๋“  오르골이 이미 깨어있는 상태입니다."));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6990: player.send(Field_DreamBreaker.dreamBreakerMsg("꿈속의 헝겊인형이 소환되어 몬스터들을 도발합니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:6997: player.send(Field_DreamBreaker.dreamBreakerMsg("드림 포인트가 부족하여 스킬을 사용ํ•  수 없습니다."));
+[KOREAN] src\network\game\processors\PlayerHandler.java:7002: player.send(Field_DreamBreaker.dreamBreakerMsg("드림 포인트가 부족하여 스킬을 사용ํ•  수 없습니다."));
+[KOREAN] src\network\game\processors\PlayerHandler.java:7006: player.send(Field_DreamBreaker.dreamBreakerMsg("숙면의 오르골을 공격하던 모๋“  몬스터가 사라졌습니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:7427: player.dropMessage(5, target + "(이)에게 거짓말 탐지기 테스트를 요청하였습니다.");
+[KOREAN] src\network\game\processors\PlayerHandler.java:7844: .broadcastMessage(CWvsContext.getScriptProgressMessage("굴라가 더욱 격๋ ฌ하게 ์ €항하며 강๋ ฅ한 몬스터들이 등장합니다!"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:8276: if (ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시")
+[KOREAN] src\network\game\processors\PlayerHandler.java:8283: && c.getPlayer().getName().startsWith("임시")) {
+[KOREAN] src\network\game\processors\PlayerHandler.java:8288: || DBConfig.isGanglim && c.getPlayer().getName().contains("휴면")) {
+[KOREAN] src\network\game\processors\PlayerHandler.java:8332: && requestName.startsWith("임시")) {
+[KOREAN] src\network\game\processors\PlayerHandler.java:8357: sb.append("닉네임 변경 (아이피 : ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:8359: sb.append(", 이์  닉네임 : ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:8361: sb.append(", 변경 닉네임 : ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:8408: || ServerConstants.useTempCharacterName && !c.getPlayer().getName().startsWith("임시")
+[KOREAN] src\network\game\processors\PlayerHandler.java:10211: StringBuilder sb = new StringBuilder("헥사스텟 강화 (");
+[KOREAN] src\network\game\processors\PlayerHandler.java:10212: sb.append("계์ • : ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:10214: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\PlayerHandler.java:10217: sb.append(result == 0 ? "메인스탯" : (result == 1 ? "에디셔널스탯1" : "에디셔널스탯2"));
+[KOREAN] src\network\game\processors\PlayerHandler.java:10218: sb.append("+1) 결과 : (" + data.getStats().get(0).level + " / " + data.getStats().get(1).level + " / "
+[KOREAN] src\network\game\processors\PlayerInteractionHandler.java:131: c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "핑크빈과 예티에게는 교환์ 청을 ํ•  수 없습니다."));
+[MOJIBAKE] src\network\game\processors\PlayersHandler.java:600: chr.dropMessage(1, "ฝ่าµรงข้ามไม่มีสกิŴังกล่าว");
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:310: String s = "연금์ ";
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:313: s = "약초채집";
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:316: s = "채광";
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:319: s = "장비์ 작";
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:322: s = "장์ 구์ 작";
+[KOREAN] src\network\game\processors\inventory\CraftHandler.java:408: MapleInventoryManipulator.addById(c, toGet, quantity, FileoutputUtil.CurrentReadable_Date() + " 시간에 " + itemId + " 아이템을 분해하여 얻은 아이템.");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:551: "ยินดմ้วย!!\r\nได้รับ [#b#i" + rewardx + "##z" + rewardx + "#](이) จากวงล้อ",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:730: StringBuilder sb = new StringBuilder("무료 큐브 사용 결과 (");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:731: sb.append("계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:733: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:735: sb.append(" (์ •보 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1214: sb.append("큐브 옵션 ์ 택 (계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1216: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1218: sb.append(", ์ 택옵션 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1226: sb.append(" (์ •보 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1323: sb.append("검환불 옵션 ์ 택 (계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1325: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1327: sb.append(", ์ 택옵션 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1335: sb.append(" (์ •보 : ");
+[MOJIBAKE] src\network\game\processors\inventory\InventoryHandler.java:1840: chr.dropMessage(5, "จำนวนการอัพเกôไม่Ŵลงเนื่องจากผลของไอเทม");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1860: sb.append("주문서 강화 결과 ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1861: sb.append(scrollSuccess == Equip.ScrollResult.SUCCESS ? "성공"
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1862: : (scrollSuccess == Equip.ScrollResult.FAIL ? "실패" : "파괴"));
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1863: sb.append(" (계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1865: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1871: sb.append(", 놀라운 장비 주문서 (세이프티 사용 여부 : " + safety + ", 프로텍트 사용 여부 : " + protect
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1872: + ", 리커버리 사용 여부 : " + recovery_ + ")");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1876: sb.append(", 리턴스크롤 사용여부 : ").append(return_);
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:1877: sb.append(", 장비옵션 [");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2154: StringBuilder sb = new StringBuilder("플래그 주문서 사용 (");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2155: sb.append("계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2157: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2159: sb.append(" (์ •보 : ");
+[MOJIBAKE] src\network\game\processors\inventory\InventoryHandler.java:2197: c.getPlayer().dropMessage(1, "กรسาปŴล็อค Potential ก่อน");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2253: StringBuilder sb = new StringBuilder("์ 재능๋ ฅ 부여 주문서 사용 (");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2254: sb.append("계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2256: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2258: sb.append(" (์ •보 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2321: sb.append("검환불 옵션 ์ 택 (계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2323: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:2326: sb.append(", (์ •보 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:3979: c.getPlayer().dropMessage(6, "[라이딩] " + data.getRight() + "을 획득하셨습니다.");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4039: c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] 스킬을 얻었습니다.");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4043: c.getPlayer().dropMessage(-1, "[" + SkillFactory.getSkillName(mountid) + "] 스킬을 얻었습니다.");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4386: c.getPlayer().send(CWvsContext.serverNotice(0, "๋ 벨이 낮거나 이동이 불가능한 맵입니다."));
+[MOJIBAKE] src\network\game\processors\inventory\InventoryHandler.java:4762: "ไม่สามารถŴสกิลนี้ได้ กรسาใช้ SP Reset ที่ถูกต้อง");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4812: skillbook + " 차 스킬 : " + skillid + " / " + skill.getMaxLevel() + " 증가");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4833: if (owner != null && !owner.isEmpty() && owner.equals(i + "성")) {
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:4876: if (owner != null && !owner.isEmpty() && owner.equals(ix + "성")) {
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5043: + "님이 "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5045: + "에서 {"
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5047: + "} 아이템을 획득하였습니다",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5053: "골드์• 플 사용 (출현 아이템 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5057: + "), 사용자 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5064: itemxxxxxxxxxxxxxxxxxxxxxxxxxx.getQuantity(), false, -1L, "골드 ์• 플을 통해 획득한 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5066: "골드 ์• 플을 통해 획득한 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5146: FileoutputUtil.CurrentReadable_Date() + "에 어메이징 미라클 큐브에 의해 생성된 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5196: FileoutputUtil.CurrentReadable_Date() + "에 ๋ 드 큐브에 의해 생성된 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5318: FileoutputUtil.CurrentReadable_Date() + "에 블랙 큐브에 의해 생성된 아이템");
+[MOJIBAKE] src\network\game\processors\inventory\InventoryHandler.java:5350: c.getPlayer().dropMessage(1, "กรسาปŴล็อค Potential ก่อน");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5363: FileoutputUtil.CurrentReadable_Date() + "에 에디셔널 큐브에 의해 생성된 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5505: FileoutputUtil.CurrentReadable_Date() + "에 화이트 에디셔널 큐브에 의해 생성된 아이템");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5737: c.getPlayer().getName() + "님이 " + ii.getName(5068300) + "에서 {"
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5738: + ii.getName(itemxxxxxxxxxxx.getItemId()) + "} 아이템을 획득하였습니다",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5744: "위습의 원더๋ฒ 리 사용 (출현 아이템 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5748: + "), 사용자 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5883: c.getPlayer().getName() + "님이 " + ii.getName(5069000) + "에서 {"
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5884: + ii.getName(rewardEquip.getItemId()) + "} 아이템을 획득하였습니다",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5919: "마스터피스 사용 (출현 아이템 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5923: + "), 공/마 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5925: + ", 스탯 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5927: + ", 사용자 : "
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5995: c.getPlayer().getName() + "님이 " + ii.getName(5069100) + "에서 {"
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:5996: + ii.getName(itemr.getItemId()) + "} 아이템을 획득하였습니다",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:6002: "루나 크리스탈 사용 (출현 아이템 : " + ii.getName(itemr.getItemId()) + "(" + itemr.getItemId()
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:6003: + "), 사용자 : " + c.getPlayer().getName() + ")");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8071: sb.append("아이템 획득 ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8072: sb.append(" (획득 방법 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8074: sb.append("펫 줍기)");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8076: sb.append("직์ ‘ 줍기)");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8081: sb.append("(장비옵션");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8108: "뉴비", "Bronze", "Silver", "Gold", "Platinum", "Diamond", "Master", "Grand Master", "Challenger", "Overload",
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8574: StringBuilder sb = new StringBuilder("황금 망치 사용 (");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8575: sb.append("계์ • : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8577: sb.append(", 캐릭터 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8579: sb.append(" (์ •보 : ");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8736: chr.updateOneInfo(QuestExConstants.HasteEvent.getQuestID(), "str", "히๋“  미션이 열๋ ธ습니다!");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8742: stage + "단계 상자 도์  중! 일일 미션 1개를 완료하세요!");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8875: cubeString = "๋ 드 큐브";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8878: cubeString = "블랙 큐브";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8881: cubeString = "에디셔널 큐브";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8884: cubeString = "화이트 에디셔널 큐브";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8893: infoString = "๋ 어에서 에픽";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8896: infoString = "에픽에서 ์ 니크";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8899: infoString = "์ 니크에서 ๋ ์ 더리";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8945: upgradeGrade = "에픽";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8948: upgradeGrade = "์ 니크";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8951: upgradeGrade = "๋ ์ 더리";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8960: c.getPlayer().dropMessage(5, "[Grade Ceiling] 해당 큐브는 등급이 상승되어 Before 옵션을 ์ 택해도 천장 목표 개수는 초기화됩니다.");
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8974: upgradeGrade = "에픽";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8977: upgradeGrade = "์ 니크";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8980: upgradeGrade = "๋ ์ 더리";
+[KOREAN] src\network\game\processors\inventory\InventoryHandler.java:8984: .dropMessage(5, "[Grade Ceiling] " + cubeString + " บรรลุจำนวนเป้าหมายการการันตีรдับ 다음 " + infoString
+[KOREAN] src\network\game\processors\inventory\PetHandler.java:301: chr.send(CWvsContext.serverNotice(1, "등록된 펫์ •보를 불러오는데 실패했습니다."));
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:104: user.gainItem(rewardID, rewardCount, false, -1L, "몬스터 컬๋ 션 보상");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:144: user.gainItem(specialReward, specialRewardCount, false, -1L, "몬스터 컬๋ 션 스페셜 보상");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:223: user.gainItem(ccRewardID, 1, false, -1L, "몬스터 컬๋ 션 훈장 보상");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:251: user.dropMessage(1, "พื้นที่ช่องเก็บของไม่เพียงพ́소비슬롯 5칸 기타슬롯 3칸 캐시슬롯2칸 이상을 비워주세요.");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:295: user.gainItem(firstReward, firstQty, false, -1L, "몬스터 컬๋ 션 탐험보상");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:296: user.gainItem(secondReward, secondQty, false, -1L, "몬스터 컬๋ 션 탐험보상");
+[KOREAN] src\network\game\processors\monstercollection\MonsterCollectionHandler.java:297: user.gainItem(thirdReward, thirdQty, false, -1L, "몬스터 컬๋ 션 탐험보상");
+[KOREAN] src\network\login\LoginInformationProvider.java:81: case "궁모":
+[KOREAN] src\network\login\LoginInformationProvider.java:84: case "모자":
+[KOREAN] src\network\login\LoginInformationProvider.java:87: case "상의":
+[KOREAN] src\network\login\LoginInformationProvider.java:90: case "의상":
+[KOREAN] src\network\login\LoginInformationProvider.java:93: case "하의":
+[KOREAN] src\network\login\LoginInformationProvider.java:96: case "망토":
+[KOREAN] src\network\login\LoginInformationProvider.java:99: case "신발":
+[KOREAN] src\network\login\LoginInformationProvider.java:102: case "무기":
+[KOREAN] src\network\login\LoginInformationProvider.java:105: case "얼굴":
+[KOREAN] src\network\login\LoginInformationProvider.java:108: case "헤어":
+[MOJIBAKE] src\network\models\CField.java:5446: "คุณต้องปŴปล่อยรูนเพื่อลบคำสาปของอีลշบอส!!\\r\\nคำสาปของอีลշบอสจะเริ่มขึ้นในไม่ช้า!!");
+[MOJIBAKE] src\network\models\CField.java:5449: "คุณต้องปŴปล่อยรูนเพื่อลบคำสาปของอีลշบอส!!\\r\\nคำสาปขั้น " + level
+[MOJIBAKE] src\network\models\CField.java:5450: + " : อѵราได้รับค่าประสบกาó์และอѵรҴรอปŴลง "
+[MOJIBAKE] src\network\models\CWvsContext.java:1668: mplew.writeMapleAsciiString("ค่าอัพเกô Spell Trace Ŵลง 50%");
+[MOJIBAKE] src\network\models\CWvsContext.java:1686: "#eวันอҷԵย์คื́Maple! กิจกรรม <Sunday Maple>!\r\n\r\nค่าอัพเกô Spell Trace\r\n#fc0xFFFFCC00#Ŵราคҁ50%!#k");
+[MOJIBAKE] src\network\models\CWvsContext.java:1691: mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability Ŵลง 50%");
+[MOJIBAKE] src\network\models\CWvsContext.java:1707: mplew.writeMapleAsciiString("ค่ารีเซ็ต Ability Ŵลง 50%!");
+[MOJIBAKE] src\network\models\CWvsContext.java:1765: mplew.writeMapleAsciiString("ค่าอัพเกô Star Force#k Ŵลง 30%");
+[MOJIBAKE] src\network\models\CWvsContext.java:1783: "#eวันอҷԵย์คื́Maple! กิจกรรม <Sunday Maple>!\r\n\r\n#fc0xFFFFCC00#ค่าอัพเกô Star Force#k Ŵลง 30%#n\r\n(ไม่รวมค่ากันแตกและอุปกó์ Superior, ส่วนŴ MVP/PC Cafe จะคำนǳจากราคҷี่Ŵแล้ว)");
+[KOREAN] src\objects\androids\Android.java:137: pse.setString(5, "안드로이드");
+[KOREAN] src\objects\androids\Android.java:150: skin.setName("안드로이드");
+[KOREAN] src\objects\captcha\MapleCaptchaWordRenderer.java:20: private static final Font font = new Font("궁서체", 1, 30);
+[KOREAN] src\objects\contents\ContentsManager.java:58: if (!line.contains("다음 중") && line.contains("(")) {
+[KOREAN] src\objects\contents\ContentsManager.java:62: if (Pattern.matches("^[ㄱ-ㅎ가-힣]*$", q)) {
+[KOREAN] src\objects\contents\ContentsManager.java:73: System.out.println("[ConsonantQuiz] DB Loaded. " + jaums.size() + "개");
+[KOREAN] src\objects\contents\ContentsManager.java:117: Center.Broadcast.broadcastMessage(CField.chatMsg(7, chr.getName() + "님 ์ •답! ์ 니온 코인 30개가 지급됩니다."));
+[KOREAN] src\objects\contents\ContentsManager.java:145: int first = (b - '가') / 588;
+[KOREAN] src\objects\contents\ContentsManager.java:270: + (right > 0 ? "우출발 /" : "좌출발 / ")
+[KOREAN] src\objects\contents\ContentsManager.java:274: + (odd > 0 ? "홀 /" : "짝 /")
+[KOREAN] src\objects\contents\ContentsManager.java:275: + " 당첨되์  분들의 당첨을 축하합니다. (알림을 원하시지 않는다면 @사다리 명๋ น어를 이용해주세요.)"
+[KOREAN] src\objects\contents\ContentsManager.java:354: CField.chatMsg(6, "ยʹเงินรางวัŁTop." + (index + 1) + " " + key + "님 " + decFormat.format(winner.get(key)) + "메소 ")
+[KOREAN] src\objects\contents\ContentsManager.java:364: CField.chatMsg(6, "ยʹขҴทุน Top.1 " + looserKeySetList.get(0) + "님 " + decFormat.format(looser.get(looserKeySetList.get(0))) + "메소 ")
+[KOREAN] src\objects\contents\ContentsManager.java:372: String dealer = "[현재 사다리 메소 현황]\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:373: dealer = dealer + "오늘의 ์ 체 ๋ฒ 팅 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:374: dealer = dealer + "오늘의 ์ 체 ์ ์ € 수๋ น 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:376: + "서버입장 순메소수익 : "
+[KOREAN] src\objects\contents\ContentsManager.java:378: + "메소";
+[KOREAN] src\objects\contents\ContentsManager.java:388: String dealer = "[★★오늘의 사다리 메소 ์ •산★★]\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:389: dealer = dealer + "오늘의 ์ 체 ๋ฒ 팅 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBet) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:390: dealer = dealer + "오늘의 ์ 체 ์ ์ € 수๋ น 금액 : " + decFormat.format(ContentsManager.SpeedLadderGame.todayTotalBetWinning) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:392: + "서버입장 순메소수익 : "
+[KOREAN] src\objects\contents\ContentsManager.java:394: + "메소";
+[KOREAN] src\objects\contents\ContentsManager.java:402: DiscordBotHandler.requestSendTelegram("๋ 짜가 지나 사다리 현황이 초기화 되었습니다.", -460561418L);
+[KOREAN] src\objects\contents\ContentsManager.java:419: String dealer = "[현재 사다리 메소 ์ •산]\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:420: dealer = dealer + "오늘의 라운드 수 : " + todayRound + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:421: dealer = dealer + "오늘의 ์ 체 ๋ฒ 팅 금액 : " + decFormat.format(todayTotalBet) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:422: dealer = dealer + "오늘의 ์ 체 ์ ์ € 수๋ น 금액 : " + decFormat.format(todayTotalBetWinning) + "\r\n";
+[KOREAN] src\objects\contents\ContentsManager.java:423: return dealer + "서버입장 순메소수익 : " + decFormat.format(todayTotalBet - todayTotalBetWinning) + "메소";
+[KOREAN] src\objects\context\EventList.java:39: System.out.println("[EventList] " + cEventList.size() + "개 캐싱완료");
+[KOREAN] src\objects\context\GoldenChariot.java:26: System.out.println("[GoldenChariot] " + goldenChariotList.size() + "개 캐싱완료");
+[KOREAN] src\objects\context\SundayEventList.java:81: System.out.println("[SundayList] " + sEventList.size() + "개 캐싱완료");
+[KOREAN] src\objects\context\friend\Friend.java:146: this.pendingRequests.push(new CharacterNameAndId(playerID, buddyid, buddyname, 200, 6512, "그룹 미지์ •", ""));
+[KOREAN] src\objects\context\friend\Friend.java:188: this.put(new FriendEntry(buddyname, buddyid, buddyid, "그룹 미지์ •", -1, true, 200, 6512, ""));
+[KOREAN] src\objects\context\friend\FriendEntry.java:63: return this.group == null ? "그룹 미지์ •" : this.group;
+[KOREAN] src\objects\context\guild\Guild.java:1371: return "메이플스ํ 리";
+[KOREAN] src\objects\context\guild\Guild.java:1385: throw new RuntimeException("없는 ์ ์ €가 가입 ์ 청하๋ ค๊ณ  했습니다.");
+[KOREAN] src\objects\context\guild\Guild.java:1732: Guild.this.broadcast(CWvsContext.serverNotice(5, "길드 컨텐์ธ  참여 현황 및 노블 포인트가 ์ •산되었습니다."));
+[KOREAN] src\objects\context\guild\Guild.java:1781: this.broadcast(CWvsContext.serverNotice(5, "길드 컨텐์ธ  참여 현황 및 노블 포인트가 ์ •산되었습니다."));
+[KOREAN] src\objects\context\guild\alliance\Alliance.java:124: ps.setString(5, "마스터");
+[KOREAN] src\objects\context\guild\alliance\Alliance.java:125: ps.setString(6, "부마스터");
+[KOREAN] src\objects\context\guild\alliance\Alliance.java:126: ps.setString(7, "연합원");
+[KOREAN] src\objects\context\guild\alliance\Alliance.java:127: ps.setString(8, "연합원");
+[KOREAN] src\objects\context\guild\alliance\Alliance.java:128: ps.setString(9, "연합원");
+[KOREAN] src\objects\context\party\boss\BossParty.java:44: System.out.println("[BossParty] " + cachedBossParty.size() + "개 캐싱완료");
+[KOREAN] src\objects\fields\EliteBossEvent.java:133: this.map.startMapEffect("미친 마법사 카리아인 : 미천한 것들이 ๋ 뛰๊ณ  있구나. 크크크크...", 5120126, false, 5);
+[KOREAN] src\objects\fields\EliteBossEvent.java:136: this.map.startMapEffect("돌격형 CQ57 : 목표발견. ์ 거 행동을 시작한다.", 5120127, false, 5);
+[KOREAN] src\objects\fields\EliteBossEvent.java:142: this.map.startMapEffect("싸움꾼 플๋ 드 : 재미 있๊ฒ 군. 어디 한 번 놀아볼까.", 5120129, false, 5);
+[KOREAN] src\objects\fields\EliteMobEvent.java:58: this.map.startMapEffect("어๋‘ 을 흩뿌리며 어๋‘ 의 ์ ๋ น이 나타납니다.", 5120124, false, 5);
+[KOREAN] src\objects\fields\EliteMobEvent.java:60: this.map.startMapEffect("어두운 기운과 함께 강๋ ฅ한 몬스터가 출현합니다.", 5120124, false, 5);
+[KOREAN] src\objects\fields\EliteMobEvent.java:71: map.startMapEffect("어두운 기운이 사라지지 않아 이곳을 음산하게 만들๊ณ  있습니다.", 5120124, false, 5);
+[KOREAN] src\objects\fields\EliteMobEvent.java:73: map.startMapEffect("이곳이 어두운 기운으로 가득 차 곧 무슨 일이 일어๋  듯 합니다.", 5120124, false, 5);
+[KOREAN] src\objects\fields\Field.java:1328: CurrentTime.getAllCurrentTime() + "에 " + cchrx.getName() + "이(가) " + mob.getId()
+[KOREAN] src\objects\fields\Field.java:1329: + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ")");
+[KOREAN] src\objects\fields\Field.java:1497: + "에 "
+[KOREAN] src\objects\fields\Field.java:1499: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1501: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1503: + ") (글로벌 드롭)");
+[KOREAN] src\objects\fields\Field.java:1555: + "에 "
+[KOREAN] src\objects\fields\Field.java:1557: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1559: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1561: + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1616: "헬모드 보상으로 획득한 아이템");
+[KOREAN] src\objects\fields\Field.java:1620: partyMember.dropMessage(-22, "ได้รับ Hell Boss Blue Bead 획득하는데 실패하였습니다.");
+[KOREAN] src\objects\fields\Field.java:1653: + "에 "
+[KOREAN] src\objects\fields\Field.java:1655: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1657: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1659: + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1692: CurrentTime.getAllCurrentTime() + "에 " + cchrxx.getName() + "이(가) " + mob.getId()
+[KOREAN] src\objects\fields\Field.java:1693: + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1704: CurrentTime.getAllCurrentTime() + "에 " + cchrxx.getName() + "이(가) " + mob.getId()
+[KOREAN] src\objects\fields\Field.java:1705: + " 몬스터로부터 얻은 아이템 (맵ID : " + this.mapid + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1730: + "에 "
+[KOREAN] src\objects\fields\Field.java:1732: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1734: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1736: + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1756: + "에 "
+[KOREAN] src\objects\fields\Field.java:1758: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1760: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1762: + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:1798: + "에 "
+[KOREAN] src\objects\fields\Field.java:1800: + "이(가) "
+[KOREAN] src\objects\fields\Field.java:1802: + " 몬스터로부터 얻은 아이템 (맵ID : "
+[KOREAN] src\objects\fields\Field.java:1804: + ") (보스 개인 드롭)");
+[KOREAN] src\objects\fields\Field.java:2952: chr.send(CField.addPopupSay(9062000, 3000, "#b[사자왕 반 ๋ 온의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2960: chr.send(CField.addPopupSay(9062000, 3000, "#b[시간의 대์ 관 아카이럼의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2971: chr.send(CField.addPopupSay(9062000, 3000, "#b[폭군 매그너스의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2974: chr.send(CField.addPopupSay(9062000, 3000, "#b[폭군 매그너스의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2985: chr.send(CField.addPopupSay(9062000, 3000, "#b[윙 마스터 스우의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2991: chr.send(CField.addPopupSay(9062000, 3000, "#b[파멸의 검 데미안의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:2997: chr.send(CField.addPopupSay(9062000, 3000, "#b[거미의 왕 윌의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:3003: chr.send(CField.addPopupSay(9062000, 3000, "#b[악몽의 주인 루시드의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[KOREAN] src\objects\fields\Field.java:3011: chr.send(CField.addPopupSay(9062000, 3000, "#b[붉은 마녀 진 힐라의 흔์ ]#k 퀘스트를 클리어 ํ•  수 있습니다.", ""));
+[MOJIBAKE] src\objects\fields\Field.java:3037: "การได้รับ EXP แลЁMeso จะŴลงอย่างมากเมื่อล่ามอนสเตอร์ที่รдับเลเวลห่างเกินไป", FontType.NanumGothic,
+[KOREAN] src\objects\fields\Field.java:3080: chr.send(CWvsContext.getScriptProgressMessage("현상금 사냥꾼의 포탈이 등장했습니다!"));
+[KOREAN] src\objects\fields\Field.java:3082: chr.send(CWvsContext.getScriptProgressMessage("불꽃늑대의 소굴로 향하는 포탈이 등장했습니다!"));
+[KOREAN] src\objects\fields\Field.java:3161: chr.send(CField.addPopupSay(9062474, 2000, "마법의 종이 울리는 소리를 듣๊ณ \r\n눈꽃 순록들이 달๋ ค오๊ณ  있어.", ""));
+[KOREAN] src\objects\fields\Field.java:3162: chr.send(CField.addPopupSay(9062474, 2000, "๊ณ 마워.\r\n네 덕분에 눈꽃 순록들이 바깥세상을 달릴 수 있었어.", ""));
+[KOREAN] src\objects\fields\Field.java:3169: chr.send(CField.startMapEffect("경험치 보상 " + nf.format(chr.getmParkExp()) + " 누์ !", 5120162, true));
+[KOREAN] src\objects\fields\Field.java:3187: chr.send(CField.startMapEffect("스톰윙을 모두 처치하였네! 이์  몰๋ ค๋“  몬스터들을 최대한 잡아보자๊ณ !", 5120159, true, 5));
+[KOREAN] src\objects\fields\Field.java:3189: chr.send(CField.startMapEffect("스톰윙을 처치하였군. 조금 더 오래 머물 수 있๊ฒ 어!", 5120159, true, 5));
+[KOREAN] src\objects\fields\Field.java:3199: chr.send(CWvsContext.getScriptProgressMessage("축하드립니다! 최대 사냥 가능 마리 수를 달성하였습니다. ์ 시 후 퇴장맵으로 이동합니다."));
+[KOREAN] src\objects\fields\Field.java:3357: cx.gainItem(4001843, var6x, false, -1L, "스우 격파로 얻은 아이템");
+[KOREAN] src\objects\fields\Field.java:3377: StringBuilder sb = new StringBuilder("보스 노말 스우 격파");
+[KOREAN] src\objects\fields\Field.java:3413: StringBuilder sb = new StringBuilder("보스 " + (hell ? "Hell" : "Hard") + " 스우 격파 (" + list + ")");
+[KOREAN] src\objects\fields\Field.java:3426: "[보스격파] [CH."
+[KOREAN] src\objects\fields\Field.java:3427: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\Field.java:3431: + "' 파티("
+[KOREAN] src\objects\fields\Field.java:3433: + ")가 [헬 스우]를 격파하였습니다."));
+[KOREAN] src\objects\fields\Field.java:3438: "[보스격파] [CH."
+[KOREAN] src\objects\fields\Field.java:3439: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\Field.java:3443: + "' 파티("
+[KOREAN] src\objects\fields\Field.java:3445: + ")가 [하드 스우]를 격파하였습니다."));
+[KOREAN] src\objects\fields\Field.java:3476: "[보스격파] [CH."
+[KOREAN] src\objects\fields\Field.java:3477: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\Field.java:3481: + "' 파티("
+[KOREAN] src\objects\fields\Field.java:3483: + ")가 [헬 스우]를 격파하였습니다."));
+[KOREAN] src\objects\fields\Field.java:6259: "[오류] 필드 addPlayer 함수 실행 중 sendObjectPlacement 오류 발생 : " + var23.toString());
+[KOREAN] src\objects\fields\Field.java:6400: chr.getId(), "#fn나눔๊ณ 딕 ExtraBold##fs26#    버닝 " + breakTimeFieldLevel + "단계 : 경험치 "
+[KOREAN] src\objects\fields\Field.java:6401: + breakTimeFieldLevel * 10 + "% 추가지급!!    ");
+[KOREAN] src\objects\fields\Field.java:7179: FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 리엑터");
+[KOREAN] src\objects\fields\Field.java:7190: FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 몬스터");
+[KOREAN] src\objects\fields\Field.java:7210: "sendObjectPlacement 오류 발생 sendSpawnData OBJType : " + o.getType().toString());
+[KOREAN] src\objects\fields\Field.java:7216: FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생 addVisibleMapObject");
+[KOREAN] src\objects\fields\Field.java:7220: FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 오류 발생");
+[KOREAN] src\objects\fields\Field.java:8684: "[์ 래잡기 알림]\r\n์ 한시간 2분이 지나 양이 승리하였습니다!\r\n모๋“  분들은 게임 보상맵으로 이동됩니다."));
+[KOREAN] src\objects\fields\Field.java:9043: TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 ExtraBold##fs26#    버닝 소멸!!    ");
+[KOREAN] src\objects\fields\Field.java:9051: "#fn나눔๊ณ 딕 ExtraBold##fs26#    버닝 "
+[KOREAN] src\objects\fields\Field.java:9053: + "단계 : 경험치 "
+[KOREAN] src\objects\fields\Field.java:9055: + "%로 감소!!    ");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:22: spawner.setSpawnDesc("어디์ 가 커다란 버섯이 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:31: spawner.setSpawnDesc("어디์ 가 커다란 파란 버섯이 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:40: spawner.setSpawnDesc("어디์ 가 음산한 기운을 풍기는 커다란 버섯이 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:49: spawner.setSpawnDesc("바위산을 울리는 발걸음 소리와 함께 스텀피가 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:58: spawner.setSpawnDesc("늪 속에서 거대한 악어 다일이 올라왔습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:65: spawner.setSpawnDesc("바이킹 군단이 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:72: spawner.setSpawnDesc("검은 바이킹이 모습을 드러냈습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:79: spawner.setSpawnDesc("약초밭 사이로 거대 도라지가 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:88: spawner.setSpawnDesc("주변을 흐르는 요기가 강해졌습니다. 기분나쁜 ๊ณ 양이 울음소리가 들립니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:95: spawner.setSpawnDesc("두루마기에 몸을 숨겼던 대나무 무사가 모습을 드러냈습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:104: spawner.setSpawnDesc("물밑에서 스멀스멀 대왕지네가 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:113: spawner.setSpawnDesc("추억의 길에 도도가 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:122: spawner.setSpawnDesc("후회의 길에 릴리노흐가 나타났습니다.");
+[KOREAN] src\objects\fields\FieldMonsterSpawner.java:129: spawner.setSpawnDesc("망각의 길에 라이카가 나타났습니다.");
+[KOREAN] src\objects\fields\MapScriptMethods.java:63: "무릉도장에 도์ 한 것을 후회하게 해주๊ฒ 다! 어서 들어와봐!", "ข้ารอเจ้าอยู่! หากยังมีความกล้าเหลืออยู่ ก็เข้ามา!", "เจ้าใจกล้าดีนี่! แต่อย่าสับสนระหว่างความฉลาดกับความบ้าบิ่นล่ะ!", "무릉도장에 도์ 하다니 용기가 가상하군!", "หากเจ้าต้องการพบกับความพ่ายแพ้ ก็เข้ามา!"
+[KOREAN] src\objects\fields\MapScriptMethods.java:1453: c.getPlayer().getMap().startMapEffect("월묘가 나타났습니다. ์ 한시간 내에 힘을 합쳐 월묘를 잡으면 달맞이 보상을 획득ํ•  수 있습니다.", 5120016);
+[KOREAN] src\objects\fields\MapScriptMethods.java:1792: c.getPlayer().getMap().startMapEffect("몬스터를 모두 퇴치하๊ณ , ์ 프대를 작동시켜서 건너편으로 건너가라!", 5120033);
+[KOREAN] src\objects\fields\MapScriptMethods.java:2023: c.getSession().writeAndFlush(CField.addPopupSay(0, 3000, "촉수가 눈을 방어하๊ณ  있어 ์ 대로 된 피해를 주기 힘들๊ฒ 군.", ""));
+[KOREAN] src\objects\fields\child\arkarium\Field_Arkaium.java:92: .broadcastMessage(CWvsContext.getScriptProgressMessage("시간의 여์  륀느가 봉인에서 풀๋ ค났습니다."));
+[KOREAN] src\objects\fields\child\arkarium\Field_Arkaium.java:93: eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("아카이럼을 퇴치하였습니다. ์ 단의 좌측 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+[KOREAN] src\objects\fields\child\dojang\Field_Dojang.java:260: player.send(CField.startMapEffect("์ 한시간은 15분, 최대한 ์ 속하게 몬스터를 쓰러트리๊ณ  다음 층으로 올라가면 돼!", 5120024, true, 10));
+[KOREAN] src\objects\fields\child\dojang\Field_Dojang.java:270: player.send(CField.startMapEffect("사부님의 특별한 도법으로 모๋“  버프가 해์ 되었어. 이래야 좀 공평하지? 30초 줄테니까 준비해서 올라가라๊ณ .", 5120024, true, 10));
+[KOREAN] src\objects\fields\child\dreambreaker\Field_DreamBreaker.java:210: this.player.send(dreamBreakerMsg("드림포인트 " + gainPoint + " 획득!"));
+[KOREAN] src\objects\fields\child\dreambreaker\Field_DreamBreaker.java:369: player.send(dreamBreakerMsg(this.stage - 1 + "스테이지 클리어!"));
+[KOREAN] src\objects\fields\child\etc\DamageMeasurementRank.java:376: ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ 투๋ ฅ#k : #e");
+[KOREAN] src\objects\fields\child\etc\DamageMeasurementRank.java:384: ret.append(" 삭์ 된 캐릭터\r\n");
+[KOREAN] src\objects\fields\child\etc\DamageMeasurementRank.java:425: ret.append(" Lv.").append(rs.getInt("level")).append("  ").append(rs.getString("name")).append("   #b์ 투๋ ฅ#k : #e");
+[KOREAN] src\objects\fields\child\etc\DamageMeasurementRank.java:434: ret.append(" 삭์ 된 캐릭터\r\n");
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:134: this.broadcastMessage(CField.addPopupSay(9062025, 3000, "#b[์ 투๋ ฅ 측์ •]#k\r\n측์ •이 시작되었습니다. 용사님의 진가를 발휘해볼까요?", ""));
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:141: this.broadcastMessage(CField.addPopupSay(9062025, 1000, "#b[์ 투๋ ฅ 측์ •]#k\r\n\r\n현재까지 용사님의 ์ 투๋ ฅ은 #b" + this.getUnit(damage) + "#k 입니다.", ""));
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:155: "#b[์ 투๋ ฅ 측์ •]#k\r\n측์ •이 완료되었습니다.\r\n\r\n총 데미지 : #b" + this.getUnit(damage) + "#k\r\n\r\n์ 투๋ ฅ이 기록되었습니다. 기록은 랭킹에서 확인ํ•  수 있습니다.",
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:221: "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 좌측에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:231: "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 우측에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+[KOREAN] src\objects\fields\child\etc\Field_DamageMeasurement.java:241: "#b[์ 투๋ ฅ 측์ •]#k\r\n์ 시 후 ์ 투๋ ฅ 측์ •이 시작됩니다.\n맵 가운데에 #b허수아비#k가 소환되며, 측์ •은 #b2분#k간 진행됩니다.\r\n측์ •된 ์ 투๋ ฅ은 자동으로 기록되며 랭킹에 등록되게 됩니다.\r\n\r\n시간내에 용사님께서 가진 ์ 투๋ ฅ을 마음껏 발휘해보시기 바랍니다.",
+[KOREAN] src\objects\fields\child\etc\Field_EventSnowman.java:78: playerx.gainItem(2430033, 1, false, 0L, "크리스마스 이벤트로 획득");
+[KOREAN] src\objects\fields\child\etc\Field_EventSnowman.java:81: playerx.send(CField.addPopupSay(9062000, 5000, "거대 눈사람을 처치하여 #b메리 크리스마스 ์ 물상자#k를 획득했습니다.", ""));
+[KOREAN] src\objects\fields\child\etc\Field_MMRace.java:59: this.broadcastMessage(CWvsContext.serverNotice(6, "멍멍이 ๋ 이싱이 시작되었습니다."));
+[KOREAN] src\objects\fields\child\etc\Field_MMRace.java:124: this.broadcastMessage(CWvsContext.serverNotice(6, "์  " + this.gameRound + "회 운동회의 우승자는 '#" + mob.getEventName() + "' 입니다."));
+[KOREAN] src\objects\fields\child\etc\Field_MMRace.java:166: CWvsContext.serverNotice(6, m.getEventName() + Locales.getKoreanJosa(m.getEventName(), JosaType.이가) + " has been slowed!")
+[KOREAN] src\objects\fields\child\fritto\Field_ReceivingTreasure.java:54: this.broadcastMessage(CField.startMapEffect("์ 프키와 방향키를 이용해 내가 떨어트리는 보물을 최대한 많이 받아줘!", 5120160, true, 10));
+[KOREAN] src\objects\fields\child\jinhillah\Field_JinHillah.java:338: StringBuilder sb = new StringBuilder("보스 하드 진 힐라 격파 (" + list + ")");
+[KOREAN] src\objects\fields\child\jinhillah\Field_JinHillah.java:348: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\jinhillah\Field_JinHillah.java:349: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\jinhillah\Field_JinHillah.java:352: + "' 파티("
+[KOREAN] src\objects\fields\child\jinhillah\Field_JinHillah.java:354: + ")가 [하드 진 힐라]를 격파하였습니다."
+[KOREAN] src\objects\fields\child\karing\TempPacket\Karing2PhasePacket.java:23: packet.writeMapleAsciiString("사흉을 모시깽이 합니다.");
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalos.java:435: this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 구속의 눈이 ์ 에서 깨어납니다."));
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalos.java:464: this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 포격 ์ 투기가 활성화됩니다."));
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalos.java:485: this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 오디움의 구체가 ์ 을 감지합니다."));
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalos.java:508: this.broadcastMessage(CWvsContext.InfoPacket.brownMessage("T-boy의 간섭으로 심연의 눈이 ์ 에서 깨어납니다."));
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalos.java:518: TextEffect e = new TextEffect("#r#fn나눔๊ณ 딕 ExtraBold##fs26#자격이 없는 자에게 문은 열리지 않는다...", 100, 2500, 4, 0, 0, 1, 0);
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase1.java:71: TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs32##r#e아직 심판은 끝나지 않았다.", 100, 2500, 4, 0, 0, 1, 0);
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:85: TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs32##r#e여기까진가... 죄송합니다. 아버지...", 100, 2500, 4, 0, 0, 1, 0);
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:122: StringBuilder sb = new StringBuilder("보스 " + difficulty + " 칼로스 격파 (" + list + ")");
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:132: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:133: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:136: + "' 파티("
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:138: + ")가 ["
+[KOREAN] src\objects\fields\child\karrotte\Field_BossKalosPhase2.java:408: TextEffect e = new TextEffect("#fn나눔๊ณ 딕 ExtraBold##fs26##fc0xff71ffff#폭주에 휘말리지 않도록 수호 지대를 찾아라...", 100, 2500, 4, 0, 0, 1, 0);
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:476: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:477: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:530: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:541: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:542: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\child\lucid\Field_LucidBattlePhase2.java:590: + (this.getChannel() == 2 ? "20세 이상"
+[KOREAN] src\objects\fields\child\minigame\battlereverse\BattleReverseGameDlg.java:47: FileoutputUtil.log("Log_MiniGame_Except.rtf", "캐릭터가 null인 상태로 게임시작 시도");
+[KOREAN] src\objects\fields\child\minigame\onecard\Field_OneCard.java:132: this.currentPlayer.getPlayer().getClient().getSession().writeAndFlush(OneCardPacket.onShowText("당์ 의 턴입니다."));
+[KOREAN] src\objects\fields\child\minigame\onecard\Field_OneCard.java:278: this.broadcastMessage(OneCardPacket.onShowText("마법 : ์ 프!"));
+[KOREAN] src\objects\fields\child\minigame\onecard\Field_OneCard.java:290: this.broadcastMessage(OneCardPacket.onShowText("마법 : " + this.currentPlayer.getPlayer().getName() + "님의 공격!"));
+[KOREAN] src\objects\fields\child\minigame\onecard\Field_OneCard.java:401: this.broadcastMessage(OneCardPacket.onShowText(chr.getName() + "님이 " + this.fireSet + "의 피해를 입었습니다."));
+[KOREAN] src\objects\fields\child\minigame\train\Field_TrainMaster.java:187: this.broadcastMessage(CField.addPopupSay(9062575, 5000, "#b#e크리에이터들의\r\n기차 운행 도์ !#n#k\r\n#r지금 바로 시작하๊ฒ 네!#k", ""));
+[KOREAN] src\objects\fields\child\minigame\yutgame\Field_MultiYutGame.java:74: "หมดเวลҁ" + gameInfo.getFoulCount() + "회. 5회 이상 시 퇴장 처리됩니다.", FontType.NanumGothic, FontColorType.Green
+[KOREAN] src\objects\fields\child\moonbridge\Field_FerociousBattlefield.java:373: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\moonbridge\Field_FerociousBattlefield.java:374: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\moonbridge\Field_FerociousBattlefield.java:377: + "' 파티("
+[KOREAN] src\objects\fields\child\moonbridge\Field_FerociousBattlefield.java:379: + ")가 [카오스 더스크]를 격파하였습니다."
+[KOREAN] src\objects\fields\child\papulatus\Field_Papulatus.java:232: StringBuilder sb = new StringBuilder("보스 " + difficulty + " 파풀라투스 격파");
+[KOREAN] src\objects\fields\child\papulatus\Field_Papulatus.java:735: this.broadcastMessage(CWvsContext.serverNotice(5, "파풀라투스의 시계가 움직입니다."));
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:223: StringBuilder sb = new StringBuilder("보스 " + (hell ? "Hell" : "Hard") + " 듄켈 격파 (" + list + ")");
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:234: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:235: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:238: + "' 파티("
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:240: + ")가 [하드 듄켈]을 격파하였습니다."
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:247: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:248: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:251: + "' 파티("
+[KOREAN] src\objects\fields\child\rimen\Field_RimenNearTheEnd.java:253: + ")가 [헬 듄켈]을 격파하였습니다."
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase1.java:120: TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r태양의 불꽃은 복수를 잊지 않는다.", 100, 2000, 4, 0, 0, 0);
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:324: TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r머지않아 태양은 다시 ๋– 오를 것이다…", 100, 2000, 4, 0, 0, 0);
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:373: StringBuilder sb = new StringBuilder("보스 " + (normal ? "Normal" : "Hard") + " 세๋  격파 (" + list + ")");
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:384: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:385: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:388: + "' 파티("
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:390: + ")가 [노말 세๋ ]을 격파하였습니다."
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:398: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:399: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:402: + "' 파티("
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:404: + ")가 [하드 세๋ ]을 격파하였습니다."
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:594: this.broadcastMessage(CWvsContext.serverNotice(5, "황혼의 불타는 듯한 석양이 회복 효율을 낮추๊ณ  지속์ 으로 피해를 입힙니다."));
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:635: this.broadcastMessage(CWvsContext.serverNotice(5, "์ •오가 시작됨과 동시에 남아있는 여명의 기운이 세๋ 을 회복시킵니다."));
+[KOREAN] src\objects\fields\child\sernium\Field_SerenPhase2.java:761: TextEffect e = new TextEffect(-1, "#fn나눔๊ณ 딕 Extrabold##fs25##r태양이 지지 않는다면 누구도 나에게 대항ํ•  수 없다.", 100, 2000, 4, 0, 0, 0);
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:115: this.broadcastMessage(CField.addPopupSay(0, 3000, "왕관의 수호로 ์ 대로 된 피해를 입힐 수 없๊ฒ 군. 마스코트 슬라임에게 도움을 받아 마그마 슬라임을 ๋ ๋ ค버리자.", ""));
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:184: sb.append("보스 ");
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:186: sb.append(" 격파");
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:198: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:199: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:202: + "' 파티("
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:204: + ")가 ["
+[KOREAN] src\objects\fields\child\slime\Field_GuardianAngelSlime.java:206: + "] 을 격파하였습니다."
+[KOREAN] src\objects\fields\child\union\MapleUnionData.java:137: return getRankName(num - 1) + " " + tier + "단계";
+[KOREAN] src\objects\fields\child\union\MapleUnionData.java:141: return rankName.isEmpty() ? "노비스 ์ 니온" : rankName.get(r);
+[KOREAN] src\objects\fields\child\vonleon\Field_VonLeon.java:54: eim.getMapInstance(Integer.parseInt(eim.getProperty("map"))).startMapEffect("반 ๋ 온을 물리치셨습니다. 왼쪽 포탈을 통해 이동해주시기 바랍니다.", 5120026);
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:140: CField.chatMsg(DBConfig.isGanglim ? 8 : 4, "[보스격파] '" + p.getParty().getLeader().getName() + "' 파티(" + list + ")가 [노말 윌]을 격파하였습니다.")
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:184: StringBuilder sb = new StringBuilder("보스 " + (hell ? "Hell" : "Hard") + " 윌 격파 (" + list + ")");
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:196: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:197: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:200: + "' 파티("
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:202: + ")가 [헬 윌]를 격파하였습니다."
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:209: "[보스격파] [CH."
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:210: + (this.getChannel() == 2 ? "20세 이상" : (this.getChannel() == 1 ? "1" : this.getChannel() - 1))
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:213: + "' 파티("
+[KOREAN] src\objects\fields\child\will\Field_WillBattleReward.java:215: + ")가 [하드 윌]를 격파하였습니다."
+[KOREAN] src\objects\fields\events\MapleEvent.java:71: chr.dropMessage(5, "ยินดմ้วย! V포인트 1을 획득하셨습니다.");
+[KOREAN] src\objects\fields\events\MapleEvent.java:74: chr.dropMessage(5, "ยินดմ้วย! 인기도 10을 얻으셨습니다.");
+[KOREAN] src\objects\fields\fieldset\FieldSet.java:227: partyCharacter.dropMessage(1, "จำนวนการเข้าปัจจุบัน : " + currentClearCount + " / ์ 한횟수 : " + totalEnterLimit);
+[KOREAN] src\objects\fields\fieldset\childs\ChaosDuskEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\ChaosDuskEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\ChaosZakumEnter.java:133: chr.dropMessage(5, String.format("금일 %s 입장횟수 %d / %d", "자쿰", clear, max));
+[KOREAN] src\objects\fields\fieldset\childs\ChaosZakumEnter.java:194: return c.getName() + "(" + (lastDate.getMinutes() - today.getMinutes()) + "분)";
+[KOREAN] src\objects\fields\fieldset\childs\ChaosZakumEnter.java:198: return "알 수 없음";
+[KOREAN] src\objects\fields\fieldset\childs\ChaosZakumEnter.java:204: return "알 수 없음";
+[KOREAN] src\objects\fields\fieldset\childs\EasyKaringEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\EasyKaringEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\EasyWillEnter.java:121: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\EasyWillEnter.java:124: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\ExtremeKaringEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\ExtremeKaringEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardBlackHeavenBossEnter.java:125: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardBlackHeavenBossEnter.java:128: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardBlackMageEnter.java:32: this.bossName = "검은마법사";
+[KOREAN] src\objects\fields\fieldset\childs\HardBlackMageEnter.java:121: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardBlackMageEnter.java:124: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardDemianEnter.java:126: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardDemianEnter.java:129: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardDunkelEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardDunkelEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardGuardianSlimeEnter.java:27: this.bossName = "가디언 엔์ ค 슬라임";
+[KOREAN] src\objects\fields\fieldset\childs\HardGuardianSlimeEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardGuardianSlimeEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardJinHillahEnter.java:127: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardJinHillahEnter.java:130: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardKaringEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardKaringEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardLucidEnter.java:143: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardLucidEnter.java:146: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardSerenEnter.java:28: this.bossName = "세๋ ";
+[KOREAN] src\objects\fields\fieldset\childs\HardSerenEnter.java:121: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardSerenEnter.java:124: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HardWillEnter.java:135: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HardWillEnter.java:138: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellBlackHeavenBossEnter.java:118: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HellBlackHeavenBossEnter.java:121: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellDemianEnter.java:105: StringBuilder sb = new StringBuilder("보스 " + bn + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellDunkelEnter.java:113: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HellDunkelEnter.java:116: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellJinHillahEnter.java:27: this.bossName = "진힐라";
+[KOREAN] src\objects\fields\fieldset\childs\HellJinHillahEnter.java:91: StringBuilder sb = new StringBuilder("보스 " + bn + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellLucidEnter.java:112: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\HellLucidEnter.java:115: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\HellWillEnter.java:104: StringBuilder sb = new StringBuilder("보스 " + bn + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\MitsuhideEnter.java:27: this.bossName = "미์ธ 히데";
+[KOREAN] src\objects\fields\fieldset\childs\MitsuhideEnter.java:107: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\MitsuhideEnter.java:110: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalBlackHeavenBossEnter.java:124: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalBlackHeavenBossEnter.java:127: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalDemianEnter.java:125: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalDemianEnter.java:128: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalDunkelEnter.java:120: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalDunkelEnter.java:123: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalDuskEnter.java:125: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalDuskEnter.java:128: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalGuardianSlimeEnter.java:32: this.bossName = "가디언 엔์ ค 슬라임";
+[KOREAN] src\objects\fields\fieldset\childs\NormalGuardianSlimeEnter.java:125: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalGuardianSlimeEnter.java:128: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalJinHillahEnter.java:27: this.bossName = "진힐라";
+[KOREAN] src\objects\fields\fieldset\childs\NormalJinHillahEnter.java:113: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalJinHillahEnter.java:116: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalKalosEnter.java:85: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalKalosEnter.java:88: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalKaringEnter.java:122: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalKaringEnter.java:125: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalLucidEnter.java:118: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalLucidEnter.java:121: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalSerenEnter.java:28: this.bossName = "세๋ ";
+[KOREAN] src\objects\fields\fieldset\childs\NormalSerenEnter.java:121: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalSerenEnter.java:124: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\NormalWillEnter.java:126: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\NormalWillEnter.java:129: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\childs\TenguEnter.java:27: this.bossName = "텐구";
+[KOREAN] src\objects\fields\fieldset\childs\TenguEnter.java:117: bn2 = bn + "(연습)";
+[KOREAN] src\objects\fields\fieldset\childs\TenguEnter.java:120: StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:97: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 2#k\r\n아르카누스의 힘이 더욱 강해지๊ณ  있습니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:106: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 3#k\r\n아르카누스의 힘이 더욱 강해지๊ณ  있습니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:115: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 4#k\r\n아르카누스의 힘이 더욱 강해지๊ณ  있습니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:124: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 5#k\r\n아르카누스의 힘이 더욱 강해지๊ณ  있습니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:133: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#rSTAGE : 6#k\r\n아르카누스의 힘이 더욱 강해지๊ณ  있습니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\Culvert.java:142: map.broadcastMessage(CField.addPopupSay(2012041, 1300, "#r아르카누스#k를 무찔러서 5초뒤 퇴장맵으로 이동됩니다!", "", 1));
+[KOREAN] src\objects\fields\fieldset\instance\FlagRace.java:125: map.startMapEffect("사이먼의 멋--진 월드에 오์  것을 환영합니다!", 5120123, 3000);
+[KOREAN] src\objects\fields\fieldset\instance\FlagRace.java:136: map.startMapEffect("경기장을 수놓는 아름다운 플래그 스타들을 배치하๊ณ  있습니다. ์ 시만 기다๋ ค주세요!", 5120123, 3000);
+[KOREAN] src\objects\fields\fieldset\instance\FlagRace.java:147: map.startMapEffect("곧 플래그 ๋ 이스 경기장으로 이동합니다. 이์  ์ •말 준비해 주세요!", 5120123, 3000);
+[KOREAN] src\objects\fields\fieldset\instance\FlagRace.java:158: map.startMapEffect("곧 플래그 ๋ 이스 경기장으로 이동합니다. 이์  ์ •말 준비해 주세요!", 5120123, 3000);
+[KOREAN] src\objects\fields\fieldset\instance\PuzzleMaster.java:136: user.send(CField.addPopupSay(9062572, 5000, "#b#e크리에이터들의\r\n퍼즐 맞추기 도์ !#n#k\r\n#r지금 바로 시작합니다!#k", ""));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:128: map.broadcastMessage(CField.startMapEffect("맹독의 ์ •๋ น이 눈치챈 모양이야! 어서 도망가람!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:144: map.broadcastMessage(CField.startMapEffect("맹독의 ์ •๋ น이 더 강해지๊ณ  있담..!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:157: map.broadcastMessage(CField.startMapEffect("맹독의 ์ •๋ น이 더 강해지๊ณ  있담..!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:171: map.broadcastMessage(CField.startMapEffect("맹독의 ์ •๋ น이 더 강해지๊ณ  있담..!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:185: map.broadcastMessage(CField.startMapEffect("맹독의 ์ •๋ น이 완์ 체가 되었담! 조심해람!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\SpiritSavior.java:283: map.broadcastMessage(CField.startMapEffect("친구들이... 맹독의 ์ •๋ น에게 당하๊ณ  말았담!", 5120175, true, 3));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:164: user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(oven + 1 + "번 주문 음식이 완성되었습니다."));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:180: user.send(CField.addPopupSay(9062552, 3000, "๋ 시피를 ์ 대로 보란 말일세!", ""));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:183: user.send(CField.addPopupSay(9062552, 3000, "๋น 르다๊ณ  다가 아니네!\r\n์ 대로 하게!", ""));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:186: user.send(CField.addPopupSay(9062552, 3000, "지금 뭐 하는 건가!", ""));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:194: user.send(CWvsContext.InfoPacket.brownMessage("조리에 실패했습니다. ๋ 시피와 동일한 재료를 놓거나 알맞은 가공을 시도해주세요."));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:232: user.getMap().broadcastMessage(CWvsContext.InfoPacket.brownMessage(table + "번 주문 배달에 성공했습니다. " + plus + "메소를 획득했습니다."));
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:237: String message = "아주 훌륭하군!";
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:240: message = "자네, 나와 함께 일해보지 않๊ฒ 나?";
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:243: message = "์ 속하군! 아주 좋네!";
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:248: user.getMap().startMapEffect("๊ณ 생 많았네, 음식의 소중함을 깨달았기를 바라네.", 5120216, 4000);
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:336: map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:399: map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:462: map.startMapEffect("주문이 취소되었네!", 5120216, 4000);
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:682: p.writeMapleAsciiString("빵");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:692: p.writeMapleAsciiString("๊ณ 기");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:702: p.writeMapleAsciiString("계란");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:712: p.writeMapleAsciiString("채소");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:722: p.writeMapleAsciiString("생์ ");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:732: p.writeMapleAsciiString("굽기");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:742: p.writeMapleAsciiString("끓이기");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:752: p.writeMapleAsciiString("썰기");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:794: p.writeMapleAsciiString("1번 손님");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:804: p.writeMapleAsciiString("2번 손님");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:814: p.writeMapleAsciiString("3번 손님");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:824: p.writeMapleAsciiString("4번 손님");
+[KOREAN] src\objects\fields\fieldset\instance\TangyoonKitchen.java:834: p.writeMapleAsciiString("5번 손님");
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:4: Prefix_0("힘 센", 100, 110),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:5: Prefix_1("튼튼한", 102, 112),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:6: Prefix_2("마법์ €항의", 103, 113),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:7: Prefix_3("재생하는", 114),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:8: Prefix_4("재๋น 른", 115),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:9: Prefix_5("봉인의", 120),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:10: Prefix_6("회피하는", 121),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:11: Prefix_7("허약의", 122),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:12: Prefix_8("기์ 시키는", 123),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:13: Prefix_9("์ €주의", 124),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:14: Prefix_10("맹독의", 125),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:15: Prefix_11("끈끈한", 126),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:16: Prefix_12("매혹의", 128),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:17: Prefix_13("독을 뿌리는", 131),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:18: Prefix_14("혼란의", 132),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:19: Prefix_15("언데드", 133),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:20: Prefix_16("포션을 싫어하는", 134),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:21: Prefix_17("멈추지 않는", 135),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:22: Prefix_18("암흑의", 136),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:23: Prefix_19("단단한", 142),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:24: Prefix_20("반사의", 145),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:25: Prefix_21("무์ 의", 146),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:26: Prefix_22("변์ ์ 사", 172),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:27: Prefix_23("석화의", 174),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:28: Prefix_24("자석의", 181),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:29: Prefix_25("역병의", 211),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:30: Prefix_26("지휘관", 212),
+[KOREAN] src\objects\fields\gameobject\lifes\ElitePrefix.java:31: Prefix_27("검은 사슬의", 213);
+[KOREAN] src\objects\fields\gameobject\lifes\MapleMonster.java:1805: FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 중 Monster sendSpawnData 패킷 ์ 송 실패");
+[KOREAN] src\objects\fields\gameobject\lifes\MapleMonster.java:4592: eim.broadcastPacket(CWvsContext.getScriptProgressMessage("시공간 붕괴 실패! ์ 시 후, 원래 세계로 돌아갑니다."));
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:287: && (this.getMobSkillStats(MobSkillStat.info).contains("악몽의골๋ ") || this.getMobSkillStats(MobSkillStat.info).contains("독버섯"))) {
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:553: monster.getStats().getName() + "가 [" + controller.getName() + "]" + Locales.getKoreanJosa(controller.getName(), JosaType.을를) + " 추격합니다."
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:810: SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "위협을 느낀 반 ๋ 온이 몬스터를 소환하여 체๋ ฅ을 흡수하๋ ค 합니다."
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:812: monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "위협을 느낀 반 ๋ 온이 몬스터를 소환하여 체๋ ฅ을 흡수하๋ ค 합니다."));
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:816: SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "반 ๋ 온이 주변에 체๋ ฅ을 흡수ํ•  몬스터가 없어 새롭게 소환을 시도합니다."
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:818: monster.getMap().broadcastMessage(CWvsContext.serverNotice(5, "반 ๋ 온이 주변에 체๋ ฅ을 흡수ํ•  몬스터가 없어 새롭게 소환을 시도합니다."));
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:847: 5, monster.getStats().getName() + "가 " + MapleLifeFactory.getMonsterStats(this.summonIDs.get(0)).getName() + "를 흡수하여 HP를 회복합니다."
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:957: monster.getMap().broadcastMessage(CWvsContext.getScriptProgressMessage("시간의 틈새에 '๊ท 열'이 발생하였습니다."));
+[MOJIBAKE] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:1548: fx.sendWillNotice("Will กำลังจะปŴปล่อยพลัง พื้นที่จอมปลอมจะพังทลҁจงหาพื้นที่จริงและหลบเธ ัย", 245, 3000);
+[KOREAN] src\objects\fields\gameobject\lifes\mobskills\MobSkillInfo.java:1884: f.sendSmartMobNotice(SmartMobNoticeType.Normal, monster.getId(), SmartMobMsgType.Field, this.skillLevel, "자쿰이 팔을 내๋ ค์น  준비를 합니다.");
+[KOREAN] src\objects\item\MapleInventoryManipulator.java:128: + ") ์ ์ € 닉네임 : "
+[KOREAN] src\objects\item\MapleInventoryManipulator.java:342: + ") ์ ์ € 닉네임 : "
+[KOREAN] src\objects\item\MapleInventoryManipulator.java:693: + ") ์ ์ € 닉네임 : "
+[KOREAN] src\objects\item\MapleInventoryManipulator.java:2204: sb.append("플๋ 이어가 필드에 아이템 드롭함");
+[KOREAN] src\objects\item\MapleItemInformationProvider.java:3182: System.out.println(player.getStat().itemUpgradeBonusR + " increased by " + success + "%로 ์ 용");
+[KOREAN] src\objects\quest\MobQuest.java:52: QUEST_4("추억의 사์  200마리 처치하기", 1237),
+[KOREAN] src\objects\quest\MobQuest.java:56: QUEST_8("200๋ 벨 달성하기", 1241),
+[KOREAN] src\objects\quest\MobQuest.java:59: QUEST_11("๋ 벨 210 달성하기", 1244),
+[KOREAN] src\objects\quest\MobQuest.java:60: QUEST_12("๋ 벨 220 달성하기", 1245),
+[KOREAN] src\objects\quest\MobQuest.java:62: QUEST_14("๋ 벨 230 달성하기", 1247),
+[KOREAN] src\objects\quest\MobQuest.java:65: QUEST_17("๋ 벨 240 달성하기", 1250),
+[KOREAN] src\objects\quest\MobQuest.java:67: QUEST_19("๋ 벨 250 달성하기", 1252),
+[KOREAN] src\objects\quest\MobQuest.java:69: QUEST_21("์ 망의 ๋ 개 500마리 처치하기", 1254),
+[KOREAN] src\objects\quest\MobQuest.java:70: QUEST_22("๋ 벨 260 달성하기", 1255),
+[KOREAN] src\objects\quest\MobQuest.java:72: QUEST_24("๋ 벨 265 달성하기", 1257),
+[KOREAN] src\objects\quest\MobQuest.java:74: QUEST_26("๋ 벨 270 달성하기", 1259),
+[KOREAN] src\objects\quest\MobQuest.java:76: QUEST_28("๋ 벨 275 달성하기", 1261),
+[KOREAN] src\objects\quest\MobQuest.java:80: QUEST_32("사자왕 반 ๋ 온의 흔์ ", 1266),
+[KOREAN] src\objects\quest\MobQuest.java:81: QUEST_33("시간의 대์ 관 아카이럼의 흔์ ", 1267),
+[KOREAN] src\objects\quest\MobQuest.java:82: QUEST_1000("์ 니온 - 골드 와이번 50마리 처치하기", 1400),
+[KOREAN] src\objects\quest\MobQuest.java:83: QUEST_1001("์ 니온 - 미니 와이번 100마리 처치하기", 1401);
+[KOREAN] src\objects\shop\MapleShop.java:164: sb.append("상์  아이템 재구매 시도 (캐릭터 : ");
+[KOREAN] src\objects\shop\MapleShop.java:168: sb.append(", 상์ ID : ");
+[KOREAN] src\objects\shop\MapleShop.java:234: sb.append("상์  아이템 구매 시도 (캐릭터 : ");
+[KOREAN] src\objects\shop\MapleShop.java:238: sb.append(", 상์ ID : ");
+[KOREAN] src\objects\shop\MapleShop.java:536: sb.append("상์ 에 아이템 판매 시도 (캐릭터 : ");
+[KOREAN] src\objects\shop\MapleShop.java:540: sb.append(", 상์ ID : ");
+[KOREAN] src\objects\shop\MapleShop.java:554: sb.append("), 가격 : ");
+[KOREAN] src\objects\users\CalcDamageUtil.java:562: if ((h.indexOf("공격๋ ฅ #padX%") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:563: && (h.indexOf("공격๋ ฅ #padX") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:564: && (h.indexOf("공격๋ ฅ #x%") == -1 || skeff.getX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:565: && (h.indexOf("공격๋ ฅ #x") == -1 || skeff.getX() == 0)) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:570: } else if (name != null && name.getData().toString().equals("익스클루시브 스ํ ")) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:574: } else if (name != null && name.getData().toString().equals("인ํ 시브 타임")) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:578: } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블๋ 스")) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:629: if ((h.indexOf("마๋ ฅ #madX%") == -1 || skeff.getMagicX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:630: && (h.indexOf("마๋ ฅ #madX") == -1 || skeff.getMagicX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:631: && (h.indexOf("마๋ ฅ #padX%") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:632: && (h.indexOf("마๋ ฅ #padX") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:633: && (h.indexOf("마๋ ฅ#c #padX%") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:634: && (h.indexOf("마๋ ฅ#c #padX") == -1 || skeff.getAttackX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:635: && (h.indexOf("마๋ ฅ #mad%") == -1 || skeff.getMatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:636: && (h.indexOf("마๋ ฅ #mad") == -1 || skeff.getMatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:637: && (h.indexOf("마๋ ฅ#indieMad%") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:638: && (h.indexOf("마๋ ฅ#indieMad") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:639: && (h.indexOf("마๋ ฅ #indiePad%") == -1 || skeff.getIndiePad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:640: && (h.indexOf("마๋ ฅ #indiePad") == -1 || skeff.getIndiePad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:641: && (h.indexOf("마๋ ฅ #indiePAD%") == -1 || skeff.getIndiePad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:642: && (h.indexOf("마๋ ฅ #indiePAD") == -1 || skeff.getIndiePad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:643: && (h.indexOf("마๋ ฅ #indieMad%") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:644: && (h.indexOf("마๋ ฅ #indieMad") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:645: && (h.indexOf("마๋ ฅ #c#indieMad#%") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:646: && (h.indexOf("마๋ ฅ #c#indieMad#") == -1 || skeff.getIndieMad() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:647: && (h.indexOf("마๋ ฅ #damage%") == -1 || skeff.getDamage() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:648: && (h.indexOf("마๋ ฅ #x%") == -1 || skeff.getX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:649: && (h.indexOf("마๋ ฅ #x") == -1 || skeff.getX() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:650: && (h.indexOf("마๋ ฅ #y%") == -1 || skeff.getY() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:651: && (h.indexOf("마๋ ฅ #y") == -1 || skeff.getY() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:652: && (h.indexOf("마๋ ฅ+#y%") == -1 || skeff.getY() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:653: && (h.indexOf("마๋ ฅ+#y") == -1 || skeff.getY() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:654: && (h.indexOf("마๋ ฅ #v%") == -1 || skeff.getV() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:655: && (h.indexOf("마๋ ฅ #v") == -1 || skeff.getV() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:656: && (h.indexOf("마๋ ฅ #w%") == -1 || skeff.getW() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:657: && (h.indexOf("마๋ ฅ #w") == -1 || skeff.getW() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:658: && (h.indexOf("마๋ ฅ #epad%") == -1 || skeff.getEnhancedWatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:659: && (h.indexOf("마๋ ฅ #epad") == -1 || skeff.getEnhancedWatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:660: && (h.indexOf("마๋ ฅ #emad%") == -1 || skeff.getEnhancedMatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:661: && (h.indexOf("마๋ ฅ #emad") == -1 || skeff.getEnhancedMatk() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:662: && (h.indexOf("마๋ ฅ #indiePadR%") == -1 || skeff.getIndiePadR() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:663: && (h.indexOf("마๋ ฅ #indieMadR%") == -1 || skeff.getIndieMadR() == 0)
+[KOREAN] src\objects\users\CalcDamageUtil.java:664: && (h.indexOf("마๋ ฅ이 #indieMadR%") == -1 || skeff.getIndieMadR() == 0)) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:669: } else if (name != null && name.getData().toString().equals("익스클루시브 스ํ ")) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:673: } else if (name != null && name.getData().toString().equals("인ํ 시브 타임")) {
+[KOREAN] src\objects\users\CalcDamageUtil.java:677: } else if (name != null && name.getData().toString().equals("쓸만한 어드밴스드 블๋ 스")) {
+[KOREAN] src\objects\users\MapleCharacter.java:827: String[] questType = new String[] { "수집", "처치" };
+[KOREAN] src\objects\users\MapleCharacter.java:828: String[] questType2 = new String[] { "개", "마리" };
+[KOREAN] src\objects\users\MapleCharacter.java:829: String[] grades = new String[] { "스카웃", "서์ 트", "가디언", "마스터", "커맨더", "슈프림" };
+[KOREAN] src\objects\users\MapleCharacter.java:1419: FileoutputUtil.outputFileErrorReason("Log_GameServerLogIn_Error.rtf", "서버 메모리 로드 실패",
+[KOREAN] src\objects\users\MapleCharacter.java:2314: ServerConstants.serverName + " 데미지 스킨 ์ •보이다.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n");
+[KOREAN] src\objects\users\MapleCharacter.java:3112: this.getName() + " 캐릭터 DB์ €장 실패 flag1 : " + flag1 + " , flag2 : " + flag2
+[KOREAN] src\objects\users\MapleCharacter.java:3113: + " 시간차이 : " + delta)));
+[KOREAN] src\objects\users\MapleCharacter.java:5714: this.ban("맵 이동핵", true, true, true);
+[KOREAN] src\objects\users\MapleCharacter.java:6501: name = "약초채집";
+[KOREAN] src\objects\users\MapleCharacter.java:6506: name = "채광";
+[KOREAN] src\objects\users\MapleCharacter.java:6511: name = "장비์ 작";
+[KOREAN] src\objects\users\MapleCharacter.java:6516: name = "장์ 구์ 작";
+[KOREAN] src\objects\users\MapleCharacter.java:6521: name = "연금์ ";
+[KOREAN] src\objects\users\MapleCharacter.java:7390: this.ban("아이템 복사 시도로 인한 영구 ์ •지", true, true, true);
+[KOREAN] src\objects\users\MapleCharacter.java:7415: item.setGMLog(StringUtil.getAllCurrentTime() + "에 " + gm_log);
+[KOREAN] src\objects\users\MapleCharacter.java:7428: + "???????????? ?멨????????ๅ ? gainItem ???????у???????멨?????? ???????????? ??????????????????.");
+[KOREAN] src\objects\users\MapleCharacter.java:7469: + "] 스킬이 ์ 효기간이 만료되어 사라졌습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:7494: "[두손무기 방패 착용]",
+[KOREAN] src\objects\users\MapleCharacter.java:7495: "두손무기에 방패 착용 오류로 인하여 장착 해์ 된 아이템입니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:7517: "[한벌옷 하의 캐시장비 장착 오류]",
+[KOREAN] src\objects\users\MapleCharacter.java:7518: "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해์ 된 아이템입니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:7540: "[한벌옷 하의 캐시장비 장착 오류]",
+[KOREAN] src\objects\users\MapleCharacter.java:7541: "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해์ 된 아이템입니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:7563: "[한벌옷 하의 캐시장비 장착 오류]",
+[KOREAN] src\objects\users\MapleCharacter.java:7564: "한벌옷에 하의 캐시장비 중복 장착 오류로 인하여 장착 해์ 된 아이템입니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:7856: str = "오늘의 미션을 ์ 부 클리어 하셨습니다.";
+[KOREAN] src\objects\users\MapleCharacter.java:7858: str = "일일 미션 " + (count + 1) + "개 완료! " + (count + 1)
+[KOREAN] src\objects\users\MapleCharacter.java:7859: + "번째 상자를 클릭하세요!";
+[KOREAN] src\objects\users\MapleCharacter.java:7959: CWvsContext.getScriptProgressMessage("๋ 벨 범위 몬스터 " + newCount + " / " + maxCount));
+[KOREAN] src\objects\users\MapleCharacter.java:8429: CurrentTime.getAllCurrentTime() + "에 300๋ 벨 달성 보상으로 지급된 아이템.");
+[KOREAN] src\objects\users\MapleCharacter.java:8432: "[GM ์ 물]", fDate + "에 ๋ 벨보상으로 지급된 아이템입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:8457: .println("Error updating levelup timestamp. Name : " + this.getName() + " 시간 : "
+[KOREAN] src\objects\users\MapleCharacter.java:8471: "계์ • 내 통합๋ 벨이 500을 넘어 계์ • 내 모๋“  캐릭터가 #b초보자A#k길드에서 자동으로 탈퇴되었습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:8478: "계์ • 내 통합๋ 벨이 500을 넘어 계์ • 내 모๋“  캐릭터가 #b초보자B#k길드에서 자동으로 탈퇴되었습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:8511: "캐릭터의 ๋ 벨이 220을 넘어 #b초보자A#k길드에서 자동으로 탈퇴되었습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:8518: "캐릭터의 ๋ 벨이 220을 넘어 #b초보자B#k길드에서 자동으로 탈퇴되었습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:8535: this.gainItem(2430443, 1, false, -1L, "์ ์ •๋ 벨 장비상자 아이템");
+[KOREAN] src\objects\users\MapleCharacter.java:8585: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:8590: "[200๋ 벨 보상]", fDate + "에 지급된 보상입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:8615: StringBuilder sb = new StringBuilder("[축하] ");
+[KOREAN] src\objects\users\MapleCharacter.java:8624: sb.append(" 님이 ๋ 벨 " + this.level + "을(를) 달성했습니다! 모두 축하해 주세요.");
+[KOREAN] src\objects\users\MapleCharacter.java:8633: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:8638: "[275๋ 벨 보상]", fDate + "에 지급된 보상입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:8657: StringBuilder sb = new StringBuilder("[축하] ");
+[KOREAN] src\objects\users\MapleCharacter.java:8666: sb.append(" 님이 ๋ 벨 " + this.level + "을(를) 달성했습니다! 모두 축하해 주세요.");
+[KOREAN] src\objects\users\MapleCharacter.java:8775: "[์ •๋ น결속 극대화]를 통해 그리운 랑의 모습을 구현ํ•  수 있게 되었습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9260: "[암흑을 기억하는자] 세미듀어러로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9275: CWvsContext.getScriptProgressMessage("[칼리] 칼리로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9284: "[양손검์ 의 기사] 파이터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9293: "[한손검์ 의 기사] 페이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9302: "[창์ 의 기사] 스피어맨로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9311: CWvsContext.getScriptProgressMessage("[불*독] 위자드로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9320: .getScriptProgressMessage("[얼음*번개] 위자드로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9329: .getScriptProgressMessage("[힐*버프] 클๋ 릭으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9338: CWvsContext.getScriptProgressMessage("[사격수] 헌터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9347: CWvsContext.getScriptProgressMessage("[명사수] 사수로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9356: "[์ €주와 ๊ณ 대의 힘] 에인션트 아처로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9365: "[표창 암살 입문기] 어쌔์ 로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9374: "[단도 암살 입문기] 시프로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9383: "[너클 입문기] 인파이터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9392: .getScriptProgressMessage("[건 입문기] 건슬링거로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9401: "[암흑 속의 과거] 듀어러로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9410: "[캐논 입문기] 캐논슈터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9419: "[시그너스 입문기] 빛의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9428: "[시그너스 입문기] 불의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9437: "[시그너스 입문기] 바람의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9446: "[시그너스 입문기] 어๋‘ 의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9455: "[시그너스 입문기] 번개의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9464: .getScriptProgressMessage("[영웅의 본능] 아란으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9473: .getScriptProgressMessage("[두번째 걸음] 에반으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9482: "[영웅의 본능] 메르세데스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9491: .getScriptProgressMessage("[영웅의 본능] 팬텀으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9500: .getScriptProgressMessage("[영웅의 본능] 은월으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9509: "[영웅의 본능] 루미너스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9518: "[๋ 지스탕스 입문기] 데몬슬๋ 이어로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9527: "[๋ 지스탕스 입문기] 데몬어벤์ ธ로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9536: "[๋ 지스탕스 입문기] 배틀메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9545: "[๋ 지스탕스 입문기] 와일드헌터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9554: "[๋ 지스탕스 입문기] 메카닉으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9563: "[๋ 지스탕스 입문기] ์ 논으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9572: "[๋ 지스탕스 입문기] 블래스터으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9582: "[시그너스 단장] 빛의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9592: .getScriptProgressMessage("[노바 수๋ จ생] 카이์ €로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9601: .getScriptProgressMessage("[노바 수๋ จ생] 카데나로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9610: "[๋ 프 수๋ จ생] 일리움으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9619: .getScriptProgressMessage("[๋ 프 수๋ จ생] 아크로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9629: "[노바 수๋ จ생] 엔์ ค릭버스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9638: "[초능๋ ฅ의 깨달음] 키네시스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9647: "[아니마 수๋ จ생] 호영으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9656: .getScriptProgressMessage("[๋ 프 수๋ จ생] 아델로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9664: .getScriptProgressMessage("[노바 수๋ จ생] 카인으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9673: .getScriptProgressMessage("[아니마 수๋ จ생] 라라로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9694: "[암흑의 ์ •체성] 듀얼마스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9709: CWvsContext.getScriptProgressMessage("[칼리] 칼리로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9718: "[영혼 검์ 의 기사] 크루세이더로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9727: "[속성 검์ 의 기사] 나이트로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9736: "[드래곤 창์ 의 기사] 드래곤 나이트로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9745: CWvsContext.getScriptProgressMessage("[불*독] 메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9754: .getScriptProgressMessage("[얼음*번개] 메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9763: .getScriptProgressMessage("[힐*버프] 프리스트로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9772: .getScriptProgressMessage("[연쇄 사격수] ๋ 인์ €로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9781: "[백발백중 명사수] ์ €격수로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9790: .getScriptProgressMessage("[체이서의 길] 체이서로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9799: .getScriptProgressMessage("[암살 ์ 문가] 허밋로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9808: .getScriptProgressMessage("[암흑자] 시프 마스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9817: "[드래곤 너클 파이터] 버커니어로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9826: .getScriptProgressMessage("[건 마스터리] 발키리로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9835: "[암흑을 알아버린자] 슬래셔로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9844: "[캐논 마스터리] 캐논슈터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9853: "[영웅의 깨달음] 아란으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9862: "[진화의 드래곤] 에반으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9871: "[영웅의 깨달음] 메르세데스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9880: "[영웅의 깨달음] 팬텀으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9889: "[영웅의 깨달음] 은월으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9898: "[영웅의 깨달음] 루미너스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9907: "[๋ 지스탕스 요원] 데몬슬๋ 이어로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9916: "[๋ 지스탕스 요원] 데몬어벤์ ธ로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9925: "[๋ 지스탕스 요원] 배틀메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9934: "[๋ 지스탕스 요원] 와일드헌터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9943: "[๋ 지스탕스 요원] 메카닉으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9952: "[๋ 지스탕스 요원] ์ 논으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9961: "[๋ 지스탕스 요원] 블래스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9971: "[시그너스 단장] 빛의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9981: "[노바의 수호자] 카이์ €로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:9990: "[노바의 수호자] 카데나로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10000: "[노바의 수호자] 엔์ ค릭버스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10009: "[시그너스 ์ •식 기사] 소울 마스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10018: "[시그너스 ์ •식 기사] 플๋ 임 위자드로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10027: "[시그너스 ์ •식 기사] 윈드 브๋ 이커로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10036: "[시그너스 ์ •식 기사] 나이트 워커로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10045: "[시그너스 ์ •식 기사] 스트라이커로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10054: "[초능๋ ฅ의 깨달음] 키네시스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10063: "[๋ 프의 수호자] 일리움으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10072: .getScriptProgressMessage("[๋ 프의 수호자] 아크로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10081: "[아니마 수호자] 호영으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10090: .getScriptProgressMessage("[๋ 프 수호자] 아델로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10099: .getScriptProgressMessage("[노바 수호자] 카인으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10108: .getScriptProgressMessage("[아니마 수호자] 라라로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10122: CWvsContext.getScriptProgressMessage("[칼리] 칼리로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10131: "[연쇄 검์ 의 마스터] 히어로로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10140: "[환상 검์ 의 마스터] 팔라딘로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10149: "[다크 드래곤 창์ 의 마스터] 다크 나이트로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10158: "[불*독 마스터] 아크메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10167: "[얼음*번개 마스터] 아크메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10176: "[힐*버프 마스터] 비숍으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10185: "[화살 연사의 마스터] 보우 마스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10194: "[화살 파워의 마스터] ์ 궁로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10203: "[에인션트 보우의 달인] 패스파인더로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10212: "[연쇄 암살의 마스터] 나이트 로드로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10221: "[암흑의 암살 마스터] 섀도우로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10230: "[์ •๋ น의 너클 파이터] 바이퍼로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10239: "[배틀 건 마스터리] 캡틴으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10248: "[암흑을 조์ •하는자] 듀얼블๋ 이드로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10257: "[파괴의 캐논 마스터리] 캐논슈터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10266: .getScriptProgressMessage("[영웅의 부활] 아란으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10275: "[์ 설의 드래곤] 에반으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10284: "[영웅의 부활] 메르세데스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10293: .getScriptProgressMessage("[영웅의 부활] 팬텀으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10304: .getScriptProgressMessage("[영웅의 부활] 은월으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10313: "[영웅의 부활] 루미너스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10322: "[๋ 지스탕스의 영웅] 데몬슬๋ 이어로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10331: "[๋ 지스탕스 영웅] 데몬어벤์ ธ로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10340: "[๋ 지스탕스의 영웅] 배틀메이지로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10349: "[๋ 지스탕스의 영웅] 와일드헌터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10358: "[๋ 지스탕스의 영웅] 메카닉으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10367: "[๋ 지스탕스의 영웅] ์ 논으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10376: "[๋ 지스탕스의 영웅] 블래스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10386: "[시그너스 단장] 빛의 기사로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10396: .getScriptProgressMessage("[용의 기사] 카이์ €로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10405: .getScriptProgressMessage("[체인 마스터] 카데나로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10415: "[์ 장의 아이돌] 엔์ ค릭버스터로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10424: "[시그너스 영웅] 빛의 대์ •๋ น으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10434: "[시그너스 영웅] 불의 대์ •๋ น으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10444: "[시그너스 영웅] 바람의 대์ •๋ น으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10454: "[시그너스 영웅] 어๋‘ 의 대์ •๋ น으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10464: "[시그너스 영웅] 번개의 대์ •๋ น으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10474: "[초능๋ ฅ의 영웅] 키네시스로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10483: "[크리스탈 마스터] 일리움으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10492: .getScriptProgressMessage("[๋ 프의 영웅] 아크로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10501: .getScriptProgressMessage("[아니마 영웅] 호영으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10510: .getScriptProgressMessage("[๋ 프의 영웅] 아델로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10519: .getScriptProgressMessage("[노바의 영웅] 카인으로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10528: .getScriptProgressMessage("[아니마 영웅] 라라로 ์ 직하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:10760: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 spawnPlayerMapObject", var25);
+[KOREAN] src\objects\users\MapleCharacter.java:10767: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 패킷์ 송 PartyMemberHP", var24);
+[KOREAN] src\objects\users\MapleCharacter.java:10779: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 디버그 SecondAtom 오류",
+[KOREAN] src\objects\users\MapleCharacter.java:10791: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 디버그 펫소환 실패", var29);
+[KOREAN] src\objects\users\MapleCharacter.java:10804: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 드래곤 또는 안드로이드",
+[KOREAN] src\objects\users\MapleCharacter.java:10827: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수 좌표 설์ •");
+[KOREAN] src\objects\users\MapleCharacter.java:10854: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수 좌표 패킷 ์ 송",
+[KOREAN] src\objects\users\MapleCharacter.java:10865: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 소환수", var28);
+[KOREAN] src\objects\users\MapleCharacter.java:10884: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 버프 패킷 ์ 송 실패 2");
+[KOREAN] src\objects\users\MapleCharacter.java:10909: "sendObjectPlacement 중 Character sendSpawnData 오류 발생 웨폰모션, 메달, 아이템이펙트");
+[KOREAN] src\objects\users\MapleCharacter.java:11143: party.setPartyTitle(this.getName() + "님의 파티");
+[KOREAN] src\objects\users\MapleCharacter.java:14147: + "시간이 지났습니다. "
+[KOREAN] src\objects\users\MapleCharacter.java:14148: + this.getRoadRingExpBoost() + "%의 보너스 경험치를 얻습니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:14152: + this.getRoadRingExpBoost() + "%를 추가로 획득하게 됩니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:16775: System.out.println(this.getName() + "이(가) 맵 코드 : " + map + "으로 이동 중 field가 null");
+[KOREAN] src\objects\users\MapleCharacter.java:16791: System.out.println(this.getName() + "이(가) 맵 코드 : " + map + "으로 이동 중 field가 null");
+[KOREAN] src\objects\users\MapleCharacter.java:17201: this.dropMessage(5, String.format("금일 %s 입장횟수 %d / %d", bossName, clearCheck, checkValue));
+[KOREAN] src\objects\users\MapleCharacter.java:17445: public void 큘  쁋 쁝  끣ฐ๋ ()
+[KOREAN] src\objects\users\MapleCharacter.java:17468: "#fn나눔๊ณ 딕 Extrabold#아래에서 당์ 의 내면의 결과를 확인해보세요.\r\n\r\n#b혁์ 의 룰๋ #k 에서 [#i" + itemID.get()
+[KOREAN] src\objects\users\MapleCharacter.java:17469: + "# #d#t" + itemID.get() + "##k](이)가 소환 되었습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:17720: "#b" + from + "#k 님에게 #b(" + MapleItemInformationProvider.getInstance().getName(itemID)
+[KOREAN] src\objects\users\MapleCharacter.java:17721: + ")#k을(를) ์ 물받으셨습니다. 인벤ํ 리를 확인해보세요.",
+[KOREAN] src\objects\users\MapleCharacter.java:17840: "휴식 포인트를 1포인트 획득하여 총 "
+[KOREAN] src\objects\users\MapleCharacter.java:17842: + "포인트를 보์ 중입니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:17910: + ii.getName(item.left) + "] 을(를) " + item.mid
+[KOREAN] src\objects\users\MapleCharacter.java:17911: + "개 얻었습니다!");
+[KOREAN] src\objects\users\MapleCharacter.java:18875: + "포인트가 되었습니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:19735: + this.donatorBonusExpBoost + "%와 공/마 " + atkBoost
+[KOREAN] src\objects\users\MapleCharacter.java:19736: + "% 증가 버프가 ์ 용됩니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:19960: msg.append(" 하기 #e(");
+[KOREAN] src\objects\users\MapleCharacter.java:19997: + "]#k 퀘스트를 클리어 ํ•  수 있습니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:20032: + "]#k 퀘스트를 클리어 ํ•  수 있습니다.\r\n#e컨텐์ธ  시스템 > 익스트림 퀘스트#n를 통해 클리어해주시기 바랍니다.",
+[KOREAN] src\objects\users\MapleCharacter.java:20372: if (enchant.contains("성")) {
+[KOREAN] src\objects\users\MapleCharacter.java:20373: String a = enchant.split("성")[0];
+[KOREAN] src\objects\users\MapleCharacter.java:20385: equip.setOwner(lv + "성");
+[KOREAN] src\objects\users\MapleCharacter.java:20398: + "] 아이템이 2019년 9월 25일 ์ 검 시์  이์  아이템 옵션 초기화 대상 아이템으로 놀라운 장비 강화 주문서, 스타포스, 인챈트, ์ 재능๋ ฅ, 추가옵션을 ์ 외한 옵션이 초기화되었습니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:20499: "#e#b[초보자B]#k#n 길드에 자동으로 가입되었습니다.\r\n계์ • 내 #r통합๋ 벨이 500#k을 넘으면 계์ • 내 모๋“  캐릭터가 길드에서 자동으로 탈퇴되며,\r\n#r캐릭터 ๋ 벨이 220#k을 넘으면 해당 캐릭터는 자동으로 탈퇴됩니다.\r\n\r\n#b강림#k에서 행복한 하루 되세요.",
+[KOREAN] src\objects\users\MapleCharacter.java:21780: "[์ •๋ น결속 극대화]를 통해 그리운 랑의 모습을 구현ํ•  수 있게 되었습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:23900: + "]이(가) ์ 효기간이 만료되어 메이플 보관함에서 삭์ 됩니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:24576: this.dropMessage(5, from.getName() + "님이 거짓말 탐지기를 요청하였습니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:24631: + "] 캐릭터가 거짓말 탐지기 진행중에 채널을 변경하셨거나 게임을 종료하셨네요.");
+[KOREAN] src\objects\users\MapleCharacter.java:24632: reason = "채널 변경 혹은 게임 종료";
+[KOREAN] src\objects\users\MapleCharacter.java:24636: "[" + this.getName() + "] 캐릭터가 거짓말 탐지기에 오답을 입๋ ฅ하셨네요.");
+[KOREAN] src\objects\users\MapleCharacter.java:24637: reason = "오답 입๋ ฅ";
+[KOREAN] src\objects\users\MapleCharacter.java:24641: + "] 캐릭터가 거짓말 탐지기 입๋ ฅ에 너무 오랜 시간이 걸리셨네요.");
+[KOREAN] src\objects\users\MapleCharacter.java:24642: reason = "시간 초과";
+[KOREAN] src\objects\users\MapleCharacter.java:24658: sb.append("매크로 결과 : 실패");
+[KOREAN] src\objects\users\MapleCharacter.java:24659: sb.append(" (계์ •ID : ");
+[KOREAN] src\objects\users\MapleCharacter.java:24661: sb.append(", 캐릭터 이름 : ");
+[KOREAN] src\objects\users\MapleCharacter.java:24663: sb.append(", 실패 사์  : ");
+[KOREAN] src\objects\users\MapleCharacter.java:24670: this.getClient().getChannel() + "채널에서 " + this.getName()
+[KOREAN] src\objects\users\MapleCharacter.java:24671: + "이(가) 매크로로 판명되었습니다. 사์  : " + reason));
+[KOREAN] src\objects\users\MapleCharacter.java:24704: + "님이 거짓말 탐지기 테스트를 "
+[KOREAN] src\objects\users\MapleCharacter.java:24706: + "초동안 "
+[KOREAN] src\objects\users\MapleCharacter.java:24708: + "회 시도하여 통과하였습니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:24713: sb.append("매크로 결과 : 통과");
+[KOREAN] src\objects\users\MapleCharacter.java:24714: sb.append(" (계์ •ID : ");
+[KOREAN] src\objects\users\MapleCharacter.java:24716: sb.append(", 캐릭터 이름 : ");
+[KOREAN] src\objects\users\MapleCharacter.java:24762: if (!bossName.contains("연습")) {
+[KOREAN] src\objects\users\MapleCharacter.java:24775: if (bossName.contains("진힐라")) {
+[KOREAN] src\objects\users\MapleCharacter.java:24783: if (bossName.contains("자쿰")) {
+[KOREAN] src\objects\users\MapleCharacter.java:25184: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:25188: "[핫타임 보상]",
+[KOREAN] src\objects\users\MapleCharacter.java:25189: var75 + "에 지급된 핫타임 보상입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:25218: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:25222: "[이벤트 지급]",
+[KOREAN] src\objects\users\MapleCharacter.java:25223: fDate + "에 지급된 이벤트 보상입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:25261: new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:25264: "[275๋ 벨 보상]",
+[KOREAN] src\objects\users\MapleCharacter.java:25265: fDate + "에 지급된 보상입니다.", item));
+[KOREAN] src\objects\users\MapleCharacter.java:25429: sb.append("거짓말 탐지기 통과 실패 : ");
+[KOREAN] src\objects\users\MapleCharacter.java:25431: sb.append(" / 계์ • : ");
+[KOREAN] src\objects\users\MapleCharacter.java:25433: sb.append(" / 실패사์  : ");
+[KOREAN] src\objects\users\MapleCharacter.java:25776: item.setGMLog(CurrentTime.getAllCurrentTime() + "에 " + this.getName() + "이 " + dropper.getId()
+[KOREAN] src\objects\users\MapleCharacter.java:25777: + "를 처치하๊ณ  얻은 아이템.");
+[KOREAN] src\objects\users\MapleCharacter.java:26363: if (name != null && name.contains("이벤트")) {
+[KOREAN] src\objects\users\MapleCharacter.java:26367: if (note != null && note.contains("패키지")) {
+[KOREAN] src\objects\users\MapleCharacter.java:26431: + ", 총 익스트림 포인트 복구 포인트: "
+[KOREAN] src\objects\users\MapleCharacter.java:26432: + totalPoint + ", 총 누์  금액 : " + originalMoney);
+[KOREAN] src\objects\users\MapleCharacter.java:26435: + " 만큼 강림 포인트로 ์ 환 대상입니다. 3월 27일부터 ํ 요일 자์ •기준 1주일 마다 20%씩 지급받을 수 있습니다. 상์  시스템 > 포인트 상์ 에서 지급받으시기 바랍니다.");
+[KOREAN] src\objects\users\MapleCharacter.java:26984: + "님이 초월 환생을 하여 누์  환생 횟수 "
+[KOREAN] src\objects\users\MapleCharacter.java:26986: + "회(각성: "
+[KOREAN] src\objects\users\MapleCharacter.java:26988: + "회)를 달성하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:27068: this.getName() + " : " + this.getName() + "님이 환생을 하여 누์  환생 횟수 "
+[KOREAN] src\objects\users\MapleCharacter.java:27069: + this.getRebirthCount() + "회(각성: "
+[KOREAN] src\objects\users\MapleCharacter.java:27070: + this.getSuperRebirthCount() + "회)를 달성하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:27121: this.getName() + " : " + this.getName() + "님이 각성을 하여 누์  환생 횟수 "
+[KOREAN] src\objects\users\MapleCharacter.java:27122: + this.getRebirthCount() + "회(각성: "
+[KOREAN] src\objects\users\MapleCharacter.java:27123: + this.getSuperRebirthCount() + "회)를 달성하였습니다."));
+[KOREAN] src\objects\users\MapleCharacter.java:27491: "updateChannelChange 함수 실행중 오류발생 길드",
+[KOREAN] src\objects\users\MapleCharacter.java:27499: "updateChannelChange 함수 실행중 오류발생 removePlayer", var9);
+[KOREAN] src\objects\users\MapleCharacter.java:27550: "updateChannelChange 함수 실행중 오류발생 removePlayer", var10);
+[KOREAN] src\objects\users\MapleCharacter.java:27586: SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+[KOREAN] src\objects\users\MapleCharacter.java:27600: "[핫타임 보상]",
+[KOREAN] src\objects\users\MapleCharacter.java:27601: fDate + "에 지급된 핫타임 보상입니다.", item));
+[MOJIBAKE] src\objects\users\MapleCharacter.java:27638: "ความเหนื่อยล้าŴลง ความเหนื่อยล้ҷี่เหลื́: "
+[KOREAN] src\objects\users\MapleCharacter.java:27757: return "일반";
+[KOREAN] src\objects\users\MapleCharacter.java:27813: return "비기닝";
+[KOREAN] src\objects\users\MapleCharacter.java:27815: return "라이징";
+[KOREAN] src\objects\users\MapleCharacter.java:27817: return "플라잉";
+[KOREAN] src\objects\users\MapleCharacter.java:27819: return "샤이닝";
+[KOREAN] src\objects\users\MapleCharacter.java:27821: return "아이돌";
+[KOREAN] src\objects\users\MapleCharacter.java:27823: return "슈퍼스타";
+[KOREAN] src\objects\users\MapleCharacter.java:27825: return "일반";
+[KOREAN] src\objects\users\MapleCharacter.java:28304: this.dropMessage(-8, "[알림] " + core + " ได้รับ Neo Core ");
+[KOREAN] src\objects\users\MapleCharacter.java:28512: if (owner.contains("성")) {
+[KOREAN] src\objects\users\MapleClient.java:1065: sb.append("์ ‘속 해์  (아이피 : ");
+[KOREAN] src\objects\users\MapleClient.java:1093: sb.append("์ ‘속 해์  (아이피 : ");
+[KOREAN] src\objects\users\MapleTrade.java:338: sb.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:342: sb.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\MapleTrade.java:359: sb.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:363: sb.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\MapleTrade.java:388: reason = reason + c.getName() + "의 인벤ํ 리 공간 부족, ";
+[KOREAN] src\objects\users\MapleTrade.java:396: reason = reason + partner.getChr().getName() + "의 인벤ํ 리 공간 부족, ";
+[KOREAN] src\objects\users\MapleTrade.java:403: sbx.append("취소 사์  : (");
+[KOREAN] src\objects\users\MapleTrade.java:411: sbx.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:415: sbx.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\MapleTrade.java:432: sbx.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:436: sbx.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\MapleTrade.java:471: sb.append("취소 사์  : (");
+[KOREAN] src\objects\users\MapleTrade.java:495: sb.append("\r\n아이템(").append(Localtrade.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:499: sb.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\MapleTrade.java:517: sb.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
+[KOREAN] src\objects\users\MapleTrade.java:525: sb.append(" ").append(item.getQuantity()).append("개");
+[KOREAN] src\objects\users\extra\ExtraAbilityGrade.java:4: Rare(0, "๋ 어"),
+[KOREAN] src\objects\users\extra\ExtraAbilityGrade.java:6: Unique(2, "์ 니크"),
+[KOREAN] src\objects\users\extra\ExtraAbilityGrade.java:7: Legendary(3, "๋ ์ 드리");
+[KOREAN] src\objects\users\extra\ExtraAbilityOption.java:27: ReviveInvincible(20, "부활 시 무์  시간 %d초 증가", true, null),
+[MOJIBAKE] src\objects\users\jobs\hero\Phantom.java:943: "คุณเปลี่ยนสกิลผ่านการจѴการสกิŁมีคูŴาวน์ 30 วินҷีสำหรับสกิลนี้");
+[KOREAN] src\objects\users\skills\DamageParse.java:2017: ret.skillID + " 공격 데미지 추가 ์ •보 파싱 오류 : " + lea.toString(true), var45);
+[MOJIBAKE] src\objects\users\stone\ImprintedStoneOption.java:10: CriticalDamageR(4, "ครԵิคอŴาเมจ %s%d%s%s", true, SecondaryStatFlag.indieCD),
+[MOJIBAKE] src\objects\users\stone\ImprintedStoneOption.java:14: PMDR(8, "ไฟนอŴาเมจ %s%d%s%s", true, SecondaryStatFlag.indiePMDR),
+[KOREAN] src\objects\utils\AdminClient.java:1322: JOptionPane.showMessageDialog(this, "서버 ์ €장 쓰๋ 드가 실행됩니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:1339: JOptionPane.showMessageDialog(this, "1채널에 있는 모๋“  플๋ 이어를 광장으로 이동시켰습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:1379: + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+[KOREAN] src\objects\utils\AdminClient.java:1400: + Locales.getKoreanJosa(cashName, JosaType.을를) + " 지급 받았습니다.");
+[KOREAN] src\objects\utils\AdminClient.java:1537: cashName + Locales.getKoreanJosa(cashName, JosaType.을를) + " Please enter the character name to give!",
+[KOREAN] src\objects\utils\AdminClient.java:1594: JOptionPane.showMessageDialog(this, target + " ์ ‘속해์  하였습니다", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:1596: JOptionPane.showMessageDialog(this, "해당 ์ ์ €를 not found!", "MapleStory Admin", 0);
+[KOREAN] src\objects\utils\AdminClient.java:1633: JOptionPane.showMessageDialog(this, "์ ‘속해์ ํ•  캐릭터를 입๋ ฅ해주시기 바랍니다!", "MapleStory Admin", 2);
+[KOREAN] src\objects\utils\AdminClient.java:2019: sb.append("Vote Points 지급 : ");
+[KOREAN] src\objects\utils\AdminClient.java:2086: JOptionPane.showMessageDialog(this, "존재하지 않는 ์ ์ €입니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2102: JOptionPane.showMessageDialog(this, "해당 ์ ์ €의 보관함을 열람하는 과์ •에서 오류가 발생하였습니다.",
+[KOREAN] src\objects\utils\AdminClient.java:2110: "[GM ์ 물]", fDate + "Sent by Administrator.", item));
+[KOREAN] src\objects\utils\AdminClient.java:2115: JOptionPane.showMessageDialog(this, "해당 플๋ 이어와 동일한 계์ • 내에 캐릭터에게 ์ 송되었습니다.",
+[KOREAN] src\objects\utils\AdminClient.java:2161: ps.setString(idx.getAndIncrement(), "[GM ์ 물]");
+[KOREAN] src\objects\utils\AdminClient.java:2290: JOptionPane.showMessageDialog(this, "해당 ์ ์ €의 보관함을 열람하는 과์ •에서 오류가 발생하였습니다.", "MapleStory Admin",
+[KOREAN] src\objects\utils\AdminClient.java:2296: new MapleCabinetItem(cabinet.getNextIndex(), System.currentTimeMillis() + 604800000L, "[GM ์ 물]",
+[KOREAN] src\objects\utils\AdminClient.java:2352: && !this.hottimeRecvCount.getText().equals("์ 체")
+[KOREAN] src\objects\utils\AdminClient.java:2360: JOptionPane.showMessageDialog(this, "지급๋  아이템 ID나 갯수를 숫자로 ์ •확하게 입๋ ฅ해주세요.", "MapleStory Admin", 0);
+[KOREAN] src\objects\utils\AdminClient.java:2621: JOptionPane.showMessageDialog(this, "초심자 패키지 Delivery completed.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2637: JOptionPane.showMessageDialog(this, "주간 패키지 Delivery completed.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2641: String tier = d.split("\\(")[1].split("만")[0];
+[KOREAN] src\objects\utils\AdminClient.java:2655: JOptionPane.showMessageDialog(this, "이미 훈장을 지급 받은 ์ ์ €입니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2675: JOptionPane.showMessageDialog(this, tier + "만 누์  보상 Delivery completed.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2720: ps.setString(2, "밴 사์ : " + banReason);
+[KOREAN] src\objects\utils\AdminClient.java:2726: ps.setString(1, "밴 사์ : " + banReason);
+[KOREAN] src\objects\utils\AdminClient.java:2807: JOptionPane.showMessageDialog(this, "기간 밴 처리 되었습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2809: JOptionPane.showMessageDialog(this, "시리얼 밴 처리 되었습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2812: "입๋ ฅ값을 확인해 주세요. \n*** 올바른 커맨드 사용법 ***\n-시리얼 밴: 캐릭이름, 사์ \n-기간 밴: 캐릭이름, 사์ , 일수(숫자)",
+[KOREAN] src\objects\utils\AdminClient.java:2858: JOptionPane.showMessageDialog(this, "모๋“  밴이 해์  처리 되었습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2861: JOptionPane.showMessageDialog(this, "시리얼 밴 해์  ํ•  캐릭터 이름을 입๋ ฅ해주시기 바랍니다!", "MapleStory Admin", 2);
+[KOREAN] src\objects\utils\AdminClient.java:2874: this.jButton21.setText("경매장 녹이기");
+[KOREAN] src\objects\utils\AdminClient.java:2875: JOptionPane.showMessageDialog(this, "경매장 입장이 ์ 한되었습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2877: this.jButton21.setText("경매장 얼리기");
+[KOREAN] src\objects\utils\AdminClient.java:2878: JOptionPane.showMessageDialog(this, "경매장 입장 ์ 한이 해์ 되었습니다.", "MapleStory Admin", 1);
+[KOREAN] src\objects\utils\AdminClient.java:2910: sb.append("[친구에게 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:2927: sb.append("[파티에게 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:2935: sb.append("[길드에게 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:2940: sb.append("[연합에게 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:2945: sb.append("[원์ •대에게 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:2950: sb.append("[귓속말 : ");
+[KOREAN] src\objects\utils\AdminClient.java:2959: sb.append("[์ 체 채팅 Ch.");
+[KOREAN] src\objects\utils\AdminClient.java:3073: dongsi.setText("동시์ ‘속자 : " + count + "명");
+[KOREAN] src\objects\utils\AdminClient.java:3096: AdminClient.runtime.setText("서버 런타임 : " + day + "일 " + hour + "시간 " + minute + "분 " + second + "초");
+[KOREAN] src\objects\utils\AutobanManager.java:63: StringBuilder sb = new StringBuilder("오ํ 밴 (name : ");
+[KOREAN] src\objects\utils\AutobanManager.java:67: sb.append(") 사์  : ");
+[KOREAN] src\objects\utils\bitFalg.java:69: extractedInformation.append("더미 int * 2 ์ 거크기:").append(giveBuffStream.available()).append("\n\n");
+[KOREAN] src\objects\utils\ConnectorController.java:83: this.banOffBtn.setText("시리얼 밴 해์ ");
+[KOREAN] src\objects\utils\ConnectorController.java:91: this.online1.setText("쓰๋ 드 수 :");
+[KOREAN] src\objects\utils\StringUtil.java:224: if ('가' <= c && c <= '힣') {

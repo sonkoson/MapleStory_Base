@@ -94,7 +94,7 @@ public class FileoutputUtil {
       try {
          out = new FileOutputStream("./ErrorLog/" + file, true);
          out.write(("\r\n------------------------ " + CurrentReadable_Time() + " ------------------------\r\n").getBytes());
-         out.write(("์—๋ฌ์์ธ : " + errorReason + "\r\n").getBytes());
+         out.write(("Error Cause : " + errorReason + "\r\n").getBytes());
          out.write(getString(t).getBytes());
          out.write("\r\n".getBytes());
       } catch (IOException var13) {

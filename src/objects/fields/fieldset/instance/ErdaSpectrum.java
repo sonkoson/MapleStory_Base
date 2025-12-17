@@ -538,7 +538,7 @@ public class ErdaSpectrum extends FieldSetInstance {
                                           ErdaSpectrum.this.Var.setProperty("CrackMapPhase", "1");
                                           map.broadcastMessage(
                                              CField.UIPacket.sendBigScriptProgressMessage(
-                                                "เธฃเธญเธขเนเธขเธเธเธขเธฒเธขเนเธซเธเนเธเธถเนเธ เธกเธญเธเธชเน€เธ•เธญเธฃเนเธ–เธนเธเน€เธฃเธตเธขเธเธญเธญเธเธกเธฒเธกเธฒเธเธเธถเนเธ", FontType.NanumGothicBold, FontColorType.White
+                                                "รอยแยกขยายใหญ่ขึ้น มอนสเตอร์ถูกเรียกออกมามากขึ้น", FontType.NanumGothicBold, FontColorType.White
                                              )
                                           );
                                        }
@@ -548,7 +548,7 @@ public class ErdaSpectrum extends FieldSetInstance {
                                           ErdaSpectrum.this.Var.setProperty("CrackMapPhase", "2");
                                           map.broadcastMessage(
                                              CField.UIPacket.sendBigScriptProgressMessage(
-                                                "เธฃเธญเธขเนเธขเธเธเธขเธฒเธขเนเธซเธเนเธเธถเนเธ เธกเธญเธเธชเน€เธ•เธญเธฃเนเธ–เธนเธเน€เธฃเธตเธขเธเธญเธญเธเธกเธฒเธกเธฒเธเธเธถเนเธ", FontType.NanumGothicBold, FontColorType.White
+                                                "รอยแยกขยายใหญ่ขึ้น มอนสเตอร์ถูกเรียกออกมามากขึ้น", FontType.NanumGothicBold, FontColorType.White
                                              )
                                           );
                                        }
@@ -687,7 +687,7 @@ public class ErdaSpectrum extends FieldSetInstance {
       this.Var.setProperty("elim", String.valueOf(elim));
       int Erda = Integer.parseInt(this.Var.getProperty("Erda"));
       map.broadcastMessage(ErdaSpectrumWormInfo(Erda, this.Var.getProperty("elim")));
-      map.broadcastMessage(CField.UIPacket.sendBigScriptProgressMessage("Arma Junior เธเนเธญเธเธ•เธฑเธงเธญเธขเธนเนเธซเธฅเธฑเธเธ–เนเธณ", FontType.NanumGothicBold, FontColorType.White));
+      map.broadcastMessage(CField.UIPacket.sendBigScriptProgressMessage("Arma Junior ซ่อนตัวอยู่หลังถ้ำ", FontType.NanumGothicBold, FontColorType.White));
       if (elim == 5) {
          this.clearSpectrum(0);
       }

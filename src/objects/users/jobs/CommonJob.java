@@ -246,7 +246,7 @@ public class CommonJob implements BasicJob {
                   if (count >= 5) {
                      this.getPlayer().warp(ServerConstants.TownMap);
                      this.getPlayer().dropMessage(5,
-                           "เธเธธเธ“เธ–เธนเธเธขเนเธฒเธขเธเธฅเธฑเธเน€เธกเธทเธญเธเน€เธเธทเนเธญเธเธเธฒเธเนเธเนเธชเธเธดเธฅ Bee Yeon เน€เธเธดเธ 5 เธเธฃเธฑเนเธเนเธเธเธธเธ”เน€เธ”เธดเธก");
+                           "คุณถูกย้ายกลับเมืองเนื่องจากใช้สกิลBee Yeon เกิน 5 ครั้งในจشเดิม");
                      this.getPlayer().updateOneInfo(19771, "lastcount", String.valueOf(0));
                   }
                } else {
@@ -464,7 +464,7 @@ public class CommonJob implements BasicJob {
                this.player.setBulletItemID(projectile);
                if (!MapleInventoryManipulator.removeById(this.player.getClient(), MapleInventoryType.USE, projectile,
                      bulletConsume, false, true)) {
-                  this.player.dropMessage(5, "เนเธญเน€เธ—เธกเนเธกเนเน€เธเธตเธขเธเธเธญ");
+                  this.player.dropMessage(5, "ไอเทมไม่เพียงพอ");
                   return false;
                }
             }

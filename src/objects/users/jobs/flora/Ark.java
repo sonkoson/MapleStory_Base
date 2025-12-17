@@ -696,7 +696,7 @@ public class Ark extends Pirate {
                                  + " has passed since I last communicated with you, Chir.\r\nI was worried because I couldn't get a signal, but I'm glad the radio seems to be working, Chir.\r\nBarkbark said nonsense that feeling the heart is enough, but I think we need to actually communicate to confirm each other's safety. Chir.",
                            ""));
          this.getPlayer().dropMessage(5,
-               "Wei เธ”เธนเน€เธซเธกเธทเธญเธเธเธฐเธ—เธฐเน€เธฅเธฒเธฐเธเธฑเธ Barkbark เธ•เธฒเธกเธเธเธ•เธด เธเธธเธขเน€เธฃเธทเนเธญเธเธงเธดเธเธตเนเธเนเธงเธดเธ—เธขเธธเนเธซเนเธ”เธตเธเธถเนเธ");
+               "Wei ดูเหมือนจзะเลาะกับ Barkbark ตามปกตԁคุยเรื่องวิธีใช้วԷยุให้ดีขึ้น");
       } else if (r == 2) {
          this.getPlayer().send(CField.addPopupSay(3001534, 3000,
                "Hey! What's up bro. Long time no see, but my heart is beating hot with you so I wasn't worried at all!\r\nSpeaking of which, listen to my music after a long time.",

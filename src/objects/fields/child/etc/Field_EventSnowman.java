@@ -38,7 +38,7 @@ public class Field_EventSnowman extends Field {
 
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && playerx.getMapId() == this.getId()) {
-               playerx.dropMessage(5, "เธเธณเธเธฑเธ” Giant Snowman เนเธกเนเธ—เธฑเธเน€เธงเธฅเธฒ เนเธกเนเนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ");
+               playerx.dropMessage(5, "กำจѴ Giant Snowman ไม่ทันเวลҁไม่ได้รับรางวัล");
                playerx.warp(ServerConstants.TownMap);
             }
          }
@@ -74,11 +74,11 @@ public class Field_EventSnowman extends Field {
 
          for (MapleCharacter playerx : this.getCharactersThreadsafe()) {
             if (playerx != null && !this.rewardGetUsers.contains(playerx.getId()) && playerx.getMapId() == this.getId()) {
-               playerx.dropMessage(5, "เธเธณเธเธฑเธ” Giant Snowman เนเธฅเธฐเนเธ”เนเธฃเธฑเธ Merry Christmas Gift Box 1 เธเธฅเนเธญเธ");
-               playerx.gainItem(2430033, 1, false, 0L, "ํฌ๋ฆฌ์ค๋ง์ค ์ด๋ฒคํธ๋ก ํ๋“");
+               playerx.dropMessage(5, "กำจѴ Giant Snowman และได้รับ Merry Christmas Gift Box 1 กล่อง");
+               playerx.gainItem(2430033, 1, false, 0L, "크리스마스 이벤트로 획득");
                playerx.setRegisterTransferField(ServerConstants.TownMap);
                playerx.setRegisterTransferFieldTime(System.currentTimeMillis() + 2000L);
-               playerx.send(CField.addPopupSay(9062000, 5000, "๊ฑฐ๋€ ๋์ฌ๋์ ์ฒ์นํ•์—ฌ #b๋ฉ”๋ฆฌ ํฌ๋ฆฌ์ค๋ง์ค ์ ๋ฌผ์์#k๋ฅผ ํ๋“ํ–์ต๋๋ค.", ""));
+               playerx.send(CField.addPopupSay(9062000, 5000, "거대 눈사람을 처치하여 #b메리 크리스마스 ์ 물상자#k를 획득했습니다.", ""));
                this.rewardGetUsers.add(playerx.getId());
             }
          }

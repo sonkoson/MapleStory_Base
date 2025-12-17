@@ -83,7 +83,7 @@ public class Field_Magnus extends Field {
          this.changeMobZone(0);
          this.setActiveDebuffObjs(false);
          this.activeDecHPr = false;
-         this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 6666, "๋งค๊ทธ๋์ค๊ฐ€ ์ฌ๋งํ•์—ฌ ๋ฐฉ์ถ๋ ์—๋์ง€๋ก ์ธํ•ด ๋”์ด์ ๊ตฌ์€๋ฅด์ ํ์— ์ํ–ฅ์ ๋ฐ์ง€ ์•์ต๋๋ค.");
+         this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 6666, "With Magnus dead, the released energy no longer affects Guwaru's power.");
          this.broadcastMessage(CField.clearObstacle());
 
          for (MapleCharacter p : this.getCharactersThreadsafe()) {
@@ -293,16 +293,16 @@ public class Field_Magnus extends Field {
             }
 
             this.changeMobZone(2);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 2, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 2, "พลังของ Magnus ที่ควบคุม Guwaru อ่อนลงแล้ว พลังของ Guwaru จึงแข็งแกร่งขึ้น");
          } else if (mob.getHPPercent() <= 50 && mob.getMobZoneDataType() == 2) {
             this.changeMobZone(3);
             this.clearObstacleAtomCreators();
             Rect mBR = this.calculateMBR();
             this.FirstObstacleAtomHandle(mob, mBR);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 3, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 3, "พลังของ Magnus ที่ควบคุม Guwaru อ่อนลงแล้ว พลังของ Guwaru จึงแข็งแกร่งขึ้น");
          } else if (mob.getHPPercent() <= 25 && mob.getMobZoneDataType() == 3) {
             this.changeMobZone(4);
-            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 4, "๋งค๊ทธ๋์ค๊ฐ€ ๊ตฌ์€๋ฅด๋ฅผ ์ ์–ดํ•๋” ํ์ด ์•ฝํ” ๋์—์ต๋๋ค. ๊ตฌ์€๋ฅด์ ๊ธฐ์ด์ด ๋”์ฑ ๊ฐ•ํ•ด์ง‘๋๋ค.");
+            this.sendSmartMobNotice(SmartMobNoticeType.Normal, mob.getId(), SmartMobMsgType.Field, 4, "พลังของ Magnus ที่ควบคุม Guwaru อ่อนลงแล้ว พลังของ Guwaru จึงแข็งแกร่งขึ้น");
          }
       }
    }

@@ -221,7 +221,7 @@ public class StringUtil {
 
       for (int i = 0; i < in.length(); i++) {
          char c = in.charAt(i);
-         if ('๊ฐ€' <= c && c <= 'ํฃ') {
+         if ('가' <= c && c <= '힣') {
             sb.append(c);
          }
       }

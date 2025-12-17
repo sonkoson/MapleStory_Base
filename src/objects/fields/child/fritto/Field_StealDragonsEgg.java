@@ -56,7 +56,7 @@ public class Field_StealDragonsEgg extends Field {
    public void gameStart() {
       this.player.send(CField.getStopwatch(30000));
       this.player.send(CField.environmentChange("PoloFritto/msg2", 20, 263));
-      this.player.send(CField.startMapEffect("์ฟ! ์ด ๋‘ฅ์ง€์ ๊ผญ๋€๊ธฐ์—๋” ๋“๋๊ณค์ ์•์ด ์จ๊ฒจ์ ธ ์์–ด. ๊ผญ๋€๊ธฐ๋ก ๊ฐ€๋” ๊ธธ์ ์ ์ฐพ์•๋ณด๋ผ๊ตฌ!", 5120160, true, 10));
+      this.player.send(CField.startMapEffect("Shh! Dragon eggs are hidden at the top of this nest. Find your way to the top!", 5120160, true, 10));
       this.endGameTime = System.currentTimeMillis() + 30000L;
    }
 }

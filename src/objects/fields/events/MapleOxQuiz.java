@@ -70,7 +70,8 @@ public class MapleOxQuiz extends MapleEvent {
    }
 
    public void sendQuestion(final Field toSend) {
-      final Entry<Pair<Integer, Integer>, MapleOxQuizFactory.MapleOxQuizEntry> question = MapleOxQuizFactory.getInstance().grabRandomQuestion();
+      final Entry<Pair<Integer, Integer>, MapleOxQuizFactory.MapleOxQuizEntry> question = MapleOxQuizFactory
+            .getInstance().grabRandomQuestion();
       if (this.oxSchedule2 != null) {
          this.oxSchedule2.cancel(false);
       }
@@ -87,7 +88,8 @@ public class MapleOxQuiz extends MapleEvent {
             }
 
             if (toSend.getCharactersSize() - number > 1 && MapleOxQuiz.this.timesAsked != 10) {
-               toSend.broadcastMessage(CField.showOXQuiz((Integer)question.getKey().left, (Integer)question.getKey().right, true));
+               toSend.broadcastMessage(
+                     CField.showOXQuiz((Integer) question.getKey().left, (Integer) question.getKey().right, true));
                toSend.broadcastMessage(CField.getClock(10));
             } else {
                toSend.broadcastMessage(CWvsContext.serverNotice(6, "The event has ended"));
@@ -113,7 +115,8 @@ public class MapleOxQuiz extends MapleEvent {
          @Override
          public void run() {
             if (!MapleOxQuiz.this.finished) {
-               toSend.broadcastMessage(CField.showOXQuiz((Integer)question.getKey().left, (Integer)question.getKey().right, false));
+               toSend.broadcastMessage(
+                     CField.showOXQuiz((Integer) question.getKey().left, (Integer) question.getKey().right, false));
                MapleOxQuiz.this.timesAsked++;
 
                for (MapleCharacter chr : toSend.getCharactersThreadsafe()) {
@@ -137,10 +140,10 @@ public class MapleOxQuiz extends MapleEvent {
       double x = chr.getTruePosition().getX();
       double y = chr.getTruePosition().getY();
       if ((!(x > -234.0) || !(y > -26.0) || answer != 0) && (!(x < -234.0) || !(y > -26.0) || answer != 1)) {
-         chr.dropMessage(6, "[Ox Quiz] เธเธดเธ”!");
+         chr.dropMessage(6, "[Ox Quiz] ผิด!");
          return false;
       } else {
-         chr.dropMessage(6, "[Ox Quiz] เธ–เธนเธเธ•เนเธญเธ!");
+         chr.dropMessage(6, "[Ox Quiz] ถูกต้อง!");
          return true;
       }
    }

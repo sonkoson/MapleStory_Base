@@ -152,22 +152,22 @@ public class Field_CrimsonQueen extends Field {
          switch (skillLevel) {
             case 51:
             case 55:
-               msg = "๋ด๊ฐ€ ์๋€ํ•ด์ฃผ๊ฒ ์–ด์”.";
+               msg = "I will deal with you.";
                itemID = 5120099;
                break;
             case 52:
             case 56:
-               msg = "ํฅํฅ, ๋ค ์—์• ์ฃผ์ง€";
+               msg = "Kikik, I'll destroy everything.";
                itemID = 5120101;
                break;
             case 53:
             case 57:
-               msg = "๋ชจ๋‘ ๋ถํ์์ฃผ๋ง!";
+               msg = "I'll burn everything!";
                itemID = 5120100;
                break;
             case 54:
             case 58:
-               msg = "๋ด ๊ณ ํต์ ๋๋ผ๊ฒ ํ•ด์ค๊ฒ์”.";
+               msg = "I'll let you feel my pain.";
                itemID = 5120102;
          }
 

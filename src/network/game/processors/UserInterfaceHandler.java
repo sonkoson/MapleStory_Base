@@ -38,7 +38,7 @@ public class UserInterfaceHandler {
                   }
 
                   if (chr.getId() != chr.getParty().getLeader().getId()) {
-                     chr.dropMessage(1, "เน€เธเธเธฒเธฐเธซเธฑเธงเธซเธเนเธฒเธเธฒเธฃเนเธ•เธตเนเน€เธ—เนเธฒเธเธฑเนเธเธ—เธตเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเนเธ”เน");
+                     chr.dropMessage(1, "เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถเข้าได้");
                      return;
                   }
                }

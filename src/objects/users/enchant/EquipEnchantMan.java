@@ -179,45 +179,45 @@ public class EquipEnchantMan {
 
    public static String getNameByFlag(int flag) {
       if (ItemUpgradeFlag.INC_PAD.check(flag)) {
-         return "เธเธฅเธฑเธเนเธเธกเธ•เธต";
+         return "พลังโจมตี";
       } else if (ItemUpgradeFlag.INC_MAD.check(flag)) {
-         return "เธเธฅเธฑเธเน€เธงเธ—เธขเน";
+         return "พลังเǷย์";
       } else if (ItemUpgradeFlag.INC_STR.check(flag)
             && ItemUpgradeFlag.INC_DEX.check(flag)
             && ItemUpgradeFlag.INC_INT.check(flag)
             && ItemUpgradeFlag.INC_LUK.check(flag)) {
-         return "เธชเน€เธ•เธ•เธฑเธชเธ—เธฑเนเธเธซเธกเธ”";
+         return "ส൵ัʷั้งหมด";
       } else if (ItemUpgradeFlag.INC_STR.check(flag)
             || (ItemUpgradeFlag.INC_STR.getValue() | ItemUpgradeFlag.INC_PDD.getValue()
                   | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
          return "STR";
       } else if ((ItemUpgradeFlag.INC_PAD.getValue() | ItemUpgradeFlag.INC_STR.getValue()) == flag) {
-         return "เธเธฅเธฑเธเนเธเธกเธ•เธต (STR)";
+         return "พลังโจมตี(STR)";
       } else if (ItemUpgradeFlag.INC_DEX.check(flag)
             || (ItemUpgradeFlag.INC_DEX.getValue() | ItemUpgradeFlag.INC_PDD.getValue()
                   | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
          return "DEX";
       } else if ((ItemUpgradeFlag.INC_PAD.getValue() | ItemUpgradeFlag.INC_DEX.getValue()) == flag) {
-         return "เธเธฅเธฑเธเนเธเธกเธ•เธต (DEX)";
+         return "พลังโจมตี(DEX)";
       } else if (ItemUpgradeFlag.INC_INT.check(flag)
             || (ItemUpgradeFlag.INC_INT.getValue() | ItemUpgradeFlag.INC_PDD.getValue()
                   | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
          return "INT";
       } else if ((ItemUpgradeFlag.INC_MAD.getValue() | ItemUpgradeFlag.INC_INT.getValue()) == flag) {
-         return "เธเธฅเธฑเธเน€เธงเธ—เธขเน (INT)";
+         return "พลังเǷย์ (INT)";
       } else if (ItemUpgradeFlag.INC_LUK.check(flag)
             || (ItemUpgradeFlag.INC_LUK.getValue() | ItemUpgradeFlag.INC_PDD.getValue()
                   | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
          return "LUK";
       } else if ((ItemUpgradeFlag.INC_PAD.getValue() | ItemUpgradeFlag.INC_LUK.getValue()) == flag) {
-         return "เธเธฅเธฑเธเนเธเธกเธ•เธต (LUK)";
+         return "พลังโจมตี(LUK)";
       } else if (ItemUpgradeFlag.INC_MHP.check(flag)
             || (ItemUpgradeFlag.INC_PDD.getValue() | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
          return "MaxHP";
       } else if ((ItemUpgradeFlag.INC_PAD.getValue() | ItemUpgradeFlag.INC_MHP.getValue()) == flag) {
-         return "เธเธฅเธฑเธเนเธเธกเธ•เธต (MaxHP)";
+         return "พลังโจมตี(MaxHP)";
       } else {
-         return ItemUpgradeFlag.INC_PDD.check(flag) ? "เธเธฅเธฑเธเธเนเธญเธเธเธฑเธ" : "";
+         return ItemUpgradeFlag.INC_PDD.check(flag) ? "พลังป้องกัน" : "";
       }
    }
 

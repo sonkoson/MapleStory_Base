@@ -3,16 +3,16 @@ package objects.users.stone;
 import objects.users.stats.SecondaryStatFlag;
 
 public enum ImprintedStoneOption {
-   None(0, "เนเธกเนเธกเธต", false),
+   None(0, "ไม่มี", false),
    AllStatP(1, "All Stat %s%d%s%s", false, SecondaryStatFlag.indieStatRBasic),
-   PadR(2, "เธเธฅเธฑเธเนเธเธกเธ•เธต %s%d%s%s", true, SecondaryStatFlag.indiePadR),
-   MadR(3, "เธเธฅเธฑเธเน€เธงเธ— %s%d%s%s", true, SecondaryStatFlag.indieMadR),
-   CriticalDamageR(4, "เธเธฃเธดเธ•เธดเธเธญเธฅเธ”เธฒเน€เธกเธ %s%d%s%s", true, SecondaryStatFlag.indieCD),
-   BossDamageR(5, "เธ”เธฒเน€เธกเธเธ—เธณเธ•เนเธญเธเธญเธช %s%d%s%s", true, SecondaryStatFlag.indieBDR),
-   IgnoreMobPdpR(6, "เน€เธเธดเธเน€เธเธขเธ•เนเธญเธเธฅเธฑเธเธเนเธญเธเธเธฑเธ %s%d%s", false, SecondaryStatFlag.indieIgnoreMobPdpR),
-   CriticalRate(7, "เธญเธฑเธ•เธฃเธฒเธเธฃเธดเธ•เธดเธเธญเธฅ %s%d%s%s", false, SecondaryStatFlag.indieCR),
-   PMDR(8, "เนเธเธเธญเธฅเธ”เธฒเน€เธกเธ %s%d%s%s", true, SecondaryStatFlag.indiePMDR),
-   DamR(9, "เธ”เธฒเน€เธกเธ %s%d%s%s", false, SecondaryStatFlag.indieDamR);
+   PadR(2, "พลังโจมตี%s%d%s%s", true, SecondaryStatFlag.indiePadR),
+   MadR(3, "พลังเǷ %s%d%s%s", true, SecondaryStatFlag.indieMadR),
+   CriticalDamageR(4, "ครԵิคอŴาเมจ %s%d%s%s", true, SecondaryStatFlag.indieCD),
+   BossDamageR(5, "ดาเมจทӵ่อบอʁ%s%d%s%s", true, SecondaryStatFlag.indieBDR),
+   IgnoreMobPdpR(6, "เพิกเฉµ่อพลังป้องกัน %s%d%s", false, SecondaryStatFlag.indieIgnoreMobPdpR),
+   CriticalRate(7, "อѵราครԵิคอล%s%d%s%s", false, SecondaryStatFlag.indieCR),
+   PMDR(8, "ไฟนอŴาเมจ %s%d%s%s", true, SecondaryStatFlag.indiePMDR),
+   DamR(9, "ดาเมจ %s%d%s%s", false, SecondaryStatFlag.indieDamR);
 
    private int option;
    private String desc;

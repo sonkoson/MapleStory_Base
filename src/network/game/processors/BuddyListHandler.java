@@ -84,24 +84,24 @@ public class BuddyListHandler {
          }
 
          if (ble != null && !ble.isVisible()) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เน€เธเนเธเน€เธเธทเนเธญเธเธเธฑเธเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เป็นเพื่อนกันเรียบร้อยแล้ว"));
             return;
          }
 
          if (buddylist.isFull()) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธฃเธฒเธขเธเธทเนเธญเน€เธเธทเนเธญเธเน€เธ•เนเธกเนเธฅเนเธง"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รายชื่อเพื่อนเต็มแล้ว"));
             return;
          }
 
          if (accid == c.getAccID()) {
             c.getSession()
-                  .writeAndFlush(CWvsContext.serverNotice(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเธดเนเธกเธ•เธฑเธงเธฅเธฐเธเธฃเนเธเธเธฑเธเธเธตเธ•เธฑเธงเน€เธญเธเน€เธเนเธเน€เธเธทเนเธญเธเนเธ”เน"));
+                  .writeAndFlush(CWvsContext.serverNotice(1, "ไม่สามารถเพิ่มตัวละครในบัญชีตัวเองเป็นเพื่อนได้"));
             return;
          }
 
          if (accountBuddyCheck == 0) {
             c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
-                  "เธเธ“เธฐเธเธตเนเธเธฑเธเธเนเธเธฑเธเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน\r\nเธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเน€เธเธทเนเธญเธเธ—เธตเนเน€เธเธทเนเธญเธกเนเธขเธเธเธฑเธเธเธต"));
+                  "ขณะนี้ฟังก์ชันนี้ไม่สามารถใช้งานได้\r\nกรุณาตรวจสอบเพื่อนที่เชื่อมโยงบัญชี"));
             return;
          }
 
@@ -194,10 +194,10 @@ public class BuddyListHandler {
                   }
 
                   if (buddyAddResult == Friend.BuddyAddResult.BUDDYLIST_FULL) {
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธฃเธฒเธขเธเธทเนเธญเน€เธเธทเนเธญเธเธเธญเธเธญเธตเธเธเนเธฒเธขเน€เธ•เนเธกเนเธฅเนเธง"));
+                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รายชื่อเพื่อนของอีกฝ่ายเต็มแล้ว"));
                      return;
                   } else if (buddyAddResult == Friend.BuddyAddResult.ADD_BLOCKED) {
-                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธญเธตเธเธเนเธฒเธขเธเธเธดเน€เธชเธเธเธฒเธฃเน€เธเธดเนเธกเน€เธเธทเนเธญเธ"));
+                     c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อีกฝ่ายปฏิเสธการเพิ่มเพื่อน"));
                      return;
                   } else {
                      int displayChannel = -1;
@@ -226,10 +226,10 @@ public class BuddyListHandler {
                      }
 
                      c.getSession().writeAndFlush(
-                           CWvsContext.serverNotice(1, "เธ•เธฑเธงเธฅเธฐเธเธฃเธเธญเธเธเธธเธ“เธญเธขเธนเนเนเธเธฃเธฒเธขเธเธทเนเธญเน€เธเธทเนเธญเธเธเธญเธเธญเธตเธเธเนเธฒเธขเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง"));
+                           CWvsContext.serverNotice(1, "ตัวละครของคุณอยู่ในรายชื่อเพื่อนของอีกฝ่ายเรียบร้อยแล้ว"));
                   }
                } else {
-                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เนเธกเนเธเธเน€เธเนเธฒเธซเธกเธฒเธข"));
+                  c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ไม่พบเป้าหมาย"));
                   return;
                }
             }
@@ -248,7 +248,7 @@ public class BuddyListHandler {
                      int channelx = Center.Find.findAccChannel(otherAccId);
                      int otherChrId = 0;
                      String otherName = null;
-                     String groupNamex = "เนเธกเนเนเธ”เนเธเธฑเธ”เธเธฅเธธเนเธก";
+                     String groupNamex = "ไม่ได้จัดกลุ่ม";
                      String otherMemo = "";
                      int otherLevel = 0;
                      int otherJob = 0;
@@ -383,7 +383,7 @@ public class BuddyListHandler {
                c.getPlayer().gainMeso(-50000L, false);
             }
          } else if (mode == 11) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธ“เธฐเธเธตเนเธเธฑเธเธเนเธเธฑเธเธเธตเนเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธเนเธเธฒเธเนเธ”เน"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ขณะนี้ฟังก์ชันนี้ไม่สามารถใช้งานได้"));
          } else if (mode == 12) {
             slea.skip(1);
             int otherCid = slea.readInt();
@@ -421,7 +421,7 @@ public class BuddyListHandler {
          } else if (mode == 15) {
             Center.Buddy.loggedOff(c.getPlayer().getName(), c.getPlayer().getId(), c.getAccID(), c.getChannel(),
                   buddylist.getBuddyIds());
-            c.getPlayer().dropMessage(5, "เน€เธเธฅเธตเนเธขเธเธชเธ–เธฒเธเธฐเน€เธเนเธเธญเธญเธเนเธฅเธเนเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง");
+            c.getPlayer().dropMessage(5, "เปลี่ยนสถานะเป็นออฟไลน์เรียบร้อยแล้ว");
          }
       }
    }

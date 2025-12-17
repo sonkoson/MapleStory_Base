@@ -128,7 +128,7 @@ public class MapleShop {
 
    public void buy(MapleClient c, int slot, int itemId, short bundle) {
       if (itemId / 10000 == 190 && !GameConstants.isMountItemAvailable(itemId, c.getPlayer().getJob())) {
-         c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธญเน€เธ—เธกเธเธตเนเนเธ”เน");
+         c.getPlayer().dropMessage(1, "ไม่สามารถซื้อไอเทมนี้ได้");
          c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
       } else {
          MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
@@ -161,19 +161,19 @@ public class MapleShop {
                   c.getPlayer().getRebuy().remove(index);
                   c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, index));
                   StringBuilder sb = new StringBuilder();
-                  sb.append("์์  ์•์ดํ… ์ฌ๊ตฌ๋งค ์๋ (์บ๋ฆญํฐ : ");
+                  sb.append("상์  아이템 재구매 시도 (캐릭터 : ");
                   sb.append(c.getPlayer().getName());
-                  sb.append(", ๊ณ์ • : ");
+                  sb.append(", Account : ");
                   sb.append(c.getPlayer().getClient().getAccountName());
-                  sb.append(", ์์ ID : ");
+                  sb.append(", 상์ ID : ");
                   sb.append(this.getId());
-                  sb.append(", ์•์ดํ… : ");
+                  sb.append(", Item : ");
                   sb.append(i.getItemId());
                   sb.append(" ");
                   sb.append(i.getQuantity());
-                  sb.append("๊ฐ, ๊ฐ€๊ฒฉ : ");
+                  sb.append("Qty, Price : ");
                   sb.append(price);
-                  sb.append(" ๋ฉ”์)");
+                  sb.append(" Meso)");
                   LoggingManager.putLog(
                      new ItemLog(
                         c.getPlayer(),
@@ -188,7 +188,7 @@ public class MapleShop {
                      )
                   );
                } else {
-                  c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
+                  c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                   c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
                }
             }
@@ -201,13 +201,13 @@ public class MapleShop {
 
             if (item.getItemId() == itemId) {
                if (!MapleInventoryManipulator.checkSpace(c, item.getItemId(), quantity, "")) {
-                  c.getPlayer().dropMessage(1, "เธเนเธญเธเนเธเธเนเธญเธเน€เธเนเธเธเธญเธเนเธกเนเน€เธเธตเธขเธเธเธญ");
+                  c.getPlayer().dropMessage(1, "ช่องในช่องเก็บของไม่เพียงพอ");
                   c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
                } else {
                   if (item.getBuyLimit() > 0) {
                      for (objects.users.BuyLimitEntry entry : new ArrayList<>(c.getPlayer().getBuyLimit().getBuyLimits())) {
                         if (entry.getShopID() == this.getId() && entry.getItemIndex() == slot && entry.getBuyCount() >= item.getBuyLimit()) {
-                           c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธ”เนเธญเธตเธ");
+                           c.getPlayer().dropMessage(1, "ไม่สามารถซื้อได้อีก");
                            return;
                         }
                      }
@@ -220,7 +220,7 @@ public class MapleShop {
                   if (item.getWorldBuyLimit() > 0) {
                      for (objects.users.BuyLimitEntry entryx : new ArrayList<>(c.getPlayer().getWorldBuyLimit().getBuyLimits())) {
                         if (entryx.getShopID() == this.getId() && entryx.getItemIndex() == slot && entryx.getBuyCount() >= item.getWorldBuyLimit()) {
-                           c.getPlayer().dropMessage(1, "เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธเธทเนเธญเนเธ”เนเธญเธตเธ");
+                           c.getPlayer().dropMessage(1, "ไม่สามารถซื้อได้อีก");
                            return;
                         }
                      }
@@ -231,21 +231,21 @@ public class MapleShop {
                   }
 
                   StringBuilder sb = new StringBuilder();
-                  sb.append("์์  ์•์ดํ… ๊ตฌ๋งค ์๋ (์บ๋ฆญํฐ : ");
+                  sb.append("상์  아이템 구매 시도 (캐릭터 : ");
                   sb.append(c.getPlayer().getName());
-                  sb.append(", ๊ณ์ • : ");
+                  sb.append(", Account : ");
                   sb.append(c.getPlayer().getClient().getAccountName());
-                  sb.append(", ์์ ID : ");
+                  sb.append(", 상์ ID : ");
                   sb.append(this.getId());
-                  sb.append(", ์•์ดํ… : ");
+                  sb.append(", Item : ");
                   sb.append(item.getItemId());
                   sb.append(" ");
                   sb.append(item.getQuantity() * bundle);
-                  sb.append("๊ฐ, ๊ฐ€๊ฒฉ : ");
+                  sb.append("Qty, Price : ");
                   sb.append(item.getPrice());
-                  sb.append(" ๋ฉ”์, ");
+                  sb.append(" Meso, ");
                   sb.append(item.getPointPrice());
-                  sb.append(" ํฌ์ธํธ)");
+                  sb.append(" Point)");
                   LoggingManager.putLog(
                      new ItemLog(
                         c.getPlayer(),
@@ -365,7 +365,7 @@ public class MapleShop {
                               c.getPlayer().setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.PRAISE_POINT.getFlag());
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
+                           c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                         }
 
                         c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
@@ -386,7 +386,7 @@ public class MapleShop {
                            }
 
                            if (!passed) {
-                              c.getPlayer().dropMessage(1, "เธ•เนเธญเธเธเธฒเธฃเธขเธจเธ—เธตเนเธชเธนเธเธเธงเนเธฒเธเธตเน");
+                              c.getPlayer().dropMessage(1, "ต้องการยศที่สูงกว่านี้");
                               c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
                               return;
                            }
@@ -425,7 +425,7 @@ public class MapleShop {
                                  );
                               }
                            } else {
-                              c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
+                              c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                            }
 
                            c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
@@ -466,7 +466,7 @@ public class MapleShop {
                               );
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "เธเนเธญเธเน€เธเนเธเธเธญเธเน€เธ•เนเธก");
+                           c.getPlayer().dropMessage(1, "ช่องเก็บของเต็ม");
                         }
 
                         c.getSession().writeAndFlush(CField.NPCPacket.confirmShopTransaction((byte)0, this, c, -1));
@@ -533,27 +533,27 @@ public class MapleShop {
 
                         if (saveLog) {
                            StringBuilder sb = new StringBuilder();
-                           sb.append("์์ ์— ์•์ดํ… ํ๋งค ์๋ (์บ๋ฆญํฐ : ");
+                           sb.append("상์ 에 아이템 판매 시도 (캐릭터 : ");
                            sb.append(c.getPlayer().getName());
-                           sb.append(", ๊ณ์ • : ");
+                           sb.append(", Account : ");
                            sb.append(c.getPlayer().getClient().getAccountName());
-                           sb.append(", ์์ ID : ");
+                           sb.append(", 상์ ID : ");
                            sb.append(this.getId());
-                           sb.append(", ์•์ดํ… : ");
+                           sb.append(", Item : ");
                            sb.append(item.getItemId());
                            sb.append(" ");
                            sb.append((int)quantity);
-                           sb.append("๊ฐ, ");
+                           sb.append("Qty, ");
                            if (type == MapleInventoryType.EQUIP) {
                               Equip equip = (Equip)item;
                               serialNum = equip.getSerialNumberEquip();
-                              sb.append("(์ •๋ณด : ");
+                              sb.append("(Info : ");
                               sb.append(equip.toString());
                            }
 
-                           sb.append("), ๊ฐ€๊ฒฉ : ");
+                           sb.append("), 가격 : ");
                            sb.append(recvMesos);
-                           sb.append(" ๋ฉ”์)");
+                           sb.append(" Meso)");
                            LoggingManager.putLog(
                               new ItemLog(
                                  c.getPlayer(),

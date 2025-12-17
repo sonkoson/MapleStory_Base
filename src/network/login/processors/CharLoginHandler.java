@@ -125,7 +125,7 @@ public class CharLoginHandler {
       int loginok = 0;
       if (!GameConstants.isOpen) {
          c.getSession().writeAndFlush(
-               CWvsContext.serverNotice(1, "เธเธณเธฅเธฑเธเนเธซเธฅเธ”เธเนเธญเธกเธนเธฅเน€เธเธดเธฃเนเธเน€เธงเธญเธฃเน\r\nเธเธฃเธธเธ“เธฒเธฅเธญเธเนเธซเธกเนเธญเธตเธเธเธฃเธฑเนเธเนเธเธ เธฒเธขเธซเธฅเธฑเธ"));
+               CWvsContext.serverNotice(1, "กำลังโหลดข้อมูลเซิร์ฟเวอร์\r\nกรุณาลองใหม่อีกครั้งในภายหลัง"));
          c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
       } else {
          if (DBConfig.isHosting || !pwd.equals("!xptmxm")) {
@@ -133,19 +133,19 @@ public class CharLoginHandler {
          } else if (AutoRegister.getCharacterExists(login)) {
             Pair<String, String> loginData = AutoRegister.getAccountsInfo(login);
             loginok = c.login(loginData.getLeft(), pwd);
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2: " + loginData.getRight()));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "รหัสผ่านชั้นที่ 2: " + loginData.getRight()));
          } else {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เนเธกเนเธเธเธเนเธญเธกเธนเธฅ :("));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "ไม่พบข้อมูล:("));
             c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
          }
 
          Calendar tempbannedTill = c.getTempBanCalendar();
          if (!c.isGm() && DBConfig.isHosting) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฃเธธเธ“เธฒเน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธเธเนเธฒเธเธ•เธฑเธงเน€เธเธดเธ”เน€เธเธก (Launcher)"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "กรุณาเข้าสู่ระบบผ่านตัวเปิดเกม (Launcher)"));
             c.getSession().writeAndFlush(LoginPacket.getLoginFailed(21));
             c.clearInformation();
          } else if (loginok == 3) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฑเธเธเธตเธเธตเนเธ–เธนเธเธฃเธฐเธเธฑเธเธเธฒเธฃเนเธเนเธเธฒเธ"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "บัญชีนี้ถูกระงับการใช้งาน"));
             c.clearInformation();
          } else {
             if (loginok != 0) {
@@ -402,10 +402,10 @@ public class CharLoginHandler {
    public static void changeSPWRequest(MapleClient c) {
       if (DBConfig.isGanglim) {
          c.getSession().writeAndFlush(
-               CWvsContext.serverNotice(1, "เธชเธณเธซเธฃเธฑเธเธเธฒเธฃเน€เธเธฅเธตเนเธขเธเธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2 เธเธฃเธธเธ“เธฒเนเธเนเธซเนเธญเธ [เธเธณเธชเธฑเนเธเธเธญเธ—] เนเธ Discord"));
+               CWvsContext.serverNotice(1, "สำหรับการเปลี่ยนรหัสผ่านชั้นที่ 2 กรุณาใช้ห้อง [คำสั่งบͷ] ใน Discord"));
       } else {
          c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
-               "เธชเธณเธซเธฃเธฑเธเธเธฒเธฃเน€เธเธฅเธตเนเธขเธเธฃเธซเธฑเธชเธเนเธฒเธเธเธฑเนเธเธ—เธตเน 2 เธเธฃเธธเธ“เธฒเธ•เธดเธ”เธ•เนเธญเธเนเธฒเธขเธเธฃเธดเธเธฒเธฃเธฅเธนเธเธเนเธฒเธ—เธตเนเธซเธเนเธฒเน€เธงเนเธเนเธเธ•เน"));
+               "สำหรับการเปลี่ยนรหัสผ่านชั้นที่ 2 กรุณาติดต่อฝ่ายบริการลูกค้าที่หน้าเว็บไซต์"));
       }
    }
 
@@ -443,8 +443,8 @@ public class CharLoginHandler {
          String tempBan = sdf.format(c.getTempBanCalendar().getTime());
          c.getSession().writeAndFlush(
                CWvsContext.serverNotice(1,
-                     "เธเธฑเธเธเธตเธเธตเนเธ–เธนเธเธฃเธฐเธเธฑเธเธเธฒเธฃเนเธเนเธเธฒเธเธเธฑเนเธงเธเธฃเธฒเธง\r\n\r\nเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเนเธเนเธเธฒเธเนเธ”เนเธเธเธ–เธถเธ: " + tempBan));
-         String reason = tempBan + " (เธเธฑเธเธเธตเธ–เธนเธเธฃเธฐเธเธฑเธเธเธฑเนเธงเธเธฃเธฒเธง)";
+                     "บัญชีนี้ถูกระงับการใช้งานชั่วคราว\r\n\r\nไม่สามารถเข้าใช้งานได้จนถึง: " + tempBan));
+         String reason = tempBan + " (บัญชีถูกระงับชั่วคราว)";
          StringBuilder sb = new StringBuilder();
          sb.append("Temp Ban Log (IP : ");
          sb.append(c.getSessionIPAddress());
@@ -476,7 +476,7 @@ public class CharLoginHandler {
          }
 
          if (macBan || serialBan) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธญเธธเธเธเธฃเธ“เนเธเธตเนเธ–เธนเธเธเธณเธเธฑเธ”เธเธฒเธฃเน€เธเนเธฒเธ–เธถเธ"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "อุปกรณ์นี้ถูกจำกัดการเข้าถึง"));
             System.out
                   .println(
                         "Mac banned account attempted to connect. -> accountName : "
@@ -508,7 +508,7 @@ public class CharLoginHandler {
          }
 
          if (ipBan) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "IP เธเธตเนเธ–เธนเธเธเธณเธเธฑเธ”เธเธฒเธฃเน€เธเนเธฒเธ–เธถเธ"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "IP นี้ถูกจำกัดการเข้าถึง"));
             String ipBanMsg = "Login attempt with IP address found in ipBan table";
             StringBuilder sb1 = new StringBuilder();
             sb1.append("IP Ban Log (IP : ");
@@ -553,7 +553,7 @@ public class CharLoginHandler {
          String cookie = slea.readMapleAsciiString();
          int loginres = c.authAccountInfo(cookie);
          if (loginres == 1) {
-            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "เธเธฑเธเธเธตเธเธตเนเธ–เธนเธเธฃเธฐเธเธฑเธเธเธฒเธฃเนเธเนเธเธฒเธเธ–เธฒเธงเธฃ"));
+            c.getSession().writeAndFlush(CWvsContext.serverNotice(1, "บัญชีนี้ถูกระงับการใช้งานถาวร"));
             return;
          }
 
@@ -1324,7 +1324,7 @@ public class CharLoginHandler {
             c.getSession().writeAndFlush(CField.createUltimate(0));
          }
       } else {
-         c.getPlayer().dropMessage(1, "เนเธกเนเธกเธตเธเนเธญเธเธ•เธฑเธงเธฅเธฐเธเธฃ");
+         c.getPlayer().dropMessage(1, "ไม่มีช่องตัวละคร");
          c.getSession().writeAndFlush(CField.createUltimate(0));
       }
    }
@@ -1588,7 +1588,7 @@ public class CharLoginHandler {
       int aa = slea.readByte();
       if (ServerConstants.workingReboot) {
          c.getSession().writeAndFlush(CWvsContext.serverNotice(1,
-               "เธเธ“เธฐเธเธตเนเน€เธเธดเธฃเนเธเน€เธงเธญเธฃเนเธเธณเธฅเธฑเธเธเธดเธ”เธเธฃเธฑเธเธเธฃเธธเธ เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธเธฃเธฐเธเธฒเธจเธชเธณเธซเธฃเธฑเธเธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”เน€เธเธดเนเธกเน€เธ•เธดเธก"));
+               "ขณะนี้เซิร์ฟเวอร์กำลังปรับปรุง กรุณาตรวจสอบประกาศสำหรับรายละเอียดเพิ่มเติม"));
       } else {
          c.getSession().writeAndFlush(LoginPacket.touchWorldResult(world));
       }

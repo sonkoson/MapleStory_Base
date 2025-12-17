@@ -63,14 +63,17 @@ public class AllianceHandler {
                            Alliance as = Center.Alliance.getAlliance(gs.getAllianceId());
                            int allianceCount = as.getGuildCount();
                            if (allianceCount > 2
-                              ? gs != null
-                                 && c.getPlayer().getGuildRank() == 1
-                                 && (op == 2 && c.getPlayer().getAllianceRank() == 2 || op == 6 && c.getPlayer().getAllianceRank() == 1)
-                                 && Center.Alliance.removeGuildFromAlliance(gs.getAllianceId(), gid, op == 6 && c.getPlayer().getAllianceRank() == 1)
-                              : gs != null
-                                 && c.getPlayer().getGuildRank() == 1
-                                 && (op == 2 && c.getPlayer().getAllianceRank() == 2 || op == 6 && c.getPlayer().getAllianceRank() == 1)
-                                 && Center.Alliance.disbandAlliance(gs.getAllianceId())) {
+                                 ? gs != null
+                                       && c.getPlayer().getGuildRank() == 1
+                                       && (op == 2 && c.getPlayer().getAllianceRank() == 2
+                                             || op == 6 && c.getPlayer().getAllianceRank() == 1)
+                                       && Center.Alliance.removeGuildFromAlliance(gs.getAllianceId(), gid,
+                                             op == 6 && c.getPlayer().getAllianceRank() == 1)
+                                 : gs != null
+                                       && c.getPlayer().getGuildRank() == 1
+                                       && (op == 2 && c.getPlayer().getAllianceRank() == 2
+                                             || op == 6 && c.getPlayer().getAllianceRank() == 1)
+                                       && Center.Alliance.disbandAlliance(gs.getAllianceId())) {
                            }
                         } catch (Exception var12) {
                            System.out.println("Error executing disbandAlliance" + var12.toString());
@@ -84,9 +87,9 @@ public class AllianceHandler {
                            int inviteCheck = chr.getGuild().getAllianceId();
                            if (inviteCheck > 0) {
                               if (inviteCheck == gs.getAllianceId()) {
-                                 c.getPlayer().dropMessage(1, "เธเธดเธฅเธ”เนเธเธตเนเธญเธขเธนเนเนเธเธเธฑเธเธเธกเธดเธ•เธฃเน€เธ”เธตเธขเธงเธเธฑเธเธญเธขเธนเนเนเธฅเนเธง");
+                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรเดียวกันอยู่แล้ว");
                               } else {
-                                 c.getPlayer().dropMessage(1, "เธเธดเธฅเธ”เนเธเธตเนเธญเธขเธนเนเนเธเธเธฑเธเธเธกเธดเธ•เธฃเธญเธทเนเธ");
+                                 c.getPlayer().dropMessage(1, "กิลด์นี้อยู่ในพันธมิตรอื่น");
                               }
 
                               return;
@@ -94,16 +97,17 @@ public class AllianceHandler {
 
                            if (chr != null && chr.getGuildId() > 0 && Center.Alliance.canInvite(gs.getAllianceId())) {
                               chr.getClient()
-                                 .getSession()
-                                 .writeAndFlush(
-                                    CWvsContext.AlliancePacket.sendAllianceInvite(Center.Alliance.getAlliance(gs.getAllianceId()).getName(), c.getPlayer())
-                                 );
+                                    .getSession()
+                                    .writeAndFlush(
+                                          CWvsContext.AlliancePacket.sendAllianceInvite(
+                                                Center.Alliance.getAlliance(gs.getAllianceId()).getName(),
+                                                c.getPlayer()));
                               Center.Guild.setInvitedId(chr.getGuildId(), gs.getAllianceId());
                            } else {
-                              c.getPlayer().dropMessage(1, "เธเธฃเธธเธ“เธฒเธ•เธฃเธงเธเธชเธญเธเธงเนเธฒเธซเธฑเธงเธซเธเนเธฒเธเธดเธฅเธ”เนเธญเธขเธนเนเนเธเนเธเธเนเธเธฅเน€เธ”เธตเธขเธงเธเธฑเธเธซเธฃเธทเธญเนเธกเน");
+                              c.getPlayer().dropMessage(1, "กรุณาตรวจสอบว่าหัวหน้ากิลด์อยู่ในแชนแนลเดียวกันหรือไม่");
                            }
                         } else {
-                           c.getPlayer().dropMessage(1, "เนเธกเนเธเธเธเธดเธฅเธ”เน เธเธฃเธธเธ“เธฒเนเธชเนเธเธทเนเธญเธเธดเธฅเธ”เนเธ—เธตเนเธ–เธนเธเธ•เนเธญเธ");
+                           c.getPlayer().dropMessage(1, "ไม่พบกิลด์ กรุณาใส่ชื่อกิลด์ที่ถูกต้อง");
                         }
                         break;
                      case 4:
@@ -122,8 +126,8 @@ public class AllianceHandler {
                         break;
                      case 7:
                         if (c.getPlayer().getAllianceRank() == 1
-                           && leaderid == c.getPlayer().getId()
-                           && !Center.Alliance.changeAllianceLeader(gs.getAllianceId(), slea.readInt())) {
+                              && leaderid == c.getPlayer().getId()
+                              && !Center.Alliance.changeAllianceLeader(gs.getAllianceId(), slea.readInt())) {
                            c.getPlayer().dropMessage(5, "An error occured when changing leader.");
                         }
                         break;
@@ -137,7 +141,8 @@ public class AllianceHandler {
                         Center.Alliance.updateAllianceRanks(gs.getAllianceId(), ranks);
                         break;
                      case 9:
-                        if (c.getPlayer().getAllianceRank() <= 2 && !Center.Alliance.changeAllianceRank(gs.getAllianceId(), slea.readInt(), slea.readByte())) {
+                        if (c.getPlayer().getAllianceRank() <= 2 && !Center.Alliance
+                              .changeAllianceRank(gs.getAllianceId(), slea.readInt(), slea.readByte())) {
                            c.getPlayer().dropMessage(5, "An error occured when changing rank.");
                         }
                         break;

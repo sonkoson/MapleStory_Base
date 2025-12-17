@@ -114,11 +114,11 @@ public class MiniGameActionHandler {
                               }
 
                               chr.send(CField.UIPacket.sendBigScriptProgressMessage(
-                                    "เธเนเธฒเธขเธ•เธฃเธเธเนเธฒเธกเนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธงเธฒเธเธซเธกเธฒเธเนเธ”เน เธ•เธฒเน€เธ”เธดเธเธเธถเธเธ•เธเน€เธเนเธเธเธญเธเธเธธเธ“", FontType.NanumGothic,
+                                    "ฝ่าµรงข้ามไม่สามารถวางหมากได้ ตาเดินจึงตกเป็นของคุณ", FontType.NanumGothic,
                                     FontColorType.Yellow));
                               otherplayer.send(
                                     CField.UIPacket.sendBigScriptProgressMessage(
-                                          "เธเธธเธ“เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เธงเธฒเธเธซเธกเธฒเธเนเธ”เน เธ•เธฒเน€เธ”เธดเธเธเธญเธเธเธธเธ“เธเธถเธเธชเธดเนเธเธชเธธเธ”เธฅเธ", FontType.NanumGothic,
+                                          "คุณไม่สามารถวางหมากได้ ตาเดินของคุณจึงสิ้นสุดลง", FontType.NanumGothic,
                                           FontColorType.Yellow));
                               chr.send(
                                     BattleReversePacket.StartBattleReverseStone(gameInfo, gameInfo.getTurnTeam(), chr));

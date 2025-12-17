@@ -23,7 +23,7 @@ public class GoldenChariot {
          goldenChariotList.add(eL);
       }
 
-      System.out.println("[GoldenChariot] " + goldenChariotList.size() + "๊ฐ ์บ์ฑ์๋ฃ");
+      System.out.println("[GoldenChariot] " + goldenChariotList.size() + "개 캐싱완료");
    }
 
    public GoldenChariot(int day, int itemID, int itemQty) {

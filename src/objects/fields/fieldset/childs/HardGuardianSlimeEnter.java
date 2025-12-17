@@ -24,8 +24,8 @@ public class HardGuardianSlimeEnter extends FieldSet {
       this.qexKey = 1234569;
       this.keyValue = "guardian_angel_slime_clear";
       this.canTimeKey = "guardian_angel_slime_can_time";
-      this.bossName = "๊ฐ€๋””์–ธ ์—”์ ค ์ฌ๋ผ์";
-      this.difficulty = "์นด์ค์ค";
+      this.bossName = "가디언 엔์ ค 슬라임";
+      this.difficulty = "Chaos";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -117,10 +117,10 @@ public class HardGuardianSlimeEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

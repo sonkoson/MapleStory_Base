@@ -233,7 +233,7 @@ public class MapleTrade {
                if ((equip.getSpecialAttribute() & EquipSpecialAttribute.VESTIGE.getType()) != 0
                      || (equip.getSpecialAttribute() & EquipSpecialAttribute.EXTENDED.getType()) != 0) {
                   c.getSession().writeAndFlush(CWvsContext.enableActions(c.getPlayer()));
-                  c.getPlayer().dropMessage(1, "Equipment Trace เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เนเธฅเธเน€เธเธฅเธตเนเธขเธเนเธ”เน");
+                  c.getPlayer().dropMessage(1, "Equipment Trace ไม่สามารถแลกเปลี่ยนได้");
                   return false;
                }
             }
@@ -329,17 +329,17 @@ public class MapleTrade {
             int lz2 = partner.check();
             if (lz == 0 && lz2 == 0) {
                StringBuilder sb = new StringBuilder();
-               sb.append("๋ณด๋ธ ์บ๋ฆญํฐ : ");
+               sb.append("Sender : ");
                sb.append(local.getChr().getName());
                sb.append("(").append(local.getChr().getClient().getAccountName()).append(") | ");
-               sb.append("๋ฐ์€ ์บ๋ฆญํฐ : ");
+               sb.append("Receiver : ");
                sb.append(partner.getChr().getName());
                sb.append("(").append(partner.getChr().getClient().getAccountName()).append(") | ");
-               sb.append("\r\n์•์ดํ…(").append(local.getChr().getName()).append(") :");
+               sb.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
                if (local.exchangeItems != null) {
                   local.exchangeItems.forEach(item -> {
                      sb.append("[").append(item.getItemId());
-                     sb.append(" ").append(item.getQuantity()).append("๊ฐ");
+                     sb.append(" ").append(item.getQuantity()).append("개");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -354,13 +354,13 @@ public class MapleTrade {
                   });
                }
 
-               sb.append(", ๋ฉ”์ : ");
+               sb.append(", Meso : ");
                sb.append(local.meso);
-               sb.append(" | \r\n์•์ดํ…(").append(partner.getChr().getName()).append(") :");
+               sb.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
                if (partner.exchangeItems != null) {
                   partner.exchangeItems.forEach(item -> {
                      sb.append("[").append(item.getItemId());
-                     sb.append(" ").append(item.getQuantity()).append("๊ฐ");
+                     sb.append(" ").append(item.getQuantity()).append("개");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -375,7 +375,7 @@ public class MapleTrade {
                   });
                }
 
-               sb.append(", ๋ฉ”์ : ");
+               sb.append(", Meso : ");
                sb.append(partner.meso);
                sb.append(")");
                LoggingManager.putLog(new TradeLog(c, partner.getChr(), TradeLogType.CompleteTrade.getType(), 0L, sb));
@@ -385,34 +385,34 @@ public class MapleTrade {
                String reason = "";
                if (lz != 0) {
                   if (lz == 1) {
-                     reason = reason + c.getName() + "์ ์ธ๋ฒคํ ๋ฆฌ ๊ณต๊ฐ ๋ถ€์กฑ, ";
+                     reason = reason + c.getName() + "의 인벤ํ 리 공간 부족, ";
                   } else if (lz == 2) {
-                     reason = reason + c.getName() + "์ด ๊ฑฐ๋ ๋ถ๊ฐ€ ์•์ดํ… ๊ฑฐ๋ ์๋, ";
+                     reason = reason + c.getName() + " attempted to trade untradable item, ";
                   }
                }
 
                if (lz2 != 0) {
                   if (lz == 1) {
-                     reason = reason + partner.getChr().getName() + "์ ์ธ๋ฒคํ ๋ฆฌ ๊ณต๊ฐ ๋ถ€์กฑ, ";
+                     reason = reason + partner.getChr().getName() + "의 인벤ํ 리 공간 부족, ";
                   } else if (lz == 2) {
-                     reason = reason + partner.getChr().getName() + "์ด ๊ฑฐ๋ ๋ถ๊ฐ€ ์•์ดํ… ๊ฑฐ๋ ์๋, ";
+                     reason = reason + partner.getChr().getName() + " attempted to trade untradable item, ";
                   }
                }
 
                StringBuilder sbx = new StringBuilder();
-               sbx.append("์ทจ์ ์ฌ์  : (");
+               sbx.append("취소 사์  : (");
                sbx.append(reason).append(") | \r\n");
-               sbx.append("๋ณด๋ธ ์บ๋ฆญํฐ : ");
+               sbx.append("Sender : ");
                sbx.append(local.getChr().getName());
                sbx.append("(").append(local.getChr().getClient().getAccountName()).append(") | ");
-               sbx.append("๋ฐ์€ ์บ๋ฆญํฐ : ");
+               sbx.append("Receiver : ");
                sbx.append(partner.getChr().getName());
                sbx.append("(").append(partner.getChr().getClient().getAccountName()).append(") | ");
-               sbx.append("\r\n์•์ดํ…(").append(local.getChr().getName()).append(") :");
+               sbx.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
                if (local.exchangeItems != null) {
                   local.exchangeItems.forEach(item -> {
                      sbx.append("[").append(item.getItemId());
-                     sbx.append(" ").append(item.getQuantity()).append("๊ฐ");
+                     sbx.append(" ").append(item.getQuantity()).append("개");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -427,13 +427,13 @@ public class MapleTrade {
                   });
                }
 
-               sbx.append(", ๋ฉ”์ : ");
+               sbx.append(", Meso : ");
                sbx.append(local.meso);
-               sbx.append(" | \r\n์•์ดํ…(").append(partner.getChr().getName()).append(") :");
+               sbx.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
                if (partner.exchangeItems != null) {
                   partner.exchangeItems.forEach(item -> {
                      sbx.append("[").append(item.getItemId());
-                     sbx.append(" ").append(item.getQuantity()).append("๊ฐ");
+                     sbx.append(" ").append(item.getQuantity()).append("개");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -448,7 +448,7 @@ public class MapleTrade {
                   });
                }
 
-               sbx.append(", ๋ฉ”์ : ");
+               sbx.append(", Meso : ");
                sbx.append(partner.meso);
                sbx.append(")");
                LoggingManager.putLog(new TradeLog(c, partner.getChr(), TradeLogType.TradeDenied.getType(), 0L, sbx));
@@ -466,14 +466,14 @@ public class MapleTrade {
       MapleTrade partner = Localtrade.getPartner();
 
       try {
-         String reason = "์บ๋ฆญํฐ ์ด๋ฆ '" + chr.getName() + "' ๊ฑฐ๋ ์ทจ์";
+         String reason = "Character '" + chr.getName() + "' Cancelled Trade";
          StringBuilder sb = new StringBuilder();
-         sb.append("์ทจ์ ์ฌ์  : (");
+         sb.append("취소 사์  : (");
          sb.append(reason).append(") | \r\n");
-         sb.append("๋ณด๋ธ ์บ๋ฆญํฐ : ");
+         sb.append("Sender : ");
          sb.append(Localtrade.getChr().getName());
          sb.append("(").append(Localtrade.getChr().getClient().getAccountName()).append(") | ");
-         sb.append("๋ฐ์€ ์บ๋ฆญํฐ : ");
+         sb.append("Receiver : ");
          String partnerName = "";
          if (partner == null) {
             partnerName = Localtrade.getPartnerChrName();
@@ -492,11 +492,11 @@ public class MapleTrade {
             sb.append("(").append(partner.getPartnerAccName()).append(") | ");
          }
 
-         sb.append("\r\n์•์ดํ…(").append(Localtrade.getChr().getName()).append(") :");
+         sb.append("\r\n아이템(").append(Localtrade.getChr().getName()).append(") :");
          if (Localtrade.items != null) {
             Localtrade.items.forEach(item -> {
                sb.append("[").append(item.getItemId());
-               sb.append(" ").append(item.getQuantity()).append("๊ฐ");
+               sb.append(" ").append(item.getQuantity()).append("개");
                long serialNumber = 0L;
                if (item instanceof Equip) {
                   serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -511,10 +511,10 @@ public class MapleTrade {
             });
          }
 
-         sb.append(", ๋ฉ”์ : ");
+         sb.append(", Meso : ");
          sb.append(Localtrade.meso);
          if (partner != null && partner.getChr() != null) {
-            sb.append(" | \r\n์•์ดํ…(").append(partner.getChr().getName()).append(") :");
+            sb.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
          } else {
             sb.append("(").append(Localtrade.getPartnerChrName()).append(") | ");
          }
@@ -522,7 +522,7 @@ public class MapleTrade {
          if (partner != null && partner.items != null) {
             partner.items.forEach(item -> {
                sb.append("[").append(item.getItemId());
-               sb.append(" ").append(item.getQuantity()).append("๊ฐ");
+               sb.append(" ").append(item.getQuantity()).append("개");
                long serialNumber = 0L;
                if (item instanceof Equip) {
                   serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -536,14 +536,14 @@ public class MapleTrade {
                sb.append("]");
             });
          } else {
-            sb.append("ํํธ๋ ์ •๋ณด Null");
+            sb.append("Partner Info Null");
          }
 
-         sb.append(", ๋ฉ”์ : ");
+         sb.append(", Meso : ");
          if (partner != null) {
             sb.append(partner.meso);
          } else {
-            sb.append("ํํธ๋ ์ •๋ณด Null");
+            sb.append("Partner Info Null");
          }
 
          sb.append(")");
@@ -576,7 +576,7 @@ public class MapleTrade {
                .writeAndFlush(CField.InteractionPacket.getTradeStart(c.getClient(), c.getTrade(), (byte) 0, isTrade));
          c.isTrade = isTrade;
       } else {
-         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธเธธเธ“เธเธณเธฅเธฑเธเนเธฅเธเน€เธเธฅเธตเนเธขเธเธเธฑเธเธเธนเนเธญเธทเนเธเธญเธขเธนเน"));
+         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
       }
    }
 
@@ -586,7 +586,7 @@ public class MapleTrade {
          c.getClient().getSession()
                .writeAndFlush(CField.InteractionPacket.getCashTradeStart(c.getClient(), c.getTrade(), (byte) 0));
       } else {
-         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธเธธเธ“เธเธณเธฅเธฑเธเนเธฅเธเน€เธเธฅเธตเนเธขเธเธเธฑเธเธเธนเนเธญเธทเนเธเธญเธขเธนเน"));
+         c.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
       }
    }
 
@@ -598,7 +598,7 @@ public class MapleTrade {
             c1.getTrade().setPartner(c2.getTrade());
             c2.getClient().getSession().writeAndFlush(CField.InteractionPacket.getTradeInvite(c1, isTrade));
          } else {
-            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธเธธเธ“เธเธณเธฅเธฑเธเนเธฅเธเน€เธเธฅเธตเนเธขเธเธเธฑเธเธเธนเนเธญเธทเนเธเธญเธขเธนเน"));
+            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
             cancelTrade(c1.getTrade(), c1.getClient(), c1);
          }
       }
@@ -612,7 +612,7 @@ public class MapleTrade {
             c1.getTrade().setPartner(c2.getTrade());
             c2.getClient().getSession().writeAndFlush(CField.InteractionPacket.getCashTradeInvite(c1));
          } else {
-            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธเธธเธ“เธเธณเธฅเธฑเธเนเธฅเธเน€เธเธฅเธตเนเธขเธเธเธฑเธเธเธนเนเธญเธทเนเธเธญเธขเธนเน"));
+            c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "คุณกำลังแลกเปลี่ยนกับผู้อื่นอยู่"));
             cancelTrade(c1.getTrade(), c1.getClient(), c1);
          }
       }
@@ -629,7 +629,7 @@ public class MapleTrade {
          c1.getClient().getSession()
                .writeAndFlush(CField.InteractionPacket.getTradeStart(c1.getClient(), c1.getTrade(), (byte) 1, isTrade));
       } else {
-         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธญเธตเธเธเนเธฒเธขเนเธ”เนเธขเธเน€เธฅเธดเธเธเธฒเธฃเนเธฅเธเน€เธเธฅเธตเนเธขเธเนเธฅเนเธง"));
+         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "อีกฝ่ายได้ยกเลิกการแลกเปลี่ยนแล้ว"));
       }
    }
 
@@ -644,7 +644,7 @@ public class MapleTrade {
          c1.getClient().getSession()
                .writeAndFlush(CField.InteractionPacket.getCashTradeStart(c1.getClient(), c1.getTrade(), (byte) 1));
       } else {
-         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "เธญเธตเธเธเนเธฒเธขเนเธ”เนเธขเธเน€เธฅเธดเธเธเธฒเธฃเนเธฅเธเน€เธเธฅเธตเนเธขเธเนเธฅเนเธง"));
+         c1.getClient().getSession().writeAndFlush(CWvsContext.serverNotice(5, "อีกฝ่ายได้ยกเลิกการแลกเปลี่ยนแล้ว"));
       }
    }
 
@@ -662,7 +662,7 @@ public class MapleTrade {
             if (other != null && other.getTrade() != null) {
                other.getTrade().cancel(other.getClient(), other);
                other.setTrade(null);
-               other.dropMessage(5, c.getName() + " เธเธเธดเน€เธชเธเธเธณเธเธญเนเธฅเธเน€เธเธฅเธตเนเธขเธ");
+               other.dropMessage(5, c.getName() + " ปฏิเสธคำขอแลกเปลี่ยน");
             }
          }
 

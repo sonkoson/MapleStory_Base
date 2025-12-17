@@ -263,7 +263,7 @@ public class MapleInventory implements Iterable<Item>, Serializable {
             } catch (Exception var8) {
                FileoutputUtil.log(
                   "./TextLog/GiveItemLog.txt",
-                  "removeItem ์ค‘ ์•์ดํ… ์ถ”๊ฐ€์ง€๊ธ ๋ฐ์ : (itemId : "
+                  "Additional item payment occurred during removeItem : (itemId : "
                      + item.getItemId()
                      + ", quantity : "
                      + quantity

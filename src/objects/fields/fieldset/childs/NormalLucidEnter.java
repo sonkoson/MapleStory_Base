@@ -29,8 +29,8 @@ public class NormalLucidEnter extends FieldSet {
 
       this.keyValue = "lucid_clear";
       this.canTimeKey = "lucid_can_time";
-      this.bossName = "๋ฃจ์๋“";
-      this.difficulty = "๋…ธ๋ง";
+      this.bossName = "Lucid";
+      this.difficulty = "Normal";
       this.dailyLimit = DBConfig.isGanglim ? 3 : 6;
    }
 
@@ -115,10 +115,10 @@ public class NormalLucidEnter extends FieldSet {
                if (chrxx.getParty() != null && chrxx.getParty().getId() == nCharacter.getParty().getId()) {
                   String bn2 = bn;
                   if (isPracticeMode) {
-                     bn2 = bn + "(์—ฐ์ต)";
+                     bn2 = bn + "(연습)";
                   }
 
-                  StringBuilder sb = new StringBuilder("๋ณด์ค " + bn2 + " ์…์ฅ");
+                  StringBuilder sb = new StringBuilder("보스 " + bn2 + " 입장");
                   LoggingManager.putLog(new BossLog(chrxx, BossLogType.EnterLog.getType(), sb));
                   if (DBConfig.isGanglim && !isPracticeMode) {
                      chrxx.updateOneInfo(this.qexKey, this.keyValue, String.valueOf(chrxx.getOneInfoQuestInteger(this.qexKey, this.keyValue) + 1));

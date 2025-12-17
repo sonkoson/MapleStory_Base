@@ -222,7 +222,7 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             AchievementFactory.checkMakingskillGather(this.getPlayer(), succ, pID);
          }
       } else {
-         this.c.getPlayer().dropMessage(5, "Fatigue เนเธกเนเธเธญเธ—เธตเนเธเธฐเธ—เธณ " + pName + ".");
+         this.c.getPlayer().dropMessage(5, "Fatigue ไม่พͷี่จзӁ" + pName + ".");
       }
    }
 }

@@ -1,0 +1,10 @@
+741:                         + ")이(가) 루시드 격파 없이 마지막 오르골을 공격함";
+747:                         + ")이(가) 검은마법사 격파 없이 창세의 알을 공격함";
+1301:                                        + " / 몹 : "
+1304:                                        + " / 맵 : "
+1428:                               CField.UIPacket.sendBigScriptProgressMessage("การได้รับ EXP จะŴลงอย่างมากเมื่อปาร์ตี้ล่าในมอนสเตอร์เลเวŁ300 ขึ้นไป",
+1805:             FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 중 Monster sendSpawnData 패킷 ์ 송 실패");
+1812:             FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 중 Monster sendSpawnData sendStatus 실행 실패");
+1825:             FileoutputUtil.log("Log_Player_Except.rtf", "sendObjectPlacement 중 Monster sendSpawnData 컨트롤러 업데이트 실패");
+3811:          map.sendDemianNotice(216, "ต้องสร้างความเสียหายรุนแรงเพื่อหยش Damien ก่อนที่เขาจзำให้พลังของ World Tree ที่แปดเปื้อนอาละวҴ", -1, 2500);
+4592:                            eim.broadcastPacket(CWvsContext.getScriptProgressMessage("시공간 붕괴 실패! ์ 시 후, 원래 세계로 돌아갑니다."));
