@@ -115,7 +115,7 @@ public class BanningCommands implements Command {
                      DateFormat df = DateFormat.getInstance();
                      target.tempban(banLogs, cal, false);
                      c.getPlayer().dropMessage(6,
-                           splitted[1] + " has been banned until " + df.format(cal.getTime()) + ".");
+                           splitted[1] + " ถูกแบนจนถึง " + df.format(cal.getTime()) + ".");
                   } else {
                      Calendar cal = Calendar.getInstance();
                      cal.add(5, numDay);
@@ -129,7 +129,7 @@ public class BanningCommands implements Command {
                      ps.execute();
                      ps.close();
                      c.getPlayer().dropMessage(6,
-                           splitted[1] + " (Offline) has been banned until " + df.format(cal.getTime()) + ".");
+                           splitted[1] + " (ออฟไลน์) ถูกแบนจนถึง " + df.format(cal.getTime()) + ".");
                   }
                } catch (SQLException var25) {
                }
@@ -138,19 +138,19 @@ public class BanningCommands implements Command {
                cal.add(5, numDay);
                DateFormat df = DateFormat.getInstance();
                target.tempban(banLogs, cal, false);
-               c.getPlayer().dropMessage(6, splitted[1] + " has been banned until " + df.format(cal.getTime()) + ".");
+               c.getPlayer().dropMessage(6, splitted[1] + " ถูกแบนจนถึง " + df.format(cal.getTime()) + ".");
             }
          } else if (splitted[0].equals("!unban")) {
             if (splitted.length < 2) {
-               c.getPlayer().dropMessage(6, "!unban <character name>");
+               c.getPlayer().dropMessage(6, "!unban <ชื่อตัวละคร>");
             } else {
                byte result = MapleClient.unban(splitted[1]);
                if (result == -1) {
-                  c.getPlayer().dropMessage(6, splitted[1] + " not found.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " ไม่พบ");
                } else if (result == -2) {
-                  c.getPlayer().dropMessage(6, splitted[1] + " found, but error occurred during unban.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " พบแล้ว แต่เกิดข้อผิดพลาดระหว่างปลดแบน");
                } else {
-                  c.getPlayer().dropMessage(6, splitted[1] + " successfully unbanned.");
+                  c.getPlayer().dropMessage(6, splitted[1] + " ปลดแบนเรียบร้อยแล้ว");
                }
             }
          } else if (splitted[0].equals("!dc")) {
@@ -179,7 +179,7 @@ public class BanningCommands implements Command {
                   victim.getClient().disconnect(false);
                }
             } else {
-               c.getPlayer().dropMessage(6, "Please use dc -f instead.");
+               c.getPlayer().dropMessage(6, "กรุณาใช้ dc -f แทน");
             }
          }
       } else {
@@ -276,23 +276,23 @@ public class BanningCommands implements Command {
 
             if (target != null) {
                if (target.ban(banLogs, true, false, hellban)) {
-                  c.getPlayer().dropMessage(6, targetName + " has been banned.");
+                  c.getPlayer().dropMessage(6, targetName + " ถูกแบนแล้ว");
                } else {
-                  c.getPlayer().dropMessage(6, "Error occurred while banning.");
+                  c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดขณะแบน");
                }
 
                target.serialBan(byAdminClient);
             } else if (MapleCharacter.ban(targetName, banLogs, false,
                   c.getPlayer().isAdmin() ? 250 : c.getPlayer().getGMLevel(), false)) {
-               c.getPlayer().dropMessage(6, targetName + " (Offline) has been banned.");
+               c.getPlayer().dropMessage(6, targetName + " (ออฟไลน์) ถูกแบนแล้ว");
             } else {
-               c.getPlayer().dropMessage(6, targetName + " failed to ban.");
+               c.getPlayer().dropMessage(6, targetName + " แบนไม่สำเร็จ");
             }
          } else {
             if (target.ban(banLogs, true, false, hellban)) {
-               c.getPlayer().dropMessage(6, targetName + " has been banned.");
+               c.getPlayer().dropMessage(6, targetName + " ถูกแบนแล้ว");
             } else {
-               c.getPlayer().dropMessage(6, "Error while banning.");
+               c.getPlayer().dropMessage(6, "เกิดข้อผิดพลาดขณะแบน");
             }
 
             target.serialBan(byAdminClient);
@@ -303,11 +303,11 @@ public class BanningCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!ban", "<character name> <reason>", "Permanently bans the IP, MAC, and Account.", 3),
-            new CommandDefinition("!unban", "<character name>", "Unbans the IP, MAC, and Account.", 3),
+            new CommandDefinition("!ban", "<character name> <reason>", "แบน IP, MAC และบัญชีถาวร", 3),
+            new CommandDefinition("!unban", "<character name>", "ปลดแบน IP, MAC และบัญชี", 3),
             new CommandDefinition("!tempban", "<character name> <reason> <days>",
-                  "Temporarily bans the account for the specified number of days.", 3),
-            new CommandDefinition("!dc", "[-f] <character name>", "Disconnects the player. Use -f to force disconnect.",
+                  "แบนบัญชีชั่วคราวตามจำนวนวันที่กำหนด", 3),
+            new CommandDefinition("!dc", "[-f] <character name>", "ตัดการเชื่อมต่อผู้เล่น ใช้ -f เพื่อบังคับตัดการเชื่อมต่อ",
                   3)
       };
    }

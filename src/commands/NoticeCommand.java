@@ -73,6 +73,6 @@ public class NoticeCommand implements Command {
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
             new CommandDefinition("!notice", "[m/c/w] [notice/popup/megaphone/pink/pinknotice/blue] <message>",
-                  "Sends a server notice with the specified type and range.", 2) };
+                  "ส่งประกาศเซิร์ฟเวอร์ตามประเภทและระยะที่ระบุ", 2) };
    }
 }

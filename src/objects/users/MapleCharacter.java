@@ -2311,7 +2311,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                         Integer.parseInt(skinNum),
                         GameConstants.getDamageSkinItemID(Integer.parseInt(skinNum)),
                         false,
-                        ServerConstants.serverName + " ๋ฐ๋ฏธ์ง€ ์คํจ ์ •๋ณด์ด๋ค.\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n");
+                        ServerConstants.serverName + " ข้อมูลดาเมจสกิน\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n");
                   damageSkinInfo.putDamageSkinData(d);
                }
             }
@@ -27125,10 +27125,10 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
       this.updateOneInfo(501045, "sp", String.valueOf(sp + 1));
       this.send(
             CField.addPopupSay(9062000, 3000,
-                  "#b๊ฐ•๋ฆผ ๋ฆฌ๋ฒ์ค ๋ฉค๋ฒ์ญ ์คํฌ ํฌ์ธํธ(SP) 1๊ฐ#k๋ฅผ ํ๋“ํ•์€์ต๋๋ค.\r\n์ผ์ชฝ ๋ณ๋ชจ์–‘ ์•์ด์ฝ์ ํตํ•ด ํ•์ธํ•ด๋ณด์ธ์”.",
+                  "คุณได้รับ #bGanglim Reverse Membership Skill Point (SP) 1 แต้ม#k\r\nตรวจสอบได้ที่ไอคอนดาวด้านซ้าย",
                   ""));
       this.dropMessage(5,
-            "เนเธ”เนเธฃเธฑเธ Ganglim Reverse Membership SP 1 เนเธ•เนเธก เธ•เธฃเธงเธเธชเธญเธเนเธ”เนเธ—เธตเนเนเธญเธเธญเธเธ”เธฒเธงเธ”เนเธฒเธเธเนเธฒเธข");
+            "ได้รับ Ganglim Reverse Membership SP 1 แต้ม ตรวจสอบได้ที่ไอคอนดาวด้านซ้าย");
    }
 
    public void tryApplyAbnormal(MobSkillInfo mobSkillInfo) {
@@ -27597,12 +27597,12 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                      .addCabinetItem(
                            new MapleCabinetItem(
                                  this.cabinetItem.getNextIndex(), System.currentTimeMillis() + 604800000L,
-                                 "[ํ•ซํ€์ ๋ณด์]",
-                                 fDate + "์— ์ง€๊ธ๋ ํ•ซํ€์ ๋ณด์์…๋๋ค.", item));
+                                 "[ชดเชย Hot Time]",
+                                 fDate + " ได้รับรางวัลชดเชย Hot Time", item));
                this.send(CField.maplecabinetResult(8));
                this.setSaveFlag(this.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
                this.dropMessage(1,
-                     "เนเธ”เนเธฃเธฑเธเธฃเธฒเธเธงเธฑเธฅ Hot Time เนเธฅเนเธง เธชเธฒเธกเธฒเธฃเธ–เธฃเธฑเธเนเธ”เนเธ—เธตเน Maple Cabinet");
+                     "ได้รับรางวัล Hot Time แล้ว สามารถรับได้ที่ Maple Cabinet");
             }
          }
       }
@@ -27615,14 +27615,14 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
             if (this.getParty() != null && this.getParty().getPartyMember().getPartyMemberList().size() > 2) {
                this.warp(ServerConstants.TownMap);
                this.dropMessage(5,
-                     "เธเธทเนเธเธ—เธตเนเธฅเนเธฒ Fatigue เนเธกเนเธชเธฒเธกเธฒเธฃเธ–เน€เธเนเธฒเธเธฒเธฃเนเธ•เธตเนเน€เธเธดเธ 3 เธเธเนเธ”เน");
+                     "พื้นที่ล่า Fatigue ไม่สามารถเข้าปาร์ตี้เกิน 3 คนได้");
                return;
             }
 
             if (this.getKeyValue(123, "pp") <= 0) {
                this.warp(ServerConstants.TownMap);
                this.dropMessage(5,
-                     "เธซเธกเธ”เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒ เธเธถเธเธเธฅเธฑเธเน€เธกเธทเธญเธ");
+                     "หมดค่าความเหนื่อยล้า จึงกลับเมือง");
             } else if (this.getKeyValue(124, "ppp") > 60000) {
                long fatiguetime = this.getKeyValueLong(124, "ppptime");
                long currenttime = System.currentTimeMillis();
@@ -27635,7 +27635,7 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
                   }
 
                   this.dropMessage(5,
-                        "เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเธฅเธ”เธฅเธ เธเธงเธฒเธกเน€เธซเธเธทเนเธญเธขเธฅเนเธฒเธ—เธตเนเน€เธซเธฅเธทเธญ : "
+                        "ความเหนื่อยล้าลดลง ความเหนื่อยล้าที่เหลือ : "
                               + this.getKeyValue(123, "pp"));
                }
             }

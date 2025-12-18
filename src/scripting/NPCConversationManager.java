@@ -1986,8 +1986,8 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
       this.getMap()
             .broadcastMessage(
                   CWvsContext.yellowChat(
-                        player.getName() + ", do you take " + chr.getName()
-                              + " as your wife and promise to stay beside her through all downtimes, crashes, and lags?"));
+                        player.getName() + " คุณจะรับ " + chr.getName()
+                              + " เป็นภรรยาของคุณและสัญญาว่าจะอยู่เคียงข้างเธอตลอดไป ไม่ว่าเซิร์ฟเวอร์จะแลคหรือล่มหรือไม่?"));
       Timer.CloneTimer.getInstance()
             .schedule(
                   new Runnable() {
@@ -1998,9 +1998,9 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                                  .broadcastMessage(
                                        CWvsContext.yellowChat(
                                              chr.getName()
-                                                   + ", do you take "
+                                                   + " คุณจะรับ "
                                                    + player.getName()
-                                                   + " as your husband and promise to stay beside him through all downtimes, crashes, and lags?"));
+                                                   + " เป็นสามีของคุณและสัญญาว่าจะอยู่เคียงข้างเขาตลอดไป ไม่ว่าเซิร์ฟเวอร์จะแลคหรือล่มหรือไม่?"));
                         } else {
                            NPCConversationManager.this.warpMap(680000500, 0);
                         }
@@ -2017,13 +2017,13 @@ public class NPCConversationManager extends AbstractPlayerInteraction {
                            NPCConversationManager.this.setQuestRecord(chr, 160001, "2");
                            NPCConversationManager.this.sendNPCText(
                                  player.getName()
-                                       + " and "
+                                       + " และ "
                                        + chr.getName()
-                                       + ", I wish you two all the best on your "
+                                       + " ขอให้ทั้งสองมีความสุขในการเดินทางร่วมกันใน "
                                        + chr.getClient().getChannelServer().getServerName()
-                                       + " journey together!",
+                                       + "!",
                                  9201002);
-                           chr.getMap().startExtendedMapEffect("You may now kiss the bride, " + player.getName() + "!",
+                           chr.getMap().startExtendedMapEffect("จูบเจ้าสาวได้ " + player.getName() + "!",
                                  5120006);
                            if (chr.getGuildId() > 0) {
                               Center.Guild.guildPacket(chr.getGuildId(),

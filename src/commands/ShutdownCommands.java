@@ -31,10 +31,10 @@ public class ShutdownCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!closemerchants", "", "Closes all merchants in the channel.", 6),
-            new CommandDefinition("!shutdowncs", "", "Shuts down the Cash Shop server.", 6),
-            new CommandDefinition("!shutdown", "(<time in minutes>)", "Shuts down the current channel.", 6),
-            new CommandDefinition("!shutdownall", "(<time in minutes>)", "Shuts down all channels.", 6)
+            new CommandDefinition("!closemerchants", "", "ปิดร้านค้าผู้เล่นทั้งหมดในชาแนล", 6),
+            new CommandDefinition("!shutdowncs", "", "ปิดเซิร์ฟเวอร์ Cash Shop", 6),
+            new CommandDefinition("!shutdown", "(<time in minutes>)", "ปิดเซิร์ฟเวอร์ชาแนลปัจจุบัน", 6),
+            new CommandDefinition("!shutdownall", "(<time in minutes>)", "ปิดเซิร์ฟเวอร์ทุกชาแนล", 6)
       };
    }
 }

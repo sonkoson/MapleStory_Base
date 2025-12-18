@@ -19,6 +19,6 @@ public class ServerMessageCommand implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] { new CommandDefinition("!servermessage", "<message>",
-            "Sets the server message displayed at the top of the screen.", 2) };
+            "ตั้งค่าข้อความเซิร์ฟเวอร์ที่แสดงด้านบนของหน้าจอ", 2) };
    }
 }

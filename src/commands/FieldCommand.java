@@ -63,6 +63,6 @@ public class FieldCommand implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!bingo", "0 or 1", "Starts or stops the bingo game.", 6) };
+            new CommandDefinition("!bingo", "0 or 1", "เริ่มหรือหยุดเกมบิงโก", 6) };
    }
 }

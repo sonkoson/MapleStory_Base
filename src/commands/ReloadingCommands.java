@@ -92,24 +92,24 @@ public class ReloadingCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!reloadops", "", "Reloads Send/Recv Packet Opcodes from properties.", 6),
-            new CommandDefinition("!setop", "<name> <value>", "Sets a specific opcode value.", 6),
-            new CommandDefinition("!reloadportals", "", "Clears portal scripts from memory.", 6),
-            new CommandDefinition("!reloaddrops", "", "Clears drops from memory.", 6),
-            new CommandDefinition("!reloadshops", "", "Clears shops from memory.", 6),
-            new CommandDefinition("!reloadevents", "", "Reloads events on all channel servers.", 6),
-            new CommandDefinition("!reloadskills", "", "Reloads skills from WZ.", 6),
-            new CommandDefinition("!reloadweekly", "", "Reloads weekly items from DB.", 6),
-            new CommandDefinition("!saveweekly", "", "Saves weekly items to DB.", 6),
-            new CommandDefinition("!resetgoldapple", "", "Resets Gold Apple items.", 6),
-            new CommandDefinition("!reloadmobhp", "", "Reloads custom mob HP.", 6),
-            new CommandDefinition("!reloaddailygift", "", "Reloads daily gift info.", 6),
-            new CommandDefinition("!reloaddimen", "", "Reloads dimensional mirror info.", 6),
-            new CommandDefinition("!reloadeventlist", "", "Reloads event list.", 6),
-            new CommandDefinition("!reloadfishing", "", "Reloads fishing info.", 6),
-            new CommandDefinition("!reloadgoldenchariot", "", "Reloads golden chariot info.", 6),
-            new CommandDefinition("!reloadcrc", "", "Reloads CRC info.", 6),
-            new CommandDefinition("!reloadrank", "", "Reloads damage measurement rank.", 6)
+            new CommandDefinition("!reloadops", "", "โหลด Opcode รับ/ส่งใหม่จากไฟล์ properties", 6),
+            new CommandDefinition("!setop", "<name> <value>", "ตั้งค่า opcode เฉพาะ", 6),
+            new CommandDefinition("!reloadportals", "", "ล้างสคริปต์พอร์ทัลจากหน่วยความจำ", 6),
+            new CommandDefinition("!reloaddrops", "", "ล้างข้อมูลดรอปจากหน่วยความจำ", 6),
+            new CommandDefinition("!reloadshops", "", "ล้างข้อมูลร้านค้าจากหน่วยความจำ", 6),
+            new CommandDefinition("!reloadevents", "", "โหลดกิจกรรมใหม่ในทุกเซิร์ฟเวอร์", 6),
+            new CommandDefinition("!reloadskills", "", "โหลดสกิลใหม่จาก WZ", 6),
+            new CommandDefinition("!reloadweekly", "", "โหลดไอเทมรายสัปดาห์ใหม่จาก DB", 6),
+            new CommandDefinition("!saveweekly", "", "บันทึกไอเทมรายสัปดาห์ลง DB", 6),
+            new CommandDefinition("!resetgoldapple", "", "รีเซ็ตไอเทม Gold Apple", 6),
+            new CommandDefinition("!reloadmobhp", "", "โหลด HP มอนสเตอร์ที่กำหนดเองใหม่", 6),
+            new CommandDefinition("!reloaddailygift", "", "โหลดข้อมูลของขวัญรายวันใหม่", 6),
+            new CommandDefinition("!reloaddimen", "", "โหลดข้อมูลกระจกมิติใหม่", 6),
+            new CommandDefinition("!reloadeventlist", "", "โหลดรายการกิจกรรมใหม่", 6),
+            new CommandDefinition("!reloadfishing", "", "โหลดข้อมูลการตกปลาใหม่", 6),
+            new CommandDefinition("!reloadgoldenchariot", "", "โหลดข้อมูล Golden Chariot ใหม่", 6),
+            new CommandDefinition("!reloadcrc", "", "โหลดข้อมูล CRC ใหม่", 6),
+            new CommandDefinition("!reloadrank", "", "โหลดอันดับวัดความเสียหายใหม่", 6)
       };
    }
 }

@@ -335,11 +335,11 @@ public class MapleTrade {
                sb.append("Receiver : ");
                sb.append(partner.getChr().getName());
                sb.append("(").append(partner.getChr().getClient().getAccountName()).append(") | ");
-               sb.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
+               sb.append("\r\nItems(").append(local.getChr().getName()).append(") :");
                if (local.exchangeItems != null) {
                   local.exchangeItems.forEach(item -> {
                      sb.append("[").append(item.getItemId());
-                     sb.append(" ").append(item.getQuantity()).append("개");
+                     sb.append(" ").append(item.getQuantity()).append("pcs");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -356,11 +356,11 @@ public class MapleTrade {
 
                sb.append(", Meso : ");
                sb.append(local.meso);
-               sb.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
+               sb.append(" | \r\nItems(").append(partner.getChr().getName()).append(") :");
                if (partner.exchangeItems != null) {
                   partner.exchangeItems.forEach(item -> {
                      sb.append("[").append(item.getItemId());
-                     sb.append(" ").append(item.getQuantity()).append("개");
+                     sb.append(" ").append(item.getQuantity()).append("pcs");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -393,14 +393,14 @@ public class MapleTrade {
 
                if (lz2 != 0) {
                   if (lz == 1) {
-                     reason = reason + partner.getChr().getName() + "의 인벤ํ 리 공간 부족, ";
+                     reason = reason + partner.getChr().getName() + "'s inventory full, ";
                   } else if (lz == 2) {
                      reason = reason + partner.getChr().getName() + " attempted to trade untradable item, ";
                   }
                }
 
                StringBuilder sbx = new StringBuilder();
-               sbx.append("취소 사์  : (");
+               sbx.append("Cancellation Reason : (");
                sbx.append(reason).append(") | \r\n");
                sbx.append("Sender : ");
                sbx.append(local.getChr().getName());
@@ -408,11 +408,11 @@ public class MapleTrade {
                sbx.append("Receiver : ");
                sbx.append(partner.getChr().getName());
                sbx.append("(").append(partner.getChr().getClient().getAccountName()).append(") | ");
-               sbx.append("\r\n아이템(").append(local.getChr().getName()).append(") :");
+               sbx.append("\r\nItems(").append(local.getChr().getName()).append(") :");
                if (local.exchangeItems != null) {
                   local.exchangeItems.forEach(item -> {
                      sbx.append("[").append(item.getItemId());
-                     sbx.append(" ").append(item.getQuantity()).append("개");
+                     sbx.append(" ").append(item.getQuantity()).append("pcs");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();
@@ -429,11 +429,11 @@ public class MapleTrade {
 
                sbx.append(", Meso : ");
                sbx.append(local.meso);
-               sbx.append(" | \r\n아이템(").append(partner.getChr().getName()).append(") :");
+               sbx.append(" | \r\nItems(").append(partner.getChr().getName()).append(") :");
                if (partner.exchangeItems != null) {
                   partner.exchangeItems.forEach(item -> {
                      sbx.append("[").append(item.getItemId());
-                     sbx.append(" ").append(item.getQuantity()).append("개");
+                     sbx.append(" ").append(item.getQuantity()).append("pcs");
                      long serialNumber = 0L;
                      if (item instanceof Equip) {
                         serialNumber = ((Equip) item).getSerialNumberEquip();

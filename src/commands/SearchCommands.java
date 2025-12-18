@@ -48,7 +48,7 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetNpc);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No NPC found.");
+               c.getPlayer().dropMessage(6, "ไม่พบ NPC");
             }
          } else if (type.equalsIgnoreCase("map")) {
             List<String> retMaps = new ArrayList<>();
@@ -77,7 +77,7 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetMap);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No Map found.");
+               c.getPlayer().dropMessage(6, "ไม่พบแผนที่");
             }
          } else if (type.equalsIgnoreCase("mob")) {
             List<String> retMobs = new ArrayList<>();
@@ -100,10 +100,10 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetMob);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No Mob found.");
+               c.getPlayer().dropMessage(6, "ไม่พบมอนสเตอร์");
             }
          } else if (type.equalsIgnoreCase("REACTOR")) {
-            c.getPlayer().dropMessage(6, "NOT ADDED YET");
+            c.getPlayer().dropMessage(6, "ยังไม่ได้เพิ่ม");
          } else if (type.equalsIgnoreCase("item")) {
             List<String> retItems = new ArrayList<>();
 
@@ -119,7 +119,7 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetItem);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No Item found.");
+               c.getPlayer().dropMessage(6, "ไม่พบไอเทม");
             }
          } else if (type.equalsIgnoreCase("skill")) {
             List<String> retSkills = new ArrayList<>();
@@ -151,7 +151,7 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetSkill);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No Skill found.");
+               c.getPlayer().dropMessage(6, "ไม่พบสกิล");
             }
          } else if (type.equalsIgnoreCase("quest")) {
             List<String> retQuests = new ArrayList<>();
@@ -177,10 +177,10 @@ public class SearchCommands implements Command {
                   c.getPlayer().dropMessage(6, singleRetQuest);
                }
             } else {
-               c.getPlayer().dropMessage(6, "No Quest found.");
+               c.getPlayer().dropMessage(6, "ไม่พบเควส");
             }
          } else {
-            c.getPlayer().dropMessage(6, "ไม่พบ Type");
+            c.getPlayer().dropMessage(6, "ไม่พบประเภทที่ระบุ");
          }
       }
    }
@@ -188,9 +188,9 @@ public class SearchCommands implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!search", "<type> <search>", "Searches for an ID with the given type and keyword.",
+            new CommandDefinition("!search", "<type> <search>", "ค้นหา ID จากประเภทและคำค้นหาที่ระบุ",
                   2),
-            new CommandDefinition("!find", "<type> <search>", "Searches for an ID with the given type and keyword.", 2)
+            new CommandDefinition("!find", "<type> <search>", "ค้นหา ID จากประเภทและคำค้นหาที่ระบุ", 2)
       };
    }
 }
