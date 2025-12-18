@@ -1368,7 +1368,7 @@ public class Guild implements Serializable {
          }
       }
 
-      return "๋ฉ”์ดํ”์คํ ๋ฆฌ";
+      return "MapleStory";
    }
 
    public void addRequest(GuildCharacter mgc) {
@@ -1729,7 +1729,7 @@ public class Guild implements Serializable {
                   Guild.this.setNoblessSkillPoint(rewardNoblePoint);
                   Guild.this.change_guildLog = true;
                   Guild.this.broadcast(GuildContents.loadGuildLog(Guild.this));
-                  Guild.this.broadcast(CWvsContext.serverNotice(5, "๊ธธ๋“ ์ปจํ…์ธ  ์ฐธ์—ฌ ํํฉ ๋ฐ ๋…ธ๋ธ” ํฌ์ธํธ๊ฐ€ ์ •์ฐ๋์—์ต๋๋ค."));
+                  Guild.this.broadcast(CWvsContext.serverNotice(5, "สถานะการเข้าร่วม Guild Contents และแต้ม Nobless ได้รับการคำนวณแล้ว"));
                   Guild.this.nobleA = null;
                }
             }, 2400000L);
@@ -1778,7 +1778,7 @@ public class Guild implements Serializable {
       this.setNoblessSkillPoint(rewardNoblePoint);
       this.change_guildLog = true;
       this.broadcast(GuildContents.loadGuildLog(this));
-      this.broadcast(CWvsContext.serverNotice(5, "๊ธธ๋“ ์ปจํ…์ธ  ์ฐธ์—ฌ ํํฉ ๋ฐ ๋…ธ๋ธ” ํฌ์ธํธ๊ฐ€ ์ •์ฐ๋์—์ต๋๋ค."));
+      this.broadcast(CWvsContext.serverNotice(5, "สถานะการเข้าร่วม Guild Contents และแต้ม Nobless ได้รับการคำนวณแล้ว"));
    }
 
    public void encode(PacketEncoder packet, boolean visit) {
