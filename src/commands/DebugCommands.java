@@ -196,7 +196,7 @@ public class DebugCommands implements Command {
             if (splitted.length > 1) {
                int rate = Integer.parseInt(splitted[1]);
                c.getChannelServer().setExpRate(rate);
-               c.getPlayer().dropMessage(6, "Exp Rate has been changed to " + rate + "x.");
+            c.getPlayer().dropMessage(6, "ปรับอัตราคูณ EXP เป็น " + rate + "x");
             } else {
                c.getPlayer().dropMessage(6, "วิธีใช้: !exprate <rate>");
             }
@@ -204,7 +204,7 @@ public class DebugCommands implements Command {
             if (splitted.length > 1) {
                int rate = Integer.parseInt(splitted[1]);
                c.getChannelServer().setMesoRate(rate);
-               c.getPlayer().dropMessage(6, "Meso Rate has been changed to " + rate + "x.");
+            c.getPlayer().dropMessage(6, "ปรับอัตราคูณ Meso เป็น " + rate + "x");
             } else {
                c.getPlayer().dropMessage(6, "วิธีใช้: !mesorate <rate>");
             }
@@ -297,9 +297,9 @@ public class DebugCommands implements Command {
             player.updateOneInfo(26022, "exp", String.valueOf(totalExp));
             player.updateOneInfo(26022, "map", String.valueOf(player.getMapId()));
             if (type == 2) {
-               player.send(CWvsContext.getScriptProgressMessage("A mysterious portal has appeared!"));
+               player.send(CWvsContext.getScriptProgressMessage("ประตูมิติปริศนาปรากฏขึ้น!"));
             } else {
-               player.send(CWvsContext.getScriptProgressMessage("A chaotic portal has appeared!"));
+               player.send(CWvsContext.getScriptProgressMessage("ประตูมิติแห่งความโกลาหลปรากฏขึ้น!"));
             }
 
             player.setRandomPortal(portal);
@@ -334,8 +334,8 @@ public class DebugCommands implements Command {
                      Point pos = chr.getMap().calcDropPos(chr.getTruePosition(), chr.getPosition());
                      RandomPortal portal = new RandomPortal(portalType, Randomizer.rand(1000000, 9999999), pos, chr.getId(), portalGameType);
                      chr.updateOneInfo(15142, "gameType", "9");
-                     chr.send(CField.addPopupSay(9062000, 5000, "The moon bunny event has started. Find the portal!", ""));
-                     chr.send(CWvsContext.getScriptProgressMessage("The moon bunny event has started. Find the portal!"));
+                     chr.send(CField.addPopupSay(9062000, 5000, "กิจกรรมกระต่ายดวงจันทร์เริ่มแล้ว จงค้นหาประตูมิติ!", ""));
+                     chr.send(CWvsContext.getScriptProgressMessage("กิจกรรมกระต่ายดวงจันทร์เริ่มแล้ว จงค้นหาประตูมิติ!"));
                      chr.setRandomPortal(portal);
                      chr.setRandomPortalSpawnedTime(System.currentTimeMillis());
                      chr.send(CField.randomPortalCreated(portal));
@@ -349,12 +349,12 @@ public class DebugCommands implements Command {
             Center.cancelAutoFeverTask();
             AutoHottimeManager.loadAutoHottime();
             Center.registerAutoFever();
-            c.getPlayer().dropMessage(5, "Fever event reloaded.");
+            c.getPlayer().dropMessage(5, "โหลดกิจกรรม Fever ใหม่เรียบร้อยแล้ว");
          } else if (splitted[0].equals("!feveritem")) {
             Center.cancelAutoHotTimeItemTask();
             HottimeItemManager.loadHottimeItem();
             Center.registerHottimeItem();
-            c.getPlayer().dropMessage(5, "Fever item event reloaded.");
+            c.getPlayer().dropMessage(5, "โหลดไอเทมกิจกรรม Fever ใหม่เรียบร้อยแล้ว");
          } else if (splitted[0].equals("!antimacro")) {
             player.tryAntiMacro(AntiMacroType.Auto, null);
          } else if (splitted[0].equals("!resetdailygift")) {
@@ -396,8 +396,8 @@ public class DebugCommands implements Command {
             }
          } else if (splitted[0].equals("!stopdaily")) {
             ServerConstants.dailyEventType = null;
-            c.getPlayer().dropMessage(5, "Daily Event stopped.");
-            TextEffect e = new TextEffect(-1, "[Daily Event] Daily event has stopped.\r\nThe event takes place 8-10 PM.", 50, 5000, 4, 0);
+            c.getPlayer().dropMessage(5, "กิจกรรมรายวันหยุดลงแล้ว");
+            TextEffect e = new TextEffect(-1, "[Daily Event] กิจกรรมรายวันจบลงแล้ว\r\nพบกันใหม่เวลา 20:00-22:00 น.", 50, 5000, 4, 0);
             Center.Broadcast.broadcastMessage(e.encodeForLocal());
             Center.Broadcast.broadcastMessage(CField.chatMsg(3, "[Daily Event] กิจกรรมรายวันหยุดแล้วกิจกรรมมีช่วง 20:00-22:00 น."));
          } else if (splitted[0].equals("!skilllevel")) {
@@ -443,40 +443,40 @@ public class DebugCommands implements Command {
             }
 
             if (skillID == 0) {
-               c.getPlayer().dropMessage(5, "Skill (" + skillID + ") does not exist.");
+               c.getPlayer().dropMessage(5, "ไม่พบสกิล (" + skillID + ")");
                return;
             }
 
             int skillLevel = c.getPlayer().getTotalSkillLevel(skillID);
             Skill skill = SkillFactory.getSkill(skillID);
             if (skill == null) {
-               c.getPlayer().dropMessage(5, "Skill (" + skillID + ") does not exist.");
+               c.getPlayer().dropMessage(5, "ไม่พบสกิล (" + skillID + ")");
                return;
             }
 
-            c.getPlayer().dropMessage(5, skillID + "(" + SkillFactory.getSkill(skillID).getName() + ") Level: " + skillLevel + ".");
+            c.getPlayer().dropMessage(5, skillID + "(" + SkillFactory.getSkill(skillID).getName() + ") เลเวล: " + skillLevel + ".");
          } else if (splitted[0].equals("!cashrate")) {
             int setrate = 0;
 
             try {
                setrate = Integer.parseInt(splitted[1]);
             } catch (Exception var137) {
-               c.getPlayer().dropMessage(5, "Error setting cash rate. Please check input.");
+               c.getPlayer().dropMessage(5, "เกิดข้อผิดพลาดในการตั้งค่าเรทแคช กรุณาตรวจสอบข้อมูล");
                return;
             }
 
             ServerConstants.cashPlusRate = setrate;
-            c.getPlayer().dropMessage(5, "Cash rate set to " + setrate + "%(Total " + (100 + setrate) + "%).");
+            c.getPlayer().dropMessage(5, "ตั้งค่าเรทแคชเป็น " + setrate + "%(รวม " + (100 + setrate) + "%).");
          } else if (splitted[0].equals("!checkcashrate")) {
             int cashrate = ServerConstants.cashPlusRate;
-            c.getPlayer().dropMessage(5, "Current Cash Rate Plus: " + cashrate + "%(Total " + (100 + cashrate) + "%).");
+            c.getPlayer().dropMessage(5, "เรทแคชปัจจุบันบวกเพิ่ม: " + cashrate + "%(รวม " + (100 + cashrate) + "%).");
          } else if (splitted[0].equals("!startmap")) {
             try {
                int startMap = Integer.parseInt(splitted[1]);
                ServerConstants.StartMap = startMap;
-               c.getPlayer().dropMessage(5, "Start map set to " + startMap + ".");
+               c.getPlayer().dropMessage(5, "ตั้งค่าแผนที่เริ่มต้นเป็น " + startMap + ".");
             } catch (Exception var136) {
-               c.getPlayer().dropMessage(5, "Error. check map id.");
+               c.getPlayer().dropMessage(5, "เกิดข้อผิดพลาด ตรวจสอบ ID แผนที่");
             }
          } else if (splitted[0].equals("!townmap")) {
             try {
@@ -488,21 +488,21 @@ public class DebugCommands implements Command {
             }
          } else if (splitted[0].equals("!loadbgm")) {
             GameConstants.loadBGM();
-            c.getPlayer().dropMessage(5, GameConstants.getBGMSize() + " BGMs loaded.");
+            c.getPlayer().dropMessage(5, GameConstants.getBGMSize() + " เพลงประกอบโหลดเรียบร้อยแล้ว");
          } else if (splitted[0].equals("!stopbgm")) {
             if (DBConfig.isGanglim) {
                for (GameServer gs : GameServer.getAllInstances()) {
                   gs.getMapFactory().getMap(c.getPlayer().getMapId()).clearMusicList();
                }
 
-               c.getPlayer().dropMessage(5, "Stopped music in this map on all channels.");
+               c.getPlayer().dropMessage(5, "หยุดเพลงในแผนที่นี้ทุกชาแนลแล้ว");
             } else {
                c.getPlayer().getMap().clearMusicList();
-               c.getPlayer().dropMessage(5, "Stopped music in this map.");
+               c.getPlayer().dropMessage(5, "หยุดเพลงในแผนที่นี้แล้ว");
             }
          } else if (splitted[0].equals("!ungm")) {
             c.getPlayer().setGMLevel((byte)0);
-            c.getPlayer().dropMessage(5, "GM Level set to 0.");
+            c.getPlayer().dropMessage(5, "ระดับ GM ถูกตั้งเป็น 0");
          } else if (splitted[0].equals("!completequest")) {
             try {
                int questid = Integer.parseInt(splitted[1]);
@@ -510,16 +510,16 @@ public class DebugCommands implements Command {
                c.getPlayer().updateQuest(new MapleQuestStatus(MapleQuest.getInstance(questid), 0));
                c.getPlayer().updateQuest(new MapleQuestStatus(MapleQuest.getInstance(questid), 1));
             } catch (Exception var134) {
-               c.getPlayer().dropMessage(5, "Error.");
+               c.getPlayer().dropMessage(5, "เกิดข้อผิดพลาด");
             }
          } else if (splitted[0].equals("!togetherpoint")) {
             if (!DBConfig.isGanglim) {
                try {
                   int togetherPoint = Integer.parseInt(splitted[1]);
                   c.getPlayer().gainTogetherPoint(togetherPoint);
-                  c.getPlayer().dropMessage(5, "Together Point: " + c.getPlayer().getTogetherPoint());
+                  c.getPlayer().dropMessage(5, "คะแนน Together: " + c.getPlayer().getTogetherPoint());
                } catch (Exception var133) {
-                  c.getPlayer().dropMessage(5, "Invalid input.");
+                  c.getPlayer().dropMessage(5, "ข้อมูลนำเข้าไม่ถูกต้อง");
                }
             }
 
@@ -550,7 +550,7 @@ public class DebugCommands implements Command {
 
             Item find = c.getPlayer().getInventory(MapleInventoryType.getByType((byte)TI)).getItem((short)slot);
             if (find == null) {
-               c.getPlayer().dropMessage(5, "Item not found in your inventory.");
+               c.getPlayer().dropMessage(5, "ไม่พบไอเทมในช่องเก็บของของคุณ");
             } else {
                Item item = find.copy();
                item.setQuantity((short)quantity);
@@ -576,7 +576,7 @@ public class DebugCommands implements Command {
                      rs.close();
                      ps.close();
                      if (accountID <= 0) {
-                        c.getPlayer().dropMessage(5, "Character or Account not found.");
+                        c.getPlayer().dropMessage(5, "ไม่พบตัวละครหรือบัญชีนี้");
                      } else {
                         for (GameServer gs : GameServer.getAllInstances()) {
                            for (Field map : gs.getMapFactory().getAllMaps()) {
@@ -592,7 +592,7 @@ public class DebugCommands implements Command {
                         if (p != null) {
                            MapleCabinet cabinet = p.getCabinet();
                            if (cabinet == null) {
-                              c.getPlayer().dropMessage(5, "Target player's cabinet is full or invalid.");
+                              c.getPlayer().dropMessage(5, "ตู้จดหมายของผู้เล่นเป้าหมายเต็มหรือใช้งานไม่ได้");
                               return;
                            }
 
@@ -600,15 +600,15 @@ public class DebugCommands implements Command {
                               new MapleCabinetItem(
                                  cabinet.getNextIndex(),
                                  System.currentTimeMillis() + 604800000L,
-                                 "[GM Gift]",
-                                 fDate + " Sent by GM " + c.getPlayer().getName() + ".",
+                                 "[ของขวัญ GM]",
+                                 fDate + " ส่งโดย GM " + c.getPlayer().getName() + ".",
                                  item
                               )
                            );
                            p.send(CField.maplecabinetResult(8));
                            p.setSaveFlag(c.getPlayer().getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                           p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". Please check your cabinet.");
-                           c.getPlayer().dropMessage(5, "Item sent to online player " + p.getName() + ".");
+                           p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". โปรดตรวจสอบตู้จดหมาย");
+                           c.getPlayer().dropMessage(5, "ส่งไอเทมให้ผู้เล่น " + p.getName() + " เรียบร้อยแล้ว");
                         } else {
                            ps = con.prepareStatement("SELECT `cabinet_index` FROM `cabinet_items` WHERE `accountid` = ? ORDER BY `cabinet_index` DESC");
                            ps.setInt(1, accountID);
@@ -758,7 +758,7 @@ public class DebugCommands implements Command {
                            }
                         }
 
-                        c.getPlayer().dropMessage(5, "Item sent to offline account " + targetx + " (Cabinet).");
+                           c.getPlayer().dropMessage(5, "ส่งไอเทมไปยังบัญชีออฟไลน์ " + targetx + " (ตู้จดหมาย) เรียบร้อยแล้ว");
                      }
                   } catch (SQLException var155) {
                      new RuntimeException(var155);
@@ -786,7 +786,7 @@ public class DebugCommands implements Command {
                } else {
                   MapleCabinet cabinet = p.getCabinet();
                   if (cabinet == null) {
-                     c.getPlayer().dropMessage(5, "Target player's cabinet is full or invalid.");
+                     c.getPlayer().dropMessage(5, "ตู้จดหมายของผู้เล่นเป้าหมายเต็มหรือใช้งานไม่ได้");
                      return;
                   }
 
@@ -794,16 +794,16 @@ public class DebugCommands implements Command {
                      new MapleCabinetItem(
                         cabinet.getNextIndex(),
                         System.currentTimeMillis() + 604800000L,
-                        "[GM Gift]",
-                        fDate + " Sent by GM " + c.getPlayer().getName() + ".",
+                        "[ของขวัญ GM]",
+                        fDate + " ส่งโดย GM " + c.getPlayer().getName() + ".",
                         item
                      )
                   );
                   p.send(CField.maplecabinetResult(8));
                   p.setSaveFlag(p.getSaveFlag() | CharacterSaveFlag.CABINET.getFlag());
-                  p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". Please check your cabinet.");
+                  p.dropMessage(5, "[System] คุณได้รับของขวัญจาก GM " + c.getPlayer().getName() + ". โปรดตรวจสอบตู้จดหมาย");
                   MapleInventoryManipulator.removeFromSlot(c, MapleInventoryType.getByType((byte)TI), (short)slot, (short)quantity, false, false);
-                  c.getPlayer().dropMessage(5, "Item sent to online player " + p.getName() + ".");
+                  c.getPlayer().dropMessage(5, "ส่งไอเทมให้ผู้เล่น " + p.getName() + " เรียบร้อยแล้ว");
                }
             }
          } catch (NumberFormatException var157) {
@@ -816,7 +816,7 @@ public class DebugCommands implements Command {
             try {
                targetPortal = targetx.getPortal(Integer.parseInt(splitted[1]));
             } catch (IndexOutOfBoundsException var127) {
-               c.getPlayer().dropMessage(5, "Portal not found.");
+               c.getPlayer().dropMessage(5, "ไม่พบพอร์ทัล");
             }
          }
 
@@ -848,7 +848,7 @@ public class DebugCommands implements Command {
             onlines.add(p.getName());
          }
 
-         c.getPlayer().dropMessage(5, "Monitoring Channel " + channel + " Map " + map.getMapName() + "(" + mapID + ").");
+         c.getPlayer().dropMessage(5, "กำลังตรวจสอบ Channel " + channel + " แผนที่ " + map.getMapName() + "(" + mapID + ").");
          String msg = "";
          msg = String.join(", ", onlines);
          c.getPlayer().dropMessage(5, msg);
@@ -905,9 +905,9 @@ public class DebugCommands implements Command {
          }
 
          if (find) {
-            c.getPlayer().dropMessage(5, "Account " + splitted[1] + " (" + targetName + ") found at: " + v);
+            c.getPlayer().dropMessage(5, "บัญชี " + splitted[1] + " (" + targetName + ") พบที่: " + v);
          } else {
-            c.getPlayer().dropMessage(5, "Player not found.");
+            c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น");
          }
       } else if (splitted[0].equals("!findacc")) {
          if (splitted.length < 2) {
@@ -961,7 +961,7 @@ public class DebugCommands implements Command {
          }
 
          if (findx) {
-            c.getPlayer().dropMessage(5, "Character " + splitted[1] + " (Account: " + targetAccName + ") found at: " + vx);
+            c.getPlayer().dropMessage(5, "ตัวละคร " + splitted[1] + " (บัญชี: " + targetAccName + ") พบที่: " + vx);
          } else {
             try (
                Connection con = DBConnection.getConnection();
@@ -989,9 +989,9 @@ public class DebugCommands implements Command {
             }
 
             if (findx) {
-               c.getPlayer().dropMessage(5, "Character " + splitted[1] + " (Account: " + targetAccName + ") found (Offline).");
+               c.getPlayer().dropMessage(5, "ตัวละคร " + splitted[1] + " (บัญชี: " + targetAccName + ") พบข้อมูล (ออฟไลน์)");
             } else {
-               c.getPlayer().dropMessage(5, "Character not found.");
+               c.getPlayer().dropMessage(5, "ไม่พบตัวละคร");
             }
          }
       } else if (splitted[0].equals("!dcplayer")) {
@@ -1045,9 +1045,9 @@ public class DebugCommands implements Command {
          }
 
          if (findxx) {
-            c.getPlayer().dropMessage(5, "Player has been disconnected. (" + vxx + " )");
+            c.getPlayer().dropMessage(5, "ตัดการเชื่อมต่อผู้เล่นเรียบร้อยแล้ว (" + vxx + " )");
          } else {
-            c.getPlayer().dropMessage(5, "Player not found.");
+            c.getPlayer().dropMessage(5, "ไม่พบผู้เล่น");
          }
       } else if (splitted[0].equals("!dcaccount")) {
          if (splitted.length < 2) {
@@ -1089,24 +1089,24 @@ public class DebugCommands implements Command {
          }
 
          if (findxxx) {
-            c.getPlayer().dropMessage(5, "Account has been disconnected.");
+            c.getPlayer().dropMessage(5, "ตัดการเชื่อมต่อบัญชีเรียบร้อยแล้ว");
          } else {
-            c.getPlayer().dropMessage(5, "Account not found.");
+            c.getPlayer().dropMessage(5, "ไม่พบบัญชี");
          }
       } else if (splitted[0].equals("!captcha")) {
-         c.getPlayer().dropMessage(5, "Captcha Code (" + splitted[1] + "): " + StringUtil.getRandomCaptcha(Integer.parseInt(splitted[1])));
+         c.getPlayer().dropMessage(5, "รหัส Captcha (" + splitted[1] + "): " + StringUtil.getRandomCaptcha(Integer.parseInt(splitted[1])));
       } else if (splitted[0].equals("!antimacrotest")) {
          String targetxxxxxx = splitted[1];
          MapleCharacter pxxxxxx = c.getPlayer().getMap().getCharacterByName(targetxxxxxx);
          if (player == null) {
-            c.getPlayer().dropMessage(1, "Player not found.");
+            c.getPlayer().dropMessage(1, "ไม่พบผู้เล่น");
             return;
          }
 
          pxxxxxx.tryAntiMacro(AntiMacroType.FromGM, c.getPlayer());
       } else if (splitted[0].equals("!updatequestinfo") || splitted[0].equals("!qex")) {
          c.getPlayer().updateOneInfo(Integer.parseInt(splitted[1]), splitted[2], splitted[3]);
-         c.getPlayer().dropMessage(5, "Quest (" + splitted[1] + ") Key (" + splitted[2] + ") updated to Value (" + splitted[3] + ").");
+         c.getPlayer().dropMessage(5, "เควส (" + splitted[1] + ") คีย์ (" + splitted[2] + ") อัปเดตเป็นค่า (" + splitted[3] + ").");
       } else if (splitted[0].equals("!cop")) {
          Item item = new Item(4001886, (short)0, (short)1, 0);
          item.setGMLog(CurrentTime.getAllCurrentTime() + " Created by " + c.getPlayer().getName() + " via !cop command.");
@@ -1126,14 +1126,14 @@ public class DebugCommands implements Command {
       } else if (splitted[0].equals("!mqtr")) {
          MapleQuest.loadModifiedQuestTime();
          GameServer.getAllInstances().forEach(game -> game.getPlayerStorage().getAllCharacters().forEach(MapleQuest::sendModifiedQuestTime));
-         c.getPlayer().dropMessage(5, "Modified Quest Time reloaded.");
+         c.getPlayer().dropMessage(5, "โหลดเวลาเควสที่แก้ไขใหม่เรียบร้อยแล้ว");
       } else if (splitted[0].equals("!autonoticereset")) {
          MapleAutoNotice.autoNotice = null;
          Center.cancelAutoNoticeTask();
          MapleAutoNotice.autoNotice = new MapleAutoNotice();
          MapleAutoNotice.autoNotice.Load();
          Center.registerAutoNotice();
-         c.getPlayer().dropMessage(5, "Auto Notice has been reloaded.");
+         c.getPlayer().dropMessage(5, "โหลดประกาศอัตโนมัติใหม่เรียบร้อยแล้ว");
       } else if (splitted[0].equals("!resetdamagerank")) {
          DamageMeasurementRank.resetRank();
          c.getPlayer().dropMessage(5, "[System] รีเซ็ตอันดับวัดความเสียหายแล้ว");

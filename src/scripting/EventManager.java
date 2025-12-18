@@ -284,12 +284,12 @@ public class EventManager {
       if (squad.getStatus() != 0) {
          if (!squad.getLeader().isGM()) {
             if (squad.getMembers().size() < squad.getType().i) {
-               squad.getLeader().dropMessage(5, "The squad has less than " + squad.getType().i + " people participating.");
+               squad.getLeader().dropMessage(5, "ปาร์ตี้มีจำนวนคนน้อยกว่า " + squad.getType().i + " คน");
                return;
             }
 
             if (this.name.equals("CWKPQ") && squad.getJobs().size() < 5) {
-               squad.getLeader().dropMessage(5, "The squad requires members from every type of job.");
+               squad.getLeader().dropMessage(5, "ปาร์ตี้ต้องมีสมาชิกครบทุกอาชีพ");
                return;
             }
          }

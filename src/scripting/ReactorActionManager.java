@@ -216,13 +216,13 @@ public class ReactorActionManager extends AbstractPlayerInteraction {
             }
 
             this.cancelHarvest(succ);
-            this.playerMessage(5, "Your mastery of " + pName + " has increased. (+" + masteryIncrease + ")");
+            this.playerMessage(5, "ความชำนาญของ " + pName + " เพิ่มขึ้น (+" + masteryIncrease + ")");
             this.getPlayer().addProfessionExp(pID, masteryIncrease);
             AchievementFactory.checkMakingSkillFatigueInc(this.getPlayer(), pID, 1);
             AchievementFactory.checkMakingskillGather(this.getPlayer(), succ, pID);
          }
       } else {
-         this.c.getPlayer().dropMessage(5, "Fatigue ไม่พͷี่จзӁ" + pName + ".");
+         this.c.getPlayer().dropMessage(5, "ค่าความเหนื่อยล้าไม่เพียงพอที่จะทำ " + pName + ".");
       }
    }
 }

@@ -159,16 +159,16 @@ public class RoyalCommand implements Command {
    @Override
    public CommandDefinition[] getDefinition() {
       return new CommandDefinition[] {
-            new CommandDefinition("!setquestkv", "<player> <questid> <key> <value>", "Sets a quest keyvalue.", 6),
-            new CommandDefinition("!removequestkv", "<player> <questid> <key>", "Removes a quest keyvalue.", 6),
-            new CommandDefinition("!setcharkv", "<player> <key> <value>", "Sets a character keyvalue.", 6),
-            new CommandDefinition("!removecharkv", "<player> <key>", "Removes a character keyvalue.", 6),
-            new CommandDefinition("!setaccountkv", "<player> <key> <value>", "Sets an account keyvalue.", 6),
-            new CommandDefinition("!removeaccountkv", "<player> <key>", "Removes an account keyvalue.", 6),
-            new CommandDefinition("!giveoffline", "<player> <item> <quantity>", "Gives an item to an offline player.",
+            new CommandDefinition("!setquestkv", "<player> <questid> <key> <value>", "ตั้งค่า KeyValue ของเควส", 6),
+            new CommandDefinition("!removequestkv", "<player> <questid> <key>", "ลบ KeyValue ของเควส", 6),
+            new CommandDefinition("!setcharkv", "<player> <key> <value>", "ตั้งค่า KeyValue ของตัวละคร", 6),
+            new CommandDefinition("!removecharkv", "<player> <key>", "ลบ KeyValue ของตัวละคร", 6),
+            new CommandDefinition("!setaccountkv", "<player> <key> <value>", "ตั้งค่า KeyValue ของบัญชี", 6),
+            new CommandDefinition("!removeaccountkv", "<player> <key>", "ลบ KeyValue ของบัญชี", 6),
+            new CommandDefinition("!giveoffline", "<player> <item> <quantity>", "มอบไอเทมให้ผู้เล่นที่ออฟไลน์",
                   6),
-            new CommandDefinition("!clearoffline", "<player>", "Clears offline items for a player.", 6),
-            new CommandDefinition("!royal", "", "Opens the Royal NPC.", 6)
+            new CommandDefinition("!clearoffline", "<player>", "ลบไอเทมออฟไลน์ของผู้เล่น", 6),
+            new CommandDefinition("!royal", "", "เปิด NPC Royal", 6)
       };
    }
 }

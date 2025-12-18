@@ -30,7 +30,7 @@ public class PortalPlayerInteraction extends AbstractPlayerInteraction {
             this.playPortalSE();
             this.warp(910001000, "st00");
          } else {
-            this.playerMessage(5, "You must be at least level 30 to enter Ardentmill.");
+            this.playerMessage(5, "คุณต้องมีเลเวลอย่างน้อย 30 ถึงจะเข้า Ardentmill ได้");
          }
       }
    }

@@ -565,7 +565,7 @@ public abstract class AbstractPlayerInteraction {
                         + " obtained item.");
             String name = ii.getName(id);
             if (id / 10000 == 114 && name != null && name.length() > 0) {
-               String msg = "คุณได้รับเหรียญตรҁ<" + name + ">!";
+            String msg = "คุณได้รับเหรียญตรา <" + name + ">!";
                cg.getPlayer().dropMessage(-1, msg);
                cg.getPlayer().dropMessage(5, msg);
             }
@@ -1604,7 +1604,7 @@ public abstract class AbstractPlayerInteraction {
                            .spawnMonsterOnGroundBelow(MapleLifeFactory.getMonster(8642016), muto.getRandArea());
                      this.getClient().getPlayer().getMap()
                            .broadcastMessage(CWvsContext.getScriptProgressMessage(
-                                 "Gula ต่͵้านอย่างรุนแรงและมอนสเตอร์ที่แข็งแกร่งก็ปรากฏตัวขึ้น!"));
+                                 "Gula ต่อต้านอย่างรุนแรงและมอนสเตอร์ที่แข็งแกร่งก็ปรากฏตัวขึ้น!"));
                      muto.setEnhanceMob(true);
                   }
 

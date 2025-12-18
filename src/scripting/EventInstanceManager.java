@@ -271,7 +271,7 @@ public class EventInstanceManager {
 
          PartySearch ps = Center.Party.getSearch(party);
          if (ps != null) {
-            Center.Party.removeSearch(ps, "The Party Listing has been removed because the Party Quest started.");
+            Center.Party.removeSearch(ps, "รายการปาร์ตี้ถูกลบออกเนื่องจากปาร์ตี้เควสได้เริ่มขึ้นแล้ว");
          }
 
          if (this.getProperty("DeathCount") != null) {
@@ -306,7 +306,7 @@ public class EventInstanceManager {
 
          PartySearch ps = Center.Party.getSearch(party);
          if (ps != null) {
-            Center.Party.removeSearch(ps, "The Party Listing has been removed because the Party Quest started.");
+            Center.Party.removeSearch(ps, "รายการปาร์ตี้ถูกลบออกเนื่องจากปาร์ตี้เควสได้เริ่มขึ้นแล้ว");
          }
 
          return true;
@@ -943,7 +943,7 @@ public class EventInstanceManager {
                   PartySearch ps = Center.Party.getSearch(player.getParty());
                   if (ps != null) {
                      Center.Party.removeSearch(ps,
-                           "The Party Listing has been removed because the Party Quest has started.");
+                           "รายการปาร์ตี้ถูกลบออกเนื่องจากปาร์ตี้เควสได้เริ่มขึ้นแล้ว");
                   }
                }
             }
