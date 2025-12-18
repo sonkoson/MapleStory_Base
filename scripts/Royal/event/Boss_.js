@@ -13,7 +13,7 @@ importPackage(Packages.server.maps.obtacle);
 
 var rucif = 8880166;
 
-function init() {}
+function init() { }
 
 
 function playerRevive(eim, player) {
@@ -56,15 +56,15 @@ function playerEntry(eim, player) {
         if (eim.getProperty("BossName") == "노말 스우" || eim.getProperty("BossName") == "하드 스우") {
             eim.registerEventSchedule("lotusBlueDebris", BossConstants.LOTUS_BLUE_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusBlueDebris, 1, BossConstants.LOTUS_BLUE_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
-                BossConstants.LOTUS_BLUE_ATOM_AMOUNT, 
+                BossConstants.LOTUS_BLUE_ATOM_AMOUNT,
                 eim.getProperty("BossName") == "노말 스우" ? BossConstants.LOTUS_BLUE_ATOM_PROP : BossConstants.LOTUS_BLUE_ATOM_HARD_PROP);
             eim.registerEventSchedule("lotusPurpleDebris", BossConstants.LOTUS_PURPLE_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusPurpleDebris, 2, BossConstants.LOTUS_PURPLE_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
-                BossConstants.LOTUS_PURPLE_ATOM_AMOUNT, 
+                BossConstants.LOTUS_PURPLE_ATOM_AMOUNT,
                 eim.getProperty("BossName") == "노말 스우" ? BossConstants.LOTUS_PURPLE_ATOM_PROP : BossConstants.LOTUS_PURPLE_ATOM_HARD_PROP);
             eim.registerEventSchedule("lotusYellowDebris", BossConstants.LOTUS_YELLOW_ATOM_EXECUTION_DELAY,
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusYellowDebris, 3, BossConstants.LOTUS_YELLOW_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
-                BossConstants.LOTUS_YELLOW_ATOM_AMOUNT, 
+                BossConstants.LOTUS_YELLOW_ATOM_AMOUNT,
                 eim.getProperty("BossName") == "노말 스우" ? BossConstants.LOTUS_YELLOW_ATOM_PROP : BossConstants.LOTUS_YELLOW_ATOM_HARD_PROP);
             eim.registerEventSchedule("spawnSelfDestructMob", 10000, "spawnSelfDestructMob", map);
         }
@@ -125,7 +125,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(100000000);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "이동되었습니다.");
+            chr.dropMessage(5, "ย้ายแล้ว");
 
         }
     } else {
@@ -134,7 +134,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(100000000);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "시간이 지나, 파티가 해체됩니다.");
+            chr.dropMessage(5, "หมดเวลาแล้ว ปาร์ตี้ถูกยุบ");
 
         }
     }
@@ -190,7 +190,7 @@ function onMapLoad(eim, player) {
     player.deathCount();
 }
 
-function playerDisconnected(eim, player) {}
+function playerDisconnected(eim, player) { }
 
 
 function changedMap(eim, player, mapid) {
@@ -235,7 +235,7 @@ function allMonstersDead(eim) {
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880165), new Point(1085, -619));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880168), new Point(525, -685));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880171), new Point(329, -855));
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 2");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -245,7 +245,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(4033804, 1);
-                chr.dropMessage(5, "클리어를 축하드립니다! 오르골이 지급되었으니, 입장 엔피시에게 가져다 주시길 바랍니다. 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! ได้รับ Music Box แล้ว กรุณานำไปให้ NPC ที่รับเข้าบอส จะถูกวาร์ปออกอัตโนมัติ");
                 //chr.worldGMMessage(7, "[클리어] 루시드보스가 클리어 됐습니다.");
             }
         }
@@ -256,7 +256,7 @@ function allMonstersDead(eim) {
         while (it.hasNext()) {
             var chr = it.next();
             chr.gainItem(Integer.parseInt(eim.getProperty("Boss_Reward")), 1);
-            chr.dropMessage(5, "클리어를 축하드립니다! 토벌 증표가 지급되었으니, 진격의 거인 엔피시에게 가져다 주시길 바랍니다. 자동으로 퇴장됩니다.");
+            chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! ได้รับ Subjugation Token แล้ว กรุณานำไปให้ NPC จะถูกวาร์ปออกอัตโนมัติ");
         }
     } else if (eim.getProperty("BossName") == "노말 스우") {
         if (kc == 0) {
@@ -308,15 +308,15 @@ function allMonstersDead(eim) {
                 "createObtacleAtom", map, ObtacleAtomEnum.LotusYellowDebris, 4, BossConstants.LOTUS_YELLOW_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
                 BossConstants.LOTUS_YELLOW_ATOM_AMOUNT, BossConstants.LOTUS_YELLOW_ATOM_PROP);
             eim.registerEventSchedule("lotusCrusherDebris", BossConstants.LOTUS_CRUSHER_ATOM_EXECUTION_DELAY,
-		"createObtacleAtom", map, ObtacleAtomEnum.LotusCrusherDebris, 5, BossConstants.LOTUS_CRUSHER_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
-                    BossConstants.LOTUS_CRUSHER_ATOM_AMOUNT, BossConstants.LOTUS_CRUSHER_ATOM_PROP);
+                "createObtacleAtom", map, ObtacleAtomEnum.LotusCrusherDebris, 5, BossConstants.LOTUS_CRUSHER_ATOM_DAMAGE, BossConstants.LOTUS_OBSTACLE_ATOM_VELOCITY, 0,
+                BossConstants.LOTUS_CRUSHER_ATOM_AMOUNT, BossConstants.LOTUS_CRUSHER_ATOM_PROP);
         } else if (kc == 99) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else if (eim.getProperty("BossName") == "데미안2") {
@@ -328,7 +328,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 2");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -340,7 +340,7 @@ function allMonstersDead(eim) {
                 chr.setClock(0);
                 var tese = chr.getWarpMap(100000000);
                 chr.changeMap(tese, tese.getPortal(0));
-                chr.dropMessage(5, "클리어를 축하드립니다! 보상이 자동으로 지급됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! ได้รับรางวัลอัตโนมัติ");
             }
             eim.unregisterAll();
         }
@@ -374,7 +374,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 2");
             }
             eim.getMapFactory().getMap(eim.getProperty("SecondMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk1")), new Point(eim.getProperty("Boss_unsuk1_x"), eim.getProperty("Boss_unsuk1_y")));
             eim.getMapFactory().getMap(eim.getProperty("SecondMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk2")), new Point(eim.getProperty("Boss_unsuk2_x"), eim.getProperty("Boss_unsuk2_y")));
@@ -390,7 +390,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("ThirdMap")));
-                chr.dropMessage(5, "3페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 3");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Third1")), new Point(x, y), Integer.parseInt(eim.getProperty("ThirdMap")), eim);
             eim.getMapFactory().getMap(eim.getProperty("ThirdMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk1")), new Point(eim.getProperty("Boss_unsuk1_x"), eim.getProperty("Boss_unsuk1_y")));
@@ -403,7 +403,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "클리어를 축하드립니다! 보상이 자동으로 지급됩니다. 잠시 후 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! ได้รับรางวัลอัตโนมัติ จะถูกวาร์ปออกเร็วๆ นี้");
             }
         }
     } else if (eim.getProperty("BossName") == "크로스") {
@@ -414,7 +414,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "크로스 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์ Cross สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else if (eim.getProperty("BossName") == "카오스 파풀라투스") {
@@ -425,7 +425,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "카오스 파풀라투스 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์ Chaos Papulatus สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else if (eim.getProperty("BossName") == "진 힐라") {
@@ -436,7 +436,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(Integer.parseInt(eim.getProperty("Reward")), 1);
-                chr.dropMessage(5, "진 힐라 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์ Jin Hilla สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else if (eim.getProperty("BossName") == "카오스 피에르") {
@@ -448,7 +448,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200611);
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 2");
             }
             eim.getMapFactory().getMap(105200611).resetFully();
             spawnBoss(8900001, new Point(x, y), 105200611, eim);
@@ -460,7 +460,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200612);
-                chr.dropMessage(5, "3페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 3");
             }
             eim.getMapFactory().getMap(105200612).resetFully();
             spawnBoss(8900002, new Point(x, y), 105200612, eim);
@@ -470,7 +470,7 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
                 chr.gainItem(4310064, 10);
             }
         }
@@ -481,7 +481,7 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
                 chr.gainItem(4310064, 10);
             }
         }
@@ -492,7 +492,7 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
                 chr.gainItem(4310064, 10);
             }
         }
@@ -505,7 +505,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200711);
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 2");
             }
             eim.getMapFactory().getMap(105200711).resetFully();
             spawnBoss(8920001, new Point(x, y), 105200711, eim);
@@ -517,7 +517,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200712);
-                chr.dropMessage(5, "3페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 3");
             }
             eim.getMapFactory().getMap(105200712).resetFully();
             spawnBoss(8920002, new Point(x, y), 105200712, eim);
@@ -529,7 +529,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200713);
-                chr.dropMessage(5, "4페이지로 넘어갑니다.");
+                chr.dropMessage(5, "ไปหน้า 4");
             }
             eim.getMapFactory().getMap(105200713).resetFully();
             spawnBoss(8920003, new Point(x, y), 105200713, eim);
@@ -540,7 +540,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(4310064, 10);
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else {
@@ -549,12 +549,12 @@ function allMonstersDead(eim) {
         var it = eim.getPlayers().iterator();
         while (it.hasNext()) {
             var chr = it.next();
-            chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+            chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
         }
     }
 }
 
-function monsterKilled(eim, player, point) {}
+function monsterKilled(eim, player, point) { }
 
 
 function leftParty(eim, player) {
@@ -564,7 +564,7 @@ function leftParty(eim, player) {
         var tese = chr.getWarpMap(100000000);
         chr.setClock(0);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티원이 파티를 그만둬서 원정대가 해체됩니다.");
+        chr.dropMessage(5, "สมาชิกปาร์ตี้ออกจากปาร์ตี้ กลุ่มบุกบอสถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {
@@ -581,7 +581,7 @@ function disbandParty(eim) {
         chr.setClock(0);
         var tese = chr.getWarpMap(100000000);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티장이 파티를 그만둬서 원정대가 해체됩니다.");
+        chr.dropMessage(5, "หัวหน้าปาร์ตี้ออกจากปาร์ตี้ กลุ่มบุกบอสถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {

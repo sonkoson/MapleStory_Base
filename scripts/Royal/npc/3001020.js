@@ -11,7 +11,7 @@ function action(mode, type, selection) {
         ["Hard_Magnus", count, 401060100, 175],
         ["Normal_Magnus", count, 401060200, 155]
     ]
-    name = ["하드", "노멀"]
+    name = ["Hard", "Normal"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -21,36 +21,36 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "매그너스 퇴치를 위해 폭군의 왕좌로 이동 하시겠습니까??\r\n"
-        talk += "#L1##b폭군의 왕좌(노멀)로 이동 한다. (레벨 155이상)#l\r\n"
-        talk += "#L0#폭군의 왕좌(하드)로 이동 한다. (레벨 175이상)#l\r\n"
-        talk += "#L3#이동하지 않는다.#l"
+        talk = "ต้องการย้ายไปบัลลังก์ทรราชย์เพื่อปราบ Magnus หรือเปล่า?\r\n"
+        talk += "#L1##bย้ายไปบัลลังก์ทรราชย์ (Normal) (Level 155 ขึ้นไป)#l\r\n"
+        talk += "#L0#ย้ายไปบัลลังก์ทรราชย์ (Hard) (Level 175 ขึ้นไป)#l\r\n"
+        talk += "#L3#ไม่ย้าย#l"
         cm.sendSimple(talk);
     } else if (status == 1) {
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("ต้องอยู่ในปาร์ตี้ที่มีสมาชิก 1 คนขึ้นไปจึงจะเข้าได้");
+            cm.sendOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있습니다.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่ขอเข้าได้");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendOk("이미 누군가가 매그너스에 도전하고 있습니다.");
+            cm.sendOk("มีคนกำลังสู้ Magnus อยู่แล้ว");
             cm.dispose();
             return;
         } else if (!cm.allMembersHere()) {
-            cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ที่เดียวกัน");
             cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
             c = 1;
-            cm.sendNext("폭군의 왕좌(" + name[st] + " 모드)의 입장횟수를 모두 소진한 파티원이 있습니다");
+            cm.sendNext("มีสมาชิกปาร์ตี้ที่ใช้จำนวนครั้งเข้าบัลลังก์ทรราชย์ (" + name[st] + " Mode) หมดแล้ว");
         } else if (!cm.isLevelAvailable(setting[st][3])) {
             c = 2;
-            cm.sendNext("폭군의 왕좌(" + name[st] + " 모드)는 레벨 " + setting[st][3] + "이상만 입장이 가능합니다.");
+            cm.sendNext("บัลลังก์ทรราชย์ (" + name[st] + " Mode) ต้อง Level " + setting[st][3] + " ขึ้นไปถึงจะเข้าได้");
         } else {
             cm.addBoss(setting[st][0]);
             em = cm.getEventManager(setting[st][0]);
@@ -60,7 +60,7 @@ function action(mode, type, selection) {
             cm.dispose();
         }
     } else if (status == 2) {
-        talk = "파티원 중 #b#e"
+        talk = "สมาชิกปาร์ตี้ #b#e"
         if (c == 1) {
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 if (i != 0) {
@@ -76,7 +76,7 @@ function action(mode, type, selection) {
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
         }
-        talk += "#k#n 님이 들어갈 수 있는 자격이 없습니다.";
+        talk += "#k#n ไม่มีคุณสมบัติที่จะเข้าได้";
         cm.sendNext(talk);
         cm.dispose();
     }

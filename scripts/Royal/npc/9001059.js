@@ -37,13 +37,13 @@ function action(mode, type, sel) {
 
             if (gameType == 8) {
                 if (!cm.canHold(2434639, 3)) {
-                    cm.sendNext("인벤토리 공간이 있는지 확인하고 다시 말 걸어주겠어?");
+                    cm.sendNext("ช่วยเช็คว่ามีที่ว่างในกระเป๋าก่อนแล้วมาคุยใหม่ได้ไหม?");
                     cm.dispose();
                     return;
                 }
                 killWolf = cm.getPlayer().getOneInfoQuestInteger(15142, "kill_wolf");
                 if (killWolf == 1) {
-                    cm.sendNextNoESC("흉악한 #e#r불꽃늑대#n#k를 퇴치하다니! 대단한 실력이군.");
+                    cm.sendNextNoESC("ปราบ #e#rหมาป่าเพลิง#n#k ที่โหดร้ายได้เลย! เก่งมากเลยนะ");
                 } else {
                     d = cm.getPlayer().getOneInfoQuest(15142, "wolf_damage");
                     if (d == null || d == "") {
@@ -52,39 +52,39 @@ function action(mode, type, sel) {
                     damage = Long.parseLong(d);
                     var text = "";
                     if (damage < 1250000000) {
-                        text = "적당한";
+                        text = "พอประมาณ";
                     } else if (damage >= 1250000000 && damage < 12500000000) {
-                        text = "상당한";
+                        text = "มาก";
                     } else if (damage >= 12500000000 && damage < 75000000000) {
-                        text = "막대한";
+                        text = "มหาศาล";
                     } else if (damage >= 75000000000) {
-                        text = "치명적인";
+                        text = "ร้ายแรง";
                     }
-                    cm.sendNextNoESC("너는 불꽃늑대에게 #e#b" + text + "#n#k 데미지를 주었군.");
+                    cm.sendNextNoESC("เจ้าสร้างความเสียหาย #e#b" + text + "#n#k ให้หมาป่าเพลิงได้เลย");
                 }
             } else {
-                cm.sendSimple("너 또한 훌륭한 사냥꾼이군 그래...수고했다.\r\n\r\n#b#L0#원래 있던곳으로 보내줘.#l");
+                cm.sendSimple("เจ้าก็เป็นนักล่าที่เก่งเหมือนกัน... สู้มาเหนื่อยแล้ว\r\n\r\n#b#L0#ส่งกลับไปที่เดิม#l");
             }
         } else {
             var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
 
             /*if (gameType == 9) {
-                cm.sendYesNo("설날 이벤트 소굴이 열렸다. 입장 후 힘을 합쳐 거대 월묘를 물리치면 떡국 코인을 획득할 수 있다네. 입장할텐가? 거대 월묘가 처치되면 입장할 수 없다고.");
+                cm.sendYesNo("New Year event den is open.");
             } else {*/
-                if (gameType == 8) {
-                    if (!cm.getPlayer().CountCheck("spark_wolf", 5)) {
-                        cm.sendNext("오늘은 더 이상 입장할 수 없다. 다음에 다시 보도록 하지.");
-                        cm.dispose();
-                        return;
-                    }
-                } else {
-                    if (!cm.getPlayer().CountCheck("random_portal", 20)) {
-                        cm.sendNext("오늘은 더 이상 입장할 수 없다. 다음에 다시 보도록 하지.");
-                        cm.dispose();
-                        return;
-                    }
+            if (gameType == 8) {
+                if (!cm.getPlayer().CountCheck("spark_wolf", 5)) {
+                    cm.sendNext("วันนี้เข้าไม่ได้อีกแล้ว ไว้คราวหน้ามาใหม่นะ");
+                    cm.dispose();
+                    return;
                 }
-                cm.sendNext("나는 메이플월드 최고의 현상금 사냥꾼 #e#r폴로#n#k,\r\n동생 #e#b프리토#n#k와 함께 마물들을 퇴치하고 있다.");
+            } else {
+                if (!cm.getPlayer().CountCheck("random_portal", 20)) {
+                    cm.sendNext("วันนี้เข้าไม่ได้อีกแล้ว ไว้คราวหน้ามาใหม่นะ");
+                    cm.dispose();
+                    return;
+                }
+            }
+            cm.sendNext("ข้าคือ #e#rPolo#n#k นักล่าค่าหัวที่เก่งที่สุดใน Maple World\r\nกับน้องชาย #e#bPritto#n#k กำลังปราบมารร้ายอยู่");
             //}
         }
     } else if (status == 1) {
@@ -92,7 +92,7 @@ function action(mode, type, sel) {
             var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
             if (gameType == 8) {
                 if (killWolf) {
-                    cm.sendNextNoESC("#e#r불꽃늑대#n#k는 우리 형제가 아주 오랜시간 추적하던 적이었지...\r\n물론 녀석은 다시 나타나겠지만, 너 덕분에 한동안은 여행자들을 약탈할 수 없을 거다.");
+                    cm.sendNextNoESC("#e#rหมาป่าเพลิง#n#k คือศัตรูที่พี่น้องเราตามล่ามานานมาก...\r\nแน่นอนว่ามันจะกลับมาอีก แต่เพราะเจ้า มันจะปล้นนักเดินทางไม่ได้สักพักใหญ่");
                 } else {
                     var reward = 0;
                     var quantity = 0;
@@ -109,34 +109,34 @@ function action(mode, type, sel) {
                         reward = 2434636;
                         quantity = 1;
                     }
-                    cm.sendNextNoESC("자 #b#i" + reward + "# #z" + reward + "#" + quantity + "개#k를 선물로 주마. 그럼 다음에 또 보도록 하지!");
+                    cm.sendNextNoESC("นี่ #b#i" + reward + "# #z" + reward + "# " + quantity + " ชิ้น#k เป็นของขวัญ งั้นไว้เจอกันคราวหน้านะ!");
                     cm.gainItem(reward, quantity);
                     cm.getPlayer().updateOneInfo(15142, "wolf_damage", "0");
                     cm.getPlayer().updateOneInfo(15142, "kill_wolf", "0");
                 }
             } else {
-                cm.sendNextNoESC("휴... 힘든 사냥이었다.\r\n너는 보기보다 훌륭한 실력을 가지고 있더군? 고맙다.");
+                cm.sendNextNoESC("ฮู้... ล่ามาเหนื่อยเลย\r\nเจ้าฝีมือดีกว่าที่คิดนะ ขอบคุณ");
             }
         } else {
             var portal = cm.getPlayer().getRandomPortal();
             if (portal != null) {
                 var gameType = cm.getPlayer().getOneInfoQuestInteger(15142, "gameType");
                 if (portal.getType().getType() == 3) {
-                    cm.sendSimple("우리 형제가 오랜 시간 추격하던 최강의 몬스터 #e#r불꽃늑대#n#k의 소굴을 마침내 찾아냈다. 녀석은 메이플월드의 여행자들을 닥치는대로 약탈하는 아주 악랄한 놈이지... 어때, 나와 함께 녀석을 퇴치하러 가겠나?\r\n\r\n#b#L0#함께 한다.#l\r\n#L1#함께하지 않는다.#l");
-                /*} else if (gameType == 9) {
-	      var ret = cm.checkEnterRabbit();
-                    if (ret == -1) {
-                        cm.getPlayer().removeRandomPortal();
-                        cm.sendNext("거대 눈사람이 처치되어 입장할 수 없다네. #e28일 20시까지 00시, 04시, 08시, 12시, 16시, 20시 4시간 간격#n으로 거대 눈사람이 출현하니 참고하라고.");
-                        cm.dispose();
-                        return;
-                    }
-                    cm.getPlayer().removeAllSummons();
-                    cm.warpChangeChannel(ret, 910010000);
-                    cm.getPlayer().setEnterRandomPortal(true);
-                    cm.dispose();*/
+                    cm.sendSimple("ในที่สุดพี่น้องเราก็พบถ้ำของมอนสเตอร์ที่แข็งแกร่งที่สุด #e#rหมาป่าเพลิง#n#k ที่ตามล่ามานาน มันปล้นนักเดินทางใน Maple World อย่างโหดร้าย... ว่าไง จะไปปราบมันกับข้าไหม?\r\n\r\n#b#L0#ตามไปด้วย#l\r\n#L1#ไม่ไป#l");
+                    /*} else if (gameType == 9) {
+              var ret = cm.checkEnterRabbit();
+                        if (ret == -1) {
+                            cm.getPlayer().removeRandomPortal();
+                            cm.sendNext("Giant snowman has been defeated.");
+                            cm.dispose();
+                            return;
+                        }
+                        cm.getPlayer().removeAllSummons();
+                        cm.warpChangeChannel(ret, 910010000);
+                        cm.getPlayer().setEnterRandomPortal(true);
+                        cm.dispose();*/
                 } else {
-                    cm.sendSimple("이제 막 사냥을 떠나는 길이었는데, 자네도 나와 함께 #b마물#k들을 퇴치하러 가겠나?\r\n\r\n#b#L0#함께 한다.#l\r\n#L1#함께하지 않는다.#l");
+                    cm.sendSimple("ข้ากำลังจะออกไปล่าพอดี เจ้าจะไปปราบ #bมาร#k กับข้าไหม?\r\n\r\n#b#L0#ตามไปด้วย#l\r\n#L1#ไม่ไป#l");
                 }
             }
         }
@@ -159,12 +159,12 @@ function action(mode, type, sel) {
                     cm.dispose();
                     return;
                 }
-                cm.sendNextNoESC("자, 여기 너를 위해 작은 선물을 준비했다.\r\n#b#i" + reward + "# #z" + reward + "#" + quantity + "개#k\r\n약소하지만 성의표시라고 생각하고 받도록.");
+                cm.sendNextNoESC("นี่ ข้าเตรียมของขวัญเล็กๆ น้อยๆ ให้เจ้า\r\n#b#i" + reward + "# #z" + reward + "# " + quantity + " ชิ้น#k\r\nเล็กน้อยแต่รับไว้นะ");
                 cm.gainItem(reward, quantity);
                 cm.getPlayer().updateOneInfo(15142, "wolf_damage", "0");
                 cm.getPlayer().updateOneInfo(15142, "kill_wolf", "0");
             } else {
-                cm.sendNextNoESC("앞으로도 열심히 사냥하면 우리 #e#r현상금 사냥꾼 형제#n#k를 만날 수 있을 거다.");
+                cm.sendNextNoESC("ถ้าล่าไปเรื่อยๆ จะได้เจอ #e#rพี่น้องนักล่าค่าหัว#n#k อีกนะ");
             }
         } else {
             if (sel == 0) {

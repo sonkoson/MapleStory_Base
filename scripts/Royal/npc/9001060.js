@@ -5,7 +5,7 @@ var s = -1;
 var gameType = -1;
 
 var rewards = [
-    "독수리 사냥", "보물 받기", "드래곤의 알 훔치기", "구애의 춤"
+    "Eagle Hunting", "Treasure Collection", "Dragon Egg Stealing", "Courtship Dance"
 ];
 
 function start() {
@@ -35,33 +35,33 @@ function action(mode, type, sel) {
         if (cm.getPlayer().getMapId() == 993000300) {
             var stage = cm.getPlayer().getOneInfoQuestInteger(15142, "Stage");
             if (stage == 0) {
-                cm.sendNextNoESC("이런이런... 첫 번째 단계도 넘지 못하다니. 운이 없군 그래?");
+                cm.sendNextNoESC("อุ๊ย... ผ่านด่านแรกไม่ได้เลย โชคไม่ดีหน่อยนะ?");
             } else if (stage == 1) {
-                cm.sendNextNoESC("이런이런... 두 번째 단계에서 실패하다니. 다음에는 잘 해봐!");
+                cm.sendNextNoESC("อุ๊ย... พลาดที่ด่านสอง คราวหน้าสู้ต่อนะ!");
             } else if (stage == 2) {
-                cm.sendNextNoESC("호오... 세 번째 단계까지 오다니. 다음에는 꼭 성공할거야!");
+                cm.sendNextNoESC("โอ้... มาถึงด่านสามได้ คราวหน้าต้องผ่านแน่!");
             } else if (stage == 3) {
-                cm.sendNextNoESC("와~ 네 번재 단계까지 오다니. 아까웠어!");
+                cm.sendNextNoESC("ว้าว~ มาถึงด่านสี่ได้ น่าเสียดายจังเลย!");
             } else if (stage == 4) {
-                cm.sendNextNoESC("정말 아쉽다... 이번 단계만 넘겼으면 성공했을텐데. 다음에는 꼭 성공할거야!");
+                cm.sendNextNoESC("น่าเสียดายจริงๆ... ถ้าผ่านด่านนี้ได้ก็สำเร็จแล้ว คราวหน้าต้องผ่านแน่!");
             } else {
-                cm.sendNextNoESC("혹시 비정상적인 방법으로 접근한건 아니니?");
+                cm.sendNextNoESC("หรือว่าเจ้าเข้ามาด้วยวิธีที่ไม่ปกติ?");
             }
         } else if (cm.getPlayer().getMapId() == 993000601) {
             gameType = cm.getPlayer().getOneInfoQuestInteger(26022, "gameType");
-            var v0 = "수고했어! 생각보다 대단한 실력을 가졌는걸?\r\n\r\n#b";
+            var v0 = "สู้มาเหนื่อยแล้ว! เก่งกว่าที่คิดไว้นะ\r\n\r\n#b";
             if (gameType != -1) {
-                v0 += "#L0#" + rewards[gameType] + " 보상 받기#l\r\n";
+                v0 += "#L0#รับรางวัล " + rewards[gameType] + "#l\r\n";
             }
-            v0 += "#L1#원래 있던곳으로 보내줘.#l";
+            v0 += "#L1#ส่งกลับไปที่เดิม#l";
             cm.sendSimple(v0);
         } else {
-	if (!cm.getPlayer().CountCheck("random_portal", 20)) {
-		cm.sendNext("오늘은 더 이상 입장할 수 없다. 다음에 다시 보도록 하지.");
-		cm.dispose();
-		return;
-	}
-            cm.sendNext("안녕? 나는 현상금 사냥꾼 #e#b프리토#k#n라고해.\r\n형 #e#r폴로#n#k와 함께 엄청난 명성을 떨치고 있지! 하핫!");
+            if (!cm.getPlayer().CountCheck("random_portal", 20)) {
+                cm.sendNext("วันนี้เข้าไม่ได้อีกแล้ว ไว้คราวหน้ามาใหม่นะ");
+                cm.dispose();
+                return;
+            }
+            cm.sendNext("หวัดดี! ข้าคือนักล่าค่าหัว #e#bPritto#k#n\r\nกับพี่ชาย #e#rPolo#n#k ลือลั่นไปทั่วแล้ว! ฮ่าๆ!");
         }
     } else if (status == 1) {
         if (cm.getPlayer().getMapId() == 993000300) {
@@ -71,12 +71,12 @@ function action(mode, type, sel) {
         } else if (cm.getPlayer().getMapId() == 993000601) {
             if (sel == 0) {
                 if (!cm.canHold(2434639, 2)) {
-                    cm.sendNext("인벤토리 공간이 있는지 확인하고 다시 말 걸어주겠어?");
+                    cm.sendNext("ช่วยเช็คว่ามีที่ว่างในกระเป๋าก่อนแล้วมาคุยใหม่ได้ไหม?");
                     cm.dispose();
                     return;
                 }
-                if (gameType == 1) { // 보물 받기
-                    cm.sendNextNoESC("나의 완벽한 #b#e보물 서리#n#k는 잘 보았지?\r\n불꽃늑대과 돌아와서 #e#r텅 빈 보물창고#k#n를 보면 화가 잔뜩 나겠지? 히힛!");
+                if (gameType == 1) { // Treasure Collection
+                    cm.sendNextNoESC("เห็น #b#eฝีมือขโมยสมบัติ#n#k ของข้าไหม?\r\nพอหมาป่าเพลิงกลับมาเห็น #e#rคลังสมบัติว่างเปล่า#k#n จะโมโหแน่ๆ! ฮิๆ!");
                     var score = cm.getPlayer().getOneInfoQuestInteger(26022, "score");
                     var itemID = 0;
                     var quantity = 0;
@@ -101,12 +101,12 @@ function action(mode, type, sel) {
                     cm.getPlayer().updateOneInfo(26022, "gameType", "-1");
                     cm.gainItem(itemID, quantity);
                     cm.gainExp(exp);
-                } else if (gameType == 0) { // 독수리 사냥
-                    cm.sendNextNoESC("하하! #b독수리 사냥#k은 어땠어?\r\n멀리서 총으로 쏘아 잡으니 생각보다 쉽지?");
-                } else if (gameType == 2) { // 드래곤 알 차지
-                    cm.sendNextNoESC("휴~ 큰일 날 뻔 했군! 하마터면 #b드래곤#k에게 걸릴 뻔 했어!\r\n살금살금 올라가는 너의 모습을 보니 너도 나처럼 훌륭한 현상금 사냥꾼이 될 것 같더군 하핫!");
-                } else if (gameType == 3) { // 닭에게 구애의 춤
-                    cm.sendNextNoESC("나의 #e#b완벽한 위장 능력#n#k은 잘 보았겠지?\r\n하핫! 암탉들은 나의 #e#b구애의 춤#n#k에 홀딱 넘어왔어!");
+                } else if (gameType == 0) { // Eagle Hunting
+                    cm.sendNextNoESC("ฮ่าๆ! #bล่านกอินทรี#k เป็นไงบ้าง?\r\nยิงจากไกลๆ ก็ง่ายดีใช่ไหม?");
+                } else if (gameType == 2) { // Dragon Egg
+                    cm.sendNextNoESC("ฮู้~ เกือบแล้ว! เกือบโดน #bมังกร#k จับได้!\r\nเห็นเจ้าค่อยๆ ปีนขึ้นไป เจ้าก็มีแววเป็นนักล่าค่าหัวเหมือนข้าเลย ฮ่าๆ!");
+                } else if (gameType == 3) { // Courtship Dance
+                    cm.sendNextNoESC("เห็น #e#bพรสวรรค์การปลอมตัว#n#k ของข้าไหม?\r\nฮ่าๆ! แม่ไก่ทั้งหลายหลงใหล #e#bท่าเต้นจีบสาว#n#k ของข้าหมดเลย!");
                 }
             } else if (sel == 1) {
                 cm.getPlayer().updateOneInfo(26022, "exp", "");
@@ -120,12 +120,12 @@ function action(mode, type, sel) {
                 cm.dispose();
             }
         } else {
-            cm.sendSimple("남들은 나를 어수룩하다고 생각하지만 사실 나는 엄청난 실력의 소유자야. 어때, 나와 함께 모험을 하지 않겠어?\r\n\r\n#b#L0#함께 한다.#l\r\n#L1#함께하지 않는다.#l");
+            cm.sendSimple("คนอื่นคิดว่าข้าซุ่มซ่าม แต่ข้ามีฝีมือจริงๆ นะ ว่าไง จะไปผจญภัยกับข้าไหม?\r\n\r\n#b#L0#ตามไปด้วย#l\r\n#L1#ไม่ไป#l");
         }
     } else if (status == 2) {
         if (cm.getPlayer().getMapId() == 993000601) {
             if (gameType == 0) {
-                cm.sendNextNoESC("형처럼 정면에서 싸우는 것 만이 능사는 아니지! 나처럼 머리를 쓸 줄 아는 사냥꾼이야 말로 진정한 사냥꾼이라 할 수 있다고!");
+                cm.sendNextNoESC("การต่อสู้แบบพี่ไม่ใช่ทางเดียว! นักล่าที่ใช้หัวคิดอย่างข้าต่างหากคือนักล่าตัวจริง!");
             } else if (gameType == 2) {
                 var stage = cm.getPlayer().getOneInfoQuestInteger(15142, "Stage");
 
@@ -153,11 +153,11 @@ function action(mode, type, sel) {
                 }
 
                 if (stage < 5 && stage >= 1) {
-                    cm.sendNextNoESC("이번에는 #e#b" + stage + "#n#k단계 까지 올라갔군?\r\n자 여기 너의 몫으로 #b#i" + itemID + "##z" + itemID + "##k와 #b경험치#k를 줄게! 다음에 또 보자고!");
+                    cm.sendNextNoESC("คราวนี้ปีนขึ้นไปได้ #e#b" + stage + "#n#k ชั้นเลย?\r\nนี่ ส่วนแบ่งของเจ้า #b#i" + itemID + "##z" + itemID + "##k กับ #bEXP#k! ไว้เจอกันใหม่นะ!");
                 } else if (stage == 0) {
-                    cm.sendNextNoESC("아쉽게도 한층도 올라가지 못했군?\r\n자 여기 너의 몫으로 #b#i" + itemID + "##z" + itemID + "##k와 #b경험치#k를 줄게! 다음에 또 보자고!");
+                    cm.sendNextNoESC("น่าเสียดาย ปีนขึ้นไปไม่ได้สักชั้นเลย?\r\nนี่ ส่วนแบ่งของเจ้า #b#i" + itemID + "##z" + itemID + "##k กับ #bEXP#k! ไว้เจอกันใหม่นะ!");
                 } else {
-                    cm.sendNextNoESC("아닛! 너 #b드래곤의 알#k을 훔치는데 성공 했구나? 대단해 대단해! 자 여기 너의 몫으로 #b#i" + itemID + "##z" + itemID + "##k와 #b경험치#k를 줄게! 다음에 또 보자고!");
+                    cm.sendNextNoESC("ว้าว! เจ้าขโมย #bไข่มังกร#k ได้สำเร็จเลย? เจ๋งมาก! นี่ ส่วนแบ่งของเจ้า #b#i" + itemID + "##z" + itemID + "##k กับ #bEXP#k! ไว้เจอกันใหม่นะ!");
                 }
 
                 cm.getPlayer().updateOneInfo(15142, "Stage", "");
@@ -166,7 +166,7 @@ function action(mode, type, sel) {
                 cm.gainItem(itemID, quantity);
                 cm.gainExp(exp);
             } else if (gameType == 3) {
-                cm.sendNextNoESC("나만큼은 아니지만 너도 꽤나 훌륭한 #e#b구애의 춤#n#k을 추더군?\r\n역시 너도 나와 #e#b같은 부류#n#k의 사냥꾼이 틀림없어.");
+                cm.sendNextNoESC("ไม่เก่งเท่าข้าแต่เจ้าก็เต้น #e#bท่าจีบสาว#n#k ได้ดีนะ\r\nเห็นทีเจ้าก็เป็นนักล่า #e#bประเภทเดียว#n#k กับข้าแน่ๆ");
             } else {
                 var map = cm.getPlayer().getOneInfoQuestInteger(26022, "map");
                 if (map == 0) {
@@ -179,17 +179,17 @@ function action(mode, type, sel) {
             if (sel == 0) {
                 var portal = cm.getPlayer().getRandomPortal();
                 if (portal != null) {
-	       var mapID = portal.getMapID();
-	       for (var i = 0; i < 20; ++i) {
-		if (cm.getPlayerCount(mapID + i) == 0) {
-		    mapID = mapID + i;
-		    break;
-		}
-	       }
+                    var mapID = portal.getMapID();
+                    for (var i = 0; i < 20; ++i) {
+                        if (cm.getPlayerCount(mapID + i) == 0) {
+                            mapID = mapID + i;
+                            break;
+                        }
+                    }
                     cm.warp(mapID, "sp");
                     cm.getPlayer().removeAllSummons();
                     cm.getPlayer().setEnterRandomPortal(true);
-	       cm.getPlayer().CountAdd("random_portal");
+                    cm.getPlayer().CountAdd("random_portal");
                 }
                 cm.dispose();
             } else if (sel == 1) {
@@ -220,7 +220,7 @@ function action(mode, type, sel) {
             cm.getPlayer().updateOneInfo(15141, "point", "");
             cm.getPlayer().updateOneInfo(26022, "gameType", "-1");
             cm.getPlayer().updateOneInfo(26022, "exp", "");
-            cm.sendNextNoESC("이번 사냥에서 #e#b" + point + "#k#n점을 획득 했군?\r\n자 여기 너의 몫으로 #b#i" + itemID + "##z" + itemID + "##k와 #b경험치#k를 줄게! 다음에 또 보자고!");
+            cm.sendNextNoESC("การล่าครั้งนี้ได้ #e#b" + point + "#k#n คะแนน?\r\nนี่ ส่วนแบ่งของเจ้า #b#i" + itemID + "##z" + itemID + "##k กับ #bEXP#k! ไว้เจอกันใหม่นะ!");
             cm.gainItem(itemID, quantity);
             cm.gainExp(exp);
         } else if (gameType == 2) {
@@ -258,7 +258,7 @@ function action(mode, type, sel) {
             cm.getPlayer().updateOneInfo(26022, "gameType", "-1");
             cm.getPlayer().updateOneInfo(26022, "exp", "");
 
-            cm.sendNextNoESC("이번 #b구애의 춤#k에서 #e#b" + point + "번#k#n의 춤동작을 훌륭하게 소화했어!\r\n자 여기 너의 몫으로 #b#i" + itemID + "##z" + itemID + "##k와 #b경험치#k를 줄게! 다음에 또 보자고!");
+            cm.sendNextNoESC("ท่าจีบสาว#k ครั้งนี้ เจ้าเต้นได้ #e#b" + point + " ท่า#k#n ยอดเยี่ยมเลย!\r\nนี่ ส่วนแบ่งของเจ้า #b#i" + itemID + "##z" + itemID + "##k กับ #bEXP#k! ไว้เจอกันใหม่นะ!");
             cm.gainItem(itemID, quantity);
             cm.gainExp(exp);
         }

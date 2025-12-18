@@ -6,12 +6,12 @@ function start() {
 }
 
 function action(mode, type, selection) {
-        var count = 1;
+    var count = 1;
     setting = [
         ["Normal_Pinkbean", count, 270050100, 160],
         ["Chaos_Pinkbean", count, 270051100, 170]
     ]
-    name = ["노멀", "카오스"]
+    name = ["Normal", "Chaos"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -23,28 +23,28 @@ function action(mode, type, selection) {
     if (status == 0) {
         if (cm.getPlayer().getMapId() == 270050000) {
             if (cm.getPlayer().getParty() == null) {
-                cm.sendOk("파티를 맺어야만 입장할 수 있습니다.");
+                cm.sendOk("ต้องมีปาร์ตี้ถึงจะเข้าได้");
                 cm.dispose();
                 return;
             }
             if (!cm.isLeader()) {
-                cm.sendOk("파티장만 입장을 신청할 수 있습니다.");
+                cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่ขอเข้าได้");
                 cm.dispose();
                 return;
             }
-            talk = "#e<보스:핑크빈>#n\r\n"
-            talk += "침입자는 여신의 제단으로 향한 듯 합니다. 그를 어서 저지하지 못하면 무서운 일이 일어날 겁니다.\r\n\r\n"
-            //talk += "#L0# #b<보스: 핑크빈> 입장을 신청한다.";
+            talk = "#e<Boss: Pink Bean>#n\r\n"
+            talk += "ผู้บุกรุกดูเหมือนจะมุ่งหน้าไปยังแท่นบูชาของเทพธิดาแล้ว ถ้าไม่หยุดเขาเร็วๆ นี้ จะเกิดเรื่องน่ากลัวขึ้น\r\n\r\n"
+            //talk += "#L0# #b<Boss: Pink Bean> ขอเข้าสู้บอส";
             cm.sendSimple(talk);
         } else {
-            cm.sendYesNo("전투를 마치고 핑크빈의 제단에서 퇴장하시겠습니까?");
+            cm.sendYesNo("ต้องการออกจากแท่นบูชา Pink Bean หลังจบการต่อสู้หรือเปล่า?");
         }
     } else if (status == 1) {
         if (cm.getPlayer().getMapId() == 270050000) {
-            talk = "#e<보스:핑크빈> #n\r\n"
-            talk += "원하시는 모드를 선택해주세요.\r\n\r\n"
-            talk += "#L0#노멀 모드 ( 레벨 160 이상 )#l\r\n";
-            //talk += "#L1#카오스 모드 ( 레벨 170 이상 )#l\r\n";
+            talk = "#e<Boss: Pink Bean>#n\r\n"
+            talk += "กรุณาเลือกโหมดที่ต้องการ\r\n\r\n"
+            talk += "#L0#Normal Mode (Level 160 ขึ้นไป)#l\r\n";
+            //talk += "#L1#Chaos Mode (Level 170 ขึ้นไป)#l\r\n";
             cm.sendSimple(talk);
         } else {
             cm.warp(270050000);
@@ -53,43 +53,43 @@ function action(mode, type, selection) {
     } else if (status == 2) {
         st = selection;
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("파티를 맺어야만 입장할 수 있습니다.");
+            cm.sendOk("ต้องมีปาร์ตี้ถึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만 입장을 신청할 수 있습니다.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่ขอเข้าได้");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendNext("이미 다른 파티가 안으로 들어가 핑크빈에게 도전하고 있는 중입니다.");
+            cm.sendNext("มีปาร์ตี้อื่นกำลังท้าทาย Pink Bean อยู่แล้ว");
             cm.dispose();
             return;
-	} else if (!cm.allMembersHere()) {
-	    cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
-	    cm.dispose();
+        } else if (!cm.allMembersHere()) {
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ที่เดียวกัน");
+            cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "#fs11#파티원 중 #b#e"
+            talk = "#fs11#สมาชิกปาร์ตี้ #b#e"
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + ""
             }
-            talk += "#k#n님이 오늘 입장횟수를 모두 소진하셨습니다";
+            talk += "#k#n ใช้จำนวนครั้งเข้าวันนี้หมดแล้ว";
             cm.sendOk(talk);
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 #b#e"
+            talk = "สมาชิกปาร์ตี้ #b#e"
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
-            talk += "#k#n님의 레벨이 부족합니다. <보스: 핑크빈>은 레벨 " + setting[st][3] + "이상만 도전하실 수 있습니다.";
+            talk += "#k#n เลเวลไม่ถึง <Boss: Pink Bean> ต้อง Level " + setting[st][3] + " ขึ้นไปถึงจะท้าทายได้";
         } else {
             cm.addBoss(setting[st][0]);
             em = cm.getEventManager(setting[st][0]);

@@ -1,7 +1,7 @@
 importPackage(Packages.objects.utils);
 importPackage(Packages.network.models);
 
-// 이벤트매니저 초기화할 내용(채널별로 적용됨)
+// Event manager initialization (applied per channel)
 function init() {
     //Total 8 clickable maps (Easy and Normal are combined)
     em.setProperty("status0", "0");
@@ -42,7 +42,7 @@ function playerEntry(eim, player) {
 }
 
 function scheduledTimeout(eim) {
-    //ㄱㄷㄱㄷ
+    //standby
     var it = eim.getPlayers().iterator();
     var exitMap = 272020110;
     while (it.hasNext()) {
@@ -142,10 +142,10 @@ function playerExit(eim, player) {
     }
 }
 
-function allMonstersDead(eim) {}
+function allMonstersDead(eim) { }
 
 function leftParty(eim, player) {
-    // 탈퇴
+    // Player left party
     var exitMap = 272020110;
     playerExit(eim, player);
     player.changeMap(exitMap);
@@ -172,4 +172,4 @@ function disbandParty(eim) {
     }
 }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

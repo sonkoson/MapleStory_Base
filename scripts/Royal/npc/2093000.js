@@ -25,28 +25,28 @@ function start() {
         job = Packages.constants.GameConstants.getJobNameById(rs.getInt("job"));
         level = rs.getInt("level");
         date = rs.getDate("levelUpTime");
-    
+
         if (i < 10) {
-            aas = "#e00#fc0xFF09A17F#" + i + 검은색 + "#n위 | ";
+            aas = "#e00#fc0xFF09A17F#" + i + 검은색 + "#n Place | ";
         } else if (i < 100) {
-            aas = "#e0#fc0xFF09A17F#" + i + 검은색 + "#n위 | ";
+            aas = "#e0#fc0xFF09A17F#" + i + 검은색 + "#n Place | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + i + 검은색 + "#n위 | ";
+            aas = "#e#fc0xFF09A17F#" + i + 검은색 + "#n Place | ";
         }
 
-        
+
         if (rs.getInt("level") == 777) {
-            print.append("#fc0xFFb2b2b2#"+aas).append("#b").append(chrname).append("#fc0xFF000000# | #r레벨 : ").append("#fc0xFFFF3366##e").append(level).append("#n");
+            print.append("#fc0xFFb2b2b2#" + aas).append("#b").append(chrname).append("#fc0xFF000000# | #r레벨 : ").append("#fc0xFFFF3366##e").append(level).append("#n");
             print.append("#fc0xFF000000# | #fc0xFF6600CC#").append(job).append("#fc0xFF000000# | ").append(date).append("\r\n");
         } else {
-            print.append("#fc0xFFb2b2b2#"+aas).append("#b").append(chrname).append("#fc0xFF000000# | #r레벨 : ").append("#fc0xFF000000#").append(level);
+            print.append("#fc0xFFb2b2b2#" + aas).append("#b").append(chrname).append("#fc0xFF000000# | #rLv: ").append("#fc0xFF000000#").append(level);
             print.append("#fc0xFF000000# | #fc0xFF6600CC#").append(job).append("\r\n");
         }
         //print.append("#fc0xFF000000# | #fc0xFF6600CC#직업 : #fc0xFF000000#").append(job).append("\r\n");
     }
 
     //cm.sendOk("#fs11#만렙(300) 이상시 #r초월레벨#fc0xFF000000#이 증가하며\r\n레벨옆 #b파란색#fc0xFF000000# 수치가 #r초월레벨#fc0xFF000000#입니다\r\n※ 초월레벨은 #r초기화#fc0xFF000000# 될 수 있습니다\r\n\r\n"+print.toString());
-    cm.sendOk("#fs11##fc0xFF000000#랭킹 순서는 아래와 같이 정렬됩니다\r\n#b레벨 -> 경험치 -> 해당레벨달성일자\r\n\r\n"+print.toString());
+    cm.sendOk("#fs11##fc0xFF000000#Ranking is sorted as follows:\r\n#bLevel -> EXP -> Date reached that level\r\n\r\n" + print.toString());
     rs.close();
     ps.close();
     con.close();

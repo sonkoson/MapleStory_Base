@@ -7,52 +7,52 @@ var s = -1;
 var coin = 0;
 
 function start() {
-    status = -1;
-    action(1, 0, 0);
+	status = -1;
+	action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
-    if (mode == -1) {
-        cm.dispose();
-        return;
-    }
-    if (mode == 0) {
-        status--;
-        cm.dispose();
-    }
-    if (mode == 1) {
-        status++;
-    }
-
-    if (status == 0) {
-	var v = cm.getPlayer().getOneInfoQuest(18790, "coin");
-	coin = 0;
-	if (v != null && !v.isEmpty()) {
-		coin = parseInt(v);
-	}
-	if (coin > 0) {		
-		s = 0;
-		cm.sendNext("#b#i4310229:##t4310229##k을 #b" + coin + "개#k나 모으셨군요? 대단해요~\r\n\r\n그럼 광장으로 보내 드릴게요. 안녕히 가세요~");
-	} else {
-		s = 1;
-		cm.sendNext("음~ 아직 유니온 코인을 하나도 얻지 못하셨군요? 획득이 너무 어려우시다면 시간을 조금 가진 뒤 들어와 보세요. 유니온의 구성원들이 열심히 코인을 모아 둘 거예요.");
-	}
-    } else if (status == 1) {
-   	if (s == 0) {
-		var point = getUnionCoin() + coin;
-		cm.getPlayer().gainItem(4310229, coin);
-		cm.getPlayer().updateOneInfo(500629, "point", point + "");
-		cm.getPlayer().updateOneInfo(18098, "coin", "0");
-		cm.getPlayer().updateOneInfo(18790, "coin", "0");
-		cm.warp(ServerConstants.TownMap, 0);
+	if (mode == -1) {
 		cm.dispose();
-	} else {
-		cm.sendNext("그럼 광장으로 보내 드릴게요. 안녕히 가세요~");
+		return;
 	}
-    } else if (status == 2) {
-    	cm.warp(15);
-	cm.dispose();
-    }
+	if (mode == 0) {
+		status--;
+		cm.dispose();
+	}
+	if (mode == 1) {
+		status++;
+	}
+
+	if (status == 0) {
+		var v = cm.getPlayer().getOneInfoQuest(18790, "coin");
+		coin = 0;
+		if (v != null && !v.isEmpty()) {
+			coin = parseInt(v);
+		}
+		if (coin > 0) {
+			s = 0;
+			cm.sendNext("เก็บ #b#i4310229:##t4310229##k ได้ #b" + coin + " ชิ้น#k เลยเหรอ? เก่งมาก~\r\n\r\nงั้นจะส่งไปที่จัตุรัสนะ ลาก่อน~");
+		} else {
+			s = 1;
+			cm.sendNext("อืม... ยังไม่ได้ Union Coin เลย ถ้ายากเกินไป ลองเข้ามาใหม่ทีหลังนะ สมาชิก Union จะช่วยเก็บ Coin ไว้ให้");
+		}
+	} else if (status == 1) {
+		if (s == 0) {
+			var point = getUnionCoin() + coin;
+			cm.getPlayer().gainItem(4310229, coin);
+			cm.getPlayer().updateOneInfo(500629, "point", point + "");
+			cm.getPlayer().updateOneInfo(18098, "coin", "0");
+			cm.getPlayer().updateOneInfo(18790, "coin", "0");
+			cm.warp(ServerConstants.TownMap, 0);
+			cm.dispose();
+		} else {
+			cm.sendNext("งั้นจะส่งไปที่จัตุรัสนะ ลาก่อน~");
+		}
+	} else if (status == 2) {
+		cm.warp(15);
+		cm.dispose();
+	}
 }
 
 function getUnionCoin() {

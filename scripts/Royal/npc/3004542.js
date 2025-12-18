@@ -7,11 +7,11 @@ function start() {
 }
 
 function action(mode, type, selection) {
-	var count = 1;
+    var count = 1;
     setting = [
         ["Hard_Seren", count, 410002000, 280, 7]
     ]
-    name = ["하드"]
+    name = ["Hard"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -21,9 +21,9 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "세렌과 대적하기 위해 #b왕궁 메인홀#k로 이동할까?\r\n\r\n"
-        talk += "#L0##r끝에 가까운곳으로 이동한다.(LV.280이상)#k\r\n"
-        talk += "#L1#이동하지 않는다.\r\n"
+        talk = "ต้องการย้ายไป #bPalace Main Hall#k เพื่อเผชิญหน้า Seren หรือเปล่า?\r\n\r\n"
+        talk += "#L0##rย้ายไปที่ใกล้จุดจบ (LV.280 ขึ้นไป)#k\r\n"
+        talk += "#L1#ไม่ย้าย\r\n"
         cm.sendSimpleS(talk, 0x26);
     } else if (status == 1) {
         if (selection == 1) {
@@ -32,19 +32,19 @@ function action(mode, type, selection) {
         }
         st = selection;
         if (cm.getParty() == null) {
-            cm.sendOkS("1인 이상 파티를 맺어야만 입장할 수 있습니다.", 0x26);
+            cm.sendOkS("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้", 0x26);
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1 || cm.getPlayerCount(setting[st][2] + 20) >= 1 || cm.getPlayerCount(setting[st][2] + 40) >= 1 || cm.getPlayerCount(setting[st][2] + 60) >= 1 || cm.getPlayerCount(setting[st][2] + 80) >= 1) {
-            cm.sendOkS("이미 누군가가 세렌 도전하고 있습니다.\r\n다른채널을 이용 해 주세요.", 0x26);
+            cm.sendOkS("มีคนกำลังสู้ Seren อยู่แล้ว\r\nกรุณาไปช่องอื่น", 0x26);
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOkS("파티장만이 입장을 신청할 수 있습니다.", 0x26);
+            cm.sendOkS("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่ขอเข้าได้", 0x26);
             cm.dispose();
             return;
         } else if (!cm.allMembersHere()) {
-            cm.sendOk("모든 멤버가 같은 장소에 있어야 합니다.");
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ที่เดียวกัน");
             cm.dispose();
             return;
         }
@@ -53,26 +53,26 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 "
+            talk = "สมาชิกปาร์ตี้ "
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.LevelNotAvailableChrList(setting[st][3])[i] + ""
             }
-            talk += "#k#n님의 레벨이 부족합니다.\r\n세렌 " + name[st] + "모드는 " + setting[st][3] + " 레벨 이상만 입장 가능합니다.";
+            talk += "#k#n เลเวลไม่ถึง\r\nSeren " + name[st] + " Mode ต้อง Level " + setting[st][3] + " ขึ้นไปถึงจะเข้าได้";
             cm.sendOkS(talk, 0x24);
             cm.dispose();
             return;
         } else if (!cm.isBossTier(setting[st][4])) {
-            talk = "파티원 중 "
+            talk = "สมาชิกปาร์ตี้ "
             for (i = 0; i < cm.BossTierChrList(setting[st][4]).length; i++) {
                 if (i != 0) {
                     talk += ", "
                 }
                 talk += "#b#e" + cm.BossTierChrList(setting[st][4])[i] + ""
             }
-            talk += "#k#n님의 보스랭크가 부족합니다.\r\n세렌 " + name[st] + "모드는 " + setting[st][4] + " 랭크 이상만 입장 가능합니다.";
+            talk += "#k#n Boss Rank ไม่ถึง\r\nSeren " + name[st] + " Mode ต้อง Rank " + setting[st][4] + " ขึ้นไปถึงจะเข้าได้";
             cm.sendOkS(talk, 0x26);
             cm.dispose();
             return;

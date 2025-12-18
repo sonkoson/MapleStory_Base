@@ -1,0 +1,320 @@
+--- scripts\Royal\npc\1530058.js
++++ scripts\Royal\npc\1530058.js
+@@ -16,15 +16,15 @@
+ 
+ 펫 = "#fUI/CashShop.img/CashItem_label/5#";
+ 펫1 = "#fUI/CashShop.img/CashItem_label/8#";
+-길드 = "#fUI/Basic.img/RoyalBtn/theblackcoin/14#";
++guild = "#fUI/Basic.img/RoyalBtn/theblackcoin/14#";
+ 젬스톤 = "#fUI/Basic.img/RoyalBtn/theblackcoin/19#";
+ 이름변경 = "#fUI/Basic.img/RoyalBtn/theblackcoin/20#";
+ 자유전직 = "#fUI/Basic.img/RoyalBtn/theblackcoin/21#";
+-창고 = "#fUI/Basic.img/RoyalBtn/theblackcoin/13#";
++storage = "#fUI/Basic.img/RoyalBtn/theblackcoin/13#";
+ 어빌리티 = "#fUI/Basic.img/RoyalBtn/theblackcoin/22#";
+-포인트 = "#fUI/Basic.img/RoyalBtn/theblackcoin/7#";
++point = "#fUI/Basic.img/RoyalBtn/theblackcoin/7#";
+ 포켓 = "#fUI/Basic.img/RoyalBtn/theblackcoin/23#";
+-랭킹 = "#fUI/Basic.img/RoyalBtn/theblackcoin/24#";
++ranking = "#fUI/Basic.img/RoyalBtn/theblackcoin/24#";
+ 템버리기 = "#fUI/Basic.img/RoyalBtn/theblackcoin/25#";
+ 추천인 = "#fUI/Basic.img/RoyalBtn/theblackcoin/41#";
+ 검은마법사 = "#fUI/Basic.img/RoyalBtn/theblackcoin/42#";
+@@ -50,22 +50,22 @@
+     }
+     if (status == 0) {
+         if (cm.inBoss()) {
+-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
++            cm.getPlayer().dropMessage(5, "보스 In Progress중엔 이용이 불가능합니다.");
+             cm.dispose();
+             return;
+         }
+ 
+         var choose = "#fs11##fUI/Basic.img/Zenia/SC/5#\r\n";
+         choose += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#\r\n";
+-        //choose += "#L20##fc0xFFFF3636#" + 템버리기 + " 아이템 버리기#l";
+-
+-        choose += "　#L248##fc0xFFFF5E00#" + 랭킹 + " 각종랭킹확인#l　";
++        //choose += "#L20##fc0xFFFF3636#" + 템버리기 + " Item 버리기#l";
++
++        choose += "　#L248##fc0xFFFF5E00#" + ranking + " 각종랭킹OK#l　";
+         choose += "#L6##fc0xFF6B66FF# 일반펫 분양#l　";
+-        choose += "#L21##fc0xFF626262#" + 길드 + " 길드본부이동#l　\r\n\r\n";
++        choose += "#L21##fc0xFF626262#" + guild + " Guild본부이동#l　\r\n\r\n";
+ 
+         choose += "　#L26##fc0xFF8041D9#" + 추천인 + " 추천인시스템#l　";
+         //choose += "#L13##fc0xFF7112FF#" + 위장색 + " 메카닉 위장색#l\r\n";
+-        choose += "#L24##fc0xFF626262#" + 검은마법사 + " 창고 이용#l　　";
++        choose += "#L24##fc0xFF626262#" + 검은마법사 + " Storage 이용#l　　";
+         choose += "#L9##fc0xFF626262#" + 검은마법사 + " 스탯 초기화#l\r\n\r\n";
+         //choose += "#L27##fc0xFFFF3636#" + 검은마법사 + " 특별스킬 학습#l\r\n";
+ 
+@@ -73,20 +73,20 @@
+         choose += "#L779##fc0xFF626262#" + 검은마법사 + " 팬텀스틸스킬#l ";
+         choose += "#L780##fc0xFF626262#" + 검은마법사 + " 은월오류해결#l\r\n\r\n";
+ 
+-        choose += "　　　#L245#" + 파란색 + 포켓 + " [장비] 수집 시스템#l　";
++        choose += "　　　#L245#" + 파란색 + 포켓 + " [Equip] 수집 시스템#l　";
+         choose += "#L246#" + 파란색 + 포켓 + " [종합] 원클릭 시스템#l　\r\n\r\n";
+ 
+         choose += "#fc0xFFD5D5D5#───────────────────────────#k\r\n";
+         //choose += "#L11##fc0xFF6B66FF#" + 젬스톤 + " V 코어 매트릭스#k를 이용하겠습니다.\r\n#l";
+-        //choose += "#L16##fc0xFFF29661#" + 자유전직 + " 직업변경 시스템#k을 이용하겠습니다.\r\n#l";
++        //choose += "#L16##fc0xFFF29661#" + 자유전직 + " Job변경 시스템#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L9##fc0xFFF29661#" + 포켓 + " 딜량체크 시스템#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L8##fc0xFFF29661#" + 어빌리티 + " 유니온 시스템#k을 이용하겠습니다.\r\n#l";
+-        //choose += "#L7##fc0xFFF29661#" + 이름변경 + " 캐릭터 이름#k을 변경하겠습니다.\r\n#l";
++        //choose += "#L7##fc0xFFF29661#" + name변경 + " Character name#k을 변경하겠습니다.\r\n#l";
+ 
+         //choose += "#L779#" + 색 + 추천인 + " [팬텀] 스틸 스킬#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L780#" + 색 + 정령 + " [은월] 상호작용 오류 해결#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L777#" + 색 + 어빌리티 + " 뽑기 시스템#k을 이용하겠습니다.\r\n#l";
+-        choose += "   #L778#" + 창고 + " #b택배 시스템#k을 이용하겠습니다.\r\n#l";
++        choose += "   #L778#" + storage + " #b택배 시스템#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L555#" + 색 + 후원 + " 후원 시스템#k을 이용하겠습니다.\r\n#l";
+         //choose += "#L556#" + 색 + 후원 + " 홍보 시스템#k을 이용하겠습니다.\r\n#l";
+         cm.sendSimple(choose);
+@@ -101,15 +101,15 @@
+                 cm.dispose();
+                 break;
+             case 1:
+-                var msg = "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/47# #e초기 육성 TIP#n\r\n #b[1] 캐릭터 전직 시 지급되는 장비 지원 상자를 열고 장비 착용\r\n [2] 성장 컨텐츠 -> 퀘스트 -> 육성 다이어리 클리어\r\n [3] 제작할 수 있는 초기 악세서리 제작하기\r\n [4] 큐브를 통한 장비들의 잠재옵션 최대한 맞추기\r\n [5] 성장 컨텐츠 -> 장비강화 -> 메소강화 를 이용해 모든 장비 가성비 작 하기\r\n [6] 유니온 전용 캐릭터들을 키우기\r\n [7] 훨씬 강해지고 싶다면 서버를 홍보하고 홍보포인트 얻기\r\n [8] 쉴땐 마을에서 의자에 앉아있기 (1분마다 네오 젬을 수급하며 휴식상점에서 사용가능)\r\n\r\n";
+-                msg += "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/46# #e재화 TIP#n\r\n\r\n#r#i4033172##z4033172##k\r\n#fs 11#  획득처 : #b카오스 루타비스#k\r\n  사용처 : #b초월한 파프니르 제작 재료#k\r\n\r\n#r#i4031227##z4031227##k\r\n#fs 11#  획득처 : #b스우 이상 모든 보스, 광부 사냥터#k\r\n  사용처 : #b장비 강화#k\r\n\r\n";
+-                //msg += "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/45# #e핫타임#n\r\n\r\n- 오후 10시30분, 접속중이기만 하면 OK\r\n- 게임 플레이에 도움되는 여러 아이템 수령이 가능합니다."+enter;
++                var msg = "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/47# #e초기 육성 TIP#n\r\n #b[1] Character 전직 시 지급되는 Equip 지원 상자를 열고 Equip 착용\r\n [2] 성장 컨텐츠 -> 퀘스트 -> 육성 다이어리 클리어\r\n [3] 제작할 수 있는 초기 악세서리 제작하기\r\n [4] 큐브를 통한 Equip들의 잠재옵션 최대한 맞추기\r\n [5] 성장 컨텐츠 -> EquipEnhance -> MesoEnhance 를 이용해 모든 Equip 가성비 작 하기\r\n [6] 유니온 전용 Character들을 키우기\r\n [7] 훨씬 강해지고 싶다면 Server를 홍보하고 홍보포인트 얻기\r\n [8] 쉴땐 마을에서 의자에 앉아있기 (1분마다 네오 젬을 수급하며 휴식상점에서 사용가능)\r\n\r\n";
++                msg += "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/46# #e재화 TIP#n\r\n\r\n#r#i4033172##z4033172##k\r\n#fs 11#  획득처 : #b카오스 루타비스#k\r\n  사용처 : #b초월한 파프니르 제작 재료#k\r\n\r\n#r#i4031227##z4031227##k\r\n#fs 11#  획득처 : #bLotus 이상 모든 보스, 광부 사냥터#k\r\n  사용처 : #bEquip Enhance#k\r\n\r\n";
++                //msg += "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/45# #e핫타임#n\r\n\r\n- 오후 10시30분, 접속중이기만 하면 OK\r\n- 게임 플레이에 도움되는 여러 Item 수령이 가능합니다."+enter;
+ 
+ 
+                 cm.sendSimple(msg);
+                 break;
+             case 2:
+-                var msg = "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/46# #r만렙 : 500#k#b\r\n\r\n#fUI/UIWindow8.img/EldaGauge/tooltip/46# 경험치 배율\r\n0~200: 400배\r\n200~275: 150배\r\n275~300: 1500배\r\n300~320: 900배\r\n320~340: 800배\r\n340~370: 700배\r\n370~400: 600배\r\n400~410: 500배\r\n410~450: 400배\r\n450~490: 300배\r\n490~500: 100배#k";
++                var msg = "#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/46# #r만렙 : 500#k#b\r\n\r\n#fUI/UIWindow8.img/EldaGauge/tooltip/46# EXP 배율\r\n0~200: 400배\r\n200~275: 150배\r\n275~300: 1500배\r\n300~320: 900배\r\n320~340: 800배\r\n340~370: 700배\r\n370~400: 600배\r\n400~410: 500배\r\n410~450: 400배\r\n450~490: 300배\r\n490~500: 100배#k";
+                 msg += "";
+ 
+                 cm.sendSimple(msg);
+@@ -121,11 +121,11 @@
+                 cm.sendSimple(msg);
+                 break;
+             case 4:
+-                var msg = "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/52# #e유니온 & 링크 시스템#n\r\n\r\n- 유니온/링크 시스템은 공격력에 많은 영향을 미칩니다.\r\n- 유니온 시스템 관련 내용은 홈페이지에 추가 예정입니다.\r\n- 하단의 링크 효과는 120레벨을 기준으로 작성되었습니다.\r\n\r\n\r\n";
+-                msg += "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/43# #e직업 별 링크 효과#n\r\n\r\n- 메르세데스 : 경험치 획득량 15% 증가\r\n- 아란 : 콤보킬 구슬 경험치 획득량 650% 증가\r\n- 에반 : 룬 해방의 지속시간 50% 증가\r\n- 루미너스 : 몬스터 방어 무시 15% 증가\r\n- 팬텀 : 크리티컬 확률 15% 증가\r\n- 은월 : 사망에 이르는 피격 시 10% 확률로 생존\r\n" + enter;
+-                msg += "- 일리움 : 일정 시간 내 거리를 이동할 때마다 데미지 증가\r\n- 카데나 : 캐릭터보다 레벨이 낮은 몬스터에게 데미지 6% 증가\r\n- 아크 : 전투 지속 시 데미지 증가\r\n" + enter;
+-                msg += "- 엔젤릭버스터 : 사용시 10초간 데미지 90% 상승\r\n- 카이저 : 최대 HP 15% 증가\r\n\r\n- 캐논슈터 : 올스탯 25, 최대 HP10%, 최대 MP10% 상승\r\n- 제로 : 받는 데미지 15%감소, 공격 대상의 방어율 10% 무시\r\n- 키네시스 : 크리티컬 데미지 4%증가" + enter;
+-                msg += "- 시그너스 기사단 : 상태이상 내성 증가\r\n- 미하일 : 110초간 100% 확률로 스탠스\r\n\r\n- 레지스탕스 : 부활 시 8초 동안 피해 무시\r\n- 데몬슬레이어 : 보스 몬스터 공격시 15% 데미지 추가\r\n- 데몬슬레이어 : 보스 몬스터 공격시 15% 데미지 추가\r\n- 데몬어벤져 : 데미지 10% 증가\r\n- 제논 : 올스탯(힘/덱/럭/인트) 10% 상승\r\n" + enter;
++                var msg = "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/52# #e유니온 & 링크 시스템#n\r\n\r\n- 유니온/링크 시스템은 พลังโจมตี에 많은 영향을 미칩니다.\r\n- 유니온 시스템 관련 내용은 홈페이지에 추가 Yes정입니다.\r\n- 하단의 링크 효과는 120Level을 기준으로 작성되었습니다.\r\n\r\n\r\n";
++                msg += "\r\n#fs11##fUI/UIWindow8.img/EldaGauge/tooltip/43# #eJob 별 링크 효과#n\r\n\r\n- 메르세데스 : EXP 획득량 15% 증가\r\n- 아란 : 콤보킬 구슬 EXP 획득량 650% 증가\r\n- 에반 : 룬 해방의 지속시간 50% 증가\r\n- 루미너스 : 몬스터 방어 Ignore 15% 증가\r\n- 팬텀 : อัตราคริติคอล 15% 증가\r\n- 은월 : 사망에 이르는 피격 시 10% chance로 생존\r\n" + enter;
++                msg += "- 일리움 : 일정 시간 내 거리를 이동할 때마다 데미지 증가\r\n- 카데나 : Character보다 Level이 낮은 몬스터에게 데미지 6% 증가\r\n- 아크 : 전투 지속 시 데미지 증가\r\n" + enter;
++                msg += "- 엔젤릭버스터 : 사용시 10초간 데미지 90% 상승\r\n- 카이저 : 최대 HP 15% 증가\r\n\r\n- 캐논슈터 : All Stats 25, 최대 HP10%, 최대 MP10% 상승\r\n- 제로 : 받는 데미지 15%감소, 공격 대상의 방어율 10% Ignore\r\n- 키네시스 : 크리티컬 데미지 4%증가" + enter;
++                msg += "- 시그너스 기사단 : status이상 내성 증가\r\n- 미하일 : 110초간 100% chance로 스탠스\r\n\r\n- 레지스탕스 : 부활 시 8초 동안 피해 Ignore\r\n- 데몬슬레이어 : 보스 몬스터 공격시 15% 데미지 추가\r\n- 데몬슬레이어 : 보스 몬스터 공격시 15% 데미지 추가\r\n- 데몬어벤져 : 데미지 10% 증가\r\n- 제논 : All Stats(힘/덱/럭/인트) 10% 상승\r\n" + enter;
+                 msg += "- 패스파인더 : 설명 준비중 입니다\r\n- 호영 : 설명 준비중 입니다" + enter;
+                 cm.sendSimple(msg);
+                 break;
+@@ -169,7 +169,7 @@
+             case 9: // 스탯 초기화
+                 //cm.resetStats(4, 4, 4, 4);
+                 cm.getPlayer().statReset();
+-                cm.sendOkS("#fs11##b#e스탯 초기화가 완료되었습니다.", 2);
++                cm.sendOkS("#fs11##b#e스탯 초기화가 Complete되었습니다.", 2);
+                 cm.dispose();
+                 break;
+             case 10:
+@@ -273,7 +273,7 @@
+                 cm.dispose();
+                 cm.openNpc(1530056);
+                 break;
+-            case 778: // 창고
++            case 778: // Storage
+                 cm.dispose();
+                 cm.openNpcCustom(cm.getClient(), 9010009, "택배");
+                 break;
+@@ -283,7 +283,7 @@
+                     cm.dispose();
+                     return;
+                 }
+-                msg = "#fs11#" + 검은색 + "원하시는 시스템을 선택해 주세요\r\n";
++                msg = "#fs11#" + 검은색 + "원하시는 시스템을 selection해 주세요\r\n";
+                 msg += "#L1##fc0xFFFF3636##s20031207# 스틸 스킬 시스템#l\r\n";
+                 msg += "#L2##fc0xFFFF3636##s20031208# 스틸 스킬 초기화 시스템#l";
+                 cm.sendSimple(msg);
+@@ -515,12 +515,12 @@
+             case 27:
+                 switch (sel) {
+                     case 1:
+-                        cm.sendOkS("#fs11##b#e감사합니다~!", 2);
++                        cm.sendOkS("#fs11##b#eขอบคุณครับ~!", 2);
+                         cm.dispose();
+                         cm.teachSkill(80001829, 5, 5);
+                         break;
+                     case 2:
+-                        cm.sendOkS("#fs11##b#e감사합니다~!", 2);
++                        cm.sendOkS("#fs11##b#eขอบคุณครับ~!", 2);
+                         cm.dispose();
+                         cm.teachSkill(80001825, 5, 5);
+                         break;
+--- scripts\Royal\npc\3003208.js
++++ scripts\Royal\npc\3003208.js
+@@ -13,7 +13,7 @@
+ var quantity = 0;
+ var clear = false;
+ var coin = 0;
+-var 코인 = 0;
++var coin = 0;
+ 
+ function start() {
+     status = -1;
+@@ -31,14 +31,14 @@
+         status++;
+     }
+     if (status == 0) {
+-        if (cm.getPlayer().getMapId() == 921171100) { // 보상맵
++        if (cm.getPlayer().getMapId() == 921171100) { // 보상Map
+             var stage = cm.getPlayer().getOneInfoQuestInteger(15901, "stage");
+             var selectedStage = cm.getPlayer().getOneInfoQuestInteger(15901, "selectedStage");
+             if (stage == selectedStage) {
+-                cm.sendNext("음! 도전에 #r실패#k했군요?\r\n힘들다면 조금 낮은 단계부터 도전해 보는게 어때요?");
++                cm.sendNext("음! 도전에 #rFail#k했군요?\r\n힘들다면 조금 낮은 단계부터 도전해 보는게 어때요?");
+             } else if (stage > selectedStage) {
+                 clear = true;
+-                var clearstage = stage - 1; // 성공한 스테이지
++                var clearstage = stage - 1; // Success한 스테이지
+ 
+                 talk = "와~ #b" + clearstage + "스테이지#k 까지 돌파하셨군요? 대단해요~\r\n\r\n";
+ 
+@@ -56,7 +56,7 @@
+                 }
+ 
+                 if (score > b_score) {
+-                    talk += "#r게다가 개인 신기록#k을 세우셨군요!";
++                    talk += "#r게다가 ชิ้น인 신기록#k을 세우셨군요!";
+                 }
+                 cm.sendNext(talk);
+             }
+@@ -64,9 +64,9 @@
+             talk = "#b#e<드림브레이커>#k#n\r\n"
+                 talk += "아웅.... 언제쯤 편안하게 잠을 잘 수 있을까?\r\n\r\n"
+                 talk += "#L0# #b<드림브레이커>에 도전한다.#l\r\n"
+-                talk += "#L1# 나의 기록을 확인한다.#l\r\n"
+-                talk += "#L2# 주간 랭킹을 확인한다.#l\r\n"
+-                talk += "#L4# 드림 코인을 교환한다.#l\r\n";
++                talk += "#L1# 나의 기록을 OK한다.#l\r\n"
++                talk += "#L2# 주간 랭킹을 OK한다.#l\r\n"
++                talk += "#L4# 드림 코인을 Trade한다.#l\r\n";
+             talk += "#L3# 설명을 듣는다.#l";
+             cm.sendSimple(talk);
+         }
+@@ -75,11 +75,11 @@
+             if (clear) {
+                 quantity = cm.getPlayer().getOneInfoQuestInteger(15901, "stage") - 1;
+                 if (!cm.canHold(4036068, quantity)) {
+-                    cm.sendNext("인벤토리 공간을 확보하고 다시 말 걸어주세요!");
++                    cm.sendNext("Inventory 공간을 확보하고 다시 말 걸어주세요!");
+                     cm.dispose();
+                     return;
+                 }
+-                cm.sendNext("자 여기 #i4036068##b#z4036068##k #r" + quantity + "개#k를 선물로 드릴게요!\r\n\r\n그럼 다음에 또 도와주세요!");
++                cm.sendNext("자 여기 #i4036068##b#z4036068##k #r" + quantity + "ชิ้น#k를 선물로 드릴게요!\r\n\r\n그럼 เอาไว้คราวหน้า 또 도와주세요!");
+             } else {
+                 cm.warp(450004000);
+                 cm.dispose();
+@@ -89,7 +89,7 @@
+             if (sel == 0) {
+                 var bestStage = cm.getPlayer().getOneInfoQuestInteger(15901, "best");
+                 talk = "당신의 최고 기록은 #r#e" + bestStage + "단계#k#n군요?\r\n"
+-                    talk += "현재 도전할 수 있는 스테이지는 다음과 같아요.\r\n\r\n"
++                    talk += "현재 도전할 수 있는 스테이지는 Next과 같아요.\r\n\r\n"
+                     floor = bestStage - (bestStage % 10);
+                 for (var i = floor; i >= 0; i -= 10) {
+                     i = i == 0 ? 1 : i;
+@@ -98,8 +98,8 @@
+                 cm.sendSimple(talk);
+             } else if (sel == 1) {
+                 talk = "당신의 #e<드림브레이커 기록>#n을 알려드릴게요!\r\n\r\n"
+-                    talk += "#e개인 최고기록 : #b" + cm.getPlayer().getOneInfoQuestInteger(15901, "best") + "스테이지#k#n\r\n"
+-                    talk += "#e오늘 입장 횟수 : #b" + cm.getPlayer().GetCount("dream_breaker") + " 번#k#n\r\n"
++                    talk += "#eชิ้น인 최고기록 : #b" + cm.getPlayer().getOneInfoQuestInteger(15901, "best") + "스테이지#k#n\r\n"
++                    talk += "#e오늘 Enter 횟수 : #b" + cm.getPlayer().GetCount("dream_breaker") + " 번#k#n\r\n"
+                     var lastWeek = cm.getPlayer().getOneInfoQuestInteger(20200128, "last_week_dream_breaker");
+                 var lw = "기록 없음";
+                 if (lastWeek != 0) {
+@@ -162,8 +162,8 @@
+                 } else if (cm.haveItem(4310227, 30)) {
+                     coin = 1;
+                 }
+-                cm.sendGetNumber("#i4036068##b#z4036068##k을 #i1712003##r#z1712003##k으로 교환 할래요?\r\n(#b드림 코인 30개#k = #r아케인심볼 : 레헬른 1개#k)\r\n 최대 #e#r" + coin + "#n#k개 교환 가능.)", coin, 1, coin);
+-                코인 = 1;
++                cm.sendGetNumber("#i4036068##b#z4036068##k을 #i1712003##r#z1712003##k으로 Trade 할래요?\r\n(#b드림 코인 30ชิ้น#k = #r아케인심볼 : 레헬른 1ชิ้น#k)\r\n 최대 #e#r" + coin + "#n#kชิ้น Trade 가능.)", coin, 1, coin);
++                coin = 1;
+             }
+         }
+     } else if (status >= 2 && sss) {
+@@ -172,21 +172,21 @@
+         }
+         name = ["드림브레이커 규칙", "드림포인트", "드림브레이커 보상", "드림브레이커 랭킹"];
+         dialogue = [
+-            ["루시드의 악몽을 멈추기 위해선 #b#e숙면의 오르골#k#n을 지키고 #r#e악몽의 오르골#k#n을 파괴해야 해요.",
+-                "총 #e5개의 방#n 중에서 #b#e숙면의 오르골#k#n이 더 많으면 #b#e노란색 게이지가 왼쪽으로#k#n 차오르고, #r#e악몽의 오르골#k#n이 더 많으면 #r#e보라색 게이지가 오른쪽으로#k#n 차오를 거예요.\r\n\r\n결과적으로 제한시간 #e3분 이내에 #b노란색 게이지#k#n를 다 채우면 스테이지를 클리어하게 되죠.",
+-                "드림브레이커는 #e하루 3회#n까지 입장 할 수 있어요.",
+-                "그럼 저를 도와 #r#e루시드의 악몽#k#n을 멈춰주세요!"
++            ["Lucid의 악몽을 멈추기 위해선 #b#e숙면의 오르골#k#n을 지키고 #r#e악몽의 오르골#k#n을 Destroyed해야 해요.",
++                "총 #e5ชิ้น의 방#n 중에서 #b#e숙면의 오르골#k#n이 더 많으면 #b#e노란색 게이지가 왼쪽으로#k#n 차오르고, #r#e악몽의 오르골#k#n이 더 많으면 #r#e보라색 게이지가 오른쪽으로#k#n 차오를 거Yes요.\r\n\r\nresult적으로 제한시간 #e3분 이내에 #b노란색 게이지#k#n를 다 채우면 스테이지를 클리어하게 되죠.",
++                "드림브레이커는 #e하루 3회#n까지 Enter 할 수 있어요.",
++                "그럼 저를 도와 #r#eLucid의 악몽#k#n을 멈춰주세요!"
+             ],
+             ["#e드림포인트#n는 드림브레이커에서 #r#e스테이지를 클리어 할때마다#k#n 얻는 점수로, #b#e전략스킬#k#n을 발동핼 때 사용해요.\r\n\r\n획득되는 드림포인트는 #e매 10스테이지#n마다 #e10씩 증가#n하고 최대 #b#e3000점#k#n까지 누적할 수 있답니다.",
+-                "사용할 수 있는 #b#e전략스킬#n#k은 다음과 같아요.\r\n\r\n#e<게이지 홀드>#n\r\n드림포인트: 200 소모 / 5초간 게이지의 이동을 멈춤.\r\n\r\n#e<자각의 종>#n\r\n드림포인트: 300 소모 / 랜덤한 악몽의 오르골 1개를 제거.\r\n\r\n#e<헝겊인형 소환>#n\r\n드림포인트: 400 소모 / 주변의 몬스터를 도발하는 헝겊인형 소환. (15초간 유지)\r\n\r\n#e<폭파>#n\r\n드림포인트: 900 소모 / 모든 몬스터를 처치, 10초간 재소환을 막음.",
++                "사용할 수 있는 #b#e전략스킬#n#k은 Next과 같아요.\r\n\r\n#e<게이지 홀드>#n\r\n드림포인트: 200 소모 / 5초간 게이지의 이동을 멈춤.\r\n\r\n#e<자각의 종>#n\r\n드림포인트: 300 소모 / 랜덤한 악몽의 오르골 1ชิ้น를 제거.\r\n\r\n#e<헝겊인형 소환>#n\r\n드림포인트: 400 소모 / 주변의 몬스터를 도발하는 헝겊인형 소환. (15초간 유지)\r\n\r\n#e<폭파>#n\r\n드림포인트: 900 소모 / 모든 몬스터를 처치, 10초간 재소환을 막음.",
+                 "하나의 스테이지에서는 #r#e동일한 스킬을 두 번 사용할 수 없으니#k#n 스킬 사용은 신중하게 하세요!"
+             ],
+             ["스테이지를 클리어 하면 #e최종적으로 도달한 스테이지#n 만큼의 코인을 얻을 수 있어요.",
+                 "마지막으로 일일 #b도전 횟수를 모두 소모#k한 뒤 #b레헬른 중심가#k오른쪽에 위치한 #r주간 랭킹 1~5위 유저#k를 찾아가면 #b하루 1번 다양한 선물#k을 받을 수 있으니 꼭 찾아가 보세요!"
+             ],
+             ["스테이지를 클리어 하면 #b도달 스테이지 / 클리어 시간#k을 기준으로 #b주간 최고기록#k인 경우 #r자동으로 랭킹에 등록#k돼요.",
+-                "주간랭킹은 #b매 주 월요일 자정#k에 초기화 돼요.\r\n랭킹 정산을 위해 #r일요일 오후 11시 30분 부터 월요일 자정 12시 30분 까지는#k 입장이 제한 된답니다.",
+-                "그리고 주간 랭킹 #e1~5등#n에 기록된 캐릭터는 #b레헬른 중심가#k 한켠에 그 모습이 1주일간 기록되고 여러 용사님들에게 선물을 드리는 역할을 수행해요.",
++                "주간랭킹은 #b매 주 월요일 자정#k에 초기화 돼요.\r\n랭킹 정산을 위해 #r일요일 오후 11시 30분 부터 월요일 자정 12시 30분 까지는#k Enter이 제한 된답니다.",
++                "그리고 주간 랭킹 #e1~5등#n에 기록된 Character는 #b레헬른 중심가#k 한켠에 그 모습이 1주일간 기록되고 여러 용사님들에게 선물을 드리는 역할을 수행해요.",
+                 "#r최고의 드림브레이커#k가 되어 용사님들로부터 선망의 대상이 되어 보세요!"
+             ]
+         ];
+@@ -203,10 +203,10 @@
+             cm.sendNextPrev(talk);
+         }
+     } else if (status == 2) {
+-        if (코인 == 1) {
++        if (coin == 1) {
+             var leftslot = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP).getNumFreeSlot();
+             if (leftslot < sel) {
+-                cm.sendOk("인벤토리 공간이 최소한 " + sel + "칸은 필요합니다. 장비 탭의 공간을 " + sel + "칸 이상 비워주세요.");
++                cm.sendOk("Inventory 공간이 최소한 " + sel + "칸은 ต้องการครับ. Equip 탭의 공간을 " + sel + "칸 이상 비워주세요.");
+                 cm.dispose();
+                 return;
+             }
+@@ -215,7 +215,7 @@
+                 for (var i = 0; i < sel; ++i) {
+                     cm.gainItem(1712003, 1);
+                 }
+-                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "개를 받아");
++                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "ชิ้น를 받아");
+                 cm.dispose();
+                 return;
+             } else if (cm.haveItem(4310227, sel * 30)) {
+@@ -223,7 +223,7 @@
+                 for (var i = 0; i < sel; ++i) {
+                     cm.gainItem(1712003, 1);
+                 }
+-                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "개를 받아");
++                cm.sendOk("자 여기 #i1712003# #b#z1712003##k " + sel + "ชิ้น를 받아");
+                 cm.dispose();
+                 return;
+             } else {
+@@ -251,7 +251,7 @@
+         }
+ 
+         if (cm.getPlayer().GetCount("dream_breaker") >= 3) {
+-            cm.sendOk("오늘은 더 이상 #b#e<드림 브레이커>#k#n에 도전할 수 없어요.\r\n\r\n#r#e(1일 3회 입장 가능)#k#n");
++            cm.sendOk("오늘은 더 이상 #b#e<드림 브레이커>#k#n에 도전할 수 없어요.\r\n\r\n#r#e(1일 3회 Enter 가능)#k#n");
+             cm.dispose();
+         } else {
+             cm.getPlayer().updateOneInfo(15901, "selectedStage", "" + selectStage);

@@ -10,7 +10,7 @@ function action(mode, type, selection) {
     setting = [
         ["Normal_Kawoong", count, 221030910, 180]
     ]
-    name = ["노멀", "하드"]
+    name = ["Normal", "Hard"]
     if (mode == -1 || mode == 0) {
         cm.dispose();
         return;
@@ -20,32 +20,32 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        말 = "#e<카웅 노멀 모드>#n\r\n\r\n"
-        말 += "겁도 없이 여기까지 오다니!! 새롭게 개조한 전투형 카웅의 맛을 볼 테냐!\r\n"
-        말 += "#r(카웅(노멀)에는 #e하루에 " + setting[0][1] + "회 입장#n할 수 있으며, 입장 기록은 #e매일 자정#n에 초기화 됩니다.)#k\r\n\r\n"
-        말 += "#L0# #b카웅 입장을 신청한다.(파티원이 동시에 이동됩니다.)#k#l"
-        cm.sendSimple(말);
+        msg = "#e<Kawoong Normal Mode>#n\r\n\r\n"
+        msg += "กล้าดีที่มาถึงที่นี่!! อยากลิ้มรส Kawoong รุ่นต่อสู้ที่อัพเกรดใหม่หรือเปล่า!\r\n"
+        msg += "#r(Kawoong (Normal) สามารถเข้าได้ #eวันละ " + setting[0][1] + " ครั้ง#n และบันทึกการเข้าจะ #eรีเซ็ตทุกเที่ยงคืน#n)#k\r\n\r\n"
+        msg += "#L0# #bขอเข้าสู้ Kawoong (ปาร์ตี้จะย้ายพร้อมกัน)#k#l"
+        cm.sendSimple(msg);
     } else if (status == 1) {
         st = selection;
         if (cm.getParty() == null) {
-            cm.sendOk("1인 이상 파티를 맺어야만 입장할 수 있어.");
+            cm.sendOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนถึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendOk("이미 누군가가 카웅에 도전하고 있어.\r\n다른채널을 이용 해 줘.");
+            cm.sendOk("มีคนกำลังสู้ Kawoong อยู่แล้ว\r\nกรุณาไปช่องอื่น");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("파티장만이 입장을 신청할 수 있어.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่ขอเข้าได้");
             cm.dispose();
             return;
-	} else if (!cm.allMembersHere()) {
-	    cm.sendOk("모든 멤버가 같은 장소에 있어야 해.");
-	    cm.dispose();
+        } else if (!cm.allMembersHere()) {
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ที่เดียวกัน");
+            cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "파티원 중 이미 입장한 사람이 있어.\r\n\r\n"
+            talk = "มีสมาชิกปาร์ตี้ที่เข้าแล้ววันนี้:\r\n\r\n"
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 talk += "#b#e-" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + "\r\n"
             }
@@ -53,7 +53,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "파티원 중 카웅에 도전하기 위한 레벨이 부족한 사람이 있어."
+            talk = "มีสมาชิกปาร์ตี้ที่เลเวลไม่ถึงสำหรับท้าทาย Kawoong:\r\n"
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 talk += "#b#e-" + cm.LevelNotAvailableChrList(setting[st][3])[i] + "\r\n"
             }

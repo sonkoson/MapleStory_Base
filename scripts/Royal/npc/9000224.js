@@ -269,7 +269,7 @@ function action(mode, type, selection) {
             else pendingList.push(i);
         }
 
-        var text = "#fs11##e             " + 별노 + " [ 강림월드 ] 수집 컨텐츠 " + 별노 + "#n\r\n#r        주의 : 보유중인 아이템 클릭 시 즉시 수집됩니다.#k\r\n\r\n";
+        var text = "#fs11##e             " + 별노 + " [ Collection System ] " + 별노 + "#n\r\n#r        คำเตือน: คลิกไอเทมที่มีจะสะสมทันที#k\r\n\r\n";
         finalList = pendingList.concat(doneList);
 
         for (var j = 0; j < finalList.length; j += 2) {
@@ -284,14 +284,14 @@ function action(mode, type, selection) {
 
             text += "#L" + j + "#";
             if (done1) {
-                text += "#d#i" + itemId1 + "#(완료)#k";
+                text += "#d#i" + itemId1 + "#(สำเร็จ)#k";
             } else {
                 text += "#b#i" + itemId1 + "#";
                 text += have1 >= needAmount1
                     ? "#g(" + have1 + "/" + needAmount1 + ")#k"
                     : "#r(" + have1 + "/" + needAmount1 + ")#k";
             }
-            text += "→#i" + rewardId1 + "##b" + rewardAmount1 + "개#k#l";
+            text += "→#i" + rewardId1 + "##b" + rewardAmount1 + " ชิ้น#k#l";
 
             if (j + 1 < finalList.length) {
                 var idx2 = finalList[j + 1];
@@ -305,14 +305,14 @@ function action(mode, type, selection) {
 
                 text += " #L" + (j + 1) + "#";
                 if (done2) {
-                    text += "#d#i" + itemId2 + "#(완료)#k";
+                    text += "#d#i" + itemId2 + "#(สำเร็จ)#k";
                 } else {
                     text += "#b#i" + itemId2 + "#";
                     text += have2 >= needAmount2
                         ? "#g(" + have2 + "/" + needAmount2 + ")#k"
                         : "#r(" + have2 + "/" + needAmount2 + ")#k";
                 }
-                text += "→#i" + rewardId2 + "##b" + rewardAmount2 + "개#k#l";
+                text += "→#i" + rewardId2 + "##b" + rewardAmount2 + " ชิ้น#k#l";
             }
 
             text += "\r\n";
@@ -322,7 +322,7 @@ function action(mode, type, selection) {
 
     } else if (status == 1) {
         if (selection < 0 || selection >= finalList.length) {
-            cm.sendOk("#fs11#올바르지 않은 선택입니다.");
+            cm.sendOk("#fs11#การเลือกไม่ถูกต้อง");
             cm.dispose();
             return;
         }
@@ -336,26 +336,26 @@ function action(mode, type, selection) {
         var key = prefix + itemId + "_" + needAmount;
 
         if (cm.getClient().getKeyValue(key) == 1) {
-            cm.sendOk("#fs11#이미 완료한 항목입니다.");
+            cm.sendOk("#fs11#รายการนี้เสร็จสิ้นแล้ว");
             cm.dispose();
             return;
         }
 
         var have = isEquip(itemId) ? getEquipCount(itemId) : cm.itemQuantity(itemId);
         if (have < needAmount) {
-            cm.sendOk("#fs11#아이템 수량이 부족합니다. (" + have + "/" + needAmount + ")");
+            cm.sendOk("#fs11#ไอเทมไม่พอ (" + have + "/" + needAmount + ")");
             cm.dispose();
             return;
         }
 
         if (!canHoldReward(rewardId, rewardAmount)) {
-            cm.sendOk("#fs11#보상을 받을 인벤토리 공간이 부족합니다!");
+            cm.sendOk("#fs11#ช่องว่างในกระเป๋าไม่พอที่จะรับรางวัล!");
             cm.dispose();
             return;
         }
 
         if (!payItems(itemId, needAmount)) {
-            cm.sendOk("#fs11#아이템 삭제 실패!");
+            cm.sendOk("#fs11#ลบไอเทมล้มเหลว!");
             cm.dispose();
             return;
         }
@@ -363,7 +363,7 @@ function action(mode, type, selection) {
         gainReward(rewardId, rewardAmount);
         cm.getPlayer().getClient().setKeyValue(key, "1");
 
-        cm.sendOk("#fs11#수집 완료!\r\n보상으로 #i" + rewardId + "##b#z" + rewardId + "# " + rewardAmount + "개#k를 받았습니다.");
+        cm.sendOk("#fs11#สะสมสำเร็จ!\r\nได้รับ #i" + rewardId + "##b#z" + rewardId + "# " + rewardAmount + " ชิ้น#k เป็นรางวัล");
         status = -1;
     }
 }
@@ -382,7 +382,7 @@ function payItems(itemId, amount) {
         }
     }
 
-    itemsList.sort(function(a, b) {
+    itemsList.sort(function (a, b) {
         return a.getPosition() - b.getPosition();
     });
 

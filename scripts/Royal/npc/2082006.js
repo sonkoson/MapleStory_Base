@@ -2,13 +2,13 @@ var enter = "\r\n";
 var seld = -1;
 
 var need = [
-    {'itemid' : 4001326, 'qty' : 1},
-    {'itemid' : 4001327, 'qty' : 1},
-    {'itemid' : 4001328, 'qty' : 1},
-    {'itemid' : 4001329, 'qty' : 1},
-    {'itemid' : 4001330, 'qty' : 1},
-    {'itemid' : 4001331, 'qty' : 1},
-    {'itemid' : 4001332, 'qty' : 1}
+    { 'itemid': 4001326, 'qty': 1 },
+    { 'itemid': 4001327, 'qty': 1 },
+    { 'itemid': 4001328, 'qty': 1 },
+    { 'itemid': 4001329, 'qty': 1 },
+    { 'itemid': 4001330, 'qty': 1 },
+    { 'itemid': 4001331, 'qty': 1 },
+    { 'itemid': 4001332, 'qty': 1 }
 ];
 var tocoin = 2433979, toqty = 5;
 
@@ -26,34 +26,34 @@ function action(mode, type, sel) {
     }
 
     if (status == 0) {
-        // 인트로 대사
-        var msg = "#fs11##fc0xFF000000#안녕하세요~ 멋진 그림을 그리고 싶은데 크레파스가 부족해서요.. 도와주실래요?"+enter;
+        // Intro dialogue
+        var msg = "#fs11##fc0xFF000000#สวัสดีค่ะ~ อยากวาดรูปสวยๆ แต่สีเทียนไม่พอ.. ช่วยหน่อยได้ไหม?" + enter;
 
-        // 필요한 아이템 수량 안내
+        // Required items amount display
         for (var i = 0; i < need.length; i++) {
             var item = need[i];
             if (i != need.length - 1) {
-                msg += "#b#i" + item.itemid + "##z" + item.itemid + "# " + item.qty + "개 / #r#c " 
-                    + item.itemid + "#개 보유" + "#b" + enter;
+                msg += "#b#i" + item.itemid + "##z" + item.itemid + "# " + item.qty + " pcs / #r#c "
+                    + item.itemid + "# pcs owned" + "#b" + enter;
             } else {
-                msg += "#i" + item.itemid + "##z" + item.itemid + "# " + item.qty + "개 / #r#c " 
-                    + item.itemid + "#개 보유#fc0xFF000000#\r\n\r\n크레파스를 모아주세요!"+enter;
+                msg += "#i" + item.itemid + "##z" + item.itemid + "# " + item.qty + " pcs / #r#c "
+                    + item.itemid + "# pcs owned#fc0xFF000000#\r\n\r\nช่วยเก็บสีเทียนให้ด้วย!" + enter;
             }
         }
 
-        // 보상 안내
-        msg += "#b보상 : #i" + tocoin + "# #z" + tocoin + "# " + toqty + "개"+enter;
+        // Reward display
+        msg += "#bReward: #i" + tocoin + "# #z" + tocoin + "# " + toqty + " pcs" + enter;
 
         if (haveNeed(1)) {
             cm.sendNext(msg);
         } else {
-            msg += "\r\n#fc0xFF000000#크레파스가 부족해요! 빨리 구해주세요~";
+            msg += "\r\n#fc0xFF000000#สีเทียนไม่พอ! รีบหามาให้เร็ว~";
             cm.sendOk(msg);
             cm.dispose();
         }
 
     } else if (status == 1) {
-        // 최대 교환 가능 개수 계산
+        // Calculate max exchange count
         var counts = [];
         for (var i = 0; i < need.length; i++) {
             counts.push(Math.floor(cm.itemQuantity(need[i].itemid) / need[i].qty));
@@ -62,14 +62,14 @@ function action(mode, type, sel) {
         var max = counts[0];
 
         cm.sendGetNumber(
-            "#fs11##fc0xFF000000#최대 #b" + max + "번#k 교환 가능\r\n몇 번 교환하시겠어요?",
+            "#fs11##fc0xFF000000#แลกได้สูงสุด #b" + max + " ครั้ง#k\r\nจะแลกกี่ครั้ง?",
             1, 1, max
         );
 
     } else if (status == 2) {
-        // 선택한 개수만큼 인벤토리에서 제거 및 보상 지급
+        // Remove items from inventory and give reward based on selected count
         if (!haveNeed(sel)) {
-            cm.sendOk("#fc0xFF000000#크레파스가 모자라요!");
+            cm.sendOk("#fc0xFF000000#สีเทียนไม่พอ!");
             cm.dispose();
             return;
         }
@@ -77,7 +77,7 @@ function action(mode, type, sel) {
             cm.gainItem(need[i].itemid, -need[i].qty * sel);
         }
         cm.gainItem(tocoin, toqty * sel);
-        cm.sendOk("#fs11##fc0xFF000000#고마워요! 이제 그림을 그릴 수 있어요!");
+        cm.sendOk("#fs11##fc0xFF000000#ขอบคุณ! ตอนนี้วาดรูปได้แล้ว!");
         cm.dispose();
     }
 }

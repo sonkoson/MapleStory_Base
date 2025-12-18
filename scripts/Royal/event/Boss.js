@@ -17,7 +17,7 @@ importPackage(Packages.objects.fields.gameobject.lifes);
 
 var rucif = 8880166;
 
-function init() {}
+function init() { }
 
 
 function playerRevive(eim, player) {
@@ -30,7 +30,7 @@ function spawnBoss(bossid, point, mapid, eim) {
     var map = eim.getMapFactory().getMap(mapid);
 
     map.spawnMonsterOnGroundBelow(mobzz, point);
-    /*if (eim.getProperty("BossName").contains("스우") && eim.getProperty("KillCount") == 0) {
+    /*if (eim.getProperty("BossName").contains("Lotus") && eim.getProperty("KillCount") == 0) {
         eim.startSpawnSelfDestructMob(mobzz, map);
     }*/
 }
@@ -55,17 +55,17 @@ function playerEntry(eim, player) {
     mapid = Integer.parseInt(eim.getProperty("StartMap"));
     player.warp(mapid);
     var deathCount = Integer.parseInt(eim.getProperty("DeathCount"));
-    if (eim.getProperty("BossName") != "검은마법사") {
+    if (eim.getProperty("BossName") != "Black Mage") {
         player.setDeathCount(deathCount);
     }
     var bossMode = 0;
     if (eim.getProperty("BossMode") != null) {
-	bossMode = Integer.parseInt(eim.getProperty("BossMode"));
+        bossMode = Integer.parseInt(eim.getProperty("BossMode"));
     }
     player.setBossMode(bossMode);
     if (player.isLeader() && eim.getProperty("Boss_ID") != null) {
         var map = eim.getMapFactory().getMap(mapid);
-        if (eim.getProperty("BossName") == "카오스 핑크빈") {
+        if (eim.getProperty("BossName") == "Chaos Pink Bean") {
             map.spawnMonsterOnGroundBelow(em.getMonster(8820115), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820116), new Point(x, y));
             map.spawnMonsterOnGroundBelow(em.getMonster(8820117), new Point(x, y));
@@ -73,7 +73,7 @@ function playerEntry(eim, player) {
             map.spawnMonsterOnGroundBelow(em.getMonster(8820102), new Point(4, y));
             spawnBoss(8820210, new Point(x, y), mapid, eim);
         } else {
-            if (!eim.getProperty("BossName").contains("스우") && !eim.getProperty("BossName").contains("블러디 퀸") && !eim.getProperty("BossName").contains("혼테일") && !eim.getProperty("BossName").contains("벨룸") && !eim.getProperty("BossName").contains("데미안") && !eim.getProperty("BossName").contains("루시드") && !eim.getProperty("BossName").contains("윌") && !eim.getProperty("BossName").contains("진힐라") && !eim.getProperty("BossName").contains("듄켈") && !eim.getProperty("BossName").contains("더스크") && !eim.getProperty("BossName").contains("파풀라투스")) {
+            if (!eim.getProperty("BossName").contains("Lotus") && !eim.getProperty("BossName").contains("Bloody Queen") && !eim.getProperty("BossName").contains("Horntail") && !eim.getProperty("BossName").contains("Vellum") && !eim.getProperty("BossName").contains("Demian") && !eim.getProperty("BossName").contains("Lucid") && !eim.getProperty("BossName").contains("Will") && !eim.getProperty("BossName").contains("Jin Hilla") && !eim.getProperty("BossName").contains("Dunkel") && !eim.getProperty("BossName").contains("Dusk") && !eim.getProperty("BossName").contains("Papulatus")) {
                 spawnBoss(mobid, new Point(x, y), mapid, eim);
             }
         }
@@ -100,7 +100,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(ServerConstants.TownMap);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "이동되었습니다.");
+            chr.dropMessage(5, "ย้ายกลับเมืองเรียบร้อยแล้ว");
 
         }
     } else {
@@ -109,7 +109,7 @@ function scheduledTimeout(eim) {
             var tese = chr.getWarpMap(ServerConstants.TownMap);
             chr.setClock(0);
             chr.changeMap(tese, tese.getPortal(0));
-            chr.dropMessage(5, "시간이 지나, 파티가 해체됩니다.");
+            chr.dropMessage(5, "หมดเวลาแล้ว ปาร์ตี้ถูกยุบ");
 
         }
     }
@@ -125,8 +125,8 @@ function playerDead(eim, player) {
     if (dc != null) {
         if (dc > 0) {
             if (!(player.getMapId() >= 450013000 && player.getMapId() <= 450013700)) {
-		player.setDeathCount(dc - 1);
-	}
+                player.setDeathCount(dc - 1);
+            }
             player.setAutoRespawn(30, 5);
             //player.warp(player.getMap().getId());
             //player.addHP(500000);
@@ -135,7 +135,7 @@ function playerDead(eim, player) {
             eim.unregisterAll();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "데스카운트를 모두 소모하였습니다.");
+                chr.dropMessage(5, "ใช้ Death Count หมดแล้ว");
                 chr.setClock(0);
                 var tese = chr.getWarpMap(ServerConstants.TownMap);
                 chr.changeMap(tese, tese.getPortal(0));
@@ -167,7 +167,7 @@ function onMapLoad(eim, player) {
     player.deathCount();
 }
 
-function playerDisconnected(eim, player) {}
+function playerDisconnected(eim, player) { }
 
 
 function changedMap(eim, player, mapid) {
@@ -200,7 +200,7 @@ function playerExit(eim, player) {
 
 function allMonstersDead(eim) {
     kc = Integer.parseInt(eim.getProperty("KillCount"));
-    if (eim.getProperty("BossName") == "루시드") {
+    if (eim.getProperty("BossName") == "Lucid") {
         if (kc == 0) {
             eim.setProperty("KillCount", 99);
             var it = eim.getPlayers().iterator();
@@ -218,7 +218,7 @@ function allMonstersDead(eim) {
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880165), new Point(1085, -619));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880168), new Point(525, -685));
                 eim.getMapFactory().getMap(Integer.parseInt(eim.getProperty("SecondMap"))).spawnMonsterOnGroundBelow(em.getMonster(8880171), new Point(329, -855));
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "กำลังเข้าสู่เฟส 2...");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -228,70 +228,70 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(4033804, 1);
-                chr.dropMessage(5, "클리어를 축하드립니다! 오르골이 지급되었으니, 입장 엔피시에게 가져다 주시길 바랍니다. 자동으로 퇴장됩니다.");
-                //chr.worldGMMessage(7, "[클리어] 루시드보스가 클리어 됐습니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์สำเร็จแล้ว! ได้รับกล่องดนตรีแล้ว เอาไปให้ NPC ที่ทางเข้าได้เลย จะย้ายออกอัตโนมัติ");
+                //chr.worldGMMessage(7, "[Clear] Lucid boss has been cleared.");
             }
         }
-    } else if (eim.getProperty("BossName") == "진격의거인") {
+    } else if (eim.getProperty("BossName") == "Attack on Titan") {
         eim.restartEventTimer(10000);
         eim.setProperty("IsClear", "1");
         var it = eim.getPlayers().iterator();
         while (it.hasNext()) {
             var chr = it.next();
             chr.gainItem(Integer.parseInt(eim.getProperty("Boss_Reward")), 1);
-            chr.dropMessage(5, "클리어를 축하드립니다! 토벌 증표가 지급되었으니, 진격의 거인 엔피시에게 가져다 주시길 바랍니다. 자동으로 퇴장됩니다.");
+            chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์สำเร็จแล้ว! ได้รับเหรียญปราบศัตรูแล้ว เอาไปให้ NPC ได้เลย จะย้ายออกอัตโนมัติ");
         }
-    } else if (eim.getProperty("BossName") == "카오스 파풀라투스") {
+    } else if (eim.getProperty("BossName") == "Chaos Papulatus") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "파풀라투스 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Papulatus สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "하드 힐라") {
+    } else if (eim.getProperty("BossName") == "Hard Hilla") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "힐라 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Hilla สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "카오스 핑크빈") {
+    } else if (eim.getProperty("BossName") == "Chaos Pink Bean") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "카오스 핑크빈 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Chaos Pink Bean สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "반 레온") {
+    } else if (eim.getProperty("BossName") == "Von Leon") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "반 레온 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Von Leon สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "매그 너스") {
+    } else if (eim.getProperty("BossName") == "Magnus") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "매그너스 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Magnus สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "아카이럼") {
+    } else if (eim.getProperty("BossName") == "Arkarium") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
@@ -299,10 +299,10 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(2434589, 1);
-                chr.dropMessage(5, "아카이럼 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Arkarium สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "시그 너스") {
+    } else if (eim.getProperty("BossName") == "Cygnus") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
@@ -310,20 +310,20 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.gainItem(2434588, 1);
-                chr.dropMessage(5, "시그너스 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Cygnus สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "카오스 혼테일") {
+    } else if (eim.getProperty("BossName") == "Chaos Horntail") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "카오스 혼테일 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Chaos Horntail สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "카오스 피에르") {
+    } else if (eim.getProperty("BossName") == "Chaos Pierre") {
         if (kc == 0) {
             var x = 491;
             var y = 551;
@@ -332,7 +332,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200611);
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "กำลังเข้าสู่เฟส 2...");
             }
             eim.getMapFactory().getMap(105200611).resetFully();
             spawnBoss(8900001, new Point(x, y), 105200611, eim);
@@ -344,7 +344,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(105200612);
-                chr.dropMessage(5, "3페이지로 넘어갑니다.");
+                chr.dropMessage(5, "กำลังเข้าสู่เฟส 3...");
             }
             eim.getMapFactory().getMap(105200612).resetFully();
             spawnBoss(8900002, new Point(x, y), 105200612, eim);
@@ -354,43 +354,43 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "카오스 피에르 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Chaos Pierre สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "카오스 반반") {
+    } else if (eim.getProperty("BossName") == "Chaos Von Bon") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "카오스 반반 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Chaos Von Bon สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
-    } else if (eim.getProperty("BossName") == "카오스 벨룸") {
+    } else if (eim.getProperty("BossName") == "Chaos Vellum") {
         if (kc == 0) {
             eim.restartEventTimer(20000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "카오스 벨룸 클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์ Chaos Vellum สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
             }
         }
     } else {
-        if (!eim.getProperty("BossName").contains("스우")) {
-        	eim.restartEventTimer(20000);
-        	eim.setProperty("IsClear", "1");
-        	var it = eim.getPlayers().iterator();
-        	while (it.hasNext()) {
-            		var chr = it.next();
-            		chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
-        	}
+        if (!eim.getProperty("BossName").contains("Lotus")) {
+            eim.restartEventTimer(20000);
+            eim.setProperty("IsClear", "1");
+            var it = eim.getPlayers().iterator();
+            while (it.hasNext()) {
+                var chr = it.next();
+                chr.dropMessage(5, "ยินดีด้วยนะ เคลียร์สำเร็จแล้ว! จะย้ายออกอัตโนมัติ");
+            }
         }
     }
 }
 
-function monsterKilled(eim, player, point) {}
+function monsterKilled(eim, player, point) { }
 
 
 function leftParty(eim, player) {
@@ -400,7 +400,7 @@ function leftParty(eim, player) {
         var tese = chr.getWarpMap(ServerConstants.TownMap);
         chr.setClock(0);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티원 혹은 파티장이 파티를 그만두거나 맵을 이동하여 원정대가 해체됩니다.");
+        chr.dropMessage(5, "สมาชิกหรือหัวหน้าปาร์ตี้ออกจากปาร์ตี้หรือย้ายแมพ ทำให้ปาร์ตี้ถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {
@@ -417,7 +417,7 @@ function disbandParty(eim) {
         chr.setClock(0);
         var tese = chr.getWarpMap(ServerConstants.TownMap);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티원 혹은 파티장이 파티를 그만두거나 맵을 이동하여 원정대가 해체됩니다.");
+        chr.dropMessage(5, "สมาชิกหรือหัวหน้าปาร์ตี้ออกจากปาร์ตี้หรือย้ายแมพ ทำให้ปาร์ตี้ถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {

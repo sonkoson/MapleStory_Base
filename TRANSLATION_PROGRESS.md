@@ -1,125 +1,94 @@
-# Translation Progress - Real-time Update
-**Last Updated:** 2025-12-16 01:22:00 +07:00
+# MapleStory Thai Localization - Progress Tracker
+## Updated: 2025-12-18 05:50
 
 ---
 
-## 🎯 Overall Progress
+## ✅ Completed Files (Session 2 - Batch of 20)
 
-### Phase Completion
-- ✅ Phase 1: Encoding Conversion - 100%
-- ✅ Phase 2: Translation Preparation - 100%
-- ⏳ Phase 3: Translation Execution - 2%
-- ⏳ Phase 4: Quality Assurance - 0%
-- ⏳ Phase 5: Testing & Deployment - 0%
+### NPC Scripts - Today's Session
+| # | File | Description | Status |
+|---|------|-------------|--------|
+| 1 | `9000172.js` | Beauty NPC (Hair/Face/Skin) | ✅ English menus |
+| 2 | `9000368.js` | Growth Diary Quest NPC | ✅ English |
+| 3 | `9000197.js` | Damage Meter NPC | ✅ English |
+| 4 | `3003166.js` | Hungry Muto NPC | ✅ Thai |
+| 5 | `9010108.js` | Union Coin NPC | ✅ Thai |
+| 6 | `2082006.js` | Crayon Exchange NPC | ✅ Thai |
+| 7 | `9001059.js` | Polo Bounty Hunter NPC | ✅ Thai |
+| 8 | `9001060.js` | Pritto Bounty Hunter NPC | ✅ Thai |
+| 9 | `9000224.js` | Collection System NPC | ✅ Thai |
 
-**Overall Project:** 34% (Phases 1-2 complete, Phase 3 started)
-
----
-
-## 📁 Files Completed
-
-### Boss Scripts
-1. ✅ **RootAbyss.java** - 100% COMPLETE
-   - Started with: 24 Korean strings
-   - Translated: 24 strings
-   - Remaining: 0 strings
-   - Status: ✅ NO KOREAN TEXT
-
-### Server NPCs  
-- ⏳ JinCustomNPC.java - 24% (780/3,248 translated)
-- ⏳ RoyalCustomNPC.java - 0%
-- ⏳ ZeniaCustomNPC.java - 0%
-
-### Boss Scripts (In Progress)
-- ⏳ Zakum.java - Processing
-- ⏳ BossOutPortal.java - Processing
-- ⏳ VonLeon.java - Processing
-- ⏳ Tengu.java - Processing
-- ⏳ Mitsuhide.java - Processing
-
-### Boss Scripts (Not Started - 0 Korean)
-- ✅ Dusk.java - 0 Korean (already clean)
-- ✅ Dunkel.java - 0 Korean (already clean)
-- ✅ Sernium.java - 0 Korean (already clean)
-- ✅ JinHillah.java - 0 Korean (already clean)
-- ✅ Lucid.java - 0 Korean (already clean)
-- ✅ Karing.java - 0 Korean (already clean)
-- ✅ BlackMage.java - 0 Korean (already clean)
-- ✅ Will.java - 0 Korean (already clean)
-- ✅ Demian.java - 0 Korean (already clean)
-- ✅ Swoo.java - 0 Korean (already clean)
+### Event Scripts - Today's Session
+| # | File | Description | Status |
+|---|------|-------------|--------|
+| 1 | `Boss_.js` | Main Boss Event | ✅ Thai messages |
 
 ---
 
-## 📊 Statistics
+## ✅ Previously Completed Files
 
-### Files
-- **Total Java Files:** 2,667
-- **Files with Korean:** 60
-- **Files Completed:** 1 (1.7%)
-- **Files In Progress:** 6 (10%)
-- **Files Remaining:** 53 (88.3%)
+### NPC Scripts (Previous Sessions)
+- `2091011.js` - Mu Lung Dojo NPC ✅
+- `2460021.js` - Cash Charging NPC ✅
+- `9010017.js` - GM Tool NPC (English) ✅
+- `9010106.js` - Maple Union NPC ✅
+- `9001171.js` - Frozen Link Entry NPC ✅
+- `9001182.js` - Frozen Link Charge NPC ✅
+- `9010110.js` - Truth Room (Anti-Macro) NPC ✅
+- `9000219.js` - Adventure Drill NPC ✅
+- `3006264.js` - Arcane Shade Exchange NPC ✅
+- `2184000.js` - Hilla Boss Entry NPC ✅
+- `2141001.js` - Pink Bean Boss Entry NPC ✅
+- `3003560.js` - Will Boss Entry NPC ✅
+- `3004542.js` - Seren Boss Entry NPC ✅
+- `3001020.js` - Magnus Boss Entry NPC ✅
+- `2083004.js` - Horntail Boss Entry NPC ✅
+- `2161005.js` - Von Leon Boss Entry NPC ✅
+- `2052044.js` - Kawoong Boss Entry NPC ✅
+- `2144017.js` - Arkarium Boss Entry NPC ✅
 
-### Korean Strings
-- **Total Korean Strings:** ~34,553
-- **Strings Translated:** ~800+ (2.3%)
-- **Strings Remaining:** ~33,750 (97.7%)
-
-### Time
-- **Time Spent:** ~4 hours
-- **Estimated Remaining:** 70-90 hours
-- **Method:** Hybrid (manual + automated batch replacement)
-
----
-
-## 🚀 Current Strategy
-
-### Automated Batch Replacement
-Using comprehensive replacement dictionaries for:
-- Common Korean words → Thai/English
-- Korean particles → removed
-- Game terminology → standardized
-- Verb endings → Thai equivalents
-
-### Files Being Processed Simultaneously
-- Boss scripts (small files, 30-500 strings each)
-- Faster completion rate
-- Better coverage
-
-### Next Steps
-1. Complete all Boss scripts (15 files)
-2. Complete Quest scripts (7 files)
-3. Complete smaller files first
-4. Return to large files (JinCustomNPC, RoyalCustomNPC, ZeniaCustomNPC) last
+### Event Scripts (Previous Sessions)
+- `Cygnus.js` - Cygnus Boss Event ✅
+- `Arkarium.js` - Comments translated ✅
+- `Horntail.js` - Comments translated ✅
+- `Boss.js` - Boss messages ✅
 
 ---
 
-## ✅ Achievements
+## 📊 Current Statistics
 
-### Encoding
-- ✅ 2,667 files converted to UTF-8 without BOM
-- ✅ 0 BOM remaining
-- ✅ Backup secured
-
-### Translation
-- ✅ 1 file completely translated (RootAbyss.java)
-- ✅ ~800 Korean strings translated
-- ✅ 150+ replacement patterns created
-- ✅ Consistent terminology maintained
-- ✅ Formatting codes preserved
+- **Total Files Completed This Session**: 10
+- **Total Files Completed All Sessions**: ~30+
+- **Estimated Korean Words Translated**: ~6,000+
 
 ---
 
-## 📝 Next Milestones
+## 🔄 Files Still Pending (High Priority)
 
-- [ ] Complete all Boss scripts (15 files)
-- [ ] Complete all Quest scripts (7 files)
-- [ ] Complete Priority 1 Server NPCs (3 files)
-- [ ] Verify no Korean remains
-- [ ] Quality assurance review
+Based on Korean word count:
+1. `1530058.js` - 448 words
+2. `3003208.js` - 442 words  
+3. `3004749.js` - 149 words
+4. `1530050.js` - 117 words
+5. `1057001.js` - 77 words
+6. `3003105.js` - 57 words
+7. `3003536.js` - 56 words
+8. `1530330.js` - 49 words
+9. `1stevent.js` - 36 words
+10. `2093000.js` - 33 words
 
 ---
 
-**Status:** Actively translating - Automated batch mode  
-**ETA for Boss scripts:** 2-3 hours  
-**ETA for all files:** 70-90 hours
+## Translation Guidelines Applied
+
+### Player-Facing Messages
+- Thai casual tone (no ครับ/ค่ะ unless NPC personality requires)
+- MapleStory style language
+- Preserve formatting codes (#b, #r, #k, etc.)
+
+### System/Admin Messages
+- Clear English for GM tools
+- Technical terms kept in English
+
+### Comments
+- Korean comments → English translation

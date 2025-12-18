@@ -14,67 +14,67 @@ var limit = 3;
 var easy_map = 921170050;
 var hard_map = 921170100;
 var sel2 = -1;
-var difficulty_0 = "쉬운 난이도";
-var difficulty_1 = "보통 난이도";
-var difficulty_2 = "어려운 난이도";
+var difficulty_0 = "Easy";
+var difficulty_1 = "Normal";
+var difficulty_2 = "Hard";
 var rank_0 = "S";
 var rank_1 = "A";
 var rank_2 = "B";
 
 function start() {
-    status = -1;
-    action(1, 0, 0);
+        status = -1;
+        action(1, 0, 0);
 }
 function action(mode, type, sel) {
-    if (mode == 1) {
-        status++;
-    } else {
-        cm.dispose();
-        return;
-    }
-    if (cm.getPlayer().getLevel() < 215) {
-        cm.sendOk("배고픈 무토 컨텐츠는 215 레벨 이상만 가능합니다.");
-        cm.dispose();
-        return; 
-    }
+        if (mode == 1) {
+                status++;
+        } else {
+                cm.dispose();
+                return;
+        }
+        if (cm.getPlayer().getLevel() < 215) {
+                cm.sendOk("คอนเทนต์ Hungry Muto ต้องเลเวล 215 ขึ้นไป");
+                cm.dispose();
+                return;
+        }
         if (cm.getPlayer().getMap().getId() == 450002024) {
                 if (status == 0) {
-                        var msg = "#e#b<로얄 메이플 - 배고픈 무토>#n\r\n";
-                        msg += "#b무토#k를 도와주셔서 감사해요!\r\n";
-                        msg += "#b#L0#<배고픈 무토> 보상을 받는다.#k#l";
+                        var msg = "#e#b<Hungry Muto>#n\r\n";
+                        msg += "ขอบคุณที่ช่วย #bMuto#k นะ!\r\n";
+                        msg += "#b#L0#รับรางวัล <Hungry Muto>#k#l";
                         cm.sendSimple(msg);
                 } else if (status == 1) {
                         var time = cm.getPlayer().getMutoClearTime() / 1000;
                         if (time == -1) {
-                            cm.sendNext("도대체 어떻게 여기를 온거지?");
-                            cm.warp(450002023);
-                            cm.dispose();
-                            return;
+                                cm.sendNext("มาถึงที่นี่ได้ยังไง?");
+                                cm.warp(450002023);
+                                cm.dispose();
+                                return;
                         }
-        var count = calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), cm.getPlayer().getMutoClearRank());
-        if (count <= 0) {
-            cm.warp(450002023);
-                            cm.dispose();
-                            return;
-        }
+                        var count = calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), cm.getPlayer().getMutoClearRank());
+                        if (count <= 0) {
+                                cm.warp(450002023);
+                                cm.dispose();
+                                return;
+                        }
                         var second = parseInt(time % 60);
                         time /= 60;
                         var minute = parseInt(time % 60);
                         time /= 60;
-                        var msg = "도와 주셔서 감사해요!\r\n#e#r";
+                        var msg = "ขอบคุณที่ช่วย!\r\n#e#r";
                         var diff = cm.getPlayer().getMutoClearDifficulty();
-                        msg += (diff == 0 ? difficulty_0 : diff == 1 ? difficulty_1 : difficulty_2) + "#n#k를 #b#e" + minute + "분 " + second + "초#n#k 만에 클리어 하셨군요!";
+                        msg += (diff == 0 ? difficulty_0 : diff == 1 ? difficulty_1 : difficulty_2) + "#n#k เคลียร์ใน #b#e" + minute + " นาที " + second + " วินาที#n#k!";
                         cm.sendNext(msg);
                 } else if (status == 2) {
                         var rank = cm.getPlayer().getMutoClearRank();
-        var msg = "자! 여기 제가 준비한 선물을 받아주세요\r\n#e#b클리어 등급: #r" + (rank == 0 ? rank_0 : rank == 1 ? rank_1 : rank_2) + "#e#k급\r\n";
+                        var msg = "นี่ค่ะ ของขวัญที่เตรียมไว้\r\n#e#bRank: #r" + (rank == 0 ? rank_0 : rank == 1 ? rank_1 : rank_2) + "#e#k\r\n";
                         msg += "#i1712002##e#b#z1712002##k " + calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), rank) + "개\r\n";
-                        msg += "#b경험치:" + calcRewardExp(cm.getPlayer().getMutoClearDifficulty(), rank);
+                        msg += "#bEXP:" + calcRewardExp(cm.getPlayer().getMutoClearDifficulty(), rank);
                         cm.sendSimple(msg);
                 } else if (status == 3) {
                         var count = calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), cm.getPlayer().getMutoClearRank());
                         if (!cm.canHold(1712002, count)) {
-                                cm.sendNext("여행자님! 인벤토리 슬롯이 부족한거 같은데요?");
+                                cm.sendNext("ไม่มีที่ว่างในกระเป๋า นะ!");
                                 cm.dispose();
                                 return;
                         }
@@ -100,7 +100,7 @@ function action(mode, type, sel) {
                         msg += "#L2#오늘의 남은 도전횟수를 확인한다.#l#k\r\n\r\n\r\n";
                         msg += "#e* 1회 클리어 후 즉시 완료가 가능합니다.\r\n";
                         msg += "* 오늘의 최고 보상 기록:\r\n";
-                        msg += "#i1712002##e#b#z1712002# " + cm.getPlayer().getStackTodayCount("muto_reward") + "개";
+                        msg += "#i1712002##e#b#z1712002# " + cm.getPlayer().getStackTodayCount("muto_reward") + " pcs";
                         cm.sendSimple(msg);
                 } else if (status == 1) {
                         if (sel == 0) {
@@ -129,23 +129,23 @@ function action(mode, type, sel) {
                                 sel2 = -1;
                         } else {
                                 var difficulty = sel;
-                                if(!cm.CountCheck("hungry_muto", limit)) {
-                                        cm.sendOk("하루에 "+limit+"번만 가능하답니다.");
+                                if (!cm.CountCheck("hungry_muto", limit)) {
+                                        cm.sendOk("เข้าได้วันละ " + limit + " ครั้งเท่านั้น");
                                         cm.dispose();
                                         return;
                                 }
                                 if (cm.getPlayer().getParty() == null) {
-                                        cm.sendOk("파티를 꾸리고 도전하시길 바랍니다.");
+                                        cm.sendOk("กรุณาสร้างปาร์ตี้ก่อน");
                                         cm.dispose();
                                         return;
                                 }
                                 if (!isPartyLeader()) {
-                                        cm.sendOk("파티장이 아니면 신청할 수 없습니다.");
+                                        cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สมัครได้");
                                         cm.dispose();
                                         return;
                                 }
                                 if (!cm.allMembersHere()) {
-                                        cm.sendOk("파티원이 전원 이곳에 모여있어야 합니다.");
+                                        cm.sendOk("สมาชิกปาร์ตี้ทุกคนต้องอยู่ที่นี่");
                                         cm.dispose();
                                         return;
                                 }
@@ -155,36 +155,36 @@ function action(mode, type, sel) {
                                         return;
                                 }
                                 if (cm.getPlayerCount(hard_map) > 0) {
-                                        cm.sendOk("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k");
+                                        cm.sendOk("มีคนอื่นกำลังท้าทายอยู่\r\n#bกรุณาเปลี่ยนช่อง#k");
                                         cm.dispose();
                                         return;
                                 }
-                                
+
                                 var it = cm.getClient().getChannelServer().getPartyMembers(cm.getParty()).iterator();
                                 var countPass = true;
                                 while (it.hasNext()) {
                                         var chr = it.next();
-                                        if (!CC(chr,"hungry_muto", limit)) {
+                                        if (!CC(chr, "hungry_muto", limit)) {
                                                 countPass = false;
                                                 break;
                                         }
                                 }
                                 if (!countPass) {
-                                        cm.sendOk("파티원 중 입장 횟수가 남아있지 않은 파티원이 있습니다.");
+                                        cm.sendOk("มีสมาชิกปาร์ตี้ที่ไม่มีจำนวนครั้งเหลือแล้ว");
                                         cm.dispose();
                                         return;
                                 } else {
-                                var it = cm.getClient().getChannelServer().getPartyMembers(cm.getParty()).iterator();
-                                var countPass = true;
-                                while (it.hasNext()) {
-                                        var chr = it.next();
-                                        //AC(chr, "muto_easy"); // 클리어시 차감으로 변경
-                                }
+                                        var it = cm.getClient().getChannelServer().getPartyMembers(cm.getParty()).iterator();
+                                        var countPass = true;
+                                        while (it.hasNext()) {
+                                                var chr = it.next();
+                                                //AC(chr, "muto_easy"); // 클리어시 차감으로 변경
+                                        }
                                 }
                                 cm.resetMap(difficulty == 1 ? easy_map : hard_map, false);
                                 var em = cm.getEventManager("hungry_muto");
                                 if (em == null) {
-                                        cm.sendNext("배고픈 무토를 진행하는 도중에 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+                                        cm.sendNext("เกิดข้อผิดพลาด กรุณาลองใหม่ในภายหลัง");
                                         cm.dispose();
                                         return;
                                 }
@@ -201,18 +201,18 @@ function action(mode, type, sel) {
 }
 
 function AC(player, boss) {
-    player.CountAdd(boss);
+        player.CountAdd(boss);
 }
 
 function CC(player, boss, limit) {
-    return player.CountCheck(boss, limit);
+        return player.CountCheck(boss, limit);
 }
 
 function isPartyLeader() {
-    if (cm.getPlayer().getParty().getLeader().getId() == cm.getPlayer().getId())
-        return true;
-    else
-        return false;
+        if (cm.getPlayer().getParty().getLeader().getId() == cm.getPlayer().getId())
+                return true;
+        else
+                return false;
 }
 
 function calcRewardCount(difficulty, rank) {
@@ -239,7 +239,7 @@ function calcRewardCount(difficulty, rank) {
 }
 
 function calcRewardExp(difficulty, rank) {
-        if (difficulty == 0) { // 경험치 직접 설정해주세요.
+        if (difficulty == 0) { // Set EXP directly
                 if (rank == 0) {
                         return 2427144000;
                 } else if (rank == 1) {

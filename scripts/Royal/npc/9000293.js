@@ -11,13 +11,13 @@ function action(mode, type, sel) {
     } else {
         cm.dispose();
         return;
-        }
+    }
     if (status == 0) {
-        var msg = "#fs11#마음의 준비를 하는게 좋을거야~ #k\r\n\r\n";
-        msg += "#L2# #d존의 진심이 담겨있는 꽃 #b(보상#i4021031# 500개)#l#k#n\r\n";
-        msg += "#L3# #d슈미가 잃어버린 동전 #b(보상#i4021031# 500개)#l#k#n\r\n";
-        msg += "#L4# #d크리슈라마의 만드라고라 #b(보상#i4021031# 500개)#l#k#n\r\n";
-        msg += "#L5# #d작전 명! 폐광 탐사 작전 #b(보상#i4021031# 500개)#l#k#n\r\n";
+        var msg = "#fs11#เตรียมใจให้พร้อมไว้นะ~ #k\r\n\r\n";
+        msg += "#L2# #dFlower of John's Heart #b(Reward #i4021031# 500)#l#k#n\r\n";
+        msg += "#L3# #dShumi's Lost Coin #b(Reward #i4021031# 500)#l#k#n\r\n";
+        msg += "#L4# #dKrisharama's Mandragora #b(Reward #i4021031# 500)#l#k#n\r\n";
+        msg += "#L5# #dOperation: Abandoned Mine Survey #b(Reward #i4021031# 500)#l#k#n\r\n";
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;
@@ -25,20 +25,20 @@ function action(mode, type, sel) {
             case 2:
                 cm.dispose();
                 cm.openNpc(20000);
-            break;
+                break;
             case 3:
                 cm.dispose();
                 cm.openNpc(1052102);
-            break;
+                break;
             case 4:
 
                 cm.dispose();
                 cm.openNpc(1061000);
-            break;
+                break;
             case 5:
                 cm.dispose();
                 cm.openNpc(2010000);
-            break;
+                break;
         }
     }
 }

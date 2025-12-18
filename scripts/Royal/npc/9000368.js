@@ -14,24 +14,24 @@ function start() {
 function action(mode, type, selection) {
 
     /* questlist
-    아이템 모아오기
-    [아이템코드, "mob", 개수, 비밀퀘스트여부, 레벨]
-    레벨 찍기
-    [0, "level", 0, 비밀퀘스트여부, 레벨]
-    메소 모아오기
-    [0, "meso", 수치, 비밀퀘스트여부, 레벨]
-    캐시 모아오기
-    [0, "mpoint", 수치, 비밀퀘스트여부, 레벨]
-    파티생성하기
-    [0,"party",파티원수,비밀퀘스트여부,레벨]
-    보스 잡기
-    [보스이름,"boss",몇번잡아야되는지,비밀퀘스트여부,레벨]
-    동접 n명 이상
-    [0, "howmany", 수치, 비밀퀘스트여부, 레벨]
-    킬포인트
-    [0, "kpoint", 수치, 비밀퀘스트여부, 레벨]
-    아이템 보유하기 (안 가져감)
-    [아이템코드, "item", 개수, 비밀퀘스트여부, 레벨]
+    // Collect Item
+    // [itemCode, "mob", quantity, isSecretQuest, level]
+    // Reach Level
+    // [0, "level", 0, isSecretQuest, level]
+    // Collect Meso
+    // [0, "meso", amount, isSecretQuest, level]
+    // Collect Cash
+    // [0, "mpoint", amount, isSecretQuest, level]
+    // Create Party
+    // [0,"party",partyMemberCount,isSecretQuest,level]
+    // Kill Boss
+    // [bossName,"boss",numberOfKills,isSecretQuest,level]
+    // Concurrent Users >= n
+    // [0, "howmany", amount, isSecretQuest, level]
+    // Kill Points
+    // [0, "kpoint", amount, isSecretQuest, level]
+    // Own Item (not taken)
+    // [itemCode, "item", quantity, isSecretQuest, level]
     */
 
     questlist = [
@@ -50,12 +50,12 @@ function action(mode, type, selection) {
         [250, "level", 0, false, 250, -1]
     ];
     /* itemlist
-    일반 아이템
-    [아이템코드, "item", 개수, 0]
-    기간아이템
-    [아이템코드, "itemPeriod", 개수, 기간(단위 : 일)]
-    장비아이템 올스탯 공마 붙여서
-    [아이템코드, "EqpAllStatAtk", 올스탯, 공마]
+    Regular Item
+    [itemCode, "item", quantity, 0]
+    Period Item
+    [itemCode, "itemPeriod", quantity, period(unit: days)]
+    Equipment Item with All Stats and ATK
+    [itemCode, "EqpAllStatAtk", allStats, atkMatk]
     */
     itemlist = [
         [[4310237, "item", 100, 0]],
@@ -100,52 +100,52 @@ function action(mode, type, selection) {
         for (i = 0; i < GameServer.getAllInstances().length; i++) {
             user += /*GameServer.getAllInstances().get(i).getPlayerStorage().getAllCharacters().length;*/0;
         }
-        말 = "#fc0xFF6600CC##e#fs11#[강림월드] 육성 다이어리#n#k\r\n\r\n";
-        말 += "#b" + questlist.length + " 개#k 의 #b#e[강림] 육성 다이어리#k#n를 완성하고 보상을 받아가세요.\r\n#r#e#fs12#[ 퀘스트를 클릭하면 해당 맵으로 이동합니다. ]#k#n#fs11#\r\n";
-        말 += "#r강림 다이어리는 계정 당 1회에 한하여 퀘스트 보상을 받을 수 있어요\r\n"
-        말 += "#b * 모든 다이어리 완료보상 : #b#i4310266##z4310266# #r2000개#k\r\n";
+        msg = "#fc0xFF6600CC##e#fs11#[Growth Diary]#n#k\r\n\r\n";
+        msg += "Complete #b" + questlist.length + "#k #b#e[Growth Diary]#k#n quests and claim rewards.\r\n#r#e#fs12#[ Click quest to teleport to that map ]#k#n#fs11#\r\n";
+        msg += "#rGrowth Diary rewards can only be claimed ONCE per account.\r\n"
+        msg += "#b * All Diary Completion Reward: #b#i4310266##z4310266# #r2000 pcs#k\r\n";
 
         for (i = 0; i < questlist.length; i++) {
             if (cm.getClient().getKeyValue("diary" + i) != null) {
                 questcompleted++;
             } else {
-                말 += "#fs11##L" + i + "#"
+                msg += "#fs11##L" + i + "#"
                 if (cm.getPlayer().getLevel() >= questlist[i][4]) {
-                    말 += "#b"
+                    msg += "#b"
                 } else {
-                    말 += "#Cgray#"
+                    msg += "#Cgray#"
                 }
-                말 += getQuestType(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][3], questlist[i][4])
-                말 += " #d(" + isQuestCompletable(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][4]) + ")#k#l\r\n\r\n";
+                msg += getQuestType(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][3], questlist[i][4])
+                msg += " #d(" + isQuestCompletable(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][4]) + ")#k#l\r\n\r\n";
                 for (j = 0; j < rewardlist[i].length; j++)
-                    말 += "#fs11#     #fc0xFFF781D8#ㄴ 보상 : #i" + rewardlist[i][j][0] + "# #b#z" + rewardlist[i][j][0] + "# " + rewardlist[i][j][1] + "개#k\r\n"
+                    msg += "#fs11#     #fc0xFFF781D8#└─ Reward: #i" + rewardlist[i][j][0] + "# #b#z" + rewardlist[i][j][0] + "# " + rewardlist[i][j][1] + " pcs#k\r\n"
             }
         }
         if (cm.getClient().getKeyValue("questallcompleted") == null) {
-            말 += "\r\n#L1000# #b#e모든 다이어리를 완성했어! #d("
+            msg += "\r\n#L1000# #b#eI've completed all diaries! #d("
             if (questcompleted == questlist.length || cm.getPlayer().getGMLevel() >= 11) { // GM테스트
-                말 += "완료가능)#k#l"
+                msg += "Can Complete)#k#l"
             } else {
-                말 += "진행중)#r\r\n"
-                말 += "[" + questcompleted + "개의 퀘스트를 완료했으며, " + (questlist.length - questcompleted) + "개의 퀘스트가 진행중 입니다.]"
+                msg += "In Progress)#r\r\n"
+                msg += "[Completed " + questcompleted + " quests, " + (questlist.length - questcompleted) + " quests in progress.]"
             }
         }
-        cm.sendSimple(말);
+        cm.sendSimple(msg);
     } else if (status == 1) {
         if (selection == 1000) {
-            말2 = "";
+            msg2 = "";
             if (questcompleted == questlist.length || cm.getPlayer().getGMLevel() >= 11) {
                 gift = [[4310266, 2000]];
                 for (i = 0; i < gift.length; i++) {
-                    말2 += "#i" + gift[i][0] + "# #b#z" + gift[i][0] + "# " + gift[i][1] + "개#k\r\n"
+                    msg2 += "#i" + gift[i][0] + "# #b#z" + gift[i][0] + "# " + gift[i][1] + " pcs#k\r\n"
                     cm.gainItem(gift[i][0], gift[i][1]);
                 }
                 cm.getClient().setKeyValue("questallcompleted", 1);
-                말 = "모든 다이어리를 완성해 주었구나! 보상으로 아래와 같은 아이템을 지급해 주었어!\r\n\r\n";
-                말 += 말2;
-                cm.sendOk(말);
+                msg = "You completed all diaries! Here are your rewards:\r\n\r\n";
+                msg += msg2;
+                cm.sendOk(msg);
             } else {
-                cm.sendOk("#fs11#아직 다이어리를 완성하지 못한 것 같은데?");
+                cm.sendOk("#fs11#You haven't completed all diaries yet.");
                 cm.dispose();
             }
         } else {
@@ -157,17 +157,17 @@ function action(mode, type, selection) {
             }
 
             qt = questlist[st];
-            if (isQuestCompletable(qt[0], qt[1], qt[2], qt[4]) == "완료 가능") {
+            if (isQuestCompletable(qt[0], qt[1], qt[2], qt[4]) == "Can Complete") {
                 for (i = 0; i < itemlist[st].length; i++) {
                     gainItemByType(itemlist[st][i][0], itemlist[st][i][1], itemlist[st][i][2], itemlist[st][i][3])
                 }
                 gainReqitemByType(qt[0], qt[1], qt[2]);
                 cm.getClient().setKeyValue("diary" + st, 1);
-                cm.sendOk("#fs11#퀘스트를 완료했어! 보상을 지급해줄게~");
+                cm.sendOk("#fs11#Quest completed! Here's your reward~");
             } else {
                 mapid = qt[5];
                 if (mapid < 0)
-                    cm.sendOk("#fs11#현재 이 퀘스트를 수행하기 위한 레벨이 부족하거나, 퀘스트를 완료하지 못한 것 같아!");
+                    cm.sendOk("#fs11#Your level is too low or you haven't completed the quest requirements yet!");
                 else
                     cm.warp(qt[5]);
             }
@@ -180,38 +180,38 @@ function getQuestType(qid, qtype, qnum, isSecret, qlevel) {
     if (!isSecret) {
         switch (qtype) {
             case "mob":
-                return "#e[Lv." + qlevel + "]#n #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + "개#k 모으기#k";
+                return "#e[Lv." + qlevel + "]#n #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " pcs#k Collect#k";
                 break;
             case "level":
-                return "#e[Lv." + qlevel + "]#n #r" + qlevel + "#k레벨 달성하기#k";
+                return "#e[Lv." + qlevel + "]#n Reach Level #r" + qlevel + "#k";
                 break;
             case "item":
-                return "#e[Lv." + qlevel + "]#n #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + "개#k 이상 소지#k";
+                return "#e[Lv." + qlevel + "]#n Own #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " pcs#k or more";
                 break;
             case "party":
-                return "#e[Lv." + qlevel + "]#n #r" + qnum + "#k명 이상의 파티에 속해있기#k";
+                return "#e[Lv." + qlevel + "]#n Be in a party with #r" + qnum + "#k or more members";
                 break;
             case "boss":
-                return "#e[Lv." + qlevel + "]#n #r" + qid + "#k를 " + qnum + "번 이상 클리어 하기#k";
+                return "#e[Lv." + qlevel + "]#n Clear #r" + qid + "#k " + qnum + " times or more";
                 break;
             case "meso":
-                return "#e[Lv." + qlevel + "]#n #r" + nf(qnum) + "#k 메소 이상 보유#k";
+                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Meso or more";
                 break;
             case "mpoint":
-                return "#e[Lv." + qlevel + "]#n #r" + nf(qnum) + "#k P 이상 캐시 보유하기#k";
+                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Cash Points or more";
                 break;
             case "kpoint":
-                return "#e[Lv." + qlevel + "]#n #r" + nf(qnum) + "#k 이상 칸 커뮤니티 포인트 보유하기#k";
+                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Community Points or more";
                 break;
             case "howmany":
-                return "#e[Lv." + qlevel + "]#n #k#fc0xFFF361A6#동접 #r" + nf(qnum) + "명#k 달성하기";
+                return "#e[Lv." + qlevel + "]#n #k#fc0xFFF361A6#Reach #r" + nf(qnum) + " Concurrent Users#k";
                 break;
             default:
-                return "오류입니다.";
+                return "Error.";
                 break;
         }
     } else {
-        return "[Lv. " + qlevel + "] 달성 조건이 비밀입니다.";
+        return "[Lv. " + qlevel + "] Achievement condition is secret.";
     }
 }
 
@@ -220,13 +220,13 @@ function isQuestCompletable(qid, qtype, qnum, qlevel) {
         switch (qtype) {
             case "mob":
                 if (cm.itemQuantity(qid) >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "level":
-                return "완료 가능"
+                return "Can Complete"
                 break;
             case "item":
                 if (cm.itemQuantity(qid) >= qnum) {
@@ -278,11 +278,11 @@ function isQuestCompletable(qid, qtype, qnum, qlevel) {
                 }
                 break;
             default:
-                return "오류입니다.";
+                return "Error.";
                 break;
         }
     } else {
-        return "레벨 부족"
+        return "Level Required"
     }
 }
 
@@ -322,7 +322,7 @@ function gainItemByType(iid, itype, i1, i2) {
             //cm.getPlayer().AddStarDustCoin(i1);
             break;
         default:
-            cm.sendOk("오류가 발생하였습니다.");
+            cm.sendOk("An error occurred.");
             cm.dispose();
             break;
     }
