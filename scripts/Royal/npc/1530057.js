@@ -12,12 +12,12 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถใช้งานได้ขณะอยู่ในบอส");
             cm.dispose();
             return;
         }
 
         cm.dispose();
-        cm.openNpcCustom(cm.getClient(), 9000155, "뽑기");
+        cm.openNpcCustom(cm.getClient(), 9000155, "Gachapon");
     }
 }

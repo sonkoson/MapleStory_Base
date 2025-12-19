@@ -4,7 +4,7 @@ function enter(pi) {
 		return;
 	}
 	if (!pi.getPlayer().getMap().checkDojangClear()) {
-		pi.getPlayer().dropMessage(5,"아직 문이 열리지 않았습니다.");
+		pi.getPlayer().dropMessage(5, "ประตูยังไม่เปิด");
 	} else {
 		pi.getPlayer().addMulungPoint();
 

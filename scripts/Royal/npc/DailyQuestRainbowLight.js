@@ -13,8 +13,8 @@ if (Date < 10) {
 var Today = parseInt(Year + Month + Date);
 
 var quest = [
-    ["Advent World Exploration-1", "eq1"],
-    ["Advent World Exploration-2", "eq2"],
+    ["Ganglim World Exploration-1", "eq1"],
+    ["Ganglim World Exploration-2", "eq2"],
 ];
 
 var check = [
@@ -42,8 +42,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "#fs11 \r\n   คุณต้องการสำรวจ Advent World หรือไม่?\r\n";
-        //say += "#L0##e#bLevel Range Monsters #r(-20~+10 Level) #b10000 Mobs#d (Unlimited)#l\r\n\r\n";
+        var say = "#fs11 \r\n   ต้องการสำรวจ Ganglim World หรือไม่?\r\n";
         for (var i = 0; i < quest.length; i++) {
             say += "#L" + i + "##e#b[" + quest[i][0] + "]#n#k\r\n#e#d";
             for (var a = 0; a < check[i].length; a++) {
@@ -56,7 +55,7 @@ function action(mode, type, selection) {
     } else if (status == 1) {
         sel = selection;
         if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) == Today) {
-            cm.sendOk("#fs11#เควสนี้เสร็จสิ้นแล้ว");
+            cm.sendOk("#fs11#ภารกิจนี้เสร็จสมบูรณ์แล้ว");
             cm.dispose();
             return;
         } else if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) != 0) {
@@ -67,7 +66,7 @@ function action(mode, type, selection) {
             }
         }
 
-        // If this is null, start it again.
+        // If null, need to set again
         if (cm.getPlayer().getKeyValue("QuestMax_" + quest[sel][0][0]) == null) {
             for (var a = 0; a < check[sel].length; a++) {
                 cm.getPlayer().setKeyValue("QuestMax_" + check[sel][a][0], check[sel][a][1]);
@@ -84,22 +83,20 @@ function action(mode, type, selection) {
         }
 
         if (bClear) {
-            var say = "#fs11#<รายการของรางวัล>\r\n";
+            var say = "#fs11#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
-            cm.sendYesNo("#fs11#เงื่อนไขในการทำเควสนี้ครบถ้วนแล้ว คุณต้องการส่งเควสหรือไม่?\r\n\r\n" + say);
+            cm.sendYesNo("#fs11#เงื่อนไขการทำภารกิจนี้ครบถ้วนแล้ว ต้องการรับรางวัลหรือไม่?\r\n\r\n" + say);
         } else {
-            var say = "#e#b[เควส " + quest[sel][0] + "]#n#k\r\n";
+            var say = "#e#b[ภารกิจ " + quest[sel][1] + "]#n#k\r\n";
             for (var i = 0; i < check[sel].length; i++) {
                 count = cm.getPlayer().getKeyValue("Quest_" + check[sel][i][0]);
                 say += "#o" + check[sel][i][0] + "# (" + count + " / " + check[sel][i][1] + ") ตัว\r\n";
             }
-            say += "#e#bคุณสามารถส่งเควสได้หลังจากกำจัดมอนสเตอร์ครบแล้ว\r\n";
+            say += "#e#bกรุณากำจัดมอนสเตอร์ให้ครบก่อนจึงจะรับรางวัลได้\r\n";
 
-            /*            say += "#L0##e#rMove to Hunting Ground#l#k\r\n\r\n";
-                        say += "[If you move from the first map, you will move to the second map]\r\n\r\n";*/
-            say += "#fc0xFF6600CC#<รายการของรางวัล>\r\n";
+            say += "#fc0xFF6600CC#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
@@ -122,7 +119,7 @@ function action(mode, type, selection) {
 
         for (var i = 0; i < reward.length; i++) {
             if (!cm.canHold(reward[i][0], reward[i][1])) {
-                cm.sendOk("#fs11#โปรดตรวจสอบว่าช่องเก็บของในกระเป๋าของคุณเต็มหรือไม่");
+                cm.sendOk("#fs11#กรุณาตรวจสอบว่าช่องเก็บของเต็มหรือไม่เพียงพอ");
                 return;
             }
         }
@@ -133,7 +130,7 @@ function action(mode, type, selection) {
             cm.gainItem(reward[i][0], reward[i][1]);
         }
 
-        cm.sendOk("#fs11#ทำเควสเสร็จสิ้นและได้รับของรางวัลเรียบร้อยแล้ว โปรดตรวจสอบในกระเป๋าของคุณ");
+        cm.sendOk("#fs11#ภารกิจเสร็จสมบูรณ์และได้รับรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
 
     }
 }

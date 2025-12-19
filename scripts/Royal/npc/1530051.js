@@ -100,7 +100,7 @@ function action(mode, type, sel) {
 
         if (seld == 1) {
             cm.dispose();
-            cm.openNpcCustom(cm.getClient(), 9000213, "홍보상점");
+            cm.openNpcCustom(cm.getClient(), 9000213, "PromotionShop");
             return;
         }
         else if (seld == 2) {
@@ -114,12 +114,12 @@ function action(mode, type, sel) {
         }
         else if (seld == 4) {
             cm.dispose();
-            cm.openNpcCustom(cm.getClient(), 9000178, "초월아케인심볼");
+            cm.openNpcCustom(cm.getClient(), 9000178, "TranscendentArcaneSymbol");
             return;
         }
         else if (seld == 5) {
             cm.dispose();
-            cm.openNpcCustom(cm.getClient(), 9000331, "강림캐시강화");
+            cm.openNpcCustom(cm.getClient(), 9000331, "GanglimCashEnhancement");
             return;
         }
         // 99) GM Only

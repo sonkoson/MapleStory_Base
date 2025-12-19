@@ -22,15 +22,15 @@ var b = "";
 var status = -1;
 
 var item = [
-    [2430017, 1, 5000, "", "10,000 Points"],
-    [2430017, 3, 13500, "", "30,000 Points"],
-    [2430017, 6, 27000, "", "60,000 Points"],
-    [2430017, 10, 45000, "", "100,000 Points"],
-    [2430017, 20, 90000, "", "200,000 Points"],
-    [2430017, 40, 180000, "", "400,000 Points"],
-    [2430017, 60, 260000, "", "600,000 Points"],
-    [2430017, 100, 430000, "", "1,000,000 Points"],
-    //[2430017, 200, 850000, "#r[HOT]", "2,000,000 Points"]
+    [2430017, 1, 5000, "", "10K Points"],
+    [2430017, 3, 13500, "", "30K Points"],
+    [2430017, 6, 27000, "", "60K Points"],
+    [2430017, 10, 45000, "", "100K Points"],
+    [2430017, 20, 90000, "", "200K Points"],
+    [2430017, 40, 180000, "", "400K Points"],
+    [2430017, 60, 260000, "", "600K Points"],
+    [2430017, 100, 430000, "", "1M Points"],
+    //[2430017, 200, 850000, "#r[HOT]", "2M Points"]
 ];
 
 function start() {
@@ -56,13 +56,13 @@ function action(mode, type, selection) {
         var currentCash = comma(cm.getPlayer().getCashPoint());
         var currentGrade = cm.getPlayer().getHgrades();
 
-        chat = star + "#fs11# Cash ของ #h0# ปัจจุบัน : #r" + currentCash + "C#k\r\n";
-        chat += star + " ระดับของ #h0# ปัจจุบัน : #fc0xFFFF3366#" + currentGrade + "\r\n";
+        chat = star + "#fs11# Cash ปัจจุบันของ #h0#: #r" + currentCash + "C#k\r\n";
+        chat += star + " Grade ปัจจุบันของ #h0#: #fc0xFFFF3366#" + currentGrade + "\r\n";
         chat += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
-        chat += color + "#e<แพ็คเกจ>#k#n" + enter;
+        chat += color + "#e<แพ็กเกจ>#k#n" + enter;
         for (i = 0; i < item.length; i++) {
             price = item[i][2].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            chat += black + "#L" + i + "##i" + item[i][0] + "# #z" + item[i][0] + "# #r#e" + item[i][3] + "#l#n\r\n              #fc0xFF000000#ราคา : #e#r" + price + "C#b#n " + item[i][4] + "#k#n\r\n";
+            chat += black + "#L" + i + "##i" + item[i][0] + "# #z" + item[i][0] + "# #r#e" + item[i][3] + "#l#n\r\n              #fc0xFF000000#ราคา: #e#r" + price + "C#b#n " + item[i][4] + "#k#n\r\n";
         }
         cm.sendSimple(chat);
 
@@ -75,20 +75,20 @@ function action(mode, type, selection) {
         } else {
             var suk1 = Math.floor((cm.getPlayer().getCashPoint() / item[selection][2]));
             stigmacoin = Math.min(suk1);
-            cm.sendGetNumber("#fs11#" + black + "ต้องการซื้อ #i " + item[selection][0] + "# #z" + item[selection][0] + "# กี่ชิ้น? \r\n#Cgray#(จำนวน #z" + item[selection][0] + "# ที่สามารถซื้อได้ในขณะนี้ : " + stigmacoin + " ชิ้น)\r\n\r\n#r※ ซื้อทันทีเมื่อยืนยัน [ไม่สามารถยกเลิกได้]", 1, 1, stigmacoin);
+            cm.sendGetNumber("#fs11#" + black + "คุณต้องการซื้อ #i " + item[selection][0] + "# #z" + item[selection][0] + "# กี่ชิ้น? \r\n#Cgray#(จำนวน #z" + item[selection][0] + "# ที่สามารถซื้อได้: " + stigmacoin + " ชิ้น)\r\n\r\n#r※ การซื้อจะเกิดขึ้นทันทีเมื่อกรอกจำนวน [ไม่สามารถยกเลิกได้]", 1, 1, stigmacoin);
         }
     } else if (status == 2) {
         b = selection;
         cost = b;
 
         if (selection > 100) {
-            cm.sendOk("ซื้อได้สูงสุด 100 ชิ้นเท่านั้น");
+            cm.sendOk("สามารถซื้อได้สูงสุด 100 ชิ้นต่อครั้ง");
             cm.dispose();
             return;
         }
 
         if (!cm.canHold(item[a][0], item[a][1] * cost)) {
-            cm.sendOk("#fs11#ช่องเก็บของไม่เพียงพอ");
+            cm.sendOk("#fs11#พื้นที่ในกระเป๋าไม่เพียงพอ");
             cm.dispose();
             return;
         }
@@ -96,8 +96,8 @@ function action(mode, type, selection) {
         if (cm.getPlayer().getCashPoint() >= item[a][2] * cost) {
             cm.gainItem(item[a][0], item[a][1] * cost);
             cm.getPlayer().gainCashPoint(-item[a][2] * cost);
-            Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP_CashShop].log", "\r\nAccount : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() + "\r\nPurchased Item : " + cm.getItemName(item[a][0]) + "[" + item[a][0] + "] (" + cost + " qty)\r\nUsed Cash : " + -item[a][2] * cost + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
-            cm.sendOkS("#fs11#" + color + "การซื้อเสร็จสมบูรณ์" + star, 2);
+            Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVPCashShop].log", "\r\nAccount: " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\nCharacter: " + cm.getPlayer().getName() + "\r\nPurchased Item: " + cm.getItemName(item[a][0]) + "[" + item[a][0] + "] (" + cost + " pcs)\r\nCash Used: " + -item[a][2] * cost + "\r\nRemaining Cash: " + cm.getPlayer().getCashPoint() + "\r\n\r\n", true);
+            cm.sendOkS("#fs11#" + color + "ซื้อสำเร็จแล้ว" + star, 2);
             cm.dispose();
         } else {
             cm.sendOk("#fs11#Cash ไม่เพียงพอ");

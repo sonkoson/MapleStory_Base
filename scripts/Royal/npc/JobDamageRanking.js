@@ -1,13 +1,13 @@
 importPackage(Packages.database);
 
-var jobList = [ // Only show 4th job or higher
-    // Adventurers
+var jobList = [ // Only show 4th job and above
+    // Adventurer
     [112, "Hero"], [122, "Paladin"], [132, "Dark Knight"],
-    [212, "Arch Mage (Fire, Poison)"], [222, "Arch Mage (Ice, Lightning)"], [232, "Bishop"],
-    [312, "Bowmaster"], [322, "Marksman"], [332, "Pathfinder"],
+    [212, "Arch Mage (F/P)"], [222, "Arch Mage (I/L)"], [232, "Bishop"],
+    [312, "Bow Master"], [322, "Marksman"], [332, "Pathfinder"],
     [412, "Night Lord"], [422, "Shadower"], [434, "Dual Blade"],
     [512, "Buccaneer"], [522, "Corsair"], [532, "Cannoneer"],
-    // Cygnus Knights
+    // Cygnus
     [1112, "Soul Master"], [1212, "Flame Wizard"], [1312, "Wind Breaker"], [1412, "Night Walker"], [1512, "Striker"], [5112, "Mihile"],
     // Heroes
     [2112, "Aran"], [2217, "Evan"], [2312, "Mercedes"], [2412, "Phantom"], [2512, "Shade"], [2712, "Luminous"],
@@ -18,7 +18,7 @@ var jobList = [ // Only show 4th job or higher
     // Lef
     [15112, "Adele"], [15212, "Illium"], [15512, "Ark"], [15412, "Khali"],
     // Anima
-    [16412, "Hoyoung"], [16212, "Lara"],
+    [16412, "Ho Young"], [16212, "Lara"],
     // Friends World
     [14212, "Kinesis"],
     // Transcendent
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "#fs11##bนี่คือการจัดอันดับพลังต่อสู้แยกตามอาชีพ\r\n#kโปรดเลือกอาชีพที่คุณต้องการดูอันดับ\r\n";
+        var say = "#fs11##bนี่คือ Damage Ranking แยกตามอาชีพ\r\n#kกรุณาเลือกอาชีพที่ต้องการดู Ranking\r\n";
         for (var i = 0; i < jobList.length; i++) {
             say += "#L" + i + "#" + jobList[i][1] + "#l\r\n";
         }
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
         var ps = null;
         var rs = null;
         var count = 0;
-        var say = "#fs11##fc0xFF000000#การจัดอันดับพลังต่อสู้ของอาชีพ " + jobList[selection][1] + "\r\n#r※ ดาเมจจะแสดงตั้งแต่หลักร้อยล้าน (100M) ขึ้นไป\r\n\r\n";
+        var say = "#fs11##fc0xFF000000#Damage Ranking ของอาชีพ " + jobList[selection][1] + "\r\n#r※ Damage แสดงตั้งแต่หน่วยร้อยล้านขึ้นไป\r\n\r\n";
         try {
             con = DBConnection.getConnection();
             ps = con.prepareStatement("SELECT `name`, `damage`, `player_id` FROM `damage_measurement_rank` WHERE `job` = " + jobList[selection][0] + " ORDER BY `damage` DESC LIMIT 100"); //AND `gm` = 0 
@@ -69,11 +69,11 @@ function action(mode, type, selection) {
             while (rs.next()) {
                 count++;
                 if (count < 10) {
-                    aas = "#e00#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e00#fc0xFF09A17F#" + count + black + "#n | ";
                 } else if (count < 100) {
-                    aas = "#e0#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e0#fc0xFF09A17F#" + count + black + "#n | ";
                 } else {
-                    aas = "#e#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e#fc0xFF09A17F#" + count + black + "#n | ";
                 }
 
                 var pssearchaccid = con.prepareStatement("SELECT banned FROM accounts Where id in (SELECT accountid FROM characters Where id = " + rs.getInt("player_id") + ")");
@@ -90,7 +90,7 @@ function action(mode, type, selection) {
                     name = "#rBanned";
                 }
 
-                say += "#fc0xFFB2B2B2#" + aas + "#b" + name + "#k | #rDamage : #e#fc0xFF000000#" + ConvertNumber(rs.getString("damage")) + "#n\r\n";
+                say += "#fc0xFFB2B2B2#" + aas + "#b" + name + "#k | #rDamage: #e#fc0xFF000000#" + ConvertNumber(rs.getString("damage")) + "#n\r\n";
             }
             rs.close();
             ps.close();
@@ -123,18 +123,16 @@ function action(mode, type, selection) {
 
 function ConvertNumber(number) {
     var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', 'K', 'M', 'B', 'T', 'Q'];
-    var splitUnit = 1000;
+    var unitWords = ['', 'หมื่น ', 'ร้อยล้าน ', 'ล้านล้าน ', 'พันล้านล้าน '];
+    var splitUnit = 10000;
     var splitCount = unitWords.length;
     var resultArray = [];
     var resultString = '';
-
     if (inputNumber == false) {
-        cm.sendOk("#fs11#เกิดข้อผิดพลาด โปรดลองใหม่อีกครั้ง\r\n(Parsing Error)");
+        cm.sendOk("#fs11#เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง\r\n(Parsing Error)");
         cm.dispose();
         return;
     }
-
     for (var i = 0; i < splitCount; i++) {
         var unitResult = (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
         unitResult = Math.floor(unitResult);
@@ -142,13 +140,9 @@ function ConvertNumber(number) {
             resultArray[i] = unitResult;
         }
     }
-
-    // Logic to show only significantly large numbers similar to original intent (10^8+)
-    // But here we just show readable format.
-    for (var i = resultArray.length - 1; i >= 0; i--) {
+    for (var i = 2; i < resultArray.length; i++) {
         if (!resultArray[i]) continue;
-        resultString += String(resultArray[i]) + unitWords[i] + " ";
+        resultString = String(resultArray[i]) + unitWords[i] + resultString;
     }
-
-    return resultString.trim();
+    return resultString;
 }

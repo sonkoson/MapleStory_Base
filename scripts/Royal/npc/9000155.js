@@ -18,6 +18,6 @@ function action(mode, type, selection) {
         }
 
         cm.dispose();
-        cm.openNpcCustom(cm.getClient(), 9000155, "뽑기");
+        cm.openNpcCustom(cm.getClient(), 9000155, "Gachapon");
     }
 }

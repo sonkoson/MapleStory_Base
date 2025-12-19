@@ -1,4 +1,4 @@
-// 편의시스템
+// Convenience System
 importPackage(Packages.scripting.newscripting);
 importPackage(java.text);
 importPackage(java.lang);
@@ -7,35 +7,35 @@ importPackage(Packages.constants);
 var enter = "\r\n";
 var seld = -1;
 
-파랑 = "#fc0xFF0054FF#";
-연파 = "#fc0xFF6B66FF#";
-연보 = "#fc0xFF8041D9#";
-보라 = "#fc0xFF5F00FF#";
-노랑 = "#fc0xFFEDD200#";
-검정 = "#fc0xFF191919#";
+Blue = "#fc0xFF0054FF#";
+LightBlue = "#fc0xFF6B66FF#";
+LightPurple = "#fc0xFF8041D9#";
+Purple = "#fc0xFF5F00FF#";
+Yellow = "#fc0xFFEDD200#";
+BlackColor = "#fc0xFF191919#";
 
-펫 = "#fUI/CashShop.img/CashItem_label/5#";
-펫1 = "#fUI/CashShop.img/CashItem_label/8#";
-길드 = "#fUI/Basic.img/RoyalBtn/theblackcoin/14#";
-젬스톤 = "#fUI/Basic.img/RoyalBtn/theblackcoin/19#";
-이름변경 = "#fUI/Basic.img/RoyalBtn/theblackcoin/20#";
-자유전직 = "#fUI/Basic.img/RoyalBtn/theblackcoin/21#";
-창고 = "#fUI/Basic.img/RoyalBtn/theblackcoin/13#";
-어빌리티 = "#fUI/Basic.img/RoyalBtn/theblackcoin/22#";
-포인트 = "#fUI/Basic.img/RoyalBtn/theblackcoin/7#";
-포켓 = "#fUI/Basic.img/RoyalBtn/theblackcoin/23#";
-랭킹 = "#fUI/Basic.img/RoyalBtn/theblackcoin/24#";
-템버리기 = "#fUI/Basic.img/RoyalBtn/theblackcoin/25#";
-추천인 = "#fUI/Basic.img/RoyalBtn/theblackcoin/41#";
-검은마법사 = "#fUI/Basic.img/RoyalBtn/theblackcoin/42#";
-위장색 = "#fUI/Basic.img/RoyalBtn/theblackcoin/43#";
-정령 = "#fUI/UIWindow4.img/pointShop/100712/iconShop#";
-후원 = "#fUI/UIWindow4.img/pointShop/501053/iconShop#";
+Pet = "#fUI/CashShop.img/CashItem_label/5#";
+Pet1 = "#fUI/CashShop.img/CashItem_label/8#";
+Guild = "#fUI/Basic.img/RoyalBtn/theblackcoin/14#";
+Gemstone = "#fUI/Basic.img/RoyalBtn/theblackcoin/19#";
+NameChange = "#fUI/Basic.img/RoyalBtn/theblackcoin/20#";
+JobChange = "#fUI/Basic.img/RoyalBtn/theblackcoin/21#";
+Storage = "#fUI/Basic.img/RoyalBtn/theblackcoin/13#";
+Ability = "#fUI/Basic.img/RoyalBtn/theblackcoin/22#";
+Point = "#fUI/Basic.img/RoyalBtn/theblackcoin/7#";
+Pocket = "#fUI/Basic.img/RoyalBtn/theblackcoin/23#";
+Ranking = "#fUI/Basic.img/RoyalBtn/theblackcoin/24#";
+DropItem = "#fUI/Basic.img/RoyalBtn/theblackcoin/25#";
+Referral = "#fUI/Basic.img/RoyalBtn/theblackcoin/41#";
+BlackMage = "#fUI/Basic.img/RoyalBtn/theblackcoin/42#";
+Camo = "#fUI/Basic.img/RoyalBtn/theblackcoin/43#";
+Spirit = "#fUI/UIWindow4.img/pointShop/100712/iconShop#";
+Donation = "#fUI/UIWindow4.img/pointShop/501053/iconShop#";
 Color = "#fc0xFF6600CC#"
 Black = "#fc0xFF000000#"
-핑크색 = "#fc0xFFFF3366#"
+PinkColor = "#fc0xFFFF3366#"
 Pink = "#fc0xFFF781D8#"
-파란색 = "#fc0xFF479AEF#"
+BlueColor = "#fc0xFF479AEF#"
 
 function start() {
     status = -1;
@@ -50,45 +50,45 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถใช้งานได้ขณะอยู่ในบอส");
             cm.dispose();
             return;
         }
 
         var choose = "#fs11##fUI/Basic.img/Zenia/SC/5#\r\n";
         choose += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#\r\n";
-        //choose += "#L20##fc0xFFFF3636#" + 템버리기 + " 아이템 버리기#l";
+        //choose += "#L20##fc0xFFFF3636#" + DropItem + " ทิ้งไอเท็ม#l";
 
-        choose += "　#L248##fc0xFFFF5E00#" + 랭킹 + " 각종랭킹확인#l　";
-        choose += "#L6##fc0xFF6B66FF# 일반펫 분양#l　";
-        choose += "#L21##fc0xFF626262#" + 길드 + " 길드본부이동#l　\r\n\r\n";
+        choose += "　#L248##fc0xFFFF5E00#" + Ranking + " ดูอันดับต่างๆ#l　";
+        choose += "#L6##fc0xFF6B66FF# รับเลี้ยง Pet ทั่วไป#l　";
+        choose += "#L21##fc0xFF626262#" + Guild + " ไป Guild HQ#l　\r\n\r\n";
 
-        choose += "　#L26##fc0xFF8041D9#" + 추천인 + " 추천인시스템#l　";
-        //choose += "#L13##fc0xFF7112FF#" + 위장색 + " 메카닉 위장색#l\r\n";
-        choose += "#L24##fc0xFF626262#" + 검은마법사 + " 창고 이용#l　　";
-        choose += "#L9##fc0xFF626262#" + 검은마법사 + " 스탯 초기화#l\r\n\r\n";
-        //choose += "#L27##fc0xFFFF3636#" + 검은마법사 + " 특별스킬 학습#l\r\n";
+        choose += "　#L26##fc0xFF8041D9#" + Referral + " ระบบแนะนำ#l　";
+        //choose += "#L13##fc0xFF7112FF#" + Camo + " สีพราง Mechanic#l\r\n";
+        choose += "#L24##fc0xFF626262#" + BlackMage + " ใช้คลัง#l　　";
+        choose += "#L9##fc0xFF626262#" + BlackMage + " รีเซ็ต Stat#l\r\n\r\n";
+        //choose += "#L27##fc0xFFFF3636#" + BlackMage + " เรียนสกิลพิเศษ#l\r\n";
 
-        choose += "　#L777##fc0xFF8041D9#" + 추천인 + " 뽑기 시스템#l　  ";
-        choose += "#L779##fc0xFF626262#" + 검은마법사 + " 팬텀스틸스킬#l ";
-        choose += "#L780##fc0xFF626262#" + 검은마법사 + " 은월오류해결#l\r\n\r\n";
+        choose += "　#L777##fc0xFF8041D9#" + Referral + " ระบบสุ่ม#l　  ";
+        choose += "#L779##fc0xFF626262#" + BlackMage + " Phantom Steal Skill#l ";
+        choose += "#L780##fc0xFF626262#" + BlackMage + " แก้ไขบัค Shade#l\r\n\r\n";
 
-        choose += "　　　#L245#" + 파란색 + 포켓 + " [장비] 수집 시스템#l　";
-        choose += "#L246#" + 파란색 + 포켓 + " [종합] 원클릭 시스템#l　\r\n\r\n";
+        choose += "　　　#L245#" + BlueColor + Pocket + " [อุปกรณ์] ระบบสะสม#l　";
+        choose += "#L246#" + BlueColor + Pocket + " [รวม] ระบบ One-Click#l　\r\n\r\n";
 
         choose += "#fc0xFFD5D5D5#───────────────────────────#k\r\n";
-        //choose += "#L11##fc0xFF6B66FF#" + 젬스톤 + " V 코어 매트릭스#k를 이용하겠습니다.\r\n#l";
-        //choose += "#L16##fc0xFFF29661#" + 자유전직 + " 직업변경 시스템#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L9##fc0xFFF29661#" + 포켓 + " 딜량체크 시스템#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L8##fc0xFFF29661#" + 어빌리티 + " 유니온 시스템#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L7##fc0xFFF29661#" + 이름변경 + " 캐릭터 이름#k을 변경하겠습니다.\r\n#l";
+        //choose += "#L11##fc0xFF6B66FF#" + Gemstone + " V Core Matrix#k。\r\n#l";
+        //choose += "#L16##fc0xFFF29661#" + JobChange + " ระบบเปลี่ยนอาชีพ#k。\r\n#l";
+        //choose += "#L9##fc0xFFF29661#" + Pocket + " ระบบเช็คดาเมจ#k。\r\n#l";
+        //choose += "#L8##fc0xFFF29661#" + Ability + " ระบบ Union#k。\r\n#l";
+        //choose += "#L7##fc0xFFF29661#" + NameChange + " เปลี่ยนชื่อตัวละคร#k。\r\n#l";
 
-        //choose += "#L779#" + 색 + 추천인 + " [팬텀] 스틸 스킬#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L780#" + 색 + 정령 + " [은월] 상호작용 오류 해결#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L777#" + 색 + 어빌리티 + " 뽑기 시스템#k을 이용하겠습니다.\r\n#l";
-        choose += "   #L778#" + 창고 + " #b택배 시스템#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L555#" + 색 + 후원 + " 후원 시스템#k을 이용하겠습니다.\r\n#l";
-        //choose += "#L556#" + 색 + 후원 + " 홍보 시스템#k을 이용하겠습니다.\r\n#l";
+        //choose += "#L779#" + Color + Referral + " [Phantom] Steal Skill#k。\r\n#l";
+        //choose += "#L780#" + Color + Spirit + " [Shade] แก้ไขบัคการโต้ตอบ#k。\r\n#l";
+        //choose += "#L777#" + Color + Ability + " ระบบสุ่ม#k。\r\n#l";
+        choose += "   #L778#" + Storage + " #bระบบส่งพัสดุ#k\r\n#l";
+        //choose += "#L555#" + Color + Donation + " ระบบสนับสนุน#k。\r\n#l";
+        //choose += "#L556#" + Color + Donation + " ระบบโปรโมต#k。\r\n#l";
         cm.sendSimple(choose);
 
     } else if (status == 1) {
@@ -148,7 +148,7 @@ function action(mode, type, sel) {
                 break;
             case 13:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 1540432, "메카닉위장색");
+                cm.openNpcCustom(cm.getClient(), 1540432, "MechanicCamouflage");
                 break;
             case 88:
                 cm.dispose();
@@ -275,7 +275,7 @@ function action(mode, type, sel) {
                 break;
             case 778: // 창고
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9010009, "택배");
+                cm.openNpcCustom(cm.getClient(), 9010009, "ParcelService");
                 break;
             case 779: // 팬텀
                 if (!GameConstants.isPhantom(cm.getPlayer().getJob())) {
@@ -295,7 +295,7 @@ function action(mode, type, sel) {
                     return;
                 }
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "은월오류수정");
+                cm.openNpcCustom(cm.getClient(), 9000213, "ShadeErrorFix");
                 break;
         }
     } else if (status == 2) {

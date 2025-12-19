@@ -17,27 +17,27 @@ function action(mode, type, selection) {
 
     if (status == 0) {
         if (cm.getPlayer().getMapId() == 271040000) {
-            cm.sendOk("안녕하세요?");
-			cm.dispose();
+            cm.sendOk("Hello?");
+            cm.dispose();
         } else {
-            cm.sendYesNo("시그너스 원정을 그만하고 나가시겠습니까?");
+            cm.sendYesNo("Do you want to stop the Cygnus expedition and leave?");
         }
     } else if (status == 1) {
         if (cm.getPlayer().getMapId() == 271040000) {
             if (cm.getPlayer().getParty() == null) {
-                cm.sendOk("파티를 맺고 입장해 주세요.");
+                cm.sendOk("Please create a party and enter.");
                 cm.dispose();
             } else if (!cm.isLeader()) {
-                cm.sendOk("파티장만 입장신청이 가능합니다");
+                cm.sendOk("Only the party leader can apply for entry.");
                 cm.dispose();
             } else if (cm.getPlayerCount(271040100) > 0) {
-		cm.sendOk("이미 다른 파티가 시그너스를 처치중 입니다.");
-		cm.dispose();
-	    } else {
-		cm.resetMap(271040100);
+        cm.sendOk("Another party is already fighting Cygnus.");
+        cm.dispose();
+        } else {
+        cm.resetMap(271040100);
                 cm.warpParty(271040100);
                 cm.spawnMob(8850011, -280, 117);
-                cm.getPlayer().getMap().startMapEffect("이곳을 찾아 온 사람을 보는 것은 정말 오랜만이에요. 하지만 무사히 돌아간 분도 없었답니다.", 5120043);
+                cm.getPlayer().getMap().startMapEffect("It's been a long time since I've seen someone come here. But no one has returned safely.", 5120043);
                 cm.dispose();
             }
         } else {
@@ -47,6 +47,6 @@ function action(mode, type, selection) {
     }
 }*/
 function start() {
-	cm.warp(271040100);
-	cm.dispose();
+    cm.warp(271040100);
+    cm.dispose();
 }

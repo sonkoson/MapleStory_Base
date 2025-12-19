@@ -14,13 +14,13 @@ starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
 starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
 star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
-reward = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-obtain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+rewardIcon = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
+obtainIcon = "#fUI/UIWindow2.img/QuestIcon/4/0#"
 color = "#fc0xFF6600CC#"
 enter = "\r\n"
 enter2 = "\r\n\r\n"
 
-var enter = '\r\n';
+var enterVar = '\r\n';
 var reset = '#l#k';
 var IS_DEBUGGING = false;
 var MIN_SEARCHNAME_LENGTH = 2;
@@ -34,7 +34,6 @@ var searchedMolding = []
 var firstSelection;
 
 function start() {
-    //if(!cm.getPlayer().isGM()) return;
     initializeMoldingData();
 
     status = -1;
@@ -55,30 +54,30 @@ function action(mode, type, selection) {
         selection = 1; // 0 Hair 1 Face
         firstSelection = 1; // 0 Hair 1 Face
 
-        chat += 'กรุณาใส่ชื่อ ' + (selection == 0 ? 'ทรงผม' : 'ใบหน้า') + ' ที่ต้องการค้นหา'
+        chat += 'กรุณาพิมพ์ชื่อ' + (selection == 0 ? 'ทรงผม' : 'ใบหน้า') + 'ที่ต้องการค้นหาสำหรับ Android'
         cm.sendGetText(chat);
     } else if (status == 1) {
         var searchTarget = cm.getText();
         var isHairId = firstSelection == 0;
 
         if (searchTarget.length >= MIN_SEARCHNAME_LENGTH) {
-            if (isHairId) { //Hair
-                chat += '#fs11##fnArial##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนทรงผมของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองเลือกทรงผมที่ต้องการดูสิ'
+            if (isHairId) {
+                chat += '#fs11##fc0xFFFFFFFF#เราสามารถเปลี่ยนทรงผม Android เป็นสไตล์ใหม่ได้ ถ้าเบื่อลุคเดิมแล้ว ลองเลือกทรงผมที่อยากเปลี่ยนดู'
                 searchedMolding = searchHair(searchTarget)
             } else {
-                chat += '#fs11##fnArial##fc0xFFFFFFFF#ฉันสามารถเปลี่ยนหน้าตาของคุณให้เป็นสไตล์ใหม่ได้ หากเบื่อกับลุคปัจจุบัน ลองดูหน้าตาที่ต้องการดูสิ'
+                chat += '#fs11##fc0xFFFFFFFF#เราสามารถเปลี่ยนใบหน้า Android เป็นสไตล์ใหม่ได้ ถ้าเบื่อลุคเดิมแล้ว ลองเลือกใบหน้าที่อยากเปลี่ยนดู'
                 searchedMolding = searchFace(searchTarget)
             }
 
             if (searchedMolding.length > 0) {
                 cm.askAvatarAndroid(chat, searchedMolding);
             } else {
-                cm.sendOk('#fs11# ไม่พบ ' + (isHairId ? 'ทรงผม' : 'ใบหน้า') + ' ที่ค้นหา');
+                cm.sendOk('#fs11# ไม่พบ' + (isHairId ? 'ทรงผม' : 'ใบหน้า') + 'ที่ค้นหา');
                 cm.dispose();
             }
         } else {
-            chat += 'ข้อความสั้นเกินไป' + enter;
-            chat += 'กรุณาใส่อย่างน้อย ' + MIN_SEARCHNAME_LENGTH + ' ตัวอักษร'
+            chat += 'ตัวอักษรสั้นเกินไป' + enterVar;
+            chat += 'กรุณาพิมพ์อย่างน้อย ' + MIN_SEARCHNAME_LENGTH + ' ตัวอักษร'
             cm.sendOk(chat)
         }
 

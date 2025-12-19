@@ -1,4 +1,4 @@
-/*Authentic Daily Quest*/
+/*Daily Quest - Authentic Force Areas*/
 
 importPackage(java.lang);
 
@@ -58,8 +58,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "นี่คือเควสรายวัน กรุณาเลือกเควสที่คุณต้องการทำ\r\n";
-        //say += "#L0##e#bLevel Range Monsters #r(-20~+10 Level) #b10000#d (Unlimited)#l\r\n\r\n";
+        var say = "นี่คือภารกิจรายวัน กรุณาเลือกภารกิจที่ต้องการทำ\r\n";
         for (var i = 0; i < quest.length; i++) {
             say += "#L" + i + "##e#b[" + quest[i][0] + "]#n#k\r\n#e#d";
             for (var a = 0; a < check[i].length; a++) {
@@ -72,7 +71,7 @@ function action(mode, type, selection) {
     } else if (status == 1) {
         sel = selection;
         if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) == Today) {
-            cm.sendOk("เควสนี้ทำเสร็จแล้ว");
+            cm.sendOk("ภารกิจนี้เสร็จสมบูรณ์แล้ว");
             cm.dispose();
             return;
         } else if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) != 0) {
@@ -83,7 +82,7 @@ function action(mode, type, selection) {
             }
         }
 
-        // If null, reset.
+        // If null, need to set again
         if (cm.getPlayer().getKeyValue("QuestMax_" + quest[sel][0][0]) == null) {
             for (var a = 0; a < check[sel].length; a++) {
                 cm.getPlayer().setKeyValue("QuestMax_" + check[sel][a][0], check[sel][a][1]);
@@ -104,17 +103,15 @@ function action(mode, type, selection) {
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
-            cm.sendYesNo("เงื่อนไขในการทำเควสนี้ครบแล้ว ต้องการส่งเควสหรือไม่?\r\n\r\n" + say);
+            cm.sendYesNo("เงื่อนไขการทำภารกิจนี้ครบถ้วนแล้ว ต้องการรับรางวัลหรือไม่?\r\n\r\n" + say);
         } else {
-            var say = "#e#b[เควส " + quest[sel][0] + "]#n#k\r\n";
+            var say = "#e#b[ภารกิจ " + quest[sel][1] + "]#n#k\r\n";
             for (var i = 0; i < check[sel].length; i++) {
                 count = cm.getPlayer().getKeyValue("Quest_" + check[sel][i][0]);
                 say += "#o" + check[sel][i][0] + "# (" + count + " / " + check[sel][i][1] + ") ตัว\r\n";
             }
-            say += "#e#bคุณสามารถส่งเควสได้หลังจากกำจัดมอนสเตอร์ครบแล้ว\r\n";
+            say += "#e#bกรุณากำจัดมอนสเตอร์ให้ครบก่อนจึงจะรับรางวัลได้\r\n";
 
-            /*            say += "#L0##e#rMove to Hunting Ground#l#k\r\n\r\n";
-                        say += "[If used in the first map, moves to the second map]\r\n\r\n";*/
             say += "#fc0xFF6600CC#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
@@ -138,7 +135,7 @@ function action(mode, type, selection) {
 
         for (var i = 0; i < reward.length; i++) {
             if (!cm.canHold(reward[i][0], reward[i][1])) {
-                cm.sendOk("กรุณาตรวจสอบว่าช่องเก็บของว่างหรือไม่");
+                cm.sendOk("กรุณาตรวจสอบว่าช่องเก็บของเต็มหรือไม่เพียงพอ");
                 return;
             }
         }
@@ -149,6 +146,6 @@ function action(mode, type, selection) {
             cm.gainItem(reward[i][0], reward[i][1]);
         }
 
-        cm.sendOk("ทำเควสสำเร็จและได้รับรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
+        cm.sendOk("ภารกิจเสร็จสมบูรณ์และได้รับรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
     }
 }

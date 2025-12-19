@@ -254,7 +254,7 @@ function action(mode, type, sel) {
                         break;
                     case 54: // Transcendence Arcane
                         cm.dispose();
-                        cm.openNpc(1052206, "제작초월아케인");
+                        cm.openNpc(1052206, "TranscendentArcaneSymbol");
                         break;
                     // Material Exchange
                     case 90:

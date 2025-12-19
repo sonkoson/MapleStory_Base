@@ -104,11 +104,11 @@ function action(mode, type, sel) {
                 switch (sel) {
                     case 1:
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 9000213, "시즌패스");
+                        cm.openNpcCustom(cm.getClient(), 9000213, "SeasonPass");
                         break;
                     case 2:
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 9000213, "프리미엄패스");
+                        cm.openNpcCustom(cm.getClient(), 9000213, "PremiumPass");
                         break;
                 }
                 break;

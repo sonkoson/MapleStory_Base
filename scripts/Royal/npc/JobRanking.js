@@ -1,13 +1,13 @@
 importPackage(Packages.database);
 
-var jobList = [ // Only show 4th job or higher
-    // Adventurers
+var jobList = [ // Only show 4th job and above
+    // Adventurer
     [112, "Hero"], [122, "Paladin"], [132, "Dark Knight"],
-    [212, "Arch Mage (Fire, Poison)"], [222, "Arch Mage (Ice, Lightning)"], [232, "Bishop"],
-    [312, "Bowmaster"], [322, "Marksman"], [332, "Pathfinder"],
+    [212, "Arch Mage (F/P)"], [222, "Arch Mage (I/L)"], [232, "Bishop"],
+    [312, "Bow Master"], [322, "Marksman"], [332, "Pathfinder"],
     [412, "Night Lord"], [422, "Shadower"], [434, "Dual Blade"],
     [512, "Buccaneer"], [522, "Corsair"], [532, "Cannoneer"],
-    // Cygnus Knights
+    // Cygnus
     [1112, "Soul Master"], [1212, "Flame Wizard"], [1312, "Wind Breaker"], [1412, "Night Walker"], [1512, "Striker"], [5112, "Mihile"],
     // Heroes
     [2112, "Aran"], [2217, "Evan"], [2312, "Mercedes"], [2412, "Phantom"], [2512, "Shade"], [2712, "Luminous"],
@@ -18,7 +18,7 @@ var jobList = [ // Only show 4th job or higher
     // Lef
     [15112, "Adele"], [15212, "Illium"], [15512, "Ark"], [15412, "Khali"],
     // Anima
-    [16412, "Hoyoung"], [16212, "Lara"],
+    [16412, "Ho Young"], [16212, "Lara"],
     // Friends World
     [14212, "Kinesis"],
     // Transcendent
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "#fs11#นี่คือการจัดอันดับเลเวลแยกตามอาชีพ\r\nโปรดเลือกอาชีพที่คุณต้องการดูอันดับ\r\n\r\n";
+        var say = "#fs11#นี่คือ Level Ranking แยกตามอาชีพ\r\nกรุณาเลือกอาชีพที่ต้องการดู Ranking\r\n\r\n";
         for (var i = 0; i < jobList.length; i++) {
             say += "#L" + i + "#" + jobList[i][1] + "#l\r\n";
         }
@@ -57,7 +57,7 @@ function action(mode, type, selection) {
         var ps = null;
         var rs = null;
         var count = 0;
-        var say = "#fs11##fc0xFF000000#การจัดอันดับเลเวลของอาชีพ " + jobList[selection][1] + "\r\n\r\nการจัดอันดับจะเรียงลำดับดังนี้\r\n#bเลเวล -> EXP -> วันที่สำเร็จเลเวลนั้น\r\n\r\n";
+        var say = "#fs11##fc0xFF000000#Level Ranking ของอาชีพ " + jobList[selection][1] + "\r\n\r\nลำดับ Ranking เรียงตาม:\r\n#bLevel -> EXP -> วันที่ถึงเลเวลนั้น\r\n\r\n";
         try {
             con = DBConnection.getConnection();
             ps = con.prepareStatement("SELECT name, level FROM `characters` WHERE `job` = " + jobList[selection][0] + " ORDER BY `level` DESC, `exp` DESC, `levelUpTime` ASC LIMIT 100"); //AND `gm` = 0 
@@ -65,14 +65,14 @@ function action(mode, type, selection) {
             while (rs.next()) {
                 count++;
                 if (count < 10) {
-                    aas = "#e00#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e00#fc0xFF09A17F#" + count + black + "#n | ";
                 } else if (count < 100) {
-                    aas = "#e0#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e0#fc0xFF09A17F#" + count + black + "#n | ";
                 } else {
-                    aas = "#e#fc0xFF09A17F#" + count + black + "#n Rank | ";
+                    aas = "#e#fc0xFF09A17F#" + count + black + "#n | ";
                 }
 
-                say += "#fc0xFFB2B2B2#" + aas + "#b" + rs.getString("name") + "#k | #rLevel : #fc0xFF000000#" + rs.getInt("level") + "\r\n";
+                say += "#fc0xFFB2B2B2#" + aas + "#b" + rs.getString("name") + "#k | #rLevel: #fc0xFF000000#" + rs.getInt("level") + "\r\n";
             }
             rs.close();
             ps.close();

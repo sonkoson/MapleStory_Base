@@ -1,26 +1,26 @@
 /*Daily Quest
- Arcane River     Joyful Erdas 100, Angry Erdas 100    Joy-8641000 Angry-8641001				
- Chu Chu Island    Crilla 100, Patriarch 100			Crilla-8642012 Patriarch-8642014				
- Lachelein          Angry Masquerade Citizen 100, Insane Masquerade Citizen 100		Angry-8643008 Insane-8643009				
- Arcana        Spirit of Sorrow 200, Spirit of Despair 200			Sorrow-8644009 Despair-8644008				
- Morass          Blue Shadow 200, Red Shadow 200			Blue-8644405 Red-8644406				
- Esfera        Aranya 300, Aranea 300			Aranya-8644504 Aranea-8644505	*/
+ Path of Vanishing     Joyful Erdas 100, Angry Erdas 100    Joyful-8641000 Angry-8641001				
+ Chu Chu Island        Krilla 100, Bashark 100			    Krilla-8642012 Bashark-8642014				
+ Lachelein             Angry Ball Guest 100, Mad Ball Guest 100		Angry-8643008 Mad-8643009				
+ Arcana                Sorrowful Spirit 200, Despairing Spirit 200		Sorrow-8644009 Despair-8644008				
+ Morass                Blue Shadow 200, Red Shadow 200		        Blue-8644405 Red-8644406				
+ Esfera                Aranya 300, Aranea 300			        Aranya-8644504 Aranea-8644505	*/
 
 importPackage(java.lang);
 
 purple = "#fMap/MapHelper.img/weather/starPlanet/7#";
 blue = "#fMap/MapHelper.img/weather/starPlanet/8#";
-blueStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
-yellowStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
-whiteStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
-brownStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
-redStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
-blackStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
-purpleStar = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
+starBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"
+starYellow = "#fUI/GuildMark.img/Mark/Pattern/00004001/3#"
+starWhite = "#fUI/GuildMark.img/Mark/Pattern/00004001/15#"
+starBrown = "#fUI/GuildMark.img/Mark/Pattern/00004001/5#"
+starRed = "#fUI/GuildMark.img/Mark/Pattern/00004001/1#"
+starBlack = "#fUI/GuildMark.img/Mark/Pattern/00004001/16#"
+starPurple = "#fUI/GuildMark.img/Mark/Pattern/00004001/13#"
 star = "#fUI/FarmUI.img/objectStatus/star/whole#"
 S = "#fUI/CashShop.img/CSEffect/today/0#"
 rewardIcon = "#fUI/UIWindow2.img/Quest/quest_info/summary_icon/reward#"
-gain = "#fUI/UIWindow2.img/QuestIcon/4/0#"
+obtainIcon = "#fUI/UIWindow2.img/QuestIcon/4/0#"
 color = "#fc0xFF6600CC#"
 enter = "\r\n"
 enter2 = "\r\n\r\n"
@@ -62,21 +62,21 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "#fs11#" + star + color + " โปรดเลือกของรางวัลที่คุณต้องการรับ " + star + enter;
+        var say = "#fs11#" + star + color + " กรุณาเลือกรางวัลที่ต้องการรับ " + star + enter;
         // for (var i = 1; i < quest.length; i++) {
-        say += "#L0##e#b[รางวัลล็อกอิน]#n#k";
+        say += "#L0##e#b[รางวัลเข้าเกม]#n#k";
         // }
         cm.sendSimple(say);
 
     } else if (status == 1) {
         if (cm.getClient().getKeyValue("hotTimeComplete") != Today) {
-            var say = "#fs11#<รายการของรางวัล>\r\n";
+            var say = "#fs11#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
-            cm.sendYesNo("#fs11#" + star + color + " คุณต้องการรับของรางวัลจริงหรือไม่? " + star + enter + enter + say);
+            cm.sendYesNo("#fs11#" + star + color + " คุณต้องการรับรางวัลหรือไม่? " + star + enter + enter + say);
         } else {
-            cm.sendOkS("#fs11#" + color + "#eอ๊ะ! เหมือนคุณจะรับไปแล้วนะ..?", 2);
+            cm.sendOkS("#fs11#" + color + "#eเดี๋ยวนะ เมื่อกี้เหมือนรับไปแล้ว..?", 2);
             cm.dispose();
             return;
         }
@@ -84,7 +84,7 @@ function action(mode, type, selection) {
         cm.dispose();
         for (var i = 0; i < reward.length; i++) {
             if (!cm.canHold(reward[i][0], reward[i][1])) {
-                cm.sendOk("#fs11#" + color + "โปรดตรวจสอบว่าช่องเก็บของในกระเป๋าของคุณเต็มหรือไม่");
+                cm.sendOk("#fs11#" + color + "กรุณาตรวจสอบว่าช่องเก็บของเต็มหรือไม่เพียงพอ");
                 cm.dispose();
                 return;
             }
@@ -95,6 +95,6 @@ function action(mode, type, selection) {
         }
 
         cm.getClient().setKeyValue("hotTimeComplete", Today);
-        cm.sendOk("#fs11#" + color + "ได้รับรางวัลล็อกอินประจำวันเรียบร้อยแล้ว โปรดตรวจสอบในกระเป๋าของคุณ");
+        cm.sendOk("#fs11#" + color + "ได้รับรางวัลเข้าเกมรายวันแล้ว กรุณาตรวจสอบช่องเก็บของ");
     }
 }

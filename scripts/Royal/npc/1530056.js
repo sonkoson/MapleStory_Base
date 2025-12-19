@@ -18,17 +18,17 @@ function action(mode, type, selection) {
     }
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถใช้งานได้ขณะอยู่ในบอส");
             cm.dispose();
             return;
         }
 
-        choose = "#fs11##b#i4021031##z4021031##fc0xFF000000#를 이용해 다양한 물품을 뽑을 수 있는 자판기 인 것 같다. 뭘 뽑아볼까?\r\n\r\n";
-        choose += "#L31##b의자 뽑기#l\r\n";
-        choose += "#L32##b라이딩 뽑기#l\r\n";
-        choose += "#L33##b데미지스킨 뽑기#l\r\n";
-        choose += "#L34##b칭호 뽑기#l\r\n";
-        choose += "#L35##b훈장 뽑기#l";
+        choose = "#fs11##b#i4021031##z4021031##fc0xFF000000# ดูเหมือนจะเป็นตู้กดที่สามารถสุ่มได้หลากหลายอย่าง จะสุ่มอะไรดีล่ะ?\r\n\r\n";
+        choose += "#L31##bสุ่มเก้าอี้#l\r\n";
+        choose += "#L32##bสุ่มพาหนะ#l\r\n";
+        choose += "#L33##bสุ่ม Damage Skin#l\r\n";
+        choose += "#L34##bสุ่มตำแหน่ง#l\r\n";
+        choose += "#L35##bสุ่มเหรียญตรา#l";
         cm.sendSimple(choose);
 
     } else if (status == 1) {

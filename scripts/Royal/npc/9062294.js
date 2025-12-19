@@ -110,7 +110,7 @@ function action(mode, type, selection) {
 
             case 2:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "보스이동");
+                cm.openNpcCustom(cm.getClient(), 9000213, "BossMove");
                 break;
 
             case 3:
@@ -159,7 +159,7 @@ function action(mode, type, selection) {
             switch (ans_02) {
                 case 6:
                     cm.dispose();
-                    cm.openNpcCustom(cm.getClient(), 9062294, "점프맵이동");
+                    cm.openNpcCustom(cm.getClient(), 9062294, "JumpMapMove");
                     return;
                     break;
                 case 2:

@@ -38,7 +38,7 @@ function action(mode, type, sel) {
 		//msg += "#L2#" + Color + "[Cash Storage] " + Black + "Use (Unavailable)";
 		cm.sendSimple(msg);
 		//cm.sendStorage();
-		//cm.openNpcCustom(cm.getClient(), 9000213, "캐시창고");
+		//cm.openNpcCustom(cm.getClient(), 9000213, "CashStorage");
 	} else if (status == 1) {
 		seld = sel;
 		switch (seld) {
@@ -48,7 +48,8 @@ function action(mode, type, sel) {
 				break;
 			case 2:
 				cm.dispose();
-				cm.openNpcCustom(cm.getClient(), 9000213, "캐시창고");
+				// Note: CashStorage feature is disabled (menu option is commented out)
+				//cm.openNpcCustom(cm.getClient(), 9000213, "CashStorage");
 				break;
 		}
 	}

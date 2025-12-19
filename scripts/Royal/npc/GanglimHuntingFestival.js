@@ -1,16 +1,16 @@
 importPackage(java.lang);
 
-var time = new Date();
-var year = time.getFullYear() + "";
-var month = time.getMonth() + 1 + "";
-var date = time.getDate() + "";
-if (month < 10) {
-    month = "0" + month;
+var Time = new Date();
+var Year = Time.getFullYear() + "";
+var Month = Time.getMonth() + 1 + "";
+var Date = Time.getDate() + "";
+if (Month < 10) {
+    Month = "0" + Month;
 }
-if (date < 10) {
-    date = "0" + date;
+if (Date < 10) {
+    Date = "0" + Date;
 }
-var today = parseInt(year + month + date);
+var Today = parseInt(Year + Month + Date);
 
 var quest = [
     ["Event Daily Quest.01", "3k"],
@@ -46,8 +46,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var say = "  #fs14#   #i4001779##fc0xFFF781D8##e [Ganglim World] Hunting Festival! #i4001779#\r\n#fs11##Cblue#              สามารถเคลียร์ได้วันละ 1 ครั้ง#k\r\n\r\n";
-        //say += "#L0##e#bLevel Range Monsters #r(-20~+10 Level) #b10000 Monsters#d (Unlimited)#l\r\n\r\n";
+        var say = "  #fs14#   #i4001779##fc0xFFF781D8##e [Ganglim World] Hunting Festival! #i4001779#\r\n#fs11##Cblue#              สามารถทำได้วันละ 1 ครั้งเท่านั้น#k\r\n\r\n";
         for (var i = 0; i < quest.length; i++) {
             say += "#L" + i + "##e#b[" + quest[i][0] + "]#n#k\r\n#d";
             for (var a = 0; a < check[i].length; a++) {
@@ -59,8 +58,8 @@ function action(mode, type, selection) {
 
     } else if (status == 1) {
         sel = selection;
-        if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) == today) {
-            cm.sendOk("เควสนี้เสร็จสิ้นแล้ว");
+        if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) == Today) {
+            cm.sendOk("ภารกิจนี้เสร็จสมบูรณ์แล้ว");
             cm.dispose();
             return;
         } else if (cm.getPlayer().getKeyValue("Quest_" + quest[sel][1]) != 0) {
@@ -71,7 +70,7 @@ function action(mode, type, selection) {
             }
         }
 
-        // If this is null, need to reset it.
+        // If null, need to set again
         if (cm.getPlayer().getKeyValue("QuestMax_" + quest[sel][0][0]) == null) {
             for (var a = 0; a < check[sel].length; a++) {
                 cm.getPlayer().setKeyValue("QuestMax_" + check[sel][a][0], check[sel][a][1]);
@@ -88,22 +87,20 @@ function action(mode, type, selection) {
         }
 
         if (bClear) {
-            var say = "<รายการของรางวัล>\r\n";
+            var say = "<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
-            cm.sendYesNo("เงื่อนไขครบถ้วนแล้ว ต้องการจบเควสหรือไม่?\r\n\r\n" + say);
+            cm.sendYesNo("เงื่อนไขการทำภารกิจนี้ครบถ้วนแล้ว ต้องการรับรางวัลหรือไม่?\r\n\r\n" + say);
         } else {
-            var say = "#e#b[" + quest[sel][1] + " Quest]#n#k\r\n\r\n";
+            var say = "#e#b[ภารกิจ " + quest[sel][1] + "]#n#k\r\n\r\n";
             for (var i = 0; i < check[sel].length; i++) {
                 count = cm.getPlayer().getKeyValue("Quest_" + check[sel][i][0]);
                 say += "#o" + check[sel][i][0] + "# (" + count + " / " + check[sel][i][1] + ") ตัว\r\n";
             }
-            say += "\r\n#e#bสามารถจบเควสได้เมื่อกำจัดมอนสเตอร์ครบตามจำนวน\r\n\r\n";
+            say += "\r\n#e#bเมื่อกำจัดมอนสเตอร์ครบตามจำนวนจึงจะรับรางวัลได้\r\n\r\n";
 
-            /*            say += "#L0##e#rMove to Hunting Ground#l#k\r\n\r\n";
-                        say += "[First map moves to second map]\r\n\r\n";*/
-            say += "#fc0xFF6600CC#<รายการของรางวัล>\r\n";
+            say += "#fc0xFF6600CC#<รายการรางวัล>\r\n";
             for (var i = 0; i < reward.length; i++) {
                 say += "#i" + reward[i][0] + "##z" + reward[i][0] + "# " + reward[i][1] + " ชิ้น\r\n";
             }
@@ -125,17 +122,17 @@ function action(mode, type, selection) {
         }
         for (var i = 0; i < reward.length; i++) {
             if (!cm.canHold(reward[i][0], reward[i][1])) {
-                cm.sendOk("กรุณาตรวจสอบว่าช่องเก็บของว่างหรือไม่");
+                cm.sendOk("กรุณาตรวจสอบว่าช่องเก็บของเต็มหรือไม่เพียงพอ");
                 return;
             }
         }
 
-        cm.getPlayer().setKeyValue("Quest_" + quest[sel][1], today);
+        cm.getPlayer().setKeyValue("Quest_" + quest[sel][1], Today);
 
         for (var i = 0; i < reward.length; i++) {
             cm.gainItem(reward[i][0], reward[i][1]);
         }
 
-        cm.sendOk("เควสเสร็จสิ้นและได้รับของรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
+        cm.sendOk("ภารกิจเสร็จสมบูรณ์และได้รับรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
     }
 }

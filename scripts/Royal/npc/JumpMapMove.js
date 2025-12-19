@@ -58,7 +58,7 @@ function action(mode, type, selection) {
 
             case 4:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000213, "MoveBoss");
+                cm.openNpcCustom(cm.getClient(), 9000213, "BossMove");
                 break;
 
             case 10:

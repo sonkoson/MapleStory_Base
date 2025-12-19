@@ -17,7 +17,6 @@ pink = "#fc0xFFFF3366#"
 lightPink = "#fc0xFFF781D8#"
 enter = "\r\n"
 enter2 = "\r\n\r\n"
-enter = "\r\n";
 
 importPackage(java.lang);
 importPackage(Packages.server);
@@ -28,14 +27,12 @@ var b = "";
 var status = -1;
 
 var item = [
-    ["#g[EVENT]#fc0xFF000000# Radiant Light Crystal 3k Package", 4031227, 3000, 50000, "#r[HOT]", "Sale Period : ~2025.07.13"],
-    ["#g[EVENT]#fc0xFF000000# Neo Core 4k Package", 4310308, 4000, 50000, "#r[HOT]", "Sale Period : ~2025.07.13"],
-    ["#g[EVENT]#fc0xFF000000# Memory Fragment 4k Package", 4033172, 4000, 50000, "#b[NEW]", "Sale Period : ~2025.07.13"],
-    ["#g[EVENT]#fc0xFF000000# Anti-Magic Stone 7k Package", 4009005, 7000, 50000, "#b[NEW]", "Sale Period : ~2025.07.13"],
-    ["#g[EVENT]#fc0xFF000000# Promotion Coin 8k Package", 4310266, 8000, 50000, "#b[NEW]", "Sale Period : ~2025.07.13"],
-    ["#g[EVENT]#fc0xFF000000# Hunt Coin 15k Package", 4310237, 15000, 50000, "#b[NEW]", "Sale Period : ~2025.07.13"],
-    //["#g[EVENT]#fc0xFF000000# Red Apple 120 Package", 5060048, 120, 100000, "#r[HOT]", "Sale Period : ~2025.06.08"],
-    //["#g[EVENT]#fc0xFF000000# Wheel 40 Package", 4036660, 40, 100000, "#b[NEW]", "Sale Period : ~2025.06.08"],
+    ["#g[EVENT]#fc0xFF000000# Glowing Crystal 3k Package", 4031227, 3000, 50000, "#r[HOT]", "Sale Period: ~2025.07.13"],
+    ["#g[EVENT]#fc0xFF000000# Neo Core 4k Package", 4310308, 4000, 50000, "#r[HOT]", "Sale Period: ~2025.07.13"],
+    ["#g[EVENT]#fc0xFF000000# Memory Fragment 4k Package", 4033172, 4000, 50000, "#b[NEW]", "Sale Period: ~2025.07.13"],
+    ["#g[EVENT]#fc0xFF000000# Half Magic Stone 7k Package", 4009005, 7000, 50000, "#b[NEW]", "Sale Period: ~2025.07.13"],
+    ["#g[EVENT]#fc0xFF000000# Upgrade Coin 8k Package", 4310266, 8000, 50000, "#b[NEW]", "Sale Period: ~2025.07.13"],
+    ["#g[EVENT]#fc0xFF000000# Hunt Coin 15k Package", 4310237, 15000, 50000, "#b[NEW]", "Sale Period: ~2025.07.13"],
 ];
 
 function start() {
@@ -61,27 +58,25 @@ function action(mode, type, selection) {
         var currentCash = comma(cm.getPlayer().getCashPoint());
         var currentGrade = cm.getPlayer().getHgrades();
 
-        chat = star + "#fs11# Current #h0#'s Cash : #fc0xFFFF3366#" + currentCash + "C#k\r\n";
-        chat += star + " Current #h0#'s Rank : #fc0xFFFF3366#" + currentGrade + "\r\n";
+        chat = star + "#fs11# Cash ปัจจุบันของ #h0#: #fc0xFFFF3366#" + currentCash + "C#k\r\n";
+        chat += star + " Grade ปัจจุบันของ #h0#: #fc0xFFFF3366#" + currentGrade + "\r\n";
         chat += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
         chat += color + "#e<Event Package>#k#n" + enter;
         for (i = 0; i < item.length; i++) {
-            // Event package format is different below, be careful
             price = item[i][3].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            chat += black + "#L" + i + "##i" + item[i][1] + "# " + item[i][0] + " #r#e" + item[i][4] + "#l#n\r\n              #fc0xFF000000#Price : #e#r" + price + "C#b#n " + item[i][5] + "#k#n\r\n";
+            chat += black + "#L" + i + "##i" + item[i][1] + "# " + item[i][0] + " #r#e" + item[i][4] + "#l#n\r\n              #fc0xFF000000#ราคา: #e#r" + price + "C#b#n " + item[i][5] + "#k#n\r\n";
         }
         cm.sendSimple(chat);
     } else if (status == 1) {
         a = selection;
 
         if (selection == -1) {
-            cm.sendOk("#fs11#No items available for purchase.");
+            cm.sendOk("#fs11#ไม่มีไอเท็มที่สามารถซื้อได้");
             cm.dispose();
         } else {
             var suk1 = Math.floor((cm.getPlayer().getCashPoint() / item[selection][3]));
             stigmacoin = Math.min(suk1);
-            // Event package format is different below, be careful
-            cm.sendGetNumber("#fs11#" + black + "#i " + item[selection][1] + "# How many " + item[selection][0] + " would you like to buy? \r\n#Cgray#(Current purchasable " + item[selection][0] + " Quantity : " + stigmacoin + ")\r\n\r\n#r※ Purchase is immediate upon input [Cannot be undone]", 1, 1, 100);
+            cm.sendGetNumber("#fs11#" + black + "คุณต้องการซื้อ #i " + item[selection][1] + "# " + item[selection][0] + " กี่ชิ้น? \r\n#Cgray#(จำนวน " + item[selection][0] + " ที่สามารถซื้อได้: " + stigmacoin + " ชิ้น)\r\n\r\n#r※ การซื้อจะเกิดขึ้นทันทีเมื่อกรอกจำนวน [ไม่สามารถยกเลิกได้]", 1, 1, 100);
         }
     } else if (status == 2) {
         b = selection;
@@ -93,14 +88,14 @@ function action(mode, type, selection) {
         }
 
         if (selection > 100) {
-            cm.sendOk("#fs11#You can only purchase up to 100 at a time.");
+            cm.sendOk("#fs11#สามารถซื้อได้สูงสุด 100 ชิ้นต่อครั้ง");
             cm.dispose();
             return;
         }
 
         if (cm.getPlayer().getCashPoint() >= item[a][3] * cost) {
-            var totalCount = item[a][2] * cost; // Total quantity to give
-            var maxStack = 32000; // Split limit (safely set to 32000)
+            var totalCount = item[a][2] * cost;
+            var maxStack = 32000;
             var givenCount = 0;
 
             while (totalCount > 0) {
@@ -113,18 +108,18 @@ function action(mode, type, selection) {
             cm.getPlayer().gainCashPoint(-item[a][3] * cost);
 
             Packages.scripting.NPCConversationManager.writeLog(
-                "TextLog/zenia/[MVP_CashShop].log",
-                "\r\nAccount : " + cm.getClient().getAccountName() +
-                " (" + cm.getClient().getAccID() + ")\r\nNickname : " + cm.getPlayer().getName() +
-                "\r\nPurchased Item : " + cm.getItemName(item[a][1]) + " [" + item[a][1] + "] (" + cost + ")\r\n" +
-                "Used Cash : " + -item[a][3] * cost + "\r\nHeld Cash : " + cm.getPlayer().getCashPoint() + "\r\n\r\n",
+                "TextLog/zenia/[MVPCashShop].log",
+                "\r\nAccount: " + cm.getClient().getAccountName() +
+                " (" + cm.getClient().getAccID() + ")\r\nCharacter: " + cm.getPlayer().getName() +
+                "\r\nPurchased Item: " + cm.getItemName(item[a][1]) + " [" + item[a][1] + "] (" + cost + " pcs)\r\n" +
+                "Cash Used: " + -item[a][3] * cost + "\r\nRemaining Cash: " + cm.getPlayer().getCashPoint() + "\r\n\r\n",
                 true
             );
 
-            cm.sendOkS("#fs11#" + color + "Purchase complete." + star, 2);
+            cm.sendOkS("#fs11#" + color + "ซื้อสำเร็จแล้ว" + star, 2);
             cm.dispose();
         } else {
-            cm.sendOk("#fs11#Insufficient Cash.");
+            cm.sendOk("#fs11#Cash ไม่เพียงพอ");
             cm.dispose();
         }
     }

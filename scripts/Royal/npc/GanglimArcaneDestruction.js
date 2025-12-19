@@ -30,12 +30,12 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         if (cm.getInvSlots(1) < 3 || cm.getInvSlots(2) < 3 || cm.getInvSlots(3) < 3 || cm.getInvSlots(4) < 3 || cm.getInvSlots(5) < 3) {
-            cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาเคลียร์ช่องว่างในกระเป๋าอย่างน้อย 3 ช่องในแต่ละแท็บ", 2);
+            cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาเคลียร์ช่องเก็บของอย่างน้อย 3 ช่องในแต่ละแท็บ", 2);
             cm.dispose();
             return;
         }
-        var msg = "#fs11#กรุณาเลือกไอเท็มที่จะสร้าง" + enter + enter;
-        msg += "#fs11##b#eอุปกรณ์ [Ruin Arcane Shade]#k จะได้รับค่าสถานะเพิ่มเติม\r\n#r[ All Stat + 15% Damage + 15% Boss Damage + 15% Upgrade Slots 19 ]#n#k#fs12##b" + enter;
+        var msg = "#fs11#กรุณาเลือกไอเท็มที่ต้องการคราฟ" + enter + enter;
+        msg += "#fs11##b#e[Destruction Arcane Shade]#k จะได้รับออปชั่นเพิ่มเติม\r\n#r[ All Stats + 15% Damage + 15% Boss ATT + 15% Upgrade Slots 19 ]#n#k#fs12##b" + enter;
         for (i = 0; i < items.length; i++)
             msg += "#fs11##L" + i + "##i" + items[i]['itemid'] + "##z" + items[i]['itemid'] + "# " + items[i]['qty'] + " ชิ้น" + enter;
 
@@ -47,34 +47,34 @@ function action(mode, type, sel) {
 
         canMake = checkItems(item);
 
-        var msg = "#fs11#ไอเท็มที่เลือกคือ#fs11##b" + enter;
-        msg += "#fs11#ไอเท็ม : #i" + item['itemid'] + "##z" + item['itemid'] + "# " + item['qty'] + " ชิ้น" + enter;
+        var msg = "#fs11#ไอเท็มที่คุณเลือกมีดังนี้:#fs11##b" + enter;
+        msg += "#fs11#ไอเท็ม: #i" + item['itemid'] + "##z" + item['itemid'] + "# " + item['qty'] + " ชิ้น" + enter;
 
         if (isEquip) {
             if (item['allstat'] > 0)
-                msg += "สเตตัสทั้งหมด : +" + item['allstat'] + enter;
+                msg += "All Stats: +" + item['allstat'] + enter;
             if (item['atk'] > 0)
-                msg += "พลังโจมตี, พลังเวทย์ : +" + item['atk'] + enter;
+                msg += "ATT, MATT: +" + item['atk'] + enter;
         }
 
         msg += enter;
-        msg += "#fs11##kนี่คือสูตรสำหรับสร้างไอเท็มที่เลือก#fs11##d" + enter + enter;
+        msg += "#fs11##kนี่คือ Recipe สำหรับคราฟไอเท็มที่เลือก:#fs11##d" + enter + enter;
 
         if (item['recipes'].length > 0) {
             for (i = 0; i < item['recipes'].length; i++)
-                msg += "#b#i" + item['recipes'][i][0] + "##z" + item['recipes'][i][0] + "# " + item['recipes'][i][1] + " ชิ้น #r/ #c" + item['recipes'][i][0] + "# ชิ้นที่มีอยู่#k" + enter;
+                msg += "#b#i" + item['recipes'][i][0] + "##z" + item['recipes'][i][0] + "# " + item['recipes'][i][1] + " ชิ้น #r/ #c" + item['recipes'][i][0] + "# ที่มีอยู่#k" + enter;
         }
 
         if (item['price'] == 0)
 
-            msg += enter + "#fs11##eอัตราสำเร็จ : " + item['chance'] + "%#n" + enter + enter;
-        msg += "#kหากล้มเหลวจะได้รับไอเท็มดังนี้#fs11##d" + enter + enter;
+            msg += enter + "#fs11##eอัตราความสำเร็จ: " + item['chance'] + "%#n" + enter + enter;
+        msg += "#kเมื่อคราฟสำเร็จ จะได้รับไอเท็มดังต่อไปนี้:#fs11##d" + enter + enter;
         if (item['fail'].length > 0) {
             for (i = 0; i < item['fail'].length; i++)
                 msg += "#i" + item['fail'][i][0] + "##z" + item['fail'][i][0] + "# " + item['fail'][i][1] + " ชิ้น" + enter;
         }
         msg += "#fs11#" + enter;
-        msg += canMake ? "#bวัตถุดิบครบถ้วนแล้ว" + enter + "กด 'ใช่' เพื่อยืนยันการสร้าง" : "#rวัตถุดิบไม่เพียงพอ";
+        msg += canMake ? "#bวัสดุครบถ้วนแล้วสำหรับคราฟไอเท็มนี้" + enter + "กด 'Yes' เพื่อยืนยันการคราฟ" : "#rวัสดุไม่เพียงพอสำหรับคราฟไอเท็มนี้";
 
         if (canMake)
             cm.sendYesNo(msg);
@@ -87,18 +87,18 @@ function action(mode, type, sel) {
         canMake = checkItems(item);
 
         if (!canMake) {
-            cm.sendOk("กรุณาตรวจสอบวัตถุดิบอีกครั้ง");
+            cm.sendOk("กรุณาตรวจสอบว่าวัสดุเพียงพอหรือไม่");
             cm.dispose();
             return;
         }
         payItems(item);
         if (Packages.objects.utils.Randomizer.rand(1, 100) <= item['chance']) {
             gainItem(item);
-            cm.sendOk("#fs11#ขอแสดงความยินดี สร้างสำเร็จแล้ว");
-            cm.worldGMMessage(21, "[Ruin Arcane] " + cm.getPlayer().getName() + " ได้สร้าง [" + cm.getItemName(item['itemid']) + "] สำเร็จ!");
+            cm.sendOk("#fs11#ยินดีด้วย! คราฟสำเร็จ");
+            cm.worldGMMessage(21, "[Destruction Arcane] " + cm.getPlayer().getName() + " crafted [" + cm.getItemName(item['itemid']) + "] successfully!");
         } else {
-            cm.sendOk("#fs11#การสร้างล้มเหลว");
-            cm.worldGMMessage(21, "[Ruin Arcane] " + cm.getPlayer().getName() + " สร้าง [" + cm.getItemName(item['itemid']) + "] ล้มเหลว");
+            cm.sendOk("#fs11#คราฟล้มเหลว");
+            cm.worldGMMessage(21, "[Destruction Arcane] " + cm.getPlayer().getName() + " failed to craft [" + cm.getItemName(item['itemid']) + "]");
             gainFail(item);
         }
         cm.dispose();
@@ -111,7 +111,6 @@ function checkItems(i) {
 
     for (j = 0; j < recipe.length; j++) {
         if (!cm.haveItem(recipe[j][0], recipe[j][1])) {
-            //cm.getPlayer().dropMessage(6, "fas");
             ret = false;
             break;
         }

@@ -1,4 +1,4 @@
-// 후원시스템
+// Donation System
 importPackage(Packages.server);
 importPackage(Packages.database);
 importPackage(Packages.client);
@@ -232,15 +232,15 @@ function action(mode, type, sel) {
                 break;
             case 2:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 1530050, "포인트상점");
+                cm.openNpcCustom(cm.getClient(), 1530050, "PointShop");
                 break;
             case 3:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000178, "초월아케인심볼");
+                cm.openNpcCustom(cm.getClient(), 9000178, "TranscendentArcaneSymbol");
                 break;
             case 4:
                 cm.dispose();
-                cm.openNpcCustom(cm.getClient(), 9000331, "강림캐시강화");
+                cm.openNpcCustom(cm.getClient(), 9000331, "GanglimCashEnhancement");
                 break;
             case 5:
                 var msg = "#fs11#Current #b#h ##k's grade is #b" + cm.getPlayer().getHgrades() + "#k." + Enter;
@@ -262,12 +262,12 @@ function action(mode, type, sel) {
 
             case 6: // 주간보상
                 if (cm.getPlayer().getHgrade() < 1) {
-                    cm.sendOk("#fs11#MVP 브론즈 이상만 사용할 수 있는 기능입니다.");
+                    cm.sendOk("#fs11#ฟังก์ชันนี้ใช้ได้เฉพาะ MVP Bronze ขึ้นไปเท่านั้น");
                     cm.dispose();
                     return;
                 }
                 if (cm.getClient().getKeyValue("HgradeWeek") != null) {
-                    cm.sendOk("#fs11#이번 주는 이미 수령하셨습니다.");
+                    cm.sendOk("#fs11#สัปดาห์นี้คุณได้รับไปแล้ว");
                     cm.dispose();
                     return;
                 }
@@ -288,17 +288,17 @@ function action(mode, type, sel) {
                 break;
 
             case 22:
-                var 보유캐시 = comma(cm.getPlayer().getCashPoint());
-                var 보유포인트 = comma(cm.getPlayer().getDonationPoint());
-                var 현재등급 = cm.getPlayer().getHgrades();
-                var 누적캐시 = comma(cm.getClient().getKeyValue("DPointAll"));
+                var ownedCashMenu = comma(cm.getPlayer().getCashPoint());
+                var ownedPointMenu = comma(cm.getPlayer().getDonationPoint());
+                var currentGradeMenu = cm.getPlayer().getHgrades();
+                var totalCashMenu = comma(cm.getClient().getKeyValue("DPointAll"));
 
-                var msg = "#fs11#" + 검은색;
-                msg += 별 + " 현재 #fc0xFFFF3366##h ##fc0xFF000000# 님의 캐시 : #fc0xFFFF3366#" + 보유캐시 + "C#k" + 검은색 + enter;
+                var msg = "#fs11#" + Black;
+                msg += Star + " Current #fc0xFFFF3366##h ##fc0xFF000000#'s Cash : #fc0xFFFF3366#" + ownedCashMenu + "C#k" + Black + enter;
                 msg += "#l\r\n#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#" + enter;
-                msg += "#L1#- 상시 패키지 -#l" + enter;
-                msg += "#L2#- 이벤트 패키지 - #r[Hot !]#k#l" + enter;
-                msg += "#L3#- MVP 등급 - #r[Hot !]#l" + enter;
+                msg += "#L1#- Regular Package -#l" + enter;
+                msg += "#L2#- Event Package - #r[Hot !]#k#l" + enter;
+                msg += "#L3#- MVP Grade - #r[Hot !]#l" + enter;
 
                 msg += "#l\r\n#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
                 cm.sendSimple(msg);
@@ -421,7 +421,7 @@ function action(mode, type, sel) {
                 break;
 
             case 61:
-                var msg = "#fs11##e누적 캐시보상 미리보기#n\r\n\r\n";
+                var msg = "#fs11##eCumulative Cash Reward Preview#n\r\n\r\n";
 
                 var previewConfig = {
                     10: { spins: 2, berries: 0 },
@@ -483,8 +483,8 @@ function action(mode, type, sel) {
                 // 출력
                 for (var tier in previewConfig) {
                     var cfg = previewConfig[tier];
-                    msg += "#fs11##b- " + tier + "만 누적#k :  #i4036661# " + cfg.spins + "개";
-                    if (cfg.berries > 0) msg += ",  #i5068306# " + cfg.berries + "개";
+                    msg += "#fs11##b- " + tier + "0k Cumulative#k :  #i4036661# " + cfg.spins + " pcs";
+                    if (cfg.berries > 0) msg += ",  #i5068306# " + cfg.berries + " pcs";
                     msg += "\r\n";
                 }
                 cm.sendOk(msg);
@@ -573,15 +573,15 @@ function action(mode, type, sel) {
                 switch (seld22) {
                     case 1:
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 1530050, "상시패키지상점");
+                        cm.openNpcCustom(cm.getClient(), 1530050, "PermanentPackageShop");
                         break;
                     case 2:
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 1530050, "이벤트패키지상점");
+                        cm.openNpcCustom(cm.getClient(), 1530050, "EventPackageShop");
                         break;
                     case 3:
                         cm.dispose();
-                        cm.openNpcCustom(cm.getClient(), 1530050, "등급상점");
+                        cm.openNpcCustom(cm.getClient(), 9000213, "GradeShop");
                         break;
                 }
                 break;
