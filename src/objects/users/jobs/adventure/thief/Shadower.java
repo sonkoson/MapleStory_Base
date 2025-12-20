@@ -418,6 +418,6 @@ public class Shadower extends DefaultThief {
 
       Integer value = this.getPlayer().getBuffedValue(SecondaryStatFlag.PickPocket);
       this.getPlayer()
-         .dropMessage(5, "PickPocketX : " + this.pickPocketX + " // Map Meso Count : " + count + " // Buffed : " + (value == null ? "null" : value));
+         .dropMessage(5, "PickPocketX : " + this.pickPocketX + " // จำนวน Meso ในแผนที่ : " + count + " // สถานะบัฟ : " + (value == null ? "null" : value));
    }
 }

@@ -164,7 +164,7 @@ public class Striker extends Pirate {
                packet.writeInt(this.getPlayer().getId());
                packet.writeShort(this.getPlayer().getTransferFieldCount());
                this.getPlayer().getMap().broadcastMessage(packet.getPacket());
-               System.out.println("dhdld??" + this.getPlayer().getTransferFieldCount());
+               System.out.println("TransferFieldCount??" + this.getPlayer().getTransferFieldCount());
                this.getPlayer().giveCoolDowns(15101028, System.currentTimeMillis(), seaWave.getCooldown(this.getPlayer()));
                this.getPlayer().send(CField.skillCooldown(15101028, seaWave.getCooldown(this.getPlayer())));
             }

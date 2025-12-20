@@ -660,10 +660,10 @@ public class Ark extends Pirate {
                      CField.addPopupSay(
                            3001532,
                            5000,
-                           "Ah, it's been a while. Oh, hasn't it been that long... But if it's been this long, I guess it's right to say it's been a while... What if I said it's been a while but it hasn't been that long and you get offended... If I knew I'd slip up, I shouldn't have answered, the morning fortune was strange... It's all my fault. I'm sorry...",
+                           "อ่า ไม่เจอกันนานเลยนะ โอ๊ะ ไม่นานขนาดนั้นสินะ... แต่ถ้าผ่านมานานขนาดนี้ จะบอกว่าไม่เจอกันนานก็คงถูกแหละ... แล้วถ้าฉันพูดว่าไม่เจอกันนานแต่จริงๆ มันไม่นานขนาดนั้นแล้วคุณโกรธขึ้นมาล่ะ... ถ้ารู้ว่าจะพูดผิด ฉันไม่น่าตอบเลย ดวงตอนเช้ามันแปลกๆ... ความผิดฉันเอง ขอโทษนะ...",
                            ""));
          this.getPlayer().dropMessage(5,
-               "Niya seems the same. I comforted Niya and talked about the situation of the caravan.");
+               "Niya ดูเหมือนเดิม ฉันปลอบใจ Niya และคุยเรื่องสถานการณ์ของคาราวาน");
       } else if (r == 1) {
          String timeStr = "";
          int hours = diff / 3600;
@@ -671,15 +671,15 @@ public class Ark extends Pirate {
          minutes /= 60;
          int seconds = minutes % 60;
          if (hours > 0) {
-            timeStr = hours + "hours ";
+            timeStr = hours + "ชั่วโมง ";
          }
 
          if (minutes > 0) {
-            timeStr = timeStr + minutes + "min ";
+            timeStr = timeStr + minutes + "นาที ";
          }
 
          if (seconds > 0) {
-            timeStr = timeStr + seconds + "sec ";
+            timeStr = timeStr + seconds + "วินาที ";
          }
 
          if (timeStr.isEmpty()) {
@@ -691,25 +691,25 @@ public class Ark extends Pirate {
                      CField.addPopupSay(
                            3001533,
                            5000,
-                           "Exactly "
+                           "เวลาผ่านไป "
                                  + timeStr
-                                 + " has passed since I last communicated with you, Chir.\r\nI was worried because I couldn't get a signal, but I'm glad the radio seems to be working, Chir.\r\nBarkbark said nonsense that feeling the heart is enough, but I think we need to actually communicate to confirm each other's safety. Chir.",
+                                 + "พอดีเป๊ะ ตั้งแต่ฉันติดต่อกับคุณครั้งล่าสุด จี๊ด.\r\nฉันเป็นห่วงเพราะหาสัญญาณไม่ได้ แต่ดีใจที่วิทยุสื่อสารดูเหมือนจะใช้ได้แล้ว จี๊ด.\r\nBarkbark พูดไร้สาระว่าแค่สัมผัสใจก็พอแล้ว แต่ฉันคิดว่าเราต้องสื่อสารกันจริงๆ เพื่อยืนยันความปลอดภัยของกันและกัน จี๊ด.",
                            ""));
          this.getPlayer().dropMessage(5,
-               "Wei ดูเหมือนจзะเลาะกับ Barkbark ตามปกตԁคุยเรื่องวิธีใช้วԷยุให้ดีขึ้น");
+               "Wei ดูเหมือนจะทะเลาะกับ Barkbark ตามปกติ คุยเรื่องวิธีใช้วิทยุสื่อสารให้ดีขึ้น");
       } else if (r == 2) {
          this.getPlayer().send(CField.addPopupSay(3001534, 3000,
-               "Hey! What's up bro. Long time no see, but my heart is beating hot with you so I wasn't worried at all!\r\nSpeaking of which, listen to my music after a long time.",
+               "เฮ้! ว่าไงพวก ไม่เจอกันนาน แต่หัวใจฉันเต้นเร่าร้อนไปกับนาย ฉันเลยไม่ห่วงเลยสักนิด!\r\nว่าแต่ ลองฟังเพลงของฉันหลังจากไม่ได้ฟังมานานดูสิ",
                ""));
-         this.getPlayer().dropMessage(5, "Barkbark seems the same. Talked about Barkbark's song.");
+         this.getPlayer().dropMessage(5, "Barkbark ดูเหมือนเดิม คุยเรื่องเพลงของ Barkbark");
       } else if (r == 3) {
          this.getPlayer()
                .send(
                      CField.addPopupSay(
                            3001535, 3000,
-                           "Ah. The person who gave me the shiny thing, how have you been! I ate a lot properly these days so I grew this much! I didn't even cry when I fell yesterday! Hehe...\r\n(This is a secret, but I found something shiny around here too!)",
+                           "อ่า คนที่ให้ของวิบวับกับหนูนี่นา สบายดีมั้ย! ช่วงนี้หนูกินเยอะมากเลยโตขึ้นตั้งขนาดนี้! เมื่อวานตอนหกล้มหนูก็ไม่ร้องไห้ด้วยนะ! ฮิฮิ...\r\n(อันนี้ความลับนะ แต่หนูเจอของวิบวับแถวๆ นี้ด้วย!)",
                            ""));
-         this.getPlayer().dropMessage(5, "Mar seems to be growing up bravely. Talked about what Mar played yesterday.");
+         this.getPlayer().dropMessage(5, "Mar ดูเหมือนจะโตขึ้นอย่างกล้าหาญ คุยเรื่องที่ Mar เล่นเมื่อวาน");
       }
    }
 

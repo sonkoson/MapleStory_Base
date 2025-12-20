@@ -246,7 +246,7 @@ public class CommonJob implements BasicJob {
                   if (count >= 5) {
                      this.getPlayer().warp(ServerConstants.TownMap);
                      this.getPlayer().dropMessage(5,
-                           "คุณถูกย้ายกลับเมืองเนื่องจากใช้สกิลBee Yeon เกิน 5 ครั้งในจشเดิม");
+                           "เธอถูกย้ายกลับเมืองเนื่องจากใช้สกิล Bee Yeon เกิน 5 ครั้งในจุดเดิม");
                      this.getPlayer().updateOneInfo(19771, "lastcount", String.valueOf(0));
                   }
                } else {
@@ -2343,7 +2343,7 @@ public class CommonJob implements BasicJob {
                   statManager.changeStatValue(SecondaryStatFlag.HolySymbol, 2311003, effect.getX() / 2);
                   statManager.temporaryStatSet();
                   this.getPlayer().send(CWvsContext.InfoPacket
-                        .brownMessage("You have left the area of the character who cast Holy Symbol."));
+                        .brownMessage("เธอได้ออกจากพื้นที่ของตัวละครที่ร่ายสกิล Holy Symbol"));
                }
             } else {
                boolean bBuffIncrease = false;
@@ -2363,7 +2363,7 @@ public class CommonJob implements BasicJob {
                   statManager.changeStatValue(SecondaryStatFlag.HolySymbol, 2311003, effect.getX());
                   statManager.temporaryStatSet();
                   this.getPlayer().send(CWvsContext.InfoPacket
-                        .brownMessage("You have entered the area of the character who cast Holy Symbol."));
+                        .brownMessage("เธอได้เข้าสู่พื้นที่ของตัวละครที่ร่ายสกิล Holy Symbol"));
                }
             }
          }
@@ -3179,7 +3179,7 @@ public class CommonJob implements BasicJob {
       int x = 0;
       if (fail.get()) {
          String str = String.join(", ", dataString);
-         this.player.dropMessage(5, skillName + " roll result: " + str + ". You did not receive any effect.");
+         this.player.dropMessage(5, "ผลลัพธ์การทอยลูกเต๋า " + skillName + ": " + str + " เธอไม่ได้รับเอฟเฟกต์ใดๆ");
          cooltime = effect.getCooldown(this.player) / 2;
       } else {
          for (int index = 0; index < datas.size(); index++) {
@@ -3210,7 +3210,7 @@ public class CommonJob implements BasicJob {
             }
 
             if (data != 1) {
-               this.player.dropMessage(5, skillName + " triggered effect [" + data + "].");
+               this.player.dropMessage(5, skillName + " แสดงผล [" + data + "]");
             }
          }
 
