@@ -1,4 +1,0 @@
-Files Processed: 2370
-Files Converted to UTF-8: 0
-Files with Korean: 708
-Unique Korean Tokens: 5086
