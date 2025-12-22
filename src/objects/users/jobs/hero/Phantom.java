@@ -795,7 +795,7 @@ public class Phantom extends Thief {
          AtomicInteger slot = new AtomicInteger(0);
          stolenSkills.forEach(stSkill -> {
             if (stSkill.getLeft() == skillId) {
-               this.getPlayer().dropMessage(-6, "คุณขโมยสกิลนี้ไปแล้วกรุณาลบออกแล้วลองใหม่");
+               this.getPlayer().dropMessage(-6, "เธอขโมยสกิลนี้ไปแล้ว กรุณาลบออกแล้วลองใหม่");
                if (this.getPlayer().isGM()) {
                   this.getPlayer().dropMessage(5, "Skill ID: " + skillId);
                }
@@ -940,7 +940,7 @@ public class Phantom extends Thief {
          });
          this.getPlayer().setSaveFlag(this.getPlayer().getSaveFlag() | CharacterSaveFlag.STOLEN_SKILLS.getFlag());
          this.getPlayer().dropMessage(-8,
-               "คุณเปลี่ยนสกิลผ่านการจѴการสกิลมีคูŴาวน์ 30 วินҷีสำหรับสกิลนี้");
+               "เธอเปลี่ยนสกิลผ่านการจัดการสกิล มีคูลดาวน์ 30 วินาทีสำหรับสกิลนี้");
          this.getPlayer().addCooldown(baseSkill, System.currentTimeMillis(), 30000L);
       } else {
          this.getPlayer().dropMessage(-6, "Please try again in a moment.");

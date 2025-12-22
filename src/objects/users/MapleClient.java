@@ -1062,7 +1062,7 @@ public class MapleClient implements Serializable {
          try {
             List<String> macString = this.getMacs();
             StringBuilder sb = new StringBuilder();
-            sb.append("์ ‘속 해์  (아이피 : ");
+            sb.append("Connection Disconnected (IP : ");
             sb.append(this.player.getClient().getSessionIPAddress());
             sb.append(")");
             String getMac = "";
@@ -1090,7 +1090,7 @@ public class MapleClient implements Serializable {
          try {
             List<String> macString = this.getMacs();
             StringBuilder sb = new StringBuilder();
-            sb.append("์ ‘속 해์  (아이피 : ");
+            sb.append("Connection Disconnected (IP : ");
             sb.append(this.getSessionIPAddress());
             sb.append(")");
             String getMac = "";

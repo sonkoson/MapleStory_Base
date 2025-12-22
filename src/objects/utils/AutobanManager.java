@@ -60,11 +60,11 @@ public class AutobanManager implements Runnable {
                      .add(new AutobanManager.ExpirationEntry(System.currentTimeMillis() + expiration, acc, points));
             }
          } else if (!c.getPlayer().isGM() && !c.getPlayer().isClone()) {
-            StringBuilder sb = new StringBuilder("오ํ 밴 (name : ");
+            StringBuilder sb = new StringBuilder("Autoban (name : ");
             sb.append(c.getPlayer().getName());
             sb.append(", IP : ");
             sb.append(c.getSession().remoteAddress().toString().split(":")[0]);
-            sb.append(") 사์  : ");
+            sb.append(") Reason : ");
             String reason_ = String.join(", ", this.reasons.get(acc));
             sb.append(reason_);
             Center.Broadcast.broadcastMessage(CWvsContext.serverNotice(0,

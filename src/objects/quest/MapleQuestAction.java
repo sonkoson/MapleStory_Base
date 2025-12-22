@@ -186,7 +186,7 @@ public class MapleQuestAction implements Serializable {
                         int period = itemx.period / 1440;
                         String name = MapleItemInformationProvider.getInstance().getName(id);
                         if (id / 10000 == 114 && name != null && name.length() > 0) {
-                           String msg = "You obtained <" + name + "> Medal!";
+                           String msg = "คุณได้รับ <" + name + "> Medal!";
                            c.dropMessage(-1, msg);
                            c.dropMessage(5, msg);
                         }
