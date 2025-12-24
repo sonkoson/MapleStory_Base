@@ -20,31 +20,31 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        talk = "#bWhat do you want?#k\r\n\r\n"
-        talk += "#L0#Go to subdue.#l\r\n"
+        talk = "#bมีธุระอะไรหรือเปล่า?#k\r\n\r\n"
+        talk += "#L0#เข้าสู่การต่อสู้#l\r\n"
         //talk += "#L99#Exchange for Ursus loot rewards.#l"
         cm.sendSimpleS(talk, 0x26);
     } else if (status == 1) {
         st = selection;
         if (cm.getParty() == null) {
-            cm.sendOk("You must be in a party of 1 or more to enter.");
+            cm.sendOk("ต้องมีปาร์ตี้อย่างน้อย 1 คนจึงจะเข้าได้");
             cm.dispose();
             return;
         } else if (cm.getPlayerCount(setting[st][2]) >= 1) {
-            cm.sendOk("Someone is already challenging Ursus.\r\nPlease use another channel.");
+            cm.sendOk("มีคนกำลังท้าทาย Ursus อยู่แล้ว\r\nกรุณาลองใหม่ในแชนแนลอื่น");
             cm.dispose();
             return;
         } else if (!cm.isLeader()) {
-            cm.sendOk("Only the party leader can apply for entry.");
+            cm.sendOk("เฉพาะหัวหน้าปาร์ตี้เท่านั้นที่สามารถขอเข้าได้");
             cm.dispose();
             return;
         } else if (!cm.allMembersHere()) {
-            cm.sendOk("All members must be in the same place.");
+            cm.sendOk("สมาชิกทุกคนต้องอยู่ในแผนที่เดียวกัน");
             cm.dispose();
             return;
         }
         if (!cm.isBossAvailable(setting[st][0], setting[st][1])) {
-            talk = "Someone in the party has already entered today.\r\n\r\n"
+            talk = "สมาชิกในปาร์ตี้ได้เข้าดันเจี้ยนไปแล้วในวันนี้\r\n\r\n"
             for (i = 0; i < cm.BossNotAvailableChrList(setting[st][0], setting[st][1]).length; i++) {
                 talk += "#b#e-" + cm.BossNotAvailableChrList(setting[st][0], setting[st][1])[i] + "\r\n"
             }
@@ -52,7 +52,7 @@ function action(mode, type, selection) {
             cm.dispose();
             return;
         } else if (!cm.isLevelAvailable(setting[st][3])) {
-            talk = "Someone in the party does not meet the level requirement for Ursus."
+            talk = "สมาชิกในปาร์ตี้มีเลเวลไม่ถึงกำหนดสำหรับ Ursus"
             for (i = 0; i < cm.LevelNotAvailableChrList(setting[st][3]).length; i++) {
                 talk += "#b#e-" + cm.LevelNotAvailableChrList(setting[st][3])[i] + "\r\n"
             }

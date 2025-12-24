@@ -77,19 +77,19 @@ function action(mode, type, sel) {
         var promoCount = comma(cm.getClient().getKeyValue("PCount"));
 
         var msg = "#fs11#";
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Promotion Points : #fc0xFFFF3366#" + promoPoint + "P#fc0xFF000000##n" + enter;
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Promotion Grade : #fc0xFFFF3366#" + promoGrade + "#fc0xFF000000##n#b" + enter;
-        msg += "#fc0xFFFF3366##h ##fc0xFF000000#'s Total Promotion Count : #fc0xFFFF3366#" + promoCount + "#k#b" + enter + enter;
+        msg += "#fc0xFFFF3366#แต้มโปรโมทของ #h ##fc0xFF000000# : #fc0xFFFF3366#" + promoPoint + "P#fc0xFF000000##n" + enter;
+        msg += "#fc0xFFFF3366#ระดับโปรโมทของ #h ##fc0xFF000000# : #fc0xFFFF3366#" + promoGrade + "#fc0xFF000000##n#b" + enter;
+        msg += "#fc0xFFFF3366#จำนวนโปรโมทสะสมของ #h ##fc0xFF000000# : #fc0xFFFF3366#" + promoCount + "#k#b" + enter + enter;
 
-        msg += "#L1##e[ Promotion Point Shop ]#n#l    " + enter + enter;
-        msg += "#L4#[ Transcendent Arcane Symbol ]#l" + enter + enter;
-        msg += "#L5#[ Enhance Cosmetic Items ]#l" + enter + enter;
-        msg += "#L2#I want to know the benefits of Promotion Grade.#l" + enter;
-        msg += "#L3#I want to receive Promotion Points.#l" + enter; // ← New option added
+        msg += "#L1##e[ ร้านค้าแต้มโปรโมท ]#n#l    " + enter + enter;
+        msg += "#L4#[ แลกเปลี่ยน Transcendent Arcane Symbol ]#l" + enter + enter;
+        msg += "#L5#[ อุปกรณ์ตกแต่ง (Cash) ]#l" + enter + enter;
+        msg += "#L2#ฉันต้องการทราบสิทธิประโยชน์ของระดับโปรโมท#l" + enter;
+        msg += "#L3#ฉันต้องการรับแต้มโปรโมท#l" + enter; // ← New option added
 
         if (cm.getPlayer().isGM()) {
-            msg += enter + enter + "#r#h GM#, This is a GM-only menu!#fc0xFF000000#" + enter;
-            msg += "#L99#GM: Open Promotion Point/Count Distribution Menu#l";
+            msg += enter + enter + "#r#h GM#, นี่คือเมนูเฉพาะ GM!#fc0xFF000000#" + enter;
+            msg += "#L99#GM: เปิดเมนูแจกแต้ม/จำนวนโปรโมท#l";
         }
 
         cm.sendSimple(msg);
@@ -124,9 +124,9 @@ function action(mode, type, sel) {
         }
         // 99) GM Only
         else if (seld == 99 && cm.getPlayer().isGM()) {
-            var gmMsg = "#fs12#[GM Menu] What would you like to do?#fc0xFF000000##fs11#" + enter;
-            gmMsg += "#L100#1. Give Promotion Points to User#l" + enter;
-            gmMsg += "#L101#2. Give Cumulative Promotion Count to User#l";
+            var gmMsg = "#fs12#[GM Menu] คุณต้องการทำอะไร?#fc0xFF000000##fs11#" + enter;
+            gmMsg += "#L100#1. มอบแต้มโปรโมทให้ผู้เล่น#l" + enter;
+            gmMsg += "#L101#2. มอบจำนวนโปรโมทสะสมให้ผู้เล่น#l";
 
             cm.sendSimple(gmMsg);
             return;
@@ -139,11 +139,11 @@ function action(mode, type, sel) {
         if (seld == 99 && cm.getPlayer().isGM()) {
             seldGM = sel;
             if (seldGM == 100) {
-                cm.sendGetText("Please enter the exact nickname of the user to give points to.");
+                cm.sendGetText("กรุณาใส่ชื่อตัวละครที่ต้องการมอบแต้มให้ถูกต้อง");
                 step = 1;
                 return;
             } else if (seldGM == 101) {
-                cm.sendGetText("Please enter the exact nickname of the user to give cumulative count to.");
+                cm.sendGetText("กรุณาใส่ชื่อตัวละครที่ต้องการมอบจำนวนสะสมให้ถูกต้อง");
                 step = 1;
                 return;
             } else {
@@ -160,15 +160,15 @@ function action(mode, type, sel) {
         if (step == 1) {
             targetName = cm.getText().trim();
             if (targetName.length < 1) {
-                cm.sendOk("Please enter a valid nickname.");
+                cm.sendOk("กรุณาใส่ชื่อตัวละครที่ถูกต้อง");
                 cm.dispose();
                 return;
             }
 
             if (seldGM == 100) {
-                cm.sendGetText("🔹 Enter Promotion Points (P) to give to [" + targetName + "].\r\n(Numbers only, e.g., 500)");
+                cm.sendGetText("🔹 ใส่จำนวนแต้มโปรโมท (P) ที่ต้องการมอบให้ [" + targetName + "].\r\n(ตัวเลขเท่านั้น, เช่น 500)");
             } else if (seldGM == 101) {
-                cm.sendGetText("🔹 Enter Cumulative Promotion Count to give to [" + targetName + "].\r\n(Numbers only, e.g., 10)");
+                cm.sendGetText("🔹 ใส่จำนวนโปรโมทสะสมที่ต้องการมอบให้ [" + targetName + "].\r\n(ตัวเลขเท่านั้น, เช่น 10)");
             }
             step = 2;
             return;
@@ -183,7 +183,7 @@ function action(mode, type, sel) {
         if (step == 2) {
             var txt = cm.getText().trim();
             if (!/^\d+$/.test(txt)) {
-                cm.sendOk("Please enter numbers only.");
+                cm.sendOk("กรุณาใส่ตัวเลขเท่านั้น");
                 cm.dispose();
                 return;
             }
@@ -194,7 +194,7 @@ function action(mode, type, sel) {
                 .getCharacterByName(targetName);
 
             if (target == null) {
-                cm.sendOk("The character with that name does not exist in the current channel.\r\nThey may have changed channels or disconnected.");
+                cm.sendOk("ไม่พบตัวละครชื่อนี้ในแชแนลปัจจุบัน\r\nพวกเขาอาจย้ายแชแนลหรือออกจากเกมไปแล้ว");
                 cm.dispose();
                 return;
             }
@@ -207,7 +207,7 @@ function action(mode, type, sel) {
 
             if (seldGM == 100) {
                 target.gainHPoint(amount);
-                cm.sendOk("Given " + amount + "P Promotion Points to [" + targetName + "].");
+                cm.sendOk("มอบแต้มโปรโมท " + amount + "P ให้กับ [" + targetName + "] เรียบร้อยแล้ว");
                 cm.dispose();
                 return;
 
@@ -215,7 +215,7 @@ function action(mode, type, sel) {
                 var oldCount = parseInt(target.getClient().getKeyValue("PCount"));
                 var newCount = oldCount + amount;
                 target.getClient().setKeyValue("PCount", "" + newCount);
-                cm.sendOk("Increased [" + targetName + "]'s cumulative promotion count by " + amount + ", setting total to " + newCount + ".");
+                cm.sendOk("เพิ่มจำนวนโปรโมทสะสมให้ [" + targetName + "] จำนวน " + amount + ", ยอดรวมเป็น " + newCount + "");
                 cm.dispose();
                 return;
 
@@ -255,8 +255,8 @@ function giveHongboReward() {
         ps.setString(1, cm.getPlayer().getName());
         rs = ps.executeQuery();
 
-        var totalBlog = 0;  // 지급할 홍보 횟수 합계
-        var totalEtc = 0;  // 지급할 홍보 포인트 합계
+        var totalBlog = 0;  // Total promotion count to distribute
+        var totalEtc = 0;  // Total promotion points to distribute
         var idList = new java.util.ArrayList();
 
         while (rs.next()) {
@@ -269,9 +269,9 @@ function giveHongboReward() {
 
         if (idList.size() == 0) {
             cm.sendOk(
-                "#fs11#▶ No pending promotion reward data found.\r\n" +
-                "   Total Promotion Points to distribute: 0P\r\n" +
-                "   Total Promotion Count to distribute: 0"
+                "#fs11#▶ ไม่พบข้อมูลรางวัลโปรโมทที่รอรับ\r\n" +
+                "   แต้มโปรโมทที่จะได้รับ : 0P\r\n" +
+                "   จำนวนโปรโมทที่จะได้รับ : 0"
             );
             cm.dispose();
             return;
@@ -296,10 +296,10 @@ function giveHongboReward() {
         updatePS.close();
 
         cm.sendOk(
-            "#fs11#▶ Promotion rewards have been successfully processed." + enter +
-            "   - Points Distributed : " + totalEtc.toLocaleString() + "P" + enter +
-            "   - Promotion Count Distributed : " + totalBlog + "" + enter + enter +
-            "   - (Previous Cumulative: " + oldCount + " → Current: " + newCount + ")"
+            "#fs11#▶ รับรางวัลโปรโมทเรียบร้อยแล้ว" + enter +
+            "   - แต้มที่ได้รับ : " + totalEtc.toLocaleString() + "P" + enter +
+            "   - จำนวนโปรโมทที่เพิ่มขึ้น : " + totalBlog + "" + enter + enter +
+            "   - (จำนวนสะสมก่อนหน้า: " + oldCount + " → ปัจจุบัน: " + newCount + ")"
         );
         cm.dispose();
         return;
@@ -328,9 +328,9 @@ function setpGrade(gradeA) {
     cm.getClient().setKeyValue("pGrade", "" + gradeA);
     cm.getPlayer().giveDonatorBuff();
     cm.sendOk(
-        "#fs11#Congratulations! Your Promotion Grade has changed.\r\n\r\n" +
-        "Previous Grade : #r" + grade[loadpGrade][1] + "#k\r\n" +
-        "New Grade : #b" + grade[gradeA][1]
+        "#fs11#ยินดีด้วย! ระดับโปรโมทของคุณเปลี่ยนไปแล้ว\r\n\r\n" +
+        "ระดับก่อนหน้า : #r" + grade[loadpGrade][1] + "#k\r\n" +
+        "ระดับใหม่ : #b" + grade[gradeA][1]
     );
     cm.dispose();
 }

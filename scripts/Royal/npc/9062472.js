@@ -34,13 +34,13 @@ function action(mode, type, selection) {
             var success = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame3_success");
             var neoGem = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame3_coin");
             var canGain = cm.getPlayer().canGainStackEventGauge(1); // Core Gem Daily Obtainable Amount
-            var v0 = "Did you have fun? This time you sent #e#b" + success + "#n#k cards!\r\n\r\n";
+            var v0 = "สนุกไหมล่ะ~? รอบนี้คุณส่งการ์ดไป #e#b" + success + "#n#k ใบเลยนะ!\r\n\r\n";
             if (canGain <= 0) {
-                v0 += "You have already reached the #eDaily Limit#n, so I can't give you more rewards~\r\n\r\n";
+                v0 += "คุณได้รับรางวัลครบ #eDaily Limit#n ของวันนี้แล้ว ไม่สามารถรับเพิ่มได้อีกนะ~\r\n\r\n";
             } else {
-                v0 += "I'll give you #e#b" + neoGem + " Neo Gems#k#n!";
+                v0 += "ฉันจะมอบ #e#bNeo Gem " + neoGem + " อัน#k#n ให้คุณนะ!";
             }
-            v0 += "#r(Rewards are given upon exit)#k";
+            v0 += "#r(รางวัลจะได้รับเมื่อออกจากแผนที่)#k";
 
             cm.sayNpc(v0, GameObjectType.Npc, ScriptMessageFlag.NpcReplacedByNpc, ScriptMessageFlag.NoEsc);
         } else if (status == 1) {

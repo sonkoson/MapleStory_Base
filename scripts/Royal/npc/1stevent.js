@@ -17,7 +17,6 @@ var Pink = "#fc0xFFFF3366#"
 var LightPink = "#fc0xFFF781D8#"
 var Enter = "\r\n"
 var Enter2 = "\r\n\r\n"
-var Enter = "\r\n";
 
 importPackage(Packages.objects.item);
 importPackage(Packages.constants);
@@ -54,7 +53,7 @@ function MakeItem(itemid) {
 }
 
 function MakeItem1(itemid) {
-    //칭호 기간 부여하기
+    // Grant Title Period
     var item = new Item(itemid, 1, 1, 0);
     item.setExpiration((new Date()).getTime() + (1000 * 60 * 60 * 24 * 60));
     Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getPlayer().getClient(), item, false);
@@ -79,7 +78,7 @@ function action(mode, type, sel) {
     }
 
     if (status == 0) {
-        // 첫 이벤트 클릭시 애니메이션재생
+        // Play animation on first event click
 
         if (cm.getClient().getKeyValue("1stday") == null) {
             cm.getClient().setKeyValue("1stday", 0);
@@ -161,7 +160,7 @@ function action(mode, type, sel) {
         seld = sel;
         switch (sel) {
             case 100:
-                var msg = "#fnNanumGothic Extrabold##d(ล่ามอนสเตอร์และตกปลาก็จะมีเหรียญดรอปนะ..)#k\r\n\r\n#bต้องรีบไปสะสมเหรียญแล้วสิ!\r\n\r\n";
+                var msg = "#d(ล่ามอนสเตอร์และตกปลาก็จะมีเหรียญดรอปนะ..)#k\r\n\r\n#bต้องรีบไปสะสมเหรียญแล้วสิ!\r\n\r\n";
                 msg += "#rแต่ว่าเหรียญกิจกรรมเอาไปใช้ที่ไหนกันนะ..?\r\n";
                 cm.sendNextS(msg, 2);
                 break;
@@ -311,8 +310,8 @@ function action(mode, type, sel) {
                 break;
 
             case 6:
-                // 출석 체크
-                // 날짜 불러오기
+                // Attendance Check
+                // Get Date
                 var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
                 today = new Date();
                 month = months[today.getMonth()];

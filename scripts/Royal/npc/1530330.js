@@ -27,12 +27,12 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        말 = "#fs11#안녕하세요? #r펫#k을 무료로 분양해드리고 있습니다.\r\n귀엽고 많은 펫들이 준비되어 있으니 천천히 골라주세요~\r\n\r\n"
-        말 += "#L0##d펫을 골라보겠습니다.#k#l"
+        말 = "#fs11#สวัสดี? เรามี #rสัตว์เลี้ยง#k แจกฟรี\r\nมีสัตว์เลี้ยงน่ารักมากมายเตรียมไว้ให้ เลือกได้เลย~\r\n\r\n"
+        말 += "#L0##dเลือกสัตว์เลี้ยง#k#l"
         cm.sendSimple(말);
     } else if (status == 1) {
-        말 = "#fs11#원하시는 펫을 선택해 주세요.\r\n\r\n";
-        var it =Packages.objects.item.MapleItemInformationProvider.getInstance().getAllItems().iterator();
+        말 = "#fs11#กรุณาเลือกสัตว์เลี้ยงที่ต้องการ\r\n\r\n";
+        var it = Packages.objects.item.MapleItemInformationProvider.getInstance().getAllItems().iterator();
         while (it.hasNext()) {
             var itemPair = it.next();
             banned = false;
@@ -63,14 +63,14 @@ function action(mode, type, selection) {
                 fFile1.createNewFile();
             }
             out1 = new FileOutputStream("TextLog/scriptLog/" + temp + "_" + cn + ".log", false);
-            var msg = "'" + cm.getPlayer().getName() + "'이(가) 복사 시도 의심\r\n";
-            msg += "'" + a.getFullYear() + "년 " + Number(a.getMonth() + 1) + "월 " + a.getDate() + "일'\r\n";
-            msg += "복사 시도 템코드 : " + selection + "\r\n";
-            msg += "캐릭터 아이디 : " + cm.getPlayer().getId() + "\r\n";
-            msg += "어카운트 아이디 : " + cm.getPlayer().getAccountID() + "\r\n";
+            var msg = "'" + cm.getPlayer().getName() + "' attempted duping (suspicious)\r\n";
+            msg += "'" + a.getFullYear() + "Year " + Number(a.getMonth() + 1) + "Month " + a.getDate() + "Day'\r\n";
+            msg += "Attempted Dupe Item Code : " + selection + "\r\n";
+            msg += "Character ID : " + cm.getPlayer().getId() + "\r\n";
+            msg += "Account ID : " + cm.getPlayer().getAccountID() + "\r\n";
             out1.write(msg.getBytes());
             out1.close();
-            cm.sendOk("정상적인 접근이 아닙니다.");
+            cm.sendOk("การเข้าถึงไม่ถูกต้อง");
             cm.dispose();
         } else {
             //cm.BuyPET(itemarray[selection]);
@@ -82,7 +82,7 @@ function action(mode, type, selection) {
             item.setUniqueId(pet.getUniqueId());
             Packages.objects.item.MapleInventoryManipulator.addFromDrop(cm.getClient(), item, false);
 
-            cm.sendOk("#fs11#지급을 정상적으로 받았습니다. 즐거운하루 보내세요!");
+            cm.sendOk("#fs11#ได้รับสัตว์เลี้ยงเรียบร้อยแล้ว ขอให้มีความสุข!");
             cm.dispose();
             itemarray = null;
             return;

@@ -14,7 +14,7 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        cm.askYesNo("This place is dangerous. Do you want to give up the battle and leave?", Packages.scripting.GameObjectType.User, Packages.scripting.ScriptMessageFlag.Self);
+        cm.askYesNo("ที่นี่อันตราย คุณต้องการยอมแพ้และออกจากการต่อสู้หรือไม่?", Packages.scripting.GameObjectType.User, Packages.scripting.ScriptMessageFlag.Self);
     } else if (status == 1) {
         cm.warp(450009301, 0);
         cm.dispose();

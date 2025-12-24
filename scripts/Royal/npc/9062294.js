@@ -94,17 +94,17 @@ function action(mode, type, selection) {
 
         switch (ans_01) {
             case 1:
-                selStr += "#L1# #fMap/MapHelper.img/minimap/party##r Level 10 ~ Level 200#k #fc0xFF000000#Warp to Hunting Ground#l\r\n\r\n";
+                selStr += "#L1# #fMap/MapHelper.img/minimap/party##r Level 10 ~ Level 200#k #fc0xFF000000#วาร์ปไปสนามล่า#l\r\n\r\n";
                 selStr += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                selStr += "#L3# #fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce##fc0xFF0066CC# Arcane River#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L5# #fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce##fc0xFF0066CC# Sellas#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L6# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Cernium#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L7# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Hotel Arcus#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L8# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Odium#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L9# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Shangri-La#fc0xFF000000# Warp to Hunting Ground#l\r\n";
-                selStr += "#L10# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Arteria#fc0xFF000000# Warp to Hunting Ground#l\r\n\r\n";
+                selStr += "#L3# #fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce##fc0xFF0066CC# Arcane River#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L5# #fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce##fc0xFF0066CC# Sellas#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L6# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Cernium#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L7# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Hotel Arcus#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L8# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Odium#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L9# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Shangri-La#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n";
+                selStr += "#L10# #fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce##fc0xFF3366FF# Arteria#fc0xFF000000# วาร์ปไปสนามล่า#l\r\n\r\n";
                 selStr += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                selStr += "#L2# #fUI/Basic.img/BtCoin/normal/0##fc0xFF339933# Warp to Fatigue Hunting Ground#l#fc0xFF000000#\r\n";
+                selStr += "#L2# #fUI/Basic.img/BtCoin/normal/0##fc0xFF339933# วาร์ปไปสนามล่า Fatigue#l#fc0xFF000000#\r\n";
                 cm.sendSimpleS(selStr, 4);
                 break;
 
@@ -121,7 +121,7 @@ function action(mode, type, selection) {
             case 4:
                 var selStr = "#fs11#";
                 selStr += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n#fc0xFFFF3300#";
-                selStr += color + "            #L1#" + blackMage + " Coming Soon#l#L2#" + pocket + pink + " [Coordi Map]" + color + " Warp#l\r\n\r\n";
+                selStr += color + "            #L1#" + blackMage + " เร็วๆ นี้#l#L2#" + pocket + pink + " [Coordi Map]" + color + " วาร์ป#l\r\n\r\n";
                 selStr += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――\r\n#fc0xFFFF3300#";
                 cm.sendSimple(selStr);
                 break;
@@ -129,16 +129,17 @@ function action(mode, type, selection) {
             case 5:
                 selStr += "#fs11#";
                 //selStr += "#L5# #fs11# Adventure Drill #b(Earn currency with your strength!)#k\r\n";
-                selStr += "#L2#  Warp to Mu Lung Dojo\r\n\r\n";
-                selStr += "#L3#  Reward Jump Map\r\n";
-                selStr += "#L6#  Normal Jump Map\r\n\r\n";
+                selStr += "#L2#  วาร์ปไป Mu Lung Dojo\r\n\r\n";
+                selStr += "#L3#  วาร์ปไปแผนที่กระโดด (รางวัล)\r\n";
+                selStr += "#L6#  วาร์ปไปแผนที่กระโดด (ปกติ)\r\n\r\n";
                 //selStr += "#L4# Fishing Spot #b(Catch big fish!)#k\r\n";
                 cm.sendSimpleS(selStr, 4);
                 break;
 
             case 999:
                 starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/StarForce#";
-                selStr += "#fs11##fc0xFF000000#The Fatigue Hunting Ground consumes #e#fc0xFFFF9436Fatigue#k#n after recovery via Fatigue Relief Potion. Unlike #b#enormal hunting grounds#fc0xFF000000##n, you can obtain #b#emany items #r[#z4031227#, #z4310266#, #z4310237#]#b and significant EXP here.\r\n\r\n#fc0xFF000000#You cannot use it if you exhaust all your fatigue.\r\n#rNote: Fatigue resets to 0 after midnight.\r\n\r\n";
+                starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/StarForce#";
+                selStr += "#fs11##fc0xFF000000#สนามล่า Fatigue จะใช้แต้ม #e#fc0xFFFF9436Fatigue#k#n ที่ฟื้นฟูด้วยยา Fatigue Relief Potion ต่างจาก #b#eสนามล่าทั่วไป#fc0xFF000000##n ตรงที่คุณจะได้รับ #b#eไอเทมจำนวนมาก #r[#z4031227#, #z4310266#, #z4310237#]#b และ EXP มหาศาลที่นี่\r\n\r\n#fc0xFF000000#คุณจะไม่สามารถเข้าได้หากแต้ม Fatigue หมด\r\n#rหมายเหตุ: Fatigue จะรีเซ็ตเป็น 0 หลังเที่ยงคืน\r\n\r\n";
                 selStr += "#b#L" + 150 + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.300 #fc0xFFFF9436#Fatigue Hunting Ground #b(A - 1)#l\r\n";
                 selStr += "#b#L" + 151 + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.300 #fc0xFFFF9436#Fatigue Hunting Ground #b(A - 2)#l\r\n";
                 selStr += "#b#L" + 152 + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.300 #fc0xFFFF9436#Fatigue Hunting Ground #b(A - 3)#l\r\n\r\n";
@@ -188,7 +189,7 @@ function action(mode, type, selection) {
             selStr = "";
             switch (ans_02) {
                 case 1:
-                    selStr += "#fs11#Check the #bamazing average monster level#n#k in the hunting ground and warp.#fs11#\r\n";
+                    selStr += "#fs11#ตรวจสอบ #bเลเวลเฉลี่ยมอนสเตอร์#n#k ในสนามล่าและวาร์ปไป\r\n";
                     selStr += "#b#L" + (931000500 + randnumber) + "##b#fMap/MapHelper.img/minimap/anothertrader# Jaguar Habitat (Wild Hunter only)#l\r\n\r\n";
                     selStr += "#b#L" + (100010000 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.10  #dHenesys - North Hill#l\r\n";
                     selStr += "#b#L" + (103050340 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.30  #dVictoria Road - Training Center 2#l\r\n";
@@ -212,7 +213,7 @@ function action(mode, type, selection) {
 
                 case 2:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/StarForce#";
-                    selStr += "#fs11##fc0xFF000000#The Fatigue Hunting Ground consumes #e#fc0xFFFF9436Fatigue#k#n after recovery via Fatigue Relief Potion. Unlike #b#enormal hunting grounds#fc0xFF000000##n, you can obtain #b#emany items #r[#z4031227#, #z4310266#, #z4001715#]#b and significant EXP here.\r\n\r\n#fc0xFF000000#You cannot use it if you exhaust all your fatigue.\r\n#rNote: Fatigue resets to 0 after midnight.\r\n\r\n";
+                    selStr += "#fs11##fc0xFF000000#สนามล่า Fatigue จะใช้แต้ม #e#fc0xFFFF9436Fatigue#k#n ที่ฟื้นฟูด้วยยา Fatigue Relief Potion ต่างจาก #b#eสนามล่าทั่วไป#fc0xFF000000##n ตรงที่คุณจะได้รับ #b#eไอเทมจำนวนมาก #r[#z4031227#, #z4310266#, #z4001715#]#b และ EXP มหาศาลที่นี่\r\n\r\n#fc0xFF000000#คุณจะไม่สามารถเข้าได้หากแต้ม Fatigue หมด\r\n#rหมายเหตุ: Fatigue จะรีเซ็ตเป็น 0 หลังเที่ยงคืน\r\n\r\n";
                     selStr += "#b#L" + (261020700 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.220 #fc0xFFFF9436#Fatigue Hunting Ground 1 #b#l\r\n";
                     selStr += "#b#L" + (261010103 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.260 #fc0xFFFF9436#Fatigue Hunting Ground 2 #b#l\r\n";
                     //selStr += "#b#L" + (261010104 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.260 #fc0xFFFF9436#Fatigue Hunting Ground #b(Medium - 2)#l\r\n";
@@ -222,13 +223,13 @@ function action(mode, type, selection) {
                 case 3:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce#";
                     if (cm.getPlayer().getLevel() < 200) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 200#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 200#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 200) {
-                        selStr += "#fs11#Check #e#fc0xFF6799FF#Arcane Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF6799FF#Arcane Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Vanishing Journey]#d#n\r\n";
                         selStr += "#b#L" + (450001010 + randnumber) + "##fc0xFF6799FF#Lv.202#d | " + starImg + " 30 | Weathered Land of Joy#l\r\n";
                         selStr += "#b#L" + (450001012 + randnumber) + "##fc0xFF6799FF#Lv.202#d | " + starImg + " 30 | Weathered Land of Rage#l\r\n";
@@ -291,8 +292,9 @@ function action(mode, type, selection) {
 
                 case 4:
                     starImg = "#e#fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce#";
-                    selStr += "#fs11# Only #bHunting Grounds#k#n matching your #fc0xFF6799FF#Level#k#n are shown.\r\nWhere would you like to go?\r\n";
-                    selStr += "#fs11##bPromotion Coins drop int the hunting grounds below.#k\r\n\r\n";
+                    starImg = "#e#fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce#";
+                    selStr += "#fs11# แสดงเฉพาะ #bสนามล่า#k#n ที่เหมาะสมกับ #fc0xFF6799FF#เลเวล#k#n ของคุณ\r\nจะไปที่ไหนดี?\r\n";
+                    selStr += "#fs11##bเหรียญเลื่อนขั้นจะดรอปในสนามล่าด้านล่างนี้#k\r\n\r\n";
                     if (cm.getPlayer().getLevel() >= 300) {
                         selStr += "#b#L" + (993163100 + randnumber) + "##fMap/MapHelper.img/minimap/anothertrader# #fc0xFF6799FF#Lv.300  #dHidden Street - Tragic Wall 3#l\r\n";
                     }
@@ -310,13 +312,13 @@ function action(mode, type, selection) {
                 case 5:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/ArcaneForce#";
                     if (cm.getPlayer().getLevel() < 230) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 230#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 230#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 230) {
-                        selStr += "#fs11#Check #e#fc0xFF6799FF#Arcane Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF6799FF#Arcane Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Sellas Arcane Force 600]#d#n\r\n";
                         selStr += "#b#L" + (450016010 + randnumber) + "##fc0xFF6799FF#Lv.245#d | " + starImg + " 600  | Where Light Last Touches 1#l\r\n";
                         selStr += "#b#L" + (450016060 + randnumber) + "##fc0xFF6799FF#Lv.245#d | " + starImg + " 600  | Where Light Last Touches 6#l\r\n";
@@ -338,7 +340,7 @@ function action(mode, type, selection) {
                 case 6:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     if (cm.getPlayer().getLevel() < 260) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 260#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 260#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
@@ -361,13 +363,13 @@ function action(mode, type, selection) {
                 case 7:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     if (cm.getPlayer().getLevel() < 270) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 270#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 270#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 270) {
-                        selStr += "#fs11#Check #e#fc0xFF3366FF#Authentic Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF3366FF#Authentic Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Arcus Authentic Force 130]#d#n\r\n";
                         selStr += "#b#L" + (450016420 + randnumber) + "##fc0xFF6799FF#Lv.271#d | " + starImg + " 130 | Outlaw-Infested Wastes 2#l\r\n";
                         selStr += "#b#L" + (450016440 + randnumber) + "##fc0xFF6799FF#Lv.271#d | " + starImg + " 130 | Outlaw-Infested Wastes 4#l\r\n";
@@ -383,7 +385,7 @@ function action(mode, type, selection) {
                 case 8:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     if (cm.getPlayer().getLevel() < 275) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 275#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 275#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
@@ -408,7 +410,7 @@ function action(mode, type, selection) {
                 case 9:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     if (cm.getPlayer().getLevel() < 280) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 280#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 280#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
@@ -434,13 +436,13 @@ function action(mode, type, selection) {
                 case 10:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     if (cm.getPlayer().getLevel() < 280) {
-                        selStr += "#fs11##fc0xFF000000#This hunting ground is available from #bLevel 280#fc0xFF000000#.";
+                        selStr += "#fs11##fc0xFF000000#สนามล่านี้สามารถเข้าได้ตั้งแต่ #bเลเวล 280#fc0xFF000000# ขึ้นไป";
                         cm.sendNext(selStr);
                         cm.dispose();
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 280) {
-                        selStr += "#fs11#Check #e#fc0xFF3366FF#Authentic Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF3366FF#Authentic Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Arteria Authentic Force 360]#d#n\r\n";
                         selStr += "#b#L" + (410007527 + randnumber) + "##fc0xFF6799FF#Lv.275#d | " + starImg + " 360 | Lowest Floor Passage 1#l\r\n";
                         selStr += "#b#L" + (410007528 + randnumber) + "##fc0xFF6799FF#Lv.275#d | " + starImg + " 360 | Lowest Floor Passage 2#l\r\n";
@@ -463,7 +465,7 @@ function action(mode, type, selection) {
 
                 case 11:
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
-                    selStr += "#fs11#Check #e#fc0xFF6799FF#Party Dungeon Hot Time#k#n and #bParty Dungeon#k#n before moving.\r\n";
+                    selStr += "#fs11#ตรวจสอบ #e#fc0xFF6799FF#Party Dungeon Hot Time#k#n และ #bParty Dungeon#k#n ก่อนข้ามไปนะ\r\n";
                     selStr += "\r\n#e#r[Party Dungeon]#d#n\r\n";
                     selStr += "#b#L" + (993072000 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | Party Beginner Dungeon 1#l\r\n";
                     selStr += "#b#L" + (993072100 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | Party Intermediate Dungeon #l\r\n";
@@ -479,7 +481,7 @@ function action(mode, type, selection) {
             switch (ans_02) {
                 case 1:
                     cm.dispose();
-                    cm.sendOkS("#fs11#Seems to be coming soon..", 2);
+                    cm.sendOkS("#fs11#ดูเหมือนจะมาเร็วๆ นี้นะ..", 2);
                     break;
 
                 case 2:
@@ -489,7 +491,7 @@ function action(mode, type, selection) {
 
             }
         } else if (ans_01 == 999) {
-            cm.getPlayer().dropMessage(5, "EXP is not shared in party play in this Fatigue Hunting Ground.");
+            cm.getPlayer().dropMessage(5, "EXP จะไม่ถูกแชร์ในระดับปาร์ตี้ในสนามล่า Fatigue นี้");
             // Get hours and minutes
             today = new Date();
             hours = today.getHours();
@@ -497,7 +499,7 @@ function action(mode, type, selection) {
 
             // Maintenance Notice
             if (hours <= 0 && minutes <= 5) {
-                cm.sendOk("#fs11##r#e[Entry Not Allowed]#k#n\r\nDaily 00:00 ~ 00:05\r\nEntry to Fatigue Hunting Grounds is not possible during this time.");
+                cm.sendOk("#fs11##r#e[ไม่สามารถเข้าได้]#k#n\r\nทุกวันเวลา 00:00 ~ 00:05\r\nไม่สามารถเข้าสนามล่า Fatigue ได้ในช่วงเวลานี้");
                 cm.dispose();
                 return;
             }
@@ -508,7 +510,7 @@ function action(mode, type, selection) {
                     cm.dispose();
                 } else {
                     cm.dispose();
-                    cm.sendOk("#fs11#Parties of 3 or more cannot enter.");
+                    cm.sendOk("#fs11#ปาร์ตี้ที่มีสมาชิก 3 คนขึ้นไปไม่สามารถเข้าได้");
                 }
             } else {
                 cm.warp(ans_02, "sp");
@@ -542,7 +544,7 @@ function action(mode, type, selection) {
 
                 // Maintenance Notice
                 if (hours <= 0 && minutes <= 5) {
-                    cm.sendOk("#fs11##r#e[Entry Not Allowed]#k#n\r\nDaily 00:00 ~ 00:05\r\nEntry to Fatigue Hunting Grounds is not possible during this time.");
+                    cm.sendOk("#fs11##r#e[ไม่สามารถเข้าได้]#k#n\r\nทุกวันเวลา 00:00 ~ 00:05\r\nไม่สามารถเข้าสนามล่า Fatigue ได้ในช่วงเวลานี้");
                     cm.dispose();
                     return;
                 }
@@ -553,7 +555,7 @@ function action(mode, type, selection) {
                         cm.dispose();
                     } else {
                         cm.dispose();
-                        cm.sendOk("#fs11#Parties of 3 or more cannot enter.");
+                        cm.sendOk("#fs11#ปาร์ตี้ที่มีสมาชิก 3 คนขึ้นไปไม่สามารถเข้าได้");
                     }
                 } else {
                     cm.warp(mapcode, "sp");

@@ -6,23 +6,23 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    if (mode == 1) 
+    if (mode == 1)
         status++;
-    else 
+    else
         status--;
     if (status == 0) {
-        cm.sendOk("안녕하세요! 당신의 이름을 바꿔드릴 수 있는 #b미스터 뉴네임#k입니다. 무엇을 도와드릴까요?\r\n\r\n#b#L0# 캐릭터 이름 변경하기\r\n#L1# 대화를 종료한다.");
+        cm.sendOk("สวัสดี! ฉันคือ #bMr. New Name#k ฉันสามารถเปลี่ยนชื่อให้เธอได้ มีอะไรให้ช่วยไหม?\r\n\r\n#b#L0# เปลี่ยนชื่อตัวละคร\r\n#L1# จบการสนทนา");
     } else if (status == 1) {
-	if (selection == 0) {
-		if (!cm.haveItem(4034803)) {
-			cm.renameResult(3); // 닉변권 X
-			cm.dispose();
-			return;
-		}
-		cm.openRenameUI();
+        if (selection == 0) {
+            if (!cm.haveItem(4034803)) {
+                cm.renameResult(3); // No Rename Coupon
+                cm.dispose();
+                return;
+            }
+            cm.openRenameUI();
             cm.dispose();
-	} else if (selection == 1) {
+        } else if (selection == 1) {
             cm.dispose();
-	}
+        }
     }
 }

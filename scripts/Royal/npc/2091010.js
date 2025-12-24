@@ -26,9 +26,9 @@ function action(mode, type, selection) {
             status--;
 
         if (status == 0) {
-	cm.showDojangRanking();
-	cm.getPlayer().dropMessage(5, "무릉도장 기록이 순위표에 반영되기까지 시간이 걸릴 수 있습니다. 정산 포인트는 매주 랭킹 정산 이후 전체랭킹 기준으로 지급됩니다.");
-	cm.dispose();
+            cm.showDojangRanking();
+            cm.getPlayer().dropMessage(5, "ต้องใช้เวลาก่อนที่ข้อมูล Mu Lung Dojo จะแสดงในตารางอันดับ แต้มรางวัลจะถูกแจกจ่ายตามอันดับรวมหลังจากสรุปผลแร้งกิ้งประจำสัปดาห์");
+            cm.dispose();
         }
     }
 }

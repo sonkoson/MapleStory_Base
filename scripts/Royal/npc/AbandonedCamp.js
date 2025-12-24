@@ -21,7 +21,7 @@ if (Date < 10) {
 var Today = parseInt(Year + Month + Date);
 
 var quest = [
-    ["Abandoned Camp", "trash"]
+    ["พื้นที่ตั้งแคมป์ร้าง", "trash"]
 ];
 
 var check = [

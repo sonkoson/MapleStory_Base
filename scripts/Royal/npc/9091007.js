@@ -14,7 +14,7 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        cm.sendYesNoS("It's dangerous here. Do you want to go outside?", 0x26);
+        cm.sendYesNoS("ที่นี่อันตราย คุณต้องการออกไปข้างนอกหรือไม่?", 0x26);
     } else if (status == 1) {
         cm.warp(221030900, 0);
         cm.dispose();

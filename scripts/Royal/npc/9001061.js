@@ -9,8 +9,8 @@ function start() {
 
 function action(mode, type, sel) {
     if (mode == 0 && sel == -1 && type == 6) {
-	cm.dispose();
-	return;
+        cm.dispose();
+        return;
     }
     if (mode == -1) {
         cm.dispose();
@@ -22,11 +22,11 @@ function action(mode, type, sel) {
     if (mode == 1) {
         status++;
     }
-    if (status == 0) {	
-	cm.sendPlayerToNpcS("드래곤의 알을 발견했다!");
-	cm.showEffect("killing/clear");
+    if (status == 0) {
+        cm.sendPlayerToNpcS("เจอไข่มังกรแล้ว!");
+        cm.showEffect("killing/clear");
     } else {
-	cm.warp(993000601);
-	cm.dispose();
+        cm.warp(993000601);
+        cm.dispose();
     }
 }

@@ -14,7 +14,7 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        cm.sendYesNoS("This place is dangerous. Do you want to give up the battle and leave?", 0x26);
+        cm.sendYesNoS("ที่นี่อันตราย คุณต้องการยอมแพ้และออกจากการต่อสู้หรือไม่?", 0x26);
     } else if (status == 1) {
         cm.warp(940500100, 0);
         cm.dispose();

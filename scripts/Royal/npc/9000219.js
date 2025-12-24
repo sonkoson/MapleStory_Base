@@ -116,15 +116,7 @@ function sendByType(type, type2, text) {
 }
 
 function getData() {
-    /*
-        year = CurrentTime.년() + 1900;
-        month = CurrentTime.월() + 1;
-        date2 = CurrentTime.일();
-        date = year * 10000 + month * 100 + date2;
-        day = CurrentTime.요일();
-        hour = CurrentTime.시();
-        minute = CurrentTime.분();
-    */
+
     time = new Date();
     year = time.getFullYear();
     month = time.getMonth() + 1;

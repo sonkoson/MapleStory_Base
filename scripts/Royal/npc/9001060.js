@@ -5,7 +5,7 @@ var s = -1;
 var gameType = -1;
 
 var rewards = [
-    "Eagle Hunting", "Treasure Collection", "Dragon Egg Stealing", "Courtship Dance"
+    "ล่านกอินทรี", "เก็บสมบัติ", "ขโมยไข่มังกร", "เต้นจีบสาว"
 ];
 
 function start() {

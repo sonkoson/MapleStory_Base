@@ -69,20 +69,20 @@ function action(mode, type, selection) {
         cm.getPlayer().DamageMeterExitMap = 180000000;*/
         var say = "";
         if (cm.getPlayer().getGMLevel() > 5) {
-            say += "#fc0xFF6600CC#\r\n\r\n\r\n   <Admin Menu>\r\n#L4#Reset Ranking#l\r\n\r\n"//#L5#랭커 보상 지급하기#l;
+            say += "#fc0xFF6600CC#\r\n\r\n\r\n   <Admin Menu>\r\n#L4#Reset Ranking#l\r\n\r\n"//#L5#Give Ranker Reward#l;
         }
-        cm.sendSimple("#fs11##fc0xFF000000#   데미지 측정을 시작하시겠습니까?\r\n" +
-            "   Previous Damage Record: " + cm.getPlayer().DamageMeter + "\r\n   #r※ Ranking saves your latest record, not highest record#k\r\n" +
-            "#L1##rStart Damage Test (2 mins)#l\r\n#L2##bView Damage Ranking#l" + say);
+        cm.sendSimple("#fs11##fc0xFF000000#   ต้องการเริ่มทดสอบ Damage หรือไม่?\r\n" +
+            "   สถิติ Damage ก่อนหน้า: " + cm.getPlayer().DamageMeter + "\r\n   #r※ การจัดอันดับจะบันทึกสถิติล่าสุดของคุณ ไม่ใช่สถิติสูงสุด#k\r\n" +
+            "#L1##rเริ่มทดสอบ Damage (2 นาที)#l\r\n#L2##bดูอันดับ Damage#l" + say);
     } else if (status == 1) {
         if (selection == 1) {
             var em = cm.getEventManager("DamageMeter");
             if (em == null) {
-                cm.sendOk("An error occurred. Please try again.");
+                cm.sendOk("เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง");
                 cm.dispose();
                 return;
             } else if (em.getProperty("entry").equals("false")) {
-                cm.sendOk("Another user is currently recording damage. Please try again in 1 minute.");
+                cm.sendOk("มีผู้ใช้งานอยู่ กรุณาลองใหม่ในอีก 1 นาที");
                 cm.dispose();
                 return;
             } else {
@@ -99,10 +99,10 @@ function action(mode, type, selection) {
                 ps = con.prepareStatement("SELECT * FROM `DamageMeter` WHERE `damage` >= 100000000000000 ORDER BY `damage` DESC");
                 rs = ps.executeQuery();
                 var count = 0;
-                var say = "#fs11##fc0xFF000000#Damage Meter Ranking\r\n※ Only 100 trillion+ displayed\r\n\r\n";
+                var say = "#fs11##fc0xFF000000#อันดับ Damage Meter\r\n※ แสดงเฉพาะ 100 trillion ขึ้นไป\r\n\r\n";
                 while (rs.next()) {
                     count++;
-                    say += count + " place - #b" + rs.getString("name") + "   #rDamage#fc0xFF000000#: " + ConvertNumber(rs.getLong("damage")) + "\r\n";
+                    say += "อันดับ " + count + " - #b" + rs.getString("name") + "   #rDamage#fc0xFF000000#: " + ConvertNumber(rs.getLong("damage")) + "\r\n";
                 }
                 rs.close();
                 ps.close();
@@ -139,13 +139,13 @@ function action(mode, type, selection) {
             }
         } else if (selection == 3) {
             admin = 0;
-            cm.sendGetNumber("Which date's ranking would you like to see?\r\nEnter date as follows:\r\nExample) 20200101", 0, 20200101, 99999999);
+            cm.sendGetNumber("ต้องการดูอันดับของวันที่เท่าไหร่?\r\nกรุณาใส่วันที่ดังนี้:\r\nตัวอย่าง) 20200101", 0, 20200101, 99999999);
         } else if (selection == 4 && cm.getPlayer().getGMLevel() > 5) {
             admin = 1;
             cm.sendYesNo("Are you sure you want to reset all Damage Meter rankings?\r\nAll date records will be deleted!");
         } else if (selection == 5 && cm.getPlayer().getGMLevel() > 5) {
             admin = 2;
-            cm.sendGetNumber("Which date's ranker rewards would you like to distribute?\r\nEnter date as follows:\r\nExample) 20200101", 0, 20200101, 99999999);
+            cm.sendGetNumber("ต้องการแจกรางวัลอันดับของวันที่เท่าไหร่?\r\nกรุณาใส่วันที่ดังนี้:\r\nตัวอย่าง) 20200101", 0, 20200101, 99999999);
         } else {
             cm.dispose();
             return;
@@ -160,10 +160,10 @@ function action(mode, type, selection) {
                 ps = con.prepareStatement("SELECT * FROM `DamageMeter` WHERE `date` = " + selection + " ORDER BY `damage` DESC");
                 rs = ps.executeQuery();
                 var count = 0;
-                var say = selection.toString().substring(0, 4) + "/" + selection.toString().substring(4, 6) + "/" + selection.toString().substring(6, 8) + " Damage Meter Ranking\r\n\r\n";
+                var say = selection.toString().substring(0, 4) + "/" + selection.toString().substring(4, 6) + "/" + selection.toString().substring(6, 8) + " อันดับ Damage Meter\r\n\r\n";
                 while (rs.next()) {
                     count++;
-                    say += count + " place - " + rs.getString("name") + "   Damage: " + ConvertNumber(rs.getLong("damage")) + "\r\n";
+                    say += "อันดับ " + count + " - " + rs.getString("name") + "   Damage: " + ConvertNumber(rs.getLong("damage")) + "\r\n";
                 }
                 rs.close();
                 ps.close();
@@ -339,17 +339,17 @@ function action(mode, type, selection) {
         //3등 2022424 5개 + 4001126 100개 + 4310024 1개
         var channel = Packages.handling.world.World.Find.findChannel(characterid);
         if (rank == 1) {
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 20, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 500, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 5, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 20, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 500, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 5, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
         } else if (rank == 2) {
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 10, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 300, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 3, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 10, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 300, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 3, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
         } else if (rank == 3) {
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 5, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 100, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
-            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 1, characterid, "[데미지미터]", "데미지미터 " + rank + "등 보상", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 5, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 100, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
+            Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 1, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
         } else {
             cm.sendOk("This user is outside the top 3, so there is no reward.");
             cm.dispose();

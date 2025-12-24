@@ -101,9 +101,9 @@ function action(mode, type, selection) {
             user += /*GameServer.getAllInstances().get(i).getPlayerStorage().getAllCharacters().length;*/0;
         }
         msg = "#fc0xFF6600CC##e#fs11#[Growth Diary]#n#k\r\n\r\n";
-        msg += "Complete #b" + questlist.length + "#k #b#e[Growth Diary]#k#n quests and claim rewards.\r\n#r#e#fs12#[ Click quest to teleport to that map ]#k#n#fs11#\r\n";
-        msg += "#rGrowth Diary rewards can only be claimed ONCE per account.\r\n"
-        msg += "#b * All Diary Completion Reward: #b#i4310266##z4310266# #r2000 pcs#k\r\n";
+        msg += "ทำภารกิจ #b#e[Growth Diary]#k#n ทั้งหมด #b" + questlist.length + "#k อย่างเพื่อรับรางวัล\r\n#r#e#fs12#[ คลิกที่ภารกิจเพื่อวาร์ปไปยังแผนที่ ]#k#n#fs11#\r\n";
+        msg += "#rรางวัล Growth Diary สามารถรับได้เพียง 1 ครั้งต่อบัญชีเท่านั้น\r\n"
+        msg += "#b * รางวัลเมื่อทำครบทั้งหมด: #b#i4310266##z4310266# #r2000 ชิ้น#k\r\n";
 
         for (i = 0; i < questlist.length; i++) {
             if (cm.getClient().getKeyValue("diary" + i) != null) {
@@ -116,18 +116,20 @@ function action(mode, type, selection) {
                     msg += "#Cgray#"
                 }
                 msg += getQuestType(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][3], questlist[i][4])
-                msg += " #d(" + isQuestCompletable(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][4]) + ")#k#l\r\n\r\n";
+                var statusText = isQuestCompletable(questlist[i][0], questlist[i][1], questlist[i][2], questlist[i][4]);
+                var displayStatus = statusText == "Can Complete" ? "สำเร็จได้" : (statusText == "In Progress" ? "กำลังดำเนินการ" : "เลเวลไม่ถึง");
+                msg += " #d(" + displayStatus + ")#k#l\r\n\r\n";
                 for (j = 0; j < rewardlist[i].length; j++)
-                    msg += "#fs11#     #fc0xFFF781D8#└─ Reward: #i" + rewardlist[i][j][0] + "# #b#z" + rewardlist[i][j][0] + "# " + rewardlist[i][j][1] + " pcs#k\r\n"
+                    msg += "#fs11#     #fc0xFFF781D8#└─ รางวัล: #i" + rewardlist[i][j][0] + "# #b#z" + rewardlist[i][j][0] + "# " + rewardlist[i][j][1] + " ชิ้น#k\r\n"
             }
         }
         if (cm.getClient().getKeyValue("questallcompleted") == null) {
-            msg += "\r\n#L1000# #b#eI've completed all diaries! #d("
-            if (questcompleted == questlist.length || cm.getPlayer().getGMLevel() >= 11) { // GM테스트
-                msg += "Can Complete)#k#l"
+            msg += "\r\n#L1000# #b#eฉันทำภารกิจทั้งหมดเสร็จแล้ว! #d("
+            if (questcompleted == questlist.length || cm.getPlayer().getGMLevel() >= 11) { // GM Test
+                msg += "สำเร็จ)#k#l"
             } else {
-                msg += "In Progress)#r\r\n"
-                msg += "[Completed " + questcompleted + " quests, " + (questlist.length - questcompleted) + " quests in progress.]"
+                msg += "กำลังดำเนินการ)#r\r\n"
+                msg += "[เสร็จสิ้น " + questcompleted + " ภารกิจ, กำลังดำเนินการ " + (questlist.length - questcompleted) + " ภารกิจ]"
             }
         }
         cm.sendSimple(msg);
@@ -137,15 +139,15 @@ function action(mode, type, selection) {
             if (questcompleted == questlist.length || cm.getPlayer().getGMLevel() >= 11) {
                 gift = [[4310266, 2000]];
                 for (i = 0; i < gift.length; i++) {
-                    msg2 += "#i" + gift[i][0] + "# #b#z" + gift[i][0] + "# " + gift[i][1] + " pcs#k\r\n"
+                    msg2 += "#i" + gift[i][0] + "# #b#z" + gift[i][0] + "# " + gift[i][1] + " ชิ้น#k\r\n"
                     cm.gainItem(gift[i][0], gift[i][1]);
                 }
                 cm.getClient().setKeyValue("questallcompleted", 1);
-                msg = "You completed all diaries! Here are your rewards:\r\n\r\n";
+                msg = "คุณทำภารกิจทั้งหมดสำเร็จแล้ว! นี่คือรางวัลของคุณ:\r\n\r\n";
                 msg += msg2;
                 cm.sendOk(msg);
             } else {
-                cm.sendOk("#fs11#You haven't completed all diaries yet.");
+                cm.sendOk("#fs11#คุณยังทำภารกิจไม่ครบทั้งหมด");
                 cm.dispose();
             }
         } else {
@@ -163,11 +165,11 @@ function action(mode, type, selection) {
                 }
                 gainReqitemByType(qt[0], qt[1], qt[2]);
                 cm.getClient().setKeyValue("diary" + st, 1);
-                cm.sendOk("#fs11#Quest completed! Here's your reward~");
+                cm.sendOk("#fs11#ภารกิจเสร็จสิ้น! รับรางวัลเรียบร้อยแล้ว~");
             } else {
                 mapid = qt[5];
                 if (mapid < 0)
-                    cm.sendOk("#fs11#Your level is too low or you haven't completed the quest requirements yet!");
+                    cm.sendOk("#fs11#เลเวลของคุณยังไม่ถึง หรือคุณยังทำเงื่อนไขภารกิจไม่ครบ!");
                 else
                     cm.warp(qt[5]);
             }
@@ -180,38 +182,38 @@ function getQuestType(qid, qtype, qnum, isSecret, qlevel) {
     if (!isSecret) {
         switch (qtype) {
             case "mob":
-                return "#e[Lv." + qlevel + "]#n #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " pcs#k Collect#k";
+                return "#e[Lv." + qlevel + "]#n สะสม #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " ชิ้น#k";
                 break;
             case "level":
-                return "#e[Lv." + qlevel + "]#n Reach Level #r" + qlevel + "#k";
+                return "#e[Lv." + qlevel + "]#n เก็บเลเวลถึง #r" + qlevel + "#k";
                 break;
             case "item":
-                return "#e[Lv." + qlevel + "]#n Own #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " pcs#k or more";
+                return "#e[Lv." + qlevel + "]#n ครอบครอง #fc0xFFF361A6##z" + qid + "##k #r" + nf(qnum) + " ชิ้น#k ขึ้นไป";
                 break;
             case "party":
-                return "#e[Lv." + qlevel + "]#n Be in a party with #r" + qnum + "#k or more members";
+                return "#e[Lv." + qlevel + "]#n เข้าร่วมปาร์ตี้กับสมาชิก #r" + qnum + "#k คนขึ้นไป";
                 break;
             case "boss":
-                return "#e[Lv." + qlevel + "]#n Clear #r" + qid + "#k " + qnum + " times or more";
+                return "#e[Lv." + qlevel + "]#n กำจัด #r" + qid + "#k " + qnum + " ครั้งขึ้นไป";
                 break;
             case "meso":
-                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Meso or more";
+                return "#e[Lv." + qlevel + "]#n ครอบครอง #r" + nf(qnum) + "#k Meso ขึ้นไป";
                 break;
             case "mpoint":
-                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Cash Points or more";
+                return "#e[Lv." + qlevel + "]#n ครอบครอง #r" + nf(qnum) + "#k Cash Points ขึ้นไป";
                 break;
             case "kpoint":
-                return "#e[Lv." + qlevel + "]#n Own #r" + nf(qnum) + "#k Community Points or more";
+                return "#e[Lv." + qlevel + "]#n ครอบครอง #r" + nf(qnum) + "#k Community Points ขึ้นไป";
                 break;
             case "howmany":
-                return "#e[Lv." + qlevel + "]#n #k#fc0xFFF361A6#Reach #r" + nf(qnum) + " Concurrent Users#k";
+                return "#e[Lv." + qlevel + "]#n #k#fc0xFFF361A6#ผู้เล่นออนไลน์ #r" + nf(qnum) + " คนขึ้นไป#k";
                 break;
             default:
                 return "Error.";
                 break;
         }
     } else {
-        return "[Lv. " + qlevel + "] Achievement condition is secret.";
+        return "[Lv. " + qlevel + "] เงื่อนไขความสำเร็จเป็นความลับ";
     }
 }
 
@@ -230,51 +232,51 @@ function isQuestCompletable(qid, qtype, qnum, qlevel) {
                 break;
             case "item":
                 if (cm.itemQuantity(qid) >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "party":
                 if (cm.getPlayer().getParty() != null && cm.getPartyMembers().size() >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "boss":
                 if (cm.GetCount(qid, 1) >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "meso":
                 if (cm.getPlayer().getMeso() >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "mpoint":
                 if (cm.getPlayer().getCSPoints(1) >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             case "kpoint":
-                /*                if (cm.getPlayer().getbounscoin() >= qnum) { // 임시
-                                    return "완료 가능"
+                /*                if (cm.getPlayer().getbounscoin() >= qnum) { // Temporary
+                                    return "Can Complete"
                                 } else {
-                                    return "진행 중"
+                                    return "In Progress"
                                 }*/
                 break;
             case "howmany":
                 if (user >= qnum) {
-                    return "완료 가능"
+                    return "Can Complete"
                 } else {
-                    return "진행 중"
+                    return "In Progress"
                 }
                 break;
             default:

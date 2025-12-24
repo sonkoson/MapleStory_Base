@@ -92,35 +92,35 @@ function action(mode, type, sel) {
                 }
         } else {
                 if (status == 0) {
-                        var msg = "#e#b<로얄 메이플 - 배고픈 무토>#n\r\n";
-                        msg += " #b무토#k를 도와 #r굴라#k를 물리치는 걸 도와 주시겠어요?\r\n";
-                        msg += "#r※10분간 플레이가 진행되며 중간에 이탈할 수 없습니다.\r\n\r\n";
-                        msg += "#b#L0#<배고픈 무토>에 입장한다.#l\r\n";
-                        msg += "#L1#시미아 에게서 설명을 듣는다.#l\r\n";
-                        msg += "#L2#오늘의 남은 도전횟수를 확인한다.#l#k\r\n\r\n\r\n";
-                        msg += "#e* 1회 클리어 후 즉시 완료가 가능합니다.\r\n";
-                        msg += "* 오늘의 최고 보상 기록:\r\n";
-                        msg += "#i1712002##e#b#z1712002# " + cm.getPlayer().getStackTodayCount("muto_reward") + " pcs";
+                        var msg = "#e#b<Royal Maple - Hungry Muto>#n\r\n";
+                        msg += "ช่วย #bMuto#k กำจัด #rGulra#k หน่อยได้ไหม?\r\n";
+                        msg += "#r※ การเล่นใช้เวลา 10 นาที และไม่สามารถออกกลางคันได้\r\n\r\n";
+                        msg += "#b#L0#เข้าสู่ <Hungry Muto>#l\r\n";
+                        msg += "#L1#ฟังคำอธิบายจาก Simia#l\r\n";
+                        msg += "#L2#ตรวจสอบจำนวนครั้งที่เหลือวันนี้#l#k\r\n\r\n\r\n";
+                        msg += "#e* สามารถจบได้ทันทีหลังจากเคลียร์ 1 ครั้ง\r\n";
+                        msg += "* บันทึกรางวัลสูงสุดของวันนี้:\r\n";
+                        msg += "#i1712002##e#b#z1712002# " + cm.getPlayer().getStackTodayCount("muto_reward") + " ชิ้น";
                         cm.sendSimple(msg);
                 } else if (status == 1) {
                         if (sel == 0) {
-                                var msg = "#e#b<로얄 메이플 - 배고픈 무토>#n#k\r\n";
-                                msg += "어떤 #b난이도#k로 도전 하시겠어요?\r\n\r\n";
-                                msg += "#b#L0#쉬운 난이도#l\r\n";
-                                msg += "#L1#일반 난이도#l\r\n";
-                                msg += "#L2#어려운 난이도#l#k\r\n";
+                                var msg = "#e#b<Royal Maple - Hungry Muto>#n#k\r\n";
+                                msg += "คุณจะท้าทายใน #bระดับความยาก#k ใด?\r\n\r\n";
+                                msg += "#b#L0#ระดับง่าย (Easy)#l\r\n";
+                                msg += "#L1#ระดับทั่วไป (Normal)#l\r\n";
+                                msg += "#L2#ระดับยาก (Hard)#l#k\r\n";
                                 cm.sendSimple(msg);
                         } else if (sel == 1) {
-                                var msg = "여행자님! #r굴라#k의 침공이 시작되었어요! #b무토#k에게 맛있는 음식을 만들어 줘서 #r굴라#k를 물리치도록 도와주세요!\r\n\r\n";
-                                msg += "#e<로얄 메이플 - 배고픈 무토>\r\n\r\n";
-                                msg += "1. 참가 인원: #n1~4인#e\r\n";
-                                msg += "2. 제한 시간: #n10분#e\r\n";
-                                msg += "3. 1일 클리어 가능 횟수: #n3회 (클리어 할 때만 누적)#e\r\n";
-                                msg += "4. 보상: #i1712002##b#z1712002##k#n +경험치\r\n\r\n";
-                                msg += "#L3#이전으로 돌아간다.#l";
+                                var msg = "นักเดินทาง! การรุกรานของ #rGulra#k เริ่มต้นขึ้นแล้ว! ช่วยทำอาหารอร่อยๆ ให้ #bMuto#k เพื่อเอาชนะ #rGulra#k ที!\r\n\r\n";
+                                msg += "#e<Royal Maple - Hungry Muto>\r\n\r\n";
+                                msg += "1. ผู้เข้าร่วม: #n1~4 คน#e\r\n";
+                                msg += "2. เวลาจำกัด: #n10 นาที#e\r\n";
+                                msg += "3. จำนวนครั้งที่เคลียร์ได้ต่อวัน: #n3 ครั้ง (นับเมื่อเคลียร์สำเร็จ)#e\r\n";
+                                msg += "4. รางวัล: #i1712002##b#z1712002##k#n +EXP\r\n\r\n";
+                                msg += "#L3#ย้อนกลับ#l";
                                 cm.sendSimple(msg);
                         } else if (sel == 2) {
-                                cm.sendNext("#h #님의 오늘 남은 도전 횟수는 #r" + (limit - cm.getPlayer().getStackTodayCount("hungry_muto")) + "회#k 입니다.");
+                                cm.sendNext("จำนวนครั้งท้าทายที่เหลือของ #h # วันนี้คือ #r" + (limit - cm.getPlayer().getStackTodayCount("hungry_muto")) + " ครั้ง#k");
                                 sel2 = 4;
                         }
                 } else if (status == 2) {
@@ -150,7 +150,7 @@ function action(mode, type, sel) {
                                         return;
                                 }
                                 if (cm.getPlayerCount(easy_map) > 0) {
-                                        cm.sendOk("이미 누군가가 도전중입니다.\r\n#b다른 채널을 이용해 주세요.#k");
+                                        cm.sendOk("มีคนกำลังท้าทายอยู่\r\n#bกรุณาใช้แชแนลอื่น#k");
                                         cm.dispose();
                                         return;
                                 }
@@ -178,7 +178,7 @@ function action(mode, type, sel) {
                                         var countPass = true;
                                         while (it.hasNext()) {
                                                 var chr = it.next();
-                                                //AC(chr, "muto_easy"); // 클리어시 차감으로 변경
+                                                //AC(chr, "muto_easy"); // Changed to deduct on clear
                                         }
                                 }
                                 cm.resetMap(difficulty == 1 ? easy_map : hard_map, false);

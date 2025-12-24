@@ -14,10 +14,10 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         var msg = "#fs11#เตรียมใจให้พร้อมไว้นะ~ #k\r\n\r\n";
-        msg += "#L2# #dFlower of John's Heart #b(Reward #i4021031# 500)#l#k#n\r\n";
-        msg += "#L3# #dShumi's Lost Coin #b(Reward #i4021031# 500)#l#k#n\r\n";
-        msg += "#L4# #dKrisharama's Mandragora #b(Reward #i4021031# 500)#l#k#n\r\n";
-        msg += "#L5# #dOperation: Abandoned Mine Survey #b(Reward #i4021031# 500)#l#k#n\r\n";
+        msg += "#L2# #dดอกไม้ของ John #b(รางวัล #i4021031# 500 ชิ้น)#l#k#n\r\n";
+        msg += "#L3# #dเหรียญที่หายไปของ Shumi #b(รางวัล #i4021031# 500 ชิ้น)#l#k#n\r\n";
+        msg += "#L4# #dMandragora ของ Krisharama #b(รางวัล #i4021031# 500 ชิ้น)#l#k#n\r\n";
+        msg += "#L5# #dภารกิจสำรวจเหมืองร้าง #b(รางวัล #i4021031# 500 ชิ้น)#l#k#n\r\n";
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;

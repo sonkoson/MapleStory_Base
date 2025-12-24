@@ -18,9 +18,9 @@ function action(mode, type, selection) {
     }
 
     if (status == 0) {
-        cm.askCustomMixHairAndProb("원하시는 값을 선택해주세요.");
+        cm.askCustomMixHairAndProb("กรุณาเลือกค่าที่ต้องการ");
     } else if (status == 1) {
-        cm.sendOkS("적용되었습니다.", 0x24);
+        cm.sendOkS("ดำเนินการเรียบร้อยแล้ว", 0x24);
         cm.dispose();
     }
 }

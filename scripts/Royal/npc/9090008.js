@@ -37,15 +37,15 @@ function action(M, T, S) {
 
     if (St == 0) {
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("Hello? Are you enjoying your journey in Maple World?");
+            cm.sendOk("สวัสดีครับ? สนุกกับการเดินทางใน Maple World ไหมครับ?");
             cm.dispose();
             return;
         }
-        cm.sendSimple("Hello? Are you enjoying your journey in Maple World?\r\n"
-            + "#L0##rEnd conversation.#l\r\n"
-            + "#L1##bChange Item Options (Equipment).#l\r\n"
-            + "#L3##bChange Item Options (Cash).#l\r\n"
-            + "#L2##bCheck Potential Codes.#l");
+        cm.sendSimple("สวัสดีครับ? สนุกกับการเดินทางใน Maple World ไหมครับ?\r\n"
+            + "#L0##rจบการสนทนา#l\r\n"
+            + "#L1##bเปลี่ยนออพชั่นไอเทม (สวมใส่)#l\r\n"
+            + "#L3##bเปลี่ยนออพชั่นไอเทม (แคช)#l\r\n"
+            + "#L2##bดูรหัสศักยภาพ (Potential Codes)#l");
     }
 
     else if (St == 1) {
@@ -54,7 +54,7 @@ function action(M, T, S) {
             case 1:
                 inz = cm.getInventory(1);
                 invtype = 1;
-                txt = "Here is the list of equipment items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
+                txt = "นี่คือรายการไอเทมสวมใส่ที่ #b#h ##k มีอยู่ในปัจจุบัน เรียงตามลำดับในช่องเก็บของ กรุณาเลือก #rไอเทมที่ต้องการเปลี่ยนออพชั่น#k\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -64,7 +64,7 @@ function action(M, T, S) {
             case 3:
                 inz = cm.getInventory(6);
                 invtype = 6;
-                txt = "Here is the list of cash items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
+                txt = "นี่คือรายการไอเทมแคชที่ #b#h ##k มีอยู่ในปัจจุบัน เรียงตามลำดับในช่องเก็บของ กรุณาเลือก #rไอเทมที่ต้องการเปลี่ยนออพชั่น#k\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -143,7 +143,7 @@ function action(M, T, S) {
                 } else if (invtype == 6) {
                     cm.getPlayer().forceReAddItem(inz, Packages.client.inventory.MapleInventoryType.CASH);
                 } else {
-                    cm.sendOk("Error Occurrence");
+                    cm.sendOk("เกิดข้อผิดพลาด");
                     cm.dispose();
                     return;
                 }
@@ -161,38 +161,38 @@ function action(M, T, S) {
 
 function showPotentialCode() {
     var list = [
-        "　< Main Stat% Potential Codes >",
+        "　< รหัสศักยภาพ Main Stat% >",
         "　STR : +3%(10041)　STR : +6%(20041)　STR : +9%(30041)　STR : +12%(40041)",
         "　DEX : +3%(10042)　DEX : +6%(20042)　DEX : +9%(30042)　DEX : +12%(40042)",
         "　INT : +3%(10043)　INT : +6%(20043)　INT : +9%(30043)　INT : +12%(40043)",
         "　LUK : +3%(10044)　LUK : +6%(20044)　LUK : +9%(30044)　LUK : +12%(40044)",
         "　All Stat: +9%(40086)　　 All Stat: +12%(40081)　　 All Stat: +20%(60002)",
-        "　< Other Stat% Potential Codes >",
+        "　< รหัสศักยภาพ Stat% อื่นๆ >",
         "　MaxHP: +3%(10045)　MaxHP: +6%(20045)　MaxHP: +9%(30045)　MaxHP: +12%(40045)",
         "　MaxMP: +3%(10046)　MaxMP: +6%(20046)　MaxMP: +9%(30046)　MaxMP: +12%(40046)",
         "　Avoid: +3%(10048)　Avoid: +6%(20048)　Avoid: +9%(30048)　Avoid: +12%(40048)",
-        "　< Weapon Potential Codes >",
+        "　< รหัสศักยภาพอาวุธ >",
         "　Damage: +6%(20070)　Damage: +9%(30070)　Damage: +12%(40070)",
         "　Attack: +6%(20051)　Attack: +9%(30051)　Attack: +12%(40051)",
         "　Magic Attack: +6%(20052)　Magic Attack: +9%(30052)　Magic Attack: +12%(40052)",
-        "　< Ignore Monster Defense Potential Codes >",
+        "　< รหัสศักยภาพเจาะเกราะ (IED) >",
         "　+15%(10291)　+20%(20291)　+30%(30291)　+35%(40291)　+40%(40292)",
-        "　< Boss Damage Potential Codes >",
+        "　< รหัสศักยภาพบอสแดเมจ >",
         "　+20%(30601)　+25%(40601)　+30%(30602)　+35%(40602)　+40%(40603)",
-        "　< Critical Potential Codes >",
+        "　< รหัสศักยภาพคริติคอล >",
         "　Critical Rate: +8%(20055)　+10%(30055)　+12%(40055)",
         "　Crit Min Dmg: +15%(40056)　Crit Max Dmg: +15%(40057)",
-        "　< Accessory · Armor Potential Codes >",
+        "　< รหัสศักยภาพเครื่องประดับ · ชุดเกราะ >",
         "　Meso Obtain: +20%(40650)　Item Drop Rate: +20%(40656)",
         "　Invincibility time after hit: 1 sec(20366)　2 sec(30366)　3 sec(40366)",
-        "　< Decent Skill Potential Codes >",
+        "　< รหัสศักยภาพสกิล Decent >",
         "　(Unique)　Haste(31001)　Mystic Door(31002)　Sharp Eyes(31003)　Hyper Body(31004)",
         "　(Legendary)　Combat Orders(41005)　Advanced Bless(41006)　Wind Booster(41007)"
     ];
     for (var i = 0; i < list.length; i++) {
         send(20, list[i]);
     }
-    cm.getPlayer().dropMessage(1, "Maximize the chat window to see all content.");
+    cm.getPlayer().dropMessage(1, "ขยายหน้าต่างแชทเพื่อดูเนื้อหาทั้งหมด");
     cm.dispose();
 }
 

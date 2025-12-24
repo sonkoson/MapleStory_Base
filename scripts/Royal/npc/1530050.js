@@ -75,7 +75,7 @@ var grade = [
 
 var daily;
 
-// 주간보상
+// Weekly Reward
 var daily_1 = [
     [4310237, 500],//헌트코인
     [4310266, 300],//승급주화
@@ -207,10 +207,10 @@ function action(mode, type, sel) {
         var totalCash = comma(cm.getClient().getKeyValue("DPointAll"));
 
         var msg = "#fs11#" + Black;
-        msg += "         " + StarWhite + " Current #fc0xFFFF3366##h ##fc0xFF000000#'s Grade : #fc0xFFFF3366#" + currentGrade + Black + Enter;
-        msg += "         " + StarWhite + " Current #fc0xFFFF3366##h ##fc0xFF000000#'s Total Cash : #fc0xFFFF3366#" + totalCash + "C#b" + Enter + Enter;
-        msg += " #fc0xFF000000#　　- Owned Cash : #fc0xFFFF3366#" + ownedCash + "C#k" + Black;
-        msg += " #fc0xFF000000#   - Owned Points : #fc0xFFFF3366#" + ownedPoint + "P#k" + Black + Enter;
+        msg += "         " + StarWhite + " ยศปัจจุบันของ #fc0xFFFF3366##h ##fc0xFF000000# : #fc0xFFFF3366#" + currentGrade + Black + Enter;
+        msg += "         " + StarWhite + " ยอดเติมเงินสะสม #fc0xFFFF3366##h ##fc0xFF000000# : #fc0xFFFF3366#" + totalCash + "C#b" + Enter + Enter;
+        msg += " #fc0xFF000000#　　- Cash ที่มี : #fc0xFFFF3366#" + ownedCash + "C#k" + Black;
+        msg += " #fc0xFF000000#   - Points ที่มี : #fc0xFFFF3366#" + ownedPoint + "P#k" + Black + Enter;
         msg += "#l#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
         msg += "　　　　#b#L22##e[ Cash Shop ]#n#l";
         msg += "      #b#L2##e[ Point Shop ]#n#l" + Enter + Enter;
@@ -220,9 +220,9 @@ function action(mode, type, sel) {
 
         msg += "#l\r\n#Cgray#――――――――――――――――――――――――――――――――――――――――#fc0xFF000000#";
 
-        msg += Color + "　　　　#L5#- Receive Grade Achievement Reward -#l" + Enter;
-        msg += Color + "　　　　#L50#- Receive Cumulative Cash Reward -#l #Cgray##L61#(View Rewards)#l#k" + Enter;
-        msg += Color + "　　　　#L6#- Receive Grade Weekly Reward -#l #Cgray##L60#(View Rewards)#l#k" + Enter;
+        msg += Color + "　　　　#L5#- รับรางวัลระดับยศ -#l" + Enter;
+        msg += Color + "　　　　#L50#- รับรางวัลสะสมการเติม Cash -#l #Cgray##L61#(ดูของรางวัล)#l#k" + Enter;
+        msg += Color + "　　　　#L6#- รับรางวัลประจำสัปดาห์ -#l #Cgray##L60#(ดูของรางวัล)#l#k" + Enter;
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;
@@ -243,16 +243,16 @@ function action(mode, type, sel) {
                 cm.openNpcCustom(cm.getClient(), 9000331, "GanglimCashEnhancement");
                 break;
             case 5:
-                var msg = "#fs11#Current #b#h ##k's grade is #b" + cm.getPlayer().getHgrades() + "#k." + Enter;
+                var msg = "#fs11#ระดับยศปัจจุบันของ #b#h ##k คือ #b" + cm.getPlayer().getHgrades() + "#k." + Enter;
                 var a = "";
                 a += "#L999##rAchievement Reward Preview#k" + Enter + Enter;
                 for (i = 0; i < nreward.length; i++) {
                     if (cm.getClient().getKeyValue("nd_" + nreward[i]['ngrade']) == null && cm.getPlayer().getHgrade() >= nreward[i]['ngrade']) {
-                        a += "#L" + i + "##b" + grade[nreward[i]['ngrade']][1] + " Cumulative Reward (Available)#k" + Enter;
+                        a += "#L" + i + "##b" + grade[nreward[i]['ngrade']][1] + " รางวัลสะสมระดับยศ (รับได้)#k" + Enter;
                     }
                 }
                 if (a.equals("")) {
-                    msg += "There are no rewards available to collect.";
+                    msg += "ไม่มีรางวัลให้รับในขณะนี้";
                     cm.sendOk(msg);
                     cm.dispose();
                     return;
@@ -284,7 +284,7 @@ function action(mode, type, sel) {
                 for (a = 0; a < daily.length; a++) {
                     rlist += "#b#i" + daily[a][0] + "##z" + daily[a][0] + "# " + daily[a][1] + " (Qty)" + Enter;
                 }
-                cm.sendYesNo("#fs11##b " + cm.getPlayer().getHgrades() + " Reward Available!#k#r (Reset every Monday)#k\r\n\r\n" + rlist + "\r\n\r\n #rDo you want to receive it?");
+                cm.sendYesNo("#fs11##b รางวัลของระดับ " + cm.getPlayer().getHgrades() + " พร้อมรับแล้ว!#k#r (รีเซ็ตทุกวันจันทร์)#k\r\n\r\n" + rlist + "\r\n\r\n #rคุณต้องการรับรางวัลหรือไม่?");
                 break;
 
             case 22:
@@ -405,7 +405,7 @@ function action(mode, type, sel) {
                     daily_15     // MVP Black
                 ];
 
-                var previewMsg = "#fs11##eWeekly Reward Full Preview (Resets every Monday)#n\r\n\r\n";
+                var previewMsg = "#fs11##eดูของรางวัลประจำสัปดาห์ทั้งหมด (รีเซ็ตทุกวันจันทร์)#n\r\n\r\n";
 
                 for (var i = 1; i < allDaily.length; i++) {
                     var list = allDaily[i];
@@ -421,7 +421,7 @@ function action(mode, type, sel) {
                 break;
 
             case 61:
-                var msg = "#fs11##eCumulative Cash Reward Preview#n\r\n\r\n";
+                var msg = "#fs11##eดูของรางวัลสะสม Cash#n\r\n\r\n";
 
                 var previewConfig = {
                     10: { spins: 2, berries: 0 },
@@ -483,7 +483,7 @@ function action(mode, type, sel) {
                 // 출력
                 for (var tier in previewConfig) {
                     var cfg = previewConfig[tier];
-                    msg += "#fs11##b- " + tier + "0k Cumulative#k :  #i4036661# " + cfg.spins + " pcs";
+                    msg += "#fs11##b- " + tier + "0k สะสม#k :  #i4036661# " + cfg.spins + " ชิ้น";
                     if (cfg.berries > 0) msg += ",  #i5068306# " + cfg.berries + " pcs";
                     msg += "\r\n";
                 }
@@ -506,7 +506,7 @@ function action(mode, type, sel) {
                 seld2 = sel;
 
                 if (seld2 == 999) { // Achievement Reward Preview
-                    var msg = "#fs11#" + Color + "Rewards available when achieving MVP Grade" + Enter + Enter;
+                    var msg = "#fs11#" + Color + "รางวัลที่ได้รับเมื่อถึงระดับ MVP" + Enter + Enter;
                     for (i = 0; i < nreward.length; i++) {
                         msg += "#r#e- " + grade[1 + i][1] + " -" + Enter;
                         for (ii = 0; ii < nreward[i]['items'].length; ii++) {
@@ -520,7 +520,7 @@ function action(mode, type, sel) {
                 }
 
                 if (cm.getInvSlots(1) < 3 || cm.getInvSlots(2) < 3 || cm.getInvSlots(3) < 3 || cm.getInvSlots(4) < 3 || cm.getInvSlots(5) < 3) {
-                    cm.sendOkS("#fs11##fc0xFF6600CC#Please keep at least 3 inventory slots empty per tab.", 2);
+                    cm.sendOkS("#fs11##fc0xFF6600CC#กรุณาเว้นช่องว่างในช่องเก็บของอย่างน้อย 3 ช่อง", 2);
                     cm.dispose();
                     return;
                 }
@@ -532,7 +532,7 @@ function action(mode, type, sel) {
                 }
 
                 if (!nreward[seld2]['select']) {
-                    var msg = "#b#e[ Achievement Reward ] #k#n\r\nDo you want to receive the following #bRewards#k?\r\n" + Enter + Enter;
+                    var msg = "#b#e[ รางวัลความสำเร็จ ] #k#n\r\nคุณต้องการรับ #bรางวัล#k ต่อไปนี้หรือไม่?\r\n" + Enter + Enter;
                     for (i = 0; i < nreward[seld2]['items'].length; i++) {
                         //cm.gainItem(nreward[seld2]['items'][i][0], nreward[seld2]['items'][i][1]);
                         msg += "#b#e#i" + nreward[seld2]['items'][i][0] + "# #z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + " (Qty) \r\n";
@@ -541,7 +541,7 @@ function action(mode, type, sel) {
                     //msg += "#L2#Next time";
                     cm.sendYesNo(msg);
                 } else {
-                    var msg = "This reward is a selectable reward. Please choose the reward you want to receive.#b" + Enter;
+                    var msg = "รางวัลนี้เป็นรางวัลที่เลือกได้ กรุณาเลือกรางวัลที่คุณต้องการ#b" + Enter;
                     for (i = 0; i < nreward[seld2]['items'].length; i++)
                         msg += "#L" + i + "##i" + nreward[seld2]['items'][i][0] + "##z" + nreward[seld2]['items'][i][0] + "# " + nreward[seld2]['items'][i][1] + " (Qty)" + Enter;
                     cm.sendSimple(msg);
@@ -552,7 +552,7 @@ function action(mode, type, sel) {
                 if (cm.getClient().getKeyValue("HgradeWeek") == null) {
                     for (a = 0; a < daily.length; a++) {
                         if (!cm.canHold(daily[a][0], daily[a][1])) {
-                            cm.sendOk("Not enough inventory space.");
+                            cm.sendOk("ช่องเก็บของไม่เพียงพอ");
                             cm.dispose();
                             return;
                         }
@@ -873,7 +873,7 @@ function getList() {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "#fs11#There are no donation rewards available to collect.";
+    if (ret.equals("")) return "#fs11#ไม่มีรางวัลโดเนทให้รับในขณะนี้";
     return ret;
 }
 function getQ(id) {
@@ -914,10 +914,10 @@ function checkDPointAll(cash) {
     keyvalue = "DPointAll_" + cash + ""
     if (cm.getPlayer().getDPointAll() >= price) {
         if (cm.getClient().getKeyValue(keyvalue) < 1) {
-            return "#b(Available)#b";
+            return "#b(รับได้)#b";
         }
-        return "#fc0xFF9A9A9A#(Collected)#b";
+        return "#fc0xFF9A9A9A#(รับแล้ว)#b";
     } else {
-        return "#r(Insufficient Amount)#b";
+        return "#r(ยอดสะสมไม่พอ)#b";
     }
 }

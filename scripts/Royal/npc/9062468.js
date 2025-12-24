@@ -68,18 +68,18 @@ function action(mode, type, selection) {
             }
         } else if (status == 1) {
             var result = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame_br_result");
-            var canGain = cm.getPlayer().canGainStackEventGauge(1); // 코어 젬 금일 획득 가능량
+            var canGain = cm.getPlayer().canGainStackEventGauge(1); // Core Gem daily obtain amount
             var prevneoGem = cm.getPlayer().getKeyValue(100712, "point");
 
             if (canGain > 0) {
 
-                if (result == 1) { // 승리
+                if (result == 1) { // Victory
                     cm.getPlayer().setKeyValue(100712, "point", prevneoGem + 60);
                     //cm.getPlayer().gainStackEventGauge(1, 60, false);
-                } else if (result == 4) { // 패배
+                } else if (result == 4) { // Defeat
                     cm.getPlayer().setKeyValue(100712, "point", prevneoGem + 20);
                     //cm.getPlayer().gainStackEventGauge(1, 20, false);
-                } else if (result == 2) { // 무승부
+                } else if (result == 2) { // Draw
                     cm.getPlayer().setKeyValue(100712, "point", prevneoGem + 30);
                     //cm.getPlayer().gainStackEventGauge(1, 30, false);
                 }

@@ -32,7 +32,7 @@ function action(mode, type, selection) {
         status--;
     }
     if (status == 0) {
-        say = 별 + 색 + "คุณต้องการตรวจสอบกล่องจดหมายรับของหรือไม่?" + 엔터2 + 별빨 + "#rกรุณาทำช่องว่างในกระเป๋าให้เพียงพอด้วยนะ"
+        say = Star + Color + "คุณต้องการตรวจสอบกล่องจดหมายรับของหรือไม่?" + Enter2 + StarRed + "#rกรุณาทำช่องว่างในกระเป๋าให้เพียงพอด้วยนะ"
         try {
             con = DBConnection.getConnection();
             ps = con.prepareStatement("SELECT * FROM `offline` WHERE `chrid` = " + cm.getPlayer().getId() + "");

@@ -78,7 +78,7 @@ function action(mode, type, selection) {
                     cm.getPlayer().setFrozenLinkMobID(mobid[selection]);
                 }
                 cm.getPlayer().startFrozenLinkTask();
-                dispose();
+                cm.dispose();
                 return;
             }
 

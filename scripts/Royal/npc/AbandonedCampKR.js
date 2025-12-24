@@ -1,4 +1,4 @@
-/*
+๏ปฟ/*
 Daily Quest
 Abandoned Camp: Kill 200 of certain monsters
 */
@@ -18,7 +18,7 @@ if (currentDate < 10) {
 var numericToday = parseInt(currentYear + currentMonth + currentDate);
 
 var questList = [
-    ["ค่ายพักที่ถูกทอดทิ้ง", "trash"]
+    ["ใ…ธ๏คฐ์•—ใ€ๆพ๋ฐใ€ๅง‘๋กฏ๏ง", "trash"]
 ];
 
 var completionCheck = [
@@ -46,12 +46,12 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var dialogue = "นี่คือภารกิจรายวันจ้ะ รบกวนเธอช่วยเลือกภารกิจที่ต้องการทำหน่อยนะ\r\n";
+        var dialogue = "๋ฐ็ญฝๅ’์์ฐผ็์ดค์ช็ฎ•โ‘ข?์ฒฌโ€ฒ๋ฐ๋งนใํ”็‘ๅ’รท๏คฑโใฆๆพ๋“ค็ณปโ’์ฒจๆฒ“๋ฐฐ็พ๋ฐ€\r\n";
         //dialogue += "#L0##e#bLevel Range Monster #r(-20~+10 Level) #b10000 Mobs#d (Unlimited)#l\r\n\r\n";
         for (var i = 0; i < questList.length; i++) {
             dialogue += "#L" + i + "##e#b[" + questList[i][0] + "]#n#k\r\n#e#d";
             for (var a = 0; a < completionCheck[i].length; a++) {
-                dialogue += "   ?#o" + completionCheck[i][a][0] + "# " + completionCheck[i][a][1] + " ตัว\r\n";
+                dialogue += "   ?#o" + completionCheck[i][a][0] + "# " + completionCheck[i][a][1] + " ๋‘?r\n";
             }
             dialogue += "\r\n";
         }
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
         selectedQuestIndex = selection;
 
         if (cm.getPlayer().getKeyValue("Quest_" + questList[selectedQuestIndex][1]) == numericToday) {
-            cm.sendOk("ภารกิจนี้เธอทำเสร็จเรียบร้อยแล้วจ้ะ");
+            cm.sendOk("์์ฐผ็๋ฐ็ฆน๋งน๋กญ็ท์ถฐโ“ฃ์ดน์จ์ท็พ็ฌ‘่ธโ‘ข?);
             cm.dispose();
             return;
         } else if (cm.getPlayer().getKeyValue("Quest_" + questList[selectedQuestIndex][1]) != 0) {
@@ -89,24 +89,24 @@ function action(mode, type, selection) {
         }
 
         if (isQuestCleared) {
-            var rewardMessage = "<รายการของรางวัล>\r\n";
+            var rewardMessage = "<์ดค์ง•๏คฑโจใด๏คจํ•?\r\n";
             for (var i = 0; i < rewardList.length; i++) {
-                rewardMessage += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ชิ้น\r\n";
+                rewardMessage += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ใดๅ\r\n";
             }
-            cm.sendYesNo("เธอทำเงื่อนไขของภารกิจครบถ้วนแล้วนะจ๊ะ ต้องการจะจบภารกิจเลยไหม?\r\n\r\n" + rewardMessage);
+            cm.sendYesNo("้ซๅบซๅฒฑใ“็“๋ฐฅโ”็ณป์์ฐผ็ใ…“๋ณ่ธ๋ฐํฑํ“็ชๆ…ฐ ๋“ค็ณปโ’์ฑ”็ช๋ด๏คฑโโ“ฃํ้ฝท?\r\n\r\n" + rewardMessage);
         } else {
-            var questInfo = "#e#b[ภารกิจ " + questList[selectedQuestIndex][1] + "]#n#k\r\n";
+            var questInfo = "#e#b[์์ฐผ็ " + questList[selectedQuestIndex][1] + "]#n#k\r\n";
             for (var i = 0; i < completionCheck[selectedQuestIndex].length; i++) {
                 var currentKillCount = cm.getPlayer().getKeyValue("Quest_" + completionCheck[selectedQuestIndex][i][0]);
-                questInfo += "#o" + completionCheck[selectedQuestIndex][i][0] + "# (" + currentKillCount + " / " + completionCheck[selectedQuestIndex][i][1] + ") ตัว\r\n";
+                questInfo += "#o" + completionCheck[selectedQuestIndex][i][0] + "# (" + currentKillCount + " / " + completionCheck[selectedQuestIndex][i][1] + ") ๋‘?r\n";
             }
-            questInfo += "#e#bเมื่อล่ามอนสเตอร์ได้ครบตามจำนวน เธอจะสามารถจบภารกิจได้จ้ะ\r\n";
+            questInfo += "#e#bๆ—็พธ่€่์ฃ๋ฏ็ขฉ็จฟ๏งฑ๋ปใ…“๋ณ•ๆ€’โ“–๋ฏ€?้ซ็นซ่นๆ€’๏คฑ๋•๋ด๏คฑโโ“ง๋ปโ‘ข?r\n";
 
-            questInfo += "#L0##e#rเคลื่อนย้ายไปยังสถานที่ล่า#l#k\r\n\r\n";
-            questInfo += "[เมื่อเคลื่อนย้ายจากแผนที่แรก จะไปยังแผนที่ที่สองจ้ะ]\r\n\r\n";
-            questInfo += "#fc0xFF6600CC#<รายการของรางวัล>\r\n";
+            questInfo += "#L0##e#r่ฅฟํ…็“๋ฎคๅ์ญ๋ผๆฌบ่ก—ๆ๋กฑ่จ่#l#k\r\n\r\n";
+            questInfo += "[ๆ—็พธๆใ…•็พธๆ”ท์ฎธ๏คฐโ“•โ– ์ฐ๋กฑ็ฎ์ฐผ โ““้ค“์ซ“ใญ์ฐ๋กฑ็“ฎๆพๅงฆใคๅช]\r\n\r\n";
+            questInfo += "#fc0xFF6600CC#<์ดค์ง•๏คฑโจใด๏คจํ•?\r\n";
             for (var i = 0; i < rewardList.length; i++) {
-                questInfo += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ชิ้น\r\n";
+                questInfo += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ใดๅ\r\n";
             }
             cm.sendSimple(questInfo);
         }
@@ -123,7 +123,7 @@ function action(mode, type, selection) {
 
             for (var i = 0; i < rewardList.length; i++) {
                 if (!cm.canHold(rewardList[i][0], rewardList[i][1])) {
-                    cm.sendOk("อ๊ะ ดูเหมือนช่องเก็บของของเธอจะเต็มนะจ๊ะ รบกวนช่วยเช็คดูอีกทีนะ");
+                    cm.sendOk("ไพ?๋ค็น•์ฃฝๆ”ทใ็ณป่ฅ็€โจใ–็ณป้ซ็นซๅ๋“ ์กธ็ชๆ…ฐ ์ฒฌโ€ฒ๋ฌซๅฎ์ญใใ…็ฎ่ฟ๋กฑ๋ฐ€");
                     return;
                 }
             }
@@ -134,7 +134,7 @@ function action(mode, type, selection) {
                 cm.gainItem(rewardList[i][0], rewardList[i][1]);
             }
 
-            cm.sendOk("ทำภารกิจสำเร็จแล้วจ้ะ! ฉันมอบของรางวัลให้เรียบร้อยแล้ว รบกวนตรวจสอบในช่องเก็บของนะจ๊ะ");
+            cm.sendOk("๋กญ์์ฐผ็ๆฌ็…ฝ่‘็ฌ‘่ธโ‘ข? โ’ ๋ฎๆ•…โจใด๏คจํ•ํ้…็…ฝ่ฆฝ๋ดคไบ์ญํฑ?์ฒฌโ€ฒ๋ญ์ณฌในๆ•…ๅฐธใ็ณป่ฅ็€โจใ็ชๆ…ฐ");
         }
     }
 }

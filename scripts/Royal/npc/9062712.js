@@ -27,16 +27,16 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var send = "#fs11#Please select a function.\r\n";
-        send += "#L0#Check BGM Queue (Current Map/Channel)#l\r\n";
-        send += "#L1#Register BGM Queue (Current Map/Channel) (2 Billion Mesos)#l\r\n";
+        var send = "#fs11#เลือกฟังเพลงไหมคะ?\r\n";
+        send += "#L0#ตรวจสอบเพลงที่ขอ (แผนที่/ชาแนลปัจจุบัน)#l\r\n";
+        send += "#L1#ขอเพลง (แผนที่/ชาแนลปัจจุบัน) (ใช้ #i4001715# #z4001715# 20 ชิ้น)#l\r\n";
 
         /*
         if (cm.getPlayer().isGM()) {
         send += "\r\n\r\n";
         send += "#r#e   <GM Menu>#k#n\r\n";
-        send += "#L2#Register BGM Queue (All Channels)#l\r\n";
-        send += "#L3#Reset BGM Queue (All Channels)#l";
+        send += "#L2#ขอเพลง (ทุกชาแนล)#l\r\n";
+        send += "#L3#รีเซ็ตคิวเพลง (ทุกชาแนล)#l";
         }
         */
         cm.sendSimple(send);
@@ -46,11 +46,11 @@ function action(mode, type, selection) {
         if (seld == 0) {
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() == 0) {
-                cm.sendOk("#fs11#There are currently no songs in the queue.");
+                cm.sendOk("#fs11#ตอนนี้ไม่มีเพลงในคิวเลยจ้า");
                 cm.dispose();
                 return;
             }
-            var musiclist = "#fs11#Here is the list of BGM currently in the queue.\r\n#r※ Plays for about 5 minutes then skips to the next song.#k\r\n\r\n";
+            var musiclist = "#fs11#นี่คือรายการเพลงในคิวค่ะ.\r\n#r※ เล่นประมาณ 5 นาทีแล้วจะเปลี่ยนเพลงถัดไปนะคะ#k\r\n\r\n";
             for (var i = 0; i < mapmusic.size(); i++) {
                 musiclist += mapmusic.get(i) + "\r\n";
             }
@@ -61,17 +61,17 @@ function action(mode, type, selection) {
         if (seld == 1) {
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() > 8) {
-                cm.sendOk("#fs11#You can register up to 8 songs in the queue.");
+                cm.sendOk("#fs11#ขอเพลงได้สูงสุด 8 เพลงในคิวค่ะ");
                 cm.dispose();
                 return;
             }
             if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11#You are missing 20 #i4001715# #z4001715#.");
+                cm.sendOk("#fs11#คุณมี #i4001715# #z4001715# ไม่ครบ 20 ชิ้นค่ะ");
                 cm.dispose();
                 return;
             }
             var musiclist = cm.getAllSound();
-            var musicask = "#fs11#Please select the BGM you want.\r\n\r\n";
+            var musicask = "#fs11#อยากฟังเพลงไหนดีคะ?\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
                 if (musiclist.get(i) == "[테일즈위버] Reminiscence")
@@ -109,7 +109,7 @@ function action(mode, type, selection) {
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?\r\n\r\nIt requires 20 #r#i4001715# #z4001715##b. Do you want to proceed?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#เพลงที่คุณเลือกคือ " + musiclist.get(selection) + " ใช่ไหมคะ?\r\n\r\nต้องใช้ #r#i4001715# #z4001715# 20 ชิ้น#b ต้องการดำเนินการต่อไหมคะ?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
             }
         }
         if (seld == 2) { // GM menu: Register BGM Queue (All Channels) - confirmation
@@ -131,14 +131,14 @@ function action(mode, type, selection) {
     if (status == 3) {
         if (seld == 1) {
             if (!cm.haveItem(4001715, 20)) {
-                cm.sendOk("#fs11#You are missing 20 #i4001715# #z4001715#.");
+                cm.sendOk("#fs11#คุณมี #i4001715# #z4001715# ไม่ครบ 20 ชิ้นค่ะ");
                 cm.dispose();
                 return;
             }
             cm.gainItem(4001715, -20);
             cm.addMapMusic(tempsel);
             var musiclist = cm.getAllSound();
-            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " \r\nhas been registered to the current map (current channel) queue.");
+            cm.sendOk("#fs11#ลงทะเบียนเพลง " + musiclist.get(tempsel) + " \r\nในคิวเพลง (แผนที่/ชาแนลปัจจุบัน) เรียบร้อยแล้วค่ะ");
             cm.dispose();
         }
         if (seld == 2) {

@@ -37,15 +37,15 @@ function action(M, T, S) {
 
     if (St == 0) {
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("Hello? Are you enjoying your journey in Maple World?");
+            cm.sendOk("สวัสดีครับ? สนุกกับการเดินทางใน Maple World ไหมครับ?");
             cm.dispose();
             return;
         }
-        cm.sendSimple("Hello? Are you enjoying your journey in Maple World?\r\n"
-            + "#L0##rEnd conversation.#l\r\n"
-            + "#L1##bChange Item Options (Equipment).#l\r\n"
-            + "#L3##bChange Item Options (Cash).#l\r\n"
-            + "#L2##bCheck Potential Codes.#l");
+        cm.sendSimple("สวัสดีครับ? สนุกกับการเดินทางใน Maple World ไหมครับ?\r\n"
+            + "#L0##rจบการสนทนา#l\r\n"
+            + "#L1##bเปลี่ยนออพชั่นไอเทม (สวมใส่)#l\r\n"
+            + "#L3##bเปลี่ยนออพชั่นไอเทม (แคช)#l\r\n"
+            + "#L2##bดูรหัสศักยภาพ (Potential Codes)#l");
     }
 
     else if (St == 1) {
@@ -54,7 +54,7 @@ function action(M, T, S) {
             case 1:
                 inz = cm.getInventory(1);
                 invtype = 1;
-                txt = "Here is the list of equipment items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
+                txt = "นี่คือรายการไอเทมสวมใส่ที่ #b#h ##k มีอยู่ในปัจจุบัน เรียงตามลำดับในช่องเก็บของ กรุณาเลือก #rไอเทมที่ต้องการเปลี่ยนออพชั่น#k\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -64,7 +64,7 @@ function action(M, T, S) {
             case 3:
                 inz = cm.getInventory(6);
                 invtype = 6;
-                txt = "Here is the list of cash items #b#h ##k currently possesses. It is displayed in inventory order. Please select the #ritem you want to change options for#k.\r\n#b#fs11#";
+                txt = "นี่คือรายการไอเทมแคชที่ #b#h ##k มีอยู่ในปัจจุบัน เรียงตามลำดับในช่องเก็บของ กรุณาเลือก #rไอเทมที่ต้องการเปลี่ยนออพชั่น#k\r\n#b#fs11#";
                 for (w = 0; w <= inz.getSlotLimit(); w++) {
                     if (!inz.getItem(w)) continue;
                     txt += "#L" + w + "##i" + inz.getItem(w).getItemId() + ":# #t" + inz.getItem(w).getItemId() + "##l\r\n";
@@ -143,7 +143,7 @@ function action(M, T, S) {
                 } else if (invtype == 6) {
                     cm.getPlayer().forceReAddItem(inz, Packages.objects.item.MapleInventoryType.CASH);
                 } else {
-                    cm.sendOk("Error Occurrence");
+                    cm.sendOk("เกิดข้อผิดพลาด");
                     cm.dispose();
                     return;
                 }
@@ -161,65 +161,65 @@ function action(M, T, S) {
 
 function showPotentialCode() {
     var list = [
-        "　< Main Stat% Potential Codes >",
+        "　< รหัสศักยภาพ Main Stat% >",
         "　STR : +3%(10041)　STR : +6%(20041)　STR : +9%(30041)　STR : +12%(40041)",
         "　DEX : +3%(10042)　DEX : +6%(20042)　DEX : +9%(30042)　DEX : +12%(40042)",
         "　INT : +3%(10043)　INT : +6%(20043)　INT : +9%(30043)　INT : +12%(40043)",
         "　LUK : +3%(10044)　LUK : +6%(20044)　LUK : +9%(30044)　LUK : +12%(40044)",
         "　All Stat: +9%(40086)　　 All Stat: +12%(40081)　　 All Stat: +20%(60002)",
-        "　< Other Stat% Potential Codes >",
+        "　< รหัสศักยภาพ Stat% อื่นๆ >",
         "　MaxHP: +3%(10045)　MaxHP: +6%(20045)　MaxHP: +9%(30045)　MaxHP: +12%(40045)",
         "　MaxMP: +3%(10046)　MaxMP: +6%(20046)　MaxMP: +9%(30046)　MaxMP: +12%(40046)",
         "　Avoid: +3%(10048)　Avoid: +6%(20048)　Avoid: +9%(30048)　Avoid: +12%(40048)",
-        "　< Weapon Potential Codes >",
+        "　< รหัสศักยภาพอาวุธ >",
         "　Damage: +6%(20070)　Damage: +9%(30070)　Damage: +12%(40070)",
         "　Attack: +6%(20051)　Attack: +9%(30051)　Attack: +12%(40051)",
         "　Magic Attack: +6%(20052)　Magic Attack: +9%(30052)　Magic Attack: +12%(40052)",
-        "　< Ignore Monster Defense Potential Codes >",
+        "　< รหัสศักยภาพเจาะเกราะ (IED) >",
         "　+15%(10291)　+20%(20291)　+30%(30291)　+35%(40291)　+40%(40292)",
-        "　< Boss Damage Potential Codes >",
+        "　< รหัสศักยภาพบอสแดเมจ >",
         "　+20%(30601)　+25%(40601)　+30%(30602)　+35%(40602)　+40%(40603)",
-        "　< Critical Potential Codes >",
+        "　< รหัสศักยภาพคริติคอล >",
         "　Critical Rate: +8%(20055)　+10%(30055)　+12%(40055)",
         "　Crit Min Dmg: +15%(40056)　Crit Max Dmg: +15%(40057)",
-        "　< Accessory · Armor Potential Codes >",
+        "　< รหัสศักยภาพเครื่องประดับ · ชุดเกราะ >",
         "　Meso Obtain: +20%(40650)　Item Drop Rate: +20%(40656)",
         "　Invincibility time after hit: 1 sec(20366)　2 sec(30366)　3 sec(40366)",
-        "　< Decent Skill Potential Codes >",
+        "　< รหัสศักยภาพสกิล Decent >",
         "　(Unique)　Haste(31001)　Mystic Door(31002)　Sharp Eyes(31003)　Hyper Body(31004)",
         "　(Legendary)　Combat Orders(41005)　Advanced Bless(41006)　Wind Booster(41007)"
     ];
     for (var i = 0; i < list.length; i++) {
         send(20, list[i]);
     }
-    cm.getPlayer().dropMessage(1, "Maximize the chat window to see all content.");
+    cm.getPlayer().dropMessage(1, "ขยายหน้าต่างแชทเพื่อดูเนื้อหาทั้งหมด");
     cm.dispose();
 }
 
 function addItemInfo() {
     if (rotation == 0) {
         inz = cm.getInventory(invtype).getItem(S2);
-        txt = "#r#e[Item Scroll Reinforcement Option]#n\r\n#b#fs11#";
-        sel = ["STR", "DEX", "INT", "LUK", "MaxHP", "MaxMP", "Attack", "Magic Attack", "W.Def", "M.Def", "Accuracy", "Avoidability", "Speed", "Jump", "Additional Options", "STR", "DEX", "INT", "LUK", "MaxHP", "MaxMP", "Attack", "Magic Attack", "W.Def", "M.Def", "Accuracy", "Avoidability", "Scroll Success Count", "Upgrade Slots", "Starforce Success Count", "Scissors Count", "Boss Damage", "Ignore Defense", "Total Damage", "All Stat", "Level Reduction", "Potential Grade", "Potential 1", "Potential 2", "Potential 3", "Potential 4", "Potential 5", "Potential 6", "Arcane Force Level", "Arcane Force Value", "Arcane Force EXP"];
+        txt = "#r#e[ออพชั่นการเสริมกำลังสกรอลล์ไอเทม]#n\r\n#b#fs11#";
+        sel = ["STR", "DEX", "INT", "LUK", "MaxHP", "MaxMP", "พลังโจมตี", "พลังเวทย์", "W.Def", "M.Def", "ความแม่นยำ (ACC)", "อัตราหลบหลีก (AVOID)", "ความเร็ว (Speed)", "กระโดด (Jump)", "ออพชั่นเพิ่มเติม", "STR", "DEX", "INT", "LUK", "MaxHP", "MaxMP", "พลังโจมตี", "พลังเวทย์", "W.Def", "M.Def", "ความแม่นยำ (ACC)", "อัตราหลบหลีก (AVOID)", "จำนวนการอัพเกรด (Slots)", "จำนวนอัพเกรดที่เหลือ", "จำนวนการตีบวก (Starforce)", "จำนวนกรรไกร", "บอสแดเมจ", "เจาะเกราะ (IED)", "Total Damage", "All Stat", "ลดเลเวลสวมใส่", "ระดับศักยภาพ", "ศักยภาพ 1", "ศักยภาพ 2", "ศักยภาพ 3", "ศักยภาพ 4", "ศักยภาพ 5", "ศักยภาพ 6", "เลเวล Arcane Force", "ค่า Arcane Force", "Arcane Force EXP"];
         for (y = 0; y < sel.length; y++) {
             txt += "#L" + y + "#" + sel[y] + "#l";
             if (y == 5 || y == 9 || y == 20 || y == 24 || y == 28 || y == 32 || y == 36 || y == 39) {
                 txt += "\r\n";
             }
             if (y == 14) {
-                txt += "\r\n\r\n\r\n#r#e#fs12#[Item Starforce Reinforcement Option]#b#n#fs11#\r\n";
+                txt += "\r\n\r\n\r\n#r#e#fs12#[ออพชั่นการตีบวกไอเทม]#b#n#fs11#\r\n";
             }
             if (y == 26) {
-                txt += "\r\n\r\n\r\n#r#e#fs12#[Item Reinforcement Option]#b#n#fs11#\r\n";
+                txt += "\r\n\r\n\r\n#r#e#fs12#[ออพชั่นการเสริมกำลังไอเทม]#b#n#fs11#\r\n";
             }
             if (y == 30) {
-                txt += "\r\n\r\n\r\n#r#e#fs12#[Item Additional Option]#b#n#fs11#\r\n";
+                txt += "\r\n\r\n\r\n#r#e#fs12#[ออพชั่นเพิ่มเติมของไอเทม]#b#n#fs11#\r\n";
             }
             if (y == 35) {
-                txt += "\r\n\r\n\r\n#r#e#fs12#[Item Potential]#b#n#fs11#\r\n";
+                txt += "\r\n\r\n\r\n#r#e#fs12#[ศักยภาพไอเทม (Potential)]#b#n#fs11#\r\n";
             }
             if (y == 42) {
-                txt += "\r\n\r\n\r\n#r#e#fs12#[Arcane Force Ability]#b#n#fs11#\r\n";
+                txt += "\r\n\r\n\r\n#r#e#fs12#[ความสามารถ Arcane Force]#b#n#fs11#\r\n";
             }
 
         }
@@ -264,18 +264,18 @@ function addItemInfo() {
 
         if (S3 != 36) {
             if (max != 99999) {
-                cm.sendGetNumber("Please enter the value for #b" + sel[S3] + "#k.\r\n#r(Cannot exceed #e" + Comma(max) + "#n.)", 0, 0, max);
+                cm.sendGetNumber("กรุณากรอกค่าสำหรับ #b" + sel[S3] + "#k.\r\n#r(ไม่สามารถเกิน #e" + Comma(max) + "#n.)", 0, 0, max);
             }
             else {
-                cm.sendGetNumber("Please enter the value for #b" + sel[S3] + "#k.\r\n#r(If you don't know the potential code, you can check it through me.)", 0, 0, max);
+                cm.sendGetNumber("กรุณากรอกค่าสำหรับ #b" + sel[S3] + "#k.\r\n#r(หากคุณไม่ทราบรหัสศักยภาพ สามารถตรวจสอบผ่านฉันได้)", 0, 0, max);
             }
         }
         else {
-            cm.sendSimple("Please select the value for #b" + sel[S3] + "#k.\r\n#fs11##r"
-                + "#L0#No Potential Grade#l\r\n\r\n\r\n"
-                + "#fs12##e[Unidentified Potential Grade]#b#n#fs11#\r\n"
+            cm.sendSimple("กรุณาเลือกค่าสำหรับ #b" + sel[S3] + "#k.\r\n#fs11##r"
+                + "#L0#ไม่มีระดับศักยภาพ#l\r\n\r\n\r\n"
+                + "#fs12##e[ระดับศักยภาพที่ยังไม่ส่อง]#b#n#fs11#\r\n"
                 + "#L1#Rare#l#L2#Epic#l#L3#Unique#l#L4#Legendary#l\r\n\r\n\r\n"
-                + "#fs12##e#r[Identified Potential Grade]#b#n#fs11#\r\n"
+                + "#fs12##e#r[ระดับศักยภาพที่ส่องแล้ว]#b#n#fs11#\r\n"
                 + "#L17#Rare#l#L18#Epic#l#L19#Unique#l#L20#Legendary#l\r\n");
         }
         rotation++;

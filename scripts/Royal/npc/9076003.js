@@ -133,8 +133,8 @@ function action(mode, type, selection) {
         return;
     }
     if (status == 0) {
-        var text = "                       #fs11##fc0xFF000000##fs17#" + star + " Royal Maple Friendship Ring Shop " + star + "\r\n#fs12##Cgray#                Gift a ring to verify your friendship!#k\r\n\r\n#fs12#";
-        text += "#fs12#Please select the ring you want to gift.\r\nYou must be in a #bparty#k with the person you will equip it with.\r\n#r(Note: Both sender and receiver must change channels for it to apply.)#k\r\n#fs11##fc0xFF000000#You need #i4001679# to gift a couple ring#b\r\n";
+        var text = "                       #fs11##fc0xFF000000##fs17#" + star + " ร้านค้าแหวนมิตรภาพ Royal Maple " + star + "\r\n#fs12##Cgray#                มอบแหวนเพื่อยืนยันมิตรภาพของคุณ!#k\r\n\r\n#fs12#";
+        text += "#fs12#กรุณาเลือกแหวนที่ต้องการมอบ\r\nคุณต้องอยู่ใน #bปาร์ตี้#k กับคนที่จะสวมใส่ด้วย\r\n#r(หมายเหตุ: ทั้งผู้ส่งและผู้รับต้องย้ายแชนแนลเพื่อให้มีผล)#k\r\n#fs11##fc0xFF000000#คุณต้องมี #i4001679# เพื่อมอบแหวนคู่รัก#b\r\n";
         for (var i = 0; i < ringList.length; ++i) {
             var itemID = ringList[i]['item'];
             var price = ringList[i]['price'];
@@ -143,20 +143,20 @@ function action(mode, type, selection) {
         cm.sendSimple(text);
     } else if (status == 1) {
         if (!cm.haveItem(coin, 1)) {
-            cm.sendNext("You don't have enough #z" + coin + "#.");
+            cm.sendNext("คุณมี #z" + coin + "# ไม่เพียงพอ");
             cm.dispose();
             return;
         }
         sel = selection;
-        cm.sendGetText("#fs11##fc0xFF000000# Please enter the character name of the person who will equip it with you.");
+        cm.sendGetText("#fs11##fc0xFF000000# กรุณากรอกชื่อตัวละครของคนที่จะสวมใส่ด้วย");
     } else if (status == 2) {
         if (cm.getPlayer().getParty() == null) {
-            cm.sendOk("#fs11##fc0xFF000000# Please try again after forming a party with the person you will equip it with.");
+            cm.sendOk("#fs11##fc0xFF000000# กรุณาลองใหม่หลังจากสร้างปาร์ตี้กับคนที่จะสวมใส่ด้วย");
             cm.dispose();
             return;
         }
         if (!cm.allMembersHere()) {
-            cm.sendOk("#fs11##fc0xFF000000# Please try again in the same map as the other person.");
+            cm.sendOk("#fs11##fc0xFF000000# กรุณาลองใหม่ในแผนที่เดียวกับอีกฝ่าย");
             cm.dispose();
             return;
         }
@@ -173,16 +173,16 @@ function action(mode, type, selection) {
         }
 
         if (chr == null) {
-            cm.sendOk("#fs11##fc0xFF000000#The recipient is not online.");
+            cm.sendOk("#fs11##fc0xFF000000#ผู้รับไม่ได้ออนไลน์");
             cm.dispose();
             return;
         }
 
         cm.makeRing(ringList[sel]['item'], target);
         cm.gainItem(coin, -ringList[sel]['price']);
-        cm.sendNext("#fs11##fc0xFF000000#Purchase complete. The couple ring will be applied after relogging.");
-        chr.chatMsg(10, cm.getPlayer().getName() + " has gifted you a couple ring. Check your inventory right now!");
-        chr.chatMsg(10, "The couple ring will be applied after relogging.");
+        cm.sendNext("#fs11##fc0xFF000000#ซื้อเรียบร้อยแล้ว แหวนคู่รักจะมีผลหลังจากล็อคอินใหม่");
+        chr.chatMsg(10, cm.getPlayer().getName() + " ได้มอบแหวนคู่รักให้คุณ ตรวจสอบช่องเก็บของของคุณตอนนี้เลย!");
+        chr.chatMsg(10, "แหวนคู่รักจะมีผลหลังจากล็อคอินใหม่");
         cm.dispose();
     }
 }

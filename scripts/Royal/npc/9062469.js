@@ -68,7 +68,7 @@ function action(mode, type, selection) {
             }
         } else if (status == 1) {
             var result = cm.getPlayer().getOneInfoQuestInteger(1234569, "miniGame1_result");
-            var canGain = cm.getPlayer().canGainStackEventGauge(1); // 코어 젬 금일 획득 가능량
+            var canGain = cm.getPlayer().canGainStackEventGauge(1); // Core Gem daily obtain amount
             var prevneoGem = cm.getPlayer().getKeyValue(100712, "point");
 
             if (canGain > 0) {

@@ -26,12 +26,12 @@ function action(M, T, S) {
 			cm.dispose();
 			return;
 		}
-		if (cm.getPlayer().getName() == "이카로스") {
-			//log("access", "NPC accessed\r\n");
-			cm.sendOk("Administrator #b#e#h ##k#n, welcome. How can I help you?\r\n#b"
-				+ "#L0#Search Character#l\r\n"
-				+ "#L1#Change Settings#l\r\n\r\n");
-		}
+		//if (cm.getPlayer().getName() == "이카로스") {
+		//log("access", "NPC accessed\r\n");
+		cm.sendOk("Administrator #b#e#h ##k#n, welcome. How can I help you?\r\n#b"
+			+ "#L0#Search Character#l\r\n"
+			+ "#L1#Change Settings#l\r\n\r\n");
+		//}
 	}
 
 	else if (St == 1) {
@@ -89,14 +89,14 @@ function action(M, T, S) {
 				chr = findPlayerByName(name);
 				if (chr != null) {
 					//log("access", ""+name+"("+chr.getId()+") character accessed\r\n");
-					cm.sendOk("#b#e" + chr.getName() + "#k#n character accessed. How can I help you?#b\r\n\r\n#fn돋움체##fs11#"
-						+ "   - Meso Amount | #fn돋움#" + Comma(chr.getMeso()) + " (1B Pouch: " + Comma(chr.itemQuantity(4001716)) + ")#fn돋움체#\r\n"
+					cm.sendOk("#b#e" + chr.getName() + "#k#n character accessed. How can I help you?#b\r\n\r\n#fs11#"
+						+ "   - Meso Amount | " + Comma(chr.getMeso()) + " (1B Pouch: " + Comma(chr.itemQuantity(4001716)) + ")\r\n"
 						+ "   - Aqua Coin Amount | " + Comma(chr.itemQuantity(4310237)) + "\r\n"
 						+ "   - Neo Stone | " + Comma(chr.getKeyValue(100711, "point")) + "\r\n"
 						+ "   - Neo Gem | " + Comma(chr.getKeyValue(100712, "point")) + "\r\n"
 						+ "   - Neo Core | " + Comma(chr.getKeyValue(501215, "point")) + "\r\n"
 						+ "   - Promo Points | " + Comma(chr.getHPoint()) + "\r\n"
-						+ "   - Donation Points | " + Comma(chr.getDonationPoint()) + "\r\n#fs12##fn돋움#"
+						+ "   - Donation Points | " + Comma(chr.getDonationPoint()) + "\r\n#fs12#"
 						//+ "#L16#Give Promo Points#l #L17#Give Donation Points#l\r\n"
 						+ "#L13#Give Neo Stone#l#L14#Give Neo Gem#l#L15#Give Neo Core#l\r\n\r\n"
 						+ "#L0#Check Equipped Inventory#l\r\n"

@@ -86,25 +86,25 @@ function action(mode, type, sel) {
                 }
                 var msg = "#fs11#    #fUI/Basic.img/Zenia/SC/2#\r\n";
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                msg += "#fc0xFF000099#　　#L1# [Craft] Basic Acc#l　　　#L124# [Craft] Transcendence Acc#l \r\n"
-                msg += "#fc0xFF000099#　　#L2# [Craft] Eternal#l　　　　#L3# [Craft] Genesis#l\r\n\r\n"
+                msg += "#fc0xFF000099#　　#L1# [สร้าง] เครื่องประดับพื้นฐาน#l　　　#L124# [สร้าง] เครื่องประดับ Transcendence#l \r\n"
+                msg += "#fc0xFF000099#　　#L2# [สร้าง] Eternal#l　　　　#L3# [สร้าง] Genesis#l\r\n\r\n"
 
-                msg += "#fc0xFF990033##L4# [Upgrade] Chaos Root Abyss (Fafnir)#l #L50# [Upgrade] Chaos Arcane Shade#l\r\n"
-                msg += "#fc0xFF990033##L60# [Upgrade] Chaos Eternal#l #L70# [Upgrade] Chaos Pitch Black#l\r\n\r\n"
+                msg += "#fc0xFF990033##L4# [อัพเกรด] Chaos Root Abyss (Fafnir)#l #L50# [อัพเกรด] Chaos Arcane Shade#l\r\n"
+                msg += "#fc0xFF990033##L60# [อัพเกรด] Chaos Eternal#l #L70# [อัพเกรด] Chaos Pitch Black#l\r\n\r\n"
 
-                msg += "#fc0xFFFF3300##L301# [Upgrade] Ruin Arcane Shade#l\r\n"
-                msg += "#fc0xFFFF3300##L302# #Cgray#[Coming Soon] Ruin Eternal#k#l #fc0xFFFF3300##L304# [Upgrade] Ruin Pitch Black#k#l\r\n\r\n"
+                msg += "#fc0xFFFF3300##L301# [อัพเกรด] Ruin Arcane Shade#l\r\n"
+                msg += "#fc0xFFFF3300##L302# #Cgray#[เร็วๆนี้] Ruin Eternal#k#l #fc0xFFFF3300##L304# [อัพเกรด] Ruin Pitch Black#k#l\r\n\r\n"
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
                 cm.sendSimple(msg);
                 break;
             case 90: // Coin Shop
                 var msg = "#fs11#    #fUI/Basic.img/Zenia/SC/2#\r\n";
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                msg += "　　#fc0xFF000099##L10##fUI/UIWindow4.img/pointShop/4310237/iconShop# Hunt Coin#l";
-                msg += "　#fc0xFF000099##L7##fUI/UIWindow4.img/pointShop/500629/iconShop# Union Shop#l";
-                msg += "　#fc0xFF000099##L8##fUI/UIWindow4.img/pointShop/100508/iconShop# Attendance Coin#l\r\n\r\n";
+                msg += "　　#fc0xFF000099##L10##fUI/UIWindow4.img/pointShop/4310237/iconShop# เหรียญล่ามอนสเตอร์#l";
+                msg += "　#fc0xFF000099##L7##fUI/UIWindow4.img/pointShop/500629/iconShop# ร้านค้า Union#l";
+                msg += "　#fc0xFF000099##L8##fUI/UIWindow4.img/pointShop/100508/iconShop# เหรียญเช็คชื่อ#l\r\n\r\n";
                 msg += "　　#fc0xFF6633FF##L5##fUI/UIWindow4.img/pointShop/100711/iconShop# Neo Stone#l";
-                msg += "　#fc0xFF6633FF##L6##fUI/UIWindow4.img/pointShop/100712/iconShop# Rest Shop#l";
+                msg += "　#fc0xFF6633FF##L6##fUI/UIWindow4.img/pointShop/100712/iconShop# ร้านค้าพักผ่อน#l";
                 msg += "　#fc0xFF6633FF##L22##fUI/UIWindow4.img/pointShop/501215/iconShop# Neo Core#l";
                 //msg += "　　#fc0xFF990033##L23##fUI/UIWindow4.img/pointShop/16393/iconShop# Anti-Magic Stone#l";
                 //msg += "　#fc0xFF6633FF##L6##fUI/UIWindow4.img/pointShop/100712/iconShop# 123123#l";
@@ -115,15 +115,15 @@ function action(mode, type, sel) {
             case 91: // Equipment Shop
                 var msg = "#fs11#    #fUI/Basic.img/Zenia/SC/2#\r\n";
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                msg += "　　#fc0xFF000099##L1##fUI/UIWindow4.img/pointShop/100658/iconShop##fc0xFFFF3300# Basic Acc Shop#l";
-                msg += "　　　#fc0xFF000099##L2##fUI/UIWindow4.img/pointShop/100658/iconShop##fc0xFFFF3300# Secondary Weapon Shop#l\r\n\r\n";
-                msg += "　　#L50##fUI/UIWindow4.img/pointShop/4310065/iconShop##fc0xFF0066CC# Fafnir Shop#fc0xFF000000##l\r\n\r\n";
+                msg += "　　#fc0xFF000099##L1##fUI/UIWindow4.img/pointShop/100658/iconShop##fc0xFFFF3300# ร้านค้าเครื่องประดับพื้นฐาน#l";
+                msg += "　　　#fc0xFF000099##L2##fUI/UIWindow4.img/pointShop/100658/iconShop##fc0xFFFF3300# ร้านค้าอาวุธรอง#l\r\n\r\n";
+                msg += "　　#L50##fUI/UIWindow4.img/pointShop/4310065/iconShop##fc0xFF0066CC# ร้านค้า Fafnir#fc0xFF000000##l\r\n\r\n";
                 //msg += "#L51##fUI/UIWindow4.img/pointShop/4310065/iconShop##fc0xFF0066CC# Transcendence Fafnir Shop#fc0xFF000000# Use#l\r\n";
-                msg += "　　#L52##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# Arcane Shade Shop#fc0xFF000000##l";
-                msg += "  #L53##fUI/UIWindow4.img/pointShop/4310249/iconShop##fc0xFF000099# Arcane Shade Shop#fc0xFF000000##l\r\n";
-                msg += "　　#L90##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# #z4310218##fc0xFF000000# Exchange#l";
-                msg += " #L91##fUI/UIWindow4.img/pointShop/4310249/iconShop##fc0xFF000099# #z4310249##fc0xFF000000# Exchange#l\r\n";
-                msg += "　　#L900##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# #z4310218##fc0xFF000000# Exchange 2#l";
+                msg += "　　#L52##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# ร้านค้า Arcane Shade#fc0xFF000000##l";
+                msg += "  #L53##fUI/UIWindow4.img/pointShop/4310249/iconShop##fc0xFF000099# ร้านค้า Arcane Shade#fc0xFF000000##l\r\n";
+                msg += "　　#L90##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# #z4310218##fc0xFF000000# แลกเปลี่ยน#l";
+                msg += " #L91##fUI/UIWindow4.img/pointShop/4310249/iconShop##fc0xFF000099# #z4310249##fc0xFF000000# แลกเปลี่ยน#l\r\n";
+                msg += "　　#L900##fUI/UIWindow4.img/pointShop/4310218/iconShop##fc0xFF000099# #z4310218##fc0xFF000000# แลกเปลี่ยน 2#l";
                 //msg += "#L54##fUI/UIWindow4.img/pointShop/4318000/iconShop##fc0xFF000099# Transcendence Arcane Shop #fc0xFF000000#Use#l#L92##fUI/UIWindow4.img/pointShop/4318000/iconShop##fc0xFF000099# #z4318000##fc0xFF000000# Exchange#l\r\n\r\n";
 
                 cm.sendSimple(msg);
@@ -131,10 +131,10 @@ function action(mode, type, sel) {
             case 92: // Etc Shop
                 var msg = "#fs11#    #fUI/Basic.img/Zenia/SC/2#\r\n";
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";
-                msg += "　　#fc0xFF000099##L3##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# Currency Exchange#l";
-                msg += "　　　#fc0xFF000099##L4##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# Meso Currency Shop#l\r\n\r\n";
-                msg += "　　#fc0xFF000099##L1##fUI/Basic.img/BtCoin/normal/0##fc0xFF000099# Anvil Shop#l";
-                msg += "　　　#fc0xFF000099##L2##fUI/Basic.img/BtCoin/normal/0##fc0xFF000099# Cash Outfit Shop#l\r\n\r\n";
+                msg += "　　#fc0xFF000099##L3##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# แลกเปลี่ยนสกุลเงิน#l";
+                msg += "　　　#fc0xFF000099##L4##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# ร้านค้าสกุลเงิน Meso#l\r\n\r\n";
+                msg += "　　#fc0xFF000099##L1##fUI/Basic.img/BtCoin/normal/0##fc0xFF000099# ร้านค้า Anvil#l";
+                msg += "　　　#fc0xFF000099##L2##fUI/Basic.img/BtCoin/normal/0##fc0xFF000099# ร้านค้าชุดแฟชั่น#l\r\n\r\n";
                 //msg += "　　　　　　　　　#fc0xFF000099##L5##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# Red Cube Exchange#l\r\n";
                 //msg += "　　　　　　　　　#fc0xFF000099##L6##fUI/Basic.img/BtCoin/normal/0##fc0xFFFF3300# Transcendence Item#l\r\n\r\n";
                 msg += "#Cgray##fs11#――――――――――――――――――――――――――――――――――――――――#k";

@@ -30,14 +30,14 @@ function action(mode, type, sel) {
     if (status == 0) {
         // Check GM Permission
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("You do not have permission.");
+            cm.sendOk("คุณไม่มีสิทธิ์ใช้งาน");
             cm.dispose();
             return;
         }
         cm.sendGetText(
-            "#fs12#<GM Only Promotion Record>#fs11#" + enter +
-            "1) Enter the exact nickname of the user to record promotion count for:\n\n" +
-            "(Ex: UserNickname)"
+            "#fs12#<บันทึกโปรโมท (สำหรับ GM)>#fs11#" + enter +
+            "1) กรุณากรอกชื่อตัวละครที่ต้องการบันทึกจำนวนการโปรโมท:\n\n" +
+            "(ตัวอย่าง: ชื่อตัวละคร)"
         );
         step = 1;
     }
@@ -52,13 +52,13 @@ function action(mode, type, sel) {
         }
         targetName = cm.getText().trim();
         if (targetName.length < 1) {
-            cm.sendOk("Please enter a valid nickname.");
+            cm.sendOk("กรุณากรอกชื่อตัวละครให้ถูกต้อง");
             cm.dispose();
             return;
         }
         cm.sendGetText(
-            "🔹 Enter the promotion count to record for [" + targetName + "]:\n\n" +
-            "(Ex: 3)"
+            "🔹 กรอกจำนวนการโปรโมทที่จะบันทึกให้ [" + targetName + "]:\n\n" +
+            "(ตัวอย่าง: 3)"
         );
         step = 2;
     }
@@ -73,20 +73,20 @@ function action(mode, type, sel) {
         }
         var txt = cm.getText().trim();
         if (!/^\d+$/.test(txt)) {
-            cm.sendOk("Please enter numbers only.");
+            cm.sendOk("กรุณากรอกเฉพาะตัวเลขเท่านั้น");
             cm.dispose();
             return;
         }
         promoCount = parseInt(txt);
         if (promoCount <= 0) {
-            cm.sendOk("Promotion count must be 1 or more.");
+            cm.sendOk("จำนวนการโปรโมทต้องเป็น 1 หรือมากกว่า");
             cm.dispose();
             return;
         }
 
         // Re-check GM Permission
         if (!cm.getPlayer().isGM()) {
-            cm.sendOk("You do not have permission.");
+            cm.sendOk("คุณไม่มีสิทธิ์ใช้งาน");
             cm.dispose();
             return;
         }
@@ -124,7 +124,7 @@ function insertHongboRecord(nickname, count) {
             // Character with that nickname does not exist
             rs.close();
             ps.close();
-            cm.sendOk("Cannot find [" + nickname + "] in DB.");
+            cm.sendOk("ไม่พบข้อมูล [" + nickname + "] ในฐานข้อมูล");
             cm.dispose();
             return;
         }
@@ -152,12 +152,12 @@ function insertHongboRecord(nickname, count) {
 
         if (inserted > 0) {
             cm.sendOk(
-                "#fs11#▶ GM Promotion Record has been successfully registered in DB.\r\n\r\n" +
-                "   Nickname : " + nickname + enter +
-                "   Promo Count : " + count + " Times" + enter +
-                "   Planned Promo Points : " + pointValue.toLocaleString() + "P" + enter +
+                "#fs11#▶ บันทึกข้อมูลการโปรโมทลงในฐานข้อมูลเรียบร้อยแล้ว\r\n\r\n" +
+                "   ชื่อตัวละคร : " + nickname + enter +
+                "   จำนวนโปรโมท : " + count + " ครั้ง" + enter +
+                "   แต้มโปรโมทตามแผน : " + pointValue.toLocaleString() + "P" + enter +
                 "   characterId (cid) : " + charId + enter +
-                "   Reg Time (DB Server Time) : NOW()"
+                "   เวลาลงทะเบียน (DB Server Time) : NOW()"
             );
         } else {
             cm.sendOk("Error: No records were inserted.");

@@ -54,22 +54,22 @@ function action(mode, type, sel) {
     }
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "You cannot use this while a boss battle is in progress.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถใช้งานได้ในขณะต่อสู้กับบอส");
             cm.dispose();
             return;
         }
 
-        var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000#'s Ranking Board.#b" + enter + enter;
-        msg += "#L1#Level Ranking" + enter;
-        msg += "#L8#Job Ranking" + enter;
-        //msg += "#L6# Boss Hunter Ranking"+enter;
-        //msg += "#L2# Meso Ranking"+enter;
-        msg += "#L4#Guild Ranking" + enter;
-        msg += "#L3#Fame Ranking" + enter;
-        msg += "#L5#Mu Lung Dojo Ranking" + enter;
+        var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000# Ranking Board.#b" + enter + enter;
+        msg += "#L1#จัดอันดับเลเวล (Level Ranking)" + enter;
+        msg += "#L8#จัดอันดับอาชีพ (Job Ranking)" + enter;
+        //msg += "#L6# จัดอันดับนักล่าบอส"+enter;
+        //msg += "#L2# จัดอันดับเมโส"+enter;
+        msg += "#L4#จัดอันดับกิลด์ (Guild Ranking)" + enter;
+        msg += "#L3#จัดอันดับชื่อเสียง (Fame Ranking)" + enter;
+        msg += "#L5#จัดอันดับ Mu Lung Dojo" + enter;
         //msg += "#L7# PVP Battle Ranking"+enter;
-        msg += "#L9#Combat Power Ranking#l" + enter;
-        msg += "#L10#Promotion Count Ranking#l" + enter;
+        msg += "#L9#จัดอันดับพลังต่อสู้ (Combat Power)" + enter;
+        msg += "#L10#จัดอันดับจำนวนการเลื่อนขั้น (Promotion Count Ranking)#l" + enter;
         cm.sendSimple(msg);
     } else if (status == 1) {
         seld = sel;
@@ -83,20 +83,20 @@ function action(mode, type, sel) {
                 cm.openNpc(2094000);
                 break;
             case 3:
-                cm.sendOk(getRank("SELECT id, name, fame FROM characters WHERE `fame` > 0 AND `gm` = 0 ORDER BY `fame` DESC LIMIT ", "fame", "Fame", 50));
+                cm.sendOk(getRank("SELECT id, name, fame FROM characters WHERE `fame` > 0 AND `gm` = 0 ORDER BY `fame` DESC LIMIT ", "fame", "ชื่อเสียง", 50));
                 cm.dispose();
                 break;
             case 4:
-                cm.sendOk(getRankGuild("SELECT name, GP FROM guilds WHERE `GP` > 0 AND `GP` < 250000000 ORDER BY `GP` DESC LIMIT ", "GP", "GP Owned", 50));
+                cm.sendOk(getRankGuild("SELECT name, GP FROM guilds WHERE `GP` > 0 AND `GP` < 250000000 ORDER BY `GP` DESC LIMIT ", "GP", "GP ที่มี", 50));
                 cm.dispose();
                 break;
             case 5:
                 cm.showDojangRanking();
-                cm.getPlayer().dropMessage(5, "It may take some time for Mu Lung Dojo records to be reflected in the rankings. Points are distributed based on overall ranking after weekly settlement.");
+                cm.getPlayer().dropMessage(5, "อาจใช้เวลาสักครู่เพื่อให้ข้อมูล Mu Lung Dojo แสดงในอันดับ คะแนนจะถูกแจกจ่ายตามอันดับรายสัปดาห์");
                 cm.dispose();
                 break;
             case 6:
-                cm.sendOk(getRank("SELECT * FROM characters WHERE `basebpoint` > 0 AND `gm` = 0 ORDER BY `basebpoint` DESC LIMIT ", "basebpoint", "Points", 10));
+                cm.sendOk(getRank("SELECT * FROM characters WHERE `basebpoint` > 0 AND `gm` = 0 ORDER BY `basebpoint` DESC LIMIT ", "basebpoint", "คะแนน", 10));
                 cm.dispose();
                 break;
             case 7:
@@ -108,9 +108,9 @@ function action(mode, type, sel) {
                 cm.openNpcCustom(cm.getClient(), 9076004, "JobRanking");
                 break;
             case 9:
-                var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000#'s Ranking Board.#b" + enter + enter;
-                msg += "#L1#Overall Ranking" + enter;
-                msg += "#L2#Job Ranking" + enter;
+                var msg = "#fs11##fc0xFF990033##e[Ganglim World]#n#fc0xFF000000# Ranking Board.#b" + enter + enter;
+                msg += "#L1#อันดับรวม (Overall Ranking)" + enter;
+                msg += "#L2#อันดับอาชีพ (Job Ranking)" + enter;
                 cm.sendSimple(msg);
                 //cm.sendOk(getRankDamage("SELECT `player_id`, `damage`, `name`, `job` FROM damage_measurement_rank ORDER BY damage DESC LIMIT ", "damage", "", 100));
                 //cm.dispose();
@@ -138,7 +138,7 @@ function action(mode, type, sel) {
 }
 
 function getRank(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#k อันดับ\r\n\r\n";
     var as = 0;
     var names = [];
     var name = "";
@@ -150,11 +150,11 @@ function getRank(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
         var pssearchaccid = con.prepareStatement("SELECT banned FROM accounts Where id in (SELECT accountid FROM characters Where id = " + rs.getInt('id') + ")");
         var rssearchaccid = pssearchaccid.executeQuery();
@@ -170,7 +170,7 @@ function getRank(v1, v2, v3, v4) {
         }
 
         if (banned > 0) {
-            name = "#rBanned";
+            name = "#rถูกระงับ";
         }
 
         ret += Gray + aas + "#b" + name + "#fc0xFF000000# | " + v3 + " : " + Pink + rs.getInt(v2) + "#k\r\n";
@@ -184,7 +184,7 @@ function getRank(v1, v2, v3, v4) {
 }
 
 function getRankGuild(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#k อันดับ\r\n\r\n";
     var as = 0;
     var names = [];
     var name = "";
@@ -216,7 +216,7 @@ function getRankGuild(v1, v2, v3, v4) {
 }
 
 function getRankPCount(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#k อันดับ\r\n";
     var as = 0;
     var names = [];
 
@@ -228,11 +228,11 @@ function getRankPCount(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
 
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE accountid = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
@@ -254,7 +254,7 @@ function getRankPCount(v1, v2, v3, v4) {
             }
 
             if (banned > 0) {
-                ret += Gray + aas + "#rBanned";
+                ret += Gray + aas + "#rถูกระงับ";
             } else {
                 ret += Gray + aas + "#b" + rs2.getString("name");
             }
@@ -285,10 +285,10 @@ function getRankPCount(v1, v2, v3, v4) {
 }
 
 function getRankDPoint(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n";
-    ret += Pink + "※ Representative Character Selection Method\r\n";
-    ret += Pink + "- Can be set in Discord [Bot Commands] channel\r\n";
-    ret += Pink + "- If not set, order by account level (creation order if level is same)\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#k อันดับ\r\n";
+    ret += Pink + "※ วิธีการเลือกตัวแทนตัวละคร\r\n";
+    ret += Pink + "- สามารถตั้งค่าได้ใน Discord ช่อง [Bot Commands]\r\n";
+    ret += Pink + "- หากไม่ได้ตั้งค่า จะเรียงตามเลเวลของบัญชี (ลำดับการสร้างหากเลเวลเท่ากัน)\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -300,11 +300,11 @@ function getRankDPoint(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
 
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE accountid = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
@@ -351,7 +351,7 @@ function getRankDPoint(v1, v2, v3, v4) {
 }
 
 function getRankCashEn(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#k place.\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#k อันดับ\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -362,11 +362,11 @@ function getRankCashEn(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
 
         var ps2 = con.prepareStatement("SELECT `name` FROM characters WHERE id = " + rs.getString("id") + " ORDER BY `mainchr` DESC, `level` DESC LIMIT 1");
@@ -403,8 +403,8 @@ function getRankCashEn(v1, v2, v3, v4) {
 }
 
 function getRankDamage(v1, v2, v3, v4) {
-    var ret = "#fs11#Rankings are shown up to #r100th#k place.\r\n";
-    ret += Pink + "※ Damage is shown from units of 100 million\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r100#k อันดับ\r\n";
+    ret += Pink + "※ ดาเมจแสดงตั้งแต่หน่วย 100 ล้านขึ้นไป\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -418,11 +418,11 @@ function getRankDamage(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
 
         name = rs.getString("name");
@@ -438,7 +438,7 @@ function getRankDamage(v1, v2, v3, v4) {
         }
 
         if (name == null) {
-            name = "#rDeleted Character";
+            name = "#rตัวละครที่ถูกลบ";
         }
 
         /* Hide banned characters
@@ -456,7 +456,7 @@ function getRankDamage(v1, v2, v3, v4) {
         */
 
         if (banned > 0) { // Banned characters not shown
-            name = "#rBanned";
+            name = "#rถูกระงับ";
         }
 
         ret += Gray + aas + "#b" + name;
@@ -477,7 +477,7 @@ function getRankDamage(v1, v2, v3, v4) {
 }
 
 function getRank3(v1, v2, v3, v4, v5) {
-    var ret = "#fs11#Rankings are shown up to #r" + v4 + "th#r place.\r\n\r\n";
+    var ret = "#fs11#แสดงอันดับสูงสุดถึง #r" + v4 + "#r อันดับ\r\n\r\n";
     var as = 0;
     var names = [];
 
@@ -487,7 +487,7 @@ function getRank3(v1, v2, v3, v4, v5) {
 
     while (rs.next()) {
         as += 1;
-        ret += as + ". #b" + rs.getString("name") + "#k " + v3 + " : #d" + rs.getInt(v2) + " / #kLOSE :#d " + rs.getInt(v5) + " #k\\r\n";
+        ret += as + ". #b" + rs.getString("name") + "#k " + v3 + " : #d" + rs.getInt(v2) + " / #kแพ้ :#d " + rs.getInt(v5) + " #k\\r\n";
     }
     rs.close();
     ps.close();
@@ -505,7 +505,7 @@ function ConvertNumber(number) { // Derived from a blog
     var resultArray = [];
     var resultString = '';
     if (inputNumber == false) {
-        cm.sendOk("#fs11#An error occurred. Please try again.\r\n(Parsing Error)");
+        cm.sendOk("#fs11#เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง\r\n(Parsing Error)");
         cm.dispose();
         return;
     }

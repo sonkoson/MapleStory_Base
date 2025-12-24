@@ -43,7 +43,7 @@ var royalspecialHair = [
 ]; // Special Hair List
 
 var royalcolorHair = [
-    // 로얄 색변 헤어
+    // Royal Color-change Hair
     65000, 65010, 65020, 65030, 65040, 65050, 65060, 65070, 65080, 65090, 65100, 65110, 65120, 65130, 65140, 65150, 65160, 65170, 65180, 65190, 65200, 65210, 65220, 65230, 65240, 65250, 65260, 65270, 65280, 65290, 65300, 65310, 65320, 65330, 65340, 65350, 65360, 65370, 65380, 65390, 65400, 65410, 65420, 65430, 65440, 65450, 65460, 65470, 65480, 65490, 65500, 65510, 65520, 65530, 65540, 65550, 65560, 65570, 65580, 65590, 65600, 65610, 65620, 65630, 65640, 65650, 65660, 65670, 65680, 65690, 65700, 65710, 65720, 65730, 65740, 65750, 65760, 65770, 65780, 65790, 65800, 65810, 65820, 65830, 65840, 65850, 65860, 65870, 65880, 65890, 65900, 65910, 65920, 65930, 65940, 65950, 65960, 65970, 65980, 65990, 66000, 66010, 66020, 66030, 66040, 66050, 66060, 66070, 66080, 66090, 66100, 66110, 66120, 66130, 66140, 66150, 66160, 66170, 66180, 66190, 66200, 66210, 66220, 66230, 66240, 66250, 66260, 66270, 66280, 66290, 66300, 66310, 66320, 66330, 66340, 66350, 66360, 66370, 66380, 66390, 66400, 66410, 66420, 66430,
     66440, 66450, 66460, 66470, 66480, 66490, 66500, 66510, 66520, 66530, 66540, 66550, 66560, 66570, 66580, 66590, 66600, 66610, 66620, 66630, 66640, 66650, 66660, 66670, 66680, 66690, 66700, 66710, 66720, 66730, 66740, 66750, 66760, 66770, 66780, 66790, 66800, 66810, 66820, 66830, 66840, 66850, 66860, 66870, 66880, 66890, 66900, 66910, 66920, 66930, 66940, 66950, 66960, 66970, 66980, 66990, 67000, 67010, 67020, 67030, 67040, 67050, 67060, 67070, 67080, 67090, 67100, 67110, 67120, 67130, 67140, 67150, 67160, 67170, 67180, 67190, 67200, 67210, 67220, 67230, 67240, 67250, 67260, 67270, 67280, 67290, 67300, 67310, 67320, 67330, 67340, 67350, 67360, 67370, 67380, 67390, 67400, 67410, 67420, 67430, 67440, 67450, 67460, 67470, 67480, 67490, 67500, 67510, 67520, 67530, 67540, 67550, 67560, 67570, 67580, 67590, 67600, 67610, 67620, 67630, 67640, 67650, 67660, 67670, 67680, 67690, 67700, 67710, 67720, 67730, 67740, 67750, 67760, 67770, 67780, 67790, 67800, 67810, 67820, 67830, 67840, 67850, 67860, 67870,
     67880, 67890, 67900, 67910, 67920, 67930, 67940, 67950, 67960, 67970, 67980, 67990, 68000, 68010, 68020, 68030, 68040, 68050, 68060, 68070, 68080, 68090, 68100, 68110, 68120, 68130, 68140, 68150, 68160, 68170, 68180, 68190, 68200, 68210, 68220, 68230, 68240, 68250, 68260, 68270, 68280, 68290, 68300, 68310, 68320, 68330, 68340, 68350, 68360, 68370, 68380, 68390, 68400, 68410, 68420, 68430, 68440, 68450, 68460, 68470, 68480, 68490, 68500, 68510, 68520, 68530, 68540, 68550, 68560, 68570, 68580, 68590, 68600, 68610, 68620, 68630, 68640, 68650, 68660, 68670, 68680, 68690, 68700, 68710, 68720, 68730, 68740, 68750, 68760, 68770, 68780, 68790, 68800, 68810, 68820, 68830, 68840, 68850, 68860, 68870, 68880, 68890, 68900, 68910, 68920, 68930, 68940, 68950, 68960, 68970, 68980, 68990, 69000, 69010, 69020, 69030, 69040, 69050, 69060, 69070, 69080, 69090, 69100, 69110, 69120, 69130, 69140, 69150, 69160, 69170, 69180, 69190, 69200, 69210, 69220, 69230, 69240, 69250, 69260, 69270, 69280, 69290, 69300, 69310,
@@ -121,7 +121,7 @@ function action(mode, t, selection, dressUp_) {
             status--;
 
         if (status == 0) {
-            var v0 = "#fs12##e#r< Character Color Change >#n#fs11#\r\n#b#L0#Hair Color#l\r\n#L1#Skin, Lens Change#l\r\n\r\n\r\n#fs12##e#r< Android Color Change >#n#b#fs11#\r\n#L2#Android Hair, Skin, Lens#l";
+            var v0 = "#fs12##e#r< เปลี่ยนสีตัวละคร >#n#fs11#\r\n#b#L0#เปลี่ยนสีผม#l\r\n#L1#เปลี่ยนสีผิว, คอนแทคเลนส์#l\r\n\r\n\r\n#fs12##e#r< เปลี่ยนสี Android >#n#b#fs11#\r\n#L2#ผม, ผิว, เลนส์ Android#l";
             cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
         } else if (status == 1) {
             if (GameConstants.isZero(cm.getPlayer().getJob())) {
@@ -143,7 +143,7 @@ function action(mode, t, selection, dressUp_) {
                 }
                 v0 += "#L1#Skin Change#l\r\n";
                 v0 += "#L2#Lens Change#l\r\n";
-                //v0 += "#L3#믹스 렌즈를 사용해보자.#l\r\n";
+                //v0 += "#L3#Try Mix Lens.#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             } else if (sel == 2) { // Android
                 if (cm.getPlayer().getAndroid() == null) {
@@ -167,15 +167,15 @@ function action(mode, t, selection, dressUp_) {
                 if (sel2 == 0) { // Hair Style Change
                     generateHairList();
                     if (zero) {
-                        var count = maleHair.length; // 제로 알파
-                        var v0 = "                     #e<Hair Style Change>#n\r\n\r\nWhich page? #e#b(Alpha Hair[Male Hair])#k#n #e(Total " + count + " pages)#n\r\n#b";
+                        var count = maleHair.length; // Zero Alpha
+                        var v0 = "                     #e<Hair Style Change>#n\r\n\r\nหน้าไหน? #e#b(ผม Alpha [ผมชาย])#k#n #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
                             v0 += "#L" + i + "#Page " + (i + 1) + "#n Hair Style#l\r\n";
                         }
                         cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                     } else {
                         var count = cm.getPlayer().getGender() == 0 ? maleHair.length : femaleHair.length;
-                        var v0 = "                     #e<Hair Style Change>#n\r\n\r\nWhich page? #e(Total " + count + " pages)#n\r\n#b";
+                        var v0 = "                     #e<Hair Style Change>#n\r\n\r\nหน้าไหน? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
                             v0 += "#L" + i + "#Page " + (i + 1) + "#n Hair Style#l\r\n";
                         }
@@ -184,7 +184,7 @@ function action(mode, t, selection, dressUp_) {
                 } else if (sel2 == 1) { // 헤어 염색
                     // 스페셜 헤어는 해당 기능을 사용할 수 없음
                     if (isSpecialHair(cm.getPlayer().getHair())) {
-                        cm.sayReplacedNpc("#fs11#스페셜 헤어는 해당 기능을 이용할 수 없습니다.\r\n일반 헤어로 변경 후 시도해주세요.", false, false, 1, 9062000);
+                        cm.sayReplacedNpc("#fs11#ไม่สามารถใช้ฟังก์ชันนี้กับ Special Hair ได้\r\nกรุณาเปลี่ยนเป็นผมปกติก่อน", false, false, 1, 9062000);
                         cm.dispose();
                         return;
                     }
@@ -199,9 +199,9 @@ function action(mode, t, selection, dressUp_) {
                     cm.dispose();
                     return;
                     //cm.sendStyle("#b#h0##k님, #e강림월드#n에서는 헤어 염색을 무료로 해드리고 있습니다.\r\n마음에 드시는 색상을 선택해보세요", dressUp, hairColor);
-                } else if (sel2 == 2) { // 믹스 염색
-                    // 스페셜 헤어는 해당 기능을 사용할 수 없음
-                    cm.sayReplacedNpc("#fs11#치장상점에서 커스텀 믹스염색 쿠폰을 구매하여 이용해주세요", false, false, 1, 1052206);
+                } else if (sel2 == 2) { // Mix Dye
+                    // Special Hair cannot use this function
+                    cm.sayReplacedNpc("#fs11#กรุณาซื้อ Custom Mix Dye Coupon จากร้านแฟชั่น", false, false, 1, 1052206);
                     cm.dispose();
                     return;
 
@@ -212,12 +212,12 @@ function action(mode, t, selection, dressUp_) {
                         }
                     }
                     if (isSpecialHair(hair)) {
-                        cm.sayReplacedNpc("#fs11#스페셜 헤어는 해당 기능을 이용할 수 없습니다. 일반 헤어로 변경 후 시도해주세요.", false, false, 1, 9062000);
+                        cm.sayReplacedNpc("#fs11#ไม่สามารถใช้ฟังก์ชันนี้กับ Special Hair ได้ กรุณาเปลี่ยนเป็นผมปกติก่อน", false, false, 1, 9062000);
                         cm.dispose();
                         return;
                     }
                     var zeroBeta = zero && cm.getPlayer().getZeroInfo().isBeta();
-                    cm.askCustomMixHairAndProb("2가지 색깔을 믹스해 머리색깔을 변경할 수 있어요. 베이스 컬러와 믹스 컬러를 선택하고 스크롤을 움직여 자신만의 색을 만들어 보세요.", dressUp, zeroBeta);
+                    cm.askCustomMixHairAndProb("สามารถผสม 2 สีเพื่อเปลี่ยนสีผมได้ เลือกสีพื้นฐานและสีผสม แล้วเลื่อนแถบเพื่อสร้างสีของคุณเอง", dressUp, zeroBeta);
                 }
             } else if (sel == 1) { // Face Surgery
                 if (sel2 == 0) { // 얼굴 성형
@@ -232,9 +232,9 @@ function action(mode, t, selection, dressUp_) {
                         }
                     }
 
-                    var v0 = "                     #e<얼굴 성형>#n\r\n\r\n어떤 페이지를 볼까요? #e(총 " + count + " 페이지)#n\r\n#b";
+                    var v0 = "                     #e<ศัลยกรรมใบหน้า>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "페이지#n 얼굴 성형 스타일#l\r\n";
+                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Face Style#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 1) { // 피부 변경
@@ -255,17 +255,17 @@ function action(mode, t, selection, dressUp_) {
                     //cm.askAvatar("#b#h0##k님, #e강림월드#n에서는 렌즈 변경을 무료로 변경해드리고 있습니다.\r\n마음에 드시는 렌즈를 선택해보세요.", dressUp, lens);
                 } else if (sel2 == 3) { // 믹스 렌즈
                     if (!cm.canHold(5152300, 1)) {
-                        cm.sayNpc("#b캐시 인벤토리#k 공간을 확보하고 다시 시도하자.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                        cm.sayNpc("กรุณาทำช่องว่างใน #bCash Inventory#k แล้วลองใหม่", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                         cm.dispose();
                         return;
                     }
                     if (cm.haveItem(5152300, 1)) {
-                        cm.sayNpc("이미 #b#z5152300##k을 가지고 있는 것 같다.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                        cm.sayNpc("ดูเหมือนว่าจะมี #b#z5152300##k อยู่แล้ว", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                         cm.dispose();
                         return;
                     } else {
                         cm.gainItem(5152300, 1);
-                        cm.sayNpc("#i5152300# #b#z5152300##k을 지급받았다. 사용해보자.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                        cm.sayNpc("ได้รับ #i5152300# #b#z5152300##k แล้ว ลองใช้ดูสิ", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                         cm.dispose();
                         return;
                     }
@@ -276,9 +276,9 @@ function action(mode, t, selection, dressUp_) {
                     generateHairList();
 
                     var count = cm.getAndroidGender() == 0 ? maleHair.length : femaleHair.length;
-                    var v0 = "                     #e<안드로이드 헤어 스타일 변경>#n\r\n\r\n어떤 페이지를 볼까요? #e(총 " + count + " 페이지)#n\r\n#b";
+                    var v0 = "                     #e<เปลี่ยนทรงผม Android>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "페이지#n 헤어 스타일#l\r\n";
+                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Hair Style#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 1) { // 염색	
@@ -287,12 +287,12 @@ function action(mode, t, selection, dressUp_) {
                     cm.dispose();
                     return;
                     //cm.askAvatarAndroid("#b#h0##k님, #e강림월드#n에서는 헤어 염색을 무료로 해드리고 있습니다.\r\n마음에 드시는 색상을 선택해보세요", hairColor);
-                } else if (sel2 == 2) { // 성형
+                } else if (sel2 == 2) { // Face Surgery
                     generateFaceList();
                     var count = cm.getAndroidGender() == 0 ? maleFace.length : femaleFace.length;
-                    var v0 = "                     #e<안드로이드 성형>#n\r\n\r\n어떤 페이지를 볼까요? #e(총 " + count + " 페이지)#n\r\n#b";
+                    var v0 = "                     #e<ศัลยกรรม Android>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "페이지#n 얼굴 성형 스타일#l\r\n";
+                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Face Style#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 3) { // 피부 변경
@@ -306,11 +306,11 @@ function action(mode, t, selection, dressUp_) {
                     cm.dispose();
                     return;
                     //cm.askAvatarAndroid("#b#h0##k님, #e강림월드#n에서는 렌즈 변경을 무료로 변경해드리고 있습니다.\r\n마음에 드시는 렌즈를 선택해보세요.", lens);
-                } else if (sel2 == 5) { // 스페셜 코디
-                    var v0 = "                     #e<안드로이드 스페셜 코디>#n\r\n#b";
-                    v0 += "#L0#색변 헤어 (Extreme) 스타일 변경#l\r\n";
-                    v0 += "#L1#색변 헤어 (Jin) 스타일 변경#l\r\n";
-                    v0 += "#L2#리터칭 헤어 (Jin) 스타일 변경#l\r\n";
+                } else if (sel2 == 5) { // Special Coordi
+                    var v0 = "                     #e<Android Special Coordi>#n\r\n#b";
+                    v0 += "#L0#เปลี่ยนสไตล์สีผม (Extreme)#l\r\n";
+                    v0 += "#L1#เปลี่ยนสไตล์สีผม (Jin)#l\r\n";
+                    v0 += "#L2#เปลี่ยนสไตล์ผม Retouching (Jin)#l\r\n";
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 }
             } else if (sel == 3) { // 성별 전환
@@ -320,7 +320,7 @@ function action(mode, t, selection, dressUp_) {
                     cm.setSkin(3);
                     cm.getPlayer().setGender(1);
                     cm.getPlayer().fakeRelog();
-                    cm.getPlayer().dropMessage(5, "성별 전환이 완료되었습니다.");
+                    cm.getPlayer().dropMessage(5, "เปลี่ยนเพศเรียบร้อยแล้ว");
                     cm.dispose();
                 } else {
                     cm.setHair(35290);
@@ -328,24 +328,24 @@ function action(mode, t, selection, dressUp_) {
                     cm.setSkin(3);
                     cm.getPlayer().setGender(0);
                     cm.getPlayer().fakeRelog();
-                    cm.getPlayer().dropMessage(5, "성별 전환이 완료되었습니다.");
+                    cm.getPlayer().dropMessage(5, "เปลี่ยนเพศเรียบร้อยแล้ว");
                     cm.dispose();
                 }
-            } else if (sel == 4) { // 스페셜 코디
-                var title = "색변 헤어 [Extreme]";
+            } else if (sel == 4) { // Special Coordi
+                var title = "ผมเปลี่ยนสี [Extreme]";
                 if (sel2 == 0) {
                     generateSpecialHair(specialHairE);
                 } else if (sel2 == 1) {
                     generateSpecialHair(specialHairJ);
-                    title = "색변 헤어 [Jin]";
+                    title = "ผมเปลี่ยนสี [Jin]";
                 } else if (sel2 == 2) {
                     generateSpecialHair(specialHairR);
-                    title = "리터칭 헤어";
+                    title = "ผม Retouching";
                 }
                 var count = specialHair.length;
-                var v0 = "                     #e<" + title + ">#n\r\n\r\n어떤 페이지를 볼까요? #e(총 " + count + " 페이지)#n\r\n#b";
+                var v0 = "                     #e<" + title + ">#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                 for (var i = 0; i < count; ++i) {
-                    v0 += "#L" + i + "#" + (i + 1) + "페이지 헤어 스타일#l\r\n";
+                    v0 += "#L" + i + "#" + (i + 1) + " Page Hair Style#l\r\n";
                 }
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             }
@@ -355,16 +355,16 @@ function action(mode, t, selection, dressUp_) {
                     page = selection;
                     if (zero) {
                         listingZeroHairs(cm.getPlayer(), false);
-                        var count = femaleHair.length; // 제로 베타
-                        var v0 = "                     #e<헤어 스타일 변경>#n\r\n\r\n어떤 페이지를 볼까요? #e#b(베타 헤어[여자 헤어])#k#n #e(총 " + count + " 페이지)#n\r\n#b";
+                        var count = femaleHair.length; // Zero Beta
+                        var v0 = "                     #e<เปลี่ยนทรงผม>#n\r\n\r\nดูหน้าไหนดี? #e#b(ผม Beta [ผมหญิง])#k#n #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
-                            v0 += "#L" + i + "#" + (i + 1) + "페이지#n 헤어 스타일#l\r\n";
+                            v0 += "#L" + i + "#" + (i + 1) + "Page#n Hair Style#l\r\n";
                         }
                         cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                     } else {
                         var hair = dressUp == 1 ? cm.getPlayer().getSecondHair() : cm.getPlayer().getHair();
                         listingHairs(hair, cm.getPlayer().getGender());
-                        cm.askAvatar("#b#h0##k님, #e강림월드#n에서는 다음과 같은 헤어스타일은 무료로 변경해드리고 있습니다.\r\n마음에 드시는 스타일을 선택해보세요.", dressUp, hairList);
+                        cm.askAvatar("#b#h0##k, #eGangrim World#n เราเปลี่ยนทรงผมต่อไปนี้ให้ฟรี\r\nเลือกสไตล์ที่ชอบได้เลย", dressUp, hairList);
                     }
                 } else if (sel2 == 1) { // 헤어 염색
                     if (zero) {
@@ -398,7 +398,7 @@ function action(mode, t, selection, dressUp_) {
                     }
 
                     listingFaces(face, zeroBeta ? 1 : cm.getPlayer().getGender());
-                    cm.askAvatar("#b#h0##k님, #e강림월드#n에서는 다음과 같은 얼굴 성형은 무료로 진행해드리고 있습니다.\r\n마음에 드시는 스타일을 선택해보세요.", dressUp, faceList);
+                    cm.askAvatar("#b#h0##k, #eGangrim World#n เราเปลี่ยนหน้าตาต่อไปนี้ให้ฟรี\r\nเลือกสไตล์ที่ชอบได้เลย", dressUp, faceList);
                 } else if (sel2 == 1) { // 피부색 변경
                     var zeroBeta = zero && cm.getPlayer().getZeroInfo().isBeta();
 
@@ -442,13 +442,13 @@ function action(mode, t, selection, dressUp_) {
                     page = selection;
                     listingHairs(cm.getPlayer().getAndroid().getHair(), cm.getAndroidGender());
 
-                    cm.askAvatarAndroid("#b#h0##k님, #e강림월드#n에서는 다음과 같은 헤어스타일은 무료로 변경해드리고 있습니다.\r\n마음에 드시는 스타일을 선택해보세요.", hairList);
+                    cm.askAvatarAndroid("#b#h0##k, #eGangrim World#n เราเปลี่ยนทรงผมต่อไปนี้ให้ฟรี\r\nเลือกสไตล์ที่ชอบได้เลย", hairList);
                 } else if (sel2 == 1) { // 헤어 염색
                     cm.setHairAndroid(hairColor[selection]);
                 } else if (sel2 == 2) { // 얼굴 성형
                     page = selection;
                     listingFaces(cm.getPlayer().getAndroid().getFace(), cm.getAndroidGender());
-                    cm.askAvatarAndroid("#b#h0##k님, #e강림월드#n에서는 다음과 같은 얼굴 성형은 무료로 변경해드리고 있습니다.\r\n마음에 드시는 스타일을 선택해보세요.", faceList);
+                    cm.askAvatarAndroid("#b#h0##k, #eGangrim World#n เราเปลี่ยนหน้าตาต่อไปนี้ให้ฟรี\r\nเลือกสไตล์ที่ชอบได้เลย", faceList);
                 } else if (sel2 == 3) { // 피부색 변경
                     cm.setSkinAndroid(skinList[selection]);
                 } else if (sel2 == 4) { // 렌즈 변경
@@ -465,9 +465,9 @@ function action(mode, t, selection, dressUp_) {
                         title = "리터칭 헤어";
                     }
                     var count = specialHair.length;
-                    var v0 = "                     #e<" + title + ">#n\r\n\r\n어떤 페이지를 볼까요? #e(총 " + count + " 페이지)#n\r\n#b";
+                    var v0 = "                     #e<" + title + ">#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "페이지 헤어 스타일#l\r\n";
+                        v0 += "#L" + i + "#" + (i + 1) + " Page Hair Style#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 }
@@ -485,7 +485,7 @@ function action(mode, t, selection, dressUp_) {
                         cm.getPlayer().setSecondBaseColor(-1);
                         cm.getPlayer().setSecondAddColor(0);
                         cm.getPlayer().setSecondBaseProb(0);
-                        cm.getPlayer().dropMessage(5, "믹스 염색이 해제되었습니다. 다시 시도해주시기 바랍니다.");
+                        cm.getPlayer().dropMessage(5, "ยกเลิก Mix Dye แล้ว กรุณาลองใหม่");
                         cm.dispose();
                         return;
                     }
@@ -501,13 +501,13 @@ function action(mode, t, selection, dressUp_) {
                         cm.getPlayer().setBaseColor(-1);
                         cm.getPlayer().setAddColor(0);
                         cm.getPlayer().setBaseProb(0);
-                        cm.getPlayer().dropMessage(5, "믹스 염색이 해제되었습니다. 다시 시도해주시기 바랍니다.");
+                        cm.getPlayer().dropMessage(5, "ยกเลิก Mix Dye แล้ว กรุณาลองใหม่");
                         cm.dispose();
                         return;
                     }
                 }
 
-                cm.askAvatar("#b#h0##k님, 마음에 드시는 스타일을 선택해보세요.\r\n스타일 변경에는 #b#i2436018# #z2436018# 1개#k가 필요합니다.", hairList);
+                cm.askAvatar("#b#h0##k, เลือกสไตล์ที่ชอบได้เลย\r\nการเปลี่ยนสไตล์ต้องใช้ #b#i2436018# #z2436018# 1 ชิ้น#k", hairList);
             }
         } else if (status == 4) {
             selection = selection & 0xFF;
@@ -517,7 +517,7 @@ function action(mode, t, selection, dressUp_) {
                         subPage = selection;
                         listingZeroHairs(cm.getPlayer(), true);
 
-                        cm.askAvatar("#b#h0##k님, #e강림월드#n에서는 다음과 같은 헤어스타일은 무료로 변경해드리고 있습니다.\r\n마음에 드시는 스타일을 선택해보세요.", hairList, subHairList);
+                        cm.askAvatar("#b#h0##k, #eGangrim World#n เราเปลี่ยนทรงผมต่อไปนี้ให้ฟรี\r\nเลือกสไตล์ที่ชอบได้เลย", hairList, subHairList);
                     } else {
                         if (dressUp > 0) {
                             cm.getPlayer().setSecondHair(hairList[selection]);
@@ -562,11 +562,11 @@ function action(mode, t, selection, dressUp_) {
                         var hair = specialHair[page][i];
                         hairList[idx++] = hair;
                     }
-                    cm.askAvatarAndroid("#b#h0##k님, 마음에 드시는 스타일을 선택해보세요.\r\n스타일 변경에는 #b#i2436018# #z2436018# 1개#k가 필요합니다.", hairList);
+                    cm.askAvatarAndroid("#b#h0##k, เลือกสไตล์ที่ชอบได้เลย\r\nการเปลี่ยนสไตล์ต้องใช้ #b#i2436018# #z2436018# 1 ชิ้น#k", hairList);
                 }
             } else if (sel == 4) { // 스페셜 코디
                 if (!cm.haveItem(2436018, 1)) {
-                    cm.sayNpc("#b#i2436018# #z2436018# 1개#k가 없는 것 같다.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                    cm.sayNpc("ดูเหมือนว่าจะไม่มี #b#i2436018# #z2436018# 1 ชิ้น#k", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                     return;
                 }
 
@@ -593,7 +593,7 @@ function action(mode, t, selection, dressUp_) {
                 if (sel2 == 5) { // 스페셜 코디
 
                     if (!cm.haveItem(2436018, 1)) {
-                        cm.sayNpc("#b#i2436018# #z2436018# 1개#k가 없는 것 같다.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                        cm.sayNpc("ดูเหมือนว่าจะไม่มี #b#i2436018# #z2436018# 1 ชิ้น#k", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                         return;
                     }
 

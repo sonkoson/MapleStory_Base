@@ -12,7 +12,7 @@ function String(date) {
 	switch (date) {
 		case 1:
 		case 1:
-			return "Creation Monday";
+			return "Creation Monday"; // Weekdays usually kept English or specific terms
 		case 2:
 			return "Enhancement Tuesday";
 		case 3:
@@ -46,7 +46,7 @@ function action(mode, type, selection) {
 	}
 
 	if (status == 0) {
-		cm.sendOk("#fs11# The Monster Park entrance is firmly closed right now.");
+		cm.sendOk("#fs11# ทางเข้า Monster Park ปิดอยู่นะจ๊ะ");
 		cm.dispose();
 		return;
 		/*
@@ -61,22 +61,22 @@ function action(mode, type, selection) {
 			cm.getClient().setKeyValue(201820, "mc_" + data, "0");
 		}
 
-		var text = "#e<Today is #b" + String(Packages.tools.CurrentTime.getDayOfWeek()) + "#k.>\r\n<Today's Clears: #b" + cm.getClient().getKeyValue(201820, "mc_" + data) + " / 7#k (Per World Account)>\r\n#eFree Clears Remaining: #b" + (7 - cm.getClient().getKeyValue(201820, "mc_" + data)) + "#k#n#b\r\n";
+		var text = "#e<วันนี้คือ #b" + String(Packages.tools.CurrentTime.getDayOfWeek()) + "#k.>\r\n<เคลียร์วันนี้ไปแล้ว: #b" + cm.getClient().getKeyValue(201820, "mc_" + data) + " / 7#k (นับรวมทั้งบัญชี World)>\r\n#eจำนวนรอบที่เหลือ: #b" + (7 - cm.getClient().getKeyValue(201820, "mc_" + data)) + "#k#n#b\r\n";
 		for (i = 0; i < map.length; i++) {
 			text += "#L" + i + "#" + mapname[i] + "\r\n";
 		}
 		cm.sendSimple(text);
 	} else if (status == 1) {
 		select = selection;
-		cm.sendYesNo("#e<Today is #b" + String(Packages.objects.utils.CurrentTime.getDayOfWeek()) + "#k.>\r\n\r\nSelected Dungeon : #b" + mapname[select] + "#k\r\n\r\n#kDo you want to enter the dungeon?#n");
+		cm.sendYesNo("#e<วันนี้คือ #b" + String(Packages.objects.utils.CurrentTime.getDayOfWeek()) + "#k.>\r\n\r\nดันเจี้ยนที่เลือก : #b" + mapname[select] + "#k\r\n\r\n#kต้องการเข้าสู่ดันเจี้ยนไหมคะ?#n");
 	} else if (status == 2) {
 		cm.dispose();
 		if (cm.getClient().getKeyValue(201820, "mc_" + data) >= 7) {
-			cm.sendOk("You have used all of today's clear counts.");
+			cm.sendOk("วันนี้คุณใช้โควต้าการเคลียร์ครบแล้วค่ะ");
 		} else {
 			for (i = 0; i < 6; i++) {
 				if (Packages.network.game.GameServer.getInstance(cm.getClient().getChannel()).getMapFactory().getMap(map[select] + (i * 100)).getCharactersSize() > 0) {
-					cm.sendOk("Someone has already entered.");
+					cm.sendOk("มีคนเข้าไปแล้วค่ะ");
 					return;
 				}
 			}

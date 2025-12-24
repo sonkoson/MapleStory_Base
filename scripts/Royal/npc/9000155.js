@@ -12,7 +12,7 @@ function action(mode, type, selection) {
         status--;
     if (status == 0) {
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "보스 진행중엔 이용이 불가능합니다.");
+            cm.getPlayer().dropMessage(5, "ไม่สามารถใช้งานได้ขณะต่อสู้กับบอส");
             cm.dispose();
             return;
         }
