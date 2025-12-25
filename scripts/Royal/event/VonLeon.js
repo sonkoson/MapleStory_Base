@@ -1,6 +1,6 @@
 importPackage(Packages.objects.utils);
 
-// 이벤트매니저 초기화할 내용(채널별로 적용됨)
+// Event Manager Initialization Content (Applied per channel)
 function init() {
     //Total 8 clickable maps (Easy and Normal are combined)
     em.setProperty("status0", "0");
@@ -79,7 +79,7 @@ function playerDisconnected(eim, player) {
 }
 
 function changedMap(eim, player, mapid) {
-    if (mapid != parseInt(eim.getProperty("map")) && mapid != 211070101 && mapid != 211070103 && mapid != 211070105 && mapid != 211070350 && mapid != 211070450 && mapid != 211070550) { //공중감옥!
+    if (mapid != parseInt(eim.getProperty("map")) && mapid != 211070101 && mapid != 211070103 && mapid != 211070105 && mapid != 211070350 && mapid != 211070450 && mapid != 211070550) { // Aerial Prison!
         eim.unregisterPlayer(player);
         if (eim != null) {
             if (eim.getPlayerCount() <= 0) {
@@ -100,10 +100,10 @@ function playerExit(eim, player) {
     }
 }
 
-function allMonstersDead(eim) {}
+function allMonstersDead(eim) { }
 
 function leftParty(eim, player) {
-    // 탈퇴
+    // Withdraw
     var exitMap = 211070000;
     playerExit(eim, player);
     player.changeMap(exitMap);
@@ -125,4 +125,4 @@ function disbandParty(eim) {
     }
 }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

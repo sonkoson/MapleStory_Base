@@ -10,7 +10,7 @@
 
 function enter(pi) {
     if (pi.getPlayer().getLevel() < 170) {
-        pi.getPlayer().message("레벨 170 이상만 입장 가능합니다.");
+        pi.getPlayer().message("ผู้ที่มีเลเวล 170 ขึ้นไปเท่านั้นที่สามารถเข้าได้");
         return false;
     }
     pi.warp(271040000);

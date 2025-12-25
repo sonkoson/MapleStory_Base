@@ -28,9 +28,9 @@ function playerRevive(eim, player) {
 
 function spawnBoss(bossid, point, mapid, eim, hp) {
     var mobzz = em.getMonster(bossid);
-	mobzz.setHp(10000000);
-      eim.registerMonster(mobzz);
-      eim.getMapFactory().getMap(mapid).spawnMonsterWithEffect(mobzz, 15, point);
+    mobzz.setHp(10000000);
+    eim.registerMonster(mobzz);
+    eim.getMapFactory().getMap(mapid).spawnMonsterWithEffect(mobzz, 15, point);
 }
 
 function setup(eim) {
@@ -46,7 +46,7 @@ function setup(eim) {
 function playerEntry(eim, player) {
     player.warp(931050810);
     eim.restartEventTimer(10000);
-    player.send(Packages.network.models.CField.addPopupSay(9073025, 3000, "10초 후에 #b1단계 보스#k가 소환됩니다.#k", ""));
+    player.send(Packages.network.models.CField.addPopupSay(9073025, 3000, "บอส #bด่านที่ 1#k จะถูกเรียกออกมาในอีก 10 วินาที#k", ""));
 }
 
 function scheduledTimeout(eim) {
@@ -63,10 +63,10 @@ function scheduledTimeout(eim) {
             eim.dispose();
         }
     } else {
- 	var it = eim.getPlayers().iterator();
+        var it = eim.getPlayers().iterator();
         while (it.hasNext()) {
             var chr = it.next();
-            chr.send(Packages.network.models.CField.addPopupSay(9073025, 3000, "#b" + (stage + 1) + "단계 보스#k가 소환되었습니다.\r\n체력은 #b" + NtoKr(boss[stage][1]) + "#k입니다.", ""));
+            chr.send(Packages.network.models.CField.addPopupSay(9073025, 3000, "บอส #bด่านที่ " + (stage + 1) + "#k ถูกเรียกออกมาแล้ว\r\nHP คือ #b" + NtoKr(boss[stage][1]) + "#k", ""));
         }
         spawnBoss(boss[stage][0], new Point(-2080, 30), 931050810, eim, boss[stage][1]);
     }
@@ -97,7 +97,7 @@ function onMapLoad(eim, player) {
 
 }
 
-function playerDisconnected(eim, player) {}
+function playerDisconnected(eim, player) { }
 
 
 function changedMap(eim, player, mapid) {
@@ -162,11 +162,11 @@ function allMonstersDead(eim) {
     while (it.hasNext()) {
         var chr = it.next();
         if (Integer.parseInt(eim.getProperty("stage")) >= boss.length) {
-            말 = "모든 단계를 클리어하였습니다.\r\n10초뒤에 마을로 이동됩니다.";
+            msg = "คุณผ่านทุกด่านแล้ว\r\nจะถูกส่งกลับเมืองใน 10 วินาที";
         } else {
-            말 = "보스를 처치하셨습니다.\r\n10초뒤에 다음단계 보스가 소환됩니다."
+            msg = "กำจัดบอสสำเร็จ\r\nบอสด่านถัดไปจะถูกเรียกออกมาในอีก 10 วินาที"
         }
-        chr.send(Packages.network.models.CField.addPopupSay(9073025, 3000, 말, ""));
+        chr.send(Packages.network.models.CField.addPopupSay(9073025, 3000, msg, ""));
     }
 }
 
@@ -177,7 +177,7 @@ function leftParty(eim, player) {
         var chr = it.next();
         var tese = chr.getWarpMap(123456789);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티원이 파티를 그만둬서 원정대가 해체됩니다.");
+        chr.dropMessage(5, "สมาชิกในปาร์ตี้ออกจากกลุ่ม ทำให้ปาร์ตี้ถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {
@@ -193,7 +193,7 @@ function disbandParty(eim) {
         var chr = it.next();
         var tese = chr.getWarpMap(123456789);
         chr.changeMap(tese, tese.getPortal(0));
-        chr.dropMessage(5, "파티장이 파티를 그만둬서 원정대가 해체됩니다.");
+        chr.dropMessage(5, "หัวหน้าปาร์ตี้ออกจากกลุ่ม ทำให้ปาร์ตี้ถูกยุบ");
     }
     eim.unregisterAll();
     if (eim != null) {
@@ -201,7 +201,7 @@ function disbandParty(eim) {
     }
 }
 
-var unitLt = ['만', '억', '조', '경'];
+var unitLt = ['หมื่น', 'ร้อยล้าน', 'ล้านล้าน', 'ล้านล้านล้าน'];
 
 function NtoKr(num) {
     var rslt = num;

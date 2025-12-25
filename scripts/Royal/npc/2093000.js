@@ -45,7 +45,7 @@ function start() {
         //print.append("#fc0xFF000000# | #fc0xFF6600CC#Job : #fc0xFF000000#").append(job).append("\r\n");
     }
 
-    //cm.sendOk("#fs11#만렙(300) 이상시 #r초월레벨#fc0xFF000000#이 증가하며\r\n레벨옆 #b파란색#fc0xFF000000# 수치가 #r초월레벨#fc0xFF000000#입니다\r\n※ 초월레벨은 #r초기화#fc0xFF000000# 될 수 있습니다\r\n\r\n"+print.toString());
+    //cm.sendOk("#fs11#When you reach max level (300), your #rTranscendence Level#fc0xFF000000# increases.\r\nThe #bblue#fc0xFF000000# number next to the level is your #rTranscendence Level#fc0xFF000000#.\r\n※ Transcendence Level may be #rreset#fc0xFF000000#.\r\n\r\n"+print.toString());
     cm.sendOk("#fs11##fc0xFF000000#การจัดอันดับเรียงตาม:\r\n#bLevel -> EXP -> วันที่ถึงเลเวลนั้น\r\n\r\n" + print.toString());
     rs.close();
     ps.close();

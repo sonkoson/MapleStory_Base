@@ -13,13 +13,13 @@ function action(mode, type, sel) {
         cm.dispose();
         return;
     }
-    
-    
+
+
     if (status == 0) {
         if (mailboxcheck()) {
-            cm.getPlayer().dropMessage(-22, "[우편함] 수령하지 않은 아이템이 있습니다. 이벤트 NPC - 우편함에서 수령해 주세요!");
+            cm.getPlayer().dropMessage(-22, "[Mailbox] You have unreceived items. Please collect them from Event NPC - Mailbox!");
         }
-        cm.effectText("#fn나눔고딕 ExtraBold##fs16#< 강림월드 > - 강림 정원", 100, 1000, 6, 0, 430, -550);
+        cm.effectText("#fnNanumGothic ExtraBold##fs16#< Royal World > - สวน Royal", 100, 1000, 6, 0, 430, -550);
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

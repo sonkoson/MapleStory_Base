@@ -3,6 +3,6 @@ function enter(pi) {
 		pi.warpParty(pi.getPlayer().getMapId() + 100);
 		pi.playPortalSE();
 	} else {
-		pi.playerMessage(5,"This portal is not available.");
+		pi.playerMessage(5, "พอร์ทัลนี้ไม่สามารถใช้งานได้");
 	}
 }

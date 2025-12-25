@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press #e#b[Up]#k on the arrow key#n to climb up the ladder or rope.", 350, 5);
+    pi.showInstruction("กดปุ่มลูกศร #e#b[ขึ้น]#k#n เพื่อปีนบันไดหรือเชือก", 350, 5);
 }

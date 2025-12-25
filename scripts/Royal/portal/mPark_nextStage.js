@@ -10,7 +10,7 @@
 
 function enter(pi) {
 	if (pi.getClient().getChannelServer().getMapFactory().getMap(pi.getPlayer().getMapId()).getNumMonsters() > 0) {
-		pi.getPlayer().dropMessage(5, "모든 몬스터를 처치하셔야 다음 맵으로 이동하실 수 있습니다.");
+		pi.getPlayer().dropMessage(5, "เจ้าต้องกำจัดมอนสเตอร์ทั้งหมดเพื่อไปยังแผนที่ถัดไป");
 	} else {
 		pi.resetMap(pi.getPlayer().getMapId() + 100, true);
 		pi.warp(pi.getPlayer().getMapId() + 100, 0);

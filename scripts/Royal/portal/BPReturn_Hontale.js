@@ -1,5 +1,5 @@
 /*
- *  리턴
+ *  Return
  */
 
 function enter(pi) {

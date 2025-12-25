@@ -3,6 +3,6 @@
 */
 
 function enter(pi) {
-    pi.playerMessage(5, "Please talk to the NPC instead.");
+    pi.playerMessage(5, "กรุณาคุยกับ NPC แทน");
     return true;
 }

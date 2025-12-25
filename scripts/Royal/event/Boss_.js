@@ -246,7 +246,7 @@ function allMonstersDead(eim) {
                 var chr = it.next();
                 chr.gainItem(4033804, 1);
                 chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! ได้รับ Music Box แล้ว กรุณานำไปให้ NPC ที่รับเข้าบอส จะถูกวาร์ปออกอัตโนมัติ");
-                //chr.worldGMMessage(7, "[클리어] 루시드보스가 클리어 됐습니다.");
+                //chr.worldGMMessage(7, "[Clear] Lucid Boss has been cleared.");
             }
         }
     } else if (eim.getProperty("BossName") == "진격의거인") {
@@ -353,7 +353,7 @@ function allMonstersDead(eim) {
             while (it.hasNext()) {
                 var chr = it.next();
                 chr.warp(Integer.parseInt(eim.getProperty("SecondMap")));
-                chr.dropMessage(5, "2페이지로 넘어갑니다.");
+                chr.dropMessage(5, "เข้าสู่เฟส 2");
             }
             spawnBoss(Integer.parseInt(eim.getProperty("Boss_Second")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
         } else if (kc == 99) {
@@ -362,11 +362,11 @@ function allMonstersDead(eim) {
             var it = eim.getPlayers().iterator();
             while (it.hasNext()) {
                 var chr = it.next();
-                chr.dropMessage(5, "클리어를 축하드립니다! 자동으로 퇴장됩니다.");
+                chr.dropMessage(5, "ยินดีด้วย เคลียร์สำเร็จ! จะถูกวาร์ปออกอัตโนมัติ");
             }
         }
     } else if (eim.getProperty("BossName") == "노말 윌") {
-        if (kc == 0) { //1페 클리어
+        if (kc == 0) { // Phase 1 Clear
             var x = Integer.parseInt(eim.getProperty("Boss_x_2"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_2"));
             eim.setProperty("KillCount", 1);
@@ -382,7 +382,7 @@ function allMonstersDead(eim) {
 
             //spawnBoss(Integer.parseInt(eim.getProperty("Boss_unsuk1")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
             //spawnBoss(Integer.parseInt(eim.getProperty("Boss_unsuk2")), new Point(x, y), Integer.parseInt(eim.getProperty("SecondMap")), eim);
-        } else if (kc == 1) { //2페 클리어
+        } else if (kc == 1) { // Phase 2 Clear
             var x = Integer.parseInt(eim.getProperty("Boss_x_3"));
             var y = Integer.parseInt(eim.getProperty("Boss_y_3"));
             eim.setProperty("KillCount", 2);
@@ -396,7 +396,7 @@ function allMonstersDead(eim) {
             eim.getMapFactory().getMap(eim.getProperty("ThirdMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk1")), new Point(eim.getProperty("Boss_unsuk1_x"), eim.getProperty("Boss_unsuk1_y")));
             eim.getMapFactory().getMap(eim.getProperty("ThirdMap")).spawnMonsterOnGroundBelow(em.getMonster(eim.getProperty("Boss_unsuk2")), new Point(eim.getProperty("Boss_unsuk2_x"), eim.getProperty("Boss_unsuk2_y")));
 
-        } else if (kc == 2) { //3페 클리어
+        } else if (kc == 2) { // Phase 3 Clear
             eim.restartEventTimer(10000);
             eim.setProperty("IsClear", "1");
             var it = eim.getPlayers().iterator();

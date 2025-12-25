@@ -11,7 +11,7 @@ var outmap = 100000000;
 var time = 0;
 var temphp = 0;
 var mob;
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -45,18 +45,18 @@ function spawnMonsterDusk(eim, instance, mobid, x, y) {
 function spawnMonster(eim) {
     var map = eim.getMapInstance(0);
     var mob = em.getMonster(8644655);
-	var mob2 = em.getMonster(8644659);
+    var mob2 = em.getMonster(8644659);
     var tick = 0;
     eim.registerMonster(mob);
     map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(-45, -157));
-	map.spawnMonsterOnGroundBelow(mob2, new java.awt.Point(-45, -157));
+    map.spawnMonsterOnGroundBelow(mob2, new java.awt.Point(-45, -157));
 }
 
 function playerRevive(eim, player) {
     return false;
 }
 
-function scheduledTimeout(eim) {}
+function scheduledTimeout(eim) { }
 
 function changedMap(eim, player, mapid) {
     stage = parseInt(eim.getProperty("stage"));
@@ -89,8 +89,8 @@ function WarptoNextStage(eim) {
         player.changeMap(map.getId(), 0);
     }
     if (stage == 1) {
-        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[카오스 더스크]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
-        spawnMonsterDusk(eim, stage, 8950117, -2672, -489); // 보상상자
+        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Chaos Dusk]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
+        spawnMonsterDusk(eim, stage, 8950117, -2672, -489); // Reward Box
         eim.restartEventTimer(300000);
     }
 }
@@ -134,6 +134,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

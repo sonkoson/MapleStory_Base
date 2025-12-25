@@ -27,11 +27,11 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        말 = "#fs11#สวัสดี? เรามี #rสัตว์เลี้ยง#k แจกฟรี\r\nมีสัตว์เลี้ยงน่ารักมากมายเตรียมไว้ให้ เลือกได้เลย~\r\n\r\n"
-        말 += "#L0##dเลือกสัตว์เลี้ยง#k#l"
-        cm.sendSimple(말);
+        var msg = "#fs11#สวัสดี? เรามี #rสัตว์เลี้ยง#k แจกฟรี\r\nมีสัตว์เลี้ยงน่ารักมากมายเตรียมไว้ให้ เลือกได้เลย~\r\n\r\n"
+        msg += "#L0##dเลือกสัตว์เลี้ยง#k#l"
+        cm.sendSimple(msg);
     } else if (status == 1) {
-        말 = "#fs11#กรุณาเลือกสัตว์เลี้ยงที่ต้องการ\r\n\r\n";
+        var msg = "#fs11#กรุณาเลือกสัตว์เลี้ยงที่ต้องการ\r\n\r\n";
         var it = Packages.objects.item.MapleItemInformationProvider.getInstance().getAllItems().iterator();
         while (it.hasNext()) {
             var itemPair = it.next();
@@ -47,12 +47,12 @@ function action(mode, type, selection) {
         }
         it = null;
         for (i = 0; i < itemarray.length; i++) {
-            말 += "#L" + i + "# #i" + itemarray[i] + "#"
+            msg += "#L" + i + "# #i" + itemarray[i] + "#"
             if (i % 5 == 4) {
-                말 += "\r\n"
+                msg += "\r\n"
             }
         }
-        cm.sendSimple(말);
+        cm.sendSimple(msg);
     } else if (status == 2) {
         if (!cm.isCash(itemarray[selection]) || itemarray[selection] >= 5001000) {
             a = new Date();

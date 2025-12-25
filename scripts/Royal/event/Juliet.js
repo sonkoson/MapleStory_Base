@@ -148,7 +148,7 @@ function playerDisconnected(eim, player) {
 }
 
 function monsterValue(eim, mobId) {
-    if (mobId >= 9300142 && mobId <= 9300146) { // 유레테의 사무실
+    if (mobId >= 9300142 && mobId <= 9300146) { // Yurete's Office
         if (eim.getMapInstance(926110203).getAllMonstersThreadsafe().size() <= 0 && em.getProperty("stage5").equals("1")) {
             em.setProperty("stage5", "2");
             eim.getMapInstance(926110203).clearEffect();
@@ -161,7 +161,7 @@ function monsterValue(eim, mobId) {
     } else if (mobId == 9300137 || mobId == 9300138) {
         if (em.getProperty("clear_protect") == null) {
             em.setProperty("stage7", "1");
-            eim.broadcastPlayerMsg(5, "로미오를 구하는데 실패했습니다.");
+            eim.broadcastPlayerMsg(5, "ล้มเหลวในการช่วยโรมิโอ");
         }
     } else if (mobId == 9300139 || mobId == 9300140) { //boss
         //13 = boss, 14 = urete, 15 = romeo&juliet
@@ -171,7 +171,7 @@ function monsterValue(eim, mobId) {
         eim.getMapInstance(13).killAllMonsters(true);
         if (em.getProperty("stage7").equals("0")) {
             eim.gainPartyExpPQ(eim.getMapInstance(13), 45000, "rnj", 70);
-            eim.broadcastPlayerMsg(6, "로미오를 구하는데 성공했습니다.");
+            eim.broadcastPlayerMsg(6, "ช่วยโรมิโอสำเร็จ");
             eim.getMapInstance(14).spawnNpc(2112012, new java.awt.Point(232, 150));
             eim.getMapInstance(15).spawnNpc(2112004, new java.awt.Point(157, 128));
             eim.getMapInstance(15).spawnNpc(2112003, new java.awt.Point(107, 128));

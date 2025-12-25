@@ -26,7 +26,7 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        say = "#fs11##fc0xFF990033##eBoss Rank Upgrade System#n#fc0xFF000000#\r\n#bสนใจที่จะแข็งแกร่งขึ้นผ่านการเลื่อนขั้น Boss Rank หรือไม่!?#fc0xFF000000#\r\n\r\n"
+        say = "#fs11##fc0xFF990033##eระบบเลื่อนขั้น Boss Rank#n#fc0xFF000000#\r\n#bสนใจที่จะแข็งแกร่งขึ้นผ่านการเลื่อนขั้น Boss Rank หรือไม่!?#fc0xFF000000#\r\n\r\n"
         if (gK() >= 8) {
             say += "#rBoss Rank ของคุณถึงระดับสูงสุดแล้ว#l\r\n";
         } else {
@@ -45,7 +45,7 @@ function action(mode, type, selection) {
             say += " \r\n#fs11##e#bต้องการเลื่อนขั้นจริงๆ ใช่ไหม?#k#n"
             cm.sendYesNo(say);
         } else {
-            cm.sendOk("#fs11##fc0xFF990033#[บัฟการเลื่อนขั้นตาม Rank]\r\n\r\nต่อ [1] Rank\r\n#bBoss Damage + 10%\r\n#bBoss Entry Count + 1\r\n\r\n#fc0xFF990033#[Boss Rank Level 2]\r\n#bเข้า Hard Lotus, Damien, Lucid ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 3]\r\n#bเข้า Normal Will, Normal Guardian Angel Slime ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 4]\r\n#bเข้า Normal Dunkel, Normal Dusk ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 5]\r\n#bเข้า Hard Will, Chaos Guardian Angel Slime ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 6]\r\n#bเข้า Hard Dunkel, Chaos Dusk, Jin Hilla ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 7]\r\n#bเข้า Black Mage, Seren ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 8]\r\n#bเข้า Hell Mode Boss ได้");
+            cm.sendOk("#fs11##fc0xFF990033#[บัฟการเลื่อนขั้นตาม Rank]\r\n\r\nต่อ [1] Rank\r\n#bBoss Damage + 10%\r\n#bBoss Entry Count + 1\r\n\r\n#fc0xFF990033#[Boss Rank Level 2]\r\n#bเข้า Hard โลตัส, เดเมียน, ลูซิด ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 3]\r\n#bเข้า Normal วิล, Normal การ์เดียนแองเจิลสไลม์ ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 4]\r\n#bเข้า Normal ดันเคล, Normal กลูม ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 5]\r\n#bเข้า Hard วิล, Chaos การ์เดียนแองเจิลสไลม์ ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 6]\r\n#bเข้า Hard ดันเคล, Chaos กลูม, จินฮิลล่า ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 7]\r\n#bเข้า แบล็คเมจ, เซเรน ได้\r\n\r\n#fc0xFF990033#[Boss Rank Level 8]\r\n#bเข้า บอสโหมด Hell ได้");
             cm.dispose();
         }
     } else if (status == 2) {

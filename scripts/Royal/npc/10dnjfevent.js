@@ -104,7 +104,7 @@ function action(mode, type, sel) {
                 msg = "#fs11#" + Obtain + enter;
 
                 i = Packages.objects.utils.Randomizer.rand(0, 2);
-                msg += Color + "#i" + bosang[i][0] + "# #z" + bosang[i][0] + "##r " + bosang[i][1] + "items#k" + enter;
+                msg += Color + "#i" + bosang[i][0] + "# #z" + bosang[i][0] + "##r " + bosang[i][1] + " ชิ้น#k" + enter;
                 cm.gainItem(bosang[i][0], bosang[i][1]);
 
                 msg += Pink + "\r\nได้รับไอเท็มเรียบร้อยแล้ว";

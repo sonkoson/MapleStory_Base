@@ -13,8 +13,8 @@ function action(mode, type, sel) {
         cm.dispose();
         return;
     }
-    
-    
+
+
     if (status == 0) {
         cm.dispose();
         cm.getPlayer().setRegisterTransferFieldTime(System.currentTimeMillis());
@@ -22,7 +22,7 @@ function action(mode, type, sel) {
         cm.getPlayer().setTransferFieldOverlap(true);
         return;
 
-        cm.effectText("#fn나눔고딕 ExtraBold##fs16#< 강림월드 > - 강림 타운", 100, 1000, 6, 0, 430, -550);
+        cm.effectText("#fnNanumGothic ExtraBold##fs16#< Royal World > - Royal Town", 100, 1000, 6, 0, 430, -550);
 
         cm.showEffect(false, "Effect/EventEffect.img/SalonDebut/screenEff/1366");
         cm.dispose();

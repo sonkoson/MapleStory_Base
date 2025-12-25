@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -71,7 +71,7 @@ function monsterValue(eim, mobId) {
         while (iter.hasNext()) {
             var player = iter.next();
             player.getMap().killAllMonsters(true);
-            player.getClient().getSession().writeAndFlush(CField.addPopupSay(3003771, 3000, "#face4#내… 내 시간이 흘러가고 있어!", ""));
+            player.getClient().getSession().writeAndFlush(CField.addPopupSay(3003771, 3000, "#face4#เวลาของข้า... กำลังไหลผ่านไป!", ""));
             player.cancelEffectFromBuffStat(Packages.client.MapleBuffStat.DebuffIncHp);
         }
         eim.schedule("WarptoNextStage", 5000);
@@ -87,20 +87,20 @@ function WarptoNextStage(eim) {
         map = eim.getMapInstance(stage);
         player.resetDeathCounts();
         player.changeMap(map.getId(), 0);
-if (stage == 0) {
-        player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
-        player.getClient().getSession().writeAndFlush(CField.addPopupSay(3003771, 3000, "#face0#어디… 네 영혼은 다른 것들과 어떻게 다른지 한번 볼까!", ""));
-}
+        if (stage == 0) {
+            player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
+            player.getClient().getSession().writeAndFlush(CField.addPopupSay(3003771, 3000, "#face0#ไหนดูสิ... ว่าวิญญาณของเจ้าแตกต่างจากพวกนั้นอย่างไร!", ""));
+        }
     }
-if (stage == 1) {
-        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[진 힐라]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
-        spawnMonster(eim, stage, 8950121, 785, 205); // 보상상자
+    if (stage == 1) {
+        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Normal Jin Hilla]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
+        spawnMonster(eim, stage, 8950121, 785, 205); // Reward Box
         eim.restartEventTimer(300000);
-} else {
-    spawnMonster(eim, stage, 8880405, 0, 266);
-    spawnMonster(eim, stage, 8880406, 0, 266);
-    spawnMonster(eim, stage, 8880407, 0, 266);
-}
+    } else {
+        spawnMonster(eim, stage, 8880405, 0, 266);
+        spawnMonster(eim, stage, 8880406, 0, 266);
+        spawnMonster(eim, stage, 8880407, 0, 266);
+    }
 }
 
 function playerExit(eim, player) {
@@ -141,6 +141,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

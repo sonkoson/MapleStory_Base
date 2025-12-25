@@ -74,7 +74,7 @@ function action(mode, type, selection) {
             var musicask = "#fs11#อยากฟังเพลงไหนดีคะ?\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
-                if (musiclist.get(i) == "[테일즈위버] Reminiscence")
+                if (musiclist.get(i) == "[TalesWeaver] Reminiscence")
                     musicask += "\r\n\r\n#b< Other Music >#k\r\n";
                 musicask += "#L" + i + "#" + musiclist.get(i) + "#l\r\n";
             }
@@ -84,23 +84,23 @@ function action(mode, type, selection) {
         if (seld == 2) { // GM menu: Register BGM Queue (All Channels)
             var mapmusic = cm.getMapMusicList();
             if (mapmusic.size() > 8) {
-                cm.sendOk("#fs11#You can register up to 8 songs in the queue.");
+                cm.sendOk("#fs11#คุณสามารถลงทะเบียนเพลงในคิวได้สูงสุด 8 เพลง");
                 cm.dispose();
                 return;
             }
             // No item check for GM option
             var musiclist = cm.getAllSound();
-            var musicask = "#fs11#Please select the BGM you want.\r\n\r\n";
+            var musicask = "#fs11#กรุณาเลือกเพลงที่คุณต้องการ\r\n\r\n";
             musicask += "#b< Latale Music >#k\r\n";
             for (var i = 0; i < musiclist.size(); i++) {
-                if (musiclist.get(i) == "[테일즈위버] Reminiscence")
-                    musicask += "\r\n\r\n#b< Other Music >#k\r\n";
+                if (musiclist.get(i) == "[TalesWeaver] Reminiscence")
+                    musicask += "\r\n\r\n#b< เพลงอื่นๆ >#k\r\n";
                 musicask += "#L" + i + "#" + musiclist.get(i) + "#l\r\n";
             }
             cm.sendSimple(musicask);
         }
         if (seld == 3) { // GM menu: Reset BGM Queue (All Channels)
-            cm.askYesNo("#fs11#Are you sure you want to reset the BGM queue for the current map (all channels)?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
+            cm.askYesNo("#fs11#คุณแน่ใจหรือไม่ที่จะรีเซ็ตคิวเพลงสำหรับแผนที่นี้ (ทุกชาแนล)?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
         }
 
     }
@@ -116,7 +116,7 @@ function action(mode, type, selection) {
             var musiclist = cm.getAllSound();
             if (selection >= 0 && selection < musiclist.size()) {
                 tempsel = selection;
-                cm.askYesNo("#fs11#Is " + musiclist.get(selection) + " the song you selected?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
+                cm.askYesNo("#fs11#เพลงที่คุณเลือกคือ " + musiclist.get(selection) + " ใช่หรือไม่?", Packages.scripting.GameObjectType.Npc, Packages.scripting.ScriptMessageFlag.None);
             }
         }
         if (seld == 3) { // GM menu: Reset BGM Queue (All Channels) - confirmation
@@ -125,7 +125,7 @@ function action(mode, type, selection) {
                 channel.getMapFactory().getMap(cm.getPlayer().getMapId()).clearMusicList();
             }
             cm.dispose();
-            cm.sendOk("#fs11#Current map (all channels) list reset complete.");
+            cm.sendOk("#fs11#รีเซ็ตรายการเพลงสำหรับแผนที่ปัจจุบัน (ทุกชาแนล) เรียบร้อยแล้ว");
         }
     }
     if (status == 3) {
@@ -144,7 +144,7 @@ function action(mode, type, selection) {
         if (seld == 2) {
             cm.addServerMapMusicServer(tempsel);
             var musiclist = cm.getAllSound();
-            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " \r\nhas been registered to the current map (all channels) queue.");
+            cm.sendOk("#fs11#" + musiclist.get(tempsel) + " \r\nถูกลงทะเบียนในคิวเพลงแผนที่ปัจจุบัน (ทุกชาแนล) แล้ว");
             cm.dispose();
         }
     }

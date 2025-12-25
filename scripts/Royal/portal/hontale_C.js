@@ -11,7 +11,7 @@
 function enter(pi) {
     var eim = pi.getPlayer().getEventInstance();
     if (eim.getProperty("choiceCave") == null) {
-        pi.getPlayer().message(5, "아직 동굴이 선택되지 않았습니다.");
+        pi.getPlayer().message(5, "ยังไม่ได้เลือกถ้ำ");
         return false;
     }
     if (eim.getProperty("choiceCave").equals("0")) {

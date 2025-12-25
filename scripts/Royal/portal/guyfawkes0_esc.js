@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.playerMessage(5, "This portal is not available. Please talk to Charles.");
+    pi.playerMessage(5, "พอร์ทัลนี้ไม่สามารถใช้งานได้ กรุณาคุยกับ Charles");
 }

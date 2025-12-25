@@ -43,7 +43,7 @@ function buildCurrencyMenu() {
     for (var i = 0; i < currencyOptions.length; i++) {
         var opt = currencyOptions[i];
         var idx = i + 1;
-        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(Max per time : " + opt.maxCount + " times)#k\r\n";
+        txt += "#fc0xFF6542D7##L" + idx + "##i" + opt.id + "# #z" + opt.id + "##l #Cgray#(สูงสุดต่อครั้ง : " + opt.maxCount + " ครั้ง)#k\r\n";
     }
     return txt;
 }

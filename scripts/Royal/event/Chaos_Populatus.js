@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -27,7 +27,7 @@ function playerEntry(eim, player) {
     var map = eim.getMapInstance(0);
     player.setDeathCount(5);
     player.changeMap(map, map.getPortal(0));
-    player.dropMessage(5, "알 수 없는 균열이 열리며 그곳으로 빨려 들어갑니다.");
+    player.dropMessage(5, "รอยแยกที่ไม่รู้จักเปิดออกและดูดคุณเข้าไป");
 }
 
 function spawnMonster(eim) {
@@ -99,6 +99,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

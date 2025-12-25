@@ -28,9 +28,9 @@ function action(M, T, S) {
 		}
 		//if (cm.getPlayer().getName() == "이카로스") {
 		//log("access", "NPC accessed\r\n");
-		cm.sendOk("Administrator #b#e#h ##k#n, welcome. How can I help you?\r\n#b"
-			+ "#L0#Search Character#l\r\n"
-			+ "#L1#Change Settings#l\r\n\r\n");
+		cm.sendOk("ผู้ดูแลระบบ #b#e#h ##k#n, ยินดีต้อนรับ มีอะไรให้ช่วยไหมครับ?\r\n#b"
+			+ "#L0#ค้นหาตัวละคร#l\r\n"
+			+ "#L1#เปลี่ยนการตั้งค่า#l\r\n\r\n");
 		//}
 	}
 
@@ -40,14 +40,14 @@ function action(M, T, S) {
 
 			//checkOnOff()
 			case 1:
-				selStr = "Current settings are as follows. Click on an option to toggle #bON#k/#rOFF#k.\r\n"
-				selStr += "#L10#" + checkOnOff(SET_GIV, "color") + "Send notice when giving item #e(" + checkOnOff(SET_GIV, "string") + ")#n\r\n";
-				selStr += "#L11#" + checkOnOff(SET_DEL, "color") + "Send notice when removing item #e(" + checkOnOff(SET_DEL, "string") + ")#n\r\n";
+				selStr = "การตั้งค่าปัจจุบันมีดังนี้ คลิกที่ตัวเลือกเพื่อสลับ #bเปิด#k/#rปิด#k\r\n"
+				selStr += "#L10#" + checkOnOff(SET_GIV, "color") + "ส่งประกาศเมื่อมอบไอเท็ม #e(" + checkOnOff(SET_GIV, "string") + ")#n\r\n";
+				selStr += "#L11#" + checkOnOff(SET_DEL, "color") + "ส่งประกาศเมื่อลบไอเท็ม #e(" + checkOnOff(SET_DEL, "string") + ")#n\r\n";
 				cm.sendOk(selStr);
 				break;
 
 			case 0:
-				cm.sendGetText("Administrator #b#e#h ##k#n, welcome. Please enter the target character's name. Only currently online characters are available.");
+				cm.sendGetText("ผู้ดูแลระบบ #b#e#h ##k#n, ยินดีต้อนรับ กรุณากรอกชื่อตัวละครเป้าหมาย (เฉพาะตัวละครที่ออนไลน์อยู่เท่านั้น)");
 				break;
 		}
 	}
@@ -65,7 +65,7 @@ function action(M, T, S) {
 						else
 							cm.getClient().setKeyValue("GM_SETTING_GIV", -1);
 
-						cm.getPlayer().dropMessage(5, "Send notice when giving item setting changed to " + checkOnOff(SET_GIV * -1, "string") + ".");
+						cm.getPlayer().dropMessage(5, "เปลี่ยนการตั้งค่าส่งประกาศเมื่อมอบไอเท็มเป็น " + checkOnOff(SET_GIV * -1, "string") + " แล้ว");
 						break;
 
 					case 11:
@@ -75,7 +75,7 @@ function action(M, T, S) {
 						else
 							cm.getClient().setKeyValue("GM_SETTING_DEL", -1);
 
-						cm.getPlayer().dropMessage(5, "Send notice when removing item setting changed to " + checkOnOff(SET_DEL * -1, "string") + ".");
+						cm.getPlayer().dropMessage(5, "เปลี่ยนการตั้งค่าส่งประกาศเมื่อลบไอเท็มเป็น " + checkOnOff(SET_DEL * -1, "string") + " แล้ว");
 						1
 						break;
 				}
@@ -89,30 +89,30 @@ function action(M, T, S) {
 				chr = findPlayerByName(name);
 				if (chr != null) {
 					//log("access", ""+name+"("+chr.getId()+") character accessed\r\n");
-					cm.sendOk("#b#e" + chr.getName() + "#k#n character accessed. How can I help you?#b\r\n\r\n#fs11#"
-						+ "   - Meso Amount | " + Comma(chr.getMeso()) + " (1B Pouch: " + Comma(chr.itemQuantity(4001716)) + ")\r\n"
-						+ "   - Aqua Coin Amount | " + Comma(chr.itemQuantity(4310237)) + "\r\n"
+					cm.sendOk("เข้าถึงตัวละคร #b#e" + chr.getName() + "#k#n แล้ว มีอะไรให้ช่วยไหมครับ?#b\r\n\r\n#fs11#"
+						+ "   - จำนวน Meso | " + Comma(chr.getMeso()) + " (ถุง 1B: " + Comma(chr.itemQuantity(4001716)) + ")\r\n"
+						+ "   - จำนวน Aqua Coin | " + Comma(chr.itemQuantity(4310237)) + "\r\n"
 						+ "   - Neo Stone | " + Comma(chr.getKeyValue(100711, "point")) + "\r\n"
 						+ "   - Neo Gem | " + Comma(chr.getKeyValue(100712, "point")) + "\r\n"
 						+ "   - Neo Core | " + Comma(chr.getKeyValue(501215, "point")) + "\r\n"
-						+ "   - Promo Points | " + Comma(chr.getHPoint()) + "\r\n"
-						+ "   - Donation Points | " + Comma(chr.getDonationPoint()) + "\r\n#fs12#"
+						+ "   - แต้มโปรโมท | " + Comma(chr.getHPoint()) + "\r\n"
+						+ "   - แต้มโดเนท | " + Comma(chr.getDonationPoint()) + "\r\n#fs12#"
 						//+ "#L16#Give Promo Points#l #L17#Give Donation Points#l\r\n"
-						+ "#L13#Give Neo Stone#l#L14#Give Neo Gem#l#L15#Give Neo Core#l\r\n\r\n"
-						+ "#L0#Check Equipped Inventory#l\r\n"
-						+ "#L1#Check Equip Inventory#l\r\n"
-						+ "#L2#Check Use Inventory#l\r\n"
-						+ "#L3#Check Setup Inventory#l\r\n"
-						+ "#L4#Check Etc Inventory#l\r\n"
-						+ "#L5#Check Cash Inventory#l\r\n"
-						+ "#L6#Check Decoration Inventory#l\r\n\r\n"
-						+ "#L7#Check Storage#l\r\n\r\n"
-						+ "#L10#Send Message to Character#l\r\n"
-						+ "#L11#Give Item to Character#l\r\n"
-						+ "#L12#Macro Test#l\r\n");
+						+ "#L13#มอบ Neo Stone#l#L14#มอบ Neo Gem#l#L15#มอบ Neo Core#l\r\n\r\n"
+						+ "#L0#ตรวจสอบช่องสวมใส่ (Equipped)#l\r\n"
+						+ "#L1#ตรวจสอบช่อง Equip#l\r\n"
+						+ "#L2#ตรวจสอบช่อง Use#l\r\n"
+						+ "#L3#ตรวจสอบช่อง Setup#l\r\n"
+						+ "#L4#ตรวจสอบช่อง Etc#l\r\n"
+						+ "#L5#ตรวจสอบช่อง Cash#l\r\n"
+						+ "#L6#ตรวจสอบช่อง Decoration#l\r\n\r\n"
+						+ "#L7#ตรวจสอบคลังเก็บของ#l\r\n\r\n"
+						+ "#L10#ส่งข้อความถึงตัวละคร#l\r\n"
+						+ "#L11#มอบไอเท็มให้ตัวละคร#l\r\n"
+						+ "#L12#ทดสอบมาโคร#l\r\n");
 				}
 				else {
-					cm.sendOk("Cannot access character. They may be changing channels or disconnecting.");
+					cm.sendOk("ไม่สามารถเข้าถึงตัวละครได้ อาจกำลังย้ายแชแนลหรือออกจากระบบ");
 					cm.dispose();
 					return;
 				}
@@ -126,7 +126,7 @@ function action(M, T, S) {
 
 			case 0:
 				if (chr == null) {
-					cm.sendOk("Character has disconnected or logged out.");
+					cm.sendOk("ตัวละครตัดการเชื่อมต่อหรือออกจากระบบแล้ว");
 					//log("fail", "Search failed\t"+name+"\tDisconnected during search\r\n");
 					cm.dispose();
 					return;
@@ -134,25 +134,25 @@ function action(M, T, S) {
 
 				if (S3 == 999) {
 					chr.addKV("Hard_Will", "0");
-					chr.dropMessage(5, "Count has been restored.");
+					chr.dropMessage(5, "คืนค่าจำนวนนับเรียบร้อยแล้ว");
 					cm.dispose();
 					return;
 				}
 
 				if (S3 == 10) {
-					cm.sendGetText("Enter the message to send to " + chr.getName() + ". If too long, it may be cancelled.");
+					cm.sendGetText("กรอกข้อความที่จะส่งถึง " + chr.getName() + " หากยาวเกินไปอาจถูกยกเลิก");
 					return;
 				}
 
 				if (S3 == 11) {
-					cm.sendGetNumber("Enter the item code to give to " + chr.getName() + ".", 0, 0, 5999999);
+					cm.sendGetNumber("กรอกรหัสไอเท็มที่จะมอบให้ " + chr.getName() + "", 0, 0, 5999999);
 					return;
 				}
 
 
 				if (S3 == 12) {
 					if (chr == null) {
-						cm.sendOk("Character has disconnected or logged out.");
+						cm.sendOk("ตัวละครตัดการเชื่อมต่อหรือออกจากระบบแล้ว");
 						//log("fail", "Search failed\t"+name+"\tDisconnected during search\r\n");
 						cm.dispose();
 						return;
@@ -160,17 +160,17 @@ function action(M, T, S) {
 
 					cm.dispose();
 					cm.openNpcCustom2(chr.getClient(), 2007, "macro");
-					cm.getPlayer().dropMessage(5, "Macro test initiated on " + name + " character.");
+					cm.getPlayer().dropMessage(5, "เริ่มการทดสอบมาโครกับตัวละคร " + name + " แล้ว");
 					return;
 				}
 
 				if (S3 >= 13 && S3 <= 15) {
-					cm.sendGetNumber("Enter the amount to give to " + chr.getName() + ".", 1, 1, 9999);
+					cm.sendGetNumber("กรอกจำนวนที่จะมอบให้ " + chr.getName() + "", 1, 1, 9999);
 					return;
 				}
 
 				if (S3 >= 16 && S3 <= 17) {
-					cm.sendGetNumber("Enter the points to give to " + chr.getName() + ".", 1, 1, 999999);
+					cm.sendGetNumber("กรอกแต้มที่จะมอบให้ " + chr.getName() + "", 1, 1, 999999);
 					return;
 				}
 
@@ -192,7 +192,7 @@ function action(M, T, S) {
 					invType = S3 == 0 ? "Equipped" : S3 == 1 ? "Equip" : S3 == 2 ? "Use" : S3 == 3 ? "Setup" : S3 == 4 ? "Etc" : S3 == 5 ? "Cash" : "Decoration";
 					//log("access", ""+name+"("+chr.getId()+") character's "+invType+" inventory accessed\r\n");
 
-					selStr = "#b#e" + chr.getName() + "#k#n character's #e#r" + invType + "#k#n inventory accessed. Which item do you want to check?\r\n#b";
+					selStr = "เข้าถึงช่องเก็บของ #e#r" + invType + "#k#n ของตัวละคร #b#e" + chr.getName() + "#k#n แล้ว ต้องการตรวจสอบไอเท็มชิ้นไหน?\r\n#b";
 					//	inv = (S3 != 0) ? chr.getInventory(S3) : chr.getInventory(MapleInventoryType.EQUIPPED);
 					switch (S3) {
 						case 0:
@@ -222,7 +222,7 @@ function action(M, T, S) {
 							if (inv.getItem(z) == null)
 								continue;
 
-							selStr += "#L" + z + "# #i" + inv.getItem(z).getItemId() + ":# #t" + inv.getItem(z).getItemId() + ":# (Qty: " + inv.getItem(z).getQuantity() + ")\r\n";
+							selStr += "#L" + z + "# #i" + inv.getItem(z).getItemId() + ":# #t" + inv.getItem(z).getItemId() + ":# (จำนวน: " + inv.getItem(z).getQuantity() + ")\r\n";
 						}
 					}
 					else {
@@ -241,7 +241,7 @@ function action(M, T, S) {
 					cm.sendOk(selStr);
 				}
 				else {
-					cm.sendOk("This feature is not implemented.");
+					cm.sendOk("ฟีเจอร์นี้ยังไม่เปิดใช้งาน");
 					cm.dispose();
 				}
 				break;
@@ -253,7 +253,7 @@ function action(M, T, S) {
 		switch (S1) {
 			case 0:
 				if (chr == null) {
-					cm.sendOk("Character has disconnected or logged out.");
+					cm.sendOk("ตัวละครตัดการเชื่อมต่อหรือออกจากระบบแล้ว");
 					//log("fail", "Search failed\t"+name+"\tDisconnected during inventory search\r\n");
 					cm.dispose();
 					return;
@@ -263,8 +263,8 @@ function action(M, T, S) {
 				{
 					//log("access", ""+name+"("+chr.getId()+") character's "+invType+" inventory item "+inv.getItem(S4).getItemId()+" accessed\r\n");
 
-					selStr = "#b#e" + chr.getName() + "#k#n character's #e#r" + invType + "#k#n inventory accessed.\r\n";
-					selStr += "Currently selected item is #e#b#t" + inv.getItem(S4).getItemId() + ":##k#n.\r\n#b";
+					selStr = "เข้าถึงช่องเก็บของ #e#r" + invType + "#k#n ของตัวละคร #b#e" + chr.getName() + "#k#n แล้ว\r\n";
+					selStr += "ไอเท็มที่เลือกอยู่คือ #e#b#t" + inv.getItem(S4).getItemId() + ":##k#n.\r\n#b";
 					if (S3 < 2) // Equip
 					{
 						selStr += "#L20010##eCopy#n selected item to my inventory#l\r\n";
@@ -289,7 +289,7 @@ function action(M, T, S) {
 						cm.sendOk(selStr);
 					}
 					else {
-						selStr += "\r\n#kCurrently has #e#r" + inv.getItem(S4).getQuantity() + " pcs#k#n in this slot.\r\n#e#rEnter the quantity to delete.";
+						selStr += "\r\n#kปัจจุบันมี #e#r" + inv.getItem(S4).getQuantity() + " ชิ้น#k#n ในช่องนี้\r\n#e#rกรอกจำนวนที่จะลบ";
 						cm.sendGetNumber(selStr, 0, 1, inv.getItem(S4).getQuantity());
 					}
 				}
@@ -313,11 +313,11 @@ function action(M, T, S) {
 					number = S4;
 					ii = Packages.server.MapleItemInformationProvider.getInstance();
 					if (!ii.itemExists(number)) {
-						cm.sendOk("Item does not exist.");
+						cm.sendOk("ไอเท็มไม่มีอยู่จริง");
 						cm.dispose();
 						return;
 					}
-					cm.sendGetNumber("Enter the quantity of items to give to " + chr.getName() + ".", 1, 1, 32767);
+					cm.sendGetNumber("กรอกจำนวนไอเท็มที่จะมอบให้ " + chr.getName() + "", 1, 1, 32767);
 					return;
 				}
 				if (S3 >= 13 && S3 <= 15) {
@@ -329,7 +329,7 @@ function action(M, T, S) {
 						txt = "Gave " + number + " Neo Gem to " + name + " character.";
 						chr.setKeyValue(100712, "point", chr.getKeyValue(100712, "point") + number);
 					} else if (S3 == 15) {
-						txt = "Gave " + number + " Neo Core to " + name + " character.";
+						txt = "มอบ " + number + " Neo Core ให้ตัวละคร " + name + " แล้ว";
 						chr.setKeyValue(501215, "point", chr.getKeyValue(501215, "point") + number);
 					}
 					cm.getPlayer().dropMessage(6, txt);
@@ -339,10 +339,10 @@ function action(M, T, S) {
 				if (S3 >= 16 && S3 <= 17) {
 					number = S4;
 					if (S3 == 13) {
-						txt = "Gave " + number + " Promo Points to " + name + " character.";
+						txt = "มอบ " + number + " แต้มโปรโมท ให้ตัวละคร " + name + " แล้ว";
 						chr.setKeyValue(100711, "point", chr.getKeyValue(100711, "point") + number);
 					} else if (S3 == 14) {
-						txt = "Gave " + number + " Donation Points to " + name + " character.";
+						txt = "มอบ " + number + " แต้มโดเนท ให้ตัวละคร " + name + " แล้ว";
 						chr.setKeyValue(100712, "point", chr.getKeyValue(100712, "point") + number);
 					}
 					cm.getPlayer().dropMessage(6, txt);
@@ -368,15 +368,15 @@ function action(M, T, S) {
 				{
 					if (S5 != 20010) // If not copying
 					{
-						selStr = "\r\nPlease enter the #e#rDeletion Reason#k#n. Enter a number below to auto-fill the content.\r\n\r\nYou can also write a custom reason.\r\n";
-						selStr += "#e1: #nItem retrieval due to incorrect distribution\r\n"
-						selStr += "#e2: #nItem retrieval obtained through abnormal means\r\n"
-						selStr += "#e3: #nItem retrieval obtained through trade scam\r\n\r\n";
+						selStr = "\r\nกรุณาระบุ #e#rเหตุผลการลบ#k#n เลือกหัวข้อด้านล่างเพื่อเติมข้อความอัตโนมัติ\r\n\r\nคุณสามารถเขียนเหตุผลเองได้เช่นกัน\r\n";
+						selStr += "#e1: #nเรียกคืนไอเท็มเนื่องจากการแจกจ่ายผิดพลาด\r\n"
+						selStr += "#e2: #nเรียกคืนไอเท็มที่ได้รับด้วยวิธีที่ไม่ปกติ\r\n"
+						selStr += "#e3: #nเรียกคืนไอเท็มที่ได้รับจากการเกรียนแลกเปลี่ยน\r\n\r\n";
 					}
 					else {
-						selStr = "\r\nPlease enter the #e#rCopy Reason#k#n. Enter a number below to auto-fill the content.\r\n\r\nYou can also write a custom reason.\r\n";
-						selStr += "#e4: #nItem retrieval obtained through trade scam\r\n"
-						selStr += "#e5: #nPreserving item obtained through abnormal means\r\n"
+						selStr = "\r\nกรุณาระบุ #e#rเหตุผลการคัดลอก#k#n เลือกหัวข้อด้านล่างเพื่อเติมข้อความอัตโนมัติ\r\n\r\nคุณสามารถเขียนเหตุผลเองได้เช่นกัน\r\n";
+						selStr += "#e4: #nเรียกคืนไอเท็มที่ได้รับจากการเกรียนแลกเปลี่ยน\r\n"
+						selStr += "#e5: #nเก็บรักษาไอเท็มที่ได้รับด้วยวิธีที่ไม่ปกติ\r\n"
 					}
 					cm.sendGetText(selStr);
 				}
@@ -388,7 +388,7 @@ function action(M, T, S) {
 					//log("notice", "Send success\t"+name+"\t"+S5+"\t"+txt+"\r\n");
 
 					chr.dropMessage(S5, txt);
-					cm.getPlayer().dropMessage(5, "Notice sent to " + name + ". Proceed with next action.");
+					cm.getPlayer().dropMessage(5, "ส่งประกาศถึง " + name + " แล้ว ดำเนินการต่อ");
 					cm.dispose();
 					cm.openNpc(9010017);
 					return;
@@ -396,12 +396,12 @@ function action(M, T, S) {
 				if (S3 == 11) {
 					count = S5;
 					if (count > 32767 || count <= 0) {
-						cm.sendOk("Invalid value. Please enter again.");
+						cm.sendOk("ค่าไม่ถูกต้อง กรุณากรอกใหม่");
 						cm.dispose();
 						return;
 					}
 					if (!Packages.server.MapleInventoryManipulator.checkSpace(chr.getClient(), number, count, "")) {
-						cm.sendOk("Target's inventory does not have enough space.");
+						cm.sendOk("ช่องเก็บของเป้าหมายไม่เพียงพอ");
 						cm.dispose();
 						return;
 					}
@@ -414,7 +414,7 @@ function action(M, T, S) {
 					} else {
 						chr.gainItem(number, count);
 					}
-					cm.getPlayer().dropMessage(5, "Item sent to " + name + ". Proceed with next action.");
+					cm.getPlayer().dropMessage(5, "ส่งไอเท็มให้ " + name + " แล้ว ดำเนินการต่อ");
 					cm.dispose();
 					cm.openNpc(9010017);
 					return;
@@ -427,7 +427,7 @@ function action(M, T, S) {
 			case 0:
 
 				if (chr == null) {
-					cm.sendOk("Character has disconnected or logged out.");
+					cm.sendOk("ตัวละครตัดการเชื่อมต่อหรือออกจากระบบแล้ว");
 					//log("fail", "Search failed\t"+name+"\tDisconnected during inventory modification\r\n");
 					cm.dispose();
 					return;
@@ -437,11 +437,11 @@ function action(M, T, S) {
 				{
 					REASON = function () {
 						switch (cm.getText()) {
-							case "1": return "Item retrieval due to incorrect distribution";
-							case "2": return "Item retrieval obtained through abnormal means";
-							case "3": return "Item retrieval obtained through trade scam";
-							case "4": return "Item retrieval obtained through trade scam";
-							case "5": return "Preserving item obtained through abnormal means";
+							case "1": return "เรียกคืนไอเท็มเนื่องจากการแจกจ่ายผิดพลาด";
+							case "2": return "เรียกคืนไอเท็มที่ได้รับด้วยวิธีที่ไม่ปกติ";
+							case "3": return "เรียกคืนไอเท็มที่ได้รับจากการเกรียนแลกเปลี่ยน";
+							case "4": return "เรียกคืนไอเท็มที่ได้รับจากการเกรียนแลกเปลี่ยน";
+							case "5": return "เก็บรักษาไอเท็มที่ได้รับด้วยวิธีที่ไม่ปกติ";
 							default: return cm.getText();
 						}
 					}
@@ -460,12 +460,12 @@ function action(M, T, S) {
 
 							if (SET_DEL == 1)
 								chr.dropMessage(5, " ");
-							chr.dropMessage(5, "[Notice] " + cm.getItemName(inv.getItem(S4).getItemId()) + " item has been deleted due to '" + REASON() + "'.");
+							chr.dropMessage(5, "[ประกาศ] ไอเท็ม " + cm.getItemName(inv.getItem(S4).getItemId()) + " ถูกลบเนื่องจาก '" + REASON() + "'");
 							chr.dropMessage(5, " ");
 
 							//log("success", "Delete\t"+chr.getId()+"\t"+name+"\t"+invType+"\t"+inv.getItem(S4).getItemId()+"\t1 pc\t"+REASON()+"\r\n");
 							MapleInventoryManipulator.removeFromSlot(chr.getClient(), TYPES, S4, 1, false);
-							cm.sendOk("Item deletion completed.");
+							cm.sendOk("ลบไอเท็มเรียบร้อยแล้ว");
 
 
 							cm.dispose();
@@ -475,7 +475,7 @@ function action(M, T, S) {
 							//log("success", "Copy\t"+chr.getId()+"\t"+name+"\t"+invType+"\t"+inv.getItem(S4).getItemId()+"\t1 pc\t"+REASON()+"\r\n");
 							items = inv.getItem(S4).copy();
 							MapleInventoryManipulator.addFromDrop(cm.getClient(), items, true);
-							cm.sendOk("Item copy completed.");
+							cm.sendOk("คัดลอกไอเท็มเรียบร้อยแล้ว");
 
 							cm.dispose();
 							break;
@@ -484,13 +484,13 @@ function action(M, T, S) {
 
 							if (SET_DEL == 1)
 								chr.dropMessage(5, " ");
-							chr.dropMessage(5, "[Notice] " + cm.getItemName(inv.getItem(S4).getItemId()) + " item x" + S5 + " has been deleted due to '" + REASON() + "'.");
+							chr.dropMessage(5, "[ประกาศ] ไอเท็ม " + cm.getItemName(inv.getItem(S4).getItemId()) + " x" + S5 + " ชิ้น ถูกลบเนื่องจาก '" + REASON() + "'");
 							chr.dropMessage(5, " ");
 
 							//log("success", "Delete\t"+chr.getId()+"\t"+name+"\t"+invType+"\t"+inv.getItem(S4).getItemId()+"\t"+S5+" pcs\t"+REASON()+"\r\n");
 							MapleInventoryManipulator.removeFromSlot(chr.getClient(), TYPES, S4, S5, false);
 
-							cm.sendOk("Item deletion completed.");
+							cm.sendOk("ลบไอเท็มเรียบร้อยแล้ว");
 							cm.dispose();
 
 					}
@@ -507,7 +507,7 @@ function checkOnOff(i, type) {
 				return "#r";
 
 			case "string":
-				return "OFF";
+				return "ปิด";
 		}
 	}
 	else {
@@ -516,7 +516,7 @@ function checkOnOff(i, type) {
 				return "#b";
 
 			case "string":
-				return "ON";
+				return "เปิด";
 		}
 	}
 }
@@ -552,7 +552,7 @@ function log(type, i) {
 function toString(i) {
 	switch (i) {
 		case 0:
-			return "#Cgray#Not Set#k";
+			return "#Cgray#ไม่ได้ตั้งค่า#k";
 
 		case 10041:
 		case 20041:

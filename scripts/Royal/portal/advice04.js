@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Click \r\\#b<Sera>", 100, 5);
+    pi.showInstruction("คลิก \r\\#b<เซร่า>", 100, 5);
 }

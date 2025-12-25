@@ -4,10 +4,10 @@ function enter(pi) {
 		eim.registerPlayer(pi.getPlayer());
 		return true;
 	}
-    if (pi.getPlayer().getParty() == null || !pi.isLeader()) {
-	pi.playerMessage(5, "The leader of the party must be here.");
-	return false;
-    }
+	if (pi.getPlayer().getParty() == null || !pi.isLeader()) {
+		pi.playerMessage(5, "หัวหน้าปาร์ตี้ต้องอยู่ที่นี่");
+		return false;
+	}
 	var party = pi.getPlayer().getParty().getMembers();
 	var next = true;
 	var size = 0;
@@ -27,18 +27,18 @@ function enter(pi) {
 	if (next && size >= 2) {
 		var em = pi.getEventManager("Dragonica");
 		if (em == null) {
-			pi.playerMessage(5, "This event is currently not available.");
+			pi.playerMessage(5, "กิจกรรมนี้ยังไม่เปิดให้บริการในขณะนี้");
 		} else {
 			var prop = em.getProperty("state");
 			if (prop == null || prop.equals("0")) {
 				em.startInstance(pi.getParty(), pi.getMap(), 200);
 			} else {
-				pi.playerMessage(5, "Someone is already attempting this boss.");
+				pi.playerMessage(5, "มีคนกำลังต่อสู้กับบอสนี้อยู่");
 			}
 		}
 	} else {
-		pi.playerMessage(5, "Make sure all 2+ party members are in this map and level 120+ and have Soaring skill.");
+		pi.playerMessage(5, "ตรวจสอบให้แน่ใจว่าสมาชิกทุกคนในปาร์ตี้ (2 คนขึ้นไป) อยู่ในแผนที่นี้ มีเลเวล 120+ และมีทักษะ Soaring");
 		return false;
 	}
-        return true;
+	return true;
 }

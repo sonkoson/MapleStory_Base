@@ -22,7 +22,7 @@ function action(mode, type, selection) {
             var inv = cm.getPlayer().getInventory(Packages.objects.item.MapleInventoryType.EQUIP);
             var items = inv.list().toArray();
 
-            // Sort by slot number
+            // เรียงตามหมายเลขช่อง
             java.util.Arrays.sort(items, function (a, b) {
                 return a.getPosition() - b.getPosition();
             });

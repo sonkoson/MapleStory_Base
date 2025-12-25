@@ -36,7 +36,7 @@ var currencyPrice = 0;
 var currencyName = "";
 var maxcount = 0;
 var price = 30;
-var allstat = 2, atk = 2; // 1회당 올스텟, 공마 증가치
+var allstat = 2, atk = 2; // All Stat, Att/Mag increase per enhancement
 
 function start() {
     status = -1;
@@ -155,7 +155,7 @@ function action(mode, type, selection) {
             cm.getPlayer().saveToDB(false, false);
             cm.getPlayer().setSaveFlag(prevflag)
         } catch (err) {
-            cm.addCustomLog(50, "[CashEn.js] 에러 발생 : " + err + "");
+            cm.addCustomLog(50, "[CashEn.js] Error occurred : " + err + "");
         }
     }
 }

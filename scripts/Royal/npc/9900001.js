@@ -25,7 +25,7 @@ function action(mode, type, sel) {
     }
 
     // ───────────────────────────────────────────────────────────────────────────
-    // 0) First Dialogue: "Receive User Nickname"
+    // 0) บทสนทนาแรก: "รับชื่อตัวละคร"
     // ───────────────────────────────────────────────────────────────────────────
     if (status == 0) {
         // Check GM Permission
@@ -42,11 +42,11 @@ function action(mode, type, sel) {
         step = 1;
     }
     // ───────────────────────────────────────────────────────────────────────────
-    // 1) After Nickname Input → "Receive Promotion Count"
+    // 1) หลังจากรับชื่อตัวละคร → "รับจำนวนโปรโมท"
     // ───────────────────────────────────────────────────────────────────────────
     else if (status == 1) {
         if (step != 1) {
-            cm.sendOk("An unexpected error occurred.");
+            cm.sendOk("เกิดข้อผิดพลาดที่ไม่คาดคิด");
             cm.dispose();
             return;
         }
@@ -63,11 +63,11 @@ function action(mode, type, sel) {
         step = 2;
     }
     // ───────────────────────────────────────────────────────────────────────────
-    // 2) After Promotion Count Input → Actual INSERT Processing
+    // 2) หลังจากรับจำนวนโปรโมท → ดำเนินการ INSERT จริง
     // ───────────────────────────────────────────────────────────────────────────
     else if (status == 2) {
         if (step != 2) {
-            cm.sendOk("An unexpected flow error occurred.");
+            cm.sendOk("เกิดข้อผิดพลาดในการทำงานของสคริปต์");
             cm.dispose();
             return;
         }
@@ -160,13 +160,13 @@ function insertHongboRecord(nickname, count) {
                 "   เวลาลงทะเบียน (DB Server Time) : NOW()"
             );
         } else {
-            cm.sendOk("Error: No records were inserted.");
+            cm.sendOk("เกิดข้อผิดพลาด: ไม่มีการบันทึกข้อมูล");
         }
         cm.dispose();
         return;
 
     } catch (e) {
-        cm.sendOk("Error occurred while recording promotion record to DB:\r\n" + e.toString());
+        cm.sendOk("เกิดข้อผิดพลาดขณะบันทึกข้อมูลการโปรโมทลงฐานข้อมูล:\r\n" + e.toString());
         e.printStackTrace();
         try {
             if (con != null && !con.isClosed()) con.close();

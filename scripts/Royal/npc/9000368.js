@@ -209,7 +209,7 @@ function getQuestType(qid, qtype, qnum, isSecret, qlevel) {
                 return "#e[Lv." + qlevel + "]#n #k#fc0xFFF361A6#ผู้เล่นออนไลน์ #r" + nf(qnum) + " คนขึ้นไป#k";
                 break;
             default:
-                return "Error.";
+                return "เกิดข้อผิดพลาด";
                 break;
         }
     } else {
@@ -324,7 +324,7 @@ function gainItemByType(iid, itype, i1, i2) {
             //cm.getPlayer().AddStarDustCoin(i1);
             break;
         default:
-            cm.sendOk("An error occurred.");
+            cm.sendOk("เกิดข้อผิดพลาด");
             cm.dispose();
             break;
     }

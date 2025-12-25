@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press #e#b[Alt]#k#n to\r\\ JUMP.", 100, 5);
+    pi.showInstruction("กดปุ่ม #e#b[Alt]#k#n เพื่อ\r\\ กระโดด", 100, 5);
 }

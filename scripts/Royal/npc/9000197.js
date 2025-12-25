@@ -4,7 +4,7 @@ importPackage(java.lang);
 
 function ConvertNumber(number) { // Number formatting function
     var inputNumber = number < 0 ? false : number;
-    var unitWords = ['', 'Ten Thousand ', 'Hundred Million ', 'Trillion ', 'Quadrillion '];
+    var unitWords = ['', 'หมื่น ', 'ร้อยล้าน ', 'ล้านล้าน ', 'พันล้านล้าน '];
     var splitUnit = 10000;
     var splitCount = unitWords.length;
     var resultArray = [];
@@ -69,7 +69,7 @@ function action(mode, type, selection) {
         cm.getPlayer().DamageMeterExitMap = 180000000;*/
         var say = "";
         if (cm.getPlayer().getGMLevel() > 5) {
-            say += "#fc0xFF6600CC#\r\n\r\n\r\n   <Admin Menu>\r\n#L4#Reset Ranking#l\r\n\r\n"//#L5#Give Ranker Reward#l;
+            say += "#fc0xFF6600CC#\r\n\r\n\r\n   <เมนูแอดมิน>\r\n#L4#รีเซ็ตอันดับ#l\r\n\r\n"//#L5#มอบรางวัลประจำวัน#l;
         }
         cm.sendSimple("#fs11##fc0xFF000000#   ต้องการเริ่มทดสอบ Damage หรือไม่?\r\n" +
             "   สถิติ Damage ก่อนหน้า: " + cm.getPlayer().DamageMeter + "\r\n   #r※ การจัดอันดับจะบันทึกสถิติล่าสุดของคุณ ไม่ใช่สถิติสูงสุด#k\r\n" +
@@ -111,7 +111,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } catch (e) {
-                cm.sendOk("No records found or an error occurred.\r\n" + e);
+                cm.sendOk("ไม่พบข้อมูลหรือเกิดข้อผิดพลาด\r\n" + e);
                 cm.dispose();
                 return;
             } finally {
@@ -142,7 +142,7 @@ function action(mode, type, selection) {
             cm.sendGetNumber("ต้องการดูอันดับของวันที่เท่าไหร่?\r\nกรุณาใส่วันที่ดังนี้:\r\nตัวอย่าง) 20200101", 0, 20200101, 99999999);
         } else if (selection == 4 && cm.getPlayer().getGMLevel() > 5) {
             admin = 1;
-            cm.sendYesNo("Are you sure you want to reset all Damage Meter rankings?\r\nAll date records will be deleted!");
+            cm.sendYesNo("คุณแน่ใจหรือไม่ว่าต้องการรีเซ็ตอันดับ Damage Meter ทั้งหมด?\r\nบันทึกวันที่ทั้งหมดจะถูกลบ!");
         } else if (selection == 5 && cm.getPlayer().getGMLevel() > 5) {
             admin = 2;
             cm.sendGetNumber("ต้องการแจกรางวัลอันดับของวันที่เท่าไหร่?\r\nกรุณาใส่วันที่ดังนี้:\r\nตัวอย่าง) 20200101", 0, 20200101, 99999999);
@@ -172,7 +172,7 @@ function action(mode, type, selection) {
                 cm.dispose();
                 return;
             } catch (e) {
-                cm.sendOk("No records found or an error occurred.\r\n" + e);
+                cm.sendOk("ไม่พบข้อมูลหรือเกิดข้อผิดพลาด\r\n" + e);
                 cm.dispose();
                 return;
             } finally {
@@ -207,11 +207,11 @@ function action(mode, type, selection) {
                 ps.executeUpdate();
                 ps.close();
                 con.close();
-                cm.sendOk("Damage Meter ranking reset complete.");
+                cm.sendOk("รีเซ็ตอันดับ Damage Meter เรียบร้อยแล้ว");
                 cm.dispose();
                 return;
             } catch (e) {
-                cm.sendOk("An error occurred.\r\n" + e);
+                cm.sendOk("เกิดข้อผิดพลาด\r\n" + e);
                 cm.dispose();
                 return;
             } finally {
@@ -240,8 +240,8 @@ function action(mode, type, selection) {
                 rs = ps.executeQuery();
                 var count = 0;
                 rewarddate = selection;
-                var say = rewarddate.toString().substring(0, 4) + "/" + rewarddate.toString().substring(4, 6) + "/" + rewarddate.toString().substring(6, 8) + " Damage Meter Ranking\r\n" +
-                    "Click nickname to distribute ranking rewards.\r\n";
+                var say = rewarddate.toString().substring(0, 4) + "/" + rewarddate.toString().substring(4, 6) + "/" + rewarddate.toString().substring(6, 8) + " อันดับ Damage Meter\r\n" +
+                    "คลิกชื่อเพื่อแจกของรางวัลอันดับ\r\n";
                 while (rs.next()) {
                     count++;
                     say += "#L" + rs.getInt("id") + "#" + count + " place - " + rs.getString("name") + "   Damage: " + ConvertNumber(rs.getLong("damage")) + "\r\n";
@@ -251,7 +251,7 @@ function action(mode, type, selection) {
                 con.close();
                 cm.sendSimple(say);
             } catch (e) {
-                cm.sendOk("No records found or an error occurred.\r\n" + e);
+                cm.sendOk("ไม่พบข้อมูลหรือเกิดข้อผิดพลาด\r\n" + e);
                 cm.dispose();
                 return;
             } finally {
@@ -297,9 +297,9 @@ function action(mode, type, selection) {
                     rank = count;
                     characterid = rs.getInt("characterid");
                     name = rs.getString("name");
-                    say += rs.getString("name") + "'s Damage Meter Ranking\r\n\r\n";
-                    say += count + " place - Damage: " + ConvertNumber(rs.getLong("damage"));
-                    say += "\r\n\r\nDo you want to give rank " + count + " reward?";
+                    say += " อันดับ Damage Meter ของ " + rs.getString("name") + "\r\n\r\n";
+                    say += "อันดับ " + count + " - Damage: " + ConvertNumber(rs.getLong("damage"));
+                    say += "\r\n\r\nคุณต้องการมอบรางวัลอันดับ " + count + " หรือไม่?";
                 }
             }
             rs.close();
@@ -307,7 +307,7 @@ function action(mode, type, selection) {
             con.close();
             cm.sendYesNo(say);
         } catch (e) {
-            cm.sendOk("No user selected or an error occurred.\r\n" + e);
+            cm.sendOk("ไม่ได้เลือกผู้ใช้หรือเกิดข้อผิดพลาด\r\n" + e);
             cm.dispose();
             return;
         } finally {
@@ -334,9 +334,9 @@ function action(mode, type, selection) {
             }
         }
     } else if (status == 4 && cm.getPlayer().getGMLevel() > 5) {
-        //1등 2022424 20개 + 4001126 500개 + 4310024 5개
-        //2등 2022424 10개 + 4001126 300개 + 4310024 3개
-        //3등 2022424 5개 + 4001126 100개 + 4310024 1개
+        //1st: 2022424 20 items + 4001126 500 items + 4310024 5 items
+        //2nd: 2022424 10 items + 4001126 300 items + 4310024 3 items
+        //3rd: 2022424 5 items + 4001126 100 items + 4310024 1 items
         var channel = Packages.handling.world.World.Find.findChannel(characterid);
         if (rank == 1) {
             Packages.handling.channel.handler.DueyHandler.addNewItemToDb(2022424, 20, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
@@ -351,15 +351,15 @@ function action(mode, type, selection) {
             Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4001126, 100, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
             Packages.handling.channel.handler.DueyHandler.addNewItemToDb(4310024, 1, characterid, "[Damage Meter]", "Damage Meter Rank " + rank + " Reward", channel >= 0);
         } else {
-            cm.sendOk("This user is outside the top 3, so there is no reward.");
+            cm.sendOk("ผู้เล่นนี้อยู่นอก 3 อันดับแรก จึงไม่มีรางวัล");
             cm.dispose();
             return;
         }
         if (channel >= 0) {
             Packages.network.center.Center.Broadcast.sendPacket(characterid, Packages.tools.MaplePacketCreator.sendDuey(28, null, null));
-            Packages.network.center.Center.Broadcast.sendPacket(characterid, Packages.tools.MaplePacketCreator.serverNotice(2, "[System]: Damage Meter rank " + rank + " reward has been sent via Parcel."));
+            Packages.network.center.Center.Broadcast.sendPacket(characterid, Packages.tools.MaplePacketCreator.serverNotice(2, "[ระบบ]: ของรางวัลอันดับ Damage Meter " + rank + " ถูกส่งทางพัสดุแล้ว"));
         }
-        cm.sendOk("Distributed rank " + rank + " reward to " + name + ".");
+        cm.sendOk("มอบรางวัลอันดับ " + rank + " ให้ " + name + " เรียบร้อยแล้ว");
         cm.dispose();
         return;
     } else {

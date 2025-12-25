@@ -17,7 +17,7 @@ function init() {
 
 
 function playerRevive(eim, player) {
-	return true;
+    return true;
 }
 
 function setup(eim) {
@@ -35,23 +35,23 @@ var randArea = [new Point(105, -354), new Point(2644, -345), new Point(-929, -35
 function playerEntry(eim, player) {
     mapid = Integer.parseInt(eim.getProperty("StartMap"));
     var difficulty = Integer.parseInt(eim.getProperty("Difficulty"));
- 
+
     if (player.isLeader()) {
-        // 무토 몹 소환
+        // Summon Muto mobs
         for (var i = 0; i < 6; ++i) {
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642000), new Point(105, -354));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642002), new Point(2644, -345));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642004), new Point(-929, -356));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642006), new Point(3778, -343));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642008), new Point(-1045, -847));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642010), new Point(3935, -841));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642012), new Point(1434, -791));
-                eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642014), new Point(1405, -1637));	
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642000), new Point(105, -354));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642002), new Point(2644, -345));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642004), new Point(-929, -356));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642006), new Point(3778, -343));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642008), new Point(-1045, -847));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642010), new Point(3935, -841));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642012), new Point(1434, -791));
+            eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642014), new Point(1405, -1637));
         }
 
-        // 열매 나무 보스는 랜덤 위치에 소환
+        // Fruit Tree Boss is summoned at random location
         eim.getMapFactory().getMap(mapid).spawnMonsterOnGroundBelow(em.getMonster(8642016), randArea[Math.floor(Math.random() * randArea.length)]);
-	eim.startHungryMuto(player, difficulty, mapid);
+        eim.startHungryMuto(player, difficulty, mapid);
     }
 }
 
@@ -60,10 +60,10 @@ function scheduledTimeout(eim) {
     var it = eim.getPlayers().iterator();
     while (it.hasNext()) {
         var chr = it.next();
-        var tese = chr.getWarpMap(450002023); // 무토 대기실
+        var tese = chr.getWarpMap(450002023); // Muto Waiting Room
         chr.setClock(0);
         chr.changeMap(tese, tese.getPortal(0));
-        // 게임 오버 이펙트
+        // Game Over Effect
 
     }
     eim.unregisterAll();
@@ -85,8 +85,7 @@ function monsterValue(eim, mobid) {
 function onMapLoad(eim, player) {
 }
 
-function playerDisconnected(eim, player)
-{
+function playerDisconnected(eim, player) {
 }
 
 
@@ -119,15 +118,14 @@ function monsterKilled(eim, player, point) {
 
 
 function leftParty(eim, player) {
-    // 해당 파티원 맵이동 및 게임 오버
+    // Move that party member to map and Game Over
 }
 
 
 
 function disbandParty(eim) {
     eim.unregisterAll();
-    if (eim != null)
-    {
+    if (eim != null) {
         eim.dispose();
     }
 }

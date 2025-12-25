@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -110,23 +110,23 @@ function WarptoNextStage(eim) {
         map = eim.getMapInstance(stage);
         pl.changeMap(map.getId(), map.getPortal(map.getId() == 450008150 ? Packages.objects.utils.Randomizer.rand(1, 2) : 0));
         if (stage == 1) {
-	    pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
-	    pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 45));
+            pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
+            pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 45));
         } else if (stage == 2) {
             playAnimation(pl, eim);
         } else if (stage == 3) {
-	    pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
-	    pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 50));
+            pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
+            pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 50));
         } else if (stage == 4) {
-	    pl.cancelEffectFromBuffStat(MapleBuffStat.DebuffIncHp);
+            pl.cancelEffectFromBuffStat(MapleBuffStat.DebuffIncHp);
             playAnimation(pl, eim);
         } else if (stage == 5) {
-	    pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
-	    pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 25));
+            pl.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
+            pl.getClient().getSession().writeAndFlush(MobPacket.BossWill.setMoonGauge(100, 25));
         } else if (stage == 6) {
-	    map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[하드 윌]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
-	    spawnMonster(eim, stage, 8950115, -71, 247); // 보상상자
-	    eim.restartEventTimer(300000);
+            map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Hard Will]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
+            spawnMonster(eim, stage, 8950115, -71, 247); // Reward Box
+            eim.restartEventTimer(300000);
         }
     }
     if (stage == 1) {
@@ -187,6 +187,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

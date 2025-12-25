@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -31,7 +31,7 @@ function playerEntry(eim, player) {
     if (player.getParty().getLeader().getId() == player.getId()) {
         spawnMonster(eim);
     }
-	map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[보스]#k#fn나눔고딕 ExtraBold# 텐구의 까마귀 시험", 100, 3000, 3, -100, 50, 1, 4));
+    map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Boss]#k#fn나눔고딕 ExtraBold# การทดสอบอีกาแห่งเท็งกุ", 100, 3000, 3, -100, 50, 1, 4));
 }
 
 function spawnMonsterTeng(eim, instance, mobid, x, y) {
@@ -71,7 +71,7 @@ function monsterValue(eim, mobId) {
     stage = parseInt(eim.getProperty("stage"));
     player = eim.getPlayers().get(0);
     if (mobId == 9400080) {
-        spawnMonsterTeng(eim, stage, 9500365, 453, -29); // 보상상자
+        spawnMonsterTeng(eim, stage, 9500365, 453, -29); // Reward Box
         eim.restartEventTimer(300000);
     }
     return 1;
@@ -115,6 +115,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

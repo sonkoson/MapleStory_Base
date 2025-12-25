@@ -10,9 +10,9 @@ importPackage(java.math);
 var outmap = 100000000;
 var time = 0;
 var mob;
-function init() {}
+function init() { }
 
-var unitLt = ['만', '억', '조', '경'];
+var unitLt = ['หมื่น', 'ร้อยล้าน', 'ล้านล้าน', 'ล้านล้านล้าน'];
 function NtoKr(num) {
     var rslt = num;
     if (('' + num).length > 4) {
@@ -52,31 +52,31 @@ function spawnMonster(eim) {
     mob = em.getMonster(9833101);
     mob2 = em.getMonster(9300183);
 
-    getsecond = Math.floor((new Date().getTime() - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Time_1"))/1000) // 나간 시점으로부터 몇초가 지났는지 계산
+    getsecond = Math.floor((new Date().getTime() - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Time_1")) / 1000) // Calculate seconds passed since leaving
     mob2.setHp(Long.MAX_VALUE - (getsecond * eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Atk")));
 
-    mob.setHp(Long.MAX_VALUE - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp")); 
+    mob.setHp(Long.MAX_VALUE - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp"));
 
     eim.registerMonster(mob2);
     eim.registerMonster(mob);
 
-    map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(2320,17));
-    map.spawnMonsterOnGroundBelow(mob2, new java.awt.Point(2320,17));
+    map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(2320, 17));
+    map.spawnMonsterOnGroundBelow(mob2, new java.awt.Point(2320, 17));
 
     var schedule = Timer.MapTimer.getInstance().register(function () {
         if (eim.getPlayers().get(0).getMapId() != 921172000) {
             schedule.cancel(true);
         } else {
-	    if (Long.MAX_VALUE - mob.getHp() > 10000000000000) {
-		eim.getPlayers().get(0).dropMessage(6, "더 이상 보스몬스터에게 피해를 입힐 수 없습니다.");
-		mob.setHp(Long.MAX_VALUE - 10000000000000);
-		eim.getPlayers().get(0).getMap().updateMonsterController(mob);
-	    } else if (Long.MAX_VALUE - mob.getHp() == 10000000000000) {
-	    } else {
-                eim.getPlayers().get(0).dropMessage(6, "입힌 데미지 : " + NtoKr(Long.MAX_VALUE - mob.getHp() - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp")) + " / " + NtoKr(10000000000000 - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp")));
-	    }
+            if (Long.MAX_VALUE - mob.getHp() > 10000000000000) {
+                eim.getPlayers().get(0).dropMessage(6, "ไม่สามารถสร้างความเสียหายให้กับบอสได้อีกต่อไป");
+                mob.setHp(Long.MAX_VALUE - 10000000000000);
+                eim.getPlayers().get(0).getMap().updateMonsterController(mob);
+            } else if (Long.MAX_VALUE - mob.getHp() == 10000000000000) {
+            } else {
+                eim.getPlayers().get(0).dropMessage(6, "ดาเมจที่ทำได้ : " + NtoKr(Long.MAX_VALUE - mob.getHp() - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp")) + " / " + NtoKr(10000000000000 - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Hp")));
+            }
             mob2.setHp(mob2.getHp() - eim.getPlayers().get(0).getKeyValue(20190622, "Union_Raid_Atk"));
-	}
+        }
     }, 1000);
 }
 
@@ -141,6 +141,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

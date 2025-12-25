@@ -77,7 +77,7 @@ function monsterValue(eim, mobId) {
         eim.schedule("WarptoNextStage", 6000);
         map = eim.getMapInstance(stage);
         map.broadcastMessage(SLFCGPacket.ClearObstacles());
-        map.broadcastMessage(SLFCGPacket.BlackLabel("#fn나눔고딕 ExtraBold##fs32##r#e태양의 불꽃은 복수를 잊지 않는다.", 100, 1000, 4, 0, 0, 1, 4));
+        map.broadcastMessage(SLFCGPacket.BlackLabel("#fn나눔고딕 ExtraBold##fs32##r#eเปลวเพลิงแห่งสุริยะไม่เคยลืมวันชำระแค้น", 100, 1000, 4, 0, 0, 1, 4));
         map.killMonster(8880601);
     } else if (mobId == 8880602) {
         eim.restartEventTimer(300000);
@@ -109,13 +109,13 @@ function WarptoNextStage(eim) {
         eim.setProperty("stage", "3");
         eim.schedule("WarptoNextStage", 9500);
     } else if (stage == 3) {
-        //2페
+        // Phase 2
         spawnMonster(eim, stage, 8880602, -9, 305);
         spawnMonster(eim, stage, 8880607, -9, 305);
         spawnMonster(eim, stage, 8880608, -9, 305);
-        eim.getMapInstance(stage).broadcastMessage(CWvsContext.serverNotice(5, "", "태양의 빛으로 가득찬 정오가 시작됩니다."));
+        eim.getMapInstance(stage).broadcastMessage(CWvsContext.serverNotice(5, "", "เที่ยงวันอันเต็มไปด้วยแสงแห่งสุริยะเริ่มต้นขึ้น"));
     } else if (stage == 1) {
-        //1페
+        // Phase 1
         spawnMonster(eim, stage, 8880600, 100, 275);
         spawnMonster(eim, stage, 8880601, 100, 275);
     } else if (stage == 4) {

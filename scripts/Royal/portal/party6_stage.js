@@ -1,20 +1,20 @@
 function enter(pi) {
-	switch(pi.getMapId()) {
+	switch (pi.getMapId()) {
 		case 930000000:
-			pi.warp(930000100,0);
+			pi.warp(930000100, 0);
 			break;
 		case 930000100:
 			if (pi.getMap().getAllMonstersThreadsafe().size() == 0) {
-				pi.warp(930000200,0);
+				pi.warp(930000200, 0);
 			} else {
-				pi.playerMessage(5, "Eliminate all the monsters.");
+				pi.playerMessage(5, "กำจัดมอนสเตอร์ทั้งหมด");
 			}
 			break;
 		case 930000200:
 			if (pi.getMap().getReactorByName("spine") != null && pi.getMap().getReactorByName("spine").getState() < 4) {
-				pi.playerMessage(5, "The spine blocks the way.");
+				pi.playerMessage(5, "มีหนามขวางทางไว้");
 			} else {
-				pi.warp(930000300,0); //assuming they cant get past reactor without it being gone
+				pi.warp(930000300, 0); //assuming they cant get past reactor without it being gone
 			}
 			break;
 	}

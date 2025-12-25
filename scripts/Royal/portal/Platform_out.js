@@ -1,7 +1,7 @@
 function enter(pi) {
     pi.getClient().getSession().writeAndFlush(Packages.networkd.models.CField.playSE("Sound/MiniGame.img/prize"));
     pi.getClient().getSession().writeAndFlush(Packages.network.models.CField.environmentChange("monsterPark/clearF", 0x13));
-    pi.getClient().getSession().writeAndFlush(Packages.network.models.CField.enforceMSG("스테이지 클리어다. 로비로 이동하지.", 212, 2000));
+    pi.getClient().getSession().writeAndFlush(Packages.network.models.CField.enforceMSG("เคลียร์ด่านแล้ว กำลังย้ายไปที่ล็อบบี้", 212, 2000));
     Packages.server.Timer.MapTimer.getInstance().schedule(function () {
         pi.getClient().getSession().writeAndFlush(Packages.networkd.models.CField.playSE("Sound/MiniGame.img/Catch"));
     }, 1000)

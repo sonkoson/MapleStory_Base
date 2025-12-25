@@ -29,8 +29,8 @@ function enter(pi) {
 	if (changedd) {
 		pi.updateInfoQuest(27017, new_quest);
 		pi.forceStartQuest(27018, number + 1, true);
-		pi.getPlayer().dropMessage(-1, (number + 1) + "/5 Point Complete");
-		pi.getPlayer().dropMessage(-1, "Title - High Position Challenger");
-		pi.showQuestMsg("Title - High Position Challenger " + (number + 1) + "/5 Point Complete");
+		pi.getPlayer().dropMessage(-1, (number + 1) + "/5 จุด สำเร็จ");
+		pi.getPlayer().dropMessage(-1, "ฉายา - High Position Challenger");
+		pi.showQuestMsg("ฉายา - High Position Challenger " + (number + 1) + "/5 จุด สำเร็จ");
 	}
 }

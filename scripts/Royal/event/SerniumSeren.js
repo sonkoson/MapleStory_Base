@@ -1,7 +1,7 @@
 importPackage(Packages.objects.utils);
 importPackage(Packages.network.models);
 
-// 이벤트매니저 초기화할 내용(채널별로 적용됨)
+// Event Manager Initialization Content (Applied per channel)
 function init() {
     em.setProperty("status0", "0");
 }
@@ -25,7 +25,7 @@ function playerEntry(eim, player) {
     player.setDeathCount(5);
     var bossMode = 0;
     if (eim.getProperty("BossMode") != null) {
-	    bossMode = parseInt(eim.getProperty("BossMode"));
+        bossMode = parseInt(eim.getProperty("BossMode"));
     }
     player.setBossMode(bossMode);
 }
@@ -105,10 +105,10 @@ function playerExit(eim, player) {
     }
 }
 
-function allMonstersDead(eim) {}
+function allMonstersDead(eim) { }
 
 function leftParty(eim, player) {
-    // 탈퇴
+    // Withdraw
     var exitMap = 410000670;
     playerExit(eim, player);
     player.changeMap(exitMap);
@@ -130,4 +130,4 @@ function disbandParty(eim) {
     }
 }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

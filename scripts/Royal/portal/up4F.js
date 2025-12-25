@@ -1,4 +1,4 @@
 function enter(pi) {
 	//pi.playPortalSE();
-	pi.playerMessage(5,"[알림] 4층은 입장이 불가능 합니다.");
+	pi.playerMessage(5, "[ระบบ] ไม่สามารถเข้าสู่ชั้น 4 ได้");
 }

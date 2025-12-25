@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -88,7 +88,7 @@ function WarptoNextStage(eim) {
         player.changeMap(map.getId(), 0);
     }
     if (stage == 3) {
-        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[하드 스우]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
+        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Hard Lotus]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
         spawnMonster(eim, stage, 8950110, 6, 18); // 보상상자
         eim.restartEventTimer(300000);
     } else {
@@ -134,6 +134,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

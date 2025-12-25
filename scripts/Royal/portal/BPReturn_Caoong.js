@@ -1,8 +1,8 @@
 /*
- *  리턴
+ *  Return
  */
 
 function enter(pi) {
-    pi.warp(987654321,"sp");
+    pi.warp(987654321, "sp");
     return false;
 }

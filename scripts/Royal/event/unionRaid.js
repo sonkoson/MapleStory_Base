@@ -11,7 +11,7 @@ function init() {
 
 
 function playerRevive(eim, player) {
-	return true;
+    return true;
 }
 
 function setup(eim) {
@@ -45,8 +45,7 @@ function monsterValue(eim, mobid) {
 function onMapLoad(eim, player) {
 }
 
-function playerDisconnected(eim, player)
-{
+function playerDisconnected(eim, player) {
     player.endRaid();
 }
 
@@ -82,15 +81,14 @@ function monsterKilled(eim, player, point) {
 
 
 function leftParty(eim, player) {
-    // 해당 파티원 맵이동 및 게임 오버
+    // Move that party member to map and Game Over
 }
 
 
 
 function disbandParty(eim) {
     eim.unregisterAll();
-    if (eim != null)
-    {
+    if (eim != null) {
         eim.dispose();
     }
 }

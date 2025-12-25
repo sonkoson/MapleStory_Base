@@ -13,7 +13,7 @@ var xy = [
     [-1450, -237]];
 
 var orgel = [
-    [9833080, 9833070], // 보라, 노랑
+    [9833080, 9833070], // Purple, Yellow
     [9833081, 9833071],
     [9833082, 9833072],
     [9833083, 9833073],
@@ -30,7 +30,7 @@ var setting = [
 var time = 0;
 
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Randomizer.nextInt();
@@ -65,17 +65,17 @@ function spawnOrigin(eim, player) {
     stage = player.getKeyValue(15901, "stage");
 
     for (i = 0; i < xy.length; i++) {
-	mob = em.getMonster(setting[i][0]);
+        mob = em.getMonster(setting[i][0]);
         if (mob.getId() >= 9833080) {
-	    mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
-	}
-	map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
+            mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
+        }
+        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
 
-	mob = em.getMonster(setting[i][1]);
+        mob = em.getMonster(setting[i][1]);
         if (mob.getId() >= 9833080) {
-	    mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
-	}
-	map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
+            mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
+        }
+        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
     }
 
     var purple = [0, 1, 2, 3, 4];
@@ -88,19 +88,19 @@ function spawnOrigin(eim, player) {
     }
 
     for (i = 0; i < purple.length; i++) {
-	mob = em.getMonster(orgel[purple[i]][0]);
-	if (mob.getId() >= 9833080) {
-	    mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
-	}
-	map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[purple[i]][0], xy[purple[i]][1]));
+        mob = em.getMonster(orgel[purple[i]][0]);
+        if (mob.getId() >= 9833080) {
+            mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
+        }
+        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[purple[i]][0], xy[purple[i]][1]));
     }
 
     for (i = 0; i < yellow.length; i++) {
-	mob = em.getMonster(orgel[yellow[i]][1]);
-	if (mob.getId() >= 9833080) {
-	    mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
-	}
-	map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[yellow[i]][0], xy[yellow[i]][1]));
+        mob = em.getMonster(orgel[yellow[i]][1]);
+        if (mob.getId() >= 9833080) {
+            mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(stage) * Math.max(1, stage - 200));
+        }
+        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[yellow[i]][0], xy[yellow[i]][1]));
     }
 }
 
@@ -108,58 +108,58 @@ function startGame(eim) {
     eim.restartEventTimer(1000 * 3 * 60);
     var players = eim.getPlayers();
     if (players != null && !players.isEmpty()) {
-	player = players.get(0);
-	player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerDisableTimer(false, 180 * 1000));
-	updateGauge(eim);
+        player = players.get(0);
+        player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerDisableTimer(false, 180 * 1000));
+        updateGauge(eim);
         spawnOrigin(eim, player);
     }
 }
 
 function updateGauge(eim) {
     var timer = Packages.server.Timer.MapTimer.getInstance().register(function () {
-	try {
-	time++;
-	if (eim.getProperty("gaugeHold") == null) {
-	    timer.cancel(true);
-	    return;
-	}
-        stop = eim.getProperty("gaugeHold").equals("true");
-	if (!stop) {
-	    if (eim.getMapInstance(0) != null && eim.getPlayers() != null && !eim.getPlayers().isEmpty()) {
-		var player = eim.getPlayers().get(0);
-    		stage = player.getKeyValue(15901, "stage");
-		purple = eim.getMapInstance(0).countOrgelById(true);
-		yellow = eim.getMapInstance(0).countOrgelById(false);
-		var calc = yellow - purple;
-		if (calc < 0) {
-		    if (stage < 100) {
-			calc *= -10;
-		    } else {
-			calc *= (-10 * (stage / 100));
-		    }
-		} else {
-		    calc *= -10;
-		}
-		eim.setProperty("gauge", (parseInt(eim.getProperty("gauge")) + calc) + "");
-		player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerGaugePacket(parseInt(eim.getProperty("gauge"))));
-		if (eim.getProperty("gauge") <= 0) {
-		    timer.cancel(true);
-		    nextStage(eim, player);
-		    return;
-		} else if (eim.getProperty("gauge") >= 1000) {
-		    timer.cancel(true);
-		    clear(eim);
-		    return;
-		}
-	    } else {
-		timer.cancel(true);
-		return;
-	    }
-	}
-	} catch (e) {
-	    e.printStackTrace();
-	    timer.cancel(true);
-	}
+        try {
+            time++;
+            if (eim.getProperty("gaugeHold") == null) {
+                timer.cancel(true);
+                return;
+            }
+            stop = eim.getProperty("gaugeHold").equals("true");
+            if (!stop) {
+                if (eim.getMapInstance(0) != null && eim.getPlayers() != null && !eim.getPlayers().isEmpty()) {
+                    var player = eim.getPlayers().get(0);
+                    stage = player.getKeyValue(15901, "stage");
+                    purple = eim.getMapInstance(0).countOrgelById(true);
+                    yellow = eim.getMapInstance(0).countOrgelById(false);
+                    var calc = yellow - purple;
+                    if (calc < 0) {
+                        if (stage < 100) {
+                            calc *= -10;
+                        } else {
+                            calc *= (-10 * (stage / 100));
+                        }
+                    } else {
+                        calc *= -10;
+                    }
+                    eim.setProperty("gauge", (parseInt(eim.getProperty("gauge")) + calc) + "");
+                    player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerGaugePacket(parseInt(eim.getProperty("gauge"))));
+                    if (eim.getProperty("gauge") <= 0) {
+                        timer.cancel(true);
+                        nextStage(eim, player);
+                        return;
+                    } else if (eim.getProperty("gauge") >= 1000) {
+                        timer.cancel(true);
+                        clear(eim);
+                        return;
+                    }
+                } else {
+                    timer.cancel(true);
+                    return;
+                }
+            }
+        } catch (e) {
+            e.printStackTrace();
+            timer.cancel(true);
+        }
     }, 1000);
 }
 
@@ -183,16 +183,16 @@ function nextStage(eim, player) {
 
     var pluspoint = stage - (stage % 10);
     if (stage < 10) {
-	pluspoint = 10;
+        pluspoint = 10;
     }
-    player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerMsg("드림포인트 " + pluspoint + " 획득!"));
+    player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerMsg("ได้รับ " + pluspoint + " Dream Points!"));
     player.setKeyValue(15901, "dream", (parseInt(Math.min(3000, player.getKeyValue(15901, "dream") + pluspoint))) + "");
     player.setKeyValue(15901, "clearTime", "" + time);
     eim.setProperty("gauge", "500");
     player.setKeyValue(15901, "stage", ++stage);
     player.getClient().getSession().writeAndFlush(SLFCGPacket.DreamBreakerGaugePacket(parseInt(eim.getProperty("gauge"))));
     player.getMap().killAllMonsters(true);
-    
+
     player.getClient().getSession().writeAndFlush(Packages.tools.packet.SLFCGPacket.DreamBreakerResult(time));
     var rank = Packages.client.DreamBreakerRank.getRank(player.getName());
     player.setKeyValue(15901, "rank_b", "" + rank);
@@ -240,23 +240,23 @@ function monsterValue(eim, mobId) {
 
     players = eim.getPlayers();
     if (players == null || players.isEmpty()) {
-	return 0;
+        return 0;
     }
 
     player = players.get(0);
 
     if (eim.getProperty("stopSpawn") == null || eim.getProperty("stopSpawn").equals("true")) {
-	return 0;
+        return 0;
     }
 
     for (i = 0; i < xy.length; i++) {
-	if (mobId == setting[i][0] || mobId == setting[i][1]) {
-	    if (mob.getId() >= 9833080) {
-		mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(player.getKeyValue(15901, "stage")) * Math.max(1, stage - 200));
-	        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
-	    }
-	    break;
-	}
+        if (mobId == setting[i][0] || mobId == setting[i][1]) {
+            if (mob.getId() >= 9833080) {
+                mob.setHp(Packages.constants.GameConstants.getDreamBreakerHP(player.getKeyValue(15901, "stage")) * Math.max(1, stage - 200));
+                map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(xy[i][0], xy[i][1]));
+            }
+            break;
+        }
     }
     return 1;
 }
@@ -269,18 +269,18 @@ function playerExit(eim, player) {
 function end(eim) { // fail
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
-	player = iter.next();
-	player.changeMap(921171100, 0);
-	player.getClient().getSession().writeAndFlush(Packages.network.models.CField.environmentChange("Map/Effect3.img/hungryMuto/TimeOver", 16));
+        player = iter.next();
+        player.changeMap(921171100, 0);
+        player.getClient().getSession().writeAndFlush(Packages.network.models.CField.environmentChange("Map/Effect3.img/hungryMuto/TimeOver", 16));
     }
 }
 
 function clear(eim) {
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
-	player = iter.next();
-	player.changeMap(921171100, 0);
-	player.getClient().getSession().writeAndFlush(Packages.network.models.CField.environmentChange("Map/Effect3.img/hungryMuto/Clear", 16));
+        player = iter.next();
+        player.changeMap(921171100, 0);
+        player.getClient().getSession().writeAndFlush(Packages.network.models.CField.environmentChange("Map/Effect3.img/hungryMuto/Clear", 16));
     }
 }
 
@@ -312,6 +312,6 @@ function disbandParty(eim) {
     // disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

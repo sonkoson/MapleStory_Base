@@ -3,15 +3,15 @@ importPackage(Packages.network.models);
 importPackage(Packages.constants);
 
 var arkMaps = [
-	350060400,
-	350060500,
-	350060600,
-	350060700,
-	350060800,
-	350060900,
+    350060400,
+    350060500,
+    350060600,
+    350060700,
+    350060800,
+    350060900,
 ];
 
-// 이벤트매니저 초기화할 내용(채널별로 적용됨)
+// Event Manager Initialization (Applied per channel)
 function init() {
     em.setProperty("status0", "0");
 }
@@ -35,7 +35,7 @@ function playerEntry(eim, player) {
     player.setDeathCount(5);
     var bossMode = 0;
     if (eim.getProperty("BossMode") != null) {
-	    bossMode = parseInt(eim.getProperty("BossMode"));
+        bossMode = parseInt(eim.getProperty("BossMode"));
     }
     player.setBossMode(bossMode);
 }
@@ -122,10 +122,10 @@ function playerExit(eim, player) {
     }
 }
 
-function allMonstersDead(eim) {}
+function allMonstersDead(eim) { }
 
 function leftParty(eim, player) {
-    // 탈퇴
+    // Withdrawal
     var exitMap = ServerConstants.TownMap;
     playerExit(eim, player);
     player.changeMap(exitMap);
@@ -147,4 +147,4 @@ function disbandParty(eim) {
     }
 }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

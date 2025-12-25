@@ -1,6 +1,6 @@
 importPackage(Packages.objects.utils);
 
-// 이벤트매니저 초기화할 내용(채널별로 적용됨)
+// Event Manager Initialization Content (Applied per channel)
 function init() {
     em.setProperty("status0", "0");
     em.setProperty("Cstatus0", "0");
@@ -67,13 +67,13 @@ function playerDead(eim, player) {
             eim.unregisterPlayer(player);
             if (eim.getPlayerCount() <= 0) {
                 eim.unregisterAll();
-        var mode = eim.getProperty("mode");
-        if (mode == "normal") {
-            eim.getEventManager().setProperty("status0", "0");
-        } else {
-            eim.getEventManager().setProperty("Cstatus0", "0");
-        }
-        eim.dispose();
+                var mode = eim.getProperty("mode");
+                if (mode == "normal") {
+                    eim.getEventManager().setProperty("status0", "0");
+                } else {
+                    eim.getEventManager().setProperty("Cstatus0", "0");
+                }
+                eim.dispose();
             }
         }
     }
@@ -105,13 +105,13 @@ function changedMap(eim, player, mapid) {
         eim.unregisterPlayer(player);
         if (eim != null) {
             if (eim.getPlayerCount() <= 0) {
-        var mode = eim.getProperty("mode");
-        if (mode == "normal") {
-            eim.getEventManager().setProperty("status0", "0");
-        } else {
-            eim.getEventManager().setProperty("Cstatus0", "0");
-        }
-        eim.dispose();
+                var mode = eim.getProperty("mode");
+                if (mode == "normal") {
+                    eim.getEventManager().setProperty("status0", "0");
+                } else {
+                    eim.getEventManager().setProperty("Cstatus0", "0");
+                }
+                eim.dispose();
             }
         }
     }
@@ -121,21 +121,21 @@ function playerExit(eim, player) {
     eim.unregisterPlayer(player);
     if (eim != null) {
         if (eim.getPlayerCount() <= 0) {
-        var mode = eim.getProperty("mode");
-        if (mode == "normal") {
-            eim.getEventManager().setProperty("status0", "0");
-        } else {
-            eim.getEventManager().setProperty("Cstatus0", "0");
-        }
-        eim.dispose();
+            var mode = eim.getProperty("mode");
+            if (mode == "normal") {
+                eim.getEventManager().setProperty("status0", "0");
+            } else {
+                eim.getEventManager().setProperty("Cstatus0", "0");
+            }
+            eim.dispose();
         }
     }
 }
 
-function allMonstersDead(eim) {}
+function allMonstersDead(eim) { }
 
 function leftParty(eim, player) {
-    // 탈퇴
+    // Withdraw
     var exitMap = 211042401;
     if (eim.getProperty("mode") == "normal") {
         exitMap = 211042400;
@@ -168,4 +168,4 @@ function disbandParty(eim) {
     }
 }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

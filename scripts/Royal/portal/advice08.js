@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press #e#b[S]#k#n to view your character information.", 250, 5);
+    pi.showInstruction("กดปุ่ม #e#b[S]#k#n เพื่อดูข้อมูลตัวละครของเจ้า", 250, 5);
 }

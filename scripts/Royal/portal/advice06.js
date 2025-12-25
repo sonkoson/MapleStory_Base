@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press the #e#b[Up]#k arrow#n to use the portal \r\\and move to the next map.", 230, 5);
+    pi.showInstruction("กดปุ่มลูกศร #e#b[ขึ้น]#k#n เพื่อใช้พอร์ทัล \r\\และย้ายไปยังแผนที่ถัดไป", 230, 5);
 }

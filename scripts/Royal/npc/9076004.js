@@ -100,7 +100,7 @@ function action(mode, type, sel) {
                 cm.dispose();
                 break;
             case 7:
-                cm.sendOk(getRank3("SELECT * FROM characters WHERE `willPVPCount` > 0 AND `gm` = 0 ORDER BY `willPVPCount` DESC LIMIT ", "willPVPCount", "WIN", 10, "faillPVPCount"));
+                cm.sendOk(getRank3("SELECT * FROM characters WHERE `willPVPCount` > 0 AND `gm` = 0 ORDER BY `willPVPCount` DESC LIMIT ", "willPVPCount", "ชนะ", 10, "faillPVPCount"));
                 cm.dispose();
                 break;
             case 8:
@@ -166,7 +166,7 @@ function getRank(v1, v2, v3, v4) {
         name = rs.getString('name');
 
         if (name == null) {
-            name = "#rDeleted Character";
+            name = "#rตัวละครที่ถูกลบ";
         }
 
         if (banned > 0) {
@@ -179,7 +179,7 @@ function getRank(v1, v2, v3, v4) {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -196,11 +196,11 @@ function getRankGuild(v1, v2, v3, v4) {
     while (rs.next()) {
         as += 1;
         if (as < 10) {
-            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e00#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else if (as < 100) {
-            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e0#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         } else {
-            aas = "#e#fc0xFF09A17F#" + as + Black + "#nRank | ";
+            aas = "#e#fc0xFF09A17F#" + as + Black + "#nอันดับ | ";
         }
 
         name = rs.getString('name');
@@ -211,7 +211,7 @@ function getRankGuild(v1, v2, v3, v4) {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -263,7 +263,7 @@ function getRankPCount(v1, v2, v3, v4) {
 
         // If character does not exist
         if (!findchr)
-            ret += Gray + aas + "#rBanned";
+            ret += Gray + aas + "#rถูกระงับ";
 
 
         // Load Promotion Grade & Write
@@ -280,7 +280,7 @@ function getRankPCount(v1, v2, v3, v4) {
     ps3.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -323,7 +323,7 @@ function getRankDPoint(v1, v2, v3, v4) {
 
         // If character does not exist
         if (!findchr)
-            ret += Gray + aas + "#rBanned";
+            ret += Gray + aas + "#rถูกระงับ";
 
 
         // Load MVP Grade & Write
@@ -346,7 +346,7 @@ function getRankDPoint(v1, v2, v3, v4) {
     ps3.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -385,7 +385,7 @@ function getRankCashEn(v1, v2, v3, v4) {
 
         // If character does not exist
         if (!findchr)
-            ret += Gray + aas + "#rBanned";
+            ret += Gray + aas + "#rถูกระงับ";
         while (rs3.next()) {
             ret += Black + " | " + v3 + " : " + Color + nf.format(rs.getInt(v2)) + Black + " | Atk : " + Color + nf.format(rs3.getInt(v2)) + "#k\r\n";
         }
@@ -398,7 +398,7 @@ function getRankCashEn(v1, v2, v3, v4) {
     ps2.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -472,7 +472,7 @@ function getRankDamage(v1, v2, v3, v4) {
     psmodify.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 
@@ -493,7 +493,7 @@ function getRank3(v1, v2, v3, v4, v5) {
     ps.close();
     con.close();
 
-    if (ret.equals("")) return "No rankings available.";
+    if (ret.equals("")) return "ไม่พบข้อมูลอันดับ";
     return ret;
 }
 

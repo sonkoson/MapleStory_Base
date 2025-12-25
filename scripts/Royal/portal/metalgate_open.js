@@ -6,9 +6,9 @@ Stage 2: Door guarded by Dark Muscle Golems - Guild Quest
 
 function enter(pi) {
     if (pi.getMap().getReactorByName("metalgate").getState() == 1) {
-	pi.warp(990000431, 0);
+        pi.warp(990000431, 0);
     }
     else {
-	pi.playerMessage("This way forward is not open yet.");
+        pi.playerMessage("เส้นทางข้างหน้านี้ยังไม่เปิด");
     }
 }

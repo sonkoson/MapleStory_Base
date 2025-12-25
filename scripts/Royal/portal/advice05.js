@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press #e#b[Q]#k#n to view the Quest window.", 250, 5);
+    pi.showInstruction("กดปุ่ม #e#b[Q]#k#n เพื่อดูหน้าต่างภารกิจ", 250, 5);
 }

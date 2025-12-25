@@ -249,7 +249,7 @@ function action(mode, type, selection) {
                         selStr += "#b#L" + (450002010 + randnumber) + "##fc0xFF6799FF#Lv.212#d | " + starImg + " 100 | Slurpy Forest Depths #l\r\n";
                         selStr += "#b#L" + (450002012 + randnumber) + "##fc0xFF6799FF#Lv.214#d | " + starImg + " 130 | Torrent Zone#l\r\n";
                         selStr += "#b#L" + (450002016 + randnumber) + "##fc0xFF6799FF#Lv.217#d | " + starImg + " 160 | Sky Whale Mountain#l\r\n";
-                        selStr += "#b#L" + (450015290 + randnumber) + "##fc0xFF6799FF#Lv.225#d | " + starImg + " 190 | Yum Yum Island - Hidden Illiard Field#l\r\n";
+                        selStr += "#b#L" + (450015290 + randnumber) + "##fc0xFF6799FF#Lv.225#d | " + starImg + " 190 | Yum Yum Island - Hidden Illrad Field#l\r\n";
                         selStr += "\r\n\r\n#e#r[Lachelein the Dreaming City]#d#n\r\n";
                         selStr += "#b#L" + (450003200 + randnumber) + "##fc0xFF6799FF#Lv.220#d | " + starImg + " 190 | Lachelein Back Alley - Outlaw's Street#l\r\n";
                         selStr += "#b#L" + (450003300 + randnumber) + "##fc0xFF6799FF#Lv.221#d | " + starImg + " 210 | Lachelein Night Market#l\r\n";
@@ -346,7 +346,7 @@ function action(mode, type, selection) {
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 260) {
-                        selStr += "#fs11#Check #e#fc0xFF3366FF#Authentic Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF3366FF#Authentic Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Cernium Authentic Force 30]#d#n\r\n";
                         selStr += "#b#L" + (450013160 + randnumber) + "##fc0xFF6799FF#Lv.261#d | " + starImg + " 30 | Beach Rocky Area 2#l\r\n";
                         selStr += "#b#L" + (450013030 + randnumber) + "##fc0xFF6799FF#Lv.261#d | " + starImg + " 30 | Western City Ramparts 2#l\r\n";
@@ -391,7 +391,7 @@ function action(mode, type, selection) {
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 260) {
-                        selStr += "#fs11#Check #e#fc0xFF3366FF#Authentic Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF3366FF#Authentic Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Odium Authentic Force 230]#d#n\r\n";
                         selStr += "#b#L" + (450017006 + randnumber) + "##fc0xFF6799FF#Lv.276#d | " + starImg + " 230 | Path to the City Gates 1#l\r\n";
                         selStr += "#b#L" + (450017010 + randnumber) + "##fc0xFF6799FF#Lv.276#d | " + starImg + " 230 | Path to the City Gates 3#l\r\n";
@@ -416,7 +416,7 @@ function action(mode, type, selection) {
                         return;
                     }
                     if (cm.getPlayer().getLevel() >= 260) {
-                        selStr += "#fs11#Check #e#fc0xFF3366FF#Authentic Force#k#n and #bmonster average level#k#n before moving.\r\n";
+                        selStr += "#fs11#ตรวจสอบ #e#fc0xFF3366FF#Authentic Force#k#n และ #bเลเวลเฉลี่ยมอนสเตอร์#k#n ก่อนข้ามไปนะ\r\n";
                         selStr += "\r\n#e#r[Shangri-La Authentic Force 330]#d#n\r\n";
                         selStr += "#b#L" + (450018110 + randnumber) + "##fc0xFF6799FF#Lv.281#d | " + starImg + " 330 | Spring of Returning Vitality 1#l\r\n";
                         selStr += "#b#L" + (450018140 + randnumber) + "##fc0xFF6799FF#Lv.282#d | " + starImg + " 330 | Spring of Returning Vitality 4#l\r\n";
@@ -467,9 +467,9 @@ function action(mode, type, selection) {
                     starImg = "#fUI/UIWindow.img/ToolTip/WorldMap/AuthenticForce#";
                     selStr += "#fs11#ตรวจสอบ #e#fc0xFF6799FF#Party Dungeon Hot Time#k#n และ #bParty Dungeon#k#n ก่อนข้ามไปนะ\r\n";
                     selStr += "\r\n#e#r[Party Dungeon]#d#n\r\n";
-                    selStr += "#b#L" + (993072000 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | Party Beginner Dungeon 1#l\r\n";
-                    selStr += "#b#L" + (993072100 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | Party Intermediate Dungeon #l\r\n";
-                    selStr += "#b#L" + (993072200 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | Party Advanced Dungeon #l\r\n";
+                    selStr += "#b#L" + (993072000 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | ดันเจี้ยนปาร์ตี้ระดับต้น 1#l\r\n";
+                    selStr += "#b#L" + (993072100 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | ดันเจี้ยนปาร์ตี้ระดับกลาง #l\r\n";
+                    selStr += "#b#L" + (993072200 + randnumber) + "##fc0xFF6799FF#Lv.200#d | " + starImg + " 0  | ดันเจี้ยนปาร์ตี้ระดับสูง #l\r\n";
                     //selStr += "#L" + (940204350 + randnumber) + "##fc0xFF6799FF#Lv.200#d | "+starImg+" 0  | 핫타임던전 4 #l\r\n";
                     //selStr += "#L" + (940204530 + randnumber) + "##fc0xFF6799FF#Lv.200#d | "+starImg+" 0  | 핫타임던전 5 #l\r\n";
                     //selStr += "#L" + (993134200 + randnumber) + "##fc0xFF6799FF#Lv.200#d | "+starImg+" 0  | 핫타임던전 6 #l\r\n";

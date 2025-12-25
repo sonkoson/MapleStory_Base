@@ -1,4 +1,4 @@
-﻿/*
+/*
 Daily Quest
 Abandoned Camp: Kill 200 of certain monsters
 */
@@ -18,7 +18,7 @@ if (currentDate < 10) {
 var numericToday = parseInt(currentYear + currentMonth + currentDate);
 
 var questList = [
-    ["ㅸ擄앗》戾뛰》姑롯蓼", "trash"]
+    ["พื้นที่ตั้งแคมป์ร้าง", "trash"]
 ];
 
 var completionCheck = [
@@ -46,12 +46,12 @@ function action(mode, type, selection) {
         status++;
     }
     if (status == 0) {
-        var dialogue = "밌筽勒잃찼盜촤쪄箕③?첬′밝맹よ픈瑄勒÷櫓∇㉦戾들系⌒첨沓배睾밀\r\n";
+        var dialogue = "นี่คือภารกิจรายวัน กรุณาเลือกภารกิจที่ต้องการทำ\r\n";
         //dialogue += "#L0##e#bLevel Range Monster #r(-20~+10 Level) #b10000 Mobs#d (Unlimited)#l\r\n\r\n";
         for (var i = 0; i < questList.length; i++) {
             dialogue += "#L" + i + "##e#b[" + questList[i][0] + "]#n#k\r\n#e#d";
             for (var a = 0; a < completionCheck[i].length; a++) {
-                dialogue += "   ?#o" + completionCheck[i][a][0] + "# " + completionCheck[i][a][1] + " 둘?r\n";
+                dialogue += "   ㄴ#o" + completionCheck[i][a][0] + "# " + completionCheck[i][a][1] + " ตัว\r\n";
             }
             dialogue += "\r\n";
         }
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
         selectedQuestIndex = selection;
 
         if (cm.getPlayer().getKeyValue("Quest_" + questList[selectedQuestIndex][1]) == numericToday) {
-            cm.sendOk("잃찼盜밌禹맹롭線춰ⓣ촹쨘췌睾笑茸③?);
+            cm.sendOk("ภารกิจนี้เสร็จสมบูรณ์แล้ว");
             cm.dispose();
             return;
         } else if (cm.getPlayer().getKeyValue("Quest_" + questList[selectedQuestIndex][1]) != 0) {
@@ -89,24 +89,24 @@ function action(mode, type, selection) {
         }
 
         if (isQuestCleared) {
-            var rewardMessage = "<촤징櫓♨㎴廊한?\r\n";
+            var rewardMessage = "<รายการรางวัล>\r\n";
             for (var i = 0; i < rewardList.length; i++) {
-                rewardMessage += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ぴ埇\r\n";
+                rewardMessage += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ชิ้น\r\n";
             }
-            cm.sendYesNo("錫庫岱㎓琓밥⇔系잃찼盜ㅓ볘茸밞톱퓜珪慰 들系⌒챔珪봉櫓∇ⓣ태齷?\r\n\r\n" + rewardMessage);
+            cm.sendYesNo("เงื่อนไขการทำภารกิจนี้ครบถ้วนแล้ว ต้องการรับรางวัลหรือไม่?\r\n\r\n" + rewardMessage);
         } else {
-            var questInfo = "#e#b[잃찼盜 " + questList[selectedQuestIndex][1] + "]#n#k\r\n";
+            var questInfo = "#e#b[ภารกิจ " + questList[selectedQuestIndex][1] + "]#n#k\r\n";
             for (var i = 0; i < completionCheck[selectedQuestIndex].length; i++) {
                 var currentKillCount = cm.getPlayer().getKeyValue("Quest_" + completionCheck[selectedQuestIndex][i][0]);
-                questInfo += "#o" + completionCheck[selectedQuestIndex][i][0] + "# (" + currentKillCount + " / " + completionCheck[selectedQuestIndex][i][1] + ") 둘?r\n";
+                questInfo += "#o" + completionCheck[selectedQuestIndex][i][0] + "# (" + currentKillCount + " / " + completionCheck[selectedQuestIndex][i][1] + ") ตัว\r\n";
             }
-            questInfo += "#e#b旋羸考脘죌믐碩稿隣닻ㅓ볕怒ⓖ므?錫繫芹怒櫓땍봉櫓∇ⓧ닻③?r\n";
+            questInfo += "#e#bกรุณากำจัดมอนสเตอร์ให้ครบก่อนจึงจะรับรางวัลได้\r\n";
 
-            questInfo += "#L0##e#r西테琓뮤友쭝뼘欺街拈롱訛脘#l#k\r\n\r\n";
-            questInfo += "[旋羸昆ㅕ羸攷쮸擄ⓕ■섰롱矮찼 ⓓ餓쫓㎭섰롱瓮戾姦㎤優]\r\n\r\n";
-            questInfo += "#fc0xFF6600CC#<촤징櫓♨㎴廊한?\r\n";
+            questInfo += "#L0##e#rย้ายไปยังพื้นที่ล่า#l#k\r\n\r\n";
+            questInfo += "[เมื่อย้ายจากแผนที่แรก จะไปยังแผนที่ที่สอง]\r\n\r\n";
+            questInfo += "#fc0xFF6600CC#<รายการรางวัล>\r\n";
             for (var i = 0; i < rewardList.length; i++) {
-                questInfo += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ぴ埇\r\n";
+                questInfo += "#i" + rewardList[i][0] + "##z" + rewardList[i][0] + "# " + rewardList[i][1] + " ชิ้น\r\n";
             }
             cm.sendSimple(questInfo);
         }
@@ -123,7 +123,7 @@ function action(mode, type, selection) {
 
             for (var i = 0; i < rewardList.length; i++) {
                 if (!cm.canHold(rewardList[i][0], rewardList[i][1])) {
-                    cm.sendOk("供?다繕죽攷よ系胥瀛♨㎖系錫繫及든졸珪慰 첬′묫完쭌ょㅄ目蘿롱밀");
+                    cm.sendOk("กรุณาตรวจสอบว่าช่องเก็บของเต็มหรือไม่เพียงพอ");
                     return;
                 }
             }
@@ -134,10 +134,7 @@ function action(mode, type, selection) {
                 cm.gainItem(rewardList[i][0], rewardList[i][1]);
             }
 
-            cm.sendOk("롭잃찼盜柬煽葉笑茸③? ⒠뮐故♨㎴廊한톈鉅煽覽봤于쭐톱?첬′뭇쳬㉹故尸よ系胥瀛♨㏏珪慰");
+            cm.sendOk("ภารกิจเสร็จสมบูรณ์และได้รับรางวัลแล้ว กรุณาตรวจสอบช่องเก็บของ");
         }
     }
 }
-
-
-

@@ -11,11 +11,11 @@
 function enter(pi) {
     if (pi.haveItem(4001087, 1)) {
         pi.warp(240050101);
-        pi.getPlayer().message(5, "첫 번째 미로방의 수정의 힘에 의해 어딘가로 이동됩니다.");
+        pi.getPlayer().message(5, "เคลื่อนย้ายไปที่ไหนสักแห่งด้วยพลังของคริสตัลในห้องเขาวงกตแรก");
         pi.gainItem(4001087, -1);
         return true;
     } else {
-        pi.getPlayer().message(5, "미로방에 들어가는데 필요한 열쇠가 없습니다.");
+        pi.getPlayer().message(5, "เจ้าไม่มีกุญแจที่จำเป็นในการเข้าสู่ห้องเขาวงกต");
         return false;
     }
 }

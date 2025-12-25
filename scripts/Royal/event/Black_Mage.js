@@ -128,7 +128,7 @@ function messagePlayer(eim, instance, msg) {
 
 function playerRevive(eim, player) {
     if (parseInt(eim.getProperty("stage")) == 7) {
-        player.getClient().getSession().writeAndFlush(CField.getSelectPower(5,39));
+        player.getClient().getSession().writeAndFlush(CField.getSelectPower(5, 39));
         player.giveBlackMageBuff();
     }
     return false;
@@ -141,7 +141,7 @@ function scheduledTimeout(eim) {
 function changedMap(eim, player, mapid) {
     stage = parseInt(eim.getProperty("stage"));
     if (mapid == 450013700) {
-        player.getClient().getSession().writeAndFlush(CField.getSelectPower(5,39));
+        player.getClient().getSession().writeAndFlush(CField.getSelectPower(5, 39));
         player.giveBlackMageBuff();
     }
     if (!(mapid >= 450013000 && mapid <= 450013800)) {
@@ -233,7 +233,7 @@ function WarptoNextStage(eim) {
                 eim.setProperty("stage", "8");
                 spawnMonster(eim, stage, 8880518, 0, 85);
             }
-            eim.getMapInstance(8).broadcastMessage(CField.enforceMSG("창세의 알을 파괴하여 기나긴 싸움을 마무리 하자.", 265, 3000));
+            eim.getMapInstance(8).broadcastMessage(CField.enforceMSG("จงทำลายไข่แห่งการสร้างสรรค์ เพื่อยุติการต่อสู้ที่ยาวนานนี้", 265, 3000));
         }
     }
     if (stage == 1) {
@@ -241,22 +241,22 @@ function WarptoNextStage(eim) {
         spawnMonster(eim, stage, 8880501, 350, 85);
         spawnMonster(eim, stage, 8880505, 0, 85);
         spawnMonster(eim, stage, 8880512, 0, 85);
-        message(eim, stage, "검은 마법사와 대적하기 위해서는 그를 호위하는 창조와 파괴의 기사들을 물리쳐야 한다.");
+        message(eim, stage, "เพื่อเผชิญหน้ากับ Black Mage จำเป็นต้องกำจัดอัศวินแห่งการสร้างและทำลายล้างที่คุ้มกันเขาอยู่เสียก่อน");
     } else if (stage == 3) {
         spawnMonster(eim, stage, 8880502, 0, 88);
         spawnMonster(eim, stage, 8880512, 0, 88);
         spawnMonster(eim, stage, 8880516, 0, 88);
-        message(eim, stage, "드디어 검은 마법사의 앞에 바로 섰다. 모든 힘을 다해 그를 물리치자.");
+        message(eim, stage, "ในที่สุดก็ได้เผชิญหน้ากับ Black Mage แล้ว จงทุ่มเทพลังทั้งหมดเพื่อกำจัดเขาให้ได้");
     } else if (stage == 5) {
         spawnMonster(eim, stage, 8880503, 0, 85);
         spawnMonster(eim, stage, 8880512, 0, 85);
-        message(eim, stage, "저 모습은 마치 신의 권능이라도 얻은 것 같다. 설사 상대가 신이라고 할지라도 모두를 위해 여기서 저지해야 한다.");
+        message(eim, stage, "รูปลักษณ์นั้นราวกับได้รับพลังแห่งพระเจ้า... แม้คู่ต่อสู้จะเป็นพระเจ้า ก็ต้องหยุดยั้งเขาไว้ที่นี่เพื่อทุกคนให้ได้");
     } else if (stage == 7) {
-  //      player.getClient().getSession().writeAndFlush(MobPacket.blackMageTamporarySkill(5));
-  spawnMonster(eim, stage, 8880504, 0, 208);
-  spawnMonster(eim, stage, 8880512, 0, 208);
+        //      player.getClient().getSession().writeAndFlush(MobPacket.blackMageTamporarySkill(5));
+        spawnMonster(eim, stage, 8880504, 0, 208);
+        spawnMonster(eim, stage, 8880512, 0, 208);
 
-        messagePlayer(eim, stage, "#face1# 아무 것도 없는 공간...... 나 혼자 남은 것인가...");
+        messagePlayer(eim, stage, "#face1# พื้นที่ว่างเปล่า...... เหลือฉันแค่คนเดียวงั้นเหรอ...");
     }
 }
 
@@ -279,7 +279,7 @@ function disposeAll(eim) {
     var iter = eim.getPlayers().iterator();
     while (iter.hasNext()) {
         var player = iter.next();
-        player.getClient().getSession().writeAndFlush(CField.getSelectPower(6,39));
+        player.getClient().getSession().writeAndFlush(CField.getSelectPower(6, 39));
         player.setDeathCount(0);
         player.changeMap(outmap, 0);
         eim.unregisterPlayer(player);

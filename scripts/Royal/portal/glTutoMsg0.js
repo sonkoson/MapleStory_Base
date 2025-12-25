@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -22,6 +22,6 @@
 /*
 By kevintjuh93
 */
-function enter(pi) { 
-	    pi.showInstruction("Once you leave this area you won't be able to return.", 150, 5);
+function enter(pi) {
+    pi.showInstruction("เมื่อเจ้าออกจากพื้นที่นี้แล้ว จะไม่สามารถกลับมาได้อีก", 150, 5);
 }  

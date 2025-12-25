@@ -1,30 +1,30 @@
 function enter(pi) {
-    if (pi.getQuestStatus(6110) == 1) {
-	 if (pi.getParty() != null) {
-	     if (!pi.isLeader()) {
-		 pi.playerMessage("Party leader consisting of two Warriors can decide to enter." );
-	     } else {
-		 if (pi.getParty().getMembers().size < 2) {
-		    pi.playerMessage("You can make a quest when you have a party with two. Please make your party with two members." );
-		 } else {
-		      if (!pi.isAllPartyMembersAllowedJob(1)) {
-			  pi.playerMessage("You can't enter. Your party member's job is not Warrior or Your party doesn't consist of two members.");
-		      } else {
-			  var em = pi.getEventManager("4jrush");
-			  if (em == null) {
-			      pi.playerMessage("You're not allowed to enter with unknown reason. Try again." );
-			  } else {
-			      em.startInstance(pi.getParty(), pi.getMap());
-			      return true;
-			  }
-		      }
-		 }
-	     }
-	 } else {
-	     pi.playerMessage(5, "You don...t have a  party. You can challenge with party.");
-	 }
-    } else {
-	pi.playerMessage("You can't enter sealed place.");
-    }
-    return false;
+	if (pi.getQuestStatus(6110) == 1) {
+		if (pi.getParty() != null) {
+			if (!pi.isLeader()) {
+				pi.playerMessage("หัวหน้าปาร์ตี้ซึ่งประกอบด้วย Warrior สองคนสามารถตัดสินใจเข้าได้");
+			} else {
+				if (pi.getParty().getMembers().size < 2) {
+					pi.playerMessage("เจ้าสามารถทำภารกิจได้เมื่อมีปาร์ตี้สองคน โปรดจัดปาร์ตี้ที่มีสมาชิกสองคน");
+				} else {
+					if (!pi.isAllPartyMembersAllowedJob(1)) {
+						pi.playerMessage("เจ้าไม่สามารถเข้าได้ อาชีพของสมาชิกในปาร์ตี้ไม่ใช่ Warrior หรือปาร์ตี้ของเจ้าไม่ได้ประกอบด้วยสมาชิกสองคน");
+					} else {
+						var em = pi.getEventManager("4jrush");
+						if (em == null) {
+							pi.playerMessage("เจ้าไม่ได้รับอนุญาตให้เข้าไปด้วยเหตุผลที่ไม่ทราบสาเหตุ ลองอีกครั้ง");
+						} else {
+							em.startInstance(pi.getParty(), pi.getMap());
+							return true;
+						}
+					}
+				}
+			}
+		} else {
+			pi.playerMessage(5, "เจ้าไม่มีปาร์ตี้ เจ้าสามารถท้าทายได้ด้วยปาร์ตี้");
+		}
+	} else {
+		pi.playerMessage("เจ้าไม่สามารถเข้าสู่สถานที่ที่ถูกปิดผนึกได้");
+	}
+	return false;
 }

@@ -1,4 +1,4 @@
-/*후라이 까지말라 (kms_word@naver.com)*/
+/* Dont Lie (kms_word@naver.com) */
 
 
 StarBlue = "#fUI/GuildMark.img/Mark/Pattern/00004001/11#"

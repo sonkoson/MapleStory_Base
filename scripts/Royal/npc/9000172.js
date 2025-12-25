@@ -129,34 +129,34 @@ function action(mode, t, selection, dressUp_) {
             }
             sel = selection;
             if (sel == 0) { // Hair Options
-                var v0 = "#fs11#                             #e<Hair Options>#n\r\n#b";
+                var v0 = "#fs11#                             #e<ตัวเลือกทรงผม>#n\r\n#b";
                 if (zero) {
-                    v0 += "- Options except hair style change follow Zero's current tag state. (Current: #e#r" + (cm.getPlayer().getZeroInfo().isBeta() ? "Beta(Female)" : "Alpha(Male)") + "#b#n)\r\n\r\n";
+                    v0 += "- ตัวเลือกทั้งหมดที่ไม่ใช่การเปลี่ยนทรงผมจะเป็นไปตามสถานะปัจจุบันของ Zero (ปัจจุบัน: #e#r" + (cm.getPlayer().getZeroInfo().isBeta() ? "Beta(หญิง)" : "Alpha(ชาย)") + "#b#n)\r\n\r\n";
                 }
-                v0 += "#L1#Hair Dye#l\r\n";
-                v0 += "#L2#Mix Dye#l\r\n";
+                v0 += "#L1#ย้อมสีผม#l\r\n";
+                v0 += "#L2#ผสมสีผม#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             } else if (sel == 1) { // Face Surgery
-                var v0 = "#fs11#                             #e<Surgery Options>#n\r\n#b";
+                var v0 = "#fs11#                             #e<ตัวเลือกศัลยกรรม>#n\r\n#b";
                 if (zero) {
-                    v0 += "- Options below follow Zero's current tag state. (Current: #e#r" + (cm.getPlayer().getZeroInfo().isBeta() ? "Beta(Female)" : "Alpha(Male)") + "#b#n)\r\n\r\n";
+                    v0 += "- ตัวเลือกด้านล่างจะเป็นไปตามสถานะปัจจุบันของ Zero (ปัจจุบัน: #e#r" + (cm.getPlayer().getZeroInfo().isBeta() ? "Beta(หญิง)" : "Alpha(ชาย)") + "#b#n)\r\n\r\n";
                 }
-                v0 += "#L1#Skin Change#l\r\n";
-                v0 += "#L2#Lens Change#l\r\n";
+                v0 += "#L1#เปลี่ยนสีผิว#l\r\n";
+                v0 += "#L2#เปลี่ยนคอนแทคเลนส์#l\r\n";
                 //v0 += "#L3#Try Mix Lens.#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             } else if (sel == 2) { // Android
                 if (cm.getPlayer().getAndroid() == null) {
-                    cm.sayNpc("You don't have an Android.", GameObjectType.User, false, false, ScriptMessageFlag.Self);
+                    cm.sayNpc("คุณไม่มีแอนดรอยด์", GameObjectType.User, false, false, ScriptMessageFlag.Self);
                     cm.dispose();
                     return;
                 }
                 var v0 = "#fs11#                             #e<Android>#n\r\n#b";
                 //v0 += "#L0#헤어 스타일 변경을 해보자.#l\r\n";
-                v0 += "#L1#Hair Dye#l\r\n";
+                v0 += "#L1#ย้อมสีผม#l\r\n";
                 //v0 += "#L2#성형 변경을 해보자.#l\r\n";
-                v0 += "#L3#Skin Change#l\r\n";
-                v0 += "#L4#Lens Change#l\r\n";
+                v0 += "#L3#เปลี่ยนสีผิว#l\r\n";
+                v0 += "#L4#เปลี่ยนคอนแทคเลนส์#l\r\n";
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             } else if (sel == 5) {
                 cm.askAngelicBuster();
@@ -170,14 +170,14 @@ function action(mode, t, selection, dressUp_) {
                         var count = maleHair.length; // Zero Alpha
                         var v0 = "                     #e<Hair Style Change>#n\r\n\r\nหน้าไหน? #e#b(ผม Alpha [ผมชาย])#k#n #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
-                            v0 += "#L" + i + "#Page " + (i + 1) + "#n Hair Style#l\r\n";
+                            v0 += "#L" + i + "#หน้า " + (i + 1) + "#n ทรงผม#l\r\n";
                         }
                         cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                     } else {
                         var count = cm.getPlayer().getGender() == 0 ? maleHair.length : femaleHair.length;
                         var v0 = "                     #e<Hair Style Change>#n\r\n\r\nหน้าไหน? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
-                            v0 += "#L" + i + "#Page " + (i + 1) + "#n Hair Style#l\r\n";
+                            v0 += "#L" + i + "#หน้า " + (i + 1) + "#n ทรงผม#l\r\n";
                         }
                         cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                     }
@@ -234,7 +234,7 @@ function action(mode, t, selection, dressUp_) {
 
                     var v0 = "                     #e<ศัลยกรรมใบหน้า>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Face Style#l\r\n";
+                        v0 += "#L" + i + "#หน้า " + (i + 1) + "#n หน้าตา#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 1) { // 피부 변경
@@ -278,7 +278,7 @@ function action(mode, t, selection, dressUp_) {
                     var count = cm.getAndroidGender() == 0 ? maleHair.length : femaleHair.length;
                     var v0 = "                     #e<เปลี่ยนทรงผม Android>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Hair Style#l\r\n";
+                        v0 += "#L" + i + "#หน้า " + (i + 1) + "#n ทรงผม#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 1) { // 염색	
@@ -292,7 +292,7 @@ function action(mode, t, selection, dressUp_) {
                     var count = cm.getAndroidGender() == 0 ? maleFace.length : femaleFace.length;
                     var v0 = "                     #e<ศัลยกรรม Android>#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + "Page#n Face Style#l\r\n";
+                        v0 += "#L" + i + "#หน้า " + (i + 1) + "#n หน้าตา#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 } else if (sel2 == 3) { // 피부 변경
@@ -345,7 +345,7 @@ function action(mode, t, selection, dressUp_) {
                 var count = specialHair.length;
                 var v0 = "                     #e<" + title + ">#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                 for (var i = 0; i < count; ++i) {
-                    v0 += "#L" + i + "#" + (i + 1) + " Page Hair Style#l\r\n";
+                    v0 += "#L" + i + "#หน้า " + (i + 1) + " ทรงผม#l\r\n";
                 }
                 cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
             }
@@ -358,7 +358,7 @@ function action(mode, t, selection, dressUp_) {
                         var count = femaleHair.length; // Zero Beta
                         var v0 = "                     #e<เปลี่ยนทรงผม>#n\r\n\r\nดูหน้าไหนดี? #e#b(ผม Beta [ผมหญิง])#k#n #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                         for (var i = 0; i < count; ++i) {
-                            v0 += "#L" + i + "#" + (i + 1) + "Page#n Hair Style#l\r\n";
+                            v0 += "#L" + i + "#หน้า " + (i + 1) + "#n ทรงผม#l\r\n";
                         }
                         cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                     } else {
@@ -467,7 +467,7 @@ function action(mode, t, selection, dressUp_) {
                     var count = specialHair.length;
                     var v0 = "                     #e<" + title + ">#n\r\n\r\nดูหน้าไหนดี? #e(ทั้งหมด " + count + " หน้า)#n\r\n#b";
                     for (var i = 0; i < count; ++i) {
-                        v0 += "#L" + i + "#" + (i + 1) + " Page Hair Style#l\r\n";
+                        v0 += "#L" + i + "#หน้า " + (i + 1) + " ทรงผม#l\r\n";
                     }
                     cm.askMenu(v0, GameObjectType.User, ScriptMessageFlag.Self);
                 }

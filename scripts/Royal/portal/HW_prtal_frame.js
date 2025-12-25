@@ -1,4 +1,4 @@
 //misspelled on purpose.. by nexon
 function enter(pi) {
-    pi.playerMessage("This portal is not available yet.");
+    pi.playerMessage("พอร์ทัลนี้ยังไม่เปิดใช้งาน");
 }

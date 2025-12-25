@@ -71,7 +71,7 @@ function action(mode, type, selection) {
             return;
         }
 
-        // If the item to receive is not the searched item
+        // หากไอเท็มที่จะรับไม่ใช่ไอเท็มที่ค้นหา
         itemname = cm.getItemName(sel);
         if (itemname.toLowerCase().indexOf(searchname.toLowerCase()) == -1) {
             cm.sendOk("#fs11#เกิดข้อผิดพลาด 555");
@@ -123,7 +123,7 @@ function action(mode, type, selection) {
             return;
         }
 
-        // One slot for decoration
+        // 1 ช่องสำหรับแฟชั่น
         if (cm.getInvSlots(6) <= 0) {
             cm.sendOk("#fs11#ช่องเก็บของไม่เพียงพอ กรุณาทำช่องว่างในแท็บ [แฟชั่น] 1 ช่อง");
             cm.dispose();

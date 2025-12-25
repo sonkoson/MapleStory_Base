@@ -196,7 +196,7 @@ function action(mode, type, sel) {
             cm.getClient().setKeyValue("DPointAll", "0");
 
         if (cm.inBoss()) {
-            cm.getPlayer().dropMessage(5, "This feature cannot be used during boss battles.");
+            cm.getPlayer().dropMessage(5, "ฟังก์ชันนี้ไม่สามารถใช้งานได้ในระหว่างการต่อสู้กับบอส");
             cm.dispose();
             return;
         }
@@ -318,70 +318,70 @@ function action(mode, type, sel) {
                     }
                 }
 
-                cm.sendOkS("Reset Complete", 2);
+                cm.sendOkS("รีเซ็ตเรียบร้อยแล้ว", 2);
                 cm.dispose();
                 break;
 
             case 50: // Cumulative Reward
                 var msg = Star + " #fs11##fc0xFF000000#Current #fc0xFFFF3366##h ##fc0xFF000000#'s Cumulative Cash : #fc0xFFFF3366#" + cm.getClient().getKeyValue("DPointAll") + "C#fc0xFF000000##b" + Enter;
                 msg += Color + "Please select the cumulative reward to receive#b" + Enter;
-                msg += "#L1998#<All Chat Title> Character" + Enter;
-                msg += "#L1999#<All Chat Title> Account Shared" + Enter + Enter;
-                msg += "#L10#100k Cumulative Reward  " + checkDPointAll(10) + Enter;
-                msg += "#L20#200k Cumulative Reward  " + checkDPointAll(20) + Enter;
-                msg += "#L30#300k Cumulative Reward  " + checkDPointAll(30) + Enter;
-                msg += "#L50#500k Cumulative Reward  " + checkDPointAll(50) + Enter;
-                msg += "#L75#750k Cumulative Reward  " + checkDPointAll(75) + Enter;
-                msg += "#L100#1m Cumulative Reward  " + checkDPointAll(100) + Enter;
-                msg += "#L125#1.25m Cumulative Reward  " + checkDPointAll(125) + Enter;
-                msg += "#L150#1.5m Cumulative Reward  " + checkDPointAll(150) + Enter;
-                msg += "#L200#2m Cumulative Reward  " + checkDPointAll(200) + Enter;
-                msg += "#L250#2.5m Cumulative Reward  " + checkDPointAll(250) + Enter;
-                msg += "#L300#3m Cumulative Reward  " + checkDPointAll(300) + Enter;
-                msg += "#L350#3.5m Cumulative Reward  " + checkDPointAll(350) + Enter;
-                msg += "#L400#4m Cumulative Reward  " + checkDPointAll(400) + Enter;
-                msg += "#L450#4.5m Cumulative Reward  " + checkDPointAll(450) + Enter;
-                msg += "#L500#5m Cumulative Reward  " + checkDPointAll(500) + Enter;
-                msg += "#L550#5.5m Cumulative Reward  " + checkDPointAll(550) + Enter;
-                msg += "#L600#6m Cumulative Reward  " + checkDPointAll(600) + Enter;
-                msg += "#L650#6.5m Cumulative Reward  " + checkDPointAll(650) + Enter;
-                msg += "#L700#7m Cumulative Reward  " + checkDPointAll(700) + Enter;
-                msg += "#L750#7.5m Cumulative Reward  " + checkDPointAll(750) + Enter;
-                msg += "#L800#8m Cumulative Reward  " + checkDPointAll(800) + Enter;
-                msg += "#L850#8.5m Cumulative Reward  " + checkDPointAll(850) + Enter;
-                msg += "#L900#9m Cumulative Reward  " + checkDPointAll(900) + Enter;
-                msg += "#L950#9.5m Cumulative Reward  " + checkDPointAll(950) + Enter;
-                msg += "#L1000#10m Cumulative Reward  " + checkDPointAll(1000) + Enter;
-                msg += "#L1050#10.5m Cumulative Reward  " + checkDPointAll(1050) + Enter;
-                msg += "#L1100#11m Cumulative Reward  " + checkDPointAll(1100) + Enter;
-                msg += "#L1150#11.5m Cumulative Reward  " + checkDPointAll(1150) + Enter;
-                msg += "#L1200#12m Cumulative Reward  " + checkDPointAll(1200) + Enter;
-                msg += "#L1250#12.5m Cumulative Reward  " + checkDPointAll(1250) + Enter;
-                msg += "#L1300#13m Cumulative Reward  " + checkDPointAll(1300) + Enter;
-                msg += "#L1350#13.5m Cumulative Reward  " + checkDPointAll(1350) + Enter;
-                msg += "#L1400#14m Cumulative Reward  " + checkDPointAll(1400) + Enter;
-                msg += "#L1450#14.5m Cumulative Reward  " + checkDPointAll(1450) + Enter;
-                msg += "#L1500#15m Cumulative Reward  " + checkDPointAll(1500) + Enter;
-                msg += "#L1550#15.5m Cumulative Reward  " + checkDPointAll(1550) + Enter;
-                msg += "#L1600#16m Cumulative Reward  " + checkDPointAll(1600) + Enter;
-                msg += "#L1650#16.5m Cumulative Reward  " + checkDPointAll(1650) + Enter;
-                msg += "#L1700#17m Cumulative Reward  " + checkDPointAll(1700) + Enter;
-                msg += "#L1750#17.5m Cumulative Reward  " + checkDPointAll(1750) + Enter;
-                msg += "#L1800#18m Cumulative Reward  " + checkDPointAll(1800) + Enter;
-                msg += "#L1850#18.5m Cumulative Reward  " + checkDPointAll(1850) + Enter;
-                msg += "#L1900#19m Cumulative Reward  " + checkDPointAll(1900) + Enter;
-                msg += "#L1950#19.5m Cumulative Reward  " + checkDPointAll(1950) + Enter;
-                msg += "#L2000#20m Cumulative Reward  " + checkDPointAll(2000) + Enter;
-                msg += "#L2100#21m Cumulative Reward  " + checkDPointAll(2100) + Enter;
-                msg += "#L2200#22m Cumulative Reward  " + checkDPointAll(2200) + Enter;
-                msg += "#L2300#23m Cumulative Reward  " + checkDPointAll(2300) + Enter;
-                msg += "#L2400#24m Cumulative Reward  " + checkDPointAll(2400) + Enter;
-                msg += "#L2500#25m Cumulative Reward  " + checkDPointAll(2500) + Enter;
-                msg += "#L2600#26m Cumulative Reward  " + checkDPointAll(2600) + Enter;
-                msg += "#L2700#27m Cumulative Reward  " + checkDPointAll(2700) + Enter;
-                msg += "#L2800#28m Cumulative Reward  " + checkDPointAll(2800) + Enter;
-                msg += "#L2900#29m Cumulative Reward  " + checkDPointAll(2900) + Enter;
-                msg += "#L3000#30m Cumulative Reward  " + checkDPointAll(3000) + Enter;
+                msg += "#L1998#<ฉายา All Chat> ตัวละคร" + Enter;
+                msg += "#L1999#<ฉายา All Chat> แชร์ทั้งบัญชี" + Enter + Enter;
+                msg += "#L10#รางวัลสะสม 100k " + checkDPointAll(10) + Enter;
+                msg += "#L20#รางวัลสะสม 200k " + checkDPointAll(20) + Enter;
+                msg += "#L30#รางวัลสะสม 300k " + checkDPointAll(30) + Enter;
+                msg += "#L50#รางวัลสะสม 500k " + checkDPointAll(50) + Enter;
+                msg += "#L75#รางวัลสะสม 750k " + checkDPointAll(75) + Enter;
+                msg += "#L100#รางวัลสะสม 1m " + checkDPointAll(100) + Enter;
+                msg += "#L125#รางวัลสะสม 1.25m " + checkDPointAll(125) + Enter;
+                msg += "#L150#รางวัลสะสม 1.5m " + checkDPointAll(150) + Enter;
+                msg += "#L200#รางวัลสะสม 2m " + checkDPointAll(200) + Enter;
+                msg += "#L250#รางวัลสะสม 2.5m " + checkDPointAll(250) + Enter;
+                msg += "#L300#รางวัลสะสม 3m " + checkDPointAll(300) + Enter;
+                msg += "#L350#รางวัลสะสม 3.5m " + checkDPointAll(350) + Enter;
+                msg += "#L400#รางวัลสะสม 4m " + checkDPointAll(400) + Enter;
+                msg += "#L450#รางวัลสะสม 4.5m " + checkDPointAll(450) + Enter;
+                msg += "#L500#รางวัลสะสม 5m " + checkDPointAll(500) + Enter;
+                msg += "#L550#รางวัลสะสม 5.5m " + checkDPointAll(550) + Enter;
+                msg += "#L600#รางวัลสะสม 6m " + checkDPointAll(600) + Enter;
+                msg += "#L650#รางวัลสะสม 6.5m " + checkDPointAll(650) + Enter;
+                msg += "#L700#รางวัลสะสม 7m " + checkDPointAll(700) + Enter;
+                msg += "#L750#รางวัลสะสม 7.5m " + checkDPointAll(750) + Enter;
+                msg += "#L800#รางวัลสะสม 8m " + checkDPointAll(800) + Enter;
+                msg += "#L850#รางวัลสะสม 8.5m " + checkDPointAll(850) + Enter;
+                msg += "#L900#รางวัลสะสม 9m " + checkDPointAll(900) + Enter;
+                msg += "#L950#รางวัลสะสม 9.5m " + checkDPointAll(950) + Enter;
+                msg += "#L1000#รางวัลสะสม 10m " + checkDPointAll(1000) + Enter;
+                msg += "#L1050#รางวัลสะสม 10.5m " + checkDPointAll(1050) + Enter;
+                msg += "#L1100#รางวัลสะสม 11m " + checkDPointAll(1100) + Enter;
+                msg += "#L1150#รางวัลสะสม 11.5m " + checkDPointAll(1150) + Enter;
+                msg += "#L1200#รางวัลสะสม 12m " + checkDPointAll(1200) + Enter;
+                msg += "#L1250#รางวัลสะสม 12.5m " + checkDPointAll(1250) + Enter;
+                msg += "#L1300#รางวัลสะสม 13m " + checkDPointAll(1300) + Enter;
+                msg += "#L1350#รางวัลสะสม 13.5m " + checkDPointAll(1350) + Enter;
+                msg += "#L1400#รางวัลสะสม 14m " + checkDPointAll(1400) + Enter;
+                msg += "#L1450#รางวัลสะสม 14.5m " + checkDPointAll(1450) + Enter;
+                msg += "#L1500#รางวัลสะสม 15m " + checkDPointAll(1500) + Enter;
+                msg += "#L1550#รางวัลสะสม 15.5m " + checkDPointAll(1550) + Enter;
+                msg += "#L1600#รางวัลสะสม 16m " + checkDPointAll(1600) + Enter;
+                msg += "#L1650#รางวัลสะสม 16.5m " + checkDPointAll(1650) + Enter;
+                msg += "#L1700#รางวัลสะสม 17m " + checkDPointAll(1700) + Enter;
+                msg += "#L1750#รางวัลสะสม 17.5m " + checkDPointAll(1750) + Enter;
+                msg += "#L1800#รางวัลสะสม 18m " + checkDPointAll(1800) + Enter;
+                msg += "#L1850#รางวัลสะสม 18.5m " + checkDPointAll(1850) + Enter;
+                msg += "#L1900#รางวัลสะสม 19m " + checkDPointAll(1900) + Enter;
+                msg += "#L1950#รางวัลสะสม 19.5m " + checkDPointAll(1950) + Enter;
+                msg += "#L2000#รางวัลสะสม 20m " + checkDPointAll(2000) + Enter;
+                msg += "#L2100#รางวัลสะสม 21m " + checkDPointAll(2100) + Enter;
+                msg += "#L2200#รางวัลสะสม 22m " + checkDPointAll(2200) + Enter;
+                msg += "#L2300#รางวัลสะสม 23m " + checkDPointAll(2300) + Enter;
+                msg += "#L2400#รางวัลสะสม 24m " + checkDPointAll(2400) + Enter;
+                msg += "#L2500#รางวัลสะสม 25m " + checkDPointAll(2500) + Enter;
+                msg += "#L2600#รางวัลสะสม 26m " + checkDPointAll(2600) + Enter;
+                msg += "#L2700#รางวัลสะสม 27m " + checkDPointAll(2700) + Enter;
+                msg += "#L2800#รางวัลสะสม 28m " + checkDPointAll(2800) + Enter;
+                msg += "#L2900#รางวัลสะสม 29m " + checkDPointAll(2900) + Enter;
+                msg += "#L3000#รางวัลสะสม 30m " + checkDPointAll(3000) + Enter;
                 cm.sendSimple(msg);
                 break;
 
@@ -563,7 +563,7 @@ function action(mode, type, sel) {
                     cm.getClient().setKeyValue("HgradeWeek", "1");
                     //Packages.scripting.NPCConversationManager.writeLog("TextLog/zenia/[MVP주간보상].log", "\r\n계정 : " + cm.getClient().getAccountName() + " (" + cm.getClient().getAccID() + ")\r\n닉네임 : " + cm.getPlayer().getName() + "\r\n등급 : " + cm.getPlayer().getHgrades() + "\r\n\r\n", true);
                     cm.addCustomLog(99, "[Weekly Reward] Grade : " + cm.getPlayer().getHgrades() + "");
-                    cm.sendOk("#fs11#Reward distribution complete.");
+                    cm.sendOk("#fs11#แจกจ่ายรางวัลเสร็จสมบูรณ์");
                     cm.dispose();
                 }
                 break;
@@ -652,19 +652,19 @@ function action(mode, type, sel) {
                     case 1998:
                     case 1999:
                         var chatConfig = {
-                            1998: { required: 5000000, scope: 'Character', note: '※ Can only set once if cumulative is under 5 million' },
-                            1999: { required: 10000000, scope: 'Account', note: '' }
+                            1998: { required: 5000000, scope: 'ตัวละคร', note: '※ สามารถตั้งค่าได้เพียงครั้งเดียวหากยอดสะสมต่ำกว่า 5 ล้าน' },
+                            1999: { required: 10000000, scope: 'บัญชี', note: '' }
                         };
                         var cc = chatConfig[seld50];
                         if (cm.getPlayer().getDPointAll() >= cc.required) {
                             var msg = "#fs11#";
-                            msg += Color + "< All Chat Title Priority >\r\n";
-                            msg += Black + "Character Title → Account Title → Main Rank.\r\n";
+                            msg += Color + "< ลำดับการแสดงฉายา All Chat >\r\n";
+                            msg += Black + "ฉายาตัวละคร → ฉายาบัญชี → ยศหลัก\r\n";
                             if (seld50 === 1998) msg += "#r" + cc.note + "#k\r\n\r\n";
-                            msg += "Please enter the " + cc.scope + " title to apply.";
+                            msg += "กรุณาใส่ฉายา " + cc.scope + " เพื่อดำเนินการ";
                             cm.sendGetText(msg);
                         } else {
-                            cm.sendOk("#fs11#Insufficient cumulative amount.");
+                            cm.sendOk("#fs11#ยอดสะสมไม่เพียงพอ");
                             cm.dispose();
                         }
                         break;
@@ -677,7 +677,7 @@ function action(mode, type, sel) {
                         var cfg = rewardConfig[threshold];
 
                         if (!cfg) {
-                            cm.sendOk("#fs11#Invalid reward item.");
+                            cm.sendOk("#fs11#ไอเท็มรางวัลไม่ถูกต้อง");
                             cm.dispose();
                             break;
                         }
@@ -687,9 +687,9 @@ function action(mode, type, sel) {
                             cm.getClient().setKeyValue(key, "1");
                             cm.gainItem(4036661, cfg.spins);
                             if (cfg.berries > 0) cm.gainItem(5068306, cfg.berries);
-                            cm.sendOk("#fs11#Reward has been distributed.");
+                            cm.sendOk("#fs11#แจกจ่ายรางวัลเรียบร้อยแล้ว");
                         } else {
-                            cm.sendOk("#fs11#Already collected or insufficient cumulative amount.");
+                            cm.sendOk("#fs11#รับไปแล้ว หรือยอดสะสมไม่เพียงพอ");
                         }
                         cm.dispose();
                         break;
@@ -703,17 +703,17 @@ function action(mode, type, sel) {
                 tradePoint = 0
             }
             if (tradePoint >= tradePoint + sel) {
-                cm.sendOk("Account point charging is possible up to 3 million.");
+                cm.sendOk("สามารถเติมพอยท์เข้าบัญชีได้สูงสุด 3 ล้าน");
                 cm.dispose();
                 return;
             }
             if (cm.getPlayer().getCashPoint() < sel) {
-                cm.sendOk("You entered a value larger than your cash balance.");
+                cm.sendOk("คุณใส่จำนวนมากกว่า Cash ที่คุณมี");
                 cm.dispose();
                 return;
             }
             if (0 > sel) {
-                cm.sendOk("Error Occurrence Error Occurrence");
+                cm.sendOk("เกิดข้อผิดพลาด");
                 cm.dispose();
                 return;
             }
@@ -721,7 +721,7 @@ function action(mode, type, sel) {
             cm.getPlayer().gainDonationPoint(sel);
 
             cm.getClient().setKeyValue("tradepoint", "" + (tradePoint + sel));
-            cm.sendOk(comma(sel) + "Exchange complete.");
+            cm.sendOk(comma(sel) + "แลกเปลี่ยนสำเร็จ");
             cm.dispose();
             return;
         }
@@ -730,7 +730,7 @@ function action(mode, type, sel) {
             case 1:
                 seldreward = sel;
                 reward = getQ(seldreward);
-                cm.sendYesNo("Do you really want to receive this reward?\r\nYou will get #b" + reward + " Donation Points#k.");
+                cm.sendYesNo("คุณต้องการรับรางวัลนี้จริงๆ หรือ?\r\nคุณจะได้รับ #b" + reward + " Donation Points#k.");
                 break;
 
             case 4:
@@ -748,7 +748,7 @@ function action(mode, type, sel) {
                         cm.gainItem(nreward[seld2]['items'][i][0], nreward[seld2]['items'][i][1]);
                     }
                     cm.getClient().setKeyValue("nd_" + nreward[seld2]['ngrade'], "1");
-                    cm.sendOkS("#fs11##b#eThank you~!", 2);
+                    cm.sendOkS("#fs11##b#eขอบคุณมาก~!", 2);
                     cm.dispose();
                     return;
                 }
@@ -761,17 +761,17 @@ function action(mode, type, sel) {
                         Get500MedalString = cm.getClient().getKeyValue("500MedalString");
                         if (cm.getClient().getKeyValue("DPointAll") >= 10000000) {
                             cm.getClient().getPlayer().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#eThank you~!", 2);
+                            cm.sendOkS("#fs11##b#eขอบคุณมาก~!", 2);
                             cm.dispose();
                             return;
                         } else if (SetMedalString != null && Get500MedalString == null) {
                             cm.getClient().setKeyValue("500MedalString", "1");
                             cm.getClient().getPlayer().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#eThank you~!", 2);
+                            cm.sendOkS("#fs11##b#eขอบคุณมาก~!", 2);
                             cm.dispose();
                             return;
                         } else {
-                            cm.sendOkS("#fs11##b#eOh right, I already set it..", 2);
+                            cm.sendOkS("#fs11##b#eอ้อ ใช่ ฉันตั้งค่าไปแล้วนี่นา..", 2);
                             cm.dispose();
                             return;
                         }
@@ -781,7 +781,7 @@ function action(mode, type, sel) {
                         SetMedalString = cm.getText();
                         if (SetMedalString != null) {
                             cm.getClient().setKeyValue("MedalString", SetMedalString);
-                            cm.sendOkS("#fs11##b#eThank you~!", 2);
+                            cm.sendOkS("#fs11##b#eขอบคุณมาก~!", 2);
                             cm.dispose();
                             return;
                         }
@@ -793,7 +793,7 @@ function action(mode, type, sel) {
             case 1:
                 getReward(seldreward);
                 cm.getPlayer().gainDonationPoint(reward);
-                cm.sendOk("Collection complete.");
+                cm.sendOk("รับรางวัลเรียบร้อยแล้ว");
                 cm.dispose();
                 break;
 
@@ -801,7 +801,7 @@ function action(mode, type, sel) {
                 switch (seld3) {
                     case 1:
                         DeleteReward(sel);
-                        cm.sendOk("Deletion complete.");
+                        cm.sendOk("ลบเรียบร้อยแล้ว");
                         cm.dispose();
                         break;
                 }
@@ -811,7 +811,7 @@ function action(mode, type, sel) {
                 cm.gainItem(nreward[seld2]['items'][seld3][0], nreward[seld2]['items'][seld3][1]);
 
                 cm.getClient().setKeyValue("nd_" + nreward[seld2]['ngrade'], "1");
-                cm.sendOk("#fs11#Distribution complete.");
+                cm.sendOk("#fs11#แจกจ่ายเรียบร้อยแล้ว");
                 cm.dispose();
                 break;
         }
@@ -833,7 +833,7 @@ function action(mode, type, sel) {
                             ps.close();
                             con.close();
                         }
-                        cm.sendOk("Change complete.");
+                        cm.sendOk("เปลี่ยนแปลงเรียบร้อยแล้ว");
                         cm.dispose();
                         break;
                 }
@@ -865,7 +865,7 @@ function getList() {
 
     while (rs.next()) {
         if (rs.getInt("cid") == cm.getPlayer().getId() || rs.getString("name").equals(cm.getPlayer().getName())) {
-            ret += "#L" + rs.getInt("id") + "##b" + rs.getString("name") + " (Eligible)\r\n";
+            ret += "#L" + rs.getInt("id") + "##b" + rs.getString("name") + " (รับได้)\r\n";
             break;
         }
     }
@@ -890,7 +890,7 @@ function getQ(id) {
     rs.close();
     ps.close();
     con.close();
-    if (ret.equals("")) return "No donation rewards found.";
+    if (ret.equals("")) return "ไม่พบรางวัลโดเนท";
     return ret;
 }
 

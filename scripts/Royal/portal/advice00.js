@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.showInstruction("Press #e#b[Left] or [Right] arrow key#k#n to move.", 250, 5);
+    pi.showInstruction("กดปุ่มลูกศร #e#b[ซ้าย] หรือ [ขวา]#k#n เพื่อเคลื่อนที่", 250, 5);
 }

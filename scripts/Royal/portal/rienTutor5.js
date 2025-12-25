@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.summonMsg("Just a little bit more, and you'll reach the town. I'll head over there first, since I also have some things to take care of. There's no need to rush, Aran. I'll see you there.")
+    pi.summonMsg("อีกนิดเดียว เจ้าก็จะถึงเมืองแล้ว ข้าจะล่วงหน้าไปก่อน เพราะข้ามีธุระต้องจัดการ ไม่ต้องรีบร้อนนะ Aran แล้วเจอกันที่นั่น")
 }

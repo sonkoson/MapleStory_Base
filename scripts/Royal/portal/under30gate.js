@@ -8,11 +8,11 @@ Save location to return.
 
 function enter(pi) {
     if (pi.getPlayerStat("LVL") <= 30) {
-	pi.playPortalSE();
+        pi.playPortalSE();
         pi.warp(990000640, 1);
         return true;
     } else {
-        pi.playerMessage("You cannot proceed past this point.");
+        pi.playerMessage("เจ้าไม่สามารถผ่านจุดนี้ไปได้");
         return false;
     }
 }

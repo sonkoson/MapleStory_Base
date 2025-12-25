@@ -9,7 +9,7 @@ var outmap = 993080400;
 var outmap2 = 993080000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     map = parseInt(mapid);
@@ -57,7 +57,7 @@ function scheduledTimeout(eim) {
         case 1:
             end(eim);
         default:
-            eim.getPlayers().get(0).dropMessage(5, "[오류] 호출되지 않아야 할 상태가 호출되었습니다. 운영자께 문의해 주세요.")
+            eim.getPlayers().get(0).dropMessage(5, "[Error] Unexpected state called. Please contact an admin.")
             end(eim);
             break;
 
@@ -124,6 +124,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

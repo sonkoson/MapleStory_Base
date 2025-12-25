@@ -255,8 +255,8 @@ function action(mode, type, sel) {
                 ScriptManager.runScript(cm.getClient(), "recommend", null)
                 break;
             case 27:
-                msg = "#fs11#" + 검은색 + "โปรดเลือกสกิลพิเศษที่ต้องการเรียนรู้\r\n";
-                msg += 색 + "(สกิลพิเศษจะถูกบันทึกในสกิลคลาส 0)\r\n\r\n";
+                msg = "#fs11#" + BlackColor + "โปรดเลือกสกิลพิเศษที่ต้องการเรียนรู้\r\n";
+                msg += Color + "(สกิลพิเศษจะถูกบันทึกในสกิลคลาส 0)\r\n\r\n";
 
                 msg += "#L1##fc0xFFFF3636##s80001829# Shinsoo's Blessing#l\r\n";
                 msg += "#L2##fc0xFFFF3636##s80001825# Iaijutsu#l";
@@ -284,7 +284,7 @@ function action(mode, type, sel) {
                     cm.dispose();
                     return;
                 }
-                msg = "#fs11#" + 검은색 + "โปรดเลือกระบบที่ต้องการ\r\n";
+                msg = "#fs11#" + BlackColor + "โปรดเลือกระบบที่ต้องการ\r\n";
                 msg += "#L1##fc0xFFFF3636##s20031207# Steal Skill System#l\r\n";
                 msg += "#L2##fc0xFFFF3636##s20031208# Steal Skill Reset System#l";
                 cm.sendSimple(msg);

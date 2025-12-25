@@ -196,7 +196,7 @@ function action(mode, type, selection) {
                 minutes = today.getMinutes();
 
                 // Maintenance notice
-                if (hours >= 23 && minutes >= 30 || hours <= 00 && minutes <= 30) {
+                if (hours >= 23 && minutes >= 30 || hours <= 0 && minutes <= 30) {
                     cm.sendOk("#fs11##r#e[แจ้งปิดปรับปรุง]#k#n\r\nทุกวัน 23:30 ~ 00:30\r\nเป็นช่วงเวลาปิดปรับปรุงระบบธนาคาร");
                     cm.dispose();
                     return;

@@ -68,7 +68,7 @@ function action(mode, type, sel) {
                 } else if (status == 2) {
                         var rank = cm.getPlayer().getMutoClearRank();
                         var msg = "นี่ค่ะ ของขวัญที่เตรียมไว้\r\n#e#bRank: #r" + (rank == 0 ? rank_0 : rank == 1 ? rank_1 : rank_2) + "#e#k\r\n";
-                        msg += "#i1712002##e#b#z1712002##k " + calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), rank) + "개\r\n";
+                        msg += "#i1712002##e#b#z1712002##k " + calcRewardCount(cm.getPlayer().getMutoClearDifficulty(), rank) + " ชิ้น\r\n";
                         msg += "#bEXP:" + calcRewardExp(cm.getPlayer().getMutoClearDifficulty(), rank);
                         cm.sendSimple(msg);
                 } else if (status == 3) {

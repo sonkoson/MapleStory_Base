@@ -1,3 +1,3 @@
 function enter(pi) {
-    pi.playerMessage("Portal is not available.");
+    pi.playerMessage("พอร์ทัลไม่สามารถใช้งานได้");
 }

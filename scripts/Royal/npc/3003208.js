@@ -31,7 +31,7 @@ function action(mode, type, sel) {
         status++;
     }
     if (status == 0) {
-        if (cm.getPlayer().getMapId() == 921171100) { // 보상맵
+        if (cm.getPlayer().getMapId() == 921171100) { // Reward Map
             var stage = cm.getPlayer().getOneInfoQuestInteger(15901, "stage");
             var selectedStage = cm.getPlayer().getOneInfoQuestInteger(15901, "selectedStage");
             if (stage == selectedStage) {
@@ -75,7 +75,7 @@ function action(mode, type, sel) {
             if (clear) {
                 quantity = cm.getPlayer().getOneInfoQuestInteger(15901, "stage") - 1;
                 if (!cm.canHold(4036068, quantity)) {
-                    cm.sendNext("인벤토리 공간을 확보하고 다시 말 걸어주세요!");
+                    cm.sendNext("เคลียร์ช่องว่างใน Inventory แล้วคุยกับฉันใหม่อีกครั้ง!");
                     cm.dispose();
                     return;
                 }

@@ -68,7 +68,7 @@ function action(M, T, S) {
 						else
 							cm.getClient().setKeyValue("GM_SETTING_GIV", -1);
 
-						cm.getPlayer().dropMessage(5, "Send notice when giving item setting has been changed to " + checkOnOff(SET_GIV * -1, "string") + ".");
+						cm.getPlayer().dropMessage(5, "เปลี่ยนการตั้งค่าส่งประกาศเมื่อมอบไอเท็มเป็น " + checkOnOff(SET_GIV * -1, "string") + " แล้ว");
 						break;
 
 					case 11:
@@ -78,7 +78,7 @@ function action(M, T, S) {
 						else
 							cm.getClient().setKeyValue("GM_SETTING_DEL", -1);
 
-						cm.getPlayer().dropMessage(5, "Send notice when deleting item setting has been changed to " + checkOnOff(SET_DEL * -1, "string") + ".");
+						cm.getPlayer().dropMessage(5, "เปลี่ยนการตั้งค่าส่งประกาศเมื่อลบไอเท็มเป็น " + checkOnOff(SET_DEL * -1, "string") + " แล้ว");
 						1
 						break;
 				}
@@ -137,7 +137,7 @@ function action(M, T, S) {
 
 				if (S3 == 999) {
 					chr.addKV("Hard_Will", "0");
-					chr.dropMessage(5, "Count has been restored.");
+					chr.dropMessage(5, "คืนค่าจำนวนนับเรียบร้อยแล้ว");
 					cm.dispose();
 					return;
 				}
@@ -163,7 +163,7 @@ function action(M, T, S) {
 
 					cm.dispose();
 					cm.openNpcCustom2(chr.getClient(), 2007, "macro");
-					cm.getPlayer().dropMessage(5, "Performed macro test on " + name + ".");
+					cm.getPlayer().dropMessage(5, "เริ่มการทดสอบมาโครกับตัวละคร " + name + " แล้ว");
 					return;
 				}
 
@@ -326,13 +326,13 @@ function action(M, T, S) {
 				if (S3 >= 13 && S3 <= 15) {
 					number = S4;
 					if (S3 == 13) {
-						txt = "Given " + number + " Neo Stones to " + name + ".";
+						txt = "มอบ " + number + " Neo Stones ให้ " + name + " แล้ว";
 						chr.setKeyValue(100711, "point", chr.getKeyValue(100711, "point") + number);
 					} else if (S3 == 14) {
-						txt = "Given " + number + " Neo Gems to " + name + ".";
+						txt = "มอบ " + number + " Neo Gems ให้ " + name + " แล้ว";
 						chr.setKeyValue(100712, "point", chr.getKeyValue(100712, "point") + number);
 					} else if (S3 == 15) {
-						txt = "Given " + number + " Neo Cores to " + name + ".";
+						txt = "มอบ " + number + " Neo Cores ให้ " + name + " แล้ว";
 						chr.setKeyValue(501215, "point", chr.getKeyValue(501215, "point") + number);
 					}
 					cm.getPlayer().dropMessage(6, txt);
@@ -342,10 +342,10 @@ function action(M, T, S) {
 				if (S3 >= 16 && S3 <= 17) {
 					number = S4;
 					if (S3 == 13) {
-						txt = "Given " + number + " Promotion Points to " + name + ".";
+						txt = "มอบ " + number + " แต้มโปรโมท ให้ " + name + " แล้ว";
 						chr.setKeyValue(100711, "point", chr.getKeyValue(100711, "point") + number);
 					} else if (S3 == 14) {
-						txt = "Given " + number + " Donation Points to " + name + ".";
+						txt = "มอบ " + number + " แต้มโดเนท ให้ " + name + " แล้ว";
 						chr.setKeyValue(100712, "point", chr.getKeyValue(100712, "point") + number);
 					}
 					cm.getPlayer().dropMessage(6, txt);
@@ -391,7 +391,7 @@ function action(M, T, S) {
 					//log("notice", "Send Success	"+name+"	"+S5+"	"+txt+"\r\n");
 
 					chr.dropMessage(S5, txt);
-					cm.getPlayer().dropMessage(5, "Notice sent to " + name + ". Please proceed with next task.");
+					cm.getPlayer().dropMessage(5, "ส่งประกาศถึง " + name + " แล้ว ดำเนินการต่อ");
 					cm.dispose();
 					cm.openNpc(9010017);
 					return;
@@ -417,7 +417,7 @@ function action(M, T, S) {
 					} else {
 						chr.gainItem(number, count);
 					}
-					cm.getPlayer().dropMessage(5, "Sent item to " + name + ". Please proceed with next task.");
+					cm.getPlayer().dropMessage(5, "ส่งไอเท็มให้ " + name + " แล้ว ดำเนินการต่อ");
 					cm.dispose();
 					cm.openNpc(9010017);
 					return;
@@ -440,11 +440,11 @@ function action(M, T, S) {
 				{
 					REASON = function () {
 						switch (cm.getText()) {
-							case "1": return "Retrieving wrongfully given item";
-							case "2": return "Retrieving item obtained abnormally";
-							case "3": return "Retrieving item from trade fraud";
-							case "4": return "Retrieving item from trade fraud";
-							case "5": return "Preserving item obtained abnormally";
+							case "1": return "เรียกคืนไอเทมที่ให้ผิด";
+							case "2": return "เรียกคืนไอเทมที่ได้ผิดปกติ";
+							case "3": return "เรียกคืนไอเทมจากการโกง";
+							case "4": return "เรียกคืนไอเทมจากการโกง";
+							case "5": return "เก็บรักษาไอเทมที่ได้ผิดปกติ";
 							default: return cm.getText();
 						}
 					}
@@ -463,7 +463,7 @@ function action(M, T, S) {
 
 							if (SET_DEL == 1)
 								chr.dropMessage(5, " ");
-							chr.dropMessage(5, "[Notice] " + cm.getItemName(inv.getItem(S4).getItemId()) + " item has been deleted due to '" + REASON() + "'.");
+							chr.dropMessage(5, "[ประกาศ] ไอเท็ม " + cm.getItemName(inv.getItem(S4).getItemId()) + " ถูกลบเนื่องจาก '" + REASON() + "'");
 							chr.dropMessage(5, " ");
 
 							//log("success", "Delete	"+chr.getId()+"	"+name+"	"+invType+"	"+inv.getItem(S4).getItemId()+"	1qty	"+REASON()+"\r\n");
@@ -487,7 +487,7 @@ function action(M, T, S) {
 
 							if (SET_DEL == 1)
 								chr.dropMessage(5, " ");
-							chr.dropMessage(5, "[Notice] " + cm.getItemName(inv.getItem(S4).getItemId()) + " item " + S5 + "qty has been deleted due to '" + REASON() + "'.");
+							chr.dropMessage(5, "[ประกาศ] ไอเท็ม " + cm.getItemName(inv.getItem(S4).getItemId()) + " x" + S5 + " ชิ้น ถูกลบเนื่องจาก '" + REASON() + "'");
 							chr.dropMessage(5, " ");
 
 							//log("success", "Delete	"+chr.getId()+"	"+name+"	"+invType+"	"+inv.getItem(S4).getItemId()+"	"+S5+"qty	"+REASON()+"\r\n");
@@ -555,7 +555,7 @@ function log(type, i) {
 function toString(i) {
 	switch (i) {
 		case 0:
-			return "#Cgray#Not Set#k";
+			return "#Cgray#ไม่ได้ตั้งค่า#k";
 
 		case 10041:
 		case 20041:

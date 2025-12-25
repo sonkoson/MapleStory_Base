@@ -20,17 +20,17 @@ function act() {
         switch (check) {
             case 0:
                 rm.getClient().getSession().writeAndFlush(CField.startMapEffect("", 0, false));
-                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("맹독의 정령이 눈치챈 모양이야! 어서 도망가람!", 5120175, true));
+                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("ภูติพิษร้ายรู้ตัวแล้ว! รีบหนีเร็ว!", 5120175, true));
                 break;
             case 1:
             case 2:
             case 3:
                 rm.getClient().getSession().writeAndFlush(CField.startMapEffect("", 0, false));
-                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("맹독의 정령이 더 강해지고 있담..!", 5120175, true));
+                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("ภูติพิษร้ายกำลังแข็งแกร่งขึ้น..!", 5120175, true));
                 break;
             case 4:
                 rm.getClient().getSession().writeAndFlush(CField.startMapEffect("", 0, false));
-                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("맹독의 정령이 완전체가 되었담! 조심해람!", 5120175, true));
+                rm.getClient().getSession().writeAndFlush(CField.startMapEffect("ภูติพิษร้ายร่างสมบูรณ์แล้ว! ระวังตัวด้วย!", 5120175, true));
                 break;
         }
         var map = rm.getPlayer().getMap();

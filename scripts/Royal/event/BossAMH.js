@@ -7,7 +7,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -28,7 +28,7 @@ function playerEntry(eim, player) {
     if (player.getParty().getLeader().getId() == player.getId()) {
         spawnMonster(eim);
     }
-	map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[보스]#k#fn나눔고딕 ExtraBold# 아케치 미츠히데", 100, 3000, 3, -100, 50, 1, 4));
+    map.broadcastMessage(CField.BlackLabel("#fnNanumGothic ExtraBold##fs22##e#r[Boss]#k#fnNanumGothic ExtraBold# Akechi Mitsuhide", 100, 3000, 3, -100, 50, 1, 4));
 }
 
 function spawnMonster(eim) {
@@ -63,9 +63,9 @@ function monsterValue(eim, mobId) {
 
 
     if (mobId == 9601510) {
-	var map = eim.getMapInstance(0);
-	var mob = em.getMonster(9601511);
-	map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(479, -28));
+        var map = eim.getMapInstance(0);
+        var mob = em.getMonster(9601511);
+        map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(479, -28));
     }
     if (mobId == 9601511) {
         eim.restartEventTimer(60000);
@@ -111,6 +111,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

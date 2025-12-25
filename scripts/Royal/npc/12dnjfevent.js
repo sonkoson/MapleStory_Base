@@ -59,7 +59,7 @@ function action(mode, type, sel) {
     }
 
     if (status == 0) {
-        // 첫 이벤트 클릭시 애니메이션재생
+        // เล่นอนิเมชั่นเมื่อคลิกกิจกรรมครั้งแรก
         if (getFirst() == null) {
             cm.dispose();
             cm.getClient().setKeyValue("12dnjfeventFirst", "1");

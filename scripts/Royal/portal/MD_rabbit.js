@@ -3,29 +3,29 @@ var dungeonid = 221023401;
 var dungeons = 30;
 
 function enter(pi) {
-    if (pi.getMapId() == baseid) {
-	if (pi.getParty() != null) {
-	    if (pi.isLeader()) {
-		for (var i = 0; i < dungeons; i++) {
-		    if (pi.getPlayerCount(dungeonid + i) == 0) {
-			pi.warpParty(dungeonid + i);
-			return;
-		    }
+	if (pi.getMapId() == baseid) {
+		if (pi.getParty() != null) {
+			if (pi.isLeader()) {
+				for (var i = 0; i < dungeons; i++) {
+					if (pi.getPlayerCount(dungeonid + i) == 0) {
+						pi.warpParty(dungeonid + i);
+						return;
+					}
+				}
+			} else {
+				pi.playerMessage(5, "เจ้าไม่ใช่หัวหน้าปาร์ตี้");
+			}
+		} else {
+			for (var i = 0; i < dungeons; i++) {
+				if (pi.getPlayerCount(dungeonid + i) == 0) {
+					pi.warp(dungeonid + i);
+					return;
+				}
+			}
 		}
-	    } else {
-		pi.playerMessage(5, "You are not the leader of the party.");
-	    }
+		pi.playerMessage(5, "มินิดันเจี้ยนทั้งหมดกำลังถูกใช้งาน กรุณาลองใหม่ในภายหลัง");
 	} else {
-	    for (var i = 0; i < dungeons; i++) {
-		if (pi.getPlayerCount(dungeonid + i) == 0) {
-		    pi.warp(dungeonid + i);
-		    return;
-		}
-	    }
+		pi.playPortalSE();
+		pi.warp(baseid, "MD00");
 	}
-	pi.playerMessage(5, "All of the Mini-Dungeons are in use right now, please try again later.");
-    } else {
-	pi.playPortalSE();
-	pi.warp(baseid, "MD00");
-    }
 }

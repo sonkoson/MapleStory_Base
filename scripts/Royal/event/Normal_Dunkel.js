@@ -13,7 +13,7 @@ var temphp = 0;
 var mob;
 var posx = [-650, -560, -470, -380, -290, -200, -110, -20, 70, 160, 250, 340, 430, 520, 610];
 var addposx = [-650, -560, -470, 470, 560, 650];
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -50,41 +50,41 @@ function spawnMonster(eim) {
     var tick = 0;
     eim.registerMonster(mob);
     map.spawnMonsterOnGroundBelow(mob, new java.awt.Point(0, 20));
-    var schedule = Timer.MapTimer.getInstance().register(function() {
-	try {
-        if (eim.getPlayers().get(0).getMapId() != 450012210) {
-	eim.getPlayers().get(0).dropMessage(6, "cancel");
-            schedule.cancel(true);
-        } else {
-            if (tick == 0) {
-                for (i = 0; i < posx.length; i++) {
-                    mon = em.getMonster(8645003);
-                    eim.registerMonster(mon);
-                    map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(posx[i], 28));
+    var schedule = Timer.MapTimer.getInstance().register(function () {
+        try {
+            if (eim.getPlayers().get(0).getMapId() != 450012210) {
+                eim.getPlayers().get(0).dropMessage(6, "cancel");
+                schedule.cancel(true);
+            } else {
+                if (tick == 0) {
+                    for (i = 0; i < posx.length; i++) {
+                        mon = em.getMonster(8645003);
+                        eim.registerMonster(mon);
+                        map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(posx[i], 28));
+                    }
+                } else if (tick % 5 == 0) {
+                    if (tick / 5 <= 5) {
+                        rd = Math.floor(Math.random() * posx.length);
+                        mon = em.getMonster(8645003 + (tick / 5));
+                        eim.registerMonster(mon);
+                        map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(posx[rd], 28));
+                    }
                 }
-            } else if (tick % 5 == 0) {
-                if (tick / 5 <= 5) {
-                    rd = Math.floor(Math.random() * posx.length);
-                    mon = em.getMonster(8645003 + (tick / 5));
-                    eim.registerMonster(mon);
-                    map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(posx[rd], 28));
-                }
-            }
-            if (tick != 0) {
-		free = 30 - map.getNumMonsters() >= 6 ? 6 : 30 - map.getNumMonsters();
-                for (i = 0; i < free; i++) {
-                    mon = em.getMonster(8645003);
-                    eim.registerMonster(mon);
-                    map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(addposx[i], 28));
-                }
+                if (tick != 0) {
+                    free = 30 - map.getNumMonsters() >= 6 ? 6 : 30 - map.getNumMonsters();
+                    for (i = 0; i < free; i++) {
+                        mon = em.getMonster(8645003);
+                        eim.registerMonster(mon);
+                        map.spawnMonsterOnGroundBelow(mon, new java.awt.Point(addposx[i], 28));
+                    }
 
+                }
+                tick++;
             }
-            tick++;
+        } catch (e) {
+            e.printStackTrace();
+            schedule.cancel(true);
         }
-	} catch (e) {
-	    e.printStackTrace();
-	    schedule.cancel(true);
-	}
     }, 6000);
 }
 
@@ -92,7 +92,7 @@ function playerRevive(eim, player) {
     return false;
 }
 
-function scheduledTimeout(eim) {}
+function scheduledTimeout(eim) { }
 
 function changedMap(eim, player, mapid) {
     stage = parseInt(eim.getProperty("stage"));
@@ -122,15 +122,15 @@ function WarptoNextStage(eim) {
     while (iter.hasNext()) {
         var player = iter.next();
         map = eim.getMapInstance(stage);
-if (stage == 1) {
-        player.changeMap(map.getId(), 1);
-} else {
-        player.changeMap(map.getId(), 0);
-}
+        if (stage == 1) {
+            player.changeMap(map.getId(), 1);
+        } else {
+            player.changeMap(map.getId(), 0);
+        }
     }
     if (stage == 1) {
-        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[노말 듄켈]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
-        spawnMonsterDunkel(eim, stage, 8950118, 7, 28); // 보상상자
+        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Normal Dunkel]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
+        spawnMonsterDunkel(eim, stage, 8950118, 7, 28); // Reward Box
         eim.restartEventTimer(300000);
     }
 }
@@ -174,6 +174,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

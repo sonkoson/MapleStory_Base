@@ -34,7 +34,7 @@ var fullmobxy = [
     [563, -2231, 8644112]
 ];
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     map = parseInt(mapid);
@@ -47,8 +47,8 @@ function setup(mapid) {
 
     var temp = fullmobxy.sort(function () {
         return Math.random() - Math.random()
-    }) //배열 랜덤
-    
+    }) // Random array
+
     for (var i = 0; i < 4; i++) {
         spawnMob(eim, temp[i][2], temp[i][0], temp[i][1]);
     }
@@ -137,7 +137,7 @@ function monsterValue(eim, mobId) {
         } else if (mob != null) {
             var mob1 = Packages.server.life.MapleLifeFactory.getMonster(i + 1);
             var pos = mob.getPosition();
-            player.getMap().killMonster(mob);ss
+            player.getMap().killMonster(mob);
             map.spawnMonsterOnGroundBelow(mob1, pos);
             break;
         }
@@ -184,7 +184,7 @@ function end(eim) {
 }
 
 function realend(eim) {
-    
+
 }
 
 function clearPQ(eim) {
@@ -214,6 +214,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }

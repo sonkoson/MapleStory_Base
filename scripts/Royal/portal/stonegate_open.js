@@ -9,7 +9,7 @@ function enter(pi) {
         pi.warp(990000430, 0);
         return true;
     } else {
-        pi.playerMessage("The door is still blocked.");
+        pi.playerMessage("ประตูยังคงถูกปิดกั้น");
         return false;
     }
 }

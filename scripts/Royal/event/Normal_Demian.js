@@ -9,7 +9,7 @@ importPackage(java.util);
 var outmap = 100000000;
 var time = 0;
 
-function init() {}
+function init() { }
 
 function setup(mapid) {
     var a = Packages.objects.utils.Randomizer.nextInt();
@@ -32,7 +32,7 @@ function playerEntry(eim, player) {
     var map = eim.getMapInstance(0);
     player.setDeathCount(10);
     player.changeMap(map, map.getPortal(0));
-    eim.setProperty("stage","1");
+    eim.setProperty("stage", "1");
     player.getClient().getSession().writeAndFlush(CField.playSound("Sound/SoundEff.img/BossDemian/phase1"));
     player.getClient().getSession().writeAndFlush(CField.showSpineScreen(false, false, true, "Map/Effect2.img/DemianIllust/1pahseSp/demian", "animation", 0, false, ""));
     player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(true, false, false, false));
@@ -89,8 +89,8 @@ function WarptoNextStage(eim) {
         var player = iter.next();
         map = eim.getMapInstance(stage);
         player.changeMap(map.getId(), 0);
-	if (stage == 1) {
-	player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
+        if (stage == 1) {
+            player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(false, true, false, false));
         } else if (stage == 2) {
             player.getClient().getSession().writeAndFlush(Packages.network.models.CField.UIPacket.SetIngameDirectionMode(true, false, false, false));
             player.getClient().getSession().writeAndFlush(CField.playSound("Sound/SoundEff.img/BossDemian/phase2"));
@@ -103,11 +103,11 @@ function WarptoNextStage(eim) {
         eim.setProperty("stage", "3");
         eim.schedule("WarptoNextStage", 8500);
     } else if (stage == 4) {
-        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[노말 데미안]#k#fn나눔고딕 ExtraBold# 보상맵", 100, 3000, 3, -100, 50, 1, 4));
-        spawnMonster(eim, stage, 8950111, 726, 16); // 보상상자
+        map.broadcastMessage(CField.BlackLabel("#fn나눔고딕 ExtraBold##fs22##e#r[Normal Demian]#k#fn나눔고딕 ExtraBold# Reward Map", 100, 3000, 3, -100, 50, 1, 4));
+        spawnMonster(eim, stage, 8950111, 726, 16); // Reward Box
         eim.restartEventTimer(300000);
     } else {
-        spawnMonster(eim, stage, 8880110 + Math.floor(stage/2), 696, 17);
+        spawnMonster(eim, stage, 8880110 + Math.floor(stage / 2), 696, 17);
     }
 }
 
@@ -149,6 +149,6 @@ function disbandParty(eim) {
     disposeAll(eim);
 }
 
-function playerDead(eim, player) {}
+function playerDead(eim, player) { }
 
-function cancelSchedule() {}
+function cancelSchedule() { }
